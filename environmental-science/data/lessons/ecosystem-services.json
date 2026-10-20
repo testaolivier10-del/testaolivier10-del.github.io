@@ -1,0 +1,68 @@
+{
+ "topic": "ecosystem-services",
+ "hook": "A city of 900,000 people gets its drinking water from a reservoir fed by forested hills. Engineers price a filtration plant at about \\$6 billion. Instead, the city pays landowners upstream to keep their forests standing, for a fraction of that. The forest soil and roots were already cleaning the water for free. That free work has a name: an ecosystem service.",
+ "prereq": [
+  {
+   "q": "Which process moves water from the soil, through a plant and into the air?",
+   "options": [
+    "Transpiration",
+    "Condensation",
+    "Infiltration",
+    "Runoff"
+   ],
+   "correct": 0,
+   "why": "Plants pull water up from the soil and release it as vapor through their leaves: transpiration.",
+   "review": "water-cycle"
+  },
+  {
+   "q": "What do decomposers do in an ecosystem?",
+   "options": [
+    "Break down dead matter and return nutrients to the soil",
+    "Make sugar from sunlight",
+    "Eat only living plants",
+    "Fix carbon dioxide into rock"
+   ],
+   "correct": 0,
+   "why": "Decomposers break down dead organisms and wastes, releasing nutrients that producers can use again.",
+   "review": "carbon-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "ecosystem-services-categories",
+  "caption": "The four kinds of ecosystem services, with examples of each."
+ },
+ "chain": [
+  {
+   "cause": "Healthy ecosystems run natural processes such as photosynthesis, pollination, filtering and nutrient cycling",
+   "effect": "people receive goods (food, wood, water) and protection (clean water, flood control, a steadier climate) at no charge"
+  },
+  {
+   "cause": "People clear, drain or pollute an ecosystem for a short-term gain",
+   "effect": "the services it gave are reduced or lost"
+  },
+  {
+   "cause": "Those services must then be replaced (water treatment, flood walls, hand pollination) or done without",
+   "effect": "there is an ecological cost and an economic cost that the original decision did not count"
+  }
+ ],
+ "ideas": [
+  "An <b>ecosystem service</b> is a benefit people get from a working ecosystem. There are four kinds: provisioning, regulating, cultural and supporting.",
+  "<b>Provisioning services</b> are goods people take: food, fish, timber, fresh water, medicines. <b>Regulating services</b> are natural processes that protect people: pollination, purifying water, controlling floods, storing carbon.",
+  "<b>Cultural services</b> are nonmaterial benefits: recreation, tourism, beauty, spiritual value, education. <b>Supporting services</b> keep the other three going: photosynthesis, nutrient cycling, soil formation, habitat.",
+  "Disrupting an ecosystem has costs that a price tag often leaves out: the lost services must be paid for some other way."
+ ],
+ "misconception": {
+  "wrong": "An ecosystem service is any product people sell, so a forest only provides value when it is cut for timber.",
+  "right": "Timber is one provisioning service, but a standing forest also cleans water, stores carbon, prevents floods and supports recreation. Cutting it trades those services for one."
+ },
+ "check": [
+  "env-ecosystem-services-1",
+  "env-ecosystem-services-2",
+  "env-ecosystem-services-3",
+  "env-ecosystem-services-8",
+  "env-ecosystem-services-10",
+  "env-ecosystem-services-13",
+  "env-ecosystem-services-14"
+ ],
+ "summary": "Ecosystem services are the benefits people get from working ecosystems: provisioning (goods such as food, timber and water), regulating (pollination, water purification, flood control, carbon storage), cultural (recreation, tourism, beauty) and supporting (photosynthesis, nutrient cycling, soil building). Damaging an ecosystem removes services that then cost money to replace."
+}

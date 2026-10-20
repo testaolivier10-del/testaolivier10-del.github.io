@@ -1,0 +1,72 @@
+{
+ "topic": "human-impacts-ecosystems",
+ "hook": "Kick a net through the gravel of a clean mountain stream and you will find dozens of mayfly and stonefly larvae. Do the same just below a drainage pipe and you may find almost none, only midges and worms. You did not need a chemistry kit. The insects told you the water was polluted.",
+ "prereq": [
+  {
+   "q": "Which organisms live in a coral's tissues and make food by photosynthesis?",
+   "options": [
+    "Algae",
+    "Fish",
+    "Sponges",
+    "Sea stars"
+   ],
+   "correct": 0,
+   "why": "Algae inside the coral make food by photosynthesis and share it with the coral.",
+   "review": "aquatic-biomes"
+  },
+  {
+   "q": "What happens to an organism in its zone of physiological stress?",
+   "options": [
+    "It survives but is stressed and may not reproduce",
+    "It grows fastest",
+    "It is unaffected",
+    "It becomes a keystone species"
+   ],
+   "correct": 0,
+   "why": "Outside its optimal range, an organism is stressed and does worse.",
+   "review": "ecological-tolerance"
+  }
+ ],
+ "figure": {
+  "figure": "human-impacts-ecosystems-indicators",
+  "caption": "Stream insects sorted by how much pollution they tolerate: sensitive species disappear first, tolerant ones take over."
+ },
+ "chain": [
+  {
+   "cause": "People add pollutants, heat, sediment, oil or plastic to water",
+   "effect": "conditions move outside the tolerance range of sensitive species"
+  },
+  {
+   "cause": "Sensitive species die or leave, and tolerant species remain or increase",
+   "effect": "the community changes, which indicator species reveal"
+  },
+  {
+   "cause": "On reefs, heat stress makes corals expel their algae",
+   "effect": "corals bleach, starve and may die, and reef species lose habitat"
+  },
+  {
+   "cause": "Oil coats animals and plastics are eaten",
+   "effect": "animals lose insulation, are poisoned, or starve with full stomachs"
+  }
+ ],
+ "ideas": [
+  "Species differ in their <b>range of tolerance</b>. <b>Indicator species</b> such as mayfly, stonefly and caddisfly larvae disappear when water quality falls; midges and worms tolerate pollution.",
+  "<b>Coral bleaching</b>: heat stress (and pollution) makes corals expel their algae, so they turn white and may starve. Sediment blocks light and smothers reefs.",
+  "<b>Oil spills</b> coat feathers and fur, poison animals and smother shorelines. Cleanup uses booms, skimmers and, with care, dispersants.",
+  "<b>Ocean plastics</b> entangle animals and are eaten; they break into <b>microplastics</b> that enter food webs and carry toxic chemicals."
+ ],
+ "misconception": {
+  "wrong": "A bleached coral has been bleached by chemicals in the water.",
+  "right": "Bleaching means the coral has expelled its algae, usually because of heat stress. The white is the coral's skeleton showing through clear tissue."
+ },
+ "check": [
+  "env-human-impacts-ecosystems-8",
+  "env-human-impacts-ecosystems-1",
+  "env-human-impacts-ecosystems-2",
+  "env-human-impacts-ecosystems-3",
+  "env-human-impacts-ecosystems-5",
+  "env-human-impacts-ecosystems-6",
+  "env-human-impacts-ecosystems-11"
+ ],
+ "summary": "Pollution changes ecosystems by pushing conditions outside species' tolerance ranges. Indicator species such as mayfly larvae reveal water quality. Heat stress bleaches corals by making them expel their algae; sediment smothers reefs; oil spills coat and poison wildlife; and plastics entangle animals and break into microplastics that enter food webs."
+}

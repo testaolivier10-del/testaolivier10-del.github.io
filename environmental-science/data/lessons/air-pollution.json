@@ -1,0 +1,72 @@
+{
+ "topic": "air-pollution",
+ "hook": "On a still summer day in a river-valley city, the air at 7 a.m. looks clear. By 3 p.m. a brown smog hides the hills. Nothing new opened overnight: the same cars, the same power plant and the same wood stoves ran all day. Some of what they released did not stay the same. In the sunlit air, it changed into something new.",
+ "prereq": [
+  {
+   "q": "Which fuel naturally contains sulfur and mercury as impurities?",
+   "options": [
+    "Coal",
+    "Wind",
+    "Uranium",
+    "Sunlight"
+   ],
+   "correct": 0,
+   "why": "Coal formed from buried plants and holds sulfur and metals; burning it releases them.",
+   "review": "fuel-types"
+  },
+  {
+   "q": "Which layer of the atmosphere do we live and breathe in?",
+   "options": [
+    "The troposphere",
+    "The stratosphere",
+    "The mesosphere",
+    "The thermosphere"
+   ],
+   "correct": 0,
+   "why": "The troposphere is the lowest layer, where weather happens and where we breathe.",
+   "review": "atmosphere"
+  }
+ ],
+ "figure": {
+  "figure": "air-pollution-primary-secondary",
+  "caption": "Primary pollutants leave tailpipes and smokestacks directly. In sunlit, moist air some of them react to form secondary pollutants such as ozone and acids."
+ },
+ "chain": [
+  {
+   "cause": "Fuel burns in an engine, furnace or power plant",
+   "effect": "primary pollutants (CO, NOx, SO2, particulates, VOCs) leave the tailpipe or smokestack"
+  },
+  {
+   "cause": "The primary pollutants mix with air, water vapor and sunlight",
+   "effect": "they react with one another and with oxygen and water"
+  },
+  {
+   "cause": "Those reactions run through the day",
+   "effect": "secondary pollutants form: ozone near the ground, and sulfuric and nitric acid"
+  },
+  {
+   "cause": "People breathe both kinds of pollutant",
+   "effect": "lungs, heart and blood are harmed, so the Clean Air Act sets limits on six criteria pollutants"
+  }
+ ],
+ "ideas": [
+  "A <b>primary pollutant</b> is released directly by a source (CO from a tailpipe). A <b>secondary pollutant</b> forms in the air from primary ones (ozone near the ground, sulfuric acid).",
+  "<b>Coal</b> burning releases CO2, SO2, particulates and metals such as mercury. Burning any fossil fuel at high temperature also makes <b>NOx</b> from nitrogen in the air.",
+  "<b>CO</b> keeps blood from carrying oxygen. <b>PM2.5</b> reaches deep into the lungs. <b>VOCs</b> come from gasoline vapor, paints and solvents.",
+  "The <b>Clean Air Act</b> lets the EPA set limits for six <b>criteria pollutants</b>: CO, lead, NO2, ozone, particulate matter and SO2. Taking lead out of gasoline cut airborne lead sharply."
+ ],
+ "misconception": {
+  "wrong": "The ozone in city air comes out of tailpipes and smokestacks.",
+  "right": "No tailpipe or smokestack releases ozone. Ozone near the ground is a secondary pollutant: it forms in the air when NOx and VOCs react in sunlight."
+ },
+ "check": [
+  "env-air-pollution-8",
+  "env-air-pollution-9",
+  "env-air-pollution-1",
+  "env-air-pollution-2",
+  "env-air-pollution-3",
+  "env-air-pollution-11",
+  "env-air-pollution-15"
+ ],
+ "summary": "Air pollutants are primary (released directly: CO, NOx, SO2, particulates, VOCs) or secondary (formed in the air: ozone near the ground, sulfuric and nitric acid). Coal burning is the main source of SO2 and mercury; hot combustion makes NOx; CO starves the blood of oxygen; PM2.5 reaches deep into the lungs. The Clean Air Act sets limits on six criteria pollutants."
+}

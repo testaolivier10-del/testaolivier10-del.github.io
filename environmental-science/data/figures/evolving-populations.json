@@ -1,0 +1,12 @@
+{
+ "evolving-populations-beaks": {
+  "file": "figures/evolving-populations-beaks.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bar chart of beak depth in an invented seed-eating bird. Parents before a drought: 10% at 8 mm, 25% at 9 mm, 35% at 10 mm, 20% at 11 mm, 10% at 12 mm. Offspring after the drought: 4% at 8 mm, 15% at 9 mm, 32% at 10 mm, 30% at 11 mm, 19% at 12 mm. The distribution shifts toward deeper beaks."
+ }
+}

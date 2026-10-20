@@ -1,0 +1,86 @@
+/* Energy flow (environmental-science/assets/tools/energy-flow.js). OWNED BY THIS TOOL ONLY (builder T2).
+   One colour per trophic level, the same in the pyramid, the food web and
+   the drills: producers green, primary consumers olive-gold, secondary
+   orange, tertiary vermillion, quaternary purple (Okabe-Ito based, darker
+   text shades for contrast). Energy rising is gold; heat leaving is red. */
+.ef-svg,.ef-qfig{--ef-l1:#4E9A2E;--ef-l1f:#DCEFCF;--ef-l2:#9A8A14;--ef-l2f:#F3ECC2;--ef-l3:#D07A12;--ef-l3f:#FBE2C2;--ef-l4:#C2461C;--ef-l4f:#F8D3C4;--ef-l5:#7D4E9C;--ef-l5f:#E8DAF1;
+  --ef-gold:#E6A100;--ef-heat:#D2452B;--ef-disc:#F4F6EE;--ef-disc-s:#D9DEC9;--ef-link:#6E7568;--ef-up:#C98B00;
+  --ef-good:#1F7A4A;--ef-bad:#B3261E;--ef-warn:#9A6A00;}
+:root[data-theme="dark"] .ef-svg,:root[data-theme="dark"] .ef-qfig{--ef-l1:#7CC65A;--ef-l1f:#24391C;--ef-l2:#D4C24E;--ef-l2f:#383318;--ef-l3:#F0A04A;--ef-l3f:#3E2C15;--ef-l4:#F07A55;--ef-l4f:#40221A;--ef-l5:#C59BE3;--ef-l5f:#31243C;
+  --ef-gold:#F5C542;--ef-heat:#FF7A5C;--ef-disc:#E9EEE2;--ef-disc-s:#9BA88F;--ef-link:#9FAA98;--ef-up:#F5C542;
+  --ef-good:#6FD69A;--ef-bad:#FF8A80;--ef-warn:#F5C542;}
+.ef-card{display:grid;gap:14px;}
+.ef-fig{position:relative;min-height:360px;height:min(72vh,600px);}
+.ls-root .ef-fig{flex:1 1 auto;height:auto;min-height:300px;}
+.ef-fig .ef-svg{position:absolute;inset:0;width:100%;height:100%;}
+.ef-svg{display:block;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.ef-qfig{margin:0;}
+.ef-qfig .ef-svg{width:100%;height:auto;max-height:100%;}
+/* text */
+.ef-title{font-weight:900;font-size:15px;fill:var(--ink);}
+.ef-sub{font-weight:700;font-size:12.5px;fill:var(--muted);}
+.ef-org{font-weight:900;font-size:14px;fill:var(--ink);}
+.ef-lv{font-weight:700;font-size:12px;fill:var(--muted);}
+.ef-val{font-weight:900;font-size:14px;fill:#16210F;font-variant-numeric:tabular-nums;}
+.ef-val.out{fill:var(--ink);}
+.ef-val.ask{fill:var(--cink);font-size:18px;}
+.ef-up-t{font-weight:900;font-size:11.5px;fill:var(--ef-up);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ef-heat-t{font-weight:800;font-size:12px;fill:var(--ef-heat);}
+@media (max-width:640px){.ef-svg .ef-title{font-size:16px;}.ef-svg .ef-org{font-size:15px;}.ef-svg .ef-val{font-size:15px;}.ef-svg .ef-lv{font-size:13px;}}
+/* level bars and discs */
+.ef-bar{stroke-width:2;}
+.ef-bar.l1{fill:var(--ef-l1);stroke:var(--ef-l1);} .ef-bar.l2{fill:var(--ef-l2);stroke:var(--ef-l2);} .ef-bar.l3{fill:var(--ef-l3);stroke:var(--ef-l3);} .ef-bar.l4{fill:var(--ef-l4);stroke:var(--ef-l4);} .ef-bar.l5{fill:var(--ef-l5);stroke:var(--ef-l5);}
+.ef-bar{fill-opacity:.88;}
+.ef-bar.is-ask{fill:var(--ctint);fill-opacity:1;stroke:var(--cink);stroke-dasharray:6 4;}
+.ef-lvl .ef-bar.is-sel{stroke:var(--ink);stroke-width:3;fill-opacity:1;}
+.ef-disc{fill:var(--ef-disc);stroke:var(--ef-disc-s);stroke-width:2;}
+.ef-disc.l1{stroke:var(--ef-l1);} .ef-disc.l2{stroke:var(--ef-l2);} .ef-disc.l3{stroke:var(--ef-l3);} .ef-disc.l4{stroke:var(--ef-l4);} .ef-disc.l5{stroke:var(--ef-l5);}
+.ef-disc{stroke-width:2.5;}
+.ef-hit{fill:transparent;}
+.ef-lvl[role="button"],.ef-node[role="button"]{cursor:pointer;}
+.ef-svg .ef-lvl:focus,.ef-svg .ef-node:focus,.ls-root .ef-svg .ef-lvl:focus-visible,.ls-root .ef-svg .ef-node:focus-visible,.bt-app .ef-svg :focus-visible{outline:none;}
+.ef-lvl[role="button"]:hover .ef-bar{fill-opacity:1;}
+.ef-node:focus-visible .ef-disc{stroke:var(--cink);stroke-width:4;}
+.ef-lvl:focus-visible .ef-bar{stroke:var(--cink);stroke-width:4;stroke-dasharray:none;}
+.ef-lvl.is-sel .ef-hit,.ef-lvl:has(.is-sel) .ef-hit{fill:var(--ctint);fill-opacity:.55;}
+.ef-split-up{fill:var(--ef-gold);stroke:#fff;stroke-width:1.5;}
+/* flows */
+.ef-up{stroke:var(--ef-up);stroke-width:3;fill:none;}
+.ef-up-h{fill:var(--ef-up);}
+.ef-heat{stroke:var(--ef-heat);stroke-width:2;fill:none;stroke-linecap:round;opacity:.85;}
+.ef-heat-h{fill:var(--ef-heat);}
+.ef-spark{fill:var(--ef-gold);stroke:#fff;stroke-width:1;}
+.ef-hspark{fill:var(--ef-heat);}
+.ef-sunray{stroke:var(--ef-gold);stroke-width:3;fill:none;stroke-dasharray:6 5;}
+/* sunlight budget */
+.ef-bud-r{fill:var(--ef-heat);fill-opacity:.25;stroke:var(--ef-heat);stroke-width:1.5;}
+.ef-bud-n{fill:var(--ef-l1);fill-opacity:.3;stroke:var(--ef-l1);stroke-width:1.5;}
+.ef-bud-l{font-weight:800;font-size:12.5px;fill:var(--ink);font-variant-numeric:tabular-nums;}
+.ef-bud-t{font-weight:900;font-size:13px;fill:var(--ink);}
+.ef-bud-s{font-weight:700;font-size:11.5px;fill:var(--muted);font-variant-numeric:tabular-nums;}
+.ef-bud-l.heat{fill:var(--ef-heat);} .ef-bud-l.npp{fill:var(--ef-l1);}
+@media (max-width:640px){.ef-svg .ef-bud-l{font-size:13px;}.ef-svg .ef-bud-t{font-size:14px;}.ef-svg .ef-bud-s{font-size:12.5px;}}
+.ef-qfig .ef-bud-l{font-size:14px;}
+/* food web */
+.ef-link{stroke:var(--ef-link);stroke-width:2;fill:none;opacity:.8;}
+.ef-link.is-dead{stroke-dasharray:4 5;opacity:.35;}
+.ef-web-h{fill:var(--ef-link);}
+.ef-node-t{font-weight:800;font-size:13.5px;fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+@media (max-width:640px){.ef-svg .ef-node-t{font-size:14px;}}
+.ef-node.is-removed .ef-art,.ef-node.is-gone .ef-art{opacity:.3;}
+.ef-node.is-removed .ef-disc,.ef-node.is-gone .ef-disc{stroke:var(--ef-bad);stroke-dasharray:5 4;}
+.ef-node.is-up .ef-disc{stroke:var(--ef-good);stroke-width:4;}
+.ef-node.is-down .ef-disc{stroke:var(--ef-warn);stroke-width:4;}
+.ef-node.is-ask .ef-disc{stroke:var(--cink);stroke-width:4;}
+.ef-badge{stroke:var(--white);stroke-width:2;}
+.ef-badge.up{fill:var(--ef-good);} .ef-badge.down{fill:var(--ef-warn);} .ef-badge.gone,.ef-badge.removed{fill:var(--ef-bad);} .ef-badge.ask{fill:var(--cink);}
+.ef-badge-t{fill:#fff;font-weight:900;font-size:11px;}
+:root[data-theme="dark"] .ef-badge-t{fill:#10170F;}
+/* controls */
+.ef-ctl{display:flex;flex-direction:column;gap:10px;}
+.ef-views,.ef-ecos{display:flex;flex-wrap:wrap;gap:8px;}
+.ef-webctl[hidden],.ef-gpp[hidden]{display:none;}
+.ef-why-l{margin:0;padding-left:18px;display:grid;gap:6px;}
+.ef-eff{white-space:nowrap;}
+.ef-eff.up{color:var(--good-text,#1F7A4A);} .ef-eff.down{color:var(--warn-text,#8A5A00);} .ef-eff.gone{color:var(--bad-text,#A0291E);}
+@media (prefers-reduced-motion:reduce){.ef-fx{display:none;}}

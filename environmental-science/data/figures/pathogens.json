@@ -1,0 +1,12 @@
+{
+ "pathogens-vector-cycle": {
+  "file": "figures/pathogens-vector-cycle.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a cycle of three boxes. 1: a mosquito bites an infected person and picks up the pathogen. 2: the mosquito carries it. 3: it bites a healthy person, who gets sick and can infect the next mosquito. Malaria, West Nile virus and Zika virus spread this way. Right: climate bands from the equator outward. The mosquito range today covers the tropics; a dashed outline shows it stretching into subtropical and temperate bands as winters get milder."
+ }
+}

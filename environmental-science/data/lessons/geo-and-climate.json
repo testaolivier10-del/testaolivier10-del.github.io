@@ -1,0 +1,84 @@
+{
+ "topic": "geo-and-climate",
+ "hook": "Drive east from Seattle across the Cascade Mountains and in two hours you go from mossy rainforest that gets over 3 meters of rain a year to sagebrush desert that gets less than 25 centimeters. The two places sit at the same latitude and get the same sunlight. A wall of mountains, and the ocean behind it, make the difference.",
+ "prereq": [
+  {
+   "q": "Which way do the westerlies blow?",
+   "options": [
+    "From the west toward the east",
+    "From the east toward the west",
+    "From the poles toward the equator",
+    "Straight up from the ground"
+   ],
+   "correct": 0,
+   "why": "Winds are named for where they come from; the westerlies blow from the west, between about 30° and 60°.",
+   "review": "global-wind-patterns"
+  },
+  {
+   "q": "How does air temperature change with height in the troposphere?",
+   "options": [
+    "It falls, about 6.5 °C per km",
+    "It rises, about 6.5 °C per km",
+    "It stays the same",
+    "It falls only above 50 km"
+   ],
+   "correct": 0,
+   "why": "The troposphere is heated from the ground, so it cools with height.",
+   "review": "atmosphere"
+  },
+  {
+   "q": "What does rising air do to rainfall?",
+   "options": [
+    "It cools, so clouds and rain form",
+    "It warms, so clouds evaporate",
+    "It has no effect on rainfall",
+    "It always brings snow"
+   ],
+   "correct": 0,
+   "why": "Rising air expands and cools, and its water vapor condenses.",
+   "review": "global-wind-patterns"
+  }
+ ],
+ "figure": {
+  "figure": "geo-and-climate-rain-shadow",
+  "caption": "The rain shadow effect: moist air rises up the windward side, cools and drops its rain; dry air sinks and warms on the leeward side."
+ },
+ "chain": [
+  {
+   "cause": "Prevailing winds push moist ocean air against a mountain range",
+   "effect": "the air rises up the windward slope, expands and cools"
+  },
+  {
+   "cause": "Cool air holds less water vapor",
+   "effect": "clouds form and heavy rain or snow falls on the windward side"
+  },
+  {
+   "cause": "The dried-out air sinks down the leeward side and warms",
+   "effect": "the leeward side is a dry rain shadow, often a desert"
+  },
+  {
+   "cause": "Winds drag the ocean's surface, and Earth's rotation turns the moving water",
+   "effect": "ocean currents carry warm water toward the poles and cold water toward the equator, warming or cooling nearby coasts"
+  }
+ ],
+ "ideas": [
+  "Climate depends on latitude, but also on geography: mountains, nearness to the ocean, ocean currents and elevation.",
+  "<b>Rain shadow</b>: the windward side of a mountain range is wet; the leeward side is dry, because the air lost its moisture on the way up and warms as it sinks.",
+  "Water heats and cools more slowly than land, so coastal climates are milder (cooler summers, warmer winters) than inland climates at the same latitude.",
+  "<b>Ocean currents</b>, driven mainly by prevailing winds and turned by the Coriolis effect and the continents, form large loops called <b>gyres</b>. Warm currents (the Gulf Stream) warm nearby coasts; cold currents (the California Current) cool them.",
+  "Higher elevation means colder air, about 6.5 °C cooler per kilometer of height."
+ ],
+ "misconception": {
+  "wrong": "Places at the same latitude have the same climate.",
+  "right": "Latitude sets the sunlight, but mountains, oceans, ocean currents and elevation change rain and temperature a lot. Seattle and eastern Washington, or London and Calgary, share a latitude but not a climate."
+ },
+ "check": [
+  "env-geo-and-climate-2",
+  "env-geo-and-climate-5",
+  "env-geo-and-climate-7",
+  "env-geo-and-climate-8",
+  "env-geo-and-climate-9",
+  "env-geo-and-climate-10"
+ ],
+ "summary": "Geography reshapes climate. Mountains force moist air up, so the windward side is wet and the leeward side is a dry rain shadow. Oceans heat and cool slowly, giving coasts milder climates than inland areas. Wind-driven ocean currents carry heat: warm currents warm nearby coasts, cold currents cool them. Higher elevations are colder."
+}

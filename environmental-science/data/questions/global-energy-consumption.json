@@ -1,0 +1,842 @@
+{
+ "stimuli": {
+  "global-energy-consumption-s1": {
+   "kind": "quantitative",
+   "title": "World energy use by source, 1980 to 2020",
+   "invented": true,
+   "plot": {
+    "label": "World energy use by source in exajoules, 1980 to 2020, invented data for practice",
+    "kind": "line",
+    "width": 600,
+    "height": 300,
+    "xLabel": "Year",
+    "yLabel": "Energy use (EJ per year)",
+    "y": [
+     0,
+     200
+    ],
+    "series": [
+     {
+      "name": "Oil",
+      "points": [
+       [
+        1980,
+        130
+       ],
+       [
+        1990,
+        140
+       ],
+       [
+        2000,
+        155
+       ],
+       [
+        2010,
+        170
+       ],
+       [
+        2020,
+        180
+       ]
+      ]
+     },
+     {
+      "name": "Coal",
+      "points": [
+       [
+        1980,
+        75
+       ],
+       [
+        1990,
+        90
+       ],
+       [
+        2000,
+        95
+       ],
+       [
+        2010,
+        145
+       ],
+       [
+        2020,
+        150
+       ]
+      ]
+     },
+     {
+      "name": "Natural gas",
+      "points": [
+       [
+        1980,
+        50
+       ],
+       [
+        1990,
+        70
+       ],
+       [
+        2000,
+        90
+       ],
+       [
+        2010,
+        115
+       ],
+       [
+        2020,
+        140
+       ]
+      ]
+     },
+     {
+      "name": "Nuclear",
+      "points": [
+       [
+        1980,
+        8
+       ],
+       [
+        1990,
+        20
+       ],
+       [
+        2000,
+        25
+       ],
+       [
+        2010,
+        27
+       ],
+       [
+        2020,
+        25
+       ]
+      ],
+      "dashed": true
+     },
+     {
+      "name": "Renewables",
+      "points": [
+       [
+        1980,
+        20
+       ],
+       [
+        1990,
+        25
+       ],
+       [
+        2000,
+        30
+       ],
+       [
+        2010,
+        40
+       ],
+       [
+        2020,
+        70
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   },
+   "text": "Renewables include moving water, wind, sunlight and modern biomass. 1 exajoule (EJ) = 1,000 petajoules."
+  },
+  "global-energy-consumption-s2": {
+   "kind": "visual",
+   "title": "Energy use per person and income in four countries",
+   "invented": true,
+   "plot": {
+    "label": "Energy use per person in four invented countries ordered by income per person, invented data for practice",
+    "kind": "bar",
+    "xLabel": "Country, from lowest to highest income per person",
+    "yLabel": "Energy use (GJ per person per year)",
+    "y": [
+     0,
+     250
+    ],
+    "categories": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "values": [
+     15,
+     45,
+     110,
+     225
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-global-energy-consumption-1",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which group of sources supplies most of the world's energy today?",
+   "options": [
+    "Wind and sunlight together with moving water",
+    "Nuclear power and Earth's internal heat combined",
+    "Wood, charcoal, crop waste and other biomass",
+    "Fossil fuels: oil, coal and natural gas"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Oil, coal and natural gas together supply roughly four fifths of the world's energy.",
+    "options": [
+     "Wind, sunlight and moving water are growing fast but supply far less than fossil fuels.",
+     "Nuclear power supplies only a few percent of the world's energy, and Earth's internal heat less.",
+     "Biomass is the main fuel for many poorer households, but a small share worldwide.",
+     "Right: fossil fuels supply about 80 percent."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-2",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "As a country industrializes, how does its energy use per person usually change, and why?",
+   "options": [
+    "It stays the same, as total use is fixed by the size of the population",
+    "It falls, as people move from farms to cities where they share buildings",
+    "It rises, as factories, vehicles and electrified homes use more energy",
+    "It falls, as factories replace the work that people used to do by hand"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Industry, motor vehicles, appliances and air conditioning all need energy, so use per person climbs with development.",
+    "options": [
+     "Use per person changes a great deal with development; population alone does not set it.",
+     "City living can use energy efficiently, but total use per person still rises with development.",
+     "Right: industrial and household demand grows with development.",
+     "Machines that replace hand labor run on fuel or electricity, so use goes up."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-3",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The United States has about 4 percent of the world's people and uses roughly one sixth of the world's energy. What does this show?",
+   "options": [
+    "The United States uses about 4 percent of the world's energy",
+    "Energy use per person in the United States is far above the world average",
+    "The United States uses less energy per person than most countries",
+    "Most of the world's energy is used by the United States"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A share of energy (about 16 percent) roughly four times its share of people (about 4 percent) means use per person about four times the world average.",
+    "options": [
+     "Four percent is the share of people, not the share of energy.",
+     "Right: about 16 percent of the energy for about 4 percent of the people.",
+     "A larger share of energy than of people means more per person, not less.",
+     "One sixth is a large share, but it is not most of the world's energy."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-4",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In many rural areas of developing countries, which fuel do most households burn for cooking and heating?",
+   "options": [
+    "Wood, charcoal, crop waste or dried animal dung",
+    "Natural gas piped to each home from a city network",
+    "Electricity from a national grid of large generating stations",
+    "Heating oil delivered by truck to storage tanks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Biomass is cheap or free to gather. About 2 billion people lack clean cooking fuels, and most of them burn wood, charcoal, crop waste or dung, often over open fires.",
+    "options": [
+     "Right: biomass is the main household fuel where other fuels are costly or unavailable.",
+     "Gas networks are rare in rural areas of developing countries.",
+     "Many rural households are not connected to a grid, or the supply is unreliable.",
+     "Delivered heating oil is expensive and uncommon in these areas."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-5",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country's energy use rose from 1,200 petajoules in 2000 to 1,500 petajoules in 2020. Write the setup for the percent change, then give the answer.",
+   "why": {
+    "correct": "Percent change is (new minus old) divided by old, times 100: $\\frac{1{,}500 - 1{,}200}{1{,}200} \\times 100 = 25\\%$."
+   },
+   "setup": {
+    "answer": "(1500 - 1200) / 1200 * 100",
+    "mustUse": [
+     "1500",
+     "1200"
+    ],
+    "mistakes": [
+     {
+      "expr": "(1500 - 1200) / 1500 * 100",
+      "why": "You divided by the new value. Percent change divides by the old (starting) value, 1,200."
+     },
+     {
+      "expr": "(1500 - 1200) / 1200",
+      "why": "This is the change as a fraction. Multiply by 100 to turn it into a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       1200,
+       1500
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         1500,
+         1200
+        ]
+       },
+       "check": -20,
+       "why": "That is the change from 1,500 back to 1,200. Start from the 2000 value, 1,200."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-6",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country uses 3,000 petajoules of energy a year and has 25 million people. What is its energy use per person, in gigajoules per person? (1 petajoule = 1,000,000 gigajoules.)",
+   "why": {
+    "correct": "Convert, then divide by the population: $\\frac{3{,}000 \\times 1{,}000{,}000\\,\\text{GJ}}{25{,}000{,}000\\,\\text{people}} = 120\\,\\text{GJ per person}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        3000,
+        1000000
+       ]
+      },
+      25000000
+     ]
+    },
+    "unit": "GJ/person",
+    "units": [
+     "GJ per person",
+     "GJ"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        3000,
+        25000000
+       ]
+      },
+      "why": "You divided petajoules by people without converting. Change 3,000 petajoules to gigajoules first (times 1,000,000)."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          3000,
+          1000000
+         ]
+        },
+        25
+       ]
+      },
+      "why": "You divided by 25 instead of 25 million. Write the scale word as a number: 25 million = 25,000,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-7",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "World energy use keeps rising even in years when energy use per person in rich countries falls. Which is the best explanation?",
+   "options": [
+    "Developing countries use more energy per person than rich countries do",
+    "Population and use per person are both rising in developing countries",
+    "Rich countries are using up their oil, so other countries burn more",
+    "Energy use per person is the same in each country, so totals track population"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Total use = population times use per person. Both factors are growing in developing countries, which outweighs small declines elsewhere.",
+    "options": [
+     "Use per person is still much lower in developing countries.",
+     "Right: growth in both population and per-person use in developing countries drives the total.",
+     "Oil use in one country does not force other countries to burn more.",
+     "Use per person differs widely between countries."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-8",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which fuel supplied the most energy in every year shown?",
+   "stimulus": "global-energy-consumption-s1",
+   "options": [
+    "Oil",
+    "Coal",
+    "Natural gas",
+    "Renewables"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The oil line sits above the others at every point, from 130 to 180 exajoules.",
+    "options": [
+     "Right: oil is highest in each year.",
+     "Coal is second for most of the period.",
+     "Natural gas grows steadily but stays below oil.",
+     "Renewables are the smallest in each year shown."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-9",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in natural gas use from 1980 to 2020, then give the answer.",
+   "stimulus": "global-energy-consumption-s1",
+   "why": {
+    "correct": "$\\frac{140 - 50}{50} \\times 100 = 180\\%$. Natural gas use nearly tripled."
+   },
+   "setup": {
+    "answer": "(140 - 50) / 50 * 100",
+    "mustUse": [
+     "140",
+     "50"
+    ],
+    "mistakes": [
+     {
+      "expr": "(140 - 50) / 140 * 100",
+      "why": "Divide by the 1980 value (50), the starting point, not the 2020 value."
+     },
+     {
+      "expr": "140 / 50 * 100",
+      "why": "This compares 2020 with 1980 as a ratio (280%). Subtract the old value first to get the change."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       50,
+       140
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 280,
+       "why": "You found 140 as a percent of 50. Percent change is (new - old) / old × 100."
+      },
+      {
+       "value": 1.8,
+       "why": "You left the change as a fraction. Multiply by 100 for a percent."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-10",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Between 2000 and 2020, which source grew the most in percent terms?",
+   "stimulus": "global-energy-consumption-s1",
+   "options": [
+    "Coal",
+    "Natural gas",
+    "Renewables",
+    "Oil"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Renewables went from 30 to 70 exajoules: $\\frac{70 - 30}{30} \\times 100 \\approx 133\\%$. Coal grew $\\frac{150 - 95}{95} \\times 100 \\approx 58\\%$, gas $\\frac{140 - 90}{90} \\times 100 \\approx 56\\%$, oil $\\frac{180 - 155}{155} \\times 100 \\approx 16\\%$.",
+    "options": [
+     "Coal grew about 58 percent: a large amount, but a smaller percent than renewables.",
+     "Natural gas grew about 56 percent.",
+     "Right: about 133 percent, far more than any fossil fuel.",
+     "Oil grew about 16 percent."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-11",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the total energy in 2020 came from the three fossil fuels? Round to the nearest whole percent.",
+   "stimulus": "global-energy-consumption-s1",
+   "why": {
+    "correct": "Fossil fuels: $180 + 150 + 140 = 470$ exajoules. Total: $470 + 25 + 70 = 565$ exajoules. Share: $\\frac{470}{565} \\times 100 \\approx 83\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        180,
+        150,
+        140
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        180,
+        150,
+        140,
+        25,
+        70
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "tol": 0.6,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          180,
+          150,
+          140
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          180,
+          150,
+          140,
+          70
+         ]
+        }
+       ]
+      },
+      "why": "You left nuclear out of the total. The total is every source: 565 exajoules."
+     },
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        180,
+        {
+         "fn": "add",
+         "args": [
+          180,
+          150,
+          140,
+          25,
+          70
+         ]
+        }
+       ]
+      },
+      "why": "That is oil alone. Add coal and natural gas too: all three are fossil fuels."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-12",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "About how many times as much energy per person does country D use as country A?",
+   "stimulus": "global-energy-consumption-s2",
+   "options": [
+    "About 15 times",
+    "About 3 times",
+    "About 5 times",
+    "About 50 times"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{225}{15} = 15$: country D uses about 15 times as much energy per person.",
+    "options": [
+     "Right: 225 divided by 15 is 15.",
+     "Three times would be about 45 gigajoules per person.",
+     "Five times would be about 75 gigajoules per person.",
+     "Fifty times would be about 750 gigajoules per person."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-13",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement best describes the relationship shown in the graph?",
+   "stimulus": "global-energy-consumption-s2",
+   "options": [
+    "Countries with more people use more energy per person",
+    "Energy use per person falls as income per person rises",
+    "Energy use per person is about the same in the four countries",
+    "Countries with higher income per person use more energy per person"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The countries are ordered by income per person, and the bars rise from A to D.",
+    "options": [
+     "The graph shows energy per person and income, not population size.",
+     "The bars rise, not fall, as income rises.",
+     "The bars range from 15 to 225 gigajoules per person.",
+     "Right: energy use per person rises with income per person."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-14",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Country A's income per person is expected to rise quickly. Based on the graph, what is the most likely effect on world energy use?",
+   "stimulus": "global-energy-consumption-s2",
+   "options": [
+    "It will not change, as country A's use is too small to count",
+    "It will fall, as country A will switch from biomass to cleaner fuels",
+    "It will rise, as country A's use per person climbs toward that of B and C",
+    "It will fall, as richer countries use energy more carefully than poorer ones"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The graph links higher income with higher use per person, so a richer country A will use more energy per person.",
+    "options": [
+     "A large, growing population with rising use per person adds a lot to the world total.",
+     "Switching fuels changes which energy is used, not how much is used.",
+     "Right: development pushes use per person up.",
+     "The graph shows richer countries using more per person, not less."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-15",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain why country D uses so much more energy per person than country A.",
+   "stimulus": "global-energy-consumption-s2",
+   "why": {
+    "correct": "A complete answer names the cause (more industry, vehicles and appliances), the link (each needs energy) and the result (higher use per person)."
+   },
+   "specific": {
+    "frame": "Because ___, ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "country D has more industry, vehicles and appliances",
+       "country D has a larger population",
+       "country D burns more wood than country A"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The graph shows energy per person; population size does not raise use per person.",
+       "2": "Wood is a small part of energy use in richer countries."
+      }
+     },
+     "link": {
+      "label": "Link",
+      "options": [
+       "each of these needs fuel or electricity every day",
+       "wood releases more energy than oil",
+       "people in country A work fewer hours"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Wood releases less energy per kilogram than oil, and it is not the main fuel in D.",
+       "2": "Hours of work are not shown and do not explain the gap."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "energy use per person is higher in country D",
+       "energy use per person is lower in country D",
+       "energy use per person is equal in both"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The graph shows D far above A.",
+       "2": "The graph shows 225 against 15 gigajoules per person."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "country D",
+      "per person"
+     ]
+    },
+    "model": "Because country D has more industry, cars and household appliances, each of which runs on fuel or electricity, energy use per person is higher in country D than in country A."
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-16",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A developing country plans to meet its fast-growing energy demand. Which choice would most limit its future carbon dioxide emissions while still adding supply?",
+   "options": [
+    "Building wind and solar capacity alongside its new grid",
+    "Building new coal-burning stations close to its large coal mines",
+    "Expanding oil-fired generators in each of its major cities",
+    "Supplying more firewood from forests cleared to make new farmland"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Wind and sunlight release no carbon dioxide while generating, so they add supply without adding emissions.",
+    "options": [
+     "Right: renewable supply grows without carbon dioxide from burning fuel.",
+     "Coal releases the most carbon dioxide per unit of energy of the fossil fuels.",
+     "Burning oil releases carbon dioxide.",
+     "Clearing forest for wood removes a carbon sink and releases carbon dioxide when the wood burns."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-17",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student predicts that world coal use will fall because renewable energy is growing fast. Data show coal use rising from 95 to 150 exajoules over 20 years while renewables grew from 30 to 70. What do the data show about the prediction?",
+   "options": [
+    "They support it: renewable growth was larger than coal growth",
+    "They support it: coal fell as renewables rose",
+    "They do not test it, as coal and renewables are measured in different units",
+    "They do not support it: coal use rose despite renewable growth"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Coal rose by 55 exajoules while renewables rose by 40. Demand grew so fast that renewables added supply alongside coal rather than replacing it.",
+    "options": [
+     "Coal grew by 55 exajoules, more than the 40 added by renewables.",
+     "Coal rose from 95 to 150; it did not fall.",
+     "Both are measured in exajoules, so they can be compared.",
+     "Right: coal increased, so the prediction failed over this period."
+    ]
+   }
+  },
+  {
+   "id": "env-global-energy-consumption-18",
+   "unit": "unit-6",
+   "topic": "global-energy-consumption",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do people in cold, rich countries tend to use more energy per person than people in warm, poor countries?",
+   "options": [
+    "Warm countries have no access to any fossil fuels",
+    "People in warm countries need more food energy each day",
+    "They heat homes in winter and run more machines and vehicles",
+    "Cold air makes fuels release less energy when they burn"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Climate (heating needs) and wealth (cars, appliances, industry) both raise use per person.",
+    "options": [
+     "Many warm countries produce and use fossil fuels.",
+     "Food energy is a tiny part of energy use and does not explain the gap.",
+     "Right: heating plus more machines and vehicles.",
+     "A fuel releases about the same energy when it burns, whatever the weather."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,571 @@
+{
+ "stimuli": {
+  "island-biogeo-s1": {
+   "kind": "quantitative",
+   "title": "Bird species on six islands",
+   "invented": true,
+   "table": {
+    "caption": "Area, distance from the mainland and number of breeding bird species on six islands in one sea (invented data for practice)",
+    "cols": [
+     "Island",
+     "Area (km²)",
+     "Distance from mainland (km)",
+     "Bird species"
+    ],
+    "rows": [
+     [
+      "1",
+      "1,000",
+      "20",
+      "60"
+     ],
+     [
+      "2",
+      "1,000",
+      "300",
+      "30"
+     ],
+     [
+      "3",
+      "100",
+      "20",
+      "28"
+     ],
+     [
+      "4",
+      "100",
+      "300",
+      "12"
+     ],
+     [
+      "5",
+      "10",
+      "20",
+      "13"
+     ],
+     [
+      "6",
+      "10",
+      "300",
+      "5"
+     ]
+    ]
+   }
+  },
+  "island-biogeo-s2": {
+   "kind": "visual",
+   "title": "Four islands off one coast",
+   "invented": true,
+   "figure": "island-biogeo-islands"
+  }
+ },
+ "items": [
+  {
+   "id": "env-island-biogeo-1",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which two islands best show the effect of distance from the mainland on its own?",
+   "stimulus": "island-biogeo-s1",
+   "options": [
+    "Islands 1 and 2",
+    "Islands 1 and 3",
+    "Islands 2 and 3",
+    "Islands 1 and 6"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To see the effect of one variable, compare islands that match on the other. Islands 1 and 2 (or 3 and 4, or 5 and 6) differ only in distance.",
+    "options": [
+     "Right: both are 1,000 km², so only distance differs, and the near island has twice as many species.",
+     "Islands 1 and 3 are both 20 km away; they differ in area, not distance.",
+     "Islands 2 and 3 differ in both area and distance, so the effect of distance cannot be separated.",
+     "Islands 1 and 6 differ in both area and distance."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-2",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the three islands 20 km from the mainland, how does the number of bird species change as area increases?",
+   "stimulus": "island-biogeo-s1",
+   "options": [
+    "It increases tenfold each time area grows tenfold",
+    "It roughly doubles each time area grows tenfold",
+    "It stays about the same",
+    "It decreases as area increases"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Larger islands hold more species, but richness rises much more slowly than area.",
+    "options": [
+     "Species went from 13 to 28 to 60, about double each step, not ten times.",
+     "Right: 10 km² has 13 species, 100 km² has 28, 1,000 km² has 60, each about twice the last.",
+     "It rises from 13 to 60.",
+     "Larger islands have more species in this table."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-3",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in the number of bird species from island 4 to island 2, both 300 km from the mainland, then give the answer.",
+   "stimulus": "island-biogeo-s1",
+   "why": {
+    "correct": "Start at island 4 (12 species) and go to island 2 (30 species): $\\frac{30 - 12}{12} \\times 100 = 150\\%$. A tenfold larger island at the same distance holds 150% more species."
+   },
+   "setup": {
+    "answer": "(30 - 12) / 12 * 100",
+    "mustUse": [
+     "30",
+     "12"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       12,
+       30
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60,
+       "why": "That is the change divided by 30. Divide by the starting value, 12."
+      },
+      {
+       "value": 18,
+       "why": "That is the change in species. Divide by 12 and multiply by 100 for the percent change."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(30 - 12) / 30 * 100",
+      "why": "Divide by the starting value, island 4’s 12 species, not by 30."
+     },
+     {
+      "expr": "30 - 12 / 12 * 100",
+      "why": "Without brackets the division happens first. Write (30 - 12) / 12 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-4",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A seventh island in the same sea is 100 km² and 150 km from the mainland. Which number of bird species is the best prediction?",
+   "stimulus": "island-biogeo-s1",
+   "options": [
+    "About 60",
+    "About 5",
+    "About 20",
+    "About 40"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Match the area first (islands 3 and 4), then place the new island between them by distance.",
+    "options": [
+     "Sixty is the count for a large, near island; this one is ten times smaller.",
+     "Five is the count for a small, far island; this one is ten times larger.",
+     "Right: at 100 km² it should fall between island 3 (28, near) and island 4 (12, far).",
+     "Forty is more than the 100 km² island right next to the mainland has."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-5",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best accounts for island 2 having half as many bird species as island 1?",
+   "stimulus": "island-biogeo-s1",
+   "options": [
+    "Island 2 has fewer habitats, because it is a smaller island",
+    "Island 2 has more predators, because it lies farther out",
+    "Birds on island 2 die out faster, because far islands are colder",
+    "Fewer birds reach island 2, because it is farther from the mainland"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Distance controls how often new species arrive; area controls how often species die out.",
+    "options": [
+     "Both islands are 1,000 km².",
+     "Nothing in the data suggests more predators, and distance does not cause them.",
+     "Distance from the mainland does not make an island colder; colonists arriving less often is the reason.",
+     "Right: the two islands are the same size, so the difference comes from distance: fewer colonists arrive at a far island."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-6",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Species reach the large near island and the small near island equally easily, yet the small one has fewer species. Which explanation fits the island model?",
+   "stimulus": "island-biogeo-s2",
+   "options": [
+    "Smaller populations and fewer habitats, so more species die out",
+    "Fewer colonists can find a small island in the sea",
+    "Small islands are too young to have species yet",
+    "Small islands get less rain than the large islands near them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the island model, size sets the extinction side and distance sets the arrival side.",
+    "options": [
+     "Right: size controls how often species are lost; small populations are easily wiped out.",
+     "Both near islands receive many colonists in the diagram, shown by the solid arrows.",
+     "Island age is not shown and is not part of this explanation.",
+     "Rain is not shown, and size works through habitats and population size."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-7",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What do the dashed arrows in the diagram represent?",
+   "stimulus": "island-biogeo-s2",
+   "options": [
+    "Species leaving the islands for the mainland",
+    "Few colonists reaching the far islands",
+    "Storms that wash species off the far islands",
+    "Species that died out on the far islands"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Solid arrows show many arrivals at near islands; dashed arrows show few arrivals at far islands.",
+    "options": [
+     "The arrows point from the mainland to the islands.",
+     "Right: the label says few arrive, and the arrows run to the far islands.",
+     "The arrows show arrivals of colonists, not storms.",
+     "Die-outs are not drawn as arrows; arrivals are."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-8",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which feature of the small, far island explains why it has the fewest species of the four?",
+   "stimulus": "island-biogeo-s2",
+   "options": [
+    "Its distance alone, which keeps most colonists away",
+    "Its size alone, which limits the habitats it has",
+    "Both: few colonists arrive and more species die out",
+    "Neither; it has fewer species just by chance"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Small and far is the worst combination for species richness.",
+    "options": [
+     "Distance explains part of it; its small size also raises the rate at which species die out.",
+     "Size explains part of it; distance also lowers the number of arrivals.",
+     "Right: being far lowers arrivals and being small raises losses, so it is lowest on both counts.",
+     "The pattern in all four islands shows size and distance both matter."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-9",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest is cleared for farms, leaving patches of 5, 50 and 500 hectares far apart from each other. Twenty years later, which patch most likely keeps the most of its original species?",
+   "options": [
+    "The 5-hectare patch",
+    "The 50-hectare patch",
+    "They keep the same share, because the patches are equally isolated",
+    "The 500-hectare patch"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Habitat fragments act like islands: larger ones keep more species.",
+    "options": [
+     "The smallest patch has the smallest populations and is most likely to lose species.",
+     "It is larger than the smallest patch but ten times smaller than the largest.",
+     "Isolation is similar, but area differs, and area affects how many species are lost.",
+     "Right: larger fragments hold larger populations and more habitats, so fewer species are lost."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-10",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Build the chain that explains why a small forest fragment surrounded by farmland loses species over time.",
+   "why": {
+    "correct": "Two causes: small area raises losses, isolation lowers arrivals."
+   },
+   "specific": {
+    "frame": "Because the fragment is small, ___. Because farmland surrounds it, ___. So ___.",
+    "slots": {
+     "cause": {
+      "label": "Effect of small size",
+      "options": [
+       "its populations are small and easily wiped out",
+       "it receives more sunlight than a large forest",
+       "its trees grow faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sunlight is not how size changes the number of species.",
+       "2": "Tree growth rate does not explain the loss of species."
+      }
+     },
+     "effect": {
+      "label": "Effect of isolation",
+      "options": [
+       "few individuals of lost species can arrive to replace them",
+       "more species arrive from the farms",
+       "predators cannot enter the fragment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Most forest species cannot live on or cross farmland, so fewer arrive, not more.",
+       "2": "Predators can still enter; isolation mostly blocks recolonization."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "the number of species in the fragment decreases",
+       "the number of species in the fragment increases",
+       "the species become more genetically diverse"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More losses and fewer arrivals lower the count.",
+       "2": "Small, isolated populations lose genetic diversity rather than gain it."
+      }
+     }
+    },
+    "model": "Because the fragment is small, its populations are small and easily wiped out. Because farmland surrounds it, few individuals of lost species can arrive to replace them. So the number of species in the fragment decreases."
+   }
+  },
+  {
+   "id": "env-island-biogeo-11",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which two features of an island does island biogeography use to predict how many species it holds?",
+   "options": [
+    "Its area and its distance from the mainland",
+    "Its age and its average yearly temperature",
+    "Its rainfall and its soil type",
+    "Its height above sea level and its shape"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Area and distance (isolation) are the two variables.",
+    "options": [
+     "Right: size and isolation are the two variables of the model.",
+     "Climate and age matter in nature, but the model is built on area and distance.",
+     "These shape habitats, but the model’s two variables are area and distance.",
+     "Height and shape are not the model’s variables."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-12",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these is the best example of a habitat island?",
+   "options": [
+    "A large ocean, for the whales that swim across it",
+    "A lake surrounded by land, for its fish",
+    "A continent, for the birds that migrate over it",
+    "A river delta, for the sediment carried into it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A habitat island is a patch of suitable habitat surrounded by habitat the species cannot use or cross.",
+    "options": [
+     "Whales move freely through the ocean; it is not an isolated patch for them.",
+     "Right: fish cannot cross land, so the lake works like an island for them.",
+     "A continent is not a small isolated patch for birds that fly across it.",
+     "Sediment is not a living population, so the idea does not apply."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-13",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A road and new farms shrink a protected woodland from 500 hectares to 125 hectares. Write the setup for the percent change in its area, then give the answer.",
+   "why": {
+    "correct": "Start at 500 ha: $\\frac{125 - 500}{500} \\times 100 = -75\\%$. The woodland lost three quarters of its area, and the island model predicts it will lose species too."
+   },
+   "setup": {
+    "answer": "(125 - 500) / 500 * 100",
+    "mustUse": [
+     "125",
+     "500"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       500,
+       125
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 300,
+       "why": "That divides by the new area. Divide the change by the old area, 500 ha."
+      },
+      {
+       "value": -375,
+       "why": "That is the change in hectares. Divide by 500 and multiply by 100 for the percent change."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(500 - 125) / 125 * 100",
+      "why": "Start from the old area: (new - old) / old, so (125 - 500) / 500 × 100."
+     },
+     {
+      "expr": "(125 - 500) / 125 * 100",
+      "why": "Divide by the old area, 500 ha, not the new one."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-14",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Many island bird species eat only a few kinds of food found on their island. Goats and rats brought by sailors eat a wide range of foods. Which outcome is most likely?",
+   "options": [
+    "The new animals die out, because island birds outcompete them",
+    "Nothing changes, because the new animals eat other kinds of food",
+    "The island birds decline as newcomers take their few foods",
+    "The island birds spread to the mainland to find new food"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Island species are often adapted to a narrow set of resources, which makes them vulnerable to newcomers that can use many.",
+    "options": [
+     "Animals that can eat many foods usually do well where food is limited.",
+     "Goats and rats eat a wide range of foods, which overlaps with what island species need.",
+     "Right: species with a narrow diet have no other food to switch to when newcomers compete for it.",
+     "Island birds rarely leave; many have no way to cross the sea."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-15",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "multi",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these act like islands for the species that live there? Select all that apply.",
+   "options": [
+    "A mountaintop meadow surrounded by desert, for meadow plants",
+    "A city park surrounded by streets, for forest beetles",
+    "A wide grassland, for the grazing animals that roam across it",
+    "The open ocean, for the fish that swim across it"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A habitat island is suitable habitat surrounded by habitat the species cannot use.",
+    "options": [
+     "Right: the plants cannot live in the desert around it.",
+     "Right: beetles that need trees cannot live on pavement.",
+     "Grazers move freely across the grassland, so it is not an isolated patch for them.",
+     "The ocean is continuous habitat for open-ocean fish."
+    ]
+   }
+  },
+  {
+   "id": "env-island-biogeo-16",
+   "unit": "unit-2",
+   "topic": "island-biogeo",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A wildlife agency can protect forest along a stream that would link two forest fragments, letting animals move between them. How would this most likely help the species in the smaller fragment?",
+   "options": [
+    "It makes the smaller fragment larger than the bigger one",
+    "It keeps diseases from reaching the smaller fragment",
+    "It keeps animals from leaving the smaller fragment",
+    "Animals can move in to replace populations that die out"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Reducing isolation raises the rate at which species arrive, the same way a closer island gets more colonists.",
+    "options": [
+     "A strip along a stream adds little area; the main benefit is the link.",
+     "Linking patches does not keep diseases out; it can even let them spread.",
+     "A link lets animals move both ways; it does not trap them.",
+     "Right: linking the fragments makes the small one less isolated, so lost species can recolonize."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "succession-stages": {
+  "file": "figures/succession-stages.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two rows of stages. Primary succession: bare rock with no soil, lichens and mosses as pioneer species, grasses on thin soil, shrubs, fast-growing trees, mature forest (climax community); it starts after lava cools or a glacier retreats and is slow. Secondary succession: soil remains after a fire or farm, grasses and weeds as pioneer species, shrubs, fast-growing trees, mature forest; it is faster because soil and seeds remain."
+ }
+}

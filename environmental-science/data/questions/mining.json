@@ -1,0 +1,630 @@
+{
+ "stimuli": {
+  "mining-s1": {
+   "kind": "quantitative",
+   "title": "A stream above and below an old mine",
+   "invented": true,
+   "table": {
+    "caption": "Water samples from one stream, upstream and downstream of a mine that closed 40 years ago (invented data for practice)",
+    "cols": [
+     "Measurement",
+     "Upstream of the mine",
+     "Downstream of the mine"
+    ],
+    "rows": [
+     [
+      "pH",
+      "7.0",
+      "4.0"
+     ],
+     [
+      "Dissolved iron (mg/L)",
+      "0.1",
+      "12"
+     ],
+     [
+      "Dissolved zinc (mg/L)",
+      "0.01",
+      "1.5"
+     ],
+     [
+      "Kinds of insects found in 1 m² of stream bottom",
+      "22",
+      "3"
+     ]
+    ]
+   }
+  },
+  "mining-s2": {
+   "kind": "visual",
+   "title": "Surface and subsurface mining",
+   "figure": "mining-cross-section"
+  }
+ },
+ "items": [
+  {
+   "id": "env-mining-1",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is overburden?",
+   "options": [
+    "The soil and rock removed from on top of a deposit",
+    "The valuable mineral that is left after the ore is processed",
+    "The water that is pumped out of a deep mine shaft",
+    "The machine that lifts ore to the top of a mine shaft"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Overburden lies above the ore and is stripped away in surface mining.",
+    "options": [
+     "Right: the material above the ore.",
+     "The waste left after processing is tailings, not the mineral itself.",
+     "Pumped water is mine water, not overburden.",
+     "The structure over a shaft is a headframe."
+    ]
+   }
+  },
+  {
+   "id": "env-mining-2",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of surface mining over subsurface mining?",
+   "options": [
+    "It is cheaper and safer for miners",
+    "It disturbs a smaller area of land",
+    "It produces less waste rock per ton of ore",
+    "It leaves the habitat above the deposit intact"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Surface mines avoid the cave-ins, explosions and poor air of deep mines and use big, efficient machines.",
+    "options": [
+     "Right: lower cost and less danger to miners.",
+     "Surface mining disturbs much more land.",
+     "Removing overburden produces more waste.",
+     "Surface mining removes the habitat above the deposit."
+    ]
+   }
+  },
+  {
+   "id": "env-mining-3",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does acid mine drainage form?",
+   "options": [
+    "Sulfide minerals in exposed rock react with air and water",
+    "Acidic rainwater falls on the mine and collects in the pit as acid",
+    "Miners pour acid into the mine to dissolve the ore and leave it there",
+    "Coal burned at the mine releases acid that drips into nearby streams"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mining exposes sulfide minerals such as pyrite to oxygen and water, which form sulfuric acid.",
+    "options": [
+     "Right: sulfides plus air and water make sulfuric acid.",
+     "Rain is only slightly acidic; acid mine drainage comes from the exposed rock itself.",
+     "Acid drainage forms naturally from the rock; it is not poured in.",
+     "Coal is not burned at the mine to make drainage."
+    ]
+   }
+  },
+  {
+   "id": "env-mining-4",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In mountaintop removal, the top of a mountain is blasted away to reach coal, and the rock is dumped into nearby valleys. Which is a direct effect?",
+   "options": [
+    "Valley streams are buried and the water below gets sediment and metals",
+    "The mountain gains height as the rock is piled back on top of it",
+    "More forest grows in the valleys because the rock adds nutrients",
+    "The coal seam is protected because the rock now covers it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Valley fills bury headwater streams, and water flowing through the rubble picks up sediment and dissolved minerals.",
+    "options": [
+     "Right: buried streams and polluted water downstream.",
+     "The mountain is lowered, not raised.",
+     "Rubble buries the forest and soil.",
+     "The coal is mined; the rock is removed to reach it."
+    ]
+   }
+  },
+  {
+   "id": "env-mining-5",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "As the richest copper ores are used up, mines turn to ores with less copper per ton of rock. Which effect is most likely?",
+   "options": [
+    "More rock is moved and more waste is made for each kilogram of copper",
+    "Less energy is needed per kilogram of copper because the ore is softer",
+    "Less land is disturbed because the poorer ore lies closer together",
+    "Tailings piles shrink because there is less copper to remove"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lower-grade ore means more rock to dig, crush and process per kilogram of metal, so more energy, waste and land.",
+    "options": [
+     "Right: lower grade means more rock and waste.",
+     "More rock to crush means more energy, not less.",
+     "More rock means more land disturbed.",
+     "More waste rock means larger tailings piles."
+    ]
+   }
+  },
+  {
+   "id": "env-mining-6",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In the United States, a federal law requires coal mine operators to post money before mining that is used to restore the land if they do not. Why require the money in advance?",
+   "options": [
+    "So reclamation is paid for if the company goes out of business",
+    "So the mine can dig deeper without a permit later on",
+    "So the price of coal falls for people who use electricity",
+    "So the miners are paid if the mine closes early"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A bond in advance means taxpayers are not left with the cost of an abandoned mine.",
+    "options": [
+     "Right: the money is there even if the company is gone.",
+     "The money is for reclamation, not for permits to dig deeper.",
+     "The aim is to restore land, not change coal prices.",
+     "The money is for land, not wages."
+    ]
+   }
+  },
+  {
+   "id": "env-mining-7",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A copper ore contains 0.6% copper by mass. How many kilograms of ore must be mined to get 1,500 kg of copper?",
+   "why": {
+    "correct": "Copper is 0.6% of the ore, so ore = copper ÷ 0.006: $\\frac{1{,}500\\,\\text{kg}}{0.6 / 100} = 250{,}000$ kg of ore."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      1500,
+      {
+       "fn": "div",
+       "args": [
+        0.6,
+        100
+       ]
+      }
+     ]
+    },
+    "unit": "kg",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        0.6,
+        1500
+       ]
+      },
+      "why": "That is 0.6% of 1,500. Here 1,500 kg is the copper, which is 0.6% of the ore: divide 1,500 by 0.006."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1500,
+        0.06
+       ]
+      },
+      "why": "Change 0.6% to a decimal correctly: 0.6 / 100 = 0.006, not 0.06."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-mining-8",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A surface coal mine is closing. Describe one reclamation step and explain how it helps the land recover.",
+   "why": {
+    "correct": "A specific step with how it works: replacing the stored topsoil and planting native grasses gives roots and soil life back, which holds the soil and lets plants and animals return."
+   },
+   "specific": {
+    "frame": "The company should ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Step",
+      "options": [
+       "replace the saved topsoil and plant native grasses and trees",
+       "leave the pit open to fill with rainwater",
+       "pile the overburden higher in one place"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An open pit can fill with acidic water and is not reclamation.",
+       "2": "Piling waste higher leaves bare, eroding slopes."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "puts soil, roots and plant cover back on the bare ground",
+       "removes the remaining coal from the seam",
+       "raises the pH of rain"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Reclamation restores land; it does not mine more.",
+       "2": "Planting does not change the pH of rain."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "erosion falls and plants and animals can return",
+       "erosion rises and sediment reaches streams",
+       "the mine can reopen sooner"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Plant cover reduces erosion.",
+       "2": "Reclamation is not for reopening the mine."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "topsoil",
+      "plant",
+      "reclam",
+      "erosion"
+     ]
+    },
+    "model": "The company should replace the saved topsoil and plant native grasses and trees, which puts soil, roots and plant cover back on the bare ground. As a result erosion falls and plants and animals can return."
+   }
+  },
+  {
+   "id": "env-mining-9",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which comparison does the table show?",
+   "options": [
+    "The downstream water is more acidic and has more iron and zinc",
+    "The downstream water is less acidic and has less dissolved iron and zinc",
+    "The two samples have the same pH but different numbers of insects",
+    "The upstream water is more acidic and has more kinds of insects"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Downstream pH is 4.0 (more acidic) and iron and zinc are far higher.",
+    "options": [
+     "Right: lower pH and higher metals downstream.",
+     "Downstream has a lower pH, which is more acidic, and more metal.",
+     "The pH values differ, 7.0 against 4.0.",
+     "Upstream is neutral (pH 7.0), not more acidic."
+    ]
+   },
+   "stimulus": "mining-s1"
+  },
+  {
+   "id": "env-mining-10",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times more acidic (higher in hydrogen ion concentration) is the downstream water than the upstream water?",
+   "why": {
+    "correct": "Each pH unit is a factor of 10. The difference is $7.0 - 4.0 = 3$ units, so $10^{3} = 1{,}000$ times more acidic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "pow",
+     "args": [
+      10,
+      {
+       "fn": "sub",
+       "args": [
+        7,
+        4
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "3 is the difference in pH units. Each unit is a factor of 10: 10 × 10 × 10."
+     },
+     {
+      "value": 30,
+      "why": "pH units multiply, not add: three units is 10 × 10 × 10 = 1,000, not 3 × 10."
+     }
+    ]
+   },
+   "stimulus": "mining-s1"
+  },
+  {
+   "id": "env-mining-11",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in the number of kinds of insects from upstream to downstream, then give the answer.",
+   "why": {
+    "correct": "$\\frac{3 - 22}{22} \\times 100 \\approx -86.4\\%$: about 86% fewer kinds of insects."
+   },
+   "setup": {
+    "answer": "(3 - 22) / 22 * 100",
+    "mustUse": [
+     "3",
+     "22"
+    ],
+    "mistakes": [
+     {
+      "expr": "(3 - 22) / 3 * 100",
+      "why": "Divide by the upstream value, 22, which is the starting point."
+     },
+     {
+      "expr": "(22 - 3) / 22 * 100",
+      "why": "Subtract upstream from downstream: (3 - 22). The number fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       22,
+       3
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         3,
+         22
+        ]
+       },
+       "why": "That is the change from downstream back up to upstream. Start from upstream, 22."
+      },
+      {
+       "value": -19,
+       "why": "-19 is the change in the number of kinds. Divide by 22 and multiply by 100."
+      }
+     ]
+    }
+   },
+   "stimulus": "mining-s1"
+  },
+  {
+   "id": "env-mining-12",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Using the data, explain why fewer kinds of insects live downstream of the mine.",
+   "why": {
+    "correct": "A full chain from the data: acid drainage lowers the pH to 4.0 and carries dissolved iron and zinc; many insects cannot tolerate acid water or metals; so only 3 kinds survive instead of 22."
+   },
+   "specific": {
+    "frame": "Water leaving the mine ___ and ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "pH",
+      "options": [
+       "is acidic (pH 4.0 instead of 7.0)",
+       "is basic (pH 7.0 instead of 4.0)",
+       "has the same pH as upstream"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Downstream is pH 4.0, the acidic sample.",
+       "2": "The pH values differ."
+      }
+     },
+     "effect": {
+      "label": "Metals",
+      "options": [
+       "carries much more dissolved iron and zinc",
+       "carries less dissolved iron and zinc",
+       "carries no metals"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Iron rises from 0.1 to 12 mg/L downstream.",
+       "2": "Downstream water has 12 mg/L of iron and 1.5 mg/L of zinc."
+      }
+     },
+     "mechanism": {
+      "label": "Effect on insects",
+      "options": [
+       "many kinds of insects cannot survive, and the number of kinds falls from 22 to 3",
+       "more kinds of insects survive, so the number rises from 3 to 22",
+       "the insects are unaffected"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Downstream has 3 kinds, upstream 22.",
+       "2": "The count drops from 22 to 3."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "insect",
+      "pH",
+      "acid",
+      "metal",
+      "iron",
+      "zinc"
+     ]
+    },
+    "model": "Water leaving the mine is acidic (pH 4.0 instead of 7.0) and carries much more dissolved iron and zinc, so many kinds of insects cannot survive, and as a result the number of kinds falls from 22 to 3."
+   },
+   "stimulus": "mining-s1"
+  },
+  {
+   "id": "env-mining-13",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the diagram, where is the overburden?",
+   "options": [
+    "In a pile beside the open pit",
+    "At the bottom of the vertical shaft",
+    "In the tunnel that leads to the deep ore",
+    "Under the deep ore deposit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The overburden pile sits next to the open pit, where the material above the shallow ore was dumped.",
+    "options": [
+     "Right: piled beside the pit.",
+     "The shaft leads to deep ore; no overburden is shown there.",
+     "Tunnels lead to ore, not to overburden.",
+     "Overburden lies above ore, not below it."
+    ]
+   },
+   "stimulus": "mining-s2"
+  },
+  {
+   "id": "env-mining-14",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, how does acid drainage get from the mine to the water?",
+   "options": [
+    "It flows from the tailings down through the ground toward the water",
+    "It falls as rain directly into the open pit from the sky above",
+    "It is pumped up the shaft of the subsurface mine by the miners",
+    "It seeps out of the deep ore through the tunnels into the air"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The arrow runs from the tailings pile down to the label \"Acid drainage carries metals into water\".",
+    "options": [
+     "Right: from the waste pile, through the ground, to water.",
+     "The diagram does not show acid entering as rain.",
+     "No pumping is shown.",
+     "Drainage moves with water, not into the air."
+    ]
+   },
+   "stimulus": "mining-s2"
+  },
+  {
+   "id": "env-mining-15",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A company has found ore at the depth shown on the right side of the diagram. Why would it likely choose subsurface mining?",
+   "options": [
+    "The ore is too deep for removing the overburden to pay off",
+    "Subsurface mining makes more tailings, which can be sold",
+    "Subsurface mining is safer for miners than surface mining",
+    "Subsurface mining clears far more habitat on the surface"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For deep ore, removing everything above it would cost far more than the ore is worth, so shafts and tunnels are used.",
+    "options": [
+     "Right: deep ore is reached more cheaply by shafts.",
+     "Tailings are waste, not a product.",
+     "Subsurface mining is more dangerous for miners.",
+     "Subsurface mining disturbs less surface habitat."
+    ]
+   },
+   "stimulus": "mining-s2"
+  },
+  {
+   "id": "env-mining-16",
+   "unit": "unit-5",
+   "topic": "mining",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are environmental effects of surface mining? Select all that apply.",
+   "options": [
+    "Removal of habitat over a wide area",
+    "Sediment washed from bare ground into streams",
+    "Dust and particles blown from waste piles",
+    "A rise in stream pH as metals are removed",
+    "More forest cover over the mined area",
+    "Less erosion on the slopes around the pit"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Surface mining clears habitat, bares the ground to erosion, and leaves dusty waste piles. It lowers stream pH and removes forest.",
+    "options": [
+     "Right: the land above the deposit is cleared.",
+     "Right: bare ground erodes into streams.",
+     "Right: waste piles release dust.",
+     "Mine drainage lowers pH and adds metals.",
+     "Surface mining removes forest cover.",
+     "Bare slopes erode more, not less."
+    ]
+   }
+  }
+ ]
+}

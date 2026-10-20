@@ -1,0 +1,72 @@
+{
+ "topic": "greenhouse-gas-increases",
+ "hook": "In 1958 a young scientist named Charles David Keeling set up an instrument on the side of Mauna Loa, a volcano in Hawaii, far from cities and forests. He wanted a clean measure of the carbon dioxide in the air. The line he started has risen every single year since, and it is now one of the most famous graphs in science.",
+ "prereq": [
+  {
+   "q": "What is the global warming potential of a gas?",
+   "options": [
+    "The heat it traps compared with the same mass of CO₂",
+    "How fast it destroys ozone",
+    "How much of it is in the air",
+    "How toxic it is to breathe"
+   ],
+   "correct": 0,
+   "why": "GWP compares heat trapped with CO₂, which is set at 1.",
+   "review": "greenhouse-effect"
+  },
+  {
+   "q": "Which of these is a greenhouse gas?",
+   "options": [
+    "Methane",
+    "Sulfur dioxide",
+    "Nitrogen gas",
+    "Oxygen gas"
+   ],
+   "correct": 0,
+   "why": "Methane absorbs infrared; the others do not act as greenhouse gases.",
+   "review": "greenhouse-effect"
+  }
+ ],
+ "figure": {
+  "figure": "greenhouse-gas-increases-keeling",
+  "caption": "Yearly average CO₂ at Mauna Loa (NOAA), with the level before about 1800 from ice cores."
+ },
+ "chain": [
+  {
+   "cause": "People burn fossil fuels and clear forests",
+   "effect": "carbon stored for ages enters the air as CO₂"
+  },
+  {
+   "cause": "Livestock, rice paddies, landfills and gas leaks",
+   "effect": "add methane; fertilizer adds nitrous oxide"
+  },
+  {
+   "cause": "Sinks such as plants and the ocean absorb only part of each year’s emissions",
+   "effect": "the concentration of greenhouse gases keeps rising"
+  },
+  {
+   "cause": "Ice cores and the Keeling curve measure past and present air",
+   "effect": "they show CO₂ above 420 ppm, far above its 800,000-year range"
+  }
+ ],
+ "ideas": [
+  "CO₂ sources: burning fossil fuels (largest), deforestation, cement. Methane: livestock, rice paddies, landfills, natural gas leaks. Nitrous oxide: fertilizer and manure.",
+  "The <b>Keeling curve</b>: CO₂ measured at Mauna Loa since 1958. It rises every year, faster each decade, with a small yearly wiggle from Northern Hemisphere plants.",
+  "<b>Ice cores</b> hold bubbles of ancient air: CO₂ stayed between about 180 and 300 ppm for 800,000 years and was about 280 ppm before 1800.",
+  "Today: over 420 ppm, about 50% above the level before 1800."
+ ],
+ "misconception": {
+  "wrong": "The yearly ups and downs in the Mauna Loa record mean CO₂ is not really rising.",
+  "right": "The small yearly cycle comes from plants growing in the Northern Hemisphere summer. Under it, the average rises every year, from about 317 ppm in 1960 to about 421 ppm in 2023."
+ },
+ "check": [
+  "env-greenhouse-gas-increases-1",
+  "env-greenhouse-gas-increases-2",
+  "env-greenhouse-gas-increases-3",
+  "env-greenhouse-gas-increases-4",
+  "env-greenhouse-gas-increases-5",
+  "env-greenhouse-gas-increases-6",
+  "env-greenhouse-gas-increases-14"
+ ],
+ "summary": "Burning fossil fuels and clearing forests add CO₂; livestock, rice paddies, landfills and gas leaks add methane; fertilizer adds nitrous oxide. The Keeling curve shows CO₂ at Mauna Loa rising from about 317 ppm in 1960 to over 420 ppm, faster each decade. Ice cores show it stayed between about 180 and 300 ppm for 800,000 years."
+}

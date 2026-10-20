@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Primary and secondary succession</title>
+<desc id="d">Two rows of stages. Primary succession: bare rock with no soil, lichens and mosses as pioneer species, grasses on thin soil, shrubs, fast-growing trees, mature forest (climax community); it starts after lava cools or a glacier retreats and is slow. Secondary succession: soil remains after a fire or farm, grasses and weeds as pioneer species, shrubs, fast-growing trees, mature forest; it is faster because soil and seeds remain.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker></defs><rect width="760" height="400" fill="#FFFFFF"/>
+<text x="20" y="50" font-size="17" fill="#474A10" font-weight="700">Primary succession</text>
+<rect x="20" y="64" width="108.3" height="64" fill="#F2F2EE" stroke="#474A10" stroke-width="1.8" rx="8"/>
+<text x="74.2" y="83.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Bare rock</text>
+<text x="74.2" y="100.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">no soil</text>
+<line x1="129.3" y1="96" x2="141.3" y2="96" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="142.3" y="64" width="108.3" height="64" fill="#EFF0DA" stroke="#474A10" stroke-width="1.8" rx="8"/>
+<text x="196.5" y="83.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Lichens, mosses</text>
+<text x="196.5" y="100.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">pioneer species</text>
+<line x1="251.7" y1="96" x2="263.7" y2="96" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="264.7" y="64" width="108.3" height="64" fill="#EFF0DA" stroke="#474A10" stroke-width="1.8" rx="8"/>
+<text x="318.8" y="83.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Grasses</text>
+<text x="318.8" y="100.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">thin soil</text>
+<line x1="374" y1="96" x2="386" y2="96" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="387" y="64" width="108.3" height="64" fill="#EFF0DA" stroke="#474A10" stroke-width="1.8" rx="8"/>
+<text x="441.2" y="92" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Shrubs</text>
+<line x1="496.3" y1="96" x2="508.3" y2="96" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="509.3" y="64" width="108.3" height="64" fill="#EFF0DA" stroke="#474A10" stroke-width="1.8" rx="8"/>
+<text x="563.5" y="83.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Fast-growing</text>
+<text x="563.5" y="100.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">trees</text>
+<line x1="618.7" y1="96" x2="630.7" y2="96" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="631.7" y="64" width="108.3" height="64" fill="#EFF0DA" stroke="#474A10" stroke-width="1.8" rx="8"/>
+<text x="685.8" y="83.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Mature forest</text>
+<text x="685.8" y="100.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">climax community</text>
+<text x="20" y="150" font-size="13" fill="#1F2A28" font-style="italic">Starts after lava cools or a glacier retreats. Soil must form first: slow, often centuries.</text>
+<text x="20" y="210" font-size="17" fill="#0072B2" font-weight="700">Secondary succession</text>
+<rect x="20" y="224" width="132.8" height="64" fill="#F2F2EE" stroke="#0072B2" stroke-width="1.8" rx="8"/>
+<text x="86.4" y="243.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Soil remains</text>
+<text x="86.4" y="260.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">after fire or farm</text>
+<line x1="153.8" y1="256" x2="165.8" y2="256" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="166.8" y="224" width="132.8" height="64" fill="#EFF0DA" stroke="#0072B2" stroke-width="1.8" rx="8"/>
+<text x="233.2" y="243.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Grasses, weeds</text>
+<text x="233.2" y="260.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">pioneer species</text>
+<line x1="300.6" y1="256" x2="312.6" y2="256" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="313.6" y="224" width="132.8" height="64" fill="#EFF0DA" stroke="#0072B2" stroke-width="1.8" rx="8"/>
+<text x="380" y="252" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Shrubs</text>
+<line x1="447.4" y1="256" x2="459.4" y2="256" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="460.4" y="224" width="132.8" height="64" fill="#EFF0DA" stroke="#0072B2" stroke-width="1.8" rx="8"/>
+<text x="526.8" y="243.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Fast-growing</text>
+<text x="526.8" y="260.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">trees</text>
+<line x1="594.2" y1="256" x2="606.2" y2="256" stroke="#1F2A28" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="607.2" y="224" width="132.8" height="64" fill="#EFF0DA" stroke="#0072B2" stroke-width="1.8" rx="8"/>
+<text x="673.6" y="243.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="700">Mature forest</text>
+<text x="673.6" y="260.5" font-size="12.5" fill="#1F2A28" text-anchor="middle" font-weight="400">climax community</text>
+<text x="20" y="310" font-size="13" fill="#1F2A28" font-style="italic">Starts after a fire, a flood or an abandoned field. Soil and seeds remain: faster, often decades.</text>
+<line x1="20" y1="375" x2="730" y2="375" stroke="#1F2A28" stroke-width="2" marker-end="url(#ah)"/>
+<text x="380" y="368" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Time</text>
+</svg>

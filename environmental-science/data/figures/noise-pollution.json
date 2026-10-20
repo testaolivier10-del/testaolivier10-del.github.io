@@ -1,0 +1,12 @@
+{
+ "noise-pollution-decibels": {
+  "file": "figures/noise-pollution-decibels.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram; values from the CDC",
+  "alt": "Horizontal bar chart of sound levels from the CDC: whisper 30 dB, refrigerator 40, normal conversation 65 to 80, lawn mower 80 to 100, sports event 94 to 110, siren 110 to 129, fireworks 140 to 160. A dashed line at 85 dB marks where hearing damage can begin over time."
+ }
+}

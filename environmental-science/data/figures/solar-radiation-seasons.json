@@ -1,0 +1,12 @@
+{
+ "solar-radiation-seasons-tilt": {
+  "file": "figures/solar-radiation-seasons-tilt.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left: two equal beams of sunlight reach Earth. At the equator the beam strikes head-on and lights a small area, so its energy is concentrated. At 60 degrees north the same beam strikes at a low angle and spreads over a larger area, so each square meter gets less energy. Right: Earth orbits the Sun with its axis tilted 23.5 degrees, always pointing the same way in space. In June the North Pole is tilted toward the Sun, so the Northern Hemisphere has summer: higher Sun, longer days. In December the North Pole is tilted away, so the Northern Hemisphere has winter. Earth is actually a little closer to the Sun in early January, during northern winter, so distance does not cause the seasons."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "atmosphere-layers": {
+  "file": "figures/atmosphere-layers.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph of temperature in degrees Celsius on the horizontal axis against altitude in kilometers on the vertical axis, with the four layers of the atmosphere shaded. Data from the U.S. Standard Atmosphere, 1976 (NOAA, NASA and the U.S. Air Force). In the troposphere, from the ground to about 11 km, temperature falls from 15 degrees at sea level to minus 56.5 degrees; this layer holds the weather. In the stratosphere, from about 11 to 50 km, temperature stays near minus 56.5 degrees and then rises to about minus 2.5 degrees, because the ozone layer, about 15 to 35 km up, absorbs ultraviolet light. In the mesosphere, from about 50 to 85 km, temperature falls again to about minus 86 degrees. In the thermosphere, above about 85 km, the thin air heats up sharply."
+ }
+}

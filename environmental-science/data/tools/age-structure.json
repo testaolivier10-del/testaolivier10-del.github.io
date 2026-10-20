@@ -1,0 +1,161 @@
+{
+ "slug": "age-structure",
+ "kind": "simulator",
+ "topic": "age-structure",
+ "intro": "<p>A population pyramid is a country’s story on its side: the base is this year’s babies, the top is its oldest people. Steer a country through the demographic transition, set its fertility and life expectancy, and watch the pyramid change shape as birth and death rates move.</p>",
+ "howItWorksTitle": "How the model works",
+ "howItWorks": "<p><b>The pyramid</b> is computed, not drawn by hand: a population whose women have the total fertility rate you set and whose people survive to each age at the life expectancy you set, settled into its long-run shape. Each bar is the percent of the whole population in that 5-year band (men left, women right; women outlive men at older ages). It is a teaching model fitted to rounded United Nations shares (under 15 and 65 and over) within a few points, not any one country.</p><p><b>Growth rate</b> = (crude birth rate − crude death rate) / 10, as a percent, and the doubling time is 70 divided by it: the same recipes as the course questions (ApEnvCalc). Replacement level is about 2.1 children per woman. Drill numbers are invented for practice and recomputed by a checker on 300 problems per scenario.</p>",
+ "partTopics": {
+  "stage": "population-transition",
+  "cause": "population-transition"
+ },
+ "contexts": [
+  {
+   "id": "rate-young",
+   "topic": "human-population",
+   "types": [
+    "rate"
+   ],
+   "stages": [
+    2
+   ],
+   "lead": "A country in {y0} is early in its transition."
+  },
+  {
+   "id": "rate-mid",
+   "topic": "human-population",
+   "types": [
+    "rate"
+   ],
+   "stages": [
+    3
+   ],
+   "lead": "A middle-income country in {y0}."
+  },
+  {
+   "id": "tfr-high",
+   "topic": "total-fertility-rate",
+   "types": [
+    "tfr"
+   ],
+   "tfr": [
+    3.5,
+    5.5
+   ],
+   "e0": 62,
+   "lead": "A country where most families farm."
+  },
+  {
+   "id": "tfr-low",
+   "topic": "total-fertility-rate",
+   "types": [
+    "tfr"
+   ],
+   "tfr": [
+    1.2,
+    1.8
+   ],
+   "e0": 81,
+   "lead": "A wealthy, highly urban country."
+  },
+  {
+   "id": "tfr-near",
+   "topic": "total-fertility-rate",
+   "types": [
+    "tfr"
+   ],
+   "tfr": [
+    2.0,
+    2.2
+   ],
+   "e0": 76,
+   "lead": "A country partway through its transition."
+  },
+  {
+   "id": "shape-young",
+   "topic": "age-structure",
+   "types": [
+    "shape",
+    "dependency"
+   ],
+   "tfr": [
+    3.5,
+    5.5
+   ],
+   "e0": [
+    55,
+    66
+   ],
+   "lead": "A fast-growing country."
+  },
+  {
+   "id": "shape-even",
+   "topic": "age-structure",
+   "types": [
+    "shape"
+   ],
+   "tfr": [
+    2.1,
+    2.3
+   ],
+   "e0": [
+    74,
+    78
+   ],
+   "lead": "A country with births near replacement level."
+  },
+  {
+   "id": "shape-old",
+   "topic": "age-structure",
+   "types": [
+    "shape",
+    "dependency"
+   ],
+   "tfr": [
+    1.2,
+    1.6
+   ],
+   "e0": [
+    80,
+    84
+   ],
+   "lead": "A country with few births and long lives."
+  },
+  {
+   "id": "stage-1",
+   "topic": "population-transition",
+   "types": [
+    "stage"
+   ],
+   "stage": 1,
+   "lead": "A country before modern medicine and sanitation reached it."
+  },
+  {
+   "id": "stage-2",
+   "topic": "population-transition",
+   "types": [
+    "stage"
+   ],
+   "stage": 2,
+   "lead": "A country where vaccines and clean water arrived in the last 30 years."
+  },
+  {
+   "id": "stage-3",
+   "topic": "population-transition",
+   "types": [
+    "stage"
+   ],
+   "stage": 3,
+   "lead": "A rapidly urbanizing country with rising education for women."
+  },
+  {
+   "id": "stage-4",
+   "topic": "population-transition",
+   "types": [
+    "stage"
+   ],
+   "stage": 4,
+   "lead": "A wealthy, postindustrial country."
+  }
+ ]
+}

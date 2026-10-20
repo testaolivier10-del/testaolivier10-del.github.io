@@ -1,0 +1,12 @@
+{
+ "ecological-footprints-bars": {
+  "file": "figures/ecological-footprints-bars.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bar chart, invented data for practice. Ecological footprint in global hectares per person: country A 8.0, B 4.8, C 2.4, D 1.0. A dashed line marks Earth's biocapacity, about 1.6 global hectares per person. Countries A, B and C are above the line; country D is below it."
+ }
+}

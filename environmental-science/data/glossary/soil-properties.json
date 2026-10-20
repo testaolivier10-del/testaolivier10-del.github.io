@@ -1,0 +1,23 @@
+{
+ "soil-texture": {
+  "def": "The percentages of sand, silt and clay particles in a soil. The soil texture triangle turns the three percentages into a named texture class, such as loam or clay."
+ },
+ "loam": {
+  "def": "A soil with a balanced mix of sand, silt and clay (roughly 40%, 40% and 20%). It drains well yet holds enough water and nutrients for most plants."
+ },
+ "porosity": {
+  "def": "The share of a soil's volume that is pore space, the gaps between particles. Clay often has as much or more pore space than sand, but its pores are tiny."
+ },
+ "permeability": {
+  "def": "How easily water flows through soil or rock. It depends on how large and well connected the pores are: high in sand, low in clay."
+ },
+ "water-holding-capacity": {
+  "def": "How much water a soil can hold after gravity drains the rest. It is highest in clay and soils rich in humus and lowest in sand."
+ },
+ "soil-fertility": {
+  "def": "A soil's ability to supply the nutrients plants need. Clay and humus hold nutrients against leaching, and a pH near 6 to 7 keeps them available to roots."
+ },
+ "ph": {
+  "def": "A scale from 0 to 14 that measures how acidic or basic a solution is: 7 is neutral, below 7 is acidic, above 7 is basic, and each step is a tenfold change."
+ }
+}

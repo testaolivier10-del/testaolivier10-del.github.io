@@ -1,0 +1,84 @@
+{
+ "topic": "clearcutting",
+ "hook": "A logging company can cut every tree on a 100-hectare hillside in a few weeks with a handful of machines. That is cheap timber. The next spring, the creek at the bottom of the hill runs brown after every rain and is several degrees warmer in summer, and the trout that lived there are gone.",
+ "prereq": [
+  {
+   "q": "What is erosion?",
+   "options": [
+    "The movement of soil and rock by water, wind or ice",
+    "The breakdown of rock in place by weather",
+    "The buildup of humus in the top layer of soil",
+    "The sinking of water into the ground"
+   ],
+   "correct": 0,
+   "why": "Erosion moves soil away; weathering breaks rock down in place.",
+   "review": "soil-formation"
+  },
+  {
+   "q": "How does warmer stream water affect dissolved oxygen?",
+   "options": [
+    "Warmer water holds less dissolved oxygen",
+    "Warmer water holds more dissolved oxygen",
+    "Temperature has no effect on dissolved oxygen",
+    "Warmer water holds oxygen only at night"
+   ],
+   "correct": 0,
+   "why": "Gases dissolve less in warm water, so warm water holds less oxygen for fish.",
+   "review": "aquatic-biomes"
+  },
+  {
+   "q": "Forests store carbon mainly in which form?",
+   "options": [
+    "Carbon in wood, leaves, roots and soil",
+    "Carbon dioxide gas held inside the trees",
+    "Methane gas trapped under the forest floor",
+    "Carbon only in the leaves that fall each year"
+   ],
+   "correct": 0,
+   "why": "Photosynthesis turns carbon dioxide into the carbon compounds of wood and other tissue.",
+   "review": "carbon-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "clearcutting-slope",
+  "caption": "The same hillside before and after clearcutting: without roots, litter and shade, more water and soil run off and the stream warms."
+ },
+ "chain": [
+  {
+   "cause": "All trees on a slope are cut",
+   "effect": "roots die and leaf litter is removed, so the soil is bare"
+  },
+  {
+   "cause": "Rain falls on bare soil",
+   "effect": "more water runs off and carries soil (sediment) into the stream"
+  },
+  {
+   "cause": "Sediment clouds the water and covers the gravel",
+   "effect": "less light reaches algae and fish eggs are smothered"
+  },
+  {
+   "cause": "The canopy no longer shades the stream",
+   "effect": "the water warms and holds less dissolved oxygen, so cold-water fish decline"
+  }
+ ],
+ "ideas": [
+  "<b>Clearcutting</b> removes all the trees in an area at once. It is cheap and fast, and some tree species that need full sun regrow well afterward.",
+  "Costs: soil erosion, sediment in streams, warmer streams with less dissolved oxygen, nutrients washed out of the soil, more runoff and flooding, and lost habitat.",
+  "Forests are a carbon sink. Cutting and burning or decaying the wood releases carbon dioxide, and the cleared land takes up less until trees regrow.",
+  "<b>Deforestation</b> is the lasting loss of forest, as when land is cleared for farms, pasture, mines or towns."
+ ],
+ "misconception": {
+  "wrong": "Trees store carbon dioxide, so cutting them lets that gas escape.",
+  "right": "Trees store carbon, in wood, leaves and roots. When the wood burns or decays, that carbon combines with oxygen and enters the air as carbon dioxide."
+ },
+ "check": [
+  "env-clearcutting-1",
+  "env-clearcutting-3",
+  "env-clearcutting-9",
+  "env-clearcutting-10",
+  "env-clearcutting-11",
+  "env-clearcutting-12",
+  "env-clearcutting-6"
+ ],
+ "summary": "Clearcutting cuts every tree in an area: it is the cheapest way to harvest timber, but it bares the soil to erosion, fills streams with sediment, warms them so they hold less dissolved oxygen, washes out nutrients, and removes habitat and stored carbon. Deforestation is the lasting loss of forest to other land uses."
+}

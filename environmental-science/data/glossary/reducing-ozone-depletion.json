@@ -1,0 +1,8 @@
+{
+ "montreal-protocol": {
+  "def": "The 1987 international treaty that phased out the production of CFCs, halons and other ozone-depleting substances; it has been ratified by every UN member state."
+ },
+ "hcfc": {
+  "def": "Replacements for CFCs. Hydrochlorofluorocarbons (HCFCs) still contain some chlorine, so they deplete a little ozone and are being phased out. Hydrofluorocarbons (HFCs) contain no chlorine and spare ozone, but many trap heat strongly and are being phased down under the 2016 Kigali Amendment."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "integrated-pest-management-threshold": {
+  "file": "figures/integrated-pest-management-threshold.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph, invented data for practice. Average aphids per leaf, counted each week: 2, 3, 5, 8, 12, 6, 4, 5, 7 and 9 for weeks 1 to 10. A dashed line marks the action threshold at 10 aphids per leaf. The count passes the threshold only in week 5 (12 aphids per leaf); a targeted control is used then, and the count falls to 6 the next week and stays below the threshold."
+ }
+}

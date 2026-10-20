@@ -1,0 +1,72 @@
+{
+ "topic": "noise-pollution",
+ "hook": "A new highway opens beside a forest. Within two years, birdwatchers count far fewer songbirds breeding near the road, even though not a single tree was cut along the edge. The birds did not leave because of fumes or lost habitat. They left because they could not hear each other sing.",
+ "prereq": [
+  {
+   "q": "Which part of an organism's environment is a sound?",
+   "options": [
+    "An abiotic factor",
+    "A biotic factor",
+    "A producer",
+    "A decomposer"
+   ],
+   "correct": 0,
+   "why": "Sound, like light and temperature, is a nonliving (abiotic) part of the environment.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "What happens to an organism outside its range of tolerance?",
+   "options": [
+    "It is stressed and may not survive or reproduce",
+    "It grows faster",
+    "It always moves to a new biome",
+    "Nothing changes"
+   ],
+   "correct": 0,
+   "why": "Outside its tolerance range an organism is stressed, and its survival and reproduction fall.",
+   "review": "ecological-tolerance"
+  }
+ ],
+ "figure": {
+  "figure": "noise-pollution-decibels",
+  "caption": "Common sounds on the decibel scale (CDC values). Above 85 dB, sound can damage hearing over time."
+ },
+ "chain": [
+  {
+   "cause": "Traffic, aircraft, construction, industry and ships make loud or constant sound",
+   "effect": "noise reaches people and wildlife at high levels or at the wrong times"
+  },
+  {
+   "cause": "Sound above about 85 dB for long periods",
+   "effect": "hearing is damaged in people and animals"
+  },
+  {
+   "cause": "Noise masks the sounds animals use to communicate, hunt and avoid predators",
+   "effect": "mating, feeding and migration are disrupted"
+  },
+  {
+   "cause": "Animals avoid or fail to breed in noisy areas",
+   "effect": "populations near roads, airports and shipping lanes fall"
+  }
+ ],
+ "ideas": [
+  "<b>Noise pollution</b> is sound at levels or times that harm people or wildlife. Sources: traffic, aircraft, construction, industry, ships and seismic surveys.",
+  "Sound is measured in <b>decibels</b> (dB), a logarithmic scale: each 10 dB is 10 times the intensity. Long exposure at or above 85 dB can damage hearing.",
+  "People: hearing loss, stress, poor sleep, high blood pressure. Wildlife: masked mating calls, disrupted migration and hunting, and stress, on land and in water.",
+  "Solutions: barrier walls, quieter equipment and pavement, slower ships, hearing protection, and rules on hours and zones."
+ ],
+ "misconception": {
+  "wrong": "A sound at 100 dB is only a little louder than one at 80 dB, since 100 is close to 80.",
+  "right": "Decibels are logarithmic. 20 dB more is two steps of 10, so the 100 dB sound has 100 times the intensity of the 80 dB sound."
+ },
+ "check": [
+  "env-noise-pollution-9",
+  "env-noise-pollution-1",
+  "env-noise-pollution-2",
+  "env-noise-pollution-3",
+  "env-noise-pollution-5",
+  "env-noise-pollution-6",
+  "env-noise-pollution-8"
+ ],
+ "summary": "Noise pollution is sound that harms people or wildlife because of its level or timing. It is measured in decibels, a logarithmic scale where each 10 dB is 10 times the intensity, and long exposure above about 85 dB damages hearing. Noise also raises stress in people and masks the sounds animals use to mate, feed and migrate. Barriers, quieter machines, slower ships, hearing protection and rules reduce it."
+}

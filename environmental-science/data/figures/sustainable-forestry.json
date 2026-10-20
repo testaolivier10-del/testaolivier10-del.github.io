@@ -1,0 +1,12 @@
+{
+ "sustainable-forestry-practices": {
+  "file": "figures/sustainable-forestry-practices.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. Selective cutting: a few mature trees are cut and most of the forest stands. Reforestation: rows of seedlings are planted where trees were cut. Prescribed burn: a planned, low fire burns dead wood and brush on the forest floor while the large trees survive. Each keeps forest cover, soil and habitat while still producing wood or lowering the risk of a large wildfire."
+ }
+}

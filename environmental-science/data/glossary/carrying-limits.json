@@ -1,0 +1,11 @@
+{
+ "carrying-capacity": {
+  "def": "The largest population of a species that an environment can support over time with its food, water, space and other resources. Written K. It can change when the environment changes."
+ },
+ "overshoot": {
+  "def": "The state of a population that has grown larger than the carrying capacity of its environment, so it uses resources faster than they are replaced."
+ },
+ "dieback": {
+  "def": "A sharp drop in a population after overshoot, as individuals starve, sicken or fail to reproduce because resources have run short. Also called a population crash."
+ }
+}

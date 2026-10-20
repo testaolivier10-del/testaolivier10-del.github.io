@@ -1,0 +1,17 @@
+{
+ "ecological-succession": {
+  "def": "The gradual change in the species that make up a community after a disruption, in a series of stages that usually leads toward a mature, more stable community."
+ },
+ "primary-succession": {
+  "def": "Succession that starts where there is no soil, such as new lava rock or rock exposed by a retreating glacier. Pioneer species such as lichens and mosses help form soil, so it is slow, often taking centuries."
+ },
+ "secondary-succession": {
+  "def": "Succession that starts where soil remains after a disruption such as a fire, flood, hurricane or abandoned farm field. Because soil, seeds and roots remain, it is faster than primary succession, often taking decades."
+ },
+ "pioneer-species": {
+  "def": "The first species to colonize a disrupted area: lichens and mosses on bare rock, or grasses and weeds on bare soil. They grow fast, spread easily and change conditions so that other species can follow."
+ },
+ "climax-community": {
+  "def": "The mature, relatively stable community that develops at the end of succession if there is no major disruption for a long time, such as an old forest. Also called a mature community."
+ }
+}

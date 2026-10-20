@@ -1,0 +1,72 @@
+{
+ "topic": "indoor-air",
+ "hook": "A family in a new, tightly sealed house tests the basement air and finds a radioactive gas at three times the level the EPA says to fix. Upstairs, the new cabinets give off a sharp chemical smell. Most people spend about 90% of their time indoors, and the air in a home can be more polluted than the air outside it.",
+ "prereq": [
+  {
+   "q": "Which gas from incomplete burning keeps blood from carrying oxygen?",
+   "options": [
+    "Carbon monoxide",
+    "Carbon dioxide",
+    "Sulfur dioxide",
+    "Ozone"
+   ],
+   "correct": 0,
+   "why": "CO binds hemoglobin, so the blood carries less oxygen.",
+   "review": "air-pollution"
+  },
+  {
+   "q": "What happens to a radioactive element over time?",
+   "options": [
+    "It decays and gives off radiation",
+    "It turns into water",
+    "It grows heavier",
+    "It stays exactly the same"
+   ],
+   "correct": 0,
+   "why": "Radioactive isotopes decay, giving off radiation and forming other elements.",
+   "review": "nuclear-power"
+  }
+ ],
+ "figure": {
+  "figure": "indoor-air-house",
+  "caption": "Common indoor air pollutants and where they come from in a home."
+ },
+ "chain": [
+  {
+   "cause": "Homes are sealed tightly to save energy",
+   "effect": "less outdoor air comes in to dilute indoor pollutants"
+  },
+  {
+   "cause": "Sources inside the home release pollutants: soil gas, new materials, stoves and old insulation",
+   "effect": "radon, formaldehyde and other VOCs, carbon monoxide and asbestos fibers build up indoors"
+  },
+  {
+   "cause": "People spend most of their time indoors breathing that air",
+   "effect": "exposure is long and steady"
+  },
+  {
+   "cause": "Each pollutant harms the body in its own way",
+   "effect": "lung cancer from radon and asbestos, poisoning from CO, irritation and sick building syndrome from VOCs"
+  }
+ ],
+ "ideas": [
+  "<b>Radon</b> is a radioactive gas from uranium decaying in rock and soil. It seeps through foundation cracks and is a leading cause of lung cancer. Test, then vent soil gas outside.",
+  "<b>Formaldehyde</b> and other VOCs off-gas from pressed wood, glues, carpets and paints, most strongly when new. <b>Asbestos</b> is dangerous when old insulation or tiles are disturbed.",
+  "<b>Carbon monoxide</b> comes from stoves, furnaces and generators that burn fuel incompletely; detectors save lives. Smoke from indoor cooking fires harms the most people worldwide.",
+  "<b>Sick building syndrome</b>: symptoms that ease when people leave a poorly ventilated building. Ventilation and source control are the main fixes."
+ ],
+ "misconception": {
+  "wrong": "Air pollution is an outdoor problem, so staying indoors keeps you safe.",
+  "right": "Indoor air can be more polluted than outdoor air. Radon, VOCs, CO and smoke from indoor stoves build up inside, especially in tight buildings with little ventilation."
+ },
+ "check": [
+  "env-indoor-air-9",
+  "env-indoor-air-10",
+  "env-indoor-air-1",
+  "env-indoor-air-2",
+  "env-indoor-air-3",
+  "env-indoor-air-4",
+  "env-indoor-air-11"
+ ],
+ "summary": "Indoor air pollutants include radon from uranium in rock, formaldehyde and other VOCs off-gassed by new materials, carbon monoxide from poorly burning stoves and furnaces, asbestos fibers from disturbed old insulation, and smoke from cooking over open fires. Tight buildings trap them. Testing, ventilation, removing the source and CO detectors reduce the harm."
+}

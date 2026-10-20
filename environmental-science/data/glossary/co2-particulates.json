@@ -1,0 +1,8 @@
+{
+ "natural-emissions": {
+  "def": "Pollutants released by natural processes rather than people: CO2 from volcanoes, wildfires, respiration and decomposition, and particles from volcanic ash, desert dust, sea spray, pollen and smoke."
+ },
+ "haze": {
+  "def": "A hazy, low-visibility sky caused by tiny particles in the air that scatter and absorb sunlight. Smoke, dust and pollution particles all cause haze."
+ }
+}

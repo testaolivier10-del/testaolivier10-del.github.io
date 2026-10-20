@@ -1,0 +1,17 @@
+{
+ "infrared": {
+  "def": "Infrared radiation (IR): invisible radiation with longer wavelengths than visible light, given off by warm objects such as Earth’s surface. Greenhouse gases absorb it."
+ },
+ "greenhouse-gas": {
+  "def": "A gas that absorbs and re-emits infrared radiation, warming the lower atmosphere: water vapor, carbon dioxide, methane, nitrous oxide, CFCs and HFCs (GHGs)."
+ },
+ "greenhouse-effect": {
+  "def": "The warming of Earth’s surface and lower atmosphere because greenhouse gases absorb infrared from the surface and re-emit part of it downward. The natural effect keeps Earth about 33 °C warmer; added gases strengthen it."
+ },
+ "gwp": {
+  "def": "Global warming potential (GWP): how much heat a mass of a gas traps over a set time, usually 100 years, compared with the same mass of carbon dioxide (GWP 1). Mass × GWP gives the CO₂ equivalent."
+ },
+ "nitrous-oxide": {
+  "def": "Nitrous oxide (N₂O): a greenhouse gas with a global warming potential about 265 times that of CO₂, released mostly by fertilized soils, manure and burning fuel. It lasts over a century in the air."
+ }
+}

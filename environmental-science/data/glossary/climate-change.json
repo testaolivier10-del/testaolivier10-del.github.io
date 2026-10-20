@@ -1,0 +1,14 @@
+{
+ "climate-change": {
+  "def": "A long-term change in Earth’s climate. Global climate change today means warming caused mainly by greenhouse gases from human activity, and its effects on sea level, weather and ecosystems (global warming is the temperature part)."
+ },
+ "sea-level-rise": {
+  "def": "The rise in average ocean height, caused by melting land ice and by seawater expanding as it warms. Melting floating sea ice adds almost nothing."
+ },
+ "positive-feedback": {
+  "def": "A loop in which the result of a change strengthens that change, such as melting ice lowering albedo, which causes more warming and more melting."
+ },
+ "land-ice": {
+  "def": "Ice on land: glaciers and the ice sheets of Greenland and Antarctica. Its melt raises sea level. Sea ice, frozen seawater floating on the ocean, does not raise sea level when it melts."
+ }
+}

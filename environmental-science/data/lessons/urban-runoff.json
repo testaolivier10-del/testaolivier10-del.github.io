@@ -1,0 +1,72 @@
+{
+ "topic": "urban-runoff",
+ "hook": "Philadelphia, like many old cities, has storm drains that share pipes with its sewers. In a heavy rain, runoff overflows those pipes and dumps a mix of rainwater and untreated sewage into its rivers. Instead of only building bigger pipes, the city set out to green thousands of acres: rain gardens along streets, porous pavement on basketball courts, green roofs on schools, so rain soaks in where it falls.",
+ "prereq": [
+  {
+   "q": "Why does a paved watershed flood faster than a forested one?",
+   "options": [
+    "Impervious surfaces stop infiltration, so runoff reaches the stream at once",
+    "Pavement makes more rain fall",
+    "Pavement stores water and releases it slowly",
+    "Forests send more water to streams during storms"
+   ],
+   "correct": 0,
+   "why": "Water that cannot soak in runs off fast.",
+   "review": "urbanization"
+  },
+  {
+   "q": "What is infiltration?",
+   "options": [
+    "Water soaking into the soil",
+    "Water evaporating from a lake",
+    "Water flowing over pavement",
+    "Water vapor forming clouds"
+   ],
+   "correct": 0,
+   "why": "Infiltration is the movement of water into the ground.",
+   "review": "water-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "urban-runoff-methods",
+  "caption": "Three ways to let rain soak in where it falls, next to ordinary pavement."
+ },
+ "chain": [
+  {
+   "cause": "Rain falls on a green roof, rain garden or permeable pavement",
+   "effect": "it is held in soil and plants or passes into the ground"
+  },
+  {
+   "cause": "Water soaks in or is released slowly",
+   "effect": "less runoff reaches storm drains during the storm"
+  },
+  {
+   "cause": "Less runoff, spread over more time",
+   "effect": "flood peaks downstream are lower and storm sewers overflow less"
+  },
+  {
+   "cause": "Water filters through soil and recharges groundwater",
+   "effect": "sediment and some pollutants are trapped, and streams keep flowing between storms"
+  }
+ ],
+ "ideas": [
+  "The goal is to let rain soak in, or be stored and released slowly, near where it falls, instead of piping it straight to streams.",
+  "<b>Permeable pavement</b> lets water through gaps or pores into gravel and soil. It must be swept or vacuumed so it does not clog.",
+  "<b>Rain gardens</b> and planted swales collect runoff in low spots where plants and soil soak it up and trap sediment. <b>Green roofs</b> hold rain in soil and plants and cool buildings.",
+  "Other methods: rain barrels and cisterns, more trees and parks, building vertically to cover less ground, and public transit so fewer roads and parking lots are needed."
+ ],
+ "misconception": {
+  "wrong": "The best fix for urban flooding is bigger storm drains.",
+  "right": "Bigger pipes move water faster, which can make floods downstream worse and does nothing to recharge groundwater. Letting rain soak in where it falls lowers the flood peak and recharges groundwater."
+ },
+ "check": [
+  "env-urban-runoff-1",
+  "env-urban-runoff-2",
+  "env-urban-runoff-9",
+  "env-urban-runoff-10",
+  "env-urban-runoff-11",
+  "env-urban-runoff-12",
+  "env-urban-runoff-7"
+ ],
+ "summary": "Methods to reduce urban runoff let rain soak in or be held near where it falls: permeable pavement, rain gardens, green roofs, rain barrels, trees and parks, and building upward and with transit so less land is paved. They lower flood peaks, cut sewer overflows, trap pollutants and recharge groundwater, at the cost of building and upkeep."
+}

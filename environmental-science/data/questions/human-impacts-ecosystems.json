@@ -1,0 +1,601 @@
+{
+ "stimuli": {
+  "human-impacts-ecosystems-s1": {
+   "kind": "quantitative",
+   "title": "Stream insects above and below a mine drainage pipe",
+   "invented": true,
+   "table": {
+    "caption": "Insect larvae counted in one kick-net sample at four sites on a stream (invented data for practice)",
+    "cols": [
+     "Site",
+     "Dissolved oxygen (mg/L)",
+     "Mayfly and stonefly larvae",
+     "Midge larvae and aquatic worms"
+    ],
+    "rows": [
+     [
+      "1: upstream of pipe",
+      "9.5",
+      "48",
+      "6"
+     ],
+     [
+      "2: just below pipe",
+      "4.0",
+      "2",
+      "70"
+     ],
+     [
+      "3: 2 km below",
+      "6.5",
+      "15",
+      "35"
+     ],
+     [
+      "4: 6 km below",
+      "9.0",
+      "40",
+      "9"
+     ]
+    ]
+   }
+  },
+  "human-impacts-ecosystems-s2": {
+   "kind": "visual",
+   "title": "Coral cover and summer water temperature on a reef",
+   "invented": true,
+   "plot": {
+    "label": "Dual-axis line graph from 2010 to 2022: live coral cover on a reef falls from 45 to 18 percent, dropping most in 2016 and 2020, while peak summer water temperature rises from 29.0 to 30.6 degrees Celsius with spikes in 2016 and 2020; invented data",
+    "kind": "dual",
+    "x": [
+     2010,
+     2022
+    ],
+    "y": [
+     0,
+     50
+    ],
+    "yRight": [
+     28.5,
+     31.5
+    ],
+    "xStep": 2,
+    "yStep": 10,
+    "xLabel": "Year",
+    "yLabel": "Live coral cover (%)",
+    "yRightLabel": "Peak temperature (°C)",
+    "series": [
+     {
+      "name": "Coral",
+      "axis": "left",
+      "points": [
+       [
+        2010,
+        45
+       ],
+       [
+        2012,
+        44
+       ],
+       [
+        2014,
+        42
+       ],
+       [
+        2016,
+        28
+       ],
+       [
+        2018,
+        27
+       ],
+       [
+        2020,
+        19
+       ],
+       [
+        2022,
+        18
+       ]
+      ]
+     },
+     {
+      "name": "Temp.",
+      "axis": "right",
+      "points": [
+       [
+        2010,
+        29
+       ],
+       [
+        2012,
+        29.2
+       ],
+       [
+        2014,
+        29.4
+       ],
+       [
+        2016,
+        30.8
+       ],
+       [
+        2018,
+        29.8
+       ],
+       [
+        2020,
+        30.9
+       ],
+       [
+        2022,
+        30.6
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-human-impacts-ecosystems-1",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does the number of mayfly and stonefly larvae change downstream of the pipe?",
+   "stimulus": "human-impacts-ecosystems-s1",
+   "options": [
+    "They rise just below the pipe, then fall farther down",
+    "They crash below the pipe, then recover",
+    "They stay about the same from site to site",
+    "They fall at each site and do not recover"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "They drop from 48 upstream to 2 just below the pipe, then recover to 15 at 2 km and 40 at 6 km as the water improves.",
+    "options": [
+     "They fall just below the pipe, from 48 to 2.",
+     "Right: 48, then 2, then 15, then 40.",
+     "They range from 2 to 48.",
+     "They recover to 40 at 6 km."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-2",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why are mayflies and stoneflies useful as indicator species here?",
+   "stimulus": "human-impacts-ecosystems-s1",
+   "options": [
+    "They need clean water, so they track its quality",
+    "They thrive in polluted water, so they show where pollution is",
+    "They eat the pollutants, so they clean the stream",
+    "They are the largest insects, so they are easy to count"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "They need clean, oxygen-rich water, so their numbers rise and fall with water quality. Their crash at site 2 signals pollution; midges and worms, which tolerate low oxygen, increase there.",
+    "options": [
+     "Right: their numbers follow dissolved oxygen closely.",
+     "They do the opposite; tolerant midges and worms thrive there.",
+     "They do not clean the stream; their numbers just reflect its quality.",
+     "Size is not what makes an indicator species useful."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-3",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in mayfly and stonefly larvae from site 1 to site 2.",
+   "stimulus": "human-impacts-ecosystems-s1",
+   "why": {
+    "correct": "$\\frac{(2 - 48)}{48} \\times 100 = -95.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      48,
+      2
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -2300,
+      "why": "You divided by the site 2 count. Divide by the starting (site 1) count, 48."
+     },
+     {
+      "value": 95.8333333333,
+      "why": "The count fell, so the change is negative: about -95.8%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-4",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion do the data best support?",
+   "stimulus": "human-impacts-ecosystems-s1",
+   "options": [
+    "The discharge improves water quality for the insects",
+    "Midges and worms cause the oxygen to drop",
+    "Water quality is worst 6 km below the pipe",
+    "The discharge harms water quality near the pipe"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Below the pipe, dissolved oxygen and sensitive insects both fall while tolerant insects rise, and all recover downstream, so the discharge is lowering water quality near the pipe.",
+    "options": [
+     "Sensitive insects crash below the pipe.",
+     "The drop starts at the pipe; tolerant insects respond to it.",
+     "Site 4 is nearly back to upstream levels.",
+     "Right: oxygen and sensitive insects drop at site 2 and recover by site 4."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-5",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What happens to live coral cover in the years with the highest summer temperatures?",
+   "stimulus": "human-impacts-ecosystems-s2",
+   "options": [
+    "It rises in the hottest years",
+    "It drops the most in the coolest years",
+    "It drops sharply in the hottest years",
+    "It stays the same whatever the temperature"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In 2016 and 2020, the two hottest summers, coral cover drops sharply (42 to 28, and 27 to 19 percent). In cooler years it changes little.",
+    "options": [
+     "Cover falls, not rises, in 2016 and 2020.",
+     "The coolest years show the smallest changes.",
+     "Right: the biggest drops come in 2016 and 2020.",
+     "It falls from 45 to 18 percent."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-6",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which process explains the link between hot summers and coral loss?",
+   "stimulus": "human-impacts-ecosystems-s2",
+   "options": [
+    "Warm water dissolves the coral skeleton directly",
+    "Heat makes corals expel the algae that feed them",
+    "Hot water brings more algae, which smother the coral",
+    "Warm water carries more oxygen, which poisons coral"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Heat stress makes corals expel the algae that live in their tissues and feed them by photosynthesis. The corals turn white (bleach), and if the heat lasts they starve and die.",
+    "options": [
+     "The main effect of heat is losing the algae, not dissolving the skeleton.",
+     "Right: that is coral bleaching.",
+     "Bleaching is the loss of the algae living inside the coral.",
+     "Warm water holds less oxygen, not more."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-7",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in live coral cover from 2010 to 2022.",
+   "stimulus": "human-impacts-ecosystems-s2",
+   "why": {
+    "correct": "$\\frac{(18 - 45)}{45} \\times 100 = -60\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      45,
+      18
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -27,
+      "why": "-27 is the change in percentage points (45 to 18). Percent change divides by the old value: -27 / 45 × 100 = -60%."
+     },
+     {
+      "value": -150,
+      "why": "You divided by the 2022 value. Divide by the old (2010) value, 45."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-8",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is an indicator species?",
+   "options": [
+    "A species whose numbers reveal the health of its environment",
+    "A species that has more effect on its community than its numbers suggest",
+    "The first species to colonize bare rock",
+    "A species that eats a wide range of foods"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An indicator species is one whose presence, absence or health reveals the condition of its environment, such as mayfly larvae for clean, oxygen-rich streams.",
+    "options": [
+     "Right: its presence or absence signals conditions.",
+     "That describes a keystone species.",
+     "That describes a pioneer species.",
+     "That describes a generalist species."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-9",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Coral reefs are also harmed by sediment from coastal construction and farms. How does sediment harm them?",
+   "options": [
+    "It raises the water temperature to bleaching levels",
+    "It adds oxygen that the coral is unable to use",
+    "It makes the water too fresh for coral",
+    "It blocks light from the coral's algae"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sediment clouds the water, blocking the sunlight the coral's algae need for photosynthesis, and it can settle on and smother the coral.",
+    "options": [
+     "Sediment does not cause bleaching heat.",
+     "Sediment does not add oxygen.",
+     "Sediment does not lower salinity.",
+     "Right: less light means less food for the coral."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-10",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does an oil spill harm seabirds?",
+   "options": [
+    "Oil warms the water so fish move away from the birds",
+    "Oil makes the water more acidic, dissolving eggshells",
+    "Oil mats feathers and poisons birds that preen",
+    "Oil adds nutrients that cause algae to cover the birds"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Oil coats feathers so they mat together and lose their waterproofing and insulation; birds become cold and cannot float or fly, and they swallow oil while preening.",
+    "options": [
+     "The main harm is to the birds' feathers and bodies.",
+     "Oil does not acidify water in this way.",
+     "Right: both hypothermia and poisoning.",
+     "Oil is not a nutrient that feeds algae."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-11",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where do most microplastics in the ocean come from?",
+   "options": [
+    "Natural rock weathered into tiny plastic grains",
+    "Larger plastic broken up by sun and waves",
+    "Plankton that build plastic shells",
+    "Oil spills that harden into beads on the seafloor"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Most microplastics are pieces of larger plastic broken down by sunlight and waves, plus fibers shed from synthetic clothing and small beads from some products.",
+    "options": [
+     "Plastic is made by people; rocks do not weather into plastic.",
+     "Right: big plastic becomes many small pieces.",
+     "No plankton make plastic.",
+     "Spilled oil does not turn into plastic beads."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-12",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are microplastics a problem for ocean food webs?",
+   "options": [
+    "Animals eat them, and they carry toxins",
+    "They release oxygen that bleaches coral",
+    "They warm the water by absorbing sunlight",
+    "They break down quickly into nutrients for algae"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Small animals mistake them for food, which fills their guts without nourishing them, and plastics can carry toxic chemicals that move up the food chain.",
+    "options": [
+     "Right: they block feeding and carry toxins up food chains.",
+     "Plastics do not release oxygen.",
+     "Their main harm is being eaten, not warming.",
+     "Plastics last a very long time and are not nutrients."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-13",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which response is best fitted to cleaning up oil that has spilled into a calm harbor?",
+   "options": [
+    "Adding fertilizer so algae grow over the oil",
+    "Draining the harbor into the open sea",
+    "Adding limestone to neutralize the oil",
+    "Booms to hold the oil and skimmers to lift it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Floating booms contain the slick so skimmers can collect it from the surface. This fits a calm, enclosed harbor.",
+    "options": [
+     "Fertilizer would feed a mass of algae; it would not remove the oil.",
+     "That spreads the oil; it does not remove it.",
+     "Limestone neutralizes acid; oil is not an acid.",
+     "Right: booms hold the slick so it can be skimmed off."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-14",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A coastal town's beaches and reef are covered in plastic litter washed out from the town's storm drains. Propose a town-level solution and explain how it works.",
+   "why": {
+    "correct": "The solution fits the scale (a town) and the source (storm drains), and it says how it works: screens catch litter before it reaches the sea."
+   },
+   "specific": {
+    "frame": "The town could ___, which reduces ocean plastic because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "fit screens on storm drains and ban single-use plastic bags",
+       "ask other countries to stop making plastic",
+       "add more fish to the reef"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is outside a town's power and not fitted to its storm drains.",
+       "2": "More fish do not reduce the plastic."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "litter is caught before it reaches the sea, and less is made in the first place",
+       "plastic dissolves faster in drain water",
+       "fish eat the plastic and remove it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Plastic does not dissolve in water.",
+       "2": "Fish eating plastic harms them; it is the problem, not the fix."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "plastic",
+      "drain",
+      "litter"
+     ]
+    },
+    "model": "The town could fit screens on storm drains and ban single-use plastic bags, which reduces ocean plastic because litter is caught before it reaches the sea and less plastic is used in the first place."
+   }
+  },
+  {
+   "id": "env-human-impacts-ecosystems-15",
+   "unit": "unit-8",
+   "topic": "human-impacts-ecosystems",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A beach cleanup collects 1,250 pieces of plastic along 500 meters of shoreline. Write the setup for the pieces per meter, then the answer.",
+   "why": {
+    "correct": "$\\frac{1{,}250\\,\\text{pieces}}{500\\,\\text{m}} = 2.5$ pieces per meter."
+   },
+   "setup": {
+    "answer": "1250 / 500",
+    "mustUse": [
+     "1250",
+     "500"
+    ],
+    "mistakes": [
+     {
+      "expr": "500 / 1250",
+      "why": "Pieces per meter puts pieces on top: 1,250 / 500."
+     }
+    ],
+    "then": {
+     "unit": "pieces/m",
+     "units": [
+      "pieces per meter",
+      "per m",
+      "/m"
+     ],
+     "from": {
+      "fn": "density",
+      "args": [
+       1250,
+       500
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.4,
+       "why": "That is meters per piece. Pieces per meter is 1,250 / 500 = 2.5."
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

@@ -5471,7 +5471,7 @@
     "oil sands",
     "bitumen"
    ],
-   "taughtIn": "fossil-fuels",
+   "taughtIn": "fuel-types",
    "dependsOn": [
     "petroleum"
    ]
@@ -6658,7 +6658,7 @@
    "aliases": [
     "N2O"
    ],
-   "taughtIn": "greenhouse-gas-increases",
+   "taughtIn": "greenhouse-effect",
    "dependsOn": [
     "greenhouse-gas"
    ]

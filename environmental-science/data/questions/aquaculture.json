@@ -1,0 +1,592 @@
+{
+ "stimuli": {
+  "aquaculture-s1": {
+   "kind": "visual",
+   "title": "Two ways to farm fish",
+   "figure": "aquaculture-pens"
+  },
+  "aquaculture-s2": {
+   "kind": "quantitative",
+   "title": "Wild catch and fish farming in one world region",
+   "invented": true,
+   "table": {
+    "caption": "Production of fish and other aquatic animals in one region, million metric tons (invented data for practice)",
+    "cols": [
+     "Year",
+     "Wild capture",
+     "Aquaculture"
+    ],
+    "rows": [
+     [
+      "1990",
+      "85",
+      "15"
+     ],
+     [
+      "2000",
+      "95",
+      "35"
+     ],
+     [
+      "2010",
+      "90",
+      "60"
+     ],
+     [
+      "2022",
+      "90",
+      "95"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-aquaculture-1",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is an example of aquaculture?",
+   "options": [
+    "Raising salmon in net pens in a bay",
+    "Catching tuna with longlines at sea",
+    "Trawling the sea floor for shrimp",
+    "Fishing for trout with a rod in a river"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Aquaculture is farming fish in controlled conditions; the others catch wild fish.",
+    "options": [
+     "Right: farmed fish in pens.",
+     "Longlining catches wild fish.",
+     "Trawling catches wild shrimp.",
+     "Sport fishing catches wild fish."
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-2",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a benefit of aquaculture compared with wild fishing?",
+   "options": [
+    "It grows a lot of food on little space",
+    "It removes the need to give the fish any feed",
+    "It is unable to spread disease to any wild fish",
+    "It produces no waste in the water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Farms grow fish densely and can reduce demand on wild fisheries.",
+    "options": [
+     "Right: high yield on little space and less wild catch.",
+     "Many farmed fish are fed.",
+     "Open pens can spread disease to wild fish.",
+     "Farmed fish produce waste."
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-3",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Waste from a crowded salmon pen collects on the sea floor below it. Why does the water near the bottom lose oxygen?",
+   "options": [
+    "Decomposers use up oxygen breaking down waste",
+    "The waste blocks sunlight, so the sea floor heats up",
+    "The salmon breathe in the oxygen from the sea floor",
+    "The waste turns the salt water into fresh water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bacteria decomposing organic waste use oxygen in respiration, so dissolved oxygen falls.",
+    "options": [
+     "Right: decomposition uses oxygen.",
+     "Shading would cool, not heat, and is not the cause.",
+     "The salmon are in the pen above, not on the bottom.",
+     "Waste does not change salinity like that."
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-4",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Farmed salmon in net pens often carry sea lice, a parasite. Why is this a concern for wild salmon?",
+   "options": [
+    "Young wild salmon swimming past can get lice",
+    "Sea lice from the pens make the wild salmon grow faster",
+    "Sea lice eat the waste under the pens and clean the water",
+    "Sea lice live on farmed salmon and stay inside the pens"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Crowded pens breed large numbers of lice, which spread to wild fish passing by.",
+    "options": [
+     "Right: parasites spread from farms to wild fish.",
+     "Parasites harm their hosts.",
+     "Sea lice feed on fish, not waste.",
+     "Lice leave the pens and attach to wild fish."
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-5",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why does farming salmon do less to reduce pressure on wild fish than farming tilapia?",
+   "options": [
+    "Salmon feed is made partly from wild fish",
+    "Salmon grow faster than tilapia, so more of them are farmed",
+    "Tilapia escape more often, so they replace wild fish in the sea",
+    "Salmon are farmed on land while tilapia are farmed in the sea"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Salmon are carnivores; their feed includes fish meal and oil from wild forage fish.",
+    "options": [
+     "Right: carnivorous fish need wild fish in their feed.",
+     "Growth rate is not the reason.",
+     "Escapes are not what makes the difference here.",
+     "Salmon are mostly farmed in sea pens; tilapia mostly in ponds."
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-6",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In parts of Southeast Asia, coastal shrimp farms were built by clearing mangrove forests. Which is a likely result?",
+   "options": [
+    "Coasts lose storm protection and fish nurseries",
+    "Coasts gain storm protection because the ponds block waves",
+    "Wild fish catches rise because shrimp ponds feed them",
+    "Mangroves grow back inside the ponds within a year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mangroves shield coasts from storms and shelter young fish; clearing them removes both.",
+    "options": [
+     "Right: lost storm protection and fish nurseries.",
+     "Ponds do not protect coasts like mangrove forests do.",
+     "Losing nursery habitat lowers wild catches.",
+     "Mangroves do not regrow in active ponds."
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-7",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fish farm produces 1,200 metric tons of salmon. It takes about 1.3 kg of feed to grow 1 kg of salmon. How many metric tons of feed does the farm use?",
+   "why": {
+    "correct": "$1{,}200\\,\\text{metric tons salmon} \\times \\frac{1.3\\,\\text{metric tons feed}}{1\\,\\text{metric ton salmon}} = 1{,}560$ metric tons of feed."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      1200,
+      1.3
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tonnes"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1200,
+        1.3
+       ]
+      },
+      "why": "It takes 1.3 kg of feed per kilogram of fish, so multiply by 1.3."
+     },
+     {
+      "value": 156,
+      "why": "A factor of 10 slipped: 1,200 × 1.3 = 1,560."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-aquaculture-8",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town wants a fish farm in its bay but worries about pollution. Propose a farming method that would limit the harm and explain how it works.",
+   "why": {
+    "correct": "A method fitted to the town's concern, with its mechanism: raise the fish in closed tanks on land that filter and reuse water, which captures waste so it does not reach the bay."
+   },
+   "specific": {
+    "frame": "The town could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Method",
+      "options": [
+       "raise the fish in closed tanks on land with filters",
+       "double the number of fish in each net pen",
+       "feed the fish more often in open pens"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More crowding means more waste and disease.",
+       "2": "More feed means more uneaten feed falling to the bottom."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "filters capture waste and the water is cleaned and reused",
+       "waste flows straight into the bay",
+       "wild fish eat all the waste"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the problem the town wants to avoid.",
+       "2": "Wild fish do not remove concentrated waste."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "little waste reaches the bay and farmed fish cannot escape into it",
+       "more waste reaches the bay",
+       "the bay loses oxygen faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Closed tanks keep waste out of the bay.",
+       "2": "Less waste means less oxygen loss."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "tank",
+      "waste",
+      "filter",
+      "bay"
+     ]
+    },
+    "model": "The town could raise the fish in closed tanks on land with filters, which capture waste so the water is cleaned and reused. As a result little waste reaches the bay and farmed fish cannot escape into it."
+   }
+  },
+  {
+   "id": "env-aquaculture-9",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the diagram, what happens to waste and uneaten feed from the open net pen?",
+   "options": [
+    "It sinks to the sea floor below the pen",
+    "It passes through a filter and is reused",
+    "It is eaten by the escaped fish",
+    "It floats to the surface and evaporates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The arrow from the pen points down to the sea floor.",
+    "options": [
+     "Right: it sinks below the pen.",
+     "The filter is part of the closed tank.",
+     "The diagram does not show escaped fish eating waste.",
+     "Waste does not evaporate."
+    ]
+   },
+   "stimulus": "aquaculture-s1"
+  },
+  {
+   "id": "env-aquaculture-10",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which problem shown for the open pen is solved by the closed tank design?",
+   "options": [
+    "Farmed fish escaping into the wild",
+    "The cost of electricity for pumps",
+    "The need to feed the fish",
+    "The need to clean the water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fish in a tank on land cannot escape into the bay.",
+    "options": [
+     "Right: no escapes from a tank on land.",
+     "Electricity cost is a drawback of the tank.",
+     "Tank fish still need feed.",
+     "The tank needs water cleaning (its filter)."
+    ]
+   },
+   "stimulus": "aquaculture-s1"
+  },
+  {
+   "id": "env-aquaculture-11",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why are many fish farms still built as open pens even though closed tanks cause less pollution?",
+   "options": [
+    "Open pens cost much less to build and run",
+    "Open pens produce no waste in the water",
+    "Closed tanks are unable to hold saltwater fish",
+    "Closed tanks spread more disease to wild fish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tanks need pumps, filters and electricity; pens use the sea for free.",
+    "options": [
+     "Right: cost is the main reason.",
+     "Open pens do produce waste, as shown.",
+     "Saltwater fish can be raised in tanks.",
+     "Closed tanks keep disease away from wild fish."
+    ]
+   },
+   "stimulus": "aquaculture-s1"
+  },
+  {
+   "id": "env-aquaculture-12",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which trend does the table show from 1990 to 2022?",
+   "options": [
+    "Aquaculture grew to 95 while wild capture stayed near 90",
+    "Wild capture grew from 85 to 95 million metric tons while aquaculture fell",
+    "Both wild capture and aquaculture fell between 1990 and 2022",
+    "Aquaculture stayed near 15 while wild capture grew to 95"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Aquaculture rose steadily; wild capture leveled off around 90 million metric tons.",
+    "options": [
+     "Right: aquaculture grew about sixfold; capture leveled off.",
+     "Aquaculture rose sharply.",
+     "Aquaculture rose.",
+     "Aquaculture rose from 15 to 95."
+    ]
+   },
+   "stimulus": "aquaculture-s2"
+  },
+  {
+   "id": "env-aquaculture-13",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in aquaculture production from 2000 to 2022, then give the answer.",
+   "why": {
+    "correct": "$\\frac{95 - 35}{35} \\times 100 \\approx 171.4\\%$."
+   },
+   "setup": {
+    "answer": "(95 - 35) / 35 * 100",
+    "mustUse": [
+     "95",
+     "35"
+    ],
+    "mistakes": [
+     {
+      "expr": "(95 - 35) / 95 * 100",
+      "why": "Divide by the starting value, the 2000 production of 35."
+     },
+     {
+      "expr": "95 / 35 * 100",
+      "why": "That is 2022 as a percent of 2000 (271%). Percent change subtracts first."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       35,
+       95
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60,
+       "why": "60 million metric tons is the change. Divide by 35 and multiply by 100."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         95,
+         35
+        ]
+       },
+       "why": "That is the change from 2022 back to 2000. Start from 2000."
+      }
+     ]
+    }
+   },
+   "stimulus": "aquaculture-s2"
+  },
+  {
+   "id": "env-aquaculture-14",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In 2022, what percent of total production (wild capture plus aquaculture) came from aquaculture?",
+   "why": {
+    "correct": "$\\frac{95}{90 + 95} \\times 100 \\approx 51.4\\%$, about half."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      95,
+      {
+       "fn": "add",
+       "args": [
+        90,
+        95
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "places": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        95,
+        90
+       ]
+      },
+      "why": "Divide by the total, 90 + 95 = 185, not by wild capture alone."
+     },
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        90,
+        185
+       ]
+      },
+      "why": "48.6% is the share from wild capture. Aquaculture is 95 of 185."
+     }
+    ]
+   },
+   "stimulus": "aquaculture-s2"
+  },
+  {
+   "id": "env-aquaculture-15",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In the table, wild capture has stayed near 90 million metric tons since 1990 while demand for fish grew. What does this suggest?",
+   "options": [
+    "Wild fisheries are near their limit, so farming met the new demand",
+    "Wild fisheries could easily double their catch if more boats were built",
+    "Demand for fish has fallen, so farms are producing more than needed",
+    "Fish farming has caused wild fish stocks to grow much larger"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A flat wild catch as demand grew points to stocks at or past their limits; aquaculture filled the gap.",
+    "options": [
+     "Right: the growth came from farming.",
+     "Many stocks are already fully fished or overfished.",
+     "Demand grew; total production rose.",
+     "Wild catch did not grow."
+    ]
+   },
+   "stimulus": "aquaculture-s2"
+  },
+  {
+   "id": "env-aquaculture-16",
+   "unit": "unit-5",
+   "topic": "aquaculture",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are drawbacks of open net-pen fish farming? Select all that apply.",
+   "options": [
+    "Waste and uneaten feed pollute the water below the pens",
+    "Disease and parasites spread to wild fish",
+    "Farmed fish escape and compete with wild fish",
+    "Pens produce more bycatch than trawling",
+    "Pens raise the oxygen level of the bay",
+    "Pens use more fuel than fishing fleets"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Concentrated waste, disease and escapes are the main problems of open pens.",
+    "options": [
+     "Right: concentrated waste.",
+     "Right: disease and parasites spread.",
+     "Right: escaped fish.",
+     "Farms do not use fishing gear, so they have no bycatch.",
+     "Decomposing waste lowers oxygen.",
+     "Farms usually use less fuel than fleets."
+    ]
+   }
+  }
+ ]
+}

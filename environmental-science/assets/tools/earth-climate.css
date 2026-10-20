@@ -1,0 +1,117 @@
+/* Earth and climate (environmental-science/assets/tools/earth-climate.js). OWNED BY THIS TOOL ONLY (builder T3).
+   One color per role, the same in every view and in the drills: sunlight
+   gold, your latitude olive (the course accent), wet blue, dry sand, El Niño
+   warm red, La Niña cool blue. Light and dark from the theme tokens. */
+.ec-svg,.ec-qfig{--ec-sun:#E69F00;--ec-sun-ink:#8A5A00;--ec-you:var(--cink);--ec-wet:#0072B2;--ec-wet-ink:#005A8C;--ec-dry:#C98A2E;--ec-dry-ink:#7A4E0E;
+  --ec-ocean:#CFE6F5;--ec-globe:#D8EAD0;--ec-night:rgba(20,30,60,.38);--ec-land:#B9A57E;--ec-sky:#EAF4FB;--ec-deep:#1F4E79;--ec-hot:#E4572E;--ec-mid:#F2C14E;--ec-cool:#6BAED6;
+  --ec-mtn:#8C7B62;--ec-tree:#2E7D32;--ec-nino:#B8321A;--ec-nina:#1F5FA8;--ec-cell:rgba(0,114,178,.07);}
+:root[data-theme="dark"] .ec-svg,:root[data-theme="dark"] .ec-qfig{--ec-sun:#F3C04F;--ec-sun-ink:#F6CF75;--ec-wet:#6CB8EC;--ec-wet-ink:#8FCBF2;--ec-dry:#E3B064;--ec-dry-ink:#F0C98C;
+  --ec-ocean:#1C3A52;--ec-globe:#2A4636;--ec-night:rgba(0,0,0,.45);--ec-land:#6D5E44;--ec-sky:#16232E;--ec-deep:#0D2238;--ec-hot:#E86A47;--ec-mid:#C9A23A;--ec-cool:#3F7FB0;
+  --ec-mtn:#5B5040;--ec-tree:#5CB860;--ec-nino:#F08A6E;--ec-nina:#7FB6F0;--ec-cell:rgba(108,184,236,.08);}
+.ec-card{display:grid;gap:14px;}
+.ec-fig{position:relative;min-height:320px;height:min(68vh,560px);}
+.ls-root .ec-fig{flex:1 1 auto;height:auto;min-height:280px;}
+.ec-fig .ec-svg{position:absolute;inset:0;width:100%;height:100%;}
+.ec-svg{display:block;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.ec-qfig{margin:0;}
+.ec-qfig .ec-svg{width:100%;height:auto;max-height:100%;}
+.ec-ctl{display:flex;flex-direction:column;gap:10px;}
+.ec-g[hidden]{display:none;}
+.ec-g{display:flex;flex-direction:column;gap:8px;}
+.ec-go{display:flex;}
+.ec-tbl{border-collapse:collapse;margin:8px 0;font:700 14px var(--font-ui);}
+.ec-tbl th,.ec-tbl td{padding:6px 12px;border:1px solid var(--line);text-align:center;}
+.ec-tbl caption{font:700 12.5px var(--font-ui);color:var(--muted);text-align:left;padding-bottom:4px;}
+/* text */
+.ec-t{fill:var(--ink);font-size:12.5px;font-weight:700;}
+.ec-s{font-size:11.5px;}
+.ec-b{font-weight:900;}
+.ec-tk{fill:var(--muted);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;}
+.ec-muted{fill:var(--muted);}
+.ec-c-sun{fill:var(--ec-sun-ink);} .ec-c-you{fill:var(--ec-you);} .ec-c-wet{fill:var(--ec-wet-ink);} .ec-c-dry{fill:var(--ec-dry-ink);}
+.ec-c-nino{fill:var(--ec-nino);} .ec-c-nina{fill:var(--ec-nina);}
+.ec-on-night{fill:#fff;opacity:.9;font-weight:800;paint-order:stroke;stroke:rgba(0,0,0,.35);stroke-width:2px;}
+.ec-on-deep{fill:#E6F1FA;font-weight:800;}
+.ec-on-land{fill:#2E2414;font-weight:900;}
+:root[data-theme="dark"] .ec-on-land{fill:#F4EBDD;}
+.ec-tag rect{fill:var(--white);stroke:var(--line);stroke-width:1.2;}
+.ec-tag-t{fill:var(--ink);font-size:12px;font-weight:900;font-variant-numeric:tabular-nums;}
+.ec-tag-sun rect{stroke:var(--ec-sun);} .ec-tag-sun .ec-tag-t{fill:var(--ec-sun-ink);}
+.ec-tag-you rect{stroke:var(--cink);stroke-width:1.8;} .ec-tag-you .ec-tag-t{fill:var(--cink);}
+.ec-tag-wet rect{stroke:var(--ec-wet);} .ec-tag-wet .ec-tag-t{fill:var(--ec-wet-ink);}
+.ec-tag-dry rect{stroke:var(--ec-dry);} .ec-tag-dry .ec-tag-t{fill:var(--ec-dry-ink);}
+.ec-tag-nino rect{stroke:var(--ec-nino);stroke-width:2;} .ec-tag-nino .ec-tag-t{fill:var(--ec-nino);}
+.ec-tag-nina rect{stroke:var(--ec-nina);stroke-width:2;} .ec-tag-nina .ec-tag-t{fill:var(--ec-nina);}
+/* the globe and the sun */
+.ec-ray line{stroke:var(--ec-sun);stroke-width:1.6;opacity:.75;} .ec-ray polygon{fill:var(--ec-sun);opacity:.85;}
+.ec-ray-you{stroke:var(--ec-sun);stroke-width:2.4;stroke-dasharray:4 3;}
+.ec-globe{fill:var(--ec-globe);}
+.ec-globe-edge{fill:none;stroke:var(--ink);stroke-width:1.5;opacity:.6;}
+.ec-night{fill:var(--ec-night);}
+.ec-lat{stroke:var(--ink);stroke-width:.9;opacity:.35;}
+.ec-lat-eq{stroke-width:1.6;opacity:.6;}
+.ec-lat-trop{stroke-dasharray:5 4;opacity:.55;}
+.ec-lat-polar{stroke-dasharray:2 3;}
+.ec-lat-you{stroke:var(--cink);stroke-width:2.6;opacity:1;}
+.ec-axis{stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;}
+.ec-sub{fill:var(--ec-sun);stroke:var(--white);stroke-width:2;}
+.ec-you{fill:var(--cink);stroke:var(--white);stroke-width:2.2;}
+.ec-horizon{stroke:var(--cink);stroke-width:2;stroke-linecap:round;}
+.ec-orbit{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 4;}
+.ec-sunball{fill:var(--ec-sun);}
+.ec-earthball{fill:var(--ec-wet);stroke:var(--white);stroke-width:1.5;}
+.ec-axisarrow line{stroke:var(--ink);stroke-width:2;} .ec-axisarrow polygon{fill:var(--ink);}
+.ec-sunic circle{fill:var(--ec-sun);} .ec-sunic line{stroke:var(--ec-sun);stroke-width:2;stroke-linecap:round;}
+.ec-skybg{fill:var(--ec-sky);}
+.ec-ground{fill:var(--ec-land);}
+.ec-beam{fill:var(--ec-sun);opacity:.38;}
+.ec-arc{fill:none;stroke:var(--cink);stroke-width:1.8;}
+.ec-foot{stroke:var(--ec-sun-ink);stroke-width:3;stroke-linecap:round;}
+.ec-dbar-n{fill:var(--ec-deep);opacity:.75;}
+.ec-dbar-d{fill:var(--ec-sun);}
+.ec-grid{stroke:var(--line);stroke-width:1;}
+.ec-axisl{stroke:var(--ink);stroke-width:1.4;}
+.ec-guide{stroke:var(--cink);stroke-width:1.4;stroke-dasharray:3 3;}
+.ec-ins{fill:none;stroke:var(--ec-sun);stroke-width:3;stroke-linejoin:round;}
+.ec-ins-ref{fill:none;stroke:var(--muted);stroke-width:1.3;stroke-dasharray:4 4;opacity:.8;}
+/* winds and cells */
+.ec-belt-wet{fill:var(--ec-wet);opacity:.28;}
+.ec-belt-dry{fill:var(--ec-dry);opacity:.38;}
+.ec-wind line{stroke:var(--ink);stroke-width:2;stroke-linecap:round;} .ec-wind polygon{fill:var(--ink);}
+.ec-strip{fill:var(--paper);stroke:var(--line);stroke-width:1.2;}
+.ec-cellbox{fill:var(--ec-cell);stroke:var(--ec-wet);stroke-width:1.4;opacity:.9;}
+.ec-cellarrow line{stroke:var(--ec-wet);stroke-width:2;} .ec-cellarrow polygon{fill:var(--ec-wet);}
+.ec-celln{fill:var(--ec-wet-ink);font-size:12px;}
+.ec-cell.is-on .ec-cellbox{fill:var(--ctint);stroke:var(--cink);stroke-width:2.4;}
+.ec-cell.is-on .ec-cellarrow line{stroke:var(--cink);} .ec-cell.is-on .ec-cellarrow polygon{fill:var(--cink);}
+.ec-cell.is-on .ec-celln{fill:var(--cink);}
+.ec-lead{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;}
+.ec-probe{stroke:var(--cink);stroke-width:2;stroke-dasharray:6 4;}
+.ec-balloon line{stroke:var(--ink);stroke-width:1.2;} .ec-balloon circle{fill:#E4572E;stroke:var(--white);stroke-width:1.5;}
+.ec-cloud{fill:#fff;stroke:#9AA9B4;stroke-width:1.2;}
+:root[data-theme="dark"] .ec-cloud{fill:#C9D3DB;stroke:#7C8C98;}
+.ec-cloud-sm{stroke-width:.8;}
+.ec-rain{stroke:var(--ec-wet);stroke-width:1.6;stroke-linecap:round;opacity:.8;}
+/* rain shadow */
+.ec-mtn{fill:var(--ec-mtn);}
+.ec-sea{fill:var(--ec-wet);opacity:.6;}
+.ec-cbase{stroke:var(--ec-wet);stroke-width:1.5;stroke-dasharray:6 4;}
+.ec-path{fill:none;stroke:var(--cink);stroke-width:2.2;stroke-dasharray:2 5;stroke-linecap:round;}
+.ec-parcel{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
+.ec-tree{fill:var(--ec-tree);}
+.ec-cactus{fill:none;stroke:#5E8C3A;stroke-width:2.4;stroke-linecap:round;}
+.ec-shrub{fill:#9B8B5E;}
+/* El Niño */
+.ec-deep{fill:var(--ec-deep);}
+.ec-sst-hot{stop-color:var(--ec-hot);} .ec-sst-mid{stop-color:var(--ec-mid);} .ec-sst-cool{stop-color:var(--ec-cool);}
+.ec-thermo{fill:none;stroke:var(--white);stroke-width:2;stroke-dasharray:6 4;}
+.ec-land{fill:var(--ec-land);}
+.ec-upwell line{stroke:#9ED0F0;stroke-width:2.6;} .ec-upwell polygon{fill:#9ED0F0;}
+.ec-fish{fill:#2B2B2B;opacity:.75;}
+:root[data-theme="dark"] .ec-fish{fill:#E6EEF2;}
+.ec-walker line{stroke:var(--muted);stroke-width:2;stroke-dasharray:5 4;} .ec-walker polygon{fill:var(--muted);}
+.ec-trade line{stroke:var(--ink);stroke-linecap:round;} .ec-trade polygon{fill:var(--ink);}
+.ec-band-nino{fill:var(--ec-nino);opacity:.12;} .ec-band-nina{fill:var(--ec-nina);opacity:.12;}
+.ec-bar-w{fill:var(--ec-hot);} .ec-bar-c{fill:var(--ec-cool);}
+.ec-meanline{stroke:var(--cink);stroke-width:2.4;stroke-dasharray:6 4;}
+.ec-detchart svg{width:100%;height:auto;}

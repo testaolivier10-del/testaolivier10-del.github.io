@@ -1,0 +1,12 @@
+{
+ "climate-change-feedback": {
+  "file": "figures/climate-change-feedback.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two loops, each marked with a plus sign. Left, ice and albedo: Earth warms, snow and sea ice melt, darker water and land are exposed so albedo falls, more sunlight is absorbed, and Earth warms more. Right, thawing permafrost: Earth warms, permafrost thaws, microbes decompose the frozen remains, methane and carbon dioxide are released, and Earth warms more. Caption: a positive feedback loop makes the first change stronger; melting sea ice is part of the loop but does not raise sea level."
+ }
+}

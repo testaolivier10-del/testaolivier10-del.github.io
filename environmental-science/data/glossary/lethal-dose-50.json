@@ -1,0 +1,11 @@
+{
+ "dose": {
+  "def": "The amount of a substance that enters an organism, usually given in milligrams per kilogram of body mass (mg/kg) so animals of different sizes can be compared."
+ },
+ "toxicity": {
+  "def": "How harmful a substance is to living things. A toxicant is a substance that causes harm; the smaller the dose needed to cause harm, the higher the toxicity."
+ },
+ "ld50": {
+  "def": "Lethal dose 50%: the dose, in mg per kg of body mass, that kills half of a test population. A lower LD50 means a more toxic substance."
+ }
+}

@@ -1,0 +1,549 @@
+{
+ "stimuli": {
+  "population-growth-s1": {
+   "kind": "quantitative",
+   "title": "Yeast growing in a flask",
+   "invented": true,
+   "table": {
+    "caption": "Yeast cells per milliliter in a flask of sugar solution, counted every 2 hours (invented data for practice)",
+    "cols": [
+     "Time (hours)",
+     "Yeast cells per mL (thousands)"
+    ],
+    "rows": [
+     [
+      "0",
+      "10"
+     ],
+     [
+      "2",
+      "20"
+     ],
+     [
+      "4",
+      "40"
+     ],
+     [
+      "6",
+      "80"
+     ],
+     [
+      "8",
+      "150"
+     ],
+     [
+      "10",
+      "240"
+     ],
+     [
+      "12",
+      "300"
+     ],
+     [
+      "14",
+      "320"
+     ],
+     [
+      "16",
+      "325"
+     ]
+    ]
+   }
+  },
+  "population-growth-s2": {
+   "kind": "visual",
+   "title": "Two growth curves",
+   "invented": true,
+   "figure": "population-growth-j-s"
+  }
+ },
+ "items": [
+  {
+   "id": "env-population-growth-1",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "During which period does the yeast population double every 2 hours?",
+   "stimulus": "population-growth-s1",
+   "options": [
+    "From 0 to 6 hours",
+    "From 8 to 12 hours",
+    "From 12 to 16 hours",
+    "Over the whole 16 hours"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Steady doubling is the sign of exponential growth.",
+    "options": [
+     "Right: 10, 20, 40, 80 thousand cells per mL, doubling each 2 hours.",
+     "From 150 to 240 to 300, growth is slowing, not doubling.",
+     "The population is leveling off: 300, 320, 325.",
+     "Doubling stops after about 6 hours."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-2",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement best describes the shape of the whole yeast growth curve?",
+   "stimulus": "population-growth-s1",
+   "options": [
+    "A J-curve that rises faster and faster to the end",
+    "An S-curve leveling off near 325 thousand cells per mL",
+    "A straight line rising at a steady rate",
+    "A curve that rises and then crashes to zero"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rapid growth that slows and levels off is logistic.",
+    "options": [
+     "After 8 hours growth slows, so it is not a J-curve throughout.",
+     "Right: fast early growth, then slowing, then a plateau: logistic growth.",
+     "Growth is not steady: it speeds up, then slows.",
+     "The population levels off; it does not crash in these 16 hours."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-3",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best accounts for the yeast population leveling off after 12 hours?",
+   "stimulus": "population-growth-s1",
+   "options": [
+    "The yeast cells stop dividing once they are 12 hours old",
+    "The flask gets colder each hour of the experiment",
+    "Sugar runs low and wastes build up",
+    "Yeast stop growing at a set 300 thousand cells per mL"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A population levels off when limiting factors strengthen as it grows.",
+    "options": [
+     "Cells keep dividing when there is food; age is not the limit.",
+     "Nothing suggests the temperature changed.",
+     "Right: density-dependent limits (food and waste) slow growth near carrying capacity.",
+     "The level depends on the flask’s resources, not a fixed number."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-4",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times larger is the yeast population at 6 hours than at 0 hours?",
+   "stimulus": "population-growth-s1",
+   "why": {
+    "correct": "Divide the later count by the earlier one: $\\frac{80}{10} = 8$ times. That is three doublings in 6 hours ($2 \\times 2 \\times 2 = 8$), one every 2 hours."
+   },
+   "numeric": {
+    "unit": "",
+    "from": {
+     "fn": "magnification",
+     "args": [
+      80,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 70,
+      "why": "That is the increase (80 - 10), not how many times larger. Divide: 80 / 10."
+     },
+     {
+      "value": 3,
+      "why": "That is the number of doublings. Each doubling multiplies by 2, so three doublings make it 2 × 2 × 2 = 8 times larger."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-5",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On the figure, at about what population size does the logistic curve grow fastest?",
+   "stimulus": "population-growth-s2",
+   "options": [
+    "About 1,000, at the carrying capacity",
+    "About 20, at the start",
+    "About 1,400, at the top of the graph",
+    "About 500, half the carrying capacity"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Logistic growth is fastest at about half of K.",
+    "options": [
+     "At K the curve is flat; growth has stopped.",
+     "At the start the curve is low and flat; few individuals means few added.",
+     "The logistic curve never reaches 1,400.",
+     "Right: the logistic curve is steepest at about K/2, marked on the figure."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-6",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Both curves start at 20 and match for the first few years. Why do they separate later?",
+   "stimulus": "population-growth-s2",
+   "options": [
+    "Limits slow the S-curve near K",
+    "The J-curve species has a lower biotic potential",
+    "The S-curve species dies out after 15 years",
+    "The J-curve stops growing once it reaches the carrying capacity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When a population is small, limits barely matter, so logistic growth looks exponential.",
+    "options": [
+     "Right: limiting factors bend the logistic curve; the exponential curve assumes no limits.",
+     "Both start with the same growth; the J-curve is not slower.",
+     "The S-curve levels off near 1,000; it does not die out.",
+     "The J-curve passes 1,000 and keeps rising."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-7",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which real situation is most likely to produce the J-curve in the figure for a time?",
+   "stimulus": "population-growth-s2",
+   "options": [
+    "A deer herd that has lived on the same island for centuries",
+    "A species brought to a new region with no predators",
+    "A fish population in a small, crowded pond",
+    "A population that is hit by a hard winter each year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Exponential growth needs plentiful resources and few limits, which a new, open habitat can provide.",
+    "options": [
+     "A long-settled herd is usually near carrying capacity, not growing exponentially.",
+     "Right: unlimited resources and few limits let a population grow exponentially for a while.",
+     "Crowding means strong limits, which produce an S-curve or a decline.",
+     "Repeated losses keep a population from exponential growth."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-8",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A herd of 400 elk lives in a valley of 25 square kilometers. What is its population density?",
+   "why": {
+    "correct": "Number over area: $\\frac{400\\,\\text{elk}}{25\\,\\text{km}^2} = 16$ elk per km²."
+   },
+   "numeric": {
+    "unit": "elk/km^2",
+    "units": [
+     "elk per km^2",
+     "elk per square kilometer"
+    ],
+    "from": {
+     "fn": "density",
+     "args": [
+      400,
+      25
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.0625,
+      "why": "That is area over number. Population density is individuals per area: 400 / 25."
+     },
+     {
+      "value": 10000,
+      "why": "That multiplies. Density is individuals divided by area."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-9",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A population of 5,000 grows exponentially at 4% a year. By the rule of 70, how many years does it take to double? Write the setup, then the answer.",
+   "why": {
+    "correct": "Rule of 70: $\\frac{70}{4} = 17.5$ years. The population reaches 10,000 in about 17.5 years, then 20,000 about 17.5 years after that."
+   },
+   "setup": {
+    "answer": "70 / 4",
+    "mustUse": [
+     "70",
+     "4"
+    ],
+    "mustNotUse": [
+     "0.04"
+    ],
+    "then": {
+     "unit": "yr",
+     "units": [
+      "years"
+     ],
+     "from": {
+      "fn": "ruleOf70",
+      "args": [
+       4
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 1750,
+       "why": "That divides by 0.04. Use the rate in percent: 70 / 4."
+      },
+      {
+       "value": 0.057,
+       "why": "That is 4 / 70. Divide 70 by the rate."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "70 / 0.04",
+      "why": "Use the growth rate in percent (4), not as a decimal (0.04)."
+     },
+     {
+      "expr": "4 / 70",
+      "why": "The rule of 70 puts 70 on top: 70 divided by the growth rate."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-10",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The population of 5,000 keeps growing at 4% a year. Using its doubling time of 17.5 years, how large will it be after 35 years?",
+   "why": {
+    "correct": "35 years is two doubling times: $5{,}000 \\times 2 \\times 2 = 20{,}000$."
+   },
+   "numeric": {
+    "unit": "",
+    "from": {
+     "fn": "afterDoublings",
+     "args": [
+      5000,
+      35,
+      17.5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 10000,
+      "why": "That is one doubling. 35 years is two doubling times: 5,000 × 2 × 2."
+     },
+     {
+      "value": 12000,
+      "why": "That adds 4% a year as a fixed number (200 a year). Exponential growth compounds: it doubles every 17.5 years."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-11",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which factor is density-independent?",
+   "options": [
+    "A disease that spreads faster in crowded herds",
+    "Competition among birds for the few nesting sites",
+    "A late frost that kills plants",
+    "Predators that hunt more where prey is dense"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Density-independent factors act no matter how many individuals there are.",
+    "options": [
+     "Spread through crowding makes disease density-dependent.",
+     "Competition gets stronger as density rises: density-dependent.",
+     "Right: a frost acts on the population regardless of its density.",
+     "Predation that tracks prey density is density-dependent."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-12",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which limiting factors are density-dependent? Select all that apply.",
+   "options": [
+    "Food that runs short as more animals share it",
+    "A parasite that passes easily between crowded hosts",
+    "A hurricane that floods a coastal marsh",
+    "A wildfire started by lightning"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Density-dependent factors strengthen as a population becomes denser.",
+    "options": [
+     "Right: shortage grows with density.",
+     "Right: transmission rises with crowding.",
+     "A storm acts whatever the population size: density-independent.",
+     "Fire acts regardless of density: density-independent."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-13",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why a population growing logistically slows down as it nears carrying capacity.",
+   "why": {
+    "correct": "More individuals, fewer resources each, fewer births and more deaths, slower growth."
+   },
+   "specific": {
+    "frame": "As the population grows, ___, so ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Change in resources",
+      "options": [
+       "each individual gets a smaller share of food and space",
+       "each individual gets more food than before",
+       "the carrying capacity keeps rising"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More individuals share the same resources, so each gets less.",
+       "2": "Carrying capacity is set by resources; it does not rise because the population grows."
+      }
+     },
+     "effect": {
+      "label": "Effect on individuals",
+      "options": [
+       "fewer young are born and more individuals die",
+       "more young are born",
+       "no individuals die"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Shortage lowers births; it does not raise them.",
+       "2": "Shortage raises deaths."
+      }
+     },
+     "mechanism": {
+      "label": "Effect on growth",
+      "options": [
+       "slows growth until the population levels off near K",
+       "speeds growth past K for good",
+       "makes the population grow exponentially"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A population cannot stay above K for good.",
+       "2": "Exponential growth needs unlimited resources."
+      }
+     }
+    },
+    "model": "As the population grows, each individual gets a smaller share of food and space, so fewer young are born and more individuals die, which slows growth until the population levels off near K."
+   }
+  },
+  {
+   "id": "env-population-growth-14",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Rabbits released in Australia in 1859 multiplied into hundreds of millions within a few decades. Which conditions best explain this?",
+   "options": [
+    "A small area of habitat with many predators",
+    "Strong competition from native rabbits",
+    "Frequent floods that killed most young rabbits",
+    "Plenty of food and few predators or diseases"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A new environment with few limits allows exponential growth, at least for a time.",
+    "options": [
+     "Many predators and little habitat would limit growth.",
+     "Australia had no native rabbits to compete with them.",
+     "Heavy losses would slow growth, not speed it.",
+     "Right: with few limiting factors, the population grew exponentially."
+    ]
+   }
+  },
+  {
+   "id": "env-population-growth-15",
+   "unit": "unit-3",
+   "topic": "population-growth",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A lake population of fish has leveled off at about 2,000. A factory then adds waste that kills half the fish’s food supply. What is the most likely result?",
+   "options": [
+    "They fall toward a lower level",
+    "The fish begin to grow exponentially",
+    "The population stays steady at about 2,000",
+    "The fish population doubles in size"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When a limiting resource shrinks, the level a population settles at shrinks too.",
+    "options": [
+     "Right: less food lowers carrying capacity, so the population falls.",
+     "Less food means stronger limits, not fewer.",
+     "The lake can no longer feed 2,000 fish.",
+     "Less food cannot support a larger population."
+    ]
+   }
+  }
+ ]
+}

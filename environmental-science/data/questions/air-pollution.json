@@ -1,0 +1,586 @@
+{
+ "stimuli": {
+  "air-pollution-s1": {
+   "kind": "quantitative",
+   "title": "Air pollutant emissions in a river-valley city",
+   "invented": true,
+   "table": {
+    "caption": "Yearly emissions by source, in tons per year (invented data for practice)",
+    "cols": [
+     "Source",
+     "NOx",
+     "SO2",
+     "CO",
+     "PM2.5",
+     "VOCs"
+    ],
+    "rows": [
+     [
+      "Coal power plant",
+      "2,400",
+      "6,000",
+      "300",
+      "400",
+      "50"
+     ],
+     [
+      "Cars and trucks",
+      "4,200",
+      "60",
+      "18,000",
+      "250",
+      "3,000"
+     ],
+     [
+      "Factories",
+      "1,000",
+      "1,500",
+      "1,200",
+      "300",
+      "2,200"
+     ],
+     [
+      "Home heating and wood stoves",
+      "400",
+      "440",
+      "2,500",
+      "650",
+      "750"
+     ],
+     [
+      "Total",
+      "8,000",
+      "8,000",
+      "22,000",
+      "1,600",
+      "6,000"
+     ]
+    ]
+   }
+  },
+  "air-pollution-s2": {
+   "kind": "visual",
+   "title": "Lead in the air of a city as leaded gasoline was phased out",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of average lead in city air, in micrograms per cubic meter, falling from 1.2 in 1975 to 0.05 in 1995, invented data",
+    "kind": "bar",
+    "categories": [
+     "1975",
+     "1980",
+     "1985",
+     "1990",
+     "1995"
+    ],
+    "values": [
+     1.2,
+     1,
+     0.6,
+     0.1,
+     0.05
+    ],
+    "xLabel": "Year",
+    "yLabel": "Lead in air (µg per m³)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-air-pollution-1",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which source in the table releases the most sulfur dioxide?",
+   "stimulus": "air-pollution-s1",
+   "options": [
+    "The cars and trucks",
+    "The coal power plant",
+    "The factories",
+    "The home heating and wood stoves"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The coal power plant releases 6,000 of the 8,000 tons of SO2. Coal contains sulfur, and burning it turns that sulfur into SO2.",
+    "options": [
+     "Cars and trucks lead for CO (18,000 tons) and NOx, but release just 60 tons of SO2.",
+     "Right: 6,000 tons, three quarters of the city total, because coal contains sulfur.",
+     "Factories release 1,500 tons of SO2, far less than the 6,000 tons from the coal plant.",
+     "Wood stoves lead for PM2.5 (650 tons), not SO2 (440 tons)."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-2",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the city's NOx comes from cars and trucks?",
+   "stimulus": "air-pollution-s1",
+   "why": {
+    "correct": "Part over whole, times 100: $\\frac{4{,}200\\,\\text{tons}}{8{,}000\\,\\text{tons}} \\times 100 = 52.5\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      4200,
+      8000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 175,
+      "why": "You divided by the coal plant's 2,400 tons. A share of the city's NOx divides by the city total, 8,000 tons."
+     },
+     {
+      "value": 0.525,
+      "why": "0.525 is the fraction. Multiply by 100 to turn it into a percent: 52.5%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-3",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The city replaces its coal power plant with a wind farm. Which pollutant's city total falls by the largest percent?",
+   "stimulus": "air-pollution-s1",
+   "options": [
+    "Sulfur dioxide",
+    "Nitrogen oxides",
+    "Fine particulate matter",
+    "Carbon monoxide"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The coal plant made 6,000 of 8,000 tons of SO2, so SO2 falls by $\\frac{6{,}000}{8{,}000} \\times 100 = 75\\%$. NOx falls 30%, PM2.5 25%, and CO about 1%.",
+    "options": [
+     "Right: the plant was 75% of the SO2, so closing it cuts SO2 by 75%.",
+     "The plant made 2,400 of 8,000 tons of NOx, a 30% cut. Vehicles make most NOx.",
+     "The plant made 400 of 1,600 tons of PM2.5, a 25% cut. Wood stoves make more.",
+     "The plant made 300 of 22,000 tons of CO, about 1%. Vehicles make almost all of it."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-4",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The city has ozone alerts on summer afternoons, but ozone is not in the emissions table. What explains this?",
+   "stimulus": "air-pollution-s1",
+   "options": [
+    "Ozone leaks out of the stacks but is left off the list",
+    "Ozone sinks down from the ozone layer on hot days",
+    "Ozone is counted under carbon monoxide in the table",
+    "Ozone forms in the air from NOx and VOCs in sunlight"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Ozone near the ground is a secondary pollutant. Nothing emits it directly: it forms in the air when NOx and VOCs, both in the table, react in sunlight.",
+    "options": [
+     "Smokestacks and tailpipes do not emit ozone; it forms later, in sunlit air.",
+     "The ozone layer is in the stratosphere, far above. The ozone we breathe forms near the ground.",
+     "Ozone (O3) and carbon monoxide (CO) are different gases with different sources.",
+     "Right: it is a secondary pollutant, made from two primary pollutants the table lists."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-5",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in lead in the city's air from 1975 to 1995.",
+   "stimulus": "air-pollution-s2",
+   "why": {
+    "correct": "Percent change is (new minus old) over old, times 100: $\\frac{(0.05 - 1.2)}{1.2} \\times 100 = -95.8\\%$, a fall of about 96%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      1.2,
+      0.05
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -2300,
+      "why": "You divided by the 1995 value. Percent change divides by the old (1975) value, 1.2."
+     },
+     {
+      "value": 95.8333333333,
+      "why": "The size is right, but lead fell, so the change is negative: about -95.8%."
+     },
+     {
+      "value": -0.958333333333,
+      "why": "That is the fraction. Multiply by 100 to get a percent: about -95.8%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-6",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which response best explains the fall in airborne lead shown in the graph?",
+   "stimulus": "air-pollution-s2",
+   "options": [
+    "Power plants across the region switched from coal to natural gas",
+    "City parks planted trees that soaked up the lead",
+    "Rules under the Clean Air Act took lead out of gasoline",
+    "Stronger winds blew the lead to a nearby city"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Under the Clean Air Act, the EPA phased lead out of gasoline. Car exhaust had been the main source of lead in city air, so the concentration fell as leaded fuel disappeared.",
+    "options": [
+     "That cuts SO2 and mercury; most airborne lead came from gasoline in cars.",
+     "Trees do not remove lead from air on this scale; the source was removed.",
+     "Right: leaded gasoline was the main source, and the law phased it out.",
+     "The fall lasted 20 years and matches the fuel change, not the weather."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-7",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Between which two years shown did airborne lead fall the most?",
+   "stimulus": "air-pollution-s2",
+   "options": [
+    "From 1975 to 1980",
+    "From 1985 to 1990",
+    "From 1980 to 1985",
+    "From 1990 to 1995"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare the drops: 1975 to 1980, 0.2; 1980 to 1985, 0.4; 1985 to 1990, 0.5; 1990 to 1995, 0.05 micrograms per cubic meter. The largest drop is 1985 to 1990.",
+    "options": [
+     "That drop is 1.2 to 1.0, just 0.2.",
+     "Right: 0.6 to 0.1 is a drop of 0.5, the largest.",
+     "That drop is 1.0 to 0.6, or 0.4: large, but less than 0.5.",
+     "That drop is 0.1 to 0.05, the smallest in size."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-8",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which of these is a primary air pollutant?",
+   "options": [
+    "Carbon monoxide leaving a car's tailpipe",
+    "Ozone that forms near the ground on a sunny afternoon",
+    "Sulfuric acid droplets that form from SO2 in a cloud",
+    "Nitric acid that forms from NO2 in moist air"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A primary pollutant leaves its source as it is. Carbon monoxide comes straight out of a tailpipe; the other three form later, in the air.",
+    "options": [
+     "Right: it is emitted directly, so it is primary.",
+     "Ozone near the ground forms from NOx and VOCs in sunlight, so it is secondary.",
+     "The acid forms in the air from SO2 and water, so it is secondary.",
+     "The acid forms in the air from NO2, so it is secondary."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-9",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where does most of the sulfur dioxide in the air of an industrial country come from?",
+   "options": [
+    "Exhaust from gasoline cars on city streets",
+    "Decomposition of plant matter in wetlands",
+    "Paints and solvents drying in homes and shops",
+    "Burning coal in power plants and industrial boilers"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Coal contains sulfur as an impurity. Burning it in power plants and industrial boilers turns the sulfur into SO2, the largest human source.",
+    "options": [
+     "Gasoline is refined to be low in sulfur; cars are a major source of CO and NOx instead.",
+     "Wetland decomposition releases methane and CO2, not much SO2.",
+     "Drying paints and solvents release VOCs, not SO2.",
+     "Right: sulfur in the coal becomes SO2 when it burns."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-10",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Gasoline contains almost no nitrogen, yet car engines release nitrogen oxides. Why?",
+   "options": [
+    "Nitrogen fixation by bacteria living in the fuel tank",
+    "Sulfur in gasoline turns into nitrogen as it burns",
+    "Engine heat makes nitrogen and oxygen in the air combine",
+    "Nitrate from fertilizer is mixed into gasoline at refineries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Air is about 78% nitrogen gas. At the high temperature inside an engine, nitrogen and oxygen from the air combine to form NO, which becomes NO2.",
+    "options": [
+     "Nitrogen fixation is done by bacteria in soil and roots, not in fuel tanks.",
+     "Burning does not turn one element into another; sulfur becomes SO2.",
+     "Right: the nitrogen comes from the air drawn into the engine, not from the fuel.",
+     "Fertilizer is not added to fuel; the nitrogen comes from the air."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-11",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A family runs a gas generator in a closed garage and starts to feel dizzy. Which pollutant is the danger, and why?",
+   "options": [
+    "Sulfur dioxide, which turns the air in the garage brown and hazy",
+    "Carbon monoxide, which keeps blood from carrying oxygen",
+    "Carbon dioxide, which thins the ozone layer overhead",
+    "Lead, which a gasoline engine releases as a gas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Carbon monoxide from incomplete burning binds to hemoglobin in red blood cells more tightly than oxygen, so the blood carries less oxygen. It has no color or smell.",
+    "options": [
+     "SO2 irritates airways but is not the brown gas; NO2 is brownish.",
+     "Right: CO binds hemoglobin and starves the body of oxygen.",
+     "CO2 traps heat; it does not thin the ozone layer, and it is not the dizzy-making gas here.",
+     "Gasoline sold today has no lead; the danger in a closed garage is CO."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-12",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is PM2.5 considered more harmful to human health than the same mass of PM10?",
+   "options": [
+    "Smaller particles reach deeper into the lungs and the blood",
+    "PM2.5 is a gas, while PM10 is made of solid dust",
+    "PM2.5 comes from natural sources, while PM10 comes from cars",
+    "Larger particles break down into ozone in sunlight"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "PM2.5 particles are 2.5 micrometers or smaller. They slip past the nose and throat into the deepest air sacs of the lungs, and some reach the blood.",
+    "options": [
+     "Right: size decides how far a particle travels into the body.",
+     "Both are tiny solid or liquid particles; neither is a gas.",
+     "Both sizes have natural and human sources; the difference is size.",
+     "Particles do not turn into ozone; ozone forms from NOx and VOCs."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-13",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these is a policy to reduce air pollution, rather than a technology?",
+   "options": [
+    "A filter that a power plant installs inside its tall smokestack",
+    "An electric bus that a city buys for a downtown route",
+    "A cleaner-burning engine designed by a truck maker",
+    "An EPA standard setting the most PM2.5 the air may hold"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A policy is a law or rule. The EPA standard that limits how much of a pollutant the air may contain is a rule; the others are devices or fuels.",
+    "options": [
+     "A filter is a technology. A law requiring it would be the policy.",
+     "A bus is a technology. A rule or a tax would be the policy.",
+     "An engine design is a technology, not a law or rule.",
+     "Right: a legal limit is a policy, set under the Clean Air Act."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-14",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which group lists the six criteria pollutants the EPA sets limits for under the Clean Air Act?",
+   "options": [
+    "CO2, methane, water vapor, ozone, lead and SO2",
+    "Mercury, ammonia, CO, VOCs, NO2 and lead",
+    "CO, lead, NO2, ozone, particulate matter and SO2",
+    "Nitrate, phosphate, CO, ozone, lead and SO2"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The criteria pollutants are carbon monoxide, lead, nitrogen dioxide, ozone, particulate matter and sulfur dioxide.",
+    "options": [
+     "CO2, methane and water vapor are not among the six criteria pollutants.",
+     "Mercury, ammonia and VOCs are not among the six criteria pollutants.",
+     "Right: these six have national air quality standards.",
+     "Nitrate and phosphate are water pollutants, not air pollutants."
+    ]
+   }
+  },
+  {
+   "id": "env-air-pollution-15",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A delivery truck drives 30,000 miles a year and releases 4 grams of NOx per mile. Write the setup, with units, for the NOx it releases in a year in kilograms, then give the answer.",
+   "why": {
+    "correct": "Let the units cancel: $30{,}000\\,\\text{mi} \\times \\frac{4\\,\\text{g}}{1\\,\\text{mi}} \\times \\frac{1\\,\\text{kg}}{1{,}000\\,\\text{g}} = 120\\,\\text{kg}$ of NOx a year."
+   },
+   "setup": {
+    "answer": "30000 mi * 4 g/mi * 1 kg / 1000 g",
+    "mustUse": [
+     "30000",
+     "4",
+     "1000"
+    ],
+    "unit": "kg",
+    "mistakes": [
+     {
+      "expr": "30000 mi * 4 g/mi * 1000 g / 1 kg",
+      "why": "The conversion factor is upside down, so grams do not cancel. Put grams on the bottom: 1 kg / 1,000 g."
+     },
+     {
+      "expr": "30000 mi / 4 g/mi",
+      "why": "Multiply the miles by the grams per mile; dividing does not leave grams."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "convert",
+      "args": [
+       {
+        "fn": "emissions",
+        "args": [
+         30000,
+         4
+        ]
+       },
+       "g",
+       "kg"
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 120000,
+       "why": "120,000 is the answer in grams. Divide by 1,000 to convert to kilograms."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-air-pollution-16",
+   "unit": "unit-7",
+   "topic": "air-pollution",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Write a policy that would cut sulfur dioxide from a state's coal power plants, and say how it works.",
+   "why": {
+    "correct": "A policy is a rule with a target, and the answer says how the rule cuts the pollutant: plants switch to low-sulfur coal or clean their exhaust to stay under the limit."
+   },
+   "specific": {
+    "frame": "The state passes ___, so plants ___, which reduces the SO2 in the air.",
+    "slots": {
+     "action": {
+      "label": "Policy",
+      "options": [
+       "a law capping the SO2 each coal plant may release each year",
+       "better smokestacks for every coal plant",
+       "a campaign asking residents to save electricity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Smokestacks are a technology, not a law or rule; the question asks for a policy.",
+       "2": "A voluntary campaign is not a rule, and it does not target SO2 directly."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "raise their smokestacks to spread the SO2 farther",
+       "burn low-sulfur coal or remove SO2 from their exhaust to stay under the cap",
+       "release more NOx in place of SO2"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "Taller stacks move SO2 farther away; they do not lower the amount released.",
+       "2": "Trading one pollutant for another does not lower air pollution."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "sulfur",
+      "so2",
+      "coal"
+     ]
+    },
+    "model": "The state passes a law capping the SO2 each coal plant may release each year, so plants burn low-sulfur coal or remove SO2 from their exhaust to stay under the cap, which reduces the SO2 in the air."
+   }
+  }
+ ]
+}

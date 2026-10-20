@@ -1,0 +1,8 @@
+{
+ "photochemical-smog": {
+  "def": "A brownish mix of secondary pollutants, mainly ground-level ozone, formed when nitrogen oxides and volatile organic compounds react in sunlight. It is worst on hot, sunny afternoons in cities with heavy traffic."
+ },
+ "ground-level-ozone": {
+  "def": "Ozone (O3) in the lowest layer of the atmosphere, where people breathe. It forms when sunlight splits NO2 and the freed oxygen atom joins O2. It irritates lungs and damages plants."
+ }
+}

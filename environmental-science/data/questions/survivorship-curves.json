@@ -1,0 +1,510 @@
+{
+ "stimuli": {
+  "survivorship-curves-s1": {
+   "kind": "visual",
+   "title": "Three survivorship curves",
+   "invented": true,
+   "figure": "survivorship-curves-types"
+  },
+  "survivorship-curves-s2": {
+   "kind": "quantitative",
+   "title": "Survivors in two populations",
+   "invented": true,
+   "table": {
+    "caption": "Number alive at each age out of 1,000 individuals born in the same year, for two species (invented data for practice)",
+    "cols": [
+     "Age (years)",
+     "Species M alive",
+     "Species N alive"
+    ],
+    "rows": [
+     [
+      "0",
+      "1,000",
+      "1,000"
+     ],
+     [
+      "1",
+      "50",
+      "500"
+     ],
+     [
+      "2",
+      "30",
+      "250"
+     ],
+     [
+      "3",
+      "22",
+      "125"
+     ],
+     [
+      "4",
+      "18",
+      "62"
+     ],
+     [
+      "5",
+      "15",
+      "31"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-survivorship-curves-1",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which curve in the figure shows a population in which most individuals die young?",
+   "stimulus": "survivorship-curves-s1",
+   "options": [
+    "Type III",
+    "Type I",
+    "Type II",
+    "Types I and II equally"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A steep early drop means most of the young die.",
+    "options": [
+     "Right: it drops from 1,000 to about 40 by 10% of the life span.",
+     "Type I stays near 1,000 until late in life.",
+     "Type II falls at a steady rate, not mostly at the start.",
+     "Neither drops steeply at the start."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-2",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the Type II curve appear as a straight line on this graph?",
+   "stimulus": "survivorship-curves-s1",
+   "options": [
+    "The same number die in each interval, so the line is straight",
+    "The same fraction die in each age interval",
+    "Few of them die until near the end of life",
+    "They are counted just once, at the end of life"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On a log scale, a constant proportion lost each interval gives a straight line.",
+    "options": [
+     "With the same number dying each interval, the line would curve on a log scale.",
+     "Right: a constant share dying per interval gives a straight line when survivors are on a log scale.",
+     "That would be a flat line followed by a drop, like Type I.",
+     "The curve shows counts at every age."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-3",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which animal is most likely to have a Type I survivorship curve?",
+   "stimulus": "survivorship-curves-s1",
+   "options": [
+    "An oyster, which releases millions of eggs into the water",
+    "A songbird, which is about as likely to die at any age",
+    "An elephant, which guards its calf for years",
+    "A sea star, whose larvae drift unprotected in the ocean"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Parental care and protection of the young push deaths toward old age.",
+    "options": [
+     "Most oyster larvae die very young: Type III.",
+     "A steady risk at every age is Type II.",
+     "Right: protection of the young means most survive until old age.",
+     "Unprotected larvae mostly die young: Type III."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-4",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A wealthy country improves care for newborns and young children. How would this most likely change the shape of its human survivorship curve?",
+   "stimulus": "survivorship-curves-s1",
+   "options": [
+    "It would drop more steeply in the first years of life",
+    "It would become a straight line on a log scale",
+    "It would not change, as the curve shows old age alone",
+    "It would stay high longer, pushing deaths to older ages"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Lowering deaths at young ages keeps the curve high longer.",
+    "options": [
+     "Better care lowers early deaths, so the early drop shrinks.",
+     "A straight line means the same risk at every age, which better child care does not create.",
+     "The curve shows deaths at every age, including childhood.",
+     "Right: fewer deaths early in life keep the curve high, a stronger Type I."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-5",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which species in the table has a Type III survivorship pattern?",
+   "stimulus": "survivorship-curves-s2",
+   "options": [
+    "Species M",
+    "Species N",
+    "Both of the species",
+    "Neither of the species"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Look for a steep early drop followed by a leveling off.",
+    "options": [
+     "Right: 950 of 1,000 die in the first year, then survival is high.",
+     "N loses half each year, a steady rate: Type II.",
+     "Their patterns differ in the first year.",
+     "M’s steep early drop is Type III."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-6",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of species M died during the first year of life?",
+   "stimulus": "survivorship-curves-s2",
+   "why": {
+    "correct": "Deaths over the starting number, times 100: $\\frac{1{,}000 - 50}{1{,}000} \\times 100 = 95\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        1000,
+        50
+       ]
+      },
+      1000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That is the percent that survived. The question asks what percent died: (1,000 - 50) / 1,000 × 100."
+     },
+     {
+      "value": 950,
+      "why": "That is the number that died. Divide by 1,000 and multiply by 100 for the percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-7",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What pattern does species N follow from age 0 to age 5?",
+   "stimulus": "survivorship-curves-s2",
+   "options": [
+    "The same number of them die each year",
+    "About half the survivors die each year",
+    "Nearly the whole group dies in year one",
+    "Hardly any die after the first year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A constant fraction lost each year is a Type II pattern.",
+    "options": [
+     "The number dying falls each year (500, 250, 125 ...); the fraction stays the same.",
+     "Right: 1,000, 500, 250, 125, 62, 31: halving each year, a Type II pattern.",
+     "Half survive the first year.",
+     "Survivors keep falling every year."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-8",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What percent of the species N individuals alive at age 2 are still alive at age 4?",
+   "stimulus": "survivorship-curves-s2",
+   "why": {
+    "correct": "Survivors at 4 over survivors at 2, times 100: $\\frac{62}{250} \\times 100 = 24.8\\%$, about a quarter, as two halvings predict."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      62,
+      250
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6.2,
+      "why": "That divides by 1,000, the number at birth. The question asks about those alive at age 2: divide by 250."
+     },
+     {
+      "value": 75.2,
+      "why": "That is the percent that died between ages 2 and 4. The question asks how many are still alive."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-9",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What does a survivorship curve show?",
+   "options": [
+    "How many offspring each female has per year",
+    "How fast a population grows from year to year",
+    "How many of a group born together are alive at each age",
+    "How many different species live in an area"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Survivorship: survivors versus age for one group born at the same time.",
+    "options": [
+     "That is reproduction, not survivorship.",
+     "Growth is a different graph; survivorship tracks deaths by age.",
+     "Right: survivors plotted against age.",
+     "That is species richness."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-10",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"Oysters have a Type III curve, so Type III means r-selected.\" What is the best correction?",
+   "options": [
+    "The student is right: Type III and r-selected mean the same",
+    "Oysters are K-selected, so the student has the species wrong",
+    "Type III curves belong to K-selected species instead",
+    "They are separate ideas: deaths by age versus reproduction"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Keep the two ideas apart, while knowing they tend to go together.",
+    "options": [
+     "They describe different things: when deaths happen versus how a species reproduces.",
+     "Oysters release millions of eggs with no care, which is r-selected.",
+     "Type III curves are typical of r-selected species, not K-selected.",
+     "Right: r-selected species often have Type III curves, but the curve and the strategy are different ideas."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-11",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements about survivorship curves are correct? Select all that apply.",
+   "options": [
+    "Survivors are usually plotted on a log scale",
+    "A Type I curve stays high until old age",
+    "A Type III curve shows high survival among the young",
+    "A Type II curve drops steeply at old age"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Type I high then late drop; Type II steady; Type III early drop.",
+    "options": [
+     "Right: a log scale shows both large and small numbers clearly.",
+     "Right: most individuals survive until late in life.",
+     "Type III shows low survival among the young.",
+     "A steep drop at old age is Type I."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-12",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why most fish species have a Type III survivorship curve.",
+   "why": {
+    "correct": "Many unprotected young, most die early, the few survivors live on."
+   },
+   "specific": {
+    "frame": "Most fish ___, so ___, which makes the curve ___.",
+    "slots": {
+     "cause": {
+      "label": "Reproduction",
+      "options": [
+       "release huge numbers of eggs and give them no care",
+       "raise one young at a time and guard it for years",
+       "give birth to large, well-developed young"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes a species with Type I survival.",
+       "2": "Well-developed young survive better; that does not fit a steep early drop."
+      }
+     },
+     "effect": {
+      "label": "Survival",
+      "options": [
+       "most eggs and young are eaten or die early",
+       "most young survive to old age",
+       "the young die at the same rate as adults"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "High survival of the young would make the curve Type I.",
+       "2": "A steady rate at every age is Type II."
+      }
+     },
+     "mechanism": {
+      "label": "Shape",
+      "options": [
+       "drop steeply at first and then level off",
+       "stay high and drop only in old age",
+       "fall as a straight line on a log scale"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the Type I shape.",
+       "2": "That is the Type II shape."
+      }
+     }
+    },
+    "model": "Most fish release huge numbers of eggs and give them no care, so most eggs and young are eaten or die early, which makes the curve drop steeply at first and then level off."
+   }
+  },
+  {
+   "id": "env-survivorship-curves-13",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A species of lizard is about equally likely to be eaten by a hawk at any age. Which survivorship curve fits it best?",
+   "options": [
+    "Type II",
+    "Type I",
+    "Type III",
+    "No type, as lizards lack a curve"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equal risk at every age: Type II.",
+    "options": [
+     "Right: a constant risk of death at every age gives a Type II curve.",
+     "Type I needs low risk until old age.",
+     "Type III needs very high risk when young.",
+     "Every population has a survivorship pattern."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-14",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A disease kills mostly the oldest individuals in a population of elephants. How would this most likely affect the survivorship curve?",
+   "options": [
+    "It would drop more steeply among newborns",
+    "It would drop sooner in late life",
+    "It would change into a Type III curve",
+    "It would rise again among the oldest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Extra deaths at an age make the curve fall sooner at that age.",
+    "options": [
+     "The disease affects the old, not newborns.",
+     "Right: more deaths among the old shift the late drop toward younger ages.",
+     "The young still survive well, so it does not become Type III.",
+     "A survivorship curve can only stay level or fall as age increases."
+    ]
+   }
+  },
+  {
+   "id": "env-survivorship-curves-15",
+   "unit": "unit-3",
+   "topic": "survivorship-curves",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two curves start at 1,000. By the middle of the life span, curve P is at 900 and curve Q is at 30. What does this show?",
+   "options": [
+    "P has a Type III curve and Q has a Type I curve",
+    "Both species share the same survivorship pattern",
+    "Q loses far more young and early adults than P",
+    "Q will have more survivors in old age than P"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare values at the same age to compare survival.",
+    "options": [
+     "High mid-life survival (P) fits Type I; Q’s early losses fit Type III.",
+     "Their mid-life survivors differ by a factor of 30.",
+     "Right: by mid-life Q has 30 left, P has 900.",
+     "Q starts old age with far fewer survivors."
+    ]
+   }
+  }
+ ]
+}

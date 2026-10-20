@@ -1,0 +1,576 @@
+{
+ "stimuli": {
+  "ozone-depletion-s1": {
+   "kind": "quantitative",
+   "title": "Average size of the Antarctic ozone hole, 1980 to 2020",
+   "invented": true,
+   "table": {
+    "caption": "Mean area of the Antarctic ozone hole each September to October, millions of km² (invented data for practice, shaped like the satellite record)",
+    "cols": [
+     "Year",
+     "Mean area (million km²)"
+    ],
+    "rows": [
+     [
+      "1980",
+      "1.1"
+     ],
+     [
+      "1985",
+      "12.0"
+     ],
+     [
+      "1990",
+      "19.5"
+     ],
+     [
+      "1995",
+      "22.5"
+     ],
+     [
+      "2000",
+      "24.8"
+     ],
+     [
+      "2005",
+      "24.6"
+     ],
+     [
+      "2010",
+      "21.2"
+     ],
+     [
+      "2015",
+      "23.1"
+     ],
+     [
+      "2020",
+      "23.5"
+     ]
+    ]
+   }
+  },
+  "ozone-depletion-s2": {
+   "kind": "visual",
+   "title": "How chlorine from CFCs destroys ozone",
+   "figure": "ozone-depletion-chlorine-cycle"
+  }
+ },
+ "items": [
+  {
+   "id": "env-ozone-depletion-1",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Where is the ozone layer that shields life from ultraviolet radiation?",
+   "options": [
+    "In the stratosphere, about 15 to 35 km above the surface",
+    "In the troposphere, near the ground where we breathe",
+    "In the mesosphere, above the stratosphere",
+    "In the ocean’s surface layer, where ozone dissolves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Stratospheric ozone absorbs most incoming ultraviolet radiation before it reaches the surface.",
+    "options": [
+     "Right: most of Earth’s ozone sits in the stratosphere.",
+     "Ozone near the ground is a smog pollutant; the protective layer is higher up.",
+     "The mesosphere lies above the ozone layer.",
+     "The ozone layer is a part of the atmosphere, not the ocean."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-2",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which substances are the main cause of stratospheric ozone depletion?",
+   "options": [
+    "Carbon dioxide from burning fossil fuels",
+    "CFCs from old refrigerants and spray cans",
+    "Sulfur dioxide from coal-burning power plants",
+    "Methane from cattle and landfills"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "CFCs, and halons with bromine, are the ozone-depleting substances; their chlorine and bromine destroy ozone in the stratosphere.",
+    "options": [
+     "Carbon dioxide traps heat near the surface; it does not destroy stratospheric ozone.",
+     "Right: chlorine released from CFCs destroys ozone.",
+     "Sulfur dioxide causes acid rain; it is not the cause of the ozone hole.",
+     "Methane traps heat, but it is not the main ozone-depleting substance."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-3",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of ozone destruction by CFCs in order.",
+   "options": [
+    "CFCs released at the surface drift up into the stratosphere",
+    "Ultraviolet light breaks a CFC molecule and frees a chlorine atom",
+    "The chlorine atom reacts with ozone: Cl + O₃ → ClO + O₂",
+    "ClO reacts with a single oxygen atom, freeing the chlorine atom to destroy more ozone"
+   ],
+   "why": {
+    "correct": "CFCs are stable near the ground, so they reach the stratosphere, where UV breaks them; the freed chlorine is a catalyst that destroys ozone again and again."
+   }
+  },
+  {
+   "id": "env-ozone-depletion-4",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why can one chlorine atom destroy many thousands of ozone molecules?",
+   "options": [
+    "Each chlorine atom splits into thousands of smaller atoms",
+    "It absorbs ultraviolet light, which then destroys the ozone",
+    "It traps heat from the ground, which breaks the ozone",
+    "It is released after each cycle and reacts again"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In Cl + O₃ → ClO + O₂ and then ClO + O → Cl + O₂, the chlorine comes out unchanged and starts again.",
+    "options": [
+     "Chlorine atoms do not split; the same atom is reused.",
+     "Ultraviolet frees chlorine from CFCs; the chlorine reacts with ozone directly.",
+     "Trapping heat is a separate problem from how chlorine destroys ozone.",
+     "Right: chlorine is a catalyst; it is not used up by the reactions."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-5",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which health effect is most directly linked to thinning of the stratospheric ozone layer?",
+   "options": [
+    "More skin cancer and cataracts from extra UV",
+    "More asthma attacks from breathing ozone",
+    "More heat stroke from a warmer climate",
+    "More lung cancer from breathing CFCs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Stratospheric ozone absorbs UV-B; thinning lets more reach the surface, raising skin cancer and cataract rates.",
+    "options": [
+     "Right: less ozone lets more UV-B through, damaging skin and eyes.",
+     "That is ground-level ozone in smog, a different problem.",
+     "Warming comes from heat-trapping gases, not from ozone loss.",
+     "CFCs harm health by destroying ozone, which lets in UV."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-6",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Describe the trend in the average size of the ozone hole from 1980 to 2000.",
+   "stimulus": "ozone-depletion-s1",
+   "options": [
+    "It shrank steadily, from about 25 to about 1 million km²",
+    "It grew from about 1 to 25 million km²",
+    "It stayed about the same at about 20 million km²",
+    "It grew until 1985, then shrank until 2000"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read the values in order: 1.1 in 1980, then 12.0, 19.5, 22.5 and 24.8 in 2000.",
+    "options": [
+     "The values rise over 1980 to 2000, so the hole grew.",
+     "Right: the hole grew more than twentyfold over those 20 years.",
+     "It was about 1 million km² in 1980, so it did not stay the same.",
+     "It kept growing through 2000."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-7",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By what percent did the average size of the ozone hole change from 1985 to 2000?",
+   "stimulus": "ozone-depletion-s1",
+   "why": {
+    "correct": "$\\frac{(24.8 - 12.0)}{12.0} \\times 100 \\approx 107\\%$: the hole roughly doubled."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      12,
+      24.8
+     ]
+    },
+    "places": 0,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        24.8,
+        12
+       ]
+      },
+      "why": "You reversed the years or divided by the new value. Use (new − old) ÷ old × 100: (24.8 − 12.0) ÷ 12.0 × 100."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          24.8,
+          12
+         ]
+        },
+        12
+       ]
+      },
+      "why": "You forgot to multiply by 100. About 1.07 as a percent is about 107%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-8",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The hole stopped growing after about 2000, but did not shrink much by 2020. What best explains this?",
+   "stimulus": "ozone-depletion-s1",
+   "options": [
+    "CFC production rose sharply after 2000",
+    "Carbon dioxide began to rebuild the ozone layer after 2000",
+    "The ozone hole moved from Antarctica to the Arctic after 2000",
+    "Long-lived CFCs make recovery slow after cuts"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The slow response fits long-lived CFCs already in the stratosphere; recovery is expected around the 2060s.",
+    "options": [
+     "CFC production was being phased out by then.",
+     "Carbon dioxide does not rebuild ozone.",
+     "The data track the Antarctic hole each year.",
+     "Right: CFC molecules stay in the air for 50 to 100 years or more, so recovery lags behind the cuts."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-9",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the ozone hole form over Antarctica each spring?",
+   "stimulus": "ozone-depletion-s1",
+   "options": [
+    "Polar clouds activate chlorine; spring sun starts the loss",
+    "Antarctica produces more CFCs than any other continent",
+    "The Antarctic summer sun is strong enough to burn ozone away",
+    "Antarctic ice releases chlorine as it melts each spring"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Extreme cold over Antarctica forms polar stratospheric clouds, where chlorine becomes reactive; when sunlight returns in spring, ozone loss is rapid.",
+    "options": [
+     "Right: polar stratospheric clouds form in the extreme cold and turn chlorine into active forms; spring sunlight starts the destruction.",
+     "Few CFCs are released in Antarctica; they mix through the whole atmosphere.",
+     "The hole forms in spring (September to October), and sunlight alone does not remove ozone.",
+     "The chlorine comes from CFCs, not from ice."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-10",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what frees the chlorine atom from a CFC molecule?",
+   "stimulus": "ozone-depletion-s2",
+   "options": [
+    "Heat given off by the ground",
+    "Ultraviolet light high in the stratosphere",
+    "Rain washing the CFC out of the air",
+    "Reaction with carbon dioxide"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Step 1 of the diagram: ultraviolet light splits the CFC and frees Cl.",
+    "options": [
+     "Heat from the ground does not break CFC molecules apart.",
+     "Right: UV breaks the CFC molecule and frees chlorine.",
+     "Rain removes some gases, but CFCs are not broken this way.",
+     "Carbon dioxide does not react with CFCs to free chlorine."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-11",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, what happens to the chlorine atom at the end of step 3?",
+   "stimulus": "ozone-depletion-s2",
+   "options": [
+    "It becomes part of a new ozone molecule",
+    "It falls to the ground as acid rain",
+    "It is freed to destroy another ozone molecule",
+    "It is used up and can react no more"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The chlorine atom comes out of the cycle unchanged: it acts as a catalyst.",
+    "options": [
+     "The chlorine leaves as Cl; ozone is destroyed, not made.",
+     "In this cycle the chlorine stays in the stratosphere and repeats the cycle.",
+     "Right: ClO + O gives back a free Cl, so the cycle repeats.",
+     "Chlorine is not used up; that is why one atom destroys so much ozone."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-12",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Use the diagram to explain why cutting CFC emissions did not repair the ozone layer at once.",
+   "stimulus": "ozone-depletion-s2",
+   "options": [
+    "Ultraviolet light stopped reaching the stratosphere after the cuts",
+    "The diagram shows that ozone is made from CFCs",
+    "Each chlorine atom destroys one ozone molecule and then stops",
+    "Chlorine already up there keeps cycling for decades"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Long-lived CFCs and a reusable chlorine atom mean ozone loss continues long after new emissions end.",
+    "options": [
+     "UV still reaches the stratosphere; it is what frees chlorine.",
+     "Ozone forms from oxygen; CFCs destroy it.",
+     "The diagram shows the cycle repeating; each atom destroys many.",
+     "Right: CFCs and their chlorine stay up there a long time, so the damage continues after emissions stop."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-13",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "specific",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how CFC emissions lead to more skin cancer.",
+   "stimulus": "ozone-depletion-s2",
+   "why": {
+    "correct": "Every link: CFC, chlorine freed by UV, ozone destroyed, more UV through, more skin cancer."
+   },
+   "specific": {
+    "frame": "CFCs reach the stratosphere, where UV frees ___; it ___, so ___ UV reaches the surface and skin cancer ___.",
+    "slots": {
+     "cause": {
+      "label": "What is freed",
+      "options": [
+       "chlorine",
+       "carbon dioxide",
+       "sulfur"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Carbon dioxide is not part of a CFC; chlorine is.",
+       "2": "CFCs contain chlorine, fluorine and carbon, not sulfur."
+      }
+     },
+     "effect": {
+      "label": "What it does",
+      "options": [
+       "destroys ozone molecules",
+       "traps heat near the ground",
+       "forms acid rain"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Trapping heat warms the climate; it is not how ozone is lost.",
+       "2": "Acid rain is caused by NOx and SOx, not by chlorine from CFCs."
+      }
+     },
+     "more": {
+      "label": "UV reaching the surface",
+      "options": [
+       "more",
+       "less"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less ozone absorbs less UV, so more reaches the ground."
+      }
+     },
+     "direction": {
+      "label": "Skin cancer",
+      "options": [
+       "increases",
+       "decreases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More UV damages skin DNA and raises skin cancer."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "chlorine",
+      "ozone",
+      "UV",
+      "ultraviolet"
+     ]
+    },
+    "model": "CFCs drift up to the stratosphere, where ultraviolet light frees chlorine atoms; each chlorine atom destroys many ozone molecules, so the thinner ozone layer absorbs less UV, more UV reaches the surface, and skin cancer increases because UV damages the DNA in skin cells."
+   }
+  },
+  {
+   "id": "env-ozone-depletion-14",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A classmate says, \"Ground-level ozone in smog will drift up and repair the ozone hole.\" Why is this wrong?",
+   "options": [
+    "Ground-level ozone is a different molecule from stratospheric ozone",
+    "Surface ozone breaks down before reaching the stratosphere",
+    "Ozone near the ground is heavier than air and sinks into the soil",
+    "The stratosphere already has too much ozone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Same molecule, different place: near the ground ozone is a harmful pollutant that reacts within days; it does not refill the stratosphere.",
+    "options": [
+     "It is the same molecule, O₃; the problem is where it is and how long it lasts.",
+     "Right: ground-level ozone is short-lived and does not travel up to the ozone layer.",
+     "Ozone is not removed by sinking; it reacts quickly with other substances.",
+     "The concern is too little stratospheric ozone, not too much."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-15",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which effects are expected from more UV-B radiation reaching Earth’s surface? Select all that apply.",
+   "options": [
+    "More cases of skin cancer",
+    "More cataracts, a clouding of the eye’s lens",
+    "Damage to phytoplankton at the ocean surface",
+    "Faster loss of sea ice in the Arctic Ocean",
+    "A rise in global average air temperature",
+    "More acid rain in the eastern United States"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "More UV-B harms skin, eyes and some organisms, including phytoplankton; it is not the cause of global warming or acid rain.",
+    "options": [
+     "Right: UV-B damages DNA in skin cells.",
+     "Right: UV-B damages the eye.",
+     "Right: UV-B harms phytoplankton, the base of ocean food webs.",
+     "Sea ice melts with warming, not because of more UV.",
+     "Warming is driven by heat-trapping gases, not by more UV.",
+     "Acid rain comes from NOx and SOx emissions."
+    ]
+   }
+  },
+  {
+   "id": "env-ozone-depletion-16",
+   "unit": "unit-9",
+   "topic": "ozone-depletion",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Total ozone above a city fell from 300 Dobson units (DU) to 255 DU during a spring thinning event. What was the percent change in ozone?",
+   "why": {
+    "correct": "$\\frac{(255 - 300)}{300} \\times 100 = -15\\%$, a 15% decrease."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      300,
+      255
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        255,
+        300
+       ]
+      },
+      "why": "You divided by the new value or reversed the order. Use (new − old) ÷ old × 100: (255 − 300) ÷ 300 × 100."
+     },
+     {
+      "value": 15,
+      "why": "The size is right, but ozone fell, so the change is negative: −15%."
+     }
+    ]
+   }
+  }
+ ]
+}

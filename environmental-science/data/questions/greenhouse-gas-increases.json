@@ -1,0 +1,715 @@
+{
+ "stimuli": {
+  "greenhouse-gas-increases-s2": {
+   "kind": "visual",
+   "title": "Carbon dioxide in ice cores over 800,000 years",
+   "invented": true,
+   "plot": {
+    "label": "Carbon dioxide over the last 800,000 years from ice cores, cycling between about 180 and 290 parts per million, a simplified practice version of the record",
+    "kind": "line",
+    "series": [
+     {
+      "name": "CO2",
+      "points": [
+       [
+        -800,
+        190
+       ],
+       [
+        -700,
+        260
+       ],
+       [
+        -640,
+        180
+       ],
+       [
+        -570,
+        270
+       ],
+       [
+        -480,
+        185
+       ],
+       [
+        -410,
+        285
+       ],
+       [
+        -340,
+        190
+       ],
+       [
+        -330,
+        280
+       ],
+       [
+        -250,
+        185
+       ],
+       [
+        -240,
+        290
+       ],
+       [
+        -150,
+        190
+       ],
+       [
+        -130,
+        285
+       ],
+       [
+        -20,
+        185
+       ],
+       [
+        -10,
+        265
+       ],
+       [
+        0,
+        280
+       ]
+      ]
+     }
+    ],
+    "xLabel": "Thousands of years ago (0 = today)",
+    "yLabel": "CO2 (ppm)",
+    "y": [
+     150,
+     450
+    ]
+   }
+  },
+  "greenhouse-gas-increases-s1": {
+   "kind": "quantitative",
+   "title": "Carbon dioxide at Mauna Loa, 1960 to 2023",
+   "source": "NOAA Global Monitoring Laboratory, Mauna Loa annual mean CO2 (co2_annmean_mlo.txt)",
+   "table": {
+    "caption": "Annual mean CO₂ at Mauna Loa Observatory, Hawaii, in parts per million (NOAA Global Monitoring Laboratory)",
+    "cols": [
+     "Year",
+     "CO₂ (ppm)"
+    ],
+    "rows": [
+     [
+      "1960",
+      "316.91"
+     ],
+     [
+      "1970",
+      "325.68"
+     ],
+     [
+      "1980",
+      "338.76"
+     ],
+     [
+      "1990",
+      "354.45"
+     ],
+     [
+      "2000",
+      "369.71"
+     ],
+     [
+      "2010",
+      "390.10"
+     ],
+     [
+      "2020",
+      "414.21"
+     ],
+     [
+      "2023",
+      "421.08"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-greenhouse-gas-increases-1",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the Keeling curve?",
+   "options": [
+    "CO₂ measured at Mauna Loa since 1958",
+    "A graph of ozone over Antarctica",
+    "A dose-response curve for carbon dioxide",
+    "A map of global surface temperatures"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Keeling curve is the continuous record of atmospheric CO₂ at Mauna Loa Observatory, Hawaii, begun in 1958.",
+    "options": [
+     "Right: Charles David Keeling began the measurements in Hawaii in 1958.",
+     "Ozone records are a different data set.",
+     "It is a record of CO₂ in the air over time, not a toxicity curve.",
+     "It tracks CO₂ concentration, not temperature."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-2",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How do scientists know how much CO₂ was in the air 10,000 years ago?",
+   "options": [
+    "Measurements at Mauna Loa",
+    "Air bubbles trapped in ice cores",
+    "Counting tree rings in living trees",
+    "Satellite images of the ozone layer"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Snow that turns to ice traps tiny bubbles of air; drilling ice cores in Antarctica and Greenland samples air hundreds of thousands of years old.",
+    "options": [
+     "Mauna Loa measurements began in 1958.",
+     "Right: bubbles in old ice hold samples of past air.",
+     "Tree rings show past growth and climate, not air samples.",
+     "Satellites began in the 20th century and image ozone, not ancient air."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-3",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in CO₂ at Mauna Loa from 1960 to 2020, then the answer.",
+   "stimulus": "greenhouse-gas-increases-s1",
+   "why": {
+    "correct": "$\\frac{(414.21 - 316.91)}{316.91} \\times 100 \\approx 30.7\\%$"
+   },
+   "setup": {
+    "answer": "(414.21 - 316.91) / 316.91 * 100",
+    "mustUse": [
+     "414.21",
+     "316.91"
+    ],
+    "mistakes": [
+     {
+      "expr": "(414.21 - 316.91) / 414.21 * 100",
+      "why": "Divide by the old value, the 1960 level (316.91 ppm), not the 2020 level."
+     },
+     {
+      "expr": "(414.21 - 316.91) / 316.91",
+      "why": "Multiply by 100 to turn the fraction into a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       316.91,
+       414.21
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "sub",
+        "args": [
+         414.21,
+         316.91
+        ]
+       },
+       "why": "97.3 is the change in ppm. Divide it by the 1960 value and multiply by 100 for a percent."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-4",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What was the average rate of increase in CO₂ from 2000 to 2020, in ppm per year?",
+   "stimulus": "greenhouse-gas-increases-s1",
+   "why": {
+    "correct": "$\\frac{(414.21 - 369.71)\\,\\text{ppm}}{20\\,\\text{yr}} \\approx 2.2\\,\\text{ppm per year}$."
+   },
+   "numeric": {
+    "unit": "ppm/yr",
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        414.21,
+        369.71
+       ]
+      },
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        414.21,
+        369.71
+       ]
+      },
+      "why": "44.5 ppm is the total rise over 20 years. Divide by 20 years for the rate per year."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          414.21,
+          369.71
+         ]
+        },
+        2
+       ]
+      },
+      "why": "Divide by the number of years, 2020 − 2000 = 20, not by 2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-5",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How did the yearly rise in CO₂ in the 1960s compare with the 2010s?",
+   "stimulus": "greenhouse-gas-increases-s1",
+   "options": [
+    "Slower: about 0.9 then and 2.4 ppm a year now",
+    "It was faster: CO₂ rose most quickly in the 1960s",
+    "It was the same: about 2 ppm a year in both",
+    "CO₂ fell in the 1960s and rose in the 2010s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve is not just rising; it is getting steeper, because yearly emissions have grown.",
+    "options": [
+     "Right: (325.68 − 316.91) ÷ 10 ≈ 0.9 and (414.21 − 390.10) ÷ 10 ≈ 2.4 ppm a year.",
+     "The 1960s rise was the smallest per decade in the table.",
+     "The 1960s rate was under 1 ppm a year.",
+     "CO₂ rose in every period in the table."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-6",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion do the data best support?",
+   "stimulus": "greenhouse-gas-increases-s1",
+   "options": [
+    "CO₂ rose because the ozone hole grew",
+    "CO₂ rose each period, faster over time",
+    "CO₂ will level off before 2030",
+    "CO₂ in 2023 was about twice the 1960 value"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Describe trends with numbers: about 317 ppm in 1960 to 421 ppm in 2023, rising faster each decade.",
+    "options": [
+     "The ozone hole does not add CO₂ to the air.",
+     "Right: every value is higher than the last, and each decade’s rise is larger.",
+     "The data show no sign of leveling off.",
+     "421.08 is about 1.33 times 316.91, not twice."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-7",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The Mauna Loa record also shows CO₂ rising and falling by a few ppm every year. What causes this yearly cycle?",
+   "stimulus": "greenhouse-gas-increases-s1",
+   "options": [
+    "Factories shut down for the summer each year",
+    "The ozone hole opens each spring",
+    "Northern plants grow in summer, using CO₂",
+    "Volcanoes in Hawaii erupt each winter"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Photosynthesis in the Northern Hemisphere summer draws CO₂ down; decomposition and respiration in winter release it.",
+    "options": [
+     "Emissions are fairly steady through the year.",
+     "The ozone hole does not change CO₂.",
+     "Right: most land and plants are in the Northern Hemisphere, so their growing season sets the cycle.",
+     "Measurements are made to avoid volcanic air, and eruptions are not yearly."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-8",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which human activity releases the most carbon dioxide?",
+   "options": [
+    "Raising cattle",
+    "Using fertilizer on fields",
+    "Using spray cans",
+    "Burning fossil fuels"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Burning fossil fuels for electricity, transport, industry and heat releases most human CO₂; deforestation is the next largest.",
+    "options": [
+     "Cattle are a major methane source.",
+     "Fertilizer is the main source of nitrous oxide.",
+     "Spray cans once released CFCs, not much CO₂.",
+     "Right: coal, oil and natural gas burned for energy are the largest source."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-9",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which are major human sources of methane? Select all that apply.",
+   "options": [
+    "Cattle and other livestock",
+    "Rice paddies",
+    "Landfills",
+    "Wind turbines",
+    "Solar panels",
+    "Catalytic converters"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Methane forms where organic matter breaks down without oxygen: livestock guts, flooded rice fields, landfills and leaking natural gas systems.",
+    "options": [
+     "Right: microbes in cattle digestive systems make methane.",
+     "Right: flooded fields lack oxygen, so microbes make methane.",
+     "Right: buried waste decomposes without oxygen, making methane.",
+     "Wind turbines do not release methane while running.",
+     "Solar panels do not release methane while running.",
+     "Catalytic converters reduce car pollutants; they are not a methane source."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-10",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the largest human source of nitrous oxide?",
+   "options": [
+    "Burning coal in power plants",
+    "Nitrogen fertilizer on soils",
+    "Leaks from natural gas pipelines",
+    "Clearcutting tropical forests"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Agriculture, mainly nitrogen fertilizer and manure, is the largest human source of nitrous oxide.",
+    "options": [
+     "Coal releases mostly CO₂ and SO₂; it is a smaller N₂O source.",
+     "Right: soil microbes turn some of the added nitrogen into N₂O.",
+     "Pipelines leak methane.",
+     "Clearcutting releases mostly CO₂."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-11",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Ice cores show CO₂ stayed between about 180 and 300 ppm for 800,000 years. What does today’s value of over 420 ppm suggest?",
+   "options": [
+    "CO₂ is in the middle of its natural range",
+    "Ice cores are probably measured wrongly",
+    "CO₂ is far above its natural range",
+    "CO₂ has fallen since the last ice age"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Natural cycles moved CO₂ between about 180 ppm (ice ages) and 300 ppm (warm periods); human emissions pushed it beyond 420 ppm.",
+    "options": [
+     "Over 420 ppm is well above 300 ppm.",
+     "Ice core and direct measurements agree where they overlap.",
+     "Right: today’s level is well outside the 800,000-year range.",
+     "CO₂ has risen, not fallen."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-12",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Before about 1800, CO₂ was about 280 ppm. In 2023 the Mauna Loa annual mean was 421.08 ppm. By what percent has CO₂ risen?",
+   "why": {
+    "correct": "$\\frac{(421.08 - 280)}{280} \\times 100 \\approx 50\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      280,
+      421.08
+     ]
+    },
+    "places": 0,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        421.08,
+        280
+       ]
+      },
+      "why": "You divided by the new value. Use (new − old) ÷ old × 100: (421.08 − 280) ÷ 280 × 100."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          421.08,
+          280
+         ]
+        },
+        280
+       ]
+      },
+      "why": "Multiply by 100: about 0.50 is about 50%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-13",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Clearing a tropical forest by burning adds CO₂ to the air in two ways. What are they?",
+   "options": [
+    "It releases stored carbon and removes a sink",
+    "Burning makes ozone, and ozone turns into CO₂",
+    "Ash releases CFCs, and CFCs make CO₂",
+    "Smoke blocks sunlight, and soil releases more nitrogen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trees store carbon. Burning releases it, and losing the forest removes a carbon sink.",
+    "options": [
+     "Right: the forest goes from a carbon sink to a source.",
+     "Ozone does not turn into CO₂.",
+     "Ash does not release CFCs.",
+     "This does not describe the two ways CO₂ increases."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-14",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how burning coal for electricity raises the concentration of CO₂ in the atmosphere.",
+   "why": {
+    "correct": "Coal is ancient stored carbon. Burning moves it to the air faster than natural sinks can take it back."
+   },
+   "specific": {
+    "frame": "Burning coal ___ carbon that was stored underground, which ___ CO₂ in the air faster than ___ can remove it.",
+    "slots": {
+     "verb": {
+      "label": "What burning does",
+      "options": [
+       "releases",
+       "stores",
+       "destroys"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Burning releases carbon; storing would remove it from the air.",
+       "2": "Carbon is not destroyed; it combines with oxygen to form CO₂."
+      }
+     },
+     "effect": {
+      "label": "Effect on CO₂",
+      "options": [
+       "increases",
+       "decreases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Burning adds CO₂, so it increases."
+      }
+     },
+     "sink": {
+      "label": "What cannot keep up",
+      "options": [
+       "plants and the ocean",
+       "the ozone layer",
+       "acid rain"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The ozone layer does not remove CO₂.",
+       "2": "Acid rain does not remove CO₂ from the air."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "coal",
+      "carbon",
+      "CO2",
+      "carbon dioxide"
+     ]
+    },
+    "model": "Burning coal releases carbon that was stored underground for millions of years as CO₂, which increases CO₂ in the air faster than plants and the ocean can remove it, because these sinks absorb only part of each year’s emissions."
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-15",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the ice core record, what was the highest CO₂ level before the industrial era?",
+   "stimulus": "greenhouse-gas-increases-s2",
+   "options": [
+    "About 420 ppm",
+    "About 180 ppm",
+    "About 290 ppm",
+    "About 800 ppm"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The peaks of the record, during warm periods between ice ages, reach about 290 ppm.",
+    "options": [
+     "That is today’s level, measured directly, not in the ice core record.",
+     "That is the lowest level, during ice ages.",
+     "Right: the highest peaks reach about 290 ppm.",
+     "800 is the number of thousands of years the record covers, not ppm."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-16",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What pattern does the record show over 800,000 years?",
+   "stimulus": "greenhouse-gas-increases-s2",
+   "options": [
+    "CO₂ rose steadily the whole time",
+    "CO₂ stayed at about 280 ppm the whole time",
+    "CO₂ fell steadily to today",
+    "CO₂ cycled between about 180 and 290 ppm"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Natural cycles, tied to ice ages, moved CO₂ up and down within a range.",
+    "options": [
+     "It rose and fell many times.",
+     "It swung by about 100 ppm.",
+     "It cycled up and down.",
+     "Right: low in ice ages, high in warm periods, again and again."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-gas-increases-17",
+   "unit": "unit-9",
+   "topic": "greenhouse-gas-increases",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How does today’s CO₂ level of over 420 ppm compare with the ice core record?",
+   "stimulus": "greenhouse-gas-increases-s2",
+   "options": [
+    "It is far above the highest natural peak",
+    "It is within the natural range",
+    "It is lower than in past warm periods",
+    "It matches the lowest point of the last ice age"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Human emissions have pushed CO₂ well beyond anything in the last 800,000 years.",
+    "options": [
+     "Right: 420 ppm is about 130 ppm above the record’s highest peak.",
+     "The highest natural value was about 290 ppm.",
+     "Past warm periods reached about 290 ppm, far below 420.",
+     "Ice ages were near 180 ppm."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,591 @@
+{
+ "stimuli": {
+  "sustainability-s1": {
+   "kind": "visual",
+   "title": "New fish added each year at each population size",
+   "figure": "sustainability-msy"
+  },
+  "sustainability-s2": {
+   "kind": "quantitative",
+   "title": "Environmental indicators for one region",
+   "invented": true,
+   "table": {
+    "caption": "Five indicators measured in one region in 2000 and 2020 (invented data for practice)",
+    "cols": [
+     "Indicator",
+     "2000",
+     "2020"
+    ],
+    "rows": [
+     [
+      "Bird species counted in surveys",
+      "140",
+      "112"
+     ],
+     [
+      "Grain harvested (million metric tons)",
+      "4.0",
+      "4.6"
+     ],
+     [
+      "Forest cover (% of land)",
+      "38",
+      "31"
+     ],
+     [
+      "Groundwater depth below surface (m)",
+      "20",
+      "34"
+     ],
+     [
+      "Population (millions)",
+      "6.0",
+      "7.5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-sustainability-1",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement best defines sustainability?",
+   "options": [
+    "Meeting present needs while protecting future generations' needs",
+    "Using each resource as fast as possible while it lasts",
+    "Stopping the use of natural resources to protect them",
+    "Growing the economy as fast as possible each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sustainability balances use today with what is left for the future.",
+    "options": [
+     "Right: present needs, protected future.",
+     "Using resources as fast as possible runs them down.",
+     "Sustainable use still uses resources, at a rate they can renew.",
+     "Economic growth alone says nothing about resources."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainability-2",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest grows about 2,000 cubic meters of new wood a year. Which harvest is sustainable?",
+   "options": [
+    "Cutting about 1,500 cubic meters a year",
+    "Cutting about 2,500 cubic meters a year",
+    "Cutting about 5,000 cubic meters each year",
+    "Cutting the whole forest in one year, then waiting"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Taking less than the yearly growth leaves the forest at least as large each year.",
+    "options": [
+     "Right: less than the 2,000 m³ the forest adds.",
+     "2,500 is more than the forest replaces, so it shrinks.",
+     "5,000 a year runs the forest down quickly.",
+     "Cutting the whole forest is not a steady harvest."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainability-3",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fish population follows logistic growth with a carrying capacity of 6,000 fish. At about what population size can the largest sustainable harvest be taken?",
+   "options": [
+    "About 3,000 fish",
+    "About 6,000 fish",
+    "About 600 fish",
+    "About 12,000 fish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For logistic growth, maximum sustainable yield is at about half of carrying capacity: $\\frac{6{,}000}{2} = 3{,}000$.",
+    "options": [
+     "Right: half of K.",
+     "At K, growth is near zero.",
+     "At 600 fish, too few parents produce few young.",
+     "The population cannot stay above K."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainability-4",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why do many fishery managers set the catch below the calculated maximum sustainable yield?",
+   "options": [
+    "Stock estimates are uncertain and bad years happen, so a margin helps",
+    "Catching below MSY makes the fish grow larger than their carrying capacity",
+    "Fish caught below MSY sell for a much higher price than fish caught at MSY",
+    "MSY is the smallest catch that keeps the fishing fleet in business"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If the stock is smaller than thought, or a bad year cuts reproduction, a catch at the estimated MSY can push the population down.",
+    "options": [
+     "Right: a safety margin for uncertainty.",
+     "No catch level lets a population stay above K.",
+     "Price is not why the limit is set below MSY.",
+     "MSY is the largest sustainable catch, not the smallest."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainability-5",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A population is held at 900 fish by a steady harvest; its carrying capacity is 1,000. Compared with holding it at 500, what happens to the sustainable harvest?",
+   "options": [
+    "It is smaller, because a population near K adds few new fish each year",
+    "It is larger, because more fish in the lake means more fish to catch each year",
+    "It is the same, because the lake has the same carrying capacity either way",
+    "It is zero, because a population above half of K is unable to be harvested"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The sustainable harvest equals the yearly growth, which is much lower near K than at K/2.",
+    "options": [
+     "Right: growth near K is small.",
+     "More fish standing does not mean more new fish each year.",
+     "Growth depends on population size, not just K.",
+     "There is still some growth below K, so some harvest is possible."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainability-6",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A deer herd has a carrying capacity of 2,400. At what herd size is the maximum sustainable yield taken (assume logistic growth)?",
+   "why": {
+    "correct": "$\\frac{2{,}400}{2} = 1{,}200$ deer."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      2400,
+      2
+     ]
+    },
+    "unit": "deer",
+    "mistakes": [
+     {
+      "value": 2400,
+      "why": "2,400 is the carrying capacity, where growth is near zero. MSY is at half of it."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        2400,
+        0.1
+       ]
+      },
+      "why": "This is not a 10% rule. MSY for logistic growth is at half the carrying capacity."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-sustainability-7",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why harvesting more than the maximum sustainable yield every year leads to a falling population.",
+   "why": {
+    "correct": "Each link: the harvest is larger than the yearly growth, so the population shrinks; a smaller population (below K/2) adds even fewer young; so the same harvest takes a bigger share each year and the decline speeds up."
+   },
+   "specific": {
+    "frame": "Because the harvest is ___, the population ___; a smaller population ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "The harvest",
+      "options": [
+       "larger than the number of fish added each year",
+       "smaller than the number of fish added each year",
+       "equal to the carrying capacity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A harvest smaller than growth lets the population grow or hold.",
+       "2": "The carrying capacity is a population size, not a harvest."
+      }
+     },
+     "effect": {
+      "label": "First effect",
+      "options": [
+       "shrinks",
+       "grows",
+       "stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Taking more than is added makes it shrink.",
+       "2": "It stays the same only if harvest equals growth."
+      }
+     },
+     "mechanism": {
+      "label": "Why it speeds up",
+      "options": [
+       "adds even fewer young each year",
+       "adds more young each year",
+       "reaches its carrying capacity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Below K/2, fewer parents mean fewer young.",
+       "2": "A shrinking population moves away from K."
+      }
+     },
+     "dv": {
+      "label": "Result",
+      "options": [
+       "the decline speeds up until the stock collapses",
+       "the population recovers by itself",
+       "the harvest can be raised"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "It cannot recover while the harvest stays too high.",
+       "2": "Raising the harvest makes the decline worse."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "harvest",
+      "population",
+      "young",
+      "growth"
+     ]
+    },
+    "model": "Because the harvest is larger than the number of fish added each year, the population shrinks; a smaller population adds even fewer young each year, which leads to the decline speeding up until the stock collapses."
+   }
+  },
+  {
+   "id": "env-sustainability-8",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the graph, how many new fish are added each year when the population is 500?",
+   "options": [
+    "100 fish",
+    "500 fish",
+    "1,000 fish",
+    "50 fish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve peaks at 100 new fish a year at a population of 500.",
+    "options": [
+     "Right: 100 at the peak.",
+     "500 is the population size, not the yearly growth.",
+     "1,000 is the carrying capacity.",
+     "The curve reaches 100 at 500 fish."
+    ]
+   },
+   "stimulus": "sustainability-s1"
+  },
+  {
+   "id": "env-sustainability-9",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the curve fall to zero at 1,000 fish?",
+   "options": [
+    "At carrying capacity, crowding and limited food stop growth",
+    "At 1,000 fish, the anglers catch each new fish that is born",
+    "At 1,000 fish, the fish stop reproducing because they are too old",
+    "At 1,000 fish, the lake freezes over and no young survive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At K, density-dependent factors (food, space) balance births and deaths, so no new fish are added.",
+    "options": [
+     "Right: limited resources stop growth at K.",
+     "The curve shows growth, not catch.",
+     "Age is not what sets K.",
+     "Freezing is not shown; K reflects limited resources."
+    ]
+   },
+   "stimulus": "sustainability-s1"
+  },
+  {
+   "id": "env-sustainability-10",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An agency allows a yearly catch of 80 fish from this lake. Write the setup for that catch as a percent of the maximum sustainable yield, then give the answer.",
+   "why": {
+    "correct": "$\\frac{80}{100} \\times 100 = 80\\%$ of the maximum sustainable yield, leaving a safety margin."
+   },
+   "setup": {
+    "answer": "80 / 100 * 100",
+    "mustUse": [
+     "80",
+     "100"
+    ],
+    "mistakes": [
+     {
+      "expr": "100 / 80 * 100",
+      "why": "Put the catch on top: catch ÷ MSY × 100."
+     },
+     {
+      "expr": "80 / 1000 * 100",
+      "why": "1,000 is the carrying capacity. Compare with the MSY, 100 fish a year."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "fractionOf",
+      "args": [
+       80,
+       100
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.8,
+       "why": "0.8 is the fraction. Multiply by 100 for the percent."
+      },
+      {
+       "from": {
+        "fn": "fractionOf",
+        "args": [
+         80,
+         1000
+        ]
+       },
+       "why": "That compares the catch with K. Compare it with the MSY of 100 fish."
+      }
+     ]
+    }
+   },
+   "stimulus": "sustainability-s1"
+  },
+  {
+   "id": "env-sustainability-11",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The lake's population falls to 200 fish after years of overfishing. Using the graph, why is a ban better than a smaller catch while it recovers?",
+   "options": [
+    "At 200 fish the lake adds about 64 fish a year, so any catch slows recovery",
+    "At 200 fish the lake adds about 100 fish a year, the most it ever can",
+    "At 200 fish the population is above its carrying capacity and will shrink",
+    "At 200 fish the population will grow fastest if a few fish are removed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reading the curve at 200 fish gives about 64 new fish a year; letting all of them survive rebuilds the stock fastest.",
+    "options": [
+     "Right: growth is small, so every fish left helps.",
+     "The peak of 100 is at 500 fish, not 200.",
+     "200 is far below K = 1,000.",
+     "Removing fish from a small population slows growth."
+    ]
+   },
+   "stimulus": "sustainability-s1"
+  },
+  {
+   "id": "env-sustainability-12",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which indicators in the table changed in a direction that suggests the region is becoming less sustainable?",
+   "options": [
+    "Bird species, forest and groundwater",
+    "Grain harvested and the population",
+    "Bird species and grain harvested",
+    "Forest cover and grain harvested"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fewer bird species, less forest and a deeper water table (groundwater being used up) all point away from sustainability.",
+    "options": [
+     "Right: biodiversity, forest and groundwater all worsened.",
+     "Grain rose, and population is a driver; the clearest warnings are birds, forest and water.",
+     "Grain harvested rose, which on its own is not a warning.",
+     "Grain rose; bird species and groundwater are the missing warnings."
+    ]
+   },
+   "stimulus": "sustainability-s2"
+  },
+  {
+   "id": "env-sustainability-13",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in grain harvested per person from 2000 to 2020, then give the answer. (Grain per person = grain ÷ population.)",
+   "why": {
+    "correct": "Per person: 2000, $\\frac{4.0}{6.0} \\approx 0.667$; 2020, $\\frac{4.6}{7.5} \\approx 0.613$ metric tons. Percent change: $\\frac{4.6/7.5 - 4.0/6.0}{4.0/6.0} \\times 100 = -8\\%$."
+   },
+   "setup": {
+    "answer": "(4.6 / 7.5 - 4.0 / 6.0) / (4.0 / 6.0) * 100",
+    "mustUse": [
+     "4.6",
+     "7.5",
+     "4.0",
+     "6.0"
+    ],
+    "mistakes": [
+     {
+      "expr": "(4.6 - 4.0) / 4.0 * 100",
+      "why": "That is the change in total grain (15%). Divide each year's grain by its population first."
+     },
+     {
+      "expr": "(4.6 / 7.5 - 4.0 / 6.0) / (4.6 / 7.5) * 100",
+      "why": "Divide by the 2000 value (4.0 / 6.0), the starting point."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       {
+        "fn": "div",
+        "args": [
+         4,
+         6
+        ]
+       },
+       {
+        "fn": "div",
+        "args": [
+         4.6,
+         7.5
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         4,
+         4.6
+        ]
+       },
+       "why": "15% is the rise in total grain. Per person, grain fell, because population grew faster."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         6,
+         7.5
+        ]
+       },
+       "why": "25% is the rise in population. Compute grain per person in each year."
+      }
+     ]
+    }
+   },
+   "stimulus": "sustainability-s2"
+  },
+  {
+   "id": "env-sustainability-14",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Total grain rose, but grain per person fell. What does this suggest for the region?",
+   "options": [
+    "Population grew faster than food production, so each person has less food",
+    "Food production grew faster than population, so each person has more food",
+    "Population fell while food production rose, so food is plentiful",
+    "Food production and population grew at the same rate, so nothing changed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Grain rose 15% while population rose 25%, so grain per person fell about 8%.",
+    "options": [
+     "Right: population outpaced food.",
+     "Population grew faster (25% against 15%).",
+     "Population rose from 6.0 to 7.5 million.",
+     "They grew at 15% and 25%, not the same rate."
+    ]
+   },
+   "stimulus": "sustainability-s2"
+  },
+  {
+   "id": "env-sustainability-15",
+   "unit": "unit-5",
+   "topic": "sustainability",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fish population with logistic growth starts at 50 fish in a lake with a carrying capacity of 1,000. Put the stages of its yearly growth in order as it grows.",
+   "options": [
+    "Slow growth: few fish to breed",
+    "Faster growth: more breeders and plenty of food",
+    "Fastest growth: about 500 fish (half of K)",
+    "Slowing growth: crowding and less food",
+    "Almost no growth: near 1,000 fish"
+   ],
+   "why": {
+    "correct": "Yearly growth rises from a small start, peaks at K/2, then falls to zero at K."
+   }
+  }
+ ]
+}

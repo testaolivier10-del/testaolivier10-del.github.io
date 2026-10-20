@@ -1,0 +1,8 @@
+{
+ "pesticide": {
+  "def": "A substance used to kill or control organisms people consider pests. Insecticides kill insects, herbicides kill weeds, and fungicides kill fungi. Most act on many species, so they also harm nontarget organisms such as pollinators, predators of pests, and fish."
+ },
+ "pesticide-resistance": {
+  "def": "The ability of a pest population to survive a pesticide that once killed most of it. A few individuals carry genes that let them survive; spraying kills the others, the survivors breed, and over generations most of the population is resistant. It is natural selection caused by people."
+ }
+}

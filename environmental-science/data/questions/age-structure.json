@@ -1,0 +1,511 @@
+{
+ "stimuli": {
+  "age-structure-s1": {
+   "kind": "visual",
+   "title": "Population pyramids of three countries",
+   "invented": true,
+   "figure": "age-structure-countries"
+  },
+  "age-structure-s2": {
+   "kind": "quantitative",
+   "title": "A country’s population by age group",
+   "invented": true,
+   "table": {
+    "caption": "Population of Country X by age group, in millions, both sexes together (invented data for practice; the same country as the pyramids)",
+    "cols": [
+     "Age group (years)",
+     "Population (millions)"
+    ],
+    "rows": [
+     [
+      "0-19",
+      "14.9"
+     ],
+     [
+      "20-39",
+      "9.0"
+     ],
+     [
+      "40-59",
+      "4.4"
+     ],
+     [
+      "60 and over",
+      "1.8"
+     ],
+     [
+      "Total",
+      "30.1"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-age-structure-1",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which country’s pyramid has the shape of a population that is likely to grow rapidly?",
+   "stimulus": "age-structure-s1",
+   "options": [
+    "Country X",
+    "Country Y",
+    "Country Z",
+    "Countries Y and Z equally"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A wide base means many young people who will soon have children.",
+    "options": [
+     "Right: X has its widest bars at the base, 4.2 million males and 4.0 million females aged 0 to 9.",
+     "Y’s bars are about the same width up to age 59: slow or no growth.",
+     "Z’s base is narrower than its middle: likely decline.",
+     "Neither has a wide base."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-2",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement best predicts the future of Country Z’s population, assuming families stay the same size?",
+   "stimulus": "age-structure-s1",
+   "options": [
+    "It will grow fast, since its middle-aged cohorts are the largest",
+    "It will shrink, as few young replace large middle cohorts",
+    "It will stay the same, since its total is about 28 million",
+    "It will grow because its oldest cohort is so small"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A base narrower than the middle predicts decline.",
+    "options": [
+     "Middle-aged cohorts are past the main child-bearing years; the small base predicts decline.",
+     "Right: Z has 1.0 million of each sex aged 0 to 9 but 2.1 million aged 50 to 59.",
+     "The total does not show the trend; the shape does.",
+     "A small oldest cohort does not cause growth; the number of young does."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-3",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Country Y’s pyramid is a column. Which description of Country Y is most likely?",
+   "stimulus": "age-structure-s1",
+   "options": [
+    "A developing country with rapid population growth",
+    "A country with far more old people than it has children",
+    "A developed country with slow or no growth",
+    "A country where few people live past age 20"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A column shape means each generation is about the size of the last.",
+    "options": [
+     "Rapid growth shows as a wide base, which Y does not have.",
+     "Y has about 2 million in each sex at every age to 59; its oldest groups are smaller.",
+     "Right: nearly equal cohorts up to old age fit a developed country with stable numbers.",
+     "Y has large cohorts up to age 69."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-4",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Families in Country X begin having fewer children. Why will its population most likely keep growing for decades anyway?",
+   "stimulus": "age-structure-s1",
+   "options": [
+    "People in Country X are living a little longer each year",
+    "The oldest cohorts are the largest in Country X",
+    "Smaller families make populations grow faster",
+    "Its large young cohorts are reaching parenting age"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Population momentum comes from the size of the young cohorts.",
+    "options": [
+     "Longer lives add a little, but the main driver is the large young cohorts.",
+     "Country X’s oldest cohorts are its smallest.",
+     "Smaller families slow growth; momentum is why it does not stop at once.",
+     "Right: that is population momentum."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-5",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent of Country X’s population that is under 20, then give the answer, rounded to one decimal place.",
+   "stimulus": "age-structure-s2",
+   "why": {
+    "correct": "Part over whole, times 100: $\\frac{14.9}{30.1} \\times 100 \\approx 49.5\\%$. Almost half the country is under 20."
+   },
+   "setup": {
+    "answer": "14.9 / 30.1 * 100",
+    "mustUse": [
+     "14.9",
+     "30.1"
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "fractionOf",
+      "args": [
+       14.9,
+       30.1
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.495,
+       "why": "That is the fraction. Multiply by 100: 49.5%."
+      },
+      {
+       "value": 202,
+       "why": "That divides the total by the part. Put the part on top: 14.9 / 30.1 × 100."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "30.1 / 14.9 * 100",
+      "why": "The part (14.9 million under 20) goes on top: 14.9 / 30.1 × 100."
+     },
+     {
+      "expr": "14.9 / 30.1",
+      "why": "That is the fraction. Multiply by 100 for a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-6",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times larger is Country X’s 0-19 age group than its 60-and-over age group? Round to one decimal place.",
+   "stimulus": "age-structure-s2",
+   "why": {
+    "correct": "Divide: $\\frac{14.9}{1.8} \\approx 8.3$. There are more than eight young people for every person aged 60 or over."
+   },
+   "numeric": {
+    "unit": "",
+    "places": 1,
+    "from": {
+     "fn": "magnification",
+     "args": [
+      14.9,
+      1.8
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 13.1,
+      "why": "That is the difference in millions (14.9 - 1.8). The question asks how many times larger: divide."
+     },
+     {
+      "value": 0.1,
+      "why": "That divides the older group by the younger. Put the larger group (14.9) on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-7",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which challenge does Country X’s age structure suggest it will face over the next 20 years?",
+   "stimulus": "age-structure-s2",
+   "options": [
+    "Schools, then jobs and homes, for many young people",
+    "Caring for a large population of retired people",
+    "A shortage of young workers to fill jobs",
+    "A population that shrinks quickly and steadily"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Use the size of each group to predict what the country will need.",
+    "options": [
+     "Right: 14.9 million people under 20 will need schooling now and jobs and homes soon.",
+     "Only 1.8 million are 60 or over; the young are the large group.",
+     "Country X has many young people.",
+     "A wide base predicts growth, not decline."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-8",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "In an age structure diagram, what does each horizontal bar represent?",
+   "options": [
+    "The number of children each woman has had",
+    "A cohort: people of one age group and sex",
+    "The number of people who die each year",
+    "The total population in one year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Bars are cohorts, by age and sex.",
+    "options": [
+     "That is not shown directly by a bar.",
+     "Right: each bar is one age group, males on one side and females on the other.",
+     "Deaths are not plotted as bars.",
+     "The total is the sum of all the bars."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-9",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which shape of age structure diagram is typical of a country whose population is shrinking?",
+   "options": [
+    "A wide base that narrows steadily with age",
+    "A column with equal bars up to old age",
+    "A base narrower than the middle",
+    "A wide top and a wide base"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Narrow base: decline.",
+    "options": [
+     "That is the shape of rapid growth.",
+     "That is the shape of slow or no growth.",
+     "Right: fewer young than middle-aged people means fewer future parents.",
+     "That is not one of the usual shapes."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-10",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "specific",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why a country whose pyramid has a wide base will keep growing even if every family has only two children from now on.",
+   "why": {
+    "correct": "Large young cohorts, become parents, many births, growth continues."
+   },
+   "specific": {
+    "frame": "Because ___, ___ for decades, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "the youngest cohorts are much larger than the older ones",
+       "the oldest cohorts are the largest",
+       "the cohorts are all the same size"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "In a wide-based pyramid, the oldest cohorts are the smallest.",
+       "2": "Equal cohorts describe a column, not a wide base."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "the number of people of parenting age increases",
+       "the number of people of parenting age decreases",
+       "no one reaches parenting age"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Large young cohorts grow into parenting age, so the number rises.",
+       "2": "The young grow up and reach parenting age."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "births stay higher than deaths and the population grows",
+       "deaths outnumber births at once",
+       "the population stops growing right away"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With so many young parents, births still outnumber deaths.",
+       "2": "Momentum means growth continues for decades."
+      }
+     }
+    },
+    "model": "Because the youngest cohorts are much larger than the older ones, the number of people of parenting age increases for decades, so births stay higher than deaths and the population grows."
+   }
+  },
+  {
+   "id": "env-age-structure-11",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which features usually go with a wide-based population pyramid? Select all that apply.",
+   "options": [
+    "Many children compared with older adults",
+    "Rapid population growth",
+    "A large share of people over 60",
+    "A population that is about to shrink"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Wide base: many young, rapid growth.",
+    "options": [
+     "Right: the wide base is the large young cohort.",
+     "Right: many young people mean many future parents.",
+     "A wide base goes with a small share of older people.",
+     "A wide base predicts growth."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-12",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pyramid shows a large bulge in the 50-59 age group, much larger than the groups just above and below it. What best explains this bulge?",
+   "options": [
+    "Many people aged 50 to 59 moved out",
+    "People in their fifties are counted twice",
+    "Few people die in their fifties",
+    "A baby boom 50 to 59 years ago"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A bulge is a large cohort moving up the pyramid over time.",
+    "options": [
+     "People leaving would make that bar smaller, not larger.",
+     "Counts do not favor one age group.",
+     "Low deaths would not create a bulge much larger than neighbors.",
+     "Right: a large cohort born in a short span (a baby boom) moves up the pyramid as it ages."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-13",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In 20 years, the people now aged 0 to 9 in a wide-based pyramid will be 20 to 29. What will most likely happen to the number of births in the country then, if family size stays the same?",
+   "options": [
+    "It will rise, since more people will be at parenting age",
+    "It will fall, since the children will have grown up",
+    "It will stay exactly the same as today",
+    "It will drop to zero, since the base will be gone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Follow a cohort up the pyramid to predict future births.",
+    "options": [
+     "Right: today’s large child cohort becomes a large cohort of young parents.",
+     "Grown-up children become parents; that raises births.",
+     "A larger cohort of parents means more births, even with the same family size.",
+     "The base is refilled by new births."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-14",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On a pyramid, the bars for females aged 70 and over are longer than the bars for males of the same ages. What does this most likely show?",
+   "options": [
+    "More girls than boys were born 70 years ago",
+    "Women tend to live longer than men",
+    "Older men move to other countries",
+    "The pyramid has an error"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Differences between the two sides at old ages usually come from survival.",
+    "options": [
+     "Births of boys and girls are close to equal; the gap comes from survival.",
+     "Right: more women than men survive to old ages in most countries.",
+     "Moving is not the usual reason; survival is.",
+     "This pattern is common in real pyramids."
+    ]
+   }
+  },
+  {
+   "id": "env-age-structure-15",
+   "unit": "unit-3",
+   "topic": "age-structure",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A government with a narrow-based pyramid worries about too few workers in 30 years. Which response best fits its age structure?",
+   "options": [
+    "Building many more primary schools at once",
+    "Lowering the age at which people retire",
+    "Inviting working-age people from abroad",
+    "Paying people to delay having children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A narrow base means small future cohorts of workers; the response should add to them.",
+    "options": [
+     "With few children, the country needs fewer schools, not more.",
+     "That would shrink the workforce further.",
+     "Right: adding working-age people fills the small younger cohorts.",
+     "That would make the base even narrower."
+    ]
+   }
+  }
+ ]
+}

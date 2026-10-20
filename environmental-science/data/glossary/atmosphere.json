@@ -1,0 +1,20 @@
+{
+ "troposphere": {
+  "def": "The lowest layer of the atmosphere, from the ground to about 10-16 km. It is heated from below, cools with height (about 6.5 °C per km), holds about 75% of the air's mass and nearly all weather."
+ },
+ "stratosphere": {
+  "def": "The layer above the troposphere, to about 50 km. It contains the ozone layer, which absorbs ultraviolet light, so temperature rises with height."
+ },
+ "upper-layers": {
+  "def": "The mesosphere (about 50 to 85 km), where temperature falls with height to the coldest air in the atmosphere, and the thermosphere above it, very thin air heated sharply by the Sun. Its outer edge is the exosphere."
+ },
+ "ozone": {
+  "def": "A molecule of three oxygen atoms (O3). In the stratosphere it absorbs ultraviolet light; near the ground it is a pollutant that harms lungs and plants."
+ },
+ "ozone-layer": {
+  "def": "The region of the stratosphere, about 15 to 35 km up, where most of the atmosphere's ozone is found. It absorbs most of the Sun's harmful ultraviolet radiation."
+ },
+ "uv-radiation": {
+  "def": "Ultraviolet (UV) light: high-energy light from the Sun, shorter in wavelength than visible light. UV-B and UV-C damage DNA, causing skin cancer and cataracts and harming plants and plankton."
+ }
+}

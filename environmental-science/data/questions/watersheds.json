@@ -1,0 +1,537 @@
+{
+ "stimuli": {
+  "watersheds-s1": {
+   "kind": "visual",
+   "title": "A watershed seen from above and in a cut-away view",
+   "figure": "watersheds-divide-aquifer"
+  },
+  "watersheds-s2": {
+   "kind": "quantitative",
+   "title": "Rain and runoff in two small watersheds",
+   "invented": true,
+   "table": {
+    "caption": "The same storm (30 mm of rain) over two watersheds of 4 km² each (invented data for practice)",
+    "cols": [
+     "Watershed",
+     "Land cover",
+     "Average slope",
+     "Share of the rain that ran off (%)",
+     "Sediment in the stream after the storm (mg/L)"
+    ],
+    "rows": [
+     [
+      "North Creek",
+      "Forest",
+      "gentle",
+      "10",
+      "20"
+     ],
+     [
+      "South Creek",
+      "Plowed fields and parking lots",
+      "steep",
+      "55",
+      "640"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-watersheds-1",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a watershed?",
+   "options": [
+    "The land that drains into one stream, river or lake",
+    "A layer of rock and sediment that stores groundwater",
+    "A dam built to hold water for a city",
+    "The point where a river reaches the ocean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A watershed (drainage basin) is an area of land: every drop that falls inside its divide runs off or flows underground toward the same body of water.",
+    "options": [
+     "Right: a watershed is the land that drains to one body of water.",
+     "Water stored underground in rock and sediment is an aquifer, not a watershed.",
+     "A dam holds water, but a watershed is the land around it that drains in.",
+     "That is the river's mouth; the watershed is all the land upstream that drains to it."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-2",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What separates one watershed from the next?",
+   "options": [
+    "A divide: a ridge or high ground",
+    "A river: the main channel in the valley",
+    "A dam: a wall across the valley",
+    "A water table: the top of the groundwater"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water flows downhill, so the high ground between two valleys decides which way rain runs. That ridge line is the divide.",
+    "options": [
+     "Right: a divide of high ground separates watersheds.",
+     "The main river runs through the middle of a watershed, not along its edge.",
+     "A dam sits across a river inside one watershed.",
+     "The water table is underground; watersheds are set by the land surface."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-3",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town takes its drinking water from a river. A factory 80 km upstream, in the same watershed, starts dumping waste into a small stream that feeds the river. Why should the town be concerned?",
+   "options": [
+    "Streams in a watershed flow down to the same river",
+    "The waste will soak into the aquifer under the factory",
+    "Waste in a small stream evaporates before reaching a river",
+    "Streams flow toward their sources, so waste stays upstream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every stream in a watershed drains toward the same outlet. What enters a small stream upstream can be carried downstream to the town.",
+    "options": [
+     "Right: tributaries carry pollutants downstream to the main river.",
+     "The waste is dumped into a stream, which flows on to the river.",
+     "Water evaporates, but most dissolved pollutants stay in the water.",
+     "Rivers flow downhill, away from their sources, toward the town."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-4",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two watersheds get the same storm. One is mostly forest and the other is mostly pavement and rooftops. Which statement best describes the difference?",
+   "options": [
+    "The paved one has more runoff and higher floods",
+    "The forested one has more runoff, as trees block infiltration",
+    "Both have equal runoff, because they got the same rain",
+    "The paved one has more infiltration into groundwater"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Forest soils, leaf litter and roots let rain soak in and slow its flow. Pavement and roofs shed water, so more runs off and reaches streams quickly, raising flood peaks.",
+    "options": [
+     "Right: pavement turns rain into fast runoff.",
+     "Tree roots and leaf litter help water soak in, not block it.",
+     "The same rain can produce very different runoff depending on land cover.",
+     "Pavement blocks infiltration, so less water recharges groundwater."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-5",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which features of a watershed increase the runoff and erosion that follow a storm? Select all that apply.",
+   "options": [
+    "Steep slopes",
+    "Bare or paved ground",
+    "Deep, sandy soil",
+    "Thick forest cover"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Water runs off steep, bare or paved ground quickly. Permeable soil and plant cover let water soak in and hold soil in place.",
+    "options": [
+     "Right: steep slopes speed up runoff and erosion.",
+     "Right: bare or paved ground lets less water soak in.",
+     "Sandy soil is permeable, so more water soaks in and less runs off.",
+     "Forest cover slows water and lets it soak in."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-6",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A news report says a city \"draws its water from the Ogallala Aquifer, in the Platte River watershed.\" What is the difference between the two terms?",
+   "options": [
+    "A watershed is land draining to a river; an aquifer stores water underground",
+    "An aquifer is land draining to a river; a watershed stores water underground",
+    "Both mean the same thing: an area of land that collects rainwater",
+    "The aquifer is the river's main channel; the watershed is the tributaries"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A watershed is defined by the land surface and where it drains. An aquifer is underground: a layer of sand, gravel or rock whose pores hold groundwater. One region can contain both.",
+    "options": [
+     "Right: a watershed is surface land; an aquifer is underground water storage.",
+     "This swaps the two definitions.",
+     "They are different: one is land surface, the other underground storage.",
+     "An aquifer is underground, not a river channel."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-7",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the map view, rain falls just outside the dashed divide of watershed A, on the side toward watershed B. Where does that water go?",
+   "stimulus": "watersheds-s1",
+   "options": [
+    "Into the streams of watershed B",
+    "Into the lake at the outlet of watershed A",
+    "Straight into the aquifer under watershed A",
+    "It stays where it fell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The divide is the high ground. Rain on the far side runs downhill away from watershed A and into watershed B.",
+    "options": [
+     "Right: water on the far side of the divide drains to watershed B.",
+     "Only rain inside the divide drains to watershed A's lake.",
+     "Water first runs downhill on the surface; the divide decides which watershed it joins.",
+     "Water on a slope moves downhill as runoff or infiltration."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-8",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the cut-away view, what happens to rain that does not run off into the stream?",
+   "stimulus": "watersheds-s1",
+   "options": [
+    "It soaks in and can recharge the aquifer",
+    "It flows over the divide into the next watershed",
+    "It is held on the land surface as runoff",
+    "It moves up into the stream through the bedrock"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water that soaks in moves down through soil until it reaches the water table, refilling the aquifer.",
+    "options": [
+     "Right: infiltration recharges the aquifer.",
+     "Water soaking in moves down, not over the divide.",
+     "Runoff is water moving over the surface, the water that did not soak in.",
+     "The rock at the bottom of the diagram does not let water pass."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-9",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A county wants to protect both its stream and its well water. Using the diagram, why should it protect land across the whole watershed, not just the stream banks?",
+   "stimulus": "watersheds-s1",
+   "options": [
+    "Water from across the watershed reaches the stream and the aquifer",
+    "Land along the banks is the main source of the stream's water",
+    "The aquifer is refilled by the ocean, not by the land above it",
+    "Protecting the banks would keep rain from reaching the stream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rain falling anywhere inside the divide either runs off to the stream or soaks down toward the aquifer, carrying whatever is on the land with it.",
+    "options": [
+     "Right: the whole watershed feeds both the stream and the aquifer.",
+     "All the land inside the divide drains to the stream, not just the banks.",
+     "The diagram shows infiltration from the land surface recharging the aquifer.",
+     "Rain still reaches the stream as runoff from the rest of the watershed."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-10",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which comparison does the table support?",
+   "stimulus": "watersheds-s2",
+   "options": [
+    "More runoff went with more sediment",
+    "More runoff went with less sediment",
+    "The forest had more runoff than the paved land",
+    "Both streams carried similar sediment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "South Creek had 55% runoff and 640 mg/L of sediment; North Creek had 10% runoff and 20 mg/L.",
+    "options": [
+     "Right: the watershed with more runoff carried far more sediment.",
+     "The data show the opposite: more runoff, more sediment.",
+     "The forested North Creek had 10% runoff, the least.",
+     "640 mg/L is 32 times 20 mg/L."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-11",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "The storm dropped 30 mm (0.03 m) of rain on South Creek's 4 km² (4,000,000 m²), and 55% ran off. Write the setup for the volume of runoff in cubic meters, with units, then the answer.",
+   "stimulus": "watersheds-s2",
+   "why": {
+    "correct": "$0.03\\,\\text{m} \\times 4{,}000{,}000\\,\\text{m}^{2} \\times 0.55 = 66{,}000\\,\\text{m}^{3}$. Meters times square meters gives cubic meters."
+   },
+   "setup": {
+    "answer": "0.03 m * 4000000 m^2 * 0.55",
+    "mustUse": [
+     "0.03",
+     "4000000",
+     "0.55"
+    ],
+    "unit": "m^3",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "0.03 m * 4000000 m^2",
+      "why": "This is all the rain that fell. Only 55% ran off: multiply by 0.55."
+     },
+     {
+      "expr": "0.03 m * 4000000 m^2 * 55",
+      "why": "Write 55% as 0.55 (55 ÷ 100) when you multiply."
+     },
+     {
+      "expr": "30 m * 4000000 m^2 * 0.55",
+      "why": "30 mm is 0.03 m, not 30 m. Convert before you multiply so the units match."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "percentOf",
+      "args": [
+       55,
+       {
+        "fn": "waterVolume",
+        "args": [
+         0.03,
+         4000000
+        ]
+       }
+      ]
+     },
+     "unit": "m^3",
+     "units": [
+      "m3",
+      "cubic meters"
+     ],
+     "mistakes": [
+      {
+       "value": 120000,
+       "why": "That is all the rain that fell (0.03 × 4,000,000). Take 55% of it."
+      },
+      {
+       "value": 66000000,
+       "why": "A factor of 1,000: 30 mm is 0.03 m, not 30 m."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-watersheds-12",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the table. How many times more runoff, as a share of the rain, did South Creek have than North Creek?",
+   "stimulus": "watersheds-s2",
+   "why": {
+    "correct": "$\\frac{55\\%}{10\\%} = 5.5$ times."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      55,
+      10
+     ]
+    },
+    "unit": "",
+    "mistakes": [
+     {
+      "value": 45,
+      "why": "That is the difference in percentage points. \"How many times\" means divide: 55 ÷ 10."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        10,
+        55
+       ]
+      },
+      "why": "Put the larger share on top: 55 ÷ 10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-13",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student concludes, \"Paving causes more sediment in streams.\" Why is this conclusion not fully supported by the data in the table?",
+   "stimulus": "watersheds-s2",
+   "options": [
+    "South Creek differs in both land cover and slope",
+    "The two watersheds got different amounts of rain",
+    "Sediment was not measured in South Creek",
+    "The two watersheds are of different sizes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "South Creek is both paved or plowed and steep. Steep slopes also raise runoff and erosion, so the data cannot separate the two causes.",
+    "options": [
+     "Right: two variables differ, so they are confounded.",
+     "The caption says both got the same 30 mm storm.",
+     "The table gives sediment for both creeks.",
+     "Both watersheds are 4 km²."
+    ]
+   }
+  },
+  {
+   "id": "env-watersheds-14",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Propose a way to reduce sediment entering a stream from a steep, plowed field next to it, and say how it works.",
+   "why": {
+    "correct": "A solution fits the scenario (a field next to a stream) and says how it works: plants slow the water and roots hold the soil."
+   },
+   "specific": {
+    "frame": "Plant ___ along the stream, which ___, so ___.",
+    "slots": {
+     "action": {
+      "label": "Action",
+      "options": [
+       "a strip of grass and trees",
+       "a row of fertilized crops",
+       "nothing, leaving the bank bare"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More plowed, fertilized crops leave soil exposed and add nutrients to runoff.",
+       "2": "Bare banks erode easily."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "slows runoff and lets roots hold the soil",
+       "speeds runoff into the stream",
+       "raises the water temperature"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Speeding runoff increases erosion.",
+       "2": "Warmer water does not stop sediment."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "less sediment reaches the stream",
+       "more sediment reaches the stream",
+       "the watershed gets larger"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The goal is to reduce sediment.",
+       "2": "Plants do not change the area of the watershed."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "stream",
+      "sediment",
+      "runoff"
+     ]
+    },
+    "model": "Plant a strip of grass and trees along the stream, which slows runoff so sediment settles out, and the roots hold the bank soil, which reduces the sediment that reaches the stream."
+   }
+  },
+  {
+   "id": "env-watersheds-15",
+   "unit": "unit-4",
+   "topic": "watersheds",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Mill Creek flows into the Ohio River, which flows into the Mississippi River. How is the Mill Creek watershed related to the Mississippi River watershed?",
+   "options": [
+    "It is a small part of the Mississippi watershed",
+    "It is a separate watershed with its own outlet to the sea",
+    "It is larger than the Mississippi watershed",
+    "It is the aquifer that feeds the Mississippi"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Watersheds nest. Everything that drains to Mill Creek then drains to the Ohio and then the Mississippi, so the creek's watershed lies inside the larger ones.",
+    "options": [
+     "Right: small watersheds nest inside larger ones.",
+     "Mill Creek's water reaches the sea through the Mississippi, so it is not separate.",
+     "A tributary's watershed is smaller than the river basin it drains into.",
+     "A watershed is surface land, not an aquifer."
+    ]
+   }
+  }
+ ]
+}

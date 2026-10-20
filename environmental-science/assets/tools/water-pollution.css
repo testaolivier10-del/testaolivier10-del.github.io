@@ -1,0 +1,122 @@
+/* Water pollution (environmental-science/assets/tools/water-pollution.js). OWNED BY THIS TOOL ONLY (builder T4).
+   One color per role, the same in every scene and in the drills: oxygen
+   blue, algae green, dead organic matter brown, nutrients orange, heat
+   vermillion (Okabe-Ito, colorblind safe; lighter in dark mode). Text in a
+   role color uses its darker "ink" shade for contrast; every value is also
+   written, so color is never the only cue. */
+.wp-svg,.wp-qfig{--wp-oxy:#0072B2;--wp-oxy-ink:#005A8C;--wp-alg:#009E73;--wp-alg-ink:#00704F;--wp-alg-fill:rgba(0,158,115,.22);
+  --wp-dead:#8A5A2B;--wp-nut:#E69F00;--wp-nut-ink:#8A5A00;--wp-heat:#D55E00;--wp-heat-ink:#A84A00;--wp-bad:#A83B2C;
+  --wp-sky0:#DCEFF8;--wp-sky1:#F4FAFC;--wp-soil:#B79568;--wp-grass:#6E9F3C;--wp-river:#8FC3E2;--wp-bank:#C7B48F;--wp-steel:#7A8783;--wp-tank:#E3EEF3;}
+:root[data-theme="dark"] .wp-svg,:root[data-theme="dark"] .wp-qfig{--wp-oxy:#6CB8EC;--wp-oxy-ink:#8FCBF2;--wp-alg:#4FD1AA;--wp-alg-ink:#7BE0C1;--wp-alg-fill:rgba(79,209,170,.22);
+  --wp-dead:#C9A27A;--wp-nut:#F3C04F;--wp-nut-ink:#F6CF75;--wp-heat:#FF9A5C;--wp-heat-ink:#FFB385;--wp-bad:#FF8E7E;
+  --wp-sky0:#1B3340;--wp-sky1:#17241F;--wp-soil:#5E4A33;--wp-grass:#5D8A35;--wp-river:#24506B;--wp-bank:#4A4232;--wp-steel:#93A19C;--wp-tank:#1F3138;}
+.wp-card{display:grid;gap:14px;}
+.wp-fig{position:relative;min-height:380px;height:min(74vh,640px);}
+.ls-root .wp-fig{flex:1 1 auto;height:auto;min-height:320px;}
+.wp-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.wp-fig .wp-svg{position:absolute;inset:0;}
+.wp-qfig .wp-svg{height:auto;}
+/* text */
+.wp-lab{font-weight:800;font-size:12.5px;fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.wp-tag{font-weight:900;font-size:13px;paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+.wp-tk{fill:var(--muted);font-weight:700;font-size:11.5px;font-variant-numeric:tabular-nums;}
+.wp-axl{fill:var(--ink);font-weight:800;font-size:12.5px;}
+.wp-c-oxy{fill:var(--wp-oxy-ink);} .wp-c-alg{fill:var(--wp-alg-ink);} .wp-c-dead{fill:var(--wp-dead);} .wp-c-nut{fill:var(--wp-nut-ink);} .wp-c-heat{fill:var(--wp-heat-ink);} .wp-c-bad{fill:var(--wp-bad);}
+/* lake scene */
+.wp-sky0{stop-color:var(--wp-sky0);} .wp-sky1{stop-color:var(--wp-sky1);}
+.wp-sun{fill:#F3C04F;opacity:.9;}
+.wp-cloud ellipse{fill:#9AA6A3;}
+:root[data-theme="dark"] .wp-cloud ellipse{fill:#55625E;}
+.wp-rain{stroke:var(--wp-oxy);stroke-width:1.6;stroke-linecap:round;opacity:.7;}
+.wp-soil{fill:var(--wp-soil);}
+.wp-grass{fill:none;stroke:var(--wp-grass);stroke-width:5;stroke-linecap:round;}
+.wp-crop line,.wp-crop path{stroke:var(--wp-grass);stroke-width:2;fill:none;stroke-linecap:round;}
+.wp-fert{fill:var(--wp-nut);stroke:var(--wp-nut-ink);stroke-width:.6;}
+.wp-runoff{fill:none;stroke:var(--wp-nut);stroke-width:3;stroke-linecap:round;stroke-dasharray:6 5;}
+.wp-runoff-h{fill:var(--wp-nut);}
+.wp-shore{fill:none;stroke:var(--wp-soil);stroke-width:3;}
+.wp-thermo{stroke:var(--white);stroke-width:1;stroke-dasharray:3 4;opacity:.6;}
+.wp-alga{fill:var(--wp-alg);stroke:var(--wp-alg-ink);stroke-width:.6;opacity:.9;}
+.wp-dead{fill:var(--wp-dead);opacity:.85;}
+.wp-bac{fill:#CC79A7;}
+.wp-fish path{fill:#E8EEF0;stroke:#40525A;stroke-width:1.2;}
+.wp-fish .wp-eye{fill:#1B2A26;}
+.wp-fish.is-dead path{fill:#B9C2C0;}
+.wp-fish .wp-x{fill:none;stroke:#1B2A26;stroke-width:1.2;}
+:root[data-theme="dark"] .wp-fish path{fill:#C9D3D1;stroke:#0F1917;}
+.wp-gauge rect{fill:var(--white);stroke:var(--line);stroke-width:1.5;opacity:.95;}
+.wp-gk{fill:var(--muted);font-weight:800;font-size:11px;}
+.wp-gv{fill:var(--wp-oxy-ink);font-weight:900;font-size:15px;font-variant-numeric:tabular-nums;}
+.wp-gv.is-bad{fill:var(--wp-bad);}
+/* chain strip */
+.wp-link path{fill:var(--track);stroke:var(--line);stroke-width:1;}
+.wp-link text{fill:var(--muted);font-weight:800;font-size:12px;}
+.wp-link.is-on path{fill:var(--ctint);stroke:var(--cink);}
+.wp-link.is-on text{fill:var(--cink);}
+.wp-link.is-cur path{fill:var(--cink);}
+.wp-link.is-cur text{fill:var(--white);}
+.wp-link.is-end.is-on path{fill:color-mix(in srgb, var(--wp-bad) 18%, var(--white));stroke:var(--wp-bad);}
+.wp-link.is-end.is-on text{fill:var(--wp-bad);}
+.wp-link.is-end.is-cur path{fill:var(--wp-bad);}
+.wp-link.is-end.is-cur text{fill:var(--white);}
+/* graphs */
+.wp-grid{stroke:var(--line);stroke-width:1;}
+.wp-axis{stroke:var(--ink);stroke-width:1.5;}
+.wp-hypo{fill:var(--wp-bad);fill-opacity:.1;}
+.wp-hypo-t{fill:var(--wp-bad);font-weight:800;font-size:11.5px;}
+.wp-sat{stroke:var(--wp-oxy);stroke-width:1.2;stroke-dasharray:3 4;opacity:.8;}
+.wp-algae-a{fill:var(--wp-alg-fill);stroke:var(--wp-alg);stroke-width:1.2;}
+.wp-do{fill:none;stroke:var(--wp-oxy);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.wp-do.is-fut{stroke-width:1.6;stroke-dasharray:4 4;opacity:.55;}
+.wp-now{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:2 3;opacity:.6;}
+.wp-now-pt{fill:var(--wp-oxy);stroke:var(--white);stroke-width:2.5;}
+/* heat scene */
+.wp-skyr2{fill:var(--wp-sky0);}
+.wp-bank{fill:var(--wp-bank);}
+.wp-plant rect{fill:var(--wp-steel);}
+.wp-plant .wp-win{fill:#F3C04F;opacity:.8;}
+.wp-plant .wp-stack{fill:#5E6B69;}
+.wp-river{fill:var(--wp-river);}
+.wp-river.is-bloom{fill:color-mix(in srgb, var(--wp-alg) 45%, var(--wp-river));}
+.wp-pl0{stop-color:var(--wp-heat);stop-opacity:.85;} .wp-pl1{stop-color:var(--wp-heat);stop-opacity:.15;}
+.wp-pipe{stroke:var(--wp-steel);stroke-width:6;fill:none;}
+.wp-flow{fill:none;stroke:var(--white);stroke-width:2;opacity:.7;stroke-linecap:round;stroke-linejoin:round;}
+.wp-tube{fill:var(--white);stroke:var(--muted);stroke-width:1.2;}
+.wp-merc,.wp-bulb{fill:var(--wp-heat);}
+.wp-osat{fill:none;stroke:var(--wp-oxy);stroke-width:3;stroke-linejoin:round;}
+.wp-osat-pt{fill:var(--wp-oxy);stroke:var(--white);stroke-width:1.5;}
+.wp-guide{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:4 4;}
+.wp-guide.is-warm{stroke:var(--wp-heat);}
+.wp-mark{stroke:var(--white);stroke-width:2.5;}
+.wp-mark.is-cool{fill:var(--wp-oxy);} .wp-mark.is-warm{fill:var(--wp-heat);}
+/* sewage scene */
+.wp-tank rect{fill:var(--wp-tank);stroke:var(--wp-steel);stroke-width:2;}
+.wp-tank.is-off{opacity:.38;}
+.wp-tank.is-cur rect{stroke:var(--cink);stroke-width:3;}
+.wp-tname{fill:var(--ink);font-weight:800;font-size:12px;}
+.wp-solid{fill:var(--wp-dead);}
+.wp-sludge{fill:var(--wp-dead);opacity:.8;}
+.wp-arrowdn{fill:none;stroke:var(--muted);stroke-width:1.4;}
+.wp-bubble{fill:none;stroke:var(--wp-oxy);stroke-width:1.2;}
+.wp-reed{fill:none;stroke:var(--wp-grass);stroke-width:2.2;stroke-linecap:round;}
+.wp-uv{fill:#C3A3E0;}
+.wp-uvr{stroke:#8E6BBF;stroke-width:2;stroke-linecap:round;}
+.wp-pipe2{stroke:var(--wp-steel);stroke-width:5;}
+.wp-pipe2.is-skip{opacity:.35;}
+.wp-bypass{fill:none;stroke:var(--wp-bad);stroke-width:2;stroke-dasharray:5 4;}
+.wp-bar-raw{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 3;}
+.wp-bar.is-sol{fill:var(--wp-dead);} .wp-bar.is-bod{fill:#CC79A7;} .wp-bar.is-nut{fill:var(--wp-nut);} .wp-bar.is-path{fill:var(--wp-bad);} .wp-bar.is-oxy{fill:var(--wp-oxy);}
+/* dock */
+.wp-ctl{display:flex;flex-direction:column;gap:10px;}
+.wp-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.wp-views:not(.ls-seg) button{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 15px var(--font-ui);}
+.wp-views button{min-height:44px;}
+.wp-grp[hidden],.wp-go[hidden],.wp-tl[hidden],.wp-opt[hidden],.wp-rv[hidden]{display:none !important;}
+.wp-grp{display:flex;flex-direction:column;gap:8px;}
+.wp-go{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:8px;}
+.wp-opt{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:700;}
+.ls-tbl tr.hl{background:var(--ctint);}
+/* The course breadcrumb is not in the Tool Studio's hide list (shared change
+   reported); hidden here so the studio stays one screen. */
+body.ls-on .env-crumb{display:none;}
+.wp-muted{fill:var(--muted);}

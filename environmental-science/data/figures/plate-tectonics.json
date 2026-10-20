@@ -1,0 +1,12 @@
+{
+ "plate-tectonics-boundaries": {
+  "file": "figures/plate-tectonics-boundaries.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cross-section of Earth's outer layers. Convection currents in the hot mantle move the rigid plates above them. On the left, at a divergent boundary, two ocean plates move apart and magma rises to form new crust at a mid-ocean ridge. In the middle, at a convergent boundary, a dense ocean plate sinks under a continent (subduction), forming a deep trench; the sinking plate melts and magma rises to form a volcano in a mountain range on the continent. An inset seen from above shows a transform boundary, where two plates slide past each other in opposite directions along a fault, causing earthquakes with little volcanic activity."
+ }
+}

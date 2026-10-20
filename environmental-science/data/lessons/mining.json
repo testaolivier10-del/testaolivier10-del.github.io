@@ -1,0 +1,72 @@
+{
+ "topic": "mining",
+ "hook": "Every smartphone holds small amounts of copper, gold, cobalt and more than a dozen other metals, all dug out of the ground. To get about one kilogram of copper from a typical modern ore, a mine moves more than a hundred kilograms of rock and leaves most of it as waste piled nearby. What happens to that waste, and to the hole, decides how a mine affects the land and water for decades.",
+ "prereq": [
+  {
+   "q": "A stream has a pH of 4. Compared with a stream at pH 7, it is",
+   "options": [
+    "1,000 times more acidic",
+    "3 times more acidic",
+    "1,000 times less acidic",
+    "30 times more acidic"
+   ],
+   "correct": 0,
+   "why": "Each pH unit is a factor of 10: 10 × 10 × 10 = 1,000.",
+   "review": "soil-properties"
+  },
+  {
+   "q": "Which land change usually increases erosion?",
+   "options": [
+    "Removing the plants and topsoil from a hillside",
+    "Planting grass on bare ground",
+    "Leaving leaf litter on a forest floor",
+    "Covering bare soil with straw"
+   ],
+   "correct": 0,
+   "why": "Bare soil without roots or cover erodes quickly.",
+   "review": "soil-formation"
+  }
+ ],
+ "figure": {
+  "figure": "mining-cross-section",
+  "caption": "Surface mining moves the land above the ore; subsurface mining reaches deep ore through shafts and tunnels."
+ },
+ "chain": [
+  {
+   "cause": "Mining exposes sulfide minerals in rock and waste piles to air and rain",
+   "effect": "the minerals react to form sulfuric acid"
+  },
+  {
+   "cause": "Acid water flows out of the mine and waste piles",
+   "effect": "the pH of nearby streams falls"
+  },
+  {
+   "cause": "Acidic water dissolves metals such as lead, mercury and arsenic from the rock",
+   "effect": "toxic metals enter streams and groundwater"
+  },
+  {
+   "cause": "Low pH and metals reach aquatic life",
+   "effect": "fish and insects die and the stream can stay polluted for decades"
+  }
+ ],
+ "ideas": [
+  "<b>Ore</b> is rock with enough valuable mineral to mine at a profit. As rich ores run out, lower-grade ore means more rock moved and more waste per kilogram of metal.",
+  "<b>Surface mining</b> (strip, open-pit, mountaintop removal) removes the <b>overburden</b> to reach shallow ore: cheaper and safer for miners, but it destroys habitat and leaves huge waste piles.",
+  "<b>Subsurface mining</b> uses shafts and tunnels for deep ore: less land disturbed, but more dangerous for miners and the ground above can sink.",
+  "Mine waste causes <b>acid mine drainage</b>, metal pollution, sediment and dust. <b>Land reclamation</b> regrades the land, replaces topsoil and replants it."
+ ],
+ "misconception": {
+  "wrong": "Once a mine closes, its pollution stops.",
+  "right": "Waste rock and tailings keep reacting with air and rain for decades or centuries. Acid mine drainage from mines closed long ago still pollutes thousands of kilometers of streams."
+ },
+ "check": [
+  "env-mining-1",
+  "env-mining-3",
+  "env-mining-9",
+  "env-mining-10",
+  "env-mining-11",
+  "env-mining-12",
+  "env-mining-6"
+ ],
+ "summary": "Mining extracts ore and coal by surface methods (strip, open-pit, mountaintop removal), which remove overburden over large areas, or by subsurface methods, which are more dangerous for miners. Waste rock and tailings release acid mine drainage and toxic metals; mining also causes erosion, sediment and dust, and clears habitat. Land reclamation restores mined land, and lower-grade ores mean more waste per kilogram of metal."
+}

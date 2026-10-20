@@ -1,0 +1,72 @@
+{
+ "topic": "ozone-depletion",
+ "hook": "In 1985, British scientists in Antarctica published a startling result: every spring, the ozone above them was dropping far below normal. Satellites confirmed a \"hole\" larger than the continent. The cause was not a volcano or the Sun, but chemicals in refrigerators and spray cans, released tens of thousands of kilometers away.",
+ "prereq": [
+  {
+   "q": "In which layer of the atmosphere is the ozone layer?",
+   "options": [
+    "Stratosphere",
+    "Troposphere",
+    "Mesosphere",
+    "Thermosphere"
+   ],
+   "correct": 0,
+   "why": "The ozone layer is in the stratosphere, above the troposphere where weather happens.",
+   "review": "atmosphere"
+  },
+  {
+   "q": "What does stratospheric ozone absorb?",
+   "options": [
+    "Ultraviolet radiation from the Sun",
+    "Heat given off by the ground",
+    "Visible light from the Sun",
+    "Radio waves"
+   ],
+   "correct": 0,
+   "why": "Ozone in the stratosphere absorbs most incoming ultraviolet radiation.",
+   "review": "atmosphere"
+  }
+ ],
+ "figure": {
+  "figure": "ozone-depletion-chlorine-cycle",
+  "caption": "How chlorine from a CFC destroys ozone. The chlorine atom comes out unchanged, so one atom can destroy many thousands of ozone molecules."
+ },
+ "chain": [
+  {
+   "cause": "CFCs from refrigerants, air conditioners and spray cans are stable near the ground",
+   "effect": "they last long enough to drift up into the stratosphere"
+  },
+  {
+   "cause": "Ultraviolet light in the stratosphere breaks CFC molecules",
+   "effect": "chlorine atoms are set free"
+  },
+  {
+   "cause": "Each chlorine atom destroys an ozone molecule and is released again",
+   "effect": "one atom can destroy many thousands of ozone molecules"
+  },
+  {
+   "cause": "A thinner ozone layer absorbs less UV",
+   "effect": "more UV-B reaches the surface, raising skin cancer and cataracts and harming phytoplankton"
+  }
+ ],
+ "ideas": [
+  "<b>Chlorofluorocarbons (CFCs)</b> contain chlorine, fluorine and carbon. They were used in refrigerators, air conditioners, foams and spray cans because they are stable and nontoxic near the ground.",
+  "In the stratosphere, UV frees chlorine; $\\text{Cl} + \\text{O}_3 \\rightarrow \\text{ClO} + \\text{O}_2$, then $\\text{ClO} + \\text{O} \\rightarrow \\text{Cl} + \\text{O}_2$. The chlorine is reused.",
+  "<b>Ozone depletion</b> is worst over Antarctica each spring (the ozone hole), where extreme cold forms clouds that speed the reactions.",
+  "More UV-B at the surface means more skin cancer and cataracts and damage to phytoplankton and crops."
+ ],
+ "misconception": {
+  "wrong": "Carbon dioxide from burning fossil fuels is what makes the ozone hole.",
+  "right": "Carbon dioxide traps heat but does not destroy ozone. The ozone hole is caused by chlorine and bromine from CFCs and halons."
+ },
+ "check": [
+  "env-ozone-depletion-2",
+  "env-ozone-depletion-4",
+  "env-ozone-depletion-6",
+  "env-ozone-depletion-7",
+  "env-ozone-depletion-8",
+  "env-ozone-depletion-9",
+  "env-ozone-depletion-15"
+ ],
+ "summary": "The stratospheric ozone layer absorbs most of the Sun’s UV. CFCs drift up to the stratosphere, where UV frees chlorine, and each chlorine atom destroys many thousands of ozone molecules because it is released again after each cycle. The ozone hole forms over Antarctica each spring. Thinner ozone lets more UV-B through, raising skin cancer and cataracts. Carbon dioxide is not an ozone-depleting gas."
+}

@@ -1,0 +1,636 @@
+{
+ "stimuli": {
+  "thermal-inversion-s1": {
+   "kind": "quantitative",
+   "title": "Air temperature above a valley town at dawn and in the afternoon",
+   "invented": true,
+   "table": {
+    "caption": "Air temperature (°C) at heights above the valley floor on one January day (invented data for practice)",
+    "cols": [
+     "Height above valley floor (m)",
+     "6 a.m. temperature (°C)",
+     "2 p.m. temperature (°C)"
+    ],
+    "rows": [
+     [
+      "0",
+      "-8",
+      "4"
+     ],
+     [
+      "200",
+      "-5",
+      "2.5"
+     ],
+     [
+      "400",
+      "-1",
+      "1"
+     ],
+     [
+      "600",
+      "0",
+      "-0.5"
+     ],
+     [
+      "800",
+      "-1.5",
+      "-2"
+     ],
+     [
+      "1,000",
+      "-3",
+      "-3.5"
+     ]
+    ]
+   }
+  },
+  "thermal-inversion-s2": {
+   "kind": "visual",
+   "title": "Fine particles in the valley town over three winter days",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of PM2.5 in the valley town in micrograms per cubic meter over 72 hours: it rises each night and morning to peaks of 45, 70 and 95, and falls each afternoon; invented data",
+    "kind": "line",
+    "x": [
+     0,
+     72
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xStep": 12,
+    "yStep": 20,
+    "xLabel": "Hours since midnight on day 1",
+    "yLabel": "PM2.5 (µg per m³)",
+    "series": [
+     {
+      "name": "PM2.5",
+      "points": [
+       [
+        0,
+        20
+       ],
+       [
+        6,
+        38
+       ],
+       [
+        9,
+        45
+       ],
+       [
+        15,
+        22
+       ],
+       [
+        24,
+        35
+       ],
+       [
+        30,
+        58
+       ],
+       [
+        33,
+        70
+       ],
+       [
+        39,
+        40
+       ],
+       [
+        48,
+        55
+       ],
+       [
+        54,
+        82
+       ],
+       [
+        57,
+        95
+       ],
+       [
+        63,
+        60
+       ],
+       [
+        72,
+        75
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-thermal-inversion-1",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Between which heights is there a thermal inversion at 6 a.m.?",
+   "stimulus": "thermal-inversion-s1",
+   "options": [
+    "From 600 m up to 1,000 m above the floor",
+    "From the valley floor up to 600 m",
+    "From the valley floor up to 1,000 m",
+    "There is no inversion in the 6 a.m. readings"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In an inversion, temperature rises with height. At 6 a.m. it warms from -8 °C at the floor to 0 °C at 600 m, then cools again above that.",
+    "options": [
+     "Above 600 m the air cools with height, which is the normal pattern.",
+     "Right: -8, -5, -1 and 0 °C rise with height, the reverse of normal.",
+     "The temperature rises only to 600 m; above that it falls again.",
+     "The air warms with height up to 600 m, which is an inversion."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-2",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Compare the 2 p.m. readings with the 6 a.m. readings. What has happened to the inversion?",
+   "stimulus": "thermal-inversion-s1",
+   "options": [
+    "It has broken up: air cools with height again",
+    "It has grown stronger, as the ground got colder",
+    "It has moved up to between 600 and 1,000 m",
+    "Nothing has changed, as the top layer is the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At 2 p.m. the temperature falls steadily with height (4, 2.5, 1, -0.5 ...). The sun has warmed the ground and the air above it, so the inversion has broken up.",
+    "options": [
+     "Right: the warm ground heats the lowest air, which can rise again.",
+     "At 2 p.m. the ground is warmer (4 °C), not colder.",
+     "Between 600 and 1,000 m the 2 p.m. air also cools with height.",
+     "The lowest layers changed a lot: -8 to 4 °C at the floor."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-3",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many degrees Celsius does the air warm from the valley floor to 600 m at 6 a.m.?",
+   "stimulus": "thermal-inversion-s1",
+   "why": {
+    "correct": "Subtract the lower reading from the higher: $0\\,°\\text{C} - (-8\\,°\\text{C}) = 8\\,°\\text{C}$ warmer at 600 m."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      0,
+      -8
+     ]
+    },
+    "unit": "°C",
+    "units": [
+     "C",
+     "degrees C",
+     "degrees"
+    ],
+    "mistakes": [
+     {
+      "value": -8,
+      "why": "Subtracting a negative adds: 0 - (-8) = +8. The air is 8 °C warmer at 600 m."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-4",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Smoke from wood stoves on the valley floor stops rising at about 600 m in the early morning. Why?",
+   "stimulus": "thermal-inversion-s1",
+   "options": [
+    "The wind at 600 m blows downward and pushes it back",
+    "Cold air above 600 m is too thin for the smoke particles to float in",
+    "Smoke particles turn into gas once they reach 600 m",
+    "It reaches the warm layer and is no longer warmer than the air"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Smoke rises only while it is warmer and less dense than the air around it. At 600 m it meets the warm layer of the inversion, which is warmer than the rising smoke, so the smoke stops and spreads out under it.",
+    "options": [
+     "The table shows temperature, not wind; the lid is the warm layer.",
+     "Air above 600 m is cooler again; the lid is the warm layer at 600 m.",
+     "Particles do not turn into gas; they collect under the warm layer.",
+     "Right: the inversion layer acts like a lid on the cooler air below."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-5",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the trend in the daily peaks of PM2.5 over the three days.",
+   "stimulus": "thermal-inversion-s2",
+   "options": [
+    "Each daily peak is lower, from 95 to 70 to 45 µg per m³",
+    "The peaks stay close to 45 µg per m³ from day to day",
+    "Each peak is higher: 45, then 70, then 95",
+    "PM2.5 is highest at about 2 p.m. on each day"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The morning peaks rise from 45 to 70 to 95 µg per m³: each day adds to particles that the inversion kept from clearing.",
+    "options": [
+     "Read the graph left to right: the peaks rise with time.",
+     "Only the first peak is 45; the next two are higher.",
+     "Right: the peaks climb by about 25 each day.",
+     "PM2.5 is lowest each afternoon and peaks in the morning."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-6",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is PM2.5 lowest each afternoon?",
+   "stimulus": "thermal-inversion-s2",
+   "options": [
+    "People stop heating their homes in the afternoon",
+    "Sun-warmed ground breaks the inversion and the air mixes",
+    "Sunlight breaks particles down into water vapor",
+    "Cold afternoon air sinks and buries the particles"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "By afternoon the sun has warmed the ground, the inversion breaks, and the warmed air rises and mixes, carrying particles up and away. At night the inversion forms again.",
+    "options": [
+     "Some heating continues; the daily rhythm follows the inversion.",
+     "Right: rising air carries the particles up and out of the valley.",
+     "Particles are not destroyed by sunlight this way; they are mixed away.",
+     "Afternoon air near the ground is warmer and rises, not sinks."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-7",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in the peak PM2.5 from day 1 (45 µg per m³) to day 3 (95 µg per m³).",
+   "stimulus": "thermal-inversion-s2",
+   "why": {
+    "correct": "$\\frac{(95 - 45)}{45} \\times 100 = 111.1\\%$, so the peak more than doubled."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      45,
+      95
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 52.6315789474,
+      "why": "You divided by the day 3 value. Divide by the old (day 1) value, 45."
+     },
+     {
+      "value": 211.111111111,
+      "why": "That is day 3 as a percent of day 1. Subtract first: (95 - 45) / 45 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-8",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which response would most directly lower PM2.5 during these inversion days?",
+   "stimulus": "thermal-inversion-s2",
+   "options": [
+    "No wood stove burning until the inversion ends",
+    "Building taller smokestacks on homes in the valley",
+    "Planting grass on bare lots on the valley floor",
+    "Asking residents to keep their windows open at night"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The particles come from the valley's own sources and are trapped there, so cutting those sources while the inversion lasts works best. A no-burn day for wood stoves does that.",
+    "options": [
+     "Right: it cuts a main source of the particles that are being trapped.",
+     "Smoke would still stop under the warm layer, and homes are not the only fix.",
+     "Grass may cut dust slightly but not the smoke and exhaust that build up.",
+     "Open windows let the polluted outdoor air in."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-9",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "In the lowest layer of the atmosphere, how does air temperature normally change with height?",
+   "options": [
+    "It gets warmer as you go higher",
+    "It stays about the same from the ground to the top",
+    "It warms with height by day and cools by night",
+    "It cools as you go higher"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Normally the air is warmest near the ground, which the sun heats, and it gets cooler with height. Warm air near the ground can rise and carry pollutants up.",
+    "options": [
+     "That is the pattern of an inversion, not the normal one.",
+     "Temperature changes with height in the lowest layer.",
+     "Normally it cools with height; an inversion reverses that.",
+     "Right: that is the normal pattern, which lets warm air rise."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-10",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a thermal inversion trap pollutants near the ground?",
+   "options": [
+    "Warm air near the ground rises too fast to mix well",
+    "The inversion layer turns pollutants into heavier gases",
+    "Cool, dense air near the ground is held under warmer air",
+    "Pollutants hold heat and sink to the ground"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A layer of warm air sits on top of cooler, denser air. The cool air cannot rise through the warmer, lighter air above it, so it and its pollutants stay near the ground.",
+    "options": [
+     "In an inversion the air near the ground is the cool air, not the warm air.",
+     "An inversion changes how air moves, not what the pollutants are.",
+     "Right: the warm layer acts as a lid on the cool air below.",
+     "The pollutants are trapped because the air cannot rise, not because they sink."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-11",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conditions make a thermal inversion most likely?",
+   "options": [
+    "A windy, cloudy afternoon on an open plain",
+    "A clear, calm winter night in a valley",
+    "A hot summer afternoon after a thunderstorm",
+    "A rainy morning on a windy coastline"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "On clear, calm nights the ground loses heat fast and cools the air touching it. In a valley the cold air pools under warmer air, and with no wind nothing mixes it.",
+    "options": [
+     "Wind mixes the air, and clouds keep the ground from cooling fast.",
+     "Right: the ground cools fast and cold air pools in the valley.",
+     "The sun-warmed ground and storm winds mix the air.",
+     "Rain and wind keep the air stirred, which breaks layers up."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-12",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "During a five-day thermal inversion over an industrial town, hospitals see many more patients with breathing problems. Which explanation is most complete?",
+   "options": [
+    "Emissions piled up in the trapped air day after day",
+    "Cold air itself irritates the lungs more than polluted air does",
+    "Factories released more pollution because of the cold",
+    "Warm air from above pushed the ozone layer down to the town"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The town's smoke and gases kept being added to the same shallow layer of air, so their concentration rose day after day and irritated people's lungs.",
+    "options": [
+     "Right: same sources, no escape, so the levels climbed.",
+     "Cold air alone does not explain the steady rise over five days.",
+     "The sources stayed about the same; the air stopped clearing.",
+     "The ozone layer stays in the stratosphere; the cause was trapped emissions."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-13",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Cities such as Los Angeles and Mexico City have frequent smog. Which feature of their setting adds to the problem?",
+   "options": [
+    "They are at high latitudes with very little winter sunlight",
+    "They have no cars, so factories make most of the smog",
+    "They get so much rain that pollutants stay in the air",
+    "They sit in mountain-ringed basins where inversions form"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Both sit in basins ringed by mountains, where inversions are common. The mountains block wind on the sides, and the warm layer acts as a lid on top.",
+    "options": [
+     "Both are at fairly low latitudes, with plenty of sun.",
+     "Both have heavy traffic, a main source of their smog.",
+     "Neither is especially rainy; rain would help clean the air.",
+     "Right: mountains on the sides plus an inversion lid trap the air."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-14",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A valley town has frequent winter inversions. Propose a town rule that would reduce the pollution that builds up during them, and explain how it works.",
+   "why": {
+    "correct": "The town cannot stop the inversion, so the fix must cut emissions while the lid is on. A rule tied to inversion forecasts does exactly that."
+   },
+   "specific": {
+    "frame": "The town could ___, which reduces ___ while the inversion traps the air.",
+    "slots": {
+     "rule": {
+      "label": "Rule",
+      "options": [
+       "ban wood stove and fireplace burning on days an inversion is forecast",
+       "require taller chimneys on every house",
+       "move the weather station out of the valley"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Smoke from a taller chimney still stops under the warm layer, and it does not cut emissions.",
+       "2": "Moving the station changes the measurement, not the pollution."
+      }
+     },
+     "what": {
+      "label": "What it reduces",
+      "options": [
+       "the heat that forms the warm layer",
+       "the smoke and fine particles released into the trapped air",
+       "the sunlight that reaches the valley"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "Wood stoves do not cause the warm layer; it forms from the weather.",
+       "2": "Sunlight helps break the inversion; cutting it would make things worse."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "wood",
+      "smoke",
+      "particles",
+      "inversion"
+     ]
+    },
+    "model": "The town could ban wood stove burning on days an inversion is forecast, which reduces the smoke and fine particles released into the trapped air, so their concentration does not build up."
+   }
+  },
+  {
+   "id": "env-thermal-inversion-15",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What usually ends a thermal inversion?",
+   "options": [
+    "A calm, clear night that lets the ground cool even further",
+    "More smoke rises and pushes the warm layer up and away",
+    "The sun warms the ground, or a wind mixes the layers",
+    "Snow on the ground reflects heat back into the air"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sun warms the ground, which warms the lowest air until it is warmer than the layer above and can rise, or a weather front brings wind that mixes the layers.",
+    "options": [
+     "A clear, calm night strengthens an inversion; it does not end it.",
+     "Smoke cannot rise through the warm layer, so it cannot push it.",
+     "Right: either one lets the lowest air rise and mix again.",
+     "Snow reflects sunlight, keeping the ground cold, which can make inversions last."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-inversion-16",
+   "unit": "unit-7",
+   "topic": "thermal-inversion",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Normally the lowest air cools by about 6.5 °C for every 1,000 m of height. At 2 p.m. the valley floor is 4 °C. Write the setup, with units, for the expected temperature at 1,000 m, then give the answer.",
+   "why": {
+    "correct": "Cooling is the rate times the height: $4\\,°\\text{C} - \\frac{6.5\\,°\\text{C}}{1{,}000\\,\\text{m}} \\times 1{,}000\\,\\text{m} = -2.5\\,°\\text{C}$. The table shows -3.5 °C, a little colder than expected."
+   },
+   "setup": {
+    "answer": "4 - 6.5 / 1000 * 1000",
+    "mustUse": [
+     "4",
+     "6.5",
+     "1000"
+    ],
+    "mistakes": [
+     {
+      "expr": "4 + 6.5 / 1000 * 1000",
+      "why": "Normally air cools with height, so subtract the cooling: 4 - 6.5."
+     },
+     {
+      "expr": "6.5 / 1000 * 1000",
+      "why": "That is how much the air cools. Subtract it from the ground temperature, 4 °C."
+     }
+    ],
+    "then": {
+     "unit": "°C",
+     "units": [
+      "C",
+      "degrees C",
+      "degrees"
+     ],
+     "from": {
+      "fn": "sub",
+      "args": [
+       4,
+       {
+        "fn": "mul",
+        "args": [
+         {
+          "fn": "div",
+          "args": [
+           6.5,
+           1000
+          ]
+         },
+         1000
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 10.5,
+       "why": "Air normally cools with height, so the temperature at 1,000 m is lower: 4 - 6.5 = -2.5 °C."
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

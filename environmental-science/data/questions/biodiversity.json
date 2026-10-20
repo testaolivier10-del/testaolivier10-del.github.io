@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "biodiversity-s1": {
+   "kind": "quantitative",
+   "title": "Animals netted in three ponds",
+   "invented": true,
+   "table": {
+    "caption": "Number of each species counted in one survey of each pond (invented data for practice)",
+    "cols": [
+     "Species",
+     "North Pond",
+     "East Pond",
+     "South Pond"
+    ],
+    "rows": [
+     [
+      "Dragonfly larva",
+      "50",
+      "5",
+      "40"
+     ],
+     [
+      "Pond snail",
+      "48",
+      "185",
+      "40"
+     ],
+     [
+      "Frog tadpole",
+      "52",
+      "5",
+      "40"
+     ],
+     [
+      "Diving beetle",
+      "50",
+      "5",
+      "40"
+     ],
+     [
+      "Water strider",
+      "0",
+      "0",
+      "40"
+     ],
+     [
+      "Mayfly larva",
+      "0",
+      "0",
+      "40"
+     ],
+     [
+      "Total",
+      "200",
+      "200",
+      "240"
+     ]
+    ]
+   }
+  },
+  "biodiversity-s2": {
+   "kind": "text",
+   "title": "A seal population that came back",
+   "passage": "By the 1890s, hunting for their oil had cut northern elephant seals down to one small colony, perhaps a few dozen animals, on an island off the coast of Mexico. Once hunting stopped, the colony grew, and today well over 100,000 of these seals breed along the coasts of Mexico and California. Researchers compared DNA from living seals with DNA from museum skins collected before the hunting began. The living seals carry far less genetic variety than their ancestors did. A comeback in numbers, the researchers argue, can hide a loss that lasts: a population descended from so few survivors may cope poorly with a new disease or a change in its ocean.",
+   "source": "Invented passage for practice, summarizing published studies of northern elephant seals."
+  }
+ },
+ "items": [
+  {
+   "id": "env-biodiversity-1",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pond has the greatest species richness?",
+   "stimulus": "biodiversity-s1",
+   "options": [
+    "South Pond",
+    "North Pond",
+    "East Pond",
+    "North and East Pond tie for most"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Species richness is the number of different species. South Pond has six, North and East have four each.",
+    "options": [
+     "Right: South Pond has six species; the other two ponds have four each.",
+     "North Pond has four species. Its numbers are even, but richness counts species, not balance.",
+     "East Pond has four species, and most of its animals are one snail.",
+     "They tie at four species each, but South Pond has six."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-2",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "North Pond and East Pond have the same number of species and the same total number of animals. Which statement compares their species diversity correctly?",
+   "stimulus": "biodiversity-s1",
+   "options": [
+    "East Pond is more diverse, because it has the most snails",
+    "North Pond is more diverse, because its species are much more even",
+    "They are equally diverse, because their species richness and total number of animals are equal",
+    "East Pond is more diverse, because snails are decomposers"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With equal richness, the more even community is the more diverse one.",
+    "options": [
+     "A large count of one species makes a community less even, so less diverse.",
+     "Right: richness is equal, so evenness decides. North Pond has about 50 of each species; East Pond is 185 snails out of 200.",
+     "Equal richness is half the story; evenness differs a lot between the two ponds.",
+     "What a species eats does not set diversity; the number of species and their evenness do."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-3",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the animals counted in East Pond are pond snails?",
+   "stimulus": "biodiversity-s1",
+   "why": {
+    "correct": "Snails out of the total, times 100: $\\frac{185}{200} \\times 100 = 92.5\\%$. One species makes up almost the whole community, which is what an uneven community looks like."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      185,
+      200
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.925,
+      "why": "That is the fraction 185 / 200. Multiply by 100 to turn it into a percent: 92.5%."
+     },
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        200,
+        185
+       ]
+      },
+      "why": "You divided the total by the snails. The part (185 snails) goes on top: 185 / 200 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-4",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A disease arrives that kills most individuals of one species, whichever species it is. In which pond is the community as a whole most likely to keep working much as before?",
+   "stimulus": "biodiversity-s1",
+   "options": [
+    "East Pond, because it has the most individuals of one species",
+    "North Pond, because it has fewer species to infect",
+    "South Pond, because each species is a small share of a rich, even community",
+    "The three ponds about equally, because each one has at least four different species"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A richer, more even community spreads its functions across more species, so losing one changes less.",
+    "options": [
+     "If the disease hits the snail, East Pond loses over 90% of its animals at once.",
+     "Fewer species means each one is a bigger share of the community, so losing one hurts more.",
+     "Right: losing one of six evenly sized species removes about a sixth of the animals, and the other five keep their roles going.",
+     "Richness and evenness differ among the ponds, and both affect how much one loss matters."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-5",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement best expresses the main claim of the passage?",
+   "stimulus": "biodiversity-s2",
+   "options": [
+    "Hunting for seal oil is still the main threat to northern elephant seals",
+    "Museum skins are a better source of DNA than living animals",
+    "Once a population passes 100,000 animals it has regained as much genetic variety as it ever had",
+    "Numbers can recover while genetic diversity stays low, leaving the seals vulnerable"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The claim is that numbers came back but genetic diversity did not, and that this matters for the future.",
+    "options": [
+     "The passage says the hunting stopped; it is not the current threat.",
+     "Museum skins were used to compare past and present, not because they are better.",
+     "This is the opposite of the passage, which says genetic variety stayed low.",
+     "Right: the passage ends on this argument, and the DNA study supports it."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-6",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which evidence in the passage most directly supports the claim that the seals lost genetic variety?",
+   "stimulus": "biodiversity-s2",
+   "options": [
+    "DNA from living seals compared with DNA from skins collected before hunting",
+    "The large number of seals now breeding along the coasts of both Mexico and California",
+    "The fact that hunting ended and the colony grew",
+    "Where the last colony survived in the 1890s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only the DNA comparison measures genetic variety before and after the bottleneck.",
+    "options": [
+     "Right: this before-and-after comparison measures the genetic variety that was lost.",
+     "A large population today says nothing about its genes; the passage stresses that.",
+     "The recovery explains the numbers, not the genetic loss.",
+     "The island location does not measure genetic variety."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-7",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why would low genetic diversity make the seals more likely to be hurt by a new disease?",
+   "stimulus": "biodiversity-s2",
+   "options": [
+    "Seals with low genetic diversity reproduce more slowly than other seals",
+    "With fewer gene variants, it is less likely that some seals carry traits that resist the disease",
+    "Diseases spread mainly in populations with low genetic diversity, so the seals will catch more of them",
+    "Low genetic diversity makes each seal smaller and weaker"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Genetic diversity is the raw material for surviving change: the more variety, the better the chance that some individuals can cope.",
+    "options": [
+     "Genetic diversity of a population does not set how fast each seal reproduces.",
+     "Right: variety in genes means variety in traits, including resistance; with little variety, many seals respond alike.",
+     "Diseases spread in any population; genetic diversity changes how many individuals can survive one.",
+     "Individual size is not what genetic diversity describes; it is the variety across the population."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-8",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "A biologist measures how much the genes differ among the trout in one lake. Which level of biodiversity is she measuring?",
+   "options": [
+    "Species richness",
+    "Habitat diversity",
+    "Genetic diversity",
+    "Species evenness"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Variety among individuals of one population is genetic diversity.",
+    "options": [
+     "Richness counts different species, not genes within one species.",
+     "Habitat diversity is the variety of habitats in an area.",
+     "Right: variety of genes within one population is genetic diversity.",
+     "Evenness compares the population sizes of different species."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-9",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Sea otters eat sea urchins, and sea urchins eat kelp, a large seaweed that forms underwater forests where many fish live. Hunters remove the otters from a coast. Which outcome is most likely?",
+   "options": [
+    "Urchins decrease, because otters had been protecting them from other predators",
+    "Kelp increases, because otters had been eating the kelp",
+    "Fish increase, because otters had been competing with them for kelp",
+    "Urchins increase, kelp forests shrink, and fish that shelter in kelp decline"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sea otters are a classic keystone species: their effect on the whole community is far larger than their numbers.",
+    "options": [
+     "Otters eat urchins; removing otters lets urchins increase.",
+     "Otters eat urchins, not kelp; kelp declines when urchins multiply.",
+     "Fish lose their kelp habitat, so they decline rather than increase.",
+     "Right: removing the predator releases the urchins, which overgraze kelp, and the habitat for fish goes with it."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-10",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Build the cause-and-effect chain that explains why sea otters are called a keystone species.",
+   "why": {
+    "correct": "Each link must be named: otters gone, urchins up, kelp down, fish habitat lost."
+   },
+   "specific": {
+    "frame": "When sea otters are removed, ___, so ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "First effect",
+      "options": [
+       "sea urchin numbers increase",
+       "kelp grows faster",
+       "sea urchins starve",
+       "fish eat more kelp"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Kelp is eaten by urchins; it does not gain from losing otters directly.",
+       "2": "Urchins lose their predator, so they survive and multiply rather than starve.",
+       "3": "Fish shelter in kelp; the urchins are the grazers that matter here."
+      }
+     },
+     "effect": {
+      "label": "Second effect",
+      "options": [
+       "urchins graze the kelp forest down",
+       "urchins leave the coast",
+       "kelp forests spread to deeper water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With more food and no predator, urchins stay and graze.",
+       "2": "More urchins means less kelp, not more."
+      }
+     },
+     "mechanism": {
+      "label": "Result for the community",
+      "options": [
+       "removes the habitat many fish and invertebrates depend on",
+       "adds food for the fish that live in kelp",
+       "has no effect beyond the urchins"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Losing kelp takes away food and shelter; it does not add food.",
+       "2": "The change spreads through the community; that is why otters are called keystone."
+      }
+     }
+    },
+    "model": "When sea otters are removed, sea urchin numbers increase, so the urchins graze the kelp forest down, which removes the habitat that many fish depend on."
+   }
+  },
+  {
+   "id": "env-biodiversity-11",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A nature reserve contains a forest, a meadow, a stream and a marsh. A second reserve of the same size is all forest. Which statement best explains why the first reserve is likely to hold more species?",
+   "options": [
+    "It has greater habitat diversity, so it offers more different niches",
+    "It has greater genetic diversity, because meadows hold more genes",
+    "Forests hold fewer species than meadows, streams or marshes of the same size",
+    "It has greater species evenness, because marshes are even"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Habitat diversity raises species richness, because different habitats offer different niches.",
+    "options": [
+     "Right: each habitat supports species the others cannot, so more habitats mean more species.",
+     "Genetic diversity is variety within a population; the reserves differ in habitats.",
+     "Many forests are rich in species; the point is that four habitats beat one.",
+     "Evenness is about population sizes, and a marsh is not \"even\" in itself."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-12",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "A student counts 14 different bird species on a school campus. What has she measured?",
+   "options": [
+    "Species evenness",
+    "Species richness",
+    "Genetic diversity",
+    "Habitat diversity"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Richness is the count of different species.",
+    "options": [
+     "Evenness would need the number of birds of each species.",
+     "Right: the number of different species is richness.",
+     "She counted species, not gene variety within one species.",
+     "She counted birds, not kinds of habitat."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-13",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which events would lower the genetic diversity of a population? Select all that apply.",
+   "options": [
+    "A flood kills 95% of the population at random",
+    "The population stays small and isolated for many generations",
+    "Individuals from a different population of the same species join it and breed",
+    "The population doubles in size over ten years with plenty of food"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Genetic diversity falls when variants are lost: a bottleneck, or a small population cut off from others.",
+    "options": [
+     "Right: a bottleneck leaves only the genes the survivors carried.",
+     "Right: in a small isolated population, gene variants are lost by chance and none arrive from outside.",
+     "New breeding members bring new gene variants, which raises genetic diversity.",
+     "Growth from the same gene pool does not remove variety, so diversity does not fall."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-14",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A farmer plants one wheat variety, grown from genetically identical seeds, across all of her fields. A neighbor plants six different varieties. A new fungus that attacks wheat arrives. Which farmer is more likely to lose most of the crop?",
+   "options": [
+    "The neighbor, because planting six different varieties attracts more fungi to his fields",
+    "Both lose the same share, because the fungus attacks wheat of any variety",
+    "The first farmer, because her identical plants share any weakness to the fungus",
+    "Neither loses much, because fungi feed mostly on dead plant material"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Low genetic diversity means one threat can affect nearly every individual the same way.",
+    "options": [
+     "More varieties do not attract more fungi; they spread the risk.",
+     "The varieties differ in traits, which can include resistance, so losses differ.",
+     "Right: if one plant is vulnerable, every identical plant is too; with six varieties, some are likely to resist.",
+     "Many fungi attack living crops; the question says this one attacks wheat."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-15",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement best defines a keystone species?",
+   "options": [
+    "The species with the largest population, which therefore eats or shades out the most others",
+    "A producer that forms the base of most of the food chains in the ecosystem it lives in",
+    "A species found in one place and nowhere else",
+    "A species whose removal changes the community far more than its numbers would suggest"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Keystone species matter out of proportion to their numbers.",
+    "options": [
+     "Being common does not make a species keystone; its effect relative to numbers does.",
+     "Keystone species are often consumers, such as sea otters; being a producer is not the definition.",
+     "That describes a rare or local species, not a keystone one.",
+     "Right: a keystone species has a large effect relative to how common it is."
+    ]
+   }
+  },
+  {
+   "id": "env-biodiversity-16",
+   "unit": "unit-2",
+   "topic": "biodiversity",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Ten years after a fire, two forest plots of the same size each have 12 tree species. In plot 1, one pine species makes up 80% of the trees. In plot 2, no species makes up more than 15%. Which conclusion is supported?",
+   "options": [
+    "Plot 2 is more diverse, because its species are more even",
+    "Plot 1 is more diverse, because pine is the most successful species",
+    "The plots are equally diverse, because each has 12 species",
+    "Plot 1 is more diverse, because it has the most trees"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same richness, so evenness decides: plot 2 wins.",
+    "options": [
+     "Right: richness is the same, so the more even plot is more diverse.",
+     "One dominant species makes a plot less even, so less diverse.",
+     "Equal richness with different evenness gives different diversity.",
+     "The plots are the same size, and diversity depends on kinds and balance, not totals."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "pollution-human-health",
+ "hook": "Asthma visits at a town’s clinic have climbed for five years. Neighbors blame the factory on the hill. But the town also sits beside a busy highway, many homes burn wood in winter, and summer smog has grown worse. Which one is the cause? Probably several at once, and some may make each other worse. That is why pollution and health are so hard to untangle.",
+ "prereq": [
+  {
+   "q": "What does the threshold dose on a dose-response curve show?",
+   "options": [
+    "The highest dose with no observed response",
+    "The dose that kills half the test group",
+    "The largest dose tested",
+    "The dose that affects every animal"
+   ],
+   "correct": 0,
+   "why": "The threshold is where the curve leaves zero: below it, no effect is seen.",
+   "review": "dose-response-curve"
+  },
+  {
+   "q": "Which air pollutant forms near the ground from NOx and VOCs in sunlight?",
+   "options": [
+    "Ground-level ozone",
+    "Carbon dioxide",
+    "Radon",
+    "Sulfur dioxide"
+   ],
+   "correct": 0,
+   "why": "Ground-level ozone is a secondary pollutant made in photochemical smog.",
+   "review": "photochemical-smog"
+  }
+ ],
+ "figure": {
+  "figure": "pollution-human-health-synergism",
+  "caption": "Lung damage in lab mice from two pollutants, alone and together (invented data). Together they cause far more than their two effects added."
+ },
+ "chain": [
+  {
+   "cause": "People are exposed to many pollutants, at different doses, over many years",
+   "effect": "it is hard to link one illness to one pollutant"
+  },
+  {
+   "cause": "Two pollutants that interact inside the body",
+   "effect": "can cause more harm together than their separate effects add up to (synergism)"
+  },
+  {
+   "cause": "A short, high exposure",
+   "effect": "causes acute effects soon after, such as dizziness or an asthma attack"
+  },
+  {
+   "cause": "A long, low exposure, such as asbestos fibers or lead",
+   "effect": "causes chronic effects that may appear years later, such as mesothelioma"
+  }
+ ],
+ "ideas": [
+  "Cause and effect are hard to prove in people: exposures are mixed and long, other factors vary, and many diseases take years to appear.",
+  "<b>Synergism</b>: two or more substances together cause more harm than the sum of their separate effects.",
+  "<b>Acute</b> effects follow a short, high exposure quickly. <b>Chronic</b> effects follow long or repeated exposure and may take years to appear.",
+  "Examples to know: ground-level ozone lowers lung function and triggers asthma; asbestos causes mesothelioma; untreated sewage in drinking water spreads dysentery."
+ ],
+ "misconception": {
+  "wrong": "If pollutant A alone damages 10% of lungs and pollutant B alone damages 8%, together they must damage 18%.",
+  "right": "Effects do not always add. With synergism, the combined harm can be much larger: 40% in the mouse study, more than twice the sum."
+ },
+ "check": [
+  "env-pollution-human-health-2",
+  "env-pollution-human-health-4",
+  "env-pollution-human-health-5",
+  "env-pollution-human-health-6",
+  "env-pollution-human-health-7",
+  "env-pollution-human-health-13",
+  "env-pollution-human-health-15"
+ ],
+ "summary": "Linking a pollutant to a disease is hard because people face many exposures over long times. Synergism means pollutants together can do more harm than their effects added. Acute effects follow short, high exposures; chronic effects follow long ones. Know ground-level ozone and lung function, asbestos and mesothelioma, and sewage-contaminated water and dysentery."
+}

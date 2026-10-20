@@ -1,0 +1,617 @@
+{
+ "stimuli": {
+  "indoor-air-s1": {
+   "kind": "quantitative",
+   "title": "Radon tests in the basements of five homes",
+   "invented": true,
+   "table": {
+    "caption": "Radon in basement air, in picocuries per liter (pCi/L), before and after a fix (invented data for practice). The EPA recommends fixing a home at 4 pCi/L or more.",
+    "cols": [
+     "Home",
+     "Bedrock under the home",
+     "Radon before (pCi/L)",
+     "Radon after a fan system (pCi/L)"
+    ],
+    "rows": [
+     [
+      "1",
+      "granite",
+      "12.0",
+      "1.8"
+     ],
+     [
+      "2",
+      "granite",
+      "8.5",
+      "1.2"
+     ],
+     [
+      "3",
+      "shale with uranium",
+      "6.4",
+      "1.6"
+     ],
+     [
+      "4",
+      "limestone",
+      "2.1",
+      "no fix needed"
+     ],
+     [
+      "5",
+      "sandstone",
+      "1.3",
+      "no fix needed"
+     ]
+    ]
+   }
+  },
+  "indoor-air-s2": {
+   "kind": "visual",
+   "title": "Formaldehyde in a new modular classroom over its first year",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of formaldehyde in a new classroom in parts per billion over 12 months, falling from 120 at month 0 to 30 at month 12, invented data",
+    "kind": "line",
+    "x": [
+     0,
+     12
+    ],
+    "y": [
+     0,
+     140
+    ],
+    "xStep": 2,
+    "yStep": 20,
+    "xLabel": "Months since the classroom opened",
+    "yLabel": "Formaldehyde (ppb)",
+    "series": [
+     {
+      "name": "Formaldehyde",
+      "points": [
+       [
+        0,
+        120
+       ],
+       [
+        1,
+        100
+       ],
+       [
+        2,
+        85
+       ],
+       [
+        3,
+        72
+       ],
+       [
+        4,
+        62
+       ],
+       [
+        6,
+        48
+       ],
+       [
+        8,
+        40
+       ],
+       [
+        10,
+        34
+       ],
+       [
+        12,
+        30
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-indoor-air-1",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which homes in the table should be fixed according to the EPA's 4 pCi/L action level?",
+   "stimulus": "indoor-air-s1",
+   "options": [
+    "Homes 1 and 2, on granite",
+    "Homes 1, 2 and 3",
+    "The homes on limestone and sandstone",
+    "Home 1, with the highest radon"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Homes 1 (12.0), 2 (8.5) and 3 (6.4) are at or above 4 pCi/L; the homes on limestone (2.1) and sandstone (1.3) are below it.",
+    "options": [
+     "Home 3, on uranium-bearing shale, is also above 4 pCi/L.",
+     "Right: all three are above 4 pCi/L before the fix.",
+     "Those two homes are below the action level, so they need no fix.",
+     "Homes 2 and 3 are also above the action level."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-2",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What pattern links the bedrock to the radon level?",
+   "stimulus": "indoor-air-s1",
+   "options": [
+    "Homes on uranium-rich rock have more radon",
+    "Homes on limestone have the most radon in the table",
+    "Radon is about the same whatever the bedrock",
+    "Homes on sandstone have the most radon in the table"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Radon comes from the decay of uranium in rock. Homes on granite and uranium-bearing shale have the most radon; limestone and sandstone, with little uranium, have the least.",
+    "options": [
+     "Right: radon forms when uranium in rock decays.",
+     "Home 4, on limestone, is second lowest at 2.1 pCi/L.",
+     "Radon varies from 1.3 to 12.0 pCi/L, and it tracks the rock.",
+     "Home 5, on sandstone, has the least radon, 1.3 pCi/L."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-3",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in radon in home 1 after the fan system was installed.",
+   "stimulus": "indoor-air-s1",
+   "why": {
+    "correct": "$\\frac{(1.8 - 12.0)}{12.0} \\times 100 = -85\\%$, an 85% drop."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      12,
+      1.8
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -566.666666667,
+      "why": "You divided by the new value. Divide by the old value, 12.0 pCi/L."
+     },
+     {
+      "value": 85,
+      "why": "Radon fell, so the change is negative: -85%."
+     },
+     {
+      "value": -0.85,
+      "why": "That is the fraction. Multiply by 100 for a percent: -85%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-4",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The fan system pipes air from under the basement floor to above the roof. How does it lower radon indoors?",
+   "stimulus": "indoor-air-s1",
+   "options": [
+    "It filters radioactive dust out of the air in each room",
+    "It heats the basement so radon breaks down faster",
+    "It traps radon in the water that comes out of the taps",
+    "It vents soil gas outdoors before it can enter"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Radon seeps up from the soil through cracks in the foundation. The fan pulls the soil gas out from under the slab and vents it outside before it can enter the house.",
+    "options": [
+     "Radon is a gas; the system removes it from the soil, not with room filters.",
+     "Heat does not speed radioactive decay.",
+     "The system works on soil gas under the floor, not on the water supply.",
+     "Right: the gas is removed at its source, under the floor."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-5",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the trend in formaldehyde in the classroom over the year.",
+   "stimulus": "indoor-air-s2",
+   "options": [
+    "It falls by the same amount each month",
+    "It rises at first, then levels off",
+    "It falls quickly at first, then more slowly",
+    "It stays about the same over the year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Formaldehyde falls quickly at first (120 to 72 ppb in three months) and then more slowly, reaching 30 ppb at 12 months.",
+    "options": [
+     "The first months drop by 15 to 20 ppb each, the last ones by 3 to 6, so the rate is not steady.",
+     "Formaldehyde is highest at month 0 and falls from there.",
+     "Right: the drop per month shrinks over time.",
+     "It falls from 120 to 30 ppb, a large change."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-6",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best fits the shape of the formaldehyde curve?",
+   "stimulus": "indoor-air-s2",
+   "options": [
+    "Students breathe out more formaldehyde as the year goes on",
+    "New pressed wood off-gasses fast at first, then slower",
+    "Outdoor smog blows in during winter and raises the level",
+    "Radon in the soil turns into formaldehyde over time"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "New pressed-wood furniture, cabinets and glues give off (off-gas) formaldehyde fastest when new. As less is left in the materials, the release slows, so the level falls quickly and then slowly.",
+    "options": [
+     "People do not breathe out meaningful formaldehyde.",
+     "Right: off-gassing is strongest when materials are new.",
+     "The level falls steadily; nothing in the graph rises.",
+     "Radon is a radioactive gas from rock; it does not turn into formaldehyde."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-7",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in formaldehyde from month 0 to month 12.",
+   "stimulus": "indoor-air-s2",
+   "why": {
+    "correct": "$\\frac{(30 - 120)}{120} \\times 100 = -75\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      120,
+      30
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -300,
+      "why": "You divided by the month 12 value. Divide by the old value, 120 ppb."
+     },
+     {
+      "value": 25,
+      "why": "25% is the share that is left (30 of 120). The change is (30 - 120) / 120 × 100 = -75%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-8",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which step would most directly lower formaldehyde in the classroom during its first months?",
+   "stimulus": "indoor-air-s2",
+   "options": [
+    "Increase ventilation with outdoor air",
+    "Seal the windows to keep outdoor smog out",
+    "Install a radon fan under the classroom floor",
+    "Add more pressed-wood shelves for storage"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bringing in more outdoor air dilutes the formaldehyde that the new materials give off, so the concentration indoors falls.",
+    "options": [
+     "Right: fresh air dilutes and removes the off-gassed formaldehyde.",
+     "Sealing traps the formaldehyde inside and raises its level.",
+     "A radon fan removes soil gas; it does not remove formaldehyde from furniture.",
+     "New pressed wood would add formaldehyde."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-9",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is the source of radon in homes?",
+   "options": [
+    "Gas stoves that burn their fuel poorly and give off fumes",
+    "Glues and resins in new pressed-wood furniture",
+    "Old insulation that crumbles into fibers",
+    "Uranium decaying in the rock and soil under the home"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Radon is a radioactive gas made when uranium in rock and soil decays. It seeps up through cracks in foundations.",
+    "options": [
+     "Poorly burning stoves make carbon monoxide, not radon.",
+     "Pressed wood gives off formaldehyde, not radon.",
+     "Crumbling insulation can release asbestos fibers, not radon.",
+     "Right: radon forms from uranium decay and seeps up."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-10",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is radon a health concern even though it cannot be seen or smelled?",
+   "options": [
+    "It binds to hemoglobin and blocks oxygen in the blood",
+    "It reacts in sunlight to make ozone near the ground",
+    "Its radiation damages lung cells and can cause cancer",
+    "It dissolves in tap water and makes the water acidic"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Radon and its decay products give off radiation inside the lungs when breathed in. Over years this damages lung cells, and radon is a leading cause of lung cancer after smoking.",
+    "options": [
+     "That describes carbon monoxide, not radon.",
+     "Radon is unreactive; it does not form ozone.",
+     "Right: it is a leading cause of lung cancer after smoking.",
+     "Radon does not make water acidic; it is a radioactive noble gas."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-11",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In many developing countries, the indoor air pollutant that harms the most people comes from which source?",
+   "options": [
+    "Radon seeping from granite under modern homes",
+    "Smoke from cooking over indoor fires",
+    "Formaldehyde from new office furniture",
+    "Asbestos in new insulation in suburban houses"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Cooking and heating over open fires or simple stoves with wood, charcoal, dung or crop waste fills homes with smoke particles and carbon monoxide.",
+    "options": [
+     "Radon matters, but smoke from indoor cooking fires harms far more people.",
+     "Right: the smoke gives high levels of particles and CO.",
+     "Formaldehyde matters in new buildings but not on this scale.",
+     "Asbestos is mostly in old buildings and is not the largest global risk."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-12",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "When is asbestos in a building most dangerous to the people inside?",
+   "options": [
+    "When damaged old asbestos sheds fibers into the air",
+    "When asbestos tiles are intact and sealed under carpet",
+    "When asbestos gets wet during a summer rainstorm",
+    "When the sun shines through windows onto it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Asbestos causes harm when its fibers get into the air and are breathed in. That happens when old insulation, tiles or pipe wrap is damaged, sanded or torn out.",
+    "options": [
+     "Right: airborne fibers are inhaled and lodge in the lungs.",
+     "Intact, sealed asbestos releases few fibers.",
+     "Wetting actually holds fibers down; the risk is dry, disturbed material.",
+     "Sunlight does not release asbestos fibers."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-13",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Workers in a newly sealed, energy-efficient office complain of headaches and eye irritation that go away when they leave. What is the most likely explanation?",
+   "options": [
+    "Radon from the parking garage below the offices",
+    "Too much heat from the building heating system",
+    "Pollen blown in from trees around the parking lot",
+    "Sick building syndrome from trapped VOCs"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sick building syndrome: a tight building with poor ventilation traps VOCs from new carpets, paint and furniture, and the symptoms ease outside.",
+    "options": [
+     "Radon does not cause headaches that ease within hours; its harm is long-term lung cancer.",
+     "Warm air alone does not cause these symptoms; trapped VOCs do.",
+     "The building is sealed, and pollen allergy would not ease each time workers leave.",
+     "Right: symptoms tied to the building that ease when people leave."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-14",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which device best protects a family from carbon monoxide from a furnace?",
+   "options": [
+    "A radon test kit placed in the basement",
+    "An air freshener that masks indoor odors",
+    "A CO detector with an alarm near bedrooms",
+    "A dehumidifier that lowers basement moisture"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "CO has no color or smell, so a detector that sounds an alarm is the key safeguard, along with yearly furnace inspections and vents that work.",
+    "options": [
+     "Radon kits measure radon, not carbon monoxide.",
+     "Fresheners add VOCs and do not remove CO, which has no odor anyway.",
+     "Right: CO cannot be seen or smelled, so an alarm warns people in time.",
+     "Dryer air does not remove carbon monoxide."
+    ]
+   }
+  },
+  {
+   "id": "env-indoor-air-15",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A family uses a wood stove that releases 25 grams of PM2.5 per hour of burning. They burn it 6 hours a day for 120 days each winter. Write the setup, with units, for the PM2.5 released per winter in kilograms, then the answer.",
+   "why": {
+    "correct": "$25\\,\\frac{\\text{g}}{\\text{h}} \\times 6\\,\\frac{\\text{h}}{\\text{day}} \\times 120\\,\\text{days} \\times \\frac{1\\,\\text{kg}}{1{,}000\\,\\text{g}} = 18\\,\\text{kg}$ of PM2.5 a winter."
+   },
+   "setup": {
+    "answer": "25 g/h * 6 h/day * 120 day * 1 kg / 1000 g",
+    "mustUse": [
+     "25",
+     "6",
+     "120",
+     "1000"
+    ],
+    "unit": "kg",
+    "mistakes": [
+     {
+      "expr": "25 g/h * 6 h/day * 120 day",
+      "why": "That is the answer in grams. Multiply by 1 kg / 1,000 g to convert to kilograms."
+     },
+     {
+      "expr": "25 g/h * 6 h/day * 120 day * 1000 g / 1 kg",
+      "why": "The conversion factor is upside down. Grams must be on the bottom so they cancel."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "convert",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         25,
+         6,
+         120
+        ]
+       },
+       "g",
+       "kg"
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 18000,
+       "why": "18,000 is in grams. Divide by 1,000 for kilograms: 18 kg."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-indoor-air-16",
+   "unit": "unit-7",
+   "topic": "indoor-air",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a rural village, families cook over open wood fires inside their homes. Propose a solution that reduces indoor air pollution and explain how it works.",
+   "why": {
+    "correct": "The solution fits the village (low cost, uses local fuel) and says how it works: a vented stove burns wood more completely and sends the smoke outside."
+   },
+   "specific": {
+    "frame": "The village could ___, which reduces indoor smoke because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "provide efficient cookstoves with chimneys that vent outdoors",
+       "install radon fans under every home",
+       "ban cooking indoors during summer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Radon fans remove soil gas, not smoke from cooking fires.",
+       "2": "A seasonal ban is not realistic for daily cooking and does not fix the stove."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "the stove burns wood more completely and the chimney carries smoke outside",
+       "the chimney filters out the CO2 so it cannot warm the house",
+       "the stove turns smoke particles into ozone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The health problem is smoke particles and CO, not CO2 warming the house.",
+       "2": "Stoves do not turn particles into ozone, which would also be harmful."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "stove",
+      "smoke",
+      "chimney",
+      "wood"
+     ]
+    },
+    "model": "The village could provide efficient cookstoves with chimneys that vent outdoors, which reduces indoor smoke because the stove burns wood more completely and the chimney carries the smoke outside."
+   }
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "biotic-potential": {
+  "def": "The fastest rate at which a population could grow if it had unlimited resources and no limits. It depends on how many offspring each individual produces, how early it starts and how often it reproduces."
+ },
+ "r-selected": {
+  "def": "Describes species with a high biotic potential: many small offspring, little or no parental care, early first reproduction and short lives, such as insects, mice and weeds. Their populations swing up and down and rebound quickly after disruptions."
+ },
+ "k-selected": {
+  "def": "Describes species with a low biotic potential: few large offspring, much parental care, late first reproduction and long lives, such as elephants and whales. Their populations are fairly steady but recover slowly after losses."
+ },
+ "reproductive-strategy": {
+  "def": "The way a species balances the number of offspring it produces against the care and resources given to each one. r-selected and K-selected are the two ends of the range of reproductive strategies."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "dose-response-curve-two-pesticides": {
+  "file": "figures/dose-response-curve-two-pesticides.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two curves of percent of test fish killed against dose in mg per kg (invented data). Pesticide Y (circles) kills 0% at 0 and 10, 8% at 20, 25% at 30, 50% at 40, 72% at 50, 88% at 60, 97% at 80 and nearly all fish above that. Pesticide X (squares) kills 0% up to 20, 2% at 30, 6% at 40, 12% at 50, 22% at 60, 50% at 80, 76% at 100, 90% at 120 and 98% at 160. Dashed lines read the LD50s: 40 mg/kg for Y and 80 mg/kg for X, so Y is more toxic. Y's curve first rises above zero between 10 and 20 mg/kg, X's between 20 and 30 mg/kg."
+ }
+}

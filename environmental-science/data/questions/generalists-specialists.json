@@ -1,0 +1,510 @@
+{
+ "stimuli": {
+  "generalists-specialists-s1": {
+   "kind": "quantitative",
+   "title": "Two bird species before and after a forest is cleared",
+   "invented": true,
+   "table": {
+    "caption": "Number of breeding pairs in a 10 km² study area before and after most of its old forest was cleared for farms and houses (invented data for practice)",
+    "cols": [
+     "Species",
+     "Foods eaten",
+     "Nesting sites used",
+     "Pairs before clearing",
+     "Pairs after clearing"
+    ],
+    "rows": [
+     [
+      "Woodpecker W",
+      "insects in dead trees",
+      "holes in large dead trees",
+      "40",
+      "6"
+     ],
+     [
+      "Bird X",
+      "insects, seeds, fruit, scraps",
+      "trees, shrubs, buildings",
+      "50",
+      "65"
+     ]
+    ]
+   }
+  },
+  "generalists-specialists-s2": {
+   "kind": "visual",
+   "title": "Food sizes eaten by two species",
+   "invented": true,
+   "figure": "generalists-specialists-niche"
+  }
+ },
+ "items": [
+  {
+   "id": "env-generalists-specialists-1",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Based on the table, which statement correctly classifies the two birds?",
+   "stimulus": "generalists-specialists-s1",
+   "options": [
+    "W is a specialist and X is a generalist",
+    "W is a generalist and X is a specialist",
+    "Both are specialists, because both eat insects",
+    "Both are generalists, because both live in forests"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Classify by how many foods, habitats and conditions a species can use.",
+    "options": [
+     "Right: W uses one food and one nesting site; X uses many of each.",
+     "W eats one food type and nests in one kind of site, which is a narrow niche.",
+     "Bird X also eats seeds, fruit and scraps, a broad diet.",
+     "Living in a forest does not make a species a generalist; the range of resources it uses does."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-2",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in breeding pairs of woodpecker W after the clearing, then give the answer.",
+   "stimulus": "generalists-specialists-s1",
+   "why": {
+    "correct": "Start at 40 pairs: $\\frac{6 - 40}{40} \\times 100 = -85\\%$."
+   },
+   "setup": {
+    "answer": "(6 - 40) / 40 * 100",
+    "mustUse": [
+     "6",
+     "40"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       40,
+       6
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -34,
+       "why": "That is the change in pairs. Divide by 40 and multiply by 100."
+      },
+      {
+       "value": 85,
+       "why": "The size is right, but the pairs went down, so the percent change is negative: -85%."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(40 - 6) / 6 * 100",
+      "why": "Start from the value before clearing: (new - old) / old, so (6 - 40) / 40 × 100."
+     },
+     {
+      "expr": "(6 - 40) / 6 * 100",
+      "why": "Divide by the starting value, 40 pairs, not by 6."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-3",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best accounts for the change in woodpecker W?",
+   "stimulus": "generalists-specialists-s1",
+   "options": [
+    "Bird X ate most of the woodpecker’s eggs after clearing",
+    "Clearing removed the large dead trees it needs for both food and nests",
+    "The woodpecker moved to the new houses and was not counted",
+    "The woodpecker began eating seeds and scraps instead"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A specialist declines when the one resource it depends on is removed.",
+    "options": [
+     "Nothing in the data shows predation by bird X.",
+     "Right: as a specialist, W had no other food or nest site to switch to.",
+     "W nests only in holes in large dead trees, not in buildings.",
+     "If it had switched foods, it would have done better, not worse."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-4",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many breeding pairs did bird X increase after the clearing?",
+   "stimulus": "generalists-specialists-s1",
+   "why": {
+    "correct": "Subtract: $65 - 50 = 15$ pairs."
+   },
+   "numeric": {
+    "unit": "pairs",
+    "units": [
+     "pair",
+     "breeding pairs"
+    ],
+    "from": {
+     "fn": "sub",
+     "args": [
+      65,
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 115,
+      "why": "That adds the two counts. The increase is the difference: 65 - 50."
+     },
+     {
+      "value": 30,
+      "why": "That is 30%, the percent change. The question asks for the number of pairs: 65 - 50."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-5",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which feature of the figure shows that one species is a specialist?",
+   "stimulus": "generalists-specialists-s2",
+   "options": [
+    "Its curve is low and spread from 0 to 20 mm",
+    "Its curve crosses the other curve twice",
+    "Its curve is tall and narrow, centered on 6 mm food",
+    "Its curve starts at zero on the left side"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Niche width shows as the width of the curve.",
+    "options": [
+     "A wide spread of food sizes is the mark of a generalist.",
+     "Crossing points do not show the width of a niche.",
+     "Right: it eats a narrow range of food sizes.",
+     "Both curves start low; the width of each curve is what matters."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-6",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A drought kills the plants that make 6 mm seeds, but seeds of other sizes remain. Which outcome does the figure predict?",
+   "stimulus": "generalists-specialists-s2",
+   "options": [
+    "The generalist declines more, because it eats more sizes",
+    "Both increase, because there is less competition for 6 mm seeds",
+    "Neither changes, because both can switch to 15 mm seeds",
+    "The specialist declines, while the generalist eats other sizes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Losing the specialist’s main food hurts it most.",
+    "options": [
+     "Eating more sizes lets the generalist switch, so it is hurt less.",
+     "With 6 mm seeds gone, neither can eat them; the specialist loses its main food.",
+     "The specialist eats almost nothing above about 9 mm.",
+     "Right: the specialist depends on 6 mm food; the generalist uses sizes from 0 to 20 mm."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-7",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Where 6 mm seeds are plentiful year after year, the specialist is more common than the generalist. Which explanation fits best?",
+   "stimulus": "generalists-specialists-s2",
+   "options": [
+    "It handles 6 mm seeds more efficiently than the generalist",
+    "The generalist is unable to eat 6 mm seeds",
+    "Specialists have more offspring in each generation",
+    "Generalists avoid areas where seeds are common"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Specialists can win where conditions are stable and their resource is abundant.",
+    "options": [
+     "Right: specializing often means being better at one task, which pays off when that resource is reliable.",
+     "The generalist’s curve includes 6 mm food.",
+     "The figure shows food use, not number of offspring.",
+     "Nothing in the figure suggests that."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-8",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which species is the best example of a generalist?",
+   "options": [
+    "A koala that eats the leaves of a few eucalyptus species",
+    "A coyote eating rodents, fruit and insects in many places",
+    "A caterpillar that feeds on a single kind of milkweed plant",
+    "A frog that lives in one cold mountain spring"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalists use many foods and live in many habitats.",
+    "options": [
+     "One kind of food is a narrow niche: a specialist.",
+     "Right: many foods and many habitats make a broad niche.",
+     "One host plant is a narrow niche: a specialist.",
+     "One small habitat is a narrow niche."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-9",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are specialist species more likely than generalists to decline when a habitat changes?",
+   "options": [
+    "They reproduce faster and use up their food",
+    "They are smaller and weaker than most generalists",
+    "They rely on few resources, with little to switch to",
+    "They are eaten by generalists in disturbed areas"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A narrow niche means fewer options when conditions change.",
+    "options": [
+     "How fast they reproduce is not what makes a species a specialist.",
+     "Body size does not define a specialist; pandas are large.",
+     "Right: if their resource declines, they have no fallback.",
+     "Predation can happen, but the main reason is their narrow niche."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-10",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why rats, a generalist species, often increase when a forest is replaced by a city.",
+   "why": {
+    "correct": "Broad niche, so new foods and shelters can be used, so the population grows."
+   },
+   "specific": {
+    "frame": "Rats ___, so in a city they ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Niche",
+      "options": [
+       "eat many foods and use many kinds of shelter",
+       "eat one kind of forest seed",
+       "live only in tree holes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One kind of food would describe a specialist.",
+       "2": "One kind of shelter would describe a specialist."
+      }
+     },
+     "effect": {
+      "label": "What they find",
+      "options": [
+       "can use garbage, stored food and buildings",
+       "lose their only food source",
+       "must leave to find forest"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Generalists have no single food source to lose.",
+       "2": "Rats can live in buildings, so they do not need forest."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "lets more rats survive and reproduce, so their population increases",
+       "lowers the number of young rats",
+       "keeps the rat population the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More food and shelter means more young survive, not fewer.",
+       "2": "New food and shelter change the population; it grows."
+      }
+     }
+    },
+    "model": "Rats eat many foods and use many kinds of shelter, so in a city they can use garbage, stored food and buildings, which lets more rats survive and reproduce, so their population increases."
+   }
+  },
+  {
+   "id": "env-generalists-specialists-11",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which traits describe a specialist species? Select all that apply.",
+   "options": [
+    "It eats one or a few kinds of food",
+    "It tolerates a narrow range of conditions",
+    "It lives in many different habitats",
+    "It easily spreads into towns and farms"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Specialists have narrow niches in diet, habitat or conditions.",
+    "options": [
+     "Right: a narrow diet is a narrow niche.",
+     "Right: a narrow range of tolerance is part of a narrow niche.",
+     "Many habitats describe a generalist.",
+     "Spreading into disturbed places is typical of generalists."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-12",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Monarch butterfly caterpillars feed on milkweed plants, and few other plants. Farm weed control has removed much of the milkweed from field edges. Which outcome is most likely?",
+   "options": [
+    "Monarchs switch to eating crops in the fields",
+    "Monarch numbers rise because weed control kills their predators",
+    "There is no change, because adult butterflies drink nectar",
+    "Fewer caterpillars survive, so monarch numbers fall"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A specialist at any life stage is vulnerable when its key resource is removed.",
+    "options": [
+     "Specialist caterpillars do not switch to a different food plant.",
+     "Removing milkweed removes their food; that outweighs any change in predators.",
+     "Adults can feed on many flowers, but the caterpillars need milkweed to grow.",
+     "Right: as specialists, the caterpillars lose their food plant and cannot switch."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-13",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A land manager wants to protect a specialist beetle that lives in old trees. Which action best fits the beetle’s niche?",
+   "options": [
+    "Leave old and dead trees standing in the managed forest",
+    "Plant a mix of fast-growing young trees across the area",
+    "Put out bird feeders to give the beetle extra food",
+    "Remove dead wood so the forest looks tidier"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Protecting a specialist means protecting its specific resource.",
+    "options": [
+     "Right: it protects the narrow resource the beetle depends on.",
+     "Young trees do not provide the old-tree habitat the specialist needs.",
+     "Bird feeders do not supply the beetle’s food or habitat.",
+     "That removes the very resource the specialist needs."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-14",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Cockroaches live in kitchens, sewers, forests and caves, and eat almost any plant or animal matter. Which statement best predicts how they respond to a city growing into nearby woods?",
+   "options": [
+    "They decline because their single food plant is cut down",
+    "They spread into the new buildings and do well",
+    "They move deeper into the remaining woods to avoid buildings",
+    "They stop reproducing until the woods grow back"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalists often thrive in changed and human-made places.",
+    "options": [
+     "Cockroaches have no single food plant; they eat almost anything.",
+     "Right: as generalists, they can use the food and shelter of a city.",
+     "Generalists do not need to avoid buildings; many live in them.",
+     "Nothing about their niche ties breeding to woods."
+    ]
+   }
+  },
+  {
+   "id": "env-generalists-specialists-15",
+   "unit": "unit-3",
+   "topic": "generalists-specialists",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two lizard species live on the same island. One eats only ants; the other eats ants, beetles, spiders and fruit. A disease kills most of the island’s ants. Which lizard population is more likely to recover, and why?",
+   "options": [
+    "The ant eater, because it is more efficient at catching ants",
+    "Both equally, because both eat ants",
+    "The one with the broad diet, because it can eat other foods",
+    "Neither, because the disease kills the lizards too"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When one resource collapses, the species with alternatives recovers.",
+    "options": [
+     "Efficiency does not help when the ants are gone.",
+     "Only one has other foods to switch to.",
+     "Right: the generalist switches to beetles, spiders and fruit.",
+     "The disease kills ants; nothing says it affects lizards."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,661 @@
+{
+ "stimuli": {
+  "urbanization-s1": {
+   "kind": "visual",
+   "title": "Stream flow after a storm, before and after development",
+   "figure": "urbanization-hydrograph"
+  },
+  "urbanization-s2": {
+   "kind": "quantitative",
+   "title": "Where rain goes as a watershed is paved",
+   "invented": true,
+   "table": {
+    "caption": "Average share of yearly rainfall that runs off, soaks in or evaporates, by percent of the land covered with impervious surfaces (invented data for practice, typical of published estimates)",
+    "cols": [
+     "Impervious cover",
+     "Runs off (%)",
+     "Soaks in (%)",
+     "Evaporates or transpires (%)"
+    ],
+    "rows": [
+     [
+      "Natural land (0%)",
+      "10",
+      "50",
+      "40"
+     ],
+     [
+      "10-20%",
+      "20",
+      "42",
+      "38"
+     ],
+     [
+      "35-50%",
+      "30",
+      "35",
+      "35"
+     ],
+     [
+      "75-100%",
+      "55",
+      "15",
+      "30"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-urbanization-1",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these is an impervious surface?",
+   "options": [
+    "A parking lot",
+    "A lawn",
+    "A forest floor",
+    "A farm field"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pavement does not let water soak through. Lawns, forests and fields let water infiltrate.",
+    "options": [
+     "Right: water cannot soak through pavement.",
+     "Lawns let water soak in, though less than a forest.",
+     "Forest soil soaks up water well.",
+     "Field soil lets water soak in."
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-2",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a stream in a city flood more often than a similar stream in a forest?",
+   "options": [
+    "Rain on roofs and pavement runs off instead of soaking in",
+    "Cities get more rain than forests because tall buildings pull in clouds",
+    "City streams are wider, so they hold more of the rain that falls",
+    "Trees in the forest release extra water into the stream during storms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Impervious surfaces and storm drains send rain to the stream at once, so water levels rise fast and high.",
+    "options": [
+     "Right: runoff instead of infiltration.",
+     "Rainfall is about the same; the land surface is what differs.",
+     "Width is not the reason; city streams often are straightened and fill fast.",
+     "Trees soak up and slow water; they do not add floodwater."
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-3",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A coastal city pumps more groundwater as its population grows. Wells near the shore begin to pump salty water. What is happening?",
+   "options": [
+    "Pumping lowers fresh groundwater, so seawater moves in",
+    "Rain over the city has become salty from air pollution",
+    "Salt from the city's roads soaks into the aquifer from above",
+    "Sea level has fallen, pulling fresh water out to sea"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is saltwater intrusion: with less fresh water pushing seaward, salt water moves inland underground.",
+    "options": [
+     "Right: overpumping lets seawater move into the aquifer.",
+     "Rain does not become salty from air pollution.",
+     "Road salt can reach shallow water, but wells near the shore turning salty points to seawater.",
+     "A falling sea would not push seawater inland."
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-4",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which feature of a city most directly causes the urban heat island effect?",
+   "options": [
+    "Dark pavement and roofs that absorb sunlight",
+    "Tall buildings that block sunlight from reaching the streets",
+    "Parks and trees that release water vapor and cool the air",
+    "Lakes and rivers that store heat during the day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Low-albedo surfaces absorb sunlight and store heat; they give it off at night, keeping the city warm.",
+    "options": [
+     "Right: dark surfaces absorb and store heat.",
+     "Shade cools streets; it does not cause the heat island.",
+     "Plants cool cities by transpiration.",
+     "Water bodies cool cities in summer, not heat them."
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-5",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an effect of urban sprawl compared with growing the same number of people in a compact city?",
+   "options": [
+    "More farmland is paved, and people drive farther each day",
+    "Less land is paved per person, because houses are spread out",
+    "Fewer roads are needed, because people live farther apart",
+    "Less fuel is used, because traffic is spread over more roads"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Low-density development covers more land per person and makes people depend on cars for longer trips.",
+    "options": [
+     "Right: more land converted and more driving.",
+     "Sprawl paves more land per person, not less.",
+     "Spread-out development needs more roads.",
+     "Longer trips burn more fuel."
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-6",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Supporters of dense cities argue they can be better for the environment than sprawl. Which reason supports that view?",
+   "options": [
+    "Apartments and transit use less land and energy per person",
+    "Dense cities have more impervious surface per person than suburbs",
+    "Dense cities are cooler than the surrounding countryside on summer nights",
+    "Dense cities pump less groundwater because they have fewer people"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compact cities share walls, roads and pipes, and people walk or take transit, so land and energy per person are lower.",
+    "options": [
+     "Right: less land and energy per person.",
+     "Dense cities have less impervious surface per person, not more.",
+     "Cities are warmer than the countryside (heat island).",
+     "Dense cities have more people, not fewer."
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-7",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 2.5-cm rain falls on a 4,000-m² parking lot, and 90% of it runs off. How many cubic meters of water run off? (100 cm = 1 m)",
+   "why": {
+    "correct": "Rain volume: $0.025\\,\\text{m} \\times 4{,}000\\,\\text{m}^2 = 100\\,\\text{m}^3$. Runoff: $100\\,\\text{m}^3 \\times \\frac{90}{100} = 90\\,\\text{m}^3$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      90,
+      {
+       "fn": "waterVolume",
+       "args": [
+        {
+         "fn": "convert",
+         "args": [
+          2.5,
+          "cm",
+          "m"
+         ]
+        },
+        4000
+       ]
+      }
+     ]
+    },
+    "unit": "m3",
+    "units": [
+     "cubic meters"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "waterVolume",
+       "args": [
+        0.025,
+        4000
+       ]
+      },
+      "why": "100 m³ is all the rain. 90% of it runs off: multiply by 0.90."
+     },
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        90,
+        {
+         "fn": "mul",
+         "args": [
+          2.5,
+          4000
+         ]
+        }
+       ]
+      },
+      "why": "Change 2.5 cm to 0.025 m before multiplying by an area in square meters."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-urbanization-8",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how paving a watershed can make a stream run lower during dry summer months, not just higher during storms.",
+   "why": {
+    "correct": "Each link: impervious surfaces stop rain from soaking in; less water recharges groundwater; groundwater is what feeds the stream between storms; so the stream runs lower in dry months."
+   },
+   "specific": {
+    "frame": "Because pavement ___, ___, and since ___, the stream ___.",
+    "slots": {
+     "cause": {
+      "label": "What pavement does",
+      "options": [
+       "stops rain from soaking into the ground",
+       "makes more rain fall",
+       "stores rain in the soil beneath it"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Paving does not change how much rain falls.",
+       "2": "Pavement keeps water out of the soil."
+      }
+     },
+     "effect": {
+      "label": "Effect on groundwater",
+      "options": [
+       "less water recharges the groundwater",
+       "more water recharges the groundwater",
+       "the groundwater becomes salty"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less infiltration means less recharge.",
+       "2": "Inland paving reduces recharge; it does not add salt here."
+      }
+     },
+     "mechanism": {
+      "label": "Why it matters",
+      "options": [
+       "groundwater seeping into the stream keeps it flowing between storms",
+       "the stream is fed only by rain falling directly on it",
+       "evaporation adds water to the stream in summer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Between storms, streams are fed mostly by groundwater.",
+       "2": "Evaporation removes water."
+      }
+     },
+     "dv": {
+      "label": "Result",
+      "options": [
+       "runs lower in the dry months",
+       "runs higher in the dry months",
+       "stops flooding"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less groundwater means less flow between storms.",
+       "2": "Paving makes floods worse, not better."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "groundwater",
+      "stream",
+      "soak",
+      "infiltrat"
+     ]
+    },
+    "model": "Because pavement stops rain from soaking into the ground, less water recharges the groundwater, and since groundwater seeping into the stream keeps it flowing between storms, the stream runs lower in the dry months."
+   }
+  },
+  {
+   "id": "env-urbanization-9",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "How did the peak stream flow change after development?",
+   "options": [
+    "It rose from 14 to 34 m³ per second and came 7 hours sooner",
+    "It fell from 34 to 14 m³ per second and came 7 hours later",
+    "It rose from 14 to 34 m³ per second but came at the same time",
+    "It stayed at 14 m³ per second but lasted much longer than before"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before: peak 14 at 10 hours. After: peak 34 at 3 hours, 7 hours sooner.",
+    "options": [
+     "Right: higher and sooner.",
+     "The change is the reverse: up, not down; sooner, not later.",
+     "The peak time moved from 10 to 3 hours.",
+     "The peak rose to 34."
+    ]
+   },
+   "stimulus": "urbanization-s1"
+  },
+  {
+   "id": "env-urbanization-10",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in peak stream flow after development, then give the answer.",
+   "why": {
+    "correct": "$\\frac{34 - 14}{14} \\times 100 \\approx 142.9\\%$: the flood peak is more than twice as high."
+   },
+   "setup": {
+    "answer": "(34 - 14) / 14 * 100",
+    "mustUse": [
+     "34",
+     "14"
+    ],
+    "mistakes": [
+     {
+      "expr": "(34 - 14) / 34 * 100",
+      "why": "Divide by the starting value, the peak before development (14)."
+     },
+     {
+      "expr": "34 / 14 * 100",
+      "why": "That is the new peak as a percent of the old (243%). Percent change subtracts first."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       14,
+       34
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 20,
+       "why": "20 m³ per second is the change. Divide by 14 and multiply by 100 for the percent."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         34,
+         14
+        ]
+       },
+       "why": "That is the change from after back to before. Start from before development."
+      }
+     ]
+    }
+   },
+   "stimulus": "urbanization-s1"
+  },
+  {
+   "id": "env-urbanization-11",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the \"after\" curve drop so quickly after its peak?",
+   "options": [
+    "Little water soaked into the ground, so little seeps into the stream later",
+    "The storm stopped sooner after the land was developed",
+    "The stream channel was dammed upstream after development",
+    "Evaporation from pavement removed the water from the stream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before development, water that soaked in fed the stream slowly for hours. With pavement, almost everything arrives at once and nothing is stored.",
+    "options": [
+     "Right: no stored groundwater to keep the flow up.",
+     "The graph shows the same storm.",
+     "A dam is not shown and would lower the peak.",
+     "Evaporation from pavement does not empty a stream in hours."
+    ]
+   },
+   "stimulus": "urbanization-s1"
+  },
+  {
+   "id": "env-urbanization-12",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town downstream of this watershed is planning flood control. What does the graph suggest?",
+   "options": [
+    "Floods will come faster and higher than old records predict, so warning time is shorter",
+    "Floods will come slower and lower than before, so the old flood walls can be removed",
+    "Floods will be the same size as before, but they will last for many more hours",
+    "Floods will happen mostly in summer, because pavement heats the water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The developed peak is 2.4 times higher and arrives 7 hours sooner, so plans based on the old curve underestimate floods.",
+    "options": [
+     "Right: higher, faster floods mean less warning.",
+     "The after curve is faster and higher.",
+     "The after curve is shorter, not longer.",
+     "The graph is about one storm, not seasons."
+    ]
+   },
+   "stimulus": "urbanization-s1"
+  },
+  {
+   "id": "env-urbanization-13",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which relationship does the table show?",
+   "options": [
+    "As impervious cover rises, runoff rises and the share that soaks in falls",
+    "As impervious cover rises, runoff falls and the share that soaks in rises",
+    "As impervious cover rises, each share stays about the same",
+    "As impervious cover rises, evaporation rises faster than runoff"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Runoff: 10, 20, 30, 55%. Soaks in: 50, 42, 35, 15%.",
+    "options": [
+     "Right: more pavement, more runoff, less soaking in.",
+     "The directions are reversed.",
+     "Runoff more than quintuples.",
+     "Evaporation falls slightly, from 40 to 30%."
+    ]
+   },
+   "stimulus": "urbanization-s2"
+  },
+  {
+   "id": "env-urbanization-14",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in the share of rain that soaks in, from natural land to 75-100% impervious cover, then give the answer.",
+   "why": {
+    "correct": "$\\frac{15 - 50}{50} \\times 100 = -70\\%$: groundwater recharge falls by 70%."
+   },
+   "setup": {
+    "answer": "(15 - 50) / 50 * 100",
+    "mustUse": [
+     "15",
+     "50"
+    ],
+    "mistakes": [
+     {
+      "expr": "(15 - 50) / 15 * 100",
+      "why": "Divide by the starting value, 50% on natural land."
+     },
+     {
+      "expr": "15 - 50",
+      "why": "That is the change in percentage points (-35). Percent change divides it by 50 and multiplies by 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       50,
+       15
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -35,
+       "why": "-35 is the change in percentage points. Divide by 50 and multiply by 100."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         15,
+         50
+        ]
+       },
+       "why": "That is the change from 15 back up to 50. Start from natural land."
+      }
+     ]
+    }
+   },
+   "stimulus": "urbanization-s2"
+  },
+  {
+   "id": "env-urbanization-15",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 200-hectare neighborhood with 75-100% impervious cover gets 900,000 m³ of rain in a year. Using the table, how many cubic meters run off?",
+   "why": {
+    "correct": "$900{,}000\\,\\text{m}^3 \\times \\frac{55}{100} = 495{,}000\\,\\text{m}^3$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      55,
+      900000
+     ]
+    },
+    "unit": "m3",
+    "units": [
+     "cubic meters"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        10,
+        900000
+       ]
+      },
+      "why": "10% is the runoff for natural land. This neighborhood is 75-100% impervious: use 55%."
+     },
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        15,
+        900000
+       ]
+      },
+      "why": "15% is the share that soaks in. Runoff is 55%."
+     }
+    ]
+   },
+   "stimulus": "urbanization-s2"
+  },
+  {
+   "id": "env-urbanization-16",
+   "unit": "unit-5",
+   "topic": "urbanization",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are effects of urbanization on water? Select all that apply.",
+   "options": [
+    "Higher, faster flood peaks after storms",
+    "Less groundwater recharge",
+    "Runoff carrying oil, metals and road salt into streams",
+    "More rain soaking into the soil",
+    "Lower stream temperatures in summer",
+    "Slower runoff after storms"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Pavement increases runoff and lowers infiltration, and the runoff carries pollutants and heat.",
+    "options": [
+     "Right: runoff reaches streams faster.",
+     "Right: less water soaks in.",
+     "Right: runoff picks up pollutants from streets.",
+     "Less, not more, soaks in.",
+     "Warm runoff from hot pavement raises stream temperatures.",
+     "Runoff is faster, not slower."
+    ]
+   }
+  }
+ ]
+}

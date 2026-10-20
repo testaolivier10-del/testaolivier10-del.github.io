@@ -1,0 +1,615 @@
+{
+ "stimuli": {
+  "total-fertility-rate-s1": {
+   "kind": "visual",
+   "title": "Total fertility rate in two countries",
+   "invented": true,
+   "figure": "total-fertility-rate-trends"
+  },
+  "total-fertility-rate-s2": {
+   "kind": "quantitative",
+   "title": "Births by age of mother",
+   "invented": true,
+   "table": {
+    "caption": "Births per 1,000 women per year in each 5-year age group, Country C, 2020 (invented data for practice)",
+    "cols": [
+     "Age of women (years)",
+     "Births per 1,000 women per year"
+    ],
+    "rows": [
+     [
+      "15-19",
+      "40"
+     ],
+     [
+      "20-24",
+      "120"
+     ],
+     [
+      "25-29",
+      "130"
+     ],
+     [
+      "30-34",
+      "90"
+     ],
+     [
+      "35-39",
+      "40"
+     ],
+     [
+      "40-44",
+      "10"
+     ],
+     [
+      "45-49",
+      "2"
+     ]
+    ]
+   }
+  },
+  "total-fertility-rate-s3": {
+   "kind": "quantitative",
+   "title": "Schooling, infant mortality and fertility",
+   "invented": true,
+   "table": {
+    "caption": "Average years of schooling for women, infant mortality and total fertility rate in five countries (invented data for practice)",
+    "cols": [
+     "Country",
+     "Women’s schooling (years)",
+     "Infant mortality (deaths per 1,000 live births)",
+     "Total fertility rate"
+    ],
+    "rows": [
+     [
+      "P",
+      "2",
+      "85",
+      "6.1"
+     ],
+     [
+      "Q",
+      "5",
+      "50",
+      "4.4"
+     ],
+     [
+      "R",
+      "8",
+      "25",
+      "3.0"
+     ],
+     [
+      "S",
+      "11",
+      "8",
+      "2.0"
+     ],
+     [
+      "T",
+      "13",
+      "4",
+      "1.6"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-total-fertility-rate-1",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In about which year did Country B’s total fertility rate first fall below replacement level?",
+   "stimulus": "total-fertility-rate-s1",
+   "options": [
+    "Between 1980 and 1990",
+    "Between 1960 and 1970",
+    "Between 2000 and 2010",
+    "It stays above replacement through 2020"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Find where the line crosses the dashed replacement level.",
+    "options": [
+     "Right: it was 2.2 in 1980, just above 2.1, and 1.9 in 1990, below it.",
+     "In 1970 Country B’s TFR was 2.9, still above 2.1.",
+     "By 2000 it was already 1.7, below replacement.",
+     "From 1990 on, it is below the 2.1 line."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-2",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in Country A’s total fertility rate from 1960 to 2020, then give the answer, rounded to one decimal place.",
+   "stimulus": "total-fertility-rate-s1",
+   "why": {
+    "correct": "Start at 6.8: $\\frac{2.8 - 6.8}{6.8} \\times 100 \\approx -58.8\\%$."
+   },
+   "setup": {
+    "answer": "(2.8 - 6.8) / 6.8 * 100",
+    "mustUse": [
+     "2.8",
+     "6.8"
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       6.8,
+       2.8
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -4,
+       "why": "That is the change in children per woman. Divide by 6.8 and multiply by 100."
+      },
+      {
+       "value": -142.9,
+       "why": "That divides by 2.8. Divide by the starting value, 6.8."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(6.8 - 2.8) / 2.8 * 100",
+      "why": "Start from the 1960 value: (2.8 - 6.8) / 6.8 × 100."
+     },
+     {
+      "expr": "(2.8 - 6.8) / 2.8 * 100",
+      "why": "Divide by the starting value, 6.8, not 2.8."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-3",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Country A’s TFR in 2020 is 2.8. What does this predict for its population, if nothing else changes?",
+   "stimulus": "total-fertility-rate-s1",
+   "options": [
+    "It will shrink, because the TFR has been falling",
+    "It keeps growing: 2.8 is above 2.1",
+    "It holds steady, since 2.8 is close to 2",
+    "It will double each year from now on"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare TFR with about 2.1 to predict long-run growth or decline.",
+    "options": [
+     "A falling TFR still above 2.1 means slower growth, not decline.",
+     "Right: each generation more than replaces itself.",
+     "Replacement is about 2.1; 2.8 is well above it.",
+     "A TFR of 2.8 means growth, but nowhere near doubling each year."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-4",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Country B has been below replacement since about 1990. Which long-run problem is it most likely to face?",
+   "stimulus": "total-fertility-rate-s1",
+   "options": [
+    "Too few schools for a growing number of children",
+    "Rapid population growth that outruns its food",
+    "Fewer workers and a larger share of older people",
+    "A sharp rise in infant mortality"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Low fertility over decades shrinks young cohorts and ages the population.",
+    "options": [
+     "Below-replacement fertility means fewer children, not more.",
+     "A TFR of 1.5 means the population will tend to shrink.",
+     "Right: fewer births mean smaller young cohorts, so in time fewer workers support more retirees.",
+     "A low TFR does not cause infant mortality to rise."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-5",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Each age group in the table covers 5 years. Calculate Country C’s total fertility rate: add the rates, multiply by 5, and divide by 1,000.",
+   "stimulus": "total-fertility-rate-s2",
+   "why": {
+    "correct": "$\\frac{(40 + 120 + 130 + 90 + 40 + 10 + 2) \\times 5}{1{,}000} = \\frac{432 \\times 5}{1{,}000} = 2.16$ children per woman."
+   },
+   "numeric": {
+    "unit": "children per woman",
+    "units": [
+     "children/woman",
+     "children"
+    ],
+    "places": 2,
+    "from": {
+     "fn": "tfr",
+     "args": [
+      [
+       40,
+       120,
+       130,
+       90,
+       40,
+       10,
+       2
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.432,
+      "why": "You forgot the × 5. Each rate is per year, and each age group lasts 5 years."
+     },
+     {
+      "value": 2160,
+      "why": "You did not divide by 1,000. The rates are per 1,000 women."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-6",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Country C’s total fertility rate is 2.16. How does it compare with replacement level?",
+   "stimulus": "total-fertility-rate-s2",
+   "options": [
+    "Well below it, so the population will shrink fast",
+    "Far above it, so the population will grow fast",
+    "Exactly 2, so the population will hold steady",
+    "Slightly above, so slow growth"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Compare with about 2.1, not with 2.",
+    "options": [
+     "2.16 is not below 2.1.",
+     "2.16 is only a little above 2.1.",
+     "The TFR is 2.16, and replacement is about 2.1, not 2.",
+     "Right: 2.16 is just above about 2.1."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-7",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In which age group do women in Country C have the most births per 1,000?",
+   "stimulus": "total-fertility-rate-s2",
+   "options": [
+    "25-29",
+    "20-24",
+    "30-34",
+    "15-19"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the largest value in the column: 130, ages 25 to 29.",
+    "options": [
+     "Right: 130 births per 1,000 women per year, the highest in the table.",
+     "20-24 has 120, just below the 25-29 group.",
+     "30-34 has 90.",
+     "15-19 has 40."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-8",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What relationship does the table show between women’s years of schooling and total fertility rate?",
+   "stimulus": "total-fertility-rate-s3",
+   "options": [
+    "As schooling increases, TFR increases",
+    "As schooling increases, TFR decreases",
+    "There is no relationship between them",
+    "TFR is highest where schooling is highest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Describe the direction of the relationship, with the end values.",
+    "options": [
+     "TFR falls as schooling rises.",
+     "Right: from 2 years and 6.1 children down to 13 years and 1.6.",
+     "TFR falls steadily across the five countries.",
+     "Country T, with the most schooling, has the lowest TFR."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-9",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best links infant mortality to the total fertility rates in the table?",
+   "stimulus": "total-fertility-rate-s3",
+   "options": [
+    "Low infant mortality makes families want more children",
+    "Infant mortality and TFR are unrelated",
+    "Where many babies die, families have more births",
+    "High TFR causes infant mortality to fall"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When fewer children die, parents need fewer births to raise the family size they want.",
+    "options": [
+     "The table shows lower infant mortality with lower TFR.",
+     "They fall together across the five countries.",
+     "Right: Country P has 85 infant deaths per 1,000 and a TFR of 6.1; Country T has 4 and 1.6.",
+     "The pattern runs the other way: high TFR goes with high infant mortality."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-10",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how much is Country P’s total fertility rate above replacement level, taken as 2.1?",
+   "stimulus": "total-fertility-rate-s3",
+   "why": {
+    "correct": "Subtract replacement level: $6.1 - 2.1 = 4.0$ children per woman above replacement."
+   },
+   "numeric": {
+    "unit": "children per woman",
+    "units": [
+     "children/woman",
+     "children"
+    ],
+    "from": {
+     "fn": "aboveReplacement",
+     "args": [
+      6.1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 4.1,
+      "why": "That uses 2 as replacement level. Replacement level is about 2.1."
+     },
+     {
+      "value": 8.2,
+      "why": "That adds 2.1. To find how far above, subtract: 6.1 - 2.1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-11",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is replacement-level fertility in a country where few children die young?",
+   "options": [
+    "Exactly 2.0 children per woman",
+    "About 3.5 children per woman",
+    "About 1.0 child per woman",
+    "About 2.1 children per woman"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "About 2.1 where child deaths are low; higher where they are high.",
+    "options": [
+     "Two would replace two parents only if every child survived to adulthood.",
+     "That is well above replacement; the population would grow.",
+     "One child per woman halves each generation.",
+     "Right: just over 2, to make up for children who die young and the slight excess of boys at birth."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-12",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes usually lower a country’s total fertility rate? Select all that apply.",
+   "options": [
+    "More girls finish secondary school",
+    "Family planning becomes easier to get",
+    "More families depend on children to work on farms",
+    "Infant mortality rises sharply"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Education, family planning and lower infant mortality lower TFR.",
+    "options": [
+     "Right: schooling delays marriage and widens choices.",
+     "Right: people can choose how many children to have and when.",
+     "Children as farm labor raise the value of large families, raising TFR.",
+     "High infant mortality tends to raise TFR."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-13",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how more years of schooling for women tend to lower the total fertility rate.",
+   "why": {
+    "correct": "Schooling, later marriage and work, fewer children, lower TFR."
+   },
+   "specific": {
+    "frame": "When women ___, they ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Change",
+      "options": [
+       "stay in school longer",
+       "marry younger",
+       "work on family farms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Younger marriage tends to raise fertility.",
+       "2": "Children working on farms makes large families more useful, raising fertility."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "tend to marry later and take paid jobs",
+       "tend to marry earlier",
+       "stop using family planning"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Schooling delays marriage; it does not hasten it.",
+       "2": "Schooling makes family planning more likely, not less."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "they have fewer children over their lifetimes, lowering the TFR",
+       "they have more children, raising the TFR",
+       "the TFR stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Later marriage and paid work lower the number of children.",
+       "2": "Later marriage shortens the years of having children, which lowers TFR."
+      }
+     }
+    },
+    "model": "When women stay in school longer, they tend to marry later and take paid jobs, so they have fewer children over their lifetimes, lowering the TFR."
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-14",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country wants to lower its high total fertility rate without forcing anyone. Which policy is most likely to work, based on this topic?",
+   "options": [
+    "Free schooling for girls, and clinics",
+    "Paying families a bonus for each new child",
+    "Lowering the legal age of marriage",
+    "Closing clinics that care for infants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Expanding education and choice lowers fertility without force.",
+    "options": [
+     "Right: both lower TFR by expanding choice, and both have worked in many countries.",
+     "Payments per child tend to raise fertility.",
+     "Earlier marriage tends to raise fertility.",
+     "Higher infant mortality tends to raise TFR, and it harms children."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-15",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country’s total fertility rate falls from 2.4 to 2.0 over ten years, but its population is still growing. Which explanation is best?",
+   "options": [
+    "A TFR of 2.0 means fast growth",
+    "Large young cohorts now have children",
+    "The TFR was measured wrongly",
+    "Fewer babies are born each year than before"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "TFR describes family size; momentum describes the number of parents.",
+    "options": [
+     "A TFR of 2.0 is below replacement; growth here comes from momentum.",
+     "Right: population momentum keeps growth going after TFR falls below replacement.",
+     "There is no need to assume an error; momentum explains it.",
+     "Fewer births would slow growth; the explanation is the size of the parent cohorts."
+    ]
+   }
+  },
+  {
+   "id": "env-total-fertility-rate-16",
+   "unit": "unit-3",
+   "topic": "total-fertility-rate",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In Country S, the TFR is 2.0 and infant mortality is 8 per 1,000. If its TFR stays at 2.0 for many decades, with no people moving in or out, what will most likely happen to its population?",
+   "options": [
+    "It will grow rapidly over the long run",
+    "It stays the same size for good",
+    "It slowly declines in the long run",
+    "It will double in size about each 35 years"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Below about 2.1 means, in the long run and without migration, a shrinking population.",
+    "options": [
+     "A TFR below replacement does not produce rapid growth.",
+     "Just below replacement means a slow decline in the long run.",
+     "Right: 2.0 is just below replacement, so each generation is slightly smaller.",
+     "That would need a growth rate of about 2% a year."
+    ]
+   }
+  }
+ ]
+}

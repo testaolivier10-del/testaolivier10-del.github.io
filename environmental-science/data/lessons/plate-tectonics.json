@@ -1,0 +1,76 @@
+{
+ "topic": "plate-tectonics",
+ "hook": "In 2011 the seafloor off Japan jumped up several meters in a few minutes. The water above it rose too, and a tsunami crossed the coast. In Iceland, at the same time, the ground was slowly pulling apart and filling with new rock. Both places sit on the edges of Earth's moving plates, and the kind of edge decides what happens there.",
+ "prereq": [
+  {
+   "q": "Which process breaks rock into smaller pieces at Earth's surface?",
+   "options": [
+    "Weathering",
+    "Photosynthesis",
+    "Transpiration",
+    "Nitrogen fixation"
+   ],
+   "correct": 0,
+   "why": "Weathering breaks rock down by water, ice, temperature changes and living things.",
+   "review": "phosphorus-cycle"
+  },
+  {
+   "q": "Which is an abiotic part of an ecosystem?",
+   "options": [
+    "Rock",
+    "A fungus",
+    "A tree",
+    "A beetle"
+   ],
+   "correct": 0,
+   "why": "Rock is not living, so it is abiotic.",
+   "review": "intro-ecosystems"
+  }
+ ],
+ "figure": {
+  "figure": "plate-tectonics-boundaries",
+  "caption": "Convection in the mantle moves the plates. Plates spread apart at a divergent boundary, collide at a convergent boundary and slide past each other at a transform boundary."
+ },
+ "chain": [
+  {
+   "cause": "Heat from deep inside Earth warms mantle rock, which rises, cools and sinks",
+   "effect": "slow convection currents form in the mantle"
+  },
+  {
+   "cause": "Convection currents drag the rigid plates above them",
+   "effect": "plates move a few centimeters a year, apart, together or past each other"
+  },
+  {
+   "cause": "Plates pull apart",
+   "effect": "magma rises and forms new crust: mid-ocean ridges and rift valleys"
+  },
+  {
+   "cause": "A dense ocean plate meets a lighter plate and sinks",
+   "effect": "a trench, strong earthquakes and a chain of volcanoes form"
+  },
+  {
+   "cause": "Plates grind past each other and then suddenly slip",
+   "effect": "earthquakes shake the land, and a slip under the sea can launch a tsunami"
+  }
+ ],
+ "ideas": [
+  "Earth's outer layer is broken into rigid <b>tectonic plates</b> that ride on the hotter, slowly flowing mantle, moved by <b>convection currents</b>.",
+  "<b>Divergent boundary</b>: plates move apart; magma forms new crust (mid-ocean ridges, <b>rift valleys</b>, <b>seafloor spreading</b>).",
+  "<b>Convergent boundary</b>: plates move together. Ocean meets plate: the denser ocean plate sinks (<b>subduction</b>), making a trench, earthquakes and volcanoes. Continent meets continent: crust crumples into high mountains.",
+  "<b>Transform boundary</b>: plates slide past each other; earthquakes, little volcanic activity (the San Andreas Fault).",
+  "A <b>hot spot</b> is a fixed plume of magma under a plate; the plate moving over it leaves a chain of volcanoes that get older in one direction (Hawaii)."
+ ],
+ "misconception": {
+  "wrong": "Volcanoes and earthquakes happen at random places on Earth.",
+  "right": "Most cluster along plate boundaries, especially subduction zones such as the ring around the Pacific. Hot spots are the main exception, and even they make a predictable chain."
+ },
+ "check": [
+  "env-plate-tectonics-2",
+  "env-plate-tectonics-4",
+  "env-plate-tectonics-6",
+  "env-plate-tectonics-9",
+  "env-plate-tectonics-10",
+  "env-plate-tectonics-12"
+ ],
+ "summary": "Convection in the mantle moves Earth's plates. Where plates spread apart (divergent), new crust forms; where they collide (convergent), a dense ocean plate sinks, making trenches, earthquakes and volcanoes, or continents crumple into mountains; where they slide past each other (transform), earthquakes strike. Hot spots build volcanic chains in the middle of plates. Knowing the boundary tells you the hazards a place faces."
+}

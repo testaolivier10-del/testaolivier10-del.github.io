@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Population pyramids of Countries P and Q</title>
+<desc id="d">Population pyramids of invented Countries P and Q in millions. Country P, males then females: ages 0 to 14, 9.0 and 8.8; 15 to 29, 6.5 and 6.4; 30 to 44, 4.5 and 4.5; 45 to 59, 2.6 and 2.7; 60 to 74, 1.2 and 1.4; 75 and over, 0.3 and 0.4. Country Q: 0 to 14, 3.0 and 2.9; 15 to 29, 3.3 and 3.2; 30 to 44, 3.5 and 3.5; 45 to 59, 3.6 and 3.7; 60 to 74, 3.0 and 3.3; 75 and over, 1.6 and 2.4.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker></defs><rect width="720" height="400" fill="#FFFFFF"/>
+<text x="204" y="26" font-size="16" fill="#1F2A28" text-anchor="middle" font-weight="700">Country P</text>
+<rect x="70.4" y="267" width="111.6" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="226" y="267" width="109.1" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="204" y="291.5" font-size="10" fill="#1F2A28" text-anchor="middle">0-14</text>
+<rect x="101.4" y="222" width="80.6" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="226" y="222" width="79.4" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="204" y="246.5" font-size="10" fill="#1F2A28" text-anchor="middle">15-29</text>
+<rect x="126.2" y="177" width="55.8" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="226" y="177" width="55.8" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="204" y="201.5" font-size="10" fill="#1F2A28" text-anchor="middle">30-44</text>
+<rect x="149.8" y="132" width="32.2" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="226" y="132" width="33.5" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="204" y="156.5" font-size="10" fill="#1F2A28" text-anchor="middle">45-59</text>
+<rect x="167.1" y="87" width="14.9" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="226" y="87" width="17.4" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="204" y="111.5" font-size="10" fill="#1F2A28" text-anchor="middle">60-74</text>
+<rect x="178.3" y="42" width="3.7" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="226" y="42" width="5" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="204" y="66.5" font-size="10" fill="#1F2A28" text-anchor="middle">75+</text>
+<line x1="58" y1="314" x2="182" y2="314" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="226" y1="314" x2="350" y2="314" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="182" y1="314" x2="182" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="182" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">0</text>
+<line x1="157.2" y1="314" x2="157.2" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="157.2" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">2</text>
+<line x1="250.8" y1="314" x2="250.8" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="250.8" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">2</text>
+<line x1="132.4" y1="314" x2="132.4" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="132.4" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">4</text>
+<line x1="275.6" y1="314" x2="275.6" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="275.6" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">4</text>
+<line x1="107.6" y1="314" x2="107.6" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="107.6" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">6</text>
+<line x1="300.4" y1="314" x2="300.4" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="300.4" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">6</text>
+<line x1="82.8" y1="314" x2="82.8" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="82.8" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">8</text>
+<line x1="325.2" y1="314" x2="325.2" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="325.2" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">8</text>
+<line x1="58" y1="314" x2="58" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="58" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">10</text>
+<line x1="350" y1="314" x2="350" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="350" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">10</text>
+<text x="544" y="26" font-size="16" fill="#1F2A28" text-anchor="middle" font-weight="700">Country Q</text>
+<rect x="484.8" y="267" width="37.2" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="566" y="267" width="36" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="544" y="291.5" font-size="10" fill="#1F2A28" text-anchor="middle">0-14</text>
+<rect x="481.1" y="222" width="40.9" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="566" y="222" width="39.7" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="544" y="246.5" font-size="10" fill="#1F2A28" text-anchor="middle">15-29</text>
+<rect x="478.6" y="177" width="43.4" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="566" y="177" width="43.4" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="544" y="201.5" font-size="10" fill="#1F2A28" text-anchor="middle">30-44</text>
+<rect x="477.4" y="132" width="44.6" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="566" y="132" width="45.9" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="544" y="156.5" font-size="10" fill="#1F2A28" text-anchor="middle">45-59</text>
+<rect x="484.8" y="87" width="37.2" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="566" y="87" width="40.9" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="544" y="111.5" font-size="10" fill="#1F2A28" text-anchor="middle">60-74</text>
+<rect x="502.2" y="42" width="19.8" height="41" fill="#474A10" fill-opacity="0.8"/>
+<rect x="566" y="42" width="29.8" height="41" fill="#0072B2" fill-opacity="0.75"/>
+<text x="544" y="66.5" font-size="10" fill="#1F2A28" text-anchor="middle">75+</text>
+<line x1="398" y1="314" x2="522" y2="314" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="566" y1="314" x2="690" y2="314" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="522" y1="314" x2="522" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="522" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">0</text>
+<line x1="497.2" y1="314" x2="497.2" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="497.2" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">2</text>
+<line x1="590.8" y1="314" x2="590.8" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="590.8" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">2</text>
+<line x1="472.4" y1="314" x2="472.4" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="472.4" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">4</text>
+<line x1="615.6" y1="314" x2="615.6" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="615.6" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">4</text>
+<line x1="447.6" y1="314" x2="447.6" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="447.6" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">6</text>
+<line x1="640.4" y1="314" x2="640.4" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="640.4" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">6</text>
+<line x1="422.8" y1="314" x2="422.8" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="422.8" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">8</text>
+<line x1="665.2" y1="314" x2="665.2" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="665.2" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">8</text>
+<line x1="398" y1="314" x2="398" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="398" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">10</text>
+<line x1="690" y1="314" x2="690" y2="318" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="690" y="331" font-size="11" fill="#1F2A28" text-anchor="middle">10</text>
+<text x="360" y="360" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Population (millions)</text>
+<rect x="30" y="374" width="16" height="12" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.75"/><text x="52" y="385" font-size="13" fill="#1F2A28">Male</text>
+<rect x="110" y="374" width="16" height="12" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/><text x="132" y="385" font-size="13" fill="#1F2A28">Female</text>
+<text x="706" y="388" font-size="11" fill="#5B625A" text-anchor="end" font-style="italic">Age groups in years at the center of each pyramid. Invented data for practice</text>
+</svg>

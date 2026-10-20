@@ -1,0 +1,72 @@
+{
+ "topic": "pest-control",
+ "hook": "A cotton farmer sprays an insecticide and kills almost every caterpillar in the field. Two seasons later the same spray barely works, so the farmer sprays twice as often, then switches to a stronger chemical. Meanwhile the wasps and beetles that used to eat the caterpillars are gone too. Farmers call this the pesticide treadmill.",
+ "prereq": [
+  {
+   "q": "What is natural selection?",
+   "options": [
+    "Individuals with traits that help them survive and reproduce leave more offspring, so those traits become more common",
+    "Individuals change their traits during their lives to fit their environment",
+    "People choose which plants and animals will breed",
+    "Species that are not needed by an ecosystem die out"
+   ],
+   "correct": 0,
+   "why": "Natural selection acts on variation that already exists; traits that help survival become more common over generations.",
+   "review": "evolving-populations"
+  },
+  {
+   "q": "Why is a monoculture especially attractive to a pest?",
+   "options": [
+    "It offers a huge supply of one food plant in one place",
+    "It has more predators of the pest than a mixed field",
+    "It is sprayed less often than other kinds of fields",
+    "It grows in colder climates where pests thrive"
+   ],
+   "correct": 0,
+   "why": "A large field of one crop is a vast, easy food supply for the pests of that crop.",
+   "review": "green-revolution"
+  }
+ ],
+ "figure": {
+  "figure": "pest-control-resistance",
+  "caption": "Repeated spraying selects for resistant pests: their share grows slowly, then quickly. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A few pests in a large population carry a gene that lets them survive the pesticide",
+   "effect": "spraying kills most pests but not those few"
+  },
+  {
+   "cause": "The resistant survivors breed with each other",
+   "effect": "the next generation has a larger share of resistant pests"
+  },
+  {
+   "cause": "Spraying continues for many generations",
+   "effect": "most of the population is resistant and the pesticide stops working"
+  },
+  {
+   "cause": "Farmers respond by spraying more often or using new chemicals",
+   "effect": "costs rise, more nontarget organisms die, and resistance builds again"
+  }
+ ],
+ "ideas": [
+  "<b>Pesticides</b> include insecticides (insects), herbicides (weeds) and fungicides (fungi). They raise yields by protecting crops.",
+  "Most pesticides kill <b>nontarget</b> organisms too: pollinators such as bees, predators that ate the pests, and fish and frogs when the chemicals run off into water.",
+  "<b>Pesticide resistance</b> is natural selection: spraying kills the susceptible pests, the resistant ones survive and breed. Resistance is in the pests' genes, not learned.",
+  "Genetically modified crops can reduce spraying for some pests (a crop that makes its own insecticide), but pests can evolve resistance to them too."
+ ],
+ "misconception": {
+  "wrong": "Pests become resistant because the pesticide makes each pest stronger, or because pests get used to it.",
+  "right": "No single pest changes. A few pests already carry genes that let them survive; spraying kills the others, and the survivors pass those genes to their offspring, so the population changes over generations."
+ },
+ "check": [
+  "env-pest-control-1",
+  "env-pest-control-3",
+  "env-pest-control-10",
+  "env-pest-control-11",
+  "env-pest-control-12",
+  "env-pest-control-6",
+  "env-pest-control-7"
+ ],
+ "summary": "Pesticides protect crops from insects, weeds and fungi, but they also kill nontarget organisms, run off into water, and lose their power as pests evolve resistance by natural selection. Spraying more often or switching chemicals keeps the cycle going. Genetically modified crops can cut some spraying but face the same resistance problem."
+}

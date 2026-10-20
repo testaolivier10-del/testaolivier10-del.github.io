@@ -1,0 +1,513 @@
+{
+ "stimuli": {
+  "natural-disruptions-s1": {
+   "kind": "quantitative",
+   "title": "A forest plot after a hurricane",
+   "invented": true,
+   "table": {
+    "caption": "Living trees taller than 2 meters in a 1-hectare forest plot, counted the year before a hurricane and in later years (invented data for practice)",
+    "cols": [
+     "Year",
+     "Living trees taller than 2 m",
+     "Tree species found"
+    ],
+    "rows": [
+     [
+      "1 year before",
+      "640",
+      "18"
+     ],
+     [
+      "1 year after",
+      "256",
+      "15"
+     ],
+     [
+      "5 years after",
+      "380",
+      "17"
+     ],
+     [
+      "15 years after",
+      "590",
+      "18"
+     ]
+    ]
+   }
+  },
+  "natural-disruptions-s2": {
+   "kind": "visual",
+   "title": "Three timings of disruption",
+   "invented": true,
+   "figure": "natural-disruptions-timing"
+  }
+ },
+ "items": [
+  {
+   "id": "env-natural-disruptions-1",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in the number of living trees from the year before the hurricane to the year after, then give the answer.",
+   "stimulus": "natural-disruptions-s1",
+   "why": {
+    "correct": "Start at 640 trees: $\\frac{256 - 640}{640} \\times 100 = -60\\%$. The hurricane killed or broke 60% of the trees."
+   },
+   "setup": {
+    "answer": "(256 - 640) / 640 * 100",
+    "mustUse": [
+     "256",
+     "640"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       640,
+       256
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 150,
+       "why": "That divides by 256 and drops the sign. The change is a loss, divided by the starting 640: -60%."
+      },
+      {
+       "value": -384,
+       "why": "That is the change in trees. Divide by 640 and multiply by 100 for the percent change."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(640 - 256) / 256 * 100",
+      "why": "Start from the value before the storm: (new - old) / old, so (256 - 640) / 640 × 100."
+     },
+     {
+      "expr": "(256 - 640) / 256 * 100",
+      "why": "Divide by the starting value, 640 trees, not the value after the storm."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-2",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement best describes the trend in the number of living trees after the hurricane?",
+   "stimulus": "natural-disruptions-s1",
+   "options": [
+    "It rose steadily, nearing the prestorm count by year 15",
+    "It kept falling for 15 years after the storm hit the plot",
+    "It returned to 640 within 5 years of the storm",
+    "It stayed at about 256 trees through the next 15 years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read every row in order and describe the direction and the size of the change.",
+    "options": [
+     "Right: 256, then 380, then 590, near the 640 before the storm.",
+     "The count rose from 256 to 380 to 590.",
+     "After 5 years there were 380 trees, well below 640.",
+     "The count changed at each survey."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-3",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion about the hurricane is best supported by the data?",
+   "stimulus": "natural-disruptions-s1",
+   "options": [
+    "It changed the plot into a grassland with no trees",
+    "It was short-term: trees and species mostly recovered",
+    "It had little effect on the number of trees in the plot",
+    "It removed three tree species from the plot for good"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A disruption is short-term when the system returns close to its earlier state.",
+    "options": [
+     "Hundreds of trees remained and more grew back.",
+     "Right: by year 15 the plot had 590 trees and all 18 species again.",
+     "The tree count fell by 60% in one year.",
+     "Species fell from 18 to 15 and returned to 18."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-4",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many more living trees did the plot have 15 years after the hurricane than 1 year after it?",
+   "stimulus": "natural-disruptions-s1",
+   "why": {
+    "correct": "Subtract: $590 - 256 = 334$ trees."
+   },
+   "numeric": {
+    "unit": "trees",
+    "units": [
+     "tree"
+    ],
+    "from": {
+     "fn": "sub",
+     "args": [
+      590,
+      256
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "That is 640 - 590, the gap still left from the original count. Compare 15 years after with 1 year after: 590 - 256."
+     },
+     {
+      "value": 846,
+      "why": "That adds the two counts. The question asks how many more, so subtract."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-5",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which kind of disruption in the figure happens at a regular interval?",
+   "stimulus": "natural-disruptions-s2",
+   "options": [
+    "The episodic one (droughts)",
+    "The random one (an eruption)",
+    "The periodic one (spring floods)",
+    "Both the episodic and the random one"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Periodic means regular; episodic means recurring but irregular; random means no pattern.",
+    "options": [
+     "Droughts recur at uneven gaps: years 3, 4, 11, 17, 18 and 26.",
+     "It happens once, with no pattern.",
+     "Right: the marks fall every year, evenly spaced.",
+     "The periodic row is the evenly spaced one, once a year."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-6",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why are the droughts in the figure called episodic rather than periodic?",
+   "stimulus": "natural-disruptions-s2",
+   "options": [
+    "They happen just once in the 30 years shown",
+    "They happen each year at the same time of year",
+    "They are too small to change the ecosystem much",
+    "They recur at uneven gaps"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Episodic disruptions recur at irregular intervals.",
+    "options": [
+     "Six droughts appear in 30 years.",
+     "That would be periodic, as the floods are.",
+     "Episodic describes timing, not size.",
+     "Right: gaps of 1, 7, 6, 1 and 8 years are not a regular interval."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-7",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which response is most likely for animals that depend on the yearly spring flood in the figure?",
+   "stimulus": "natural-disruptions-s2",
+   "options": [
+    "Their breeding is timed to the flood",
+    "They are caught off guard, because floods follow no pattern",
+    "They leave the area for good after the first flood",
+    "They stop reproducing in any year a flood occurs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Regular, predictable disruptions are easier for species to match their life cycles to than random ones.",
+    "options": [
+     "Right: a predictable, periodic event lets species time feeding and breeding to it.",
+     "The flood comes every spring, so it is predictable.",
+     "A regular flood is part of their environment; many species rely on it.",
+     "Many floodplain species breed during floods, which bring food and shallow water."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-8",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "A volcano that has been quiet for centuries erupts with no warning. How is this disruption classified by its timing?",
+   "options": [
+    "Periodic",
+    "Random",
+    "Episodic",
+    "Seasonal"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An event with no pattern is random.",
+    "options": [
+     "Periodic events come at regular intervals, such as seasons.",
+     "Right: it follows no regular or recurring pattern.",
+     "Episodic events recur at irregular intervals, such as droughts.",
+     "It is not tied to a season."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-9",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Wildebeest on the Serengeti move hundreds of kilometers each year, following the rains to fresh grass. Which statement best explains this behavior?",
+   "options": [
+    "They are fleeing volcanic eruptions on the plains",
+    "They move to find colder places to live",
+    "They migrate to stay near water and fresh grass",
+    "They move because the grassland burns each month"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Migration is a common response to periodic changes in conditions.",
+    "options": [
+     "Eruptions are not yearly, and they follow rain, not eruptions.",
+     "They follow rain and grass, not temperature.",
+     "Right: moving with the rains keeps them inside their range of conditions.",
+     "Fire does not happen each month; they follow seasonal rains."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-10",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "About 20,000 years ago, sea level was about 120 meters lower than it is today. Which explanation is correct?",
+   "options": [
+    "The oceans had less salt, so they took up less space",
+    "Earth’s oceans were warmer, so they evaporated",
+    "Floating sea ice was thinner than it is today",
+    "More water was held as ice in glaciers on land"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When large amounts of water are stored as ice on land, sea level falls; when that ice melts, the water returns to the ocean and the ocean gets higher again.",
+    "options": [
+     "Salt content is not why sea level was lower.",
+     "It was a cold period, and warmer water would not lower sea level that much.",
+     "Floating ice does not set sea level; ice on land does.",
+     "Right: water locked in ice on land is water missing from the ocean."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-11",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these are natural disruptions to ecosystems? Select all that apply.",
+   "options": [
+    "A hurricane that floods a coast",
+    "A long drought in a grassland",
+    "A new shopping mall built on a meadow",
+    "A river dam built to make electricity"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Natural disruptions come from natural events, not from human projects.",
+    "options": [
+     "Right: a natural storm event.",
+     "Right: a natural shortage of water.",
+     "That is a change caused by people, not a natural disruption.",
+     "Dams are built by people."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-12",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A grassland burns every 5 to 15 years in fires started by lightning. Ranchers put out every fire for 50 years, and shrubs and small trees spread over much of it. Which explanation fits best?",
+   "options": [
+    "Fires had been killing shrub seedlings",
+    "The shrubs spread because the ranchers planted them",
+    "Lightning fires help shrubs grow faster than grass",
+    "The grassland was too wet for grass to keep growing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Some ecosystems depend on a regular disruption to stay as they are.",
+    "options": [
+     "Right: removing a regular disruption lets plants it had held back take over.",
+     "Nothing says shrubs were planted; the change followed fire suppression.",
+     "Fire kills shrub seedlings; grasses regrow from their roots.",
+     "The change followed the end of fires, not a change in rain."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-13",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how a severe drought can lower the number of frogs in a wetland.",
+   "why": {
+    "correct": "Name every link: less water, lost breeding habitat, fewer young, fewer frogs."
+   },
+   "specific": {
+    "frame": "During a drought, ___, so ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Change in the wetland",
+      "options": [
+       "shallow pools dry up",
+       "the water gets colder",
+       "more insects hatch"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Drought brings less water; it does not make the water colder.",
+       "2": "More insects would be food for frogs, not a cause of decline."
+      }
+     },
+     "effect": {
+      "label": "Effect on frogs",
+      "options": [
+       "frogs have fewer places to lay eggs and tadpoles die before they change into frogs",
+       "frogs lay more eggs in deeper water",
+       "frogs grow larger"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Deep water is scarcer in a drought, not more common.",
+       "2": "Body size is not the main effect of losing water."
+      }
+     },
+     "mechanism": {
+      "label": "Effect on the population",
+      "options": [
+       "lowers the number of young frogs, so the population decreases",
+       "raises the number of young frogs",
+       "has no effect on the population"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Losing breeding pools lowers the number of young.",
+       "2": "Losing breeding habitat changes how many young survive."
+      }
+     }
+    },
+    "model": "During a drought, shallow pools dry up, so frogs have fewer places to lay eggs and tadpoles die before they change into frogs, which lowers the number of young frogs, so the population decreases."
+   }
+  },
+  {
+   "id": "env-natural-disruptions-14",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student hypothesizes that an earthquake will lower the number of bird species in a forest. Bird surveys show 32 species before the earthquake and 31 after. What do the data show?",
+   "options": [
+    "Strong support: the earthquake removed most bird species",
+    "Little change: one fewer species is no clear effect",
+    "The opposite: bird species increased after the earthquake",
+    "Nothing, because the birds were not counted"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare the size of the change to the starting value before claiming support.",
+    "options": [
+     "Only one species was missing, out of 32.",
+     "Right: a drop of one species is a very small change and could be chance.",
+     "31 is fewer than 32, not more.",
+     "Birds were counted before and after."
+    ]
+   }
+  },
+  {
+   "id": "env-natural-disruptions-15",
+   "unit": "unit-2",
+   "topic": "natural-disruptions",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Over thousands of years, a region’s climate slowly becomes drier, and its forest is replaced by grassland. How is this disruption best described?",
+   "options": [
+    "A short-term disruption that the forest recovered from",
+    "A random disruption with no lasting effect",
+    "A long-term disruption that changed the ecosystem",
+    "A periodic disruption that returns each spring"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Disruptions can be short-term (recovery) or long-term (a new kind of ecosystem).",
+    "options": [
+     "The forest did not recover; grassland replaced it.",
+     "The effect lasted and changed the whole ecosystem.",
+     "Right: a slow, lasting change in climate produced a different community.",
+     "A climate shift over thousands of years is not a spring event."
+    ]
+   }
+  }
+ ]
+}

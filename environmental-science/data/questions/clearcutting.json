@@ -1,0 +1,628 @@
+{
+ "stimuli": {
+  "clearcutting-s1": {
+   "kind": "quantitative",
+   "title": "Two small watersheds, one clearcut",
+   "invented": true,
+   "table": {
+    "caption": "Average summer measurements in two neighboring streams, two years after one watershed was clearcut (invented data for practice)",
+    "cols": [
+     "Measurement",
+     "Forested watershed",
+     "Clearcut watershed"
+    ],
+    "rows": [
+     [
+      "Water temperature (°C)",
+      "13",
+      "18"
+     ],
+     [
+      "Dissolved oxygen (mg/L)",
+      "10.4",
+      "9.0"
+     ],
+     [
+      "Sediment carried (kg per hectare per year)",
+      "40",
+      "260"
+     ],
+     [
+      "Nitrate in stream water (mg/L)",
+      "0.2",
+      "1.8"
+     ],
+     [
+      "Trout counted per 100 m of stream",
+      "24",
+      "6"
+     ]
+    ]
+   }
+  },
+  "clearcutting-s2": {
+   "kind": "visual",
+   "title": "A hillside before and after clearcutting",
+   "figure": "clearcutting-slope"
+  }
+ },
+ "items": [
+  {
+   "id": "env-clearcutting-1",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is clearcutting?",
+   "options": [
+    "Cutting all or nearly all the trees in an area at one time",
+    "Cutting just the largest trees and leaving the rest standing",
+    "Burning the brush on the forest floor while keeping the large trees",
+    "Removing the tree branches that hang over roads and power lines"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Clearcutting removes every tree, or nearly every tree, from an area in one harvest.",
+    "options": [
+     "Right: all the trees come down at once.",
+     "Taking only some trees is a different method, covered later in this unit.",
+     "Burning brush under standing trees is not a harvest of timber at all.",
+     "Trimming branches is not logging; the trees stay alive and standing."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-2",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an economic advantage of clearcutting compared with harvesting a few trees at a time?",
+   "options": [
+    "It harvests the most timber per hour of work and per trip of the machines",
+    "It keeps the stream shaded and cool for the fish that live downstream",
+    "It keeps more roots in the soil, so less soil washes off the slope",
+    "It stores more carbon in the forest each year than before the harvest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cutting everything at once is the fastest and cheapest way to log, which is why it is common.",
+    "options": [
+     "Right: clearcutting is efficient and cheap for the logging company.",
+     "Clearcutting removes the shade, so streams warm.",
+     "Clearcutting kills the roots that hold soil, so erosion increases.",
+     "Removing the trees removes carbon storage until the forest regrows."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-3",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "After a hillside is clearcut, the stream below it becomes muddy after storms. What causes this?",
+   "options": [
+    "Rain falls on bare soil, runs off, and carries soil into the stream",
+    "Fallen leaves from the cut trees dissolve in the water and turn it brown",
+    "The stumps release mud into the stream as they decay over the years",
+    "Logging machines pump water from the stream and stir up its bottom"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Without roots and leaf litter, rain runs off bare soil and carries sediment with it.",
+    "options": [
+     "Right: runoff from bare soil carries sediment.",
+     "Clearcutting removes most leaf litter; brown muddy water is soil, not dissolved leaves.",
+     "Slowly decaying stumps add little; the mud comes from eroded soil.",
+     "Loggers do not pump streams; the sediment is washed in by rain."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-4",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do cold-water fish such as trout often decline in streams below a clearcut?",
+   "options": [
+    "Without shade the water warms, so it holds less dissolved oxygen",
+    "Without trees the stream gets more insects for the trout to eat",
+    "Without trees the stream water becomes salty and too dense",
+    "Without shade the trout are unable to see predators in the bright water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sunlight on an unshaded stream warms it, and warm water holds less dissolved oxygen, which trout need in large amounts.",
+    "options": [
+     "Right: warmer water, less oxygen, fewer trout.",
+     "More food would help trout, not harm them; the problem is heat and oxygen.",
+     "Clearcutting does not make fresh water salty.",
+     "Light and visibility are not why trout disappear; temperature and oxygen are."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-5",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest is clearcut and the logs are burned at the site. What happens to the carbon that was stored in the wood?",
+   "options": [
+    "It combines with oxygen and enters the atmosphere as carbon dioxide",
+    "It stays in the ashes and returns to the soil as carbon dioxide gas",
+    "It is changed into oxygen that the next forest will use for photosynthesis",
+    "It is taken up by the stumps and stored there until new trees grow"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Burning (combustion) joins carbon with oxygen, releasing carbon dioxide into the air.",
+    "options": [
+     "Right: combustion releases the stored carbon as carbon dioxide.",
+     "Most carbon leaves as gas when wood burns; only a little stays in the ash, and ash is not a gas.",
+     "Burning uses oxygen; it does not make it.",
+     "Dead stumps cannot take up carbon; they decay and release it."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-6",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Some foresters argue that clearcutting can help certain tree species regrow. Which statement best supports their argument?",
+   "options": [
+    "Some trees need full sunlight to grow from seed, and a clearcut gives them that light",
+    "Clearcuts keep the soil shaded, so seedlings of shade-loving trees are protected",
+    "Each tree species regrows faster after clearcutting than after any other harvest",
+    "Clearcutting adds nutrients to the soil, so each seedling grows faster than before"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sun-loving species (some pines, aspen, Douglas-fir) grow poorly in shade. A clearcut opens the ground to full sun, a little like a natural fire or windstorm.",
+    "options": [
+     "Right: sun-loving species regrow well in the open.",
+     "A clearcut removes the shade, so it favors sun-loving species, not shade-loving ones.",
+     "Not every species does better; shade-tolerant trees often do worse.",
+     "Clearcutting usually washes nutrients out of the soil."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-7",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 2,000-hectare forest loses 250 hectares to clearcutting. What percent of the forest was cut?",
+   "why": {
+    "correct": "$\\frac{250}{2{,}000} \\times 100 = 12.5\\%$ of the forest."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      250,
+      2000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 0.125,
+      "why": "0.125 is the fraction. Multiply by 100 for the percent: 12.5%."
+     },
+     {
+      "value": 8,
+      "why": "That is 2,000 divided by 250. The part (250) goes on top: (250 / 2,000) × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-8",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A forest stores about 150 metric tons of carbon per hectare. Write the setup for the carbon stored on 250 hectares that are clearcut, then give the answer with its unit.",
+   "why": {
+    "correct": "Multiply the area by the carbon per hectare so hectares cancel: $250\\,\\text{ha} \\times \\frac{150\\,\\text{metric tons}}{1\\,\\text{ha}} = 37{,}500$ metric tons of carbon."
+   },
+   "setup": {
+    "answer": "250 * 150",
+    "mustUse": [
+     "250",
+     "150"
+    ],
+    "mistakes": [
+     {
+      "expr": "250 / 150",
+      "why": "Carbon per hectare times hectares gives carbon. Multiply, so the hectares cancel."
+     },
+     {
+      "expr": "150 / 250",
+      "why": "Dividing gives a value per hectare of area, not a total. Multiply the area by the carbon per hectare."
+     }
+    ],
+    "then": {
+     "unit": "metric tons",
+     "units": [
+      "t",
+      "tonnes"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       250,
+       150
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 3750,
+       "why": "A factor of 10 is missing: 250 × 150 = 37,500. Check the multiplication."
+      },
+      {
+       "value": 37.5,
+       "why": "That would be in thousands of metric tons. Give the full number, 37,500 metric tons."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-clearcutting-9",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which pair of measurements in the table shows the warmer stream also had less dissolved oxygen?",
+   "options": [
+    "18 °C with 9.0 mg/L, compared with 13 °C with 10.4 mg/L",
+    "13 °C with 9.0 mg/L, compared with 18 °C with 10.4 mg/L",
+    "40 kg of sediment with 1.8 mg/L of nitrate in the same stream",
+    "24 trout per 100 m with 260 kg of sediment in the same stream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The clearcut stream was 18 °C with 9.0 mg/L of oxygen; the forested stream was 13 °C with 10.4 mg/L.",
+    "options": [
+     "Right: higher temperature goes with lower dissolved oxygen.",
+     "These values are mixed up between the two streams.",
+     "40 kg is the forested stream and 1.8 mg/L is the clearcut stream; these are from different columns.",
+     "24 trout is the forested stream and 260 kg is the clearcut stream."
+    ]
+   },
+   "stimulus": "clearcutting-s1"
+  },
+  {
+   "id": "env-clearcutting-10",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in sediment carried when going from the forested watershed to the clearcut one, then give the answer.",
+   "why": {
+    "correct": "$\\frac{260 - 40}{40} \\times 100 = 550\\%$: the clearcut watershed lost 6.5 times as much soil."
+   },
+   "setup": {
+    "answer": "(260 - 40) / 40 * 100",
+    "mustUse": [
+     "260",
+     "40"
+    ],
+    "mistakes": [
+     {
+      "expr": "(260 - 40) / 260 * 100",
+      "why": "Divide by the starting value, 40 kg in the forested watershed, not 260."
+     },
+     {
+      "expr": "260 / 40 * 100",
+      "why": "That is the clearcut value as a percent of the forested one (650%). Percent change subtracts first: (260 - 40) / 40 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       40,
+       260
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 5.5,
+       "why": "5.5 is the fraction. Multiply by 100 for a percent."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         260,
+         40
+        ]
+       },
+       "why": "That is the change from 260 down to 40. Start from the forested value, 40."
+      }
+     ]
+    }
+   },
+   "stimulus": "clearcutting-s1"
+  },
+  {
+   "id": "env-clearcutting-11",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Nitrate in the clearcut stream was 9 times higher. Which explanation fits best?",
+   "options": [
+    "With the trees gone, no roots take up nitrate, so it leaches from the soil into the stream",
+    "The clearcut stream got more nitrate from rain, which falls mostly on cleared land",
+    "Trout in the clearcut stream make nitrate faster as their numbers fall",
+    "Warm water turns dissolved oxygen into nitrate in the clearcut stream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Living roots take up nitrate. When they die, nitrate in the soil is not used and washes (leaches) into the stream.",
+    "options": [
+     "Right: no uptake by roots, so nitrate leaches out.",
+     "Rain falls on both watersheds alike.",
+     "Fewer trout would add less waste, not more.",
+     "Oxygen does not turn into nitrate; nitrate comes from the nitrogen cycle in soil."
+    ]
+   },
+   "stimulus": "clearcutting-s1"
+  },
+  {
+   "id": "env-clearcutting-12",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Using the table, explain why there were fewer trout in the clearcut stream.",
+   "why": {
+    "correct": "A complete chain names each link: the trees are gone, the stream is unshaded and warms (13 to 18 °C), warm water holds less oxygen (10.4 to 9.0 mg/L), and trout, which need cold water rich in oxygen, decline (24 to 6 per 100 m)."
+   },
+   "specific": {
+    "frame": "Because the stream lost ___, the water ___, so it ___, and trout ___.",
+    "slots": {
+     "cause": {
+      "label": "What was lost",
+      "options": [
+       "the shade of the trees",
+       "its nitrate",
+       "its sediment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nitrate rose in the clearcut stream; it was not lost.",
+       "2": "Sediment rose in the clearcut stream; it was not lost."
+      }
+     },
+     "effect": {
+      "label": "What happened to the water",
+      "options": [
+       "warmed from 13 to 18 °C",
+       "cooled from 18 to 13 °C",
+       "stayed the same temperature"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The clearcut stream is the warmer one, at 18 °C.",
+       "2": "The table shows a 5 °C difference."
+      }
+     },
+     "mechanism": {
+      "label": "Why that matters",
+      "options": [
+       "held less dissolved oxygen (9.0 instead of 10.4 mg/L)",
+       "held more dissolved oxygen (10.4 instead of 9.0 mg/L)",
+       "held more nitrate for trout to breathe"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warm water holds less oxygen; the clearcut stream had 9.0 mg/L.",
+       "2": "Fish breathe dissolved oxygen, not nitrate."
+      }
+     },
+     "dv": {
+      "label": "Trout",
+      "options": [
+       "fell from 24 to 6 per 100 m",
+       "rose from 6 to 24 per 100 m",
+       "did not change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The clearcut stream had 6 trout per 100 m, the forested one 24.",
+       "2": "The counts differ, 24 against 6."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "trout",
+      "oxygen",
+      "shade",
+      "warm"
+     ]
+    },
+    "model": "Because the stream lost the shade of the trees, the water warmed from 13 to 18 °C, so it held less dissolved oxygen (9.0 instead of 10.4 mg/L), and trout, which need cold water with a lot of oxygen, fell from 24 to 6 per 100 m."
+   },
+   "stimulus": "clearcutting-s1"
+  },
+  {
+   "id": "env-clearcutting-13",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the diagram, what keeps the stream in the forested panel cool?",
+   "options": [
+    "The canopy shades the stream from direct sun",
+    "Runoff from the slope brings cold soil into it",
+    "Leaf litter on the slope cools the water as it flows",
+    "Roots pull warm water out of the stream at night"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The forest label says the canopy shades the stream, so the water stays cool.",
+    "options": [
+     "Right: shade from the canopy.",
+     "Soil carried by runoff makes water muddy, not cool.",
+     "Leaf litter slows runoff and holds soil; it does not cool the stream.",
+     "The diagram shows roots holding soil, not pulling water from the stream."
+    ]
+   },
+   "stimulus": "clearcutting-s2"
+  },
+  {
+   "id": "env-clearcutting-14",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of labels in the clearcut panel are linked as cause and effect?",
+   "options": [
+    "\"More runoff carries soil\" causes the \"muddy\" stream",
+    "\"Full sun warms soil and stream\" causes \"more runoff\"",
+    "\"Bare soil erodes\" causes the stream to be \"warmer\"",
+    "\"Nutrients leach\" causes \"full sun\" to reach the stream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Runoff carrying soil is what makes the stream muddy. Sun causes the warming.",
+    "options": [
+     "Right: runoff carries soil into the stream and makes it muddy.",
+     "Sunlight warms the ground; it does not cause the extra runoff (bare soil does).",
+     "Erosion makes the stream muddy; the sun makes it warmer.",
+     "Leaching does not cause sunlight; losing the canopy does."
+    ]
+   },
+   "stimulus": "clearcutting-s2"
+  },
+  {
+   "id": "env-clearcutting-15",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town takes its drinking water from a river fed by the stream in the right-hand panel. Which effect on the town is most likely?",
+   "options": [
+    "More sediment in the water, so cleaning it for drinking costs more",
+    "Colder water, so less energy is needed to heat it in homes",
+    "More dissolved oxygen, so the water tastes fresher than before",
+    "Less nitrate, so the water meets drinking standards more easily"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sediment washed from the clearcut makes water muddier, and removing it at a treatment plant costs money.",
+    "options": [
+     "Right: muddy water costs more to clean.",
+     "The stream is warmer after clearcutting, not colder.",
+     "Warmer water holds less oxygen, not more.",
+     "Nitrate rises after clearcutting, as the roots no longer take it up."
+    ]
+   },
+   "stimulus": "clearcutting-s2"
+  },
+  {
+   "id": "env-clearcutting-16",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are environmental costs of clearcutting a forested hillside? Select all that apply.",
+   "options": [
+    "More soil erosion and sediment in streams",
+    "Loss of habitat for animals that live in mature forest",
+    "More carbon stored on the site in the first years",
+    "Faster runoff, so floods downstream can be larger",
+    "Cooler streams that hold more dissolved oxygen",
+    "Less nitrate washing out of the soil into streams"
+   ],
+   "correct": [
+    0,
+    1,
+    3
+   ],
+   "why": {
+    "correct": "Clearcutting raises erosion, removes habitat and speeds runoff. It lowers carbon storage and warms streams.",
+    "options": [
+     "Right: bare soil erodes and sediment reaches streams.",
+     "Right: mature-forest animals lose their homes.",
+     "Removing the trees removes stored carbon; storage falls.",
+     "Right: without trees and litter, water runs off faster.",
+     "Streams lose shade, warm, and hold less oxygen.",
+     "Nitrate leaching rises, because no roots are left to take it up."
+    ]
+   }
+  },
+  {
+   "id": "env-clearcutting-17",
+   "unit": "unit-5",
+   "topic": "clearcutting",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which situation is deforestation rather than only a clearcut?",
+   "options": [
+    "A rainforest is cleared and the land is kept as cattle pasture",
+    "A pine plantation is cut and new pines grow back on the site",
+    "A storm blows down some trees in a forest that then regrows",
+    "A forest is logged and left alone so the trees grow back in time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deforestation is the lasting loss of forest. Pasture that is kept as pasture will not become forest again.",
+    "options": [
+     "Right: the land use changes and the forest does not return.",
+     "Trees regrow on the site, so the land stays forest.",
+     "A natural disturbance followed by regrowth leaves the forest in place.",
+     "The forest is cut but allowed to regrow, so forest cover returns."
+    ]
+   }
+  }
+ ]
+}

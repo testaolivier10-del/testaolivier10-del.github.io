@@ -1,0 +1,12 @@
+{
+ "human-population-doubling": {
+  "file": "figures/human-population-doubling.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph of a population of 10 million growing 2% a year for 105 years. Dashed guides mark doubling every 35 years: about 20 million at 35 years, 40 million at 70 years and 80 million at 105 years, as the rule of 70 predicts (70 divided by 2 is 35). Invented example."
+ }
+}

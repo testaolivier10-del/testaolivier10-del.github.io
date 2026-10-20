@@ -1,0 +1,549 @@
+{
+ "stimuli": {
+  "greenhouse-effect-s1": {
+   "kind": "visual",
+   "title": "The greenhouse effect and the ozone layer side by side",
+   "figure": "greenhouse-effect-ozone"
+  },
+  "greenhouse-effect-s2": {
+   "kind": "quantitative",
+   "title": "Global warming potential of five greenhouse gases",
+   "source": "IPCC Fifth Assessment Report (2013), Working Group I, Table 8.A.1, 100-year values",
+   "table": {
+    "caption": "Global warming potential over 100 years (CO₂ = 1) and how long each gas lasts in the air (IPCC Fifth Assessment Report, 2013)",
+    "cols": [
+     "Gas",
+     "Global warming potential (100 years)",
+     "Lifetime in the air (years)"
+    ],
+    "rows": [
+     [
+      "Carbon dioxide (CO₂)",
+      "1",
+      "no single value: centuries to millennia"
+     ],
+     [
+      "Methane (CH₄)",
+      "28",
+      "12.4"
+     ],
+     [
+      "Nitrous oxide (N₂O)",
+      "265",
+      "121"
+     ],
+     [
+      "HFC-134a",
+      "1,300",
+      "13.4"
+     ],
+     [
+      "CFC-12",
+      "10,200",
+      "100"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-greenhouse-effect-1",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement describes the greenhouse effect?",
+   "options": [
+    "Low-level gases absorb infrared from the surface",
+    "Ozone in the stratosphere absorbs ultraviolet light from the Sun",
+    "Chlorine from CFCs destroys ozone and lets more UV reach the ground",
+    "Clouds reflect sunlight back to space and cool the planet"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The greenhouse effect: sunlight warms the surface, the surface gives off infrared, and greenhouse gases absorb and re-emit it, warming the lower atmosphere.",
+    "options": [
+     "Right: greenhouse gases absorb outgoing infrared and send part of it back down.",
+     "That is the ozone layer’s job, a different process in a different layer.",
+     "That is ozone depletion, not the greenhouse effect.",
+     "Reflecting sunlight is part of albedo; the greenhouse effect traps outgoing infrared."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-2",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Without any greenhouse effect, Earth’s average surface temperature would be about −18 °C instead of about 15 °C. What does this show?",
+   "options": [
+    "The greenhouse effect began with the Industrial Revolution",
+    "The natural effect keeps Earth warm enough for life",
+    "Earth would be warmer without greenhouse gases",
+    "Greenhouse gases block sunlight from reaching the surface"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The greenhouse effect is natural and necessary; the problem is the enhanced effect from added gases.",
+    "options": [
+     "The natural effect existed long before people; humans are strengthening it.",
+     "Right: natural greenhouse gases warm the surface by about 33 °C.",
+     "Without them it would be about 33 °C colder.",
+     "Most sunlight passes through; the gases absorb outgoing infrared."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-3",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which gas is NOT a greenhouse gas?",
+   "options": [
+    "Methane (CH₄)",
+    "Nitrous oxide (N₂O)",
+    "Sulfur dioxide (SO₂)",
+    "Water vapor (H₂O)"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The main greenhouse gases are water vapor, carbon dioxide, methane, nitrous oxide and CFCs. SO₂ and particulates are not greenhouse gases.",
+    "options": [
+     "Methane absorbs infrared strongly; it is a greenhouse gas.",
+     "Nitrous oxide is a long-lived greenhouse gas.",
+     "Right: sulfur dioxide causes acid rain and forms particles that reflect sunlight; it is not a greenhouse gas.",
+     "Water vapor is the most abundant greenhouse gas."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-4",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which gas contributes the most to the natural greenhouse effect?",
+   "options": [
+    "Ozone",
+    "Nitrogen gas",
+    "Oxygen gas",
+    "Water vapor"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Water vapor contributes the most, but the amount in the air depends on temperature; CO₂ and other gases set the temperature that water vapor then amplifies.",
+    "options": [
+     "Ozone absorbs some infrared, but it is a small part of the greenhouse effect.",
+     "Nitrogen (N₂) is most of the air but does not absorb infrared.",
+     "Oxygen (O₂) does not absorb infrared, so it is not a greenhouse gas.",
+     "Right: water vapor is the most abundant greenhouse gas and causes most of the natural effect."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-5",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the left panel, what kind of radiation do greenhouse gases absorb?",
+   "stimulus": "greenhouse-effect-s1",
+   "options": [
+    "Infrared given off by Earth’s surface",
+    "Ultraviolet coming in from the Sun",
+    "Visible light coming in from the Sun",
+    "Radio waves from space"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Incoming sunlight is mostly visible light; outgoing radiation from the surface is infrared.",
+    "options": [
+     "Right: the warm surface gives off infrared, which the gases absorb.",
+     "UV is absorbed by ozone in the stratosphere (right panel).",
+     "Most visible light passes through the atmosphere and warms the surface.",
+     "Radio waves are not part of either process in the figure."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-6",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the figure, which statement correctly contrasts the two processes?",
+   "stimulus": "greenhouse-effect-s1",
+   "options": [
+    "Both processes take place in the stratosphere",
+    "Gases warm low air; ozone blocks UV high up",
+    "Both processes involve ultraviolet light from the Sun",
+    "Ozone traps infrared, and greenhouse gases absorb UV"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two separate stories: infrared and the troposphere for warming, UV and the stratosphere for the ozone layer.",
+    "options": [
+     "The greenhouse effect warms the troposphere, the lowest layer.",
+     "Right: different gases, radiation and layers.",
+     "The greenhouse effect involves outgoing infrared.",
+     "This swaps the two: ozone absorbs UV; greenhouse gases absorb infrared."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-7",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"The ozone hole lets more heat in, and that is what causes global warming.\" Using the figure, why is this wrong?",
+   "stimulus": "greenhouse-effect-s1",
+   "options": [
+    "The ozone hole makes Earth colder, which cancels global warming",
+    "Global warming is caused by UV, so the student is right",
+    "The hole admits UV; warming is trapped infrared",
+    "The ozone hole is over the equator, where there is no warming"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ozone depletion raises UV at the surface; the greenhouse effect traps infrared. Mixing them up is a common exam error.",
+    "options": [
+     "Ozone loss is not a main cause of cooling or warming.",
+     "Warming is from trapped infrared, not UV.",
+     "Right: they involve different radiation and different gases.",
+     "The ozone hole is over Antarctica, and warming is global."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-8",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "CFCs appear in both panels of the figure. Why?",
+   "stimulus": "greenhouse-effect-s1",
+   "options": [
+    "CFCs are made of ozone, so they act like the ozone layer",
+    "CFCs absorb UV, which warms the lower atmosphere",
+    "The figure is wrong: CFCs belong in the right panel alone",
+    "CFCs trap infrared and also destroy ozone"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "CFCs are the link between the two topics: they deplete ozone and trap heat. Carbon dioxide traps heat but does not deplete ozone.",
+    "options": [
+     "CFCs contain chlorine, fluorine and carbon, not ozone.",
+     "CFCs warm the climate by absorbing infrared.",
+     "CFCs are strong greenhouse gases too.",
+     "Right: CFCs are both greenhouse gases and ozone-depleting substances."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-9",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "numeric",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A landfill releases 2.0 metric tons of methane in a year. Using the table, what is this release in metric tons of carbon dioxide equivalent (the mass of CO₂ that would trap the same heat over 100 years)?",
+   "stimulus": "greenhouse-effect-s2",
+   "why": {
+    "correct": "$2.0\\,\\text{metric tons} \\times 28 = 56$ metric tons of CO₂ equivalent."
+   },
+   "numeric": {
+    "unit": "metric tons",
+    "units": [
+     "tonnes",
+     "metric tons CO2e"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      2,
+      28
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        2,
+        28
+       ]
+      },
+      "why": "You divided by the global warming potential. Multiply: each ton of methane counts as 28 tons of CO₂, so 2.0 × 28."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        2,
+        265
+       ]
+      },
+      "why": "265 is the global warming potential of nitrous oxide. Methane’s is 28."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-10",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farm’s fertilized fields release 0.40 metric tons of nitrous oxide in a year. Write the setup for the carbon dioxide equivalent, using the table, then give the answer in metric tons.",
+   "stimulus": "greenhouse-effect-s2",
+   "why": {
+    "correct": "$0.40 \\times 265 = 106$ metric tons of CO₂ equivalent."
+   },
+   "setup": {
+    "answer": "0.40 * 265",
+    "mustUse": [
+     "0.40",
+     "265"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.40 / 265",
+      "why": "Multiply by the global warming potential: each ton of N₂O counts as 265 tons of CO₂."
+     },
+     {
+      "expr": "0.40 * 28",
+      "why": "28 is methane’s global warming potential. Nitrous oxide’s is 265."
+     }
+    ],
+    "then": {
+     "unit": "metric tons",
+     "units": [
+      "tonnes"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       0.4,
+       265
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.4,
+       "why": "0.40 metric tons is the mass of N₂O. Multiply by 265 for the CO₂ equivalent: 106 metric tons."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-11",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "One metric ton of which gas in the table traps the most heat over 100 years?",
+   "stimulus": "greenhouse-effect-s2",
+   "options": [
+    "Carbon dioxide",
+    "Methane",
+    "CFC-12",
+    "Nitrous oxide"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Global warming potential compares the heat trapped by equal masses over 100 years, relative to CO₂.",
+    "options": [
+     "CO₂ is the reference, with a global warming potential of 1, the smallest.",
+     "Methane’s 28 is far below CFC-12’s 10,200.",
+     "Right: its global warming potential, 10,200, is the largest in the table.",
+     "Nitrous oxide’s 265 is far below CFC-12’s 10,200."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-12",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "CO₂ has the lowest global warming potential in the table, yet it causes the most human-made warming. Why?",
+   "stimulus": "greenhouse-effect-s2",
+   "options": [
+    "CO₂ breaks down faster than the other gases",
+    "CO₂ also destroys ozone, which adds to the warming",
+    "The table is wrong: CO₂ has the highest potential",
+    "People release far more of it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Total warming = amount released × potential. CO₂ is released in by far the largest amounts.",
+    "options": [
+     "CO₂ stays in the air for centuries; the table’s other gases are not more short-lived in a way that explains this.",
+     "CO₂ does not destroy ozone.",
+     "CO₂ is the reference gas, set at 1 by definition.",
+     "Right: tens of billions of tons of CO₂ a year outweigh the much smaller releases of stronger gases."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-13",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how adding carbon dioxide to the atmosphere warms Earth’s surface.",
+   "why": {
+    "correct": "Each link: more gas, more infrared absorbed, more re-emitted downward, less heat escapes, warmer surface."
+   },
+   "specific": {
+    "frame": "More CO₂ ___ more of the ___ given off by the surface, so ___ is sent back down and surface temperature ___.",
+    "slots": {
+     "verb": {
+      "label": "What CO₂ does",
+      "options": [
+       "absorbs",
+       "reflects",
+       "destroys"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Greenhouse gases absorb and re-emit infrared; they do not reflect it like a mirror.",
+       "2": "CO₂ does not destroy radiation or ozone."
+      }
+     },
+     "rad": {
+      "label": "Radiation",
+      "options": [
+       "infrared radiation",
+       "ultraviolet radiation",
+       "visible light"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "UV comes from the Sun and is absorbed by ozone; the surface gives off infrared.",
+       "2": "The surface gives off infrared, not visible light."
+      }
+     },
+     "back": {
+      "label": "What is sent back",
+      "options": [
+       "more heat",
+       "less heat"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More absorbing gas sends more energy back toward the surface."
+      }
+     },
+     "direction": {
+      "label": "Surface temperature",
+      "options": [
+       "increases",
+       "decreases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Trapping more heat warms the surface."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "infrared",
+      "CO2",
+      "carbon dioxide",
+      "heat"
+     ]
+    },
+    "model": "More CO₂ absorbs more of the infrared radiation given off by the surface and re-emits part of it toward the ground, so more heat is sent back down and the surface temperature increases because less heat escapes to space."
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-14",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which are greenhouse gases? Select all that apply.",
+   "options": [
+    "Carbon dioxide",
+    "Methane",
+    "Particulate matter",
+    "Sulfur dioxide"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Greenhouse gases absorb infrared: water vapor, CO₂, methane, nitrous oxide, CFCs and HFCs.",
+    "options": [
+     "Right: CO₂ absorbs infrared.",
+     "Right: methane is a strong greenhouse gas.",
+     "Particles are not gases; most reflect sunlight rather than trap infrared.",
+     "Sulfur dioxide is an acid-rain gas, not a greenhouse gas."
+    ]
+   }
+  },
+  {
+   "id": "env-greenhouse-effect-15",
+   "unit": "unit-9",
+   "topic": "greenhouse-effect",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do nitrogen and oxygen, which make up 99% of dry air, not act as greenhouse gases?",
+   "options": [
+    "They are found mostly high in the stratosphere",
+    "They absorb ultraviolet light instead of visible light",
+    "Their molecules hardly absorb infrared",
+    "They are produced by plants, so they do not trap heat"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A gas is a greenhouse gas only if its molecules absorb infrared; molecules of three or more atoms (CO₂, H₂O, CH₄, N₂O) do.",
+    "options": [
+     "They fill the whole lower atmosphere.",
+     "That is not the reason; the point is that they do not absorb infrared.",
+     "Right: N₂ and O₂ molecules do not absorb infrared the way CO₂, CH₄ and H₂O do.",
+     "Where a gas comes from does not decide whether it absorbs infrared."
+    ]
+   }
+  }
+ ]
+}

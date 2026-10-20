@@ -1,0 +1,607 @@
+{
+ "stimuli": {
+  "pest-control-s1": {
+   "kind": "quantitative",
+   "title": "Ten years of spraying one insecticide on a cotton farm",
+   "invented": true,
+   "table": {
+    "caption": "Yearly records from one cotton farm that sprayed the same insecticide every year (invented data for practice)",
+    "cols": [
+     "Year",
+     "Sprayings per season",
+     "Insecticide used (kg per ha)",
+     "Pests killed by one spraying (%)",
+     "Predatory beetles per 100 plants"
+    ],
+    "rows": [
+     [
+      "1",
+      "2",
+      "1.0",
+      "96",
+      "40"
+     ],
+     [
+      "4",
+      "3",
+      "1.5",
+      "85",
+      "22"
+     ],
+     [
+      "7",
+      "5",
+      "2.5",
+      "60",
+      "9"
+     ],
+     [
+      "10",
+      "7",
+      "3.5",
+      "35",
+      "3"
+     ]
+    ]
+   }
+  },
+  "pest-control-s2": {
+   "kind": "visual",
+   "title": "Pests resistant to one pesticide over time",
+   "figure": "pest-control-resistance"
+  }
+ },
+ "items": [
+  {
+   "id": "env-pest-control-1",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A herbicide is a pesticide used to kill which kind of organism?",
+   "options": [
+    "Weeds and other unwanted plants",
+    "Insects that eat crops",
+    "Fungi that rot fruit",
+    "Rats and mice that eat stored grain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Herbicides target plants; insecticides target insects; fungicides target fungi.",
+    "options": [
+     "Right: herbicides kill plants.",
+     "Insects are killed by insecticides.",
+     "Fungi are killed by fungicides.",
+     "Rodents are killed by rodenticides."
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-2",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of using a pesticide on a large cornfield?",
+   "options": [
+    "It can quickly cut crop losses to pests, so yields rise",
+    "It increases the number of bees that pollinate the crop",
+    "It adds nitrogen to the soil, so less fertilizer is needed",
+    "It makes pests less likely to evolve resistance over time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pesticides protect the crop, so more of it reaches harvest.",
+    "options": [
+     "Right: fewer losses to pests means a bigger harvest.",
+     "Pesticides often kill bees and other pollinators.",
+     "Pesticides do not supply nutrients.",
+     "Repeated spraying is what causes resistance."
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-3",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Spraying an insecticide kills 99% of the beetles in a field. Over many years the spray works less and less well. What explains this?",
+   "options": [
+    "The 1% that survived carried genes for resistance and passed them on, so resistant beetles became common",
+    "The beetles that survived learned to avoid the spray and taught their offspring how to do it",
+    "The spray made each surviving beetle stronger, so it could survive much larger amounts in later years",
+    "The insecticide broke down in storage, so later sprayings had less of the active chemical"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Resistance is natural selection: survivors with resistance genes breed, so their share grows each generation.",
+    "options": [
+     "Right: selection of existing resistance genes.",
+     "Resistance is inherited in genes, not learned and taught.",
+     "Spraying does not make individual pests stronger; it removes the susceptible ones.",
+     "The chemical is not the problem; the population has changed."
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-4",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "An orchard sprays an insecticide for aphids. The next year, aphids are worse than before. Which effect of the spray best explains this?",
+   "options": [
+    "The spray also killed ladybugs that ate aphids, so the aphids had fewer predators",
+    "The spray fertilized the trees, so they produced much more sap for the aphids to eat",
+    "The spray made the aphids reproduce more slowly, so fewer young were born",
+    "The spray lowered the number of aphids, so the trees made more leaves for them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Killing a pest's predators (nontarget organisms) can let the pest rebound faster than before.",
+    "options": [
+     "Right: losing predators lets the pest population bounce back.",
+     "Insecticides do not fertilize trees.",
+     "Slower reproduction would mean fewer aphids, not more.",
+     "Fewer aphids is the goal; it does not explain more aphids the next year."
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-5",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Herbicide is sprayed on a field next to a stream, and a heavy rain falls the next day. Which is the most likely effect on the stream?",
+   "options": [
+    "Herbicide washes into the stream and harms algae and water plants",
+    "The stream gains oxygen because the herbicide adds it to the water",
+    "Fish in the stream grow faster because the herbicide feeds them",
+    "The stream becomes cooler because the herbicide reflects sunlight"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Runoff carries pesticides into water, where herbicides harm the plants and algae at the base of the food web.",
+    "options": [
+     "Right: runoff carries the herbicide to plants and algae in the stream.",
+     "Herbicides do not add oxygen; killing water plants can lower it.",
+     "Herbicides are not food for fish.",
+     "Herbicides do not change water temperature this way."
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-6",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A farmer plants corn that is genetically modified to make a protein toxic to caterpillars. Which outcome is most likely after many years if every farm in the region plants it?",
+   "options": [
+    "Caterpillars resistant to the protein become common, because they are the ones that survive and breed",
+    "Caterpillars disappear from the region permanently, because no caterpillar can survive the protein",
+    "Farmers spray more insecticide on the corn each year, because the protein attracts the caterpillars",
+    "Bees disappear from the region, because the protein is toxic to bees in the same way"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A trait that kills pests selects for pests that can survive it, just like a spray. Planting refuges of ordinary corn is used to slow this.",
+    "options": [
+     "Right: the GM trait is a selection pressure like any pesticide.",
+     "Natural selection favors any survivors, so resistance can spread.",
+     "The protein is designed to reduce spraying, not increase it.",
+     "The protein targets caterpillars; it is not the same for bees."
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-7",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A field holds 2,000,000 caterpillars. One spraying kills 98% of them. How many survive to breed?",
+   "why": {
+    "correct": "Survivors are the 2% not killed: $2{,}000{,}000 \\times \\frac{2}{100} = 40{,}000$ caterpillars, enough to rebuild the population."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        100,
+        98
+       ]
+      },
+      2000000
+     ]
+    },
+    "unit": "caterpillars",
+    "units": [
+     "caterpillar"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        98,
+        2000000
+       ]
+      },
+      "why": "That is the number killed. The survivors are the other 2%."
+     },
+     {
+      "value": 4000,
+      "why": "A factor of 10 slipped: 2% of 2,000,000 is 0.02 × 2,000,000 = 40,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pest-control-8",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "specific",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain one way pesticide use can harm organisms other than the pest it targets.",
+   "why": {
+    "correct": "A complete chain: the pesticide kills many insect species, including pollinators such as bees, so fewer flowers are pollinated and some crops and wild plants make less fruit and seed."
+   },
+   "specific": {
+    "frame": "Because the pesticide ___, it kills ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Why it harms other species",
+      "options": [
+       "acts on many species, not just the pest",
+       "is used only once each season",
+       "is made from natural ingredients"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "How often it is used does not explain harm to other species.",
+       "2": "Natural ingredients can still be toxic to many species."
+      }
+     },
+     "effect": {
+      "label": "A nontarget organism",
+      "options": [
+       "bees that pollinate crops and wild plants",
+       "the weeds it was meant to kill",
+       "the target pests only"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Weeds are the target of a herbicide, not a nontarget organism.",
+       "2": "The question asks about organisms other than the target."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "fewer flowers are pollinated and some plants make less fruit and seed",
+       "crops are pollinated more often",
+       "the pests become rarer forever"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fewer bees means less pollination, not more.",
+       "2": "This is about harm to other species; and pests rebound or evolve resistance."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "bees",
+      "pollinat",
+      "predator",
+      "fish",
+      "nontarget"
+     ]
+    },
+    "model": "Because the pesticide acts on many species, not just the pest, it kills bees that pollinate crops and wild plants, which leads to fewer flowers being pollinated, so some plants make less fruit and seed."
+   }
+  },
+  {
+   "id": "env-pest-control-9",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which trend does the table show from year 1 to year 10?",
+   "options": [
+    "The share of pests killed by one spraying fell from 96% to 35%",
+    "The share of pests killed by one spraying rose from 35% to 96%",
+    "The number of sprayings per season fell from 7 to 2",
+    "The number of predatory beetles rose from 3 to 40"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each spraying killed less and less: 96, 85, 60, 35%.",
+    "options": [
+     "Right: the spray became much less effective.",
+     "The direction is reversed: it fell over the years.",
+     "Sprayings rose from 2 to 7.",
+     "Beetles fell from 40 to 3."
+    ]
+   },
+   "stimulus": "pest-control-s1"
+  },
+  {
+   "id": "env-pest-control-10",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in insecticide used per hectare from year 1 to year 10, then give the answer.",
+   "why": {
+    "correct": "$\\frac{3.5 - 1.0}{1.0} \\times 100 = 250\\%$: the farm used three and a half times as much."
+   },
+   "setup": {
+    "answer": "(3.5 - 1.0) / 1.0 * 100",
+    "mustUse": [
+     "3.5",
+     "1.0"
+    ],
+    "mistakes": [
+     {
+      "expr": "(3.5 - 1.0) / 3.5 * 100",
+      "why": "Divide by the starting value, 1.0 kg per ha in year 1."
+     },
+     {
+      "expr": "3.5 / 1.0 * 100",
+      "why": "That is year 10 as a percent of year 1 (350%). Percent change subtracts first: (3.5 - 1.0) / 1.0 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       1,
+       3.5
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 2.5,
+       "why": "2.5 is the fraction (or the change in kg per ha). Multiply by 100 for the percent."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         3.5,
+         1
+        ]
+       },
+       "why": "That is the change from year 10 back to year 1. Start from year 1."
+      }
+     ]
+    }
+   },
+   "stimulus": "pest-control-s1"
+  },
+  {
+   "id": "env-pest-control-11",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion is best supported by the table?",
+   "options": [
+    "As resistance grew, the farm sprayed more often, and the beetles that eat pests declined",
+    "As resistance grew, the farm sprayed less often, and the beetles that eat pests increased",
+    "Spraying more often made each spraying more effective at killing the pests",
+    "The beetles that eat pests were not affected by the change in spraying"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sprayings went 2 to 7, the kill rate fell 96% to 35%, and beetles fell 40 to 3 per 100 plants.",
+    "options": [
+     "Right: more spraying, weaker effect, fewer natural predators.",
+     "Sprayings increased, and beetles decreased.",
+     "Kill rate fell even as sprayings rose.",
+     "Beetles fell from 40 to 3 per 100 plants."
+    ]
+   },
+   "stimulus": "pest-control-s1"
+  },
+  {
+   "id": "env-pest-control-12",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "specific",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain how the decline in predatory beetles could make the farm's pest problem worse.",
+   "why": {
+    "correct": "Each link: more spraying kills the beetles as nontarget organisms; with fewer beetles, fewer pests are eaten; so the pest population grows faster between sprayings and the farm sprays even more."
+   },
+   "specific": {
+    "frame": "Spraying kills ___; with fewer beetles, ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "What spraying kills",
+      "options": [
+       "the predatory beetles as well as the pests",
+       "only resistant pests",
+       "the cotton plants"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Resistant pests are the ones that survive spraying.",
+       "2": "An insecticide is not meant to kill the crop, and the table does not show that."
+      }
+     },
+     "effect": {
+      "label": "Effect on pests",
+      "options": [
+       "fewer pests are eaten by predators",
+       "more pests are eaten by predators",
+       "pests are killed by the beetles' absence"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fewer beetles eat fewer pests, not more.",
+       "2": "The absence of predators does not kill pests."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "pests multiply faster between sprayings, so the farm sprays even more",
+       "pests multiply more slowly, so the farm sprays less",
+       "the pests become susceptible to the spray again"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Losing predators speeds pest growth.",
+       "2": "Losing predators does not reverse resistance."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "beetle",
+      "predator",
+      "pest"
+     ]
+    },
+    "model": "Spraying kills the predatory beetles as well as the pests; with fewer beetles, fewer pests are eaten, which leads to pests multiplying faster between sprayings, so the farm sprays even more."
+   },
+   "stimulus": "pest-control-s1"
+  },
+  {
+   "id": "env-pest-control-13",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the graph, about how many generations of spraying did it take for half the pests to be resistant?",
+   "options": [
+    "10 generations",
+    "16 generations",
+    "4 generations",
+    "1 generation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve reaches 50% at generation 10.",
+    "options": [
+     "Right: 50% at generation 10.",
+     "At 16 generations about 95% are resistant.",
+     "At 4 generations only about 5% are resistant.",
+     "At the start about 1% are resistant."
+    ]
+   },
+   "stimulus": "pest-control-s2"
+  },
+  {
+   "id": "env-pest-control-14",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the share of resistant pests rise slowly at first and then much faster?",
+   "options": [
+    "At first resistant pests are rare, so few offspring carry the genes; as they become common, their share grows quickly",
+    "At first the pesticide is weak, but the farmer then switches to a much stronger chemical that kills the pests faster",
+    "At first the pests are learning to resist, and once one learns it, the rest copy it quickly",
+    "At first the predators eat the resistant pests, but later the predators move away"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Like a population growing from a few individuals, resistance genes spread slowly while rare and quickly once common, then level off near 100%.",
+    "options": [
+     "Right: growth from a small start, then fast, then leveling off.",
+     "The graph is for one pesticide; nothing says it changed.",
+     "Resistance is inherited, not learned or copied.",
+     "The graph says nothing about predators."
+    ]
+   },
+   "stimulus": "pest-control-s2"
+  },
+  {
+   "id": "env-pest-control-15",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A farmer sees resistance at 12% (generation 6). Which plan would best slow the rise shown in the graph?",
+   "options": [
+    "Alternate pesticides that work in different ways, so pests resistant to one are killed by another",
+    "Spray the same pesticide twice as often, so more of the pests are killed each season",
+    "Use a larger dose of the same pesticide at each spraying, so that even the resistant pests die",
+    "Stop counting the pests and spray on a fixed weekly schedule through the season"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rotating chemicals with different modes of action removes the advantage of resistance to any one of them.",
+    "options": [
+     "Right: switching modes of action slows selection for any one resistance.",
+     "More spraying of the same chemical speeds selection for resistance.",
+     "A larger dose of the same chemical still selects for the most resistant pests.",
+     "Fixed schedules ignore pest levels and usually mean more spraying."
+    ]
+   },
+   "stimulus": "pest-control-s2"
+  },
+  {
+   "id": "env-pest-control-16",
+   "unit": "unit-5",
+   "topic": "pest-control",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps in the evolution of pesticide resistance in order.",
+   "options": [
+    "A few pests carry a gene that lets them survive the pesticide",
+    "The pesticide kills most of the pests that lack the gene",
+    "The survivors breed and pass the gene to their offspring",
+    "Over many generations most of the population carries the gene"
+   ],
+   "why": {
+    "correct": "Variation already exists, spraying selects the survivors, survivors reproduce, and the gene becomes common."
+   }
+  }
+ ]
+}

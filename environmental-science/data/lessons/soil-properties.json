@@ -1,0 +1,84 @@
+{
+ "topic": "soil-properties",
+ "hook": "Pour a glass of water on a sandy beach and it vanishes in seconds. Pour it on a clay ball field after a storm and it sits in a puddle for hours. The difference is the size of the particles, and it decides which crops a farm can grow, where a septic drain field can go and how much a field needs watering.",
+ "prereq": [
+  {
+   "q": "Which soil horizon is topsoil?",
+   "options": [
+    "The A horizon",
+    "The B horizon",
+    "The C horizon",
+    "Bedrock"
+   ],
+   "correct": 0,
+   "why": "The A horizon is topsoil: humus mixed with minerals.",
+   "review": "soil-formation"
+  },
+  {
+   "q": "What is humus?",
+   "options": [
+    "Decomposed organic matter in soil",
+    "Weathered bedrock",
+    "Water held in the soil",
+    "Salt left by evaporation"
+   ],
+   "correct": 0,
+   "why": "Humus forms when decomposers break down dead organisms.",
+   "review": "soil-formation"
+  },
+  {
+   "q": "What is leaching?",
+   "options": [
+    "Water carrying dissolved substances down through the soil",
+    "Wind lifting soil off a field",
+    "Plants taking up nutrients",
+    "Rock breaking into smaller pieces"
+   ],
+   "correct": 0,
+   "why": "Leaching moves dissolved nutrients and minerals downward with water.",
+   "review": "nitrogen-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "soil-properties-texture-triangle",
+  "caption": "The soil texture triangle. Read the percent clay, silt and sand along the three sides; where the three lines meet is the soil's texture class. Loam, shaded, is a balanced mix."
+ },
+ "chain": [
+  {
+   "cause": "Sand grains are large and clay particles are tiny",
+   "effect": "sand leaves large pores, clay leaves very many tiny pores"
+  },
+  {
+   "cause": "Water moves easily through large, connected pores",
+   "effect": "sandy soil has high permeability and drains fast"
+  },
+  {
+   "cause": "Tiny pores hold water tightly and pass it slowly",
+   "effect": "clay soil has high water-holding capacity but drains slowly and can lack air"
+  },
+  {
+   "cause": "Clay and humus hold nutrients that water would otherwise leach away",
+   "effect": "a loam with humus is fertile, holds water and still drains"
+  }
+ ],
+ "ideas": [
+  "<b>Soil texture</b> is the share of sand (largest), silt and clay (smallest) particles. The <b>soil texture triangle</b> turns the three percentages into a texture class.",
+  "<b>Loam</b> is a balanced mix (roughly 40% sand, 40% silt, 20% clay) that drains well yet holds water and nutrients.",
+  "<b>Porosity</b> is the share of soil volume that is pore space. <b>Permeability</b> is how easily water flows through: highest in sand, with large connected pores; lowest in clay, with tiny pores.",
+  "<b>Water-holding capacity</b> is how much water a soil can hold against gravity: highest in clay and soils rich in humus, lowest in sand.",
+  "<b>Soil fertility</b> is the soil's ability to supply nutrients. Clay and humus hold nutrients; <b>pH</b> controls whether roots can take them up (most crops prefer about 6 to 7)."
+ ],
+ "misconception": {
+  "wrong": "Sand drains fast because it has more pore space than clay.",
+  "right": "Clay usually has as much or more total pore space; its pores are just tiny. Sand drains fast because its pores are large and connected: that is permeability, not porosity."
+ },
+ "check": [
+  "env-soil-properties-2",
+  "env-soil-properties-3",
+  "env-soil-properties-7",
+  "env-soil-properties-8",
+  "env-soil-properties-9",
+  "env-soil-properties-12"
+ ],
+ "summary": "Soil texture, the share of sand, silt and clay, sets how soil behaves. Sand drains fast (high permeability) but holds little water or nutrients; clay holds water and nutrients but drains slowly; loam balances the two. The texture triangle reads a sample's class from its three percentages. Humus and a pH near 6 to 7 make soil more fertile."
+}

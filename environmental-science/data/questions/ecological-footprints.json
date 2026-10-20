@@ -1,0 +1,653 @@
+{
+ "stimuli": {
+  "ecological-footprints-s1": {
+   "kind": "visual",
+   "title": "Ecological footprint per person in four countries",
+   "figure": "ecological-footprints-bars"
+  },
+  "ecological-footprints-s2": {
+   "kind": "quantitative",
+   "title": "One student's yearly carbon footprint",
+   "invented": true,
+   "table": {
+    "caption": "Estimated carbon dioxide released in one year by one student's activities (invented data for practice)",
+    "cols": [
+     "Activity",
+     "Amount per year",
+     "Carbon dioxide released"
+    ],
+    "rows": [
+     [
+      "Driving a car",
+      "8,000 km",
+      "0.2 kg CO2 per km"
+     ],
+     [
+      "Home electricity",
+      "3,500 kWh",
+      "0.4 kg CO2 per kWh"
+     ],
+     [
+      "Flights",
+      "2 round trips",
+      "600 kg CO2 per round trip"
+     ],
+     [
+      "Food",
+      "365 days",
+      "5 kg CO2 per day"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-ecological-footprints-1",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does an ecological footprint measure?",
+   "options": [
+    "The land and water area needed to support what a person uses",
+    "The number of species that live in the natural area around a person's home",
+    "The total mass of trash a person throws away each year",
+    "The amount of fresh water a person drinks each day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "It is an area: productive land and water needed for a person's consumption and wastes.",
+    "options": [
+     "Right: an area of land and water.",
+     "Species richness is a measure of biodiversity.",
+     "Trash is one waste, not the footprint.",
+     "Drinking water is a tiny part of what the footprint counts."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-footprints-2",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How is a carbon footprint different from an ecological footprint?",
+   "options": [
+    "It counts greenhouse emissions only, as a mass of carbon dioxide",
+    "It counts just the land used to grow a person's food, in hectares",
+    "It is a larger number than the ecological footprint for each person",
+    "It counts the fresh water a person uses each year, in liters"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The carbon footprint is a mass of emissions; the ecological footprint is an area that includes land to absorb those emissions plus food, wood and built land.",
+    "options": [
+     "Right: emissions only, as a mass.",
+     "Land for food is part of the ecological footprint.",
+     "They are in different units, so one is not \"larger\".",
+     "Water use is a separate measure."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-footprints-3",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which change would lower a person's ecological footprint the most?",
+   "options": [
+    "Eating much less beef and driving much less",
+    "Buying the same goods from a different store",
+    "Moving to a larger house farther from work",
+    "Taking more flights for vacations each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Beef needs a lot of land, and driving releases carbon dioxide that needs forest to absorb it.",
+    "options": [
+     "Right: diet and transport are big parts of a footprint.",
+     "The same goods have the same footprint.",
+     "A bigger, farther house adds energy and driving.",
+     "Flights add carbon dioxide."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-footprints-4",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Country X has 300 million people with a footprint of 8 gha per person. Country Y has 1.4 billion people with a footprint of 1.2 gha per person. Which statement is correct?",
+   "options": [
+    "X's total footprint is larger than Y's",
+    "Y's total footprint is larger because Y has more people in it",
+    "Their total footprints are equal, since their populations differ",
+    "X's footprint per person is smaller because X has fewer people"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total = per person × population. X: $8 \\times 300 \\text{ million} = 2.4$ billion gha. Y: $1.2 \\times 1.4 \\text{ billion} = 1.68$ billion gha.",
+    "options": [
+     "Right: high consumption outweighs the smaller population.",
+     "Population alone does not decide the total.",
+     "The totals are 2.4 and 1.68 billion gha.",
+     "Per-person footprint does not depend on population size."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-footprints-5",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country of 25 million people has a total ecological footprint of 130 million global hectares. What is its footprint per person?",
+   "why": {
+    "correct": "$\\frac{130{,}000{,}000\\,\\text{gha}}{25{,}000{,}000\\,\\text{people}} = 5.2$ gha per person."
+   },
+   "numeric": {
+    "from": {
+     "fn": "perCapita",
+     "args": [
+      130000000,
+      25000000
+     ]
+    },
+    "unit": "gha/person",
+    "units": [
+     "global hectares per person",
+     "gha per person"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        25000000,
+        130000000
+       ]
+      },
+      "why": "Put the total on top: footprint ÷ people."
+     },
+     {
+      "value": 5200000,
+      "why": "The millions cancel: 130 million ÷ 25 million = 5.2, not 5.2 million."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-footprints-6",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town of 40,000 people has an average ecological footprint of 6.5 gha per person, and the land around it can supply 52,000 gha. Write the setup for how many times larger the town's total footprint is than the land around it, then give the answer.",
+   "why": {
+    "correct": "Total footprint: $40{,}000 \\times 6.5 = 260{,}000$ gha. Ratio: $\\frac{260{,}000\\,\\text{gha}}{52{,}000\\,\\text{gha}} = 5$ times."
+   },
+   "setup": {
+    "answer": "40000 * 6.5 / 52000",
+    "mustUse": [
+     "40000",
+     "6.5",
+     "52000"
+    ],
+    "mistakes": [
+     {
+      "expr": "6.5 / 52000",
+      "why": "Find the town's total first: 40,000 people × 6.5 gha per person."
+     },
+     {
+      "expr": "52000 / (40000 * 6.5)",
+      "why": "Put the footprint on top to see how many times larger it is."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "div",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         40000,
+         6.5
+        ]
+       },
+       52000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.2,
+       "why": "0.2 is the land divided by the footprint. Flip it: footprint ÷ land."
+      },
+      {
+       "value": 260000,
+       "why": "260,000 gha is the town's total footprint. Divide by 52,000 gha for how many times larger."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-ecological-footprints-7",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why eating less beef lowers a person's ecological footprint.",
+   "why": {
+    "correct": "Each link: beef cattle eat several kilograms of feed for each kilogram of meat because energy is lost at each trophic level; growing that feed and grazing the cattle takes cropland and pasture; so less beef means less land counted in the footprint."
+   },
+   "specific": {
+    "frame": "Because ___, beef needs ___, so eating less beef ___.",
+    "slots": {
+     "cause": {
+      "label": "Why beef needs so much",
+      "options": [
+       "energy is lost at each trophic level, so cattle eat many kilograms of feed per kilogram of meat",
+       "cattle eat no grain, only grass",
+       "beef has more water than grain"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Feedlot cattle eat a lot of grain, and grazing needs land too.",
+       "2": "Water content is not the reason."
+      }
+     },
+     "effect": {
+      "label": "What beef needs",
+      "options": [
+       "large areas of cropland for feed and pasture for grazing",
+       "very little land compared with grain",
+       "only factory space"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Beef needs far more land per kilogram than grain.",
+       "2": "Feed and grazing take farmland."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "reduces the land area counted in the footprint",
+       "increases the land area counted in the footprint",
+       "does not change the footprint"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less beef means less land, a smaller footprint.",
+       "2": "Diet is a large part of the footprint."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "beef",
+      "land",
+      "feed",
+      "footprint"
+     ]
+    },
+    "model": "Because energy is lost at each trophic level, so cattle eat many kilograms of feed per kilogram of meat, beef needs large areas of cropland for feed and pasture for grazing, so eating less beef reduces the land area counted in the footprint."
+   }
+  },
+  {
+   "id": "env-ecological-footprints-8",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which countries in the graph have a footprint per person larger than Earth's biocapacity per person?",
+   "options": [
+    "A, B and C",
+    "A and B",
+    "D",
+    "A, B, C and D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A (8.0), B (4.8) and C (2.4) are above the 1.6 gha line; D (1.0) is below it.",
+    "options": [
+     "Right: three countries are above the line.",
+     "C, at 2.4, is also above 1.6.",
+     "D is the one country below the line.",
+     "D is below the line."
+    ]
+   },
+   "stimulus": "ecological-footprints-s1"
+  },
+  {
+   "id": "env-ecological-footprints-9",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "If everyone on Earth lived like the average person in country A, about how many Earths would be needed? (Divide A's footprint by the biocapacity per person.)",
+   "why": {
+    "correct": "$\\frac{8.0\\,\\text{gha per person}}{1.6\\,\\text{gha per person}} = 5$ Earths."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      8,
+      1.6
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1.6,
+        8
+       ]
+      },
+      "why": "Put A's footprint on top: 8.0 ÷ 1.6."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        8,
+        1.6
+       ]
+      },
+      "why": "Subtracting gives the gap in gha. Divide to find how many Earths."
+     }
+    ]
+   },
+   "stimulus": "ecological-footprints-s1"
+  },
+  {
+   "id": "env-ecological-footprints-10",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent by which country B's footprint per person is above Earth's biocapacity per person, then give the answer.",
+   "why": {
+    "correct": "$\\frac{4.8 - 1.6}{1.6} \\times 100 = 200\\%$ above the biocapacity."
+   },
+   "setup": {
+    "answer": "(4.8 - 1.6) / 1.6 * 100",
+    "mustUse": [
+     "4.8",
+     "1.6"
+    ],
+    "mistakes": [
+     {
+      "expr": "(4.8 - 1.6) / 4.8 * 100",
+      "why": "Compare with the biocapacity: divide by 1.6."
+     },
+     {
+      "expr": "4.8 / 1.6 * 100",
+      "why": "That is B as a percent of the biocapacity (300%). \"Above\" means subtract first: (4.8 - 1.6) / 1.6 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       1.6,
+       4.8
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 3.2,
+       "why": "3.2 gha is the gap. Divide by 1.6 and multiply by 100."
+      },
+      {
+       "value": 300,
+       "why": "300% is B as a percent of biocapacity. B is 200% above it."
+      }
+     ]
+    }
+   },
+   "stimulus": "ecological-footprints-s1"
+  },
+  {
+   "id": "env-ecological-footprints-11",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Country D's footprint is below the biocapacity line. Which is the most likely reason?",
+   "options": [
+    "People in D use less meat, energy and goods per person",
+    "D has more productive land than the other countries",
+    "D has a larger population, which spreads the footprint out",
+    "D imports its food, so food does not count in its footprint"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A low footprint per person usually reflects low consumption, often because of low income.",
+    "options": [
+     "Right: low consumption per person.",
+     "Land available is biocapacity; the footprint measures use.",
+     "Population does not change the per-person footprint.",
+     "Imported food still counts in the footprint of the people who eat it."
+    ]
+   },
+   "stimulus": "ecological-footprints-s1"
+  },
+  {
+   "id": "env-ecological-footprints-12",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many kilograms of carbon dioxide does the student's driving release in one year?",
+   "why": {
+    "correct": "$8{,}000\\,\\text{km} \\times \\frac{0.2\\,\\text{kg carbon dioxide}}{1\\,\\text{km}} = 1{,}600$ kg of carbon dioxide."
+   },
+   "numeric": {
+    "from": {
+     "fn": "emissions",
+     "args": [
+      8000,
+      0.2
+     ]
+    },
+    "unit": "kg",
+    "units": [
+     "kg CO2"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        8000,
+        0.2
+       ]
+      },
+      "why": "Multiply the distance by the emissions per kilometer so the kilometers cancel."
+     },
+     {
+      "value": 160,
+      "why": "A factor of 10 slipped: 8,000 × 0.2 = 1,600."
+     }
+    ]
+   },
+   "stimulus": "ecological-footprints-s2"
+  },
+  {
+   "id": "env-ecological-footprints-13",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "Write the setup for the student's total yearly carbon footprint from all four activities in kilograms of carbon dioxide, then give the answer.",
+   "why": {
+    "correct": "Driving $8{,}000 \\times 0.2 = 1{,}600$; electricity $3{,}500 \\times 0.4 = 1{,}400$; flights $2 \\times 600 = 1{,}200$; food $365 \\times 5 = 1{,}825$. Total: $1{,}600 + 1{,}400 + 1{,}200 + 1{,}825 = 6{,}025$ kg."
+   },
+   "setup": {
+    "answer": "8000 * 0.2 + 3500 * 0.4 + 2 * 600 + 365 * 5",
+    "mustUse": [
+     "8000",
+     "3500",
+     "600",
+     "365"
+    ],
+    "mistakes": [
+     {
+      "expr": "8000 * 0.2 + 3500 * 0.4 + 600 + 365 * 5",
+      "why": "There are 2 round trips: count 2 × 600 kg for flights."
+     },
+     {
+      "expr": "8000 * 0.2 + 3500 * 0.4 + 2 * 600 + 5",
+      "why": "Food is 5 kg a day for 365 days: 365 × 5."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "units": [
+      "kg CO2"
+     ],
+     "from": {
+      "fn": "add",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         8000,
+         0.2
+        ]
+       },
+       {
+        "fn": "mul",
+        "args": [
+         3500,
+         0.4
+        ]
+       },
+       {
+        "fn": "mul",
+        "args": [
+         2,
+         600
+        ]
+       },
+       {
+        "fn": "mul",
+        "args": [
+         365,
+         5
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 5425,
+       "why": "The flights were counted once. There are 2 round trips at 600 kg each."
+      },
+      {
+       "value": 4205,
+       "why": "Food was counted as 5 kg for the year. It is 5 kg per day: 365 × 5 = 1,825 kg."
+      }
+     ]
+    }
+   },
+   "stimulus": "ecological-footprints-s2"
+  },
+  {
+   "id": "env-ecological-footprints-14",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which change to the student's activities would cut the most carbon dioxide?",
+   "options": [
+    "Halving the driving, which saves 800 kg a year",
+    "Skipping one round-trip flight, which saves 600 kg a year",
+    "Cutting home electricity by 10%, which saves 140 kg a year",
+    "Cutting food emissions by 10%, which saves about 183 kg a year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Half of 1,600 kg is 800 kg, the largest of the four savings.",
+    "options": [
+     "Right: 800 kg is the largest saving.",
+     "600 kg is less than 800 kg.",
+     "10% of 1,400 kg is 140 kg.",
+     "10% of 1,825 kg is about 183 kg."
+    ]
+   },
+   "stimulus": "ecological-footprints-s2"
+  },
+  {
+   "id": "env-ecological-footprints-15",
+   "unit": "unit-5",
+   "topic": "ecological-footprints",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are counted in a person's ecological footprint? Select all that apply.",
+   "options": [
+    "Cropland that grows the person's food",
+    "Forest needed to absorb the carbon dioxide from the person's energy use",
+    "Land covered by the person's home and roads",
+    "The number of children the person has",
+    "The person's height and weight",
+    "The amount of rain that falls on the person's town"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "The footprint is the area of cropland, pasture, forest, fishing grounds and built land needed to support the person.",
+    "options": [
+     "Right: cropland for food.",
+     "Right: forest to absorb carbon dioxide.",
+     "Right: built-up land.",
+     "Family size affects a population's total, not one person's footprint.",
+     "Body size is not counted.",
+     "Rainfall affects biocapacity, not the footprint."
+    ]
+   }
+  }
+ ]
+}

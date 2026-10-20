@@ -1,0 +1,681 @@
+{
+ "stimuli": {
+  "agricultural-practices-s1": {
+   "kind": "quantitative",
+   "title": "Soil loss and organic matter in tilled and untilled plots",
+   "invented": true,
+   "table": {
+    "caption": "Results after 10 years of growing corn on four plots on the same gentle slope (invented data for practice)",
+    "cols": [
+     "Plot",
+     "Tilling",
+     "Soil lost (metric tons per ha per year)",
+     "Soil organic matter after 10 years (%)"
+    ],
+    "rows": [
+     [
+      "1",
+      "Plowed every spring and fall",
+      "18",
+      "2.1"
+     ],
+     [
+      "2",
+      "Plowed every spring",
+      "12",
+      "2.6"
+     ],
+     [
+      "3",
+      "Plowed every third spring",
+      "5",
+      "3.2"
+     ],
+     [
+      "4",
+      "Never plowed",
+      "1",
+      "3.8"
+     ]
+    ]
+   }
+  },
+  "agricultural-practices-s2": {
+   "kind": "visual",
+   "title": "A tilled field and an untilled field in cross-section",
+   "figure": "agricultural-practices-tilling"
+  }
+ },
+ "items": [
+  {
+   "id": "env-agricultural-practices-1",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is tilling?",
+   "options": [
+    "Turning over and breaking up the soil before planting",
+    "Adding crushed limestone to a field to raise the soil pH",
+    "Planting rows of trees along the edges of a field",
+    "Spreading animal manure on a field after harvest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tilling (plowing or disking) turns over and loosens the soil to bury weeds and prepare a seedbed.",
+    "options": [
+     "Right: tilling is mechanical turning of the soil.",
+     "Liming changes soil chemistry; it is not tilling.",
+     "Tree rows protect a field from wind; they are not tilling.",
+     "Spreading manure adds nutrients; it does not turn the soil."
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-2",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a field that is plowed every year lose more soil to wind than a field covered by grass?",
+   "options": [
+    "The plowed soil is bare and loose, so wind can lift and carry the small particles",
+    "The plowed soil holds more water, so it is heavier and the wind is unable to lift it",
+    "The grass roots release a chemical that makes the wind blow more slowly across the field",
+    "The plowed field has more organic matter, which is light and blows away the fastest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Without plants or residue on top, dry loose soil is easily picked up by wind.",
+    "options": [
+     "Right: a bare, loose surface erodes easily.",
+     "Tilled soil dries out; and heavier soil would erode less, not more.",
+     "Grass shields soil and holds it with roots; it does not change the wind with chemicals.",
+     "Tilled soil has less organic matter, not more."
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-3",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Repeated tilling lowers the organic matter in soil. How?",
+   "options": [
+    "Mixing air into the soil speeds decomposition, so organic matter breaks down to carbon dioxide",
+    "Tilling buries the organic matter so deep that it turns into rock within a few seasons",
+    "The plow blade cuts the organic matter into pieces far too small for the plant roots to use",
+    "Tilling adds water that dissolves the organic matter and carries it to the ocean"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Air and broken-up soil let decomposers work faster, and the carbon in organic matter leaves as carbon dioxide.",
+    "options": [
+     "Right: more air means faster decomposition and carbon dioxide release.",
+     "Buried organic matter does not become rock in seasons.",
+     "Small pieces are easier for decomposers, not harder for roots; the loss is decomposition.",
+     "Tilling does not add water; and the main loss is decomposition."
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-4",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In slash-and-burn farming, what provides the nutrients for the first crops?",
+   "options": [
+    "The ash left after the cut plants are burned",
+    "Synthetic fertilizer bought before clearing the plot",
+    "Deep, rich soil built up under the forest",
+    "Manure from cattle grazing in the forest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Burning releases the nutrients stored in the plants as ash, which fertilizes the poor soil for a short time.",
+    "options": [
+     "Right: ash carries the nutrients from the burned plants.",
+     "Slash-and-burn farmers usually do not buy fertilizer.",
+     "Tropical rainforest soils are thin and poor; most nutrients are in the plants.",
+     "The method does not rely on grazing cattle."
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-5",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why do slash-and-burn plots in tropical rainforests usually produce good crops for only a few years?",
+   "options": [
+    "Most nutrients were in the plants, so once the ash is used up or washed out the thin soil is poor",
+    "The ash poisons the soil after a few years, so crops stop growing in the plot",
+    "The plots become too shady as the forest canopy grows back over them in a single year",
+    "The soil becomes too rich in humus after burning, so the crops grow plenty of leaves but no seeds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rainforest soil is thin and leached; most nutrients are in living plants. Heavy rain soon leaches the ash nutrients away.",
+    "options": [
+     "Right: the soil itself is poor once the ash nutrients are gone.",
+     "Ash fertilizes; it does not poison the soil.",
+     "A canopy takes many years to regrow, not one.",
+     "Burning removes organic matter; the soil is poor, not too rich."
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-6",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Slash-and-burn was practiced for centuries without destroying rainforests. What changed to make it more harmful today?",
+   "options": [
+    "More people farm the same forest, so plots are reused before the forest has time to regrow",
+    "Modern fires burn at a much lower temperature, so they leave far less ash behind for the crops",
+    "Rainforest trees now grow back faster, so plots are crowded out sooner",
+    "Farmers now burn smaller plots, so the forest is cleared more slowly"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With few people and long fallow periods, cleared plots regrow forest. More people means shorter fallows and more forest cleared.",
+    "options": [
+     "Right: shorter fallow periods leave no time for the forest to recover.",
+     "Fire temperature is not the main change; population pressure is.",
+     "Faster regrowth would reduce harm, not increase it.",
+     "Smaller plots would clear forest more slowly, which would be less harmful."
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-7",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A slash-and-burn family farms a plot for 3 years, then leaves it to regrow forest for 15 years before clearing it again. To farm 2 hectares every year, how many hectares of forest does the family need in its cycle?",
+   "why": {
+    "correct": "Each plot is in the cycle for $3 + 15 = 18$ years and farmed in 3 of them. Land needed: $2\\,\\text{ha} \\times \\frac{18\\,\\text{yr}}{3\\,\\text{yr}} = 12$ hectares."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      2,
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          3,
+          15
+         ]
+        },
+        3
+       ]
+      }
+     ]
+    },
+    "unit": "ha",
+    "units": [
+     "hectares"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        2,
+        {
+         "fn": "div",
+         "args": [
+          15,
+          3
+         ]
+        }
+       ]
+      },
+      "why": "The cycle is 3 years farmed plus 15 years fallow, 18 years in all. Use 18 / 3, not 15 / 3."
+     },
+     {
+      "value": 2,
+      "why": "2 hectares is what is farmed in one year. The fallow plots are part of the land the family needs too."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-agricultural-practices-8",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer applies 150 kg of nitrogen per hectare to a 60-hectare field. The crop takes up 90 kg per hectare. Write the setup for the total mass of nitrogen not taken up by the crop, then give the answer with its unit.",
+   "why": {
+    "correct": "Excess per hectare: $150 - 90 = 60$ kg/ha. Total: $(150 - 90)\\,\\frac{\\text{kg}}{\\text{ha}} \\times 60\\,\\text{ha} = 3{,}600$ kg of nitrogen that can wash off or leach."
+   },
+   "setup": {
+    "answer": "(150 - 90) * 60",
+    "mustUse": [
+     "150",
+     "90",
+     "60"
+    ],
+    "mistakes": [
+     {
+      "expr": "150 - 90 * 60",
+      "why": "Without brackets the multiplication happens first. Write (150 - 90) × 60."
+     },
+     {
+      "expr": "150 * 60",
+      "why": "That is all the nitrogen applied. Subtract what the crop takes up first: (150 - 90) × 60."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "mul",
+      "args": [
+       {
+        "fn": "sub",
+        "args": [
+         150,
+         90
+        ]
+       },
+       60
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60,
+       "why": "60 kg is the excess on one hectare. Multiply by the 60 hectares."
+      },
+      {
+       "value": 5400,
+       "why": "5,400 kg is what the crop takes up (90 × 60). The question asks for what it does not take up."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-agricultural-practices-9",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town's wells show rising nitrate levels. The town is surrounded by cornfields. Explain how the farms could cause the rising nitrate.",
+   "why": {
+    "correct": "Each link: farmers apply more nitrogen fertilizer than the corn takes up; nitrate dissolves in rain and irrigation water; it leaches down through the soil into the groundwater the wells draw from."
+   },
+   "specific": {
+    "frame": "Farmers apply ___; because nitrate ___, it ___ into ___.",
+    "slots": {
+     "cause": {
+      "label": "What is applied",
+      "options": [
+       "more nitrogen fertilizer than the corn takes up",
+       "pesticides that kill insects on the corn",
+       "lime that raises the soil pH"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Pesticides are a different pollutant; they do not add nitrate.",
+       "2": "Lime changes pH; it does not contain nitrate."
+      }
+     },
+     "mechanism": {
+      "label": "Property of nitrate",
+      "options": [
+       "dissolves easily in water",
+       "sticks tightly to clay particles",
+       "evaporates quickly in the sun"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nitrate is a negative ion that clay holds poorly; it moves with water.",
+       "2": "Nitrate does not evaporate; it stays dissolved."
+      }
+     },
+     "effect": {
+      "label": "How it moves",
+      "options": [
+       "leaches down through the soil",
+       "blows on the wind",
+       "is taken up by decomposers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dissolved nitrate travels with water, not wind.",
+       "2": "Some nitrate is used by microbes, but that removes it; it does not move it to wells."
+      }
+     },
+     "dv": {
+      "label": "Where it ends up",
+      "options": [
+       "the groundwater the wells pump",
+       "the air above the town",
+       "the corn seeds stored for next year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nitrate in wells comes from water, not air.",
+       "2": "Stored seeds are not part of the town's water."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "nitrate",
+      "fertilizer",
+      "groundwater",
+      "wells"
+     ]
+    },
+    "model": "Farmers apply more nitrogen fertilizer than the corn takes up; because nitrate dissolves easily in water, it leaches down through the soil into the groundwater the wells pump."
+   }
+  },
+  {
+   "id": "env-agricultural-practices-10",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What relationship between tilling and soil loss does the table show?",
+   "options": [
+    "The more often a plot was plowed, the more soil it lost each year",
+    "The less often a plot was plowed, the more soil it lost each year",
+    "Plowing more often lowered soil loss until it was done twice a year",
+    "Soil loss was about the same on each of the plots, plowed or not"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Soil lost: 18, 12, 5 and 1 metric tons per ha per year as plowing went from twice a year to never.",
+    "options": [
+     "Right: soil loss rose with how often the plot was plowed.",
+     "This reverses the pattern in the table.",
+     "The plot plowed twice a year lost the most soil.",
+     "Losses ranged from 1 to 18, a big difference."
+    ]
+   },
+   "stimulus": "agricultural-practices-s1"
+  },
+  {
+   "id": "env-agricultural-practices-11",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Plot 1 covers 25 hectares. How much soil does it lose in one year?",
+   "why": {
+    "correct": "$25\\,\\text{ha} \\times 18\\,\\frac{\\text{metric tons}}{\\text{ha}} = 450$ metric tons of soil."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      25,
+      18
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tonnes"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        18,
+        25
+       ]
+      },
+      "why": "Multiply the area by the loss per hectare, so hectares cancel: 25 ha × 18 metric tons per ha."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        25,
+        1
+       ]
+      },
+      "why": "That uses plot 4's loss (1 metric ton per ha). Plot 1 loses 18 metric tons per ha."
+     }
+    ]
+   },
+   "stimulus": "agricultural-practices-s1"
+  },
+  {
+   "id": "env-agricultural-practices-12",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in soil organic matter from plot 4 (never plowed) to plot 1 (plowed twice a year), then give the answer.",
+   "why": {
+    "correct": "$\\frac{2.1 - 3.8}{3.8} \\times 100 \\approx -44.7\\%$: plot 1 has about 45% less organic matter."
+   },
+   "setup": {
+    "answer": "(2.1 - 3.8) / 3.8 * 100",
+    "mustUse": [
+     "2.1",
+     "3.8"
+    ],
+    "mistakes": [
+     {
+      "expr": "(2.1 - 3.8) / 2.1 * 100",
+      "why": "Divide by the starting value, plot 4's 3.8%, not 2.1%."
+     },
+     {
+      "expr": "2.1 - 3.8",
+      "why": "That is the difference in percentage points (-1.7). Percent change divides it by 3.8 and multiplies by 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       3.8,
+       2.1
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         2.1,
+         3.8
+        ]
+       },
+       "why": "That is the change from 2.1 up to 3.8. Start from plot 4, 3.8%."
+      },
+      {
+       "value": -1.7,
+       "why": "-1.7 is the difference in percentage points. Divide by 3.8 and multiply by 100 for the percent change."
+      }
+     ]
+    }
+   },
+   "stimulus": "agricultural-practices-s1"
+  },
+  {
+   "id": "env-agricultural-practices-13",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student predicted that plowing does not affect soil organic matter. Do the data support the prediction?",
+   "options": [
+    "No: organic matter fell from 3.8% to 2.1% as plowing increased",
+    "Yes: organic matter was about the same in each of the four plots",
+    "No: organic matter rose from 2.1% to 3.8% as plowing increased",
+    "Yes: organic matter changed just on the plot that was not plowed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Organic matter was highest where the soil was never plowed and lowest where it was plowed most.",
+    "options": [
+     "Right: organic matter fell steadily with more plowing.",
+     "Values ranged from 2.1% to 3.8%, not about the same.",
+     "The direction is reversed: more plowing went with less organic matter.",
+     "Each plot had a different value."
+    ]
+   },
+   "stimulus": "agricultural-practices-s1"
+  },
+  {
+   "id": "env-agricultural-practices-14",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "According to the diagram, what covers the surface of the untilled field?",
+   "options": [
+    "Crop residue left from the last harvest",
+    "A packed layer under the plow depth",
+    "Loose, bare topsoil lifted by the wind",
+    "Dust blown in from the tilled field nearby"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The untilled panel labels crop residue covering the soil.",
+    "options": [
+     "Right: residue covers the untilled surface.",
+     "The packed layer is in the tilled panel, below the surface.",
+     "Bare topsoil is in the tilled panel.",
+     "The diagram shows dust leaving the tilled field, not landing on the other."
+    ]
+   },
+   "stimulus": "agricultural-practices-s2"
+  },
+  {
+   "id": "env-agricultural-practices-15",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the diagram, why would a heavy rain cause more runoff from the tilled field?",
+   "options": [
+    "Water runs off bare soil, and the packed layer below slows water from soaking in",
+    "Crop residue on the tilled field soaks up the rain before it reaches the soil",
+    "Worm channels in the tilled field carry the water quickly down to groundwater",
+    "Roots in the tilled field pull water out of the soil as fast as it falls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The tilled field has a bare surface and a packed layer; the untilled field has residue, roots and channels that let water in.",
+    "options": [
+     "Right: a bare surface and a packed layer push water to run off.",
+     "Residue is on the untilled field, not the tilled one.",
+     "Worm channels are drawn in the untilled field.",
+     "Roots and their channels are in the untilled field."
+    ]
+   },
+   "stimulus": "agricultural-practices-s2"
+  },
+  {
+   "id": "env-agricultural-practices-16",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The Dust Bowl of the 1930s struck farms on the southern Great Plains. Which part of the diagram best explains it?",
+   "options": [
+    "The tilled field: bare, loose topsoil that wind lifts as dust in a drought",
+    "The untilled field: residue that dries out and blows away in a strong wind",
+    "The untilled field: worm channels that drain the soil and leave it dry",
+    "The tilled field: the packed layer, which blows away before the topsoil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Plowed grassland left loose, bare soil; in years of drought, wind carried it away in dust storms.",
+    "options": [
+     "Right: plowed, bare soil plus drought equals dust storms.",
+     "Residue protects soil from wind; it is not what blew away.",
+     "Worm channels help water soak in; they did not cause the dust storms.",
+     "The packed layer is below the topsoil; the topsoil blew away."
+    ]
+   },
+   "stimulus": "agricultural-practices-s2"
+  },
+  {
+   "id": "env-agricultural-practices-17",
+   "unit": "unit-5",
+   "topic": "agricultural-practices",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are environmental costs of slash-and-burn farming in tropical rainforests? Select all that apply.",
+   "options": [
+    "Carbon stored in the trees enters the air as carbon dioxide",
+    "Smoke from the fires pollutes the air",
+    "Animals that live in the forest lose habitat",
+    "Thick, rich topsoil builds up on the cleared plots",
+    "More species are found on the plot after it is burned",
+    "Rainfall over the plots rises sharply"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Burning releases carbon dioxide and smoke, and clearing removes habitat. The soil stays thin and poor, and the burned plot holds fewer species.",
+    "options": [
+     "Right: burning releases the stored carbon as carbon dioxide.",
+     "Right: the fires release smoke.",
+     "Right: clearing removes forest habitat.",
+     "Rainforest soil is thin; burning does not build rich topsoil.",
+     "A burned plot holds fewer species than the forest it replaced.",
+     "Clearing forest tends to lower local rainfall, not raise it."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "topic": "acid-rain",
+ "hook": "In the 1970s, fishers in the mountains of the northeastern United States noticed that some clear, beautiful lakes had no fish at all. The lakes were not polluted by anything dumped into them. The problem fell from the sky: rain several times more acidic than normal, made from smoke released by power plants hundreds of kilometers upwind.",
+ "prereq": [
+  {
+   "q": "What does a pH below 7 mean?",
+   "options": [
+    "Acidic",
+    "Basic",
+    "Neutral",
+    "Salty"
+   ],
+   "correct": 0,
+   "why": "pH below 7 is acidic; above 7 is basic; 7 is neutral.",
+   "review": "soil-properties"
+  },
+  {
+   "q": "Which device on a coal plant removes sulfur dioxide?",
+   "options": [
+    "A scrubber",
+    "A catalytic converter",
+    "A vapor recovery nozzle",
+    "A baghouse filter"
+   ],
+   "correct": 0,
+   "why": "Scrubbers remove SO2; baghouses remove particles.",
+   "review": "reducing-air-pollutants"
+  }
+ ],
+ "figure": {
+  "figure": "acid-rain-pathway",
+  "caption": "SO2 and NOx from power plants and vehicles form sulfuric and nitric acid in the air, which falls far downwind as acid deposition."
+ },
+ "chain": [
+  {
+   "cause": "Coal plants release SO2, and power plants and vehicles release NOx",
+   "effect": "the gases rise and travel with the wind, often hundreds of kilometers"
+  },
+  {
+   "cause": "In the air they react with water and oxygen",
+   "effect": "they form sulfuric acid and nitric acid, secondary pollutants"
+  },
+  {
+   "cause": "The acids fall in rain, snow and fog, or settle as dry particles",
+   "effect": "acid deposition lowers the pH of soils and lakes"
+  },
+  {
+   "cause": "Acidic soil loses calcium and magnesium and releases aluminum",
+   "effect": "trees weaken and aluminum washes into streams, where it harms fish gills"
+  },
+  {
+   "cause": "Lake pH falls below about 5",
+   "effect": "fish eggs fail and many species disappear, unless limestone buffers the water"
+  }
+ ],
+ "ideas": [
+  "<b>Acid deposition</b> forms from SO2 and NOx, not CO2, VOCs or particles. It falls as wet deposition (rain, snow, fog) and dry deposition (particles and gases).",
+  "Clean rain is about pH 5.6; acid rain is lower. Each drop of 1 in pH is <b>10 times</b> more acidic.",
+  "Effects: acidic lakes with fewer fish, leached forest soils with toxic aluminum, and stone buildings (limestone, marble) that dissolve.",
+  "<b>Buffering capacity</b>: limestone soils and rock neutralize acid, so lakes on granite suffer most. Fixes: cut SO2 and NOx (scrubbers, cleaner fuels, cap and trade) and, short term, lime lakes."
+ ],
+ "misconception": {
+  "wrong": "Acid rain is caused by CO2, VOCs or particulate matter.",
+  "right": "Acid rain comes from sulfur dioxide and nitrogen oxides, which form sulfuric and nitric acid in the air. CO2 makes clean rain only slightly acidic."
+ },
+ "check": [
+  "env-acid-rain-9",
+  "env-acid-rain-1",
+  "env-acid-rain-2",
+  "env-acid-rain-3",
+  "env-acid-rain-5",
+  "env-acid-rain-6",
+  "env-acid-rain-11"
+ ],
+ "summary": "Acid deposition forms when sulfur dioxide and nitrogen oxides from power plants and vehicles react in the air to make sulfuric and nitric acid, which fall in rain, snow and fog or as dry particles, often far downwind. Each drop of 1 in pH is ten times more acidic. It acidifies lakes, harms fish and forests, and dissolves stone; limestone buffers it. Cutting SO2 and NOx raised rain pH."
+}

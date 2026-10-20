@@ -1,0 +1,72 @@
+{
+ "topic": "ecological-footprints",
+ "hook": "Every meal, commute and T-shirt takes land: cropland for the cotton and grain, pasture for the beef, forest for the paper, and forest to soak up the carbon dioxide from the gasoline. Add it all up for an average person in a wealthy country and you get several hectares, far more than the share of Earth's productive land there is to go around.",
+ "prereq": [
+  {
+   "q": "A country of 50 million people uses 400 million metric tons of grain. What is its use per person?",
+   "options": [
+    "8 metric tons per person",
+    "0.125 metric tons per person",
+    "350 million metric tons",
+    "20,000 metric tons per person"
+   ],
+   "correct": 0,
+   "why": "Per capita = total ÷ population: 400 million ÷ 50 million = 8.",
+   "review": "math-rates"
+  },
+  {
+   "q": "Why does it take more land to feed a person on beef than on grain?",
+   "options": [
+    "Energy is lost at each trophic level, so many kilograms of feed make one kilogram of beef",
+    "Cattle grow faster than grain, so they need more space",
+    "Beef has fewer calories than grain",
+    "Grain needs no land to grow"
+   ],
+   "correct": 0,
+   "why": "Only about 10% of energy passes from one trophic level to the next.",
+   "review": "meat-production"
+  }
+ ],
+ "figure": {
+  "figure": "ecological-footprints-bars",
+  "caption": "Ecological footprints per person in four countries compared with Earth's biocapacity per person. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A person eats, travels, builds and buys goods",
+   "effect": "cropland, pasture, forest, fishing grounds and built land are used to supply them"
+  },
+  {
+   "cause": "Burning fossil fuels releases carbon dioxide",
+   "effect": "forest area is counted to absorb it, the largest part of most footprints in wealthy countries"
+  },
+  {
+   "cause": "The total area per person is larger than Earth's biocapacity per person",
+   "effect": "people are using resources faster than nature renews them"
+  },
+  {
+   "cause": "Using resources faster than they renew",
+   "effect": "forests, fisheries and soils are run down and carbon dioxide builds up in the air"
+  }
+ ],
+ "ideas": [
+  "An <b>ecological footprint</b> is the land and water area needed to supply what a person or group uses and to absorb its carbon dioxide, often in global hectares (gha) per person.",
+  "A <b>carbon footprint</b> counts only greenhouse emissions, in metric tons of carbon dioxide; it is one piece of the ecological footprint.",
+  "Footprints grow with consumption: diet (especially meat), energy use, travel and goods. Wealthy countries have footprints several times those of poor countries.",
+  "When the world's total footprint is larger than its biocapacity, resources are used faster than they renew (overshoot)."
+ ],
+ "misconception": {
+  "wrong": "A country with a large population must have a large ecological footprint per person.",
+  "right": "Footprint per person depends on how much each person consumes, not on how many people there are. A small, wealthy country can have a far larger footprint per person than a large, poor one; the total footprint is the per-person footprint times the population."
+ },
+ "check": [
+  "env-ecological-footprints-1",
+  "env-ecological-footprints-2",
+  "env-ecological-footprints-8",
+  "env-ecological-footprints-9",
+  "env-ecological-footprints-10",
+  "env-ecological-footprints-11",
+  "env-ecological-footprints-12"
+ ],
+ "summary": "An ecological footprint is the land and water area needed to supply a person's or population's consumption and absorb its carbon dioxide; a carbon footprint counts emissions only. Footprints rise with diet, energy use and goods, and they are far larger in wealthy countries. Footprint per person times population gives a country's total, and comparing it with biocapacity shows whether resources are used faster than they renew."
+}

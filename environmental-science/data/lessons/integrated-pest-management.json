@@ -1,0 +1,72 @@
+{
+ "topic": "integrated-pest-management",
+ "hook": "In the 1980s, rice farmers in Indonesia were spraying insecticide again and again, and a pest called the brown planthopper kept getting worse: the sprays killed the spiders and other predators that ate it. The government cut its pesticide subsidies, banned dozens of insecticides on rice, and trained farmers in field schools to count pests and protect predators. Spraying fell sharply while rice yields held up.",
+ "prereq": [
+  {
+   "q": "How does a pest population become resistant to a pesticide?",
+   "options": [
+    "Spraying kills susceptible pests, and resistant survivors breed",
+    "Each pest gets used to the pesticide over its life",
+    "The pesticide changes the pests' genes directly",
+    "Pests learn to avoid sprayed plants and teach their young"
+   ],
+   "correct": 0,
+   "why": "Resistance is natural selection on existing variation.",
+   "review": "pest-control"
+  },
+  {
+   "q": "Why can spraying an insecticide make a pest problem worse?",
+   "options": [
+    "It kills the pest's predators too, so the pest rebounds",
+    "It fertilizes the crop, so the crop grows faster",
+    "It makes the crop taste better to pests",
+    "It adds water to the soil, so pests multiply"
+   ],
+   "correct": 0,
+   "why": "Killing natural enemies removes a check on the pest.",
+   "review": "pest-control"
+  }
+ ],
+ "figure": {
+  "figure": "integrated-pest-management-threshold",
+  "caption": "Pests are counted every week, and control is used only when the count passes the action threshold. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Farmers count pests regularly (monitoring)",
+   "effect": "they know when pests are near a damaging level and when they are not"
+  },
+  {
+   "cause": "Control is used only when pests pass an action threshold",
+   "effect": "far less pesticide is sprayed than on a fixed schedule"
+  },
+  {
+   "cause": "Less spraying and choosing narrow-acting methods",
+   "effect": "predators and pollinators survive and keep pests in check"
+  },
+  {
+   "cause": "Fewer sprayings select less strongly for resistance",
+   "effect": "the pesticides that are used keep working longer"
+  }
+ ],
+ "ideas": [
+  "<b>Integrated pest management</b> (IPM) combines methods to keep pests below the level that causes real damage, using as little pesticide as possible.",
+  "Steps: monitor pests, set an action threshold, prevent problems (changing which crop grows in a field each year, resistant varieties, timing of planting), and control pests with the narrowest tool first.",
+  "<b>Biological control</b> uses natural enemies: ladybugs and lacewings eat aphids, tiny wasps lay eggs in caterpillars. Physical methods include traps, barriers and hand weeding.",
+  "Benefits: less pesticide, lower costs, less harm to nontarget species and water, slower resistance. Drawbacks: it takes knowledge, labor and time, and can be slower to act."
+ ],
+ "misconception": {
+  "wrong": "Integrated pest management means never using pesticides.",
+  "right": "IPM uses pesticides as a last resort: only when monitoring shows pests above the action threshold, and then the most targeted product, in the smallest amount, at the right time."
+ },
+ "check": [
+  "env-integrated-pest-management-1",
+  "env-integrated-pest-management-3",
+  "env-integrated-pest-management-9",
+  "env-integrated-pest-management-10",
+  "env-integrated-pest-management-11",
+  "env-integrated-pest-management-12",
+  "env-integrated-pest-management-7"
+ ],
+ "summary": "Integrated pest management keeps pests below damaging levels by monitoring them, preventing outbreaks, and using biological, physical and cultural controls first and targeted pesticides only when counts pass an action threshold. It cuts pesticide use, protects natural enemies, pollinators and water, and slows resistance, but it takes more knowledge, labor and time."
+}

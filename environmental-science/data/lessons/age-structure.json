@@ -1,0 +1,68 @@
+{
+ "topic": "age-structure",
+ "hook": "Two countries each have about 30 million people. In one, almost half the population is under 20, and schools run in two shifts because there are not enough classrooms. In the other, there are more people in their fifties than in their teens, and villages are closing schools for lack of children. One picture shows you which country will grow and which will shrink: its age structure diagram.",
+ "prereq": [
+  {
+   "q": "A population grows by a constant percent each year with no limits. What shape is its graph?",
+   "options": [
+    "A J-curve",
+    "An S-curve",
+    "A flat line",
+    "A curve that rises then falls"
+   ],
+   "correct": 0,
+   "why": "Constant-percent growth with no limits is exponential: a J-curve.",
+   "review": "population-growth"
+  },
+  {
+   "q": "At 2% growth a year, about how long does a population take to double?",
+   "options": [
+    "35 years",
+    "2 years",
+    "70 years",
+    "140 years"
+   ],
+   "correct": 0,
+   "why": "Rule of 70: 70 / 2 = 35 years.",
+   "review": "math-doubling"
+  }
+ ],
+ "figure": {
+  "figure": "age-structure-shapes",
+  "caption": "Three shapes of age structure diagram: rapid growth (wide base), slow or no growth (column), and decline (narrow base). Invented data."
+ },
+ "chain": [
+  {
+   "cause": "A population has a large share of children and young adults (a wide base)",
+   "effect": "many people are about to reach the ages when people have children"
+  },
+  {
+   "cause": "Those young people have children of their own",
+   "effect": "births stay high even if each family has fewer children than their parents did"
+  },
+  {
+   "cause": "The population keeps growing for decades",
+   "effect": "this delay is population momentum; a narrow base gives the opposite, a shrinking population"
+  }
+ ],
+ "ideas": [
+  "An <b>age structure diagram</b> (population pyramid) shows how many people are in each age group, males on one side and females on the other, youngest at the bottom.",
+  "Each bar is a <b>cohort</b>: a group of people born in the same span of years. The cohorts at the base are the children who will be the parents of the next generation.",
+  "Shape predicts growth: a <b>wide base</b> (pyramid) means rapid growth; bars of about <b>equal width</b> (column) mean slow or no growth; a <b>narrow base</b> (more middle-aged than young) means decline.",
+  "<b>Population momentum</b>: a population with a wide base keeps growing for decades even after families get smaller, because so many young people are reaching parenting age. Wide bases are typical of <b>developing countries</b>; columns and narrow bases of <b>developed countries</b>."
+ ],
+ "misconception": {
+  "wrong": "If families in a fast-growing country start having only two children each, the population stops growing right away.",
+  "right": "It keeps growing for decades because of population momentum: the large young cohorts at the base still have to grow up and have their own children."
+ },
+ "check": [
+  "env-age-structure-1",
+  "env-age-structure-2",
+  "env-age-structure-3",
+  "env-age-structure-4",
+  "env-age-structure-6",
+  "env-age-structure-7",
+  "env-age-structure-10"
+ ],
+ "summary": "An age structure diagram shows a population’s size by age group and sex, each bar a cohort. A wide base (pyramid) predicts rapid growth, a column predicts slow or no growth, and a narrow base predicts decline. Because young cohorts become parents, a population with a wide base keeps growing for decades even after families shrink: population momentum. Developing countries tend to have wide bases; developed countries columns or narrow bases."
+}

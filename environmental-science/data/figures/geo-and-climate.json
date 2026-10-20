@@ -1,0 +1,12 @@
+{
+ "geo-and-climate-rain-shadow": {
+  "file": "figures/geo-and-climate-rain-shadow.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Moist air from the ocean blows toward a mountain range. On the windward side the air is pushed up the slope, so it cools; its water vapor condenses into clouds and falls as heavy rain, and the windward slope is green and forested. The air that crosses the peak has lost most of its water. On the leeward side it sinks and warms, so it is dry, and the land there is a rain shadow: a dry region, often a desert, with sparse plants."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "reducing-ozone-depletion-timeline": {
+  "file": "figures/reducing-ozone-depletion-timeline.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A timeline from 1970 to 2070. 1974: scientists warn that CFCs could destroy stratospheric ozone. 1985: the ozone hole over Antarctica is reported. 1987: the Montreal Protocol is signed. 1996: CFC production ends in developed countries. 2010: CFC production ends worldwide. 2016: the Kigali Amendment adds a phase-down of HFCs. About 2066, shaded as a projection: Antarctic ozone is expected to be back to 1980 levels."
+ }
+}

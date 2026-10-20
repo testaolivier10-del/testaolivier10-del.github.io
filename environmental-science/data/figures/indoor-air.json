@@ -1,0 +1,12 @@
+{
+ "indoor-air-house": {
+  "file": "figures/indoor-air-house.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cutaway house showing indoor air pollutants: radon seeping up from uranium-bearing rock through basement cracks; formaldehyde from new pressed-wood cabinets; carbon monoxide from a gas furnace and stove; asbestos fibers from old pipe insulation; smoke from a wood stove; and VOCs from paint and cleaners."
+ }
+}

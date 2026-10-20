@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="plate-tectonics-boundaries-t plate-tectonics-boundaries-d" font-family="Arial, Helvetica, sans-serif">
+<title id="plate-tectonics-boundaries-t">Plate boundaries and mantle convection</title>
+<desc id="plate-tectonics-boundaries-d">A cross-section of Earth's outer layers. Convection currents in the hot mantle move the rigid plates above them. On the left, at a divergent boundary, two ocean plates move apart and magma rises to form new crust at a mid-ocean ridge. In the middle, at a convergent boundary, a dense ocean plate sinks under a continent (subduction), forming a deep trench; the sinking plate melts and magma rises to form a volcano in a mountain range on the continent. An inset seen from above shows a transform boundary, where two plates slide past each other in opposite directions along a fault, causing earthquakes with little volcanic activity.</desc>
+<defs><marker id="ar-ink" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="ar-olive" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#474A10"/></marker><marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker><marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker><marker id="ar-verm" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="760" height="440" fill="#FFFFFF"/>
+<rect x="20" y="200" width="540" height="220" rx="0" fill="#F6D9C6" stroke="none" stroke-width="1.5"/>
+<text x="30" y="410" font-size="13" font-weight="bold" fill="#8A6A45" text-anchor="start">Mantle</text>
+<rect x="20" y="120" width="395" height="40" rx="0" fill="#CFE3F1" stroke="none" stroke-width="1.5"/>
+<text x="28" y="136" font-size="12" font-weight="normal" fill="#0072B2" text-anchor="start">Ocean</text>
+<path d="M20 168 L150 152 L160 146 L160 196 L20 200 Z" fill="#D3D27F" stroke="#1F2A28" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M160 146 L170 152 L395 160 L410 172 L470 230 L530 330 L500 345 L440 255 L395 205 L160 196 Z" fill="#D3D27F" stroke="#1F2A28" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M412 168 L440 112 L455 104 L470 72 L482 60 L494 72 L510 100 L530 92 L548 104 L560 108 L560 215 L470 215 L430 190 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M470 72 L482 60 L494 72 Z" fill="#D55E00" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="560" y="128" font-size="12" font-weight="bold" fill="#8A6A45" text-anchor="end">Continent</text>
+<text x="405" y="186" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="end" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Trench</text>
+<line x1="160" y1="196" x2="160" y2="154" stroke="#D55E00" stroke-width="3" marker-end="url(#ar-verm)"/>
+<path d="M478 252 C474 200 484 140 482 78" fill="none" stroke="#D55E00" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar-verm)" stroke-linejoin="round"/>
+<line x1="130" y1="140" x2="70" y2="140" stroke="#1F2A28" stroke-width="2" marker-end="url(#ar-ink)"/>
+<line x1="190" y1="140" x2="250" y2="140" stroke="#1F2A28" stroke-width="2" marker-end="url(#ar-ink)"/>
+<line x1="300" y1="148" x2="370" y2="150" stroke="#1F2A28" stroke-width="2" marker-end="url(#ar-ink)"/>
+<line x1="540" y1="232" x2="490" y2="232" stroke="#1F2A28" stroke-width="2" marker-end="url(#ar-ink)"/>
+<path d="M172 392 C166 330 166 270 168 226" fill="none" stroke="#474A10" stroke-width="2.2" marker-end="url(#ar-olive)" stroke-linejoin="round"/>
+<path d="M188 220 C300 232 380 250 420 300" fill="none" stroke="#474A10" stroke-width="2.2" marker-end="url(#ar-olive)" stroke-linejoin="round"/>
+<path d="M412 362 C340 406 250 408 186 398" fill="none" stroke="#474A10" stroke-width="2.2" marker-end="url(#ar-olive)" stroke-linejoin="round"/>
+<path d="M148 220 C100 226 60 260 52 330" fill="none" stroke="#474A10" stroke-width="2.2" marker-end="url(#ar-olive)" stroke-linejoin="round"/>
+<text x="290" y="300" font-size="12" font-weight="bold" fill="#474A10" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Convection currents in the mantle</text>
+<text x="290" y="316" font-size="12" font-weight="normal" fill="#474A10" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">move the plates above them</text>
+<text x="30" y="30" font-size="12" font-weight="bold" fill="#1F2A28" text-anchor="start">Divergent boundary</text>
+<text x="30" y="45" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">plates move apart; magma rises</text><text x="30" y="60" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">and forms new crust (a ridge)</text>
+<line x1="120" y1="72" x2="156" y2="140" stroke="#6B7370" stroke-width="1"/>
+<text x="250" y="30" font-size="12" font-weight="bold" fill="#1F2A28" text-anchor="start">Convergent boundary</text>
+<text x="250" y="45" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">the denser ocean plate sinks under the</text><text x="250" y="60" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">continent: a trench, earthquakes, volcanoes</text>
+<line x1="400" y1="72" x2="405" y2="160" stroke="#6B7370" stroke-width="1"/>
+<text x="296" y="262" font-size="12" font-weight="bold" fill="#1F2A28" text-anchor="start">Subduction</text>
+<text x="500" y="364" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Sinking plate</text>
+<rect x="590" y="60" width="155" height="250" rx="0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="1.2"/>
+<rect x="590" y="94" width="77.5" height="216" rx="0" fill="#D3D27F" stroke="none" stroke-width="1.5"/>
+<rect x="667.5" y="94" width="77.5" height="216" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<line x1="667.5" y1="94" x2="667.5" y2="310" stroke="#D55E00" stroke-width="2.5" stroke-dasharray="7 4"/>
+<line x1="628" y1="280" x2="628" y2="200" stroke="#1F2A28" stroke-width="2.2" marker-end="url(#ar-ink)"/>
+<line x1="707" y1="130" x2="707" y2="210" stroke="#1F2A28" stroke-width="2.2" marker-end="url(#ar-ink)"/>
+<text x="667.5" y="76" font-size="12" font-weight="bold" fill="#1F2A28" text-anchor="middle">Transform boundary</text>
+<text x="667.5" y="89" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="middle">(seen from above)</text>
+<text x="667.5" y="328" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="middle">plates slide past each</text><text x="667.5" y="343" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="middle">other: earthquakes,</text><text x="667.5" y="358" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="middle">little volcanic activity</text>
+</svg>

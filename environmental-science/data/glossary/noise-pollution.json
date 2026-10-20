@@ -1,0 +1,8 @@
+{
+ "noise-pollution": {
+  "def": "Sound at levels or times that harm people or wildlife, for example from traffic, aircraft, construction, industry or ships. It can damage hearing, raise stress and disrupt animal communication and migration."
+ },
+ "decibel": {
+  "def": "The unit (dB) for sound level. The scale is logarithmic: each increase of 10 dB is 10 times the sound intensity. Long exposure at or above about 85 dB can damage hearing."
+ }
+}

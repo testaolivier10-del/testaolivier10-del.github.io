@@ -1,0 +1,67 @@
+{
+ "topic": "generalists-specialists",
+ "hook": "A giant panda spends most of its day eating bamboo, which makes up nearly all of its diet. A raccoon a few continents away eats fruit, frogs, insects, eggs and whatever is in a city trash can. When a bamboo forest flowers and dies back, which happens every few decades, the panda is in trouble. When a forest is cleared for a suburb, the raccoon often does better than before.",
+ "prereq": [
+  {
+   "q": "What is a species’ niche?",
+   "options": [
+    "Its role and the full set of conditions and resources it uses",
+    "The place where it sleeps",
+    "The number of individuals in its population",
+    "The name of its habitat"
+   ],
+   "correct": 0,
+   "why": "A niche is how a species lives: what it eats, where and when it is active, the conditions it needs.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "A species survives only between 20 and 24 °C. How would you describe its range of tolerance for temperature?",
+   "options": [
+    "Narrow",
+    "Wide",
+    "Optimal",
+    "Unlimited"
+   ],
+   "correct": 0,
+   "why": "A four-degree band is a narrow range of tolerance.",
+   "review": "ecological-tolerance"
+  }
+ ],
+ "figure": {
+  "figure": "generalists-specialists-niche",
+  "caption": "A specialist eats a narrow range of food sizes; a generalist eats a broad range. Invented example."
+ },
+ "chain": [
+  {
+   "cause": "A specialist depends on a narrow set of foods, habitats or conditions",
+   "effect": "it can be very efficient where those resources are plentiful"
+  },
+  {
+   "cause": "The environment changes and its one key resource declines",
+   "effect": "the specialist has nothing to switch to, so its population falls"
+  },
+  {
+   "cause": "A generalist uses many foods, habitats and conditions",
+   "effect": "when one resource declines it switches to others, so it copes better with change"
+  }
+ ],
+ "ideas": [
+  "<b>Specialist species</b> have a narrow niche: they eat a few foods, live in one kind of habitat, or tolerate a narrow range of conditions. Examples: the giant panda (bamboo) and the koala (eucalyptus leaves).",
+  "<b>Generalist species</b> have a broad niche: they eat many foods, live in many habitats and tolerate a wide range of conditions. Examples: raccoons, coyotes, rats and cockroaches.",
+  "Specialists do well in stable environments where their resource is reliable. They are more likely to decline or die out when the environment changes.",
+  "Generalists cope better with change, and they often spread into new places, including towns and farms."
+ ],
+ "misconception": {
+  "wrong": "Generalists are always better off than specialists.",
+  "right": "Specialists are often more efficient at using their one resource, so they can outcompete generalists where that resource is plentiful and stable. Generalists win when conditions change."
+ },
+ "check": [
+  "env-generalists-specialists-1",
+  "env-generalists-specialists-2",
+  "env-generalists-specialists-3",
+  "env-generalists-specialists-4",
+  "env-generalists-specialists-7",
+  "env-generalists-specialists-9"
+ ],
+ "summary": "Specialist species have narrow niches: a few foods, one habitat or a narrow range of conditions. They thrive where their resource is stable but decline when the environment changes. Generalist species have broad niches and can switch foods and habitats, so they cope better with change and often spread into new and disturbed places."
+}

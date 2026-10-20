@@ -1,0 +1,12 @@
+{
+ "sustainable-agriculture-hillside": {
+  "file": "figures/sustainable-agriculture-hillside.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two hillsides. Left: plowed rows follow the contour of the hill instead of running up and down it, and strips of different crops alternate, so each row and strip slows the water running downhill. Right: terraces, flat steps cut into a steep slope, each planted with a crop; water pools on each step and soaks in instead of running down the whole slope."
+ }
+}

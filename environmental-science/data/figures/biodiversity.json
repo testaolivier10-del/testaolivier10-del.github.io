@@ -1,0 +1,12 @@
+{
+ "biodiversity-evenness": {
+  "file": "figures/biodiversity-evenness.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bar chart of two communities with the same species richness. Community A has 25 individuals of each of four species (even). Community B has 85 of species W and 5 each of species X, Y and Z (uneven). Invented data."
+ }
+}

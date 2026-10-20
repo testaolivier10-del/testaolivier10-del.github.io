@@ -1,0 +1,23 @@
+{
+ "biodiversity": {
+  "def": "The variety of life in an area, measured at three levels: genetic diversity within populations, species diversity within communities, and habitat diversity within an area."
+ },
+ "genetic-diversity": {
+  "def": "The variety of genes (and so of heritable traits) among the individuals of one population or species. High genetic diversity makes it more likely that some individuals survive a new disease or a change in conditions."
+ },
+ "species-richness": {
+  "def": "The number of different species in a community or area."
+ },
+ "species-evenness": {
+  "def": "How equal the population sizes of the species in a community are. A community where each species has similar numbers is even; one dominated by a single species is uneven."
+ },
+ "habitat-diversity": {
+  "def": "The variety of different habitats (forest, meadow, stream, wetland) in an area. More habitat diversity supports more species. Also called ecosystem diversity."
+ },
+ "bottleneck": {
+  "def": "A sharp drop in the size of a population, for example from hunting, a disease or a disaster. The few survivors carry only part of the original genetic diversity, so the population stays genetically less diverse even if its numbers recover."
+ },
+ "keystone-species": {
+  "def": "A species whose effect on its community is much larger than its numbers suggest. Removing it changes the structure of the whole community, as when sea urchins multiply and strip kelp forests after sea otters disappear."
+ }
+}

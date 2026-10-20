@@ -1,0 +1,702 @@
+{
+ "stimuli": {
+  "lethal-dose-50-s1": {
+   "kind": "quantitative",
+   "title": "Oral LD50 of four chemicals in rats",
+   "invented": true,
+   "table": {
+    "caption": "Oral LD50 in rats, mg per kg of body mass (invented data for practice)",
+    "cols": [
+     "Chemical",
+     "LD50 (mg/kg)"
+    ],
+    "rows": [
+     [
+      "A",
+      "4"
+     ],
+     [
+      "B",
+      "40"
+     ],
+     [
+      "C",
+      "320"
+     ],
+     [
+      "D",
+      "4,000"
+     ]
+    ]
+   }
+  },
+  "lethal-dose-50-s2": {
+   "kind": "visual",
+   "title": "Mice killed at each dose of a solvent",
+   "invented": true,
+   "plot": {
+    "label": "Percent of mice killed against dose of a solvent, rising from 0% at 0 mg/kg to 96% at 800 mg/kg, with the LD50 marked at 50%",
+    "kind": "curve",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      100,
+      4
+     ],
+     [
+      200,
+      12
+     ],
+     [
+      300,
+      30
+     ],
+     [
+      400,
+      50
+     ],
+     [
+      500,
+      68
+     ],
+     [
+      600,
+      84
+     ],
+     [
+      800,
+      96
+     ]
+    ],
+    "mark": {
+     "y": 50,
+     "label": "LD50"
+    },
+    "xLabel": "Dose (mg/kg)",
+    "yLabel": "Mice killed (%)",
+    "y": [
+     0,
+     100
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-lethal-dose-50-1",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In toxicology, what does LD50 mean?",
+   "options": [
+    "The dose that kills half of a test population",
+    "The dose at which half the test animals first show any effect",
+    "The dose that kills 50 animals out of a test group",
+    "The largest dose that causes no deaths in the test"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "LD50 is the lethal dose for 50% of a test population, usually in milligrams of substance per kilogram of body mass.",
+    "options": [
+     "Right: LD stands for lethal dose, and 50 for the 50% of test animals it kills.",
+     "A dose that causes any effect in half the animals is a different measure; LD50 counts deaths only.",
+     "The 50 is a percent of the group, not a count of animals, so it works for a group of any size.",
+     "That would be a safe-looking dose with zero deaths, not the dose that kills half the animals."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-2",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Pesticide P has an LD50 of 20 mg/kg in rats. Pesticide Q has an LD50 of 2,000 mg/kg in rats. Which statement is correct?",
+   "options": [
+    "Q is more toxic, because its LD50 is the larger number",
+    "P is more toxic: less of it per kilogram kills half the rats",
+    "P and Q are equally toxic, since both were tested on rats",
+    "Q is safe for people, since its LD50 is above 1,000 mg/kg"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "LD50 and toxicity run in opposite directions: the lower the LD50, the more toxic the substance. P is $\\frac{2{,}000}{20} = 100$ times as toxic as Q per kilogram.",
+    "options": [
+     "A larger LD50 means more of the substance is needed to kill half the rats, so Q is less toxic.",
+     "Right: a lower LD50 means less of the substance is needed to kill, so it is more toxic.",
+     "Testing in the same species makes them comparable, but the LD50s differ a hundredfold.",
+     "A high LD50 means low toxicity in rats, not that a substance is safe; large doses can still kill."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-3",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "numeric",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The LD50 of a pesticide in rats is 60 mg/kg. What dose of pesticide would be expected to kill half of a group of rats that each have a mass of 0.40 kg? Give the dose per rat in milligrams.",
+   "why": {
+    "correct": "The setup multiplies the dose per kilogram by the body mass, so kilograms cancel: $60\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.40\\,\\text{kg} = 24\\,\\text{mg}$."
+   },
+   "numeric": {
+    "unit": "mg",
+    "from": {
+     "fn": "doseFor",
+     "args": [
+      60,
+      0.4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        60,
+        0.4
+       ]
+      },
+      "why": "You divided the LD50 by the body mass. LD50 is milligrams for each kilogram, so multiply: 60 mg/kg × 0.40 kg = 24 mg."
+     },
+     {
+      "value": 60,
+      "why": "60 is the dose for each kilogram of rat. A 0.40 kg rat needs only 0.40 of that: 60 mg/kg × 0.40 kg."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-4",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cleaning chemical has an LD50 of 25 mg/kg, measured in dogs. Write the setup, with units, for the dose expected to kill half of a group of 12 kg dogs, then give the answer in milligrams.",
+   "why": {
+    "correct": "Multiply the LD50 by the body mass so kilograms cancel: $25\\,\\frac{\\text{mg}}{\\text{kg}} \\times 12\\,\\text{kg} = 300\\,\\text{mg}$."
+   },
+   "setup": {
+    "answer": "25 mg/kg * 12 kg",
+    "mustUse": [
+     "25",
+     "12"
+    ],
+    "unit": "mg",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "25 mg/kg / 12 kg",
+      "why": "Dividing by the body mass leaves mg/kg² and a dose that shrinks as the dog gets bigger. Multiply by the mass so the kilograms cancel."
+     },
+     {
+      "expr": "12 kg / 25",
+      "why": "The body mass divided by the LD50 has no meaning here. Start from the LD50 and multiply by the mass: 25 mg/kg × 12 kg."
+     }
+    ],
+    "then": {
+     "unit": "mg",
+     "from": {
+      "fn": "doseFor",
+      "args": [
+       25,
+       12
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.3,
+       "why": "0.3 is the dose in grams. The question asks for milligrams: 25 mg/kg × 12 kg = 300 mg."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-5",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "A solvent has an LD50 of 500 mg/kg in rats. If people reacted the same way (a big assumption), what dose would be expected to kill half of a group of 80 kg adults? Give the answer in grams.",
+   "why": {
+    "correct": "First the dose in milligrams: $500\\,\\frac{\\text{mg}}{\\text{kg}} \\times 80\\,\\text{kg} = 40{,}000\\,\\text{mg}$. Then grams: $40{,}000\\,\\text{mg} \\times \\frac{1\\,\\text{g}}{1{,}000\\,\\text{mg}} = 40\\,\\text{g}$. Rat data only estimate the human value."
+   },
+   "numeric": {
+    "unit": "g",
+    "from": {
+     "fn": "convert",
+     "args": [
+      {
+       "fn": "doseFor",
+       "args": [
+        500,
+        80
+       ]
+      },
+      "mg",
+      "g"
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40000,
+      "why": "40,000 is the dose in milligrams. Divide by 1,000 to change milligrams to grams: 40,000 mg ÷ 1,000 mg/g = 40 g."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        500,
+        80
+       ]
+      },
+      "why": "You divided the LD50 by the body mass. Multiply instead: 500 mg/kg × 80 kg = 40,000 mg, which is 40 g."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-6",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is LD50 reported in milligrams per kilogram of body mass instead of in milligrams alone?",
+   "options": [
+    "Milligrams alone would be too small a unit to measure a lethal dose in large animals",
+    "Big animals need bigger doses, so per-kilogram values compare fairly",
+    "Kilograms are the unit of the substance and milligrams the unit of the animal",
+    "Per-kilogram values show how long the substance stays in the body"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A dose spread through a bigger body is more dilute, so the same milligrams harm a large animal less. Dividing by body mass puts every test on one scale.",
+    "options": [
+     "Milligrams are fine for measuring doses; the reason is fairness across body sizes.",
+     "Right: dividing by body mass lets a mouse, a rat and a dog be compared on one scale.",
+     "It is the other way around: milligrams of substance for each kilogram of animal.",
+     "How long a substance stays in the body is a separate question that LD50 does not measure."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-7",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "US pesticide labels group products by how toxic they are when swallowed. Products with an oral LD50 of 50 mg/kg or less carry the signal word DANGER; 50 to 500 mg/kg, WARNING; above 500 mg/kg, CAUTION (or no signal word above 5,000 mg/kg). A new insecticide has an oral LD50 of 30 mg/kg in rats. Which label should it carry, and why?",
+   "options": [
+    "CAUTION, because 30 mg/kg is a small number",
+    "WARNING, because 30 mg/kg falls between 50 and 500",
+    "DANGER, because 30 mg/kg is in the most toxic group",
+    "No signal word, because rats are not people"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The lower the LD50, the stronger the warning: 30 mg/kg is in the 50 mg/kg or less group, labeled DANGER (EPA toxicity category I).",
+    "options": [
+     "A small LD50 means high toxicity, so it belongs in the most toxic group, not the least.",
+     "30 is below 50, so it does not fall in the 50 to 500 mg/kg group.",
+     "Right: 30 mg/kg is at or below 50 mg/kg, the most toxic group.",
+     "Labels are set from animal tests like this one; a rat LD50 of 30 mg/kg puts it in the top group."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-8",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which list orders the chemicals from most toxic to least toxic?",
+   "stimulus": "lethal-dose-50-s1",
+   "options": [
+    "D, C, B, A",
+    "B, A, D, C",
+    "C, D, A, B",
+    "A, B, C, D"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Most toxic means the smallest dose kills half the rats: A (4), B (40), C (320), D (4,000 mg/kg).",
+    "options": [
+     "This lists them from largest LD50 to smallest, which is least toxic to most toxic.",
+     "This order does not follow the LD50 values at all. Sort by LD50, smallest first.",
+     "This order mixes high and low values. The smallest LD50 marks the most toxic chemical.",
+     "Right: toxicity falls as LD50 rises, so the smallest LD50 (A, 4 mg/kg) is the most toxic."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-9",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times as toxic as chemical D is chemical A, per kilogram of body mass?",
+   "stimulus": "lethal-dose-50-s1",
+   "why": {
+    "correct": "Half the rats die at 4 mg/kg of A but at 4,000 mg/kg of D, so A is $\\frac{4{,}000}{4} = 1{,}000$ times as toxic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "magnification",
+     "args": [
+      4000,
+      4
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        4,
+        4000
+       ]
+      },
+      "why": "You divided the smaller LD50 by the larger. Toxicity is the inverse of LD50, so divide D’s LD50 by A’s: 4,000 ÷ 4."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        4000,
+        4
+       ]
+      },
+      "why": "A difference does not say how many times as toxic. Divide the LD50s: 4,000 mg/kg ÷ 4 mg/kg = 1,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-10",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup, with units, for the dose of chemical C expected to kill half of a group of 0.30 kg rats, then give the answer in milligrams.",
+   "stimulus": "lethal-dose-50-s1",
+   "why": {
+    "correct": "$320\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.30\\,\\text{kg} = 96\\,\\text{mg}$ for each rat."
+   },
+   "setup": {
+    "answer": "320 mg/kg * 0.30 kg",
+    "mustUse": [
+     "320",
+     "0.30"
+    ],
+    "unit": "mg",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "320 mg/kg / 0.30 kg",
+      "why": "Dividing by the mass gives mg/kg², not milligrams. Multiply the LD50 by the body mass so kilograms cancel."
+     },
+     {
+      "expr": "320 * 30",
+      "why": "The rat is 0.30 kg, not 30 kg. Use the mass in kilograms, since the LD50 is per kilogram."
+     }
+    ],
+    "then": {
+     "unit": "mg",
+     "from": {
+      "fn": "doseFor",
+      "args": [
+       320,
+       0.3
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 9600,
+       "why": "You used 30 kg instead of 0.30 kg. The rats have a mass of 0.30 kg: 320 mg/kg × 0.30 kg = 96 mg."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-11",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion do the data support?",
+   "stimulus": "lethal-dose-50-s1",
+   "options": [
+    "Chemical D is the most toxic, since it has the largest LD50",
+    "Chemical A is harmless to people, since the tests used rats",
+    "Chemical B reaches its LD50 at one eighth of the dose of C",
+    "Chemical C kills 320 out of each 1,000 rats that swallow a dose of it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The table gives doses, not counts of deaths. Comparing LD50s by division shows how many times as toxic one chemical is.",
+    "options": [
+     "The largest LD50 means the most substance is needed to kill, so D is the least toxic.",
+     "A is the most toxic chemical in rats; rat tests suggest risk to people, not safety.",
+     "Right: $\\frac{320}{40} = 8$, so B reaches the LD50 at one eighth of C’s dose.",
+     "The 320 is a dose in mg/kg, not a count of deaths. At that dose half the rats die."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-12",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "numeric",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Read the graph. What is the LD50 of the solvent in mice?",
+   "stimulus": "lethal-dose-50-s2",
+   "why": {
+    "correct": "Go across from 50% on the vertical axis to the line, then down to the dose axis: the LD50 is 400 mg/kg."
+   },
+   "numeric": {
+    "unit": "mg/kg",
+    "from": {
+     "fn": "ld50",
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        100,
+        4
+       ],
+       [
+        200,
+        12
+       ],
+       [
+        300,
+        30
+       ],
+       [
+        400,
+        50
+       ],
+       [
+        500,
+        68
+       ],
+       [
+        600,
+        84
+       ],
+       [
+        800,
+        96
+       ]
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "50 is the percent on the vertical axis. LD50 is the dose on the horizontal axis where the line crosses 50% of mice killed."
+     },
+     {
+      "value": 300,
+      "why": "At 300 mg/kg only 30% of the mice died. Move up to 50% on the vertical axis, then across to the line and down."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-13",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What percent of the mice died at a dose of 600 mg/kg?",
+   "stimulus": "lethal-dose-50-s2",
+   "options": [
+    "84%",
+    "68%",
+    "96%",
+    "50%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read straight up from 600 mg/kg to the line, then across: 84% of the mice died.",
+    "options": [
+     "Right: the point at 600 mg/kg sits at 84% of mice killed.",
+     "68% is the value at 500 mg/kg. Read straight up from 600 mg/kg.",
+     "96% is the value at 800 mg/kg, the highest dose tested.",
+     "50% is the response at the LD50 (400 mg/kg), not at 600 mg/kg."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-14",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "numeric",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mouse has a mass of 0.025 kg. Using the LD50 you read from the graph, what dose of the solvent, in milligrams, would be expected to kill half of a group of such mice?",
+   "stimulus": "lethal-dose-50-s2",
+   "why": {
+    "correct": "$400\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.025\\,\\text{kg} = 10\\,\\text{mg}$."
+   },
+   "numeric": {
+    "unit": "mg",
+    "from": {
+     "fn": "doseFor",
+     "args": [
+      400,
+      0.025
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        400,
+        0.025
+       ]
+      },
+      "why": "You divided the LD50 by the body mass. Multiply instead, so kilograms cancel: 400 mg/kg × 0.025 kg = 10 mg."
+     },
+     {
+      "value": 400,
+      "why": "400 is the dose for each kilogram. A mouse has a mass of only 0.025 kg: 400 mg/kg × 0.025 kg."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-15",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Each dose in the study was given to a group of 50 mice, not to one mouse. Why?",
+   "stimulus": "lethal-dose-50-s2",
+   "options": [
+    "A group of 50 lets the researchers use a smaller dose for each mouse",
+    "Mice live in groups, so a single mouse would not eat the solvent",
+    "Mice vary, so the percent of a group shows the typical response",
+    "Larger groups make the solvent more toxic to each mouse"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Replication: individuals vary, so the LD50 is read from the percent of a group that dies at each dose.",
+    "options": [
+     "The dose per kilogram is set by the design, not by how many mice are in the group.",
+     "The dose is given directly; the reason for groups is that individuals vary.",
+     "Right: one animal might be unusually tough or weak; a group averages that out.",
+     "Group size does not change how toxic the solvent is to any one animal."
+    ]
+   }
+  },
+  {
+   "id": "env-lethal-dose-50-16",
+   "unit": "unit-8",
+   "topic": "lethal-dose-50",
+   "type": "specific",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Build a testable hypothesis for the mouse study in the graph.",
+   "why": {
+    "correct": "A hypothesis is a statement with a direction: the dose is what changes and the percent killed is what is measured."
+   },
+   "specific": {
+    "frame": "If the ___, then the ___ will ___, because ___.",
+    "slots": {
+     "change": {
+      "label": "Change",
+      "options": [
+       "dose of solvent increases",
+       "number of mice in each group increases",
+       "color of the solvent changes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Group size is kept the same; the study changes the dose.",
+       "2": "Color is not what the study changes or measures."
+      }
+     },
+     "dv": {
+      "label": "What is measured",
+      "options": [
+       "percent of mice killed",
+       "mass of each mouse",
+       "LD50 of the solvent"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Body mass is kept similar; deaths are what the graph shows.",
+       "2": "The LD50 is read from the results; it is one number, not what changes with dose."
+      }
+     },
+     "direction": {
+      "label": "Direction",
+      "options": [
+       "increase",
+       "decrease",
+       "change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Higher doses kill more mice in the graph, so deaths rise.",
+       "2": "\"Change\" gives no direction; a hypothesis says which way."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "noQuestion": true,
+     "context": [
+      "dose",
+      "mice",
+      "solvent"
+     ]
+    },
+    "model": "If the dose of solvent increases, then the percent of mice killed will increase, because a larger dose per kilogram does more damage to body tissues."
+   }
+  }
+ ]
+}

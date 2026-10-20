@@ -1,0 +1,72 @@
+{
+ "topic": "green-revolution",
+ "hook": "In the early 1960s, India imported millions of tons of grain a year and experts warned of mass famine. Within a decade, farmers in the Punjab were growing short-stemmed wheat that, given fertilizer and water, produced about twice the grain per hectare. India stopped needing large grain imports. The same seeds came with a bill: more water, more fertilizer, more fuel, and fields of one crop.",
+ "prereq": [
+  {
+   "q": "What is a limiting nutrient?",
+   "options": [
+    "The nutrient in shortest supply, which holds back growth",
+    "The nutrient a plant needs in the largest amount by mass",
+    "A nutrient that is poisonous to plants above a certain level",
+    "The nutrient that plants release when they decompose"
+   ],
+   "correct": 0,
+   "why": "Growth is held back by whatever is scarcest; adding it lets growth increase.",
+   "review": "nitrogen-cycle"
+  },
+  {
+   "q": "Why does a population with low genetic diversity face more risk?",
+   "options": [
+    "A single disease or change can harm most individuals at once",
+    "It reproduces more slowly than a population with high diversity",
+    "It always has a smaller carrying capacity than other populations",
+    "It cannot carry out photosynthesis as well as a diverse one"
+   ],
+   "correct": 0,
+   "why": "When individuals are alike, a threat that harms one tends to harm them all.",
+   "review": "biodiversity"
+  }
+ ],
+ "figure": {
+  "figure": "green-revolution-inputs",
+  "caption": "Green Revolution inputs, the result they produced, and its benefits and costs."
+ },
+ "chain": [
+  {
+   "cause": "Short-stemmed, high-yield wheat and rice are bred",
+   "effect": "plants can carry heavy heads of grain without falling over"
+  },
+  {
+   "cause": "Those plants get synthetic fertilizer and water",
+   "effect": "grain yield per hectare roughly doubles"
+  },
+  {
+   "cause": "Farmers plant the same high-yield variety over wide areas",
+   "effect": "the crop is a monoculture with low genetic diversity"
+  },
+  {
+   "cause": "Fertilizer the crop does not take up runs off fields",
+   "effect": "nitrate and phosphate pollute rivers and lakes"
+  }
+ ],
+ "ideas": [
+  "The <b>Green Revolution</b> (about the 1940s to 1970s) raised grain yields with high-yield varieties, <b>synthetic fertilizer</b>, irrigation, pesticides and machines.",
+  "Benefits: more food per hectare, fewer famines, cheaper food, and less forest and grassland cleared for farms than would otherwise be needed.",
+  "Costs: <b>monocultures</b> with low genetic diversity, fertilizer runoff, heavy water use, soil damage, and fossil fuels burned by machines and used to make fertilizer.",
+  "A <b>genetically modified organism</b> has DNA changed in a lab. GM crops can raise yields or reduce spraying, but they can lower crop diversity and pests can evolve to overcome them."
+ ],
+ "misconception": {
+  "wrong": "The Green Revolution was about organic farming and local seeds.",
+  "right": "It was the opposite: new high-yield varieties that need synthetic fertilizer, irrigation, pesticides and machines to produce their large harvests."
+ },
+ "check": [
+  "env-green-revolution-1",
+  "env-green-revolution-2",
+  "env-green-revolution-9",
+  "env-green-revolution-10",
+  "env-green-revolution-11",
+  "env-green-revolution-12",
+  "env-green-revolution-7"
+ ],
+ "summary": "The Green Revolution greatly increased grain yields from the 1940s to the 1970s with high-yield varieties, synthetic fertilizer, irrigation, pesticides and machines. It cut hunger and spared land, but it spread monocultures with low genetic diversity, fertilizer runoff, heavy water and fossil fuel use. Genetically modified crops continue the same trade-offs."
+}

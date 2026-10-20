@@ -1,0 +1,20 @@
+{
+ "ore": {
+  "def": "Rock that contains enough of a valuable mineral, such as copper, iron, gold or lithium, to be mined at a profit. As the richest ores are used up, lower-grade ores must be mined, which moves more rock for each kilogram of metal."
+ },
+ "surface-mining": {
+  "def": "Mining that removes the soil and rock above a deposit to reach ore or coal near the surface. It includes strip mining, open-pit mining and mountaintop removal. It is cheaper and safer for miners than subsurface mining but destroys habitat over large areas."
+ },
+ "subsurface-mining": {
+  "def": "Mining deep deposits through vertical shafts and horizontal tunnels, leaving the surface mostly in place. It disturbs less land but is more expensive and more dangerous for miners (cave-ins, explosions, poor air) and can cause the ground above to sink."
+ },
+ "overburden": {
+  "def": "The soil and rock that lie on top of an ore or coal deposit and are removed in surface mining. Tailings are the finely ground waste left after the valuable mineral is extracted from ore; both are piled near the mine and can release metals and acid."
+ },
+ "acid-mine-drainage": {
+  "def": "Acidic water that flows from mines and mine waste. Sulfide minerals exposed to air and water form sulfuric acid, which lowers the pH of streams and dissolves toxic metals such as lead, mercury and arsenic from the rock."
+ },
+ "reclamation": {
+  "def": "Restoring land after mining: filling and regrading pits, replacing topsoil and planting native vegetation, so the land can support plants and wildlife again. In the United States a federal law requires coal mines to post money for it in advance."
+ }
+}

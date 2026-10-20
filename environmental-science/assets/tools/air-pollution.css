@@ -1,0 +1,74 @@
+/* Air pollution (environmental-science/assets/tools/air-pollution.js). OWNED BY THIS TOOL ONLY (builder T3).
+   One color per pollutant everywhere (Okabe-Ito, colorblind safe, each curve
+   also labeled): NO blue, NO2 brown-orange, O3 olive (the course accent),
+   VOCs purple. Light and dark from tokens. */
+.ap-svg,.ap-qfig{--ap-no:#0072B2;--ap-no2:#C2571A;--ap-o3:var(--cink);--ap-voc:#9B5FB5;--ap-mtn:#6F7F73;--ap-bldg:#4A5560;--ap-road:#3C4248;--ap-lid:rgba(230,120,60,.28);}
+:root[data-theme="dark"] .ap-svg,:root[data-theme="dark"] .ap-qfig{--ap-no:#6CB8EC;--ap-no2:#F09A5E;--ap-voc:#C99BE0;--ap-mtn:#3E4A43;--ap-bldg:#2B323A;--ap-road:#1E2328;--ap-lid:rgba(240,140,80,.30);}
+.ap-card{display:grid;gap:14px;}
+.ap-fig{position:relative;min-height:320px;height:min(70vh,580px);}
+.ls-root .ap-fig{flex:1 1 auto;height:auto;min-height:290px;}
+.ap-fig .ap-svg{position:absolute;inset:0;width:100%;height:100%;}
+.ap-svg{display:block;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.ap-qfig{margin:0;}
+.ap-qfig .ap-svg{width:100%;height:auto;}
+.ap-ctl{display:flex;flex-direction:column;gap:10px;}
+.ap-views{width:100%;}
+.ap-views button{flex:1;}
+.ap-g[hidden]{display:none;}
+.ap-g{display:flex;flex-direction:column;gap:8px;}
+.ap-btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.ap-more{display:grid;gap:10px;}
+/* text */
+.ap-t{fill:var(--ink);font-size:12.5px;font-weight:700;}
+.ap-s{font-size:11.5px;}
+.ap-b{font-weight:900;}
+.ap-tk{fill:var(--muted);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;}
+.ap-tag rect{fill:var(--white);stroke:var(--line);stroke-width:1.2;opacity:.94;}
+.ap-tag-t{fill:var(--ink);font-size:12.5px;}
+.ap-c-o3{fill:var(--cink);}
+.ap-on-lid{fill:#7A2E0A;font-weight:900;}
+:root[data-theme="dark"] .ap-on-lid{fill:#FFD2B5;}
+.ap-on-rock{fill:#fff;font-weight:900;paint-order:stroke;stroke:rgba(0,0,0,.4);stroke-width:2.5px;}
+/* scene */
+.ap-sun{fill:#FFD54F;} .ap-sunglow{fill:#FFE082;opacity:.45;}
+.ap-moon{fill:#F2EED8;} .ap-star{fill:#fff;opacity:.8;}
+.ap-ovc{fill:#B7C0C8;opacity:.85;}
+.ap-mtn{fill:var(--ap-mtn);}
+.ap-bldg{fill:var(--ap-bldg);}
+.ap-win{fill:#FFD54F;opacity:.85;}
+.ap-road{fill:var(--ap-road);}
+.ap-car rect{fill:#E4572E;} .ap-car circle{fill:#111;}
+.ap-car:nth-of-type(3n) rect{fill:#2F80ED;} .ap-car:nth-of-type(4n) rect{fill:#F2C14E;}
+.ap-exh{fill:#8C8C8C;opacity:.5;}
+.ap-lid{fill:var(--ap-lid);}
+.ap-lidband{fill:var(--ap-lid);}
+.ap-prof{fill:none;stroke:#E0663A;stroke-width:3;stroke-linejoin:round;}
+.ap-grid{stroke:var(--line);stroke-width:1;}
+.ap-axisl{stroke:var(--ink);stroke-width:1.4;}
+.ap-nightbg{fill:var(--paper);}
+/* curves */
+.ap-curve{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.ap-curve.ap-no{stroke:var(--ap-no);} .ap-curve.ap-no2{stroke:var(--ap-no2);} .ap-curve.ap-o3{stroke:var(--ap-o3);stroke-width:3.6;} .ap-curve.ap-voc{stroke:var(--ap-voc);stroke-dasharray:6 4;}
+.ap-peaklab.ap-no .ap-cl{fill:var(--ap-no);} .ap-peaklab.ap-no2 .ap-cl{fill:var(--ap-no2);} .ap-peaklab.ap-o3 .ap-cl{fill:var(--ap-o3);} .ap-peaklab.ap-voc .ap-cl{fill:var(--ap-voc);}
+.ap-cl{paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ap-curve.ap-neutral{stroke:var(--ink);}
+.ap-curve.ap-n1{stroke-dasharray:8 5;} .ap-curve.ap-n2{stroke-dasharray:2 4;}
+.ap-peaklab.ap-neutral .ap-cl{fill:var(--ink);}
+.ap-cursor{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:4 3;}
+.ap-dot{stroke:var(--white);stroke-width:2;}
+.ap-dot.ap-no{fill:var(--ap-no);} .ap-dot.ap-no2{fill:var(--ap-no2);} .ap-dot.ap-o3{fill:var(--ap-o3);}
+/* acid rain */
+.ap-acidsky{fill:#DCE7EE;}
+:root[data-theme="dark"] .ap-acidsky{fill:#1B2731;}
+.ap-stack{fill:#7E8A92;}
+.ap-plume{fill:#8C8577;}
+.ap-raincloud{fill:#A9B4BC;}
+.ap-drop{stroke-width:2.2;stroke-linecap:round;}
+.ap-lime{fill:#D9D2BF;}
+.ap-granite{fill:#8F8A86;}
+:root[data-theme="dark"] .ap-lime{fill:#7A7262;} :root[data-theme="dark"] .ap-granite{fill:#4E4A47;}
+.ap-lake{stroke:var(--ink);stroke-width:1;opacity:.95;}
+.ap-animal rect{fill:var(--white);stroke:#2E9E6B;stroke-width:1.6;}
+.ap-animal.is-gone rect{fill:var(--paper);stroke:#C2571A;stroke-dasharray:4 3;}
+.ap-animal.is-gone .ap-t{fill:var(--muted);}
+.ap-bar{fill:var(--muted);} .ap-bar.is-new{fill:var(--cink);}

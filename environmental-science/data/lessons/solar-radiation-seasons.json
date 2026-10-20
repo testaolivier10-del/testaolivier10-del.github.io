@@ -1,0 +1,72 @@
+{
+ "topic": "solar-radiation-seasons",
+ "hook": "Earth is about 5 million kilometers closer to the Sun in early January than in early July, yet January is the middle of winter in New York. Meanwhile, in Sydney, Australia, people spend January at the beach. If distance does not make the seasons, something else must, and it also explains why the tropics are warm and the poles frozen.",
+ "prereq": [
+  {
+   "q": "Where does warm air rise in the global wind pattern?",
+   "options": [
+    "Near the equator",
+    "Near 30° N and 30° S",
+    "At the poles",
+    "Nowhere: air only sinks"
+   ],
+   "correct": 0,
+   "why": "The equator is heated most, so air rises there.",
+   "review": "global-wind-patterns"
+  },
+  {
+   "q": "Which biome is cold, treeless and found at high latitudes?",
+   "options": [
+    "Tundra",
+    "Savanna",
+    "Tropical rainforest",
+    "Chaparral"
+   ],
+   "correct": 0,
+   "why": "Tundra lies at high latitudes, where it is too cold for trees.",
+   "review": "terrestrial-biomes"
+  }
+ ],
+ "figure": {
+  "figure": "solar-radiation-seasons-tilt",
+  "caption": "Left: the same beam of sunlight is concentrated at the equator and spread out at high latitude. Right: Earth's tilted axis, not its distance from the Sun, causes the seasons."
+ },
+ "chain": [
+  {
+   "cause": "Earth is a sphere, so sunlight strikes the equator head-on and high latitudes at a slant",
+   "effect": "insolation, the solar energy per square meter, is highest near the equator"
+  },
+  {
+   "cause": "Earth's axis is tilted about 23.5° and keeps pointing the same way as Earth orbits",
+   "effect": "each hemisphere leans toward the Sun for half the year and away for the other half"
+  },
+  {
+   "cause": "The hemisphere tilted toward the Sun gets more direct sunlight and longer days",
+   "effect": "it has summer, while the other hemisphere has winter"
+  },
+  {
+   "cause": "Dark surfaces absorb more sunlight than bright ones (lower albedo)",
+   "effect": "dark ocean and forest warm more than snow and ice under the same sun"
+  }
+ ],
+ "ideas": [
+  "<b>Insolation</b> is the solar radiation reaching an area, in watts per square meter (W/m²). It is greatest near the equator, where sunlight is most direct.",
+  "Seasons come from <b>axial tilt</b> (about 23.5°): the hemisphere tilted toward the Sun has higher sun angles and longer days. Distance from the Sun is not the cause; Earth is closest in early January.",
+  "Northern summer is southern winter, and the reverse. Near the equator, insolation stays high all year, so seasons are mostly wet and dry, not warm and cold.",
+  "<b>Albedo</b> is the share of sunlight a surface reflects: high for snow and ice, low for ocean and forest. Low-albedo surfaces absorb more energy and warm more.",
+  "Insolation sets temperature by latitude, which helps place the biomes and drives the global winds."
+ ],
+ "misconception": {
+  "wrong": "It is summer when Earth is closest to the Sun.",
+  "right": "Earth is closest to the Sun in early January, during northern winter. The seasons come from the tilt of Earth's axis, which is also why the two hemispheres have opposite seasons at the same time."
+ },
+ "check": [
+  "env-solar-radiation-seasons-1",
+  "env-solar-radiation-seasons-2",
+  "env-solar-radiation-seasons-4",
+  "env-solar-radiation-seasons-7",
+  "env-solar-radiation-seasons-8",
+  "env-solar-radiation-seasons-9"
+ ],
+ "summary": "Insolation, the solar energy per square meter, is highest near the equator because sunlight strikes it most directly. Earth's axis is tilted about 23.5°, so as Earth orbits, each hemisphere takes turns leaning toward the Sun: that tilt, not distance, makes the seasons. Albedo, the share of sunlight a surface reflects, decides how much of that energy the surface absorbs."
+}

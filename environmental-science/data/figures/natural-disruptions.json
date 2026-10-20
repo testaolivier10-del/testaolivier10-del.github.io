@@ -1,0 +1,12 @@
+{
+ "natural-disruptions-timing": {
+  "file": "figures/natural-disruptions-timing.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Timeline of 30 years with three rows of events. Periodic: a river floods every spring, a mark every year. Episodic: droughts in years 3, 4, 11, 17, 18 and 26, recurring at irregular intervals. Random: one volcanic eruption in year 21. Invented example."
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "dose-response-curve": {
+  "def": "A graph of the percent of a test population responding (for example, dying) against the dose. It is usually S-shaped and is used to read the threshold dose, the LD50 and the ED50."
+ },
+ "threshold-dose": {
+  "def": "The highest dose at which no response is observed in a test population; on a dose-response curve, the point where the curve leaves zero."
+ },
+ "ed50": {
+  "def": "Effective dose 50%: the dose that causes a chosen nonlethal effect, such as illness or sleep, in half of a test population."
+ }
+}

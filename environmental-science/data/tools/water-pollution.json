@@ -1,0 +1,98 @@
+{
+ "slug": "water-pollution",
+ "kind": "simulator",
+ "topic": "eutrophication",
+ "intro": "<p>A lake, a field and a storm. Choose how much fertilizer runs off and follow the whole chain: nutrients, an algal bloom, die-off, decomposition, falling dissolved oxygen and, if it drops below 2 mg/L, a dead zone. Then warm the water to see thermal pollution lower the oxygen by itself, and send sewage through a treatment plant stage by stage.</p>",
+ "howItWorksTitle": "How the lake model works",
+ "howItWorks": "<p>The lake is a small model, solved day by day: nutrients feed algae, algae that run out of nutrients die and sink, aerobic decomposers break the dead algae down and use oxygen, and oxygen from the air mixes back in toward saturation. The curve is the bottom water's dissolved oxygen in mg/L. It is built to show the order and the shape of the chain, not to forecast a real lake.</p><p>Saturation (the most oxygen fresh water can hold at sea level) comes from the USGS dissolved oxygen tables, rounded to 0.1 mg/L: 14.6 mg/L at 0 °C, 11.3 at 10 °C, 9.1 at 20 °C, 7.6 at 30 °C. Warmer water holds less, so the same bloom does more harm in a warm lake. Water below 2 mg/L is called hypoxic (a dead zone). The sewage percentages are typical rounded values for each stage; real plants vary.</p>",
+ "partTopics": {
+  "read": "thermal-pollution",
+  "why": "thermal-pollution",
+  "after1": "sewage-treatment",
+  "after2": "sewage-treatment",
+  "after2a": "sewage-treatment",
+  "stage": "sewage-treatment"
+ },
+ "explore": {
+  "temps": [5, 10, 15, 20, 25, 30, 35]
+ },
+ "contexts": [
+  {
+   "id": "farm-lake",
+   "topic": "eutrophication",
+   "types": ["chain"],
+   "lead": "A small lake sits below corn fields.",
+   "levels": [3, 4, 5],
+   "temps": [18, 20, 22, 25]
+  },
+  {
+   "id": "pond-lawns",
+   "topic": "eutrophication",
+   "types": ["chain"],
+   "lead": "A neighborhood pond collects runoff from fertilized lawns.",
+   "levels": [2, 3, 4],
+   "temps": [20, 24, 28]
+  },
+  {
+   "id": "bay-summer",
+   "topic": "eutrophication",
+   "types": ["dochange"],
+   "lead": "A monitoring buoy sits in a bay where a large river drains farmland.",
+   "before": [7.4, 9.6],
+   "after": [0.6, 3.6],
+   "when0": "April",
+   "when1": "August"
+  },
+  {
+   "id": "reservoir",
+   "topic": "eutrophication",
+   "types": ["dochange", "load"],
+   "lead": "A reservoir downstream of a dairy farm is tested each month.",
+   "before": [8.0, 9.4],
+   "after": [1.2, 4.2],
+   "when0": "May",
+   "when1": "September",
+   "conc": [4, 5, 6, 8],
+   "flow": [200000, 250000, 400000],
+   "cut": [40, 50, 60],
+   "fix": "Planting a 30 m strip of trees and grasses along the stream (a riparian buffer)",
+   "how": "The plants' roots take up nitrate before the runoff reaches the stream."
+  },
+  {
+   "id": "river-nitrate",
+   "topic": "eutrophication",
+   "types": ["load"],
+   "lead": "A creek drains a valley of vegetable farms into a lake.",
+   "conc": [6, 8, 10, 12],
+   "flow": [250000, 400000, 500000],
+   "cut": [50, 60, 75],
+   "fix": "Sending the drainage through a constructed wetland",
+   "how": "Wetland plants absorb nitrate and wetland bacteria turn it into nitrogen gas (denitrification)."
+  },
+  {
+   "id": "power-plant",
+   "topic": "thermal-pollution",
+   "types": ["thermal"],
+   "lead": "A coal power plant draws cooling water from a river.",
+   "water": "river",
+   "from": [10, 15],
+   "rise": [10, 15]
+  },
+  {
+   "id": "factory-lake",
+   "topic": "thermal-pollution",
+   "types": ["thermal"],
+   "lead": "A factory cools its machines with water from a lake.",
+   "water": "lake",
+   "from": [5, 10, 15, 20],
+   "rise": [10, 15]
+  },
+  {
+   "id": "town-plant",
+   "topic": "sewage-treatment",
+   "types": ["sewage"],
+   "lead": "A town tracks the biochemical oxygen demand (BOD) of its wastewater: how much oxygen bacteria would use to break down the organic matter in it.",
+   "bod": [180, 200, 220, 240, 260]
+  }
+ ]
+}

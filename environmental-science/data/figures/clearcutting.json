@@ -1,0 +1,12 @@
+{
+ "clearcutting-slope": {
+  "file": "figures/clearcutting-slope.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels of a hillside that drains into a stream. Left, forest: the canopy shades the stream so it stays cool, and roots and leaf litter hold the soil, so the stream runs clear. Right, after clearcutting: only stumps remain, full sun warms soil and stream, more rain runs off and carries soil into the stream, and nutrients leach away, so the stream is muddy and warmer."
+ }
+}

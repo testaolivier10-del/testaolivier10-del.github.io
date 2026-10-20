@@ -1,0 +1,11 @@
+{
+ "total-fertility-rate": {
+  "def": "The average number of children a woman would have in her lifetime if birth patterns at each age stayed as they are now. Written TFR."
+ },
+ "replacement-level": {
+  "def": "The total fertility rate at which a population exactly replaces itself from one generation to the next, about 2.1 children per woman where few children die young. It is above 2 because some children die before adulthood and slightly more boys than girls are born."
+ },
+ "infant-mortality": {
+  "def": "The number of babies who die before their first birthday, for every 1,000 babies born alive in a year. It is a key measure of a population’s health and is linked to fertility: where infant mortality is high, families tend to have more children."
+ }
+}

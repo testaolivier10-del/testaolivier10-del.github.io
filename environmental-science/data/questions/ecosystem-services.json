@@ -1,0 +1,567 @@
+{
+ "stimuli": {
+  "ecosystem-services-s1": {
+   "kind": "text",
+   "title": "A city keeps its forest",
+   "passage": "Riverton draws its drinking water from a reservoir in hills 80 kilometers away. As houses and farms spread into those hills, state regulators warned that the city would have to build a filtration plant costing about \\$6 billion, plus \\$250 million a year to run it. The city chose a different plan. It spent \\$1.5 billion over ten years to buy land near the reservoir, to pay farmers to fence cattle away from streams, and to repair failing septic tanks. Forest soils filter rainwater as it soaks in, and roots hold soil in place so less mud reaches the reservoir. Ten years later the water still meets drinking standards without filtration. Some upstream towns complain that the land purchases limit where they can build and shrink their tax income.",
+   "source": "Invented passage for practice, modeled on real cities that protect forested land around their reservoirs."
+  },
+  "ecosystem-services-s2": {
+   "kind": "quantitative",
+   "title": "Crop yields with and without wild pollinators",
+   "invented": true,
+   "table": {
+    "caption": "Yield of four crops on farms near natural habitat (with wild bees) and on farms far from it (invented data for practice)",
+    "cols": [
+     "Crop",
+     "Yield near habitat (kg per hectare)",
+     "Yield far from habitat (kg per hectare)"
+    ],
+    "rows": [
+     [
+      "Blueberries",
+      "8,000",
+      "5,000"
+     ],
+     [
+      "Almonds",
+      "2,400",
+      "1,500"
+     ],
+     [
+      "Watermelon",
+      "40,000",
+      "32,000"
+     ],
+     [
+      "Wheat",
+      "3,500",
+      "3,500"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-ecosystem-services-1",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement best expresses the main claim the passage supports?",
+   "stimulus": "ecosystem-services-s1",
+   "options": [
+    "Protecting the forest gave clean water for less than a filtration plant",
+    "Filtration plants are the most reliable way to supply clean water",
+    "Cattle wading in the streams are the main source of the mud reaching the reservoir",
+    "Upstream towns should be paid to build more houses near the reservoir"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The passage compares two ways to get clean water and reports that the cheaper one, protecting the forest, worked.",
+    "options": [
+     "Right: \\$1.5 billion over ten years against \\$6 billion plus \\$250 million a year, and the water still meets standards.",
+     "The passage describes a city that met standards without a plant.",
+     "Fencing cattle was one step; the passage does not rank mud sources.",
+     "The passage reports a complaint from towns; it does not argue for more building."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-2",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which kind of ecosystem service is the forest providing when its soils filter rainwater for Riverton?",
+   "stimulus": "ecosystem-services-s1",
+   "options": [
+    "A provisioning service",
+    "A regulating service",
+    "A cultural service",
+    "A supporting service"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Water purification, flood control, pollination and carbon storage are regulating services.",
+    "options": [
+     "Provisioning services are goods people take, such as timber; here the forest is cleaning water, not supplying a product.",
+     "Right: purifying water is a natural process that protects people, a regulating service.",
+     "Cultural services are nonmaterial benefits such as recreation.",
+     "Supporting services, such as nutrient cycling, keep the other services going; filtering water is a direct regulating service."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-3",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which group in the passage sees a cost of the city’s plan, and what is it?",
+   "stimulus": "ecosystem-services-s1",
+   "options": [
+    "Riverton residents, because their drinking water now fails the state drinking standards",
+    "State regulators, because they have to run the filtration plant",
+    "Upstream towns, because land purchases limit building and cut tax income",
+    "Farmers, because they were paid to let cattle into the streams"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A full answer weighs both sides: the city saves money, and the upstream towns bear a cost.",
+    "options": [
+     "The passage says the water still meets standards.",
+     "No plant was built, so no one runs it.",
+     "Right: the passage ends with this complaint, an economic cost the plan places on other people.",
+     "Farmers were paid to keep cattle out of the streams, not in."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-4",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The filtration plant would cost \\$6 billion to build. Riverton spent \\$1.5 billion on its forest plan. Write the setup for the percent of the plant’s building cost that the forest plan cost, then give the answer.",
+   "stimulus": "ecosystem-services-s1",
+   "why": {
+    "correct": "Part over whole, times 100: $\\frac{1.5}{6} \\times 100 = 25\\%$. The forest plan cost a quarter of the building cost alone, before the \\$250 million a year the plant would cost to run."
+   },
+   "setup": {
+    "answer": "1.5 / 6 * 100",
+    "mustUse": [
+     "1.5",
+     "6"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "fractionOf",
+      "args": [
+       1.5,
+       6
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 400,
+       "why": "That is 6 / 1.5 × 100. Put the forest plan cost on top."
+      },
+      {
+       "value": 0.25,
+       "why": "That is the fraction. Multiply by 100 for a percent: 25%."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "6 / 1.5 * 100",
+      "why": "You divided the plant cost by the forest cost. The part (1.5) goes on top: 1.5 / 6 × 100."
+     },
+     {
+      "expr": "1.5 / 6",
+      "why": "That is the fraction 0.25. Multiply by 100 to turn it into a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-5",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which crop shows no difference in yield between farms near and far from natural habitat?",
+   "stimulus": "ecosystem-services-s2",
+   "options": [
+    "Blueberries",
+    "Almonds",
+    "Watermelon",
+    "Wheat"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Wheat is pollinated by wind, so wild bees from the habitat do not change its yield.",
+    "options": [
+     "Blueberries yield 3,000 kg per hectare more near habitat.",
+     "Almonds yield 900 kg per hectare more near habitat.",
+     "Watermelon yields 8,000 kg per hectare more near habitat.",
+     "Right: wheat yields 3,500 kg per hectare in both places."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-6",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in blueberry yield from a farm far from habitat to a farm near habitat, then give the answer.",
+   "stimulus": "ecosystem-services-s2",
+   "why": {
+    "correct": "New minus old, over old, times 100: $\\frac{8{,}000 - 5{,}000}{5{,}000} \\times 100 = 60\\%$. The far farm is the starting point, so it goes in the denominator."
+   },
+   "setup": {
+    "answer": "(8000 - 5000) / 5000 * 100",
+    "mustUse": [
+     "8000",
+     "5000"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       5000,
+       8000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 37.5,
+       "why": "That is the change divided by 8,000. Divide by the starting value, 5,000."
+      },
+      {
+       "value": 3000,
+       "why": "That is the change in kg per hectare. Divide it by 5,000 and multiply by 100 to get the percent change."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(8000 - 5000) / 8000 * 100",
+      "why": "Divide by the starting value (5,000 kg, far from habitat), not the new one."
+     },
+     {
+      "expr": "8000 - 5000 / 5000 * 100",
+      "why": "Without brackets the division happens first. Put the difference in brackets: (8000 - 5000) / 5000 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-7",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "An almond farmer far from natural habitat has 50 hectares. If the farm had the yield of farms near habitat, how many more kilograms of almonds would it produce?",
+   "stimulus": "ecosystem-services-s2",
+   "why": {
+    "correct": "Extra yield per hectare times area: $(2{,}400 - 1{,}500)\\,\\frac{\\text{kg}}{\\text{ha}} \\times 50\\,\\text{ha} = 45{,}000\\,\\text{kg}$."
+   },
+   "numeric": {
+    "unit": "kg",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        2400,
+        1500
+       ]
+      },
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 120000,
+      "why": "That is the near-habitat yield times 50 ha. The question asks how many more: use the difference, 900 kg per hectare."
+     },
+     {
+      "value": 900,
+      "why": "That is the extra yield per hectare. Multiply by the 50 hectares."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-8",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion about ecosystem services is best supported by the table?",
+   "stimulus": "ecosystem-services-s2",
+   "options": [
+    "Natural habitat near farms raises the yield of crops that animals pollinate",
+    "Natural habitat raises the yield of each of the four crops by about the same amount",
+    "Farms far from natural habitat produce more of each crop than farms near it",
+    "Wild bees lower the yield of wheat on farms near habitat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pollination by wild animals living in nearby habitat is a regulating service, and it shows up in the yields of crops that need pollinators.",
+    "options": [
+     "Right: the three bee-pollinated crops yield more near habitat, and wind-pollinated wheat does not change.",
+     "Wheat does not change at all, and the other gains differ.",
+     "Every crop yields the same or less far from habitat.",
+     "Wheat yield is 3,500 kg per hectare in both places."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-9",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "A coastal village catches fish from a nearby reef and sells them. Which kind of ecosystem service is this?",
+   "options": [
+    "Regulating",
+    "Provisioning",
+    "Cultural",
+    "Supporting"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Food, fish, timber, fiber, water and medicines are provisioning services.",
+    "options": [
+     "Regulating services are processes such as pollination or flood control, not goods.",
+     "Right: fish are a good people take from the ecosystem.",
+     "Cultural services are nonmaterial, such as recreation; selling fish is a material good.",
+     "Supporting services, such as nutrient cycling, keep the system running; the fish are the product."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-10",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Tourists pay to snorkel over the same reef to see its fish and corals. Which kind of service is this?",
+   "options": [
+    "Provisioning",
+    "Regulating",
+    "Cultural",
+    "Supporting"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One ecosystem can provide several kinds of service at once.",
+    "options": [
+     "Nothing is taken from the reef; the benefit is the experience.",
+     "Regulating services are protective processes such as purifying water.",
+     "Right: recreation and tourism are nonmaterial benefits.",
+     "Supporting services are processes such as nutrient cycling."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-11",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mangrove forest along a coast traps sediment and slows waves during storms, protecting the town behind it. Which kind of service is this?",
+   "options": [
+    "A provisioning service",
+    "A cultural service",
+    "A supporting service",
+    "A regulating service"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Flood control and protection from waves are regulating services.",
+    "options": [
+     "The mangroves are not supplying a good here; they are protecting the town.",
+     "Protection from waves is a physical benefit, not a nonmaterial one.",
+     "Supporting services feed the others; storm protection is a direct regulating benefit.",
+     "Right: reducing flood and wave damage is a natural process that protects people."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-12",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is nutrient cycling by decomposers classed as a supporting service rather than a provisioning service?",
+   "options": [
+    "It keeps soil fertile for crops and forests rather than being a product itself",
+    "It produces food that people can eat directly",
+    "It brings in money from visitors who come to see healthy forests and soils",
+    "It protects towns from floods during storms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Supporting services sit underneath the other three: photosynthesis, nutrient cycling, soil formation.",
+    "options": [
+     "Right: supporting services are the processes that other services depend on.",
+     "Decomposers do not produce food people eat; they recycle nutrients.",
+     "Tourism is a cultural service, and soil decomposers are not why tourists come.",
+     "Flood protection is a regulating service."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-13",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A developer drains a wetland beside a river to build a shopping center. Which is the most likely cost that the developer’s budget leaves out?",
+   "options": [
+    "The shopping center will need a larger parking lot than first planned",
+    "Towns downstream flood more, since the wetland no longer stores high water",
+    "The wetland will produce more fish once it is drained",
+    "The river will hold more water after the wetland is gone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Losing an ecosystem service often moves a cost onto people who did not make the decision.",
+    "options": [
+     "That is part of the developer’s own plan and budget.",
+     "Right: wetlands store floodwater, so losing one shifts a cost onto others.",
+     "Draining removes the habitat, so it produces fewer fish, not more.",
+     "The river will hold the same water; the wetland that stored extra water is gone."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-14",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain the economic cost to apple growers when the wild bees near their orchards decline.",
+   "why": {
+    "correct": "Every link is named: fewer bees, fewer flowers pollinated, less fruit, less income or higher costs."
+   },
+   "specific": {
+    "frame": "If wild bees decline, ___, so ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "First effect",
+      "options": [
+       "fewer apple flowers are pollinated",
+       "apple trees grow more leaves",
+       "apple flowers last longer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bees pollinate flowers; leaf growth is not what they provide.",
+       "2": "Flower life is not the service bees provide; pollination is."
+      }
+     },
+     "effect": {
+      "label": "Second effect",
+      "options": [
+       "fewer apples form",
+       "apples ripen earlier",
+       "the trees need less water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ripening time is not tied to the number of pollinators.",
+       "2": "Water use does not depend on pollination."
+      }
+     },
+     "mechanism": {
+      "label": "Economic cost",
+      "options": [
+       "lowers income or forces growers to pay to rent honeybee hives",
+       "raises the price of apple tree seedlings",
+       "lowers the cost of picking"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Seedling prices are not the cost the bees’ decline creates.",
+       "2": "Picking fewer apples may cost less, but the lost sales cost far more; the question asks for the cost."
+      }
+     }
+    },
+    "model": "If wild bees decline, fewer apple flowers are pollinated, so fewer apples form, which lowers the growers’ income or forces them to pay to rent honeybee hives."
+   }
+  },
+  {
+   "id": "env-ecosystem-services-15",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "multi",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these are regulating services of a forest? Select all that apply.",
+   "options": [
+    "Storing carbon in wood and soil",
+    "Holding soil in place with roots, so less mud reaches streams",
+    "Providing lumber for houses",
+    "Offering hiking trails and campsites"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Regulating services are processes that protect people; goods are provisioning and recreation is cultural.",
+    "options": [
+     "Right: storing carbon helps keep the climate steadier, a regulating service.",
+     "Right: controlling erosion is a regulating service.",
+     "Lumber is a good, a provisioning service.",
+     "Recreation is a cultural service."
+    ]
+   }
+  },
+  {
+   "id": "env-ecosystem-services-16",
+   "unit": "unit-2",
+   "topic": "ecosystem-services",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A county must choose between clearing a forest for a timber sale and leaving it standing. Which consideration best shows why the timber price alone undervalues the forest?",
+   "options": [
+    "Timber prices rise and fall from one year to the next with demand",
+    "Cutting the forest provides jobs for loggers and mill workers for a few years",
+    "Cutting also ends its water cleaning, carbon storage and recreation",
+    "The trees would keep growing and could be sold for more in a later year"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A market price counts what is sold; the other services have value but no price tag.",
+    "options": [
+     "Price swings do not explain why the price leaves value out.",
+     "Jobs are a benefit of cutting, not a value the price leaves out.",
+     "Right: the price counts one provisioning service and leaves out the others.",
+     "That is about timing the sale, not about services the price ignores."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "age-structure-shapes": {
+  "file": "figures/age-structure-shapes.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three population pyramids, percent of the population in each 10-year age group, male on the left and female on the right. Rapid growth: a wide base (13.5% of the population is male and 13% female aged 0 to 9) narrowing quickly with age. Slow or no growth: bars of almost equal length up to age 60 (a column). Decline: a base narrower than the middle, with the widest bars at ages 40 to 59. Invented data."
+ },
+ "age-structure-countries": {
+  "file": "figures/age-structure-countries.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Population pyramids of three invented countries in millions of people. Country X: 4.2 million males and 4.0 million females aged 0 to 9, shrinking steadily to 0.1 million aged 80 and over. Country Y: about 2 million in each sex in every group from 0 to 59, then fewer. Country Z: 1.0 million of each sex aged 0 to 9, rising to 2.1 million in each sex aged 50 to 59, then falling."
+ },
+ "age-structure-frq-pq": {
+  "file": "figures/age-structure-frq-pq.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Population pyramids of invented Countries P and Q in millions. Country P, males then females: ages 0 to 14, 9.0 and 8.8; 15 to 29, 6.5 and 6.4; 30 to 44, 4.5 and 4.5; 45 to 59, 2.6 and 2.7; 60 to 74, 1.2 and 1.4; 75 and over, 0.3 and 0.4. Country Q: 0 to 14, 3.0 and 2.9; 15 to 29, 3.3 and 3.2; 30 to 44, 3.5 and 3.5; 45 to 59, 3.6 and 3.7; 60 to 74, 3.0 and 3.3; 75 and over, 1.6 and 2.4."
+ }
+}

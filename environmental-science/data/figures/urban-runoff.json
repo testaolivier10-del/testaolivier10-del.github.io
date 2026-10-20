@@ -1,0 +1,12 @@
+{
+ "urban-runoff-methods": {
+  "file": "figures/urban-runoff-methods.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Rain falls on a city block. A green roof holds rain in plants and soil and releases it slowly. A downspout sends roof water into a rain garden, a planted low spot where water soaks into the ground. Permeable pavement has gaps that let water pass through into the ground. Ordinary pavement sheds the water sideways to a storm drain. Dashed arrows show water soaking in and recharging groundwater."
+ }
+}

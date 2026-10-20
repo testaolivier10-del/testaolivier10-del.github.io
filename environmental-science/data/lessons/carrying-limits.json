@@ -1,0 +1,72 @@
+{
+ "topic": "carrying-limits",
+ "hook": "In 1944, the US Coast Guard released 29 reindeer on St. Matthew Island in the Bering Sea, where there were no wolves and thick mats of lichen to eat. By 1963 there were about 6,000. Three years later, after a hard winter, fewer than 50 were left. The island never had food for 6,000 reindeer for long. The herd had grown past what the island could support, and it paid the price.",
+ "prereq": [
+  {
+   "q": "An r-selected species is hit by a flood that kills most of its population. What usually happens next?",
+   "options": [
+    "It rebounds quickly, because survivors reproduce early and often",
+    "It recovers over many decades",
+    "It cannot recover",
+    "It switches to K-selection"
+   ],
+   "correct": 0,
+   "why": "High biotic potential lets r-selected species rebound fast.",
+   "review": "r-k-selection"
+  },
+  {
+   "q": "A population in a zone of physiological stress for food shortage will usually do what?",
+   "options": [
+    "Shrink, because individuals reproduce and survive less",
+    "Grow faster than before",
+    "Stay exactly the same",
+    "Move into its optimal range automatically"
+   ],
+   "correct": 0,
+   "why": "Stressed individuals reproduce and survive less, so the population declines.",
+   "review": "ecological-tolerance"
+  }
+ ],
+ "figure": {
+  "figure": "carrying-limits-overshoot",
+  "caption": "An invented deer herd on an island overshoots its carrying capacity, damages its food plants and dies back to a lower level."
+ },
+ "chain": [
+  {
+   "cause": "A population has plenty of food, water and space",
+   "effect": "births outnumber deaths and the population grows"
+  },
+  {
+   "cause": "The population grows larger than its environment can support over time (overshoot)",
+   "effect": "individuals use resources faster than they are replaced, for example eating plants faster than they regrow"
+  },
+  {
+   "cause": "Resources run short and are damaged",
+   "effect": "starvation, disease and fewer births make the population crash (dieback)"
+  },
+  {
+   "cause": "The damaged resources recover slowly",
+   "effect": "the carrying capacity can stay lower than before for many years"
+  }
+ ],
+ "ideas": [
+  "<b>Carrying capacity</b> (K) is the largest population of a species that an environment can support over time, given its food, water, space and other resources.",
+  "When a population grows past its carrying capacity, it is in <b>overshoot</b>: it uses resources faster than they are replaced.",
+  "Overshoot leads to <b>dieback</b>: a sharp drop in population as individuals starve, sicken or fail to reproduce.",
+  "Overshoot can damage the resources themselves (plants eaten down to bare ground, soil washed away), so carrying capacity can be lower after a dieback than before."
+ ],
+ "misconception": {
+  "wrong": "Carrying capacity is a fixed number that a population can never go above.",
+  "right": "A population can go above carrying capacity for a while (overshoot), but it cannot stay there. Carrying capacity can also change when the environment changes, for example after a drought or after plants are grazed down."
+ },
+ "check": [
+  "env-carrying-limits-1",
+  "env-carrying-limits-2",
+  "env-carrying-limits-3",
+  "env-carrying-limits-4",
+  "env-carrying-limits-6",
+  "env-carrying-limits-9",
+  "env-carrying-limits-13"
+ ],
+ "summary": "Carrying capacity is the largest population an environment can support over time. A population that grows past it is in overshoot and uses resources faster than they are replaced; resource shortages then cause dieback, a sharp population crash. Because overshoot can damage the resources, carrying capacity may be lower afterward than before."
+}

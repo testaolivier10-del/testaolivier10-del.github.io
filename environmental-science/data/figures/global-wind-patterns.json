@@ -1,0 +1,12 @@
+{
+ "global-wind-patterns-cells": {
+  "file": "figures/global-wind-patterns-cells.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Earth with lines at the equator and at 30 and 60 degrees north and south. Surface winds in each band: between the equator and 30 degrees, the trade winds blow toward the equator and to the west (northeast trade winds in the north, southeast trade winds in the south); between 30 and 60 degrees, the westerlies blow from the west toward the poles; above 60 degrees, the polar easterlies blow from the east. A side view shows three circulation cells in each hemisphere: the Hadley cell, where air rises at the equator, moves toward the poles high up, sinks near 30 degrees and returns along the surface; the Ferrel cell between 30 and 60 degrees; and the polar cell between 60 degrees and the pole. Rising air at the equator and near 60 degrees brings rain; sinking air near 30 degrees is dry, where many deserts lie."
+ }
+}

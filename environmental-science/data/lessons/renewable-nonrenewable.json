@@ -1,0 +1,71 @@
+{
+ "topic": "renewable-nonrenewable",
+ "hook": "A village heats its homes with wood from a nearby forest and lights them with electricity from a coal-burning plant far away. Both fuels are plant matter that stored the sun's energy, yet one is renewable and the other is not. The difference is time: the forest can regrow in decades, while coal took millions of years to form.",
+ "prereq": [
+  {
+   "q": "Where does the energy stored in coal and wood originally come from?",
+   "options": [
+    "Sunlight captured by plants through photosynthesis",
+    "Heat from Earth's core",
+    "The wind",
+    "Ocean tides"
+   ],
+   "correct": 0,
+   "why": "Plants capture sunlight in photosynthesis and store it as chemical energy; coal is the remains of ancient plants.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "What does the tragedy of the commons describe?",
+   "options": [
+    "A shared resource overused because each user gains by taking more",
+    "A resource that cannot be used up",
+    "A private resource protected by its owner",
+    "A resource that replaces itself instantly"
+   ],
+   "correct": 0,
+   "why": "When no one owns a shared resource, each user has a reason to take more, and the resource is depleted.",
+   "review": "tragedy-of-commons"
+  }
+ ],
+ "figure": {
+  "figure": "renewable-nonrenewable-sorting",
+  "caption": "Energy sources sorted by how fast nature replaces them: nonrenewable fixed supplies, nondepletable renewable flows, and depletable renewables such as wood."
+ },
+ "chain": [
+  {
+   "cause": "A resource forms over millions of years, like coal, oil or natural gas",
+   "effect": "every unit burned today is gone for any human timescale, so the supply is fixed and nonrenewable"
+  },
+  {
+   "cause": "A resource arrives continuously, like sunlight or wind",
+   "effect": "using it does not lower tomorrow's supply, so it is renewable and nondepletable"
+  },
+  {
+   "cause": "A resource regrows, like a forest, but people harvest it faster than it regrows",
+   "effect": "the stock shrinks year after year, so a renewable resource is depleted"
+  },
+  {
+   "cause": "Harvest is cut back to match regrowth",
+   "effect": "the stock stays steady and the resource stays renewable in practice"
+  }
+ ],
+ "ideas": [
+  "<b>Nonrenewable</b> resources exist in a fixed amount and form far more slowly than we use them: coal, oil, natural gas and the mined ore used as nuclear fuel.",
+  "<b>Renewable</b> resources are replenished naturally at or near the rate we use them: sunlight, wind, moving water, Earth's internal heat and biomass.",
+  "Some renewables are <b>nondepletable</b> (sunlight, wind): use does not reduce the supply. Others, like wood, are <b>depletable</b>: renewable only if harvest does not outpace regrowth.",
+  "Renewable is about the rate of replacement, not about pollution: a source can be low carbon and still nonrenewable, and wood smoke pollutes even though wood is renewable."
+ ],
+ "misconception": {
+  "wrong": "Nuclear power is renewable because it releases no carbon dioxide while it runs.",
+  "right": "Renewable means replaced as fast as it is used. Nuclear fuel is ore mined from a fixed supply, so nuclear power is nonrenewable, even though it is low carbon while running."
+ },
+ "check": [
+  "env-renewable-nonrenewable-1",
+  "env-renewable-nonrenewable-3",
+  "env-renewable-nonrenewable-5",
+  "env-renewable-nonrenewable-13",
+  "env-renewable-nonrenewable-14",
+  "env-renewable-nonrenewable-15"
+ ],
+ "summary": "Energy resources are sorted by how fast nature replaces them. Nonrenewable sources (coal, oil, natural gas, nuclear fuel) form over millions of years, so their supply is fixed. Renewable sources are replenished on a human timescale: sunlight and wind are nondepletable, while wood and other biomass are depletable and stay renewable only if they are harvested no faster than they regrow."
+}

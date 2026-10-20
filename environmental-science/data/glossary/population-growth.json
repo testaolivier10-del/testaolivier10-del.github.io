@@ -1,0 +1,20 @@
+{
+ "exponential-growth": {
+  "def": "Growth by a constant percent each period, so the number added gets larger each time. It happens when resources are unlimited and gives a J-shaped curve (J-curve)."
+ },
+ "logistic-growth": {
+  "def": "Growth that is fast at first, slows as resources run short, and levels off at the carrying capacity. It gives an S-shaped curve (S-curve), with the fastest growth at about half the carrying capacity."
+ },
+ "limiting-factor": {
+  "def": "A resource or condition that limits the growth of a population, such as food, water, space, nutrients, light, predators or disease."
+ },
+ "density-dependent": {
+  "def": "A limiting factor whose effect grows stronger as a population becomes denser, such as food shortage, competition, disease or predation."
+ },
+ "density-independent": {
+  "def": "A limiting factor that affects a population whatever its size or density, such as a flood, a frost, a fire or a drought."
+ },
+ "population-density": {
+  "def": "The number of individuals of a population per unit of area or volume, such as 25 deer per square kilometer. Population density = number of individuals / area."
+ }
+}

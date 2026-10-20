@@ -1,0 +1,72 @@
+{
+ "topic": "island-biogeo",
+ "hook": "Ecologists once fumigated several tiny mangrove islands off Florida, removing every insect and spider, then watched them refill. Within about a year the islands closest to the mainland mangroves held roughly as many species as before; the farthest filled more slowly. The number of species an island holds, it turns out, depends mostly on two things you can read off a map.",
+ "prereq": [
+  {
+   "q": "What does species richness measure?",
+   "options": [
+    "The number of different species in an area",
+    "How equal the population sizes are",
+    "The variety of genes in one population",
+    "The total number of individuals"
+   ],
+   "correct": 0,
+   "why": "Richness is a count of species. Evenness compares their numbers.",
+   "review": "biodiversity"
+  },
+  {
+   "q": "Why does a community with more species usually recover better from a drought or a disease?",
+   "options": [
+    "More species can take over the jobs of any species that is lost",
+    "More species means each one is larger",
+    "Droughts and diseases skip rich communities",
+    "Rich communities have no predators"
+   ],
+   "correct": 0,
+   "why": "With more species, several can fill each role, so losing one changes less.",
+   "review": "biodiversity"
+  }
+ ],
+ "figure": {
+  "figure": "island-biogeo-islands",
+  "caption": "Island size and distance from the mainland set how many species an island holds. Invented data."
+ },
+ "chain": [
+  {
+   "cause": "An island is close to the mainland",
+   "effect": "more seeds, insects, birds and other colonists reach it, so new species arrive often"
+  },
+  {
+   "cause": "An island is large",
+   "effect": "it has more habitats and larger populations, so fewer of its species die out"
+  },
+  {
+   "cause": "Arrivals balance local losses",
+   "effect": "large, near islands settle at the most species; small, far islands at the fewest"
+  },
+  {
+   "cause": "A forest is cut into patches surrounded by farms or roads",
+   "effect": "each patch acts like an island, and the smallest, most isolated patches lose the most species"
+  }
+ ],
+ "ideas": [
+  "<b>Island biogeography</b> studies how many species islands hold and why. Larger islands hold more species, and islands closer to the mainland hold more species.",
+  "Distance sets how often new species arrive: far islands get fewer colonists. Size sets how often species die out: small islands have fewer habitats and smaller populations, so more species are lost.",
+  "<b>Habitat fragmentation</b> breaks a large habitat into smaller, separated patches. The patches behave like islands, so small, isolated fragments lose species over time.",
+  "Island species often evolve to use a narrow set of foods or places, because islands offer few resources. They can lose out when people bring species from elsewhere that can live on many foods."
+ ],
+ "misconception": {
+  "wrong": "Island biogeography only applies to islands in the ocean.",
+  "right": "Any patch of habitat surrounded by something its species cannot live in acts like an island: a lake, a mountaintop, a park in a city, or a forest patch between farms."
+ },
+ "check": [
+  "env-island-biogeo-1",
+  "env-island-biogeo-2",
+  "env-island-biogeo-3",
+  "env-island-biogeo-4",
+  "env-island-biogeo-6",
+  "env-island-biogeo-7",
+  "env-island-biogeo-9"
+ ],
+ "summary": "Island biogeography explains species richness on islands: larger islands hold more species because fewer species die out there, and islands nearer the mainland hold more because more colonists arrive. The same rules apply to habitat fragments, which act like islands, so breaking up a habitat into small, isolated patches lowers the number of species it can keep."
+}

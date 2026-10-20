@@ -1,0 +1,12 @@
+{
+ "pest-control-resistance": {
+  "file": "figures/pest-control-resistance.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph, invented data for practice. The percent of pests resistant to a pesticide after each two generations of regular spraying: 1, 2, 5, 12, 27, 50, 73, 88 and 95% at generations 0, 2, 4, 6, 8, 10, 12, 14 and 16. The share rises slowly, then quickly, and levels off near 95%."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "pollution-human-health-synergism": {
+  "file": "figures/pollution-human-health-synergism.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bar chart of the percent of lab mice with lung damage after 30 days (invented data): 2% with no pollutant, 10% with pollutant A alone, 8% with pollutant B alone and 40% with A and B together. A dashed line at 18% marks what the two separate effects would add to; the bar for both together is far above it, which is synergism."
+ }
+}

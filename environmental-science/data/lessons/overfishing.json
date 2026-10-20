@@ -1,0 +1,72 @@
+{
+ "topic": "overfishing",
+ "hook": "For almost 500 years, fishing boats from Europe and North America filled their holds with cod off Newfoundland. Bigger trawlers and better sonar pushed the catch higher through the 1960s. By 1992 the cod were so few that Canada closed the fishery, and about 30,000 people lost their jobs in a single year. Three decades later the cod have still not fully returned.",
+ "prereq": [
+  {
+   "q": "Why does a shared ocean fishery tend to be overused?",
+   "options": [
+    "Each boat keeps the full gain of its catch while the loss of fish is shared by all",
+    "Fish are owned by the boats that live nearest to them",
+    "Fishing boats are taxed for each fish they leave in the sea",
+    "Fish populations grow faster when more of them are caught"
+   ],
+   "correct": 0,
+   "why": "Private gain and shared cost are the tragedy of the commons.",
+   "review": "tragedy-of-commons"
+  },
+  {
+   "q": "What does a keystone species do?",
+   "options": [
+    "It has a much larger effect on its ecosystem than its numbers suggest",
+    "It is the most common species in an ecosystem",
+    "It is always a producer at the base of the food web",
+    "It is the only species that eats a given prey"
+   ],
+   "correct": 0,
+   "why": "Removing a keystone species changes the whole community.",
+   "review": "biodiversity"
+  }
+ ],
+ "figure": {
+  "figure": "overfishing-catch",
+  "caption": "Catch in a fishery that is fished faster than it can recover: a rise, a peak, a collapse. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Boats catch fish faster than the fish can reproduce",
+   "effect": "the stock shrinks year after year"
+  },
+  {
+   "cause": "Large, older fish are caught first",
+   "effect": "fewer eggs are laid, so fewer young join the stock"
+  },
+  {
+   "cause": "Fleets use bigger boats and better technology to keep catches up",
+   "effect": "catch holds steady for a while, hiding the decline"
+  },
+  {
+   "cause": "The stock falls below the level it needs to rebuild",
+   "effect": "the fishery collapses and the food web around it changes"
+  }
+ ],
+ "ideas": [
+  "<b>Overfishing</b> is catching fish faster than they reproduce. It is the tragedy of the commons at sea.",
+  "<b>Bycatch</b> is everything caught that was not the target: dolphins, sea turtles, sharks, seabirds, young fish. Much of it dies.",
+  "Bottom trawling drags heavy nets across the sea floor, destroying corals, sponges and the places where young fish shelter.",
+  "A <b>fishery collapse</b> can take decades to recover, and removing a top predator or a forage fish changes the whole food web."
+ ],
+ "misconception": {
+  "wrong": "If the total catch is steady, the fish stock must be healthy.",
+  "right": "A fleet that adds boats or better gear can hold the catch steady while the stock falls. Catch per unit of effort, such as catch per boat or per day of fishing, shows the decline earlier."
+ },
+ "check": [
+  "env-overfishing-1",
+  "env-overfishing-2",
+  "env-overfishing-9",
+  "env-overfishing-10",
+  "env-overfishing-11",
+  "env-overfishing-12",
+  "env-overfishing-13"
+ ],
+ "summary": "Overfishing takes fish faster than they can reproduce, so stocks shrink and can collapse, as Atlantic cod did off Newfoundland in 1992. Bycatch kills nontarget animals, and bottom trawling destroys sea-floor habitat. Catch limits, protected areas, gear rules and closed seasons are the main fixes."
+}

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Type I, II and III survivorship curves</title>
+<desc id="d">Three survivorship curves on a log scale, starting from 1,000 newborns. Type I stays near 1,000 until late in life, then drops steeply (most die old). Type II falls as a straight line on the log scale, so the same fraction die at every age. Type III drops to about 40 by 10% of the life span, then levels off (most die young).</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker></defs><rect width="720" height="420" fill="#FFFFFF"/>
+<line x1="100" y1="320" x2="660" y2="320" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="223.3" x2="660" y2="223.3" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="126.7" x2="660" y2="126.7" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="30" x2="660" y2="30" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="320" x2="660" y2="320" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="100" y1="30" x2="100" y2="320" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="100" y1="320" x2="100" y2="325" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="100" y="340" font-size="13" fill="#1F2A28" text-anchor="middle">0</text>
+<line x1="212" y1="320" x2="212" y2="325" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="212" y="340" font-size="13" fill="#1F2A28" text-anchor="middle">20</text>
+<line x1="324" y1="320" x2="324" y2="325" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="324" y="340" font-size="13" fill="#1F2A28" text-anchor="middle">40</text>
+<line x1="436" y1="320" x2="436" y2="325" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="436" y="340" font-size="13" fill="#1F2A28" text-anchor="middle">60</text>
+<line x1="548" y1="320" x2="548" y2="325" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="548" y="340" font-size="13" fill="#1F2A28" text-anchor="middle">80</text>
+<line x1="660" y1="320" x2="660" y2="325" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="660" y="340" font-size="13" fill="#1F2A28" text-anchor="middle">100</text>
+<line x1="95" y1="320" x2="100" y2="320" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="324.5" font-size="13" fill="#1F2A28" text-anchor="end">1</text>
+<line x1="95" y1="223.3" x2="100" y2="223.3" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="227.8" font-size="13" fill="#1F2A28" text-anchor="end">10</text>
+<line x1="95" y1="126.7" x2="100" y2="126.7" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="131.2" font-size="13" fill="#1F2A28" text-anchor="end">100</text>
+<line x1="95" y1="30" x2="100" y2="30" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="34.5" font-size="13" fill="#1F2A28" text-anchor="end">1,000</text>
+<text x="380" y="364" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">Age (% of maximum life span)</text>
+<text x="42" y="175" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700" transform="rotate(-90 42 175)">Survivors (log scale)</text>
+<polyline points="100,30 156,30.8 212,31.3 268,31.7 324,32.6 380,34 436,36.3 492,42.1 548,59.1 604,109.6 660,320" fill="none" stroke="#474A10" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="100,30 156,59 212,88 268,117 324,146.1 380,174.5 436,203.6 492,232.7 548,261.8 604,290.9 660,320" fill="none" stroke="#0072B2" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 6"/>
+<polyline points="100,30 156,165.1 212,215.7 268,227.8 324,238.3 380,244.8 436,252.4 492,261.8 548,273.9 604,290.9 660,320" fill="none" stroke="#D55E00" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="324" y="22" font-size="15" fill="#474A10" font-weight="700">Type I</text>
+<text x="346.4" y="141.6" font-size="15" fill="#0072B2" font-weight="700">Type II</text>
+<text x="268" y="203.6" font-size="15" fill="#D55E00" font-weight="700">Type III</text>
+<text x="110" y="312" font-size="12" fill="#1F2A28" font-style="italic">Start: 1,000 newborns at age 0</text>
+</svg>

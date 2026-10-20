@@ -1,0 +1,20 @@
+{
+ "convection": {
+  "def": "A loop of motion in a fluid heated from below: warm, less dense material rises, spreads, cools and sinks. Convection currents in Earth's mantle move the tectonic plates."
+ },
+ "plate-tectonics": {
+  "def": "The theory that Earth's rigid outer layer is broken into large plates that move slowly over the hotter mantle, driven by heat from inside Earth."
+ },
+ "convergent-boundary": {
+  "def": "A plate boundary where two plates move toward each other. A denser ocean plate sinks under the other plate (subduction), forming a trench, earthquakes and volcanoes; two continents crumple into high mountains."
+ },
+ "divergent-boundary": {
+  "def": "A plate boundary where two plates move apart. Magma rises and forms new crust, building mid-ocean ridges (seafloor spreading) or rift valleys on land."
+ },
+ "transform-boundary": {
+  "def": "A plate boundary where two plates slide past each other sideways. Stress builds and is released as earthquakes; there is little volcanic activity."
+ },
+ "hot-spot": {
+  "def": "A place where a column of hot mantle rock stays fixed while a plate moves over it, building a chain of volcanoes that get older in the direction the plate moves, such as the Hawaiian Islands."
+ }
+}

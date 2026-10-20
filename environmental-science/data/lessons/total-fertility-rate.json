@@ -1,0 +1,68 @@
+{
+ "topic": "total-fertility-rate",
+ "hook": "In 1960, women in many countries had six or seven children on average. Today, in most of those same countries, the average is under three, and in some it is under two. The single number that tracks this change is the total fertility rate, and whether it sits above or below about 2.1 tells you a lot about where a population is headed.",
+ "prereq": [
+  {
+   "q": "What does a wide base on a population pyramid predict?",
+   "options": [
+    "Rapid population growth",
+    "A shrinking population",
+    "No change in population",
+    "A population of mostly older people"
+   ],
+   "correct": 0,
+   "why": "A wide base means many young people who will soon have children.",
+   "review": "age-structure"
+  },
+  {
+   "q": "Why can a population keep growing for decades after families get smaller?",
+   "options": [
+    "Population momentum: large young cohorts are still reaching parenting age",
+    "People live forever",
+    "Families get larger again",
+    "Deaths stop"
+   ],
+   "correct": 0,
+   "why": "The large young cohorts still have to have their own children.",
+   "review": "age-structure"
+  }
+ ],
+ "figure": {
+  "figure": "total-fertility-rate-trends",
+  "caption": "Total fertility rate in two invented countries from 1960 to 2020, with replacement level at about 2.1."
+ },
+ "chain": [
+  {
+   "cause": "Girls and women get more years of schooling and more chances to work for pay",
+   "effect": "they tend to marry and have children later, and choose to have fewer"
+  },
+  {
+   "cause": "Infant mortality falls, and family planning becomes easier to get",
+   "effect": "parents no longer need many births to be sure some children survive, and they can choose how many to have"
+  },
+  {
+   "cause": "The total fertility rate falls toward or below replacement level, about 2.1",
+   "effect": "population growth slows, and in time the population can stop growing or start to shrink"
+  }
+ ],
+ "ideas": [
+  "The <b>total fertility rate</b> (TFR) is the average number of children a woman would have in her lifetime at a population’s current birth patterns.",
+  "<b>Replacement-level fertility</b> is the TFR at which each generation just replaces itself: about 2.1 in countries where few children die young. It is a little above 2 because some children die before adulthood and slightly more boys than girls are born.",
+  "<b>Infant mortality</b> is the number of babies who die before their first birthday, per 1,000 live births. Where it is high, families tend to have more children; as it falls, TFR tends to fall too.",
+  "Factors that lower TFR: more education and paid work for women, access to family planning, lower infant mortality, people moving to cities, pensions for old age. Factors that raise it: early marriage, children working on family farms, religious and cultural values that favor large families."
+ ],
+ "misconception": {
+  "wrong": "A TFR of 2.0 means the population is growing slowly, because 2 is more than 0.",
+  "right": "Two children replace two parents, but not quite: some children die before having their own, so a population needs about 2.1 to replace itself. Over the long run, a TFR of 2.0 means a slowly shrinking population."
+ },
+ "check": [
+  "env-total-fertility-rate-1",
+  "env-total-fertility-rate-2",
+  "env-total-fertility-rate-3",
+  "env-total-fertility-rate-4",
+  "env-total-fertility-rate-8",
+  "env-total-fertility-rate-9",
+  "env-total-fertility-rate-14"
+ ],
+ "summary": "The total fertility rate is the average number of children a woman would have in her lifetime. Replacement level is about 2.1, a little above 2 because some children die young. Education and paid work for women, family planning, lower infant mortality and urban living lower TFR; where children work on farms and support parents in old age, TFR tends to stay high. A TFR below replacement means, in the long run, a shrinking population."
+}

@@ -1,0 +1,589 @@
+{
+ "stimuli": {
+  "solar-radiation-seasons-s1": {
+   "kind": "quantitative",
+   "title": "Average sunlight reaching the top of the atmosphere by latitude",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of yearly average incoming sunlight against latitude from the equator to the pole, invented data close to measured values",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Incoming sunlight",
+      "points": [
+       [
+        0,
+        420
+       ],
+       [
+        15,
+        410
+       ],
+       [
+        30,
+        380
+       ],
+       [
+        45,
+        330
+       ],
+       [
+        60,
+        260
+       ],
+       [
+        75,
+        200
+       ],
+       [
+        90,
+        175
+       ]
+      ]
+     }
+    ],
+    "y": [
+     0,
+     450
+    ],
+    "zero": true,
+    "xLabel": "Latitude (degrees north)",
+    "yLabel": "Sunlight (W/m²)"
+   }
+  },
+  "solar-radiation-seasons-s2": {
+   "kind": "quantitative",
+   "title": "How much sunlight different surfaces reflect",
+   "invented": true,
+   "table": {
+    "caption": "Typical albedo of surfaces: the percent of incoming sunlight reflected (invented values within measured ranges)",
+    "cols": [
+     "Surface",
+     "Albedo (%)"
+    ],
+    "rows": [
+     [
+      "Fresh snow",
+      "85"
+     ],
+     [
+      "Sea ice",
+      "60"
+     ],
+     [
+      "Desert sand",
+      "40"
+     ],
+     [
+      "Grassland",
+      "25"
+     ],
+     [
+      "Forest",
+      "12"
+     ],
+     [
+      "Open ocean",
+      "6"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-solar-radiation-seasons-1",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What causes Earth's seasons?",
+   "options": [
+    "The tilt of Earth's axis",
+    "Earth's changing distance from the Sun",
+    "The Sun giving off more energy in summer",
+    "Changes in how fast Earth spins"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Earth's axis is tilted about 23.5°. As Earth orbits, each hemisphere takes turns leaning toward the Sun, getting more direct sunlight and longer days.",
+    "options": [
+     "Right: the tilt makes each hemisphere lean toward or away from the Sun.",
+     "Earth is closest to the Sun in early January, during northern winter, so distance is not the cause.",
+     "The Sun's output barely changes over a year.",
+     "Earth spins at a steady rate; that makes day and night, not seasons."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-2",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the equator receive more solar energy per square meter than the poles over a year?",
+   "options": [
+    "Sunlight strikes it more directly, so it is more concentrated",
+    "The equator is much closer to the Sun than the poles are",
+    "The poles have more clouds, which block most of the sunlight",
+    "The equator has more hours of daylight on each day of the year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A beam of light that hits the surface head-on lights a small area; the same beam at a low angle spreads over a larger area, so each square meter gets less.",
+    "options": [
+     "Right: the angle of the sunlight decides how concentrated it is.",
+     "The difference in distance is tiny compared with 150 million km.",
+     "Clouds matter locally, but the main cause is the angle of sunlight.",
+     "The equator has about 12 hours of daylight all year; the poles have long summer days, so day length is not the main cause."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-3",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In June, Chicago (42° N) has long, warm days while Buenos Aires (35° S) has short, cool days. Why?",
+   "options": [
+    "The Northern Hemisphere tilts toward the Sun in June",
+    "Chicago is closer to the Sun than Buenos Aires in June",
+    "The Southern Hemisphere gets very little sunlight in June",
+    "Buenos Aires lies farther from the equator than Chicago"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In June the North Pole leans toward the Sun, so the Northern Hemisphere has summer while the Southern Hemisphere, tilted away, has winter.",
+    "options": [
+     "Right: the hemispheres have opposite seasons because of the tilt.",
+     "Both cities are the same distance from the Sun.",
+     "The Southern Hemisphere still gets sunlight; it is just less direct and for fewer hours.",
+     "Buenos Aires (35°) is closer to the equator than Chicago (42°), yet it is in winter."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-4",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is albedo?",
+   "options": [
+    "The share of incoming sunlight a surface reflects",
+    "The amount of heat a surface gives off at night",
+    "The angle at which sunlight strikes the ground",
+    "The amount of sunlight a plant uses for photosynthesis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Albedo is reflectivity: fresh snow reflects most sunlight (high albedo); dark ocean water absorbs most of it (low albedo).",
+    "options": [
+     "Right: albedo is the fraction or percent of sunlight reflected.",
+     "Heat given off is a separate process from reflecting sunlight.",
+     "The angle of sunlight is a different idea; it sets insolation.",
+     "Photosynthesis uses a small share of light; albedo is about reflection."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-5",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "As Arctic sea ice melts, dark ocean water is exposed. Which chain explains why this speeds up warming in the Arctic?",
+   "options": [
+    "Lower albedo, more sunlight absorbed, more ice melts",
+    "Higher albedo, more sunlight reflected, ice regrows",
+    "Lower albedo, less sunlight absorbed, the air cools",
+    "Melting ice releases stored heat, and the sea refreezes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ice reflects most sunlight; ocean water absorbs most of it. Exposed water absorbs more energy, warms, and melts more ice: a loop that amplifies itself.",
+    "options": [
+     "Right: losing bright ice lowers albedo and adds absorbed energy.",
+     "Open water has a lower albedo than ice, not higher.",
+     "Lower albedo means more sunlight absorbed, not less.",
+     "Melting ice absorbs heat; it does not release it."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-6",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Fresh snow has an albedo of 85%. If 300 W/m² of sunlight strikes a snowfield, how much is absorbed?",
+   "why": {
+    "correct": "Snow reflects 85%, so it absorbs $100\\% - 85\\% = 15\\%$: $0.15 \\times 300\\,\\text{W/m}^{2} = 45\\,\\text{W/m}^{2}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      15,
+      300
+     ]
+    },
+    "unit": "W/m^2",
+    "units": [
+     "W/m2",
+     "W per m^2",
+     "watts per square meter"
+    ],
+    "mistakes": [
+     {
+      "value": 255,
+      "why": "That is the amount reflected (85% of 300). Absorbed is the rest: 15% of 300."
+     },
+     {
+      "value": 4500,
+      "why": "Write 15% as 0.15, not 15: 0.15 × 300 = 45."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-7",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What trend does the graph show?",
+   "stimulus": "solar-radiation-seasons-s1",
+   "options": [
+    "Incoming sunlight decreases from the equator toward the pole",
+    "Incoming sunlight increases from the equator toward the pole",
+    "Incoming sunlight is about the same at each latitude",
+    "Incoming sunlight is lowest at 45° and highest at the pole"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sunlight falls from 420 W/m² at the equator to 175 W/m² at the pole.",
+    "options": [
+     "Right: the line falls with latitude.",
+     "The line slopes down, not up.",
+     "The values range from 420 to 175 W/m².",
+     "The pole has the lowest value, 175 W/m²."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-8",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the graph. Write the setup for the percent change in incoming sunlight from the equator (420 W/m²) to 60° N (260 W/m²), then the answer.",
+   "stimulus": "solar-radiation-seasons-s1",
+   "why": {
+    "correct": "$\\frac{260 - 420}{420} \\times 100 \\approx -38\\%$. Sunlight at 60° N is about 38% less than at the equator."
+   },
+   "setup": {
+    "answer": "(260 - 420) / 420 * 100",
+    "mustUse": [
+     "260",
+     "420"
+    ],
+    "mistakes": [
+     {
+      "expr": "(260 - 420) / 260 * 100",
+      "why": "Divide by the starting value, 420 at the equator, not 260."
+     },
+     {
+      "expr": "(420 - 260) / 420 * 100",
+      "why": "Use new minus old: (260 - 420). The sunlight falls, so the change is negative."
+     },
+     {
+      "expr": "260 - 420 / 420 * 100",
+      "why": "Put brackets around the difference so it is divided as a whole."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       420,
+       260
+      ]
+     },
+     "unit": "%",
+     "mistakes": [
+      {
+       "value": -0.380952381,
+       "why": "Multiply by 100 to turn the fraction into a percent: about −38%."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         260,
+         420
+        ]
+       },
+       "why": "That is the change from 60° N back to the equator. Start at the equator."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-9",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best accounts for the trend in the graph?",
+   "stimulus": "solar-radiation-seasons-s1",
+   "options": [
+    "Sunlight strikes high latitudes at a low angle and spreads out",
+    "Higher latitudes are a great deal farther from the Sun",
+    "The atmosphere is thinner at the poles, so it blocks more light",
+    "Higher latitudes have shorter days in each of the seasons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The curve of Earth means sunlight hits high latitudes at a slant, spreading the same energy over a larger area.",
+    "options": [
+     "Right: the angle of the sunlight explains the decrease.",
+     "All latitudes are essentially the same distance from the Sun.",
+     "A thinner atmosphere would block less light, not more.",
+     "High latitudes have very long days in summer."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-10",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How does the pattern in the graph help explain where tropical rainforests and tundra are found?",
+   "stimulus": "solar-radiation-seasons-s1",
+   "options": [
+    "Strong sunlight keeps the tropics warm; weak sunlight keeps the poles cold",
+    "More sunlight near the poles melts the ice, which makes rainforests there",
+    "Sunlight is equal at each latitude, so biomes depend on rainfall",
+    "Less sunlight near the equator keeps rainforests cool and moist"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Abundant, steady insolation keeps the tropics warm year-round; low insolation keeps polar regions cold, giving tundra.",
+    "options": [
+     "Right: insolation sets the temperature that shapes biomes.",
+     "The poles get the least sunlight, not the most.",
+     "Sunlight differs a lot with latitude, and temperature matters as much as rainfall.",
+     "The equator gets the most sunlight."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-11",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the table, which surface absorbs the most sunlight?",
+   "stimulus": "solar-radiation-seasons-s2",
+   "options": [
+    "Open ocean",
+    "Fresh snow",
+    "Desert sand",
+    "Grassland"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Open ocean reflects only 6%, so it absorbs about 94% of the sunlight that reaches it.",
+    "options": [
+     "Right: the lowest albedo absorbs the most.",
+     "Fresh snow reflects the most (85%), so it absorbs the least.",
+     "Desert sand reflects 40%.",
+     "Grassland reflects 25%."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-12",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the table. A forest receives 200 W/m² of sunlight. How much does it reflect?",
+   "stimulus": "solar-radiation-seasons-s2",
+   "why": {
+    "correct": "$0.12 \\times 200\\,\\text{W/m}^{2} = 24\\,\\text{W/m}^{2}$ reflected."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      12,
+      200
+     ]
+    },
+    "unit": "W/m^2",
+    "units": [
+     "W/m2",
+     "watts per square meter"
+    ],
+    "mistakes": [
+     {
+      "value": 176,
+      "why": "That is the amount absorbed (88%). The question asks what is reflected: 12% of 200."
+     },
+     {
+      "value": 2400,
+      "why": "Write 12% as 0.12: 0.12 × 200 = 24."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-13",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A snowy area of northern forest is cleared and becomes snow-covered grassland in winter. Using the table, what would happen to the amount of sunlight the land reflects in winter?",
+   "stimulus": "solar-radiation-seasons-s2",
+   "options": [
+    "It would increase: open snow reflects more than dark trees",
+    "It would decrease: grass reflects less light than forest does",
+    "It would stay the same: the area still gets the same sunlight",
+    "It would decrease: snow absorbs most of the sunlight it gets"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dark evergreen trees stick up through the snow and absorb sunlight. Cleared land under snow is a bright surface with an albedo near 85%, so it reflects much more.",
+    "options": [
+     "Right: open snow has a much higher albedo than forest.",
+     "In winter the grass is buried under snow, which reflects far more than forest.",
+     "Incoming sunlight is the same, but the share reflected changes.",
+     "Snow reflects most sunlight; its albedo is 85%."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-14",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain why a city at 45° N has longer days in June than in December.",
+   "why": {
+    "correct": "The tilt, not distance, changes how long the Sun is up and how high it climbs."
+   },
+   "specific": {
+    "frame": "In June the ___, so ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "North Pole is tilted toward the Sun",
+       "Earth is closest to the Sun",
+       "Sun gives off more light"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Earth is closest to the Sun in January, not June.",
+       "2": "The Sun's output hardly changes over the year."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "the Sun stays above the horizon longer each day",
+       "Earth spins more slowly",
+       "the city moves closer to the equator"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Earth spins at the same rate all year.",
+       "2": "The city stays at 45° N."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "gives the city more hours of daylight",
+       "gives the city fewer hours of daylight",
+       "keeps the hours of daylight the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Longer time above the horizon means more daylight, not less.",
+       "2": "Day length does change with the seasons at 45° N."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "tilt",
+      "June"
+     ]
+    },
+    "model": "In June the North Pole is tilted toward the Sun, so the Sun stays above the horizon longer each day, which means the city gets more hours of daylight than in December, when the tilt points it away."
+   }
+  },
+  {
+   "id": "env-solar-radiation-seasons-15",
+   "unit": "unit-4",
+   "topic": "solar-radiation-seasons",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "On about March 20 and September 22, day and night are each about 12 hours long almost everywhere on Earth. What is true of Earth's tilt on those dates?",
+   "options": [
+    "Neither pole is tilted toward the Sun",
+    "The North Pole is tilted toward the Sun",
+    "The South Pole is tilted toward the Sun",
+    "Earth's axis stops being tilted for a day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the equinoxes Earth is at a point in its orbit where the tilt is sideways to the Sun, so neither hemisphere leans toward it and both get equal day and night.",
+    "options": [
+     "Right: at the equinoxes the tilt points neither pole at the Sun.",
+     "That is the case around June 21, northern summer.",
+     "That is the case around December 21, southern summer.",
+     "The tilt stays about 23.5° all year; only its direction relative to the Sun changes."
+    ]
+   }
+  }
+ ]
+}

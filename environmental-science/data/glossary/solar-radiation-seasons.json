@@ -1,0 +1,11 @@
+{
+ "insolation": {
+  "def": "Incoming solar radiation: the Sun's energy reaching an area, in watts per square meter (W/m²). It is greatest where sunlight strikes most directly, near the equator."
+ },
+ "axial-tilt": {
+  "def": "The tilt of Earth's axis, about 23.5°, which keeps pointing the same way as Earth orbits the Sun. It causes the seasons: the hemisphere tilted toward the Sun has summer."
+ },
+ "albedo": {
+  "def": "The share of incoming sunlight a surface reflects. Snow and ice have a high albedo; open ocean and forest have a low albedo and absorb more energy."
+ }
+}

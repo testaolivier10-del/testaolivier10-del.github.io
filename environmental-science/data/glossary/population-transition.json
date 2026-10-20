@@ -1,0 +1,8 @@
+{
+ "demographic-transition": {
+  "def": "A model of how a country’s crude birth and death rates change as it develops economically: both start high, the death rate falls first, then the birth rate falls, and both end low. It has four stages."
+ },
+ "transition-stages": {
+  "def": "The four stages of the demographic transition. Preindustrial (1): high birth and death rates, slow growth. Transitional (2): falling death rate, high birth rate, fast growth. Industrial (3): falling birth rate, slowing growth. Postindustrial (4): low birth and death rates, little or no growth."
+ }
+}

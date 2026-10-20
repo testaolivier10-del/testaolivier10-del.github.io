@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 530" width="760" height="530" role="img" aria-labelledby="el-nino-la-nina-sst-map-t el-nino-la-nina-sst-map-d" font-family="Arial, Helvetica, sans-serif">
+<title id="el-nino-la-nina-sst-map-t">Pacific sea surface temperatures in El Niño and La Niña</title>
+<desc id="el-nino-la-nina-sst-map-d">Two schematic maps of the tropical Pacific Ocean from Indonesia and Australia in the west to Peru in the east, with the equator and the 180 degree line marked. Colors show sea surface temperature compared with the long-term average. Top, El Niño: a long band of warmer than average water lies along the equator from the central Pacific east to the coast of Peru, warmest near South America; the far western Pacific is slightly cooler than average. Bottom, La Niña: a tongue of cooler than average water stretches west along the equator from near South America into the central Pacific; the far western Pacific is slightly warmer than average. Invented pattern for practice, not a real year.</desc>
+<defs><marker id="ar-ink" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="ar-olive" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#474A10"/></marker><marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker><marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker><marker id="ar-verm" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="760" height="530" fill="#FFFFFF"/>
+<clipPath id="sst-clip-0"><rect x="60" y="50" width="670" height="190"/></clipPath>
+<rect x="60" y="50" width="670" height="190" rx="0" fill="#E6F1F8" stroke="none" stroke-width="1.5"/>
+<g clip-path="url(#sst-clip-0)">
+<ellipse cx="201.05" cy="109.71" rx="70.53" ry="21.71" fill="#0072B2" stroke="none" stroke-width="1.5" opacity="0.3"/>
+<ellipse cx="571.32" cy="131.43" rx="193.95" ry="24.43" fill="#D55E00" stroke="none" stroke-width="1.5" opacity="0.55"/>
+<ellipse cx="571.32" cy="131.43" rx="134" ry="16.29" fill="#D55E00" stroke="none" stroke-width="1.5" opacity="0.75"/>
+<ellipse cx="624.21" cy="136.86" rx="70.53" ry="10.86" fill="#D55E00" stroke="none" stroke-width="1.5" opacity="0.9"/>
+<path d="M109.37 191.14 L137.58 177.57 L165.79 164 L186.95 164 L208.11 161.29 L222.21 183 L246.89 199.29 L236.32 231.86 L204.58 235.93 L169.32 216.93 L130.53 223.71 L109.37 223.71 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M169.32 134.14 L204.58 139.57 L236.32 147.71 L225.74 158.57 L204.58 155.86 L179.89 142.29 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M91.74 127.36 L105.84 123.29 L119.95 112.43 L127 117.86 L123.47 128.71 L116.42 140.93 L98.79 139.57 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M44.13 116.5 L60 126 L74.11 134.14 L81.16 147.71 L67.05 142.29 L52.95 131.43 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M77.63 147.71 L98.79 149.07 L111.13 153.14 L88.21 153.14 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M730 50 L571.32 50 L588.95 63.57 L606.58 77.14 L631.26 85.29 L659.47 93.43 L680.63 107 L691.21 109.71 L698.26 126 L692.97 139.57 L691.21 147.71 L698.26 158.57 L708.84 169.43 L726.47 180.29 L730 180.29 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+</g>
+<rect x="60" y="50" width="670" height="190" rx="0" fill="none" stroke="#6B7370" stroke-width="1"/>
+<line x1="60" y1="131.43" x2="730" y2="131.43" stroke="#1F2A28" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="66" y="126.43" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Equator</text>
+<line x1="342.11" y1="50" x2="342.11" y2="240" stroke="#6B7370" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="346.11" y="234" font-size="10.5" font-weight="normal" fill="#6B7370" text-anchor="start">180°</text>
+<text x="176.37" y="199.29" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="middle">Australia</text>
+<text x="715.89" y="153.14" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="middle">Peru</text>
+<text x="81.16" y="104.29" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Indonesia</text>
+<text x="46" y="145" font-size="15" font-weight="bold" fill="#D55E00" text-anchor="middle" transform="rotate(-90 46 145)">El Niño</text>
+<rect x="310" y="58" width="14" height="14" rx="0" fill="#D55E00" stroke="none" stroke-width="1.5" opacity="0.75"/>
+<text x="330" y="70" font-size="11.5" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Warmer than average</text>
+<rect x="480" y="58" width="14" height="14" rx="0" fill="#0072B2" stroke="none" stroke-width="1.5" opacity="0.75"/>
+<text x="500" y="70" font-size="11.5" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Cooler than average</text>
+<clipPath id="sst-clip-1"><rect x="60" y="300" width="670" height="190"/></clipPath>
+<rect x="60" y="300" width="670" height="190" rx="0" fill="#E6F1F8" stroke="none" stroke-width="1.5"/>
+<g clip-path="url(#sst-clip-1)">
+<ellipse cx="201.05" cy="367.86" rx="63.47" ry="21.71" fill="#D55E00" stroke="none" stroke-width="1.5" opacity="0.28"/>
+<ellipse cx="518.42" cy="381.43" rx="176.32" ry="19" fill="#0072B2" stroke="none" stroke-width="1.5" opacity="0.5"/>
+<ellipse cx="536.05" cy="381.43" rx="112.84" ry="13.57" fill="#0072B2" stroke="none" stroke-width="1.5" opacity="0.75"/>
+<path d="M109.37 441.14 L137.58 427.57 L165.79 414 L186.95 414 L208.11 411.29 L222.21 433 L246.89 449.29 L236.32 481.86 L204.58 485.93 L169.32 466.93 L130.53 473.71 L109.37 473.71 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M169.32 384.14 L204.58 389.57 L236.32 397.71 L225.74 408.57 L204.58 405.86 L179.89 392.29 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M91.74 377.36 L105.84 373.29 L119.95 362.43 L127 367.86 L123.47 378.71 L116.42 390.93 L98.79 389.57 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M44.13 366.5 L60 376 L74.11 384.14 L81.16 397.71 L67.05 392.29 L52.95 381.43 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M77.63 397.71 L98.79 399.07 L111.13 403.14 L88.21 403.14 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+<path d="M730 300 L571.32 300 L588.95 313.57 L606.58 327.14 L631.26 335.29 L659.47 343.43 L680.63 357 L691.21 359.71 L698.26 376 L692.97 389.57 L691.21 397.71 L698.26 408.57 L708.84 419.43 L726.47 430.29 L730 430.29 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1" stroke-linejoin="round"/>
+</g>
+<rect x="60" y="300" width="670" height="190" rx="0" fill="none" stroke="#6B7370" stroke-width="1"/>
+<line x1="60" y1="381.43" x2="730" y2="381.43" stroke="#1F2A28" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="66" y="376.43" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Equator</text>
+<line x1="342.11" y1="300" x2="342.11" y2="490" stroke="#6B7370" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="346.11" y="484" font-size="10.5" font-weight="normal" fill="#6B7370" text-anchor="start">180°</text>
+<text x="176.37" y="449.29" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="middle">Australia</text>
+<text x="715.89" y="403.14" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="middle">Peru</text>
+<text x="81.16" y="354.29" font-size="11" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Indonesia</text>
+<text x="46" y="395" font-size="15" font-weight="bold" fill="#0072B2" text-anchor="middle" transform="rotate(-90 46 395)">La Niña</text>
+<rect x="310" y="308" width="14" height="14" rx="0" fill="#D55E00" stroke="none" stroke-width="1.5" opacity="0.75"/>
+<text x="330" y="320" font-size="11.5" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Warmer than average</text>
+<rect x="480" y="308" width="14" height="14" rx="0" fill="#0072B2" stroke="none" stroke-width="1.5" opacity="0.75"/>
+<text x="500" y="320" font-size="11.5" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Cooler than average</text>
+<text x="380" y="520" font-size="11" font-weight="normal" fill="#6B7370" text-anchor="middle" font-style="italic">Schematic map: sea surface temperature compared with the long-term average (invented pattern for practice).</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 750" width="760" height="750" role="img" aria-labelledby="el-nino-la-nina-compare-t el-nino-la-nina-compare-d" font-family="Arial, Helvetica, sans-serif">
+<title id="el-nino-la-nina-compare-t">Normal, El Niño and La Niña conditions in the equatorial Pacific</title>
+<desc id="el-nino-la-nina-compare-d">Three cross-sections of the equatorial Pacific Ocean, with Australia and Indonesia on the left (west) and South America on the right (east). Normal year: moderate trade winds blow from east to west, warm surface water piles up in the west, and upwelling off Peru brings cold, nutrient-rich water to the surface; rain clouds sit over the western Pacific. El Niño: the trade winds weaken, warm water spreads east toward South America, upwelling off Peru weakens, and the rain moves east into the central and eastern Pacific. La Niña: the trade winds strengthen, warm water is pushed farther west, upwelling off South America strengthens, the eastern Pacific is colder than normal, and heavy rain falls over the far western Pacific.</desc>
+<defs><marker id="ar-ink" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="ar-olive" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#474A10"/></marker><marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker><marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker><marker id="ar-verm" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="760" height="750" fill="#FFFFFF"/>
+<rect x="10" y="10" width="740" height="222" rx="0" fill="#FFFFFF" stroke="#E9ECEB" stroke-width="1"/>
+<text x="20" y="30" font-size="15" font-weight="bold" fill="#1F2A28" text-anchor="start">Normal year</text>
+<text x="110" y="30" font-size="11.5" font-weight="normal" fill="#6B7370" text-anchor="start">Trade winds push warm water west; upwelling off Peru brings up cold, nutrient-rich water.</text>
+<rect x="10" y="128" width="70" height="96" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<text x="45" y="194" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">Australia,</text><text x="45" y="207.13" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">Indonesia</text>
+<rect x="680" y="116" width="70" height="108" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<text x="715" y="194" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">South</text><text x="715" y="207.13" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">America</text>
+<rect x="80" y="138" width="600" height="86" rx="0" fill="#CFE3F1" stroke="none" stroke-width="1.5"/>
+<path d="M80 138 L680 138 L680 155.5 C480 155.5 330 190 80 190 Z" fill="#F6D9C6" stroke="#D55E00" stroke-width="1" stroke-linejoin="round"/>
+<text x="210" y="158" font-size="11" font-weight="bold" fill="#D55E00" text-anchor="start">warm water</text>
+<text x="530" y="216" font-size="11" font-weight="normal" fill="#0072B2" text-anchor="start">colder, deeper water</text>
+<line x1="660" y1="218" x2="660" y2="159.5" stroke="#0072B2" stroke-width="2" marker-end="url(#ar-blue)"/>
+<line x1="642" y1="218" x2="642" y2="159.5" stroke="#0072B2" stroke-width="2" marker-end="url(#ar-blue)"/>
+<text x="650" y="181.5" font-size="10.5" font-weight="normal" fill="#0072B2" text-anchor="end" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">upwelling</text>
+<line x1="330" y1="124" x2="260" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#ar-ink)"/>
+<line x1="470" y1="124" x2="400" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#ar-ink)"/>
+<line x1="610" y1="124" x2="540" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#ar-ink)"/>
+<text x="560" y="114" font-size="11" font-weight="bold" fill="#1F2A28" text-anchor="middle">trade winds</text>
+<path d="M170 64 a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z" fill="#E3E6E5" stroke="#6B7370" stroke-width="1" stroke-linejoin="round"/>
+<line x1="182" y1="84" x2="178" y2="100" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="194" y1="84" x2="190" y2="100" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="206" y1="84" x2="202" y2="100" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="218" y1="84" x2="214" y2="100" stroke="#0072B2" stroke-width="1.4"/>
+<text x="234" y="80" font-size="10.5" font-weight="normal" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">rising air, heavy rain</text>
+<rect x="10" y="256" width="740" height="222" rx="0" fill="#FFFFFF" stroke="#E9ECEB" stroke-width="1"/>
+<text x="20" y="276" font-size="15" font-weight="bold" fill="#D55E00" text-anchor="start">El Niño</text>
+<text x="110" y="276" font-size="11.5" font-weight="normal" fill="#6B7370" text-anchor="start">Trade winds weaken; warm water spreads east; upwelling off Peru weakens; the rain moves east.</text>
+<rect x="10" y="374" width="70" height="96" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<text x="45" y="440" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">Australia,</text><text x="45" y="453.13" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">Indonesia</text>
+<rect x="680" y="362" width="70" height="108" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<text x="715" y="440" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">South</text><text x="715" y="453.13" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">America</text>
+<rect x="80" y="384" width="600" height="86" rx="0" fill="#CFE3F1" stroke="none" stroke-width="1.5"/>
+<path d="M80 384 L680 384 L680 421.5 C480 421.5 330 418 80 418 Z" fill="#F6D9C6" stroke="#D55E00" stroke-width="1" stroke-linejoin="round"/>
+<text x="210" y="404" font-size="11" font-weight="bold" fill="#D55E00" text-anchor="start">warm water</text>
+<text x="530" y="462" font-size="11" font-weight="normal" fill="#0072B2" text-anchor="start">colder, deeper water</text>
+<text x="650" y="439.5" font-size="10.5" font-weight="normal" fill="#0072B2" text-anchor="end" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">weak upwelling</text>
+<line x1="330" y1="370" x2="286" y2="370" stroke="#1F2A28" stroke-width="1.85" marker-end="url(#ar-ink)"/>
+<line x1="470" y1="370" x2="426" y2="370" stroke="#1F2A28" stroke-width="1.85" marker-end="url(#ar-ink)"/>
+<line x1="610" y1="370" x2="566" y2="370" stroke="#1F2A28" stroke-width="1.85" marker-end="url(#ar-ink)"/>
+<text x="560" y="360" font-size="11" font-weight="bold" fill="#1F2A28" text-anchor="middle">weak trade winds</text>
+<path d="M440 310 a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z" fill="#E3E6E5" stroke="#6B7370" stroke-width="1" stroke-linejoin="round"/>
+<line x1="452" y1="330" x2="448" y2="346" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="464" y1="330" x2="460" y2="346" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="476" y1="330" x2="472" y2="346" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="488" y1="330" x2="484" y2="346" stroke="#0072B2" stroke-width="1.4"/>
+<text x="504" y="326" font-size="10.5" font-weight="normal" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">rising air, heavy rain</text>
+<rect x="10" y="502" width="740" height="222" rx="0" fill="#FFFFFF" stroke="#E9ECEB" stroke-width="1"/>
+<text x="20" y="522" font-size="15" font-weight="bold" fill="#0072B2" text-anchor="start">La Niña</text>
+<text x="110" y="522" font-size="11.5" font-weight="normal" fill="#6B7370" text-anchor="start">Trade winds strengthen; warm water is pushed farther west; stronger upwelling cools the east.</text>
+<rect x="10" y="620" width="70" height="96" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<text x="45" y="686" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">Australia,</text><text x="45" y="699.13" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">Indonesia</text>
+<rect x="680" y="608" width="70" height="108" rx="0" fill="#D9C7A8" stroke="none" stroke-width="1.5"/>
+<text x="715" y="686" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">South</text><text x="715" y="699.13" font-size="10.5" font-weight="normal" fill="#1F2A28" text-anchor="middle">America</text>
+<rect x="80" y="630" width="600" height="86" rx="0" fill="#CFE3F1" stroke="none" stroke-width="1.5"/>
+<path d="M80 630 L680 630 L680 641 C480 641 330 688 80 688 Z" fill="#F6D9C6" stroke="#D55E00" stroke-width="1" stroke-linejoin="round"/>
+<text x="210" y="650" font-size="11" font-weight="bold" fill="#D55E00" text-anchor="start">warm water</text>
+<text x="530" y="708" font-size="11" font-weight="normal" fill="#0072B2" text-anchor="start">colder, deeper water</text>
+<line x1="660" y1="710" x2="660" y2="645" stroke="#0072B2" stroke-width="2.6" marker-end="url(#ar-blue)"/>
+<line x1="642" y1="710" x2="642" y2="645" stroke="#0072B2" stroke-width="2.6" marker-end="url(#ar-blue)"/>
+<text x="650" y="667" font-size="10.5" font-weight="normal" fill="#0072B2" text-anchor="end" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">strong upwelling</text>
+<line x1="330" y1="616" x2="236" y2="616" stroke="#1F2A28" stroke-width="3.1" marker-end="url(#ar-ink)"/>
+<line x1="470" y1="616" x2="376" y2="616" stroke="#1F2A28" stroke-width="3.1" marker-end="url(#ar-ink)"/>
+<line x1="610" y1="616" x2="516" y2="616" stroke="#1F2A28" stroke-width="3.1" marker-end="url(#ar-ink)"/>
+<text x="560" y="606" font-size="11" font-weight="bold" fill="#1F2A28" text-anchor="middle">strong trade winds</text>
+<path d="M130 556 a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z" fill="#E3E6E5" stroke="#6B7370" stroke-width="1" stroke-linejoin="round"/>
+<line x1="142" y1="576" x2="138" y2="592" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="154" y1="576" x2="150" y2="592" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="166" y1="576" x2="162" y2="592" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="178" y1="576" x2="174" y2="592" stroke="#0072B2" stroke-width="1.4"/>
+<text x="194" y="572" font-size="10.5" font-weight="normal" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">rising air, heavy rain</text>
+</svg>

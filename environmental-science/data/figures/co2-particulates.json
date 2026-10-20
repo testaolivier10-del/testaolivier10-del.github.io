@@ -1,0 +1,12 @@
+{
+ "co2-particulates-natural-sources": {
+  "file": "figures/co2-particulates-natural-sources.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram of natural sources of CO2 and particulate matter. A volcano releases CO2, sulfur dioxide and ash; a wildfire releases CO2 and smoke particles; decomposing leaves and breathing animals release CO2; wind lifts desert dust and sea spray particles; plants release pollen."
+ }
+}

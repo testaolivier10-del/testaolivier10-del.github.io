@@ -1,0 +1,12 @@
+{
+ "carrying-limits-overshoot": {
+  "file": "figures/carrying-limits-overshoot.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph of an invented deer herd on an island over 30 years. It grows from 50 to a peak of 1,700 in year 16, well above the carrying capacity of 1,000 (dashed line), then dies back to 380 by year 22 and recovers only to about 750, below the old carrying capacity, because heavy grazing damaged the plants."
+ }
+}

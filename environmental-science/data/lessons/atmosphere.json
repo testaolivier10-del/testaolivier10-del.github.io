@@ -1,0 +1,72 @@
+{
+ "topic": "atmosphere",
+ "hook": "A jet cruising at 11 km is above nearly all the weather, in air colder than −50 °C and too thin to breathe. A little higher, a thin band of ozone soaks up the ultraviolet light that would otherwise burn skin and damage the DNA of every living thing on the surface. The air above you is not one blanket but a stack of layers, each with its own job.",
+ "prereq": [
+  {
+   "q": "What do convection currents do?",
+   "options": [
+    "Carry warm material up and cool material down",
+    "Turn nitrogen gas into nitrate",
+    "Move plates only at transform boundaries",
+    "Keep the temperature the same everywhere"
+   ],
+   "correct": 0,
+   "why": "Warm, less dense material rises; cool, denser material sinks. Air moves this way too.",
+   "review": "plate-tectonics"
+  },
+  {
+   "q": "Which gas do plants take from the air for photosynthesis?",
+   "options": [
+    "Carbon dioxide",
+    "Nitrogen",
+    "Argon",
+    "Oxygen"
+   ],
+   "correct": 0,
+   "why": "Photosynthesis uses carbon dioxide and water to make sugar.",
+   "review": "carbon-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "atmosphere-layers",
+  "caption": "The layers of the atmosphere, with temperature against altitude from the U.S. Standard Atmosphere, 1976 (NOAA, NASA, U.S. Air Force). The ozone layer sits in the stratosphere."
+ },
+ "chain": [
+  {
+   "cause": "Sunlight warms the ground, and the ground warms the air above it",
+   "effect": "the troposphere is warmest at the bottom and cools with height"
+  },
+  {
+   "cause": "Warm air near the ground rises, expands and cools",
+   "effect": "water vapor condenses into clouds, and weather forms in the troposphere"
+  },
+  {
+   "cause": "Ozone in the stratosphere absorbs ultraviolet light",
+   "effect": "the stratosphere warms with height, and most harmful UV never reaches the surface"
+  },
+  {
+   "cause": "Warmer air sits on top of colder air at the bottom of the stratosphere",
+   "effect": "rising air stops near the top of the troposphere, so weather stays below about 10 to 16 km"
+  }
+ ],
+ "ideas": [
+  "Dry air is about 78% nitrogen, 21% oxygen and 0.9% argon; carbon dioxide is about 0.04%. Water vapor varies from about 0% to 4%.",
+  "The layers are defined by how temperature changes with height: the <b>troposphere</b> cools upward, the <b>stratosphere</b> warms upward, the <b>mesosphere</b> cools upward, the <b>thermosphere</b> warms upward.",
+  "The troposphere (ground to about 10-16 km, highest over the equator) holds about 75% of the air's mass and nearly all the weather.",
+  "The <b>ozone layer</b>, about 15 to 35 km up in the stratosphere, absorbs most of the Sun's <b>ultraviolet (UV) radiation</b>, which causes skin cancer and cataracts and harms plants and plankton.",
+  "Air gets thinner with height: about half of the air's mass is below 5.5 km."
+ ],
+ "misconception": {
+  "wrong": "The higher you go, the colder it gets, all the way up.",
+  "right": "Temperature falls with height only in the troposphere and mesosphere. In the stratosphere, ozone absorbing UV light makes it warmer with height, and the thin thermosphere is heated strongly by the Sun."
+ },
+ "check": [
+  "env-atmosphere-1",
+  "env-atmosphere-2",
+  "env-atmosphere-4",
+  "env-atmosphere-8",
+  "env-atmosphere-9",
+  "env-atmosphere-10"
+ ],
+ "summary": "The atmosphere is about 78% nitrogen and 21% oxygen, layered by how temperature changes with height. The troposphere, heated from the ground, cools upward and holds the weather. The stratosphere warms upward because its ozone layer absorbs ultraviolet light, shielding life below. The mesosphere cools upward again, and the thin thermosphere heats sharply."
+}

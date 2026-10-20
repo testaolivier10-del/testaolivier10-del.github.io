@@ -1,0 +1,14 @@
+{
+ "cafo": {
+  "def": "A concentrated animal feeding operation (feedlot): a facility that keeps large numbers of animals, such as cattle, hogs or chickens, in a small space and brings feed to them. It produces meat cheaply on little land, but concentrates manure, uses antibiotics heavily, and depends on grain grown elsewhere."
+ },
+ "grazing": {
+  "def": "Raising livestock on pasture, where the animals eat grass and other plants. In free-range grazing animals roam a large area; in rotational grazing the herd is moved from one fenced paddock to the next so grazed areas can regrow."
+ },
+ "overgrazing": {
+  "def": "Grazing more animals on land than its plants can support, so plants are eaten faster than they regrow. Roots die, bare soil is exposed and compacted by hooves, and erosion follows."
+ },
+ "desertification": {
+  "def": "The degradation of land in dry regions into land that behaves like a desert: lost plant cover, eroded and dried-out soil, and much lower productivity. Overgrazing, deforestation, poor farming and drought all contribute."
+ }
+}

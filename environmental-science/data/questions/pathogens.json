@@ -1,0 +1,537 @@
+{
+ "stimuli": {
+  "pathogens-s1": {
+   "kind": "quantitative",
+   "title": "Six infectious diseases and how they spread",
+   "source": "Summarized from WHO fact sheets on each disease",
+   "table": {
+    "caption": "Pathogen type and main route of spread (summarized from WHO fact sheets)",
+    "cols": [
+     "Disease",
+     "Pathogen",
+     "Main route of spread"
+    ],
+    "rows": [
+     [
+      "Malaria",
+      "protozoan (Plasmodium)",
+      "bites of Anopheles mosquitoes"
+     ],
+     [
+      "Cholera",
+      "bacterium",
+      "water or food contaminated with feces"
+     ],
+     [
+      "Tuberculosis",
+      "bacterium",
+      "air, from the coughs of an infected person"
+     ],
+     [
+      "Plague",
+      "bacterium",
+      "bites of fleas from infected rodents"
+     ],
+     [
+      "West Nile virus",
+      "virus",
+      "bites of Culex mosquitoes that fed on infected birds"
+     ],
+     [
+      "Zika virus",
+      "virus",
+      "bites of Aedes mosquitoes"
+     ]
+    ]
+   }
+  },
+  "pathogens-s2": {
+   "kind": "visual",
+   "title": "A mosquito-borne disease cycle and a warming climate",
+   "figure": "pathogens-vector-cycle"
+  }
+ },
+ "items": [
+  {
+   "id": "env-pathogens-1",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a pathogen?",
+   "options": [
+    "A bacterium, virus or other agent that causes disease",
+    "An animal, such as a mosquito, that carries disease to people",
+    "A chemical pollutant that builds up in body fat",
+    "An illness that does not pass from person to person"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A pathogen is a disease-causing agent: a bacterium, virus, protozoan, fungus or parasitic worm.",
+    "options": [
+     "Right: pathogens include bacteria, viruses, protozoa, fungi and parasitic worms.",
+     "An animal that carries a pathogen is a vector, not the pathogen itself.",
+     "That describes a persistent organic pollutant, not a pathogen.",
+     "Pathogens cause infectious diseases, which can spread."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-2",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the spread of malaria, what is the role of the Anopheles mosquito?",
+   "options": [
+    "It is the pathogen that infects people’s red blood cells",
+    "It is the vector: it carries the parasite between people",
+    "It is the host that becomes sick with malaria symptoms",
+    "It kills the parasite before it can reach people"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Malaria is caused by a protozoan parasite; Anopheles mosquitoes are the vector that carries it between people.",
+    "options": [
+     "The pathogen is a protozoan parasite (Plasmodium); the mosquito carries it.",
+     "Right: the mosquito picks up the parasite in one bite and passes it on in the next.",
+     "People get sick with malaria; the mosquito carries the parasite.",
+     "The mosquito spreads the parasite; it does not kill it."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-3",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which disease in the table spreads mainly through water or food contaminated with feces?",
+   "stimulus": "pathogens-s1",
+   "options": [
+    "Malaria",
+    "Tuberculosis",
+    "Cholera",
+    "Zika virus"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cholera is a waterborne bacterial disease; improving sanitation and treating drinking water prevent it.",
+    "options": [
+     "Malaria spreads through the bites of infected mosquitoes, not water.",
+     "Tuberculosis spreads through the air when an infected person coughs.",
+     "Right: cholera bacteria spread in water and food contaminated with sewage.",
+     "Zika spreads mainly through the bites of Aedes mosquitoes."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-4",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which two diseases in the table are spread by the same kind of vector?",
+   "stimulus": "pathogens-s1",
+   "options": [
+    "Cholera and tuberculosis, both spread by mosquitoes",
+    "Plague and cholera, both spread by fleas",
+    "Tuberculosis and plague, both spread by drinking water",
+    "Malaria and West Nile virus, both spread by mosquitoes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Malaria, West Nile virus and Zika virus all use mosquitoes as vectors.",
+    "options": [
+     "Neither has a mosquito vector: cholera is waterborne and tuberculosis airborne.",
+     "Plague spreads through flea bites; cholera spreads through dirty water.",
+     "Neither spreads mainly through drinking water.",
+     "Right: both are carried by mosquitoes (Anopheles for malaria, Culex for West Nile)."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-5",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For which disease in the table would building sewage treatment plants and safe water supplies do the most to cut cases?",
+   "stimulus": "pathogens-s1",
+   "options": [
+    "Cholera",
+    "Plague",
+    "West Nile virus",
+    "Tuberculosis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Match the solution to the route: for a waterborne disease, keep sewage out of drinking water.",
+    "options": [
+     "Right: cholera spreads through water contaminated with feces, so clean water and sewage treatment stop it.",
+     "Plague is spread by fleas on rodents; water treatment does not stop it.",
+     "West Nile spreads by mosquito bites, not drinking water.",
+     "Tuberculosis spreads through the air; ventilation and treatment matter more."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-6",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A region reported 2,400 cholera cases in the year before its main city opened a water treatment plant, and 600 cases the year after. What was the percent change in cases?",
+   "why": {
+    "correct": "$\\frac{(600 - 2{,}400)}{2{,}400} \\times 100 = -75\\%$, a 75% decrease."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      2400,
+      600
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        600,
+        2400
+       ]
+      },
+      "why": "You divided by the new value. Percent change is (new − old) ÷ old × 100: (600 − 2,400) ÷ 2,400 × 100."
+     },
+     {
+      "value": 75,
+      "why": "The size is right but cases fell, so the change is negative: (600 − 2,400) ÷ 2,400 × 100 = −75%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-7",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, which step moves the pathogen from an infected person to a mosquito?",
+   "stimulus": "pathogens-s2",
+   "options": [
+    "Step 2: the mosquito flies to another person",
+    "Step 3: the healthy person becomes sick",
+    "Step 1: the mosquito bites the infected person",
+    "The infected person drinks water the mosquito laid eggs in"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The vector picks up the pathogen when it feeds on an infected host, then passes it on with its next bite.",
+    "options": [
+     "Step 2 carries the pathogen; it was picked up in step 1.",
+     "Step 3 is the pathogen reaching a new person, not the mosquito.",
+     "Right: the mosquito takes in the pathogen with the blood it drinks.",
+     "Drinking water is not a step in this cycle; the pathogen moves through bites."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-8",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "According to the diagram, why might a warming climate increase the number of people at risk from a mosquito-borne disease?",
+   "stimulus": "pathogens-s2",
+   "options": [
+    "Warmer air kills the pathogen inside the mosquito",
+    "Warmer weather makes people’s blood easier for pathogens to grow in",
+    "Hotter summers make mosquitoes stop biting people",
+    "Milder winters let the mosquito survive farther from the equator"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Mosquitoes need warm conditions; as winters warm, their range spreads to new latitudes and higher elevations.",
+    "options": [
+     "If warming killed the pathogen, the risk would drop, not rise.",
+     "Body temperature does not change with the climate; the vector’s range does.",
+     "Warming is linked to more mosquito activity, not less.",
+     "Right: the vector’s range expands toward the poles, so more people live where it can bite them."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-9",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which action would break the cycle in the diagram at the vector?",
+   "stimulus": "pathogens-s2",
+   "options": [
+    "Draining standing water where mosquitoes lay their eggs",
+    "Treating the town’s drinking water with chlorine",
+    "Asking sick people to cover their mouths when they cough",
+    "Cooking meat to a higher temperature"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mosquito control (removing standing water, bed nets, repellents) targets the vector step of the cycle.",
+    "options": [
+     "Right: fewer breeding sites means fewer mosquitoes to carry the pathogen.",
+     "Chlorine stops waterborne diseases, but this pathogen is carried by mosquitoes.",
+     "Covering coughs slows airborne diseases, not mosquito-borne ones.",
+     "Cooking stops foodborne pathogens; this one is spread by bites."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-10",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how warmer temperatures could increase cases of a mosquito-borne disease.",
+   "stimulus": "pathogens-s2",
+   "why": {
+    "correct": "A complete answer gives the direction of each change and the reason: warmer winters, more surviving vectors, more bites, more cases."
+   },
+   "specific": {
+    "frame": "If temperatures ___, then the mosquito’s range will ___, because ___.",
+    "slots": {
+     "change": {
+      "label": "Change",
+      "options": [
+       "rise",
+       "fall",
+       "stay the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question is about warmer temperatures, a rise.",
+       "2": "With no change in temperature, the range would not shift."
+      }
+     },
+     "direction": {
+      "label": "Range",
+      "options": [
+       "expand toward the poles and to higher elevations",
+       "shrink toward the equator",
+       "stay where it is"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warming opens cooler places to mosquitoes; the range grows, not shrinks.",
+       "2": "Warming changes where mosquitoes can survive."
+      }
+     },
+     "because": {
+      "label": "Because",
+      "options": [
+       "milder winters let more mosquitoes survive in places that were too cold",
+       "warm air kills the pathogen",
+       "mosquitoes move to follow cooler water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "If warming killed the pathogen, cases would fall.",
+       "2": "Mosquitoes need warmth to breed; they spread into newly warm areas."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "mosquito",
+      "range",
+      "temperature",
+      "winter"
+     ]
+    },
+    "model": "If temperatures rise, then the mosquito’s range will expand toward the poles, because milder winters let more mosquitoes survive in places that were too cold, so more people are bitten and cases increase."
+   }
+  },
+  {
+   "id": "env-pathogens-11",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Tuberculosis is a bacterial disease that spreads through the air when an infected person coughs. Why does it spread most in crowded, poorly ventilated housing?",
+   "options": [
+    "Crowded housing has more mosquitoes, which carry tuberculosis",
+    "Tuberculosis bacteria grow in standing water near buildings",
+    "Close, shared air spreads bacteria from coughs",
+    "Crowding makes people’s blood a better home for bacteria"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Airborne pathogens spread most where many people share the same air: crowding and poor ventilation.",
+    "options": [
+     "Tuberculosis is airborne; it has no insect vector.",
+     "The bacteria spread through the air, not standing water.",
+     "Right: crowding and poor airflow raise the dose of bacteria others breathe in.",
+     "Crowding raises exposure; it does not change the blood."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-12",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Plague is caused by a bacterium that lives in rodents. How does it most often reach people?",
+   "options": [
+    "Through drinking water contaminated with sewage",
+    "Through the bites of mosquitoes that fed on infected birds",
+    "Through eating vegetables grown in polluted soil",
+    "Through the bites of fleas that fed on infected rodents"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Plague bacteria live in rodents; fleas carry them to people.",
+    "options": [
+     "That route spreads cholera and dysentery, not plague in most cases.",
+     "That is how West Nile virus spreads, not plague.",
+     "Plague is spread mainly by flea bites.",
+     "Right: fleas are the vector that carries plague bacteria from rodents to people."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-13",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement about SARS and MERS is correct?",
+   "options": [
+    "Both are respiratory viruses that came from animals",
+    "Both are bacterial diseases spread by drinking dirty water",
+    "Both are spread mainly through the bites of mosquitoes",
+    "Both are caused by protozoa living in red blood cells"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SARS and MERS are viral respiratory diseases; both began when a virus passed from animals to people.",
+    "options": [
+     "Right: SARS and MERS are coronaviruses that jumped from animals (bats and camels are linked) to people.",
+     "SARS and MERS are caused by viruses and spread through the respiratory tract.",
+     "Neither has a mosquito vector; they spread between people and from animals.",
+     "That describes malaria, not SARS or MERS."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-14",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conditions help infectious diseases spread in developing countries? Select all that apply.",
+   "options": [
+    "Lack of sewage treatment, so feces reach drinking water",
+    "Limited access to health care and medicines",
+    "Winters cold enough to kill most mosquitoes",
+    "A high share of homes with piped, treated water"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Poor sanitation, little health care and warm climates for vectors all raise infectious disease rates.",
+    "options": [
+     "Right: untreated sewage spreads cholera and dysentery.",
+     "Right: untreated infections last longer and spread further.",
+     "Cold winters limit vectors; many developing countries are tropical, where vectors thrive.",
+     "Treated water prevents waterborne disease; it does not help it spread."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-15",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How can a pathogen evolve resistance to the drugs used to treat it?",
+   "options": [
+    "Each pathogen learns to avoid the drug during its own lifetime",
+    "The drug changes the pathogen’s DNA so that it becomes resistant",
+    "Drugs kill sensitive individuals, so resistant ones survive and reproduce",
+    "People’s bodies make the drug weaker the more they take it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Resistance is natural selection: the drug removes susceptible pathogens, leaving resistant survivors to multiply. Finishing the full course of a drug reduces this.",
+    "options": [
+     "Resistance arises across generations by selection, not by one pathogen learning.",
+     "Resistance comes from variation already present, which the drug selects.",
+     "Right: natural selection favors the resistant pathogens, and their descendants spread.",
+     "The drug selects resistant pathogens; the body does not weaken it."
+    ]
+   }
+  },
+  {
+   "id": "env-pathogens-16",
+   "unit": "unit-8",
+   "topic": "pathogens",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which change linked to climate change could increase waterborne disease after heavy storms?",
+   "options": [
+    "Less ultraviolet light reaching the surface of the water",
+    "Colder water that slows the growth of bacteria",
+    "Lower sea levels that drain coastal wetlands",
+    "Floods that push sewage into drinking water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Heavier storms and flooding can overwhelm sewer systems and contaminate drinking water.",
+    "options": [
+     "More rain does not cut UV in a way that spreads disease.",
+     "Warmer, not colder, conditions are linked to more bacterial growth.",
+     "Climate change raises, not lowers, sea level.",
+     "Right: floods carry sewage into water supplies, spreading cholera and similar diseases."
+    ]
+   }
+  }
+ ]
+}

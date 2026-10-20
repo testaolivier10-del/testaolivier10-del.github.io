@@ -1,0 +1,8 @@
+{
+ "ipm": {
+  "def": "Integrated pest management (IPM): a way of controlling pests that combines monitoring with biological, physical, cultural and, only when needed, targeted chemical methods, to keep pests below the level that causes real economic damage while using as little pesticide as possible."
+ },
+ "biocontrol": {
+  "def": "Biological control: using a pest's natural enemies, such as predators (ladybugs, lacewings), parasitic wasps or disease organisms, to keep the pest's population down."
+ }
+}

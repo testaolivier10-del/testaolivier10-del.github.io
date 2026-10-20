@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="geo-and-climate-rain-shadow-t geo-and-climate-rain-shadow-d" font-family="Arial, Helvetica, sans-serif">
+<title id="geo-and-climate-rain-shadow-t">The rain shadow effect</title>
+<desc id="geo-and-climate-rain-shadow-d">Moist air from the ocean blows toward a mountain range. On the windward side the air is pushed up the slope, so it cools; its water vapor condenses into clouds and falls as heavy rain, and the windward slope is green and forested. The air that crosses the peak has lost most of its water. On the leeward side it sinks and warms, so it is dry, and the land there is a rain shadow: a dry region, often a desert, with sparse plants.</desc>
+<defs><marker id="ar-ink" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="ar-olive" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#474A10"/></marker><marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker><marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker><marker id="ar-verm" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="760" height="400" fill="#FFFFFF"/>
+<rect x="20" y="290" width="170" height="70" rx="0" fill="#CFE3F1" stroke="none" stroke-width="1.5"/>
+<text x="105" y="330" font-size="13" font-weight="bold" fill="#0072B2" text-anchor="middle">Ocean</text>
+<path d="M190 300 L270 270 L400 90 L470 200 L560 280 L740 300 L740 360 L190 360 Z" fill="#D9C7A8" stroke="#1F2A28" stroke-width="1.3" stroke-linejoin="round"/>
+<path d="M215 290 l-8 0 l8 -22 l8 22 z" fill="#009E73" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M240 280 l-8 0 l8 -22 l8 22 z" fill="#009E73" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M275 262 l-8 0 l8 -22 l8 22 z" fill="#009E73" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M300 228 l-8 0 l8 -22 l8 22 z" fill="#009E73" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M325 192 l-8 0 l8 -22 l8 22 z" fill="#009E73" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M350 158 l-8 0 l8 -22 l8 22 z" fill="#009E73" stroke="none" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M600 285 l0 -14 m0 6 l-5 -4 m5 6 l5 -5" fill="none" stroke="#474A10" stroke-width="2" stroke-linejoin="round"/>
+<path d="M690 293 l0 -14 m0 6 l-5 -4 m5 6 l5 -5" fill="none" stroke="#474A10" stroke-width="2" stroke-linejoin="round"/>
+<line x1="30" y1="250" x2="150" y2="250" stroke="#1F2A28" stroke-width="3" marker-end="url(#ar-ink)"/>
+<text x="30" y="232" font-size="12" font-weight="bold" fill="#1F2A28" text-anchor="start">Moist air from the ocean</text>
+<path d="M170 245 C240 228 300 180 360 100 L388 66" fill="none" stroke="#0072B2" stroke-width="3" marker-end="url(#ar-blue)" stroke-linejoin="round"/>
+<text x="60" y="150" font-size="12" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Air is pushed up the slope</text><text x="60" y="165" font-size="12" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">and cools; water vapor</text><text x="60" y="180" font-size="12" font-weight="bold" fill="#0072B2" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">condenses into clouds</text>
+<path d="M250 130 a22 22 0 0 1 40 -16 a26 26 0 0 1 48 6 a20 20 0 0 1 10 36 h-92 a18 18 0 0 1 -6 -26 z" fill="#E3E6E5" stroke="#6B7370" stroke-width="1.2" stroke-linejoin="round"/>
+<line x1="262" y1="164" x2="256" y2="190" stroke="#0072B2" stroke-width="1.6"/>
+<line x1="282" y1="164" x2="276" y2="190" stroke="#0072B2" stroke-width="1.6"/>
+<line x1="302" y1="164" x2="296" y2="190" stroke="#0072B2" stroke-width="1.6"/>
+<line x1="322" y1="164" x2="316" y2="190" stroke="#0072B2" stroke-width="1.6"/>
+<text x="250" y="205" font-size="12" font-weight="bold" fill="#1F2A28" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Heavy rain</text>
+<path d="M420 70 C480 120 540 200 640 250" fill="none" stroke="#D55E00" stroke-width="3" marker-end="url(#ar-verm)" stroke-linejoin="round"/>
+<text x="520" y="120" font-size="12" font-weight="bold" fill="#D55E00" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Dry air sinks and warms</text>
+<text x="230" y="385" font-size="12.5" font-weight="bold" fill="#009E73" text-anchor="middle">Windward side: wet, forested</text>
+<text x="620" y="385" font-size="12.5" font-weight="bold" fill="#D55E00" text-anchor="middle">Leeward side: rain shadow, dry</text>
+<text x="470" y="150" font-size="11.5" font-weight="normal" fill="#1F2A28" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">Mountain range</text>
+</svg>

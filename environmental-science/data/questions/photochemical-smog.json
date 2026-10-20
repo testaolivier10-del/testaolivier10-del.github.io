@@ -1,0 +1,743 @@
+{
+ "stimuli": {
+  "photochemical-smog-s1": {
+   "kind": "visual",
+   "title": "NO, NO2 and ozone through a sunny weekday in a city",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of nitric oxide, nitrogen dioxide and ozone in parts per billion from midnight to midnight: NO peaks at 95 at 8 a.m., NO2 peaks at 85 at 9 a.m., and ozone peaks at 120 at 2 p.m.; invented data",
+    "kind": "line",
+    "x": [
+     0,
+     24
+    ],
+    "y": [
+     0,
+     140
+    ],
+    "xStep": 3,
+    "yStep": 20,
+    "xLabel": "Hour of the day (0 = midnight)",
+    "yLabel": "Concentration (ppb)",
+    "series": [
+     {
+      "name": "NO",
+      "points": [
+       [
+        0,
+        12
+       ],
+       [
+        3,
+        8
+       ],
+       [
+        6,
+        40
+       ],
+       [
+        7,
+        80
+       ],
+       [
+        8,
+        95
+       ],
+       [
+        9,
+        60
+       ],
+       [
+        10,
+        30
+       ],
+       [
+        12,
+        12
+       ],
+       [
+        14,
+        8
+       ],
+       [
+        16,
+        10
+       ],
+       [
+        18,
+        25
+       ],
+       [
+        20,
+        20
+       ],
+       [
+        22,
+        14
+       ],
+       [
+        24,
+        12
+       ]
+      ]
+     },
+     {
+      "name": "NO2",
+      "points": [
+       [
+        0,
+        30
+       ],
+       [
+        3,
+        25
+       ],
+       [
+        6,
+        35
+       ],
+       [
+        7,
+        55
+       ],
+       [
+        8,
+        75
+       ],
+       [
+        9,
+        85
+       ],
+       [
+        10,
+        70
+       ],
+       [
+        12,
+        45
+       ],
+       [
+        14,
+        35
+       ],
+       [
+        16,
+        40
+       ],
+       [
+        18,
+        55
+       ],
+       [
+        20,
+        48
+       ],
+       [
+        22,
+        38
+       ],
+       [
+        24,
+        30
+       ]
+      ]
+     },
+     {
+      "name": "Ozone",
+      "points": [
+       [
+        0,
+        20
+       ],
+       [
+        3,
+        15
+       ],
+       [
+        6,
+        10
+       ],
+       [
+        7,
+        12
+       ],
+       [
+        8,
+        20
+       ],
+       [
+        9,
+        35
+       ],
+       [
+        10,
+        60
+       ],
+       [
+        12,
+        100
+       ],
+       [
+        14,
+        120
+       ],
+       [
+        16,
+        105
+       ],
+       [
+        18,
+        60
+       ],
+       [
+        20,
+        35
+       ],
+       [
+        22,
+        25
+       ],
+       [
+        24,
+        20
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  },
+  "photochemical-smog-s2": {
+   "kind": "quantitative",
+   "title": "Afternoon ozone at one monitor on four July days",
+   "invented": true,
+   "table": {
+    "caption": "Highest one-hour ozone and the weather at a city monitor (invented data for practice)",
+    "cols": [
+     "Day",
+     "Sky",
+     "High temperature (°C)",
+     "Highest ozone (ppb)"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "clear",
+      "34",
+      "118"
+     ],
+     [
+      "Tuesday",
+      "clear",
+      "31",
+      "96"
+     ],
+     [
+      "Wednesday",
+      "overcast",
+      "29",
+      "48"
+     ],
+     [
+      "Thursday",
+      "clear",
+      "27",
+      "74"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-photochemical-smog-1",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "At about what time does ozone reach its highest level on this day?",
+   "stimulus": "photochemical-smog-s1",
+   "options": [
+    "About 8 a.m., at 95 ppb",
+    "About 2 p.m. (120 ppb)",
+    "About 9 a.m., at 85 ppb",
+    "About 6 p.m., at 60 ppb"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The dashed ozone line peaks at 120 ppb at hour 14, which is 2 p.m., six hours after the NO peak.",
+    "options": [
+     "That is the NO peak during the morning commute; ozone is still low then.",
+     "Right: the ozone line is highest at hour 14.",
+     "That is the NO2 peak. Ozone builds later, as sunlight strengthens.",
+     "At 6 p.m. ozone is falling; its peak came four hours earlier."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-2",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the NO2 peak come about an hour after the NO peak?",
+   "stimulus": "photochemical-smog-s1",
+   "options": [
+    "NO from morning traffic reacts in the air to form NO2",
+    "Cars switch from releasing NO to NO2 as their engines warm",
+    "NO2 forms when sunlight splits ozone apart in the afternoon",
+    "NO2 drifts in from a coal plant far upwind of the city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cars release mostly NO. In the air, NO reacts to form NO2, so NO2 builds up just after the NO from the morning rush.",
+    "options": [
+     "Right: NO2 is made from the NO, so it peaks after it.",
+     "Engines release mostly NO all day; NO2 forms in the air.",
+     "Sunlight splits NO2 to help make ozone, not the other way round, and the NO2 peak is in the morning.",
+     "The NO2 rise follows the local NO rise from traffic, not a distant source."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-3",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Between 9 a.m. and 2 p.m., NO2 falls from 85 to 35 ppb while ozone rises from 35 to 120 ppb. Which process explains both changes?",
+   "stimulus": "photochemical-smog-s1",
+   "options": [
+    "Ozone sinks down from the stratosphere at midday",
+    "Wind blows the NO2 away and brings ozone from the sea",
+    "Rain washes NO2 out and leaves ozone behind in the air",
+    "Sunlight splits NO2 and the oxygen atom forms ozone"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sunlight splits NO2 into NO and a single oxygen atom. The oxygen atom joins an O2 molecule to make O3. So NO2 is used up as ozone is made.",
+    "options": [
+     "The ozone layer stays far above; this ozone forms near the ground from NO2.",
+     "Wind does not explain why the two change in step with the sunlight.",
+     "The day is sunny; nothing in the graph points to rain.",
+     "Right: NO2 is used up as O3 is made, which is why one falls as the other rises."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-4",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in ozone from 6 a.m. to 2 p.m.",
+   "stimulus": "photochemical-smog-s1",
+   "why": {
+    "correct": "$\\frac{(120\\,\\text{ppb} - 10\\,\\text{ppb})}{10\\,\\text{ppb}} \\times 100 = 1{,}100\\%$. Ozone was 12 times its 6 a.m. level."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      10,
+      120
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 91.6666666667,
+      "why": "You divided by the 2 p.m. value. Percent change divides by the old (6 a.m.) value, 10 ppb."
+     },
+     {
+      "value": 1200,
+      "why": "1,200% is the new value as a percent of the old. Percent change subtracts first: (120 - 10) / 10 × 100."
+     },
+     {
+      "value": 11,
+      "why": "11 is the fraction. Multiply by 100 for a percent: 1,100%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-5",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which comparison in the table best shows that sunlight drives ozone formation?",
+   "stimulus": "photochemical-smog-s2",
+   "options": [
+    "Monday was the hottest day and also had the most ozone",
+    "Thursday was the coolest day and had the least ozone",
+    "Overcast Wednesday had half the ozone of clear Tuesday",
+    "Tuesday was cooler than Monday and had less ozone"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Wednesday and Tuesday differ mostly in the sky: overcast Wednesday at 29 °C had 48 ppb, clear Tuesday at 31 °C had 96 ppb. Less sunlight, far less ozone.",
+    "options": [
+     "Heat and sun both rise on Monday, so this alone cannot separate sunlight from temperature.",
+     "Thursday did not have the least ozone; overcast Wednesday did.",
+     "Right: similar temperatures, but the cloudy day made far less ozone.",
+     "Both days were clear, so this compares temperature, not sunlight."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-6",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in the highest ozone from Monday to Wednesday.",
+   "stimulus": "photochemical-smog-s2",
+   "why": {
+    "correct": "$\\frac{(48 - 118)}{118} \\times 100 = -59.3\\%$, a fall of about 59%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      118,
+      48
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -145.833333333,
+      "why": "You divided by Wednesday's value. Divide by the old (Monday) value, 118 ppb."
+     },
+     {
+      "value": 59.3220338983,
+      "why": "Ozone fell, so the change is negative: about -59.3%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-7",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The city issues ozone alerts asking people with asthma to stay indoors. On which kind of day is an alert most likely?",
+   "stimulus": "photochemical-smog-s2",
+   "options": [
+    "A cold, overcast morning in winter",
+    "A hot, clear afternoon in summer",
+    "A rainy evening after the rush hour",
+    "A windy night just before dawn"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ozone forms fastest with strong sunlight and heat, so hot, clear afternoons, like Monday, bring the highest levels.",
+    "options": [
+     "Little sunlight and cold air slow ozone formation.",
+     "Right: strong sunlight and heat make ozone fastest.",
+     "Without sunlight, ozone falls in the evening.",
+     "At night there is no sunlight to split NO2, so ozone is low."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-8",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What two kinds of primary pollutant react in sunlight to form photochemical smog?",
+   "options": [
+    "Nitrogen oxides and volatile organic compounds",
+    "Sulfur dioxide and carbon dioxide from coal",
+    "Carbon monoxide and lead from old car engines",
+    "Methane and water vapor released from swamps and wetlands"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nitrogen oxides from hot combustion and volatile organic compounds from fuel vapor and solvents react in sunlight to make ozone and other smog chemicals.",
+    "options": [
+     "Right: NOx and VOCs plus sunlight make photochemical smog.",
+     "SO2 and soot make the gray, sooty kind of smog; CO2 is not a smog ingredient.",
+     "Neither is a key ingredient of photochemical smog.",
+     "Neither drives the sunlight reactions that make smog ozone."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-9",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does the presence of VOCs let ozone build up near the ground during the day?",
+   "options": [
+    "VOCs split in sunlight into ozone molecules directly",
+    "VOCs cool the air so the ozone sinks down to the ground",
+    "VOCs block sunlight so ozone is not broken apart",
+    "VOCs react with NO, so NO no longer breaks ozone down"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Without VOCs, NO reacts with ozone and breaks it back down. VOCs react with the NO instead, forming photochemical oxidants, so ozone is not used up and accumulates.",
+    "options": [
+     "VOCs do not break into ozone; ozone forms from an oxygen atom freed from NO2.",
+     "VOCs do not cool the air; the effect is chemical.",
+     "VOCs are gases that do not block sunlight; smog forms in strong sun.",
+     "Right: the NO that would destroy ozone is tied up by VOC reactions."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-10",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Ozone in a city usually drops after sunset. Why?",
+   "options": [
+    "Ozone rises at night to rejoin the ozone layer",
+    "Cooler night air turns ozone into sulfur dioxide",
+    "No new ozone forms, and NO uses up what is there",
+    "Trees take in ozone at night through their roots"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sunlight is needed to split NO2 and make ozone. After dark no new ozone forms, and NO from evening traffic reacts with the ozone that is there, using it up.",
+    "options": [
+     "Ozone near the ground does not drift up to the stratosphere overnight.",
+     "Ozone does not turn into SO2; they are different elements.",
+     "Right: no sunlight means no new ozone, and NO destroys the rest.",
+     "Trees do not absorb ozone through their roots."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-11",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Ozone in the stratosphere protects life, but ozone near the ground is a pollutant. What is the difference?",
+   "options": [
+    "They are two different molecules with the same name",
+    "Up high it absorbs UV; down low people breathe it in",
+    "Ozone near the ground is harmless at any level",
+    "Ozone up high comes from car exhaust drifting upward"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Same molecule, different place. High in the stratosphere O3 absorbs UV radiation; in the air we breathe it irritates and damages lung tissue and plant leaves.",
+    "options": [
+     "Both are O3; only the location differs.",
+     "Right: location decides whether ozone helps or harms.",
+     "Ozone near the ground irritates lungs and harms crops.",
+     "Stratospheric ozone forms from O2 split by UV light, not from exhaust."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-12",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which group of people is most at risk on a day with high photochemical smog?",
+   "options": [
+    "Children with asthma playing outdoors",
+    "Office workers in sealed, filtered buildings",
+    "People in rural areas far upwind of the city",
+    "People who are sleeping indoors at night"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ozone irritates the airways and makes them swell, so people with asthma or other lung disease, children and people exercising hard outdoors are hurt most.",
+    "options": [
+     "Right: active lungs take in more ozone, and asthma makes airways sensitive.",
+     "Indoor air in sealed, filtered buildings has much less ozone.",
+     "Smog builds in and downwind of the city, not far upwind.",
+     "Ozone peaks in the afternoon, and less is indoors."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-13",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two cities have the same traffic. City X is sunny and warm most of the year; city Y is cool and often cloudy. Which will have more photochemical smog, and why?",
+   "options": [
+    "City Y, because clouds trap the pollutants near the ground",
+    "Neither, because smog depends on traffic alone",
+    "City Y, because cool air holds more ozone than warm air",
+    "City X, because sunlight and warmth drive the reactions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Photochemical smog needs sunlight to split NO2, and warmth speeds the reactions, so the same NOx and VOCs make more smog in sunny, warm city X.",
+    "options": [
+     "Clouds cut the sunlight that smog needs; they do not add ozone.",
+     "Traffic supplies the NOx and VOCs, but sunlight is needed to react them.",
+     "Cool, cloudy weather slows ozone formation.",
+     "Right: sun and heat speed every step that makes ozone."
+    ]
+   }
+  },
+  {
+   "id": "env-photochemical-smog-14",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "order",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps that form photochemical smog on a sunny day in order.",
+   "options": [
+    "Morning traffic releases NO and VOCs",
+    "NO reacts in the air to form NO2",
+    "Sunlight splits NO2 into NO and an oxygen atom",
+    "The oxygen atom joins O2 to form ozone",
+    "VOCs tie up NO, so ozone builds through the afternoon"
+   ],
+   "why": {
+    "correct": "Emission, then NO to NO2, then sunlight splitting NO2, then O + O2 forming O3, and VOCs keep the ozone from being destroyed."
+   }
+  },
+  {
+   "id": "env-photochemical-smog-15",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city's highest ozone readings averaged 96 ppb before a rule cut VOCs from paints and fuel, and 72 ppb after. Write the setup for the percent change, then the answer.",
+   "why": {
+    "correct": "$\\frac{(72 - 96)}{96} \\times 100 = -25\\%$: the rule went with a 25% fall in peak ozone."
+   },
+   "setup": {
+    "answer": "(72 - 96) / 96 * 100",
+    "mustUse": [
+     "72",
+     "96"
+    ],
+    "mistakes": [
+     {
+      "expr": "(72 - 96) / 72 * 100",
+      "why": "Divide by the old value, 96 ppb, not the new one."
+     },
+     {
+      "expr": "72 - 96 / 96 * 100",
+      "why": "Without brackets the division happens first. Write (72 - 96) / 96 × 100."
+     },
+     {
+      "expr": "(96 - 72) / 96 * 100",
+      "why": "Subtract old from new: (72 - 96). Ozone fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       96,
+       72
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 25,
+       "why": "Ozone fell, so the percent change is negative: -25%."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-photochemical-smog-16",
+   "unit": "unit-7",
+   "topic": "photochemical-smog",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Propose a city-level solution, other than a rule on paints, that would reduce photochemical smog, and say how it works.",
+   "why": {
+    "correct": "Fewer car trips mean less NO and VOCs, the two ingredients sunlight turns into ozone. It fits a city and respects the \"other than paints\" limit."
+   },
+   "specific": {
+    "frame": "The city could ___, which reduces ___, so less ozone forms in sunlight.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "expand bus and light-rail service so fewer people drive to work",
+       "limit the solvents allowed in house paints",
+       "plant more trees that release VOCs"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than a rule on paints.",
+       "2": "Trees that release VOCs would add an ingredient of smog, not remove one."
+      }
+     },
+     "what": {
+      "label": "What it reduces",
+      "options": [
+       "the CO2 that traps heat",
+       "the NOx and VOCs from car exhaust",
+       "the sulfur dioxide from coal plants"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "CO2 is not an ingredient of photochemical smog.",
+       "2": "SO2 is not the driver of photochemical smog; NOx and VOCs are."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "paint"
+     ],
+     "context": [
+      "nox",
+      "vocs",
+      "traffic",
+      "car"
+     ]
+    },
+    "model": "The city could expand bus and light-rail service so fewer people drive, which reduces the NOx and VOCs from car exhaust, so less ozone forms in sunlight."
+   }
+  }
+ ]
+}

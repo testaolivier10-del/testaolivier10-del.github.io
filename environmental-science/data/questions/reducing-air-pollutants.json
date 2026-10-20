@@ -1,0 +1,535 @@
+{
+ "stimuli": {
+  "reducing-air-pollutants-s1": {
+   "kind": "quantitative",
+   "title": "A coal power plant before and after new pollution controls",
+   "invented": true,
+   "table": {
+    "caption": "Yearly emissions from one coal power plant, in metric tons (invented data for practice)",
+    "cols": [
+     "Pollutant",
+     "Before controls",
+     "After controls",
+     "Control added"
+    ],
+    "rows": [
+     [
+      "Sulfur dioxide (SO2)",
+      "40,000",
+      "2,000",
+      "wet scrubber"
+     ],
+     [
+      "Particulate matter",
+      "8,000",
+      "80",
+      "electrostatic precipitator"
+     ],
+     [
+      "Nitrogen oxides (NOx)",
+      "12,000",
+      "9,600",
+      "lower burner temperature"
+     ],
+     [
+      "Carbon dioxide (CO2)",
+      "6,000,000",
+      "6,000,000",
+      "none"
+     ]
+    ]
+   }
+  },
+  "reducing-air-pollutants-s2": {
+   "kind": "text",
+   "title": "A passage on a sulfur dioxide trading program",
+   "source": "Invented passage for practice.",
+   "passage": "A state council is debating a plan to cut sulfur dioxide from its twelve coal power plants. Under the plan, the state sets a total cap on SO2 for all plants together and lowers it by 5% each year. Each plant receives permits for its share. A plant that cuts its emissions below its permits, for example by installing a scrubber or switching to low-sulfur coal, may sell the extra permits to a plant that finds cutting more expensive. Supporters say the cap guarantees the total cut while letting the cheapest cuts happen first. Critics worry that a plant buying many permits could keep polluting its own neighborhood, and they ask the council to add a limit for each plant as well as the total cap."
+  }
+ },
+ "items": [
+  {
+   "id": "env-reducing-air-pollutants-1",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the plant's sulfur dioxide does the wet scrubber remove?",
+   "stimulus": "reducing-air-pollutants-s1",
+   "why": {
+    "correct": "Removed: $40{,}000 - 2{,}000 = 38{,}000$ metric tons. Share removed: $\\frac{38{,}000}{40{,}000} \\times 100 = 95\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        40000,
+        2000
+       ]
+      },
+      40000
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "5% is the share that is left (2,000 of 40,000). The scrubber removes the other 95%."
+     },
+     {
+      "value": 0.95,
+      "why": "That is the fraction. Multiply by 100 for a percent: 95%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-2",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pollutant's emissions were cut by the largest percent?",
+   "stimulus": "reducing-air-pollutants-s1",
+   "options": [
+    "Sulfur dioxide, cut by the wet scrubber",
+    "Particulate matter",
+    "Nitrogen oxides, by a lower burner temperature",
+    "Carbon dioxide, by the new controls"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Particulates fell from 8,000 to 80 metric tons, a 99% cut. SO2 fell 95%, NOx 20%, and CO2 0%.",
+    "options": [
+     "The scrubber cut SO2 by 95%, a little less than the particulate cut.",
+     "Right: 80 of 8,000 is left, a 99% cut.",
+     "NOx fell from 12,000 to 9,600, just 20%.",
+     "CO2 did not change; none of these devices removes it."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-3",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why did the new controls not lower the plant's CO2?",
+   "stimulus": "reducing-air-pollutants-s1",
+   "options": [
+    "The devices remove SO2 and particles, not CO2",
+    "The scrubber turns the SO2 into extra CO2",
+    "CO2 is a particle that the precipitator missed",
+    "Less CO2 forms when coal burns at a lower temperature"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Scrubbers and precipitators remove SO2 and particles. CO2 is the main product of burning carbon in coal, and the plant burns the same coal, so it releases the same CO2.",
+    "options": [
+     "Right: burning the same coal makes the same CO2.",
+     "Limestone scrubbers release a little CO2, but that is not why the CO2 stayed level here.",
+     "CO2 is a gas, not a particle.",
+     "Lowering burner temperature cuts NOx; CO2 still forms from the carbon."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-4",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Lowering the burner temperature cut NOx by 20%. Why does burning at a lower temperature reduce NOx?",
+   "stimulus": "reducing-air-pollutants-s1",
+   "options": [
+    "A cooler flame burns off the nitrogen in the coal first",
+    "Lower heat turns NOx into sulfur dioxide",
+    "A cooler flame makes the scrubber work on NOx too",
+    "Less air nitrogen joins oxygen in a cooler flame"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Most NOx forms when nitrogen and oxygen from the air combine at very high temperatures. A cooler flame makes less of that reaction happen.",
+    "options": [
+     "Most NOx comes from nitrogen in the air, and cooling does not burn anything off.",
+     "Nitrogen cannot turn into sulfur.",
+     "The scrubber targets SO2; the NOx cut comes from the flame itself.",
+     "Right: NOx formation rises steeply with flame temperature."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-5",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the main claim made by the plan's supporters?",
+   "stimulus": "reducing-air-pollutants-s2",
+   "options": [
+    "Each plant should be required to install the same scrubber",
+    "SO2 should be cut mainly to slow global climate warming",
+    "A cap with trading cuts SO2 at low cost",
+    "Plants that buy permits will clean up their neighborhoods"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Supporters say the cap guarantees the total cut while trading lets plants make the cheapest cuts first.",
+    "options": [
+     "The plan lets plants choose how to cut; it does not require one device.",
+     "The passage says nothing of warming; SO2 is cut to protect health and lakes and forests.",
+     "Right: that is the supporters' claim.",
+     "That is the opposite of the critics' worry."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-6",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What assumption underlies the critics' concern?",
+   "stimulus": "reducing-air-pollutants-s2",
+   "options": [
+    "A cap will fail to lower the total SO2 from the twelve plants",
+    "SO2 harms people most near the plant that releases it",
+    "Scrubbers do not remove SO2 from a plant's exhaust",
+    "Low-sulfur coal costs more than ordinary coal everywhere"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The critics assume that SO2 harms people mostly near the plant that releases it, so a plant that buys permits could leave its own neighbors with dirty air even while the state total falls.",
+    "options": [
+     "Critics do not dispute the total cut; they worry about where it happens.",
+     "Right: the worry only makes sense if local emissions matter locally.",
+     "The passage presents scrubbers as a way to cut SO2.",
+     "Cost is the supporters' topic; the critics are concerned with local harm."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-7",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which evidence would best support the supporters' claim?",
+   "stimulus": "reducing-air-pollutants-s2",
+   "options": [
+    "A past cap-and-trade plan met its goal for less money",
+    "One plant's neighbors had more asthma after it bought permits",
+    "Coal plants also release mercury and CO2",
+    "Some states use wind farms instead of coal plants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The claim is that trading lowers the cost of a guaranteed cut. Data showing a cap-and-trade program met its target at lower cost than expected would support it directly.",
+    "options": [
+     "Right: that tests the cost claim directly.",
+     "That supports the critics, not the supporters.",
+     "True, but it says nothing about whether trading cuts SO2 cheaply.",
+     "That is about energy choices, not the cost of the cap."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-8",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Is the plan described in the passage a policy or a technology?",
+   "stimulus": "reducing-air-pollutants-s2",
+   "options": [
+    "A technology, because scrubbers are one way to meet it",
+    "A technology, because it uses permits that can be sold",
+    "Neither, because it does not name a pollutant to cut",
+    "A policy, because it is a rule plants follow"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A cap with tradable permits is a rule set by the state, so it is a policy. Scrubbers and low-sulfur coal are the technologies plants may choose to meet it.",
+    "options": [
+     "Scrubbers are a technology a plant may use, but the plan itself is a rule.",
+     "A permit is a legal right to emit, part of a rule, not a device.",
+     "The plan names SO2 directly.",
+     "Right: the cap and permits are a rule; scrubbers are the technology."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-9",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which device in a car changes carbon monoxide, nitrogen oxides and unburned hydrocarbons into less harmful gases?",
+   "options": [
+    "A wet scrubber",
+    "An electrostatic precipitator",
+    "A catalytic converter",
+    "A vapor recovery nozzle"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A catalytic converter uses metal catalysts to turn CO into CO2, NOx into nitrogen gas, and hydrocarbons into CO2 and water.",
+    "options": [
+     "Scrubbers are used on smokestacks to remove SO2.",
+     "Precipitators remove particles from smokestack gases.",
+     "Right: its catalysts change CO, NOx and hydrocarbons into less harmful gases.",
+     "These nozzles capture gasoline vapor at the pump, not exhaust."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-10",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does an electrostatic precipitator remove particles from a smokestack?",
+   "options": [
+    "It sprays a limestone slurry that reacts with the particles",
+    "It charges particles and collects them on plates",
+    "It forces the gas through fabric bags that trap the particles",
+    "It uses a catalyst to change particles into harmless gases"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "It gives the particles an electric charge, then collects them on plates with the opposite charge. The plates are shaken clean and the ash is collected.",
+    "options": [
+     "A limestone spray is a scrubber, used mainly for SO2.",
+     "Right: opposite charges attract the particles out of the gas.",
+     "Fabric bags describe a baghouse filter, a different device.",
+     "Catalysts change gases in car exhaust; they do not remove particles."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-11",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wet scrubber sprays a mixture of water and crushed limestone into a coal plant's exhaust. What does it remove, and how?",
+   "options": [
+    "SO2, which reacts with limestone and is caught",
+    "CO2, which the water turns into oxygen",
+    "Carbon monoxide, which the limestone burns off",
+    "Ozone, which the water vapor breaks apart"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SO2 is an acidic gas. It reacts with the limestone in the spray and is captured as a solid calcium compound (often made into gypsum) instead of leaving the stack.",
+    "options": [
+     "Right: the base in the spray neutralizes the acidic SO2.",
+     "Water does not turn CO2 into oxygen, and scrubbers target SO2.",
+     "Limestone does not burn CO; catalytic converters handle CO in cars.",
+     "Ozone is not emitted by the stack; it forms later in the air."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-12",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does a vapor recovery nozzle on a gas pump capture?",
+   "options": [
+    "Exhaust from the car's tailpipe while the engine idles",
+    "Sulfur dioxide from the gasoline in the pump hose",
+    "Particles of dust from the station forecourt",
+    "Gasoline vapor pushed out as the tank fills"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When you fill a tank, gasoline vapor (VOCs) is pushed out. The nozzle captures the vapor and returns it to the station's storage tank. It does not touch the car's exhaust.",
+    "options": [
+     "This is the common mix-up; the nozzle never touches exhaust.",
+     "Gasoline is low in sulfur, and the nozzle captures vapor, not SO2.",
+     "The nozzle captures fuel vapor, not dust.",
+     "Right: it captures VOCs at the pump and returns them to storage."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-13",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city wants to cut its NOx and VOCs from traffic without new technology on cars. Which approach fits best?",
+   "options": [
+    "Require new catalytic converters on the cars sold in the city",
+    "Install scrubbers on the city's coal plant",
+    "Expand transit and bike lanes to cut driving",
+    "Build taller smokestacks at downtown factories"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Fewer vehicle miles means less NOx and VOCs. Better public transit and bike lanes cut driving without changing car technology.",
+    "options": [
+     "That is a technology on cars, which the question rules out.",
+     "Scrubbers cut SO2 from coal plants, not NOx and VOCs from traffic.",
+     "Right: less driving means less NOx and VOCs.",
+     "Taller stacks spread pollution; they do not cut traffic emissions."
+    ]
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-14",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cement plant releases 5,000 metric tons of particulates a year. A baghouse filter captures 99.5% of them. Write the setup for the particulates still released each year, then the answer.",
+   "why": {
+    "correct": "Released share: $100\\% - 99.5\\% = 0.5\\%$. $5{,}000\\,\\text{t} \\times \\frac{0.5}{100} = 25$ metric tons a year."
+   },
+   "setup": {
+    "answer": "5000 * (100 - 99.5) / 100",
+    "mustUse": [
+     "5000",
+     "99.5"
+    ],
+    "mistakes": [
+     {
+      "expr": "5000 * 99.5 / 100",
+      "why": "That is the amount captured. The question asks what is still released: 100% - 99.5% = 0.5%."
+     },
+     {
+      "expr": "5000 * (100 - 99.5)",
+      "why": "Divide the percent by 100 to turn it into a fraction."
+     }
+    ],
+    "then": {
+     "unit": "metric tons",
+     "units": [
+      "tonnes",
+      "tonne",
+      "t",
+      "metric ton"
+     ],
+     "from": {
+      "fn": "percentOf",
+      "args": [
+       {
+        "fn": "sub",
+        "args": [
+         100,
+         99.5
+        ]
+       },
+       5000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 4975,
+       "why": "4,975 metric tons is what the baghouse captures. Subtract it from 5,000 to get what is released."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-reducing-air-pollutants-15",
+   "unit": "unit-7",
+   "topic": "reducing-air-pollutants",
+   "type": "specific",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how a catalytic converter reduces smog, naming the pollutant it changes and what it becomes.",
+   "why": {
+    "correct": "The answer names a smog ingredient the device removes (NOx) and what it becomes (nitrogen gas), so it says how the benefit works."
+   },
+   "specific": {
+    "frame": "A catalytic converter changes ___ into ___, which reduces smog because ___.",
+    "slots": {
+     "input": {
+      "label": "Pollutant changed",
+      "options": [
+       "nitrogen oxides",
+       "sulfur dioxide",
+       "carbon dioxide"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "SO2 is removed from smokestacks by scrubbers, not by car converters.",
+       "2": "The converter makes CO2; it does not remove it."
+      }
+     },
+     "output": {
+      "label": "What it becomes",
+      "options": [
+       "ozone",
+       "nitrogen gas and oxygen",
+       "nitric acid"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "Making ozone would add smog, not reduce it.",
+       "2": "Nitric acid is a secondary pollutant; the converter makes harmless N2."
+      }
+     },
+     "because": {
+      "label": "Why that reduces smog",
+      "options": [
+       "less NOx is left to react with VOCs in sunlight to form ozone",
+       "nitrogen gas absorbs sunlight before it reaches the ground",
+       "the converter cools the air above the city"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "N2 does not block sunlight; the benefit is fewer ozone-making ingredients.",
+       "2": "The converter does not change the air temperature."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "nox",
+      "nitrogen",
+      "ozone"
+     ]
+    },
+    "model": "A catalytic converter changes nitrogen oxides into nitrogen gas and oxygen, which reduces smog because less NOx is left to react with VOCs in sunlight to form ozone."
+   }
+  }
+ ]
+}

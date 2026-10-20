@@ -1,0 +1,68 @@
+{
+ "topic": "natural-disruptions",
+ "hook": "On the Serengeti plains, more than a million wildebeest walk hundreds of kilometers every year, following the rains to fresh grass. A river floods its valley each spring. A volcano that has been quiet for 400 years erupts without warning. Ecosystems are shaken by natural events all the time; what differs is how often, how predictably and how hard.",
+ "prereq": [
+  {
+   "q": "An animal survives but stops reproducing when its environment gets hotter. Which part of its range of tolerance is it in?",
+   "options": [
+    "A zone of physiological stress",
+    "Its optimal range",
+    "A zone of intolerance",
+    "Outside any range"
+   ],
+   "correct": 0,
+   "why": "Surviving while growing or reproducing poorly is the sign of a stress zone.",
+   "review": "ecological-tolerance"
+  },
+  {
+   "q": "Why does a more biodiverse community usually recover faster after a drought?",
+   "options": [
+    "More species and more genetic variety mean some survive and keep the community working",
+    "Droughts are shorter in diverse places",
+    "Diverse communities need no water",
+    "Diverse communities have fewer individuals"
+   ],
+   "correct": 0,
+   "why": "Variety makes it likely that some individuals and species cope with the stress.",
+   "review": "biodiversity"
+  }
+ ],
+ "figure": {
+  "figure": "natural-disruptions-timing",
+  "caption": "Three timings of natural disruption over 30 years: periodic (regular), episodic (recurring at irregular intervals) and random (no pattern)."
+ },
+ "chain": [
+  {
+   "cause": "A natural disruption, such as a flood, drought, fire, storm or eruption, strikes an ecosystem",
+   "effect": "it kills organisms, removes habitat or changes abiotic conditions such as water, temperature or light"
+  },
+  {
+   "cause": "Conditions move outside some species’ ranges of tolerance",
+   "effect": "those populations shrink, die out locally or migrate to places that still suit them"
+  },
+  {
+   "cause": "The disruption ends or settles into a pattern",
+   "effect": "the ecosystem recovers, or is replaced by a different community if the change is large or lasting"
+  }
+ ],
+ "ideas": [
+  "A <b>natural disruption</b> is a natural event that changes an ecosystem: a flood, drought, wildfire, hurricane, volcanic eruption, earthquake or a long shift in climate.",
+  "Disruptions differ in timing. <b>Periodic</b> ones come at regular intervals (spring floods, a dry season). <b>Episodic</b> ones recur, but at irregular intervals (droughts, many wildfires). <b>Random</b> ones have no pattern (an eruption, an earthquake).",
+  "Disruptions can be short-term (a storm) or long-term (a climate that warms over thousands of years). Earth’s climate and sea level have changed many times; sea level was about 120 meters lower than today about 20,000 years ago, when more water was locked in glaciers on land.",
+  "Organisms often respond by <b>migrating</b>: moving, for a season or for good, to places where conditions suit them."
+ ],
+ "misconception": {
+  "wrong": "Natural disruptions always destroy ecosystems, so a healthy ecosystem is one that is never disturbed.",
+  "right": "Many ecosystems are shaped by regular disruption. Spring floods spread nutrients over floodplains, and some grasslands and pine forests need fire to stay as they are."
+ },
+ "check": [
+  "env-natural-disruptions-1",
+  "env-natural-disruptions-2",
+  "env-natural-disruptions-3",
+  "env-natural-disruptions-6",
+  "env-natural-disruptions-7",
+  "env-natural-disruptions-10",
+  "env-natural-disruptions-12"
+ ],
+ "summary": "Natural disruptions such as floods, droughts, fires, storms and eruptions change ecosystems for a short or a long time. They can be periodic (regular), episodic (recurring at irregular intervals) or random. Over geological time, Earth’s climate and sea level have changed many times. Organisms respond by surviving in place, migrating to suitable places, or dying out locally."
+}

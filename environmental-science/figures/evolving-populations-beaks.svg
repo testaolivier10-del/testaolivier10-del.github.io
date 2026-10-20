@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Beak depth before and after a drought</title>
+<desc id="d">Bar chart of beak depth in an invented seed-eating bird. Parents before a drought: 10% at 8 mm, 25% at 9 mm, 35% at 10 mm, 20% at 11 mm, 10% at 12 mm. Offspring after the drought: 4% at 8 mm, 15% at 9 mm, 32% at 10 mm, 30% at 11 mm, 19% at 12 mm. The distribution shifts toward deeper beaks.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker></defs><rect width="720" height="420" fill="#FFFFFF"/>
+<line x1="100" y1="300" x2="660" y2="300" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="232.5" x2="660" y2="232.5" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="165" x2="660" y2="165" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="97.5" x2="660" y2="97.5" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="30" x2="660" y2="30" stroke="#D9DCD3" stroke-width="1"/>
+<line x1="100" y1="300" x2="660" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="100" y1="30" x2="100" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="95" y1="300" x2="100" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="304.5" font-size="13" fill="#1F2A28" text-anchor="end">0</text>
+<line x1="95" y1="232.5" x2="100" y2="232.5" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="237" font-size="13" fill="#1F2A28" text-anchor="end">10</text>
+<line x1="95" y1="165" x2="100" y2="165" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="169.5" font-size="13" fill="#1F2A28" text-anchor="end">20</text>
+<line x1="95" y1="97.5" x2="100" y2="97.5" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="102" font-size="13" fill="#1F2A28" text-anchor="end">30</text>
+<line x1="95" y1="30" x2="100" y2="30" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="91" y="34.5" font-size="13" fill="#1F2A28" text-anchor="end">40</text>
+<text x="380" y="344" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">Beak depth (mm)</text>
+<text x="42" y="165" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700" transform="rotate(-90 42 165)">Percent of birds</text>
+<rect x="115" y="232.5" width="38" height="67.5" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.8"/>
+<rect x="159" y="273" width="38" height="27" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/>
+<text x="134" y="226.5" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">10</text>
+<text x="178" y="267" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">4</text>
+<text x="156" y="320" font-size="13" fill="#1F2A28" text-anchor="middle">8</text>
+<rect x="227" y="131.3" width="38" height="168.8" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.8"/>
+<rect x="271" y="198.8" width="38" height="101.3" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/>
+<text x="246" y="125.3" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">25</text>
+<text x="290" y="192.8" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">15</text>
+<text x="268" y="320" font-size="13" fill="#1F2A28" text-anchor="middle">9</text>
+<rect x="339" y="63.8" width="38" height="236.3" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.8"/>
+<rect x="383" y="84" width="38" height="216" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/>
+<text x="358" y="57.8" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">35</text>
+<text x="402" y="78" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">32</text>
+<text x="380" y="320" font-size="13" fill="#1F2A28" text-anchor="middle">10</text>
+<rect x="451" y="165" width="38" height="135" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.8"/>
+<rect x="495" y="97.5" width="38" height="202.5" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/>
+<text x="470" y="159" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">20</text>
+<text x="514" y="91.5" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">30</text>
+<text x="492" y="320" font-size="13" fill="#1F2A28" text-anchor="middle">11</text>
+<rect x="563" y="232.5" width="38" height="67.5" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.8"/>
+<rect x="607" y="171.8" width="38" height="128.3" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/>
+<text x="582" y="226.5" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">10</text>
+<text x="626" y="165.8" font-size="12" fill="#1F2A28" text-anchor="middle" font-weight="700">19</text>
+<text x="604" y="320" font-size="13" fill="#1F2A28" text-anchor="middle">12</text>
+<rect x="110" y="40" width="16" height="12" fill="#474A10" stroke="#474A10" stroke-width="1" fill-opacity="0.75"/><text x="132" y="51" font-size="13" fill="#1F2A28">Parents (before the drought)</text>
+<rect x="110" y="62" width="16" height="12" fill="#0072B2" stroke="#0072B2" stroke-width="1" fill-opacity="0.75"/><text x="132" y="73" font-size="13" fill="#1F2A28">Offspring (after the drought)</text>
+<text x="708" y="410" font-size="11" fill="#5B625A" text-anchor="end" font-style="italic">Invented data for practice</text>
+</svg>

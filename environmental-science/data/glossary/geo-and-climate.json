@@ -1,0 +1,8 @@
+{
+ "rain-shadow": {
+  "def": "A dry region on the leeward side of a mountain range. Moist air drops its rain as it rises and cools on the windward side, then sinks and warms on the leeward side, bringing little precipitation."
+ },
+ "ocean-current": {
+  "def": "A steady flow of ocean water, driven at the surface mainly by prevailing winds and turned by the Coriolis effect and the continents into large loops called gyres. Warm currents warm nearby coasts; cold currents cool them."
+ }
+}

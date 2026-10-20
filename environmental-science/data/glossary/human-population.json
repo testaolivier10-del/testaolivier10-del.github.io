@@ -1,0 +1,17 @@
+{
+ "crude-birth-rate": {
+  "def": "The number of live births in a year for every 1,000 people in a population. Written CBR."
+ },
+ "crude-death-rate": {
+  "def": "The number of deaths in a year for every 1,000 people in a population. Written CDR."
+ },
+ "natural-increase": {
+  "def": "The growth of a population from births minus deaths, ignoring migration, as a percent per year: (crude birth rate minus crude death rate) divided by 10. It is negative when deaths outnumber births."
+ },
+ "migration": {
+  "def": "The movement of people into a country (immigration) or out of it (emigration). Net migration is immigrants minus emigrants; it adds to or subtracts from the growth that births and deaths give."
+ },
+ "malthus": {
+  "def": "The idea, from the economist Thomas Malthus in 1798, that population tends to grow faster than the food supply, so it will be held back by famine, disease or war unless births fall."
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "parent-material": {
+  "def": "The rock or sediment a soil forms from: the bedrock under it, or material carried in by rivers, glaciers or wind. It sets which minerals the soil starts with."
+ },
+ "humus": {
+  "def": "Dark, crumbly organic matter in soil, left when decomposers break down dead plants and animals. It holds water and slowly releases nutrients."
+ },
+ "soil-horizon": {
+  "def": "One of the layers in a soil profile: O (organic matter), A (topsoil, humus mixed with minerals), B (subsoil, where leached minerals collect), C (partly weathered parent material), then bedrock."
+ },
+ "erosion": {
+  "def": "The removal and transport of soil or rock by wind, water or ice. It speeds up where plants are removed and the ground is left bare."
+ }
+}

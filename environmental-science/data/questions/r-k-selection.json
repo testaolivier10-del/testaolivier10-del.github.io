@@ -1,0 +1,496 @@
+{
+ "stimuli": {
+  "r-k-selection-s1": {
+   "kind": "quantitative",
+   "title": "Reproduction in four animals",
+   "invented": true,
+   "table": {
+    "caption": "Typical reproductive traits of four animal species (invented values for practice, in realistic ranges)",
+    "cols": [
+     "Species",
+     "Offspring per year",
+     "Age at first breeding (years)",
+     "Parental care",
+     "Typical life span (years)"
+    ],
+    "rows": [
+     [
+      "Field mouse",
+      "30",
+      "0.2",
+      "a few weeks",
+      "1"
+     ],
+     [
+      "Pond frog",
+      "2,000",
+      "2",
+      "none",
+      "5"
+     ],
+     [
+      "Gorilla",
+      "0.25",
+      "10",
+      "about 4 years",
+      "40"
+     ],
+     [
+      "Albatross",
+      "0.5",
+      "8",
+      "about 1 year",
+      "50"
+     ]
+    ]
+   }
+  },
+  "r-k-selection-s2": {
+   "kind": "text",
+   "title": "Two ways to come back",
+   "passage": "After a hard winter, the vole population in a northern meadow fell from about 200 per hectare to 10. By the end of the next summer it was back above 150: a female vole can breed at a few weeks old and raise several litters a year. In the same region, hunting in the 1800s cut a population of bowhead whales to a few thousand animals. Bowheads begin breeding at about 25 years old and have one calf every three or four years, after a pregnancy of over a year. Even with full protection since the 1940s, the whales took most of a century to grow back to tens of thousands. A species’ way of reproducing, the authors argue, decides how quickly it can make up for losses, and should shape how much hunting or fishing it can take.",
+   "source": "Invented passage for practice, based on the general biology of voles and bowhead whales."
+  }
+ },
+ "items": [
+  {
+   "id": "env-r-k-selection-1",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which species in the table shows the most K-selected traits?",
+   "stimulus": "r-k-selection-s1",
+   "options": [
+    "Gorilla",
+    "Field mouse",
+    "Pond frog",
+    "Albatross and pond frog equally"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K-selected: few offspring, late breeding, long care, long life.",
+    "options": [
+     "Right: very few offspring, late first breeding, about 4 years of care and a long life.",
+     "Many offspring, very early breeding and a short life are r-selected traits.",
+     "Thousands of offspring and no care are r-selected traits.",
+     "The frog’s traits are strongly r-selected; the two are not alike."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-2",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which species in the table gives its offspring the least parental care?",
+   "stimulus": "r-k-selection-s1",
+   "options": [
+    "Field mouse",
+    "Pond frog",
+    "Gorilla",
+    "Albatross"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Little or no care is an r-selected trait.",
+    "options": [
+     "Mice nurse their young for a few weeks.",
+     "Right: the table lists no care at all for the frog.",
+     "Gorillas care for their young for about 4 years.",
+     "Albatrosses care for their chick for about a year."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-3",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "If a field mouse lives its typical life span, how many offspring does it produce, using the table’s values?",
+   "stimulus": "r-k-selection-s1",
+   "why": {
+    "correct": "Offspring per year times years of life: $30\\,\\frac{\\text{offspring}}{\\text{yr}} \\times 1\\,\\text{yr} = 30$ offspring. (A slightly more careful count would subtract the first 0.2 years before it can breed.)"
+   },
+   "numeric": {
+    "unit": "offspring",
+    "from": {
+     "fn": "mul",
+     "args": [
+      30,
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "That multiplies by 0.2, the age at first breeding. Use the life span, 1 year."
+     },
+     {
+      "value": 31,
+      "why": "That adds the numbers. Multiply offspring per year by years of life."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-4",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which species would most likely rebound fastest after a flood kills 90% of its population?",
+   "stimulus": "r-k-selection-s1",
+   "options": [
+    "Gorilla",
+    "Albatross",
+    "Field mouse",
+    "They would rebound equally fast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Early breeding and many offspring mean fast recovery.",
+    "options": [
+     "One young every four years and breeding at 10 make recovery slow.",
+     "One chick every two years and breeding at 8 make recovery slow.",
+     "Right: breeding at a few months old and raising many young a year gives it a very high biotic potential.",
+     "Their reproductive traits differ greatly, so their recovery speeds differ."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-5",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the main claim of the passage?",
+   "stimulus": "r-k-selection-s2",
+   "options": [
+    "Voles are more valuable to the meadow than whales are to the sea",
+    "Hard winters are worse for voles than hunting was for whales",
+    "Bowhead whales are no longer protected from hunting",
+    "How a species reproduces sets how fast it recovers and how much harvest it can take"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The final sentence states the claim the two examples support.",
+    "options": [
+     "The passage compares recovery, not value.",
+     "The passage does not rank the two events by harm.",
+     "The passage says they have been protected since the 1940s.",
+     "Right: the last sentence states this, and the voles and whales illustrate it."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-6",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which evidence from the passage best supports the claim that the whales recover slowly?",
+   "stimulus": "r-k-selection-s2",
+   "options": [
+    "They first breed at about 25 and calve each 3 to 4 years",
+    "Hunting in the 1800s cut them to a few thousand",
+    "They live in the same northern region as the voles do",
+    "They have been protected since the 1940s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Recovery speed comes from reproductive traits.",
+    "options": [
+     "Right: late breeding and few offspring explain slow recovery.",
+     "That explains why they fell, not why recovery is slow.",
+     "Location does not explain the speed of recovery.",
+     "Protection allows recovery; it does not explain its pace."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-7",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which harvest rule fits the passage’s argument best?",
+   "stimulus": "r-k-selection-s2",
+   "options": [
+    "Take an equal share of each species each year",
+    "Take a smaller share each year from slow-reproducing species",
+    "Take more from species that live longer, since there are more old animals",
+    "Stop counting populations once a species is protected"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "K-selected species can sustain only light harvests.",
+    "options": [
+     "The passage argues that different reproductive strategies need different limits.",
+     "Right: species that replace losses slowly can sustain only small harvests.",
+     "Long-lived, slow-breeding species are the ones that recover slowly.",
+     "Counting is how a recovery like the whales’ is tracked."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-8",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which set of traits describes an r-selected species?",
+   "options": [
+    "Few large offspring, much care, late breeding",
+    "Many offspring, much care, late breeding",
+    "Many small offspring, little care, early breeding",
+    "Few offspring, no care, long life"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "r-selected: many, small, little care, early, short-lived.",
+    "options": [
+     "These are K-selected traits.",
+     "Much care and late breeding are K-selected traits.",
+     "Right: all three are r-selected traits.",
+     "Few offspring and a long life are K-selected traits."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-9",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is biotic potential?",
+   "options": [
+    "The largest number of different species an area can hold",
+    "The number of offspring that survive to adulthood",
+    "The total mass of the living things in an area",
+    "The fastest growth a population could reach with no limits"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "High biotic potential: many offspring, early and often.",
+    "options": [
+     "That would describe species richness, not biotic potential.",
+     "Biotic potential is the fastest possible growth, not actual survival.",
+     "That is biomass.",
+     "Right: it is the fastest possible growth, set by reproductive traits."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-10",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why mosquito populations often bounce back within weeks after a spraying program ends.",
+   "why": {
+    "correct": "Name the r-selected traits, then the rebound."
+   },
+   "specific": {
+    "frame": "Mosquitoes ___, so the few that survive ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Strategy",
+      "options": [
+       "are r-selected, laying many eggs and maturing within days",
+       "are K-selected, raising one young at a time",
+       "live many years and breed late"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Mosquitoes lay hundreds of eggs; they are not K-selected.",
+       "2": "Mosquitoes live weeks and breed within days."
+      }
+     },
+     "effect": {
+      "label": "Survivors",
+      "options": [
+       "can each produce hundreds of offspring quickly",
+       "need years to produce one offspring",
+       "stop breeding until spraying returns"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes a K-selected species.",
+       "2": "Nothing stops survivors from breeding."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "lets the population increase rapidly back to its earlier size",
+       "keeps the population low for decades",
+       "makes the population smaller each year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Slow recovery describes K-selected species.",
+       "2": "High biotic potential drives the population up, not down."
+      }
+     }
+    },
+    "model": "Mosquitoes are r-selected, laying many eggs and maturing within days, so the few that survive can each produce hundreds of offspring quickly, which lets the population increase rapidly back to its earlier size."
+   }
+  },
+  {
+   "id": "env-r-k-selection-11",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which traits are typical of K-selected species? Select all that apply.",
+   "options": [
+    "Large offspring that receive a lot of parental care",
+    "Long life spans and late first reproduction",
+    "Populations that swing sharply up and down",
+    "Thousands of offspring each season"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "K-selected: few, large, cared for, long-lived.",
+    "options": [
+     "Right: K-selected species invest heavily in each offspring.",
+     "Right: both are K-selected traits.",
+     "Sharp swings are typical of r-selected species.",
+     "Thousands of offspring is r-selected."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-12",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why are K-selected species, such as large whales and great apes, more likely than r-selected species to become threatened when people hunt them?",
+   "options": [
+    "They replace losses slowly, so hunting outpaces births",
+    "They are smaller and easier to catch than most r-selected species",
+    "They live in more habitats than r-selected species",
+    "They produce more offspring than hunters can find"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slow reproduction means slow recovery from any extra deaths.",
+    "options": [
+     "Right: few offspring, late breeding and long gaps between births mean slow recovery.",
+     "Whales and great apes are large; size is not the reason.",
+     "Habitat range is not what makes K-selected species vulnerable.",
+     "They produce few offspring, which is the problem."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-13",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Dandelions produce hundreds of wind-blown seeds, flower within months, and quickly cover bare ground after it is cleared. How would you classify them?",
+   "options": [
+    "Mainly K-selected",
+    "Mainly r-selected",
+    "Neither, because plants have no reproductive strategy",
+    "K-selected, because their seeds have no parental care"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Weeds that colonize bare ground are classic r-selected species.",
+    "options": [
+     "K-selected plants, such as oaks, grow slowly and reproduce late.",
+     "Right: many small seeds, early reproduction and fast spread onto open ground are r-selected traits.",
+     "Plants have reproductive strategies too; trees and weeds differ greatly.",
+     "No parental care is an r-selected trait."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-14",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Sea turtles lay about 100 eggs per nest and leave them, but they live 50 or more years and first breed at 20 to 30. How are they best described?",
+   "options": [
+    "Purely r-selected, because they lay many eggs",
+    "Purely K-selected, because they live long",
+    "A mix of r-selected and K-selected traits",
+    "Generalists, because they lay eggs on beaches"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "r and K are ends of a range; many species mix traits.",
+    "options": [
+     "Their long life and late breeding are K-selected traits.",
+     "Many eggs and no care are r-selected traits.",
+     "Right: many eggs and no care are r-like; long life and late breeding are K-like.",
+     "Generalist describes niche width, not reproductive strategy."
+    ]
+   }
+  },
+  {
+   "id": "env-r-k-selection-15",
+   "unit": "unit-3",
+   "topic": "r-k-selection",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town sprays a field heavily with a chemical to kill insect pests on its crops, and the spray also kills a population of insect-eating birds. Which outcome is most likely over the next few years?",
+   "options": [
+    "The birds return first and keep the pest numbers low",
+    "Neither returns, because the spray poisons the field for good",
+    "The pests and the birds return at about the same rate",
+    "Pests return faster than birds, so damage can be worse"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A disruption that hits both an r-selected pest and its slower-breeding predator favors the pest.",
+    "options": [
+     "Birds that raise few young a year recover more slowly than insects.",
+     "Both can return; the question is which is faster.",
+     "Their reproductive strategies differ, so their recovery rates differ.",
+     "Right: r-selected insects rebound quickly; K-like birds, raising few young, take longer to recover."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "sustainable-forestry",
+ "hook": "For most of the twentieth century, U.S. forest managers put out every fire as fast as they could. Dead branches, brush and young trees piled up on the forest floor. When fires did escape, they burned so hot that they killed even the big old trees that had survived centuries of smaller fires. Today managers set some fires on purpose, a change that sounds backward until you see why.",
+ "prereq": [
+  {
+   "q": "Which is a cost of clearcutting a hillside?",
+   "options": [
+    "Bare soil erodes and the stream below warms",
+    "Shade over the stream increases",
+    "Carbon stored on the site increases",
+    "Habitat for mature-forest animals grows"
+   ],
+   "correct": 0,
+   "why": "Removing all the trees bares the soil and the stream.",
+   "review": "clearcutting"
+  },
+  {
+   "q": "What is maximum sustainable yield?",
+   "options": [
+    "The largest harvest a population can replace each year",
+    "The total size of a population at its carrying capacity",
+    "The smallest harvest that pays for itself",
+    "The harvest taken in one year by clearcutting"
+   ],
+   "correct": 0,
+   "why": "It is the largest harvest that can be taken year after year without shrinking the population.",
+   "review": "sustainability"
+  }
+ ],
+ "figure": {
+  "figure": "sustainable-forestry-practices",
+  "caption": "Selective cutting, reforestation and prescribed burns keep forest cover while producing wood or lowering wildfire risk."
+ },
+ "chain": [
+  {
+   "cause": "Fires are put out for decades",
+   "effect": "dead wood and brush build up on the forest floor"
+  },
+  {
+   "cause": "A large load of fuel is on the ground",
+   "effect": "a wildfire burns hotter and climbs into the treetops"
+  },
+  {
+   "cause": "A crown fire kills large trees and bakes the soil",
+   "effect": "the forest takes much longer to recover"
+  },
+  {
+   "cause": "Prescribed burns clear the fuel under safe conditions",
+   "effect": "later wildfires stay lower and cooler, and large trees survive"
+  }
+ ],
+ "ideas": [
+  "<b>Sustainable forestry</b> harvests wood no faster than the forest regrows and protects soil, water and habitat.",
+  "<b>Selective cutting</b> takes some trees and leaves most standing, so the forest keeps its cover, shade and habitat. It costs more than clearcutting.",
+  "<b>Reforestation</b> replants or lets trees regrow on cut land. Mixed native species restore more habitat than a single-species plantation.",
+  "<b>Prescribed burns</b> clear dead wood and brush to prevent hotter wildfires. Using recycled wood and paper, and protecting trees along streams, also help."
+ ],
+ "misconception": {
+  "wrong": "The best way to protect a forest is to put out every fire as soon as it starts.",
+  "right": "Many forests evolved with frequent low fires. Putting out every fire lets fuel build up, so the fire that finally escapes is far hotter and more destructive. Prescribed burns keep fuel low."
+ },
+ "check": [
+  "env-sustainable-forestry-1",
+  "env-sustainable-forestry-2",
+  "env-sustainable-forestry-9",
+  "env-sustainable-forestry-10",
+  "env-sustainable-forestry-11",
+  "env-sustainable-forestry-12",
+  "env-sustainable-forestry-7"
+ ],
+ "summary": "Sustainable forestry harvests wood no faster than forests regrow while protecting soil, water and habitat. Selective cutting keeps most trees standing; reforestation replants cut land; prescribed burns remove fuel so wildfires stay cooler; and reusing and recycling wood lowers demand. Each method trades some cost or timber for a forest that keeps producing."
+}

@@ -1,0 +1,629 @@
+{
+ "stimuli": {
+  "tragedy-of-commons-s1": {
+   "kind": "quantitative",
+   "title": "Boats and catch on a shared lake",
+   "invented": true,
+   "table": {
+    "caption": "Fishing on a lake open to anyone with a boat (invented data for practice)",
+    "cols": [
+     "Year",
+     "Boats",
+     "Total catch (metric tons)",
+     "Catch per boat (metric tons)"
+    ],
+    "rows": [
+     [
+      "2000",
+      "20",
+      "900",
+      "45"
+     ],
+     [
+      "2005",
+      "30",
+      "1,200",
+      "40"
+     ],
+     [
+      "2010",
+      "45",
+      "1,350",
+      "30"
+     ],
+     [
+      "2015",
+      "60",
+      "1,200",
+      "20"
+     ],
+     [
+      "2020",
+      "70",
+      "840",
+      "12"
+     ]
+    ]
+   }
+  },
+  "tragedy-of-commons-s2": {
+   "kind": "visual",
+   "title": "One herder adds one more cow",
+   "figure": "tragedy-of-commons-pasture"
+  }
+ },
+ "items": [
+  {
+   "id": "env-tragedy-of-commons-1",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which feature makes a resource a common resource that can suffer the tragedy of the commons?",
+   "options": [
+    "It is shared by many users and hard to keep anyone from using",
+    "It is owned by one family that sells what it produces",
+    "It is renewed faster than anyone could use it up",
+    "It is made in a factory and sold to many users"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A common resource is shared and hard to fence off, and taking it leaves less for others. That is the setting the tragedy needs.",
+    "options": [
+     "Right: shared use with no easy way to exclude users is what lets each user take too much.",
+     "An owner bears the whole cost of overuse, so the owner has a reason to protect it.",
+     "A resource renewed faster than any possible use cannot be run down.",
+     "A product sold in a market has a price and an owner at every step."
+    ]
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-2",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Forty farms pump irrigation water from the same aquifer, and no rule limits how much each farm pumps. Over 20 years the water table drops 30 meters. Which statement best explains the drop?",
+   "options": [
+    "Each farm gains the full value of the water it pumps, while the lower water table is a cost shared by all forty farms",
+    "The aquifer is recharged by rain faster than the forty farms together can pump it, so the water table drops just in the driest years",
+    "Each farm pumps less each year because the cost of pumping falls as the water table drops",
+    "Groundwater is a private resource, so each farm owner protects the water under their own land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is the tragedy of the commons: the gain from pumping goes to one farm, the cost (a falling water table) is spread over all of them.",
+    "options": [
+     "Right: individual gain and shared cost push every farm to pump more than the aquifer can renew.",
+     "If recharge were faster than pumping, the water table would not fall 30 meters.",
+     "Pumping costs rise as the water table drops, because water must be lifted farther.",
+     "The water is shared: pumping on one farm lowers the water table under its neighbors too."
+    ]
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-3",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A regional agency wants to stop a shared ocean fishery from running down. Which response changes what each fishing boat gains from catching more fish?",
+   "options": [
+    "Giving each boat a fixed share of a yearly catch limit set by scientists",
+    "Printing posters at each harbor that ask the boats to catch fewer fish each season",
+    "Paying for a study of how many fish there were 100 years ago",
+    "Building a larger harbor so more boats can unload their catch"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A catch limit split into shares means each boat cannot gain by racing to catch more, and the total stays below what the fish can replace.",
+    "options": [
+     "Right: an assigned share caps each boat's catch, so racing for fish no longer pays.",
+     "A request leaves the rewards unchanged: each boat still gains by catching more.",
+     "A historical study adds information but does not limit catch.",
+     "A bigger harbor would let the fleet take even more fish."
+    ]
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-4",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In some mountain villages, families have shared forests and pastures for centuries without running them down. Which feature of these villages best explains that success?",
+   "options": [
+    "Users agree on rules, watch each other, and penalize anyone who takes too much",
+    "The forests and pastures are so large that no amount of village use could ever harm them",
+    "Each family uses the resource as much as it likes, with no limits",
+    "Outsiders are paid to harvest the resource on the villages' behalf"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Studies of long-lasting commons (Elinor Ostrom's work) found shared rules, monitoring by the users and penalties for rule breakers.",
+    "options": [
+     "Right: agreed rules plus monitoring and penalties change the rewards of overuse.",
+     "Mountain forests and pastures can be harmed by overuse; their size is not what protects them.",
+     "Use with no limits is the recipe for the tragedy, not a fix for it.",
+     "Paying outsiders to harvest does not limit how much is taken."
+    ]
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-5",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Twenty herders share one pasture equally. One herder adds a cow, and the grass that cow eats is lost to the whole pasture. What percent of that cost does the herder who added the cow bear?",
+   "why": {
+    "correct": "The cost is split 20 ways: $\\frac{1}{20} \\times 100 = 5\\%$. The herder keeps 100% of the new cow but pays only 5% of its cost."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      1,
+      20
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 0.05,
+      "why": "0.05 is the fraction. Multiply by 100 to turn it into a percent: 0.05 × 100 = 5%."
+     },
+     {
+      "value": 20,
+      "why": "20 is the number of herders, not the share. One herder pays 1 part in 20: (1 / 20) × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-6",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pasture has a carrying capacity of 120 cows and now holds 120. Each of its 12 herders adds 3 cows. Write the setup for the percent by which the new herd is larger than the carrying capacity, then give the answer.",
+   "why": {
+    "correct": "The new herd is $120 + 12 \\times 3 = 156$ cows, so the percent change is $\\frac{156 - 120}{120} \\times 100 = 30\\%$ above carrying capacity."
+   },
+   "setup": {
+    "answer": "(156 - 120) / 120 * 100",
+    "mustUse": [
+     "156",
+     "120"
+    ],
+    "mistakes": [
+     {
+      "expr": "(156 - 120) / 156 * 100",
+      "why": "Divide by the starting value, the carrying capacity of 120, not the new herd of 156."
+     },
+     {
+      "expr": "36 / 120",
+      "why": "That is the fraction. Multiply by 100 to turn it into a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       120,
+       156
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         156,
+         120
+        ]
+       },
+       "why": "That is the change from 156 back to 120. Start from the old value, 120."
+      },
+      {
+       "value": 36,
+       "why": "36 is the number of extra cows, not the percent. Divide by 120 and multiply by 100."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-7",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why each fishing boat on an unregulated shared fishery catches more fish each year even though the stock is falling.",
+   "why": {
+    "correct": "Each boat keeps the full value of its extra catch, while the cost (fewer fish next year) is shared by every boat, so catching more pays for each boat even as the stock falls."
+   },
+   "specific": {
+    "frame": "Because each boat ___, while ___, each boat ___.",
+    "slots": {
+     "cause": {
+      "label": "What each boat gains",
+      "options": [
+       "keeps the full value of every extra fish it catches",
+       "is paid by the government for every fish it leaves",
+       "owns the fish that live near its home port"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "No payment for leaving fish is part of an unregulated fishery.",
+       "2": "In a shared fishery no boat owns any fish until it catches them."
+      }
+     },
+     "effect": {
+      "label": "Who pays the cost",
+      "options": [
+       "the loss of fish for next year is shared by every boat",
+       "the loss of fish is paid only by the boat that caught them",
+       "there is no cost because the fish come back each year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A smaller stock means fewer fish for every boat, not only the one that took them.",
+       "2": "The stock is falling, so the fish are not coming back as fast as they are caught."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "gains by catching more, so total catch rises above what the fish can replace",
+       "gains by catching less, so total catch falls each year",
+       "gains nothing either way, so catch stays the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With shared costs, catching less leaves fish for rival boats; it does not pay the boat that holds back.",
+       "2": "Each extra fish is income for the boat that catches it, so the choice is not neutral."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "boat",
+      "fish",
+      "catch"
+     ]
+    },
+    "model": "Because each boat keeps the full value of every extra fish it catches, while the loss of fish next year is shared by every boat, each boat gains by catching more, so the total catch rises above what the fish can replace."
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-8",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "specific",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town's shared groundwater is falling. Propose a policy (a law or rule, not a technology) that would slow the drop, and say how it works.",
+   "why": {
+    "correct": "A policy is a rule: here a law that caps each well's yearly pumping (with meters to check) keeps total pumping at or below recharge."
+   },
+   "specific": {
+    "frame": "A ___ that ___ would work because ___.",
+    "slots": {
+     "policy": {
+      "label": "Policy or technology",
+      "options": [
+       "town law",
+       "new high-efficiency pump",
+       "deeper well"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A pump is a technology, not a policy; the question asks for a law or rule.",
+       "2": "A deeper well is a technology and lets users pump even more."
+      }
+     },
+     "solution": {
+      "label": "What it requires",
+      "options": [
+       "caps each well's yearly pumping and requires a water meter",
+       "asks residents to think about saving water",
+       "lets each user pump as much as needed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A request is not a rule; it does not change what each user gains from pumping.",
+       "2": "Pumping without limits is what is causing the drop."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "total pumping is held at or below the rate rain refills the aquifer",
+       "the water table will rise as more wells are drilled",
+       "pumping costs will fall for every user"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More wells lower the water table further.",
+       "2": "Lower pumping costs would encourage more pumping, not less."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "pump",
+      "well",
+      "groundwater",
+      "aquifer"
+     ]
+    },
+    "model": "A town law that caps each well's yearly pumping and requires a water meter would work because total pumping is held at or below the rate rain refills the aquifer, so the water table stops falling."
+   }
+  },
+  {
+   "id": "env-tragedy-of-commons-9",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement best describes the trend in catch per boat from 2000 to 2020?",
+   "options": [
+    "It fell every five years, from 45 to 12 metric tons per boat",
+    "It rose until 2010, then fell, following the number of boats",
+    "It stayed near 40 metric tons per boat while total catch fell",
+    "It rose steadily as more boats joined the fishery each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Catch per boat fell at every step: 45, 40, 30, 20, 12 metric tons.",
+    "options": [
+     "Right: the column falls at every five-year step.",
+     "That describes total catch, which peaked in 2010; catch per boat fell throughout.",
+     "Catch per boat fell far below 40 after 2005.",
+     "Boats rose, but catch per boat fell."
+    ]
+   },
+   "stimulus": "tragedy-of-commons-s1"
+  },
+  {
+   "id": "env-tragedy-of-commons-10",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in catch per boat from 2000 to 2020, then give the answer. (A decrease is a negative percent change.)",
+   "why": {
+    "correct": "Percent change = (new - old) / old × 100: $\\frac{12 - 45}{45} \\times 100 \\approx -73.3\\%$, a drop of about 73% in what each boat brings in."
+   },
+   "setup": {
+    "answer": "(12 - 45) / 45 * 100",
+    "mustUse": [
+     "12",
+     "45"
+    ],
+    "mistakes": [
+     {
+      "expr": "(12 - 45) / 12 * 100",
+      "why": "Divide by the old value, 45 metric tons in 2000, not the new value."
+     },
+     {
+      "expr": "(45 - 12) / 45 * 100",
+      "why": "Subtract old from new: (12 - 45). Catch per boat fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       45,
+       12
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         12,
+         45
+        ]
+       },
+       "why": "That is the change from 12 back up to 45. Start from the 2000 value, 45."
+      },
+      {
+       "value": -33,
+       "why": "-33 is the change in metric tons per boat. Divide by 45 and multiply by 100 for a percent."
+      }
+     ]
+    }
+   },
+   "stimulus": "tragedy-of-commons-s1"
+  },
+  {
+   "id": "env-tragedy-of-commons-11",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Total catch was the same in 2005 and 2015 (1,200 metric tons). What does the rest of the table suggest about the lake in 2015 compared with 2005?",
+   "options": [
+    "Twice as many boats were needed for the same catch, a sign the fish stock had shrunk",
+    "The fish stock had grown, since the same catch was taken in both years by the fleet",
+    "Fishing pressure was lower in 2015, since each boat caught less fish than before",
+    "The lake was healthy in both years, since the total catch did not change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In 2005, 30 boats caught 1,200 metric tons; in 2015, 60 boats were needed. Effort doubled for the same catch, so each boat found fewer fish.",
+    "options": [
+     "Right: the same catch took twice the effort, which points to fewer fish in the lake.",
+     "A growing stock would give more catch per boat, not less.",
+     "Pressure was higher: 60 boats fished instead of 30.",
+     "Equal totals hide the doubled effort; catch per boat halved."
+    ]
+   },
+   "stimulus": "tragedy-of-commons-s1"
+  },
+  {
+   "id": "env-tragedy-of-commons-12",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which management step fits this lake best and addresses the cause of the decline shown in the table?",
+   "options": [
+    "Issue a limited number of fishing permits so the fleet stays near 30 boats",
+    "Build a second boat ramp on the far shore so that boats can reach the whole lake more easily",
+    "Stock the lake with fish once and then leave fishing unrestricted",
+    "Lend money to the fishers so they can buy larger and faster boats"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The table shows catch per boat falling as boats were added. Limiting permits caps the fleet, the cause of the decline.",
+    "options": [
+     "Right: a cap on boats limits total effort, the driver of the falling catch.",
+     "Easier access adds effort and speeds the decline.",
+     "One-time stocking does nothing about unlimited fishing, which would take the new fish too.",
+     "Bigger boats raise each boat's catch and the total pressure on the fish."
+    ]
+   },
+   "stimulus": "tragedy-of-commons-s1"
+  },
+  {
+   "id": "env-tragedy-of-commons-13",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the bar chart, what share of the cost of one more cow does the herder who adds it pay?",
+   "options": [
+    "10% of one cow's value",
+    "100% of one cow's value",
+    "50% of one cow's value",
+    "1% of one cow's value"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The cost bar reaches 10%: the lost grass is shared among 10 herders, so each pays one tenth.",
+    "options": [
+     "Right: the cost bar shows 10%, one tenth of the cost.",
+     "100% is the gain bar: the herder keeps the whole cow.",
+     "No bar reaches 50%.",
+     "With 10 herders the share is one tenth, not one hundredth."
+    ]
+   },
+   "stimulus": "tragedy-of-commons-s2"
+  },
+  {
+   "id": "env-tragedy-of-commons-14",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Using the diagram, why does adding a cow make sense to each herder even though the pasture is running down?",
+   "options": [
+    "The herder's gain (100%) is larger than the herder's share of the cost (10%)",
+    "The grass grows back faster when more cows graze it, as the loop shows",
+    "Bare soil from erosion makes the pasture better for the cows",
+    "The herder pays the whole cost of the extra cow but gets to keep just a small share of it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For each herder, +100% beats -10%, so adding cows pays, even though together the herders run the pasture down.",
+    "options": [
+     "Right: the gain outweighs the herder's small share of the cost.",
+     "The loop shows grass eaten faster than it regrows, not faster regrowth.",
+     "Bare, eroding soil grows less grass, not more.",
+     "This reverses the chart: the herder keeps the whole gain and pays a share of the cost."
+    ]
+   },
+   "stimulus": "tragedy-of-commons-s2"
+  },
+  {
+   "id": "env-tragedy-of-commons-15",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The same loop applies to the atmosphere. Which situation matches the loop?",
+   "options": [
+    "Each factory gains from releasing carbon dioxide freely, while the warming it adds is shared by everyone",
+    "Each farmer owns the rain that falls on their land and sells it to the farms nearby",
+    "Each town pays the full cost of its own air pollution and no one else is affected",
+    "Each household plants trees in its yard, which keeps carbon dioxide levels steady"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The atmosphere is shared, so a polluter keeps the gain from releasing carbon dioxide while the warming is spread over everyone, the same gain-versus-shared-cost loop.",
+    "options": [
+     "Right: private gain and shared cost, just like the pasture.",
+     "Owned and sold rain is not a shared, open resource.",
+     "If each town bore its full cost, there would be no shared cost and no tragedy.",
+     "Planting trees removes carbon dioxide; it is a response, not the loop."
+    ]
+   },
+   "stimulus": "tragedy-of-commons-s2"
+  },
+  {
+   "id": "env-tragedy-of-commons-16",
+   "unit": "unit-5",
+   "topic": "tragedy-of-commons",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which resource is least likely to suffer the tragedy of the commons?",
+   "options": [
+    "Apples grown in a fenced orchard owned and harvested by one family",
+    "Whales swimming in international waters where boats from any country may hunt them",
+    "Grass on a pasture that any herder in the valley may use",
+    "Water in a river that many towns draw from upstream"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One owner bears the full cost of overusing the orchard, so the owner has a reason to protect it. The others are shared and open.",
+    "options": [
+     "Right: a single owner who can exclude others is not facing a shared cost.",
+     "International waters are a classic commons: open to all and owned by none.",
+     "An open pasture is the textbook commons.",
+     "A river shared by many towns is open to overuse by each of them."
+    ]
+   }
+  }
+ ]
+}

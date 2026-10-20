@@ -1,0 +1,8 @@
+{
+ "ecological-footprint": {
+  "def": "The area of biologically productive land and water needed to supply the resources a person or population uses (food, wood, fibers, space for buildings) and to absorb its carbon dioxide waste. It is often given in global hectares per person and compared with the biocapacity available."
+ },
+ "carbon-footprint": {
+  "def": "The total amount of carbon dioxide (and other heat-trapping gases, counted as carbon dioxide) released by a person, product or activity, usually in metric tons of carbon dioxide per year. It counts emissions only, so it is one part of an ecological footprint."
+ }
+}

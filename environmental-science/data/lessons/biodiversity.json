@@ -1,0 +1,68 @@
+{
+ "topic": "biodiversity",
+ "hook": "Two ponds sit a kilometer apart. Each has four kinds of animals and 200 individuals. In one, the four species are about equally common; in the other, one snail makes up almost every animal you net. A survey that only counts species calls them equal. Biodiversity is the idea that tells them apart, and it predicts which pond copes better when something goes wrong.",
+ "prereq": [
+  {
+   "q": "What is a community in ecology?",
+   "options": [
+    "All the populations of different species living in one area",
+    "All the members of one species in one area",
+    "The nonliving parts of an area",
+    "One organism and its habitat"
+   ],
+   "correct": 0,
+   "why": "A community is every population of every species that shares an area; a population is one species.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "In a food web, what usually happens to a herbivore population when its main predator is removed?",
+   "options": [
+    "It increases, because fewer are eaten",
+    "It decreases, because predators help it",
+    "It stays the same",
+    "It becomes a producer"
+   ],
+   "correct": 0,
+   "why": "With less predation, more herbivores survive and the population grows, which then puts more pressure on the plants they eat.",
+   "review": "food-webs"
+  }
+ ],
+ "figure": {
+  "figure": "biodiversity-evenness",
+  "caption": "Two invented communities with the same species richness (4 species, 100 individuals). Community A is even; community B is dominated by one species, so it is less diverse."
+ },
+ "chain": [
+  {
+   "cause": "A population, a community or an area has more variety (genes, species or habitats)",
+   "effect": "there are more different traits and more species that can do each job in the ecosystem"
+  },
+  {
+   "cause": "A disease, a drought or a new predator strikes",
+   "effect": "some individuals or species are likely to survive it, because they differ from the ones that are hurt"
+  },
+  {
+   "cause": "The survivors keep reproducing and keep doing their jobs (pollinating, decomposing, feeding others)",
+   "effect": "the population or ecosystem recovers faster than a less diverse one would"
+  }
+ ],
+ "ideas": [
+  "Biodiversity has three levels: <b>genetic diversity</b> (variety of genes in a population), <b>species diversity</b> (variety of species in a community) and <b>habitat diversity</b> (variety of habitats in an area).",
+  "Species diversity has two parts: <b>species richness</b>, the number of different species, and <b>species evenness</b>, how equal their population sizes are. More of either means more diversity.",
+  "A <b>population bottleneck</b> is a sharp drop in population size. The survivors carry only part of the original gene variety, so genetic diversity stays low even after numbers recover.",
+  "A <b>keystone species</b> has a much larger effect on its community than its numbers suggest; removing it changes the whole community."
+ ],
+ "misconception": {
+  "wrong": "A community with more individuals is more diverse.",
+  "right": "Diversity counts kinds and their balance, not head counts. 1,000 animals of one species are less diverse than 100 animals spread evenly over ten species."
+ },
+ "check": [
+  "env-biodiversity-1",
+  "env-biodiversity-2",
+  "env-biodiversity-4",
+  "env-biodiversity-5",
+  "env-biodiversity-6",
+  "env-biodiversity-9",
+  "env-biodiversity-13"
+ ],
+ "summary": "Biodiversity is variety at three levels: genes within a population, species within a community, and habitats within an area. Species diversity combines richness (how many species) and evenness (how equal they are). More diverse populations and ecosystems usually recover better from stress, a bottleneck leaves a population with little genetic diversity, and a keystone species holds its community together."
+}

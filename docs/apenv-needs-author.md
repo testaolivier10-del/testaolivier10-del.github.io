@@ -66,3 +66,17 @@ test keeps them equal).
 
 From the student course page and the exam page (Session 2). The session's start time is not on the page; the cram
 plan and the countdown use the date only.
+
+## Author A (Unit 1 and "Math you need"): points for a person to check (open, 2026-10-20)
+
+- **10% rule from NPP or GPP.** `frq-energy-flow-calc` (b) applies the 10% rule to NPP (10,000 kcal/m²/yr), the energy
+  available to consumers, and accepts an answer consistent with an incorrect part (a). Some classes apply it to GPP.
+  A teacher should confirm NPP is the expected base; if GPP is also accepted, add it to part (b)'s `accept` list.
+- **Fertilizer and nitrogen fixation.** The nitrogen notes say industrial fixation plus crops such as soybeans have
+  "roughly doubled" the nitrogen fixed on land each year (mainstream estimate, after Vitousek et al. 1997, Galloway et
+  al.). Rounded wording; check it matches the textbook a teacher uses.
+- **Wolves and willows; otters and kelp.** Both appear as examples of effects passing through a food web, each with
+  an explicit caution that other causes (weather, storms, disease) share the credit, because the size of the
+  wolf effect is debated in the literature. A teacher may prefer to drop the wolf passage (trophic-levels-s1).
+- **math-doubling builds only with Unit 3.** Its map anchor is `before: population-growth`, so the build skips it until
+  Unit 3 is published (by design). Its content is checked and clean now.

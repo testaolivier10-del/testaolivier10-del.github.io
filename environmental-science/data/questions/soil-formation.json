@@ -1,0 +1,565 @@
+{
+ "stimuli": {
+  "soil-formation-s1": {
+   "kind": "visual",
+   "title": "A soil profile",
+   "figure": "soil-formation-horizons"
+  },
+  "soil-formation-s2": {
+   "kind": "quantitative",
+   "title": "Soil lost from four test plots on one hillside",
+   "invented": true,
+   "table": {
+    "caption": "Soil lost from four 1-hectare plots on the same slope over one year (invented data for practice)",
+    "cols": [
+     "Plot",
+     "Ground cover",
+     "Soil lost (metric tons per hectare per year)"
+    ],
+    "rows": [
+     [
+      "1",
+      "Native grass, never plowed",
+      "0.4"
+     ],
+     [
+      "2",
+      "Crop with leftover stalks kept on the ground",
+      "2.5"
+     ],
+     [
+      "3",
+      "Crop planted in plowed, bare soil",
+      "12.0"
+     ],
+     [
+      "4",
+      "Bare, plowed soil with no crop",
+      "30.0"
+     ]
+    ]
+   }
+  },
+  "soil-formation-s3": {
+   "kind": "text",
+   "title": "A farmer describes a dry spring",
+   "source": "Invented passage for practice.",
+   "passage": "My grandfather plowed this prairie in the 1920s, when rain was good and wheat paid well. He turned under the grass each fall so the field would be clean for spring. Then came three dry years. With no grass roots to hold it, the top of the field dried to powder, and every strong wind carried it off in brown clouds. Where the topsoil went, the ground underneath was pale and hard, and the wheat that came up there was thin and short. My father spent his life trying to grow back what blew away in a few seasons. I keep the stalks on the field now and leave the hilltops in grass."
+  }
+ },
+ "items": [
+  {
+   "id": "env-soil-formation-1",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which two processes form soil?",
+   "options": [
+    "Weathering of parent material and the decay of organic matter",
+    "Erosion of topsoil and the deposit of salt by floodwater",
+    "Photosynthesis in roots and evaporation from the soil surface",
+    "Compaction by heavy machines and the melting of bedrock"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Soil forms where rock is broken down into mineral particles by weathering and dead plants and animals decay into humus, mixing over long periods.",
+    "options": [
+     "Right: weathered rock supplies minerals, and decayed organisms supply humus.",
+     "Erosion removes soil; it does not form it where it starts.",
+     "Roots do not photosynthesize, and evaporation does not make soil.",
+     "Compaction damages soil, and bedrock is not melted at the surface."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-2",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Soil in a tropical rainforest forms faster than soil in the tundra on the same kind of rock. What best explains this?",
+   "options": [
+    "Warmth and water speed up weathering and decomposition",
+    "Rainforest bedrock is softer than tundra bedrock everywhere",
+    "Tundra plants add more organic matter, which slows soil formation",
+    "Wind erosion is stronger in the rainforest, which adds new soil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Chemical weathering and the work of decomposers both speed up when it is warm and wet. Cold, frozen tundra slows both.",
+    "options": [
+     "Right: climate controls how fast rock weathers and dead matter decays.",
+     "The question says the rock is the same kind, so rock type is not the difference.",
+     "Tundra plants grow slowly and add little organic matter, and more organic matter would build soil, not slow it.",
+     "Wind erosion removes soil; rainforests are also sheltered from wind by trees."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-3",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is humus?",
+   "options": [
+    "Dark, decomposed organic matter in soil",
+    "The solid rock layer under the soil",
+    "Clay that has washed down into the subsoil",
+    "Water stored in the spaces between soil grains"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Humus is what is left when decomposers break down dead plants and animals. It darkens topsoil, holds water and supplies nutrients.",
+    "options": [
+     "Right: humus is broken-down organic matter.",
+     "Solid rock under soil is bedrock, the parent material.",
+     "Clay collects in the B horizon, but it is mineral matter, not humus.",
+     "Water in soil is not humus, though humus helps soil hold water."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-4",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does wind remove more soil from a field after it is plowed than from the same field covered in grass?",
+   "options": [
+    "Plowed soil is loose and bare, with no roots to hold it",
+    "Plowing adds organic matter that is light enough for the wind to lift",
+    "Grass makes the wind blow faster over a field than over bare soil",
+    "Plowing moves the C horizon to the surface, which is lighter than topsoil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Roots bind soil particles together and leaves and stalks shield the surface. Plowing breaks up the soil and leaves it bare, so wind can lift it.",
+    "options": [
+     "Right: bare, loose soil has nothing holding it down.",
+     "Plowing turns plant matter under; it does not make the soil lighter.",
+     "Grass slows the wind at the ground; it does not speed it up.",
+     "Ordinary plowing turns the topsoil, not the deep C horizon."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-5",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A forest on a steep hillside is cut down and the land is left bare. Explain how this can harm a river at the bottom of the hill.",
+   "why": {
+    "correct": "Each link has to be named: roots gone, more soil eroded by rain, more sediment in the river, then the harm to the river."
+   },
+   "specific": {
+    "frame": "Removing the trees ___, so ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "First link",
+      "options": [
+       "removes the roots that hold soil in place",
+       "adds humus to the topsoil",
+       "raises the water table under the hill"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cutting trees reduces the leaves and wood that become humus.",
+       "2": "The question is about soil washing downhill, not the water table."
+      }
+     },
+     "effect": {
+      "label": "Next link",
+      "options": [
+       "rain washes more soil downhill into the river",
+       "the soil forms faster on the bare slope",
+       "the river carries less sediment than before"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bare soil erodes; it does not form faster.",
+       "2": "With more erosion, the river carries more sediment, not less."
+      }
+     },
+     "result": {
+      "label": "Harm to the river",
+      "options": [
+       "makes the water cloudy and buries the gravel where fish lay eggs",
+       "cools the water so fish grow faster",
+       "removes nutrients from the river water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less shade warms a stream; and fish growing faster would not be harm.",
+       "2": "Eroded soil carries nutrients into the river; it does not remove them."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "soil",
+      "river",
+      "sediment"
+     ]
+    },
+    "model": "Removing the trees removes the roots that hold soil in place, so rain washes more soil downhill into the river, which causes the water to turn cloudy with sediment, blocks sunlight and buries the gravel where fish lay their eggs."
+   }
+  },
+  {
+   "id": "env-soil-formation-6",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the soil profile, which horizon is topsoil, with the most humus mixed into the minerals and most of the roots?",
+   "stimulus": "soil-formation-s1",
+   "options": [
+    "The A horizon",
+    "The B horizon",
+    "The C horizon",
+    "The O horizon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The A horizon is topsoil: humus mixed with mineral particles. It is dark and full of roots, worms and microbes.",
+    "options": [
+     "Right: topsoil is the A horizon.",
+     "The B horizon is subsoil, where minerals leached from above collect.",
+     "The C horizon is partly weathered parent material with little humus.",
+     "The O horizon is mostly undecayed leaves and organic matter above the mineral soil."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-7",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The diagram says minerals leached from above collect in the B horizon. What carries them down?",
+   "stimulus": "soil-formation-s1",
+   "options": [
+    "Water soaking down through the soil",
+    "Roots pulling minerals down from the surface",
+    "Wind blowing minerals into cracks in the soil",
+    "Heat rising from the bedrock below the soil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rain soaks into the soil and dissolves or carries fine particles and minerals downward. They build up in the subsoil: this is leaching.",
+    "options": [
+     "Right: water moving down leaches minerals into the B horizon.",
+     "Roots take minerals up from the soil, the opposite direction.",
+     "Wind moves surface soil; it does not move minerals down through the profile.",
+     "Heat from bedrock does not move minerals in a soil profile."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-8",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the C horizon in the diagram contain chunks of rock but very little humus?",
+   "stimulus": "soil-formation-s1",
+   "options": [
+    "It is near the bedrock, far below the fallen leaves",
+    "Humus is heavier than rock, so it sinks below the C horizon",
+    "Decomposers in the C horizon turn rock fragments into humus",
+    "Wind and rain carry the humus out of the C horizon each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Soil forms from both directions: rock weathers from below and organic matter is added from above. The C horizon is near the rock and far from the leaves at the surface.",
+    "options": [
+     "Right: the C horizon is mostly partly weathered parent material.",
+     "Humus is light; it stays in the upper horizons.",
+     "Decomposers break down dead organic matter, not rock.",
+     "Wind reaches only the surface, not deep horizons."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-9",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The diagram notes that soil forms slowly, often taking centuries for a few centimeters. What does this mean for a farm that loses 1 cm of topsoil to erosion every year?",
+   "stimulus": "soil-formation-s1",
+   "options": [
+    "Soil is lost far faster than it forms, so the topsoil thins",
+    "It is losing soil at the same rate it forms, so the topsoil stays the same",
+    "New soil forms faster after erosion, so the loss will be replaced in a year",
+    "The loss does not matter, because crops grow mostly in the C horizon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If a few centimeters take centuries to form, losing 1 cm a year removes in a few years what took centuries to build. Topsoil is a resource that renews too slowly to keep up.",
+    "options": [
+     "Right: the loss far outpaces formation.",
+     "Formation is far slower than 1 cm a year.",
+     "Erosion does not speed up soil formation enough to replace the loss.",
+     "Roots and nutrients are mostly in the topsoil, the A horizon, not the C horizon."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-10",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What pattern does the table show?",
+   "stimulus": "soil-formation-s2",
+   "options": [
+    "Less ground cover goes with more soil lost",
+    "Plowing the soil reduces the amount of soil lost",
+    "Each plot loses roughly the same amount of soil each year",
+    "Leaving stalks on the ground increases soil loss"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Soil loss rises from 0.4 to 30.0 metric tons per hectare as cover goes from never-plowed grass to bare, plowed soil.",
+    "options": [
+     "Right: bare ground loses the most soil, grass the least.",
+     "The plowed plots (3 and 4) lose the most soil.",
+     "Losses range from 0.4 to 30.0 metric tons per hectare, a large difference.",
+     "The plot with stalks loses less than the bare, plowed plots."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-11",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer switches a field from bare, plowed soil with a crop (plot 3) to keeping the leftover stalks on the ground (plot 2). Write the setup for the percent change in soil lost, then the answer.",
+   "stimulus": "soil-formation-s2",
+   "why": {
+    "correct": "$\\frac{2.5 - 12.0}{12.0} \\times 100 = -79\\%$ (about). Keeping the stalks on the field cuts soil loss by about 79%."
+   },
+   "setup": {
+    "answer": "(2.5 - 12.0) / 12.0 * 100",
+    "mustUse": [
+     "2.5",
+     "12"
+    ],
+    "mistakes": [
+     {
+      "expr": "(2.5 - 12.0) / 2.5 * 100",
+      "why": "Divide by the old value, 12.0, the soil lost before the change, not by the new value."
+     },
+     {
+      "expr": "(12.0 - 2.5) / 12.0 * 100",
+      "why": "Subtract old from new: (new - old). Here the loss went down, so the percent change is negative."
+     },
+     {
+      "expr": "2.5 - 12.0 / 12.0 * 100",
+      "why": "Put the difference in brackets. Without them the division happens first: (2.5 - 12.0) / 12.0 × 100."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       12,
+       2.5
+      ]
+     },
+     "unit": "%",
+     "mistakes": [
+      {
+       "value": -0.7916666667,
+       "why": "You left out the × 100. A fraction of −0.79 is a change of about −79%."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         2.5,
+         12
+        ]
+       },
+       "why": "That is the change from 2.5 up to 12.0. The farmer moved from 12.0 to 2.5, so start from 12.0."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-soil-formation-12",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Plot 4 loses 30.0 metric tons of soil per hectare per year. How much soil does a 40-hectare field like plot 4 lose in one year, in metric tons?",
+   "stimulus": "soil-formation-s2",
+   "why": {
+    "correct": "$30.0\\,\\frac{\\text{metric tons}}{\\text{ha}} \\times 40\\,\\text{ha} = 1{,}200$ metric tons. The hectares cancel."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      30,
+      40
+     ]
+    },
+    "unit": "metric ton",
+    "units": [
+     "t",
+     "tonnes"
+    ],
+    "mistakes": [
+     {
+      "value": 0.75,
+      "why": "You divided 30.0 by 40. Each hectare loses 30.0 metric tons, so multiply by the 40 hectares."
+     },
+     {
+      "value": 70,
+      "why": "You added. The loss is 30.0 metric tons for each of 40 hectares: 30.0 × 40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-13",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion do the data support?",
+   "stimulus": "soil-formation-s2",
+   "options": [
+    "More plant cover goes with less soil loss on this slope",
+    "Growing a crop doubles soil loss compared with leaving soil bare",
+    "Plowing makes little difference to soil loss on this slope",
+    "Native grass loses more soil than any field with a crop"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The more cover the ground keeps, the less soil it loses: grass loses 0.4, stalks 2.5, a crop on bare soil 12.0 and bare soil 30.0 metric tons per hectare.",
+    "options": [
+     "Right: every step toward more cover lowers soil loss.",
+     "Bare soil with no crop (30.0) loses more than a crop on plowed soil (12.0), not less.",
+     "The plowed plots lose far more soil than the unplowed grass.",
+     "Native grass loses the least, 0.4 metric tons per hectare."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-14",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the main claim of the passage?",
+   "stimulus": "soil-formation-s3",
+   "options": [
+    "Plowing up the grass let drought winds strip the topsoil away",
+    "Wheat grows better in prairie soil that is plowed each fall",
+    "Drought by itself, not the way the land was farmed, caused the loss",
+    "The grandfather chose the wrong crop for such a wet climate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The farmer links plowing (no grass roots) and drought to wind erosion, and describes the poor wheat that grew afterward.",
+    "options": [
+     "Right: the passage ties plowing and drought to the loss of topsoil.",
+     "The passage says the plowed field lost its topsoil, the opposite of good growth.",
+     "The farmer stresses that there were no grass roots to hold the soil, not drought alone.",
+     "The problem was dry years, not a wet climate."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-15",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which detail in the passage best supports the claim that losing topsoil hurt the farm?",
+   "stimulus": "soil-formation-s3",
+   "options": [
+    "\"the wheat that came up there was thin and short\"",
+    "\"when rain was good and wheat paid well\"",
+    "\"He turned under the grass each fall so the field would be clean\"",
+    "\"I keep the stalks on the field now and leave the hilltops in grass\""
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Thin, short wheat where the topsoil blew away is evidence that the subsoil left behind grows crops poorly.",
+    "options": [
+     "Right: poor growth on the exposed subsoil is the evidence of harm.",
+     "Good rain and prices describe the years before the loss.",
+     "Plowing explains the cause, not the harm.",
+     "Keeping stalks is the farmer's response, not evidence of the harm."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-formation-16",
+   "unit": "unit-4",
+   "topic": "soil-formation",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The farmer says, \"My father spent his life trying to grow back what blew away in a few seasons.\" What does this sentence assume about soil?",
+   "stimulus": "soil-formation-s3",
+   "options": [
+    "Topsoil forms far more slowly than it can be lost",
+    "Topsoil can be rebuilt in a few years by planting more seed",
+    "Subsoil grows crops as well as topsoil does",
+    "Wind adds as much soil as it removes over time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The contrast between \"his life\" and \"a few seasons\" rests on the idea that soil forms slowly, over centuries, while it can be lost quickly.",
+    "options": [
+     "Right: the sentence contrasts slow formation with fast loss.",
+     "Planting does not make soil quickly; soil forms from weathering and decay over centuries.",
+     "The passage describes poor wheat on the subsoil, the opposite.",
+     "The passage describes the wind carrying soil away, not bringing it back."
+    ]
+   }
+  }
+ ]
+}

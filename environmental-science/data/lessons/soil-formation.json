@@ -1,0 +1,84 @@
+{
+ "topic": "soil-formation",
+ "hook": "A shovel of good farm soil holds more living things than there are people on Earth, and the dark top layer that feeds our crops took centuries to build. In the 1930s, after farmers plowed up the prairie grass of the southern Great Plains, a few dry, windy years carried that layer away in clouds of dust. Soil forms slowly and can disappear fast.",
+ "prereq": [
+  {
+   "q": "What does weathering do?",
+   "options": [
+    "Breaks rock into smaller pieces",
+    "Turns nitrogen gas into ammonium",
+    "Moves water from leaves to the air",
+    "Builds new rock at the surface"
+   ],
+   "correct": 0,
+   "why": "Weathering breaks rock down by water, ice, temperature changes and living things, releasing minerals.",
+   "review": "phosphorus-cycle"
+  },
+  {
+   "q": "What do decomposers do in an ecosystem?",
+   "options": [
+    "Break down dead matter and return nutrients to the soil",
+    "Make sugar from sunlight",
+    "Eat only living plants",
+    "Turn rock into sand"
+   ],
+   "correct": 0,
+   "why": "Decomposers such as bacteria and fungi break down dead organisms, releasing nutrients.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "What is runoff?",
+   "options": [
+    "Water that flows over the land surface",
+    "Water that soaks into the ground",
+    "Water vapor that forms clouds",
+    "Water taken up by plant roots"
+   ],
+   "correct": 0,
+   "why": "Runoff is water moving over the surface toward streams; it carries soil with it.",
+   "review": "water-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "soil-formation-horizons",
+  "caption": "A soil profile: the O horizon of organic matter, A (topsoil), B (subsoil), C (partly weathered parent material) and bedrock. Weathering works from below while organic matter is added from above."
+ },
+ "chain": [
+  {
+   "cause": "Weathering breaks parent material (bedrock or deposited sediment) into small mineral particles",
+   "effect": "the mineral part of soil forms"
+  },
+  {
+   "cause": "Dead plants and animals are broken down by decomposers",
+   "effect": "humus forms and is mixed into the top of the soil"
+  },
+  {
+   "cause": "Water soaking down carries minerals and fine particles from the top layers",
+   "effect": "the soil sorts itself into horizons: O, A, B, C"
+  },
+  {
+   "cause": "Plants are removed and the soil is left bare",
+   "effect": "wind and water carry topsoil away, far faster than new soil forms"
+  }
+ ],
+ "ideas": [
+  "Soil forms from <b>parent material</b> (bedrock, or sediment carried by rivers, glaciers or wind) broken down by <b>weathering</b>, plus <b>humus</b> from decomposed organisms.",
+  "Climate, organisms, the shape of the land, the parent material and time control how fast soil forms. Warm, wet places weather rock and decompose matter fastest.",
+  "A <b>soil profile</b> has layers called <b>horizons</b>: O (organic matter), A (<b>topsoil</b>: humus and minerals), B (<b>subsoil</b>: minerals leached from above), C (partly weathered parent material), then bedrock.",
+  "<b>Erosion</b> is the removal and transport of soil by wind and water. Plant roots hold soil and plant cover shields it, so bare soil erodes fastest.",
+  "Eroded soil fills streams with sediment, carries nutrients and pesticides with it, and leaves farms with poorer subsoil."
+ ],
+ "misconception": {
+  "wrong": "Soil keeps forming, so losing some to erosion is quickly made up.",
+  "right": "New soil does form, but only over centuries: a few centimeters can take hundreds of years to form, but a bare field can lose that much in a few years."
+ },
+ "check": [
+  "env-soil-formation-1",
+  "env-soil-formation-4",
+  "env-soil-formation-6",
+  "env-soil-formation-7",
+  "env-soil-formation-10",
+  "env-soil-formation-13"
+ ],
+ "summary": "Soil forms slowly from weathered parent material and humus from decomposed organisms, and it sorts into horizons: O, A (topsoil), B (subsoil), C and bedrock. Warm, wet climates form soil fastest. Wind and water erode soil, fastest where plants are removed and the ground is bare, and eroded soil harms both the land it leaves and the streams it reaches."
+}
