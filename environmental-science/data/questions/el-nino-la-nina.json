@@ -7,14 +7,15 @@
   },
   "el-nino-la-nina-s2": {
    "kind": "quantitative",
-   "title": "Sea surface temperature and the anchovy catch off Peru",
+   "title": "Sea surface temperature and the anchovy catch off Peru (catch in million metric tons)",
    "invented": true,
    "plot": {
     "label": "Dual-axis line graph of sea surface temperature off Peru and the anchovy catch over eight years, invented data",
     "kind": "dual",
+    "width": 520,
     "series": [
      {
-      "name": "Sea surface temperature",
+      "name": "Water temp.",
       "axis": "left",
       "points": [
        [
@@ -52,7 +53,7 @@
       ]
      },
      {
-      "name": "Anchovy catch",
+      "name": "Catch",
       "axis": "right",
       "points": [
        [
@@ -99,8 +100,8 @@
      8
     ],
     "xLabel": "Year",
-    "yLabel": "Temperature (°C)",
-    "yRightLabel": "Catch (million metric tons)"
+    "yLabel": "Water temperature (°C)",
+    "yRightLabel": "Catch (million t)"
    }
   },
   "el-nino-la-nina-s3": {

@@ -12,6 +12,7 @@
    "plot": {
     "label": "Bar chart of average yearly precipitation in five latitude bands of the Northern Hemisphere, invented data",
     "kind": "bar",
+    "width": 480,
     "categories": [
      "0-10° N",
      "10-20° N",
