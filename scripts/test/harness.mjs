@@ -105,6 +105,7 @@ export function createBrowser(){
 
   return {
     window,
+    document,
     localStorage,
     hooks: sandbox.__levlTestHooks,
     /* Load one of the site's files into this context. */

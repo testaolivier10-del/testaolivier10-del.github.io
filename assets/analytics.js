@@ -28,10 +28,11 @@
 (function(){
   // From the Umami dashboard: Settings -> Websites -> the site -> "Website ID".
   var WEBSITE_ID = 'cc421df1-3f32-40f1-bd08-d7f6666de3ac';
-  // A pinned copy served from this site, not a third-party script on pages
-  // that hold the session; events still go to HOST_URL/api/send.
+  // A pinned copy served from this site. Events go to HOST_URL/api/send, the
+  // site's Worker, which drops bots and forwards to Umami (worker/src/umami.js);
+  // cloud.umami.is is on ad-block lists, so students were the ones not counted.
   var SCRIPT_URL = '/assets/vendor/umami-2.10.0.js';
-  var HOST_URL = 'https://cloud.umami.is';
+  var HOST_URL = 'https://api.levlprep.com'; // site-config:API_URL
   var OPT_OUT_KEY = 'levlprep_analytics_opt_out';
   // Which course a page is in, for the visit event (courseOf).
   // courses:begin COURSE_LIST key,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
@@ -105,6 +106,7 @@
 
   function event(name, data){
     if(!enabled || optedOut()) return;
+    data = withSource(data);
     try {
       if(window.umami && typeof window.umami.track === 'function'){
         flush();
@@ -297,19 +299,339 @@
   }
 
   function mount(){
-    if(!enabled || optedOut() || doNotTrack() || window.__levlAnalyticsMounted) return;
+    takeNoTrack();
+    if(!enabled || optedOut() || doNotTrack() || automated() || window.__levlAnalyticsMounted) return;
     window.__levlAnalyticsMounted = true;
+    noteFirstTouch();
     var s = document.createElement('script');
     s.src = SCRIPT_URL;
     s.defer = true;
     s.setAttribute('data-website-id', WEBSITE_ID);
     s.setAttribute('data-host-url', HOST_URL);
-    s.addEventListener('load', flush);
+    s.addEventListener('load', function(){ flush(); flushIdentify(); });
     document.head.appendChild(s);
 
     // Queued, then flushed by the listener above once the script lands.
     trackVisit();
+    watchPage();
   }
+
+  /* ---- Not people: automation and the owner (docs/analytics-plan.md) ---- */
+  var OWNER_EMAIL_SHA256 = [ // same list as worker/src/umami.js
+    '6ac353e37000f38dc54cdee3ed28f34e498f6978b33ad16409471cd7c2441154',
+    '7662e6de54cf228c5781e9b65b74ea942b2fc1156dbc3517fe20a9ca5f3e5d55'
+  ];
+  var AUTOMATED_UA = /HeadlessChrome|PhantomJS|Playwright|Puppeteer|Lighthouse|PageSpeed|GTmetrix|Prerender|bot\b|crawler|spider/i;
+
+  function automated(){
+    try {
+      if(navigator.webdriver === true) return true;
+      return AUTOMATED_UA.test(navigator.userAgent || '');
+    } catch(e){ return false; }
+  }
+
+  // The tracker's own off switch, read by umami-2.10.0.js before every send.
+  function setTrackerDisabled(value){
+    try {
+      if(value) localStorage.setItem('umami.disabled', '1');
+      else localStorage.removeItem('umami.disabled');
+    } catch(e){ /* private mode */ }
+  }
+
+  // ?notrack=1 on any page opts this browser out; ?notrack=0 opts back in.
+  function takeNoTrack(){
+    try {
+      var url = new URL(location.href);
+      var v = url.searchParams.get('notrack');
+      if(v === null) return;
+      setOptedOut(v !== '0');
+      setTrackerDisabled(v !== '0');
+      url.searchParams.delete('notrack');
+      if(history.replaceState) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+    } catch(e){ /* nothing to do */ }
+  }
+
+  function sha256Hex(text){
+    try {
+      if(!(window.crypto && crypto.subtle && window.TextEncoder)) return Promise.resolve(null);
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(function(buf){
+        var bytes = new Uint8Array(buf), hex = '';
+        for(var i = 0; i < bytes.length; i++) hex += ('0' + bytes[i].toString(16)).slice(-2);
+        return hex;
+      }, function(){ return null; });
+    } catch(e){ return Promise.resolve(null); }
+  }
+
+  /* account.js, whenever a session is known: the owner's browsers opt out;
+     anyone else gets an account tag (hash of the id, never the email). */
+  var identified = false;
+  function signedIn(user){
+    if(!user || identified) return;
+    identified = true;
+    var email = String(user.email || '').trim().toLowerCase();
+    sha256Hex(email).then(function(h){
+      if(h && OWNER_EMAIL_SHA256.indexOf(h) > -1){
+        setOptedOut(true);
+        setTrackerDisabled(true);
+        return;
+      }
+      if(!enabled || optedOut() || !user.id) return;
+      sha256Hex('levlprep:' + user.id).then(function(id){
+        if(!id) return;
+        pendingIdentify = { acct: id.slice(0, 16), signed_in: 'yes' };
+        flushIdentify();
+      });
+    });
+  }
+  var pendingIdentify = null;
+  function flushIdentify(){
+    if(!pendingIdentify || optedOut()) return;
+    if(!(window.umami && typeof window.umami.identify === 'function')) return;
+    try { window.umami.identify(pendingIdentify); } catch(e){ /* never break a page */ }
+    pendingIdentify = null;
+  }
+
+
+  /* ---- First touch: one word, kept in this browser, sent as `src` --------
+     From the video ref, utm_source, the referrer, or an in-app browser's user
+     agent (TikTok and Instagram send no referrer). Also sent with checkout. */
+  var FIRST_KEY = 'levlprep_first';
+  var REFERRERS = [
+    [/(^|\.)gemini\.google\./, 'gemini'],
+    [/(^|\.)google\./, 'google'],
+    [/(^|\.)bing\.com$/, 'bing'],
+    [/(^|\.)duckduckgo\.com$/, 'duckduckgo'],
+    [/(^|\.)yahoo\.com$/, 'yahoo'],
+    [/(^|\.)ecosia\.org$/, 'ecosia'],
+    [/(^|\.)search\.brave\.com$/, 'brave'],
+    [/(^|\.)(chatgpt\.com|openai\.com)$/, 'chatgpt'],
+    [/(^|\.)perplexity\.ai$/, 'perplexity'],
+    [/(^|\.)copilot\.microsoft\.com$/, 'copilot'],
+    [/(^|\.)claude\.ai$/, 'claude'],
+    [/(^|\.)reddit\.com$/, 'reddit'],
+    [/(^|\.)tiktok\.com$/, 'tiktok'],
+    [/(^|\.)(youtube\.com|youtu\.be)$/, 'youtube'],
+    [/(^|\.)instagram\.com$/, 'instagram'],
+    [/(^|\.)facebook\.com$/, 'facebook'],
+    [/(^|\.)(t\.co|x\.com|twitter\.com)$/, 'x'],
+    [/(^|\.)discord(app)?\.com$/, 'discord'],
+    [/(^|\.)quizlet\.com$/, 'quizlet']
+  ];
+  var IN_APP = [
+    [/musical_ly|TikTok|BytedanceWebview/i, 'tiktok'],
+    [/Instagram/i, 'instagram'],
+    [/FBAN|FBAV|FB_IAB/i, 'facebook'],
+    [/Snapchat/i, 'snapchat'],
+    [/Reddit/i, 'reddit']
+  ];
+  var CLEAN_SRC = /^[a-z0-9][a-z0-9.-]{0,39}$/;
+
+  function sourceFromRef(ref){
+    if(!ref) return null;
+    if(/^tt-/.test(ref)) return 'tiktok';
+    if(/^yt-/.test(ref)) return 'youtube';
+    if(/^ig-/.test(ref)) return 'instagram';
+    return REFS[ref] ? ref : null;
+  }
+
+  function sourceFromUtm(){
+    try {
+      var v = new URL(location.href).searchParams.get('utm_source');
+      if(!v) return null;
+      v = String(v).toLowerCase().replace(/^www\./, '').slice(0, 40);
+      if(/chatgpt|openai/.test(v)) return 'chatgpt';
+      if(/perplexity/.test(v)) return 'perplexity';
+      return CLEAN_SRC.test(v) ? v : null;
+    } catch(e){ return null; }
+  }
+
+  function sourceFromReferrer(){
+    try {
+      if(!document.referrer) return null;
+      var host = new URL(document.referrer).hostname.toLowerCase().replace(/^www\./, '');
+      if(!host || host === location.hostname.replace(/^www\./, '')) return null;
+      for(var i = 0; i < REFERRERS.length; i++) if(REFERRERS[i][0].test(host)) return REFERRERS[i][1];
+      host = host.split('.').slice(-2).join('.');
+      return CLEAN_SRC.test(host) ? host : null;
+    } catch(e){ return null; }
+  }
+
+  function sourceFromApp(){
+    try {
+      var ua = navigator.userAgent || '';
+      for(var i = 0; i < IN_APP.length; i++) if(IN_APP[i][0].test(ua)) return IN_APP[i][1];
+    } catch(e){ /* fall through */ }
+    return null;
+  }
+
+  function detectSource(){
+    return sourceFromRef(landedRef) || sourceFromUtm() || sourceFromReferrer() || sourceFromApp() || 'direct';
+  }
+
+  function noteFirstTouch(){
+    try {
+      if(localStorage.getItem(FIRST_KEY)) return;
+      localStorage.setItem(FIRST_KEY, JSON.stringify({ src: detectSource(), at: today() }));
+    } catch(e){ /* private mode: source() still answers for this page */ }
+  }
+
+  function source(){
+    try {
+      var v = JSON.parse(localStorage.getItem(FIRST_KEY) || 'null');
+      if(v && CLEAN_SRC.test(v.src)) return v.src;
+    } catch(e){ /* fall through */ }
+    return detectSource();
+  }
+
+  function withSource(data){
+    var out = {};
+    if(data && typeof data === 'object') for(var k in data) if(Object.prototype.hasOwnProperty.call(data, k)) out[k] = data[k];
+    if(!out.src) out.src = source();
+    return out;
+  }
+
+
+  /* ---- Sent as the page closes: a beacon, since a fetch would be cancelled. */
+  function beacon(name, data){
+    if(!enabled || optedOut() || doNotTrack() || automated() || !window.__levlAnalyticsMounted) return;
+    var body;
+    try {
+      body = JSON.stringify({ type: 'event', payload: {
+        website: WEBSITE_ID,
+        hostname: location.hostname,
+        screen: (window.screen ? screen.width + 'x' + screen.height : ''),
+        language: navigator.language || '',
+        title: encodeURIComponent(document.title || ''),
+        url: encodeURI(location.pathname + location.search),
+        referrer: '',
+        name: name,
+        data: withSource(data)
+      } });
+    } catch(e){ return; }
+    try {
+      if(navigator.sendBeacon && navigator.sendBeacon(HOST_URL + '/api/send', new Blob([body], { type: 'text/plain' }))) return;
+    } catch(e){ /* fall through */ }
+    try { fetch(HOST_URL + '/api/send', { method: 'POST', body: body, keepalive: true, headers: { 'Content-Type': 'text/plain' } }); }
+    catch(e){ /* the visit is over either way */ }
+  }
+
+
+  /* ---- Every answer as anonymous per-day tallies (track_answers), not Umami.
+     Fed by LevlPremium.noteAnswer from every course's answer check. */
+  var ANSWER_BATCH = 20;
+  var answerBuf = {};
+  var lastAnswerAt = Date.now();
+  var QID = /^[A-Za-z0-9_.:-]{1,64}$/;
+  var TOPIC = /^[A-Za-z0-9_.:-]{1,48}$/;
+
+  // secs: optional (an exam scored at once passes its average).
+  function answer(course, qid, correct, topic, secs){
+    if(exam && exam.course === course) exam.answered++;
+    if(!enabled || optedOut() || automated()) return;
+    qid = String(qid == null ? '' : qid);
+    if(!QID.test(qid) || !/^[a-z]{2,8}$/.test(String(course))) return;
+    var now = Date.now();
+    if(typeof secs !== 'number' || !isFinite(secs)) secs = (now - lastAnswerAt) / 1000;
+    secs = Math.min(900, Math.max(0, Math.round(secs)));
+    lastAnswerAt = now;
+    topic = String(topic || '').toLowerCase().replace(/[^a-z0-9.:]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48);
+    var buf = answerBuf[course] || (answerBuf[course] = []);
+    buf.push({ q: qid, c: correct ? 1 : 0, s: secs, t: TOPIC.test(topic) ? topic : '' });
+    if(buf.length >= ANSWER_BATCH) flushAnswers(course);
+  }
+
+  function flushAnswers(only){
+    var acct = window.StudyHubAccount;
+    if(!acct || !acct.postRpc) return;
+    for(var course in answerBuf){
+      if(!Object.prototype.hasOwnProperty.call(answerBuf, course)) continue;
+      if(only && course !== only) continue;
+      var items = answerBuf[course];
+      if(!items.length) continue;
+      answerBuf[course] = [];
+      try { acct.postRpc('track_answers', { p_course: course, p_items: items }); } catch(e){ /* best effort */ }
+    }
+  }
+
+
+  /* ---- Exams left halfway: exam-quit with the question it stopped at. */
+  var exam = null;
+  // progress: optional count of answered questions (exams not checked one by one).
+  function examStart(course, mode, total, progress){
+    exam = { course: String(course || ''), mode: String(mode || ''), total: Number(total) || 0, answered: 0, at: Date.now(),
+      progress: typeof progress === 'function' ? progress : null };
+  }
+  function examEnd(){ exam = null; }
+  function examQuit(){
+    if(exam && exam.progress){
+      try { exam.answered = Math.max(exam.answered, Number(exam.progress()) || 0); } catch(err){ /* keep the count */ }
+    }
+    if(!exam || !exam.total || exam.answered >= exam.total) return;
+    var e = exam;
+    exam = null;
+    beacon('exam-quit', {
+      course: e.course,
+      mode: e.mode,
+      at: e.answered,
+      of: e.total,
+      pct: Math.round(100 * e.answered / e.total),
+      mins: Math.round((Date.now() - e.at) / 60000)
+    });
+  }
+
+
+  /* ---- Per page: reading depth, rage clicks, speed (assets/analytics-page.js,
+     loaded after the page is idle so it never delays anything). The page
+     closing also flushes answer tallies and reports an exam left halfway. */
+  var pageWatched = false;
+  function watchPage(){
+    if(pageWatched || automated()) return;
+    pageWatched = true;
+    function closing(){
+      flushAnswers();
+      examQuit();
+    }
+    document.addEventListener('visibilitychange', function(){ if(document.visibilityState === 'hidden') closing(); });
+    window.addEventListener('pagehide', closing);
+    var load = function(){ if(window.LevlLazy) window.LevlLazy('analytics-page', function(P){ P.watch(); }); };
+    if(window.requestIdleCallback) requestIdleCallback(load, { timeout: 4000 });
+    else setTimeout(load, 2000);
+  }
+
+  /* ---- "How did you find LevlPrep?" ------------------------------------
+     Once per browser, after a finished session, only when the save prompt is
+     not showing (account.js promptToSave calls this when it stays quiet). */
+  var HEARD_KEY = 'levlprep_heard';
+  function askSource(){
+    if(!enabled || optedOut() || automated() || !window.LevlLazy) return false;
+    try { if(localStorage.getItem(HEARD_KEY)) return false; } catch(e){ return false; }
+    if(document.getElementById('savePrompt') || document.getElementById('levlHeard')) return false;
+    // The card itself (assets/heard-from.js) loads only now: at most once per browser.
+    window.LevlLazy('heard-from', function(H){
+      H.show(function(answerValue){
+        try { localStorage.setItem(HEARD_KEY, answerValue); } catch(e){ /* asked again next time */ }
+        event('heard-from', { answer: answerValue, course: courseOf(location.pathname) });
+      });
+    });
+    return true;
+  }
+
+
+  function bucket(v, edges, labels){
+    for(var i = 0; i < edges.length; i++) if(v < edges[i]) return labels[i];
+    return labels[labels.length - 1];
+  }
+
+  // Exam date as weeks away; the date stays in the browser (exam-date.js).
+  function examDateSet(course, days){
+    var d = Number(days);
+    if(!isFinite(d)) return;
+    event('exam-date-set', {
+      course: String(course || ''),
+      weeks: bucket(d / 7, [1, 2, 4, 8, 16], ['<1', '1-2', '2-4', '4-8', '8-16', '16+'])
+    });
+  }
+
 
   window.LevlAnalytics = {
     event: event,
@@ -330,6 +652,21 @@
        pageviews: the Umami script, once appended, is in the page for as long
        as the page is. Opting out mid-visit therefore stops everything except
        the one pageview already sent, which is the honest promise to make. */
-    setOptedOut: setOptedOut
+    setOptedOut: setOptedOut,
+    /* First-touch channel for this browser ('tiktok', 'google', 'direct'...). */
+    source: source,
+    /* One answered question: course, question id, right or wrong, topic. */
+    answer: answer,
+    examStart: examStart,
+    examEnd: examEnd,
+    examDateSet: examDateSet,
+    /* After a finished session when no other prompt is showing. */
+    askSource: askSource,
+    /* account.js, whenever a session is known. */
+    signedIn: signedIn,
+    _automated: automated,
+    // For assets/analytics-page.js.
+    _beacon: beacon,
+    _courseOf: courseOf
   };
 })();

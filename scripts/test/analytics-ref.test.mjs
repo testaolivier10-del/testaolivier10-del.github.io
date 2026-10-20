@@ -20,7 +20,7 @@ function landOn(href){
 test('a reminder click is reported as ref-open and on the visit', () => {
   const { b, sent } = landOn('http://localhost/ochem/review.html?ref=push&x=1#top');
   const open = sent.find(e => e.name === 'ref-open');
-  assert.deepEqual({ ...open.data }, { ref: 'push', course: 'ochem' });
+  assert.deepEqual({ ...open.data }, { ref: 'push', course: 'ochem', src: 'push' });
   assert.equal(sent.find(e => e.name === 'visit').data.ref, 'push');
   assert.equal(b.window.location.search, '?x=1', 'ref is stripped, other params kept');
 });
@@ -52,7 +52,7 @@ test('the email button carries ref=email', () => {
 
 test('a video tag (tt-/yt-<topic>) is reported, and a malformed one is not', () => {
   const { b, sent } = landOn('http://localhost/ochem/?ref=tt-sn2-vs-sn1');
-  assert.deepEqual({ ...sent.find(e => e.name === 'ref-open').data }, { ref: 'tt-sn2-vs-sn1', course: 'ochem' });
+  assert.deepEqual({ ...sent.find(e => e.name === 'ref-open').data }, { ref: 'tt-sn2-vs-sn1', course: 'ochem', src: 'tiktok' });
   assert.equal(b.window.location.search, '');
   const bad = landOn('http://localhost/ochem/?ref=tt-SN2!').sent;
   assert.equal(bad.find(e => e.name === 'ref-open'), undefined);

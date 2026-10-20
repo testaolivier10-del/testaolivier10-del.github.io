@@ -584,3 +584,15 @@ test('scheduled(): reconciliation only on the hourly tick', async () => {
   assert.ok(await run(0) > 0);
   assert.equal(await run(30), 0);
 });
+
+test('order.paid sends one purchase to Umami with the buyer\'s source; the owner\'s test buy sends none', async () => {
+  const now = Date.UTC(2026, 9, 1);
+  const db = fakeDb([], now);
+  const umami = () => db.calls.filter((c) => c.url === '/api/send');
+  await premiumWebhook(delivery(paid({ id: 'ord_u1', metadata: { user_id: USER, pass: 'nremt-90', src: 'tiktok' } }), now), ENV, now);
+  assert.equal(umami().length, 1);
+  await premiumWebhook(delivery(paid({ id: 'ord_u1', metadata: { user_id: USER, pass: 'nremt-90', src: 'tiktok' } }), now), ENV, now);
+  assert.equal(umami().length, 1, 'a redelivered order is not counted twice');
+  await premiumWebhook(delivery(paid({ id: 'ord_u2', customer: { external_id: USER, email: 'testaolivier10@gmail.com' } }), now), ENV, now);
+  assert.equal(umami().length, 1, 'the owner\'s purchase is not a sale');
+});

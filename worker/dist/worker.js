@@ -10,7 +10,7 @@
  * route cannot create the cron trigger from wrangler.toml, so you have to add
  * it by hand under Settings -> Triggers.
  *
- * Built: config.js, store.js, push.js, email.js, reminders.js, premium.js, index.js
+ * Built: config.js, store.js, umami.js, push.js, email.js, reminders.js, premium.js, index.js
  */
 
 /* ===========================================================================
@@ -137,6 +137,169 @@ function nextDailySend(scheduledIso, now) {
   let t = at + ONE_DAY_MS;
   if (t <= now) t += Math.ceil((now - t + 1) / ONE_DAY_MS) * ONE_DAY_MS;
   return new Date(t).toISOString();
+}
+
+/* ===========================================================================
+   umami.js
+   =========================================================================== */
+
+/* Umami, through this Worker.
+
+   Why a proxy. The site sent its analytics straight to cloud.umami.is, a host
+   on the common ad-block lists, so every student with uBlock or Brave's
+   shields was invisible: the dashboard undercounted real people while still
+   counting every crawler that ran the page. Sending the same events to
+   api.levlprep.com/api/send and forwarding them from here fixes the first half
+   (this host is not on any list) and lets the Worker fix the second half,
+   because it can see what a browser cannot: which network a request came from.
+
+   The forward follows Umami's own guide for Umami Cloud (docs.umami.is,
+   "Bypass ad blockers"): POST to gateway.umami.is/api/send with the visitor's
+   User-Agent and X-Forwarded-For set to their IP, so country and device stay
+   right. Nothing is added to what the browser sent, and nothing is stored here.
+
+   What is dropped, with a 204 so the page never retries:
+   - requests from data-center networks (AWS, Google Cloud, Azure, Alibaba,
+     Tencent, DigitalOcean, OVH, Hetzner and similar). On 2026-10-19 these were
+     about half of all "visitors": one crawler in Singapore alone was 259 of
+     647, every one with a 6-second visit. A student on a VPN that exits from
+     one of these networks is lost too; that is the honest cost, and it is
+     small next to what the bots did to every number.
+     Not dropped: Akamai, Cloudflare and Fastly, because iCloud Private Relay
+     (Safari on an iPhone with iCloud+) exits through them, and those are real
+     students.
+   - bodies that are not small JSON events for this site's website id, so the
+     route cannot be used to write into somebody else's Umami.
+
+   Server-side events (purchase, refund) go out through umamiServerEvent(),
+   from the Polar webhook and the refund route, so the funnel's last step is
+   counted even when the buyer's browser blocks everything. */
+
+const UMAMI_WEBSITE_ID = 'cc421df1-3f32-40f1-bd08-d7f6666de3ac';
+const UMAMI_GATEWAY = 'https://gateway.umami.is/api/send';
+const MAX_BODY = 8192;
+
+/* SHA-256 of the owner's addresses (lower case), so his own test purchases and
+   refunds are not counted as sales. The same list is in assets/analytics.js. */
+const OWNER_EMAIL_SHA256 = [
+  '6ac353e37000f38dc54cdee3ed28f34e498f6978b33ad16409471cd7c2441154',
+  '7662e6de54cf228c5781e9b65b74ea942b2fc1156dbc3517fe20a9ca5f3e5d55',
+];
+
+async function isOwnerEmail(email) {
+  if (typeof email !== 'string' || !email) return false;
+  const bytes = new TextEncoder().encode(email.trim().toLowerCase());
+  const hash = await crypto.subtle.digest('SHA-256', bytes);
+  const hex = [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  return OWNER_EMAIL_SHA256.includes(hex);
+}
+
+/* The buyer's first-touch channel (assets/analytics.js source()), carried
+   through Polar's metadata like the video ref: lower-case words, dots and
+   hyphens only, so it can never carry anything but a channel name. */
+function isSource(src) {
+  return typeof src === 'string' && /^[a-z0-9][a-z0-9.-]{0,39}$/.test(src);
+}
+
+/* Autonomous systems that are hosting providers, not homes, phones or
+   schools. Numbers, not names, so a lookalike name cannot slip through and a
+   residential ISP that shares a word with a cloud cannot be caught. */
+const DATACENTER_ASNS = new Set([
+  16509, 14618, 8987,           // Amazon AWS
+  15169, 396982, 19527, 36040,  // Google, Google Cloud
+  8075, 8068, 8069,             // Microsoft Azure
+  45102, 37963, 24429,          // Alibaba Cloud
+  132203, 45090,                // Tencent Cloud
+  136907, 55990,                // Huawei Cloud
+  14061,                        // DigitalOcean
+  16276,                        // OVH
+  24940, 213230,                // Hetzner
+  63949,                        // Linode / Akamai Connected Cloud
+  31898,                        // Oracle Cloud
+  20473,                        // Vultr (Choopa)
+  51167,                        // Contabo
+  60781, 28753, 59253,          // Leaseweb
+  9009,                         // M247
+  212238,                       // Datacamp (CDN77)
+  12876,                        // Scaleway
+  47583,                        // Hostinger
+  36352,                        // ColoCrossing
+  40676,                        // Psychz
+  21859,                        // Zenlayer
+  62240,                        // Clouvider
+  46606,                        // Unified Layer
+  398324, 398705,               // Censys
+]);
+
+function fromDatacenter(request) {
+  const asn = Number(request?.cf?.asn);
+  return Number.isFinite(asn) && DATACENTER_ASNS.has(asn);
+}
+
+const AUTOMATED_UA = /HeadlessChrome|PhantomJS|Playwright|Puppeteer|Lighthouse|PageSpeed|GTmetrix|bot\b|crawler|spider|python-requests|curl\/|wget/i;
+
+/* The body the tracker (or the site's own beacon) sends: one pageview or one
+   event for this site. Anything else is refused. */
+function acceptableEvent(text) {
+  if (typeof text !== 'string' || !text || text.length > MAX_BODY) return null;
+  let body;
+  try { body = JSON.parse(text); } catch { return null; }
+  if (!body || (body.type !== 'event' && body.type !== 'identify')) return null;
+  const p = body.payload;
+  if (!p || typeof p !== 'object' || p.website !== UMAMI_WEBSITE_ID) return null;
+  return body;
+}
+
+const quiet = (cors) => new Response(null, { status: 204, headers: cors });
+
+async function umamiProxy(request, env, cors, fetchImpl = fetch) {
+  if (request.method !== 'POST') return new Response('POST only', { status: 405, headers: cors });
+  const ua = request.headers.get('User-Agent') || '';
+  if (!ua || AUTOMATED_UA.test(ua) || fromDatacenter(request)) return quiet(cors);
+
+  const text = await request.text();
+  if (!acceptableEvent(text)) return new Response('Bad event', { status: 400, headers: cors });
+
+  const ip = request.headers.get('CF-Connecting-IP') || '';
+  const headers = { 'Content-Type': 'application/json', 'User-Agent': ua };
+  if (ip) headers['X-Forwarded-For'] = ip;
+  const cache = request.headers.get('x-umami-cache');
+  if (cache && cache.length < 2000) headers['x-umami-cache'] = cache;
+  const lang = request.headers.get('Accept-Language');
+  if (lang) headers['Accept-Language'] = lang.slice(0, 200);
+
+  try {
+    const res = await fetchImpl(UMAMI_GATEWAY, { method: 'POST', headers, body: text });
+    const out = await res.text();
+    return new Response(out, { status: res.status, headers: { 'Content-Type': 'text/plain', ...cors } });
+  } catch {
+    // Umami down: the visitor's page does not care.
+    return quiet(cors);
+  }
+}
+
+/* An event counted by the Worker itself. It arrives in Umami as its own
+   one-event visit (country: wherever Cloudflare ran the Worker), so read it
+   as a count, not as part of the buyer's visit. Never throws. */
+async function umamiServerEvent(name, data, fetchImpl = fetch) {
+  const payload = {
+    website: UMAMI_WEBSITE_ID,
+    hostname: 'levlprep.com',
+    language: 'en-US',
+    screen: '0x0',
+    url: '/server/' + name,
+    title: 'Server event',
+    referrer: '',
+    name,
+    data: data || {},
+  };
+  try {
+    await fetchImpl(UMAMI_GATEWAY, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) LevlPrepServer/1.0' },
+      body: JSON.stringify({ type: 'event', payload }),
+    });
+  } catch { /* counting must never fail a payment */ }
 }
 
 /* ===========================================================================
@@ -787,6 +950,7 @@ async function runReminders(env, now = Date.now()) {
 
 
 
+
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it), and
    sell every paid course in assets/courses.js (scripts/check-courses.mjs).
    `days` is what one purchase adds. Semester is five months, so a pass bought
@@ -941,7 +1105,11 @@ async function premiumCheckout(request, env) {
   const body = {
     products: [productId],
     external_customer_id: user.id,
-    metadata: { user_id: user.id, pass: passId, ...(isRef(payload?.ref) ? { ref: payload.ref } : {}) },
+    metadata: {
+      user_id: user.id, pass: passId,
+      ...(isRef(payload?.ref) ? { ref: payload.ref } : {}),
+      ...(isSource(payload?.src) ? { src: payload.src } : {}),
+    },
     success_url: successUrl(payload?.returnTo, pass.course),
   };
   if (user.email) body.customer_email = user.email;
@@ -1009,7 +1177,7 @@ async function premiumRefund(request, env, now = Date.now()) {
   if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const rowRes = await sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at,order_created_at,customer_id` +
+  const rowRes = await sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at,order_created_at,customer_id,course` +
     `&user_id=eq.${uid}&order_id=eq.${encodeURIComponent(orderId)}&limit=1`);
   if (!rowRes.ok) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const row = (await rowRes.json())[0];
@@ -1052,6 +1220,9 @@ async function premiumRefund(request, env, now = Date.now()) {
     return { status: 502, body: { error: 'The refund didn’t go through automatically. Email us and we’ll sort it out.' } };
   }
   await refundOrder(env, orderId, now);
+  if (!(await isOwnerEmail(user.email))) {
+    await umamiServerEvent('refund', { course: (row && row.course) || 'unknown', how: 'self' });
+  }
   return { status: 200, body: { ok: true } };
 }
 
@@ -1407,6 +1578,16 @@ async function recordPaid(env, order, now) {
       await sb(env, 'rpc/track_ref_paid', { method: 'POST', body: JSON.stringify({ p_ref: order.metadata.ref }) });
     } catch { /* same: best effort */ }
   }
+  // And in Umami, so the funnel there ends in a purchase (src/umami.js).
+  if (!(await isOwnerEmail(order.customer?.email))) {
+    await umamiServerEvent('purchase', {
+      course: pass.course,
+      pass: passId,
+      dollars: Number.isInteger(order.net_amount) ? Math.round(order.net_amount / 100) : 0,
+      ref: isRef(order.metadata?.ref) ? order.metadata.ref : 'none',
+      src: isSource(order.metadata?.src) ? order.metadata.src : 'unknown',
+    });
+  }
   return { status: 200, body: { ok: true } };
 }
 
@@ -1420,7 +1601,13 @@ function isFullRefund(order) {
 
 async function recordRefund(env, order, now) {
   if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
-  await refundOrder(env, order.id, now);
+  const changed = await refundOrder(env, order.id, now);
+  // Counted once: a self-serve refund already marked the pass, so Polar's
+  // own refund event for it changes nothing and is not counted again.
+  if (changed > 0 && !(await isOwnerEmail(order.customer?.email))) {
+    const passId = isPass(order.metadata?.pass) ? order.metadata.pass : null;
+    await umamiServerEvent('refund', { course: passId ? PASSES[passId].course : 'unknown', how: 'polar' });
+  }
   return { status: 200, body: { ok: true } };
 }
 
@@ -1690,6 +1877,7 @@ async function reconcilePolar(env, now = Date.now()) {
 
 
 
+
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
 // the platform had deprecated months earlier, and the assistant fell back to
@@ -1887,7 +2075,8 @@ function corsHeaders(origin, env) {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     // Authorization: /premium/checkout carries the student's Supabase session.
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    // x-umami-cache: the analytics tracker's own header (/api/send, src/umami.js).
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-umami-cache',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
   };
@@ -1967,6 +2156,15 @@ export default {
       if (request.method !== 'POST') return reply({ error: 'POST only' }, 405);
       const r = await premiumWebhook(request, env);
       return reply(r.body, r.status);
+    }
+
+    /* Analytics, forwarded to Umami (src/umami.js says why and what is
+       dropped). Before the throttle below on purpose: that one is shared with
+       the assistant, and a student's page views must not spend its allowance.
+       Still needs the site's Origin, which every browser sends on these. */
+    if (path === '/api/send') {
+      if (!allowedOrigins(env).includes(origin)) return reply({ error: 'Origin not allowed' }, 403);
+      return umamiProxy(request, env, corsHeaders(origin, env));
     }
 
     if (request.method !== 'POST') {

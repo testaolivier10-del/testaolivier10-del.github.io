@@ -16,6 +16,7 @@
 
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
+import { umamiProxy } from './umami.js';
 import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
 // Tried in order until one answers. A single hard-coded model is a time bomb:
@@ -215,7 +216,8 @@ function corsHeaders(origin, env) {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     // Authorization: /premium/checkout carries the student's Supabase session.
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    // x-umami-cache: the analytics tracker's own header (/api/send, src/umami.js).
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-umami-cache',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
   };
@@ -295,6 +297,15 @@ export default {
       if (request.method !== 'POST') return reply({ error: 'POST only' }, 405);
       const r = await premiumWebhook(request, env);
       return reply(r.body, r.status);
+    }
+
+    /* Analytics, forwarded to Umami (src/umami.js says why and what is
+       dropped). Before the throttle below on purpose: that one is shared with
+       the assistant, and a student's page views must not spend its allowance.
+       Still needs the site's Origin, which every browser sends on these. */
+    if (path === '/api/send') {
+      if (!allowedOrigins(env).includes(origin)) return reply({ error: 'Origin not allowed' }, 403);
+      return umamiProxy(request, env, corsHeaders(origin, env));
     }
 
     if (request.method !== 'POST') {

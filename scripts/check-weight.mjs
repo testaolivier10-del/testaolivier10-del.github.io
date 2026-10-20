@@ -136,7 +136,12 @@ const SHELL_BUDGETS = [
      motion, the folded "units not started" group and inline row actions in
      the shared dashboard. Measured 288.8 KB on its own. */
   /* plus AP® Statistics' registration (Phase 0, measured 289.0 KB alone, from 288.4). */
-  ['site', 291],
+  /* 291 -> 296.5 for the analytics depth work (docs/analytics-plan.md, 2026-10-20): analytics.js now
+     filters automation and the owner, works out the first-touch source, batches anonymous answer tallies and
+     reports exams left halfway (+4.3 KB, comments cut). The per-page measurements and the one-time survey
+     card were moved out to LevlLazy modules loaded after idle, so they are not in this number.
+     Measured 296.0 KB. */
+  ['site', 296.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -418,7 +423,8 @@ const BUDGETS = [
   // 45.2 -> 48: the shared step builder and "Your numbers" rail, with
   // nremt/practice-study.js mapping it onto the engine's controls (W-C).
   /* 48 -> 48.4 (polish 2026-10-17, B11): XP paid as each answer is checked. */
-  ['nremt/practice.html', 48.4],
+  /* 48.4 -> 48.7: per-question tallies and exam-quit hooks in practice-engine.js (analytics depth). */
+  ['nremt/practice.html', 48.7],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -584,7 +590,8 @@ const BUDGETS = [
   // of those belong here rather than anywhere else — the cost is a page that
   // tells the truth at greater length, which is the one thing this page is for.
   // 15 -> 16: the "For schools" section (docs/apbio-spec.md decision 20).
-  ['privacy.html', 16],
+  /* 16 -> 16.6: the privacy page now describes the analytics added 2026-10-20. */
+  ['privacy.html', 16.6],
 ];
 
 /* Files fetched at RUNTIME by JavaScript, which the reference walk above

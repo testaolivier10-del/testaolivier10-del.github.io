@@ -460,6 +460,10 @@
       qs: qs, label: label, meta: meta, i: 0, els: {}, res: {}, limit: limitMs, left: limitMs,
       tick: null, last: 0, paused: false, warned: {}, startedAt: Date.now(), done: false
     };
+    // Where the exam is left halfway, if it is (assets/analytics.js exam-quit).
+    if(window.LevlAnalytics && window.LevlAnalytics.examStart){
+      window.LevlAnalytics.examStart('anp', meta && (meta.kind || meta.chapter) || 'exam', qs.length, function(){ return run && run.res ? Object.keys(run.res).length : 0; });
+    }
     view('run');
     app.innerHTML = '<div class="anp-ex-run">' +
       '<div class="anp-ex-top">' +
@@ -628,6 +632,7 @@
     var answered = rows.filter(function(x){ return !x.r.skipped; }).length;
     var k = run.meta.kind;
     Core.event('anp-session-finish', { mode: k === 'final' ? 'final' : k, answered: answered, correct: right });
+    if(window.LevlAnalytics && window.LevlAnalytics.examEnd) window.LevlAnalytics.examEnd();
     if(k === 'system') Core.event('anp-system-exam-finish', { chapter: run.meta.chapter, correct: right, total: total });
     if(k === 'teas') Core.event('anp-teas-finish', { correct: right, total: total });
     // The review shows every explanation: fetched now, one file per chapter.

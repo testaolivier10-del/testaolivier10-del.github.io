@@ -1801,6 +1801,7 @@
       arrivedFromEmail = null;
     }
     currentUser = session ? session.user : null;
+    if(currentUser && window.LevlAnalytics && window.LevlAnalytics.signedIn) window.LevlAnalytics.signedIn(currentUser);
     renderAccountUI();
     notify();
     if(event === 'SIGNED_IN' && wasSignedOut){
@@ -1909,6 +1910,7 @@
         c.auth.getSession().then(function(res){
           var session = res.data && res.data.session;
           currentUser = session ? session.user : null;
+          if(currentUser && window.LevlAnalytics && window.LevlAnalytics.signedIn) window.LevlAnalytics.signedIn(currentUser);
           sessionKnown = true;
           renderAccountUI();
           notify();
@@ -2125,7 +2127,12 @@
   /* reason is the old one-line summary ("Exam finished — 78/100"), kept as
      the fallback title; ctx lets the wording name what is at stake. */
   function promptToSave(reason, ctx){
-    if(!mayPrompt()) return false;
+    if(!mayPrompt()){
+      // No save prompt this time (signed in, or asked too recently): the
+      // one-time "how did you find LevlPrep?" question can use the moment.
+      if(window.LevlAnalytics && window.LevlAnalytics.askSource) window.LevlAnalytics.askSource();
+      return false;
+    }
 
     var stake = currentStake();
     var copy = saveCopy(ctx, stake, reason);
@@ -2255,6 +2262,9 @@
   window.StudyHubAccount = {
     rpc: rpc,
     rpcData: rpcData,
+    /* A one-way anonymous call that survives the page closing (keepalive):
+       analytics.js sends its answer tallies with it. */
+    postRpc: postRpc,
     trackRef: trackRef,
     accessToken: accessToken,
     /* Exported for scripts/test/account-delete.test.mjs. This one function

@@ -21,6 +21,7 @@
    The cron (bottom of this file) sends the one "your pass ends soon" email
    and, hourly, reconciles against Polar's own order and dispute records. */
 
+import { umamiServerEvent, isOwnerEmail, isSource } from './umami.js';
 import { sb, sha256Hex, timedFetch, EMAIL_BATCH } from './store.js';
 import { sendPassEndingEmail } from './email.js';
 
@@ -178,7 +179,11 @@ export async function premiumCheckout(request, env) {
   const body = {
     products: [productId],
     external_customer_id: user.id,
-    metadata: { user_id: user.id, pass: passId, ...(isRef(payload?.ref) ? { ref: payload.ref } : {}) },
+    metadata: {
+      user_id: user.id, pass: passId,
+      ...(isRef(payload?.ref) ? { ref: payload.ref } : {}),
+      ...(isSource(payload?.src) ? { src: payload.src } : {}),
+    },
     success_url: successUrl(payload?.returnTo, pass.course),
   };
   if (user.email) body.customer_email = user.email;
@@ -246,7 +251,7 @@ export async function premiumRefund(request, env, now = Date.now()) {
   if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const rowRes = await sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at,order_created_at,customer_id` +
+  const rowRes = await sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at,order_created_at,customer_id,course` +
     `&user_id=eq.${uid}&order_id=eq.${encodeURIComponent(orderId)}&limit=1`);
   if (!rowRes.ok) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const row = (await rowRes.json())[0];
@@ -289,6 +294,9 @@ export async function premiumRefund(request, env, now = Date.now()) {
     return { status: 502, body: { error: 'The refund didn’t go through automatically. Email us and we’ll sort it out.' } };
   }
   await refundOrder(env, orderId, now);
+  if (!(await isOwnerEmail(user.email))) {
+    await umamiServerEvent('refund', { course: (row && row.course) || 'unknown', how: 'self' });
+  }
   return { status: 200, body: { ok: true } };
 }
 
@@ -644,6 +652,16 @@ async function recordPaid(env, order, now) {
       await sb(env, 'rpc/track_ref_paid', { method: 'POST', body: JSON.stringify({ p_ref: order.metadata.ref }) });
     } catch { /* same: best effort */ }
   }
+  // And in Umami, so the funnel there ends in a purchase (src/umami.js).
+  if (!(await isOwnerEmail(order.customer?.email))) {
+    await umamiServerEvent('purchase', {
+      course: pass.course,
+      pass: passId,
+      dollars: Number.isInteger(order.net_amount) ? Math.round(order.net_amount / 100) : 0,
+      ref: isRef(order.metadata?.ref) ? order.metadata.ref : 'none',
+      src: isSource(order.metadata?.src) ? order.metadata.src : 'unknown',
+    });
+  }
   return { status: 200, body: { ok: true } };
 }
 
@@ -657,7 +675,13 @@ function isFullRefund(order) {
 
 async function recordRefund(env, order, now) {
   if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
-  await refundOrder(env, order.id, now);
+  const changed = await refundOrder(env, order.id, now);
+  // Counted once: a self-serve refund already marked the pass, so Polar's
+  // own refund event for it changes nothing and is not counted again.
+  if (changed > 0 && !(await isOwnerEmail(order.customer?.email))) {
+    const passId = isPass(order.metadata?.pass) ? order.metadata.pass : null;
+    await umamiServerEvent('refund', { course: passId ? PASSES[passId].course : 'unknown', how: 'polar' });
+  }
   return { status: 200, body: { ok: true } };
 }
 

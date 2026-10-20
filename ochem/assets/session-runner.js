@@ -571,7 +571,7 @@
       if(!S.isCheck) S.index++;
       if(d.correct) S.correct++;
       // Today's score, which the daily-limit card shows (assets/premium.js).
-      if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('ochem', d.correct);
+      if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('ochem', d.correct, q.id, q.topic);
       var cid = E.primaryConcept(q);
       S.conceptsTouched[cid] = true;
       if(d.conceptId) S.conceptsTouched[d.conceptId] = true;

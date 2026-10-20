@@ -438,6 +438,10 @@
     var frqParts = FRQ_PARTS.map(function(P){ return { key: P.key, calc: P.calc, frqs: (frqs || []).slice(), sec: P.sec / P.n }; }).filter(function(p){ return p.frqs.length; });
     run = { label: label, meta: meta, k: k, res: {}, rows: [], startedAt: Date.now(), done: false, section: 1,
       mcqParts: mcqParts, frqParts: frqParts, frqs: frqParts.reduce(function(o, p){ return o.concat(p.frqs); }, []), answers: [], pi: 0 };
+    // Where the exam is left halfway, if it is (assets/analytics.js exam-quit).
+    if(window.LevlAnalytics && window.LevlAnalytics.examStart){
+      window.LevlAnalytics.examStart('apstat', meta && meta.kind || 'exam', mcqParts.reduce(function(n, p){ return n + p.qs.length; }, 0), function(){ return run && run.res ? Object.keys(run.res).length : 0; });
+    }
     window.addEventListener('beforeunload', guard);
     startSectionOne(0);
   }
@@ -717,6 +721,7 @@
     setPref('examHistory', hist.slice(-30));
     // Each FRQ's self-score also counts as an attempt on the FRQ page.
     (run.frqScores || []).forEach(function(s, i){ var f = run.frqs[i]; K.saveScore(f.id, { got: s.got, of: s.of, parts: s.parts, title: f.title, type: f.type, units: f.units, exam: true }); });
+    if(window.LevlAnalytics && window.LevlAnalytics.examEnd) window.LevlAnalytics.examEnd();
     Core.event('apstat-exam-finish', { kind: run.meta.kind, correct: right, total: total, frq: fg, frqOf: fo, partial: !!run.meta.partial });
     var stage = app.querySelector('.stat-ex-stage') || app;
     stage.insertAdjacentHTML('afterbegin', '<p class="stat-small">Marking your exam and loading the explanations…</p>');

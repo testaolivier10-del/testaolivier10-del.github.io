@@ -437,6 +437,10 @@
 
   function startSectionOne(qs, frqs, label, meta, k){
     run = { qs: qs, frqs: frqs, label: label, meta: meta, k: k, i: 0, els: {}, res: {}, startedAt: Date.now(), done: false, section: 1 };
+    // Where the exam is left halfway, if it is (assets/analytics.js exam-quit).
+    if(window.LevlAnalytics && window.LevlAnalytics.examStart){
+      window.LevlAnalytics.examStart('apphys', meta && meta.kind || 'exam', qs.length, function(){ return run && run.res ? Object.keys(run.res).length : 0; });
+    }
     view('run');
     var limit = k ? Math.round(qs.length * MCQ_SEC * k * 1000) : 0;
     app.innerHTML = '<div class="phys-ex-run">' +
@@ -645,6 +649,7 @@
     setPref('examHistory', hist.slice(-30));
     // Each FRQ's self-score also counts as an attempt on the FRQ page.
     (run.frqScores || []).forEach(function(s, i){ var f = run.frqs[i]; K.saveScore(f.id, { got: s.got, of: s.of, parts: s.parts, title: f.title, type: f.type, units: f.units, exam: true }); });
+    if(window.LevlAnalytics && window.LevlAnalytics.examEnd) window.LevlAnalytics.examEnd();
     Core.event('apphys-exam-finish', { kind: run.meta.kind, correct: right, total: total, frq: fg, frqOf: fo, partial: !!run.meta.partial });
     var stage = app.querySelector('.phys-ex-stage') || app;
     stage.insertAdjacentHTML('afterbegin', '<p class="phys-small">Marking your exam and loading the explanations…</p>');
