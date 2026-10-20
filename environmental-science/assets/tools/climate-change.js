@@ -33,6 +33,70 @@
   function F(x, d){ return T.F(x, d == null ? 1 : d); }
   function big(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   var VIEWS = [{ v: 'air', label: 'Atmosphere' }, { v: 'ocean', label: 'Ocean pH' }, { v: 'sea', label: 'Sea level' }];
+  /* Label placement. Each label tries its candidate spots in order and takes
+     the first that clears the lines drawn (rays, curves), the boxes already
+     taken (labels, art), the picture's edges, an optional area it must stay
+     in, and the Enlarge button's corner (bottom right, 52 x 48). A label with
+     no clear spot is counted; the scene writes the count to the svg's
+     data-clash, which the browser sweep checks at every slider extreme. */
+  var MEAS = null;
+  function textW(t, size, weight){
+    try{
+      if(!MEAS) MEAS = document.createElement('canvas').getContext('2d');
+      MEAS.font = (weight || 800) + ' ' + size + 'px ' + ((getComputedStyle(document.body).getPropertyValue('--font-ui') || '').trim() || 'sans-serif');
+      return MEAS.measureText(String(t)).width;
+    }catch(e){ return String(t).length * size * 0.58; }
+  }
+  function boxOf(x, y, w, size, a){ var x0 = a === 'end' ? x - w : a === 'middle' ? x - w / 2 : x; return { x0: x0 - 3, x1: x0 + w + 3, y0: y - size * 0.82 - 2, y1: y + size * 0.24 + 2 }; }
+  function layout(W, H, o){
+    o = o || {};
+    var lines = [], rects = [], clash = 0, misses = [], ENL = o.enl === false ? null : { x0: W - 52, y0: H - 48, x1: W, y1: H };
+    function over(a, b){ return a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1; }
+    function hit(b, ax, ay, bx, by, pad){
+      var x0 = b.x0 - pad, x1 = b.x1 + pad, y0 = b.y0 - pad, y1 = b.y1 + pad, dx = bx - ax, dy = by - ay, t0 = 0, t1 = 1;
+      var p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
+      for(var i = 0; i < 4; i++){
+        if(p[i] === 0){ if(q[i] < 0) return false; }
+        else { var r = q[i] / p[i]; if(p[i] < 0){ if(r > t1) return false; if(r > t0) t0 = r; } else { if(r < t0) return false; if(r < t1) t1 = r; } }
+      }
+      return true;
+    }
+    function ok(b, within){
+      var A = within || { x0: 1, y0: 1, x1: W - 1, y1: H - 1 };
+      if(b.x0 < A.x0 || b.y0 < A.y0 || b.x1 > A.x1 || b.y1 > A.y1) return false;
+      if(ENL && over(b, ENL)) return false;
+      for(var i = 0; i < rects.length; i++) if(over(b, rects[i])) return false;
+      for(var j = 0; j < lines.length; j++){ var L = lines[j]; for(var k = 1; k < L.p.length; k++) if(hit(b, L.p[k - 1][0], L.p[k - 1][1], L.p[k][0], L.p[k][1], L.pad)) return false; }
+      return true;
+    }
+    return {
+      line: function(pts, pad){ if(pts && pts.length > 1) lines.push({ p: pts, pad: pad == null ? 2 : pad }); },
+      rect: function(x0, y0, x1, y1){ rects.push({ x0: Math.min(x0, x1), y0: Math.min(y0, y1), x1: Math.max(x0, x1), y1: Math.max(y0, y1) }); },
+      place: function(text, size, weight, cands, opt){
+        opt = opt || {};
+        var w = textW(text, size, weight), pick = null;
+        for(var i = 0; i < cands.length; i++){ var c = cands[i], b = boxOf(c[0], c[1], w, size, c[2]); if(ok(b, opt.within)){ pick = { x: c[0], y: c[1], a: c[2] || 'start', b: b }; break; } }
+        if(!pick){ if(opt.optional) return null; clash++; misses.push(text); var c0 = cands[0]; pick = { x: c0[0], y: c0[1], a: c0[2] || 'start', b: boxOf(c0[0], c0[1], w, size, c0[2]) }; }
+        rects.push(pick.b); pick.w = w; return pick;
+      },
+      box: function(w, h, cands, opt){
+        opt = opt || {};
+        for(var i = 0; i < cands.length; i++){ var b = { x0: cands[i][0], y0: cands[i][1], x1: cands[i][0] + w, y1: cands[i][1] + h }; if(ok(b, opt.within)){ rects.push(b); return b; } }
+        clash++; var f = { x0: cands[0][0], y0: cands[0][1], x1: cands[0][0] + w, y1: cands[0][1] + h }; rects.push(f); return f;
+      },
+      clash: function(){ return clash; }, misses: function(){ return misses; }
+    };
+  }
+  /* Candidate spots on a grid, nearest a point first. */
+  function grid(xs, ys, near, a){
+    var out = [];
+    ys.forEach(function(y){ xs.forEach(function(x){ out.push([x, y, a || 'middle']); }); });
+    if(near) out.sort(function(p, q){ return Math.hypot(p[0] - near[0], p[1] - near[1]) - Math.hypot(q[0] - near[0], q[1] - near[1]); });
+    return out;
+  }
+  function steps(a, b, n){ var out = []; for(var i = 0; i <= n; i++) out.push(a + (b - a) * i / n); return out; }
+  function at(p){ return 'x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '" text-anchor="' + p.a + '"'; }
+  function bgr(p, cls){ return '<rect class="' + cls + '" x="' + p.b.x0.toFixed(1) + '" y="' + p.b.y0.toFixed(1) + '" width="' + (p.b.x1 - p.b.x0).toFixed(1) + '" height="' + (p.b.y1 - p.b.y0).toFixed(1) + '" rx="4"/>'; }
   var CFC_LABEL = function(v){ return v === 0 ? 'None' : v < 0.35 ? 'Low' : v < 0.7 ? 'High' : 'Very high'; };
 
   T.mount('climate-change', function(app, data){
@@ -62,6 +126,7 @@
     var g = [], du = K.ozone(st.cfc), uv = K.uvb(du), fo = K.forcing(st.ppm), dT = K.warming(st.ppm);
     var ground = Math.round(H * 0.86), strTop = Math.round(H * 0.08), strBot = Math.round(H * 0.34), tropTop = Math.round(H * 0.42);
     var L = phone ? 6 : 12, R = Wd - (phone ? 6 : 12), labX = phone ? L + 6 : L + 12;
+    var Lo = layout(Wd, H, { enl: false });
     g.push('<rect class="cc-space" x="0" y="0" width="' + Wd + '" height="' + strTop + '"/>');
     g.push('<rect class="cc-strat" x="0" y="' + strTop + '" width="' + Wd + '" height="' + (tropTop - strTop) + '"/>');
     g.push('<rect class="cc-trop" x="0" y="' + tropTop + '" width="' + Wd + '" height="' + (ground - tropTop) + '"/>');
@@ -69,49 +134,79 @@
     g.push('<line class="cc-tropo" x1="0" x2="' + Wd + '" y1="' + tropTop + '" y2="' + tropTop + '"/>');
     // ground: hills, houses, trees
     g.push('<path class="cc-ground" d="M0 ' + ground + ' Q' + (Wd * 0.25) + ' ' + (ground - 10) + ' ' + (Wd * 0.5) + ' ' + (ground - 2) + ' T' + Wd + ' ' + (ground - 6) + ' V' + H + ' H0 Z"/>');
-    for(var t = 0; t < (phone ? 4 : 7); t++){ var tx = Wd * (0.56 + t * (phone ? 0.1 : 0.06)), ty = ground - 4; g.push('<g class="cc-tree"><rect x="' + (tx - 1.5).toFixed(1) + '" y="' + (ty - 8) + '" width="3" height="10"/><circle cx="' + tx.toFixed(1) + '" cy="' + (ty - 13) + '" r="7"/></g>'); }
-    var hx = Wd * 0.18; g.push('<g class="cc-house"><rect x="' + hx.toFixed(1) + '" y="' + (ground - 18) + '" width="22" height="16"/><path d="M' + (hx - 3).toFixed(1) + ' ' + (ground - 18) + ' l14 -11 l14 11 z"/></g>');
+    for(var t = 0; t < (phone ? 4 : 7); t++){ var tx = Wd * (0.56 + t * (phone ? 0.1 : 0.06)), ty = ground - 4; g.push('<g class="cc-tree"><rect x="' + (tx - 1.5).toFixed(1) + '" y="' + (ty - 8) + '" width="3" height="10"/><circle cx="' + tx.toFixed(1) + '" cy="' + (ty - 13) + '" r="7"/></g>'); Lo.rect(tx - 8, ty - 21, tx + 8, ty + 2); }
+    var hx = Wd * 0.18; g.push('<g class="cc-house"><rect x="' + hx.toFixed(1) + '" y="' + (ground - 18) + '" width="22" height="16"/><path d="M' + (hx - 3).toFixed(1) + ' ' + (ground - 18) + ' l14 -11 l14 11 z"/></g>'); Lo.rect(hx - 4, ground - 30, hx + 26, ground);
     // the sun
-    var sx = phone ? 34 : 54, sy = strTop + (phone ? -2 : 4);
-    g.push('<circle class="cc-sun" cx="' + sx + '" cy="' + sy + '" r="' + (phone ? 20 : 26) + '"/>');
+    var sx = phone ? 34 : 54, sy = strTop + (phone ? -2 : 4), sr = phone ? 20 : 26;
+    g.push('<circle class="cc-sun" cx="' + sx + '" cy="' + sy + '" r="' + sr + '"/>'); Lo.rect(sx - sr - 3, sy - sr - 3, sx + sr + 3, sy + sr + 3);
     // molecules: ozone in its layer (fewer with CFCs), chlorine, CO2 in the troposphere
     var nO3 = Math.round((phone ? 26 : 46) * (du - 60) / 240), nCl = Math.round((phone ? 8 : 14) * st.cfc), nCO2 = Math.round((phone ? 10 : 18) * Math.min(4.3, st.ppm / 280));
     O3P.slice(0, nO3).forEach(function(p){ g.push(o3(L + 70 + p[0] * (R - L - 80), strTop + 12 + p[1] * (strBot - strTop - 20), phone ? 0.85 : 1)); });
     CLP.slice(0, nCl).forEach(function(p){ g.push(cl(L + 80 + p[0] * (R - L - 90), strTop + 14 + p[1] * (strBot - strTop - 24))); });
     CO2P.slice(0, nCO2).forEach(function(p){ g.push(co2(L + 50 + p[0] * (R - L - 60), tropTop + 14 + p[1] * (ground - tropTop - 50), phone ? 0.8 : 1)); });
     // visible sunlight: passes straight through to the ground
-    var vis = [0.32, 0.5];
-    vis.forEach(function(f){ var x1 = Wd * f; g.push('<line class="cc-vis" x1="' + (sx + 18) + '" y1="' + (sy + 12) + '" x2="' + x1.toFixed(1) + '" y2="' + (ground - 6) + '"/>' + head(x1, ground - 6, Math.atan2(ground - 6 - sy - 12, x1 - sx - 18), 'cc-h-vis')); });
+    [0.32, 0.5].forEach(function(f){ var x1 = Wd * f; g.push('<line class="cc-vis" x1="' + (sx + 18) + '" y1="' + (sy + 12) + '" x2="' + x1.toFixed(1) + '" y2="' + (ground - 6) + '"/>' + head(x1, ground - 6, Math.atan2(ground - 6 - sy - 12, x1 - sx - 18), 'cc-h-vis')); Lo.line([[sx + 18, sy + 12], [x1, ground - 6]], 3); });
     // ultraviolet: stopped in the ozone layer; UV-B through, stronger as ozone thins
-    var uvs = phone ? [0.3, 0.46] : [0.24, 0.36, 0.48];
-    uvs.forEach(function(f){ var x1 = Wd * f, y1 = strTop + (strBot - strTop) * 0.55; g.push(ray('cc-uv', sx + 22, sy + 4, x1, y1, 3, 7, 2.2) + '<circle class="cc-stop" cx="' + x1.toFixed(1) + '" cy="' + y1.toFixed(1) + '" r="5"/>'); });
-    var uvw = 1 + 2.4 * (uv - 1) + 0.6, ux = Wd * (phone ? 0.58 : 0.6);
-    g.push('<g style="opacity:' + Math.min(1, 0.35 + 0.65 * (uv - 1) / 1.5 + 0.25).toFixed(2) + '">' + ray('cc-uv', sx + 22, sy + 8, ux, ground - 8, 3, 7, Math.min(6, uvw)) + '</g>');
+    var uvs = phone ? [0.3, 0.46] : [0.24, 0.36, 0.48], yStop = strTop + (strBot - strTop) * 0.55;
+    uvs.forEach(function(f){ var x1 = Wd * f; g.push(ray('cc-uv', sx + 22, sy + 4, x1, yStop, 3, 7, 2.2) + '<circle class="cc-stop" cx="' + x1.toFixed(1) + '" cy="' + yStop.toFixed(1) + '" r="5"/>'); Lo.line([[sx + 22, sy + 4], [x1, yStop]], 6); Lo.rect(x1 - 7, yStop - 7, x1 + 7, yStop + 7); });
+    var uvw = Math.min(6, 1 + 2.4 * (uv - 1) + 0.6), ux = Wd * (phone ? 0.58 : 0.6);
+    g.push('<g style="opacity:' + Math.min(1, 0.35 + 0.65 * (uv - 1) / 1.5 + 0.25).toFixed(2) + '">' + ray('cc-uv', sx + 22, sy + 8, ux, ground - 8, 3, 7, uvw) + '</g>');
+    Lo.line([[sx + 22, sy + 8], [ux, ground - 8]], 4 + uvw / 2);
     // infrared: from the ground; some escapes, some is absorbed by CO2 and sent back down
-    var share = Math.min(4, 1 + Math.round(3 * fo / K.forcing(1200))), irX = phone ? [0.68, 0.78, 0.88, 0.95] : [0.7, 0.77, 0.84, 0.91];
+    var share = Math.min(4, 1 + Math.round(3 * fo / K.forcing(1200))), irX = phone ? [0.68, 0.78, 0.88, 0.95] : [0.7, 0.77, 0.84, 0.91], hits = [];
     irX.forEach(function(f, i){
       var x0 = Wd * f, y0 = ground - 6;
-      if(i < share){ var ya = tropTop + (ground - tropTop) * (0.35 + 0.1 * (i % 2)); g.push(ray('cc-ir', x0, y0, x0 - 8, ya, 4, 16, 2.6) + '<circle class="cc-hit" cx="' + (x0 - 8).toFixed(1) + '" cy="' + ya.toFixed(1) + '" r="6"/>' + '<path class="cc-back" d="M' + (x0 - 12).toFixed(1) + ' ' + (ya + 6).toFixed(1) + ' q-18 ' + ((y0 - ya) * 0.4).toFixed(1) + ' -10 ' + (y0 - ya - 14).toFixed(1) + '"/>' + head(x0 - 22, y0 - 8, Math.PI / 2 + 0.2, 'cc-h-ir')); }
-      else g.push(ray('cc-ir', x0, y0, x0 + 10, strTop - 4, 4, 16, 2.6));
+      if(i < share){ var ya = tropTop + (ground - tropTop) * (0.35 + 0.1 * (i % 2)); hits.push([x0 - 8, ya]); g.push(ray('cc-ir', x0, y0, x0 - 8, ya, 4, 16, 2.6) + '<circle class="cc-hit" cx="' + (x0 - 8).toFixed(1) + '" cy="' + ya.toFixed(1) + '" r="6"/>' + '<path class="cc-back" d="M' + (x0 - 12).toFixed(1) + ' ' + (ya + 6).toFixed(1) + ' q-18 ' + ((y0 - ya) * 0.4).toFixed(1) + ' -10 ' + (y0 - ya - 14).toFixed(1) + '"/>' + head(x0 - 22, y0 - 8, Math.PI / 2 + 0.2, 'cc-h-ir'));
+        Lo.line([[x0, y0], [x0 - 8, ya]], 7); Lo.rect(x0 - 15, ya - 8, x0 - 1, ya + 8); Lo.line([[x0 - 12, ya + 6], [x0 - 26, ya + (y0 - ya) * 0.45], [x0 - 22, y0 - 8]], 4); }
+      else { g.push(ray('cc-ir', x0, y0, x0 + 10, strTop - 4, 4, 16, 2.6)); Lo.line([[x0, y0], [x0 + 10, strTop - 4]], 7); }
     });
-    // layer labels (left), boxed so they read over anything
-    if(!simple){
-      g.push('<text class="cc-layer" x="' + labX + '" y="' + (strBot - 8) + '">' + (phone ? 'Stratosphere' : 'Stratosphere, 15 to 35 km: the ozone layer') + '</text>');
-      g.push('<text class="cc-layer" x="' + labX + '" y="' + (ground - 30) + '">' + (phone ? 'Troposphere' : 'Troposphere, 0 to 12 km: greenhouse gases') + '</text>');
-      // key
-      var kx = R - (phone ? 120 : 210), ky = strTop - (phone ? 6 : 0) + 4;
-      if(!phone) g.push('<g class="cc-key"><rect x="' + (kx - 8) + '" y="' + (ky - 2) + '" width="' + (R - kx + 2) + '" height="58" rx="8"/>' +
+    if(simple) return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT };
+    // the thermometer, on the ground clear of the rays
+    var thx = Lo.box(16, 54, steps(Wd * 0.36, Wd * 0.54, 12).concat(steps(Wd * 0.08, Wd * 0.3, 8)).map(function(x){ return [x, ground - 60]; }), { within: { x0: 0, y0: tropTop, x1: Wd, y1: ground + 2 } }).x0 + 8;
+    var fill = 36 * Math.min(1, 0.25 + dT / 7);
+    g.push('<g class="cc-thermo"><rect x="' + (thx - 4).toFixed(1) + '" y="' + (ground - 58) + '" width="8" height="46" rx="4"/><rect class="cc-merc" x="' + (thx - 2).toFixed(1) + '" y="' + (ground - 14 - fill).toFixed(1) + '" width="4" height="' + fill.toFixed(1) + '"/><circle cx="' + thx.toFixed(1) + '" cy="' + (ground - 12) + '" r="6"/></g>');
+    // the key (desktop): a box in the clearest part of the sky
+    if(!phone){
+      var kb = Lo.box(222, 60, grid(steps(R - 222, Wd * 0.5, 10), [strTop + 4, tropTop + 6, tropTop + 70], [R, strTop]).map(function(p){ return [p[0], p[1]]; }), { within: { x0: 0, y0: 0, x1: Wd, y1: ground - 30 } }), kx = kb.x0 + 8, ky = kb.y0 + 2;
+      g.push('<g class="cc-key"><rect x="' + kb.x0.toFixed(1) + '" y="' + kb.y0.toFixed(1) + '" width="222" height="60" rx="8"/>' +
         '<polyline class="cc-ray cc-uv" points="' + wave(kx, ky + 10, kx + 34, ky + 10, 3, 7) + '"/><text class="cc-keyt" x="' + (kx + 42) + '" y="' + (ky + 14) + '">Ultraviolet (from the Sun)</text>' +
         '<polyline class="cc-ray cc-ir" points="' + wave(kx, ky + 28, kx + 34, ky + 28, 4, 16) + '"/><text class="cc-keyt" x="' + (kx + 42) + '" y="' + (ky + 32) + '">Infrared (from the ground)</text>' +
         '<line class="cc-vis" x1="' + kx + '" x2="' + (kx + 34) + '" y1="' + (ky + 46) + '" y2="' + (ky + 46) + '"/><text class="cc-keyt" x="' + (kx + 42) + '" y="' + (ky + 50) + '">Visible sunlight</text></g>');
-      // callouts on the action
-      g.push('<text class="cc-call cc-c-uv" x="' + (Wd * 0.36).toFixed(1) + '" y="' + (strTop + 2 + (phone ? 10 : 0)) + '" text-anchor="middle">' + (phone ? 'O₃ absorbs UV' : 'Ozone absorbs UV') + '</text>');
-      g.push('<text class="cc-call cc-c-ir" x="' + (Wd * (phone ? 0.74 : 0.78)).toFixed(1) + '" y="' + (tropTop + 18) + '" text-anchor="middle">' + (phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared') + '</text>');
-      if(nCl) g.push('<text class="cc-call cc-c-cl" x="' + (Wd * 0.66).toFixed(1) + '" y="' + (strBot + 16) + '" text-anchor="middle">' + (phone ? 'Cl breaks O₃' : 'Cl + O₃ → ClO + O₂, and Cl is freed again') + '</text>');
-      g.push('<text class="cc-call cc-c-uv" x="' + (ux + 8).toFixed(1) + '" y="' + (ground - 24) + '">UV-B ×' + F(uv, 2) + '</text>');
-      g.push('<g class="cc-thermo"><rect x="' + (Wd * 0.44 - 4).toFixed(1) + '" y="' + (ground - 58) + '" width="8" height="46" rx="4"/><rect class="cc-merc" x="' + (Wd * 0.44 - 2).toFixed(1) + '" y="' + (ground - 14 - 36 * Math.min(1, 0.25 + dT / 7)).toFixed(1) + '" width="4" height="' + (36 * Math.min(1, 0.25 + dT / 7)).toFixed(1) + '"/><circle cx="' + (Wd * 0.44).toFixed(1) + '" cy="' + (ground - 12) + '" r="6"/></g><text class="cc-call cc-c-ir" x="' + (Wd * 0.44 + 10).toFixed(1) + '" y="' + (ground - 46) + '">+' + F(dT, 1) + ' °C</text>');
     }
-    return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT };
+    // labels, each on a soft background, in the first clear spot near what it names
+    var STRAT = { x0: 0, y0: strTop, x1: Wd, y1: tropTop }, TROP = { x0: 0, y0: tropTop, x1: Wd, y1: ground + 4 };
+    var xs = steps(L + 4, R - 4, phone ? 14 : 24);
+    function lab(text, cls, size, cands, within, optional){
+      var p = Lo.place(text, size, 900, cands, { within: within, optional: optional });
+      if(p) g.push(bgr(p, 'cc-lbg') + '<text class="' + cls + '" ' + at(p) + '>' + text + '</text>');
+      return p;
+    }
+    // every spot with each anchor, nearest the thing named first
+    var near = function(x, y, ys){ var c = []; ['middle', 'start', 'end'].forEach(function(a){ c = c.concat(grid(xs, ys, null, a)); }); c.sort(function(p, q){ return Math.hypot(p[0] - x, p[1] - y) - Math.hypot(q[0] - x, q[1] - y); }); return c; };
+    lab(phone ? 'O₃ absorbs UV' : 'Ozone absorbs UV', 'cc-call cc-c-uv', 12.5, near(Wd * 0.36, yStop - 16, steps(strTop + 16, strBot - 4, 6)), STRAT);
+    if(nCl) lab(phone ? 'Cl breaks O₃' : 'Cl + O₃ → ClO + O₂, and Cl is freed again', 'cc-call cc-c-cl', 12.5, near(Wd * 0.66, strBot + 12, steps(strTop + 16, tropTop - 4, 8)), STRAT);
+    lab(phone ? 'Stratosphere' : 'Stratosphere, 15 to 35 km: the ozone layer', 'cc-layer', 13, [[labX, strBot - 8, 'start'], [labX, tropTop - 6, 'start']].concat(grid(xs, steps(strTop + 16, tropTop - 4, 6), [0, tropTop], 'start')), STRAT);
+    var hx0 = hits.length ? hits[0][0] : Wd * 0.78, hy0 = hits.length ? hits[0][1] : tropTop + 20;
+    lab(phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared', 'cc-call cc-c-ir', 12.5, near(hx0, hy0 - 22, steps(tropTop + 16, ground - 40, 10)), TROP);
+    lab('UV-B ×' + F(uv, 2), 'cc-call cc-c-uv', 12.5, near(ux + 30, ground - 24, steps(tropTop + 16, ground - 6, 14)), TROP);
+    lab('+' + F(dT, 1) + ' °C', 'cc-call cc-c-ir', 13, [[thx + 9, ground - 46, 'start'], [thx - 9, ground - 46, 'end'], [thx + 9, ground - 30, 'start'], [thx - 9, ground - 30, 'end'], [thx, ground - 64, 'middle']].concat(near(thx, ground - 40, steps(tropTop + 20, ground - 6, 10))), TROP);
+    lab(phone ? 'Troposphere' : 'Troposphere, 0 to 12 km: greenhouse gases', 'cc-layer', 13, [[labX, ground - 30, 'start'], [labX, ground - 48, 'start']].concat(grid(xs, steps(tropTop + 16, ground - 6, 10), [0, ground], 'start')), TROP, phone);
+    return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT, clash: Lo.clash(), misses: Lo.misses() };
+  }
+
+  /* The first-run tip sits just above its target; an empty slot is opened
+     there while the tip shows, so it never covers another control. */
+  function hintSlot(s, target, text, before){
+    if(!target) return;
+    var slot = document.createElement('div');
+    slot.className = 'env-tipslot'; slot.setAttribute('aria-hidden', 'true');
+    (before || target).parentNode.insertBefore(slot, before || target);
+    var h = s.hint({ target: target, text: text });
+    if(!h){ slot.remove(); return; }
+    var EV = ['pointerdown', 'keydown', 'input', 'change'];
+    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
+    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
+    if(h.place) h.place();
   }
 
   /* ------------------------------------------------------------ explore */
@@ -249,22 +344,33 @@
       svg.innerHTML = o.svg; svg.setAttribute('aria-label', o.label);
     }
     function airScene(Wd, H, phone){
-      var top = Math.round(H * (phone ? 0.66 : 0.68)), a = atmos(Wd, top, { ppm: ppm, cfc: cfc }, phone), g = [a.svg];
-      // the two readouts, side by side
-      var gap = phone ? 10 : 24, pw = (Wd - 3 * gap) / 2, y0 = top + (phone ? 30 : 34), y1 = H - (phone ? 26 : 30);
-      g.push(mini(gap, y0, pw, y1, phone ? 'Warming' : 'Greenhouse: warming vs CO₂', 'cc-c-ir', 280, 1200, 0, 6, function(c){ return K.warming(c); }, ppm, '+' + F(a.dT, 1) + ' °C', 'ppm', phone));
-      g.push(mini(2 * gap + pw, y0, pw, y1, phone ? 'UV-B at ground' : 'Ozone: UV-B at the ground', 'cc-c-uv', 0, 1, 0.8, 3.2, function(c){ return K.uvb(K.ozone(c)); }, cfc, '×' + F(a.uv, 2) + ' (' + Math.round(a.du) + ' DU)', 'CFC use', phone));
+      var top = Math.round(H * (phone ? 0.64 : 0.68)), a = atmos(Wd, top, { ppm: ppm, cfc: cfc }, phone), g = [a.svg];
+      // the two readouts, side by side; the right one ends short of the Enlarge button
+      var gap = phone ? 8 : 24, y0 = top + (phone ? 40 : 36), y1 = H - 52, Lo = layout(Wd, H), pw = (Wd - 3 * gap) / 2;
+      g.push(mini(Lo, gap, y0, pw, y1, phone ? ['Greenhouse', 'warming vs CO₂'] : ['Greenhouse: warming vs CO₂'], 'cc-c-ir', 280, 1200, 0, 6, function(c){ return K.warming(c); }, ppm, '+' + F(a.dT, 1) + ' °C', phone ? ['280', '1,200 ppm'] : ['280 ppm', '1,200 ppm'], phone));
+      g.push(mini(Lo, 2 * gap + pw, y0, pw, y1, phone ? ['Ozone', 'UV-B at the ground'] : ['Ozone: UV-B at the ground'], 'cc-c-uv', 0, 1, 0.8, 3.2, function(c){ return K.uvb(K.ozone(c)); }, cfc, '×' + F(a.uv, 2) + (phone ? '' : ' (' + Math.round(a.du) + ' DU)'), phone ? ['no CFCs', 'most'] : ['no CFCs', 'most CFCs'], phone));
+      svg.setAttribute('data-clash', String((a.clash || 0) + Lo.clash())); svg.setAttribute('data-miss', (a.misses || []).concat(Lo.misses()).join(' | '));
       return { svg: g.join(''), label: 'Atmosphere cross-section. Troposphere: CO₂ at ' + ppm + ' ppm absorbs infrared from the ground and sends some back down; long-run warming +' + F(a.dT, 1) + ' °C. Stratosphere: ozone at ' + Math.round(a.du) + ' Dobson units absorbs ultraviolet' + (cfc ? '; chlorine from CFCs is breaking it down' : '') + '; UV-B at the ground ' + F(a.uv, 2) + ' times normal.' };
     }
-    function mini(x, y0, w, y1, title, cls, a, b, lo, hi, fn, now, read, xl, phone){
-      var g = [], L = x + (phone ? 6 : 30), R = x + w - 6, T0 = y0 + 18, B0 = y1 - 14, X = function(v){ return L + (v - a) / (b - a) * (R - L); }, Y = function(v){ return B0 - (v - lo) / (hi - lo) * (B0 - T0); };
-      g.push('<rect class="cc-panel" x="' + x + '" y="' + (y0 - 22) + '" width="' + w + '" height="' + (y1 - y0 + 34) + '" rx="12"/>');
-      g.push('<text class="cc-mh ' + cls + '" x="' + (x + 10) + '" y="' + (y0 - 4) + '">' + title + '</text>');
-      var pts = []; for(var i = 0; i <= 60; i++){ var v = a + (b - a) * i / 60; pts.push(X(v).toFixed(1) + ',' + Y(fn(v)).toFixed(1)); }
+    /* A readout panel: a title on one or two lines that fits its width, the
+       curve, today's point and its value placed clear of the curve, and the
+       two axis ends kept out of the Enlarge button's corner. */
+    function mini(Lo, x, y0, w, y1, title, cls, a, b, lo, hi, fn, now, read, ends, phone){
+      var g = [], L = x + (phone ? 8 : 30), R = x + w - (phone ? 8 : 10), tl = title.length, T0 = y0 + 14 + (tl - 1) * 4, B0 = y1 - 18;
+      var X = function(v){ return L + (v - a) / (b - a) * (R - L); }, Y = function(v){ return B0 - (v - lo) / (hi - lo) * (B0 - T0); };
+      var top = y0 - 22 - (tl - 1) * 16;
+      g.push('<rect class="cc-panel" x="' + x.toFixed(1) + '" y="' + top + '" width="' + w.toFixed(1) + '" height="' + (y1 - top + 12) + '" rx="12"/>');
+      title.forEach(function(t, k){ g.push('<text class="cc-mh ' + (k ? '' : cls) + '" x="' + (x + 10).toFixed(1) + '" y="' + (top + 18 + k * 16) + '">' + t + '</text>'); });
+      var pts = [], raw = []; for(var i = 0; i <= 60; i++){ var v = a + (b - a) * i / 60; raw.push([X(v), Y(fn(v))]); pts.push(X(v).toFixed(1) + ',' + Y(fn(v)).toFixed(1)); }
       g.push('<line class="cc-axis" x1="' + L + '" x2="' + R + '" y1="' + B0 + '" y2="' + B0 + '"/><polyline class="cc-mcurve ' + cls + '" points="' + pts.join(' ') + '"/>');
-      var px = X(now), py = Y(fn(now));
-      g.push('<circle class="cc-mpt ' + cls + '" cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="6"/><text class="cc-mread" x="' + (px > (L + R) / 2 ? px - 9 : px + 9).toFixed(1) + '" y="' + (py - 8).toFixed(1) + '" text-anchor="' + (px > (L + R) / 2 ? 'end' : 'start') + '">' + read + '</text>');
-      g.push('<text class="cc-tk" x="' + L + '" y="' + (B0 + 13) + '">' + (xl === 'ppm' ? (phone ? '280' : '280 ppm') : 'none') + '</text><text class="cc-tk" x="' + R + '" y="' + (B0 + 13) + '" text-anchor="end">' + (xl === 'ppm' ? (phone ? '1,200' : '1,200 ppm') : (phone ? 'high' : 'very high CFCs')) + '</text>');
+      Lo.line(raw, 3);
+      var px = X(now), py = Y(fn(now)), PANEL = { x0: x + 2, y0: top + 6 + tl * 16, x1: x + w - 2, y1: B0 - 2 };
+      Lo.rect(px - 8, py - 8, px + 8, py + 8);
+      g.push('<circle class="cc-mpt ' + cls + '" cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="6"/>');
+      var p = Lo.place(read, 13, 900, [[px - 10, py - 10, 'end'], [px + 10, py - 10, 'start'], [px + 10, py + 18, 'start'], [px - 10, py + 18, 'end'], [px, py - 14, 'middle'], [px, py + 24, 'middle']].concat(grid(steps(L, R, 12), steps(PANEL.y0 + 14, PANEL.y1, 6), [px, py], 'middle')), { within: PANEL });
+      g.push('<text class="cc-mread" ' + at(p) + '>' + read + '</text>');
+      var e0 = Lo.place(ends[0], 11.5, 700, [[L, B0 + 16, 'start']]), e1 = Lo.place(ends[1], 11.5, 700, [[R, B0 + 16, 'end'], [(L + R) / 2 + 20, B0 + 16, 'middle']]);
+      g.push('<text class="cc-tk" ' + at(e0) + '>' + ends[0] + '</text><text class="cc-tk" ' + at(e1) + '>' + ends[1] + '</text>');
       return g.join('');
     }
     function oceanScene(Wd, H, phone){
@@ -282,12 +388,13 @@
       var sx0 = phone ? L + 10 : Wd * 0.06, sx1 = phone ? R - 10 : Wd * 0.55, sy = phone ? ry + 3 * lh + 30 : bot - 60, lo = 7.6, hi = 8.3, X = function(v){ return sx0 + (v - lo) / (hi - lo) * (sx1 - sx0); };
       g.push('<defs><linearGradient id="ccPh" x1="0" x2="1"><stop offset="0" class="cc-ph0"/><stop offset="1" class="cc-ph1"/></linearGradient></defs><rect x="' + sx0 + '" y="' + sy + '" width="' + (sx1 - sx0) + '" height="14" rx="7" fill="url(#ccPh)"/>');
       [7.6, 7.8, 8.0, 8.2].forEach(function(v){ g.push('<text class="cc-tk cc-on" x="' + X(v).toFixed(1) + '" y="' + (sy + 30) + '" text-anchor="middle">' + v.toFixed(1) + '</text>'); });
-      g.push('<text class="cc-tk cc-on" x="' + sx0 + '" y="' + (sy - 8) + '">more acidic</text><text class="cc-tk cc-on" x="' + sx1 + '" y="' + (sy - 8) + '" text-anchor="end">more basic</text>');
+      g.push('<text class="cc-tk cc-on" x="' + sx0 + '" y="' + (sy + 46) + '">← more acidic</text><text class="cc-tk cc-on" x="' + sx1 + '" y="' + (sy + 46) + '" text-anchor="end">more basic →</text>');
       g.push('<path class="cc-phmark" d="M' + X(8.2).toFixed(1) + ' ' + (sy - 2) + ' v18"/><path class="cc-phnow" d="M' + X(p).toFixed(1) + ' ' + (sy - 6) + ' l-7 -10 h14 z"/><text class="cc-read cc-on" x="' + X(p).toFixed(1) + '" y="' + (sy - 20) + '" text-anchor="middle">pH ' + F(p, 2) + '</text>');
       // the shell and the carbonate around it
       var shx = phone ? Wd * 0.72 : Wd * 0.78, shy = phone ? sea + 40 : sea + (bot - sea) * 0.42, ss = phone ? 0.8 : 1.3, eat = Math.max(0, Math.min(1, (8.2 - p) / 0.5));
-      var nC = Math.round((phone ? 10 : 16) * (1 - 0.75 * eat));
-      spots(41, 16).slice(0, nC).forEach(function(q){ var a = q[0] * Math.PI * 2, d = (60 + q[1] * 50) * ss; g.push('<text class="cc-carb" x="' + (shx + Math.cos(a) * d).toFixed(1) + '" y="' + (shy + Math.sin(a) * d * 0.7).toFixed(1) + '" text-anchor="middle">CO₃²⁻</text>'); });
+      var nC = Math.round((phone ? 10 : 16) * (1 - 0.75 * eat)), Lc = layout(Wd, H);
+      Lc.rect(shx - 54 * ss, shy - 44 * ss, shx + 54 * ss, shy + 30 * ss); if(!phone) Lc.rect(shx - 110, shy + 78 * ss - 16, shx + 110, shy + 78 * ss + 6);
+      spots(41, 40).forEach(function(q){ if(nC <= 0) return; var a = q[0] * Math.PI * 2, d = (62 + q[1] * 54) * ss; var pl = Lc.place('CO₃²⁻', 11, 800, [[shx + Math.cos(a) * d, shy + Math.sin(a) * d * 0.7, 'middle']], { optional: true, within: { x0: Wd * 0.58, y0: sea + 8, x1: R, y1: bot - 30 } }); if(pl){ nC--; g.push('<text class="cc-carb" ' + at(pl) + '>CO₃²⁻</text>'); } });
       g.push(shell(shx, shy, ss, eat));
       if(!phone) g.push('<text class="cc-lab cc-on" x="' + shx + '" y="' + (shy + 78 * ss) + '" text-anchor="middle">' + (eat < 0.15 ? 'A healthy shell' : eat < 0.6 ? 'Thinner shell: less carbonate' : 'Shell dissolving') + '</text>');
       return { svg: g.join(''), label: 'CO₂ at ' + ocean + ' ppm dissolving into the ocean. pH ' + F(p, 2) + ' on a scale from 7.6 to 8.3; ' + F(K.hFactor(8.2, p), 2) + ' times the hydrogen ions of 1850. Fewer carbonate ions around a ' + (eat < 0.15 ? 'healthy' : eat < 0.6 ? 'thinning' : 'dissolving') + ' shell.' };
@@ -322,12 +429,12 @@
       if(!seaIce){ var ix = shore + (R - shore) * 0.45; g.push('<path class="cc-seaice" d="M' + ix + ' ' + (lvl - 9).toFixed(1) + ' h90 l10 9 l-8 14 h-96 l-6 -14 z"/><text class="cc-lab" x="' + (ix + 45) + '" y="' + (lvl - 16).toFixed(1) + '" text-anchor="middle">' + (phone ? 'Sea ice' : 'Floating sea ice') + '</text>'); }
       else { var ix2 = shore + (R - shore) * 0.45; g.push('<text class="cc-lab cc-c-good" x="' + (ix2 + 45) + '" y="' + (lvl - 12).toFixed(1) + '" text-anchor="middle">sea ice melted: +0 m</text>'); }
       // the stacked bar of contributions
-      var by = H - (phone ? 70 : 80), bx0 = L + 8, bx1 = R - 8, bs = (bx1 - bx0) / 8, segs = [['Thermal expansion', s.th, 'cc-b-th'], ['Land ice', s.li, 'cc-b-li']], at = bx0;
+      var by = H - (phone ? 84 : 80), bx0 = L + 8, bx1 = R - (phone ? 52 : 60), bs = (bx1 - bx0) / 8, segs = [['Thermal expansion', s.th, 'cc-b-th'], ['Land ice', s.li, 'cc-b-li']], at = bx0;
       g.push('<rect class="cc-panel" x="' + L + '" y="' + (by - 34) + '" width="' + (R - L) + '" height="' + (H - by + 28) + '" rx="12"/><text class="cc-mh" x="' + (L + 10) + '" y="' + (by - 14) + '">Sea level rise: +' + F(s.tot, 2) + ' m</text>');
       g.push('<rect class="cc-track" x="' + bx0 + '" y="' + by + '" width="' + (bx1 - bx0) + '" height="16" rx="5"/>');
       segs.forEach(function(q){ var w = q[1] * bs; if(w > 0.5) g.push('<rect class="' + q[2] + '" x="' + at.toFixed(1) + '" y="' + by + '" width="' + w.toFixed(1) + '" height="16"/>'); at += w; });
       for(var t = 0; t <= 8; t += (phone ? 2 : 1)) g.push('<text class="cc-tk" x="' + (bx0 + t * bs).toFixed(1) + '" y="' + (by + 30) + '" text-anchor="middle">' + t + ' m</text>');
-      g.push('<text class="cc-tk cc-c-th" x="' + bx0 + '" y="' + (by + 46) + '">■ expansion ' + F(s.th, 2) + ' m</text><text class="cc-tk cc-c-li" x="' + ((bx0 + bx1) / 2) + '" y="' + (by + 46) + '" text-anchor="middle">■ land ice ' + F(s.li, 2) + ' m</text><text class="cc-tk" x="' + bx1 + '" y="' + (by + 46) + '" text-anchor="end">sea ice: 0 m</text>');
+      g.push('<text class="cc-tk cc-c-th" x="' + bx0 + '" y="' + (by + 46) + '">■ expansion ' + F(s.th, 2) + ' m</text><text class="cc-tk cc-c-li" x="' + ((bx0 + bx1) / 2) + '" y="' + (by + 46) + '" text-anchor="middle">■ land ice ' + F(s.li, 2) + ' m</text><text class="cc-tk" x="' + bx1 + '" y="' + (by + 46) + '" text-anchor="end">' + (phone ? '' : 'sea ice: 0 m') + '</text>' + (phone ? '<text class="cc-tk" x="' + bx0 + '" y="' + (by + 61) + '">floating sea ice: 0 m</text>' : ''));
       // glass of water inset
       if(seaIce && !phone){ var gx = R - 110, gy = 24; g.push('<g class="cc-glass"><rect class="cc-panel" x="' + (gx - 10) + '" y="' + (gy - 10) + '" width="112" height="112" rx="10"/><path class="cc-glassw" d="M' + (gx + 16) + ' ' + (gy + 40) + ' h60 l-4 46 h-52 z"/><path class="cc-glasso" d="M' + (gx + 12) + ' ' + (gy + 8) + ' l8 82 h52 l8 -82"/><line class="cc-oldlvl" x1="' + (gx + 10) + '" x2="' + (gx + 82) + '" y1="' + (gy + 40) + '" y2="' + (gy + 40) + '"/><text class="cc-tk" x="' + (gx + 46) + '" y="' + (gy + 4) + '" text-anchor="middle">ice cube melted:</text><text class="cc-tk" x="' + (gx + 46) + '" y="' + (gy + 100) + '" text-anchor="middle">same level</text></g>'); }
       return { svg: g.join(''), label: 'Coast with land ice, a town and floating sea ice. Sea level up ' + F(s.tot, 2) + ' m: thermal expansion ' + F(s.th, 2) + ' m, land ice ' + F(s.li, 2) + ' m' + (seaIce ? '; the floating sea ice melted and added 0 m.' : '.') };
@@ -340,7 +447,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.cc-grp-air input[type=range]'), text: 'Start here: add CO₂' });
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.cc-grp-air input[type=range]'), 'Start here: add CO₂', s.root.querySelector('.cc-grp-air .bt-slider'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.cc-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

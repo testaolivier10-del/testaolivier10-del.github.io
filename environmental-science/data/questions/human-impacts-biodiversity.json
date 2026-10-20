@@ -333,19 +333,18 @@
    "q": "Which are examples of overexploitation? Select all that apply.",
    "options": [
     "Catching cod faster than the population can reproduce",
-    "Poaching rhinos for their horns",
+    "Pine forests dying as warmer winters let beetles survive",
     "Fertilizer runoff causing a dead zone",
     "Zebra mussels spreading through a lake"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Overexploitation is harvesting a species faster than it can replace itself: overfishing, poaching, overcollecting.",
+    "correct": "Overexploitation is harvesting a species faster than it can replace itself: overfishing, poaching, overcollecting. Only the cod example is a harvest.",
     "options": [
      "Right: overfishing is overexploitation.",
-     "Right: hunting beyond sustainable levels is overexploitation.",
+     "That is climate change, the C: warming helps a pest, nobody is harvesting the trees.",
      "That is pollution, the first P.",
      "That is an invasive species, the I."
     ]

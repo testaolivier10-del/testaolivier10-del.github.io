@@ -267,7 +267,7 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "A landfill releases 2.0 metric tons of methane in a year. Using the table, what is this release in metric tons of carbon dioxide equivalent (the mass of CO₂ that would trap the same heat over 100 years)?",
+   "q": "A landfill releases 2.0 metric tons of methane in a year. Use the global warming potential of methane in the table, 28. What is this release in metric tons of carbon dioxide equivalent (the mass of CO₂ that would trap the same heat over 100 years)?",
    "stimulus": "greenhouse-effect-s2",
    "why": {
     "correct": "$2.0\\,\\text{metric tons} \\times 28 = 56$ metric tons of CO₂ equivalent."
@@ -317,7 +317,7 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "A farm’s fertilized fields release 0.40 metric tons of nitrous oxide in a year. Write the setup for the carbon dioxide equivalent, using the table, then give the answer in metric tons.",
+   "q": "A farm’s fertilized fields release 0.40 metric tons of nitrous oxide in a year. Use the global warming potential of nitrous oxide in the table, 265. Write the setup for the carbon dioxide equivalent, then give the answer in metric tons.",
    "stimulus": "greenhouse-effect-s2",
    "why": {
     "correct": "$0.40 \\times 265 = 106$ metric tons of CO₂ equivalent."
@@ -500,19 +500,18 @@
    "diff": 2,
    "q": "Which are greenhouse gases? Select all that apply.",
    "options": [
-    "Carbon dioxide",
+    "Nitrogen gas (N₂)",
     "Methane",
     "Particulate matter",
     "Sulfur dioxide"
    ],
    "correct": [
-    0,
     1
    ],
    "why": {
-    "correct": "Greenhouse gases absorb infrared: water vapor, CO₂, methane, nitrous oxide, CFCs and HFCs.",
+    "correct": "Greenhouse gases absorb infrared: water vapor, CO₂, methane, nitrous oxide, CFCs and HFCs. Only methane is in this list.",
     "options": [
-     "Right: CO₂ absorbs infrared.",
+     "Nitrogen is most of the air, but N₂ barely absorbs infrared, so it is not a greenhouse gas.",
      "Right: methane is a strong greenhouse gas.",
      "Particles are not gases; most reflect sunlight rather than trap infrared.",
      "Sulfur dioxide is an acid-rain gas, not a greenhouse gas."

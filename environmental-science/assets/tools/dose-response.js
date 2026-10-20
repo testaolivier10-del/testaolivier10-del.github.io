@@ -31,6 +31,70 @@
   function big(x){ return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   function ppm(x){ return D.dec(x) + ' ppm'; }
   var VIEWS = [{ v: 'dose', label: 'Dose' }, { v: 'chain', label: 'Food chain' }, { v: 'fish', label: 'One fish' }];
+  /* Label placement. Each label tries its candidate spots in order and takes
+     the first that clears the lines drawn (rays, curves), the boxes already
+     taken (labels, art), the picture's edges, an optional area it must stay
+     in, and the Enlarge button's corner (bottom right, 52 x 48). A label with
+     no clear spot is counted; the scene writes the count to the svg's
+     data-clash, which the browser sweep checks at every slider extreme. */
+  var MEAS = null;
+  function textW(t, size, weight){
+    try{
+      if(!MEAS) MEAS = document.createElement('canvas').getContext('2d');
+      MEAS.font = (weight || 800) + ' ' + size + 'px ' + ((getComputedStyle(document.body).getPropertyValue('--font-ui') || '').trim() || 'sans-serif');
+      return MEAS.measureText(String(t)).width;
+    }catch(e){ return String(t).length * size * 0.58; }
+  }
+  function boxOf(x, y, w, size, a){ var x0 = a === 'end' ? x - w : a === 'middle' ? x - w / 2 : x; return { x0: x0 - 3, x1: x0 + w + 3, y0: y - size * 0.82 - 2, y1: y + size * 0.24 + 2 }; }
+  function layout(W, H, o){
+    o = o || {};
+    var lines = [], rects = [], clash = 0, misses = [], ENL = o.enl === false ? null : { x0: W - 52, y0: H - 48, x1: W, y1: H };
+    function over(a, b){ return a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1; }
+    function hit(b, ax, ay, bx, by, pad){
+      var x0 = b.x0 - pad, x1 = b.x1 + pad, y0 = b.y0 - pad, y1 = b.y1 + pad, dx = bx - ax, dy = by - ay, t0 = 0, t1 = 1;
+      var p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
+      for(var i = 0; i < 4; i++){
+        if(p[i] === 0){ if(q[i] < 0) return false; }
+        else { var r = q[i] / p[i]; if(p[i] < 0){ if(r > t1) return false; if(r > t0) t0 = r; } else { if(r < t0) return false; if(r < t1) t1 = r; } }
+      }
+      return true;
+    }
+    function ok(b, within){
+      var A = within || { x0: 1, y0: 1, x1: W - 1, y1: H - 1 };
+      if(b.x0 < A.x0 || b.y0 < A.y0 || b.x1 > A.x1 || b.y1 > A.y1) return false;
+      if(ENL && over(b, ENL)) return false;
+      for(var i = 0; i < rects.length; i++) if(over(b, rects[i])) return false;
+      for(var j = 0; j < lines.length; j++){ var L = lines[j]; for(var k = 1; k < L.p.length; k++) if(hit(b, L.p[k - 1][0], L.p[k - 1][1], L.p[k][0], L.p[k][1], L.pad)) return false; }
+      return true;
+    }
+    return {
+      line: function(pts, pad){ if(pts && pts.length > 1) lines.push({ p: pts, pad: pad == null ? 2 : pad }); },
+      rect: function(x0, y0, x1, y1){ rects.push({ x0: Math.min(x0, x1), y0: Math.min(y0, y1), x1: Math.max(x0, x1), y1: Math.max(y0, y1) }); },
+      place: function(text, size, weight, cands, opt){
+        opt = opt || {};
+        var w = textW(text, size, weight), pick = null;
+        for(var i = 0; i < cands.length; i++){ var c = cands[i], b = boxOf(c[0], c[1], w, size, c[2]); if(ok(b, opt.within)){ pick = { x: c[0], y: c[1], a: c[2] || 'start', b: b }; break; } }
+        if(!pick){ if(opt.optional) return null; clash++; misses.push(text); var c0 = cands[0]; pick = { x: c0[0], y: c0[1], a: c0[2] || 'start', b: boxOf(c0[0], c0[1], w, size, c0[2]) }; }
+        rects.push(pick.b); pick.w = w; return pick;
+      },
+      box: function(w, h, cands, opt){
+        opt = opt || {};
+        for(var i = 0; i < cands.length; i++){ var b = { x0: cands[i][0], y0: cands[i][1], x1: cands[i][0] + w, y1: cands[i][1] + h }; if(ok(b, opt.within)){ rects.push(b); return b; } }
+        clash++; var f = { x0: cands[0][0], y0: cands[0][1], x1: cands[0][0] + w, y1: cands[0][1] + h }; rects.push(f); return f;
+      },
+      clash: function(){ return clash; }, misses: function(){ return misses; }
+    };
+  }
+  /* Candidate spots on a grid, nearest a point first. */
+  function grid(xs, ys, near, a){
+    var out = [];
+    ys.forEach(function(y){ xs.forEach(function(x){ out.push([x, y, a || 'middle']); }); });
+    if(near) out.sort(function(p, q){ return Math.hypot(p[0] - near[0], p[1] - near[1]) - Math.hypot(q[0] - near[0], q[1] - near[1]); });
+    return out;
+  }
+  function steps(a, b, n){ var out = []; for(var i = 0; i <= n; i++) out.push(a + (b - a) * i / n); return out; }
+  function at(p){ return 'x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '" text-anchor="' + p.a + '"'; }
+  function bgr(p, cls){ return '<rect class="' + cls + '" x="' + p.b.x0.toFixed(1) + '" y="' + p.b.y0.toFixed(1) + '" width="' + (p.b.x1 - p.b.x0).toFixed(1) + '" height="' + (p.b.y1 - p.b.y0).toFixed(1) + '" rx="4"/>'; }
 
   T.mount('dose-response', function(app, data){
     var ex = null;
@@ -39,6 +103,21 @@
       quiz: function(host){ quiz(host, data); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
+
+  /* The first-run tip sits just above its target; an empty slot is opened
+     there while the tip shows, so it never covers another control. */
+  function hintSlot(s, target, text, before){
+    if(!target) return;
+    var slot = document.createElement('div');
+    slot.className = 'env-tipslot'; slot.setAttribute('aria-hidden', 'true');
+    (before || target).parentNode.insertBefore(slot, before || target);
+    var h = s.hint({ target: target, text: text });
+    if(!h){ slot.remove(); return; }
+    var EV = ['pointerdown', 'keydown', 'input', 'change'];
+    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
+    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
+    if(h.place) h.place();
+  }
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
@@ -184,7 +263,7 @@
     function doseScene(Wd, H){
       var phone = Wd < 640, g = [];
       var gridBox = phone ? { x: 8, y: 8, w: Wd - 16, h: Math.round(H * 0.3) } : { x: 16, y: 16, w: Math.round(Wd * 0.34), h: H - 32 };
-      var plot = phone ? { x0: 46, x1: Wd - 14, y0: gridBox.y + gridBox.h + 40, y1: H - 44 } : { x0: gridBox.x + gridBox.w + 64, x1: Wd - 20, y0: 44, y1: H - 50 };
+      var plot = phone ? { x0: 46, x1: Wd - 14, y0: gridBox.y + gridBox.h + 40, y1: H - 64 } : { x0: gridBox.x + gridBox.w + 64, x1: Wd - 20, y0: 44, y1: H - 64 };
       // the mice
       var cols = phone ? 20 : 10, rows = 100 / cols, cw = gridBox.w / cols, chh = (gridBox.h - 26) / rows, sz = Math.min(cw, chh);
       var deadN = Math.round(resp(chem));
@@ -207,18 +286,30 @@
         var pts = CH[i].points;
         g.push('<polyline class="dr-curve dr-' + CH[i].cls + (i === chem ? ' is-sel' : '') + '" points="' + pts.map(function(p){ return X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1); }).join(' ') + '"/>');
         pts.forEach(function(p){ g.push('<circle class="dr-pt dr-' + CH[i].cls + '" cx="' + X(p[0]).toFixed(1) + '" cy="' + Y(p[1]).toFixed(1) + '" r="' + (i === chem ? 3.4 : 2.6) + '"/>'); });
-        if(all){ var lx = X(LD[i]); g.push('<line class="dr-ldl dr-' + CH[i].cls + '" x1="' + lx.toFixed(1) + '" x2="' + lx.toFixed(1) + '" y1="' + Y(50).toFixed(1) + '" y2="' + plot.y1 + '"/><text class="dr-lab dr-c-' + CH[i].cls + '" x="' + (lx + 4).toFixed(1) + '" y="' + (Y(50) - 6 - i * 15).toFixed(1) + '">' + esc(CH[i].name.split(' ')[1]) + ' ' + LD[i] + '</text>'); }
+        if(all){ var lx = X(LD[i]); g.push('<line class="dr-ldl dr-' + CH[i].cls + '" x1="' + lx.toFixed(1) + '" x2="' + lx.toFixed(1) + '" y1="' + Y(50).toFixed(1) + '" y2="' + plot.y1 + '"/>'); }
       });
-      // LD50 guides for the chosen chemical
-      var L = LD[chem], lx = X(L), ly = Y(50);
+      // LD50 guides for the chosen chemical; labels placed clear of the curves and each other
+      var L = LD[chem], lx = X(L), ly = Y(50), Lo = layout(Wd, H), INP = { x0: plot.x0 + 2, y0: plot.y0 - 2, x1: plot.x1, y1: plot.y1 - 6 };
+      show.forEach(function(i){ Lo.line(CH[i].points.map(function(p){ return [X(p[0]), Y(p[1])]; }), 3); });
+      Lo.line([[plot.x0, ly], [lx, ly], [lx, plot.y1]], 1);
       g.push('<path class="dr-guide" d="M' + plot.x0 + ' ' + ly.toFixed(1) + ' H' + lx.toFixed(1) + ' V' + plot.y1 + '"/>');
-      g.push('<circle class="dr-ld" cx="' + lx.toFixed(1) + '" cy="' + ly.toFixed(1) + '" r="6"/><text class="dr-tag" x="' + (lx + 9).toFixed(1) + '" y="' + (ly + 18).toFixed(1) + '">LD50 = ' + L + ' mg/kg</text>');
-      g.push('<path class="dr-thmark" d="M' + X(th).toFixed(1) + ' ' + (plot.y1 - 10) + ' V' + (plot.y1 + 2) + '"/><text class="dr-lab dr-c-good" x="' + X(th).toFixed(1) + '" y="' + (plot.y1 - 14) + '" text-anchor="middle">threshold ' + th + '</text>');
-      // the dose marker
+      g.push('<circle class="dr-ld" cx="' + lx.toFixed(1) + '" cy="' + ly.toFixed(1) + '" r="6"/>');
+      g.push('<path class="dr-thmark" d="M' + X(th).toFixed(1) + ' ' + (plot.y1 - 10) + ' V' + (plot.y1 + 2) + '"/>');
       var dx = X(dose), dy = Y(resp(chem));
       g.push('<line class="dr-now" x1="' + dx.toFixed(1) + '" x2="' + dx.toFixed(1) + '" y1="' + plot.y0 + '" y2="' + plot.y1 + '"/><circle class="dr-now-pt" cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="7"/>');
-      var rt = Math.round(resp(chem)) + '%', rx = dx + (dx > (plot.x0 + plot.x1) / 2 ? -10 : 10);
-      g.push('<text class="dr-read" x="' + rx.toFixed(1) + '" y="' + (dy - 10).toFixed(1) + '" text-anchor="' + (dx > (plot.x0 + plot.x1) / 2 ? 'end' : 'start') + '">' + rt + '</text>');
+      Lo.rect(lx - 8, ly - 8, lx + 8, ly + 8); Lo.rect(dx - 9, dy - 9, dx + 9, dy + 9); Lo.rect(plot.x0 - 40, plot.y1 + 2, plot.x1 + 10, plot.y1 + 40);
+      var rt = Math.round(resp(chem)) + '%', right = dx > (plot.x0 + plot.x1) / 2;
+      var rp = Lo.place(rt, 16, 900, [[dx + (right ? -12 : 12), dy - 10, right ? 'end' : 'start'], [dx + (right ? 12 : -12), dy - 10, right ? 'start' : 'end'], [dx + (right ? -12 : 12), dy + 22, right ? 'end' : 'start'], [dx + (right ? 12 : -12), dy + 22, right ? 'start' : 'end'], [dx, dy - 16, 'middle'], [dx, dy + 28, 'middle']].concat(grid(steps(plot.x0 + 20, plot.x1 - 4, 16), steps(plot.y0 + 16, plot.y1 - 4, 10), [dx, dy], 'middle')), { within: INP });
+      var lp = Lo.place('LD50 = ' + L + ' mg/kg', 13.5, 900, [[lx + 10, ly + 18, 'start'], [lx + 10, ly + 34, 'start'], [lx - 10, ly - 10, 'end'], [lx + 10, ly + 50, 'start'], [lx - 10, ly - 26, 'end']].concat(grid(steps(plot.x0 + 10, plot.x1 - 4, 16), steps(ly - 60, ly + 80, 12), [lx, ly], 'start')), { within: INP });
+      var tt = 'threshold ' + th, tx = X(th);
+      var tp = Lo.place(tt, 12.5, 800, [[tx, plot.y1 - 14, 'middle'], [tx + 4, plot.y1 - 14, 'start'], [tx + 4, plot.y1 - 30, 'start'], [tx - 4, plot.y1 - 30, 'end'], [tx + 4, plot.y1 - 46, 'start']].concat(grid(steps(plot.x0 + 4, plot.x1 - 4, 16), steps(plot.y1 - 14, plot.y1 - 120, 8), [tx, plot.y1 - 14], 'start')), { within: INP });
+      g.push(bgr(tp, 'dr-lbg') + '<text class="dr-lab dr-c-good" ' + at(tp) + '>' + tt + '</text>');
+      g.push(bgr(lp, 'dr-lbg') + '<text class="dr-tag" ' + at(lp) + '>LD50 = ' + L + ' mg/kg</text>');
+      g.push('<text class="dr-read" ' + at(rp) + '>' + rt + '</text>');
+      if(all) show.forEach(function(i){ if(i === chem) return; var x2 = X(LD[i]), y2 = Y(50), t = CH[i].name.split(' ')[1] + ' ' + LD[i];
+        var q = Lo.place(t, 12.5, 800, [[x2 + 6, y2 + 16, 'start'], [x2 + 6, y2 + 32, 'start'], [x2 + 6, y2 + 48, 'start'], [x2 - 6, y2 + 16, 'end'], [x2 + 6, y2 + 64, 'start']].concat(grid(steps(plot.x0 + 10, plot.x1 - 4, 16), steps(y2, plot.y1 - 4, 10), [x2, y2], 'start')), { within: INP });
+        g.push(bgr(q, 'dr-lbg') + '<text class="dr-lab dr-c-' + CH[i].cls + '" ' + at(q) + '>' + t + '</text>'); });
+      svg.setAttribute('data-clash', String(Lo.clash())); svg.setAttribute('data-miss', Lo.misses().join(' | '));
       g.push('<line class="dr-axis" x1="' + plot.x0 + '" x2="' + plot.x1 + '" y1="' + plot.y1 + '" y2="' + plot.y1 + '"/><line class="dr-axis" x1="' + plot.x0 + '" x2="' + plot.x0 + '" y1="' + plot.y0 + '" y2="' + plot.y1 + '"/>');
       g.push('<text class="dr-axl" x="' + plot.x0 + '" y="' + (plot.y0 - 12) + '">Percent of test population that died</text><text class="dr-axl" x="' + ((plot.x0 + plot.x1) / 2) + '" y="' + (plot.y1 + 34) + '" text-anchor="middle">Dose (mg per kg of body mass)</text>');
       var label = 'Dose-response curve for ' + CH[chem].name + ' (invented data): threshold ' + th + ' mg/kg, LD50 ' + L + ' mg/kg. At ' + dose + ' mg/kg, ' + deadN + ' of 100 mice died.' + (all ? ' All three curves: LD50 ' + CH.map(function(c, i){ return c.name + ' ' + LD[i]; }).join(', ') + ' mg/kg.' : '');
@@ -258,7 +349,7 @@
     function fishScene(Wd, H){
       var phone = Wd < 640, g = [], pad = phone ? 10 : 24;
       var top = phone ? Math.round(H * 0.36) : 40, artW = phone ? Wd - 2 * pad : Math.round(Wd * 0.4);
-      var plot = phone ? { x0: 46, x1: Wd - 14, y0: top + 40, y1: H - 44 } : { x0: pad + artW + 70, x1: Wd - 20, y0: 60, y1: H - 50 };
+      var plot = phone ? { x0: 46, x1: Wd - 14, y0: top + 40, y1: H - 64 } : { x0: pad + artW + 70, x1: Wd - 20, y0: 60, y1: H - 64 };
       g.push('<text class="dr-h dr-c-acc" x="' + pad + '" y="22">Bioaccumulation: one organism, over time</text>');
       // the fish, growing with age, with intake and excretion arrows
       var cy = phone ? top / 2 + 14 : H * 0.42, cx = pad + artW * (phone ? 0.45 : 0.42), sc = 0.55 + 0.45 * Math.min(1, age / 12), u = Math.min(artW / 190, (phone ? top : H) / 150) * sc;
@@ -274,7 +365,11 @@
       for(var a = 0; a <= 12; a += 2) g.push('<text class="dr-tk" x="' + X(a).toFixed(1) + '" y="' + (plot.y1 + 16) + '" text-anchor="middle">' + a + '</text>');
       var pts = []; for(var t = 0; t <= 12.001; t += 0.25) pts.push(X(t).toFixed(1) + ',' + Y(fishC(t)).toFixed(1));
       g.push('<polyline class="dr-acc" points="' + pts.join(' ') + '"/>');
-      g.push('<line class="dr-now" x1="' + X(age).toFixed(1) + '" x2="' + X(age).toFixed(1) + '" y1="' + plot.y0 + '" y2="' + plot.y1 + '"/><circle class="dr-now-pt is-acc" cx="' + X(age).toFixed(1) + '" cy="' + Y(fishC(age)).toFixed(1) + '" r="7"/><text class="dr-read" x="' + (X(age) + (age > 8 ? -10 : 10)).toFixed(1) + '" y="' + (Y(fishC(age)) - 10).toFixed(1) + '" text-anchor="' + (age > 8 ? 'end' : 'start') + '">' + F(fishC(age), 2) + ' ppm</text>');
+      var ax = X(age), ay = Y(fishC(age)), LoF = layout(Wd, H), rt = F(fishC(age), 2) + ' ppm', IN = { x0: plot.x0 + 2, y0: plot.y0, x1: plot.x1, y1: plot.y1 - 8 };
+      LoF.line(pts.map(function(q){ return q.split(',').map(Number); }), 3); LoF.rect(ax - 9, ay - 9, ax + 9, ay + 9); LoF.rect(plot.x0 - 30, plot.y1, plot.x1 + 10, plot.y1 + 40);
+      g.push('<line class="dr-now" x1="' + ax.toFixed(1) + '" x2="' + ax.toFixed(1) + '" y1="' + plot.y0 + '" y2="' + plot.y1 + '"/><circle class="dr-now-pt is-acc" cx="' + ax.toFixed(1) + '" cy="' + ay.toFixed(1) + '" r="7"/>');
+      var rp = LoF.place(rt, 16, 900, [[ax + 12, ay + 24, 'start'], [ax - 12, ay + 24, 'end'], [ax + 12, ay - 12, 'start'], [ax - 12, ay - 12, 'end'], [ax, ay + 32, 'middle']].concat(grid(steps(plot.x0 + 30, plot.x1 - 4, 14), steps(plot.y0 + 16, plot.y1 - 10, 14), [ax, ay], 'start')), { within: IN });
+      g.push('<text class="dr-read" ' + at(rp) + '>' + rt + '</text>');
       g.push('<line class="dr-axis" x1="' + plot.x0 + '" x2="' + plot.x1 + '" y1="' + plot.y1 + '" y2="' + plot.y1 + '"/><line class="dr-axis" x1="' + plot.x0 + '" x2="' + plot.x0 + '" y1="' + plot.y0 + '" y2="' + plot.y1 + '"/>');
       g.push('<text class="dr-axl" x="' + plot.x0 + '" y="' + (plot.y0 - 12) + '">Mercury in its tissue (ppm)</text><text class="dr-axl" x="' + ((plot.x0 + plot.x1) / 2) + '" y="' + (plot.y1 + 34) + '" text-anchor="middle">Age of the fish (years)</text>');
       return { svg: g.join(''), label: 'One lake trout at ' + age + ' years old, with mercury taken in faster than it is excreted. ' + fishLine() + ' The curve rises with age and levels off.' };
@@ -301,7 +396,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.dr-grp-dose input[type=range]'), text: 'Start here: raise the dose' });
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.dr-grp-dose input[type=range]'), 'Start here: raise the dose', s.root.querySelector('.dr-grp-dose .bt-slider'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.dr-fig')); }
     }
     sync(); draw(); words();

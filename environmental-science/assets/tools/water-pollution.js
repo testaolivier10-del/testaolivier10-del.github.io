@@ -38,6 +38,70 @@
   function r1(v){ return Math.round(v * 10) / 10; }
   var LEVELS = ['None', 'Light', 'Moderate', 'Heavy', 'Very heavy', 'Extreme'];
   var VIEWS = [{ v: 'nutrients', label: 'Nutrients' }, { v: 'heat', label: 'Heat' }, { v: 'sewage', label: 'Sewage' }];
+  /* Label placement. Each label tries its candidate spots in order and takes
+     the first that clears the lines drawn (rays, curves), the boxes already
+     taken (labels, art), the picture's edges, an optional area it must stay
+     in, and the Enlarge button's corner (bottom right, 52 x 48). A label with
+     no clear spot is counted; the scene writes the count to the svg's
+     data-clash, which the browser sweep checks at every slider extreme. */
+  var MEAS = null;
+  function textW(t, size, weight){
+    try{
+      if(!MEAS) MEAS = document.createElement('canvas').getContext('2d');
+      MEAS.font = (weight || 800) + ' ' + size + 'px ' + ((getComputedStyle(document.body).getPropertyValue('--font-ui') || '').trim() || 'sans-serif');
+      return MEAS.measureText(String(t)).width;
+    }catch(e){ return String(t).length * size * 0.58; }
+  }
+  function boxOf(x, y, w, size, a){ var x0 = a === 'end' ? x - w : a === 'middle' ? x - w / 2 : x; return { x0: x0 - 3, x1: x0 + w + 3, y0: y - size * 0.82 - 2, y1: y + size * 0.24 + 2 }; }
+  function layout(W, H, o){
+    o = o || {};
+    var lines = [], rects = [], clash = 0, misses = [], ENL = o.enl === false ? null : { x0: W - 52, y0: H - 48, x1: W, y1: H };
+    function over(a, b){ return a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1; }
+    function hit(b, ax, ay, bx, by, pad){
+      var x0 = b.x0 - pad, x1 = b.x1 + pad, y0 = b.y0 - pad, y1 = b.y1 + pad, dx = bx - ax, dy = by - ay, t0 = 0, t1 = 1;
+      var p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
+      for(var i = 0; i < 4; i++){
+        if(p[i] === 0){ if(q[i] < 0) return false; }
+        else { var r = q[i] / p[i]; if(p[i] < 0){ if(r > t1) return false; if(r > t0) t0 = r; } else { if(r < t0) return false; if(r < t1) t1 = r; } }
+      }
+      return true;
+    }
+    function ok(b, within){
+      var A = within || { x0: 1, y0: 1, x1: W - 1, y1: H - 1 };
+      if(b.x0 < A.x0 || b.y0 < A.y0 || b.x1 > A.x1 || b.y1 > A.y1) return false;
+      if(ENL && over(b, ENL)) return false;
+      for(var i = 0; i < rects.length; i++) if(over(b, rects[i])) return false;
+      for(var j = 0; j < lines.length; j++){ var L = lines[j]; for(var k = 1; k < L.p.length; k++) if(hit(b, L.p[k - 1][0], L.p[k - 1][1], L.p[k][0], L.p[k][1], L.pad)) return false; }
+      return true;
+    }
+    return {
+      line: function(pts, pad){ if(pts && pts.length > 1) lines.push({ p: pts, pad: pad == null ? 2 : pad }); },
+      rect: function(x0, y0, x1, y1){ rects.push({ x0: Math.min(x0, x1), y0: Math.min(y0, y1), x1: Math.max(x0, x1), y1: Math.max(y0, y1) }); },
+      place: function(text, size, weight, cands, opt){
+        opt = opt || {};
+        var w = textW(text, size, weight), pick = null;
+        for(var i = 0; i < cands.length; i++){ var c = cands[i], b = boxOf(c[0], c[1], w, size, c[2]); if(ok(b, opt.within)){ pick = { x: c[0], y: c[1], a: c[2] || 'start', b: b }; break; } }
+        if(!pick){ if(opt.optional) return null; clash++; misses.push(text); var c0 = cands[0]; pick = { x: c0[0], y: c0[1], a: c0[2] || 'start', b: boxOf(c0[0], c0[1], w, size, c0[2]) }; }
+        rects.push(pick.b); pick.w = w; return pick;
+      },
+      box: function(w, h, cands, opt){
+        opt = opt || {};
+        for(var i = 0; i < cands.length; i++){ var b = { x0: cands[i][0], y0: cands[i][1], x1: cands[i][0] + w, y1: cands[i][1] + h }; if(ok(b, opt.within)){ rects.push(b); return b; } }
+        clash++; var f = { x0: cands[0][0], y0: cands[0][1], x1: cands[0][0] + w, y1: cands[0][1] + h }; rects.push(f); return f;
+      },
+      clash: function(){ return clash; }, misses: function(){ return misses; }
+    };
+  }
+  /* Candidate spots on a grid, nearest a point first. */
+  function grid(xs, ys, near, a){
+    var out = [];
+    ys.forEach(function(y){ xs.forEach(function(x){ out.push([x, y, a || 'middle']); }); });
+    if(near) out.sort(function(p, q){ return Math.hypot(p[0] - near[0], p[1] - near[1]) - Math.hypot(q[0] - near[0], q[1] - near[1]); });
+    return out;
+  }
+  function steps(a, b, n){ var out = []; for(var i = 0; i <= n; i++) out.push(a + (b - a) * i / n); return out; }
+  function at(p){ return 'x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '" text-anchor="' + p.a + '"'; }
+  function bgr(p, cls){ return '<rect class="' + cls + '" x="' + p.b.x0.toFixed(1) + '" y="' + p.b.y0.toFixed(1) + '" width="' + (p.b.x1 - p.b.x0).toFixed(1) + '" height="' + (p.b.y1 - p.b.y0).toFixed(1) + '" rx="4"/>'; }
 
   T.mount('water-pollution', function(app, data){
     var ex = null;
@@ -47,6 +111,21 @@
       onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
+
+  /* The first-run tip sits just above its target; an empty slot is opened
+     there while the tip shows, so it never covers another control. */
+  function hintSlot(s, target, text, before){
+    if(!target) return;
+    var slot = document.createElement('div');
+    slot.className = 'env-tipslot'; slot.setAttribute('aria-hidden', 'true');
+    (before || target).parentNode.insertBefore(slot, before || target);
+    var h = s.hint({ target: target, text: text });
+    if(!h){ slot.remove(); return; }
+    var EV = ['pointerdown', 'keydown', 'input', 'change'];
+    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
+    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
+    if(h.place) h.place();
+  }
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
@@ -222,7 +301,7 @@
 
     function lakeScene(Wd, H){
       var phone = Wd < 560, g = [], L = phone ? 8 : 16, R = Wd - (phone ? 8 : 16);
-      var sceneH = Math.round(H * (phone ? 0.5 : 0.54)), chainY = sceneH + 6, chainH = phone ? 30 : 34, gTop = chainY + chainH + 34, gBot = H - 40;
+      var sceneH = Math.round(H * (phone ? 0.5 : 0.54)), chainY = sceneH + 6, chainH = phone ? 30 : 34, gTop = chainY + chainH + 34, gBot = H - 64;
       var o = run.O[day], A = run.A[day], D = run.D[day], s = stageNow(), Os = run.osat;
       // sky and field
       var surf = Math.round(sceneH * (phone ? 0.42 : 0.36)), fieldR = L + (R - L) * (phone ? 0.3 : 0.27), lakeL = fieldR - (phone ? 6 : 12), bottom = sceneH - 6;
@@ -294,31 +373,51 @@
       // the chain strip
       g.push(chainStrip(L, R, chainY, chainH, s, phone));
       // the graph: bottom water oxygen and algae, the hypoxic line, today's marker
-      g.push(doGraph(L, R, gTop, gBot, phone));
+      var LoG = layout(Wd, H);
+      g.push(doGraph(L, R, gTop, gBot, phone, LoG));
+      svg.setAttribute('data-clash', String(LoG.clash())); svg.setAttribute('data-miss', LoG.misses().join(' | '));
       var label = 'Lake below a farm field, ' + LEVELS[level].toLowerCase() + ' fertilizer runoff, day ' + day + ' of ' + W.LAKE_DAYS + '. ' + (s > -1 ? 'Chain reached: ' + W.CHAIN.slice(0, s + 1).map(function(c){ return c.name.toLowerCase(); }).join(', ') + '. ' : '') + 'Bottom water ' + F(o) + ' mg/L dissolved oxygen' + (o < W.HYPOXIC ? ', hypoxic, fish dead.' : o < 4.5 ? ', fish crowd near the surface.' : '.') + ' Graph: lowest ' + F(run.min) + ' mg/L on day ' + run.minDay + '.';
       return { svg: g.join(''), label: label };
       function lakePath(){ return 'M' + lakeL + ' ' + surf + ' L' + (R + 20) + ' ' + surf + ' L' + (R + 20) + ' ' + bottom + ' L' + (lakeL + 70) + ' ' + bottom + ' Q' + (lakeL + 30) + ' ' + bottom + ' ' + lakeL + ' ' + surf + ' Z'; }
     }
-    function doGraph(L, R, top, bot, phone){
-      var g = [], yMax = Math.ceil(run.osat + 1), aMax = 45, x0 = L + 30, x1 = R - 8;
+    function doGraph(L, R, top, bot, phone, Lo){
+      var g = [], yMax = Math.ceil(run.osat + 1), aMax = 45, x0 = L + 30, x1 = R - 8, labs = [];
       var x = function(d){ return x0 + d / W.LAKE_DAYS * (x1 - x0); }, y = function(v){ return bot - v / yMax * (bot - top); }, ya = function(v){ return bot - Math.min(v, aMax) / aMax * (bot - top) * 0.92; };
-      g.push('<rect class="wp-hypo" x="' + x0 + '" y="' + y(W.HYPOXIC).toFixed(1) + '" width="' + (x1 - x0) + '" height="' + (bot - y(W.HYPOXIC)).toFixed(1) + '"/>');
-      g.push('<text class="wp-hypo-t" x="' + (x1 - 6) + '" y="' + (y(W.HYPOXIC) + 13).toFixed(1) + '" text-anchor="end">' + (phone ? 'Hypoxic: under 2 mg/L' : 'Hypoxic (dead zone): under 2 mg/L') + '</text>');
+      var yh = y(W.HYPOXIC);
+      g.push('<rect class="wp-hypo" x="' + x0 + '" y="' + yh.toFixed(1) + '" width="' + (x1 - x0) + '" height="' + (bot - yh).toFixed(1) + '"/>');
       for(var v = 0; v <= yMax; v += yMax > 10 ? 4 : 2){ g.push('<line class="wp-grid" x1="' + x0 + '" x2="' + x1 + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/><text class="wp-tk" x="' + (x0 - 5) + '" y="' + (y(v) + 4).toFixed(1) + '" text-anchor="end">' + v + '</text>'); }
       [0, 10, 20, 30, 40, 50, 60].forEach(function(d){ g.push('<text class="wp-tk" x="' + x(d).toFixed(1) + '" y="' + (bot + 15) + '" text-anchor="middle">' + d + '</text>'); });
-      g.push('<line class="wp-sat" x1="' + x0 + '" x2="' + x1 + '" y1="' + y(run.osat).toFixed(1) + '" y2="' + y(run.osat).toFixed(1) + '"/><text class="wp-tk" x="' + (x1 - 2) + '" y="' + (y(run.osat) - 5).toFixed(1) + '" text-anchor="end">saturation ' + F(run.osat) + ' mg/L at ' + tLake + ' °C</text>');
+      g.push('<line class="wp-sat" x1="' + x0 + '" x2="' + x1 + '" y1="' + y(run.osat).toFixed(1) + '" y2="' + y(run.osat).toFixed(1) + '"/>');
+      var doPts = run.days.map(function(d){ return [x(d), y(run.O[d])]; });
+      Lo.line(doPts, 3);
       if(showAlgae && level > 0){
-        var ap = run.days.map(function(d){ return x(d).toFixed(1) + ',' + ya(run.A[d]).toFixed(1); });
-        g.push('<polygon class="wp-algae-a" points="' + x0 + ',' + bot + ' ' + ap.join(' ') + ' ' + x1 + ',' + bot + '"/>');
-        var pk = run.peakDay; g.push('<text class="wp-lab wp-c-alg" x="' + (x(pk) - 7).toFixed(1) + '" y="' + Math.max(top + 12, ya(run.A[pk]) + 10).toFixed(1) + '" text-anchor="end">algae</text>');
+        var aPts = run.days.map(function(d){ return [x(d), ya(run.A[d])]; });
+        g.push('<polygon class="wp-algae-a" points="' + x0 + ',' + bot + ' ' + aPts.map(function(q){ return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' ') + ' ' + x1 + ',' + bot + '"/>');
+        Lo.line(aPts, 2);
       }
       var past = [], fut = [];
-      run.days.forEach(function(d){ var p = x(d).toFixed(1) + ',' + y(run.O[d]).toFixed(1); if(d <= day) past.push(p); if(d >= day) fut.push(p); });
+      run.days.forEach(function(d){ var q = x(d).toFixed(1) + ',' + y(run.O[d]).toFixed(1); if(d <= day) past.push(q); if(d >= day) fut.push(q); });
       if(fut.length > 1) g.push('<polyline class="wp-do is-fut" points="' + fut.join(' ') + '"/>');
       if(past.length > 1) g.push('<polyline class="wp-do" points="' + past.join(' ') + '"/>');
       g.push('<line class="wp-axis" x1="' + x0 + '" x2="' + x1 + '" y1="' + bot + '" y2="' + bot + '"/><line class="wp-axis" x1="' + x0 + '" x2="' + x0 + '" y1="' + top + '" y2="' + bot + '"/>');
       var dx = x(day), dy = y(run.O[day]);
       g.push('<line class="wp-now" x1="' + dx.toFixed(1) + '" x2="' + dx.toFixed(1) + '" y1="' + top + '" y2="' + bot + '"/><circle class="wp-now-pt" cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="5.5"/>');
+      Lo.rect(dx - 7, dy - 7, dx + 7, dy + 7);
+      var PLOT = { x0: x0 + 2, y0: top - 2, x1: x1, y1: bot - 1 }, xsR = steps(x1 - 2, x0 + 120, 24);
+      // the hypoxic label: inside the band, toward its right end, clear of both curves
+      var ht = phone ? 'Hypoxic: under 2 mg/L' : 'Hypoxic (dead zone): under 2 mg/L', hy = [yh + 13, bot - 4, yh + (bot - yh) / 2 + 4];
+      var hp = Lo.place(ht, 11.5, 800, grid(xsR, hy, [x1, yh + 13], 'end'), { within: { x0: x0 + 2, y0: yh + 1, x1: x1, y1: bot }, optional: true }) ||
+        Lo.place(phone ? 'Hypoxic below this line' : 'Hypoxic (dead zone) below 2 mg/L', 11.5, 800, grid(xsR, [yh - 4, yh - 18, yh - 32], [x1, yh - 4], 'end'), { within: PLOT });
+      if(hp && /below/.test(ht) === false && hp.y < yh) ht = phone ? 'Hypoxic below this line' : 'Hypoxic (dead zone) below 2 mg/L';
+      labs.push(bgr(hp, 'wp-lbg') + '<text class="wp-hypo-t" ' + at(hp) + '>' + ht + '</text>');
+      var st = 'saturation ' + F(run.osat) + ' mg/L at ' + tLake + ' °C', sp = Lo.place(st, 11.5, 700, grid(xsR, [y(run.osat) - 5, y(run.osat) + 14], [x1, y(run.osat) - 5], 'end'), { within: PLOT });
+      labs.push(bgr(sp, 'wp-lbg') + '<text class="wp-tk" ' + at(sp) + '>' + st + '</text>');
+      if(showAlgae && level > 0){
+        var pk = run.peakDay, apx = x(pk), apy = ya(run.A[pk]);
+        var ap = Lo.place('algae', 12.5, 800, [[apx - 8, apy + 6, 'end'], [apx + 8, apy + 4, 'start'], [apx, apy - 8, 'middle']].concat(grid(steps(x0 + 6, x(pk + 20), 16), steps(apy, bot - 4, 8), [apx, apy], 'middle')), { within: PLOT, optional: true });
+        if(ap) labs.push('<text class="wp-lab wp-c-alg" ' + at(ap) + '>algae</text>');
+      }
+      g.push(labs.join(''));
       g.push('<text class="wp-axl wp-c-oxy" x="' + x0 + '" y="' + (top - 10) + '">Bottom-water oxygen (mg/L)</text><text class="wp-axl" x="' + ((x0 + x1) / 2) + '" y="' + (bot + 31) + '" text-anchor="middle">Days after the runoff</text>');
       return g.join('');
     }
@@ -348,7 +447,7 @@
 
     function heatScene(Wd, H){
       var phone = Wd < 560, g = [], L = phone ? 8 : 16, R = Wd - (phone ? 8 : 16), h = heatPts();
-      var sceneH = Math.round(H * (phone ? 0.5 : 0.52)), gTop = sceneH + 34, gBot = H - 34;
+      var sceneH = Math.round(H * (phone ? 0.5 : 0.52)), gTop = sceneH + 34, gBot = H - 64;
       var bank = Math.round(sceneH * 0.38), rTop = bank + 8, rBot = sceneH - 8, plantX = L + (R - L) * 0.42;
       g.push('<defs><linearGradient id="wpPlume" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="wp-pl0"/><stop offset="1" class="wp-pl1"/></linearGradient></defs>');
       g.push('<rect class="wp-skyr2" x="0" y="0" width="' + Wd + '" height="' + bank + '"/>');
@@ -379,10 +478,18 @@
       for(var t = 0; t <= 35; t += 5) g.push('<text class="wp-tk" x="' + x(t).toFixed(1) + '" y="' + (gBot + 15) + '" text-anchor="middle">' + t + '</text>');
       g.push('<polyline class="wp-osat" points="' + W.OSAT.map(function(p){ return x(p[0]).toFixed(1) + ',' + y(p[1]).toFixed(1); }).join(' ') + '"/>');
       W.OSAT.forEach(function(p){ g.push('<circle class="wp-osat-pt" cx="' + x(p[0]).toFixed(1) + '" cy="' + y(p[1]).toFixed(1) + '" r="3"/>'); });
-      [[h.t0, h.d0, 'wp-c-oxy'], [h.t1, h.d1, 'wp-c-heat']].forEach(function(q, i){
+      var LoH = layout(Wd, H), curve = W.OSAT.map(function(p){ return [x(p[0]), y(p[1])]; }), marks = warm > 0 ? [[h.t0, h.d0, 'wp-c-oxy'], [h.t1, h.d1, 'wp-c-heat']] : [[h.t0, h.d0, 'wp-c-oxy']];
+      LoH.line(curve, 3);
+      marks.forEach(function(q){ var px = x(q[0]), py = y(q[1]); LoH.line([[px, gBot], [px, py]], 1); LoH.line([[x0, py], [px, py]], 1); LoH.rect(px - 8, py - 8, px + 8, py + 8); });
+      marks.forEach(function(q, i){
         var px = x(q[0]), py = y(q[1]);
         g.push('<line class="wp-guide" x1="' + px.toFixed(1) + '" x2="' + px.toFixed(1) + '" y1="' + gBot + '" y2="' + py.toFixed(1) + '"/><line class="wp-guide" x1="' + x0 + '" x2="' + px.toFixed(1) + '" y1="' + py.toFixed(1) + '" y2="' + py.toFixed(1) + '"/>');
-        g.push('<circle class="wp-mark ' + (i ? 'is-warm' : 'is-cool') + '" cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="6"/><text class="wp-lab ' + q[2] + '" x="' + (px + 9).toFixed(1) + '" y="' + (py - 8 - (i && Math.abs(q[0] - h.t0) < 4 ? 0 : 0)).toFixed(1) + '">' + F(q[1]) + ' mg/L</text>');
+        g.push('<circle class="wp-mark ' + (i ? 'is-warm' : 'is-cool') + '" cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="6"/>');
+      });
+      marks.forEach(function(q){
+        var px = x(q[0]), py = y(q[1]), t = F(q[1]) + ' mg/L';
+        var p = LoH.place(t, 12.5, 800, [[px + 10, py - 10, 'start'], [px + 10, py + 20, 'start'], [px - 10, py - 10, 'end'], [px - 10, py + 20, 'end'], [px + 10, py - 26, 'start'], [px + 10, py + 36, 'start']], { within: { x0: x0 + 2, y0: gTop, x1: x1, y1: gBot - 2 } });
+        g.push('<text class="wp-lab ' + q[2] + '" ' + at(p) + '>' + t + '</text>');
       });
       g.push('<line class="wp-axis" x1="' + x0 + '" x2="' + x1 + '" y1="' + gBot + '" y2="' + gBot + '"/><line class="wp-axis" x1="' + x0 + '" x2="' + x0 + '" y1="' + gTop + '" y2="' + gBot + '"/>');
       g.push('<text class="wp-axl wp-c-oxy" x="' + x0 + '" y="' + (gTop - 8) + '">Most oxygen the water can hold (mg/L)</text><text class="wp-axl" x="' + ((x0 + x1) / 2) + '" y="' + (gBot + 31) + '" text-anchor="middle">Water temperature (°C)</text>');
@@ -397,23 +504,23 @@
 
     function sewScene(Wd, H){
       var phone = Wd < 560, g = [], L = phone ? 6 : 16, R = Wd - (phone ? 6 : 16), S = W.SEWAGE, st = S.stages[stages];
-      var n = 5, gap = phone ? 6 : 14, rw = phone ? 40 : 70, tw = (R - L - rw - gap * n) / n, ty = phone ? 54 : 66, th = Math.round(H * (phone ? 0.2 : 0.24));
+      var n = 5, gap = phone ? 6 : 14, rw = phone ? 40 : 70, tw = (R - L - rw - gap * n) / n, ty = phone ? 62 : 66, th = Math.round(H * (phone ? 0.2 : 0.24));
       var NAMES = phone ? ['Raw', 'Primary', 'Second.', 'Tertiary', 'Disinfect'] : ['Raw sewage', 'Primary', 'Secondary', 'Tertiary', 'Disinfection'];
-      g.push('<text class="wp-axl" x="' + L + '" y="18">Water flows left to right; stages after "' + esc(st.name.toLowerCase()) + '" are skipped</text>');
+      g.push(phone ? '<text class="wp-axl" x="' + L + '" y="16">Water flows left to right.</text><text class="wp-tk" x="' + L + '" y="31">' + (stages < 4 ? 'Stages after ' + esc(st.name.toLowerCase()) + ' are skipped.' : 'Every stage is used.') + '</text>' : '<text class="wp-axl" x="' + L + '" y="18">Water flows left to right; ' + (stages < 4 ? 'stages after ' + esc(st.name.toLowerCase()) + ' are skipped' : 'every stage is used') + '</text>');
       for(var i = 0; i < n; i++){
         var x = L + i * (tw + gap), on = i <= stages, cur = i === stages;
         g.push('<g class="wp-tank' + (on ? ' is-on' : ' is-off') + (cur ? ' is-cur' : '') + '"><rect x="' + x.toFixed(1) + '" y="' + ty + '" width="' + tw.toFixed(1) + '" height="' + th + '" rx="8"/>' + tankArt(i, x, ty, tw, th, on) +
           '<text class="wp-tname" x="' + (x + tw / 2).toFixed(1) + '" y="' + (ty - 8) + '" text-anchor="middle">' + NAMES[i] + '</text></g>');
         if(i < n) g.push('<path class="wp-pipe2' + (i < stages ? '' : ' is-skip') + '" d="M' + (x + tw).toFixed(1) + ' ' + (ty + th * 0.5) + ' h' + gap + '"/>');
       }
-      if(stages < 4){ var sx = L + (stages + 1) * (tw + gap) - gap; g.push('<path class="wp-bypass" d="M' + (sx + gap / 2).toFixed(1) + ' ' + (ty + th + 6) + ' V' + (ty + th + 16) + ' H' + (R - rw / 2).toFixed(1) + ' V' + (ty + th * 0.8) + '"/><text class="wp-tk" x="' + ((sx + R - rw / 2) / 2).toFixed(1) + '" y="' + (ty + th + 30) + '" text-anchor="middle">skipped: straight to the river</text>'); }
+      if(stages < 4){ var sx = L + (stages + 1) * (tw + gap) - gap; g.push('<path class="wp-bypass" d="M' + (sx + gap / 2).toFixed(1) + ' ' + (ty + th + 6) + ' V' + (ty + th + 16) + ' H' + (R - rw / 2).toFixed(1) + ' V' + (ty + th * 0.8) + '"/><text class="wp-tk wp-c-bad" x="' + Math.min(R - 4, Math.max(L + 70, (sx + R - rw / 2) / 2)).toFixed(1) + '" y="' + (ty + th + 30) + '" text-anchor="middle">' + (phone ? 'skipped' : 'skipped: straight to the river') + '</text>'); }
       // the river below the outfall
       var rx = R - rw, lf = st.left, bloom = lf.nutrients > 50, germs = lf.pathogens >= 1;
       g.push('<rect class="wp-river' + (bloom ? ' is-bloom' : '') + '" x="' + rx + '" y="' + ty + '" width="' + rw + '" height="' + th + '" rx="8"/><text class="wp-tname" x="' + (rx + rw / 2) + '" y="' + (ty - 8) + '" text-anchor="middle">River</text>');
       if(bloom) for(var b = 0; b < 8; b++) g.push('<circle class="wp-alga" cx="' + (rx + 8 + (b * 37 % (rw - 14))) + '" cy="' + (ty + 8 + (b * 13 % 18)) + '" r="3"/>');
-      if(germs) g.push('<text class="wp-tk wp-c-bad" x="' + (rx + rw / 2) + '" y="' + (ty + th - 8) + '" text-anchor="middle">pathogens</text>');
+      if(germs) g.push(phone ? '<g class="wp-germs">' + [0, 1, 2].map(function(k){ return '<circle cx="' + (rx + 10 + k * 10) + '" cy="' + (ty + th - 12 - (k % 2) * 6) + '" r="3"/>'; }).join('') + '</g>' : '<text class="wp-tk wp-c-bad" x="' + (rx + rw / 2) + '" y="' + (ty + th - 8) + '" text-anchor="middle">pathogens</text>');
       // bars: what is left after the chosen stage
-      var bTop = ty + th + 50, bBot = H - 36, bw = (R - L - 30) / S.parts.length, x0 = L + 30, y = function(v){ return bBot - v / 100 * (bBot - bTop); };
+      var bTop = ty + th + 70, bBot = H - 64, bw = (R - L - 30) / S.parts.length, x0 = L + 30, y = function(v){ return bBot - v / 100 * (bBot - bTop); };
       g.push('<text class="wp-axl" x="' + L + '" y="' + (bTop - 12) + '">Left in the water after ' + esc(st.name.toLowerCase()) + ' (% of the raw load)</text>');
       [0, 25, 50, 75, 100].forEach(function(v){ g.push('<line class="wp-grid" x1="' + x0 + '" x2="' + (R - 4) + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/><text class="wp-tk" x="' + (x0 - 5) + '" y="' + (y(v) + 4).toFixed(1) + '" text-anchor="end">' + v + '</text>'); });
       var CLS = { solids: 'is-sol', bod: 'is-bod', nutrients: 'is-nut', pathogens: 'is-path' }, SHORT = { solids: 'Solids', bod: 'Organic (BOD)', nutrients: 'N and P', pathogens: 'Pathogens' };
@@ -421,7 +528,7 @@
         var v = lf[p.k], bx = x0 + j * bw + bw * 0.18, ww = bw * 0.64, raw = 100;
         g.push('<rect class="wp-bar-raw" x="' + bx.toFixed(1) + '" y="' + y(raw).toFixed(1) + '" width="' + ww.toFixed(1) + '" height="' + (bBot - y(raw)).toFixed(1) + '"/>');
         g.push('<rect class="wp-bar ' + CLS[p.k] + '" x="' + bx.toFixed(1) + '" y="' + y(Math.max(v, 0.6)).toFixed(1) + '" width="' + ww.toFixed(1) + '" height="' + (bBot - y(Math.max(v, 0.6))).toFixed(1) + '"/>');
-        g.push('<text class="wp-lab" x="' + (bx + ww / 2).toFixed(1) + '" y="' + (y(Math.max(v, 0.6)) - 6).toFixed(1) + '" text-anchor="middle">' + pctTxt(v) + '</text>');
+        g.push(v > 85 ? '<text class="wp-lab wp-in" x="' + (bx + ww / 2).toFixed(1) + '" y="' + (y(v) + 18).toFixed(1) + '" text-anchor="middle">' + pctTxt(v) + '</text>' : '<text class="wp-lab" x="' + (bx + ww / 2).toFixed(1) + '" y="' + (y(Math.max(v, 0.6)) - 6).toFixed(1) + '" text-anchor="middle">' + pctTxt(v) + '</text>');
         g.push('<text class="wp-tk" x="' + (bx + ww / 2).toFixed(1) + '" y="' + (bBot + 15) + '" text-anchor="middle">' + (phone ? SHORT[p.k].replace('Organic (BOD)', 'BOD') : SHORT[p.k]) + '</text>');
       });
       g.push('<line class="wp-axis" x1="' + x0 + '" x2="' + (R - 4) + '" y1="' + bBot + '" y2="' + bBot + '"/>');
@@ -435,7 +542,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       syncView(); draw(); words();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.wp-play'), text: 'Start here: play the next 60 days' });
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.wp-play'), 'Start here: play the next 60 days', s.root.querySelector('.wp-go'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.wp-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

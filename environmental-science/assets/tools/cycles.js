@@ -131,60 +131,151 @@
   }
 
   /* ------------------------------------------ reservoirs and arrows */
-  function cardSize(phone){ return phone ? { w: 116, h: 46 } : { w: 150, h: 50 }; }
-  /* Per-process bends (in units of the base bend; the sign picks the side)
-     and where the label sits along the arrow, so arrows between the same
-     two reservoirs separate and no label sits on another. */
-  var BEND = {
-    carbon: { photo: 1.6, resp: 1.6, uptake: 1.4, release: 1.4, volcano: -3.2, sediment: 0.4, burial: 0.4, death: 0.6, decomp: 0.9, burn: -1.6, clear: -2.4, plant: 2.6 },
-    nitrogen: { fix: -0.6, light: 1.4, haber: 3, denit: 0.9, wdenit: -1.2, nitr: 0.8, assim: -1, waste: 0.8, ammon: 0.9, leach: -0.8 },
-    phosphorus: { weather: 1, assim: 1.4, decomp: 1.4, runoff: 0.8, sediment: 0.6, uplift: 1.2, mine: -1.8, sewage: -1.2 },
-    water: { evap: 1.3, oprecip: 1.3, lprecip: -1.4, et: -1.4, runoff: 0.8, infil: 0.8, seep: -1.2, rivers: -0.9, melt: -2.6, pump: 1.4 }
+  /* Text width in svg units: measured with the page's font when there is a
+     canvas (so every card fits its text), else estimated. */
+  var tctx = null, FONT = null;
+  function textW(s, size, weight){
+    try{
+      if(!tctx){ tctx = document.createElement('canvas').getContext('2d'); FONT = (getComputedStyle(document.documentElement).getPropertyValue('--font-ui') || 'sans-serif').trim() || 'sans-serif'; }
+      tctx.font = (weight || 800) + ' ' + size + 'px ' + FONT;
+      return tctx.measureText(String(s)).width;
+    }catch(e){ return String(s).length * size * 0.6; }
+  }
+  /* Hand-made layouts (fractions of the scene) for a desktop stage (D) and
+     a phone's portrait stage (P), and a route for every process: it leaves
+     its source card from one side ([side, offset along that side, -1 to 1])
+     and enters its target from another, through optional via points, so no
+     two arrows cross where that can be avoided and each label has room
+     beside its own arrow. */
+  var LAYOUT = {
+    carbon: {
+      D: { atm: [0.5, 0.1], plants: [0.17, 0.32], soil: [0.2, 0.62], fossil: [0.42, 0.9], ocean: [0.8, 0.6], rock: [0.78, 0.9] },
+      P: { atm: [0.5, 0.08], plants: [0.2, 0.3], soil: [0.2, 0.6], fossil: [0.27, 0.91], ocean: [0.79, 0.62], rock: [0.74, 0.91] },
+      R: {
+        photo: { f: ['l', -0.3], t: ['t', -0.5] }, plant: { f: ['l', 0.4], t: ['t', 0.05] },
+        resp: { f: ['r', -0.5], t: ['b', -0.75] }, clear: { f: ['r', 0.3], t: ['b', -0.48] },
+        death: { f: ['b', 0], t: ['t', -0.2] }, decomp: { f: ['r', -0.2], t: ['b', -0.18] },
+        burn: { f: ['t', 0.3], t: ['b', 0.12] }, burial: { f: ['b', 0], t: ['l', 0] },
+        uptake: { f: ['b', 0.45], t: ['t', -0.45] }, release: { f: ['t', 0.05], t: ['b', 0.8] },
+        sediment: { f: ['b', 0], t: ['t', 0] }, volcano: { f: ['r', 0], t: ['b', 0.95], via: [[0.975, 0.62], [0.965, 0.34], [0.74, 0.27]] }
+      },
+      RP: {
+        burn: { f: ['r', 0], t: ['b', 0.2], via: [[0.5, 0.78]] }, decomp: { f: ['r', -0.4], t: ['b', -0.2] },
+        clear: { f: ['r', 0.5], t: ['b', -0.5] }, plant: { f: ['l', 0.5], t: ['t', 0.3] },
+        volcano: { f: ['r', 0], t: ['r', 0.3], via: [[0.975, 0.62], [0.975, 0.34], [0.84, 0.24]] }
+      }
+    },
+    nitrogen: {
+      D: { n2: [0.5, 0.09], org: [0.33, 0.3], dead: [0.21, 0.53], nh4: [0.31, 0.75], no3: [0.62, 0.58], water: [0.86, 0.73] },
+      P: { n2: [0.5, 0.08], org: [0.33, 0.28], dead: [0.33, 0.5], nh4: [0.33, 0.74], no3: [0.77, 0.56], water: [0.76, 0.85] },
+      R: {
+        fix: { f: ['l', 0], t: ['l', 0], via: [[0.04, 0.2], [0.04, 0.66]] },
+        light: { f: ['b', -0.1], t: ['t', -0.6] }, haber: { f: ['b', 0.35], t: ['t', -0.12] },
+        denit: { f: ['t', 0.55], t: ['b', 0.75] }, wdenit: { f: ['r', 0], t: ['r', 0], via: [[0.965, 0.55], [0.965, 0.2]] },
+        nitr: { f: ['r', 0], t: ['b', -0.5] }, assim: { f: ['l', 0], t: ['b', 0.6] },
+        waste: { f: ['b', -0.4], t: ['t', 0.3] }, ammon: { f: ['b', 0], t: ['t', -0.2] },
+        leach: { f: ['b', 0.3], t: ['t', 0] }
+      }
+    },
+    phosphorus: {
+      D: { rock: [0.2, 0.9], soil: [0.44, 0.62], org: [0.2, 0.3], ocean: [0.8, 0.6], sed: [0.8, 0.9] },
+      P: { rock: [0.26, 0.91], soil: [0.4, 0.62], org: [0.28, 0.3], ocean: [0.78, 0.6], sed: [0.76, 0.91] },
+      R: {
+        weather: { f: ['t', 0.5], t: ['b', 0] }, mine: { f: ['t', -0.3], t: ['l', 0.2] },
+        assim: { f: ['t', -0.6], t: ['b', 0.5] }, decomp: { f: ['r', 0], t: ['t', 0.1] },
+        runoff: { f: ['r', 0], t: ['l', 0] }, sediment: { f: ['b', 0], t: ['t', 0] },
+        uplift: { f: ['l', 0], t: ['r', 0] }, sewage: { f: ['t', 0.4], t: ['t', -0.4], via: [[0.55, 0.22]] }
+      }
+    },
+    water: {
+      D: { atm: [0.5, 0.1], ice: [0.13, 0.15], soil: [0.18, 0.6], lakes: [0.48, 0.6], ground: [0.36, 0.9], ocean: [0.82, 0.62] },
+      P: { atm: [0.66, 0.085], ice: [0.2, 0.2], soil: [0.22, 0.55], lakes: [0.5, 0.74], ground: [0.3, 0.92], ocean: [0.8, 0.6] },
+      R: {
+        et: { f: ['t', -0.1], t: ['l', 0.25] }, lprecip: { f: ['b', -0.6], t: ['t', 0.6] },
+        oprecip: { f: ['b', 0.6], t: ['t', -0.6] }, evap: { f: ['t', -0.1], t: ['r', 0.25] },
+        runoff: { f: ['r', 0.3], t: ['l', 0] }, infil: { f: ['b', 0.4], t: ['t', -0.6] }, pump: { f: ['l', 0], t: ['b', -0.3] },
+        seep: { f: ['t', 0.4], t: ['b', -0.3] }, rivers: { f: ['r', 0], t: ['l', 0] },
+        melt: { f: ['t', 0.3], t: ['r', 0], via: [[0.3, 0.018], [0.975, 0.03], [0.975, 0.5]] }
+      },
+      RP: {
+        pump: { f: ['t', -0.85], t: ['b', -0.75] }, runoff: { f: ['b', 0.6], t: ['l', 0] }, rivers: { f: ['t', 0.7], t: ['b', -0.5] },
+        evap: { f: ['t', 0.6], t: ['b', 0.8] }, oprecip: { f: ['b', 0.35], t: ['t', -0.3] },
+        melt: { f: ['l', 0], t: ['b', 0.6], via: [[0.045, 0.4], [0.045, 0.975], [0.86, 0.975]] }
+      }
+    }
   };
-  var LABEL_T = { carbon: { photo: 0.38, resp: 0.38, uptake: 0.36, release: 0.36, volcano: 0.3 }, water: { evap: 0.62, oprecip: 0.36, et: 0.62, lprecip: 0.34, seep: 0.55 }, nitrogen: { light: 0.3, haber: 0.55, fix: 0.55, denit: 0.4, wdenit: 0.5, assim: 0.45 }, phosphorus: { assim: 0.3, decomp: 0.68 } };
-  /* A phone's portrait stage: a few reservoirs move so cards never touch
-     and every arrow keeps room for its number. */
-  var PHONE_AT = {
-    nitrogen: { org: [0.24, 0.27], dead: [0.21, 0.58], nh4: [0.36, 0.8], no3: [0.64, 0.5], water: [0.8, 0.8] },
-    water: { ice: [0.2, 0.17], soil: [0.2, 0.52], lakes: [0.42, 0.68], ocean: [0.8, 0.74], ground: [0.36, 0.93] },
-    carbon: { soil: [0.22, 0.62], ocean: [0.8, 0.62] },
-    phosphorus: { org: [0.22, 0.28], soil: [0.35, 0.6] }
-  };
-  function layout(cy, W, H){
-    var Y = CY.CYCLES[cy], phone = W < 600, cs = cardSize(phone), pos = {}, PA = phone ? PHONE_AT[cy] || {} : {};
+  function cardSize(phone){ return phone ? { w: 104, h: 46 } : { w: 140, h: 50 }; }
+  function cardFont(phone){ return { n: phone ? 13 : 14, a: phone ? 11.5 : 12.5 }; }
+  /* The widest second line a card can show: its amount with a change, or
+     what it holds. Measured once per card, so a card does not jump while
+     the years run. */
+  function cardWidth(cy, r, phone, v){
+    var Y = CY.CYCLES[cy], f = cardFont(phone), cs = cardSize(phone);
+    v = v == null ? r.amount : v;
+    var at = amountText(Y, r, v), d = deltaText(Y, r, v);
+    var line2 = at ? textW(at, f.a, 700) + (d ? textW(' ' + d, f.a, 900) + 4 : 0) : d ? textW(d, f.a, 900) : textW(r.what, f.a, 700);
+    return Math.ceil(Math.max(cs.w, textW(r.name, f.n, 900), line2) + (phone ? 18 : 24));
+  }
+  function layout(cy, W, H, pools){
+    pools = pools || {};
+    var Y = CY.CYCLES[cy], phone = W < 600, cs = cardSize(phone), L = LAYOUT[cy] || {}, A = (phone ? L.P : L.D) || {}, pos = {};
     Y.reservoirs.forEach(function(r){
-      var at = PA[r.id] || r.at, w = Math.max(cs.w, r.name.length * (phone ? 7.6 : 8.4) + 18), x = at[0] * W, y = at[1] * H;
+      var at = A[r.id] || r.at, w = cardWidth(cy, r, phone, pools[r.id]), x = at[0] * W, y = at[1] * H;
       x = Math.max(w / 2 + 4, Math.min(W - w / 2 - 4, x));
-      y = Math.max(cs.h / 2 + 6, Math.min(H - cs.h / 2 - 6, y));
+      y = Math.max(cs.h / 2 + 4, Math.min(H - cs.h / 2 - 4, y));
       pos[r.id] = { x: x, y: y, w: w, h: cs.h };
     });
     return pos;
   }
-  function outside(p, b, pad){ return Math.abs(p[0] - b.x) > b.w / 2 + pad || Math.abs(p[1] - b.y) > b.h / 2 + pad; }
-  function curve(a, b, bend){
-    var dx = b.x - a.x, dy = b.y - a.y, L = Math.sqrt(dx * dx + dy * dy) || 1;
-    var cx = (a.x + b.x) / 2 - dy / L * bend, cy = (a.y + b.y) / 2 + dx / L * bend;
-    function at(t){ var u = 1 - t; return [u * u * a.x + 2 * u * t * cx + t * t * b.x, u * u * a.y + 2 * u * t * cy + t * t * b.y]; }
-    var t0 = 0, t1 = 1;
-    for(var t = 0; t <= 1; t += 0.01) if(outside(at(t), a, 5)){ t0 = t; break; }
-    for(t = 1; t >= 0; t -= 0.01) if(outside(at(t), b, 9)){ t1 = t; break; }
-    return { at: function(s){ return at(t0 + (t1 - t0) * s); }, t0: t0, t1: t1, c: [cx, cy] };
+  var NORM = { t: [0, -1], b: [0, 1], l: [-1, 0], r: [1, 0] };
+  function port(b, spec, gap){
+    var s = spec[0], o = spec[1] || 0, n = NORM[s];
+    var x = s === 'l' ? b.x - b.w / 2 : s === 'r' ? b.x + b.w / 2 : b.x + o * b.w / 2 * 0.9;
+    var y = s === 't' ? b.y - b.h / 2 : s === 'b' ? b.y + b.h / 2 : b.y + o * b.h / 2 * 0.8;
+    return { p: [x + n[0] * gap, y + n[1] * gap], n: n };
   }
-  function pathD(cv){ var p = [], n = 24; for(var i = 0; i <= n; i++){ var q = cv.at(i / n); p.push((i ? 'L' : 'M') + q[0].toFixed(1) + ' ' + q[1].toFixed(1)); } return p.join(''); }
+  /* A routed path: cubic segments through the via points, leaving and
+     entering the cards square to their sides; sampled by length so labels
+     and particles can sit at any fraction along it. */
+  function route(a, b, R, W, H){
+    var s = port(a, R.f, 3), e = port(b, R.t, 6), pts = [s.p].concat((R.via || []).map(function(v){ return [v[0] * W, v[1] * H]; })).concat([e.p]);
+    var tan = pts.map(function(p, i){
+      if(i === 0) return s.n;
+      if(i === pts.length - 1) return [-e.n[0], -e.n[1]];
+      var dx = pts[i + 1][0] - pts[i - 1][0], dy = pts[i + 1][1] - pts[i - 1][1], L = Math.sqrt(dx * dx + dy * dy) || 1;
+      return [dx / L, dy / L];
+    });
+    var S = [], d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for(var i = 0; i + 1 < pts.length; i++){
+      var P0 = pts[i], P3 = pts[i + 1], L = Math.sqrt(Math.pow(P3[0] - P0[0], 2) + Math.pow(P3[1] - P0[1], 2)), k = Math.min(L * 0.42, 60);
+      var P1 = [P0[0] + tan[i][0] * k, P0[1] + tan[i][1] * k], P2 = [P3[0] - tan[i + 1][0] * k, P3[1] - tan[i + 1][1] * k];
+      d += 'C' + [P1, P2, P3].map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' ');
+      for(var j = i ? 1 : 0; j <= 30; j++){ var u = j / 30, v = 1 - u; S.push([v * v * v * P0[0] + 3 * v * v * u * P1[0] + 3 * v * u * u * P2[0] + u * u * u * P3[0], v * v * v * P0[1] + 3 * v * v * u * P1[1] + 3 * v * u * u * P2[1] + u * u * u * P3[1]]); }
+    }
+    var cum = [0];
+    for(i = 1; i < S.length; i++) cum.push(cum[i - 1] + Math.sqrt(Math.pow(S[i][0] - S[i - 1][0], 2) + Math.pow(S[i][1] - S[i - 1][1], 2)));
+    var total = cum[cum.length - 1] || 1;
+    function at(f){
+      var L0 = Math.max(0, Math.min(1, f)) * total, lo = 0, hi = cum.length - 1;
+      while(hi - lo > 1){ var m = (lo + hi) >> 1; if(cum[m] < L0) lo = m; else hi = m; }
+      var u = (L0 - cum[lo]) / ((cum[hi] - cum[lo]) || 1);
+      return [S[lo][0] + (S[hi][0] - S[lo][0]) * u, S[lo][1] + (S[hi][1] - S[lo][1]) * u];
+    }
+    return { at: at, d: d, pts: S, len: total };
+  }
   function widthOf(f, phone){ if(!(f > 0)) return phone ? 2 : 2.5; return Math.max(phone ? 2 : 2.5, Math.min(phone ? 8 : 11, (phone ? 1.6 : 2) * Math.log10(f * 10 + 1) + 1)); }
 
   function draw(cy, o){
-    var Y = CY.CYCLES[cy], W = o.W, H = o.H, phone = W < 600, pos = layout(cy, W, H), out = [], on = o.on || {}, pools = o.pools || {}, flux = o.flux || {};
+    var Y = CY.CYCLES[cy], W = o.W, H = o.H, phone = W < 600, pools = o.pools || {}, pos = layout(cy, W, H, pools), out = [], on = o.on || {}, flux = o.flux || {};
     out.push(scene(cy, W, H, on));
     // arrows
     var cvs = {};
     var procs = Y.processes.filter(function(p){ return !p.human || isOn(Y, on, p.id); });
     procs.forEach(function(p){
-      var a = pos[p.from], b = pos[p.to];
-      var bend = (phone ? 24 : 30) * ((BEND[cy] || {})[p.id] || 1);
-      var cv = curve(a, b, bend); cvs[p.id] = cv;
+      var a = pos[p.from], b = pos[p.to], R = (phone && (LAYOUT[cy].RP || {})[p.id]) || (LAYOUT[cy].R || {})[p.id] || { f: ['b', 0], t: ['t', 0] };
+      var cv = route(a, b, R, W, H); cvs[p.id] = cv;
       var f = flux[p.id] != null ? flux[p.id] : p.flux, sel = o.sel === p.id, dim = o.sel && !sel;
-      out.push('<path class="cy-arrow' + (p.human ? ' human' : '') + (p.slow ? ' slow' : '') + (sel ? ' is-sel' : '') + (dim ? ' is-dim' : '') + (o.ask === p.id ? ' is-ask' : '') + '" d="' + pathD(cv) + '" stroke-width="' + widthOf(f, phone).toFixed(1) + '" marker-end="url(#' + o.mk + (p.human ? '-h' : sel || o.ask === p.id ? '-s' : '') + ')"/>');
+      out.push('<path class="cy-arrow' + (p.human ? ' human' : '') + (p.slow ? ' slow' : '') + (sel ? ' is-sel' : '') + (dim ? ' is-dim' : '') + (o.ask === p.id ? ' is-ask' : '') + '" d="' + cv.d + '" stroke-width="' + widthOf(f, phone).toFixed(1) + '" marker-end="url(#' + o.mk + (p.human ? '-h' : sel || o.ask === p.id ? '-s' : '') + ')"/>');
     });
     // particles go under the labels and cards
     out.push('<g class="cy-fx" aria-hidden="true"></g>');
@@ -193,21 +284,29 @@
     // label takes the spot along its arrow that overlaps least with the
     // cards and the labels already placed.
     var placed = Y.reservoirs.map(function(r){ var b = pos[r.id]; return [b.x - b.w / 2 - 2, b.y - b.h / 2 - 2, b.x + b.w / 2 + 2, b.y + b.h / 2 + 2]; });
+    var sr = Math.min(W, H) * 0.045 * 1.8; placed.push([W * 0.86 - sr, H * 0.1 - sr, W * 0.86 + sr, H * 0.1 + sr]);
+    if(o.interactive) placed.push([W - (phone ? 64 : 60), H - (phone ? 64 : 60), W, H]); // the stage's Enlarge button
     function overlap(a, b){ var w = Math.min(a[2], b[2]) - Math.max(a[0], b[0]), h = Math.min(a[3], b[3]) - Math.max(a[1], b[1]); return w > 0 && h > 0 ? w * h : 0; }
     var order = procs.map(function(p, i){ return { p: p, i: i }; }).sort(function(a, b){ return (b.p.id === o.sel || b.p.id === o.ask) - (a.p.id === o.sel || a.p.id === o.ask); });
     var NUM = numbered(cy).num;
-    var TRY = [0.5, 0.42, 0.58, 0.34, 0.66, 0.26, 0.74, 0.2, 0.8];
+    var TRY = [0.5, 0.42, 0.58, 0.34, 0.66, 0.26, 0.74, 0.2, 0.8, 0.14, 0.86];
     order.forEach(function(e){
       var p = e.p, i = e.i, cv = cvs[p.id], sel = o.sel === p.id, dim = o.sel && !sel, ask = o.ask === p.id;
       if(o.hideLabels && !sel && !ask) return;
       var label = ask && o.hideName ? '?' : p.n ? p.n + '. ' + p.name : p.name;
-      if(phone && !sel && !ask) label = p.human ? p.name.split(' ')[0] : String(NUM[p.id]);
-      var fs = phone ? 11.5 : 12.5, tw = label.length * fs * 0.56 + 12, th = fs + 9;
+      if(phone && !sel && !ask) label = p.human ? (PHONE_HUMAN[p.id] || p.name.split(' ')[0]) : String(NUM[p.id]);
+      var fs = phone ? 12 : 12.5, tw = Math.max(textW(label, fs, 800) + 14, fs + 9), th = fs + 9;
       var pref = (LABEL_T[cy] || {})[p.id], tries = pref ? [pref].concat(TRY) : TRY, best = null;
       tries.forEach(function(tt){
-        var m = cv.at(tt), r = [m[0] - tw / 2, m[1] - th / 2, m[0] + tw / 2, m[1] + th / 2];
-        var sc = placed.reduce(function(s, q){ return s + overlap(r, q); }, 0) + Math.abs(tt - 0.5) * 2 + (r[0] < 2 || r[2] > W - 2 || r[1] < 2 || r[3] > H - 2 ? 5000 : 0);
-        if(!best || sc < best.sc) best = { sc: sc, m: m, r: r };
+        var m0 = cv.at(tt), m1 = cv.at(Math.min(1, tt + 0.02)), dx = m1[0] - m0[0], dy = m1[1] - m0[1], L = Math.sqrt(dx * dx + dy * dy) || 1;
+        // on the arrow, or just beside it (either side)
+        [0, 1, -1].forEach(function(side){
+          var off = side ? (Math.abs(dy / L) * tw / 2 + Math.abs(dx / L) * th / 2 + 5) : 0;
+          var m = [m0[0] - dy / L * off * side, m0[1] + dx / L * off * side], r = [m[0] - tw / 2, m[1] - th / 2, m[0] + tw / 2, m[1] + th / 2];
+          var sc = placed.reduce(function(s, q){ return s + overlap(r, q); }, 0) * 4 + Math.abs(tt - 0.5) * 20 + (side ? 30 : 0) + (r[0] < 2 || r[2] > W - 2 || r[1] < 2 || r[3] > H - 2 ? 1e6 : 0);
+          procs.forEach(function(q){ if(q.id === p.id) return; cvs[q.id].pts.forEach(function(pt){ if(pt[0] > r[0] - 3 && pt[0] < r[2] + 3 && pt[1] > r[1] - 3 && pt[1] < r[3] + 3) sc += 400; }); });
+          if(!best || sc < best.sc) best = { sc: sc, m: m, r: r };
+        });
       });
       placed.push(best.r);
       var m = best.m;
@@ -220,7 +319,7 @@
       var b = pos[r.id], v = pools[r.id] != null ? pools[r.id] : r.amount, d = deltaText(Y, r, v), at = amountText(Y, r, v);
       var hl = o.sel && (Y.processes.filter(function(p){ return p.id === o.sel; })[0] || {});
       var role = hl && (hl.from === r.id ? ' is-from' : hl.to === r.id ? ' is-to' : '');
-      var fsN = phone ? 12.5 : 14, fsA = phone ? 11 : 12.5;
+      var cf = cardFont(phone), fsN = cf.n, fsA = cf.a;
       out.push('<g class="cy-res' + (role || '') + '" data-r="' + r.id + '">' +
         '<rect class="cy-card" x="' + (b.x - b.w / 2).toFixed(1) + '" y="' + (b.y - b.h / 2).toFixed(1) + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>' +
         '<text class="cy-res-n" x="' + b.x.toFixed(1) + '" y="' + (b.y - b.h / 2 + fsN + 5).toFixed(1) + '" text-anchor="middle">' + esc(r.name) + '</text>' +
@@ -240,9 +339,11 @@
   function isOn(Y, on, pid){ return Y.changes.some(function(c){ return on[c.id] && c.proc === pid; }); }
   function rName(cy, id){ return CY.res(cy, id).name.toLowerCase(); }
   function defs(mk){
-    var m = function(id, cls){ return '<marker id="' + mk + id + '" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" class="' + cls + '"/></marker>'; };
-    return '<defs>' + m('', 'cy-head') + m('-s', 'cy-head s') + m('-h', 'cy-head h') + '</defs>';
+    var m = function(id, cls, sz){ return '<marker id="' + mk + id + '" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="' + sz + '" markerHeight="' + sz + '" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 L2.5 5z" class="' + cls + '"/></marker>'; };
+    return '<defs>' + m('', 'cy-head', 15) + m('-s', 'cy-head s', 18) + m('-h', 'cy-head h', 16) + '</defs>';
   }
+  var PHONE_HUMAN = { burn: 'Burn', clear: 'Clear', plant: 'Plant', haber: 'Fertilizer', mine: 'Mine', sewage: 'Sewage', melt: 'Melt', pump: 'Pump' };
+  var LABEL_T = { nitrogen: { fix: 0.62, wdenit: 0.55 }, carbon: { volcano: 0.55 }, water: { melt: 0.45 } };
   var mkN = 0;
 
   /* --------------------------------------------------------- mount */
@@ -264,9 +365,9 @@
     host.innerHTML = '<section class="bt-problem cy-cardx" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Biogeochemical cycles</h2>' +
       '<div class="cy-fig"><svg class="cy-svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="' + nid + '-d"></svg><p class="sr-only" id="' + nid + '-d"></p></div>' +
       '<div class="cy-ctl">' +
-        '<div class="cy-cycles ls-scroll" role="group" aria-label="Cycle">' + CY.CYCLE_IDS.map(function(id){ return '<button type="button" class="tchip cy-cy" data-c="' + id + '" aria-pressed="false">' + esc(CY.CYCLES[id].name.replace(' cycle', '')) + '</button>'; }).join('') + '</div>' +
-        '<div class="cy-lbl ls-lbl">Tap a process</div><div class="cy-procs ls-scroll" role="group" aria-label="Processes"></div>' +
-        '<div class="cy-lbl ls-lbl">What people change</div><div class="cy-changes ls-scroll" role="group" aria-label="Human changes"></div>' +
+        '<div class="cy-cycles" role="group" aria-label="Cycle">' + CY.CYCLE_IDS.map(function(id){ return '<button type="button" class="tchip cy-cy" data-c="' + id + '" aria-pressed="false">' + esc(CY.CYCLES[id].name.replace(' cycle', '')) + '</button>'; }).join('') + '</div>' +
+        '<div class="cy-lbl ls-lbl">Tap a process</div><div class="cy-procs" role="group" aria-label="Processes"></div>' +
+        '<div class="cy-lbl ls-lbl">What people change</div><div class="cy-changes" role="group" aria-label="Human changes"></div>' +
       '</div>' +
       '<div class="cy-say"></div>' +
       T.moreHtml('<div class="cy-years"></div><div class="bt-buttons"><button type="button" class="bt-btn cy-reset">Undo every change</button></div><p class="bt-small">The years run forward when you switch a change on. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'years, undo') +

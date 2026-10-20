@@ -511,7 +511,7 @@
      }
     ],
     "then": {
-     "unit": "°C",
+     "unit": "°C/decade",
      "from": {
       "fn": "div",
       "args": [
@@ -528,8 +528,12 @@
      "mistakes": [
       {
        "value": 0.015,
-       "why": "0.015 °C is the rate per year. Multiply by 10 for per decade, or divide 0.9 by 6 decades."
+       "why": "0.015 °C per year is the rate per year. Multiply by 10 for per decade, or divide 0.9 by 6 decades."
       }
+     ],
+     "units": [
+      "°C per decade",
+      "degrees C per decade"
      ]
     }
    }

@@ -515,19 +515,18 @@
    "q": "Which are examples of chronic exposure? Select all that apply.",
    "options": [
     "A farmworker handles small amounts of a pesticide every season for 15 years",
-    "A child drinks water with low levels of lead for several years",
+    "A worker breathes chlorine gas from one spill and coughs for a day",
     "A driver breathes thick smoke for ten minutes during a single fire",
     "A hiker is stung once by a bee"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Chronic exposure is long or repeated; acute exposure is short, often a single event.",
+    "correct": "Chronic exposure is long or repeated; acute exposure is short, often a single event. Only the farmworker’s 15 years of exposure is chronic.",
     "options": [
      "Right: repeated, long-term exposure is chronic.",
-     "Right: years of low-level exposure is chronic.",
+     "One short, high exposure with effects within hours is acute.",
      "One short, high exposure is acute.",
      "A single short exposure is acute, not chronic."
     ]

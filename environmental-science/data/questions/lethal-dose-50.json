@@ -304,7 +304,7 @@
    "practice": "7.A",
    "level": "apply",
    "diff": 2,
-   "q": "US pesticide labels group products by how toxic they are when swallowed. Products with an oral LD50 of 50 mg/kg or less carry the signal word DANGER; 50 to 500 mg/kg, WARNING; above 500 mg/kg, CAUTION (or no signal word above 5,000 mg/kg). A new insecticide has an oral LD50 of 30 mg/kg in rats. Which label should it carry, and why?",
+   "q": "US pesticide labels group products by how toxic they are when swallowed. Products with an oral LD50 of 50 mg/kg or less carry the signal word DANGER; above 50 to 500 mg/kg, WARNING; above 500 to 5,000 mg/kg, CAUTION; above 5,000 mg/kg, no signal word is required. A new insecticide has an oral LD50 of 30 mg/kg in rats. Which label should it carry, and why?",
    "options": [
     "CAUTION, because 30 mg/kg is a small number",
     "WARNING, because 30 mg/kg falls between 50 and 500",
@@ -316,7 +316,7 @@
     "correct": "The lower the LD50, the stronger the warning: 30 mg/kg is in the 50 mg/kg or less group, labeled DANGER (EPA toxicity category I).",
     "options": [
      "A small LD50 means high toxicity, so it belongs in the most toxic group, not the least.",
-     "30 is below 50, so it does not fall in the 50 to 500 mg/kg group.",
+     "30 is below 50, so it does not fall in the above 50 to 500 mg/kg group.",
      "Right: 30 mg/kg is at or below 50 mg/kg, the most toxic group.",
      "Labels are set from animal tests like this one; a rat LD50 of 30 mg/kg puts it in the top group."
     ]

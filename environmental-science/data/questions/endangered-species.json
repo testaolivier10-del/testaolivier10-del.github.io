@@ -8,8 +8,8 @@
   "endangered-species-s2": {
    "kind": "text",
    "title": "How the bald eagle came back",
-   "passage": "In 1963 only 417 nesting pairs of bald eagles were left in the lower 48 states. The pesticide DDT, sprayed widely after World War II, washed into lakes and built up in the fish that eagles eat. In the eagles it caused thin eggshells that broke during nesting. The United States banned DDT for most uses in 1972, and the Endangered Species Act protected the birds and their nesting sites from shooting and disturbance. By 2007 there were 9,789 nesting pairs, and the bald eagle was removed from the endangered and threatened species list.",
-   "source": "Summarized from U.S. Fish and Wildlife Service reports on bald eagle recovery (2007)."
+   "passage": "In 1963 only 417 nesting pairs of bald eagles were left in the lower 48 states. The pesticide DDT, sprayed widely after World War II, washed into lakes and built up in the fish that eagles eat. In the eagles it caused thin eggshells that broke during nesting. The United States banned DDT for most uses in 1972, and the Endangered Species Act protected the birds and their nesting sites from shooting and disturbance. By 2007 there were 9,789 breeding pairs, and the bald eagle was removed from the endangered and threatened species list.",
+   "source": "Summarized from U.S. Fish and Wildlife Service, \"Bald Eagle Numbers Soaring\" (2007): 417 nesting pairs in 1963, 9,789 breeding pairs in 2007, lower 48 states."
   }
  },
  "items": [
@@ -207,7 +207,7 @@
    "practice": "6.C",
    "level": "apply",
    "diff": 2,
-   "q": "Using the passage, what was the percent change in nesting pairs from 1963 to 2007?",
+   "q": "Using the passage, what was the percent change in eagle pairs from 1963 to 2007?",
    "stimulus": "endangered-species-s2",
    "why": {
     "correct": "$\\frac{(9{,}789 - 417)}{417} \\times 100 \\approx 2{,}247\\%$, an increase of about 2,200%."

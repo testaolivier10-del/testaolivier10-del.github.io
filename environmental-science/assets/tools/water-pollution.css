@@ -124,3 +124,8 @@ body.ls-on .env-crumb{display:none;}
    4.2 to 4.4:1 on the olive tints; a lighter muted here gives 5.6:1 or more
    (shared fix reported to the lead for tool-studio.css). */
 :root[data-theme="dark"] .ls-root .ls-pill-k,:root[data-theme="dark"] .ls-root .ls-k{color:#B4C6C0;}
+/* Room for the first-run tip while it shows (hintSlot). */
+.env-tipslot{height:58px;flex:none;}
+.wp-lbg{fill:var(--white);fill-opacity:.85;}
+.wp-germs circle{fill:var(--wp-bad);}
+.wp-lab.wp-in{fill:#FFFFFF;stroke:rgba(0,0,0,.35);stroke-width:2.5px;}
