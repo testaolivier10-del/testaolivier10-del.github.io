@@ -1,0 +1,23 @@
+[
+ {
+  "id": "yt-ap-01-intro-levels-of-organization",
+  "chars": 16421,
+  "fixed_s": 79.1,
+  "predicted_s": 1287,
+  "actual_s": 1243
+ },
+ {
+  "id": "yt-apbio-01-water-hydrogen-bonding",
+  "chars": 16368,
+  "fixed_s": 94.0,
+  "predicted_s": 1254,
+  "actual_s": 1248
+ },
+ {
+  "id": "yt-orgo-02-orbitals",
+  "chars": 12064,
+  "fixed_s": 84.2,
+  "predicted_s": 937,
+  "actual_s": 977
+ }
+]

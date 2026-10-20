@@ -15,7 +15,7 @@ if cmd == 'submit':
     job = json.load(open(sys.argv[2]))
     for k in ('image', 'last'):
         if k in job: job[k + '_b64'] = base64.b64encode(open(job.pop(k), 'rb').read()).decode()
-    if ledger.left() < 1.0: sys.exit('Modal budget for this month is used up (python3 ledger.py month). Use library stills instead.')
+    if not ledger.can_spend(ledger.EST['video']): sys.exit('Not enough Modal budget left for this run (its reserved share or the month) (python3 ledger.py month). Use library stills instead.')
     cid = req('/submit', job, 'POST')[1]['call_id']; ledger.start(cid, 'video ' + job.get('mode', 'i2v')); print(cid)
 elif cmd == 'status':
     s, b = req('/result?call_id=' + sys.argv[2]); print(s, {k: v for k, v in b.items() if k != 'video_b64'})

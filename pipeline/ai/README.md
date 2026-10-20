@@ -14,7 +14,12 @@ Two open models run on Olivier's Modal workspace (testaolivier10, Starter plan, 
 - python3 ai/lpvid.py wait <call id> out.mp4   (8 to 10 minutes; run it in the background and keep working)
 - python3 ai/lpimg.py job.json outprefix   Job: {"refs":["style_ref.png", ...],"prompts":["..."],"width":1088,"height":960,"steps":40,"cfg":4.0,"seed":21}
 - python3 ai/outpaint.py in_1088x960.png out_1088x1920.png "what goes above" "what goes below" [seed]   extends a scene to the full phone frame, keeping the middle untouched.
-- python3 ai/ledger.py month   estimated spend this month. Every call is logged in /tmp/m/modal_ledger.json (commit it with the run). The clients refuse new calls when less than $1 is left under the $27 cap.
+- Budget (one ledger file per run in /tmp/m/modal_ledger/, with reservations; full procedure in claude/levlprep-ops-common.md):
+  python3 ai/ledger.py begin <shorts-sun|shorts-wed|long> auto  before the run's first Modal call (reserves the run's share, pushed so overlapping runs cannot claim the same money);
+  python3 ai/ledger.py month  spent, held by other runs, free, and this run's reservation;
+  python3 ai/ledger.py end    when the run is done or stops early (releases what it did not spend, commits and pushes this run's file);
+  python3 ai/ledger.py sweep  lists stale reservations of crashed runs (released automatically after 12 h idle with no call younger than 2 h).
+  The clients refuse a call past the run's reservation or the $27 monthly cap. The old shared /tmp/m/modal_ledger.json is history, read but never written.
 
 ## Costs (measured 2026-10-18)
 - One acting shot: about $0.55 to $0.70 (8 to 10 minutes on an H100).

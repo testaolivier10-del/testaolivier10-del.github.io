@@ -11,7 +11,7 @@ def req(path, data=None, method='GET'):
     except urllib.error.HTTPError as e: return e.code, json.loads(e.read() or b'{}')
 job = json.load(open(sys.argv[1])); pre = sys.argv[2]
 job['refs_b64'] = [base64.b64encode(open(p, 'rb').read()).decode() for p in job.pop('refs')]
-if ledger.left() < 0.3: sys.exit('Modal budget for this month is used up (python3 ledger.py month). Use library stills instead.')
+if not ledger.can_spend(ledger.EST['images']): sys.exit('Not enough Modal budget left for this run (its reserved share or the month) (python3 ledger.py month). Use library stills instead.')
 s, b = req('/images', job, 'POST'); cid = b['call_id']; ledger.start(cid, 'images'); print('call', cid, flush=True)
 t0 = time.time()
 while True:
