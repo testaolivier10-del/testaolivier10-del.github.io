@@ -27,8 +27,8 @@
      [
       "10-20%",
       "20",
-      "42",
-      "38"
+      "45",
+      "35"
      ],
      [
       "35-50%",
@@ -507,7 +507,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Runoff: 10, 20, 30, 55%. Soaks in: 50, 42, 35, 15%.",
+    "correct": "Runoff: 10, 20, 30, 55%. Soaks in: 50, 45, 35, 15%.",
     "options": [
      "Right: more pavement, more runoff, less soaking in.",
      "The directions are reversed.",

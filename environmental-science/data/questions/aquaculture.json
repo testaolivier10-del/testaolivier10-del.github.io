@@ -7,10 +7,10 @@
   },
   "aquaculture-s2": {
    "kind": "quantitative",
-   "title": "Wild catch and fish farming in one world region",
+   "title": "Wild catch and fish farming worldwide, rounded",
    "invented": true,
    "table": {
-    "caption": "Production of fish and other aquatic animals in one region, million metric tons (invented data for practice)",
+    "caption": "World production of fish and other aquatic animals, million metric tons, rounded and simplified (invented data for practice, shaped like the world record; the FAO reports 94.4 farmed and 91.0 wild for 2022)",
     "cols": [
      "Year",
      "Wild capture",

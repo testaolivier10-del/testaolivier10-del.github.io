@@ -5,10 +5,10 @@
    "title": "Feed and land for three kinds of meat",
    "invented": true,
    "table": {
-    "caption": "Approximate feed and land needed per kilogram of meat produced (invented data for practice, in the range of published estimates)",
+    "caption": "Approximate feed and land for three kinds of meat (invented data for practice; feed values are near published averages per kilogram of weight gained, and real values vary a lot by farming system: beef from cattle raised on pasture uses far more land)",
     "cols": [
      "Meat",
-     "Feed needed (kg of feed per kg of meat)",
+     "Feed needed (kg of feed per kg of weight gained)",
      "Land used (m² per kg of meat per year)"
     ],
     "rows": [
@@ -308,7 +308,7 @@
    "practice": "5.A",
    "level": "apply",
    "diff": 1,
-   "q": "Which ranking matches the table, from the most feed per kilogram of meat to the least?",
+   "q": "Which ranking matches the table, from the most feed per kilogram of weight gained to the least?",
    "options": [
     "Beef, pork, chicken",
     "Chicken, pork, beef",
@@ -528,7 +528,7 @@
    "diff": 2,
    "q": "Which piece of evidence would most weaken the author's claim?",
    "options": [
-    "A nearby study finds grass recovered under rotation just when herds were also cut",
+    "A nearby study finds grass recovered under rotation only when herds were also cut",
     "A study finds that cattle prefer to stay near water in hot weather on the public land",
     "A survey finds most ranchers in the county own fewer than 200 cattle each",
     "A report finds that fences on public land cost about the same as on private land"

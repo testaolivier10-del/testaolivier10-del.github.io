@@ -67,27 +67,44 @@ test keeps them equal).
 From the student course page and the exam page (Session 2). The session's start time is not on the page; the cram
 plan and the countdown use the date only.
 
-## Author D (Unit 5): points for a person to check (open, 2026-10-20)
+## Author D (Unit 5): points for a person to check (partly resolved by the Unit 5 review, 2026-10-20)
 
-- **Irrigation efficiency percentages.** Sources disagree on the exact share of water each method delivers (flood
-  roughly 40-60% lost, furrow about one third, spray about a quarter or less, drip often over 90% delivered). The
-  notes teach the order (flood < furrow < spray < drip) with rough ranges; the invented data (flood 48%, furrow 64%,
-  spray 80%, drip 92%) sit inside those ranges. A teacher may want one set of reference numbers.
-- **"About 70% of freshwater withdrawals go to agriculture."** Widely cited (FAO AQUASTAT); used as a round figure in
-  the irrigation hook and notes, not in any item key.
-- **Ecological footprint figures.** Notes quote Earth's biocapacity as about 1.6 gha per person and the world average
-  footprint as about 2.6 gha per person (Global Footprint Network, recent editions; values shift slightly by year).
-  No item key depends on them beyond the invented chart's 1.6 line.
-- **FAO 2022 aquaculture figures** (94.4 million metric tons farmed vs 91.0 million wild aquatic animals) are quoted
-  from the FAO SOFIA 2024 key messages in the aquaculture notes. The aquaculture data table is labeled invented
-  (rounded, regional) because older-year values could not be checked against the FAO source in this session.
-- **Maximum sustainable yield at K/2** is taught as the logistic-model result. Mainstream, but a teacher may want a
-  sentence noting real fisheries rarely follow the model exactly (the notes already add a safety-margin caveat).
-- **Feed conversion figures** (beef about 8, pork about 4, chicken about 2 kg feed per kg; salmon about 1.3) are
-  labeled invented and sit in the range of published estimates, which vary a lot by system and by whether live
-  weight or edible meat is counted.
-- **Bank rule, not mine alone:** the whole bank has 4 of 44 select-all items with one correct option (rule: 20%).
-  Unit 5 contributes 3 of its 11. Other units' authors need to convert some of theirs.
+Reviewer notes in `docs/apenv-reviews/u5.md`. Still open:
+
+- **Irrigation efficiency order (partly settled).** Sources do not support a strict flood < furrow order. USDA ARS
+  (Bjorneberg 2013, "Irrigation: Methods", Table 1) gives typical application efficiencies of furrow 50-70%, level
+  basin 60-80%, border 60-75%, sprinklers 55-95%, microirrigation (drip) 80-95%. AP® prep sites, apparently
+  echoing the CED, give water lost of flood about 20%, furrow about a third, spray a quarter or less, drip about
+  5%, which makes flood more efficient than furrow; one (Cognito) gives flood 40-60%. The notes, lesson key idea and
+  glossary now teach: drip most efficient (about 5% lost), spray next (a quarter or less), flood and furrow the
+  cheap surface methods that lose the most (furrow about a third), and "use the numbers a question gives you". No
+  item key depended on flood vs furrow. **A person with the CED should read 5.5's essential knowledge** (unread, see
+  `ced-text`) and, if it gives flood about 20%, say so in the notes.
+- **Maximum sustainable yield at K/2** is taught as the logistic-model result with a safety-margin caveat
+  (`sustainability-4`, notes). Mainstream; a teacher may still want a line that real stocks rarely follow the model.
+- **Bank rule, not Unit 5's alone:** select-all items with one correct option are 4 of 44 bank-wide (rule 20%);
+  Unit 5 has 3 of its 11. Other units need to convert some of theirs.
+- **Runtime limit found in review (for the lead):** `ApEnvExpr` cannot read "metric tons" in a typed setup
+  ("250 ha * 150 metric tons/ha" is refused: "tric is not a unit"), and an item's `setup.units` does not fix it;
+  "t/ha" works. Setups that ask for metric tons (`env-clearcutting-8` and similar) grade only when typed without
+  units or with t. A multi-word unit alias in `env-expr.js` would fix it.
+
+Resolved 2026-10-20 by the Unit 5 review:
+
+- **About 70% of freshwater withdrawals go to agriculture**: consistent with FAO AQUASTAT (the 2025 FAO release
+  says 72% in many regions); kept as a round figure, no key depends on it.
+- **Ecological footprint figures**: Global Footprint Network gives biocapacity 1.6 gha per person (2022 edition,
+  2018 data) and, in its 2025 nowcast, footprint 2.65 and biocapacity 1.49 gha per person. Notes now say biocapacity
+  "about 1.5 to 1.6", footprint "about 2.6 to 2.7", about 1.7 to 1.8 Earths. The invented chart keeps its 1.6 line.
+- **FAO 2022 aquaculture figures**: confirmed in the SOFIA 2024 key messages (aquaculture 94.4 million tonnes of
+  aquatic animals, capture 91.0). The table `aquaculture-s2` held world-scale numbers but said "one world region";
+  it is now titled as rounded world values, still marked invented, with the FAO 2022 values in its caption.
+- **Feed conversion figures**: match Fry et al. 2018 (Environmental Research Letters 13 024017, Table 2, feed per
+  kg of weight gained): beef 8.0, pigs 3.9, chicken 1.9, Atlantic salmon 1.3 (ranges 6-10, 2.7-5.0, 1.7-2.0,
+  1.2-1.5). Per kg of edible meat they are higher (14, 5.3, 2.6, 1.8), so the `meat-production-s1` column now says
+  "per kg of weight gained". Its invented land column (40, 12, 8 m² per kg) is far below the Poore and Nemecek 2018
+  global means in Our World in Data (beef herd 326, dairy-herd beef 43, pig 17, poultry 12); the caption now says
+  pasture beef uses far more land. Keys unchanged.
 
 ## Author B (Units 2 and 3): points for a person to check (open, 2026-10-20)
 

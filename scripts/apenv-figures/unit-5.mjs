@@ -401,7 +401,7 @@ export const IPMDATA = { weeks: [[1, 2], [2, 3], [3, 5], [4, 8], [5, 12], [6, 6]
   d = 'M380,320 ' + steps.map(([x, y]) => `L${x},${y} L${x + 60},${y}`).join(' ') + ' L700,100 L700,320 Z';
   b += P(d, { fill: '#C9B27C', stroke: SOILD, w: 2 });
   for (const [x, y] of steps) b += L(x + 4, y - 4, x + 56, y - 4, { stroke: GREEN, w: 6 });
-  b += L(470, 222, 470, 246, { stroke: BLUE, w: 2, arrow: 'blue' }) + T(478, 236, 'Water pools and soaks in', { size: 12 });
+  b += L(470, 222, 470, 246, { stroke: BLUE, w: 2, arrow: 'blue' }) + TL(462, 200, 'Water pools\nand soaks in', { anchor: 'end', size: 12 });
   b += TL(540, 345, 'Flat steps cut into a steep slope\nshorten each run of water.', { anchor: 'middle', size: 12 });
   FIGS.push(svg('sustainable-agriculture-hillside', W, H, 'Contour plowing, strip cropping and terracing on hillsides',
     'Two hillsides. Left: plowed rows follow the contour of the hill instead of running up and down it, and strips of different crops alternate, so each row and strip slows the water running downhill. Right: terraces, flat steps cut into a steep slope, each planted with a crop; water pools on each step and soaks in instead of running down the whole slope.', b));
