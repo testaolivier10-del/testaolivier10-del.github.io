@@ -146,7 +146,7 @@
     { id: 'O', t: 0.1, fill: 'o' }, { id: 'A', t: 0.2, fill: 'a' }, { id: 'E', t: 0.12, fill: 'e' }, { id: 'B', t: 0.22, fill: 'b' }, { id: 'C', t: 0.18, fill: 'c' }, { id: 'R', t: 0.18, fill: 'r' }
   ];
   function profileSvg(o){
-    var W = o.W, H = o.H, phone = W < 600, x0 = phone ? 18 : 40, w = phone ? 150 : 260, top = phone ? 50 : 56, h = H - top - 20, out = [], y = top, r = M.rng(5);
+    var W = o.W, H = o.H, phone = W < 600, x0 = phone ? 18 : 60, w = phone ? 150 : 330, top = phone ? 50 : 56, h = H - top - 20, out = [], y = top, r = M.rng(5);
     out.push('<text class="st-title" x="' + x0 + '" y="' + (top - 26) + '">Soil profile</text>');
     // grass and a plant on top
     out.push('<path class="st-grass" d="M' + x0 + ' ' + top + ' h' + w + ' v-4 h-' + w + 'z"/>' + [0.15, 0.35, 0.6, 0.85].map(function(f){ var gx = x0 + w * f; return '<path class="st-blade" d="M' + gx + ' ' + top + ' q-3 -12 -8 -16 M' + gx + ' ' + top + ' q2 -14 6 -20 M' + gx + ' ' + top + ' q5 -8 12 -10"/>'; }).join(''));
@@ -176,8 +176,9 @@
     var lx = x0 + w + 14, lw = W - lx - 8;
     labels.forEach(function(L){
       var nm = L.ask ? '?' : L.H0.name, ds = L.ask ? '' : L.H0.what.split(':')[0];
-      var show = !L.ask && (!o.sel || o.sel === L.z.id || !phone);
-      out.push('<text class="st-hz-n' + (o.sel === L.z.id ? ' is-sel' : '') + '" x="' + lx + '" y="' + (L.y - 2).toFixed(1) + '">' + esc(nm) + '</text>' + (show ? '<text class="st-hz-d" x="' + lx + '" y="' + (L.y + (phone ? 13 : 15)).toFixed(1) + '">' + esc(phone && ds.length > 22 ? ds.slice(0, 22) + '…' : ds) + '</text>' : ''));
+      var show = !L.ask && (!o.sel || o.sel === L.z.id || !phone), full = !phone && !L.ask ? L.H0.what.split(': ')[1] || '' : '';
+      out.push('<text class="st-hz-n' + (o.sel === L.z.id ? ' is-sel' : '') + '" x="' + lx + '" y="' + (L.y - (full ? 8 : 2)).toFixed(1) + '">' + esc(nm) + '</text>' + (show ? '<text class="st-hz-d" x="' + lx + '" y="' + (L.y + (phone ? 13 : 9)).toFixed(1) + '">' + esc(phone && ds.length > 22 ? ds.slice(0, 22) + '…' : ds) + '</text>' : '') +
+        (full ? '<text class="st-hz-f" x="' + lx + '" y="' + (L.y + 26).toFixed(1) + '">' + esc(full.length > 58 ? full.slice(0, 57) + '…' : full) + '</text>' : ''));
       out.push('<path class="st-hz-tick" d="M' + (x0 + w) + ' ' + L.y.toFixed(1) + ' h10"/>');
     });
     void lw;

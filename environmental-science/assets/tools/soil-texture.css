@@ -70,6 +70,7 @@
 .st-svg .st-hz:focus{outline:none;} .st-hz:focus-visible .st-hzr{stroke:var(--cink);stroke-width:4;}
 .st-hz-n{font-weight:900;font-size:14px;fill:var(--ink);} .st-hz-n.is-sel{fill:var(--cink);}
 .st-hz-d{font-weight:700;font-size:12.5px;fill:var(--muted);}
+.st-hz-f{font-weight:600;font-size:12px;fill:var(--muted);opacity:.85;}
 .st-hz-tick{stroke:var(--muted);stroke-width:1.5;}
 .st-leach{stroke:#5BA3D0;stroke-width:3;fill:none;stroke-dasharray:5 4;}
 .st-arr-h{fill:#5BA3D0;}
