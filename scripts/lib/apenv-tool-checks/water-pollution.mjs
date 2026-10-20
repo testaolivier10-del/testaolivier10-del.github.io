@@ -59,6 +59,7 @@ export function recheck(p, c, w, errs) {
   } else if (p.type === 'load') {
     const kg = Calc.evaluate({ fn: 'convert', args: [Calc.evaluate({ fn: 'mul', args: [g.conc, g.flow] }), 'mg', 'kg'] });
     need(close(keyOf(stepOf(p, 'load')), kg), `load key is not ${kg}`);
+    for (const k of ['load', 'reduce']) { const st = stepOf(p, k), v = Math.round(keyOf(st) * 10) / 10; need(M.diagnoseUnit(st.cell, { value: String(v), unit: 'kg/day' }).ok, `${k}: the answer rounded to 0.1 as the hint asks (${v}) grades wrong`); }
     const s = stepOf(p, 'loadset'), r = Expr.evaluate(s.cell.setup.answer, {}, []);
     need(r.ok && close(r.value, kg, 1e-9, 1e-9) && Expr.dimText(r.dims) === 'kg/day', 'the setup key is not the load in kg/day');
     const left = Calc.evaluate({ fn: 'percentOf', args: [100 - g.cut, kg] });

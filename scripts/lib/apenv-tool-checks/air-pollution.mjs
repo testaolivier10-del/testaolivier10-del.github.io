@@ -36,7 +36,7 @@ export function science(model) {
 }
 
 export function recheck(p, c, w, errs) {
-  const { Calc, Expr, model } = runtime('air-pollution');
+  const { Calc, Expr, model, M } = runtime('air-pollution');
   const g = p.given, bad = m => errs.push(`${w}: ${m}`);
   if (!g) return bad('no givens on the problem');
   if (p.type === 'smog') {
@@ -54,6 +54,8 @@ export function recheck(p, c, w, errs) {
     if (!r.ok || !close(r.value, t, 1e-9)) bad('setup value');
     if (!/^Sulfur dioxide and nitrogen oxides/.test(right(step(p, 'cause')))) bad('cause key');
     if (!(g.a < 5.6)) bad('the acid rain must be below 5.6');
+    if (!(g.b <= 5.6)) bad('the comparison rain cannot be cleaner than unpolluted rain (pH 5.6)');
+    if (M.diagnoseSetup(step(p, 'setup').cell, String(t)).ok) bad('a bare number is accepted as the setup');
   } else if (p.type === 'reduce') {
     if (!FIX[g.id].test(right(step(p, 'fix')))) bad(`fix key for ${g.id}`);
     const fx = step(p, 'fix');

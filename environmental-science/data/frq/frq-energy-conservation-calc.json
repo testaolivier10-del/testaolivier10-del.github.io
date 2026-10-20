@@ -94,7 +94,7 @@
      ]
     }
    ],
-   "sample": "Percent change = (new - old) / old × 100 = (400 kWh - 1,100 kWh) / 1,100 kWh × 100 = -63.6%. Electricity use for the refrigerator decreases by about 63.6%.",
+   "sample": "Percent decrease = (old - new) / old × 100 = (1,100 kWh - 400 kWh) / 1,100 kWh × 100 = 63.6%. Electricity use for the refrigerator decreases by about 63.6%. (Writing (new - old) / old × 100 = -63.6% earns the same points.)",
    "check": {
     "type": "setup",
     "setup": {
@@ -111,6 +111,10 @@
       {
        "expr": "(1100 - 400) / 1100",
        "why": "Multiply by 100 to turn the fraction into a percent."
+      },
+      {
+       "expr": "(400 - 1100) / 1100 * 100",
+       "why": "Also right on the exam: a -63.6% change is a 63.6% decrease. This checker asks for the size of the decrease, (1,100 - 400) / 1,100 × 100."
       }
      ],
      "then": {
@@ -133,6 +137,10 @@
        {
         "value": 175,
         "why": "You divided by the new value (400). Percent change divides by the old value, 1,100."
+       },
+       {
+        "value": -63.64,
+        "why": "Also right on the exam: a -63.6% change is a 63.6% decrease. This checker asks for the size of the decrease, 63.6%."
        }
       ]
      }

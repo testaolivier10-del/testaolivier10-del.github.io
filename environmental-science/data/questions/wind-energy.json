@@ -60,7 +60,7 @@
     "Wind cools a steam boiler, which then spins a turbine",
     "Sunlight on the blades makes an electric current flow",
     "Air pressure squeezes a battery inside the tall tower",
-    "Wind spins blades that turn a generator"
+    "Wind spins the blades, which turn a generator"
    ],
    "correct": 3,
    "why": {
@@ -85,7 +85,7 @@
    "options": [
     "The air is warmer up high, which helps spin the blades",
     "Tall towers use less steel than short towers need",
-    "Wind is faster and steadier up high",
+    "Wind is faster and steadier high above trees and buildings",
     "Tall towers keep birds and bats away from the blades"
    ],
    "correct": 2,
@@ -110,7 +110,7 @@
    "q": "Which is an environmental drawback of wind farms?",
    "options": [
     "They produce radioactive waste each year",
-    "Blades can kill birds and bats",
+    "Spinning blades can kill birds and bats",
     "They release carbon dioxide while turning",
     "They flood large areas of nearby farmland"
    ],
@@ -135,7 +135,7 @@
    "diff": 2,
    "q": "A farmer leases land for a wind farm. What can the farmer still do with most of the land?",
    "options": [
-    "Grow crops or graze cattle",
+    "Grow crops or graze cattle between the turbines",
     "Nothing, since the turbines cover the whole field",
     "Build houses, since crops do not grow near turbines",
     "Use it for more turbines and nothing else"
@@ -164,7 +164,7 @@
     "More turbines built in the same calm valley",
     "Taller blades that keep spinning without wind",
     "Turbines that run on sunlight stored in the tower",
-    "Storage, a wide grid or backup sources"
+    "Storage, a wide grid or backup power sources"
    ],
    "correct": 3,
    "why": {
@@ -189,7 +189,7 @@
    "options": [
     "Turbines at sea do not need a generator to make electricity",
     "Ocean tides turn the blades when the wind is calm at sea",
-    "Sea winds are stronger and steadier",
+    "Winds over open sea are stronger and steadier than on land",
     "Seawater cools the generators so they need less maintenance"
    ],
    "correct": 2,
@@ -332,7 +332,7 @@
     "A wind farm releases more carbon dioxide than a nuclear plant",
     "Wind turbines are broken down 65 percent of the time",
     "A wind farm costs more to build than a nuclear plant",
-    "Wind averages less of its maximum output"
+    "A wind farm averages a smaller share of its maximum"
    ],
    "correct": 3,
    "why": {
@@ -440,7 +440,7 @@
    "q": "Based on the diagram, why is wind called intermittent?",
    "stimulus": "wind-energy-s2",
    "options": [
-    "Output rises and falls with the wind",
+    "Its output rises and falls with the wind",
     "The blades stop each hour to cool down",
     "The generator works at night and not by day",
     "The tower is rebuilt each year after storms"
@@ -524,7 +524,7 @@
    "options": [
     "A migratory bird corridor along a mountain ridge",
     "A city center surrounded by tall office buildings",
-    "A windy plain with crops below",
+    "A windy plain where crops grow between the turbines",
     "A forested valley with light winds and many bats"
    ],
    "correct": 2,
@@ -582,7 +582,7 @@
    "diff": 2,
    "q": "If the wind speed doubles, a turbine's power output rises about eightfold (it depends on speed cubed). What does this mean for choosing a site?",
    "options": [
-    "A bit more wind speed gives far more power",
+    "A small rise in wind speed gives a much larger rise in power",
     "Wind speed hardly matters, as long as there is some wind",
     "Sites with half the wind speed give half the power output",
     "Sites with faster wind give less power because the blades stall"

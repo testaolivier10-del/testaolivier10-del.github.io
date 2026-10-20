@@ -66,7 +66,7 @@
     "Heats water in roof pipes with sunlight and a pump",
     "Stores the sun's heat in a thick stone floor for the night",
     "Burns fuel to make steam whenever the sun goes down",
-    "Turns sunlight into electricity"
+    "Turns sunlight directly into an electric current"
    ],
    "correct": 3,
    "why": {
@@ -91,7 +91,7 @@
    "options": [
     "Photovoltaic panels on the roof wired to an inverter in the garage",
     "An electric heater powered by a nearby solar farm",
-    "Large south-facing windows and a thick floor",
+    "Large south-facing windows and a thick stone floor",
     "Roof panels that pump hot fluid to a storage tank in the basement"
    ],
    "correct": 2,
@@ -521,24 +521,22 @@
    "q": "Which are drawbacks of photovoltaic solar power? Select all that apply.",
    "options": [
     "No output at night",
-    "Mining and manufacturing for panels",
+    "Noise from spinning parts inside each panel",
     "Carbon dioxide released while running",
-    "Large land area for big solar farms",
+    "Warm cooling water returned to rivers",
     "Radioactive waste from used panels",
     "Fuel that has to be bought each month"
    ],
    "correct": [
-    0,
-    1,
-    3
+    0
    ],
    "why": {
-    "correct": "PV produces nothing at night, needs mined materials and factory energy, and large farms take land. It releases no carbon dioxide while running and makes no radioactive waste.",
+    "correct": "Of these, only intermittency is a drawback of PV: no sunlight, no output. Panels have no moving parts, burn nothing, need no cooling water and make no radioactive waste. (Their real drawbacks also include land use and the mining and manufacturing behind them.)",
     "options": [
      "Right: intermittency.",
-     "Right: silicon, metals and glass must be mined and processed.",
+     "A PV cell has no moving parts; light frees electrons in the silicon.",
      "Panels release nothing while making electricity.",
-     "Right: utility-scale farms cover large areas.",
+     "PV makes no steam, so it needs no cooling water; that is a drawback of steam power plants.",
      "Old panels are discarded electronics, not radioactive waste.",
      "Sunlight is free; there is no fuel to buy."
     ]

@@ -81,7 +81,7 @@
    "options": [
     "By pressing vegetable oil and mixing it with methanol",
     "By splitting water into its parts with electricity",
-    "By fermenting sugar from corn or sugarcane",
+    "By fermenting the sugars in crops such as corn",
     "By refining crude oil at a very high temperature"
    ],
    "correct": 2,
@@ -106,7 +106,7 @@
    "q": "What is biodiesel made from?",
    "options": [
     "Natural gas that is cooled until it becomes a liquid",
-    "Vegetable oils or animal fats",
+    "Vegetable oils, such as soybean oil, or animal fats",
     "Fermented corn sugar that is distilled into alcohol",
     "Coal that has been heated and turned into a liquid"
    ],
@@ -185,7 +185,7 @@
    "options": [
     "It does not mix with gasoline, so ordinary cars need new engines",
     "It is a nonrenewable fuel that will run out within a few decades",
-    "It competes with food crops for land and water",
+    "It competes with food crops for farmland and water",
     "It releases radioactive waste that has to be stored for centuries"
    ],
    "correct": 2,
@@ -210,7 +210,7 @@
    "q": "A dairy farm collects cow manure in a sealed tank where bacteria break it down without oxygen. What fuel does this make?",
    "options": [
     "Hydrogen, released when the bacteria split water",
-    "Biogas, which is mostly methane",
+    "Biogas, a fuel gas that is mostly methane",
     "Ethanol, from the sugar in the cows' feed",
     "Coal, after the manure is pressed and heated"
    ],
@@ -361,7 +361,7 @@
    "stimulus": "biomass-energy-s1",
    "options": [
     "Each crop uses more fossil energy than the fuel energy it delivers",
-    "Sugarcane gives far more net energy than corn",
+    "Sugarcane returns far more net energy per hectare than corn",
     "Corn ethanol returns more net energy per hectare than sugarcane ethanol",
     "The two biodiesel crops return the most fuel energy per hectare"
    ],
@@ -387,7 +387,7 @@
    "q": "According to the diagram, how does carbon get into biomass?",
    "stimulus": "biomass-energy-s2",
    "options": [
-    "By photosynthesis",
+    "Plants take in carbon dioxide by photosynthesis",
     "Burning releases carbon into the plants",
     "Plants absorb carbon from fossil fuels in the soil",
     "Harvesting adds carbon to the wood"
@@ -417,7 +417,7 @@
     "Regrowth removes the carbon faster than burning releases it",
     "Carbon released from biomass stays in the air permanently",
     "Both steps take the same time, so the cycle stays balanced",
-    "Release is much faster than uptake"
+    "Carbon is released far faster than regrowth takes it up"
    ],
    "correct": 3,
    "why": {
@@ -443,7 +443,7 @@
    "options": [
     "No change, as biomass of any kind is carbon neutral when it burns",
     "Carbon dioxide falls, as burning the cleared forest removes carbon",
-    "Carbon dioxide rises from the lost forest carbon",
+    "Carbon dioxide rises, as the forest's stored carbon is released",
     "Carbon dioxide falls, as palm biodiesel replaces diesel made from oil"
    ],
    "correct": 2,
@@ -521,7 +521,7 @@
    "diff": 2,
    "q": "Which is an advantage of using biomass for energy?",
    "options": [
-    "It can turn farm waste into fuel",
+    "It can turn farm and forestry waste into fuel",
     "It produces no air pollution when it is burned",
     "It needs no land to grow it or to collect it",
     "It is a nondepletable resource, just like sunlight"
@@ -550,7 +550,7 @@
     "It releases more energy per kilogram than fossil fuels do",
     "It is the one fuel that works in a cooking stove",
     "Governments there ban fossil fuels in rural villages",
-    "It is nearby and costs little"
+    "It can be gathered nearby for little or no money"
    ],
    "correct": 3,
    "why": {

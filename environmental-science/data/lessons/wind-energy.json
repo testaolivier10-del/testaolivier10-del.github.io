@@ -1,6 +1,6 @@
 {
  "topic": "wind-energy",
- "hook": "On the plains of Iowa and Texas, rows of white turbines taller than a 30-story building turn slowly above fields of corn and cattle. In Iowa, wind now makes more than half of the state's electricity. It is free, clean while running and shares land with farming, but it stops when the air goes still.",
+ "hook": "On the plains of Iowa and Texas, rows of white turbines taller than a 30-story building turn slowly above fields of corn and cattle. In Iowa, wind now makes about two thirds of the state's electricity. It is free, clean while running and shares land with farming, but it stops when the air goes still.",
  "prereq": [
   {
    "q": "What drives the wind?",

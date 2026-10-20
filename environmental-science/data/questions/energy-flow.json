@@ -253,7 +253,7 @@
     "correct": "Each step up loses most of the energy. People eating grain are primary consumers; eating beef from grain-fed cattle adds a step.",
     "options": [
      "Right: one fewer step means more energy reaches people.",
-     "Even so, cattle lose most of the grain’s energy to respiration and heat.",
+     "Calories per kilogram are not the reason: the cattle burn most of the grain’s energy in respiration and lose it as heat, so far fewer calories reach people.",
      "Cattle cannot make energy; they get it from plants.",
      "Grain comes from producers."
     ]
@@ -495,7 +495,7 @@
    "stimulus": "energy-flow-s2",
    "options": [
     "Grazers lose most energy as heat.",
-    "Grazers eat just a tiny share of the grass.",
+    "Energy is destroyed as grazers digest grass.",
     "Grasses photosynthesize faster at night.",
     "Grazers are eaten by the grasses they graze."
    ],
@@ -504,7 +504,7 @@
     "correct": "Less energy reaches each level, so less tissue can be built and supported there.",
     "options": [
      "Right: energy lost as heat limits the biomass above.",
-     "Even if grazers ate much more, most energy would still be lost as heat.",
+     "Energy is never destroyed (first law); most of it leaves as heat.",
      "Photosynthesis needs light.",
      "Grasses do not eat animals."
     ]

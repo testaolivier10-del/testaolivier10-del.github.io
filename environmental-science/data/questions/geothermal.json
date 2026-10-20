@@ -50,7 +50,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "Geothermal heat comes mostly from radioactive decay deep in Earth, plus heat left over from Earth's formation.",
+    "correct": "Geothermal heat comes from Earth's interior: roughly half from radioactive decay deep in Earth, the rest heat left over from Earth's formation.",
     "options": [
      "Sunlight warms only the top few meters; geothermal plants tap heat from far deeper.",
      "No fuel is burned in a geothermal plant.",
@@ -71,7 +71,7 @@
    "options": [
     "Geothermal plants have to be built next to an ocean for cooling",
     "The middle of a continent has no heat at any depth beneath it",
-    "Hot rock is near the surface at plate boundaries",
+    "Hot rock is close to the surface near plate boundaries",
     "Those places get more sunlight to heat the ground than other places"
    ],
    "correct": 2,
@@ -96,7 +96,7 @@
    "q": "At a geothermal power plant, why is the cooled water pumped back down into the ground?",
    "options": [
     "To cool the hot rock so that the plant can shut down",
-    "To refill the underground reservoir",
+    "To refill the underground reservoir so it keeps making steam",
     "To add more salt to the water so that it boils faster",
     "To store the plant's electricity as heat for later use"
    ],
@@ -121,7 +121,7 @@
    "diff": 3,
    "q": "A geothermal field produced less steam each year after its wells were drilled. What is the most likely cause?",
    "options": [
-    "Hot water was removed faster than it returned",
+    "Hot water was pumped out faster than it was replaced",
     "Earth's core has started to cool down quickly in that region",
     "Sunlight on the field was blocked by new buildings nearby",
     "The steam was used up by radioactive decay deep underground"
@@ -200,7 +200,7 @@
    "q": "Which is an environmental drawback of some geothermal power plants?",
    "options": [
     "They flood large river valleys behind tall dams",
-    "They can release hydrogen sulfide gas",
+    "They can release hydrogen sulfide gas with the steam",
     "They release large amounts of soot, just like a coal plant",
     "They depend on daylight and stop working each night"
    ],
@@ -548,7 +548,7 @@
    "diff": 2,
    "q": "Which is an advantage of geothermal power plants over wind and solar?",
    "options": [
-    "Steady output in any weather, day or night",
+    "Steady output in any weather, by day or by night",
     "They can be built on any piece of land in the world",
     "They release no gases or dissolved minerals of any kind",
     "They need no drilling or pumping in order to operate"

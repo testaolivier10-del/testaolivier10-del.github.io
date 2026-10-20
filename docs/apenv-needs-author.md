@@ -131,10 +131,9 @@ plan and the countdown use the date only.
 
 ## Author C (Unit 4): points for a person to check (open, 2026-10-20)
 
-- **Soil erodibility in `frq-soil-properties-design`.** The pilot data rank washed-off soil as sandy soil < loam < silt loam (silt is the most erodible texture, mainstream USDA erodibility). Clay was left out on purpose: clay is cohesive but sheds water, so whether it erodes more or less than loam depends on the test, and a key built on it would be contestable. Confirm the ranking reads as intended.
 - **Plot runtime limit (for the lead, not authored content).** `env-plot.js` draws a `dual` plot's two axis labels and legend at fixed positions that collide at the default 360 px width; the `bar` category labels crowd at 5 categories. Author C's stimuli set `width: 480`/`520` and short labels to fit. A layout fix in the shared plot file would help other authors.
-- **Real data used.** `atmosphere-s1` uses the U.S. Standard Atmosphere, 1976 layer-boundary temperatures (mesopause 84.852 km rounded to 85 km); `atmosphere-s2` uses standard dry-air volume percents with CO2 rounded to 0.042% (about 420 ppm, NOAA 2024). The NASA fact sheet fetch was not answered in this session, so the values are from standard references in memory; a person should spot-check them against NOAA/NASA before launch.
-- **Insolation curve (`solar-radiation-seasons-s1`).** Labeled invented, but rounded from a calculated yearly-average top-of-atmosphere insolation (solar constant 1,361 W/m²): 415, 400, 365, 305, 235, 185, 175 W/m² at 0-90° N.
+
+The other Author C points were settled by the Unit 4 review; see the resolved entry at the end of this file.
 
 ## Author G (Units 8.12-8.15 and 9): points for a person to check (open, 2026-10-20)
 
@@ -177,3 +176,20 @@ plan and the countdown use the date only.
   burning and small-scale gold mining" with coal named first, and `env-bioaccumulation-biomagnification-12`
   asks only about coal. The CED wording for 8.8 could not be read (see `ced-text`); nothing in our text
   contradicts a CED that names coal.
+
+## Author C (Unit 4): resolved by the Unit 4 review (resolved 2026-10-20)
+
+- **Soil erodibility in `frq-soil-properties-design`.** The pilot ranking sandy soil < loam < silt loam matches the USDA
+  soil erodibility factor (K, from the Wischmeier nomograph used in NRCS soil surveys): soils dominated by silt and very
+  fine sand have the highest K, sandy soils the lowest, loams in between (UC ANR Publication 8194, which uses NRCS
+  SSURGO K values). Leaving clay out is right: well-aggregated clay has a low to moderate K, so a clay ranking would
+  depend on the test. No change.
+- **Real data in `atmosphere-s1` and `atmosphere-s2`.** The plotted points match the U.S. Standard Atmosphere, 1976
+  layer table (base temperature 288.15 K and lapse rates -6.5, 0, +1.0, +2.8, 0, -2.8, -2.0 K/km at 0, 11, 20, 32,
+  47, 51, 71 km gives 15, -56.5, -56.5, -44.5, -2.5, -2.5, -58.5 and -86.3 °C at 84.852 km). Carbon dioxide 0.042%
+  matches NOAA GML's 2024 global mean, 422.8 ppm (climate.gov). The dry-air percents (78.08, 20.95, 0.93) are the
+  standard reference values; the NASA Earth fact sheet and the NOAA JetStream page could not be fetched in the
+  review session, so a person may still glance at the NASA page, but nothing found disagrees.
+- **Insolation curve (`solar-radiation-seasons-s1`).** Recomputed from a solar constant of 1,361 W/m² and a 23.44°
+  tilt: 415.5, 402.6, 365.2, 306.9, 236.3, 185.6, 172.3 W/m² at 0-90° N. Two plotted points moved to the nearest 5
+  (15° N 400 to 405, 90° N 175 to 170); still labeled invented and rounded.

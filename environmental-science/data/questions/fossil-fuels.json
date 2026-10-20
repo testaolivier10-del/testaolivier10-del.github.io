@@ -5,7 +5,7 @@
    "title": "Efficiency at each step of a coal-fired power plant",
    "invented": true,
    "table": {
-    "caption": "Share of the energy entering each step that leaves it as useful energy (invented data for practice, near typical values)",
+    "caption": "Share of the energy entering each step that leaves it as useful energy (invented data for practice; the overall value matches the average U.S. coal plant, EIA 2024)",
     "cols": [
      "Step",
      "What happens",
@@ -20,7 +20,7 @@
      [
       "2. Turbine and steam cycle",
       "heat in steam becomes motion of the turbine",
-      "45"
+      "37"
      ],
      [
       "3. Generator",
@@ -73,7 +73,7 @@
    "options": [
     "It cools the used steam back into liquid water for reuse",
     "It turns electricity into heat for nearby homes and offices",
-    "It turns moving steam into a spinning shaft",
+    "It turns the energy of moving steam into a spinning shaft",
     "It burns the fuel to release heat inside the boiler walls"
    ],
    "correct": 2,
@@ -98,7 +98,7 @@
    "q": "A coal-fired power plant is about 33 percent efficient. Where does most of the remaining energy go?",
    "options": [
     "Back into the coal pile, where it is burned again later",
-    "Waste heat in cooling water and stack gases",
+    "Waste heat carried off in cooling water and stack gases",
     "Into the coal ash that collects in the bottom of the boiler",
     "Into the electricity lost at the wall outlet of each home"
    ],
@@ -262,14 +262,14 @@
    "q": "What is the overall efficiency from the energy in the coal to the electricity delivered to homes? Give a percent.",
    "stimulus": "fossil-fuels-s1",
    "why": {
-    "correct": "Multiply the step efficiencies as decimals: $0.88 \\times 0.45 \\times 0.98 \\times 0.94 \\times 100 \\approx 36.5\\%$."
+    "correct": "Multiply the step efficiencies as decimals: $0.88 \\times 0.37 \\times 0.98 \\times 0.94 \\times 100 \\approx 30.0\\%$."
    },
    "numeric": {
     "from": {
      "fn": "chainEfficiency",
      "args": [
       88,
-      45,
+      37,
       98,
       94
      ]
@@ -278,11 +278,11 @@
     "tol": 0.15,
     "mistakes": [
      {
-      "value": 81.25,
-      "why": "You averaged the four efficiencies. Losses build on each other, so multiply them: 0.88 × 0.45 × 0.98 × 0.94."
+      "value": 79.25,
+      "why": "You averaged the four efficiencies. Losses build on each other, so multiply them: 0.88 × 0.37 × 0.98 × 0.94."
      },
      {
-      "value": 45,
+      "value": 37,
       "why": "That is only the turbine step. Multiply all four steps together for the overall efficiency."
      },
      {
@@ -290,7 +290,7 @@
        "fn": "mul",
        "args": [
         0.88,
-        0.45,
+        0.37,
         0.98,
         0.94
        ]
@@ -318,11 +318,11 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "The steam cycle keeps only 45 percent and loses 55 percent, mostly as heat in the condenser's cooling water.",
+    "correct": "The steam cycle keeps only 37 percent and loses 63 percent, mostly as heat in the condenser's cooling water.",
     "options": [
      "The generator loses 2 percent.",
      "Power lines lose 6 percent.",
-     "Right: 55 percent is lost in the steam cycle.",
+     "Right: 63 percent is lost in the steam cycle.",
      "The boiler loses 12 percent."
     ]
    }
@@ -338,25 +338,25 @@
    "q": "The plant burns coal containing 1,000 MWh of chemical energy. Write the setup for the electricity that reaches homes, using the efficiency of each step, then give the answer in MWh.",
    "stimulus": "fossil-fuels-s1",
    "why": {
-    "correct": "$1{,}000\\,\\text{MWh} \\times 0.88 \\times 0.45 \\times 0.98 \\times 0.94 \\approx 364.8\\,\\text{MWh}$."
+    "correct": "$1{,}000\\,\\text{MWh} \\times 0.88 \\times 0.37 \\times 0.98 \\times 0.94 \\approx 299.9\\,\\text{MWh}$."
    },
    "setup": {
-    "answer": "1000 MWh * 0.88 * 0.45 * 0.98 * 0.94",
+    "answer": "1000 MWh * 0.88 * 0.37 * 0.98 * 0.94",
     "unit": "MWh",
     "mustUse": [
      "1000",
      "0.88",
-     "0.45",
+     "0.37",
      "0.98",
      "0.94"
     ],
     "mistakes": [
      {
-      "expr": "1000 MWh * 0.45",
+      "expr": "1000 MWh * 0.37",
       "why": "You used only the turbine step. Multiply by every step's efficiency, because each step loses part of what it receives."
      },
      {
-      "expr": "1000 MWh * 88 * 45 * 98 * 94",
+      "expr": "1000 MWh * 88 * 37 * 98 * 94",
       "why": "Write each efficiency as a decimal (88% = 0.88) before you multiply."
      }
     ],
@@ -367,7 +367,7 @@
       "args": [
        1000,
        0.88,
-       0.45,
+       0.37,
        0.98,
        0.94
       ]
@@ -375,8 +375,8 @@
      "tol": 0.5,
      "mistakes": [
       {
-       "value": 450,
-       "why": "That is 1,000 × 0.45, the turbine step alone. Include the boiler, generator and power lines too."
+       "value": 370,
+       "why": "That is 1,000 × 0.37, the turbine step alone. Include the boiler, generator and power lines too."
       }
      ]
     }
@@ -393,7 +393,7 @@
    "q": "How much chemical energy in coal, in MWh, must the plant burn to deliver 500 MWh of electricity to homes? Round to the nearest whole MWh.",
    "stimulus": "fossil-fuels-s1",
    "why": {
-    "correct": "Overall efficiency is about 36.48 percent, so $\\frac{500\\,\\text{MWh}}{0.3648} \\approx 1{,}371\\,\\text{MWh}$."
+    "correct": "Overall efficiency is about 29.99 percent, so $\\frac{500\\,\\text{MWh}}{0.2999} \\approx 1{,}667\\,\\text{MWh}$."
    },
    "numeric": {
     "from": {
@@ -404,7 +404,7 @@
        "fn": "chainEfficiency",
        "args": [
         88,
-        45,
+        37,
         98,
         94
        ]
@@ -420,7 +420,7 @@
        "args": [
         500,
         0.88,
-        0.45,
+        0.37,
         0.98,
         0.94
        ]
@@ -432,7 +432,7 @@
        "fn": "div",
        "args": [
         500,
-        0.45
+        0.37
        ]
       },
       "why": "You used only the turbine step. Divide by the overall efficiency of all four steps."
@@ -454,14 +454,14 @@
     "Painting the outside of the boiler a lighter color to reflect sunlight",
     "Replacing the power lines with lines that lose 5 percent instead of 6",
     "Burning the coal more slowly in the boiler so that the pile lasts longer",
-    "Using the waste heat to warm nearby buildings"
+    "Capturing waste heat from the steam cycle to warm nearby buildings"
    ],
    "correct": 3,
    "why": {
     "correct": "The steam cycle loses the most energy as heat. Putting that heat to use raises the share of the fuel's energy doing useful work far more than small gains elsewhere.",
     "options": [
      "Paint color does not change how much fuel energy becomes steam.",
-     "A 1 percent gain in the lines is small compared with the 55 percent lost in the steam cycle.",
+     "A 1 percent gain in the lines is small compared with the 63 percent lost in the steam cycle.",
      "Burning slower gives less power; it does not raise the share converted.",
      "Right: capturing waste heat targets the largest loss."
     ]
@@ -480,7 +480,7 @@
    "options": [
     "It turns the turbine's motion into electricity",
     "It removes carbon dioxide from the stack gases",
-    "It cools used steam back into water",
+    "It cools the used steam back into liquid water",
     "It burns the coal to release heat for the steam"
    ],
    "correct": 2,
@@ -506,7 +506,7 @@
    "stimulus": "fossil-fuels-s2",
    "options": [
     "The river water becomes radioactive for a distance below the outlet",
-    "Dissolved oxygen falls, as warm water holds less",
+    "Dissolved oxygen falls, because warmer water holds less of it",
     "The river becomes more acidic from carbon dioxide carried in the cooling water",
     "Metals washed from the coal pile build up in the fish downstream"
    ],
@@ -532,7 +532,7 @@
    "q": "Based on the diagram, why does a power plant convert only about one third of the fuel's energy into electricity?",
    "stimulus": "fossil-fuels-s2",
    "options": [
-    "The steam cycle must dump heat to cooling water",
+    "Turning heat into motion means dumping heat to cooling water",
     "The generator turns most of the turbine's motion back into heat",
     "Much of the coal passes through the boiler without burning",
     "Most electricity leaks out of the generator before it reaches the lines"

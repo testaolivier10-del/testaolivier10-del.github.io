@@ -83,8 +83,7 @@
     "answer": "30 days * 6 h/day * 2 kW",
     "mustUse": [
      "30",
-     "6",
-     "2"
+     "6"
     ],
     "unit": "kW h",
     "mistakes": [
@@ -93,8 +92,8 @@
       "why": "Energy is power times time, so multiply by 2 kW; dividing leaves units that do not make kWh."
      },
      {
-      "expr": "30 days * 6 h/day * 2000 W / 1000",
-      "why": "That works, but 2 kW is already in kilowatts. Multiply by 2 kW directly for kWh."
+      "expr": "30 days * 6 h/day * 2000 W",
+      "why": "That is in watt-hours (360,000 Wh). Multiply by 1 kW / 1,000 W, or use 2 kW, to get kWh."
      }
     ],
     "then": {

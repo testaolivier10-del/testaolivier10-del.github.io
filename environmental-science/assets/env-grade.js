@@ -45,9 +45,23 @@
      separators ("1,250"); powers of ten may be e6, × 10^6, x10^6, *10**6 or
      10⁶; a scale word (thousand, million, billion, trillion) multiplies. */
   var NUM_RE = /^([+-]?)\s*([0-9][0-9,]*\.?[0-9]*|\.[0-9]+)\s*(?:[eE]\s*([+-]?[0-9]+)|[×xX*·]\s*10\s*(?:\^|\*\*)?\s*\(?\s*([+-]?[0-9]+)\s*\)?)?(?![0-9])\s*(.*)$/;
+  // A unit may have a number in its denominator ("per 1,000 people",
+  // "births/1000", "per 100,000"); that number is part of the unit, not a
+  // second answer.
+  var NUM_DEN = /(?:\bper|\/)\s*\d[\d,]*(?:\.\d+)?/gi;
   function readNumber(s){
-    s = unsup(String(s == null ? '' : s)).trim().replace(/[−–—]/g, '-').replace(/\s+/g, ' ');
+    // A superscript run after a digit is a power ("10⁶" is 10^6, never 106);
+    // after a letter it stays a unit power (km², handled by normUnit).
+    s = String(s == null ? '' : s).replace(/(\d)\s*([⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)/g, function(m, d, sup){ return d + '^(' + unsup(sup) + ')'; });
+    s = unsup(s).trim().replace(/[−–—]/g, '-').replace(/\s+/g, ' ');
     if(!s) return null;
+    // A power of ten or a scale word with no number before it: "10^6 times",
+    // "10^(6)", "a million times", "one billion" (Bluebook answers to "how
+    // many times" questions).
+    var pw = /^([+-]?)\s*10\s*(?:\^|\*\*)\s*\(?\s*([+-]?\d+)\s*\)?(?![0-9.])\s*(.*)$/.exec(s);
+    if(pw) s = pw[1] + '1e' + pw[2] + (pw[3] ? ' ' + pw[3] : '');
+    var sw = /^(?:(?:a|an|one)\s+)?(thousand|million|billion|trillion)\b\s*(.*)$/i.exec(s);
+    if(sw) s = '1 ' + sw[1] + (sw[2] ? ' ' + sw[2] : '');
     var m = NUM_RE.exec(s);
     if(!m) return null;
     var digits = m[2], ex = m[3] != null ? m[3] : m[4], rest = (m[5] || '').trim();
@@ -59,7 +73,7 @@
     if(sm){ scale = sm[1].toLowerCase(); v *= SCALE[scale]; rest = sm[2].trim(); }
     // A stray second number in the unit means the input is not one answer
     // ("2 3 kg"), except exponents right after a letter (km2, m^3, s-1).
-    if(/[0-9]/.test(rest.replace(/([A-Za-z°)])(\^|\*\*)?[+-]?[0-9]+/g, '$1'))) return null;
+    if(/[0-9]/.test(rest.replace(NUM_DEN, ' per ').replace(/([A-Za-z°)])(\^|\*\*)?[+-]?[0-9]+/g, '$1'))) return null;
     return { value: m[1] === '-' ? -v : v, unit: rest, scale: scale, digits: digits };
   }
 
@@ -89,6 +103,10 @@
     // Metric tons as t or MT (never Mt, a megaton), decades, nanograms, kiloliters, seconds.
     t: 'tonne', MT: 'tonne', decade: 'decade', decades: 'decade', nanogram: 'ng', nanograms: 'ng', kiloliter: 'kL', kiloliters: 'kL', secs: 's',
     celsius: '°C', fahrenheit: '°F',
+    // "How many times": times, x, fold and × all mean a plain multiplier.
+    times: 'times', x: 'times', X: 'times', fold: 'times', '-fold': 'times',
+    // Scale words in a unit's denominator: "per thousand" is "per 1,000".
+    hundred: 'n100', thousand: 'n1000', million: 'n1000000',
     ppm: 'ppm', ppb: 'ppb', 'kilowatt-hour': 'kWh', 'kilowatt-hours': 'kWh', 'megawatt-hour': 'MWh', 'megawatt-hours': 'MWh'
   };
   // Compound symbols read as products: kWh is kW h, so "kW·h" and "kWh" agree.
@@ -96,6 +114,7 @@
   function normUnit(u){
     u = unsup(String(u || '')).trim();
     if(!u) return '';
+    if(/^(?:×|x|X|times|-?fold)$/.test(u)) return 'times';
     u = u.replace(/\b(?:degrees?|deg)\s*(C|F|celsius|fahrenheit)\b/gi, function(m, x){ return '°' + x.charAt(0).toUpperCase(); }).replace(/°\s+([CF])\b/g, '°$1')
       .replace(/\b(metric ton)s?\b/gi, 'tonne').replace(/kilowatt[- ]hours?/gi, 'kWh').replace(/megawatt[- ]hours?/gi, 'MWh')
       .replace(/\bsquare\s+([A-Za-z]+)/gi, '$1^2').replace(/\bsq\.?\s+([A-Za-z]+)/gi, '$1^2').replace(/\bcubic\s+([A-Za-z]+)/gi, '$1^3')
@@ -105,6 +124,9 @@
     u.split('/').forEach(function(part, i){
       part.trim().split(/\s+/).filter(Boolean).forEach(function(tok){
         if(tok === 'of' || tok === 'the' || tok === '1') return;
+        // A number in a unit ("per 1,000 people", "/100000"): one token, commas dropped.
+        if(/^\d[\d,]*$/.test(tok)){ var nt = 'n' + tok.replace(/,/g, ''); agg[nt] = (agg[nt] || 0) + (i ? -1 : 1); return; }
+        if(tok === '×'){ agg.times = (agg.times || 0) + 1; return; }
         var m = /^([A-Za-z°%$µμ][A-Za-z°%µμ-]*?)(-?\d+)?$/.exec(tok);
         if(!m){ agg['?' + tok] = (agg['?' + tok] || 0) + 1; return; }
         var name = m[1].replace(/[µμ]/g, 'u'), low = name.toLowerCase();
@@ -115,7 +137,15 @@
     });
     return Object.keys(agg).filter(function(k){ return agg[k]; }).sort().map(function(k){ return agg[k] === 1 ? k : k + agg[k]; }).join(' ');
   }
-  function unitIs(typed, list){ var t = normUnit(typed); return list.some(function(u){ return normUnit(u) === t; }); }
+  /* A crude rate keyed "births per 1,000 people" also accepts "per 1,000",
+     "per thousand people" and "/1000": when both units carry a number in the
+     denominator, the counted nouns (births, people ...) may be left out. */
+  var COUNTED = { person: 1, birth: 1, death: 1, individual: 1, woman: 1, child: 1 };
+  function bare(n){ return n.split(' ').filter(function(k){ return !COUNTED[k.replace(/-?\d+$/, '')]; }).join(' '); }
+  function unitIs(typed, list){
+    var t = normUnit(typed);
+    return list.some(function(u){ var w = normUnit(u); return w === t || (/\bn\d+-1\b/.test(w) && /\bn\d+-1\b/.test(t) && bare(w) === bare(t)); });
+  }
 
   /* The same unit with another prefix (kg for g, MWh for kWh), as a factor:
      typed value × factor = value in the wanted unit; null when unrelated. */
@@ -151,6 +181,8 @@
     var A = +N.answer, tol = tolerance(N), notes = [], mistake = null;
     var accepted = [N.unit].concat(N.units || []).filter(function(u){ return u != null && u !== ''; });
     var ask = N.askUnit != null ? !!N.askUnit : accepted.length > 0;
+    // "How many times": the multiplier word is optional, never a lost point.
+    if(ask && accepted.length && normUnit(N.unit) === 'times' && (!unitTyped || normUnit(unitTyped) === 'times')){ ask = false; }
     var parts = { value: near(p.value, A, tol), unit: null };
     if(ask && accepted.length){
       if(!unitTyped){ parts.unit = false; notes.push('Units: an answer needs its unit. This one is in ' + N.unit + '.'); }

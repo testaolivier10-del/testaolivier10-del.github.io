@@ -184,20 +184,19 @@
    "q": "Which of these sources are nondepletable, so using them today does not reduce the amount available tomorrow? Select all that apply.",
    "options": [
     "Sunlight",
-    "Wind",
+    "Groundwater from a slowly recharging aquifer",
     "Firewood",
     "Natural gas",
     "Corn grown for fuel"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Sunlight and wind keep arriving whatever we do. Firewood and corn are renewable but depletable, and natural gas is nonrenewable.",
+    "correct": "Only sunlight keeps arriving whatever we do. Groundwater, firewood and corn are renewable but depletable, and natural gas is nonrenewable.",
     "options": [
      "Right: tomorrow's sunlight does not depend on today's use.",
-     "Right: the wind is driven by the sun's uneven heating of Earth.",
+     "Pumping faster than recharge lowers the water table, so this water is depletable.",
      "Wood regrows, but cutting too fast depletes it.",
      "Natural gas is a fixed supply.",
      "A crop is renewable, but farmland and soil can be overused, so it is depletable."
@@ -215,7 +214,7 @@
    "q": "A country gets most of its energy from imported oil. Which is the strongest reason, based on the difference between renewable and nonrenewable resources, to shift toward local sunlight and wind?",
    "options": [
     "Oil is not burned to make electricity, so it is the wrong fuel for homes",
-    "Using sunlight and wind does not shrink their supply",
+    "Using sunlight and wind does not shrink the supply left for later",
     "Sunlight and wind produce steady electricity through the day and the night",
     "Sunlight and wind need no land and little equipment to collect and use"
    ],
@@ -322,7 +321,7 @@
    "stimulus": "renewable-nonrenewable-s1",
    "options": [
     "A study showing the island's forest grows slowly after cutting",
-    "Records of calm, cloudy weeks each winter",
+    "Weather records showing calm, cloudy weeks every winter",
     "A report that diesel prices rose sharply over the last year",
     "A survey showing most islanders support building local energy"
    ],
@@ -348,7 +347,7 @@
    "q": "The author says burning the island's forest would not be \"renewable in practice.\" Which reasoning supports this?",
    "stimulus": "renewable-nonrenewable-s1",
    "options": [
-    "The small forest would be cut faster than it regrows",
+    "The small forest would be cut much faster than its trees regrow",
     "Wood is a fossil fuel formed over millions of years, so it is nonrenewable",
     "Burning wood leaves ash, and a fuel that leaves ash is classified as nonrenewable",
     "Wood can be burned in any season of the year, so it does not count as renewable"
@@ -477,7 +476,7 @@
    "stimulus": "renewable-nonrenewable-s2",
    "options": [
     "It is being used sustainably, because some regrowth happens each year",
-    "It is being depleted: harvest is over twice regrowth",
+    "It is being depleted: harvest is more than twice regrowth",
     "It is nondepletable, because the trees in it grow back each year",
     "It is nonrenewable, because wood forms over millions of years"
    ],
@@ -577,7 +576,7 @@
    "options": [
     "Large amounts of carbon dioxide released while generating electricity",
     "Mining large amounts of fuel each year to keep the generators running",
-    "Output that varies with weather and time of day",
+    "Electricity output that rises and falls with weather and time of day",
     "A fuel supply for the generators that will run out within a few decades"
    ],
    "correct": 2,

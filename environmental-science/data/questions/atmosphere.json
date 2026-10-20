@@ -356,7 +356,8 @@
     "unit": "°C/km",
     "units": [
      "°C per km",
-     "degrees C per km"
+     "degrees C per km",
+     "C/km"
     ],
     "mistakes": [
      {
@@ -397,7 +398,7 @@
      "Right: ozone in the stratosphere absorbs UV and warms the air.",
      "The troposphere ends near 11 km and cools with height.",
      "The mesosphere, above 50 km, cools with height.",
-     "The thermosphere starts above about 85 km, off the top of this graph."
+     "The thermosphere starts at about 85 km, at the very top of this graph, and it has no clouds."
     ]
    }
   },

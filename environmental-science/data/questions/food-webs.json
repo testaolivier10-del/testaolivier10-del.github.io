@@ -348,19 +348,19 @@
    "q": "At which trophic levels does the hawk feed in this web?",
    "stimulus": "food-webs-s1",
    "options": [
-    "Levels 3 and 4",
-    "Level 1 alone",
+    "Levels 3, 4 and 5",
     "Level 2 alone",
-    "Levels 1 and 2"
+    "Levels 1 and 2",
+    "Levels 3 and 4 only"
    ],
    "correct": 0,
    "why": {
-    "correct": "Rabbits and mice are primary consumers, so eating them puts the hawk at level 3; snakes are secondary consumers, so eating them puts it at level 4.",
+    "correct": "Rabbits and mice are primary consumers, so eating them puts the hawk at level 3. A snake that ate a mouse is at level 3, so eating it puts the hawk at level 4. A snake that ate a frog (grass → grasshopper → frog → snake) is at level 4, so eating it puts the hawk at level 5.",
     "options": [
-     "Right: two levels.",
-     "Level 1 is producers.",
-     "Level 2 is plant-eaters.",
-     "Hawks do not eat plants."
+     "Right: three levels, through rabbits and mice, and through snakes fed on mice or on frogs.",
+     "Level 2 is plant-eaters; the hawk eats animals.",
+     "Hawks do not eat plants, and they are not plant-eaters.",
+     "Levels 3 and 4 miss the longest chain: grass → grasshopper → frog → snake → hawk puts the hawk at level 5."
     ]
    }
   },

@@ -193,7 +193,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "Oil, coal and natural gas together supply roughly four fifths of the world's energy.",
+    "correct": "Oil, coal and natural gas together supply about four fifths of the world's energy (80 to 86 percent, depending on the source).",
     "options": [
      "Wind, sunlight and moving water are growing fast but supply far less than fossil fuels.",
      "Nuclear power supplies only a few percent of the world's energy, and Earth's internal heat less.",
@@ -271,7 +271,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Biomass is cheap or free to gather. About 2 billion people lack clean cooking fuels, and most of them burn wood, charcoal, crop waste or dung, often over open fires.",
+    "correct": "Biomass is cheap or free to gather. About 2.1 billion people lack clean cooking fuels, and most of them burn wood, charcoal, crop waste or dung, often over open fires.",
     "options": [
      "Right: biomass is the main household fuel where other fuels are costly or unavailable.",
      "Gas networks are rare in rural areas of developing countries.",

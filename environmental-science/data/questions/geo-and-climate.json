@@ -470,10 +470,10 @@
    "diff": 2,
    "q": "The coast of northern Chile is one of the driest deserts on Earth, even though it lies beside the Pacific Ocean. A cold current flows north along this coast. How does the cold current help keep the coast dry?",
    "options": [
-    "It cools the air above it, and cool air holds little moisture and rarely rises into rain clouds",
-    "It warms the air above it, so clouds evaporate before they reach land",
-    "It carries salt onto the land, which stops rain from falling",
-    "It pushes the prevailing winds away from the coast"
+    "It cools the air above it, so the air holds little moisture and rarely rises into rain clouds",
+    "It warms the air above it, so any clouds evaporate before they can drift over the land",
+    "It carries salt spray onto the land, and the salt stops raindrops from forming there",
+    "It pushes the prevailing winds away from the coast, so moist air stays out at sea"
    ],
    "correct": 0,
    "why": {

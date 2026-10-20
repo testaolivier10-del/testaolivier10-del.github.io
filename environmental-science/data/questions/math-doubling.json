@@ -255,33 +255,33 @@
    "practice": "6.C",
    "level": "analyze",
    "diff": 2,
-   "q": "A population of 6 million in 2020 grows 3.5% a year. About what will it be in 2060? (Use the rule of 70, and answer in millions.)",
+   "q": "A population of 6 million in 2020 grows 3.5% a year. About what will it be in 2060? Use the rule of 70, and keep the scale word in your answer (for example, 2.5 million).",
    "why": {
     "correct": "Doubling time $\\frac{70}{3.5} = 20$ years. 2020 to 2060 is 40 years = 2 doublings: $6 \\times 2 \\times 2 = 24$ million."
    },
    "numeric": {
-    "unit": "million",
-    "units": [
-     "million people",
-     "millions"
-    ],
-    "tol": 0.05,
+    "unit": "people",
+    "askUnit": false,
     "from": {
      "fn": "afterDoublings",
      "args": [
-      6,
+      6000000,
       40,
       20
      ]
     },
     "mistakes": [
      {
-      "value": 12,
+      "value": 12000000,
       "why": "That is one doubling (to 2040). 2060 is two doublings: 6 × 2 × 2."
      },
      {
-      "value": 48,
+      "value": 48000000,
       "why": "That is three doublings. 40 years at 20 years each is 2 doublings."
+     },
+     {
+      "value": 24,
+      "why": "Keep the scale word: 24 million, not 24."
      }
     ]
    }

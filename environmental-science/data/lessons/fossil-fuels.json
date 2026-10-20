@@ -51,7 +51,7 @@
  ],
  "ideas": [
   "A <b>power plant</b> converts energy in steps: chemical (fuel) to heat (steam) to motion (turbine) to electricity (generator). Each step loses some energy as heat.",
-  "Overall efficiency is the product of the step efficiencies: $0.88 \\times 0.45 \\times 0.98 \\times 0.94 \\approx 0.365$, about 36.5 percent. To find the input needed, divide the output by the efficiency.",
+  "Overall efficiency is the product of the step efficiencies: $0.88 \\times 0.37 \\times 0.98 \\times 0.94 \\approx 0.30$, about 30 percent. To find the input needed, divide the output by the efficiency.",
   "<b>Hydraulic fracturing</b> cracks shale with high-pressure water, sand and chemicals to free natural gas and oil; it can contaminate groundwater and release volatile chemicals and methane.",
   "Fossil fuels are energy-dense, storable and reliable, but they release carbon dioxide and air pollutants, their extraction damages land and water, and their supply is fixed."
  ],

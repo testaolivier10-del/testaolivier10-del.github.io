@@ -39,6 +39,7 @@ export function recheck(p, c, w, errs) {
     let thr = 0; for (const q of g.points) { if (q[1] === 0) thr = q[0]; else break; }
     need(close(keyOf(stepOf(p, 'threshold')), thr, 1e-9, 1e-9), `threshold key is not ${thr}`);
     need(thr < L, 'the threshold must be below the LD50');
+    need(thr > 0, 'the curve must show a no-effect dose above 0 (else the threshold step is trivial)');
     const t = rightText(stepOf(p, 'toxic'));
     const mine = c.chem.charAt(0).toUpperCase() + c.chem.slice(1);
     need(L < g.other ? t.startsWith(mine + ', because it kills half') : t.startsWith('The other chemical, because it kills half'), 'the more-toxic key is not the lower LD50');

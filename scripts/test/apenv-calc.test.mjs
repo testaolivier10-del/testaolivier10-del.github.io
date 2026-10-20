@@ -147,3 +147,30 @@ test('metric tons and rates in every spelling', () => {
   assert.equal(bare.correct, false); assert.equal(bare.parts.value, true); assert.equal(bare.parts.unit, false);
   assert.equal(G.numeric({ answer: 40, unit: 'metric tons' }, '40 t').correct, true);
 });
+
+/* Phase 3 (coordinator): numbers in a unit's denominator, and "how many
+   times" answers written as a power of ten or a scale word. */
+test('units with a number in the denominator: per 1,000 people = /1000 people = per thousand', () => {
+  const G = B.window.ApEnvGrade;
+  const n = s => G.normUnit(s);
+  assert.equal(n('births per 1,000 people'), n('births/1000 people'));
+  assert.equal(n('per 1,000 people'), n('/1000 people'));
+  assert.equal(n('per 1,000 people'), n('per thousand people'));
+  assert.equal(n('per 100,000'), n('/100000'));
+  assert.notEqual(n('per 1,000'), n('per 100,000'));
+  const N = { answer: 20, unit: 'births per 1,000 people' };
+  for (const t of ['20 births per 1,000 people', '20 per 1000 people', '20 births/1000', '20 per thousand', '20 per 1,000']) assert.equal(G.numeric(N, t).correct, true, t);
+  assert.equal(G.numeric(N, '20 per 100').correct, false);
+  assert.equal(G.numeric(N, '20 %').parts.unit, false);
+  assert.deepEqual({ ...G.readNumber('20 births per 1,000 people') }.value, 20, 'the 1,000 is part of the unit, not a second number');
+});
+
+test('"how many times": 10^6, 10⁶ times, 1 × 10^6 times and a million times all read as 1,000,000', () => {
+  const G = B.window.ApEnvGrade;
+  for (const s of ['10^6 times', '10^6', '10^(6)', '1 × 10^6 times', 'a million times', 'one million', '1,000,000 x', '10⁶ times', '1e6 fold']) assert.equal(G.readNumber(s).value, 1e6, s);
+  assert.equal(G.readNumber('10^-3').value, 0.001);
+  const N = { answer: 1e6, unit: 'times', units: ['x', 'fold'] };
+  for (const s of ['10^6 times', '10^6', 'a million times', '1,000,000 x', '1000000']) assert.equal(G.numeric(N, s).correct, true, s);
+  assert.equal(G.numeric(N, '10^6 kg').correct, false, 'a real unit on a multiplier is wrong');
+  assert.equal(G.numeric({ answer: 100, unit: 'times' }, '100').correct, true, 'the word times is optional');
+});

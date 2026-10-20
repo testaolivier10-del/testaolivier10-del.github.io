@@ -59,7 +59,7 @@
     "Conservation means making more energy; efficiency means storing it",
     "They mean the same thing in environmental science and on the exam",
     "Conservation applies to homes; efficiency applies to power plants",
-    "Using less, versus the same service for less"
+    "Conservation is using less; efficiency is the same service for less"
    ],
    "correct": 3,
    "why": {
@@ -184,7 +184,7 @@
    "diff": 2,
    "q": "How does a hybrid vehicle use less fuel than a similar gasoline car?",
    "options": [
-    "It reuses braking energy via a motor",
+    "It reuses braking energy through an electric motor",
     "It burns diesel fuel in place of gasoline",
     "It has no engine and runs on hydrogen gas",
     "It uses solar panels on the roof to run the engine"
@@ -213,7 +213,7 @@
     "Requiring new cars to have higher fuel economy",
     "Giving tax credits to people buying hybrid vehicles",
     "Replacing the city's streetlights with LED lights",
-    "More bus service and bus-only lanes"
+    "Adding more bus service and bus-only lanes"
    ],
    "correct": 3,
    "why": {
@@ -238,7 +238,7 @@
    "options": [
     "A programmable thermostat installed in each home in the city",
     "Triple-pane windows installed in new apartment buildings",
-    "A law setting appliance efficiency standards",
+    "A law that sets efficiency standards for appliances",
     "A new refrigerator that uses less electricity than the old one"
    ],
    "correct": 2,
@@ -595,7 +595,7 @@
     "It makes the furnace burn a cleaner type of fuel",
     "It stores heat in the walls for use later in the day",
     "It turns the lights off when the rooms are empty",
-    "It cuts heating when no one needs it"
+    "It lowers the heating when no one is home or awake"
    ],
    "correct": 3,
    "why": {
@@ -646,7 +646,7 @@
    "q": "What does a green building design, such as one certified for energy efficiency, usually include?",
    "options": [
     "Single-pane windows that let in more daylight",
-    "Insulation, good windows, passive solar",
+    "Insulation, efficient windows and passive solar features",
     "A larger furnace to keep the rooms warm faster",
     "Dark roofs that absorb as much summer heat as possible"
    ],

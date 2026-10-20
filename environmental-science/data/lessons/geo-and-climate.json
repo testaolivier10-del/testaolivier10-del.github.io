@@ -1,6 +1,6 @@
 {
  "topic": "geo-and-climate",
- "hook": "Drive east from Seattle across the Cascade Mountains and in two hours you go from mossy rainforest that gets over 3 meters of rain a year to sagebrush desert that gets less than 25 centimeters. The two places sit at the same latitude and get the same sunlight. A wall of mountains, and the ocean behind it, make the difference.",
+ "hook": "Drive east from Seattle across the Cascade Mountains and in two hours you go from mossy forest on the western slopes, which gets more than 2 meters of rain and snow a year, to sagebrush desert that gets less than 25 centimeters. The two places sit at the same latitude and get the same sunlight. A wall of mountains, and the ocean behind it, make the difference.",
  "prereq": [
   {
    "q": "Which way do the westerlies blow?",

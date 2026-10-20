@@ -433,30 +433,40 @@
    "practice": "6.C",
    "level": "apply",
    "diff": 2,
-   "q": "How much carbon do human activities add to the atmosphere in the year shown? Give the total in billions of metric tons.",
+   "q": "How much carbon do human activities add to the atmosphere in the year shown? Give the total with its scale word and unit, such as 2.5 billion metric tons.",
    "stimulus": "carbon-cycle-s1",
    "why": {
-    "correct": "$9.7 + 1.1 = 10.8$ billion metric tons of carbon."
+    "correct": "$9.7 + 1.1 = 10.8$ billion metric tons of carbon ($1.08 \\times 10^{10}$ metric tons)."
    },
    "numeric": {
-    "unit": "billion metric tons",
+    "unit": "metric tons",
     "units": [
-     "billion tonnes",
-     "billion t",
-     "billion metric tons of carbon"
+     "t",
+     "tonnes",
+     "metric tons of carbon",
+     "tonnes of carbon"
     ],
-    "tol": 0.05,
     "from": {
-     "fn": "add",
+     "fn": "mul",
      "args": [
-      9.7,
-      1.1
+      {
+       "fn": "add",
+       "args": [
+        9.7,
+        1.1
+       ]
+      },
+      1000000000
      ]
     },
     "mistakes": [
      {
-      "value": 6.1,
+      "value": 6100000000,
       "why": "You added the two removals (2.9 + 3.2). The question asks what is added: 9.7 + 1.1."
+     },
+     {
+      "value": 10.8,
+      "why": "Keep the scale word: the table is in billions, so write billion (or × 10^9) with the number."
      }
     ]
    }
@@ -469,46 +479,56 @@
    "practice": "6.C",
    "level": "apply",
    "diff": 2,
-   "q": "How much of the added carbon stays in the atmosphere that year? Subtract both removals from the total added (in billions of metric tons).",
+   "q": "How much of the added carbon stays in the atmosphere that year? Subtract both removals from the total added, and give the answer with its scale word and unit.",
    "stimulus": "carbon-cycle-s1",
    "why": {
-    "correct": "Added: $9.7 + 1.1 = 10.8$. Removed: $2.9 + 3.2 = 6.1$. Left in the air: $10.8 - 6.1 = 4.7$ billion metric tons."
+    "correct": "Added: $9.7 + 1.1 = 10.8$. Removed: $2.9 + 3.2 = 6.1$. Left in the air: $10.8 - 6.1 = 4.7$ billion metric tons ($4.7 \\times 10^{9}$ metric tons)."
    },
    "numeric": {
-    "unit": "billion metric tons",
+    "unit": "metric tons",
     "units": [
-     "billion tonnes",
-     "billion t",
-     "billion metric tons of carbon"
+     "t",
+     "tonnes",
+     "metric tons of carbon",
+     "tonnes of carbon"
     ],
-    "tol": 0.05,
     "from": {
-     "fn": "sub",
+     "fn": "mul",
      "args": [
       {
-       "fn": "add",
+       "fn": "sub",
        "args": [
-        9.7,
-        1.1
+        {
+         "fn": "add",
+         "args": [
+          9.7,
+          1.1
+         ]
+        },
+        {
+         "fn": "add",
+         "args": [
+          2.9,
+          3.2
+         ]
+        }
        ]
       },
-      {
-       "fn": "add",
-       "args": [
-        2.9,
-        3.2
-       ]
-      }
+      1000000000
      ]
     },
     "mistakes": [
      {
-      "value": 7.9,
+      "value": 7900000000,
       "why": "You subtracted only the ocean (10.8 - 2.9). Land plants and soils remove carbon too: subtract both."
      },
      {
-      "value": 3.6,
+      "value": 3600000000,
       "why": "You left out the forest clearing. The total added is 9.7 + 1.1 = 10.8."
+     },
+     {
+      "value": 4.7,
+      "why": "Keep the scale word: the table is in billions, so write billion (or × 10^9) with the number."
      }
     ]
    }

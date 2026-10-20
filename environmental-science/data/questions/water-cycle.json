@@ -21,7 +21,7 @@
     ],
     "y": [
      0,
-     100
+     120
     ],
     "xLabel": "Reservoir (Other = lakes, rivers, soil, air, ground ice)",
     "yLabel": "Share of all water (%)"
@@ -340,7 +340,7 @@
    "q": "Earth has about $1.39 \\times 10^{9}$ cubic kilometers of water. Using the chart, about how many cubic kilometers are groundwater? Use 1.7%.",
    "stimulus": "water-cycle-s1",
    "why": {
-    "correct": "$0.017 \\times 1.39 \\times 10^{9} = 2.4 \\times 10^{7}$ km³ (about 23.6 million cubic kilometers)."
+    "correct": "$\\frac{1.7}{100} \\times 1.39 \\times 10^{9} = 0.017 \\times 1.39 \\times 10^{9} = 2.4 \\times 10^{7}$ km³ (about 23.6 million cubic kilometers; 2.4 × 10⁷ and 2.36 × 10⁷ are both accepted)."
    },
    "numeric": {
     "unit": "km^3",
@@ -349,7 +349,7 @@
      "cubic kilometers",
      "cubic km"
     ],
-    "rel": 0.01,
+    "rel": 0.02,
     "from": {
      "fn": "percentOf",
      "args": [

@@ -10,7 +10,7 @@
    "title": "Seafloor age and distance from a mid-ocean ridge",
    "invented": true,
    "plot": {
-    "label": "Line graph of the age of seafloor rock against its distance from a mid-ocean ridge, invented data",
+    "label": "Line graph of the distance of seafloor rock from a mid-ocean ridge against the age of the rock, invented data",
     "kind": "line",
     "series": [
      {
@@ -65,7 +65,7 @@
     "correct": "Heat from Earth's interior makes mantle rock slowly rise, spread and sink. These convection currents drag the rigid plates above them.",
     "options": [
      "Right: hot mantle rock rises, cools and sinks, and the moving mantle carries the plates.",
-     "Moving seawater pushes on rock only weakly; they are far too weak to move a plate.",
+     "Seawater pushes on rock only weakly, far too weakly to move a plate.",
      "The Moon raises tides, but it does not drive plate motion.",
      "Winds move air and water at the surface; plates are rock about 100 km thick."
     ]
@@ -498,7 +498,7 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "At 2.5 cm per year, how far does this plate move in 1,000 years? Write the setup with units, then the answer in centimeters.",
+   "q": "The plate moves 2.5 cm each year. How far does it move in 1,000 years? Write the setup with units, then the answer in centimeters.",
    "stimulus": "plate-tectonics-s2",
    "why": {
     "correct": "$2.5\\,\\text{cm/yr} \\times 1{,}000\\,\\text{yr} = 2{,}500\\,\\text{cm}$, which is 25 m. The years cancel, leaving centimeters."

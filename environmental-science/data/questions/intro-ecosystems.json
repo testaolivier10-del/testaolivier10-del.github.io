@@ -120,20 +120,20 @@
    "practice": "1.C",
    "level": "apply",
    "diff": 2,
-   "q": "Oxpecker birds pick ticks off the skin of zebras and eat them. The zebras lose fewer nutrients to ticks, and the birds get a meal. Which interaction is this between the oxpeckers and the zebras?",
+   "q": "A fungus grows on and around the roots of a pine tree. The fungus gets sugar from the tree, and its threads absorb water and minerals from the soil that the tree then uses. Which interaction is this between the fungus and the tree?",
    "options": [
-    "Commensalism, because the zebra is not affected",
+    "Commensalism, because the tree is not affected",
     "Mutualism, because both species benefit",
-    "Parasitism, because the birds feed on the zebra",
-    "Competition, because both want the ticks gone"
+    "Parasitism, because the fungus feeds on the tree",
+    "Competition, because both need soil water"
    ],
    "correct": 1,
    "why": {
-    "correct": "Both the birds (food) and the zebras (fewer ticks) are helped, so this is mutualism.",
+    "correct": "The fungus gains sugar and the tree gains water and minerals: both are helped (+/+), so this is mutualism.",
     "options": [
-     "The zebra is helped by losing ticks, so it is affected.",
-     "Right: the birds gain food and the zebras lose fewer nutrients to ticks.",
-     "The birds eat the ticks, not the zebra; the tick is the parasite here.",
+     "The tree gains water and minerals, so it is affected (helped).",
+     "Right: the fungus gets sugar and the tree gets water and minerals.",
+     "A parasite harms its host; here the tree is helped in return.",
      "Competition harms both species; here both are helped."
     ]
    }

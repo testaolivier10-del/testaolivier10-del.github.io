@@ -171,7 +171,7 @@
     "Water, which is split apart to release its energy",
     "Steam, which carries the energy to the turbine",
     "Coal, which is burned to heat the reactor core",
-    "Uranium, enriched in uranium-235"
+    "Uranium, enriched to a higher share of uranium-235"
    ],
    "correct": 3,
    "why": {
@@ -221,7 +221,7 @@
    "q": "What do the control rods in a reactor do?",
    "options": [
     "They store the spent fuel after it is removed from the core",
-    "They absorb neutrons to slow the chain reaction",
+    "They absorb neutrons, which slows the chain reaction",
     "They add extra uranium to the core when the reaction slows down",
     "They carry the heat from the reactor core out to the turbine"
    ],
@@ -515,7 +515,7 @@
    "stimulus": "nuclear-power-s1",
    "options": [
     "It can be burned to remove the radioactivity",
-    "It must be isolated for thousands of years",
+    "It must be kept isolated from people for thousands of years",
     "It can be released after a few months, once short-lived isotopes decay",
     "It becomes safe after one half-life of its longest-lived isotope"
    ],

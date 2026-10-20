@@ -60,7 +60,7 @@
     "They form wherever the climate today is hot and dry enough for them",
     "They are spread evenly through Earth's crust at about the same depth",
     "They form near volcanoes, where rising magma heats buried plant material",
-    "They formed where ancient swamps or seas buried life"
+    "They formed where ancient swamps or seas buried living things"
    ],
    "correct": 3,
    "why": {
@@ -85,7 +85,7 @@
    "options": [
     "Oil stored in large tanks by a government for emergencies",
     "Oil that has already been pumped, refined and sold to buyers",
-    "Known oil that is profitable to recover now",
+    "Known oil that can be recovered at a profit right now",
     "The total amount of oil that exists anywhere in Earth's crust"
    ],
    "correct": 2,
@@ -189,7 +189,7 @@
    "options": [
     "It has no electricity until it finds oil of its own underground",
     "Its air pollution is higher than in the countries that produce oil",
-    "Its supply and prices depend on other countries",
+    "Its energy supply and prices depend on other countries",
     "Its people use more energy per person than people in oil-rich countries"
    ],
    "correct": 2,
@@ -375,7 +375,7 @@
    "stimulus": "energy-resources-distribution-s1",
    "options": [
     "Countries with no proven reserves use no oil in a typical year",
-    "The biggest users of oil may have small reserves",
+    "The biggest users of oil may hold only small reserves",
     "Each country produces about as much oil as it uses each year",
     "The country with the largest reserves also uses the most oil"
    ],
@@ -401,7 +401,7 @@
    "q": "According to the diagram, where are coal, oil and natural gas found?",
    "stimulus": "energy-resources-distribution-s2",
    "options": [
-    "In sedimentary rock layers",
+    "In layers of sedimentary rock under the plain",
     "In the hot rock near the plate boundary",
     "In the mud of the reservoir behind the dam",
     "In the soil just under the open plain"
@@ -457,7 +457,7 @@
    "options": [
     "A station using heat from deep hot rock",
     "A large dam on a steep mountain river",
-    "Wind-driven generators on the coast",
+    "Wind-driven generators along the coast",
     "A coal mine dug under the town itself"
    ],
    "correct": 2,
@@ -565,7 +565,7 @@
     "Strong sunlight near the equator stops the air from moving at the surface",
     "Wind-driven generators stop working in very hot, humid weather",
     "The air over the tropics is held still by the Coriolis effect",
-    "Surface winds there are often weak and variable"
+    "Surface winds there are often weak and shift direction"
    ],
    "correct": 3,
    "why": {

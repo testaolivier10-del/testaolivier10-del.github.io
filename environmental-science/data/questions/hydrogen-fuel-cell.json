@@ -95,7 +95,7 @@
    "options": [
     "It splits water into hydrogen and oxygen using sunlight",
     "It stores electricity from the grid in a chemical battery",
-    "It makes electricity with no flame",
+    "It makes electricity from a reaction, with no flame",
     "It burns hydrogen in a flame to boil water for a turbine"
    ],
    "correct": 2,
@@ -120,7 +120,7 @@
    "q": "Most hydrogen produced today comes from natural gas. What does this mean for a fuel cell car's environmental impact?",
    "options": [
     "The car releases methane from its fuel cell as it drives along",
-    "Carbon dioxide is released at the hydrogen plant",
+    "Carbon dioxide is released at the plant that makes hydrogen",
     "The car releases carbon dioxide out of its exhaust pipe",
     "The car is zero emissions from start to finish, at each step"
    ],
@@ -145,7 +145,7 @@
    "diff": 3,
    "q": "Which drawback belongs to hydrogen fuel cell cars rather than battery-powered cars?",
    "options": [
-    "Few stations and a gas that is hard to store",
+    "Few fueling stations, and hydrogen is hard to store",
     "Long recharging times at home or at public charging stations",
     "Large batteries that need mined lithium, cobalt and nickel",
     "Driving range that falls sharply in very cold winter weather"
@@ -174,7 +174,7 @@
     "It carries electric current through the power lines",
     "It is found in large underground deposits, like natural gas",
     "It releases more energy in the cell than it took to make",
-    "Energy must be used to make it"
+    "Energy must be used to make it, and it then carries that energy"
    ],
    "correct": 3,
    "why": {
@@ -199,7 +199,7 @@
    "options": [
     "It needs no storage, since it is used as soon as it is made",
     "It makes the wind-driven generators more efficient",
-    "Very little carbon dioxide at any step",
+    "Very little carbon dioxide is released at any step",
     "It costs less to make than hydrogen made from natural gas"
    ],
    "correct": 2,
@@ -373,7 +373,7 @@
    "options": [
     "The two paths deliver about the same share of energy to the wheels",
     "The fuel cell step is the most efficient of the steps in path A",
-    "Path B gets about three times as far per kWh",
+    "Path B goes about three times as far on the same electricity",
     "The fuel cell path wastes less energy than the battery path does"
    ],
    "correct": 2,
@@ -425,7 +425,7 @@
    "q": "According to the diagram, why does the motor run?",
    "stimulus": "hydrogen-fuel-cell-s2",
    "options": [
-    "Electrons flow through the outside circuit",
+    "Electrons flow through the outside circuit as a current",
     "Oxygen burns at the cathode, which spins the motor",
     "Water leaving the cell turns a small turbine inside it",
     "Hydrogen ions push on the motor as they cross the membrane"
@@ -455,7 +455,7 @@
     "More carbon dioxide on the streets released by the fuel cells",
     "More soot, since hydrogen burns at a very high temperature",
     "No change, since the new buses still burn fuel in their engines",
-    "Less soot and exhaust from buses"
+    "Less soot and exhaust on the streets, as the buses emit water"
    ],
    "correct": 3,
    "why": {
@@ -532,7 +532,7 @@
    "q": "Which is an advantage of hydrogen fuel cell vehicles over battery-powered cars?",
    "options": [
     "Their fuel is cheaper to make and easier to store safely",
-    "Quick refueling and long range",
+    "They refuel in a few minutes and go a long way per fill",
     "They have many more fueling stations available to drivers",
     "They use energy more efficiently from the source to the wheels"
    ],
@@ -557,7 +557,7 @@
    "diff": 2,
    "q": "What does electrolysis do in the hydrogen fuel chain?",
    "options": [
-    "Uses electricity to split water",
+    "Uses electricity to split water into hydrogen and oxygen",
     "Combines hydrogen and oxygen to make electricity",
     "Burns hydrogen in a flame to boil water for steam",
     "Separates hydrogen from natural gas using hot steam"

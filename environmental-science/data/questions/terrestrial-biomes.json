@@ -9,7 +9,7 @@
     "kind": "dual",
     "series": [
      {
-      "name": "Temperature (°C)",
+      "name": "Temperature",
       "points": [
        [
         1,
@@ -63,7 +63,7 @@
       "axis": "left"
      },
      {
-      "name": "Precipitation (mm)",
+      "name": "Precipitation",
       "points": [
        [
         1,
@@ -132,7 +132,8 @@
     ],
     "xLabel": "Month (1 = January)",
     "yLabel": "Temperature (°C)",
-    "yRightLabel": "Precipitation (mm)"
+    "yRightLabel": "Precipitation (mm)",
+    "width": 440
    }
   },
   "terrestrial-biomes-s2": {

@@ -47,6 +47,7 @@ export function recheck(p, c, w, errs) {
     const kwh = Calc.convert(g.w * g.h * g.days, 'Wh', 'kWh');
     if (!close(uk(step(p, 'kwh')), kwh)) bad('kWh key');
     if (!close(uk(step(p, 'cost')), E('cost', [kwh, g.price]))) bad('cost key');
+    { const cents = Math.round(E('cost', [kwh, g.price]) * 100) / 100; if (!M.diagnoseUnit(step(p, 'cost').cell, { value: String(cents), unit: '$' }).ok) bad(`the cost rounded to the cent ($${cents}) grades wrong`); }
     const s1 = sv('setup'); if (!close(s1.value, kwh) || JSON.stringify(s1.dims) !== '{"h":1,"kW":1}') bad(`setup must give kWh, got ${JSON.stringify(s1.dims)}`);
   } else if (p.type === 'heatrate') {
     const eff = E('efficiency', [3412, g.hr]);

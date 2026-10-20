@@ -26,6 +26,7 @@ export function recheck(p, c, w, errs) {
     if (!close(unitKey(step(p, 'angle')), ang)) bad(`angle key ${unitKey(step(p, 'angle'))} vs ${ang}`);
     if (!close(setupVal('setup'), ang)) bad('the setup does not give the angle');
     if (!(ang > 0 && ang <= 90)) bad('the sun must be up at noon in a drill');
+    if (M.diagnoseSetup(step(p, 'setup').cell, String(ang)).ok) bad('a bare number is accepted as the setup');
     const dl = right(step(p, 'day'));
     const want = g.decl === 0 || g.lat === 0 ? /^About 12/ : (g.lat > 0) === (g.decl > 0) ? /^Longer/ : /^Shorter/;
     if (!want.test(dl)) bad(`day length key "${dl}"`);

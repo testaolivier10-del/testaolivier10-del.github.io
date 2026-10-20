@@ -17,7 +17,7 @@
        ],
        [
         15,
-        400
+        405
        ],
        [
         30,
@@ -37,7 +37,7 @@
        ],
        [
         90,
-        175
+        170
        ]
       ]
      }
@@ -277,12 +277,12 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Sunlight falls from 415 W/m² at the equator to 175 W/m² at the pole.",
+    "correct": "Sunlight falls from 415 W/m² at the equator to 170 W/m² at the pole.",
     "options": [
      "Right: the line falls with latitude.",
      "The line slopes down, not up.",
-     "The values range from 415 to 175 W/m².",
-     "The pole has the lowest value, 175 W/m²."
+     "The values range from 415 to 170 W/m².",
+     "The pole has the lowest value, 170 W/m²."
     ]
    }
   },

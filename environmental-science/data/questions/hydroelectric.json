@@ -51,7 +51,7 @@
     "Water is heated into steam that spins a turbine",
     "Water is split into hydrogen that is then burned",
     "Sunlight on the reservoir surface becomes electricity",
-    "Falling water spins a turbine and generator"
+    "Falling water spins a turbine that turns a generator"
    ],
    "correct": 3,
    "why": {
@@ -76,7 +76,7 @@
    "options": [
     "One that floods a whole valley behind a very tall concrete dam",
     "One that uses ocean tides moving in and out of a narrow bay",
-    "One using natural river flow with little storage",
+    "One using the river's natural flow, with little storage",
     "One that pumps river water uphill to store it for later use"
    ],
    "correct": 2,
@@ -126,7 +126,7 @@
    "diff": 2,
    "q": "A large dam is built on a river where salmon swim upstream to spawn. What is the most direct effect on the salmon?",
    "options": [
-    "The dam blocks their way upstream to spawn",
+    "The dam blocks their way to upstream spawning sites",
     "The dam raises the salt content of the river water",
     "The turbines add nutrients that cause algae to grow",
     "The reservoir releases a gas that poisons the fish"
@@ -155,7 +155,7 @@
     "The turbines grind rock into the water, which wears away the banks",
     "The water below the dam is saltier, so it dissolves the river banks",
     "The dam raises the river's temperature, which softens the banks",
-    "The reservoir traps the sediment"
+    "The reservoir traps sediment, so clear water below picks up more"
    ],
    "correct": 3,
    "why": {
@@ -180,7 +180,7 @@
    "options": [
     "It improves fish migration both up and down the river",
     "It increases the amount of sediment that reaches the delta",
-    "It can change output quickly to match demand",
+    "It can raise or lower output in minutes to match demand",
     "It releases no heat-trapping gases over its whole working life"
    ],
    "correct": 2,
@@ -454,7 +454,7 @@
     "A taller dam traps more sediment, which helps spin the turbine",
     "A taller dam keeps the water colder, which spins the turbine faster",
     "A taller dam blocks more fish, which lowers friction in the pipe",
-    "The water falls farther, so it carries more energy"
+    "The water falls farther, so each liter carries more energy"
    ],
    "correct": 3,
    "why": {
