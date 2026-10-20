@@ -114,11 +114,11 @@ One branch, `claude/apenv`, one PR at the end. Phases as AP® Statistics.
 |---|---|---|---|
 | R | Research: `docs/apenv-research/framework.md`, `market.md`; this spec | one session | **done 2026-10-20** |
 | 0 | Fork AP® Statistics: CED map (99 topics + math chapter), dependency map, generator `scripts/build-apenv.mjs`, runtime `environmental-science/assets/` (`env-*`), `ApEnvCalc` (calculation recipes) and unit-aware numeric + setup grading, `ApEnvPlot` (line, bar, scatter, pyramid, dual-axis data figures), checks, tests, fixture, registration hidden (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, architecture and authoring guide, briefs, needs-author | one session (shared files) | **done 2026-10-20** (decision 10) |
-| 1 | Content: lessons, notes, banks (incl. stimulus sets), FRQs, glossary, figures | 7 authors at once (section 5a) | |
-| 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs | |
+| 1 | Content: lessons, notes, banks (incl. stimulus sets), FRQs, glossary, figures | 7 authors at once (section 5a) | **done 2026-10-20** (`docs/apenv-reviews/self-*.md`) |
+| 2 | Trainers (section 6) | 4 builders at once, each owning whole slugs | **done 2026-10-20** |
 | 3 | "Make it specific" trainer, two fixed practice exams, formulas page, unit tests, cram kit | one session | **built 2026-10-20**: 45 prompts (5 per unit, every skill, 21 with builders), two forms (22 exam-only + 58 bank each, 3 quantitative, 4 visual, 2 text sets, units in range, design/data/calc FRQs), timed sections, formulas page with worked lines and a Formulas deck, unit tests, cram kit; every new number recomputed; shared engine fixes (dual plots, units, sources, hint); report `docs/apenv-reviews/phase3.md`; accuracy review in Phase 4 (decision 11) |
-| 4 | Independent accuracy checks per unit group, tools and exams (every calculation key recomputed by code) | reviewers in parallel | |
-| Launch | Publish, generators, continuity pass against statistics on every shared page type, "Nine courses" wording, full CI with browser checks, PR | one session | |
+| 4 | Independent accuracy checks per unit group, tools and exams (every calculation key recomputed by code) | reviewers in parallel | **done 2026-10-20** (`docs/apenv-reviews/u*.md`, `tools-*.md`) |
+| Launch | Publish, generators, continuity pass against statistics on every shared page type, "Nine courses" wording, full CI with browser checks, PR | one session | **done 2026-10-20** (decision 12); Premium not on sale until the section 9 checklist |
 
 Quality bar: AP® Statistics authoring rules; every calculation key recomputed by code from a recipe; every data
 figure drawn from the numbers it claims to show; independent accuracy review; science claims match the CED and
@@ -213,7 +213,7 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
    Chemistry's unit-aware numeric grading (without sig figs). Drop interval and conclude item types; add
    `specific`.
 2. (2026-10-20) **No "ap" in any served path.** Folder `/environmental-science/`, files `env-*.js`, ids `env-`.
-   Registry and storage key `apenv`, order 9, aliases `environmental`, `envsci`, `apes`.
+   Registry and storage key `apenv`, order 9, aliases `environmental-science` (the folder, so a `?course=` link reads back), `environmental`, `envsci`, `apes`.
 3. (2026-10-20) **Pass and price mirror the other AP® courses:** `env-2027`, $25 one-time, through 30 June 2027
    (founding discount through the shared `FOUNDING` rule), registered `onSale: false` until the owner checklist.
 4. (2026-10-20) **Sources:** College Board CED, course and exam pages, scoring guidelines and Chief Reader Reports
@@ -265,6 +265,30 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     a unit that has no "/"; CDC and other US and UN agencies accepted as sources; the Tool Studio hint clamped to the
     viewport.
 
+12. (2026-10-20, launch) **Published, Premium not on sale**, as AP® Statistics decision 15.
+    - All nine units and `skills-math` in `environmental-science/data/published.json`; registry `status: 'beta'`;
+      every generator rerun (course, courses, pricing with the olive hub card and the 404 card, OG tags, sitemap,
+      crumbs). `onSale: false` stays. `sw.js` cache v85. Changelog entry 2026-10-20. Nine courses: hub hero count and
+      facts (generated), lede, meta descriptions (no "AP"), manifest, `search.html`, `sources.html` (new section),
+      Premium rules and `terms.html#fixed-date` (generated), cross-course comment.
+    - Publishing turned on site checks: three cut titles that read the same ("Human Impacts on…", "Introduction
+      to…"); 32 topics got a short `<title>` name in `descriptions.json` `titles`, so no lesson or notes title is
+      cut any more. Tests that pinned the Phase 0 state (empty published list, hidden in search) now pin the launch.
+    - Fixes from the continuity pass (environmental science vs statistics, every shared page type, 390/1440,
+      light/dark, Playwright; practice answered on a numeric, a setup with its answer box, a specific item and a
+      quantitative set; the dashboard seeded with progress and flags; the FRQ page's "Check my setup"):
+      (a) the FRQ topic pages did not load `env-expr.js` (nor math/calc), so every setup check answered "The checker
+      did not load" (build fix plus a test); (b) `?course=environmental-science` fell back to every course: the
+      folder is now an alias, as `statistics` is for statistics; (c) shared generator fix: glossary definitions
+      on the unit sheets escaped their build-time MathML, so statistics and calculus sheets showed raw `<math>`
+      and `<wbr>` text (`escKeepMath` in the three build scripts; environmental science has no math in definitions).
+    - Overlap sweep of all 12 trainers (every view, each slider at min, middle and max, 390 and 1440): fixed the
+      Enlarge button over the last x tick (population growth, the age-structure transition plot), the noon-sun tag
+      over the orbit inset on a phone near the poles (earth and climate), phase and Type II labels crossed by their
+      curves (population growth), and Loam over Clay loam when the point sits on Loam (soil texture). Left as is:
+      the soil triangle's axis titles touch an end tick number at some points (readable, as before), and the
+      energy-flow phone layout puts the level names next to the organism names by design.
+
 ## 9. Open items for the owner
 
 - Confirm the accent, icon, headline and ranks (decision 5), the free trainers (section 6) and the free tier
@@ -274,8 +298,23 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
 **Launch checklist (after the PR is ready, owner):**
 - [ ] Apply SQL migration `2026-10j-apenv.sql` in Supabase (check live function bodies match apart from `apenv`).
 - [ ] Create the Polar product "AP® Environmental Science Premium (through June 30, 2027)", $25 one-time; add
-      `"env-2027"` with its product id to `POLAR_PRODUCTS` in the Cloudflare Worker settings; deploy the Worker.
+      `"env-2027"` with its product id to `POLAR_PRODUCTS` in the Cloudflare Worker settings; deploy the Worker
+      (PASSES, `URL_COURSE`, `COURSE_NAMES`, tutor `COURSE_RULES.apenv`).
 - [ ] Check the founding discount shows on the pass at checkout.
-- [ ] Remove `onSale: false` from `COURSES.apenv`; bump the `sw.js` cache; grant owner access.
+- [ ] Remove `onSale: false` from `COURSES.apenv`; bump the `sw.js` cache (v85 at launch, so v86); grant owner
+      access.
 - [ ] Merge the PR (this puts AP® Environmental Science Premium on sale).
 - [ ] Optional: an AP® Environmental Science teacher reviews the course (the Beta note stays until then).
+
+**Open for a teacher** (details in `docs/apenv-needs-author.md`; the Beta note stays until these are settled):
+- `ced-text`: the CED text for Units 4-9 (from Topic 3.7 on) could not be read, so the learning objectives and
+  exclusion statements there are unconfirmed; content follows the official topic titles and mainstream science.
+  Check 3.7-9.10 against the CED, especially named examples (6.4 regions, 6.6 accidents, 6.13 policies, 9.3 GWP
+  values, 9.6 thermohaline circulation).
+- `practice-weights` and `mcq-options`: the exam's practice weights and four answer options come from third
+  parties; exam forms do not enforce practice weights until confirmed.
+- `frq-solution-part` and `frq-scoring`: whether a solution part survives in the 2027 Q2/Q3, and the 10-point split
+  per part, are estimates until 2027 scoring guidelines appear.
+- Unit author notes still open (Units 2-9): unverified shares and data sources (NASA ozone hole areas, LED savings),
+  items kept on topics whose CED wording is unread.
+- `calculator-desmos` and `exam-date`: confirm the Desmos link matches Bluebook and the 13 May 2027 date.
