@@ -157,7 +157,7 @@
    "diff": 3,
    "q": "Why can burning wood be called close to carbon neutral, and when does that stop being true?",
    "options": [
-    "Wood contains no carbon at all, unless it is burned along with coal",
+    "Wood contains no carbon, unless it is burned along with some coal",
     "Burning wood removes carbon dioxide from the air, unless the fire is too hot",
     "Wood smoke does not trap any heat in the atmosphere, unless the wood is wet",
     "Regrowth reabsorbs the carbon, unless cutting outpaces it"
@@ -523,7 +523,7 @@
    "options": [
     "It can turn farm waste into fuel",
     "It produces no air pollution when it is burned",
-    "It needs no land at all to grow or to collect",
+    "It needs no land to grow it or to collect it",
     "It is a nondepletable resource, just like sunlight"
    ],
    "correct": 0,

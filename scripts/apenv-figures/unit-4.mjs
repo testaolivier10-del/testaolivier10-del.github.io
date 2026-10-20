@@ -459,38 +459,37 @@ export const STD_ATM = [[0, 15], [11, -56.5], [20, -56.5], [32, -44.5], [47, -2.
   const W = 760, PH = 236;
   const panels = [
     ['Normal year', 1, 0.35, 200, 'Trade winds push warm water west; upwelling off Peru brings up cold, nutrient-rich water.'],
-    ['El Niño', 0.35, 0.75, 470, 'Trade winds weaken; warm water spreads east; upwelling off Peru weakens; the rain moves east.'],
+    ['El Niño', 0.35, 0.75, 500, 'Trade winds weaken; warm water spreads east; upwelling off Peru weakens; the rain moves east.'],
     ['La Niña', 1.6, 0.22, 160, 'Trade winds strengthen; warm water is pushed farther west; stronger upwelling cools the east.'],
   ];
   panels.forEach(([name, wind, eastWarm, rainX, note], i) => {
     const y0 = 10 + i * (PH + 10), sea = y0 + 128, bot = y0 + PH - 22;
     parts.push(R(10, y0, W - 20, PH - 14, { fill: '#FFFFFF', stroke: LIGHT, w: 1 }));
-    parts.push(T(20, y0 + 20, name, { size: 15, weight: 'bold', fill: name === 'El Niño' ? VERM : name === 'La Niña' ? BLUE : INK }));
-    parts.push(T(110, y0 + 20, note, { size: 11.5, fill: GREY }));
+    parts.push(T(20, y0 + 26, name, { size: 22, weight: 'bold', fill: name === 'El Niño' ? VERM : name === 'La Niña' ? BLUE : INK }));
     // land masses
     parts.push(R(10, sea - 10, 70, bot - sea + 10, { fill: '#D9C7A8' }));
-    parts.push(TL(45, bot - 30, 'Australia,\nIndonesia', { size: 10.5, anchor: 'middle' }));
+    parts.push(TL(45, bot - 34, 'Australia,\nIndonesia', { size: 14, anchor: 'middle' }));
     parts.push(R(W - 80, sea - 22, 70, bot - sea + 22, { fill: '#D9C7A8' }));
-    parts.push(TL(W - 45, bot - 30, 'South\nAmerica', { size: 10.5, anchor: 'middle' }));
+    parts.push(TL(W - 45, bot - 34, 'South\nAmerica', { size: 14, anchor: 'middle' }));
     // ocean: cold below, warm layer on top whose thickness falls from west to east
     const xw = 80, xe = W - 80;
     parts.push(R(xw, sea, xe - xw, bot - sea, { fill: SEA }));
     const thickW = 52 - (wind > 1 ? -6 : wind < 0.5 ? 18 : 0), thickE = 50 * eastWarm;
     parts.push(P(`M${xw} ${sea} L${xe} ${sea} L${xe} ${sea + thickE} C${xe - 200} ${sea + thickE} ${xw + 250} ${sea + thickW} ${xw} ${sea + thickW} Z`, { fill: WARM, stroke: VERM, w: 1 }));
-    parts.push(T(xw + 130, sea + 20, 'warm water', { size: 11, fill: VERM, weight: 'bold' }));
-    parts.push(T(xe - 150, bot - 8, 'colder, deeper water', { size: 11, fill: BLUE }));
+    parts.push(T(xw + 110, sea + 24, 'warm water', { size: 16, fill: VERM, weight: 'bold' }));
+    parts.push(T(xe - 60, bot - 8, 'cold, deep water', { size: 15, fill: BLUE, anchor: 'end' }));
     // upwelling arrows off South America
     const up = wind;
     if (up > 0.5) for (const dx of [0, 18]) parts.push(L(xe - 20 - dx, bot - 6, xe - 20 - dx, sea + thickE + 4, { stroke: BLUE, w: 1 + up, arrow: 'blue' }));
-    parts.push(T(xe - 30, sea + thickE + (up > 0.5 ? 26 : 18), up > 0.5 ? (up > 1.2 ? 'strong upwelling' : 'upwelling') : 'weak upwelling', { size: 10.5, anchor: 'end', fill: BLUE, halo: true }));
+    parts.push(T(xe - 30, sea + thickE + (up > 0.5 ? 26 : 18), up > 0.5 ? (up > 1.2 ? 'strong upwelling' : 'upwelling') : 'weak upwelling', { size: 15, anchor: 'end', fill: BLUE, halo: true, weight: 'bold' }));
     // trade winds (westward)
     const len = 30 + 40 * wind;
     for (const x of [330, 470, 610]) parts.push(L(x, sea - 14, x - len, sea - 14, { stroke: INK, w: 1.5 + wind, arrow: 'ink' }));
-    parts.push(T(560, sea - 24, wind > 1.2 ? 'strong trade winds' : wind < 0.5 ? 'weak trade winds' : 'trade winds', { size: 11, anchor: 'middle', weight: 'bold' }));
+    parts.push(T(250, sea - 34, wind > 1.2 ? 'strong trade winds' : wind < 0.5 ? 'weak trade winds' : 'trade winds', { size: 16, anchor: 'middle', weight: 'bold' }));
     // rising air and rain
     parts.push(P(`M${rainX - 30} ${y0 + 54} a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z`, { fill: '#E3E6E5', stroke: GREY, w: 1 }));
     for (const dx of [-18, -6, 6, 18]) parts.push(L(rainX + dx, y0 + 74, rainX + dx - 4, y0 + 90, { stroke: BLUE, w: 1.4 }));
-    parts.push(T(rainX + 34, y0 + 70, 'rising air, heavy rain', { size: 10.5, fill: BLUE, halo: true }));
+    parts.push(T(rainX + 36, y0 + 72, 'heavy rain', { size: 15, fill: BLUE, halo: true, weight: 'bold' }));
   });
   fig('el-nino-la-nina', 'el-nino-la-nina-compare', 760, 750, 'Normal, El Niño and La Niña conditions in the equatorial Pacific',
     'Three cross-sections of the equatorial Pacific Ocean, with Australia and Indonesia on the left (west) and South America on the right (east). Normal year: moderate trade winds blow from east to west, warm surface water piles up in the west, and upwelling off Peru brings cold, nutrient-rich water to the surface; rain clouds sit over the western Pacific. El Niño: the trade winds weaken, warm water spreads east toward South America, upwelling off Peru weakens, and the rain moves east into the central and eastern Pacific. La Niña: the trade winds strengthen, warm water is pushed farther west, upwelling off South America strengthens, the eastern Pacific is colder than normal, and heavy rain falls over the far western Pacific.', parts.join('\n'));
