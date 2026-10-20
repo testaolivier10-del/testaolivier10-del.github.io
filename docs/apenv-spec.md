@@ -299,14 +299,14 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
   (decision 9).
 - Uncertain research: `docs/apenv-needs-author.md`.
 
-**Launch checklist (after the PR is ready, owner):**
-- [ ] Apply SQL migration `2026-10k-apenv.sql` in Supabase (check live function bodies match apart from `apenv`).
-- [ ] Create the Polar product "AP® Environmental Science Premium (through June 30, 2027)", $25 one-time; add
-      `"env-2027"` with its product id to `POLAR_PRODUCTS` in the Cloudflare Worker settings; deploy the Worker
-      (PASSES, `URL_COURSE`, `COURSE_NAMES`, tutor `COURSE_RULES.apenv`).
-- [ ] Check the founding discount shows on the pass at checkout.
-- [ ] Remove `onSale: false` from `COURSES.apenv`; bump the `sw.js` cache (v85 at launch, so v86); grant owner
-      access.
+**Launch checklist: done 2026-10-20** (merge pending the Worker setting below).
+- [x] Migration `2026-10k-apenv.sql` applied in Supabase (all six live function bodies checked identical apart from
+      `apenv` first; existing passes and funnel rows untouched).
+- [x] Polar product "AP® Environmental Science Premium (through June 30, 2027)", $25 one-time, id
+      `5741d35c-eab1-4601-805d-3821981e36c8`; the "Founding member" 30% discount applies to it.
+- [ ] `"env-2027": "5741d35c-eab1-4601-805d-3821981e36c8"` in `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask
+      settings); the Worker code redeploys on merge (`deploy-worker.yml`).
+- [x] `onSale: false` removed from `COURSES.apenv`; `sw.js` cache v86; owner access granted (to 2099).
 - [ ] Merge the PR (this puts AP® Environmental Science Premium on sale).
 - [ ] Optional: an AP® Environmental Science teacher reviews the course (the Beta note stays until then).
 

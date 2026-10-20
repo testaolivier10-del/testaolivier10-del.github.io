@@ -84,7 +84,7 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   const prem = readFileSync('assets/premium.js', 'utf8');
   const block = prem.slice(prem.indexOf('    apenv: {'), prem.indexOf('    apenv: {') + 2000);
   assert.match(block, /freeChapters: \['unit-1', 'unit-2'\]/);
-  assert.match(block, /onSale: false/, 'not on sale before launch');
+  assert.doesNotMatch(block, /onSale: false/, 'on sale since 2026-10-20 (Polar product created, launch checklist)');
   assert.match(block, /id: 'env-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 

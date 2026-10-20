@@ -272,10 +272,8 @@
     },
     apenv: {
       name: 'AP® Environmental Science',
-      // Published (docs/apenv-spec.md decision 12) but not on sale until its
-      // Polar product exists (decision 3, launch checklist): nothing locked,
-      // no checkout.
-      onSale: false,
+      // On sale since 2026-10-20: Polar product 5741d35c-eab1-4601-805d-3821981e36c8
+      // ("env-2027" in the Worker's POLAR_PRODUCTS; docs/apenv-spec.md checklist).
       dailyFree: 15,
       // The free tier (docs/apenv-spec.md decision 9, proposed): Units 1 and 2
       // and every "Math you need" lesson. Keep in step with FREE_UNITS in
