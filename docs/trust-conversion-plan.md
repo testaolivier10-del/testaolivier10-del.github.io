@@ -64,6 +64,18 @@ on Oct 2 to 3 (check Polar: owner tests or abandoned), 0 since.
 - Migration `scripts/sql/migrations/2026-10e-funnel-seen.sql` adds `limit-hit` to the premium_funnel check,
   `count_premium_step` and `track_ref`. Numbers before 2026-10-13 are not comparable with numbers after it.
 - Weekly read: limit-hit per 100 human visitors, then interest per limit-hit, then checkout per interest.
+- First clean week (2026-10-14 to 10-20): 34 gate-shown, 4 limit-hit, 4 interest, 0 checkout-start. About 5 real
+  paywall sightings a day. Any "985 paywall views" figure mixes in the old inflated count; don't quote it.
+
+## Paywall copy (2026-10-20)
+
+Owner asked for only the clearly beneficial conversion changes; the reverse trial was left out (giving Premium away
+and taking it back can feel like a bait and switch and cheapen it; revisit with more traffic).
+- Locked cards (not the daily-limit card, which has its own score) show the student's all-time tally in the course
+  once it reaches 10 answers: `levlprep_course_tally_v1`, kept by `noteAnswer`, read by `courseTally`.
+- Dated passes (AP®) say on the cards and in the dialog that the pass runs to June 30 whenever bought, so starting
+  earlier covers more of the school year.
+- The dialog's AP® trademark line now covers every `ap*` course (AP® Environmental Science was missing).
 
 ## Plan and status (owner decisions 2026-10-08)
 
