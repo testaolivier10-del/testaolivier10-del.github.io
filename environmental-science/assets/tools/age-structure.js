@@ -85,7 +85,7 @@
     return { cbr: 9.5, cdr: 11 };
   }
   function transSvg(o){
-    var x0 = o.x0 || 0, W = o.w, H = o.H, ph = W < 380, L = x0 + (ph ? 30 : 38), R = x0 + W - 8, top = o.top || 26, B = H - 40, mx = 45;
+    var x0 = o.x0 || 0, W = o.w, H = o.H, ph = W < 380, L = x0 + (ph ? 30 : 38), R = x0 + W - (o.enl ? 40 : 8), top = o.top || 26, B = H - 40, mx = 45;
     var x = function(s){ return L + (R - L) * (s - 0.5) / 4; }, y = function(v){ return B - (B - top) * v / mx; };
     var out = [], b = [], d = [];
     for(var k = 0; k <= 80; k++){ var s = 0.5 + 4 * k / 80, rr = rateAt(s); b.push([x(s), y(rr.cbr)]); d.push([x(s), y(rr.cdr)]); }
@@ -167,7 +167,7 @@
       var pyrH = side ? H : Math.round(H * 0.64);
       var big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, mx = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;
       var out = pyrSvg(pyr, { W: W, w: pw, H: pyrH, sel: sel, max: mx, bands: true });
-      out += '<g transform="translate(' + (side ? pw + 24 : 0) + ' ' + (side ? 0 : pyrH + 6) + ')">' + transSvg({ w: tw, H: side ? H : H - pyrH - 6, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: side ? 26 : 22 }) + '</g>';
+      out += '<g transform="translate(' + (side ? pw + 24 : 0) + ' ' + (side ? 0 : pyrH + 6) + ')">' + transSvg({ w: tw, enl: !side, H: side ? H : H - pyrH - 6, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: side ? 26 : 22 }) + '</g>';
       svg.innerHTML = out;
     }
     function words(pyr){

@@ -92,7 +92,9 @@
     if(!o.hideClasses) Object.keys(LAB).forEach(function(id){
       var q = LAB[id], p = G.xy(q[0], q[1], q[2]), lines = wrapName(SHORT[id]), lf = phone ? 10.5 : 12.5;
       if(phone && (id === 'sand' || id === 'loamy-sand')) lines = [id === 'sand' ? 'S' : 'LS'];
-      if(o.pt){ var P0 = G.xy(o.pt[0], o.pt[1], o.pt[2]); if(Math.abs(P0[0] - p[0]) < 30 && Math.abs(P0[1] - p[1]) < 16) p = [p[0], p[1] + (P0[1] > p[1] ? -18 : 20)]; }
+      // The point covers a name: move it off (Loam sideways, since Clay loam
+      // sits right above it).
+      if(o.pt){ var P0 = G.xy(o.pt[0], o.pt[1], o.pt[2]); if(Math.abs(P0[0] - p[0]) < 30 && Math.abs(P0[1] - p[1]) < 16) p = id === 'loam' ? [p[0] + (P0[0] > p[0] ? -26 : 26), p[1]] : [p[0], p[1] + (P0[1] > p[1] ? -18 : 20)]; }
       out.push('<text class="st-name' + (o.cls === id ? ' is-on' : '') + '" x="' + p[0].toFixed(1) + '" y="' + (p[1] - (lines.length - 1) * lf * 0.55).toFixed(1) + '" text-anchor="middle">' + lines.map(function(l, i){ return '<tspan x="' + p[0].toFixed(1) + '" dy="' + (i ? lf * 1.1 : 0) + '">' + esc(l) + '</tspan>'; }).join('') + '</text>');
     });
     // the point and its three reading lines

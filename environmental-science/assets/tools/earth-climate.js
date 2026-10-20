@@ -114,8 +114,13 @@
       out.push(line(A[0] - tx * L2, A[1] - ty * L2, A[0] + tx * L2, A[1] + ty * L2, 'ec-horizon'));
     }
     out.push('<circle class="ec-you" cx="' + n2(A[0]) + '" cy="' + n2(A[1]) + '" r="6"/>');
-    if(!o.hideAngle) out.push(tag(A[0] - 10, A[1] - 12, (up ? 'Noon sun ' + f1(ang) + '°' : 'Sun below horizon'), 'ec-tag-you', 'end'));
-    else out.push(tag(A[0] - 10, A[1] - 12, E.latText(lat), 'ec-tag-you', 'end'));
+    // The tag sits up and to the left of the point, unless that would cover
+    // the orbit inset (o.avoid, on a phone near the poles): then below and to
+    // the right, on the globe, clear of the inset and the N label.
+    var youText = !o.hideAngle ? (up ? 'Noon sun ' + f1(ang) + '°' : 'Sun below horizon') : E.latText(lat);
+    var yw = youText.length * 6.9 + 12, av = o.avoid;
+    var clash = av && A[1] - 25 < av[3] && A[1] - 6 > av[1] && A[0] - 10 - yw < av[2] && A[0] - 10 > av[0];
+    out.push(clash ? tag(A[0] + 8, A[1] + 26, youText, 'ec-tag-you', 'start') : tag(A[0] - 10, A[1] - 12, youText, 'ec-tag-you', 'end'));
     return { svg: out.join(''), R: R, cx: cx, cy: cy };
   }
   /* The orbit seen from above the North Pole: the axis keeps pointing the same
@@ -422,7 +427,7 @@
           var es = earthSide(0, 0, ew, H, d, st.lat);
           inner = es.svg + orbit(ew - 70, 54, 46, st.day) + sky(ew + 12, 6, W - ew - 16, H * 0.5, ang, dl, ins) + insChart(ew + 6, H * 0.55, W - ew - 10, H * 0.45 - 4, d, st.lat);
         } else {
-          var eh = H * 0.56, es2 = earthSide(0, 0, W, eh, d, st.lat);
+          var eh = H * 0.56, es2 = earthSide(0, 0, W, eh, d, st.lat, { avoid: [0, 0, 64 + 28 + 26, 36 + 28 * 0.62 + 14] });
           inner = es2.svg + orbit(64, 36, 28, st.day, true) + sky(4, eh + 4, W - 8, H - eh - 8, ang, dl, ins);
         }
         label = dateText(st.day) + ': the sun is overhead at ' + E.latText(M.round(d, 1)) + '. At ' + E.latText(st.lat) + ' the noon sun is ' + (ang > 0 ? f1(ang) + '° above the horizon' : 'below the horizon') + ', daylight lasts ' + f1(dl) + ' hours, and daily sunlight at the top of the atmosphere averages ' + f0(ins) + ' W/m².';

@@ -56,7 +56,9 @@
     var x = function(t){ return L + (R - L) * t / Y; }, y = function(v){ return B - (B - T0) * Math.min(v, yMax * 1.02) / yMax; };
     var out = [], ticks = P ? P.ticks(0, yMax, ph ? 4 : 5) : [0, yMax / 2, yMax];
     ticks.forEach(function(v){ out.push('<line class="pg-grid" x1="' + L + '" x2="' + R + '" y1="' + r1(y(v)) + '" y2="' + r1(y(v)) + '"/>' + tx(L - 7, y(v) + 4, nf(v), 'pg-tk', 'end')); });
-    (P ? P.ticks(0, Y, ph ? 4 : 8) : [0, Y]).forEach(function(t){ out.push('<line class="pg-tick" x1="' + r1(x(t)) + '" x2="' + r1(x(t)) + '" y1="' + B + '" y2="' + (B + 4) + '"/>' + tx(x(t), B + 18, String(t), 'pg-tk', 'middle')); });
+    // A tick label in the stage's Enlarge corner (bottom right, about 56 px) is
+    // left out; its tick mark stays.
+    (P ? P.ticks(0, Y, ph ? 4 : 8) : [0, Y]).forEach(function(t){ out.push('<line class="pg-tick" x1="' + r1(x(t)) + '" x2="' + r1(x(t)) + '" y1="' + B + '" y2="' + (B + 4) + '"/>' + (o.enl && x(t) > W - 60 ? '' : tx(x(t), B + 18, String(t), 'pg-tk', 'middle'))); });
     out.push('<line class="pg-axis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/><line class="pg-axis" x1="' + L + '" x2="' + L + '" y1="' + T0 + '" y2="' + B + '"/>');
     out.push(tx(L, T0 - 12, (o.unit || 'population'), 'pg-axl', 'start'), tx((L + R) / 2, H - 4, (o.tu || 'year') + 's', 'pg-axl', 'middle'));
     var placed = [];
@@ -84,9 +86,13 @@
         var w = rn.pts[rn.pts.length - 1][0] - rn.pts[0][0]; if(w < (ph ? 46 : 64)) return;
         var mid = rn.pts[Math.floor(rn.pts.length / 2)], lx = mid[0], ly = Math.min(B - 8, mid[1] + (rn.ph === 'overshoot' ? -14 : 20));
         if(rn.ph === 'at K') ly = mid[1] + 20;
+        // On a steep rise a centred label under the point sits on the curve;
+        // put it below and to the right, where a rising curve leaves room.
+        var a0 = rn.pts[0], a1 = rn.pts[rn.pts.length - 1], anc = 'middle';
+        if(rn.ph !== 'overshoot' && (a0[1] - a1[1]) / Math.max(1, a1[0] - a0[0]) > 0.6){ lx = mid[0] + 10; ly = Math.min(B - 8, mid[1] + 14); anc = 'start'; }
         if(placed.some(function(p){ return Math.abs(p[0] - lx) < 80 && Math.abs(p[1] - ly) < 18; })) return;
         placed.push([lx, ly]);
-        out.push(tx(lx, ly, PHASE[rn.ph], 'pg-phl ' + PHASE_CLS[rn.ph], 'middle'));
+        out.push(tx(lx, ly, PHASE[rn.ph], 'pg-phl ' + PHASE_CLS[rn.ph], anc));
       });
     }
     if(o.td){
@@ -116,7 +122,9 @@
       var on = !sel || sel === t, pts = S.CURVES[t].map(function(v, i){ return r1(x(i)) + ',' + r1(y(v)); }).join(' ');
       out.push('<polyline class="pg-surv s-' + t + (on ? '' : ' is-dim') + (sel === t ? ' is-sel' : '') + '" points="' + pts + '"/>');
       var ly = { I: y(S.CURVES.I[8]) - 8, II: y(S.CURVES.II[5]) - 10, III: y(S.CURVES.III[3]) + 18 }[t], lx = { I: x(8), II: x(5), III: x(3) }[t];
-      out.push('<g class="pg-sl s-' + t + (on ? '' : ' is-dim') + '">' + tx(lx, ly, 'Type ' + t, '', 'middle') + '</g>');
+      // Type II falls in a straight line: its label starts just right of the
+      // point, above the line, so a narrow plot's slope never crosses it.
+      out.push('<g class="pg-sl s-' + t + (on ? '' : ' is-dim') + '">' + tx(t === 'II' ? lx + 4 : lx, t === 'II' ? ly - 2 : ly, 'Type ' + t, '', t === 'II' ? 'start' : 'middle') + '</g>');
     });
     return out.join('');
   }
@@ -202,7 +210,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       if(view === 'growth'){
         var s = sim(), td = model === 'exp' ? S.doublingTime(r) : null;
-        svg.innerHTML = growthSvg(s, { W: W, H: H, upto: upto, marker: marker, unit: 'deer', td: td && td <= upto ? td : null, tdLabel: td ? 'doubled in ' + nf(td, 1) + ' yr' : '' });
+        svg.innerHTML = growthSvg(s, { W: W, H: H, enl: true, upto: upto, marker: marker, unit: 'deer', td: td && td <= upto ? td : null, tdLabel: td ? 'doubled in ' + nf(td, 1) + ' yr' : '' });
         svg.setAttribute('aria-label', aria(s));
         gauge(s);
         words(s, td);
