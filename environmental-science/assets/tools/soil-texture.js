@@ -51,7 +51,7 @@
   function wrapName(n){ var w = n.split(' '); if(w.length < 2) return [n]; if(w.length === 2) return w; return [w[0] + ' ' + w[1], w[2]]; }
 
   function triangleSvg(o){
-    var W = o.W, H = o.H, phone = W < 600, G = tri(W, H, phone), out = [];
+    var W = o.W, H = o.H, phone = o.phone != null ? o.phone : W < 600, G = tri(W, H, phone), out = [];
     var A = G.xy(100, 0, 0), B = G.xy(0, 100, 0), Cc = G.xy(0, 0, 100);
     // class polygons
     Object.keys(S.POLYS).forEach(function(id){
@@ -303,7 +303,7 @@
       var phone = sz.W < 600;
       if(st.view === 'triangle'){
         var side = phone ? 0 : 270, triW = sz.W - side;
-        var t = triangleSvg({ W: triW, H: phone ? sz.H - 160 : sz.H, pt: st.pt, cls: w.id });
+        var t = triangleSvg({ W: triW, H: phone ? sz.H - 160 : sz.H, pt: st.pt, cls: w.id, phone: phone });
         geo = t;
         var panel = '';
         if(phone){
