@@ -19,7 +19,7 @@ Two open models run on Olivier's Modal workspace (testaolivier10, Starter plan, 
   python3 ai/ledger.py month  spent, held by other runs, free, and this run's reservation;
   python3 ai/ledger.py end    when the run is done or stops early (releases what it did not spend, commits and pushes this run's file);
   python3 ai/ledger.py sweep  lists stale reservations of crashed runs (released automatically after 12 h idle with no call younger than 2 h).
-  The clients refuse a call past the run's reservation or the $27 monthly cap. The old shared /tmp/m/modal_ledger.json is history, read but never written.
+  The clients refuse a call when the workspace has no reservation (LP_MANUAL=1 allows a hand run in a chat, held to the month's cap) or the call goes past the run's reservation or the $27 monthly cap. Every start and collect is pushed at once. The old shared /tmp/m/modal_ledger.json is history, read but never written.
 
 ## Costs (measured 2026-10-18)
 - One acting shot: about $0.55 to $0.70 (8 to 10 minutes on an H100).
