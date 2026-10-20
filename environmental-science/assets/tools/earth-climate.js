@@ -184,19 +184,22 @@
     o = o || {};
     var phone = W < 560, out = [], R = Math.min(H * 0.44, W * (phone ? 0.3 : 0.26)), cx = R + 14, cy = H / 2;
     var sx0 = cx + R + (phone ? 22 : 40), sx1 = W - (phone ? 6 : 150), st = 22, sb = H - 22;
+    /* Drill mode (o.quiz = the steps answered so far): an unlabelled globe with
+       only the asked latitude marked; each answer appears once its step is done. */
+    var q = o.quiz, end = q && q.cell, show = q ? { rise: q.air || end, belts: q.climate || end, winds: q.wind || end, names: q.cell } : { rise: 1, belts: 1, winds: 1, names: 1 };
     function SY(l){ return st + (90 - l) / 180 * (sb - st); }
     function GY(l){ return cy - R * Math.sin(l * RAD); }
     // belts on the globe
     out.push('<circle class="ec-globe" cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/>');
     out.push('<clipPath id="ec-gclip"><circle cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/></clipPath><g clip-path="url(#ec-gclip)">');
-    [[-8, 8, 'wet'], [22, 38, 'dry'], [-38, -22, 'dry'], [52, 68, 'wet'], [-68, -52, 'wet']].forEach(function(b){
+    if(show.belts) [[-8, 8, 'wet'], [22, 38, 'dry'], [-38, -22, 'dry'], [52, 68, 'wet'], [-68, -52, 'wet']].forEach(function(b){
       out.push('<rect class="ec-belt-' + b[2] + '" x="' + n2(cx - R) + '" y="' + n2(GY(b[1])) + '" width="' + n2(2 * R) + '" height="' + n2(GY(b[0]) - GY(b[1])) + '"/>');
     });
     out.push('</g>');
     [0, 30, -30, 60, -60].forEach(function(l){ var hw = R * Math.cos(l * RAD); out.push(line(cx - hw, GY(l), cx + hw, GY(l), 'ec-lat' + (l ? '' : ' ec-lat-eq'))); });
     out.push('<circle class="ec-globe-edge" cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/>');
     // surface winds: trades toward the equator from the east, westerlies, polar easterlies
-    [[15, -1, 1], [45, 1, -1], [75, -1, 1], [-15, -1, -1], [-45, 1, 1], [-75, -1, -1]].forEach(function(b){
+    if(show.winds) [[15, -1, 1], [45, 1, -1], [75, -1, 1], [-15, -1, -1], [-45, 1, 1], [-75, -1, -1]].forEach(function(b){
       var l = b[0], y = GY(l), hw = R * Math.cos(l * RAD), n = Math.abs(l) > 70 ? 1 : 2, dx = b[1] * Math.min(36, hw * 0.4), dy = b[2] * Math.min(12, (GY(Math.abs(l) - 10) - GY(Math.abs(l) + 10)) * 0.22);
       for(var i = 0; i < n; i++){ var xx = cx + (n === 1 ? 0 : (i ? 0.4 : -0.4) * hw); out.push(arrow(xx - dx / 2, y - dy / 2, xx + dx / 2, y + dy / 2, 'ec-wind', 10, 5.5)); }
     });
@@ -214,11 +217,13 @@
       var riseY = SY(c[3]) === SY(c[1]) ? ytop : ybot, sinkY = riseY === ytop ? ybot : ytop, mx = (xl + xr) / 2, my = (ytop + ybot) / 2, aw = Math.min((xr - xl) * 0.18, 30), ah = Math.min((ybot - ytop) * 0.18, 16);
       var dirAloft = sinkY < riseY ? -1 : 1;    // screen direction from the rising edge to the sinking edge
       var g = '<g class="ec-cell' + (sel ? ' is-on' : '') + '"><rect class="ec-cellbox" x="' + n2(xl) + '" y="' + n2(ytop) + '" width="' + n2(xr - xl) + '" height="' + n2(Math.max(4, ybot - ytop)) + '" rx="' + n2(Math.min(14, (ybot - ytop) / 2)) + '"/>';
-      g += arrow(mx - aw, riseY, mx + aw, riseY, 'ec-cellarrow', 7);                        // rises: surface to aloft
-      g += arrow(xr, my - dirAloft * ah, xr, my + dirAloft * ah, 'ec-cellarrow', 7);        // aloft: toward the sinking edge
-      g += arrow(mx + aw, sinkY, mx - aw, sinkY, 'ec-cellarrow', 7);                        // sinks: aloft to surface
-      g += arrow(xl, my + dirAloft * ah, xl, my - dirAloft * ah, 'ec-cellarrow', 7);        // surface: back to the rising edge
-      g += txt(mx, my + 4, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle') + '</g>';
+      if(show.rise){
+        g += arrow(mx - aw, riseY, mx + aw, riseY, 'ec-cellarrow', 7);                        // rises: surface to aloft
+        g += arrow(xr, my - dirAloft * ah, xr, my + dirAloft * ah, 'ec-cellarrow', 7);        // aloft: toward the sinking edge
+        g += arrow(mx + aw, sinkY, mx - aw, sinkY, 'ec-cellarrow', 7);                        // sinks: aloft to surface
+        g += arrow(xl, my + dirAloft * ah, xl, my - dirAloft * ah, 'ec-cellarrow', 7);        // surface: back to the rising edge
+      }
+      g += (show.names ? txt(mx, my + 4, c[2], 'ec-t ec-b ec-celln ec-halo', 'middle') : sel ? txt(mx, my + 4, '?', 'ec-t ec-b ec-celln', 'middle') : '') + '</g>';
       out.push(g);
     });
     // rising and sinking marks, joined to the globe
@@ -226,6 +231,7 @@
       var y = SY(r[0]);
       if(Math.abs(r[0]) < 90) out.push(line(cx + R * Math.cos(r[0] * RAD), GY(r[0]), sx0, y, 'ec-lead'));
       out.push(txt(sx0 - 4, y + 4, Math.abs(r[0]) + '°', 'ec-t ec-tk', 'end'));
+      if(!show.rise) return;
       if(!phone) out.push(txt(sx1 + 10, y + 4, r[1] === 'rise' ? 'Air rises: rain' : 'Air sinks: dry', 'ec-t ec-s ' + (r[1] === 'rise' ? 'ec-c-wet' : 'ec-c-dry')));
       else if(Math.abs(r[0]) < 90) out.push(r[1] === 'rise' ? cloud(sx1 - 14, y - 2, 5, 'ec-cloud ec-cloud-sm') : sunIcon(sx1 - 12, y, 3.5));
     });
@@ -560,8 +566,8 @@
       inner = orbit(W / 2, H / 2 + 4, Math.min(W * 0.36, H * 0.58), day, phone) + txt(W / 2, 18, 'Seen from above the North Pole; the arrow is the axis tilt', 'ec-t ec-s ec-muted', 'middle');
       label = 'Earth’s orbit seen from above, with Earth in ' + (g.month === 6 ? 'July' : 'January') + ' and its axis tilt drawn as an arrow that keeps its direction.';
     } else if(g.kind === 'cells'){
-      inner = windScene(W, H, g.lat, { noLabels: true });
-      label = 'The globe with its wind belts and circulation cells; a balloon at ' + E.latText(g.lat) + '.';
+      inner = windScene(W, H, g.lat, { noLabels: true, quiz: st });
+      label = 'A globe and its three circulation cells on each side, with a balloon at ' + E.latText(g.lat) + (st.cell ? '; every cell, wind and belt now labeled.' : '; the labels appear as you answer.');
     } else if(g.kind === 'shadow'){
       var S0 = { T0: g.T0, H: g.H, lcl: g.hc, cloud: true, Tc: g.T0 - 10 * g.hc, Ttop: g.T0 - 10 * g.hc - 6 * (g.H - g.hc) };
       S0.Tlee = S0.Ttop + 10 * g.H;
