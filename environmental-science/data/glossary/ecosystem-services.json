@@ -1,0 +1,17 @@
+{
+ "ecosystem-service": {
+  "def": "A benefit that people receive from a working ecosystem, such as clean water, food, pollination or recreation. Ecosystem services are grouped into four kinds: provisioning, regulating, cultural and supporting."
+ },
+ "provisioning-service": {
+  "def": "An ecosystem service that provides goods people take and use: food, fish, timber, fiber, fresh water and medicines."
+ },
+ "regulating-service": {
+  "def": "An ecosystem service that comes from natural processes keeping conditions stable for people: pollination of crops, purification of water, control of floods and erosion, and storage of carbon."
+ },
+ "cultural-service": {
+  "def": "An ecosystem service that provides nonmaterial benefits: recreation, tourism, beauty, spiritual value and opportunities for education and research."
+ },
+ "supporting-service": {
+  "def": "An ecosystem service that the other services depend on: photosynthesis, nutrient cycling, soil formation and providing habitat."
+ }
+}

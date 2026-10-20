@@ -1,0 +1,2655 @@
+{
+ "about": "Topic map of the AP Environmental Science Course and Exam Description (effective fall 2026, V.1; content unchanged from the 2019-20 framework apart from wording clarifications), written in LevlPrep's own words from docs/apenv-research/framework.md. Every topic title is official (Course at a Glance poster). Objectives, knowledge lines and the skills each topic is tagged with are our own summaries and tagging, not CED text; the CED extract stops in Topic 3.7, so Units 4-9 detail pages were not read (docs/apenv-needs-author.md, ced-text).",
+ "ced": {
+  "title": "AP Environmental Science Course and Exam Description",
+  "edition": "Effective Fall 2026, V.1 (9 units, 99 topics; minor clarifications only)",
+  "effective": "Fall 2026; exam May 2027",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-and-exam-description-clarifications.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-at-a-glance-printable-poster.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-environmental-science/exam",
+   "https://apstudents.collegeboard.org/courses/ap-environmental-science"
+  ],
+  "verification": "All 99 titles from the Course at a Glance poster (agrees with every title the CED extract showed: Units 1-4 in full and most of 5-9). CED text readable to about 112k characters (into Topic 3.7). Practice weights are third party (Wikipedia, Fiveable). Read 2026-10-20."
+ },
+ "bigIdeas": [
+  {
+   "id": "ENG",
+   "name": "Energy Transfer"
+  },
+  {
+   "id": "ERT",
+   "name": "Interactions Between Earth Systems"
+  },
+  {
+   "id": "EIN",
+   "name": "Interactions Between Different Species and the Environment"
+  },
+  {
+   "id": "STB",
+   "name": "Sustainability"
+  }
+ ],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Concept Explanation",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C"
+   ],
+   "mcqWeight": [
+    30,
+    38
+   ],
+   "frqWeight": [
+    13,
+    20
+   ],
+   "skillNames": {
+    "1.A": "Describe environmental concepts and processes",
+    "1.B": "Explain environmental concepts and processes",
+    "1.C": "Explain environmental concepts and processes in an applied context"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Visual Representations",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "mcqWeight": [
+    12,
+    19
+   ],
+   "frqWeight": [
+    6,
+    10
+   ],
+   "skillNames": {
+    "2.A": "Describe the features of a model, diagram or other visual",
+    "2.B": "Explain relationships shown in a model or diagram",
+    "2.C": "Explain how a model or diagram connects to a wider environmental issue"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Text Analysis",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C",
+    "3.D",
+    "3.E"
+   ],
+   "mcqWeight": [
+    6,
+    8
+   ],
+   "frqWeight": null,
+   "skillNames": {
+    "3.A": "Identify the author's claim",
+    "3.B": "Describe the author's perspective and assumptions",
+    "3.C": "Describe how the evidence supports or refutes the claim",
+    "3.D": "Evaluate the credibility of a source (not assessed)",
+    "3.E": "Evaluate the validity of conclusions (not assessed)"
+   },
+   "notAssessed": [
+    "3.D",
+    "3.E"
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Scientific Experiments",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D",
+    "4.E"
+   ],
+   "mcqWeight": [
+    2,
+    4
+   ],
+   "frqWeight": [
+    10,
+    14
+   ],
+   "skillNames": {
+    "4.A": "Identify a testable hypothesis or scientific question",
+    "4.B": "Identify a research method, design or measure",
+    "4.C": "Describe an aspect of a research method, design or measure",
+    "4.D": "Make observations or collect data (not assessed)",
+    "4.E": "Explain the effect of a change to a research design"
+   },
+   "notAssessed": [
+    "4.D"
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Data Analysis",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C",
+    "5.D",
+    "5.E"
+   ],
+   "mcqWeight": [
+    12,
+    19
+   ],
+   "frqWeight": [
+    6,
+    10
+   ],
+   "skillNames": {
+    "5.A": "Describe patterns or trends in data",
+    "5.B": "Describe relationships among variables in data",
+    "5.C": "Explain patterns and trends in data to draw conclusions",
+    "5.D": "Interpret results against a hypothesis",
+    "5.E": "Explain what data imply for an environmental issue"
+   }
+  },
+  {
+   "id": 6,
+   "name": "Mathematical Routines",
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C"
+   ],
+   "mcqWeight": [
+    6,
+    9
+   ],
+   "frqWeight": [
+    20,
+    20
+   ],
+   "skillNames": {
+    "6.A": "Choose an approach or method to solve a problem",
+    "6.B": "Apply the method, showing the steps",
+    "6.C": "Calculate an accurate answer, with units"
+   }
+  },
+  {
+   "id": 7,
+   "name": "Environmental Solutions",
+   "skills": [
+    "7.A",
+    "7.B",
+    "7.C",
+    "7.D",
+    "7.E",
+    "7.F"
+   ],
+   "mcqWeight": [
+    17,
+    23
+   ],
+   "frqWeight": [
+    26,
+    34
+   ],
+   "skillNames": {
+    "7.A": "Describe environmental problems",
+    "7.B": "Describe possible responses to an environmental problem",
+    "7.C": "Describe advantages, disadvantages and unintended consequences of a response",
+    "7.D": "Use data and evidence to support a response",
+    "7.E": "Propose and justify a solution to an environmental problem",
+    "7.F": "Justify a solution by explaining how its benefits work"
+   }
+  }
+ ],
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "The Living World: Ecosystems",
+   "weight": "6-8%",
+   "classPeriods": "~14",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "intro-ecosystems",
+     "title": "Introduction to Ecosystems",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe how organisms in an ecosystem interact with each other and with nonliving parts of the environment."
+     ],
+     "knowledge": [
+      "An ecosystem is the living community of an area plus its physical environment.",
+      "Predation, competition and symbiosis shape which species live where; resource partitioning lets competitors coexist."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.2",
+     "slug": "terrestrial-biomes",
+     "title": "Terrestrial Biomes",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe how the climate of a region sets its biome and the organisms adapted to it."
+     ],
+     "knowledge": [
+      "Average temperature and precipitation determine the major land biomes.",
+      "Biomes shift as climate changes; a climatograph summarizes a biome's climate."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.3",
+     "slug": "aquatic-biomes",
+     "title": "Aquatic Biomes",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe the major aquatic biomes and the abiotic factors that set what lives in each."
+     ],
+     "knowledge": [
+      "Salinity, depth, flow, temperature and dissolved oxygen separate aquatic biomes.",
+      "Wetlands, estuaries and coral reefs are among the most productive ecosystems."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.4",
+     "slug": "carbon-cycle",
+     "title": "The Carbon Cycle",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how carbon moves among the atmosphere, living things, oceans, sediments and fossil fuels, and how people change those flows."
+     ],
+     "knowledge": [
+      "Carbon moves between reservoirs (sinks and sources) through photosynthesis, respiration, decomposition, sedimentation and combustion.",
+      "The largest reservoirs are sedimentary rock and the ocean; burning fossil fuels moves carbon to the atmosphere faster than it is removed."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.5",
+     "slug": "nitrogen-cycle",
+     "title": "The Nitrogen Cycle",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the steps of the nitrogen cycle, the soil microbes that drive them, and how fixation limits productivity."
+     ],
+     "knowledge": [
+      "The atmosphere is the largest nitrogen reservoir, but most organisms cannot use nitrogen gas.",
+      "Fixation, nitrification, assimilation, ammonification and denitrification move nitrogen between forms; slow fixation makes nitrogen a limiting nutrient."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): steps, soil microbes, fixation rate limits productivity, atmosphere the largest reservoir"
+    },
+    {
+     "id": "1.6",
+     "slug": "phosphorus-cycle",
+     "title": "The Phosphorus Cycle",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain why phosphorus cycles slowly, through rock and sediment with no important gas phase, and why it limits growth."
+     ],
+     "knowledge": [
+      "Rock and sediments are the main phosphorus reservoirs; weathering releases it slowly.",
+      "With no significant atmospheric phase, phosphorus is often the limiting nutrient in water."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): rock and sediment reservoirs, no significant atmospheric phase, slow weathering makes it limiting"
+    },
+    {
+     "id": "1.7",
+     "slug": "water-cycle",
+     "title": "The Hydrologic (Water) Cycle",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how water moves through evaporation, transpiration, condensation, precipitation, runoff and infiltration, and where it is stored."
+     ],
+     "knowledge": [
+      "The ocean is the largest water reservoir; most fresh water is ice or groundwater.",
+      "Solar energy drives evaporation and transpiration; gravity drives runoff and infiltration."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.8",
+     "slug": "primary-productivity",
+     "title": "Primary Productivity",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "6.B"
+     ],
+     "practices": [
+      1,
+      6
+     ],
+     "objectives": [
+      "Calculate and explain primary productivity: gross production, the share used in respiration, and what is left as net production."
+     ],
+     "knowledge": [
+      "Gross primary productivity is the total rate of photosynthesis; net primary productivity is what remains after the producers' own respiration (NPP = GPP minus respiration).",
+      "Productivity is a rate per area per time and differs widely between ecosystems."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.9",
+     "slug": "trophic-levels",
+     "title": "Trophic Levels",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe trophic levels and how energy moves from producers to consumers."
+     ],
+     "knowledge": [
+      "Each step in feeding is a trophic level: producers, then primary, secondary and tertiary consumers.",
+      "Consumers are herbivores, carnivores or omnivores by what they eat."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.10",
+     "slug": "energy-flow",
+     "title": "Energy Flow and the 10% Rule",
+     "bigIdea": "ENG",
+     "skills": [
+      "2.B",
+      "6.B"
+     ],
+     "practices": [
+      2,
+      6
+     ],
+     "objectives": [
+      "Apply the 10% rule to calculate the energy available at each trophic level and explain why most energy is lost as heat."
+     ],
+     "knowledge": [
+      "Only about 10% of the energy at one trophic level is passed to the next; the rest is used or lost as heat.",
+      "Energy, biomass and number pyramids show the losses; the laws of thermodynamics explain them."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "1.11",
+     "slug": "food-webs",
+     "title": "Food Chains and Food Webs",
+     "bigIdea": "ENG",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe food chains and food webs, including detritivores and decomposers, and predict how removing a species ripples through a web."
+     ],
+     "knowledge": [
+      "A food chain is one feeding path; a food web is all the connected paths in an ecosystem.",
+      "Detritivores and decomposers return nutrients from dead matter to the soil and water."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): food chain and web definitions, detritivores and decomposers"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "The Living World: Biodiversity",
+   "weight": "6-8%",
+   "classPeriods": "~11",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "biodiversity",
+     "title": "Introduction to Biodiversity",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Describe the levels of biodiversity and explain why more diverse populations and ecosystems recover better from disturbance."
+     ],
+     "knowledge": [
+      "Biodiversity includes genetic, species and habitat diversity; species diversity has richness and evenness.",
+      "A population bottleneck cuts genetic diversity; keystone species hold a community together."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "2.2",
+     "slug": "ecosystem-services",
+     "title": "Ecosystem Services",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.C",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe the services ecosystems give people and the economic and ecological cost when people disrupt them."
+     ],
+     "knowledge": [
+      "Services are provisioning, regulating, cultural and supporting.",
+      "Disrupting an ecosystem has costs that markets often leave out."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "2.3",
+     "slug": "island-biogeo",
+     "title": "Island Biogeography",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.B",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain how island size and distance from the mainland set species richness, and apply the idea to habitat islands."
+     ],
+     "knowledge": [
+      "Larger islands and islands closer to the mainland hold more species.",
+      "Habitat fragments act as islands, with the same effects."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "2.4",
+     "slug": "ecological-tolerance",
+     "title": "Ecological Tolerance",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.A",
+      "5.A"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Describe the range of conditions an organism or population can tolerate and what happens outside it."
+     ],
+     "knowledge": [
+      "Each species has an optimal range, zones of physiological stress and zones of intolerance for each factor.",
+      "Tolerance applies to individuals and to whole populations."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "2.5",
+     "slug": "natural-disruptions",
+     "title": "Natural Disruptions to Ecosystems",
+     "bigIdea": "ERT",
+     "skills": [
+      "5.A",
+      "1.B"
+     ],
+     "practices": [
+      5,
+      1
+     ],
+     "objectives": [
+      "Explain how periodic, episodic and random natural disruptions affect ecosystems, and how sea level and climate have changed over geological time."
+     ],
+     "knowledge": [
+      "Natural disruptions can be periodic, episodic or random, and can change ecosystems for a short or long time.",
+      "Earth's climate and sea level have changed many times; some organisms migrate in response."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "2.6",
+     "slug": "evolving-populations",
+     "title": "Adaptations",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Explain how populations respond to environmental change through natural selection on heritable traits over generations."
+     ],
+     "knowledge": [
+      "Natural selection favors individuals with heritable traits that suit the environment, so the population changes over generations.",
+      "Fast environmental change can outpace a population's ability to adapt."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "Learning objective reworded (2026-27): how populations respond to environmental change through natural selection over generations"
+    },
+    {
+     "id": "2.7",
+     "slug": "succession",
+     "title": "Ecological Succession",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.B",
+      "5.A"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Describe primary and secondary succession and the role of pioneer species."
+     ],
+     "knowledge": [
+      "Primary succession starts on bare rock with no soil; secondary succession starts where soil remains after a disturbance.",
+      "Pioneer species arrive first; a mature community is more stable and diverse."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Populations",
+   "weight": "10-15%",
+   "classPeriods": "~12-13",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "generalists-specialists",
+     "title": "Generalist and Specialist Species",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Compare generalist and specialist species and how each fares when the environment changes."
+     ],
+     "knowledge": [
+      "Specialists have narrow niches and are more vulnerable to change; generalists have broad niches."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.2",
+     "slug": "r-k-selection",
+     "title": "K-Selected r-Selected Species",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Compare r-selected and K-selected species by their reproductive traits and how they respond to disturbance."
+     ],
+     "knowledge": [
+      "r-selected species have many offspring with little care; K-selected species have few offspring with much care.",
+      "r and K strategies are about reproduction; survivorship curves are a separate idea."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.3",
+     "slug": "survivorship-curves",
+     "title": "Survivorship Curves",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.A",
+      "5.A"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Describe and read the three types of survivorship curves."
+     ],
+     "knowledge": [
+      "Type I: most survive to old age; Type II: a constant death rate; Type III: most die young.",
+      "A survivorship curve plots survivors on a log scale against age."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.4",
+     "slug": "carrying-limits",
+     "title": "Carrying Capacity",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.B",
+      "5.A"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain carrying capacity, overshoot and dieback."
+     ],
+     "knowledge": [
+      "Carrying capacity (K) is the largest population an environment can support over time.",
+      "A population that overshoots K degrades its resources and dies back."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.5",
+     "slug": "population-growth",
+     "title": "Population Growth and Resource Availability",
+     "bigIdea": "ERT",
+     "skills": [
+      "5.A",
+      "6.B"
+     ],
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Compare exponential and logistic growth and explain how density-dependent and density-independent factors limit populations."
+     ],
+     "knowledge": [
+      "With unlimited resources a population grows exponentially (a J-curve); limits bend growth into a logistic S-curve that levels off at K.",
+      "Density-dependent factors grow stronger as a population grows; density-independent ones do not."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.6",
+     "slug": "age-structure",
+     "title": "Age Structure Diagrams",
+     "bigIdea": "EIN",
+     "skills": [
+      "2.A",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Read age structure diagrams and predict whether a population will grow, stay stable or shrink."
+     ],
+     "knowledge": [
+      "A wide base means rapid growth; a column shape means stability; a narrow base means decline.",
+      "A large young cohort keeps a population growing for a time even after fertility falls."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.7",
+     "slug": "total-fertility-rate",
+     "title": "Total Fertility Rate",
+     "bigIdea": "EIN",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Explain total fertility rate, replacement level, and the factors that raise or lower fertility."
+     ],
+     "knowledge": [
+      "Total fertility rate is the average number of children a woman has in her lifetime.",
+      "Replacement level is about 2.1; education and opportunities for women lower fertility, as does lower infant mortality."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "3.8",
+     "slug": "human-population",
+     "title": "Human Population Dynamics",
+     "bigIdea": "EIN",
+     "skills": [
+      "6.A",
+      "6.C"
+     ],
+     "practices": [
+      6
+     ],
+     "objectives": [
+      "Calculate the rate of natural increase from birth and death rates and the doubling time by the rule of 70, and explain limits to human population growth."
+     ],
+     "knowledge": [
+      "The rate of natural increase in percent is (crude birth rate minus crude death rate) divided by 10, since both are per 1,000 people.",
+      "Doubling time is about 70 divided by the growth rate in percent; Malthus argued population outruns food."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): rate of natural increase as CBR minus CDR in percent; rule of 70"
+    },
+    {
+     "id": "3.9",
+     "slug": "population-transition",
+     "title": "Demographic Transition",
+     "bigIdea": "EIN",
+     "skills": [
+      "2.B",
+      "5.A"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Describe the stages of the demographic transition and the age structure typical of each."
+     ],
+     "knowledge": [
+      "Countries move from high birth and death rates (preindustrial) through falling death rates (transitional) and falling birth rates (industrial) to low rates (postindustrial)."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Earth Systems and Resources",
+   "weight": "10-15%",
+   "classPeriods": "~12",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "plate-tectonics",
+     "title": "Plate Tectonics",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.A",
+      "2.B"
+     ],
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe the three kinds of plate boundaries and the landforms, earthquakes and volcanoes they produce."
+     ],
+     "knowledge": [
+      "Convection in the mantle moves tectonic plates.",
+      "Convergent boundaries form mountains, trenches and volcanoes; divergent boundaries form rifts and new crust; transform boundaries cause earthquakes."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.2",
+     "slug": "soil-formation",
+     "title": "Soil Formation and Erosion",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.A",
+      "1.B"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Describe how soil forms from parent material, its horizons, and how it is eroded."
+     ],
+     "knowledge": [
+      "Weathering of parent material and the decay of organic matter form soil slowly, in horizons.",
+      "Wind and water erode soil, faster where vegetation is removed."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.3",
+     "slug": "soil-properties",
+     "title": "Soil Composition and Properties",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.A",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Read the soil texture triangle and explain how texture sets porosity, permeability and water-holding capacity."
+     ],
+     "knowledge": [
+      "Soil texture is the share of sand, silt and clay; loam has a balance of the three.",
+      "Larger particles mean more permeability and less water-holding capacity."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): soil texture triangle and loam"
+    },
+    {
+     "id": "4.4",
+     "slug": "atmosphere",
+     "title": "Earth's Atmosphere",
+     "bigIdea": "ERT",
+     "skills": [
+      "1.A",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe the layers and composition of the atmosphere."
+     ],
+     "knowledge": [
+      "The atmosphere is mostly nitrogen and oxygen; the troposphere holds the weather and the stratosphere holds the ozone layer.",
+      "Temperature changes direction with height from layer to layer."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.5",
+     "slug": "global-wind-patterns",
+     "title": "Global Wind Patterns",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.B",
+      "1.B"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Explain how uneven heating and Earth's rotation set global wind patterns."
+     ],
+     "knowledge": [
+      "Warm air rises at the equator and sinks near 30 degrees, forming Hadley cells; Ferrel and polar cells lie poleward.",
+      "The Coriolis effect deflects winds, producing the trade winds and westerlies."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.6",
+     "slug": "watersheds",
+     "title": "Watersheds",
+     "bigIdea": "ERT",
+     "skills": [
+      "2.A",
+      "1.B"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Describe a watershed and the factors that shape it."
+     ],
+     "knowledge": [
+      "A watershed is all the land that drains into one body of water; its area, slope, soil and vegetation shape runoff and erosion.",
+      "A watershed is surface land; an aquifer is underground water."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.7",
+     "slug": "solar-radiation-seasons",
+     "title": "Solar Radiation and Earth's Seasons",
+     "bigIdea": "ENG",
+     "skills": [
+      "2.B",
+      "1.B"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Explain how latitude and the tilt of Earth's axis set insolation and the seasons."
+     ],
+     "knowledge": [
+      "Insolation is greatest where sunlight hits most directly, near the equator.",
+      "Seasons come from the tilt of Earth's axis, not its distance from the Sun; albedo is the share of sunlight a surface reflects."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.8",
+     "slug": "geo-and-climate",
+     "title": "Earth's Geography and Climate",
+     "bigIdea": "ENG",
+     "skills": [
+      "2.B",
+      "1.C"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Explain how mountains, oceans and ocean currents shape regional climates."
+     ],
+     "knowledge": [
+      "Air forced up a mountain cools and drops its rain on the windward side, leaving a rain shadow behind.",
+      "Ocean currents carry heat; land near large water bodies has milder climates."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "4.9",
+     "slug": "el-nino-la-nina",
+     "title": "El Niño and La Niña",
+     "bigIdea": "ENG",
+     "skills": [
+      "2.B",
+      "5.C"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Compare El Niño and La Niña: trade winds, upwelling, rainfall and the effects on ecosystems."
+     ],
+     "knowledge": [
+      "In El Niño the trade winds weaken, warm water spreads east and upwelling off South America drops.",
+      "In La Niña the trade winds strengthen, upwelling increases and the eastern Pacific cools."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Land and Water Use",
+   "weight": "10-15%",
+   "classPeriods": "~23",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "tragedy-of-commons",
+     "title": "The Tragedy of the Commons",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.B"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Explain the tragedy of the commons and ways to manage shared resources."
+     ],
+     "knowledge": [
+      "When a resource is open to all, each user gains from taking more while the cost is shared, so the resource is overused."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.2",
+     "slug": "clearcutting",
+     "title": "Clearcutting",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe clearcutting and its effects on soil, water and wildlife."
+     ],
+     "knowledge": [
+      "Clearcutting removes all trees at once: cheap, but it increases erosion, raises stream temperatures and removes habitat."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.3",
+     "slug": "green-revolution",
+     "title": "The Green Revolution",
+     "bigIdea": "EIN",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe the Green Revolution and its benefits and costs."
+     ],
+     "knowledge": [
+      "High-yield crops, synthetic fertilizer, irrigation, pesticides and mechanization raised food production.",
+      "Costs include monocultures, loss of genetic diversity, fertilizer runoff and fossil fuel use."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.4",
+     "slug": "agricultural-practices",
+     "title": "Impacts of Agricultural Practices",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe the environmental effects of tilling, slash-and-burn farming and fertilizer use."
+     ],
+     "knowledge": [
+      "Tilling breaks up soil and leaves it open to erosion; slash-and-burn clears forest and releases carbon.",
+      "Excess fertilizer runs off into water."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.5",
+     "slug": "irrigation",
+     "title": "Irrigation Methods",
+     "bigIdea": "EIN",
+     "skills": [
+      "6.B",
+      "7.C"
+     ],
+     "practices": [
+      6,
+      7
+     ],
+     "objectives": [
+      "Compare irrigation methods by efficiency and explain salinization, waterlogging and aquifer depletion."
+     ],
+     "knowledge": [
+      "About 70% of global freshwater use is agriculture.",
+      "Drip irrigation is the most efficient; flood and furrow irrigation lose water to evaporation and runoff; overirrigation causes waterlogging and salinization."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): about 70% of global freshwater use is agriculture"
+    },
+    {
+     "id": "5.6",
+     "slug": "pest-control",
+     "title": "Pest Control Methods",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe pesticide use, its effects, and how pests become resistant."
+     ],
+     "knowledge": [
+      "Pesticides kill target and nontarget organisms; survivors with resistance breed, so a population becomes resistant.",
+      "Genetically modified crops can reduce some pesticide use."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.7",
+     "slug": "meat-production",
+     "title": "Meat Production Methods",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Compare concentrated animal feeding operations with rotational and free-range grazing, and explain overgrazing and desertification."
+     ],
+     "knowledge": [
+      "CAFOs produce meat cheaply but concentrate manure and use antibiotics; free-range and rotational grazing spread the impact.",
+      "Overgrazing can lead to desertification; eating less ruminant meat lowers land use and methane."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): CAFOs vs rotational and free-range grazing, trade-offs, overgrazing, desertification, eating less ruminant meat"
+    },
+    {
+     "id": "5.8",
+     "slug": "overfishing",
+     "title": "Impacts of Overfishing",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "5.A"
+     ],
+     "practices": [
+      7,
+      5
+     ],
+     "objectives": [
+      "Explain how overfishing and bycatch deplete fish stocks and food webs."
+     ],
+     "knowledge": [
+      "Fishing faster than a stock can reproduce leads to fishery collapse.",
+      "Bycatch kills nontarget species, and trawling damages the sea floor."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.9",
+     "slug": "mining",
+     "title": "Impacts of Mining",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe surface and subsurface mining and their environmental effects."
+     ],
+     "knowledge": [
+      "Surface mining removes overburden to reach ore near the surface; subsurface mining reaches deep deposits at more risk to miners.",
+      "Tailings and acid mine drainage pollute water; land reclamation restores mined land."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.10",
+     "slug": "urbanization",
+     "title": "Impacts of Urbanization",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe how urbanization changes land, water and climate."
+     ],
+     "knowledge": [
+      "Impervious surfaces raise runoff and flooding and cut infiltration.",
+      "Cities can draw down coastal aquifers (saltwater intrusion) and form urban heat islands; urban sprawl spreads development outward."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.11",
+     "slug": "ecological-footprints",
+     "title": "Ecological Footprints",
+     "bigIdea": "EIN",
+     "skills": [
+      "6.B",
+      "7.A"
+     ],
+     "practices": [
+      6,
+      7
+     ],
+     "objectives": [
+      "Compare ecological and carbon footprints and calculate one from consumption data."
+     ],
+     "knowledge": [
+      "An ecological footprint is the land and water area needed to supply what a person uses and absorb the waste.",
+      "A carbon footprint counts greenhouse gas emissions only."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.12",
+     "slug": "sustainability",
+     "title": "Introduction to Sustainability",
+     "bigIdea": "STB",
+     "skills": [
+      "1.A",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Explain sustainability, sustainable yield and environmental indicators."
+     ],
+     "knowledge": [
+      "Sustainability means meeting present needs without compromising the ability of future generations to meet theirs.",
+      "Maximum sustainable yield is the largest harvest that leaves a population able to replace it."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.13",
+     "slug": "urban-runoff",
+     "title": "Methods to Reduce Urban Runoff",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.F"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe methods to reduce urban runoff and how each works."
+     ],
+     "knowledge": [
+      "Permeable pavement, rain gardens, green roofs and planted areas let water infiltrate instead of running off."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.14",
+     "slug": "integrated-pest-management",
+     "title": "Integrated Pest Management",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe integrated pest management and its trade-offs."
+     ],
+     "knowledge": [
+      "IPM combines biological, physical and limited chemical controls, monitored over time, to keep pests below harmful levels."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.15",
+     "slug": "sustainable-agriculture",
+     "title": "Sustainable Agriculture",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.F"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe soil conservation practices and how each protects soil."
+     ],
+     "knowledge": [
+      "Contour plowing, terracing, windbreaks, strip cropping, no-till farming, crop rotation and perennial crops reduce erosion or restore nutrients."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.16",
+     "slug": "aquaculture",
+     "title": "Aquaculture",
+     "bigIdea": "STB",
+     "skills": [
+      "7.C",
+      "7.E"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe aquaculture and its benefits and drawbacks."
+     ],
+     "knowledge": [
+      "Fish farming takes pressure off wild stocks but can concentrate waste, spread disease and let farmed fish escape."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "5.17",
+     "slug": "sustainable-forestry",
+     "title": "Sustainable Forestry",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.F"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe sustainable forestry practices."
+     ],
+     "knowledge": [
+      "Selective cutting, reforestation, prescribed burns and using recycled wood reduce the harm of logging."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Energy Resources and Consumption",
+   "weight": "10-15%",
+   "classPeriods": "~17",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "renewable-nonrenewable",
+     "title": "Renewable and Nonrenewable Resources",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Classify energy sources as renewable or nonrenewable."
+     ],
+     "knowledge": [
+      "Nonrenewable sources (fossil fuels, nuclear) form far more slowly than they are used; renewable sources (sun, wind, water, biomass) are replenished on human timescales."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.2",
+     "slug": "global-energy-consumption",
+     "title": "Global Energy Consumption",
+     "bigIdea": "ENG",
+     "skills": [
+      "5.A",
+      "5.B"
+     ],
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Describe patterns of global energy consumption by fuel and by country."
+     ],
+     "knowledge": [
+      "Fossil fuels supply most of the world's energy; use per person is highest in developed countries.",
+      "Use rises as developing countries industrialize."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.3",
+     "slug": "fuel-types",
+     "title": "Fuel Types and Uses",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe the fuels people use, from wood to coal, oil and natural gas, and what each is used for."
+     ],
+     "knowledge": [
+      "Coal ranks from lignite to bituminous to anthracite by energy content; natural gas is mostly methane and burns cleanest of the fossil fuels.",
+      "Cogeneration uses waste heat as well as electricity."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.4",
+     "slug": "energy-resources-distribution",
+     "title": "Distribution of Natural Energy Resources",
+     "bigIdea": "ENG",
+     "skills": [
+      "5.A",
+      "1.B"
+     ],
+     "practices": [
+      5,
+      1
+     ],
+     "objectives": [
+      "Explain why energy resources are unevenly spread and what that means for use."
+     ],
+     "knowledge": [
+      "Fossil fuel deposits, sunlight, wind and geothermal heat vary by place, which shapes what each country uses."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.5",
+     "slug": "fossil-fuels",
+     "title": "Fossil Fuels",
+     "bigIdea": "ENG",
+     "skills": [
+      "2.B",
+      "7.C"
+     ],
+     "practices": [
+      2,
+      7
+     ],
+     "objectives": [
+      "Describe how fossil fuels are extracted and burned to make electricity, and the environmental effects, including fracking."
+     ],
+     "knowledge": [
+      "A power plant burns fuel to boil water; the steam turns a turbine that spins a generator.",
+      "Fracking can contaminate groundwater and release volatile chemicals; tar sands need much energy and water to process."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries",
+     "clarified2026": "EK wording refined (2026-27): fracking can contaminate groundwater and release VOCs"
+    },
+    {
+     "id": "6.6",
+     "slug": "nuclear-power",
+     "title": "Nuclear Power",
+     "bigIdea": "ENG",
+     "skills": [
+      "6.B",
+      "7.C"
+     ],
+     "practices": [
+      6,
+      7
+     ],
+     "objectives": [
+      "Explain nuclear fission, radioactive decay and half-life, and the benefits and risks of nuclear power."
+     ],
+     "knowledge": [
+      "Fission of uranium-235 releases heat to make steam; no carbon dioxide is released in operation.",
+      "Radioactive waste stays dangerous for many half-lives; accidents are rare but severe."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.7",
+     "slug": "biomass-energy",
+     "title": "Energy from Biomass",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe energy from biomass and biofuels and their effects."
+     ],
+     "knowledge": [
+      "Burning wood, charcoal, crop waste or dung releases carbon dioxide and particles; ethanol and biodiesel are liquid biofuels.",
+      "Biomass is renewable only if it is regrown as fast as it is used."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.8",
+     "slug": "solar-energy",
+     "title": "Solar Energy",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe photovoltaic, active and passive solar energy and their trade-offs."
+     ],
+     "knowledge": [
+      "Photovoltaic cells turn sunlight directly into electricity; active and passive solar heat buildings and water.",
+      "Solar needs storage or backup because sunlight varies."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.9",
+     "slug": "hydroelectric",
+     "title": "Hydroelectric Power",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe hydroelectric power and its effects on rivers and ecosystems."
+     ],
+     "knowledge": [
+      "Water held behind a dam falls through turbines; run-of-the-river and tidal systems use flowing water.",
+      "Dams flood land, block fish migration and trap sediment."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.10",
+     "slug": "geothermal",
+     "title": "Geothermal Energy",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe geothermal energy and ground source heat pumps."
+     ],
+     "knowledge": [
+      "Heat from Earth's interior can make steam for electricity where it is near the surface.",
+      "Ground source heat pumps move heat between a building and the ground."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.11",
+     "slug": "hydrogen-fuel-cell",
+     "title": "Hydrogen Fuel Cell",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe how a hydrogen fuel cell works and its trade-offs."
+     ],
+     "knowledge": [
+      "A fuel cell combines hydrogen and oxygen to make electricity, with water as the product.",
+      "Making hydrogen takes energy, often from natural gas; storing it is hard."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.12",
+     "slug": "wind-energy",
+     "title": "Wind Energy",
+     "bigIdea": "ENG",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe wind energy and its trade-offs."
+     ],
+     "knowledge": [
+      "Wind turns turbine blades that spin a generator; wind farms can share land with farming.",
+      "Wind is intermittent and turbines can kill birds and bats."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "6.13",
+     "slug": "energy-conservation",
+     "title": "Energy Conservation",
+     "bigIdea": "ENG",
+     "skills": [
+      "6.B",
+      "7.E"
+     ],
+     "practices": [
+      6,
+      7
+     ],
+     "objectives": [
+      "Describe ways to conserve energy and calculate the savings."
+     ],
+     "knowledge": [
+      "Energy-efficient appliances, better insulation, smarter thermostats and lower-energy transport cut energy use.",
+      "Savings are calculated from energy, cost and emissions per unit."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "id": "unit-7",
+   "title": "Atmospheric Pollution",
+   "weight": "7-10%",
+   "classPeriods": "~10",
+   "topics": [
+    {
+     "id": "7.1",
+     "slug": "air-pollution",
+     "title": "Introduction to Air Pollution",
+     "bigIdea": "STB",
+     "skills": [
+      "1.A",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe the major air pollutants, their sources, and primary and secondary pollutants."
+     ],
+     "knowledge": [
+      "Primary pollutants are emitted directly; secondary pollutants form in the air.",
+      "The Clean Air Act sets limits for the criteria pollutants."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.2",
+     "slug": "photochemical-smog",
+     "title": "Photochemical Smog",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "5.A"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain how photochemical smog forms from nitrogen oxides and VOCs in sunlight, through a day."
+     ],
+     "knowledge": [
+      "Morning traffic emits NO; it forms NO2, which sunlight splits to make ground-level ozone, peaking in the afternoon.",
+      "VOCs keep ozone from being broken down."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.3",
+     "slug": "thermal-inversion",
+     "title": "Thermal Inversion",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "1.B"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Explain how a thermal inversion traps pollution near the ground."
+     ],
+     "knowledge": [
+      "Normally air cools with height; in an inversion a warm layer sits over cool air and stops it rising, trapping pollutants."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.4",
+     "slug": "co2-particulates",
+     "title": "Atmospheric CO2 and Particulates",
+     "bigIdea": "STB",
+     "skills": [
+      "1.A",
+      "5.A"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Describe natural sources of carbon dioxide and particulates."
+     ],
+     "knowledge": [
+      "Volcanoes, forest fires, decomposition and dust storms release carbon dioxide and particles without human help."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.5",
+     "slug": "indoor-air",
+     "title": "Indoor Air Pollutants",
+     "bigIdea": "STB",
+     "skills": [
+      "1.A",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe indoor air pollutants and their sources."
+     ],
+     "knowledge": [
+      "Radon seeps from rock, formaldehyde off-gasses from furniture, carbon monoxide comes from poor combustion, and asbestos fibers come from old buildings.",
+      "Indoor pollution is a large health risk where people burn wood or dung to cook."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.6",
+     "slug": "reducing-air-pollutants",
+     "title": "Reduction of Air Pollutants",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.F"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Match methods to reduce air pollutants with the pollutant each removes and how it works."
+     ],
+     "knowledge": [
+      "Scrubbers remove sulfur dioxide and particles; catalytic converters turn NOx, CO and hydrocarbons into less harmful gases; electrostatic precipitators and baghouses remove particles.",
+      "Vapor recovery nozzles capture gasoline vapor (VOCs) at the pump, not exhaust."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.7",
+     "slug": "acid-rain",
+     "title": "Acid Rain",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "7.C"
+     ],
+     "practices": [
+      2,
+      7
+     ],
+     "objectives": [
+      "Explain how acid deposition forms from NOx and SOx and its effects on soils, lakes and buildings."
+     ],
+     "knowledge": [
+      "Nitrogen and sulfur oxides react in the air to form nitric and sulfuric acid that fall as acid deposition.",
+      "Limestone bedrock and soils buffer acid; places without it are hit harder."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "7.8",
+     "slug": "noise-pollution",
+     "title": "Noise Pollution",
+     "bigIdea": "STB",
+     "skills": [
+      "1.A",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe noise pollution and its effects on wildlife and people."
+     ],
+     "knowledge": [
+      "Noise above about 85 decibels harms hearing; noise also disrupts animal communication, migration and predator avoidance."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "id": "unit-8",
+   "title": "Aquatic and Terrestrial Pollution",
+   "weight": "7-10%",
+   "classPeriods": "~16",
+   "topics": [
+    {
+     "id": "8.1",
+     "slug": "pollution-sources",
+     "title": "Sources of Pollution",
+     "bigIdea": "STB",
+     "skills": [
+      "1.A",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Distinguish point and nonpoint sources of pollution."
+     ],
+     "knowledge": [
+      "A point source has one identifiable outlet; a nonpoint source is diffuse, like runoff from farms and streets."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.2",
+     "slug": "human-impacts-ecosystems",
+     "title": "Human Impacts on Ecosystems",
+     "bigIdea": "STB",
+     "skills": [
+      "5.A",
+      "7.A"
+     ],
+     "practices": [
+      5,
+      7
+     ],
+     "objectives": [
+      "Describe how pollution affects aquatic ecosystems, including coral bleaching, oil spills and ocean plastics."
+     ],
+     "knowledge": [
+      "Species differ in their tolerance; indicator species signal water quality.",
+      "Warming and pollution bleach corals; oil spills smother wildlife; plastics break into microplastics."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.3",
+     "slug": "endocrine-disruptors",
+     "title": "Endocrine Disruptors",
+     "bigIdea": "STB",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Describe how endocrine disruptors interfere with hormones."
+     ],
+     "knowledge": [
+      "Endocrine disruptors mimic or block hormones and can harm reproduction and development at low doses."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.4",
+     "slug": "wetlands-mangroves",
+     "title": "Human Impacts on Wetlands and Mangroves",
+     "bigIdea": "STB",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Explain the services wetlands and mangroves provide and how people damage them."
+     ],
+     "knowledge": [
+      "Wetlands store floodwater, filter pollutants and are nurseries for fish; mangroves protect coasts from storm surge.",
+      "Draining, filling and coastal development destroy them."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.5",
+     "slug": "eutrophication",
+     "title": "Eutrophication",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain the full eutrophication chain from nutrient runoff to a dead zone."
+     ],
+     "knowledge": [
+      "Excess nitrogen and phosphorus feed an algal bloom; when the algae die, decomposers use up dissolved oxygen, causing hypoxia and fish kills.",
+      "An oligotrophic lake is low in nutrients; a eutrophic lake is high."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.6",
+     "slug": "thermal-pollution",
+     "title": "Thermal Pollution",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "5.B"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain thermal pollution and why warm water holds less oxygen."
+     ],
+     "knowledge": [
+      "Power plants and factories return heated cooling water; warm water holds less dissolved oxygen and can cause thermal shock.",
+      "Thermal pollution is heat, not chemicals."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.7",
+     "slug": "persistent-organic-pollutants",
+     "title": "Persistent Organic Pollutants (POPs)",
+     "bigIdea": "STB",
+     "skills": [
+      "1.B",
+      "5.B"
+     ],
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Describe persistent organic pollutants and why they last and travel."
+     ],
+     "knowledge": [
+      "POPs are fat-soluble, break down slowly and travel long distances in air and water.",
+      "DDT and PCBs are examples."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.8",
+     "slug": "bioaccumulation-biomagnification",
+     "title": "Bioaccumulation and Biomagnification",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "6.B"
+     ],
+     "practices": [
+      2,
+      6
+     ],
+     "objectives": [
+      "Explain bioaccumulation in one organism and biomagnification up a food chain, and calculate concentrations."
+     ],
+     "knowledge": [
+      "Bioaccumulation is the buildup of a substance in one organism over its life.",
+      "Biomagnification is the rise in concentration at each higher trophic level, so top predators carry the most."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.9",
+     "slug": "solid-waste",
+     "title": "Solid Waste Disposal",
+     "bigIdea": "STB",
+     "skills": [
+      "7.A",
+      "7.C"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe how solid waste is disposed of in landfills and incinerators, and their effects."
+     ],
+     "knowledge": [
+      "A sanitary landfill has a liner, a leachate collection system and a cover; landfill gas is mostly methane.",
+      "Incineration reduces volume but releases air pollutants and ash."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.10",
+     "slug": "waste-reduction",
+     "title": "Waste Reduction Methods",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.F"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe ways to reduce waste and their trade-offs."
+     ],
+     "knowledge": [
+      "Source reduction, reuse, recycling and composting keep waste out of landfills.",
+      "Landfill gas can be captured to generate electricity."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.11",
+     "slug": "sewage-treatment",
+     "title": "Sewage Treatment",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "7.F"
+     ],
+     "practices": [
+      2,
+      7
+     ],
+     "objectives": [
+      "Describe the stages of sewage treatment and what each removes."
+     ],
+     "knowledge": [
+      "Primary treatment settles solids; secondary treatment uses bacteria to break down organic matter; tertiary treatment removes nutrients and other pollutants.",
+      "Disinfection kills pathogens before release."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.12",
+     "slug": "lethal-dose-50",
+     "title": "Lethal Dose 50% (LD50)",
+     "bigIdea": "EIN",
+     "skills": [
+      "5.B",
+      "6.B"
+     ],
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Explain and read LD50, the dose that kills half a test population."
+     ],
+     "knowledge": [
+      "LD50 is the dose, usually in mg per kg of body mass, that kills 50% of a test population; a lower LD50 means a more toxic substance."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.13",
+     "slug": "dose-response-curve",
+     "title": "Dose Response Curve",
+     "bigIdea": "EIN",
+     "skills": [
+      "5.A",
+      "5.B"
+     ],
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Read a dose-response curve, including the threshold dose and LD50."
+     ],
+     "knowledge": [
+      "A dose-response curve plots the percent of a test population responding against dose.",
+      "The threshold dose is the highest dose with no observed effect."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.14",
+     "slug": "pollution-human-health",
+     "title": "Pollution and Human Health",
+     "bigIdea": "EIN",
+     "skills": [
+      "1.B",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Explain why the health effects of pollution are hard to measure, and how pollutants combine."
+     ],
+     "knowledge": [
+      "People are exposed to many substances at once, so a single cause is hard to prove.",
+      "Synergism is when two substances together do more harm than the sum of each; acute effects come fast, chronic effects after long exposure."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "8.15",
+     "slug": "pathogens",
+     "title": "Pathogens and Infectious Diseases",
+     "bigIdea": "EIN",
+     "skills": [
+      "1.B",
+      "7.A"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe pathogens, how infectious diseases spread, and how environmental change affects them."
+     ],
+     "knowledge": [
+      "Pathogens are organisms that cause disease; vectors such as mosquitoes carry some of them.",
+      "Warming can spread vectors into new areas; poor sanitation spreads waterborne disease."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "id": "unit-9",
+   "title": "Global Change",
+   "weight": "15-20%",
+   "classPeriods": "~16",
+   "topics": [
+    {
+     "id": "9.1",
+     "slug": "ozone-depletion",
+     "title": "Stratospheric Ozone Depletion",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "5.A"
+     ],
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain how chlorofluorocarbons destroy stratospheric ozone and the effects of more UV radiation."
+     ],
+     "knowledge": [
+      "UV light frees chlorine from CFCs; one chlorine atom destroys many ozone molecules in a cycle.",
+      "Less ozone lets more UV reach the surface, raising skin cancer and cataract risk."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.2",
+     "slug": "reducing-ozone-depletion",
+     "title": "Reducing Ozone Depletion",
+     "bigIdea": "STB",
+     "skills": [
+      "7.E",
+      "7.F"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Describe how the Montreal Protocol and CFC replacements reduced ozone depletion."
+     ],
+     "knowledge": [
+      "The Montreal Protocol phased out CFCs; replacement HCFCs and HFCs deplete less or no ozone, though HFCs are strong greenhouse gases."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.3",
+     "slug": "greenhouse-effect",
+     "title": "The Greenhouse Effect",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "1.B"
+     ],
+     "practices": [
+      2,
+      1
+     ],
+     "objectives": [
+      "Explain the greenhouse effect: greenhouse gases absorb and re-emit infrared radiation from Earth's surface."
+     ],
+     "knowledge": [
+      "Sunlight warms the surface, which gives off infrared radiation; greenhouse gases absorb it and warm the lower atmosphere.",
+      "Global warming potential compares gases with carbon dioxide; the greenhouse effect is not the ozone layer."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.4",
+     "slug": "greenhouse-gas-increases",
+     "title": "Increases in the Greenhouse Gases",
+     "bigIdea": "STB",
+     "skills": [
+      "5.A",
+      "5.C"
+     ],
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Describe the human sources of greenhouse gases and the evidence that their levels are rising."
+     ],
+     "knowledge": [
+      "Burning fossil fuels, deforestation, agriculture and landfills add carbon dioxide, methane and nitrous oxide.",
+      "Ice cores and direct measurements show carbon dioxide rising steeply since industrialization."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.5",
+     "slug": "climate-change",
+     "title": "Global Climate Change",
+     "bigIdea": "STB",
+     "skills": [
+      "5.C",
+      "7.A"
+     ],
+     "practices": [
+      5,
+      7
+     ],
+     "objectives": [
+      "Explain the effects of climate change and the feedback loops that amplify it."
+     ],
+     "knowledge": [
+      "Effects include higher temperatures, melting land ice, sea level rise, shifting ranges and extreme weather.",
+      "Melting sea ice lowers albedo and thawing permafrost releases methane: positive feedback loops."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.6",
+     "slug": "ocean-warming",
+     "title": "Ocean Warming",
+     "bigIdea": "STB",
+     "skills": [
+      "5.A",
+      "1.B"
+     ],
+     "practices": [
+      5,
+      1
+     ],
+     "objectives": [
+      "Explain the causes and effects of ocean warming."
+     ],
+     "knowledge": [
+      "The ocean absorbs most of the extra heat; warmer water expands and holds less oxygen.",
+      "Warming bleaches corals and shifts species ranges and ocean circulation."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.7",
+     "slug": "ocean-acidification",
+     "title": "Ocean Acidification",
+     "bigIdea": "STB",
+     "skills": [
+      "2.B",
+      "6.B"
+     ],
+     "practices": [
+      2,
+      6
+     ],
+     "objectives": [
+      "Explain how rising carbon dioxide lowers ocean pH and harms organisms that build carbonate shells."
+     ],
+     "knowledge": [
+      "Carbon dioxide dissolves in seawater to form carbonic acid, releasing hydrogen ions and lowering pH.",
+      "Fewer carbonate ions make it harder for corals and shellfish to build calcium carbonate."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.8",
+     "slug": "invasive-species",
+     "title": "Invasive Species",
+     "bigIdea": "EIN",
+     "skills": [
+      "1.B",
+      "7.C"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Explain why invasive species thrive and how they harm ecosystems."
+     ],
+     "knowledge": [
+      "Invasive species are often generalists and r-selected, and spread where they meet no natural predators or diseases.",
+      "They outcompete native species; control is hard and costly."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.9",
+     "slug": "endangered-species",
+     "title": "Endangered Species",
+     "bigIdea": "EIN",
+     "skills": [
+      "1.B",
+      "7.E"
+     ],
+     "practices": [
+      1,
+      7
+     ],
+     "objectives": [
+      "Describe what makes species endangered and how laws and treaties protect them."
+     ],
+     "knowledge": [
+      "Specialists, species with low reproduction and those that need large ranges are most at risk.",
+      "The Endangered Species Act and CITES protect species and their trade."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    },
+    {
+     "id": "9.10",
+     "slug": "human-impacts-biodiversity",
+     "title": "Human Impacts on Biodiversity",
+     "bigIdea": "EIN",
+     "skills": [
+      "7.A",
+      "7.E"
+     ],
+     "practices": [
+      7
+     ],
+     "objectives": [
+      "Explain the main human threats to biodiversity and ways to reduce them."
+     ],
+     "knowledge": [
+      "HIPPCO names the threats: habitat loss, invasive species, pollution, human population growth, climate change and overexploitation.",
+      "Wildlife corridors and protected areas reconnect habitat fragments."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance poster (official title); objectives and knowledge are our summaries"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "math-sci-notation",
+   "title": "Scientific Notation and Metric Prefixes",
+   "before": "carbon-cycle",
+   "practices": [
+    6
+   ],
+   "objectives": [
+    "Write large and small numbers in scientific notation, read scale words such as million and billion, and use metric prefixes."
+   ],
+   "knowledge": [
+    "2.5 million is 2.5 × 10^6; multiply by adding exponents and divide by subtracting them.",
+    "Kilo- means 10^3, mega- 10^6, giga- 10^9; milli- means 10^-3."
+   ]
+  },
+  {
+   "slug": "math-rates",
+   "title": "Rates and Per-Capita Values",
+   "before": "primary-productivity",
+   "practices": [
+    6
+   ],
+   "objectives": [
+    "Compute rates per unit time, per unit area and per person, and move between totals and per-capita values."
+   ],
+   "knowledge": [
+    "A rate divides an amount by time (or area, or people): kcal per square meter per year.",
+    "Per capita means per person: total divided by population."
+   ]
+  },
+  {
+   "slug": "math-units",
+   "title": "Unit Conversions and Dimensional Analysis",
+   "before": "primary-productivity",
+   "practices": [
+    6
+   ],
+   "objectives": [
+    "Convert units with conversion factors written as fractions so the units cancel, including energy units."
+   ],
+   "knowledge": [
+    "Write each conversion factor as a fraction equal to 1, arranged so the unwanted unit cancels.",
+    "Common energy units: joule, kilocalorie, kilowatt-hour, BTU."
+   ]
+  },
+  {
+   "slug": "math-percents",
+   "title": "Percents and Percent Change",
+   "before": "energy-flow",
+   "practices": [
+    6
+   ],
+   "objectives": [
+    "Find a percent of a quantity and compute percent change with the difference in parentheses, divided by the original value, times 100."
+   ],
+   "knowledge": [
+    "Percent change = (new - old) / old × 100: the subtraction happens before the division.",
+    "A percent of a quantity is the percent as a decimal times the quantity."
+   ]
+  },
+  {
+   "slug": "math-doubling",
+   "title": "Growth Rates, Doubling Time and the Rule of 70",
+   "before": "population-growth",
+   "practices": [
+    6
+   ],
+   "objectives": [
+    "Use the rule of 70 to find a doubling time and add it to a start year; relate a growth rate in percent to doubling."
+   ],
+   "knowledge": [
+    "Doubling time is about 70 divided by the growth rate in percent per year.",
+    "If a question asks \"in what year\", add the doubling time to the start year."
+   ]
+  }
+ ],
+ "topicCount": 99,
+ "topicCountByUnit": {
+  "1": 11,
+  "2": 7,
+  "3": 9,
+  "4": 9,
+  "5": 17,
+  "6": 13,
+  "7": 8,
+  "8": 15,
+  "9": 10
+ },
+ "exam": {
+  "date2027": "2027-05-13",
+  "day": "Thursday",
+  "session": "Session 2",
+  "totalTime": "2 h 40 min",
+  "delivery": "Fully digital in Bluebook; free responses typed.",
+  "mcq": {
+   "questions": 80,
+   "minutes": 90,
+   "weight": "60%",
+   "options": 4,
+   "optionsSource": "third party (released practice exams since 2020); docs/apenv-needs-author.md mcq-options",
+   "sets": [
+    "3-5 quantitative data sets (tables, charts, graphs; mainly Practice 5)",
+    "3-5 visual or model sets (models, diagrams, maps; mainly Practice 2)",
+    "2 text-based sets (Practice 3)"
+   ]
+  },
+  "frq": {
+   "questions": 3,
+   "minutes": 70,
+   "weight": "40%",
+   "pointsEach": 10,
+   "rawPoints": 30,
+   "types": {
+    "design": "Q1 Design an investigation (Practice 2, plus hypothesis, variables, design change)",
+    "data": "Q2 Analyze and interpret quantitative data (Practice 5; new title for 2027)",
+    "calc": "Q3 Analyze an environmental problem doing calculations (Practice 6; setup and answer with units scored separately)"
+   }
+  },
+  "calculator": "Four-function (with square root) or scientific, or the Desmos scientific calculator in Bluebook; graphing calculators banned from 2027.",
+  "reference": "No formula sheet: Bluebook shows only typed-math notation and a reminder to show work and units on FRQ 3. Students memorize every formula."
+ }
+}

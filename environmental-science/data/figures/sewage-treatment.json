@@ -1,0 +1,12 @@
+{
+ "sewage-treatment-stages": {
+  "file": "figures/sewage-treatment-stages.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Flow diagram of a sewage treatment plant from left to right: raw sewage enters screens and a grit chamber, then a primary settling tank where sludge sinks; then an aeration tank where microbes break down organic matter; then tertiary filters that remove nitrogen and phosphorus; then disinfection with chlorine or UV; then clean water is released to a river. Sludge from the tanks goes to a digester that makes methane."
+ }
+}

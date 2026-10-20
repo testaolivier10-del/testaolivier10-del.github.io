@@ -1,0 +1,8 @@
+{
+ "island-biogeography": {
+  "def": "The study of how many species live on islands and why. Larger islands and islands closer to a source of colonists hold more species. The ideas also apply to habitat islands such as lakes, mountaintops and forest fragments."
+ },
+ "habitat-fragmentation": {
+  "def": "The breaking of a large, continuous habitat into smaller patches separated by roads, farms, towns or other land its species cannot use. The patches act like islands, and small, isolated patches tend to lose species."
+ }
+}

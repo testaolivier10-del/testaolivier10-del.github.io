@@ -1,0 +1,11 @@
+{
+ "overfishing": {
+  "def": "Catching fish faster than the population can replace them by reproduction, so the stock shrinks year after year. It is a tragedy of the commons in the open ocean."
+ },
+ "bycatch": {
+  "def": "Animals caught by fishing gear that were not the target of the catch, such as dolphins, sea turtles, sharks, seabirds and young fish. Much bycatch dies and is thrown back."
+ },
+ "fishery-collapse": {
+  "def": "The drop of a fish stock to a small fraction of its former size, so that catches fall sharply and fishing for it is no longer worthwhile. A collapsed stock may take decades to recover, or may not recover."
+ }
+}

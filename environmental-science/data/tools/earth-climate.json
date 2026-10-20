@@ -1,0 +1,23 @@
+{
+  "slug": "earth-climate",
+  "kind": "simulator",
+  "topic": "el-nino-la-nina",
+  "intro": "<p>One planet, four views. Drag the date through the year and watch the noon sun climb and fall at your latitude; follow a weather balloon from the equator to the pole through the Hadley, Ferrel and polar cells; send ocean air over a mountain and watch a rain shadow form; then switch the Pacific between La Niña and El Niño and compare them side by side.</p>",
+  "howItWorksTitle": "How the pictures are computed",
+  "howItWorks": "<p><b>Sun and seasons.</b> The latitude where the noon sun is overhead (the declination) is 23.44° × sin(360° × (284 + day) / 365), the standard approximation (Cooper, 1969). The noon sun angle is 90° minus the degrees between your latitude and that latitude. Day length is 24/π × arccos(−tan(latitude) × tan(declination)) hours. Daily sunlight is the average over 24 hours on level ground at the top of the atmosphere, from a solar constant of 1,361 W/m² (NASA) at the average Earth-sun distance. In the side view the axis is drawn tilted toward the sun by the declination, so the overhead sun always lands on the right latitude.</p><p><b>Winds.</b> Three cells in each hemisphere with their edges at about 0°, 30° and 60°: air rises near the equator and 60° (wet belts) and sinks near 30° and the poles (dry belts); surface winds are bent right in the Northern Hemisphere and left in the Southern by Earth's rotation (NOAA JetStream).</p><p><b>Rain shadow.</b> A parcel of air cools 10 °C per km while it is dry and about 6 °C per km inside a cloud, and warms 10 °C per km as it sinks (the dry and typical moist adiabatic rates, rounded as the course uses them). The cloud base comes from the dew point: about 125 m per °C between the air temperature and its dew point.</p><p><b>El Niño and La Niña.</b> NOAA's Climate Prediction Center calls El Niño when the 3-month average sea surface temperature anomaly in the Niño 3.4 region is +0.5 °C or more, and La Niña at −0.5 °C or less. The cross-section is a sketch: trade wind strength, the thermocline's depth and the upwelling change with the anomaly in the direction the observations show, but the sizes are illustrative, not measured.</p>",
+  "explore": { "T0": 25, "rh": 75, "H": 3 },
+  "partTopics": {},
+  "contexts": [
+    { "id": "sun-angle", "topic": "solar-radiation-seasons", "types": ["sun"] },
+    { "id": "seasons", "topic": "solar-radiation-seasons", "types": ["seasons"] },
+    { "id": "cells", "topic": "global-wind-patterns", "types": ["cells"] },
+    { "id": "rain-shadow", "topic": "geo-and-climate", "types": ["shadow"],
+      "ranges": [
+        { "range": "the Sierra Nevada", "wet": "west", "dry": "Nevada's Great Basin" },
+        { "range": "the Cascade Range", "wet": "west", "dry": "eastern Oregon" },
+        { "range": "the Andes in Patagonia", "wet": "west", "dry": "the Patagonian steppe" },
+        { "range": "the Himalayas", "wet": "south", "dry": "the Tibetan Plateau" }
+      ] },
+    { "id": "enso", "topic": "el-nino-la-nina", "types": ["enso"] }
+  ]
+}

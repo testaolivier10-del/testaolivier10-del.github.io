@@ -1,0 +1,221 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-9",
+   "id": "u9-ozone-policy",
+   "topic": "reducing-ozone-depletion",
+   "practice": "7.B",
+   "skill": "policy",
+   "title": "Protecting the ozone layer",
+   "prompt": "<b>Describe</b> a policy that reduced ozone depletion and <b>explain</b> how it worked.",
+   "checklist": [
+    "Names a policy: the Montreal Protocol, an international treaty that phased out CFCs",
+    "Explains how it works: fewer CFCs reach the stratosphere, so less chlorine destroys ozone",
+    "Does not confuse it with greenhouse policy"
+   ],
+   "earns": {
+    "answer": "The Montreal Protocol is an international treaty that phased out the production of CFCs and other ozone-depleting chemicals. With fewer CFCs reaching the stratosphere, less chlorine is released by ultraviolet light to break down ozone, so the ozone layer is slowly recovering.",
+    "why": "A named policy and the chain from fewer CFCs to less ozone destroyed."
+   },
+   "misses": {
+    "answer": "Cutting carbon dioxide emissions so the ozone hole closes.",
+    "why": "Carbon dioxide does not destroy ozone; CFCs do, and the answer names no policy."
+   },
+   "specific": {
+    "slots": {
+     "type": {
+      "label": "A policy is",
+      "options": [
+       "an international treaty that phased out CFCs",
+       "refrigerators that use other coolants",
+       "cutting carbon dioxide emissions"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a technology that followed the treaty.",
+       "2": "Carbon dioxide does not destroy ozone."
+      }
+     },
+     "how": {
+      "label": "It works because",
+      "options": [
+       "less chlorine from CFCs reaches the stratosphere to break down ozone",
+       "it traps more heat near the surface",
+       "it makes more ultraviolet light reach the ground"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Trapping heat is the greenhouse effect, a different process.",
+       "2": "Protecting ozone lets less ultraviolet reach the ground, not more."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-sea-level-chain",
+   "topic": "climate-change",
+   "practice": "1.B",
+   "skill": "chain",
+   "title": "Why warming raises sea level",
+   "prompt": "<b>Explain</b> two ways that a warming climate raises sea level.",
+   "checklist": [
+    "Thermal expansion: seawater expands as it warms, taking up more volume",
+    "Melting land ice (glaciers and ice sheets) adds new water to the ocean",
+    "Does not credit melting sea ice, which floats and barely changes sea level"
+   ],
+   "earns": {
+    "answer": "First, as the ocean absorbs heat, seawater expands and takes up more volume, so sea level rises (thermal expansion). Second, warming melts glaciers and ice sheets on land, such as Greenland's, and that water flows into the ocean, adding to its volume. Melting sea ice does not count, since it already floats in the water it displaces.",
+    "why": "Two correct causes, each with its mechanism, and it rules out sea ice."
+   },
+   "misses": {
+    "answer": "The ice caps and sea ice melt and make the oceans rise.",
+    "why": "Sea ice melting does not raise sea level, and thermal expansion is missing."
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-acidification-hypothesis",
+   "topic": "ocean-acidification",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about acid and shells",
+   "context": "<p>A lab grows young clams in seawater at pH 8.1, 7.9 and 7.7 for eight weeks and measures their shell mass (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this experiment.",
+   "checklist": [
+    "Names the change: lower seawater pH",
+    "Names the measure: shell mass",
+    "Gives a direction for the result: an increase or a decrease",
+    "Gives a reason: lower pH means fewer carbonate ions for building calcium carbonate shells"
+   ],
+   "earns": {
+    "answer": "If the seawater pH is lowered, then the clams' shell mass will decrease, because more acidic water has fewer carbonate ions, which clams need to build calcium carbonate shells.",
+    "why": "Change, measure, direction and the carbonate reason."
+   },
+   "misses": {
+    "answer": "The pH of the water will affect the shells.",
+    "why": "\"Affect\" has no direction and no reason."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "the seawater pH is lowered",
+       "the clams are fed more",
+       "the water is warmed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Food is not the variable.",
+       "2": "Temperature is held constant here; pH changes."
+      }
+     },
+     "direction": {
+      "label": "then ...",
+      "options": [
+       "shell mass will decrease",
+       "shell mass will increase",
+       "shell mass will change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Acidic water makes shell building harder, so mass should fall.",
+       "2": "\"Change\" gives no direction; a hypothesis says which way."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "acidic water has fewer carbonate ions for building shells",
+       "acid makes the clams hungrier",
+       "clams prefer high pH"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Hunger is not the mechanism.",
+       "2": "A preference is not a mechanism."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-mussel-solution",
+   "topic": "invasive-species",
+   "practice": "7.E",
+   "skill": "solution",
+   "title": "Controlling an invasive mussel",
+   "context": "<p>Zebra mussels are spreading from lake to lake, carried on boats. The state will not use chemicals in the lakes.</p>",
+   "prompt": "<b>Propose</b> a solution that fits this constraint and <b>explain</b> how it works.",
+   "checklist": [
+    "Proposes a solution with no chemicals in the lakes (for example, required boat inspections and washing stations)",
+    "Explains how it works: removes mussels and larvae from boats before they enter a new lake",
+    "Targets the stated pathway: boats"
+   ],
+   "earns": {
+    "answer": "Require boats to be inspected, drained and washed with hot water at stations at every boat ramp. Hot water kills mussels and larvae on the hulls and in bilge water, so boats cannot carry them to new lakes, which prevents the spread with no chemical in the lakes.",
+    "why": "It fits the constraint, targets boats, and explains how it stops the spread."
+   },
+   "misses": {
+    "answer": "Kill the zebra mussels with a pesticide.",
+    "why": "The state will not use chemicals in the lakes, so the answer ignores the constraint."
+   },
+   "specific": {
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "require boat inspections and hot-water washing at ramps",
+       "add a pesticide to the lakes",
+       "close all the lakes forever"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The state will not use chemicals.",
+       "2": "Not practical, and it does not fit a stated constraint."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "hot water kills mussels and larvae on boats before they reach a new lake",
+       "the mussels dislike clean boats",
+       "it makes the lakes warmer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dislike is not a mechanism.",
+       "2": "Washing boats does not warm lakes."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-9",
+   "id": "u9-co2-temperature-trend",
+   "topic": "climate-change",
+   "practice": "5.C",
+   "skill": "trend",
+   "title": "Carbon dioxide and temperature",
+   "context": "<p>Atmospheric carbon dioxide and global temperature compared with the 1951-1980 average (rounded, similar to NOAA and NASA records): 1960, 317 ppm and 0.0 °C; 1990, 354 ppm and 0.4 °C; 2020, 414 ppm and 1.0 °C.</p>",
+   "prompt": "<b>Describe</b> the relationship in the data and <b>explain</b> it.",
+   "checklist": [
+    "Describes it with numbers: as carbon dioxide rose by 97 ppm, temperature rose by 1.0 °C",
+    "Notes both rose faster after 1990",
+    "Explains: carbon dioxide absorbs infrared radiation from Earth's surface and re-emits it, trapping heat"
+   ],
+   "earns": {
+    "answer": "As carbon dioxide rose from 317 to 414 ppm, a rise of 97 ppm, the temperature anomaly rose from 0.0 to 1.0 °C, and both rose faster after 1990. Carbon dioxide absorbs infrared radiation given off by Earth's surface and re-emits some of it back down, so more carbon dioxide traps more heat in the lower atmosphere.",
+    "why": "The trend with numbers, the speed-up, and the infrared mechanism."
+   },
+   "misses": {
+    "answer": "More carbon dioxide destroys the ozone layer, which makes it hotter.",
+    "why": "That confuses the greenhouse effect with ozone depletion; carbon dioxide traps infrared, it does not destroy ozone."
+   }
+  }
+ ]
+}

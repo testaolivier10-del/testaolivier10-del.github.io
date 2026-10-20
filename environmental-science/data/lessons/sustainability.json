@@ -1,0 +1,72 @@
+{
+ "topic": "sustainability",
+ "hook": "A lake holds up to about 1,000 trout. If anglers take a few, the trout multiply to replace them. Take too many, and the population shrinks every year. Somewhere in between is the largest catch the lake can give, year after year, forever. Finding that number, and staying under it, is what sustainability means for a resource.",
+ "prereq": [
+  {
+   "q": "In logistic growth, when does a population grow fastest?",
+   "options": [
+    "At about half of its carrying capacity",
+    "When it is very small",
+    "When it is at its carrying capacity",
+    "When it is above its carrying capacity"
+   ],
+   "correct": 0,
+   "why": "Growth is slow when few individuals breed and slow again near K; it is fastest in the middle.",
+   "review": "population-growth"
+  },
+  {
+   "q": "What is the tragedy of the commons?",
+   "options": [
+    "Overuse of a shared resource because each user keeps the gain while costs are shared",
+    "The extinction of a species by natural causes",
+    "The loss of soil by wind erosion on farms",
+    "The growth of cities onto farmland"
+   ],
+   "correct": 0,
+   "why": "Each user gains fully from taking more but pays only a share of the cost.",
+   "review": "tragedy-of-commons"
+  }
+ ],
+ "figure": {
+  "figure": "sustainability-msy",
+  "caption": "New fish added each year at each population size. The peak, at half the carrying capacity, is the maximum sustainable yield."
+ },
+ "chain": [
+  {
+   "cause": "A population is far below its carrying capacity",
+   "effect": "resources are plentiful, so each fish leaves many young"
+  },
+  {
+   "cause": "The population is near half of its carrying capacity",
+   "effect": "it adds the most new fish per year"
+  },
+  {
+   "cause": "People harvest exactly the yearly growth at that size",
+   "effect": "the population stays the same year after year: the maximum sustainable yield"
+  },
+  {
+   "cause": "People harvest more than the yearly growth",
+   "effect": "the population shrinks and adds fewer fish each year, so a steady harvest drives it down further"
+  }
+ ],
+ "ideas": [
+  "<b>Sustainability</b>: meeting today's needs without reducing the ability of future generations to meet theirs. Living resources used no faster than they regrow; wastes released no faster than they are absorbed.",
+  "<b>Maximum sustainable yield</b> (MSY) is the largest harvest a population can replace each year. For logistic growth it is at about half of the carrying capacity (K/2).",
+  "Harvesting right at MSY is risky: estimates are uncertain and bad years happen, so managers usually harvest less.",
+  "<b>Environmental indicators</b> track sustainability: biodiversity, food production, atmospheric carbon dioxide and temperature, human population, and resource depletion."
+ ],
+ "misconception": {
+  "wrong": "A population grows fastest, and so can be harvested most, when it is at its carrying capacity.",
+  "right": "At carrying capacity, births just balance deaths, so the population adds almost nothing each year. It adds the most when it is near half of its carrying capacity."
+ },
+ "check": [
+  "env-sustainability-1",
+  "env-sustainability-2",
+  "env-sustainability-9",
+  "env-sustainability-10",
+  "env-sustainability-11",
+  "env-sustainability-12",
+  "env-sustainability-7"
+ ],
+ "summary": "Sustainability means meeting present needs without reducing future generations' ability to meet theirs. For a living resource such as fish or timber, the maximum sustainable yield is the largest harvest the population can replace each year, at about half its carrying capacity for logistic growth. Environmental indicators such as biodiversity, food production, carbon dioxide and temperature, population and resource depletion show whether a system is becoming more or less sustainable."
+}

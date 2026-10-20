@@ -1,0 +1,68 @@
+{
+ "topic": "math-units",
+ "hook": "An electric bill is in kilowatt-hours, a furnace is rated in BTU, a food label lists Calories, and a gas pump measures gallons. The exam mixes these on purpose. Dimensional analysis is one method that handles all of them: multiply by fractions equal to 1 until the units you do not want cancel.",
+ "prereq": [
+  {
+   "q": "What does \"per capita\" mean?",
+   "options": [
+    "Per person",
+    "Per year",
+    "Per square kilometer",
+    "Per city"
+   ],
+   "correct": 0,
+   "why": "Per capita divides by the number of people.",
+   "review": "math-rates"
+  },
+  {
+   "q": "Which is $7.5 \\times 10^{8}$ written out?",
+   "options": [
+    "750,000,000",
+    "75,000,000",
+    "7,500,000,000",
+    "750,000"
+   ],
+   "correct": 0,
+   "why": "Move the point 8 places right.",
+   "review": "math-sci-notation"
+  }
+ ],
+ "figure": {
+  "figure": "math-units-chain",
+  "caption": "A dimensional analysis chain: units cancel like numbers."
+ },
+ "chain": [
+  {
+   "cause": "Write the starting amount with its unit",
+   "effect": "you know what has to cancel"
+  },
+  {
+   "cause": "Multiply by a conversion factor with that unit on the bottom",
+   "effect": "the old unit cancels and the new unit is left"
+  },
+  {
+   "cause": "Repeat until only the answer’s unit is left",
+   "effect": "the number is right because each factor equals 1"
+  }
+ ],
+ "ideas": [
+  "A <b>conversion factor</b> is a fraction equal to 1, such as 1 kWh / 3,400 BTU or 3.79 L / 1 gal.",
+  "<b>Dimensional analysis</b>: line up factors so each unwanted unit appears once on top and once on the bottom.",
+  "A <b>watt</b> is power (energy per second); a <b>kilowatt-hour</b> is energy. Energy = power × time.",
+  "Energy units: joule, kWh, BTU, kilocalorie. 1 kWh = 3.6 million J, about 3,412 BTU."
+ ],
+ "misconception": {
+  "wrong": "Kilowatts and kilowatt-hours are the same thing.",
+  "right": "Kilowatts measure how fast energy is used (power). Kilowatt-hours measure how much energy was used: a 2-kW pump running 3 hours uses 6 kWh."
+ },
+ "check": [
+  "env-math-units-2",
+  "env-math-units-3",
+  "env-math-units-6",
+  "env-math-units-9",
+  "env-math-units-10",
+  "env-math-units-11",
+  "env-math-units-12"
+ ],
+ "summary": "Dimensional analysis converts units by multiplying by conversion factors, fractions equal to 1, arranged so unwanted units cancel. Write every factor with units in the setup, then the answer with its unit. Power (watts, kW) is a rate; energy (kWh, J, BTU, kcal) is an amount, and energy = power × time. Cost and emissions follow the same pattern: kWh × price per kWh, kWh × kg CO2 per kWh."
+}

@@ -1,0 +1,12 @@
+{
+ "acid-rain-pathway": {
+  "file": "figures/acid-rain-pathway.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: a power plant and cars release SO2 and NOx; wind carries them; in clouds they react with water and oxygen to form sulfuric and nitric acid; acid rain and dry particles fall on a forest and a lake far downwind. A lake on granite becomes acidic with few fish; a lake on limestone is buffered."
+ }
+}

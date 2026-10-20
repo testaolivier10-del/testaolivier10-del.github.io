@@ -1,0 +1,14 @@
+{
+ "age-structure": {
+  "def": "A graph of how many people (or what percent of a population) are in each age group, usually with males on the left and females on the right and the youngest at the bottom. Also called a population pyramid. Its shape predicts whether a population will grow, stay stable or shrink."
+ },
+ "cohort": {
+  "def": "A group of people born during the same span of years, shown as one bar of an age structure diagram, such as everyone aged 0 to 9."
+ },
+ "population-momentum": {
+  "def": "The tendency of a population with many young people to keep growing for decades even after families have fewer children, because the large young cohorts are still reaching the ages when people have children."
+ },
+ "development-level": {
+  "def": "A developed country has a high average income, widespread schooling and health care, and usually slow population growth; a developing country has a lower average income and usually a younger, faster-growing population."
+ }
+}

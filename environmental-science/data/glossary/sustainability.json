@@ -1,0 +1,11 @@
+{
+ "sustainability": {
+  "def": "Using resources in a way that meets present needs without reducing the ability of future generations to meet theirs: resources that regrow, such as fish and forests, are used no faster than they regrow, and wastes are released no faster than the environment can absorb them."
+ },
+ "sustainable-yield": {
+  "def": "The largest amount of a resource that regrows, such as fish or timber, that can be harvested each year without reducing the population over time. For a population with logistic growth it is taken when the population is about half its carrying capacity, where it grows fastest."
+ },
+ "environmental-indicator": {
+  "def": "A measurement that shows the condition of an environment and how it is changing, such as biodiversity, food production, atmospheric carbon dioxide and temperature, human population, and the remaining supply of resources. Indicators show whether a system is moving toward or away from sustainability."
+ }
+}

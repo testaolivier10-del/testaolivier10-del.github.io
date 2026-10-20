@@ -1,0 +1,509 @@
+{
+ "stimuli": {
+  "endangered-species-s1": {
+   "kind": "visual",
+   "title": "Traits that raise extinction risk, and protections",
+   "figure": "endangered-species-categories"
+  },
+  "endangered-species-s2": {
+   "kind": "text",
+   "title": "How the bald eagle came back",
+   "passage": "In 1963 only 417 nesting pairs of bald eagles were left in the lower 48 states. The pesticide DDT, sprayed widely after World War II, washed into lakes and built up in the fish that eagles eat. In the eagles it caused thin eggshells that broke during nesting. The United States banned DDT for most uses in 1972, and the Endangered Species Act protected the birds and their nesting sites from shooting and disturbance. By 2007 there were 9,789 breeding pairs, and the bald eagle was removed from the endangered and threatened species list.",
+   "source": "Summarized from U.S. Fish and Wildlife Service, \"Bald Eagle Numbers Soaring\" (2007): 417 nesting pairs in 1963, 9,789 breeding pairs in 2007, lower 48 states."
+  }
+ },
+ "items": [
+  {
+   "id": "env-endangered-species-1",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Under the Endangered Species Act, what is the difference between an endangered and a threatened species?",
+   "options": [
+    "Endangered: at risk now; threatened: soon",
+    "Endangered lives in the US; threatened lives overseas",
+    "Threatened is closer to extinction than endangered",
+    "Endangered refers to plants, and threatened to animals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Endangered: in danger of extinction throughout all or a significant part of its range. Threatened: likely to become endangered in the foreseeable future.",
+    "options": [
+     "Right: endangered is in danger of extinction in all or much of its range; threatened is likely to become endangered.",
+     "Both categories are about extinction risk, not location.",
+     "It is the other way around: endangered is the more serious category.",
+     "Both categories apply to plants and animals."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-2",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which species is most at risk of extinction?",
+   "options": [
+    "A fast-breeding generalist found on most continents",
+    "A slow-breeding specialist with a small range",
+    "A common bird that eats many kinds of seeds",
+    "A weed that spreads easily into disturbed land"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Extinction risk rises with specialization, slow reproduction, small or isolated populations and large territory needs.",
+    "options": [
+     "Generalists with many offspring and wide ranges are least at risk.",
+     "Right: specialist and K-selected traits plus a small range make recovery hard.",
+     "A broad diet and large numbers lower risk.",
+     "Weedy, r-selected species thrive in disturbed land."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-3",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does CITES do?",
+   "options": [
+    "It sets limits on CO₂ emissions",
+    "It phases out ozone-depleting chemicals",
+    "It limits trade in protected species",
+    "It protects wetlands used by migrating birds"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "CITES (the Convention on International Trade in Endangered Species) regulates trade in species such as elephants (ivory), rhinos and many orchids.",
+    "options": [
+     "That is a climate agreement, not CITES.",
+     "That is the Montreal Protocol.",
+     "Right: CITES is a treaty that bans or limits trade in endangered plants and animals and their parts.",
+     "That describes a wetland treaty, not CITES."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-4",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the figure, which trait raises extinction risk?",
+   "stimulus": "endangered-species-s1",
+   "options": [
+    "A broad diet",
+    "A large population",
+    "High genetic diversity",
+    "Slow reproduction"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Slow reproduction, narrow niches, small populations, large territories, low genetic diversity and hunting all raise risk.",
+    "options": [
+     "A broad diet lowers risk; the figure lists a narrow diet.",
+     "Small or isolated populations are at risk.",
+     "The figure lists low genetic diversity as a risk.",
+     "Right: K-selected species replace losses slowly."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-5",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Giant pandas eat mostly bamboo, have one cub every two or three years, and live in a few mountain forests. Using the figure, how many risk traits do these facts show?",
+   "stimulus": "endangered-species-s1",
+   "options": [
+    "Three",
+    "One",
+    "Five",
+    "Zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Specialist diet + K-selected reproduction + small, fragmented range.",
+    "options": [
+     "Right: a narrow diet, slow reproduction and a small, isolated range.",
+     "Each fact shows a different risk trait.",
+     "The facts show three of the figure’s traits.",
+     "All three facts match traits in the figure."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-6",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which protection in the figure best addresses rhinos killed for their horns to be sold abroad?",
+   "stimulus": "endangered-species-s1",
+   "options": [
+    "Captive breeding",
+    "CITES",
+    "The Endangered Species Act",
+    "A national park"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Match the protection to the threat: international trade calls for an international treaty.",
+    "options": [
+     "Breeding adds animals but does not stop the trade that kills them.",
+     "Right: it controls the international trade that drives the poaching.",
+     "The ESA is a US law; the trade crosses many countries.",
+     "A park protects land, but horns are sold across borders; the threat here is trade."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-7",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the main claim of the passage?",
+   "stimulus": "endangered-species-s2",
+   "options": [
+    "Bald eagles were not really at risk",
+    "Captive breeding alone saved the bald eagle",
+    "A DDT ban and protection let eagles recover",
+    "Hunting is now the main threat to bald eagles"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The author links the recovery to two actions: banning DDT and protecting the birds and their nests.",
+    "options": [
+     "The passage describes a fall to 417 nesting pairs.",
+     "The passage credits the DDT ban and protection, not breeding alone.",
+     "Right: the passage credits the DDT ban and legal protection.",
+     "The passage says shooting was banned."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-8",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the passage, what was the percent change in eagle pairs from 1963 to 2007?",
+   "stimulus": "endangered-species-s2",
+   "why": {
+    "correct": "$\\frac{(9{,}789 - 417)}{417} \\times 100 \\approx 2{,}247\\%$, an increase of about 2,200%."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      417,
+      9789
+     ]
+    },
+    "places": 0,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        9789,
+        417
+       ]
+      },
+      "why": "You divided by the new value. Use (new − old) ÷ old × 100: (9,789 − 417) ÷ 417 × 100."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        9789,
+        417
+       ]
+      },
+      "why": "That is how many times larger the population became (about 23.5). Percent change is (new − old) ÷ old × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-9",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which actions helped the bald eagle recover? Choose the best answer.",
+   "stimulus": "endangered-species-s2",
+   "options": [
+    "A DDT ban plus legal protection",
+    "Moving most eagles into zoos",
+    "Introducing eagles from Europe",
+    "Spraying more pesticides on lakes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "DDT biomagnified up food chains and thinned eggshells; banning it removed the cause.",
+    "options": [
+     "Right: DDT thinned eggshells; the 1972 ban and ESA protection let numbers recover.",
+     "Most eagles stayed wild; captive breeding played a small part.",
+     "Bald eagles are North American; none were brought from Europe.",
+     "Pesticides such as DDT caused the decline."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-10",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wildlife refuge counts 240 adult whooping cranes. Each year, 6% of adults die and new adults join equal to 9% of the count. Write the setup for the change in adults after one year, then the answer.",
+   "why": {
+    "correct": "$240 \\times 0.09 - 240 \\times 0.06 = 7.2$: about 7 more adults."
+   },
+   "setup": {
+    "answer": "240 * 0.09 - 240 * 0.06",
+    "mustUse": [
+     "240",
+     "0.09",
+     "0.06"
+    ],
+    "mistakes": [
+     {
+      "expr": "240 * 0.06 - 240 * 0.09",
+      "why": "Gains minus losses: new adults (9%) minus deaths (6%). This order gives a negative number."
+     },
+     {
+      "expr": "240 * (9 - 6)",
+      "why": "The rates are percents: use 0.09 and 0.06, or divide by 100."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "mul",
+      "args": [
+       240,
+       {
+        "fn": "div",
+        "args": [
+         {
+          "fn": "sub",
+          "args": [
+           9,
+           6
+          ]
+         },
+         100
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 720,
+       "why": "You used 3 instead of 3%. Net growth is 3% of 240: 240 × 0.03 = 7.2, about 7 adults."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-endangered-species-11",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "multi",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which actions protect endangered species? Select all that apply.",
+   "options": [
+    "Protecting critical habitat from development",
+    "Captive breeding and reintroduction",
+    "Increasing the trade in rare animal parts",
+    "Clearing forest for new housing"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Protect habitat, control trade and hunting, and breed and reintroduce where numbers are very low.",
+    "options": [
+     "Right: losing habitat is the main threat to most listed species.",
+     "Right: used for California condors and black-footed ferrets.",
+     "Trade drives poaching; CITES restricts it.",
+     "Clearing habitat raises extinction risk."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-12",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is low genetic diversity dangerous for a small population of an endangered species?",
+   "options": [
+    "It makes individuals live much longer",
+    "It makes the population grow too fast",
+    "It means the species becomes invasive",
+    "It cannot adapt well to disease or change"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A population bottleneck removes variation, leaving less raw material for adaptation and more inbreeding.",
+    "options": [
+     "Low diversity does not lengthen life.",
+     "Small, inbred populations tend to grow slowly.",
+     "Invasive species are usually common and widespread.",
+     "Right: with few gene variants, a disease or change can hit nearly every individual."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-13",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A rare salamander lives in a few streams in one forest that a company plans to log. Propose a solution that protects the salamander and say how it works.",
+   "why": {
+    "correct": "Fit the solution to the threat (logging of a small habitat) and say how it works."
+   },
+   "specific": {
+    "frame": "Use ___ by ___, which ___.",
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "the Endangered Species Act",
+       "more logging roads",
+       "pesticide spraying"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Roads fragment habitat and add runoff.",
+       "2": "Pesticides harm amphibians."
+      }
+     },
+     "action": {
+      "label": "Action",
+      "options": [
+       "listing the salamander and protecting its streams as critical habitat",
+       "moving it to a zoo for good",
+       "logging the forest faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Keeping it in a zoo forever does not protect the wild population.",
+       "2": "Faster logging removes the habitat sooner."
+      }
+     },
+     "effect": {
+      "label": "How it works",
+      "options": [
+       "bans logging that would destroy the streams it needs",
+       "raises the price of lumber",
+       "adds nutrients to the streams"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Price changes do not protect a specific habitat.",
+       "2": "Extra nutrients would harm the streams."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "salamander",
+      "stream",
+      "habitat",
+      "logging"
+     ]
+    },
+    "model": "Use the Endangered Species Act by listing the salamander and protecting its streams as critical habitat, because it bans logging that would destroy the streams, so the population keeps the shaded, cool water it needs to survive and breed."
+   }
+  },
+  {
+   "id": "env-endangered-species-14",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is a common criticism of the Endangered Species Act?",
+   "options": [
+    "It protects plants, which have no economic value",
+    "It can limit how owners use land",
+    "It allows unlimited hunting of listed species",
+    "It applies to fish but not to birds"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The ESA weighs conservation against land use; debates often center on private land and jobs.",
+    "options": [
+     "Plants provide food, medicine and ecosystem services.",
+     "Right: protecting critical habitat can restrict logging, building or farming.",
+     "It bans harming listed species.",
+     "It applies to all kinds of plants and animals."
+    ]
+   }
+  },
+  {
+   "id": "env-endangered-species-15",
+   "unit": "unit-9",
+   "topic": "endangered-species",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do species with large territories, such as wolves and tigers, face high extinction risk?",
+   "options": [
+    "They reproduce faster than they can find food",
+    "They are generalists that compete with people",
+    "They need more land than is left whole",
+    "They have no predators of their own"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Large-territory species collide with people when habitat is cut into pieces too small to support them.",
+    "options": [
+     "These predators reproduce slowly.",
+     "The key issue is the amount of space they need.",
+     "Right: as habitat shrinks and fragments, few areas are large enough.",
+     "Lacking predators does not raise extinction risk."
+    ]
+   }
+  }
+ ]
+}

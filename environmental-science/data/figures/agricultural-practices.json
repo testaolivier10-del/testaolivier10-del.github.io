@@ -1,0 +1,12 @@
+{
+ "agricultural-practices-tilling": {
+  "file": "figures/agricultural-practices-tilling.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two soil cross-sections. Left, a tilled field: the topsoil is loose and bare, wind lifts dust, rain runs off the bare surface carrying topsoil, organic matter breaks down faster, and a packed layer forms under the plow depth. Right, an untilled field: crop residue covers the surface, rain soaks in, and roots, pores and worm channels hold soil and water."
+ }
+}

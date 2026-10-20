@@ -1,0 +1,83 @@
+{
+ "topic": "energy-conservation",
+ "hook": "The cheapest, cleanest unit of energy is the one you never use. Swapping twenty light bulbs, sealing a drafty attic or riding the bus can cut a household's energy bills and carbon dioxide more than you might expect, and the exam asks you to prove it with numbers: kWh, dollars and kilograms.",
+ "prereq": [
+  {
+   "q": "What is efficiency?",
+   "options": [
+    "Useful energy out divided by energy in, times 100",
+    "Energy in minus energy out",
+    "The amount of fuel burned",
+    "The price of energy"
+   ],
+   "correct": 0,
+   "why": "Efficiency = output ÷ input × 100.",
+   "review": "fossil-fuels"
+  },
+  {
+   "q": "How do you convert watt-hours to kilowatt-hours?",
+   "options": [
+    "Divide by 1,000",
+    "Multiply by 1,000",
+    "Divide by 60",
+    "Multiply by 3,600"
+   ],
+   "correct": 0,
+   "why": "1 kWh = 1,000 Wh.",
+   "review": "math-units"
+  },
+  {
+   "q": "Which source releases carbon dioxide when used to make electricity?",
+   "options": [
+    "Coal",
+    "Wind",
+    "Sunlight",
+    "Moving water"
+   ],
+   "correct": 0,
+   "why": "Burning coal releases carbon dioxide; wind, sunlight and water do not while running.",
+   "review": "wind-energy"
+  }
+ ],
+ "figure": {
+  "figure": "energy-conservation-home",
+  "caption": "Ways to conserve energy at home (insulation, LED bulbs, a programmable thermostat, efficient appliances, shade trees) and at a larger scale."
+ },
+ "chain": [
+  {
+   "cause": "A family replaces bulbs, adds insulation or lowers the thermostat",
+   "effect": "the home uses fewer kWh of electricity and less fuel for the same comfort and light"
+  },
+  {
+   "cause": "Fewer kWh are needed",
+   "effect": "power plants burn less fuel to meet demand"
+  },
+  {
+   "cause": "Less fuel is burned",
+   "effect": "less carbon dioxide and other pollution is released, and the family pays less"
+  },
+  {
+   "cause": "Governments set efficiency standards and invest in public transportation",
+   "effect": "savings are multiplied across millions of homes and vehicles"
+  }
+ ],
+ "ideas": [
+  "<b>Energy conservation</b> is using less energy (turning things off, lowering the thermostat, driving less). <b>Energy efficiency</b> is getting the same service with less energy (LEDs, insulation, efficient appliances).",
+  "Energy (kWh) = power (kW) × time (h). Set up chains so units cancel: W × h/day × day/yr × 1 kWh/1,000 Wh.",
+  "Then convert: cost = kWh × price per kWh; carbon dioxide = kWh × kg per kWh; payback = extra cost ÷ yearly savings.",
+  "At home: insulation, programmable thermostats, LEDs, efficient appliances, shade trees and windbreaks. Large scale: fuel economy standards, <b>hybrid vehicles</b> and electric vehicles, public transportation, green building design."
+ ],
+ "misconception": {
+  "wrong": "To find the savings from switching bulbs, multiply the old bulb's watts by the hours.",
+  "right": "Savings come from the difference: (old watts - new watts) × hours, then convert Wh to kWh. Using only the old bulb's watts gives what it used, not what you saved."
+ },
+ "check": [
+  "env-energy-conservation-1",
+  "env-energy-conservation-2",
+  "env-energy-conservation-7",
+  "env-energy-conservation-8",
+  "env-energy-conservation-9",
+  "env-energy-conservation-16"
+ ],
+ "summary": "Energy conservation means using less energy; energy efficiency means using less for the same service. Savings are calculated by chains whose units cancel: the change in watts times hours, converted to kWh, then times the price for dollars and times the emission factor for carbon dioxide. At home, insulation, thermostats, LEDs and efficient appliances save energy; at large scale, fuel economy standards, hybrid and electric vehicles, public transportation and green building design do."
+}

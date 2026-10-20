@@ -1,0 +1,792 @@
+{
+ "stimuli": {
+  "human-population-s1": {
+   "kind": "quantitative",
+   "title": "Birth and death rates in four countries",
+   "invented": true,
+   "table": {
+    "caption": "Crude birth rate and crude death rate, per 1,000 people per year, 2025 (invented data for practice)",
+    "cols": [
+     "Country",
+     "Crude birth rate",
+     "Crude death rate"
+    ],
+    "rows": [
+     [
+      "Country J",
+      "36",
+      "8"
+     ],
+     [
+      "Country K",
+      "22",
+      "7"
+     ],
+     [
+      "Country L",
+      "11",
+      "9"
+     ],
+     [
+      "Country M",
+      "8",
+      "11"
+     ]
+    ]
+   }
+  },
+  "human-population-s2": {
+   "kind": "quantitative",
+   "title": "One country in one year",
+   "invented": true,
+   "table": {
+    "caption": "Population, births, deaths and migration in Country N, 2025 (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Population at the start of the year",
+      "50,000,000"
+     ],
+     [
+      "Births",
+      "1,100,000"
+     ],
+     [
+      "Deaths",
+      "400,000"
+     ],
+     [
+      "Immigrants (people moving in)",
+      "100,000"
+     ],
+     [
+      "Emigrants (people moving out)",
+      "50,000"
+     ]
+    ]
+   }
+  },
+  "human-population-s3": {
+   "kind": "text",
+   "title": "Malthus and the food supply",
+   "passage": "In 1798 the English economist Thomas Malthus argued that a population left unchecked grows in a doubling series (1, 2, 4, 8, 16), while the food supply can grow only by steady additions (1, 2, 3, 4, 5). Population, he concluded, will always press against the food supply, and famine, disease and war will keep it in check unless people choose to have fewer children. In 1800 there were about 1 billion people on Earth; by 2022, according to the United Nations, there were 8 billion. Over the same period, food produced per person rose in most of the world, as farmers used new crop varieties, fertilizer and machines. Some scientists answer that this success depends on soil, fresh water and fuel that are being used faster than they are replaced.",
+   "source": "Invented passage for practice, summarizing Malthus’s 1798 essay and United Nations population estimates."
+  }
+ },
+ "items": [
+  {
+   "id": "env-human-population-1",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which country in the table has the highest rate of natural increase?",
+   "stimulus": "human-population-s1",
+   "options": [
+    "Country J",
+    "Country K",
+    "Country L",
+    "Country M"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The rate of natural increase depends on the gap between the birth and death rates, not on either one alone.",
+    "options": [
+     "Right: 36 - 8 = 28 per 1,000, the largest gap, which is 2.8%.",
+     "K’s gap is 22 - 7 = 15 per 1,000, or 1.5%.",
+     "L’s gap is 11 - 9 = 2 per 1,000, or 0.2%.",
+     "M has more deaths than births: 8 - 11 = -3 per 1,000."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-2",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is Country K’s rate of natural increase, in percent?",
+   "stimulus": "human-population-s1",
+   "why": {
+    "correct": "$\\frac{22 - 7}{10} = 1.5\\%$ a year. The difference is per 1,000 people; dividing by 10 makes it per 100, a percent."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "naturalIncrease",
+     "args": [
+      22,
+      7
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "That is the gap per 1,000 people. Divide by 10 to turn it into a percent: 1.5%."
+     },
+     {
+      "value": 0.15,
+      "why": "You divided by 100. The rates are per 1,000, so divide the difference by 10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-3",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Country J’s rate of natural increase is 2.8%. Write the setup for its doubling time by the rule of 70, then give the answer with its unit.",
+   "stimulus": "human-population-s1",
+   "why": {
+    "correct": "$\\frac{70}{2.8} = 25$ years."
+   },
+   "setup": {
+    "answer": "70 / 2.8",
+    "mustUse": [
+     "70",
+     "2.8"
+    ],
+    "mustNotUse": [
+     "0.028"
+    ],
+    "then": {
+     "unit": "yr",
+     "units": [
+      "years"
+     ],
+     "from": {
+      "fn": "ruleOf70",
+      "args": [
+       2.8
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 2.5,
+       "why": "That divides 70 by 28. Use the rate in percent: 70 / 2.8 = 25 years."
+      },
+      {
+       "value": 2500,
+       "why": "That divides by 0.028. Use 2.8."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "70 / 28",
+      "why": "Use the growth rate in percent, 2.8, not the gap per 1,000 (28)."
+     },
+     {
+      "expr": "70 / 0.028",
+      "why": "Use the rate in percent (2.8), not as a decimal (0.028)."
+     },
+     {
+      "expr": "2.8 / 70",
+      "why": "The rule of 70 puts 70 on top: 70 divided by the growth rate."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-4",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Country J had 40 million people in 2025. If its rate of natural increase stays at 2.8% and no one moves in or out, in what year will it have about 80 million people?",
+   "stimulus": "human-population-s1",
+   "why": {
+    "correct": "Doubling time $\\frac{70}{2.8} = 25$ years, so $2025 + 25 = 2050$. The question asks for a year, so add the doubling time to the start year."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "doublingYear",
+     "args": [
+      2025,
+      2.8
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "ruleOf70",
+       "args": [
+        2.8
+       ]
+      },
+      "why": "That is the doubling time, 25 years. The question asks for the year: 2025 + 25."
+     },
+     {
+      "value": 2027.5,
+      "why": "That used 28 instead of 2.8 (70 / 28 = 2.5 years). Use the rate in percent: 70 / 2.8 = 25."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-5",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What will happen to Country M’s population over time if no one moves in or out?",
+   "stimulus": "human-population-s1",
+   "options": [
+    "It will grow slowly, because its rates are both low",
+    "It will shrink, because deaths outnumber births",
+    "It will hold steady, because both rates are near 10",
+    "It will double in about 233 years"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When CDR is greater than CBR, natural increase is negative.",
+    "options": [
+     "Low rates do not mean growth; the death rate is higher.",
+     "Right: 8 births and 11 deaths per 1,000 give -0.3% a year.",
+     "They differ by 3 per 1,000, with deaths ahead.",
+     "That would need +0.3% growth; Country M’s natural increase is negative."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-6",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is Country N’s crude birth rate? Give it in births per 1,000 people.",
+   "stimulus": "human-population-s2",
+   "why": {
+    "correct": "$\\frac{1{,}100{,}000}{50{,}000{,}000} \\times 1{,}000 = 22$ births per 1,000 people."
+   },
+   "numeric": {
+    "unit": "births per 1,000 people",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        1100000,
+        50000000
+       ]
+      },
+      1000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2.2,
+      "why": "That is births per 100 people (a percent). A crude rate is per 1,000: multiply by 1,000, not 100."
+     },
+     {
+      "value": 0.022,
+      "why": "That is births per person. Multiply by 1,000 for the rate per 1,000 people."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-7",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Write the setup for Country N’s total growth rate in 2025, in percent, counting births, deaths and migration. Then give the answer.",
+   "stimulus": "human-population-s2",
+   "why": {
+    "correct": "$\\frac{(1{,}100{,}000 + 100{,}000) - (400{,}000 + 50{,}000)}{50{,}000{,}000} \\times 100 = 1.5\\%$. People gained (births and immigrants) minus people lost (deaths and emigrants), over the population, times 100."
+   },
+   "setup": {
+    "answer": "((1100000 + 100000) - (400000 + 50000)) / 50000000 * 100",
+    "mustUse": [
+     "1100000",
+     "100000",
+     "400000",
+     "50000",
+     "50000000"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "growthRate",
+      "args": [
+       1100000,
+       400000,
+       100000,
+       50000,
+       50000000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 1.4,
+       "why": "That is natural increase only, (1,100,000 - 400,000) / 50,000,000 × 100. Add the net migration of 50,000."
+      },
+      {
+       "value": 0.015,
+       "why": "That is the fraction. Multiply by 100 for a percent."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(1100000 - 400000) / 50000000 * 100",
+      "why": "That is natural increase only. The question asks for total growth: add immigrants and subtract emigrants too."
+     },
+     {
+      "expr": "(1100000 + 100000 + 400000 + 50000) / 50000000 * 100",
+      "why": "Deaths and emigrants remove people: subtract them."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-8",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many people did Country N’s population change during 2025?",
+   "stimulus": "human-population-s2",
+   "why": {
+    "correct": "Gains minus losses: $(1{,}100{,}000 + 100{,}000) - (400{,}000 + 50{,}000) = 750{,}000$ people, or 0.75 million."
+   },
+   "numeric": {
+    "unit": "people",
+    "units": [
+     "person"
+    ],
+    "from": {
+     "fn": "sub",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        1100000,
+        100000
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        400000,
+        50000
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 700000,
+      "why": "That is births minus deaths. Also add the immigrants and subtract the emigrants."
+     },
+     {
+      "value": 1650000,
+      "why": "That adds every row. Deaths and emigrants remove people, so subtract them."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-9",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Country N’s total growth rate is 1.5% a year. Write the setup for its doubling time, then give the answer, rounded to the nearest year.",
+   "stimulus": "human-population-s2",
+   "why": {
+    "correct": "$\\frac{70}{1.5} \\approx 47$ years."
+   },
+   "setup": {
+    "answer": "70 / 1.5",
+    "mustUse": [
+     "70",
+     "1.5"
+    ],
+    "mustNotUse": [
+     "0.015"
+    ],
+    "then": {
+     "unit": "yr",
+     "units": [
+      "years"
+     ],
+     "places": 0,
+     "from": {
+      "fn": "ruleOf70",
+      "args": [
+       1.5
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 4667,
+       "why": "That divides by 0.015. Use the rate in percent: 70 / 1.5."
+      },
+      {
+       "value": 105,
+       "why": "That multiplies 70 by 1.5. The rule of 70 divides: 70 / 1.5."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "70 / 0.015",
+      "why": "Use the growth rate in percent (1.5), not as a decimal."
+     },
+     {
+      "expr": "1.5 / 70",
+      "why": "The rule of 70 puts 70 on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-10",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What did Malthus claim about population and food?",
+   "stimulus": "human-population-s3",
+   "options": [
+    "Food grows faster than population, so famine will end",
+    "Population and food grow at the same rate over time",
+    "Population grows faster than food, so hunger, disease or war will check it",
+    "Population will stop growing by itself at 1 billion"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The passage states Malthus’s claim in its first two sentences.",
+    "options": [
+     "That is the opposite of his claim.",
+     "He argued they grow in different ways, one doubling, one by additions.",
+     "Right: a doubling series outruns steady additions, in his argument.",
+     "He did not predict a stop at a set number."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-11",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which assumption does Malthus’s argument depend on?",
+   "stimulus": "human-population-s3",
+   "options": [
+    "People will choose to have more children each year",
+    "Disease does not affect human populations",
+    "Population growth stops at 8 billion",
+    "Food production can grow only by steady additions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An assumption is a premise the argument needs but does not prove.",
+    "options": [
+     "He assumed populations grow if unchecked, not that families keep getting larger.",
+     "He listed disease as one of the checks.",
+     "The 8 billion figure is from 2022, long after his essay.",
+     "Right: if food could also grow fast, population would not have to outrun it."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-12",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which evidence in the passage most weakens Malthus’s prediction?",
+   "stimulus": "human-population-s3",
+   "options": [
+    "Food per person rose while population grew eightfold",
+    "About 1 billion people were alive in 1800",
+    "Malthus wrote his essay in England in 1798",
+    "Some scientists worry about soil and water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Evidence weakens a prediction when it shows the opposite of what was predicted.",
+    "options": [
+     "Right: if food had fallen behind, food per person would have dropped.",
+     "That is a starting count, not a test of his prediction.",
+     "Where and when he wrote does not test his claim.",
+     "That concern supports his question about limits; it does not weaken it."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-13",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in world population from about 1 billion in 1800 to 8 billion in 2022, then give the answer.",
+   "stimulus": "human-population-s3",
+   "why": {
+    "correct": "$\\frac{8 - 1}{1} \\times 100 = 700\\%$. Both values are in billions, so the scale word cancels."
+   },
+   "setup": {
+    "answer": "(8 - 1) / 1 * 100",
+    "mustUse": [
+     "8",
+     "1"
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       1,
+       8
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 800,
+       "why": "That is 8 billion as a percent of 1 billion. The percent change is (8 - 1) / 1 × 100 = 700%."
+      },
+      {
+       "value": 87.5,
+       "why": "That divides by 8. Divide by the starting value, 1."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(8 - 1) / 8 * 100",
+      "why": "Divide by the starting value, 1 billion, not 8."
+     },
+     {
+      "expr": "8 / 1 * 100",
+      "why": "That gives the new value as a percent of the old (800%). Percent change subtracts first: (8 - 1) / 1 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-14",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What does a crude death rate of 9 mean?",
+   "options": [
+    "9% of people die each year",
+    "9 deaths per 1,000 people per year",
+    "9 deaths per woman over her lifetime",
+    "9 deaths per 100 people per year"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Crude rates are per 1,000 people per year.",
+    "options": [
+     "9% would be 90 per 1,000, ten times more.",
+     "Right: crude rates count per 1,000 people per year.",
+     "Rates per woman describe fertility, not deaths.",
+     "Per 100 is a percent; crude rates are per 1,000."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-15",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country had 12 million people in 2020 and grows 3.5% a year. If the rate stays the same, in what year will it reach 48 million?",
+   "why": {
+    "correct": "Doubling time $\\frac{70}{3.5} = 20$ years. From 12 to 48 million is two doublings (12 to 24 to 48), so $2020 + 2 \\times 20 = 2060$."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "add",
+     "args": [
+      2020,
+      {
+       "fn": "mul",
+       "args": [
+        2,
+        {
+         "fn": "ruleOf70",
+         "args": [
+          3.5
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2040,
+      "why": "That is one doubling (to 24 million). 48 million is two doublings: 2020 + 2 × 20."
+     },
+     {
+      "value": 40,
+      "why": "That is the time needed, 40 years. Add it to 2020 to get the year."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-16",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how a country’s population can grow even though its crude death rate is higher than its crude birth rate.",
+   "why": {
+    "correct": "Natural decrease, outweighed by net immigration."
+   },
+   "specific": {
+    "frame": "Its natural increase is ___, but ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Natural increase",
+      "options": [
+       "negative, because deaths outnumber births",
+       "positive, because births outnumber deaths",
+       "zero, because the rates are equal"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says the death rate is higher.",
+       "2": "The rates are not equal."
+      }
+     },
+     "effect": {
+      "label": "Migration",
+      "options": [
+       "more people move in than move out",
+       "more people move out than move in",
+       "no one moves in or out"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Net emigration would make the population shrink faster.",
+       "2": "Without migration, a negative natural increase shrinks the population."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "net immigration adds more people than natural decrease removes",
+       "births rise to match deaths",
+       "the death rate falls to zero"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Births are lower than deaths in this country.",
+       "2": "A death rate cannot fall to zero."
+      }
+     }
+    },
+    "model": "Its natural increase is negative, because deaths outnumber births, but more people move in than move out, so net immigration adds more people than natural decrease removes and the population grows."
+   }
+  },
+  {
+   "id": "env-human-population-17",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes would raise a country’s total population growth rate, if nothing else changes? Select all that apply.",
+   "options": [
+    "The crude death rate falls while births stay the same",
+    "Both crude rates fall by 2 per 1,000",
+    "The crude birth rate falls",
+    "More people emigrate"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Growth rises with more births or immigrants and with fewer deaths or emigrants. A fall in births that matches a fall in deaths leaves the gap unchanged.",
+    "options": [
+     "Right: fewer deaths widen the gap between births and deaths.",
+     "If births and deaths both fall by 2 per 1,000, the gap, and so the growth rate, stays the same.",
+     "Fewer births lower the growth rate.",
+     "Emigrants leave, lowering the growth rate."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-18",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A country’s crude birth rate is 15 and its crude death rate is 10. What is its rate of natural increase, in percent?",
+   "why": {
+    "correct": "$\\frac{15 - 10}{10} = 0.5\\%$ a year."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "naturalIncrease",
+     "args": [
+      15,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "That is the gap per 1,000 people. Divide by 10 for a percent."
+     },
+     {
+      "value": 0.05,
+      "why": "You divided by 100. Divide the difference by 10."
+     }
+    ]
+   }
+  }
+ ]
+}

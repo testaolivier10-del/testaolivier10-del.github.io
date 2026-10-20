@@ -1,0 +1,50 @@
+<p>The exam's most-missed calculations live in this topic: the rate of natural increase, the rule of 70, and the year a population doubles. Each is short, but each has a trap. This page builds them step by step, with every setup shown the way a reader wants to see it.</p>
+
+<h2>Crude birth and death rates</h2>
+<p>The <b>crude birth rate</b> (CBR) is the number of births in a year for every 1,000 people. The <b>crude death rate</b> (CDR) is the number of deaths in a year for every 1,000 people. "Crude" means they count the whole population, not one age group.</p>
+<p>To get a crude rate from counts, divide by the population and multiply by 1,000. A country of 50 million people (50 million $= 5 \times 10^{7} = 50{,}000{,}000$) with 1,100,000 births has</p>
+<p>$$\text{CBR} = \frac{1{,}100{,}000}{50{,}000{,}000} \times 1{,}000 = 22 \text{ births per 1,000 people}$$</p>
+
+<h2>Rate of natural increase</h2>
+<p>The <b>rate of natural increase</b> is growth from births and deaths alone, as a percent per year:</p>
+<p>$$\text{rate of natural increase } (\%) = \frac{\text{CBR} - \text{CDR}}{10}$$</p>
+<p>Why divide by 10? The rates are per 1,000 people, and a percent is per 100. Dividing by 10 turns "per 1,000" into "per 100".</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Country J has a CBR of 36 and a CDR of 8. What is its rate of natural increase?</p>
+<p>Setup: $\frac{36 - 8}{10}$. Answer: $2.8\%$ per year.</p>
+<p>Trap: leaving the answer at 28. That is the gap per 1,000 people, not a percent.</p>
+</div>
+
+<h2>The rule of 70 and the year a population doubles</h2>
+<p>For a population growing at a steady percent each year, the doubling time is about $\frac{70}{\text{growth rate in }\%}$ years. Use the rate in percent (2.8, not 0.028).</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Country J had 40 million people in 2025 and grows 2.8% a year. In what year will it have about 80 million?</p>
+<p>Doubling time: $\frac{70}{2.8} = 25$ years.</p>
+<p>Year: $2025 + 25 = 2050$.</p>
+<p>Trap: answering 25. The question asks for a year, so add the doubling time to the start year. Read every question to its last word.</p>
+</div>
+<p>To go from 12 million to 48 million is two doublings (12 to 24 to 48). At 3.5% a year the doubling time is $\frac{70}{3.5} = 20$ years, so it takes $2 \times 20 = 40$ years.</p>
+<figure id="fig-doubling" data-fig="human-population-doubling"><figcaption>At 2% a year, a population doubles about every 35 years. Invented example.</figcaption></figure>
+
+<h2>Migration</h2>
+<p>Births and deaths are only part of the story. <b>Immigration</b> (people moving in) adds to a population, and <b>emigration</b> (people moving out) subtracts. The total growth rate counts all four:</p>
+<p>$$\text{growth rate } (\%) = \frac{(\text{births} + \text{immigrants}) - (\text{deaths} + \text{emigrants})}{\text{population}} \times 100$$</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Country N starts the year with 50,000,000 people and has 1,100,000 births, 400,000 deaths, 100,000 immigrants and 50,000 emigrants.</p>
+<p>Setup: $\frac{(1{,}100{,}000 + 100{,}000) - (400{,}000 + 50{,}000)}{50{,}000{,}000} \times 100$. Answer: $1.5\%$.</p>
+</div>
+<p>A country whose deaths outnumber its births can still grow if enough people move in.</p>
+
+<h2>Malthus and the limits to growth</h2>
+<p>In 1798 Thomas Malthus argued that population grows in a doubling series while food grows only by steady additions, so famine, disease or war would hold population back. Since then the world has grown from about 1 billion people (around 1800) to 8 billion (2022, United Nations), and food per person has risen in most places. Many scientists still ask Malthus's question about limits, pointing to soil, fresh water and fuel that are being used faster than they are replaced.</p>
+
+<h2>On the exam</h2>
+<table class="compare">
+<thead><tr><th>Asked for</th><th>Setup</th><th>Classic slip</th></tr></thead>
+<tbody>
+<tr><th>rate of natural increase</th><td>(CBR - CDR) / 10</td><td>leaving it per 1,000, or dividing by 100</td></tr>
+<tr><th>doubling time</th><td>70 / rate in %</td><td>using the rate as a decimal</td></tr>
+<tr><th>year it doubles</th><td>start year + 70 / rate</td><td>giving the doubling time, not the year</td></tr>
+<tr><th>total growth rate</th><td>((births + imm.) - (deaths + emig.)) / population × 100</td><td>leaving out migration, or the × 100</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,62 @@
+{
+ "topic": "human-population",
+ "hook": "Placeholder hook for the test fixture: two countries have the same population today, but one will double in 35 years and the other will shrink. The difference is in two numbers: births and deaths per 1,000 people.",
+ "prereq": [
+  {
+   "q": "Placeholder: what does the rule of 70 give?",
+   "options": [
+    "A doubling time",
+    "A death rate",
+    "A birth rate",
+    "A fertility rate"
+   ],
+   "correct": 0,
+   "why": "Placeholder: 70 over the growth rate is the doubling time.",
+   "review": "math-doubling"
+  },
+  {
+   "q": "Placeholder: what does a wide-based population pyramid show?",
+   "options": [
+    "Many young people",
+    "Many old people",
+    "A shrinking population",
+    "No children"
+   ],
+   "correct": 0,
+   "why": "Placeholder: the base holds the youngest cohort.",
+   "review": "age-structure"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "Births outnumber deaths",
+   "effect": "the population grows"
+  },
+  {
+   "cause": "The gap per 1,000 divided by 10",
+   "effect": "gives the growth rate in percent"
+  },
+  {
+   "cause": "70 divided by that rate",
+   "effect": "gives the doubling time"
+  }
+ ],
+ "ideas": [
+  "Placeholder: crude rates are per 1,000 people, so divide their difference by 10 for a percent.",
+  "Placeholder: doubling time is about 70 divided by the growth rate in percent."
+ ],
+ "misconception": {
+  "wrong": "Placeholder: a 2% growth rate means 2 more people.",
+  "right": "Placeholder: 2% means 2 more people for every 100 each year."
+ },
+ "check": [
+  "env-human-population-1",
+  "env-human-population-2",
+  "env-human-population-3",
+  "env-human-population-6",
+  "env-human-population-7",
+  "env-human-population-8"
+ ],
+ "summary": "Placeholder summary: the rate of natural increase is the crude birth rate minus the crude death rate, divided by 10; the rule of 70 turns it into a doubling time."
+}

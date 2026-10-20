@@ -1,0 +1,68 @@
+{
+ "topic": "water-cycle",
+ "hook": "The water in your glass may have fallen on a mountain last month, been pumped from rock where it sat for a thousand years, or risen from a tree leaf yesterday. Water never runs out globally, but where it is, how fast it moves, and how much of it is fresh and reachable decide whether a town has enough.",
+ "prereq": [
+  {
+   "q": "What is a reservoir in a cycle?",
+   "options": [
+    "A place where something is stored for a time",
+    "A movement between two stores",
+    "A living thing",
+    "A kind of rock"
+   ],
+   "correct": 0,
+   "why": "A reservoir stores; a flux moves.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "What does leaching do to nitrate?",
+   "options": [
+    "Washes it down through the soil with water",
+    "Turns it into N2 gas",
+    "Fixes it from the air",
+    "Locks it in rock"
+   ],
+   "correct": 0,
+   "why": "Leaching carries dissolved substances down through soil.",
+   "review": "nitrogen-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "water-cycle-diagram",
+  "caption": "The water cycle: evaporation, transpiration, condensation, precipitation, runoff and infiltration into an aquifer."
+ },
+ "chain": [
+  {
+   "cause": "The sun heats water and plants transpire",
+   "effect": "water vapor rises into the air"
+  },
+  {
+   "cause": "Rising vapor cools and condenses",
+   "effect": "clouds form and precipitation falls"
+  },
+  {
+   "cause": "On land, water either flows over the surface or soaks in",
+   "effect": "runoff feeds rivers; infiltration refills groundwater in aquifers"
+  }
+ ],
+ "ideas": [
+  "The <b>hydrologic cycle</b> is driven by the sun (<b>evaporation</b>, <b>transpiration</b>) and gravity (precipitation, <b>runoff</b>, <b>infiltration</b>).",
+  "About 96.5% of Earth’s water is in the ocean; most freshwater is ice or <b>groundwater</b>, and lakes and rivers hold a tiny share.",
+  "An <b>aquifer</b> is porous rock or sediment that holds groundwater; deep aquifers refill very slowly.",
+  "Pavement and cleared land mean less infiltration and more runoff: more floods and less groundwater recharge."
+ ],
+ "misconception": {
+  "wrong": "Groundwater is an underground lake or river.",
+  "right": "Most groundwater fills the tiny spaces between grains of sand, gravel and rock in an aquifer, like water in a sponge. It moves slowly, often centimeters to meters a day."
+ },
+ "check": [
+  "env-water-cycle-4",
+  "env-water-cycle-9",
+  "env-water-cycle-10",
+  "env-water-cycle-11",
+  "env-water-cycle-13",
+  "env-water-cycle-14",
+  "env-water-cycle-15"
+ ],
+ "summary": "The water cycle moves water among the ocean, air, land, ice and groundwater. The sun drives evaporation and transpiration; vapor condenses into clouds and falls as precipitation; on land it runs off to rivers or infiltrates to recharge aquifers. Almost all water is salty ocean water, and most freshwater is ice or groundwater. Paving increases runoff and reduces recharge."
+}

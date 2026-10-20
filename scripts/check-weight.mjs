@@ -141,7 +141,10 @@ const SHELL_BUDGETS = [
      reports exams left halfway (+4.3 KB, comments cut). The per-page measurements and the one-time survey
      card were moved out to LevlLazy modules loaded after idle, so they are not in this number.
      Measured 296.0 KB. */
-  ['site', 296.5],
+  /* 296.5 -> 297.5 for registering AP® Environmental Science (docs/apenv-spec.md, Phase 0): the ninth course in
+     every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam date
+     and the theme tint (+1.0 KB measured alone). */
+  ['site', 297.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -342,6 +345,18 @@ const SHELL_BUDGETS = [
      decision 15): the flag hook and Flagged mode (as calculus' 68 -> 68.5),
      the setup value step and the tiny p-value wording; measured 82.6 KB. */
   ['statistics', 83],
+  /* AP® Environmental Science (environmental-science/, a fork of the AP®
+     Statistics runtime, docs/apenv-spec.md decision 1): the calculation
+     recipes (env-calc.js) in place of the distributions library, and the
+     unit-aware graders (env-grade.js: numbers with units and scale words,
+     the named slips, the "Make it specific" slots and hints). Measured on
+     the exams page before any unit is published: 82.2 KB, against
+     Statistics' 82.7 (the recipes are smaller than the distributions).
+     83 -> 85.5 at the launch (docs/apenv-spec.md decision 12): Phase 3 and the
+     reviews grew the unit parser and normaliser (seconds, ng, kL, °C, metric
+     tons, compound divisors, "per", scale words; decision 11) and the shell
+     carries all nine published units; measured 85.0 KB. */
+  ['environmental-science', 85.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -377,8 +392,10 @@ const BUDGETS = [
      that keeps the last card from sitting alone. The FAQ price answer got
      shorter. Measured 9.3 KB. 9.4 -> 9.8 for AP® Statistics' launch
      (docs/apstat-spec.md decision 15): its hub card, its pass in the FAQ and
-     the offers. Measured 9.6 KB. */
-  ['index.html', 9.8],
+     the offers. Measured 9.6 KB. 9.8 -> 10.1 for AP® Environmental Science's
+     launch (docs/apenv-spec.md decision 12): its hub card, its pass in the FAQ
+     and the offers. Measured 9.8 KB. */
+  ['index.html', 10.1],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -581,6 +598,14 @@ const BUDGETS = [
   ['statistics/glossary.html', 30],
   ['statistics/tools.html', 5],
   ['statistics/formula-sheet.html', 12],
+  ['environmental-science/index.html', 7],
+  ['environmental-science/practice.html', 3],
+  ['environmental-science/exams.html', 3],
+  ['environmental-science/frq.html', 3],
+  ['environmental-science/glossary.html', 30],
+  ['environmental-science/tools.html', 5],
+  ['environmental-science/formula-sheet.html', 12],
+  ['environmental-science/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -970,6 +995,19 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`statistics/unit-sheets/${sheet}`, 14]);
   }
 }
+/* The same for AP® Environmental Science (environmental-science/assets/notes-index.json,
+   build-apenv.mjs), with Statistics' budgets as the reference until the first unit is published. */
+{
+  const idx = join(ROOT, 'environmental-science', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`environmental-science/lessons/${id}.html`, 22], [`environmental-science/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'environmental-science', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`environmental-science/unit-sheets/${sheet}`, 14]);
+  }
+}
 /* The same for AP® Calculus AB (calculus/assets/notes-index.json, build-apcalc.mjs).
    Math is MathML on the page, so a calculus page is heavier than its text. */
 {
@@ -1071,6 +1109,14 @@ if (existsSync(STAT_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['statistics/assets/glossary.json', 150], ['statistics/assets/notes-index.json', 4], ['statistics/assets/summaries.json', 40]);
+/* AP® Environmental Science's, the same (build-apenv.mjs packs by gzipped size). */
+const ENV_BANK_DIR = join(ROOT, 'environmental-science', 'assets', 'bank');
+if (existsSync(ENV_BANK_DIR)) {
+  for (const f of readdirSync(ENV_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`environmental-science/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['environmental-science/assets/glossary.json', 150], ['environmental-science/assets/notes-index.json', 4], ['environmental-science/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

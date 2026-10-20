@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "sustainable-forestry-s1": {
+   "kind": "visual",
+   "title": "Three sustainable forestry practices",
+   "figure": "sustainable-forestry-practices"
+  },
+  "sustainable-forestry-s2": {
+   "kind": "quantitative",
+   "title": "Wildfire in burned and unburned forest plots",
+   "invented": true,
+   "table": {
+    "caption": "A wildfire swept through a pine forest where some plots had prescribed burns in the past 5 years and others did not (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Plots with prescribed burns",
+     "Plots without prescribed burns"
+    ],
+    "rows": [
+     [
+      "Fuel on forest floor before the wildfire (metric tons per ha)",
+      "8",
+      "40"
+     ],
+     [
+      "Average flame height (m)",
+      "1.2",
+      "12"
+     ],
+     [
+      "Large trees killed (%)",
+      "10",
+      "75"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-sustainable-forestry-1",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which forestry method harvests some trees and leaves most of the forest standing?",
+   "options": [
+    "Selective cutting",
+    "Clearcutting",
+    "Prescribed burning",
+    "Slash-and-burn"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Selective cutting removes chosen trees, often single mature ones, from a standing forest.",
+    "options": [
+     "Right: some trees are taken, most remain.",
+     "Clearcutting removes all the trees.",
+     "Prescribed burning removes brush, not timber.",
+     "Slash-and-burn clears land for farming."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-2",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does selective cutting cause less erosion than clearcutting?",
+   "options": [
+    "Most trees stay, so roots hold the soil",
+    "The cut trees are left on the ground to block the stream",
+    "Selective cutting is done in winter, when there is no rain",
+    "The soil under selected trees is harder, so it does not move"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Standing trees keep roots in the soil and leaves over it.",
+    "options": [
+     "Right: roots and canopy remain.",
+     "Logs in streams are not the reason.",
+     "Logging season is not what limits erosion.",
+     "Soil hardness is not the reason."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-3",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a prescribed burn reduce the harm from later wildfires?",
+   "options": [
+    "It burns brush, so later fires have less fuel",
+    "It kills the large trees, so wildfires have nothing tall to burn",
+    "It adds moisture to the soil, so the forest is unable to burn",
+    "It leaves ash that blocks oxygen from reaching future fires"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Less fuel on the ground means lower, cooler fires that large trees survive.",
+    "options": [
+     "Right: less fuel, cooler fires.",
+     "Prescribed burns are planned so large trees survive.",
+     "Burning does not add moisture.",
+     "Ash does not block oxygen from later fires."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-4",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a drawback of selective cutting compared with clearcutting?",
+   "options": [
+    "It costs more per log to harvest",
+    "It causes more erosion because the soil is left bare",
+    "It removes more habitat for forest animals",
+    "It makes streams warmer by removing the shade over them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Felling and hauling single trees through a standing forest takes more time and care.",
+    "options": [
+     "Right: higher cost per log.",
+     "Selective cutting leaves soil covered.",
+     "It removes less habitat.",
+     "Most shade remains."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-5",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A company replaces a cut native mixed forest with a plantation of one fast-growing pine species. Compared with regrowing the native forest, which is a likely cost?",
+   "options": [
+    "Lower biodiversity, as one tree species supports fewer animals",
+    "Lower wood production, because pines grow slowly",
+    "More soil erosion, because pines have no roots",
+    "More shade on streams, because pines are taller"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A single-species plantation is a monoculture with less variety of food and shelter.",
+    "options": [
+     "Right: a monoculture supports fewer species.",
+     "Plantations are chosen because they grow wood fast.",
+     "Pines have roots that hold soil.",
+     "Shade is not the cost described."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-6",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which action by a family most directly lowers the demand for cutting trees?",
+   "options": [
+    "Buying recycled paper and reclaimed wood",
+    "Buying more new paper products made from fresh wood",
+    "Burning wood in a fireplace instead of using gas heat",
+    "Replacing wooden fences with new ones each other year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reused and recycled wood fiber replaces wood that would otherwise be cut.",
+    "options": [
+     "Right: reuse and recycling replace new wood.",
+     "New paper from fresh wood raises demand.",
+     "Burning more wood raises demand.",
+     "Frequent replacement raises demand."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-7",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 5,000-hectare forest grows 4 m³ of new wood per hectare each year. To harvest sustainably, how many cubic meters of wood can be cut each year at most?",
+   "why": {
+    "correct": "Yearly growth: $5{,}000\\,\\text{ha} \\times \\frac{4\\,\\text{m}^3}{1\\,\\text{ha}} = 20{,}000\\,\\text{m}^3$. Cutting no more than that keeps the forest from shrinking."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      5000,
+      4
+     ]
+    },
+    "unit": "m3",
+    "units": [
+     "cubic meters"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        5000,
+        4
+       ]
+      },
+      "why": "Multiply the area by the growth per hectare so the hectares cancel."
+     },
+     {
+      "value": 4,
+      "why": "4 m³ is the growth on one hectare. Multiply by the 5,000 hectares."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-8",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A logging company wants to harvest timber from a forested hillside above a trout stream. Propose a forestry method and explain how it protects the stream.",
+   "why": {
+    "correct": "A method fitted to the hillside and stream, with how it works: selective cutting with a strip of uncut trees along the stream keeps roots holding the soil and shade over the water."
+   },
+   "specific": {
+    "frame": "The company could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Method",
+      "options": [
+       "cut selected trees and leave a strip of forest along the stream",
+       "clearcut the whole hillside down to the water",
+       "burn the hillside before logging"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Clearcutting to the water bares soil and removes shade.",
+       "2": "Burning before logging bares the soil."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "keeps roots holding the soil and shade over the stream",
+       "removes the trees that shade the stream",
+       "adds sediment to the stream bed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Removing shade warms the stream.",
+       "2": "Adding sediment harms trout."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "less sediment reaches the stream and the water stays cool for trout",
+       "more sediment reaches the stream",
+       "the stream warms and loses oxygen"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Standing trees reduce sediment.",
+       "2": "Shade keeps the water cool."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "stream",
+      "trees",
+      "shade",
+      "soil",
+      "trout"
+     ]
+    },
+    "model": "The company could cut selected trees and leave a strip of forest along the stream, which keeps roots holding the soil and shade over the stream. As a result less sediment reaches the stream and the water stays cool for trout."
+   }
+  },
+  {
+   "id": "env-sustainable-forestry-9",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the reforestation panel, what is shown?",
+   "options": [
+    "Rows of seedlings planted on cut land",
+    "A few mature trees cut from a standing forest",
+    "A low fire burning brush under large trees",
+    "Large trees standing with no young trees"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The middle panel shows small trees planted where trees were cut.",
+    "options": [
+     "Right: seedlings planted.",
+     "That is selective cutting.",
+     "That is a prescribed burn.",
+     "The middle panel shows young trees."
+    ]
+   },
+   "stimulus": "sustainable-forestry-s1"
+  },
+  {
+   "id": "env-sustainable-forestry-10",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the prescribed burn panel, why do the large trees survive the fire?",
+   "options": [
+    "The fire is low, below the large trees' crowns",
+    "The large trees are cut down before the fire is set",
+    "The fire is set in the treetops, away from the trunks",
+    "The large trees are sprayed with water by the fire crew"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The flames are drawn low on the forest floor, below the crowns.",
+    "options": [
+     "Right: a low ground fire spares the crowns.",
+     "The trees are standing in the panel.",
+     "The flames are on the ground.",
+     "No water spraying is shown."
+    ]
+   },
+   "stimulus": "sustainable-forestry-s1"
+  },
+  {
+   "id": "env-sustainable-forestry-11",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which panel's practice best matches the idea of maximum sustainable yield?",
+   "options": [
+    "Selective cutting, matched to the yearly growth",
+    "Prescribed burn, because it produces the most timber",
+    "Reforestation, because seedlings can be harvested in a year",
+    "Neither, because sustainable yield applies to fish and not trees"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Taking only a portion of the trees, matched to growth, keeps the forest producing year after year.",
+    "options": [
+     "Right: harvest matched to growth.",
+     "Prescribed burns do not produce timber.",
+     "Seedlings take decades to reach harvest size.",
+     "Sustainable yield applies to any renewing population, including trees."
+    ]
+   },
+   "stimulus": "sustainable-forestry-s1"
+  },
+  {
+   "id": "env-sustainable-forestry-12",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in fuel on the forest floor from the unburned plots to the plots with prescribed burns, then give the answer.",
+   "why": {
+    "correct": "$\\frac{8 - 40}{40} \\times 100 = -80\\%$: prescribed burns removed 80% of the fuel."
+   },
+   "setup": {
+    "answer": "(8 - 40) / 40 * 100",
+    "mustUse": [
+     "8",
+     "40"
+    ],
+    "mistakes": [
+     {
+      "expr": "(8 - 40) / 8 * 100",
+      "why": "Divide by the starting value, 40 metric tons per ha in the unburned plots."
+     },
+     {
+      "expr": "8 / 40 * 100",
+      "why": "That is the burned plots as a percent of the unburned (20%). Percent change subtracts first."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       40,
+       8
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -32,
+       "why": "-32 metric tons per ha is the change. Divide by 40 and multiply by 100."
+      },
+      {
+       "value": 20,
+       "why": "20% is how much fuel was left. The percent change is -80%."
+      }
+     ]
+    }
+   },
+   "stimulus": "sustainable-forestry-s2"
+  },
+  {
+   "id": "env-sustainable-forestry-13",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times higher were the flames in plots without prescribed burns than in plots with them?",
+   "why": {
+    "correct": "$\\frac{12\\,\\text{m}}{1.2\\,\\text{m}} = 10$ times higher."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      12,
+      1.2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1.2,
+        12
+       ]
+      },
+      "why": "Put the unburned plots' flame height (12 m) on top."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        12,
+        1.2
+       ]
+      },
+      "why": "Subtracting gives the difference in meters. Divide to find how many times higher."
+     }
+    ],
+    "unit": "times"
+   },
+   "stimulus": "sustainable-forestry-s2"
+  },
+  {
+   "id": "env-sustainable-forestry-14",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion is best supported by the table?",
+   "options": [
+    "Less fuel led to lower flames and fewer large trees killed",
+    "More fuel on the floor led to lower flames and fewer large trees killed",
+    "Prescribed burns killed more large trees than the wildfire did",
+    "Flame height had no link to the number of large trees killed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Burned plots: 8 metric tons of fuel, 1.2-m flames, 10% of large trees killed. Unburned: 40, 12 m, 75%.",
+    "options": [
+     "Right: less fuel, lower flames, fewer deaths.",
+     "More fuel went with higher flames and more deaths.",
+     "The table shows deaths in the wildfire, lower in burned plots.",
+     "Higher flames went with more trees killed."
+    ]
+   },
+   "stimulus": "sustainable-forestry-s2"
+  },
+  {
+   "id": "env-sustainable-forestry-15",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town sits next to the unburned forest. What does the table suggest the town should support?",
+   "options": [
+    "Prescribed burns or fuel removal near the town",
+    "Putting out each small fire, so fuel keeps building on the floor",
+    "Planting more brush near homes to block the wind",
+    "Removing the large trees and leaving the brush behind"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reducing fuel near homes lowers flame height and spread, protecting both forest and town.",
+    "options": [
+     "Right: less fuel near the town means a lower fire.",
+     "That is what built up the 40 metric tons of fuel.",
+     "Brush adds fuel.",
+     "Leaving brush and removing big trees makes fires worse."
+    ]
+   },
+   "stimulus": "sustainable-forestry-s2"
+  },
+  {
+   "id": "env-sustainable-forestry-16",
+   "unit": "unit-5",
+   "topic": "sustainable-forestry",
+   "type": "order",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of a sustainable selective harvest in a sensible order.",
+   "options": [
+    "Survey the forest and measure how much wood it grows each year",
+    "Mark mature trees to cut, keeping strips along streams",
+    "Cut and haul out only the marked trees",
+    "Replant or let seedlings regrow in the gaps, then monitor"
+   ],
+   "why": {
+    "correct": "Measure growth, choose trees, harvest only those, then regrow and monitor."
+   }
+  }
+ ]
+}

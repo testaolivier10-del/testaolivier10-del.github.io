@@ -1,0 +1,12 @@
+{
+ "mining-cross-section": {
+  "file": "figures/mining-cross-section.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cross-section of the ground. Left, surface mining: an open pit reaches ore near the surface, the soil and rock removed (overburden) are piled beside it, waste rock called tailings sits nearby, and acid drainage carries metals from the waste into water. Right, subsurface mining: a headframe sits over a vertical shaft with tunnels to deep ore; it disturbs less land but carries more risk to miners."
+ }
+}

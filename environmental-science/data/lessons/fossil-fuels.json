@@ -1,0 +1,71 @@
+{
+ "topic": "fossil-fuels",
+ "hook": "Flip a light switch and, in much of the world, a power plant somewhere burns a little more coal or natural gas. Only about a third of that fuel's energy reaches your outlet; the rest warms a river or rises up a smokestack. Following the energy from fuel to outlet shows why fossil fuels are so useful, and why they cost so much.",
+ "prereq": [
+  {
+   "q": "Which law explains why every energy conversion loses some energy as heat?",
+   "options": [
+    "The second law of thermodynamics",
+    "The first law of thermodynamics",
+    "The 10% rule",
+    "The law of supply"
+   ],
+   "correct": 0,
+   "why": "Each conversion turns some energy into heat that cannot do useful work.",
+   "review": "energy-flow"
+  },
+  {
+   "q": "Natural gas is mostly which substance?",
+   "options": [
+    "Methane",
+    "Carbon dioxide",
+    "Hydrogen",
+    "Oxygen"
+   ],
+   "correct": 0,
+   "why": "Natural gas is mostly methane.",
+   "review": "fuel-types"
+  }
+ ],
+ "figure": {
+  "figure": "fossil-fuels-power-plant",
+  "caption": "A coal-fired power plant: fuel, boiler, steam, turbine, generator, electricity; the condenser and stack carry away most of the energy as heat."
+ },
+ "chain": [
+  {
+   "cause": "Fuel burns in the boiler",
+   "effect": "its chemical energy heats water into high-pressure steam"
+  },
+  {
+   "cause": "Steam pushes on the turbine blades",
+   "effect": "the turbine spins a shaft connected to the generator"
+  },
+  {
+   "cause": "The generator spins magnets past coils of wire",
+   "effect": "electricity flows out to the power lines"
+  },
+  {
+   "cause": "Used steam must be cooled back to water to keep the cycle going",
+   "effect": "about two thirds of the fuel's energy is lost as waste heat, and burning releases carbon dioxide"
+  }
+ ],
+ "ideas": [
+  "A <b>power plant</b> converts energy in steps: chemical (fuel) to heat (steam) to motion (turbine) to electricity (generator). Each step loses some energy as heat.",
+  "Overall efficiency is the product of the step efficiencies: $0.88 \\times 0.37 \\times 0.98 \\times 0.94 \\approx 0.30$, about 30 percent. To find the input needed, divide the output by the efficiency.",
+  "<b>Hydraulic fracturing</b> cracks shale with high-pressure water, sand and chemicals to free natural gas and oil; it can contaminate groundwater and release volatile chemicals and methane.",
+  "Fossil fuels are energy-dense, storable and reliable, but they release carbon dioxide and air pollutants, their extraction damages land and water, and their supply is fixed."
+ ],
+ "misconception": {
+  "wrong": "The warm water a power plant returns to a river is harmful because it carries chemicals or metals from the fuel.",
+  "right": "Cooling water never touches the fuel. It carries only heat. The harm is thermal: warmer water holds less dissolved oxygen, which stresses fish."
+ },
+ "check": [
+  "env-fossil-fuels-2",
+  "env-fossil-fuels-4",
+  "env-fossil-fuels-9",
+  "env-fossil-fuels-10",
+  "env-fossil-fuels-11",
+  "env-fossil-fuels-14"
+ ],
+ "summary": "A fossil fuel power plant burns fuel to make steam, which spins a turbine and generator. Each step loses energy as heat, so only about a third of the fuel's energy becomes electricity; overall efficiency is the product of the step efficiencies. Fossil fuels are dense and reliable but release carbon dioxide and pollutants. Fracking has unlocked shale gas and oil, with risks to groundwater and air."
+}

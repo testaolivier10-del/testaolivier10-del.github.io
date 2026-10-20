@@ -1,0 +1,72 @@
+{
+ "topic": "climate-change",
+ "hook": "Glacier National Park in Montana had about 150 glaciers in 1850. Today only a few dozen remain large enough to count. Far to the north, Arctic sea ice in late summer now covers much less area than it did in 1980. Both are signs of the same change, but only one of them is raising the oceans.",
+ "prereq": [
+  {
+   "q": "What happens to Earth’s surface when greenhouse gases increase?",
+   "options": [
+    "More heat is trapped, so it warms",
+    "More UV reaches it, so it cools",
+    "Less sunlight reaches it",
+    "Nothing changes"
+   ],
+   "correct": 0,
+   "why": "More greenhouse gas absorbs more infrared, sending more heat back down.",
+   "review": "greenhouse-effect"
+  },
+  {
+   "q": "What is albedo?",
+   "options": [
+    "The share of sunlight a surface reflects",
+    "The amount of CO₂ in the air",
+    "The angle of Earth’s axis",
+    "The speed of the trade winds"
+   ],
+   "correct": 0,
+   "why": "Albedo measures reflection: snow is high, dark water is low.",
+   "review": "solar-radiation-seasons"
+  }
+ ],
+ "figure": {
+  "figure": "climate-change-feedback",
+  "caption": "Two positive feedback loops: melting ice lowers albedo, and thawing permafrost releases methane and CO₂."
+ },
+ "chain": [
+  {
+   "cause": "More greenhouse gases trap more heat",
+   "effect": "global average temperature rises (about 1.1 °C since the late 1800s)"
+  },
+  {
+   "cause": "Warming melts glaciers and the ice on Greenland and Antarctica",
+   "effect": "water flows into the ocean and sea level rises"
+  },
+  {
+   "cause": "Warming melts sea ice and thaws permafrost",
+   "effect": "albedo falls and stored carbon is released: positive feedback loops amplify warming"
+  },
+  {
+   "cause": "A warmer climate shifts heat, rainfall and storms",
+   "effect": "heat waves, droughts, heavy rain and species range shifts become more common"
+  }
+ ],
+ "ideas": [
+  "<b>Climate change</b>: long-term change in Earth’s climate, now mainly warming caused by added greenhouse gases.",
+  "<b>Sea level rise</b> comes from melting <b>land ice</b> (glaciers, ice sheets) and from warming water taking up more space. Melting <b>sea ice</b> does not raise sea level, because it already floats.",
+  "A <b>positive feedback loop</b> amplifies a change: melting ice lowers albedo; thawing permafrost releases methane and CO₂.",
+  "Effects: heat waves, shifts in rainfall, stronger storms, coastal flooding, coral bleaching, species moving toward the poles."
+ ],
+ "misconception": {
+  "wrong": "Melting Arctic sea ice is the main reason sea level is rising.",
+  "right": "Sea ice floats, so it already displaces its own weight of water. Melting it barely changes sea level. Sea level rises from melting land ice and from ocean water expanding as it warms. Sea ice matters because losing it lowers albedo."
+ },
+ "check": [
+  "env-climate-change-1",
+  "env-climate-change-2",
+  "env-climate-change-5",
+  "env-climate-change-6",
+  "env-climate-change-7",
+  "env-climate-change-8",
+  "env-climate-change-15"
+ ],
+ "summary": "More greenhouse gases warm Earth. Warming melts land ice, which raises sea level, and melts sea ice, which does not raise sea level but lowers albedo. Positive feedback loops such as melting ice and thawing permafrost amplify warming. Effects include heat waves, droughts, heavy rain, coastal flooding and species shifting toward the poles."
+}

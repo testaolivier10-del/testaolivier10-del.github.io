@@ -161,6 +161,17 @@
       { min: 20, title: 'Evidence Weigher' },
       { min: 30, title: 'Statistics Legend' },
     ],
+    // docs/apenv-spec.md decision 5 (proposed; owner to confirm). The first
+    // is also IDENTITY.firstRank in scripts/lib/apenv-build.mjs.
+    apenv: [
+      { min: 1,  title: 'Field Observer' },
+      { min: 3,  title: 'Cycle Tracer' },
+      { min: 6,  title: 'Systems Thinker' },
+      { min: 10, title: 'Resource Steward' },
+      { min: 15, title: 'Data Reader' },
+      { min: 20, title: 'Solution Builder' },
+      { min: 30, title: 'Environmental Science Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -175,6 +186,7 @@
     { key: 'apphys', rankLabel: 'Physics rank' },
     { key: 'apcalc', rankLabel: 'Calculus rank' },
     { key: 'apstat', rankLabel: 'Statistics rank' },
+    { key: 'apenv', rankLabel: 'Environmental Science rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

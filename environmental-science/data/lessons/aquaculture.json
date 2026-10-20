@@ -1,0 +1,72 @@
+{
+ "topic": "aquaculture",
+ "hook": "Half of the fish and shrimp people eat today never swam in the wild. They grew in ponds in Asia, in tanks on land, or in net pens floating in Norwegian fjords and Chilean bays. Fish farming took pressure off wild fisheries just as many of them were collapsing. It also brought its own problems: waste under the pens, escaped fish, disease, and wild fish ground up to feed farmed ones.",
+ "prereq": [
+  {
+   "q": "What is bycatch?",
+   "options": [
+    "Animals caught by fishing gear that were not the target",
+    "Fish raised in ponds",
+    "Fish caught by sport anglers",
+    "The largest fish in a catch"
+   ],
+   "correct": 0,
+   "why": "Bycatch is the nontarget catch of fishing gear.",
+   "review": "overfishing"
+  },
+  {
+   "q": "Why do farm animals kept close together in large numbers often get antibiotics?",
+   "options": [
+    "Disease spreads quickly when many animals are crowded together",
+    "Antibiotics make the animals grow wings",
+    "Antibiotics add nitrogen to manure",
+    "Crowded animals cannot eat grain"
+   ],
+   "correct": 0,
+   "why": "Crowding spreads disease, so antibiotics are used, which can select for resistant bacteria.",
+   "review": "meat-production"
+  }
+ ],
+ "figure": {
+  "figure": "aquaculture-pens",
+  "caption": "An open net pen in a bay compared with a closed, filtered tank on land."
+ },
+ "chain": [
+  {
+   "cause": "Many fish are crowded in an open net pen",
+   "effect": "their waste and uneaten feed fall to the sea floor"
+  },
+  {
+   "cause": "Nutrients from the waste build up under and around the pen",
+   "effect": "decomposers use oxygen, so the water near the bottom loses oxygen"
+  },
+  {
+   "cause": "Crowding spreads parasites such as sea lice and disease",
+   "effect": "wild fish swimming past the pens can be infected"
+  },
+  {
+   "cause": "Farmed fish escape through torn nets",
+   "effect": "they compete or breed with wild fish and can weaken wild populations"
+  }
+ ],
+ "ideas": [
+  "<b>Aquaculture</b> raises fish, shellfish and seaweed in ponds, tanks or net pens. It now supplies about half of the fish and shellfish people eat.",
+  "Benefits: a lot of food from a small area, less pressure on wild fish stocks, little fuel compared with fishing fleets, and fish that turn feed into body mass efficiently.",
+  "Costs: concentrated waste, disease and parasites that spread to wild fish, antibiotics, escaped fish, and wild fish caught to make feed for carnivorous farmed species. Shrimp ponds have replaced mangrove forests.",
+  "Lower-impact options: closed tanks with filters, farming plant-eating fish (tilapia, carp) and filter feeders (mussels, oysters) that need no feed."
+ ],
+ "misconception": {
+  "wrong": "Farming fish always takes pressure off wild fish.",
+  "right": "Carnivorous farmed fish such as salmon are fed fish meal and fish oil made from wild fish, so farming them still takes wild fish. Farming plant eaters like carp and tilapia, or filter feeders like mussels, takes much less."
+ },
+ "check": [
+  "env-aquaculture-1",
+  "env-aquaculture-2",
+  "env-aquaculture-9",
+  "env-aquaculture-10",
+  "env-aquaculture-11",
+  "env-aquaculture-12",
+  "env-aquaculture-7"
+ ],
+ "summary": "Aquaculture, raising fish and shellfish in ponds, tanks and net pens, supplies about half of the fish people eat and can ease pressure on wild stocks with high yields on little space. Open pens release concentrated waste, spread disease and parasites to wild fish, use antibiotics and lose escaped fish, and carnivorous species are fed wild fish. Closed tanks and plant-eating or filter-feeding species reduce these costs."
+}

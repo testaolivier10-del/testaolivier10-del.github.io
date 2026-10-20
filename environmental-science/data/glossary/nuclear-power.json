@@ -1,0 +1,20 @@
+{
+ "uranium": {
+  "def": "The radioactive metal used as nuclear fuel; reactor fuel is enriched to about 3 to 5 percent uranium-235, the isotope that splits easily."
+ },
+ "nuclear-fission": {
+  "def": "The splitting of a heavy nucleus, such as uranium-235, when struck by a neutron, releasing a large amount of heat and more neutrons that can continue a chain reaction."
+ },
+ "radioactive-decay": {
+  "def": "The process in which an unstable nucleus gives off radiation and changes into a different element or isotope."
+ },
+ "half-life": {
+  "def": "The time it takes for half of the radioactive atoms in a sample to decay; amount left = starting amount × 0.5^(time ÷ half-life)."
+ },
+ "nuclear-waste": {
+  "def": "Radioactive material left from nuclear power, mainly spent fuel rods, which stays dangerous for thousands of years and must be stored away from people and water."
+ },
+ "meltdown": {
+  "def": "Severe overheating of a reactor core after loss of cooling, so the fuel melts and radioactive material may escape, as at Three Mile Island, Chernobyl and Fukushima."
+ }
+}

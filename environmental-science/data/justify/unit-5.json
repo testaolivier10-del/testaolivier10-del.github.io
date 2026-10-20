@@ -1,0 +1,222 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-drip-solution",
+   "topic": "irrigation",
+   "practice": "7.E",
+   "skill": "solution",
+   "title": "Saving water on a dry farm",
+   "context": "<p>A farmer in a dry region irrigates vegetables by flooding the furrows. Groundwater is falling. The farmer will keep the same crops and wants to use less water.</p>",
+   "prompt": "<b>Propose</b> an irrigation method that fits these constraints and <b>explain</b> how it saves water.",
+   "checklist": [
+    "Proposes drip irrigation (or another targeted method) and keeps the same crops",
+    "Explains how it saves water: delivers water to the roots, so less evaporates or runs off",
+    "Connects the saving to the falling groundwater"
+   ],
+   "earns": {
+    "answer": "Switch from furrow irrigation to drip irrigation. Drip tubes deliver water slowly right at each plant's roots, so far less evaporates from the soil surface or runs off the field. The farmer grows the same vegetables with less water and pumps less groundwater, which slows the drop in the water table.",
+    "why": "It fits both constraints and explains how the water is saved."
+   },
+   "misses": {
+    "answer": "Use less water by growing crops that need less water, like cactus.",
+    "why": "The farmer will keep the same crops, so changing crops ignores the constraint, and it names no method."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Method",
+      "options": [
+       "drip irrigation",
+       "flood irrigation with more water",
+       "switching to a crop that needs less water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Flooding is what the farmer already does; it wastes water.",
+       "2": "The farmer will keep the same crops."
+      }
+     },
+     "how": {
+      "label": "How it saves water",
+      "options": [
+       "water goes straight to the roots, so less evaporates or runs off",
+       "it makes the water cleaner",
+       "it adds nutrients to the soil"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Drip irrigation saves water, not by cleaning it.",
+       "2": "Nutrients are not how drip irrigation saves water."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-ipm-tradeoff",
+   "topic": "integrated-pest-management",
+   "practice": "7.C",
+   "skill": "tradeoff",
+   "title": "Integrated pest management on an orchard",
+   "prompt": "<b>Describe</b> one advantage and one disadvantage of an apple orchard switching from regular spraying to integrated pest management (IPM).",
+   "checklist": [
+    "Advantage with reason: fewer pesticide applications, so less harm to pollinators, less runoff and less pesticide resistance",
+    "Disadvantage with reason: IPM takes more time, monitoring and training, or can cost more at first",
+    "Each side explains its reason"
+   ],
+   "earns": {
+    "answer": "Advantage: the grower sprays only when monitoring shows pests above a threshold, so less pesticide reaches bees and nearby streams, and pests are slower to evolve resistance. Disadvantage: IPM takes more labor and knowledge, because someone must check traps and leaves every week and choose among biological, cultural and chemical controls, which raises costs at first.",
+    "why": "Both sides are named with the reason each happens."
+   },
+   "misses": {
+    "answer": "IPM is better for the environment but it is harder.",
+    "why": "\"Better\" and \"harder\" name no specific benefit or cost, and give no reasons."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-fishing-policy",
+   "topic": "overfishing",
+   "practice": "7.B",
+   "skill": "policy",
+   "title": "A policy against overfishing",
+   "context": "<p>Cod in a fishing ground have fallen to a tenth of their numbers 30 years ago.</p>",
+   "prompt": "<b>Propose</b> a policy to help the cod recover and <b>explain</b> how it works.",
+   "checklist": [
+    "Proposes a policy (a law, quota or rule), not a technology",
+    "Explains how it lets the population recover",
+    "Is specific to the cod fishery"
+   ],
+   "earns": {
+    "answer": "Set a law that limits each year's cod catch to a quota scientists set below the population's growth, and close spawning grounds in the spawning season. Fewer adult cod are taken and more spawn, so births exceed deaths and the population can grow back.",
+    "why": "It is a rule, it is specific, and it explains how fewer fish caught means more spawning and recovery."
+   },
+   "misses": {
+    "answer": "Use nets with bigger holes so small fish can escape.",
+    "why": "Bigger mesh is a technology. A policy would be a law requiring larger mesh, and it needs the how."
+   },
+   "specific": {
+    "slots": {
+     "type": {
+      "label": "A policy is",
+      "options": [
+       "a law setting a yearly catch quota",
+       "nets with larger holes",
+       "sonar to find fish faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is gear, a technology. A law requiring it would be a policy.",
+       "2": "That is a technology, and it would raise the catch."
+      }
+     },
+     "how": {
+      "label": "It works because",
+      "options": [
+       "fewer adults are caught, so more spawn and the population grows",
+       "it makes cod taste better",
+       "it moves the cod to a new ocean"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Taste has nothing to do with recovery.",
+       "2": "A quota does not move fish."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-clearcut-chain",
+   "topic": "clearcutting",
+   "practice": "1.C",
+   "skill": "chain",
+   "title": "From clearcutting to a muddy stream",
+   "prompt": "<b>Explain</b> how clearcutting a steep forested slope can harm fish in the stream below.",
+   "checklist": [
+    "Removing the trees removes the roots that held the soil",
+    "Rain erodes the bare soil and carries sediment into the stream",
+    "Sediment makes the water cloudy and buries gravel beds, and loss of shade warms the water",
+    "Fish lose spawning sites or are stressed, so their numbers fall"
+   ],
+   "earns": {
+    "answer": "Clearcutting removes the trees and, as the roots die, nothing holds the soil. Rain washes the bare soil downhill, and sediment flows into the stream. The sediment clouds the water and fills the gravel beds where fish lay eggs, and without the trees' shade the water warms. Fish lose places to spawn, so fewer young survive.",
+    "why": "Each link is named, from roots to soil to sediment to the fish."
+   },
+   "misses": {
+    "answer": "Clearcutting causes erosion, which is bad for fish.",
+    "why": "It skips the links: how erosion gets to the stream and what sediment does to the fish."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-pavement-hypothesis",
+   "topic": "urban-runoff",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about permeable pavement",
+   "context": "<p>A city covers half of a parking lot with permeable pavement and leaves half as ordinary asphalt. Gauges measure how much water runs off each half after storms (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this study.",
+   "checklist": [
+    "Names the change: permeable pavement instead of asphalt",
+    "Names the measure: the volume of runoff",
+    "Gives a direction for the result: an increase or a decrease",
+    "Gives a reason: water soaks through permeable pavement into the ground"
+   ],
+   "earns": {
+    "answer": "If a parking area is covered with permeable pavement instead of asphalt, then less water will run off it after a storm, because rain soaks through the pavement into the ground instead of flowing over it.",
+    "why": "Statement, change, measure, direction and mechanism."
+   },
+   "misses": {
+    "answer": "Does permeable pavement make a difference to how much water runs off?",
+    "why": "It is a question, not a statement, and it gives no direction to test."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "the parking area has permeable pavement instead of asphalt",
+       "the parking lot is made larger",
+       "more cars park on the lot"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lot size is fixed; the surface is what changes.",
+       "2": "Cars are not part of the study."
+      }
+     },
+     "direction": {
+      "label": "then ...",
+      "options": [
+       "less water will run off",
+       "more water will run off",
+       "runoff will change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Permeable pavement lets water soak in, so runoff should fall.",
+       "2": "A hypothesis says which way."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "rain soaks through the pavement into the ground",
+       "the pavement is newer",
+       "permeable pavement evaporates the water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Age of the pavement is not the mechanism.",
+       "2": "Pavement does not evaporate water; the water soaks through."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

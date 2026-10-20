@@ -1,0 +1,8 @@
+{
+ "thermal-pollution": {
+  "def": "A harmful rise in the temperature of a body of water caused by people, mainly from power plant and factory cooling water and warm urban runoff. Warmer water holds less dissolved oxygen."
+ },
+ "thermal-shock": {
+  "def": "A sudden change in water temperature that organisms cannot adjust to, such as when a plant starts or stops releasing warm water. It can kill fish and other aquatic life."
+ }
+}

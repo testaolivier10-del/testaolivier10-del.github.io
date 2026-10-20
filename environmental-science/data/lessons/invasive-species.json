@@ -1,0 +1,72 @@
+{
+ "topic": "invasive-species",
+ "hook": "In the late 1980s, a cargo ship from Europe emptied its ballast tanks into Lake St. Clair, between Lake Huron and Lake Erie. In the water were the larvae of a small striped mussel. Within a decade zebra mussels had spread through the Great Lakes, clogging water intake pipes and smothering native mussels.",
+ "prereq": [
+  {
+   "q": "Which traits describe an r-selected species?",
+   "options": [
+    "Many offspring, little parental care",
+    "Few offspring, lots of care",
+    "Long life, slow maturity",
+    "Large body, low birth rate"
+   ],
+   "correct": 0,
+   "why": "r-selected species reproduce quickly, with many offspring and little care.",
+   "review": "r-k-selection"
+  },
+  {
+   "q": "What is a generalist species?",
+   "options": [
+    "One that can live in many habitats and eat many foods",
+    "One with a very narrow diet",
+    "One that lives in a single habitat",
+    "One that eats only plants"
+   ],
+   "correct": 0,
+   "why": "Generalists tolerate a broad range of conditions and foods.",
+   "review": "generalists-specialists"
+  }
+ ],
+ "figure": {
+  "figure": "invasive-species-takeover",
+  "caption": "An invasive mussel and a native mussel in one lake (invented data). Note the two axes."
+ },
+ "chain": [
+  {
+   "cause": "People move a species outside its native range, by ship, trade or on purpose",
+   "effect": "it arrives where it has few predators, parasites or diseases"
+  },
+  {
+   "cause": "Generalist, r-selected traits let it eat many foods and reproduce fast",
+   "effect": "its population grows explosively"
+  },
+  {
+   "cause": "It outcompetes, eats or smothers native species",
+   "effect": "native populations decline and biodiversity falls"
+  },
+  {
+   "cause": "Once established it is very hard to remove",
+   "effect": "prevention and early detection are the best control"
+  }
+ ],
+ "ideas": [
+  "<b>Invasive species</b> are nonnative (exotic) species that spread quickly and cause harm. Not every nonnative species is invasive.",
+  "They are often generalists with r-selected traits. Lacking natural predators is a feature of the new ecosystem, not a trait.",
+  "Examples: zebra mussels (ballast water, Great Lakes), kudzu (planted for erosion control), cane toads (brought to Australia for pest control), Asian carp, emerald ash borer.",
+  "Control: prevention (ballast rules, boat cleaning, inspections), early detection, removal, and carefully tested biological control."
+ ],
+ "misconception": {
+  "wrong": "An invasive species succeeds because its trait is \"no predators.\"",
+  "right": "Having few predators describes the new habitat. A trait belongs to the organism: a broad diet, fast reproduction, tolerance of many conditions."
+ },
+ "check": [
+  "env-invasive-species-2",
+  "env-invasive-species-4",
+  "env-invasive-species-5",
+  "env-invasive-species-6",
+  "env-invasive-species-7",
+  "env-invasive-species-11",
+  "env-invasive-species-15"
+ ],
+ "summary": "Invasive species are nonnative species that spread quickly and cause harm. They are often generalists with r-selected traits that face few predators in their new home. They outcompete natives and are very hard to remove once established. Zebra mussels, kudzu and cane toads are classic cases. Prevention, such as ballast water rules and boat cleaning, and early detection are the best tools."
+}

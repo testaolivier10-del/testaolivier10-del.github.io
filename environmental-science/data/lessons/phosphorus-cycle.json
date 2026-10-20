@@ -1,0 +1,68 @@
+{
+ "topic": "phosphorus-cycle",
+ "hook": "A clear lake in spring, a green, cloudy lake by August: the difference is often a few kilograms of phosphate washed in from lawns, farms and wastewater. Phosphorus is scarce in nature because it never travels through the air. It creeps out of rock, rides in water and on soil, and settles to the bottom of the sea.",
+ "prereq": [
+  {
+   "q": "What is a limiting nutrient?",
+   "options": [
+    "The nutrient in shortest supply compared with need",
+    "The nutrient plants use the most",
+    "A nutrient that poisons plants",
+    "A gas in the air"
+   ],
+   "correct": 0,
+   "why": "Adding the limiting nutrient raises growth.",
+   "review": "nitrogen-cycle"
+  },
+  {
+   "q": "Which process returns nutrients from dead matter to the soil?",
+   "options": [
+    "Decomposition",
+    "Photosynthesis",
+    "Combustion",
+    "Sedimentation"
+   ],
+   "correct": 0,
+   "why": "Decomposers break down dead matter and release its nutrients.",
+   "review": "carbon-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "phosphorus-cycle-steps",
+  "caption": "The phosphorus cycle has no gas phase: rock, soil, living things, water and sediment."
+ },
+ "chain": [
+  {
+   "cause": "Weathering breaks down rock",
+   "effect": "phosphate enters the soil"
+  },
+  {
+   "cause": "Plants take up phosphate and animals eat plants",
+   "effect": "decomposers return phosphate to the soil when they die"
+  },
+  {
+   "cause": "Rain washes phosphate-carrying soil into water",
+   "effect": "it settles as sediment and returns to land only when rock is uplifted, over millions of years"
+  }
+ ],
+ "ideas": [
+  "The main reservoirs are rock and ocean sediments; the <b>phosphorus cycle</b> has no significant gas phase, so it is slow.",
+  "<b>Weathering</b> releases <b>phosphate</b>; plants take it up; decomposers return it; sedimentation stores it.",
+  "Phosphorus builds DNA, ATP, cell membranes, bones and teeth.",
+  "Phosphate is often the limiting nutrient in fresh water, so extra phosphate (fertilizer, detergents, wastewater) makes algae grow fast."
+ ],
+ "misconception": {
+  "wrong": "Phosphorus cycles through the air like carbon and nitrogen.",
+  "right": "Phosphorus has no significant gas form. It moves in rock, soil, water and living things, which is why it cycles slowly and is so often in short supply."
+ },
+ "check": [
+  "env-phosphorus-cycle-2",
+  "env-phosphorus-cycle-9",
+  "env-phosphorus-cycle-10",
+  "env-phosphorus-cycle-11",
+  "env-phosphorus-cycle-12",
+  "env-phosphorus-cycle-15",
+  "env-phosphorus-cycle-16"
+ ],
+ "summary": "Phosphorus is stored mostly in rock and ocean sediments and has no significant gas phase, so it cycles slowly. Weathering releases phosphate, plants take it up, animals eat plants, and decomposers return it to the soil. Rain carries phosphate on soil into water, where it settles as sediment. Phosphorus often limits growth in fresh water, so extra phosphate makes algae grow."
+}

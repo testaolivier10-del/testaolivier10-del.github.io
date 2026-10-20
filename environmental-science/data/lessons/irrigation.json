@@ -1,0 +1,84 @@
+{
+ "topic": "irrigation",
+ "hook": "Two farms grow the same crop on the same kind of soil. One floods its fields from a ditch; the other runs thin tubes along each row and lets water drip onto the roots. At harvest the crops look alike, but the first farm used about twice as much water. Farms use about 70% of the fresh water people take from rivers, lakes and aquifers, so the method matters.",
+ "prereq": [
+  {
+   "q": "What is an aquifer?",
+   "options": [
+    "A layer of rock or sediment underground that holds and transmits groundwater",
+    "The land area that drains into one river",
+    "A lake that forms behind a dam",
+    "The boundary between fresh and salt water in a river mouth"
+   ],
+   "correct": 0,
+   "why": "An aquifer is porous rock or sediment that stores groundwater; a watershed is a drainage area.",
+   "review": "water-cycle"
+  },
+  {
+   "q": "A process uses 600 units of input to give 450 units of useful output. What is its efficiency?",
+   "options": [
+    "75%",
+    "133%",
+    "45%",
+    "25%"
+   ],
+   "correct": 0,
+   "why": "Efficiency is output divided by input, times 100: (450 / 600) × 100 = 75%.",
+   "review": "energy-flow"
+  },
+  {
+   "q": "What happens to dissolved salts when water evaporates?",
+   "options": [
+    "They stay behind",
+    "They evaporate with the water",
+    "They turn into gas",
+    "They become fresh water"
+   ],
+   "correct": 0,
+   "why": "Only the water evaporates; salts are left behind.",
+   "review": "water-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "irrigation-methods",
+  "caption": "The crop takes up about the same water under each method, but flood and furrow irrigation apply far more, and the rest is lost. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "A field is flooded with more water than the crop can use",
+   "effect": "much of the water evaporates from the surface or soaks below the roots"
+  },
+  {
+   "cause": "Irrigation water carries small amounts of dissolved salt and the water evaporates",
+   "effect": "salt is left behind in the topsoil"
+  },
+  {
+   "cause": "Salt builds up over years (salinization)",
+   "effect": "roots struggle to take up water, so yields fall"
+  },
+  {
+   "cause": "Wells pump an aquifer faster than it recharges",
+   "effect": "the water table drops and shallow wells go dry"
+  }
+ ],
+ "ideas": [
+  "About 70% of the fresh water people withdraw worldwide goes to agriculture, most of it for irrigation.",
+  "<b>Drip</b> is the most efficient (only about 5% of the water lost) and <b>spray</b> comes next (about a quarter or less lost). <b>Flood</b> and <b>furrow</b> are cheap surface methods that lose the most (furrow often about a third). Drip also costs the most to install.",
+  "Overirrigation causes <b>waterlogging</b> (roots without oxygen) and <b>salinization</b> (salt left behind when water evaporates).",
+  "Pumping groundwater faster than it recharges causes <b>aquifer depletion</b>: a falling water table, a cone of depression around wells, and dry shallow wells."
+ ],
+ "misconception": {
+  "wrong": "Salinization happens when farmers irrigate with seawater.",
+  "right": "Fresh river and well water carries small amounts of dissolved salt. Each time irrigation water evaporates from a field it leaves that salt behind, and over years it builds up in the topsoil."
+ },
+ "check": [
+  "env-irrigation-1",
+  "env-irrigation-2",
+  "env-irrigation-9",
+  "env-irrigation-10",
+  "env-irrigation-11",
+  "env-irrigation-12",
+  "env-irrigation-13"
+ ],
+ "summary": "Irrigation methods differ in how much of the water reaches the roots: flood and furrow are cheap but lose much of it to evaporation and runoff, spray loses less, and drip loses the least but costs the most. Overirrigation causes waterlogging and salinization, and pumping groundwater faster than it recharges depletes aquifers."
+}

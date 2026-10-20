@@ -1,0 +1,12 @@
+{
+ "primary-productivity-gpp-npp": {
+  "file": "figures/primary-productivity-gpp-npp.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Invented data for a grassland in kilocalories per square meter per year. Gross primary productivity, GPP, is 12,000. Of that, 7,000 is used by the plants in respiration to stay alive. The rest, net primary productivity, NPP, is 12,000 minus 7,000 = 5,000, stored as new plant matter and available to the animals that eat plants."
+ }
+}

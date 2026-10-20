@@ -1,0 +1,12 @@
+{
+ "global-energy-consumption-per-person": {
+  "file": "figures/global-energy-consumption-per-person.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Stacked bars of energy use per person in gigajoules per year for four invented countries from less to more developed: A 15 (10 biomass, 5 fossil fuels), B 40 (8 biomass, 30 fossil fuels, 2 other), C 110 (4 biomass, 92 fossil fuels, 14 other), D 230 (5 biomass, 185 fossil fuels, 40 other). Invented data for practice."
+ }
+}

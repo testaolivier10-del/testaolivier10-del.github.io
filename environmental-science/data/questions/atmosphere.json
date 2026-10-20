@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "atmosphere-s1": {
+   "kind": "quantitative",
+   "title": "Temperature and altitude in the standard atmosphere",
+   "source": "NOAA, NASA and the U.S. Air Force, U.S. Standard Atmosphere, 1976 (temperatures at the layer boundaries; the 84.9 km point rounded to 85 km)",
+   "plot": {
+    "label": "Line graph of altitude against temperature through the troposphere, stratosphere and mesosphere, from the U.S. Standard Atmosphere, 1976",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Standard atmosphere",
+      "points": [
+       [
+        15,
+        0
+       ],
+       [
+        -56.5,
+        11
+       ],
+       [
+        -56.5,
+        20
+       ],
+       [
+        -44.5,
+        32
+       ],
+       [
+        -2.5,
+        47
+       ],
+       [
+        -2.5,
+        51
+       ],
+       [
+        -58.5,
+        71
+       ],
+       [
+        -86.3,
+        85
+       ]
+      ]
+     }
+    ],
+    "x": [
+     -100,
+     20
+    ],
+    "y": [
+     0,
+     90
+    ],
+    "xLabel": "Temperature (°C)",
+    "yLabel": "Altitude (km)"
+   }
+  },
+  "atmosphere-s2": {
+   "kind": "quantitative",
+   "title": "The gases in clean, dry air near the ground",
+   "source": "NOAA and NASA reference values for dry air; carbon dioxide rounded for 2024 (NOAA Global Monitoring Laboratory)",
+   "table": {
+    "caption": "Share of molecules in dry air by volume (water vapor, which varies from about 0% to 4%, is left out)",
+    "cols": [
+     "Gas",
+     "Percent by volume"
+    ],
+    "rows": [
+     [
+      "Nitrogen (N₂)",
+      "78.08"
+     ],
+     [
+      "Oxygen (O₂)",
+      "20.95"
+     ],
+     [
+      "Argon (Ar)",
+      "0.93"
+     ],
+     [
+      "Carbon dioxide (CO₂)",
+      "0.042"
+     ],
+     [
+      "All other gases",
+      "less than 0.01"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-atmosphere-1",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In which layer of the atmosphere does almost all weather happen?",
+   "options": [
+    "Troposphere",
+    "Stratosphere",
+    "Mesosphere",
+    "Thermosphere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The troposphere, the lowest layer, holds about three quarters of the air's mass and nearly all its water vapor, so clouds, rain and storms form there.",
+    "options": [
+     "Right: weather happens in the troposphere.",
+     "The stratosphere is dry and stable; it holds the ozone layer.",
+     "The mesosphere is far above the clouds.",
+     "The thermosphere is extremely thin air, far above the weather."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-2",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What does the ozone layer do for life on Earth's surface?",
+   "options": [
+    "Absorbs most harmful ultraviolet light",
+    "Traps heat near the ground to warm Earth",
+    "Supplies the oxygen that animals breathe",
+    "Reflects sunlight to keep the surface cool"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ozone in the stratosphere absorbs most UV-B and nearly all UV-C, which would otherwise damage DNA, cause skin cancer and cataracts, and harm plants and plankton.",
+    "options": [
+     "Right: the ozone layer filters out most harmful UV radiation.",
+     "Keeping Earth warm is a different job, done mostly by gases such as water vapor and carbon dioxide in the troposphere.",
+     "The oxygen animals breathe is O2 made by photosynthesis, not ozone.",
+     "Ozone absorbs UV light; it does not act as a mirror for sunlight."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-3",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the temperature rise with height in the stratosphere?",
+   "options": [
+    "Ozone there absorbs ultraviolet light",
+    "It is closer to the Sun than the troposphere",
+    "Warm air from the ground rises and collects there",
+    "Clouds in the stratosphere trap heat from below"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As ozone absorbs UV light, it warms the air around it. The most absorption is in the upper stratosphere, so temperature climbs with height.",
+    "options": [
+     "Right: ozone absorbing UV heats the stratosphere.",
+     "A few kilometers is nothing compared with the 150 million km to the Sun.",
+     "Air rising from the ground cools as it rises and stops at the top of the troposphere.",
+     "The stratosphere is too dry for ordinary clouds."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-4",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does air get colder as you climb a mountain?",
+   "options": [
+    "The air is heated from the ground, and rising air cools",
+    "Air higher up sits closer to the cold ozone layer",
+    "Mountains block sunlight from reaching their peaks",
+    "Air higher up holds more oxygen, which absorbs heat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sunlight warms the ground, which warms the air above it. Air that rises meets lower pressure, expands and cools, so the troposphere cools by about 6.5 °C per kilometer on average.",
+    "options": [
+     "Right: heating from below plus cooling of rising air makes the troposphere colder with height.",
+     "The ozone layer is where the air starts to warm, not a cold source.",
+     "Mountain peaks get plenty of sunlight.",
+     "The share of oxygen stays about 21% with height; the air just gets thinner."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-5",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town at sea level is 20 °C. Air in the troposphere cools about 6.5 °C for every kilometer you rise. What is the temperature on a peak 3 km above the town?",
+   "why": {
+    "correct": "The drop is $6.5\\,\\frac{\\text{°C}}{\\text{km}} \\times 3\\,\\text{km} = 19.5\\,\\text{°C}$, so the peak is $20 - 19.5 = 0.5\\,\\text{°C}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      20,
+      {
+       "fn": "mul",
+       "args": [
+        6.5,
+        3
+       ]
+      }
+     ]
+    },
+    "unit": "°C",
+    "units": [
+     "C",
+     "degrees C"
+    ],
+    "mistakes": [
+     {
+      "value": 39.5,
+      "why": "You added. Temperature falls with height in the troposphere: 20 - (6.5 × 3)."
+     },
+     {
+      "value": 13.5,
+      "why": "That is the drop for 1 km. For 3 km the drop is 6.5 × 3 = 19.5 °C."
+     },
+     {
+      "value": -19.5,
+      "why": "19.5 °C is the drop, not the temperature. Subtract it from 20 °C."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-6",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Ozone near the ground irritates the lungs, but ozone high in the stratosphere protects life. How can the same gas be harmful in one place and helpful in another?",
+   "options": [
+    "High up it blocks UV light; near the ground people breathe it in",
+    "Ozone in the stratosphere is a different chemical from ground ozone",
+    "Ozone is harmless at any height; near the ground it carries soil dust",
+    "Ozone near the ground absorbs more UV light, which burns the lungs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ozone (O3) is the same molecule everywhere. High up it absorbs UV light before it reaches the surface; at ground level it is a pollutant people and plants take in.",
+    "options": [
+     "Right: the same molecule, different effects depending on location.",
+     "Both are O3, the same molecule.",
+     "Breathing ozone harms lung tissue; it is not harmless.",
+     "The harm near the ground comes from breathing ozone, not from UV absorption."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-7",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements about the atmosphere are correct? Select all that apply.",
+   "options": [
+    "Nitrogen is the most common gas in dry air",
+    "The ozone layer is in the troposphere",
+    "Most of the air's mass is in the thermosphere",
+    "Oxygen makes up about half of dry air"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Dry air is about 78% nitrogen and 21% oxygen. The ozone layer lies about 15 to 35 km up, in the stratosphere. Most of the air's mass is in the troposphere.",
+    "options": [
+     "Right: nitrogen is about 78% of dry air.",
+     "The ozone layer is in the stratosphere, above the troposphere.",
+     "The thermosphere holds a tiny fraction of the air; about 75% of the mass is in the troposphere.",
+     "Oxygen is about 21% of dry air, not half."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-8",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the graph, how does temperature change from the ground up to about 11 km?",
+   "stimulus": "atmosphere-s1",
+   "options": [
+    "It falls steadily, from 15 °C to −56.5 °C",
+    "It rises steadily, from 15 °C to −56.5 °C",
+    "It stays the same at about 15 °C",
+    "It falls, then rises, then falls again"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The line slopes from 15 °C at 0 km to −56.5 °C at 11 km. This lowest layer, where temperature falls with height, is the troposphere.",
+    "options": [
+     "Right: temperature falls with height in the troposphere.",
+     "−56.5 °C is colder than 15 °C, so temperature falls.",
+     "The line moves left (colder) as altitude rises.",
+     "That pattern describes the whole graph up to 85 km, not the first 11 km."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-9",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the graph. From 0 km to 11 km the temperature goes from 15 °C to −56.5 °C. What is the average change in temperature per kilometer?",
+   "stimulus": "atmosphere-s1",
+   "why": {
+    "correct": "$\\frac{-56.5\\,\\text{°C} - 15\\,\\text{°C}}{11\\,\\text{km}} = \\frac{-71.5\\,\\text{°C}}{11\\,\\text{km}} = -6.5\\,\\text{°C/km}$. Temperature falls 6.5 °C for each kilometer."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        -56.5,
+        15
+       ]
+      },
+      11
+     ]
+    },
+    "unit": "°C/km",
+    "units": [
+     "°C per km",
+     "degrees C per km",
+     "C/km"
+    ],
+    "mistakes": [
+     {
+      "value": -41.5,
+      "why": "Subtract the starting temperature: −56.5 − 15 = −71.5, not −56.5 + 15."
+     },
+     {
+      "value": -71.5,
+      "why": "That is the total change. Divide by the 11 km to get the change per kilometer."
+     },
+     {
+      "value": 6.5,
+      "why": "The temperature falls, so the change per kilometer is negative: −6.5 °C/km."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-10",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph shows temperature rising from about 20 km to 47 km. Which layer is this, and what causes the warming?",
+   "stimulus": "atmosphere-s1",
+   "options": [
+    "The stratosphere, where ozone absorbs UV light",
+    "The troposphere, where the ground heats the air",
+    "The mesosphere, where the air is heated by meteors",
+    "The thermosphere, where clouds trap heat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From about 11 to 50 km is the stratosphere. Its ozone absorbs ultraviolet light, so it warms with height.",
+    "options": [
+     "Right: ozone in the stratosphere absorbs UV and warms the air.",
+     "The troposphere ends near 11 km and cools with height.",
+     "The mesosphere, above 50 km, cools with height.",
+     "The thermosphere starts at about 85 km, at the very top of this graph, and it has no clouds."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-11",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A plane cruises at 11 km, near the top of the troposphere. Which part of the graph explains why storms rarely rise much above that height?",
+   "stimulus": "atmosphere-s1",
+   "options": [
+    "Above 11 km temperature stops falling, so rising air is no longer warmer than its surroundings",
+    "Above 11 km temperature drops much faster, so the clouds freeze solid and fall back down",
+    "The graph shows the air is at its warmest at 11 km, so storms stop growing at that height",
+    "The graph shows too little air above 11 km for clouds to form in"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Storm clouds grow while rising air stays warmer and lighter than the air around it. Where temperature stops falling and then rises, rising air quickly matches its surroundings and stops climbing.",
+    "options": [
+     "Right: the change in the temperature trend at 11 km caps rising air.",
+     "The graph shows temperature holding steady and then rising above 11 km, not dropping faster.",
+     "−56.5 °C at 11 km is one of the coldest points on the graph.",
+     "The graph continues to 85 km; the air is thin but present."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-12",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the table, about what fraction of dry air is oxygen?",
+   "stimulus": "atmosphere-s2",
+   "options": [
+    "About one fifth",
+    "About one half",
+    "About three quarters",
+    "About one tenth"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Oxygen is 20.95%, about 21 of every 100 molecules, which is roughly one fifth.",
+    "options": [
+     "Right: 21% is about one fifth.",
+     "One half would be 50%.",
+     "Three quarters is close to nitrogen's share, 78%.",
+     "One tenth would be 10%."
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-13",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the table. In a sample of 1,000,000 molecules of dry air, about how many are argon?",
+   "stimulus": "atmosphere-s2",
+   "why": {
+    "correct": "$\\frac{0.93}{100} \\times 1{,}000{,}000 = 9{,}300$ molecules."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      0.93,
+      1000000
+     ]
+    },
+    "unit": "molecules",
+    "units": [
+     "molecule"
+    ],
+    "mistakes": [
+     {
+      "value": 930000,
+      "why": "You used 93% instead of 0.93%. 0.93% of 1,000,000 is 0.93 ÷ 100 × 1,000,000."
+     },
+     {
+      "value": 93,
+      "why": "Too small by a factor of 100. 0.93 ÷ 100 = 0.0093, and 0.0093 × 1,000,000 = 9,300."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-14",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "Use the table. Carbon dioxide is 0.042% of dry air by volume. Scientists usually give it in parts per million (ppm): molecules per 1,000,000 molecules of air. What is 0.042% in ppm?",
+   "stimulus": "atmosphere-s2",
+   "why": {
+    "correct": "$\\frac{0.042}{100} \\times 1{,}000{,}000 = 420\\,\\text{ppm}$. One percent is 10,000 ppm."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      0.042,
+      1000000
+     ]
+    },
+    "unit": "ppm",
+    "mistakes": [
+     {
+      "value": 42,
+      "why": "Too small by a factor of 10. 1% is 10,000 ppm, so 0.042% is 0.042 × 10,000 = 420 ppm."
+     },
+     {
+      "value": 4200,
+      "why": "Too large by a factor of 10. 0.042 ÷ 100 × 1,000,000 = 420 ppm."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-atmosphere-15",
+   "unit": "unit-4",
+   "topic": "atmosphere",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Carbon dioxide is such a tiny part of the air that changes in it cannot matter.\" Which response uses the table and the course correctly?",
+   "stimulus": "atmosphere-s2",
+   "options": [
+    "A small share can matter: plants need CO2, and it helps hold heat near the surface",
+    "The student is right, because nitrogen and oxygen are what affect living things",
+    "The student is right, because argon is a larger share and it does not matter",
+    "The table is wrong, because carbon dioxide is really about 21% of the air"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Share and importance are different. CO2 is only about 0.04% of air, yet it is the carbon source for photosynthesis, and it helps keep Earth warm (later topics in Unit 9 explain how).",
+    "options": [
+     "Right: a small share can still have large effects.",
+     "CO2 is the raw material of photosynthesis, so it matters to every food chain.",
+     "Argon does nothing chemically, but that does not make every small gas unimportant.",
+     "Oxygen is about 21%; CO2 is about 0.04%."
+    ]
+   }
+  }
+ ]
+}

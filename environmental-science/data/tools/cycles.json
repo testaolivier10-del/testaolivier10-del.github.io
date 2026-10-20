@@ -1,0 +1,20 @@
+{
+ "slug": "cycles",
+ "kind": "simulator",
+ "topic": "carbon-cycle",
+ "intro": "<p>Atoms of carbon, nitrogen, phosphorus and water are never used up: they move between reservoirs (the air, living things, soil, rock, the ocean) by processes such as photosynthesis, nitrogen fixation and evaporation. Pick a cycle, tap a process to see what moves where and who does it, then switch on a human change and watch the reservoirs shift over the years.</p>",
+ "howItWorksTitle": "How the model works",
+ "howItWorks": "<p><b>Carbon</b> (in GtC, billion tonnes of carbon; amounts rounded from IPCC AR6 and the Global Carbon Project): the natural flows come in nearly balanced pairs. Human emissions are split as the recent global budget splits them: about 45% stays in the air, 25% dissolves in the ocean and 30% is taken up by land plants and soils. 1 ppm of atmospheric CO₂ is 2.12 GtC.</p><p><b>Nitrogen and phosphorus</b> are shown as relative amounts (each reservoir starts at 100%) in a simple box model: every flow is proportional to the amount in its source, so a change spreads around the cycle. The nitrogen processes carry the order the exam uses: 1 fixation, 2 nitrification, 3 assimilation, 4 ammonification, 5 denitrification.</p><p><b>Water</b> (in km³, rounded from Trenberth et al. 2007) uses the same box model. Paving cuts infiltration and raises runoff; pumping drains an aquifer; warming speeds evaporation and melts land ice.</p><p>The models show directions and rough sizes, not forecasts.</p>",
+ "explore": { "cycle": "carbon", "years": 50 },
+ "partTopics": {
+  "n2": "nitrogen-cycle", "n3": "nitrogen-cycle", "n4": "nitrogen-cycle", "n5": "nitrogen-cycle", "who": "nitrogen-cycle"
+ },
+ "contexts": [
+  { "id": "carbon-proc", "topic": "carbon-cycle", "cycle": "carbon", "types": ["process", "reservoir", "human"] },
+  { "id": "carbon-budget", "topic": "carbon-cycle", "cycle": "carbon", "types": ["budget", "residence"] },
+  { "id": "nitrogen-order", "topic": "nitrogen-cycle", "cycle": "nitrogen", "types": ["nitrogen"] },
+  { "id": "nitrogen-proc", "topic": "nitrogen-cycle", "cycle": "nitrogen", "types": ["process", "reservoir", "human"] },
+  { "id": "phosphorus-proc", "topic": "phosphorus-cycle", "cycle": "phosphorus", "types": ["process", "reservoir", "human"] },
+  { "id": "water-proc", "topic": "water-cycle", "cycle": "water", "types": ["process", "reservoir", "human", "residence"] }
+ ]
+}

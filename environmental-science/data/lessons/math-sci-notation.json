@@ -1,0 +1,68 @@
+{
+ "topic": "math-sci-notation",
+ "hook": "The atmosphere holds about 3,300,000,000,000,000 kg of carbon dioxide. A soil sample might hold 0.000002 g of a pesticide. Numbers this big and this small are hard to read and easy to miscopy, and on the exam a dropped zero costs the point. Scientific notation and metric prefixes keep them short and safe.",
+ "prereq": [
+  {
+   "q": "Which is an abiotic factor of an ecosystem?",
+   "options": [
+    "The amount of rain",
+    "A fungus",
+    "A bird",
+    "A tree"
+   ],
+   "correct": 0,
+   "why": "Rain is nonliving.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "Which biome is warm all year and very wet?",
+   "options": [
+    "Tropical rainforest",
+    "Tundra",
+    "Savanna",
+    "Desert biome"
+   ],
+   "correct": 0,
+   "why": "Warm and wet all year is a tropical rainforest.",
+   "review": "terrestrial-biomes"
+  }
+ ],
+ "figure": {
+  "figure": "math-sci-notation-prefixes",
+  "caption": "Metric prefixes, their powers of ten and scale words."
+ },
+ "chain": [
+  {
+   "cause": "Move the decimal point until one nonzero digit is left of it",
+   "effect": "the front number is between 1 and 10"
+  },
+  {
+   "cause": "Count the places you moved it",
+   "effect": "that count is the exponent: left gives a positive power, right a negative one"
+  },
+  {
+   "cause": "Multiply numbers in scientific notation",
+   "effect": "multiply the front numbers and add the exponents"
+  }
+ ],
+ "ideas": [
+  "<b>Scientific notation</b> writes a number as (a number from 1 to 10) × a power of ten: $2.5 \\times 10^{6}$ = 2.5 million = 2,500,000.",
+  "Multiply: multiply the fronts, add the exponents. Divide: divide the fronts, subtract the exponents. Then fix the front number if it is not between 1 and 10.",
+  "A <b>metric prefix</b> is a power of ten: kilo ($10^{3}$), mega ($10^{6}$), giga ($10^{9}$), centi ($10^{-2}$), milli ($10^{-3}$), micro ($10^{-6}$).",
+  "Scale words: thousand = $10^{3}$, million = $10^{6}$, billion = $10^{9}$, trillion = $10^{12}$."
+ ],
+ "misconception": {
+  "wrong": "When you multiply $10^{4}$ by $10^{3}$, you multiply the exponents to get $10^{12}$.",
+  "right": "Multiplying powers of ten adds the exponents: $10^{4} \\times 10^{3} = 10^{7}$. Check with numbers: 10,000 × 1,000 = 10,000,000, which has 7 zeros."
+ },
+ "check": [
+  "env-math-sci-notation-1",
+  "env-math-sci-notation-2",
+  "env-math-sci-notation-4",
+  "env-math-sci-notation-7",
+  "env-math-sci-notation-8",
+  "env-math-sci-notation-9",
+  "env-math-sci-notation-10"
+ ],
+ "summary": "Scientific notation writes very large and very small numbers as a number from 1 to 10 times a power of ten, such as $2.5 \\times 10^{6}$ = 2.5 million = 2,500,000. To multiply, multiply the fronts and add the exponents; to divide, divide and subtract. Metric prefixes (kilo, mega, giga, milli, micro) are powers of ten too, so change them before you compare or combine numbers."
+}

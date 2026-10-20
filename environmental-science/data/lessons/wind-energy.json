@@ -1,0 +1,71 @@
+{
+ "topic": "wind-energy",
+ "hook": "On the plains of Iowa and Texas, rows of white turbines taller than a 30-story building turn slowly above fields of corn and cattle. In Iowa, wind now makes about two thirds of the state's electricity. It is free, clean while running and shares land with farming, but it stops when the air goes still.",
+ "prereq": [
+  {
+   "q": "What drives the wind?",
+   "options": [
+    "Uneven heating of Earth's surface by the sun",
+    "The moon's gravity",
+    "Heat from Earth's core",
+    "Ocean tides"
+   ],
+   "correct": 0,
+   "why": "Unequal heating makes air pressure differences, and air moves from high to low pressure.",
+   "review": "global-wind-patterns"
+  },
+  {
+   "q": "What does intermittency mean for an energy source?",
+   "options": [
+    "It is not available all the time",
+    "It runs out",
+    "It pollutes",
+    "It needs fuel"
+   ],
+   "correct": 0,
+   "why": "An intermittent source, like solar at night, needs storage or backup.",
+   "review": "solar-energy"
+  }
+ ],
+ "figure": {
+  "figure": "wind-energy-turbine",
+  "caption": "A wind turbine: wind spins the blades, and the shaft, gearbox and generator in the nacelle turn that motion into electricity."
+ },
+ "chain": [
+  {
+   "cause": "The sun heats Earth unevenly, so air moves from high to low pressure",
+   "effect": "wind carries kinetic energy across plains, coasts and seas"
+  },
+  {
+   "cause": "Wind pushes on the turbine blades",
+   "effect": "the rotor turns a shaft, a gearbox speeds it up and a generator makes electricity"
+  },
+  {
+   "cause": "No fuel is burned",
+   "effect": "there is no air pollution or carbon dioxide while running, and land below can still be farmed"
+  },
+  {
+   "cause": "The wind slows or stops",
+   "effect": "output falls, so a grid with much wind needs storage, a wide network or backup"
+  }
+ ],
+ "ideas": [
+  "A <b>wind turbine</b> turns the kinetic energy of moving air into electricity. A <b>wind farm</b> is a group of turbines, on land or offshore.",
+  "Taller towers and offshore sites reach faster, steadier wind; output rises steeply with wind speed (about eight times for double the speed).",
+  "Advantages: no fuel, no emissions while running, very low life-cycle carbon dioxide, land shared with farming, income for landowners.",
+  "Drawbacks: intermittency, bird and bat deaths, noise and changed views, and new transmission lines from remote windy areas."
+ ],
+ "misconception": {
+  "wrong": "A wind farm takes a whole field out of use, the way a coal mine does.",
+  "right": "The tower bases and access roads cover only a small share of a wind farm. Crops and cattle use most of the land between turbines, and the farmer earns lease payments too."
+ },
+ "check": [
+  "env-wind-energy-1",
+  "env-wind-energy-3",
+  "env-wind-energy-5",
+  "env-wind-energy-7",
+  "env-wind-energy-8",
+  "env-wind-energy-9"
+ ],
+ "summary": "Wind turbines turn the kinetic energy of moving air into electricity with blades, a gearbox and a generator. Wind is renewable, needs no fuel, releases no carbon dioxide while running and shares land with farming, so it has some of the lowest life-cycle emissions of any source. Its drawbacks are intermittency, which calls for storage or backup, harm to birds and bats, noise and views, and the need for new power lines."
+}

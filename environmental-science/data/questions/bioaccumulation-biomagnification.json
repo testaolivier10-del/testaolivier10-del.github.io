@@ -1,0 +1,574 @@
+{
+ "stimuli": {
+  "bioaccumulation-biomagnification-s1": {
+   "kind": "quantitative",
+   "title": "A persistent pesticide in a lake food chain",
+   "invented": true,
+   "table": {
+    "caption": "Pesticide concentration at each level of a lake food chain, in parts per million (invented data for practice)",
+    "cols": [
+     "Level",
+     "Example",
+     "Pesticide (ppm)"
+    ],
+    "rows": [
+     [
+      "Water",
+      "lake water",
+      "0.00005"
+     ],
+     [
+      "Producers",
+      "phytoplankton",
+      "0.04"
+     ],
+     [
+      "Primary consumers",
+      "zooplankton",
+      "0.3"
+     ],
+     [
+      "Secondary consumers",
+      "small fish",
+      "2"
+     ],
+     [
+      "Tertiary consumers",
+      "large fish",
+      "12"
+     ],
+     [
+      "Top predator",
+      "osprey",
+      "50"
+     ]
+    ]
+   }
+  },
+  "bioaccumulation-biomagnification-s2": {
+   "kind": "quantitative",
+   "title": "Mercury in one species of fish by age",
+   "invented": true,
+   "table": {
+    "caption": "Average methylmercury in the muscle of walleye from one lake, by age (invented data for practice). Advisories often limit meals of fish above about 0.3 ppm.",
+    "cols": [
+     "Fish age (years)",
+     "Average length (cm)",
+     "Methylmercury (ppm)"
+    ],
+    "rows": [
+     [
+      "2",
+      "25",
+      "0.08"
+     ],
+     [
+      "4",
+      "38",
+      "0.18"
+     ],
+     [
+      "6",
+      "47",
+      "0.31"
+     ],
+     [
+      "8",
+      "54",
+      "0.46"
+     ],
+     [
+      "10",
+      "60",
+      "0.62"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-bioaccumulation-biomagnification-1",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times greater is the pesticide concentration in the osprey than in the large fish it eats?",
+   "stimulus": "bioaccumulation-biomagnification-s1",
+   "why": {
+    "correct": "$\\frac{50\\,\\text{ppm}}{12\\,\\text{ppm}} = 4.17$ times (to two decimal places)."
+   },
+   "numeric": {
+    "from": {
+     "fn": "magnification",
+     "args": [
+      50,
+      12
+     ]
+    },
+    "unit": "times",
+    "units": [
+     "x",
+     "fold"
+    ],
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 38,
+      "why": "38 is the difference. \"How many times greater\" divides: 50 / 12."
+     },
+     {
+      "value": 0.24,
+      "why": "You divided the smaller by the larger. Divide the osprey (50) by the large fish (12)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-2",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How many times greater is the pesticide in the osprey than in the lake water?",
+   "stimulus": "bioaccumulation-biomagnification-s1",
+   "why": {
+    "correct": "$\\frac{50\\,\\text{ppm}}{0.00005\\,\\text{ppm}} = 1{,}000{,}000$ times: one million, or $10^{6}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "magnification",
+     "args": [
+      50,
+      0.00005
+     ]
+    },
+    "unit": "times",
+    "units": [
+     "x",
+     "fold"
+    ],
+    "mistakes": [
+     {
+      "value": 0.000001,
+      "why": "You divided the water by the osprey. Divide the higher concentration by the lower one."
+     },
+     {
+      "value": 100000,
+      "why": "Count the decimal places carefully: 0.00005 is 5 × 10^-5, so 50 / 0.00005 = 1,000,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-3",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the concentration rise at each step of the food chain?",
+   "stimulus": "bioaccumulation-biomagnification-s1",
+   "options": [
+    "Larger animals make the pesticide in their livers",
+    "Each level keeps the pesticide in what it eats",
+    "Predators drink more lake water than their prey",
+    "The pesticide breaks down faster in small organisms"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each level eats many organisms from the level below. The pesticide is stored in fat and not broken down or excreted, while much of the food's energy is used and lost, so the pesticide is concentrated.",
+    "options": [
+     "Animals do not make the pesticide.",
+     "Right: the chemical is retained while the food's mass is used up.",
+     "Most of the pesticide comes from food, not water.",
+     "It is persistent at every level; that is why it builds up."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-4",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The osprey population in the region is falling. Based on the table, which effect is the most likely cause?",
+   "stimulus": "bioaccumulation-biomagnification-s1",
+   "options": [
+    "The pesticide thins their eggshells",
+    "The pesticide kills the fish, so ospreys starve",
+    "Ospreys lay more eggs as pesticide levels rise",
+    "The lake water itself is too toxic for ospreys to drink"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ospreys are at the top of the chain, with the highest concentration. Organochlorine pesticides like DDT thinned the eggshells of fish-eating birds of prey, so fewer chicks hatched.",
+    "options": [
+     "Right: top predators carry the highest load.",
+     "The table shows fish alive and carrying the pesticide, not gone.",
+     "High levels reduce, not increase, breeding success.",
+     "The water has the lowest concentration."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-5",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Between which two adjacent levels does the concentration rise by the largest factor?",
+   "stimulus": "bioaccumulation-biomagnification-s1",
+   "options": [
+    "Large fish to osprey",
+    "Small fish to large fish",
+    "Zooplankton to small fish",
+    "Water to phytoplankton"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Water to phytoplankton rises 800 times (0.04 / 0.00005). The later steps are about 7.5, 6.7, 6 and 4.2 times. Producers take up the pesticide from water and store it in fat.",
+    "options": [
+     "50 / 12 is about 4.2 times, the smallest step.",
+     "12 / 2 = 6 times.",
+     "2 / 0.3 is about 6.7 times.",
+     "Right: 0.04 / 0.00005 = 800 times."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-6",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What happens to methylmercury in the walleye as they age?",
+   "stimulus": "bioaccumulation-biomagnification-s2",
+   "options": [
+    "It falls as the fish get older",
+    "It stays about the same from age to age",
+    "It rises as the fish get older",
+    "It rises until 6 years, then falls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "It rises with age, from 0.08 ppm at 2 years to 0.62 ppm at 10 years: older fish have had more years to take in and store mercury.",
+    "options": [
+     "The values rise with age.",
+     "It increases nearly eightfold.",
+     "Right: from 0.08 to 0.62 ppm.",
+     "It keeps rising at 8 and 10 years."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-7",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The walleye data show one species at one level of the food chain. Which process do they illustrate?",
+   "stimulus": "bioaccumulation-biomagnification-s2",
+   "options": [
+    "Biomagnification: rise from one trophic level to the next",
+    "Bioaccumulation: build-up in one organism over its life",
+    "Eutrophication: nutrients causing algal blooms",
+    "Thermal pollution: heat lowering oxygen"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Bioaccumulation is the build-up of a substance in one organism over its lifetime, faster than it is removed. Biomagnification is the rise from one trophic level to the next.",
+    "options": [
+     "The table compares ages of one species, not trophic levels.",
+     "Right: same species, rising with age.",
+     "Mercury is not a nutrient.",
+     "The data are about mercury, not temperature."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-8",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A state issues advice for anglers on this lake. Which advice best fits the data?",
+   "stimulus": "bioaccumulation-biomagnification-s2",
+   "options": [
+    "Eat smaller walleye and limit meals of large ones",
+    "Eat the largest walleye, since they are the healthiest",
+    "Eat as much walleye as you like, of any size",
+    "Cook walleye longer to remove the mercury"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Walleye from about 6 years (about 47 cm) and older are at or above 0.3 ppm, so limiting meals of large walleye and favoring smaller ones lowers mercury intake.",
+    "options": [
+     "Right: fish above about 47 cm reach 0.3 ppm or more.",
+     "The largest fish carry the most mercury.",
+     "The older fish exceed the advisory level.",
+     "Cooking does not remove methylmercury, which is bound in muscle."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-9",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in methylmercury from 2-year-old to 10-year-old walleye.",
+   "stimulus": "bioaccumulation-biomagnification-s2",
+   "why": {
+    "correct": "$\\frac{(0.62 - 0.08)}{0.08} \\times 100 = 675\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      0.08,
+      0.62
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 87.0967741935,
+      "why": "You divided by the 10-year value. Divide by the starting (2-year) value, 0.08."
+     },
+     {
+      "value": 775,
+      "why": "775% is 0.62 as a percent of 0.08. Subtract first: (0.62 - 0.08) / 0.08 × 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-10",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is biomagnification?",
+   "options": [
+    "The build-up of a pollutant in one organism over its life",
+    "The growth of algae when nutrients are added",
+    "The breakdown of a pollutant by bacteria",
+    "A pollutant rising at each higher trophic level"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Biomagnification is the increase in concentration of a persistent, fat-soluble substance at each higher trophic level of a food chain.",
+    "options": [
+     "That is bioaccumulation.",
+     "That describes an algal bloom.",
+     "That is biodegradation, the opposite of building up.",
+     "Right: it climbs up the food chain."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-11",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which properties make a substance likely to biomagnify? Select all that apply.",
+   "options": [
+    "It is persistent and breaks down slowly",
+    "It dissolves in fat rather than water",
+    "It dissolves easily in water and leaves in urine",
+    "It is broken down by bacteria within days"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A substance biomagnifies when it is persistent (not broken down) and fat-soluble (stored, not excreted). Water-soluble substances are excreted; quickly broken-down ones do not last.",
+    "options": [
+     "Right: it must last long enough to be passed up.",
+     "Right: fat-soluble substances are stored, not excreted.",
+     "Water-soluble substances are excreted, so they do not build up.",
+     "Quick breakdown keeps it from building up."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-12",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does mercury from a coal power plant end up in tuna?",
+   "options": [
+    "Tuna swim to coal plants and absorb mercury from the smoke",
+    "Mercury is added to tuna during canning",
+    "Bacteria make methylmercury, which moves up",
+    "Mercury evaporates from the ocean into tuna gills"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Mercury from coal falls into water, where bacteria convert it to methylmercury, which organisms absorb and store. It biomagnifies up the food chain to large predatory fish such as tuna.",
+    "options": [
+     "Tuna live in the open ocean; mercury reaches them through food.",
+     "The mercury comes from the tuna's food chain.",
+     "Right: deposition, methylation, then biomagnification.",
+     "Most mercury in tuna comes from what they eat."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-13",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are people advised to eat less of large predatory fish such as swordfish and king mackerel than of small fish such as sardines?",
+   "options": [
+    "Large fish have less protein than small fish",
+    "Long-lived top predators hold more mercury",
+    "Small fish are more likely to carry bacteria",
+    "Large fish live in water with more nutrients"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Large predatory fish are high on the food chain and live long, so methylmercury biomagnifies and bioaccumulates to the highest levels in them.",
+    "options": [
+     "The advice is about mercury, not protein.",
+     "Right: both processes peak in them.",
+     "The advice concerns mercury, not bacteria.",
+     "Nutrients are not the issue."
+    ]
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-14",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A pesticide is at 0.02 ppm in zooplankton and increases by a factor of 10 at each step to the next trophic level. Write the setup for its concentration three levels higher, in a fish-eating bird, then the answer.",
+   "why": {
+    "correct": "Three steps of ×10: $0.02\\,\\text{ppm} \\times 10 \\times 10 \\times 10 = 20\\,\\text{ppm}$."
+   },
+   "setup": {
+    "answer": "0.02 * 10 * 10 * 10",
+    "mustUse": [
+     "0.02",
+     "10"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.02 * 10 * 3",
+      "why": "Biomagnification multiplies by 10 at each step: 10 × 10 × 10, not 10 × 3."
+     },
+     {
+      "expr": "0.02 * 10 * 10",
+      "why": "That is two steps. The bird is three levels higher."
+     }
+    ],
+    "then": {
+     "unit": "ppm",
+     "from": {
+      "fn": "biomagnify",
+      "args": [
+       0.02,
+       10,
+       3
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.6,
+       "why": "Multiply by 10 three times (× 1,000), not by 30."
+      },
+      {
+       "value": 2,
+       "why": "2 ppm is two steps up. Three steps gives 20 ppm."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-bioaccumulation-biomagnification-15",
+   "unit": "unit-8",
+   "topic": "bioaccumulation-biomagnification",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain the difference between bioaccumulation and biomagnification in one statement each.",
+   "why": {
+    "correct": "Bioaccumulation happens in one organism over time; biomagnification happens across trophic levels. Mixing them up is a common lost point."
+   },
+   "specific": {
+    "frame": "Bioaccumulation is ___; biomagnification is ___.",
+    "slots": {
+     "bioacc": {
+      "label": "Bioaccumulation",
+      "options": [
+       "the build-up of a substance in one organism over its lifetime",
+       "the rise of a substance from one trophic level to the next",
+       "the breakdown of a substance by bacteria"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes biomagnification.",
+       "2": "Breakdown is the opposite of build-up."
+      }
+     },
+     "biomag": {
+      "label": "Biomagnification",
+      "options": [
+       "the build-up of a substance in one organism over its lifetime",
+       "the rise in concentration at each higher trophic level of a food chain",
+       "the spread of a substance through groundwater"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "That describes bioaccumulation.",
+       "2": "Groundwater movement is not biomagnification."
+      }
+     }
+    },
+    "write": {
+     "context": [
+      "organism",
+      "trophic",
+      "food chain"
+     ]
+    },
+    "model": "Bioaccumulation is the build-up of a substance in one organism over its lifetime; biomagnification is the rise in concentration at each higher trophic level of a food chain."
+   }
+  }
+ ]
+}

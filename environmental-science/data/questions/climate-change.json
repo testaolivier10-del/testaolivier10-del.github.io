@@ -1,0 +1,581 @@
+{
+ "stimuli": {
+  "climate-change-s1": {
+   "kind": "quantitative",
+   "title": "Global temperature differences from a 1951 to 1980 average",
+   "invented": true,
+   "table": {
+    "caption": "Global average surface temperature compared with the 1951 to 1980 average, °C (invented data for practice, shaped like the instrument record)",
+    "cols": [
+     "Year",
+     "Difference from average (°C)"
+    ],
+    "rows": [
+     [
+      "1900",
+      "-0.18"
+     ],
+     [
+      "1920",
+      "-0.27"
+     ],
+     [
+      "1940",
+      "0.12"
+     ],
+     [
+      "1960",
+      "-0.03"
+     ],
+     [
+      "1980",
+      "0.26"
+     ],
+     [
+      "2000",
+      "0.40"
+     ],
+     [
+      "2020",
+      "1.01"
+     ]
+    ]
+   }
+  },
+  "climate-change-s2": {
+   "kind": "visual",
+   "title": "Two positive feedback loops",
+   "figure": "climate-change-feedback"
+  }
+ },
+ "items": [
+  {
+   "id": "env-climate-change-1",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which change would raise global sea level?",
+   "options": [
+    "Melting of land ice on Greenland",
+    "Melting of floating Arctic sea ice",
+    "More snowfall staying on Antarctica",
+    "Thicker sea ice around Antarctica"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Land ice (glaciers and the ice on Greenland and Antarctica) adds water to the ocean when it melts; floating sea ice does not.",
+    "options": [
+     "Right: water from land ice flows into the ocean and adds to its volume.",
+     "Sea ice already floats and displaces its own weight of water, so melting it barely changes sea level.",
+     "Snow piling up on land holds water out of the ocean, so it lowers sea level slightly.",
+     "Floating ice does not change sea level as it grows or shrinks."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-2",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "An ice cube floats in a full glass of water. When it melts, what happens to the water level?",
+   "options": [
+    "It rises and overflows",
+    "It stays about the same",
+    "It falls below the rim",
+    "It rises by the ice’s volume"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "This is why melting sea ice does not raise sea level, while melting land ice does.",
+    "options": [
+     "The ice already pushed aside its weight of water; melting fills that same space.",
+     "Right: floating ice displaces its own weight of water, which is what it adds when it melts.",
+     "The meltwater exactly fills the space the floating ice displaced.",
+     "Only the underwater part of the ice displaced water, and that is what the meltwater fills."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-3",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an example of a positive feedback loop in the climate system?",
+   "options": [
+    "Warming makes plants grow faster, so they take up more CO₂",
+    "Warming raises evaporation, so more rain falls in some places",
+    "Warming melts sea ice, so dark water absorbs more sunlight",
+    "Warming moves species toward the poles"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In a positive feedback loop, the result of a change strengthens the change: melting ice lowers albedo, more heat is absorbed, more ice melts.",
+    "options": [
+     "Faster plant uptake of CO₂ slows warming, which is a negative feedback.",
+     "This is an effect of warming, not a loop that amplifies it.",
+     "Right: less ice means lower albedo, which causes more warming.",
+     "Range shifts are an effect, not a loop that strengthens warming."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-4",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Thawing permafrost is a concern for the climate. Why?",
+   "options": [
+    "Permafrost reflects most sunlight back to space",
+    "Thawed permafrost absorbs carbon from the air",
+    "Permafrost holds most of the world’s fresh water",
+    "Thawed remains decay, releasing CO₂ and methane"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Permafrost holds huge amounts of frozen organic matter. Thawed, it decomposes and releases greenhouse gases that warm the climate further.",
+    "options": [
+     "Permafrost is frozen ground; its color, not its frozen state, sets reflection.",
+     "Thawing releases stored carbon rather than absorbing it.",
+     "Most fresh water is in glaciers and land ice, not permafrost.",
+     "Right: the released gases cause more warming, a positive feedback."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-5",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Describe the trend in the temperature data from 1960 to 2020.",
+   "stimulus": "climate-change-s1",
+   "options": [
+    "It rose by about 1 °C",
+    "It fell by about 1 °C",
+    "It stayed about the same",
+    "It rose, then fell back to 1960 levels"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the endpoints and give the change with its unit: about 1.0 °C warmer.",
+    "options": [
+     "Right: from −0.03 to 1.01 °C, a rise of about 1.04 °C.",
+     "The values increase from 1960 to 2020.",
+     "A change from −0.03 to 1.01 °C is large for a global average.",
+     "The last value, in 2020, is the highest."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-6",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many degrees Celsius did the temperature difference increase from 1980 to 2020?",
+   "stimulus": "climate-change-s1",
+   "why": {
+    "correct": "$1.01\\,°\\text{C} - 0.26\\,°\\text{C} = 0.75\\,°\\text{C}$."
+   },
+   "numeric": {
+    "unit": "°C",
+    "from": {
+     "fn": "sub",
+     "args": [
+      1.01,
+      0.26
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        1.01,
+        0.26
+       ]
+      },
+      "why": "You added the values. The change is the later value minus the earlier one: 1.01 − 0.26."
+     },
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        0.26,
+        1.01
+       ]
+      },
+      "why": "That is a percent change. The question asks for the change in degrees: 1.01 °C − 0.26 °C."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-7",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What does a value of −0.27 °C in 1920 mean?",
+   "stimulus": "climate-change-s1",
+   "options": [
+    "The average temperature was below freezing",
+    "Temperatures fell by 0.27 °C that year",
+    "That year was 0.27 °C cooler than the baseline",
+    "The data for 1920 are missing"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An anomaly is a difference from a baseline average; negative means cooler than that average.",
+    "options": [
+     "The value is a difference from an average, not the temperature itself.",
+     "It compares the year with a fixed baseline, not with the year before.",
+     "Right: the values are differences from a 1951 to 1980 average.",
+     "A negative number is a measured difference, not missing data."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-8",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which statement about the data is supported?",
+   "stimulus": "climate-change-s1",
+   "options": [
+    "Global temperature rose in each 20-year step since 1900",
+    "Temperature will reach 2 °C above the baseline by 2030",
+    "The data show that the Sun caused the warming",
+    "Warming since 1980 is faster than in earlier decades"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Use the data for claims they support: a faster rise after 1980. Do not claim a cause the table does not show.",
+    "options": [
+     "It fell from 1900 to 1920 and from 1940 to 1960.",
+     "The data cannot support that exact prediction.",
+     "The table shows temperature, not its cause.",
+     "Right: 0.75 °C in 40 years after 1980, compared with smaller and uneven changes before."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-9",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the left loop of the figure, what happens after snow and sea ice melt?",
+   "stimulus": "climate-change-s2",
+   "options": [
+    "Darker surfaces lower the albedo",
+    "More sunlight is reflected to space",
+    "Earth cools and the loop stops",
+    "Sea level rises sharply"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ice is bright and reflective; water and land are darker, so albedo falls and more energy is absorbed.",
+    "options": [
+     "Right: dark water and land reflect less sunlight than white ice.",
+     "Less ice means less reflection, not more.",
+     "The loop continues: more sunlight is absorbed.",
+     "Floating sea ice does not raise sea level as it melts."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-10",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are both loops called positive feedback loops?",
+   "stimulus": "climate-change-s2",
+   "options": [
+    "Each one is good for the environment",
+    "Each one makes warming stronger",
+    "Each one slows warming down",
+    "Each one starts with a decrease in CO₂"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Positive feedback amplifies; negative feedback dampens.",
+    "options": [
+     "\"Positive\" describes amplifying a change, not a good outcome.",
+     "Right: \"positive\" means the loop amplifies the change, not that it is good.",
+     "A loop that slows the change is a negative feedback.",
+     "Both start with warming."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-11",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The figure says melting sea ice is part of a feedback loop but does not raise sea level. How can both be true?",
+   "stimulus": "climate-change-s2",
+   "options": [
+    "It raises sea level a lot, so the caption is wrong",
+    "It does not melt in a warming climate",
+    "Its melt adds no water, but it lowers albedo",
+    "It is part of land ice, which adds water"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Sea ice: an albedo feedback, but no sea level rise. Land ice: sea level rise.",
+    "options": [
+     "Floating ice already displaces its weight in water.",
+     "Arctic sea ice has shrunk sharply.",
+     "Right: sea ice matters for heat absorbed, not for ocean volume.",
+     "Sea ice floats on the ocean; land ice sits on land."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-12",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how melting Arctic sea ice can lead to more warming.",
+   "stimulus": "climate-change-s2",
+   "why": {
+    "correct": "Complete the loop: melting, darker surface, lower albedo, more absorption, more warming, more melting."
+   },
+   "specific": {
+    "frame": "As sea ice melts, ___ water is exposed, so albedo ___, more sunlight is ___, and temperatures ___.",
+    "slots": {
+     "water": {
+      "label": "Surface exposed",
+      "options": [
+       "dark",
+       "white",
+       "frozen"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Open ocean is dark; white surfaces are what is lost.",
+       "2": "Melting exposes liquid water."
+      }
+     },
+     "albedo": {
+      "label": "Albedo",
+      "options": [
+       "decreases",
+       "increases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dark water reflects less light, so albedo falls."
+      }
+     },
+     "absorbed": {
+      "label": "Sunlight",
+      "options": [
+       "absorbed",
+       "reflected"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Lower albedo means less is reflected and more is absorbed."
+      }
+     },
+     "temp": {
+      "label": "Temperatures",
+      "options": [
+       "rise",
+       "fall"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More absorbed energy warms the water and air."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "albedo",
+      "sea ice",
+      "sunlight"
+     ]
+    },
+    "model": "As sea ice melts, dark ocean water is exposed, so albedo decreases, more sunlight is absorbed instead of reflected, and temperatures rise, which causes even more ice to melt."
+   }
+  },
+  {
+   "id": "env-climate-change-13",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "multi",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are expected effects of global climate change? Select all that apply.",
+   "options": [
+    "Rising sea levels that flood low-lying coasts",
+    "More frequent and intense heat waves",
+    "Species ranges shifting toward the poles",
+    "A larger hole in the stratospheric ozone layer",
+    "Less sunlight reaching Earth from the Sun",
+    "More acid rain from sulfur dioxide"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Effects include higher temperatures, sea level rise, heat waves, shifts in rainfall and ranges, and more intense storms.",
+    "options": [
+     "Right: melting land ice and warming water raise sea level.",
+     "Right: a warmer average shifts the range of temperatures upward.",
+     "Right: many species move to stay within their range of tolerance.",
+     "Ozone depletion is caused by CFCs, a separate problem.",
+     "Climate change does not change the Sun’s output.",
+     "Acid rain comes from SO₂ and NOx emissions, not warming."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-14",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A coastal town’s tide gauge showed sea level 180 mm higher in 2020 than in 1900. Write the setup for the average rate of rise, in mm per year, then the answer.",
+   "why": {
+    "correct": "$\\frac{180\\,\\text{mm}}{(2020 - 1900)\\,\\text{yr}} = 1.5\\,\\text{mm per year}$."
+   },
+   "setup": {
+    "answer": "180 mm / (2020 - 1900) yr",
+    "mustUse": [
+     "180",
+     "2020",
+     "1900"
+    ],
+    "unit": "mm/yr",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "180 mm / 2020 yr",
+      "why": "Divide by the number of years that passed, 2020 − 1900 = 120 years, not by the year itself."
+     },
+     {
+      "expr": "(2020 - 1900) yr / 180 mm",
+      "why": "This gives years per millimeter. Put the rise on top: mm ÷ years."
+     }
+    ],
+    "then": {
+     "unit": "mm/yr",
+     "from": {
+      "fn": "div",
+      "args": [
+       180,
+       {
+        "fn": "sub",
+        "args": [
+         2020,
+         1900
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 180,
+       "why": "180 mm is the total rise. Divide by 120 years for the rate."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-climate-change-15",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do low-lying island nations such as the Maldives face especially high risk from climate change?",
+   "options": [
+    "They release the most greenhouse gases",
+    "Their sea ice is melting fastest",
+    "Most of their land is close to sea level",
+    "They lie under the ozone hole"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Much of the Maldives is less than 1 meter above sea level, so rising seas and storm surges threaten homes and fresh water.",
+    "options": [
+     "Small island nations release very little.",
+     "Tropical islands do not have sea ice.",
+     "Right: a small rise in sea level floods a large share of their land.",
+     "The ozone hole is over Antarctica."
+    ]
+   }
+  },
+  {
+   "id": "env-climate-change-16",
+   "unit": "unit-9",
+   "topic": "climate-change",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How can warming lead to more severe droughts in some regions and heavier rainfall in others?",
+   "options": [
+    "Warming stops evaporation everywhere",
+    "Warming makes clouds reflect most sunlight",
+    "Warming lowers the amount of water on Earth",
+    "Warmer air evaporates more water and holds more vapor"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A warmer atmosphere speeds up the water cycle: faster drying in some places, heavier downpours in others.",
+    "options": [
+     "Warming increases evaporation.",
+     "Clouds do not reflect all sunlight in a warmer climate.",
+     "The total water stays about the same; where it falls shifts.",
+     "Right: more evaporation dries soils, and wetter air can drop heavier rain."
+    ]
+   }
+  }
+ ]
+}

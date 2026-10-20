@@ -1,0 +1,71 @@
+{
+ "topic": "solar-energy",
+ "hook": "More sunlight reaches Earth in about an hour and a half than all of humanity uses as energy in a year. The challenge is catching it: turning it into electricity with panels, into hot water with roof collectors, or into warmth with nothing more than well-placed windows, and then covering the hours when the sun is down.",
+ "prereq": [
+  {
+   "q": "Why does a place get more solar energy in summer?",
+   "options": [
+    "The sun is higher and days are longer, because of Earth's tilt",
+    "Earth is closer to the sun in summer",
+    "There are fewer clouds everywhere in summer",
+    "The sun gives off more energy in summer"
+   ],
+   "correct": 0,
+   "why": "Axial tilt makes the sun higher and days longer in summer.",
+   "review": "solar-radiation-seasons"
+  },
+  {
+   "q": "Which renewable source is nondepletable?",
+   "options": [
+    "Sunlight",
+    "Firewood",
+    "Corn grown for fuel",
+    "Groundwater"
+   ],
+   "correct": 0,
+   "why": "Using sunlight today does not reduce tomorrow's.",
+   "review": "renewable-nonrenewable"
+  }
+ ],
+ "figure": {
+  "figure": "solar-energy-three-ways",
+  "caption": "Photovoltaic cells turn light into electricity; active solar heating uses collectors and pumps; passive solar design uses the building itself."
+ },
+ "chain": [
+  {
+   "cause": "Sunlight strikes a photovoltaic cell",
+   "effect": "it knocks electrons loose and makes an electric current, with no fuel and no emissions"
+  },
+  {
+   "cause": "Sunlight heats a fluid in a roof collector, or mirrors focus it to make steam",
+   "effect": "the heat warms water or buildings, or drives a turbine"
+  },
+  {
+   "cause": "Windows face the sun and a thick floor absorbs heat",
+   "effect": "a building warms itself in winter with no pumps or fans"
+  },
+  {
+   "cause": "The sun sets or clouds pass",
+   "effect": "output falls, so solar needs storage, a grid or backup"
+  }
+ ],
+ "ideas": [
+  "<b>Photovoltaic cells</b> turn sunlight directly into electricity. <b>Active solar</b> systems use collectors with pumps or fans to move heat, and concentrated solar plants use mirrors to make steam. <b>Passive solar</b> design uses windows, overhangs and thermal mass.",
+  "In the Northern Hemisphere, sun-facing windows and panels face south; in the Southern Hemisphere, north.",
+  "Solar releases no air pollution or carbon dioxide while running, but its <b>intermittency</b> (night, clouds, winter) means it needs storage or backup.",
+  "Drawbacks: large land area for big farms, habitat disturbance in deserts, and mining and manufacturing for panels. Savings = kWh × price per kWh."
+ ],
+ "misconception": {
+  "wrong": "Solar panels heat up in the sun, and that heat is what makes the electricity.",
+  "right": "A photovoltaic cell turns light directly into electricity. Heat actually lowers a PV panel's efficiency a little; it is solar thermal systems that use heat."
+ },
+ "check": [
+  "env-solar-energy-1",
+  "env-solar-energy-2",
+  "env-solar-energy-4",
+  "env-solar-energy-14",
+  "env-solar-energy-15",
+  "env-solar-energy-16"
+ ],
+ "summary": "Solar energy can be turned into electricity by photovoltaic cells or by mirrors that make steam, or used as heat through active collectors or passive building design. It releases no emissions while running and never runs out, but it is intermittent, so it needs storage or backup, and large solar farms use land and can disturb habitat. Savings are kWh times the price per kWh."
+}

@@ -1,0 +1,17 @@
+{
+ "crude-birth-rate": {
+  "def": "Placeholder: the number of births in a year for every 1,000 people in a population."
+ },
+ "crude-death-rate": {
+  "def": "Placeholder: the number of deaths in a year for every 1,000 people in a population."
+ },
+ "natural-increase": {
+  "def": "Placeholder: growth from births minus deaths, in percent: (CBR minus CDR) divided by 10."
+ },
+ "migration": {
+  "def": "Placeholder: people moving into a country (immigration) or out of it (emigration)."
+ },
+ "malthus": {
+  "def": "Placeholder: the idea that a population grows faster than its food supply until famine or disease checks it."
+ }
+}

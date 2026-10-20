@@ -1,0 +1,14 @@
+{
+ "green-revolution": {
+  "def": "The rapid rise in crop yields from about the 1940s to the 1970s, first in Mexico and then in South Asia and beyond, from high-yield grain varieties grown with synthetic fertilizer, irrigation, pesticides and machines."
+ },
+ "monoculture": {
+  "def": "Growing a single crop species, often a single variety, over a large area. It is efficient to plant and harvest but has low genetic diversity, so one pest or disease can spread through the whole crop."
+ },
+ "gmo": {
+  "def": "A genetically modified organism: a plant, animal or microbe whose DNA has been changed in a laboratory, for example by adding a gene from another species, to give it a new trait such as resistance to an insect pest."
+ },
+ "synthetic-fertilizer": {
+  "def": "Fertilizer made in factories, mostly nitrogen (from ammonia made with natural gas), phosphorus and potassium in forms plants can take up at once. It raises yields quickly, but nutrients the crop does not use can run off or leach into water."
+ }
+}

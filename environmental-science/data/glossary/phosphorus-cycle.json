@@ -1,0 +1,11 @@
+{
+ "phosphorus-cycle": {
+  "def": "The movement of phosphorus among rock, soil, water, sediments and living things. It has no significant gas phase, so it is slow; weathering, uptake, decomposition and sedimentation move it."
+ },
+ "weathering": {
+  "def": "The breakdown of rock into smaller pieces and dissolved minerals by water, ice, temperature changes, chemical reactions and living things. It releases phosphate and other nutrients into soil."
+ },
+ "phosphate": {
+  "def": "The form of phosphorus (PO4 with a negative charge) that plants take up and that makes up DNA, ATP, cell membranes, and bones and teeth. It clings to soil particles."
+ }
+}

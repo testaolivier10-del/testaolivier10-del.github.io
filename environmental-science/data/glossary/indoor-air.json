@@ -1,0 +1,17 @@
+{
+ "indoor-air-pollutant": {
+  "def": "A pollutant in the air inside a building, such as radon, formaldehyde, carbon monoxide, asbestos fibers or smoke from indoor stoves. Tight, poorly ventilated buildings let them build up."
+ },
+ "radon": {
+  "def": "A colorless, odorless radioactive gas formed when uranium in rock and soil decays. It seeps into buildings through foundation cracks and is a leading cause of lung cancer."
+ },
+ "asbestos": {
+  "def": "A fibrous mineral once used in insulation, tiles and pipe wrap. When it is damaged, its fibers get into the air and can cause lung disease and cancer if breathed in."
+ },
+ "formaldehyde": {
+  "def": "A VOC given off by pressed-wood furniture, cabinets, glues and some fabrics, especially when new. It irritates the eyes, nose and throat and can cause cancer."
+ },
+ "sick-building": {
+  "def": "Sick building syndrome: headaches, eye irritation, coughing and tiredness that people feel in a particular building and that ease when they leave, usually from VOCs and poor ventilation."
+ }
+}

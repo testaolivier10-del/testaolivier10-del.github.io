@@ -1,0 +1,72 @@
+{
+ "topic": "lethal-dose-50",
+ "hook": "A farm store sells two rat poisons in nearly identical bags. One label says DANGER and the other says CAUTION. The difference comes from one number measured in the lab: how many milligrams of each product, per kilogram of animal, it takes to kill half of a test group. That number is the LD50, and a smaller one means a more dangerous chemical.",
+ "prereq": [
+  {
+   "q": "A substance builds up in one fish over its lifetime because the fish takes it in faster than it gets rid of it. What is this called?",
+   "options": [
+    "Bioaccumulation",
+    "Biomagnification",
+    "Eutrophication",
+    "Leaching"
+   ],
+   "correct": 0,
+   "why": "Buildup inside one organism over time is bioaccumulation; biomagnification is the rise in concentration up a food chain.",
+   "review": "bioaccumulation-biomagnification"
+  },
+  {
+   "q": "How many milligrams are in 2.5 grams?",
+   "options": [
+    "2,500 mg",
+    "250 mg",
+    "0.0025 mg",
+    "25 mg"
+   ],
+   "correct": 0,
+   "why": "There are 1,000 mg in a gram: $2.5\\,\\text{g} \\times \\frac{1{,}000\\,\\text{mg}}{1\\,\\text{g}} = 2{,}500\\,\\text{mg}$.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "lethal-dose-50-curve",
+  "caption": "Test rats killed at each dose of a pesticide (invented data). Go across from 50% to the line, then down: the LD50 is 40 mg/kg."
+ },
+ "chain": [
+  {
+   "cause": "Researchers give groups of test animals larger and larger doses (mg per kg of body mass)",
+   "effect": "a larger percent of each group dies"
+  },
+  {
+   "cause": "They plot percent killed against dose and read across from 50%",
+   "effect": "the dose under that point is the LD50"
+  },
+  {
+   "cause": "A substance with a lower LD50 kills half the animals at a smaller dose",
+   "effect": "it is more toxic and gets a stronger warning label"
+  },
+  {
+   "cause": "Multiplying the LD50 by a body mass, with kilograms cancelling",
+   "effect": "gives the whole-body dose in milligrams for an animal of that size"
+  }
+ ],
+ "ideas": [
+  "<b>Toxicity</b> is how harmful a substance is. The <b>dose</b> is how much enters the body, usually in milligrams per kilogram of body mass (mg/kg).",
+  "<b>LD50</b> is the dose that kills 50% of a test population. A <b>lower</b> LD50 means a <b>more toxic</b> substance.",
+  "Whole-body dose: $\\text{LD}_{50} \\times \\text{body mass}$, for example $40\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.25\\,\\text{kg} = 10\\,\\text{mg}$. Write the units so kilograms visibly cancel.",
+  "LD50s come from animal tests, so they only estimate the effect on people, and they say nothing about harm that does not kill."
+ ],
+ "misconception": {
+  "wrong": "A chemical with an LD50 of 5,000 mg/kg is more toxic than one with an LD50 of 5 mg/kg, because 5,000 is bigger.",
+  "right": "It is the reverse. The LD50 is the dose needed to kill half the animals, so the chemical that needs only 5 mg/kg is 1,000 times as toxic."
+ },
+ "check": [
+  "env-lethal-dose-50-1",
+  "env-lethal-dose-50-2",
+  "env-lethal-dose-50-3",
+  "env-lethal-dose-50-4",
+  "env-lethal-dose-50-12",
+  "env-lethal-dose-50-13",
+  "env-lethal-dose-50-14"
+ ],
+ "summary": "LD50 is the dose, in milligrams per kilogram of body mass, that kills half of a test population; it is read off a graph of percent killed against dose at the 50% line. The lower the LD50, the more toxic the substance. Multiply the LD50 by a body mass to get a whole-body dose, writing the units so kilograms cancel, and convert milligrams to grams when asked."
+}

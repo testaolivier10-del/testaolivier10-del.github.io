@@ -1,0 +1,12 @@
+{
+ "irrigation-methods": {
+  "file": "figures/irrigation-methods.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Paired bar chart, invented data for practice. For one season on one hectare of the same crop, water applied and water taken up by the crop, in cubic meters per hectare: flood 10,000 applied and 4,800 used; furrow 7,500 and 4,800; spray 6,000 and 4,800; drip 5,000 and 4,600. The crop uses about the same water each time, but flood and furrow apply far more, so more is lost to evaporation, runoff and deep seepage."
+ }
+}

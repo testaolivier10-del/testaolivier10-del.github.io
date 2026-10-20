@@ -1,0 +1,12 @@
+{
+ "population-transition-model": {
+  "file": "figures/population-transition-model.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Demographic transition model in four stages. Stage 1 preindustrial: crude birth and death rates both near 40 per 1,000, little growth. Stage 2 transitional: the death rate falls to about 12 while the birth rate stays near 40, so the gap (natural increase, shaded) is widest. Stage 3 industrial: the birth rate falls from about 32 to 12 and the gap narrows. Stage 4 postindustrial: both rates low, about 11 and 10, little growth."
+ }
+}

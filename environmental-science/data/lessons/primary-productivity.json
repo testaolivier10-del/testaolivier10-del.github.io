@@ -1,0 +1,80 @@
+{
+ "topic": "primary-productivity",
+ "hook": "A cornfield and a rainforest both turn sunlight into plant matter, but at very different rates, and only part of what they capture is ever available to animals. Plants spend much of their energy just staying alive. What is left over, net primary productivity, is the food supply for every animal in the ecosystem.",
+ "prereq": [
+  {
+   "q": "Which process releases CO2 as living things break down sugar for energy?",
+   "options": [
+    "Cellular respiration",
+    "Photosynthesis",
+    "Sedimentation",
+    "Nitrogen fixation"
+   ],
+   "correct": 0,
+   "why": "Respiration breaks down sugar and releases CO2.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "A rate in \"kcal per m² per year\" means...",
+   "options": [
+    "energy divided by area and by time",
+    "energy multiplied by area",
+    "area divided by energy",
+    "time divided by energy"
+   ],
+   "correct": 0,
+   "why": "Each \"per\" divides.",
+   "review": "math-rates"
+  },
+  {
+   "q": "What is a limiting nutrient?",
+   "options": [
+    "The nutrient in shortest supply compared with need",
+    "The nutrient used the most",
+    "A poison",
+    "A gas"
+   ],
+   "correct": 0,
+   "why": "Adding it raises growth.",
+   "review": "nitrogen-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "primary-productivity-gpp-npp",
+  "caption": "Gross primary productivity split into respiration and net primary productivity."
+ },
+ "chain": [
+  {
+   "cause": "Producers capture light energy by photosynthesis",
+   "effect": "that total rate is gross primary productivity (GPP)"
+  },
+  {
+   "cause": "Producers use part of it for their own cellular respiration",
+   "effect": "that energy is lost as heat"
+  },
+  {
+   "cause": "What is left is net primary productivity: NPP = GPP - R",
+   "effect": "NPP is the energy available to the animals that eat plants"
+  }
+ ],
+ "ideas": [
+  "<b>Producers</b> (autotrophs) make their own food by photosynthesis.",
+  "<b>Primary productivity</b> is the rate producers capture energy, in units such as kcal/m²/yr or g/m²/yr.",
+  "$\\text{NPP} = \\text{GPP} - \\text{R}$, so $\\text{GPP} = \\text{NPP} + \\text{R}$.",
+  "Productivity is highest where light, water, warmth and nutrients are all plentiful (rainforests, wetlands, estuaries, reefs) and lowest in deserts, tundra and the open ocean."
+ ],
+ "misconception": {
+  "wrong": "NPP is the energy plants capture, and GPP is what animals eat.",
+  "right": "GPP is the total captured (gross, like a paycheck before costs). NPP is what is left after the plants’ own respiration (net, like take-home pay); animals can eat only from NPP."
+ },
+ "check": [
+  "env-primary-productivity-3",
+  "env-primary-productivity-4",
+  "env-primary-productivity-9",
+  "env-primary-productivity-10",
+  "env-primary-productivity-11",
+  "env-primary-productivity-12",
+  "env-primary-productivity-13"
+ ],
+ "summary": "Primary productivity is the rate at which producers capture energy by photosynthesis. Gross primary productivity (GPP) is the total; producers use part of it in respiration (R); the rest, net primary productivity, NPP = GPP - R, becomes plant matter that animals can eat. Productivity is highest where light, water, warmth and nutrients are all plentiful."
+}

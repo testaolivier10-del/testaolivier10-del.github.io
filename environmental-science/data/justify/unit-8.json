@@ -1,0 +1,193 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-8",
+   "id": "u8-eutrophication-chain",
+   "topic": "eutrophication",
+   "practice": "1.B",
+   "skill": "chain",
+   "title": "From fertilizer to a dead zone",
+   "prompt": "<b>Explain</b> how fertilizer running off farms can lead to fish dying in a lake.",
+   "checklist": [
+    "Nitrate and phosphate run off fields into the lake",
+    "The nutrients cause an algal bloom",
+    "The algae die, and decomposers break them down, using up dissolved oxygen",
+    "Dissolved oxygen falls too low (hypoxia), so fish die"
+   ],
+   "earns": {
+    "answer": "Rain washes nitrate and phosphate from fertilizer into the lake. These nutrients cause an algal bloom. When the algae die, bacteria decompose them and use up dissolved oxygen in the water. Oxygen falls so low that fish cannot breathe, and they die.",
+    "why": "Every link is there, in order, with decomposition as the step that uses the oxygen."
+   },
+   "misses": {
+    "answer": "Fertilizer gets in the lake and makes algae grow, which kills the fish.",
+    "why": "It skips the key links: algae die, decomposers use up oxygen, and low oxygen kills the fish."
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-thermal-hypothesis",
+   "topic": "thermal-pollution",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about warm water and oxygen",
+   "context": "<p>A class heats samples of river water to 10, 15, 20, 25 and 30 °C and measures the dissolved oxygen in each (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this experiment.",
+   "checklist": [
+    "Names the change: water temperature",
+    "Names the measure: dissolved oxygen",
+    "Gives a direction for the result: an increase or a decrease",
+    "Gives a reason: warmer water holds less dissolved gas"
+   ],
+   "earns": {
+    "answer": "If the water temperature is increased, then the dissolved oxygen in the water will decrease, because warm water can hold less dissolved gas than cold water.",
+    "why": "It names the change, the measured variable, a direction and the reason."
+   },
+   "misses": {
+    "answer": "If the river water is warmer, the oxygen in it will be different.",
+    "why": "\"Different\" gives no direction, and there is no reason."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "the water temperature is increased",
+       "more river water is collected",
+       "the water is stirred"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Volume is not the variable.",
+       "2": "Stirring is not what changes between samples."
+      }
+     },
+     "direction": {
+      "label": "then ...",
+      "options": [
+       "dissolved oxygen will decrease",
+       "dissolved oxygen will increase",
+       "dissolved oxygen will change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warm water holds less dissolved gas, so oxygen should fall.",
+       "2": "\"Change\" gives no direction; a hypothesis says which way."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "warm water holds less dissolved gas",
+       "heat adds chemicals to the water",
+       "fish use more oxygen"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Thermal pollution is heat, not chemicals.",
+       "2": "No fish are in the samples."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-biomagnification-trend",
+   "topic": "bioaccumulation-biomagnification",
+   "practice": "5.C",
+   "skill": "trend",
+   "title": "Mercury up a food chain",
+   "context": "<p>Mercury in a lake food chain (invented data for practice): water 0.00002 ppm; plankton 0.002 ppm; small fish 0.02 ppm; pike 0.2 ppm.</p>",
+   "prompt": "<b>Describe</b> the pattern and <b>explain</b> it.",
+   "checklist": [
+    "Describes the pattern: the concentration rises 10 times at each level from plankton to pike",
+    "Calculates the overall rise: pike carry 100 times the plankton's concentration",
+    "Explains: mercury is stored in tissue and not excreted, and each predator eats many prey, so it builds up at each level (biomagnification)"
+   ],
+   "earns": {
+    "answer": "Mercury rises about 10 times at each step up the chain: 0.002 ppm in plankton, 0.02 in small fish and 0.2 in pike, which is 0.2 / 0.002 = 100 times the plankton's concentration. Mercury is stored in fat and muscle and is not excreted, and each predator eats many prey over its life, so the mercury from all of them builds up. That is biomagnification.",
+    "why": "It gives the factor at each level, the overall factor and the mechanism."
+   },
+   "misses": {
+    "answer": "The pike has the most mercury because it is the biggest fish.",
+    "why": "Size is not the reason; it gives no numbers and never explains why the concentration multiplies up the chain."
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-compost-solution",
+   "topic": "waste-reduction",
+   "practice": "7.E",
+   "skill": "solution",
+   "title": "Cutting a town's landfill waste",
+   "context": "<p>A town's landfill will be full in five years. A third of the town's waste is food and yard waste. The town wants a solution other than building a new landfill.</p>",
+   "prompt": "<b>Propose</b> a solution that fits these constraints and <b>explain</b> how it works.",
+   "checklist": [
+    "Proposes a solution other than a new landfill, aimed at the food and yard waste (for example, curbside composting)",
+    "Explains how it works: diverts the waste, which decomposes into compost",
+    "Ties it to the five-year limit or the share of the waste"
+   ],
+   "earns": {
+    "answer": "Start curbside collection of food and yard waste and send it to a compost site. Decomposers turn it into compost, so about a third of the town's waste no longer goes to the landfill, which makes the landfill last much longer.",
+    "why": "It fits the constraint, targets the third of the waste, and explains how it is diverted."
+   },
+   "misses": {
+    "answer": "Tell the people in the town to recycle more.",
+    "why": "It is vague, and recycling does not deal with food and yard waste, the third named."
+   },
+   "specific": {
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "curbside collection of food and yard waste for composting",
+       "build a new landfill",
+       "burn the waste in an open pit"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The town wants something other than a new landfill.",
+       "2": "Open burning is not an accepted way to reduce waste."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "decomposers turn the waste into compost, so it never reaches the landfill",
+       "it makes the waste weigh more",
+       "it hides the waste from view"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Composting reduces, not increases, the mass sent away.",
+       "2": "Hiding waste is not reducing it."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-8",
+   "id": "u8-ld50-variables",
+   "topic": "dose-response-curve",
+   "practice": "4.B",
+   "skill": "variables",
+   "title": "The variables in a toxicity test",
+   "context": "<p>Researchers give groups of 20 water fleas different concentrations of a pesticide (0, 1, 2, 4 and 8 mg/L) and count how many die in 48 hours (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the independent and dependent variables and <b>describe</b> the purpose of the 0 mg/L group.",
+   "checklist": [
+    "Independent variable: pesticide concentration",
+    "Dependent variable: the number (or percent) of water fleas that die",
+    "The 0 mg/L group is the control: a baseline to compare against, showing deaths from other causes"
+   ],
+   "earns": {
+    "answer": "The independent variable is the pesticide concentration, from 0 to 8 mg/L. The dependent variable is the number of water fleas that die in 48 hours. The 0 mg/L group is the control: it shows how many die without pesticide, so the deaths caused by the pesticide can be told apart from deaths from other causes.",
+    "why": "Both variables, and the control with its purpose."
+   },
+   "misses": {
+    "answer": "The independent variable is the water fleas, and the 0 group is to compare.",
+    "why": "Water fleas are the organisms tested, not a variable, and \"to compare\" does not say compare what."
+   }
+  }
+ ]
+}

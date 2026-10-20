@@ -1,0 +1,71 @@
+{
+ "topic": "survivorship-curves",
+ "hook": "Follow 1,000 newborn humans in a wealthy country, 1,000 songbirds that just hatched, and 1,000 oysters that just settled on a reef. Count how many are still alive at each age. The humans mostly make it to old age. The songbirds die at a steady pace all through life. Nearly all the oysters are gone within weeks. Those three patterns are the three survivorship curves.",
+ "prereq": [
+  {
+   "q": "Which traits describe a K-selected species?",
+   "options": [
+    "Few offspring, much parental care, long life",
+    "Many offspring, no care, short life",
+    "Many offspring, much care, short life",
+    "Few offspring, no care, short life"
+   ],
+   "correct": 0,
+   "why": "K-selected species invest a lot in a few offspring and live long.",
+   "review": "r-k-selection"
+  },
+  {
+   "q": "What does biotic potential describe?",
+   "options": [
+    "The fastest a population could grow with unlimited resources",
+    "How long individuals live",
+    "The number of species in an area",
+    "How evenly species are spread"
+   ],
+   "correct": 0,
+   "why": "Biotic potential is the fastest possible population growth.",
+   "review": "r-k-selection"
+  }
+ ],
+ "figure": {
+  "figure": "survivorship-curves-types",
+  "caption": "Type I, II and III survivorship curves, each starting with 1,000 newborns, with survivors on a log scale."
+ },
+ "chain": [
+  {
+   "cause": "Scientists follow a group of individuals born at the same time and count survivors at each age",
+   "effect": "they get a survivorship curve: survivors (often on a log scale) plotted against age"
+  },
+  {
+   "cause": "Most deaths happen late in life, as with parental care and good protection when young",
+   "effect": "the curve stays high and then drops steeply at old age: Type I"
+  },
+  {
+   "cause": "Deaths happen at a steady rate at every age",
+   "effect": "the curve falls as a straight line on a log scale: Type II"
+  },
+  {
+   "cause": "Most deaths happen very early, as with many unprotected offspring",
+   "effect": "the curve drops steeply at first, then levels off for the few survivors: Type III"
+  }
+ ],
+ "ideas": [
+  "A <b>survivorship curve</b> shows how many individuals of a group born at the same time are still alive at each age. Survivors are usually plotted on a log scale, starting from 1,000.",
+  "<b>Type I</b>: high survival through most of life, with deaths concentrated in old age. Humans in wealthy countries, elephants, many large mammals.",
+  "<b>Type II</b>: a steady chance of dying at every age, so the curve is a straight line on a log scale. Many songbirds, lizards, some rodents.",
+  "<b>Type III</b>: very many deaths among the young, then high survival for the few that make it. Oysters, most fish, many insects and plants."
+ ],
+ "misconception": {
+  "wrong": "Survivorship curve and r- or K-selection are the same idea, so a Type III curve means the species is r-selected.",
+  "right": "They are related but different. A survivorship curve shows when individuals die; r- and K-selection describe how they reproduce. K-selected species usually have Type I or II curves and r-selected species Type II or III, but the curve alone does not tell you the strategy."
+ },
+ "check": [
+  "env-survivorship-curves-1",
+  "env-survivorship-curves-2",
+  "env-survivorship-curves-3",
+  "env-survivorship-curves-4",
+  "env-survivorship-curves-7",
+  "env-survivorship-curves-8"
+ ],
+ "summary": "A survivorship curve plots the number of survivors from a group born at the same time against age. Type I curves stay high and drop in old age, Type II curves fall steadily (a straight line on a log scale), and Type III curves drop steeply early in life. Survivorship describes when deaths happen; it is related to, but not the same as, r- and K-selection, which describe how a species reproduces."
+}

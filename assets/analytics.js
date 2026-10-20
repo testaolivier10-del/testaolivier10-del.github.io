@@ -45,6 +45,7 @@
     { key: 'apphys', dir: 'physics' },
     { key: 'apcalc', dir: 'calculus' },
     { key: 'apstat', dir: 'statistics' },
+    { key: 'apenv', dir: 'environmental-science' },
   ];
   // courses:end
 

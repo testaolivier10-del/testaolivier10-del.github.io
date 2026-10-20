@@ -179,7 +179,13 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('statistics'), 'apstat');
   assert.equal(A.parseCourse('stats'), 'apstat');
   assert.equal(A.urlKey('apstat'), 'statistics');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat']);
+  // AP® Environmental Science (beta since its launch): key apenv, named by its folder, aliases apes and envsci.
+  assert.equal(A.urlKey('apenv'), 'environmental-science');
+  assert.equal(A.parseCourse('environmental-science'), 'apenv');
+  assert.equal(A.parseCourse('apes'), 'apenv');
+  assert.equal(A.parseCourse('envsci'), 'apenv');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv']);
+  eq(A.scopeKeys('apenv'), ['apenv']);
   eq(A.scopeKeys('ochem'), ['ochem']);
   eq(A.scopeKeys('apphys'), ['apphys']);
   eq(A.scopeKeys('apcalc'), ['apcalc']);

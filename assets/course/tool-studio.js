@@ -692,9 +692,14 @@
       var r = target.getBoundingClientRect();
       if(!r.width && !r.height){ ring.style.display = tip.style.display = 'none'; return; }
       ring.style.display = tip.style.display = '';
-      var sx = window.scrollX, sy = window.scrollY, pad = 4;
-      ring.style.left = (r.left + sx - pad) + 'px'; ring.style.top = (r.top + sy - pad) + 'px';
-      ring.style.width = (r.width + pad * 2) + 'px'; ring.style.height = (r.height + pad * 2) + 'px';
+      var sx = window.scrollX, sy = window.scrollY, pad = 4, vw0 = document.documentElement.clientWidth;
+      // The ring never reaches past the viewport's sides: a full-width target
+      // (a row, a figure) would otherwise push it out by the padding and make
+      // the page scroll sideways on a phone. Its outer glow is a shadow, which
+      // never adds scroll.
+      var rl = Math.max(0, r.left - pad), rr2 = Math.min(vw0, r.right + pad);
+      ring.style.left = (rl + sx) + 'px'; ring.style.top = (r.top + sy - pad) + 'px';
+      ring.style.width = Math.max(0, rr2 - rl) + 'px'; ring.style.height = (r.height + pad * 2) + 'px';
       var round = Math.min(r.width, r.height) / 2 + pad;
       ring.style.borderRadius = (o.round != null ? o.round : round) + 'px';
       var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth, vh = window.innerHeight;
@@ -713,6 +718,8 @@
       // A large text box: sit inside it, top left, so the tip never covers the
       // question written just above it (justification trainers).
       if(o.inside && r.height > th + 40){ left = Math.max(8, r.left + 14); best = { top: Math.max(8, r.top + 14), below: true, inside: true }; }
+      // Wider than the room left: pull it back so its right edge stays inside.
+      if(left + tw > vw - 8) left = Math.max(8, vw - 8 - tw);
       tip.style.left = (left + sx) + 'px';
       tip.style.top = (best.top + sy) + 'px';
       tip.classList.toggle('is-below', best.below);

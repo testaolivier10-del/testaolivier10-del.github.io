@@ -1,0 +1,72 @@
+{
+ "topic": "ocean-acidification",
+ "hook": "Around 2007, oyster hatcheries in Oregon and Washington began losing most of their baby oysters. The larvae could not build their first shells. The culprit was not disease or pollution from a pipe, but seawater that had absorbed so much carbon dioxide from the air that it was eating away at shell-building.",
+ "prereq": [
+  {
+   "q": "What happens to the pH of a solution when its hydrogen ion concentration increases?",
+   "options": [
+    "pH decreases",
+    "pH increases",
+    "pH does not change",
+    "pH becomes exactly 7"
+   ],
+   "correct": 0,
+   "why": "More hydrogen ions means a lower pH, more acidic.",
+   "review": "soil-properties"
+  },
+  {
+   "q": "How did atmospheric CO₂ change at Mauna Loa from 1960 to 2023?",
+   "options": [
+    "It rose from about 317 to 421 ppm",
+    "It fell from 421 to 317 ppm",
+    "It stayed near 280 ppm",
+    "It rose and then fell"
+   ],
+   "correct": 0,
+   "why": "The Keeling curve rose every year.",
+   "review": "greenhouse-gas-increases"
+  }
+ ],
+ "figure": {
+  "figure": "ocean-acidification-carbonate",
+  "caption": "How dissolved CO₂ lowers pH and takes carbonate ions away from shell-builders, with average surface ocean pH past, present and projected."
+ },
+ "chain": [
+  {
+   "cause": "Burning fossil fuels raises CO₂ in the air",
+   "effect": "the ocean absorbs about a quarter of it"
+  },
+  {
+   "cause": "Dissolved CO₂ reacts with water to form carbonic acid",
+   "effect": "it releases hydrogen ions, so pH falls"
+  },
+  {
+   "cause": "Hydrogen ions combine with carbonate ions",
+   "effect": "less carbonate is left for building calcium carbonate"
+  },
+  {
+   "cause": "Shell-builders such as corals, oysters and some plankton struggle",
+   "effect": "reefs weaken and food webs that depend on them suffer"
+  }
+ ],
+ "ideas": [
+  "<b>Ocean acidification</b>: seawater pH falls as it absorbs CO₂. Average surface pH has dropped from about 8.2 to about 8.1 since the 1700s and could reach about 7.8 by 2100 if emissions stay high.",
+  "Chemistry: $\\text{CO}_2 + \\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{CO}_3$ (<b>carbonic acid</b>) $\\rightarrow \\text{H}^+ + \\text{HCO}_3^-$; then $\\text{H}^+ + \\text{CO}_3^{2-} \\rightarrow \\text{HCO}_3^-$ removes <b>carbonate</b>.",
+  "The pH scale is logarithmic: hydrogen ions multiply by $10^{\\text{drop}}$. A drop of 0.1 is about 26% more H⁺; a drop of 0.3 is about twice as much.",
+  "The ocean is still basic (pH above 7); \"acidification\" names the direction of change."
+ ],
+ "misconception": {
+  "wrong": "Ocean acidification is caused by acid rain, and it means the ocean is now an acid.",
+  "right": "It is caused by CO₂ dissolving straight from the air, not by the SO₂ and NOx of acid rain. Seawater is still basic, around pH 8.1; it is becoming less basic."
+ },
+ "check": [
+  "env-ocean-acidification-2",
+  "env-ocean-acidification-3",
+  "env-ocean-acidification-5",
+  "env-ocean-acidification-6",
+  "env-ocean-acidification-7",
+  "env-ocean-acidification-8",
+  "env-ocean-acidification-14"
+ ],
+ "summary": "The ocean absorbs part of the CO₂ people add to the air. Dissolved CO₂ forms carbonic acid, which releases hydrogen ions and lowers pH; those ions also bind carbonate, so corals, oysters and some plankton struggle to build calcium carbonate. pH has fallen from about 8.2 to 8.1; because the scale is logarithmic, that is about 26% more hydrogen ions. Cutting CO₂ emissions is the fix."
+}

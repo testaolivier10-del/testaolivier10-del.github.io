@@ -1,0 +1,79 @@
+/* Energy chain (environmental-science/assets/tools/energy-chain.js). OWNED BY THIS TOOL ONLY (builder T3).
+   Useful energy is the course olive band; waste heat is warm orange-red,
+   everywhere (the flow, the drills, the bars). Light and dark from tokens. */
+.ech-svg,.ech-qfig{--ech-band:var(--cink);--ech-heat:#E0663A;--ech-heat-b:#F2B48F;--ech-metal:#A9B3B8;--ech-metal-e:#5F6B71;--ech-coal:#2F2F2F;--ech-gas:#2F80ED;--ech-nuc:#7B61FF;--ech-water:#4FA3D9;--ech-panel:#24476B;--ech-clean:#2E9E6B;--ech-fossil:#B5552B;}
+:root[data-theme="dark"] .ech-svg,:root[data-theme="dark"] .ech-qfig{--ech-heat:#F08A5D;--ech-heat-b:#8A4A30;--ech-metal:#6E787D;--ech-metal-e:#B4BEC3;--ech-coal:#C9C9C9;--ech-gas:#7DB2F5;--ech-nuc:#AFA0FF;--ech-water:#7CC0EA;--ech-panel:#5B86B3;--ech-clean:#5CCB98;--ech-fossil:#E58A5F;}
+.ech-card{display:grid;gap:14px;}
+.ech-fig{position:relative;min-height:300px;height:min(64vh,520px);}
+.ls-root .ech-fig{flex:1 1 auto;height:auto;min-height:270px;}
+.ech-fig .ech-svg{position:absolute;inset:0;width:100%;height:100%;}
+.ech-svg{display:block;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.ech-qfig{margin:0;}
+.ech-qfig .ech-svg{width:100%;height:auto;}
+.ech-ctl{display:flex;flex-direction:column;gap:10px;}
+.ech-views{width:100%;}
+.ech-views button{flex:1;}
+.ech-srcs[hidden],.ech-meas[hidden]{display:none;}
+.ech-list{margin:6px 0 0;padding-left:20px;font-weight:700;}
+.ech-homelist{margin:6px 0 0;padding-left:20px;font:700 14px/1.6 var(--font-ui);}
+/* text */
+.ech-t{fill:var(--ink);font-size:12.5px;font-weight:700;}
+.ech-s{font-size:11.5px;}
+.ech-b{font-weight:900;}
+.ech-muted{fill:var(--muted);}
+.ech-name{font-size:12.5px;font-weight:900;}
+.ech-svg .ech-ic{pointer-events:none;}
+.ech-eff{fill:var(--cink);font-size:13px;font-weight:900;font-variant-numeric:tabular-nums;}
+.ech-ev{font-size:13px;font-weight:900;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ech-wv{fill:var(--ech-heat);font-size:11.5px;font-weight:900;font-variant-numeric:tabular-nums;}
+.ech-c-heat{fill:var(--ech-heat);font-weight:900;}
+.ech-c-warn{fill:#B5552B;}
+:root[data-theme="dark"] .ech-c-warn{fill:#F0A07A;}
+.ech-on-band{fill:var(--white);stroke:none;}
+.ech-on-heat{fill:#3A1A0C;}
+.ech-rown{font-weight:800;}
+/* the flow */
+.ech-band{fill:var(--ech-band);opacity:.92;}
+.ech-waste{fill:var(--ech-heat);opacity:.55;}
+.ech-waste.is-sel{opacity:.95;}
+.ech-wastehead{fill:var(--ech-heat);opacity:.7;}
+.ech-heat-a{stop-color:var(--ech-heat);} .ech-heat-b{stop-color:var(--ech-heat-b);}
+.ech-node .ech-hit{fill:transparent;stroke:none;}
+.ech-node.is-tap{cursor:pointer;}
+.ech-node.is-tap:hover .ech-hit{fill:var(--ctint);}
+.ech-node.is-sel .ech-hit{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.ech-node:focus{outline:none;}
+.ech-node:focus-visible .ech-hit{stroke:var(--cink);stroke-width:3;}
+/* the icons */
+.ech-ic-coal path{fill:var(--ech-coal);}
+.ech-ic-gas path{fill:var(--ech-gas);} .ech-ic-gas .ech-ic-in{fill:#9CC7FF;}
+.ech-ic-nuc circle{fill:var(--ech-nuc);} .ech-ic-nuc .ech-orb{fill:none;stroke:var(--ech-nuc);stroke-width:1.6;}
+.ech-dam{fill:var(--ech-metal);stroke:var(--ech-metal-e);stroke-width:1;} .ech-water{fill:var(--ech-water);}
+.ech-mast{fill:var(--ech-metal);} .ech-blade{fill:var(--white);stroke:var(--ech-metal-e);stroke-width:1;} .ech-ic-wind circle{fill:var(--ech-metal-e);}
+.ech-panel{fill:var(--ech-panel);} .ech-grid-l{stroke:#9EC3E6;stroke-width:.9;}
+.ech-metal{fill:var(--ech-metal);stroke:var(--ech-metal-e);stroke-width:1.1;}
+.ech-flame{fill:#F28C28;}
+.ech-stack{fill:none;stroke:var(--ech-metal-e);stroke-width:1.4;}
+.ech-rod{fill:var(--ech-nuc);}
+.ech-pipe{fill:none;stroke:var(--ech-water);stroke-width:5;stroke-linecap:round;}
+.ech-vane{fill:none;stroke:var(--ech-metal-e);stroke-width:1.6;}
+.ech-hub{fill:var(--ech-metal-e);}
+.ech-wave{fill:none;stroke:var(--cink);stroke-width:1.8;}
+.ech-bolt{fill:#F2C14E;stroke:#8A5A00;stroke-width:.8;}
+.ech-tower{fill:none;stroke:var(--ech-metal-e);stroke-width:1.6;stroke-linejoin:round;}
+.ech-house{fill:var(--ctint);stroke:var(--cink);stroke-width:1.8;stroke-linejoin:round;}
+.ech-window{fill:#F2C14E;}
+/* compare */
+.ech-gl{stroke:var(--line);stroke-width:1;}
+.ech-bar-fossil{fill:var(--ech-fossil);}
+.ech-bar-clean{fill:var(--ech-clean);}
+.ech-row.is-sel .ech-rown{fill:var(--cink);}
+.ech-row.is-sel rect{stroke:var(--cink);stroke-width:2;}
+.ech-bar.is-sel{stroke:var(--ink);stroke-width:2;}
+.ech-day{fill:var(--paper);stroke:var(--line);stroke-width:1;}
+.ech-fig .ech-ev,.ech-fig .ech-wv,.ech-fig .ech-wastehead{pointer-events:none;}
+/* chip rows wrap from their left edge (no sideways scroll) */
+.ech-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
+.ech-chips[hidden]{display:none;}
+/* the first-run hint points here: a small spot near the top of the picture */
+.ech-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}

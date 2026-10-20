@@ -1,0 +1,26 @@
+{
+ "hydrologic-cycle": {
+  "def": "The water cycle: the movement of water among the ocean, atmosphere, land, ice, living things and groundwater by evaporation, transpiration, condensation, precipitation, runoff and infiltration."
+ },
+ "evaporation": {
+  "def": "The change of liquid water into water vapor, powered by the sun’s energy; most of it happens at the ocean surface."
+ },
+ "transpiration": {
+  "def": "The release of water vapor from plants, mostly through small openings in their leaves. Evaporation and transpiration together are called evapotranspiration."
+ },
+ "condensation": {
+  "def": "The change of water vapor into liquid droplets as air cools, which forms clouds, fog and dew."
+ },
+ "runoff": {
+  "def": "Water from rain or snowmelt that flows over the land surface into streams, rivers and lakes instead of soaking into the ground."
+ },
+ "infiltration": {
+  "def": "The soaking of water from the land surface down into the soil and rock, which refills groundwater."
+ },
+ "groundwater": {
+  "def": "Water that fills the pores and cracks in soil and rock below the surface; it moves slowly and supplies wells and springs."
+ },
+ "aquifer": {
+  "def": "An underground layer of porous rock or sediment, such as sand, gravel or sandstone, that holds groundwater and lets it flow to wells."
+ }
+}

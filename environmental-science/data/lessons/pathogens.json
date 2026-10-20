@@ -1,0 +1,72 @@
+{
+ "topic": "pathogens",
+ "hook": "In the 1990s, West Nile virus was unknown in the Americas. In 1999 it appeared in New York City; within a few years mosquitoes had carried it across the United States. A tiny virus, a common insect and a warm summer were enough. Infectious diseases depend on the environment: on water, crowding, vectors and climate.",
+ "prereq": [
+  {
+   "q": "In which treatment stage of a sewage plant do bacteria break down dissolved organic matter?",
+   "options": [
+    "Secondary treatment",
+    "Primary treatment",
+    "Septic tank",
+    "Sludge removal"
+   ],
+   "correct": 0,
+   "why": "Secondary treatment uses bacteria to break down organic matter that primary settling leaves behind.",
+   "review": "sewage-treatment"
+  },
+  {
+   "q": "An effect that shows up only after many years of exposure is called what?",
+   "options": [
+    "A chronic effect",
+    "An acute effect",
+    "A threshold dose",
+    "Synergism"
+   ],
+   "correct": 0,
+   "why": "Chronic effects follow long or repeated exposure.",
+   "review": "pollution-human-health"
+  }
+ ],
+ "figure": {
+  "figure": "pathogens-vector-cycle",
+  "caption": "How a mosquito spreads a pathogen, and how milder winters let the vector spread farther from the equator."
+ },
+ "chain": [
+  {
+   "cause": "A pathogen (a bacterium, virus, protozoan, fungus or worm) infects a person or animal",
+   "effect": "it multiplies and causes an infectious disease"
+  },
+  {
+   "cause": "Contaminated water, the air, food, contact or a vector carries it on",
+   "effect": "the disease spreads to new hosts"
+  },
+  {
+   "cause": "Poor sanitation, crowding and little health care",
+   "effect": "make spread easier, so developing countries carry much of the burden"
+  },
+  {
+   "cause": "A warming climate",
+   "effect": "lets vectors such as mosquitoes survive in new places, widening the disease’s range"
+  }
+ ],
+ "ideas": [
+  "A <b>pathogen</b> causes disease: bacteria, viruses, protozoa, fungi and parasitic worms. An <b>infectious disease</b> is one that can spread to new hosts.",
+  "A <b>disease vector</b> is a living thing, often an insect, that carries a pathogen between hosts: mosquitoes (malaria, West Nile virus, Zika virus), fleas (plague).",
+  "Routes to know: waterborne (cholera, dysentery), airborne (tuberculosis; SARS and MERS are respiratory viruses that jumped from animals), vector-borne (malaria, plague, West Nile, Zika).",
+  "Climate change can spread vectors to new latitudes and elevations; floods can push sewage into drinking water."
+ ],
+ "misconception": {
+  "wrong": "The mosquito is the cause of malaria.",
+  "right": "Malaria is caused by a protozoan parasite. The mosquito is the vector: it carries the parasite from one person to the next. Controlling the vector breaks the chain."
+ },
+ "check": [
+  "env-pathogens-1",
+  "env-pathogens-2",
+  "env-pathogens-3",
+  "env-pathogens-4",
+  "env-pathogens-5",
+  "env-pathogens-6",
+  "env-pathogens-9"
+ ],
+ "summary": "Pathogens are bacteria, viruses, protozoa, fungi and worms that cause infectious diseases. They spread through water, air, food, contact and vectors such as mosquitoes and fleas. Poor sanitation and crowding speed the spread, which is why clean water and sewage treatment prevent cholera. A warming climate can widen the range of vectors and the diseases they carry."
+}

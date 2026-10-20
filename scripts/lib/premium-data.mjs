@@ -157,6 +157,16 @@ export function counts() {
     }
   }
   const statNotes = join(ROOT, 'statistics', 'assets', 'notes-index.json');
+  const envBank = join(ROOT, 'environmental-science', 'assets', 'bank');
+  let apenv = 0;
+  if (existsSync(envBank)) {
+    for (const f of readdirSync(envBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('environmental-science', 'assets', 'bank', f));
+      apenv += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const envNotes = join(ROOT, 'environmental-science', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
@@ -166,6 +176,7 @@ export function counts() {
     apphys, apphysTopics: existsSync(physNotes) ? read('physics/assets/notes-index.json').length : 0,
     apcalc, apcalcTopics: existsSync(calcNotes) ? read('calculus/assets/notes-index.json').length : 0,
     apstat, apstatTopics: existsSync(statNotes) ? read('statistics/assets/notes-index.json').length : 0,
+    apenv, apenvTopics: existsSync(envNotes) ? read('environmental-science/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }

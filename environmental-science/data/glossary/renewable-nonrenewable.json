@@ -1,0 +1,11 @@
+{
+ "renewable": {
+  "def": "An energy source or resource that is replenished naturally at or near the rate people use it, such as sunlight, wind, moving water, Earth's internal heat and biomass."
+ },
+ "nonrenewable": {
+  "def": "A resource that exists in a fixed amount and forms far more slowly than people use it, such as coal, oil, natural gas and nuclear fuel."
+ },
+ "depletable": {
+  "def": "A renewable resource that can run down if it is used faster than it is replaced, such as wood cut faster than the forest regrows."
+ }
+}

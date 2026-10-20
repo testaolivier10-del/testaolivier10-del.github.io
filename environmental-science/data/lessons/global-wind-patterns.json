@@ -1,0 +1,84 @@
+{
+ "topic": "global-wind-patterns",
+ "hook": "Five centuries ago, sailors leaving Spain for the Americas did not head straight west. They sailed south toward the Canary Islands first, where steady winds from the east carried them across the Atlantic, and they came home farther north, where the winds blow from the west. Those winds still blow, and the same pattern explains where the world's rainforests and deserts are.",
+ "prereq": [
+  {
+   "q": "What drives convection?",
+   "options": [
+    "Warm, less dense material rising and cooler, denser material sinking",
+    "The Moon pulling on Earth",
+    "Plants releasing oxygen",
+    "Salt dissolving in water"
+   ],
+   "correct": 0,
+   "why": "Uneven heating makes warm material rise and cool material sink, forming a loop.",
+   "review": "plate-tectonics"
+  },
+  {
+   "q": "In which layer of the atmosphere does weather happen?",
+   "options": [
+    "Troposphere",
+    "Stratosphere",
+    "Mesosphere",
+    "Thermosphere"
+   ],
+   "correct": 0,
+   "why": "The troposphere holds nearly all the water vapor and weather.",
+   "review": "atmosphere"
+  },
+  {
+   "q": "Which biome has high temperatures and very high rainfall all year?",
+   "options": [
+    "Tropical rainforest",
+    "Desert",
+    "Tundra",
+    "Taiga"
+   ],
+   "correct": 0,
+   "why": "Tropical rainforests are hot and wet year-round.",
+   "review": "terrestrial-biomes"
+  }
+ ],
+ "figure": {
+  "figure": "global-wind-patterns-cells",
+  "caption": "Surface winds in each latitude band, and the three circulation cells in each hemisphere that drive them."
+ },
+ "chain": [
+  {
+   "cause": "The Sun heats the equator more than the poles",
+   "effect": "warm air rises at the equator, cools and drops heavy rain"
+  },
+  {
+   "cause": "The dry air spreads toward the poles high up, then sinks near 30°",
+   "effect": "sinking air warms, so the 30° latitudes are dry and hold many deserts"
+  },
+  {
+   "cause": "Air flows back toward the equator along the surface, completing the Hadley cell",
+   "effect": "steady surface winds form between the equator and 30°"
+  },
+  {
+   "cause": "Earth's rotation deflects moving air (the Coriolis effect)",
+   "effect": "winds curve into the trade winds, the westerlies and the polar easterlies"
+  }
+ ],
+ "ideas": [
+  "Uneven heating makes air rise near the equator and near 60° (wet) and sink near 30° and the poles (dry). The loops are <b>circulation cells</b>: the <b>Hadley cell</b> (0-30°), the <b>Ferrel cell</b> (30-60°) and the <b>polar cell</b> (60-90°).",
+  "The <b>Coriolis effect</b>: Earth's rotation deflects moving air to the right in the Northern Hemisphere and to the left in the Southern Hemisphere.",
+  "Surface winds: the <b>trade winds</b> (0-30°) blow from the east toward the equator; the <b>westerlies</b> (30-60°) blow from the west; the <b>polar easterlies</b> (60-90°) blow from the east.",
+  "Winds are named for where they come from: a westerly blows from the west toward the east.",
+  "Global winds move heat from the tropics toward the poles and set where rain falls, so they help place biomes: rainforests near the equator, deserts near 30°."
+ ],
+ "misconception": {
+  "wrong": "The westerlies blow toward the west.",
+  "right": "Winds are named for the direction they come from. The westerlies come from the west and blow toward the east, which is why weather in the United States usually moves from west to east."
+ },
+ "check": [
+  "env-global-wind-patterns-2",
+  "env-global-wind-patterns-4",
+  "env-global-wind-patterns-7",
+  "env-global-wind-patterns-8",
+  "env-global-wind-patterns-9",
+  "env-global-wind-patterns-10"
+ ],
+ "summary": "The Sun heats the equator most, so air rises there, drops its rain, travels poleward high up and sinks near 30°, forming the Hadley cell; Ferrel and polar cells lie beyond it. Rising air brings rain and sinking air brings dry weather. Earth's rotation, the Coriolis effect, bends the surface winds into the trade winds, the westerlies and the polar easterlies."
+}

@@ -1,0 +1,23 @@
+{
+ "furrow-irrigation": {
+  "def": "Irrigation in which water flows down shallow trenches (furrows) dug between crop rows. It is cheap and simple, but a large share of the water evaporates or runs off the end of the field."
+ },
+ "flood-irrigation": {
+  "def": "Irrigation that covers a whole field with a sheet of water, as in many rice paddies. It is the cheapest method, but much of the water can evaporate, run off or soak below the roots, and it can waterlog the soil."
+ },
+ "spray-irrigation": {
+  "def": "Irrigation that pumps water through pipes and sprays it over the crop like rain, as with a center-pivot sprinkler. It wastes less water than flood or furrow irrigation but costs more and uses energy for pumping; some spray evaporates or drifts in wind."
+ },
+ "drip-irrigation": {
+  "def": "Irrigation that delivers water slowly through tubes with small holes placed at the base of each plant. It is the most efficient method (only about 5% of the water is lost, so about 95% reaches the roots) but the most expensive to install."
+ },
+ "waterlogging": {
+  "def": "Saturation of soil with water so that the pore spaces are full and roots cannot get the oxygen they need. Overirrigation and poor drainage cause it, and it can raise the water table toward the surface."
+ },
+ "salinization": {
+  "def": "The buildup of salts in soil. Irrigation water carries small amounts of dissolved salt; when the water evaporates from the field, the salt is left behind, and over years it can reach levels that stunt or kill crops."
+ },
+ "aquifer-depletion": {
+  "def": "The drawing down of groundwater when it is pumped out faster than rain and snowmelt refill (recharge) the aquifer. Around a pumping well the water table drops in a funnel shape called a cone of depression; nearby shallow wells can go dry."
+ }
+}

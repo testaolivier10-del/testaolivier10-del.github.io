@@ -1,0 +1,68 @@
+{
+ "topic": "math-percents",
+ "hook": "A news story says a fish population \"crashed 50% and then bounced back 50%\". Is it back where it started? No: it is 25% lower. Percents are the most common calculation on the exam and the easiest place to lose points, by dividing by the wrong number, forgetting × 100 or leaving out the brackets.",
+ "prereq": [
+  {
+   "q": "What is a per-capita value?",
+   "options": [
+    "A total divided by the number of people",
+    "A total times the number of people",
+    "A rate per year",
+    "A rate per area"
+   ],
+   "correct": 0,
+   "why": "Per capita means per person.",
+   "review": "math-rates"
+  },
+  {
+   "q": "What is NPP if GPP = 5,000 and R = 3,000 (both kcal/m²/yr)?",
+   "options": [
+    "2,000 kcal/m²/yr",
+    "8,000 kcal/m²/yr",
+    "1.67 kcal/m²/yr",
+    "3,000 kcal/m²/yr"
+   ],
+   "correct": 0,
+   "why": "NPP = GPP - R.",
+   "review": "primary-productivity"
+  }
+ ],
+ "figure": {
+  "figure": "math-percents-change",
+  "caption": "Percent change compares the change with the starting value."
+ },
+ "chain": [
+  {
+   "cause": "Subtract old from new, in brackets",
+   "effect": "you get the change, with its sign"
+  },
+  {
+   "cause": "Divide the change by the old value",
+   "effect": "you get the change as a fraction of where you started"
+  },
+  {
+   "cause": "Multiply by 100",
+   "effect": "you get the percent change: positive for a rise, negative for a fall"
+  }
+ ],
+ "ideas": [
+  "A <b>percent</b> is a number out of 100: part ÷ whole × 100.",
+  "Percent of a quantity: (percent ÷ 100) × quantity. 18% of 4.0 million = 0.18 × 4,000,000 = 720,000.",
+  "<b>Percent change</b> = (new - old) / old × 100. Brackets first, divide by the old value, then × 100.",
+  "Percent changes from different starting values do not add: +25% then -10% is +12.5%, not +15%."
+ ],
+ "misconception": {
+  "wrong": "Percent change divides by the new value, or by whichever number is bigger.",
+  "right": "Always divide by the old (starting) value. A rise from 120 to 150 is 30 / 120 = 25%; a fall from 150 to 120 is -30 / 150 = -20%."
+ },
+ "check": [
+  "env-math-percents-1",
+  "env-math-percents-3",
+  "env-math-percents-5",
+  "env-math-percents-8",
+  "env-math-percents-9",
+  "env-math-percents-10",
+  "env-math-percents-11"
+ ],
+ "summary": "A percent is a part out of 100: part ÷ whole × 100. Percent of a quantity is (percent ÷ 100) × quantity. Percent change is (new - old) / old × 100: subtract inside brackets, divide by the starting value, multiply by 100, and keep the sign. Show this setup exactly; readers give a point for it."
+}

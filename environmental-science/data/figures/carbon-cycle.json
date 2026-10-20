@@ -1,0 +1,12 @@
+{
+ "carbon-cycle-reservoirs": {
+  "file": "figures/carbon-cycle-reservoirs.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Six carbon reservoirs: the atmosphere, plants and animals, soil and dead matter, the ocean, ocean sediments and sedimentary rock, and fossil fuels. Photosynthesis moves carbon from the atmosphere into living things; respiration returns it. Wastes and dead matter move carbon into the soil, and decomposition returns it to the atmosphere. Combustion of fossil fuels moves carbon to the atmosphere. CO2 dissolves into the ocean and is also released from it. Slow processes, shown dashed: sedimentation moves carbon from the ocean into sediments and rock, and buried dead matter becomes fossil fuels over millions of years."
+ }
+}

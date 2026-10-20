@@ -1,0 +1,610 @@
+{
+ "stimuli": {
+  "meat-production-s1": {
+   "kind": "quantitative",
+   "title": "Feed and land for three kinds of meat",
+   "invented": true,
+   "table": {
+    "caption": "Approximate feed and land for three kinds of meat (invented data for practice; feed values are near published averages per kilogram of weight gained, and real values vary a lot by farming system: beef from cattle raised on pasture uses far more land)",
+    "cols": [
+     "Meat",
+     "Feed needed (kg of feed per kg of weight gained)",
+     "Land used (m² per kg of meat per year)"
+    ],
+    "rows": [
+     [
+      "Beef (feedlot)",
+      "8",
+      "40"
+     ],
+     [
+      "Pork",
+      "4",
+      "12"
+     ],
+     [
+      "Chicken",
+      "2",
+      "8"
+     ]
+    ]
+   }
+  },
+  "meat-production-s2": {
+   "kind": "text",
+   "title": "A rancher's letter about grazing on public land",
+   "source": "Invented passage for practice.",
+   "passage": "<p>Our county lets ranchers graze cattle on 40,000 hectares of public grassland, and the county board wants to cut the number of cattle allowed by one third. I think that is the wrong fix. The grass did not thin out because there are too many cattle; it thinned because cattle stay in one place all season. On my own land I split the pasture into eight paddocks and move the herd every few days. After six years my grass is thicker and I run more cattle than when I started.</p><p>Instead of a cut, the board should require rotational grazing on the public land and pay for the fences and water tanks it takes. A cut in herd size will put small ranches out of business, and the land will be no better off if the cattle that remain still graze the same spots all season.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "env-meat-production-1",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which describes a concentrated animal feeding operation (CAFO)?",
+   "options": [
+    "Many animals crowded into a small space and fed grain",
+    "A few animals moved between fenced paddocks so the grass can regrow",
+    "Animals that roam freely over large areas of open rangeland",
+    "Fish raised in floating pens in a bay"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A CAFO (feedlot) crowds many animals into a small area and brings the feed to them.",
+    "options": [
+     "Right: that is a feedlot.",
+     "That describes rotational grazing.",
+     "That describes free-range grazing.",
+     "Raising fish in pens is a different topic later in this unit."
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-2",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of a CAFO compared with grazing cattle on pasture?",
+   "options": [
+    "It produces meat quickly and cheaply on a small area of land",
+    "Its manure is spread thinly over the land where the animals live",
+    "Its animals need no grain or other crops brought in as feed",
+    "Its animals are given fewer antibiotics than on pasture"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Feedlots fatten animals fast on grain, so meat is cheap and the facility needs little land.",
+    "options": [
+     "Right: speed, low cost and a small footprint on site.",
+     "In a CAFO manure is concentrated, not spread thinly.",
+     "CAFOs depend on feed grain grown elsewhere.",
+     "CAFOs use antibiotics heavily to prevent disease in crowded animals."
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-3",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A large hog CAFO stores manure in an open lagoon. A hurricane floods the lagoon. Which is the most likely effect on the river nearby?",
+   "options": [
+    "Manure washes into the river, adding nutrients and bacteria",
+    "The river gets cooler water from the lagoon, which raises its dissolved oxygen",
+    "The manure stays in the lagoon because it is heavier than the floodwater",
+    "The river gets less nitrogen because the flood dilutes it across the land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Concentrated manure is a large store of nutrients and bacteria; floods and leaks carry it into rivers.",
+    "options": [
+     "Right: manure brings nutrients and bacteria into the river.",
+     "Lagoon water is not cooler or oxygen-rich.",
+     "Floodwater carries manure out; it does not hold it in.",
+     "Adding manure adds nitrogen to the river."
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-4",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are antibiotics given routinely to animals in many CAFOs a concern for people?",
+   "options": [
+    "Bacteria resistant to the drugs can evolve, so infections get harder to treat",
+    "Antibiotics make the meat grow larger, so people eat more food than before",
+    "Antibiotics kill the grass on nearby pastures when manure is spread there",
+    "Antibiotics make the animals produce less manure, so soil fertility falls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Routine use selects for resistant bacteria, by the same natural selection as pesticide resistance.",
+    "options": [
+     "Right: overuse selects for antibiotic-resistant bacteria.",
+     "Growth and portion size are not the health concern here.",
+     "Antibiotics do not kill grass.",
+     "Manure output is not the concern."
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-5",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the 10% rule, why does producing beef need much more cropland than producing the same mass of grain for people to eat?",
+   "options": [
+    "Most feed energy is used or lost as heat, so many kilograms of feed make one kilogram of beef",
+    "Cattle store the energy in their feed as meat, so beef needs exactly as much cropland as grain",
+    "Cattle eat just grass, so beef needs cropland just for the hay fed to them in winter",
+    "Grain grows best on land that cattle have grazed, so beef and grain need the same cropland"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Beef is one trophic level above plants. Most feed energy goes to the animal's life processes and heat, so it takes several kilograms of feed per kilogram of meat.",
+    "options": [
+     "Right: energy is lost at each trophic level.",
+     "Cattle do not store all their feed energy as meat; most is lost.",
+     "Feedlot cattle eat large amounts of grain.",
+     "Grain does not depend on grazed land."
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-6",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Overgrazing on dry grassland in the Sahel region of Africa has been linked to desertification. Which chain explains the link?",
+   "options": [
+    "Too many animals strip the plants, so bare soil erodes, dries and grows less",
+    "Animal manure adds so many nutrients that the grasses grow too fast and use up the rain",
+    "Animals carry seeds of desert plants, which crowd out the grasses that were there",
+    "Grazing animals drink so much water that the region gets less rain each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Overgrazing removes plant cover; bare soil erodes, holds less water and grows fewer plants, so the land becomes desert-like.",
+    "options": [
+     "Right: plant loss, erosion and drying soil lower the land's productivity.",
+     "Manure on overgrazed land is not the cause; plant loss is.",
+     "Seeds carried by animals are not the main link.",
+     "Animals drinking water do not change regional rainfall."
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-7",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A feedlot steer needs about 8 kg of feed for each kilogram of weight it gains. How much feed does it eat to gain 250 kg?",
+   "why": {
+    "correct": "$250\\,\\text{kg gain} \\times \\frac{8\\,\\text{kg feed}}{1\\,\\text{kg gain}} = 2{,}000$ kg of feed."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      250,
+      8
+     ]
+    },
+    "unit": "kg",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        250,
+        8
+       ]
+      },
+      "why": "It takes 8 kg of feed for each kilogram gained, so multiply the gain by 8."
+     },
+     {
+      "value": 200,
+      "why": "A factor of 10 slipped: 250 × 8 = 2,000 kg."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-meat-production-8",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A rancher's pasture is overgrazed. Propose a solution the rancher could use on this ranch and explain how it works.",
+   "why": {
+    "correct": "A solution at the scale of one ranch, with its mechanism: rotational grazing moves the herd between paddocks so each one rests and regrows."
+   },
+   "specific": {
+    "frame": "The rancher could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "split the pasture into paddocks and rotate the herd",
+       "add more cattle to eat the weeds",
+       "plow the pasture and leave it bare"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More cattle would increase overgrazing.",
+       "2": "Bare plowed soil erodes even faster."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "gives each paddock weeks to regrow before it is grazed again",
+       "keeps the herd on the same grass all season",
+       "removes the roots that hold the soil"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the continuous grazing that caused the problem.",
+       "2": "Removing roots causes erosion."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "plant cover and roots recover, which reduces erosion",
+       "the soil is left bare between visits",
+       "the grass is eaten faster than it grows"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rotation keeps plants covering the soil.",
+       "2": "Rotation keeps grazing below the regrowth rate."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "paddock",
+      "rotat",
+      "graz",
+      "grass"
+     ]
+    },
+    "model": "The rancher could split the pasture into paddocks and rotate the herd, which gives each paddock weeks to regrow before it is grazed again, so plant cover and roots recover, which reduces erosion."
+   }
+  },
+  {
+   "id": "env-meat-production-9",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which ranking matches the table, from the most feed per kilogram of weight gained to the least?",
+   "options": [
+    "Beef, pork, chicken",
+    "Chicken, pork, beef",
+    "Pork, beef, chicken",
+    "Beef, chicken, pork"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Feed per kilogram: beef 8, pork 4, chicken 2.",
+    "options": [
+     "Right: 8 > 4 > 2.",
+     "That is from least to most.",
+     "Beef needs more feed than pork.",
+     "Pork needs more feed than chicken."
+    ]
+   },
+   "stimulus": "meat-production-s1"
+  },
+  {
+   "id": "env-meat-production-10",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many square meters of land are used each year to produce 50 kg of pork?",
+   "why": {
+    "correct": "$50\\,\\text{kg} \\times \\frac{12\\,\\text{m}^2}{1\\,\\text{kg}} = 600\\,\\text{m}^2$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      50,
+      12
+     ]
+    },
+    "unit": "m2",
+    "units": [
+     "square meters"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        50,
+        40
+       ]
+      },
+      "why": "That uses the land for beef (40 m² per kg). Pork uses 12 m² per kg."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        50,
+        12
+       ]
+      },
+      "why": "Multiply the mass by the land per kilogram, so kilograms cancel and square meters remain."
+     }
+    ]
+   },
+   "stimulus": "meat-production-s1"
+  },
+  {
+   "id": "env-meat-production-11",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A family eats 60 kg of beef a year and switches to 60 kg of chicken instead. Write the setup for the land saved each year, then give the answer with its unit.",
+   "why": {
+    "correct": "$(40 - 8)\\,\\frac{\\text{m}^2}{\\text{kg}} \\times 60\\,\\text{kg} = 1{,}920\\,\\text{m}^2$ saved each year."
+   },
+   "setup": {
+    "answer": "(40 - 8) * 60",
+    "mustUse": [
+     "40",
+     "8",
+     "60"
+    ],
+    "mistakes": [
+     {
+      "expr": "40 - 8 * 60",
+      "why": "Without brackets the multiplication happens first. Write (40 - 8) × 60."
+     },
+     {
+      "expr": "40 * 60",
+      "why": "That is the land for the beef alone. The saving is the difference in land per kilogram times 60 kg."
+     }
+    ],
+    "then": {
+     "unit": "m2",
+     "units": [
+      "square meters"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       {
+        "fn": "sub",
+        "args": [
+         40,
+         8
+        ]
+       },
+       60
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 32,
+       "why": "32 m² is the saving per kilogram. Multiply by 60 kg."
+      },
+      {
+       "value": 480,
+       "why": "480 m² is the land the chicken uses (8 × 60). The question asks for the land saved."
+      }
+     ]
+    }
+   },
+   "stimulus": "meat-production-s1"
+  },
+  {
+   "id": "env-meat-production-12",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which conclusion about diets is best supported by the table?",
+   "options": [
+    "Shifting from beef to chicken would cut the feed and land needed per kilogram",
+    "Shifting from chicken to beef would lower the land needed, since beef uses grass",
+    "Pork needs more feed than beef, so cutting pork saves the most feed per kilogram",
+    "The three meats need about the same land, so the choice of meat matters little"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Chicken needs 2 kg of feed and 8 m² per kg; beef needs 8 kg and 40 m².",
+    "options": [
+     "Right: chicken needs a quarter of the feed and a fifth of the land.",
+     "The table shows beef uses the most land.",
+     "Pork needs half the feed of beef.",
+     "Land ranges from 8 to 40 m² per kg, a fivefold difference."
+    ]
+   },
+   "stimulus": "meat-production-s1"
+  },
+  {
+   "id": "env-meat-production-13",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the author's main claim?",
+   "options": [
+    "The county should require rotational grazing instead of a cut",
+    "The county should cut the number of cattle on public land by one third",
+    "The county should end grazing on its public grassland for good",
+    "The county should sell the public grassland to private ranchers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The author argues against the cut and for requiring rotational grazing paid for by the county.",
+    "options": [
+     "Right: rotation instead of a cut.",
+     "That is the board's plan, which the author opposes.",
+     "The author wants grazing to continue.",
+     "The author does not propose selling the land."
+    ]
+   },
+   "stimulus": "meat-production-s2"
+  },
+  {
+   "id": "env-meat-production-14",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which assumption does the author's argument depend on?",
+   "options": [
+    "What worked on one ranch will also work on the public grassland",
+    "Fewer cattle on the public land will by itself make the grass grow back thicker",
+    "Small ranches can easily survive a one-third cut in the cattle they graze",
+    "Fences and water tanks will cost the county more than they are worth"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The only evidence is one ranch. The argument assumes those results transfer to 40,000 hectares of public land.",
+    "options": [
+     "Right: the argument generalizes from one ranch.",
+     "The author argues that fewer cattle alone will not help.",
+     "The author says small ranches would go out of business.",
+     "The author wants the county to pay for fences and tanks."
+    ]
+   },
+   "stimulus": "meat-production-s2"
+  },
+  {
+   "id": "env-meat-production-15",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which piece of evidence would most weaken the author's claim?",
+   "options": [
+    "A nearby study finds grass recovered under rotation only when herds were also cut",
+    "A study finds that cattle prefer to stay near water in hot weather on the public land",
+    "A survey finds most ranchers in the county own fewer than 200 cattle each",
+    "A report finds that fences on public land cost about the same as on private land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The author claims rotation alone fixes the problem. Evidence that rotation works only with fewer cattle undercuts that claim.",
+    "options": [
+     "Right: it shows the cut may be needed after all.",
+     "Cattle gathering near water is consistent with the author's point about cattle staying in one place.",
+     "Herd size of ranches does not test whether rotation works.",
+     "Fence cost does not address whether rotation restores grass."
+    ]
+   },
+   "stimulus": "meat-production-s2"
+  },
+  {
+   "id": "env-meat-production-16",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "From whose perspective is the passage written, and how does it shape the argument?",
+   "options": [
+    "A rancher's, so it stresses the cost to ranches and keeps cattle on the land",
+    "A wildlife biologist's, so it focuses on the animals that live in the grassland",
+    "A county board member's, so it defends the plan to cut cattle numbers",
+    "A city resident's, so it focuses on recreation and hiking on the public land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The writer describes \"my own land\" and \"my grass\" and worries about small ranches, a rancher's viewpoint.",
+    "options": [
+     "Right: a rancher arguing to keep grazing levels up.",
+     "The passage does not mention wildlife.",
+     "The writer opposes the board's plan.",
+     "Recreation is not mentioned."
+    ]
+   },
+   "stimulus": "meat-production-s2"
+  },
+  {
+   "id": "env-meat-production-17",
+   "unit": "unit-5",
+   "topic": "meat-production",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are environmental costs of producing beef in large feedlots? Select all that apply.",
+   "options": [
+    "Large amounts of manure in one place that can leak into water",
+    "Cropland, fertilizer and water used to grow the feed grain",
+    "Methane released by the cattle as they digest their food",
+    "Desertification of the feedlot site from overgrazing",
+    "Many hectares of pasture grazed by each animal",
+    "Less use of antibiotics than on most grazing land"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Feedlots concentrate manure, rely on feed crops grown elsewhere, and cattle release methane wherever they are raised.",
+    "options": [
+     "Right: concentrated manure is a water-pollution risk.",
+     "Right: feed grain carries its own land, water and fertilizer cost.",
+     "Right: cattle digestion releases methane.",
+     "Feedlot cattle are not grazing, so the site is not overgrazed pasture.",
+     "Feedlot cattle are fed in pens, not on pasture.",
+     "Feedlots use more antibiotics, not fewer."
+    ]
+   }
+  }
+ ]
+}

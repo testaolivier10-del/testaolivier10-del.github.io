@@ -1,0 +1,602 @@
+{
+ "stimuli": {
+  "wind-energy-s1": {
+   "kind": "quantitative",
+   "title": "Electricity sources compared",
+   "invented": true,
+   "table": {
+    "caption": "Life-cycle carbon dioxide (from building, fuel and running, per kWh) and typical capacity factor (rounded values near published estimates; invented for practice)",
+    "cols": [
+     "Source",
+     "Life-cycle carbon dioxide (g per kWh)",
+     "Capacity factor (%)"
+    ],
+    "rows": [
+     [
+      "Coal",
+      "820",
+      "50"
+     ],
+     [
+      "Natural gas",
+      "490",
+      "55"
+     ],
+     [
+      "Nuclear",
+      "12",
+      "90"
+     ],
+     [
+      "Solar (photovoltaic)",
+      "45",
+      "25"
+     ],
+     [
+      "Wind (onshore)",
+      "11",
+      "35"
+     ]
+    ]
+   }
+  },
+  "wind-energy-s2": {
+   "kind": "visual",
+   "title": "How a wind turbine works",
+   "figure": "wind-energy-turbine"
+  }
+ },
+ "items": [
+  {
+   "id": "env-wind-energy-1",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "How does a wind turbine make electricity?",
+   "options": [
+    "Wind cools a steam boiler, which then spins a turbine",
+    "Sunlight on the blades makes an electric current flow",
+    "Air pressure squeezes a battery inside the tall tower",
+    "Wind spins the blades, which turn a generator"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The kinetic energy of moving air pushes on the blades; the rotor turns a shaft (often through a gearbox) that spins a generator in the nacelle.",
+    "options": [
+     "There is no boiler or steam in a wind turbine.",
+     "Blades are not solar cells.",
+     "Turbines do not squeeze batteries.",
+     "Right: moving air, spinning blades, generator."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-2",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are modern wind turbines built on very tall towers?",
+   "options": [
+    "The air is warmer up high, which helps spin the blades",
+    "Tall towers use less steel than short towers need",
+    "Wind is faster and steadier high above trees and buildings",
+    "Tall towers keep birds and bats away from the blades"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Trees, buildings and hills slow the wind near the ground. Higher up, the wind is stronger and steadier, and a turbine's power rises steeply with wind speed.",
+    "options": [
+     "Air is usually cooler with height, and temperature does not spin blades.",
+     "Taller towers need more steel.",
+     "Right: stronger, steadier wind aloft.",
+     "Height does not keep birds and bats away."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-3",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is an environmental drawback of wind farms?",
+   "options": [
+    "They produce radioactive waste each year",
+    "Spinning blades can kill birds and bats",
+    "They release carbon dioxide while turning",
+    "They flood large areas of nearby farmland"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Collisions kill birds and bats; careful siting and pausing turbines at low wind speeds reduce deaths. Turbines also make noise and change views.",
+    "options": [
+     "Wind turbines make no radioactive waste.",
+     "Right: bird and bat deaths.",
+     "Turbines release nothing while running.",
+     "Wind farms do not flood land; that is a dam's impact."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-4",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer leases land for a wind farm. What can the farmer still do with most of the land?",
+   "options": [
+    "Grow crops or graze cattle between the turbines",
+    "Nothing, since the turbines cover the whole field",
+    "Build houses, since crops do not grow near turbines",
+    "Use it for more turbines and nothing else"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The turbines' bases and access roads cover only a small part of a wind farm, so farming and grazing continue around them, and the farmer earns lease income.",
+    "options": [
+     "Right: most of the land stays usable.",
+     "The bases cover only a small share of the land.",
+     "Crops grow well near turbines.",
+     "Turbines must be spaced apart, leaving land between them."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-5",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A region gets a large share of its electricity from wind. What does it need to keep power steady on calm days?",
+   "options": [
+    "More turbines built in the same calm valley",
+    "Taller blades that keep spinning without wind",
+    "Turbines that run on sunlight stored in the tower",
+    "Storage, a wide grid or backup power sources"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Wind is intermittent. Batteries and pumped storage, grids that link windy and calm areas, and flexible backup plants keep supply steady.",
+    "options": [
+     "More turbines in a calm place still make nothing when there is no wind.",
+     "Blades need wind to spin.",
+     "Turbines do not run on sunlight.",
+     "Right: storage, a wider grid or flexible backup."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-6",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are many new wind farms built offshore?",
+   "options": [
+    "Turbines at sea do not need a generator to make electricity",
+    "Ocean tides turn the blades when the wind is calm at sea",
+    "Winds over open sea are stronger and steadier than on land",
+    "Seawater cools the generators so they need less maintenance"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "There are no hills, trees or buildings to slow the wind at sea, so offshore winds are stronger and steadier. Offshore turbines cost more to build and connect.",
+    "options": [
+     "Every wind turbine needs a generator.",
+     "Tides do not turn wind turbine blades.",
+     "Right: stronger, steadier wind.",
+     "Cooling is not the reason, and salt water makes maintenance harder."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-7",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which two sources in the table release the least carbon dioxide over their full life cycle?",
+   "stimulus": "wind-energy-s1",
+   "options": [
+    "Coal and solar",
+    "Wind and nuclear",
+    "Coal and natural gas",
+    "Solar and natural gas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Wind (11) and nuclear (12) grams per kWh are the lowest. Solar is low too (45), and coal (820) is highest.",
+    "options": [
+     "Coal is the highest.",
+     "Right: 11 and 12 g per kWh.",
+     "These are the two highest.",
+     "Natural gas is about 490 g per kWh."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-8",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town replaces 50,000 MWh a year of coal electricity with wind. Using the life-cycle values, how many metric tons of carbon dioxide does it avoid each year? (1 MWh = 1,000 kWh; 1 metric ton = 1,000,000 g.)",
+   "stimulus": "wind-energy-s1",
+   "why": {
+    "correct": "Saved per kWh: $820 - 11 = 809$ g. Total: $50{,}000 \\times 1{,}000\\,\\text{kWh} \\times 809\\,\\text{g/kWh} \\div 1{,}000{,}000\\,\\text{g/t} = 40{,}450$ metric tons."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        50000,
+        1000,
+        {
+         "fn": "sub",
+         "args": [
+          820,
+          11
+         ]
+        }
+       ]
+      },
+      1000000
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "tonnes",
+     "t",
+     "metric tons CO2"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          50000,
+          1000,
+          820
+         ]
+        },
+        1000000
+       ]
+      },
+      "why": "You used all of coal's emissions. Wind still releases 11 g per kWh over its life, so subtract: 820 - 11."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        50000,
+        1000,
+        809
+       ]
+      },
+      "why": "That answer is in grams. Divide by 1,000,000 to convert to metric tons."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          50000,
+          809
+         ]
+        },
+        1000000
+       ]
+      },
+      "why": "You skipped the MWh to kWh step. Multiply by 1,000 kWh per MWh."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-9",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Wind's capacity factor (35%) is lower than nuclear's (90%). What does this mean?",
+   "stimulus": "wind-energy-s1",
+   "options": [
+    "A wind farm releases more carbon dioxide than a nuclear plant",
+    "Wind turbines are broken down 65 percent of the time",
+    "A wind farm costs more to build than a nuclear plant",
+    "A wind farm averages a smaller share of its maximum"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Capacity factor is average output divided by maximum. Wind varies, so it averages about a third of its maximum; this is not breakdown time.",
+    "options": [
+     "The table shows wind's life-cycle emissions slightly below nuclear's.",
+     "Low output is mostly from light winds, not breakdowns.",
+     "Capacity factor says nothing about building cost.",
+     "Right: lower average output relative to maximum."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-10",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the electricity a 3 MW wind turbine makes in a year (8,760 hours) at the capacity factor in the table, then give the answer in MWh.",
+   "stimulus": "wind-energy-s1",
+   "why": {
+    "correct": "$3\\,\\text{MW} \\times 8{,}760\\,\\text{h} \\times 0.35 = 9{,}198\\,\\text{MWh}$."
+   },
+   "setup": {
+    "answer": "3 MW * 8760 h * 0.35",
+    "unit": "MW h",
+    "mustUse": [
+     "3",
+     "8760",
+     "0.35"
+    ],
+    "mistakes": [
+     {
+      "expr": "3 MW * 8760 h",
+      "why": "That is full power all year. Multiply by the capacity factor, 0.35."
+     },
+     {
+      "expr": "3 MW * 8760 h * 35",
+      "why": "Write the capacity factor as a decimal: 35% is 0.35, not 35."
+     }
+    ],
+    "then": {
+     "unit": "MWh",
+     "from": {
+      "fn": "mul",
+      "args": [
+       3,
+       8760,
+       0.35
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         3,
+         8760
+        ]
+       },
+       "check": 26280,
+       "why": "That is full power all year. The turbine averages 35 percent of its capacity."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-wind-energy-11",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the diagram, what is the job of the gearbox?",
+   "stimulus": "wind-energy-s2",
+   "options": [
+    "To burn fuel when the wind stops blowing",
+    "To speed up the rotation for the generator",
+    "To turn the blades to face away from the wind",
+    "To store electricity for use on calm days"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The blades turn slowly; the gearbox speeds up the rotation for the generator. (Some newer turbines skip the gearbox with a special generator.)",
+    "options": [
+     "Wind turbines burn no fuel.",
+     "Right: it raises rotation speed.",
+     "The gearbox does not steer the turbine.",
+     "The gearbox stores nothing."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-12",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Based on the diagram, why is wind called intermittent?",
+   "stimulus": "wind-energy-s2",
+   "options": [
+    "Its output rises and falls with the wind",
+    "The blades stop each hour to cool down",
+    "The generator works at night and not by day",
+    "The tower is rebuilt each year after storms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The diagram lists \"output varies with the wind.\" No wind, no electricity; strong wind, more electricity.",
+    "options": [
+     "Right: output follows the wind.",
+     "Blades do not stop on a schedule to cool.",
+     "Turbines run day or night when the wind blows.",
+     "Towers last 20 to 30 years."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-13",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A proposed wind farm is on a ridge used by migrating hawks and bats. Propose a way to build it that reduces deaths, and explain how it works.",
+   "stimulus": "wind-energy-s2",
+   "why": {
+    "correct": "Siting turbines away from the flight path, or pausing them during migration and on low-wind nights when bats are most active, cuts collisions."
+   },
+   "specific": {
+    "frame": "The developer should ___, which works because ___.",
+    "slots": {
+     "action": {
+      "label": "Action",
+      "options": [
+       "pause the turbines during peak migration and on low-wind nights",
+       "paint the tower a darker color",
+       "add more turbines along the ridge"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tower color alone does not keep animals away from the blades.",
+       "2": "More turbines on the ridge would raise collisions."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "the blades are still when the most birds and bats are passing",
+       "it makes the wind blow harder",
+       "it makes the blades spin faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "People cannot change the wind.",
+       "2": "Faster blades would not reduce collisions."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "bats",
+      "hawks",
+      "migration",
+      "turbines"
+     ]
+    },
+    "model": "The developer should pause the turbines during peak migration and on low-wind nights, which reduces deaths because the blades are still when the most hawks and bats are passing the ridge."
+   }
+  },
+  {
+   "id": "env-wind-energy-14",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The diagram lists both advantages and drawbacks. Which situation best fits wind power?",
+   "stimulus": "wind-energy-s2",
+   "options": [
+    "A migratory bird corridor along a mountain ridge",
+    "A city center surrounded by tall office buildings",
+    "A windy plain where crops grow between the turbines",
+    "A forested valley with light winds and many bats"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A windy plain gives strong wind and shared land use while avoiding the main drawbacks.",
+    "options": [
+     "A migration corridor raises bird deaths.",
+     "Buildings slow and disrupt the wind.",
+     "Right: strong wind and shared land.",
+     "Light winds and many bats combine low output with high wildlife risk."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-15",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are advantages of wind energy? Select all that apply.",
+   "options": [
+    "Free fuel (the wind)",
+    "Clean air while running",
+    "Output steady day and night",
+    "Land can be shared with farming",
+    "Harmless to wildlife",
+    "Short power lines to cities"
+   ],
+   "correct": [
+    0,
+    1,
+    3
+   ],
+   "why": {
+    "correct": "Wind needs no fuel, releases nothing while running, and shares land with farming. It is intermittent, can kill birds and bats, and often needs new transmission lines from remote windy areas.",
+    "options": [
+     "Right: the wind is free.",
+     "Right: no emissions while turning.",
+     "Wind output varies with the weather.",
+     "Right: farming continues around the turbines.",
+     "Turbines can kill birds and bats.",
+     "Remote windy areas often need new lines to reach cities."
+    ]
+   }
+  },
+  {
+   "id": "env-wind-energy-16",
+   "unit": "unit-6",
+   "topic": "wind-energy",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "If the wind speed doubles, a turbine's power output rises about eightfold (it depends on speed cubed). What does this mean for choosing a site?",
+   "options": [
+    "A small rise in wind speed gives a much larger rise in power",
+    "Wind speed hardly matters, as long as there is some wind",
+    "Sites with half the wind speed give half the power output",
+    "Sites with faster wind give less power because the blades stall"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because power depends on the cube of wind speed, a site with somewhat faster average winds produces far more electricity.",
+    "options": [
+     "Right: output is very sensitive to wind speed.",
+     "The cube relationship makes speed very important.",
+     "Half the speed gives about one eighth the power, not half.",
+     "Turbines are designed for fast wind and shut down only in storms."
+    ]
+   }
+  }
+ ]
+}

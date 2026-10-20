@@ -1,0 +1,596 @@
+{
+ "stimuli": {
+  "sustainable-agriculture-s1": {
+   "kind": "visual",
+   "title": "Soil conservation on hillsides",
+   "figure": "sustainable-agriculture-hillside"
+  },
+  "sustainable-agriculture-s2": {
+   "kind": "quantitative",
+   "title": "Soil loss under four practices",
+   "invented": true,
+   "table": {
+    "caption": "Average soil lost from test plots of corn on the same 6% slope over 5 years (invented data for practice)",
+    "cols": [
+     "Practice",
+     "Soil lost (metric tons per ha per year)",
+     "Corn yield (metric tons per ha)"
+    ],
+    "rows": [
+     [
+      "Plowed up and down the slope",
+      "20",
+      "9.6"
+     ],
+     [
+      "Contour plowing",
+      "10",
+      "9.5"
+     ],
+     [
+      "Contour plowing with strip cropping",
+      "5",
+      "9.2"
+     ],
+     [
+      "No-till with contour rows",
+      "2",
+      "9.4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-sustainable-agriculture-1",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which practice plants seeds into the leftover stalks of the last crop without plowing?",
+   "options": [
+    "No-till farming",
+    "Contour plowing",
+    "Terracing",
+    "Strip cropping"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "No-till leaves the residue in place and plants through it.",
+    "options": [
+     "Right: no plowing, residue left on top.",
+     "Contour plowing still plows, but across the slope.",
+     "Terracing builds flat steps on slopes.",
+     "Strip cropping alternates strips of crops."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-2",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does contour plowing reduce erosion?",
+   "options": [
+    "Rows across the slope hold water back, so less runs downhill",
+    "Rows up the slope send water to the bottom of the field faster",
+    "Plowing loosens the soil, so it absorbs most of the rain",
+    "Contour rows block the wind from reaching the soil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each furrow along a contour line acts as a small dam.",
+    "options": [
+     "Right: water is held at each row.",
+     "Rows up and down the slope speed erosion; contour rows run across.",
+     "Plowing loosens soil but does not make it absorb all rain.",
+     "Contour plowing is aimed at water, not wind."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-3",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer rotates corn with soybeans. How does this help the soil?",
+   "options": [
+    "Soybean root bacteria add nitrogen for the next corn crop",
+    "Soybeans remove nitrogen from the soil so corn grows taller",
+    "Soybeans fill the soil with salt, which corn needs",
+    "Soybeans make the soil more acidic so corn roots grow faster"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nitrogen-fixing bacteria in soybean root nodules add usable nitrogen, so less fertilizer is needed.",
+    "options": [
+     "Right: legumes add nitrogen.",
+     "Legumes add nitrogen; they do not strip it.",
+     "Salt harms crops.",
+     "Acidity is not the benefit."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-4",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Farmers on the Great Plains planted rows of trees along their fields after the Dust Bowl. How do these windbreaks protect the soil?",
+   "options": [
+    "They slow the wind near the ground, so less soil blows away",
+    "They pull water from deep in the ground and spray it on the field",
+    "They add nitrogen to the soil through their roots",
+    "They shade the field so that no weeds can grow"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A windbreak slows wind speed for a distance downwind, cutting wind erosion and evaporation.",
+    "options": [
+     "Right: slower wind lifts less soil.",
+     "Trees do not spray water.",
+     "Most windbreak trees are not nitrogen fixers; their job is to slow wind.",
+     "Shade is a side effect; the purpose is wind."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-5",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a trade-off of no-till farming?",
+   "options": [
+    "Weeds are often controlled with more herbicide",
+    "The soil erodes faster than it did before",
+    "Soil organic matter falls quickly",
+    "More fuel is burned by the tractors"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Plowing buries weeds; without it many farmers rely on herbicides or cover crops.",
+    "options": [
+     "Right: weed control shifts to herbicides or cover crops.",
+     "No-till reduces erosion.",
+     "No-till builds organic matter.",
+     "No-till saves fuel because fields are not plowed."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-6",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A farm in steep mountains has thin soil that washes away after heavy rains. Which practice fits the land best?",
+   "options": [
+    "Terracing, cutting the slopes into flat steps",
+    "Windbreaks along the field edges to stop wind erosion",
+    "Plowing straight up and down the slope to drain the water",
+    "Adding more synthetic fertilizer to replace lost nutrients"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On steep slopes terraces turn a long run of water into many short, flat steps.",
+    "options": [
+     "Right: terraces suit steep slopes and water erosion.",
+     "The problem is water, not wind.",
+     "Up-and-down plowing speeds water erosion.",
+     "Fertilizer does not stop soil from washing away."
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-7",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 40-hectare field loses 18 metric tons of soil per hectare each year. After switching to no-till it loses 3 metric tons per hectare. How many metric tons of soil does the field save each year?",
+   "why": {
+    "correct": "$(18 - 3)\\,\\frac{\\text{metric tons}}{\\text{ha}} \\times 40\\,\\text{ha} = 600$ metric tons a year."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        18,
+        3
+       ]
+      },
+      40
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tonnes"
+    ],
+    "mistakes": [
+     {
+      "value": 15,
+      "why": "15 metric tons is the saving for one hectare. Multiply by the 40 hectares."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        3,
+        40
+       ]
+      },
+      "why": "120 metric tons is what the field still loses. The saving is (18 - 3) × 40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-8",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Soil on a sloping cornfield is washing into a stream. Propose a soil conservation practice for the farm and explain how it works.",
+   "why": {
+    "correct": "A practice fitted to a sloping field, with its mechanism: strip cropping places dense hay strips between corn strips across the slope, which slows runoff and traps soil."
+   },
+   "specific": {
+    "frame": "The farmer could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Practice",
+      "options": [
+       "plant alternating strips of corn and hay across the slope",
+       "plow up and down the slope",
+       "remove all crop residue after harvest"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Up-and-down rows channel water downhill and speed erosion.",
+       "2": "Removing residue leaves soil bare."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "the dense hay strips slow runoff and trap soil washed from the corn strips",
+       "the hay strips speed water to the stream",
+       "the corn strips absorb soil from the stream"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dense strips slow water, not speed it.",
+       "2": "Crops do not take soil out of streams."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "less soil reaches the stream",
+       "more soil reaches the stream",
+       "the stream dries up"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Strips reduce soil loss.",
+       "2": "Strip cropping does not dry up streams."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "strip",
+      "slope",
+      "soil",
+      "runoff"
+     ]
+    },
+    "model": "The farmer could plant alternating strips of corn and hay across the slope, which slows runoff because the dense hay strips trap soil washed from the corn strips, so less soil reaches the stream."
+   }
+  },
+  {
+   "id": "env-sustainable-agriculture-9",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the left panel of the diagram, which way do the plowed rows run?",
+   "options": [
+    "Across the slope, along the contour",
+    "Straight up and down the slope",
+    "In circles around a central well",
+    "On the flat ground at the bottom of the hill"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The rows curve around the hill at even heights, following its contour.",
+    "options": [
+     "Right: across the slope.",
+     "Up and down is the opposite of contour plowing.",
+     "Circles describe center-pivot irrigation.",
+     "The rows cover the hillside."
+    ]
+   },
+   "stimulus": "sustainable-agriculture-s1"
+  },
+  {
+   "id": "env-sustainable-agriculture-10",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the right panel, why does terracing reduce erosion?",
+   "options": [
+    "Water pools on each flat step and soaks in",
+    "The steps are steeper than the original slope, so water drains faster",
+    "The steps are built of rock, so they do not hold any soil",
+    "The steps catch wind and keep it from reaching the crop"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The label shows water pooling on a step and soaking in.",
+    "options": [
+     "Right: flat steps hold water.",
+     "Each step is flat, not steeper.",
+     "Terraces hold soil for crops.",
+     "The diagram shows water, not wind."
+    ]
+   },
+   "stimulus": "sustainable-agriculture-s1"
+  },
+  {
+   "id": "env-sustainable-agriculture-11",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which situation fits the left panel's practices better than the right panel's?",
+   "options": [
+    "A gently rolling field worked by machines",
+    "A very steep mountainside with thin soil",
+    "A flat desert field with strong winds",
+    "A flooded rice paddy on a river delta"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Contour rows and strips suit moderate slopes worked by machines; terraces suit steep slopes.",
+    "options": [
+     "Right: gentle slopes suit contour rows and strips.",
+     "Very steep slopes call for terraces.",
+     "Flat, windy land calls for windbreaks.",
+     "Paddies are already flat and flooded."
+    ]
+   },
+   "stimulus": "sustainable-agriculture-s1"
+  },
+  {
+   "id": "env-sustainable-agriculture-12",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in soil lost from plowing up and down the slope to no-till with contour rows, then give the answer.",
+   "why": {
+    "correct": "$\\frac{2 - 20}{20} \\times 100 = -90\\%$: no-till cut soil loss by 90%."
+   },
+   "setup": {
+    "answer": "(2 - 20) / 20 * 100",
+    "mustUse": [
+     "2",
+     "20"
+    ],
+    "mistakes": [
+     {
+      "expr": "(2 - 20) / 2 * 100",
+      "why": "Divide by the starting value, 20 metric tons per ha."
+     },
+     {
+      "expr": "(20 - 2) / 20 * 100",
+      "why": "Subtract old from new: (2 - 20). Soil loss fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       20,
+       2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -18,
+       "why": "-18 metric tons per ha is the change. Divide by 20 and multiply by 100."
+      },
+      {
+       "value": 90,
+       "why": "Soil loss fell, so the percent change is negative: -90%."
+      }
+     ]
+    }
+   },
+   "stimulus": "sustainable-agriculture-s2"
+  },
+  {
+   "id": "env-sustainable-agriculture-13",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in corn yield from plowing up and down the slope to contour plowing with strip cropping, then give the answer.",
+   "why": {
+    "correct": "$\\frac{9.2 - 9.6}{9.6} \\times 100 \\approx -4.2\\%$: a small drop in yield."
+   },
+   "setup": {
+    "answer": "(9.2 - 9.6) / 9.6 * 100",
+    "mustUse": [
+     "9.2",
+     "9.6"
+    ],
+    "mistakes": [
+     {
+      "expr": "(9.2 - 9.6) / 9.2 * 100",
+      "why": "Divide by the starting value, 9.6."
+     },
+     {
+      "expr": "9.2 - 9.6",
+      "why": "That is the change in metric tons per ha (-0.4). Divide by 9.6 and multiply by 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       9.6,
+       9.2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -0.4,
+       "why": "-0.4 metric tons per ha is the change. Divide by 9.6 and multiply by 100."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         9.2,
+         9.6
+        ]
+       },
+       "why": "That is the change from strip cropping back to up-and-down plowing. Start from up-and-down."
+      }
+     ]
+    }
+   },
+   "stimulus": "sustainable-agriculture-s2"
+  },
+  {
+   "id": "env-sustainable-agriculture-14",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion is best supported by the table?",
+   "options": [
+    "Conservation practices cut soil loss with small yield drops",
+    "Conservation practices cut yield in half while saving little soil",
+    "Plowing up and down the slope gave the least soil loss of the four",
+    "Soil loss and yield were about the same under each practice"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Soil loss fell from 20 to between 2 and 10; yield stayed between 9.2 and 9.6.",
+    "options": [
+     "Right: big soil savings, small yield cost.",
+     "Yield fell by under 5%.",
+     "Up-and-down plowing lost the most soil.",
+     "Soil loss ranged from 2 to 20."
+    ]
+   },
+   "stimulus": "sustainable-agriculture-s2"
+  },
+  {
+   "id": "env-sustainable-agriculture-15",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Topsoil forms at roughly 1 metric ton per hectare per year. Which practice in the table comes closest to keeping soil loss at that rate?",
+   "options": [
+    "No-till with contour rows, losing 2 metric tons per ha per year",
+    "Contour plowing alone, losing 10 metric tons per ha per year",
+    "Contour plowing with strip cropping, losing 5 metric tons per ha per year",
+    "Plowing up and down the slope, losing 20 metric tons per ha per year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only no-till comes near the rate soil forms; the others lose soil 5 to 20 times faster.",
+    "options": [
+     "Right: 2 is closest to 1.",
+     "10 is ten times the formation rate.",
+     "5 is five times the formation rate.",
+     "20 is twenty times the formation rate."
+    ]
+   },
+   "stimulus": "sustainable-agriculture-s2"
+  },
+  {
+   "id": "env-sustainable-agriculture-16",
+   "unit": "unit-5",
+   "topic": "sustainable-agriculture",
+   "type": "multi",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which practices add organic matter or nutrients to farm soil? Select all that apply.",
+   "options": [
+    "Spreading manure or compost",
+    "Growing clover or another legume in rotation",
+    "Leaving crop residue on the field (no-till)",
+    "Plowing the field twice a year",
+    "Burning crop residue after harvest",
+    "Removing the plant material from the field"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Manure, compost, legumes and residue add organic matter and nutrients; frequent plowing and burning lose them.",
+    "options": [
+     "Right: organic fertilizers add nutrients and organic matter.",
+     "Right: legumes fix nitrogen.",
+     "Right: residue decays into organic matter.",
+     "Frequent plowing speeds the loss of organic matter.",
+     "Burning releases the carbon as carbon dioxide.",
+     "Removing plant material takes organic matter away."
+    ]
+   }
+  }
+ ]
+}

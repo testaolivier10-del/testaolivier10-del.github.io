@@ -1,0 +1,12 @@
+{
+ "meat-production-grazing": {
+  "file": "figures/meat-production-grazing.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left, continuous grazing: seven cattle stay on one pasture all season, the grass is eaten to the ground and the soil is left bare. Right, rotational grazing: the same land is split into four paddocks; the herd grazes one while the others regrow (week 1, week 3, and the paddock the herd moves to next), so grass and roots recover."
+ }
+}

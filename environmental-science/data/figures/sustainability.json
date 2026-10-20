@@ -1,0 +1,12 @@
+{
+ "sustainability-msy": {
+  "file": "figures/sustainability-msy.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A hump-shaped curve for a fish population with logistic growth and a carrying capacity (K) of 1,000 fish. The number of new fish added each year is near zero when the population is small, rises to a peak of 100 fish a year at 500 fish (half of K), and falls back to zero at 1,000 fish. Harvesting 100 fish a year while the population is held at 500 is the maximum sustainable yield."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "island-biogeo-islands": {
+  "file": "figures/island-biogeo-islands.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Map-style diagram: a mainland on the left and four islands. Large island 40 km away: 48 species. Small island 40 km away: 22 species. Large island 300 km away: 26 species. Small island 300 km away: 9 species. Solid arrows show many species arriving at near islands; dashed arrows show few arriving at far islands. Invented data."
+ }
+}

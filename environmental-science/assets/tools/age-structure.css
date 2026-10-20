@@ -1,0 +1,67 @@
+/* Age structure (environmental-science/assets/tools/age-structure.js). OWNED BY THIS TOOL ONLY (builder T1).
+   Men blue, women vermillion (Okabe-Ito); the dependency groups tinted on the
+   same bars; birth rate olive, death rate rose on the transition chart. */
+.ap-card{display:grid;gap:14px;}
+:root{--ap-m:#0072B2;--ap-f:#D55E00;--ap-young:#009E73;--ap-old:#7A4F9E;--ap-b:#474A10;--ap-d:#B8336A;--ap-gap:rgba(0,158,115,.16);}
+:root[data-theme="dark"]{--ap-m:#6CB8EC;--ap-f:#FF9A5C;--ap-young:#4FD1AA;--ap-old:#C3A3E0;--ap-b:#DCDB98;--ap-d:#F08DB5;--ap-gap:rgba(79,209,170,.16);}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ap-m:#6CB8EC;--ap-f:#FF9A5C;--ap-young:#4FD1AA;--ap-old:#C3A3E0;--ap-b:#DCDB98;--ap-d:#F08DB5;--ap-gap:rgba(79,209,170,.16);}}
+.ap-stage{display:flex;flex-direction:column;gap:8px;min-height:0;}
+.ls-root .ap-stage{flex:1;}
+.ap-fig{position:relative;flex:1;min-height:320px;}
+.bt-pane .ap-fig{height:min(64vh,520px);}
+.ap-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);}
+.ap-fig .ap-svg{position:absolute;inset:0;}
+.ap-svg:focus{outline:none;}
+.ap-svg:focus-visible{outline:2px dashed var(--cink);outline-offset:-2px;border-radius:8px;}
+.ap-svg text{fill:var(--ink);}
+.ap-svg .ap-tk{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;}
+.ap-svg .ap-axl{font:700 12.5px var(--font-ui);fill:var(--muted);}
+.ap-svg .ap-age{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;}
+.ap-svg .ap-age.is-sel{fill:var(--ink);font-weight:900;}
+.ap-svg .ap-sex{font:900 13px var(--font-ui);}
+.ap-svg .ap-sex.is-m{fill:var(--ap-m);} .ap-svg .ap-sex.is-f{fill:var(--ap-f);}
+.ap-svg .ap-grid{stroke:var(--line);stroke-width:1;}
+.ap-svg .ap-m{fill:var(--ap-m);fill-opacity:.85;}
+.ap-svg .ap-f{fill:var(--ap-f);fill-opacity:.85;}
+.ap-svg .ap-br{fill:none;stroke-width:2.5;}
+.ap-svg .ap-br.is-young{stroke:var(--ap-young);} .ap-svg .ap-br.is-old{stroke:var(--ap-old);}
+.ap-svg .ap-brl{font:900 12px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.ap-svg .ap-brl.is-young{fill:var(--ap-young);} .ap-svg .ap-brl.is-old{fill:var(--ap-old);}
+.ap-svg .ap-m.is-sel,.ap-svg .ap-f.is-sel{stroke:var(--ink);stroke-width:2;}
+.ap-svg .ap-hit{fill:transparent;cursor:pointer;}
+.ap-svg .ap-tip rect{fill:var(--ink);} .ap-svg .ap-tip text{fill:var(--white);font:900 13px var(--font-ui);}
+.ap-svg .ap-band{fill:var(--paper);} .ap-svg .ap-band.is-alt{fill:var(--white);}
+.ap-svg .ap-band.is-on{fill:var(--ctint);}
+.ap-svg .ap-stn{font:800 13px var(--font-ui);fill:var(--muted);} .ap-svg .ap-stn.is-on{fill:var(--cink);font-weight:900;}
+.ap-svg .ap-gap{fill:var(--ap-gap);}
+.ap-svg .ap-cbr{fill:none;stroke:var(--ap-b);stroke-width:3.5;stroke-linecap:round;}
+.ap-svg .ap-cdr{fill:none;stroke:var(--ap-d);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:9 5;}
+.ap-svg .ap-cbrl{font:900 13px var(--font-ui);fill:var(--ap-b);paint-order:stroke;stroke:var(--paper);stroke-width:3px;}
+.ap-svg .ap-cdrl{font:900 13px var(--font-ui);fill:var(--ap-d);paint-order:stroke;stroke:var(--paper);stroke-width:3px;}
+.ap-svg .ap-now{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 4;}
+.ap-svg .ap-dot{stroke:var(--white);stroke-width:2.5;}
+.ap-svg .ap-dot.is-b{fill:var(--ap-b);} .ap-svg .ap-dot.is-d{fill:var(--ap-d);}
+.ap-svg .ap-lg{font:900 13px var(--font-ui);}
+.ap-svg .ap-lg.is-young{fill:var(--ap-young);} .ap-svg .ap-lg.is-old{fill:var(--ap-old);}
+.ap-strip{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.ap-chip{padding:4px 12px;border-radius:999px;font:700 calc(13px * var(--ls-scale,1)) var(--font-ui);background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+.ap-chip b{font-family:var(--font-mono);font-weight:900;}
+.ap-chip.is-young{box-shadow:inset 0 0 0 2px var(--ap-young);} .ap-chip.is-old{box-shadow:inset 0 0 0 2px var(--ap-old);}
+.ap-ctl{display:flex;flex-direction:column;gap:12px;}
+.ap-stages{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 2px var(--line);}
+.ap-st{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:var(--muted);font:800 14px var(--font-ui);cursor:pointer;padding:0 4px;}
+.ap-st[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.ap-dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:0 0 10px;}
+.ap-dl div{background:var(--paper);border-radius:12px;padding:8px 10px;}
+.ap-dl dt{font:800 12px var(--font-ui);color:var(--muted);} .ap-dl dd{margin:2px 0 0;font:900 15px var(--font-mono);}
+.as-tbl{border-collapse:collapse;font:700 14px var(--font-ui);margin:6px 0;}
+.as-tbl th,.as-tbl td{padding:5px 8px;border:1px solid var(--line);text-align:center;}
+.as-tbl caption{font:700 12.5px var(--font-ui);color:var(--muted);text-align:left;padding-bottom:4px;}
+.ap-qfig{margin:0;}
+.ap-qsvg{height:auto;max-height:100%;}
+.ls-root .ls-drill-stage .ap-qfig > svg{max-height:100%;}
+@media (max-width:640px){ .ap-st{font-size:13px;} }
+
+/* A step answered right after a miss shows the success state, not the first try's red
+   (tool-studio.css lists .is-wrong after .is-right at the same weight). */
+.ls-root .cd-step.is-right.is-right input[type=text]{box-shadow:inset 0 0 0 2px var(--good-text);border-color:var(--good-text);}

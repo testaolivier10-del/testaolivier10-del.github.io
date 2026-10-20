@@ -1,0 +1,1072 @@
+{
+ "slug": "calculation-studio",
+ "kind": "simulator",
+ "topic": "math-percents",
+ "intro": "<p>On the exam's calculation question, a reader gives one point for the setup and one for the answer with its unit. This studio grades both, the way they do. Start with the unit chain: snap conversion factors onto a number and watch the units cancel until only the one you want is left. Then test yourself on every calculation type the exam uses, each scenario new every time.</p>",
+ "howItWorksTitle": "How the studio grades you",
+ "howItWorks": "<p><b>The setup box</b> reads what you type as Bluebook would: numbers, + − × ÷ (type * and /), ^ for powers, brackets, and units after a number (<code>(150 - 120) / 120 * 100</code>, <code>5000 kWh * 0.9 kg CO2/kWh</code>). It checks the value, the brackets around a difference before you divide, the × 100 for a percent, and that your units cancel to the answer's unit. It never uses eval.</p><p><b>The answer box</b> takes the number (2.5 million, 2.5e6 and 2,500,000 all work) and its unit separately, so you see which point you earned. Feedback names the slip: forgot × 100, divided by the new value, the 10% rule applied once too often, the doubling time not added to the year, a factor of 1,000 from a prefix.</p><p><b>Every key</b> comes from the same calculation recipes as the course's questions (ApEnvCalc), recomputed by a checker on 300 problems per scenario. Significant figures are not graded (the readers do not grade them); answers within 1% are right. Scenarios use invented numbers in realistic ranges.</p>",
+ "explore": {
+  "chains": [
+   "plant",
+   "car",
+   "home",
+   "bulbs"
+  ]
+ },
+ "contexts": [
+  {
+   "id": "deer-count",
+   "topic": "math-percents",
+   "types": [
+    "pct-change"
+   ],
+   "lead": "Rangers count the white-tailed deer in a state park every winter.",
+   "noun": "deer",
+   "what": "the deer population",
+   "from": [
+    800,
+    2400
+   ],
+   "step": 10,
+   "pct": [
+    -40,
+    60
+   ]
+  },
+  {
+   "id": "recycling-rate",
+   "topic": "math-percents",
+   "types": [
+    "pct-change"
+   ],
+   "lead": "A town weighs the plastic its households put out for recycling each year, in metric tons.",
+   "noun": "metric tons",
+   "what": "plastic recycled",
+   "from": [
+    120,
+    900
+   ],
+   "step": 5,
+   "pct": [
+    -30,
+    80
+   ]
+  },
+  {
+   "id": "cod-catch",
+   "topic": "overfishing",
+   "types": [
+    "pct-change"
+   ],
+   "lead": "A fishing fleet reports its yearly cod catch, in metric tons.",
+   "noun": "metric tons",
+   "what": "the cod catch",
+   "from": [
+    20000,
+    90000
+   ],
+   "step": 500,
+   "pct": [
+    -70,
+    -10
+   ]
+  },
+  {
+   "id": "co2-ppm",
+   "topic": "greenhouse-gas-increases",
+   "types": [
+    "pct-change"
+   ],
+   "lead": "An observatory reports the yearly average CO₂ concentration in parts per million (ppm).",
+   "noun": "ppm",
+   "what": "the CO₂ concentration",
+   "from": [
+    315,
+    340
+   ],
+   "step": 1,
+   "pct": [
+    10,
+    30
+   ],
+   "years": [
+    1960,
+    1975
+   ]
+  },
+  {
+   "id": "msw-recycled",
+   "topic": "solid-waste",
+   "types": [
+    "pct-of"
+   ],
+   "lead": "A city produces {q} metric tons of municipal solid waste a year, and {pct}% of it is paper and cardboard.",
+   "ask": "how many metric tons of paper and cardboard the city produces each year.",
+   "q": [
+    50000,
+    400000
+   ],
+   "qStep": 1000,
+   "pct": [
+    15,
+    35
+   ],
+   "pStep": 1,
+   "unit": "tonne",
+   "units": [
+    "metric tons",
+    "metric ton",
+    "tonnes",
+    "t"
+   ],
+   "unitWord": "metric tons"
+  },
+  {
+   "id": "irrigation-share",
+   "topic": "irrigation",
+   "types": [
+    "pct-of"
+   ],
+   "lead": "A farm district withdraws {q} m³ of fresh water a year, and {pct}% of it is lost to evaporation from open irrigation ditches.",
+   "ask": "how many cubic meters are lost to evaporation each year.",
+   "q": [
+    200000,
+    900000
+   ],
+   "qStep": 10000,
+   "pct": [
+    10,
+    40
+   ],
+   "pStep": 5,
+   "unit": "m3",
+   "units": [
+    "m^3",
+    "cubic meters",
+    "m³",
+    "cubic meter"
+   ],
+   "unitWord": "m³"
+  },
+  {
+   "id": "city-double",
+   "topic": "math-doubling",
+   "types": [
+    "doubling"
+   ],
+   "lead": "A city of {n0} people in {y0} grows by {rate}% each year.",
+   "what": "city",
+   "pop": [
+    200000,
+    900000
+   ],
+   "popStep": 10000
+  },
+  {
+   "id": "country-double",
+   "topic": "human-population",
+   "types": [
+    "doubling"
+   ],
+   "lead": "A country had {n0} million people in {y0}, growing {rate}% a year.",
+   "what": "population",
+   "pop": [
+    8,
+    60
+   ],
+   "popStep": 1,
+   "scale": "million"
+  },
+  {
+   "id": "algae-double",
+   "topic": "math-doubling",
+   "types": [
+    "doubling"
+   ],
+   "lead": "A pond had {n0} algal cells per milliliter in {y0}, and the cell count grows by {rate}% each year as fertilizer runoff increases.",
+   "what": "cell count",
+   "pop": [
+    2000,
+    9000
+   ],
+   "popStep": 100,
+   "years": [
+    2018,
+    2024
+   ],
+   "rates": [
+    2,
+    2.5,
+    3.5,
+    5,
+    7
+   ]
+  },
+  {
+   "id": "cbr-cdr",
+   "topic": "human-population",
+   "types": [
+    "growth"
+   ],
+   "lead": "A country is in the second stage of the demographic transition.",
+   "cbr": [
+    22,
+    38
+   ],
+   "cdr": [
+    6,
+    12
+   ]
+  },
+  {
+   "id": "cbr-cdr-late",
+   "topic": "human-population",
+   "types": [
+    "growth"
+   ],
+   "lead": "A country is late in the demographic transition.",
+   "cbr": [
+    11,
+    18
+   ],
+   "cdr": [
+    6,
+    9
+   ]
+  },
+  {
+   "id": "town-migration",
+   "topic": "human-population",
+   "types": [
+    "growth"
+   ],
+   "migration": true,
+   "lead": "A town has {N} people at the start of the year.",
+   "pop": [
+    20000,
+    90000
+   ],
+   "popStep": 1000,
+   "b": [
+    300,
+    1200
+   ],
+   "d": [
+    200,
+    700
+   ],
+   "im": [
+    100,
+    900
+   ],
+   "em": [
+    50,
+    600
+   ]
+  },
+  {
+   "id": "deer-yearly",
+   "topic": "population-growth",
+   "types": [
+    "projection"
+   ],
+   "form": "yearly",
+   "lead": "A herd of {n0} deer on an island with no predators grows {rate}% a year.",
+   "what": "herd size",
+   "pop": [
+    200,
+    900
+   ],
+   "popStep": 10,
+   "rate": [
+    5,
+    15
+   ],
+   "t": [
+    2,
+    4
+   ],
+   "unit": "deer",
+   "units": [
+    "deer"
+   ],
+   "unitWord": "deer"
+  },
+  {
+   "id": "nation-doublings",
+   "topic": "math-doubling",
+   "types": [
+    "projection"
+   ],
+   "lead": "A nation of {n0} people grows by {rate}% each year.",
+   "what": "population",
+   "pop": [
+    2000000,
+    9000000
+   ],
+   "popStep": 100000,
+   "unit": "people",
+   "units": [
+    "persons",
+    "person"
+   ],
+   "unitWord": "people"
+  },
+  {
+   "id": "grassland",
+   "topic": "energy-flow",
+   "types": [
+    "ten-percent"
+   ],
+   "lead": "The grasses of a prairie store {E} kcal/m²/yr in new biomass (their NPP).",
+   "energy": [
+    10000,
+    40000
+   ],
+   "energyStep": 1000,
+   "levels": [
+    "grasses",
+    "grasshoppers",
+    "meadowlarks",
+    "snakes",
+    "hawks"
+   ],
+   "unit": "kcal/m2/yr",
+   "units": [
+    "kcal per m2 per year",
+    "kcal/m^2/yr",
+    "kcal/m²/yr"
+   ]
+  },
+  {
+   "id": "lake",
+   "topic": "energy-flow",
+   "types": [
+    "ten-percent"
+   ],
+   "lead": "The phytoplankton in a lake capture {E} kJ of energy in new biomass each year.",
+   "energy": [
+    100000,
+    900000
+   ],
+   "energyStep": 10000,
+   "levels": [
+    "phytoplankton",
+    "zooplankton",
+    "minnows",
+    "perch",
+    "herons"
+   ],
+   "unit": "kJ",
+   "units": [
+    "kilojoules"
+   ]
+  },
+  {
+   "id": "forest-npp",
+   "topic": "primary-productivity",
+   "types": [
+    "npp"
+   ],
+   "lead": "Researchers measure a temperate forest.",
+   "gpp": [
+    2000,
+    6000
+   ],
+   "step": 100,
+   "unit": "kcal/m2/yr",
+   "units": [
+    "kcal per m2 per year",
+    "kcal/m^2/yr",
+    "kcal/m²/yr"
+   ]
+  },
+  {
+   "id": "marsh-npp",
+   "topic": "primary-productivity",
+   "types": [
+    "npp"
+   ],
+   "lead": "Researchers measure a salt marsh, one of the most productive ecosystems.",
+   "gpp": [
+    18000,
+    36000
+   ],
+   "step": 1000,
+   "unit": "kJ/m2/yr",
+   "units": [
+    "kJ per m2 per year",
+    "kJ/m^2/yr",
+    "kJ/m²/yr"
+   ]
+  },
+  {
+   "id": "sr90",
+   "topic": "nuclear-power",
+   "types": [
+    "half-life"
+   ],
+   "lead": "A sample of nuclear waste holds {a} g of strontium-90.",
+   "hl": 29,
+   "n": [
+    2,
+    5
+   ],
+   "amount": [
+    80,
+    640
+   ],
+   "amountStep": 40,
+   "tu": "years",
+   "unit": "g",
+   "units": [
+    "grams"
+   ]
+  },
+  {
+   "id": "pesticide-soil",
+   "topic": "pest-control",
+   "types": [
+    "half-life"
+   ],
+   "lead": "A field is sprayed so its soil holds {a} mg of a pesticide per kilogram.",
+   "hl": 45,
+   "n": [
+    2,
+    4
+   ],
+   "amount": [
+    16,
+    96
+   ],
+   "amountStep": 8,
+   "tu": "days",
+   "unit": "mg/kg",
+   "units": [
+    "mg per kg",
+    "milligrams per kilogram"
+   ]
+  },
+  {
+   "id": "gal-to-l",
+   "topic": "math-units",
+   "types": [
+    "convert"
+   ],
+   "lead": "A household uses {v} gallons of water a day.",
+   "ask": "Convert this to liters per day (1 gal = 3.785 L).",
+   "start": [
+    80,
+    400
+   ],
+   "startStep": 10,
+   "startUnit": "gal",
+   "startTyped": "gal/day",
+   "factors": [
+    [
+     3.785,
+     "L",
+     1,
+     "gal",
+     "L",
+     "gal",
+     "L",
+     "gal"
+    ]
+   ],
+   "setupUnit": "L/day",
+   "typedList": "gal, L, day",
+   "answerUnit": "L/day",
+   "units": [
+    "liters per day",
+    "L per day",
+    "liters/day"
+   ],
+   "places": 1,
+   "startShow": "gal/day",
+   "answerShow": "L/day",
+   "flipAt": 0
+  },
+  {
+   "id": "acre-to-ha",
+   "topic": "math-units",
+   "types": [
+    "convert"
+   ],
+   "lead": "A farm plants {v} acres of corn.",
+   "ask": "Convert this to hectares (1 ha = 2.47 acres).",
+   "start": [
+    200,
+    1500
+   ],
+   "startStep": 20,
+   "startUnit": "acre",
+   "startTyped": "acres",
+   "factors": [
+    [
+     1,
+     "ha",
+     2.47,
+     "acre",
+     "ha",
+     "acres",
+     "ha",
+     "acres"
+    ]
+   ],
+   "setupUnit": "ha",
+   "typedList": "acres, ha",
+   "answerUnit": "ha",
+   "units": [
+    "hectares",
+    "hectare"
+   ],
+   "places": 1,
+   "startShow": "acres",
+   "answerShow": "ha",
+   "flipAt": 0
+  },
+  {
+   "id": "kwh-to-btu",
+   "topic": "math-units",
+   "types": [
+    "convert"
+   ],
+   "lead": "A home uses {v} kWh of electricity in a month.",
+   "ask": "Convert this to BTU (1 kWh = 3,412 BTU).",
+   "start": [
+    400,
+    1400
+   ],
+   "startStep": 10,
+   "startUnit": "kWh",
+   "startTyped": "kWh",
+   "factors": [
+    [
+     3412,
+     "BTU",
+     1,
+     "kWh",
+     "BTU",
+     "kWh",
+     "BTU",
+     "kWh"
+    ]
+   ],
+   "setupUnit": "BTU",
+   "typedList": "kWh, BTU",
+   "answerUnit": "BTU",
+   "units": [
+    "BTUs",
+    "Btu"
+   ],
+   "places": 0,
+   "startShow": "kWh",
+   "answerShow": "BTU",
+   "flipAt": 0,
+   "tip": "Write each factor so the unit you want to cancel is on the bottom."
+  },
+  {
+   "id": "coal-plant",
+   "topic": "fossil-fuels",
+   "types": [
+    "emissions"
+   ],
+   "lead": "A coal-fired power plant generates {v} kWh of electricity in a day. It releases 0.9 kg of CO₂ per kWh.",
+   "ask": "Calculate the CO₂ it releases that day, in metric tons (1 metric ton = 1,000 kg).",
+   "start": [
+    2000000,
+    9000000
+   ],
+   "startStep": 100000,
+   "startUnit": "kWh",
+   "startTyped": "kWh",
+   "factors": [
+    [
+     0.9,
+     "kg CO2",
+     1,
+     "kWh",
+     "kg CO2",
+     "kWh",
+     "kg CO₂",
+     "kWh"
+    ],
+    [
+     1,
+     "tonne CO2",
+     1000,
+     "kg CO2",
+     "tonne",
+     "kg",
+     "metric ton",
+     "kg"
+    ]
+   ],
+   "setupUnit": "tonne",
+   "typedList": "kWh, kg CO2, tonne",
+   "answerUnit": "tonne CO2",
+   "units": [
+    "metric tons CO2",
+    "metric tons of CO2",
+    "tonne",
+    "tonnes",
+    "metric tons",
+    "tonnes CO2"
+   ],
+   "places": 0,
+   "startShow": "kWh",
+   "answerShow": "metric tons CO₂",
+   "flipAt": 1
+  },
+  {
+   "id": "car-commute",
+   "topic": "fuel-types",
+   "types": [
+    "emissions"
+   ],
+   "lead": "A commuter drives {v} miles a year in a car that gets 30 miles per gallon. Burning 1 gallon of gasoline releases 8.9 kg of CO₂.",
+   "ask": "Calculate the CO₂ the car releases in a year, in kg.",
+   "start": [
+    6000,
+    20000
+   ],
+   "startStep": 500,
+   "startUnit": "mi",
+   "startTyped": "mi",
+   "factors": [
+    [
+     1,
+     "gal",
+     30,
+     "mi",
+     "gal",
+     "mi",
+     "gal",
+     "mi"
+    ],
+    [
+     8.9,
+     "kg CO2",
+     1,
+     "gal",
+     "kg CO2",
+     "gal",
+     "kg CO₂",
+     "gal"
+    ]
+   ],
+   "setupUnit": "kg",
+   "typedList": "mi, gal, kg CO2",
+   "answerUnit": "kg CO2",
+   "units": [
+    "kg",
+    "kilograms CO2",
+    "kg of CO2",
+    "kilograms"
+   ],
+   "places": 0,
+   "startShow": "mi",
+   "answerShow": "kg CO₂",
+   "flipAt": 0
+  },
+  {
+   "id": "field-water",
+   "topic": "irrigation",
+   "types": [
+    "water"
+   ],
+   "lead": "A farmer applies {vol} liters of irrigation water to {area} hectares of cotton in one season.",
+   "volume": [
+    2000000,
+    9000000
+   ],
+   "volStep": 100000,
+   "area": [
+    20,
+    80
+   ],
+   "vu": "L",
+   "au": "ha",
+   "areaWord": "hectare",
+   "units": [
+    "liters per hectare",
+    "L per ha",
+    "liters/hectare"
+   ],
+   "vShow": "L",
+   "aShow": "ha"
+  },
+  {
+   "id": "msw-per-person",
+   "topic": "math-rates",
+   "types": [
+    "per-capita"
+   ],
+   "lead": "A city of {pop} people throws away {total} kg of trash in a year.",
+   "ask": "Calculate the trash per person per year.",
+   "total": [
+    30,
+    90
+   ],
+   "totalStep": 1,
+   "totalScale": 1000000,
+   "pop": [
+    50,
+    200
+   ],
+   "popStep": 5,
+   "popScale": 1000,
+   "tu": "kg",
+   "nu": "people",
+   "perWord": "person",
+   "answerUnit": "kg/person",
+   "units": [
+    "kg per person",
+    "kilograms per person",
+    "kg/person/yr",
+    "kg per person per year"
+   ],
+   "places": 1,
+   "answerShow": "kg per person",
+   "tShow": "kg",
+   "nShow": "people"
+  },
+  {
+   "id": "county-density",
+   "topic": "math-rates",
+   "types": [
+    "per-capita"
+   ],
+   "density": true,
+   "useWords": true,
+   "lead": "A county of {total} people covers {pop} km².",
+   "ask": "Calculate its population density.",
+   "total": [
+    1,
+    9
+   ],
+   "totalStep": 0.5,
+   "totalScale": 1000000,
+   "pop": [
+    800,
+    4000
+   ],
+   "popStep": 100,
+   "popScale": 1,
+   "tu": "people",
+   "nu": "km2",
+   "perWord": "square kilometer",
+   "answerUnit": "people/km2",
+   "units": [
+    "people per km2",
+    "people per square kilometer",
+    "people/km^2",
+    "persons/km2",
+    "people/km²"
+   ],
+   "places": 1,
+   "answerShow": "people per km²",
+   "tShow": "people",
+   "nShow": "km²"
+  },
+  {
+   "id": "plant-chain",
+   "topic": "fossil-fuels",
+   "types": [
+    "efficiency"
+   ],
+   "lead": "Energy from coal reaches a home in steps, each with its own efficiency:",
+   "stages": [
+    {
+     "name": "boiler",
+     "eff": [
+      80,
+      90
+     ]
+    },
+    {
+     "name": "turbine and generator",
+     "eff": [
+      38,
+      45
+     ]
+    },
+    {
+     "name": "power lines",
+     "eff": [
+      90,
+      95
+     ]
+    }
+   ],
+   "from": "coal",
+   "to": "electricity at the home"
+  },
+  {
+   "id": "plant-input",
+   "topic": "energy-conservation",
+   "types": [
+    "efficiency"
+   ],
+   "form": "input",
+   "lead": "A gas-fired plant turns fuel into electricity in two steps:",
+   "stages": [
+    {
+     "name": "combustion turbine",
+     "eff": [
+      30,
+      40
+     ]
+    },
+    {
+     "name": "power lines",
+     "eff": [
+      90,
+      95
+     ]
+    }
+   ],
+   "out": [
+    100,
+    900
+   ],
+   "outStep": 10,
+   "ask": "How many MWh of fuel energy are needed to deliver {out} MWh to homes?",
+   "unit": "MWh",
+   "units": [
+    "megawatt-hours"
+   ]
+  },
+  {
+   "id": "led-bulbs",
+   "topic": "energy-conservation",
+   "types": [
+    "cost"
+   ],
+   "money": true,
+   "lead": "A family uses {before} kWh a month on lighting. After switching to LED bulbs it uses {after} kWh a month.",
+   "priceText": "Electricity costs {price} per kWh.",
+   "ask": "Calculate the money saved in a year.",
+   "before": [
+    120,
+    300
+   ],
+   "cut": [
+    60,
+    200
+   ],
+   "step": 5,
+   "price": [
+    0.1,
+    0.25
+   ],
+   "priceStep": 0.01,
+   "per": "month",
+   "perN": 12,
+   "qu": "kWh",
+   "pu": "$",
+   "units": [
+    "dollars",
+    "USD",
+    "$/yr",
+    "dollars per year",
+    "$ per year"
+   ],
+   "answerUnit": "$",
+   "quShow": "kWh",
+   "answerShow": "dollars"
+  },
+  {
+   "id": "co2-saved",
+   "topic": "energy-conservation",
+   "types": [
+    "cost"
+   ],
+   "lead": "A school uses {before} kWh a day. Insulation and new windows cut that to {after} kWh a day.",
+   "priceText": "Its electricity releases {price} kg of CO₂ per kWh.",
+   "ask": "Calculate the CO₂ emissions avoided in a year (365 days), in kg.",
+   "before": [
+    800,
+    2000
+   ],
+   "cut": [
+    100,
+    500
+   ],
+   "step": 10,
+   "price": [
+    0.4,
+    0.9
+   ],
+   "priceStep": 0.05,
+   "per": "day",
+   "perN": 365,
+   "qu": "kWh",
+   "pu": "kg",
+   "units": [
+    "kg CO2",
+    "kilograms",
+    "kg of CO2",
+    "kg/yr",
+    "kg per year"
+   ],
+   "answerUnit": "kg",
+   "quShow": "kWh",
+   "answerShow": "kg CO₂"
+  },
+  {
+   "id": "rat-ld50",
+   "topic": "lethal-dose-50",
+   "types": [
+    "dose"
+   ],
+   "lead": "A lab tests a new herbicide on rats.",
+   "animals": "rats",
+   "target": "animals",
+   "ld50": [
+    50,
+    400
+   ],
+   "ldStep": 10,
+   "mass": [
+    5,
+    40
+   ]
+  },
+  {
+   "id": "dde-chain",
+   "topic": "bioaccumulation-biomagnification",
+   "types": [
+    "biomag"
+   ],
+   "lead": "Lake water holds {c0} ppm of a persistent pesticide.",
+   "c0": [
+    2e-05,
+    5e-05,
+    0.0001,
+    0.0002
+   ],
+   "factor": [
+    10
+   ],
+   "chain": [
+    "water",
+    "zooplankton",
+    "small fish",
+    "large fish",
+    "ospreys"
+   ]
+  },
+  {
+   "id": "mercury-chain",
+   "topic": "bioaccumulation-biomagnification",
+   "types": [
+    "biomag"
+   ],
+   "lead": "The plankton in a bay hold {c0} ppm of methylmercury.",
+   "c0": [
+    0.001,
+    0.002,
+    0.004,
+    0.005
+   ],
+   "factor": [
+    5,
+    8,
+    10
+   ],
+   "chain": [
+    "plankton",
+    "krill",
+    "herring",
+    "tuna",
+    "orcas"
+   ]
+  },
+  {
+   "id": "tfr-high",
+   "topic": "total-fertility-rate",
+   "types": [
+    "tfr"
+   ],
+   "lead": "A country early in the demographic transition.",
+   "level": [
+    180,
+    260
+   ]
+  },
+  {
+   "id": "tfr-low",
+   "topic": "total-fertility-rate",
+   "types": [
+    "tfr"
+   ],
+   "lead": "A wealthy industrialized country.",
+   "level": [
+    60,
+    110
+   ]
+  },
+  {
+   "id": "energy-per-person",
+   "topic": "math-sci-notation",
+   "types": [
+    "scale"
+   ],
+   "lead": "A country of {pop} uses {total} of electricity in a year.",
+   "ask": "Calculate the electricity used per person, in kWh.",
+   "total": [
+    1.5,
+    9.5
+   ],
+   "totalStep": 0.1,
+   "totalScale": 1000000000,
+   "totalWord": "billion kWh",
+   "pop": [
+    1.5,
+    9.5
+   ],
+   "popStep": 0.1,
+   "popScale": 1000000,
+   "popWord": "million people",
+   "tu": "kWh",
+   "units": [
+    "kWh per person",
+    "kilowatt-hours per person",
+    "kWh/person"
+   ],
+   "tShow": "kWh"
+  },
+  {
+   "id": "water-per-person",
+   "topic": "math-sci-notation",
+   "types": [
+    "scale"
+   ],
+   "lead": "A state of {pop} withdraws {total} of fresh water a year.",
+   "ask": "Calculate the water withdrawn per person, in liters.",
+   "total": [
+    2.0,
+    9.0
+   ],
+   "totalStep": 0.5,
+   "totalScale": 1000000000000,
+   "totalWord": "trillion liters",
+   "pop": [
+    2.0,
+    9.5
+   ],
+   "popStep": 0.5,
+   "popScale": 1000000,
+   "popWord": "million people",
+   "tu": "L",
+   "units": [
+    "liters per person",
+    "L per person",
+    "liters/person"
+   ],
+   "tShow": "L"
+  }
+ ]
+}

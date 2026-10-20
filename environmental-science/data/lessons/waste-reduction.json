@@ -1,0 +1,72 @@
+{
+ "topic": "waste-reduction",
+ "hook": "When a city started charging households for each bag of trash, landfill trash fell by about a third within a year. People did not stop shopping. They put more in the recycling bin, started composting food and yard waste, and bought less packaging. A small price changed a lot of habits.",
+ "prereq": [
+  {
+   "q": "What gas forms when food decomposes in a landfill?",
+   "options": [
+    "Methane",
+    "Ozone",
+    "Radon",
+    "Sulfur dioxide"
+   ],
+   "correct": 0,
+   "why": "Without oxygen, decomposition makes methane.",
+   "review": "solid-waste"
+  },
+  {
+   "q": "About what share of United States municipal solid waste was landfilled in 2018?",
+   "options": [
+    "About half",
+    "About 10%",
+    "About 90%",
+    "None"
+   ],
+   "correct": 0,
+   "why": "The EPA reported 146.1 of 292.4 million tons, about 50%.",
+   "review": "solid-waste"
+  }
+ ],
+ "figure": {
+  "figure": "waste-reduction-hierarchy",
+  "caption": "The waste hierarchy: reduce first, then reuse, recycle and compost, then recover energy, and landfill last."
+ },
+ "chain": [
+  {
+   "cause": "Products are designed with less material and people buy less (source reduction)",
+   "effect": "less waste is created at all"
+  },
+  {
+   "cause": "Items are reused or repaired",
+   "effect": "fewer new products must be made, saving materials and energy"
+  },
+  {
+   "cause": "Materials are recycled and food and yard waste is composted",
+   "effect": "less goes to landfills, less ore is mined, and less landfill methane forms"
+  },
+  {
+   "cause": "What remains can be burned for energy, and landfills capture their methane",
+   "effect": "some energy is recovered from waste that could not be avoided"
+  }
+ ],
+ "ideas": [
+  "The waste hierarchy: <b>reduce</b>, <b>reuse</b>, <b>recycle</b> and compost, recover energy, then landfill. The earlier steps save the most.",
+  "<b>Source reduction</b> means making less waste in the first place: less packaging, durable products, buying only what is needed.",
+  "<b>Recycling</b> saves resources and energy (aluminum about 95%) but costs money to collect and sort; some plastics have weak markets. <b>Composting</b> turns food and yard waste into humus and avoids landfill methane.",
+  "Other tools: <b>landfill gas</b> capture for electricity, e-waste recycling, and policies such as deposits, bag fees and pay-as-you-throw."
+ ],
+ "misconception": {
+  "wrong": "Recycling is the best thing you can do about waste.",
+  "right": "Reducing and reusing come first, because they avoid making the waste at all. Recycling is better than landfilling, but it still uses energy to collect, sort and process materials."
+ },
+ "check": [
+  "env-waste-reduction-8",
+  "env-waste-reduction-9",
+  "env-waste-reduction-1",
+  "env-waste-reduction-2",
+  "env-waste-reduction-3",
+  "env-waste-reduction-4",
+  "env-waste-reduction-14"
+ ],
+ "summary": "Waste is reduced by following the hierarchy: reduce first (less packaging, durable goods), then reuse, then recycle and compost, then recover energy, with landfilling last. Recycling saves materials and energy but has costs; composting turns food and yard waste into soil and avoids landfill methane. Policies such as pay-as-you-throw, bag fees and deposits shift behavior, and landfill gas can generate electricity."
+}

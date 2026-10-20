@@ -1,0 +1,20 @@
+{
+ "sewage-treatment": {
+  "def": "The process of cleaning wastewater from homes and businesses before it is released, in stages: primary (physical), secondary (biological), tertiary (nutrient and chemical removal) and disinfection."
+ },
+ "primary-treatment": {
+  "def": "The first, physical stage of sewage treatment: screens and grit chambers remove debris and sand, and settling tanks let solids sink as sludge while grease is skimmed off."
+ },
+ "secondary-treatment": {
+  "def": "The biological stage of sewage treatment: microbes in aerated tanks break down dissolved organic matter, greatly reducing its biochemical oxygen demand (BOD)."
+ },
+ "tertiary-treatment": {
+  "def": "Extra treatment after the secondary stage that removes nutrients such as nitrogen and phosphorus, and sometimes other chemicals, using filters and chemical or biological processes."
+ },
+ "sludge": {
+  "def": "The solid material removed from wastewater during treatment. It is usually digested by microbes (which can make methane for energy), then dried and landfilled, burned or used as fertilizer."
+ },
+ "septic-system": {
+  "def": "A wastewater system for a single home: an underground tank where solids settle and bacteria break some down, and a drain field where soil filters the liquid that flows out."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "urbanization-hydrograph": {
+  "file": "figures/urbanization-hydrograph.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph, invented data for practice. Stream flow in cubic meters per second after the same storm. Before development (fields and forest) the flow rises slowly to a peak of 14 at 10 hours and stays high for many hours. After the watershed is paved and built up, the flow rises fast to a peak of 34 at 3 hours, then drops quickly."
+ }
+}

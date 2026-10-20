@@ -1,0 +1,68 @@
+{
+ "topic": "math-rates",
+ "hook": "Which city wastes more water: one that uses 200 million liters a day, or one that uses 20 million? You cannot tell until you know how many people live in each. Dividing a total by the number of people, the area or the time turns raw totals into rates you can compare fairly, and the exam asks for them constantly.",
+ "prereq": [
+  {
+   "q": "What is $\\frac{6.0 \\times 10^{7}}{2.0 \\times 10^{3}}$?",
+   "options": [
+    "$3.0 \\times 10^{4}$",
+    "$3.0 \\times 10^{10}$",
+    "$12 \\times 10^{4}$",
+    "$3.0 \\times 10^{21}$"
+   ],
+   "correct": 0,
+   "why": "Divide the fronts (3.0) and subtract the exponents (7 - 3 = 4).",
+   "review": "math-sci-notation"
+  },
+  {
+   "q": "Which reservoir holds most of Earth’s freshwater that is not ice?",
+   "options": [
+    "Groundwater",
+    "Rivers",
+    "Clouds",
+    "Lakes"
+   ],
+   "correct": 0,
+   "why": "Groundwater holds far more than lakes, rivers and the air.",
+   "review": "water-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "math-rates-per-person",
+  "caption": "The bigger total is not always the bigger amount per person."
+ },
+ "chain": [
+  {
+   "cause": "Divide a total by the number of people",
+   "effect": "you get a per-capita value"
+  },
+  {
+   "cause": "Divide by an area or a time instead",
+   "effect": "you get a density or a rate per unit of time"
+  },
+  {
+   "cause": "Keep the units in the setup",
+   "effect": "the answer’s unit tells you what you found: L per person, people per km²"
+  }
+ ],
+ "ideas": [
+  "A <b>rate</b> compares two quantities with different units: liters per day, people per km², kg per person.",
+  "A <b>unit rate</b> is a rate for one unit of the second quantity: 150 L per 1 person.",
+  "<b>Per capita</b> means per person: the total ÷ the population.",
+  "The word after \"per\" goes on the bottom: liters per km = L ÷ km."
+ ],
+ "misconception": {
+  "wrong": "The place with the biggest total uses resources the most heavily.",
+  "right": "Big totals often just mean more people. Divide by the population (per capita) before you decide who uses more."
+ },
+ "check": [
+  "env-math-rates-1",
+  "env-math-rates-2",
+  "env-math-rates-5",
+  "env-math-rates-8",
+  "env-math-rates-9",
+  "env-math-rates-10",
+  "env-math-rates-11"
+ ],
+ "summary": "A rate divides one quantity by another: liters per day, people per km², kilograms per person. A per-capita value divides a total by the number of people, so places of different sizes can be compared fairly. Write the setup with units: the word after \"per\" goes on the bottom, and the units of the answer tell you what you found."
+}

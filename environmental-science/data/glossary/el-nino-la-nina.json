@@ -1,0 +1,11 @@
+{
+ "upwelling": {
+  "def": "The rise of cold, nutrient-rich deep water to the ocean surface, often where winds push surface water away from a coast, as off Peru. It supports rich fisheries."
+ },
+ "el-nino": {
+  "def": "The warm phase of the El Niño-Southern Oscillation (ENSO): the trade winds weaken, warm water spreads east across the Pacific, upwelling off South America weakens and rain shifts east. It recurs every 2 to 7 years."
+ },
+ "la-nina": {
+  "def": "The cool phase of ENSO: the trade winds strengthen, upwelling off South America increases, the eastern Pacific is colder than average and rain is heavier in the western Pacific."
+ }
+}

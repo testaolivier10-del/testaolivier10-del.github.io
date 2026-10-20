@@ -1,0 +1,17 @@
+{
+ "municipal-solid-waste": {
+  "def": "Municipal solid waste (MSW): everyday trash from homes, schools and businesses, such as paper, food, yard waste, plastics, metals and glass. It does not include industrial, mining or farm waste."
+ },
+ "sanitary-landfill": {
+  "def": "An engineered site for burying solid waste, with a clay and plastic liner, leachate collection pipes, daily soil cover, methane gas wells and a final cap, designed to keep waste, liquid and gas from escaping."
+ },
+ "leachate": {
+  "def": "Liquid that forms when water seeps through buried waste and dissolves chemicals from it. Landfill liners and pipes collect it so it does not pollute groundwater."
+ },
+ "incineration": {
+  "def": "Burning solid waste at high temperature. It reduces waste volume by about 90% and can generate electricity (waste-to-energy), but releases air pollutants and leaves ash that may be toxic."
+ },
+ "e-waste": {
+  "def": "Discarded electronics such as phones, computers and televisions. They contain toxic metals such as lead, mercury and cadmium as well as valuable metals, so they need special recycling or disposal."
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "generalist": {
+  "def": "A species with a broad niche: it eats many kinds of food, lives in many habitats and tolerates a wide range of conditions, such as raccoons and coyotes. Generalists cope well with environmental change."
+ },
+ "specialist": {
+  "def": "A species with a narrow niche: it depends on a few foods, one kind of habitat or a narrow range of conditions, such as the giant panda and bamboo. Specialists are more likely to decline when their environment changes."
+ }
+}

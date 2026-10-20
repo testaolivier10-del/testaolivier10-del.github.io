@@ -1,0 +1,71 @@
+{
+ "topic": "hydroelectric",
+ "hook": "The water in a mountain reservoir was lifted there by the sun: evaporated from the ocean, carried as clouds, dropped as rain and snow. When a dam lets it fall through a turbine, that solar energy becomes electricity, with no fuel and no smoke. But a dam also floods a valley and turns a flowing river into a lake.",
+ "prereq": [
+  {
+   "q": "In a power plant, what does the generator do?",
+   "options": [
+    "Turns the spinning of a shaft into electricity",
+    "Burns the fuel",
+    "Cools the steam",
+    "Pumps water"
+   ],
+   "correct": 0,
+   "why": "A generator spins magnets past coils of wire to make electricity.",
+   "review": "fossil-fuels"
+  },
+  {
+   "q": "Which places are best for using falling water to make electricity?",
+   "options": [
+    "Steep rivers with steady flow",
+    "Flat deserts",
+    "Shallow ponds",
+    "Coastal salt flats"
+   ],
+   "correct": 0,
+   "why": "Much water dropping a long way carries the most energy.",
+   "review": "energy-resources-distribution"
+  }
+ ],
+ "figure": {
+  "figure": "hydroelectric-dam",
+  "caption": "A hydroelectric dam: water from the reservoir falls through the penstock to spin a turbine and generator, while the dam traps sediment and blocks fish."
+ },
+ "chain": [
+  {
+   "cause": "A dam holds water high in a reservoir",
+   "effect": "the water stores energy because of its height"
+  },
+  {
+   "cause": "Water falls through the penstock",
+   "effect": "it spins a turbine that turns a generator, making electricity with no fuel burned"
+  },
+  {
+   "cause": "The reservoir floods the valley and slows the river",
+   "effect": "land and homes are lost, sediment settles behind the dam, and decaying plants release methane"
+  },
+  {
+   "cause": "The dam blocks the river",
+   "effect": "fish migration is cut off and the river below gets less sediment and changed flow and temperature"
+  }
+ ],
+ "ideas": [
+  "<b>Hydroelectric power</b>: falling water spins a turbine and generator. Output depends on how much water flows and how far it falls.",
+  "Types: large dams with reservoirs (storage, flexible output), <b>run-of-the-river</b> systems (little or no reservoir, less flooding, output follows the river) and <b>tidal energy</b> (tides driven by the moon).",
+  "Advantages: renewable, no emissions while running, reliable, quick to adjust, reservoirs store energy and help control floods.",
+  "Disadvantages: flooded land and displaced people, blocked fish migration, trapped sediment, altered river flow and temperature, methane from decaying plants in reservoirs, and reduced output in droughts."
+ ],
+ "misconception": {
+  "wrong": "Hydroelectric power has no environmental impact because it is renewable and burns no fuel.",
+  "right": "Burning no fuel is not the same as no impact. Dams flood land, block fish, trap sediment and change rivers for hundreds of kilometers downstream."
+ },
+ "check": [
+  "env-hydroelectric-1",
+  "env-hydroelectric-2",
+  "env-hydroelectric-4",
+  "env-hydroelectric-8",
+  "env-hydroelectric-9",
+  "env-hydroelectric-10"
+ ],
+ "summary": "Hydroelectric power turns the energy of falling water into electricity with a turbine and generator. It is renewable, emits nothing while running and can be adjusted quickly, which makes it the world's largest renewable source of electricity. But dams flood valleys, displace people, block fish migration, trap sediment and change rivers downstream. Run-of-the-river and tidal systems avoid large reservoirs but have their own limits."
+}

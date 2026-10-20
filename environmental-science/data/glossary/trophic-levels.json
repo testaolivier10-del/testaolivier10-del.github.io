@@ -1,0 +1,14 @@
+{
+ "trophic-level": {
+  "def": "An organism’s position in a feeding sequence: producers are level 1, primary consumers level 2, secondary consumers level 3, tertiary consumers level 4."
+ },
+ "consumer": {
+  "def": "An organism that gets energy by eating other organisms (a heterotroph). Primary consumers eat producers, secondary consumers eat primary consumers, and tertiary consumers eat secondary consumers."
+ },
+ "herbivore": {
+  "def": "An animal that eats plants or algae (a primary consumer). A carnivore eats animals; an omnivore eats both plants and animals."
+ },
+ "apex-predator": {
+  "def": "A predator at the top of its feeding sequence, with no natural predators as an adult, such as a wolf, orca or eagle."
+ }
+}

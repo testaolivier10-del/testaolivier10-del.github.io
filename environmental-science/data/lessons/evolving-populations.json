@@ -1,0 +1,71 @@
+{
+ "topic": "evolving-populations",
+ "hook": "On a small island in the Galápagos, a drought killed most of the plants that make small, soft seeds. The seed-eating finches that survived were mostly those with deeper beaks, strong enough to crack the large, hard seeds that remained. Their chicks, hatched the next year, had deeper beaks on average than the birds before the drought. No bird changed its own beak. The population changed, because of who survived to breed.",
+ "prereq": [
+  {
+   "q": "What is a population bottleneck?",
+   "options": [
+    "A sharp drop in population size that leaves little genetic variety",
+    "A slow, steady rise in population size",
+    "A barrier that keeps two species apart",
+    "A food shortage that affects only one season"
+   ],
+   "correct": 0,
+   "why": "A bottleneck cuts the population to a few survivors, who carry only part of its genes.",
+   "review": "biodiversity"
+  },
+  {
+   "q": "How is a drought that happens every few years at uneven gaps classified?",
+   "options": [
+    "Episodic",
+    "Periodic",
+    "Random",
+    "Constant"
+   ],
+   "correct": 0,
+   "why": "Recurring at irregular intervals is episodic.",
+   "review": "natural-disruptions"
+  }
+ ],
+ "figure": {
+  "figure": "evolving-populations-beaks",
+  "caption": "Beak depth in an invented seed-eating bird before and after a drought: the offspring generation has more deep-beaked birds."
+ },
+ "chain": [
+  {
+   "cause": "Individuals in a population differ in heritable traits, such as beak depth",
+   "effect": "some individuals are better suited than others to the current environment"
+  },
+  {
+   "cause": "The environment changes, for example a drought leaves only hard seeds",
+   "effect": "individuals with suited traits (deep beaks) survive and reproduce more than others"
+  },
+  {
+   "cause": "Survivors pass their heritable traits to their offspring",
+   "effect": "the suited trait becomes more common in the next generation"
+  },
+  {
+   "cause": "This repeats over many generations",
+   "effect": "the population becomes adapted to its environment; if change is too fast, it may die out instead"
+  }
+ ],
+ "ideas": [
+  "<b>Natural selection</b>: individuals with heritable traits that suit their environment survive and reproduce more, so those traits become more common in the population over generations.",
+  "An <b>adaptation</b> is a heritable trait that helps an organism survive and reproduce in its environment, such as a deep beak for cracking hard seeds or thick fur in a cold climate.",
+  "Natural selection acts on <b>populations over generations</b>. An individual does not adapt during its life; the population shifts because some individuals leave more offspring.",
+  "Populations need genetic variety to adapt. When the environment changes faster than a population can adapt, the population may decline or die out."
+ ],
+ "misconception": {
+  "wrong": "During the drought, each finch grew a deeper beak so it could crack hard seeds.",
+  "right": "Beak depth is inherited and does not change because a bird needs it to. Finches that already had deeper beaks survived and bred more, so the next generation had deeper beaks on average."
+ },
+ "check": [
+  "env-evolving-populations-1",
+  "env-evolving-populations-2",
+  "env-evolving-populations-3",
+  "env-evolving-populations-4",
+  "env-evolving-populations-7",
+  "env-evolving-populations-9"
+ ],
+ "summary": "Populations respond to environmental change through natural selection. Individuals differ in heritable traits; those whose traits suit the environment survive and reproduce more, so those traits become more common over generations, and the population becomes adapted. Individuals do not adapt within their lifetime, and populations with little genetic variety, or facing very fast change, may not adapt in time."
+}

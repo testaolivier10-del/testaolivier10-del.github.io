@@ -1,0 +1,640 @@
+{
+ "stimuli": {
+  "integrated-pest-management-s1": {
+   "kind": "visual",
+   "title": "Weekly pest counts on one farm",
+   "figure": "integrated-pest-management-threshold"
+  },
+  "integrated-pest-management-s2": {
+   "kind": "quantitative",
+   "title": "Two apple orchards, one season",
+   "invented": true,
+   "table": {
+    "caption": "Pest control results in two neighboring 20-hectare apple orchards over one season (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Orchard A: sprays on a fixed schedule",
+     "Orchard B: integrated pest management"
+    ],
+    "rows": [
+     [
+      "Insecticide sprayings",
+      "12",
+      "4"
+     ],
+     [
+      "Insecticide used (kg per ha)",
+      "18",
+      "5"
+     ],
+     [
+      "Apples damaged by pests (%)",
+      "3",
+      "4"
+     ],
+     [
+      "Pest control cost (dollars per ha)",
+      "1,500",
+      "1,100"
+     ],
+     [
+      "Predatory mites per leaf",
+      "0.2",
+      "2.5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-integrated-pest-management-1",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the main goal of integrated pest management?",
+   "options": [
+    "Keep pests below damaging levels with little pesticide",
+    "Kill each pest on a farm with the strongest spray that is sold",
+    "Grow crops with no monitoring of the pests in the fields",
+    "Replace each pesticide with a stronger one each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "IPM aims to control damage, not to wipe out every pest, while limiting pesticide use.",
+    "options": [
+     "Right: control below a damaging level, with little spraying.",
+     "Total elimination with strong sprays is the approach IPM moves away from.",
+     "Monitoring is the heart of IPM.",
+     "Escalating sprays is the pesticide treadmill."
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-2",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Releasing ladybugs into a greenhouse to eat aphids is an example of",
+   "options": [
+    "biological control",
+    "chemical control",
+    "cultural control",
+    "a physical barrier"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Using a pest's natural enemy is biological control.",
+    "options": [
+     "Right: a predator controls the pest.",
+     "No chemical is used.",
+     "Cultural control changes how and when crops are grown.",
+     "A barrier is a net, fence or row cover."
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-3",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does IPM slow the evolution of pesticide resistance?",
+   "options": [
+    "Spraying less often selects less for resistance",
+    "IPM sprays more often, so no pests survive to breed",
+    "IPM uses one pesticide each year so pests are unable to adapt",
+    "Natural enemies make the pests' genes change back"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fewer sprayings means less selection pressure, so resistant pests gain less advantage.",
+    "options": [
+     "Right: less spraying, weaker selection.",
+     "IPM sprays less, not more.",
+     "Using one product repeatedly speeds resistance; IPM rotates methods.",
+     "Predators do not change pests' genes."
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-4",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a drawback of IPM for a farmer?",
+   "options": [
+    "It takes time, training and labor to monitor pests",
+    "It uses more pesticide than spraying on a fixed schedule",
+    "It kills more pollinators than ordinary spraying does",
+    "It speeds up the evolution of pesticide resistance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Scouting fields, learning thresholds and managing natural enemies takes skill and time.",
+    "options": [
+     "Right: knowledge and labor are the main cost.",
+     "IPM uses less pesticide.",
+     "Less spraying protects pollinators.",
+     "IPM slows resistance."
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-5",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A corn farmer finds that rootworm beetles are a problem each year in fields planted with corn every year. Which IPM step targets the cause?",
+   "options": [
+    "Planting soybeans in alternate years, so the larvae find no corn",
+    "Spraying the corn with insecticide each week of the season",
+    "Planting the corn a week earlier each year in the same fields",
+    "Doubling the fertilizer so that the corn plants outgrow the larvae"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rootworm larvae feed on corn roots. In a field rotated to soybeans, larvae that hatch find no food.",
+    "options": [
+     "Right: switching crops breaks the pest's life cycle.",
+     "Weekly spraying is not IPM and speeds resistance.",
+     "Same field, same corn keeps feeding the larvae.",
+     "Extra fertilizer adds runoff and does not stop the larvae."
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-6",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In IPM, why is a pest count below the action threshold not treated, even though some damage occurs?",
+   "options": [
+    "Treating would cost more than the damage and harm natural enemies",
+    "Pests below the threshold do no real damage to the crop plants",
+    "Pests below the threshold will die out by themselves in a few days",
+    "The law forbids treating pests until the threshold is passed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The threshold is set where the cost of damage begins to exceed the cost (and harm) of controlling it.",
+    "options": [
+     "Right: a little damage is cheaper than unneeded control.",
+     "Some damage occurs below the threshold; it is just not worth treating.",
+     "Pests below the threshold do not simply die out.",
+     "Thresholds are management choices, not laws."
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-7",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farm used 24 kg of insecticide per hectare on a fixed schedule. After switching to IPM, it uses 30% of that amount. How many kilograms per hectare does it use now?",
+   "why": {
+    "correct": "$24\\,\\frac{\\text{kg}}{\\text{ha}} \\times \\frac{30}{100} = 7.2$ kg per hectare."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      30,
+      24
+     ]
+    },
+    "unit": "kg/ha",
+    "units": [
+     "kg per ha",
+     "kg per hectare"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        70,
+        24
+       ]
+      },
+      "why": "16.8 kg is the 70% saved. The farm now uses 30% of the original."
+     },
+     {
+      "value": 720,
+      "why": "Thirty percent is 0.30, not 30. Multiply 24 by 0.30."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-8",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A school's vegetable garden has aphids. Propose an IPM step (other than spraying a pesticide) and explain how it works.",
+   "why": {
+    "correct": "A step that is not a pesticide, fitted to a small garden, with how it works: release or attract ladybugs, which eat aphids, keeping the aphid population below a damaging level."
+   },
+   "specific": {
+    "frame": "The school could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Step",
+      "options": [
+       "release ladybugs or plant flowers that attract them",
+       "spray a broad insecticide every week",
+       "stop checking the plants"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than spraying a pesticide.",
+       "2": "Monitoring is part of IPM."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "eat aphids, a natural predator-prey control",
+       "poison the soil so aphids cannot lay eggs",
+       "make the plants grow faster than aphids"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ladybugs do not poison soil.",
+       "2": "Ladybugs do not change plant growth."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "the aphid population stays below a damaging level",
+       "the aphids become resistant",
+       "the ladybugs eat the vegetables"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Predators do not select for pesticide resistance.",
+       "2": "Ladybugs eat insects, not vegetables."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "spray",
+      "pesticide",
+      "insecticide"
+     ],
+     "context": [
+      "ladybug",
+      "aphid",
+      "predator"
+     ]
+    },
+    "model": "The school could release ladybugs or plant flowers that attract them, because ladybugs eat aphids, a natural predator-prey control, so the aphid population stays below a damaging level."
+   }
+  },
+  {
+   "id": "env-integrated-pest-management-9",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In which week did the pest count pass the action threshold?",
+   "options": [
+    "Week 5",
+    "Week 4",
+    "Week 10",
+    "Week 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Week 5 had 12 aphids per leaf, above the threshold of 10.",
+    "options": [
+     "Right: 12 is above 10.",
+     "Week 4 had 8, below the threshold.",
+     "Week 10 had 9, below the threshold.",
+     "Week 1 had 2."
+    ]
+   },
+   "stimulus": "integrated-pest-management-s1"
+  },
+  {
+   "id": "env-integrated-pest-management-10",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in the aphid count from week 5 to week 6, after the targeted control, then give the answer.",
+   "why": {
+    "correct": "$\\frac{6 - 12}{12} \\times 100 = -50\\%$: the count halved."
+   },
+   "setup": {
+    "answer": "(6 - 12) / 12 * 100",
+    "mustUse": [
+     "6",
+     "12"
+    ],
+    "mistakes": [
+     {
+      "expr": "(6 - 12) / 6 * 100",
+      "why": "Divide by the starting value, the week 5 count of 12."
+     },
+     {
+      "expr": "(12 - 6) / 12 * 100",
+      "why": "Subtract old from new: (6 - 12). The count fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       12,
+       6
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -6,
+       "why": "-6 aphids per leaf is the change. Divide by 12 and multiply by 100."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         6,
+         12
+        ]
+       },
+       "why": "That is the change from week 6 back to week 5. Start from week 5."
+      }
+     ]
+    }
+   },
+   "stimulus": "integrated-pest-management-s1"
+  },
+  {
+   "id": "env-integrated-pest-management-11",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farm on a fixed schedule sprays every two weeks. How many sprayings would it make in these 10 weeks, compared with the IPM farm's one?",
+   "options": [
+    "5 sprayings, compared with 1",
+    "10 sprayings, compared with 1",
+    "2 sprayings, compared with 1",
+    "1 spraying, the same as IPM"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every two weeks over 10 weeks is $\\frac{10}{2} = 5$ sprayings; IPM sprayed once, in week 5.",
+    "options": [
+     "Right: 10 ÷ 2 = 5.",
+     "That would be weekly spraying.",
+     "Every two weeks gives more than 2 in 10 weeks.",
+     "The fixed schedule sprays regardless of counts."
+    ]
+   },
+   "stimulus": "integrated-pest-management-s1"
+  },
+  {
+   "id": "env-integrated-pest-management-12",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In weeks 7 to 10 the count rose again from 4 to 9. What should the IPM farmer do?",
+   "options": [
+    "Keep monitoring and act again if the count passes 10",
+    "Spray right away because the count is rising",
+    "Stop monitoring because the count is below 10",
+    "Release a new pesticide each week to stop the rise"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "IPM acts on the threshold, not on any rise; at 9 the count is still below 10.",
+    "options": [
+     "Right: watch and wait until the threshold.",
+     "A rise below the threshold does not call for spraying.",
+     "Monitoring continues all season.",
+     "Weekly pesticides are the opposite of IPM."
+    ]
+   },
+   "stimulus": "integrated-pest-management-s1"
+  },
+  {
+   "id": "env-integrated-pest-management-13",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in insecticide used per hectare from orchard A to orchard B, then give the answer.",
+   "why": {
+    "correct": "$\\frac{5 - 18}{18} \\times 100 \\approx -72.2\\%$: about 72% less insecticide."
+   },
+   "setup": {
+    "answer": "(5 - 18) / 18 * 100",
+    "mustUse": [
+     "5",
+     "18"
+    ],
+    "mistakes": [
+     {
+      "expr": "(5 - 18) / 5 * 100",
+      "why": "Divide by the starting value, orchard A's 18 kg per ha."
+     },
+     {
+      "expr": "5 / 18 * 100",
+      "why": "That is B as a percent of A (27.8%). Percent change subtracts first: (5 - 18) / 18 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       18,
+       5
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -13,
+       "why": "-13 kg per ha is the change. Divide by 18 and multiply by 100."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         5,
+         18
+        ]
+       },
+       "why": "That is the change from B to A. Start from orchard A."
+      }
+     ]
+    }
+   },
+   "stimulus": "integrated-pest-management-s2"
+  },
+  {
+   "id": "env-integrated-pest-management-14",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much money does orchard B save on pest control across its whole 20 hectares, compared with orchard A?",
+   "why": {
+    "correct": "$(1{,}500 - 1{,}100)\\,\\frac{\\text{dollars}}{\\text{ha}} \\times 20\\,\\text{ha} = 8{,}000$ dollars."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        1500,
+        1100
+       ]
+      },
+      20
+     ]
+    },
+    "unit": "$",
+    "units": [
+     "dollars"
+    ],
+    "mistakes": [
+     {
+      "value": 400,
+      "why": "400 dollars is the saving per hectare. Multiply by the 20 hectares."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        1100,
+        20
+       ]
+      },
+      "why": "That is orchard B's total cost. The saving is the difference times 20 ha."
+     }
+    ]
+   },
+   "stimulus": "integrated-pest-management-s2"
+  },
+  {
+   "id": "env-integrated-pest-management-15",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion is best supported by the table?",
+   "options": [
+    "IPM cut spraying and cost, with slightly more damage",
+    "IPM raised damaged apples sharply while costing more than spraying",
+    "Fixed spraying protected the predatory mites better than IPM did",
+    "IPM and fixed spraying used about the same amount of insecticide"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "B sprayed 4 times instead of 12, used 5 kg instead of 18, cost 400 dollars less per ha; damage was 4% against 3%.",
+    "options": [
+     "Right: much less spraying and cost, slightly more damage.",
+     "Damage rose by one percentage point, and IPM cost less.",
+     "Predatory mites were far higher under IPM (2.5 against 0.2).",
+     "5 and 18 kg per ha are far apart."
+    ]
+   },
+   "stimulus": "integrated-pest-management-s2"
+  },
+  {
+   "id": "env-integrated-pest-management-16",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why might orchard B need fewer sprayings in future seasons as well?",
+   "options": [
+    "Its predatory mites survive and eat the pest mites",
+    "Its pests have become resistant, so spraying them is no longer needed",
+    "Its apples are damaged more, so pests have less to eat next year",
+    "Its insecticide stays on the trees for many seasons after spraying"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Protecting natural enemies builds lasting biological control.",
+    "options": [
+     "Right: surviving predators keep controlling pests.",
+     "Resistance would make spraying fail, not unnecessary.",
+     "More damage does not starve the pests.",
+     "Long-lasting residues are not the IPM benefit."
+    ]
+   },
+   "stimulus": "integrated-pest-management-s2"
+  },
+  {
+   "id": "env-integrated-pest-management-17",
+   "unit": "unit-5",
+   "topic": "integrated-pest-management",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of an IPM program in a sensible order.",
+   "options": [
+    "Identify the pest and learn its life cycle",
+    "Monitor pest numbers regularly",
+    "Compare counts with the action threshold",
+    "Use biological, physical or cultural controls first",
+    "Use a targeted pesticide only if needed, then keep monitoring"
+   ],
+   "why": {
+    "correct": "Know the pest, watch it, decide by threshold, start with the least harmful tools, and spray only as a last resort."
+   }
+  }
+ ]
+}

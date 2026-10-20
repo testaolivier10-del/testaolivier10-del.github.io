@@ -1,0 +1,51 @@
+<p>Calculation questions rarely give numbers in the units the answer needs. A furnace is rated in BTU and the question wants kilowatt-hours; a car's tank is in gallons and the question wants liters; a daily rate has to become a yearly total. Readers give the setup point only when the conversion is written out so they can see the units cancel. Dimensional analysis is the one method that does all of these the same way.</p>
+
+<h2>Conversion factors are fractions equal to 1</h2>
+<p>Since 1 gallon is 3.79 liters, the fraction $\frac{3.79\,\text{L}}{1\,\text{gal}}$ equals 1, and so does its flip, $\frac{1\,\text{gal}}{3.79\,\text{L}}$. Multiplying by 1 never changes an amount; it only changes the units it is written in. Every <b>conversion factor</b> can be written either way up. You choose the way that cancels the unit you want to get rid of.</p>
+
+<h2>The method</h2>
+<ol>
+<li>Write the starting amount with its unit.</li>
+<li>Multiply by a conversion factor that has the unwanted unit on the <i>bottom</i>.</li>
+<li>Cancel units that appear on both the top and the bottom.</li>
+<li>Repeat until only the unit you want is left. Then multiply across.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example: gallons to liters.</b> A tank holds 25 gal. Use 1 gal = 3.79 L.</p>
+<p>Setup: $25\,\text{gal} \times \frac{3.79\,\text{L}}{1\,\text{gal}}$. Gallons cancel.</p>
+<p>Answer: $94.75$ L, about 95 L. A liter is smaller than a gallon, so more liters than gallons makes sense.</p>
+</div>
+
+<h2>Energy and power</h2>
+<p>Two ideas are easy to mix up. <b>Power</b> is how fast energy is used, measured in <b>watts</b> (W): one joule per second. A kilowatt (kW) is 1,000 W and a megawatt (MW) 1,000,000 W. <b>Energy</b> is the amount used, measured in joules (J), <b>kilowatt-hours</b> (kWh), British thermal units (BTU) or kilocalories (kcal, the "Calorie" on food labels).</p>
+<p>$$\text{energy} = \text{power} \times \text{time}$$</p>
+<table class="compare">
+<thead><tr><th>Unit</th><th>What it measures</th><th>Equal to</th></tr></thead>
+<tbody>
+<tr><th>watt (W), kilowatt (kW)</th><td>power</td><td>1 kW = 1,000 W</td></tr>
+<tr><th>kilowatt-hour (kWh)</th><td>energy</td><td>1 kWh = 3,600,000 J = about 3,412 BTU</td></tr>
+<tr><th>BTU</th><td>energy (heat)</td><td>about 1,055 J</td></tr>
+<tr><th>kilocalorie (kcal)</th><td>energy (food, ecology)</td><td>about 4,184 J</td></tr>
+</tbody>
+</table>
+<p>The exam gives any conversion it expects you to use (for example, "1 kWh = 3,400 BTU"). Use the number it gives, even if it is rounded.</p>
+<figure id="fig-chain" data-fig="math-units-chain"><figcaption>A pump drawing 2 kW for 6 hours a day for 30 days uses 360 kWh, and 360 kWh at \$0.15 per kWh costs \$54.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example: a multi-step chain.</b> A pump draws 2 kW and runs 6 hours a day for 30 days. Electricity costs \$0.15 per kWh. Find the energy and the cost.</p>
+<p>Energy setup: $30\,\text{days} \times \frac{6\,\text{h}}{1\,\text{day}} \times 2\,\text{kW}$. Days cancel; h × kW is kWh. Answer: 360 kWh.</p>
+<p>Cost setup: $360\,\text{kWh} \times \frac{\$0.15}{1\,\text{kWh}}$. kWh cancel. Answer: \$54.</p>
+</div>
+
+<h2>Watts to kilowatt-hours</h2>
+<p>Appliances are rated in watts. To get kWh, multiply watts by hours to get watt-hours, then divide by 1,000: a 60-W bulb on for 10 hours uses $60 \times 10 = 600$ Wh = 0.6 kWh. Forgetting the 1,000 gives an answer 1,000 times too big, one of the slips readers see most.</p>
+
+<h2>Emissions follow the same pattern</h2>
+<p>An emission factor is a conversion factor too: "0.4 kg of CO2 per kWh" is $\frac{0.4\,\text{kg CO2}}{1\,\text{kWh}}$. A household using 900 kWh a month for 12 months:</p>
+<p>$900\,\frac{\text{kWh}}{\text{month}} \times 12\,\text{months} \times \frac{0.4\,\text{kg CO2}}{1\,\text{kWh}} = 4{,}320$ kg CO2 in a year.</p>
+
+<h2>Checks before you move on</h2>
+<ul>
+<li>Every unit except the answer's should cancel. If something like "gal²/L" is left, a factor is upside down.</li>
+<li>Converting to a smaller unit makes the number bigger (kg to g); to a larger unit, smaller (Wh to kWh).</li>
+<li>Write the factors as arithmetic ($\times \frac{3.79\,\text{L}}{1\,\text{gal}}$), not as a separate equation like "1 gal = 3.79 L", so the reader sees the conversion inside the setup.</li>
+</ul>

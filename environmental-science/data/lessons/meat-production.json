@@ -1,0 +1,72 @@
+{
+ "topic": "meat-production",
+ "hook": "A steer in a feedlot gains more than a kilogram a day on corn and soybeans grown hundreds of kilometers away, standing on bare ground with thousands of others. A steer on a ranch gains more slowly on grass, spread over many hectares. Both end up as hamburger, and they leave very different marks on the land and water.",
+ "prereq": [
+  {
+   "q": "About what share of the energy at one trophic level reaches the next level?",
+   "options": [
+    "About 10%",
+    "About 50%",
+    "About 90%",
+    "About 1%"
+   ],
+   "correct": 0,
+   "why": "Most energy is used for life processes and lost as heat, so about 10% passes on.",
+   "review": "energy-flow"
+  },
+  {
+   "q": "What happens when a population overshoots its carrying capacity?",
+   "options": [
+    "It damages its resources and then declines (dies back)",
+    "It keeps growing at the same rate forever",
+    "Its carrying capacity rises to match it",
+    "Its birth rate rises sharply"
+   ],
+   "correct": 0,
+   "why": "Overshoot uses up resources faster than they renew, so the population and often the carrying capacity fall.",
+   "review": "carrying-limits"
+  }
+ ],
+ "figure": {
+  "figure": "meat-production-grazing",
+  "caption": "Continuous grazing on one pasture compared with rotational grazing across four paddocks."
+ },
+ "chain": [
+  {
+   "cause": "More cattle graze a pasture than its grass can support",
+   "effect": "grass is eaten faster than it regrows (overgrazing)"
+  },
+  {
+   "cause": "Plants and roots die and hooves pack the bare soil",
+   "effect": "rain runs off and wind and water erode the topsoil"
+  },
+  {
+   "cause": "In a dry region, soil and plant cover keep being lost",
+   "effect": "the land becomes desert-like (desertification)"
+  },
+  {
+   "cause": "Fewer plants and poorer soil support less grazing",
+   "effect": "ranchers crowd animals onto the land that is left, and the cycle speeds up"
+  }
+ ],
+ "ideas": [
+  "<b>Concentrated animal feeding operations</b> (CAFOs, feedlots) raise many animals in a small space on grain. Cheap and land-efficient on site, but they concentrate manure, use antibiotics heavily and need large areas of cropland for feed.",
+  "Free-range and <b>rotational grazing</b> spread animals over pasture. Manure fertilizes the land. Rotation lets each paddock regrow, but grazing needs much more land per kilogram of meat.",
+  "<b>Overgrazing</b> strips plants, compacts and erodes soil, and in dry regions can lead to <b>desertification</b>.",
+  "Meat sits a trophic level above plants, so it takes several kilograms of feed to make one kilogram of meat. Cattle also release methane as they digest grass."
+ ],
+ "misconception": {
+  "wrong": "Feedlots use less land than grazing, so feedlot beef has no land cost.",
+  "right": "The feedlot itself is small, but the corn and soybeans the animals eat are grown on large areas of cropland elsewhere, with their own fertilizer, water and fuel."
+ },
+ "check": [
+  "env-meat-production-1",
+  "env-meat-production-2",
+  "env-meat-production-9",
+  "env-meat-production-10",
+  "env-meat-production-11",
+  "env-meat-production-13",
+  "env-meat-production-14"
+ ],
+ "summary": "Meat is produced in concentrated animal feeding operations, which are cheap and use little land on site but concentrate manure and depend on feed crops, or on pasture by free-range and rotational grazing, which spreads the impact but needs more land. Overgrazing strips plant cover and erodes soil and in dry regions leads to desertification. Eating lower on the food chain uses less land and feed."
+}

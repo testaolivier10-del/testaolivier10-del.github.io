@@ -1,0 +1,84 @@
+{
+ "topic": "urbanization",
+ "hook": "A field of grass and a parking lot of the same size get the same summer storm. On the field, most of the rain soaks in. On the parking lot, almost all of it rushes into a storm drain, picking up oil, litter and heat, and reaches the river within minutes. Now picture a whole city built that way, and the river below it after every storm.",
+ "prereq": [
+  {
+   "q": "What is infiltration?",
+   "options": [
+    "Water soaking into the ground",
+    "Water flowing over the land surface",
+    "Water evaporating from leaves",
+    "Water vapor turning into droplets"
+   ],
+   "correct": 0,
+   "why": "Infiltration is water moving into the soil; runoff flows over the surface.",
+   "review": "water-cycle"
+  },
+  {
+   "q": "A surface with a low albedo",
+   "options": [
+    "absorbs most sunlight and warms up",
+    "reflects most sunlight and stays cool",
+    "lets sunlight pass straight through",
+    "gives off no heat at night"
+   ],
+   "correct": 0,
+   "why": "Albedo is the share of sunlight reflected; dark, low-albedo surfaces absorb more and warm.",
+   "review": "solar-radiation-seasons"
+  },
+  {
+   "q": "What is a watershed?",
+   "options": [
+    "The land area that drains into one stream, river or lake",
+    "A layer of rock that holds groundwater",
+    "A dam that stores water for a city",
+    "The line where fresh and salt water meet"
+   ],
+   "correct": 0,
+   "why": "A watershed is the land that drains to one body of water; an aquifer is underground.",
+   "review": "watersheds"
+  }
+ ],
+ "figure": {
+  "figure": "urbanization-hydrograph",
+  "caption": "The same storm, before and after the watershed was paved: the stream peaks higher and sooner. Invented data for practice."
+ },
+ "chain": [
+  {
+   "cause": "Land is covered with roofs, roads and parking lots",
+   "effect": "rain cannot soak in (less infiltration)"
+  },
+  {
+   "cause": "More water runs off, and storm drains carry it straight to streams",
+   "effect": "streams rise higher and faster, so floods are more frequent"
+  },
+  {
+   "cause": "Less water soaks in",
+   "effect": "groundwater is recharged less, and streams run lower between storms"
+  },
+  {
+   "cause": "Runoff flows over pavement",
+   "effect": "it carries oil, metals, salt, litter and heat into streams"
+  }
+ ],
+ "ideas": [
+  "<b>Urbanization</b> covers land with <b>impervious surfaces</b>. Less rain soaks in and more runs off, so floods rise higher and faster and groundwater is recharged less.",
+  "A coastal city that pumps groundwater faster than it is recharged can pull seawater into its aquifer: <b>saltwater intrusion</b>.",
+  "Cities are warmer than the countryside, an <b>urban heat island</b>: dark surfaces with low albedo absorb sunlight, and fewer plants cool the air.",
+  "<b>Urban sprawl</b> spreads low-density development onto farms and natural land, which adds roads, driving and paved area per person."
+ ],
+ "misconception": {
+  "wrong": "Cities flood because it rains more over cities.",
+  "right": "The rain is about the same; the land is different. Impervious surfaces stop rain from soaking in, and pipes deliver the runoff to streams all at once, so the same storm causes a higher, faster flood."
+ },
+ "check": [
+  "env-urbanization-1",
+  "env-urbanization-2",
+  "env-urbanization-9",
+  "env-urbanization-10",
+  "env-urbanization-11",
+  "env-urbanization-12",
+  "env-urbanization-13"
+ ],
+ "summary": "Urbanization replaces soil and plants with impervious surfaces. Rain runs off instead of soaking in, so floods rise higher and faster, groundwater recharge falls, and runoff carries pollutants and heat to streams. Coastal pumping can cause saltwater intrusion, dark surfaces create urban heat islands, and urban sprawl spreads all of this outward."
+}

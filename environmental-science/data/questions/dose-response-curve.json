@@ -1,0 +1,969 @@
+{
+ "stimuli": {
+  "dose-response-curve-s1": {
+   "kind": "quantitative",
+   "title": "Fish killed by two pesticides at each dose",
+   "invented": true,
+   "table": {
+    "caption": "Percent of test fish killed, by dose in mg per kg of body mass (invented data for practice)",
+    "cols": [
+     "Dose (mg/kg)",
+     "Pesticide X: killed (%)",
+     "Pesticide Y: killed (%)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "10",
+      "0",
+      "0"
+     ],
+     [
+      "20",
+      "0",
+      "8"
+     ],
+     [
+      "30",
+      "2",
+      "25"
+     ],
+     [
+      "40",
+      "6",
+      "50"
+     ],
+     [
+      "50",
+      "12",
+      "72"
+     ],
+     [
+      "60",
+      "22",
+      "88"
+     ],
+     [
+      "80",
+      "50",
+      "97"
+     ],
+     [
+      "100",
+      "76",
+      "99"
+     ],
+     [
+      "120",
+      "90",
+      "100"
+     ],
+     [
+      "160",
+      "98",
+      "100"
+     ]
+    ]
+   }
+  },
+  "dose-response-curve-s2": {
+   "kind": "visual",
+   "title": "A sedative in mice: sleep and death",
+   "invented": true,
+   "plot": {
+    "label": "Percent of mice asleep and percent killed at each dose of a sedative, the sleep curve rising at much lower doses than the death curve",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Mice asleep",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        5,
+        10
+       ],
+       [
+        10,
+        50
+       ],
+       [
+        15,
+        85
+       ],
+       [
+        20,
+        95
+       ],
+       [
+        30,
+        100
+       ]
+      ]
+     },
+     {
+      "name": "Mice killed",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        20,
+        0
+       ],
+       [
+        40,
+        10
+       ],
+       [
+        60,
+        50
+       ],
+       [
+        80,
+        90
+       ],
+       [
+        100,
+        100
+       ]
+      ],
+      "dashed": true
+     }
+    ],
+    "xLabel": "Dose (mg/kg)",
+    "yLabel": "Mice responding (%)",
+    "y": [
+     0,
+     112
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-dose-response-curve-1",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does a dose-response curve show?",
+   "options": [
+    "The percent of a test population that responds at each dose",
+    "How long a substance stays in the body after one dose",
+    "The concentration of a substance at each level of a food chain",
+    "The number of test animals used at each dose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A dose-response curve plots dose (often mg/kg) against the percent of a test group showing a response, such as death or illness.",
+    "options": [
+     "Right: dose goes on the horizontal axis and the percent responding on the vertical axis.",
+     "Time in the body is not on a dose-response curve; dose and response are.",
+     "That describes biomagnification, not a dose-response curve.",
+     "Group size is part of the design; the curve shows the percent that respond."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-2",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "On a dose-response curve, what is the threshold dose?",
+   "options": [
+    "The dose at which half of the test animals die",
+    "The highest dose at which no response is seen",
+    "The largest dose that was tested in the study",
+    "The dose at which about 99% of test animals die"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The threshold dose is where the curve leaves zero: below it, no effect is observed in the test group.",
+    "options": [
+     "That is the LD50, read at 50% on the response axis.",
+     "Right: below the threshold, the test group shows no measurable effect.",
+     "The largest dose tested is the end of the curve, not its threshold.",
+     "At the top of the curve nearly all animals respond; the threshold is at the bottom."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-3",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the difference between an ED50 and an LD50?",
+   "options": [
+    "ED50 is measured in mg and LD50 in mg/kg of body mass",
+    "ED50 is the dose that kills 50 animals, and LD50 kills 50%",
+    "ED50 is for a nonlethal effect in half the group; LD50 is for death",
+    "ED50 is read from the top of a curve, and LD50 from the bottom"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ED50 is the dose that produces a set, nonlethal effect (sleep, rash, lower growth) in half of a test group; LD50 is the dose that kills half.",
+    "options": [
+     "Both are usually given in mg per kg of body mass.",
+     "Both refer to 50% of a test group, not to a count of 50 animals.",
+     "Right: ED50 is the effective dose 50%, for an effect such as illness; LD50 is the lethal dose 50%.",
+     "Both are read where the curve crosses 50% on the response axis."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-4",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Some substances, including many that cause cancer, are treated as having no threshold dose. What does this mean for the shape of their dose-response curve?",
+   "options": [
+    "The curve stays flat at zero until the dose reaches the LD50",
+    "The curve has no 50% point, so no LD50 can be measured",
+    "The curve falls as the dose rises, so larger doses do less harm",
+    "Risk rises from zero with any dose, so no dose is assumed safe"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A threshold is a flat stretch at zero response. Without one, regulators assume the risk grows from zero with any exposure.",
+    "options": [
+     "A flat stretch at zero is a threshold, the opposite of no threshold.",
+     "A no-threshold curve can still cross 50%; the term is about the low end.",
+     "Responses rise with dose on these curves; the issue is where the rise begins.",
+     "Right: with no threshold, even a small dose is assumed to carry some risk."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-5",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "numeric",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the LD50 of pesticide Y in the fish?",
+   "stimulus": "dose-response-curve-s1",
+   "why": {
+    "correct": "Pesticide Y kills 50% of the fish at 40 mg/kg, so its LD50 is 40 mg/kg."
+   },
+   "numeric": {
+    "unit": "mg/kg",
+    "from": {
+     "fn": "ld50",
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        10,
+        0
+       ],
+       [
+        20,
+        8
+       ],
+       [
+        30,
+        25
+       ],
+       [
+        40,
+        50
+       ],
+       [
+        50,
+        72
+       ],
+       [
+        60,
+        88
+       ],
+       [
+        80,
+        97
+       ],
+       [
+        100,
+        99
+       ],
+       [
+        120,
+        100
+       ],
+       [
+        160,
+        100
+       ]
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "ld50",
+       "args": [
+        [
+         [
+          0,
+          0
+         ],
+         [
+          10,
+          0
+         ],
+         [
+          20,
+          0
+         ],
+         [
+          30,
+          2
+         ],
+         [
+          40,
+          6
+         ],
+         [
+          50,
+          12
+         ],
+         [
+          60,
+          22
+         ],
+         [
+          80,
+          50
+         ],
+         [
+          100,
+          76
+         ],
+         [
+          120,
+          90
+         ],
+         [
+          160,
+          98
+         ]
+        ]
+       ]
+      },
+      "why": "That is the LD50 of pesticide X. Use the column for pesticide Y: it reaches 50% killed at 40 mg/kg."
+     },
+     {
+      "value": 50,
+      "why": "50 is the percent killed, not the dose. Find the row where 50% of the fish die and read its dose."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-6",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "numeric",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "From the table, what is the threshold dose for pesticide X: the highest dose tested that killed no fish?",
+   "stimulus": "dose-response-curve-s1",
+   "why": {
+    "correct": "Pesticide X kills 0% at 0, 10 and 20 mg/kg and 2% at 30 mg/kg, so its threshold lies at 20 mg/kg (between 20 and 30)."
+   },
+   "numeric": {
+    "unit": "mg/kg",
+    "from": {
+     "fn": "max",
+     "args": [
+      0,
+      10,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "At 30 mg/kg, 2% of the fish died, so that dose is above the threshold. The last dose with 0% killed is 20 mg/kg."
+     },
+     {
+      "value": 10,
+      "why": "10 mg/kg is the threshold for pesticide Y. For X, no fish die at 20 mg/kg either."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-7",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement compares the two pesticides correctly?",
+   "stimulus": "dose-response-curve-s1",
+   "options": [
+    "X is twice as toxic as Y, since its LD50 is twice as large",
+    "They are equally toxic, since both kill about 98% or more of the fish at 160 mg/kg",
+    "Y is twice as toxic as X: its LD50 is half of X’s",
+    "X is more toxic, since its curve keeps rising to a higher dose"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare LD50s by division: $\\frac{80\\,\\text{mg/kg}}{40\\,\\text{mg/kg}} = 2$, so Y is twice as toxic.",
+    "options": [
+     "A larger LD50 means more pesticide is needed to kill, so X is less toxic.",
+     "Toxicity is compared at the 50% point, where Y needs half the dose X does.",
+     "Right: the LD50 of Y is 40 mg/kg and of X is 80 mg/kg, and $\\frac{80}{40} = 2$.",
+     "X rises later because it is less toxic; more of it is needed for the same effect."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-8",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer worries about runoff of pesticide X into a pond. Using the LD50 from the table, write the setup for the dose of X, in milligrams, expected to kill half of a group of 0.60 kg fish. Then give the answer.",
+   "stimulus": "dose-response-curve-s1",
+   "why": {
+    "correct": "$80\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.60\\,\\text{kg} = 48\\,\\text{mg}$ for each fish."
+   },
+   "setup": {
+    "answer": "80 mg/kg * 0.60 kg",
+    "mustUse": [
+     "80",
+     "0.60"
+    ],
+    "unit": "mg",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "40 mg/kg * 0.60 kg",
+      "why": "40 mg/kg is the LD50 of pesticide Y. The question is about X, whose LD50 is 80 mg/kg."
+     },
+     {
+      "expr": "80 mg/kg / 0.60 kg",
+      "why": "Dividing by body mass leaves mg/kg². Multiply the LD50 by the mass so kilograms cancel."
+     }
+    ],
+    "then": {
+     "unit": "mg",
+     "from": {
+      "fn": "doseFor",
+      "args": [
+       80,
+       0.6
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "doseFor",
+        "args": [
+         40,
+         0.6
+        ]
+       },
+       "why": "That uses the LD50 of Y (40 mg/kg). Pesticide X has an LD50 of 80 mg/kg: 80 mg/kg × 0.60 kg = 48 mg."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-dose-response-curve-9",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town must choose one of the two pesticides for fields that drain into a fish pond. Based only on these data, which choice is better for the fish, and why?",
+   "stimulus": "dose-response-curve-s1",
+   "options": [
+    "X, because a larger dose of it is needed before fish start to die",
+    "Y, because its curve reaches 100% faster, so it breaks down sooner",
+    "Y, because it kills fish at lower doses, so less of it reaches the pond",
+    "Either one, because both kill about 98% or more of the fish at high doses"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At every dose from 20 to 80 mg/kg, Y kills a larger percent of fish than X, and its threshold and LD50 are both lower.",
+    "options": [
+     "Right: X has the higher threshold (about 20 mg/kg) and the higher LD50 (80 mg/kg).",
+     "How fast a curve rises with dose says nothing about how fast the pesticide breaks down.",
+     "Killing fish at lower doses makes Y more dangerous to them, not less.",
+     "At the doses most likely in runoff, the low end of the curves, Y kills far more fish."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-10",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "numeric",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Read the graph. What is the ED50 of the sedative for putting mice to sleep?",
+   "stimulus": "dose-response-curve-s2",
+   "why": {
+    "correct": "The sleep curve crosses 50% at 10 mg/kg, so the ED50 is 10 mg/kg."
+   },
+   "numeric": {
+    "unit": "mg/kg",
+    "from": {
+     "fn": "doseAt",
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        5,
+        10
+       ],
+       [
+        10,
+        50
+       ],
+       [
+        15,
+        85
+       ],
+       [
+        20,
+        95
+       ],
+       [
+        30,
+        100
+       ]
+      ],
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "doseAt",
+       "args": [
+        [
+         [
+          0,
+          0
+         ],
+         [
+          20,
+          0
+         ],
+         [
+          40,
+          10
+         ],
+         [
+          60,
+          50
+         ],
+         [
+          80,
+          90
+         ],
+         [
+          100,
+          100
+         ]
+        ],
+        50
+       ]
+      },
+      "why": "60 mg/kg is where half the mice die, the LD50. The ED50 is on the sleep curve, at 50% of mice asleep."
+     },
+     {
+      "value": 5,
+      "why": "At 5 mg/kg only 10% of the mice sleep. Go up to 50% on the sleep curve and read the dose."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-11",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "numeric",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the LD50 of the sedative in mice?",
+   "stimulus": "dose-response-curve-s2",
+   "why": {
+    "correct": "The death curve crosses 50% at 60 mg/kg, so the LD50 is 60 mg/kg."
+   },
+   "numeric": {
+    "unit": "mg/kg",
+    "from": {
+     "fn": "ld50",
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        20,
+        0
+       ],
+       [
+        40,
+        10
+       ],
+       [
+        60,
+        50
+       ],
+       [
+        80,
+        90
+       ],
+       [
+        100,
+        100
+       ]
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "doseAt",
+       "args": [
+        [
+         [
+          0,
+          0
+         ],
+         [
+          5,
+          10
+         ],
+         [
+          10,
+          50
+         ],
+         [
+          15,
+          85
+         ],
+         [
+          20,
+          95
+         ],
+         [
+          30,
+          100
+         ]
+        ],
+        50
+       ]
+      },
+      "why": "10 mg/kg is the ED50, where half the mice sleep. The LD50 is on the death curve."
+     },
+     {
+      "value": 50,
+      "why": "50 is the percent on the vertical axis. Read the dose where the death curve crosses 50%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-12",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times larger is the LD50 than the ED50 for this sedative?",
+   "stimulus": "dose-response-curve-s2",
+   "why": {
+    "correct": "$\\frac{60\\,\\text{mg/kg}}{10\\,\\text{mg/kg}} = 6$: the lethal dose for half the mice is six times the dose that puts half to sleep."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "ld50",
+       "args": [
+        [
+         [
+          0,
+          0
+         ],
+         [
+          20,
+          0
+         ],
+         [
+          40,
+          10
+         ],
+         [
+          60,
+          50
+         ],
+         [
+          80,
+          90
+         ],
+         [
+          100,
+          100
+         ]
+        ]
+       ]
+      },
+      {
+       "fn": "doseAt",
+       "args": [
+        [
+         [
+          0,
+          0
+         ],
+         [
+          5,
+          10
+         ],
+         [
+          10,
+          50
+         ],
+         [
+          15,
+          85
+         ],
+         [
+          20,
+          95
+         ],
+         [
+          30,
+          100
+         ]
+        ],
+        50
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        60,
+        10
+       ]
+      },
+      "why": "A difference (50 mg/kg) does not say how many times larger. Divide: 60 mg/kg ÷ 10 mg/kg = 6."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        10,
+        60
+       ]
+      },
+      "why": "You divided the ED50 by the LD50. Put the larger dose on top: 60 ÷ 10 = 6."
+     }
+    ],
+    "unit": "times"
+   }
+  },
+  {
+   "id": "env-dose-response-curve-13",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Up to what dose do the data show no deaths, even though many mice are asleep?",
+   "stimulus": "dose-response-curve-s2",
+   "options": [
+    "20 mg/kg, the threshold dose for death",
+    "10 mg/kg, where half the mice fall asleep",
+    "60 mg/kg, where half the mice die",
+    "5 mg/kg, the smallest dose given"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The threshold for death is where the death curve leaves zero: 20 mg/kg. The gap between the two curves is why the drug can be used.",
+    "options": [
+     "Right: the death curve stays at 0% up to 20 mg/kg, while 95% of mice sleep at that dose.",
+     "At 10 mg/kg no mice die, but the death curve stays at zero beyond that too.",
+     "At 60 mg/kg half the mice die; deaths start above 20 mg/kg.",
+     "Deaths stay at zero well past 5 mg/kg, up to 20 mg/kg."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-14",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A typical dose-response curve for deaths is S-shaped. What happens near the top of the curve?",
+   "options": [
+    "It drops back toward zero as animals build up tolerance",
+    "It levels off near 100% as nearly all animals respond",
+    "It rises fastest, since large doses act most quickly",
+    "It crosses 50%, which marks the threshold dose"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An S-shaped curve is flat at the bottom (below the threshold), steep in the middle (around 50%) and flat at the top (nearly all respond).",
+    "options": [
+     "The percent responding does not fall as the dose rises on these curves.",
+     "Right: once almost all animals respond, larger doses add little.",
+     "The steepest part is in the middle, around 50%; the top flattens out.",
+     "The 50% point marks the LD50 and is in the middle; the threshold is at the bottom."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-15",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "order",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for reading an LD50 off a dose-response curve in order.",
+   "options": [
+    "Find 50% on the vertical (response) axis",
+    "Go straight across to the curve",
+    "Go straight down from that point to the dose axis",
+    "Read the dose and write it with its unit, mg/kg"
+   ],
+   "why": {
+    "correct": "Across from 50%, down to the dose axis, then read the value with its unit."
+   }
+  },
+  {
+   "id": "env-dose-response-curve-16",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "multi",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A new herbicide has an LD50 of 2,400 mg/kg in rats, which seems low in toxicity. Which further information would help judge whether it is safe to spray near homes? Select all that apply.",
+   "options": [
+    "Its threshold dose for effects other than death, such as harm to the liver",
+    "Whether it causes cancer or birth defects after years of small doses",
+    "The color of the spray when it is mixed with water",
+    "How many rats were used in the LD50 test"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "LD50 counts only deaths from one dose. Thresholds for other effects and long-term effects show harm that happens below the LD50.",
+    "options": [
+     "Right: harm can start at doses far below the dose that kills.",
+     "Right: harm from years of small doses does not show up in a one-time LD50 test.",
+     "Color does not tell you anything about how toxic the herbicide is.",
+     "Group size affects how reliable the LD50 is, but it does not add a new kind of harm."
+    ]
+   }
+  },
+  {
+   "id": "env-dose-response-curve-17",
+   "unit": "unit-8",
+   "topic": "dose-response-curve",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain, using the two-pesticide data, why pesticide Y is a bigger threat to the fish in a pond that gets small amounts of runoff.",
+   "why": {
+    "correct": "The lower end of the curves decides what small doses do: Y starts killing fish below 20 mg/kg, X above 20 mg/kg."
+   },
+   "specific": {
+    "frame": "Because ___, a small dose of runoff ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "pesticide Y has a lower threshold and a lower LD50 than X",
+       "pesticide Y has a higher LD50 than X",
+       "pesticide Y is sprayed on more fields"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Y’s LD50 is 40 mg/kg and X’s is 80 mg/kg, so Y’s is lower, not higher.",
+       "2": "The data compare doses and deaths, not how much is sprayed."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "kills some fish with Y but none with X",
+       "kills the same share of fish with either pesticide",
+       "kills fewer fish with Y than with X"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "At 20 mg/kg, Y kills 8% of fish and X kills none.",
+       "2": "At low doses Y kills more fish, not fewer."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "threshold",
+      "LD50",
+      "fish"
+     ]
+    },
+    "model": "Because pesticide Y has a lower threshold and a lower LD50 than X, a small dose of runoff such as 20 mg/kg kills 8% of the fish with Y but none with X, so Y increases fish deaths at doses where X does no harm."
+   }
+  }
+ ]
+}

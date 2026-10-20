@@ -1,0 +1,89 @@
+{
+ "slug": "dose-response",
+ "kind": "simulator",
+ "topic": "dose-response-curve",
+ "intro": "<p>A toxicity test, live. Raise the dose and watch what happens to 100 test animals; read the threshold and the LD50 straight off the dose-response curve. Compare three chemicals on one graph (lower LD50, more toxic). Then follow a persistent chemical up a food chain, and keep bioaccumulation (one organism, over time) apart from biomagnification (up the trophic levels).</p>",
+ "howItWorksTitle": "Where the numbers come from",
+ "howItWorks": "<p>The three chemicals are invented for practice. Each curve is a set of measured points (dose in mg per kg of body mass, percent of the test population that died), joined by straight lines; LD50 is read off the curve by the same straight-line reading the exam expects, and the threshold is the highest dose that caused no deaths.</p><p>The food chain multiplies the concentration by the same factor at each step up (10 by default), the simple rule exam questions use; real factors vary by chemical and species. The bioaccumulation curve shows one fish taking in a chemical faster than it can excrete it, so its tissue concentration rises with age toward a limit. Concentrations are in parts per million (ppm).</p>",
+ "partTopics": {
+  "ld50": "lethal-dose-50",
+  "setup": "lethal-dose-50",
+  "answer": "lethal-dose-50",
+  "perkg": "lethal-dose-50",
+  "means": "lethal-dose-50",
+  "which": "lethal-dose-50",
+  "times": "lethal-dose-50"
+ },
+ "explore": {
+  "c0": 0.00002,
+  "factors": [2, 5, 10, 20]
+ },
+ "contexts": [
+  {
+   "id": "mice-insecticide",
+   "topic": "dose-response-curve",
+   "types": ["read"],
+   "lead": "A lab tests a new garden insecticide.",
+   "who": "Groups of 50 mice",
+   "chem": "the insecticide",
+   "steps": [10, 20, 25]
+  },
+  {
+   "id": "rats-solvent",
+   "topic": "dose-response-curve",
+   "types": ["read"],
+   "lead": "A company must report how toxic a cleaning solvent is.",
+   "who": "Groups of 40 rats",
+   "chem": "the solvent",
+   "steps": [25, 50]
+  },
+  {
+   "id": "dog-bait",
+   "topic": "lethal-dose-50",
+   "types": ["dose"],
+   "lead": "A rodent bait is left where a pet dog can reach it.",
+   "chem": "the bait",
+   "animal": "dog",
+   "ld50": [40, 50, 80, 100],
+   "kg": [10, 15, 20, 25, 30]
+  },
+  {
+   "id": "bird-seed",
+   "topic": "lethal-dose-50",
+   "types": ["dose"],
+   "lead": "Seeds treated with a pesticide are spilled near a pond.",
+   "chem": "the pesticide",
+   "animal": "duck",
+   "ld50": [100, 150, 200, 250],
+   "kg": [1, 2, 3]
+  },
+  {
+   "id": "ddt-lake",
+   "topic": "bioaccumulation-biomagnification",
+   "types": ["magnify"],
+   "lead": "A lake was sprayed for mosquitoes with a persistent insecticide years ago.",
+   "chem": "the insecticide",
+   "c0": [0.00002, 0.00003, 0.00005],
+   "factors": [10],
+   "levels": ["water", "zooplankton", "small fish", "large fish", "osprey"]
+  },
+  {
+   "id": "mercury-bay",
+   "topic": "bioaccumulation-biomagnification",
+   "types": ["magnify"],
+   "lead": "Mercury from a coal plant settles into a coastal bay.",
+   "chem": "mercury",
+   "c0": [0.00001, 0.00002, 0.00004],
+   "factors": [5, 10],
+   "levels": ["water", "algae", "shrimp", "small fish", "tuna"]
+  },
+  {
+   "id": "two-pesticides",
+   "topic": "lethal-dose-50",
+   "types": ["compare"],
+   "lead": "A farmer compares two pesticides.",
+   "chems": ["pesticide P", "pesticide Q"],
+   "a": [5, 10, 20, 25]
+  }
+ ]
+}

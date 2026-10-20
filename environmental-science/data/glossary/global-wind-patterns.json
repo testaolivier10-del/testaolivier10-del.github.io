@@ -1,0 +1,11 @@
+{
+ "circulation-cells": {
+  "def": "Large loops of rising and sinking air in each hemisphere: the Hadley cell (equator to about 30°), the Ferrel cell (about 30° to 60°) and the polar cell (about 60° to the pole). Air rises near the equator and 60° (wet) and sinks near 30° and the poles (dry)."
+ },
+ "coriolis": {
+  "def": "The deflection of moving air or water caused by Earth's rotation: to the right in the Northern Hemisphere and to the left in the Southern Hemisphere."
+ },
+ "prevailing-winds": {
+  "def": "The steady surface winds of each latitude band: the trade winds (0° to 30°, from the east toward the equator), the westerlies (30° to 60°, from the west) and the polar easterlies (60° to 90°, from the east)."
+ }
+}

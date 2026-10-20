@@ -1,0 +1,186 @@
+{
+ "id": "frq-primary-productivity-design",
+ "type": "design",
+ "points": 10,
+ "title": "Phosphate and productivity in pond water",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "primary-productivity",
+  "phosphorus-cycle"
+ ],
+ "practices": [
+  "4.A",
+  "4.B",
+  "4.C",
+  "4.E",
+  "1.B"
+ ],
+ "stimulus": {
+  "kind": "visual",
+  "title": "Results of a pilot test",
+  "invented": true,
+  "plot": {
+   "label": "Line graph of the change in dissolved oxygen over 24 hours in clear bottles of pond water with different amounts of phosphate added, invented pilot data",
+   "kind": "line",
+   "series": [
+    {
+     "name": "Oxygen change in clear bottles",
+     "points": [
+      [
+       0,
+       0.8
+      ],
+      [
+       0.05,
+       1.6
+      ],
+      [
+       0.1,
+       2.3
+      ],
+      [
+       0.2,
+       2.6
+      ]
+     ]
+    }
+   ],
+   "x": [
+    0,
+    0.2
+   ],
+   "y": [
+    0,
+    3
+   ],
+   "xLabel": "Phosphate added (mg/L)",
+   "yLabel": "Change in dissolved oxygen in 24 h (mg/L)"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "A class wants to know how phosphate from lawn fertilizer affects the productivity of algae in a pond. They fill clear bottles with pond water, add different amounts of phosphate, and measure dissolved oxygen at the start and after 24 hours in sunlight. A pilot test gave the results in the graph. <b>Identify</b> the independent variable.",
+   "rubric": [
+    {
+     "point": "The amount of phosphate added to each bottle",
+     "accept": [
+      "phosphate concentration",
+      "mg/L of phosphate added"
+     ]
+    }
+   ],
+   "sample": "The independent variable is the amount of phosphate added to each bottle (0, 0.05, 0.10 or 0.20 mg/L)."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "<b>Identify</b> the dependent variable.",
+   "rubric": [
+    {
+     "point": "The change in dissolved oxygen in each bottle over 24 hours (a measure of net productivity)",
+     "accept": [
+      "oxygen produced in 24 hours",
+      "change in DO"
+     ]
+    }
+   ],
+   "sample": "The dependent variable is the change in dissolved oxygen in each bottle over 24 hours, which measures the net productivity of the algae."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "<b>Write</b> a testable hypothesis for this investigation.",
+   "rubric": [
+    {
+     "point": "A statement with a direction linking phosphate to productivity or oxygen (not a question, not \"affects\")",
+     "accept": [
+      "If more phosphate is added, then the oxygen produced will increase",
+      "More phosphate will increase algae productivity"
+     ]
+    }
+   ],
+   "sample": "If more phosphate is added to the pond water, then the dissolved oxygen produced in 24 hours will increase, because phosphate is often the limiting nutrient for algae in fresh water."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Identify</b> the control group, and <b>describe</b> its purpose.",
+   "rubric": [
+    {
+     "point": "The bottles of pond water with no phosphate added",
+     "accept": [
+      "the 0 mg/L bottles"
+     ]
+    },
+    {
+     "point": "Its purpose: a baseline to compare with, showing how much oxygen the algae produce without added phosphate, so any difference can be linked to phosphate",
+     "accept": [
+      "a baseline for comparison"
+     ]
+    }
+   ],
+   "sample": "The control group is the bottles with no phosphate added. They are a baseline: they show how much oxygen the algae produce with only the phosphate already in the pond water, so the class can tell whether the extra phosphate caused the larger increases."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "<b>Identify</b> one variable that should be held constant, and <b>explain</b> why.",
+   "rubric": [
+    {
+     "point": "A valid constant: light, temperature, volume of water, source of pond water, starting algae, time, bottle type",
+     "accept": [
+      "the same amount of sunlight for every bottle",
+      "same water temperature"
+     ]
+    },
+    {
+     "point": "Why: that factor also changes photosynthesis or oxygen, so it must not differ between bottles or it could explain the results",
+     "accept": [
+      "so only phosphate differs",
+      "temperature changes how much oxygen water holds"
+     ]
+    }
+   ],
+   "sample": "The amount of light each bottle receives should be the same, because light powers photosynthesis; if some bottles got more light, they would produce more oxygen for reasons that have nothing to do with phosphate."
+  },
+  {
+   "label": "f",
+   "points": 1,
+   "prompt": "The class also puts one bottle of each kind in the dark for 24 hours. <b>Explain</b> why the dissolved oxygen in the dark bottles decreases.",
+   "rubric": [
+    {
+     "point": "With no light there is no photosynthesis, but the algae (and other organisms) still carry out cellular respiration, which uses oxygen",
+     "accept": [
+      "respiration uses oxygen and no photosynthesis replaces it"
+     ]
+    }
+   ],
+   "sample": "In the dark the algae cannot photosynthesize, so no oxygen is added, but the algae and bacteria in the water keep carrying out cellular respiration, which uses up dissolved oxygen."
+  },
+  {
+   "label": "g",
+   "points": 2,
+   "prompt": "The pilot graph levels off between 0.10 and 0.20 mg/L of phosphate. <b>Describe</b> what this pattern suggests, and <b>explain</b> one possible reason.",
+   "rubric": [
+    {
+     "point": "Adding more phosphate above about 0.10 mg/L increases oxygen production only a little",
+     "accept": [
+      "the effect of phosphate levels off",
+      "diminishing increase"
+     ]
+    },
+    {
+     "point": "A reason: another factor (such as light, nitrogen or carbon dioxide) becomes limiting once phosphate is plentiful",
+     "accept": [
+      "phosphate is no longer the limiting nutrient"
+     ]
+    }
+   ],
+   "sample": "Above about 0.10 mg/L, extra phosphate raises oxygen production only a little (from 2.3 to 2.6 mg/L). This suggests phosphate is no longer the limiting factor: once algae have enough phosphate, something else, such as light or nitrogen, limits how fast they can photosynthesize."
+  }
+ ]
+}

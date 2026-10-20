@@ -1,0 +1,14 @@
+{
+ "pathogen": {
+  "def": "A living thing or virus that causes disease in its host: a bacterium, virus, protozoan, fungus or parasitic worm."
+ },
+ "infectious-disease": {
+  "def": "A disease caused by a pathogen that can spread from one host to another, through water, air, food, contact or a vector."
+ },
+ "disease-vector": {
+  "def": "A living thing, often an insect such as a mosquito or flea, that carries a pathogen from one host to another. A vector-borne disease spreads this way."
+ },
+ "named-diseases": {
+  "def": "Infectious diseases to know: malaria (protozoan, mosquitoes), tuberculosis (bacterium, airborne), cholera (bacterium, contaminated water), plague (bacterium, fleas), West Nile virus and Zika virus (mosquitoes), and SARS and MERS (respiratory viruses that passed from animals to people)."
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "slug": "energy-flow",
+ "kind": "simulator",
+ "topic": "energy-flow",
+ "intro": "<p>Energy enters an ecosystem as sunlight, is stored by producers and passes up the food chain one feeding step at a time. At every step most of it leaves, mostly as heat. Pick an ecosystem, slide the producers' energy and tap any level to see where its energy goes; switch to biomass and numbers to see why those pyramids can be upside down while the energy pyramid never is; then knock a species out of the food web.</p>",
+ "howItWorksTitle": "How the model works",
+ "howItWorks": "<p>The producers capture gross primary productivity (GPP) and use part of it in their own cellular respiration; what is left is net primary productivity: <b>NPP = GPP − respiration</b>. Level <i>n</i> of the chain holds NPP × 0.1<sup><i>n</i> − 1</sup> kcal/m²/yr with the 10% rule (the slider in More options changes the 10%). Every value comes from the same calculation recipes the question bank uses.</p><p>Biomass is the energy flowing through a level divided by how fast its organisms turn over, and numbers are biomass divided by one individual's mass. Those turnover rates and masses are illustrative, chosen so each ecosystem shows its textbook shape (the pond's inverted biomass pyramid, the forest's inverted numbers pyramid); the energy pyramid is always upright.</p><p>In the food web, removing a species shows its first, most likely effects: a consumer whose only food is gone dies out, the removed species' prey increase, and its predators decrease. Indirect effects (a hungry predator eating more of another food) are marked as less certain.</p>",
+ "explore": { "eco": "grassland", "gpp": 20000, "rPct": 50, "eff": 10 },
+ "partTopics": {
+  "heat": "primary-productivity",
+  "why": "trophic-levels",
+  "energy": "trophic-levels",
+  "w1": "food-webs",
+  "w2": "food-webs"
+ },
+ "contexts": [
+  { "id": "grass-10pct", "topic": "energy-flow", "eco": "grassland", "types": ["tenpct", "reverse", "efficiency"] },
+  { "id": "pond-10pct", "topic": "energy-flow", "eco": "pond", "types": ["tenpct", "reverse", "efficiency"] },
+  { "id": "forest-10pct", "topic": "energy-flow", "eco": "forest", "types": ["tenpct", "reverse", "efficiency"] },
+  { "id": "grass-npp", "topic": "primary-productivity", "eco": "grassland", "types": ["npp"] },
+  { "id": "pond-npp", "topic": "primary-productivity", "eco": "pond", "types": ["npp"] },
+  { "id": "forest-npp", "topic": "primary-productivity", "eco": "forest", "types": ["npp"] },
+  { "id": "pond-pyramid", "topic": "trophic-levels", "eco": "pond", "types": ["pyramid"] },
+  { "id": "forest-pyramid", "topic": "trophic-levels", "eco": "forest", "types": ["pyramid"] },
+  { "id": "grass-web", "topic": "food-webs", "eco": "grassland", "types": ["web"] },
+  { "id": "pond-web", "topic": "food-webs", "eco": "pond", "types": ["web"] },
+  { "id": "forest-web", "topic": "food-webs", "eco": "forest", "types": ["web"] }
+ ]
+}

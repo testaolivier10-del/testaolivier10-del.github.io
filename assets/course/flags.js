@@ -106,7 +106,7 @@
   /* The dashboard card: how many are flagged, linking to the Flagged mode.
      It mounts itself above the dashboard (#app[data-slug="dashboard"]) and
      shows only when something is flagged. */
-  var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', statistics: 'apstat' };
+  var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', statistics: 'apstat', 'environmental-science': 'apenv' };
   function dashCard(){
     var app = document.querySelector('#app[data-slug="dashboard"]');
     var course = DIRS[(location.pathname.split('/').filter(Boolean).slice(-2, -1)[0]) || ''];

@@ -1,0 +1,12 @@
+{
+ "fossil-fuels-power-plant": {
+  "file": "figures/fossil-fuels-power-plant.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A coal-fired power plant drawn as connected boxes. Coal goes into the boiler, which heats water into steam and sends smoke and carbon dioxide up a stack. Steam spins the turbine, whose shaft turns the generator, which sends electricity out. Used steam goes to the condenser, where cooling water from a river or cooling tower turns it back to water, which returns to the boiler; the cooling water leaves warmer as waste heat. A banner says about one third of the fuel's energy leaves as electricity and about two thirds is lost as heat."
+ }
+}

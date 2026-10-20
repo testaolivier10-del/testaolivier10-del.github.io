@@ -1,0 +1,72 @@
+{
+ "topic": "human-population",
+ "hook": "Two countries each have 40 million people today. In one, 36 babies are born each year for every 1,000 people and 8 people die. In the other, 11 are born and 9 die. The first will have 80 million people in about 25 years; the second would take about 350 years to double. Two numbers per country, and one rule you can do in your head, tell you which is which.",
+ "prereq": [
+  {
+   "q": "A population grows 2% a year. Using the rule of 70, what is its doubling time?",
+   "options": [
+    "35 years",
+    "2 years",
+    "140 years",
+    "0.35 years"
+   ],
+   "correct": 0,
+   "why": "70 divided by the growth rate in percent: 70 / 2 = 35 years.",
+   "review": "math-doubling"
+  },
+  {
+   "q": "What is replacement-level fertility in a country where few children die young?",
+   "options": [
+    "About 2.1 children per woman",
+    "Exactly 1 child per woman",
+    "About 4 children per woman",
+    "Exactly 3 children per woman"
+   ],
+   "correct": 0,
+   "why": "About 2.1, a little above 2, because some children die before adulthood.",
+   "review": "total-fertility-rate"
+  }
+ ],
+ "figure": {
+  "figure": "human-population-doubling",
+  "caption": "A population of 10 million growing 2% a year doubles about every 35 years, as the rule of 70 predicts. Invented example."
+ },
+ "chain": [
+  {
+   "cause": "Births and deaths are counted per 1,000 people per year (crude birth rate and crude death rate)",
+   "effect": "their difference is the natural increase per 1,000 people per year"
+  },
+  {
+   "cause": "Dividing that difference by 10 turns \"per 1,000\" into \"per 100\"",
+   "effect": "the result is the rate of natural increase in percent"
+  },
+  {
+   "cause": "Dividing 70 by the growth rate in percent",
+   "effect": "gives the doubling time in years; adding it to the start year gives the year the population doubles"
+  },
+  {
+   "cause": "Immigration adds people and emigration removes them",
+   "effect": "a country’s total growth can differ from its natural increase"
+  }
+ ],
+ "ideas": [
+  "<b>Crude birth rate</b> (CBR): births per 1,000 people per year. <b>Crude death rate</b> (CDR): deaths per 1,000 people per year.",
+  "<b>Rate of natural increase</b> (in %) $= \\frac{\\text{CBR} - \\text{CDR}}{10}$. The 10 turns a rate per 1,000 into a percent (per 100).",
+  "Doubling time (years) $= \\frac{70}{\\text{growth rate in }\\%}$. For \"in what year\", add the doubling time to the start year.",
+  "Total growth also counts <b>immigration</b> (people moving in) and <b>emigration</b> (people moving out). <b>Malthusian theory</b> holds that population grows faster than food, so famine, disease or war will check it."
+ ],
+ "misconception": {
+  "wrong": "A crude birth rate of 36 and a crude death rate of 8 mean the population grows 28% a year.",
+  "right": "Both rates are per 1,000 people, so the gap of 28 per 1,000 is 2.8 per 100: a growth rate of 2.8% a year. Divide by 10, not 100, and do not leave it at 28."
+ },
+ "check": [
+  "env-human-population-1",
+  "env-human-population-2",
+  "env-human-population-3",
+  "env-human-population-4",
+  "env-human-population-14",
+  "env-human-population-16",
+  "env-human-population-17"
+ ],
+ "summary": "Crude birth and death rates count births and deaths per 1,000 people per year. Their difference divided by 10 is the rate of natural increase in percent, and 70 divided by that rate is the doubling time in years; add it to the start year to find the year a population doubles. Immigration and emigration also change population size. Malthus argued that population would outrun food; so far, food production has kept pace, but his question about limits remains."
+}

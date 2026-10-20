@@ -1,0 +1,22 @@
+{
+ "el-nino-la-nina-compare": {
+  "file": "figures/el-nino-la-nina-compare.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 750,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three cross-sections of the equatorial Pacific Ocean, with Australia and Indonesia on the left (west) and South America on the right (east). Normal year: moderate trade winds blow from east to west, warm surface water piles up in the west, and upwelling off Peru brings cold, nutrient-rich water to the surface; rain clouds sit over the western Pacific. El Niño: the trade winds weaken, warm water spreads east toward South America, upwelling off Peru weakens, and the rain moves east into the central and eastern Pacific. La Niña: the trade winds strengthen, warm water is pushed farther west, upwelling off South America strengthens, the eastern Pacific is colder than normal, and heavy rain falls over the far western Pacific."
+ },
+ "el-nino-la-nina-sst-map": {
+  "file": "figures/el-nino-la-nina-sst-map.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two schematic maps of the tropical Pacific Ocean from Indonesia and Australia in the west to Peru in the east, with the equator and the 180 degree line marked. Colors show sea surface temperature compared with the long-term average. Top, El Niño: a long band of warmer than average water lies along the equator from the central Pacific east to the coast of Peru, warmest near South America; the far western Pacific is slightly cooler than average. Bottom, La Niña: a tongue of cooler than average water stretches west along the equator from near South America into the central Pacific; the far western Pacific is slightly warmer than average. Invented pattern for practice, not a real year."
+ }
+}

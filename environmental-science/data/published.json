@@ -1,0 +1,15 @@
+{
+ "about": "Chapters (units and the math skills chapter) live on the site. A topic is built only when its lesson, notes and question file exist AND its chapter is listed here. A chapter is added once it passes its independent accuracy check and every check (docs/apenv-spec.md).",
+ "chapters": [
+  "skills-math",
+  "unit-1",
+  "unit-2",
+  "unit-3",
+  "unit-4",
+  "unit-5",
+  "unit-6",
+  "unit-7",
+  "unit-8",
+  "unit-9"
+ ]
+}

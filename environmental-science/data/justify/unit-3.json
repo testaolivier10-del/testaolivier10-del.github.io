@@ -1,0 +1,178 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-duckweed-variables",
+   "topic": "population-growth",
+   "practice": "4.B",
+   "skill": "variables",
+   "title": "The variables in a duckweed study",
+   "context": "<p>Students grow duckweed in 12 cups of pond water, adding 0, 1, 2 or 4 drops of plant fertilizer to each. Every three days for three weeks they count the duckweed fronds in each cup (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the independent variable and the dependent variable, and <b>describe</b> what the results test.",
+   "checklist": [
+    "Independent variable: drops of fertilizer added (the nutrients available)",
+    "Dependent variable: the number of duckweed fronds counted",
+    "Says the study tests whether more nutrients let the population grow faster or reach a higher carrying capacity"
+   ],
+   "earns": {
+    "answer": "The independent variable is the number of drops of fertilizer added to each cup, which sets the nutrients available. The dependent variable is the number of duckweed fronds counted every three days. The study tests whether more nutrients make the population grow faster and level off at a higher carrying capacity.",
+    "why": "It names both variables as the study sets and counts them, and says what the results can show."
+   },
+   "misses": {
+    "answer": "The independent variable is time and the dependent variable is the duckweed.",
+    "why": "Time is when the counts are taken, not what the students change, and \"the duckweed\" is not a measurement."
+   },
+   "specific": {
+    "slots": {
+     "iv": {
+      "label": "Independent variable",
+      "options": [
+       "drops of fertilizer added",
+       "the number of days",
+       "the number of fronds"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Time is when counts are taken; the students change the fertilizer.",
+       "2": "The number of fronds is what is measured."
+      }
+     },
+     "dv": {
+      "label": "Dependent variable",
+      "options": [
+       "the number of duckweed fronds counted",
+       "the amount of fertilizer",
+       "the size of the cups"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fertilizer is what is changed.",
+       "2": "Every cup is the same size; that is a constant."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-deer-trend",
+   "topic": "carrying-limits",
+   "practice": "5.C",
+   "skill": "trend",
+   "title": "A deer population that crashed",
+   "context": "<p>Deer on an island (invented data for practice): 1990, 200; 2000, 1,400; 2005, 2,000; 2008, 500.</p>",
+   "prompt": "<b>Describe</b> the trend with numbers and <b>explain</b> what happened.",
+   "checklist": [
+    "Describes the growth: from 200 to 2,000 deer by 2005, a tenfold rise",
+    "Describes the crash: down to 500 by 2008, a 75% drop",
+    "Explains it: the herd overshot the island's carrying capacity, overused its food, and died back"
+   ],
+   "earns": {
+    "answer": "The herd grew from 200 deer in 1990 to 2,000 in 2005, ten times as many, then fell to 500 in 2008, a drop of 75%. The herd overshot the island's carrying capacity: with more deer than the plants could support, the deer ate their food faster than it regrew, and many starved, so the population died back.",
+    "why": "It gives both parts of the trend with numbers (including the percent drop) and explains overshoot and dieback."
+   },
+   "misses": {
+    "answer": "The deer went up and then down because there were too many deer.",
+    "why": "No numbers, and \"too many deer\" never names carrying capacity or the loss of food that caused the crash."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-tfr-policy",
+   "topic": "total-fertility-rate",
+   "practice": "7.B",
+   "skill": "policy",
+   "title": "A policy to lower a high fertility rate",
+   "context": "<p>A country with a total fertility rate of 5.8 wants to slow its population growth without limiting the number of children a family may have.</p>",
+   "prompt": "<b>Propose</b> a policy that fits this constraint and <b>explain</b> how it would lower the fertility rate.",
+   "checklist": [
+    "Proposes a policy (a law, program or rule), not a technology or a personal choice",
+    "Respects the constraint: no limit on family size",
+    "Explains how it lowers fertility (for example, more years in school delay marriage and first births)"
+   ],
+   "earns": {
+    "answer": "Pass a law that makes secondary school free and required for girls. Girls who stay in school marry and have their first child later, and educated women have more job opportunities and better access to family planning, so they tend to choose smaller families, which lowers the total fertility rate.",
+    "why": "It is a policy, it respects the constraint, and it explains the mechanism step by step."
+   },
+   "misses": {
+    "answer": "Give out more birth control so people have fewer babies.",
+    "why": "That names a technology, not a policy, and does not say how the country would carry it out."
+   },
+   "specific": {
+    "slots": {
+     "type": {
+      "label": "A policy is",
+      "options": [
+       "a law that makes secondary school free and required for girls",
+       "birth control pills",
+       "a one-child limit for every family"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a technology; the question asks for a policy.",
+       "2": "The question rules out limiting family size."
+      }
+     },
+     "how": {
+      "label": "It works because",
+      "options": [
+       "girls who stay in school marry later and choose smaller families",
+       "school buildings take up land",
+       "it makes children cost less to raise"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Land use has nothing to do with fertility.",
+       "2": "Cheaper children would tend to raise fertility, not lower it."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-transition-chain",
+   "topic": "population-transition",
+   "practice": "1.B",
+   "skill": "chain",
+   "title": "Why death rates fall before birth rates",
+   "prompt": "<b>Explain</b> why, in stage 2 of the demographic transition, the death rate falls while the birth rate stays high, and what this does to the population.",
+   "checklist": [
+    "Death rate falls first: better food supply, clean water, sanitation and medicine reduce deaths, especially of children",
+    "Birth rate stays high: families still expect children to work and support parents, and customs change slowly",
+    "Result: births far exceed deaths, so the population grows quickly"
+   ],
+   "earns": {
+    "answer": "In stage 2, food supply, clean water, sanitation and medicine improve, so fewer people die, especially children, and the death rate falls. The birth rate stays high because families still rely on children for farm work and support in old age, and customs about family size change slowly. With births far above deaths, the rate of natural increase is high and the population grows rapidly.",
+    "why": "Each part has its cause, and it ends with the effect on population growth."
+   },
+   "misses": {
+    "answer": "The death rate falls because of better health care, and then the population grows.",
+    "why": "It never explains why the birth rate stays high, which is the link that makes the population grow."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-doubling-year",
+   "topic": "human-population",
+   "practice": "6.B",
+   "skill": "trend",
+   "title": "When a city will double",
+   "context": "<p>A city of 2 million people grows at 1.75% per year (invented data for practice).</p>",
+   "prompt": "<b>Calculate</b> the year, starting in 2025, when the city will reach 4 million if the rate stays the same, then <b>explain</b> one reason the real year may differ.",
+   "checklist": [
+    "Uses the rule of 70: 70 / 1.75 = 40 years",
+    "Adds the doubling time to the start year: 2025 + 40 = 2065, and says 4 million is double 2 million",
+    "Gives a reason the rate may change (falling fertility, migration, a disaster), with its effect on the year"
+   ],
+   "earns": {
+    "answer": "Doubling time = 70 / 1.75 = 40 years. Since 4 million is double 2 million, the city reaches it in 2025 + 40 = 2065. The real year may be later: if the city's fertility rate keeps falling, its growth rate will drop below 1.75% and doubling will take longer.",
+    "why": "It shows the rule of 70 with its numbers, adds the doubling time to the start year, and explains a reason the rate could change."
+   },
+   "misses": {
+    "answer": "70 / 1.75 = 40, so it takes 40 years for the city to double.",
+    "why": "It stops at the doubling time; the question asks for the year, so 40 must be added to 2025, and the reason is missing."
+   }
+  }
+ ]
+}

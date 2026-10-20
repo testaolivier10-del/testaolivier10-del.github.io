@@ -1,0 +1,565 @@
+{
+ "stimuli": {
+  "endocrine-disruptors-s1": {
+   "kind": "quantitative",
+   "title": "Intersex fish above and below a wastewater outfall",
+   "invented": true,
+   "table": {
+    "caption": "Male smallmouth bass with egg cells in their testes, sampled at four river sites (invented data for practice)",
+    "cols": [
+     "Site",
+     "Distance from outfall",
+     "Estrogen-like chemicals (ng/L)",
+     "Males examined",
+     "Males with egg cells"
+    ],
+    "rows": [
+     [
+      "1",
+      "5 km upstream",
+      "0.4",
+      "40",
+      "2"
+     ],
+     [
+      "2",
+      "at outfall",
+      "6.0",
+      "40",
+      "26"
+     ],
+     [
+      "3",
+      "3 km downstream",
+      "3.1",
+      "40",
+      "15"
+     ],
+     [
+      "4",
+      "10 km downstream",
+      "1.0",
+      "40",
+      "6"
+     ]
+    ]
+   }
+  },
+  "endocrine-disruptors-s2": {
+   "kind": "visual",
+   "title": "Frog development at increasing doses of a herbicide in a lab study",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of the percent of male frogs with abnormal sex organs at five herbicide concentrations, 0, 0.1, 1, 10 and 25 parts per billion: 2, 16, 20, 24 and 26 percent; invented data",
+    "kind": "bar",
+    "categories": [
+     "0",
+     "0.1",
+     "1",
+     "10",
+     "25"
+    ],
+    "values": [
+     2,
+     16,
+     20,
+     24,
+     26
+    ],
+    "xLabel": "Herbicide in water (ppb)",
+    "yLabel": "Males with abnormal organs (%)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-endocrine-disruptors-1",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the male bass at the outfall (site 2) had egg cells in their testes?",
+   "stimulus": "endocrine-disruptors-s1",
+   "why": {
+    "correct": "$\\frac{26}{40} \\times 100 = 65\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      26,
+      40
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 0.65,
+      "why": "That is the fraction. Multiply by 100 for a percent: 65%."
+     },
+     {
+      "value": 153.846153846,
+      "why": "You divided 40 by 26. A share puts the part (26) over the whole (40)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-2",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What relationship do the data show?",
+   "stimulus": "endocrine-disruptors-s1",
+   "options": [
+    "More estrogen-like chemicals go with fewer intersex males",
+    "More estrogen-like chemicals go with more intersex males",
+    "Intersex males are found mostly upstream of the outfall",
+    "The number of males examined explains the pattern"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sites with more estrogen-like chemicals have more intersex males: 2 of 40 at 0.4 ng/L up to 26 of 40 at 6.0 ng/L.",
+    "options": [
+     "Site 2 has both the most chemicals and the most intersex males.",
+     "Right: the two rise and fall together across the sites.",
+     "Site 1, upstream, has the fewest.",
+     "Forty males were examined at every site."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-3",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which claim is best supported by these data alone?",
+   "stimulus": "endocrine-disruptors-s1",
+   "options": [
+    "The outfall is linked to more intersex fish downstream",
+    "Estrogen-like chemicals have no effect on fish",
+    "The intersex fish will recover once they swim upstream",
+    "People drinking river water will become intersex"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The data show a strong relationship along one river. They support that the outfall is linked to intersex fish; a controlled experiment would be needed to show that the chemicals cause it.",
+    "options": [
+     "Right: a strong pattern, but these field data show a link, not proof of cause.",
+     "The pattern points to an effect, not to no effect.",
+     "Nothing in the data shows recovery of individual fish.",
+     "The data are about fish, not people, and give no human doses."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-4",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why might estrogen-like chemicals be highest right at a wastewater outfall?",
+   "stimulus": "endocrine-disruptors-s1",
+   "options": [
+    "Fish make the chemicals when they swim near warm water",
+    "Sunlight makes the chemicals in the river at noon",
+    "The chemicals come from rain falling on the river",
+    "Drain chemicals are not fully removed at the plant"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Natural and synthetic estrogens from birth control pills, along with some industrial chemicals, pass through people and drains. Ordinary wastewater plants do not remove them all, so they enter the river at the outfall and dilute downstream.",
+    "options": [
+     "Fish do not make these chemicals from warm water.",
+     "The pattern follows distance from the pipe, not sunlight.",
+     "Rain would spread them evenly, not peak at the pipe.",
+     "Right: they enter at the pipe and dilute downstream."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-5",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the shape of the dose-response pattern in the graph.",
+   "stimulus": "endocrine-disruptors-s2",
+   "options": [
+    "There is no effect until the highest dose",
+    "The effect rises by the same amount at each dose",
+    "A big jump at the lowest dose, then small rises",
+    "The effect falls as the dose increases"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The biggest jump comes from 0 to 0.1 ppb (2 to 16 percent); higher doses add only a little more (up to 26 percent). Effects appear at very low doses.",
+    "options": [
+     "Abnormal males rise sharply at the lowest dose tested.",
+     "The first step is much larger than the later steps.",
+     "Right: 2 to 16 percent at 0.1 ppb, then small increases.",
+     "The percent rises with dose."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-6",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why are low-dose effects like these a special concern for endocrine disruptors?",
+   "stimulus": "endocrine-disruptors-s2",
+   "options": [
+    "Endocrine disruptors are harmless at high doses",
+    "Hormones act at tiny levels, and so do mimics",
+    "Low doses make the chemical turn into a hormone",
+    "Frogs absorb less of a chemical at high doses"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Hormones work at tiny concentrations, so chemicals that mimic or block them can change development at very low doses, below levels once assumed safe.",
+    "options": [
+     "The graph shows effects rising with dose, not vanishing.",
+     "Right: the body's signals are naturally very dilute.",
+     "The chemical mimics or blocks a hormone; it does not turn into one.",
+     "Nothing in the data suggests less absorption at high doses."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-7",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many percentage points did abnormal males increase from the control (0 ppb) to the 0.1 ppb group?",
+   "stimulus": "endocrine-disruptors-s2",
+   "why": {
+    "correct": "$16\\% - 2\\% = 14$ percentage points. (This is a difference of two percents, not a percent change.)"
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      16,
+      2
+     ]
+    },
+    "unit": "percentage points",
+    "units": [
+     "points",
+     "%",
+     "percent"
+    ],
+    "mistakes": [
+     {
+      "value": 700,
+      "why": "700% is the percent change, (16 - 2) / 2 × 100. The question asks for the difference in percentage points: 16 - 2."
+     },
+     {
+      "value": 18,
+      "why": "You added the two percents. Subtract to find the increase: 16 - 2 = 14."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-8",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why did the researchers include a 0 ppb group?",
+   "stimulus": "endocrine-disruptors-s2",
+   "options": [
+    "As a control, a baseline for comparison",
+    "To see whether frogs like clean water better",
+    "To double the number of frogs in the highest dose group",
+    "Because the herbicide was not available that week"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The 0 ppb group is the control. It shows how often abnormal males occur without the herbicide, a baseline to compare each dose against.",
+    "options": [
+     "Right: the control shows the rate without the chemical.",
+     "Preference was not measured; the 0 group is a baseline.",
+     "The 0 group gets no herbicide; it is separate from the dose groups.",
+     "A control is planned on purpose, as a baseline."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-9",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is an endocrine disruptor?",
+   "options": [
+    "A germ that infects the glands that make hormones",
+    "A gas that blocks oxygen from reaching the blood",
+    "A chemical that breaks down quickly in water",
+    "A chemical that interferes with hormones"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An endocrine disruptor is a chemical that interferes with the body's hormones, by mimicking them, blocking them or changing how much is made.",
+    "options": [
+     "Endocrine disruptors are chemicals, not germs.",
+     "That describes carbon monoxide.",
+     "Many endocrine disruptors are persistent, not quick to break down.",
+     "Right: it interferes with the endocrine (hormone) system."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-10",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these is a known endocrine disruptor?",
+   "options": [
+    "Carbon monoxide from car exhaust",
+    "Radon from rock under homes",
+    "Atrazine, a widely used herbicide",
+    "Sulfur dioxide from coal plants"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Atrazine, one of the most widely used herbicides, is listed by the National Institute of Environmental Health Sciences (NIEHS) among endocrine disruptors; studies of its effects on frog sex hormones differ in how large the effect is. BPA and phthalates in some plastics are other examples.",
+    "options": [
+     "CO blocks oxygen in the blood; it is not a hormone disruptor.",
+     "Radon is radioactive; its harm is lung cancer.",
+     "Right: the NIEHS lists atrazine among endocrine disruptors.",
+     "SO2 irritates lungs and forms acid; it is not a hormone mimic."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-11",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How can a chemical that mimics estrogen cause male fish to develop egg cells?",
+   "options": [
+    "It kills the male cells so female cells grow in their place",
+    "It binds estrogen receptors and turns on female development",
+    "It lowers dissolved oxygen so males develop poorly",
+    "It changes the fish's genes into female genes"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The chemical binds to estrogen receptors and switches on female development signals, so males exposed while developing grow female tissue.",
+    "options": [
+     "It acts as a signal, not as a poison that kills cells.",
+     "Right: the body reads it as an estrogen signal.",
+     "Low oxygen does not turn males female.",
+     "It changes hormone signals, not the fish's sex genes."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-12",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which human health effects have been linked to endocrine disruptors?",
+   "options": [
+    "Reproductive problems and some cancers",
+    "Hearing loss and ringing in the ears",
+    "Acid burns on the skin of the hands",
+    "Broken bones from falling"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because they interfere with hormones, endocrine disruptors are linked to reproductive problems, altered development, some cancers and thyroid problems.",
+    "options": [
+     "Right: hormone signals control these processes.",
+     "Those come from noise, not hormone disruption.",
+     "Endocrine disruptors are not strong acids.",
+     "That is unrelated to hormone chemicals."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-13",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which step would most directly reduce endocrine disruptors entering a river from a city?",
+   "options": [
+    "Build a taller smokestack at the city's power plant",
+    "Stock the river with more male fish",
+    "Add limestone to the river to raise its pH",
+    "Add a hormone-removing step at the wastewater plant"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Many hormones and drugs pass through an ordinary wastewater plant. Extra treatment steps (such as activated carbon or ozone treatment) remove more of them before the water is released.",
+    "options": [
+     "Smokestacks are about air pollution.",
+     "More fish would face the same exposure.",
+     "pH is not the problem here.",
+     "Right: it catches what basic treatment misses."
+    ]
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-14",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "specific",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Write a testable hypothesis for an experiment on whether an estrogen-like chemical changes male fish development.",
+   "why": {
+    "correct": "A hypothesis names the change (the chemical), the measured variable (males with egg cells), the direction (increase) and a reason."
+   },
+   "specific": {
+    "frame": "If ___, then ___ will ___, because ___.",
+    "slots": {
+     "change": {
+      "label": "Independent variable",
+      "options": [
+       "young male fish are raised in water with more of the chemical",
+       "the fish are fed more food",
+       "the tank is made bigger"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Food is not the chemical being tested.",
+       "2": "Tank size is not the chemical being tested."
+      }
+     },
+     "dv": {
+      "label": "Dependent variable",
+      "options": [
+       "the percent of males with egg cells",
+       "the water temperature",
+       "the color of the tank"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Temperature should be kept constant, not measured as the outcome.",
+       "2": "Tank color is not the outcome."
+      }
+     },
+     "dir": {
+      "label": "Direction",
+      "options": [
+       "increase",
+       "change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"Change\" does not say which way; a hypothesis needs a direction."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "the chemical binds estrogen receptors and turns on female development",
+       "the fish will grow faster in a bigger tank"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tank size is not part of this hypothesis."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "noQuestion": true,
+     "mechanism": true,
+     "variable": [
+      "egg cells",
+      "intersex"
+     ]
+    },
+    "model": "If young male fish are raised in water with more of the chemical, then the percent of males with egg cells will increase, because the chemical binds estrogen receptors and turns on female development."
+   }
+  },
+  {
+   "id": "env-endocrine-disruptors-15",
+   "unit": "unit-8",
+   "topic": "endocrine-disruptors",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A river carries 0.004 micrograms (µg) of a synthetic estrogen per liter. Write the setup, with units, for the micrograms in 50,000 liters of river water, then the answer.",
+   "why": {
+    "correct": "$50{,}000\\,\\text{L} \\times \\frac{0.004\\,\\mu\\text{g}}{1\\,\\text{L}} = 200\\,\\mu\\text{g}$, which is 0.2 milligrams."
+   },
+   "setup": {
+    "answer": "50000 L * 0.004 ug/L",
+    "mustUse": [
+     "50000",
+     "0.004"
+    ],
+    "unit": "ug",
+    "mistakes": [
+     {
+      "expr": "50000 L / 0.004 ug/L",
+      "why": "Multiply the volume by the concentration so liters cancel."
+     }
+    ],
+    "then": {
+     "unit": "ug",
+     "units": [
+      "µg",
+      "micrograms",
+      "microgram"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       50000,
+       0.004
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.2,
+       "why": "0.2 is the answer in milligrams. The question asks for micrograms: 200 µg."
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

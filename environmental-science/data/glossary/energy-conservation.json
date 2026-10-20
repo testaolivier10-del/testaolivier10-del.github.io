@@ -1,0 +1,11 @@
+{
+ "energy-conservation": {
+  "def": "Using less energy, usually by changing behavior, such as turning off lights, lowering the thermostat or driving less."
+ },
+ "energy-efficiency": {
+  "def": "Getting the same service with less energy, such as LED bulbs, insulation or appliances and cars that use less energy for the same work."
+ },
+ "hybrid-vehicle": {
+  "def": "A vehicle that pairs a gasoline engine with an electric motor and battery, recapturing braking energy to use less fuel; an electric vehicle runs on a battery alone."
+ }
+}

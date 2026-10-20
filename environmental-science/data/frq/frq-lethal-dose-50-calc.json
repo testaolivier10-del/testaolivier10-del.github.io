@@ -1,0 +1,316 @@
+{
+ "id": "frq-lethal-dose-50-calc",
+ "type": "calc",
+ "points": 10,
+ "title": "A new pesticide: toxicity and how long it lasts",
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "lethal-dose-50",
+  "dose-response-curve"
+ ],
+ "practices": [
+  "5.B",
+  "6.B",
+  "6.C",
+  "7.E"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "Toxicity test of a new insecticide in rats",
+  "invented": true,
+  "table": {
+   "caption": "Percent of test rats killed at each dose of insecticide Z, mg per kg of body mass (invented data for practice)",
+   "cols": [
+    "Dose (mg/kg)",
+    "Rats killed (%)"
+   ],
+   "rows": [
+    [
+     "0",
+     "0"
+    ],
+    [
+     "5",
+     "4"
+    ],
+    [
+     "10",
+     "16"
+    ],
+    [
+     "15",
+     "38"
+    ],
+    [
+     "20",
+     "62"
+    ],
+    [
+     "25",
+     "80"
+    ],
+    [
+     "30",
+     "92"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "A farm cooperative is considering insecticide Z for its orchards, which drain into a creek. The table shows a toxicity test in rats. <b>Identify</b> the LD50 of insecticide Z from the data, with its unit.",
+   "rubric": [
+    {
+     "point": "States an LD50 of 17.5 mg/kg (accept 17 to 18 mg/kg), with the unit",
+     "accept": [
+      "17.5 mg/kg",
+      "about 17 or 18 mg/kg",
+      "halfway between 15 and 20 mg/kg"
+     ]
+    }
+   ],
+   "sample": "The LD50 is 17.5 mg/kg. At 15 mg/kg, 38% of the rats died and at 20 mg/kg, 62% died, so 50% is reached halfway between, at 17.5 mg/kg.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "unit": "mg/kg",
+     "tol": 0.5,
+     "from": {
+      "fn": "ld50",
+      "args": [
+       [
+        [
+         0,
+         0
+        ],
+        [
+         5,
+         4
+        ],
+        [
+         10,
+         16
+        ],
+        [
+         15,
+         38
+        ],
+        [
+         20,
+         62
+        ],
+        [
+         25,
+         80
+        ],
+        [
+         30,
+         92
+        ]
+       ]
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 50,
+       "why": "50 is the percent killed. The LD50 is the dose at which 50% die: halfway between 15 and 20 mg/kg."
+      },
+      {
+       "value": 20,
+       "why": "At 20 mg/kg, 62% of the rats died, more than half. 50% falls between 15 and 20 mg/kg, at 17.5 mg/kg."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Rats in the orchard have an average mass of 0.40 kg. <b>Calculate</b> the dose of insecticide Z, in milligrams, expected to kill half of a group of these rats. Show your setup with units.",
+   "rubric": [
+    {
+     "point": "Setup: the LD50 multiplied by body mass, with units shown",
+     "accept": [
+      "17.5 mg/kg × 0.40 kg",
+      "an LD50 from part (a) × 0.40 kg"
+     ]
+    },
+    {
+     "point": "Answer: 7 mg (consistent with the LD50 from part (a)), with the unit",
+     "accept": [
+      "7 mg",
+      "7.0 mg"
+     ]
+    }
+   ],
+   "sample": "$17.5\\,\\frac{\\text{mg}}{\\text{kg}} \\times 0.40\\,\\text{kg} = 7\\,\\text{mg}$ for each rat.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "17.5 mg/kg * 0.40 kg",
+     "mustUse": [
+      "17.5",
+      "0.40"
+     ],
+     "unit": "mg",
+     "requireUnits": true,
+     "mistakes": [
+      {
+       "expr": "17.5 mg/kg / 0.40 kg",
+       "why": "Dividing by the body mass leaves mg/kg². Multiply the LD50 by the mass so the kilograms cancel."
+      }
+     ],
+     "then": {
+      "unit": "mg",
+      "from": {
+       "fn": "doseFor",
+       "args": [
+        17.5,
+        0.4
+       ]
+      },
+      "mistakes": [
+       {
+        "from": {
+         "fn": "div",
+         "args": [
+          17.5,
+          0.4
+         ]
+        },
+        "why": "You divided by the mass. Multiply: 17.5 mg/kg × 0.40 kg = 7 mg."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "Insecticide Z has a half-life of 15 days in orchard soil. The cooperative applies 400 kg of it across its orchards. <b>Calculate</b> the mass of insecticide Z left in the soil 60 days later. Show your setup.",
+   "rubric": [
+    {
+     "point": "Setup: four half-lives (60 ÷ 15), halving 400 kg four times or using 400 × (1/2)^4",
+     "accept": [
+      "400 kg × 0.5^(60/15)",
+      "400 → 200 → 100 → 50 → 25",
+      "400 × (1/2)^4"
+     ]
+    },
+    {
+     "point": "Answer: 25 kg, with the unit",
+     "accept": [
+      "25 kg"
+     ]
+    }
+   ],
+   "sample": "Number of half-lives: $\\frac{60\\,\\text{days}}{15\\,\\text{days}} = 4$. Mass left: $400\\,\\text{kg} \\times (0.5)^{4} = 25\\,\\text{kg}$ (400 to 200 to 100 to 50 to 25 kg).",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "400 kg * 0.5^(60/15)",
+     "mustUse": [
+      "400",
+      "60",
+      "15"
+     ],
+     "unit": "kg",
+     "requireUnits": true,
+     "mistakes": [
+      {
+       "expr": "400 kg * 0.5^(15/60)",
+       "why": "The exponent is the number of half-lives: time ÷ half-life = 60 ÷ 15 = 4, not 15 ÷ 60."
+      },
+      {
+       "expr": "400 kg / (60/15)",
+       "why": "Dividing by 4 is not halving four times. Each half-life halves the mass: 400 × 0.5^4."
+      }
+     ],
+     "then": {
+      "unit": "kg",
+      "from": {
+       "fn": "halfLifeLeft",
+       "args": [
+        400,
+        15,
+        60
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 100,
+        "why": "100 kg is what is left after two half-lives (30 days). 60 days is four half-lives: 25 kg."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "Insecticide Z dissolves in fat and breaks down slowly. <b>Explain</b> how its use in the orchards could lead to high concentrations in hawks that eat rodents and small birds.",
+   "rubric": [
+    {
+     "point": "Describes bioaccumulation: it builds up in the fat of individual organisms because it is not broken down or excreted",
+     "accept": [
+      "it stays in the fat of insects or rodents over time",
+      "each animal stores more than it gets rid of"
+     ]
+    },
+    {
+     "point": "Explains biomagnification: concentration increases at each higher trophic level because predators eat many contaminated prey",
+     "accept": [
+      "each level up the food chain has a higher concentration",
+      "hawks eat many rodents, each carrying the insecticide"
+     ]
+    }
+   ],
+   "sample": "Because insecticide Z dissolves in fat and breaks down slowly, it bioaccumulates: insects and rodents that take it in store it in their fat faster than they get rid of it. A hawk eats many of these animals over its life, so the insecticide in all of their fat collects in the hawk. The concentration increases at each step up the food chain (biomagnification), so it is highest in hawks at the top."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "<b>Propose</b> a solution, other than switching to a different chemical, that would reduce the amount of insecticide Z reaching the creek. <b>Justify</b> it by explaining how it works.",
+   "rubric": [
+    {
+     "point": "A specific, realistic solution fitted to orchards and the creek that is not another chemical",
+     "accept": [
+      "a vegetated buffer strip along the creek",
+      "integrated pest management that sprays only when pest counts pass a threshold",
+      "not spraying before forecast rain"
+     ]
+    },
+    {
+     "point": "Explains how it reduces insecticide reaching the creek",
+     "accept": [
+      "plants and soil in the buffer slow runoff and trap the insecticide before it reaches the water",
+      "IPM uses less insecticide, so less is available to wash off"
+     ]
+    }
+   ],
+   "sample": "Plant a buffer strip of grasses and shrubs at least 10 meters wide between the orchards and the creek. The plants slow runoff so water soaks into the soil, and soil and roots hold the insecticide, so less of it reaches the creek."
+  },
+  {
+   "label": "f",
+   "points": 1,
+   "prompt": "<b>Describe</b> one reason the LD50 measured in rats may not show how harmful insecticide Z is to people.",
+   "rubric": [
+    {
+     "point": "A valid limitation",
+     "accept": [
+      "people may be more or less sensitive than rats",
+      "LD50 counts only deaths, not harm such as cancer or nerve damage",
+      "it measures one dose, not long-term exposure"
+     ]
+    }
+   ],
+   "sample": "The LD50 counts only deaths after one dose in rats. People may be more or less sensitive than rats, and insecticide Z could harm people through long-term exposure to small doses, such as nerve damage, at doses far below the LD50."
+  }
+ ]
+}

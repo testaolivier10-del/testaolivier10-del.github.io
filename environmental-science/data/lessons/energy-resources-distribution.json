@@ -1,0 +1,83 @@
+{
+ "topic": "energy-resources-distribution",
+ "hook": "One country sits on vast oil fields, its neighbor has none. Iceland heats its homes with water from hot rock, while a desert nation covers its land with sun-powered panels. Energy resources are not spread evenly: where they are depends on ancient geology and today's climate, and that shapes what every country burns, buys and builds.",
+ "prereq": [
+  {
+   "q": "Where is Earth's internal heat closest to the surface?",
+   "options": [
+    "Near plate boundaries and hot spots",
+    "Under the oldest, thickest continents",
+    "At the poles",
+    "Under deep oceans far from any plate edge"
+   ],
+   "correct": 0,
+   "why": "Plate boundaries and hot spots bring magma and hot rock close to the surface.",
+   "review": "plate-tectonics"
+  },
+  {
+   "q": "What does insolation measure?",
+   "options": [
+    "The solar energy reaching an area",
+    "How well a house holds heat",
+    "Wind speed",
+    "Rainfall"
+   ],
+   "correct": 0,
+   "why": "Insolation is incoming solar radiation, highest where the sun is high and skies are clear.",
+   "review": "solar-radiation-seasons"
+  },
+  {
+   "q": "Coal formed from what?",
+   "options": [
+    "Plants buried in ancient swamps",
+    "Volcanic ash",
+    "Sea salt",
+    "Desert sand"
+   ],
+   "correct": 0,
+   "why": "Buried swamp plants, changed by heat and pressure, became coal.",
+   "review": "fuel-types"
+  }
+ ],
+ "figure": {
+  "figure": "energy-resources-distribution-landscape",
+  "caption": "Each region's geology and climate decide which energy resources it has."
+ },
+ "chain": [
+  {
+   "cause": "Ancient swamps and seas buried organic matter in some basins",
+   "effect": "coal, oil and natural gas are concentrated in those sedimentary rocks"
+  },
+  {
+   "cause": "Plate boundaries bring hot rock near the surface",
+   "effect": "heat from underground is practical in places like Iceland, but not everywhere"
+  },
+  {
+   "cause": "Latitude, clouds and land shape decide sunlight, wind and falling water",
+   "effect": "renewable resources also vary from place to place"
+  },
+  {
+   "cause": "A country lacks the resources it uses",
+   "effect": "it must import energy, so its supply and prices depend on other countries"
+  }
+ ],
+ "ideas": [
+  "Fossil fuels lie where ancient swamps and seas buried organic matter: a few regions hold most of the world's oil and gas, and a few countries most of the coal.",
+  "A <b>proven reserve</b> is the part of a deposit that is known and can be recovered profitably with today's technology; it rises with higher prices or new techniques, not only new discoveries.",
+  "Renewables depend on place too: sunlight is strongest in dry, clear, lower-latitude regions; wind on coasts, plains and offshore; falling water on steep rivers with steady flow; Earth's internal heat at plate boundaries.",
+  "Years a reserve lasts = reserve ÷ production per year, if production stays the same."
+ ],
+ "misconception": {
+  "wrong": "A country's proven reserves are all the oil it has, so the number can only go down.",
+  "right": "Proven reserves count only the oil that is known and worth recovering now. They can rise when prices go up or technology improves, even with no new discovery."
+ },
+ "check": [
+  "env-energy-resources-distribution-2",
+  "env-energy-resources-distribution-3",
+  "env-energy-resources-distribution-8",
+  "env-energy-resources-distribution-9",
+  "env-energy-resources-distribution-10",
+  "env-energy-resources-distribution-11"
+ ],
+ "summary": "Energy resources are spread unevenly because they depend on geology and climate. Fossil fuels sit in sedimentary basins where ancient organisms were buried; Earth's internal heat is near the surface at plate boundaries; sunlight, wind and falling water vary with latitude, clouds and terrain. A country without the resources it uses must import energy. Proven reserves count what can be recovered profitably now, and reserve ÷ yearly production estimates how long they last."
+}

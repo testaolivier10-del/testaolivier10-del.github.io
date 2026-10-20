@@ -1,0 +1,12 @@
+{
+ "ozone-depletion-chlorine-cycle": {
+  "file": "figures/ozone-depletion-chlorine-cycle.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A three-step cycle in the stratosphere, about 15 to 35 km up. Step 1: ultraviolet light breaks a CFC molecule and frees a chlorine atom. Step 2: chlorine reacts with ozone: Cl + O3 gives ClO + O2, destroying one ozone molecule. Step 3: ClO reacts with a single oxygen atom: ClO + O gives Cl + O2, and the chlorine atom is free again, so the cycle repeats. One chlorine atom can destroy many thousands of ozone molecules. Result at the surface: less ozone lets more UV through, raising skin cancer and cataracts."
+ }
+}

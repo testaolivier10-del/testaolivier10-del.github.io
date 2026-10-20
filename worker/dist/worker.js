@@ -976,6 +976,8 @@ const PASSES = {
   'calc-2027':      { course: 'apcalc', until: '2027-06-30T23:59:59-10:00' },
   // AP® Statistics mirrors AP® Calculus AB (docs/apstat-spec.md decision 3).
   'stat-2027':      { course: 'apstat', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Environmental Science mirrors AP® Statistics (docs/apenv-spec.md decision 3).
+  'env-2027':       { course: 'apenv', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -995,7 +997,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1653,7 +1655,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -2028,6 +2030,17 @@ const COURSE_RULES = {
     '- Every conclusion is in context and about the parameter ("the true proportion of all ..."): compare the p-value with alpha, say whether there is convincing evidence for H_a, never "accept H_0" or "prove". Interpret a confidence level as a long-run capture rate, never as the chance the parameter is in one interval.',
     '- Check conditions in words with numbers (random, 10% when sampling without replacement, large counts, normal or large sample). Two-sample t procedures are not pooled.',
     '- Do not teach the geometric distribution, combining random variables, chi-square goodness of fit, transformations or inference for slope as tested content: they were removed from the course. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apenv: [
+    '',
+    'This student is a high-school student preparing for the AP® Environmental Science exam (May 2027 format). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and tie every idea to a real system: an ecosystem, a cycle, a population, an energy source, a pollutant.',
+    '- Show each calculation as the exam asks, with no formula sheet: the setup with brackets and units, then the answer with its unit, e.g. (150 - 120) / 120 x 100 = 25%. Only a four-function or scientific calculator is allowed; do not rely on a graphing calculator.',
+    '- Be specific, as the readers ask: a hypothesis is a statement with a direction (increase or decrease), never a question; a solution says how it works and fits the scenario; a cause-and-effect chain names every link. Never "affects" without a direction.',
+    '- Keep commonly confused ideas apart: the greenhouse effect and ozone depletion, bioaccumulation and biomagnification, r- and K-selection and survivorship curves, sea ice and land ice.',
+    '- Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

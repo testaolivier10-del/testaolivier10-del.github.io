@@ -1,0 +1,71 @@
+{
+ "topic": "hydrogen-fuel-cell",
+ "hook": "A city bus pulls away from the curb with no rumble and no smoke; the only thing dripping from its tailpipe is water. It runs on a hydrogen fuel cell. Whether that bus is truly clean depends on a question you cannot see from the street: where did the hydrogen come from?",
+ "prereq": [
+  {
+   "q": "How do you find the overall efficiency of several steps?",
+   "options": [
+    "Multiply the step efficiencies as decimals",
+    "Add the step efficiencies",
+    "Average the step efficiencies",
+    "Use only the largest step"
+   ],
+   "correct": 0,
+   "why": "Losses build on each other, so efficiencies multiply.",
+   "review": "fossil-fuels"
+  },
+  {
+   "q": "Natural gas is mostly which substance?",
+   "options": [
+    "Methane",
+    "Hydrogen",
+    "Carbon dioxide",
+    "Oxygen"
+   ],
+   "correct": 0,
+   "why": "Natural gas is mostly methane, and its hydrogen can be stripped off to make hydrogen fuel.",
+   "review": "fuel-types"
+  }
+ ],
+ "figure": {
+  "figure": "hydrogen-fuel-cell-diagram",
+  "caption": "A hydrogen fuel cell: hydrogen splits at the anode, ions cross the membrane, electrons flow through the circuit as current, and oxygen joins them at the cathode to make water."
+ },
+ "chain": [
+  {
+   "cause": "Energy is used to make hydrogen, from natural gas or by electrolysis of water",
+   "effect": "hydrogen stores that energy as a fuel (an energy carrier)"
+  },
+  {
+   "cause": "In the fuel cell, a catalyst splits hydrogen into ions and electrons",
+   "effect": "ions cross the membrane while electrons flow through the outside circuit as electric current"
+  },
+  {
+   "cause": "At the cathode, oxygen joins the ions and electrons",
+   "effect": "water forms as the only exhaust; nothing is burned"
+  },
+  {
+   "cause": "Each step, from making hydrogen to the motor, loses energy",
+   "effect": "the whole chain is less efficient than charging a battery directly"
+  }
+ ],
+ "ideas": [
+  "A <b>hydrogen fuel cell</b> combines hydrogen and oxygen to make electricity, with water as the only exhaust. No combustion, no carbon dioxide from the cell.",
+  "Hydrogen is an energy carrier: it must be made. Most comes from natural gas (releasing carbon dioxide at the plant); electrolysis with renewable electricity is very low carbon but costs more.",
+  "Fuel cell drawbacks: few fueling stations, hydrogen is hard to store (high pressure, flammable, low density), costly catalysts, and energy lost making and moving hydrogen.",
+  "Do not confuse with battery cars: long recharging times and large mined lithium batteries are battery-car drawbacks. Fuel cell vehicles refuel in minutes and have long range."
+ ],
+ "misconception": {
+  "wrong": "A hydrogen fuel cell car has the same drawbacks as a battery car: it takes hours to recharge and needs a huge lithium battery.",
+  "right": "A fuel cell car refuels with hydrogen in minutes and has only a small battery. Its drawbacks are different: making hydrogen takes energy, often from natural gas, it is hard to store, and there are few fueling stations."
+ },
+ "check": [
+  "env-hydrogen-fuel-cell-1",
+  "env-hydrogen-fuel-cell-3",
+  "env-hydrogen-fuel-cell-4",
+  "env-hydrogen-fuel-cell-11",
+  "env-hydrogen-fuel-cell-12",
+  "env-hydrogen-fuel-cell-13"
+ ],
+ "summary": "A hydrogen fuel cell turns the chemical energy of hydrogen and oxygen into electricity without burning, and its only exhaust is water. But hydrogen is an energy carrier that must be made, mostly from natural gas today, so emissions move to where it is produced. Fuel cells refuel quickly and suit buses and trucks, but hydrogen is hard to store, fueling stations are scarce, and the chain from electricity to wheels is far less efficient than a battery."
+}

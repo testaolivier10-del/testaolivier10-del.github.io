@@ -1,0 +1,12 @@
+{
+ "reducing-air-pollutants-devices": {
+  "file": "figures/reducing-air-pollutants-devices.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram matching devices to pollutants. At a coal power plant, exhaust passes an electrostatic precipitator or baghouse that removes particles, then a scrubber with limestone spray that removes sulfur dioxide. On a car, a catalytic converter changes CO, NOx and hydrocarbons into CO2, nitrogen gas and water. At a gas pump, a vapor recovery nozzle captures gasoline vapor."
+ }
+}

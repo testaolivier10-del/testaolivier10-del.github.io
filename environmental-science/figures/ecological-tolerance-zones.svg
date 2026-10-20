@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">Range of tolerance for water temperature</title>
+<desc id="d">Range of tolerance for an invented fish species against water temperature. The curve of fish numbers is highest in the optimal range, 16 to 26 °C, low in the zones of physiological stress, 8 to 16 °C and 26 to 33 °C, and zero in the zones of intolerance below 8 °C and above 33 °C.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker></defs><rect width="720" height="420" fill="#FFFFFF"/>
+<rect x="90" y="60" width="116" height="250" fill="#F4D7C7"/>
+<rect x="206" y="60" width="116" height="250" fill="#FBEFD6"/>
+<rect x="322" y="60" width="145" height="250" fill="#EFF0DA"/>
+<rect x="467" y="60" width="101.5" height="250" fill="#FBEFD6"/>
+<rect x="568.5" y="60" width="101.5" height="250" fill="#F4D7C7"/>
+<line x1="90" y1="310" x2="670" y2="310" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="90" y1="60" x2="90" y2="310" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="90" y1="310" x2="90" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="90" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">0</text>
+<line x1="162.5" y1="310" x2="162.5" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="162.5" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">5</text>
+<line x1="235" y1="310" x2="235" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="235" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">10</text>
+<line x1="307.5" y1="310" x2="307.5" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="307.5" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">15</text>
+<line x1="380" y1="310" x2="380" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="380" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">20</text>
+<line x1="452.5" y1="310" x2="452.5" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="452.5" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">25</text>
+<line x1="525" y1="310" x2="525" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="525" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">30</text>
+<line x1="597.5" y1="310" x2="597.5" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="597.5" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">35</text>
+<line x1="670" y1="310" x2="670" y2="315" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="670" y="330" font-size="13" fill="#1F2A28" text-anchor="middle">40</text>
+<text x="380" y="354" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700">Water temperature (°C)</text>
+<text x="32" y="185" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="700" transform="rotate(-90 32 185)">Number of fish</text>
+<polyline points="90,310 93.6,310 97.3,310 100.9,310 104.5,310 108.1,310 111.8,310 115.4,310 119,310 122.6,310 126.3,310 129.9,310 133.5,310 137.1,310 140.8,310 144.4,310 148,310 151.6,310 155.3,310 158.9,310 162.5,310 166.1,310 169.8,310 173.4,310 177,310 180.6,310 184.3,310 187.9,310 191.5,310 195.1,310 198.8,310 202.4,310 206,310 209.6,309.9 213.3,309.4 216.9,308.6 220.5,307.3 224.1,305.5 227.8,303.2 231.4,300.4 235,297 238.6,293.2 242.3,288.9 245.9,284.3 249.5,279.4 253.1,274.3 256.8,269 260.4,263.5 264,258 267.6,252.3 271.3,246.5 274.9,240.6 278.5,234.6 282.1,228.5 285.8,222.2 289.4,215.8 293,209.2 296.6,202.5 300.3,195.6 303.9,188.7 307.5,181.6 311.1,174.4 314.8,167.1 318.4,159.8 322,152.5 325.6,145.3 329.3,138.1 332.9,131 336.5,124 340.1,117.2 343.8,110.7 347.4,104.4 351,98.3 354.6,92.6 358.3,87.3 361.9,82.3 365.5,77.8 369.1,73.8 372.8,70.2 376.4,67.1 380,64.6 383.6,62.6 387.3,61.2 390.9,60.3 394.5,60 398.1,60.3 401.8,61.2 405.4,62.6 409,64.6 412.6,67.1 416.3,70.2 419.9,73.8 423.5,77.8 427.1,82.3 430.8,87.3 434.4,92.6 438,98.3 441.6,104.4 445.3,110.7 448.9,117.2 452.5,124 456.1,131 459.8,138.1 463.4,145.3 467,152.6 470.6,159.9 474.3,167.2 477.9,174.5 481.5,181.8 485.1,189.1 488.8,196.3 492.4,203.4 496,210.5 499.6,217.6 503.3,224.7 506.9,231.7 510.5,238.8 514.1,245.8 517.8,252.8 521.4,259.7 525,266.6 528.6,273.2 532.3,279.5 535.9,285.4 539.5,290.9 543.1,295.7 546.8,299.8 550.4,303.2 554,305.9 557.6,307.8 561.3,309.1 564.9,309.8 568.5,310 572.1,310 575.8,310 579.4,310 583,310 586.6,310 590.3,310 593.9,310 597.5,310 601.1,310 604.8,310 608.4,310 612,310 615.6,310 619.3,310 622.9,310 626.5,310 630.1,310 633.8,310 637.4,310 641,310 644.6,310 648.3,310 651.9,310 655.5,310 659.1,310 662.8,310 666.4,310 670,310" fill="none" stroke="#474A10" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="148" y="32" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Intolerance:</text>
+<text x="148" y="48" font-size="12" fill="#1F2A28" text-anchor="middle">none survive</text>
+<text x="264" y="32" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Stress:</text>
+<text x="264" y="48" font-size="12" fill="#1F2A28" text-anchor="middle">few, weak</text>
+<text x="394.5" y="32" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Optimal:</text>
+<text x="394.5" y="48" font-size="12" fill="#1F2A28" text-anchor="middle">most fish</text>
+<text x="517.8" y="32" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Stress:</text>
+<text x="517.8" y="48" font-size="12" fill="#1F2A28" text-anchor="middle">few, weak</text>
+<text x="619.3" y="32" font-size="13" fill="#1F2A28" text-anchor="middle" font-weight="700">Intolerance:</text>
+<text x="619.3" y="48" font-size="12" fill="#1F2A28" text-anchor="middle">none survive</text>
+<line x1="206" y1="60" x2="206" y2="310" stroke="#8A8F86" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="322" y1="60" x2="322" y2="310" stroke="#8A8F86" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="467" y1="60" x2="467" y2="310" stroke="#8A8F86" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="568.5" y1="60" x2="568.5" y2="310" stroke="#8A8F86" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="708" y="410" font-size="11" fill="#5B625A" text-anchor="end" font-style="italic">Invented data for practice</text>
+</svg>

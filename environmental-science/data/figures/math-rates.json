@@ -1,0 +1,12 @@
+{
+ "math-rates-per-person": {
+  "file": "figures/math-rates-per-person.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 384,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two bar charts from invented data. Total use: Town A uses 4.5 million liters a day and Town B 2 million liters a day, so Town A uses more in total. Use per person: Town A has 30,000 people, so 4,500,000 divided by 30,000 is 150 liters per person per day; Town B has 8,000 people, so 2,000,000 divided by 8,000 is 250 liters per person per day. Town B uses more per person."
+ }
+}

@@ -1,0 +1,655 @@
+{
+ "stimuli": {
+  "co2-particulates-s1": {
+   "kind": "visual",
+   "title": "Fine particles and visibility in a town during a wildfire smoke event",
+   "invented": true,
+   "plot": {
+    "label": "Dual-axis line graph over ten days: PM2.5 in micrograms per cubic meter rises from 8 to a peak of 150 on day 5 and falls back to 10, while visibility in kilometers falls from 40 to 2 on day 5 and recovers to 38; invented data",
+    "kind": "dual",
+    "x": [
+     1,
+     10
+    ],
+    "y": [
+     0,
+     160
+    ],
+    "yRight": [
+     0,
+     50
+    ],
+    "xStep": 1,
+    "yStep": 20,
+    "xLabel": "Day",
+    "yLabel": "PM2.5 (µg per m³)",
+    "yRightLabel": "Visibility (km)",
+    "series": [
+     {
+      "name": "PM2.5",
+      "axis": "left",
+      "points": [
+       [
+        1,
+        8
+       ],
+       [
+        2,
+        10
+       ],
+       [
+        3,
+        45
+       ],
+       [
+        4,
+        110
+       ],
+       [
+        5,
+        150
+       ],
+       [
+        6,
+        120
+       ],
+       [
+        7,
+        60
+       ],
+       [
+        8,
+        25
+       ],
+       [
+        9,
+        12
+       ],
+       [
+        10,
+        10
+       ]
+      ]
+     },
+     {
+      "name": "Visibility",
+      "axis": "right",
+      "points": [
+       [
+        1,
+        40
+       ],
+       [
+        2,
+        38
+       ],
+       [
+        3,
+        15
+       ],
+       [
+        4,
+        4
+       ],
+       [
+        5,
+        2
+       ],
+       [
+        6,
+        3
+       ],
+       [
+        7,
+        8
+       ],
+       [
+        8,
+        20
+       ],
+       [
+        9,
+        34
+       ],
+       [
+        10,
+        38
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "co2-particulates-s2": {
+   "kind": "quantitative",
+   "title": "Sources of particulate matter in a dry inland region",
+   "invented": true,
+   "table": {
+    "caption": "Yearly PM10 emissions by source, in thousand metric tons (invented data for practice)",
+    "cols": [
+     "Source",
+     "Natural or human",
+     "PM10 (thousand metric tons per year)"
+    ],
+    "rows": [
+     [
+      "Dust blown from dry lake beds and deserts",
+      "natural",
+      "180"
+     ],
+     [
+      "Wildfires started by lightning",
+      "natural",
+      "60"
+     ],
+     [
+      "Unpaved roads and construction",
+      "human",
+      "90"
+     ],
+     [
+      "Plowed fields",
+      "human",
+      "50"
+     ],
+     [
+      "Vehicles and industry",
+      "human",
+      "20"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-co2-particulates-1",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the relationship between PM2.5 and visibility shown in the graph.",
+   "stimulus": "co2-particulates-s1",
+   "options": [
+    "As PM2.5 rises, visibility rises too",
+    "As PM2.5 rises, visibility falls",
+    "Visibility changes first, and PM2.5 follows two days later",
+    "PM2.5 and visibility are unrelated on these days"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As PM2.5 rises, visibility falls, and as PM2.5 clears, visibility returns: an inverse relationship. Particles scatter and absorb light, which makes haze.",
+    "options": [
+     "On day 5, PM2.5 is highest and visibility is lowest, so they move oppositely.",
+     "Right: the two lines move in opposite directions, an inverse relationship.",
+     "The two change on the same days, not two days apart.",
+     "They move in step, in opposite directions, across all ten days."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-2",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does visibility drop when PM2.5 rises?",
+   "stimulus": "co2-particulates-s1",
+   "options": [
+    "Particles scatter and absorb light, making the air hazy",
+    "Particles are a gas that bends the light upward",
+    "Particles cool the air and form thick rain clouds",
+    "Particles lower the oxygen in the air people breathe"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Particles scatter and absorb sunlight, so less light travels straight from distant objects to your eye, and the air looks hazy.",
+    "options": [
+     "Right: that is what haze is.",
+     "Particles are tiny solids or droplets; they scatter light in many directions.",
+     "The haze comes from the particles themselves, not from rain clouds.",
+     "Particles do not remove oxygen; they block and scatter light."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-3",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in visibility from day 1 to day 5.",
+   "stimulus": "co2-particulates-s1",
+   "why": {
+    "correct": "$\\frac{(2\\,\\text{km} - 40\\,\\text{km})}{40\\,\\text{km}} \\times 100 = -95\\%$, a 95% fall. Visibility fell, so the percent change is negative."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      40,
+      2
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -1900,
+      "why": "You divided by the day 5 value. Divide by the old (day 1) value, 40 km."
+     },
+     {
+      "value": 95,
+      "why": "Visibility fell, so the percent change is negative: -95%."
+     },
+     {
+      "value": -0.95,
+      "why": "That is the fraction. Multiply by 100 for a percent: -95%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-4",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Health officials told residents to stay indoors on days 4 to 6. Which reason best supports that advice?",
+   "stimulus": "co2-particulates-s1",
+   "options": [
+    "Visibility was too low for anyone to drive safely",
+    "Smoke raises ozone in the stratosphere on those days",
+    "CO2 from the fire was high enough to replace oxygen",
+    "PM2.5 was highest, and fine particles reach deep in the lungs"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "PM2.5 reached 110 to 150 µg per m³ on those days. Particles that small reach deep into the lungs and the blood, so less time outdoors means less exposure.",
+    "options": [
+     "Low visibility matters for driving, but the health advice is about breathing particles.",
+     "Smoke does not raise stratospheric ozone; the risk here is particles.",
+     "Outdoor CO2 from a distant fire does not get high enough to replace oxygen.",
+     "Right: the advice targets the days of highest exposure."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-5",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the region's PM10 comes from natural sources?",
+   "stimulus": "co2-particulates-s2",
+   "why": {
+    "correct": "Natural sources: $180 + 60 = 240$ thousand metric tons. Total: $180 + 60 + 90 + 50 + 20 = 400$. Share: $\\frac{240}{400} \\times 100 = 60\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        180,
+        60
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        180,
+        60,
+        90,
+        50,
+        20
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "40% is the human share. Natural sources are the dust (180) and the wildfires (60): 240 of 400."
+     },
+     {
+      "value": 45,
+      "why": "You counted only the dust (180 of 400). Wildfires started by lightning are natural too."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-6",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A regional plan aims to lower PM10. Based on the table, which human source offers the largest cut?",
+   "stimulus": "co2-particulates-s2",
+   "options": [
+    "Dust from dry lake beds",
+    "Vehicles and industry",
+    "Unpaved roads and construction",
+    "Plowed fields across the region"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Unpaved roads and construction give 90 thousand metric tons a year, the largest human source. Paving roads and wetting construction sites target it.",
+    "options": [
+     "Lake bed dust is the largest source overall, but it is natural, not human.",
+     "At 20 thousand metric tons, it is the smallest human source here.",
+     "Right: at 90 thousand metric tons it is the largest human source.",
+     "Plowed fields give 50 thousand metric tons, less than roads and construction."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-7",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A drought dries out more lake beds in the region. What would you predict for PM10?",
+   "stimulus": "co2-particulates-s2",
+   "options": [
+    "It would fall, because there would be less water to evaporate",
+    "It would rise, because more dry sediment is exposed to wind",
+    "It would stay the same, because droughts are natural",
+    "It would fall, because fewer people would live there"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Dry lake beds are the largest source. More exposed, dry sediment means more dust lifted by wind, so PM10 would rise even with no change in human activity.",
+    "options": [
+     "Evaporation does not make PM10; exposed dry sediment does.",
+     "Right: the largest source would grow.",
+     "Natural changes still change emissions; dust would increase.",
+     "The table gives no reason to expect fewer people; the dust source grows."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-8",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which of these is a natural source of carbon dioxide in the atmosphere?",
+   "options": [
+    "Volcanic eruptions",
+    "Burning gasoline in cars",
+    "Making cement from limestone",
+    "Photosynthesis by forest trees"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Volcanoes release CO2 from deep in the Earth. Respiration, decomposition and wildfires are other natural sources.",
+    "options": [
+     "Right: volcanoes release CO2, sulfur dioxide and ash.",
+     "Burning gasoline releases CO2, but it is a human source.",
+     "Cement making releases CO2, but it is a human activity.",
+     "Photosynthesis takes CO2 out of the air; it is not a source."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-9",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair lists a natural source of particulate matter and a human source of it?",
+   "options": [
+    "Diesel exhaust; volcanic ash",
+    "Coal burning; construction dust",
+    "Pollen; desert dust storms",
+    "Sea salt spray; diesel exhaust"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Volcanic ash, sea salt spray, pollen and desert dust are natural; diesel exhaust, coal burning and construction dust are human.",
+    "options": [
+     "The order is reversed: diesel is human and volcanic ash is natural.",
+     "Both of these are human sources.",
+     "Both of these are natural sources.",
+     "Right: sea spray is natural, diesel soot is human."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-10",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which natural process releases CO2 when organisms break down dead leaves on a forest floor?",
+   "options": [
+    "Photosynthesis",
+    "Sedimentation",
+    "Decomposition",
+    "Condensation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Decomposers break down dead matter and release the carbon as CO2 through cellular respiration.",
+    "options": [
+     "Photosynthesis takes CO2 in; it does not release it.",
+     "Sedimentation buries carbon in rock over long times; it does not release CO2 from leaves.",
+     "Right: decomposers respire, releasing CO2.",
+     "Condensation is water vapor turning to liquid; it releases no CO2."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-11",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Volcanoes release CO2 every year. How do they compare with human activities as a source of atmospheric CO2 today?",
+   "options": [
+    "Volcanoes release far more CO2 each year than human activities",
+    "Human activities release far more CO2 each year than volcanoes",
+    "Volcanoes and human activities release about equal amounts",
+    "Volcanoes take CO2 out of the air, so they offset human emissions"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Human burning of fossil fuels and cement making release roughly 100 times more CO2 each year than all the world's volcanoes combined (USGS estimates).",
+    "options": [
+     "This common claim is wrong; human emissions are much larger.",
+     "Right: estimates put human emissions at about 100 times volcanic emissions.",
+     "They are not close; human emissions are about 100 times larger.",
+     "Volcanoes add CO2; they do not remove it."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-12",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student says that natural sources of particulates do not affect human health because only human pollution is harmful. Which example best counters the claim?",
+   "options": [
+    "Smoke from lightning-started wildfires sends people to hospitals",
+    "Diesel trucks raise PM2.5 near busy highways",
+    "Coal plants raise SO2 near their smokestacks",
+    "Tree pollen is large and rarely gets past the nose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Particles hurt the lungs whatever their source. Smoke from lightning-started wildfires and desert dust storms raise PM2.5 and hospital visits.",
+    "options": [
+     "Right: natural smoke particles harm lungs just as human smoke does.",
+     "True, but diesel is a human source, so it does not test the claim.",
+     "SO2 is a gas and coal is a human source; this does not test the claim.",
+     "This supports the claim, rather than countering it."
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-13",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A monitor records PM2.5 of 18 µg per m³ before wildfire season and 135 µg per m³ on the smokiest day. Write the setup for the percent change, then the answer.",
+   "why": {
+    "correct": "$\\frac{(135 - 18)}{18} \\times 100 = 650\\%$: the smoky day had 7.5 times the usual level."
+   },
+   "setup": {
+    "answer": "(135 - 18) / 18 * 100",
+    "mustUse": [
+     "135",
+     "18"
+    ],
+    "mistakes": [
+     {
+      "expr": "(135 - 18) / 135 * 100",
+      "why": "Divide by the old value, 18, not the new one."
+     },
+     {
+      "expr": "135 / 18 * 100",
+      "why": "That gives the new value as a percent of the old. Subtract first: (135 - 18) / 18 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       18,
+       135
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 750,
+       "why": "750% is 135 as a percent of 18. The change is (135 - 18) / 18 × 100 = 650%."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-co2-particulates-14",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A person breathes about 11,000 liters of air a day, which is 11 cubic meters. On a smoky day PM2.5 is 150 µg per m³. How many micrograms of PM2.5 does the person breathe in that day?",
+   "why": {
+    "correct": "$11\\,\\text{m}^{3} \\times \\frac{150\\,\\mu\\text{g}}{1\\,\\text{m}^{3}} = 1{,}650\\,\\mu\\text{g}$. The cubic meters cancel."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      11,
+      150
+     ]
+    },
+    "unit": "ug",
+    "units": [
+     "µg",
+     "micrograms",
+     "microgram"
+    ],
+    "mistakes": [
+     {
+      "value": 1650000,
+      "why": "You used 11,000 liters with a per-cubic-meter value. Convert first: 11,000 L is 11 m³."
+     },
+     {
+      "value": 13.6363636364,
+      "why": "Multiply the volume by the concentration; dividing does not leave micrograms."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-co2-particulates-15",
+   "unit": "unit-7",
+   "topic": "co2-particulates",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Desert dust from a dried-up lake bed blows into a nearby town. Propose a solution that reduces this dust, and explain how it works.",
+   "why": {
+    "correct": "The source is dry, bare sediment. Keeping it wet or covered stops the wind from lifting particles. The solution fits the scenario and says how it works."
+   },
+   "specific": {
+    "frame": "Managers could ___, which reduces dust because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "return some water to the lake bed and plant native shrubs on the exposed areas",
+       "require cleaner engines on cars in the town",
+       "build a taller smokestack at the nearest power plant"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cleaner engines cut car exhaust gases, not dust from a lake bed.",
+       "2": "A smokestack has nothing to do with lake bed dust."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "wet or covered soil cannot be lifted by the wind",
+       "plants release more CO2 into the air",
+       "water cools the air into a thermal inversion"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Plants take in CO2 by photosynthesis; this is not how the solution works.",
+       "2": "An inversion would trap dust, not reduce it."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "dust",
+      "lake",
+      "wind"
+     ]
+    },
+    "model": "Managers could return some water to the lake bed and plant native shrubs on the exposed areas, which reduces dust because wet or covered soil cannot be lifted by the wind."
+   }
+  }
+ ]
+}

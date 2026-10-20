@@ -1,0 +1,567 @@
+{
+ "stimuli": {
+  "biomass-energy-s1": {
+   "kind": "quantitative",
+   "title": "Fuel from four crops",
+   "invented": true,
+   "table": {
+    "caption": "Fuel energy produced per hectare each year, and the fossil fuel energy used to grow and process it (invented data for practice, near published estimates)",
+    "cols": [
+     "Crop (fuel)",
+     "Fuel energy (GJ per hectare)",
+     "Fossil energy used (GJ per hectare)"
+    ],
+    "rows": [
+     [
+      "Corn (ethanol)",
+      "75",
+      "55"
+     ],
+     [
+      "Sugarcane (ethanol)",
+      "135",
+      "15"
+     ],
+     [
+      "Soybeans (biodiesel)",
+      "20",
+      "9"
+     ],
+     [
+      "Canola (biodiesel)",
+      "40",
+      "18"
+     ]
+    ]
+   },
+   "text": "1 hectare = 10,000 square meters, about 2.5 acres."
+  },
+  "biomass-energy-s2": {
+   "kind": "visual",
+   "title": "Biomass energy and carbon",
+   "figure": "biomass-energy-carbon"
+  }
+ },
+ "items": [
+  {
+   "id": "env-biomass-energy-1",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is an example of biomass used for energy?",
+   "options": [
+    "Natural gas piped to a kitchen stove",
+    "Uranium fuel pellets in a reactor",
+    "Sunlight falling on a rooftop panel",
+    "Dried dung burned for cooking"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Biomass is recently living organic matter: wood, charcoal, crop waste, dung, and fuels made from crops.",
+    "options": [
+     "Natural gas is a fossil fuel formed over millions of years.",
+     "Uranium is a mined mineral.",
+     "Sunlight is solar energy, not biomass.",
+     "Right: dung is organic matter from living things."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-2",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How is ethanol for vehicle fuel usually made?",
+   "options": [
+    "By pressing vegetable oil and mixing it with methanol",
+    "By splitting water into its parts with electricity",
+    "By fermenting the sugars in crops such as corn",
+    "By refining crude oil at a very high temperature"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Yeast ferments the sugars in corn, sugarcane or other crops into ethanol, which is distilled and blended into gasoline.",
+    "options": [
+     "That process makes biodiesel.",
+     "Splitting water makes hydrogen.",
+     "Right: fermentation of crop sugars.",
+     "Refining crude oil makes gasoline, not ethanol."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-3",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is biodiesel made from?",
+   "options": [
+    "Natural gas that is cooled until it becomes a liquid",
+    "Vegetable oils, such as soybean oil, or animal fats",
+    "Fermented corn sugar that is distilled into alcohol",
+    "Coal that has been heated and turned into a liquid"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Biodiesel is made by reacting vegetable oils (soybean, canola, palm) or animal fats so they can run diesel engines.",
+    "options": [
+     "Cooled natural gas is liquefied natural gas, a fossil fuel.",
+     "Right: plant oils or animal fats.",
+     "Fermented and distilled sugar is ethanol.",
+     "Liquid coal is a fossil fuel product."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-4",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A family cooks every day over an open wood fire inside a small house with poor ventilation. What is the most serious health effect?",
+   "options": [
+    "Lung damage from breathing smoke",
+    "Radiation given off by the burning wood",
+    "Warmer water in the streams near the house",
+    "Loss of hearing from the noise of the fire"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Indoor smoke from wood, charcoal, crop waste or dung harms the lungs and is a major cause of illness and early death in poorer countries, especially for women and children.",
+    "options": [
+     "Right: indoor smoke is a leading health risk.",
+     "Wood is not a meaningful radiation source.",
+     "A home cooking fire does not heat streams.",
+     "A cooking fire is not loud enough to damage hearing."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-5",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why can burning wood be called close to carbon neutral, and when does that stop being true?",
+   "options": [
+    "Wood contains no carbon, unless it is burned along with some coal",
+    "Burning wood removes carbon dioxide from the air, unless the fire is too hot",
+    "Wood smoke does not trap any heat in the atmosphere, unless the wood is wet",
+    "Regrowth reabsorbs the carbon, unless cutting outpaces it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The carbon in wood came from the air a few decades ago. If new trees grow at the same rate, they take it back up. If forest is cleared and not regrown, the carbon stays in the air.",
+    "options": [
+     "Wood is about half carbon by dry mass.",
+     "Burning releases carbon dioxide; it does not remove it.",
+     "Burning wood releases carbon dioxide, which traps heat.",
+     "Right: neutrality depends on regrowth keeping pace."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-6",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Growing corn for ethanol on a large scale has which drawback?",
+   "options": [
+    "It does not mix with gasoline, so ordinary cars need new engines",
+    "It is a nonrenewable fuel that will run out within a few decades",
+    "It competes with food crops for farmland and water",
+    "It releases radioactive waste that has to be stored for centuries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Corn ethanol competes with food crops for land, takes fertilizer, pesticides, water and fossil fuel energy to grow and process, and saves less carbon dioxide than it first appears.",
+    "options": [
+     "Most gasoline in the United States already contains about 10 percent ethanol.",
+     "Corn is regrown each year, so ethanol is renewable.",
+     "Right: land, water and fertilizer use and competition with food.",
+     "Ethanol makes no radioactive waste."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-7",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A dairy farm collects cow manure in a sealed tank where bacteria break it down without oxygen. What fuel does this make?",
+   "options": [
+    "Hydrogen, released when the bacteria split water",
+    "Biogas, a fuel gas that is mostly methane",
+    "Ethanol, from the sugar in the cows' feed",
+    "Coal, after the manure is pressed and heated"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Anaerobic decomposition of manure, food waste or sewage makes biogas, which is mostly methane, a renewable form of the main gas in natural gas.",
+    "options": [
+     "These bacteria release methane, not hydrogen fuel.",
+     "Right: anaerobic digestion makes methane-rich biogas.",
+     "Ethanol comes from fermenting crop sugars, not manure digestion.",
+     "Coal forms over millions of years."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-8",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which crop gives the most fuel energy per hectare each year?",
+   "stimulus": "biomass-energy-s1",
+   "options": [
+    "Sugarcane (ethanol)",
+    "Corn (ethanol)",
+    "Soybeans (biodiesel)",
+    "Canola (biodiesel)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sugarcane gives 135 GJ per hectare, the largest value.",
+    "options": [
+     "Right: 135 GJ per hectare.",
+     "Corn gives 75 GJ per hectare.",
+     "Soybeans give 20 GJ per hectare.",
+     "Canola gives 40 GJ per hectare."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-9",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many hectares of corn are needed to make 3,000 GJ of ethanol in a year?",
+   "stimulus": "biomass-energy-s1",
+   "why": {
+    "correct": "$\\frac{3{,}000\\,\\text{GJ}}{75\\,\\text{GJ per hectare}} = 40$ hectares."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      3000,
+      75
+     ]
+    },
+    "unit": "ha",
+    "units": [
+     "hectares"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        3000,
+        75
+       ]
+      },
+      "why": "You multiplied. Divide the energy needed by the energy per hectare so GJ cancels and hectares are left."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        3000,
+        135
+       ]
+      },
+      "why": "You used sugarcane (135 GJ per hectare). The question asks about corn (75)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-10",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the net energy of corn ethanol per hectare (energy in the fuel minus the fossil energy used to grow and process it), then give the answer.",
+   "stimulus": "biomass-energy-s1",
+   "why": {
+    "correct": "$75 - 55 = 20$ GJ per hectare."
+   },
+   "setup": {
+    "answer": "75 GJ/ha - 55 GJ/ha",
+    "unit": "GJ/ha",
+    "mustUse": [
+     "75",
+     "55"
+    ],
+    "mistakes": [
+     {
+      "expr": "75 GJ/ha + 55 GJ/ha",
+      "why": "Net energy subtracts the energy put in from the energy you get out."
+     }
+    ],
+    "then": {
+     "unit": "GJ/ha",
+     "from": {
+      "fn": "sub",
+      "args": [
+       75,
+       55
+      ]
+     },
+     "units": [
+      "GJ per hectare",
+      "GJ/hectare"
+     ],
+     "mistakes": [
+      {
+       "value": 130,
+       "why": "You added the energy in and out. Net energy is out minus in: 75 - 55."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-biomass-energy-11",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which conclusion is best supported by the table?",
+   "stimulus": "biomass-energy-s1",
+   "options": [
+    "Each crop uses more fossil energy than the fuel energy it delivers",
+    "Sugarcane returns far more net energy per hectare than corn",
+    "Corn ethanol returns more net energy per hectare than sugarcane ethanol",
+    "The two biodiesel crops return the most fuel energy per hectare"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sugarcane: 135 GJ out for 15 in (net 120). Corn: 75 out for 55 in (net 20).",
+    "options": [
+     "Each crop delivers more energy than it uses.",
+     "Right: net 120 GJ for sugarcane against 20 for corn.",
+     "Corn's net is 20 GJ per hectare; sugarcane's is 120.",
+     "The biodiesel crops give 20 and 40 GJ per hectare, the least."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-12",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the diagram, how does carbon get into biomass?",
+   "stimulus": "biomass-energy-s2",
+   "options": [
+    "Plants take in carbon dioxide by photosynthesis",
+    "Burning releases carbon into the plants",
+    "Plants absorb carbon from fossil fuels in the soil",
+    "Harvesting adds carbon to the wood"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The diagram shows growing plants storing carbon from the air through photosynthesis.",
+    "options": [
+     "Right: photosynthesis takes carbon dioxide from the air.",
+     "Burning releases carbon to the air.",
+     "Plants do not take carbon from buried fossil fuels.",
+     "Harvesting moves carbon; it does not add it."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-13",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The diagram labels the arrows \"released in hours\" and \"years to decades.\" What does this difference mean?",
+   "stimulus": "biomass-energy-s2",
+   "options": [
+    "Regrowth removes the carbon faster than burning releases it",
+    "Carbon released from biomass stays in the air permanently",
+    "Both steps take the same time, so the cycle stays balanced",
+    "Carbon is released far faster than regrowth takes it up"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A tree's carbon returns to the air in hours when it burns but takes years to decades to be taken up again, so heavy use raises carbon dioxide for a long time.",
+    "options": [
+     "The labels show the opposite.",
+     "Regrowth takes the carbon back over time.",
+     "The labels show very different times.",
+     "Right: release is fast, uptake is slow."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-14",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A country clears tropical forest to plant oil palms for biodiesel. Using the diagram, what is the most likely result?",
+   "stimulus": "biomass-energy-s2",
+   "options": [
+    "No change, as biomass of any kind is carbon neutral when it burns",
+    "Carbon dioxide falls, as burning the cleared forest removes carbon",
+    "Carbon dioxide rises, as the forest's stored carbon is released",
+    "Carbon dioxide falls, as palm biodiesel replaces diesel made from oil"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The diagram's banner warns that cleared, unregrown land keeps its carbon in the air. Clearing forest releases its stored carbon, far more than the biodiesel saves for many years, and destroys habitat.",
+    "options": [
+     "Biomass is near neutral only when regrowth keeps pace.",
+     "Burning releases carbon; it does not remove it.",
+     "Right: the carbon lost from the forest outweighs the fuel savings.",
+     "Any savings from biodiesel are swamped by the carbon released by clearing."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-15",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town wants to heat its school with wood chips from a nearby forest without depleting it. Propose a rule for the harvest and explain how it works.",
+   "stimulus": "biomass-energy-s2",
+   "why": {
+    "correct": "Limiting the harvest to the forest's yearly regrowth keeps the stock steady and lets regrowth take back the carbon released."
+   },
+   "specific": {
+    "frame": "The town should ___, because ___.",
+    "slots": {
+     "rule": {
+      "label": "Rule",
+      "options": [
+       "harvest no more wood each year than the forest regrows",
+       "harvest the whole forest at once and replant later",
+       "switch to burning coal in winter"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cutting the whole forest at once releases its carbon quickly and destroys habitat for decades.",
+       "2": "Coal is a fossil fuel; this does not use the forest sustainably."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "the stock of wood stays steady and regrowing trees take back the carbon dioxide released",
+       "burning wood removes carbon dioxide from the air",
+       "wood smoke does not contain carbon dioxide"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Burning releases carbon dioxide.",
+       "2": "Wood smoke contains carbon dioxide and soot."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "harvest",
+      "regrow",
+      "forest"
+     ]
+    },
+    "model": "The town should harvest no more wood each year than the forest regrows, because the stock of wood then stays steady and the regrowing trees take back the carbon dioxide released by burning."
+   }
+  },
+  {
+   "id": "env-biomass-energy-16",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of using biomass for energy?",
+   "options": [
+    "It can turn farm and forestry waste into fuel",
+    "It produces no air pollution when it is burned",
+    "It needs no land to grow it or to collect it",
+    "It is a nondepletable resource, just like sunlight"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Biomass can turn waste into energy, is widely available and is renewable when managed. It still pollutes the air when burned.",
+    "options": [
+     "Right: waste can become fuel.",
+     "Burning biomass releases carbon dioxide, soot and other pollutants.",
+     "Growing biomass takes land.",
+     "Biomass is depletable: it can be overharvested."
+    ]
+   }
+  },
+  {
+   "id": "env-biomass-energy-17",
+   "unit": "unit-6",
+   "topic": "biomass-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is biomass the main energy source in many rural areas of developing countries?",
+   "options": [
+    "It releases more energy per kilogram than fossil fuels do",
+    "It is the one fuel that works in a cooking stove",
+    "Governments there ban fossil fuels in rural villages",
+    "It can be gathered nearby for little or no money"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Biomass can be gathered locally for free, while fuels such as liquid petroleum gas or electricity may be expensive or unavailable.",
+    "options": [
+     "Wood releases less energy per kilogram than fossil fuels.",
+     "Gas and electricity are also used for cooking where available.",
+     "Such bans are not the reason.",
+     "Right: availability and cost."
+    ]
+   }
+  }
+ ]
+}

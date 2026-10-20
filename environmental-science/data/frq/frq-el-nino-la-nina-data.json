@@ -1,0 +1,243 @@
+{
+ "id": "frq-el-nino-la-nina-data",
+ "type": "data",
+ "points": 10,
+ "title": "Pacific sea surface temperature, trade winds and rainfall",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "el-nino-la-nina",
+  "global-wind-patterns"
+ ],
+ "practices": [
+  "5.A",
+  "5.B",
+  "5.C",
+  "5.E",
+  "2.B",
+  "7.B"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "Six years of observations across the tropical Pacific",
+  "invented": true,
+  "table": {
+   "caption": "December to February averages for six winters (invented data for practice). Temperature difference: sea surface temperature in the central-eastern equatorial Pacific minus its long-term average. Trade wind speed: average surface wind from the east over the central Pacific.",
+   "cols": [
+    "Winter",
+    "Sea surface temperature difference from average (°C)",
+    "Trade wind speed (m/s)",
+    "Rainfall at a coastal city in Peru (mm)",
+    "Rainfall at a city in Indonesia (mm)"
+   ],
+   "rows": [
+    [
+     "1",
+     "+0.1",
+     "6.0",
+     "20",
+     "900"
+    ],
+    [
+     "2",
+     "+2.1",
+     "2.5",
+     "410",
+     "380"
+    ],
+    [
+     "3",
+     "-1.4",
+     "8.1",
+     "5",
+     "1,250"
+    ],
+    [
+     "4",
+     "-0.2",
+     "6.3",
+     "15",
+     "950"
+    ],
+    [
+     "5",
+     "+1.2",
+     "3.9",
+     "180",
+     "560"
+    ],
+    [
+     "6",
+     "-0.9",
+     "7.4",
+     "8",
+     "1,100"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "Scientists recorded conditions across the tropical Pacific for six winters, shown in the table. <b>Identify</b> the winter with the weakest trade winds, and give its trade wind speed.",
+   "rubric": [
+    {
+     "point": "Winter 2, at 2.5 m/s",
+     "accept": [
+      "winter 2 (2.5 m/s)"
+     ]
+    }
+   ],
+   "sample": "Winter 2 had the weakest trade winds, 2.5 m/s."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Describe</b> the relationship between trade wind speed and the sea surface temperature difference shown in the data. Use numbers from the table in your answer.",
+   "rubric": [
+    {
+     "point": "As trade wind speed decreases, the sea surface temperature difference increases (an inverse or negative relationship)",
+     "accept": [
+      "weaker winds go with warmer water",
+      "stronger winds go with cooler water"
+     ]
+    },
+    {
+     "point": "Supports it with values from the table, for example winter 2 (2.5 m/s, +2.1 °C) compared with winter 3 (8.1 m/s, −1.4 °C)",
+     "accept": [
+      "any two winters correctly compared with their numbers"
+     ]
+    }
+   ],
+   "sample": "The weaker the trade winds, the warmer the central-eastern Pacific compared with average. In winter 2 the trade winds were only 2.5 m/s and the water was 2.1 °C above average, while in winter 3 the winds were 8.1 m/s and the water was 1.4 °C below average."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the percent change in rainfall at the Indonesian city from winter 1 to winter 2. Show your setup and give the answer with units.",
+   "rubric": [
+    {
+     "point": "Setup with the difference in brackets, divided by the starting value, times 100: (380 − 900) / 900 × 100",
+     "accept": [
+      "((380 - 900) / 900) × 100"
+     ]
+    },
+    {
+     "point": "Answer: about −58% (a decrease of about 58%)",
+     "accept": [
+      "−57.8%",
+      "a 58% decrease"
+     ]
+    }
+   ],
+   "sample": "Setup: (380 mm − 900 mm) / 900 mm × 100. Answer: −520 / 900 × 100 ≈ −58%. Rainfall fell by about 58%.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "(380 - 900) / 900 * 100",
+     "mustUse": [
+      "380",
+      "900"
+     ],
+     "mistakes": [
+      {
+       "expr": "(380 - 900) / 380 * 100",
+       "why": "Divide by the starting value, 900 mm in winter 1, not by 380."
+      },
+      {
+       "expr": "(900 - 380) / 900 * 100",
+       "why": "Use new minus old: (380 - 900). Rainfall fell, so the percent change is negative."
+      },
+      {
+       "expr": "380 - 900 / 900 * 100",
+       "why": "Put brackets around the difference so the whole difference is divided by 900."
+      }
+     ],
+     "then": {
+      "unit": "%",
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        900,
+        380
+       ]
+      },
+      "mistakes": [
+       {
+        "value": -0.5777777778,
+        "why": "Multiply by 100 to turn the fraction into a percent: about −58%."
+       },
+       {
+        "from": {
+         "fn": "percentChange",
+         "args": [
+          380,
+          900
+         ]
+        },
+        "why": "That is the change from winter 2 back to winter 1. Start from winter 1, 900 mm."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "<b>Identify</b> the winter that best shows La Niña conditions, and <b>justify</b> your answer with data from the table.",
+   "rubric": [
+    {
+     "point": "Winter 3, justified with its data: the strongest trade winds (8.1 m/s) and the coolest water (1.4 °C below average), with the wettest Indonesia and driest Peru",
+     "accept": [
+      "winter 3: −1.4 °C and 8.1 m/s"
+     ]
+    }
+   ],
+   "sample": "Winter 3: it had the strongest trade winds (8.1 m/s) and the coolest water (1.4 °C below average), the driest Peru (5 mm) and the wettest Indonesia (1,250 mm), all signs of La Niña."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "<b>Explain</b> why rainfall at the coastal city in Peru was so much higher in winter 2 than in winter 1.",
+   "rubric": [
+    {
+     "point": "Weaker trade winds let warm surface water spread east toward South America (an El Niño)",
+     "accept": [
+      "warm water moved east because the trade winds weakened"
+     ]
+    },
+    {
+     "point": "The warm water heats the air above it, which rises, cools and forms heavy rain clouds, so the rainy zone shifts east over Peru",
+     "accept": [
+      "warmer sea surface means more evaporation and rising air, so more rain"
+     ]
+    }
+   ],
+   "sample": "In winter 2 the trade winds were weak (2.5 m/s), so the warm surface water that usually piles up in the western Pacific spread east toward South America; the water was 2.1 °C above average. The warm water heated the air above it, which rose, cooled and formed heavy rain clouds, so rain that normally falls over Indonesia fell over coastal Peru instead (410 mm compared with 20 mm)."
+  },
+  {
+   "label": "f",
+   "points": 2,
+   "prompt": "Coastal Peru has one of the world's largest anchovy fisheries. <b>Describe</b> one effect of conditions like winter 2 on this fishery, and <b>explain</b> how the change in the ocean causes it.",
+   "rubric": [
+    {
+     "point": "Effect: the anchovy catch (or anchovy population) decreases",
+     "accept": [
+      "fewer anchovies",
+      "the fishery declines"
+     ]
+    },
+    {
+     "point": "Explains the chain: weak trade winds weaken upwelling, so fewer nutrients reach the surface, phytoplankton decline, and the anchovies have less food",
+     "accept": [
+      "less upwelling of cold, nutrient-rich water means less plankton"
+     ]
+    }
+   ],
+   "sample": "The anchovy catch would fall. With weak trade winds, less surface water is pushed away from the coast, so upwelling of cold, nutrient-rich deep water weakens. Fewer nutrients reach the sunlit surface, so phytoplankton decline, and the anchovies that feed on plankton have less food and their numbers drop."
+  }
+ ]
+}

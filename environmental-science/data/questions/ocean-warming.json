@@ -1,0 +1,542 @@
+{
+ "stimuli": {
+  "ocean-warming-s1": {
+   "kind": "quantitative",
+   "title": "Dissolved oxygen that seawater can hold at each temperature",
+   "invented": true,
+   "table": {
+    "caption": "Most oxygen full seawater can hold at each temperature, mg/L (invented data for practice, close to measured values)",
+    "cols": [
+     "Water temperature (°C)",
+     "Dissolved oxygen (mg/L)"
+    ],
+    "rows": [
+     [
+      "0",
+      "11.2"
+     ],
+     [
+      "5",
+      "10.0"
+     ],
+     [
+      "10",
+      "9.0"
+     ],
+     [
+      "15",
+      "8.1"
+     ],
+     [
+      "20",
+      "7.4"
+     ],
+     [
+      "25",
+      "6.8"
+     ],
+     [
+      "30",
+      "6.2"
+     ]
+    ]
+   }
+  },
+  "ocean-warming-s2": {
+   "kind": "visual",
+   "title": "Effects of ocean warming",
+   "figure": "ocean-warming-effects"
+  }
+ },
+ "items": [
+  {
+   "id": "env-ocean-warming-1",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is thermal expansion of seawater?",
+   "options": [
+    "Water takes up more space as it warms",
+    "Water gains mass as it absorbs CO₂",
+    "Ice on land slides into the sea",
+    "Warm water rises and cold water sinks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Thermal expansion: the same mass of water fills a larger volume when it is warmer. It is one of the two main causes of sea level rise.",
+    "options": [
+     "Right: warmer water molecules move faster and spread apart, so the same mass fills more volume.",
+     "Dissolved CO₂ adds little volume; thermal expansion is caused by heat.",
+     "That is land ice adding water, a separate cause of sea level rise.",
+     "That describes circulation, not expansion."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-2",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which two processes cause most of today’s sea level rise?",
+   "options": [
+    "Melting sea ice and more rainfall",
+    "Melting land ice and thermal expansion",
+    "Dissolved CO₂ and melting sea ice",
+    "More rivers and sinking icebergs"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Land ice adds water; thermal expansion makes the existing water take up more room.",
+    "options": [
+     "Sea ice already floats; rain is part of the water cycle and does not add new water.",
+     "Right: water from glaciers and ice sheets, plus warmer water expanding.",
+     "Neither raises sea level much.",
+     "Rivers return water that came from the ocean; they do not add new water."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-3",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a warmer ocean hold less dissolved oxygen?",
+   "options": [
+    "Warm water has more algae that eat the oxygen",
+    "Warm water is denser, squeezing oxygen out",
+    "Gases dissolve less in warm water",
+    "Fish breathe less in warm water"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Lower solubility plus a warm surface layer that mixes less both lower the oxygen in parts of the ocean.",
+    "options": [
+     "The main reason is solubility; algae make oxygen by photosynthesis.",
+     "Warm water is less dense, not more.",
+     "Right: oxygen is less soluble as water warms, like a soda going flat faster when warm.",
+     "Fish need more oxygen in warm water, which makes the drop worse."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-4",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Describe the relationship in the data.",
+   "stimulus": "ocean-warming-s1",
+   "options": [
+    "As temperature rises, oxygen rises",
+    "Oxygen stays about the same across temperatures",
+    "Oxygen rises up to 15 °C, then falls",
+    "As temperature rises, oxygen falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An inverse relationship: warmer seawater holds less oxygen.",
+    "options": [
+     "The oxygen values fall as temperature goes up.",
+     "Oxygen changes by 5 mg/L across the table.",
+     "Oxygen falls the whole way.",
+     "Right: from 11.2 mg/L at 0 °C to 6.2 mg/L at 30 °C."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-5",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By what percent does the oxygen the seawater can hold change as it warms from 10 °C to 20 °C?",
+   "stimulus": "ocean-warming-s1",
+   "why": {
+    "correct": "$\\frac{(7.4 - 9.0)}{9.0} \\times 100 \\approx -17.8\\%$, a decrease of about 18%."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      9,
+      7.4
+     ]
+    },
+    "places": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        7.4,
+        9
+       ]
+      },
+      "why": "You divided by the new value or reversed the order. Use (new − old) ÷ old × 100: (7.4 − 9.0) ÷ 9.0 × 100."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        7.4,
+        9
+       ]
+      },
+      "why": "−1.6 mg/L is the change in oxygen, not the percent change. Divide by 9.0 and multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-6",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A cod population needs at least 7 mg/L of dissolved oxygen. Using the table, above about what temperature would full seawater fall below this level?",
+   "stimulus": "ocean-warming-s1",
+   "options": [
+    "About 12 °C",
+    "About 22 °C",
+    "About 30 °C",
+    "About 2 °C"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Find where the values cross 7 mg/L: between 20 °C (7.4) and 25 °C (6.8).",
+    "options": [
+     "At 15 °C the water still holds 8.1 mg/L.",
+     "Right: 7.4 mg/L at 20 °C and 6.8 mg/L at 25 °C, so it falls below 7 between them.",
+     "At 30 °C it is already 6.2 mg/L, well below 7.",
+     "Cold water holds the most oxygen, over 10 mg/L."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-7",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how ocean warming could lower fish populations, using the data.",
+   "stimulus": "ocean-warming-s1",
+   "why": {
+    "correct": "Use the numbers, then link each step: warmer water, less oxygen, stressed fish, fewer fish."
+   },
+   "specific": {
+    "frame": "As the ocean warms, dissolved oxygen ___, so fish ___, and populations ___.",
+    "slots": {
+     "o2": {
+      "label": "Oxygen",
+      "options": [
+       "decreases",
+       "increases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The data show oxygen falling as temperature rises."
+      }
+     },
+     "fish": {
+      "label": "Fish",
+      "options": [
+       "struggle to get enough oxygen and move or die",
+       "grow faster with the extra oxygen",
+       "stop needing oxygen"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "There is less oxygen, not more.",
+       "2": "Fish need oxygen at all temperatures, more in warm water."
+      }
+     },
+     "pop": {
+      "label": "Populations",
+      "options": [
+       "decrease",
+       "increase"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Less oxygen and more stress reduce survival."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "oxygen",
+      "temperature",
+      "fish"
+     ]
+    },
+    "model": "As the ocean warms, dissolved oxygen decreases, from 9.0 mg/L at 10 °C to 7.4 mg/L at 20 °C, so fish struggle to get enough oxygen and move away or die, and local populations decrease because their bodies need more oxygen in warm water."
+   }
+  },
+  {
+   "id": "env-ocean-warming-8",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the figure, what share of the extra heat trapped since 1970 has the ocean taken up?",
+   "stimulus": "ocean-warming-s2",
+   "options": [
+    "About 10%",
+    "About 50%",
+    "Less than 1%",
+    "About 90%"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Water can store far more heat than air, so most extra energy goes into the ocean.",
+    "options": [
+     "That is far too small; the ocean takes most of the heat.",
+     "The figure says about 90%.",
+     "The ocean has absorbed most of it, about 90%.",
+     "Right: the ocean has absorbed about 90% of the extra heat."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-9",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which effect in the figure raises sea level?",
+   "stimulus": "ocean-warming-s2",
+   "options": [
+    "Water expands",
+    "Less dissolved oxygen",
+    "Coral bleaching",
+    "Species move"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Thermal expansion, together with melting land ice, raises sea level.",
+    "options": [
+     "Right: thermal expansion makes the ocean take up more space.",
+     "Oxygen loss harms life but does not change sea level.",
+     "Bleaching harms reefs but does not change sea level.",
+     "Shifting ranges do not change sea level."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-10",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The figure shows less mixing in a warmer ocean. Why could this lower productivity at the surface?",
+   "stimulus": "ocean-warming-s2",
+   "options": [
+    "The surface gets too dark for photosynthesis",
+    "Fewer nutrients rise from deep water",
+    "Warm water has too many nutrients",
+    "Phytoplankton sink into the warm layer"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A warm, light surface layer floats on cold, dense water, which blocks mixing that brings nutrients up.",
+    "options": [
+     "Warming does not darken the surface layer.",
+     "Right: phytoplankton at the surface depend on nutrients mixed up from below.",
+     "The problem is fewer nutrients reaching the surface.",
+     "Phytoplankton stay near the surface; nutrients are what is missing."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-11",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does warmer water cause coral bleaching?",
+   "stimulus": "ocean-warming-s2",
+   "options": [
+    "Warm water dissolves coral skeletons",
+    "Warm water carries more sunlight to the reef",
+    "Heat-stressed corals expel the algae that feed them",
+    "Warm water has more sea ice"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Corals live with algae in their tissues that make food by photosynthesis; heat stress breaks this mutualism.",
+    "options": [
+     "Heat stress drives bleaching through the loss of algae.",
+     "The issue is heat stress, not more light.",
+     "Right: without their algae, corals lose color and much of their food.",
+     "Warm water has less sea ice, and reefs are in the tropics."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-12",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What drives the thermohaline circulation that moves water through the deep ocean?",
+   "options": [
+    "The pull of the Moon on deep water",
+    "Wind blowing on the deep ocean floor",
+    "Heat rising from undersea volcanoes",
+    "Differences in temperature and salinity"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Cold, salty water near the poles is dense and sinks, driving a slow global loop of deep currents.",
+    "options": [
+     "The Moon causes tides, not the deep conveyor belt.",
+     "Wind drives surface currents; deep circulation is driven by density.",
+     "Volcanic heat is not what drives the global conveyor belt.",
+     "Right: \"thermo\" is heat and \"haline\" is salt; both set water density."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-13",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "How could melting Greenland ice slow the thermohaline circulation?",
+   "options": [
+    "Fresh meltwater makes surface water less dense",
+    "Meltwater makes surface water saltier and heavier",
+    "Melting ice cools the whole ocean to freezing",
+    "Meltwater adds more dissolved oxygen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The circulation depends on dense water sinking in the North Atlantic; fresher, warmer water there sinks less.",
+    "options": [
+     "Right: less salty water sinks less readily, weakening the sinking that drives the loop.",
+     "Meltwater is fresh, so it lowers salinity.",
+     "The meltwater cools a region a little; the key change is lower salinity.",
+     "Oxygen does not drive the circulation."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-14",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are effects of ocean warming? Select all that apply.",
+   "options": [
+    "Coral bleaching on tropical reefs",
+    "Fish moving toward the poles",
+    "More dissolved oxygen in surface water",
+    "A thicker stratospheric ozone layer"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Warming bleaches corals, lowers oxygen, shifts species and raises sea level.",
+    "options": [
+     "Right: heat stress drives bleaching.",
+     "Right: many species move to stay in their range of tolerance.",
+     "Warm water holds less oxygen, not more.",
+     "Ocean warming does not change ozone."
+    ]
+   }
+  },
+  {
+   "id": "env-ocean-warming-15",
+   "unit": "unit-9",
+   "topic": "ocean-warming",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The average temperature of a sea’s surface rose by 0.9 °C over 60 years. Write the setup for the average rate of warming in °C per decade, then the answer.",
+   "why": {
+    "correct": "$\\frac{0.9\\,°\\text{C}}{(60 \\div 10)\\,\\text{decades}} = 0.15\\,°\\text{C}$ per decade."
+   },
+   "setup": {
+    "answer": "0.9 / (60 / 10)",
+    "mustUse": [
+     "0.9",
+     "60",
+     "10"
+    ],
+    "mistakes": [
+     {
+      "expr": "0.9 / 60",
+      "why": "That is the rate per year. A decade is 10 years, so 60 years is 6 decades: 0.9 ÷ 6."
+     },
+     {
+      "expr": "0.9 * (60 / 10)",
+      "why": "Divide the change by the number of decades, do not multiply."
+     }
+    ],
+    "then": {
+     "unit": "°C/decade",
+     "from": {
+      "fn": "div",
+      "args": [
+       0.9,
+       {
+        "fn": "div",
+        "args": [
+         60,
+         10
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 0.015,
+       "why": "0.015 °C per year is the rate per year. Multiply by 10 for per decade, or divide 0.9 by 6 decades."
+      }
+     ],
+     "units": [
+      "°C per decade",
+      "degrees C per decade"
+     ]
+    }
+   }
+  }
+ ]
+}

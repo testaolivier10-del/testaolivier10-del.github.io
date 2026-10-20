@@ -1,0 +1,640 @@
+{
+ "stimuli": {
+  "green-revolution-s1": {
+   "kind": "quantitative",
+   "title": "Wheat yield and fertilizer use in one country",
+   "invented": true,
+   "table": {
+    "caption": "Average wheat yield and synthetic nitrogen fertilizer applied per hectare of wheat (invented data for practice)",
+    "cols": [
+     "Year",
+     "Wheat yield (metric tons per ha)",
+     "Nitrogen fertilizer (kg per ha)"
+    ],
+    "rows": [
+     [
+      "1960",
+      "0.8",
+      "5"
+     ],
+     [
+      "1970",
+      "1.3",
+      "30"
+     ],
+     [
+      "1980",
+      "1.6",
+      "60"
+     ],
+     [
+      "1990",
+      "2.3",
+      "100"
+     ],
+     [
+      "2000",
+      "2.7",
+      "140"
+     ]
+    ]
+   }
+  },
+  "green-revolution-s2": {
+   "kind": "visual",
+   "title": "Green Revolution inputs, result, benefits and costs",
+   "figure": "green-revolution-inputs"
+  }
+ },
+ "items": [
+  {
+   "id": "env-green-revolution-1",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which set of changes best describes the Green Revolution?",
+   "options": [
+    "High-yield grain varieties grown with synthetic fertilizer, irrigation, pesticides and machines",
+    "A return to small family farms that grow many local crop varieties without buying any farm inputs",
+    "A shift from growing grain to raising cattle on pasture across large parts of Asia",
+    "The clearing of tropical forests to open large new areas of farmland for grain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Green Revolution raised yields on existing farmland with new varieties and purchased inputs.",
+    "options": [
+     "Right: new seeds plus fertilizer, water, pesticides and machines.",
+     "That describes traditional farming, which the Green Revolution largely replaced.",
+     "The Green Revolution was about grain yields, not a shift to cattle.",
+     "It raised yield on existing land; it did not depend on clearing forest."
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-2",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Short-stemmed (dwarf) wheat was central to the Green Revolution. Why did a short stem matter?",
+   "options": [
+    "A short, stiff stem can hold up a heavy head of grain fed by fertilizer without falling over",
+    "A short stem lets the plant grow with almost no water, so the farmers no longer need irrigation",
+    "A short stem makes the plant immune to insect pests and plant diseases",
+    "A short stem lets the plant fix its own nitrogen, so no fertilizer is needed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tall wheat given lots of fertilizer grows heavy heads and falls over (lodges). Dwarf varieties stay upright, so fertilizer becomes grain.",
+    "options": [
+     "Right: dwarf plants turn extra fertilizer into grain instead of falling over.",
+     "High-yield varieties need more water, not less.",
+     "No variety is immune to every pest; monocultures of one variety can be vulnerable.",
+     "Wheat cannot fix nitrogen; that is legumes with their bacteria."
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-3",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a cost of growing one high-yield rice variety on almost every farm in a region?",
+   "options": [
+    "A disease that attacks that variety can spread through the whole crop at once",
+    "The rice will produce less grain per hectare than the older varieties it replaced",
+    "The region will need to clear more forest to grow the same amount of rice",
+    "The rice will need less fertilizer, so fertilizer factories will close"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A monoculture of one variety has low genetic diversity, so plants share the same weaknesses.",
+    "options": [
+     "Right: identical plants share the same weakness to a disease.",
+     "High-yield varieties produce more grain per hectare, not less.",
+     "Higher yields mean less land is needed for the same harvest.",
+     "High-yield varieties need more fertilizer, not less."
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-4",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does the Green Revolution depend on fossil fuels?",
+   "options": [
+    "Natural gas is used to make nitrogen fertilizer, and diesel runs tractors and pumps",
+    "Crushed coal and oil are spread on the fields to add carbon to the soil before each planting",
+    "Coal is mixed into irrigation water to stop it from evaporating so quickly",
+    "High-yield seeds are coated in oil so that they keep longer in storage"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Making ammonia for nitrogen fertilizer uses large amounts of natural gas, and farm machines and irrigation pumps burn fuel.",
+    "options": [
+     "Right: fertilizer factories and machines both run on fossil fuels.",
+     "Fossil fuels are not spread on fields.",
+     "Coal is not added to irrigation water.",
+     "Seeds are not coated in oil; the link is fertilizer and machines."
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-5",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Supporters of the Green Revolution argue that it protected forests and grasslands. Which reasoning supports that claim?",
+   "options": [
+    "Producing more grain on each hectare meant less new land had to be cleared to feed a growing population",
+    "Synthetic fertilizer added to cropland also flows into nearby forests and helps the trees to grow",
+    "Machines made it easier for farmers to clear forests, so they could farm more of the land faster",
+    "High-yield varieties grow best in forests, so farmers had to protect the forests to keep growing them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Higher yield per hectare means the same food can be grown on less land, so less forest and grassland is converted.",
+    "options": [
+     "Right: more food per hectare spares land.",
+     "Fertilizer reaching forests and water is a pollution problem, not a protection.",
+     "Easier clearing would cost forest, not protect it.",
+     "High-yield varieties are grown on open, irrigated farmland."
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-6",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A village grows 1.2 metric tons of rice per hectare on 400 hectares. After switching to a high-yield variety with fertilizer and irrigation, it grows 3.0 metric tons per hectare on the same land. How many more metric tons of rice does the village harvest each year?",
+   "why": {
+    "correct": "Before: $400\\,\\text{ha} \\times 1.2\\,\\frac{\\text{metric tons}}{\\text{ha}} = 480$ metric tons. After: $400 \\times 3.0 = 1{,}200$ metric tons. Increase: $1{,}200 - 480 = 720$ metric tons."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      400,
+      {
+       "fn": "sub",
+       "args": [
+        3,
+        1.2
+       ]
+      }
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tonnes"
+    ],
+    "mistakes": [
+     {
+      "value": 1.8,
+      "why": "1.8 metric tons is the increase for one hectare. Multiply by the 400 hectares."
+     },
+     {
+      "value": 1200,
+      "why": "1,200 metric tons is the new harvest. The question asks how many more: subtract the old harvest, 480."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-7",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer applies 120 kg of nitrogen fertilizer per hectare to 35 hectares, and about 30% of it is not taken up by the crop. Write the setup for the mass of nitrogen not taken up, then give the answer with its unit.",
+   "why": {
+    "correct": "Total applied: $120\\,\\frac{\\text{kg}}{\\text{ha}} \\times 35\\,\\text{ha} = 4{,}200$ kg. Not taken up: $4{,}200\\,\\text{kg} \\times \\frac{30}{100} = 1{,}260$ kg of nitrogen, which can run off or leach."
+   },
+   "setup": {
+    "answer": "120 * 35 * 30 / 100",
+    "mustUse": [
+     "120",
+     "35",
+     "30"
+    ],
+    "mistakes": [
+     {
+      "expr": "120 * 35 * 30",
+      "why": "Thirty percent is 30 / 100 = 0.30. Divide by 100 (or use 0.30) before you multiply."
+     },
+     {
+      "expr": "120 * 30 / 100",
+      "why": "That is the nitrogen lost from one hectare. Multiply by the 35 hectares too."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "percentOf",
+      "args": [
+       30,
+       {
+        "fn": "mul",
+        "args": [
+         120,
+         35
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 4200,
+       "why": "4,200 kg is all the nitrogen applied. Take 30% of it for the part not taken up."
+      },
+      {
+       "value": 2940,
+       "why": "2,940 kg is the 70% the crop does take up. The question asks for the 30% it does not."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-green-revolution-8",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "specific",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Describe one environmental cost of the Green Revolution and explain how it happens.",
+   "why": {
+    "correct": "A complete answer names the cost and every link: fertilizer applied beyond what the crop uses runs off in rain, carrying nitrate and phosphate into rivers and lakes, where they pollute the water."
+   },
+   "specific": {
+    "frame": "Farmers apply ___; the part the crop does not use ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "The input",
+      "options": [
+       "more synthetic fertilizer than the crop takes up",
+       "seeds of many local varieties",
+       "less water than before"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The Green Revolution replaced many local varieties with a few high-yield ones.",
+       "2": "High-yield varieties were grown with more water, not less."
+      }
+     },
+     "effect": {
+      "label": "What happens to it",
+      "options": [
+       "washes off the field in rain or leaches into groundwater",
+       "turns into carbon dioxide in the leaves",
+       "stays locked in the soil forever"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nitrogen and phosphorus are not turned into carbon dioxide.",
+       "2": "Nitrate dissolves in water and moves easily; it does not stay put."
+      }
+     },
+     "mechanism": {
+      "label": "The harm",
+      "options": [
+       "nitrate and phosphate pollute rivers, lakes and drinking water",
+       "the soil gains organic matter and holds more water",
+       "the crop grows taller and falls over in the wind"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Synthetic fertilizer adds nutrients, not organic matter, and that is not a harm.",
+       "2": "Falling over is a yield problem the dwarf varieties were bred to prevent, not an environmental cost."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "fertilizer",
+      "runoff",
+      "nitrate",
+      "water"
+     ]
+    },
+    "model": "Farmers apply more synthetic fertilizer than the crop takes up; the part the crop does not use washes off the field in rain or leaches into groundwater, and as a result nitrate and phosphate pollute rivers, lakes and drinking water."
+   }
+  },
+  {
+   "id": "env-green-revolution-9",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement describes the data in the table from 1960 to 2000?",
+   "options": [
+    "Wheat yield and nitrogen fertilizer use both rose in every decade",
+    "Wheat yield rose while nitrogen fertilizer use fell in each decade",
+    "Nitrogen fertilizer use rose while wheat yield stayed close to 0.8",
+    "Wheat yield rose quickly at first, then fell after 1980 as use grew"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Yield went 0.8, 1.3, 1.6, 2.3, 2.7 and fertilizer went 5, 30, 60, 100, 140: both rose each decade.",
+    "options": [
+     "Right: both columns increase at every step.",
+     "Fertilizer use rose, from 5 to 140 kg per ha.",
+     "Yield rose from 0.8 to 2.7 metric tons per ha.",
+     "Yield kept rising after 1980, to 2.3 and then 2.7."
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "env-green-revolution-10",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in wheat yield from 1960 to 2000, then give the answer.",
+   "why": {
+    "correct": "$\\frac{2.7 - 0.8}{0.8} \\times 100 = 237.5\\%$. Yield more than tripled."
+   },
+   "setup": {
+    "answer": "(2.7 - 0.8) / 0.8 * 100",
+    "mustUse": [
+     "2.7",
+     "0.8"
+    ],
+    "mistakes": [
+     {
+      "expr": "(2.7 - 0.8) / 2.7 * 100",
+      "why": "Divide by the 1960 value, 0.8, not the 2000 value."
+     },
+     {
+      "expr": "2.7 / 0.8 * 100",
+      "why": "That gives 2000 as a percent of 1960 (337.5%). Percent change subtracts first: (2.7 - 0.8) / 0.8 × 100."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       0.8,
+       2.7
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 2.375,
+       "why": "2.375 is the fraction. Multiply by 100 for the percent."
+      },
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         {
+          "fn": "div",
+          "args": [
+           {
+            "fn": "sub",
+            "args": [
+             2.7,
+             0.8
+            ]
+           },
+           2.7
+          ]
+         },
+         100
+        ]
+       },
+       "why": "You divided by the 2000 value. Percent change divides by the starting value, 0.8."
+      }
+     ]
+    }
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "env-green-revolution-11",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "From 1990 to 2000, fertilizer use rose by 40 kg per ha and yield rose by 0.4 metric tons per ha. From 1960 to 1970, fertilizer rose by 25 kg per ha and yield by 0.5. What does this suggest?",
+   "options": [
+    "Each added kilogram of fertilizer raised yield less in the 1990s than in the 1960s",
+    "Each added kilogram of fertilizer raised yield more in the 1990s than in the 1960s",
+    "Fertilizer had no link to yield in either decade, so it could have been stopped",
+    "Yield fell in the 1990s, so the extra fertilizer was harming the wheat plants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "1960s: $\\frac{0.5}{25} = 0.02$ metric tons per kg; 1990s: $\\frac{0.4}{40} = 0.01$ metric tons per kg. Returns from extra fertilizer were falling.",
+    "options": [
+     "Right: the gain per added kilogram halved, from 0.02 to 0.01.",
+     "The gain per added kilogram fell, not rose.",
+     "Yield did rise with fertilizer in both decades.",
+     "Yield rose in the 1990s, from 2.3 to 2.7."
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "env-green-revolution-12",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "If fertilizer use keeps rising while each added kilogram adds less grain, what environmental problem is most likely to grow?",
+   "options": [
+    "More nitrogen is left unused in fields, so more washes into rivers and groundwater",
+    "Less nitrogen reaches rivers, because the crop takes up more of the nitrogen it is given",
+    "The soil runs out of nitrogen, so the farms stop using fertilizer",
+    "The wheat fixes more nitrogen from the air, so the soil becomes too rich"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If extra fertilizer adds little grain, the crop is not using it, so more is left to run off or leach.",
+    "options": [
+     "Right: unused nitrogen ends up in water.",
+     "Falling returns mean the crop is using less of what is added, not all of it.",
+     "Adding more fertilizer each year does not run the soil out of nitrogen.",
+     "Wheat does not fix nitrogen."
+    ]
+   },
+   "stimulus": "green-revolution-s1"
+  },
+  {
+   "id": "env-green-revolution-13",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "According to the diagram, which of these is an input of the Green Revolution rather than a result?",
+   "options": [
+    "Irrigation",
+    "Fewer famines",
+    "Fertilizer runoff",
+    "Less new land cleared"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Irrigation is one of the five inputs on the left; the others are benefits or costs on the right.",
+    "options": [
+     "Right: irrigation is an input.",
+     "Fewer famines is a benefit.",
+     "Fertilizer runoff is a cost.",
+     "Less new land cleared is a benefit."
+    ]
+   },
+   "stimulus": "green-revolution-s2"
+  },
+  {
+   "id": "env-green-revolution-14",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which input in the diagram is most directly linked to the cost \"fertilizer runoff\"?",
+   "options": [
+    "Synthetic fertilizer",
+    "High-yield seeds",
+    "Machines",
+    "Pesticides"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Runoff carries away the part of the synthetic fertilizer the crop does not take up.",
+    "options": [
+     "Right: runoff comes from fertilizer that was applied.",
+     "Seeds raise the demand for fertilizer, but the runoff is the fertilizer itself.",
+     "Machines burn fuel; they do not add nutrients to runoff.",
+     "Pesticides are a different pollutant from fertilizer nutrients."
+    ]
+   },
+   "stimulus": "green-revolution-s2"
+  },
+  {
+   "id": "env-green-revolution-15",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A country wants the benefits shown in the diagram but fewer of its costs. Which change targets a listed cost directly?",
+   "options": [
+    "Testing soil and applying only the fertilizer the crop needs",
+    "Planting a single high-yield variety on each farm in the country",
+    "Doubling the amount of fertilizer on each field each year",
+    "Replacing the machines with larger, more powerful ones"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Matching fertilizer to what the crop needs cuts the unused fertilizer that becomes runoff.",
+    "options": [
+     "Right: less excess fertilizer means less runoff.",
+     "One variety everywhere makes the monoculture cost worse.",
+     "More fertilizer increases runoff.",
+     "Bigger machines burn more fossil fuel."
+    ]
+   },
+   "stimulus": "green-revolution-s2"
+  },
+  {
+   "id": "env-green-revolution-16",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are commonly cited drawbacks of genetically modified (GM) crops? Select all that apply.",
+   "options": [
+    "Pests can evolve to survive a crop bred to resist them",
+    "Planting a few GM varieties widely lowers crop genetic diversity",
+    "GM seed can cost more, and farmers may have to buy new seed each year",
+    "GM crops are grown without synthetic fertilizer or irrigation",
+    "GM crops yield less grain than the varieties they replaced",
+    "GM crops are not eaten by people or fed to farm animals"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Evolving pests, low genetic diversity and seed cost are widely cited concerns. GM crops are grown with fertilizer and water like other crops, and many yield more.",
+    "options": [
+     "Right: natural selection favors pests that survive the crop's defense.",
+     "Right: a few varieties over huge areas is a monoculture problem.",
+     "Right: patented seed is often bought each season.",
+     "GM crops are grown with fertilizer and irrigation like other crops.",
+     "Many GM crops yield as much grain or more.",
+     "GM corn and soybeans are widely eaten and fed to livestock."
+    ]
+   }
+  },
+  {
+   "id": "env-green-revolution-17",
+   "unit": "unit-5",
+   "topic": "green-revolution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What makes an organism genetically modified?",
+   "options": [
+    "Its DNA was changed in a laboratory, for example by adding a gene from another species",
+    "It was grown with synthetic fertilizer and irrigation instead of rain alone",
+    "It was chosen over many generations by farmers keeping the seeds of their best plants",
+    "It was grown in a field where one kind of crop was planted each season"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A GMO has DNA changed directly by genetic engineering. Traditional breeding selects among existing plants instead.",
+    "options": [
+     "Right: genetic engineering changes the DNA directly.",
+     "Fertilizer and water change growth, not DNA.",
+     "Saving seed from the best plants is traditional selective breeding.",
+     "Planting one crop is a monoculture; it does not change DNA."
+    ]
+   }
+  }
+ ]
+}

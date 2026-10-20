@@ -1,0 +1,8 @@
+{
+ "tilling": {
+  "def": "Turning over and breaking up the soil with a plow or disk before planting, to bury weeds and crop leftovers and loosen the seedbed. It leaves the surface bare and loose, so it increases erosion by wind and water and speeds the loss of soil organic matter."
+ },
+ "slash-and-burn": {
+  "def": "A way of clearing land for farming by cutting the forest and burning what is left. The ash fertilizes the soil for a few seasons; when the nutrients run out the plot is left and a new one is cleared. It releases carbon dioxide and smoke and removes forest habitat."
+ }
+}

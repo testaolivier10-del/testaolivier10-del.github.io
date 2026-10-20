@@ -1,0 +1,265 @@
+{
+ "slug": "population-growth",
+ "kind": "simulator",
+ "topic": "population-growth",
+ "intro": "<p>Grow a population and watch its curve. Start with unlimited resources (the J-curve), add a carrying capacity (the S-curve), then let the herd overshoot it and crash. Survivorship curves and r- and K-selection each have their own view, because they answer different questions: when individuals die, and how they reproduce.</p>",
+ "howItWorksTitle": "How the model works",
+ "howItWorks": "<p><b>The model</b> steps one year at a time. Exponential: N grows by r × N each year. Logistic: by r × N × (1 − N/K), so growth slows as N nears K. Overshoot: the herd responds to its numbers two years earlier (crowding takes time to bite), so it passes K; once above K it overgrazes, and the range then supports fewer (K drops to about 55% of its first value).</p><p><b>Doubling time</b> uses the rule of 70 (70 ÷ the growth rate in percent), the same recipe as the course questions (ApEnvCalc). Survivorship curves are the idealized Type I, II and III shapes on a log scale. Numbers in the drills are invented for practice and recomputed by a checker on 300 problems per scenario.</p>",
+ "partTopics": {
+  "curve": "survivorship-curves",
+  "link": "survivorship-curves",
+  "rk": "r-k-selection",
+  "trait": "r-k-selection"
+ },
+ "contexts": [
+  {
+   "id": "island-deer",
+   "topic": "population-growth",
+   "types": [
+    "doubling",
+    "project"
+   ],
+   "lead": "A herd of {n0} deer is brought to an island with no predators in {y0}. With plenty of food it grows {rate}% a year.",
+   "noun": "herd",
+   "pop": [
+    40,
+    400
+   ],
+   "popStep": 10,
+   "unit": "deer",
+   "units": [
+    "deer"
+   ],
+   "unitWord": "deer"
+  },
+  {
+   "id": "zebra-mussels",
+   "topic": "population-growth",
+   "types": [
+    "doubling",
+    "project"
+   ],
+   "lead": "Zebra mussels reach a lake in {y0}. Divers estimate {n0} mussels per square meter, growing {rate}% a year.",
+   "noun": "mussel density",
+   "pop": [
+    20,
+    200
+   ],
+   "popStep": 10,
+   "unit": "mussels/m2",
+   "units": [
+    "mussels per m2",
+    "mussels/m^2",
+    "mussels per square meter",
+    "per m2"
+   ],
+   "unitWord": "mussels per m²",
+   "rates": [
+    5,
+    7,
+    10,
+    14
+   ]
+  },
+  {
+   "id": "city",
+   "topic": "human-population",
+   "types": [
+    "doubling"
+   ],
+   "lead": "A city of {n0} people in {y0} grows {rate}% a year.",
+   "noun": "city",
+   "pop": [
+    100000,
+    900000
+   ],
+   "popStep": 10000
+  },
+  {
+   "id": "yeast",
+   "topic": "carrying-limits",
+   "types": [
+    "logistic"
+   ],
+   "lead": "Yeast cells grow in a flask of sugar water that is never refilled.",
+   "noun": "yeast population",
+   "start": "the flask was seeded",
+   "tu": "hour",
+   "K": [
+    800,
+    2000
+   ],
+   "KStep": 100,
+   "unitWord": "thousand cells per mL"
+  },
+  {
+   "id": "fish-pond",
+   "topic": "carrying-limits",
+   "types": [
+    "logistic"
+   ],
+   "lead": "Bluegill are stocked in a new farm pond.",
+   "noun": "bluegill population",
+   "start": "stocking",
+   "K": [
+    300,
+    900
+   ],
+   "KStep": 50,
+   "unitWord": "fish"
+  },
+  {
+   "id": "reindeer",
+   "topic": "carrying-limits",
+   "types": [
+    "phase"
+   ],
+   "lead": "Reindeer are brought to an island with rich lichen and no predators.",
+   "noun": "reindeer herd",
+   "K": [
+    1000,
+    4000
+   ],
+   "KStep": 100,
+   "unitWord": "reindeer"
+  },
+  {
+   "id": "kaibab",
+   "topic": "carrying-limits",
+   "types": [
+    "phase"
+   ],
+   "lead": "Hunters remove the wolves and mountain lions from a plateau, and the deer herd grows.",
+   "noun": "deer herd",
+   "K": [
+    2000,
+    8000
+   ],
+   "KStep": 500,
+   "unitWord": "deer"
+  },
+  {
+   "id": "surv-humans",
+   "topic": "survivorship-curves",
+   "types": [
+    "survivorship"
+   ],
+   "curve": "I",
+   "species": "humans in a wealthy country",
+   "lead": "In a wealthy country, nearly every baby survives childhood, and most people die after age 70.",
+   "why": "Few offspring, a lot of care, and good health care: most live a long life and deaths come late."
+  },
+  {
+   "id": "surv-elephants",
+   "topic": "survivorship-curves",
+   "types": [
+    "survivorship"
+   ],
+   "curve": "I",
+   "species": "African elephants",
+   "lead": "An elephant calf is protected by its whole herd for years, and most elephants live past 50.",
+   "why": "One calf at a time with years of care: most survive to old age, then deaths rise."
+  },
+  {
+   "id": "surv-songbirds",
+   "topic": "survivorship-curves",
+   "types": [
+    "survivorship"
+   ],
+   "curve": "II",
+   "species": "a songbird population",
+   "lead": "Banding studies show that a songbird population loses about the same share of its members each year, young or old, mostly to predators.",
+   "why": "About the same share dies each year at every age, so the curve on a log scale is a straight line."
+  },
+  {
+   "id": "surv-oysters",
+   "topic": "survivorship-curves",
+   "types": [
+    "survivorship"
+   ],
+   "curve": "III",
+   "species": "oysters",
+   "lead": "An oyster releases millions of eggs into the water. Almost all of the larvae are eaten or swept away, but an oyster that settles on a reef can live 20 years.",
+   "why": "Huge numbers of young and no care: almost all die young; the few survivors live long."
+  },
+  {
+   "id": "surv-turtles",
+   "topic": "survivorship-curves",
+   "types": [
+    "survivorship"
+   ],
+   "curve": "III",
+   "species": "sea turtles",
+   "lead": "A sea turtle lays about 100 eggs per nest and leaves. Hatchlings are eaten on the beach and in the sea, but an adult may live 50 years or more.",
+   "why": "Many eggs and no care: deaths are heaviest in the first weeks; adults survive well."
+  },
+  {
+   "id": "rk-mice",
+   "topic": "r-k-selection",
+   "types": [
+    "rk"
+   ],
+   "strategy": "r",
+   "name": "Field mouse",
+   "lead": "A small rodent of farm fields:",
+   "traits": [
+    "first breeds at 6 weeks old",
+    "4 to 6 litters a year of about 6 young each",
+    "young are on their own at 3 weeks",
+    "lives about a year"
+   ],
+   "why": "early breeding, many litters and little care."
+  },
+  {
+   "id": "rk-dandelion",
+   "topic": "r-k-selection",
+   "types": [
+    "rk"
+   ],
+   "strategy": "r",
+   "name": "Dandelion",
+   "lead": "A common weed:",
+   "traits": [
+    "flowers in its first season",
+    "one plant makes thousands of wind-blown seeds",
+    "seeds get no care",
+    "quickly covers bare, disturbed ground"
+   ],
+   "why": "many small seeds, early reproduction and fast spread."
+  },
+  {
+   "id": "rk-albatross",
+   "topic": "r-k-selection",
+   "types": [
+    "rk"
+   ],
+   "strategy": "K",
+   "name": "Albatross",
+   "lead": "A large seabird:",
+   "traits": [
+    "first breeds at 5 to 10 years old",
+    "lays one egg every one or two years",
+    "both parents feed the chick for months",
+    "can live 60 years"
+   ],
+   "why": "late breeding, one egg at a time and a lot of care."
+  },
+  {
+   "id": "rk-whale",
+   "topic": "r-k-selection",
+   "types": [
+    "rk"
+   ],
+   "strategy": "K",
+   "name": "Humpback whale",
+   "lead": "A large marine mammal:",
+   "traits": [
+    "one calf every 2 to 3 years",
+    "the mother nurses the calf for about a year",
+    "first breeds at about 5 to 10 years",
+    "lives about 50 years"
+   ],
+   "why": "few, large young with long care and late breeding."
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "topic": "thermal-inversion",
+ "hook": "In a mountain valley on a still January morning, smoke from chimneys rises a few hundred meters, then stops and spreads sideways into a flat gray ceiling. The town is breathing its own smoke. Nothing about the smoke changed overnight. What changed is the air above it: a warm layer has settled on top of the cold air in the valley like a lid.",
+ "prereq": [
+  {
+   "q": "In which layer of the atmosphere does weather happen?",
+   "options": [
+    "The troposphere",
+    "The stratosphere",
+    "The mesosphere",
+    "The thermosphere"
+   ],
+   "correct": 0,
+   "why": "The troposphere is the lowest layer, where air rises, mixes and makes weather.",
+   "review": "atmosphere"
+  },
+  {
+   "q": "Which pollutant is fine particles 2.5 micrometers across or smaller?",
+   "options": [
+    "PM2.5",
+    "NO2",
+    "CO",
+    "SO2"
+   ],
+   "correct": 0,
+   "why": "PM2.5 is particulate matter 2.5 micrometers or smaller.",
+   "review": "air-pollution"
+  }
+ ],
+ "figure": {
+  "figure": "thermal-inversion-profile",
+  "caption": "Normally air cools with height and warm air near the ground rises and mixes. In an inversion a warm layer sits over cool air, so pollutants are trapped below it."
+ },
+ "chain": [
+  {
+   "cause": "On a clear, calm night the ground loses heat quickly",
+   "effect": "the air touching the ground cools, and in a valley cold air pools at the bottom"
+  },
+  {
+   "cause": "A layer of warmer air sits above the cold air",
+   "effect": "temperature rises with height instead of falling: a thermal inversion"
+  },
+  {
+   "cause": "The cool air near the ground is denser than the warm layer above",
+   "effect": "it cannot rise, so smoke, exhaust and particles stay near the ground"
+  },
+  {
+   "cause": "Emissions keep being added to the same shallow layer",
+   "effect": "pollutant concentrations rise, and breathing problems increase"
+  },
+  {
+   "cause": "Sunlight warms the ground, or a front brings wind",
+   "effect": "the lowest air rises and mixes, and the inversion breaks up"
+  }
+ ],
+ "ideas": [
+  "Normally the lowest air is warmest near the ground and cools with height, so warm, polluted air can rise and spread out.",
+  "In a <b>thermal inversion</b>, a warm layer sits on top of cooler air near the ground. The cool, dense air cannot rise through it, so pollutants are trapped.",
+  "Inversions are most common on clear, calm nights and winter mornings, and in valleys and basins ringed by mountains.",
+  "Inversions do not make new pollution; they hold the pollution a place already makes. Deadly episodes such as London in 1952 combined an inversion with heavy coal smoke."
+ ],
+ "misconception": {
+  "wrong": "A thermal inversion is caused by pollution, so cleaner air would stop inversions from forming.",
+  "right": "An inversion is a weather pattern: warm air over cool air. It forms with or without pollution. It only traps whatever pollutants are released under it."
+ },
+ "check": [
+  "env-thermal-inversion-9",
+  "env-thermal-inversion-10",
+  "env-thermal-inversion-1",
+  "env-thermal-inversion-2",
+  "env-thermal-inversion-3",
+  "env-thermal-inversion-4",
+  "env-thermal-inversion-11"
+ ],
+ "summary": "A thermal inversion is a layer of warm air over cooler air near the ground, the reverse of the normal pattern. The cool, dense air cannot rise through the warm layer, so smoke, exhaust and particles build up near the ground. Inversions form on clear, calm nights and winter mornings and in valleys and basins, and they break when the sun warms the ground or wind mixes the air."
+}

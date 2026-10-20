@@ -1,0 +1,12 @@
+{
+ "air-pollution-primary-secondary": {
+  "file": "figures/air-pollution-primary-secondary.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Diagram: a car and a coal power plant release primary pollutants (carbon monoxide, nitrogen oxides, sulfur dioxide, particulates and VOCs). Arrows show sunlight and water vapor turning some of them into secondary pollutants: ozone near the ground, sulfuric acid and nitric acid."
+ }
+}

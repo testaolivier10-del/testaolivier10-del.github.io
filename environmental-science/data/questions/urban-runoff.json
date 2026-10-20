@@ -1,0 +1,634 @@
+{
+ "stimuli": {
+  "urban-runoff-s1": {
+   "kind": "visual",
+   "title": "Three ways to reduce urban runoff",
+   "figure": "urban-runoff-methods"
+  },
+  "urban-runoff-s2": {
+   "kind": "quantitative",
+   "title": "Runoff from four parking lot designs",
+   "invented": true,
+   "table": {
+    "caption": "Runoff measured from four test parking lots of 1,000 m² each during the same 30-mm storm (invented data for practice)",
+    "cols": [
+     "Parking lot surface",
+     "Runoff (m³)",
+     "Cost to build (dollars per m²)"
+    ],
+    "rows": [
+     [
+      "Ordinary asphalt",
+      "27",
+      "40"
+     ],
+     [
+      "Ordinary asphalt draining to a rain garden",
+      "12",
+      "55"
+     ],
+     [
+      "Permeable pavers",
+      "6",
+      "90"
+     ],
+     [
+      "Porous asphalt",
+      "9",
+      "70"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-urban-runoff-1",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a rain garden?",
+   "options": [
+    "A planted low spot that soaks up runoff",
+    "A greenhouse where the plants are watered with rain",
+    "A roof covered with soil and plants",
+    "A tank that stores rain for watering lawns"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rain garden is a shallow, planted basin that takes runoff from roofs or pavement.",
+    "options": [
+     "Right: a planted basin that soaks up runoff.",
+     "A greenhouse is not a runoff control.",
+     "That is a green roof.",
+     "That is a rain barrel or cistern."
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-2",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does permeable pavement reduce flooding?",
+   "options": [
+    "Rain passes through into gravel and soil, so less runs off",
+    "It is darker, so rain evaporates from it before it can run off",
+    "It slopes toward the storm drains, so water leaves faster",
+    "It is smoother, so water flows off it more quickly"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water drains through the pavement into the ground instead of running across it.",
+    "options": [
+     "Right: water passes through and soaks in.",
+     "Evaporation is not how it works.",
+     "Sending water to drains faster is ordinary pavement.",
+     "Faster runoff makes flooding worse."
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-3",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "7.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Besides holding rain, which benefit does a green roof provide?",
+   "options": [
+    "It cools the building and the air around it",
+    "It makes the roof lighter, so the building costs less",
+    "It sends rain to the storm drain faster",
+    "It raises the temperature of the city in summer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Plants and soil shade the roof and cool by transpiration.",
+    "options": [
+     "Right: cooling through shade and transpiration.",
+     "Green roofs are heavier, not lighter.",
+     "They slow rain, not speed it.",
+     "They cool the city."
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-4",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a drawback of permeable pavement?",
+   "options": [
+    "Sediment can clog its pores unless it is cleaned",
+    "It increases runoff compared with ordinary pavement",
+    "It is unsuitable for parking lots or sidewalks",
+    "It makes groundwater recharge lower than before"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fine dirt fills the pores over time; vacuum sweeping keeps it working.",
+    "options": [
+     "Right: clogging and maintenance.",
+     "It reduces runoff.",
+     "It is widely used for parking lots and sidewalks.",
+     "It increases recharge."
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-5",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A city wants to reduce runoff but has little open land. Which strategy fits best?",
+   "options": [
+    "Green roofs on large flat buildings already in the city",
+    "A large new detention pond on farmland at the edge of the county",
+    "Wider streets with more storm drains along each block",
+    "New parking lots of ordinary asphalt near each school"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Roofs are a big share of city surface, and greening them needs no new land.",
+    "options": [
+     "Right: it uses existing roof space.",
+     "The question says land is scarce; and a pond far away does not help the city's streets.",
+     "Wider streets add impervious surface.",
+     "Ordinary asphalt adds runoff."
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-6",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why can building taller apartment buildings near transit reduce runoff for a city as a whole?",
+   "options": [
+    "People live on less land, with fewer roads and parking lots",
+    "Tall buildings soak up rain through their walls, so less reaches the ground",
+    "Tall buildings block rain from falling on the streets below them",
+    "Transit lines are made of permeable pavement, so runoff soaks in"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Building up instead of out, and relying on transit, covers less land with roofs, roads and parking.",
+    "options": [
+     "Right: less paved land per person.",
+     "Walls do not soak up rain.",
+     "Buildings do not block rain from a whole area.",
+     "Transit is not defined by its pavement."
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-7",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A roof measures 120 m². How many liters of water fall on it in a 15-mm rain? (1 m³ = 1,000 L)",
+   "why": {
+    "correct": "$0.015\\,\\text{m} \\times 120\\,\\text{m}^2 = 1.8\\,\\text{m}^3$, and $1.8\\,\\text{m}^3 \\times \\frac{1{,}000\\,\\text{L}}{1\\,\\text{m}^3} = 1{,}800$ L."
+   },
+   "numeric": {
+    "from": {
+     "fn": "convert",
+     "args": [
+      {
+       "fn": "waterVolume",
+       "args": [
+        {
+         "fn": "convert",
+         "args": [
+          15,
+          "mm",
+          "m"
+         ]
+        },
+        120
+       ]
+      },
+      "m3",
+      "L"
+     ]
+    },
+    "unit": "L",
+    "units": [
+     "liters"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "waterVolume",
+       "args": [
+        0.015,
+        120
+       ]
+      },
+      "why": "1.8 is in cubic meters. Multiply by 1,000 to change cubic meters to liters."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.15,
+        120,
+        1000
+       ]
+      },
+      "why": "15 mm is 0.015 m, not 0.15 m: there are 1,000 mm in a meter."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-urban-runoff-8",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A school's parking lot floods a nearby street after every storm. Propose a solution for the school and explain how it works.",
+   "why": {
+    "correct": "A solution fitted to one parking lot, with how it works: replace the asphalt with permeable pavers, which let rain drain through into gravel and soil, so less water runs onto the street."
+   },
+   "specific": {
+    "frame": "The school could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "replace the asphalt with permeable pavers",
+       "add more storm drains on the street",
+       "repave the lot with new ordinary asphalt"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More drains move water faster but do not reduce runoff from the lot.",
+       "2": "New ordinary asphalt sheds the same runoff."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "lets rain drain through into gravel and soil below",
+       "sends rain to the street faster",
+       "makes the rain evaporate before it lands"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is what the school wants to stop.",
+       "2": "Pavers do not make rain evaporate."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "less water runs onto the street and it floods less",
+       "more water runs onto the street",
+       "the street floods for longer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Soaking in reduces runoff.",
+       "2": "Less runoff shortens flooding."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "parking",
+      "paver",
+      "permeable",
+      "soak",
+      "runoff"
+     ]
+    },
+    "model": "The school could replace the asphalt with permeable pavers, which let rain drain through into gravel and soil below. As a result less water runs onto the street, so it floods less."
+   }
+  },
+  {
+   "id": "env-urban-runoff-9",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the diagram, where does the water from the downspout go?",
+   "options": [
+    "Into the rain garden, where it soaks in",
+    "Onto the ordinary pavement and into the storm drain",
+    "Back up onto the green roof to water the plants",
+    "Through the permeable pavement into the gravel"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The downspout arrow points into the rain garden, and dashed arrows show water soaking in.",
+    "options": [
+     "Right: into the rain garden.",
+     "The storm drain gets water from the ordinary pavement.",
+     "Water does not flow back up to the roof.",
+     "The permeable pavement is next to the garden, but the downspout feeds the garden."
+    ]
+   },
+   "stimulus": "urban-runoff-s1"
+  },
+  {
+   "id": "env-urban-runoff-10",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What do the three methods in the diagram have in common that ordinary pavement lacks?",
+   "options": [
+    "Each lets water soak in or holds it for a while",
+    "Each sends water sideways to the storm drain more quickly",
+    "Each is darker than ordinary pavement, so rain dries faster",
+    "Each collects water in tanks to be pumped back to the river"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dashed arrows show water soaking into the ground beneath each method; ordinary pavement sends it sideways to the drain.",
+    "options": [
+     "Right: water soaks in or is held.",
+     "That describes ordinary pavement.",
+     "Color is not the point of these methods.",
+     "No tanks or pumps are shown."
+    ]
+   },
+   "stimulus": "urban-runoff-s1"
+  },
+  {
+   "id": "env-urban-runoff-11",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A neighborhood above a river installs all three methods. Which change in the river is most likely?",
+   "options": [
+    "Lower flood peaks and steadier flow between storms",
+    "Higher, faster flood peaks after storms and less flow between storms",
+    "No change in flood peaks, but warmer water after storms",
+    "More sediment and oil carried into the river by each storm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Less runoff lowers flood peaks; more recharge feeds the river between storms.",
+    "options": [
+     "Right: lower peaks, steadier base flow.",
+     "That is the effect of paving, not of these methods.",
+     "Less runoff lowers peaks.",
+     "Soil and plants trap sediment and oil."
+    ]
+   },
+   "stimulus": "urban-runoff-s1"
+  },
+  {
+   "id": "env-urban-runoff-12",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in runoff from the ordinary asphalt lot to the permeable paver lot, then give the answer.",
+   "why": {
+    "correct": "$\\frac{6 - 27}{27} \\times 100 \\approx -77.8\\%$: pavers cut runoff by about 78%."
+   },
+   "setup": {
+    "answer": "(6 - 27) / 27 * 100",
+    "mustUse": [
+     "6",
+     "27"
+    ],
+    "mistakes": [
+     {
+      "expr": "(6 - 27) / 6 * 100",
+      "why": "Divide by the starting value, the 27 m³ from ordinary asphalt."
+     },
+     {
+      "expr": "(27 - 6) / 27 * 100",
+      "why": "Subtract old from new: (6 - 27). Runoff fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       27,
+       6
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -21,
+       "why": "-21 m³ is the change in runoff. Divide by 27 and multiply by 100."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         6,
+         27
+        ]
+       },
+       "why": "That is the change from pavers back to asphalt. Start from asphalt."
+      }
+     ]
+    }
+   },
+   "stimulus": "urban-runoff-s2"
+  },
+  {
+   "id": "env-urban-runoff-13",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The storm dropped 30 mm of rain on each 1,000-m² lot. What percent of the rain ran off the ordinary asphalt lot?",
+   "why": {
+    "correct": "Rain: $0.030\\,\\text{m} \\times 1{,}000\\,\\text{m}^2 = 30\\,\\text{m}^3$. Runoff share: $\\frac{27}{30} \\times 100 = 90\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      27,
+      {
+       "fn": "waterVolume",
+       "args": [
+        0.03,
+        1000
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        27,
+        1000
+       ]
+      },
+      "why": "1,000 m² is the area. Find the volume of rain first: 0.030 m × 1,000 m² = 30 m³."
+     },
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        3,
+        30
+       ]
+      },
+      "why": "10% is the share that did not run off. Runoff was 27 of 30 m³."
+     }
+    ]
+   },
+   "stimulus": "urban-runoff-s2"
+  },
+  {
+   "id": "env-urban-runoff-14",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much more does it cost to build a 1,000-m² lot with permeable pavers than with ordinary asphalt?",
+   "why": {
+    "correct": "$(90 - 40)\\,\\frac{\\text{dollars}}{\\text{m}^2} \\times 1{,}000\\,\\text{m}^2 = 50{,}000$ dollars more."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        90,
+        40
+       ]
+      },
+      1000
+     ]
+    },
+    "unit": "$",
+    "units": [
+     "dollars"
+    ],
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "50 dollars is the extra cost for one square meter. Multiply by 1,000 m²."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        90,
+        1000
+       ]
+      },
+      "why": "90,000 dollars is the whole cost of the paver lot. The question asks how much more: subtract 40,000."
+     }
+    ]
+   },
+   "stimulus": "urban-runoff-s2"
+  },
+  {
+   "id": "env-urban-runoff-15",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town has a small budget and wants the biggest cut in runoff for each extra dollar. Using the table, which design should it choose?",
+   "options": [
+    "Asphalt draining to a rain garden",
+    "Permeable pavers",
+    "Porous asphalt",
+    "Ordinary asphalt with no change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Runoff cut per extra dollar per m²: rain garden $\\frac{15}{15} = 1.0$; porous asphalt $\\frac{18}{30} = 0.6$; pavers $\\frac{21}{50} = 0.42$.",
+    "options": [
+     "Right: 15 m³ less runoff for 15 dollars more per m², the most cut per extra dollar.",
+     "Pavers cut 21 m³ for 50 dollars more per m²: the most in total, but the least per extra dollar.",
+     "Porous asphalt cuts 18 m³ for 30 dollars more per m², 0.6 m³ per extra dollar.",
+     "Ordinary asphalt does not reduce runoff at all."
+    ]
+   },
+   "stimulus": "urban-runoff-s2"
+  },
+  {
+   "id": "env-urban-runoff-16",
+   "unit": "unit-5",
+   "topic": "urban-runoff",
+   "type": "multi",
+   "practice": "7.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are benefits of rain gardens in a city neighborhood? Select all that apply.",
+   "options": [
+    "Less runoff reaches storm drains",
+    "Groundwater is recharged",
+    "Sediment and some pollutants are trapped by soil and plants",
+    "Rain is sent to the river faster",
+    "Lawns need more fertilizer",
+    "Streets get more flooding"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Rain gardens soak up runoff, recharge groundwater and filter water.",
+    "options": [
+     "Right: runoff soaks in.",
+     "Right: water reaches groundwater.",
+     "Right: soil and roots trap material.",
+     "They slow water, not speed it.",
+     "Rain gardens do not need fertilizer; native plants are used.",
+     "They reduce street flooding."
+    ]
+   }
+  }
+ ]
+}

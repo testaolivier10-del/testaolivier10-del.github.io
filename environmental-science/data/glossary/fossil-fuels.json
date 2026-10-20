@@ -1,0 +1,8 @@
+{
+ "power-plant": {
+  "def": "A facility that makes electricity; in a thermal power plant, fuel heats water into steam that spins a turbine, which turns a generator."
+ },
+ "fracking": {
+  "def": "Hydraulic fracturing: pumping water, sand and chemicals under high pressure into shale rock to crack it and free natural gas or oil."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "total-fertility-rate-trends": {
+  "file": "figures/total-fertility-rate-trends.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph of total fertility rate from 1960 to 2020 for two invented countries, with a dashed line at replacement level, about 2.1. Country A falls from 6.8 in 1960 to 2.8 in 2020, still above replacement. Country B falls from 3.6 in 1960 to 2.2 in 1980 and to 1.5 in 2020, below replacement since about 1985."
+ }
+}

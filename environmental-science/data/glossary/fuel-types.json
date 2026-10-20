@@ -1,0 +1,20 @@
+{
+ "coal": {
+  "def": "A solid fossil fuel formed from plants buried in swamps and changed by heat and pressure over millions of years; it ranks from lignite to bituminous to anthracite as its carbon and energy content rise."
+ },
+ "peat": {
+  "def": "Partly decayed plant material from waterlogged bogs; the first stage in coal formation, with high moisture and low energy per kilogram."
+ },
+ "natural-gas": {
+  "def": "A fossil fuel that is mostly methane; it releases about half as much carbon dioxide per unit of energy as coal, but it is not zero emissions."
+ },
+ "petroleum": {
+  "def": "Crude oil: a liquid fossil fuel formed from buried sea organisms and refined by boiling point into gasoline, diesel, jet fuel, heating oil and asphalt."
+ },
+ "cogeneration": {
+  "def": "Combined heat and power: using the waste heat from making electricity to heat buildings or water, so more of the fuel's energy is put to use."
+ },
+ "tar-sands": {
+  "def": "Deposits of sand, clay, water and bitumen (a thick, heavy oil); the bitumen is mined or melted out with steam, using much energy and water, and upgraded to crude oil."
+ }
+}

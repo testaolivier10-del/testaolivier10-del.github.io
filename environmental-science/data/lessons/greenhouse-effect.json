@@ -1,0 +1,72 @@
+{
+ "topic": "greenhouse-effect",
+ "hook": "The Moon is about as far from the Sun as Earth, yet its surface swings from about 120 °C in sunlight to below −170 °C at night. Earth’s average stays near 15 °C. The difference is a blanket of gases a few kilometers thick that lets sunlight in but slows heat on its way out.",
+ "prereq": [
+  {
+   "q": "What does the stratospheric ozone layer absorb?",
+   "options": [
+    "Ultraviolet radiation from the Sun",
+    "Heat given off by the ground",
+    "Visible light",
+    "Radio waves"
+   ],
+   "correct": 0,
+   "why": "The ozone layer absorbs incoming UV; it is a different process from the one in this topic.",
+   "review": "ozone-depletion"
+  },
+  {
+   "q": "Which gas is released when fossil fuels are burned?",
+   "options": [
+    "Carbon dioxide",
+    "Oxygen",
+    "Nitrogen",
+    "Ozone"
+   ],
+   "correct": 0,
+   "why": "Burning fossil fuels combines their carbon with oxygen, releasing CO₂.",
+   "review": "carbon-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "greenhouse-effect-ozone",
+  "caption": "The greenhouse effect (left) and the ozone layer (right): different gases, different radiation, different layers."
+ },
+ "chain": [
+  {
+   "cause": "Sunlight, mostly visible light, passes through the air",
+   "effect": "it warms Earth’s surface"
+  },
+  {
+   "cause": "The warm surface gives off infrared radiation",
+   "effect": "greenhouse gases in the troposphere absorb much of it"
+  },
+  {
+   "cause": "The gases re-emit that energy in all directions, part of it back down",
+   "effect": "the lower atmosphere and surface stay warmer than they would be"
+  },
+  {
+   "cause": "Adding more greenhouse gases",
+   "effect": "traps more heat, strengthening the effect and raising temperatures"
+  }
+ ],
+ "ideas": [
+  "The <b>greenhouse effect</b>: greenhouse gases absorb <b>infrared radiation</b> given off by the surface and re-emit part of it downward, warming the lower atmosphere.",
+  "<b>Greenhouse gases</b>: water vapor (most abundant), carbon dioxide, methane, <b>nitrous oxide</b> (N₂O) and CFCs and HFCs. SO₂ and particulates are not greenhouse gases.",
+  "<b>Global warming potential</b> (GWP) compares the heat trapped by a gas with the same mass of CO₂ over 100 years: CO₂ 1; methane roughly 25 to 30 (the IPCC value depends on the report); N₂O roughly 265 to 300; CFCs thousands. A calculation question gives you the GWP to use.",
+  "The natural greenhouse effect keeps Earth about 33 °C warmer than it would be. Ozone depletion is a separate problem: UV and the stratosphere."
+ ],
+ "misconception": {
+  "wrong": "The ozone hole lets heat in, and that is the cause of global warming.",
+  "right": "The ozone hole lets in more UV, which raises skin cancer. Warming comes from greenhouse gases trapping outgoing infrared in the lower atmosphere. CFCs are the one link: they do both."
+ },
+ "check": [
+  "env-greenhouse-effect-1",
+  "env-greenhouse-effect-3",
+  "env-greenhouse-effect-5",
+  "env-greenhouse-effect-6",
+  "env-greenhouse-effect-7",
+  "env-greenhouse-effect-9",
+  "env-greenhouse-effect-10"
+ ],
+ "summary": "Sunlight warms the surface, which gives off infrared; greenhouse gases (water vapor, CO₂, methane, nitrous oxide, CFCs) absorb it and send part back down, keeping Earth about 33 °C warmer. More gas traps more heat. Global warming potential compares gases with CO₂: multiply a mass by its GWP for CO₂ equivalent. The greenhouse effect is not ozone depletion."
+}

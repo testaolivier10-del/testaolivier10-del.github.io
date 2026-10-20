@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 460" width="560" height="460" role="img" aria-labelledby="soil-formation-horizons-t soil-formation-horizons-d" font-family="Arial, Helvetica, sans-serif">
+<title id="soil-formation-horizons-t">Soil horizons in a soil profile</title>
+<desc id="soil-formation-horizons-d">A soil profile cut straight down. At the top, plants grow and drop leaves. The O horizon is a thin dark layer of fallen leaves and organic matter decaying into humus. The A horizon, or topsoil, is dark: humus mixed with minerals, where most roots and soil organisms live. The B horizon, or subsoil, is lighter brown and collects clay, iron and other minerals leached down from above. The C horizon holds chunks of partly weathered parent material. At the bottom is bedrock, the parent material the soil slowly forms from. An arrow shows weathering breaking rock into smaller pieces from below, while organic matter is added from above. Soil forms slowly, often taking centuries for a few centimeters.</desc>
+<defs><marker id="ar-ink" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker><marker id="ar-olive" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#474A10"/></marker><marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker><marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker><marker id="ar-verm" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker><marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B7370"/></marker></defs><rect width="560" height="460" fill="#FFFFFF"/>
+<rect x="40" y="70" width="200" height="30" rx="0" fill="#3B2A1A" stroke="none" stroke-width="1.5"/>
+<text x="140" y="91" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">O</text>
+<line x1="244" y1="85" x2="266" y2="85" stroke="#6B7370" stroke-width="1"/>
+<text x="272" y="77" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">O horizon</text>
+<text x="272" y="93" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">fallen leaves and other organic</text><text x="272" y="108" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">matter, decaying into humus</text>
+<rect x="40" y="100" width="200" height="75" rx="0" fill="#5B4128" stroke="none" stroke-width="1.5"/>
+<text x="140" y="143.5" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">A</text>
+<line x1="244" y1="137.5" x2="266" y2="137.5" stroke="#6B7370" stroke-width="1"/>
+<text x="272" y="129.5" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">A horizon (topsoil)</text>
+<text x="272" y="145.5" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">humus mixed with minerals;</text><text x="272" y="160.5" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">most roots and soil organisms</text>
+<rect x="40" y="175" width="200" height="90" rx="0" fill="#9A6B3F" stroke="none" stroke-width="1.5"/>
+<text x="140" y="226" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">B</text>
+<line x1="244" y1="220" x2="266" y2="220" stroke="#6B7370" stroke-width="1"/>
+<text x="272" y="212" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">B horizon (subsoil)</text>
+<text x="272" y="228" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">clay, iron and other minerals</text><text x="272" y="243" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">leached down from above collect here</text>
+<rect x="40" y="265" width="200" height="80" rx="0" fill="#C7A87F" stroke="none" stroke-width="1.5"/>
+<text x="140" y="311" font-size="18" font-weight="bold" fill="#1F2A28" text-anchor="middle">C</text>
+<line x1="244" y1="305" x2="266" y2="305" stroke="#6B7370" stroke-width="1"/>
+<text x="272" y="297" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">C horizon</text>
+<text x="272" y="313" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">chunks of partly weathered</text><text x="272" y="328" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">parent material</text>
+<rect x="40" y="345" width="200" height="75" rx="0" fill="#9AA09D" stroke="none" stroke-width="1.5"/>
+<text x="140" y="388.5" font-size="18" font-weight="bold" fill="#1F2A28" text-anchor="middle">R</text>
+<line x1="244" y1="382.5" x2="266" y2="382.5" stroke="#6B7370" stroke-width="1"/>
+<text x="272" y="374.5" font-size="13" font-weight="bold" fill="#1F2A28" text-anchor="start">Bedrock (parent material)</text>
+<text x="272" y="390.5" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">the solid rock the soil</text><text x="272" y="405.5" font-size="12" font-weight="normal" fill="#1F2A28" text-anchor="start">slowly forms from</text>
+<ellipse cx="70" cy="290" rx="12.6" ry="9" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
+<ellipse cx="100" cy="325" rx="14" ry="10" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
+<ellipse cx="185" cy="285" rx="11.2" ry="8" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
+<ellipse cx="210" cy="330" rx="14" ry="10" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
+<ellipse cx="70" cy="335" rx="8.4" ry="6" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
+<ellipse cx="175" cy="318" rx="9.8" ry="7" fill="#8E8F86" stroke="#1F2A28" stroke-width="0.8"/>
+<line x1="60" y1="360" x2="90" y2="400" stroke="#5F6563" stroke-width="1.2"/>
+<line x1="150" y1="350" x2="130" y2="410" stroke="#5F6563" stroke-width="1.2"/>
+<line x1="200" y1="370" x2="225" y2="405" stroke="#5F6563" stroke-width="1.2"/>
+<path d="M90 70 C92 100 84 130 96 160 M150 70 C148 105 156 135 148 170 M200 70 C202 95 194 120 204 140" fill="none" stroke="#D8C3A0" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M60 70 L54 50 M60 70 L60 44 M60 70 L67 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M90 70 L84 50 M90 70 L90 44 M90 70 L97 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M120 70 L114 50 M120 70 L120 44 M120 70 L127 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M150 70 L144 50 M150 70 L150 44 M150 70 L157 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M180 70 L174 50 M180 70 L180 44 M180 70 L187 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M210 70 L204 50 M210 70 L210 44 M210 70 L217 52" fill="none" stroke="#009E73" stroke-width="2.2" stroke-linejoin="round"/>
+<line x1="24" y1="400" x2="24" y2="290" stroke="#474A10" stroke-width="2.5" marker-end="url(#ar-olive)"/>
+<text x="16" y="345" font-size="11" font-weight="normal" fill="#474A10" text-anchor="middle" transform="rotate(-90 16 345)">Weathering of rock</text>
+<text x="140" y="30" font-size="12" font-weight="bold" fill="#009E73" text-anchor="middle">Organic matter added from above</text>
+<text x="40" y="446" font-size="12" font-weight="normal" fill="#6B7370" text-anchor="start" font-style="italic">Soil forms slowly: often centuries for a few centimeters</text>
+</svg>

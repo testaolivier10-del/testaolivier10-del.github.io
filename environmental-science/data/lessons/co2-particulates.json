@@ -1,0 +1,72 @@
+{
+ "topic": "co2-particulates",
+ "hook": "In late summer a lightning strike starts a wildfire 200 kilometers away. Two days later, in a town with no factories nearby, the sky turns orange, the far hills disappear, and fine particles in the air reach ten times their usual level. Not all air pollution comes from people. Fires, volcanoes, dust storms and sea spray fill the air with carbon dioxide and particles too.",
+ "prereq": [
+  {
+   "q": "Which process releases CO2 as organisms break down food for energy?",
+   "options": [
+    "Cellular respiration",
+    "Photosynthesis",
+    "Nitrogen fixation",
+    "Condensation"
+   ],
+   "correct": 0,
+   "why": "Respiration releases CO2; photosynthesis takes it in.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "Which particles reach deepest into the lungs?",
+   "options": [
+    "PM2.5",
+    "PM10",
+    "Sand grains",
+    "Pollen grains"
+   ],
+   "correct": 0,
+   "why": "The smaller the particle, the deeper it goes; PM2.5 is the finest group.",
+   "review": "air-pollution"
+  }
+ ],
+ "figure": {
+  "figure": "co2-particulates-natural-sources",
+  "caption": "Natural sources of carbon dioxide and particulate matter, alongside the human sources covered in 7.1."
+ },
+ "chain": [
+  {
+   "cause": "Volcanoes erupt, wildfires burn, and organisms respire and decompose",
+   "effect": "CO2 enters the atmosphere without any human help"
+  },
+  {
+   "cause": "Wind lifts desert dust and sea spray, and fires and volcanoes release smoke and ash",
+   "effect": "natural particulate matter enters the air"
+  },
+  {
+   "cause": "Particles in the air scatter and absorb sunlight",
+   "effect": "visibility falls and the sky looks hazy"
+  },
+  {
+   "cause": "People breathe air with more fine particles",
+   "effect": "lung and heart problems rise, whether the particles are natural or human"
+  }
+ ],
+ "ideas": [
+  "<b>Natural emissions</b> of CO2 come from volcanoes, wildfires, respiration and decomposition. Today human activities release roughly 100 times more CO2 each year than volcanoes.",
+  "Natural <b>particulate matter</b> comes from volcanic ash, wildfire smoke, desert dust, sea salt spray and pollen. Human sources include burning fuel, construction and plowing.",
+  "Particles scatter and absorb light, which makes <b>haze</b> and lowers visibility.",
+  "PM2.5 harms the lungs and heart whatever its source, so smoke from a wildfire started by lightning is as dangerous as smoke from a fire people set."
+ ],
+ "misconception": {
+  "wrong": "Volcanoes put more CO2 into the air each year than all human activities.",
+  "right": "All the world's volcanoes together release about one hundredth of the CO2 that humans release each year by burning fossil fuels and making cement."
+ },
+ "check": [
+  "env-co2-particulates-8",
+  "env-co2-particulates-9",
+  "env-co2-particulates-1",
+  "env-co2-particulates-2",
+  "env-co2-particulates-3",
+  "env-co2-particulates-4",
+  "env-co2-particulates-11"
+ ],
+ "summary": "Carbon dioxide and particulate matter have natural sources as well as human ones. Volcanoes, wildfires, respiration and decomposition release CO2, though human emissions are now about 100 times volcanic ones. Volcanic ash, wildfire smoke, desert dust, sea spray and pollen add particles. Particles scatter and absorb light, causing haze, and fine particles harm the lungs whatever their source."
+}

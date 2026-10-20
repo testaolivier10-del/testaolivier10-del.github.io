@@ -1,0 +1,12 @@
+{
+ "generalists-specialists-niche": {
+  "file": "figures/generalists-specialists-niche.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two curves of how much of each food size two species eat. The specialist curve is tall and narrow, centered on 6 mm food items. The generalist curve is low and broad, spread from about 0 to 20 mm. Invented example."
+ }
+}

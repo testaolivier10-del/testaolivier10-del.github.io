@@ -1,0 +1,746 @@
+{
+ "stimuli": {
+  "eutrophication-s1": {
+   "kind": "visual",
+   "title": "A lake through one summer after heavy fertilizer runoff",
+   "invented": true,
+   "plot": {
+    "label": "Dual-axis line graph over 12 weeks in a lake: algae, measured as chlorophyll in micrograms per liter, rises from 5 to a peak of 60 at week 5 and falls to 15; dissolved oxygen in the deep water stays near 8 milligrams per liter until week 5 then falls to 1 by week 8 and recovers slowly to 5; invented data",
+    "kind": "dual",
+    "x": [
+     0,
+     12
+    ],
+    "y": [
+     0,
+     70
+    ],
+    "yRight": [
+     0,
+     10
+    ],
+    "xStep": 2,
+    "yStep": 10,
+    "xLabel": "Weeks after the spring runoff",
+    "yLabel": "Algae (µg per L)",
+    "yRightLabel": "DO (mg per L)",
+    "series": [
+     {
+      "name": "Algae",
+      "axis": "left",
+      "points": [
+       [
+        0,
+        5
+       ],
+       [
+        1,
+        10
+       ],
+       [
+        2,
+        22
+       ],
+       [
+        3,
+        38
+       ],
+       [
+        4,
+        52
+       ],
+       [
+        5,
+        60
+       ],
+       [
+        6,
+        50
+       ],
+       [
+        7,
+        35
+       ],
+       [
+        8,
+        22
+       ],
+       [
+        10,
+        16
+       ],
+       [
+        12,
+        15
+       ]
+      ]
+     },
+     {
+      "name": "Bottom DO",
+      "axis": "right",
+      "points": [
+       [
+        0,
+        8.2
+       ],
+       [
+        1,
+        8.1
+       ],
+       [
+        2,
+        8
+       ],
+       [
+        3,
+        7.8
+       ],
+       [
+        4,
+        7.4
+       ],
+       [
+        5,
+        6.5
+       ],
+       [
+        6,
+        4.2
+       ],
+       [
+        7,
+        2
+       ],
+       [
+        8,
+        1
+       ],
+       [
+        10,
+        2.8
+       ],
+       [
+        12,
+        5
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "eutrophication-s2": {
+   "kind": "quantitative",
+   "title": "Phosphorus and algae in five lakes",
+   "invented": true,
+   "table": {
+    "caption": "Total phosphorus and summer algae in five lakes in one region (invented data for practice)",
+    "cols": [
+     "Lake",
+     "Land around the lake",
+     "Total phosphorus (µg/L)",
+     "Summer algae (chlorophyll, µg/L)",
+     "Water clarity (m)"
+    ],
+    "rows": [
+     [
+      "Crystal",
+      "forest",
+      "8",
+      "2",
+      "7.5"
+     ],
+     [
+      "Birch",
+      "forest and cabins",
+      "15",
+      "5",
+      "4.8"
+     ],
+     [
+      "Mill",
+      "pasture",
+      "40",
+      "18",
+      "1.9"
+     ],
+     [
+      "Corn",
+      "row crops",
+      "85",
+      "45",
+      "0.8"
+     ],
+     [
+      "Town",
+      "city and lawns",
+      "110",
+      "62",
+      "0.5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-eutrophication-1",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "When does bottom dissolved oxygen fall fastest?",
+   "stimulus": "eutrophication-s1",
+   "options": [
+    "Weeks 0 to 3, as the algae begin to grow",
+    "Weeks 5 to 8, just after the algae peak",
+    "Weeks 10 to 12, at the end of the summer",
+    "Weeks 3 to 5, while the algae are growing fastest"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "DO drops from 6.5 to 1.0 mg per L between weeks 5 and 8, just after the algae peak at week 5, when the algae are dying.",
+    "options": [
+     "DO barely changes then, from 8.2 to 7.8.",
+     "Right: DO falls from 6.5 to 1.0 as the bloom dies back.",
+     "DO is rising again then, from 2.8 to 5.0.",
+     "DO falls only a little then; the steep drop comes after the peak."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-2",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the steep drop in bottom DO come after the algae peak rather than during the growth of the bloom?",
+   "stimulus": "eutrophication-s1",
+   "options": [
+    "Decomposers use oxygen breaking down dead algae",
+    "Living algae breathe in most of the oxygen as they grow",
+    "Fertilizer reacts with oxygen and removes it directly",
+    "The water warms in late summer and boils off the oxygen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "While algae grow they make oxygen near the surface. When they die, they sink, and decomposers break them down using oxygen from the deep water. So DO falls as the bloom dies.",
+    "options": [
+     "Right: decomposition of the dying bloom uses up the oxygen.",
+     "Growing algae make oxygen by photosynthesis near the surface.",
+     "Nitrate and phosphate do not remove oxygen themselves.",
+     "Warming lowers DO somewhat, but it does not explain the timing after the peak."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-3",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in bottom DO from week 0 to week 8.",
+   "stimulus": "eutrophication-s1",
+   "why": {
+    "correct": "$\\frac{(1.0 - 8.2)}{8.2} \\times 100 = -87.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      8.2,
+      1
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -720,
+      "why": "You divided by the week 8 value. Divide by the starting value, 8.2 mg per L."
+     },
+     {
+      "value": 87.8048780488,
+      "why": "DO fell, so the change is negative: about -87.8%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-4",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A fish kill was reported in week 8. Which conclusion is best supported by the graph?",
+   "stimulus": "eutrophication-s1",
+   "options": [
+    "The fertilizer itself poisoned the fish",
+    "Algae clogged their gills at the bloom's peak",
+    "Cold late-summer water killed the fish",
+    "Low oxygen after the bloom died killed them"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At week 8 bottom DO reached 1.0 mg per L, far below what most fish need (about 5 mg per L), so the fish likely died from hypoxia caused by decomposition of the bloom.",
+    "options": [
+     "The graph points to oxygen, not direct poisoning by nutrients.",
+     "The kill came three weeks after the algae peak, when DO was lowest.",
+     "Nothing in the graph shows cold water.",
+     "Right: DO hit 1 mg per L at week 8."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-5",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What relationship do the five lakes show between phosphorus and algae?",
+   "stimulus": "eutrophication-s2",
+   "options": [
+    "More phosphorus goes with less algae",
+    "Phosphorus and algae are not related",
+    "More phosphorus goes with more algae",
+    "Algae are highest in the forest lakes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Lakes with more phosphorus have more algae: from 8 µg per L and 2 µg per L of chlorophyll in Crystal Lake to 110 and 62 in Town Lake.",
+    "options": [
+     "Town Lake has the most of both.",
+     "They rise together across all five lakes.",
+     "Right: algae rise steadily with phosphorus.",
+     "The forest lakes have the least algae."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-6",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does water clarity fall as phosphorus rises?",
+   "stimulus": "eutrophication-s2",
+   "options": [
+    "Phosphorus is a dark powder that stains the water",
+    "More phosphorus feeds algae that cloud the water",
+    "Clear lakes are deeper, so they hold less phosphorus",
+    "Fish stir up the bottom in lakes with more phosphorus"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "More phosphorus feeds more algae, which cloud the water. Crystal Lake is clear to 7.5 m; Town Lake, green with algae, only to 0.5 m.",
+    "options": [
+     "Dissolved phosphate is not what clouds the water; the algae are.",
+     "Right: clarity falls as algae rise.",
+     "Depth is not in the table; the link is through algae.",
+     "The table gives no fish data."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-7",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which lake is most likely oligotrophic?",
+   "stimulus": "eutrophication-s2",
+   "options": [
+    "Crystal Lake, clear and low in nutrients",
+    "Town Lake, which has the most phosphorus",
+    "Corn Lake, beside fields of row crops",
+    "Mill Lake, beside grazed pasture land"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An oligotrophic lake is low in nutrients, with little algae and clear water. Crystal Lake has the least phosphorus (8), least algae (2) and clearest water (7.5 m).",
+    "options": [
+     "Right: low nutrients, little algae, high clarity.",
+     "High nutrients and algae make it eutrophic, not oligotrophic.",
+     "Its high phosphorus and algae make it eutrophic.",
+     "Its phosphorus and algae are moderate to high."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-8",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many times as much phosphorus does Town Lake have as Crystal Lake?",
+   "stimulus": "eutrophication-s2",
+   "why": {
+    "correct": "$\\frac{110\\,\\mu\\text{g/L}}{8\\,\\mu\\text{g/L}} = 13.75$ times."
+   },
+   "numeric": {
+    "from": {
+     "fn": "magnification",
+     "args": [
+      110,
+      8
+     ]
+    },
+    "unit": "times",
+    "units": [
+     "x",
+     "fold"
+    ],
+    "mistakes": [
+     {
+      "value": 102,
+      "why": "102 is the difference. \"How many times as much\" divides: 110 / 8."
+     },
+     {
+      "value": 0.0727272727273,
+      "why": "You divided the smaller by the larger. Divide Town Lake (110) by Crystal Lake (8)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-9",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "order",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of cultural eutrophication in order.",
+   "options": [
+    "Nitrate and phosphate from fertilizer or sewage enter a lake",
+    "The extra nutrients cause an algal bloom",
+    "Algae block sunlight, and plants below and algae die",
+    "Decomposers break down the dead matter, using oxygen",
+    "Dissolved oxygen falls (hypoxia)",
+    "Fish and other animals die or leave"
+   ],
+   "why": {
+    "correct": "Nutrients, bloom, die-off, decomposition, oxygen drop, fish kill: every link named."
+   }
+  },
+  {
+   "id": "env-eutrophication-10",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which pollutants cause cultural eutrophication?",
+   "options": [
+    "Pesticides sprayed on crops",
+    "Heat from power plant cooling water",
+    "Sulfur dioxide from coal plants",
+    "Nitrogen and phosphorus nutrients"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Nutrients, mainly nitrogen (nitrate) and phosphorus (phosphate) from fertilizers, manure, sewage and some detergents, cause eutrophication. Pesticides do not.",
+    "options": [
+     "Pesticides kill pests; they do not feed algae. This is a common mix-up.",
+     "Heat is a different problem, covered in the next topic.",
+     "SO2 causes acid deposition, not eutrophication.",
+     "Right: extra nutrients feed the bloom."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-11",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does adding phosphorus to a freshwater lake so often cause an algal bloom?",
+   "options": [
+    "Phosphorus kills the fish that eat algae",
+    "Phosphorus warms the water so algae grow faster",
+    "It is usually the limiting nutrient there",
+    "Phosphorus raises the pH so algae live longer"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Phosphorus is usually the limiting nutrient in fresh water: it is the one in shortest supply, so adding it removes the limit on algal growth.",
+    "options": [
+     "Phosphorus at these levels does not kill fish directly.",
+     "Phosphate does not warm water.",
+     "Right: adding the scarce nutrient releases growth.",
+     "Algae still die; that is part of the problem."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-12",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "multi",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which actions would cut the nutrients reaching a lake fed by farm runoff? Select all that apply.",
+   "options": [
+    "Plant buffer strips of grass and trees along the shore",
+    "Switch to a different insecticide on the fields",
+    "Pump air into the lake bottom each summer",
+    "Add a chemical to the lake that kills the algae"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Only the buffer strips keep nitrate and phosphate on the land. Aerating the lake and killing the algae treat symptoms while the same nutrients keep arriving, and insecticides are pesticides, not nutrients.",
+    "options": [
+     "Right: plants take up nitrate and phosphate from runoff before it reaches the lake.",
+     "Insecticides are pesticides, not nutrients; changing them does not cut nitrate or phosphate.",
+     "Aeration raises oxygen but treats a symptom; the same nutrients still arrive.",
+     "Killing the bloom does not cut the nutrients, and the dead algae still decompose and use oxygen."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-13",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where does the Gulf of Mexico dead zone come from?",
+   "options": [
+    "Oil leaking from drilling platforms in the Gulf",
+    "Nutrients carried down the Mississippi",
+    "Warm water from Gulf power plants",
+    "Acid rain falling on the Gulf"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Nitrogen and phosphorus from farms and cities across the huge Mississippi River watershed flow to the Gulf each spring and summer, feeding blooms whose decomposition creates hypoxic bottom water.",
+    "options": [
+     "Oil spills cause other harm; the dead zone comes from nutrients.",
+     "Right: a nonpoint source spread over a vast watershed.",
+     "Warm discharge is local; the dead zone is fed by river nutrients.",
+     "Acid rain does not create hypoxic dead zones."
+    ]
+   }
+  },
+  {
+   "id": "env-eutrophication-14",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Complete the cause-and-effect chain that explains how fertilizer runoff causes a fish kill.",
+   "why": {
+    "correct": "A complete chain names every link: nutrients, bloom, die-off, decomposition using oxygen, low DO, fish death. Skipping decomposition is the most common lost point."
+   },
+   "specific": {
+    "frame": "Fertilizer adds nutrients, which cause ___; when the algae die, ___, so ___ and fish die.",
+    "slots": {
+     "bloom": {
+      "label": "First effect",
+      "options": [
+       "an algal bloom",
+       "the water to cool",
+       "the fish to grow faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nutrients do not cool the water.",
+       "2": "Nutrients feed algae, not fish directly."
+      }
+     },
+     "decomp": {
+      "label": "What happens to the dead algae",
+      "options": [
+       "decomposers break them down and use up oxygen",
+       "they turn into fertilizer and float away",
+       "sunlight dissolves them"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Dead algae sink and decompose; they do not float away as fertilizer.",
+       "2": "Sunlight does not dissolve dead algae."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "dissolved oxygen falls",
+       "the water becomes acidic",
+       "the lake gets deeper"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The key change is oxygen, not acidity.",
+       "2": "Depth does not change."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "directional": true,
+     "context": [
+      "oxygen",
+      "algae",
+      "decompos"
+     ]
+    },
+    "model": "Fertilizer adds nutrients, which cause an algal bloom; when the algae die, decomposers break them down and use up oxygen, so dissolved oxygen falls and fish die."
+   }
+  },
+  {
+   "id": "env-eutrophication-15",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 200-hectare farm applies 150 kg of nitrogen fertilizer per hectare. Studies suggest 20% runs off to a nearby stream. Write the setup for the kilograms of nitrogen that run off, then the answer.",
+   "why": {
+    "correct": "$200\\,\\text{ha} \\times \\frac{150\\,\\text{kg}}{1\\,\\text{ha}} \\times \\frac{20}{100} = 6{,}000\\,\\text{kg}$ of nitrogen."
+   },
+   "setup": {
+    "answer": "200 ha * 150 kg/ha * 20 / 100",
+    "mustUse": [
+     "200",
+     "150",
+     "20"
+    ],
+    "unit": "kg",
+    "mistakes": [
+     {
+      "expr": "200 ha * 150 kg/ha",
+      "why": "That is all the fertilizer applied. Multiply by 20 / 100 for the share that runs off."
+     },
+     {
+      "expr": "200 ha * 150 kg/ha * 20",
+      "why": "Divide the 20 by 100 to turn the percent into a fraction."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "percentOf",
+      "args": [
+       20,
+       {
+        "fn": "mul",
+        "args": [
+         200,
+         150
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 30000,
+       "why": "30,000 kg is the total applied. 20% of it runs off: 6,000 kg."
+      },
+      {
+       "value": 600000,
+       "why": "You used 20 instead of 20 / 100. Divide the percent by 100."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-eutrophication-16",
+   "unit": "unit-8",
+   "topic": "eutrophication",
+   "type": "specific",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Write a testable hypothesis for an experiment on how phosphate affects algae in pond-water tanks.",
+   "why": {
+    "correct": "It names the change (more phosphate), the measured variable (algae, as chlorophyll), a direction (increase) and a reason (phosphorus is limiting)."
+   },
+   "specific": {
+    "frame": "If ___, then ___ will ___, because ___.",
+    "slots": {
+     "iv": {
+      "label": "Independent variable",
+      "options": [
+       "more phosphate is added to the tanks",
+       "the tanks are painted blue",
+       "more fish are added"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Tank color is not the variable being tested.",
+       "2": "Fish are not the variable being tested."
+      }
+     },
+     "dv": {
+      "label": "Dependent variable",
+      "options": [
+       "the amount of algae (chlorophyll)",
+       "the air temperature in the lab"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Air temperature should be kept constant, not measured as the result."
+      }
+     },
+     "dir": {
+      "label": "Direction",
+      "options": [
+       "increase",
+       "be affected"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"Be affected\" gives no direction; say increase or decrease."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "phosphorus is the limiting nutrient for algae in fresh water",
+       "phosphate makes the water colder"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Phosphate does not cool water."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "noQuestion": true,
+     "mechanism": true,
+     "variable": [
+      "algae",
+      "chlorophyll"
+     ]
+    },
+    "model": "If more phosphate is added to the tanks, then the amount of algae will increase, because phosphorus is the limiting nutrient for algae in fresh water."
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "pollution-sources-point-nonpoint": {
+  "file": "figures/pollution-sources-point-nonpoint.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A river flowing through a landscape. Point sources (a factory pipe, a sewage plant outfall and a smokestack) each send pollution in at one marked spot. Nonpoint sources (runoff arrows from crop fields, a suburb with lawns, a city street and a construction site) wash in along the whole length of the river."
+ }
+}

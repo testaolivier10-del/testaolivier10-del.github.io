@@ -1,0 +1,83 @@
+{
+ "topic": "global-energy-consumption",
+ "hook": "A family in a city in a wealthy country runs a furnace, a refrigerator, two cars and a dozen screens. A family in a rural village elsewhere cooks over a wood fire and has one light bulb. Multiply those differences by billions of people and you have the pattern of world energy use: who uses how much, of which fuel, and why it keeps rising.",
+ "prereq": [
+  {
+   "q": "Which describes a developed country compared with a developing country?",
+   "options": [
+    "Higher income per person and more industry",
+    "A faster-growing population",
+    "More people working on farms",
+    "A higher birth rate"
+   ],
+   "correct": 0,
+   "why": "Developed countries are richer per person and more industrialized; developing countries usually grow faster.",
+   "review": "age-structure"
+  },
+  {
+   "q": "Which fuels are nonrenewable?",
+   "options": [
+    "Coal, oil and natural gas",
+    "Sunlight and wind",
+    "Firewood regrown each decade",
+    "Moving river water"
+   ],
+   "correct": 0,
+   "why": "Fossil fuels exist in fixed amounts and form over millions of years.",
+   "review": "renewable-nonrenewable"
+  },
+  {
+   "q": "A value rises from 40 to 50. What is the percent change?",
+   "options": [
+    "25%",
+    "20%",
+    "10%",
+    "125%"
+   ],
+   "correct": 0,
+   "why": "$\\frac{50 - 40}{40} \\times 100 = 25\\%$.",
+   "review": "math-percents"
+  }
+ ],
+ "figure": {
+  "figure": "global-energy-consumption-per-person",
+  "caption": "Energy use per person in four invented countries, from less to more developed. Use rises with development, and fossil fuels supply most of it in richer countries."
+ },
+ "chain": [
+  {
+   "cause": "A country industrializes and incomes rise",
+   "effect": "factories, vehicles, appliances and heating or cooling spread"
+  },
+  {
+   "cause": "Each of these runs on fuel or electricity",
+   "effect": "energy use per person rises, often more than tenfold"
+  },
+  {
+   "cause": "Most new supply still comes from cheap, available fossil fuels",
+   "effect": "world use of coal, oil and natural gas keeps growing"
+  },
+  {
+   "cause": "Total use is population times use per person",
+   "effect": "world energy use rises as developing countries grow in both"
+  }
+ ],
+ "ideas": [
+  "Fossil fuels supply about 80 percent of the world's energy. Oil is the largest single source, used mostly for transportation; coal is the largest single source of electricity worldwide.",
+  "<b>Energy consumption</b> per person is highest in developed countries. The United States has about 4 percent of the world's people and uses roughly one sixth of its energy.",
+  "Use is rising fastest in developing countries as they industrialize. About 2.1 billion people lack clean cooking fuels and burn mostly wood, charcoal, crop waste or dung.",
+  "Total use = population × use per person. Read graphs for both the total and the per-person value, and compare with numbers."
+ ],
+ "misconception": {
+  "wrong": "The country with the most people uses the most energy per person.",
+  "right": "Population raises a country's total energy use, but use per person depends on wealth, industry and climate. A small rich country can use many times more per person than a large poor one."
+ },
+ "check": [
+  "env-global-energy-consumption-1",
+  "env-global-energy-consumption-3",
+  "env-global-energy-consumption-5",
+  "env-global-energy-consumption-8",
+  "env-global-energy-consumption-9",
+  "env-global-energy-consumption-10"
+ ],
+ "summary": "The world runs mostly on fossil fuels, about 80 percent of its energy. Energy use per person is far higher in developed countries, while total use is growing fastest in developing countries as their populations and incomes rise. Reading energy data means comparing totals and per-person values with numbers, and percent change is (new - old) / old × 100."
+}

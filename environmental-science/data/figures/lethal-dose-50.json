@@ -1,0 +1,12 @@
+{
+ "lethal-dose-50-curve": {
+  "file": "figures/lethal-dose-50-curve.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph of the percent of test rats killed against the dose of a pesticide in milligrams per kilogram of body mass (invented data). Deaths are 0% at 0, 2% at 10, 9% at 20, 26% at 30, 50% at 40, 72% at 50, 86% at 60, 96% at 80 and 99% at 100 mg/kg, an S-shaped rise. A dashed line across from 50% meets the curve at 40 mg/kg and drops to the dose axis: the LD50 is 40 mg/kg."
+ }
+}

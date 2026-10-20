@@ -1,0 +1,12 @@
+{
+ "eutrophication-chain": {
+  "file": "figures/eutrophication-chain.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Six linked boxes. 1: fertilizer, manure and sewage add nitrate and phosphate to a lake. 2: algae grow into a bloom. 3: the bloom blocks sunlight and algae and plants die. 4: dead matter sinks and decomposers break it down. 5: decomposers use oxygen, so dissolved oxygen falls. 6: fish die or leave, a dead zone."
+ }
+}

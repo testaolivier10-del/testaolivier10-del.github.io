@@ -1,0 +1,12 @@
+{
+ "aquaculture-pens": {
+  "file": "figures/aquaculture-pens.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: an open net pen floats in a bay. Waste and uneaten feed sink to the sea floor below the pen, some farmed fish escape through the net, and wild fish nearby catch parasites and disease from the crowded pen. Right: a closed tank on land. Water flows through a filter and back into the tank, so waste is captured and the water is reused, but the system costs more in electricity and money."
+ }
+}

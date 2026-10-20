@@ -1,0 +1,72 @@
+{
+ "topic": "agricultural-practices",
+ "hook": "In the 1930s, farmers on the southern Great Plains had plowed up millions of hectares of grassland. Then came years of drought. With no grass roots to hold it, the loose, dry topsoil blew away in black clouds that buried fences and reached cities on the Atlantic coast. The Dust Bowl showed how a farming practice can turn a dry spell into a disaster.",
+ "prereq": [
+  {
+   "q": "What is humus?",
+   "options": [
+    "Dark, decomposed organic matter in soil",
+    "The rock that soil forms from",
+    "The deepest soil horizon",
+    "A kind of clay mineral"
+   ],
+   "correct": 0,
+   "why": "Humus is decomposed organic matter; it holds water and nutrients.",
+   "review": "soil-properties"
+  },
+  {
+   "q": "What does leaching do to soil?",
+   "options": [
+    "Water carries dissolved nutrients down and out of reach of roots",
+    "Wind blows the top layer of soil away",
+    "Rock breaks into smaller pieces in place",
+    "Bacteria turn nitrogen gas into ammonium"
+   ],
+   "correct": 0,
+   "why": "Leaching moves dissolved substances such as nitrate downward with water.",
+   "review": "nitrogen-cycle"
+  }
+ ],
+ "figure": {
+  "figure": "agricultural-practices-tilling",
+  "caption": "A tilled field leaves soil bare and loose; an untilled field keeps a cover of crop residue and a network of roots and pores."
+ },
+ "chain": [
+  {
+   "cause": "A field is plowed (tilled) every year",
+   "effect": "the soil surface is bare and loose"
+  },
+  {
+   "cause": "Wind and rain hit bare, loose soil",
+   "effect": "topsoil blows or washes away (erosion)"
+  },
+  {
+   "cause": "Mixing air into the soil speeds decomposition",
+   "effect": "soil organic matter falls and its carbon enters the air as carbon dioxide"
+  },
+  {
+   "cause": "Topsoil and organic matter are lost",
+   "effect": "the soil holds less water and fewer nutrients, so yields fall"
+  }
+ ],
+ "ideas": [
+  "<b>Tilling</b> buries weeds and loosens the seedbed, but leaves soil bare, so wind and water erode it; it also speeds the loss of organic matter.",
+  "<b>Slash-and-burn</b> clears tropical forest by cutting and burning. Ash fertilizes the poor soil for a few seasons, then the plot is left and more forest is cleared.",
+  "Burning releases carbon dioxide and smoke; clearing removes habitat and carbon storage. With long fallow periods and few people, plots can regrow forest.",
+  "Fertilizer the crop does not take up runs off or leaches into rivers, lakes and groundwater, where nitrate and phosphate become pollutants."
+ ],
+ "misconception": {
+  "wrong": "Plowing improves the soil, because loose soil is healthy soil.",
+  "right": "Plowing loosens the soil for planting, but year after year it leaves the surface bare, speeds erosion, burns off organic matter and can pack a hard layer just below the plow depth."
+ },
+ "check": [
+  "env-agricultural-practices-1",
+  "env-agricultural-practices-4",
+  "env-agricultural-practices-10",
+  "env-agricultural-practices-11",
+  "env-agricultural-practices-12",
+  "env-agricultural-practices-13",
+  "env-agricultural-practices-8"
+ ],
+ "summary": "Tilling, slash-and-burn and heavy fertilizer use each raise harvests in the short run and harm the land or water in the long run. Tilling bares the soil to erosion and loss of organic matter; slash-and-burn removes forest and releases carbon dioxide; fertilizer the crop does not use pollutes rivers, lakes and groundwater."
+}

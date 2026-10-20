@@ -1,0 +1,41 @@
+{
+ "biome": {
+  "def": "A large region of the Earth with a typical climate and typical plants and animals, such as tundra, desert or tropical rainforest. The same biome can occur on several continents."
+ },
+ "precipitation": {
+  "def": "Water that falls from the atmosphere as rain, snow, sleet or hail, usually measured in centimeters or millimeters."
+ },
+ "climatograph": {
+  "def": "A graph of a place’s average temperature and precipitation for each month of the year, used to identify its biome."
+ },
+ "tropical-rainforest": {
+  "def": "A biome near the equator that is warm and very wet all year (often over 200 cm of rain), with dense, layered forest and soils poor in nutrients."
+ },
+ "temperate-forest": {
+  "def": "A temperate deciduous forest: a biome with warm summers, cold winters and rain through the year, whose broadleaf trees drop their leaves in fall."
+ },
+ "temperate-rainforest": {
+  "def": "A coastal biome with mild temperatures and very heavy rain from ocean air, with huge conifers, mosses and ferns."
+ },
+ "taiga": {
+  "def": "The boreal forest: a cold biome of cone-bearing evergreen trees with long, snowy winters and short summers, just south of the tundra."
+ },
+ "tundra": {
+  "def": "A cold, treeless biome with long winters, a short growing season, little precipitation and permafrost, found at high latitudes and on high mountains."
+ },
+ "permafrost": {
+  "def": "Soil that stays frozen all year. It lies under the tundra, keeps roots shallow and stores large amounts of dead plant matter."
+ },
+ "savanna": {
+  "def": "A tropical grassland with scattered trees, warm all year, with a wet season and a long dry season; fires and grazing keep it open."
+ },
+ "temperate-grassland": {
+  "def": "A biome of grasses and few trees with hot summers, cold winters and moderate precipitation, such as a prairie. Its deep soils are very fertile for farming."
+ },
+ "desert-biome": {
+  "def": "A biome that gets very little precipitation (usually under 25 cm a year), with plants that store water; it can be hot or cold."
+ },
+ "chaparral": {
+  "def": "A shrubland biome with hot, dry summers and mild, rainy winters, where shrubs with small waxy leaves grow and fires are common."
+ }
+}

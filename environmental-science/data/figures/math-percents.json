@@ -1,0 +1,12 @@
+{
+ "math-percents-change": {
+  "file": "figures/math-percents-change.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two bars from invented data: 120 frogs in 2020, the old value, and 150 frogs in 2024, the new value. The change is 30. Percent change is (150 minus 120) divided by 120, times 100, which is 25 percent: subtract in brackets first, divide by the old value, then multiply by 100."
+ }
+}

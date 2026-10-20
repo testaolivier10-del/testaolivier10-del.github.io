@@ -1,0 +1,14 @@
+{
+ "sustainable-forestry": {
+  "def": "Managing forests so that wood is harvested no faster than the forest regrows, while soil, water, habitat and biodiversity are protected for the future. It uses methods such as selective cutting, reforestation, protecting streamside trees, prescribed burns and reusing or recycling wood."
+ },
+ "selective-cutting": {
+  "def": "Harvesting only some of the trees in a forest, often single mature trees or small groups, and leaving the rest standing. It keeps forest cover, shade and habitat and limits erosion, but costs more per log than clearcutting."
+ },
+ "reforestation": {
+  "def": "Planting trees, or letting them regrow, on land where a forest was cut or burned. It restores habitat and carbon storage over decades; a plantation of one species restores far less biodiversity than a mixed native forest."
+ },
+ "prescribed-burn": {
+  "def": "A fire set on purpose by forest managers under safe weather conditions to burn dead wood, fallen branches and brush on the forest floor. It removes the fuel that would let a wildfire grow large and hot, and helps species adapted to fire."
+ }
+}

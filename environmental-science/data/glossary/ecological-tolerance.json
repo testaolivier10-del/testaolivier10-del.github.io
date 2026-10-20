@@ -1,0 +1,11 @@
+{
+ "range-of-tolerance": {
+  "def": "The range of values of an abiotic factor, such as temperature or salinity, that an organism or population can survive. Also called ecological tolerance. Each species has a range for each factor."
+ },
+ "optimal-range": {
+  "def": "The part of a range of tolerance where individuals of a species grow, feed and reproduce best, so its population is largest."
+ },
+ "zone-of-stress": {
+  "def": "The parts of a range of tolerance between the optimal range and the limits, where individuals survive but grow, feed or reproduce poorly. Beyond these zones lie the zones of intolerance, where individuals die."
+ }
+}

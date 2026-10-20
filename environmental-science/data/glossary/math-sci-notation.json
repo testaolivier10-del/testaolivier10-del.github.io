@@ -1,0 +1,8 @@
+{
+ "scientific-notation": {
+  "def": "A way of writing a number as a number from 1 to 10 times a power of ten, such as 2.5 × 10⁶ for 2,500,000."
+ },
+ "metric-prefix": {
+  "def": "A word part in front of a metric unit that multiplies it by a power of ten: kilo (10³), mega (10⁶), giga (10⁹), centi (10⁻²), milli (10⁻³), micro (10⁻⁶)."
+ }
+}

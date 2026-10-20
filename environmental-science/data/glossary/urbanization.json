@@ -1,0 +1,17 @@
+{
+ "urbanization": {
+  "def": "The growth of cities and the shift of a population from rural areas into urban areas. Over half of the world's people now live in cities."
+ },
+ "urban-sprawl": {
+  "def": "The spread of low-density development, such as suburbs, shopping centers and roads, outward from a city onto farmland and natural land. It increases driving, paved area and cleared natural land per person compared with compact growth."
+ },
+ "impervious-surface": {
+  "def": "A surface that water cannot soak through, such as pavement, roofs, parking lots and packed ground. Rain that falls on it runs off instead of infiltrating, so runoff and flooding increase and groundwater recharge falls."
+ },
+ "saltwater-intrusion": {
+  "def": "The movement of seawater into a coastal freshwater aquifer when fresh groundwater is pumped out faster than it is recharged. Wells near the coast begin to pump salty water."
+ },
+ "urban-heat-island": {
+  "def": "A city that is warmer than the countryside around it, especially at night. Dark pavement and roofs absorb sunlight (low albedo), buildings and traffic release heat, and there are fewer plants to cool the air by transpiration."
+ }
+}

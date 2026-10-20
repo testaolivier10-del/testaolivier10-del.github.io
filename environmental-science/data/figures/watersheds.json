@@ -1,0 +1,12 @@
+{
+ "watersheds-divide-aquifer": {
+  "file": "figures/watersheds-divide-aquifer.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Seen from above: watershed A is outlined by a dashed line along its divide, the high ground that separates it from watershed B next door. Rain that falls inside the divide runs downhill as runoff into small tributaries, which join a main river that leaves the watershed at its outlet into a lake. Water falling on the far side of the divide drains to watershed B and flows somewhere else. A cut-away side view: rain falls on hills; runoff flows over the land surface into a stream; some water soaks in by infiltration down to the water table. Below the water table is an aquifer, water held underground in the pores of sand, gravel or rock, above a layer of rock that water does not pass through. The watershed is the land surface that drains to the stream; the aquifer is water stored below the ground."
+ }
+}

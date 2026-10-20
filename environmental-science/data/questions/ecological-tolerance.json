@@ -1,0 +1,510 @@
+{
+ "stimuli": {
+  "ecological-tolerance-s1": {
+   "kind": "visual",
+   "title": "A fish species’ range of tolerance",
+   "invented": true,
+   "figure": "ecological-tolerance-zones"
+  },
+  "ecological-tolerance-s2": {
+   "kind": "quantitative",
+   "title": "Snail survival at different salinities",
+   "invented": true,
+   "table": {
+    "caption": "Percent of 200 marsh snails alive after 10 days at each salinity, in parts per thousand (ppt) (invented data for practice)",
+    "cols": [
+     "Salinity (ppt)",
+     "Snails alive after 10 days (%)",
+     "Snails that laid eggs (%)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "5",
+      "40",
+      "5"
+     ],
+     [
+      "10",
+      "85",
+      "30"
+     ],
+     [
+      "15",
+      "95",
+      "70"
+     ],
+     [
+      "20",
+      "96",
+      "72"
+     ],
+     [
+      "25",
+      "90",
+      "35"
+     ],
+     [
+      "30",
+      "45",
+      "5"
+     ],
+     [
+      "35",
+      "0",
+      "0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-ecological-tolerance-1",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the figure, what is the optimal range of water temperature for this fish?",
+   "stimulus": "ecological-tolerance-s1",
+   "options": [
+    "16 to 26 °C",
+    "8 to 33 °C",
+    "0 to 8 °C",
+    "26 to 33 °C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The optimal range is the middle band where the population is largest.",
+    "options": [
+     "Right: the curve is highest between 16 and 26 °C, labeled optimal.",
+     "That is the whole range of tolerance, including the zones of stress.",
+     "No fish survive below 8 °C; that is a zone of intolerance.",
+     "That is a zone of physiological stress, where few fish live."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-2",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The water in a lake warms from 22 °C to 30 °C over one summer. Which zone does the fish population move into?",
+   "stimulus": "ecological-tolerance-s1",
+   "options": [
+    "The optimal range",
+    "A stress zone",
+    "A zone of intolerance",
+    "A zone that lies off the edge of the graph"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read the temperature on the x-axis, then the label of the band it falls in.",
+    "options": [
+     "30 °C is above the optimal range, which ends at 26 °C.",
+     "Right: 30 °C lies between 26 and 33 °C, a stress zone.",
+     "Intolerance starts above 33 °C, and 30 °C is below that.",
+     "The graph runs from 0 to 40 °C, so 30 °C is on it."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-3",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement best explains why the curve is low but above zero between 26 and 33 °C?",
+   "stimulus": "ecological-tolerance-s1",
+   "options": [
+    "No fish can survive at those temperatures",
+    "Fish grow fastest at those temperatures",
+    "Fish survive but feed and breed poorly, so few remain",
+    "Those temperatures are rare in lakes and streams in nature"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Low but not zero means survival with stress.",
+    "options": [
+     "That describes the zone of intolerance, where the curve is zero.",
+     "Growth is best in the optimal range, where the curve is highest.",
+     "Right: the stress zone has living fish, but conditions keep the population small.",
+     "The graph is about how fish respond, not how often a temperature occurs."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-4",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A factory would release heated water that keeps one bay at 35 °C all summer. What does the figure predict for this fish species in that bay?",
+   "stimulus": "ecological-tolerance-s1",
+   "options": [
+    "It would grow faster, because warm water holds more food",
+    "It would not change, because fish can swim to cooler water",
+    "It would shift into its optimal range for temperature",
+    "It would vanish, as 35 °C is in a zone of intolerance"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Past the upper limit of tolerance, a species cannot live in a place.",
+    "options": [
+     "Above 33 °C the figure shows no fish at all.",
+     "Some could leave, but the bay itself would no longer hold the species; the figure shows zero at 35 °C.",
+     "The optimal range is 16 to 26 °C, far below 35 °C.",
+     "Right: above 33 °C none survive, so the population would die or leave."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-5",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Based on the table, what is the optimal range of salinity for these snails?",
+   "stimulus": "ecological-tolerance-s2",
+   "options": [
+    "About 15 to 20 ppt",
+    "About 0 to 35 ppt",
+    "About 5 to 30 ppt",
+    "About 25 to 35 ppt"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The optimal range is where individuals both survive and reproduce best.",
+    "options": [
+     "Right: survival is highest and egg laying peaks at 70% and 72% there.",
+     "At 0 and 35 ppt no snails survive; those are the limits.",
+     "That is the range where some survive, including the stress zones where few lay eggs.",
+     "Survival and egg laying fall at 25 ppt and above."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-6",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At 10 ppt, 85% of snails survive but only 30% lay eggs. What does this show?",
+   "stimulus": "ecological-tolerance-s2",
+   "options": [
+    "10 ppt is the best salinity for these snails",
+    "In a stress zone, snails live but breed poorly",
+    "Egg laying does not depend on salinity",
+    "Most of the snails tested die at 10 ppt"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Reproduction drops off sooner than survival as conditions leave the optimal range.",
+    "options": [
+     "Egg laying is much higher at 15 to 20 ppt.",
+     "Right: survival is fairly high but egg laying is far below its peak, a sign of stress.",
+     "It changes from 0% to 72% across the table.",
+     "85% survive at 10 ppt."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-7",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Each salinity test started with 200 snails. How many snails were alive after 10 days at 30 ppt?",
+   "stimulus": "ecological-tolerance-s2",
+   "why": {
+    "correct": "Percent of a quantity: $\\frac{45}{100} \\times 200 = 90$ snails."
+   },
+   "numeric": {
+    "unit": "snails",
+    "units": [
+     "snail"
+    ],
+    "from": {
+     "fn": "percentOf",
+     "args": [
+      45,
+      200
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 45,
+      "why": "That is the percent. Take 45% of the 200 snails: 45 / 100 × 200."
+     },
+     {
+      "value": 110,
+      "why": "That is the number that died. The question asks how many were alive."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-8",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A storm pushes seawater into a marsh and raises its salinity from 18 ppt to 30 ppt for a whole season. Which prediction is best supported by the data?",
+   "stimulus": "ecological-tolerance-s2",
+   "options": [
+    "The population grows, because 30 ppt is the optimal salinity",
+    "No snails survive, because 30 ppt is beyond their tolerance",
+    "Many snails die and few lay eggs, so the population shrinks",
+    "Nothing changes, because snails can close their shells"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Moving from the optimal range into a stress zone shrinks a population through deaths and through fewer births.",
+    "options": [
+     "Survival and egg laying are far lower at 30 ppt than at 18.",
+     "Survival is 45% at 30 ppt; the limit is 35 ppt.",
+     "Right: at 30 ppt survival falls to 45% and egg laying to 5%.",
+     "The data show survival and reproduction both fall at 30 ppt."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-9",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "In which part of a range of tolerance do individuals grow and reproduce best?",
+   "options": [
+    "A zone of physiological stress",
+    "A zone of intolerance",
+    "The upper limit of tolerance",
+    "The optimal range"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Optimal range: thrive. Stress zone: survive poorly. Intolerance: die.",
+    "options": [
+     "Individuals survive but grow and reproduce poorly there.",
+     "Individuals die there.",
+     "At the limit, survival ends.",
+     "Right: the population is largest there."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-10",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cactus species lives in deserts where days reach 45 °C, and a moss species lives on shady, damp forest floors. Which statement compares their tolerances correctly?",
+   "options": [
+    "Desert heat and drought lie outside the moss’s range",
+    "They have the same range, because both are plants",
+    "The moss tolerates more heat, because it lives in shade",
+    "Neither has a range of tolerance, because plants stay rooted"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each species has its own range for each factor, which helps set where it can live.",
+    "options": [
+     "Right: each species’ range fits where it lives; desert conditions fall outside the moss’s range.",
+     "Ranges differ by species, not by broad group.",
+     "Living in shade suggests the moss does not tolerate strong heat.",
+     "All species have ranges of tolerance; plants cannot move away, so their ranges matter even more."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-11",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which observations show that a population is in a zone of physiological stress for some factor? Select all that apply.",
+   "options": [
+    "The animals are alive but grow more slowly than usual",
+    "Fewer young are produced than in a typical year",
+    "The individuals die within a day of the change",
+    "The population is at its largest in years"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Stress shows up as poor growth, feeding or reproduction while individuals are still alive.",
+    "options": [
+     "Right: survival with poor growth is a sign of stress.",
+     "Right: reproduction falls under stress.",
+     "That is the zone of intolerance, not stress.",
+     "A large population suggests optimal conditions."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-12",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Corals live in shallow tropical water. Why are corals near the warm edge of their range at most risk when the ocean warms by 1 to 2 °C?",
+   "options": [
+    "Warm water makes their food grow too fast",
+    "They are near their upper limit, so a small rise passes it",
+    "Corals from cooler water move in and crowd out the warm-edge corals",
+    "A 1 to 2 °C rise is too small to matter to any species"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A population at the edge of its range of tolerance is the most sensitive to change.",
+    "options": [
+     "The risk comes from the temperature itself passing the coral’s limit.",
+     "Right: a population close to a limit has little room before stress or death.",
+     "Corals are attached to the reef and cannot move.",
+     "For a population near its limit, a small change can matter a lot."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-13",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain why a brook trout population shrinks when a stream warms from 14 °C to 22 °C, if the trout’s optimal range is 10 to 16 °C and its upper limit is about 24 °C.",
+   "why": {
+    "correct": "Place 22 °C on the range, then give the effect on individuals, then on the population."
+   },
+   "specific": {
+    "frame": "At 22 °C the trout are in ___, so individuals ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Zone",
+      "options": [
+       "a zone of physiological stress",
+       "their optimal range",
+       "a zone of intolerance"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The optimal range ends at 16 °C, below 22 °C.",
+       "2": "Intolerance starts above the 24 °C limit, and 22 °C is below it."
+      }
+     },
+     "effect": {
+      "label": "Effect on individuals",
+      "options": [
+       "feed, grow and reproduce less",
+       "grow faster than before",
+       "all die within a day"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Growth is best in the optimal range, not in a stress zone.",
+       "2": "Death of all individuals happens in a zone of intolerance."
+      }
+     },
+     "mechanism": {
+      "label": "Effect on the population",
+      "options": [
+       "lowers births and survival, so the population decreases",
+       "raises births, so the population increases",
+       "keeps the population the same size"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Stressed fish produce fewer young, not more.",
+       "2": "Fewer births and lower survival change the population size."
+      }
+     }
+    },
+    "model": "At 22 °C the trout are in a zone of physiological stress, so individuals feed, grow and reproduce less, which lowers births and survival, so the population decreases."
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-14",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Over 50 years, a mountain butterfly species has been found farther uphill, where it is cooler, and it has disappeared from its lowest sites. Which explanation fits ecological tolerance best?",
+   "options": [
+    "The butterflies evolved to prefer the view from higher up",
+    "Lower sites gained more flowers, so the butterflies left",
+    "Low sites warmed past its range; cooler high sites still fit",
+    "Butterflies at high sites tolerate a wider range of temperatures"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When conditions shift, the places that fall inside a species’ range shift too, and populations move or vanish.",
+    "options": [
+     "Moving to stay within a range of tolerance explains the pattern; preference for a view does not.",
+     "More food would draw butterflies to the low sites, not away from them.",
+     "Right: as low sites warmed out of its range, only cooler, higher sites stayed inside it.",
+     "The pattern is about where conditions fit the range, not a wider range at the top."
+    ]
+   }
+  },
+  {
+   "id": "env-ecological-tolerance-15",
+   "unit": "unit-2",
+   "topic": "ecological-tolerance",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student tests how many brine shrimp eggs hatch at five salinities, with 100 eggs in each container and everything else the same. Why must the containers be kept at the same temperature?",
+   "options": [
+    "So the eggs hatch faster in each of the five containers",
+    "Because brine shrimp have no range of tolerance for temperature",
+    "So the student needs fewer eggs in each container",
+    "So any difference is due to salinity, not temperature"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A constant keeps a second factor from changing the result.",
+    "options": [
+     "The aim is a fair test, not faster hatching.",
+     "They do have one; that is why temperature must be held the same.",
+     "The number of eggs does not depend on the temperature setting.",
+     "Right: holding temperature constant means salinity is the only factor that changes."
+    ]
+   }
+  }
+ ]
+}

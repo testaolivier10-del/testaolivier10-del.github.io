@@ -1,0 +1,72 @@
+{
+ "topic": "tragedy-of-commons",
+ "hook": "Ten families graze cattle on one open pasture. It feeds 100 cows well. One family adds an eleventh cow: it keeps the whole value of that cow, while the grass the cow eats is lost to all ten families. Every family does the same math, the pasture is grazed bare, and soon it feeds far fewer cows than before.",
+ "prereq": [
+  {
+   "q": "What is carrying capacity?",
+   "options": [
+    "The largest population an environment can support over time",
+    "The fastest rate a population can grow",
+    "The number of species in an ecosystem",
+    "The total biomass of the producers"
+   ],
+   "correct": 0,
+   "why": "Carrying capacity is the largest population the resources of an environment can support for a long time.",
+   "review": "carrying-limits"
+  },
+  {
+   "q": "Fish caught for food from the ocean are an example of which ecosystem service?",
+   "options": [
+    "A provisioning service",
+    "A regulating service",
+    "A cultural service",
+    "A supporting service"
+   ],
+   "correct": 0,
+   "why": "Provisioning services are the goods people take from ecosystems: food, water, wood and fiber.",
+   "review": "ecosystem-services"
+  }
+ ],
+ "figure": {
+  "figure": "tragedy-of-commons-pasture",
+  "caption": "One herder keeps all of the gain from an extra cow but pays only a share of the cost, so every herder adds cows and the shared pasture runs down."
+ },
+ "chain": [
+  {
+   "cause": "A resource is open to everyone and owned by no one",
+   "effect": "no single user has a reason to protect it"
+  },
+  {
+   "cause": "Each user keeps the full gain from taking more while the cost is shared",
+   "effect": "every user takes more"
+  },
+  {
+   "cause": "Total use rises above what the resource can renew",
+   "effect": "the resource shrinks, so each user gets less"
+  },
+  {
+   "cause": "Rules that limit or assign use (permits, quotas, fees, community agreements)",
+   "effect": "use falls back to what the resource can renew"
+  }
+ ],
+ "ideas": [
+  "A <b>common resource</b> is shared, hard to fence off, and used up as it is used: open pastures, ocean fisheries, aquifers, the air.",
+  "The <b>tragedy of the commons</b> is not about bad people. Each user acts sensibly for themselves; together they run the resource down.",
+  "The gain from taking more goes to one user; the cost is split among all users. That gap is the cause.",
+  "Fixes change the rewards: limits set by law (permits, quotas, seasons), fees for use, private or assigned rights, or community rules with monitoring and penalties."
+ ],
+ "misconception": {
+  "wrong": "The tragedy of the commons happens because users do not know they are harming the resource.",
+  "right": "Users can know the resource is shrinking and still take more, because each one keeps the whole gain from taking more but pays only a small share of the loss. Rules that change those rewards fix it; information alone often does not."
+ },
+ "check": [
+  "env-tragedy-of-commons-1",
+  "env-tragedy-of-commons-5",
+  "env-tragedy-of-commons-6",
+  "env-tragedy-of-commons-9",
+  "env-tragedy-of-commons-10",
+  "env-tragedy-of-commons-11",
+  "env-tragedy-of-commons-12"
+ ],
+ "summary": "A shared resource that no one controls is overused because each user gains in full from taking more while the cost is spread over everyone. Pastures, fisheries, aquifers and the atmosphere all show it. Solutions change the rewards: limits set by law, fees, assigned rights, or community rules with monitoring."
+}

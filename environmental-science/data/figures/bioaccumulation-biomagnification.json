@@ -1,0 +1,12 @@
+{
+ "bioaccumulation-biomagnification-chain": {
+  "file": "figures/bioaccumulation-biomagnification-chain.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A food chain drawn as a column of levels: water, phytoplankton, zooplankton, small fish, large fish and an osprey at the top. Dots representing a pesticide become denser at each level, and the concentration labels rise from 0.00005 ppm in the water to 50 ppm in the osprey (invented values). A side panel shows bioaccumulation: one fish whose mercury rises with age."
+ }
+}

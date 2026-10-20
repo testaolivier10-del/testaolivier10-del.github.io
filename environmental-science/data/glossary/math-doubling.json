@@ -1,0 +1,11 @@
+{
+ "growth-rate": {
+  "def": "How fast a quantity grows, as a percent of its size per unit of time: a growth rate of 2% a year adds 2 for every 100 each year."
+ },
+ "rule-of-70": {
+  "def": "A shortcut for doubling time: divide 70 by the percent growth rate. At 2% a year, 70 ÷ 2 = 35 years."
+ },
+ "doubling-time": {
+  "def": "The time a quantity growing at a steady percent rate takes to double, about 70 divided by the percent growth rate."
+ }
+}

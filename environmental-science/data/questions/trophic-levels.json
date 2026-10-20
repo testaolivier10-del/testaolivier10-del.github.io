@@ -1,0 +1,470 @@
+{
+ "stimuli": {
+  "trophic-levels-s1": {
+   "kind": "text",
+   "title": "Wolves return to a valley",
+   "passage": "After wolves were brought back to a mountain valley, park staff noticed changes beyond the wolves themselves. Elk, the wolves’ main prey, became fewer and spent less time browsing in open riverbanks, where they were easy to catch. Willow shrubs along the river, which elk had been eating down to stubs, grew taller. A ranger argues that the wolves helped the willows, even though wolves never eat plants. A visiting scientist cautions that a run of wetter years also helped the willows grow, so the wolves may deserve only part of the credit.",
+   "source": "Invented passage for practice, loosely based on reports from western North America."
+  },
+  "trophic-levels-s2": {
+   "kind": "quantitative",
+   "title": "Animals in a pond and what they eat",
+   "invented": true,
+   "table": {
+    "caption": "Diet of five pond animals, from stomach contents (invented data for practice)",
+    "cols": [
+     "Animal",
+     "Main foods"
+    ],
+    "rows": [
+     [
+      "Tadpole",
+      "algae"
+     ],
+     [
+      "Water flea",
+      "algae"
+     ],
+     [
+      "Dragonfly larva",
+      "water fleas, tadpoles"
+     ],
+     [
+      "Sunfish",
+      "dragonfly larvae, water fleas"
+     ],
+     [
+      "Heron",
+      "sunfish, frogs"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-trophic-levels-1",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which organisms make up the first trophic level?",
+   "options": [
+    "Producers such as plants",
+    "Herbivores such as rabbits",
+    "Decomposers such as fungi",
+    "Apex predators such as wolves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trophic level 1 is the producers: they make food from sunlight, and every other level depends on them.",
+    "options": [
+     "Right: producers are level 1.",
+     "Herbivores are primary consumers, level 2.",
+     "Decomposers feed on dead matter from every level.",
+     "Apex predators are at the top."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-2",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A grasshopper eats grass, a mouse eats the grasshopper, and an owl eats the mouse. What is the mouse?",
+   "options": [
+    "A secondary consumer",
+    "A primary consumer",
+    "A producer of food",
+    "A tertiary consumer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Grass (producer) → grasshopper (primary consumer) → mouse (secondary consumer) → owl (tertiary consumer).",
+    "options": [
+     "Right: it eats a primary consumer.",
+     "The grasshopper is the primary consumer.",
+     "The grass is the producer.",
+     "The owl is the tertiary consumer."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-3",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bear eats berries in summer and salmon in fall. How is the bear best described?",
+   "options": [
+    "An omnivore at several levels",
+    "A herbivore at trophic level 2",
+    "A producer that makes its food",
+    "A decomposer of dead salmon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Eating plants and animals makes the bear an omnivore; it is a primary consumer when it eats berries and a higher-level consumer when it eats salmon.",
+    "options": [
+     "Right: an omnivore feeding at several levels.",
+     "A herbivore eats plants alone; the bear also eats fish.",
+     "Bears do not make their own food.",
+     "Decomposers break down dead matter."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-4",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is an apex predator?",
+   "options": [
+    "A top predator with no predators",
+    "Any animal that eats meat as its main food",
+    "A predator that eats both plants and animals",
+    "The most common predator living in an area"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An apex predator sits at the top of the feeding sequence; healthy adults are not hunted by other animals.",
+    "options": [
+     "Right: the top of the web.",
+     "Many carnivores are eaten by larger predators.",
+     "That describes an omnivore.",
+     "Being common is not what defines the top predator."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-5",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a trophic diagram, which way do the arrows point?",
+   "options": [
+    "From the food to the eater",
+    "From the eater back to its food",
+    "From the top predator down to producers",
+    "From decomposers up to the producers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Arrows show the direction energy moves: from the food to the eater.",
+    "options": [
+     "Right: energy flows from food to eater.",
+     "That is backwards; arrows follow energy.",
+     "Energy moves up from producers, not down.",
+     "Decomposers return nutrients, but trophic arrows show who eats whom."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-6",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Algae in a lake are poisoned by a spill. Which group is affected first?",
+   "options": [
+    "Primary consumers",
+    "Apex predators at the top",
+    "Tertiary consumers",
+    "Decomposers living in the mud"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Primary consumers feed directly on producers, so they lose food first; higher levels feel it as the effect moves up.",
+    "options": [
+     "Right: they eat the algae directly.",
+     "Apex predators feel it later, as their prey decline.",
+     "Tertiary consumers are two steps away from the algae.",
+     "Decomposers may even gain at first from dead algae."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-7",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these are heterotrophs (consumers)? Select all that apply.",
+   "options": [
+    "A deer",
+    "An oak tree",
+    "A mushroom",
+    "Seaweed"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Heterotrophs get energy by eating other organisms or their remains. The deer eats plants; the mushroom (a fungus) absorbs food from dead matter.",
+    "options": [
+     "Right: a deer eats plants.",
+     "An oak makes its own food by photosynthesis.",
+     "Right: fungi get food from other organisms.",
+     "Seaweed is an alga and photosynthesizes."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-8",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "specific",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a meadow, snakes eat frogs and frogs eat grasshoppers. Snakes are removed. Build the chain for what happens to the grasshoppers.",
+   "why": {
+    "correct": "Fewer snakes → more frogs survive → frogs eat more grasshoppers → grasshoppers decrease."
+   },
+   "specific": {
+    "frame": "With fewer snakes, the frog population will ___, so more grasshoppers are eaten, and the grasshopper population will ___.",
+    "slots": {
+     "frogs": {
+      "label": "Frogs",
+      "options": [
+       "increase",
+       "decrease"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Snakes eat frogs; removing snakes lets more frogs survive."
+      }
+     },
+     "hoppers": {
+      "label": "Grasshoppers",
+      "options": [
+       "decrease",
+       "increase"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More frogs eat more grasshoppers, so grasshoppers fall."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "snake",
+      "frog",
+      "grasshopper"
+     ]
+    },
+    "model": "With fewer snakes, the frog population will increase, which means more grasshoppers are eaten, so the grasshopper population will decrease."
+   }
+  },
+  {
+   "id": "env-trophic-levels-9",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the ranger’s claim?",
+   "stimulus": "trophic-levels-s1",
+   "options": [
+    "Wolves helped willows by cutting elk browsing.",
+    "Wolves eat willow shrubs when elk are scarce.",
+    "Wetter years were the one reason willows grew.",
+    "Elk became more common after wolves returned."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ranger says the wolves helped the willows even though wolves do not eat plants: by reducing elk and their browsing.",
+    "options": [
+     "Right: an indirect effect through elk.",
+     "The passage says wolves never eat plants.",
+     "That is closer to the scientist’s caution, and the scientist said \"also\".",
+     "The passage says elk became fewer."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-10",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does the scientist say the wolves \"may deserve only part of the credit\"?",
+   "stimulus": "trophic-levels-s1",
+   "options": [
+    "Wetter years could also explain it.",
+    "Wolves in the valley do not eat elk.",
+    "The willows did not actually grow taller.",
+    "Elk eat wolves when the wolves are young."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two changes happened at once, so the willows’ growth cannot be pinned on wolves alone.",
+    "options": [
+     "Right: another cause may share the credit.",
+     "The passage says elk are the wolves’ main prey.",
+     "The passage says the willows grew taller.",
+     "Nothing in the passage says that."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-11",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What trophic level are the willows?",
+   "stimulus": "trophic-levels-s1",
+   "options": [
+    "Producers (level 1)",
+    "Primary consumers (level 2)",
+    "Secondary consumers (level 3)",
+    "Apex predators"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Willows photosynthesize, so they are producers.",
+    "options": [
+     "Right: willows are plants.",
+     "Elk, which eat willows, are primary consumers.",
+     "Wolves eat elk, which puts them at level 3 or higher.",
+     "Wolves are the apex predator here."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-12",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which new evidence would best support the ranger’s claim?",
+   "stimulus": "trophic-levels-s1",
+   "options": [
+    "Willows grew more with wolves than in equally wet places without them.",
+    "Wolves were seen catching and eating elk in the valley in winter.",
+    "Rain and snow fell more often in the valley in those years.",
+    "Elk in the valley also eat grasses and the bark of aspen trees."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A comparison that holds rainfall similar but differs in wolves would separate the wolf effect from the weather.",
+    "options": [
+     "Right: it separates wolves from wet weather.",
+     "This shows predation, which nobody disputes.",
+     "This supports the scientist’s alternative.",
+     "This does not test the willow effect."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-13",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which animals in the table are primary consumers?",
+   "stimulus": "trophic-levels-s2",
+   "options": [
+    "Tadpoles and water fleas",
+    "Dragonfly larvae and sunfish",
+    "Sunfish and herons",
+    "Herons and tadpoles"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both eat algae, a producer.",
+    "options": [
+     "Right: they eat algae.",
+     "Both eat animals, so they are above level 2.",
+     "Both eat animals, so they are above level 2.",
+     "Herons eat animals; only the tadpoles are primary consumers."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-14",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Sunfish eat dragonfly larvae and also water fleas. What does this tell you about the sunfish?",
+   "stimulus": "trophic-levels-s2",
+   "options": [
+    "It feeds at two trophic levels.",
+    "It is a producer that also eats animals.",
+    "It feeds on primary consumers alone.",
+    "It is a primary consumer, like a tadpole."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water fleas are primary consumers (so eating them puts sunfish at level 3) and dragonfly larvae are secondary consumers (so eating them puts sunfish at level 4).",
+    "options": [
+     "Right: levels 3 and 4.",
+     "Sunfish eat animals; they do not photosynthesize.",
+     "Dragonfly larvae are secondary consumers.",
+     "Sunfish do not eat algae."
+    ]
+   }
+  },
+  {
+   "id": "env-trophic-levels-15",
+   "unit": "unit-1",
+   "topic": "trophic-levels",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Herons are removed from the pond. What is the most likely first change?",
+   "stimulus": "trophic-levels-s2",
+   "options": [
+    "Sunfish increase.",
+    "Algae increase.",
+    "Tadpoles disappear.",
+    "Water fleas stop eating."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Herons eat sunfish, so without herons more sunfish survive.",
+    "options": [
+     "Right: the herons’ prey increases first.",
+     "Algae are several steps away; any change there comes later.",
+     "Nothing directly removes tadpoles.",
+     "Water flea feeding does not stop."
+    ]
+   }
+  }
+ ]
+}

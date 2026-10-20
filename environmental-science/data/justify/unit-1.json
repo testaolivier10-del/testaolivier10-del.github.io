@@ -1,0 +1,248 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-light-hypothesis",
+   "topic": "primary-productivity",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about light and pond algae",
+   "context": "<p>A student fills six clear bottles with pond water and algae. Two sit in full sun, two under one layer of shade cloth, and two under three layers. After 24 hours she measures the oxygen each bottle produced, to compare the algae's productivity (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this experiment.",
+   "checklist": [
+    "Names the change the student makes: the amount of light the bottles get",
+    "Names what is measured: the oxygen the algae produce (their productivity)",
+    "Gives a direction: oxygen production will increase or decrease, not just change",
+    "Gives a reason that names photosynthesis or how light drives it"
+   ],
+   "earns": {
+    "answer": "If the bottles receive more light, then the algae will produce more oxygen, because light is the energy source for photosynthesis, which makes oxygen.",
+    "why": "It names the change (more light), the measured variable (oxygen produced), a direction (more) and the reason (light drives photosynthesis)."
+   },
+   "misses": {
+    "answer": "Light will affect how much oxygen the algae make in the bottles.",
+    "why": "\"Affect\" gives no direction, so no result could prove it wrong, and there is no reason."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "the bottles receive more light",
+       "the bottles hold more pond water",
+       "the bottles are left out longer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The water volume is the same in every bottle; the student changes the light.",
+       "2": "Every bottle runs for the same 24 hours; time is held constant."
+      }
+     },
+     "measure": {
+      "label": "then ...",
+      "options": [
+       "the oxygen the algae produce",
+       "the color of the bottles",
+       "the temperature of the room"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Color is not measured; the student records oxygen produced.",
+       "2": "Room temperature is not what the student measures."
+      }
+     },
+     "direction": {
+      "label": "will ...",
+      "options": [
+       "increase",
+       "decrease",
+       "change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "More light gives more energy for photosynthesis, so oxygen should rise, not fall.",
+       "2": "\"Change\" gives no direction; a hypothesis says which way."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "light is the energy source for photosynthesis, which makes oxygen",
+       "algae prefer bright places",
+       "shade cloth adds oxygen to the water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A preference is not a mechanism; name the process light powers.",
+       "2": "Shade cloth adds nothing to the water; it only blocks light."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-legume-control",
+   "topic": "nitrogen-cycle",
+   "practice": "4.C",
+   "skill": "control",
+   "title": "The control in a nitrogen-fixing experiment",
+   "context": "<p>A class grows bean plants in sterile soil. Half the pots get soil bacteria that fix nitrogen in the bean roots; half get none. All pots get the same water, light and soil, and no fertilizer. After six weeks the class weighs the plants (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the control group and <b>describe</b> its purpose. Then <b>identify</b> one variable held constant.",
+   "checklist": [
+    "Names the control: the pots of beans with no nitrogen-fixing bacteria added",
+    "Says what the control is for: a baseline to compare the plants with bacteria against",
+    "Names a constant: water, light, soil type or the amount of fertilizer (none)"
+   ],
+   "earns": {
+    "answer": "The control group is the pots that get no nitrogen-fixing bacteria. Its purpose is to give a baseline: comparing their mass with the plants that got bacteria shows how much growth the bacteria cause. The amount of water each pot gets is held constant.",
+    "why": "It names the control, says what it is for (a baseline that isolates the effect of the bacteria) and names a constant."
+   },
+   "misses": {
+    "answer": "The control is the beans without bacteria, and the water is the same.",
+    "why": "It names the control but never says what it is for, and an exam reader gives a point only when the purpose is stated."
+   },
+   "specific": {
+    "slots": {
+     "control": {
+      "label": "Control group",
+      "options": [
+       "the pots with no nitrogen-fixing bacteria",
+       "the pots with bacteria",
+       "the plants that grow the most"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Those pots get the treatment; the control is left without it.",
+       "2": "The control is set before the results, not chosen from them."
+      }
+     },
+     "purpose": {
+      "label": "Its purpose",
+      "options": [
+       "a baseline to compare against, so any extra growth can be traced to the bacteria",
+       "to make the plants grow faster",
+       "to give the bacteria more food"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The control is not meant to grow faster; it shows growth without the treatment.",
+       "2": "The control pots have no bacteria to feed."
+      }
+     },
+     "constant": {
+      "label": "A constant",
+      "options": [
+       "the amount of water each pot gets",
+       "whether bacteria are added",
+       "the plants' final mass"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is what the class changes, the independent variable.",
+       "2": "That is what the class measures, the dependent variable."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-variables-grassland",
+   "topic": "primary-productivity",
+   "practice": "4.B",
+   "skill": "variables",
+   "title": "The variables in a grassland watering study",
+   "context": "<p>Ecologists water 12 grassland plots with 0, 10, 20 or 30 mm of extra water a week. At the end of summer they clip, dry and weigh the plants in each plot, in grams per square meter (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the independent variable and the dependent variable in this study.",
+   "checklist": [
+    "Independent variable: the amount of extra water added each week (0 to 30 mm)",
+    "Dependent variable: the dry mass of plants per square meter, a measure of productivity",
+    "Uses the variable the study actually measures, not a related one such as rainfall or plant height"
+   ],
+   "earns": {
+    "answer": "The independent variable is the amount of extra water each plot gets per week, from 0 to 30 mm. The dependent variable is the dry plant mass in grams per square meter at the end of summer, which measures the plots' productivity.",
+    "why": "Both variables are named exactly as the study sets and measures them, with their units."
+   },
+   "misses": {
+    "answer": "The independent variable is rain and the dependent variable is how tall the grass grows.",
+    "why": "The ecologists add water; they do not change rainfall. And they weigh dry plants, they do not measure height."
+   },
+   "specific": {
+    "slots": {
+     "iv": {
+      "label": "Independent variable",
+      "options": [
+       "the amount of extra water added each week",
+       "the dry plant mass per square meter",
+       "the number of plots"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is what is measured at the end, the dependent variable.",
+       "2": "The plot count is part of the design, not the variable that is changed."
+      }
+     },
+     "dv": {
+      "label": "Dependent variable",
+      "options": [
+       "the dry plant mass per square meter",
+       "the height of the grass",
+       "the amount of rain that fell"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Height is not measured; the plants are clipped, dried and weighed.",
+       "2": "Rainfall is not measured or controlled; extra water is added."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-top-predator-chain",
+   "topic": "energy-flow",
+   "practice": "1.B",
+   "skill": "chain",
+   "title": "Why there are so few top predators",
+   "prompt": "<b>Explain</b> why a grassland supports thousands of grazing animals but only a few wolves.",
+   "checklist": [
+    "Producers capture energy from sunlight, and only part of it passes to grazers",
+    "At each step most energy is used in respiration and lost as heat; only about 10% is passed on",
+    "So little energy is left at the top level, which can support only a few predators"
+   ],
+   "earns": {
+    "answer": "Grasses capture energy from sunlight. When grazers eat them, only about 10% of the grasses' energy becomes grazer tissue, because most is used in respiration and lost as heat. The same loss happens again when wolves eat the grazers, so the wolves' level gets only about 1% of the grasses' energy, which can support only a few wolves.",
+    "why": "Every link is there: the source, the 10% passed on, why the rest is lost (respiration and heat) and what that means for the top level."
+   },
+   "misses": {
+    "answer": "There are fewer wolves because wolves are at the top of the food chain and need to eat a lot.",
+    "why": "It restates the question. It never says that energy is lost as heat at each level, which is the reason."
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-co2-seasons-trend",
+   "topic": "carbon-cycle",
+   "practice": "5.C",
+   "skill": "trend",
+   "title": "Explaining a seasonal carbon dioxide cycle",
+   "context": "<p>Carbon dioxide in the air at a station in the Northern Hemisphere (invented values for practice, similar in size to real records): May 424 ppm, September 418 ppm, the next May 426 ppm.</p>",
+   "prompt": "<b>Describe</b> the pattern in the data and <b>explain</b> what causes the fall from May to September.",
+   "checklist": [
+    "Describes the pattern with numbers: a fall of 6 ppm from May to September, then a rise to 426 ppm the next May",
+    "Explains the fall: Northern Hemisphere plants photosynthesize in summer and take carbon dioxide out of the air",
+    "Explains the rise: in winter photosynthesis slows while respiration and decomposition keep releasing carbon dioxide"
+   ],
+   "earns": {
+    "answer": "Carbon dioxide fell from 424 ppm in May to 418 ppm in September, a drop of 6 ppm, then rose to 426 ppm the next May. The summer fall happens because Northern Hemisphere plants photosynthesize most in summer and take in more carbon dioxide than respiration releases. In winter, photosynthesis slows while respiration and decomposition continue, so carbon dioxide builds up again.",
+    "why": "It gives the numbers, names the cause of each part of the cycle and the process behind it."
+   },
+   "misses": {
+    "answer": "Carbon dioxide goes down and then up again because of the seasons.",
+    "why": "No numbers, and \"the seasons\" is not a mechanism; it never names photosynthesis or respiration."
+   }
+  }
+ ]
+}

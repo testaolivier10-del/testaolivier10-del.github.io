@@ -1,0 +1,12 @@
+{
+ "population-growth-j-s": {
+  "file": "figures/population-growth-j-s.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two growth curves from the same start of 20 individuals. The exponential J-curve rises faster and faster and leaves the graph above 1,400 at about year 17. The logistic S-curve grows fastest at half the carrying capacity, 500, and levels off at the carrying capacity of 1,000 (dashed line)."
+ }
+}

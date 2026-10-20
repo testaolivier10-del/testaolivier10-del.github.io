@@ -1,0 +1,12 @@
+{
+ "human-impacts-ecosystems-indicators": {
+  "file": "figures/human-impacts-ecosystems-indicators.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three groups of stream invertebrates arranged along a scale from clean to polluted water. Pollution-sensitive: mayfly, stonefly and caddisfly larvae. Somewhat tolerant: dragonfly larvae, crayfish, scuds. Pollution-tolerant: midge larvae, aquatic worms, leeches."
+ }
+}

@@ -1,0 +1,417 @@
+{
+ "stimuli": {
+  "math-doubling-s1": {
+   "kind": "quantitative",
+   "title": "Growth rates of four cities",
+   "invented": true,
+   "table": {
+    "caption": "Population in 2025 and yearly growth rate of four cities (invented data for practice)",
+    "cols": [
+     "City",
+     "Population in 2025",
+     "Growth rate (% per year)"
+    ],
+    "rows": [
+     [
+      "North Port",
+      "400,000",
+      "3.5"
+     ],
+     [
+      "Ridgeview",
+      "1.2 million",
+      "1.4"
+     ],
+     [
+      "Elm Falls",
+      "90,000",
+      "7.0"
+     ],
+     [
+      "Stonebridge",
+      "2.0 million",
+      "0.5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-math-doubling-1",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A population grows 2% a year. Write the setup for its doubling time by the rule of 70, then give the answer.",
+   "why": {
+    "correct": "$\\frac{70}{2} = 35$ years."
+   },
+   "setup": {
+    "answer": "70 / 2",
+    "mustUse": [
+     "70",
+     "2"
+    ],
+    "mistakes": [
+     {
+      "expr": "70 / 0.02",
+      "why": "Use the growth rate as a percent (2), not as a decimal (0.02)."
+     },
+     {
+      "expr": "2 / 70",
+      "why": "The rule of 70 puts 70 on top: 70 divided by the percent growth rate."
+     }
+    ],
+    "then": {
+     "unit": "yr",
+     "units": [
+      "years",
+      "year"
+     ],
+     "from": {
+      "fn": "ruleOf70",
+      "args": [
+       2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 3500,
+       "why": "You divided by 0.02. Use the rate as a percent: 70 / 2."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-math-doubling-2",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town of 50,000 people in 2024 grows 2.5% a year. In what year will it reach about 100,000 people?",
+   "why": {
+    "correct": "Doubling time: $\\frac{70}{2.5} = 28$ years. Year: $2024 + 28 = 2052$."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "doublingYear",
+     "args": [
+      2024,
+      2.5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 28,
+      "why": "28 years is the doubling time. The question asks for the year: add it to 2024."
+     },
+     {
+      "value": 4824,
+      "why": "You divided 70 by 0.025. Use the rate as a percent: 70 / 2.5 = 28 years, so 2024 + 28."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-3",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A lake’s algae population doubles every 14 days. What is its growth rate, in percent per day, by the rule of 70?",
+   "why": {
+    "correct": "Rearrange: rate $= \\frac{70}{\\text{doubling time}} = \\frac{70}{14} = 5\\%$ per day."
+   },
+   "numeric": {
+    "unit": "%",
+    "units": [
+     "% per day",
+     "percent per day",
+     "%/day"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "div",
+     "args": [
+      70,
+      14
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.2,
+      "why": "You divided 14 by 70. Rate = 70 / doubling time."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-4",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A species has 400 individuals and a doubling time of 10 years. If the growth continues, how many will there be after 30 years?",
+   "why": {
+    "correct": "30 years is $\\frac{30}{10} = 3$ doublings: $400 \\times 2 \\times 2 \\times 2 = 3{,}200$."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "afterDoublings",
+     "args": [
+      400,
+      30,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1200,
+      "why": "You multiplied by 3. Three doublings multiply by 2 three times: × 8."
+     },
+     {
+      "value": 2400,
+      "why": "That is 400 × 2 × 3. Each doubling multiplies by 2 again: 400 × 2 × 2 × 2."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-5",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which change would cut a population’s doubling time in half?",
+   "options": [
+    "Doubling its percent growth rate",
+    "Halving its percent growth rate",
+    "Doubling its starting population",
+    "Halving its starting population"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling time = 70 / rate, so twice the rate gives half the time. The starting size does not affect doubling time.",
+    "options": [
+     "Right: twice the rate, half the time.",
+     "A lower rate makes doubling slower.",
+     "Doubling time does not depend on the starting size.",
+     "Doubling time does not depend on the starting size."
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-6",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country’s population was 30 million in 2020 and grows 1.75% a year. In what year will it reach 60 million?",
+   "why": {
+    "correct": "$\\frac{70}{1.75} = 40$ years, so $2020 + 40 = 2060$."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "doublingYear",
+     "args": [
+      2020,
+      1.75
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "40 is the number of years. Add it to 2020 for the year."
+     },
+     {
+      "value": 2024,
+      "why": "You divided 70 by 17.5 instead of 1.75. Check the decimal point: 70 / 1.75 = 40."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-7",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A population of 6 million in 2020 grows 3.5% a year. About what will it be in 2060? Use the rule of 70, and keep the scale word in your answer (for example, 2.5 million).",
+   "why": {
+    "correct": "Doubling time $\\frac{70}{3.5} = 20$ years. 2020 to 2060 is 40 years = 2 doublings: $6 \\times 2 \\times 2 = 24$ million."
+   },
+   "numeric": {
+    "unit": "people",
+    "askUnit": false,
+    "from": {
+     "fn": "afterDoublings",
+     "args": [
+      6000000,
+      40,
+      20
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 12000000,
+      "why": "That is one doubling (to 2040). 2060 is two doublings: 6 × 2 × 2."
+     },
+     {
+      "value": 48000000,
+      "why": "That is three doublings. 40 years at 20 years each is 2 doublings."
+     },
+     {
+      "value": 24,
+      "why": "Keep the scale word: 24 million, not 24."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-8",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the doubling time of North Port?",
+   "stimulus": "math-doubling-s1",
+   "why": {
+    "correct": "$\\frac{70}{3.5} = 20$ years."
+   },
+   "numeric": {
+    "unit": "yr",
+    "units": [
+     "years",
+     "year"
+    ],
+    "tol": 0.05,
+    "from": {
+     "fn": "ruleOf70",
+     "args": [
+      3.5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2045,
+      "why": "That is the year it doubles. The question asks for the doubling time in years."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-9",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In what year will Ridgeview reach about 2.4 million people?",
+   "stimulus": "math-doubling-s1",
+   "why": {
+    "correct": "2.4 million is double 1.2 million. $\\frac{70}{1.4} = 50$ years, so $2025 + 50 = 2075$."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "doublingYear",
+     "args": [
+      2025,
+      1.4
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "50 years is the doubling time. Add it to 2025 for the year."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-10",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which city will double its population soonest?",
+   "stimulus": "math-doubling-s1",
+   "options": [
+    "Elm Falls",
+    "North Port",
+    "Ridgeview",
+    "Stonebridge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The highest growth rate gives the shortest doubling time: Elm Falls $\\frac{70}{7.0} = 10$ years.",
+    "options": [
+     "Right: 10 years.",
+     "North Port: 20 years.",
+     "Ridgeview: 50 years.",
+     "Stonebridge: 140 years, even though it is the largest."
+    ]
+   }
+  },
+  {
+   "id": "env-math-doubling-11",
+   "unit": "skills-math",
+   "topic": "math-doubling",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If Elm Falls keeps its growth rate, about how many people will it have in 2045?",
+   "stimulus": "math-doubling-s1",
+   "why": {
+    "correct": "Doubling time 10 years; 2025 to 2045 is 20 years = 2 doublings: $90{,}000 \\times 2 \\times 2 = 360{,}000$."
+   },
+   "numeric": {
+    "tol": 0.5,
+    "from": {
+     "fn": "afterDoublings",
+     "args": [
+      90000,
+      20,
+      {
+       "fn": "ruleOf70",
+       "args": [
+        7
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 180000,
+      "why": "That is one doubling (to 2035). 2045 is two doublings away."
+     }
+    ]
+   }
+  }
+ ]
+}

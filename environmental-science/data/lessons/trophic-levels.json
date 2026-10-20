@@ -1,0 +1,68 @@
+{
+ "topic": "trophic-levels",
+ "hook": "In a meadow, energy from the sun passes from grass to a grasshopper to a frog to a snake to a hawk. Each step is a trophic level, a rung on the ladder of who eats whom. Knowing an organism’s level tells you where its energy comes from and what happens to it when the level below shrinks.",
+ "prereq": [
+  {
+   "q": "What is a producer?",
+   "options": [
+    "An organism that makes its own food from light",
+    "An animal that eats plants",
+    "A decomposer",
+    "A predator"
+   ],
+   "correct": 0,
+   "why": "Producers photosynthesize.",
+   "review": "primary-productivity"
+  },
+  {
+   "q": "What is predation?",
+   "options": [
+    "One organism kills and eats another",
+    "Two species both benefit",
+    "One species lives on another without harming it",
+    "Two species share a resource"
+   ],
+   "correct": 0,
+   "why": "Predation is +/−.",
+   "review": "intro-ecosystems"
+  }
+ ],
+ "figure": {
+  "figure": "trophic-levels-meadow",
+  "caption": "Trophic levels in a meadow, from producers to an apex predator."
+ },
+ "chain": [
+  {
+   "cause": "Producers capture energy from sunlight",
+   "effect": "they form trophic level 1"
+  },
+  {
+   "cause": "Primary consumers (herbivores) eat producers",
+   "effect": "they form level 2"
+  },
+  {
+   "cause": "Secondary and tertiary consumers eat the level below",
+   "effect": "they form levels 3 and 4, up to an apex predator"
+  }
+ ],
+ "ideas": [
+  "A <b>trophic level</b> is an organism’s position in the feeding sequence: producers are 1, primary <b>consumers</b> 2, secondary 3, tertiary 4.",
+  "<b>Herbivores</b> eat producers; carnivores eat animals; omnivores eat both and feed at more than one level.",
+  "An <b>apex predator</b> is at the top with no natural predators as an adult.",
+  "Arrows point from food to eater, the direction energy moves."
+ ],
+ "misconception": {
+  "wrong": "Arrows in a food diagram point from the predator to what it eats.",
+  "right": "Arrows show where the energy goes: from the food to the eater. Grass → grasshopper means the grasshopper eats the grass."
+ },
+ "check": [
+  "env-trophic-levels-2",
+  "env-trophic-levels-5",
+  "env-trophic-levels-9",
+  "env-trophic-levels-10",
+  "env-trophic-levels-11",
+  "env-trophic-levels-13",
+  "env-trophic-levels-14"
+ ],
+ "summary": "Trophic levels sort organisms by how they get energy. Producers (level 1) make food from light; primary consumers (herbivores, level 2) eat producers; secondary and tertiary consumers eat the levels below; an apex predator is at the top. Omnivores feed at more than one level. Arrows point from food to eater, so a change at one level ripples to the others."
+}

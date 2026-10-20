@@ -5,7 +5,7 @@
 /* ------------------------------------------------------------ chrome diet */
 body.ls-on #site-header, body.ls-on .course-nav, body.ls-on .bottom-nav, body.ls-on .bottom-sheet,
 body.ls-on .bottom-scrim, body.ls-on .site-crumb, body.ls-on [data-crumb], body.ls-on .cx-crumb,
-body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
+body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on .env-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
 body.ls-on .lp-launch, body.ls-on .lp-tip, body.ls-on .pt-fab{display:none !important;}
 body.ls-on{padding-bottom:0 !important;}
 body.ls-on .ls-host{max-width:none;padding:0;margin:0;}
@@ -138,6 +138,8 @@ html.ls-lock{overflow:hidden;}
 .ls-linkrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:44px;padding:0 14px;border:0;border-radius:14px;
   background:var(--surface2);color:var(--ink);font:700 var(--ls-m) var(--font-ui);cursor:pointer;text-align:left;}
 .ls-linkrow .ls-k{font-size:var(--ls-s);font-weight:800;color:var(--muted);margin-right:8px;}
+/* Small grey keys reach 4.5:1+ on dark pills (were 4.2-4.4:1 with --muted). */
+:root[data-theme="dark"] .ls-pill-k,:root[data-theme="dark"] .ls-linkrow .ls-k{color:#B4C6C0;}
 .ls-linkrow .ls-i{width:18px;height:18px;color:var(--muted);}
 
 /* ---------------------------------------------- Why / Details sheet */
@@ -195,14 +197,14 @@ html.ls-lock{overflow:hidden;}
 .ls-step-nav .ls-step-next[hidden]{display:none;}
 
 /* ---------------------------------------------- first-run hint */
-.ls-halo{position:absolute;z-index:70;pointer-events:none;border-radius:999px;
+.ls-halo{position:absolute;z-index:70;pointer-events:none;border-radius:999px;box-sizing:border-box;max-width:100vw;
   box-shadow:0 0 0 3px var(--cink),0 0 0 10px color-mix(in srgb, var(--cink) 16%, transparent),0 0 0 20px color-mix(in srgb, var(--cink) 7%, transparent);
   animation:ls-pulse 1.8s ease-in-out infinite;}
 .ls-halo.is-static{animation:none;}
 @keyframes ls-pulse{0%,100%{box-shadow:0 0 0 3px var(--cink),0 0 0 8px color-mix(in srgb, var(--cink) 18%, transparent),0 0 0 14px color-mix(in srgb, var(--cink) 6%, transparent);}
   50%{box-shadow:0 0 0 3px var(--cink),0 0 0 12px color-mix(in srgb, var(--cink) 12%, transparent),0 0 0 24px color-mix(in srgb, var(--cink) 4%, transparent);}}
 @media (prefers-reduced-motion: reduce){.ls-halo{animation:none;} .ls-sheet{transition:none;} .ls-dots i{transition:none;}}
-.ls-coach{position:absolute;z-index:71;pointer-events:none;display:flex;align-items:center;gap:8px;max-width:min(320px,calc(100vw - 16px));
+.ls-coach{position:absolute;z-index:71;pointer-events:none;display:flex;align-items:center;gap:8px;max-width:min(320px,calc(100vw - 16px));box-sizing:border-box;overflow-wrap:anywhere;
   padding:8px 12px;border-radius:12px;background:var(--ink);color:var(--paper);font:800 var(--ls-s)/1.3 var(--font-ui);box-shadow:var(--elev-2);}
 .ls-coach .ls-i{width:18px;height:18px;}
 .ls-coach::after{content:"";position:absolute;bottom:-5px;left:var(--ax,24px);width:12px;height:12px;background:var(--ink);transform:rotate(45deg);border-radius:2px;}

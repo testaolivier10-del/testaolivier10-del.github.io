@@ -1,0 +1,29 @@
+{
+ "primary-pollutant": {
+  "def": "A pollutant released directly into the air by its source, such as carbon monoxide from a tailpipe or sulfur dioxide from a coal plant's smokestack."
+ },
+ "secondary-pollutant": {
+  "def": "A pollutant that forms in the air when primary pollutants react with each other, with oxygen, water or sunlight. Ozone near the ground and sulfuric acid are examples."
+ },
+ "criteria-pollutant": {
+  "def": "One of six common air pollutants the EPA sets national limits for under the Clean Air Act: carbon monoxide, lead, nitrogen dioxide, ozone, particulate matter and sulfur dioxide."
+ },
+ "clean-air-act": {
+  "def": "The main United States law on air pollution (1970, with later amendments). It lets the EPA set air quality standards for the criteria pollutants and limit what cars, power plants and factories release."
+ },
+ "nitrogen-oxides": {
+  "def": "NO and NO2, together written NOx. They form when nitrogen and oxygen in the air combine at the high temperatures of engines and power plants. NO2 is a brownish gas."
+ },
+ "sulfur-dioxide": {
+  "def": "SO2, a gas released mainly when coal and other sulfur-containing fuels burn. It irritates the airways and reacts in the air to form sulfuric acid."
+ },
+ "carbon-monoxide": {
+  "def": "CO, a colorless, odorless gas from incomplete burning of fuel. It binds to hemoglobin in the blood and reduces the oxygen the blood can carry."
+ },
+ "particulate-matter": {
+  "def": "Tiny solid or liquid particles in the air, such as soot, dust and smoke. PM10 are 10 micrometers or smaller; PM2.5 are 2.5 micrometers or smaller and reach deepest into the lungs."
+ },
+ "voc": {
+  "def": "A volatile organic compound: a carbon-based chemical that evaporates easily, such as gasoline vapor, paint fumes and solvents. Trees also release some VOCs."
+ }
+}

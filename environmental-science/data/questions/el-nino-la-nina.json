@@ -1,0 +1,614 @@
+{
+ "stimuli": {
+  "el-nino-la-nina-s1": {
+   "kind": "visual",
+   "title": "Pacific sea surface temperatures in El Niño and La Niña",
+   "figure": "el-nino-la-nina-sst-map"
+  },
+  "el-nino-la-nina-s2": {
+   "kind": "quantitative",
+   "title": "Sea surface temperature and the anchovy catch off Peru (catch in million metric tons)",
+   "invented": true,
+   "plot": {
+    "label": "Dual-axis line graph of sea surface temperature off Peru and the anchovy catch over eight years, invented data",
+    "kind": "dual",
+    "width": 520,
+    "series": [
+     {
+      "name": "Water temp.",
+      "axis": "left",
+      "points": [
+       [
+        1,
+        19.5
+       ],
+       [
+        2,
+        19.8
+       ],
+       [
+        3,
+        23.4
+       ],
+       [
+        4,
+        20.1
+       ],
+       [
+        5,
+        18.6
+       ],
+       [
+        6,
+        19.6
+       ],
+       [
+        7,
+        23
+       ],
+       [
+        8,
+        19.4
+       ]
+      ]
+     },
+     {
+      "name": "Catch",
+      "axis": "right",
+      "points": [
+       [
+        1,
+        6.2
+       ],
+       [
+        2,
+        6
+       ],
+       [
+        3,
+        1.8
+       ],
+       [
+        4,
+        4.9
+       ],
+       [
+        5,
+        6.8
+       ],
+       [
+        6,
+        6.1
+       ],
+       [
+        7,
+        2.4
+       ],
+       [
+        8,
+        5.7
+       ]
+      ]
+     }
+    ],
+    "y": [
+     16,
+     26
+    ],
+    "yRight": [
+     0,
+     8
+    ],
+    "xLabel": "Year",
+    "yLabel": "Water temperature (°C)",
+    "yRightLabel": "Catch (million t)"
+   }
+  },
+  "el-nino-la-nina-s3": {
+   "kind": "text",
+   "title": "A forecast bulletin",
+   "source": "Invented passage for practice, in the style of a seasonal climate outlook.",
+   "passage": "Over the past three months the trade winds across the central Pacific have been well below normal, and surface water from the date line to the coast of South America is now 1.5 °C warmer than average. Forecasters expect these conditions to last through the coming winter. Coastal Peru and Ecuador should prepare for heavy rain and flooding. Parts of Indonesia and eastern Australia face a higher risk of drought and wildfire. In the United States, the southern states are likely to have a wetter than normal winter. Fishing fleets off Peru should expect smaller catches."
+  }
+ },
+ "items": [
+  {
+   "id": "env-el-nino-la-nina-1",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "During an El Niño, what happens to the trade winds over the equatorial Pacific?",
+   "options": [
+    "They weaken",
+    "They strengthen",
+    "They reverse and blow toward the poles",
+    "They stay exactly as in a normal year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In an El Niño the trade winds weaken (or even reverse in places), so they stop holding warm water in the western Pacific.",
+    "options": [
+     "Right: weaker trade winds mark an El Niño.",
+     "Stronger trade winds are a La Niña.",
+     "The trade winds blow toward the west and the equator; they do not turn toward the poles.",
+     "The change in the trade winds is what defines the event."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-2",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What normally causes upwelling off the coast of Peru?",
+   "options": [
+    "Winds push surface water west; cold water rises",
+    "Warm water sinks along the coast, pushing cold water up",
+    "Rivers from the Andes pour cold water into the coastal sea",
+    "Melting glaciers send cold water down along the coast"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The trade winds drag warm surface water away from South America toward the west. Cold, nutrient-rich water from below rises to take its place: upwelling.",
+    "options": [
+     "Right: wind moves surface water away, and deep water rises to replace it.",
+     "Warm water is less dense, so it does not sink below cold water.",
+     "Rivers add only a little fresh water near their mouths.",
+     "Glacier melt does not drive the upwelling off Peru."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-3",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does the fish catch off Peru often drop during an El Niño?",
+   "options": [
+    "Weaker upwelling brings up fewer nutrients",
+    "The water turns too cold for the anchovies to survive",
+    "Stronger trade winds make the sea too rough for boats",
+    "Heavy rain makes the coastal ocean too fresh for the fish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Weak upwelling brings fewer nutrients up. With less phytoplankton at the base of the food web, the anchovies and the animals that eat them decline.",
+    "options": [
+     "Right: less upwelling means fewer nutrients, less plankton and less food.",
+     "El Niño makes the water off Peru warmer, not colder.",
+     "Trade winds weaken during El Niño.",
+     "Coastal rain does not make the open ocean fresh enough to kill fish."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-4",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "During a La Niña, which conditions are most likely in Indonesia and in coastal Peru?",
+   "options": [
+    "Heavy rain in Indonesia; dry in Peru",
+    "Drought in Indonesia; heavy rain in Peru",
+    "Drought in both Indonesia and Peru",
+    "Heavy rain in both Indonesia and Peru"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In La Niña the strong trade winds pile warm water and rising, rainy air even farther west, over Indonesia, while the cold eastern Pacific keeps Peru dry.",
+    "options": [
+     "Right: La Niña makes the west wetter and the east drier.",
+     "That is the El Niño pattern.",
+     "La Niña brings extra rain to the western Pacific.",
+     "La Niña keeps the eastern Pacific cold and dry."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-5",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the El Niño-Southern Oscillation (ENSO)?",
+   "options": [
+    "A natural cycle of winds and ocean temperatures in the Pacific",
+    "A permanent warming of the Pacific caused by burning fossil fuels",
+    "A seasonal current that flows around Antarctica each winter",
+    "A wind that blows from Australia to Peru each December"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ENSO swings between El Niño, neutral and La Niña every 2 to 7 years. The \"Southern Oscillation\" is the seesaw in air pressure between the western and eastern Pacific that goes with it.",
+    "options": [
+     "Right: ENSO is a natural ocean-atmosphere cycle.",
+     "ENSO is natural and comes and goes; it has been recorded for centuries.",
+     "Currents around Antarctica are not ENSO.",
+     "ENSO is irregular, every 2 to 7 years, not a yearly wind."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-6",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A climate scientist says El Niño can make Earth's average surface temperature for a year a little higher. Which explanation fits?",
+   "options": [
+    "Warm water spreads over the Pacific and heats the air",
+    "El Niño releases carbon dioxide into the air from the ocean floor",
+    "El Niño moves Earth a little closer to the Sun for a year",
+    "El Niño makes the stratosphere absorb more ultraviolet light"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "During El Niño, warm water that was piled up in the west spreads across the tropical Pacific surface, and that large warm surface gives heat to the atmosphere.",
+    "options": [
+     "Right: a large warm ocean surface warms the air above it.",
+     "The extra warmth comes from heat moving from ocean to air, not a release of carbon dioxide from the seafloor.",
+     "ENSO has nothing to do with Earth's orbit.",
+     "ENSO is a tropical ocean and lower atmosphere cycle, not a stratosphere change."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-7",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the El Niño map, where is the water warmer than average?",
+   "stimulus": "el-nino-la-nina-s1",
+   "options": [
+    "Along the equator, east to South America",
+    "Around Australia and the islands of Indonesia",
+    "In the North Pacific, near the coast of Alaska",
+    "Right along the coast of Australia and nowhere else"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The El Niño map shows a long band of warmer-than-average water along the equator, warmest near Peru.",
+    "options": [
+     "Right: the warm band runs along the equator to South America.",
+     "The far western Pacific is slightly cooler than average in the El Niño map.",
+     "The map shows the tropical Pacific, not the North Pacific.",
+     "The warm water is in the central and eastern Pacific."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-8",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is the eastern Pacific cooler than average in the La Niña map?",
+   "stimulus": "el-nino-la-nina-s1",
+   "options": [
+    "Stronger trade winds push warm water west",
+    "Weaker trade winds let the warm water spread east",
+    "Melting ice near Peru cools the surface water there",
+    "More sunlight reaches the western Pacific than the east"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In La Niña the trade winds blow harder, pushing warm surface water west and pulling up more cold water off South America.",
+    "options": [
+     "Right: strong trade winds and strong upwelling cool the east.",
+     "Weaker trade winds and warm water moving east describe El Niño.",
+     "There is no ice near Peru to cool the ocean.",
+     "Sunlight is similar across the tropical Pacific; winds explain the pattern."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-9",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Using the maps, which change would a fishing community in Peru welcome?",
+   "stimulus": "el-nino-la-nina-s1",
+   "options": [
+    "A shift from El Niño to La Niña",
+    "A shift from La Niña to El Niño",
+    "Warmer water spreading in close to its coast",
+    "Weaker trade winds over the equator for a year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "La Niña cools the water off Peru with strong upwelling, which brings nutrients up and supports large fish populations.",
+    "options": [
+     "Right: La Niña brings stronger upwelling and more food for fish.",
+     "Moving to El Niño would weaken upwelling and cut the catch.",
+     "Warm water near Peru signals weak upwelling and fewer fish.",
+     "Weaker trade winds reduce upwelling."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-10",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In the maps, the far western Pacific changes in the opposite direction from the eastern Pacific. Why?",
+   "stimulus": "el-nino-la-nina-s1",
+   "options": [
+    "The same pool of warm water shifts east or west",
+    "The west and the east get opposite seasons at the same time",
+    "The western Pacific is in the Southern Hemisphere; the east is not",
+    "Undersea volcanoes heat the western Pacific during La Niña"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The trade winds control where the pool of warm water sits. When they weaken, it spreads east and the west cools a little; when they strengthen, it is pushed farther west.",
+    "options": [
+     "Right: the same pool of warm water shifts east or west.",
+     "Both sides of the tropical Pacific are near the equator and share seasons.",
+     "Both maps show the band crossing the equator in the east and the west.",
+     "Volcanoes do not drive ENSO."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-11",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What relationship does the graph show?",
+   "stimulus": "el-nino-la-nina-s2",
+   "options": [
+    "Warmer years have smaller catches",
+    "Warmer years have larger catches",
+    "The catch and the water temperature are unrelated",
+    "The catch rises the year before each warm year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In years 3 and 7 the water is warmest (about 23 °C) and the catch is smallest (1.8 and 2.4 million metric tons).",
+    "options": [
+     "Right: warm years and low catches go together.",
+     "The warmest years have the lowest catches.",
+     "The two lines move in opposite directions.",
+     "The catch is about normal the year before each warm year and falls in the warm year itself."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-12",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the graph. Write the setup for the percent change in the anchovy catch from year 2 (6.0 million metric tons) to year 3 (1.8 million metric tons), then the answer.",
+   "stimulus": "el-nino-la-nina-s2",
+   "why": {
+    "correct": "$\\frac{1.8 - 6.0}{6.0} \\times 100 = -70\\%$. The catch fell by 70%."
+   },
+   "setup": {
+    "answer": "(1.8 - 6.0) / 6.0 * 100",
+    "mustUse": [
+     "1.8",
+     "6"
+    ],
+    "mistakes": [
+     {
+      "expr": "(1.8 - 6.0) / 1.8 * 100",
+      "why": "Divide by the starting value, 6.0 (year 2), not by 1.8."
+     },
+     {
+      "expr": "(6.0 - 1.8) / 6.0 * 100",
+      "why": "Use new minus old: (1.8 - 6.0). The catch fell, so the change is negative."
+     },
+     {
+      "expr": "1.8 - 6.0 / 6.0 * 100",
+      "why": "Put brackets around the difference before dividing."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       6,
+       1.8
+      ]
+     },
+     "unit": "%",
+     "mistakes": [
+      {
+       "value": -0.7,
+       "why": "Multiply by 100: −0.7 is −70%."
+      },
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         1.8,
+         6
+        ]
+       },
+       "why": "That is the change from 1.8 back up to 6.0. Start at year 2."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-13",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the graph. By how many degrees Celsius did the sea surface temperature rise from year 2 to year 3?",
+   "stimulus": "el-nino-la-nina-s2",
+   "why": {
+    "correct": "$23.4\\,\\text{°C} - 19.8\\,\\text{°C} = 3.6\\,\\text{°C}$ warmer."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      23.4,
+      19.8
+     ]
+    },
+    "unit": "°C",
+    "units": [
+     "C",
+     "degrees C"
+    ],
+    "mistakes": [
+     {
+      "value": 43.2,
+      "why": "You added the two temperatures. The rise is the difference: 23.4 − 19.8."
+     },
+     {
+      "value": -3.6,
+      "why": "The water warmed, so the rise is positive: 23.4 − 19.8 = 3.6 °C."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-14",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Based on the graph, in which years was there most likely an El Niño?",
+   "stimulus": "el-nino-la-nina-s2",
+   "options": [
+    "Years 3 and 7",
+    "Years 1 and 5",
+    "Years 4 and 8",
+    "Years 2 and 6"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An El Niño brings unusually warm water to the coast of Peru and weak upwelling. Years 3 and 7 have the highest temperatures and the lowest catches.",
+    "options": [
+     "Right: the warm, low-catch years fit El Niño.",
+     "Year 5 is the coolest year with the biggest catch, more like La Niña.",
+     "Years 4 and 8 are near normal.",
+     "Years 2 and 6 are near normal."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-15",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What condition is the bulletin describing?",
+   "stimulus": "el-nino-la-nina-s3",
+   "options": [
+    "An El Niño",
+    "A La Niña",
+    "A normal year",
+    "A rain shadow"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Weak trade winds and warmer-than-average water from the date line to South America, with rain in Peru and drought in Indonesia, are the signs of El Niño.",
+    "options": [
+     "Right: these are El Niño conditions.",
+     "La Niña has stronger trade winds and cooler water in the eastern Pacific.",
+     "The bulletin describes winds and temperatures well away from normal.",
+     "A rain shadow is caused by mountains, not by Pacific winds."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-16",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which evidence in the bulletin most directly supports the forecast of smaller catches off Peru?",
+   "stimulus": "el-nino-la-nina-s3",
+   "options": [
+    "\"surface water ... is now 1.5 °C warmer than average\"",
+    "\"Parts of Indonesia and eastern Australia face a higher risk of drought\"",
+    "\"the southern states are likely to have a wetter than normal winter\"",
+    "\"Forecasters expect these conditions to last through the coming winter\""
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Warm water off South America means weak upwelling of cold, nutrient-rich water, so less food for fish.",
+    "options": [
+     "Right: warm water signals weak upwelling and fewer nutrients.",
+     "Drought in Indonesia is a separate effect, far from Peru.",
+     "Rain in the United States does not explain the fish catch.",
+     "How long conditions last does not explain why catches fall."
+    ]
+   }
+  },
+  {
+   "id": "env-el-nino-la-nina-17",
+   "unit": "unit-4",
+   "topic": "el-nino-la-nina",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The bulletin advises Peru to prepare for flooding and Indonesia for drought. What assumption links these two warnings?",
+   "stimulus": "el-nino-la-nina-s3",
+   "options": [
+    "The rainy zone moves east with the warm water",
+    "Rain falls evenly across the Pacific in each ENSO phase",
+    "Droughts and floods are caused by the same local storms",
+    "Peru and Indonesia lie in the same large watershed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Warm water feeds rising air and heavy rain. When El Niño moves the warm water east, the rain follows it toward Peru and leaves the western Pacific drier.",
+    "options": [
+     "Right: the rain follows the warm water east.",
+     "The bulletin's two warnings only make sense if rain shifts, not if it stays even.",
+     "The warnings are for places thousands of kilometers apart, not one storm.",
+     "They are on opposite sides of the Pacific, not in one watershed."
+    ]
+   }
+  }
+ ]
+}

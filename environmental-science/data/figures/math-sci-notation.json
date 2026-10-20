@@ -1,0 +1,12 @@
+{
+ "math-sci-notation-prefixes": {
+  "file": "figures/math-sci-notation-prefixes.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 368,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A table of metric prefixes. Giga, G, is 10 to the 9th, a billion. Mega, M, is 10 to the 6th, a million. Kilo, k, is 10 to the 3rd, a thousand. The base unit is 10 to the 0, one. Centi, c, is 10 to the minus 2, a hundredth. Milli, m, is 10 to the minus 3, a thousandth. Micro is 10 to the minus 6, a millionth. Example: 1 kilogram is 1,000 grams, so 2.5 kilograms is 2,500 grams."
+ }
+}

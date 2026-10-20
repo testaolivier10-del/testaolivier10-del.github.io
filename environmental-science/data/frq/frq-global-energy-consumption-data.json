@@ -1,0 +1,273 @@
+{
+ "id": "frq-global-energy-consumption-data",
+ "type": "data",
+ "points": 10,
+ "title": "Energy use per person in two countries, 1990 to 2020",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "global-energy-consumption",
+  "renewable-nonrenewable",
+  "energy-conservation"
+ ],
+ "practices": [
+  "5.A",
+  "5.B",
+  "5.C",
+  "5.E",
+  "6.B",
+  "7.E"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "Energy use per person and fuel mix, two countries",
+  "invented": true,
+  "plot": {
+   "label": "Energy use per person in gigajoules for a developing country A and a developed country B, 1990 to 2020, invented data for practice",
+   "kind": "line",
+   "width": 560,
+   "height": 280,
+   "xLabel": "Year",
+   "yLabel": "Energy use (GJ per person per year)",
+   "x": [
+    1990,
+    2020
+   ],
+   "y": [
+    0,
+    400
+   ],
+   "series": [
+    {
+     "name": "Country A (developing)",
+     "points": [
+      [
+       1990,
+       20
+      ],
+      [
+       2000,
+       32
+      ],
+      [
+       2010,
+       55
+      ],
+      [
+       2020,
+       80
+      ]
+     ]
+    },
+    {
+     "name": "Country B (developed)",
+     "points": [
+      [
+       1990,
+       320
+      ],
+      [
+       2000,
+       330
+      ],
+      [
+       2010,
+       305
+      ],
+      [
+       2020,
+       270
+      ]
+     ]
+    }
+   ]
+  },
+  "text": "In 2020, country A got 75% of its energy from coal and oil and 10% from wind and solar; country B got 60% from oil and natural gas and 20% from wind, solar and moving water. Country A's population is 1,200 million; country B's is 50 million."
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Describe</b> the trend in energy use per person in each country from 1990 to 2020. Use data from the graph.",
+   "rubric": [
+    {
+     "point": "Country A: energy use per person increased, from 20 GJ in 1990 to 80 GJ in 2020.",
+     "accept": [
+      "rose fourfold, from 20 to 80 GJ per person"
+     ]
+    },
+    {
+     "point": "Country B: energy use per person rose slightly to 330 GJ in 2000 and then decreased to 270 GJ in 2020 (overall decrease).",
+     "accept": [
+      "fell from about 320 to 270 GJ per person"
+     ]
+    }
+   ],
+   "sample": "Country A's energy use per person increased steadily, from 20 GJ per person in 1990 to 80 GJ per person in 2020. Country B's rose slightly to 330 GJ per person in 2000, then decreased to 270 GJ per person in 2020."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the percent change in energy use per person in country A from 1990 to 2020. Show your setup.",
+   "rubric": [
+    {
+     "point": "Correct setup with brackets: (80 - 20) / 20 × 100.",
+     "accept": [
+      "equivalent setup with units"
+     ]
+    },
+    {
+     "point": "Correct answer: a 300% increase.",
+     "accept": [
+      "+300%"
+     ]
+    }
+   ],
+   "sample": "Percent change = (80 GJ - 20 GJ) / 20 GJ × 100 = 300%. Energy use per person in country A increased by 300%.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "(80 - 20) / 20 * 100",
+     "mustUse": [
+      "80",
+      "20"
+     ],
+     "mistakes": [
+      {
+       "expr": "(80 - 20) / 80 * 100",
+       "why": "Divide by the 1990 value (20), the starting point."
+      },
+      {
+       "expr": "80 / 20 * 100",
+       "why": "That gives 400%, the 2020 value as a percent of 1990. Subtract the old value first."
+      }
+     ],
+     "then": {
+      "unit": "%",
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        20,
+        80
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 400,
+        "why": "That is 80 as a percent of 20. Percent change is (80 - 20) / 20 × 100 = 300%."
+       },
+       {
+        "value": 75,
+        "why": "You divided by the 2020 value. Divide by the 1990 value, 20."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "In 2020, country B still used more energy per person than country A. <b>Make a claim</b> about which country used more energy in total in 2020, and <b>justify</b> it with a calculation.",
+   "rubric": [
+    {
+     "point": "Claim: country A used more energy in total.",
+     "accept": [
+      "A's total is larger"
+     ]
+    },
+    {
+     "point": "Justification with a calculation: A = 80 GJ × 1,200 million = 96,000 million GJ (96 EJ); B = 270 GJ × 50 million = 13,500 million GJ (13.5 EJ).",
+     "accept": [
+      "A uses about 7 times as much in total",
+      "total = per person × population, with numbers"
+     ]
+    }
+   ],
+   "sample": "Country A used more energy in total. Total = use per person × population. Country A: 80 GJ × 1,200,000,000 people = 96,000,000,000 GJ (96 EJ). Country B: 270 GJ × 50,000,000 people = 13,500,000,000 GJ (13.5 EJ). A's total is about 7 times B's, because its population is 24 times larger.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "from": {
+      "fn": "div",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         80,
+         1200
+        ]
+       },
+       {
+        "fn": "mul",
+        "args": [
+         270,
+         50
+        ]
+       }
+      ]
+     },
+     "unit": "",
+     "tol": 0.05,
+     "mistakes": [
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         80,
+         270
+        ]
+       },
+       "why": "That compares use per person. Multiply each by its population first: 80 × 1,200 and 270 × 50 (in millions)."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Explain</b> one reason country A's energy use per person rose between 1990 and 2020, and one reason country B's fell after 2000.",
+   "rubric": [
+    {
+     "point": "Country A: industrialization and rising incomes added factories, vehicles, appliances and electricity access, each of which uses energy.",
+     "accept": [
+      "economic development",
+      "more people gained electricity and cars"
+     ]
+    },
+    {
+     "point": "Country B: greater energy efficiency (efficient appliances, insulation, vehicle fuel economy), conservation, or a shift from heavy industry to services lowered use per person.",
+     "accept": [
+      "efficiency standards",
+      "moving factories overseas"
+     ]
+    }
+   ],
+   "sample": "Country A's use rose because it industrialized: as incomes grew, more homes gained electricity and appliances, and more people bought cars, all of which need energy. Country B's use fell after 2000 because of energy efficiency, such as LED lighting, better insulation and higher vehicle fuel economy standards, which give the same services with less energy."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "Country A expects its energy use per person to keep rising. <b>Identify</b> one environmental consequence if this growth is met mostly with coal, and <b>propose</b> a solution that would let country A meet its demand with less of that consequence.",
+   "rubric": [
+    {
+     "point": "Identifies a consequence of burning more coal: more carbon dioxide and faster climate change, or more air pollution (smoke, soot and fine particles) harming health.",
+     "accept": [
+      "more air pollution",
+      "higher carbon dioxide emissions"
+     ]
+    },
+    {
+     "point": "Proposes a fitting solution with how it works: building wind and solar to supply new demand, which releases no carbon dioxide while running; or efficiency standards so each person needs less energy.",
+     "accept": [
+      "a policy requiring a share of new electricity from renewables",
+      "switching new plants from coal to natural gas, which releases about half the carbon dioxide per unit of energy"
+     ]
+    }
+   ],
+   "sample": "If the growth is met with coal, carbon dioxide emissions will rise sharply, speeding climate change, and air pollution from coal smoke will harm people's lungs. Country A could build wind and solar farms to supply most new demand, because they make electricity without burning fuel, so they add supply without adding carbon dioxide or smoke."
+  }
+ ]
+}

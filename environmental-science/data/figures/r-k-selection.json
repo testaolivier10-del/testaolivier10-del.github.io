@@ -1,0 +1,12 @@
+{
+ "r-k-selection-traits": {
+  "file": "figures/r-k-selection-traits.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Table comparing r-selected and K-selected species. r-selected: many small offspring, little or no parental care, early first reproduction, short life span, population swings up and down, rebounds fast after a disruption; examples insects, mice, weeds. K-selected: few large offspring, a lot of parental care, late first reproduction, long life span, fairly steady population, recovers slowly after a disruption; examples elephants, whales, oaks."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "dose-response-curve",
+ "hook": "Two pesticides are both \"toxic to fish\" on their labels. A pond downhill from the fields will only ever see a few milligrams per kilogram of either one in its runoff. Which one is safer for the fish? The answer is not in one number but in the shape of a curve: where it leaves zero, and where it crosses 50%.",
+ "prereq": [
+  {
+   "q": "Pesticide A has an LD50 of 15 mg/kg and pesticide B has an LD50 of 150 mg/kg. Which is more toxic?",
+   "options": [
+    "A, because less of it kills half the test animals",
+    "B, because its LD50 is larger",
+    "They are equally toxic",
+    "It cannot be told from LD50 values"
+   ],
+   "correct": 0,
+   "why": "A lower LD50 means a smaller dose kills half the animals, so A is more toxic.",
+   "review": "lethal-dose-50"
+  },
+  {
+   "q": "What is the dose for a 2 kg animal of a chemical given at 30 mg/kg?",
+   "options": [
+    "60 mg",
+    "15 mg",
+    "32 mg",
+    "0.067 mg"
+   ],
+   "correct": 0,
+   "why": "$30\\,\\frac{\\text{mg}}{\\text{kg}} \\times 2\\,\\text{kg} = 60\\,\\text{mg}$.",
+   "review": "lethal-dose-50"
+  }
+ ],
+ "figure": {
+  "figure": "dose-response-curve-two-pesticides",
+  "caption": "Percent of test fish killed by two pesticides (invented data). Y starts killing at a lower dose and has the lower LD50, so it is more toxic."
+ },
+ "chain": [
+  {
+   "cause": "Below the threshold dose",
+   "effect": "the test group shows no measurable response, so the curve sits at zero"
+  },
+  {
+   "cause": "Above the threshold, each larger dose",
+   "effect": "affects a larger percent of the group, and the curve rises steeply through 50%"
+  },
+  {
+   "cause": "Reading across from 50% to the curve and down",
+   "effect": "gives the LD50 for deaths or the ED50 for another effect"
+  },
+  {
+   "cause": "A curve that rises at lower doses",
+   "effect": "belongs to the more toxic substance"
+  }
+ ],
+ "ideas": [
+  "A <b>dose-response curve</b> plots dose (mg/kg) on the horizontal axis against the percent of a test group responding on the vertical axis. It is usually S-shaped.",
+  "The <b>threshold dose</b> is where the curve leaves zero: the highest dose with no observed response.",
+  "The LD50 is read at 50% on a curve of deaths. The <b>ED50</b> (effective dose 50%) is read at 50% on a curve of a nonlethal effect, such as illness or sleep.",
+  "To compare substances, compare where their curves rise: the curve to the left belongs to the more toxic substance."
+ ],
+ "misconception": {
+  "wrong": "If a dose is below a substance’s LD50, it is safe.",
+  "right": "Below the LD50, up to half of the test animals can still die, and nonlethal harm can start at much lower doses. Only the threshold dose marks where no effect was seen, and some substances have no threshold at all."
+ },
+ "check": [
+  "env-dose-response-curve-2",
+  "env-dose-response-curve-5",
+  "env-dose-response-curve-6",
+  "env-dose-response-curve-7",
+  "env-dose-response-curve-8",
+  "env-dose-response-curve-9",
+  "env-dose-response-curve-15"
+ ],
+ "summary": "A dose-response curve shows the percent of a test group responding at each dose. It is flat at zero below the threshold dose, rises steeply through 50% and levels off near 100%. Read across from 50% and down to find the LD50 (deaths) or ED50 (another effect). The substance whose curve rises at lower doses is more toxic, and harm can begin far below the LD50."
+}

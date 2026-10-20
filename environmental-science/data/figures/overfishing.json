@@ -1,0 +1,12 @@
+{
+ "overfishing-catch": {
+  "file": "figures/overfishing-catch.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph, invented data for practice. Yearly catch in thousand metric tons: 1960 210, 1965 260, 1970 340, 1975 420, 1980 450, 1985 400, 1990 250, 1995 60, 2000 20, 2005 15, 2010 25, 2015 30. The catch rises to a peak of 450 in 1980, then falls to 20 by 2000 although boats fish harder, and recovers only slightly by 2015."
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "clearcutting": {
+  "def": "A logging method that cuts down all or nearly all of the trees in an area at once. It is the cheapest and fastest way to harvest timber, but it exposes soil to erosion, warms nearby streams and removes habitat."
+ },
+ "deforestation": {
+  "def": "The removal of a forest, or a large part of one, so the land is no longer forest, often to make room for farms, pasture, mines or cities. It releases stored carbon as carbon dioxide and removes habitat."
+ }
+}

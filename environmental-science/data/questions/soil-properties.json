@@ -1,0 +1,562 @@
+{
+ "stimuli": {
+  "soil-properties-s1": {
+   "kind": "visual",
+   "title": "Four soil samples on the soil texture triangle",
+   "figure": "soil-properties-samples",
+   "invented": true
+  },
+  "soil-properties-s2": {
+   "kind": "quantitative",
+   "title": "A class tests how water moves through three soils",
+   "invented": true,
+   "table": {
+    "caption": "Each soil: a 10 cm deep column, 200 mL of water poured on top (invented data for practice)",
+    "cols": [
+     "Soil",
+     "Time for the water to pass through the column (minutes)",
+     "Water that drained out (mL)",
+     "Water held by the soil (mL)"
+    ],
+    "rows": [
+     [
+      "Sand",
+      "2",
+      "170",
+      "30"
+     ],
+     [
+      "Loam",
+      "10",
+      "120",
+      "80"
+     ],
+     [
+      "Clay",
+      "50",
+      "90",
+      "110"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-soil-properties-1",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which list puts soil particles in order from largest to smallest?",
+   "options": [
+    "Sand, silt, clay",
+    "Clay, silt, sand",
+    "Silt, sand, clay",
+    "Sand, clay, silt"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sand grains are the largest (up to 2 mm), silt is medium, and clay particles are the smallest (less than 0.002 mm).",
+    "options": [
+     "Right: sand is largest and clay smallest.",
+     "This is smallest to largest, the reverse order.",
+     "Sand grains are larger than silt.",
+     "Clay particles are smaller than silt."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-2",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does water drain through a sandy soil faster than through a clay soil?",
+   "options": [
+    "Sand has large, connected pores that water flows through",
+    "Sand holds more humus, which pulls water down through the soil",
+    "Clay grains are larger, so they block the water from passing",
+    "Clay particles pack so tightly that clay has almost no pores"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Permeability depends on pore size. Large sand grains leave large, connected pores; tiny clay particles leave tiny pores that water moves through slowly.",
+    "options": [
+     "Right: big, connected pores make sand highly permeable.",
+     "Humus does not pull water down; sand usually holds little humus.",
+     "Clay particles are the smallest, not the largest.",
+     "Clay has plenty of pore space, but its pores are tiny, so water moves slowly through them."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-3",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A gardener wants a soil that holds enough water for plants but still drains so roots get air. Which soil texture fits best?",
+   "options": [
+    "Loam",
+    "Sand",
+    "Clay",
+    "Silty clay"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Loam mixes sand, silt and clay, so it combines enough drainage and air space with enough water-holding capacity and nutrients.",
+    "options": [
+     "Right: loam balances drainage and water-holding capacity.",
+     "Sand drains so fast that it holds little water for plants.",
+     "Clay holds water but drains slowly, so roots can run short of air.",
+     "Silty clay is mostly fine particles, so it drains slowly too."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-4",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is a soil rich in clay and humus usually more fertile than a sandy soil?",
+   "options": [
+    "Clay and humus hold nutrients against leaching",
+    "Clay and humus let water pass through faster than sand",
+    "Sand grains release substances that are toxic to roots",
+    "Clay and humus raise the temperature of the soil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tiny clay particles and humus have huge surface areas that hold nutrients, and humus releases nutrients as it decays. Water washes nutrients through sand quickly.",
+    "options": [
+     "Right: clay and humus hold onto nutrients.",
+     "Clay and humus slow water down; sand drains fastest.",
+     "Sand is not poisonous; it just holds few nutrients.",
+     "Fertility is about nutrients, not soil temperature."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-5",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A soil test shows a field's soil has a pH of 4.5. What does this tell the farmer?",
+   "options": [
+    "It is strongly acidic, which limits nutrients for many crops",
+    "It is close to neutral, which suits most crops very well",
+    "It is basic, so it will hold far too much water for crops",
+    "It is high in humus, so it needs little or no fertilizer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A pH below 7 is acidic; 4.5 is strongly acidic. Most crops grow best near pH 6 to 7, and at low pH some nutrients become hard for roots to take up while some metals become more soluble.",
+    "options": [
+     "Right: pH 4.5 is strongly acidic and limits nutrients.",
+     "Neutral is pH 7, not 4.5.",
+     "Basic soils have a pH above 7; pH also does not set how much water soil holds.",
+     "pH does not measure humus or fertility directly."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-6",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A soil sample is 35% sand and 45% silt. The rest is clay. What percent of the sample is clay?",
+   "why": {
+    "correct": "Sand, silt and clay add to 100%: $100\\% - (35\\% + 45\\%) = 20\\%$ clay. That sample is a loam."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      100,
+      {
+       "fn": "add",
+       "args": [
+        35,
+        45
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 80,
+      "why": "That is the sand and silt together (35 + 45). Clay is what is left: 100 - 80."
+     },
+     {
+      "value": 10,
+      "why": "Subtract the sum of sand and silt from 100: 100 - (35 + 45) = 20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-7",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "On the triangle, which sample is a loam?",
+   "stimulus": "soil-properties-s1",
+   "options": [
+    "Sample B",
+    "Sample A",
+    "Sample C",
+    "Sample D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sample B (40% sand, 40% silt, 20% clay) sits inside the shaded loam region in the middle of the triangle.",
+    "options": [
+     "Right: B is in the loam region.",
+     "Sample A is in the sandy clay loam region.",
+     "Sample C is in the clay region at the top.",
+     "Sample D is in the silt loam region."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-8",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Sample D is 6% clay and 20% sand. What percent of sample D is silt?",
+   "stimulus": "soil-properties-s1",
+   "why": {
+    "correct": "$100\\% - (6\\% + 20\\%) = 74\\%$ silt, which is why D sits in the silt loam region."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      100,
+      {
+       "fn": "add",
+       "args": [
+        6,
+        20
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 26,
+      "why": "That is the clay and sand together. Silt is the rest: 100 - 26 = 74%."
+     },
+     {
+      "value": 14,
+      "why": "You subtracted 6 from 20. The three parts add to 100%: 100 - (6 + 20) = 74%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-9",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which sample would hold the most water but let water pass through it most slowly?",
+   "stimulus": "soil-properties-s1",
+   "options": [
+    "Sample C",
+    "Sample A",
+    "Sample B",
+    "Sample D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sample C is 60% clay. Clay's tiny pores hold water tightly and pass it slowly, so C has high water-holding capacity and low permeability.",
+    "options": [
+     "Right: the clay sample holds water and drains slowly.",
+     "Sample A is 70% sand, so it drains quickly.",
+     "Sample B is a loam, in between.",
+     "Sample D is mostly silt with little clay, so it holds less water than C."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-10",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town wants to build a sewage drain field, where wastewater soaks slowly into the soil, which needs soil that drains steadily. Which sample would cause the most trouble, and why?",
+   "stimulus": "soil-properties-s1",
+   "options": [
+    "Sample C: its tiny pores drain so slowly that water pools",
+    "Sample B: loam drains much too fast to filter the water",
+    "Sample A: sand holds water so tightly it barely drains",
+    "Sample D: silt has too little pore space for water to move"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A drain field needs water to soak in. Sample C, 60% clay, has low permeability, so wastewater would back up and pool.",
+    "options": [
+     "Right: the clay sample has the lowest permeability.",
+     "Loam drains at a moderate rate, which suits a drain field.",
+     "Sand drains quickly; it does not hold water tightly.",
+     "Silt has pore space; it drains more slowly than sand but much faster than clay."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-11",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement describes the data in the table?",
+   "stimulus": "soil-properties-s2",
+   "options": [
+    "Soils that drained more slowly held more water",
+    "Sand held the most water and also drained the most slowly",
+    "The three soils held roughly equal amounts of water",
+    "Clay drained the most water out of its column"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Clay took 50 minutes and held 110 mL; sand took 2 minutes and held 30 mL. Slow drainage and high water-holding go together.",
+    "options": [
+     "Right: slow drainage goes with more water held.",
+     "Sand held the least water (30 mL) and drained fastest (2 minutes).",
+     "Water held ranged from 30 mL to 110 mL, a big difference.",
+     "Clay drained the least water out (90 mL)."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-12",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The water in the loam column traveled 10 cm in 10 minutes. Find the percolation rate in centimeters per hour. Write the setup with units, then the answer. (1 hour = 60 minutes)",
+   "stimulus": "soil-properties-s2",
+   "why": {
+    "correct": "$\\frac{10\\,\\text{cm}}{10\\,\\text{min}} \\times \\frac{60\\,\\text{min}}{1\\,\\text{h}} = 60\\,\\text{cm/h}$. The minutes cancel."
+   },
+   "setup": {
+    "answer": "10 cm / 10 min * 60 min / 1 h",
+    "mustUse": [
+     "10",
+     "60"
+    ],
+    "unit": "cm/h",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "10 cm / 10 min / 60 min",
+      "why": "Dividing by 60 again leaves min² on the bottom. Multiply by 60 min per hour so the minutes cancel."
+     },
+     {
+      "expr": "10 min / 10 cm * 60 min / 1 h",
+      "why": "A rate is distance over time; this puts time on top."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "mul",
+      "args": [
+       {
+        "fn": "div",
+        "args": [
+         10,
+         10
+        ]
+       },
+       60
+      ]
+     },
+     "unit": "cm/h",
+     "units": [
+      "cm/hr"
+     ],
+     "mistakes": [
+      {
+       "value": 1,
+       "why": "That is 1 cm per minute. The question asks per hour: multiply by 60."
+      },
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         1,
+         60
+        ]
+       },
+       "why": "You divided by 60. There are 60 minutes in an hour, so the water moves 60 times farther in an hour."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-soil-properties-13",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the 200 mL poured on the clay column did the clay hold?",
+   "stimulus": "soil-properties-s2",
+   "why": {
+    "correct": "$\\frac{110\\,\\text{mL}}{200\\,\\text{mL}} \\times 100 = 55\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      110,
+      200
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 0.55,
+      "why": "You left out the × 100. 110 ÷ 200 is 0.55, which is 55%."
+     },
+     {
+      "value": 45,
+      "why": "That is the share that drained out (90 of 200). The clay held 110 of 200 mL."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-14",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why did the class use the same depth of soil and the same 200 mL of water for every soil?",
+   "stimulus": "soil-properties-s2",
+   "options": [
+    "So any difference in drainage comes from the soil type",
+    "So that each soil would end up holding the same water",
+    "So that the sand would drain as slowly as the clay did",
+    "So the class could skip timing the water in each column"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Keeping depth and volume constant controls those variables. Then any difference in time or water held comes from the soil itself.",
+    "options": [
+     "Right: constants let the class link the result to soil type.",
+     "The point is to see whether the soils differ, not to force them to be the same.",
+     "Constants do not change how a soil behaves; sand still drains fast.",
+     "The timing is the measurement; constants do not replace it."
+    ]
+   }
+  },
+  {
+   "id": "env-soil-properties-15",
+   "unit": "unit-4",
+   "topic": "soil-properties",
+   "type": "specific",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Write a testable hypothesis for this experiment about clay content and drainage time.",
+   "stimulus": "soil-properties-s2",
+   "why": {
+    "correct": "A hypothesis is a statement with a direction that names the variable measured: drainage time."
+   },
+   "specific": {
+    "frame": "If ___, then ___ will ___.",
+    "slots": {
+     "change": {
+      "label": "If",
+      "options": [
+       "the clay content of the soil increases",
+       "more water is poured on the soil",
+       "the room is warmer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The volume of water was held constant at 200 mL.",
+       "2": "Room temperature is not what the class changed."
+      }
+     },
+     "variable": {
+      "label": "Then",
+      "options": [
+       "the time for water to pass through the column",
+       "the depth of the soil column",
+       "the color of the soil"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Depth was held constant at 10 cm.",
+       "2": "The class measured time and volume, not color."
+      }
+     },
+     "direction": {
+      "label": "Will",
+      "options": [
+       "increase",
+       "be affected",
+       "change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"Be affected\" does not say which way; a hypothesis gives a direction.",
+       "2": "\"Change\" does not say which way; say increase or decrease."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "noQuestion": true,
+     "variable": [
+      "time",
+      "drain"
+     ],
+     "context": [
+      "clay"
+     ]
+    },
+    "model": "If the clay content of the soil increases, then the time for 200 mL of water to drain through a 10 cm column will increase."
+   }
+  }
+ ]
+}

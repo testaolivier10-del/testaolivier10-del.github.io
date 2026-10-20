@@ -1,0 +1,47 @@
+{
+ "ecosystem": {
+  "def": "All the living things in an area together with the nonliving parts (water, soil, light, air) and the ways they interact."
+ },
+ "population": {
+  "def": "All the individuals of one species living in the same area at the same time."
+ },
+ "community": {
+  "def": "All the populations of different species that live and interact in the same area."
+ },
+ "species": {
+  "def": "A group of similar organisms that can breed with one another and produce fertile offspring."
+ },
+ "habitat": {
+  "def": "The place where an organism or population lives, with the conditions it needs."
+ },
+ "biotic": {
+  "def": "Living, or once living: the organisms of an ecosystem and the dead matter they leave. Plants, animals, fungi and bacteria are biotic factors."
+ },
+ "abiotic": {
+  "def": "Nonliving: the physical and chemical parts of an ecosystem, such as temperature, sunlight, water, minerals and wind."
+ },
+ "predation": {
+  "def": "An interaction in which one organism (the predator) kills and eats another (the prey). The predator benefits and the prey is harmed."
+ },
+ "competition": {
+  "def": "An interaction in which organisms use the same limited resource, so each gets less and both are harmed. It can be between species or within one species."
+ },
+ "symbiosis": {
+  "def": "A close, long-term relationship between two different species: mutualism, commensalism or parasitism."
+ },
+ "mutualism": {
+  "def": "A relationship between two species in which both benefit (+/+), such as bees and the flowers they pollinate."
+ },
+ "commensalism": {
+  "def": "A relationship in which one species benefits and the other is neither helped nor harmed (+/0)."
+ },
+ "parasitism": {
+  "def": "A relationship in which a parasite lives on or in a host and feeds on it, benefiting while the host is harmed (+/−), usually without being killed right away."
+ },
+ "resource-partitioning": {
+  "def": "Species that compete for a resource dividing it by place, time or food size, which reduces competition so they can coexist."
+ },
+ "niche": {
+  "def": "The role of a species in its ecosystem: what it eats, where and when it is active, and the conditions and resources it needs."
+ }
+}

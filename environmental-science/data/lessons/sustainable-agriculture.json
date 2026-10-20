@@ -1,0 +1,84 @@
+{
+ "topic": "sustainable-agriculture",
+ "hook": "A hillside cornfield plowed up and down the slope can lose several centimeters of topsoil in a decade, soil that took centuries to form. The same field plowed across the slope, with strips of hay between the corn and the stalks left on the ground after harvest, can lose a small fraction of that while growing almost as much corn. Sustainable agriculture is the set of methods that keeps farmland productive for the long run.",
+ "prereq": [
+  {
+   "q": "Why does tilling increase erosion?",
+   "options": [
+    "It leaves soil bare and loose, so wind and water carry it away",
+    "It packs the soil so tightly that roots cannot grow",
+    "It adds clay to the topsoil, which washes away",
+    "It removes the subsoil and leaves the topsoil"
+   ],
+   "correct": 0,
+   "why": "Bare, loose soil is easy for wind and rain to move.",
+   "review": "agricultural-practices"
+  },
+  {
+   "q": "How do legumes such as clover and soybeans add nitrogen to soil?",
+   "options": [
+    "Bacteria in their root nodules fix nitrogen from the air",
+    "They absorb nitrate from rain and store it",
+    "They release nitrogen gas into the soil",
+    "They break down rock to free nitrogen"
+   ],
+   "correct": 0,
+   "why": "Nitrogen-fixing bacteria in legume roots turn nitrogen gas into ammonium.",
+   "review": "nitrogen-cycle"
+  },
+  {
+   "q": "What is integrated pest management?",
+   "options": [
+    "Combining monitoring and several controls to keep pests low with little pesticide",
+    "Spraying the strongest pesticide on a fixed schedule",
+    "Using only one crop variety everywhere",
+    "Burning fields after each harvest"
+   ],
+   "correct": 0,
+   "why": "IPM monitors pests and uses targeted controls only when needed.",
+   "review": "integrated-pest-management"
+  }
+ ],
+ "figure": {
+  "figure": "sustainable-agriculture-hillside",
+  "caption": "Contour plowing, strip cropping and terracing slow water running downhill, so it soaks in and leaves its soil behind."
+ },
+ "chain": [
+  {
+   "cause": "Rows follow the contour, dense strips alternate with row crops, or slopes are terraced",
+   "effect": "water running downhill is slowed at each row, strip or step"
+  },
+  {
+   "cause": "Slower water",
+   "effect": "has more time to soak in and less energy to carry soil"
+  },
+  {
+   "cause": "Residue left on the surface (no-till) and windbreaks",
+   "effect": "protect the soil from rain splash and wind"
+  },
+  {
+   "cause": "Less soil is lost and organic matter builds up",
+   "effect": "the soil holds more water and nutrients, and yields can be kept up for decades"
+  }
+ ],
+ "ideas": [
+  "Erosion control on slopes: <b>contour plowing</b> (rows across the slope), <b>strip cropping</b> (alternating strips of row crops and dense crops) and <b>terracing</b> (flat steps).",
+  "<b>No-till farming</b> plants into the last crop's residue without plowing, and <b>windbreaks</b> of trees slow the wind. Both protect the surface.",
+  "<b>Crop rotation</b> breaks pest cycles, and rotating in legumes adds nitrogen. Perennial crops and cover crops keep roots in the soil all year.",
+  "Soil fertility: <b>organic fertilizer</b> (manure, compost) adds nutrients slowly and builds organic matter; liming raises the pH of acid soil; rotational grazing protects pasture."
+ ],
+ "misconception": {
+  "wrong": "Contour plowing means plowing straight up and down a hill so water drains away fast.",
+  "right": "Contour plowing runs rows across the slope, along lines of equal height. Each furrow holds back water, so it soaks in instead of rushing downhill and carrying soil with it."
+ },
+ "check": [
+  "env-sustainable-agriculture-1",
+  "env-sustainable-agriculture-2",
+  "env-sustainable-agriculture-9",
+  "env-sustainable-agriculture-10",
+  "env-sustainable-agriculture-11",
+  "env-sustainable-agriculture-12",
+  "env-sustainable-agriculture-7"
+ ],
+ "summary": "Sustainable agriculture keeps farmland productive for the long run. Contour plowing, strip cropping and terracing slow water on slopes; no-till farming and windbreaks protect the soil surface; crop rotation, legumes and perennial and cover crops protect fertility and break pest cycles; organic fertilizer adds nutrients and organic matter; and liming corrects acidic soil. Each works by slowing water or wind, or by building soil."
+}

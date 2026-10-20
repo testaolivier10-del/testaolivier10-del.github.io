@@ -1,0 +1,8 @@
+{
+ "percent": {
+  "def": "A number out of 100. A share as a percent is the part divided by the whole, times 100; a percent of a quantity is (percent ÷ 100) times the quantity."
+ },
+ "percent-change": {
+  "def": "How much a value changed compared with its starting value: (new - old) / old × 100. Positive for an increase, negative for a decrease."
+ }
+}

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" width="720" height="430" role="img" aria-labelledby="t d" font-family="Arial, Helvetica, sans-serif">
+<title id="t">The four kinds of ecosystem services</title>
+<desc id="d">Four boxes for the four kinds of ecosystem services. Provisioning: food and fish, timber and fiber, fresh water, medicines. Regulating: pollination of crops, flood control by wetlands, water purification, carbon storage in forests. Cultural: recreation and tourism, spiritual and aesthetic value, education and research. Supporting: photosynthesis, nutrient cycling, soil building, habitat for species.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker></defs><rect width="720" height="430" fill="#FFFFFF"/>
+<rect x="20" y="20" width="330" height="185" fill="#FFFFFF" stroke="#474A10" stroke-width="2.5" rx="10"/>
+<rect x="20" y="20" width="330" height="44" fill="#474A10" rx="10" fill-opacity="0.14"/>
+<text x="36" y="48" font-size="19" fill="#474A10" font-weight="700">Provisioning</text>
+<text x="336" y="48" font-size="13" fill="#1F2A28" text-anchor="end" font-style="italic">goods people take</text>
+<circle cx="44" cy="92" r="4" fill="#474A10"/>
+<text x="56" y="97" font-size="15" fill="#1F2A28">food and fish</text>
+<circle cx="44" cy="120" r="4" fill="#474A10"/>
+<text x="56" y="125" font-size="15" fill="#1F2A28">timber and fiber</text>
+<circle cx="44" cy="148" r="4" fill="#474A10"/>
+<text x="56" y="153" font-size="15" fill="#1F2A28">fresh water</text>
+<circle cx="44" cy="176" r="4" fill="#474A10"/>
+<text x="56" y="181" font-size="15" fill="#1F2A28">medicines</text>
+<rect x="370" y="20" width="330" height="185" fill="#FFFFFF" stroke="#0072B2" stroke-width="2.5" rx="10"/>
+<rect x="370" y="20" width="330" height="44" fill="#0072B2" rx="10" fill-opacity="0.14"/>
+<text x="386" y="48" font-size="19" fill="#0072B2" font-weight="700">Regulating</text>
+<text x="686" y="48" font-size="13" fill="#1F2A28" text-anchor="end" font-style="italic">natural processes that protect</text>
+<circle cx="394" cy="92" r="4" fill="#0072B2"/>
+<text x="406" y="97" font-size="15" fill="#1F2A28">pollination of crops</text>
+<circle cx="394" cy="120" r="4" fill="#0072B2"/>
+<text x="406" y="125" font-size="15" fill="#1F2A28">flood control by wetlands</text>
+<circle cx="394" cy="148" r="4" fill="#0072B2"/>
+<text x="406" y="153" font-size="15" fill="#1F2A28">water purification</text>
+<circle cx="394" cy="176" r="4" fill="#0072B2"/>
+<text x="406" y="181" font-size="15" fill="#1F2A28">carbon storage in forests</text>
+<rect x="20" y="220" width="330" height="185" fill="#FFFFFF" stroke="#D55E00" stroke-width="2.5" rx="10"/>
+<rect x="20" y="220" width="330" height="44" fill="#D55E00" rx="10" fill-opacity="0.14"/>
+<text x="36" y="248" font-size="19" fill="#D55E00" font-weight="700">Cultural</text>
+<text x="336" y="248" font-size="13" fill="#1F2A28" text-anchor="end" font-style="italic">nonmaterial benefits</text>
+<circle cx="44" cy="292" r="4" fill="#D55E00"/>
+<text x="56" y="297" font-size="15" fill="#1F2A28">recreation and tourism</text>
+<circle cx="44" cy="320" r="4" fill="#D55E00"/>
+<text x="56" y="325" font-size="15" fill="#1F2A28">spiritual and aesthetic value</text>
+<circle cx="44" cy="348" r="4" fill="#D55E00"/>
+<text x="56" y="353" font-size="15" fill="#1F2A28">education and research</text>
+<rect x="370" y="220" width="330" height="185" fill="#FFFFFF" stroke="#009E73" stroke-width="2.5" rx="10"/>
+<rect x="370" y="220" width="330" height="44" fill="#009E73" rx="10" fill-opacity="0.14"/>
+<text x="386" y="248" font-size="19" fill="#00714F" font-weight="700">Supporting</text>
+<text x="686" y="248" font-size="13" fill="#1F2A28" text-anchor="end" font-style="italic">processes the others depend on</text>
+<circle cx="394" cy="292" r="4" fill="#009E73"/>
+<text x="406" y="297" font-size="15" fill="#1F2A28">photosynthesis</text>
+<circle cx="394" cy="320" r="4" fill="#009E73"/>
+<text x="406" y="325" font-size="15" fill="#1F2A28">nutrient cycling</text>
+<circle cx="394" cy="348" r="4" fill="#009E73"/>
+<text x="406" y="353" font-size="15" fill="#1F2A28">soil building</text>
+<circle cx="394" cy="376" r="4" fill="#009E73"/>
+<text x="406" y="381" font-size="15" fill="#1F2A28">habitat for species</text>
+</svg>

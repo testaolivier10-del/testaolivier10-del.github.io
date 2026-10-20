@@ -1,0 +1,35 @@
+{
+ "nitrogen-cycle": {
+  "def": "The movement of nitrogen among the atmosphere, soil, water and living things through nitrogen fixation, nitrification, assimilation, ammonification and denitrification."
+ },
+ "nitrogen-fixation": {
+  "def": "The conversion of N2 gas from the air into ammonia or ammonium that living things can use, by bacteria (in soil and in legume root nodules), by lightning, or by industry making fertilizer."
+ },
+ "nitrification": {
+  "def": "The conversion by soil bacteria of ammonium into nitrite and then nitrate, the form most plants take up."
+ },
+ "assimilation": {
+  "def": "The uptake of nitrate or ammonium by plant roots and its use to build proteins and DNA; animals assimilate nitrogen by eating plants or other animals."
+ },
+ "ammonification": {
+  "def": "The release of ammonium into the soil by decomposers as they break down nitrogen in wastes and dead organisms."
+ },
+ "denitrification": {
+  "def": "The conversion by bacteria in low-oxygen soil or water of nitrate back into N2 gas, which returns to the atmosphere."
+ },
+ "ammonium": {
+  "def": "NH4+, a form of nitrogen made by nitrogen fixation and ammonification. Plants can take it up, and its positive charge helps soil particles hold it. Ammonia (NH3) is the related gas."
+ },
+ "nitrate": {
+  "def": "NO3−, the form of nitrogen made by nitrification that most plants take up. It dissolves easily and is not held by soil, so it leaches into water."
+ },
+ "limiting-nutrient": {
+  "def": "The nutrient in shortest supply compared with what organisms need, so it limits growth; adding it increases growth. Nitrogen and phosphorus are common limiting nutrients."
+ },
+ "fertilizer": {
+  "def": "A substance added to soil to supply nutrients, mainly nitrogen, phosphorus and potassium, so plants grow more."
+ },
+ "leaching": {
+  "def": "The washing of dissolved substances, such as nitrate, down through the soil by water, toward underground water and streams."
+ }
+}

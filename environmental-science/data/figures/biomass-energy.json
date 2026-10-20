@@ -1,0 +1,12 @@
+{
+ "biomass-energy-carbon": {
+  "file": "figures/biomass-energy-carbon.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A cycle of four boxes. Growing plants store carbon in wood and crops by photosynthesis; an arrow labeled years to decades leads to harvest of wood, crop waste, manure, corn or sugarcane; then to burning or converting into heat, electricity or liquid fuels such as ethanol and biodiesel; an arrow labeled released in hours leads to carbon dioxide in the air with smoke and soot; an arrow back to growing plants says taken back up only if plants regrow. A banner says cleared and not regrown, the carbon stays in the air and habitat is lost."
+ }
+}

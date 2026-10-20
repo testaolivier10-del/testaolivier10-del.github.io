@@ -1,0 +1,12 @@
+{
+ "nuclear-power-reactor": {
+  "file": "figures/nuclear-power-reactor.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A nuclear power plant. In the reactor, green fuel rods of uranium-235 stand between dark control rods. Hot water flows to a steam generator; steam spins a turbine connected to a generator that sends out electricity. Used steam goes to a condenser cooled by a cooling tower, and cooler water returns to the reactor. Notes say control rods absorb neutrons to slow or stop the chain reaction, and that in fission a neutron splits U-235, releasing heat and 2 or 3 more neutrons."
+ }
+}

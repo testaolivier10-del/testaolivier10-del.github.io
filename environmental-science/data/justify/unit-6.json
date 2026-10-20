@@ -1,0 +1,190 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-6",
+   "id": "u6-use-trend",
+   "topic": "global-energy-consumption",
+   "practice": "5.A",
+   "skill": "trend",
+   "title": "A country's energy use",
+   "context": "<p>Energy use in a developing country (invented data for practice): 2000, 4 exajoules; 2010, 6 exajoules; 2020, 10 exajoules.</p>",
+   "prompt": "<b>Describe</b> the trend with a calculation and <b>explain</b> one likely cause.",
+   "checklist": [
+    "Calculates the percent change: (10 - 4) / 4 × 100 = 150% from 2000 to 2020",
+    "Describes the speed-up: a rise of 2 exajoules in the first decade and 4 in the second",
+    "Gives a cause linked to development (industry, cars, electricity reaching more homes, a growing population)"
+   ],
+   "earns": {
+    "answer": "Energy use rose by (10 - 4) / 4 × 100 = 150% from 2000 to 2020, and the rise sped up: 2 exajoules in the first decade and 4 in the second. As the country develops, more homes get electricity, factories grow and more people own cars, so energy use per person rises along with the population.",
+    "why": "The trend with a correct percent change and the speed-up, then a cause tied to development."
+   },
+   "misses": {
+    "answer": "Energy use went up by 6, from 4 exajoules to 10 exajoules.",
+    "why": "6 exajoules is the change, not a percent change, and there is no cause."
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-gas-tradeoff",
+   "topic": "fossil-fuels",
+   "practice": "7.C",
+   "skill": "tradeoff",
+   "title": "Switching a power plant from coal to natural gas",
+   "prompt": "<b>Describe</b> one environmental advantage and one environmental disadvantage of converting a coal power plant to natural gas.",
+   "checklist": [
+    "Advantage with reason: natural gas releases about half the carbon dioxide per kWh, and less soot and sulfur",
+    "Disadvantage with reason: methane leaks from wells and pipelines, or hydraulic fracturing can contaminate groundwater",
+    "Does not call natural gas zero emissions"
+   ],
+   "earns": {
+    "answer": "Advantage: burning natural gas releases about half the carbon dioxide of coal per kWh, and far less of the soot and sulfur that coal smoke carries. Disadvantage: methane leaks from wells and pipelines, and methane is a powerful heat-trapping gas, so leaks cancel part of the benefit.",
+    "why": "Each side is specific and has its reason, and it never calls gas clean or zero emissions."
+   },
+   "misses": {
+    "answer": "Natural gas is clean so it has no emissions, but it is still a fossil fuel.",
+    "why": "Natural gas does release carbon dioxide, so \"no emissions\" is wrong, and the disadvantage has no reason."
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-solar-variables",
+   "topic": "solar-energy",
+   "practice": "4.B",
+   "skill": "variables",
+   "title": "The variables in a solar panel test",
+   "context": "<p>A student tilts a small solar panel at 0°, 15°, 30°, 45° and 60° toward the south at noon and records the electricity it produces in watts (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the independent and dependent variables and one variable to hold constant.",
+   "checklist": [
+    "Independent variable: the tilt angle of the panel",
+    "Dependent variable: the electrical power produced, in watts",
+    "Constant: same panel, same time of day, same day or sky conditions"
+   ],
+   "earns": {
+    "answer": "The independent variable is the panel's tilt angle, from 0° to 60°. The dependent variable is the electrical power it produces, in watts. The time of day must stay the same (noon) for every reading, so the sun's position does not change.",
+    "why": "Both variables with units, and a constant with its reason."
+   },
+   "misses": {
+    "answer": "The independent variable is the sun and the dependent variable is the solar panel.",
+    "why": "The student changes the angle, not the sun, and the panel is equipment, not a measurement."
+   },
+   "specific": {
+    "slots": {
+     "iv": {
+      "label": "Independent variable",
+      "options": [
+       "the tilt angle of the panel",
+       "the power produced",
+       "the time of day"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the measured result.",
+       "2": "Time is held constant at noon."
+      }
+     },
+     "dv": {
+      "label": "Dependent variable",
+      "options": [
+       "the power the panel produces, in watts",
+       "the angle of the panel",
+       "the size of the panel"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The angle is what is changed.",
+       "2": "The same panel is used throughout."
+      }
+     },
+     "constant": {
+      "label": "A constant",
+      "options": [
+       "the time of day",
+       "the tilt angle",
+       "the power output"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the independent variable.",
+       "2": "That is the dependent variable."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-efficiency-policy",
+   "topic": "energy-conservation",
+   "practice": "7.B",
+   "skill": "policy",
+   "title": "A policy to cut home energy use",
+   "context": "<p>A state wants to reduce the energy its homes use for heating and cooling.</p>",
+   "prompt": "<b>Propose</b> a policy and <b>explain</b> how it reduces energy use.",
+   "checklist": [
+    "Proposes a policy (law, rule, tax credit), not just a technology",
+    "Explains how it reduces energy use",
+    "Is specific to heating and cooling homes"
+   ],
+   "earns": {
+    "answer": "Pass a building code requiring new homes to have insulated walls and attics and double-pane windows, and give tax credits for adding insulation to older homes. Insulation slows heat flowing through walls and roofs, so furnaces and air conditioners run less to keep the same temperature.",
+    "why": "A law and a tax credit, specific to heating and cooling, with how insulation saves energy."
+   },
+   "misses": {
+    "answer": "People should use LED light bulbs and turn off the lights.",
+    "why": "LEDs are a technology and lighting is not heating or cooling; the question asks for a policy."
+   },
+   "specific": {
+    "slots": {
+     "type": {
+      "label": "A policy is",
+      "options": [
+       "a building code requiring insulation in new homes",
+       "attic insulation",
+       "turning down the thermostat"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a technology; a law requiring it would be the policy.",
+       "2": "That is a personal choice, not a law or rule."
+      }
+     },
+     "how": {
+      "label": "It works because",
+      "options": [
+       "insulation slows heat flow, so heating and cooling run less",
+       "it makes homes look newer",
+       "it makes electricity cheaper"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Appearance does not save energy.",
+       "2": "The code does not change the price of electricity."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-6",
+   "id": "u6-dam-chain",
+   "topic": "hydroelectric",
+   "practice": "1.C",
+   "skill": "chain",
+   "title": "How a dam affects salmon",
+   "prompt": "<b>Explain</b> how building a hydroelectric dam on a river can reduce its salmon population.",
+   "checklist": [
+    "The dam blocks adults swimming upstream to spawn",
+    "The reservoir slows and warms the water, and young salmon swimming downstream are hurt by turbines or delayed",
+    "Fewer salmon reach spawning grounds or survive to the sea, so the population falls"
+   ],
+   "earns": {
+    "answer": "The dam is a wall across the river, so adult salmon swimming upstream to spawn cannot reach the gravel beds above it. Above the dam the reservoir is slow and warm, and young salmon heading to the sea are delayed or killed in the turbines. With fewer adults spawning and fewer young surviving, the population declines.",
+    "why": "Each link from the dam to the population is named, for both adults and young."
+   },
+   "misses": {
+    "answer": "Dams are bad for fish because they change the river.",
+    "why": "\"Change the river\" names no mechanism and no link to spawning or survival."
+   }
+  }
+ ]
+}

@@ -1,0 +1,641 @@
+{
+ "stimuli": {
+  "overfishing-s1": {
+   "kind": "visual",
+   "title": "Yearly catch in one fishery, 1960 to 2015",
+   "figure": "overfishing-catch"
+  },
+  "overfishing-s2": {
+   "kind": "quantitative",
+   "title": "Bycatch on one fishing trip",
+   "invented": true,
+   "table": {
+    "caption": "Animals brought on board during one shrimp-trawling trip (invented data for practice)",
+    "cols": [
+     "Animal",
+     "Mass caught (kg)"
+    ],
+    "rows": [
+     [
+      "Shrimp (target)",
+      "1,200"
+     ],
+     [
+      "Small fish",
+      "4,800"
+     ],
+     [
+      "Crabs",
+      "900"
+     ],
+     [
+      "Sea turtles",
+      "60"
+     ],
+     [
+      "Other animals",
+      "240"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-overfishing-1",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is bycatch?",
+   "options": [
+    "Animals caught by fishing gear that were not the target",
+    "Fish caught by boats that have no license",
+    "Fish sold at a lower price than the main catch",
+    "The young fish of the target species released each year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bycatch is the unwanted catch: other species, and often young fish, caught along with the target.",
+    "options": [
+     "Right: anything caught that was not the target.",
+     "Fishing without a license is illegal fishing, a different problem.",
+     "Price is not what defines bycatch.",
+     "Released young of the target are not what the term means."
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-2",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does catching the largest, oldest fish in a population first make overfishing worse?",
+   "options": [
+    "Large older females lay many more eggs, so fewer young are produced",
+    "Large fish eat the small fish, so removing them lowers the population",
+    "Large fish carry more parasites, which spread to the young fish",
+    "Large fish leave the area first, so the rest of the school follows them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In many fish, egg production rises steeply with size. Taking the biggest fish removes the best breeders.",
+    "options": [
+     "Right: removing big females cuts reproduction.",
+     "Removing predators would not explain a falling population of the same species.",
+     "Parasites are not the reason size matters here.",
+     "Schooling behavior is not the main issue."
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-3",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Bottom trawlers drag heavy nets along the sea floor. Besides catching fish, what harm does this cause?",
+   "options": [
+    "It crushes corals and sponges that shelter young fish and other sea life",
+    "It raises the temperature of the water near the bottom of the sea",
+    "It adds nutrients to the sea floor, so the fish grow more slowly than before",
+    "It lowers the salinity of the water near the bottom of the sea"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trawl nets scrape the bottom flat, destroying the structures many young fish and invertebrates live in.",
+    "options": [
+     "Right: the sea floor habitat is destroyed.",
+     "Trawling does not warm the water.",
+     "Nutrients are not the main harm of trawling.",
+     "Trawling does not change salinity."
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-4",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Sharks are overfished in many oceans. Which is a likely effect on the food web?",
+   "options": [
+    "Prey of sharks, such as rays, increase and eat more of their own prey",
+    "Phytoplankton disappear because the sharks no longer fertilize the water with waste",
+    "Each of the other fish species increases, so the total catch of fish rises sharply",
+    "The sea becomes more salty because fewer sharks are drinking the water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Removing a top predator lets its prey increase, which affects the next level down: a trophic cascade.",
+    "options": [
+     "Right: prey of sharks increase and eat more of their own prey.",
+     "Phytoplankton do not depend on shark waste.",
+     "Effects ripple through the web; not every species increases.",
+     "Sharks do not change salinity."
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-5",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which change in fishing gear would most directly reduce sea turtle bycatch in a shrimp fishery?",
+   "options": [
+    "Fitting nets with turtle excluder devices that let turtles escape",
+    "Using larger boats that can drag their nets for longer hours each day",
+    "Fishing at night, when the shrimp are easier for the crew to catch",
+    "Using nets with smaller holes so that fewer of the shrimp escape"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Turtle excluder devices (TEDs) are required in U.S. shrimp trawls; they guide turtles out of the net.",
+    "options": [
+     "Right: TEDs let turtles out while keeping shrimp.",
+     "Longer tows catch more of everything, including turtles.",
+     "Night fishing does not keep turtles out of the net.",
+     "Smaller holes would catch more bycatch, not less."
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-6",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A country sets up marine protected areas where fishing is banned. How can this help fisheries outside them?",
+   "options": [
+    "Fish grow large and breed inside, and many spill over into fished waters",
+    "Fish inside the areas die of old age, adding nutrients that feed the fished waters",
+    "Boats can fish twice as hard outside the areas, so the total catch stays the same",
+    "The areas are used to store fish caught elsewhere until the market price rises"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Protected areas let fish live longer, grow bigger and produce many more young, some of which move into nearby fished areas.",
+    "options": [
+     "Right: the spillover of young and adults helps nearby fisheries.",
+     "The benefit comes from breeding, not from fish dying.",
+     "Fishing harder outside would undo the benefit.",
+     "Protected areas are not storage for catch."
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-7",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fish stock of 800,000 metric tons can replace about 12% of its mass each year by reproduction and growth. The fleet catches 150,000 metric tons a year. By how many metric tons does the stock shrink each year?",
+   "why": {
+    "correct": "Replaced each year: $800{,}000 \\times \\frac{12}{100} = 96{,}000$ metric tons. Shrink: $150{,}000 - 96{,}000 = 54{,}000$ metric tons a year."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      150000,
+      {
+       "fn": "percentOf",
+       "args": [
+        12,
+        800000
+       ]
+      }
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "t",
+     "tonnes"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        12,
+        800000
+       ]
+      },
+      "why": "96,000 metric tons is what the stock replaces. The shrink is the catch minus that: 150,000 - 96,000."
+     },
+     {
+      "value": 138000,
+      "why": "You subtracted 12 metric tons, not 12%. Find 12% of 800,000 first (96,000)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-overfishing-8",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how a fishery can collapse even though fishing boats keep catching as many fish each year until shortly before the collapse.",
+   "why": {
+    "correct": "A complete answer links each step: the fleet adds boats and better gear, so catch stays steady while the stock shrinks; once the stock is too small, catches fall suddenly."
+   },
+   "specific": {
+    "frame": "Because ___, the catch ___ while ___, until ___.",
+    "slots": {
+     "cause": {
+      "label": "What the fleet does",
+      "options": [
+       "the fleet adds boats and better gear such as sonar",
+       "the fleet catches fewer fish each year",
+       "the fleet fishes in a new ocean each year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Catching fewer fish would slow the decline, not hide it.",
+       "2": "Moving to a new ocean would not explain the decline of this stock."
+      }
+     },
+     "effect": {
+      "label": "What the catch does",
+      "options": [
+       "stays about the same",
+       "rises sharply",
+       "falls each year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says boats keep catching as many fish.",
+       "2": "The question says the catch holds up until shortly before the collapse."
+      }
+     },
+     "mechanism": {
+      "label": "What is hidden",
+      "options": [
+       "the stock shrinks below what it can replace",
+       "the stock grows faster than it is fished",
+       "the fish move to shallower water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A growing stock would not collapse.",
+       "2": "Moving fish do not explain a collapse."
+      }
+     },
+     "dv": {
+      "label": "The tipping point",
+      "options": [
+       "too few fish remain to rebuild the stock and catches drop sharply",
+       "the boats run out of fuel",
+       "the price of fish falls to zero"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fuel is not what limits the catch here.",
+       "2": "Price does not cause a stock to collapse."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "catch",
+      "stock",
+      "boat",
+      "fish"
+     ]
+    },
+    "model": "Because the fleet adds boats and better gear such as sonar, the catch stays about the same while the stock shrinks below what it can replace, until too few fish remain to rebuild the stock and catches drop sharply."
+   }
+  },
+  {
+   "id": "env-overfishing-9",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement describes the graph?",
+   "options": [
+    "Catch peaked at 450 thousand metric tons in 1980, then fell to 20",
+    "Catch fell from 1960 to 1980, then rose to a peak in the year 2000",
+    "Catch stayed near 450 thousand metric tons from 1960 to 2015",
+    "Catch rose steadily from 1960 to 2015 with a dip in 1995"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The line rises to 450 in 1980 and drops to 20 in 2000.",
+    "options": [
+     "Right: a peak in 1980 and a collapse by 2000.",
+     "The pattern is the reverse: up to 1980, then down.",
+     "The catch ranged from 15 to 450.",
+     "After 1980 it fell far, then recovered only a little."
+    ]
+   },
+   "stimulus": "overfishing-s1"
+  },
+  {
+   "id": "env-overfishing-10",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in catch from the peak in 1980 to 2000, then give the answer.",
+   "why": {
+    "correct": "$\\frac{20 - 450}{450} \\times 100 \\approx -95.6\\%$: the catch fell by about 96%."
+   },
+   "setup": {
+    "answer": "(20 - 450) / 450 * 100",
+    "mustUse": [
+     "20",
+     "450"
+    ],
+    "mistakes": [
+     {
+      "expr": "(20 - 450) / 20 * 100",
+      "why": "Divide by the starting value, the 1980 catch of 450."
+     },
+     {
+      "expr": "(450 - 20) / 450 * 100",
+      "why": "Subtract old from new: (20 - 450). The catch fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "places": 1,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       450,
+       20
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         20,
+         450
+        ]
+       },
+       "why": "That is the change from 2000 back to 1980. Start from 1980."
+      },
+      {
+       "value": -430,
+       "why": "-430 is the change in thousand metric tons. Divide by 450 and multiply by 100."
+      }
+     ]
+    }
+   },
+   "stimulus": "overfishing-s1"
+  },
+  {
+   "id": "env-overfishing-11",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Fishing was banned in 1995 and the catch shown after 1995 is from a small research fishery. What does the graph suggest about recovery?",
+   "options": [
+    "Recovery is slow: 20 years after the ban the catch is still far below the 1980 peak",
+    "Recovery was fast: the catch returned to its 1980 level within five years of the ban",
+    "The ban made things worse, since the catch kept falling for the next 20 years",
+    "The ban had no effect, since the catch was the same before and after the ban"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From 2000 to 2015 the catch rose only from 20 to 30, far below 450.",
+    "options": [
+     "Right: a very slow recovery.",
+     "The catch never came close to 450 after 1995.",
+     "The catch rose slightly after 2005.",
+     "The catch was 60 in 1995 and 30 in 2015."
+    ]
+   },
+   "stimulus": "overfishing-s1"
+  },
+  {
+   "id": "env-overfishing-12",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town depends on this fishery for jobs. What does the graph imply for the town's economy?",
+   "options": [
+    "Fishing jobs were lost in the 1990s and are unlikely to return soon",
+    "Jobs tied to the fishery doubled in the 1990s as the catch rose",
+    "The town's jobs were not affected because the catch did not change",
+    "The town gained jobs in 1995 because the ban created new fishing work"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A collapse from 450 to 20 thousand metric tons wiped out most fishing work, and slow recovery means it stays gone.",
+    "options": [
+     "Right: collapse means lost jobs that are slow to return.",
+     "The catch fell in the 1990s; it did not rise.",
+     "The catch changed enormously.",
+     "A ban on fishing does not create fishing jobs."
+    ]
+   },
+   "stimulus": "overfishing-s1"
+  },
+  {
+   "id": "env-overfishing-13",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the total mass brought on board was bycatch (everything except the shrimp)?",
+   "why": {
+    "correct": "Total: $1{,}200 + 4{,}800 + 900 + 60 + 240 = 7{,}200$ kg. Bycatch: $7{,}200 - 1{,}200 = 6{,}000$ kg. Percent: $\\frac{6{,}000}{7{,}200} \\times 100 \\approx 83.3\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        4800,
+        900,
+        60,
+        240
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        1200,
+        4800,
+        900,
+        60,
+        240
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "places": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        1200,
+        7200
+       ]
+      },
+      "why": "16.7% is the shrimp. Bycatch is everything else: 6,000 of 7,200 kg."
+     },
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        6000,
+        1200
+       ]
+      },
+      "why": "Divide by the total catch (7,200 kg), not the shrimp alone."
+     }
+    ]
+   },
+   "stimulus": "overfishing-s2"
+  },
+  {
+   "id": "env-overfishing-14",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many kilograms of bycatch were caught for each kilogram of shrimp?",
+   "why": {
+    "correct": "$\\frac{6{,}000\\,\\text{kg bycatch}}{1{,}200\\,\\text{kg shrimp}} = 5$ kg of bycatch per kg of shrimp."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      6000,
+      1200
+     ]
+    },
+    "unit": "kg",
+    "units": [
+     "kg bycatch per kg shrimp",
+     "kg/kg"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1200,
+        6000
+       ]
+      },
+      "why": "Put the bycatch on top: 6,000 kg of bycatch ÷ 1,200 kg of shrimp."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        7200,
+        1200
+       ]
+      },
+      "why": "7,200 kg includes the shrimp. Use the bycatch alone, 6,000 kg."
+     }
+    ]
+   },
+   "stimulus": "overfishing-s2"
+  },
+  {
+   "id": "env-overfishing-15",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which policy would best address the problem shown in the table?",
+   "options": [
+    "A law requiring bycatch-reduction devices in shrimp nets",
+    "A law raising the price that shrimp sell for in stores across the country",
+    "A subsidy that helps shrimp boats buy larger and heavier nets",
+    "A rule that shrimp may be sold in markets at night but not by day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The table shows five times more bycatch than shrimp. A law requiring devices that let nontarget animals escape targets that directly, and inspections enforce it.",
+    "options": [
+     "Right: a rule on gear, enforced, cuts bycatch at the source.",
+     "Higher prices do not change what nets catch.",
+     "Larger nets catch more bycatch.",
+     "The time of sale does not change what is caught."
+    ]
+   },
+   "stimulus": "overfishing-s2"
+  },
+  {
+   "id": "env-overfishing-16",
+   "unit": "unit-5",
+   "topic": "overfishing",
+   "type": "multi",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which of these is a policy that would reduce overfishing? Select all that apply.",
+   "options": [
+    "A law setting a yearly catch limit for each species, based on stock surveys",
+    "Government payments that lower the cost of fuel for fishing boats",
+    "Removing the limits so boats compete freely for the fish",
+    "Allowing bottom trawling across the whole sea floor",
+    "Sonar that helps each boat find schools of fish faster"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A catch limit set by law keeps the catch below what the stock can replace. The others increase fishing or are a technology, not a policy.",
+    "options": [
+     "Right: a legal catch limit caps how much is taken.",
+     "Fuel subsidies make fishing cheaper, so boats fish more.",
+     "Open access is the tragedy of the commons.",
+     "Trawling everywhere destroys sea-floor habitat.",
+     "Sonar is a technology, and it makes catching fish easier, not harder."
+    ]
+   }
+  }
+ ]
+}

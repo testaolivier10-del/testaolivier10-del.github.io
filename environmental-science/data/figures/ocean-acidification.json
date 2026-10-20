@@ -1,0 +1,12 @@
+{
+ "ocean-acidification-carbonate": {
+  "file": "figures/ocean-acidification-carbonate.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Carbon dioxide from the air dissolves in the surface ocean. CO2 + H2O forms H2CO3, carbonic acid, which releases a hydrogen ion and a bicarbonate ion (H+ + HCO3-): more hydrogen ions, so pH falls. Hydrogen ions also combine with carbonate ions (H+ + CO3 2- gives HCO3-), so fewer carbonate ions are left for corals and shellfish to build calcium carbonate. A pH scale below shows average surface ocean pH of about 8.2 around 1750, about 8.1 today and about 7.8 by 2100 if emissions stay high."
+ }
+}

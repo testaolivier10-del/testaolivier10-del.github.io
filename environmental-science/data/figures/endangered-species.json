@@ -1,0 +1,12 @@
+{
+ "endangered-species-categories": {
+  "file": "figures/endangered-species-categories.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left, traits that raise extinction risk: specialist with a narrow diet or habitat; slow reproduction (K-selected); small or isolated population; needs a large territory; low genetic diversity; hunted or traded for parts. An arrow points right to what protects species: the Endangered Species Act, a US law that lists species, bans harming them and protects habitat they need; CITES, an international treaty that controls trade in protected species and their parts; protected areas and captive breeding. Footer: threatened means likely to become endangered soon; endangered means in danger of extinction in all or much of its range."
+ }
+}

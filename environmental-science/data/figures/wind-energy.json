@@ -1,0 +1,12 @@
+{
+ "wind-energy-turbine": {
+  "file": "figures/wind-energy-turbine.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A wind turbine on a tall tower with three blades and a nacelle. Wind arrows push on the blades. A callout of the inside of the nacelle shows a shaft, a gearbox and a generator in a row: faster rotation, generator, electricity. An arrow at the base carries electricity to power lines. A list reads: no fuel and no emissions while running; land below can still be farmed or grazed; output varies with the wind (intermittent); blades can kill birds and bats."
+ }
+}

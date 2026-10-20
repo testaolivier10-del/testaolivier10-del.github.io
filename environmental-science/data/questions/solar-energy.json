@@ -1,0 +1,572 @@
+{
+ "stimuli": {
+  "solar-energy-s1": {
+   "kind": "quantitative",
+   "title": "Monthly output of a home solar system",
+   "invented": true,
+   "plot": {
+    "label": "Monthly electricity output of a rooftop photovoltaic system in the Northern Hemisphere, higher in summer, invented data for practice",
+    "kind": "bar",
+    "width": 600,
+    "height": 280,
+    "xLabel": "Month",
+    "yLabel": "Electricity (kWh)",
+    "y": [
+     0,
+     700
+    ],
+    "categories": [
+     "Jan",
+     "Feb",
+     "Mar",
+     "Apr",
+     "May",
+     "Jun",
+     "Jul",
+     "Aug",
+     "Sep",
+     "Oct",
+     "Nov",
+     "Dec"
+    ],
+    "values": [
+     300,
+     340,
+     450,
+     520,
+     580,
+     600,
+     610,
+     570,
+     480,
+     400,
+     310,
+     280
+    ]
+   },
+   "text": "A rooftop photovoltaic system in the Northern Hemisphere."
+  },
+  "solar-energy-s2": {
+   "kind": "visual",
+   "title": "Three ways to use solar energy",
+   "figure": "solar-energy-three-ways"
+  }
+ },
+ "items": [
+  {
+   "id": "env-solar-energy-1",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does a photovoltaic cell do?",
+   "options": [
+    "Heats water in roof pipes with sunlight and a pump",
+    "Stores the sun's heat in a thick stone floor for the night",
+    "Burns fuel to make steam whenever the sun goes down",
+    "Turns sunlight directly into an electric current"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A photovoltaic (PV) cell is a semiconductor that turns light directly into an electric current, with no moving parts.",
+    "options": [
+     "Heating water with collectors and pumps is active solar heating.",
+     "Storing heat in a thick floor is passive solar design.",
+     "Burning fuel is not solar energy.",
+     "Right: light directly to electricity."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-2",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which home feature is an example of passive solar heating?",
+   "options": [
+    "Photovoltaic panels on the roof wired to an inverter in the garage",
+    "An electric heater powered by a nearby solar farm",
+    "Large south-facing windows and a thick stone floor",
+    "Roof panels that pump hot fluid to a storage tank in the basement"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Passive solar design uses the building itself: windows facing the sun (south, in the Northern Hemisphere), thermal mass such as stone or concrete floors, and overhangs that shade summer sun. No pumps or fans.",
+    "options": [
+     "PV panels make electricity; that is not passive heating.",
+     "An electric heater uses electricity made elsewhere, not the building's design.",
+     "Right: windows and thermal mass, no moving parts.",
+     "Pumps and a tank make this an active solar system."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-3",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A passive solar house in the Northern Hemisphere has a roof overhang above its south windows. Why does the overhang help?",
+   "options": [
+    "It reflects sunlight into the house in summer to cut lighting needs",
+    "It shades the high summer sun but lets in the low winter sun",
+    "It blocks the sun year-round so the house stays cool",
+    "It collects rainwater that cools the windows in hot weather"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In summer the sun is high, so the overhang shades the windows; in winter the sun is low and shines in under it.",
+    "options": [
+     "Letting summer sun in would overheat the house.",
+     "Right: the sun's angle changes with the seasons.",
+     "Blocking winter sun would defeat the design.",
+     "An overhang shades; it does not cool by collecting rain."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-4",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is intermittency, and why is it a problem for solar power?",
+   "options": [
+    "Output varies with clouds, seasons and night, so storage or backup is needed",
+    "Panels wear out after a few weeks, so they are replaced often",
+    "Sunlight releases carbon dioxide when it strikes the panels",
+    "Solar panels use up the sunlight, so less reaches the next panel"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Intermittency means the source is not available all the time. Solar output drops to zero at night and falls on cloudy days and in winter.",
+    "options": [
+     "Right: variable output needs storage or backup.",
+     "Panels usually last about 25 to 30 years.",
+     "Sunlight striking a panel releases nothing.",
+     "Each panel collects the light that falls on it; it does not use up sunlight elsewhere."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-5",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a concentrated solar power plant make electricity?",
+   "options": [
+    "Photovoltaic cells on mirrors turn sunlight into electricity directly",
+    "Sunlight splits water into hydrogen, which is burned in a boiler",
+    "Dark panels absorb heat and store it in rock for later heating",
+    "Mirrors focus sunlight to heat a fluid that makes steam for a turbine"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fields of mirrors focus sunlight on a receiver. The heated fluid makes steam that drives a turbine and generator, and molten salt can store heat for hours.",
+    "options": [
+     "That describes photovoltaic panels, which do not use mirrors to make steam.",
+     "These plants heat a fluid; they do not make hydrogen.",
+     "Storing heat in rock is passive heating, not electricity generation.",
+     "Right: focused sunlight, then steam, turbine and generator."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-6",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is an environmental disadvantage of large solar farms in deserts?",
+   "options": [
+    "They raise the water table under the panels and flood the desert",
+    "They make the desert colder by blocking the wind",
+    "They cover large areas of land and can disturb desert habitat",
+    "They release carbon dioxide each time the panels make electricity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Solar farms need a lot of land. In deserts they can disturb slow-growing plants and animals such as desert tortoises. Mining and making panels also has impacts.",
+    "options": [
+     "Solar farms do not add water; concentrated solar plants may use water for cooling.",
+     "Panels do not block the wind enough to cool a desert.",
+     "Right: land use and habitat disturbance.",
+     "Panels release nothing while making electricity."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-7",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of rooftop photovoltaic panels compared with a coal plant?",
+   "options": [
+    "They need no space, because they are invisible",
+    "No air pollution or carbon dioxide while making electricity",
+    "They make the same amount of electricity at night as in the day",
+    "They need no materials that are mined or manufactured"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "PV panels have no fuel and release nothing while they run. Making them uses energy and mined materials, and they produce nothing at night.",
+    "options": [
+     "Panels take roof or ground space.",
+     "Right: no emissions while running.",
+     "Output is zero at night.",
+     "Panels contain silicon, metals and glass that must be mined and made."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-8",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In which month does the home system produce the least electricity?",
+   "stimulus": "solar-energy-s1",
+   "options": [
+    "December",
+    "June",
+    "July",
+    "January"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "December has the shortest days and lowest sun angle in the Northern Hemisphere: 280 kWh.",
+    "options": [
+     "Right: 280 kWh in December.",
+     "June is near the highest, 600 kWh.",
+     "July is the highest, 610 kWh.",
+     "January is low (300 kWh) but not the lowest."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-9",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the system's total output for the year, in kWh?",
+   "stimulus": "solar-energy-s1",
+   "why": {
+    "correct": "Add the 12 months: $300 + 340 + 450 + 520 + 580 + 600 + 610 + 570 + 480 + 400 + 310 + 280 = 5{,}440$ kWh."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      300,
+      340,
+      450,
+      520,
+      580,
+      600,
+      610,
+      570,
+      480,
+      400,
+      310,
+      280
+     ]
+    },
+    "unit": "kWh",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        610,
+        12
+       ]
+      },
+      "why": "You multiplied the best month by 12. Output changes month to month, so add all 12 values."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        280,
+        12
+       ]
+      },
+      "why": "You multiplied the lowest month by 12. Add each month's value."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-10",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The household pays \\$0.16 per kWh. Write the setup for the yearly money saved by the 5,440 kWh the system makes, then give the answer.",
+   "stimulus": "solar-energy-s1",
+   "why": {
+    "correct": "$5{,}440\\,\\text{kWh} \\times \\frac{\\$0.16}{1\\,\\text{kWh}} = \\$870.40$."
+   },
+   "setup": {
+    "answer": "5440 kWh * 0.16 $/kWh",
+    "unit": "$",
+    "mustUse": [
+     "5440",
+     "0.16"
+    ],
+    "mistakes": [
+     {
+      "expr": "5440 kWh / (0.16 $/kWh)",
+      "why": "Dividing by the price gives kWh squared per dollar. Multiply kWh by dollars per kWh so kWh cancels."
+     }
+    ],
+    "then": {
+     "unit": "$",
+     "from": {
+      "fn": "cost",
+      "args": [
+       5440,
+       0.16
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         5440,
+         0.16
+        ]
+       },
+       "check": 34000,
+       "why": "You divided by the price. Multiply the kWh by the price per kWh."
+      },
+      {
+       "value": 87040,
+       "why": "You used 16 instead of 0.16. The price is 16 cents, or 0.16 dollars, per kWh."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-solar-energy-11",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain why the system makes about twice as much electricity in July as in December.",
+   "stimulus": "solar-energy-s1",
+   "why": {
+    "correct": "In summer the sun is higher and days are longer, so more sunlight strikes each square meter of panel for more hours."
+   },
+   "specific": {
+    "frame": "In July ___, so ___, and output is higher.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "the sun is higher in the sky and the days are longer",
+       "the panels are cooler and cleaner",
+       "Earth is closer to the sun"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Hot panels are actually a little less efficient; cleanliness does not double output.",
+       "2": "Earth is closest to the sun in early January; seasons come from the tilt."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "more sunlight reaches each square meter for more hours a day",
+       "the panels change sunlight into heat instead",
+       "less sunlight is reflected by the clouds"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "PV panels make electricity; they are not heaters.",
+       "2": "Clouds are not shown in the data, and they do not explain a steady seasonal pattern."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "sun",
+      "July",
+      "December",
+      "days"
+     ]
+    },
+    "model": "In July the sun is higher in the sky and the days are longer, so more sunlight reaches each square meter of panel for more hours each day, which increases output to about twice December's because the panels turn more light into electricity."
+   }
+  },
+  {
+   "id": "env-solar-energy-12",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which panel of the diagram is the only one that makes electricity?",
+   "stimulus": "solar-energy-s2",
+   "options": [
+    "Photovoltaic",
+    "Active solar heating",
+    "Passive solar design",
+    "Each of the three makes electricity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only the PV panel turns light into electricity; the other two make heat.",
+    "options": [
+     "Right: PV makes electricity.",
+     "Active systems heat a fluid for hot water or space heating.",
+     "Passive design heats the building itself.",
+     "Two of the three make heat, not electricity."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-13",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, what is the main difference between active and passive solar heating?",
+   "stimulus": "solar-energy-s2",
+   "options": [
+    "Active systems make electricity; passive systems make heat",
+    "Passive systems need batteries; active systems do not",
+    "Active systems work at night; passive systems work by day",
+    "Active systems use pumps or fans; passive systems use the building's design"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The active panel shows a pump moving fluid to a tank; the passive house uses windows, an overhang and a thick floor.",
+    "options": [
+     "Both of these make heat, not electricity.",
+     "Passive design has no batteries; it stores heat in thermal mass.",
+     "Both collect sunlight during the day.",
+     "Right: moving parts versus design."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-14",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A family in Australia (Southern Hemisphere) builds the passive solar house in the diagram. Which change should they make?",
+   "stimulus": "solar-energy-s2",
+   "options": [
+    "Remove the thick floor so the house heats faster",
+    "Remove the overhang so summer sun can enter",
+    "Face the large windows north instead of south",
+    "Face the large windows west to catch the evening sun"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the Southern Hemisphere the sun is in the northern sky, so sun-facing windows face north. The diagram's note says this.",
+    "options": [
+     "The thick floor stores heat for the night.",
+     "Summer sun would overheat the house.",
+     "Right: the sun is to the north south of the equator.",
+     "West windows overheat the house on summer evenings."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-15",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are drawbacks of photovoltaic solar power? Select all that apply.",
+   "options": [
+    "No output at night",
+    "Noise from spinning parts inside each panel",
+    "Carbon dioxide released while running",
+    "Warm cooling water returned to rivers",
+    "Radioactive waste from used panels",
+    "Fuel that has to be bought each month"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Of these, only intermittency is a drawback of PV: no sunlight, no output. Panels have no moving parts, burn nothing, need no cooling water and make no radioactive waste. (Their real drawbacks also include land use and the mining and manufacturing behind them.)",
+    "options": [
+     "Right: intermittency.",
+     "A PV cell has no moving parts; light frees electrons in the silicon.",
+     "Panels release nothing while making electricity.",
+     "PV makes no steam, so it needs no cooling water; that is a drawback of steam power plants.",
+     "Old panels are discarded electronics, not radioactive waste.",
+     "Sunlight is free; there is no fuel to buy."
+    ]
+   }
+  },
+  {
+   "id": "env-solar-energy-16",
+   "unit": "unit-6",
+   "topic": "solar-energy",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A school installs PV panels and wants to use solar electricity after sunset. What should it add?",
+   "options": [
+    "Batteries that store electricity made during the day",
+    "More panels facing away from the sun",
+    "A passive solar overhang above the panels",
+    "A thicker concrete floor in the classrooms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Batteries store daytime output for evening use; a grid connection can also supply power at night.",
+    "options": [
+     "Right: storage covers the hours without sun.",
+     "Panels facing away from the sun make less electricity.",
+     "An overhang would shade the panels.",
+     "A thick floor stores heat, not electricity."
+    ]
+   }
+  }
+ ]
+}

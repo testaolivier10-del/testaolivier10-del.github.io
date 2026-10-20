@@ -1,0 +1,12 @@
+{
+ "tragedy-of-commons-pasture": {
+  "file": "figures/tragedy-of-commons-pasture.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a bar chart for one herder who adds one cow to a pasture shared by 10 herders. The gain bar is 100% of one cow's value, because the herder keeps the whole cow. The cost bar is 10%, because the lost grass is shared by all 10 herders. Right: a loop. Each herder adds cows, grass is eaten faster than it regrows, bare soil erodes, and there is less grass for every herd."
+ }
+}

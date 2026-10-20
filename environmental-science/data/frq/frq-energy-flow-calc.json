@@ -1,0 +1,266 @@
+{
+ "id": "frq-energy-flow-calc",
+ "type": "calc",
+ "points": 10,
+ "title": "Energy flow in a grassland reserve",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "energy-flow",
+  "primary-productivity",
+  "food-webs"
+ ],
+ "practices": [
+  "6.B",
+  "6.C",
+  "1.B",
+  "2.B"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "Producer data for a grassland reserve",
+  "invented": true,
+  "table": {
+   "caption": "Measurements for the producers of a 3 km² grassland reserve (invented data for practice). 1 km² = 1,000,000 m².",
+   "cols": [
+    "Measurement",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Gross primary productivity (GPP)",
+     "6,000 kcal/m²/yr"
+    ],
+    [
+     "Energy used by the producers in respiration (R)",
+     "3,000 kcal/m²/yr"
+    ],
+    [
+     "Area of the reserve",
+     "3 km²"
+    ],
+    [
+     "Food chain",
+     "grasses → grasshoppers → meadowlarks → hawks"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the net primary productivity (NPP) of the grassland. Show your work and include units.",
+   "rubric": [
+    {
+     "point": "A correct setup: GPP minus respiration, with the values substituted",
+     "accept": [
+      "6,000 - 3,000",
+      "NPP = GPP - R = 6,000 - 3,000"
+     ]
+    },
+    {
+     "point": "The correct answer with units: 3,000 kcal/m²/yr",
+     "accept": [
+      "3,000 kcal per square meter per year",
+      "3.0 × 10³ kcal/m²/yr"
+     ]
+    }
+   ],
+   "sample": "NPP = GPP - R = 6,000 kcal/m²/yr - 3,000 kcal/m²/yr = 3,000 kcal/m²/yr.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "6000 - 3000",
+     "mustUse": [
+      "6000",
+      "3000"
+     ],
+     "mistakes": [
+      {
+       "expr": "6000 + 3000",
+       "why": "NPP is what is left after respiration: subtract R from GPP."
+      }
+     ],
+     "then": {
+      "unit": "kcal/m^2/yr",
+      "units": [
+       "kcal/m2/yr",
+       "kcal per m2 per year"
+      ],
+      "from": {
+       "fn": "npp",
+       "args": [
+        6000,
+        3000
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 9000,
+        "why": "You added GPP and R. NPP = GPP - R."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "Using your answer to part (a) and the 10% rule, <b>calculate</b> the energy available to the meadowlarks. Show your work and include units.",
+   "rubric": [
+    {
+     "point": "A correct setup: NPP times 0.10 for each of two steps (grasses to grasshoppers to meadowlarks)",
+     "accept": [
+      "3,000 × 0.10 × 0.10",
+      "3,000 × 0.01"
+     ]
+    },
+    {
+     "point": "The correct answer with units: 30 kcal/m²/yr (or consistent with an incorrect part (a))",
+     "accept": [
+      "30 kcal per square meter per year"
+     ]
+    }
+   ],
+   "sample": "Meadowlarks are secondary consumers, two steps above the producers: 3,000 kcal/m²/yr × 0.10 × 0.10 = 30 kcal/m²/yr.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "3000 * 0.10 * 0.10",
+     "mustUse": [
+      "3000"
+     ],
+     "mistakes": [
+      {
+       "expr": "3000 * 0.10 * 0.10 * 0.10",
+       "why": "That is three steps, which reaches the hawks. Meadowlarks are two steps above the grasses."
+      },
+      {
+       "expr": "6000 * 0.10 * 0.10",
+       "why": "Start from NPP (3,000), the energy stored by producers and available to consumers, not GPP."
+      }
+     ],
+     "then": {
+      "unit": "kcal/m^2/yr",
+      "units": [
+       "kcal/m2/yr",
+       "kcal per m2 per year"
+      ],
+      "from": {
+       "fn": "tenPercent",
+       "args": [
+        3000,
+        2
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 3,
+        "why": "You applied the 10% rule three times. Grasses to meadowlarks is two steps."
+       },
+       {
+        "value": 60,
+        "why": "You started from GPP. Use NPP, 3,000 kcal/m²/yr."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the total energy available to the meadowlarks in the whole 3 km² reserve each year. Show your work and include units.",
+   "rubric": [
+    {
+     "point": "A correct setup that converts km² to m² and multiplies by the energy per m² from part (b)",
+     "accept": [
+      "30 kcal/m²/yr × 3 km² × 1,000,000 m²/km²",
+      "30 × 3,000,000"
+     ]
+    },
+    {
+     "point": "The correct answer with units: 9 × 10⁷ kcal/yr (or consistent with part (b))",
+     "accept": [
+      "90,000,000 kcal per year",
+      "90 million kcal/yr"
+     ]
+    }
+   ],
+   "sample": "3 km² × 1,000,000 m²/1 km² = 3,000,000 m². 30 kcal/m²/yr × 3,000,000 m² = 90,000,000 kcal/yr = 9 × 10⁷ kcal/yr.",
+   "check": {
+    "type": "numeric",
+    "numeric": {
+     "unit": "kcal/yr",
+     "units": [
+      "kcal per year",
+      "kcal/year"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       30,
+       3,
+       1000000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 90,
+       "why": "You left the area in km². Convert 3 km² to 3,000,000 m² before multiplying by kcal per m²."
+      },
+      {
+       "value": 30000000,
+       "why": "That is one square kilometer. The reserve is 3 km², so multiply by 3 as well."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Explain</b> why only about 10% of the energy in the grasshoppers is available to the meadowlarks.",
+   "rubric": [
+    {
+     "point": "Most energy is used by the grasshoppers for cellular respiration (movement, growth, body heat) and released as heat",
+     "accept": [
+      "energy is lost as heat in respiration",
+      "the second law of thermodynamics: each transfer releases heat"
+     ]
+    },
+    {
+     "point": "Some energy is never passed on: parts are not eaten or not digested and leave as waste, going to decomposers",
+     "accept": [
+      "not all of the grasshopper is eaten",
+      "energy is lost in feces"
+     ]
+    }
+   ],
+   "sample": "Grasshoppers use most of the energy they take in for cellular respiration to move, grow and stay alive, and that energy is released as heat, which meadowlarks cannot use. Also, some grasshoppers are never eaten, and some of what is eaten is not digested and leaves as waste, so its energy goes to decomposers instead."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "A rancher proposes removing the hawks from the reserve. <b>Describe</b> the most likely effect on the meadowlark population, and <b>explain</b> one effect this could have on the grasshoppers.",
+   "rubric": [
+    {
+     "point": "Meadowlarks increase, because fewer are eaten by hawks",
+     "accept": [
+      "the meadowlark population grows with fewer predators"
+     ]
+    },
+    {
+     "point": "Grasshoppers decrease, because more meadowlarks eat more grasshoppers",
+     "accept": [
+      "more grasshoppers are eaten, so their population falls"
+     ]
+    }
+   ],
+   "sample": "Without hawks, fewer meadowlarks are killed by predators, so the meadowlark population increases. With more meadowlarks feeding, more grasshoppers are eaten, so the grasshopper population decreases."
+  }
+ ]
+}

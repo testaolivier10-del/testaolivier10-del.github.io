@@ -1,0 +1,23 @@
+{
+ "crop-rotation": {
+  "def": "Growing different crops in a field in a planned order from year to year, for example corn, then soybeans, then wheat. It breaks pest and disease cycles and, when a legume is included, adds nitrogen to the soil."
+ },
+ "contour-plowing": {
+  "def": "Plowing and planting in rows that follow the contour lines of a slope (across it) rather than running up and down it. Each row acts as a small dam that slows runoff and catches soil."
+ },
+ "terracing": {
+  "def": "Cutting a steep slope into a series of flat steps (terraces) for growing crops. Each step holds water and soil, shortening the distance water can run downhill."
+ },
+ "windbreak": {
+  "def": "A row of trees or shrubs planted along the edge of a field to slow the wind, reducing wind erosion and the drying of soil and crops. Windbreaks can also give habitat and wood."
+ },
+ "strip-cropping": {
+  "def": "Planting alternating strips of different crops, often a row crop such as corn beside a dense cover crop such as hay or clover, across a slope. The dense strips slow runoff and catch soil washed from the row-crop strips."
+ },
+ "no-till": {
+  "def": "Planting seeds directly into the leftover residue of the last crop without plowing. The residue protects the soil, so erosion falls, more water soaks in, and soil organic matter builds up; weeds are usually controlled with herbicides or cover crops instead."
+ },
+ "organic-fertilizer": {
+  "def": "Fertilizer from living things, such as manure, compost and plowed-in legumes. It releases nutrients slowly and adds organic matter that helps soil hold water and nutrients, but its nutrient content varies and is lower per kilogram than synthetic fertilizer."
+ }
+}

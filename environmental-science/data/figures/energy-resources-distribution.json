@@ -1,0 +1,12 @@
+{
+ "energy-resources-distribution-landscape": {
+  "file": "figures/energy-resources-distribution-landscape.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A landscape cross-section. Wind arrows over the coast and plains; a river falling from mountains to a dam; a dashed line from a mountain peak down to an oval of hot rock near a plate boundary, Earth's internal heat; a sun over dry, low-latitude land with strong sunlight; and curved sedimentary rock layers under the plain holding natural gas, coal and oil."
+ }
+}

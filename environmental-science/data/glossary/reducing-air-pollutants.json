@@ -1,0 +1,17 @@
+{
+ "scrubber": {
+  "def": "A device on a smokestack that removes sulfur dioxide (and some particles) from exhaust. A wet scrubber sprays a mixture of water and limestone; the SO2 reacts and is captured as a solid."
+ },
+ "catalytic-converter": {
+  "def": "A device in a vehicle's exhaust system that uses metal catalysts to change carbon monoxide into CO2, nitrogen oxides into nitrogen gas, and unburned hydrocarbons into CO2 and water."
+ },
+ "electrostatic-precipitator": {
+  "def": "A device that removes particles from smokestack gas by giving them an electric charge and collecting them on plates with the opposite charge."
+ },
+ "baghouse": {
+  "def": "A baghouse filter: a set of large fabric bags that smokestack gas is forced through, trapping particles the way a vacuum cleaner bag does."
+ },
+ "vapor-recovery": {
+  "def": "A vapor recovery nozzle: a gas pump nozzle that captures gasoline vapor (VOCs) pushed out of a car's tank during refueling and returns it to the station's storage tank."
+ }
+}

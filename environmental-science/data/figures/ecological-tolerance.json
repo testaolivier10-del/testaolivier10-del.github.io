@@ -1,0 +1,12 @@
+{
+ "ecological-tolerance-zones": {
+  "file": "figures/ecological-tolerance-zones.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Range of tolerance for an invented fish species against water temperature. The curve of fish numbers is highest in the optimal range, 16 to 26 °C, low in the zones of physiological stress, 8 to 16 °C and 26 to 33 °C, and zero in the zones of intolerance below 8 °C and above 33 °C."
+ }
+}

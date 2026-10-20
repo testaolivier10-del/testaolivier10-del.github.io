@@ -1,0 +1,68 @@
+{
+ "topic": "carbon-cycle",
+ "hook": "The carbon in your body was, not long ago, carbon dioxide in the air. A plant pulled it in, you ate the plant, and you breathe some of it back out every few seconds. Other carbon has stayed locked in rock for a hundred million years. Burning coal, oil and natural gas takes that ancient carbon and puts it into the air in an instant.",
+ "prereq": [
+  {
+   "q": "Which is a biotic part of an ecosystem?",
+   "options": [
+    "Bacteria in the soil",
+    "Sunlight",
+    "Rain",
+    "Minerals"
+   ],
+   "correct": 0,
+   "why": "Bacteria are living.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "What is $3.0 \\times 10^{4} \\times 2.0 \\times 10^{3}$?",
+   "options": [
+    "$6.0 \\times 10^{7}$",
+    "$6.0 \\times 10^{12}$",
+    "$5.0 \\times 10^{7}$",
+    "$6.0 \\times 10^{1}$"
+   ],
+   "correct": 0,
+   "why": "Multiply the fronts (6.0) and add the exponents (4 + 3 = 7).",
+   "review": "math-sci-notation"
+  }
+ ],
+ "figure": {
+  "figure": "carbon-cycle-reservoirs",
+  "caption": "Carbon reservoirs and the processes that move carbon between them."
+ },
+ "chain": [
+  {
+   "cause": "Photosynthesis takes CO2 from the air",
+   "effect": "carbon is stored in plants and the animals that eat them"
+  },
+  {
+   "cause": "Respiration and decomposition break those sugars down",
+   "effect": "CO2 returns to the air"
+  },
+  {
+   "cause": "Combustion of fossil fuels releases carbon buried for millions of years",
+   "effect": "CO2 builds up in the atmosphere faster than sinks can take it back"
+  }
+ ],
+ "ideas": [
+  "Carbon moves between <b>reservoirs</b> (air, living things, soil, ocean, rock, <b>fossil fuels</b>); each movement is a <b>flux</b>.",
+  "<b>Photosynthesis</b> removes CO2; <b>cellular respiration</b>, <b>decomposition</b> and <b>combustion</b> release it.",
+  "A <b>carbon sink</b> takes in more carbon than it releases (forests, the ocean); a carbon source releases more than it takes in.",
+  "The fast cycle (air, life, ocean surface) turns over in days to centuries; the slow cycle (<b>sedimentation</b>, rock, fossil fuels) takes millions of years."
+ ],
+ "misconception": {
+  "wrong": "Trees store CO2.",
+  "right": "Trees take in CO2 but store the <b>carbon</b>, built into sugars, wood and leaves; the oxygen is released. Say \"trees store carbon\"."
+ },
+ "check": [
+  "env-carbon-cycle-4",
+  "env-carbon-cycle-10",
+  "env-carbon-cycle-11",
+  "env-carbon-cycle-12",
+  "env-carbon-cycle-13",
+  "env-carbon-cycle-14",
+  "env-carbon-cycle-15"
+ ],
+ "summary": "Carbon cycles among the atmosphere, living things, soil, the ocean, sediments and rock, and fossil fuels. Photosynthesis removes CO2 from the air; respiration, decomposition and combustion return it. The ocean and growing forests act as carbon sinks. Burning fossil fuels moves slow-cycle carbon into the air far faster than sinks remove it, so atmospheric CO2 rises."
+}

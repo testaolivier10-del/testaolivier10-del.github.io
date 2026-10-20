@@ -1,0 +1,12 @@
+{
+ "survivorship-curves-types": {
+  "file": "figures/survivorship-curves-types.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three survivorship curves on a log scale, starting from 1,000 newborns. Type I stays near 1,000 until late in life, then drops steeply (most die old). Type II falls as a straight line on the log scale, so the same fraction die at every age. Type III drops to about 40 by 10% of the life span, then levels off (most die young)."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "ecosystem-services-categories": {
+  "file": "figures/ecosystem-services-categories.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four boxes for the four kinds of ecosystem services. Provisioning: food and fish, timber and fiber, fresh water, medicines. Regulating: pollination of crops, flood control by wetlands, water purification, carbon storage in forests. Cultural: recreation and tourism, spiritual and aesthetic value, education and research. Supporting: photosynthesis, nutrient cycling, soil building, habitat for species."
+ }
+}

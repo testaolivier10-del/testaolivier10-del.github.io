@@ -1,0 +1,12 @@
+{
+ "fuel-types-coal-ranks": {
+  "file": "figures/fuel-types-coal-ranks.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four boxes in a row: peat, partly decayed plant material; lignite, soft brown moist coal; bituminous, hard black coal widely burned for electricity; anthracite, hardest and highest in carbon. An arrow underneath reads more heat, pressure, depth of burial and time. Bars show carbon content and energy per kilogram rising from peat to anthracite and moisture falling."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "reducing-air-pollutants",
+ "hook": "Two coal plants burn the same coal. One sends a gray plume and 40,000 metric tons of sulfur dioxide a year out of its stack. The other sends out a thin white plume of steam and 2,000 metric tons. The difference is a tower of limestone spray and a set of charged metal plates, put there because a law required the cut.",
+ "prereq": [
+  {
+   "q": "Which pollutant is released mainly by burning coal?",
+   "options": [
+    "Sulfur dioxide",
+    "Ozone",
+    "Radon",
+    "Formaldehyde"
+   ],
+   "correct": 0,
+   "why": "Sulfur in coal becomes SO2 when it burns.",
+   "review": "air-pollution"
+  },
+  {
+   "q": "What two ingredients react in sunlight to form photochemical smog?",
+   "options": [
+    "NOx and VOCs",
+    "SO2 and CO2",
+    "CO and lead",
+    "Radon and dust"
+   ],
+   "correct": 0,
+   "why": "NOx and VOCs in sunlight make ground-level ozone.",
+   "review": "photochemical-smog"
+  }
+ ],
+ "figure": {
+  "figure": "reducing-air-pollutants-devices",
+  "caption": "Each control device removes particular pollutants. Match the device to the pollutant, and know where it sits."
+ },
+ "chain": [
+  {
+   "cause": "A law or rule sets a limit on a pollutant",
+   "effect": "a plant or carmaker must cut its emissions"
+  },
+  {
+   "cause": "They choose a method: cleaner fuel before burning, better burning, or a device after burning",
+   "effect": "the pollutant is prevented, changed, or captured"
+  },
+  {
+   "cause": "Scrubbers capture SO2, precipitators and baghouses capture particles, catalytic converters change CO, NOx and hydrocarbons",
+   "effect": "less of each pollutant leaves the stack or tailpipe"
+  },
+  {
+   "cause": "Less SO2, NOx, VOCs and particles in the air",
+   "effect": "less smog, fewer acid-forming gases and fewer lung and heart problems"
+  }
+ ],
+ "ideas": [
+  "Coal plants: <b>scrubbers</b> (wet or dry, often limestone) remove SO2; <b>electrostatic precipitators</b> and <b>baghouse filters</b> remove particles. Low-sulfur coal and fluidized bed combustion also cut SO2; cooler burning cuts NOx.",
+  "Cars: <b>catalytic converters</b> turn CO into CO2, NOx into N2, and hydrocarbons into CO2 and water. <b>Vapor recovery nozzles</b> capture gasoline vapor (VOCs) at the pump, not exhaust.",
+  "Policies: emission limits, cap-and-trade permits, fuel standards, tax credits for clean energy, and transit that cuts driving. A policy is a rule; a device is a technology.",
+  "None of these devices removes CO2. Cutting CO2 means burning less fossil fuel."
+ ],
+ "misconception": {
+  "wrong": "Vapor recovery nozzles at gas pumps clean the car's exhaust.",
+  "right": "Vapor recovery nozzles capture gasoline vapor (VOCs) pushed out of the tank while it fills. Exhaust is cleaned by the catalytic converter."
+ },
+ "check": [
+  "env-reducing-air-pollutants-9",
+  "env-reducing-air-pollutants-10",
+  "env-reducing-air-pollutants-1",
+  "env-reducing-air-pollutants-2",
+  "env-reducing-air-pollutants-3",
+  "env-reducing-air-pollutants-12",
+  "env-reducing-air-pollutants-15"
+ ],
+ "summary": "Air pollutants are cut by using cleaner fuel, burning it better, or capturing pollutants after burning. Scrubbers remove SO2; electrostatic precipitators and baghouse filters remove particles; catalytic converters change CO, NOx and hydrocarbons into less harmful gases; vapor recovery nozzles capture gasoline vapor. Laws such as emission caps and cap-and-trade programs make these cuts happen. None of the devices removes CO2."
+}

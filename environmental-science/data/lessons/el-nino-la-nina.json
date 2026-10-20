@@ -1,0 +1,88 @@
+{
+ "topic": "el-nino-la-nina",
+ "hook": "Around Christmas some years, fishermen in Peru noticed the cold coastal water turning warm and the huge schools of anchovies vanishing. They called it El Niño, \"the boy\", after the Christ child. Today we know it is one half of a cycle in the Pacific that floods deserts in Peru, dries out forests in Indonesia and even nudges the weather in the United States.",
+ "prereq": [
+  {
+   "q": "Which way do the trade winds blow over the equatorial Pacific?",
+   "options": [
+    "From east to west, toward Asia and Australia",
+    "From west to east, toward South America",
+    "From the equator toward the poles",
+    "Straight up from the ocean"
+   ],
+   "correct": 0,
+   "why": "The trade winds blow from the east toward the west (and toward the equator).",
+   "review": "global-wind-patterns"
+  },
+  {
+   "q": "What mainly drives surface ocean currents?",
+   "options": [
+    "Prevailing winds",
+    "The tides",
+    "Rivers",
+    "Underwater volcanoes"
+   ],
+   "correct": 0,
+   "why": "Winds drag the surface water; Earth's rotation and the continents turn it into gyres.",
+   "review": "geo-and-climate"
+  },
+  {
+   "q": "Why do fish populations depend on nutrients in the water?",
+   "options": [
+    "Nutrients feed the phytoplankton at the base of the food web",
+    "Fish absorb nutrients directly through their skin for energy",
+    "Nutrients warm the water for fish",
+    "Nutrients make the water saltier"
+   ],
+   "correct": 0,
+   "why": "Phytoplankton need nutrients such as nitrate and phosphate; everything else eats them or eats something that does.",
+   "review": "food-webs"
+  }
+ ],
+ "figure": {
+  "figure": "el-nino-la-nina-compare",
+  "caption": "The equatorial Pacific in a normal year, an El Niño and a La Niña: trade winds, the warm surface layer, upwelling and where the rain falls."
+ },
+ "chain": [
+  {
+   "cause": "In a normal year the trade winds push warm surface water west",
+   "effect": "warm water piles up near Indonesia, and cold, nutrient-rich water upwells off Peru"
+  },
+  {
+   "cause": "In an El Niño the trade winds weaken",
+   "effect": "warm water spreads east, upwelling off South America weakens and the eastern Pacific warms"
+  },
+  {
+   "cause": "Fewer nutrients rise off Peru",
+   "effect": "phytoplankton decline, so anchovies, seabirds and the fishing industry suffer"
+  },
+  {
+   "cause": "The warm water, and the rising, rainy air above it, shift east",
+   "effect": "Peru and Ecuador flood while Indonesia and Australia face drought and wildfire"
+  },
+  {
+   "cause": "In a La Niña the trade winds strengthen",
+   "effect": "upwelling increases, the eastern Pacific cools and the rain stays farther west than normal"
+  }
+ ],
+ "ideas": [
+  "<b>Upwelling</b>: when wind pushes surface water away from a coast, cold, nutrient-rich water rises from below. It makes coasts like Peru's some of the richest fisheries on Earth.",
+  "<b>El Niño</b>: weak trade winds, warm water spreads east, weak upwelling off South America; rain shifts east (floods in Peru, the southern United States wetter in winter), drought in Indonesia and Australia.",
+  "<b>La Niña</b>: strong trade winds, strong upwelling, a cooler-than-average eastern Pacific; the reverse effects (drought in Peru and the southern United States, heavy rain in Indonesia and Australia).",
+  "Together they are the <b>El Niño-Southern Oscillation (ENSO)</b>, a natural cycle that swings every 2 to 7 years; each phase usually lasts about 9 to 12 months.",
+  "ENSO affects the whole world: El Niño years tend to be warmer globally and have fewer Atlantic hurricanes; La Niña years tend to have more."
+ ],
+ "misconception": {
+  "wrong": "El Niño and La Niña are the same thing, or La Niña is just a weaker El Niño.",
+  "right": "They are opposites. El Niño: weak trade winds, warm eastern Pacific, weak upwelling. La Niña: strong trade winds, cold eastern Pacific, strong upwelling. Remember: El Niño warms the water off Peru."
+ },
+ "check": [
+  "env-el-nino-la-nina-1",
+  "env-el-nino-la-nina-3",
+  "env-el-nino-la-nina-4",
+  "env-el-nino-la-nina-7",
+  "env-el-nino-la-nina-8",
+  "env-el-nino-la-nina-9"
+ ],
+ "summary": "Normally the trade winds push warm water west across the Pacific, and cold, nutrient-rich water upwells off South America. In El Niño the trade winds weaken, warm water spreads east, upwelling weakens, fisheries off Peru decline and the rain shifts east. In La Niña the trade winds strengthen, upwelling increases and the eastern Pacific cools. This natural cycle, ENSO, shifts weather around the world."
+}

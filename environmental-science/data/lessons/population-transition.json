@@ -1,0 +1,72 @@
+{
+ "topic": "population-transition",
+ "hook": "Two hundred years ago, nearly every country had high birth rates and high death rates, and populations grew slowly. Then, one country after another, death rates fell, populations boomed, and later birth rates fell too. The pattern has repeated so often, from England to Mexico to South Korea, that geographers drew it as a model: the demographic transition.",
+ "prereq": [
+  {
+   "q": "A country has a crude birth rate of 30 and a crude death rate of 10. What is its rate of natural increase?",
+   "options": [
+    "2%",
+    "20%",
+    "0.2%",
+    "3%"
+   ],
+   "correct": 0,
+   "why": "(30 - 10) / 10 = 2% a year.",
+   "review": "human-population"
+  },
+  {
+   "q": "Which change tends to lower a country’s total fertility rate?",
+   "options": [
+    "More schooling for girls and women",
+    "Earlier marriage",
+    "Higher infant mortality",
+    "Children working on family farms"
+   ],
+   "correct": 0,
+   "why": "Schooling delays marriage and widens choices, so families have fewer children.",
+   "review": "total-fertility-rate"
+  }
+ ],
+ "figure": {
+  "figure": "population-transition-model",
+  "caption": "The demographic transition model: crude birth and death rates through four stages. The shaded gap between them is natural increase."
+ },
+ "chain": [
+  {
+   "cause": "Stage 1: little medicine, unsafe water and unreliable food",
+   "effect": "birth and death rates are both high, so the population grows slowly"
+  },
+  {
+   "cause": "Stage 2: clean water, vaccines and steadier food arrive",
+   "effect": "the death rate falls fast while the birth rate stays high, so the population grows rapidly"
+  },
+  {
+   "cause": "Stage 3: people move to cities, girls go to school, infant mortality is low and family planning spreads",
+   "effect": "the birth rate falls, the gap narrows and growth slows"
+  },
+  {
+   "cause": "Stage 4: birth and death rates are both low",
+   "effect": "the population grows slowly, holds steady, or may start to shrink if births fall below deaths"
+  }
+ ],
+ "ideas": [
+  "The <b>demographic transition</b> model describes how a country’s crude birth and death rates change as it develops economically, in four stages.",
+  "<b>Preindustrial stage</b> (1): high birth and death rates, slow growth. <b>Transitional stage</b> (2): death rate falls, birth rate stays high, fastest growth.",
+  "<b>Industrial stage</b> (3): birth rate falls toward the death rate, growth slows. <b>Postindustrial stage</b> (4): both low, little or no growth, sometimes decline.",
+  "Each stage has a typical age structure: a wide base in stages 1 and 2, a narrowing base in stage 3, and a column or a narrow base in stage 4."
+ ],
+ "misconception": {
+  "wrong": "Populations grow fastest in stage 1, because the birth rate is highest then.",
+  "right": "Growth depends on the gap between births and deaths. In stage 1 both are high, so the gap is small. Growth is fastest in stage 2, when deaths have fallen but births have not."
+ },
+ "check": [
+  "env-population-transition-1",
+  "env-population-transition-2",
+  "env-population-transition-3",
+  "env-population-transition-5",
+  "env-population-transition-6",
+  "env-population-transition-8",
+  "env-population-transition-10"
+ ],
+ "summary": "The demographic transition model follows a country’s crude birth and death rates as it develops. In the preindustrial stage both are high and growth is slow; in the transitional stage the death rate falls first, so growth is fastest; in the industrial stage the birth rate falls and growth slows; in the postindustrial stage both are low and the population levels off or declines. Each stage has a typical age structure diagram."
+}

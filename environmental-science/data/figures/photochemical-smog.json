@@ -1,0 +1,12 @@
+{
+ "photochemical-smog-day": {
+  "file": "figures/photochemical-smog-day.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Line graph of NO, NO2 and ozone in parts per billion over one sunny day, invented data. NO peaks at 95 at 8 a.m., NO2 peaks at 85 at 9 a.m., and ozone rises to a peak of 120 at 2 p.m., then falls through the evening."
+ }
+}

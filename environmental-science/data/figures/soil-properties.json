@@ -1,0 +1,22 @@
+{
+ "soil-properties-texture-triangle": {
+  "file": "figures/soil-properties-texture-triangle.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The USDA soil texture triangle. Each side is a percent scale from 0 to 100: clay on the left side, silt on the right side, sand along the bottom. Lines of equal clay run across the triangle; lines of equal silt slope down to the left; lines of equal sand slope down to the right. The triangle is divided into twelve texture classes: clay at the top; silty clay, sandy clay, silty clay loam, clay loam and sandy clay loam below it; loam in the middle, shaded; silt loam and silt toward the bottom right; sandy loam, loamy sand and sand toward the bottom left. Loam is a balanced mix of sand, silt and clay, roughly 40% sand, 40% silt and 20% clay."
+ },
+ "soil-properties-samples": {
+  "file": "figures/soil-properties-samples.svg",
+  "ext": "svg",
+  "w": 620,
+  "h": 530,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The USDA soil texture triangle with four soil samples marked. Sample A: 70% sand, 8% silt, 22% clay, in the sandy clay loam class. Sample B: 40% sand, 40% silt, 20% clay, in the loam class. Sample C: 10% sand, 30% silt, 60% clay, in the clay class. Sample D: 20% sand, 74% silt, 6% clay, in the silt loam class. Invented samples for practice."
+ }
+}

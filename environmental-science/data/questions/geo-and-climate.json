@@ -1,0 +1,490 @@
+{
+ "stimuli": {
+  "geo-and-climate-s1": {
+   "kind": "visual",
+   "title": "Moist air crossing a mountain range",
+   "figure": "geo-and-climate-rain-shadow"
+  },
+  "geo-and-climate-s2": {
+   "kind": "quantitative",
+   "title": "Two towns on opposite sides of a mountain range",
+   "invented": true,
+   "table": {
+    "caption": "Two towns at about the same latitude and elevation, 120 km apart, with a mountain range between them; winds blow from the ocean toward the west slope (invented data for practice)",
+    "cols": [
+     "Town",
+     "Side of the range",
+     "Yearly precipitation (mm)",
+     "Coldest month average (°C)",
+     "Warmest month average (°C)"
+    ],
+    "rows": [
+     [
+      "Fernvale",
+      "West (facing the ocean)",
+      "2,200",
+      "5",
+      "17"
+     ],
+     [
+      "Dry Gulch",
+      "East",
+      "250",
+      "-6",
+      "24"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-geo-and-climate-1",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a rain shadow?",
+   "options": [
+    "A dry area on the side of a range away from the wind",
+    "A wet area at the foot of the slope that faces the wind",
+    "The shade that a large storm cloud casts on the ground",
+    "A cold, snowy area high up on a mountain peak"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moist air drops its rain going up the windward side of a mountain. The air that comes down the leeward side is dry, so the land there is dry.",
+    "options": [
+     "Right: the leeward side is the dry rain shadow.",
+     "The windward slope is wet; the rain shadow is on the other side.",
+     "A rain shadow is a dry region, not a shadow of light.",
+     "A rain shadow is a dry area beyond the range, not the peak."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-2",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does air drop most of its moisture as it rises up the windward side of a mountain?",
+   "options": [
+    "Rising air expands and cools, so vapor condenses",
+    "Mountains have colder soil, which pulls water from the air",
+    "The trees on the slope absorb water vapor directly from the air",
+    "Rising air is squeezed, so the water is pushed out of it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "As air rises, the pressure on it drops, so it expands and cools. Cool air holds less water vapor, so clouds form and rain or snow falls.",
+    "options": [
+     "Right: cooling of rising air causes condensation.",
+     "Soil temperature is not what makes clouds form.",
+     "Trees release water vapor; they do not pull it from the air.",
+     "Rising air expands; it is sinking air that is compressed."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-3",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Large ocean currents, called gyres, circle clockwise in the North Atlantic and the North Pacific. What mainly drives these currents?",
+   "options": [
+    "Prevailing winds, turned by Earth's rotation and coastlines",
+    "The tides, which pull the water around the basin each day",
+    "Rivers flowing into the ocean from the continents nearby",
+    "Underwater volcanoes heating the deep water from below"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The trade winds and westerlies drag the surface water. The Coriolis effect and the continents in the way turn the moving water into large loops.",
+    "options": [
+     "Right: winds push the surface water, and rotation and coastlines turn it into gyres.",
+     "Tides move water up and down the shore, not around ocean basins.",
+     "Rivers add water, but far too little to drive ocean-wide currents.",
+     "Volcanoes heat water locally; they do not drive basin-wide currents."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-4",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "London (51° N) has mild winters, while Calgary, Canada (also 51° N), has bitterly cold ones. Which factor best explains the difference?",
+   "options": [
+    "Warm ocean water and sea air keep London mild",
+    "London is a good deal closer to the equator than Calgary",
+    "Calgary is in a rain shadow, so it gets much more snow",
+    "London sits at a much higher elevation than Calgary"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Gulf Stream and the North Atlantic Current carry warm water toward Europe, and westerly winds bring that mild ocean air over Britain. Calgary is far inland, where winters are much colder.",
+    "options": [
+     "Right: warm water and maritime air moderate London's winters.",
+     "Both cities are at about 51° N.",
+     "A rain shadow makes a place dry; it does not explain cold winters.",
+     "Calgary is higher (about 1,000 m) than London, and London is the milder one."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-5",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do coastal towns usually have smaller differences between summer and winter temperatures than inland towns at the same latitude?",
+   "options": [
+    "Water warms and cools more slowly than land",
+    "The ocean gets far more sunlight than the land nearby does",
+    "Coastal towns tend to be at lower latitudes than inland ones",
+    "Sea breezes carry the cold air away from the coast in winter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water needs much more energy to change its temperature than rock and soil do. So the ocean stays cooler in summer and warmer in winter, and it moderates the air over nearby land.",
+    "options": [
+     "Right: water changes temperature slowly, which moderates nearby climates.",
+     "Both get about the same sunlight at the same latitude.",
+     "The question compares towns at the same latitude.",
+     "Ocean air is milder in winter, but the cause is water's slow temperature change."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-6",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "The base of Mount Kilimanjaro, near the equator, is warm savanna, but its peak has glaciers. What explains this?",
+   "options": [
+    "Air gets colder with elevation",
+    "The peak is closer to the South Pole than the base is",
+    "Glaciers form on top of most tall mountains",
+    "The peak gets far less sunlight than the base"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the troposphere air cools about 6.5 °C per kilometer of height. Kilimanjaro rises almost 5 km above the plains around it, so its peak is far colder.",
+    "options": [
+     "Right: higher elevation means colder air.",
+     "The base and the peak are at the same latitude.",
+     "Glaciers form only where it is cold enough; many mountains have none.",
+     "The peak gets plenty of sunlight, often more than the base."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-7",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, which side of the mountain range is the windward side?",
+   "stimulus": "geo-and-climate-s1",
+   "options": [
+    "The side facing the ocean, where the air rises",
+    "The side away from the ocean, where the air sinks",
+    "The peak, where the cloud forms",
+    "Both sides equally"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The windward side faces the oncoming wind. Here the wind blows from the ocean, so the ocean-facing slope is windward.",
+    "options": [
+     "Right: the windward side faces the wind coming off the ocean.",
+     "The side where air sinks is the leeward side.",
+     "The peak divides the two sides; it is not a side.",
+     "Only one side faces the wind."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-8",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, why is the land on the far side of the mountains dry?",
+   "stimulus": "geo-and-climate-s1",
+   "options": [
+    "The air lost its water rising and warms as it sinks",
+    "The mountains block the sunlight, so clouds rarely form there",
+    "The wind blows the clouds back toward the ocean side",
+    "Sinking air cools, so it can hold very little water vapor"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The air dropped most of its water on the windward side. Sinking down the leeward side, it is compressed and warms, so it can hold more water vapor and clouds rarely form.",
+    "options": [
+     "Right: dry, warming air brings little rain to the leeward side.",
+     "Clouds form from moisture and rising air, not from sunlight blocked by mountains.",
+     "The wind keeps blowing from the ocean across the mountains.",
+     "Sinking air warms; it does not cool."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-9",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The Sierra Nevada in California has wet, forested western slopes and the dry Great Basin to its east. Which feature of the diagram does this match?",
+   "stimulus": "geo-and-climate-s1",
+   "options": [
+    "Moist Pacific air rising and raining on the west side",
+    "Air sinking on the west side and rising on the east side",
+    "A warm ocean current flowing between the two sides of it",
+    "Plate boundaries that make the whole east side volcanic"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Westerly winds bring moist air from the Pacific. It rises over the Sierra Nevada, drops rain and snow on the western slopes, and leaves the eastern side in a rain shadow.",
+    "options": [
+     "Right: this is the rain shadow effect, with the wet side facing the Pacific.",
+     "Air rises on the windward (west) side and sinks on the east.",
+     "No ocean current flows between the slopes of a mountain range.",
+     "The dryness comes from the rain shadow, not from volcanoes."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-10",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "How does yearly precipitation in Fernvale compare with Dry Gulch?",
+   "stimulus": "geo-and-climate-s2",
+   "options": [
+    "Fernvale gets nearly nine times as much",
+    "Fernvale gets about twice as much",
+    "They get about the same amount",
+    "Dry Gulch gets nearly nine times as much"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\frac{2{,}200\\,\\text{mm}}{250\\,\\text{mm}} = 8.8$, nearly nine times as much.",
+    "options": [
+     "Right: 2,200 ÷ 250 = 8.8.",
+     "2,200 is much more than twice 250 (500).",
+     "The difference is 1,950 mm, which is large.",
+     "Dry Gulch gets far less, not more."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-11",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the table. What is the yearly temperature range (warmest month minus coldest month) in Dry Gulch?",
+   "stimulus": "geo-and-climate-s2",
+   "why": {
+    "correct": "$24\\,\\text{°C} - (-6\\,\\text{°C}) = 30\\,\\text{°C}$. Fernvale's range is only $17 - 5 = 12\\,\\text{°C}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      24,
+      -6
+     ]
+    },
+    "unit": "°C",
+    "units": [
+     "C",
+     "degrees C"
+    ],
+    "mistakes": [
+     {
+      "value": 18,
+      "why": "Subtracting a negative adds: 24 − (−6) = 24 + 6 = 30."
+     },
+     {
+      "value": 12,
+      "why": "That is Fernvale's range (17 − 5). Dry Gulch is 24 − (−6)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-12",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Dry Gulch has hotter summers and colder winters than Fernvale. Which explanation fits the data and the table's caption best?",
+   "stimulus": "geo-and-climate-s2",
+   "options": [
+    "Ocean air moderates Fernvale but is blocked from Dry Gulch",
+    "Dry Gulch sits at a much higher elevation than Fernvale",
+    "Dry Gulch is closer to the equator, so its summers are hotter",
+    "Fernvale gets a lot more winter sunlight than Dry Gulch"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ocean air keeps Fernvale cooler in summer and warmer in winter. The mountains block that air from Dry Gulch, so its temperatures swing more, as inland climates do.",
+    "options": [
+     "Right: the ocean moderates Fernvale's climate.",
+     "The caption says the towns are at about the same elevation.",
+     "The caption says they are at about the same latitude.",
+     "At the same latitude they get about the same sunlight."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-13",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which biome is each town most likely in?",
+   "stimulus": "geo-and-climate-s2",
+   "options": [
+    "Fernvale: temperate rainforest; Dry Gulch: desert",
+    "Fernvale: desert; Dry Gulch: temperate rainforest",
+    "Fernvale: tundra; Dry Gulch: tropical rainforest",
+    "Both towns: temperate deciduous forest, as both are at one latitude"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mild, very wet Fernvale fits a temperate rainforest, like the coasts of the Pacific Northwest. Dry Gulch, with 250 mm a year, fits a desert or dry grassland.",
+    "options": [
+     "Right: wet and mild on the coast, dry inland (a desert or dry grassland).",
+     "This swaps the two towns.",
+     "Neither town has tundra cold or tropical heat.",
+     "The two towns get very different rainfall, so their biomes differ."
+    ]
+   }
+  },
+  {
+   "id": "env-geo-and-climate-14",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "specific",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain why the east side of a north-south mountain range in the westerlies (30° to 60° N) is often dry.",
+   "why": {
+    "correct": "Every link: westerly winds, rising and cooling on the west slope, rain there, dry sinking air on the east."
+   },
+   "specific": {
+    "frame": "The westerlies carry ___, which ___, so ___.",
+    "slots": {
+     "what": {
+      "label": "What the wind carries",
+      "options": [
+       "moist air up the west slope",
+       "dry air up the east slope",
+       "cold air down from the pole"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The westerlies blow from the west, so air climbs the west slope first.",
+       "2": "The westerlies blow from the west, not from the pole."
+      }
+     },
+     "how": {
+      "label": "How it changes",
+      "options": [
+       "cools and drops its rain on the west side",
+       "warms and gains water on the west side",
+       "stays the same over the mountains"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rising air cools and loses water; it does not gain it.",
+       "2": "Air crossing a range rises and cools, then sinks and warms."
+      }
+     },
+     "result": {
+      "label": "Result on the east side",
+      "options": [
+       "the air sinking down the east side is dry",
+       "the east side gets the heaviest rain",
+       "the east side is covered by glaciers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The heaviest rain falls on the windward (west) side.",
+       "2": "The east side is dry, not icy."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "east",
+      "west"
+     ]
+    },
+    "model": "The westerlies carry moist air up the west slope, which cools as it rises and drops its rain there, so the air sinking down the east side is dry and warms, which leads to a rain shadow."
+   }
+  },
+  {
+   "id": "env-geo-and-climate-15",
+   "unit": "unit-4",
+   "topic": "geo-and-climate",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The coast of northern Chile is one of the driest deserts on Earth, even though it lies beside the Pacific Ocean. A cold current flows north along this coast. How does the cold current help keep the coast dry?",
+   "options": [
+    "It cools the air above it, so the air holds little moisture and rarely rises into rain clouds",
+    "It warms the air above it, so any clouds evaporate before they can drift over the land",
+    "It carries salt spray onto the land, and the salt stops raindrops from forming there",
+    "It pushes the prevailing winds away from the coast, so moist air stays out at sea"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Air over a cold current is cooled from below. Cool air near the surface is stable and holds little water vapor, so it brings fog at most, not rain.",
+    "options": [
+     "Right: a cold current makes the air above it cool and stable.",
+     "A cold current cools the air; it does not warm it.",
+     "Salt spray does not stop rain from forming.",
+     "Ocean currents are driven by winds; they do not push the winds away."
+    ]
+   }
+  }
+ ]
+}

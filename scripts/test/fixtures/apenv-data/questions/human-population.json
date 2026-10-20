@@ -1,0 +1,591 @@
+{
+ "stimuli": {
+  "human-population-s1": {
+   "kind": "quantitative",
+   "title": "Placeholder: birth and death rates in four countries",
+   "invented": true,
+   "table": {
+    "caption": "Placeholder: crude birth and death rates per 1,000 people (invented data for practice)",
+    "cols": [
+     "Country",
+     "Crude birth rate",
+     "Crude death rate"
+    ],
+    "rows": [
+     [
+      "A",
+      "32",
+      "8"
+     ],
+     [
+      "B",
+      "20",
+      "9"
+     ],
+     [
+      "C",
+      "12",
+      "10"
+     ],
+     [
+      "D",
+      "9",
+      "11"
+     ]
+    ]
+   }
+  },
+  "human-population-s2": {
+   "kind": "visual",
+   "title": "Placeholder: population pyramid of country A",
+   "invented": true,
+   "plot": {
+    "label": "Placeholder population pyramid of country A with a wide base, invented data",
+    "kind": "pyramid",
+    "groups": [
+     "0-14",
+     "15-29",
+     "30-44",
+     "45-59",
+     "60+"
+    ],
+    "left": [
+     22,
+     16,
+     10,
+     6,
+     3
+    ],
+    "right": [
+     21,
+     16,
+     10,
+     7,
+     4
+    ],
+    "xLabel": "Population (millions)"
+   }
+  },
+  "human-population-s3": {
+   "kind": "text",
+   "title": "Placeholder: a passage on food and population",
+   "passage": "Placeholder passage in our own words: people multiply faster than farms can grow food, so hunger will check every growing population unless births fall.",
+   "source": "Invented passage for practice."
+  }
+ },
+ "items": [
+  {
+   "id": "env-human-population-1",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Placeholder: what does a crude birth rate of 20 mean?",
+   "options": [
+    "20 births a year per 1,000 people",
+    "20 births a year per 100 people over the same years",
+    "20 children per woman",
+    "20% growth in a year"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: crude rates are per 1,000 people per year.",
+    "options": [
+     "Right: the rate is per 1,000 people.",
+     "Per 100 would be a percent, not a crude rate.",
+     "Children per woman is a fertility rate.",
+     "Growth is births minus deaths, in percent."
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-2",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: a country has a crude birth rate of 30 and a crude death rate of 10. What is its rate of natural increase?",
+   "why": {
+    "correct": "Placeholder: $\\frac{30 - 10}{10} = 2\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "naturalIncrease",
+     "args": [
+      30,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "Placeholder: 20 is the difference per 1,000 people. Divide by 10 to turn it into a percent."
+     },
+     {
+      "value": 0.2,
+      "why": "Placeholder: you divided by 100. Crude rates are per 1,000, so divide the difference by 10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-3",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: the population grows 2% a year. Write the setup for its doubling time, then the answer.",
+   "why": {
+    "correct": "Placeholder: by the rule of 70, $\\frac{70}{2} = 35$ years."
+   },
+   "setup": {
+    "answer": "70 / 2",
+    "mustUse": [
+     "70",
+     "2"
+    ],
+    "mistakes": [
+     {
+      "expr": "2 / 70",
+      "why": "Placeholder: the rule of 70 puts 70 on top: 70 divided by the growth rate."
+     },
+     {
+      "expr": "70 / 0.02",
+      "why": "Placeholder: use the rate in percent (2), not as a decimal (0.02)."
+     }
+    ],
+    "then": {
+     "unit": "yr",
+     "units": [
+      "years"
+     ],
+     "from": {
+      "fn": "ruleOf70",
+      "args": [
+       2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 2055,
+       "why": "Placeholder: that is the year it doubles; the question asks how many years."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-human-population-4",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: a population of 40 million in 2020 grows 2% a year. In what year does it reach 80 million?",
+   "why": {
+    "correct": "Placeholder: doubling takes $\\frac{70}{2} = 35$ years, and $2020 + 35 = 2055$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "doublingYear",
+     "args": [
+      2020,
+      2
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "ruleOf70",
+       "args": [
+        2
+       ]
+      },
+      "why": "Placeholder: 35 is the doubling time. Add it to the start year to get the year."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-5",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: a city grew from 120 thousand to 150 thousand people. Write the setup for the percent change, then the answer.",
+   "why": {
+    "correct": "Placeholder: $\\frac{150 - 120}{120} \\times 100 = 25\\%$."
+   },
+   "setup": {
+    "answer": "(150 - 120) / 120 * 100",
+    "mistakes": [
+     {
+      "expr": "(150 - 120) / 150 * 100",
+      "why": "Placeholder: divide by the old value (120), not the new one."
+     },
+     {
+      "expr": "(150 - 120) / 120",
+      "why": "Placeholder: multiply by 100 to turn the fraction into a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       120,
+       150
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         150,
+         120
+        ]
+       },
+       "why": "Placeholder: that is the change from 150 back to 120. Start from the old value."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-human-population-6",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: which country in the table grows fastest from births and deaths?",
+   "options": [
+    "Country A",
+    "Country B over the same years",
+    "Country C",
+    "Country D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: country A has the largest gap: $35 - 10 = 25$ per 1,000.",
+    "options": [
+     "Right: 32 minus 8 is the largest gap.",
+     "Country B's gap is smaller.",
+     "Country C's gap is smaller.",
+     "Country D's death rate is higher than its birth rate."
+    ]
+   },
+   "stimulus": "human-population-s1"
+  },
+  {
+   "id": "env-human-population-7",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: what is country B's rate of natural increase?",
+   "why": {
+    "correct": "Placeholder: $\\frac{20 - 9}{10} = 1.1\\%$."
+   },
+   "stimulus": "human-population-s1",
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "naturalIncrease",
+     "args": [
+      20,
+      9
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 11,
+      "why": "Placeholder: 11 is per 1,000 people. Divide by 10 for a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-population-8",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "multi",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Placeholder: which countries have a birth rate at least ten above their death rate? Select all that apply.",
+   "options": [
+    "Country A",
+    "Country B",
+    "Country C",
+    "Country D"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Placeholder: a country grows when its birth rate is above its death rate.",
+    "options": [
+     "Right: 32 is above 8.",
+     "Right: 20 is above 9.",
+     "12 is two above 10, not ten.",
+     "Its death rate is above its birth rate."
+    ]
+   },
+   "stimulus": "human-population-s1"
+  },
+  {
+   "id": "env-human-population-9",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: what does the wide base of this pyramid show?",
+   "options": [
+    "Many children compared with older people",
+    "Many older people compared with children over the same years",
+    "A population that is shrinking",
+    "Equal numbers in each age group"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: a wide base means a large young cohort.",
+    "options": [
+     "Right: the bars for children are longest.",
+     "The bars for older people are short.",
+     "A wide base means growth.",
+     "The bars are not the same length."
+    ]
+   },
+   "stimulus": "human-population-s2"
+  },
+  {
+   "id": "env-human-population-10",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: if birth rates stay high, what happens to this population in 20 years?",
+   "options": [
+    "It grows, as the young cohort has children",
+    "It shrinks, as the young cohort ages over the same years",
+    "It stays the same size",
+    "It grows through immigration alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the large young cohort reaches child-bearing age.",
+    "options": [
+     "Right: momentum keeps it growing.",
+     "A large young cohort means growth, not decline.",
+     "The pyramid shows growth.",
+     "Births alone grow it here."
+    ]
+   },
+   "stimulus": "human-population-s2"
+  },
+  {
+   "id": "env-human-population-11",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: which policy would slow this population's growth most?",
+   "options": [
+    "Schooling and jobs for women",
+    "Building more roads",
+    "Raising the death rate over the same years",
+    "Banning immigration"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: education and work for women lower fertility.",
+    "options": [
+     "Right: more schooling for women lowers fertility.",
+     "Roads do not change fertility directly.",
+     "No policy aims to raise deaths.",
+     "Immigration is not the driver here."
+    ]
+   },
+   "stimulus": "human-population-s2"
+  },
+  {
+   "id": "env-human-population-12",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: what is the author's claim?",
+   "options": [
+    "Population growth will outrun food",
+    "Food keeps up with people over the same years",
+    "Cities will shrink",
+    "Fertility is rising"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the passage argues people grow faster than food.",
+    "options": [
+     "Right: that is the claim.",
+     "The passage argues the opposite.",
+     "The passage is not about cities.",
+     "The passage does not say that."
+    ]
+   },
+   "stimulus": "human-population-s3"
+  },
+  {
+   "id": "env-human-population-13",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: what does the author assume?",
+   "options": [
+    "Food grows more slowly than people",
+    "Food grows faster than people over the same years",
+    "Birth rates fall over time",
+    "Death rates are fixed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the claim rests on food growing slowly.",
+    "options": [
+     "Right: the assumption behind the claim.",
+     "The opposite of the assumption.",
+     "The passage does not assume falling births.",
+     "The passage does not say that."
+    ]
+   },
+   "stimulus": "human-population-s3"
+  },
+  {
+   "id": "env-human-population-14",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "single",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: which evidence would weaken the claim?",
+   "options": [
+    "Crop yields that rose faster than population",
+    "A drought in one year over the same years",
+    "A rise in birth rates",
+    "A larger city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: yields rising faster than people would refute it.",
+    "options": [
+     "Right: that evidence refutes it.",
+     "One drought does not test the long-run claim.",
+     "More births support the claim.",
+     "City size is not evidence about food."
+    ]
+   },
+   "stimulus": "human-population-s3"
+  },
+  {
+   "id": "env-human-population-15",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "specific",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Placeholder: explain why country A's population will keep growing even if its birth rate falls.",
+   "why": {
+    "correct": "Placeholder: a large young cohort will have children for years."
+   },
+   "specific": {
+    "frame": "Because ___, ___, so ___.",
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "young",
+      "children",
+      "cohort"
+     ]
+    },
+    "model": "Placeholder: because country A has a large cohort of young people, the number of births will increase as they reach child-bearing age, so the population keeps growing for decades.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "a large young cohort",
+       "a high death rate",
+       "immigration",
+       "a small young cohort"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: a high death rate slows growth.",
+       "2": "Placeholder: the question is about births.",
+       "3": "Placeholder: a small cohort would slow growth."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "births increase as they reach child-bearing age",
+       "deaths increase",
+       "emigration rises",
+       "births stop"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: deaths are not the driver.",
+       "2": "Placeholder: emigration is not in the data.",
+       "3": "Placeholder: births continue."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "env-human-population-16",
+   "unit": "unit-3",
+   "topic": "human-population",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Placeholder: put the steps for a doubling year in order.",
+   "options": [
+    "Find the growth rate in percent",
+    "Divide 70 by the growth rate",
+    "Add the doubling time to the start year"
+   ],
+   "why": {
+    "correct": "Placeholder: rate, then 70 over the rate, then add to the year."
+   }
+  }
+ ]
+}

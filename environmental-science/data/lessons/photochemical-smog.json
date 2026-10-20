@@ -1,0 +1,76 @@
+{
+ "topic": "photochemical-smog",
+ "hook": "Watch a city's air monitor on a clear July weekday. At 8 a.m. the commute sends nitric oxide soaring. By 9 a.m. brown nitrogen dioxide peaks. Then, as the sun climbs, ozone rises for six straight hours and peaks around 2 p.m., long after the traffic has thinned. The sun turned car exhaust into a new pollutant.",
+ "prereq": [
+  {
+   "q": "Which of these is a secondary pollutant?",
+   "options": [
+    "Ozone near the ground",
+    "Carbon monoxide from a tailpipe",
+    "SO2 from a smokestack",
+    "Soot from a diesel truck"
+   ],
+   "correct": 0,
+   "why": "Ozone near the ground forms in the air from NOx and VOCs, so it is secondary.",
+   "review": "air-pollution"
+  },
+  {
+   "q": "What does the ozone layer in the stratosphere do?",
+   "options": [
+    "Absorbs much of the sun's UV radiation",
+    "Traps rain clouds near the ground",
+    "Releases oxygen for breathing",
+    "Holds pollution in the troposphere"
+   ],
+   "correct": 0,
+   "why": "Stratospheric ozone absorbs UV radiation before it reaches the surface.",
+   "review": "atmosphere"
+  }
+ ],
+ "figure": {
+  "figure": "photochemical-smog-day",
+  "caption": "One invented sunny weekday: NO peaks with the morning commute, NO2 an hour later, and ozone in mid-afternoon, after hours of sunlight."
+ },
+ "chain": [
+  {
+   "cause": "Morning traffic burns fuel at high temperature",
+   "effect": "NO and VOCs are released into the city air"
+  },
+  {
+   "cause": "NO reacts in the air",
+   "effect": "NO2 builds up, peaking about an hour after the rush"
+  },
+  {
+   "cause": "Sunlight splits NO2 into NO and a single oxygen atom",
+   "effect": "the oxygen atom joins O2 to form ozone (O3)"
+  },
+  {
+   "cause": "VOCs react with NO, so NO cannot break the ozone down",
+   "effect": "ozone accumulates and peaks in mid-afternoon"
+  },
+  {
+   "cause": "People breathe the ozone-rich air",
+   "effect": "airways are irritated, asthma attacks rise, and crops and leaves are damaged"
+  }
+ ],
+ "ideas": [
+  "<b>Photochemical smog</b> forms when NOx and VOCs react in sunlight. Its main part is <b>ground-level ozone</b>, a secondary pollutant.",
+  "Through a day: NO peaks with morning traffic, NO2 about an hour later, and ozone in the early afternoon. Ozone falls after dark.",
+  "Smog is worst on hot, sunny, still days in cities with heavy traffic, and often downwind of them.",
+  "Ozone up in the stratosphere absorbs UV radiation. Ground-level ozone, the same molecule, harms lungs and plants."
+ ],
+ "misconception": {
+  "wrong": "Ozone is highest at rush hour, when traffic releases it.",
+  "right": "Traffic releases NO, not ozone. Ozone forms hours later as sunlight splits NO2, so it peaks in the early afternoon."
+ },
+ "check": [
+  "env-photochemical-smog-8",
+  "env-photochemical-smog-1",
+  "env-photochemical-smog-2",
+  "env-photochemical-smog-3",
+  "env-photochemical-smog-4",
+  "env-photochemical-smog-11",
+  "env-photochemical-smog-14"
+ ],
+ "summary": "Photochemical smog is a mix of secondary pollutants, mainly ground-level ozone, made when nitrogen oxides and VOCs react in sunlight. NO from morning traffic becomes NO2; sunlight splits NO2, and the freed oxygen atom forms ozone, which VOCs help build up. Ozone peaks in the early afternoon on hot, sunny days, irritates lungs and damages plants, and falls after dark."
+}

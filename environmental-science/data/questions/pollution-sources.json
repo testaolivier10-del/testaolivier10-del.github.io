@@ -1,0 +1,596 @@
+{
+ "stimuli": {
+  "pollution-sources-s1": {
+   "kind": "quantitative",
+   "title": "Where the nitrogen in a river comes from",
+   "invented": true,
+   "table": {
+    "caption": "Nitrogen entering a river each year by source, in metric tons (invented data for practice)",
+    "cols": [
+     "Source",
+     "Type of source",
+     "Nitrogen (metric tons per year)"
+    ],
+    "rows": [
+     [
+      "Runoff from crop fields",
+      "nonpoint",
+      "2,600"
+     ],
+     [
+      "Runoff from city streets and lawns",
+      "nonpoint",
+      "700"
+     ],
+     [
+      "Manure from pastures",
+      "nonpoint",
+      "500"
+     ],
+     [
+      "City wastewater plant outfall",
+      "point",
+      "900"
+     ],
+     [
+      "Food processing plant pipe",
+      "point",
+      "300"
+     ]
+    ]
+   }
+  },
+  "pollution-sources-s2": {
+   "kind": "visual",
+   "title": "Nitrate in a stream after a storm",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of nitrate in a farm stream in milligrams per liter over four days after a storm: it rises from 2 before the storm to a peak of 9 about a day later, then falls back toward 3; invented data",
+    "kind": "line",
+    "x": [
+     0,
+     96
+    ],
+    "y": [
+     0,
+     10
+    ],
+    "xStep": 12,
+    "yStep": 2,
+    "xLabel": "Hours after the storm began",
+    "yLabel": "Nitrate (mg per L)",
+    "series": [
+     {
+      "name": "Nitrate",
+      "points": [
+       [
+        0,
+        2
+       ],
+       [
+        6,
+        4
+       ],
+       [
+        12,
+        7
+       ],
+       [
+        24,
+        9
+       ],
+       [
+        36,
+        7.5
+       ],
+       [
+        48,
+        5.5
+       ],
+       [
+        72,
+        4
+       ],
+       [
+        96,
+        3
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-pollution-sources-1",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the river's nitrogen comes from nonpoint sources?",
+   "stimulus": "pollution-sources-s1",
+   "why": {
+    "correct": "Nonpoint: $2{,}600 + 700 + 500 = 3{,}800$. Total: $3{,}800 + 900 + 300 = 5{,}000$ metric tons. Share: $\\frac{3{,}800}{5{,}000} \\times 100 = 76\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "add",
+       "args": [
+        2600,
+        700,
+        500
+       ]
+      },
+      {
+       "fn": "add",
+       "args": [
+        2600,
+        700,
+        500,
+        900,
+        300
+       ]
+      }
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 24,
+      "why": "24% is the point-source share (1,200 of 5,000). Nonpoint sources are the three runoff sources."
+     },
+     {
+      "value": 52,
+      "why": "You counted only crop runoff (2,600 of 5,000). Street runoff and pasture manure are nonpoint too."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-2",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is the largest source in the table also the hardest to regulate?",
+   "stimulus": "pollution-sources-s1",
+   "options": [
+    "It flows through one large pipe that is too big to treat",
+    "It comes from many fields, with no single pipe to permit",
+    "It contains no nitrogen until it reaches the river",
+    "It is a natural source, so laws do not cover it"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Crop field runoff is nonpoint: it enters the river along many kilometers of banks from thousands of fields, so there is no single pipe to measure, permit or treat.",
+    "options": [
+     "Field runoff does not come from a pipe; that is what makes it nonpoint.",
+     "Right: nonpoint pollution is diffuse, so it is hard to trace and control.",
+     "The runoff already carries fertilizer nitrogen.",
+     "Fertilizer runoff comes from human farming, not nature."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-3",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A permit could require the city wastewater plant to remove more nitrogen. What is the most that plan could cut, as a share of the total?",
+   "stimulus": "pollution-sources-s1",
+   "options": [
+    "18%, the sewage plant's share",
+    "76%, the share from nonpoint sources",
+    "24%, both point sources together",
+    "52%, the share from crop fields"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The plant releases 900 of 5,000 metric tons, or 18%. Even removing all of it would leave the nonpoint 76% untouched.",
+    "options": [
+     "Right: 900 of 5,000 is 18%.",
+     "The permit covers the sewage plant, a point source, not runoff.",
+     "The plan covers the sewage plant only, not the food plant.",
+     "Crop runoff is not covered by the sewage plant's permit."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-4",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe how nitrate in the stream changes after the storm.",
+   "stimulus": "pollution-sources-s2",
+   "options": [
+    "It falls during the storm, then rises slowly for days",
+    "It stays near 2 mg per L the whole time",
+    "It rises steadily over the four days of the record",
+    "It peaks a day after the storm, then falls"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Nitrate rises from 2 mg per L to a peak of 9 about 24 hours after the storm began, then falls slowly back toward 3 mg per L over the next three days.",
+    "options": [
+     "Nitrate rises during and just after the storm, not falls.",
+     "It rises to 9 mg per L, more than four times the starting level.",
+     "It peaks at about 24 hours and then falls.",
+     "Right: up to 9 mg per L at about 24 hours, then down toward 3."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-5",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation best accounts for the rise in nitrate after the storm?",
+   "stimulus": "pollution-sources-s2",
+   "options": [
+    "A factory pipe opens during storms, a point source",
+    "Rain falling directly on the stream is rich in nitrate",
+    "Rain washes fertilizer off fields into the stream",
+    "Fish produce more nitrate when the water is cold"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Rain washes fertilizer nitrate off fields and through soil into the stream, a nonpoint source. Once the runoff passes, the level falls back.",
+    "options": [
+     "Nothing in the graph points to one pipe; storm runoff fits the pattern.",
+     "Rain adds a little nitrogen, but not enough for a rise like this.",
+     "Right: storm runoff carries nitrate from across the watershed.",
+     "Fish waste does not explain a sharp storm peak."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-6",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in nitrate from the start of the storm to its peak.",
+   "stimulus": "pollution-sources-s2",
+   "why": {
+    "correct": "$\\frac{(9 - 2)}{2} \\times 100 = 350\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      2,
+      9
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 77.7777777778,
+      "why": "You divided by the peak. Divide by the starting value, 2 mg per L."
+     },
+     {
+      "value": 450,
+      "why": "450% is the peak as a percent of the start. Subtract first: (9 - 2) / 2 × 100 = 350%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-7",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which practice on nearby farms would most reduce the nitrate peaks after storms?",
+   "stimulus": "pollution-sources-s2",
+   "options": [
+    "Build a taller smokestack on the nearest power plant",
+    "Plant grass and trees along the stream",
+    "Add chlorine to the stream to kill bacteria",
+    "Spread more fertilizer just before storms"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Buffer strips of grass and trees along the stream slow runoff and take up nitrate before it reaches the water; matching fertilizer to crop needs also helps.",
+    "options": [
+     "Smokestacks deal with air pollution, not stream nitrate.",
+     "Right: plants slow runoff and take up nitrate before it enters.",
+     "Chlorine does not remove nitrate, and it harms stream life.",
+     "That would put more nitrate in the path of the runoff."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-8",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which is a point source of pollution?",
+   "options": [
+    "A pipe from a factory that empties into a river",
+    "Runoff from the lawns across a suburb",
+    "Oil washed off city streets by rain",
+    "Sediment eroded from farm fields across a valley"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A point source comes from one identifiable spot, such as a discharge pipe, a smokestack or a leaking tank.",
+    "options": [
+     "Right: one pipe, one place, easy to identify.",
+     "Lawn runoff comes from many places at once, so it is nonpoint.",
+     "Street runoff is diffuse, so it is nonpoint.",
+     "Field erosion comes from a wide area, so it is nonpoint."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-9",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair correctly matches each source to its type?",
+   "options": [
+    "A smokestack is nonpoint; the exhaust from a city's cars is point",
+    "Both a smokestack and city car exhaust are point sources",
+    "Both a smokestack and city car exhaust are nonpoint",
+    "A smokestack is point; the exhaust from a city's cars is nonpoint"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A smokestack is a single, identifiable outlet (point). Exhaust from all the cars in a city comes from countless moving sources (nonpoint).",
+    "options": [
+     "The labels are reversed.",
+     "City car exhaust comes from many sources, so it is nonpoint.",
+     "A smokestack is one outlet, so it is a point source.",
+     "Right: one outlet versus many scattered sources."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-10",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why have laws such as the Clean Water Act cut point-source pollution more than nonpoint pollution?",
+   "options": [
+    "Nonpoint pollution is harmless, so laws ignore it",
+    "Point sources are natural, so they shrink over time",
+    "One outlet can be measured and inspected",
+    "Nonpoint sources are found in other countries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A point source can be measured at one outlet, given a permit with limits, and checked. Nonpoint pollution comes from many owners and places, so it is hard to measure or assign.",
+    "options": [
+     "Nonpoint pollution is now the largest source of water pollution.",
+     "Point sources are human outlets, such as pipes.",
+     "Right: that is what makes point sources easier to control.",
+     "Nonpoint sources are everywhere, including the United States."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-11",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city has many paved streets, roofs and parking lots. Why does this increase nonpoint pollution in its streams?",
+   "options": [
+    "Pavement absorbs rain and releases it slowly into streams",
+    "Rain runs off pavement, carrying oil and metals",
+    "Paved streets create one pipe that becomes a point source",
+    "Parking lots make the rain more acidic"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Impervious surfaces stop rain from soaking in, so it runs off fast, carrying oil, metals, litter, fertilizer and pet waste straight into storm drains and streams.",
+    "options": [
+     "Pavement is impervious; it does not absorb rain.",
+     "Right: impervious surfaces send polluted runoff straight to streams.",
+     "Storm runoff enters from many drains across the city.",
+     "The main effect is fast runoff carrying pollutants, not acidity."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-12",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which air pollution source is a nonpoint source?",
+   "options": [
+    "Dust blown off thousands of plowed fields",
+    "A smokestack at a cement plant",
+    "The exhaust pipe of a single diesel generator",
+    "A vent on a factory roof"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dust blown from thousands of plowed fields has no single outlet, so it is a nonpoint source of particles.",
+    "options": [
+     "Right: it rises from a wide area, not one outlet.",
+     "One stack is a single outlet, a point source.",
+     "One exhaust pipe is a point source.",
+     "One vent is a point source."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-sources-13",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A town wants to cut the nonpoint pollution reaching its lake from streets and lawns. Propose a solution and explain how it works.",
+   "why": {
+    "correct": "The solution fits a town and nonpoint runoff, and says how it works: rain gardens let runoff soak in, so soil and plants trap the pollutants before they reach the lake."
+   },
+   "specific": {
+    "frame": "The town could ___, which reduces pollution because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "build rain gardens and use permeable pavement in parking lots",
+       "add a filter to the pipe from the town's water plant",
+       "move the lake's fish to a hatchery"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One pipe is a point source; the question is about nonpoint runoff from streets and lawns.",
+       "2": "Moving fish does not reduce the pollution reaching the lake."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "runoff soaks into the ground, where soil and plants trap pollutants",
+       "rain falls more slowly on the pavement",
+       "the lake water evaporates faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rain falls at the same speed; the benefit is that it soaks in.",
+       "2": "Evaporation does not remove the pollutants."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "runoff",
+      "lake",
+      "street",
+      "lawn"
+     ]
+    },
+    "model": "The town could build rain gardens and use permeable pavement in parking lots, which reduces pollution because runoff soaks into the ground, where soil and plants trap the pollutants before they reach the lake."
+   }
+  },
+  {
+   "id": "env-pollution-sources-14",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A factory pipe releases 2,000 liters of wastewater an hour with 15 milligrams of zinc per liter. Write the setup, with units, for the zinc released in a 24-hour day, in grams, then the answer.",
+   "why": {
+    "correct": "$2{,}000\\,\\frac{\\text{L}}{\\text{h}} \\times 24\\,\\text{h} \\times 15\\,\\frac{\\text{mg}}{\\text{L}} \\times \\frac{1\\,\\text{g}}{1{,}000\\,\\text{mg}} = 720\\,\\text{g}$ of zinc a day."
+   },
+   "setup": {
+    "answer": "2000 L/h * 24 h * 15 mg/L * 1 g / 1000 mg",
+    "mustUse": [
+     "2000",
+     "24",
+     "15",
+     "1000"
+    ],
+    "unit": "g",
+    "mistakes": [
+     {
+      "expr": "2000 L/h * 24 h * 15 mg/L",
+      "why": "That is the answer in milligrams. Multiply by 1 g / 1,000 mg to convert."
+     },
+     {
+      "expr": "2000 L/h * 15 mg/L * 1 g / 1000 mg",
+      "why": "That is one hour. Multiply by 24 hours for the whole day."
+     }
+    ],
+    "then": {
+     "unit": "g",
+     "from": {
+      "fn": "convert",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         2000,
+         24,
+         15
+        ]
+       },
+       "mg",
+       "g"
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 720000,
+       "why": "720,000 is in milligrams. Divide by 1,000 for grams."
+      },
+      {
+       "value": 30,
+       "why": "30 g is one hour. A day is 24 hours: 720 g."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-pollution-sources-15",
+   "unit": "unit-8",
+   "topic": "pollution-sources",
+   "type": "single",
+   "practice": "7.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which of these is a policy aimed at nonpoint pollution rather than at a point source?",
+   "options": [
+    "A permit limiting what a factory pipe may discharge",
+    "A limit on what a sewage plant outfall may release",
+    "An emission limit on one power plant smokestack",
+    "Paying farmers to plant buffer strips along streams"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Paying farmers to plant streamside buffer strips targets runoff from many fields, a nonpoint source. Discharge permits and pipe limits target point sources.",
+    "options": [
+     "A pipe is a point source.",
+     "An outfall is a single point source.",
+     "A smokestack is a point source.",
+     "Right: it targets runoff from many fields."
+    ]
+   }
+  }
+ ]
+}

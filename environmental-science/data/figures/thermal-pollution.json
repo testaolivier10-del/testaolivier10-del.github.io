@@ -1,0 +1,12 @@
+{
+ "thermal-pollution-plant": {
+  "file": "figures/thermal-pollution-plant.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A power plant beside a river. Cool river water is pumped in to condense the steam and returned warmer at an outlet, where a warm plume spreads downstream with lower dissolved oxygen. An alternative path sends the warm water through a cooling tower that releases the heat to the air as water vapor."
+ }
+}

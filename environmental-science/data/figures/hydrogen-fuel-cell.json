@@ -1,0 +1,12 @@
+{
+ "hydrogen-fuel-cell-diagram": {
+  "file": "figures/hydrogen-fuel-cell-diagram.svg",
+  "ext": "svg",
+  "w": 780,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A fuel cell drawn as three side-by-side blocks: the anode, the membrane and the cathode. Hydrogen gas enters the anode, where H2 splits into 2H+ and 2e-. Hydrogen ions cross the membrane to the cathode. Electrons flow through an outside circuit over the top, through a motor, to the cathode. Oxygen from the air enters the cathode, where O2 plus 4H+ plus 4e- form 2H2O, and water leaves the cell. A banner says hydrogen is an energy carrier that must first be made, often from natural gas or by splitting water."
+ }
+}

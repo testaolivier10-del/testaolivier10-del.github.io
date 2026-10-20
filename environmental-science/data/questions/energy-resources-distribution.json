@@ -1,0 +1,582 @@
+{
+ "stimuli": {
+  "energy-resources-distribution-s1": {
+   "kind": "quantitative",
+   "title": "Oil reserves, production and use in four countries",
+   "invented": true,
+   "table": {
+    "caption": "Proven oil reserves and yearly production and use, in billions of barrels (invented data for practice)",
+    "cols": [
+     "Country",
+     "Proven reserves (billion barrels)",
+     "Production (billion barrels/yr)",
+     "Use (billion barrels/yr)"
+    ],
+    "rows": [
+     [
+      "X",
+      "48",
+      "1.2",
+      "0.3"
+     ],
+     [
+      "Y",
+      "12",
+      "0.9",
+      "2.0"
+     ],
+     [
+      "Z",
+      "0",
+      "0",
+      "0.7"
+     ],
+     [
+      "W",
+      "5",
+      "0.5",
+      "0.6"
+     ]
+    ]
+   }
+  },
+  "energy-resources-distribution-s2": {
+   "kind": "visual",
+   "title": "Energy resources across a landscape",
+   "figure": "energy-resources-distribution-landscape"
+  }
+ },
+ "items": [
+  {
+   "id": "env-energy-resources-distribution-1",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are coal, oil and natural gas found in some regions and not others?",
+   "options": [
+    "They form wherever the climate today is hot and dry enough for them",
+    "They are spread evenly through Earth's crust at about the same depth",
+    "They form near volcanoes, where rising magma heats buried plant material",
+    "They formed where ancient swamps or seas buried living things"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fossil fuels are the remains of organisms buried in ancient swamps and seas. They are found only where that happened and the rock layers trapped them.",
+    "options": [
+     "Today's climate does not decide where ancient deposits formed.",
+     "Deposits are concentrated in basins, not spread evenly.",
+     "Volcanic heat is a separate resource (Earth's internal heat), not a source of fossil fuel deposits.",
+     "Right: geologic history decides where the deposits are."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-2",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a proven reserve of oil?",
+   "options": [
+    "Oil stored in large tanks by a government for emergencies",
+    "Oil that has already been pumped, refined and sold to buyers",
+    "Known oil that can be recovered at a profit right now",
+    "The total amount of oil that exists anywhere in Earth's crust"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Proven reserves are the part of a deposit that has been located and can be extracted profitably now. The number changes as prices and technology change.",
+    "options": [
+     "Emergency stocks are stored oil, not reserves in the ground.",
+     "Oil already produced is no longer a reserve.",
+     "Right: known, recoverable and economic now.",
+     "Much oil is not found yet or is too costly to recover; that is not counted as proven."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-3",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which place is best suited for large solar farms?",
+   "options": [
+    "A polar region with long, dark winters and low sun angles in summer",
+    "A dry region near 25 degrees latitude with clear skies",
+    "A cloudy coastal region near 55 degrees latitude with frequent fog",
+    "A rainy tropical forest near the equator with heavy cloud cover most days"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Solar output depends on insolation. Dry subtropical regions get strong, direct sunlight and few clouds.",
+    "options": [
+     "Low sun angles and long dark winters give little solar energy.",
+     "Right: high insolation and clear skies.",
+     "Clouds and lower sun angles at high latitude cut output.",
+     "Heavy cloud cover in rainforests blocks much of the sunlight."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-4",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do countries such as Iceland get much of their electricity and home heating from hot water and steam drawn from underground?",
+   "options": [
+    "They sit on a plate boundary with hot rock near the surface",
+    "They get more sunlight than most countries, which warms the ground deeply",
+    "Their cold climate makes wells into hot rock cheaper to drill than elsewhere",
+    "Their rivers and ocean currents carry warm water up from the equator"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Iceland lies on a divergent plate boundary with volcanoes and hot spots, so very hot rock and water are close to the surface.",
+    "options": [
+     "Right: plate boundaries bring Earth's internal heat near the surface.",
+     "Iceland gets little sunlight in winter; this heat comes from below.",
+     "Drilling cost depends on how deep the heat is, not on cold air.",
+     "Rivers do not carry equatorial water to Iceland."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-5",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A company wants to make electricity from a river by building a dam. Which landscape feature matters most?",
+   "options": [
+    "A wide, flat plain where a slow river spreads out into channels",
+    "A dry desert basin that has no permanent rivers or streams",
+    "A flat coastal marsh near sea level with tides moving in and out",
+    "A steady river dropping steeply through a narrow valley"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The electricity depends on how much water flows and how far it falls. Steep, narrow valleys with steady flow are ideal.",
+    "options": [
+     "A slow river on flat land has little drop to use.",
+     "There is no steady flow to use.",
+     "Water at sea level has almost nowhere to fall.",
+     "Right: high flow and a large drop."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-6",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A country has no fossil fuel deposits and imports all its oil. Which is a direct consequence of this uneven distribution?",
+   "options": [
+    "It has no electricity until it finds oil of its own underground",
+    "Its air pollution is higher than in the countries that produce oil",
+    "Its energy supply and prices depend on other countries",
+    "Its people use more energy per person than people in oil-rich countries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Importing energy ties a country to world prices, shipping and politics abroad, which is why many countries want local sources.",
+    "options": [
+     "Electricity can come from many sources, including imports and renewables.",
+     "Pollution depends on how much fuel is burned, not on where it was produced.",
+     "Right: supply and price depend on other countries.",
+     "Having no fuel deposits does not raise use per person."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-7",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country's proven oil reserves rise from 10 billion to 14 billion barrels in a year when almost no new oil is discovered. What is the most likely reason?",
+   "options": [
+    "Part of the country's natural gas turned into oil during the year",
+    "Higher prices or better drilling made known oil worth recovering",
+    "New oil formed in the rock layers underground during that year",
+    "People used less oil, which added the unused oil back to the reserve"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Reserves count oil that can be recovered profitably now. A price rise or a new drilling technique moves known oil into the proven category without a new discovery.",
+    "options": [
+     "Oil does not turn into gas in a year.",
+     "Right: economics and technology change what counts as proven.",
+     "Oil forms over millions of years, not in a year.",
+     "Using less oil slows the decline of reserves but does not add oil."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-8",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At its current rate of production, how many years will country X's proven oil reserves last?",
+   "stimulus": "energy-resources-distribution-s1",
+   "why": {
+    "correct": "$\\frac{48\\,\\text{billion barrels}}{1.2\\,\\text{billion barrels per year}} = 40$ years."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      48,
+      1.2
+     ]
+    },
+    "unit": "yr",
+    "units": [
+     "years"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        48,
+        1.2
+       ]
+      },
+      "why": "You multiplied. Divide the reserve by the yearly production: billion barrels over billion barrels per year leaves years."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1.2,
+        48
+       ]
+      },
+      "why": "You divided the wrong way. Put the reserve on top: reserve ÷ production per year."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-9",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which country produces much more oil than it uses?",
+   "stimulus": "energy-resources-distribution-s1",
+   "options": [
+    "Country Y",
+    "Country Z",
+    "Country W",
+    "Country X"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Country X produces 1.2 billion barrels a year and uses 0.3, so it exports most of its oil.",
+    "options": [
+     "Country Y uses 2.0 but produces 0.9, so it imports.",
+     "Country Z produces nothing and imports all it uses.",
+     "Country W produces 0.5 and uses 0.6, close to balanced.",
+     "Right: production 1.2, use 0.3."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-10",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the oil it uses does country Y import? (Imports are use minus production.)",
+   "stimulus": "energy-resources-distribution-s1",
+   "why": {
+    "correct": "$\\frac{2.0 - 0.9}{2.0} \\times 100 = 55\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        2,
+        0.9
+       ]
+      },
+      2
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        0.9,
+        2
+       ]
+      },
+      "why": "That is the percent Y produces itself. Imports are use minus production: 2.0 - 0.9."
+     },
+     {
+      "from": {
+       "fn": "fractionOf",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          2,
+          0.9
+         ]
+        },
+        0.9
+       ]
+      },
+      "why": "Divide by what the country uses (2.0), not by what it produces."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-11",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which conclusion is best supported by the table?",
+   "stimulus": "energy-resources-distribution-s1",
+   "options": [
+    "Countries with no proven reserves use no oil in a typical year",
+    "The biggest users of oil may hold only small reserves",
+    "Each country produces about as much oil as it uses each year",
+    "The country with the largest reserves also uses the most oil"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Country Y uses the most oil (2.0) but has far smaller reserves than X, and Z uses oil with no reserves at all.",
+    "options": [
+     "Z has no reserves but uses 0.7 billion barrels a year.",
+     "Right: use and reserves are mismatched.",
+     "X and Z show large gaps between production and use.",
+     "X has the largest reserves but uses only 0.3."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-12",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the diagram, where are coal, oil and natural gas found?",
+   "stimulus": "energy-resources-distribution-s2",
+   "options": [
+    "In layers of sedimentary rock under the plain",
+    "In the hot rock near the plate boundary",
+    "In the mud of the reservoir behind the dam",
+    "In the soil just under the open plain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The diagram shows fossil fuels in sedimentary layers beneath the plain.",
+    "options": [
+     "Right: fossil fuels lie in sedimentary basins.",
+     "Hot rock near the plate boundary is the source of Earth's internal heat.",
+     "The reservoir stores water to turn turbines at the dam.",
+     "The diagram shows the fuels deep in rock layers, not in surface soil."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-13",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which energy resource in the diagram depends most on the region's climate rather than its rock?",
+   "stimulus": "energy-resources-distribution-s2",
+   "options": [
+    "Coal",
+    "Natural gas",
+    "Earth's internal heat",
+    "Sunlight"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The diagram links strong sunlight to dry, cloud-free, lower-latitude regions: a climate pattern.",
+    "options": [
+     "Coal depends on buried ancient swamps (rock).",
+     "Natural gas depends on sedimentary basins (rock).",
+     "Earth's internal heat depends on plate boundaries (rock).",
+     "Right: solar energy depends on clouds and latitude."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-14",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A town is built on the coast shown in the diagram, far from the basin and the mountains. Which local energy source would the diagram suggest it develop first?",
+   "stimulus": "energy-resources-distribution-s2",
+   "options": [
+    "A station using heat from deep hot rock",
+    "A large dam on a steep mountain river",
+    "Wind-driven generators along the coast",
+    "A coal mine dug under the town itself"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The diagram marks coasts as windy, while coal, hot rock and steep rivers are elsewhere.",
+    "options": [
+     "Hot rock is near the plate boundary in the mountains.",
+     "The steep river and dam are in the mountains.",
+     "Right: coasts have strong, steady wind.",
+     "The diagram shows the coal under the basin, not the coast."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-15",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A mountain town in the diagram wants to cut its imported diesel use. Propose a local energy source and explain why it fits this location.",
+   "stimulus": "energy-resources-distribution-s2",
+   "why": {
+    "correct": "The mountains have a steep river with a dam site and hot rock near a plate boundary; either fits because the resource is right there."
+   },
+   "specific": {
+    "frame": "The town should build ___, because ___.",
+    "slots": {
+     "source": {
+      "label": "Source",
+      "options": [
+       "a small dam and generator on the steep river",
+       "a coal mine",
+       "an oil well"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The diagram places coal in the basin far from the mountains, and coal would not cut fossil fuel use.",
+       "2": "Oil lies in the basin, and an oil well would not reduce fossil fuel use."
+      }
+     },
+     "why": {
+      "label": "Why it fits",
+      "options": [
+       "water falling a long way down the valley can turn turbines all year",
+       "mountains are sunnier than any other place",
+       "fossil fuels are found under every mountain"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The diagram links strong sunlight to dry low-latitude regions, not mountains.",
+       "2": "The diagram places fossil fuels in a sedimentary basin, not under the mountains."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "river",
+      "mountain",
+      "hot rock",
+      "heat"
+     ]
+    },
+    "model": "The town should build a small dam and generator on the steep mountain river, because water falling a long way down the valley can turn turbines through the year, which reduces the diesel it must import."
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-16",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A map shows average wind speeds: 3 m/s over a forested valley, 6 m/s over farmland and 9 m/s over an offshore shelf. Where would wind-driven generators produce the most energy?",
+   "options": [
+    "The offshore shelf",
+    "The forested valley",
+    "The farmland",
+    "The three sites would produce the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Faster wind carries much more energy, so the 9 m/s site would produce the most.",
+    "options": [
+     "Right: highest wind speed gives the most energy.",
+     "Trees slow the wind; 3 m/s is the weakest site.",
+     "Farmland is good, but 6 m/s is slower than the offshore site.",
+     "Wind speed differs, so output differs."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-resources-distribution-17",
+   "unit": "unit-6",
+   "topic": "energy-resources-distribution",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why are places right at the equator often poor sites for making electricity from wind, even though they get strong sunlight?",
+   "options": [
+    "Strong sunlight near the equator stops the air from moving at the surface",
+    "Wind-driven generators stop working in very hot, humid weather",
+    "The air over the tropics is held still by the Coriolis effect",
+    "Surface winds there are often weak and shift direction"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Rising air near the equator (the doldrums, where the Hadley cells begin) gives light, variable surface winds, though local sites can still be windy.",
+    "options": [
+     "Sunlight drives wind by uneven heating; it does not stop it.",
+     "Generators work in hot climates.",
+     "The Coriolis effect turns moving air; it does not stop it, and the trade winds blow steadily across much of the tropics.",
+     "Right: equatorial surface winds are often light."
+    ]
+   }
+  }
+ ]
+}

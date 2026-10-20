@@ -1,0 +1,68 @@
+{
+ "topic": "population-growth",
+ "hook": "A few rabbits released in Australia in 1859 had no foxes or diseases to hold them back and a whole continent of grass ahead of them. Within a few decades there were hundreds of millions. In a fenced field, the same rabbits would grow fast at first and then level off as grass and space ran short. Same animal, two growth curves: the J and the S.",
+ "prereq": [
+  {
+   "q": "What is carrying capacity?",
+   "options": [
+    "The largest population an environment can support over time",
+    "The fastest a population can grow",
+    "The number of species in an area",
+    "The age when a species first breeds"
+   ],
+   "correct": 0,
+   "why": "Carrying capacity (K) is set by an environment’s resources.",
+   "review": "carrying-limits"
+  },
+  {
+   "q": "A population grows 7% a year. About how long does it take to double, by the rule of 70?",
+   "options": [
+    "10 years",
+    "7 years",
+    "70 years",
+    "0.1 years"
+   ],
+   "correct": 0,
+   "why": "70 divided by the growth rate in percent: 70 / 7 = 10 years.",
+   "review": "math-doubling"
+  }
+ ],
+ "figure": {
+  "figure": "population-growth-j-s",
+  "caption": "Exponential growth (J-curve) with unlimited resources, and logistic growth (S-curve) that levels off at the carrying capacity."
+ },
+ "chain": [
+  {
+   "cause": "Resources are plentiful and nothing limits a population",
+   "effect": "it grows by a constant percent each year, so it adds more individuals each year: exponential growth, a J-curve"
+  },
+  {
+   "cause": "The population grows and resources are shared among more individuals",
+   "effect": "limiting factors such as food, space and disease become stronger"
+  },
+  {
+   "cause": "Births fall and deaths rise as the population nears carrying capacity",
+   "effect": "growth slows and the population levels off at K: logistic growth, an S-curve"
+  }
+ ],
+ "ideas": [
+  "<b>Exponential growth</b>: with unlimited resources, a population grows by a constant percent each period, so it adds more individuals each time. The graph is a <b>J-curve</b>.",
+  "<b>Logistic growth</b>: growth is fast at first, slows as resources run short, and levels off at the carrying capacity. The graph is an <b>S-curve</b>; growth is fastest at about half of K.",
+  "A <b>limiting factor</b> is any resource or condition that keeps a population from growing: food, water, space, light, nutrients, predators, disease.",
+  "<b>Density-dependent</b> factors grow stronger as a population gets denser (food shortage, disease, competition, predation). <b>Density-independent</b> factors hit a population whatever its size (a flood, a frost, a fire)."
+ ],
+ "misconception": {
+  "wrong": "A population growing exponentially adds the same number of individuals every year.",
+  "right": "It grows by the same percent every year, so the number added grows each year: 2% of 1,000 is 20, but 2% of 2,000 is 40."
+ },
+ "check": [
+  "env-population-growth-1",
+  "env-population-growth-2",
+  "env-population-growth-3",
+  "env-population-growth-5",
+  "env-population-growth-6",
+  "env-population-growth-8",
+  "env-population-growth-11"
+ ],
+ "summary": "With unlimited resources, a population grows exponentially (a J-curve), by a constant percent each period. In real environments, limiting factors slow growth as the population nears carrying capacity, giving logistic growth (an S-curve). Density-dependent factors such as food shortage, disease and competition strengthen as a population grows; density-independent factors such as floods and frosts act whatever its size."
+}

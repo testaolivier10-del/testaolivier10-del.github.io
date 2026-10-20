@@ -1,0 +1,12 @@
+{
+ "greenhouse-effect-ozone": {
+  "file": "figures/greenhouse-effect-ozone.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels. Left, the greenhouse effect: sunlight reaches Earth’s surface, which gives off infrared radiation (IR). In the troposphere, greenhouse gases (CO2, CH4, N2O, H2O and CFCs) absorb infrared and send part of it back down; some IR escapes to space. Result: the lower atmosphere warms. Right, the ozone layer: ultraviolet (UV) light from the Sun is mostly absorbed by ozone (O3) in the stratosphere, about 15 to 35 km up; a dashed arrow shows a little UV reaching the ground. CFCs release chlorine that destroys ozone, so more UV gets through. Result: more skin cancer and cataracts. Caption: different gases, different radiation, different layers of the atmosphere."
+ }
+}

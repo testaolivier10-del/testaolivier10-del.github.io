@@ -1,0 +1,43 @@
+{
+ "topic": "intro-ecosystems",
+ "hook": "A pond at the edge of a farm looks like one thing, but it is thousands of living things and the water, light and mud they depend on. Frogs eat insects, insects eat algae, and a single cold spring can change all of it. To predict what happens when anything changes, you first need words for the parts and for how species affect each other.",
+ "prereq": [],
+ "figure": {
+  "figure": "intro-ecosystems-interactions",
+  "caption": "How two species can affect each other: + helped, − harmed, 0 not affected."
+ },
+ "chain": [
+  {
+   "cause": "Two species need the same limited resource",
+   "effect": "each gets less, so both are harmed: competition"
+  },
+  {
+   "cause": "They split the resource by place, time or food size",
+   "effect": "they overlap less: resource partitioning"
+  },
+  {
+   "cause": "Less overlap means less competition",
+   "effect": "both species can live in the same community"
+  }
+ ],
+ "ideas": [
+  "An <b>ecosystem</b> is the living (<b>biotic</b>) and nonliving (<b>abiotic</b>) parts of an area and how they interact.",
+  "A <b>population</b> is one species in one area; a <b>community</b> is every population living and interacting there.",
+  "A <b>habitat</b> is where a species lives; its <b>niche</b> is its role: what it eats, when, where and under what conditions.",
+  "<b>Symbiosis</b> is a close, long-term relationship: <b>mutualism</b> (+/+), <b>commensalism</b> (+/0), <b>parasitism</b> (+/−). <b>Predation</b> is +/−, <b>competition</b> is −/−."
+ ],
+ "misconception": {
+  "wrong": "Any relationship where one species eats part of another is predation.",
+  "right": "A predator kills and eats its prey. A parasite lives on or in a host for a long time and harms it, usually without killing it right away. Ask: does the host stay alive while it is fed on?"
+ },
+ "check": [
+  "env-intro-ecosystems-3",
+  "env-intro-ecosystems-5",
+  "env-intro-ecosystems-7",
+  "env-intro-ecosystems-14",
+  "env-intro-ecosystems-15",
+  "env-intro-ecosystems-16",
+  "env-intro-ecosystems-17"
+ ],
+ "summary": "An ecosystem joins a community of species to the abiotic conditions around it. Species interact by predation (+/−), competition (−/−) and three kinds of symbiosis: mutualism (+/+), commensalism (+/0) and parasitism (+/−). Species that need the same resource can still coexist by resource partitioning, using it at different places or times."
+}

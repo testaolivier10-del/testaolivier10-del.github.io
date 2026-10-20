@@ -1,0 +1,574 @@
+{
+ "stimuli": {
+  "plate-tectonics-s1": {
+   "kind": "visual",
+   "title": "A cross-section of three plate boundaries",
+   "figure": "plate-tectonics-boundaries"
+  },
+  "plate-tectonics-s2": {
+   "kind": "quantitative",
+   "title": "Seafloor age and distance from a mid-ocean ridge",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of the distance of seafloor rock from a mid-ocean ridge against the age of the rock, invented data",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Seafloor rock",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        25
+       ],
+       [
+        2,
+        50
+       ],
+       [
+        3,
+        75
+       ],
+       [
+        4,
+        100
+       ]
+      ]
+     }
+    ],
+    "xLabel": "Age of rock (million years)",
+    "yLabel": "Distance from ridge (km)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-plate-tectonics-1",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What moves Earth's tectonic plates?",
+   "options": [
+    "Convection currents in the hot mantle below the plates",
+    "Moving seawater pushing on the edges of the continents",
+    "The pull of the Moon on the solid crust each day",
+    "Winds blowing across the surface of the ocean plates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Heat from Earth's interior makes mantle rock slowly rise, spread and sink. These convection currents drag the rigid plates above them.",
+    "options": [
+     "Right: hot mantle rock rises, cools and sinks, and the moving mantle carries the plates.",
+     "Seawater pushes on rock only weakly, far too weakly to move a plate.",
+     "The Moon raises tides, but it does not drive plate motion.",
+     "Winds move air and water at the surface; plates are rock about 100 km thick."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-2",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "The Himalayas are still rising where the plate carrying India pushes into the plate carrying most of Asia. Which kind of boundary is this?",
+   "options": [
+    "A convergent boundary between two continental plates",
+    "A divergent boundary where two plates spread apart",
+    "A transform boundary where plates slide side by side",
+    "A hot spot under the middle of one plate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two continents collide. Continental crust is too light to sink far, so the crust crumples and stacks up into very high mountains.",
+    "options": [
+     "Right: the plates move toward each other, and the crust folds into mountains.",
+     "Spreading plates form ridges and rift valleys, not the highest mountains on Earth.",
+     "At a transform boundary the plates slide past each other; they do not push crust upward this much.",
+     "A hot spot forms volcanoes in the middle of a plate, not a long mountain range at a plate edge."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-3",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The Hawaiian Islands form a chain. The island of Hawaii in the southeast has active volcanoes, and the islands get older toward the northwest. What best explains this pattern?",
+   "options": [
+    "The Pacific Plate moves northwest over a fixed hot spot",
+    "A transform boundary runs along the chain of islands",
+    "The islands sit on a divergent boundary that spreads both ways",
+    "Each island formed when two ocean plates collided there"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The hot spot stays in place deep below. The plate slides over it, carrying each finished volcano away, so the oldest islands are farthest from the hot spot.",
+    "options": [
+     "Right: the plate carries older volcanoes northwest, away from the hot spot.",
+     "Transform boundaries cause earthquakes; they do not build a line of volcanoes that get older in one direction.",
+     "A spreading boundary would make rock older in both directions, away from a central ridge.",
+     "Hawaii is in the middle of the Pacific Plate, far from any plate boundary."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-4",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The San Andreas Fault in California causes frequent earthquakes but has few volcanoes. Which kind of plate boundary is it?",
+   "options": [
+    "Transform",
+    "Divergent",
+    "Convergent, with subduction",
+    "Convergent, between two continents"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At a transform boundary the plates grind past each other. Stress builds and is released as earthquakes, but no plate sinks and little magma rises.",
+    "options": [
+     "Right: the Pacific Plate slides past the North American Plate.",
+     "A divergent boundary would let magma rise and form new crust, with volcanic activity.",
+     "Subduction makes trenches and chains of volcanoes, which this fault does not have.",
+     "A collision of continents builds high mountain ranges, not a long sliding fault."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-5",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Many of the world's volcanoes and earthquakes lie in a ring around the Pacific Ocean. Why are they concentrated there?",
+   "options": [
+    "Ocean plates sink under other plates along most of the Pacific edge",
+    "The Pacific is the deepest ocean, so the crust there is the thinnest",
+    "Hot spots line up in a circle under the middle of the Pacific Plate",
+    "Heat moving from warm seawater into the crust melts rock there"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Subduction zones surround much of the Pacific. A sinking plate causes strong earthquakes, and the rock above it melts to feed volcanoes.",
+    "options": [
+     "Right: the ring follows convergent boundaries with subduction.",
+     "Depth of the ocean does not cause the pattern; the boundaries do.",
+     "Hot spots make lines of volcanoes in the middle of plates, not a ring at their edges.",
+     "Seawater does not melt rock; magma comes from deep below the crust."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-6",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "multi",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "An ocean plate sinks under a continental plate. Which features form at this boundary? Select all that apply.",
+   "options": [
+    "A deep ocean trench",
+    "A chain of volcanoes on the continent",
+    "A rift valley that splits the continent",
+    "A mid-ocean ridge with new seafloor"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Where the denser ocean plate sinks, the seafloor bends down into a trench, and the melting rock above the sinking plate feeds volcanoes, as in the Andes.",
+    "options": [
+     "Right: the sinking plate forms a trench.",
+     "Right: rock above the sinking plate melts, and the magma rises to form volcanoes.",
+     "A rift valley forms where plates pull apart, at a divergent boundary.",
+     "A mid-ocean ridge forms where ocean plates move apart, not where they collide."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-7",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Iceland sits on the Mid-Atlantic Ridge and has many volcanoes. Why does magma reach the surface there?",
+   "options": [
+    "The plates move apart, so pressure drops and hot mantle rock rises and melts",
+    "One plate sinks under the other, and the sinking plate melts as it goes down",
+    "The plates slide past each other, and friction heats the rock until it melts",
+    "The weight of the ocean presses the crust down until it cracks and melts"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At a divergent boundary the gap between plates lets hot mantle rock rise. As it rises the pressure on it drops, it partly melts, and the magma fills the gap as new crust.",
+    "options": [
+     "Right: pulling apart lets mantle rock rise, melt and form new crust.",
+     "Sinking describes a convergent boundary; at a ridge the plates move apart.",
+     "Sliding past each other describes a transform boundary, which has few volcanoes.",
+     "Water pressure does not melt rock; the magma comes from rising mantle rock."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-8",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "specific",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain why a strong earthquake at a subduction zone under the ocean can cause a tsunami on a distant coast.",
+   "why": {
+    "correct": "A sudden slip moves the seafloor, which moves the whole column of water above it; that water spreads as tsunami waves."
+   },
+   "specific": {
+    "frame": "When ___, ___, which ___.",
+    "slots": {
+     "cause": {
+      "label": "Cause",
+      "options": [
+       "the sinking plate suddenly slips",
+       "the plates slowly drift apart",
+       "a hot spot heats the crust"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Slow spreading does not suddenly move the seafloor.",
+       "2": "A hot spot builds volcanoes; it does not lift the seafloor in seconds."
+      }
+     },
+     "effect": {
+      "label": "What happens",
+      "options": [
+       "the seafloor jumps up and lifts the water above it",
+       "the ocean water heats and expands",
+       "the trench fills with magma"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warming water expands far too slowly to make a fast wave.",
+       "2": "Magma does not fill a trench during an earthquake."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "sends waves racing across the ocean to the coast",
+       "lowers the tide along the coast for a season",
+       "stops the plates from moving"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A tsunami arrives in minutes to hours, not over a season.",
+       "2": "An earthquake releases stress; the plates keep moving."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "seafloor",
+      "water",
+      "wave"
+     ]
+    },
+    "model": "When the sinking plate suddenly slips, the seafloor jumps up and lifts the water above it, which causes a series of waves to spread out and rise higher as they reach the shallow water of a distant coast."
+   }
+  },
+  {
+   "id": "env-plate-tectonics-9",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what is happening at the boundary on the left, where the arrows point away from each other?",
+   "stimulus": "plate-tectonics-s1",
+   "options": [
+    "Two plates move apart and magma forms new crust",
+    "Two plates collide and one sinks into the mantle",
+    "Two plates slide past each other without new crust",
+    "A plate moves over a hot spot in the mantle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Arrows pointing apart mark a divergent boundary. Rising magma fills the gap and builds a ridge of new crust.",
+    "options": [
+     "Right: the boundary is divergent, with magma rising between the plates.",
+     "Colliding plates are shown in the middle, where one plate sinks.",
+     "Sliding plates are shown in the inset seen from above.",
+     "The diagram shows the magma at a plate edge, not under the middle of a plate."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-10",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, why does the ocean plate, and not the continent, sink at the convergent boundary?",
+   "stimulus": "plate-tectonics-s1",
+   "options": [
+    "Ocean crust is denser than continental crust",
+    "Ocean crust is thicker than continental crust",
+    "The ocean pushes the plate down with its weight",
+    "The continent is moving faster than the ocean plate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ocean crust is made of dense basalt; continental crust is lighter. When they meet, the denser plate sinks into the mantle.",
+    "options": [
+     "Right: the denser plate sinks below the lighter one.",
+     "Ocean crust is thinner than continental crust, not thicker.",
+     "The water above is not what makes the plate sink; the rock is denser.",
+     "Speed does not decide which plate sinks; density does."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-11",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The diagram shows a dashed arrow of magma rising from the sinking plate to a volcano. Which statement explains it?",
+   "stimulus": "plate-tectonics-s1",
+   "options": [
+    "As the plate sinks it heats up, and rock above it melts and rises",
+    "The volcano pulls magma up from the mid-ocean ridge on the left",
+    "Friction at the transform fault melts rock beneath the continent",
+    "Ocean water flows down the trench and boils up through the crust"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The sinking plate carries water down with it. Heat and that water make the mantle rock above it melt, and the light magma rises to form volcanoes.",
+    "options": [
+     "Right: melting above the sinking plate feeds the volcanoes.",
+     "The ridge is a separate boundary; its magma does not travel under the ocean to the continent.",
+     "The transform boundary in the inset is not connected to this volcano.",
+     "Water helps rock melt, but the volcano erupts magma, not boiling seawater."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-12",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A city is built on the continent shown in the diagram, near the trench. Which natural hazards is it most likely to face?",
+   "stimulus": "plate-tectonics-s1",
+   "options": [
+    "Strong earthquakes and volcanic eruptions",
+    "Rift valleys opening under the city each year",
+    "Hurricanes caused by the sinking plate",
+    "Volcanic eruptions but no earthquakes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A subduction zone produces some of the strongest earthquakes on Earth, and the melting plate feeds explosive volcanoes, as along the Andes and in Japan.",
+    "options": [
+     "Right: subduction brings both strong earthquakes and volcanoes.",
+     "Rift valleys form where plates pull apart, not where they collide.",
+     "Hurricanes form over warm ocean water; plate motion does not cause them.",
+     "The grinding and sudden slipping of the sinking plate causes frequent earthquakes too."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-13",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What pattern does the graph show?",
+   "stimulus": "plate-tectonics-s2",
+   "options": [
+    "Seafloor rock gets older the farther it is from the ridge",
+    "Seafloor rock is about the same age at any distance from the ridge",
+    "Seafloor rock gets younger the farther it is from the ridge",
+    "Seafloor rock ages quickly near the ridge, then stops aging"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Distance and age rise together in a straight line. New crust forms at the ridge and is carried away as more forms behind it: seafloor spreading.",
+    "options": [
+     "Right: both values rise together, so older rock is farther away.",
+     "The age changes with distance; it is 0 at the ridge and 4 million years at 100 km.",
+     "The newest rock, age 0, is at the ridge, so rock gets older moving away.",
+     "The line is straight, so the age keeps rising at the same rate with distance."
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-14",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "Use the graph. Rock 100 km from the ridge is 4 million years old. What is the average spreading rate on this side of the ridge, in centimeters per year? (1 km = 100,000 cm)",
+   "stimulus": "plate-tectonics-s2",
+   "why": {
+    "correct": "Rate = distance ÷ time: $\\frac{100\\,\\text{km} \\times 100{,}000\\,\\text{cm/km}}{4{,}000{,}000\\,\\text{yr}} = \\frac{10{,}000{,}000\\,\\text{cm}}{4{,}000{,}000\\,\\text{yr}} = 2.5\\,\\text{cm/yr}$, about as fast as fingernails grow."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "convert",
+       "args": [
+        100,
+        "km",
+        "cm"
+       ]
+      },
+      4000000
+     ]
+    },
+    "unit": "cm/yr",
+    "mistakes": [
+     {
+      "value": 25,
+      "why": "That is 25 km per million years. Convert: 25 km is 2,500,000 cm, and a million years is 1,000,000 years, so divide 2,500,000 by 1,000,000."
+     },
+     {
+      "value": 0.25,
+      "why": "A factor of 10 slipped. 100 km is 10,000,000 cm (100 × 100,000), and 10,000,000 cm ÷ 4,000,000 yr = 2.5 cm/yr."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        4000000,
+        {
+         "fn": "convert",
+         "args": [
+          100,
+          "km",
+          "cm"
+         ]
+        }
+       ]
+      },
+      "why": "You divided time by distance. A rate is distance divided by time: 10,000,000 cm ÷ 4,000,000 yr."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-plate-tectonics-15",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The plate moves 2.5 cm each year. How far does it move in 1,000 years? Write the setup with units, then the answer in centimeters.",
+   "stimulus": "plate-tectonics-s2",
+   "why": {
+    "correct": "$2.5\\,\\text{cm/yr} \\times 1{,}000\\,\\text{yr} = 2{,}500\\,\\text{cm}$, which is 25 m. The years cancel, leaving centimeters."
+   },
+   "setup": {
+    "answer": "2.5 cm/yr * 1000 yr",
+    "mustUse": [
+     "2.5",
+     "1000"
+    ],
+    "unit": "cm",
+    "requireUnits": true,
+    "mistakes": [
+     {
+      "expr": "2.5 cm/yr / 1000 yr",
+      "why": "Distance is rate times time, not rate divided by time. Multiply: 2.5 cm/yr × 1,000 yr, and the years cancel."
+     },
+     {
+      "expr": "1000 yr / 2.5 cm/yr",
+      "why": "This divides time by the rate, which gives years squared per centimeter. Multiply the rate by the time so the years cancel."
+     }
+    ],
+    "then": {
+     "from": {
+      "fn": "mul",
+      "args": [
+       2.5,
+       1000
+      ]
+     },
+     "unit": "cm",
+     "mistakes": [
+      {
+       "value": 25,
+       "why": "That is 2,500 cm written in meters (25 m). The question asks for centimeters: 2,500 cm."
+      },
+      {
+       "value": 400,
+       "why": "You divided 1,000 by 2.5. Distance is rate × time: 2.5 × 1,000 = 2,500 cm."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-plate-tectonics-16",
+   "unit": "unit-4",
+   "topic": "plate-tectonics",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If the pattern in the graph continues, how old is seafloor rock 150 km from the ridge?",
+   "stimulus": "plate-tectonics-s2",
+   "options": [
+    "6 million years",
+    "3 million years",
+    "4 million years",
+    "150 million years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The rock ages 1 million years for every 25 km: $\\frac{150\\,\\text{km}}{25\\,\\text{km per million years}} = 6$ million years.",
+    "options": [
+     "Right: 150 ÷ 25 = 6 million years.",
+     "That would be 75 km from the ridge; at 150 km the rock is twice as old.",
+     "4 million years matches 100 km, the last point on the graph, not 150 km.",
+     "The graph shows 25 km per million years, not 1 km per million years."
+    ]
+   }
+  }
+ ]
+}

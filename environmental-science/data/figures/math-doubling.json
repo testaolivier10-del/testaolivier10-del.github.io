@@ -1,0 +1,12 @@
+{
+ "math-doubling-curve": {
+  "file": "figures/math-doubling-curve.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A curve from invented data: a population of 1 million in 2000 grows 2 percent a year. By the rule of 70 the doubling time is 70 divided by 2 = 35 years, so it reaches about 2 million in 2035 and about 4 million in 2070. The curve gets steeper as the population grows."
+ }
+}

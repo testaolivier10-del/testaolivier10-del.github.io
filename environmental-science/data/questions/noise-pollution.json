@@ -1,0 +1,564 @@
+{
+ "stimuli": {
+  "noise-pollution-s1": {
+   "kind": "visual",
+   "title": "Sound levels measured around a city school",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of sound levels in decibels around a school: library 30, classroom 60, lunchroom 75, playground at recess 80, road work 100, low-flying jets 110; invented data",
+    "kind": "bar",
+    "categories": [
+     "Library",
+     "Class",
+     "Lunch",
+     "Recess",
+     "Roadwork",
+     "Jets"
+    ],
+    "values": [
+     30,
+     60,
+     75,
+     80,
+     100,
+     110
+    ],
+    "xLabel": "Place or source",
+    "yLabel": "Sound level (dB)"
+   }
+  },
+  "noise-pollution-s2": {
+   "kind": "quantitative",
+   "title": "Songbirds near a new highway",
+   "invented": true,
+   "table": {
+    "caption": "Average traffic noise and breeding songbird pairs counted along a forest edge (invented data for practice)",
+    "cols": [
+     "Distance from highway (m)",
+     "Traffic noise (dB)",
+     "Breeding songbird pairs per 10 ha"
+    ],
+    "rows": [
+     [
+      "50",
+      "72",
+      "4"
+     ],
+     [
+      "200",
+      "62",
+      "9"
+     ],
+     [
+      "400",
+      "54",
+      "15"
+     ],
+     [
+      "800",
+      "45",
+      "18"
+     ],
+     [
+      "1,600",
+      "38",
+      "19"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-noise-pollution-1",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Sounds at or above 85 dB can damage hearing over time. Which measured sounds are at or above that level?",
+   "stimulus": "noise-pollution-s1",
+   "options": [
+    "The low-flying jets, the loudest source",
+    "The road work and the low-flying jets",
+    "Recess and everything louder than it",
+    "Lunch, recess and the road work"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Road work (100 dB) and low-flying jets (110 dB) are above 85 dB. Recess on the playground (80 dB) is close but below it.",
+    "options": [
+     "Road work, at 100 dB, is also above 85 dB.",
+     "Right: 100 and 110 dB are both above 85 dB.",
+     "Recess on the playground is 80 dB, below 85 dB.",
+     "Lunch (75 dB) and recess (80 dB) are below 85 dB."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-2",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The decibel scale is logarithmic: each 10 dB step means 10 times the sound intensity. How does the 100 dB road work compare with the 80 dB playground at recess?",
+   "stimulus": "noise-pollution-s1",
+   "options": [
+    "It has 100 times the sound intensity",
+    "It has 20 times the sound intensity",
+    "It has 1.25 times the sound intensity",
+    "It has 2 times the sound intensity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "100 - 80 = 20 dB, two steps of 10, so the road work has $10 \\times 10 = 100$ times the intensity.",
+    "options": [
+     "Right: 20 dB is two steps of 10, so 10 × 10.",
+     "20 is the difference in dB, not the ratio. Each 10 dB is a factor of 10.",
+     "Dividing the decibel values ignores the logarithmic scale.",
+     "Two steps of 10 dB is 10 × 10, not 2."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-3",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Using the rule that each 10 dB means 10 times the intensity, how many times more intense is the 110 dB jet noise than the 80 dB playground at recess?",
+   "stimulus": "noise-pollution-s1",
+   "why": {
+    "correct": "$110 - 80 = 30$ dB, three steps of 10, so $10^{\\frac{(110 - 80)}{10}} = 10^{3} = 1{,}000$ times the intensity."
+   },
+   "numeric": {
+    "from": {
+     "fn": "pow",
+     "args": [
+      10,
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          110,
+          80
+         ]
+        },
+        10
+       ]
+      }
+     ]
+    },
+    "unit": "times",
+    "units": [
+     "x",
+     "fold"
+    ],
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "30 is the difference in dB. Each 10 dB is a factor of 10, so 30 dB is 10 × 10 × 10 = 1,000."
+     },
+     {
+      "value": 300,
+      "why": "You multiplied the 30 dB difference by 10. The scale is logarithmic: three steps of 10 is 10 × 10 × 10 = 1,000."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-4",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A road crew works beside the school all day at 100 dB. Which step best protects the workers' hearing?",
+   "stimulus": "noise-pollution-s1",
+   "options": [
+    "Work early in the morning when air is cooler",
+    "Listen to music through headphones to mask it",
+    "Work faster so each job takes fewer days",
+    "Wear earmuffs or earplugs during the work"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "All-day work at 100 dB is far above 85 dB. Earmuffs or earplugs lower the sound reaching the ear; quieter machines and breaks also help.",
+    "options": [
+     "Air temperature does not change how loud the machines are to the crew.",
+     "Headphones add more sound; they do not protect hearing.",
+     "The hours of noise each day stay about the same.",
+     "Right: they cut the dB reaching the inner ear."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-5",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the relationship between distance from the highway and traffic noise.",
+   "stimulus": "noise-pollution-s2",
+   "options": [
+    "Noise rises as distance from the highway increases",
+    "Noise is about the same at each distance",
+    "Noise falls as distance from the highway increases",
+    "Noise falls up to 400 m, then rises again"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Noise falls as distance increases, from 72 dB at 50 m to 38 dB at 1,600 m.",
+    "options": [
+     "The table shows noise dropping with distance.",
+     "It ranges from 72 to 38 dB.",
+     "Right: from 72 dB near the road to 38 dB far away.",
+     "It keeps falling at 800 m and 1,600 m."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-6",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which claim do the data best support?",
+   "stimulus": "noise-pollution-s2",
+   "options": [
+    "Songbirds prefer to nest within 50 m of a road",
+    "Fewer songbirds breed where traffic noise is louder",
+    "Traffic noise has no link to songbird breeding",
+    "Songbirds make the highway quieter far from the road"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Pairs rise from 4 to 19 as noise drops from 72 to 38 dB. Noise is likely one cause, though the road also brings lights, pollution and edge effects, so the data show a relationship, not proof.",
+    "options": [
+     "The fewest pairs, 4, are within 50 m.",
+     "Right: the counts rise steadily as noise falls.",
+     "The counts change steadily with the noise.",
+     "Birds do not lower traffic noise; distance does."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-7",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in breeding pairs from 1,600 m to 50 m from the highway.",
+   "stimulus": "noise-pollution-s2",
+   "why": {
+    "correct": "$\\frac{(4 - 19)}{19} \\times 100 = -78.9\\%$: about 79% fewer pairs next to the road."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      19,
+      4
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -375,
+      "why": "You divided by the 50 m count. The starting value here is the 1,600 m count, 19."
+     },
+     {
+      "value": 78.9473684211,
+      "why": "There are fewer pairs near the road, so the change is negative: about -78.9%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-8",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why could loud traffic noise lower songbird breeding near the road?",
+   "stimulus": "noise-pollution-s2",
+   "options": [
+    "Noise drowns out the songs that win mates",
+    "Noise warms the air, so eggs overheat near the road",
+    "Noise breaks down the insects that songbirds eat",
+    "Noise makes the trees near the road grow more slowly"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Songbirds attract mates and defend territories by singing. Noise masks their songs, so males find mates less often and pairs avoid noisy areas.",
+    "options": [
+     "Right: masked songs mean fewer pairs form.",
+     "Sound does not noticeably warm the air.",
+     "Sound does not break down insects.",
+     "The direct effect is on the birds' communication, not on tree growth."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-9",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is noise pollution?",
+   "options": [
+    "Any sound above 10 decibels in a city",
+    "Vibration from earthquakes that damages buildings",
+    "Radio waves from cell phone towers",
+    "Sound loud or constant enough to cause harm"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Noise pollution is sound at levels or times that harm people or wildlife, from traffic, aircraft, industry, construction and ships.",
+    "options": [
+     "10 dB is barely audible; it is the harm that defines noise pollution.",
+     "Earthquakes are natural events, not noise pollution in this sense.",
+     "Radio waves are not sound.",
+     "Right: harm, not just loudness, defines it."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-10",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which human health effect is linked to long-term exposure to loud noise?",
+   "options": [
+    "Lung cancer from breathing sound waves",
+    "Lead poisoning from old vibrating water pipes",
+    "Hearing loss and high blood pressure",
+    "Sunburn on the skin of the ears"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Long exposure to loud noise causes hearing loss and tinnitus, and chronic noise is linked to stress, poor sleep and high blood pressure.",
+    "options": [
+     "Sound does not cause lung cancer.",
+     "Vibration does not cause lead poisoning.",
+     "Right: noise harms hearing and adds stress.",
+     "Sound has nothing to do with sunburn."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-11",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How can noise from ships and seismic surveys harm whales?",
+   "options": [
+    "It warms the ocean water so whales overheat",
+    "It masks the calls whales use to find food",
+    "It adds fuel to the water around the ships",
+    "It makes the water too salty for whales to drink"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Whales use sound to find food, navigate and talk to each other. Loud underwater noise masks those sounds and can disrupt migration, and very loud blasts can injure their hearing.",
+    "options": [
+     "Sound does not noticeably warm the ocean.",
+     "Right: whales depend on sound underwater.",
+     "Fuel leaks are a different problem from noise.",
+     "Noise does not change salinity."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-12",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A city wants to cut noise for homes beside a busy highway. Which solution fits best?",
+   "options": [
+    "Build sound barrier walls by the homes",
+    "Plant a single row of small flowers along the road",
+    "Raise the highway speed limit so cars pass faster",
+    "Add more lanes so more cars can use the highway"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sound barrier walls and berms block the path of the sound between the road and the homes, lowering the decibels that reach them.",
+    "options": [
+     "Right: barriers block the sound path.",
+     "A row of flowers does not block sound.",
+     "Faster traffic is louder, not quieter.",
+     "More traffic usually means more noise."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-13",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "single",
+   "practice": "7.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these is a policy, rather than a technology, for reducing noise pollution?",
+   "options": [
+    "Quieter pavement made of rubberized asphalt",
+    "Mufflers fitted on the city motorcycles",
+    "Free earplugs handed out at a concert",
+    "A city rule banning loud work at night"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A city rule that bans loud construction work at night is a policy. Mufflers, quieter tires and barrier walls are technologies.",
+    "options": [
+     "That is a technology; a rule requiring it would be the policy.",
+     "Mufflers are a technology.",
+     "Earplugs are a technology for protecting hearing.",
+     "Right: a time limit set by law is a policy."
+    ]
+   }
+  },
+  {
+   "id": "env-noise-pollution-14",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A machine is 95 dB at the operator's ear. Wearing earmuffs lowers it to 75 dB. Using the rule that each 10 dB is 10 times the intensity, write the setup for how many times less intense the sound is with earmuffs, then the answer.",
+   "why": {
+    "correct": "$95 - 75 = 20$ dB, so $10^{\\frac{(95 - 75)}{10}} = 100$ times less intense."
+   },
+   "setup": {
+    "answer": "10^((95 - 75) / 10)",
+    "mustUse": [
+     "95",
+     "75"
+    ],
+    "mistakes": [
+     {
+      "expr": "95 - 75",
+      "why": "That is the drop in dB. Each 10 dB is a factor of 10: raise 10 to (95 - 75) / 10."
+     },
+     {
+      "expr": "95 / 75",
+      "why": "Decibels are logarithmic, so dividing them does not give the intensity ratio."
+     }
+    ],
+    "then": {
+     "unit": "times",
+     "units": [
+      "x",
+      "fold"
+     ],
+     "from": {
+      "fn": "pow",
+      "args": [
+       10,
+       {
+        "fn": "div",
+        "args": [
+         {
+          "fn": "sub",
+          "args": [
+           95,
+           75
+          ]
+         },
+         10
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 20,
+       "why": "A drop of 20 dB is 10 × 10 = 100 times less intense, not 20."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-noise-pollution-15",
+   "unit": "unit-7",
+   "topic": "noise-pollution",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Shipping lanes run through waters where whales feed. Propose a solution that reduces the harm from ship noise, and explain how it works.",
+   "why": {
+    "correct": "The solution fits the scenario (ships and whales) and says how it works: slower ships make less propeller noise, so less of the whales' sound is masked."
+   },
+   "specific": {
+    "frame": "Managers could ___, which reduces harm because ___.",
+    "slots": {
+     "action": {
+      "label": "Solution",
+      "options": [
+       "set slower speed limits for ships in whale feeding areas",
+       "ban whales from the shipping lanes",
+       "require ships to carry earmuffs for the crew"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Whales cannot be banned from where their food is.",
+       "2": "Earmuffs protect the crew, not the whales."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "slower propellers make less underwater noise, so whale calls are masked less",
+       "slower ships release more oxygen into the water",
+       "slower ships make the water warmer for whales"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ship speed does not add oxygen to the water.",
+       "2": "Ship speed does not warm the water in a way that helps whales."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "whale",
+      "ship",
+      "noise"
+     ]
+    },
+    "model": "Managers could set slower speed limits for ships in whale feeding areas, which reduces harm because slower propellers make less underwater noise, so whale calls are masked less."
+   }
+  }
+ ]
+}

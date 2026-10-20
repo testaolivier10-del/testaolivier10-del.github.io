@@ -1,0 +1,733 @@
+{
+ "stimuli": {
+  "nuclear-power-s1": {
+   "kind": "visual",
+   "title": "Decay of a radioactive isotope",
+   "invented": true,
+   "plot": {
+    "label": "Mass of a radioactive isotope remaining over 60 years, falling by half every 10 years, invented data for practice",
+    "kind": "line",
+    "xLabel": "Time (years)",
+    "yLabel": "Mass remaining (g)",
+    "x": [
+     0,
+     60
+    ],
+    "y": [
+     0,
+     1000
+    ],
+    "series": [
+     {
+      "name": "Isotope",
+      "points": [
+       [
+        0,
+        800
+       ],
+       [
+        2,
+        696.44
+       ],
+       [
+        4,
+        606.29
+       ],
+       [
+        6,
+        527.8
+       ],
+       [
+        8,
+        459.48
+       ],
+       [
+        10,
+        400
+       ],
+       [
+        12,
+        348.22
+       ],
+       [
+        14,
+        303.14
+       ],
+       [
+        16,
+        263.9
+       ],
+       [
+        18,
+        229.74
+       ],
+       [
+        20,
+        200
+       ],
+       [
+        22,
+        174.11
+       ],
+       [
+        24,
+        151.57
+       ],
+       [
+        26,
+        131.95
+       ],
+       [
+        28,
+        114.87
+       ],
+       [
+        30,
+        100
+       ],
+       [
+        32,
+        87.06
+       ],
+       [
+        34,
+        75.79
+       ],
+       [
+        36,
+        65.98
+       ],
+       [
+        38,
+        57.43
+       ],
+       [
+        40,
+        50
+       ],
+       [
+        42,
+        43.53
+       ],
+       [
+        44,
+        37.89
+       ],
+       [
+        46,
+        32.99
+       ],
+       [
+        48,
+        28.72
+       ],
+       [
+        50,
+        25
+       ],
+       [
+        52,
+        21.76
+       ],
+       [
+        54,
+        18.95
+       ],
+       [
+        56,
+        16.49
+       ],
+       [
+        58,
+        14.36
+       ],
+       [
+        60,
+        12.5
+       ]
+      ],
+      "markers": false
+     }
+    ]
+   }
+  },
+  "nuclear-power-s2": {
+   "kind": "visual",
+   "title": "Inside a nuclear power plant",
+   "figure": "nuclear-power-reactor"
+  }
+ },
+ "items": [
+  {
+   "id": "env-nuclear-power-1",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the fuel in a nuclear power plant?",
+   "options": [
+    "Water, which is split apart to release its energy",
+    "Steam, which carries the energy to the turbine",
+    "Coal, which is burned to heat the reactor core",
+    "Uranium, enriched to a higher share of uranium-235"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The fuel is uranium (usually enriched to about 3 to 5 percent uranium-235). Water and steam only carry the heat to the turbine.",
+    "options": [
+     "Water is the coolant and the source of steam; it is not split for energy.",
+     "Steam carries heat; it is not the fuel.",
+     "No fuel is burned in a nuclear reactor.",
+     "Right: uranium-235 is the fuel."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-2",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What happens during nuclear fission in a reactor?",
+   "options": [
+    "Uranium burns in oxygen, releasing carbon dioxide and a lot of heat",
+    "Water molecules in the core break apart into hydrogen and oxygen",
+    "A neutron splits a U-235 nucleus, freeing heat and neutrons",
+    "Two hydrogen nuclei join to form one helium nucleus, releasing heat"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A neutron strikes a uranium-235 nucleus, which splits into smaller nuclei, releasing a large amount of heat and 2 or 3 neutrons that can split more nuclei: a chain reaction.",
+    "options": [
+     "Fission is not burning and releases no carbon dioxide.",
+     "Splitting water is a chemical change, not a nuclear one.",
+     "Right: splitting heavy nuclei is fission.",
+     "Joining light nuclei is fusion, which powers the sun, not today's reactors."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-3",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What do the control rods in a reactor do?",
+   "options": [
+    "They store the spent fuel after it is removed from the core",
+    "They absorb neutrons, which slows the chain reaction",
+    "They add extra uranium to the core when the reaction slows down",
+    "They carry the heat from the reactor core out to the turbine"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Control rods are made of materials that absorb neutrons. Lowering them in takes neutrons out of the chain reaction; pulling them out lets it speed up.",
+    "options": [
+     "Spent fuel is stored in pools and casks, not in control rods.",
+     "Right: absorbing neutrons controls the rate.",
+     "Fuel rods hold the uranium; control rods do not add fuel.",
+     "Water carries the heat."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-4",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the half-life of a radioactive isotope?",
+   "options": [
+    "The time for half of a sample's radioactive atoms to decay",
+    "Half the time it takes for the whole sample to decay away",
+    "The length of time a sample stays dangerous to people nearby",
+    "The age at which a sample weighs half as much as at the start"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In each half-life, half of the remaining radioactive atoms decay. After two half-lives a quarter is left, after three an eighth.",
+    "options": [
+     "Right: half the atoms decay in one half-life.",
+     "Decay never quite reaches zero; each half-life halves what is left.",
+     "How long a sample is dangerous depends on many half-lives and the type of radiation.",
+     "Half-life counts atoms that decay; the decay products still have mass."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-5",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sample holds 200 g of cesium-137, which has a half-life of about 30 years. How many grams of cesium-137 remain after 90 years?",
+   "why": {
+    "correct": "$90 \\div 30 = 3$ half-lives. $200\\,\\text{g} \\times (\\tfrac{1}{2})^{3} = 25\\,\\text{g}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "halfLifeLeft",
+     "args": [
+      200,
+      30,
+      90
+     ]
+    },
+    "unit": "g",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        200,
+        3
+       ]
+      },
+      "why": "You divided by the number of half-lives. Halve the amount once for each half-life: 200 → 100 → 50 → 25."
+     },
+     {
+      "value": 100,
+      "why": "That is after one half-life (30 years). Ninety years is three half-lives."
+     },
+     {
+      "value": 175,
+      "why": "That is how much has decayed. The question asks how much remains."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-6",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A hospital receives 80 mg of iodine-131, which has a half-life of 8 days. Write the setup for the amount left after 24 days, then give the answer.",
+   "why": {
+    "correct": "$80\\,\\text{mg} \\times 0.5^{24/8} = 80 \\times 0.5^{3} = 80 \\times 0.125 = 10\\,\\text{mg}$. Writing $0.5^{3}$ directly (24 ÷ 8 = 3 half-lives) earns the setup too."
+   },
+   "setup": {
+    "answer": "80 mg * 0.5^(24/8)",
+    "unit": "mg",
+    "mustUse": [
+     "80"
+    ],
+    "mistakes": [
+     {
+      "expr": "80 mg * 0.5 * 24/8",
+      "why": "Halving is repeated, so the number of half-lives (24 ÷ 8 = 3) is an exponent: 0.5^(24/8)."
+     },
+     {
+      "expr": "80 mg / (24/8)",
+      "why": "Dividing by 3 is not three halvings. Use 80 × 0.5^3."
+     }
+    ],
+    "then": {
+     "unit": "mg",
+     "from": {
+      "fn": "halfLifeLeft",
+      "args": [
+       80,
+       8,
+       24
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 60,
+       "why": "That is 80 × 0.5 × 1.5. Each half-life halves the amount: 80 → 40 → 20 → 10."
+      },
+      {
+       "value": 70,
+       "why": "You subtracted the 10 mg left from 80. Report what remains, not what decayed."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-nuclear-power-7",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Strontium-90 has a half-life of about 29 years. How many years until a spill of strontium-90 falls to one sixteenth of its starting amount?",
+   "why": {
+    "correct": "One sixteenth is $(\\tfrac{1}{2})^{4}$, so 4 half-lives: $4 \\times 29 = 116$ years."
+   },
+   "numeric": {
+    "from": {
+     "fn": "timeToFraction",
+     "args": [
+      0.0625,
+      29
+     ]
+    },
+    "unit": "yr",
+    "units": [
+     "years"
+    ],
+    "tol": 0.5,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        16,
+        29
+       ]
+      },
+      "why": "One sixteenth is 4 halvings (1/2, 1/4, 1/8, 1/16), not 16. Multiply 4 by 29."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        8,
+        29
+       ]
+      },
+      "why": "Eight half-lives would leave 1/256. Count halvings: 1/16 takes 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-8",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the graph, what is the half-life of this isotope?",
+   "stimulus": "nuclear-power-s1",
+   "options": [
+    "10 years",
+    "20 years",
+    "400 years",
+    "60 years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The amount falls from 800 g to 400 g, half, in 10 years.",
+    "options": [
+     "Right: 800 g becomes 400 g after 10 years.",
+     "After 20 years only a quarter (200 g) is left.",
+     "400 is the mass after one half-life, not a time.",
+     "Sixty years is six half-lives."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-9",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many grams of the isotope remain after 40 years?",
+   "stimulus": "nuclear-power-s1",
+   "why": {
+    "correct": "$40 \\div 10 = 4$ half-lives; $800\\,\\text{g} \\times (\\tfrac{1}{2})^{4} = 50\\,\\text{g}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "halfLifeLeft",
+     "args": [
+      800,
+      10,
+      40
+     ]
+    },
+    "unit": "g",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        800,
+        4
+       ]
+      },
+      "why": "You divided by the number of half-lives. Halve four times: 800 → 400 → 200 → 100 → 50."
+     },
+     {
+      "value": 750,
+      "why": "That is how much decayed. The question asks how much is left."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-10",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement describes the shape of the curve?",
+   "stimulus": "nuclear-power-s1",
+   "options": [
+    "The mass lost each decade grows larger as the sample ages",
+    "The isotope has decayed away after two half-lives pass",
+    "The mass lost each decade shrinks as less remains",
+    "The same mass of the isotope is lost in each decade"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each half-life removes half of what is left: 400 g, then 200 g, then 100 g. The curve flattens but does not reach zero.",
+    "options": [
+     "The losses shrink, they do not grow.",
+     "After two half-lives a quarter (200 g) is still left.",
+     "Right: half of a smaller amount each time.",
+     "A straight line would lose the same mass each decade; this curve does not."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-11",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Spent fuel contains isotopes with half-lives from days to tens of thousands of years. What does this mean for storing it?",
+   "stimulus": "nuclear-power-s1",
+   "options": [
+    "It can be burned to remove the radioactivity",
+    "It must be kept isolated from people for thousands of years",
+    "It can be released after a few months, once short-lived isotopes decay",
+    "It becomes safe after one half-life of its longest-lived isotope"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Long-lived isotopes such as plutonium-239 (half-life about 24,000 years) stay dangerous for many half-lives, so storage must last thousands of years.",
+    "options": [
+     "Burning does not change radioactive decay.",
+     "Right: long half-lives demand very long storage.",
+     "Long-lived isotopes remain after the short-lived ones decay.",
+     "After one half-life, half of that isotope is still there."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-12",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what is the source of the heat that makes steam?",
+   "stimulus": "nuclear-power-s2",
+   "options": [
+    "Fission of uranium-235 in the fuel rods",
+    "Burning coal under the reactor",
+    "The cooling tower",
+    "The generator"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fission in the fuel rods releases the heat; water carries it to the steam generator.",
+    "options": [
+     "Right: fission in the fuel rods.",
+     "Nothing is burned in a nuclear reactor.",
+     "The cooling tower removes heat; it does not supply it.",
+     "The generator makes electricity from motion."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-13",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Operators lower the control rods fully into the core. What happens next?",
+   "stimulus": "nuclear-power-s2",
+   "options": [
+    "More fissions occur, so the reactor makes more steam",
+    "The uranium in the fuel rods turns into coal and stops reacting",
+    "Steam flow to the turbine stays the same as before",
+    "Fewer fissions occur, so less heat and electricity"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "More neutrons are absorbed, the chain reaction slows or stops, less heat is made and the turbine slows.",
+    "options": [
+     "Lowering the rods slows fission; it does not speed it up.",
+     "Uranium does not turn into coal.",
+     "With less heat, less steam reaches the turbine.",
+     "Right: absorbing neutrons slows the reaction."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-14",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Based on the diagram, why can losing the supply of cooling water lead to a meltdown, even after the control rods stop fission?",
+   "stimulus": "nuclear-power-s2",
+   "options": [
+    "The turbine sends heat back into the core",
+    "The cooling tower adds heat when it runs dry",
+    "Decay of fission products keeps heating the fuel",
+    "The control rods start making heat once they are lowered"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Radioactive fission products keep giving off heat after the reaction stops. Without cooling water, the fuel overheats and can melt, as at Fukushima in 2011.",
+    "options": [
+     "Heat flows from the core to the turbine, not back.",
+     "A dry cooling tower removes less heat; it does not add any.",
+     "Right: decay heat continues after shutdown.",
+     "Control rods absorb neutrons; they do not make heat."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-15",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "specific",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Describe one environmental advantage and one disadvantage of the nuclear plant in the diagram compared with a coal plant.",
+   "stimulus": "nuclear-power-s2",
+   "why": {
+    "correct": "Advantage: no carbon dioxide or smoke while running, because nothing is burned. Disadvantage: radioactive spent fuel that must be stored for thousands of years, or the risk of an accident."
+   },
+   "specific": {
+    "frame": "An advantage is ___ because ___. A disadvantage is ___.",
+    "slots": {
+     "adv": {
+      "label": "Advantage",
+      "options": [
+       "no carbon dioxide is released while it runs",
+       "it uses a renewable fuel",
+       "it makes no waste"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Uranium is a mined, nonrenewable fuel.",
+       "2": "It produces radioactive spent fuel."
+      }
+     },
+     "how": {
+      "label": "Why",
+      "options": [
+       "fission releases heat without burning any fuel",
+       "the cooling tower removes carbon dioxide",
+       "uranium absorbs carbon dioxide"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cooling towers release water vapor and heat; they do not remove carbon dioxide.",
+       "2": "Uranium does not absorb carbon dioxide."
+      }
+     },
+     "dis": {
+      "label": "Disadvantage",
+      "options": [
+       "radioactive spent fuel must be stored safely for thousands of years",
+       "it releases large amounts of smoke",
+       "its fuel is water, which is running out"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A nuclear plant burns nothing, so it releases no smoke.",
+       "2": "The fuel is uranium; water only carries the heat."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "carbon dioxide",
+      "waste",
+      "spent fuel",
+      "radioactive"
+     ]
+    },
+    "model": "An advantage is that no carbon dioxide is released while it runs, because fission releases heat without burning fuel. A disadvantage is that the radioactive spent fuel must be stored safely for thousands of years."
+   }
+  },
+  {
+   "id": "env-nuclear-power-16",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which event is an example of a nuclear accident that released radioactive material over a wide area?",
+   "options": [
+    "The 1986 Chernobyl explosion and fire in Ukraine",
+    "An oil tanker running aground near Alaska",
+    "A coal mine collapse in West Virginia",
+    "A dam failure that flooded a valley"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At Chernobyl a reactor exploded and burned, spreading radioactive material across much of Europe. Three Mile Island (1979) and Fukushima (2011) were also meltdowns.",
+    "options": [
+     "Right: Chernobyl was the worst nuclear accident.",
+     "A tanker grounding is a petroleum accident.",
+     "A mine collapse is a coal mining accident.",
+     "A dam failure is a hazard of dams, not of nuclear plants."
+    ]
+   }
+  },
+  {
+   "id": "env-nuclear-power-17",
+   "unit": "unit-6",
+   "topic": "nuclear-power",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why must uranium ore be enriched before it is used as reactor fuel?",
+   "options": [
+    "Natural uranium is far too radioactive for workers to handle safely",
+    "Enrichment turns the mined uranium into a renewable fuel",
+    "Enrichment removes the carbon from uranium so that it burns cleanly",
+    "Natural uranium has too little U-235 to keep fission going"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Natural uranium is about 0.7 percent uranium-235. Most reactors need fuel with about 3 to 5 percent to keep the chain reaction going.",
+    "options": [
+     "Natural uranium is weakly radioactive; enrichment raises its uranium-235 share.",
+     "Uranium is mined from a fixed supply; enrichment does not change that.",
+     "Uranium is not burned and contains no carbon.",
+     "Right: the fissile isotope must be concentrated."
+    ]
+   }
+  }
+ ]
+}

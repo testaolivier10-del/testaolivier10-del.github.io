@@ -1,0 +1,802 @@
+{
+ "stimuli": {
+  "irrigation-s1": {
+   "kind": "quantitative",
+   "title": "Water used by four irrigation methods",
+   "invented": true,
+   "table": {
+    "caption": "One season of the same crop on 1 hectare of the same soil (invented data for practice)",
+    "cols": [
+     "Method",
+     "Water applied (m³ per ha)",
+     "Water taken up by the crop (m³ per ha)",
+     "Cost to install (dollars per ha)"
+    ],
+    "rows": [
+     [
+      "Flood",
+      "10,000",
+      "4,800",
+      "150"
+     ],
+     [
+      "Furrow",
+      "7,500",
+      "4,800",
+      "300"
+     ],
+     [
+      "Spray",
+      "6,000",
+      "4,800",
+      "1,800"
+     ],
+     [
+      "Drip",
+      "5,000",
+      "4,600",
+      "3,200"
+     ]
+    ]
+   }
+  },
+  "irrigation-s2": {
+   "kind": "visual",
+   "title": "Depth to groundwater in a farm well",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of the depth from the surface down to the water table in a farm well, every ten years from 1980 to 2020, invented data",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Depth to water table",
+      "points": [
+       [
+        1980,
+        15
+       ],
+       [
+        1990,
+        24
+       ],
+       [
+        2000,
+        33
+       ],
+       [
+        2010,
+        42
+       ],
+       [
+        2020,
+        51
+       ]
+      ]
+     }
+    ],
+    "xLabel": "Year",
+    "yLabel": "Depth to water table (m)",
+    "y": [
+     0,
+     60
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-irrigation-1",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which irrigation method delivers water slowly through tubes to the base of each plant?",
+   "options": [
+    "Drip irrigation",
+    "Furrow irrigation",
+    "Flood irrigation",
+    "Spray irrigation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Drip irrigation runs tubes with small holes along the rows, so water goes straight to the roots.",
+    "options": [
+     "Right: drip puts water at the roots.",
+     "Furrow irrigation runs water down trenches between rows.",
+     "Flood irrigation covers the whole field.",
+     "Spray irrigation sprinkles water over the crop from above."
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-2",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is drip irrigation more efficient than furrow irrigation?",
+   "options": [
+    "Water goes to the roots, so less evaporates from the surface or runs off the field",
+    "Drip water contains more nutrients, so the plants need less of it to grow",
+    "Drip tubes cool the soil around the roots, so plants take up water at a slower rate",
+    "Drip systems pump water faster, so it reaches the roots before evaporating"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Efficiency is the share of water applied that the crop uses. Drip loses little to evaporation and runoff because it wets only the soil around each plant.",
+    "options": [
+     "Right: little water is lost before it reaches the roots.",
+     "The water is the same; the difference is where it goes.",
+     "Drip does not work by cooling the soil.",
+     "Drip delivers water slowly, not fast."
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-3",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer in a poor region is choosing an irrigation method. Which is the main drawback of drip irrigation for this farmer?",
+   "options": [
+    "It costs the most to buy and install",
+    "It wastes the most water of the four methods",
+    "It is the most likely to cause waterlogging",
+    "It needs the field to be covered with water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Drip irrigation saves water, but its tubing and fittings are expensive to install and maintain.",
+    "options": [
+     "Right: high cost is drip's main drawback.",
+     "Drip wastes the least water.",
+     "Drip applies small amounts, so it rarely waterlogs soil.",
+     "That describes flood irrigation."
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-4",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does irrigation with fresh river water lead to salinization of farmland?",
+   "options": [
+    "River water carries a little dissolved salt, and evaporation leaves the salt behind in the soil",
+    "River water slowly turns into salt water as it soaks down through the layers of the soil",
+    "Fertilizer added to the river water is changed into table salt by bacteria in the soil",
+    "Plant roots release salt into the soil whenever they take up river water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fresh water is not pure. When irrigation water evaporates, only the water leaves; the salt accumulates over many seasons.",
+    "options": [
+     "Right: evaporation leaves the dissolved salt behind.",
+     "Water does not turn into salt water in the soil.",
+     "Bacteria do not make table salt from fertilizer.",
+     "Roots take up water and leave most salt behind; they do not release salt."
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-5",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A field that is irrigated too heavily becomes waterlogged. Why do the crops suffer?",
+   "options": [
+    "Water fills the pore spaces, so roots cannot get the oxygen they need",
+    "The extra water dissolves the roots, so plants are unable to take up water",
+    "Waterlogged soil is too dry at the surface for the seeds to germinate",
+    "Waterlogged soil heats up, so the roots are damaged by the warm temperature"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Roots need oxygen from air in the soil pores. When water fills every pore, roots suffocate.",
+    "options": [
+     "Right: no air in the pores means no oxygen for roots.",
+     "Water does not dissolve roots.",
+     "Waterlogged soil is wet, not dry.",
+     "The harm comes from a lack of oxygen, not heat."
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-6",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In parts of the Great Plains, farmers pump water from the Ogallala Aquifer faster than rain refills it. What is the most likely long-term result?",
+   "options": [
+    "The water table falls, wells must be drilled deeper, and some farms switch back to dryland crops",
+    "The water table rises, so the soil above the aquifer becomes waterlogged over large areas",
+    "The aquifer refills faster to match the extra pumping, so the water table stays at the same depth",
+    "The water in the aquifer turns salty, so it can be used just for watering livestock"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Withdrawal greater than recharge depletes the aquifer: the water table drops and pumping costs rise until some wells fail.",
+    "options": [
+     "Right: depletion lowers the water table and raises pumping costs.",
+     "Overpumping lowers the water table; it does not raise it.",
+     "Recharge depends on rain and snowmelt, not on how fast farmers pump.",
+     "The main result of overpumping an inland aquifer like this is a falling water table."
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-7",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A farmer applies 25 mm of water to a 40-hectare field. How many cubic meters of water is that? (1 ha = 10,000 m²; 1,000 mm = 1 m)",
+   "why": {
+    "correct": "Convert both to meters: $0.025\\,\\text{m} \\times 40\\,\\text{ha} \\times \\frac{10{,}000\\,\\text{m}^2}{1\\,\\text{ha}} = 10{,}000\\,\\text{m}^3$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "waterVolume",
+     "args": [
+      {
+       "fn": "convert",
+       "args": [
+        25,
+        "mm",
+        "m"
+       ]
+      },
+      {
+       "fn": "convert",
+       "args": [
+        40,
+        "ha",
+        "m2"
+       ]
+      }
+     ]
+    },
+    "unit": "m3",
+    "units": [
+     "cubic meters"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        25,
+        400000
+       ]
+      },
+      "why": "The depth is in millimeters. Change 25 mm to 0.025 m before multiplying by the area in square meters."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.025,
+        40
+       ]
+      },
+      "why": "The area is in hectares. Change 40 ha to 400,000 m² so the units multiply to cubic meters."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-irrigation-8",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water costs 0.15 dollars per cubic meter. Write the setup for the cost of 10,000 m³ of irrigation water, then give the answer. (Type the answer as a number followed by \"dollars\".)",
+   "why": {
+    "correct": "Multiply so the cubic meters cancel: $10{,}000\\,\\text{m}^3 \\times \\frac{0.15\\,\\text{dollars}}{1\\,\\text{m}^3} = 1{,}500$ dollars."
+   },
+   "setup": {
+    "answer": "10000 * 0.15",
+    "mustUse": [
+     "10000",
+     "0.15"
+    ],
+    "mistakes": [
+     {
+      "expr": "10000 / 0.15",
+      "why": "Price per cubic meter times cubic meters gives dollars. Multiply; dividing gives cubic meters per dollar."
+     },
+     {
+      "expr": "0.15 / 10000",
+      "why": "Multiply the volume by the price per cubic meter so the cubic meters cancel."
+     }
+    ],
+    "then": {
+     "unit": "$",
+     "units": [
+      "dollars"
+     ],
+     "from": {
+      "fn": "cost",
+      "args": [
+       10000,
+       0.15
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 150,
+       "why": "A factor of 10 slipped: 10,000 × 0.15 = 1,500."
+      },
+      {
+       "value": 15000,
+       "why": "A factor of 10 slipped the other way: 0.15 is fifteen hundredths, so 10,000 × 0.15 = 1,500."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-irrigation-9",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which method in the table delivered the most water that the crop did not take up?",
+   "options": [
+    "Flood, with 5,200 m³ per ha not taken up",
+    "Furrow, with 2,700 m³ per ha not taken up",
+    "Spray, with 1,200 m³ per ha not taken up",
+    "Drip, with 400 m³ per ha not taken up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Applied minus taken up: flood $10{,}000 - 4{,}800 = 5{,}200$; furrow 2,700; spray 1,200; drip 400 m³ per ha.",
+    "options": [
+     "Right: flood lost 5,200 m³ per ha.",
+     "Furrow lost 2,700, less than flood.",
+     "Spray lost 1,200.",
+     "Drip lost the least, 400."
+    ]
+   },
+   "stimulus": "irrigation-s1"
+  },
+  {
+   "id": "env-irrigation-10",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the efficiency of furrow irrigation (the percent of water applied that the crop takes up), then give the answer.",
+   "why": {
+    "correct": "Efficiency = useful output / input × 100: $\\frac{4{,}800}{7{,}500} \\times 100 = 64\\%$."
+   },
+   "setup": {
+    "answer": "4800 / 7500 * 100",
+    "mustUse": [
+     "4800",
+     "7500"
+    ],
+    "mistakes": [
+     {
+      "expr": "7500 / 4800 * 100",
+      "why": "Efficiency puts the useful part (water the crop takes up, 4,800) on top and the total applied (7,500) on the bottom."
+     },
+     {
+      "expr": "4800 / 7500",
+      "why": "That is the fraction. Multiply by 100 to give a percent."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "efficiency",
+      "args": [
+       4800,
+       7500
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "fractionOf",
+        "args": [
+         2700,
+         7500
+        ]
+       },
+       "why": "36% is the share lost (2,700 of 7,500). Efficiency is the share the crop takes up."
+      },
+      {
+       "value": 0.64,
+       "why": "0.64 is the fraction. Multiply by 100 for the percent."
+      }
+     ]
+    }
+   },
+   "stimulus": "irrigation-s1"
+  },
+  {
+   "id": "env-irrigation-11",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in water applied when a farm switches from flood to drip irrigation, then give the answer.",
+   "why": {
+    "correct": "$\\frac{5{,}000 - 10{,}000}{10{,}000} \\times 100 = -50\\%$: drip uses half as much water."
+   },
+   "setup": {
+    "answer": "(5000 - 10000) / 10000 * 100",
+    "mustUse": [
+     "5000",
+     "10000"
+    ],
+    "mistakes": [
+     {
+      "expr": "(5000 - 10000) / 5000 * 100",
+      "why": "Divide by the starting value, the 10,000 m³ used by flood irrigation."
+     },
+     {
+      "expr": "(10000 - 5000) / 10000 * 100",
+      "why": "Subtract old from new: (5,000 - 10,000). Water use fell, so the change is negative."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       10000,
+       5000
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "percentChange",
+        "args": [
+         5000,
+         10000
+        ]
+       },
+       "why": "That is the change from drip back to flood. Start from flood, the old method."
+      },
+      {
+       "value": 50,
+       "why": "Water use fell, so the percent change is negative: -50%."
+      }
+     ]
+    }
+   },
+   "stimulus": "irrigation-s1"
+  },
+  {
+   "id": "env-irrigation-12",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "A 50-hectare farm switches from flood to spray irrigation. Using the table, how many cubic meters of water does it save in one season?",
+   "why": {
+    "correct": "Saving per hectare: $10{,}000 - 6{,}000 = 4{,}000$ m³/ha. For the farm: $4{,}000\\,\\frac{\\text{m}^3}{\\text{ha}} \\times 50\\,\\text{ha} = 200{,}000\\,\\text{m}^3$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        10000,
+        6000
+       ]
+      },
+      50
+     ]
+    },
+    "unit": "m3",
+    "units": [
+     "cubic meters"
+    ],
+    "mistakes": [
+     {
+      "value": 4000,
+      "why": "4,000 m³ is the saving for one hectare. Multiply by the 50 hectares."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        6000,
+        50
+       ]
+      },
+      "why": "That is the water spray irrigation uses. The saving is the difference, (10,000 - 6,000) × 50."
+     }
+    ]
+   },
+   "stimulus": "irrigation-s1"
+  },
+  {
+   "id": "env-irrigation-13",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Using the cost column, which statement best explains why many farmers keep using flood or furrow irrigation?",
+   "options": [
+    "They cost far less to install, so farmers who pay little for water save money",
+    "They waste less water than the others, so farmers save on both water and equipment",
+    "They let crops take up more water, so the crops grow faster than with drip",
+    "They use the newest equipment, so they are easier to repair than drip"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Flood costs 150 dollars per ha to install and drip 3,200. Where water is cheap, the water savings may not pay back the equipment.",
+    "options": [
+     "Right: low cost to install is their main advantage.",
+     "They waste more water, not less.",
+     "The crop took up 4,800 m³ under flood and furrow, about the same as under the other methods.",
+     "Flood and furrow use simple ditches, not new equipment."
+    ]
+   },
+   "stimulus": "irrigation-s1"
+  },
+  {
+   "id": "env-irrigation-14",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement describes the graph?",
+   "options": [
+    "The water table got deeper by about 9 m each decade",
+    "The water table rose toward the surface by about 9 m each decade",
+    "The water table stayed near 15 m below the surface from 1980 to 2020",
+    "The water table fell quickly at first, then leveled off after 2000"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Depth rose from 15 m to 51 m in steps of 9 m per decade, so the water table moved steadily down.",
+    "options": [
+     "Right: depth increased by 9 m each decade.",
+     "A larger depth means the water is farther down, not rising.",
+     "The depth changed from 15 to 51 m.",
+     "The change was steady, 9 m each decade."
+    ]
+   },
+   "stimulus": "irrigation-s2"
+  },
+  {
+   "id": "env-irrigation-15",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "At what average rate did the water table drop from 1980 to 2020, in meters per year?",
+   "why": {
+    "correct": "$\\frac{51\\,\\text{m} - 15\\,\\text{m}}{2020 - 1980} = \\frac{36\\,\\text{m}}{40\\,\\text{yr}} = 0.9$ m per year."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "sub",
+       "args": [
+        51,
+        15
+       ]
+      },
+      {
+       "fn": "sub",
+       "args": [
+        2020,
+        1980
+       ]
+      }
+     ]
+    },
+    "unit": "m/yr",
+    "units": [
+     "meters per year"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          51,
+          15
+         ]
+        },
+        10
+       ]
+      },
+      "why": "That uses one decade. The drop of 36 m happened over 40 years, from 1980 to 2020."
+     },
+     {
+      "value": 36,
+      "why": "36 m is the total drop. Divide by the 40 years for a rate per year."
+     }
+    ]
+   },
+   "stimulus": "irrigation-s2"
+  },
+  {
+   "id": "env-irrigation-16",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The well's pump sits 78 m below the surface. If the water table keeps falling at the same rate after 2020, in what year will it reach the pump?",
+   "why": {
+    "correct": "Distance left: $78 - 51 = 27$ m. Time: $\\frac{27\\,\\text{m}}{0.9\\,\\text{m/yr}} = 30$ years. Year: $2020 + 30 = 2050$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "add",
+     "args": [
+      2020,
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          78,
+          51
+         ]
+        },
+        0.9
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          78,
+          51
+         ]
+        },
+        0.9
+       ]
+      },
+      "why": "30 is the number of years. The question asks for the year: add it to 2020."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        2020,
+        {
+         "fn": "div",
+         "args": [
+          78,
+          0.9
+         ]
+        }
+       ]
+      },
+      "why": "The water table is already 51 m down. Use the distance left, 78 - 51 = 27 m."
+     }
+    ]
+   },
+   "stimulus": "irrigation-s2"
+  },
+  {
+   "id": "env-irrigation-17",
+   "unit": "unit-5",
+   "topic": "irrigation",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Propose a solution a farmer could use to slow the drop shown in the graph, and explain how it works.",
+   "why": {
+    "correct": "A solution fitted to one farm, with its mechanism: switching from flood or furrow to drip irrigation puts water only at the roots, so less is lost and less must be pumped."
+   },
+   "specific": {
+    "frame": "The farmer could ___, which ___, so ___.",
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "switch from flood to drip irrigation",
+       "drill the well deeper",
+       "plant a crop that needs more water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A deeper well reaches the water but pumps it out faster; it does not slow the drop.",
+       "2": "A thirstier crop needs more pumping."
+      }
+     },
+     "mechanism": {
+      "label": "How it works",
+      "options": [
+       "delivers water only to the roots, so less is lost to evaporation and runoff",
+       "adds water back to the aquifer from the river",
+       "raises the price of water for the neighbors"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Drip irrigation does not recharge an aquifer.",
+       "2": "Drip irrigation does not change what neighbors pay."
+      }
+     },
+     "effect": {
+      "label": "Result",
+      "options": [
+       "less groundwater is pumped each season and the water table falls more slowly",
+       "the water table rises above the surface",
+       "the crop takes up less water and dies"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Saving water slows the drop; it will not lift the water table above the ground.",
+       "2": "The crop gets about the same water; less is wasted."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "drip",
+      "water",
+      "pump",
+      "aquifer",
+      "well"
+     ]
+    },
+    "model": "The farmer could switch from flood to drip irrigation, which delivers water only to the roots and reduces the water lost to evaporation and runoff. As a result less groundwater is pumped each season and the water table falls more slowly."
+   },
+   "stimulus": "irrigation-s2"
+  }
+ ]
+}

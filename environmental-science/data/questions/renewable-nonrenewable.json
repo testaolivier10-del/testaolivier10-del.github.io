@@ -1,0 +1,594 @@
+{
+ "stimuli": {
+  "renewable-nonrenewable-s1": {
+   "kind": "text",
+   "title": "An island chooses its energy",
+   "source": "Invented passage for practice.",
+   "passage": "Our island burns imported diesel for almost all of its electricity. Every liter arrives by ship, so when storms close the harbor or prices jump, the whole island feels it. Some neighbors say we should burn wood from our hills instead, but our forest is small and its trees take decades to regrow; burning it for power would not be renewable in practice. We should instead build on what arrives here for free every day: the steady trade wind and strong sunshine. Batteries can carry us through the evening, and a small diesel supply can stay as a backup for the rare calm, cloudy week. Each year of local power is a year of fuel we do not have to buy."
+  },
+  "renewable-nonrenewable-s2": {
+   "kind": "quantitative",
+   "title": "Harvest and regrowth in four woodlots",
+   "invented": true,
+   "table": {
+    "caption": "Wood harvested and wood regrown each year in four woodlots, in metric tons per year (invented data for practice)",
+    "cols": [
+     "Woodlot",
+     "Harvest (metric tons/yr)",
+     "Regrowth (metric tons/yr)"
+    ],
+    "rows": [
+     [
+      "1",
+      "90",
+      "50"
+     ],
+     [
+      "2",
+      "45",
+      "45"
+     ],
+     [
+      "3",
+      "40",
+      "60"
+     ],
+     [
+      "4",
+      "75",
+      "30"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-renewable-nonrenewable-1",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement best describes a nonrenewable energy resource?",
+   "options": [
+    "It is replaced by natural processes within a few years of being used up",
+    "It can be used without lowering the amount that remains for later use",
+    "It comes from a living source that grows back after each harvest season",
+    "It exists in a fixed amount that forms far more slowly than it is used"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Nonrenewable resources such as coal, oil and natural gas formed over millions of years. Using them now leaves less for later, because nature does not make more on a human timescale.",
+    "options": [
+     "Being replaced within a few years describes a renewable resource such as a crop or a woodlot.",
+     "Use that does not lower the supply describes nondepletable sources such as sunlight and wind.",
+     "A living source that regrows is biomass, which is renewable when it is not overharvested.",
+     "Right: a fixed stock that forms over millions of years is nonrenewable."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-2",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A town gets its electricity by burning coal. Why is coal classified as nonrenewable even though new plant material is buried in swamps today?",
+   "options": [
+    "Coal is mined from underground rock, and a resource taken from rock is classified as nonrenewable",
+    "Swamps today are too wet and too cold for buried plant material to turn into coal",
+    "New coal takes millions of years to form, far longer than a human timescale",
+    "Coal releases carbon dioxide when it burns, and releasing carbon dioxide is what makes a fuel nonrenewable"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The classification depends on the rate of replacement compared with the rate of use. Coal does form today, but it takes millions of years, so for people it is a fixed supply.",
+    "options": [
+     "Being mined does not decide it; what matters is how fast the resource is replaced.",
+     "Buried swamp plants are exactly what becomes coal; the problem is the time it takes.",
+     "Right: the rate of formation is far slower than the rate of use.",
+     "Releasing carbon dioxide is a pollution problem, not the reason for the classification; burning wood also releases carbon dioxide and wood is renewable."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-3",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which energy source is renewable but depletable?",
+   "options": [
+    "Natural gas drawn from a deep well",
+    "Firewood cut from a forest",
+    "Sunlight striking a rooftop",
+    "Wind blowing across an open plain"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Wood regrows, so it is renewable, but cutting it faster than trees regrow lowers the supply. That makes it depletable.",
+    "options": [
+     "Natural gas is nonrenewable: it formed over millions of years.",
+     "Right: wood is renewable only when it is cut no faster than it regrows.",
+     "Using sunlight does not lower the sunlight that arrives tomorrow, so it is nondepletable.",
+     "Using the wind does not use it up, so it is nondepletable."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-4",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which list contains only nonrenewable energy sources?",
+   "options": [
+    "Coal, oil, natural gas and nuclear fuel",
+    "Coal, sunlight, natural gas and firewood",
+    "Oil, wind, nuclear fuel and moving river water",
+    "Firewood, natural gas, sunlight and oil"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fossil fuels and the mined ore used as nuclear fuel exist in fixed amounts in Earth's crust, so they are nonrenewable.",
+    "options": [
+     "Right: all four are mined or drilled from a fixed supply.",
+     "Sunlight and wood are renewable.",
+     "Wind and moving water are renewable.",
+     "Wood and sunlight are renewable."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-5",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Nuclear power is renewable because it releases no carbon dioxide while it runs.\" What is wrong with the claim?",
+   "options": [
+    "Nuclear stations release large amounts of carbon dioxide from their tall cooling towers",
+    "Renewable means the source makes no waste of any kind, and a nuclear plant makes dangerous used fuel",
+    "Nuclear power is renewable, so the student's claim and reasoning are both correct as written",
+    "Renewable means replaced as fast as used, and nuclear fuel is mined from a fixed supply"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Low carbon and renewable are different ideas. Renewable is about how fast a resource is replaced; nuclear fuel comes from ore mined from a fixed supply, so it is nonrenewable even though it is low carbon while running.",
+    "options": [
+     "Cooling towers release water vapor, not carbon dioxide from burning.",
+     "Renewable sources such as biomass also make waste; waste is not the test.",
+     "Nuclear fuel is a mined, fixed supply, so it is nonrenewable.",
+     "Right: the student mixed up \"low carbon\" with \"renewable\"."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-6",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these sources are nondepletable, so using them today does not reduce the amount available tomorrow? Select all that apply.",
+   "options": [
+    "Sunlight",
+    "Groundwater from a slowly recharging aquifer",
+    "Firewood",
+    "Natural gas",
+    "Corn grown for fuel"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Only sunlight keeps arriving whatever we do. Groundwater, firewood and corn are renewable but depletable, and natural gas is nonrenewable.",
+    "options": [
+     "Right: tomorrow's sunlight does not depend on today's use.",
+     "Pumping faster than recharge lowers the water table, so this water is depletable.",
+     "Wood regrows, but cutting too fast depletes it.",
+     "Natural gas is a fixed supply.",
+     "A crop is renewable, but farmland and soil can be overused, so it is depletable."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-7",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country gets most of its energy from imported oil. Which is the strongest reason, based on the difference between renewable and nonrenewable resources, to shift toward local sunlight and wind?",
+   "options": [
+    "Oil is not burned to make electricity, so it is the wrong fuel for homes",
+    "Using sunlight and wind does not shrink the supply left for later",
+    "Sunlight and wind produce steady electricity through the day and the night",
+    "Sunlight and wind need no land and little equipment to collect and use"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The renewable advantage is that the supply is not depleted by use. Oil reserves shrink as they are used.",
+    "options": [
+     "Some generating stations do burn oil, though oil is used mostly for transportation.",
+     "Right: a nondepletable supply does not run down with use.",
+     "Sunlight is not available at night and wind varies, so this is false.",
+     "Collecting sunlight and wind takes land and equipment."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-8",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Groundwater in a desert aquifer recharges about 1 cm a year, but wells lower the water table by 1 m a year. How should this water be treated as a resource?",
+   "options": [
+    "As nonrenewable in practice: use is about 100 times recharge",
+    "As renewable, because some rain falls on the desert at least once in a typical year",
+    "As nondepletable, because water is not destroyed when people pump and use it",
+    "As renewable, because aquifers refill within a season as soon as pumping stops"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "What decides it is use compared with replacement. Here use is about 100 times recharge, so the stored water is being mined like a fossil fuel.",
+    "options": [
+     "Right: 1 m a year of use against 1 cm a year of recharge is about 100 times faster.",
+     "Some recharge does not make it renewable when use far outpaces it.",
+     "The water is not destroyed, but it leaves the aquifer much faster than it returns.",
+     "A depleted aquifer can take centuries to refill, and it can collapse so it holds less water."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-9",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the author's main claim?",
+   "stimulus": "renewable-nonrenewable-s1",
+   "options": [
+    "The island should keep importing diesel because it is cheap and reliably delivered",
+    "The island should stop using electricity at night to save on imported diesel fuel",
+    "The island should cut down its hillside forest to burn wood in place of diesel",
+    "The island should rely on local wind and sun, with storage and backup"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The passage argues for a mix built on local renewable sources, with storage and diesel as backup.",
+    "options": [
+     "The passage says diesel prices swing and supply depends on ships.",
+     "The passage never proposes cutting off power at night.",
+     "The passage warns that the forest is small and regrows slowly.",
+     "Right: that is the claim the passage builds toward."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-10",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which assumption does the author make?",
+   "stimulus": "renewable-nonrenewable-s1",
+   "options": [
+    "Islanders will be willing to use much less electricity each day than they do now",
+    "The island's forest regrows faster than most other forests in the world",
+    "Local wind and sun are strong enough to meet most of the island's needs",
+    "Diesel will become free or nearly free for small islands in the next few years"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The plan works only if the local wind and sunlight are strong and reliable enough over the year; the author takes this for granted.",
+    "options": [
+     "The passage does not ask people to use less.",
+     "The passage says the forest regrows slowly.",
+     "Right: the plan rests on the local resource being large enough.",
+     "The passage says diesel is costly; it assumes nothing about it becoming free."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-11",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which evidence, if found, would most weaken the author's claim?",
+   "stimulus": "renewable-nonrenewable-s1",
+   "options": [
+    "A study showing the island's forest grows slowly after cutting",
+    "Weather records showing calm, cloudy weeks every winter",
+    "A report that diesel prices rose sharply over the last year",
+    "A survey showing most islanders support building local energy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Long calm, dark periods would mean the local sources fail exactly when needed, so far more storage or imported fuel would be required.",
+    "options": [
+     "A slow-growing forest supports the author's warning against burning wood.",
+     "Right: long gaps in wind and sun undercut a plan built on them.",
+     "Rising diesel prices support the author.",
+     "Public support makes the plan easier, not weaker."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-12",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The author says burning the island's forest would not be \"renewable in practice.\" Which reasoning supports this?",
+   "stimulus": "renewable-nonrenewable-s1",
+   "options": [
+    "The small forest would be cut much faster than its trees regrow",
+    "Wood is a fossil fuel formed over millions of years, so it is nonrenewable",
+    "Burning wood leaves ash, and a fuel that leaves ash is classified as nonrenewable",
+    "Wood can be burned in any season of the year, so it does not count as renewable"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Wood is renewable but depletable. A small, slow-growing forest burned to meet a whole island's needs would be cut far faster than it regrows.",
+    "options": [
+     "Right: renewable depends on harvest rate compared with regrowth.",
+     "Wood is biomass, not a fossil fuel.",
+     "Ash is a waste product; it does not decide the classification.",
+     "When a fuel can be used has nothing to do with whether it is renewable."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-13",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In which woodlot does the wood supply grow over the 10 years?",
+   "stimulus": "renewable-nonrenewable-s2",
+   "options": [
+    "Woodlot 1",
+    "Woodlot 2",
+    "Woodlot 4",
+    "Woodlot 3"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Woodlot 3 regrows 60 metric tons a year and loses 40 to harvest, so it gains 20 metric tons a year.",
+    "options": [
+     "Woodlot 1 harvests 90 and regrows 50, so it shrinks.",
+     "Woodlot 2 harvests exactly what regrows, so it holds steady.",
+     "Woodlot 4 harvests 75 and regrows 30, so it shrinks fastest.",
+     "Right: regrowth (60) is greater than harvest (40)."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-14",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Woodlot 1 starts with 2,000 metric tons of wood. If harvest and regrowth stay the same, how many metric tons remain after 10 years?",
+   "stimulus": "renewable-nonrenewable-s2",
+   "why": {
+    "correct": "Each year it loses $90 - 50 = 40$ metric tons. Over 10 years: $2{,}000 - (90 - 50) \\times 10 = 1{,}600$ metric tons."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      2000,
+      {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          90,
+          50
+         ]
+        },
+        10
+       ]
+      }
+     ]
+    },
+    "unit": "metric tons",
+    "units": [
+     "tonnes",
+     "t"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        2000,
+        {
+         "fn": "mul",
+         "args": [
+          90,
+          10
+         ]
+        }
+       ]
+      },
+      "why": "You subtracted the harvest but forgot that 50 metric tons regrow each year. Use harvest minus regrowth."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          90,
+          50
+         ]
+        },
+        10
+       ]
+      },
+      "why": "That is the total lost over 10 years. Subtract it from the starting 2,000 metric tons."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-15",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion about woodlot 4 is best supported by the table?",
+   "stimulus": "renewable-nonrenewable-s2",
+   "options": [
+    "It is being used sustainably, because some regrowth happens each year",
+    "It is being depleted: harvest is more than twice regrowth",
+    "It is nondepletable, because the trees in it grow back each year",
+    "It is nonrenewable, because wood forms over millions of years"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Harvest is 75 and regrowth 30 metric tons a year: 75 is 2.5 times 30. The stock shrinks by 45 metric tons a year, so this renewable resource is being depleted.",
+    "options": [
+     "Some regrowth is not enough; it must match the harvest.",
+     "Right: harvest of 75 is 2.5 times regrowth of 30.",
+     "Regrowth that is slower than harvest does not keep the supply steady.",
+     "Wood is renewable; the problem is the rate of use."
+    ]
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-16",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Propose a change that would keep woodlot 1 from shrinking, and say how it works.",
+   "stimulus": "renewable-nonrenewable-s2",
+   "why": {
+    "correct": "Lowering the harvest to the regrowth rate, 50 metric tons a year, keeps the stock steady because what is taken is replaced each year."
+   },
+   "specific": {
+    "frame": "___, which works because ___.",
+    "slots": {
+     "change": {
+      "label": "Change",
+      "options": [
+       "Cut the yearly harvest to 50 metric tons or less",
+       "Harvest 90 metric tons every other year instead",
+       "Burn the wood more slowly in each stove"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Ninety every other year averages 45, which helps, but the cut that clearly matches regrowth is the plan to state.",
+       "2": "Burning more slowly does not change how much wood is cut from the woodlot."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "the harvest then matches or is below the 50 metric tons that regrow each year",
+       "trees grow faster when more of them are cut",
+       "wood becomes a nondepletable resource"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cutting more trees does not raise regrowth enough; the table shows regrowth is fixed at 50.",
+       "2": "Wood is always depletable; the plan keeps it from being depleted."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "harvest",
+      "regrow"
+     ]
+    },
+    "model": "Reduce the yearly harvest from 90 to 50 metric tons, because the harvest then matches the 50 metric tons that regrow each year, so the stock no longer falls."
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-17",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put these energy sources in order from fastest to slowest natural replacement.",
+   "options": [
+    "Sunlight (arrives continuously)",
+    "A field of corn grown for fuel (one growing season)",
+    "A forest cut for firewood (decades)",
+    "Coal (millions of years)"
+   ],
+   "why": {
+    "correct": "Sunlight arrives every day; a crop regrows in a season; a forest takes decades; coal takes millions of years."
+   }
+  },
+  {
+   "id": "env-renewable-nonrenewable-18",
+   "unit": "unit-6",
+   "topic": "renewable-nonrenewable",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A city switches from coal to sunlight and wind for its electricity. Which is a likely disadvantage it must plan for?",
+   "options": [
+    "Large amounts of carbon dioxide released while generating electricity",
+    "Mining large amounts of fuel each year to keep the generators running",
+    "Electricity output that rises and falls with weather and time of day",
+    "A fuel supply for the generators that will run out within a few decades"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sun sets and the wind drops, so the city needs storage, a wide grid or backup supply. The other options describe coal's problems.",
+    "options": [
+     "Sunlight and wind release no carbon dioxide while generating.",
+     "They need no fuel, so no yearly fuel mining.",
+     "Right: variable output is the main planning challenge.",
+     "Sunlight and wind do not run out."
+    ]
+   }
+  }
+ ]
+}

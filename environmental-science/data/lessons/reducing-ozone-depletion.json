@@ -1,0 +1,72 @@
+{
+ "topic": "reducing-ozone-depletion",
+ "hook": "In 1987, countries that disagreed on almost everything signed a treaty to stop making the chemicals that were destroying the ozone layer. Today every member of the United Nations has signed it, production of CFCs has stopped and the ozone hole is starting to heal. It is the clearest example of the world fixing a global environmental problem.",
+ "prereq": [
+  {
+   "q": "Which chemicals release the chlorine that destroys stratospheric ozone?",
+   "options": [
+    "CFCs",
+    "Carbon dioxide",
+    "Sulfur dioxide",
+    "Methane"
+   ],
+   "correct": 0,
+   "why": "UV breaks CFCs in the stratosphere and frees chlorine.",
+   "review": "ozone-depletion"
+  },
+  {
+   "q": "Why can one chlorine atom destroy thousands of ozone molecules?",
+   "options": [
+    "It is released again after each reaction",
+    "It splits into many atoms",
+    "It absorbs visible light",
+    "It makes more CFCs"
+   ],
+   "correct": 0,
+   "why": "Chlorine is a catalyst: it comes out of each cycle unchanged.",
+   "review": "ozone-depletion"
+  }
+ ],
+ "figure": {
+  "figure": "reducing-ozone-depletion-timeline",
+  "caption": "From the first warning in 1974 to the expected recovery of Antarctic ozone around 2066."
+ },
+ "chain": [
+  {
+   "cause": "Scientists linked CFCs to ozone loss and found the Antarctic ozone hole",
+   "effect": "nations signed the Montreal Protocol in 1987"
+  },
+  {
+   "cause": "The treaty phased out CFCs and halons, with more time and help for developing countries",
+   "effect": "production of ozone-depleting substances fell by more than 99%"
+  },
+  {
+   "cause": "Replacements such as HCFCs, then HFCs and hydrocarbons, took their place",
+   "effect": "far less chlorine reaches the stratosphere"
+  },
+  {
+   "cause": "Long-lived CFCs already in the air slowly break down",
+   "effect": "ozone is recovering and should return to 1980 levels around 2066 over Antarctica"
+  }
+ ],
+ "ideas": [
+  "The <b>Montreal Protocol</b> (1987) is the treaty that phased out CFCs, halons and other ozone-depleting substances. Every UN member has ratified it.",
+  "<b>HCFCs</b> were a temporary replacement: less ozone-depleting, but they still contain chlorine, so they are being phased out too.",
+  "<b>HFCs</b> contain no chlorine and do not harm ozone, but many trap heat thousands of times more strongly than CO₂. The Kigali Amendment (2016) phases them down.",
+  "Other fixes: hydrocarbons such as isobutane, ammonia and CO₂ as refrigerants, and capturing refrigerant from old equipment."
+ ],
+ "misconception": {
+  "wrong": "Since CFC production ended in 2010, the ozone hole should already be gone.",
+  "right": "CFCs stay in the atmosphere for 50 to 100 years or more, so chlorine already up there keeps destroying ozone. Recovery is under way but should take until about the 2060s over Antarctica."
+ },
+ "check": [
+  "env-reducing-ozone-depletion-1",
+  "env-reducing-ozone-depletion-3",
+  "env-reducing-ozone-depletion-4",
+  "env-reducing-ozone-depletion-5",
+  "env-reducing-ozone-depletion-6",
+  "env-reducing-ozone-depletion-7",
+  "env-reducing-ozone-depletion-14"
+ ],
+ "summary": "The Montreal Protocol of 1987 phased out CFCs, halons and other ozone-depleting substances worldwide. HCFCs were a stopgap that still contains chlorine; HFCs spare ozone but trap heat, so the Kigali Amendment phases them down. Hydrocarbon and other refrigerants and capture of old refrigerant help too. Ozone is recovering slowly because CFCs last for decades."
+}

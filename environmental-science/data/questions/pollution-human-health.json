@@ -1,0 +1,633 @@
+{
+ "stimuli": {
+  "pollution-human-health-s1": {
+   "kind": "quantitative",
+   "title": "Lung damage in mice from two air pollutants",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of percent of mice with lung damage: clean air 2, pollutant A alone 10, pollutant B alone 8, A and B together 40",
+    "kind": "bar",
+    "categories": [
+     "Clean air",
+     "A alone",
+     "B alone",
+     "A and B"
+    ],
+    "values": [
+     2,
+     10,
+     8,
+     40
+    ],
+    "yLabel": "Mice with lung damage (%)",
+    "y": [
+     0,
+     50
+    ]
+   }
+  },
+  "pollution-human-health-s2": {
+   "kind": "text",
+   "title": "A town debates the cause of rising asthma",
+   "passage": "Asthma visits to our clinic have risen 30 percent in five years, and children’s visits have risen the most. Many residents blame the factory on the hill, which releases particulates and sulfur dioxide. But the factory is not the only change. Truck traffic on the highway through town has grown, more homes now heat with wood stoves, and summer smog alerts are more common. Each of these can irritate the lungs, and some may make the others worse. Before we blame one source, we need data that separate them.",
+   "source": "Invented passage for practice."
+  }
+ },
+ "items": [
+  {
+   "id": "env-pollution-human-health-1",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Two pollutants together cause more harm than the sum of the harm each causes alone. What is this called?",
+   "options": [
+    "Synergism",
+    "Biomagnification",
+    "Bioaccumulation",
+    "A threshold dose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Synergism: the whole is more than the sum of its parts. Smoking and breathing asbestos fibers together raise lung cancer risk far more than either alone.",
+    "options": [
+     "Right: in synergism the combined effect is greater than the two effects added together.",
+     "Biomagnification is the rise in concentration up a food chain, not two pollutants interacting.",
+     "Bioaccumulation is buildup in one organism over time, not two pollutants interacting.",
+     "A threshold dose is the highest dose with no observed effect."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-2",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A worker breathes in a large amount of a solvent in one afternoon and gets dizzy within minutes. Another worker breathes small amounts of the same solvent every day for 20 years and develops liver disease. Which statement is correct?",
+   "options": [
+    "The first is a chronic effect and the second an acute effect",
+    "The first is an acute effect and the second a chronic effect",
+    "Both are acute effects, since the same solvent caused them",
+    "Both are chronic effects, since each harmed a body organ"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Acute: a short exposure, effects soon after. Chronic: long or repeated exposure, effects that appear over months or years.",
+    "options": [
+     "Reversed: the quick reaction to one large exposure is acute, and harm after years of exposure is chronic.",
+     "Right: acute effects come soon after a short, high exposure; chronic effects follow long, repeated exposure.",
+     "Acute and chronic describe timing and length of exposure, not which chemical is involved.",
+     "Harm to an organ can be acute or chronic; the dizziness came within minutes of one exposure."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-3",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is it hard to prove that one pollutant caused a disease in a group of people?",
+   "options": [
+    "Pollutants leave the body within a day, so no trace of them remains",
+    "Dose-response curves can be made for animals but not for chemicals",
+    "Mixed, long exposures make other causes hard to rule out",
+    "Pollutants harm wildlife, but they have little effect on human health"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "People cannot be dosed on purpose like lab animals, and real exposures are mixed and long, so scientists rely on patterns across large groups.",
+    "options": [
+     "Many pollutants stay in the body for years, and some build up over time.",
+     "Dose-response curves are made for chemicals; the hard part is people’s mixed and long exposures.",
+     "Right: diet, smoking, jobs, other pollutants and genes all vary, and diseases can take years to appear.",
+     "Many pollutants harm people, from ground-level ozone to lead."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-4",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "numeric",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "If the two pollutants simply added their effects, what percent of the mice exposed to both would be expected to have lung damage? Add the two single-pollutant results.",
+   "stimulus": "pollution-human-health-s1",
+   "why": {
+    "correct": "Add the effects of each pollutant alone: $10\\% + 8\\% = 18\\%$. The observed 40% is far above this."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "add",
+     "args": [
+      10,
+      8
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "40% is what was observed with both pollutants. The question asks what simple addition predicts: 10% + 8%."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        {
+         "fn": "add",
+         "args": [
+          10,
+          8
+         ]
+        },
+        {
+         "fn": "mul",
+         "args": [
+          2,
+          2
+         ]
+        }
+       ]
+      },
+      "why": "Subtracting the control is a fair refinement, but the question asks for the plain sum: 10% + 8% = 18%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-5",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many times does the observed result for both pollutants exceed what simple addition predicts? Divide the observed percent by the sum of the single-pollutant percents.",
+   "stimulus": "pollution-human-health-s1",
+   "why": {
+    "correct": "$\\frac{40\\%}{10\\% + 8\\%} = \\frac{40}{18} \\approx 2.22$: about 2.2 times what simple addition predicts."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      40,
+      {
+       "fn": "add",
+       "args": [
+        10,
+        8
+       ]
+      }
+     ]
+    },
+    "places": 2,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        40,
+        10
+       ]
+      },
+      "why": "You divided by pollutant A alone. The prediction is the sum of both effects: 40% ÷ (10% + 8%)."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        40,
+        {
+         "fn": "add",
+         "args": [
+          10,
+          8
+         ]
+        }
+       ]
+      },
+      "why": "22 is the difference in percentage points, not how many times larger. Divide: 40% ÷ 18%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-6",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion do the data support?",
+   "stimulus": "pollution-human-health-s1",
+   "options": [
+    "Pollutant A is harmless, since it damaged the lungs of 10% of mice",
+    "A and B are synergistic: over twice the expected damage",
+    "A and B cancel each other out, since the effects are not added",
+    "The control mice had lung damage, so the study shows nothing"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The combined bar (40%) towers over the sum of the separate effects (18%), which is synergism.",
+    "options": [
+     "10% is five times the control’s 2%, so A does cause damage.",
+     "Right: 40% observed is more than twice the 18% that adding their effects would give.",
+     "Cancelling would give less damage than either alone; the result is far more.",
+     "2% damage in the control is the baseline every group is compared with."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-7",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the purpose of the group of mice that breathed clean air?",
+   "stimulus": "pollution-human-health-s1",
+   "options": [
+    "To prove that clean air causes 2% of the mice to have lung damage",
+    "To give the researchers more mice in the study for less money",
+    "A baseline: the lung damage with neither pollutant",
+    "To expose the mice to a smaller dose of pollutant A and B together"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A control group is a baseline: it shows what happens without the treatment, so the effect of each pollutant can be measured against it.",
+    "options": [
+     "The control is not a test of clean air; it shows the background level of damage.",
+     "Saving money is not the reason; the group is there for comparison.",
+     "Right: the 2% in clean air shows damage from other causes, so effects can be measured against it.",
+     "The control gets neither pollutant; that is what makes it a baseline."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-8",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the main claim of the passage?",
+   "stimulus": "pollution-human-health-s2",
+   "options": [
+    "The factory is the one cause of asthma in the town",
+    "Asthma in the town is caused by genes and not by pollution",
+    "Asthma rates in the town have fallen since the factory opened",
+    "A mix of pollution sources, not one alone, probably explains the town’s asthma"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The author’s claim is that several exposures overlap, so no single source can be blamed without more evidence.",
+    "options": [
+     "The passage argues against blaming the factory alone.",
+     "The passage names pollution sources and does not claim genes are the cause.",
+     "The passage says asthma visits rose, not fell.",
+     "Right: the passage argues the cause is hard to pin on the factory alone."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-9",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which assumption does the author make?",
+   "stimulus": "pollution-human-health-s2",
+   "options": [
+    "Traffic and wood smoke can also harm the lungs",
+    "The factory releases no pollutants into the air",
+    "Children are less sensitive to air pollution than adults",
+    "The highway was built after the asthma increase began"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The claim that the cause is mixed only holds if the other sources can also harm the lungs, which the author assumes.",
+    "options": [
+     "Right: the argument depends on those other sources also affecting breathing.",
+     "The passage says the factory releases particulates and sulfur dioxide.",
+     "The passage does not assume this; it mentions children’s visits rising.",
+     "The passage does not say when the highway was built."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-10",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which new evidence would most strengthen the case that the factory is a major cause of the asthma increase?",
+   "stimulus": "pollution-human-health-s2",
+   "options": [
+    "Asthma visits rose in a nearby town with no factory",
+    "Asthma visits fell when the factory was shut down",
+    "The highway carries more trucks than it did ten years ago",
+    "Many homes in the town use wood stoves in winter"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Evidence that changes with the factory’s output, while other sources stay the same, isolates the factory’s effect.",
+    "options": [
+     "That would point to causes other than the factory.",
+     "Right: if visits drop when the factory stops, the link to the factory is much stronger.",
+     "More traffic would support the mixed-cause claim, not the factory alone.",
+     "Indoor smoke is another possible cause, which weakens the case against the factory."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-11",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "specific",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how the factory’s particulates could increase asthma attacks in the town.",
+   "stimulus": "pollution-human-health-s2",
+   "why": {
+    "correct": "A complete chain names every link: breathed in, irritation and inflammation, narrowed airways, more attacks."
+   },
+   "specific": {
+    "frame": "Particulates from the stack ___, which ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "First link",
+      "options": [
+       "are breathed deep into the lungs",
+       "dissolve in the town’s drinking water",
+       "raise the temperature of the air"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The passage is about air; fine particles harm people mainly when breathed in.",
+       "2": "Warming the air is not how particulates trigger asthma."
+      }
+     },
+     "effect": {
+      "label": "Second link",
+      "options": [
+       "irritate and inflame the airways",
+       "add nutrients to the soil",
+       "kill bacteria in the lungs"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nutrients in soil do not affect breathing.",
+       "2": "Particles irritate tissue; they do not protect the lungs."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "airways narrow and asthma attacks increase",
+       "asthma attacks decrease",
+       "lung damage only appears in the control group"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Inflamed airways make attacks more likely, not less.",
+       "2": "There is no control group in the town; the people breathing the air are affected."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "particulates",
+      "lungs",
+      "airways",
+      "asthma"
+     ]
+    },
+    "model": "Particulates from the stack are breathed deep into the lungs, which causes the airways to become irritated and inflamed, so the airways narrow and asthma attacks increase."
+   }
+  },
+  {
+   "id": "env-pollution-human-health-12",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which health effect is linked to high levels of ground-level ozone?",
+   "options": [
+    "More skin cancer from ultraviolet light",
+    "Cholesterol buildup in the arteries from food",
+    "Lead poisoning in children who live near roads",
+    "Reduced lung function and more asthma attacks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Ground-level ozone, a secondary pollutant in photochemical smog, inflames the airways and reduces lung function.",
+    "options": [
+     "That results from losing stratospheric ozone, not from ozone near the ground.",
+     "Ozone in the air is breathed in; it irritates the lungs.",
+     "Lead is a different pollutant; ozone affects breathing.",
+     "Right: ground-level ozone irritates the airways and lowers lung function."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-13",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Untreated sewage flows into a river that a village uses for drinking water. Which illness is the village most likely to see more of?",
+   "options": [
+    "Dysentery, spread by microbes in feces",
+    "Mesothelioma, a cancer of the lining of the lungs",
+    "Skin cancer from more ultraviolet light",
+    "Asthma from ground-level ozone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sewage carries microbes from human waste. Drinking that water spreads dysentery, a leading cause of illness where sanitation is poor.",
+    "options": [
+     "Right: dysentery spreads through water contaminated with untreated sewage.",
+     "Mesothelioma is caused mainly by breathing asbestos fibers, not by sewage.",
+     "Sewage in water does not change ultraviolet light.",
+     "Ozone is an air pollutant; sewage contaminates water."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-14",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A worker spent years removing old pipe insulation that contained asbestos without wearing a mask. Which disease is this exposure best known for causing?",
+   "options": [
+    "Dysentery, from drinking contaminated water",
+    "Mesothelioma, a cancer near the lungs",
+    "Malnutrition, from eating too little food",
+    "Skin burns, from touching the insulation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Asbestos fibers are breathed in and stay in the lungs; mesothelioma is a chronic effect that can appear 20 to 50 years after exposure.",
+    "options": [
+     "Dysentery comes from microbes in sewage-polluted water, not from asbestos.",
+     "Right: inhaled asbestos fibers lodge in the lungs and can cause mesothelioma decades later.",
+     "Malnutrition is not caused by breathing a fiber.",
+     "Asbestos harms mainly when its fibers are breathed in."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-15",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are examples of chronic exposure? Select all that apply.",
+   "options": [
+    "A farmworker handles small amounts of a pesticide every season for 15 years",
+    "A worker breathes chlorine gas from one spill and coughs for a day",
+    "A driver breathes thick smoke for ten minutes during a single fire",
+    "A hiker is stung once by a bee"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Chronic exposure is long or repeated; acute exposure is short, often a single event. Only the farmworker’s 15 years of exposure is chronic.",
+    "options": [
+     "Right: repeated, long-term exposure is chronic.",
+     "One short, high exposure with effects within hours is acute.",
+     "One short, high exposure is acute.",
+     "A single short exposure is acute, not chronic."
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-16",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a city, children’s emergency visits for asthma rose from 1,250 in one year to 1,500 the next year, after a heat wave raised ground-level ozone. What was the percent change in visits?",
+   "why": {
+    "correct": "$\\frac{(1{,}500 - 1{,}250)}{1{,}250} \\times 100 = 20\\%$ increase."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      1250,
+      1500
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        1500,
+        1250
+       ]
+      },
+      "why": "You divided by the new value or reversed the order. Percent change is (new − old) ÷ old × 100: (1,500 − 1,250) ÷ 1,250 × 100."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          1500,
+          1250
+         ]
+        },
+        1250
+       ]
+      },
+      "why": "You forgot to multiply by 100. 0.2 as a percent is 20%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-pollution-human-health-17",
+   "unit": "unit-8",
+   "topic": "pollution-human-health",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "After the city cut ozone with stricter limits on car and factory emissions, children’s asthma visits fell from 1,500 to 1,200 a year. Write the setup for the percent change, then the answer.",
+   "why": {
+    "correct": "$\\frac{(1{,}200 - 1{,}500)}{1{,}500} \\times 100 = -20\\%$, a 20% decrease."
+   },
+   "setup": {
+    "answer": "(1200 - 1500) / 1500 * 100",
+    "mustUse": [
+     "1200",
+     "1500"
+    ],
+    "mistakes": [
+     {
+      "expr": "(1200 - 1500) / 1200 * 100",
+      "why": "Divide by the old value, 1,500, not the new value: (new − old) ÷ old × 100."
+     },
+     {
+      "expr": "(1500 - 1200) / 1500 * 100",
+      "why": "The number of visits fell, so the change is negative: new minus old is 1,200 − 1,500."
+     }
+    ],
+    "then": {
+     "unit": "%",
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       1500,
+       1200
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -25,
+       "why": "−25% divides by the new value (1,200). Divide by the old value, 1,500: −300 ÷ 1,500 × 100 = −20%."
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

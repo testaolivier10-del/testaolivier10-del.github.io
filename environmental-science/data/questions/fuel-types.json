@@ -1,0 +1,633 @@
+{
+ "stimuli": {
+  "fuel-types-s1": {
+   "kind": "quantitative",
+   "title": "Energy content and carbon dioxide of five fuels",
+   "invented": true,
+   "table": {
+    "caption": "Energy released per kilogram burned, and carbon dioxide released per gigajoule (GJ) of energy (invented data for practice, near typical values)",
+    "cols": [
+     "Fuel",
+     "Energy content (MJ per kg)",
+     "Carbon dioxide (kg per GJ)"
+    ],
+    "rows": [
+     [
+      "Lignite",
+      "15",
+      "95"
+     ],
+     [
+      "Bituminous coal",
+      "27",
+      "90"
+     ],
+     [
+      "Anthracite",
+      "30",
+      "98"
+     ],
+     [
+      "Gasoline",
+      "46",
+      "67"
+     ],
+     [
+      "Natural gas",
+      "50",
+      "50"
+     ]
+    ]
+   },
+   "text": "1 GJ = 1,000 MJ."
+  },
+  "fuel-types-s2": {
+   "kind": "visual",
+   "title": "How coal forms and ranks",
+   "figure": "fuel-types-coal-ranks"
+  }
+ },
+ "items": [
+  {
+   "id": "env-fuel-types-1",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Natural gas is mostly which substance?",
+   "options": [
+    "Carbon dioxide",
+    "Hydrogen gas",
+    "Propane",
+    "Methane"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Natural gas is mostly methane, a molecule of one carbon atom and four hydrogen atoms.",
+    "options": [
+     "Carbon dioxide is what forms when natural gas burns.",
+     "Hydrogen gas is a separate fuel; natural gas is a hydrocarbon.",
+     "Propane is a smaller part of some natural gas and is sold separately.",
+     "Right: methane is the main part of natural gas."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-2",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does burning natural gas release less carbon dioxide per unit of energy than burning coal?",
+   "options": [
+    "Natural gas burns at a lower temperature, so less carbon dioxide forms",
+    "Natural gas is renewable, so its carbon dioxide does not count",
+    "Its energy comes partly from hydrogen, which burns to water, not carbon dioxide",
+    "Natural gas contains no carbon atoms, so it makes no carbon dioxide"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Methane has four hydrogen atoms for each carbon atom. Burning hydrogen releases energy and makes water, so natural gas gives more energy for each unit of carbon dioxide; it releases roughly half the carbon dioxide of coal per unit of energy. It is not zero emissions.",
+    "options": [
+     "The flame temperature is not the reason for the difference.",
+     "Natural gas is a nonrenewable fossil fuel.",
+     "Right: much of the energy comes from hydrogen, which forms water.",
+     "Methane has a carbon atom, so burning it does make carbon dioxide."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-3",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which list puts coal types in order from lowest to highest energy content?",
+   "options": [
+    "Lignite, anthracite, bituminous",
+    "Lignite, bituminous, anthracite",
+    "Anthracite, bituminous, lignite",
+    "Bituminous, lignite, anthracite"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With more heat and pressure over time, lignite becomes bituminous coal and then anthracite, gaining carbon and energy per kilogram.",
+    "options": [
+     "Anthracite is the highest rank.",
+     "Right: energy content rises from lignite to bituminous to anthracite.",
+     "This is the order from highest to lowest.",
+     "Lignite is the lowest rank of coal."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-4",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Crude oil from a well is sent to a refinery. What happens there?",
+   "options": [
+    "It is heated and separated by boiling point into products such as gasoline and diesel",
+    "It is burned to make steam that is sold to nearby factories",
+    "It is mixed with water to make it renewable",
+    "It is pressed into solid blocks that are burned like coal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In fractional distillation, crude oil is heated and its parts separate by boiling point into fuels (gasoline, diesel, jet fuel, heating oil) and materials (asphalt, the raw material for plastics).",
+    "options": [
+     "Right: refining separates crude oil into products by boiling point.",
+     "A refinery separates crude oil; it does not just burn it for steam.",
+     "Nothing makes a fossil fuel renewable.",
+     "Oil products are liquids and gases, not pressed blocks."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-5",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pairing of fuel and main use is correct?",
+   "options": [
+    "Coal: jet aircraft",
+    "Wood: most electricity in developed countries",
+    "Natural gas: tar for road surfaces",
+    "Gasoline: cars and light trucks"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Gasoline, refined from crude oil, runs most cars. Coal is used mainly for electricity and steel making; asphalt comes from oil.",
+    "options": [
+     "Jets burn jet fuel refined from oil; coal is not used in aircraft.",
+     "Wood is a minor source of electricity in developed countries.",
+     "Road tar (asphalt) is a heavy product of crude oil, not natural gas.",
+     "Right: gasoline is the main fuel for cars."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-6",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which describes cogeneration?",
+   "options": [
+    "Making electricity in two generating stations that share one fuel supply",
+    "Mixing coal and natural gas before they are burned",
+    "Using the waste heat from making electricity to heat buildings or water",
+    "Burning two fuels at once in a single furnace to make more heat"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In cogeneration (combined heat and power), the heat that would be lost from making electricity is captured and used, so more of the fuel's energy does useful work.",
+    "options": [
+     "Sharing a fuel supply does not capture any waste heat.",
+     "Mixing fuels does not reuse waste heat.",
+     "Right: electricity and useful heat from the same fuel.",
+     "Burning two fuels is co-firing, not cogeneration."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-7",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A factory switches its boilers from coal to natural gas. Which is the most likely environmental result?",
+   "options": [
+    "No change in emissions, since both are fossil fuels",
+    "Less carbon dioxide per unit of energy, but some still released",
+    "No carbon dioxide, since natural gas is a clean fuel",
+    "More carbon dioxide, since natural gas has more energy per kilogram"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Natural gas releases about half as much carbon dioxide as coal for the same energy. It is cleaner than coal but not zero emissions.",
+    "options": [
+     "Fossil fuels differ a lot in carbon dioxide per unit of energy.",
+     "Right: less carbon dioxide, but not none.",
+     "Natural gas is not zero emissions; burning methane makes carbon dioxide.",
+     "More energy per kilogram means less fuel is burned for the same energy, not more carbon dioxide."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-8",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are tar sands?",
+   "options": [
+    "A mix of sand, clay, water and bitumen, a thick oil",
+    "Loose beach sand soaked with spilled gasoline",
+    "Coal dust mixed with sand to burn in stoves",
+    "Sand left over after natural gas is removed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tar sands (oil sands) hold bitumen, a very heavy oil. It is mined or melted out with steam, which takes a lot of energy and water, then upgraded into crude oil.",
+    "options": [
+     "Right: bitumen mixed with sand, clay and water.",
+     "Tar sands are natural deposits, not spills.",
+     "They contain oil, not coal.",
+     "Natural gas comes from separate deposits."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-9",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which fuel in the table releases the least carbon dioxide for each gigajoule of energy?",
+   "stimulus": "fuel-types-s1",
+   "options": [
+    "Lignite",
+    "Anthracite",
+    "Gasoline",
+    "Natural gas"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Natural gas releases 50 kg of carbon dioxide per GJ, the lowest value in the table.",
+    "options": [
+     "Lignite releases 95 kg per GJ.",
+     "Anthracite releases 98 kg per GJ, the most.",
+     "Gasoline releases 67 kg per GJ.",
+     "Right: 50 kg per GJ is the smallest value."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-10",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How much energy, in MJ, do 40 kg of anthracite release when burned?",
+   "stimulus": "fuel-types-s1",
+   "why": {
+    "correct": "$40\\,\\text{kg} \\times \\frac{30\\,\\text{MJ}}{1\\,\\text{kg}} = 1{,}200\\,\\text{MJ}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      40,
+      30
+     ]
+    },
+    "unit": "MJ",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        40,
+        30
+       ]
+      },
+      "why": "You divided. Multiply the mass by the energy per kilogram so kilograms cancel."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        40,
+        27
+       ]
+      },
+      "why": "You used bituminous coal (27 MJ/kg). The question asks about anthracite (30 MJ/kg)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-11",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A factory uses 2,000 GJ of energy a year. Write the setup for the carbon dioxide it would avoid each year by switching from bituminous coal to natural gas, then give the answer in kg.",
+   "stimulus": "fuel-types-s1",
+   "why": {
+    "correct": "Each GJ saves $90 - 50 = 40$ kg. Setup: $2{,}000\\,\\text{GJ} \\times \\frac{(90 - 50)\\,\\text{kg}}{1\\,\\text{GJ}} = 80{,}000\\,\\text{kg}$."
+   },
+   "setup": {
+    "answer": "2000 GJ * (90 - 50) kg/GJ",
+    "unit": "kg",
+    "mustUse": [
+     "2000",
+     "90",
+     "50"
+    ],
+    "mistakes": [
+     {
+      "expr": "2000 GJ * 90 kg/GJ",
+      "why": "That is the carbon dioxide from coal alone. Subtract what natural gas still releases: (90 - 50) kg per GJ."
+     },
+     {
+      "expr": "2000 GJ * 50 kg/GJ",
+      "why": "That is what natural gas releases. The savings is the difference between coal and gas."
+     }
+    ],
+    "then": {
+     "unit": "kg",
+     "from": {
+      "fn": "mul",
+      "args": [
+       2000,
+       {
+        "fn": "sub",
+        "args": [
+         90,
+         50
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         2000,
+         90
+        ]
+       },
+       "check": 180000,
+       "why": "That is the coal emissions, not the savings. Use 90 - 50 = 40 kg per GJ."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-fuel-types-12",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion about coal is best supported by the table?",
+   "stimulus": "fuel-types-s1",
+   "options": [
+    "Higher-rank coal holds more energy per kilogram",
+    "Lignite releases the least carbon dioxide of the three coals",
+    "The three coals hold the same energy per kilogram",
+    "Coal releases less carbon dioxide per GJ than gasoline"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Energy content rises from lignite (15 MJ/kg) to bituminous (27) to anthracite (30).",
+    "options": [
+     "Right: 15, 27 and 30 MJ per kg rise with rank.",
+     "Bituminous coal (90 kg per GJ) releases less than lignite (95).",
+     "The three values are 15, 27 and 30 MJ per kg.",
+     "Each coal releases more carbon dioxide per GJ (90 to 98) than gasoline (67)."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-13",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A generating station burns 500 metric tons of bituminous coal a day. Using the table, each metric ton (1,000 kg) releases 27,000 MJ. Write the setup for the energy released in one day, with units, then give the answer.",
+   "stimulus": "fuel-types-s1",
+   "why": {
+    "correct": "$500\\,\\text{t} \\times \\frac{27{,}000\\,\\text{MJ}}{1\\,\\text{t}} = 13{,}500{,}000\\,\\text{MJ}$ in one day, or $1.35 \\times 10^{7}$ MJ (t is the metric ton)."
+   },
+   "setup": {
+    "answer": "500 t * 27000 MJ/t",
+    "unit": "MJ",
+    "mustUse": [
+     "500",
+     "27000"
+    ],
+    "mistakes": [
+     {
+      "expr": "500 t / (27000 MJ/t)",
+      "why": "Dividing leaves metric tons squared per MJ, not MJ. Multiply by the energy per metric ton so the metric tons cancel."
+     }
+    ],
+    "then": {
+     "unit": "MJ",
+     "from": {
+      "fn": "mul",
+      "args": [
+       500,
+       27000
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         27000,
+         500
+        ]
+       },
+       "check": 54,
+       "why": "You divided the energy per metric ton by the metric tons. Multiply: metric tons × MJ per metric ton."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-fuel-types-14",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "According to the diagram, what changes peat into lignite and then into higher-rank coal?",
+   "stimulus": "fuel-types-s2",
+   "options": [
+    "Rainfall washing minerals out of the plant material",
+    "Bacteria turning the plants into natural gas",
+    "More heat, pressure, burial depth and time",
+    "Exposure to sunlight and oxygen at the surface"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The arrow under the diagram shows rank rising with heat, pressure, depth of burial and time.",
+    "options": [
+     "The diagram does not show rainfall as a cause.",
+     "The diagram shows solid coal forming, not gas.",
+     "Right: those four factors raise the rank.",
+     "Exposure to air would let the plants decay, not form coal."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-15",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Based on the diagram, why does a kilogram of anthracite release more energy than a kilogram of lignite?",
+   "stimulus": "fuel-types-s2",
+   "options": [
+    "It forms closer to the surface, where it gets more sunlight",
+    "It has more carbon and less moisture per kilogram",
+    "It is younger and so has lost less of its stored energy",
+    "It contains more water, which adds energy when it boils"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The bars show carbon content rising and moisture falling with rank. More carbon and less water means more energy released per kilogram.",
+    "options": [
+     "Coal forms deep underground, without sunlight.",
+     "Right: more carbon, less water.",
+     "Anthracite has been through more heat and pressure, not less time.",
+     "Water lowers energy per kilogram; heat is spent boiling it."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-16",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A region has only lignite deposits. Based on the diagram, what does this mean for a generating station that burns it?",
+   "stimulus": "fuel-types-s2",
+   "options": [
+    "It must burn more fuel for the same energy than with anthracite",
+    "It will need less fuel for the same energy than with anthracite",
+    "It will release no carbon dioxide because lignite is young coal",
+    "It can use the lignite as a renewable fuel"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lignite has the lowest energy per kilogram, so more of it must be mined, moved and burned for each unit of energy.",
+    "options": [
+     "Right: low energy per kilogram means more mass burned.",
+     "Lower energy content means more fuel, not less.",
+     "Lignite is carbon-rich and releases carbon dioxide when burned.",
+     "Coal of any rank forms over millions of years, so it is nonrenewable."
+    ]
+   }
+  },
+  {
+   "id": "env-fuel-types-17",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "specific",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A city replaces an old coal-fired heating plant with a natural gas plant that also uses cogeneration. Describe one environmental benefit and explain how it works.",
+   "why": {
+    "correct": "Natural gas releases less carbon dioxide per unit of energy, and cogeneration uses waste heat, so less fuel is burned for the same heat and electricity."
+   },
+   "specific": {
+    "frame": "___, because ___.",
+    "slots": {
+     "benefit": {
+      "label": "Benefit",
+      "options": [
+       "less carbon dioxide is released for the same heat and electricity",
+       "no carbon dioxide is released",
+       "the fuel becomes renewable"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Natural gas still releases carbon dioxide when it burns.",
+       "2": "Natural gas is a nonrenewable fossil fuel."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "gas releases less carbon dioxide per unit of energy, and the plant's waste heat warms buildings instead of being lost",
+       "burning gas removes carbon dioxide from the air",
+       "cogeneration stores carbon dioxide underground"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Burning any fuel adds carbon dioxide; it does not remove it.",
+       "2": "Cogeneration reuses heat; it does not store carbon dioxide."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "natural gas",
+      "heat"
+     ]
+    },
+    "model": "Less carbon dioxide is released for the same heat and electricity, because natural gas releases about half as much carbon dioxide per unit of energy as coal, and cogeneration uses the waste heat to warm buildings instead of losing it."
+   }
+  },
+  {
+   "id": "env-fuel-types-18",
+   "unit": "unit-6",
+   "topic": "fuel-types",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a rural region, many families burn charcoal for cooking. Charcoal is made by heating wood with little air. What is a likely effect of rising charcoal demand?",
+   "options": [
+    "Demand for coal mining in the region rises",
+    "Carbon dioxide in the air falls as charcoal is used",
+    "Nearby forests are cut faster than they regrow",
+    "Air quality improves in the families' kitchens"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Making charcoal uses a lot of wood. When demand outpaces regrowth, forests shrink and soils erode.",
+    "options": [
+     "Charcoal is made from wood, not coal.",
+     "Burning charcoal releases carbon dioxide; it does not remove it.",
+     "Right: charcoal demand can drive deforestation.",
+     "Burning charcoal indoors adds smoke and harmful gases."
+    ]
+   }
+  }
+ ]
+}

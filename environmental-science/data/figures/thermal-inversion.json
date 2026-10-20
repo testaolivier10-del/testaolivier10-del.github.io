@@ -1,0 +1,12 @@
+{
+ "thermal-inversion-profile": {
+  "file": "figures/thermal-inversion-profile.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two side-by-side valley diagrams. Normal conditions: air cools with height, warm air near the ground rises and carries smoke up and away. Thermal inversion: a warm layer sits above cool air in the valley, and smoke rises only to the warm layer and spreads out beneath it."
+ }
+}

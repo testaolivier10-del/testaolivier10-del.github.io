@@ -1,0 +1,633 @@
+{
+ "stimuli": {
+  "acid-rain-s1": {
+   "kind": "visual",
+   "title": "Sulfur dioxide emissions and rain pH at a forest monitoring station",
+   "invented": true,
+   "plot": {
+    "label": "Dual-axis line graph from 1980 to 2020: a region's SO2 emissions fall from 24 to 3 million metric tons a year while the average pH of rain at a forest station rises from 4.2 to 5.2; invented data",
+    "kind": "dual",
+    "x": [
+     1980,
+     2020
+    ],
+    "y": [
+     0,
+     30
+    ],
+    "yRight": [
+     4,
+     5.6
+    ],
+    "xStep": 10,
+    "yStep": 5,
+    "xLabel": "Year",
+    "yLabel": "SO2 (million t a year)",
+    "yRightLabel": "Rain pH",
+    "series": [
+     {
+      "name": "SO2",
+      "axis": "left",
+      "points": [
+       [
+        1980,
+        24
+       ],
+       [
+        1990,
+        21
+       ],
+       [
+        2000,
+        15
+       ],
+       [
+        2010,
+        8
+       ],
+       [
+        2020,
+        3
+       ]
+      ]
+     },
+     {
+      "name": "pH",
+      "axis": "right",
+      "points": [
+       [
+        1980,
+        4.2
+       ],
+       [
+        1990,
+        4.3
+       ],
+       [
+        2000,
+        4.6
+       ],
+       [
+        2010,
+        4.9
+       ],
+       [
+        2020,
+        5.2
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "acid-rain-s2": {
+   "kind": "quantitative",
+   "title": "Four lakes that receive the same acid rain",
+   "invented": true,
+   "table": {
+    "caption": "Lake pH and fish species found in four lakes in one region (invented data for practice)",
+    "cols": [
+     "Lake",
+     "Bedrock and soil",
+     "Lake pH",
+     "Fish species found"
+    ],
+    "rows": [
+     [
+      "North Lake",
+      "granite, thin soil",
+      "4.8",
+      "1"
+     ],
+     [
+      "Pine Lake",
+      "granite, thin soil",
+      "5.2",
+      "3"
+     ],
+     [
+      "Mill Lake",
+      "limestone",
+      "7.1",
+      "9"
+     ],
+     [
+      "Clay Lake",
+      "limestone, deep soil",
+      "7.4",
+      "10"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-acid-rain-1",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the relationship between SO2 emissions and rain pH shown in the graph.",
+   "stimulus": "acid-rain-s1",
+   "options": [
+    "As SO2 emissions fell, rain pH fell too",
+    "As SO2 emissions fell, rain pH rose",
+    "Rain pH stayed at 4.2 while SO2 fell",
+    "Rain pH rose first, and SO2 fell ten years later"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As SO2 emissions fell, rain pH rose. Less SO2 means less sulfuric acid in the rain, so the rain became less acidic: an inverse relationship.",
+    "options": [
+     "pH rose from 4.2 to 5.2 while emissions fell.",
+     "Right: less SO2, less sulfuric acid, so a higher pH.",
+     "The pH line rises across the whole period.",
+     "The two change over the same decades."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-2",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation connects the two lines?",
+   "stimulus": "acid-rain-s1",
+   "options": [
+    "SO2 forms sulfuric acid, so less SO2 means less acid",
+    "SO2 is a base that raises the pH of rain",
+    "Less SO2 let more CO2 dissolve, which raised pH",
+    "Rain pH depends on temperature, not on emissions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SO2 reacts with water and oxygen in the air to form sulfuric acid, which falls in rain. Cutting SO2 cuts the acid, so the pH rises toward normal rain's 5.6.",
+    "options": [
+     "Right: the acid comes from the SO2.",
+     "SO2 forms an acid, not a base; it lowers pH.",
+     "Dissolved CO2 makes rain slightly acidic; it does not raise pH.",
+     "The pH tracks the emissions closely across 40 years."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-3",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in the region's SO2 emissions from 1980 to 2020.",
+   "stimulus": "acid-rain-s1",
+   "why": {
+    "correct": "$\\frac{(3 - 24)}{24} \\times 100 = -87.5\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      24,
+      3
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -700,
+      "why": "You divided by the 2020 value. Divide by the old (1980) value, 24 million metric tons."
+     },
+     {
+      "value": 87.5,
+      "why": "Emissions fell, so the change is negative: -87.5%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-4",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Each drop of 1 in pH means 10 times more acidic. How many times more acidic was the rain in 1980 (pH 4.2) than in 2020 (pH 5.2)?",
+   "stimulus": "acid-rain-s1",
+   "why": {
+    "correct": "The pH differs by $5.2 - 4.2 = 1$, so the 1980 rain was $10^{1} = 10$ times more acidic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "pow",
+     "args": [
+      10,
+      {
+       "fn": "sub",
+       "args": [
+        5.2,
+        4.2
+       ]
+      }
+     ]
+    },
+    "unit": "times",
+    "units": [
+     "x",
+     "fold"
+    ],
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "1 is the difference in pH. Each step of 1 is a factor of 10, so the answer is 10 times."
+     },
+     {
+      "value": 1.2380952381,
+      "why": "pH is a logarithmic scale; do not divide the pH values. A difference of 1 means 10 times."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-5",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "All four lakes get the same acid rain. Why are Mill Lake and Clay Lake near neutral pH?",
+   "stimulus": "acid-rain-s2",
+   "options": [
+    "They get less rain than the two granite lakes",
+    "Their fish release a base that cancels the acid",
+    "Granite adds acid, so those two lakes are acidic",
+    "Limestone under them neutralizes the acid"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "They sit on limestone, which is a base. Limestone in the soil and bedrock neutralizes (buffers) the acid, so the lake pH stays near 7.",
+    "options": [
+     "The question says all four get the same acid rain.",
+     "Fish do not buffer lakes; the rock and soil do.",
+     "Granite does not add acid; it simply cannot neutralize the rain.",
+     "Right: limestone is a base, so it buffers the acid rain."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-6",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What pattern links lake pH and the number of fish species?",
+   "stimulus": "acid-rain-s2",
+   "options": [
+    "The lower the pH, the more fish species",
+    "Fish species are about equal across the four lakes",
+    "The lower the pH, the fewer fish species",
+    "The deep soil affects the fish, not the pH"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The more acidic the lake (lower pH), the fewer fish species: 1 species at pH 4.8 against 10 at pH 7.4.",
+    "options": [
+     "North Lake, the most acidic, has the fewest species.",
+     "They range from 1 to 10.",
+     "Right: the most acidic lake has one species, the least acidic ten.",
+     "Mill Lake has no deep soil yet nine species; pH is the pattern."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-7",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Using the rule that each drop of 1 in pH means 10 times more acidic, how many times more acidic is North Lake (pH 4.8) than Clay Lake (pH 7.4)? Give your answer to the nearest whole number.",
+   "stimulus": "acid-rain-s2",
+   "why": {
+    "correct": "The pH difference is $7.4 - 4.8 = 2.6$, so North Lake is $10^{2.6} \\approx 398$ times more acidic."
+   },
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "pow",
+       "args": [
+        10,
+        {
+         "fn": "sub",
+         "args": [
+          7.4,
+          4.8
+         ]
+        }
+       ]
+      },
+      0
+     ]
+    },
+    "unit": "times",
+    "units": [
+     "x",
+     "fold"
+    ],
+    "mistakes": [
+     {
+      "value": 2.6,
+      "why": "2.6 is the pH difference. Each unit is a factor of 10: use 10 to the power 2.6."
+     },
+     {
+      "value": 26,
+      "why": "You multiplied 2.6 by 10. The scale is logarithmic: 10 to the power 2.6."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-8",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A town wants to restore fish to North Lake quickly while emissions keep falling. Which step works fastest, and what is its drawback?",
+   "stimulus": "acid-rain-s2",
+   "options": [
+    "Add more granite; it is costly to haul in",
+    "Add crushed limestone; it needs repeating",
+    "Stock more fish; they will raise the pH over time",
+    "Drain the lake; it would take years to refill"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Adding crushed limestone (liming) neutralizes the acid in the lake quickly, but it treats the symptom and has to be repeated as long as acid rain keeps falling.",
+    "options": [
+     "Granite cannot neutralize acid; that is why the lake is acidic.",
+     "Right: liming raises pH fast but does not stop the acid at its source.",
+     "Fish do not raise pH, and they would die in acidic water.",
+     "Draining destroys the habitat and does not fix the acid supply."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-9",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which gases are the main cause of acid deposition?",
+   "options": [
+    "Sulfur dioxide and nitrogen oxides",
+    "Carbon monoxide and VOCs",
+    "Particulates and ground-level ozone",
+    "Methane and water vapor"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sulfur dioxide and nitrogen oxides react with water and oxygen in the air to form sulfuric and nitric acid.",
+    "options": [
+     "Right: they form sulfuric and nitric acid.",
+     "CO and VOCs are not the source of acid rain; VOCs help form smog.",
+     "Neither is the main source of the acid in acid rain.",
+     "Neither forms strong acids in rain."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-10",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Ordinary, unpolluted rain has a pH of about 5.6. Why is it slightly acidic?",
+   "options": [
+    "Lightning adds sulfur dioxide to the raindrops",
+    "Clouds absorb acids from the ozone layer",
+    "Water is naturally acidic at pH 5.6 before it evaporates",
+    "CO2 in the air dissolves in it and forms a weak acid"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "CO2 in the air dissolves in raindrops and forms a weak acid, so even clean rain is a little below neutral pH 7. Acid rain is rain below about 5.6.",
+    "options": [
+     "Lightning makes a little NOx, but CO2 is why clean rain is about 5.6.",
+     "The ozone layer does not add acid to rain.",
+     "Pure water is neutral at pH 7.",
+     "Right: that is why clean rain is about 5.6, not 7."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-11",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Acid rain falls on a forest with thin soil over granite. How does it harm the trees?",
+   "options": [
+    "It adds so much nitrogen that the trees grow too fast to stand",
+    "It raises the soil pH so roots take in less water",
+    "It leaches soil nutrients and frees toxic aluminum",
+    "It forms ozone on the leaves, which blocks sunlight"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Acid washes calcium and magnesium out of the soil (leaching) and releases aluminum, which damages roots, so trees grow weakly and become prone to disease, cold and insects.",
+    "options": [
+     "Some nitrogen can fertilize, but the main harm is nutrient leaching and aluminum.",
+     "Acid rain lowers soil pH; it does not raise it.",
+     "Right: trees weaken from nutrient loss and toxic aluminum.",
+     "Acid rain does not form ozone on leaves."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-12",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do marble statues and limestone buildings wear away faster where acid rain falls?",
+   "options": [
+    "Acid rain freezes in the stone and cracks it apart",
+    "The acid reacts with and dissolves the stone",
+    "Acid rain deposits soot that hides the carving",
+    "Acid rain makes the stone absorb ozone and expand"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Marble and limestone are made of calcium compounds that act as a base. Acid reacts with the stone and dissolves it, so carved details wear away.",
+    "options": [
+     "Freezing can crack stone, but the acid dissolves it chemically.",
+     "Right: the same reaction that buffers lakes eats the stone.",
+     "Soot darkens stone, but the wearing away is from the acid reacting.",
+     "Stone does not absorb ozone and swell."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-13",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A coal plant builds a very tall smokestack so its town's air meets SO2 limits. What is an unintended effect?",
+   "options": [
+    "Acid deposition increases in regions far downwind",
+    "The plant releases less SO2 in total each year",
+    "Smog increases inside the town on sunny afternoons",
+    "Lakes near the plant become less acidic"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A tall stack sends SO2 higher, where winds carry it hundreds of kilometers. The town's air improves, but acid deposition increases in places far downwind.",
+    "options": [
+     "Right: tall stacks spread the SO2; they do not remove it.",
+     "A taller stack releases the same SO2; it only sends it farther.",
+     "The stack lowers the town's SO2; smog comes from NOx and VOCs.",
+     "Nearby air improves, but the acid lands farther away."
+    ]
+   }
+  },
+  {
+   "id": "env-acid-rain-14",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A lake's pH fell from 6.5 to 4.5 after years of acid rain. Write the setup for how many times more acidic it became, then the answer.",
+   "why": {
+    "correct": "The pH fell by $6.5 - 4.5 = 2$, so the lake became $10^{2} = 100$ times more acidic."
+   },
+   "setup": {
+    "answer": "10^(6.5 - 4.5)",
+    "mustUse": [
+     "6.5",
+     "4.5"
+    ],
+    "mistakes": [
+     {
+      "expr": "6.5 - 4.5",
+      "why": "That is the drop in pH. Each unit of pH is a factor of 10, so raise 10 to that power."
+     },
+     {
+      "expr": "(6.5 - 4.5) * 10",
+      "why": "pH is logarithmic: a drop of 2 means 10 × 10, not 2 × 10."
+     }
+    ],
+    "then": {
+     "unit": "times",
+     "units": [
+      "x",
+      "fold"
+     ],
+     "from": {
+      "fn": "pow",
+      "args": [
+       10,
+       {
+        "fn": "sub",
+        "args": [
+         6.5,
+         4.5
+        ]
+       }
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 20,
+       "why": "A drop of 2 in pH is 10 × 10 = 100 times, not 2 × 10."
+      },
+      {
+       "value": 2,
+       "why": "2 is the change in pH. The acidity changed by 10 to the power 2: 100 times."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-acid-rain-15",
+   "unit": "unit-7",
+   "topic": "acid-rain",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Propose a policy that would reduce acid deposition across a whole country, and explain how it works.",
+   "why": {
+    "correct": "A national rule on the gases that form the acid cuts it at its source across the country, and the answer says how."
+   },
+   "specific": {
+    "frame": "The country could pass ___, which reduces acid deposition by ___.",
+    "slots": {
+     "policy": {
+      "label": "Policy",
+      "options": [
+       "a law capping SO2 and NOx from power plants and vehicles",
+       "a program to add limestone to every acidic lake",
+       "a rule requiring taller smokestacks at power plants"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Liming treats lakes one at a time; it does not reduce acid deposition.",
+       "2": "Taller stacks spread SO2 farther; they do not cut it."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "cutting the gases that form sulfuric and nitric acid in the air",
+       "neutralizing the acid after it falls",
+       "blowing the acid out to sea"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That describes liming, a treatment after the fact, not a cut in deposition.",
+       "2": "Moving the acid elsewhere is not a reduction."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "so2",
+      "nox",
+      "sulfur",
+      "nitrogen"
+     ]
+    },
+    "model": "The country could pass a law capping SO2 and NOx from power plants and vehicles, which reduces acid deposition by cutting the gases that form sulfuric and nitric acid in the air, so less acid falls in rain."
+   }
+  }
+ ]
+}

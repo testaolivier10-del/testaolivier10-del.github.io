@@ -1,0 +1,12 @@
+{
+ "soil-formation-horizons": {
+  "file": "figures/soil-formation-horizons.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A soil profile cut straight down. At the top, plants grow and drop leaves. The O horizon is a thin dark layer of fallen leaves and organic matter decaying into humus. The A horizon, or topsoil, is dark: humus mixed with minerals, where most roots and soil organisms live. The B horizon, or subsoil, is lighter brown and collects clay, iron and other minerals leached down from above. The C horizon holds chunks of partly weathered parent material. At the bottom is bedrock, the parent material the soil slowly forms from. An arrow shows weathering breaking rock into smaller pieces from below, while organic matter is added from above. Soil forms slowly, often taking centuries for a few centimeters."
+ }
+}

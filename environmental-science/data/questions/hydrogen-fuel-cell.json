@@ -1,0 +1,577 @@
+{
+ "stimuli": {
+  "hydrogen-fuel-cell-s1": {
+   "kind": "quantitative",
+   "title": "Two ways to drive on electricity",
+   "invented": true,
+   "table": {
+    "caption": "Efficiency of each step from electricity on the grid to energy at a car's wheels (invented data for practice, near published estimates)",
+    "cols": [
+     "Path",
+     "Step",
+     "Efficiency (%)"
+    ],
+    "rows": [
+     [
+      "A: hydrogen fuel cell car",
+      "Electrolysis (electricity splits water into hydrogen)",
+      "70"
+     ],
+     [
+      "A",
+      "Compressing, storing and delivering hydrogen",
+      "85"
+     ],
+     [
+      "A",
+      "Fuel cell (hydrogen to electricity)",
+      "50"
+     ],
+     [
+      "A",
+      "Electric motor",
+      "90"
+     ],
+     [
+      "B: battery-powered car",
+      "Charging the battery",
+      "92"
+     ],
+     [
+      "B",
+      "Battery storage and release",
+      "95"
+     ],
+     [
+      "B",
+      "Electric motor",
+      "90"
+     ]
+    ]
+   }
+  },
+  "hydrogen-fuel-cell-s2": {
+   "kind": "visual",
+   "title": "How a hydrogen fuel cell works",
+   "figure": "hydrogen-fuel-cell-diagram"
+  }
+ },
+ "items": [
+  {
+   "id": "env-hydrogen-fuel-cell-1",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the only exhaust from a hydrogen fuel cell?",
+   "options": [
+    "Carbon dioxide",
+    "Methane",
+    "Soot",
+    "Water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Hydrogen combines with oxygen from the air: 2H₂ + O₂ → 2H₂O. The product is water (and some heat).",
+    "options": [
+     "The fuel contains no carbon, so the cell makes no carbon dioxide.",
+     "Methane is not produced in the cell.",
+     "Nothing is burned, so there is no soot.",
+     "Right: water is the product."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-2",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a hydrogen fuel cell differ from burning hydrogen?",
+   "options": [
+    "It splits water into hydrogen and oxygen using sunlight",
+    "It stores electricity from the grid in a chemical battery",
+    "It makes electricity from a reaction, with no flame",
+    "It burns hydrogen in a flame to boil water for a turbine"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In a fuel cell the reaction happens across a membrane, and the electrons that move through an outside circuit are the electric current. There is no combustion.",
+    "options": [
+     "Splitting water uses electricity; it is the reverse of a fuel cell.",
+     "A fuel cell makes electricity from fuel; it does not store grid electricity.",
+     "Right: a chemical reaction makes electricity directly.",
+     "A fuel cell has no flame and no turbine."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-3",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Most hydrogen produced today comes from natural gas. What does this mean for a fuel cell car's environmental impact?",
+   "options": [
+    "The car releases methane from its fuel cell as it drives along",
+    "Carbon dioxide is released at the plant that makes hydrogen",
+    "The car releases carbon dioxide out of its exhaust pipe",
+    "The car is zero emissions from start to finish, at each step"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Steam reforming of natural gas releases carbon dioxide at the plant. A fuel cell vehicle is only as clean as the way its hydrogen is made.",
+    "options": [
+     "The fuel cell uses hydrogen, not methane.",
+     "Right: the emissions move to the hydrogen plant.",
+     "The car's exhaust is water.",
+     "Making the hydrogen from natural gas releases carbon dioxide."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-4",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "1.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which drawback belongs to hydrogen fuel cell cars rather than battery-powered cars?",
+   "options": [
+    "Few fueling stations, and hydrogen is hard to store",
+    "Long recharging times at home or at public charging stations",
+    "Large batteries that need mined lithium, cobalt and nickel",
+    "Driving range that falls sharply in very cold winter weather"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fuel cell cars refuel in minutes, but hydrogen is hard to store and move, and there are very few stations. Long charging times and large mined batteries are battery-car drawbacks.",
+    "options": [
+     "Right: hydrogen storage and the lack of stations.",
+     "Long recharging is a battery car drawback; fuel cell cars refuel in minutes.",
+     "Large lithium batteries are a battery car drawback; fuel cell cars have only a small battery.",
+     "Cold weather mainly cuts the range of battery cars."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-5",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is hydrogen called an energy carrier rather than an energy source?",
+   "options": [
+    "It carries electric current through the power lines",
+    "It is found in large underground deposits, like natural gas",
+    "It releases more energy in the cell than it took to make",
+    "Energy must be used to make it, and it then carries that energy"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Hydrogen is bound up in water and hydrocarbons. Making it (by electrolysis or from natural gas) takes energy, which the hydrogen then carries to the fuel cell, with losses.",
+    "options": [
+     "Hydrogen is a gas fuel, not electric current.",
+     "Free hydrogen is very rare in nature.",
+     "Making hydrogen takes more energy than the fuel cell gets back.",
+     "Right: it stores energy that came from another source."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-6",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Hydrogen made by electrolysis using electricity from the wind is sometimes called \"green hydrogen.\" What is its main advantage?",
+   "options": [
+    "It needs no storage, since it is used as soon as it is made",
+    "It makes the wind-driven generators more efficient",
+    "Very little carbon dioxide is released at any step",
+    "It costs less to make than hydrogen made from natural gas"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With renewable electricity, splitting water releases no carbon dioxide, so the whole chain is very low in emissions. It is currently more expensive than hydrogen from gas.",
+    "options": [
+     "It still needs storage and transport.",
+     "Making hydrogen does not change turbine efficiency.",
+     "Right: the whole chain is very low carbon.",
+     "Today it costs more than hydrogen from natural gas."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-7",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the overall efficiency of path A, from the electricity used to make hydrogen to the energy that turns the car's wheels? Give a percent.",
+   "stimulus": "hydrogen-fuel-cell-s1",
+   "why": {
+    "correct": "$0.70 \\times 0.85 \\times 0.50 \\times 0.90 \\times 100 \\approx 26.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "chainEfficiency",
+     "args": [
+      70,
+      85,
+      50,
+      90
+     ]
+    },
+    "unit": "%",
+    "tol": 0.15,
+    "mistakes": [
+     {
+      "value": 73.75,
+      "why": "You averaged the four steps. Losses build on each other, so multiply the efficiencies: 0.70 × 0.85 × 0.50 × 0.90."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.7,
+        0.85,
+        0.5,
+        0.9
+       ]
+      },
+      "why": "That is the efficiency as a decimal. Multiply by 100 for a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-8",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the overall efficiency of path B, the battery-powered car? Give a percent.",
+   "stimulus": "hydrogen-fuel-cell-s1",
+   "why": {
+    "correct": "$0.92 \\times 0.95 \\times 0.90 \\times 100 \\approx 78.7\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "chainEfficiency",
+     "args": [
+      92,
+      95,
+      90
+     ]
+    },
+    "unit": "%",
+    "tol": 0.15,
+    "mistakes": [
+     {
+      "value": 92.333,
+      "why": "You averaged the three steps. Multiply them: 0.92 × 0.95 × 0.90."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-9",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A fuel cell car needs 20 kWh at its wheels for a trip. Write the setup for the electricity that must go into path A to make the hydrogen, then give the answer.",
+   "stimulus": "hydrogen-fuel-cell-s1",
+   "why": {
+    "correct": "Input = output ÷ efficiency: $\\frac{20\\,\\text{kWh}}{0.70 \\times 0.85 \\times 0.50 \\times 0.90} \\approx 74.7\\,\\text{kWh}$."
+   },
+   "setup": {
+    "answer": "20 kWh / (0.70 * 0.85 * 0.50 * 0.90)",
+    "unit": "kWh",
+    "mustUse": [
+     "20",
+     "0.70",
+     "0.85",
+     "0.50",
+     "0.90"
+    ],
+    "mistakes": [
+     {
+      "expr": "20 kWh * 0.70 * 0.85 * 0.50 * 0.90",
+      "why": "Multiplying finds what comes out. Here 20 kWh is the output, so divide by the efficiency to find the input."
+     },
+     {
+      "expr": "20 kWh / 0.70 * 0.85 * 0.50 * 0.90",
+      "why": "Put the whole product of efficiencies in brackets: 20 ÷ (0.70 × 0.85 × 0.50 × 0.90)."
+     }
+    ],
+    "then": {
+     "unit": "kWh",
+     "from": {
+      "fn": "div",
+      "args": [
+       20,
+       {
+        "fn": "mul",
+        "args": [
+         0.7,
+         0.85,
+         0.5,
+         0.9
+        ]
+       }
+      ]
+     },
+     "tol": 0.2,
+     "mistakes": [
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         20,
+         0.7,
+         0.85,
+         0.5,
+         0.9
+        ]
+       },
+       "check": 5.355,
+       "why": "You found the output from 20 kWh of input. The 20 kWh is the output here, so divide."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-10",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which conclusion is best supported by the table?",
+   "stimulus": "hydrogen-fuel-cell-s1",
+   "options": [
+    "The two paths deliver about the same share of energy to the wheels",
+    "The fuel cell step is the most efficient of the steps in path A",
+    "Path B goes about three times as far on the same electricity",
+    "The fuel cell path wastes less energy than the battery path does"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Path B delivers about 78.7 percent and path A about 26.8 percent, roughly three times as much, so the same electricity goes about three times as far.",
+    "options": [
+     "About 27 percent against about 79 percent is a big gap.",
+     "The fuel cell, at 50 percent, is the least efficient step in path A.",
+     "Right: 78.7 ÷ 26.8 ≈ 2.9.",
+     "Path A wastes about 73 percent; path B about 21 percent."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-11",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what passes through the membrane?",
+   "stimulus": "hydrogen-fuel-cell-s2",
+   "options": [
+    "Water",
+    "Hydrogen ions",
+    "Electrons",
+    "Oxygen gas"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The membrane lets hydrogen ions (H⁺) through but blocks electrons, which must go around through the circuit.",
+    "options": [
+     "Water forms at the cathode and leaves the cell.",
+     "Right: H⁺ ions cross the membrane.",
+     "Electrons are forced through the outside circuit, which is the current.",
+     "Oxygen enters at the cathode from the air."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-12",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, why does the motor run?",
+   "stimulus": "hydrogen-fuel-cell-s2",
+   "options": [
+    "Electrons flow through the outside circuit as a current",
+    "Oxygen burns at the cathode, which spins the motor",
+    "Water leaving the cell turns a small turbine inside it",
+    "Hydrogen ions push on the motor as they cross the membrane"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The membrane blocks electrons, so they travel through the outside circuit from anode to cathode. That flow is the electric current that runs the motor.",
+    "options": [
+     "Right: the electron flow is the current.",
+     "Nothing burns in a fuel cell.",
+     "There is no turbine in a fuel cell.",
+     "The ions stay inside the cell; the current is the electrons."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-13",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A city replaces diesel buses with fuel cell buses like the one in the diagram. Which air quality change on city streets is most likely?",
+   "stimulus": "hydrogen-fuel-cell-s2",
+   "options": [
+    "More carbon dioxide on the streets released by the fuel cells",
+    "More soot, since hydrogen burns at a very high temperature",
+    "No change, since the new buses still burn fuel in their engines",
+    "Less soot and exhaust on the streets, as the buses emit water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The buses emit only water vapor, so street-level exhaust from the buses falls. Emissions may still occur where the hydrogen is made.",
+    "options": [
+     "Fuel cells emit no carbon dioxide.",
+     "Nothing is burned in a fuel cell.",
+     "Fuel cells do not burn fuel.",
+     "Right: tailpipe pollution from the buses goes away."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-14",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "specific",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Describe one advantage and one disadvantage of the fuel cell buses, compared with diesel buses.",
+   "stimulus": "hydrogen-fuel-cell-s2",
+   "why": {
+    "correct": "Advantage: no harmful exhaust, only water. Disadvantage: making hydrogen takes energy, often from natural gas, and storing and supplying it is costly."
+   },
+   "specific": {
+    "frame": "An advantage is that ___. A disadvantage is that ___.",
+    "slots": {
+     "adv": {
+      "label": "Advantage",
+      "options": [
+       "the buses release only water, so street-level air pollution falls",
+       "hydrogen is free and found in large deposits",
+       "the buses need no fueling at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Hydrogen must be made using energy; it is not mined.",
+       "2": "The buses must be refueled with hydrogen."
+      }
+     },
+     "dis": {
+      "label": "Disadvantage",
+      "options": [
+       "making hydrogen takes energy, often from natural gas, which releases carbon dioxide",
+       "the buses release soot from their exhaust",
+       "the buses need long battery recharges each night"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Fuel cells release no soot.",
+       "2": "Long recharging is a battery bus drawback; fuel cell buses refuel in minutes."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "hydrogen",
+      "water"
+     ]
+    },
+    "model": "An advantage is that the buses release only water, so street-level air pollution falls because no diesel is burned. A disadvantage is that making hydrogen takes energy, often from natural gas, which releases carbon dioxide at the plant."
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-15",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of hydrogen fuel cell vehicles over battery-powered cars?",
+   "options": [
+    "Their fuel is cheaper to make and easier to store safely",
+    "They refuel in a few minutes and go a long way per fill",
+    "They have many more fueling stations available to drivers",
+    "They use energy more efficiently from the source to the wheels"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fuel cell vehicles refuel quickly and have long range, which suits trucks and buses. They are less efficient overall, and hydrogen is costly and hard to store.",
+    "options": [
+     "Hydrogen is costly and must be stored under high pressure or very cold.",
+     "Right: fast refueling and long range.",
+     "Hydrogen stations are rare.",
+     "The battery path is about three times as efficient."
+    ]
+   }
+  },
+  {
+   "id": "env-hydrogen-fuel-cell-16",
+   "unit": "unit-6",
+   "topic": "hydrogen-fuel-cell",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does electrolysis do in the hydrogen fuel chain?",
+   "options": [
+    "Uses electricity to split water into hydrogen and oxygen",
+    "Combines hydrogen and oxygen to make electricity",
+    "Burns hydrogen in a flame to boil water for steam",
+    "Separates hydrogen from natural gas using hot steam"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Electrolysis runs electricity through water to split it. It is the reverse of what a fuel cell does.",
+    "options": [
+     "Right: electricity splits water.",
+     "That is what the fuel cell does.",
+     "Hydrogen is not burned in this chain.",
+     "That is steam reforming of natural gas."
+    ]
+   }
+  }
+ ]
+}

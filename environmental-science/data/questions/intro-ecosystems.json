@@ -1,0 +1,555 @@
+{
+ "stimuli": {
+  "intro-ecosystems-s1": {
+   "kind": "text",
+   "title": "Two warblers in one spruce forest",
+   "passage": "A field biologist spent three summers watching two warbler species that eat the same kind of caterpillar in the same spruce forest. She expected one species to push the other out. Instead, both stayed common. Species A fed almost entirely in the top third of the trees, while species B fed on the lower branches near the trunk. In a stand where storms had snapped off the treetops, species A was rare and species B was common. She concluded that the two species can share the forest because each uses a different part of it.",
+   "source": "Invented passage for practice."
+  },
+  "intro-ecosystems-s2": {
+   "kind": "quantitative",
+   "title": "Growth of species grown alone and together",
+   "invented": true,
+   "table": {
+    "caption": "Average growth of each species in a greenhouse trial, in grams of new growth after 8 weeks (invented data for practice)",
+    "cols": [
+     "Pair",
+     "Species",
+     "Grown alone (g)",
+     "Grown together (g)"
+    ],
+    "rows": [
+     [
+      "1",
+      "Clover",
+      "40",
+      "52"
+     ],
+     [
+      "1",
+      "Root fungus",
+      "10",
+      "15"
+     ],
+     [
+      "2",
+      "Grass P",
+      "60",
+      "35"
+     ],
+     [
+      "2",
+      "Grass Q",
+      "55",
+      "30"
+     ],
+     [
+      "3",
+      "Moss",
+      "12",
+      "12"
+     ],
+     [
+      "3",
+      "Oak seedling",
+      "80",
+      "80"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-intro-ecosystems-1",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which choice lists only abiotic parts of a pond ecosystem?",
+   "options": [
+    "Water temperature, sunlight and dissolved minerals",
+    "Algae, sunlight and water temperature",
+    "Frogs, insects and pond weeds",
+    "Dissolved minerals, bacteria and snails on the rocks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Abiotic parts are nonliving: temperature, light, water and minerals.",
+    "options": [
+     "Right: all three are nonliving.",
+     "Algae are living, so they are biotic.",
+     "All three are living things, so they are biotic.",
+     "Bacteria and snails are living, so they are biotic."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-2",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A biologist counts every white-tailed deer in a state park. A second biologist records the deer, wolves, trees and grasses that live there and how they interact. What does each biologist study?",
+   "options": [
+    "The first studies a population; the second studies a community.",
+    "The first studies a community; the second studies a population.",
+    "Both study a single population of deer and the park around it.",
+    "The first studies an ecosystem; the second studies a habitat."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A population is one species in one area; a community is all the populations of different species living and interacting there.",
+    "options": [
+     "Right: one species is a population, many interacting species are a community.",
+     "This swaps the two terms: one species is a population.",
+     "The second biologist records several species, which is a community.",
+     "Counting one species is not an ecosystem study, and the second study is about species, not just a place."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-3",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A fungus grows on and around the roots of a pine tree. The fungus gets sugar from the tree, and its threads absorb water and minerals from the soil that the tree then uses. Which interaction is this between the fungus and the tree?",
+   "options": [
+    "Commensalism, because the tree is not affected",
+    "Mutualism, because both species benefit",
+    "Parasitism, because the fungus feeds on the tree",
+    "Competition, because both need soil water"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The fungus gains sugar and the tree gains water and minerals: both are helped (+/+), so this is mutualism.",
+    "options": [
+     "The tree gains water and minerals, so it is affected (helped).",
+     "Right: the fungus gets sugar and the tree gets water and minerals.",
+     "A parasite harms its host; here the tree is helped in return.",
+     "Competition harms both species; here both are helped."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-4",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A tapeworm lives in the gut of a dog and absorbs food the dog has digested. The dog loses weight. What kind of relationship is this?",
+   "options": [
+    "Predation, because one species eats part of another",
+    "Mutualism, because the tapeworm gets food",
+    "Commensalism, because the dog is still alive",
+    "Parasitism, because the dog is harmed"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "One species gains and the host is harmed but usually not killed: parasitism.",
+    "options": [
+     "A predator kills and eats its prey; the tapeworm lives on its host for a long time.",
+     "In mutualism both species benefit; the dog is harmed.",
+     "In commensalism the other species is not affected; the dog loses weight.",
+     "Right: the tapeworm benefits and the dog is harmed."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-5",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two lizard species on an island both eat insects. One hunts on tree trunks during the day, and the other hunts on the ground at night. How does this help both species survive?",
+   "options": [
+    "They partition resources, which reduces competition between them.",
+    "They form a mutualism in which each helps the other find insects.",
+    "One species preys on the other, which keeps both numbers stable.",
+    "They increase the total number of insects on the island."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Using a resource at different places or times is resource partitioning; it lowers competition, so both species can persist.",
+    "options": [
+     "Right: different places and times mean less overlap, so less competition.",
+     "Neither lizard helps the other; they simply avoid each other.",
+     "The passage says both eat insects, not each other.",
+     "Splitting the hunting does not make more insects; it divides them."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-6",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is the niche of a species?",
+   "options": [
+    "The physical place where the species lives",
+    "Its role and use of resources in its ecosystem",
+    "The number of individuals of the species in an area",
+    "The group of species that compete with it for food"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A niche is how a species lives: what it eats, when and where it is active, and the conditions it needs. The place alone is its habitat.",
+    "options": [
+     "That is the habitat, not the niche.",
+     "Right: the niche is the species’ role and how it uses resources.",
+     "That is population size.",
+     "Competitors are part of the community, not the niche itself."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-7",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two species of barnacles live on the same rocky shore. Species X is found only high on the rocks. When researchers scraped species Y off the lower rocks, species X spread down onto them. What does this show?",
+   "options": [
+    "Species X does not survive in the wetter, lower areas of the shore.",
+    "Species Y is a parasite of species X.",
+    "Competition from species Y kept species X off the lower rocks.",
+    "The two species have a mutualism on the lower rocks."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Once its competitor was removed, species X used space it could live in. So competition, not the conditions, limited where it lived.",
+    "options": [
+     "Species X spread down once species Y was gone, so the lower rocks suit it.",
+     "Nothing in the study shows one barnacle feeding on the other.",
+     "Right: removing the competitor let species X use the lower rocks.",
+     "In a mutualism removing one species would hurt the other, not help it."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-8",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which are biotic factors in a forest ecosystem? Select all that apply.",
+   "options": [
+    "Fungi growing on a log",
+    "The amount of rain each year",
+    "The air temperature in winter",
+    "The minerals in the soil"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Biotic factors are living things or come from them; rain, temperature and minerals are nonliving.",
+    "options": [
+     "Right: fungi are living.",
+     "Rain is a nonliving (abiotic) factor.",
+     "Temperature is a nonliving (abiotic) factor.",
+     "Minerals are nonliving (abiotic)."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-9",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a meadow, foxes eat rabbits. A disease kills most of the foxes. Build an explanation of what happens to the rabbits in the next few years.",
+   "why": {
+    "correct": "With fewer predators, fewer rabbits are killed, so the rabbit population grows."
+   },
+   "specific": {
+    "frame": "If the number of ___ falls, then the rabbit population will ___, because ___.",
+    "slots": {
+     "cause": {
+      "label": "Change",
+      "options": [
+       "foxes",
+       "rabbits",
+       "grasses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The disease hit the foxes, not the rabbits.",
+       "2": "The disease did not touch the grasses; it hit the predator."
+      }
+     },
+     "direction": {
+      "label": "Direction",
+      "options": [
+       "increase",
+       "decrease",
+       "stay the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Losing a predator lets the prey grow, not shrink.",
+       "2": "Fewer predators changes how many rabbits survive, so the number does not stay the same."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "fewer rabbits are killed by predators",
+       "the rabbits catch the disease too",
+       "the grass grows more slowly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The scenario says the disease killed foxes; nothing says rabbits get it.",
+       "2": "Nothing in the scenario changes the grass first."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "rabbit",
+      "fox"
+     ]
+    },
+    "model": "If the number of foxes falls, then the rabbit population will increase, because fewer rabbits are killed by predators."
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-10",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A remora fish attaches to a shark and eats scraps from the shark’s meals. The shark is neither helped nor harmed. Which relationship is this?",
+   "options": [
+    "Mutualism",
+    "Parasitism",
+    "Commensalism",
+    "Interspecific competition"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One species benefits and the other is unaffected: commensalism.",
+    "options": [
+     "Mutualism needs both to benefit; the shark gains nothing.",
+     "Parasitism harms the host; the shark is not harmed.",
+     "Right: the remora gains and the shark is unaffected.",
+     "Competition harms both species; neither is harmed here."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-11",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the biologist’s main claim?",
+   "stimulus": "intro-ecosystems-s1",
+   "options": [
+    "Species A is better at catching caterpillars than species B.",
+    "Storms are the main cause of warbler deaths in spruce forests.",
+    "Both species persist because they feed in different parts of the trees.",
+    "The two species will keep competing until one of them disappears from the forest."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "She concludes the two species share the forest because each uses a different part of it.",
+    "options": [
+     "The passage never compares how well each catches caterpillars.",
+     "Storms appear only as a natural test, not as a claim about deaths.",
+     "Right: that is her conclusion in the last sentence.",
+     "That was her expectation, which the observations did not support."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-12",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How does the stand with snapped-off treetops support the claim?",
+   "stimulus": "intro-ecosystems-s1",
+   "options": [
+    "It shows that species B feeds higher when species A is gone.",
+    "Without treetops, species A lost its feeding zone and became rare.",
+    "It shows that the caterpillars live mostly on the lower branches near the trunk.",
+    "Species B became rare there, showing it depends on species A."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Where its part of the tree was missing, species A was rare, which links each species to its own feeding zone.",
+    "options": [
+     "The passage does not say species B moved up.",
+     "Right: removing the treetops removed species A’s part of the forest.",
+     "The passage says both eat the same caterpillar; it does not limit where caterpillars live.",
+     "The passage says species B was common there."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-13",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which term names what the two warblers are doing?",
+   "stimulus": "intro-ecosystems-s1",
+   "options": [
+    "Mutualism between the two species",
+    "Commensalism",
+    "Resource partitioning",
+    "Parasitism"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Dividing a shared resource by place (or time, or food size) is resource partitioning.",
+    "options": [
+     "Neither species benefits the other.",
+     "Neither species benefits from the other while the other is unaffected.",
+     "Right: they divide the trees by height.",
+     "Neither species lives on or in the other."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-14",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which interaction best explains the results for pair 1?",
+   "stimulus": "intro-ecosystems-s2",
+   "options": [
+    "Mutualism",
+    "Competition",
+    "Commensalism",
+    "Parasitism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both the clover (40 g to 52 g) and the fungus (10 g to 15 g) grew more together, so both benefit.",
+    "options": [
+     "Right: both species grew more when grown together.",
+     "Competition lowers growth of both; both rose.",
+     "In commensalism one species is unaffected; both changed here.",
+     "In parasitism one species is harmed; neither was."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-15",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which interaction best explains the results for pair 2?",
+   "stimulus": "intro-ecosystems-s2",
+   "options": [
+    "Mutualism",
+    "Competition",
+    "Commensalism",
+    "Predation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both grasses grew less together (60 g to 35 g and 55 g to 30 g): each is harmed by the other, the sign of competition.",
+    "options": [
+     "Both grew less together, so neither benefits.",
+     "Right: both species were harmed when grown together.",
+     "Both species changed, so neither was unaffected.",
+     "Neither grass eats the other."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-16",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "By how many grams did the growth of grass P fall when it was grown with grass Q?",
+   "stimulus": "intro-ecosystems-s2",
+   "options": [
+    "5 g",
+    "25 g",
+    "35 g",
+    "60 g"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Alone 60 g, together 35 g, so the drop is 60 - 35 = 25 g.",
+    "options": [
+     "5 g is the gap between the two grasses grown alone (60 and 55).",
+     "Right: 60 - 35 = 25 g.",
+     "35 g is the growth together, not the drop.",
+     "60 g is the growth alone, not the drop."
+    ]
+   }
+  },
+  {
+   "id": "env-intro-ecosystems-17",
+   "unit": "unit-1",
+   "topic": "intro-ecosystems",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What conclusion do the data for pair 3 support?",
+   "stimulus": "intro-ecosystems-s2",
+   "options": [
+    "The moss and the oak seedling compete for light.",
+    "The oak seedling is a parasite of the moss.",
+    "In this trial neither species affected the other’s growth.",
+    "The moss benefits from the oak seedling, so this is commensalism."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each grew the same amount alone and together (12 g and 80 g), so neither affected the other in this trial.",
+    "options": [
+     "Competition would lower growth; neither changed.",
+     "A parasite harms its host; the moss grew the same.",
+     "Right: both growth values are unchanged.",
+     "For commensalism the moss would need to grow more with the oak; it did not."
+    ]
+   }
+  }
+ ]
+}

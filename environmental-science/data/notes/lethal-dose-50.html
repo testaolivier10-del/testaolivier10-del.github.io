@@ -1,0 +1,47 @@
+<p>Every pesticide, cleaning product and medicine can harm you at a large enough dose. To compare how dangerous different substances are, toxicologists need one number that means the same thing for every chemical. The most common one is the LD50. This page explains what it measures, how to read it off a graph, how to turn it into a dose for a whole animal, and what it cannot tell you.</p>
+
+<h2>Dose and toxicity</h2>
+<p>The <b>dose</b> is how much of a substance enters an organism. A dose of 10 milligrams means very little to a horse and a lot to a mouse, so doses are almost always given per kilogram of body mass, in <b>mg/kg</b>. A dose of 10 mg/kg means 10 milligrams for every kilogram the animal weighs. That way a mouse, a rat and a dog can be compared on one scale.</p>
+<p><b>Toxicity</b> is how harmful a substance is. A substance that harms living things is called a toxicant. Toxicity depends on the dose, the route (swallowed, breathed in or through the skin), how long the exposure lasts and who is exposed. Young, old and sick individuals are often more sensitive.</p>
+
+<h2>What LD50 means</h2>
+<p><b>LD50</b> stands for "lethal dose 50%". It is the dose that kills half of a test population. Researchers give groups of test animals, often rats or mice, a range of doses. At each dose they count what percent of the group dies. They plot percent killed against dose, find 50% on the vertical axis, go across to the line and read down to the dose axis.</p>
+<figure id="fig-ld50" data-fig="lethal-dose-50-curve"><figcaption>Percent of test rats killed at each dose of a pesticide (invented data). Across from 50%, then down: the LD50 is 40 mg/kg.</figcaption></figure>
+<p>In the figure, 26% of the rats die at 30 mg/kg and 72% at 50 mg/kg. The line crosses 50% at 40 mg/kg, so the LD50 is 40 mg/kg.</p>
+<p>Why use a group and a percent? Individual animals differ. One rat might survive a dose that kills its neighbor. The percent of a whole group smooths out those differences, and the 50% point is where the curve is steepest, so it can be read most precisely.</p>
+
+<h2>Lower LD50 means more toxic</h2>
+<p>This is the point students most often get backward. The LD50 is the dose <em>needed</em> to kill half the animals. If a tiny dose does it, the substance is very toxic. If it takes a huge dose, the substance is only mildly toxic.</p>
+<table class="compare">
+<thead><tr><th>Oral LD50 in rats</th><th>Toxicity</th><th>US pesticide label signal word</th></tr></thead>
+<tbody>
+<tr><td>50 mg/kg or less</td><td>Highly toxic</td><td>DANGER</td></tr>
+<tr><td>above 50 to 500 mg/kg</td><td>Moderately toxic</td><td>WARNING</td></tr>
+<tr><td>above 500 to 5,000 mg/kg</td><td>Slightly toxic</td><td>CAUTION</td></tr>
+<tr><td>above 5,000 mg/kg</td><td>Low toxicity</td><td>CAUTION or none</td></tr>
+</tbody>
+</table>
+<p>The EPA uses these groups (toxicity categories I to IV, set in federal rules, 40 CFR 156.62 and 156.64) to choose the warning word on a pesticide label. Category IV products need no signal word; if they use one, it must be CAUTION. To compare two substances, divide the larger LD50 by the smaller. A chemical with an LD50 of 4 mg/kg is $\frac{4{,}000}{4} = 1{,}000$ times as toxic as one with an LD50 of 4,000 mg/kg.</p>
+
+<h2>From LD50 to a whole-body dose</h2>
+<p>Because the LD50 is per kilogram, you multiply by the body mass to get the dose for one animal. Write the units so you can see the kilograms cancel, which is also what earns the setup point on the exam.</p>
+<div class="worked">
+<p><b>Worked example.</b> A pesticide has an LD50 of 60 mg/kg in rats. What dose would be expected to kill half of a group of 0.40 kg rats? Give the answer in milligrams, then in grams.</p>
+<p>Setup: $60\,\frac{\text{mg}}{\text{kg}} \times 0.40\,\text{kg}$. The kilograms cancel and leave milligrams.</p>
+<p>Answer: $= 24\,\text{mg}$ for each rat.</p>
+<p>In grams: $24\,\text{mg} \times \frac{1\,\text{g}}{1{,}000\,\text{mg}} = 0.024\,\text{g}$.</p>
+<p>The common slip is dividing (60 ÷ 0.40 = 150), which gives the wrong unit (mg/kg²) and a dose that would grow as the animal gets smaller.</p>
+</div>
+<p>The same steps work for any animal. A 12 kg dog and a chemical with an LD50 of 25 mg/kg: $25\,\frac{\text{mg}}{\text{kg}} \times 12\,\text{kg} = 300\,\text{mg}$.</p>
+
+<h2>What LD50 does not tell you</h2>
+<ul>
+<li><b>It is measured in animals.</b> People may be more or less sensitive than rats, so an LD50 from rats is only an estimate for humans.</li>
+<li><b>It only counts deaths.</b> A substance can cause cancer, birth defects or nerve damage at doses far below the LD50. The next topic looks at the whole curve and at effects other than death.</li>
+<li><b>It is a single, short exposure.</b> Small doses taken every day for years can do harm that a one-time test never shows.</li>
+<li><b>It depends on the route.</b> The oral LD50 (swallowed) and the dermal LD50 (on the skin) of one chemical can be very different.</li>
+</ul>
+<p>So a high LD50 does not mean "safe". It means a large single dose is needed to kill half of a group of test animals.</p>
+
+<h2>On the exam</h2>
+<p>Expect to read an LD50 off a graph, rank substances by toxicity, and calculate a whole-body dose with units. Show the setup with mg/kg and kg written in, then give the answer with its unit, and check whether the question wants milligrams or grams.</p>

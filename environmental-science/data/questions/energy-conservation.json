@@ -1,0 +1,691 @@
+{
+ "stimuli": {
+  "energy-conservation-s1": {
+   "kind": "quantitative",
+   "title": "A family's lighting change",
+   "invented": true,
+   "table": {
+    "caption": "A home energy audit (invented data for practice)",
+    "cols": [
+     "Item",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Bulbs replaced",
+      "20"
+     ],
+     [
+      "Old incandescent bulb",
+      "60 W"
+     ],
+     [
+      "New LED bulb (same light)",
+      "9 W"
+     ],
+     [
+      "Time each light is on",
+      "4 hours a day, 365 days a year"
+     ],
+     [
+      "Electricity price",
+      "\\$0.15 per kWh"
+     ],
+     [
+      "Carbon dioxide from the local grid",
+      "0.4 kg per kWh"
+     ]
+    ]
+   },
+   "text": "1 kWh = 1,000 Wh. Energy (Wh) = power (W) × time (h)."
+  },
+  "energy-conservation-s2": {
+   "kind": "visual",
+   "title": "Saving energy in a home",
+   "figure": "energy-conservation-home"
+  }
+ },
+ "items": [
+  {
+   "id": "env-energy-conservation-1",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the difference between energy conservation and energy efficiency?",
+   "options": [
+    "Conservation means making more energy; efficiency means storing it",
+    "They mean the same thing in environmental science and on the exam",
+    "Conservation applies to homes; efficiency applies to power plants",
+    "Conservation is using less; efficiency is the same service for less"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Turning off lights you are not using is conservation. Replacing a bulb with an LED that gives the same light with less electricity is efficiency. Both cut energy use.",
+    "options": [
+     "Neither term means making or storing energy.",
+     "They are related but different ideas.",
+     "Efficiency applies to any device, from bulbs to cars to power plants.",
+     "Right: using less versus doing the same with less."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-2",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 60 W incandescent bulb is replaced by a 9 W LED that gives the same light. The light is on 5 hours a day. Write the setup for the electricity saved in a year, with units that cancel, then give the answer in kWh.",
+   "why": {
+    "correct": "$(60 - 9)\\,\\text{W} \\times \\frac{5\\,\\text{h}}{1\\,\\text{day}} \\times \\frac{365\\,\\text{day}}{1\\,\\text{yr}} \\times \\frac{1\\,\\text{kWh}}{1{,}000\\,\\text{Wh}} = 93.075\\,\\text{kWh}$ a year."
+   },
+   "setup": {
+    "answer": "(60 - 9) W * 5 h/day * 365 day * 1 kWh/(1000 W * h)",
+    "unit": "kWh",
+    "mustUse": [
+     "60",
+     "9",
+     "5",
+     "365",
+     "1000"
+    ],
+    "mistakes": [
+     {
+      "expr": "(60 - 9) W * 5 h/day * 365 day",
+      "why": "This is in watt-hours. Convert to kilowatt-hours by multiplying by 1 kWh / 1,000 Wh."
+     },
+     {
+      "expr": "60 W * 5 h/day * 365 day * 1 kWh/(1000 W * h)",
+      "why": "That is what the old bulb uses. The saving is the difference in power: (60 - 9) W."
+     }
+    ],
+    "then": {
+     "unit": "kWh",
+     "from": {
+      "fn": "div",
+      "args": [
+       {
+        "fn": "mul",
+        "args": [
+         {
+          "fn": "sub",
+          "args": [
+           60,
+           9
+          ]
+         },
+         5,
+         365
+        ]
+       },
+       1000
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 93075,
+       "why": "That is in watt-hours. Divide by 1,000 to get kWh."
+      },
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         60,
+         5,
+         365,
+         0.001
+        ]
+       },
+       "check": 109.5,
+       "why": "That is the old bulb's yearly use. Subtract the LED's 9 W first."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-energy-conservation-3",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which action is energy conservation rather than a gain in efficiency?",
+   "options": [
+    "Replacing the old incandescent bulbs with LEDs",
+    "Setting the thermostat 2 °C lower in winter",
+    "Replacing an old refrigerator with an efficient model",
+    "Buying a new car that has better fuel economy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A lower thermostat setting uses less energy by accepting a cooler home: a change in behavior. The others give the same service with less energy.",
+    "options": [
+     "LEDs give the same light with less energy: efficiency.",
+     "Right: using less by changing the setting.",
+     "An efficient refrigerator gives the same cooling with less energy: efficiency.",
+     "Better fuel economy is efficiency."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-4",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a hybrid vehicle use less fuel than a similar gasoline car?",
+   "options": [
+    "It reuses braking energy through an electric motor",
+    "It burns diesel fuel in place of gasoline",
+    "It has no engine and runs on hydrogen gas",
+    "It uses solar panels on the roof to run the engine"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A hybrid pairs a gasoline engine with an electric motor and battery. Regenerative braking recharges the battery, and the motor helps at low speeds where engines are least efficient.",
+    "options": [
+     "Right: regenerative braking and electric help at low speed.",
+     "Fuel type is not what makes a car a hybrid.",
+     "That describes a fuel cell vehicle.",
+     "Hybrids do not run on roof solar panels."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-5",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A city wants to reduce gasoline use by commuters. Which policy works by changing behavior rather than technology?",
+   "options": [
+    "Requiring new cars to have higher fuel economy",
+    "Giving tax credits to people buying hybrid vehicles",
+    "Replacing the city's streetlights with LED lights",
+    "Adding more bus service and bus-only lanes"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Better public transportation lets people choose not to drive. The other options make vehicles or lights more efficient.",
+    "options": [
+     "Fuel economy standards make cars more efficient.",
+     "Tax credits promote more efficient vehicles.",
+     "LED streetlights are an efficiency gain and do not affect commuters' gasoline use.",
+     "Right: it shifts trips from cars to buses."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-6",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which is an example of a government policy, rather than a technology, for conserving energy?",
+   "options": [
+    "A programmable thermostat installed in each home in the city",
+    "Triple-pane windows installed in new apartment buildings",
+    "A law that sets efficiency standards for appliances",
+    "A new refrigerator that uses less electricity than the old one"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A policy is a law, rule or incentive. Efficiency standards require manufacturers to sell appliances that use less energy.",
+    "options": [
+     "A thermostat is a technology.",
+     "Better windows are a technology.",
+     "Right: a law is a policy.",
+     "An efficient refrigerator is a technology."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-7",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many kWh a year does the family save by replacing all 20 incandescent bulbs with LEDs?",
+   "stimulus": "energy-conservation-s1",
+   "why": {
+    "correct": "Per bulb: $(60 - 9)\\,\\text{W} \\times 4\\,\\text{h/day} \\times 365\\,\\text{day/yr} \\div 1{,}000 = 74.46$ kWh. For 20 bulbs: $20 \\times 74.46 = 1{,}489.2$ kWh."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      20,
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          {
+           "fn": "sub",
+           "args": [
+            60,
+            9
+           ]
+          },
+          4,
+          365
+         ]
+        },
+        1000
+       ]
+      }
+     ]
+    },
+    "unit": "kWh",
+    "units": [
+     "kWh/yr",
+     "kWh per year"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        20,
+        51,
+        4,
+        365
+       ]
+      },
+      "why": "That is in watt-hours. Divide by 1,000 to convert to kWh."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        20,
+        60,
+        4,
+        365,
+        0.001
+       ]
+      },
+      "why": "That is what the old bulbs use. The savings uses the difference, 60 - 9 = 51 W."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        51,
+        4,
+        365,
+        0.001
+       ]
+      },
+      "why": "That is for one bulb. Multiply by the 20 bulbs."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-8",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the money the family saves each year on lighting, using 1,489.2 kWh and the price in the table, then give the answer.",
+   "stimulus": "energy-conservation-s1",
+   "why": {
+    "correct": "$1{,}489.2\\,\\text{kWh} \\times \\frac{\\$0.15}{1\\,\\text{kWh}} = \\$223.38$."
+   },
+   "setup": {
+    "answer": "1489.2 kWh * 0.15 $/kWh",
+    "unit": "$",
+    "mustUse": [
+     "1489.2",
+     "0.15"
+    ],
+    "mistakes": [
+     {
+      "expr": "1489.2 kWh / (0.15 $/kWh)",
+      "why": "Dividing by the price leaves the wrong units. Multiply kWh by dollars per kWh so kWh cancels."
+     }
+    ],
+    "then": {
+     "unit": "$",
+     "from": {
+      "fn": "cost",
+      "args": [
+       1489.2,
+       0.15
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "div",
+        "args": [
+         1489.2,
+         0.15
+        ]
+       },
+       "check": 9928,
+       "why": "You divided by the price. Multiply kWh by the price per kWh."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-energy-conservation-9",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many kilograms of carbon dioxide does the lighting change avoid each year, using the emission factor in the table?",
+   "stimulus": "energy-conservation-s1",
+   "why": {
+    "correct": "$1{,}489.2\\,\\text{kWh} \\times \\frac{0.4\\,\\text{kg}}{1\\,\\text{kWh}} = 595.68\\,\\text{kg}$ of carbon dioxide."
+   },
+   "numeric": {
+    "from": {
+     "fn": "emissions",
+     "args": [
+      1489.2,
+      0.4
+     ]
+    },
+    "unit": "kg",
+    "units": [
+     "kg CO2",
+     "kg of CO2"
+    ],
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1489.2,
+        0.4
+       ]
+      },
+      "why": "You divided. Multiply kWh by kg per kWh so kWh cancels and kg is left."
+     },
+     {
+      "value": 0.59568,
+      "why": "That is in metric tons. The question asks for kilograms: 595.68 kg."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-10",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The 20 LED bulbs cost $3 each. How many years of savings repay their cost? Use the yearly savings of $223.38 and round to the nearest tenth.",
+   "stimulus": "energy-conservation-s1",
+   "why": {
+    "correct": "Cost: $20 \\times \\$3 = \\$60$. Payback: $\\frac{\\$60}{\\$223.38 \\text{ per year}} \\approx 0.3$ years, about 3 to 4 months."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        20,
+        3
+       ]
+      },
+      223.38
+     ]
+    },
+    "unit": "yr",
+    "units": [
+     "years"
+    ],
+    "tol": 0.05,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        223.38,
+        {
+         "fn": "mul",
+         "args": [
+          20,
+          3
+         ]
+        }
+       ]
+      },
+      "why": "You divided the wrong way. Payback is the cost divided by the yearly savings."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        3,
+        223.38
+       ]
+      },
+      "why": "That uses the price of one bulb. The family buys 20 bulbs: 20 × \\$3 = \\$60."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-11",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The family wants to cut its heating energy next. Propose one change, other than changing the light bulbs, and explain how it works.",
+   "stimulus": "energy-conservation-s1",
+   "why": {
+    "correct": "Adding attic insulation (or sealing drafts) keeps heat in, so the furnace runs less for the same temperature."
+   },
+   "specific": {
+    "frame": "The family should ___, which saves energy because ___.",
+    "slots": {
+     "change": {
+      "label": "Change",
+      "options": [
+       "add insulation in the attic and seal drafts",
+       "replace more bulbs with LEDs",
+       "open the windows on cold days"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than changing light bulbs, and bulbs are not heating.",
+       "2": "Open windows let heat escape, raising heating use."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "less heat escapes, so the furnace runs less to keep the same temperature",
+       "insulation produces heat on its own",
+       "the furnace burns hotter fuel"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Insulation slows heat loss; it does not make heat.",
+       "2": "Insulation does not change the fuel."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "bulb",
+      "led",
+      "lighting"
+     ],
+     "context": [
+      "heat",
+      "furnace",
+      "insulation"
+     ]
+    },
+    "model": "The family should add insulation in the attic and seal drafts around windows and doors, which saves energy because less heat escapes, so the furnace runs less to keep the same temperature."
+   }
+  },
+  {
+   "id": "env-energy-conservation-12",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what is the purpose of the shade tree on the sunny side of the house?",
+   "stimulus": "energy-conservation-s2",
+   "options": [
+    "To shade the house in summer",
+    "To make electricity for the house",
+    "To heat the house during the summer",
+    "To store rainwater for the furnace"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Conservation landscaping uses trees and windbreaks to shade the house in summer and block cold winds in winter.",
+    "options": [
+     "Right: shade lowers cooling needs.",
+     "Trees do not make electricity.",
+     "Shade cools; it does not heat.",
+     "Trees do not supply the furnace."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-13",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the diagram, how does a programmable thermostat save energy?",
+   "stimulus": "energy-conservation-s2",
+   "options": [
+    "It makes the furnace burn a cleaner type of fuel",
+    "It stores heat in the walls for use later in the day",
+    "It turns the lights off when the rooms are empty",
+    "It lowers the heating when no one is home or awake"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The thermostat lowers the heat at night or while everyone is out, so the furnace runs fewer hours.",
+    "options": [
+     "It controls timing, not the fuel.",
+     "It does not store heat.",
+     "A thermostat controls heating and cooling, not lights.",
+     "Right: less heating or cooling when not needed."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-14",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The diagram lists measures at two scales. Which is a large-scale measure a government could promote to cut gasoline use?",
+   "stimulus": "energy-conservation-s2",
+   "options": [
+    "Installing a programmable thermostat",
+    "Planting a shade tree",
+    "Expanding public transportation",
+    "Adding attic insulation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The banner lists vehicle fuel economy, hybrids and electric vehicles, public transportation and green building design as large-scale measures. Public transportation cuts gasoline use directly.",
+    "options": [
+     "A thermostat saves heating energy in one home.",
+     "A shade tree saves cooling energy in one home.",
+     "Right: public transportation replaces car trips.",
+     "Insulation saves heating energy in one home."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-15",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What does a green building design, such as one certified for energy efficiency, usually include?",
+   "options": [
+    "Single-pane windows that let in more daylight",
+    "Insulation, efficient windows and passive solar features",
+    "A larger furnace to keep the rooms warm faster",
+    "Dark roofs that absorb as much summer heat as possible"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Green buildings combine insulation, efficient windows, passive solar design, efficient heating and cooling, and sometimes rooftop solar or green roofs.",
+    "options": [
+     "Single-pane windows lose much more heat.",
+     "Right: features that reduce heating, cooling and lighting needs.",
+     "A bigger furnace uses more energy, not less.",
+     "Dark roofs raise cooling needs in summer."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-conservation-16",
+   "unit": "unit-6",
+   "topic": "energy-conservation",
+   "type": "single",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student wants the yearly kWh used by a 1,500 W space heater run 3 hours a day. Which calculation is set up correctly?",
+   "options": [
+    "1,500 W × 3 h/day × 365 day/yr × 1 kWh/1,000 Wh",
+    "1,500 W × 3 h/day ÷ 365 day/yr",
+    "1,500 W ÷ 3 h/day × 365 day/yr × 1,000",
+    "1,500 W × 365 day/yr ÷ 1,000"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Energy = power × time. Multiply watts by hours per day and days per year, then convert Wh to kWh: $1{,}500 \\times 3 \\times 365 \\div 1{,}000 = 1{,}642.5$ kWh.",
+    "options": [
+     "Right: every unit cancels except kWh.",
+     "Dividing by days per year does not give a yearly total.",
+     "Dividing watts by hours does not give energy, and the 1,000 should divide.",
+     "This leaves out the 3 hours a day."
+    ]
+   }
+  }
+ ]
+}

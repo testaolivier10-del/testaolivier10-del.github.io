@@ -1,0 +1,483 @@
+{
+ "stimuli": {
+  "global-wind-patterns-s1": {
+   "kind": "visual",
+   "title": "Surface winds and circulation cells",
+   "figure": "global-wind-patterns-cells"
+  },
+  "global-wind-patterns-s2": {
+   "kind": "quantitative",
+   "title": "Average yearly precipitation by latitude band",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of average yearly precipitation in five latitude bands of the Northern Hemisphere, invented data",
+    "kind": "bar",
+    "width": 480,
+    "categories": [
+     "0-10° N",
+     "10-20° N",
+     "20-30° N",
+     "40-60° N",
+     "60-80° N"
+    ],
+    "values": [
+     2000,
+     1100,
+     450,
+     1000,
+     350
+    ],
+    "xLabel": "Latitude band",
+    "yLabel": "Precipitation (mm per year)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-global-wind-patterns-1",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What sets global winds in motion in the first place?",
+   "options": [
+    "The Sun heats the equator more than the poles",
+    "The Moon's gravity pulls the air toward the equator",
+    "Mountains push air up wherever they stand",
+    "Ocean waves drag the air along with them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Uneven heating makes warm, light air rise near the equator and cooler, denser air sink elsewhere. The air moving between them is wind.",
+    "options": [
+     "Right: unequal heating drives air to rise in some places and sink in others.",
+     "The Moon drives tides, not the global winds.",
+     "Mountains steer and lift wind locally, but they do not start global circulation.",
+     "Waves are made by wind, not the other way around."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-2",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do the trade winds in the Northern Hemisphere blow from the northeast instead of straight from the north?",
+   "options": [
+    "Earth's rotation turns moving air to the right",
+    "The rising Sun in the east pushes the air west",
+    "Mountains along the equator turn the wind to the west",
+    "Warm air at the equator pulls the wind toward it from the east"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Air flowing toward the equator is deflected by Earth's rotation, the Coriolis effect: to the right in the Northern Hemisphere, so a north wind becomes a northeast wind.",
+    "options": [
+     "Right: the Coriolis effect turns the wind to the right in the Northern Hemisphere.",
+     "Sunlight heats air; it does not push it west.",
+     "There is no continuous mountain range along the equator.",
+     "Air at the equator rises; it draws air in from the north and south, and the turn comes from rotation."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-3",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which way does the Coriolis effect deflect moving air in the Southern Hemisphere?",
+   "options": [
+    "To the left of its direction of motion",
+    "To the right of its direction of motion",
+    "Straight up, away from the ground",
+    "It does not deflect air south of the equator"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moving air is turned to the right in the Northern Hemisphere and to the left in the Southern Hemisphere, which is why the southern trade winds blow from the southeast.",
+    "options": [
+     "Right: deflection is to the left in the Southern Hemisphere.",
+     "Rightward deflection is the Northern Hemisphere pattern.",
+     "The Coriolis effect turns air sideways, not upward.",
+     "It acts in both hemispheres; only the direction of turning differs."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-4",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Many of the world's large deserts, such as the Sahara, lie near 30° N or 30° S. Why?",
+   "options": [
+    "Dry air sinks there and warms, so clouds rarely form",
+    "The trade winds blow sand from the equator to 30°",
+    "Those latitudes receive the most direct sunlight",
+    "Rising air there cools and drops its rain out at sea"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Air that rose at the equator dropped its rain there. It sinks near 30°, warming as it falls, so it can hold more water and clouds rarely form.",
+    "options": [
+     "Right: sinking, warming air makes the 30° latitudes dry.",
+     "Trade winds carry air, not most of the sand in the Sahara.",
+     "The most direct sunlight falls near the equator.",
+     "Air sinks at 30°; it rises near the equator and near 60°."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-5",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Tropical rainforests are found near the equator. How do global wind patterns help explain this?",
+   "options": [
+    "Warm, moist air rises there and cools into rain",
+    "Cold air sinks at the equator and brings steady rain",
+    "The westerlies carry rain from the poles to the equator",
+    "Air at the equator stays still, so rain falls straight down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Strong heating makes air rise near the equator. As it rises it cools, and its water vapor condenses into clouds and heavy rain.",
+    "options": [
+     "Right: rising air at the equator brings heavy rain.",
+     "Air rises at the equator; sinking air is dry.",
+     "The westerlies blow between about 30° and 60°, not toward the equator.",
+     "Air at the equator rises strongly; it is far from still."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-6",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "order",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of the Hadley cell in order, starting at the equator.",
+   "options": [
+    "Air is heated at the equator and rises",
+    "Rising air cools and drops rain",
+    "Dry air spreads toward the poles high up",
+    "Air sinks near 30° and warms",
+    "Air flows back toward the equator along the surface as the trade winds"
+   ],
+   "why": {
+    "correct": "The loop: heat, rise, rain, spread poleward aloft, sink near 30°, return along the surface as the trade winds."
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-7",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, which winds blow at the surface between about 30° N and 60° N?",
+   "stimulus": "global-wind-patterns-s1",
+   "options": [
+    "The westerlies",
+    "The northeast trade winds",
+    "The polar easterlies",
+    "The southeast trade winds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Between 30° and 60° the surface winds blow from the west toward the east: the westerlies. They carry weather across most of the United States from west to east.",
+    "options": [
+     "Right: the westerlies blow between 30° and 60°.",
+     "The trade winds blow between the equator and 30°.",
+     "The polar easterlies blow poleward of 60°.",
+     "The southeast trade winds are in the Southern Hemisphere, between the equator and 30° S."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-8",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The diagram shows air rising at both the equator and 60°, and sinking at 30° and the poles. Which statement explains the pattern of wet and dry places it labels?",
+   "stimulus": "global-wind-patterns-s1",
+   "options": [
+    "Rising air cools and makes rain; sinking air warms and dries",
+    "Sinking air cools and makes rain; rising air warms and dries",
+    "Places with rising air get less sunlight, so they stay wet",
+    "Sinking air carries water down from the upper air as rain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rising air expands and cools, so its water vapor condenses into clouds and rain. Sinking air is compressed and warms, so clouds evaporate.",
+    "options": [
+     "Right: rising means rain, sinking means dry.",
+     "The pattern is reversed: rising air cools, sinking air warms.",
+     "The equator gets the most sunlight and is very wet.",
+     "Air high up is dry; sinking air brings no rain."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-9",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A sailing ship leaves Spain (about 40° N) and heads for the Caribbean (about 15° N). According to the diagram, which winds should it use for the long crossing west?",
+   "stimulus": "global-wind-patterns-s1",
+   "options": [
+    "The northeast trade winds, after sailing south to below 30° N",
+    "The westerlies, staying at 40° N the whole way",
+    "The polar easterlies, after sailing north of 60° N",
+    "The southeast trade winds, after crossing the equator"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The trade winds blow from the east, toward the west, between about 30° N and the equator. Sailing ships went south first to catch them, then rode them west.",
+    "options": [
+     "Right: the northeast trades push ships west below 30° N.",
+     "The westerlies blow toward the east, against a ship sailing west.",
+     "Going north of 60° is far out of the way, and the Caribbean is in the tropics.",
+     "The Caribbean is north of the equator, so crossing it is not needed."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-10",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Smoke from large fires in the western United States, near 40° N, often drifts over the eastern states days later. Which feature in the diagram explains this?",
+   "stimulus": "global-wind-patterns-s1",
+   "options": [
+    "The westerlies carry air east at these latitudes",
+    "The trade winds carry air from west to east at these latitudes",
+    "The Hadley cell lifts the smoke high over the equator",
+    "The polar easterlies push the smoke south and east"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Between about 30° and 60° N the prevailing winds are the westerlies, so smoke, dust and storms usually move from west to east across North America.",
+    "options": [
+     "Right: the westerlies move air eastward across the middle latitudes.",
+     "The trade winds blow from east to west, and only between the equator and 30°.",
+     "The Hadley cell lies between the equator and 30°.",
+     "The polar easterlies blow north of 60°."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-11",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which latitude band in the graph gets the most precipitation?",
+   "stimulus": "global-wind-patterns-s2",
+   "options": [
+    "0-10° N",
+    "20-30° N",
+    "40-60° N",
+    "60-80° N"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The 0-10° N bar is tallest, at 2,000 mm per year, where air rises near the equator.",
+    "options": [
+     "Right: the band near the equator is the wettest.",
+     "20-30° N gets 450 mm, one of the driest bands, where air sinks.",
+     "40-60° N gets 1,000 mm, half as much as near the equator.",
+     "60-80° N gets 350 mm, the least."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-12",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use the graph. How many times more precipitation falls in the 0-10° N band than in the 20-30° N band? Give your answer to one decimal place.",
+   "stimulus": "global-wind-patterns-s2",
+   "why": {
+    "correct": "$\\frac{2{,}000\\,\\text{mm}}{450\\,\\text{mm}} \\approx 4.4$ times. The mm cancel, so the answer has no unit."
+   },
+   "numeric": {
+    "from": {
+     "fn": "round",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        2000,
+        450
+       ]
+      },
+      1
+     ]
+    },
+    "unit": "times",
+    "tol": 0.05,
+    "mistakes": [
+     {
+      "value": 0.2,
+      "why": "You divided the smaller value by the larger. \"How many times more\" puts the larger value on top: 2,000 ÷ 450."
+     },
+     {
+      "value": 1550,
+      "why": "That is how many more millimeters, not how many times more. Divide: 2,000 ÷ 450."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-13",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which pattern of air motion matches the shape of the graph?",
+   "stimulus": "global-wind-patterns-s2",
+   "options": [
+    "Rising air near 0° and 60°, sinking air near 30°",
+    "Sinking air near 0° and 60°, rising air near 30°",
+    "Rising air at each of the latitudes",
+    "Sinking air near 0°, rising air near the poles"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Precipitation is high near the equator, low near 30°, higher again from 40-60° and low near the poles: wet where air rises, dry where it sinks.",
+    "options": [
+     "Right: wet bands match rising air and dry bands sinking air.",
+     "This is reversed; sinking air brings dry weather.",
+     "Then every band would be wet, but 20-30° and 60-80° are dry.",
+     "The equator band is the wettest, which needs rising air there."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-14",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student concludes from the graph that places farther from the equator always get less rain. Is this conclusion supported?",
+   "stimulus": "global-wind-patterns-s2",
+   "options": [
+    "No: the 40-60° N band gets more rain than the 20-30° N band",
+    "Yes: each band is drier than the band closer to the equator",
+    "Yes: the 60-80° N band is the driest band on the graph",
+    "No: the 0-10° N band gets less rain than the 10-20° N band"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rain falls from 2,000 to 450 mm by 20-30° N, then rises to 1,000 mm at 40-60° N before falling again. The pattern is not a steady decline.",
+    "options": [
+     "Right: rainfall rises again in the middle latitudes.",
+     "The 40-60° N band (1,000 mm) is wetter than the 20-30° N band (450 mm).",
+     "The driest band does not show a steady decline; the middle of the graph rises.",
+     "0-10° N gets 2,000 mm, more than 10-20° N (1,100 mm)."
+    ]
+   }
+  },
+  {
+   "id": "env-global-wind-patterns-15",
+   "unit": "unit-4",
+   "topic": "global-wind-patterns",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain why the area near 30° N is dry, starting from the heating at the equator.",
+   "why": {
+    "correct": "Every link is needed: heating, rising and rain at the equator, dry air moving poleward aloft, and sinking, warming air near 30°."
+   },
+   "specific": {
+    "frame": "Air heated at the equator ___, then ___, so near 30° N ___.",
+    "slots": {
+     "first": {
+      "label": "At the equator",
+      "options": [
+       "rises, cools and drops its rain",
+       "sinks and warms",
+       "stays still and absorbs water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Heated air is light, so it rises; it does not sink at the equator.",
+       "2": "Heated air rises; it does not stay still."
+      }
+     },
+     "then": {
+      "label": "Next",
+      "options": [
+       "the dry air moves toward the poles high up",
+       "the moist air flows north along the ground",
+       "the air freezes into ice in the upper air"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "At the surface near 30° the trade winds flow toward the equator, not away from it.",
+       "2": "The air does not freeze into ice; it moves poleward."
+      }
+     },
+     "result": {
+      "label": "Near 30° N",
+      "options": [
+       "the air sinks and warms, so clouds rarely form",
+       "the air rises and makes heavy rain",
+       "the air cools and makes snow"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Air sinks near 30°; rising air near 30° would make rain.",
+       "2": "Sinking air warms; it does not cool."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "30",
+      "sink"
+     ]
+    },
+    "model": "Air heated at the equator rises, cools and drops its rain, then the dry air moves toward the poles high up, so near 30° N it sinks and warms, which causes clouds to evaporate and leaves the land dry."
+   }
+  }
+ ]
+}

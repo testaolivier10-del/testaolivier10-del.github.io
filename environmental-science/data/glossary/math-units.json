@@ -1,0 +1,14 @@
+{
+ "dimensional-analysis": {
+  "def": "A method of converting units by multiplying by conversion factors arranged so that unwanted units cancel, leaving only the units of the answer. Also called the factor-label method."
+ },
+ "conversion-factor": {
+  "def": "A fraction whose top and bottom are equal amounts in different units, such as 1 kWh / 3,412 BTU or 3.79 L / 1 gal, so multiplying by it does not change the amount."
+ },
+ "energy-units": {
+  "def": "Units of energy: the joule (J), the kilowatt-hour (kWh, 3.6 million J), the British thermal unit (BTU, about 1,055 J) and the kilocalorie (kcal, about 4,184 J)."
+ },
+ "power-units": {
+  "def": "The watt (W) is a unit of power: one joule of energy per second. A kilowatt (kW) is 1,000 W and a megawatt (MW) 1,000,000 W. Energy = power × time."
+ }
+}

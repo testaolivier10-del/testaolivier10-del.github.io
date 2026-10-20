@@ -1,0 +1,91 @@
+/* Soil texture (environmental-science/assets/tools/soil-texture.js). OWNED BY THIS TOOL ONLY (builder T2).
+   Each fraction has one colour everywhere (axis, reading line, tag, slider,
+   sample grains): sand amber, silt slate blue, clay terracotta. The twelve
+   classes are soft earth tints, lighter in light mode and deeper in dark. */
+.st-svg,.st-qfig{--st-sand:#B7791F;--st-silt:#4A6FA5;--st-clay:#B5452A;--st-bg:#FBF8F1;
+  --c1:#F6E7C1;--c2:#F2DDB0;--c3:#ECD3A0;--c4:#DCD9A8;--c5:#D5DEC0;--c6:#CFDCD9;--c7:#EBC9A8;--c8:#DCC3A3;--c9:#CFC9B9;--c10:#E8B9A3;--c11:#D6B9B3;--c12:#D9A99A;
+  --st-edge:#6E5A43;--st-grid:rgba(90,70,50,.18);--st-soil-o:#3E2C1C;--st-soil-a:#5A3E26;--st-soil-e:#BFAE92;--st-soil-b:#9C5B34;--st-soil-c:#A89A86;--st-soil-r:#7D7A75;}
+:root[data-theme="dark"] .st-svg,:root[data-theme="dark"] .st-qfig{--st-sand:#F0B455;--st-silt:#8FB0E0;--st-clay:#F08A6E;--st-bg:#1E2A25;
+  --c1:#4A4128;--c2:#463B25;--c3:#433622;--c4:#3E3E26;--c5:#34402E;--c6:#2F3E3B;--c7:#48362A;--c8:#423629;--c9:#393A33;--c10:#4B3028;--c11:#433232;--c12:#4D2C25;
+  --st-edge:#CDB89A;--st-grid:rgba(230,215,190,.14);--st-soil-o:#2A1E14;--st-soil-a:#45301E;--st-soil-e:#8C7F69;--st-soil-b:#7A4628;--st-soil-c:#7C7264;--st-soil-r:#5C5955;}
+.st-card{display:grid;gap:14px;}
+.st-fig{position:relative;min-height:380px;height:min(74vh,620px);}
+.ls-root .st-fig{flex:1 1 auto;height:auto;min-height:320px;}
+.st-fig .st-svg{position:absolute;inset:0;width:100%;height:100%;touch-action:none;}
+.st-svg{display:block;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.st-svg[role="application"]{cursor:crosshair;}
+.st-svg:focus-visible{outline:3px solid var(--cink);outline-offset:2px;border-radius:8px;}
+.st-qfig{margin:0;} .st-qfig .st-svg{width:100%;height:auto;max-height:100%;}
+/* classes */
+.st-cls{stroke:none;}
+.st-cls.c1{fill:var(--c1);}.st-cls.c2{fill:var(--c2);}.st-cls.c3{fill:var(--c3);}.st-cls.c4{fill:var(--c4);}.st-cls.c5{fill:var(--c5);}.st-cls.c6{fill:var(--c6);}.st-cls.c7{fill:var(--c7);}.st-cls.c8{fill:var(--c8);}.st-cls.c9{fill:var(--c9);}.st-cls.c10{fill:var(--c10);}.st-cls.c11{fill:var(--c11);}.st-cls.c12{fill:var(--c12);}
+.st-cls.is-on{fill:var(--ctint);}
+:root[data-theme="dark"] .st-cls.is-on{fill:#4F5320;}
+.st-cls.blank{fill:var(--st-bg);}
+.st-grid{stroke:var(--st-grid);stroke-width:1;fill:none;}
+.st-edge{fill:none;stroke:var(--st-edge);stroke-width:1.6;stroke-linejoin:round;}
+.st-outline{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;}
+.st-tick{font-weight:700;font-size:11px;font-variant-numeric:tabular-nums;}
+.st-tick.sand,.st-axis.sand{fill:var(--st-sand);} .st-tick.silt,.st-axis.silt{fill:var(--st-silt);} .st-tick.clay,.st-axis.clay{fill:var(--st-clay);}
+.st-axis{font-weight:900;font-size:15px;}
+.st-name{font-weight:800;font-size:12.5px;fill:var(--ink);opacity:.82;pointer-events:none;}
+.st-name.is-on{opacity:1;font-weight:900;}
+@media (max-width:640px){.st-svg .st-axis{font-size:14px;}.st-svg .st-tick{font-size:11.5px;}}
+/* point and reading lines */
+.st-read{stroke-width:2.4;stroke-dasharray:6 4;fill:none;}
+.st-read.sand{stroke:var(--st-sand);} .st-read.silt{stroke:var(--st-silt);} .st-read.clay{stroke:var(--st-clay);}
+.st-tag rect{stroke-width:1.5;fill:var(--white);}
+.st-tag.sand rect{stroke:var(--st-sand);} .st-tag.silt rect{stroke:var(--st-silt);} .st-tag.clay rect{stroke:var(--st-clay);}
+.st-tag text{font-weight:900;font-size:12.5px;}
+.st-tag.sand text{fill:var(--st-sand);} .st-tag.silt text{fill:var(--st-silt);} .st-tag.clay text{fill:var(--st-clay);}
+.st-pt{fill:var(--cink);stroke:var(--white);stroke-width:3;}
+.st-pt-halo{fill:var(--cink);opacity:.18;}
+/* side panel */
+.st-class{font-weight:900;font-size:22px;fill:var(--ink);}
+.st-cap{font-weight:800;font-size:12.5px;fill:var(--muted);}
+.st-legend{font-weight:800;font-size:12.5px;}
+.st-k-sand{fill:var(--st-sand);} .st-k-silt{fill:var(--st-silt);} .st-k-clay{fill:var(--st-clay);}
+.st-sample-bg{fill:#E9DFC9;} :root[data-theme="dark"] .st-sample-bg{fill:#3A3226;}
+.st-sample-frame{fill:none;stroke:var(--line);stroke-width:2;}
+.st-g-sand{fill:#E2B35C;stroke:#A0761F;stroke-width:1;}
+.st-g-silt{fill:#8094AE;}
+.st-g-clay{fill:#9C3F27;}
+.st-bar-t{font-weight:800;font-size:12.5px;fill:var(--ink);}
+.st-bar-v{font-weight:900;font-size:12.5px;fill:var(--muted);}
+.st-bar-bg{fill:var(--line);}
+.st-bar.b0{fill:#8A7A5C;} .st-bar.b1{fill:#3E86B8;} .st-bar.b2{fill:#2F6F9A;} .st-bar.b3{fill:#5E8A3A;}
+:root[data-theme="dark"] .st-bar.b0{fill:#C9B48A;} :root[data-theme="dark"] .st-bar.b1{fill:#6CB8EC;} :root[data-theme="dark"] .st-bar.b2{fill:#8FCBF2;} :root[data-theme="dark"] .st-bar.b3{fill:#9CCB6E;}
+@media (max-width:640px){.st-svg .st-bar-t,.st-svg .st-bar-v{font-size:13px;}}
+/* profile */
+.st-title{font-weight:900;font-size:16px;fill:var(--ink);}
+.st-grass{fill:#6DB33F;} .st-blade{stroke:#4E9A2E;stroke-width:2;fill:none;stroke-linecap:round;}
+.st-hzr.o{fill:var(--st-soil-o);} .st-hzr.a{fill:var(--st-soil-a);} .st-hzr.e{fill:var(--st-soil-e);} .st-hzr.b{fill:var(--st-soil-b);} .st-hzr.c{fill:var(--st-soil-c);} .st-hzr.r{fill:var(--st-soil-r);}
+.st-speck{fill:rgba(255,255,255,.28);} .st-speck.e{fill:rgba(0,0,0,.18);}
+.st-leaf{fill:#7A5A2A;} .st-rockbit{fill:#8E857A;stroke:#5E574F;stroke-width:1;} .st-crack{stroke:#4A4743;stroke-width:2;fill:none;}
+.st-rootline{stroke:#C8A77A;stroke-width:1.4;fill:none;opacity:.8;}
+.st-hz-id{font-weight:900;font-size:18px;fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.45);stroke-width:3px;}
+.st-hz.is-sel .st-hzr{stroke:var(--cink);stroke-width:4;}
+.st-hz.is-ask .st-hzr{stroke:var(--cink);stroke-width:3;stroke-dasharray:6 4;}
+.st-hz[role="button"]{cursor:pointer;}
+.st-svg .st-hz:focus{outline:none;} .st-hz:focus-visible .st-hzr{stroke:var(--cink);stroke-width:4;}
+.st-hz-n{font-weight:900;font-size:14px;fill:var(--ink);} .st-hz-n.is-sel{fill:var(--cink);}
+.st-hz-d{font-weight:700;font-size:12.5px;fill:var(--muted);}
+.st-hz-f{font-weight:600;font-size:12px;fill:var(--muted);opacity:.85;}
+.st-hz-tick{stroke:var(--muted);stroke-width:1.5;}
+.st-leach{stroke:#5BA3D0;stroke-width:3;fill:none;stroke-dasharray:5 4;}
+.st-arr-h{fill:#5BA3D0;}
+/* drill figures */
+.st-col-w{fill:none;stroke:var(--ink);stroke-width:2;}
+.st-beaker{fill:none;stroke:var(--muted);stroke-width:2;}
+.st-water{fill:#5BA3D0;opacity:.75;}
+.st-drip{stroke:#5BA3D0;stroke-width:3;stroke-dasharray:3 4;}
+.st-col-t{font-weight:900;font-size:14px;fill:var(--ink);}
+.st-soilblock{fill:var(--st-soil-a);}
+.st-ring{stroke:var(--ink);stroke-width:4;fill:none;}
+.st-dim{stroke:var(--ink);stroke-width:2;}
+/* dock */
+.st-ctl{display:flex;flex-direction:column;gap:8px;}
+.st-views,.st-presets{display:flex;flex-wrap:wrap;gap:8px;}
+.st-sl{display:grid;gap:4px;}
+.st-sl[hidden],.st-presets[hidden]{display:none;}
+.st-s-sand input{accent-color:#B7791F;} .st-s-silt input{accent-color:#4A6FA5;} .st-s-clay input{accent-color:#B5452A;}

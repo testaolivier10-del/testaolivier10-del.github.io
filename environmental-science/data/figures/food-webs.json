@@ -1,0 +1,12 @@
+{
+ "food-webs-meadow": {
+  "file": "figures/food-webs-meadow.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A food web in a meadow, with arrows from food to eater. Grass is eaten by grasshoppers and rabbits. Shrubs are eaten by rabbits and mice. Grasshoppers are eaten by frogs. Frogs are eaten by snakes. Mice are eaten by snakes, foxes and hawks. Rabbits are eaten by foxes and hawks. Snakes are eaten by hawks. Decomposers and detritivores, such as fungi, bacteria and earthworms, break down dead matter from every level."
+ }
+}

@@ -1,0 +1,591 @@
+{
+ "stimuli": {
+  "thermal-pollution-s1": {
+   "kind": "visual",
+   "title": "How much oxygen fresh water can hold at different temperatures",
+   "source": "USGS dissolved oxygen solubility tables for fresh water at sea-level air pressure (values rounded to one decimal place)",
+   "plot": {
+    "label": "Line graph of the most dissolved oxygen fresh water can hold, in milligrams per liter, falling as temperature rises: 14.6 at 0, 12.8 at 5, 11.3 at 10, 10.1 at 15, 9.1 at 20, 8.3 at 25, 7.6 at 30 and 6.9 at 35 degrees Celsius; USGS values, rounded",
+    "kind": "line",
+    "x": [
+     0,
+     35
+    ],
+    "y": [
+     0,
+     16
+    ],
+    "xStep": 5,
+    "yStep": 2,
+    "xLabel": "Water temperature (°C)",
+    "yLabel": "Oxygen at saturation (mg per L)",
+    "series": [
+     {
+      "name": "Dissolved oxygen",
+      "points": [
+       [
+        0,
+        14.6
+       ],
+       [
+        5,
+        12.8
+       ],
+       [
+        10,
+        11.3
+       ],
+       [
+        15,
+        10.1
+       ],
+       [
+        20,
+        9.1
+       ],
+       [
+        25,
+        8.3
+       ],
+       [
+        30,
+        7.6
+       ],
+       [
+        35,
+        6.9
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "thermal-pollution-s2": {
+   "kind": "quantitative",
+   "title": "A river above and below a power plant's cooling water outlet",
+   "invented": true,
+   "table": {
+    "caption": "Summer afternoon readings at four river sites (invented data for practice)",
+    "cols": [
+     "Site",
+     "Water temperature (°C)",
+     "Dissolved oxygen (mg/L)",
+     "Trout counted per 100 m"
+    ],
+    "rows": [
+     [
+      "1: 1 km upstream",
+      "18",
+      "9.0",
+      "14"
+     ],
+     [
+      "2: at the outlet",
+      "29",
+      "6.4",
+      "0"
+     ],
+     [
+      "3: 2 km downstream",
+      "24",
+      "7.6",
+      "3"
+     ],
+     [
+      "4: 8 km downstream",
+      "19",
+      "8.8",
+      "12"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-thermal-pollution-1",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Describe the relationship shown in the graph.",
+   "stimulus": "thermal-pollution-s1",
+   "options": [
+    "Warmer water holds more dissolved oxygen",
+    "Warmer water holds less dissolved oxygen",
+    "Oxygen stays about level as it warms",
+    "Oxygen falls until 20 °C, then rises again"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "As water warms, the oxygen it can hold falls: from 14.6 mg per L at 0 °C to 6.9 mg per L at 35 °C.",
+    "options": [
+     "The line falls, not rises, with temperature.",
+     "Right: the line falls as temperature rises.",
+     "It falls from 14.6 to 6.9 mg per L.",
+     "It keeps falling past 20 °C."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-2",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the graph, find the percent change in the oxygen water can hold when it warms from 15 °C to 30 °C.",
+   "stimulus": "thermal-pollution-s1",
+   "why": {
+    "correct": "$\\frac{(7.6 - 10.1)}{10.1} \\times 100 = -24.8\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      10.1,
+      7.6
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -32.8947368421,
+      "why": "You divided by the 30 °C value. Divide by the starting (15 °C) value, 10.1."
+     },
+     {
+      "value": 24.7524752475,
+      "why": "Oxygen falls as water warms, so the change is negative: about -24.8%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-3",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Warm water also speeds up fish metabolism. Why does that make thermal pollution doubly hard on fish?",
+   "stimulus": "thermal-pollution-s1",
+   "options": [
+    "Less oxygen just as fish need more",
+    "Warm water holds more oxygen, so fish grow too fast",
+    "Faster metabolism lets fish live without oxygen",
+    "Warm water turns oxygen into carbon dioxide"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Warmer water holds less oxygen, while warmer fish need more oxygen because their metabolism speeds up. Supply falls as demand rises.",
+    "options": [
+     "Right: less oxygen available, more oxygen needed.",
+     "Warm water holds less oxygen, not more.",
+     "Fish need oxygen; faster metabolism means they need more.",
+     "Water temperature does not convert oxygen into CO2."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-4",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Trout need at least about 7 mg of dissolved oxygen per liter. Based on the graph, above about what temperature could fully oxygenated water no longer meet that need?",
+   "stimulus": "thermal-pollution-s1",
+   "options": [
+    "About 10 °C, where the line reaches 11 mg per L",
+    "About 20 °C, where the line reaches 9 mg per L",
+    "About 0 °C, where the line is highest",
+    "About 34 °C, below 7 mg per L"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The saturation line drops below 7 mg per L between 30 °C (7.6) and 35 °C (6.9), at about 34 °C. Real streams are often below saturation, so trouble starts at lower temperatures.",
+    "options": [
+     "At 10 °C the water can hold far more than 7 mg per L.",
+     "9 mg per L is still above 7.",
+     "Cold water holds the most oxygen.",
+     "Right: between 7.6 at 30 °C and 6.9 at 35 °C."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-5",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How do temperature and dissolved oxygen change from site 1 to site 2?",
+   "stimulus": "thermal-pollution-s2",
+   "options": [
+    "Temperature falls and oxygen rises",
+    "Both temperature and oxygen rise together",
+    "It warms by 11 °C; oxygen falls",
+    "Neither changes much between the two sites"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At the outlet, temperature rises from 18 to 29 °C and dissolved oxygen falls from 9.0 to 6.4 mg per L.",
+    "options": [
+     "Both change in the opposite directions.",
+     "Oxygen falls as the water warms.",
+     "Right: 18 to 29 °C, and 9.0 to 6.4 mg per L.",
+     "Temperature rises by 11 °C."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-6",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the most likely cause of the trout's absence at site 2?",
+   "stimulus": "thermal-pollution-s2",
+   "options": [
+    "Metals in the cooling water poison the trout",
+    "The water is too warm and low in oxygen",
+    "Fertilizer from the plant causes an algal bloom",
+    "Radiation from the plant's fuel leaks into the river"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Water at 29 °C is above what trout tolerate, and oxygen is lower. The cause is heat from the cooling water, not a chemical.",
+    "options": [
+     "The data show heat and low oxygen; thermal pollution is heat, not metals.",
+     "Right: thermal pollution is heat.",
+     "Power plant cooling water adds heat, not nutrients.",
+     "Cooling water does not carry radiation; the change is heat."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-7",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find the percent change in dissolved oxygen from site 1 to site 2.",
+   "stimulus": "thermal-pollution-s2",
+   "why": {
+    "correct": "$\\frac{(6.4 - 9.0)}{9.0} \\times 100 = -28.9\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentChange",
+     "args": [
+      9,
+      6.4
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": -40.625,
+      "why": "You divided by the site 2 value. Divide by the starting value, 9.0 mg per L."
+     },
+     {
+      "value": 28.8888888889,
+      "why": "Oxygen fell, so the change is negative: about -28.9%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-8",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "7.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which change at the plant would most directly reduce the harm shown in the table?",
+   "stimulus": "thermal-pollution-s2",
+   "options": [
+    "Cool the water in a cooling tower first",
+    "Add chlorine to the water before returning it",
+    "Release the water at night during summer",
+    "Stock the river with more trout each spring"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A cooling tower or cooling pond lets the water lose its heat to the air before it returns to the river, so the river is not warmed.",
+    "options": [
+     "Right: the heat goes to the air, not the river.",
+     "Chlorine does not remove heat and harms aquatic life.",
+     "Timing alone does not remove the heat.",
+     "New trout would face the same warm water."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-9",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "What is thermal pollution?",
+   "options": [
+    "Metals released into a river by a factory",
+    "Radioactive waste leaking from a nuclear plant",
+    "Extra nutrients that cause algal blooms",
+    "Water warmed by people to harmful levels"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Thermal pollution is heat: a rise in water temperature caused by people, usually from industrial and power plant cooling water or warm runoff.",
+    "options": [
+     "Metals are chemical pollutants, not thermal pollution.",
+     "That is radioactive contamination, not thermal pollution.",
+     "That is eutrophication.",
+     "Right: the pollutant is heat."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-10",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a major source of thermal pollution?",
+   "options": [
+    "Fertilizer runoff from corn fields",
+    "Pesticides sprayed on orchards",
+    "Power plant cooling water",
+    "Sulfur dioxide from smokestacks"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Power plants (fossil fuel and nuclear) take in river or lake water to cool their steam and return it warmer.",
+    "options": [
+     "Runoff adds nutrients; that is eutrophication.",
+     "Pesticides are chemical pollutants.",
+     "Right: the warmed water heats the river or lake.",
+     "SO2 is an air pollutant that forms acid."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-11",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does paving a watershed add thermal pollution to its streams?",
+   "options": [
+    "Pavement adds metals that heat the water chemically",
+    "Rain warms on hot pavement, then flows in",
+    "Pavement blocks rain, so streams dry up and cool",
+    "Paved roads release radiation that warms water"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Dark pavement and roofs heat up in the sun. Rain running off them warms, carrying that heat into streams. Removing shade trees along banks also warms streams.",
+    "options": [
+     "The warming is from heat transfer, not chemistry.",
+     "Right: hot surfaces heat the runoff.",
+     "Pavement sends more runoff to streams, and it is warm.",
+     "Pavement does not release radiation that heats streams."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-12",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is thermal shock?",
+   "options": [
+    "A sudden, deadly change in temperature",
+    "A slow warming over many decades",
+    "An electric current in water from power lines",
+    "The shock wave from a nuclear reactor"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Thermal shock is a sudden temperature change that organisms cannot adjust to, such as when a plant starts or stops discharging warm water, killing fish adapted to one temperature.",
+    "options": [
+     "Right: there is no time to adjust.",
+     "That is gradual, not a shock.",
+     "Thermal shock is about temperature, not electricity.",
+     "Reactors do not send shock waves into rivers."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-13",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A plant switches from returning hot water to a cooling tower. What trade-off does this create?",
+   "options": [
+    "It protects the river and makes the plant use less water",
+    "It raises the river temperature even more",
+    "It adds metals to the river",
+    "It protects the river but evaporates water"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Cooling towers protect the river from heat, but they cost money to build and run, and they evaporate large amounts of water to the air, so the plant uses more water overall.",
+    "options": [
+     "Towers lose water by evaporation, so the plant consumes more.",
+     "The point of the tower is to keep heat out of the river.",
+     "Towers do not add metals.",
+     "Right: the heat and some water go to the air."
+    ]
+   }
+  },
+  {
+   "id": "env-thermal-pollution-14",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Complete the cause-and-effect chain explaining how a power plant's cooling water can kill trout downstream.",
+   "why": {
+    "correct": "A complete chain: heat in, water warms, oxygen solubility falls while trout need more, oxygen falls below their needs."
+   },
+   "specific": {
+    "frame": "The plant returns ___, so the river ___; warmer water holds ___ and trout need ___ oxygen.",
+    "slots": {
+     "input": {
+      "label": "What the plant returns",
+      "options": [
+       "heated water",
+       "water full of fertilizer",
+       "radioactive water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cooling water carries heat, not nutrients.",
+       "2": "Cooling water is not radioactive; the pollutant is heat."
+      }
+     },
+     "river": {
+      "label": "Effect on the river",
+      "options": [
+       "warms",
+       "becomes acidic"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Heat warms water; it does not make it acidic."
+      }
+     },
+     "holds": {
+      "label": "Dissolved oxygen",
+      "options": [
+       "less dissolved oxygen",
+       "more dissolved oxygen"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warm water holds less oxygen, not more."
+      }
+     },
+     "need": {
+      "label": "Trout demand",
+      "options": [
+       "more",
+       "less"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warm water speeds metabolism, so trout need more oxygen."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "directional": true,
+     "context": [
+      "oxygen",
+      "warm",
+      "heat"
+     ]
+    },
+    "model": "The plant returns heated water, so the river warms; warmer water holds less dissolved oxygen and trout need more oxygen because their metabolism speeds up, so oxygen falls below what they need."
+   }
+  },
+  {
+   "id": "env-thermal-pollution-15",
+   "unit": "unit-8",
+   "topic": "thermal-pollution",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A power plant returns 50,000 liters of cooling water each second. How many liters is that in one day? Write the setup with units, then the answer. (1 day = 86,400 s.)",
+   "why": {
+    "correct": "$50{,}000\\,\\frac{\\text{L}}{\\text{s}} \\times 86{,}400\\,\\text{s} = 4{,}320{,}000{,}000\\,\\text{L}$, or $4.32 \\times 10^{9}$ L (4.32 billion liters)."
+   },
+   "setup": {
+    "answer": "50000 L/s * 86400 s",
+    "mustUse": [
+     "50000",
+     "86400"
+    ],
+    "mistakes": [
+     {
+      "expr": "50000 L/s * 24 h",
+      "why": "There are 86,400 seconds in a day, not 24. Use 24 × 60 × 60 = 86,400."
+     },
+     {
+      "expr": "50000 L/s / 86400 s",
+      "why": "Multiply the rate by the time so seconds cancel."
+     }
+    ],
+    "then": {
+     "unit": "L",
+     "units": [
+      "liters"
+     ],
+     "from": {
+      "fn": "mul",
+      "args": [
+       50000,
+       86400
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 1200000,
+       "why": "1,200,000 uses 24 instead of 86,400 seconds in a day."
+      }
+     ]
+    },
+    "unit": "L",
+    "requireUnits": true
+   }
+  }
+ ]
+}

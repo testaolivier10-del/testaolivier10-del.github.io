@@ -1,0 +1,84 @@
+{
+ "topic": "watersheds",
+ "hook": "Rain falling on a farm in Minnesota, a parking lot in Pittsburgh and a ranch in Montana can all end up in the Gulf of Mexico. They share one watershed, the Mississippi's, which drains about 40% of the lower 48 states. Whatever lands on that land, from soil to fertilizer to oil from roads, can travel downstream to everyone below.",
+ "prereq": [
+  {
+   "q": "What is the difference between runoff and infiltration?",
+   "options": [
+    "Runoff flows over the surface; infiltration soaks into the ground",
+    "Runoff soaks into the ground; infiltration flows over the surface",
+    "Both mean water evaporating from the ground",
+    "Both mean water taken up by plant roots"
+   ],
+   "correct": 0,
+   "why": "Runoff moves over the land toward streams; infiltration moves water down into soil.",
+   "review": "water-cycle"
+  },
+  {
+   "q": "What is an aquifer?",
+   "options": [
+    "Underground rock or sediment that stores groundwater",
+    "A river and the streams that feed it",
+    "A lake made by a dam",
+    "Clouds that drop rain"
+   ],
+   "correct": 0,
+   "why": "An aquifer is an underground layer whose pores hold water.",
+   "review": "water-cycle"
+  },
+  {
+   "q": "Why does a bare, plowed field erode faster than a grassy one?",
+   "options": [
+    "No roots hold the soil and nothing shields it",
+    "Grass makes the soil lighter",
+    "Plowing adds humus",
+    "Bare soil has more organic matter"
+   ],
+   "correct": 0,
+   "why": "Roots bind soil and plant cover shields it from rain and wind.",
+   "review": "soil-formation"
+  }
+ ],
+ "figure": {
+  "figure": "watersheds-divide-aquifer",
+  "caption": "Left: a watershed bounded by its divide, with tributaries joining a main river. Right: runoff reaches the stream at the surface; infiltration recharges the aquifer below."
+ },
+ "chain": [
+  {
+   "cause": "Rain falls anywhere inside a watershed's divide",
+   "effect": "it runs downhill toward the same stream, river or lake, or soaks in"
+  },
+  {
+   "cause": "Steep slopes, bare soil and pavement let less water soak in",
+   "effect": "more water runs off, faster, carrying soil and pollutants with it"
+  },
+  {
+   "cause": "Runoff collects in tributaries that join the main river",
+   "effect": "what enters anywhere upstream can reach every community downstream"
+  },
+  {
+   "cause": "Forests, wetlands and plant cover slow water and let it soak in",
+   "effect": "floods are smaller, streams are cleaner and aquifers are recharged"
+  }
+ ],
+ "ideas": [
+  "A <b>watershed</b> (drainage basin) is all the land that drains into one body of water. High ground called a divide separates one watershed from the next.",
+  "Small watersheds nest inside larger ones: a creek's watershed is part of a river's, which is part of a larger basin.",
+  "Its area, slope, soil, vegetation and land use shape how much rain runs off, how fast, and how much soil and pollution the water carries.",
+  "A watershed is <b>land</b> that drains to surface water; an <b>aquifer</b> is water stored <b>underground</b> in rock and sediment. Water soaking in across a watershed can recharge an aquifer.",
+  "Protecting a stream means protecting its whole watershed, because water from all of it ends up there."
+ ],
+ "misconception": {
+  "wrong": "A watershed is the body of water, such as a lake or an underground aquifer, that collects water.",
+  "right": "A watershed is the land that drains into a body of water. An aquifer is something else: groundwater stored underground. The exam often tests this difference."
+ },
+ "check": [
+  "env-watersheds-1",
+  "env-watersheds-4",
+  "env-watersheds-6",
+  "env-watersheds-7",
+  "env-watersheds-8",
+  "env-watersheds-9"
+ ],
+ "summary": "A watershed is all the land that drains into one stream, river or lake, bounded by high ground called a divide. Its slope, soil, plant cover and land use control how much rain runs off and how much soil and pollution reach the water. A watershed is surface land; an aquifer is water stored underground. Whatever happens anywhere in a watershed flows downstream."
+}

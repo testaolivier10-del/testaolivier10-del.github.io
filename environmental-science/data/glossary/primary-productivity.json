@@ -1,0 +1,14 @@
+{
+ "producer": {
+  "def": "An organism that makes its own food from light (or chemicals) and simple substances, such as a plant, alga or photosynthetic bacterium; also called an autotroph."
+ },
+ "primary-productivity": {
+  "def": "The rate at which producers capture energy and build organic matter by photosynthesis in an area, such as kcal per square meter per year."
+ },
+ "gpp": {
+  "def": "Gross primary productivity: the total rate at which producers capture energy by photosynthesis, before any is used for their own respiration."
+ },
+ "npp": {
+  "def": "Net primary productivity: GPP minus the energy producers use for their own respiration (NPP = GPP - R). It is the energy stored as new plant matter and available to the animals that eat plants."
+ }
+}

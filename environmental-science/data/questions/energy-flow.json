@@ -1,0 +1,551 @@
+{
+ "stimuli": {
+  "energy-flow-s1": {
+   "kind": "quantitative",
+   "title": "Energy at each trophic level in a lake",
+   "invented": true,
+   "table": {
+    "caption": "Energy stored in new tissue at each trophic level in a lake, in kcal per square meter per year (invented data for practice)",
+    "cols": [
+     "Trophic level",
+     "Organisms",
+     "Energy (kcal/m²/yr)"
+    ],
+    "rows": [
+     [
+      "1: producers",
+      "algae",
+      "8,000"
+     ],
+     [
+      "2: primary consumers",
+      "zooplankton",
+      "880"
+     ],
+     [
+      "3: secondary consumers",
+      "small fish",
+      "80"
+     ],
+     [
+      "4: tertiary consumers",
+      "bass",
+      "7"
+     ]
+    ]
+   }
+  },
+  "energy-flow-s2": {
+   "kind": "visual",
+   "title": "Biomass at each level in a grassland",
+   "invented": true,
+   "plot": {
+    "label": "Bar chart of dry biomass at four trophic levels in a grassland: grasses 1,500, grazers 120, small predators 11, large predators 1.5 g/m², invented data",
+    "kind": "bar",
+    "categories": [
+     "Grasses",
+     "Grazers",
+     "Small pred.",
+     "Large pred."
+    ],
+    "values": [
+     1500,
+     120,
+     11,
+     1.5
+    ],
+    "y": [
+     0,
+     1600
+    ],
+    "xLabel": "Trophic level (pred. = predators)",
+    "yLabel": "Dry biomass (g/m²)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-energy-flow-1",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Producers in a meadow store 20,000 kcal/m²/yr. Using the 10% rule, about how much energy reaches the secondary consumers?",
+   "why": {
+    "correct": "Two steps up (producers → primary → secondary): $20{,}000 \\times 0.10 \\times 0.10 = 200$ kcal/m²/yr."
+   },
+   "numeric": {
+    "unit": "kcal/m^2/yr",
+    "units": [
+     "kcal/m2/yr",
+     "kcal per m2 per year"
+    ],
+    "from": {
+     "fn": "trophicEnergy",
+     "args": [
+      20000,
+      1,
+      3
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2000,
+      "why": "That is the primary consumers (one step). Secondary consumers are two steps up: × 0.10 twice."
+     },
+     {
+      "value": 20,
+      "why": "You applied the 10% rule three times. Producers to secondary consumers is two steps."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-2",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Primary consumers in a forest store 3,000 kcal/m²/yr. Write the setup for the energy reaching tertiary consumers by the 10% rule, then give the answer.",
+   "why": {
+    "correct": "Primary → secondary → tertiary is two steps: $3{,}000 \\times 0.10 \\times 0.10 = 30$ kcal/m²/yr."
+   },
+   "setup": {
+    "answer": "3000 * 0.10 * 0.10",
+    "mustUse": [
+     "3000"
+    ],
+    "mistakes": [
+     {
+      "expr": "3000 * 0.10 * 0.10 * 0.10",
+      "why": "That is three steps. From primary to tertiary consumers is two steps."
+     },
+     {
+      "expr": "3000 * 0.10",
+      "why": "That reaches secondary consumers. Tertiary consumers are one more step up."
+     }
+    ],
+    "then": {
+     "unit": "kcal/m^2/yr",
+     "units": [
+      "kcal/m2/yr",
+      "kcal per m2 per year"
+     ],
+     "from": {
+      "fn": "tenPercent",
+      "args": [
+       3000,
+       2
+      ]
+     },
+     "mistakes": [
+      {
+       "value": 3,
+       "why": "You applied the rule three times. Primary to tertiary is two steps."
+      },
+      {
+       "value": 300,
+       "why": "That is the secondary consumers. Go one more step."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-energy-flow-3",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why is only about 10% of the energy at one trophic level passed to the next?",
+   "options": [
+    "Most is lost as heat in respiration.",
+    "Energy is destroyed each time an animal eats.",
+    "Predators eat just 10% of the prey they catch.",
+    "Producers keep 90% of the sunlight for later."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Organisms use most of the energy they take in for respiration, movement and body heat, and some food is never eaten or is lost in waste. Energy is not destroyed; it leaves as heat.",
+    "options": [
+     "Right: respiration, heat, uneaten parts and waste.",
+     "Energy is never destroyed; it changes form (first law of thermodynamics).",
+     "The 10% is about energy passed on, not the share of prey caught.",
+     "Producers use their energy in their own respiration; they do not save it for consumers."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-4",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which law explains why some energy becomes unusable heat at every transfer between trophic levels?",
+   "options": [
+    "The second law of thermodynamics",
+    "The first law of thermodynamics",
+    "The 10% rule of photosynthesis in plants",
+    "The law of conservation of mass"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The second law says every energy transfer turns some energy into heat that is less useful, so no transfer is 100% efficient.",
+    "options": [
+     "Right: transfers lose some energy as heat.",
+     "The first law says energy is conserved, not that it is lost as heat.",
+     "The 10% rule describes the result; it is not a law of physics.",
+     "Mass conservation is about matter, not energy quality."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-5",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does an ecosystem usually have no more than four or five trophic levels?",
+   "options": [
+    "Too little energy is left at the top.",
+    "Predators at the top run short of water.",
+    "Producers make too little oxygen for more.",
+    "Decomposers eat the animals at the top level."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With about 10% passing up each step, after four or five steps there is too little energy to support a population of a larger predator.",
+    "options": [
+     "Right: energy runs out going up.",
+     "Water is not what limits chain length.",
+     "Oxygen is plentiful; energy is the limit.",
+     "Decomposers feed on dead matter from all levels."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-6",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why can a given area of farmland feed more people if they eat grain directly than if the grain is fed to cattle and people eat the beef?",
+   "options": [
+    "Eating grain skips a trophic step.",
+    "Beef has more calories per kilogram than grain does.",
+    "Cattle make new energy from the grass they eat.",
+    "Grain plants are secondary consumers in the field."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each step up loses most of the energy. People eating grain are primary consumers; eating beef from grain-fed cattle adds a step.",
+    "options": [
+     "Right: one fewer step means more energy reaches people.",
+     "Calories per kilogram are not the reason: the cattle burn most of the grain’s energy in respiration and lose it as heat, so far fewer calories reach people.",
+     "Cattle cannot make energy; they get it from plants.",
+     "Grain comes from producers."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-7",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A hawk population needs about 50 kcal/m²/yr of food energy. The hawks are tertiary consumers. Using the 10% rule, how much energy must producers store?",
+   "why": {
+    "correct": "Tertiary consumers are three steps above producers: $\\frac{50}{0.10 \\times 0.10 \\times 0.10} = 50{,}000$ kcal/m²/yr."
+   },
+   "numeric": {
+    "unit": "kcal/m^2/yr",
+    "units": [
+     "kcal/m2/yr",
+     "kcal per m2 per year"
+    ],
+    "from": {
+     "fn": "div",
+     "args": [
+      50,
+      {
+       "fn": "pow",
+       "args": [
+        0.1,
+        3
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.05,
+      "why": "You multiplied by 0.10 three times. Going down the chain, divide by 0.10 at each step."
+     },
+     {
+      "value": 5000,
+      "why": "That is two steps. Producers to tertiary consumers is three steps."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-8",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "In an energy pyramid, what does the width of each level show?",
+   "options": [
+    "The energy at that level",
+    "The number of species at that level",
+    "The body size of each organism there",
+    "The average age of the organisms there"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An energy pyramid shows energy per area per time at each level; it always narrows going up.",
+    "options": [
+     "Right: energy at each level.",
+     "Species counts are not what an energy pyramid shows.",
+     "Body size is not shown.",
+     "Age is not shown."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-9",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the producers’ energy is passed to the primary consumers?",
+   "stimulus": "energy-flow-s1",
+   "why": {
+    "correct": "$\\frac{880}{8{,}000} \\times 100 = 11\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "tol": 0.05,
+    "from": {
+     "fn": "efficiency",
+     "args": [
+      880,
+      8000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.11,
+      "why": "0.11 is the fraction. Multiply by 100 for a percent."
+     },
+     {
+      "value": 909.090909091,
+      "why": "You divided the lower level by the higher. The energy passed on (880) goes on top."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-10",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the transfer efficiency from small fish to bass, as a percent?",
+   "stimulus": "energy-flow-s1",
+   "why": {
+    "correct": "$\\frac{7}{80} \\times 100 = 8.75\\%$, close to the 10% rule."
+   },
+   "numeric": {
+    "unit": "%",
+    "rel": 0.01,
+    "from": {
+     "fn": "efficiency",
+     "args": [
+      7,
+      80
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 0.0875,
+      "why": "That is the fraction. Multiply by 100 for a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-11",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement do the data support?",
+   "stimulus": "energy-flow-s1",
+   "options": [
+    "Each transfer is close to 10%.",
+    "Each level holds about half the energy of the level below.",
+    "Energy increases at the higher trophic levels.",
+    "The bass get about 10% of the producers’ energy."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Efficiencies: 880/8,000 = 11%; 80/880 = 9.1%; 7/80 = 8.75%. All near 10%.",
+    "options": [
+     "Right: each step is close to 10%.",
+     "Each level holds about a tenth, not half.",
+     "Energy falls at each level.",
+     "Bass get 7/8,000, about 0.09% of the producers’ energy."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-12",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What percent of the producers’ energy reaches the bass?",
+   "stimulus": "energy-flow-s1",
+   "why": {
+    "correct": "$\\frac{7}{8{,}000} \\times 100 = 0.0875\\%$, less than a tenth of a percent."
+   },
+   "numeric": {
+    "unit": "%",
+    "rel": 0.01,
+    "from": {
+     "fn": "fractionOf",
+     "args": [
+      7,
+      8000
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 8.75,
+      "why": "8.75% is the last step only (small fish to bass). Compare the bass with the producers: 7 / 8,000 × 100."
+     },
+     {
+      "value": 0.000875,
+      "why": "That is the fraction. Multiply by 100 for a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-13",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pattern does the biomass chart show?",
+   "stimulus": "energy-flow-s2",
+   "options": [
+    "It falls sharply at each level.",
+    "It rises at each higher trophic level.",
+    "Each level has about the same biomass.",
+    "Grazers have more biomass than grasses."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "1,500 → 120 → 11 → 1.5 g/m²: roughly a tenth or less at each step.",
+    "options": [
+     "Right: a sharp drop each step.",
+     "The bars get shorter going up.",
+     "The bars differ greatly.",
+     "Grasses (1,500) far exceed grazers (120)."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-14",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What best explains why the grazers’ biomass is so much smaller than the grasses’?",
+   "stimulus": "energy-flow-s2",
+   "options": [
+    "Grazers lose most energy as heat.",
+    "Energy is destroyed as grazers digest grass.",
+    "Grasses photosynthesize faster at night.",
+    "Grazers are eaten by the grasses they graze."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Less energy reaches each level, so less tissue can be built and supported there.",
+    "options": [
+     "Right: energy lost as heat limits the biomass above.",
+     "Energy is never destroyed (first law); most of it leaves as heat.",
+     "Photosynthesis needs light.",
+     "Grasses do not eat animals."
+    ]
+   }
+  },
+  {
+   "id": "env-energy-flow-15",
+   "unit": "unit-1",
+   "topic": "energy-flow",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The grassland covers 50 m² in a study plot. What is the total dry biomass of the grazers in the plot, in grams?",
+   "stimulus": "energy-flow-s2",
+   "why": {
+    "correct": "$120\\,\\frac{\\text{g}}{\\text{m}^{2}} \\times 50\\,\\text{m}^{2} = 6{,}000$ g."
+   },
+   "numeric": {
+    "unit": "g",
+    "units": [
+     "grams"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      120,
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2.4,
+      "why": "You divided. Multiply grams per m² by the area in m²."
+     },
+     {
+      "value": 75000,
+      "why": "That uses the grasses (1,500 g/m²). The question asks about the grazers (120 g/m²)."
+     }
+    ]
+   }
+  }
+ ]
+}

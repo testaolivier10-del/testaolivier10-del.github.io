@@ -1,0 +1,11 @@
+{
+ "bioaccumulation": {
+  "def": "The build-up of a substance in one organism over its lifetime, because it is taken in faster than it is broken down or excreted. Persistent, fat-soluble substances bioaccumulate."
+ },
+ "biomagnification": {
+  "def": "The increase in concentration of a persistent, fat-soluble substance at each higher trophic level of a food chain, so top predators carry the highest levels."
+ },
+ "methylmercury": {
+  "def": "A toxic form of mercury made by bacteria in water and sediment from mercury released by sources such as coal burning and small-scale gold mining. It bioaccumulates and biomagnifies in fish and harms the developing nervous system."
+ }
+}

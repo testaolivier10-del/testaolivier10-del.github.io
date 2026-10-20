@@ -1,0 +1,8 @@
+{
+ "point-source": {
+  "def": "Pollution that enters the environment from one identifiable place, such as a factory discharge pipe, a sewage outfall, a smokestack or a leaking storage tank."
+ },
+ "nonpoint-source": {
+  "def": "Pollution that comes from many diffuse places rather than one outlet, such as runoff from farm fields, lawns and city streets, or exhaust from all the cars in a region."
+ }
+}

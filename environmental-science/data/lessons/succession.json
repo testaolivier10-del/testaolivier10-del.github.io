@@ -1,0 +1,72 @@
+{
+ "topic": "succession",
+ "hook": "When a lava flow cools on Hawaii, it leaves black rock with no soil and no life. Within a few years, lichens and ferns appear in the cracks. A farm field abandoned in New England tells a faster story: weeds the first summer, shrubs within a decade, a young forest within a few decades. Both are ecological succession; what differs is whether soil was there to start with.",
+ "prereq": [
+  {
+   "q": "How is a disruption that recurs at irregular intervals, such as wildfire in many forests, classified?",
+   "options": [
+    "Episodic",
+    "Periodic",
+    "Random",
+    "Constant"
+   ],
+   "correct": 0,
+   "why": "Recurring, but not at regular intervals, is episodic.",
+   "review": "natural-disruptions"
+  },
+  {
+   "q": "What does species richness count?",
+   "options": [
+    "The number of different species",
+    "The number of individuals",
+    "How equal the populations are",
+    "The number of habitats"
+   ],
+   "correct": 0,
+   "why": "Richness is the count of species.",
+   "review": "biodiversity"
+  }
+ ],
+ "figure": {
+  "figure": "succession-stages",
+  "caption": "Primary succession starts on bare rock with no soil; secondary succession starts where soil remains after a disruption. Both move toward a mature community."
+ },
+ "chain": [
+  {
+   "cause": "A disruption leaves bare rock (primary) or bare soil (secondary)",
+   "effect": "pioneer species, which grow fast and spread easily, arrive first"
+  },
+  {
+   "cause": "Pioneers change the site: they help make soil, add nutrients and give shade",
+   "effect": "conditions become suitable for larger plants that could not grow there before"
+  },
+  {
+   "cause": "Larger, longer-lived plants arrive and outcompete the pioneers",
+   "effect": "the community changes in stages, and species richness and biomass increase"
+  },
+  {
+   "cause": "Many years pass without a major disruption",
+   "effect": "a mature, more stable community (climax community) develops"
+  }
+ ],
+ "ideas": [
+  "<b>Ecological succession</b> is the gradual change in the species of a community after a disruption, in a series of stages.",
+  "<b>Primary succession</b> starts where there is no soil: new lava rock, rock left by a retreating glacier. Soil must form first, so it is slow (often centuries).",
+  "<b>Secondary succession</b> starts where soil remains after a disruption such as a fire, a flood, a hurricane or an abandoned farm field. With soil and seeds already present, it is faster (often decades).",
+  "<b>Pioneer species</b> (lichens and mosses on rock; grasses and weeds on soil) arrive first. Over time biodiversity and biomass increase, and a mature, more stable <b>climax community</b> develops."
+ ],
+ "misconception": {
+  "wrong": "Succession after a forest fire is primary succession, because almost everything was burned.",
+  "right": "A fire leaves soil, and usually seeds and roots in it, so regrowth after a fire is secondary succession. Primary succession needs a start with no soil at all, such as new rock."
+ },
+ "check": [
+  "env-succession-1",
+  "env-succession-2",
+  "env-succession-3",
+  "env-succession-5",
+  "env-succession-6",
+  "env-succession-8",
+  "env-succession-13"
+ ],
+ "summary": "Ecological succession is the series of changes in a community after a disruption. Primary succession begins on bare rock with no soil, and pioneer species such as lichens and mosses help form soil; it is slow. Secondary succession begins where soil remains, after a fire, flood or abandoned farm; it is faster. Over the stages, biodiversity and biomass increase until a mature, more stable climax community develops."
+}

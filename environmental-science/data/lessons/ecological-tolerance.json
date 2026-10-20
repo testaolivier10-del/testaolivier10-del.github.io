@@ -1,0 +1,67 @@
+{
+ "topic": "ecological-tolerance",
+ "hook": "Brook trout crowd into a cold mountain stream in spring. In a hot, dry August the same stream warms by several degrees, and the trout gather in the few shaded pools fed by cold springs. A little warmer still and they stop feeding and growing; warmer again and they die. Every species has a band of conditions it can live in, and that band decides where it can be found.",
+ "prereq": [
+  {
+   "q": "Which of these is an abiotic factor in a stream?",
+   "options": [
+    "Water temperature",
+    "Algae on the rocks",
+    "Trout",
+    "Mayfly larvae"
+   ],
+   "correct": 0,
+   "why": "Abiotic factors are nonliving: temperature, light, water, salinity. Algae, trout and mayflies are biotic.",
+   "review": "intro-ecosystems"
+  },
+  {
+   "q": "Which change usually lowers the amount of dissolved oxygen that water can hold?",
+   "options": [
+    "Warmer water",
+    "Colder water",
+    "Faster-flowing water",
+    "More plants making oxygen"
+   ],
+   "correct": 0,
+   "why": "Warm water holds less dissolved oxygen than cold water.",
+   "review": "aquatic-biomes"
+  }
+ ],
+ "figure": {
+  "figure": "ecological-tolerance-zones",
+  "caption": "Range of tolerance for water temperature in an invented fish species: an optimal range, zones of physiological stress, and zones of intolerance where none survive."
+ },
+ "chain": [
+  {
+   "cause": "An abiotic factor, such as temperature, moves out of a species’ optimal range",
+   "effect": "individuals enter a zone of physiological stress: they grow, feed or reproduce less"
+  },
+  {
+   "cause": "Stress lasts or the factor moves further out",
+   "effect": "fewer individuals survive and reproduce, so the population shrinks"
+  },
+  {
+   "cause": "The factor passes the limit of tolerance",
+   "effect": "individuals die (the zone of intolerance), and the population disappears from that place or moves"
+  }
+ ],
+ "ideas": [
+  "Each species has a <b>range of tolerance</b> for each abiotic factor (temperature, salinity, light, water): the conditions it can survive in.",
+  "Inside the range, the <b>optimal range</b> is where individuals grow and reproduce best, and the population is largest.",
+  "Toward the edges are <b>zones of physiological stress</b>: individuals survive but feed, grow or reproduce poorly, so the population is small. Beyond the limits lie <b>zones of intolerance</b>, where none survive.",
+  "Tolerance applies to individuals and to whole populations. Individuals in a population vary, so some tolerate a little more than others."
+ ],
+ "misconception": {
+  "wrong": "If a fish survives in water that is too warm, it is doing fine.",
+  "right": "Surviving is not thriving. In the zone of physiological stress fish live but eat, grow and reproduce less, so the population shrinks even before any fish die."
+ },
+ "check": [
+  "env-ecological-tolerance-1",
+  "env-ecological-tolerance-2",
+  "env-ecological-tolerance-3",
+  "env-ecological-tolerance-4",
+  "env-ecological-tolerance-5",
+  "env-ecological-tolerance-9"
+ ],
+ "summary": "Every species has a range of tolerance for each abiotic factor. In the optimal range individuals thrive and populations are largest; in the zones of physiological stress they survive but grow and reproduce poorly; beyond the limits, in the zones of intolerance, they die. Where conditions move out of a species’ range, its population shrinks, moves or disappears."
+}

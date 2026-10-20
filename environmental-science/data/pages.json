@@ -1,0 +1,273 @@
+{
+ "about": "The AP Environmental Science app pages. scripts/build-apenv.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in environmental-science/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApEnvCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apenv-spec.md decision 2). tools[] are the twelve trainers of docs/apenv-spec.md section 6, pre-registered in Phase 0: page environmental-science/tools/<slug>.html, script environmental-science/assets/tools/<slug>.js, model environmental-science/assets/tools/math/<slug>.js (ApEnvMath.<camelSlug>), content environmental-science/data/tools/<slug>.json, validator scripts/lib/apenv-tool-checks/<slug>.mjs, test scripts/test/apenv-tool-<slug>.test.mjs (docs/apenv-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. FREE OR PREMIUM is set here and only here: a tool with \"premium\": \"tools\" is Premium; calculation-studio, energy-flow and cycles carry none and are free (docs/apenv-spec.md section 6, proposed; owner to confirm).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Environmental science practice by unit, topic or skill: data, model and passage sets, calculations graded setup, answer and units, and answers made specific.",
+   "card": "Drill a unit, a topic or a skill, with data, model and passage sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your environmental science spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed environmental science unit tests and full practice exams in the May 2027 format: 80 multiple-choice questions, then 3 free-response questions.",
+   "card": "Unit tests and full timed practice exams in the May 2027 format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Environmental science free-response practice in the three exam question types, 10 points each, with a rubric, a full-credit sample and a check for your numbers.",
+   "card": "The three free-response question types, with 10-point rubrics and sample answers.",
+   "script": "pages/frq.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Make it specific",
+   "title": "Make it specific",
+   "desc": "Environmental science written answers made specific enough to score: hypotheses, variables, cause-and-effect chains and solutions fitted to the scenario.",
+   "lede": "Write the answer, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "Hypotheses, chains and solutions specific enough to score, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Environmental science cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with timed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition environmental science flashcards built from the glossary and the formulas you must memorize, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary and the formulas.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers",
+   "desc": "Environmental science trainers: calculations, energy flow, cycles, populations, soil, climate, energy, air and water pollution, toxicity and climate change.",
+   "card": "Trainers and simulators, then the questions about what you saw.",
+   "script": "pages/tools.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your environmental science mastery by unit, topic and skill, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and skill.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every environmental science lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For environmental science teachers: stable share links, printable notes and unit sheets, and Google Classroom sharing, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "calculation-studio",
+   "kind": "simulator",
+   "topic": "math-percents",
+   "name": "Calculation studio",
+   "title": "Calculation Studio",
+   "desc": "Every exam calculation as it is graded: type the setup with brackets and units, then the answer and its unit, each marked on its own with the slip named.",
+   "blurb": "Setup, answer and units, each graded the way the readers grade them.",
+   "lede": "Type the setup, then the answer and its units.",
+   "studio": true
+  },
+  {
+   "slug": "energy-flow",
+   "kind": "simulator",
+   "topic": "energy-flow",
+   "name": "Energy flow",
+   "title": "Energy Flow",
+   "desc": "Energy, biomass and number pyramids from one ecosystem: the 10% rule live, GPP, respiration and NPP, and a food web that responds when a species is removed.",
+   "blurb": "Move energy up a food chain and watch 90% leave as heat.",
+   "lede": "Change the producers' energy and watch each level respond.",
+   "studio": true
+  },
+  {
+   "slug": "cycles",
+   "kind": "simulator",
+   "topic": "carbon-cycle",
+   "name": "Cycles",
+   "title": "Biogeochemical Cycles",
+   "desc": "The carbon, nitrogen, phosphorus and water cycles as reservoirs and flows: tap a process to see what moves, then burn fuel, add fertilizer or clear a forest.",
+   "blurb": "Tap a process, then perturb a reservoir and watch the flows shift.",
+   "lede": "Tap a process to see what moves where.",
+   "studio": true
+  },
+  {
+   "slug": "population-growth",
+   "kind": "simulator",
+   "topic": "population-growth",
+   "name": "Population growth",
+   "title": "Population Growth",
+   "desc": "Exponential and logistic growth with r and K, overshoot and dieback, r- and K-selected traits, survivorship curves, and doubling time by the rule of 70.",
+   "blurb": "Grow a population to its carrying capacity, and past it.",
+   "lede": "Set the growth rate and the carrying capacity.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "age-structure",
+   "kind": "simulator",
+   "topic": "age-structure",
+   "name": "Age structure",
+   "title": "Age Structure",
+   "desc": "Build a population pyramid, read fertility against replacement level, turn birth and death rates into a growth rate, and follow the demographic transition.",
+   "blurb": "Build a population pyramid and read its future.",
+   "lede": "Shape the pyramid, then predict the growth.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "soil-texture",
+   "kind": "simulator",
+   "topic": "soil-properties",
+   "name": "Soil texture",
+   "title": "Soil Texture",
+   "desc": "Drag sand, silt and clay on the soil texture triangle and read the class; porosity, permeability and water-holding capacity; horizons, erosion and conservation.",
+   "blurb": "Find a soil on the texture triangle and see how it holds water.",
+   "lede": "Set sand, silt and clay and read the soil.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "earth-climate",
+   "kind": "simulator",
+   "topic": "el-nino-la-nina",
+   "name": "Earth and climate",
+   "title": "Earth and Climate",
+   "desc": "Seasons from axial tilt, insolation by latitude, circulation cells and winds, the rain shadow, and El Niño and La Niña side by side.",
+   "blurb": "Move through the year with the tilted Earth, then switch between El Niño and La Niña.",
+   "lede": "Drag the date and watch the noon sun climb and fall.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "energy-chain",
+   "kind": "simulator",
+   "topic": "fossil-fuels",
+   "name": "Energy chain",
+   "title": "Energy Chain",
+   "desc": "A power plant from fuel to outlet with the efficiency at each step, energy sources compared, and kWh, BTU and carbon dioxide calculations.",
+   "blurb": "Follow energy from fuel to outlet, step by step.",
+   "lede": "Pick a fuel and follow its energy to the outlet.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "air-pollution",
+   "kind": "simulator",
+   "topic": "photochemical-smog",
+   "name": "Air pollution",
+   "title": "Air Pollution",
+   "desc": "Photochemical smog through a day, a thermal inversion on and off, acid rain from NOx and SOx, primary and secondary pollutants, and the fix for each.",
+   "blurb": "Run smog through a day and trap it under an inversion.",
+   "lede": "Move the clock and watch the pollutants rise and fall.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "water-pollution",
+   "kind": "simulator",
+   "topic": "eutrophication",
+   "name": "Water pollution",
+   "title": "Water Pollution",
+   "desc": "The eutrophication chain step by step with a dissolved oxygen graph, thermal pollution and oxygen against temperature, and the stages of sewage treatment.",
+   "blurb": "Add fertilizer to a lake and follow the oxygen down.",
+   "lede": "Add nutrients and follow the chain to a dead zone.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "dose-response",
+   "kind": "simulator",
+   "topic": "dose-response-curve",
+   "name": "Dose and response",
+   "title": "Dose and Response",
+   "desc": "Read LD50 and the threshold dose off a dose-response curve, compare toxicity, and see bioaccumulation and biomagnification up a food chain.",
+   "blurb": "Read LD50 off a curve and watch a toxin climb a food chain.",
+   "lede": "Move along the curve and read the dose.",
+   "studio": true,
+   "premium": "tools"
+  },
+  {
+   "slug": "climate-change",
+   "kind": "simulator",
+   "topic": "greenhouse-effect",
+   "name": "Climate change",
+   "title": "Climate Change",
+   "desc": "The greenhouse effect beside the ozone layer, ocean acidification with pH, and sea level from thermal expansion and melting land ice, not sea ice.",
+   "blurb": "Keep the greenhouse effect and the ozone layer apart for good.",
+   "lede": "Add a gas and watch which radiation it stops.",
+   "studio": true,
+   "premium": "tools"
+  }
+ ]
+}

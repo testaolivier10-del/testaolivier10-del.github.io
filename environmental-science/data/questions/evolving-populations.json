@@ -1,0 +1,517 @@
+{
+ "stimuli": {
+  "evolving-populations-s1": {
+   "kind": "visual",
+   "title": "Beak depth before and after a drought",
+   "invented": true,
+   "figure": "evolving-populations-beaks"
+  },
+  "evolving-populations-s2": {
+   "kind": "quantitative",
+   "title": "Moths on dark and light tree bark",
+   "invented": true,
+   "table": {
+    "caption": "Percent of dark-colored moths caught in a forest near a city, by year, as soot from coal smoke first darkened the bark and then was cleaned up (invented data for practice)",
+    "cols": [
+     "Year",
+     "Tree bark",
+     "Dark moths (% of catch)"
+    ],
+    "rows": [
+     [
+      "1850",
+      "light, covered in pale lichen",
+      "2"
+     ],
+     [
+      "1900",
+      "darkened by soot",
+      "70"
+     ],
+     [
+      "1950",
+      "darkened by soot",
+      "90"
+     ],
+     [
+      "1970",
+      "clean-air laws begin; soot falls",
+      "85"
+     ],
+     [
+      "2000",
+      "light, lichen returning",
+      "20"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "env-evolving-populations-1",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "According to the figure, which beak depth became more common among the offspring than among the parents?",
+   "stimulus": "evolving-populations-s1",
+   "options": [
+    "12 mm",
+    "8 mm",
+    "9 mm",
+    "10 mm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare the two bars at each beak depth: the deep-beak bars grew.",
+    "options": [
+     "Right: 12 mm rose from 10% of parents to 19% of offspring.",
+     "8 mm fell from 10% to 4%.",
+     "9 mm fell from 25% to 15%.",
+     "10 mm fell slightly, from 35% to 32%."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-2",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which explanation accounts for the shift shown in the figure?",
+   "stimulus": "evolving-populations-s1",
+   "options": [
+    "Each bird’s beak grew deeper during the drought as it cracked hard seeds",
+    "Deep-beaked birds cracked hard seeds, survived and bred more",
+    "Birds with deep beaks flew in from another island after the drought",
+    "The drought caused new beak depths that the parents did not have"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Natural selection changes how common existing traits are; it does not make individuals change.",
+    "options": [
+     "A beak’s inherited depth does not grow to meet a need; the population shifted through who bred.",
+     "Right: survivors with deeper beaks passed the trait to their chicks.",
+     "Nothing in the figure shows birds arriving; the offspring came from the surviving parents.",
+     "The offspring have the same five depths as the parents, in different shares."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-3",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What percent of the offspring had beaks 11 mm deep or deeper?",
+   "stimulus": "evolving-populations-s1",
+   "why": {
+    "correct": "Add the two bars: $30\\% + 19\\% = 49\\%$ of offspring, compared with $20\\% + 10\\% = 30\\%$ of parents."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "add",
+     "args": [
+      30,
+      19
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "That is the share among the parents (20% + 10%). Use the offspring bars: 30% + 19%."
+     },
+     {
+      "value": 81,
+      "why": "That adds 32% for 10 mm, which is not 11 mm or deeper. Use only the 11 mm and 12 mm bars."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-4",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If the rains return and small, soft seeds become common again for many years, which change in the population is most likely?",
+   "stimulus": "evolving-populations-s1",
+   "options": [
+    "Each adult bird grows a smaller beak within one season",
+    "The population keeps getting deeper beaks whatever seeds are present",
+    "The share of birds with smaller beaks rises again over several generations",
+    "Beak depth stops being passed on to offspring"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Natural selection follows the environment: when conditions reverse, the favored trait can reverse too.",
+    "options": [
+     "Individual birds do not change their inherited beak depth.",
+     "Selection depends on the environment, so it can reverse when the food changes.",
+     "Right: if small beaks handle small seeds better, selection now favors them.",
+     "Beak depth stays heritable whatever the weather."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-5",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement best describes the trend in dark moths from 1850 to 1950?",
+   "stimulus": "evolving-populations-s2",
+   "options": [
+    "They fell from 90% to 2% as the bark darkened with soot",
+    "They stayed at about 2% through each of those years",
+    "They rose, then fell sharply before 1950",
+    "They rose from 2% to 90% as the bark darkened"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Read the years in order and give the start and end values.",
+    "options": [
+     "The percent rose over those years.",
+     "They reached 70% by 1900 and 90% by 1950.",
+     "The decline came after clean-air laws, after 1950.",
+     "Right: as soot darkened the trees, dark moths went from rare to most of the catch."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-6",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Birds hunt moths resting on tree bark by sight. Which explanation best links bark color to moth color in these data?",
+   "stimulus": "evolving-populations-s2",
+   "options": [
+    "Moths matching the bark were eaten less and bred more",
+    "Soot dyed the moths dark as they rested on the trees",
+    "Dark moths flew in from the city to escape the clean air",
+    "Light moths stopped reproducing when the lichen died"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Predators acted as the selecting force: whichever color stood out was eaten more.",
+    "options": [
+     "Right: camouflage cut predation, so the matching color became more common.",
+     "Wing color here is inherited, not dyed; the share of dark moths changed over generations.",
+     "The data show a change in the forest population, not migration.",
+     "Light moths were eaten more on dark bark; lichen loss did not stop their breeding."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-7",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the percent change in the share of dark moths from 1950 to 2000, then give the answer, rounded to the nearest whole percent.",
+   "stimulus": "evolving-populations-s2",
+   "why": {
+    "correct": "Start at 90 (1950): $\\frac{20 - 90}{90} \\times 100 \\approx -78\\%$. The share of dark moths fell by about 78% as the bark grew light again."
+   },
+   "setup": {
+    "answer": "(20 - 90) / 90 * 100",
+    "mustUse": [
+     "20",
+     "90"
+    ],
+    "then": {
+     "unit": "%",
+     "places": 0,
+     "from": {
+      "fn": "percentChange",
+      "args": [
+       90,
+       20
+      ]
+     },
+     "mistakes": [
+      {
+       "value": -70,
+       "why": "That is the change in percentage points (20 - 90). Divide by 90 and multiply by 100 for the percent change."
+      },
+      {
+       "value": -350,
+       "why": "That divides by 20. Divide by the starting value, 90."
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "expr": "(90 - 20) / 20 * 100",
+      "why": "Start from the 1950 value: (new - old) / old, so (20 - 90) / 90 × 100."
+     },
+     {
+      "expr": "(20 - 90) / 20 * 100",
+      "why": "Divide by the starting value, 90 (1950), not by 20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-8",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which conclusion is best supported by the change from 1970 to 2000?",
+   "stimulus": "evolving-populations-s2",
+   "options": [
+    "Clean-air laws made each moth’s wings lighter",
+    "Once bark was light again, selection favored light moths",
+    "Dark moths die out quickly in clean air",
+    "The population stopped changing after 1970"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The same process ran in reverse once the environment changed back.",
+    "options": [
+     "Laws changed the bark; moth color changed in the population through survival and breeding.",
+     "Right: as soot fell and lichen returned, dark moths fell from 85% to 20%.",
+     "Dark moths were still 20% of the catch in 2000.",
+     "The share of dark moths fell from 85% to 20% after 1970."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-9",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 2,
+   "q": "Which statement best defines an adaptation?",
+   "options": [
+    "A change an animal makes in its body during its life to cope with a problem",
+    "Any trait that an organism has, helpful or not",
+    "An inherited trait that helps survival and reproduction",
+    "A behavior learned from watching other species"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Adaptations are heritable and helpful in the environment where the organism lives.",
+    "options": [
+     "Changes within one life are not passed on, so they are not adaptations in this sense.",
+     "An adaptation is a trait that helps in the organism’s environment.",
+     "Right: it is inherited and it raises survival or reproduction.",
+     "Learned behaviors are not passed on in genes, so they are not adaptations in this sense."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-10",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which observation would best show that natural selection has occurred in a population?",
+   "options": [
+    "One animal grows thicker fur during a cold winter",
+    "The number of animals stays the same for ten years",
+    "A young animal learns to find food from its parents",
+    "A helpful trait grows more common over generations"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Look for a heritable trait changing in frequency across generations.",
+    "options": [
+     "A change in one individual within its lifetime is not natural selection.",
+     "A stable population size says nothing about which traits are favored.",
+     "Learning is not passed on in genes.",
+     "Right: a change in the share of a heritable trait over generations is the result of selection."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-11",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "specific",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Explain how bacteria in a hospital become resistant to an antibiotic over many generations.",
+   "why": {
+    "correct": "Variation first, then selection, then inheritance."
+   },
+   "specific": {
+    "frame": "A few bacteria ___. When the antibiotic is used, ___, so ___.",
+    "slots": {
+     "cause": {
+      "label": "Starting variation",
+      "options": [
+       "already carry a trait that lets them survive the drug",
+       "decide to change in order to survive the drug",
+       "are all identical to one another"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Bacteria do not change on purpose; resistant ones were already present.",
+       "2": "If all were identical, the drug would kill all of them, and nothing would be selected."
+      }
+     },
+     "effect": {
+      "label": "Selection",
+      "options": [
+       "the resistant ones survive while most others die",
+       "every bacterium dies equally",
+       "the drug makes every bacterium stronger"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "If all died equally, there would be no change in the population’s traits.",
+       "2": "The drug does not strengthen bacteria; it removes the ones it can kill."
+      }
+     },
+     "mechanism": {
+      "label": "Result",
+      "options": [
+       "the resistant bacteria multiply and resistance becomes common in later generations",
+       "the population returns to how it was before",
+       "resistance disappears from the population"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The survivors are mostly resistant, so their offspring are too.",
+       "2": "Selection raised resistance; it did not remove it."
+      }
+     }
+    },
+    "model": "A few bacteria already carry a trait that lets them survive the drug. When the antibiotic is used, the resistant ones survive while most others die, so the resistant bacteria multiply and resistance becomes common in later generations."
+   }
+  },
+  {
+   "id": "env-evolving-populations-12",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A coral species takes several years to reach breeding age, and each colony can live for decades. Ocean temperatures near its reef are rising faster than at any time in the coral’s history. Why is the coral at risk even though natural selection can favor heat-tolerant corals?",
+   "options": [
+    "Few generations pass before the heat outpaces it",
+    "Natural selection works on animals that move, not on corals",
+    "Heat-tolerant corals do not pass their traits to offspring",
+    "Warm water makes corals reproduce faster than they can feed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When change is fast relative to generation time, a population may not adapt in time.",
+    "options": [
+     "Right: a slowly reproducing species has few generations for selection to act before conditions pass its limits.",
+     "Selection works on any population with heritable variation, moving or not.",
+     "Heritable traits are passed on; the problem is the speed of change.",
+     "Warmer water stresses corals; it does not speed up their reproduction."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-13",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which conditions are needed for natural selection to change a population? Select all that apply.",
+   "options": [
+    "Individuals differ in a trait",
+    "The trait is passed from parents to offspring",
+    "Each individual changes its traits when it needs to",
+    "The population lives on an island"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Variation, inheritance, and different survival or reproduction: those make selection work.",
+    "options": [
+     "Right: without variation there is nothing to select.",
+     "Right: only heritable traits shift from one generation to the next.",
+     "Individuals do not change their inherited traits on demand; selection works on existing variation.",
+     "Selection happens everywhere, not only on islands."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-14",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Arctic foxes have white fur in winter and live where snow covers the ground for most of the year. Which statement explains this trait using natural selection?",
+   "options": [
+    "Each fox decided to turn white to hide in the snow",
+    "White foxes were seen less, so they survived and bred more",
+    "Cold temperatures bleach the fur of each fox white",
+    "White fur is the one color any fox can grow"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Explain an adaptation by how it raised survival or reproduction over generations.",
+    "options": [
+     "Foxes do not choose their inherited coat color.",
+     "Right: the trait raised survival and reproduction, so it became common over generations.",
+     "The color is inherited; cold does not bleach it.",
+     "Foxes elsewhere have red, gray or brown fur."
+    ]
+   }
+  },
+  {
+   "id": "env-evolving-populations-15",
+   "unit": "unit-2",
+   "topic": "evolving-populations",
+   "type": "single",
+   "practice": "5.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two populations of the same frog species face a new fungal disease. Population X is large and genetically varied; population Y went through a bottleneck and is genetically very similar. Which population is more likely to adapt to the disease over generations?",
+   "options": [
+    "Y, because frogs that are alike share any resistance",
+    "Both equally fast, because they are the same species",
+    "X, because some of its frogs are likely to resist it",
+    "Neither, because a disease strikes at random"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Low genetic diversity limits a population’s ability to adapt.",
+    "options": [
+     "If the frogs are similar, they are also likely to share any weakness.",
+     "Their genetic variety differs, and that changes how they respond.",
+     "Right: genetic variety is the raw material natural selection works on.",
+     "Populations with resistant individuals can adapt to a disease over generations."
+    ]
+   }
+  }
+ ]
+}

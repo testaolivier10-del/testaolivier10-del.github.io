@@ -1,0 +1,67 @@
+{
+ "topic": "r-k-selection",
+ "hook": "A female cod can release millions of eggs in one spawning season and then swim away; almost all of them are eaten or die before they grow up. A female elephant carries one calf for about 22 months and then spends years protecting and teaching it. Both strategies keep their species going. They are two ends of a range of reproductive strategies called r-selected and K-selected.",
+ "prereq": [
+  {
+   "q": "Which kind of species can switch to other foods when its main food declines?",
+   "options": [
+    "A generalist",
+    "A specialist",
+    "A keystone species",
+    "A pioneer species"
+   ],
+   "correct": 0,
+   "why": "Generalists have broad niches, so they have other foods to switch to.",
+   "review": "generalists-specialists"
+  },
+  {
+   "q": "After a fire, which plants usually arrive first on the bare soil?",
+   "options": [
+    "Fast-growing grasses and weeds",
+    "Slow-growing oaks",
+    "Mature hickory trees",
+    "Lichens on bare rock"
+   ],
+   "correct": 0,
+   "why": "Pioneer species in secondary succession are fast-growing grasses and weeds.",
+   "review": "succession"
+  }
+ ],
+ "figure": {
+  "figure": "r-k-selection-traits",
+  "caption": "Traits of r-selected and K-selected species. Most species fall somewhere between the two ends."
+ },
+ "chain": [
+  {
+   "cause": "An r-selected species produces many small offspring early in life and gives them little care",
+   "effect": "most offspring die young, but the population can grow very quickly when conditions are good"
+  },
+  {
+   "cause": "A disruption kills much of the population",
+   "effect": "an r-selected species rebounds fast, because each survivor can soon produce many offspring"
+  },
+  {
+   "cause": "A K-selected species produces few large offspring late in life and cares for them",
+   "effect": "more of each offspring survive, but the population grows slowly and recovers slowly after losses"
+  }
+ ],
+ "ideas": [
+  "<b>Biotic potential</b> is the fastest rate at which a population could grow if it had unlimited resources. r-selected species have a high biotic potential; K-selected species have a low one.",
+  "<b>r-selected species</b>: many small offspring, little or no parental care, early first reproduction, short lives. Insects, mice, many fish and weeds.",
+  "<b>K-selected species</b>: few large offspring, much parental care, late first reproduction, long lives. Elephants, whales, great apes, many large trees.",
+  "K-selected populations tend to stay near the largest size their environment can support; r-selected populations swing up and down. After a disruption, r-selected species rebound quickly; K-selected species recover slowly and are more at risk of dying out."
+ ],
+ "misconception": {
+  "wrong": "A species is either r-selected or K-selected, nothing in between.",
+  "right": "r and K are the two ends of a range. Many species are in between: sea turtles lay many eggs and give no care (r-like) but live long and start breeding late (K-like)."
+ },
+ "check": [
+  "env-r-k-selection-1",
+  "env-r-k-selection-2",
+  "env-r-k-selection-3",
+  "env-r-k-selection-6",
+  "env-r-k-selection-7",
+  "env-r-k-selection-9"
+ ],
+ "summary": "r-selected species have many small offspring, little parental care, early reproduction and short lives; they have a high biotic potential, their populations swing up and down, and they rebound quickly after a disruption. K-selected species have few large offspring, much parental care, late reproduction and long lives; their populations are steadier but recover slowly from losses. Most species fall between the two ends."
+}

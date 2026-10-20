@@ -1,0 +1,5 @@
+{
+ "survivorship-curve": {
+  "def": "A graph of the number of individuals still alive at each age, out of a group born at the same time (often 1,000), usually with survivors on a log scale. Type I: most die old. Type II: a steady chance of dying at every age. Type III: most die young."
+ }
+}

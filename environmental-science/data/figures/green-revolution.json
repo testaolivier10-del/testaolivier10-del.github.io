@@ -1,0 +1,12 @@
+{
+ "green-revolution-inputs": {
+  "file": "figures/green-revolution-inputs.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Five inputs (high-yield seeds, synthetic fertilizer, irrigation, pesticides and machines) all point to one result: more grain per hectare of farmland. That result has benefits (fewer famines, more food from the same land, less new land cleared) and costs (monocultures with low genetic diversity, fertilizer runoff, heavy water use, and fossil fuels for machines and fertilizer)."
+ }
+}

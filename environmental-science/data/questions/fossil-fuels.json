@@ -1,0 +1,645 @@
+{
+ "stimuli": {
+  "fossil-fuels-s1": {
+   "kind": "quantitative",
+   "title": "Efficiency at each step of a coal-fired power plant",
+   "invented": true,
+   "table": {
+    "caption": "Share of the energy entering each step that leaves it as useful energy (invented data for practice; the overall value matches the average U.S. coal plant, EIA 2024)",
+    "cols": [
+     "Step",
+     "What happens",
+     "Efficiency (%)"
+    ],
+    "rows": [
+     [
+      "1. Boiler",
+      "chemical energy in coal becomes heat in steam",
+      "88"
+     ],
+     [
+      "2. Turbine and steam cycle",
+      "heat in steam becomes motion of the turbine",
+      "37"
+     ],
+     [
+      "3. Generator",
+      "motion becomes electricity",
+      "98"
+     ],
+     [
+      "4. Power lines",
+      "electricity carried to homes",
+      "94"
+     ]
+    ]
+   }
+  },
+  "fossil-fuels-s2": {
+   "kind": "visual",
+   "title": "Inside a coal-fired power plant",
+   "figure": "fossil-fuels-power-plant"
+  }
+ },
+ "items": [
+  {
+   "id": "env-fossil-fuels-1",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "order",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps of a coal-fired power plant in order, from fuel to electricity.",
+   "options": [
+    "Coal burns in the boiler, releasing heat",
+    "The heat boils water into high-pressure steam",
+    "The steam spins the turbine blades",
+    "The turbine shaft turns the generator, which makes electricity"
+   ],
+   "why": {
+    "correct": "Chemical energy in the fuel becomes heat, the heat makes steam, the steam spins the turbine, and the generator turns that motion into electricity."
+   }
+  },
+  {
+   "id": "env-fossil-fuels-2",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a power plant, what does the turbine do?",
+   "options": [
+    "It cools the used steam back into liquid water for reuse",
+    "It turns electricity into heat for nearby homes and offices",
+    "It turns the energy of moving steam into a spinning shaft",
+    "It burns the fuel to release heat inside the boiler walls"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Steam pushes on the turbine blades and spins them. The spinning shaft drives the generator.",
+    "options": [
+     "Cooling the steam is the condenser's job.",
+     "The plant makes electricity; it does not turn electricity into heat.",
+     "Right: the turbine changes the steam's energy into rotation.",
+     "Burning happens in the boiler, before the turbine."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-3",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A coal-fired power plant is about 33 percent efficient. Where does most of the remaining energy go?",
+   "options": [
+    "Back into the coal pile, where it is burned again later",
+    "Waste heat carried off in cooling water and stack gases",
+    "Into the coal ash that collects in the bottom of the boiler",
+    "Into the electricity lost at the wall outlet of each home"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "About two thirds of the fuel's energy leaves as heat: warmed cooling water from the condenser and hot gases up the stack. This follows from the second law of thermodynamics.",
+    "options": [
+     "Energy released as heat cannot be put back into the coal.",
+     "Right: waste heat is the largest loss.",
+     "Ash holds very little energy compared with the heat lost.",
+     "Some energy is lost in power lines, but far less than the waste heat at the plant."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-4",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is hydraulic fracturing (fracking)?",
+   "options": [
+    "Cracking shale with high-pressure fluid to free gas or oil",
+    "Burning coal seams underground to release gas up through wells",
+    "Using explosives on mountaintops to uncover the coal seams below",
+    "Heating tar sands with steam so the bitumen flows up to the surface"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fracking injects a high-pressure mix of water, sand and chemicals into shale rock. The cracks let trapped natural gas or oil flow to the well; the sand holds the cracks open.",
+    "options": [
+     "Right: high-pressure fluid cracks the shale.",
+     "Underground coal burning is a different, rare process.",
+     "That describes surface mining of coal.",
+     "That describes steam extraction of bitumen from tar sands."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-5",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are environmental risks of fracking? Select all that apply.",
+   "options": [
+    "Groundwater contaminated by fracking fluid or methane",
+    "Volatile chemicals released into the air near wells",
+    "Large amounts of water used for each well",
+    "Radioactive fallout from the drilling",
+    "Warm water released into the ocean",
+    "Damage to the ozone layer from drilling fluid"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Fracking can contaminate groundwater, release volatile chemicals and leak methane into the air, and it uses large volumes of water. Wastewater injected underground has also triggered small earthquakes.",
+    "options": [
+     "Right: faulty well casings and spills can contaminate groundwater.",
+     "Right: wells and wastewater ponds can release volatile chemicals.",
+     "Right: each well can use millions of gallons of water.",
+     "Fracking does not produce fallout, though its wastewater can carry some natural radioactive material.",
+     "Warm water discharge comes from power plant cooling, not fracking.",
+     "Drilling fluid is pumped underground; it does not reach the stratosphere to damage ozone."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-6",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Fracking greatly increased natural gas production in the United States, and many coal plants switched to gas. What was a likely effect on carbon dioxide emissions from electricity?",
+   "options": [
+    "They stayed the same, as both coal and natural gas are fossil fuels",
+    "They fell to zero, as natural gas is a clean fuel with no emissions",
+    "They fell, as gas releases less carbon dioxide per unit of energy",
+    "They rose, as gas releases more carbon dioxide per unit of energy than coal"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Burning gas releases about half the carbon dioxide of coal for the same electricity, so emissions fell. Methane leaks from wells offset part of the gain.",
+    "options": [
+     "Fossil fuels differ in carbon dioxide per unit of energy.",
+     "Burning natural gas still releases carbon dioxide.",
+     "Right: switching from coal to gas lowers carbon dioxide per unit of energy.",
+     "Gas releases less, not more."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-7",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is an advantage of fossil fuels compared with many other energy sources?",
+   "options": [
+    "They need no mining, drilling or transport before they can be used",
+    "They pack much energy into little mass and run day and night",
+    "They release no air pollutants when they are burned at a high temperature",
+    "They are replaced by natural processes as fast as people use them up"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Fossil fuels are energy-dense, easy to store and transport, and can be burned whenever power is needed. Their drawbacks are pollution, carbon dioxide and a fixed supply.",
+    "options": [
+     "They must be mined or drilled and transported.",
+     "Right: high energy density and reliable output.",
+     "Burning fossil fuels releases carbon dioxide and other pollutants.",
+     "They are nonrenewable."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-8",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does extracting oil from tar sands release more carbon dioxide per barrel than drilling ordinary crude oil?",
+   "options": [
+    "Mining, steaming and upgrading bitumen burn a lot of fuel",
+    "Tar sands hold carbon dioxide gas that escapes as soon as they are mined",
+    "Bitumen is a renewable fuel, so its carbon dioxide gets counted twice",
+    "Tar sands are burned right at the mine instead of at a power plant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Separating thick bitumen from sand takes large amounts of energy (often natural gas for steam) and water, so each barrel carries extra emissions.",
+    "options": [
+     "Right: extraction and upgrading use much energy.",
+     "The extra carbon dioxide comes from the energy used in processing, not gas trapped in the sand.",
+     "Bitumen is a fossil fuel, not renewable.",
+     "The bitumen is processed into crude oil, not burned at the mine."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-9",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the overall efficiency from the energy in the coal to the electricity delivered to homes? Give a percent.",
+   "stimulus": "fossil-fuels-s1",
+   "why": {
+    "correct": "Multiply the step efficiencies as decimals: $0.88 \\times 0.37 \\times 0.98 \\times 0.94 \\times 100 \\approx 30.0\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "chainEfficiency",
+     "args": [
+      88,
+      37,
+      98,
+      94
+     ]
+    },
+    "unit": "%",
+    "tol": 0.15,
+    "mistakes": [
+     {
+      "value": 79.25,
+      "why": "You averaged the four efficiencies. Losses build on each other, so multiply them: 0.88 × 0.37 × 0.98 × 0.94."
+     },
+     {
+      "value": 37,
+      "why": "That is only the turbine step. Multiply all four steps together for the overall efficiency."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.88,
+        0.37,
+        0.98,
+        0.94
+       ]
+      },
+      "why": "That is the efficiency as a decimal. Multiply by 100 to give a percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-10",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which step loses the largest share of the energy that enters it?",
+   "stimulus": "fossil-fuels-s1",
+   "options": [
+    "Generator",
+    "Power lines",
+    "Turbine and steam cycle",
+    "Boiler"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The steam cycle keeps only 37 percent and loses 63 percent, mostly as heat in the condenser's cooling water.",
+    "options": [
+     "The generator loses 2 percent.",
+     "Power lines lose 6 percent.",
+     "Right: 63 percent is lost in the steam cycle.",
+     "The boiler loses 12 percent."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-11",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The plant burns coal containing 1,000 MWh of chemical energy. Write the setup for the electricity that reaches homes, using the efficiency of each step, then give the answer in MWh.",
+   "stimulus": "fossil-fuels-s1",
+   "why": {
+    "correct": "$1{,}000\\,\\text{MWh} \\times 0.88 \\times 0.37 \\times 0.98 \\times 0.94 \\approx 299.9\\,\\text{MWh}$."
+   },
+   "setup": {
+    "answer": "1000 MWh * 0.88 * 0.37 * 0.98 * 0.94",
+    "unit": "MWh",
+    "mustUse": [
+     "1000",
+     "0.88",
+     "0.37",
+     "0.98",
+     "0.94"
+    ],
+    "mistakes": [
+     {
+      "expr": "1000 MWh * 0.37",
+      "why": "You used only the turbine step. Multiply by every step's efficiency, because each step loses part of what it receives."
+     },
+     {
+      "expr": "1000 MWh * 88 * 37 * 98 * 94",
+      "why": "Write each efficiency as a decimal (88% = 0.88) before you multiply."
+     }
+    ],
+    "then": {
+     "unit": "MWh",
+     "from": {
+      "fn": "mul",
+      "args": [
+       1000,
+       0.88,
+       0.37,
+       0.98,
+       0.94
+      ]
+     },
+     "tol": 0.5,
+     "mistakes": [
+      {
+       "value": 370,
+       "why": "That is 1,000 × 0.37, the turbine step alone. Include the boiler, generator and power lines too."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-fossil-fuels-12",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "How much chemical energy in coal, in MWh, must the plant burn to deliver 500 MWh of electricity to homes? Round to the nearest whole MWh.",
+   "stimulus": "fossil-fuels-s1",
+   "why": {
+    "correct": "Overall efficiency is about 29.99 percent, so $\\frac{500\\,\\text{MWh}}{0.2999} \\approx 1{,}667\\,\\text{MWh}$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "inputNeeded",
+     "args": [
+      500,
+      {
+       "fn": "chainEfficiency",
+       "args": [
+        88,
+        37,
+        98,
+        94
+       ]
+      }
+     ]
+    },
+    "unit": "MWh",
+    "tol": 1.5,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        500,
+        0.88,
+        0.37,
+        0.98,
+        0.94
+       ]
+      },
+      "why": "You multiplied by the efficiency, which finds the output. Here 500 MWh is the output, so divide by the efficiency to find the input."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        500,
+        0.37
+       ]
+      },
+      "why": "You used only the turbine step. Divide by the overall efficiency of all four steps."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-13",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which change would raise the overall efficiency of this plant the most?",
+   "stimulus": "fossil-fuels-s1",
+   "options": [
+    "Painting the outside of the boiler a lighter color to reflect sunlight",
+    "Replacing the power lines with lines that lose 5 percent instead of 6",
+    "Burning the coal more slowly in the boiler so that the pile lasts longer",
+    "Capturing waste heat from the steam cycle to warm nearby buildings"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The steam cycle loses the most energy as heat. Putting that heat to use raises the share of the fuel's energy doing useful work far more than small gains elsewhere.",
+    "options": [
+     "Paint color does not change how much fuel energy becomes steam.",
+     "A 1 percent gain in the lines is small compared with the 63 percent lost in the steam cycle.",
+     "Burning slower gives less power; it does not raise the share converted.",
+     "Right: capturing waste heat targets the largest loss."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-14",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what is the role of the condenser?",
+   "stimulus": "fossil-fuels-s2",
+   "options": [
+    "It turns the turbine's motion into electricity",
+    "It removes carbon dioxide from the stack gases",
+    "It cools the used steam back into liquid water",
+    "It burns the coal to release heat for the steam"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cooling water from a river or cooling tower takes heat from the used steam, which condenses and is pumped back to the boiler.",
+    "options": [
+     "The generator makes electricity.",
+     "The diagram shows carbon dioxide leaving through the stack; the condenser does not remove it.",
+     "Right: the condenser turns steam back into water.",
+     "Burning happens in the boiler."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-15",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The plant takes cooling water from a river and returns it warmer. What is the most direct effect on the river?",
+   "stimulus": "fossil-fuels-s2",
+   "options": [
+    "The river water becomes radioactive for a distance below the outlet",
+    "Dissolved oxygen falls, because warmer water holds less of it",
+    "The river becomes more acidic from carbon dioxide carried in the cooling water",
+    "Metals washed from the coal pile build up in the fish downstream"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The cooling water carries only heat. Warmer water holds less dissolved oxygen, which stresses fish and other aquatic life.",
+    "options": [
+     "A coal plant's cooling water is not radioactive.",
+     "Right: the problem is heat, which lowers dissolved oxygen.",
+     "Cooling water does not touch the stack gases, so it does not carry the plant's carbon dioxide.",
+     "Cooling water does not carry coal or ash."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-16",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Based on the diagram, why does a power plant convert only about one third of the fuel's energy into electricity?",
+   "stimulus": "fossil-fuels-s2",
+   "options": [
+    "Turning heat into motion means dumping heat to cooling water",
+    "The generator turns most of the turbine's motion back into heat",
+    "Much of the coal passes through the boiler without burning",
+    "Most electricity leaks out of the generator before it reaches the lines"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The diagram shows heat leaving through the condenser's cooling water and up the stack. Turning heat into motion always discards a large share of the heat.",
+    "options": [
+     "Right: the condenser and stack carry away about two thirds of the energy.",
+     "Generators are very efficient, near 98 percent.",
+     "Boilers burn coal nearly completely; the main loss is later.",
+     "Electricity leaving the generator mostly reaches the lines."
+    ]
+   }
+  },
+  {
+   "id": "env-fossil-fuels-17",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "specific",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Explain how the plant in the diagram contributes to climate change. Give a complete chain.",
+   "stimulus": "fossil-fuels-s2",
+   "why": {
+    "correct": "A complete chain links burning coal to carbon dioxide, to the gas trapping heat in the atmosphere, to warming."
+   },
+   "specific": {
+    "frame": "Burning coal in the boiler ___, which ___, so ___.",
+    "slots": {
+     "release": {
+      "label": "What burning releases",
+      "options": [
+       "releases carbon dioxide through the stack",
+       "releases warm water into the river",
+       "uses up oxygen in the river"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Warm water is thermal pollution of the river, not a cause of climate change.",
+       "2": "Dissolved oxygen in the river is a separate, local effect."
+      }
+     },
+     "mechanism": {
+      "label": "Mechanism",
+      "options": [
+       "traps heat that Earth would otherwise radiate to space",
+       "blocks sunlight from reaching the ground",
+       "destroys the ozone layer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Carbon dioxide does not block incoming sunlight.",
+       "2": "Carbon dioxide does not destroy ozone."
+      }
+     },
+     "result": {
+      "label": "Result",
+      "options": [
+       "average global temperatures increase",
+       "average global temperatures decrease",
+       "the plant's efficiency increases"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Trapping heat warms the planet.",
+       "2": "Climate effects do not change the plant's efficiency."
+      }
+     }
+    },
+    "write": {
+     "directional": true,
+     "mechanism": true,
+     "context": [
+      "carbon dioxide",
+      "heat"
+     ]
+    },
+    "model": "Burning coal in the boiler releases carbon dioxide through the stack, which builds up in the atmosphere and traps heat that Earth would otherwise radiate to space; as a result, average global temperatures increase."
+   }
+  },
+  {
+   "id": "env-fossil-fuels-18",
+   "unit": "unit-6",
+   "topic": "fossil-fuels",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which is a drawback of surface mining coal compared with drilling for natural gas?",
+   "options": [
+    "It uses more water for each well than fracking uses",
+    "It produces a fuel that releases less carbon dioxide per unit of energy",
+    "It strips soil and rock from large areas of habitat",
+    "It releases no dust and causes no water pollution near the mine"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Surface mining strips away the overburden, destroying habitat and leaving land to be reclaimed. Acid mine drainage can pollute streams.",
+    "options": [
+     "Coal mining does not use wells.",
+     "Coal releases more carbon dioxide per unit of energy than gas.",
+     "Right: large areas of habitat are destroyed.",
+     "Coal mines release dust and can cause acid mine drainage."
+    ]
+   }
+  }
+ ]
+}

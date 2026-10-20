@@ -1,0 +1,12 @@
+{
+ "greenhouse-gas-increases-keeling": {
+  "file": "figures/greenhouse-gas-increases-keeling.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A line graph of yearly average carbon dioxide at Mauna Loa Observatory, Hawaii, from NOAA: 1960 316.91, 1965 320.04, 1970 325.68, 1975 331.13, 1980 338.76, 1985 346.35, 1990 354.45, 1995 360.97, 2000 369.71, 2005 379.98, 2010 390.10, 2015 401.01, 2020 414.21, 2023 421.08 parts per million. The line rises every year and gets steeper over time. A dashed line at 280 ppm marks the level before about 1800, measured in ice cores."
+ }
+}

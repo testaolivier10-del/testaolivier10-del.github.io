@@ -1,0 +1,11 @@
+{
+ "permeable-pavement": {
+  "def": "Pavement that lets water pass through it into a gravel layer and the soil below, through gaps between pavers or pores in the concrete or asphalt. It cuts runoff and recharges groundwater, but costs more and must be cleaned so its pores do not clog."
+ },
+ "rain-garden": {
+  "def": "A shallow, planted low spot that collects runoff from a roof, driveway or street and lets it soak into the ground. Deep-rooted plants and soil slow the water and trap sediment and some pollutants."
+ },
+ "green-roof": {
+  "def": "A roof covered with soil and plants. It soaks up rain and releases it slowly, cools the building and the air around it, and gives habitat to insects and birds; it costs more to build because the roof must carry the extra weight."
+ }
+}

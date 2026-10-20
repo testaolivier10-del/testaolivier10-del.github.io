@@ -1,0 +1,14 @@
+{
+ "indicator-species": {
+  "def": "A species whose presence, absence or health reveals the condition of its environment. Mayfly and stonefly larvae, for example, need clean, oxygen-rich water."
+ },
+ "coral-bleaching": {
+  "def": "The whitening of corals when stress, usually warm water, makes them expel the algae that live in their tissues and feed them. Without the algae, corals may starve and die."
+ },
+ "oil-spill": {
+  "def": "A release of petroleum into the environment, especially the ocean, from tankers, pipelines or drilling. Oil coats animals, destroying the insulation of feathers and fur, and poisons them."
+ },
+ "microplastics": {
+  "def": "Plastic pieces smaller than 5 millimeters, from larger plastic broken down by sunlight and waves, fibers from clothing, and small beads. Animals eat them, and they carry toxic chemicals into food webs."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "renewable-nonrenewable-sorting": {
+  "file": "figures/renewable-nonrenewable-sorting.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Energy sources sorted into two groups. Nonrenewable, a fixed amount formed over millions of years: coal, oil, natural gas and nuclear fuel. Renewable, replenished at or near the rate we use it: nondepletable sunlight, wind, moving water and Earth's internal heat, and depletable wood, crops and other biomass, renewable only if regrown as fast as used."
+ }
+}

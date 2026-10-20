@@ -1,0 +1,71 @@
+{
+ "topic": "fuel-types",
+ "hook": "A truck runs on diesel, a furnace burns natural gas, a steel mill uses coal and a family cooks over charcoal. Each fuel is stored solar energy from ancient or recent plants, but they differ in how much energy they pack per kilogram, how much carbon dioxide they release and what they are good for.",
+ "prereq": [
+  {
+   "q": "What gas is released when fossil fuels burn?",
+   "options": [
+    "Carbon dioxide",
+    "Oxygen",
+    "Nitrogen",
+    "Helium"
+   ],
+   "correct": 0,
+   "why": "Combustion combines the fuel's carbon with oxygen, making carbon dioxide.",
+   "review": "carbon-cycle"
+  },
+  {
+   "q": "Why is coal nonrenewable?",
+   "options": [
+    "It forms over millions of years, far slower than we use it",
+    "It releases carbon dioxide",
+    "It is mined",
+    "It is black"
+   ],
+   "correct": 0,
+   "why": "The rate of formation, not pollution, makes a fuel nonrenewable.",
+   "review": "renewable-nonrenewable"
+  }
+ ],
+ "figure": {
+  "figure": "fuel-types-coal-ranks",
+  "caption": "Coal ranks from peat to lignite, bituminous and anthracite; carbon and energy per kilogram rise with rank."
+ },
+ "chain": [
+  {
+   "cause": "Plants are buried in swamps without oxygen",
+   "effect": "they do not fully decay and form peat"
+  },
+  {
+   "cause": "More heat, pressure and time act on the buried peat",
+   "effect": "it becomes lignite, then bituminous coal, then anthracite"
+  },
+  {
+   "cause": "Each step drives off water and concentrates carbon",
+   "effect": "energy per kilogram rises, so less fuel is needed for the same energy"
+  },
+  {
+   "cause": "A fuel's energy comes more from hydrogen than carbon (natural gas)",
+   "effect": "it releases less carbon dioxide per unit of energy, though not zero"
+  }
+ ],
+ "ideas": [
+  "<b>Coal</b> ranks by energy content: <b>peat</b> (not yet coal), lignite, bituminous, anthracite. Coal is used mainly for electricity and steel making.",
+  "<b>Petroleum</b> (crude oil) is refined by boiling point into gasoline, diesel, jet fuel, heating oil and asphalt. <b>Tar sands</b> hold bitumen, a heavy oil that takes much energy and water to extract.",
+  "<b>Natural gas</b> is mostly methane. It releases about half the carbon dioxide of coal per unit of energy: cleaner, but not zero emissions.",
+  "Wood and charcoal are the main fuels for many poorer households. <b>Cogeneration</b> captures waste heat from making electricity and uses it to heat buildings or water."
+ ],
+ "misconception": {
+  "wrong": "Natural gas is a clean fuel, so switching to it means zero carbon dioxide emissions.",
+  "right": "Burning methane makes carbon dioxide and water. Natural gas releases about half as much carbon dioxide as coal per unit of energy, so it is cleaner than coal but not zero emissions, and leaked methane is itself a heat-trapping gas."
+ },
+ "check": [
+  "env-fuel-types-2",
+  "env-fuel-types-3",
+  "env-fuel-types-6",
+  "env-fuel-types-10",
+  "env-fuel-types-11",
+  "env-fuel-types-12"
+ ],
+ "summary": "The main fuels differ in energy per kilogram, carbon dioxide per unit of energy and use. Coal ranks from lignite to bituminous to anthracite as heat and pressure raise its carbon and energy content. Crude oil is refined into transportation fuels; natural gas, mostly methane, releases about half the carbon dioxide of coal for the same energy but is not zero emissions. Cogeneration puts waste heat to use."
+}

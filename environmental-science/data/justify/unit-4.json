@@ -1,0 +1,162 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-4",
+   "id": "u4-erosion-hypothesis",
+   "topic": "soil-formation",
+   "practice": "4.A",
+   "skill": "hypothesis",
+   "title": "A hypothesis about plant cover and soil loss",
+   "context": "<p>A class builds four trays of the same soil on the same slope. One tray is bare; the others have 25%, 50% or 100% grass cover. The class pours the same amount of water over each tray and weighs the soil that washes off (invented study for practice).</p>",
+   "prompt": "<b>Write</b> a testable hypothesis for this experiment.",
+   "checklist": [
+    "Names the change: the percent of grass cover",
+    "Names what is measured: the mass of soil washed off",
+    "Gives a direction for the result: an increase or a decrease",
+    "Gives a reason: roots hold soil and plants slow the water"
+   ],
+   "earns": {
+    "answer": "If the grass cover on the soil is increased, then less soil will wash off the tray, because grass roots hold the soil together and the leaves slow the water running over it.",
+    "why": "Statement, change, measured variable, direction and mechanism are all there."
+   },
+   "misses": {
+    "answer": "Grass cover will change the amount of soil that washes off.",
+    "why": "\"Change\" gives no direction and there is no reason."
+   },
+   "specific": {
+    "slots": {
+     "change": {
+      "label": "If ...",
+      "options": [
+       "the grass cover is increased",
+       "the slope is made steeper",
+       "more water is poured"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Every tray sits on the same slope.",
+       "2": "The same amount of water goes on each tray."
+      }
+     },
+     "direction": {
+      "label": "then ...",
+      "options": [
+       "less soil will wash off",
+       "more soil will wash off",
+       "the soil will change"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Plant cover protects soil; more cover should mean less loss.",
+       "2": "A hypothesis states a direction, not just a change."
+      }
+     },
+     "because": {
+      "label": "because ...",
+      "options": [
+       "roots hold the soil and plants slow the running water",
+       "grass makes the soil heavier",
+       "grass absorbs all the water"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Weight is not why vegetation protects soil.",
+       "2": "Plants do not absorb all the water; they slow it and anchor the soil."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-infiltration-control",
+   "topic": "soil-properties",
+   "practice": "4.C",
+   "skill": "control",
+   "title": "A fair test of how fast water soaks in",
+   "context": "<p>A student pours 500 mL of water into a tube pushed into three soils (sandy, loam and clay) and times how long it takes to soak in (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> two variables the student must hold constant and <b>explain</b> why each matters.",
+   "checklist": [
+    "Names a constant: the volume of water poured (500 mL)",
+    "Names a second constant: the tube size, the depth it is pushed in, or how dry the soil is at the start",
+    "Explains that keeping them the same means differences in time come from the soil type alone"
+   ],
+   "earns": {
+    "answer": "The student must use the same volume of water, 500 mL, each time, and push the tube to the same depth in each soil. If either changed, the soak-in time would change for reasons other than the soil, so keeping them constant means any difference in time comes from the soil's texture.",
+    "why": "Two constants, each with its reason (isolating the soil type as the cause)."
+   },
+   "misses": {
+    "answer": "Keep everything the same in each test so the experiment is fair.",
+    "why": "It names no variable, and the point goes only to a named constant with its reason."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-rain-shadow-chain",
+   "topic": "geo-and-climate",
+   "practice": "1.B",
+   "skill": "chain",
+   "title": "How a rain shadow forms",
+   "prompt": "<b>Explain</b> why the windward side of a coastal mountain range is wet and the leeward side is dry.",
+   "checklist": [
+    "Moist air from the ocean is pushed up the windward slope",
+    "Rising air cools, water vapor condenses, and rain or snow falls on the windward side",
+    "The air that crosses the peaks has lost its moisture; it sinks and warms on the leeward side, so little rain falls there"
+   ],
+   "earns": {
+    "answer": "Wind pushes moist ocean air up the windward slope. As the air rises it cools, its water vapor condenses into clouds, and rain or snow falls on that side. The air that crosses the peaks has lost most of its moisture, and as it sinks down the leeward side it warms, which keeps water from condensing, so the leeward side is dry.",
+    "why": "Every link: rising, cooling, condensing, losing moisture, sinking and warming."
+   },
+   "misses": {
+    "answer": "The mountains block the rain, so one side is wet and one is dry.",
+    "why": "\"Block the rain\" skips the mechanism: rising air cools and drops its moisture."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-enso-trend",
+   "topic": "el-nino-la-nina",
+   "practice": "5.C",
+   "skill": "trend",
+   "title": "Water temperature and the anchovy catch",
+   "context": "<p>Off the coast of Peru (invented data for practice): in a normal year, surface water 19 °C and anchovy catch 8 million metric tons; in an El Niño year, 24 °C and 2 million metric tons.</p>",
+   "prompt": "<b>Describe</b> the relationship in the data and <b>explain</b> it.",
+   "checklist": [
+    "Describes it with numbers: water 5 °C warmer in the El Niño year, catch down by 6 million metric tons (75% lower)",
+    "Explains: weaker trade winds slow the upwelling of cold, nutrient-rich water",
+    "Links fewer nutrients to less plankton and fewer anchovies"
+   ],
+   "earns": {
+    "answer": "In the El Niño year the water was 5 °C warmer (24 °C versus 19 °C) and the catch fell from 8 to 2 million metric tons, 75% lower. During El Niño the trade winds weaken, so less cold, nutrient-rich water wells up along the coast. With fewer nutrients, less plankton grows, and the anchovies that feed on it decline.",
+    "why": "The trend with numbers, then each link from wind to fish."
+   },
+   "misses": {
+    "answer": "When it is El Niño the water is warmer so the fish don't like it and leave.",
+    "why": "No numbers, and \"don't like it\" skips the real link: less upwelling, fewer nutrients, less plankton."
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-slope-solution",
+   "topic": "soil-formation",
+   "practice": "7.E",
+   "skill": "solution",
+   "title": "Saving soil on a sloping farm",
+   "context": "<p>A farmer grows corn on a hillside and loses soil in every heavy rain. The farmer wants to keep growing corn on the same field.</p>",
+   "prompt": "<b>Propose</b> a practice that fits this constraint and <b>explain</b> how it reduces erosion.",
+   "checklist": [
+    "Proposes a practice that keeps corn on the field (for example, planting rows across the slope, or leaving crop stalks on the ground between seasons)",
+    "Explains how it works: slows runoff or holds soil",
+    "Fits the stated constraint"
+   ],
+   "earns": {
+    "answer": "Plant the corn rows across the slope, following its level lines, instead of up and down the hill. Each row then forms a small ridge across the slope that slows running water and traps soil, so less soil washes downhill while the farmer keeps growing corn.",
+    "why": "It keeps the crop, and it explains how the ridges slow water and trap soil."
+   },
+   "misses": {
+    "answer": "The farmer should plant trees on the hillside instead of corn.",
+    "why": "The farmer wants to keep growing corn, so a solution that replaces it ignores the constraint."
+   }
+  }
+ ]
+}
