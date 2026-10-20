@@ -115,10 +115,10 @@
    "practice": "6.C",
    "level": "apply",
    "diff": 2,
-   "q": "If a field mouse lives its typical life span, how many offspring does it produce, using the table’s values?",
+   "q": "Using the table, estimate how many offspring a field mouse produces in its typical life span. It breeds only from its age at first breeding to the end of its life span.",
    "stimulus": "r-k-selection-s1",
    "why": {
-    "correct": "Offspring per year times years of life: $30\\,\\frac{\\text{offspring}}{\\text{yr}} \\times 1\\,\\text{yr} = 30$ offspring. (A slightly more careful count would subtract the first 0.2 years before it can breed.)"
+    "correct": "Offspring per year times the years it can breed: $30\\,\\frac{\\text{offspring}}{\\text{yr}} \\times (1 - 0.2)\\,\\text{yr} = 24$ offspring. A gorilla, by the same method, has about $0.25 \\times (40 - 10) = 7.5$ in its whole life."
    },
    "numeric": {
     "unit": "offspring",
@@ -126,17 +126,23 @@
      "fn": "mul",
      "args": [
       30,
-      1
+      {
+       "fn": "sub",
+       "args": [
+        1,
+        0.2
+       ]
+      }
      ]
     },
     "mistakes": [
      {
-      "value": 6,
-      "why": "That multiplies by 0.2, the age at first breeding. Use the life span, 1 year."
+      "value": 30,
+      "why": "That counts the whole year. The mouse cannot breed until 0.2 years old, so it breeds for 1 - 0.2 = 0.8 years: 30 × 0.8."
      },
      {
-      "value": 31,
-      "why": "That adds the numbers. Multiply offspring per year by years of life."
+      "value": 6,
+      "why": "That multiplies by 0.2, the age at first breeding. Multiply by the years it can breed, 1 - 0.2 = 0.8."
      }
     ]
    }

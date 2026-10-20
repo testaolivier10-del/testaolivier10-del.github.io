@@ -224,10 +224,10 @@
    "practice": "6.C",
    "level": "apply",
    "diff": 2,
-   "q": "By what percent did visibility fall from day 1 to day 5?",
+   "q": "Find the percent change in visibility from day 1 to day 5.",
    "stimulus": "co2-particulates-s1",
    "why": {
-    "correct": "$\\frac{(2\\,\\text{km} - 40\\,\\text{km})}{40\\,\\text{km}} \\times 100 = -95\\%$, a 95% fall."
+    "correct": "$\\frac{(2\\,\\text{km} - 40\\,\\text{km})}{40\\,\\text{km}} \\times 100 = -95\\%$, a 95% fall. Visibility fell, so the percent change is negative."
    },
    "numeric": {
     "from": {
@@ -242,6 +242,10 @@
      {
       "value": -1900,
       "why": "You divided by the day 5 value. Divide by the old (day 1) value, 40 km."
+     },
+     {
+      "value": 95,
+      "why": "Visibility fell, so the percent change is negative: -95%."
      },
      {
       "value": -0.95,

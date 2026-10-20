@@ -127,7 +127,8 @@
         cell: M.setupCell(s1, { unit: 'kWh', mistakes: [{ expr: num(kwh) + ' kWh * ' + num(eff / 100), why: 'Multiplying gives less than the home uses. The plant must burn MORE energy than it delivers: divide by the efficiency.' }] }) }),
       step('fuel', 'The fuel energy, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(fuel, 'kWh', { mistakes: [{ value: ev('mul', [kwh, eff / 100]), why: 'Divide by the efficiency: the fuel energy must be larger than the electricity.' }] }) }),
       step('setup2', 'Write the setup to convert that to BTU, with units that cancel.', { kind: 'setup', practice: '6.B', hint: 'Use the factor 3412 BTU/kWh so kWh cancels.',
-        cell: M.setupCell(s2, { unit: 'BTU', bind: {}, mistakes: [{ expr: fuelS + ' kWh / (3412 BTU/kWh)', why: 'Upside down: write the factor so kWh is on the bottom and cancels, leaving BTU.' }] }) }),
+        // tol: the student carries the fuel energy from the step before, rounded (4444.4 or 4444 for 4444.44)
+        cell: M.setupCell(s2, { unit: 'BTU', bind: {}, tol: 0.002, mistakes: [{ expr: fuelS + ' kWh / (3412 BTU/kWh)', why: 'Upside down: write the factor so kWh is on the bottom and cancels, leaving BTU.' }] }) }),
       step('btu', 'The fuel energy in BTU, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(ev('mul', [fuelR, BTU_KWH]), 'BTU', { mistakes: [{ value: ev('div', [fuelR, BTU_KWH]), why: 'You divided. Multiply by 3,412 BTU per kWh so the kWh cancel.' }, { value: ev('mul', [kwh, BTU_KWH]), why: 'That converts the electricity, not the fuel energy. Use the fuel energy from the step before.' }] }) })
     ];
     return { ctx: c.id, topic: c.topic, type: 'fuel', text: text, steps: steps,
@@ -172,7 +173,7 @@
       step('setup', 'Write the setup for the energy used in kWh, with units that cancel.', { kind: 'setup', practice: '6.B', hint: 'Energy = power × time. Change W to kW with 1 kW / 1000 W.',
         cell: M.setupCell(s1, { unit: 'kW*h', mistakes: [{ expr: num(D.w) + ' W * ' + h + ' h/day * ' + days + ' day', why: 'That is in watt-hours. Divide by 1,000 W per kW to get kWh.' }] }) }),
       step('kwh', 'The energy used, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(kwh, 'kWh', { units: ['kW h', 'kW*h', 'kilowatt-hours'], mistakes: [{ value: ev('mul', [D.w, h, days]), why: 'That is watt-hours (Wh). 1 kWh = 1,000 Wh.' }, { value: ev('mul', [D.w, h, ev('div', [1, 1000])]), why: 'That is one day. Multiply by the ' + days + ' days.' }] }) }),
-      step('cost', 'The cost, in dollars.', { kind: 'unit', practice: '6.C', cell: M.unitCell(cost, '$', { units: ['dollars', 'dollar', 'USD'], mistakes: [{ value: ev('div', [kwh, price]), why: 'Multiply: kWh × $ per kWh leaves $.' }] }) })
+      step('cost', 'The cost, in dollars.', { kind: 'unit', practice: '6.C', cell: M.unitCell(cost, '$', { units: ['dollars', 'dollar', 'USD'], places: 2, mistakes: [{ value: ev('div', [kwh, price]), why: 'Multiply: kWh × $ per kWh leaves $.' }] }) })
     ];
     return { ctx: c.id, topic: c.topic, type: 'power', text: text, steps: steps,
       solution: [big(D.w) + ' W × ' + h + ' h/day × ' + days + ' days × 1 kW/1,000 W = <b>' + nice(kwh, 5) + ' kWh</b>.', nice(kwh, 5) + ' kWh × $' + M.fixed(price, 2) + '/kWh = <b>$' + M.fixed(cost, 2) + '</b>.', 'W is a rate (power); kWh is an amount (energy).'],

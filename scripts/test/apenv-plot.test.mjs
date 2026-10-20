@@ -51,3 +51,22 @@ test('dual axis, pyramid and a dose-response curve with LD50 marked', () => {
   assert.ok(e.polys.some(p => p.dashed), 'dashed guides to the axes');
   assert.match(P.svg(spec), /LD50/);
 });
+
+/* Phase 3 (author C, docs/apenv-needs-author.md): a dual-axis plot at the
+   default width names both axes in a band above the plot, never inside it or
+   on top of each other, and its legend wraps instead of running off the edge. */
+test('dual axis at the default width: axis names above the plot, apart; the legend wraps inside the picture', () => {
+  const spec = { kind: 'dual', label: L, xLabel: 'Weeks after the spring runoff', yLabel: 'Algae (µg per L)', yRightLabel: 'Dawn dissolved oxygen (mg per L)',
+    series: [{ name: 'Algae', points: [[0, 5], [12, 60]], axis: 'left' }, { name: 'Bottom dissolved oxygen', points: [[0, 8], [12, 1]], axis: 'right' }] };
+  const h = P.svg(spec), F = P.frame(P.expand(spec));
+  const lab = [...h.matchAll(/<text class="env-plot-axlabel" x="([\d.]+)" y="([\d.]+)" text-anchor="(\w+)">([^<]*)<\/text>/g)].map(m => ({ x: +m[1], y: +m[2], a: m[3], t: m[4] }));
+  const left = lab.find(l => /Algae/.test(l.t)), right = lab.find(l => /oxygen/.test(l.t));
+  assert.ok(left && right);
+  assert.ok(left.y < F.pad.t && right.y < F.pad.t, 'both names sit above the plot area');
+  const lw = P.textW(left.t), rw = P.textW(right.t);
+  assert.ok(left.y !== right.y || left.x + lw + 8 <= right.x - rw, 'on one line only when they do not meet');
+  assert.ok(right.x <= F.w && right.x - rw >= 0 && left.x + lw <= F.w, 'inside the picture');
+  const vbW = +h.match(/viewBox="0 0 (\d+)/)[1];
+  for (const m of h.matchAll(/<g class="env-plot-legend">([\s\S]*?)<\/g>/g)) for (const t of m[1].matchAll(/<text x="([\d.]+)"[^>]*>([^<]*)</g)) assert.ok(+t[1] + P.textW(t[2]) <= vbW + 1, `legend "${t[2]}" fits`);
+  assert.equal(F.w, 360, 'the default width');
+});

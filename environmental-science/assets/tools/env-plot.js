@@ -71,9 +71,23 @@
   }
   function fmtTick(v){ var s = String(+v.toPrecision(6)); return s.replace('-', '−'); }
 
+  /* Text width estimate at the plot's 11 px bold UI font (an average glyph
+     is about 6.4 px; generous, so estimates never undershoot by much). */
+  function textW(s){ return String(plain(s == null ? '' : s)).length * 6.4; }
+  /* A dual-axis plot names its two axes in a band above the plot: left name
+     at the left, right name at the right, on one line when both fit with a
+     gap, else on two lines (left first). Nothing is drawn inside the plot
+     area, so the names can never cover the data or each other. */
+  function dualHead(spec, w){
+    if(!spec.rightAxis) return null;
+    var a = spec.yLabel || '', b = spec.rightAxis.label || '';
+    var one = !a || !b || textW(a) + textW(b) + 24 <= w - 8;
+    return { one: one, band: (one ? 1 : 2) * 16 + 6 };
+  }
   function frame(spec){
     var w = spec.width || 360, h = spec.height || 260;
-    var PAD = spec.rightAxis ? { l: BASEPAD.l, r: 40, t: BASEPAD.t, b: BASEPAD.b } : BASEPAD;
+    var dh = dualHead(spec, w);
+    var PAD = spec.rightAxis ? { l: BASEPAD.l, r: 40, t: BASEPAD.t + dh.band, b: BASEPAD.b } : BASEPAD;
     var x = spec.x || [-5, 5], y = spec.y || [-5, 5];
     var iw = w - PAD.l - PAD.r, ih = h - PAD.t - PAD.b;
     var f = {
@@ -186,7 +200,8 @@
       // runs through it (a function plot through y = 0).
       if(spec.xLabel && ax === B){ extraH = 16; lab.push('<text class="env-plot-axlabel" x="' + r2((L + R) / 2) + '" y="' + r2(B + 31) + '" text-anchor="middle">' + esc(plain(spec.xLabel)) + '</text>'); }
       else if(spec.xLabel) lab.push('<text class="env-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
-      if(spec.yLabel) lab.push('<text class="env-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
+      if(spec.yLabel && spec.rightAxis) lab.push('<text class="env-plot-axlabel" x="4" y="14" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
+      else if(spec.yLabel) lab.push('<text class="env-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
       out.push('<g class="env-plot-ticks">' + lab.join('') + '</g>');
     }
     (spec.asymptotes || []).forEach(function(a){
@@ -215,7 +230,7 @@
     if(spec.rightAxis){
       var RY = spec.rightAxis.y, rt = ticks(RY[0], RY[1], 6);
       out.push('<g class="env-plot-axis"><line x1="' + R + '" y1="' + T + '" x2="' + R + '" y2="' + B + '"/></g><g class="env-plot-ticks">' + rt.map(function(v){ var py = F.sy(y0 + (v - RY[0]) / (RY[1] - RY[0]) * (y1 - y0)); return '<text x="' + r2(R + 5) + '" y="' + r2(py + 4) + '" text-anchor="start">' + fmtTick(v) + '</text>'; }).join('') +
-        (spec.rightAxis.label ? '<text class="env-plot-axlabel" x="' + r2(R - 6) + '" y="' + (T + 10) + '" text-anchor="end">' + esc(plain(spec.rightAxis.label)) + '</text>' : '') + '</g>');
+        (spec.rightAxis.label ? '<text class="env-plot-axlabel" x="' + r2(F.w - 4) + '" y="' + (dualHead(spec, F.w).one || !spec.yLabel ? 14 : 30) + '" text-anchor="end">' + esc(plain(spec.rightAxis.label)) + '</text>' : '') + '</g>');
     }
     (spec.lines || []).forEach(function(l){
       var e = l.seg ? l.through : lineEnds(l, F);
@@ -249,10 +264,18 @@
       out.push('<text class="env-plot-label' + (t.cls ? ' ' + esc(t.cls) : '') + '" x="' + r2(F.sx(t.at[0])) + '" y="' + r2(F.sy(t.at[1]) + (t.cls ? 4 : 0)) + '" text-anchor="' + (t.anchor || 'middle') + '">' + esc(plain(t.text)) + '</text>');
     });
     // A legend for two or more series, inside the picture so it travels with it.
+    // Entries flow left to right and wrap to a new row rather than run into
+    // each other or past the edge (a dual plot's "(left axis)" names are long).
     if(spec.legend && spec.legend.length){
-      var lx = L + 6, ly = F.h + extraH + 6;
-      extraH += 18;
-      out.push('<g class="env-plot-legend">' + spec.legend.map(function(e, j){ var x = lx + j * Math.min(170, (R - L) / spec.legend.length); return '<rect class="env-plot-bar ' + esc(e.cls) + '" x="' + r2(x) + '" y="' + r2(ly) + '" width="10" height="10"/><text x="' + r2(x + 14) + '" y="' + r2(ly + 9) + '">' + esc(plain(e.name)) + '</text>'; }).join('') + '</g>');
+      var lx0 = Math.min(L, 8), lmax = F.w - 4, lx = lx0, ly = F.h + extraH + 6, rows = 1, items = [];
+      spec.legend.forEach(function(e){
+        var ew = 14 + textW(e.name);
+        if(lx > lx0 && lx + ew > lmax){ lx = lx0; ly += 18; rows++; }
+        items.push('<rect class="env-plot-bar ' + esc(e.cls) + '" x="' + r2(lx) + '" y="' + r2(ly) + '" width="10" height="10"/><text x="' + r2(lx + 14) + '" y="' + r2(ly + 9) + '">' + esc(plain(e.name)) + '</text>');
+        lx += ew + 16;
+      });
+      extraH += 18 * rows;
+      out.push('<g class="env-plot-legend">' + items.join('') + '</g>');
     }
     return '<svg class="env-plot" viewBox="0 0 ' + F.w + ' ' + (F.h + extraH) + '" width="' + F.w + '" height="' + (F.h + extraH) + '" role="img" aria-label="' + esc(plain(spec.label)) + '">' + out.join('') + '</svg>';
   }
@@ -440,6 +463,6 @@
     return { el: g, set: set, get: function(){ return [x, y]; } };
   }
 
-  root.ApEnvPlot = { expand: expand, svg: svg, frame: frame, ticks: ticks, sample: sample,
+  root.ApEnvPlot = { expand: expand, svg: svg, frame: frame, textW: textW, ticks: ticks, sample: sample,
     mount: mount, draggable: draggable, loop: loop, reduced: reduced, interpX: interpX, interpY: interpY, lsq: lsq };
 })(typeof window !== 'undefined' ? window : globalThis);

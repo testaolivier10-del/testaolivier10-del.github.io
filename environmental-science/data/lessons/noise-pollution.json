@@ -1,6 +1,6 @@
 {
  "topic": "noise-pollution",
- "hook": "A new highway opens beside a forest. Within two years, birdwatchers count far fewer songbirds breeding near the road, even though not a single tree was cut along the edge. The birds did not leave because of fumes or lost habitat. They left because they could not hear each other sing.",
+ "hook": "A new highway opens beside a forest. Within two years, birdwatchers count far fewer songbirds breeding near the road, even though not a single tree was cut along the edge. Fumes and lights may play a part, but a main suspect is the noise: birds that cannot hear each other sing have trouble finding mates.",
  "prereq": [
   {
    "q": "Which part of an organism's environment is a sound?",

@@ -193,7 +193,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "Wheat is pollinated by wind, so wild bees from the habitat do not change its yield.",
+    "correct": "Wheat flowers pollinate themselves (with a little help from wind), so wild bees from the habitat do not change its yield.",
     "options": [
      "Blueberries yield 3,000 kg per hectare more near habitat.",
      "Almonds yield 900 kg per hectare more near habitat.",
@@ -313,7 +313,7 @@
    "why": {
     "correct": "Pollination by wild animals living in nearby habitat is a regulating service, and it shows up in the yields of crops that need pollinators.",
     "options": [
-     "Right: the three bee-pollinated crops yield more near habitat, and wind-pollinated wheat does not change.",
+     "Right: the three bee-pollinated crops yield more near habitat, and wheat, which pollinates itself, does not change.",
      "Wheat does not change at all, and the other gains differ.",
      "Every crop yields the same or less far from habitat.",
      "Wheat yield is 3,500 kg per hectare in both places."

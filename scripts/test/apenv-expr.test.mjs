@@ -65,3 +65,26 @@ test('gradeSetup: units required and cancelling; values that must or must not ap
   assert.match(bare.notes[0], /Show 70 in the setup/);
   assert.ok(X.gradeSetup(M, '70 / 0.02 / 100').notes.some(n => /0\.02 does not belong/.test(n)));
 });
+
+/* Phase 3 (author F's report, docs/apenv-needs-author.md "Author F"; the
+   coordinator's metric-ton and rate cases): the units setups had to drop. */
+test('units authors needed: seconds, nanograms, kiloliters, degrees, decades, metric tons, and squares times lengths', () => {
+  const r = X.evaluate('50000 L/s * 86400 s');
+  assert.equal(r.value, 4.32e9); assert.equal(X.dimText(r.dims), 'L', 'seconds cancel');
+  assert.equal(X.dimText(X.evaluate('5 ng/L * 2 L').dims), 'ng');
+  assert.equal(X.dimText(X.evaluate('3000 m2 * 2 m').dims), 'm^3', 'm2 times m is m3');
+  assert.deepEqual({ ...X.unitDims('m3') }, { m: 3 }); assert.deepEqual({ ...X.unitDims('m^3') }, { m: 3 });
+  assert.equal(X.dimText(X.evaluate('120 ha * 10000 m2/ha * 0.5 m').dims), 'm^3');
+  assert.deepEqual({ ...X.evaluate('1420 / m2 * 3000 m2').dims }, {}, 'a density times an area is a count');
+  assert.equal(X.dimText(X.evaluate('40 t * 1000 kg/t').dims), 'kg', 't is a metric ton');
+  assert.equal(X.dimText(X.evaluate('40 MT').dims), 'tonne');
+  assert.equal(X.dimText(X.evaluate('0.9 °C / 6 decades').dims), '°C/decade');
+  assert.equal(X.dimText(X.evaluate('5 µg/L * 10 L').dims), 'ug');
+  assert.equal(X.evaluate('2 kL').ok, true);
+  // A one-letter unit is a whole word only: "kgs" is not kg times s.
+  assert.equal(X.evaluate('2 kgs').ok, false);
+  // gradeSetup with requireUnits now works for these setups.
+  const item = { setup: { answer: '50000 L/s * 86400 s', unit: 'L', requireUnits: true } };
+  assert.equal(X.gradeSetup(item, '50000 L/s * 86400 s').correct, true);
+  assert.equal(X.gradeSetup(item, '50000 L/s * 24 h').correct, false);
+});

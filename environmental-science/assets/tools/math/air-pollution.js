@@ -172,15 +172,17 @@
   }
 
   function genPH(r, c){
-    var a = r.pick([4.0, 4.2, 4.3, 4.5, 4.6, 5.0]), b;
-    do { b = r.pick([5.6, 6.0, 6.5, 7.0, 5.5, 5.0]); } while(b - a < 0.9 || Math.abs((b - a) * 10 - Math.round((b - a) * 10)) > 1e-6);
+    // Reviewer (tools-b): rain is never cleaner than about 5.6 (CO2 alone makes it
+    // that acidic), so the comparison rain is 5.0 to 5.6, never 6 to 7.
+    var a = r.pick([4.0, 4.2, 4.3, 4.5, 4.6]), b;
+    do { b = r.pick([5.6, 5.5, 5.0]); } while(b - a < 0.9 || Math.abs((b - a) * 10 - Math.round((b - a) * 10)) > 1e-6);
     var d = ev('sub', [b, a]), times = ev('pow', [10, d]);
     var where = r.pick(c.places || ['a lake in the Adirondack Mountains']);
     var text = '<p>Rain falling on ' + where + ' has a pH of <b>' + a.toFixed(1) + '</b>. ' + (b === 5.6 ? 'Normal, unpolluted rain' : 'Rain in a cleaner region') + ' has a pH of <b>' + b.toFixed(1) + '</b>.</p>';
     var setup = '10^(' + b.toFixed(1) + ' - ' + a.toFixed(1) + ')';
     var steps = [
       step('setup', 'Write the setup for how many times more acidic the first rain is.', { kind: 'setup', practice: '6.A', hint: 'Each 1 pH unit is a factor of 10 in hydrogen ion concentration.',
-        cell: M.setupCell(setup, { parens: false, mistakes: [{ expr: b.toFixed(1) + ' - ' + a.toFixed(1), why: 'pH is a log scale: a difference of ' + M.fixed(d, 1) + ' units means 10 raised to ' + M.fixed(d, 1) + ', not ' + M.fixed(d, 1) + ' times.' }, { expr: b.toFixed(1) + ' / ' + a.toFixed(1), why: 'Divide the pH values gives nothing useful. Each pH unit is a factor of 10: raise 10 to the difference.' }] }) }),
+        cell: M.setupCell(setup, { parens: false, mustUse: [b.toFixed(1), a.toFixed(1)], mistakes: [{ expr: b.toFixed(1) + ' - ' + a.toFixed(1), why: 'pH is a log scale: a difference of ' + M.fixed(d, 1) + ' units means 10 raised to ' + M.fixed(d, 1) + ', not ' + M.fixed(d, 1) + ' times.' }, { expr: b.toFixed(1) + ' / ' + a.toFixed(1), why: 'Divide the pH values gives nothing useful. Each pH unit is a factor of 10: raise 10 to the difference.' }] }) }),
       step('times', 'How many times more acidic? (Round to a whole number.)', { kind: 'num', practice: '6.C', d: 0, cell: M.cell(times, 0.01, [{ value: d, why: 'That is the difference in pH. Each unit is ×10, so the answer is 10 to that power.' }, { value: 10 * d, why: 'Not 10 times the difference: 10 raised to the difference.' }], 0.5) }),
       choice('cause', 'Which pollutants make rain this acidic?', [
         ['Sulfur dioxide and nitrogen oxides, which form sulfuric and nitric acid', 'Mostly from burning coal (SO₂) and from engines and power plants (NOx).'],

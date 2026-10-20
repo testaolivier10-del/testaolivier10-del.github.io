@@ -510,7 +510,7 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "A family uses a wood stove that releases 25 grams of PM2.5 per hour of burning. They burn it 6 hours a day for 120 days each winter. Write the setup, with units, for the PM2.5 released per winter in kilograms, then the answer.",
+   "q": "A family uses a wood stove that releases 25 grams of PM2.5 per hour of burning. They burn it 6 hours a day for 120 days each winter. Write the setup, with units, for the PM2.5 released in one winter, in kilograms, then the answer.",
    "why": {
     "correct": "$25\\,\\frac{\\text{g}}{\\text{h}} \\times 6\\,\\frac{\\text{h}}{\\text{day}} \\times 120\\,\\text{days} \\times \\frac{1\\,\\text{kg}}{1{,}000\\,\\text{g}} = 18\\,\\text{kg}$ of PM2.5 a winter."
    },

@@ -523,19 +523,18 @@
    "q": "Which of these act like islands for the species that live there? Select all that apply.",
    "options": [
     "A mountaintop meadow surrounded by desert, for meadow plants",
-    "A city park surrounded by streets, for forest beetles",
+    "A city park surrounded by streets, for pigeons that fly across the city",
     "A wide grassland, for the grazing animals that roam across it",
     "The open ocean, for the fish that swim across it"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "A habitat island is suitable habitat surrounded by habitat the species cannot use.",
+    "correct": "A habitat island is suitable habitat surrounded by habitat the species cannot use or cross. Whether a patch is an island depends on the species: the same city park is an island for forest beetles but not for pigeons.",
     "options": [
      "Right: the plants cannot live in the desert around it.",
-     "Right: beetles that need trees cannot live on pavement.",
+     "Pigeons fly over streets and feed on them, so the park is not isolated for them.",
      "Grazers move freely across the grassland, so it is not an isolated patch for them.",
      "The ocean is continuous habitat for open-ocean fish."
     ]

@@ -486,7 +486,7 @@
    "options": [
     "It will shrink unless people move in",
     "Its population grows fast from natural increase",
-    "It is in the preindustrial stage",
+    "It is in the preindustrial stage, with high rates",
     "It has a very wide base on its pyramid"
    ],
    "correct": 0,
@@ -495,7 +495,7 @@
     "options": [
      "Right: natural increase is (8 - 11) / 10 = -0.3% a year.",
      "Deaths outnumber births, so natural increase is negative.",
-     "Its rates are low, which fits stage 4.",
+     "Preindustrial rates are both high, near 40; 8 and 11 are low, which fits stage 4.",
      "Few births mean a narrow base."
     ]
    }

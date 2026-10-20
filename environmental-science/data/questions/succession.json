@@ -350,19 +350,18 @@
    "diff": 2,
    "q": "Which changes usually happen as succession moves toward a mature community? Select all that apply.",
    "options": [
-    "Total biomass increases",
+    "Total biomass decreases as trees replace grasses",
     "Soil becomes deeper and richer",
     "Pioneer species become more common",
     "The community becomes less stable"
    ],
    "correct": [
-    0,
     1
    ],
    "why": {
-    "correct": "Succession builds soil and biomass and replaces pioneers with longer-lived species.",
+    "correct": "Succession builds soil and biomass, replaces pioneers with longer-lived species, and makes the community more stable. Only the soil statement is correct.",
     "options": [
-     "Right: larger, longer-lived plants store more biomass.",
+     "Trees are larger and longer-lived than grasses, so total biomass increases.",
      "Right: plants and decomposers add organic matter to the soil.",
      "Pioneers are replaced by later species as conditions change.",
      "Mature communities are usually more stable."

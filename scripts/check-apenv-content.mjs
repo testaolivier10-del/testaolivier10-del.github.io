@@ -78,7 +78,12 @@ export const NOT_ASSESSED = ['3.D', '3.E', '4.D'];
    a chart, a plot) says which: `source` names the public source ("NOAA
    Global Monitoring Laboratory, Mauna Loa CO2 record, 2024"), or
    `invented: true`, which the page shows as "Invented data for practice". */
-export const PUBLIC_SOURCES = /\b(NOAA|NASA|EPA|USGS|USDA|EIA|UN|United Nations|IPCC|World Bank|FAO|WHO|NOAA's|Census|Our World in Data)\b/;
+// Reputable US federal and UN-system agencies whose published data an item may
+// cite (decision 4). Phase 3 added CDC and the other obvious ones: NIH, NIEHS,
+// FDA, DOE and its national labs (NREL), USFWS, NPS, USFS, NRCS, BLM, BOEM,
+// NWS, the National Hurricane Center, ATSDR, the Census Bureau, BLS, NSF,
+// NCEI, UNEP, UNESCO, UNICEF, UN-Habitat, UN DESA, WMO, IEA and the IUCN Red List.
+export const PUBLIC_SOURCES = /\b(NOAA|NASA|EPA|USGS|USDA|EIA|UN|United Nations|IPCC|World Bank|FAO|WHO|World Health Organization|NOAA's|Census|Census Bureau|Our World in Data|CDC|Centers for Disease Control(?: and Prevention)?|NIH|NIEHS|ATSDR|FDA|DOE|Department of Energy|NREL|National Renewable Energy Laboratory|USFWS|U\.S\. Fish and Wildlife Service|Fish and Wildlife Service|NPS|National Park Service|USFS|U\.S\. Forest Service|Forest Service|NRCS|BLM|Bureau of Land Management|BOEM|NWS|National Weather Service|National Hurricane Center|NCEI|BLS|NSF|UNEP|UN Environment Programme|UNESCO|UNICEF|UN-Habitat|UN DESA|WMO|World Meteorological Organization|IEA|International Energy Agency|IUCN)(?![\w-])/;
 /* No CED text reproduced (decision 4): a phrase of 12+ words from the CED
    map's objectives or knowledge lines would be our own summary copied, not
    CED text, but the CED's own wording is never in the repo, so the check
@@ -330,6 +335,24 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   if (m) err(`${w}: explanation says "${m[0]}"; options are shuffled, so name the option by its content`);
 }
 
+/* A numeric or setup item whose question asks for a rate ("... per day",
+   "per person") but whose key unit has no "/" (a reviewer found "°C per
+   decade" keyed as "°C", so the bare "0.15 °C" passed and "0.15 °C per
+   decade" failed). A warning, not an error: "the dose per rat in mg" or "the
+   energy per hectare" may rightly key a plain unit when the stem fixes the
+   denominator. Only the asking sentences are read; parts per million and
+   "per kWh" inside a given price are skipped by that. */
+export function rateUnitWarning(q) {
+  const unit = q.type === 'numeric' ? q.numeric && q.numeric.unit : q.type === 'setup' ? q.setup && q.setup.then && q.setup.then.unit : undefined;
+  if (unit === undefined) return null;
+  if (unit && (/\//.test(unit) || /\bper\b/.test(unit) || Grade.normUnit(unit).includes('-'))) return null;
+  if (['%', 'times', 'ppm', 'ppb'].includes(unit)) return null;
+  const sents = strip(q.q).split(/(?<=[.?])\s+/);
+  const ask = sents.filter(x => /\?/.test(x) || /^(Calculate|Give|Find|Write|Estimate|Determine|What)\b/.test(x)).join(' ').replace(/parts per (million|billion)/gi, '').replace(/\bat [^,.?]*\bper\b[^,.?]*,/gi, '');
+  const m = ask.match(/\bper\s+(?!cent\b)([a-z]+)/i);
+  return m ? `item ${q.id}: the question asks for a rate ("per ${m[1]}") but the key unit "${unit || '(none)'}" has no "/"; key it as a rate (X/${m[1]}) unless the stem fixes the "per" and a plain unit is meant` : null;
+}
+
 const textOfItem = q => [q.q, ...(q.options || []), q.why?.correct, ...((q.why && q.why.options) || []),
   ...((q.setup && q.setup.mistakes) || []).map(m => m.why), ...((q.numeric && q.numeric.mistakes) || []).map(m => m.why),
   q.specific && q.specific.model, ...Object.values((q.specific && q.specific.slots) || {}).flatMap(sl => sl.options || [])].map(x => String(x ?? '')).join('\n');
@@ -381,6 +404,7 @@ export function checkTopic(map, id, { glossary, figures }) {
       inSets += idx.length;
     }
     for (const sid of Object.keys(stimuli)) if (!bySet.has(sid)) warn(`stimulus ${sid} is used by no item`);
+    for (const q of items) { const r = rateUnitWarning(q); if (r) warn(r); }
     if (topic.kind === 'concept' && items.length < MIN_ITEMS) err(`questions: ${items.length}, need at least ${MIN_ITEMS}`);
     if (items.length && higher / items.length < MIN_HIGHER) err(`questions: ${(100 * higher / items.length).toFixed(0)}% apply/analyze; at least 60%`);
     if (topic.kind === 'concept' && items.length && inSets / items.length < MIN_IN_SETS) err(`questions: ${(100 * inSets / items.length).toFixed(0)}% of items are in stimulus sets; at least 40%`);

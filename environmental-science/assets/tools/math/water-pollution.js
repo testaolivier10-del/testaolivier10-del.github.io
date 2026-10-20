@@ -311,8 +311,8 @@
     var steps = [
       setup('loadset', 'Write the setup for the nitrate load in kg per day, with units that cancel.', key, { unit: 'kg/day', mustUse: [String(conc), String(flow)], hint: 'mg/L × L/day gives mg/day; then × 1 kg / 1,000,000 mg.',
         mistakes: [{ expr: conc + ' mg/L * ' + flow + ' L/day', why: 'That is the load in mg per day. Convert to kg with × 1 kg / 1,000,000 mg.' }] }),
-      unit('load', 'Now the load with its unit.', load, 'kg/day', { units: ['kg/d', 'kilograms per day'], hint: 'Round to 0.1.' }),
-      unit('reduce', c.fix + ' would cut the nitrate reaching the water by ' + cut + '%. How much nitrate would still arrive each day?', after, 'kg/day', { units: ['kg/d'], hint: 'Cutting ' + cut + '% leaves ' + (100 - cut) + '%.',
+      unit('load', 'Now the load with its unit.', load, 'kg/day', { units: ['kg/d', 'kilograms per day'], places: 1, hint: 'Round to 0.1.' }),
+      unit('reduce', c.fix + ' would cut the nitrate reaching the water by ' + cut + '%. How much nitrate would still arrive each day?', after, 'kg/day', { units: ['kg/d'], places: 1, hint: 'Cutting ' + cut + '% leaves ' + (100 - cut) + '%.',
         mistakes: [{ value: E({ fn: 'percentOf', args: [cut, load] }), why: 'That is the amount removed. The question asks what still arrives: ' + (100 - cut) + '% of the load.' }] })
     ];
     var sol = [

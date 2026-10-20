@@ -45,13 +45,24 @@
     kcal: 'kcal', cal: 'cal', Calories: 'kcal',
     kg: 'kg', g: 'g', mg: 'mg', ug: 'ug', tonne: 'tonne', tonnes: 'tonne', ton: 'ton', tons: 'ton', lb: 'lb', lbs: 'lb',
     km: 'km', m: 'm', cm: 'cm', mm: 'mm', ft: 'ft', mi: 'mi', miles: 'mi', mile: 'mi', inch: 'in', inches: 'in',
-    km2: 'km2', m2: 'm2', cm2: 'cm2', mi2: 'mi2', ft2: 'ft2', m3: 'm3', ft3: 'ft3', ha: 'ha', hectare: 'ha', hectares: 'ha', acre: 'acre', acres: 'acre',
+    km2: 'km2', m2: 'm2', cm2: 'cm2', mi2: 'mi2', ft2: 'ft2', m3: 'm3', cm3: 'cm3', km3: 'km3', ft3: 'ft3', ha: 'ha', hectare: 'ha', hectares: 'ha', acre: 'acre', acres: 'acre',
     L: 'L', mL: 'mL', gal: 'gal', gallon: 'gal', gallons: 'gal', liter: 'L', liters: 'L',
     yr: 'yr', yrs: 'yr', year: 'yr', years: 'yr', day: 'day', days: 'day', h: 'h', hr: 'h', hrs: 'h', hour: 'h', hours: 'h', min: 'min', minutes: 'min', week: 'week', weeks: 'week',
     people: 'person', person: 'person', persons: 'person', individuals: 'individual', individual: 'individual',
     ppm: 'ppm', ppb: 'ppb', CO2: 'CO2', '%': '%', '$': '$', dollars: '$', dollar: '$', cents: 'cent', cent: 'cent',
-    women: 'woman', woman: 'woman', births: 'birth', deaths: 'death'
+    women: 'woman', woman: 'woman', births: 'birth', deaths: 'death',
+    // Phase 3 (author F's report): nanograms, seconds, kiloliters, decades,
+    // degrees, and metric tons as t or MT.
+    ng: 'ng', kL: 'kL', s: 's', sec: 's', secs: 's', second: 's', seconds: 's', mins: 'min', decade: 'decade', decades: 'decade',
+    '°C': '°C', '°F': '°F', t: 'tonne', MT: 'tonne'
   };
+  /* One-letter units are read only as a whole word ("86400 s", "40 t"),
+     never split out of a longer run, so an unknown word such as "kgs" is
+     an error rather than kg times s. */
+  var WHOLE_ONLY = { s: 1, t: 1 };
+  /* Squares and cubes of a length written with a digit (m2, km3) are that
+     length to a power, so m2 x m gives m3 and units cancel as on paper. */
+  var POWER_OF = { km2: ['km', 2], m2: ['m', 2], cm2: ['cm', 2], mi2: ['mi', 2], ft2: ['ft', 2], m3: ['m', 3], cm3: ['cm', 3], ft3: ['ft', 3], km3: ['km', 3] };
   var ALIAS = { asin: 'arcsin', acos: 'arccos', atan: 'arctan' };
   var INVERSE = { sin: 'arcsin', cos: 'arccos', tan: 'arctan', sec: 'arcsec', csc: 'arccsc', cot: 'arccot' };
   var GREEK = { theta: 'θ', alpha: 'α', beta: 'β', phi: 'φ', omega: 'ω', mu: 'μ', sigma: 'σ' };
@@ -61,7 +72,7 @@
   function normalize(s){
     s = String(s == null ? '' : s);
     s = s.replace(/[−–—]/g, '-').replace(/[×·⋅•∙]/g, '*').replace(/÷/g, '/').replace(/π/g, ' pi ').replace(/\*\*/g, '^')
-      .replace(/θ/g, ' theta ').replace(/√/g, ' sqrt ').replace(/[[{]/g, '(').replace(/[\]}]/g, ')');
+      .replace(/θ/g, ' theta ').replace(/√/g, ' sqrt ').replace(/[[{]/g, '(').replace(/[\]}]/g, ')').replace(/[µμ](?=g\b)/g, 'u');
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, function(m){ return '^(' + m.replace(/./g, function(c){ return SUPS[c]; }) + ')'; });
     return envNormalize(s);
   }
@@ -93,13 +104,15 @@
         var run = /^[A-Za-z]+/.exec(s.slice(i))[0], j = 0;
         while(j < run.length){
           var rest = run.slice(j), hit = null;
-          for(var k = 0; k < names.length && !hit; k++) if(rest.indexOf(names[k].name) === 0) hit = names[k];
+          for(var k = 0; k < names.length && !hit; k++) if(rest.indexOf(names[k].name) === 0 && !(names[k].kind === 'unit' && WHOLE_ONLY[names[k].name])) hit = names[k];
           if(!hit) throw new ExprError('"' + run.slice(j) + '" is not a unit, name or function this answer uses.' + (names.vars.length ? ' Use ' + names.vars.join(', ') + '.' : ''), i + j);
           out.push({ t: hit.kind, v: hit.name, at: i + j }); j += hit.name.length;
         }
         i += run.length; continue;
       }
       if(c === '%' || c === '$'){ out.push({ t: 'unit', v: c, at: i }); i++; continue; }
+      // Degrees: °C and °F (a bare ° is not a unit here).
+      if(c === '°' && /[CF]/.test(s.charAt(i + 1)) && !/[A-Za-z0-9]/.test(s.charAt(i + 2))){ out.push({ t: 'unit', v: '°' + s.charAt(i + 1), at: i }); i += 2; continue; }
       if('+-*/^(),|_!'.indexOf(c) > -1){ out.push({ t: c, at: i }); i++; continue; }
       if(c === '=') throw new ExprError('Type only the expression, without "y =" or "=".', i);
       throw new ExprError('"' + c + '" cannot be read.', i);
@@ -487,7 +500,7 @@
     if(!n) return {};
     switch(n.k){
       case 'num': case 'const': case 'var': return {};
-      case 'unit': var o = {}; o[canon(n.v)] = 1; return o;
+      case 'unit': var o = {}, cu = canon(n.v); if(POWER_OF[cu]) o[POWER_OF[cu][0]] = POWER_OF[cu][1]; else o[cu] = 1; return o;
       case 'paren': return dims(n.a);
       case 'neg': return dims(n.a);
       case 'fn': return n.f === 'sqrt' ? halve(dims(n.a)) : {};

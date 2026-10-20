@@ -130,3 +130,20 @@ test('"Make it specific": slots graded exactly; the free-text flags are hints on
   const good = G.flags(S, 'Because many young people will reach child-bearing age, births increase, so the population grows.');
   assert.ok(good.every(f => f.ok), JSON.stringify(good));
 });
+
+/* Phase 3: metric tons as t or MT (never Mt, a megaton); "X per Y" and
+   "X/Y" read the same, so a rate keyed with a slash accepts every spelling,
+   and a bare unit on a rate key loses the unit point. */
+test('metric tons and rates in every spelling', () => {
+  const G = B.window.ApEnvGrade;
+  for (const u of ['t', 'MT', 'tonne', 'tonnes', 'metric ton', 'metric tons']) assert.equal(G.normUnit(u), G.normUnit('metric tons'), u);
+  assert.notEqual(G.normUnit('Mt'), G.normUnit('metric tons'), 'Mt is a megaton');
+  assert.notEqual(G.normUnit('t'), G.normUnit('ton'), 'a metric ton is not a short ton');
+  for (const [a, b] of [['°C per decade', '°C/decade'], ['degrees C per decade', '°C/decade'], ['kg per person per year', 'kg/person/yr'], ['kg/person/year', 'kg per person per yr'], ['people per square kilometer', 'people/km²'], ['nanograms per liter', 'ng/L']]) assert.equal(G.normUnit(a), G.normUnit(b), `${a} = ${b}`);
+  const rate = { answer: 0.15, unit: '°C/decade' };
+  assert.equal(G.numeric(rate, '0.15 °C per decade').correct, true);
+  assert.equal(G.numeric(rate, '0.15 degrees C per decade').correct, true);
+  const bare = G.numeric(rate, '0.15 °C');
+  assert.equal(bare.correct, false); assert.equal(bare.parts.value, true); assert.equal(bare.parts.unit, false);
+  assert.equal(G.numeric({ answer: 40, unit: 'metric tons' }, '40 t').correct, true);
+});

@@ -111,8 +111,15 @@
   function dec(x){ var s = String(+x.toPrecision(6)); if(/e/.test(s)) s = x.toFixed(10).replace(/0+$/, ''); return s; }
 
   function genRead(r, c){
-    var stp = r.pick(c.steps || [10, 20, 25, 50]), k = r.int(3, 6), L = stp * k, hill = r.pick([3, 4, 5]), n = Math.max(8, k * 2);
-    var pts = curve(L, hill, stp, n), key = ld50(pts), thr = threshold(pts);
+    var stp = r.pick(c.steps || [10, 20, 25, 50]), k, L, hill, n, pts;
+    // Reviewer (tools-b): redraw until the curve shows a real no-effect dose above 0,
+    // so the threshold step never has the trivial answer 0 mg/kg.
+    for(var g = 0; g < 40; g++){
+      k = r.int(3, 6); L = stp * k; hill = r.pick([3, 4, 5]); n = Math.max(8, k * 2);
+      pts = curve(L, hill, stp, n);
+      if(threshold(pts) > 0) break;
+    }
+    var key = ld50(pts), thr = threshold(pts);
     var other = M.round(L * r.pick([0.4, 0.5, 2, 2.5, 3]), 0), more = key < other;
     var text = '<p>' + c.lead + ' ' + c.who + ' were given doses of ' + c.chem + ', and the percent that died at each dose is plotted.</p>';
     var steps = [
@@ -190,7 +197,7 @@
     ];
     var sol = ['Each step up multiplies the concentration by ' + f + ': ' + dec(c0) + ' ppm × ' + f + '^' + lv + ' = ' + dec(top) + ' ppm in the ' + names[lv] + '.',
       'Compared with the ' + names[1] + ' (' + dec(mid) + ' ppm): ' + dec(top) + ' / ' + dec(mid) + ' = ' + big(M.round(top / mid, 0)) + ' times.',
-      'Persistent, fat-soluble chemicals (DDT, mercury, PCBs) are stored in fat rather than excreted. A predator eats many prey, so it takes in all of theirs: biomagnification. Within one animal, the build-up over its life is bioaccumulation.'];
+      'Persistent chemicals the body cannot easily excrete build up in tissue: DDT and PCBs are stored in fat, and methylmercury binds to proteins in muscle. A predator eats many prey, so it takes in all of theirs: biomagnification. Within one animal, the build-up over its life is bioaccumulation.'];
     return { ctx: c.id, topic: c.topic, type: 'magnify', text: text, steps: steps, solution: sol,
       given: { c0: c0, f: f, lv: lv }, figure: { kind: 'chain', c0: c0, f: f, lv: lv, names: names } };
   }

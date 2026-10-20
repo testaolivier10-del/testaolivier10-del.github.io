@@ -111,17 +111,23 @@ plan and the countdown use the date only.
   (0.693 / r) as the 2026 scoring guidelines did; whether 2027 guidelines still accept it is not known.
 - **Survivorship curve examples.** Songbirds and lizards are given as Type II, as most APES texts do; real
   songbird curves are often closer to Type II in adults only. A teacher may prefer other examples.
-- **Real cases quoted from memory, rounded and attributed in passages:** St. Matthew Island reindeer (29 in
-  1944, about 6,000 in 1963, 42 in 1966), northern elephant seal bottleneck, Mount St. Helens 1980 (600 km²
-  flattened), bowhead whales (protected from commercial hunting since the 1930s, first breeding about age 25,
-  more than 10,000 today), world population about 1 billion around 1800 and 8 billion in 2022 (UN). Each
-  passage is labeled "Invented passage for practice, summarizing ..."; a reviewer with sources should confirm
-  the figures.
-- **Sea level about 120 m lower 20,000 years ago** (2.5, last glacial maximum) is the common textbook value;
-  published estimates run about 120 to 130 m.
+- **Real cases quoted from memory.** Resolved 2026-10-20 (review u2-u3): St. Matthew Island 29 (1944), about 6,000
+  (1963), 42 (1966) match the Alaska Science Forum account of David Klein's counts; Mount St. Helens: USGS gives
+  about 230 square miles (about 600 km²) devastated by the lateral blast; bowheads: NOAA Fisheries gives first
+  breeding about 25, one calf every 3 to 4 years, protection under the 1931 League of Nations convention, under 3,000
+  worldwide by 1921, about 15,200 western Arctic whales now; UN DESA: under 1 billion until about 1800, 8 billion on
+  15 November 2022. Corrected: elephant seals now "more than 200,000" (about 225,000 in 2010, Lowry et al. 2014;
+  the passage had "well over 100,000"), and the bowhead passage now says whaling ran into the early 1900s.
+- **Sea level about 120 m lower 20,000 years ago.** Resolved 2026-10-20 (review u2-u3): USGS gives about 125 m at
+  the last glacial maximum, about 21,000 years ago; "about 120 meters ... about 20,000 years ago" is within the
+  published 120-130 m range and stays.
 - **TFR from age-specific rates** (3.7 item and notes: sum × 5 / 1,000) goes slightly beyond what the CED is
   known to require for 3.7 (objectives after 3.7 unread, see ced-text). Kept as one apply item; drop if a
   teacher judges it out of scope.
+- **Grader: no number inside a unit (review u2-u3, for the lead).** `ApEnvGrade.readNumber` refuses any digit in
+  the unit part, so "22 births per 1,000 people" (and every spelling with 1,000) could never be graded right. The one
+  item that asked for it (`env-human-population-6`) now asks for the number only (`askUnit: false`). A runtime
+  fix (allow "per 1,000" / "per 1000" as a unit) would let rate items ask for the unit again.
 
 ## Author C (Unit 4): points for a person to check (open, 2026-10-20)
 
@@ -154,8 +160,20 @@ plan and the countdown use the date only.
 
 - **Real data quoted, with sources.** Solid waste (8.9): EPA, *Advancing Sustainable Materials Management: 2018 Fact Sheet* (December 2020), Table 1: 292.4 million tons generated, 146.1 landfilled, 69.1 recycled, 24.9 composted, 34.6 combusted with energy recovery, 17.7 other food management; 4.9 lb per person per day. The per-person item uses about 327 million people for 2018 (Census estimate, rounded) and reproduces 4.9. Thermal pollution (8.6): dissolved oxygen at saturation in fresh water (USGS tables, sea-level pressure), quoted to one decimal: 14.6, 12.8, 11.3, 10.1, 9.1, 8.3, 7.6, 6.9 mg/L at 0-35 °C; I recomputed them from the Benson-Krause equation (7.56 at 30 °C rounds to 7.6). Noise (7.8): the lesson figure uses the CDC "What Noises Cause Hearing Loss?" ranges (conversation 65-80 dB, lawn mower 80-100, sports events 94-110, sirens 110-129, fireworks 140-160; 85 dB as the level where damage can begin over time). The noise question set itself uses invented values, because "CDC" is not in the content check's list of public sources (`PUBLIC_SOURCES`); consider adding CDC and NIH there.
 - **Facts stated roughly in notes; confirm before launch.** Volcanoes emit roughly one hundredth of human CO2 each year (USGS: under about 1 billion t against more than 35 billion t); the lower 48 states lost about half their original wetlands since the 1780s (USFWS); recycling aluminum saves about 95% of the energy of primary production (the per-can energy in the setup item, 0.2 kWh, is stated as an assumption, because published per-can figures vary); United States SO2 from power plants fell by more than 90% after 1990; DDT banned for most uses in the United States in 1972, PCBs in 1979; Stockholm Convention 2001, more than 180 parties.
-- **Atrazine as an endocrine disruptor.** The amphibian findings are debated in the literature; the items and notes say "linked in some studies" rather than stating it as settled. A reviewer may prefer a different example (BPA, DDT) as the key.
-- **Mercury sources.** Notes say methylmercury comes from mercury released by sources such as coal burning and small-scale gold mining (UNEP lists artisanal gold mining as the largest global source, coal second). Check the wording against the CED, which emphasizes coal.
 - **Ordering choices.** "Pathogen" is taught in 8.15, so sewage treatment (8.11) says "germs" and "disease-causing bacteria and viruses" for disinfection. DDT is taught in 8.7, so 8.3 leaves it out of the endocrine disruptor examples. Malaria (8.15) is described in 8.7 as "a deadly disease spread by mosquitoes". A reviewer may prefer preview boxes instead.
 - **Runtime limits found while authoring (no change made).** `ApEnvExpr` cannot read `ng`, `s` as a bare unit after a rate (`50000 L/s * 86400 s`), or combine `m2` × `m` into `m3`; setups that would need them are written without units, and the answer step carries the unit. `ApEnvPlot` bar charts are linear only, so the biomagnification set (values from 0.00005 to 50 ppm) is a table, not a bar chart.
 - **FRQ scoring.** `frq-photochemical-smog-data` follows the 2027 Q2 shape and ends with a solution part (2 points), per `frq-solution-part`. `frq-eutrophication-design` gives 1 point each to the hypothesis, the constant, the design change and the solution, and 2 to the variables, the control and the explanation, an estimate per `frq-scoring`.
+
+## Author F points settled by the Unit 7 and 8.1-8.11 review (resolved, 2026-10-20)
+
+- **Atrazine as an endocrine disruptor.** Resolved: the National Institute of Environmental Health Sciences
+  (NIEHS) fact sheet *Endocrine Disruptors* lists atrazine ("one of the most commonly applied herbicides in the
+  world") among endocrine disruptors, beside BPA and phthalates. The key of `env-endocrine-disruptors-10` now
+  cites the NIEHS listing; the explanation keeps one clause noting that frog studies differ in effect size. The
+  notes already say "in some studies" for the frog effect. Atrazine stays the key.
+- **Mercury sources.** Resolved for the science: the UN Environment Programme *Global Mercury Assessment 2018*
+  (as quoted by the EPA) puts artisanal and small-scale gold mining first (37.7% of human emissions) and
+  stationary coal burning second (21%). The 8.8 notes now say so; the glossary, lesson and items keep "coal
+  burning and small-scale gold mining" with coal named first, and `env-bioaccumulation-biomagnification-12`
+  asks only about coal. The CED wording for 8.8 could not be read (see `ced-text`); nothing in our text
+  contradicts a CED that names coal.

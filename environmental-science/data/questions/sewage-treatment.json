@@ -506,9 +506,9 @@
    "practice": "6.B",
    "level": "apply",
    "diff": 2,
-   "q": "A city of 80,000 people produces about 300 liters of wastewater per person per day. Write the setup for the liters the plant treats per day, then give the answer in millions of liters.",
+   "q": "A city of 80,000 people produces about 300 liters of wastewater per person per day. Write the setup for the liters the plant treats per day, then give the answer in liters per day (millions of liters per day).",
    "why": {
-    "correct": "$80{,}000\\,\\text{people} \\times \\frac{300\\,\\text{L}}{\\text{person}} = 24{,}000{,}000\\,\\text{L}$ a day, which is 24 million liters or $2.4 \\times 10^{7}$ L."
+    "correct": "$80{,}000\\,\\text{people} \\times \\frac{300\\,\\text{L}}{\\text{person}} = 24{,}000{,}000\\,\\text{L}$ a day, which is 24 million liters per day or $2.4 \\times 10^{7}$ L/day."
    },
    "setup": {
     "answer": "80000 * 300",
@@ -523,8 +523,12 @@
      }
     ],
     "then": {
-     "unit": "L",
+     "unit": "L/day",
      "units": [
+      "L per day",
+      "liters per day",
+      "liters/day",
+      "L",
       "liters"
      ],
      "from": {
