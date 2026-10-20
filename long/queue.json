@@ -90,9 +90,10 @@
       "approved_on": "2026-10-14",
       "youtube_id": "sD7QbtHbVsw",
       "thumbnail_set": true,
-      "playlist_added": false,
+      "playlist_added": true,
       "captions_set": true,
-      "pr_url": ""
+      "pr_url": "",
+      "comment_id": "UgwduP8NK9wyH0-S-ZB4AaABAg"
     },
     {
       "id": "yt-orgo-02-orbitals",
