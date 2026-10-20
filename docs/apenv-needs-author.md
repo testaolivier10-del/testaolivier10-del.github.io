@@ -67,20 +67,6 @@ test keeps them equal).
 From the student course page and the exam page (Session 2). The session's start time is not on the page; the cram
 plan and the countdown use the date only.
 
-## Author A (Unit 1 and "Math you need"): points for a person to check (open, 2026-10-20)
-
-- **10% rule from NPP or GPP.** `frq-energy-flow-calc` (b) applies the 10% rule to NPP (10,000 kcal/m²/yr), the energy
-  available to consumers, and accepts an answer consistent with an incorrect part (a). Some classes apply it to GPP.
-  A teacher should confirm NPP is the expected base; if GPP is also accepted, add it to part (b)'s `accept` list.
-- **Fertilizer and nitrogen fixation.** The nitrogen notes say industrial fixation plus crops such as soybeans have
-  "roughly doubled" the nitrogen fixed on land each year (mainstream estimate, after Vitousek et al. 1997, Galloway et
-  al.). Rounded wording; check it matches the textbook a teacher uses.
-- **Wolves and willows; otters and kelp.** Both appear as examples of effects passing through a food web, each with
-  an explicit caution that other causes (weather, storms, disease) share the credit, because the size of the
-  wolf effect is debated in the literature. A teacher may prefer to drop the wolf passage (trophic-levels-s1).
-- **math-doubling builds only with Unit 3.** Its map anchor is `before: population-growth`, so the build skips it until
-  Unit 3 is published (by design). Its content is checked and clean now.
-
 ## Author D (Unit 5): points for a person to check (open, 2026-10-20)
 
 - **Irrigation efficiency percentages.** Sources disagree on the exact share of water each method delivers (flood
@@ -204,3 +190,20 @@ The other Author C points were settled by the Unit 4 review; see the resolved en
 - **Iowa wind.** EIA Iowa state profile (via Wikipedia "Wind power in Iowa"): about 64% of in-state generation in 2024. Lesson hook changed from "more than half" to "about two thirds".
 - **Geothermal heat source.** Notes said "most" Earth heat comes from radioactive decay; geoneutrino and heat-flow studies put radiogenic heat at roughly half of Earth's surface heat flow. Notes and one item explanation now say "about half".
 
+## Author A (Unit 1 and "Math you need"): points for a person to check (partly resolved, 2026-10-20)
+
+Reviewer notes from `docs/apenv-reviews/u1-math.md`.
+
+- **10% rule from NPP or GPP: resolved (2026-10-20).** The CED defines NPP as the rate of energy storage by
+  producers after respiration (ENG-1.A.3), so NPP is the energy passed to primary consumers; mainstream texts
+  (Miller, Friedland and Relyea) apply the 10% rule to the energy stored at each level. `frq-energy-flow-calc` (b)
+  keeps NPP as the base, and the energy-flow notes now say so. No GPP alternative added.
+- **Fertilizer and nitrogen fixation: resolved (2026-10-20).** Vitousek et al. (1997, Ecological Applications 7:737):
+  human activity "has doubled (or more)" the transfer of nitrogen from the air to usable forms on land. The notes
+  now say "about doubled (or more)". Galloway et al. give similar or larger factors.
+- **Wolves and willows; otters and kelp: resolved as worded (2026-10-20).** The NPS article "The Big Scientific
+  Debate: Trophic Cascades" calls the wolf effect unsettled and names other factors (elk reductions, cougars and
+  bears, climate, water, beavers). The passage and notes already caution; the notes now name those factors. Keep
+  the passage. A teacher may still prefer to drop it.
+- **math-doubling builds only with Unit 3 (open, by design).** Its map anchor is `before: population-growth`, so the
+  build skips it until Unit 3 is published.

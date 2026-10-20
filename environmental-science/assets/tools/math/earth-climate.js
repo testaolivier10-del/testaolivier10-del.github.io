@@ -297,7 +297,7 @@
       step('mean', 'The average anomaly (°C), to 2 decimal places.', { kind: 'num', practice: '6.C', d: 2, cell: M.cell(mean, 0.005, [], 0.006) }),
       choice('state', 'What are conditions in the Pacific?', [
         [kind === 'nino' ? 'El Niño: the average is +0.5 °C or more' : kind === 'nina' ? 'La Niña: the average is −0.5 °C or less' : 'Neutral: the average is between −0.5 °C and +0.5 °C', 'NOAA calls it El Niño when the 3-month average is +0.5 °C or warmer, and La Niña at −0.5 °C or cooler.'],
-        [kind === 'nino' ? 'La Niña: the water is warmer than normal' : 'El Niño: the water is ' + (kind === 'nina' ? 'cooler' : 'near') + ' normal', 'El Niño means warmer than normal water in the east Pacific; La Niña means cooler.'],
+        [kind === 'nino' ? 'La Niña: the water is warmer than normal' : 'El Niño: the water is ' + (kind === 'nina' ? 'cooler than' : 'near') + ' normal', 'El Niño means warmer than normal water in the east Pacific; La Niña means cooler.'],
         [kind === 'neutral' ? 'La Niña: one month was below normal' : 'Neutral: one month alone is not enough', kind === 'neutral' ? 'The 3-month average decides, not one month.' : 'The 3-month average is past the ±0.5 °C threshold.']
       ], '5.C')
     ];
