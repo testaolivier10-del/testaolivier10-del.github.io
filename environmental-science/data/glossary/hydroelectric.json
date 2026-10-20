@@ -1,0 +1,11 @@
+{
+ "hydroelectric": {
+  "def": "Electricity made by water falling through a turbine that turns a generator, usually at a dam that holds water in a reservoir."
+ },
+ "run-of-river": {
+  "def": "A hydroelectric system that runs part of a river's natural flow through turbines with little or no reservoir, so it floods little land but its output follows the river."
+ },
+ "tidal-energy": {
+  "def": "Electricity made by turbines that catch the flow of ocean tides, which are caused by the moon's gravity, as they move in and out of a bay or channel."
+ }
+}

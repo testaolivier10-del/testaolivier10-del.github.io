@@ -48,7 +48,7 @@
   "r-k-selection-s2": {
    "kind": "text",
    "title": "Two ways to come back",
-   "passage": "After a hard winter, the vole population in a northern meadow fell from about 200 per hectare to 10. By the end of the next summer it was back above 150: a female vole can breed at a few weeks old and raise several litters a year. In the same region, hunting in the 1800s cut a population of bowhead whales to a few thousand animals. Bowheads begin breeding at about 25 years old and have one calf every three or four years, after a pregnancy of over a year. Even with full protection since the 1940s, the whales took most of a century to grow back to tens of thousands. A species’ way of reproducing, the authors argue, decides how quickly it can make up for losses, and should shape how much hunting or fishing it can take.",
+   "passage": "After a hard winter, the vole population in a northern meadow fell from about 200 per hectare to 10. By the end of the next summer it was back above 150: a female vole can breed at a few weeks old and raise several litters a year. In the same region, hunting in the 1800s cut a population of bowhead whales to a few thousand animals. Bowheads begin breeding at about 25 years old and have one calf every three or four years, after a pregnancy of over a year. Even with protection from commercial hunting since the 1930s, the whales took most of a century to grow back to more than 10,000. A species’ way of reproducing, the authors argue, decides how quickly it can make up for losses, and should shape how much hunting or fishing it can take.",
    "source": "Invented passage for practice, based on the general biology of voles and bowhead whales."
   }
  },
@@ -190,7 +190,7 @@
     "options": [
      "The passage compares recovery, not value.",
      "The passage does not rank the two events by harm.",
-     "The passage says they have been protected since the 1940s.",
+     "The passage says they have been protected since the 1930s.",
      "Right: the last sentence states this, and the voles and whales illustrate it."
     ]
    }
@@ -209,7 +209,7 @@
     "They first breed at about 25 and calve each 3 to 4 years",
     "Hunting in the 1800s cut them to a few thousand",
     "They live in the same northern region as the voles do",
-    "They have been protected since the 1940s"
+    "They have been protected since the 1930s"
    ],
    "correct": 0,
    "why": {

@@ -1,0 +1,72 @@
+{
+ "topic": "thermal-pollution",
+ "hook": "Stand on a bridge below a power plant on a cold winter morning and you may see steam rising from one stretch of river while the rest is frozen. Fish crowd into that warm water in winter. In August the same stretch can be too warm and too low in oxygen for trout. The plant added nothing to the river but heat, and heat alone is enough to change who can live there.",
+ "prereq": [
+  {
+   "q": "Why does a power plant need large amounts of water?",
+   "options": [
+    "To cool and condense the steam after it turns the turbine",
+    "To burn with the fuel",
+    "To make uranium",
+    "To dissolve the coal"
+   ],
+   "correct": 0,
+   "why": "Steam that has spun the turbine is cooled back to water, often with river or lake water.",
+   "review": "fossil-fuels"
+  },
+  {
+   "q": "In the eutrophication chain, what lowers dissolved oxygen?",
+   "options": [
+    "Decomposers breaking down dead algae",
+    "Living algae making food",
+    "Fish swimming faster",
+    "Sunlight on the water"
+   ],
+   "correct": 0,
+   "why": "Decomposers use oxygen as they respire.",
+   "review": "eutrophication"
+  }
+ ],
+ "figure": {
+  "figure": "thermal-pollution-plant",
+  "caption": "A power plant takes in river water to cool its steam and returns it warmer. A cooling tower releases the heat to the air instead."
+ },
+ "chain": [
+  {
+   "cause": "A power plant or factory uses river or lake water to cool its equipment",
+   "effect": "the water returns to the river warmer than it was"
+  },
+  {
+   "cause": "Warmer water can hold less dissolved oxygen",
+   "effect": "oxygen in the river falls below the outlet"
+  },
+  {
+   "cause": "Warm water speeds up the metabolism of fish and other cold-blooded animals",
+   "effect": "they need more oxygen just as less is available"
+  },
+  {
+   "cause": "Temperature and oxygen move outside the tolerance of sensitive species",
+   "effect": "trout and other cold-water species die or leave; sudden changes cause thermal shock"
+  }
+ ],
+ "ideas": [
+  "<b>Thermal pollution</b> is heat: a harmful rise in water temperature caused by people. Main sources: power plant and factory cooling water, warm runoff from pavement, and cutting shade trees along streams.",
+  "Warm water holds <b>less dissolved oxygen</b>, while warm fish need <b>more</b>. Warmth can also feed algae and spread disease.",
+  "<b>Thermal shock</b>: a sudden temperature change that organisms cannot adjust to, such as a plant suddenly starting or stopping its discharge.",
+  "Fixes: cooling towers and cooling ponds that release heat to the air, shade trees on stream banks, and limits on discharge temperature."
+ ],
+ "misconception": {
+  "wrong": "Water from a power plant harms fish because of the metals, chemicals or radiation in it.",
+  "right": "The pollutant in thermal pollution is heat. Warm water holds less oxygen and pushes temperature outside what species tolerate."
+ },
+ "check": [
+  "env-thermal-pollution-9",
+  "env-thermal-pollution-10",
+  "env-thermal-pollution-1",
+  "env-thermal-pollution-2",
+  "env-thermal-pollution-3",
+  "env-thermal-pollution-4",
+  "env-thermal-pollution-13"
+ ],
+ "summary": "Thermal pollution is heat added to water by people, mostly from power plant and factory cooling water and from warm runoff. Warmer water holds less dissolved oxygen while raising the oxygen needs of fish, so cold-water species decline, and sudden changes cause thermal shock. Cooling towers and ponds, shade along streams and temperature limits reduce it."
+}

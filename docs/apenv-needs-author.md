@@ -102,3 +102,23 @@ plan and the countdown use the date only.
   weight or edible meat is counted.
 - **Bank rule, not mine alone:** the whole bank has 4 of 44 select-all items with one correct option (rule: 20%).
   Unit 5 contributes 3 of its 11. Other units' authors need to convert some of theirs.
+
+## Author B (Units 2 and 3): points for a person to check (open, 2026-10-20)
+
+- **Replacement level 2.1** is used as the rule throughout 3.7 to 3.9 ("about 2.1 where few children die young;
+  higher where many do"). Mainstream (UN), but a teacher may prefer to say "2.1 in developed countries".
+- **Rule of 70 vs natural log.** The calc FRQ (frq-human-population-calc, part b) accepts the natural-log method
+  (0.693 / r) as the 2026 scoring guidelines did; whether 2027 guidelines still accept it is not known.
+- **Survivorship curve examples.** Songbirds and lizards are given as Type II, as most APES texts do; real
+  songbird curves are often closer to Type II in adults only. A teacher may prefer other examples.
+- **Real cases quoted from memory, rounded and attributed in passages:** St. Matthew Island reindeer (29 in
+  1944, about 6,000 in 1963, 42 in 1966), northern elephant seal bottleneck, Mount St. Helens 1980 (600 km²
+  flattened), bowhead whales (protected from commercial hunting since the 1930s, first breeding about age 25,
+  more than 10,000 today), world population about 1 billion around 1800 and 8 billion in 2022 (UN). Each
+  passage is labeled "Invented passage for practice, summarizing ..."; a reviewer with sources should confirm
+  the figures.
+- **Sea level about 120 m lower 20,000 years ago** (2.5, last glacial maximum) is the common textbook value;
+  published estimates run about 120 to 130 m.
+- **TFR from age-specific rates** (3.7 item and notes: sum × 5 / 1,000) goes slightly beyond what the CED is
+  known to require for 3.7 (objectives after 3.7 unread, see ced-text). Kept as one apply item; drop if a
+  teacher judges it out of scope.

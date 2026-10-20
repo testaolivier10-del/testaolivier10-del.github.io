@@ -1,0 +1,488 @@
+{
+ "stimuli": {
+  "human-impacts-biodiversity-s1": {
+   "kind": "visual",
+   "title": "Habitat fragmentation and a wildlife corridor",
+   "figure": "human-impacts-biodiversity-corridor"
+  },
+  "human-impacts-biodiversity-s2": {
+   "kind": "text",
+   "title": "A village debates clearing its forest",
+   "passage": "A company has offered to buy the forest above our village and clear it for cattle. The money is tempting. But the forest holds the soil on our hillsides, filters the stream we drink from and keeps our river full of fish. Dozens of birds and orchids found nowhere else live there. Ranch income would last a few decades at most; once the soil washes away, it would end. The forest’s gifts are free, and they would be gone for good.",
+   "source": "Invented passage for practice."
+  }
+ },
+ "items": [
+  {
+   "id": "env-human-impacts-biodiversity-1",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the acronym HIPPCO, what does the H stand for?",
+   "options": [
+    "Habitat loss",
+    "Hunting",
+    "Heat waves",
+    "Human health"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "HIPPCO: Habitat loss, Invasive species, Pollution, Population growth (human), Climate change, Overexploitation.",
+    "options": [
+     "Right: habitat destruction and fragmentation are the leading threat to biodiversity.",
+     "Hunting falls under O, overexploitation.",
+     "Warming is the C, climate change.",
+     "HIPPCO lists threats to biodiversity, not to human health."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-2",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the leading cause of species loss worldwide?",
+   "options": [
+    "Meteor impacts",
+    "Habitat loss from land use",
+    "Volcanic eruptions",
+    "Natural old age of species"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Land converted to farms, cities, roads and mines is the single largest driver of biodiversity loss.",
+    "options": [
+     "Meteors caused some past mass extinctions, not today’s losses.",
+     "Right: farming, logging and building remove and break up the places species live.",
+     "Eruptions are local and natural; they are not the main cause today.",
+     "Background extinction is far slower than today’s rate."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-3",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why do scientists say Earth may be entering a sixth mass extinction?",
+   "options": [
+    "A meteor has struck Earth recently",
+    "Five species have gone extinct this century",
+    "Species vanish far faster than normal",
+    "New species are evolving faster than ever"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "There have been five mass extinctions in Earth’s history; today’s rate, driven by HIPPCO, may put us on the path to a sixth.",
+    "options": [
+     "No meteor is involved; human activities are.",
+     "Far more than five have been lost; the concern is the rate.",
+     "Right: estimates put current rates tens to hundreds of times above background.",
+     "New species evolve slowly; the concern is losses."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-4",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In panel 2, what split the forest into fragments?",
+   "stimulus": "human-impacts-biodiversity-s1",
+   "options": [
+    "A wildfire and a flood",
+    "A river and a lake",
+    "A wildlife bridge",
+    "A road and a farm"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Roads, farms and buildings break habitat into pieces: habitat fragmentation.",
+    "options": [
+     "The panel shows a road and a farm.",
+     "The panel shows a road and a farm.",
+     "The bridge appears in panel 3, reconnecting fragments.",
+     "Right: both cut through the forest."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-5",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does panel 2 show fewer animals than panel 1?",
+   "stimulus": "human-impacts-biodiversity-s1",
+   "options": [
+    "Small, isolated patches hold fewer",
+    "The animals were moved into zoos",
+    "The road increased the total habitat",
+    "Fragments have more food than one forest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Island biogeography applies on land: smaller, more isolated patches hold fewer species.",
+    "options": [
+     "Right: each piece supports fewer individuals, and animals cannot move between them.",
+     "The figure does not show animals being moved.",
+     "The road and farm reduced habitat.",
+     "Fragments have less area and so less food in total."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-6",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "How does the corridor in panel 3 help a population of forest mammals?",
+   "stimulus": "human-impacts-biodiversity-s1",
+   "options": [
+    "It makes each patch larger than the original forest",
+    "Animals can move to mate and feed",
+    "It removes the road from the landscape",
+    "It stops the animals from leaving their patch"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Corridors raise gene flow, let animals reach food and mates, and allow patches to be recolonized.",
+    "options": [
+     "The patches are the same size; the corridor links them.",
+     "Right: movement links small populations into one larger one.",
+     "The road is still there; the bridge goes over it.",
+     "A corridor is for movement, not confinement."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-7",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Propose a solution for a highway that has split a forest and is killing deer and bears that try to cross it.",
+   "stimulus": "human-impacts-biodiversity-s1",
+   "why": {
+    "correct": "A solution fitted to the scenario names the structure, how it works and the result."
+   },
+   "specific": {
+    "frame": "Build ___ so that ___, which ___.",
+    "slots": {
+     "solution": {
+      "label": "Solution",
+      "options": [
+       "wildlife overpasses with fences that guide animals to them",
+       "a second highway beside the first",
+       "more streetlights along the road"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Another highway would fragment the forest further.",
+       "2": "Lights do not give animals a safe way across."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "animals cross above traffic",
+       "cars drive faster",
+       "animals stay in one patch"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Faster cars make crossing more dangerous.",
+       "2": "Keeping animals in one patch isolates populations."
+      }
+     },
+     "effect": {
+      "label": "Effect",
+      "options": [
+       "reduces road deaths and reconnects the populations",
+       "increases road deaths",
+       "adds more habitat fragments"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Overpasses lower deaths, not raise them.",
+       "2": "The aim is to reconnect, not fragment."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "context": [
+      "overpass",
+      "corridor",
+      "deer",
+      "bear",
+      "highway"
+     ]
+    },
+    "model": "Build wildlife overpasses with fences that guide animals to them so that deer and bears cross above traffic, which reduces road deaths and reconnects the populations on both sides because animals can move to find mates and food."
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-8",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the author’s claim?",
+   "stimulus": "human-impacts-biodiversity-s2",
+   "options": [
+    "The forest should be cleared for cattle",
+    "Cattle ranching has no environmental cost",
+    "The village does not use the forest",
+    "Clearing would cost more than it earns"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The claim weighs short-term farm income against long-term losses.",
+    "options": [
+     "The author argues against clearing.",
+     "The author lists several costs.",
+     "The passage describes the village depending on the forest.",
+     "Right: the author argues the forest’s services and species outweigh the farm income."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-9",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which perspective does the author take?",
+   "stimulus": "human-impacts-biodiversity-s2",
+   "options": [
+    "A view that values ecosystem services",
+    "A ranching view focused on beef exports",
+    "A neutral list of facts with no opinion",
+    "A tourism view focused on hotels"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The author weighs ecosystem services and biodiversity as real values.",
+    "options": [
+     "Right: the author counts water, fish and species, not just income.",
+     "The author argues against the ranch.",
+     "The author makes an argument.",
+     "The passage does not discuss hotels."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-10",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which evidence would best support the author’s claim?",
+   "stimulus": "human-impacts-biodiversity-s2",
+   "options": [
+    "A report that beef prices rose last year",
+    "A study valuing the forest’s water and fish above ranch income",
+    "A photo of the forest at sunset",
+    "A list of cattle breeds raised in the region"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Evidence that measures both sides of the comparison supports the claim best.",
+    "options": [
+     "Higher beef prices would favor the ranch.",
+     "Right: it directly compares the two values the claim rests on.",
+     "A photo does not compare values.",
+     "Breeds say nothing about the forest’s value."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-11",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "multi",
+   "practice": "7.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which are examples of overexploitation? Select all that apply.",
+   "options": [
+    "Catching cod faster than the population can reproduce",
+    "Poaching rhinos for their horns",
+    "Fertilizer runoff causing a dead zone",
+    "Zebra mussels spreading through a lake"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Overexploitation is harvesting a species faster than it can replace itself: overfishing, poaching, overcollecting.",
+    "options": [
+     "Right: overfishing is overexploitation.",
+     "Right: hunting beyond sustainable levels is overexploitation.",
+     "That is pollution, the first P.",
+     "That is an invasive species, the I."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-12",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rainforest reserve of 2,500 km² lost 4% of its area to clearing each year for 3 years, each loss counted from the original area. How many square kilometers were cleared in total?",
+   "why": {
+    "correct": "$3 \\times \\frac{4}{100} \\times 2{,}500\\,\\text{km}^{2} = 300\\,\\text{km}^{2}$."
+   },
+   "numeric": {
+    "unit": "km2",
+    "units": [
+     "km^2",
+     "square kilometers"
+    ],
+    "from": {
+     "fn": "mul",
+     "args": [
+      3,
+      {
+       "fn": "percentOf",
+       "args": [
+        4,
+        2500
+       ]
+      }
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        4,
+        2500
+       ]
+      },
+      "why": "100 km² is one year’s loss. Three years cleared 3 × 100 = 300 km²."
+     },
+     {
+      "from": {
+       "fn": "percentOf",
+       "args": [
+        12,
+        25
+       ]
+      },
+      "why": "You dropped the scale of the area. 12% of 2,500 km² is 300 km²."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-13",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A country sets aside protected areas but lets them stay small and scattered. What is a likely problem?",
+   "options": [
+    "Small, isolated reserves lose species over time",
+    "Large predators thrive in small reserves",
+    "Scattered reserves raise genetic diversity",
+    "Small reserves have more species than large ones"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bigger, connected reserves keep more species; that is why corridors and buffer zones matter.",
+    "options": [
+     "Right: small patches support small populations that are easily lost.",
+     "Large predators need large areas.",
+     "Isolation reduces gene flow and diversity.",
+     "Larger areas generally hold more species."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-14",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does climate change, the C in HIPPCO, threaten biodiversity?",
+   "options": [
+    "It increases the number of invasive species to zero",
+    "Species’ ranges shift faster than many can move",
+    "It thickens the ozone layer, blocking sunlight",
+    "It mainly affects species in the ocean"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Warming moves the conditions species need; slow or specialized species, and those already at the edge, may not keep up.",
+    "options": [
+     "That makes no sense; warming can help some invaders spread.",
+     "Right: species that cannot shift or adapt in time decline.",
+     "Climate change does not thicken the ozone layer.",
+     "It affects species on land and in the ocean."
+    ]
+   }
+  },
+  {
+   "id": "env-human-impacts-biodiversity-15",
+   "unit": "unit-9",
+   "topic": "human-impacts-biodiversity",
+   "type": "single",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which policy would best reduce overexploitation of a commercial fish?",
+   "options": [
+    "Bigger nets for each boat in the fishing fleet",
+    "More boats in the fishing fleet",
+    "Catch limits below the sustainable yield",
+    "Subsidies for fuel for fishing boats"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A policy is a rule: quotas, seasons, size limits or no-take marine reserves.",
+    "options": [
+     "Bigger nets increase the catch.",
+     "More boats increase fishing pressure.",
+     "Right: a legal limit keeps the catch below what the population can replace.",
+     "Subsidies lower costs and can increase fishing."
+    ]
+   }
+  }
+ ]
+}

@@ -492,6 +492,62 @@ FIG['wetlands-mangroves-services'] = () => {
     'A river flows through a freshwater marsh to a coast lined with mangroves. Labels show the services: the marsh stores floodwater and releases it slowly, filters sediment and pollutants, stores carbon in slowly decaying soils, recharges groundwater, and gives habitat to ducks and herons. At the coast, mangrove roots slow waves and storm surge, and the mangroves are a nursery for young fish.', s);
 };
 
+/* 8.5 The eutrophication chain (diagram). */
+FIG['eutrophication-chain'] = () => {
+  let s = '';
+  const steps = [
+    ['1. Nutrients enter', ['nitrate and phosphate', 'from fertilizer, manure,', 'sewage']],
+    ['2. Algal bloom', ['algae multiply and', 'turn the water green']],
+    ['3. Die-off', ['bloom blocks light;', 'algae and plants die']],
+    ['4. Decomposition', ['dead matter sinks;', 'decomposers break', 'it down']],
+    ['5. Oxygen falls', ['decomposers use', 'dissolved oxygen', '(hypoxia)']],
+    ['6. Fish kill', ['fish die or leave;', 'a dead zone']],
+  ];
+  const W = 230, H = 150, gx = 35, gy = 60;
+  steps.forEach(([title, lines], i) => {
+    const row = Math.floor(i / 3), col = row === 0 ? i : 5 - i;
+    const x = 20 + col * (W + gx), y = 30 + row * (H + gy);
+    const fill = i === 4 || i === 5 ? '#FCEFE6' : PALE, stroke = i === 4 || i === 5 ? RED : OLIVE;
+    s += box(x, y, W, H, null, { fill, stroke, sw: 2.5 });
+    s += T(x + W / 2, y + 28, title, { size: 17, weight: 700, fill: stroke });
+    s += T(x + W / 2, y + 90, lines, { size: 15, lh: 1.3 });
+    if (i < 2) s += arrow(x + W + 4, y + H / 2, x + W + gx - 4, y + H / 2, { sw: 3 });
+    if (i === 2) s += arrow(x + W / 2, y + H + 4, x + W / 2, y + H + gy - 4, { sw: 3 });
+    if (i === 3 || i === 4) s += arrow(x - 4, y + H / 2, x - gx + 4, y + H / 2, { sw: 3 });
+  });
+  s += T(400, 428, 'The step most often left out: decomposition of the dead algae uses up the oxygen.', { size: 14, fill: GREY, italic: true });
+  return svg(800, 440, 'The eutrophication chain',
+    'Six linked boxes in a loop. 1: nitrate and phosphate from fertilizer, manure and sewage enter the water. 2: algae multiply into a bloom and turn the water green. 3: the bloom blocks light and algae and plants die. 4: dead matter sinks and decomposers break it down. 5: decomposers use dissolved oxygen, so oxygen falls (hypoxia). 6: fish die or leave, making a dead zone.', s);
+};
+
+/* 8.6 A power plant's cooling water and a cooling tower (diagram). */
+FIG['thermal-pollution-plant'] = () => {
+  let s = rect(0, 0, 800, 400, '#F4F6EC');
+  // river along the bottom, warm plume
+  s += rect(0, 290, 800, 110, '#7FB3D9');
+  s += `<defs><linearGradient id="plume" x1="0" x2="1"><stop offset="0" stop-color="#E8885A"/><stop offset="1" stop-color="#7FB3D9"/></linearGradient></defs>`;
+  s += path('M330,292 C420,300 560,330 800,340 L800,372 C560,368 420,336 330,320 z', 'url(#plume)', 'none', 0);
+  s += T(80, 360, 'cool river water', { size: 14, fill: '#FFFFFF', weight: 700 });
+  s += T(620, 392, 'warm plume: less dissolved oxygen', { size: 14, fill: '#FFFFFF', weight: 700 });
+  s += arrow(30, 320, 140, 320, { color: '#FFFFFF', sw: 3 });
+  // plant building
+  s += rect(140, 150, 180, 110, '#C9CCC2', INK, 1.5) + rect(285, 70, 22, 80, '#C9CCC2', INK, 1.5);
+  s += T(230, 180, 'Power plant', { size: 15, weight: 700 });
+  s += T(230, 206, ['steam is cooled', 'back to water'], { size: 13, lh: 1.25 });
+  // intake and outlet pipes
+  s += path('M170,262 L170,300', 'none', BLUE, 7) + T(120, 278, 'intake', { size: 13, fill: BLUE, weight: 700 });
+  s += path('M300,262 L300,296 L330,300', 'none', RED, 7) + T(352, 270, 'warm outlet', { size: 13, fill: RED, weight: 700, anchor: 'start' });
+  // cooling tower option
+  s += path('M560,250 C575,190 575,150 555,90 L665,90 C645,150 645,190 660,250 z', '#E2E0D8', INK, 1.5);
+  for (const [x, y, rr] of [[590, 70, 18], [615, 55, 22], [640, 72, 18], [612, 36, 16]]) s += circle(x, y, rr, '#FFFFFF', '#B9C0C6', 1);
+  s += T(700, 40, ['heat and water', 'vapor to the air'], { size: 13, lh: 1.2, anchor: 'start' });
+  s += T(610, 275, 'Cooling tower', { size: 15, weight: 700 });
+  s += path('M320,210 L555,210', 'none', RED, 3, ) + arrow(470, 210, 556, 210, { color: RED, sw: 3, m: 'arR' });
+  s += T(440, 195, 'or: send warm water here', { size: 13, fill: RED });
+  return svg(800, 400, 'Thermal pollution from a power plant',
+    'A power plant pumps in cool river water to condense its steam and returns it warmer through an outlet; a warm plume with less dissolved oxygen spreads downstream. Alternatively, the warm water goes to a cooling tower, which releases the heat and some water vapor to the air.', s);
+};
+
 export { FIG };
 const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
 if (isMain) {

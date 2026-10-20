@@ -1,0 +1,93 @@
+/* Biogeochemical cycles (environmental-science/assets/tools/cycles.js). OWNED BY THIS TOOL ONLY (builder T2).
+   The landscape uses fixed illustration colours (sky, grass, soil, rock,
+   sea) with a dark-theme twin each; reservoir cards and labels use the site
+   tokens. Process arrows are slate; the selected one is the course olive;
+   human processes are vermillion and dashed. */
+.cy-svg,.cy-qfig{--cy-sky1:#DCEFFB;--cy-sea:#5BA3D0;--cy-sea2:#3E86B8;--cy-grass:#8CC46A;--cy-soil:#9C7350;--cy-rock:#8E8A84;--cy-strata:#7A766F;
+  --cy-arrow:#3F4B57;--cy-human:#C2461C;--cy-card:#FFFFFF;--cy-card-s:#C9D0C4;--cy-dot-c:#2F3E46;--cy-up:#1F7A4A;--cy-dn:#B3261E;
+  --cy-leaf:#4E9A3A;--cy-leaf-d:#3B7F2C;--cy-leaf-l:#69B455;--cy-trunk:#7A5230;--cy-cloud:#FFFFFF;--cy-bldg:#6B6F76;--cy-bldg-d:#555A61;--cy-smoke:#9AA0A6;}
+:root[data-theme="dark"] .cy-svg,:root[data-theme="dark"] .cy-qfig{--cy-sky1:#16283A;--cy-sea:#1F5378;--cy-sea2:#2C6A96;--cy-grass:#3F6B2E;--cy-soil:#5A4330;--cy-rock:#46433F;--cy-strata:#57534D;
+  --cy-arrow:#C9D3DC;--cy-human:#FF8A65;--cy-card:#1E2C27;--cy-card-s:#3A4A44;--cy-dot-c:#F2F6F8;--cy-up:#6FD69A;--cy-dn:#FF8A80;
+  --cy-leaf:#4C8B3A;--cy-leaf-d:#3A6F2C;--cy-leaf-l:#5FA04A;--cy-trunk:#6A4A2E;--cy-cloud:#3A4C5C;--cy-bldg:#5A5F66;--cy-bldg-d:#474C52;--cy-smoke:#6B7178;}
+.cy-cardx{display:grid;gap:14px;}
+.cy-fig{position:relative;min-height:360px;height:min(72vh,600px);}
+.ls-root .cy-fig{flex:1 1 auto;height:auto;min-height:300px;}
+.cy-fig .cy-svg{position:absolute;inset:0;width:100%;height:100%;}
+.cy-svg{display:block;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.cy-qfig{margin:0;}
+.cy-qfig .cy-svg{width:100%;height:auto;max-height:100%;}
+/* scene */
+.cy-sky{fill:var(--cy-sky1);}
+.cy-sea{fill:var(--cy-sea);opacity:.85;}
+.cy-wave{stroke:var(--cy-sea2);stroke-width:2;fill:none;opacity:.6;}
+.cy-grass{fill:var(--cy-grass);}
+.cy-soil{fill:var(--cy-soil);}
+.cy-rock{fill:var(--cy-rock);}
+.cy-strata{stroke:var(--cy-strata);stroke-width:1.5;fill:none;}
+.cy-root{stroke:#5A3E26;stroke-width:1.6;fill:none;opacity:.7;}
+.cy-sun circle{fill:#F7C531;} .cy-sun path{stroke:#F2A81D;stroke-width:3;stroke-linecap:round;}
+.cy-cloud{fill:var(--cy-cloud);opacity:.95;} .cy-cloud.rain{fill:#B8C4CE;}
+:root[data-theme="dark"] .cy-cloud.rain{fill:#4A5866;}
+.cy-rain{stroke:#3E86B8;stroke-width:2;stroke-linecap:round;}
+.cy-leaf{fill:var(--cy-leaf);} .cy-leaf.d{fill:var(--cy-leaf-d);} .cy-leaf.l{fill:var(--cy-leaf-l);}
+.cy-trunk{fill:var(--cy-trunk);} .cy-trunk-l{stroke:var(--cy-trunk);stroke-width:2;}
+.cy-stem{stroke:var(--cy-leaf-d);stroke-width:2;}
+.cy-nodule{fill:#E9B4A6;stroke:#A0584A;stroke-width:1;}
+.cy-crop{stroke:#C9A23A;stroke-width:2;fill:none;stroke-linecap:round;}
+.cy-bag{fill:#F2EEDF;stroke:#8A8266;stroke-width:1.5;} .cy-bag-t{font:900 11px var(--font-ui);fill:#5A5236;}
+.cy-bolt{fill:#F5C542;stroke:#C98B00;stroke-width:1;}
+.cy-puddle{fill:#5BA3D0;opacity:.7;}
+.cy-bldg{fill:var(--cy-bldg);} .cy-bldg.d{fill:var(--cy-bldg-d);} .cy-win{fill:#F6D776;}
+.cy-smoke circle{fill:var(--cy-smoke);opacity:.75;}
+.cy-coal{fill:#2B2B2B;} .cy-oil{fill:#3A2E22;}
+.cy-shell{fill:#EDE3CF;stroke:#B9A984;stroke-width:1;}
+.cy-stump rect{fill:#7A5230;}
+.cy-outcrop{fill:#A9A49C;stroke:#7E7A73;stroke-width:1.2;}
+.cy-cow{fill:#F2EFEA;stroke:#8C877F;stroke-width:1;} .cy-cow-s{fill:#3D3A36;} .cy-cow-l{stroke:#8C877F;stroke-width:2.4;}
+.cy-mine{fill:#C9B27A;stroke:#8A7848;stroke-width:1.5;}
+.cy-pipe{fill:#7E858C;}
+.cy-mud{stroke:#8C6A44;stroke-width:6;fill:none;opacity:.6;stroke-linecap:round;}
+.cy-mtn{fill:#8D8A84;} .cy-snow{fill:#F7FAFC;}
+.cy-lake{fill:#5BA3D0;}
+.cy-aquifer{fill:#5BA3D0;opacity:.35;stroke:#3E86B8;stroke-dasharray:4 4;}
+.cy-well{stroke:#5A5F66;stroke-width:3;}
+.cy-pave{fill:#55595E;}
+/* arrows */
+.cy-arrow{fill:none;stroke:var(--cy-arrow);stroke-linecap:round;opacity:.78;}
+.cy-arrow.slow{stroke-dasharray:2 6;}
+.cy-arrow.human{stroke:var(--cy-human);stroke-dasharray:8 6;opacity:.95;}
+.cy-arrow.is-sel,.cy-arrow.is-ask{stroke:var(--cink);opacity:1;}
+.cy-arrow.is-dim{opacity:.18;}
+.cy-head{fill:var(--cy-arrow);} .cy-head.s{fill:var(--cink);} .cy-head.h{fill:var(--cy-human);}
+.cy-plabel rect{fill:var(--white);stroke:var(--cy-arrow);stroke-width:1.2;}
+.cy-plabel text{font-weight:800;font-size:12.5px;fill:var(--ink);}
+.cy-plabel.human rect{stroke:var(--cy-human);} .cy-plabel.human text{fill:var(--cy-human);}
+.cy-plabel.is-sel rect,.cy-plabel.is-ask rect{fill:var(--cink);stroke:var(--cink);} .cy-plabel.is-sel text,.cy-plabel.is-ask text{fill:var(--white);}
+.cy-plabel.is-dim{opacity:.35;}
+.cy-plabel[role="button"]{cursor:pointer;}
+.bt-app .cy-svg :focus-visible,.ls-root .cy-svg :focus-visible,.cy-svg .cy-plabel:focus{outline:none;}
+.cy-plabel:focus-visible rect{stroke:var(--cink);stroke-width:3.5;}
+@media (max-width:640px){.cy-svg .cy-plabel text{font-size:12px;}}
+/* reservoir cards */
+.cy-card{fill:var(--cy-card);stroke:var(--cy-card-s);stroke-width:1.5;filter:drop-shadow(0 1px 2px rgba(0,0,0,.18));}
+.cy-res.is-from .cy-card{stroke:var(--cink);stroke-width:3;}
+.cy-res.is-to .cy-card{stroke:var(--cink);stroke-width:3;stroke-dasharray:6 3;}
+.cy-res-n{font-weight:900;font-size:14px;fill:var(--ink);}
+.cy-res-a{font-weight:700;font-size:12.5px;fill:var(--muted);font-variant-numeric:tabular-nums;}
+@media (max-width:640px){.cy-svg .cy-res-n{font-size:13px;}.cy-svg .cy-res-a{font-size:11.5px;}}
+.cy-d{font-weight:900;} .cy-d.up{fill:var(--cy-up);} .cy-d.dn{fill:var(--cy-dn);}
+/* particles */
+.cy-dot{fill:var(--cy-dot-c);stroke:var(--white);stroke-width:1;}
+.cy-dot.water{fill:#2E86C1;} .cy-dot.nitrogen{fill:#7D4E9C;} .cy-dot.phosphorus{fill:#D07A12;} .cy-dot.h{fill:var(--cy-human);}
+/* drill ledger */
+.cy-ledger rect{fill:var(--white);stroke:var(--line);stroke-width:1.5;opacity:.96;}
+.cy-led{font-weight:800;font-size:13px;fill:var(--ink);font-variant-numeric:tabular-nums;}
+.cy-led.src{fill:var(--cy-human);} .cy-led.snk{fill:var(--cy-up);} .cy-led.h{fill:var(--muted);}
+/* controls */
+.cy-ctl{display:flex;flex-direction:column;gap:8px;}
+.cy-cycles,.cy-procs,.cy-changes{display:flex;flex-wrap:wrap;gap:8px;}
+.cy-lbl{font:800 13px var(--font-ui);color:var(--muted);margin:2px 0 -2px;}
+.cy-n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--cink);color:var(--white);font:900 11px var(--font-ui);}
+.cy-c[aria-pressed="true"]{border-color:var(--bad-text,#A0291E);}
+.cy-why-l{margin:0;padding-left:18px;display:grid;gap:6px;}
+@media (prefers-reduced-motion:reduce){.cy-fx{display:none;}}

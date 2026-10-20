@@ -1,0 +1,72 @@
+{
+ "topic": "human-impacts-biodiversity",
+ "hook": "Forty years ago, a road was built through a forest in Banff National Park in Canada. Elk, bears and wolves were hit by cars or stopped at the pavement, and the forest on each side became two smaller worlds. Then the park built overpasses covered in soil and trees. Within a few years, cameras recorded animals crossing them thousands of times a year.",
+ "prereq": [
+  {
+   "q": "What is habitat fragmentation?",
+   "options": [
+    "Breaking a habitat into smaller, separate pieces",
+    "Adding new species to a habitat",
+    "A habitat growing larger over time",
+    "Pollution spreading through a habitat"
+   ],
+   "correct": 0,
+   "why": "Roads, farms and cities cut habitat into isolated patches.",
+   "review": "island-biogeo"
+  },
+  {
+   "q": "What makes a species invasive?",
+   "options": [
+    "It is nonnative, spreads fast and causes harm",
+    "It is native and declining",
+    "It lives in only one place",
+    "It was never moved by people"
+   ],
+   "correct": 0,
+   "why": "Invasive species are introduced, spread rapidly and cause harm.",
+   "review": "invasive-species"
+  }
+ ],
+ "figure": {
+  "figure": "human-impacts-biodiversity-corridor",
+  "caption": "A forest split into fragments, then reconnected by a wildlife bridge and strips of habitat."
+ },
+ "chain": [
+  {
+   "cause": "People clear and divide land for farms, roads, mines and cities",
+   "effect": "habitat is lost and broken into small, isolated fragments"
+  },
+  {
+   "cause": "Small fragments hold small populations that cannot move between patches",
+   "effect": "they lose genetic diversity and are easily wiped out"
+  },
+  {
+   "cause": "Invasive species, pollution, a growing human population, climate change and overexploitation add more pressure (HIPPCO)",
+   "effect": "species are lost far faster than the natural background rate"
+  },
+  {
+   "cause": "Protected areas, wildlife corridors, sustainable harvest limits and restoration",
+   "effect": "slow the losses and let populations recover"
+  }
+ ],
+ "ideas": [
+  "<b>HIPPCO</b>: Habitat loss, Invasive species, Pollution, human Population growth, Climate change, Overexploitation. <b>Habitat loss</b> is the leading threat.",
+  "Fragmentation creates small, isolated patches that hold fewer species and lose them faster.",
+  "<b>Wildlife corridors</b> (strips of habitat, overpasses, underpasses) reconnect fragments so animals can move, mate and recolonize.",
+  "Species are being lost tens to hundreds of times faster than the background rate, which may mark a sixth <b>mass extinction</b>."
+ ],
+ "misconception": {
+  "wrong": "Setting aside many small protected patches works as well as one large reserve.",
+  "right": "Small, isolated patches hold fewer species and lose them faster. Larger reserves, or small ones linked by corridors, protect far more biodiversity."
+ },
+ "check": [
+  "env-human-impacts-biodiversity-1",
+  "env-human-impacts-biodiversity-2",
+  "env-human-impacts-biodiversity-4",
+  "env-human-impacts-biodiversity-5",
+  "env-human-impacts-biodiversity-6",
+  "env-human-impacts-biodiversity-7",
+  "env-human-impacts-biodiversity-12"
+ ],
+ "summary": "Human impacts on biodiversity are summed up as HIPPCO: habitat loss (the leading cause), invasive species, pollution, human population growth, climate change and overexploitation. Fragmentation leaves small, isolated populations that are easily lost. Today’s extinction rate may mark a sixth mass extinction. Protected areas, wildlife corridors, catch limits and restoration help reverse the losses."
+}

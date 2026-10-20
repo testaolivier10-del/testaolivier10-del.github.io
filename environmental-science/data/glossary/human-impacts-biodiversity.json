@@ -1,0 +1,14 @@
+{
+ "habitat-loss": {
+  "def": "The destruction or conversion of the places species live, by farming, logging, mining, roads and cities (habitat destruction). It is the leading cause of biodiversity loss."
+ },
+ "hippco": {
+  "def": "An acronym for the main human threats to biodiversity: Habitat loss, Invasive species, Pollution, human Population growth, Climate change and Overexploitation."
+ },
+ "wildlife-corridor": {
+  "def": "A strip or link of habitat, such as a forested strip, an overpass or an underpass, that connects fragments so animals can move between them (also called a habitat corridor)."
+ },
+ "mass-extinction": {
+  "def": "The loss of a large share of Earth’s species in a geologically short time. Five have occurred; today’s rapid losses may mark a sixth mass extinction."
+ }
+}

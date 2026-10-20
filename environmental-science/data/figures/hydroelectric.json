@@ -1,0 +1,12 @@
+{
+ "hydroelectric-dam": {
+  "file": "figures/hydroelectric-dam.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cross-section of a dam. On the left a reservoir floods valley land upstream, with sediment trapped on its bottom behind the dam. Water enters an intake and flows down a penstock through the dam to a turbine at its base; a shaft connects the turbine to a generator that sends electricity to power lines. On the right, the river below has less sediment and altered flow and temperature, and an arrow shows migrating fish blocked by the dam."
+ }
+}

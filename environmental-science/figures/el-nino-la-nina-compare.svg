@@ -18,7 +18,7 @@
 <line x1="330" y1="124" x2="260" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#ar-ink)"/>
 <line x1="470" y1="124" x2="400" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#ar-ink)"/>
 <line x1="610" y1="124" x2="540" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#ar-ink)"/>
-<text x="250" y="104" font-size="16" font-weight="bold" fill="#1F2A28" text-anchor="middle">trade winds</text>
+<text x="470" y="104" font-size="16" font-weight="bold" fill="#1F2A28" text-anchor="middle">trade winds</text>
 <path d="M170 64 a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z" fill="#E3E6E5" stroke="#6B7370" stroke-width="1" stroke-linejoin="round"/>
 <line x1="182" y1="84" x2="178" y2="100" stroke="#0072B2" stroke-width="1.4"/>
 <line x1="194" y1="84" x2="190" y2="100" stroke="#0072B2" stroke-width="1.4"/>
@@ -62,7 +62,7 @@
 <line x1="330" y1="616" x2="236" y2="616" stroke="#1F2A28" stroke-width="3.1" marker-end="url(#ar-ink)"/>
 <line x1="470" y1="616" x2="376" y2="616" stroke="#1F2A28" stroke-width="3.1" marker-end="url(#ar-ink)"/>
 <line x1="610" y1="616" x2="516" y2="616" stroke="#1F2A28" stroke-width="3.1" marker-end="url(#ar-ink)"/>
-<text x="250" y="596" font-size="16" font-weight="bold" fill="#1F2A28" text-anchor="middle">strong trade winds</text>
+<text x="470" y="596" font-size="16" font-weight="bold" fill="#1F2A28" text-anchor="middle">strong trade winds</text>
 <path d="M130 556 a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z" fill="#E3E6E5" stroke="#6B7370" stroke-width="1" stroke-linejoin="round"/>
 <line x1="142" y1="576" x2="138" y2="592" stroke="#0072B2" stroke-width="1.4"/>
 <line x1="154" y1="576" x2="150" y2="592" stroke="#0072B2" stroke-width="1.4"/>

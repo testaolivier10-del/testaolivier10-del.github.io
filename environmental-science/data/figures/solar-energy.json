@@ -1,0 +1,12 @@
+{
+ "solar-energy-three-ways": {
+  "file": "figures/solar-energy-three-ways.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. Photovoltaic: sunlight strikes a blue panel and electricity flows to an inverter; light to electricity, no moving parts. Active solar heating: sunlight heats an orange roof collector; hot fluid flows to a tank and a pump returns it; pumps or fans move the heat. Passive solar design: low sun enters a house through a south-facing window below an overhang and warms a thick floor that stores heat; no pumps or fans. A note says windows face south in the Northern Hemisphere and north in the Southern Hemisphere."
+ }
+}

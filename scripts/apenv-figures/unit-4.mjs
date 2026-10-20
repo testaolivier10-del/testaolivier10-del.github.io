@@ -485,7 +485,7 @@ export const STD_ATM = [[0, 15], [11, -56.5], [20, -56.5], [32, -44.5], [47, -2.
     // trade winds (westward)
     const len = 30 + 40 * wind;
     for (const x of [330, 470, 610]) parts.push(L(x, sea - 14, x - len, sea - 14, { stroke: INK, w: 1.5 + wind, arrow: 'ink' }));
-    parts.push(T(250, sea - 34, wind > 1.2 ? 'strong trade winds' : wind < 0.5 ? 'weak trade winds' : 'trade winds', { size: 16, anchor: 'middle', weight: 'bold' }));
+    parts.push(T(rainX > 400 ? 250 : 470, sea - 34, wind > 1.2 ? 'strong trade winds' : wind < 0.5 ? 'weak trade winds' : 'trade winds', { size: 16, anchor: 'middle', weight: 'bold' }));
     // rising air and rain
     parts.push(P(`M${rainX - 30} ${y0 + 54} a14 14 0 0 1 26 -10 a16 16 0 0 1 30 4 a12 12 0 0 1 6 22 h-58 a11 11 0 0 1 -4 -16 z`, { fill: '#E3E6E5', stroke: GREY, w: 1 }));
     for (const dx of [-18, -6, 6, 18]) parts.push(L(rainX + dx, y0 + 74, rainX + dx - 4, y0 + 90, { stroke: BLUE, w: 1.4 }));

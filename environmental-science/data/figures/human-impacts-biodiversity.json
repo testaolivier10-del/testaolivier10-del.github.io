@@ -1,0 +1,12 @@
+{
+ "human-impacts-biodiversity-corridor": {
+  "file": "figures/human-impacts-biodiversity-corridor.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. 1: one large forest with many animals. 2: a road and a farm split the forest into four small fragments, and fewer animals remain. 3: the same fragments reconnected by a wildlife bridge over the road and strips of habitat between patches, with animals moving among them again. Caption: small, isolated fragments hold fewer species; corridors let animals move, find mates and recolonize."
+ }
+}

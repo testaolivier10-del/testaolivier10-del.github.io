@@ -1,0 +1,230 @@
+{
+ "id": "frq-ocean-acidification-data",
+ "type": "data",
+ "points": 10,
+ "title": "Carbon dioxide, temperature and seawater pH at an ocean station",
+ "units": [
+  "unit-9"
+ ],
+ "topics": [
+  "ocean-acidification",
+  "ocean-warming",
+  "greenhouse-gas-increases"
+ ],
+ "practices": [
+  "5.A",
+  "5.B",
+  "5.C",
+  "5.E",
+  "7.E"
+ ],
+ "stimulus": {
+  "kind": "quantitative",
+  "title": "An open-ocean station, 1990 to 2020",
+  "invented": true,
+  "table": {
+   "caption": "Yearly averages at an open-ocean station: atmospheric CO₂, surface water temperature and surface seawater pH (invented data for practice, shaped like long-running station records)",
+   "cols": [
+    "Year",
+    "Atmospheric CO₂ (ppm)",
+    "Surface water temperature (°C)",
+    "Surface seawater pH"
+   ],
+   "rows": [
+    [
+     "1990",
+     "354",
+     "23.10",
+     "8.110"
+    ],
+    [
+     "1995",
+     "361",
+     "23.16",
+     "8.101"
+    ],
+    [
+     "2000",
+     "370",
+     "23.22",
+     "8.093"
+    ],
+    [
+     "2005",
+     "380",
+     "23.30",
+     "8.084"
+    ],
+    [
+     "2010",
+     "390",
+     "23.37",
+     "8.075"
+    ],
+    [
+     "2015",
+     "401",
+     "23.45",
+     "8.064"
+    ],
+    [
+     "2020",
+     "414",
+     "23.54",
+     "8.053"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "prompt": "<b>Describe</b> the trend in surface seawater pH from 1990 to 2020. Use data from the table in your answer.",
+   "rubric": [
+    {
+     "point": "States that pH decreased",
+     "accept": [
+      "pH fell",
+      "the water became less basic"
+     ]
+    },
+    {
+     "point": "Supports the trend with values from the table",
+     "accept": [
+      "from 8.110 in 1990 to 8.053 in 2020",
+      "a drop of 0.057"
+     ]
+    }
+   ],
+   "sample": "Surface seawater pH decreased steadily, from 8.110 in 1990 to 8.053 in 2020, a drop of 0.057 pH units, falling in every five-year step."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Describe</b> the relationship between atmospheric CO₂ and seawater pH shown in the data, and <b>explain</b> the chemistry behind it.",
+   "rubric": [
+    {
+     "point": "Describes an inverse relationship: as CO₂ increased, pH decreased",
+     "accept": [
+      "as CO₂ rose from 354 to 414 ppm, pH fell"
+     ]
+    },
+    {
+     "point": "Explains that CO₂ dissolves to form carbonic acid, which releases hydrogen ions and lowers pH",
+     "accept": [
+      "CO₂ + H₂O → H₂CO₃ → H⁺ + HCO₃⁻",
+      "more dissolved CO₂ means more H⁺"
+     ]
+    }
+   ],
+   "sample": "As atmospheric CO₂ increased from 354 to 414 ppm, pH decreased, an inverse relationship. More CO₂ in the air means more dissolves in seawater, where it forms carbonic acid ($\\text{CO}_2 + \\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{CO}_3$), which releases hydrogen ions; more hydrogen ions mean a lower pH."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the percent change in atmospheric CO₂ from 1990 to 2020. Show your setup.",
+   "rubric": [
+    {
+     "point": "Setup with the difference in brackets, divided by the 1990 value, times 100",
+     "accept": [
+      "(414 − 354) ÷ 354 × 100"
+     ]
+    },
+    {
+     "point": "Answer about 17% (accept 16.9% to 17%)",
+     "accept": [
+      "16.9%",
+      "17%"
+     ]
+    }
+   ],
+   "sample": "$\\frac{(414 - 354)}{354} \\times 100 \\approx 16.9\\%$ increase.",
+   "check": {
+    "type": "setup",
+    "setup": {
+     "answer": "(414 - 354) / 354 * 100",
+     "mustUse": [
+      "414",
+      "354"
+     ],
+     "mistakes": [
+      {
+       "expr": "(414 - 354) / 414 * 100",
+       "why": "Divide by the old value, 354 ppm in 1990, not the 2020 value."
+      }
+     ],
+     "then": {
+      "unit": "%",
+      "from": {
+       "fn": "percentChange",
+       "args": [
+        354,
+        414
+       ]
+      },
+      "mistakes": [
+       {
+        "value": 60,
+        "why": "60 ppm is the change. Divide by 354 and multiply by 100: about 16.9%."
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "Surface water temperature also rose at the station. <b>Make a claim</b> about whether the data show that warming caused the drop in pH, and <b>justify</b> it.",
+   "rubric": [
+    {
+     "point": "Claims the data alone do not show warming caused the pH drop, because CO₂ and temperature rose together, and the chemistry links pH to dissolved CO₂",
+     "accept": [
+      "both rose at the same time, so the table cannot separate them; pH depends on dissolved CO₂",
+      "correlation in this table does not show that temperature is the cause"
+     ]
+    }
+   ],
+   "sample": "No. Temperature and CO₂ both rose over the same years, so the table alone cannot show which one lowered the pH. The chemistry points to CO₂: dissolved CO₂ forms carbonic acid, which releases hydrogen ions."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the change in pH could affect oysters and corals near the station.",
+   "rubric": [
+    {
+     "point": "Hydrogen ions combine with carbonate ions, so fewer carbonate ions are available",
+     "accept": [
+      "H⁺ + CO₃²⁻ → HCO₃⁻",
+      "less carbonate in the water"
+     ]
+    },
+    {
+     "point": "Shell and skeleton building with calcium carbonate becomes harder, so growth or survival decreases",
+     "accept": [
+      "thinner shells",
+      "larvae fail to build shells",
+      "coral skeletons grow more slowly"
+     ]
+    }
+   ],
+   "sample": "The extra hydrogen ions combine with carbonate ions to form bicarbonate, so fewer carbonate ions are left in the water. Oysters and corals need carbonate to build calcium carbonate shells and skeletons, so their shells grow thinner and more slowly, and young oysters may fail to form shells and die."
+  },
+  {
+   "label": "f",
+   "points": 1,
+   "prompt": "<b>Propose</b> one action that would slow the decline in seawater pH worldwide.",
+   "rubric": [
+    {
+     "point": "An action that reduces atmospheric CO₂, with how it helps",
+     "accept": [
+      "cut CO₂ emissions by replacing coal power with wind and solar",
+      "a carbon tax that lowers fossil fuel use"
+     ]
+    }
+   ],
+   "sample": "Replace coal-burning power plants with wind and solar power, which cuts CO₂ emissions, so less CO₂ dissolves in the ocean and less carbonic acid forms."
+  }
+ ]
+}

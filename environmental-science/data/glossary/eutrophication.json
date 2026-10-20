@@ -1,0 +1,11 @@
+{
+ "eutrophication": {
+  "def": "The enrichment of a body of water with nutrients, especially nitrogen and phosphorus, which leads to excess algae growth. Cultural eutrophication is the rapid kind caused by human sources such as fertilizer and sewage. An oligotrophic lake is low in nutrients; a eutrophic one is high."
+ },
+ "algal-bloom": {
+  "def": "A rapid increase in algae in water, often fed by extra nutrients. Blooms turn water green, block sunlight, and when they die their decomposition uses up dissolved oxygen. Some, called harmful algal blooms, release toxins."
+ },
+ "hypoxia": {
+  "def": "A state of very low dissolved oxygen in water, below what most fish and bottom animals need. Large hypoxic areas are called dead zones, such as the one in the Gulf of Mexico."
+ }
+}

@@ -21,7 +21,8 @@
 .ech-s{font-size:11.5px;}
 .ech-b{font-weight:900;}
 .ech-muted{fill:var(--muted);}
-.ech-name{font-size:12px;font-weight:900;}
+.ech-name{font-size:12.5px;font-weight:900;}
+.ech-svg .ech-ic{pointer-events:none;}
 .ech-eff{fill:var(--cink);font-size:13px;font-weight:900;font-variant-numeric:tabular-nums;}
 .ech-ev{font-size:13px;font-weight:900;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
 .ech-wv{fill:var(--ech-heat);font-size:11.5px;font-weight:900;font-variant-numeric:tabular-nums;}
@@ -70,3 +71,4 @@
 .ech-row.is-sel rect{stroke:var(--cink);stroke-width:2;}
 .ech-bar.is-sel{stroke:var(--ink);stroke-width:2;}
 .ech-day{fill:var(--paper);stroke:var(--line);stroke-width:1;}
+.ech-fig .ech-ev,.ech-fig .ech-wv,.ech-fig .ech-wastehead{pointer-events:none;}

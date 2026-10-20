@@ -1,0 +1,76 @@
+{
+ "topic": "eutrophication",
+ "hook": "Every spring, rain washes fertilizer off fields across a third of the United States into the Mississippi River. By midsummer, off the coast of Louisiana, a patch of the Gulf of Mexico several thousand square miles across has so little oxygen near the bottom that fish swim away and shrimp, crabs and worms die. Scientists call it the dead zone.",
+ "prereq": [
+  {
+   "q": "What is a limiting nutrient?",
+   "options": [
+    "The nutrient in shortest supply, which limits growth",
+    "The nutrient found in the largest amount",
+    "A nutrient that is toxic to plants",
+    "A nutrient only animals need"
+   ],
+   "correct": 0,
+   "why": "Adding the limiting nutrient lets growth increase until something else runs short.",
+   "review": "nitrogen-cycle"
+  },
+  {
+   "q": "Which is an example of nonpoint source pollution?",
+   "options": [
+    "Fertilizer runoff from many farm fields",
+    "A factory discharge pipe",
+    "A sewage plant outfall",
+    "A single smokestack"
+   ],
+   "correct": 0,
+   "why": "Runoff from many fields enters from everywhere, so it is nonpoint.",
+   "review": "pollution-sources"
+  }
+ ],
+ "figure": {
+  "figure": "eutrophication-chain",
+  "caption": "The eutrophication chain: every link from nutrients to a fish kill."
+ },
+ "chain": [
+  {
+   "cause": "Nitrate and phosphate from fertilizer, manure and sewage reach a lake or coast",
+   "effect": "the limiting nutrients for algae are no longer in short supply"
+  },
+  {
+   "cause": "Algae grow rapidly near the surface",
+   "effect": "an algal bloom forms and shades out plants below"
+  },
+  {
+   "cause": "The algae and shaded plants die and sink",
+   "effect": "decomposers break them down"
+  },
+  {
+   "cause": "Decomposers use oxygen in cellular respiration",
+   "effect": "dissolved oxygen in the deeper water falls"
+  },
+  {
+   "cause": "Oxygen falls below what animals need (hypoxia)",
+   "effect": "fish die or leave and bottom animals die: a dead zone"
+  }
+ ],
+ "ideas": [
+  "<b>Eutrophication</b> is the enrichment of water with nutrients. <b>Cultural eutrophication</b> is the fast, human-caused kind, from fertilizer, manure, sewage and detergents.",
+  "The chain: nutrients, then an <b>algal bloom</b>, then die-off, then decomposition that uses oxygen, then low dissolved oxygen (<b>hypoxia</b>), then fish kills. Name every link.",
+  "<b>Oligotrophic</b> lakes are low in nutrients, clear and oxygen-rich; <b>eutrophic</b> lakes are high in nutrients, green and low in deep-water oxygen.",
+  "Fixes keep nutrients out: buffer strips, careful fertilizer use, cover crops, wetland restoration, nutrient removal at wastewater plants and phosphate-free detergents."
+ ],
+ "misconception": {
+  "wrong": "The algae use up the oxygen, so the fish suffocate.",
+  "right": "Living algae make oxygen. The oxygen crash comes when the algae die and decomposers break them down, using oxygen as they respire."
+ },
+ "check": [
+  "env-eutrophication-10",
+  "env-eutrophication-11",
+  "env-eutrophication-1",
+  "env-eutrophication-2",
+  "env-eutrophication-3",
+  "env-eutrophication-4",
+  "env-eutrophication-14"
+ ],
+ "summary": "Cultural eutrophication happens when nitrogen and phosphorus from fertilizer, manure and sewage enter water. The extra nutrients feed an algal bloom that shades plants below; when the algae and plants die, decomposers use oxygen to break them down, dissolved oxygen falls, and fish and bottom animals die in hypoxic dead zones. Keeping nutrients on the land and out of water prevents it."
+}

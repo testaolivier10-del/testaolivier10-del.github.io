@@ -1,0 +1,14 @@
+{
+ "photovoltaic": {
+  "def": "A photovoltaic (PV) cell turns sunlight directly into electricity, with no moving parts; many cells make a solar panel."
+ },
+ "passive-solar": {
+  "def": "Heating and lighting a building with the sun through its design alone: sun-facing windows, overhangs and thick walls or floors that store heat, with no pumps or fans."
+ },
+ "active-solar": {
+  "def": "Solar systems that use equipment such as pumps, fans or mirrors to collect and move the sun's heat, including rooftop water heaters and concentrated solar power plants."
+ },
+ "intermittency": {
+  "def": "The property of an energy source that is not available all the time, such as solar at night or wind on calm days; it means storage or backup is needed."
+ }
+}

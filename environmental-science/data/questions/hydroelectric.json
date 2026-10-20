@@ -1,0 +1,581 @@
+{
+ "stimuli": {
+  "hydroelectric-s1": {
+   "kind": "quantitative",
+   "title": "A hydroelectric dam's yearly output",
+   "invented": true,
+   "table": {
+    "caption": "Facts about a hydroelectric dam (invented data for practice)",
+    "cols": [
+     "Measure",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Capacity (maximum power)",
+      "400 MW"
+     ],
+     [
+      "Hours in a year",
+      "8,760 h"
+     ],
+     [
+      "Capacity factor (average output as a share of maximum)",
+      "45%"
+     ],
+     [
+      "Electricity used by an average home",
+      "10.5 MWh per year"
+     ]
+    ]
+   },
+   "text": "Energy (MWh) = power (MW) × time (h). Capacity factor is the yearly output divided by the output at full power all year."
+  },
+  "hydroelectric-s2": {
+   "kind": "visual",
+   "title": "A hydroelectric dam",
+   "figure": "hydroelectric-dam"
+  }
+ },
+ "items": [
+  {
+   "id": "env-hydroelectric-1",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "How does a hydroelectric dam make electricity?",
+   "options": [
+    "Water is heated into steam that spins a turbine",
+    "Water is split into hydrogen that is burned",
+    "Sunlight on the reservoir is turned into electricity",
+    "Falling water spins a turbine that turns a generator"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Water held behind the dam flows down through the penstock and spins a turbine; the turbine turns a generator.",
+    "options": [
+     "No heat or steam is needed at a dam.",
+     "Dams do not make hydrogen.",
+     "The reservoir stores water, not sunlight.",
+     "Right: moving water turns the turbine directly."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-2",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a run-of-the-river hydroelectric system?",
+   "options": [
+    "One that floods a whole valley behind a tall dam",
+    "One that uses ocean tides moving in and out of a bay",
+    "One that uses a river's natural flow with little or no reservoir",
+    "One that pumps river water uphill to store it for later"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Run-of-the-river systems divert part of the flow through turbines without a large reservoir, so they flood little land but output follows the river's flow.",
+    "options": [
+     "A tall dam with a large reservoir is the conventional design.",
+     "Using tides is tidal energy.",
+     "Right: natural flow, little or no storage.",
+     "Pumping water uphill for later is pumped storage."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-3",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What drives tidal energy systems?",
+   "options": [
+    "Warm surface water heated by the sun",
+    "The rise and fall of the ocean, caused by the moon's gravity",
+    "Waves whipped up by storms far out at sea",
+    "Rivers flowing downhill into the ocean"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Tides come from the pull of the moon (and sun). Turbines in barrages or channels catch the water as it flows in and out.",
+    "options": [
+     "Ocean temperature differences are a different resource.",
+     "Right: tides are driven by the moon's gravity.",
+     "Waves are a separate, wind-driven resource.",
+     "River flow is conventional hydroelectric power."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-4",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A large dam is built on a river where salmon swim upstream to spawn. What is the most direct effect on the salmon?",
+   "options": [
+    "The dam blocks their migration to upstream spawning grounds",
+    "The dam raises the salt content of the river",
+    "The turbines add nutrients that cause algae to grow",
+    "The reservoir releases carbon monoxide that poisons the fish"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dams block fish that migrate between the ocean and upstream spawning streams. Fish ladders help some species, but numbers often fall.",
+    "options": [
+     "Right: the dam is a barrier to migration.",
+     "Dams do not make river water salty.",
+     "Turbines do not add nutrients.",
+     "Reservoirs do not release a poison that kills salmon."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-5",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why does the river below a large dam often erode its banks and delta, even though the dam holds back floods?",
+   "options": [
+    "The turbines grind rock into the water, which wears away the banks",
+    "The water below the dam is saltier, so it dissolves the banks",
+    "The dam raises the river's temperature, which melts the banks",
+    "The reservoir traps sediment, so the water released carries little"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sediment settles out in the still reservoir. Clear water released below picks up sediment from the riverbed and banks, and deltas downstream shrink because they no longer get new sediment.",
+    "options": [
+     "Turbines do not grind rock.",
+     "Water released from a dam is not saltier.",
+     "River banks do not melt.",
+     "Right: sediment is trapped behind the dam."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-6",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "7.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is a major advantage of a large hydroelectric dam?",
+   "options": [
+    "It improves fish migration up and down the river",
+    "It increases the amount of sediment reaching the delta",
+    "It can raise or lower output quickly to match demand",
+    "It releases no greenhouse gases at all over its whole life"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Operators can open or close the gates to match demand in minutes, and the reservoir stores energy. Building it and flooded vegetation decaying in the reservoir do release some carbon dioxide and methane.",
+    "options": [
+     "Dams block fish migration.",
+     "Dams trap sediment.",
+     "Right: flexible, storable, reliable output.",
+     "Rotting vegetation in reservoirs releases methane, and building the dam takes concrete."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-7",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "multi",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are effects of building a large dam and reservoir? Select all that apply.",
+   "options": [
+    "Farmland, forests and towns upstream are flooded",
+    "People living in the valley may have to move",
+    "Sediment builds up behind the dam over decades",
+    "Carbon dioxide is released from burning the water",
+    "The river downstream receives more sediment",
+    "The river freezes year-round below the dam"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Reservoirs flood land and displace people; the Three Gorges Dam in China displaced more than a million. Sediment fills the reservoir over time. Water is not burned, and the river below gets less sediment, not more.",
+    "options": [
+     "Right: the reservoir floods the valley.",
+     "Right: whole communities can be relocated.",
+     "Right: trapped sediment slowly fills the reservoir.",
+     "Water is not burned at a dam.",
+     "Less sediment reaches the river below, not more.",
+     "Released water is often colder, but the river does not freeze year-round."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-8",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "setup",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the setup for the electricity the dam produces in a year, in MWh, using its capacity, the hours in a year and its capacity factor. Then give the answer.",
+   "stimulus": "hydroelectric-s1",
+   "why": {
+    "correct": "$400\\,\\text{MW} \\times 8{,}760\\,\\text{h} \\times 0.45 = 1{,}576{,}800\\,\\text{MWh}$ a year."
+   },
+   "setup": {
+    "answer": "400 MW * 8760 h * 0.45",
+    "unit": "MW h",
+    "mustUse": [
+     "400",
+     "8760",
+     "0.45"
+    ],
+    "mistakes": [
+     {
+      "expr": "400 MW * 8760 h",
+      "why": "That assumes the dam runs at full power all year. Multiply by the capacity factor, 0.45."
+     },
+     {
+      "expr": "400 MW * 365 h * 0.45",
+      "why": "A year has 8,760 hours (365 days × 24 h), not 365 hours."
+     }
+    ],
+    "then": {
+     "unit": "MWh",
+     "from": {
+      "fn": "mul",
+      "args": [
+       400,
+       8760,
+       0.45
+      ]
+     },
+     "mistakes": [
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         400,
+         8760
+        ]
+       },
+       "check": 3504000,
+       "why": "That is full power all year. The dam averages 45 percent of capacity, so multiply by 0.45."
+      },
+      {
+       "from": {
+        "fn": "mul",
+        "args": [
+         400,
+         8760,
+         45
+        ]
+       },
+       "check": 157680000,
+       "why": "Write 45 percent as 0.45 before you multiply."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "env-hydroelectric-9",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "numeric",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "An average home uses 10.5 MWh a year. About how many homes can the dam supply? Round to the nearest thousand.",
+   "stimulus": "hydroelectric-s1",
+   "why": {
+    "correct": "$\\frac{1{,}576{,}800\\,\\text{MWh}}{10.5\\,\\text{MWh per home}} \\approx 150{,}171$, about 150,000 homes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      {
+       "fn": "mul",
+       "args": [
+        400,
+        8760,
+        0.45
+       ]
+      },
+      10.5
+     ]
+    },
+    "unit": "homes",
+    "tol": 600,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "mul",
+         "args": [
+          400,
+          8760
+         ]
+        },
+        10.5
+       ]
+      },
+      "why": "You left out the capacity factor. The dam makes 1,576,800 MWh a year, not 3,504,000."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        400,
+        8760,
+        0.45,
+        10.5
+       ]
+      },
+      "why": "You multiplied by each home's use. Divide the total by MWh per home."
+     }
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-10",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a drought year the river's flow falls by half. What happens to the dam's output, and why?",
+   "stimulus": "hydroelectric-s1",
+   "options": [
+    "It stays the same, because the capacity is still 400 MW",
+    "It rises, because the reservoir gets warmer",
+    "It falls, because less water flows through the turbines",
+    "It rises, because the water falls faster when the river is low"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Output depends on how much water flows through the turbines and how far it falls. Less flow means less electricity, even though the installed capacity is unchanged.",
+    "options": [
+     "Capacity is the maximum, not what is actually produced.",
+     "Temperature does not raise output.",
+     "Right: less water, less electricity.",
+     "A lower reservoir means a smaller drop, which lowers output further."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-11",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The dam's capacity factor (45%) is higher than a typical solar farm's (about 25%). What does this tell you?",
+   "stimulus": "hydroelectric-s1",
+   "options": [
+    "The dam releases fewer pollutants than a solar farm",
+    "The dam produces a larger share of its maximum over a year",
+    "The dam has a larger maximum power than any solar farm",
+    "Solar panels are broken about 75 percent of the time"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Capacity factor is actual yearly output divided by the output at full power all year. A higher value means steadier production, not a larger plant.",
+    "options": [
+     "Capacity factor says nothing about pollution.",
+     "Right: it runs closer to its maximum, on average.",
+     "Capacity factor compares output with a plant's own maximum, not size.",
+     "Solar's low factor comes from night and clouds, not broken panels."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-12",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In the diagram, what is the penstock?",
+   "stimulus": "hydroelectric-s2",
+   "options": [
+    "The pipe that carries water from the reservoir to the turbine",
+    "The wall that holds back the reservoir",
+    "The machine that turns motion into electricity",
+    "The sediment layer at the bottom of the reservoir"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The penstock carries water from the intake down to the turbine.",
+    "options": [
+     "Right: the pipe to the turbine.",
+     "That is the dam itself.",
+     "That is the generator.",
+     "Sediment is labeled separately behind the dam."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-13",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a taller dam generally produce more electricity from the same flow of water?",
+   "stimulus": "hydroelectric-s2",
+   "options": [
+    "A taller dam traps more sediment, which spins the turbine",
+    "A taller dam keeps the water colder, which spins the turbine faster",
+    "A taller dam blocks more fish, which lowers friction",
+    "The water falls farther, so it has more energy when it hits the turbine"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The energy of the falling water depends on how far it falls (the head) and how much flows.",
+    "options": [
+     "Sediment does not drive turbines; it damages them.",
+     "Colder water does not make the turbine spin faster.",
+     "Fish do not affect the turbine's output.",
+     "Right: more drop gives more energy per liter."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-14",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Using the diagram, which ecological change is most likely in the river below the dam?",
+   "stimulus": "hydroelectric-s2",
+   "options": [
+    "Migrating fish reach upstream more easily",
+    "The river below the dam dries up completely",
+    "Its flow, temperature and sediment change, altering habitat",
+    "The river becomes warmer and full of new sediment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The diagram notes less sediment and altered flow and temperature below the dam. Water released from deep in a reservoir is often colder, and controlled releases replace natural floods.",
+    "options": [
+     "The diagram shows migrating fish blocked.",
+     "Water still flows out through the turbines.",
+     "Right: changed flow, temperature and sediment alter habitat.",
+     "The diagram shows less sediment, not more."
+    ]
+   }
+  },
+  {
+   "id": "env-hydroelectric-15",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "specific",
+   "practice": "7.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A dam has cut a salmon run that a local tribe and fishing towns depend on. Propose a solution, other than removing the dam, and explain how it works.",
+   "why": {
+    "correct": "A fish ladder (or fish elevator) gives salmon a path around the dam; it works because fish can climb a series of small steps of moving water."
+   },
+   "specific": {
+    "frame": "The operators should ___, which helps because ___.",
+    "slots": {
+     "action": {
+      "label": "Action",
+      "options": [
+       "build a fish ladder around the dam",
+       "remove the dam",
+       "add more turbines"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The question says other than removing the dam.",
+       "2": "More turbines kill more fish and do not help them pass upstream."
+      }
+     },
+     "how": {
+      "label": "How it works",
+      "options": [
+       "salmon can swim up a series of small pools to reach the spawning streams",
+       "the ladder stores more water for electricity",
+       "the ladder warms the water so salmon grow faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A fish ladder is not for power storage.",
+       "2": "The goal is passage upstream, not warming."
+      }
+     }
+    },
+    "write": {
+     "mechanism": true,
+     "otherThan": [
+      "remove the dam",
+      "removing the dam",
+      "tear down"
+     ],
+     "context": [
+      "salmon",
+      "upstream"
+     ]
+    },
+    "model": "The operators should build a fish ladder around the dam, which helps because salmon can swim up a series of small pools past the dam to reach their upstream spawning streams."
+   }
+  },
+  {
+   "id": "env-hydroelectric-16",
+   "unit": "unit-6",
+   "topic": "hydroelectric",
+   "type": "single",
+   "practice": "7.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which is a drawback of tidal energy?",
+   "options": [
+    "Few coastlines have tides large enough, and barrages alter estuaries",
+    "It releases large amounts of carbon dioxide while running",
+    "The tides are unpredictable from one day to the next",
+    "It uses up the moon's gravity over time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Tidal power needs a large tidal range, so suitable sites are rare, and barrages across estuaries change water flow, sediment and habitat. Tides are very predictable.",
+    "options": [
+     "Right: few good sites and estuary impacts.",
+     "Tidal turbines release nothing while running.",
+     "Tides are among the most predictable natural events.",
+     "Tidal power does not use up gravity."
+    ]
+   }
+  }
+ ]
+}

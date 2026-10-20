@@ -60,47 +60,63 @@
     home: function(x, y, s){ return '<g class="ech-ic ech-ic-home"><path class="ech-house" d="M' + n2(x - 15 * s) + ' ' + n2(y - 1 * s) + 'L' + n2(x) + ' ' + n2(y - 15 * s) + 'L' + n2(x + 15 * s) + ' ' + n2(y - 1 * s) + 'v' + n2(17 * s) + 'h-' + n2(30 * s) + 'z"/><rect class="ech-window" x="' + n2(x - 4 * s) + '" y="' + n2(y + 3 * s) + '" width="' + n2(8 * s) + '" height="' + n2(8 * s) + '"/></g>'; }
   };
 
-  /* The flow: stages left to right (a column per stage on a wide screen; on a
-     phone the same layout, narrower and taller). */
+  /* The flow. Wide screens: stages left to right, waste heat dropping
+     below. Phones: stages top to bottom, waste heat peeling off to the
+     right. Drawn in abstract coordinates (a along the flow, c across it)
+     and mapped to x, y by P(). */
+  var SHORT = { 'Steam turbine': 'Turbine', 'Gas and steam turbines': 'Turbines', 'Water turbine': 'Turbine', 'Rotor blades': 'Rotor', 'Solar cells': 'Cells', 'Power lines': 'Power lines', 'Your outlet': 'Your outlet' };
   function flowSvg(W, H, id, sel, o){
     o = o || {};
-    var c = E.chain(id, 100), S = E.SOURCES[id], n = c.stages.length + 2, out = [], phone = W < 560;
-    var L = phone ? 8 : 20, R = W - (phone ? 8 : 20), top = phone ? 34 : 40, bandMax = Math.min(H * 0.24, phone ? 70 : 92);
-    var colW = (R - L) / n, mid = top + bandMax / 2 + (phone ? 40 : 52), wasteY = H - (phone ? 26 : 30);
-    function cx(i){ return L + colW * (i + 0.5); }
+    var c = E.chain(id, 100), S = E.SOURCES[id], n = c.stages.length + 2, out = [], vert = W < 560;
+    var A0, A1, mid, bandMax, cEnd;
+    if(vert){ A0 = 14; A1 = H - 10; bandMax = Math.min(W * 0.26, 100); mid = W * 0.5; cEnd = W - 34; }
+    else { A0 = 20; A1 = W - 20; bandMax = Math.min(H * 0.3, 150); mid = 100 + bandMax / 2; cEnd = H - 92; }
+    var step = (A1 - A0) / n;
+    function at(i){ return A0 + step * (i + 0.5); }
+    function P(a, cc){ return vert ? n2(cc) + ' ' + n2(a) : n2(a) + ' ' + n2(cc); }
     function hOf(e){ return Math.max(2.5, bandMax * e / 100); }
-    out.push('<defs><linearGradient id="ech-heat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ech-heat-a"/><stop offset="1" class="ech-heat-b"/></linearGradient></defs>');
-    // the main band, stage by stage
-    var e = 100, x0 = cx(0);
-    out.push('<path class="ech-band" d="M' + n2(x0) + ' ' + n2(mid - hOf(100) / 2) + 'H' + n2(cx(1)) + 'V' + n2(mid + hOf(100) / 2) + 'H' + n2(x0) + 'Z"/>');
+    function T2(a, cc, s, cls, anchor){ return vert ? txt(cc, a, s, cls, anchor) : txt(a, cc, s, cls, anchor); }
+    // the first piece: the resource
+    out.push('<path class="ech-band" d="M' + P(at(0), mid - hOf(100) / 2) + 'L' + P(at(1), mid - hOf(100) / 2) + 'L' + P(at(1), mid + hOf(100) / 2) + 'L' + P(at(0), mid + hOf(100) / 2) + 'Z"/>');
     c.stages.forEach(function(s, i){
-      var xa = cx(i + 1), xb = cx(i + 2), h0 = hOf(s.ein), h1 = hOf(s.eout), w = hOf(s.waste);
-      // waste heat peels off the bottom, curving down
+      var xa = at(i + 1), xb = at(i + 2), xm = (xa + xb) / 2, h0 = hOf(s.ein), h1 = hOf(s.eout), w = hOf(s.waste);
       if(s.waste > 0.05){
-        var y0 = mid - h0 / 2 + h1, wx = xa + Math.min(colW * 0.42, 34);
-        out.push('<path class="ech-waste' + (sel === i ? ' is-sel' : '') + '" d="M' + n2(xa) + ' ' + n2(y0) + 'C' + n2(xa + colW * 0.3) + ' ' + n2(y0) + ' ' + n2(wx) + ' ' + n2(y0 + 10) + ' ' + n2(wx) + ' ' + n2(wasteY - 18) + 'H' + n2(wx - w) + 'C' + n2(wx - w) + ' ' + n2(y0 + w + 6) + ' ' + n2(xa + colW * 0.15) + ' ' + n2(mid + h0 / 2) + ' ' + n2(xa) + ' ' + n2(mid + h0 / 2) + 'Z"/>');
-        out.push('<path class="ech-wastehead" d="M' + n2(wx - w / 2 - Math.max(5, w * 0.6)) + ' ' + n2(wasteY - 18) + 'h' + n2(2 * Math.max(5, w * 0.6)) + 'l-' + n2(Math.max(5, w * 0.6)) + ' 8z"/>');
-        out.push(txt(wx - w / 2, wasteY, f0(s.waste), 'ech-t ech-wv', 'middle'));
+        var y0 = mid - h0 / 2 + h1, wx = xa + Math.min(step * 0.42, 34), aw = Math.max(5, w * 0.6), tip = wx - w / 2;
+        out.push('<path class="ech-waste' + (sel === i ? ' is-sel' : '') + '" d="M' + P(xa, y0) + 'C' + P(xa + step * 0.3, y0) + ' ' + P(wx, y0 + 10) + ' ' + P(wx, Math.max(y0 + 12, cEnd - 10)) + 'L' + P(wx - w, Math.max(y0 + 12, cEnd - 10)) + 'C' + P(wx - w, y0 + w + 6) + ' ' + P(xa + step * 0.15, mid + h0 / 2) + ' ' + P(xa, mid + h0 / 2) + 'Z"/>');
+        out.push('<path class="ech-wastehead" d="M' + P(tip - aw, cEnd - 10) + 'L' + P(tip + aw, cEnd - 10) + 'L' + P(tip, cEnd) + 'Z"/>');
+        out.push(vert ? txt(cEnd + 4, tip + 4, f0(s.waste), 'ech-t ech-wv', 'start') : txt(tip, cEnd + 14, f0(s.waste), 'ech-t ech-wv', 'middle'));
       }
-      out.push('<path class="ech-band" d="M' + n2(xa) + ' ' + n2(mid - h0 / 2) + 'C' + n2((xa + xb) / 2) + ' ' + n2(mid - h0 / 2) + ' ' + n2((xa + xb) / 2) + ' ' + n2(mid - h1 / 2) + ' ' + n2(xb) + ' ' + n2(mid - h1 / 2) + 'V' + n2(mid + h1 / 2) + 'C' + n2((xa + xb) / 2) + ' ' + n2(mid + h1 / 2) + ' ' + n2((xa + xb) / 2) + ' ' + n2(mid - h0 / 2 + h1) + ' ' + n2(xa) + ' ' + n2(mid - h0 / 2 + h1) + 'Z"/>');
-      e = s.eout;
+      out.push('<path class="ech-band" d="M' + P(xa, mid - h0 / 2) + 'C' + P(xm, mid - h0 / 2) + ' ' + P(xm, mid - h1 / 2) + ' ' + P(xb, mid - h1 / 2) + 'L' + P(xb, mid + h1 / 2) + 'C' + P(xm, mid + h1 / 2) + ' ' + P(xm, mid - h0 / 2 + h1) + ' ' + P(xa, mid - h0 / 2 + h1) + 'Z"/>');
     });
-    out.push(txt(L, wasteY, phone ? 'Heat' : 'Waste heat', 'ech-t ech-s ech-c-heat'));
-    // stage cards
-    var labels = [{ name: S.name, k: S.icon, e: 100, sub: 'start' }].concat(c.stages.map(function(s){ return { name: s.name, k: s.id === 'grid' ? 'grid' : s.id, e: s.eout, eff: s.eff }; })).concat([{ name: 'Your outlet', k: 'home', e: c.delivered }]);
+    out.push(vert ? txt(cEnd + 4, A0 + 2, 'Heat', 'ech-t ech-s ech-c-heat', 'start') : txt(A0, cEnd + 14, 'Waste heat', 'ech-t ech-s ech-c-heat'));
+    // the stage labels and tap targets
+    var labels = [{ name: S.name, k: S.icon, e: 100 }].concat(c.stages.map(function(s){ return { name: s.name, k: s.id === 'grid' ? 'grid' : s.id, e: s.eout, eff: s.eff }; })).concat([{ name: 'Your outlet', k: 'home', e: c.delivered }]);
     labels.forEach(function(l, i){
-      var x = cx(i), isStage = i > 0 && i < n - 1, on = sel === i - 1 && isStage, ys = top + (phone ? 4 : 8), s = phone ? 0.62 : 0.85;
-      var g = '<g class="ech-node' + (on ? ' is-sel' : '') + (isStage ? ' is-tap' : '') + '"' + (isStage ? ' data-i="' + (i - 1) + '" tabindex="' + (o.static ? '-1' : '0') + '" role="button" aria-label="' + esc(l.name + ': ' + Math.round(l.eff * 100) + '% efficient. Show what it loses.') + '"' : '') + '>';
-      g += '<rect class="ech-hit" x="' + n2(x - colW / 2 + 2) + '" y="' + n2(top - 30) + '" width="' + n2(colW - 4) + '" height="' + n2(mid + bandMax / 2 - top + 34) + '" rx="10"/>';
-      g += (ICON[l.k] || ICON.gen)(x, ys, s);
-      var nm = l.name.length > 13 && phone ? l.name.split(' ').slice(-1)[0] : l.name;
-      g += txt(x, top - 18 + (phone ? 0 : -2), esc(nm), 'ech-t ech-name', 'middle');
-      if(isStage) g += txt(x, mid + bandMax / 2 + 16, Math.round(l.eff * 100) + '%', 'ech-t ech-eff', 'middle');
+      var a = at(i), isStage = i > 0 && i < n - 1, on = sel === i - 1 && isStage, g = '';
+      g += '<g class="ech-node' + (on ? ' is-sel' : '') + (isStage ? ' is-tap' : '') + '"' + (isStage ? ' data-i="' + (i - 1) + '" tabindex="' + (o.static ? '-1' : '0') + '" role="button" aria-pressed="' + on + '" aria-label="' + esc(l.name + ': ' + Math.round(l.eff * 100) + '% efficient. Show what it loses.') + '"' : '') + '>';
+      if(vert){
+        g += '<rect class="ech-hit" x="2" y="' + n2(a - step / 2 + 2) + '" width="' + n2(mid - bandMax / 2 - 6) + '" height="' + n2(step - 4) + '" rx="10"/>';
+        g += (ICON[l.k] || ICON.gen)(24, a, 0.66);
+        g += txt(48, a - (isStage ? 2 : -4), esc(SHORT[l.name] || l.name), 'ech-t ech-name');
+        if(isStage) g += txt(48, a + 14, Math.round(l.eff * 100) + '% efficient', 'ech-t ech-eff ech-s');
+      } else {
+        g += '<rect class="ech-hit" x="' + n2(a - step / 2 + 2) + '" y="8" width="' + n2(step - 4) + '" height="' + n2(mid + bandMax / 2 + 26) + '" rx="10"/>';
+        g += (ICON[l.k] || ICON.gen)(a, 50, 0.85);
+        g += txt(a, 22, esc(l.name), 'ech-t ech-name', 'middle');
+        if(isStage) g += txt(a, mid + bandMax / 2 + 18, Math.round(l.eff * 100) + '%', 'ech-t ech-eff', 'middle');
+      }
       g += '</g>';
       out.push(g);
-      if(i > 0) out.push(txt(x + (i === n - 1 ? -2 : 0), mid - Math.max(hOf(l.e), 14) / 2 - 6, f0(l.e), 'ech-t ech-ev', i === n - 1 ? 'middle' : 'middle'));
+      var hv = Math.max(hOf(l.e), 14);
+      if(!vert && i > 0 && i < n - 1 && hOf(l.e) < 30) hv = hOf(l.e) + 4;
+      out.push(i === 0 ? T2((at(0) + at(1)) / 2, mid + (vert ? 0 : 5), '100', 'ech-t ech-ev ech-on-band', 'middle') : (vert ? txt(mid + hOf(l.e) / 2 + 6, a + 5, f0(l.e), 'ech-t ech-ev', 'start') : txt(a, mid - hv / 2 - 6, f0(l.e), 'ech-t ech-ev', 'middle')));
     });
-    out.push(txt(cx(0), mid + 5, '100', 'ech-t ech-ev ech-on-band', 'middle'));
+    // where the 100 units end up (wide screens with room)
+    if(!vert && H - cEnd > 80){
+      var by = cEnd + 50, bx = A0, bw = A1 - A0, x = bx, parts = [{ v: c.delivered, cls: 'ech-band', t: 'Reaches you ' + f0(c.delivered) }].concat(c.stages.filter(function(s){ return s.waste > 0.05; }).map(function(s){ return { v: s.waste, cls: 'ech-waste', t: (SHORT[s.name] || s.name) + ' ' + f0(s.waste), sel: c.stages.indexOf(s) === sel }; }));
+      out.push(txt(bx, by - 8, 'Where the 100 units end up', 'ech-t ech-b'));
+      parts.forEach(function(p){ var ww = bw * p.v / 100; out.push('<rect class="' + p.cls + (p.sel ? ' is-sel' : '') + '" x="' + n2(x) + '" y="' + n2(by) + '" width="' + n2(Math.max(1, ww - 2)) + '" height="22" rx="4"/>'); if(ww > p.t.length * 6.6 + 8) out.push(txt(x + ww / 2, by + 15, p.t, 'ech-t ech-s ech-b ' + (p.cls === 'ech-band' ? 'ech-on-band' : 'ech-on-heat'), 'middle')); x += ww; });
+    }
     return '<svg class="ech-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc('Energy chain for ' + S.name.toLowerCase() + ': of 100 units of energy, ' + c.stages.map(function(s){ return s.name.toLowerCase() + ' passes ' + f1(s.eout); }).join(', ') + '; ' + f1(c.delivered) + ' reach the outlet, ' + f1(100 - c.delivered) + ' leave as heat.') + '" xmlns="http://www.w3.org/2000/svg">' + out.join('') + '</svg>';
   }
 
@@ -111,14 +127,15 @@
   ];
   function compareSvg(W, H, mid, sel){
     var Mz = MEASURES.filter(function(m){ return m.id === mid; })[0], out = [], phone = W < 560;
-    var L = phone ? 92 : 130, R = W - (phone ? 46 : 70), top = 34, rowH = (H - top - 18) / E.ORDER.length;
+    var L = phone ? 112 : 130, R = W - (phone ? 46 : 70), top = 34, rowH = (H - top - 18) / E.ORDER.length;
     out.push(txt(L, 18, esc(Mz.unit), 'ech-t ech-s ech-muted'));
     [0, 0.25, 0.5, 0.75, 1].forEach(function(f){ var x = L + (R - L) * f; out.push('<line class="ech-gl" x1="' + n2(x) + '" x2="' + n2(x) + '" y1="' + top + '" y2="' + n2(H - 16) + '"/>'); });
     E.ORDER.forEach(function(id, i){
       var S = E.SOURCES[id], v = Mz.get(S, id), y = top + rowH * i, bh = Math.min(26, rowH * 0.5), w = (R - L) * v / Mz.max;
       out.push('<g class="ech-row' + (id === sel ? ' is-sel' : '') + '">');
       out.push((ICON[S.icon])(phone ? 14 : 20, y + rowH / 2, phone ? 0.45 : 0.6));
-      out.push(txt(phone ? 30 : 42, y + rowH / 2 + 5, esc(S.name), 'ech-t ech-rown'));
+      out.push(txt(phone ? 30 : 42, y + rowH / 2 + (phone ? 0 : 5), esc(phone ? ({ gas: 'Gas', solar: 'Solar' })[id] || S.name : S.name), 'ech-t ech-rown'));
+      if(phone) out.push(txt(30, y + rowH / 2 + 14, S.intermittent ? 'Intermittent' : 'On demand', 'ech-t ech-s ' + (S.intermittent ? 'ech-c-warn' : 'ech-muted')));
       out.push('<rect class="ech-bar ech-bar-' + (S.co2 > 0 ? 'fossil' : 'clean') + '" x="' + L + '" y="' + n2(y + (rowH - bh) / 2) + '" width="' + n2(Math.max(2, w)) + '" height="' + n2(bh) + '" rx="4"/>');
       out.push(txt(L + Math.max(2, w) + 6, y + rowH / 2 + 5, f0(v), 'ech-t ech-ev'));
       var tags = (S.intermittent ? 'Intermittent' : 'On demand');
@@ -149,7 +166,7 @@
     host.innerHTML = '<section class="bt-problem ech-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Energy chain explorer</h2>' +
       '<div class="ech-fig"></div>' +
       '<div class="ech-ctl">' +
-        '<div class="ech-views ls-seg" role="group" aria-label="View"><button type="button" class="ech-view" data-v="flow" aria-pressed="true">Follow the energy</button><button type="button" class="ech-view" data-v="cmp" aria-pressed="false">Compare sources</button></div>' +
+        '<div class="ech-views ls-seg" role="group" aria-label="View"><button type="button" class="ech-view" data-v="flow" aria-pressed="true">Energy flow</button><button type="button" class="ech-view" data-v="cmp" aria-pressed="false">Compare</button></div>' +
         '<div class="ech-srcs ls-scroll" role="group" aria-label="Power source">' + E.ORDER.map(function(id){ return '<button type="button" class="tchip ech-src" data-id="' + id + '" aria-pressed="false">' + esc(E.SOURCES[id].name) + '</button>'; }).join('') + '</div>' +
         '<div class="ech-meas ls-scroll" role="group" aria-label="Measure" hidden>' + MEASURES.map(function(m){ return '<button type="button" class="tchip ech-m" data-m="' + m.id + '" aria-pressed="false">' + esc(m.label) + '</button>'; }).join('') + '</div>' +
       '</div>' +
@@ -174,8 +191,8 @@
       if(st.view === 'flow'){
         var s = st.sel != null ? c.stages[st.sel] : null;
         head = s ? s.name + ': ' + Math.round(s.eff * 100) + '% efficient. Of ' + f1(s.ein) + ' units in, ' + f1(s.eout) + ' go on and ' + f1(s.waste) + ' leave as ' + s.lost + '.' : S.name + ': of 100 units of energy, ' + f1(c.delivered) + ' reach your outlet. The other ' + f1(100 - c.delivered) + ' leave as heat along the way.';
-        pills = [{ k: 'Reaches you', html: f1(c.total) + '%', tone: 'readout' }];
-        right = [{ k: 'CO₂ at the plant', html: S.co2 ? T.F(S.co2, 2) + ' lb/kWh' : 'none', tone: S.co2 ? 'warn' : 'good' }];
+        pills = [{ k: 'To you', html: f1(c.total) + '%', tone: 'readout' }];
+        right = [{ k: 'CO₂', html: S.co2 ? T.F(S.co2, 2) + ' lb/kWh' : 'none at plant', tone: S.co2 ? 'warn' : 'good' }];
         why = (s ? '<p><b>' + esc(s.name) + '.</b> ' + esc(WHY[s.id] || '') + '</p>' : '') +
           '<p><b>Efficiencies multiply.</b> Each step passes on only its share of what it receives, so the whole chain is the product: ' + c.stages.map(function(x){ return T.F(x.eff, 3).replace(/0+$/, ''); }).join(' × ') + ' × 100 = ' + f1(c.total) + '%. The chain is always less efficient than its weakest step.</p>' +
           '<p><b>Energy is not destroyed</b> (the first law of thermodynamics): every unit that does not reach you is still there, as low-temperature heat in the air and water. It is just too spread out to do useful work (the second law).</p>' +
@@ -226,7 +243,7 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ech-srcs'), text: 'Start here: pick a source' });
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ech-src[data-id="gas"]'), text: 'Start here: pick a source' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.ech-fig')); }
     }
     draw();
