@@ -377,7 +377,7 @@
       inner = ringSvg(W, H, f, done && done.ans);
       label = 'A percolation test: water in a ring dropping ' + f.drop + ' cm in ' + f.mins + ' minutes';
     } else {
-      H = phone ? 280 : 250;
+      H = phone ? 400 : 270;
       inner = columnsSvg(W, H);
       label = 'Water poured through columns of sand, loam and clay';
     }

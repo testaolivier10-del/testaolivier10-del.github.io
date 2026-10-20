@@ -82,17 +82,17 @@
    "options": [
     "The low-flying jets, the loudest source",
     "The road work and the low-flying jets",
-    "The playground and everything louder than it",
-    "The cafeteria, the playground and the road work"
+    "Recess and everything louder than it",
+    "Lunch, recess and the road work"
    ],
    "correct": 1,
    "why": {
-    "correct": "Road work (100 dB) and low-flying jets (110 dB) are above 85 dB. The playground (80 dB) is close but below it.",
+    "correct": "Road work (100 dB) and low-flying jets (110 dB) are above 85 dB. Recess on the playground (80 dB) is close but below it.",
     "options": [
      "Road work, at 100 dB, is also above 85 dB.",
      "Right: 100 and 110 dB are both above 85 dB.",
-     "The playground is 80 dB, below 85 dB.",
-     "The cafeteria (75 dB) and playground (80 dB) are below 85 dB."
+     "Recess on the playground is 80 dB, below 85 dB.",
+     "Lunch (75 dB) and recess (80 dB) are below 85 dB."
     ]
    }
   },
@@ -104,7 +104,7 @@
    "practice": "2.B",
    "level": "analyze",
    "diff": 2,
-   "q": "The decibel scale is logarithmic: each 10 dB step means 10 times the sound intensity. How does the 100 dB road work compare with the 80 dB playground?",
+   "q": "The decibel scale is logarithmic: each 10 dB step means 10 times the sound intensity. How does the 100 dB road work compare with the 80 dB playground at recess?",
    "stimulus": "noise-pollution-s1",
    "options": [
     "It has 100 times the sound intensity",
@@ -131,7 +131,7 @@
    "practice": "6.C",
    "level": "analyze",
    "diff": 2,
-   "q": "Using the rule that each 10 dB means 10 times the intensity, how many times more intense is the 110 dB jet noise than the 80 dB playground?",
+   "q": "Using the rule that each 10 dB means 10 times the intensity, how many times more intense is the 110 dB jet noise than the 80 dB playground at recess?",
    "stimulus": "noise-pollution-s1",
    "why": {
     "correct": "$110 - 80 = 30$ dB, three steps of 10, so $10^{\\frac{(110 - 80)}{10}} = 10^{3} = 1{,}000$ times the intensity."

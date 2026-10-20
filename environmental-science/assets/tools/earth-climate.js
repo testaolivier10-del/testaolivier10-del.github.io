@@ -51,6 +51,7 @@
   function tag(x, y, s, cls, anchor){
     // a value label with a background pill, so it reads over any picture
     var w = s.replace(/<[^>]+>/g, '').length * 6.9 + 12, x0 = anchor === 'end' ? x - w : anchor === 'middle' ? x - w / 2 : x;
+    x0 = Math.max(4, x0);   // never clipped at the left edge
     return '<g class="ec-tag ' + (cls || '') + '"><rect x="' + n2(x0) + '" y="' + n2(y - 13) + '" width="' + n2(w) + '" height="19" rx="9.5"/>' + txt(x0 + w / 2, y + 1, s, 'ec-tag-t', 'middle') + '</g>';
   }
   function svgWrap(W, H, label, inner){ return '<svg class="ec-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '" xmlns="http://www.w3.org/2000/svg">' + inner + '</svg>'; }
@@ -408,7 +409,7 @@
           inner = es.svg + orbit(ew - 70, 54, 46, st.day) + sky(ew + 12, 6, W - ew - 16, H * 0.5, ang, dl, ins) + insChart(ew + 6, H * 0.55, W - ew - 10, H * 0.45 - 4, d, st.lat);
         } else {
           var eh = H * 0.56, es2 = earthSide(0, 0, W, eh, d, st.lat);
-          inner = es2.svg + orbit(52, 34, 30, st.day, true) + sky(4, eh + 4, W - 8, H - eh - 8, ang, dl, ins);
+          inner = es2.svg + orbit(64, 36, 28, st.day, true) + sky(4, eh + 4, W - 8, H - eh - 8, ang, dl, ins);
         }
         label = dateText(st.day) + ': the sun is overhead at ' + E.latText(M.round(d, 1)) + '. At ' + E.latText(st.lat) + ' the noon sun is ' + (ang > 0 ? f1(ang) + '° above the horizon' : 'below the horizon') + ', daylight lasts ' + f1(dl) + ' hours, and daily sunlight at the top of the atmosphere averages ' + f0(ins) + ' W/m².';
       } else if(st.scene === 'winds'){
@@ -527,7 +528,7 @@
       host.removeEventListener('click', onClick);
       s.root.addEventListener('click', onClick);
       draw();
-      if(s.mode() === 'explore') s.hint({ target: $('.ec-fig'), inside: true, text: 'Start here: drag the Date slider' });
+      if(s.mode() === 'explore') s.hint({ target: $('.ec-fig'), inside: true, text: ({ sun: 'Start here: drag the Date slider', winds: 'Start here: move the balloon', shadow: 'Start here: Send the air over', enso: 'Start here: try Side by side' })[st.scene] });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ec-fig')); }
       window.addEventListener('resize', function(){ if(!anim) draw(); });
     }

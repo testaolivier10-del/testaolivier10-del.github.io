@@ -123,14 +123,14 @@
     out.push('<rect class="ap-nightbg" x="' + n2(L) + '" y="' + n2(Tp) + '" width="' + n2(X(6) - L) + '" height="' + n2(B - Tp) + '"/><rect class="ap-nightbg" x="' + n2(X(19)) + '" y="' + n2(Tp) + '" width="' + n2(R - X(19)) + '" height="' + n2(B - Tp) + '"/>');
     var step = ymax <= 100 ? 20 : ymax <= 200 ? 50 : 100;
     for(var v = 0; v <= ymax + 0.1; v += step){ out.push(line(L, Y(v), R, Y(v), 'ap-grid')); out.push(txt(L - 4, Y(v) + 4, String(v), 'ap-t ap-tk', 'end')); }
-    [0, 6, 12, 18, 24].forEach(function(t){ out.push(txt(X(t), B + 15, t === 0 || t === 24 ? 'midnight' : t === 12 ? 'noon' : (t > 12 ? t - 12 + ' p.m.' : t + ' a.m.'), 'ap-t ap-tk', 'middle')); });
+    [0, 6, 12, 18].forEach(function(t){ out.push(txt(X(t), B + 15, t === 0 ? 'midnight' : t === 12 ? 'noon' : (t > 12 ? t - 12 + ' p.m.' : t + ' a.m.'), 'ap-t ap-tk', t ? 'middle' : 'start')); });
     out.push(txt(L, y0 + 12, 'ppb', 'ap-t ap-tk'));
     (o.species || SP).forEach(function(s, i){
       if(s.k === 'VOC' && !o.voc) return;
       var pts = []; for(var j = 0; j < day.hours.length; j += 2) pts.push(n2(X(day.hours[j])) + ',' + n2(Y(Math.min(ymax, day[s.k][j] * (s.k === 'VOC' ? 0.5 : 1)))));
       out.push('<polyline class="ap-curve ' + s.cls + (o.mono ? ' ap-mono' + i : '') + '" points="' + pts.join(' ') + '"/>');
       var p = day.peaks[s.k];
-      out.push('<g class="ap-peaklab ' + s.cls + '">' + txt(X(p.hour) + (s.k === 'NO' ? -6 : 6), Y(Math.min(ymax, p.value * (s.k === 'VOC' ? 0.5 : 1))) - 8, o.labels ? o.labels[s.k] : s.label, 'ap-t ap-b ap-cl', s.k === 'NO' ? 'end' : 'start') + '</g>');
+      out.push('<g class="ap-peaklab ' + s.cls + '">' + txt(X(p.hour) + (s.k === 'NO' ? -10 : 6), Y(Math.min(ymax, p.value * (s.k === 'VOC' ? 0.5 : 1))) - 8, o.labels ? o.labels[s.k] : s.label, 'ap-t ap-b ap-cl', s.k === 'NO' ? 'end' : 'start') + '</g>');
     });
     out.push(line(L, B, R, B, 'ap-axisl'));
     if(hr != null){

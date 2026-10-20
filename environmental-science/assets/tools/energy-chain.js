@@ -113,7 +113,7 @@
       else if(!vert) out.push(txt(a, mid - bandMax / 2 - 8, f0(l.e), 'ech-t ech-ev', 'middle'));
       // phone: halfway to the next stage, inside the band when it is wide enough, else just left of it
       else if(i === n - 1) out.push(txt(mid, a + 16, f0(l.e), 'ech-t ech-ev', 'middle'));
-      else { var ym = a + step / 2 + 5, hw = hOf(l.e); out.push(hw >= 30 ? txt(mid, ym, f0(l.e), 'ech-t ech-ev ech-on-band', 'middle') : txt(mid - hw / 2 - 6, ym, f0(l.e), 'ech-t ech-ev', 'end')); }
+      else { var ym = a + step / 2 + 5, hw = hOf(l.e); out.push(hw >= 30 ? txt(mid, ym, f0(l.e), 'ech-t ech-ev ech-on-band', 'middle') : txt(mid - bandMax / 2 - 6, ym, f0(l.e), 'ech-t ech-ev', 'end')); }
     });
     // where the 100 units end up (wide screens with room)
     if(!vert && H - cEnd > 80){

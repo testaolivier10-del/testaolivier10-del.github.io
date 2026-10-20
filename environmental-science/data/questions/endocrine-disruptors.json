@@ -350,11 +350,11 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "Atrazine, a widely used herbicide, can disrupt sex hormones in amphibians. BPA and phthalates in some plastics are other examples.",
+    "correct": "Atrazine, a widely used herbicide, has been linked in some studies to disrupted sex hormones in amphibians, though results differ between studies. BPA and phthalates in some plastics are other examples.",
     "options": [
      "CO blocks oxygen in the blood; it is not a hormone disruptor.",
      "Radon is radioactive; its harm is lung cancer.",
-     "Right: atrazine is linked to hormone effects in frogs.",
+     "Right: some studies link atrazine to hormone effects in frogs.",
      "SO2 irritates lungs and forms acid; it is not a hormone mimic."
     ]
    }
