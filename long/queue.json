@@ -89,9 +89,9 @@
       "status": "approved",
       "approved_on": "2026-10-14",
       "youtube_id": "sD7QbtHbVsw",
-      "thumbnail_set": false,
+      "thumbnail_set": true,
       "playlist_added": false,
-      "captions_set": false,
+      "captions_set": true,
       "pr_url": ""
     },
     {
