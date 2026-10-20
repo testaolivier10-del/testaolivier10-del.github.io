@@ -299,12 +299,12 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
   (decision 9).
 - Uncertain research: `docs/apenv-needs-author.md`.
 
-**Launch checklist: done 2026-10-20** (merge pending the Worker setting below).
+**Launch checklist: done 2026-10-20.**
 - [x] Migration `2026-10k-apenv.sql` applied in Supabase (all six live function bodies checked identical apart from
       `apenv` first; existing passes and funnel rows untouched).
 - [x] Polar product "AP® Environmental Science Premium (through June 30, 2027)", $25 one-time, id
       `5741d35c-eab1-4601-805d-3821981e36c8`; the "Founding member" 30% discount applies to it.
-- [ ] `"env-2027": "5741d35c-eab1-4601-805d-3821981e36c8"` in `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask
+- [x] `"env-2027": "5741d35c-eab1-4601-805d-3821981e36c8"` in `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask
       settings); the Worker code redeploys on merge (`deploy-worker.yml`).
 - [x] `onSale: false` removed from `COURSES.apenv`; `sw.js` cache v86; owner access granted (to 2099).
 - [ ] Merge the PR (this puts AP® Environmental Science Premium on sale).
