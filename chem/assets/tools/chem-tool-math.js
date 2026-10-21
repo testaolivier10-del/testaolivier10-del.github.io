@@ -1290,7 +1290,7 @@
       choiceStep(r, 'why', 'Which explanation earns the point?', [good].concat(wrong), [
         'Earns the point: it names both atoms, the protons, the shell (distance) and the core electrons (shielding).',
         'Mass does not set ' + P.name + '; the readers reject a molar-mass argument every year.',
-        rel === 'period' ? 'Across a period the added electrons go into the same shell and barely shield each other; the extra proton wins.' : 'Down a group the added protons are cancelled by added core electrons; the extra shell (distance) wins.',
+        rel === 'period' ? 'Across a period the added electrons go into the same shell and barely shield each other; the extra proton wins.' : 'Down a group the added protons are canceled out by added core electrons; the extra shell (distance) wins.',
         'Atoms do not "want" electrons. Explain with the attraction between the nucleus and the electrons.'
       ], '6.E')
     ];
