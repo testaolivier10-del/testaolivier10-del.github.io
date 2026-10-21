@@ -88,7 +88,7 @@ def build(bones, parts, max_seg=22.0, falloff=4.0, soft=10.0, prefix="rig"):
         bone_index = {b["id"]: i for i, b in enumerate(bones)}
         bi = np.vectorize(lambda k: bone_index[allowed[k]])(idx)
         out_parts.append(dict(id=part["id"], fill=part.get("fill"), stroke=part.get("stroke"), sw=part.get("sw"),
-                              opacity=part.get("opacity"), cls=part.get("cls"), sub=sub_meta,
+                              opacity=part.get("opacity"), cls=part.get("cls"), filter=part.get("filter"), sub=sub_meta,
                               pts=[round(v, 2) for v in P.ravel().tolist()],
                               bi=bi.ravel().tolist(), bw=[round(v, 4) for v in w2.ravel().tolist()]))
     return dict(prefix=prefix, bones=[dict(id=b["id"], parent=b.get("parent"), head=list(b["head"]), tail=list(b["tail"])) for b in bones],

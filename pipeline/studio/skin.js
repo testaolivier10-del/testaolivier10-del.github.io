@@ -66,6 +66,7 @@
         if (p.stroke) { el.setAttribute("stroke", p.stroke); el.setAttribute("stroke-width", p.sw || 2); el.setAttribute("stroke-linejoin", "round"); }
         if (p.opacity != null) el.setAttribute("opacity", p.opacity);
         if (p.cls) el.setAttribute("class", p.cls);
+        if (p.filter) el.setAttribute("filter", p.filter);
         el.id = (data.prefix || "rig") + "_" + p.id;
         group.appendChild(el); return el;
       });
@@ -208,6 +209,9 @@
       });
       return W;
     }
+
+    // skin matrix of a bone after draw(): apply as transform="matrix(...)" to a group drawn in rest pose coordinates
+    skinMatrix(boneId, W) { const i = this.ix[boneId]; return mul(W[i], this.restInv[i]); }
 
     // world position of a point given in a bone's rest frame (for attaching props, lenses, liquid emitters)
     attach(boneId, x, y, t) {

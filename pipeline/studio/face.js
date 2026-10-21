@@ -132,12 +132,16 @@
 
     draw(t) {
       const D = this.D, e = this.exprAt(t), m = this.mouthAt(t), bl = this.blinkAt(t), lk = this.lookAt(t);
-      for (const side of ["L", "R"]) {
+      for (const side of (D.profile ? ["R"] : ["L", "R"])) {
         const s = side === "L" ? -1 : 1; const [cx, cy] = side === "L" ? D.eyeL : D.eyeR;
         const w = D.eyeW, h = D.eyeH;
+        if (D.profile) {                       // side view: almond pointing forward, iris toward the front
+          const eyeP = `M${cx - w} ${cy - 1} C${cx - w * 0.4} ${cy - h * 1.2} ${cx + w * 0.5} ${cy - h * 0.9} ${cx + w} ${cy + 1} C${cx + w * 0.4} ${cy + h * 0.8} ${cx - w * 0.5} ${cy + h * 0.6} ${cx - w} ${cy - 1}Z`;
+          this.el["white" + side].setAttribute("d", eyeP); this.el["clip" + side].setAttribute("d", eyeP);
+        }
         const eye = `M${cx - w} ${cy} C${cx - w * 0.6} ${cy - h * 1.15} ${cx + w * 0.6} ${cy - h * 1.15} ${cx + w} ${cy} C${cx + w * 0.6} ${cy + h} ${cx - w * 0.6} ${cy + h} ${cx - w} ${cy}Z`;
-        this.el["white" + side].setAttribute("d", eye); this.el["clip" + side].setAttribute("d", eye);
-        const ix = cx + lk[0] * 4.2, iy = cy + lk[1] * 3.2;
+        if (!D.profile) { this.el["white" + side].setAttribute("d", eye); this.el["clip" + side].setAttribute("d", eye); }
+        const ix = cx + (D.profile ? w * 0.35 : 0) + lk[0] * (D.profile ? 1.6 : 4.2), iy = cy + lk[1] * (D.profile ? 2 : 3.2);
         this.el["iris" + side].setAttribute("cx", ix); this.el["iris" + side].setAttribute("cy", iy); this.el["iris" + side].setAttribute("r", D.iris);
         this.el["pupil" + side].setAttribute("cx", ix); this.el["pupil" + side].setAttribute("cy", iy); this.el["pupil" + side].setAttribute("r", D.pupil);
         this.el["glint" + side].setAttribute("cx", ix - 4); this.el["glint" + side].setAttribute("cy", iy - 4); this.el["glint" + side].setAttribute("r", 2.6);
@@ -153,15 +157,28 @@
         this.el["llid" + side].setAttribute("d", ll);
         // brow: raise moves it up, inner tilt lifts the inner end (worry) or drops it (anger)
         const by = cy + D.browY - e.br * 10 - bl * 2;
-        const inner = cx - s * D.browW * 0.9, outer = cx + s * D.browW;
+        const inner = D.profile ? cx + D.browW : cx - s * D.browW * 0.9, outer = D.profile ? cx - D.browW * 0.8 : cx + s * D.browW;
         const innerY = by - e.bt * 9, outerY = by + e.bt * 3;
-        const th = 7.5;
+        const th = D.profile ? 4.5 : 7.5;
         const brow = `M${inner} ${innerY} C${lerp(inner, outer, 0.35)} ${lerp(innerY, outerY, 0.35) - 10} ${lerp(inner, outer, 0.7)} ${lerp(innerY, outerY, 0.7) - 9} ${outer} ${outerY + 2}` +
           ` C${lerp(inner, outer, 0.7)} ${lerp(innerY, outerY, 0.7) - 9 + th} ${lerp(inner, outer, 0.35)} ${lerp(innerY, outerY, 0.35) - 10 + th * 1.2} ${inner} ${innerY + th}Z`;
         this.el["brow" + side].setAttribute("d", brow);
         const ck = this.el["cheek" + side];
         ck.setAttribute("cx", cx + s * 8); ck.setAttribute("cy", cy + D.cheekY - e.ch * 6); ck.setAttribute("rx", 22); ck.setAttribute("ry", 12);
-        ck.setAttribute("opacity", 0.18 + 0.22 * e.ch);
+        ck.setAttribute("opacity", D.profile ? 0.12 + 0.2 * e.ch : 0.18 + 0.22 * e.ch);
+        if (D.profile) { ck.setAttribute("cx", cx - 6); ck.setAttribute("rx", 13); ck.setAttribute("ry", 8); }
+      }
+      if (D.profile) {                           // side mouth: lips at the front of the face
+        const mx = D.mouthX || 14, my = D.mouthY, o = m.o * 9, pk = m.r * 4, sm2 = (e.sm + m.s) * 3;
+        const back = mx - 10 + pk * 0.5;
+        this.el.mouthIn.setAttribute("d", o > 0.4 ? `M${back} ${my - sm2} L${mx + pk} ${my - o * 0.45} L${mx + pk + 1} ${my + o * 0.55} Z` : "");
+        this.el.teeth.setAttribute("d", m.te > 0.1 && o > 1 ? `M${back + 4} ${my - o * 0.35} L${mx + pk - 1} ${my - o * 0.42} L${mx + pk - 1} ${my - o * 0.1} L${back + 4} ${my - o * 0.05}Z` : "");
+        this.el.tongue.setAttribute("d", "");
+        this.el.lips.setAttribute("fill-rule", "nonzero");
+        this.el.lips.setAttribute("d", `M${back} ${my - sm2} C${mx - 2} ${my - 5 - o * 0.3} ${mx + pk + 3} ${my - 5 - o * 0.5} ${mx + pk + 3} ${my - 1 - o * 0.45} L${mx + pk} ${my - o * 0.45} Z` +
+          ` M${back} ${my - sm2} L${mx + pk + 1} ${my + o * 0.55} C${mx + pk + 3} ${my + 4 + o * 0.6} ${mx - 2} ${my + 5 + o * 0.5} ${back} ${my - sm2 + 1}Z`);
+        this.el.lipLine.setAttribute("d", o <= 0.4 ? `M${back} ${my - sm2} L${mx + pk + 1} ${my}` : "");
+        return e;
       }
       // mouth from parameters: smile lifts the corners, round narrows and pushes the lips out
       const W = D.mouthW * m.w * (1 - 0.25 * m.r) * (1 + 0.08 * e.sm), H = 26 * m.o, my = D.mouthY;
