@@ -12,7 +12,7 @@ import {
 } from '../lib/site-config.mjs';
 
 const CSP_RE = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/;
-const API_FILES = ['assets/premium.js', 'assets/account-page.js', 'assets/reminders.js', 'assets/tutor.js', 'sw.js'];
+const API_FILES = ['assets/premium.js', 'assets/account-page.js', 'assets/reminders.js', 'assets/tutor.js', 'assets/course/frq-grader.js', 'sw.js'];
 
 export default function ({ ROOT, fail, htmlFiles }) {
   for (const file of htmlFiles) {

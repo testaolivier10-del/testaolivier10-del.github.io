@@ -22,7 +22,7 @@ import { API_URL, normalizeCsp, STUB_CSP, FRAMED_PAGES, FRAME_BUSTER } from './l
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const check = process.argv.includes('--check');
 
-const API_FILES = ['assets/premium.js', 'assets/account-page.js', 'assets/reminders.js', 'assets/tutor.js', 'assets/analytics.js', 'sw.js'];
+const API_FILES = ['assets/premium.js', 'assets/account-page.js', 'assets/reminders.js', 'assets/tutor.js', 'assets/analytics.js', 'assets/course/frq-grader.js', 'sw.js'];
 const MARK = /^(.*?)'https:\/\/[^']+'(.*\/\/ site-config:API_URL.*)$/gm;
 
 const SKIP_DIRS = new Set(['node_modules', '.git', '.github', 'scripts', 'docs', 'worker', '.claude']);

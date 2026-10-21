@@ -234,6 +234,7 @@ Owner to confirm (needs-author `tools-premium`).
      at 360 px (`<wbr>`); the free-body diagrams Explore pane gave its heading the id `fbx-h`, which its hatch
      `<pattern>` also used (check-console duplicate id; the heading is now `fbx-title`). Tests: `site-search`
      now expects `?course=physics` to pick the course.
+12. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 
 ## 8. Open items for the owner
 

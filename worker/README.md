@@ -120,6 +120,15 @@ catalog is right.
 
 ---
 
+## AI free-response grader
+
+`POST /frq/grade` (src/frq-grade.js) grades an AP® FRQ answer for a signed-in
+Premium student: Claude first (secret `ANTHROPIC_API_KEY`, a card-less Console
+account on prepaid credits), then the Workers AI chain as a labelled backup,
+then nothing (the page self-scores). Off unless `FRQ_GRADER` is `on` (or
+`owner`). Needs `scripts/sql/migrations/2026-10l-frq-grader.sql`. Setup, the
+launch rule and the eval: `docs/frq-grader.md`.
+
 ## Study reminders
 
 The same Worker also delivers study reminders, on a cron. It is a separate

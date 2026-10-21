@@ -32,7 +32,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 - **FRQ practice, all 6 types** (2 long 9-point Interpreting and Evaluating Experimental Results,
   one with graphing; 4-point Scientific Investigation, Conceptual Analysis, Analyze Model or
   Visual Representation, Analyze Data), each with point-by-point rubric, sample full-credit
-  answer, self-score checklist (no AI grading), printable PDF with lined space.
+  answer, self-score checklist (an optional AI estimate beside it, decision 31, off until its eval passes), printable PDF with lined space.
 - **Simulators** (each followed by 3-5 stimulus questions and a mini FRQ), anp-tools-contract
   standards: enzyme activity and inhibition, osmosis and water potential, ETC and ATP synthase,
   light reactions and Calvin cycle, signal transduction with amplification, cell cycle
@@ -357,6 +357,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    footer; "Practice and study" uses fixed columns (4, 2, 1) and widens the first card so none sits
    alone (`bio-home.css` `.bio-go`); primary buttons use the course green (`--btn-bg` tokens in
    `assets/theme.css`, white text 6.6:1, dark mode 12.3:1).
+31. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 
 ## 4. Map format (Phase 0)
 

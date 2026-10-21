@@ -48,6 +48,9 @@ SUPABASE_URL = "https://bsfcqrczehbcctwhxmrj.supabase.co"
 # Generate both halves with: node scripts/vapid-keys.mjs
 VAPID_PUBLIC_KEY = "BJQrCo49iKi_sn7czvlq2nNFI1G_uy9IJSo_0KruVHaz3Iu9h7Nug8ay2JXbzlaiqFJuULZ1d1Y2Qqbzp_2Psfk"
 VAPID_SUBJECT = "mailto:hello@levlprep.com"
+# The AI FRQ grader: "owner" = the owner's account only, while he tries it
+# (docs/frq-grader.md). "on" at launch, "off" to stop.
+FRQ_GRADER = "owner"
 
 # Premium passes (src/premium.js; setup in README.md, "Premium"). Left
 # commented so nothing changes until Polar is set up: with no product ids,
@@ -65,6 +68,11 @@ VAPID_SUBJECT = "mailto:hello@levlprep.com"
 # POLAR_API = "https://api.polar.sh"
 # FOUNDING_DISCOUNT_ID = ""
 
+#   FRQ_GRADER            the AI free-response grader (src/frq-grade.js,
+#                         docs/frq-grader.md): "on", "owner" (the owner's
+#                         account only, for testing) or unset/"off" (default)
+#   FRQ_GRADER_MODEL      Claude model id for it; default claude-haiku-5-5
+#
 #   ALLOW_LOCALHOST       "true" on a development Worker only: lets a copy of
 #                         the site on localhost:8000 call it. Never in
 #                         production.
@@ -79,3 +87,6 @@ VAPID_SUBJECT = "mailto:hello@levlprep.com"
 #                          near a browser
 #   POLAR_ACCESS_TOKEN     Polar organization access token (checkouts:write)
 #   POLAR_WEBHOOK_SECRET   the secret Polar shows for the webhook endpoint
+#   ANTHROPIC_API_KEY      the FRQ grader's Claude key, from a Console account
+#                          with NO card and auto-reload off (prepaid credits:
+#                          when they run out it errors, it never bills)

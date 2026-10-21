@@ -312,6 +312,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    `drill()` puts the figure, table rows included, on the stage, with `textOnStage`/`studioAsk` for long problems).
    The score calculator and the equations sheet are reference pages: the slim bar and calm type only
    (`pages/calm-ref.js`). No content, ids, problem codes or recording changed.
+24. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 
 ## 8. Open items for the owner
 

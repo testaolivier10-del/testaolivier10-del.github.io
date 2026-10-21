@@ -52,6 +52,12 @@ Umami already got `premium-*` funnel events from `assets/premium.js`.
   any event by `src`; `purchase` by `src` and `ref`.
 - Umami counts before 2026-10-20 include the bots; do not compare them with later weeks.
 
+## AI FRQ grader counts
+
+`frq_grade_counts` (migration 2026-10l, not applied yet): anonymous daily counts per course of which grader
+answered an FRQ (claude, backup, none, cached) with Claude's token sums. The weekly run reads the last query in
+`scripts/sql/reports.sql`: fallback rate and credit dollars used. Details: `docs/frq-grader.md`.
+
 ## Not done (owner or later)
 
 - Bing Webmaster Tools: sign in at bing.com/webmasters with a Microsoft account and import

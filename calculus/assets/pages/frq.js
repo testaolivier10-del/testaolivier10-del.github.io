@@ -12,8 +12,9 @@
                         A checkbox prints the rubric on a separate page.
 
    Premium: an FRQ in a locked unit (ApCalcCore.locked) keeps its prompt and
-   printable sheet; the workspace shows the Premium card instead. No AI
-   grading anywhere. Shared code: pages/frq-kit.js (window.ApCalcFrq). */
+   printable sheet; the workspace shows the Premium card instead. The
+   optional AI grader ("Grade my answer", ../../assets/course/frq-grader.js,
+   docs/frq-grader.md) sits beside the self-score and never replaces it. Shared code: pages/frq-kit.js (window.ApCalcFrq). */
 (function(){
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
@@ -34,6 +35,17 @@
       s.onerror = rej;
       document.head.appendChild(s);
     });
+  }
+
+  /* The shared grader component (one small file for all six courses). Its
+     own ENABLED switch decides whether anything shows: off until launch. */
+  function grader(done){
+    var G = window.LevlFrqGrader;
+    if(G){ if(G.enabled()) done(G); return; }
+    var s = document.createElement('script');
+    s.src = BASE + '../assets/course/frq-grader.js';
+    s.onload = function(){ if(window.LevlFrqGrader && window.LevlFrqGrader.enabled()) done(window.LevlFrqGrader); };
+    document.head.appendChild(s);
   }
 
   /* -------------------------------------------------------------- list */
@@ -90,6 +102,7 @@
             '<textarea id="' + tid + '" class="calc-fq-answer" rows="' + Math.min(10, 3 + p.points * 2) + '" data-part="' + K.esc(p.label) + '">' + K.esc(K.draft(id)[p.label] || '') + '</textarea></div>';
         }).join('') + '</div>' +
         '<div class="calc-pr-actions"><button type="button" class="btn-press" data-act="reveal">Show the rubric and score yourself</button></div>' +
+        '<div class="calc-fq-ai"></div>' +
         '<div class="calc-fq-scorebox" hidden></div>' +
         '<label class="calc-ex-check calc-fq-printopt"><input type="checkbox" id="calc-fq-printrub"> <span>When I print, add the rubric and sample answers on a separate page</span></label>' +
         (saved ? '<p class="calc-small">Last saved self-score: ' + saved.got + ' of ' + saved.of + ' (best ' + saved.best + ').</p>' : '') +
@@ -99,7 +112,8 @@
         t.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ K.saveDraft(id, t.getAttribute('data-part'), t.value); }, 300); });
       });
       var box = app.querySelector('.calc-fq-scorebox');
-      app.querySelector('[data-act="reveal"]').addEventListener('click', function(){
+      var revealBtn = app.querySelector('[data-act="reveal"]');
+      revealBtn.addEventListener('click', function(){
         this.hidden = true;
         box.hidden = false;
         box.innerHTML = '<h2 id="calc-fq-r-h" tabindex="-1">Score yourself, point by point</h2>' +
@@ -118,6 +132,16 @@
           this.disabled = true;
         });
         box.querySelector('#calc-fq-r-h').focus();
+      });
+      /* The AI grader beside the self-score (off until launch; the Worker
+         checks Premium, the sign-in and the daily cap). reveal() opens the
+         self-score box, so the rubric is always one tap away. */
+      grader(function(G){
+        G.mount(app.querySelector('.calc-fq-ai'), {
+          course: 'apcalc', f: f,
+          answers: function(){ var a = {}; app.querySelectorAll('.calc-fq-answer').forEach(function(t){ a[t.getAttribute('data-part')] = t.value; }); return a; },
+          reveal: function(){ if(box.hidden) revealBtn.click(); return box; }
+        });
       });
       // Print the rubric on its own page only when asked.
       window.addEventListener('beforeprint', function(){
