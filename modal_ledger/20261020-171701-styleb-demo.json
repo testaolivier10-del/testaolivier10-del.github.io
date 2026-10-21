@@ -1,0 +1,16 @@
+{
+ "run": "20261020-171701-styleb-demo",
+ "task": "styleb-demo",
+ "started": 1792541821.713184,
+ "reservation": {
+  "usd": 0.8,
+  "status": "active",
+  "month": "2026-10",
+  "asked": 0.8,
+  "free_when_granted": 10.52
+ },
+ "spent_in_run": 0.0,
+ "open": {},
+ "calls": [],
+ "touched": 1792541821.7132218
+}
