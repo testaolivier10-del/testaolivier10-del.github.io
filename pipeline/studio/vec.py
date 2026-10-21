@@ -60,11 +60,11 @@ def limb(joints, widths, bulge=None, cap0=0.5, cap1=0.9):
     return blob(pts, 0.55)
 
 
-def defs(rim="#ffb35c", rim_dx=2.6, rim_dy=2.2, rim_op=0.8, shade="#0b1230", shade_dx=-16, shade_dy=-6, shade_op=0.38):
+def defs(rim="#ffb35c", rim_dx=2.6, rim_dy=2.2, rim_op=0.8, shade="#0b1230", shade_dx=-16, shade_dy=-6, shade_op=0.38, fid="sbRim"):
     """style B lighting as filters: url(#sbRim) gives a part a warm rim on the lit edge and a soft shadow plane
     on the far edge. url(#sbRimOnly) only the rim. Light direction = (-rim_dx, -rim_dy)."""
     return f"""
-<filter id="sbRim" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+<filter id="{fid}" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
   <feOffset in="SourceAlpha" dx="{rim_dx}" dy="{rim_dy}" result="o1"/>
   <feComposite in="SourceAlpha" in2="o1" operator="out" result="edge"/>
   <feGaussianBlur in="edge" stdDeviation="0.7" result="edgeB"/>
@@ -76,7 +76,7 @@ def defs(rim="#ffb35c", rim_dx=2.6, rim_dy=2.2, rim_op=0.8, shade="#0b1230", sha
   <feFlood flood-color="{shade}" flood-opacity="{shade_op}" result="c2"/><feComposite in="c2" in2="farIn" operator="in" result="shadow"/>
   <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="shadow"/><feMergeNode in="rim"/></feMerge>
 </filter>
-<filter id="sbRimOnly" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+<filter id="{fid}Only" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
   <feOffset in="SourceAlpha" dx="{rim_dx}" dy="{rim_dy}" result="o1"/>
   <feComposite in="SourceAlpha" in2="o1" operator="out" result="edge"/>
   <feGaussianBlur in="edge" stdDeviation="0.7" result="edgeB"/>

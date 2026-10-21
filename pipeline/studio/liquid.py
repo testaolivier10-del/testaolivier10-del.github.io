@@ -26,9 +26,9 @@ from scipy.spatial import cKDTree
 def _hex(h):
     h = h.lstrip("#"); return np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)], np.float32) / 255
 
-ARTERIAL = dict(body="#d0142c", dark="#7c0a1b", rim="#ff9a6a", spec="#ffe2d6",
+ARTERIAL = dict(body="#d0142c", dark="#7c0a1b", rim="#ff9a6a", spec="#ffe2d6", pool="#8a0d1e",
                 stain="#a3101f", stain_edge="#5e0712", trail="#b0122a")
-VENOUS = dict(body="#8f1121", dark="#4f0812", rim="#d9604a", spec="#f3b8ac",
+VENOUS = dict(body="#8f1121", dark="#4f0812", rim="#d9604a", spec="#f3b8ac", pool="#6a0b18",
               stain="#7a0d1b", stain_edge="#43060e", trail="#7e0e1d")
 WATER = dict(body="#5fc4f0", dark="#2a7fb8", rim="#e9fbff", spec="#ffffff",
              stain="#3d9bd0", stain_edge="#2a6f9c", trail="#6fcdf2")
@@ -247,7 +247,8 @@ class Sim:
         i, j = pairs[:, 0], pairs[:, 1]
         d = P[j] - P[i]; dist = np.linalg.norm(d, axis=1) + 1e-6
         persp = self.floor["persp"] if self.floor else 0.3
-        push = (self.r * 2.2 - dist)[:, None] * d / dist[:, None] * 0.5 * dt * 6 * self.floor.get("spread", 1)
+        age = np.minimum(self.page[idx][i], self.page[idx][j])
+        push = (self.r * 2.2 - dist)[:, None] * d / dist[:, None] * 0.5 * dt * 6 * self.floor.get("spread", 1) * np.clip(1 - age / 2.5, 0, 1)[:, None]
         push[:, 1] *= persp
         mv = np.zeros_like(P); np.add.at(mv, i, -push); np.add.at(mv, j, push)
         self.p[idx] += mv
@@ -338,7 +339,7 @@ def _field(fr, W, H, r, scale, fps, persp=0.28):
         if 0 <= int(x) < w and 0 <= int(y) < h: fld[int(y), int(x)] += 0.6
     for k in np.nonzero(pool)[0]:
         x, y = p[k] * scale
-        rx = r * scale * (1.0 + min(1.6, 1.2 * math.sqrt(page[k] + 0.01)))
+        rx = r * scale * (1.0 + min(1.2, 1.0 * math.sqrt(page[k] + 0.01)))
         cv2.ellipse(fld, (int(x), int(y)), (max(1, int(rx)), max(1, int(rx * persp))), 0, 0, 360, 0.55, -1, lineType=cv2.LINE_AA)
     sig = max(1.0, r * scale * 1.15)
     return cv2.GaussianBlur(fld, (0, 0), sig)
@@ -425,6 +426,12 @@ def render(sim, out_dir, style=ARTERIAL, light=(-0.7, -0.7), scale=0.75, trail=T
             c = c * (1 - away[..., None] * 0.75) + col["dark"][None, None] * (away[..., None] * 0.75)
             c = c * (1 - lit[..., None] * 0.8) + col["rim"][None, None] * (lit[..., None] * 0.8)
             c = c * (1 - spec[..., None] * 0.85) + col["spec"][None, None] * (spec[..., None] * 0.85)
+            if "pool" in col and fr.get("pool") is not None and fr["pool"].any():
+                # pooled blood reads darker and flatter than fresh flowing blood
+                pf = dict(fr); pf["p"] = fr["p"][fr["pool"]]; pf["v"] = fr["v"][fr["pool"]]; pf["pool"] = fr["pool"][fr["pool"]]; pf["page"] = fr["page"][fr["pool"]]
+                pm = _smooth(_field(pf, W, H, r, scale, sim.fps, sim.floor['persp'] if sim.floor else 0.28), peak * 0.42, peak * 0.62)
+                pm = cv2.erode(pm, np.ones((3, 3), np.uint8), iterations=2) * 0.75
+                c = c * (1 - pm[..., None]) + col["pool"][None, None] * pm[..., None]
             rgb = rgb * (1 - m[..., None]) + c * m[..., None]
             a = np.maximum(a, m)
         rgba = np.dstack([rgb, a])
