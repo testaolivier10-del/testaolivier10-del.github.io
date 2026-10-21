@@ -9,50 +9,56 @@
   "asked": 0.8,
   "free_when_granted": 10.52
  },
- "spent_in_run": 2.567,
+ "spent_in_run": 0.72,
  "open": {},
  "calls": [
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 388,
-   "usd": 0.427,
-   "call": "fc-01M5DX4M8TE5FNP3V1G796RE61"
+   "usd": 0.12,
+   "call": "fc-01M5DX4M8TE5FNP3V1G796RE61",
+   "note": "corrected: collected late from a chat; wall time is not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 389,
-   "usd": 0.428,
-   "call": "fc-01M5DX4NB9R7TYHQK4TJYZ8ET4"
+   "usd": 0.12,
+   "call": "fc-01M5DX4NB9R7TYHQK4TJYZ8ET4",
+   "note": "corrected: collected late from a chat; wall time is not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 389,
-   "usd": 0.428,
-   "call": "fc-01M5DX4P44GME4RP6XACFHJYT1"
+   "usd": 0.12,
+   "call": "fc-01M5DX4P44GME4RP6XACFHJYT1",
+   "note": "corrected: collected late from a chat; wall time is not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 389,
-   "usd": 0.428,
-   "call": "fc-01M5DX4Q1FD6Q5XEVD9ZHTAG3E"
+   "usd": 0.12,
+   "call": "fc-01M5DX4Q1FD6Q5XEVD9ZHTAG3E",
+   "note": "corrected: collected late from a chat; wall time is not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 389,
-   "usd": 0.428,
-   "call": "fc-01M5DX4R1FQ36K88HNYXXAZ9HZ"
+   "usd": 0.12,
+   "call": "fc-01M5DX4R1FQ36K88HNYXXAZ9HZ",
+   "note": "corrected: collected late from a chat; wall time is not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 389,
-   "usd": 0.428,
-   "call": "fc-01M5DX4RYX3J6GJWMNGT59BXF8"
+   "usd": 0.12,
+   "call": "fc-01M5DX4RYX3J6GJWMNGT59BXF8",
+   "note": "corrected: collected late from a chat; wall time is not GPU time"
   }
  ],
  "touched": 1792542278.55184
