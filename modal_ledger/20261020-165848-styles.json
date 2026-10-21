@@ -10,92 +10,104 @@
   "free_when_granted": 11.96,
   "closed": 1792541667.7630916
  },
- "spent_in_run": 10.69,
+ "spent_in_run": 1.44,
  "open": {},
  "calls": [
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4CBFYNDF68VWGJAS7YK3"
+   "usd": 0.12,
+   "call": "fc-01M5DW4CBFYNDF68VWGJAS7YK3",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4D68RGFE8KPP0HZQN2HR"
+   "usd": 0.12,
+   "call": "fc-01M5DW4D68RGFE8KPP0HZQN2HR",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4EKKCH6GFGFSX6R3R95Q"
+   "usd": 0.12,
+   "call": "fc-01M5DW4EKKCH6GFGFSX6R3R95Q",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4FJ46AS4BKBHKM7XTN2D"
+   "usd": 0.12,
+   "call": "fc-01M5DW4FJ46AS4BKBHKM7XTN2D",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4GES30829BXCZHPSNXRK"
+   "usd": 0.12,
+   "call": "fc-01M5DW4GES30829BXCZHPSNXRK",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4HACJVN533CKBHN0NYD7"
+   "usd": 0.12,
+   "call": "fc-01M5DW4HACJVN533CKBHN0NYD7",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4J57SQM4KM3EQCM6JDPW"
+   "usd": 0.12,
+   "call": "fc-01M5DW4J57SQM4KM3EQCM6JDPW",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4K3D84EZGMH23W3B5XWY"
+   "usd": 0.12,
+   "call": "fc-01M5DW4K3D84EZGMH23W3B5XWY",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4MAB2W3400MJKG0HEHAM"
+   "usd": 0.12,
+   "call": "fc-01M5DW4MAB2W3400MJKG0HEHAM",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 810,
-   "usd": 0.891,
-   "call": "fc-01M5DW4N9QTB296YND001AJ0JA"
+   "usd": 0.12,
+   "call": "fc-01M5DW4N9QTB296YND001AJ0JA",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 809,
-   "usd": 0.89,
-   "call": "fc-01M5DW4P9XR5PNZW8DFM9JV18R"
+   "usd": 0.12,
+   "call": "fc-01M5DW4P9XR5PNZW8DFM9JV18R",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   },
   {
    "date": "2026-10-20",
    "kind": "images",
    "seconds": 809,
-   "usd": 0.89,
-   "call": "fc-01M5DW4Q9CHMQGAP2XP7CFGDXR"
+   "usd": 0.12,
+   "call": "fc-01M5DW4Q9CHMQGAP2XP7CFGDXR",
+   "note": "corrected: finish was logged late from a chat; wall time included queue and waiting, not GPU time"
   }
  ],
  "touched": 1792541667.7631145
