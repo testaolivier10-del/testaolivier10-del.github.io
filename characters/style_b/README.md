@@ -18,3 +18,11 @@ Bold flat geometric illustration, smooth gradients, warm rim light from one side
 | clips/cafA.mp4, cafB.mp4 | acting shots: student yawns, sips, perks up; then slumps asleep (portrait) | t1018 caffeine |
 
 Freshness: these are parts, not scenes to repeat. A new video re-lights, re-frames or re-dresses them (video standard section 3b) and logs what it used in characters/library_log.json.
+
+## Added 2026-10-20 (yt-nremt-35-bleeding)
+| File | What | Used in |
+|---|---|---|
+| garage_cut.png | home garage workshop, late afternoon daylight: man with a saw cut sitting against the workbench, the paramedic (same as style_ref_bold) pressing gauze on his forearm; her hands recolored to blue nitrile gloves in code (1360x768). Prompt: "Same paramedic as in the reference image ... bright home garage workshop in late afternoon daylight ... presses a folded white gauze pad firmly onto his forearm with her gloved palm ... Exactly the same flat 2D vector illustration style as the reference image" (ref style_ref_bold.png, seed 31) | yt-nremt-35 |
+| forearm_cu.png | close up of the same man's bare forearm across his thigh, gauze wrap at the wrist, no hands (1360x768). Prompt: "Close up from the same scene as the reference image, same man ... his bare left forearm rests straight and horizontal across his thigh ... A folded white gauze pad lies over a cut on the forearm just above the wrist" (ref garage_cut original, seed 57, second prompt) | yt-nremt-35 |
+| nose_kitchen.png | bright morning kitchen: a teen in a green hoodie sits upright, leans forward, pinching his nose over a tissue (1360x768). Prompt: "A new scene in exactly the same flat 2D vector illustration style as the reference image ... leans his head and upper body FORWARD over a white tissue ... pinching the soft lower part of his nose" (ref garage_cut original, seed 44) | yt-nremt-35 |
+

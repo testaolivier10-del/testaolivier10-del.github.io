@@ -30,6 +30,18 @@
    "setting": "dorm desk",
    "lighting": "night, desk lamp and laptop glow",
    "camera": "wide side view, then lens into head, synapse"
+  },
+  {
+   "id": "yt-nremt-35-bleeding",
+   "date": "2026-10-20",
+   "pieces": [
+    "garage_cut",
+    "forearm_cu",
+    "nose_kitchen"
+   ],
+   "setting": "home garage; kitchen",
+   "lighting": "late afternoon daylight; morning daylight",
+   "camera": "wide side view, forearm close up, side view leaning forward"
   }
  ]
 }
