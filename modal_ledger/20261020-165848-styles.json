@@ -4,10 +4,11 @@
  "started": 1792540729.1676958,
  "reservation": {
   "usd": 1.6,
-  "status": "active",
+  "status": "closed",
   "month": "2026-10",
   "asked": 1.6,
-  "free_when_granted": 11.96
+  "free_when_granted": 11.96,
+  "closed": 1792541667.7630916
  },
  "spent_in_run": 10.69,
  "open": {},
@@ -97,5 +98,5 @@
    "call": "fc-01M5DW4Q9CHMQGAP2XP7CFGDXR"
   }
  ],
- "touched": 1792541666.057531
+ "touched": 1792541667.7631145
 }
