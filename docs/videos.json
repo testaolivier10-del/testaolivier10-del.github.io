@@ -1,0 +1,233 @@
+{
+  "about": "LevlPrep's long YouTube videos and the site pages that show them: one entry per video that is PUBLIC on youtube.com/@LevlPrep. Add one with node scripts/add-video.mjs (docs/video-lessons.md), never by hand-editing pages.",
+  "videos": [
+    {
+      "id": "1p-L3_POFL0",
+      "course": "ochem",
+      "title": "Atomic Structure for Organic Chemistry (Valence Electrons, Octet Rule)",
+      "seconds": 1163,
+      "posted": "2026-10-07",
+      "pages": [
+        "ochem/notes/atomic-structure.html",
+        "ochem/lessons/atomic-structure.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          52,
+          "The three particles"
+        ],
+        [
+          137,
+          "Isotopes and mass number"
+        ],
+        [
+          221,
+          "Shells and valence electrons"
+        ],
+        [
+          409,
+          "The octet rule"
+        ],
+        [
+          585,
+          "Ions: cations and anions"
+        ],
+        [
+          656,
+          "Transfer or share"
+        ],
+        [
+          850,
+          "Carbocations and carbanions"
+        ],
+        [
+          984,
+          "Recap"
+        ],
+        [
+          1022,
+          "Practice problems"
+        ],
+        [
+          1136,
+          "Next: orbitals"
+        ]
+      ]
+    },
+    {
+      "id": "lqxfWZZtRgE",
+      "course": "nremt",
+      "title": "Intro to EMS: How the EMS System Works (EMT Chapter 1) | NREMT",
+      "seconds": 1138,
+      "posted": "2026-10-12",
+      "note": "Covers sections 1.1 to 1.3.",
+      "pages": [
+        "nremt/notes/introduction-to-ems.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          99,
+          "From transport to care"
+        ],
+        [
+          242,
+          "The laws that built EMS"
+        ],
+        [
+          367,
+          "NHTSA's 10 standards"
+        ],
+        [
+          516,
+          "The 911 call"
+        ],
+        [
+          638,
+          "The dispatcher"
+        ],
+        [
+          713,
+          "The chain of handoffs"
+        ],
+        [
+          877,
+          "Recap"
+        ],
+        [
+          926,
+          "Practice problems"
+        ],
+        [
+          1111,
+          "Next: provider levels"
+        ]
+      ]
+    },
+    {
+      "id": "aMvkCfwrepA",
+      "course": "anp",
+      "title": "Intro to Anatomy & Physiology: Levels of Organization, Organ Systems",
+      "seconds": 1243,
+      "posted": "2026-10-15",
+      "pages": [
+        "anatomy-physiology/notes/body-organization.html",
+        "anatomy-physiology/lessons/body-organization.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          67,
+          "Anatomy vs physiology"
+        ],
+        [
+          243,
+          "Six levels of organization"
+        ],
+        [
+          439,
+          "Systems that cover, move and control"
+        ],
+        [
+          587,
+          "Systems that supply and clean"
+        ],
+        [
+          748,
+          "Arteries, veins and capillaries"
+        ],
+        [
+          837,
+          "What makes something alive"
+        ],
+        [
+          959,
+          "Normal ranges and teamwork"
+        ],
+        [
+          1073,
+          "Recap in one picture"
+        ],
+        [
+          1113,
+          "Practice problems"
+        ],
+        [
+          1213,
+          "Next: the language of A&P"
+        ]
+      ]
+    },
+    {
+      "id": "sD7QbtHbVsw",
+      "course": "apbio",
+      "title": "Properties of Water: Hydrogen Bonding Explained (AP Bio 1.1)",
+      "seconds": 1248,
+      "posted": "2026-10-19",
+      "pages": [
+        "bio/notes/water-hydrogen-bonding.html",
+        "bio/lessons/water-hydrogen-bonding.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          68,
+          "Why water is polar"
+        ],
+        [
+          246,
+          "Hydrogen bonds"
+        ],
+        [
+          375,
+          "Cohesion, adhesion and trees"
+        ],
+        [
+          562,
+          "Specific heat"
+        ],
+        [
+          661,
+          "Evaporation and sweat"
+        ],
+        [
+          758,
+          "Why ice floats"
+        ],
+        [
+          822,
+          "Water as a solvent"
+        ],
+        [
+          959,
+          "Acids, bases and pH"
+        ],
+        [
+          1052,
+          "Recap in one picture"
+        ],
+        [
+          1106,
+          "Practice problems"
+        ],
+        [
+          1221,
+          "Next: the elements of life"
+        ]
+      ]
+    }
+  ]
+}

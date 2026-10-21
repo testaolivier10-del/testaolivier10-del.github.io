@@ -28,6 +28,7 @@ questions were hard, where exams were abandoned, or how far notes were read.
 | Notes and lessons: `read` {kind, depth band, active minutes band} | `watchPage()` |
 | `rage-click` {page, el}, `js-error` {page, msg}, `vitals` (LCP, CLS, INP bands, one visit in three) | `watchPage()`, `assets/errors.js` |
 | `exam-date-set` {course, weeks band} | `assets/exam-date.js` |
+| `video-play` {video, course, kind, from}: a video lesson started (once per video per page view); nothing loads from YouTube before it (docs/video-lessons.md) | `assets/video/video.js` |
 | `purchase` {course, pass, dollars, ref, src} and `refund` {course, how} sent by the Worker | `worker/src/premium.js` |
 | Signed-in visits carry `acct` (first 16 hex of SHA-256 of `levlprep:` + user id) via `umami.identify` | `signedIn()` |
 | Privacy page rewritten for all of the above | `privacy.html` (updated 20 Oct 2026) |
@@ -48,7 +49,7 @@ Umami already got `premium-*` funnel events from `assets/premium.js`.
 ## Reading the new data
 
 - Hardest questions (10+ answers this week): see the query at the top of the migration.
-- Umami Events: `heard-from` by `answer`; `exam-quit` by `pct`; `read` by `depth`;
+- Umami Events: `video-play` by `video` and `course`; `heard-from` by `answer`; `exam-quit` by `pct`; `read` by `depth`;
   any event by `src`; `purchase` by `src` and `ref`.
 - Umami counts before 2026-10-20 include the bots; do not compare them with later weeks.
 

@@ -82,6 +82,12 @@ locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scrip
 `docs/analytics-plan.md` is the status file: the Umami proxy and bot filter, first-touch source, question tallies
 (`question_stats`), exam-quit, read depth and the rest, plus how to verify and read them.
 
+## Video lessons
+
+`docs/video-lessons.md` is the status file: `docs/videos.json` lists each public YouTube video and its pages;
+`scripts/add-video.mjs` adds one (the daily long-video run), `scripts/build-videos.mjs` writes the click-to-load block.
+Never paste a YouTube iframe into a page.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.

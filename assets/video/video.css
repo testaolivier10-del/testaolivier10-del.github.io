@@ -1,0 +1,89 @@
+/* The video lesson block (scripts/lib/videos.mjs writes it, assets/video/video.js
+   plays it). Course colour from --cink/--ctint, surfaces from theme.css, so
+   it follows every course and both themes. The frame is always 16:9 from
+   the first paint, so nothing moves when the thumbnail or the player lands. */
+.lpv{
+  --lpv-r:var(--radius,16px);
+  margin:18px 0 26px;padding:0;border:var(--bw,2px) solid var(--line);border-radius:var(--lpv-r);
+  background:var(--white);box-shadow:var(--lift-sm,none);overflow:hidden;
+  display:grid;grid-template-columns:1fr;
+}
+.lpv-frame{position:relative;aspect-ratio:16/9;background:#0d1412;overflow:hidden;}
+.lpv-frame iframe,.lpv-play{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.lpv-play{display:block;color:#fff;text-decoration:none;cursor:pointer;}
+.lpv-play img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease,filter .25s ease;}
+.lpv-play:hover img{transform:scale(1.015);filter:brightness(.92);}
+.lpv-btn{
+  position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;
+  /* Dark glass with a white mark: legible on any thumbnail, in both themes;
+     the ring carries the course colour. */
+  display:grid;place-items:center;background:rgba(8,14,12,.74);color:#fff;
+  box-shadow:0 6px 22px rgba(0,0,0,.35),0 0 0 3px var(--cink,#0F5F53),0 0 0 6px rgba(255,255,255,.28);transition:transform .2s ease;
+}
+.lpv-btn svg{fill:currentColor;width:28px;height:28px;margin-left:4px;}
+.lpv-play:hover .lpv-btn,.lpv-play:focus-visible .lpv-btn{transform:scale(1.08);}
+.lpv-play:focus-visible{outline:none;}
+.lpv-play:focus-visible::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 4px var(--cink,var(--accent));border-radius:inherit;}
+.lpv-len{
+  position:absolute;right:10px;bottom:10px;padding:3px 8px;border-radius:6px;
+  font:800 12.5px/1.2 var(--font-ui);letter-spacing:.02em;background:rgba(0,0,0,.78);color:#fff;
+}
+.lpv-body{padding:14px 18px 4px;min-width:0;}
+.lpv-k{display:block;margin:0 0 4px;font:900 11.5px/1.3 var(--font-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--cink,var(--accent-text));}
+.lpv-k svg{display:inline-block;fill:currentColor;vertical-align:-2px;margin-right:5px;}
+.lpv-meta{color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
+.lpv .lpv-title{margin:0 0 6px;font:900 clamp(16px,2.4vw,19px)/1.3 var(--font-display);color:var(--ink);overflow-wrap:anywhere;}
+.lpv-note{margin:0 0 6px;font:700 14px/1.45 var(--font-ui);color:var(--ink);}
+.lpv-fine{margin:0 0 12px;font:600 12.5px/1.45 var(--font-ui);color:var(--muted);}
+.lpv-fine a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+.lpv-chapters{border-top:1px solid var(--line-soft,var(--line));margin:0;}
+.lpv-chapters summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;
+  font:800 14px var(--font-ui);color:var(--ink);
+}
+.lpv-chapters summary::-webkit-details-marker{display:none;}
+.lpv-chapters summary::after{content:"";margin-left:auto;width:8px;height:8px;border:solid var(--muted);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s ease;}
+.lpv-chapters[open] summary::after{transform:rotate(-135deg);}
+.lpv-n{font:800 11.5px var(--font-ui);padding:1px 7px;border-radius:999px;background:var(--ctint,var(--tint-accent));color:var(--cink,var(--accent-text));}
+.lpv-chapters ol{list-style:none;margin:0;padding:0 8px 10px;columns:2 260px;column-gap:8px;}
+.lpv-chapters li{break-inside:avoid;}
+.lpv-chapters a{
+  display:flex;gap:10px;align-items:baseline;min-height:40px;padding:9px 10px;border-radius:10px;
+  font:700 14px/1.35 var(--font-ui);color:var(--ink);text-decoration:none;
+}
+.lpv-chapters a:hover{background:var(--hover-tint,var(--surface2));}
+.lpv-chapters a[aria-current="true"]{background:var(--ctint,var(--tint-accent));color:var(--cink,var(--accent-text));}
+.lpv-t{flex:none;min-width:3.4em;font:800 12.5px var(--font-mono,monospace);color:var(--cink,var(--accent-text));font-variant-numeric:tabular-nums;}
+
+/* Lesson pages: a small card in the lesson's header. Thumbnail beside the
+   title; pressing play turns it into the full-width player. */
+.lpv-compact{margin:16px 0 4px;grid-template-columns:minmax(132px,200px) 1fr;align-items:center;max-width:640px;}
+.lpv-compact .lpv-body{padding:10px 14px;}
+.lpv-compact .lpv-title{font-size:15.5px;margin:0 0 2px;}
+.lpv-compact .lpv-fine{display:none;}
+.lpv-compact .lpv-btn{width:44px;height:44px;margin:-22px 0 0 -22px;box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 0 2px var(--cink,#0F5F53),0 0 0 4px rgba(255,255,255,.28);}
+.lpv-compact .lpv-btn svg{width:20px;height:20px;margin-left:3px;}
+/* The card says the length in words; a badge would crowd the small play button. */
+.lpv-compact .lpv-len{display:none;}
+.lpv-compact.lpv-open .lpv-len{display:none;}
+.lpv-compact .lpv-chapters{grid-column:1 / -1;}
+.lpv-compact.lpv-open{grid-template-columns:1fr;max-width:none;}
+.lpv-compact.lpv-open .lpv-fine{display:block;}
+@media (max-width:440px){
+  .lpv-compact{grid-template-columns:128px 1fr;}
+  .lpv-compact .lpv-body{padding:8px 12px;}
+  .lpv-compact .lpv-k{white-space:nowrap;}
+  .lpv-compact .lpv-meta{display:none;}
+  .lpv-compact .lpv-title{font-size:14.5px;}
+}
+@media (max-width:600px){
+  .lpv{margin-left:0;margin-right:0;}
+  .lpv-body{padding:12px 14px 2px;}
+  .lpv-chapters summary{padding:0 14px;}
+  .lpv-chapters ol{columns:1;}
+}
+@media (prefers-reduced-motion:reduce){
+  .lpv-play img,.lpv-btn,.lpv-chapters summary::after{transition:none;}
+  .lpv-play:hover img{transform:none;}
+}
+@media print{.lpv{display:none !important;}}

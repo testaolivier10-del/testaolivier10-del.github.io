@@ -68,6 +68,10 @@ const check = process.argv.includes('--check');
    rest, ~95 KB, is theme.css and the shared modules, and that is the part any
    commit can move. */
 const SHELL_BUDGETS = [
+  /* The video lesson block's stylesheet and player (assets/video/), loaded
+     only by pages that show a video; measured 3.5 KB. Thumbnails are images,
+     not counted here, and load lazily from this site. */
+  ['assets/video', 4],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -875,6 +879,9 @@ function bucketOf(relPath) {
   // The shared course layer (docs/course-shell.md) is loaded by course pages
   // only, so it is its own shell rather than part of every page's.
   if (parts[0] === 'assets' && parts[1] === 'course') return 'assets/course';
+  // The video lesson player (docs/video-lessons.md) loads only on pages that
+  // show a video, so it is its own shell, not part of every page's.
+  if (parts[0] === 'assets' && parts[1] === 'video') return 'assets/video';
   if (parts[0] === 'assets') return 'site';
   if (parts.length > 1 && parts[1] === 'assets') return parts[0];
   return 'page';
@@ -952,7 +959,9 @@ function weigh(pageRel) {
     const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
     // 10.6 -> 13: the first lesson carries three stimulus sets' check items and
     // its prerequisite questions in the page (12.5 KB with Unit 1 published).
-    BUDGETS.push([`bio/lessons/${id}.html`, 13], [`bio/notes/${id}.html`, 19.5]);
+    /* Lesson 13 -> 14 (docs/video-lessons.md): the first lesson carries the video lesson
+       card and its 12-chapter list, 0.6 KB gzipped; it measured 13.0 without it. */
+    BUDGETS.push([`bio/lessons/${id}.html`, 14], [`bio/notes/${id}.html`, 19.5]);
     const sheets = join(ROOT, 'bio', 'unit-sheets');
     const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
     if (sheet) BUDGETS.push([`bio/unit-sheets/${sheet}`, 12]);

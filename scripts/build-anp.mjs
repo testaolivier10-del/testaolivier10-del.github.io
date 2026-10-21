@@ -29,6 +29,7 @@ import {
   head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL, laterLabel, avifSrcset,
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
+import { applyVideo } from './lib/videos.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, 'anatomy-physiology');
@@ -71,7 +72,8 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 // report dialog (assets/report-question.js) with its page wording. Audit
 // 2026-10: until now only questions had the link.
 const reportPage = (pageId) => `<p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="${esc(pageId)}">Report a problem</button></p>`;
-const put = (rel, content) => outputs.set(rel, rel.endsWith('.html') ? wrapTables(content) : content);
+// Video lessons from docs/videos.json (scripts/lib/videos.mjs).
+const put = (rel, content) => outputs.set(rel, rel.endsWith('.html') ? applyVideo(`anatomy-physiology/${rel}`, wrapTables(content)) : content);
 
 const topicById = id => map.topics[C.topicIndex.get(id)];
 const chapterById = id => map.chapters.find(c => c.id === id);
