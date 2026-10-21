@@ -64,7 +64,7 @@ export function unitSample(ch, ctx) {
    live ones are linked. */
 const EQ = [
   { h: 'Particles, light and charge', id: 'atoms', rows: [
-    ['F ∝ q₁q₂ / r²', 'Coulomb\'s law: the attraction between two charges grows with the charges and falls with the square of the distance.', 'Every "why is this ionization energy, radius, lattice energy or boiling point bigger" argument. You rarely calculate with it; you compare both species\' charges and distances.', 'Units 1, 2, 3', 'periodic-trends'],
+    ['F ∝ q₁q₂ / r²', 'Coulomb\'s law: the attraction between two charges grows with the charges and falls with the square of the distance.', 'Every "why is this ionization energy, radius, lattice energy or boiling point bigger" argument. You rarely calculate with it; you compare both species\' charges and distances.', 'Units 1, 2, 3', 'periodic-trends', ['periodic-trends-pes']],
     ['E = hν', 'The energy of one photon from its frequency.', 'Photoelectron spectroscopy, emission lines, which wavelengths can cause an electronic transition. h = 6.626 × 10⁻³⁴ J·s.', 'Units 1, 3', 'photons'],
     ['c = λν', 'Speed of light from wavelength and frequency.', 'Converting a wavelength (often given in nm: change it to m) to a frequency before E = hν. c = 2.998 × 10⁸ m/s.', 'Unit 3', 'photons'],
     ['N_A = 6.022 × 10²³ mol⁻¹', 'Avogadro\'s number: particles in one mole.', 'Moving between a count of particles and moles; per-photon energy to per-mole energy.', 'Unit 1', 'moles-molar-mass'],
@@ -86,7 +86,7 @@ const EQ = [
     ['t½ = 0.693/k', 'The half-life of a first-order reaction.', 'Only for first order: its half-life does not depend on concentration (radioactive decay, many decompositions).', 'Unit 5', 'concentration-time'],
   ] },
   { h: 'Equilibrium, acids and bases', id: 'equilibrium', rows: [
-    ['Kc = [C]^c[D]^d / ([A]^a[B]^b);  Kp the same with partial pressures', 'The equilibrium constant for aA + bB ⇌ cC + dD.', 'Every equilibrium question; Q has the same form with the current values. Leave out pure solids and liquids.', 'Unit 7', 'q-and-k', ['q-vs-k', 'ice-table-drills']],
+    ['Kc = [C]^c[D]^d / ([A]^a[B]^b);  Kp the same with partial pressures', 'The equilibrium constant for aA + bB ⇌ cC + dD.', 'Every equilibrium question; Q has the same form with the current values. Leave out pure solids and liquids.', 'Unit 7', 'q-and-k', ['q-vs-k', 'ice-table-drills', 'equilibrium-kinetics']],
     ['Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25 °C;  pH + pOH = 14.00', 'The ionization of water.', 'Converting between [H₃O⁺] and [OH⁻], or pH and pOH, at 25 °C.', 'Unit 8', 'acids-bases-intro', ['titration-curve-reader']],
     ['pH = −log[H₃O⁺];  pOH = −log[OH⁻];  pKa = −log Ka', 'Logarithmic scales for acidity and acid strength.', 'Base-10 log, never ln. Keep as many decimal places as the concentration has significant figures.', 'Unit 8', 'acids-bases-intro', ['units-sig-figs', 'titration-curve-reader']],
     ['Kw = Ka × Kb;  pKa + pKb = pKw', 'The link between a conjugate acid and base.', 'Getting Ka of NH₄⁺ from Kb of NH₃ (or the reverse) before a buffer or salt calculation.', 'Unit 8', 'weak-acids-bases', ['buffer-drills']],

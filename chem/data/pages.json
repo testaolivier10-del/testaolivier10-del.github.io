@@ -136,7 +136,13 @@
    "desc": "A periodic table colored by atomic radius, ionization energy, electronegativity or electron affinity, with each atom's photoelectron spectrum, configuration and the Coulomb's law reasoning behind every comparison.",
    "blurb": "Color the table by a trend, tap an atom for its spectrum, and explain every comparison with Coulomb's law.",
    "lede": "Color the periodic table by a trend, then tap an element to see its photoelectron spectrum.",
-   "studio": true
+   "studio": true,
+   "lessons": [
+    "electron-configuration",
+    "photoelectron-spectroscopy",
+    "periodic-trends",
+    "ionic-compounds-valence"
+   ]
   },
   {
    "slug": "particle-diagrams",
@@ -178,7 +184,15 @@
    "desc": "Molecules moving and colliding in a sealed vessel: change the temperature, volume or amounts or add a catalyst, and watch Q move to K, the rates and the collision energies, with predict-then-run challenges.",
    "blurb": "Heat, compress, add or remove molecules and add a catalyst; watch Q return to K and the collision energies change.",
    "lede": "Change the vessel and watch the molecules shift until Q equals K again.",
-   "studio": true
+   "studio": true,
+   "lessons": [
+    "collision-model",
+    "catalysis",
+    "equilibrium-intro",
+    "reaction-direction",
+    "le-chatelier",
+    "q-and-le-chatelier"
+   ]
   },
   {
    "slug": "titration-curve-reader",

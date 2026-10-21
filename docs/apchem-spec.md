@@ -131,7 +131,7 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 | 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md` |
 | 1 | Units 1-3 with the math refresher (`skills-math`, 5 topics), notes, lessons, banks, FRQs, particle-diagram practice | **done 2026-10-06**; independent accuracy check per unit: `docs/apchem-reviews/u1.md`, `u2.md`, `u3.md` |
 | 2 | Units 4-9, with the drills and titration reader | **done 2026-10-06**: all units written (96 topics, 1,565 bank items, 38 FRQs, figures in `chem/figures/`); accuracy checks `docs/apchem-reviews/u4.md`-`u9.md` (decisions 13-14) |
-| 2b | Trainers and drills: particle diagrams, ICE tables, Q vs K, buffers, titration curve reader, units and sig figs | **done 2026-10-06** (decision 16); seeded generators with independent validators |
+| 2b | Trainers and drills: particle diagrams, ICE tables, Q vs K, buffers, titration curve reader, units and sig figs | **done 2026-10-06** (decision 16); seeded generators with independent validators. Two more trainers 2026-10-20 (decision 24): periodic trends and PES, equilibrium and kinetics |
 | 3 | Justification trainer (37 prompts), two fixed practice exams (32 exam-only items), equations-sheet page, score calculator, 9 unit practice tests, cram kit | **done 2026-10-06** (decision 17); reviewed: `docs/apchem-reviews/tools-exams.md` (score cut-offs 72/58/42/27, labelled estimates) |
 | Launch review | Phase 3 content findings fixed, 36 fixed-order items no longer show the key first, published, continuity pass, full CI | **done 2026-10-06** (decision 18). **Published**: `chem/data/published.json` lists `skills-math` and `unit-1`…`unit-9`; Beta badge and "not yet reviewed by an AP® teacher" note stay; Premium stays `onSale: false` until section 8 is done |
 | 4 | Second accuracy pass on the whole course (incl. exam-only items and justify prompts); PR to owner | **done 2026-10-07**: `docs/apchem-reviews/second-pass/u1-3.md`, `u4-6.md`, `u7-9.md` (12 fixes, 2 keys changed); plain-text helper keeps bare `<`/`>`; full CI with browser checks passes; PR opened |
@@ -313,6 +313,48 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    The score calculator and the equations sheet are reference pages: the slim bar and calm type only
    (`pages/calm-ref.js`). No content, ids, problem codes or recording changed.
 24. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
+
+24. (2026-10-20) **Two new trainers: periodic trends and PES, and equilibrium and kinetics.** Formats as the other
+   tools (`docs/apchem-architecture.md`, "Tools"); models in `chem-tool-math.js` (`ApChemMath.trends`, `ApChemMath.eqk`),
+   validators `scripts/lib/apchem-tool-checks/periodic-trends-pes.mjs` and `equilibrium-kinetics.mjs`, tests
+   `scripts/test/apchem-sims.test.mjs`. Both on the Tool Studio, Explore then Test yourself.
+   - **`periodic-trends-pes`** (Unit 1, topic `periodic-trends`; replaces the planned `pes-reader` in the map). A periodic
+     table colored by atomic radius, first ionization energy, electronegativity or electron affinity (main groups on a
+     phone, the whole table one tap away); tap an element for its photoelectron spectrum (H to Kr, peaks labeled by
+     subshell, heights = electrons, log energy axis), configuration, a schematic shell picture, and the rough effective
+     nuclear charge (protons − core electrons). "Compare" gives the reasoning that names both atoms, or explains why the
+     data break the rule (the four ionization dips, F vs Cl electron affinity, Ga vs Al radius, covalent-radius ties).
+     Test yourself: seven seeded kinds (radius, IE, IE dips, electronegativity, ions, identify from a spectrum, compare
+     two spectra), each predict-then-explain with the explanation that earns the point.
+   - **Data, with sources in the file's `sources` field** (`chem/data/tools/periodic-trends-pes.json`): radii are
+     metallic for metals and Pyykkö single-bond covalent for nonmetals (period 3 matches the notes: 186 … 99 pm); first
+     IEs from NIST ASD; Pauling EN as the site's periodic table popup; electron affinities from the Wikipedia data page
+     (Andersen 2004, Rienstra-Kiracofe 2002, CRC), no value where the anion is not stable; ionic radii Shannon 1976. PES:
+     H to Ca the free-atom table used in teaching materials (agrees with Carlson 1976/Lotz 1970 and matches the notes'
+     Ne, Na, Mg and Si values), Sc to Kr the LLNL EADL (Perkins 1991), spin-orbit pairs averaged; the lowest peak of
+     every atom is its NIST first IE. Noble gases get no radius (no comparable bonded radius). The validator checks
+     every spectrum against its configuration, 1s rising with Z, ns above np, and the across/down rule on the data
+     (covalent neighbors may tie within 2 pm: O 63 / F 64).
+   - **`equilibrium-kinetics`** (Unit 7, topic `le-chatelier`; also linked from 5.5 and 5.11). A sealed vessel of
+     moving, colliding molecules (canvas; Maxwell speeds for each species' real mass at T, elastic collisions, each
+     reaction drawn where it happens) for two real reactions: N₂O₄ ⇌ 2 NO₂ (ΔH° +57.2 kJ/mol, Kp 0.146 at 298 K from
+     NBS ΔG°f; the gas turns browner with [NO₂]) and H₂ + I₂ ⇌ 2 HI (Kc 54.3 at 703 K, ΔH° −9.5 kJ/mol; violet I₂,
+     Δn = 0 so volume does not shift it). Temperature (van 't Hoff), volume, amounts and a catalyst; a Q-K gauge, the
+     concentration-time graph with every change marked, the Maxwell-Boltzmann distribution with Ea (and the catalysed
+     Ea) marked and the tail above Ea magnified by a stated power of ten, and forward/reverse rate bars. Rates follow
+     the elementary rate laws with kr = kf/Kc, so the net rate is zero exactly at Q = K. "Challenge me" applies a
+     random stress after the student predicts the shift. Test yourself: what changes (Q or K), the direction, and the
+     rates right after the change; the stress then runs on a live vessel. Time is scaled (stated on the page); the
+     speed-up ratios from heating and from the catalyst are the real Arrhenius factors (the catalyst's Ea drop is
+     illustrative, 6 and 12 kJ/mol). The validator recomputes K from the source values, checks rates balance at
+     equilibrium, the stepper never overshoots K, the MB normalization and tail, and every key against both Q-vs-K and
+     Le Chatelier's rule.
+   - **Free or Premium (decision 16's rule):** `periodic-trends-pes` is free (the first tool of Unit 1);
+     `equilibrium-kinetics` is Premium (`tools`), since Unit 7 already has its free tool (`ice-table-drills`).
+   - **Lesson links:** a tool in `pages.json` may list `lessons`; each such lesson's Connections ends with "Tool: <name>"
+     (with "(Premium)" when gated) once the tool is live, as AP® Biology's lessons do. `periodic-trends-pes`: 1.5, 1.6,
+     1.7, 1.8; `equilibrium-kinetics`: 5.5, 5.11, 7.1, 7.2, 7.9, 7.10. The equations sheet links them from Coulomb's
+     law and the K expression.
 
 ## 8. Open items for the owner
 

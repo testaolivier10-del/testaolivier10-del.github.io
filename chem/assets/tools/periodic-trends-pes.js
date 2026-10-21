@@ -160,6 +160,7 @@
         var a = sel, b = other, va = a[key], vb = b[key];
         if(va == null || vb == null) return { head: '<b>' + a.s + ' ' + valText(a, key) + ', ' + b.s + ' ' + valText(b, key) + '.</b>', body: '<p>' + exception(a, b) + '</p>' };
         var big = va > vb ? a : b, small = big === a ? b : a, rule = TR.ruleSays(a, b, key), sameCore = TR.coreCount(a) === TR.coreCount(b);
+        if(key === 'r' && a.rk === 'c' && b.rk === 'c' && Math.abs(va - vb) <= 2) return { head: '<b>About the same:</b> ' + a.s + ' ' + valText(a, key) + ', ' + b.s + ' ' + valText(b, key) + '.', body: '<p>These are covalent radii: half the length of a single bond between two of the atoms. A bond\'s length also depends on what else the atoms are doing, so neighbors can come out within a picometer or two of each other, or even slightly reversed. ' + (rule ? 'The trend across the period still holds over several elements: ' + TR.why(a, b, key) : '') + '</p>' };
         var head = '<b>' + big.s + ' ' + (key === 'r' ? 'is larger' : 'is higher') + ':</b> ' + big.s + ' ' + valText(big, key) + ', ' + small.s + ' ' + valText(small, key) + '.';
         if(rule && rule !== big) return { head: head + ' An exception.', body: '<p>The across/down rule predicts ' + rule.s + '. ' + exception(a, b) + '</p>' };
         if(rule && (a.g === b.g || sameCore)) return { head: head, body: '<p>' + TR.why(a, b, key) + '</p><p class="bt-small">This is the explanation that earns the point: both atoms, the protons, the shell (distance) and the core electrons (shielding).</p>' };

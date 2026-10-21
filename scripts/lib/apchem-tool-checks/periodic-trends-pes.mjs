@@ -54,6 +54,21 @@ export function check(data, map) {
       if (prev && prev.pes && !(e.pes[0][1] > prev.pes[0][1])) errs.push(`${w}: 1s peak must rise with Z`);
     }
   });
+  // Neighbors in one period of the main groups follow the across rule for
+  // radius and electronegativity (no known exception in periods 2 to 5,
+  // with the noble gases left out); ionization energy has its four dips.
+  const DIP = new Set(['4-5', '12-13', '7-8', '15-16', '20-31', '30-31', '33-34', '38-49', '51-52']);
+  for (const a of els) {
+    const b = els.find(x => x.p === a.p && x.g != null && a.g != null && x.g > a.g && T.mainGroup(x) && T.mainGroup(a) && x.g !== 18 && T.coreCount(x) === T.coreCount(a) && els.every(y => !(y.p === a.p && y.g > a.g && y.g < x.g && T.mainGroup(y))));
+    if (!b || !T.mainGroup(a) || a.p < 2 || a.p > 5) continue;
+    // Covalent radii of neighboring nonmetals can tie or invert by a picometer
+    // or two (O 63, F 64 pm; Pyykko 2009): a bonded radius depends on the
+    // bond. The page says so (explore, "Compare"); quiz pairs need a 3% gap.
+    const slack = a.rk === 'c' && b.rk === 'c' ? 2 : 0;
+    if (a.r != null && b.r != null && !(b.r < a.r + slack)) errs.push(`${a.s} → ${b.s}: radius must fall across the period (${a.r}, ${b.r})`);
+    if (a.en != null && b.en != null && !(b.en > a.en)) errs.push(`${a.s} → ${b.s}: electronegativity must rise across the period`);
+    if (!DIP.has(`${a.z}-${b.z}`) && a.ie != null && b.ie != null && !(b.ie > a.ie)) errs.push(`${a.s} → ${b.s}: ionization energy must rise (not a known dip)`);
+  }
   for (let z = 1; z <= 36; z++) if (!(byZ[z] && byZ[z].pes)) errs.push(`no spectrum for Z = ${z}`);
   for (const x of data.ions || []) {
     const e = bySym[x.el];
