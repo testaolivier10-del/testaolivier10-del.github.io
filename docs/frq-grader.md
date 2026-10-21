@@ -87,7 +87,7 @@ roughly 6,000 input tokens (most cached after the first in five minutes) and 700
 5. **Try it yourself first.** `FRQ_GRADER = "owner"` is set in `worker/wrangler.toml` [vars] (done 2026-10-20), deploy (merge to main runs the deploy Action). On a phone, open any AP® FRQ page with `?frqtry=1` instead of using the console.
    On your own browser, in the console on any AP® FRQ page: `localStorage.setItem('levlprep_frq_grader_try','1')`,
    reload, sign in, grade a few answers.
-6. **Launch** (only if the eval passed, see below): `FRQ_GRADER = on`, and in `assets/course/frq-grader.js` set
+6. **Launch** (launch PR prepared 2026-10-20: ENABLED true, FRQ_GRADER "on", privacy section #frq-grader; merge only after the migration is applied) (only if the eval passed, see below): `FRQ_GRADER = on`, and in `assets/course/frq-grader.js` set
    `var ENABLED = true;` (one line; push to main). Add a line to `privacy.html` ("The study assistant" section and
    the processors list) that FRQ answers sent to the AI grader go to Anthropic (Claude) or Cloudflare Workers AI and
    are cached for up to 30 days by a one-way hash. Not done here because nothing is sent while it is off.

@@ -22,7 +22,7 @@
    sign-in are all checked there. */
 (function(){
   'use strict';
-  var ENABLED = false;
+  var ENABLED = true;
   var ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
   var TRY_KEY = 'levlprep_frq_grader_try';
 
