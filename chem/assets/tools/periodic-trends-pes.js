@@ -31,6 +31,9 @@
   });
 
   var KEYS = ['r', 'ie', 'en', 'ea'];
+  // Ground states that break the Aufbau order (NIST), main table: the CED
+  // excludes them from testing; the page says so when one is chosen.
+  var AUFBAU_X = [24, 29, 41, 42, 44, 45, 46, 47, 78, 79, 103];
   var LABEL = { r: 'Atomic radius', ie: 'Ionization energy', en: 'Electronegativity', ea: 'Electron affinity' };
   var SHORT = { r: 'Radius', ie: 'Ionization', en: 'Electroneg.', ea: 'Electron aff.' };
   function valText(el, key, unit){
@@ -132,6 +135,7 @@
       var rows = KEYS.map(function(k){ return '<tr' + (k === key ? ' class="hl"' : '') + '><th scope="row">' + LABEL[k] + '</th><td class="r">' + valText(e, k) + (k === 'r' && e.rk ? ' <span class="bt-small">(' + (e.rk === 'm' ? 'metallic' : 'covalent') + ')</span>' : '') + (k === 'ea' && e.eaEst ? ' <span class="bt-small">(estimate)</span>' : '') + '</td></tr>'; }).join('');
       return '<h3 class="ls-title-l ptx-elh">' + esc(e.n) + ' <span class="ptx-sym">' + e.s + '</span></h3>' +
         '<p class="ptx-conf"><b>' + TR.confHtml(e.conf) + '</b>' + (/\[/.test(e.conf) ? ' <span class="bt-small">= ' + conf.map(function(x){ return x[0] + '<sup>' + x[1] + '</sup>'; }).join(' ') + '</span>' : '') + '</p>' +
+        (AUFBAU_X.indexOf(e.z) > -1 ? '<p class="bt-small ptx-exc">This configuration is an exception to the usual filling order (measured, not predicted). The exam does not ask for exceptions like this one.</p>' : '') +
         '<div class="ptx-elrow"><div class="ptx-shell">' + TR.shellSvg(e, { size: 200 }) + '<p class="bt-small">Shells, schematic: not to scale.</p></div>' +
         '<table class="ls-tbl ptx-tbl"><caption class="sr-only">' + esc(e.n) + ' in numbers</caption><tbody>' +
         '<tr><th scope="row">Protons</th><td class="r">' + e.z + '</td></tr>' +
