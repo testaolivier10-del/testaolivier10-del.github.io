@@ -10,7 +10,13 @@
   "free_when_granted": 11.96
  },
  "spent_in_run": 0.0,
- "open": {},
+ "open": {
+  "fc-01M5DW4CBFYNDF68VWGJAS7YK3": {
+   "t": 1792540835.584075,
+   "kind": "images",
+   "n": 1
+  }
+ },
  "calls": [],
- "touched": 1792540729.16773
+ "touched": 1792540835.5840967
 }
