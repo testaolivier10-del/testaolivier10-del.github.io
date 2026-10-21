@@ -51,6 +51,7 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { CSP } from './lib/site-config.mjs';
 import { loadChapters, chapterSlug } from './lib/nremt-notes.mjs';
+import { applyVideo } from './lib/videos.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -430,7 +431,8 @@ chapters.forEach((ch, i) => {
   const name = `${SLUGS[i]}.html`;
   wanted.add(name);
   const file = join(OUT_DIR, name);
-  const html = page(ch, i);
+  // The video lesson block, if docs/videos.json lists one (scripts/lib/videos.mjs).
+  const html = applyVideo(`nremt/notes/${name}`, page(ch, i));
   const current = existsSync(file) ? readFileSync(file, 'utf8') : null;
   if (current === html) return;
   if (check) { stale.push(name); return; }

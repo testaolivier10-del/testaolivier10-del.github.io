@@ -44,6 +44,7 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { CSP } from './lib/site-config.mjs';
 import { courseTitle } from './lib/page-title.mjs';
+import { applyVideo } from './lib/videos.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 // Hand-written meta descriptions, for sections whose opening paragraph has no
@@ -375,7 +376,8 @@ ordered.forEach((entry, i) => {
   if (a !== -1 && b !== -1) prose = current.slice(a + START.length, b);
   prose = prose.replace(/^\n+|\n+$/g, '');
 
-  const next = page({
+  // The video lesson block, if docs/videos.json lists one (scripts/lib/videos.mjs).
+  const next = applyVideo(`ochem/notes/${entry.topic.id}.html`, page({
     topic: entry.topic,
     module: entry.module,
     modIndex: entry.modIndex,
@@ -386,7 +388,7 @@ ordered.forEach((entry, i) => {
     next: i + 1 < ordered.length ? ordered[i + 1].topic : null,
     index: i + 1,
     total: ordered.length,
-  });
+  }));
 
   if (next === current) return;
   if (check) { stale.push(entry.topic.id); return; }

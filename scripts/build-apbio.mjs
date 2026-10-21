@@ -37,6 +37,7 @@ import {
   groupSets, hasApToken, stripMark, STIM_KIND,
 } from './lib/apbio-build.mjs';
 import { entryPages } from './lib/apbio-entry.mjs';
+import { applyVideo } from './lib/videos.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -58,7 +59,8 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
   (m, open, inner, close) => open && close ? m : `<div class="table-wrap" tabindex="0" role="region" aria-label="${tableLabel(inner)}"><table${inner}</table></div>`);
 const put = (rel, content) => {
   if (hasApToken(rel)) throw new Error(`build-apbio: output path bio/${rel} contains the token "ap" (spec decision 2)`);
-  outputs.set(rel, rel.endsWith('.html') ? wrapTables(content) : content);
+  // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
+  outputs.set(rel, rel.endsWith('.html') ? applyVideo(`bio/${rel}`, wrapTables(content)) : content);
 };
 
 if (map) build();
