@@ -578,6 +578,11 @@
       "id": "q-vs-k",
       "title": "Q vs K: disturb a system and justify the shift",
       "topic": "q-and-le-chatelier"
+     },
+     {
+      "id": "equilibrium-kinetics",
+      "title": "Equilibrium and kinetics simulator: moving particles, Q to K, collision energies and a catalyst",
+      "topic": "le-chatelier"
      }
     ],
     "frqThemes": [

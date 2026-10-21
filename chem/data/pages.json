@@ -170,6 +170,17 @@
    "studio": true
   },
   {
+   "slug": "equilibrium-kinetics",
+   "kind": "simulator",
+   "premium": "tools",
+   "name": "Equilibrium and kinetics simulator",
+   "title": "Equilibrium and kinetics particle simulator",
+   "desc": "Molecules moving and colliding in a sealed vessel: change the temperature, volume or amounts or add a catalyst, and watch Q move to K, the rates and the collision energies, with predict-then-run challenges.",
+   "blurb": "Heat, compress, add or remove molecules and add a catalyst; watch Q return to K and the collision energies change.",
+   "lede": "Change the vessel and watch the molecules shift until Q equals K again.",
+   "studio": true
+  },
+  {
    "slug": "titration-curve-reader",
    "kind": "simulator",
    "name": "Titration curve reader",

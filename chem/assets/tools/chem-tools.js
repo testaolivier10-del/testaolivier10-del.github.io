@@ -744,7 +744,7 @@
       host: app,
       // the second tab and its dock button, named for what is in it
       detailsTitle: ({ 'buffer-drills': 'Numbers & setup', 'ice-table-drills': 'Setup', 'particle-diagrams': 'Atom tally & setup',
-        'q-vs-k': 'Particles & setup', 'periodic-trends-pes': 'Element & table', 'titration-curve-reader': 'Numbers & setup', 'units-sig-figs': 'Setup & gas law' })[slug] || 'Numbers & setup',
+        'q-vs-k': 'Particles & setup', 'periodic-trends-pes': 'Element & table', 'equilibrium-kinetics': 'Numbers & reaction', 'titration-curve-reader': 'Numbers & setup', 'units-sig-figs': 'Setup & gas law' })[slug] || 'Numbers & setup',
       menu: {
         copyLink: function(){
           var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;

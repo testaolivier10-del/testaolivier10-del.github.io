@@ -1395,3 +1395,129 @@
     zeffRough: zeffRough, mainGroup: mainGroup, value: value, ruleSays: ruleSays, relation: relation, pull: pull, why: why,
     pesSvg: pesSvg, shellSvg: shellSvg, pairPool: pairPool, DIPS: DIPS, generate: generate };
 })();
+
+
+/* ===================================================================
+   Equilibrium and kinetics at the particle level (Units 5 and 7):
+   ApChemMath.eqk. Pure; reactions come from the tool's data file
+   (chem/data/tools/equilibrium-kinetics.json, sources in "sources").
+
+     Kp(rx, T), Kc(rx, T)    van 't Hoff from (Kp, Tref, ΔH°), Kc = Kp/(RT)^Δn
+     rates(rx, c, T, cat)    { kf, kr, f, r }: f = kf Π[reactant]^n, r = kr Π[product]^n,
+                             kf = kfRef e^(−Ea/R (1/T − 1/Tref)) (catalyst lowers Ea
+                             by catDrop kJ/mol), kr = kf / Kc, so f = r exactly at Q = K
+     step(rx, c, T, cat, dt) one integration step (semi-implicit, extent-limited)
+     equilibrium(rx, c, T)   the exact concentrations where Q = Kc
+     mb(E, T), mbAbove(Ea, T) Maxwell-Boltzmann energy distribution (per mol)
+     shift(rx, stress, c, T) what a stress does: { Qafter, K, dir }
+     generate(rng, ctx, rx)  seeded predict-then-run problems
+   =================================================================== */
+(function(){
+  'use strict';
+  var M = window.ApChemMath, R = 8.314, RL = 0.08206;
+  function dn(rx){ return rx.species.reduce(function(n, s){ return n + s.nu; }, 0); }
+  function Kp(rx, T){ return rx.Kp * Math.exp(-rx.dH * 1000 / R * (1 / T - 1 / rx.Tref)); }
+  function Kc(rx, T){ return Kp(rx, T) / Math.pow(RL * T, dn(rx)); }
+  function Qc(rx, c){ return M.Q(rx.species, c); }
+  function Ea(rx, cat){ return rx.Ea - (cat ? rx.catDrop : 0); }
+  /* Arrhenius with the same A: kf(T) = kfRef e^(−Ea/R (1/T − 1/Tref)); a
+     catalyst lowers Ea by catDrop, multiplying kf by e^(catDrop/RT). */
+  function kf(rx, T, cat){ return rx.kfRef * Math.exp(-rx.Ea * 1000 / R * (1 / T - 1 / rx.Tref)) * (cat ? Math.exp(rx.catDrop * 1000 / (R * T)) : 1); }
+  function rates(rx, c, T, cat){
+    var a = kf(rx, T, cat), b = a / Kc(rx, T), f = a, r = b;
+    rx.species.forEach(function(s, i){ if(s.nu < 0) f *= Math.pow(Math.max(0, c[i]), -s.nu); else r *= Math.pow(Math.max(0, c[i]), s.nu); });
+    return { kf: a, kr: b, f: f, r: r };
+  }
+  /* The exact equilibrium from c: the extent where Q = Kc (shared bisection). */
+  function equilibrium(rx, c, T){ var x = M.solveExtent(rx.species, c, Kc(rx, T)); return M.at(rx.species, c, x); }
+  /* One step: the net rate times dt, never past equilibrium (the extent is
+     clamped between now and the exact equilibrium extent), so the run
+     approaches Q = K smoothly from either side and never overshoots. */
+  function step(rx, c, T, cat, dt){
+    var r = rates(rx, c, T, cat), net = (r.f - r.r) * dt;
+    var xe = M.solveExtent(rx.species, c, Kc(rx, T));
+    var x = net > 0 ? Math.min(net, xe) : Math.max(net, xe);
+    if(Math.abs(xe) < 1e-15) x = 0;
+    return { c: M.at(rx.species, c, x), f: r.f, r: r.r };
+  }
+  /* Maxwell-Boltzmann distribution of kinetic energy, per kJ/mol: E and Ea in
+     kJ/mol. mbAbove: the fraction with E ≥ Ea. */
+  function mb(E, T){ var rt = R * T / 1000; return 2 * Math.sqrt(E / Math.PI) * Math.pow(rt, -1.5) * Math.exp(-E / rt); }
+  function erfc(x){ var t = 1 / (1 + 0.5 * Math.abs(x)), y = t * Math.exp(-x * x - 1.26551223 + t * (1.00002368 + t * (0.37409196 + t * (0.09678418 + t * (-0.18628806 + t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 + t * (-0.82215223 + t * 0.17087277))))))))); return x >= 0 ? y : 2 - y; }
+  function mbAbove(EaKJ, T){ var x = EaKJ * 1000 / (R * T); return erfc(Math.sqrt(x)) + 2 * Math.sqrt(x / Math.PI) * Math.exp(-x); }
+  /* A stress applied to a mixture at equilibrium (c, T). Returns the state
+     just after it, the new K, and the direction the mixture shifts. */
+  function apply(rx, stress, c, T, V){
+    var sp = rx.species, c2 = c.slice(), T2 = T, f = 1;
+    var pick = function(sign){ for(var i = 0; i < sp.length; i++) if(sign * sp[i].nu > 0) return i; return 0; };
+    if(stress === 'heat') T2 = T + 30;
+    else if(stress === 'cool') T2 = T - 30;
+    else if(stress === 'addR'){ var i = pick(-1); c2[i] += Math.max(c[i], 0.05) * 0.6; }
+    else if(stress === 'removeR'){ var j = pick(-1); c2[j] *= 0.4; }
+    else if(stress === 'addP'){ var k = pick(1); c2[k] += Math.max(c[k], 0.05) * 0.6; }
+    else if(stress === 'removeP'){ var l = pick(1); c2[l] *= 0.4; }
+    else if(stress === 'compress'){ f = 2; c2 = c.map(function(x){ return x * f; }); }
+    else if(stress === 'expand'){ f = 0.5; c2 = c.map(function(x){ return x * f; }); }
+    var K2 = Kc(rx, T2), q = Qc(rx, c2), r = K2 / q;
+    var dir = stress === 'catalyst' || Math.abs(Math.log(r)) < 1e-9 ? 'none' : r > 1 ? 'f' : 'r';
+    return { c: c2, T: T2, V: V ? V / f : null, K: K2, Q: q, dir: dir };
+  }
+  var STRESS = {
+    heat: 'The vessel is heated by 30 K', cool: 'The vessel is cooled by 30 K',
+    addR: 'More of a reactant is injected', removeR: 'Some of a reactant is removed',
+    addP: 'More of a product is injected', removeP: 'Some of a product is removed',
+    compress: 'The volume is halved (the gases are compressed)', expand: 'The volume is doubled',
+    catalyst: 'A catalyst is added'
+  };
+  function generate(r, ctx, rx){
+    var T = rx.T[2], c0 = equilibrium(rx, rx.start, T), stress = r.pick(ctx.stresses), sp = rx.species;
+    var name = function(sign){ for(var i = 0; i < sp.length; i++) if(sign * sp[i].nu > 0) return sp[i].html; return ''; };
+    var a = apply(rx, stress, c0, T, 1), g = dn(rx), endo = rx.dH > 0;
+    var text = STRESS[stress] + (stress === 'addR' || stress === 'removeR' ? ' (' + name(-1) + ')' : stress === 'addP' || stress === 'removeP' ? ' (' + name(1) + ')' : '') + '.';
+    var q0 = Qc(rx, c0), K0 = Kc(rx, T);
+    // Step 1: what changes, Q or K?
+    var what = stress === 'heat' || stress === 'cool' ? 0 : stress === 'catalyst' ? 2 : 1;
+    var s1 = { key: 'qk', kind: 'choice', label: 'Right after the change, what is different?', practice: '6.D', fixed: true,
+      options: ['K changes; Q has not changed yet', 'Q changes; K stays the same', 'Neither Q nor K changes'], correct: what,
+      why: ['Only a temperature change changes K.', 'Amounts and volume change the concentrations, so Q; K depends only on temperature.', 'A catalyst speeds up both directions equally; it changes neither Q nor K.'] };
+    var dirIdx = a.dir === 'f' ? 0 : a.dir === 'r' ? 1 : 2;
+    var reason = stress === 'heat' ? (endo ? 'The forward reaction is endothermic (ΔH° = +' + rx.dH + ' kJ/mol), so heating raises K above Q: Q < K.' : 'The forward reaction is exothermic (ΔH° = ' + M.fmt(rx.dH, 2).replace('-', '−') + ' kJ/mol), so heating lowers K below Q: Q > K.')
+      : stress === 'cool' ? (endo ? 'The forward reaction is endothermic, so cooling lowers K below Q: Q > K.' : 'The forward reaction is exothermic, so cooling raises K above Q: Q < K.')
+      : stress === 'addR' || stress === 'removeP' ? 'That makes Q smaller than K (Q < K).'
+      : stress === 'addP' || stress === 'removeR' ? 'That makes Q larger than K (Q > K).'
+      : stress === 'compress' ? (g === 0 ? 'Both sides have the same number of gas particles (Δn = 0), so every concentration doubles and Q does not change: Q = K.' : 'Δn(gas) = ' + (g > 0 ? '+' : '') + g + ', so doubling every concentration multiplies Q by 2' + (Math.abs(g) > 1 ? M.sup(Math.abs(g)) : '') + (g > 0 ? ': Q > K, and the mixture shifts toward fewer gas particles (reactants).' : ': Q < K.'))
+      : stress === 'expand' ? (g === 0 ? 'Δn = 0, so halving every concentration leaves Q unchanged: Q = K.' : 'Δn(gas) = ' + (g > 0 ? '+' : '') + g + ', so halving every concentration ' + (g > 0 ? 'lowers Q: Q < K, toward more gas particles (products).' : 'raises Q: Q > K.'))
+      : 'Q and K are unchanged, so the mixture stays at equilibrium; it would only reach it sooner.';
+    var s2 = { key: 'dir', kind: 'choice', label: 'Which way does the mixture shift to reach equilibrium again?', practice: '6.D', fixed: true,
+      options: ['Forward, toward products', 'In reverse, toward reactants', 'No shift'], correct: dirIdx,
+      why: [dirIdx === 0 ? 'Right. ' + reason : 'Not forward. ' + reason, dirIdx === 1 ? 'Right. ' + reason : 'Not in reverse. ' + reason, dirIdx === 2 ? 'Right. ' + reason : 'It does shift. ' + reason] };
+    var rB = rates(rx, c0, T, false), rA = rates(rx, a.c, a.T, stress === 'catalyst');
+    var fUp = rA.f > rB.f * 1.0001, rUp = rA.r > rB.r * 1.0001;
+    var rateIdx = stress === 'catalyst' || stress === 'heat' || stress === 'compress' ? 0 : stress === 'cool' || stress === 'expand' ? 1 : (fUp && !rUp ? 2 : !fUp && rUp ? 3 : (rA.f < rB.f ? 4 : 5));
+    var opts = ['Both rates increase', 'Both rates decrease', 'Only the forward rate increases at first', 'Only the reverse rate increases at first', 'Only the forward rate decreases at first', 'Only the reverse rate decreases at first'];
+    var rateWhy = {
+      heat: 'Heating raises the share of collisions with at least Ea, so both directions speed up (the endothermic direction more).',
+      cool: 'Fewer collisions have at least Ea, so both directions slow down.',
+      catalyst: 'The catalyst lowers Ea for both directions by the same amount, so both rates rise by the same factor.',
+      compress: 'Every concentration rises, so collisions are more frequent in both directions.',
+      expand: 'Every concentration falls, so collisions are less frequent in both directions.',
+      addR: 'More reactant particles collide more often: the forward rate jumps; the reverse rate has not changed yet.',
+      removeR: 'Fewer reactant particles: the forward rate drops at once.',
+      addP: 'More product particles: the reverse rate jumps at once.',
+      removeP: 'Fewer product particles: the reverse rate drops at once.'
+    }[stress];
+    // Keep the four options that include the key.
+    var pool = [0, 1].concat(rateIdx > 1 ? [rateIdx] : [2]).concat([rateIdx === 3 ? 2 : 3]).filter(function(x, i, l){ return l.indexOf(x) === i; });
+    while(pool.length < 4){ var cand = [4, 5, 2, 3].filter(function(x){ return pool.indexOf(x) < 0; })[0]; pool.push(cand); }
+    var s3 = { key: 'rate', kind: 'choice', label: 'Right after the change, what happens to the forward and reverse rates?', practice: '4.A', fixed: true,
+      options: pool.map(function(i){ return opts[i]; }), correct: pool.indexOf(rateIdx),
+      why: pool.map(function(i){ return (i === rateIdx ? 'Right. ' : 'Not this. ') + rateWhy; }) };
+    var steps = [s1, s2, s3];
+    steps.forEach(function(s){ s.options = s.options.slice(); });
+    return { kind: 'eqk', ctx: ctx.id, topic: ctx.topic, reaction: rx.id, stress: stress, T: T, c0: c0, after: a, dir: a.dir,
+      text: '<p class="bt-eq">' + M.eqHtml(sp.map(function(s){ return { html: s.html, nu: s.nu, phase: 'g' }; })) + ' &nbsp; ΔH° = ' + (rx.dH > 0 ? '+' : '−') + Math.abs(rx.dH) + ' kJ/mol</p><p>At equilibrium at ' + T + ' K: ' + text.charAt(0).toLowerCase() + text.slice(1) + '</p>',
+      steps: steps,
+      solution: ['Before: Q = K = ' + M.fmt(K0, 3) + '.', 'After: ' + (what === 0 ? 'K = ' + M.fmt(a.K, 3) + ', Q still ' + M.fmt(q0, 3) : what === 1 ? 'Q = ' + M.fmt(a.Q, 3) + ', K still ' + M.fmt(K0, 3) : 'Q = K = ' + M.fmt(K0, 3)) + '. ' + reason, rateWhy] };
+  }
+  M.eqk = { dn: dn, Kp: Kp, Kc: Kc, Q: Qc, Ea: Ea, kf: kf, rates: rates, step: step, equilibrium: equilibrium, mb: mb, mbAbove: mbAbove, erfc: erfc, apply: apply, STRESS: STRESS, generate: generate };
+})();
