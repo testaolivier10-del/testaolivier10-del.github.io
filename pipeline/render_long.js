@@ -24,7 +24,8 @@ const path = require('path');
       if (im.getAttribute('src') !== src) { im.setAttribute('src', src); try { await im.decode(); } catch (e) {} }
       if (im.dataset.hold !== 'manual') im.style.opacity = 1;
     }));
-    if (window.__onSeek) await window.__onSeek(t); return 1; }, t);
+    if (window.__onSeek) await window.__onSeek(t);
+    if (window.__studioHooks) for (const h of window.__studioHooks) await h(t); return 1; }, t);
   if (mode === 'stills') {
     for (const t of rest.map(Number)) { await seek(t); await page.screenshot({ path: path.join(dir, `still_${t}.png`) }); }
   } else if (mode === 'thumb') {

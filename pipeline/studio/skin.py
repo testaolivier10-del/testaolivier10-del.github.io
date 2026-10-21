@@ -93,3 +93,46 @@ def build(bones, parts, max_seg=22.0, falloff=4.0, soft=10.0, prefix="rig"):
                               bi=bi.ravel().tolist(), bw=[round(v, 4) for v in w2.ravel().tolist()]))
     return dict(prefix=prefix, bones=[dict(id=b["id"], parent=b.get("parent"), head=list(b["head"]), tail=list(b["tail"])) for b in bones],
                 parts=out_parts)
+
+
+def build_paint(bones, parts, cell=14, prefix="paint", embed=True):
+    """Painted (raster) parts for paintskin.js. Each part: dict(id, img (PNG with alpha), x, y (where the image's
+    top left sits in the rest pose), bones=[...], z). The image is cut into a grid mesh (cells that contain paint
+    only); each vertex gets weights like vector points."""
+    from PIL import Image
+    B = {b["id"]: b for b in bones}
+    bone_index = {b["id"]: i for i, b in enumerate(bones)}
+    out = []
+    for part in sorted(parts, key=lambda p: p.get("z", 0)):
+        im = np.array(Image.open(part["img"]).convert("RGBA"))
+        a = im[..., 3] > 8
+        h, w = a.shape
+        nx, ny = max(1, int(np.ceil(w / cell))), max(1, int(np.ceil(h / cell)))
+        vid, V, UV, T = {}, [], [], []
+        def vert(i, j):
+            if (i, j) not in vid:
+                u, v = min(w, i * cell), min(h, j * cell)
+                vid[(i, j)] = len(UV); UV.append((u, v)); V.append((part["x"] + u, part["y"] + v))
+            return vid[(i, j)]
+        for j in range(ny):
+            for i in range(nx):
+                y0, y1, x0, x1 = j * cell, min(h, (j + 1) * cell), i * cell, min(w, (i + 1) * cell)
+                if not a[max(0, y0 - 2):y1 + 2, max(0, x0 - 2):x1 + 2].any(): continue
+                p00, p10, p01, p11 = vert(i, j), vert(i + 1, j), vert(i, j + 1), vert(i + 1, j + 1)
+                T += [p00, p10, p11, p00, p11, p01]
+        P = np.array(V, float)
+        allowed = part.get("bones") or [b["id"] for b in bones]
+        D = np.stack([_seg_dist(P, np.array(B[k]["head"], float), np.array(B[k]["tail"], float)) for k in allowed], 1)
+        W = 1.0 / (D + 10.0) ** 4.0
+        if len(allowed) == 1: W = np.hstack([W, np.zeros_like(W)])
+        idx = np.argsort(-W, axis=1)[:, :2]; w2 = np.take_along_axis(W, idx, 1); idx = np.minimum(idx, len(allowed) - 1)
+        w2 = w2 / w2.sum(1, keepdims=True)
+        bi = np.vectorize(lambda k: bone_index[allowed[k]])(idx)
+        src = part.get("src", part["img"])
+        if embed:                     # data URI: file:// images are blocked from WebGL as cross origin
+            import base64
+            src = "data:image/png;base64," + base64.b64encode(open(part["img"], "rb").read()).decode()
+        out.append(dict(id=part["id"], img=src, v=[round(x, 2) for x in P.ravel().tolist()],
+                        uv=[float(x) for x in np.array(UV).ravel().tolist()], t=T,
+                        bi=bi.ravel().tolist(), bw=[round(x, 4) for x in w2.ravel().tolist()]))
+    return dict(prefix=prefix, parts=out)

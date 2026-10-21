@@ -48,6 +48,7 @@ async function seek(page, t) {
       if (im.dataset.hold !== 'manual') im.style.opacity = 1;
     }));
     if (window.__onSeek) await window.__onSeek(t);
+    if (window.__studioHooks) for (const h of window.__studioHooks) await h(t);
     return 1;
   }, t);
 }

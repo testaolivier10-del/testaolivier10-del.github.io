@@ -68,7 +68,7 @@ def venous(x, y, angle=90, start=0.0, stop=1e9, speed=0.35):
 
 def capillary(x, y, w, start=0.0, stop=1e9):
     """Slow oozing that beads up across a scrape: many tiny low speed sources along a line of width w."""
-    e = Emitter(x, y, 90, 0.03, 60.0, lambda t: 40, lambda t: 1.0, start, stop, jitter=w / 2)
+    e = Emitter(x, y, 90, 0.01, 15.0, lambda t: 34, lambda t: 1.0, start, stop, jitter=2.5)
     e.line = w
     return e
 
@@ -105,6 +105,24 @@ class Sim:
         """A floor seen at an angle. Drops land around y (+/- depth px in screen y, so a puddle has depth), stop,
         and spread into a flat puddle drawn as ellipses squashed by persp (0 = edge on, 1 = straight down)."""
         self.floor = dict(y=float(y), depth=float(depth), persp=persp, spread=spread); return self
+
+    def add_face(self, poly, drag=9.0, gravity=0.18, cohesion=1.0):
+        """A surface facing the camera (the front of an arm, a cheek, a floor seen from above): liquid on it clings,
+        beads up and trickles slowly downhill (heavy drag, reduced gravity) instead of falling through it, and drips
+        off when it reaches the edge."""
+        self.faces = getattr(self, "faces", [])
+        self.faces.append(dict(poly=np.array(poly, np.float32), drag=drag, g=gravity)); return self
+
+    def _on_face(self):
+        m = np.zeros(len(self.p), bool); gs = np.ones(len(self.p), np.float32); dr = np.zeros(len(self.p), np.float32)
+        for f in getattr(self, "faces", []):
+            path = cv2.convexHull(f["poly"]) if False else f["poly"].reshape(-1, 1, 2)
+            x0, y0 = f["poly"].min(0); x1, y1 = f["poly"].max(0)
+            cand = np.nonzero((self.p[:, 0] >= x0) & (self.p[:, 0] <= x1) & (self.p[:, 1] >= y0) & (self.p[:, 1] <= y1))[0]
+            for i in cand:
+                if cv2.pointPolygonTest(path, (float(self.p[i, 0]), float(self.p[i, 1])), False) >= 0:
+                    m[i] = True; gs[i] = f["g"]; dr[i] = f["drag"]
+        return m, gs, dr
 
     def add_absorber(self, poly, rate=1.0, stain=None, stain_edge=None, grow=1.0):
         """A polygon that soaks liquid up (gauze, cloth). stain colors override the style's (blood on denim is
@@ -260,8 +278,14 @@ class Sim:
                 self._emit(dt)
                 if len(self.p):
                     act = ~self.pool
-                    self.v[act, 1] += self.g * dt
+                    fm, fg, fd = self._on_face() if getattr(self, "faces", None) else (np.zeros(len(self.p), bool), 1.0, 0.0)
+                    gscale = np.where(fm, fg, 1.0) if getattr(self, "faces", None) else 1.0
+                    self.v[act, 1] += (self.g * dt * gscale)[act] if getattr(self, "faces", None) else self.g * dt
                     self.v[act] *= (1 - 0.15 * dt)
+                    if getattr(self, "faces", None):
+                        damp = np.clip(1 - fd * dt, 0, 1)[:, None]
+                        self.v[act & fm] *= damp[act & fm]
+                        self.contact[act & fm] = True
                     self._neighbours(dt, act)
                     sp = np.linalg.norm(self.v, axis=1)
                     cap = 6.0 * self.ppm
