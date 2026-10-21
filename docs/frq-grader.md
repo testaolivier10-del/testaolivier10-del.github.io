@@ -84,7 +84,7 @@ roughly 6,000 input tokens (most cached after the first in five minutes) and 700
    `wrangler.toml` or the repo.
 3. **Database.** Supabase -> SQL Editor: run `scripts/sql/migrations/2026-10l-frq-grader.sql` once.
 4. **Model.** Set the Worker variable `FRQ_GRADER_MODEL` to the model the eval picked (default `claude-haiku-5-5`).
-5. **Try it yourself first.** Worker variable `FRQ_GRADER = owner`, deploy (merge to main runs the deploy Action).
+5. **Try it yourself first.** `FRQ_GRADER = "owner"` is set in `worker/wrangler.toml` [vars] (done 2026-10-20), deploy (merge to main runs the deploy Action). On a phone, open any AP® FRQ page with `?frqtry=1` instead of using the console.
    On your own browser, in the console on any AP® FRQ page: `localStorage.setItem('levlprep_frq_grader_try','1')`,
    reload, sign in, grade a few answers.
 6. **Launch** (only if the eval passed, see below): `FRQ_GRADER = on`, and in `assets/course/frq-grader.js` set

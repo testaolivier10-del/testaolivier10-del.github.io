@@ -48,6 +48,9 @@ SUPABASE_URL = "https://bsfcqrczehbcctwhxmrj.supabase.co"
 # Generate both halves with: node scripts/vapid-keys.mjs
 VAPID_PUBLIC_KEY = "BJQrCo49iKi_sn7czvlq2nNFI1G_uy9IJSo_0KruVHaz3Iu9h7Nug8ay2JXbzlaiqFJuULZ1d1Y2Qqbzp_2Psfk"
 VAPID_SUBJECT = "mailto:hello@levlprep.com"
+# The AI FRQ grader: "owner" = the owner's account only, while he tries it
+# (docs/frq-grader.md). "on" at launch, "off" to stop.
+FRQ_GRADER = "owner"
 
 # Premium passes (src/premium.js; setup in README.md, "Premium"). Left
 # commented so nothing changes until Polar is set up: with no product ids,

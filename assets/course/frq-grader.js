@@ -17,7 +17,7 @@
    ENABLED below, and the Worker's FRQ_GRADER variable. Before launch the
    owner can see it on his own browser with
      localStorage.setItem('levlprep_frq_grader_try', '1')
-   and the Worker (FRQ_GRADER = "owner") grades for his account only. The
+   (or by opening any FRQ page with ?frqtry=1) and the Worker (FRQ_GRADER = "owner") grades for his account only. The
    Worker is the real gate either way: Premium, the daily cap and the
    sign-in are all checked there. */
 (function(){
@@ -26,9 +26,16 @@
   var ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
   var TRY_KEY = 'levlprep_frq_grader_try';
 
+  // ?frqtry=1 (or 0) sets the same flag, so the owner can try it from a
+  // phone, where there is no console. Only shows the button; the Worker
+  // still grades for his account only while FRQ_GRADER = "owner".
   function enabled(){
     if(ENABLED) return true;
-    try{ return localStorage.getItem(TRY_KEY) === '1'; }catch(e){ return false; }
+    try{
+      var m = /[?&]frqtry=([01])/.exec(location.search);
+      if(m){ if(m[1] === '1') localStorage.setItem(TRY_KEY, '1'); else localStorage.removeItem(TRY_KEY); }
+      return localStorage.getItem(TRY_KEY) === '1';
+    }catch(e){ return false; }
   }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function plural(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); }
