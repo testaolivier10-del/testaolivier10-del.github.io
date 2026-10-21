@@ -148,9 +148,9 @@
       "topic": "mass-spectra"
      },
      {
-      "id": "pes-reader",
-      "title": "PES reader: peaks to subshells and electron configurations",
-      "topic": "photoelectron-spectroscopy"
+      "id": "periodic-trends-pes",
+      "title": "Periodic trends and PES explorer: a trend-colored table, spectra by subshell, Coulomb's law reasoning",
+      "topic": "periodic-trends"
      }
     ],
     "frqThemes": [

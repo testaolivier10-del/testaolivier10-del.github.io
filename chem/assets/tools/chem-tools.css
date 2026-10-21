@@ -1006,3 +1006,116 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
   .ls-root.ls-phone .ls-drill-stage .ic-live .ic-bars{flex:none;height:190px;}
   .ls-root.ls-phone .ls-drill-stage .ic-live .ic-beaker{flex:none;height:200px;}
 }
+
+/* ---- Periodic trends and photoelectron spectra (periodic-trends-pes.js) ----
+   The table is one SVG; a cell's fill mixes the course ink into the paper by
+   the trend value (--t, 0 to 1), so the heat map follows light and dark mode.
+   Subshell colors are the same in the spectrum and the shell picture, and
+   every peak and dot also carries its label, so color is never the only cue. */
+.ptx-card{display:grid;gap:12px;}
+.ptx-stage{display:grid;gap:10px;grid-template-columns:minmax(0,1fr);}
+.ptx-tablebox{display:grid;gap:8px;min-width:0;}
+/* Wide: the table on the left, the spectrum (or bars) on the right. */
+@media (min-width:1000px){.ptx-stage{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start;column-gap:22px;}
+  .ptx-stage .ptx-tablebox{grid-column:1;grid-row:1 / span 2;}.ptx-stage .ptx-tabs{grid-column:2;}.ptx-stage .ptx-panel{grid-column:2;}.ptx-tab-t{display:none;}
+  .ptx-panel .ptx-shellrow{grid-template-columns:150px minmax(0,1fr);}.ptx-panel .ptx-shellrow .sh-svg{max-width:150px;}}
+@media (max-width:999.98px){.ptx-stage[data-v="table"] .ptx-panel,.ptx-stage:not([data-v="table"]) .ptx-tablebox{display:none;}}
+.ptx-svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+.ptx-cell rect{fill:color-mix(in srgb, var(--cink) calc(var(--t, 0) * 82%), var(--paper));stroke:var(--line);stroke-width:1;transition:fill .25s;}
+.ptx-cell{cursor:pointer;outline:none;}
+.ptx-cell text{fill:var(--ink);font-family:var(--font-ui);pointer-events:none;}
+.ptx-cell.is-dark text{fill:#fff;}
+.ptx-cell.is-none rect{fill:var(--paper);stroke-dasharray:3 3;}
+.ptx-cell.is-gap rect{fill:none;stroke-dasharray:2 3;}
+.ptx-cell.is-gap{cursor:default;}
+.ptx-cell.is-quiet rect{fill:var(--paper);}
+.ptx-cell.is-quiet text{fill:var(--muted);}
+.ptx-cell.is-sel rect{stroke:var(--ink);stroke-width:3;}
+.ptx-cell.is-other rect{stroke:#D55E00;stroke-width:3;stroke-dasharray:5 3;}
+.ptx-mini .ptx-cell.is-sel rect{fill:var(--cink);}
+.ptx-mini .ptx-cell.is-sel text{fill:#fff;}
+.ptx-cell:focus-visible rect{stroke:var(--cink);stroke-width:4;}
+.ptx-z{font-size:8.5px;font-weight:700;opacity:.8;}
+.ptx-s{font-size:15px;font-weight:900;}
+.ptx-v{font-size:9.5px;font-weight:700;font-variant-numeric:tabular-nums;}
+.ptx-svg.is-full .ptx-s{font-size:13.5px;}
+.ptx-gn,.ptx-gl{fill:var(--muted);font:700 9px var(--font-ui);}
+.ptx-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:700 13px var(--font-ui);color:var(--muted);}
+.ptx-lg-k{color:var(--ink);font-weight:800;width:100%;}
+.ptx-lg-bar{flex:1 1 120px;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--paper),color-mix(in srgb, var(--cink) 82%, var(--paper)));border:1px solid var(--line);order:2;}
+.ptx-lg-n{order:1;font-variant-numeric:tabular-nums;}
+.ptx-lg-n.is-hi{order:3;}
+.ptx-lg-none{order:4;display:inline-flex;align-items:center;gap:5px;}
+.ptx-lg-none i{width:14px;height:12px;border:1px dashed var(--line);border-radius:3px;display:inline-block;}
+.ptx-panel{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.ptx-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.ptx-tab,.ptx-key{min-height:44px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.ptx-tab[aria-pressed="true"],.ptx-key[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ptx-keys{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ptx-ctl{display:grid;gap:10px;}
+.ptx-cmp[aria-pressed="true"]{border-color:#D55E00;}
+.ptx-pes{margin:0;}
+.ptx-shellrow{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;align-items:center;}
+.ptx-shellrow .sh-svg{max-width:120px;}
+.ptx-shellrow p{margin:0;}
+.ls-root .chem-ls-stage .ptx-view{flex:1;min-height:0;}
+.ls-root .chem-ls-stage .ptx-panel{min-height:0;}
+.ptx-pesh{font:600 14px var(--font-ui);margin:0 0 2px;}
+.ptx-pesh b{font-weight:900;}
+.ptx-nopes{font:600 14px/1.5 var(--font-ui);margin:8px 0;}
+.pes-svg{width:100%;height:auto;display:block;}
+.pes-bg{fill:var(--paper);}
+.pes-grid{stroke:var(--line);stroke-width:1;}
+.pes-axis{stroke:var(--ink);stroke-width:1.6;}
+.pes-tick{fill:var(--muted);font:700 11px var(--font-ui);}
+.pes-axl{fill:var(--ink);font:800 12px var(--font-ui);}
+.pes-pk path{stroke-width:1.4;stroke:var(--ink);fill-opacity:.9;cursor:pointer;}
+.pes-pk.is-mark path{stroke-width:3;}
+.pes-lead{stroke:var(--muted);stroke-width:1;}
+.pes-lab{fill:var(--ink);font:900 13px var(--font-ui);}
+.pes-lab.is-mark{fill:var(--cink);}
+.pes-val{fill:var(--muted);font:700 10.5px var(--font-ui);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--paper);stroke-width:3px;}
+/* Subshell colors (Okabe-Ito based, color-blind safe): s blue, p vermillion, d green. */
+.pes-s path,.sh-e.sh-s{fill:#56B4E9;}
+.pes-p path,.sh-e.sh-p{fill:#E69F00;}
+.pes-d path,.sh-e.sh-d{fill:#009E73;}
+.pes-q path{fill:var(--cink);fill-opacity:.75;}
+.sh-svg{width:100%;max-width:200px;height:auto;display:block;margin:0 auto;}
+.sh-nuc{fill:#D55E00;}
+.sh-z{fill:#fff;font:900 13px var(--font-ui);}
+.sh-ring{fill:none;stroke:var(--line);stroke-width:1.4;}
+.sh-ring.is-out{stroke:var(--cink);stroke-dasharray:4 3;}
+.sh-e{stroke:var(--ink);stroke-width:1;cursor:pointer;}
+.sh-e.is-mark{stroke-width:3;}
+.ptx-elrow{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start;}
+@media (min-width:520px){.ptx-elrow{grid-template-columns:180px minmax(0,1fr);}}
+.ptx-shell p{text-align:center;}
+.ptx-elh{margin:0;}
+.ptx-sym{font:800 15px var(--font-mono);color:var(--muted);}
+.ptx-conf{margin:2px 0 8px;font:700 15px/1.5 var(--font-ui);}
+.ptx-tbl{width:100%;}
+.ptx-tbl tr.hl th,.ptx-tbl tr.hl td{color:var(--cink);font-weight:900;}
+.ptx-bars2{display:grid;gap:6px;}
+.ptx-bars{width:100%;height:auto;display:block;}
+.ptx-bar rect{fill:color-mix(in srgb, var(--cink) 45%, var(--paper));}
+.ptx-bar.is-sel rect{fill:var(--cink);}
+.ptx-bar.is-other rect{fill:#D55E00;}
+.ptx-bv{fill:var(--ink);font:700 9.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ptx-bs{fill:var(--ink);font:800 11px var(--font-ui);}
+.ptx-bt{fill:var(--muted);font:800 11px var(--font-ui);}
+.ptx-ba{stroke:var(--ink);stroke-width:1.2;}
+.ptx-cap{margin:0;}
+.ptx-src{line-height:1.5;}
+.ptx-qfig{margin:0;}
+.ptx-qfig .ptx-mini{max-width:300px;margin:0 auto;}
+/* Tool Studio arrangement */
+.ls-root .chem-ls-stage .ptx-stage{flex:1;min-height:0;align-content:start;overflow:auto;}
+.ls-root .chem-ls-dock .ptx-keys{gap:6px;}
+.ls-root .chem-ls-dock .ptx-key{font-size:13.5px;padding:6px 8px;}
+.ls-root .chem-ls-dock .ptx-cmp{width:100%;}
+.ls-root .chem-ls-stage .ptx-lg-k{display:none;}
+.ls-root .chem-ls-stage .ptx-legend{font-size:12px;gap:4px 8px;}
+.ls-root .chem-ls-stage .ptx-panel{gap:4px;}
+.ls-root .chem-ls-stage .ptx-tab{min-height:40px;padding:4px 10px;font-size:13px;}
+.ls-root.ls-phone .ptx-s{font-size:16px;}
+.ls-root.ls-phone .ptx-v{font-size:10.5px;}

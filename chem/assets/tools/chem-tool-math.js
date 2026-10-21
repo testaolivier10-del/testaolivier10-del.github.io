@@ -1066,8 +1066,332 @@
     buffer: { generate: bufGenerate },
     titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS,
       species: titrationSpecies, region: titrationRegion, cross: titrationCross },
-    particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe, has: function(k){ return !!TEMPL[k]; } },
+    particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe, has: function(k){ return !!TEMPL[k]; }, templ: TEMPL },
     units: { generate: unGenerate, sigFigsOf: sfOf, decimalsOf: decOf }
   };
   for(var k in D) M[k] = D[k];
+})();
+
+
+/* ===================================================================
+   Periodic trends and photoelectron spectra (Unit 1): ApChemMath.trends.
+   Pure: the element data comes from the tool's data file
+   (chem/data/tools/periodic-trends-pes.json, sources in its "sources"
+   field) and is passed in, so the page, the validator and the tests all
+   read the same numbers.
+
+     parseConf('[Ne] 3s2 3p')  -> [['1s',2],['2s',2],['2p',6],['3s',2],['3p',1]]
+     confHtml('[Ne] 3s2 3p')   -> '[Ne] 3s² 3p¹'
+     outerShell(el), coreCount(el), zeffRough(el)
+       the AP "rough" effective nuclear charge: protons minus the electrons
+       in inner shells (every shell below the outermost occupied one)
+     value(el, key)  key: r | ie | en | ea (null when not defined)
+     ruleSays(a, b, key) -> a, b or null: what the across/down rule predicts
+       for two main-group elements in one period or one group
+     why(a, b, key)  -> the Coulomb's-law reasoning naming both atoms
+     pesSvg(el, o), shellSvg(el, o): the spectrum and a shell picture
+     generate(rng, ctx, els, ions)  seeded predict-then-reveal problems
+   =================================================================== */
+(function(){
+  'use strict';
+  var M = window.ApChemMath;
+  var CORE = { He: '1s2', Ne: '[He] 2s2 2p6', Ar: '[Ne] 3s2 3p6', Kr: '[Ar] 3d10 4s2 4p6', Xe: '[Kr] 4d10 5s2 5p6', Rn: '[Xe] 4f14 5d10 6s2 6p6' };
+  var ORDER = ['1s', '2s', '2p', '3s', '3p', '3d', '4s', '4p', '4d', '4f', '5s', '5p', '5d', '5f', '6s', '6p', '6d', '7s', '7p'];
+  function parseConf(s){
+    var out = {};
+    (function walk(t){
+      String(t).trim().split(/\s+/).forEach(function(tok){
+        var m = /^\[(\w+)\]$/.exec(tok);
+        if(m){ walk(CORE[m[1]]); return; }
+        var k = /^(\d)([spdf])(\d*)$/.exec(tok);
+        if(k) out[k[1] + k[2]] = (out[k[1] + k[2]] || 0) + (k[3] ? +k[3] : 1);
+      });
+    })(s);
+    // Shell order (1s 2s 2p 3s 3p 3d 4s ...): the order the PES lists them.
+    return Object.keys(out).sort(function(a, b){ return +a[0] - +b[0] || 'spdf'.indexOf(a[1]) - 'spdf'.indexOf(b[1]); }).map(function(k){ return [k, out[k]]; });
+  }
+  void ORDER;
+  var SUP = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+  function confHtml(s){ return String(s).replace(/(\d[spdf])(\d*)/g, function(m, sh, n){ return sh + String(n || '1').replace(/\d/g, function(d){ return SUP[d]; }); }); }
+  function electrons(el){ return parseConf(el.conf).reduce(function(n, x){ return n + x[1]; }, 0); }
+  function outerShell(el){ return parseConf(el.conf).reduce(function(n, x){ return Math.max(n, +x[0][0]); }, 0); }
+  function coreCount(el){ var n = outerShell(el); return parseConf(el.conf).reduce(function(c, x){ return c + (+x[0][0] < n ? x[1] : 0); }, 0); }
+  function valence(el){ return el.z - coreCount(el); }
+  function zeffRough(el){ return el.z - coreCount(el); }
+  function mainGroup(el){ return el.g === 1 || el.g === 2 || (el.g >= 13 && el.g <= 18); }
+  function value(el, key){ var v = el[key]; return v == null ? null : v; }
+  var PROP = {
+    r: { name: 'atomic radius', short: 'Radius', unit: 'pm', more: 'larger', less: 'smaller', across: -1, down: 1 },
+    ie: { name: 'first ionization energy', short: 'Ionization energy', unit: 'kJ/mol', more: 'higher', less: 'lower', across: 1, down: -1 },
+    en: { name: 'electronegativity', short: 'Electronegativity', unit: '', more: 'higher', less: 'lower', across: 1, down: -1 },
+    ea: { name: 'electron affinity', short: 'Electron affinity', unit: 'kJ/mol', more: 'larger', less: 'smaller', across: 1, down: -1 }
+  };
+  /* What the across/down rule predicts: the element the rule says has the
+     MORE of the property, or null when the two are not in one period or one
+     group of the main groups. */
+  function ruleSays(a, b, key){
+    var P = PROP[key];
+    if(!mainGroup(a) || !mainGroup(b) || a.z === b.z) return null;
+    if(a.p === b.p) return (a.z > b.z) === (P.across > 0) ? a : b;
+    if(a.g === b.g) return (a.p > b.p) === (P.down > 0) ? a : b;
+    return null;
+  }
+  function relation(a, b){ return a.p === b.p ? 'period' : a.g === b.g ? 'group' : 'other'; }
+  /* The reasoning that earns the point: both atoms, protons, shells
+     (distance) and core electrons (shielding). For a property that grows
+     with the attraction (IE, EN, EA), the atom with the stronger pull has
+     more; for radius, less. */
+  function pull(a, b){
+    // The atom whose outer electrons feel the stronger attraction.
+    if(a.p === b.p) return a.z > b.z ? a : b;
+    return a.p < b.p ? a : b;
+  }
+  function why(a, b, key){
+    var s = pull(a, b), w = s === a ? b : a, n1 = outerShell(s), n2 = outerShell(w), c1 = coreCount(s), c2 = coreCount(w);
+    var what = key === 'r' ? 'so its outer electrons are pulled closer and ' + s.s + ' is smaller'
+      : key === 'ie' ? 'so more energy is needed to remove one of them'
+      : key === 'en' ? 'so it attracts the electrons in a bond more strongly'
+      : 'so an added electron is attracted more strongly and more energy is released';
+    if(relation(a, b) === 'period') return s.s + ' and ' + w.s + ' both have their outer electrons in shell ' + n1 + ', shielded by the same ' + c1 + ' core electrons. ' + s.s + ' has more protons (' + s.z + ' vs ' + w.z + '), so its outer electrons feel a larger effective nuclear charge (about +' + zeffRough(s) + ' vs +' + zeffRough(w) + ') at a similar distance, ' + what + '.';
+    return s.s + '’s outer electrons are in shell ' + n1 + ', closer to the nucleus than ' + w.s + '’s in shell ' + n2 + ', and shielded by fewer core electrons (' + c1 + ' vs ' + c2 + '). ' + w.s + ' has more protons (' + w.z + ' vs ' + s.z + '), but its extra core electrons cancel most of them, so ' + s.s + '’s outer electrons are attracted more strongly, ' + what + '.';
+  }
+
+  /* -------------------------------------------- pictures (SVG strings) */
+  function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function fx(x){ return (+x).toFixed(1); }
+  /* A photoelectron spectrum: one peak per subshell, height = electrons,
+     binding energy on a log axis that DEcreases to the right (the usual
+     convention). o: { w, h, lo, hi (MJ/mol range), mark: subshell, compact,
+     noSub: label each peak with its height instead of its subshell (a
+     quiz that asks for the subshell) } */
+  function pesSvg(el, o){
+    o = o || {};
+    var W = o.w || 560, H = o.h || 260, L = 18, R = 18, T = 44, B = 40, pw = W - L - R, ph = H - T - B;
+    var peaks = el.pes || [];
+    var hi = o.hi || peaks[0][1] * 2.2, lo = o.lo || Math.min(0.1, peaks[peaks.length - 1][1] / 3);
+    var lhi = Math.log10(hi), llo = Math.log10(lo);
+    var X = function(e){ return L + (lhi - Math.log10(e)) / (lhi - llo) * pw; };
+    var maxN = Math.max.apply(null, peaks.map(function(p){ return p[2]; }).concat([o.yMax || 2]));
+    var Y = function(n){ return T + ph - n / maxN * ph * 0.92; };
+    var p = ['<rect class="pes-bg" x="' + L + '" y="' + T + '" width="' + pw + '" height="' + ph + '" rx="6"/>'];
+    // Decades: 1000, 100, 10, 1, 0.1 MJ/mol
+    for(var d = Math.ceil(llo); d <= Math.floor(lhi); d++){
+      var e = Math.pow(10, d), x = X(e);
+      p.push('<line class="pes-grid" x1="' + fx(x) + '" x2="' + fx(x) + '" y1="' + T + '" y2="' + (T + ph) + '"/><text class="pes-tick" x="' + fx(x) + '" y="' + (T + ph + 15) + '" text-anchor="' + (d === Math.ceil(llo) ? 'end' : d === Math.floor(lhi) ? 'start' : 'middle') + '">' + String(e) + '</text>');
+    }
+    p.push('<line class="pes-axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + (T + ph) + '" y2="' + (T + ph) + '"/>');
+    var labels = [];
+    peaks.forEach(function(pk, i){
+      if(pk[1] > hi || pk[1] < lo) return;
+      var x = X(pk[1]), y = Y(pk[2]), n = +pk[0][0], sub = pk[0][1], mk = o.mark === pk[0];
+      // Peak half-width: narrow enough that neighbors (2s and 2p) stay apart.
+      var gapL = i > 0 ? Math.abs(x - X(peaks[i - 1][1])) : 99, gapR = i < peaks.length - 1 ? Math.abs(X(peaks[i + 1][1]) - x) : 99;
+      var bw = Math.max(3, Math.min(14, pw / 44, Math.min(gapL, gapR) / 3.4));
+      // A smooth peak (a narrow bell), not a bar: real spectra have width.
+      var path = 'M' + fx(x - bw * 1.6) + ' ' + (T + ph) + ' C' + fx(x - bw * 0.7) + ' ' + (T + ph) + ' ' + fx(x - bw * 0.55) + ' ' + fx(y) + ' ' + fx(x) + ' ' + fx(y) + ' C' + fx(x + bw * 0.55) + ' ' + fx(y) + ' ' + fx(x + bw * 0.7) + ' ' + (T + ph) + ' ' + fx(x + bw * 1.6) + ' ' + (T + ph) + 'Z';
+      p.push('<g class="pes-pk ' + (o.noSub ? 'pes-q' : 'pes-n' + n + ' pes-' + sub) + (mk ? ' is-mark' : '') + '"' + (o.noSub ? '' : ' data-sub="' + pk[0] + '"') + ' data-i="' + i + '"><path d="' + path + '"/>' +
+        '<rect class="pes-hit" x="' + fx(x - 14) + '" y="' + T + '" width="28" height="' + ph + '" fill="transparent"/></g>');
+      labels.push({ x: x, y: y, t: pk[0], v: pk[1], n: pk[2], mk: mk });
+    });
+    // Labels: subshell over each peak, staggered when two are close.
+    // Two peaks closer than a label's width (2s/2p, 3s/3p): their labels
+    // move apart sideways, each pointing at its own peak.
+    labels.forEach(function(lb, i){
+      var prev = labels[i - 1], next = labels[i + 1];
+      if(next && next.x - lb.x < 40) lb.dx = -Math.max(0, (40 - (next.x - lb.x)) / 2 + 2);
+      if(prev && lb.x - prev.x < 40) lb.dx = Math.max(0, (40 - (lb.x - prev.x)) / 2 + 2);
+    });
+    labels.forEach(function(lb){
+      var ly = Math.max(T - 16, lb.y - 20), up = 0;
+      if(lb.dx){ var tx = lb.x + lb.dx; p.push('<line class="pes-lead" x1="' + fx(lb.x) + '" y1="' + fx(lb.y - 2) + '" x2="' + fx(tx) + '" y2="' + fx(ly + 15) + '"/>'); lb.x = tx; }
+      if(!o.noSub) p.push('<text class="pes-lab' + (lb.mk ? ' is-mark' : '') + '" x="' + fx(lb.x) + '" y="' + fx(ly) + '" text-anchor="middle">' + lb.t + '</text>');
+      else p.push('<text class="pes-lab" x="' + fx(lb.x) + '" y="' + fx(ly) + '" text-anchor="middle">' + lb.n + '</text>');
+      if(!o.compact) p.push('<text class="pes-val" x="' + fx(lb.x) + '" y="' + fx(ly + 12) + '" text-anchor="middle">' + (lb.v >= 100 ? Math.round(lb.v) : M.fmt(lb.v, 3)) + '</text>');
+    });
+    p.push('<text class="pes-axl" x="' + (L + pw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">Binding energy (MJ/mol), log scale, decreasing →</text>');
+    var label = 'Photoelectron spectrum of ' + el.n + ': ' + peaks.map(function(pk){ return pk[0] + ' peak at ' + pk[1] + ' MJ/mol, height ' + pk[2]; }).join('; ') + '.';
+    return '<svg class="chem-svg pes-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.label || label) + '">' + p.join('') + '</svg>';
+  }
+  /* A shell picture: the nucleus (+Z) and one ring per shell, each electron
+     a dot colored by its subshell (the same colors as the spectrum). A
+     schematic: real electrons are not on circles, and rings are not to
+     scale. */
+  function shellSvg(el, o){
+    o = o || {};
+    var S = o.size || 220, c = S / 2, conf = parseConf(el.conf), nMax = outerShell(el);
+    var r0 = S * 0.11, step = (c - r0 - 10) / Math.max(1, nMax);
+    var p = ['<circle class="sh-nuc" cx="' + c + '" cy="' + c + '" r="' + fx(r0) + '"/><text class="sh-z" x="' + c + '" y="' + fx(c + 4.5) + '" text-anchor="middle">+' + el.z + '</text>'];
+    for(var n = 1; n <= nMax; n++){
+      var rr = r0 + step * n, list = conf.filter(function(x){ return +x[0][0] === n; });
+      p.push('<circle class="sh-ring' + (n === nMax ? ' is-out' : '') + '" cx="' + c + '" cy="' + c + '" r="' + fx(rr) + '"/>');
+      var dots = [];
+      list.forEach(function(x){ for(var k = 0; k < x[1]; k++) dots.push(x[0]); });
+      dots.forEach(function(sub, k){
+        var a = -Math.PI / 2 + 2 * Math.PI * k / dots.length + n * 0.4;
+        p.push('<circle class="sh-e sh-' + sub[1] + (o.mark === sub ? ' is-mark' : '') + '" data-sub="' + sub + '" cx="' + fx(c + rr * Math.cos(a)) + '" cy="' + fx(c + rr * Math.sin(a)) + '" r="' + fx(Math.max(3, Math.min(6.5, step * 0.22))) + '"/>');
+      });
+    }
+    return '<svg class="chem-svg sh-svg" viewBox="0 0 ' + S + ' ' + S + '" role="img" aria-label="' + esc('Shell model of ' + el.n + ': nucleus with ' + el.z + ' protons; ' + conf.map(function(x){ return x[1] + ' in ' + x[0]; }).join(', ') + '. Schematic, not to scale.') + '">' + p.join('') + '</svg>';
+  }
+
+  /* ------------------------------------------ seeded predict-then-reveal */
+  /* ctx.kind: radius | ie | ie-dip | en | ion | pes-id | pes-cmp. Every key
+     is read from the data; the validator checks the data agrees with the
+     rule the reasoning states. */
+  var KEYOF = { radius: 'r', ie: 'ie', en: 'en' };
+  function byZ(els){ var m = {}; els.forEach(function(e){ m[e.z] = e; }); return m; }
+  function okPair(a, b, key){
+    var va = value(a, key), vb = value(b, key);
+    if(va == null || vb == null) return false;
+    var rule = ruleSays(a, b, key);
+    if(!rule) return false;
+    var big = va > vb ? a : b;
+    // The data must agree with the rule and not be a near tie.
+    return big === rule && Math.abs(va - vb) / Math.max(va, vb) >= 0.03;
+  }
+  function pairPool(els, key){
+    // Main-group atoms of periods 2-5, no noble gases (no radius or
+    // electronegativity to compare); a pair in one period must share its
+    // core (Ca and Ga do not: Ga adds ten 3d electrons), so "the same core
+    // electrons" in the reasoning is true.
+    var pool = [], ok = function(e){ return mainGroup(e) && e.g !== 18 && e.p >= 2 && e.p <= 5 && value(e, key) != null; };
+    els.filter(ok).forEach(function(a){ els.filter(ok).forEach(function(b){
+      if(a.z < b.z && (a.g === b.g || (a.p === b.p && coreCount(a) === coreCount(b))) && okPair(a, b, key)){
+        // Leave the ionization dips to their own kind.
+        if(key === 'ie' && a.p === b.p && ((a.g === 2 && b.g === 13) || (a.g === 15 && b.g === 16))) return;
+        pool.push([a, b]);
+      }
+    }); });
+    return pool;
+  }
+  var DIPS = [[4, 5], [12, 13], [7, 8], [15, 16]];
+  function shuffle(r, a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function choiceStep(r, key, label, opts, why, practice){
+    // opts[0] is right; shuffled here, the drill does not reshuffle (fixed).
+    var idx = shuffle(r, opts.map(function(x, i){ return i; }));
+    return { key: key, kind: 'choice', label: label, options: idx.map(function(i){ return opts[i]; }), why: idx.map(function(i){ return why[i]; }), correct: idx.indexOf(0), fixed: true, practice: practice || '4.A' };
+  }
+  function fmtV(el, key){ var v = value(el, key), P = PROP[key]; return v == null ? 'not defined' : (key === 'en' ? v.toFixed(2) : String(v)) + (P.unit ? ' ' + P.unit : ''); }
+  function trendProblem(r, ctx, els){
+    var key = KEYOF[ctx.kind], P = PROP[key], pr = r.pick(pairPool(els, key));
+    var ab = r() < 0.5 ? pr : [pr[1], pr[0]], a = ab[0], b = ab[1];
+    var big = value(a, key) > value(b, key) ? a : b, small = big === a ? b : a, rel = relation(a, b);
+    var Q = 'Which has the ' + (key === 'r' ? 'larger atomic radius' : 'higher ' + P.name) + ', ' + a.n + ' (' + a.s + ') or ' + b.n + ' (' + b.s + ')?';
+    var good = why(a, b, key);
+    var s = pull(a, b), w = s === a ? b : a;
+    var wrong = [
+      big.s + ' has the ' + (big.z > small.z ? 'larger' : 'smaller') + ' molar mass, and ' + P.name + ' follows the mass of the atom.',
+      rel === 'period' ? 'Both atoms have the same number of shells, so the one with more electrons has more electron repulsion, which ' + (key === 'r' ? 'makes it larger' : 'makes its electrons easier to remove') + '.'
+        : w.s + ' has more protons (' + w.z + ' vs ' + s.z + '), so its nucleus pulls harder on every electron.',
+      key === 'r' ? small.s + ' is closer to a full octet, so it holds its electrons in a smaller space.' : big.s + ' is closer to a full octet, and atoms near a full octet want to keep or gain electrons.'
+    ];
+    var steps = [
+      choiceStep(r, 'pick', Q, [big.n + ' (' + big.s + ')', small.n + ' (' + small.s + ')'], ['Right: ' + big.s + ' ' + fmtV(big, key) + ', ' + small.s + ' ' + fmtV(small, key) + '.', 'Not this one: ' + small.s + ' ' + fmtV(small, key) + ', ' + big.s + ' ' + fmtV(big, key) + '.'], '4.A'),
+      choiceStep(r, 'why', 'Which explanation earns the point?', [good].concat(wrong), [
+        'Earns the point: it names both atoms, the protons, the shell (distance) and the core electrons (shielding).',
+        'Mass does not set ' + P.name + '; the readers reject a molar-mass argument every year.',
+        rel === 'period' ? 'Across a period the added electrons go into the same shell and barely shield each other; the extra proton wins.' : 'Down a group the added protons are cancelled by added core electrons; the extra shell (distance) wins.',
+        'Atoms do not "want" electrons. Explain with the attraction between the nucleus and the electrons.'
+      ], '6.E')
+    ];
+    return { kind: 'trends', type: ctx.kind, ctx: ctx.id, topic: ctx.topic, pair: [a.z, b.z], key: key, answer: big.z,
+      text: '<p>' + Q + '</p>', steps: steps,
+      solution: [P.short + ': ' + a.s + ' ' + fmtV(a, key) + '; ' + b.s + ' ' + fmtV(b, key) + '.', good] };
+  }
+  function dipProblem(r, ctx, els){
+    var Z = byZ(els), d = r.pick(DIPS), a = Z[d[0]], b = Z[d[1]], pB = b.g === 13;
+    var Q = 'The first ionization energy usually rises across a period, but ' + b.n + ' (' + b.s + ', ' + b.ie + ' kJ/mol) is lower than ' + a.n + ' (' + a.s + ', ' + a.ie + ' kJ/mol). Why?';
+    var good = pB ? b.s + '’s outermost electron is in a ' + b.p + 'p subshell, which is higher in energy (farther out on average) than ' + a.s + '’s ' + a.p + 's electrons and partly shielded by them, so it is easier to remove even though ' + b.s + ' has one more proton.'
+      : b.s + ' has four ' + b.p + 'p electrons, so two of them share an orbital; the repulsion between that paired electrons makes one easier to remove, even though ' + b.s + ' has one more proton than ' + a.s + '.';
+    good = good.replace('that paired', 'the paired');
+    var steps = [choiceStep(r, 'why', Q, [good,
+      b.s + ' has a larger atomic radius than ' + a.s + ', because it is to the right of ' + a.s + ' in the period.',
+      pB ? b.s + ' has a half-filled ' + b.p + 'p subshell, which is especially stable.' : a.s + ' has a completely filled ' + a.p + 'p subshell, which is especially stable.',
+      b.s + ' has more protons, and more protons always lower the ionization energy.'], [
+      'Earns the point: it names the subshell the electron leaves from (and why that matters) for both atoms.',
+      'Radius falls across a period; ' + b.s + ' is smaller, not larger.',
+      pB ? b.s + ' (' + b.p + 'p¹) is not half filled.' : 'A ' + a.p + 'p³ subshell is half filled, not completely filled. "Stability" alone does not earn the point; name the paired-electron repulsion.',
+      'More protons raise the ionization energy; the dip happens despite the extra proton.'], '6.E')];
+    return { kind: 'trends', type: 'ie-dip', ctx: ctx.id, topic: ctx.topic, pair: [a.z, b.z], key: 'ie', answer: a.z, text: '<p>' + Q + '</p>', steps: steps, solution: [good] };
+  }
+  function ionProblem(r, ctx, els, ions){
+    var Z = {}; els.forEach(function(e){ Z[e.s] = e; });
+    var iso = r() < 0.5, a, b, big, good, wrong, Q;
+    if(iso){
+      // Two ions with the same number of electrons.
+      var pairs = [];
+      ions.forEach(function(x){ ions.forEach(function(y){ var ex = Z[x.el].z - x.q, ey = Z[y.el].z - y.q; if(x.s < y.s && ex === ey) pairs.push([x, y]); }); });
+      var pr = r.pick(pairs); a = pr[0]; b = pr[1];
+      big = a.r > b.r ? a : b; var sm = big === a ? b : a, ne = Z[a.el].z - a.q;
+      Q = 'Which ion is larger, ' + a.s + ' or ' + b.s + '? (Both have ' + ne + ' electrons.)';
+      good = 'Both ions have ' + ne + ' electrons in the same shells. ' + big.s + ' has fewer protons (' + Z[big.el].z + ' vs ' + Z[sm.el].z + '), so each electron is attracted less strongly and the electron cloud spreads out farther.';
+      wrong = [big.s + ' has the larger charge, and a larger charge always makes an ion larger.', big.s + ' has more electrons than ' + sm.s + ', so its electron cloud is bigger.', big.s + ' has the greater molar mass, so it takes up more space.'];
+      return { kind: 'trends', type: 'ion', ctx: ctx.id, topic: ctx.topic, ions: [a.s, b.s], answer: big.s, text: '<p>' + Q + '</p>',
+        steps: [choiceStep(r, 'pick', Q, [big.s, sm.s], ['Right: ' + big.s + ' ' + big.r + ' pm, ' + sm.s + ' ' + sm.r + ' pm.', 'Not this one: ' + sm.s + ' ' + sm.r + ' pm, ' + big.s + ' ' + big.r + ' pm.'], '4.A'),
+          choiceStep(r, 'why', 'Which explanation earns the point?', [good].concat(wrong), ['Earns the point: same electrons, different numbers of protons pulling on them.', 'Charge alone is not the cause; compare the protons pulling on the same number of electrons.', 'They have the same number of electrons.', 'Mass does not set size.'], '6.E')],
+        solution: ['Ionic radii: ' + a.s + ' ' + a.r + ' pm, ' + b.s + ' ' + b.r + ' pm (six-coordinate).', good] };
+    }
+    var ion = r.pick(ions), at = Z[ion.el], cat = ion.q > 0;
+    Q = 'Which is larger, a ' + at.n.toLowerCase() + ' atom (' + at.s + ') or the ' + ion.s + ' ion?';
+    big = cat ? at : ion;
+    good = cat ? at.s + ' loses ' + (ion.q === 1 ? 'its outer electron' : 'its ' + ion.q + ' outer electrons') + ', so ' + ion.s + ' has no electrons left in shell ' + outerShell(at) + ': its outermost electrons are in a shell closer to the nucleus, attracted by the same ' + at.z + ' protons.'
+      : ion.s + ' has ' + (-ion.q === 1 ? 'one more electron' : (-ion.q) + ' more electrons') + ' than ' + at.s + ' but the same ' + at.z + ' protons, so the electron-electron repulsion is greater and each electron is held less strongly: the electron cloud spreads out.';
+    wrong = cat ? [ion.s + ' has a positive charge, which repels its electrons outward.', 'Losing electrons leaves fewer protons, so the nucleus pulls less.', at.s + ' and ' + ion.s + ' have the same number of protons, so they are the same size.']
+      : ['Gaining an electron adds a proton, which pulls the cloud in.', ion.s + ' has a complete octet, and a complete octet is always smaller.', at.s + ' and ' + ion.s + ' have the same number of protons, so they are the same size.'];
+    var bigName = cat ? at.n + ' atom (' + at.s + ')' : ion.s + ' ion', smName = cat ? ion.s + ' ion' : at.n + ' atom (' + at.s + ')';
+    var vs = at.s + ' ' + at.r + ' pm (' + (at.rk === 'm' ? 'metallic' : 'covalent') + ' radius), ' + ion.s + ' ' + ion.r + ' pm.';
+    return { kind: 'trends', type: 'ion', ctx: ctx.id, topic: ctx.topic, ions: [at.s, ion.s], answer: cat ? at.s : ion.s, text: '<p>' + Q + '</p>',
+      steps: [choiceStep(r, 'pick', Q, [bigName, smName], ['Right: ' + vs, 'Not this one: ' + vs], '4.A'),
+        choiceStep(r, 'why', 'Which explanation earns the point?', [good].concat(wrong), ['Earns the point: it says what changes (electrons, shells) and what stays the same (protons).', cat ? 'A positive ion pulls its electrons in more, not out.' : 'Gaining an electron does not change the number of protons.', cat ? 'Protons are not lost when an atom ionizes.' : 'An octet does not set size; compare protons with electrons.', 'Same protons, but a different number of electrons, so the sizes differ.'], '6.E')],
+      solution: [vs, good] };
+  }
+  function pesPool(els){ return els.filter(function(e){ return e.pes && e.z >= 3; }); }
+  function pesIdProblem(r, ctx, els){
+    var Z = byZ(els), pool = pesPool(els).filter(function(e){ return e.z <= 30 || mainGroup(e); }), el = r.pick(pool);
+    var cands = [el.z - 1, el.z + 1, el.z + (el.p <= 3 ? 8 : 18), el.z - (el.p <= 3 ? 8 : 18), el.z + 2, el.z - 2]
+      .filter(function(z, i, a){ return Z[z] && Z[z].pes && z >= 1 && a.indexOf(z) === i; });
+    var opts = [el].concat(shuffle(r, cands).slice(0, 3).map(function(z){ return Z[z]; }));
+    var peaks = el.pes, idx = r.int(1, peaks.length - 1), pk = peaks[idx];
+    var subOpts = [pk[0]].concat(shuffle(r, peaks.filter(function(x){ return x[0] !== pk[0]; }).map(function(x){ return x[0]; })).slice(0, 3));
+    var total = electrons(el);
+    var steps = [
+      choiceStep(r, 'pick', 'Which element gives this spectrum?', opts.map(function(e){ return e.n + ' (' + e.s + ')'; }), opts.map(function(e, i){
+        return i === 0 ? 'Right: the peak heights add up to ' + total + ' electrons (' + peaks.map(function(x){ return x[2]; }).join(' + ') + '), so Z = ' + total + ', ' + confHtml(el.conf) + '.'
+          : 'Not this one: ' + e.s + ' has ' + e.z + ' electrons, but the peaks add up to ' + total + '.';
+      }), '5.D'),
+      choiceStep(r, 'sub', 'Which subshell gives the peak at ' + pk[1] + ' MJ/mol (height ' + pk[2] + ')?', subOpts, subOpts.map(function(s, i){
+        return i === 0 ? 'Right: reading from the left (highest binding energy) the peaks are ' + peaks.map(function(x){ return x[0]; }).join(', ') + '.' : 'Not this one: the ' + s + ' peak is at ' + peaks.filter(function(x){ return x[0] === s; })[0][1] + ' MJ/mol.';
+      }), '1.A')
+    ];
+    return { kind: 'trends', type: 'pes-id', ctx: ctx.id, topic: ctx.topic, el: el.z, answer: el.z, text: '<p>The photoelectron spectrum of a neutral gaseous atom is shown. Heights are proportional to the number of electrons.</p>', steps: steps,
+      solution: ['Total electrons = ' + peaks.map(function(x){ return x[2]; }).join(' + ') + ' = ' + total + ', so the element is ' + el.n + ', ' + confHtml(el.conf) + '.', 'Peaks from left to right: ' + peaks.map(function(x){ return x[0] + ' (' + x[1] + ' MJ/mol, ' + x[2] + ')'; }).join(', ') + '.'] };
+  }
+  function pesCmpProblem(r, ctx, els){
+    var pool = pesPool(els).filter(function(e){ return e.z < 36 && mainGroup(e) && e.g !== 18; }), Z = byZ(els), a = r.pick(pool), b = Z[a.z + 1];
+    var ab = r() < 0.5 ? [a, b] : [b, a];
+    var Q = 'Compare the 1s peaks of ' + ab[0].n + ' (' + ab[0].s + ') and ' + ab[1].n + ' (' + ab[1].s + '). Which atom’s 1s electrons have the higher binding energy?';
+    var good = 'The 1s electrons of both atoms are in the first shell with no electrons between them and the nucleus, so they are at about the same distance. ' + b.s + ' has one more proton (' + b.z + ' vs ' + a.z + '), so by Coulomb’s law it attracts them more strongly and its 1s peak is at a higher binding energy (' + b.pes[0][1] + ' vs ' + a.pes[0][1] + ' MJ/mol).';
+    var steps = [
+      choiceStep(r, 'pick', Q, [b.n + ' (' + b.s + ')', a.n + ' (' + a.s + ')'], ['Right: ' + b.s + ' 1s at ' + b.pes[0][1] + ' MJ/mol, ' + a.s + ' at ' + a.pes[0][1] + '.', 'Not this one: ' + a.s + ' 1s at ' + a.pes[0][1] + ' MJ/mol, ' + b.s + ' at ' + b.pes[0][1] + '.'], '5.D'),
+      choiceStep(r, 'why', 'Which explanation earns the point?', [good,
+        b.s + ' has one more electron, and the extra electron repels the 1s electrons, so they are harder to remove.',
+        b.s + ' has more shells than ' + a.s + ', so its 1s electrons are better shielded.',
+        b.s + '’s 1s peak is taller, so its 1s electrons are held more tightly.'], [
+        'Earns the point: same distance, more protons, both atoms named.',
+        'Repulsion from an added outer electron would make electrons easier to remove, not harder; the cause is the extra proton.',
+        'Neighbors in a period have the same shells, and nothing shields a 1s electron.',
+        'Height counts electrons (2 for every 1s peak); position shows the energy.'], '6.E')
+    ];
+    return { kind: 'trends', type: 'pes-cmp', ctx: ctx.id, topic: ctx.topic, pair: [ab[0].z, ab[1].z], answer: b.z, text: '<p>' + Q + '</p>', steps: steps, solution: [good] };
+  }
+  function generate(r, ctx, els, ions){
+    if(ctx.kind === 'ie-dip') return dipProblem(r, ctx, els);
+    if(ctx.kind === 'ion') return ionProblem(r, ctx, els, ions);
+    if(ctx.kind === 'pes-id') return pesIdProblem(r, ctx, els);
+    if(ctx.kind === 'pes-cmp') return pesCmpProblem(r, ctx, els);
+    return trendProblem(r, ctx, els);
+  }
+  M.trends = { PROP: PROP, parseConf: parseConf, confHtml: confHtml, electrons: electrons, outerShell: outerShell, coreCount: coreCount, valence: valence,
+    zeffRough: zeffRough, mainGroup: mainGroup, value: value, ruleSays: ruleSays, relation: relation, pull: pull, why: why,
+    pesSvg: pesSvg, shellSvg: shellSvg, pairPool: pairPool, DIPS: DIPS, generate: generate };
 })();
