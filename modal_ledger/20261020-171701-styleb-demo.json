@@ -4,10 +4,11 @@
  "started": 1792541821.713184,
  "reservation": {
   "usd": 0.8,
-  "status": "active",
+  "status": "closed",
   "month": "2026-10",
   "asked": 0.8,
-  "free_when_granted": 10.52
+  "free_when_granted": 10.52,
+  "closed": 1792542281.9966617
  },
  "spent_in_run": 0.72,
  "open": {},
@@ -61,5 +62,5 @@
    "note": "corrected: collected late from a chat; wall time is not GPU time"
   }
  ],
- "touched": 1792542278.55184
+ "touched": 1792542281.9966884
 }
