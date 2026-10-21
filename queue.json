@@ -257,7 +257,7 @@
     },
     {
       "id": "w1007-01-tourniquet",
-      "status": "scheduled",
+      "status": "posted",
       "added_on": "2026-10-06",
       "approved_on": "2026-10-06",
       "date": "2026-10-19",
@@ -287,7 +287,7 @@
       "badge": "STUDY TIP",
       "hook": "Take the test before you study.",
       "buffer": "6ac9c876b07d37ac975fc77a",
-      "youtube_id": null,
+      "youtube_id": "odEdKBmtYlc",
       "thumbnail_set": null,
       "yt_buffer": "6ac9c88fed92ed8fa5b99a49",
       "thumb_v2": true
