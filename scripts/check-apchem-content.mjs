@@ -500,6 +500,8 @@ if (isMain) {
     if (!['simulator', 'skill', 'drill'].includes(t.kind)) bad('kind must be simulator, skill or drill');
     if (!exists(join(DATA, 'tools', `${t.slug}.json`))) bad(`no content file chem/data/tools/${t.slug}.json`);
     if (!exists(join(ROOT, 'chem', 'assets', 'tools', `${t.slug}.js`))) bad(`no script chem/assets/tools/${t.slug}.js`);
+    // lessons: the topics whose lesson ends with "Tool: <name>" (build-apchem.mjs toolConnections).
+    for (const id of t.lessons || []) if (!map.topicById(id)) bad(`lessons: unknown topic "${id}"`);
   }
   // Tools: each content file against its validator (scripts/lib/apchem-tool-checks/<slug>.mjs).
   let toolFails = 0;

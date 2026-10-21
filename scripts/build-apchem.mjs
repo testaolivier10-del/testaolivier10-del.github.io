@@ -141,11 +141,20 @@ function build() {
      topics it builds on and the next one, from the map. They name other
      topics, so the list is navigation (chem-nav-ref), not teaching. */
   function connections(id, L) {
+    return [...baseConnections(id, L), ...toolConnections(id)];
+  }
+  function baseConnections(id, L) {
     if ((L.connections || []).length) return L.connections;
     const label = t => `${t.title}${t.ced ? ` (${t.ced})` : ''}`;
     const back = buildsOn(id).slice(-2).map(x => map.topicById(x)).map(t => ({ href: `../notes/${t.id}.html`, label: `Back: ${label(t)}` }));
     const nx = nextBuilt(id);
     return [...back, ...(nx ? [{ href: `../notes/${nx.id}.html`, label: `Next: ${label(nx)}` }] : [])];
+  }
+  /* A tool lists the lessons that link to it (pages.json tools[].lessons);
+     each such lesson ends its Connections with "Tool: <name>", as AP®
+     Biology's do, once the tool is live. */
+  function toolConnections(id) {
+    return (C.pages.tools || []).filter(t => (t.lessons || []).includes(id) && toolLive(t)).map(t => ({ href: `../tools/${t.slug}.html`, label: `Tool: ${t.name}${t.premium ? ' (Premium)' : ''}` }));
   }
   const STEP_FIRST_PAINT = `<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>`;
 

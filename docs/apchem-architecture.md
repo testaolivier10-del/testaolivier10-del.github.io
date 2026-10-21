@@ -189,7 +189,8 @@ point; a sample for every part; `stimulus` an object or a stimulus id from a que
 
 ### Pages, published, descriptions, tools
 
-- `pages.json`: `{ apps: [...], tools: [...] }`, as AP® Biology. Six tools (spec decision 15).
+- `pages.json`: `{ apps: [...], tools: [...] }`, as AP® Biology. Eight tools (spec decisions 16 and 24). A tool's
+  optional `lessons: [topic ids]` adds "Tool: <name>" to the end of each listed lesson's Connections.
 - `published.json`: `{ "chapters": [] }`.
 - `descriptions.json`: `{ lessons, notes, units }` meta-description overrides; never "AP".
 - A tool is one `pages.json` `tools[]` entry `{ slug, kind: simulator|skill|drill, name, title,

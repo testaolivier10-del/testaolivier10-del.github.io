@@ -17,7 +17,7 @@ words, from `docs/apchem-research/framework.md`); no CED text is reproduced. Ope
 | Pulled-forward short versions | 2 entries in `circularDependencies` |
 | Preview boxes | 0 |
 | Everyday words | 41 |
-| Planned tools | 14 trainers/drills, 26 FRQ themes, 31 stimulus themes, 12 comparison tables, 9 pathways |
+| Planned tools | 15 trainers/drills, 26 FRQ themes, 31 stimulus themes, 12 comparison tables, 9 pathways |
 
 Concepts per chapter: Unit 1 61, Unit 2 39, Unit 3 48, Unit 4 30, Unit 5 21, Unit 6 16, Unit 7 15,
 Unit 8 22, Unit 9 17, math 16. The later units carry fewer concepts because each concept there

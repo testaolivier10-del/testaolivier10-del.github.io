@@ -148,9 +148,9 @@
       "topic": "mass-spectra"
      },
      {
-      "id": "pes-reader",
-      "title": "PES reader: peaks to subshells and electron configurations",
-      "topic": "photoelectron-spectroscopy"
+      "id": "periodic-trends-pes",
+      "title": "Periodic trends and PES explorer: a trend-colored table, spectra by subshell, Coulomb's law reasoning",
+      "topic": "periodic-trends"
      }
     ],
     "frqThemes": [
@@ -578,6 +578,11 @@
       "id": "q-vs-k",
       "title": "Q vs K: disturb a system and justify the shift",
       "topic": "q-and-le-chatelier"
+     },
+     {
+      "id": "equilibrium-kinetics",
+      "title": "Equilibrium and kinetics simulator: moving particles, Q to K, collision energies and a catalyst",
+      "topic": "le-chatelier"
      }
     ],
     "frqThemes": [

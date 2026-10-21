@@ -1006,3 +1006,218 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
   .ls-root.ls-phone .ls-drill-stage .ic-live .ic-bars{flex:none;height:190px;}
   .ls-root.ls-phone .ls-drill-stage .ic-live .ic-beaker{flex:none;height:200px;}
 }
+
+/* ---- Periodic trends and photoelectron spectra (periodic-trends-pes.js) ----
+   The table is one SVG; a cell's fill mixes the course ink into the paper by
+   the trend value (--t, 0 to 1), so the heat map follows light and dark mode.
+   Subshell colors are the same in the spectrum and the shell picture, and
+   every peak and dot also carries its label, so color is never the only cue. */
+.ptx-card{display:grid;gap:12px;}
+.ptx-stage{display:grid;gap:10px;grid-template-columns:minmax(0,1fr);}
+.ptx-tablebox{display:grid;gap:8px;min-width:0;}
+/* The whole table: wider than a phone, so it pans sideways inside its box
+   (the page itself never scrolls sideways); on a desktop it takes most of
+   the stage. */
+.ptx-stage.is-full .ptx-table{overflow-x:auto;overscroll-behavior-x:contain;}
+.ptx-stage.is-full .ptx-svg{min-width:760px;}
+/* Desktop, whole table: the table across the stage (larger cells), the
+   spectrum and the shell picture side by side under it. */
+@media (min-width:1000px){
+  .ptx-stage.is-full{grid-template-columns:minmax(0,1fr) !important;}
+  .ptx-stage.is-full .ptx-tablebox,.ptx-stage.is-full .ptx-tabs,.ptx-stage.is-full .ptx-panel{grid-column:1 !important;grid-row:auto !important;}
+  .ptx-stage.is-full .ptx-tablebox{max-width:min(1000px, calc((100svh - 400px) * 1.62));width:100%;margin:0 auto;}
+  .ptx-stage.is-full .ptx-svg{min-width:0;}
+  .ptx-stage.is-full .ptx-view{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.45fr);gap:16px;align-items:center;max-width:1000px;margin:0 auto;width:100%;}
+  .ptx-stage.is-full .ptx-view > .ptx-bars2{grid-column:1 / -1;grid-template-columns:1fr 1fr;}
+  .ptx-stage.is-full .ptx-view > .ptx-cap,.ptx-stage.is-full .ptx-view > .ptx-nopes{grid-column:1 / -1;}
+  .ptx-stage.is-full .ptx-shellrow{grid-template-columns:140px minmax(0,1fr);}
+  .ptx-stage:not(.is-full) .ptx-pes .pes-svg{min-height:240px;}
+}
+/* Wide: the table on the left, the spectrum (or bars) on the right. */
+@media (min-width:1000px){.ptx-stage{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start;column-gap:22px;}
+  .ptx-stage .ptx-tablebox{grid-column:1;grid-row:1 / span 2;}.ptx-stage .ptx-tabs{grid-column:2;}.ptx-stage .ptx-panel{grid-column:2;}.ptx-tab-t{display:none;}
+  .ptx-panel .ptx-shellrow{grid-template-columns:150px minmax(0,1fr);}.ptx-panel .ptx-shellrow .sh-svg{max-width:150px;}}
+@media (max-width:999.98px){.ptx-stage[data-v="table"] .ptx-panel,.ptx-stage:not([data-v="table"]) .ptx-tablebox{display:none;}}
+.ptx-svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+.ptx-cell rect{fill:color-mix(in srgb, var(--cink) calc(var(--t, 0) * 82%), var(--paper));stroke:var(--line);stroke-width:1;transition:fill .25s;}
+.ptx-cell{cursor:pointer;outline:none;}
+.ptx-cell text{fill:var(--ink);font-family:var(--font-ui);pointer-events:none;}
+.ptx-cell.is-dark text{fill:#fff;}
+.ptx-cell.is-none rect{fill:var(--paper);stroke-dasharray:3 3;}
+.ptx-cell.is-gap rect{fill:none;stroke-dasharray:2 3;}
+.ptx-cell.is-gap{cursor:default;}
+.ptx-cell.is-quiet rect{fill:var(--paper);}
+.ptx-cell.is-quiet text{fill:var(--muted);}
+.ptx-cell.is-sel rect{stroke:var(--ink);stroke-width:3;}
+.ptx-cell.is-other rect{stroke:#D55E00;stroke-width:3;stroke-dasharray:5 3;}
+.ptx-mini .ptx-cell.is-sel rect{fill:var(--cink);}
+.ptx-mini .ptx-cell.is-sel text{fill:#fff;}
+.ptx-cell:focus-visible rect{stroke:var(--cink);stroke-width:4;}
+.ptx-z{font-size:8.5px;font-weight:700;opacity:.8;}
+.ptx-s{font-size:15px;font-weight:900;}
+.ptx-v{font-size:9.5px;font-weight:700;font-variant-numeric:tabular-nums;}
+.ptx-svg.is-full .ptx-s{font-size:13.5px;}
+.ptx-gn,.ptx-gl{fill:var(--muted);font:700 9px var(--font-ui);}
+.ptx-legend{padding-right:54px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:700 13px var(--font-ui);color:var(--muted);}
+.ptx-lg-k{color:var(--ink);font-weight:800;width:100%;}
+.ptx-lg-bar{flex:1 1 120px;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--paper),color-mix(in srgb, var(--cink) 82%, var(--paper)));border:1px solid var(--line);order:2;}
+.ptx-lg-n{order:1;font-variant-numeric:tabular-nums;}
+.ptx-lg-n.is-hi{order:3;}
+.ptx-lg-none{order:4;display:inline-flex;align-items:center;gap:5px;}
+.ptx-lg-none i{width:14px;height:12px;border:1px dashed var(--line);border-radius:3px;display:inline-block;}
+.ptx-panel{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.ptx-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.ptx-tab,.ptx-key{min-height:44px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.ptx-tab[aria-pressed="true"],.ptx-key[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ptx-keys{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ptx-ctl{display:grid;gap:10px;}
+.ptx-cmp[aria-pressed="true"]{border-color:#D55E00;}
+.ptx-pes{margin:0;}
+.ptx-shellrow{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;align-items:center;}
+.ptx-shellrow .sh-svg{max-width:120px;}
+.ptx-shellrow p{margin:0;}
+.ls-root .chem-ls-stage .ptx-view{flex:1;min-height:0;}
+.ls-root .chem-ls-stage .ptx-panel{min-height:0;}
+.ptx-pesh{font:600 14px var(--font-ui);margin:0 0 2px;}
+.ptx-pesh b{font-weight:900;}
+.ptx-nopes{font:600 14px/1.5 var(--font-ui);margin:8px 0;}
+.pes-svg{width:100%;height:auto;display:block;}
+.pes-bg{fill:var(--paper);}
+.pes-grid{stroke:var(--line);stroke-width:1;}
+.pes-axis{stroke:var(--ink);stroke-width:1.6;}
+.pes-tick{fill:var(--muted);font:700 11px var(--font-ui);}
+.pes-axl{fill:var(--ink);font:800 12px var(--font-ui);}
+.pes-pk path{stroke-width:1.4;stroke:var(--ink);fill-opacity:.9;cursor:pointer;}
+.pes-pk.is-mark path{stroke-width:3;}
+.pes-lead{stroke:var(--muted);stroke-width:1;}
+.pes-lab{fill:var(--ink);font:900 13px var(--font-ui);}
+.pes-lab.is-mark{fill:var(--cink);}
+.pes-val{fill:var(--muted);font:700 10.5px var(--font-ui);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--paper);stroke-width:3px;}
+/* Subshell colors (Okabe-Ito based, color-blind safe): s blue, p vermillion, d green. */
+.pes-s path,.sh-e.sh-s{fill:#56B4E9;}
+.pes-p path,.sh-e.sh-p{fill:#E69F00;}
+.pes-d path,.sh-e.sh-d{fill:#009E73;}
+.pes-q path{fill:var(--cink);fill-opacity:.75;}
+.sh-svg{width:100%;max-width:200px;height:auto;display:block;margin:0 auto;}
+.sh-nuc{fill:#D55E00;}
+.sh-z{fill:#fff;font:900 13px var(--font-ui);}
+.sh-ring{fill:none;stroke:var(--line);stroke-width:1.4;}
+.sh-ring.is-out{stroke:var(--cink);stroke-dasharray:4 3;}
+.sh-e{stroke:var(--ink);stroke-width:1;cursor:pointer;}
+.sh-e.is-mark{stroke-width:3;}
+.ptx-elrow{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start;}
+@media (min-width:520px){.ptx-elrow{grid-template-columns:180px minmax(0,1fr);}}
+.ptx-shell p{text-align:center;}
+.ptx-elh{margin:0;}
+.ptx-sym{font:800 15px var(--font-mono);color:var(--muted);}
+.ptx-conf{margin:2px 0 8px;font:700 15px/1.5 var(--font-ui);}
+.ptx-tbl{width:100%;}
+.ptx-tbl tr.hl th,.ptx-tbl tr.hl td{color:var(--cink);font-weight:900;}
+.ptx-bars2{display:grid;gap:6px;}
+.ptx-bars{width:100%;height:auto;display:block;}
+.ptx-bar rect{fill:color-mix(in srgb, var(--cink) 45%, var(--paper));}
+.ptx-bar.is-sel rect{fill:var(--cink);}
+.ptx-bar.is-other rect{fill:#D55E00;}
+.ptx-bv{fill:var(--ink);font:700 9.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ptx-bs{fill:var(--ink);font:800 11px var(--font-ui);}
+.ptx-bt{fill:var(--muted);font:800 11px var(--font-ui);}
+.ptx-ba{stroke:var(--ink);stroke-width:1.2;}
+.ptx-cap{margin:0;}
+.ptx-src{line-height:1.5;}
+.ptx-qfig{margin:0;}
+.ptx-two{display:grid;gap:4px;}
+.ptx-twoone .ptx-pesh{margin:0;font:600 13px var(--font-ui);}
+.ls-root .ls-drill-stage .ptx-qfig .pes-svg{max-height:100%;}
+.ptx-qfig .ptx-mini{max-width:300px;margin:0 auto;}
+/* Tool Studio arrangement */
+.ls-root .chem-ls-stage .ptx-stage{flex:1;min-height:0;align-content:start;overflow:auto;}
+.ls-root .chem-ls-dock .ptx-keys{gap:6px;}
+.ls-root .chem-ls-dock .ptx-key{font-size:13.5px;padding:6px 8px;}
+.ls-root .chem-ls-dock .ptx-cmp{width:100%;}
+.ls-root .chem-ls-stage .ptx-lg-k{display:none;}
+.ls-root .chem-ls-stage .ptx-legend{font-size:12px;gap:4px 8px;}
+.ls-root .chem-ls-stage .ptx-panel{gap:4px;}
+.ls-root .chem-ls-stage .ptx-tab{min-height:44px;padding:4px 10px;font-size:13px;}
+.ls-root.ls-phone .ptx-s{font-size:16px;}
+.ls-root.ls-phone .ptx-v{font-size:10.5px;}
+
+/* ---- Equilibrium and kinetics simulator (equilibrium-kinetics.js) ---- */
+.ek-card{display:grid;gap:12px;}
+.ek-eq{margin:0;text-align:center;}
+.ek-dh{font:700 13px var(--font-ui);color:var(--muted);white-space:nowrap;}
+.ek-stage{display:grid;gap:8px;grid-template-columns:minmax(0,1fr);}
+@media (min-width:1000px){.ek-stage{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-rows:auto auto 1fr;}.ek-stage .ek-vessel{grid-row:1 / span 3;}}
+.ek-vessel{position:relative;min-height:190px;aspect-ratio:3 / 2;border-radius:12px;overflow:hidden;}
+.ek-canvas{display:block;width:100%;height:100%;}
+.ek-gauge{display:grid;gap:2px;}
+.ek-gtrack{position:relative;height:30px;border-radius:15px;background:linear-gradient(90deg,color-mix(in srgb,#0072B2 22%,var(--paper)),var(--paper) 46%,var(--paper) 54%,color-mix(in srgb,#D55E00 22%,var(--paper)));border:1px solid var(--line);}
+.ek-gk,.ek-gq{position:absolute;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;font:900 14px var(--font-ui);transition:left .35s;}
+.ek-gk{background:var(--paper);border:2px dashed var(--ink);color:var(--ink);height:26px;width:26px;}
+.ek-gq{background:var(--cink);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);}
+.ek-gq.is-eq{background:var(--good,#2F9E5B);}
+.ek-gdir{margin:0;text-align:center;font:800 13px var(--font-ui);color:var(--ink);}
+.ek-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.ek-tab{min-height:44px;padding:4px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.ek-tab[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ek-plot{min-height:160px;}
+.ek-graph,.ek-mbsvg{width:100%;height:auto;display:block;}
+.ek-grid{stroke:var(--line);stroke-width:1;}
+.ek-axis{stroke:var(--ink);stroke-width:1.4;}
+.ek-tick{fill:var(--muted);font:700 10.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ek-axl{fill:var(--ink);font:800 11.5px var(--font-ui);}
+.ek-line{fill:none;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.ek-lab{font:900 11.5px var(--font-ui);paint-order:stroke;stroke:var(--white,#fff);stroke-width:3px;}
+.ek-mark{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;}
+.ek-markt{fill:var(--muted);font:700 10px var(--font-ui);}
+.ek-mb{fill:none;stroke:var(--cink);stroke-width:2.6;}
+.ek-mb0{stroke:var(--muted);stroke-dasharray:6 4;stroke-width:2;}
+.ek-mbx{stroke-width:1.6;stroke-dasharray:2 3;}
+.ek-tail{fill:#E69F00;fill-opacity:.55;}
+.ek-ea{stroke:#D55E00;stroke-width:2;}
+.ek-ea.is-cat{stroke:#009E73;stroke-dasharray:5 3;}
+.ek-eat{fill:#D55E00;font:900 11.5px var(--font-ui);}
+.ek-eat.is-cat{fill:#009E73;}
+.ek-magt,.ek-most{fill:var(--muted);font:700 10.5px var(--font-ui);}
+.ek-share{margin:0 0 2px;font:700 13px var(--font-ui);min-height:20px;}
+.ek-rates{display:grid;gap:8px;padding:6px 0;}
+.ek-rate{display:grid;grid-template-columns:70px minmax(0,1fr) 64px;align-items:center;gap:8px;font:800 13px var(--font-ui);}
+.ek-rate i{display:block;height:18px;border-radius:9px;background:#0072B2;transition:width .3s;}
+.ek-rate.is-r i{background:#D55E00;}
+.ek-rate b{text-align:right;font-variant-numeric:tabular-nums;}
+.ek-ctl{display:grid;gap:10px;}
+.ek-amts{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;}
+.ek-amt{display:grid;grid-template-columns:44px 44px;grid-template-areas:"n c" "m p";justify-content:center;align-items:center;gap:4px 6px;padding:6px 4px;border-radius:16px;background:var(--surface2,var(--paper));}
+.ek-amt .ek-n{grid-area:n;text-align:right;font:800 15px var(--font-ui);}
+.ek-amt .ek-c{grid-area:c;text-align:left;font:800 15px var(--font-ui);font-variant-numeric:tabular-nums;}
+.ek-amt [data-d="-3"]{grid-area:m;} .ek-amt [data-d="3"]{grid-area:p;}
+.ek-btns .bt-btn{flex:1 1 140px;}
+.ek-cat[aria-pressed="true"]{border-color:#009E73;}
+.ek-chal{width:100%;}
+.ek-chalbox{display:grid;gap:8px;padding:10px;border-radius:14px;background:var(--ctint);}
+.ek-chq{margin:0;font:700 14px/1.45 var(--font-ui);}
+.ek-chopts{display:grid;gap:6px;}
+.ek-cho.is-pick{border-color:var(--cink);}
+.ek-chfb{font:600 14px/1.5 var(--font-ui);}
+.ek-chfb .bt-btn{margin-top:6px;}
+.ek-qfig{margin:0;display:grid;gap:6px;}
+.ek-qfig .ek-vessel{aspect-ratio:2 / 1;min-height:150px;}
+/* Tool Studio arrangement */
+.ls-root .chem-ls-stage .ek-eq{flex:none;font:800 var(--ls-m)/1.3 var(--font-ui);background:none;padding:0;}
+.ls-root .chem-ls-stage .ek-stage{flex:1;min-height:0;overflow:auto;align-content:start;}
+.ls-root .chem-ls-dock .ek-amt .bt-step{background:var(--white);}
+.ls-root .chem-ls-dock .ek-vol{order:9;}
+/* Phones: vessel and gauge on top, one graph under them, nothing scrolls
+   inside the stage; the graph is short, and the tabs leave room for Enlarge. */
+@media (max-width:999.98px){
+  .ls-root .chem-ls-stage .ek-stage{overflow:visible;gap:6px;}
+  .ls-root .chem-ls-stage .ek-vessel{aspect-ratio:auto;height:19svh;min-height:125px;}
+  .ls-root .chem-ls-stage .ek-tab{min-height:44px;}
+  .ls-root .chem-ls-stage .ek-gauge{gap:0;}
+  .ls-root .chem-ls-stage .ek-eq{font-size:15px;}
+  .ls-root .chem-ls-stage .ek-tabs{padding-right:52px;flex-wrap:nowrap;overflow-x:auto;}
+  .ls-root .chem-ls-stage .ek-tab{flex:none;padding:4px 10px;font-size:13px;}
+  .ls-root .chem-ls-stage .ek-gtrack{height:26px;}
+  .ls-root .chem-ls-stage .ek-gdir{font-size:12.5px;}
+  .ls-root .chem-ls-stage .ek-plot{min-height:0;}
+  .ls-root .chem-ls-stage .ek-share{font-size:12px;}
+}

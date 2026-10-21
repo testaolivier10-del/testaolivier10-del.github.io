@@ -129,12 +129,29 @@
  ],
  "tools": [
   {
+   "slug": "periodic-trends-pes",
+   "kind": "simulator",
+   "name": "Periodic trends and PES",
+   "title": "Periodic trends and PES explorer",
+   "desc": "Color the periodic table by radius, ionization energy, electronegativity or electron affinity, and see each atom's photoelectron spectrum and configuration.",
+   "blurb": "Color the table by a trend, tap an atom for its spectrum, and explain every comparison with Coulomb's law.",
+   "lede": "Color the periodic table by a trend, then tap an element to see its photoelectron spectrum.",
+   "studio": true,
+   "lessons": [
+    "electron-configuration",
+    "photoelectron-spectroscopy",
+    "periodic-trends",
+    "ionic-compounds-valence"
+   ]
+  },
+  {
    "slug": "particle-diagrams",
    "kind": "simulator",
    "name": "Particle diagrams",
    "title": "Particle diagram trainer",
    "desc": "Choose the right particle picture: water around ions, limiting reactants, equilibrium counts, and strong against weak acids, with feedback on each wrong one.",
-   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle.", "lede": "Build and read particle pictures of reactions, one particle at a time.",
+   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle.",
+   "lede": "Build and read particle pictures of reactions, one particle at a time.",
    "studio": true
   },
   {
@@ -143,7 +160,8 @@
    "name": "ICE table drills",
    "title": "ICE table drills",
    "desc": "Unlimited ICE table problems: find K, find equilibrium amounts with small x and the 5% check, and perfect squares, checked row by row.",
-   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback.", "lede": "Set up and solve ICE tables, and watch Q close in on K.",
+   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback.",
+   "lede": "Set up and solve ICE tables, and watch Q close in on K.",
    "studio": true
   },
   {
@@ -153,8 +171,28 @@
    "name": "Q vs K",
    "title": "Q vs K trainer",
    "desc": "Calculate Q from concentrations, pressures or a particle picture, compare it with K, predict the shift and pick the justification that earns the point.",
-   "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point.", "lede": "Change a mixture and see which way it shifts to reach equilibrium.",
+   "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point.",
+   "lede": "Change a mixture and see which way it shifts to reach equilibrium.",
    "studio": true
+  },
+  {
+   "slug": "equilibrium-kinetics",
+   "kind": "simulator",
+   "premium": "tools",
+   "name": "Equilibrium and kinetics simulator",
+   "title": "Equilibrium and kinetics simulator",
+   "desc": "Molecules collide in a sealed vessel: change temperature, volume or amounts, add a catalyst, and watch Q return to K, with rates and collision energies.",
+   "blurb": "Heat, compress, add or remove molecules and add a catalyst; watch Q return to K and the collision energies change.",
+   "lede": "Change the vessel and watch the molecules shift until Q equals K again.",
+   "studio": true,
+   "lessons": [
+    "collision-model",
+    "catalysis",
+    "equilibrium-intro",
+    "reaction-direction",
+    "le-chatelier",
+    "q-and-le-chatelier"
+   ]
   },
   {
    "slug": "titration-curve-reader",
@@ -162,7 +200,8 @@
    "name": "Titration curve reader",
    "title": "Titration curve reader",
    "desc": "Read titration curves computed from the equilibrium math: equivalence and half-equivalence points, pKa, indicator choice and the species present.",
-   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point.", "lede": "Add titrant from the burette and watch the pH curve and the flask change.",
+   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point.",
+   "lede": "Add titrant from the burette and watch the pH curve and the flask change.",
    "studio": true
   },
   {
@@ -172,7 +211,8 @@
    "name": "Buffer and Henderson-Hasselbalch drills",
    "title": "Buffer and Henderson-Hasselbalch drills",
    "desc": "Unlimited buffer problems: Henderson-Hasselbalch pH, the ratio for a target pH, added strong acid or base, and capacity, with feedback on ln and log.",
-   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step.", "lede": "Add acid or base to a buffer and see why its pH barely moves.",
+   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step.",
+   "lede": "Add acid or base to a buffer and see why its pH barely moves.",
    "studio": true
   },
   {
@@ -181,7 +221,8 @@
    "name": "Units and significant figures",
    "title": "Units and significant figures checker",
    "desc": "Calculation habits graded on value, units and significant figures: J and kJ, Celsius and kelvin, the right R, and the rules for multiplying and adding.",
-   "blurb": "Value, unit and significant figures graded separately, with a note on every slip.", "lede": "Set up a calculation so the units cancel, then report the right significant figures.",
+   "blurb": "Value, unit and significant figures graded separately, with a note on every slip.",
+   "lede": "Set up a calculation so the units cancel, then report the right significant figures.",
    "studio": true
   }
  ]
