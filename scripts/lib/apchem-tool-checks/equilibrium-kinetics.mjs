@@ -60,6 +60,15 @@ export function check(data, map) {
       }
     }
     if (!(rx.catDrop > 0 && rx.catDrop < rx.Ea)) errs.push(`${w}: catalyst drop`);
+    // The reverse barrier (Ea − ΔH°) stays positive with the catalyst.
+    if (!(rx.Ea - rx.dH - rx.catDrop > 0)) errs.push(`${w}: the catalyst would make the reverse activation energy ${rx.Ea - rx.dH - rx.catDrop} kJ/mol`);
+    // Counting the drawn molecules at the starting temperature gives Q within 5% of K.
+    if (!Array.isArray(rx.counts) || rx.counts.length !== rx.species.length) errs.push(`${w}: counts`);
+    else {
+      const q = rx.species.reduce((x, s, i) => x * (rx.counts[i] * rx.per) ** s.nu, 1), K = E.Kc(rx, rx.T[2]);
+      if (Math.abs(q / K - 1) > 0.05) errs.push(`${w}: drawn counts give Q ${q.toFixed(3)}, K ${K.toFixed(3)} at ${rx.T[2]} K`);
+      if (rx.counts.some((n, i) => Math.abs(n * rx.per - rx.start[i]) > 1e-9)) errs.push(`${w}: start must equal counts × per`);
+    }
     // Maxwell-Boltzmann: normalized, and the tail matches the integral.
     const T = rx.T[2]; let area = 0, tail = 0; const de = 0.01;
     for (let e = de / 2; e < 400; e += de) { const f = E.mb(e, T); area += f * de; if (e >= rx.Ea) tail += f * de; }

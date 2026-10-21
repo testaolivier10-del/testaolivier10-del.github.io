@@ -52,7 +52,9 @@
        Q = K exactly at the start), k the extent drawn so far. */
     var B, X, k;
     function settle(){
-      B = E.equilibrium(rx, rx.start, s.T).map(function(c){ return Math.max(1, Math.round(c * s.V / per)); });
+      // Whole-molecule starting counts chosen so the counts on screen give
+      // Q within a few percent of K (students count particles to find Q).
+      B = (rx.counts || E.equilibrium(rx, rx.start, s.T).map(function(c){ return Math.max(1, Math.round(c * s.V / per)); })).slice();
       X = M.solveExtent(sp, B.map(function(b){ return b * per / s.V; }), E.Kc(rx, s.T)) * s.V / per; k = Math.round(X);
     }
     settle();
@@ -77,7 +79,13 @@
     function gauss(){ var u = 1 - rng(), v = rng(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
     function radius(i){ var t = TEMPL[sp[i].draw] || []; var rr = 0; t.forEach(function(a){ rr = Math.max(rr, Math.hypot(a.dx, a.dy) + (a.r || 9)); }); return rr; }
     function newP(i, x, y){ var sg = sigma(i); return { i: i, x: x, y: y, vx: gauss() * sg, vy: gauss() * sg, a: rng() * 6.28, w: (rng() - 0.5) * 2, r: radius(i) }; }
-    function boxW(){ return (s.V - 0) / rx.V[1]; }   // the vessel's share of the width (piston)
+    // The vessel's share of the width: the largest volume fills 96% of the
+    // picture, so the default 1.00 L of a 0.50-2.00 L range fills 48%... too
+    // little on a phone; the picture is cropped instead to 1.25 x the
+    // largest volume used so far (the piston and its rod stay visible).
+    function boxW(){ return 0.96 * s.V / rx.V[1] / crop(); }
+    var cropV = rx.V[2] * 1.3;
+    function crop(){ cropV = Math.max(cropV, Math.min(rx.V[1], s.V * 1.3)); return Math.min(1, cropV / rx.V[1]); }
     function seed(){
       P = [];
       drawn().forEach(function(c, i){ for(var j = 0; j < c; j++) P.push(newP(i, rng() * boxW(), rng())); });
@@ -99,10 +107,12 @@
       var used = [];
       if(from.length === 1){ var c = P.filter(function(p){ return p.i === from[0]; }); if(!c.length) return; used = [c[Math.floor(rng() * c.length)]]; }
       else { var pr = nearestPair(from[0], from[1]); if(!pr) return; used = pr; }
+      // The event is drawn at the nearer of the two (a schematic: the model
+      // decides how many react from the rate law, not from these flights).
       var cx = used.reduce(function(a, p){ return a + p.x; }, 0) / used.length, cy = used.reduce(function(a, p){ return a + p.y; }, 0) / used.length;
       P = P.filter(function(p){ return used.indexOf(p) < 0; });
       to.forEach(function(i, j){ var q = newP(i, cx + (j - (to.length - 1) / 2) * 0.03, cy); if(to.length > 1){ var d = j ? 1 : -1; q.vx = Math.abs(q.vx) * d + d * 0.04; } P.push(q); });
-      spark(cx, cy);
+      spark(cx, cy); s.events++;
     }
     function syncEvents(){
       var target = Math.round(X);
@@ -114,6 +124,32 @@
       while(k < target && guard++ < 40){ k++; event(1); }
       while(k > target && guard++ < 80){ k--; event(-1); }
     }
+    /* Dynamic equilibrium, drawn. Besides the NET change (syncEvents), both
+       directions keep happening: forward and reverse events are drawn at
+       rates in the true ratio f : r (so at Q = K they are equal), scaled to a
+       watchable total of about EVT per second that grows with the real total
+       rate (more when hotter or with a catalyst, capped). A forward event
+       followed later by a reverse one leaves the counts where the chemistry
+       says, because each drawn exchange is a pair: a forward event is owed a
+       reverse one and the other way round, settled as they come. */
+    var owe = 0, rateRef = null;
+    function exchange(dt){
+      var r = E.rates(rx, conc(), s.T, s.cat), tot = r.f + r.r;
+      if(!(tot > 0)) return;
+      if(rateRef == null) rateRef = tot;
+      var EVT = Math.max(0.6, Math.min(6, 1.6 * Math.pow(tot / rateRef, 0.35)));
+      var nF = EVT * dt * r.f / tot, nR = EVT * dt * r.r / tot;
+      if(rng() < nF && canGo(1)){ event(1); owe -= 1; }
+      if(rng() < nR && canGo(-1)){ event(-1); owe += 1; }
+      // Settle the pairs so the drawn counts stay on the exact amounts.
+      // Settle within about half a second, so a count you read is right.
+      if(owe > 0 && canGo(1) && rng() < dt * 2.5){ event(1); owe -= 1; }
+      else if(owe < 0 && canGo(-1) && rng() < dt * 2.5){ event(-1); owe += 1; }
+    }
+    function canGo(dir){ var d = P.reduce(function(m, p){ m[p.i] = (m[p.i] || 0) + 1; return m; }, {}); return sp.every(function(x, i){ return dir * x.nu >= 0 || (d[i] || 0) >= Math.abs(x.nu); }); }
+    s.resetRate = function(){ rateRef = null; };
+    s.picture = function(){ return sp.map(function(x, i){ return countOf(i); }); };
+    s.events = 0;
     /* Physics: free flight, elastic collisions (equal radii scaled to the
        picture, real masses), walls; a weak thermostat keeps the speed
        distribution at T after reactions add molecules. */
@@ -212,6 +248,7 @@
       }
       s.t += sim;
       syncEvents();
+      exchange(dt);
       if(!still) move(dt);
       if((refit += dt) > 1){ refit = 0; var s0 = scale; fitScale(); scale = s0 + (scale - s0) * 0.5; }
       acc += dt; if(acc > 0.1){ acc = 0; log(); listeners.forEach(function(f){ f(); }); }
@@ -306,15 +343,16 @@
     p.push('<clipPath id="ekclip"><rect x="' + X(Ea * 0.55) + '" y="' + Tp + '" width="' + (X(xmax) - X(Ea * 0.55)) + '" height="' + ph + '"/></clipPath>');
     if(Math.abs(Tn - T0) > 0.5) p.push('<polyline class="ek-mb ek-mb0" points="' + curve(T0, 1) + '"/>');
     p.push('<polyline class="ek-mb" points="' + curve(Tn, 1) + '"/>');
-    p.push('<line class="ek-ea" x1="' + X(Ea).toFixed(1) + '" x2="' + X(Ea).toFixed(1) + '" y1="' + Tp + '" y2="' + (Tp + ph) + '"/><text class="ek-eat" x="' + (X(Ea) - 4).toFixed(1) + '" y="' + (Tp + 10) + '" text-anchor="end">E<tspan baseline-shift="sub" font-size="75%">a</tspan> ' + Ea + '</text>');
-    if(s.cat) p.push('<line class="ek-ea is-cat" x1="' + X(Eac).toFixed(1) + '" x2="' + X(Eac).toFixed(1) + '" y1="' + Tp + '" y2="' + (Tp + ph) + '"/><text class="ek-eat is-cat" x="' + (X(Eac) - 4).toFixed(1) + '" y="' + (Tp + 24) + '" text-anchor="end">with catalyst ' + Eac + '</text>');
-    p.push('<text class="ek-magt" x="' + (X(xmax) - 2).toFixed(1) + '" y="' + (Tp + ph - 8) + '" text-anchor="end">shaded tail ×10' + M.sup(exp) + '</text>');
-    p.push('<text class="ek-most" x="' + (X(R2(Tn) * 0.5) + 10).toFixed(1) + '" y="' + (Tp + 12) + '">most molecules</text>');
+    p.push('<line class="ek-ea" x1="' + X(Ea).toFixed(1) + '" x2="' + X(Ea).toFixed(1) + '" y1="' + Tp + '" y2="' + (Tp + ph) + '"/><text class="ek-eat" x="' + X(Ea).toFixed(1) + '" y="' + (Tp - 6) + '" text-anchor="' + (s.cat ? 'start' : 'middle') + '">Ea ' + Ea + '</text>');
+    if(s.cat) p.push('<line class="ek-ea is-cat" x1="' + X(Eac).toFixed(1) + '" x2="' + X(Eac).toFixed(1) + '" y1="' + Tp + '" y2="' + (Tp + ph) + '"/><text class="ek-eat is-cat" x="' + (X(Eac) - 3).toFixed(1) + '" y="' + (Tp - 6) + '" text-anchor="end">catalyst ' + Eac + '</text>');
+    // The magnification note sits under the plot, left of the Ea line, where no curve runs.
+    p.push('<text class="ek-magt" x="' + (X(Ea * 0.62)).toFixed(1) + '" y="' + (Tp + ph * 0.42).toFixed(1) + '" text-anchor="middle">tail drawn ×10' + M.sup(exp) + ' →</text>');
+    p.push('<text class="ek-most" x="' + (X(R2(Tn) * 0.5) + 10).toFixed(1) + '" y="' + (Tp + 8) + '">most molecules</text>');
     p.push('<line class="ek-axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + (Tp + ph) + '" y2="' + (Tp + ph) + '"/>');
     var st = xmax > 120 ? 50 : 20;
     for(var e2 = 0; e2 <= xmax; e2 += st) p.push('<text class="ek-tick" x="' + X(e2).toFixed(1) + '" y="' + (Tp + ph + 14) + '" text-anchor="middle">' + e2 + '</text>');
-    p.push('<text class="ek-axl" x="' + (L + pw / 2) + '" y="' + (h - 4) + '" text-anchor="middle">Kinetic energy of a collision (kJ/mol)</text>');
-    return { svg: '<svg class="chem-svg ek-mbsvg" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + T.esc('Maxwell-Boltzmann distribution at ' + Math.round(Tn) + ' K. Share of molecules with at least the activation energy: ' + M.fmt(share, 2) + '.') + '">' + p.join('') + '</svg>', share: share, share0: share0 };
+    p.push('<text class="ek-axl" x="' + (L + pw / 2) + '" y="' + (h - 4) + '" text-anchor="middle">Kinetic energy of a molecule (kJ/mol)</text>');
+    return { svg: '<svg class="chem-svg ek-mbsvg" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + T.esc('Maxwell-Boltzmann distribution of molecular kinetic energy at ' + Math.round(Tn) + ' K. Share of molecules with at least the activation energy: ' + M.fmt(share, 2) + '.') + '">' + p.join('') + '</svg>', share: share, share0: share0 };
   }
   function gaugeHtml(s){
     var M = window.ApChemMath, q = s.Q(), K = s.K(), lq = isFinite(q) && q > 0 ? Math.log10(q) : null, lk = Math.log10(K);
@@ -357,6 +395,7 @@
       var cnv = document.createElement('canvas'); cnv.className = 'ek-canvas'; cnv.setAttribute('role', 'img');
       var vb = $('.ek-vessel'); vb.innerHTML = ''; vb.appendChild(cnv);
       sim = Sim(rx, {}); sim.speed = +spd.value();
+      host.__sim = sim;   // for the browser checks (events at equilibrium)
       sim.attach(cnv);
       // The tail magnification: the power of ten that makes the tail above
       // Ea at the starting temperature about a quarter of the peak height.
@@ -364,7 +403,7 @@
       mag = Math.pow(10, Math.round(Math.log10(0.25 * pk / tl)));
       $('.ek-temp').innerHTML = ''; $('.ek-vol').innerHTML = '';
       tS = T.slider({ label: 'Temperature', min: rx.T[0], max: rx.T[1], step: rx.Tstep, value: rx.T[2], unit: 'K', decimals: 0, onInput: function(v){ sim.setT(v); after('T'); } });
-      vS = T.slider({ label: 'Volume of the vessel', min: rx.V[0], max: rx.V[1], step: 0.25, value: rx.V[2], unit: 'L', decimals: 2, onInput: function(v){ sim.setV(v); after('V'); } });
+      vS = T.slider({ label: 'Volume of the vessel', min: rx.V[0], max: rx.V[1], step: 0.25, value: rx.V[2], unit: 'L', decimals: 2, onInput: function(v){ var dv = v < sim.V ? -1 : 1; sim.setV(v); after('V', dv); } });
       $('.ek-temp').appendChild(tS.el); $('.ek-vol').appendChild(vS.el);
       $('.ek-amts').innerHTML = rx.species.map(function(x, i){
         return '<div class="ek-amt"><span class="ek-n">' + x.html + '</span><button type="button" class="bt-step" data-i="' + i + '" data-d="-3" aria-label="Remove 3 ' + esc(x.html) + '">−</button><b class="ek-c" data-i="' + i + '"></b><button type="button" class="bt-step" data-i="' + i + '" data-d="3" aria-label="Add 3 ' + esc(x.html) + '">+</button></div>';
@@ -391,8 +430,16 @@
       var head = dir === 'eq' ? 'At equilibrium: Q = K.' : dir === 'f' ? 'Q < K: the mixture shifts forward.' : 'Q > K: the mixture shifts in reverse.';
       var body = '';
       if(what === 'T') body = 'Temperature changes K, not Q. The forward reaction is ' + (endo ? 'endothermic' : 'exothermic') + ' (ΔH° = ' + (rx.dH > 0 ? '+' : '−') + Math.abs(rx.dH) + ' kJ/mol), so K ' + (endo ? 'rises' : 'falls') + ' as the temperature rises: K = ' + f(K, 3) + ' at ' + Math.round(sim.T) + ' K. Both directions also run faster when it is hotter, because a larger share of collisions has at least E<sub>a</sub>.';
-      else if(what === 'V') body = 'Changing the volume changes every concentration by the same factor. ' + (g === 0 ? 'Both sides have the same number of gas molecules (Δn = 0), so Q does not change and there is no shift.' : 'Δn(gas) = ' + (g > 0 ? '+' : '') + g + ', so Q changes: a smaller volume pushes Q ' + (g > 0 ? 'up' : 'down') + ' and the mixture shifts toward the side with fewer gas molecules (' + (g > 0 ? 'reactants' : 'products') + '). K stays ' + f(K, 3) + '.');
-      else if(what === 'amt'){ var prod = rx.species[i].nu > 0; body = (d > 0 ? 'Adding ' : 'Removing ') + (prod ? 'a product' : 'a reactant') + ' changes Q, not K. ' + ((d > 0) === prod ? 'Q went up, so the mixture uses up products until Q falls back to K.' : 'Q went down, so the mixture makes products until Q rises back to K.') + ' Right after the change, ' + ((d > 0) === !prod ? 'the forward rate jumps (more reactant collisions).' : (d > 0) ? 'the reverse rate jumps (more product collisions).' : prod ? 'the reverse rate drops.' : 'the forward rate drops.'); }
+      else if(what === 'V'){
+        var smaller = i < 0;
+        body = 'Changing the volume changes every concentration by the same factor. ' + (g === 0 ? 'Both sides have the same number of gas molecules (Δn = 0), so Q does not change and there is no shift.'
+          : 'Δn(gas) = ' + (g > 0 ? '+' : '') + g + ', so Q changes: a ' + (smaller ? 'smaller' : 'larger') + ' volume pushes Q ' + ((g > 0) === smaller ? 'up' : 'down') + ' and the mixture shifts toward the side with ' + (smaller ? 'fewer' : 'more') + ' gas molecules (' + ((g > 0) === smaller ? 'reactants' : 'products') + '). K stays ' + f(K, 3) + '.');
+      }
+      else if(what === 'amt'){
+        var prod = rx.species[i].nu > 0, add = d > 0;
+        var rateNow = add && !prod ? 'the forward rate jumps (more reactant molecules to collide).' : add && prod ? 'the reverse rate jumps (more product molecules to collide).' : !add && prod ? 'the reverse rate drops (fewer product molecules).' : 'the forward rate drops (fewer reactant molecules).';
+        body = (add ? 'Adding ' : 'Removing ') + (prod ? 'a product' : 'a reactant') + ' changes Q, not K. ' + (add === prod ? 'Q went up, so the mixture uses up products until Q falls back to K.' : 'Q went down, so the mixture makes products until Q rises back to K.') + ' Right after the change, ' + rateNow;
+      }
       else if(what === 'cat') body = sim.cat ? 'The catalyst lowers E<sub>a</sub> by ' + rx.catDrop + ' kJ/mol for both directions, so both rates rise by the same factor (×' + f(Math.exp(rx.catDrop * 1000 / (8.314 * sim.T)), 2) + ' here). Equilibrium is reached sooner, but Q and K do not change, so the position does not shift.' : 'Without the catalyst both directions slow down by the same factor; the equilibrium position is the same.';
       else body = 'Every molecule you see is ' + f(rx.per, 2) + ' mol/L at 1.00 L. Molecules move faster when it is hotter (lighter ones fastest) and react only when a collision has at least E<sub>a</sub>. At equilibrium both reactions still run, at equal rates.';
       body += ' Q = ' + (isFinite(q) ? f(q, 3) : '∞') + ', K = ' + f(K, 3) + '.';
@@ -403,15 +450,19 @@
     var lastDir = '';
     function paint(){
       if(!sim) return;
-      var d = sim.drawn(), c = sim.conc(), q = sim.Q(), K = sim.K(), r = sim.rates();
+      var d = sim.picture(), c = sim.conc(), q = sim.Q(), K = sim.K(), r = sim.rates();
       $$('.ek-c').forEach(function(el){ el.textContent = d[+el.getAttribute('data-i')]; });
       $$('.ek-amt [data-d="-3"]').forEach(function(b){ b.disabled = d[+b.getAttribute('data-i')] < 3; });
       $$('.ek-amt [data-d="3"]').forEach(function(b){ b.disabled = d[+b.getAttribute('data-i')] > 60; });
       $('.ek-gaugebox').innerHTML = gaugeHtml(sim);
       $$('.ek-tab').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === tab)); });
-      var box = $('.ek-plot'), bb = box.getBoundingClientRect(), w = Math.max(280, Math.round(bb.width || 520)), h = Math.max(150, Math.min(260, Math.round(bb.height || 200)));
+      var box = $('.ek-plot'), bb = box.getBoundingClientRect(), narrow = (window.innerWidth || 1000) < 1000;
+      // On a phone the graph takes what is left of the stage, so nothing in
+      // the stage scrolls; on a desktop it keeps a 2:1 shape.
+      var stg = LS && narrow ? LS.root.querySelector('.ls-stage') : null, room = stg ? stg.getBoundingClientRect().bottom - bb.top - 26 : 0;
+      var w = Math.max(280, Math.round(bb.width || 520)), h = narrow ? Math.max(150, Math.min(240, Math.round(room || 170))) : Math.max(170, Math.min(280, Math.round(w * 0.5)));
       if(tab === 'graph') box.innerHTML = graphSvg(sim, w, h);
-      else if(tab === 'mb'){ var m = mbSvg(sim, w, h, mag); box.innerHTML = m.svg + '<p class="ek-share">With at least E<sub>a</sub>: <b>' + M.fmt(m.share, 2) + '</b> of collisions' + (Math.abs(m.share / m.share0 - 1) > 0.02 ? ' (×' + M.fmt(m.share / m.share0, 2) + ' vs ' + rx.T[2] + ' K' + (sim.cat ? ', no catalyst' : '') + ')' : '') + '.</p>'; }
+      else if(tab === 'mb'){ var m = mbSvg(sim, w, h - 22, mag); box.innerHTML = '<p class="ek-share">At least E<sub>a</sub>: <b>' + M.fmt(m.share, 2) + '</b> of molecules' + (Math.abs(m.share / m.share0 - 1) > 0.02 ? ' (×' + M.fmt(m.share / m.share0, 2) + ' vs ' + rx.T[2] + ' K' + (sim.cat ? ' without catalyst' : '') + ')' : '') + '</p>' + m.svg; }
       else box.innerHTML = ratesHtml(r);
       $('.ek-nums').innerHTML = '<h3 class="ls-title-l">The numbers</h3><table class="ls-tbl"><caption class="sr-only">The vessel in numbers</caption><tbody>' +
         rx.species.map(function(x, i){ return '<tr><th scope="row">[' + x.html + ']</th><td class="r">' + M.fmt(c[i], 3) + ' M (' + d[i] + ' drawn)</td></tr>'; }).join('') +
@@ -419,7 +470,7 @@
         '<tr><th scope="row">K<sub>p</sub> at ' + Math.round(sim.T) + ' K</th><td class="r">' + M.fmt(E.Kp(rx, sim.T), 3) + '</td></tr>' +
         '<tr><th scope="row">E<sub>a</sub> forward</th><td class="r">' + E.Ea(rx, sim.cat) + ' kJ/mol' + (sim.cat ? ' (catalyst)' : '') + '</td></tr>' +
         '<tr><th scope="row">Time</th><td class="r">' + M.fmt(sim.t, 3) + ' s (scaled)</td></tr></tbody></table>' +
-        '<p class="bt-small">Each molecule drawn = ' + M.fmt(rx.per, 2) + ' mol, so concentration = count × ' + M.fmt(rx.per, 2) + ' mol ÷ volume. ' + (rx.tint ? esc(rx.tint.what) + ', so the gas color follows that concentration.' : '') + '</p>';
+        '<p class="bt-small">Each molecule drawn = ' + M.fmt(rx.per, 2) + ' mol, so concentration = count × ' + M.fmt(rx.per, 2) + ' mol ÷ volume. The picture rounds to whole molecules; Q, K and the graph use the exact amounts, so counting can differ from them by a few percent. The flights and bounces are real physics, but which molecules react is drawn by the model (from the rate laws), not from these exact collisions. ' + (rx.tint ? esc(rx.tint.what) + ', so the gas color follows that concentration.' : '') + '</p>';
       $('.ek-canvas').setAttribute('aria-label', sim.describe());
       var lq = isFinite(q) ? Math.log(q / K) : 9, dir = Math.abs(lq) < 0.005 ? 'eq' : lq < 0 ? 'f' : 'r';
       if(dir !== lastDir && lastDir){ if(dir === 'eq') explainNow('reached'); }
@@ -452,7 +503,7 @@
         if(p.stress === 'compress' || p.stress === 'expand') vS.set(sim.V);
         if(p.stress === 'catalyst'){ $('.ek-cat').setAttribute('aria-pressed', 'true'); $('.ek-cat').textContent = 'Remove the catalyst'; }
         box.querySelector('.ek-chfb').innerHTML = '<span class="chem-mark ' + (ok ? 'ok">You predicted it' : 'no">Watch what happens') + '</span> Running…';
-        explainNow({ heat: 'T', cool: 'T', compress: 'V', expand: 'V', catalyst: 'cat' }[p.stress] || 'amt', /R$/.test(p.stress) ? rx.species.findIndex(function(x){ return x.nu < 0; }) : rx.species.findIndex(function(x){ return x.nu > 0; }), /^add/.test(p.stress) ? 1 : -1);
+        explainNow({ heat: 'T', cool: 'T', compress: 'V', expand: 'V', catalyst: 'cat' }[p.stress] || 'amt', p.stress === 'compress' ? -1 : p.stress === 'expand' ? 1 : /R$/.test(p.stress) ? rx.species.findIndex(function(x){ return x.nu < 0; }) : rx.species.findIndex(function(x){ return x.nu > 0; }), /^add/.test(p.stress) ? 1 : -1);
         tab = 'graph'; paint();
         if(p.dir === 'none') setTimeout(finishChallenge, 1500);
         T.event('apchem-tool-challenge', { tool: 'equilibrium-kinetics', correct: ok });
@@ -467,8 +518,9 @@
       box.querySelector('.ek-again').addEventListener('click', challenge);
     }
     function studioDraw(q, K, dir){
-      LS.pills([{ k: 'Q', html: isFinite(q) ? M.fmt(q, 3) : '∞', tone: 'readout' }, { k: 'K', html: M.fmt(K, 3), tone: 'ghost' }, { k: 'T', html: Math.round(sim.T) + ' K', tone: 'ghost' }], 'left', 'explore');
-      LS.pills([dir === 'eq' ? { html: 'At equilibrium', tone: 'good' } : dir === 'f' ? { html: 'Shifting forward →', tone: 'accent' } : { html: '← Shifting in reverse', tone: 'warn' }], 'right', 'explore');
+      var wide = (window.innerWidth || 1000) >= 1000;
+      LS.pills([{ k: 'Q', html: isFinite(q) ? M.fmt(q, 3) : '∞', tone: 'readout' }, { k: 'K', html: M.fmt(K, 3), tone: 'ghost' }].concat(wide ? [{ k: 'T', html: Math.round(sim.T) + ' K', tone: 'ghost' }] : []), 'left', 'explore');
+      LS.pills([dir === 'eq' ? { html: 'Q = K', tone: 'good' } : dir === 'f' ? { html: 'Forward →', tone: 'accent' } : { html: '← Reverse', tone: 'warn' }], 'right', 'explore');
       SP.setup(rx.id === 'n2o4' ? 'N₂O₄ ⇌ 2 NO₂' : 'H₂ + I₂ ⇌ 2 HI');
     }
     function studio(pane, s){

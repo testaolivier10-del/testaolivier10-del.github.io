@@ -1347,9 +1347,10 @@
   }
   function pesPool(els){ return els.filter(function(e){ return e.pes && e.z >= 3; }); }
   function pesIdProblem(r, ctx, els){
-    var Z = byZ(els), pool = pesPool(els).filter(function(e){ return e.z <= 30 || mainGroup(e); }), el = r.pick(pool);
+    // Cr and Cu are Aufbau exceptions, which the CED excludes from testing.
+    var Z = byZ(els), pool = pesPool(els).filter(function(e){ return (e.z <= 30 || mainGroup(e)) && e.z !== 24 && e.z !== 29; }), el = r.pick(pool);
     var cands = [el.z - 1, el.z + 1, el.z + (el.p <= 3 ? 8 : 18), el.z - (el.p <= 3 ? 8 : 18), el.z + 2, el.z - 2]
-      .filter(function(z, i, a){ return Z[z] && Z[z].pes && z >= 1 && a.indexOf(z) === i; });
+      .filter(function(z, i, a){ return Z[z] && Z[z].pes && z >= 1 && z !== 24 && z !== 29 && a.indexOf(z) === i; });
     var opts = [el].concat(shuffle(r, cands).slice(0, 3).map(function(z){ return Z[z]; }));
     var peaks = el.pes, idx = r.int(1, peaks.length - 1), pk = peaks[idx];
     var subOpts = [pk[0]].concat(shuffle(r, peaks.filter(function(x){ return x[0] !== pk[0]; }).map(function(x){ return x[0]; })).slice(0, 3));
@@ -1515,7 +1516,7 @@
     var steps = [s1, s2, s3];
     steps.forEach(function(s){ s.options = s.options.slice(); });
     return { kind: 'eqk', ctx: ctx.id, topic: ctx.topic, reaction: rx.id, stress: stress, T: T, c0: c0, after: a, dir: a.dir,
-      text: '<p class="bt-eq">' + M.eqHtml(sp.map(function(s){ return { html: s.html, nu: s.nu, phase: 'g' }; })) + ' &nbsp; ΔH° = ' + (rx.dH > 0 ? '+' : '−') + Math.abs(rx.dH) + ' kJ/mol</p><p>At equilibrium at ' + T + ' K: ' + text.charAt(0).toLowerCase() + text.slice(1) + '</p>',
+      text: '<p class="bt-eq">' + M.eqHtml(sp.map(function(s){ return { html: s.html, nu: s.nu, phase: 'g' }; })) + ' &nbsp; ΔH° = ' + (rx.dH > 0 ? '+' : '−') + Math.abs(rx.dH) + ' kJ/mol.</p><p>At equilibrium at ' + T + ' K: ' + text.charAt(0).toLowerCase() + text.slice(1) + '</p>',
       steps: steps,
       solution: ['Before: Q = K = ' + M.fmt(K0, 3) + '.', 'After: ' + (what === 0 ? 'K = ' + M.fmt(a.K, 3) + ', Q still ' + M.fmt(q0, 3) : what === 1 ? 'Q = ' + M.fmt(a.Q, 3) + ', K still ' + M.fmt(K0, 3) : 'Q = K = ' + M.fmt(K0, 3)) + '. ' + reason, rateWhy] };
   }

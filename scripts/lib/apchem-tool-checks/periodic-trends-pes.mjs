@@ -65,7 +65,11 @@ export function check(data, map) {
     // or two (O 63, F 64 pm; Pyykko 2009): a bonded radius depends on the
     // bond. The page says so (explore, "Compare"); quiz pairs need a 3% gap.
     const slack = a.rk === 'c' && b.rk === 'c' ? 2 : 0;
-    if (a.r != null && b.r != null && !(b.r < a.r + slack)) errs.push(`${a.s} → ${b.s}: radius must fall across the period (${a.r}, ${b.r})`);
+    // Metallic radii of the heavy p-block metals depend on their unusual
+    // crystal packings: In → Sn and Tl → Pb rise. Real, and explained on the
+    // page (periodic-trends-pes.js exception()); never in a quiz pair.
+    const IRREG = new Set(['49-50', '81-82']);
+    if (a.r != null && b.r != null && !IRREG.has(`${a.z}-${b.z}`) && !(b.r < a.r + slack)) errs.push(`${a.s} → ${b.s}: radius must fall across the period (${a.r}, ${b.r})`);
     if (a.en != null && b.en != null && !(b.en > a.en)) errs.push(`${a.s} → ${b.s}: electronegativity must rise across the period`);
     if (!DIP.has(`${a.z}-${b.z}`) && a.ie != null && b.ie != null && !(b.ie > a.ie)) errs.push(`${a.s} → ${b.s}: ionization energy must rise (not a known dip)`);
   }

@@ -90,7 +90,7 @@
     function tableSvg(){
       // Main groups: cells a little wider than tall, so six periods, the
       // legend and the spectrum fit one phone stage.
-      var c = cols(), p = periods(), cw = full ? 40 : 46, ch = full ? 46 : 40, gap = 3, W = c.length * (cw + gap) + 4, H = p.length * (ch + gap) + 18, sc = scale();
+      var c = cols(), p = periods(), cw = full ? 40 : 46, ch = full ? 46 : 48, gap = 3, W = c.length * (cw + gap) + 4, H = p.length * (ch + gap) + 18, sc = scale();
       var g = [];
       c.forEach(function(gr, i){ g.push('<text class="ptx-gn" x="' + (2 + i * (cw + gap) + cw / 2) + '" y="11" text-anchor="middle">' + gr + '</text>'); });
       shown().forEach(function(e){
@@ -100,7 +100,7 @@
         g.push('<g class="' + cls + '" data-z="' + e.z + '" role="button" tabindex="' + (e === sel ? 0 : -1) + '" aria-pressed="' + (e === sel || e === other) + '" aria-label="' + esc(e.n + ', ' + LABEL[key].toLowerCase() + ' ' + valText(e, key)) + '">' +
           '<rect x="' + x + '" y="' + y + '" width="' + cw + '" height="' + ch + '" rx="7"' + (t == null ? '' : ' style="--t:' + t.toFixed(3) + '"') + '/>' +
           (full ? '<text class="ptx-z" x="' + (x + 4) + '" y="' + (y + 10) + '">' + e.z + '</text>' : '') +
-          '<text class="ptx-s" x="' + (x + cw / 2) + '" y="' + (y + (showVals ? ch * (full ? 0.56 : 0.5) : ch * 0.64)) + '" text-anchor="middle">' + e.s + '</text>' +
+          '<text class="ptx-s" x="' + (x + cw / 2) + '" y="' + (y + (showVals ? ch * (full ? 0.56 : 0.52) : ch * 0.64)) + '" text-anchor="middle">' + e.s + '</text>' +
           (showVals ? '<text class="ptx-v" x="' + (x + cw / 2) + '" y="' + (y + ch - (full ? 6 : 5)) + '" text-anchor="middle">' + vt + '</text>' : '') + '</g>');
       });
       if(full){ var x6 = 2 + 2 * (cw + gap); [[6, '57–71'], [7, '89–103']].forEach(function(r){ var y6 = 16 + p.indexOf(r[0]) * (ch + gap); g.push('<g class="ptx-cell is-gap" aria-hidden="true"><rect x="' + x6 + '" y="' + y6 + '" width="' + cw + '" height="' + ch + '" rx="7"/><text class="ptx-v" x="' + (x6 + cw / 2) + '" y="' + (y6 + ch / 2 + 4) + '" text-anchor="middle">' + r[1] + '</text></g>'); }); }
@@ -113,11 +113,11 @@
     }
     /* Across and down: the selected element's period and group as bars. */
     function barsSvg(){
-      var key2 = key, row = els.filter(function(e){ return e.p === sel.p && e.g != null && (full || TR.mainGroup(e)); }).sort(function(a, b){ return a.g - b.g; });
+      var narrowB = narrow(), key2 = key, row = els.filter(function(e){ return e.p === sel.p && e.g != null && (full || TR.mainGroup(e)); }).sort(function(a, b){ return a.g - b.g; });
       var col = sel.g == null ? [] : els.filter(function(e){ return e.g === sel.g && e.p <= 6; }).sort(function(a, b){ return a.p - b.p; });
       function chart(list, title, w){
         var vals = list.map(function(e){ return e[key2]; }).filter(function(v){ return v != null; }), mx = Math.max.apply(null, vals.concat([1]));
-        var H = 170, B = 30, T0 = 22, bw = Math.min(30, (w - 10) / Math.max(1, list.length) - 4), p = ['<text class="ptx-bt" x="4" y="14">' + title + '</text>'];
+        var H = narrowB ? 128 : 170, B = 30, T0 = 34, bw = Math.min(30, (w - 10) / Math.max(1, list.length) - 4), p = ['<text class="ptx-bt" x="4" y="14">' + title + '</text>'];
         list.forEach(function(e, i){
           var v = e[key2], x = 6 + i * ((w - 10) / list.length) + ((w - 10) / list.length - bw) / 2, h = v == null ? 0 : (H - B - T0) * v / mx, y = H - B - h;
           p.push('<g class="ptx-bar' + (e === sel ? ' is-sel' : '') + (e === other ? ' is-other' : '') + '"><rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(0, h).toFixed(1) + '" rx="3"/>' +
@@ -141,8 +141,9 @@
         '<tr><th scope="row">Protons</th><td class="r">' + e.z + '</td></tr>' +
         '<tr><th scope="row">Core electrons</th><td class="r">' + core + '</td></tr>' +
         '<tr><th scope="row">Outer shell</th><td class="r">n = ' + n + '</td></tr>' +
-        '<tr><th scope="row">Effective nuclear charge, rough</th><td class="r">+' + TR.zeffRough(e) + '</td></tr>' + rows + '</tbody></table></div>' +
-        '<p class="bt-small">Rough effective nuclear charge = protons − core electrons, the estimate the exam uses. Real values are lower: outer electrons also shield each other a little.</p>';
+        (TR.mainGroup(e) ? '<tr><th scope="row">Effective nuclear charge, rough</th><td class="r">+' + TR.zeffRough(e) + '</td></tr>' : '') + rows + '</tbody></table></div>' +
+        (TR.mainGroup(e) ? '<p class="bt-small">Rough effective nuclear charge = protons − core electrons, the estimate the exam uses. Real values are lower: outer electrons also shield each other a little.</p>'
+          : '<p class="bt-small">The rough effective nuclear charge (protons − core electrons) is used for main-group atoms only: in a transition metal the d electrons are partly inner and partly outer, so the simple count does not work.</p>');
     }
     /* What the picture says, in words: the trend for one element, or the
        comparison of two (the reasoning that earns the point, or why the data
@@ -151,9 +152,12 @@
       var z = [a.z, b.z].sort(function(x, y){ return x - y; }).join('-'), K = key;
       if(K === 'ie' && /^(4-5|12-13|30-31|20-31|38-49|48-49)$/.test(z)) return 'The higher-Z atom loses its electron from a p subshell, which is higher in energy than the filled s subshell and partly shielded by it, so it is easier to remove.';
       if(K === 'ie' && /^(7-8|15-16|33-34|51-52)$/.test(z)) return 'The higher-Z atom has a p⁴ subshell: two of its p electrons share one orbital, and their repulsion makes one of them easier to remove.';
+      var lo2 = a.p === 2 ? a : b.p === 2 ? b : null, hi3 = lo2 === a ? b : a;
+      if(K === 'ea' && lo2 && hi3.p === 3 && a.g === b.g && lo2.ea != null && hi3.ea != null && lo2.ea < hi3.ea) return lo2.n + ' is a small atom: an added electron goes into shell 2, crowded close to the electrons already there. That electron-electron repulsion cancels part of the attraction to the nucleus, so less energy is released than for ' + hi3.n.toLowerCase() + ', whose added electron goes into the larger shell 3. The same happens for every period 2 element against the one below it (B and Al, C and Si, O and S, F and Cl).';
       if(K === 'ea' && /^(9-17)$/.test(z)) return 'Fluorine is so small that an added electron is crowded in with the other seven in shell 2; the electron-electron repulsion makes less energy released than for chlorine.';
       if(K === 'ea' && (a.ea == null || b.ea == null)) return (a.ea == null ? a : b).n + ' does not form a stable anion: an added electron would have to go into a new, higher-energy subshell' + ((a.ea == null ? a : b).g === 15 ? ' or pair up in a half-filled p subshell' : '') + '.';
       if(K === 'ea' && (a.g === 15 || b.g === 15)) return 'Nitrogen-group atoms have half-filled p subshells; an added electron must pair up, and the repulsion lowers the energy released.';
+      if(K === 'r' && /^(49-50|81-82|50-51|82-83|81-83|49-51)$/.test(z)) return 'These heavy p-block elements pack in unusual ways in the solid (and Sb, Te are measured as covalent radii, not metallic), so their measured radii do not fall smoothly across the period. The Coulomb\'s law trend is still there in their ionization energies and electronegativities.';
       if(K === 'r' && /^(13-31)$/.test(z)) return 'Gallium comes after the ten 3d electrons. d electrons shield poorly, so gallium\'s outer electrons feel a larger effective nuclear charge than the simple group trend expects, and gallium ends up slightly smaller than aluminum.';
       if(K === 'ie' && /^(13-31|31-49)$/.test(z)) return 'The poorly shielding d electrons before gallium (and indium) raise the effective nuclear charge, so the simple down-a-group drop does not hold here.';
       return 'The simple rule is a guide; here other effects (subshells, paired electrons, poorly shielding d electrons) are larger than the trend.';
@@ -163,6 +167,7 @@
       if(comparing && other){
         var a = sel, b = other, va = a[key], vb = b[key];
         if(va == null || vb == null) return { head: '<b>' + a.s + ' ' + valText(a, key) + ', ' + b.s + ' ' + valText(b, key) + '.</b>', body: '<p>' + exception(a, b) + '</p>' };
+        if(va === vb) return { head: '<b>Same value:</b> ' + a.s + ' and ' + b.s + ' are both ' + valText(a, key) + '.', body: '<p>The measured values are equal to the precision given' + (key === 'en' ? ' (Pauling electronegativities are rounded to two decimal places)' : '') + '. When two values tie, explain the comparison with Coulomb\'s law anyway: outer shell n = ' + TR.outerShell(a) + ' vs ' + TR.outerShell(b) + ', rough effective nuclear charge +' + TR.zeffRough(a) + ' vs +' + TR.zeffRough(b) + '; here the effects cancel.</p>' };
         var big = va > vb ? a : b, small = big === a ? b : a, rule = TR.ruleSays(a, b, key), sameCore = TR.coreCount(a) === TR.coreCount(b);
         if(key === 'r' && a.rk === 'c' && b.rk === 'c' && Math.abs(va - vb) <= 2) return { head: '<b>About the same:</b> ' + a.s + ' ' + valText(a, key) + ', ' + b.s + ' ' + valText(b, key) + '.', body: '<p>These are covalent radii: half the length of a single bond between two of the atoms. A bond\'s length also depends on what else the atoms are doing, so neighbors can come out within a picometer or two of each other, or even slightly reversed. ' + (rule ? 'The trend across the period still holds over several elements: ' + TR.why(a, b, key) : '') + '</p>' };
         var head = '<b>' + big.s + ' ' + (key === 'r' ? 'is larger' : 'is higher') + ':</b> ' + big.s + ' ' + valText(big, key) + ', ' + small.s + ' ' + valText(small, key) + '.';
@@ -186,6 +191,7 @@
       $$('.ptx-key').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === key)); });
       var cmp = $('.ptx-cmp'); cmp.setAttribute('aria-pressed', String(comparing)); cmp.textContent = comparing ? (other ? 'Done comparing' : 'Cancel compare') : 'Compare two elements';
       $('.ptx-table').innerHTML = tableSvg();
+      $('.ptx-stage').classList.toggle('is-full', full);
       $('.ptx-legend').innerHTML = legend();
       var pv = $('.ptx-view');
       var cur = narrow() ? narrowView : view;
@@ -194,7 +200,7 @@
       // The spectrum fills its box on a phone (T.fitBox), so its labels keep
       // their size; the shell picture sits beside or under it.
       var head = '<figcaption class="ptx-pesh"><b>' + esc(sel.n) + '</b> ' + TR.confHtml(sel.conf) + '</figcaption>';
-      var fb = T.fitBox(pv, 560, 236, { w: 300, h: 200 }), ph = fb.fit ? Math.max(200, Math.min(fb.h * 0.62, 340)) : 236;
+      var fb = T.fitBox(pv, 560, 236, { w: 300, h: 200 }), ph = fb.fit ? Math.max(200, Math.min(fb.h * 0.62, 340)) : full ? 200 : 300;
       pv.innerHTML = view === 'bars' ? barsSvg() : sel.pes ? '<figure class="ptx-pes">' + head + TR.pesSvg(sel, { w: fb.fit ? fb.w : 560, h: ph }) + '</figure>' +
           '<div class="ptx-shellrow">' + TR.shellSvg(sel, { size: 180 }) + '<p class="bt-small">Tap a peak or an electron to match a subshell in both pictures. Shell picture: schematic, not to scale. ' + (sel.pes.length > 1 ? 'Each peak is one subshell; its height is the number of electrons in it.' : '') + '</p></div>'
         : '<p class="ptx-nopes"><b>' + esc(sel.n) + '</b> ' + TR.confHtml(sel.conf) + '<br>Spectra are drawn for hydrogen to krypton, the atoms the exam uses. Pick one of those to see its peaks.</p>';
@@ -272,7 +278,15 @@
       extra: function(host, p){
         if(p.type === 'pes-id'){
           // No subshell labels: naming the peaks is the second step.
-          host.innerHTML = '<figure class="cd-fig ptx-qfig">' + TR.pesSvg(byZ[p.el], { w: 560, h: 240, labels: false, noSub: true, label: 'Photoelectron spectrum of an unknown atom: ' + byZ[p.el].pes.map(function(k){ return 'a peak at ' + k[1] + ' MJ/mol with relative height ' + k[2]; }).join('; ') + '.' }) + '<figcaption class="bt-small">Binding energy on a log scale, decreasing to the right. Peak heights are relative numbers of electrons.</figcaption></figure>';
+          host.innerHTML = '<figure class="cd-fig ptx-qfig">' + TR.pesSvg(byZ[p.el], { w: phoneW() ? 380 : 560, h: phoneW() ? 380 : 240, labels: false, noSub: true, label: 'Photoelectron spectrum of an unknown atom: ' + byZ[p.el].pes.map(function(k){ return 'a peak at ' + k[1] + ' MJ/mol with relative height ' + k[2]; }).join('; ') + '.' }) + '<figcaption class="bt-small">Binding energy on a log scale, decreasing to the right. Peak heights are relative numbers of electrons.</figcaption></figure>';
+          return;
+        }
+        if(p.type === 'pes-cmp'){
+          // Both spectra on one shared axis, so the 1s peaks line up.
+          var A = byZ[p.pair[0]], Bq = byZ[p.pair[1]], hiE = Math.max(A.pes[0][1], Bq.pes[0][1]) * 2.2, loE = 0.1, ph2 = phoneW() ? 230 : 170, pw2 = phoneW() ? 380 : 560;
+          host.innerHTML = '<figure class="cd-fig ptx-qfig ptx-two">' + [A, Bq].map(function(e){
+            return '<div class="ptx-twoone"><p class="ptx-pesh"><b>' + T.esc(e.n) + '</b> ' + TR.confHtml(e.conf) + '</p>' + TR.pesSvg(e, { w: pw2, h: ph2, hi: hiE, lo: loE }) + '</div>';
+          }).join('') + '<figcaption class="bt-small">Same energy axis for both. Heights are relative numbers of electrons.</figcaption></figure>';
           return;
         }
         if(p.pair){
@@ -281,6 +295,7 @@
         }
       }
     });
+    function phoneW(){ return (window.innerWidth || 1000) < 640; }
     function miniTable(mark){
       var c = [1, 2, 13, 14, 15, 16, 17, 18], cw = 40, ch = 40, g = [];
       data.elements.filter(function(e){ return e.g != null && c.indexOf(e.g) > -1 && e.p <= 6; }).forEach(function(e){

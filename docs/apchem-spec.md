@@ -327,7 +327,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
      Test yourself: seven seeded kinds (radius, IE, IE dips, electronegativity, ions, identify from a spectrum, compare
      two spectra), each predict-then-explain with the explanation that earns the point.
    - **Data, with sources in the file's `sources` field** (`chem/data/tools/periodic-trends-pes.json`): radii are
-     metallic for metals and Pyykkö single-bond covalent for nonmetals (period 3 matches the notes: 186 … 99 pm); first
+     metallic for metals (p-block metals from Teatum et al. 1968) and Pyykkö single-bond covalent for nonmetals and metalloids (period 3 matches the notes: 186 … 99 pm); first
      IEs from NIST ASD; Pauling EN as the site's periodic table popup; electron affinities from the Wikipedia data page
      (Andersen 2004, Rienstra-Kiracofe 2002, CRC), no value where the anion is not stable; ionic radii Shannon 1976. PES:
      H to Ca the free-atom table used in teaching materials (agrees with Carlson 1976/Lotz 1970 and matches the notes'
@@ -345,8 +345,10 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
      the elementary rate laws with kr = kf/Kc, so the net rate is zero exactly at Q = K. "Challenge me" applies a
      random stress after the student predicts the shift. Test yourself: what changes (Q or K), the direction, and the
      rates right after the change; the stress then runs on a live vessel. Time is scaled (stated on the page); the
-     speed-up ratios from heating and from the catalyst are the real Arrhenius factors (the catalyst's Ea drop is
-     illustrative, 6 and 12 kJ/mol). The validator recomputes K from the source values, checks rates balance at
+     speed-up ratios from heating and from the catalyst are the real Arrhenius factors (illustrative: N₂O₄'s forward
+     Ea 65 kJ/mol, leaving a small positive reverse barrier, and the catalyst's Ea drops of 6 and 12 kJ/mol). Forward
+     and reverse events are both drawn, at rates in the true ratio, so equilibrium looks busy but balanced; the starting
+     molecule counts give Q within 5% of K (validator), since counting particles for Q is an exam skill. The validator recomputes K from the source values, checks rates balance at
      equilibrium, the stepper never overshoots K, the MB normalization and tail, and every key against both Q-vs-K and
      Le Chatelier's rule.
    - **Free or Premium (decision 16's rule):** `periodic-trends-pes` is free (the first tool of Unit 1);

@@ -86,7 +86,7 @@ test('equilibrium: rates balance exactly at Q = K, and a catalyst changes the ti
   for (const rx of EK.reactions) {
     const T = rx.T[2], c = E.equilibrium(rx, rx.start, T), r = E.rates(rx, c, T, false);
     close(r.f, r.r, 1e-6, `${rx.id} rates`);
-    const run = cat => { let x = rx.start.slice(), t = 0; while (Math.abs(Math.log(E.Q(rx, x) / E.Kc(rx, T))) > 0.01 && t < 500) { x = E.step(rx, x, T, cat, 0.01).c; t += 0.01; } return { x, t }; };
+    const run = cat => { let x = rx.species.map((sp, i) => (sp.nu < 0 ? 0.15 : 0.002)), t = 0; while (Math.abs(Math.log(E.Q(rx, x) / E.Kc(rx, T))) > 0.01 && t < 500) { x = E.step(rx, x, T, cat, 0.01).c; t += 0.01; } return { x, t }; };
     const a = run(false), b = run(true);
     assert.ok(b.t < a.t, `${rx.id}: catalyst is faster`);
     a.x.forEach((v, i) => close(v, b.x[i], 0.02, `${rx.id}: same equilibrium`));
