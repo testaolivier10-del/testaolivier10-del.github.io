@@ -25,7 +25,16 @@
    should assert as fact to someone preparing for an exam. Each station's
    target is pre-filled with the commonly-published figure, shown as such, and
    the student can set it to whatever their own program uses — which is what
-   the warning box has been telling them to do all along. */
+   the warning box has been telling them to do all along.
+
+   ON A PATIENT (2026-10, docs/nremt-skills-visual.md). Where station-patient.js
+   has an illustrated script for a station (bleeding control, BVM so far), the
+   run uses that script's actions instead of the card's phases, in the order the
+   Registry's sheet lists them, and draws each tick happening on the patient.
+   The text checklist stays: it is the same list, and it is still what you
+   tick. At the end the patient shows what was missed or done out of order.
+   The same honesty rules hold: no points, no pass or fail, the notes say
+   what varies by program. */
 (function(){
   var host  = document.getElementById('stationCards');
   var mount = document.getElementById('stationRun');
@@ -118,8 +127,10 @@
         });
       }
 
+      var vis = window.NremtStationPatient && window.NremtStationPatient.find(text(h3));
+      if(vis) steps = vis.steps.map(function(st){ return { id: st.id, text: st.text, critical: st.critical, why: st.why }; });
       var row = sheetRow(text(h3));
-      out.push({ name: text(h3), steps: steps, target: (row && row.minutes) || targetFor(text(h3)),
+      out.push({ name: text(h3), steps: steps, vis: vis, target: (row && row.minutes) || targetFor(text(h3)),
                  official: !!(row && row.minutes), code: row ? row.code : '', criteria: row ? row.criteria : [] });
     });
     return out;
@@ -131,6 +142,37 @@
   /* ---- State ------------------------------------------------------------- */
 
   var station = null, done = [], startedAt = 0, tick = null, targetMin = 0;
+  var patient = null, order = 0, doneAt = [], curObs = null;
+
+  /* The ticked steps for the patient: { id: the order it was ticked in }. */
+  function doneMap(){
+    var m = {};
+    station.steps.forEach(function(st, i){ if(done[i] && st.id) m[st.id] = doneAt[i]; });
+    return m;
+  }
+  /* The step the student is on: the one the shared stepper shows, or else the
+     first left unticked. */
+  function curIndex(){
+    var lis = [].slice.call(ctl().querySelectorAll('li.run-step'));
+    if(ctl().querySelector('.ls-stepper') && !ctl().querySelector('.ls-stepper.is-review')){
+      var on = lis.filter(function(li){ return !li.classList.contains('ls-step-off'); })[0];
+      if(on) return lis.indexOf(on);
+    }
+    for(var i = 0; i < done.length; i++) if(!done[i]) return i;
+    return done.length - 1;
+  }
+  function follow(){
+    if(curObs){ curObs.disconnect(); curObs = null; }
+    if(!patient) return;
+    var last = -1, sync = function(){ var i = curIndex(); if(i !== last){ last = i; patient.current(i); } };
+    curObs = new MutationObserver(sync);
+    curObs.observe(ctl(), { subtree: true, attributes: true, attributeFilter: ['class'], childList: true });
+    sync();
+  }
+  function dropPatient(){
+    if(curObs){ curObs.disconnect(); curObs = null; }
+    if(patient){ patient.destroy(); patient = null; }
+  }
 
   /* A host page may give the controls their own place (the Tool Studio's
      dock: #stationRunDock): the clock, the critical list and the result stay
@@ -152,14 +194,16 @@
 
   function picker(){
     stop();
+    dropPatient();
     station = null;
     mount.innerHTML =
       '<div class="run-card">' +
         '<p class="run-intro"><b>Pick a station to start.</b> Say each phase out loud and tick it; the clock runs and critical items are marked.</p>' +
         '<div class="run-pick">' +
-          STATIONS.map(function(s, i){
-            return '<button type="button" class="run-station" data-i="' + i + '">' +
-              '<span class="n">' + esc(s.name) + '</span>' +
+          STATIONS.map(function(s, i){ return [s, i]; }).sort(function(a, b){ return (!!b[0].vis - !!a[0].vis) || a[1] - b[1]; }).map(function(p){
+            var s = p[0], i = p[1];
+            return '<button type="button" class="run-station' + (s.vis ? ' has-vis' : '') + '" data-i="' + i + '">' +
+              '<span class="n">' + esc(s.name) + (s.vis ? '<span class="run-vis-tag">On a patient</span>' : '') + '</span>' +
               '<span class="t">' + s.steps.length + ' phases · ' + s.target + ' min' + (s.code ? ' · ' + esc(s.code) : '') + '</span>' +
             '</button>';
           }).join('') +
@@ -255,6 +299,7 @@
       if(!clockSaid.over && over){ clockSaid.over = true; window.LevlAnnounce.say('Time limit passed.'); }
     }
     lightCriteria(sec);
+    if(patient) patient.tick(sec);
   }
   var clockSaid = {};
 
@@ -262,6 +307,9 @@
     station = s;
     targetMin = s.target;
     done = s.steps.map(function(){ return false; });
+    doneAt = s.steps.map(function(){ return 0; });
+    order = 0;
+    dropPatient();
     flagged = s.criteria.map(function(){ return ''; });
     clockSaid = {};
     startedAt = Date.now();
@@ -291,8 +339,9 @@
     var d = dk();
     if(d) d.innerHTML = steps + actions;
     mount.innerHTML =
-      '<div class="run-card run-live">' +
+      '<div class="run-card run-live' + (station.vis ? ' has-vis' : '') + '">' +
         '<div class="run-name">' + esc(station.name) + (station.code ? ' <span class="run-code">' + esc(station.code) + '</span>' : '') + '</div>' +
+        (station.vis ? '<div class="run-patient" id="runPatient"></div>' : '') +
         '<div class="run-top2">' +
           '<div class="run-clockwrap" id="runClockWrap">' + ring(0, false) +
             '<div class="run-clockin"><div class="run-clock" id="runClock" role="timer" aria-live="off">0:00</div>' +
@@ -324,7 +373,9 @@
           : '') +
         '</div>' +
 
-        '<p class="run-note">These are the phases this page lists, not an official scored step order. ' +
+        '<p class="run-note">' + (station.vis
+          ? 'The actions in the order the Registry&rsquo;s sheet lists them, paraphrased; your program&rsquo;s sheet may word or order them differently. '
+          : 'These are the phases this page lists, not an official scored step order. ') +
           'Verbalize each one as you would in the room — the examiner scores what you say and show.</p>' +
         (d ? '' : actions) +
       '</div>';
@@ -333,6 +384,8 @@
       box.addEventListener('change', function(){
         var i = parseInt(box.getAttribute('data-i'), 10);
         done[i] = box.checked;
+        doneAt[i] = box.checked ? ++order : 0;
+        if(patient){ patient.set(doneMap()); box.closest('.run-step').classList.toggle('is-hold', patient.hold(i)); }
         box.closest('.run-step').classList.toggle('is-done', box.checked);
         var li0 = ctl().querySelector('.run-step');
         if(li0) li0.classList.toggle('is-skipped', bsiSkipped());
@@ -352,12 +405,33 @@
     });
     document.getElementById('runFinish').addEventListener('click', finish);
     document.getElementById('runQuit').addEventListener('click', picker);
+    var host = document.getElementById('runPatient');
+    if(host && window.NremtStationPatient){
+      patient = window.NremtStationPatient.mount(host, station.vis, {
+        // a tap on the patient that does a step (placing the tourniquet) ticks it
+        onPlace: function(i){
+          var box = ctl().querySelector('.run-step input[data-i="' + i + '"]');
+          if(box && !box.checked){ box.checked = true; box.dispatchEvent(new Event('change', { bubbles: true })); }
+        },
+        // moved after it was ticked: a placement that now stops the bleed lets the stepper move on
+        onMove: function(i){
+          var box = ctl().querySelector('.run-step input[data-i="' + i + '"]');
+          if(!box) return;
+          var li = box.closest('.run-step'), was = li.classList.contains('is-hold');
+          li.classList.toggle('is-hold', patient.hold(i));
+          if(was && !patient.hold(i)){ var nx = ctl().querySelector('.ls-step-next'); if(nx && !nx.hidden) setTimeout(function(){ nx.click(); }, 700); }
+        }
+      });
+      follow();
+    }
     updateClock();
   }
 
   function finish(){
     var sec = elapsed();
     stop();
+    if(curObs){ curObs.disconnect(); curObs = null; }
+    var pHost = patient ? document.getElementById('runPatient') : null;
 
     var missedCritical = [], missedOther = 0;
     station.steps.forEach(function(st, i){
@@ -375,6 +449,7 @@
     mount.innerHTML =
       '<div class="run-card">' +
         '<div class="run-name">' + esc(station.name) + '</div>' +
+        (pHost ? '<div class="run-patient-slot"></div>' : '') +
 
         '<div class="run-result">' +
           '<div class="run-result__row">' +
@@ -396,7 +471,8 @@
                 return '<li>' + esc(st.text) + (st.why ? '<small>' + esc(st.why) + '</small>' : '') + '</li>';
               }).join('') + '</ul>' +
             '</div>'
-          : '<div class="run-okbox">' + (station.steps.filter(function(st){ return st.critical; }).length === 2 ? 'Both critical items ticked.' : 'Every critical item ticked.') + '</div>') +
+          : '<div class="run-okbox">' + (station.steps.filter(function(st){ return st.critical; }).length === 2 ? 'Both critical items ticked.' : 'Every critical item ticked.') +
+              (station.vis ? ' Ticking is not the whole story: the patient above shows order and technique.' : '') + '</div>') +
 
         (flagged.some(Boolean)
           ? '<div class="run-flagbox"><b>Critical criteria that lit up:</b><ul>' +
@@ -412,6 +488,10 @@
         (dk() ? '' : again) +
       '</div>';
     if(dk()) dk().innerHTML = again;
+    if(pHost){
+      mount.querySelector('.run-patient-slot').replaceWith(pHost);
+      patient.review();
+    }
 
     document.getElementById('runAgain').addEventListener('click', function(){ begin(station); });
     document.getElementById('runOther').addEventListener('click', picker);
