@@ -5,9 +5,15 @@
 const W=1920,H=1080,FPS=30,DUR=12,N=Math.round(DUR*FPS);
 const cx=c.getContext('2d');
 let seed=11;const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
+// ART: painted mode loads xylem_art.json (or ?art=<file>) = {"bg": "<painted cutaway, 1920x1080>", "mol": "<painted water
+// molecule sprite with alpha>", "molSize": 30, "vessel": [x0, x1, top, bot], "stoma": [x, y]}. The painting must show the stem
+// cut open with an EMPTY vessel interior at that box and the stoma at that point; the engine draws the water. Without art the
+// code drawn look is used and every frame says PLACEHOLDER (never in a video: studio gate).
+const ART=(()=>{try{const q=new URLSearchParams(location.search).get('art');const x=new XMLHttpRequest();x.open('GET',q||'xylem_art.json',false);x.send();return (x.status===200||x.status===0)&&x.responseText?JSON.parse(x.responseText):null}catch(e){return null}})();
+const IMG={};const READY=Promise.all(ART?['bg','mol'].filter(k=>ART[k]).map(k=>new Promise(r=>{const i=new Image();i.onload=()=>{IMG[k]=i;r()};i.onerror=r;i.src=ART[k]})):[]);
 // vessel geometry
-const VX0=760,VX1=1000,VTOP=250,VBOT=1000;            // tube interior
-const STOMA={x:1500,y:250};                               // pore on the leaf underside, right
+const [VX0,VX1,VTOP,VBOT]=ART&&ART.vessel?ART.vessel:[760,1000,250,1000];   // tube interior
+const STOMA=ART&&ART.stoma?{x:ART.stoma[0],y:ART.stoma[1]}:{x:1500,y:250};  // pore on the leaf underside
 const sun=t=>Math.min(1,Math.max(0,(t-2.2)/1.6));        // sunlight comes up at 2.2 s
 const rate=t=>0.25+1.0*sun(t);                            // column speed scale (evaporation pulls harder in sun)
 const VMAX=150;                                           // px/s at the vessel centre in full sun
@@ -41,15 +47,17 @@ for(let f=0;f<N;f++){
   frames.push(mol.map(m=>[m.x,m.y,m.a,m.ph==='leaf'?1:0,(m.x-VX0)/(VX1-VX0)]));
 }
 const VAP=vapor;
-function drawMol(x,y,a,s=1,al=1){cx.save();cx.globalAlpha=al;cx.translate(x,y);cx.rotate(a);
+function drawMol(x,y,a,s=1,al=1){if(IMG.mol){const z=(ART.molSize||30)*s;cx.save();cx.globalAlpha=al;cx.translate(x,y);cx.rotate(a);cx.drawImage(IMG.mol,-z/2,-z/2,z,z);cx.restore();return}cx.save();cx.globalAlpha=al;cx.translate(x,y);cx.rotate(a);
   const hx=Math.cos(0.91)*R*0.95,hy=Math.sin(0.91)*R*0.95;
   for(const sx of[-1,1]){const g=cx.createRadialGradient(sx*hx-2,hy-2,1,sx*hx,hy,7*s);g.addColorStop(0,'#ffffff');g.addColorStop(1,'#cfd9e8');cx.fillStyle=g;cx.beginPath();cx.arc(sx*hx,hy,7*s,0,7);cx.fill()}
   const g=cx.createRadialGradient(-4,-4,2,0,0,R*s);g.addColorStop(0,'#ff8a80');g.addColorStop(1,'#d8443a');cx.fillStyle=g;cx.beginPath();cx.arc(0,0,R*0.85*s,0,7);cx.fill();cx.restore()}
 function ease(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)}
 function label(txt,x,y,lx,ly,t0,t,col){const a=ease((t-t0)/0.5);if(a<=0)return;cx.save();cx.globalAlpha=a;cx.strokeStyle=col;cx.lineWidth=4;cx.beginPath();cx.moveTo(x,y);cx.lineTo(lx,ly);cx.stroke();
   cx.fillStyle='rgba(10,18,44,.85)';cx.font='800 40px Inter,Arial';const w=cx.measureText(txt).width+40;cx.beginPath();cx.roundRect(lx-(lx<x?w:0),ly-34,w,64,18);cx.fill();cx.fillStyle=col;cx.fillText(txt,lx-(lx<x?w:0)+20,ly+10);cx.restore()}
-window.__seek=function(t){
+window.__seek=async function(t){
+  await READY;
   const f=Math.min(N-1,Math.max(0,Math.round(t*FPS))),s=sun(t);
+  if(IMG.bg){cx.drawImage(IMG.bg,0,0,W,H);cx.save();cx.globalAlpha=0.25*(1-s);cx.fillStyle='#0a1430';cx.fillRect(0,0,W,H);cx.restore();drawWater(t,f);return;}
   // sky and leaf tissue background
   const bg=cx.createLinearGradient(0,0,0,H);bg.addColorStop(0,`rgb(${20+60*s},${32+70*s},${70+60*s})`);bg.addColorStop(1,'#0d1530');cx.fillStyle=bg;cx.fillRect(0,0,W,H);
   // sun
@@ -70,6 +78,17 @@ window.__seek=function(t){
   cx.strokeStyle='#e6c88e';cx.lineWidth=6;for(let y=VTOP;y<VBOT+60;y+=56){for(const x of[VX0-4,VX1+4]){cx.beginPath();cx.ellipse(x,y,8,22,0,0,7);cx.stroke()}}  // lignin rings
   // soil and root at the bottom
   cx.fillStyle='#4a3020';cx.fillRect(0,1000,W,80);for(let i=0;i<60;i++){cx.fillStyle=i%2?'#5c3d28':'#3d2618';cx.beginPath();cx.arc((i*97)%W,1020+(i*37)%50,10+(i%5)*3,0,7);cx.fill()}
+  drawWater(t,f);
+  // speed meter
+  cx.save();cx.fillStyle='rgba(10,18,44,.85)';cx.beginPath();cx.roundRect(1260,760,520,150,24);cx.fill();cx.fillStyle='#bfe3ff';cx.font='700 34px Inter,Arial';cx.fillText('water flow up the stem',1290,812);
+  cx.fillStyle='#24345e';cx.beginPath();cx.roundRect(1290,836,460,40,20);cx.fill();cx.fillStyle='#5fb8ff';cx.beginPath();cx.roundRect(1290,836,460*rate(t)/1.25,40,20);cx.fill();cx.restore();
+  label('sunlight: more evaporation',130,270,140,440,2.6,t,'#ffd34d');
+  label('evaporation pulls',STOMA.x,STOMA.y+30,1540,520,4.2,t,'#e8f4ff');
+  label('cohesion: H bonds hold the chain',VX1-30,640,1080,640,6.0,t,'#7fc4ff');
+  label('adhesion: water clings to the walls',VX0+12,820,700,940,8.0,t,'#e6c88e');
+  cx.save();cx.globalAlpha=0.55;cx.fillStyle='#ff4060';cx.font='900 54px Inter,Arial';cx.fillText('PLACEHOLDER ART, NOT FOR VIDEO',40,1060);cx.restore();
+};
+function drawWater(t,f){
   // hydrogen bonds (cohesion) between neighbours, then molecules
   const M=frames[f];
   cx.save();cx.setLineDash([6,6]);cx.lineWidth=4;
@@ -79,13 +98,7 @@ window.__seek=function(t){
   // vapor wisps leaving the stoma
   for(const v of VAP){const a=t-v.t0;if(a<0||a>2.2)continue;const p=a/2.2;cx.save();cx.globalAlpha=(1-p)*0.8;cx.strokeStyle='#e8f4ff';cx.lineWidth=5;cx.beginPath();
     const x=v.x+ (v.s-0.5)*60*p, y=v.y+30+140*p;cx.moveTo(x,y);cx.bezierCurveTo(x+20*Math.sin(a*4),y+20,x-20,y+40,x+10*Math.sin(a*5),y+60);cx.stroke();drawMol(x,y,a*3,0.6,(1-p)*0.9);cx.restore()}
-  // speed meter
-  cx.save();cx.fillStyle='rgba(10,18,44,.85)';cx.beginPath();cx.roundRect(1260,760,520,150,24);cx.fill();cx.fillStyle='#bfe3ff';cx.font='700 34px Inter,Arial';cx.fillText('water flow up the stem',1290,812);
-  cx.fillStyle='#24345e';cx.beginPath();cx.roundRect(1290,836,460,40,20);cx.fill();cx.fillStyle='#5fb8ff';cx.beginPath();cx.roundRect(1290,836,460*rate(t)/1.25,40,20);cx.fill();cx.restore();
-  label('sunlight: more evaporation',130,270,140,440,2.6,t,'#ffd34d');
-  label('evaporation pulls',STOMA.x,STOMA.y+30,1540,520,4.2,t,'#e8f4ff');
-  label('cohesion: H bonds hold the chain',VX1-30,640,1080,640,6.0,t,'#7fc4ff');
-  label('adhesion: water clings to the walls',VX0+12,820,700,940,8.0,t,'#e6c88e');
-};
+  if(IMG.bg){label('evaporation pulls',STOMA.x,STOMA.y+30,STOMA.x+40,STOMA.y+270,4.2,t,'#e8f4ff');label('cohesion: H bonds hold the chain',VX1-30,640,VX1+80,640,6.0,t,'#7fc4ff');label('adhesion: water clings to the walls',VX0+12,820,VX0-60,940,8.0,t,'#e6c88e');}
+}
 __seek(0);
 </script></body></html>
