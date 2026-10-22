@@ -4,6 +4,8 @@ usage: python3 lpanim.py download                      (one time: fetch the weig
        python3 lpanim.py wait <call id> out.mp4
 Spend goes through ledger.py like every Modal call (reservation required; never past the month's free credit)."""
 import sys, json, time, base64, urllib.request, urllib.error, os
+if os.environ.get("LP_WAN_OK") != "1":
+    sys.exit("Wan-Animate was dropped on 2026-10-21 (people are painted rigs). Set LP_WAN_OK=1 only if Olivier asks for it again.")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ledger
 EP = open('/root/.lpkey/mep').read().strip(); KEY = open('/root/.lpkey/mk').read().strip()
