@@ -1,0 +1,283 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}#gl{display:none}</style></head><body>
+<canvas id="c" width="1920" height="1080"></canvas><canvas id="gl" width="1920" height="1080"></canvas>
+<script src="art/fire/fire_bg.js"></script>
+<script>
+// Burning building scene (LevlPrep studio, one scene rule): Gemini paintings (art/fire, style B) split into sky,
+// street and building layers; the upper floors are cut into pieces that really fall; the runner is ONE painted figure
+// cut into five layers and bent on a skeleton (mesh skinning, WebGL) with a planted foot run cycle (2 bone IK).
+// Fire, smoke, embers, dust and bricks are drawn in the painting's flat two tone style; one camera, one grade.
+const W=1920,H=1080,FPS=30,DUR=7.0,A='art/fire/';
+const cx=c.getContext('2d');
+let seed=11;const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
+const R=(a,b)=>a+(b-a)*rnd(), cl=(x,a,b)=>Math.max(a,Math.min(b,x)), lerp=(a,b,t)=>a+(b-a)*t;
+const ss=(a,b,x)=>{x=cl((x-a)/(b-a),0,1);return x*x*(3-2*x)};
+const IM={};const load=n=>new Promise(r=>{const i=new Image();i.onload=()=>{IM[n]=i;r()};i.src=A+n+'.png'});
+let J;
+// ---------------------------------------------------------------- runner rig (rig image coords, 572x1024)
+const P0=[250,560];
+const BONES={
+ body:[[250,560],[300,262]],
+ n_up:[[252,296],[156,342]],n_lo:[[156,342],[150,468]],n_hand:[[150,468],[148,522]],
+ f_up:[[306,300],[360,440]],f_lo:[[360,440],[450,428]],f_hand:[[450,428],[494,412]],
+ n_th:[[268,560],[368,714]],n_sh:[[368,714],[410,886]],n_ft:[[410,886],[520,912]],
+ f_th:[[240,565],[196,724]],f_sh:[[196,724],[108,864]],f_ft:[[108,864],[165,945]],
+ cap:[[262,262],[300,300]]};
+const BL={},BA={};for(const k in BONES){const[a,b]=BONES[k];BL[k]=Math.hypot(b[0]-a[0],b[1]-a[1]);BA[k]=Math.atan2(b[1]-a[1],b[0]-a[0])}
+const LAYERS=[['L_fararm',['f_up','f_lo','f_hand']],['L_farleg',['f_th','f_sh','f_ft']],['L_nearleg',['n_th','n_sh','n_ft']],
+  ['L_body',['body']],['L_neararm',['cap','n_up','n_lo','n_hand']]];
+const SOLE={n:0,f:0.54};               // painted sole angle of each shoe (rad): far shoe is painted heel up
+const gl=document.getElementById('gl').getContext('webgl',{premultipliedAlpha:true,alpha:true,antialias:true,preserveDrawingBuffer:true});
+let prog,aP,aUV,uRes,bufP,bufUV,bufI;const MESH=[];
+function initGL(){
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o};
+  prog=gl.createProgram();
+  gl.attachShader(prog,sh(gl.VERTEX_SHADER,'attribute vec2 p;attribute vec2 uv;uniform vec2 res;varying vec2 v;void main(){v=uv;vec2 c=p/res*2.0-1.0;gl_Position=vec4(c.x,-c.y,0.0,1.0);}'));
+  gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,'precision mediump float;uniform sampler2D tex;varying vec2 v;void main(){gl_FragColor=texture2D(tex,v);}'));
+  gl.linkProgram(prog);gl.useProgram(prog);aP=gl.getAttribLocation(prog,'p');aUV=gl.getAttribLocation(prog,'uv');uRes=gl.getUniformLocation(prog,'res');
+  gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);
+  bufP=gl.createBuffer();bufUV=gl.createBuffer();bufI=gl.createBuffer();
+  for(const[name,bones]of LAYERS){
+    const im=IM[name],w=im.width,h=im.height,cv=document.createElement('canvas');cv.width=w;cv.height=h;
+    const g=cv.getContext('2d');g.drawImage(im,0,0);const al=g.getImageData(0,0,w,h).data;
+    const C=8,nx=Math.ceil(w/C),ny=Math.ceil(h/C),idx=new Int32Array((nx+1)*(ny+1)).fill(-1),v=[],uv=[],bi=[],bw=[],t=[];
+    const solid=(i,j)=>{for(let y=j*C-3;y<=j*C+C+3;y+=3)for(let x=i*C-3;x<=i*C+C+3;x+=3){if(x<0||y<0||x>=w||y>=h)continue;if(al[(y*w+x)*4+3]>8)return true}return false};
+    const vert=(i,j)=>{const k=j*(nx+1)+i;if(idx[k]>=0)return idx[k];const x=Math.min(i*C,w),y=Math.min(j*C,h);
+      idx[k]=v.length/2;v.push(x,y);uv.push(x/w,y/h);
+      // weights: inverse distance to each bone segment of this layer, two strongest kept
+      const ds=bones.map((b,bk)=>{const[p,q]=BONES[b],dx=q[0]-p[0],dy=q[1]-p[1],l2=dx*dx+dy*dy,u=cl(((x-p[0])*dx+(y-p[1])*dy)/l2,0,1);
+        let d=Math.hypot(x-p[0]-u*dx,y-p[1]-u*dy);if(b==='cap')d*=1.6;return[1/Math.pow(d+6,4),bk]}).sort((a,b)=>b[0]-a[0]);
+      const s=ds[0][0]+(ds[1]?ds[1][0]:0);bi.push(ds[0][1],ds[1]?ds[1][1]:ds[0][1]);bw.push(ds[0][0]/s,ds[1]?ds[1][0]/s:0);return idx[k]};
+    for(let j=0;j<ny;j++)for(let i=0;i<nx;i++)if(solid(i,j)){const a=vert(i,j),b=vert(i+1,j),c2=vert(i,j+1),d=vert(i+1,j+1);t.push(a,b,c2,b,d,c2)}
+    const tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+    if(t.length>65000)console.error('mesh too big',name);
+    MESH.push({name,bones,v,uv:new Float32Array(uv),bi,bw,t:new Uint16Array(t),tex});
+  }
+}
+// 2 bone IK, knee pointing forward (+x)
+function ik(H,Aa,l1,l2){let dx=Aa[0]-H[0],dy=Aa[1]-H[1],d=Math.hypot(dx,dy);const dm=l1+l2-0.5;if(d>dm){dx*=dm/d;dy*=dm/d;d=dm}
+  const base=Math.atan2(dy,dx),al=Math.acos(cl((l1*l1+d*d-l2*l2)/(2*l1*d),-1,1)),a1=base-al;
+  const K=[H[0]+Math.cos(a1)*l1,H[1]+Math.sin(a1)*l1];return[a1,Math.atan2(H[1]+dy-K[1],H[0]+dx-K[0]),K]}
+const rot=(p,o,a)=>{const c=Math.cos(a),s=Math.sin(a),x=p[0]-o[0],y=p[1]-o[1];return[o[0]+c*x-s*y,o[1]+s*x+c*y]};
+// one leg target in rig space relative to the hip, from its phase u (0 = heel strike)
+const STRIDE=864,STF=0.32,HALF=STRIDE*STF/2;
+function legTarget(u,ground){ // returns ankle (dx,dy from hip, rig px) and sole angle
+  if(u<STF){const k=u/STF;return[HALF-2*HALF*k,ground-46*ss(0.62,1,k),0.62*ss(0.62,1,k)]}
+  const k=(u-STF)/(1-STF);
+  const x=-HALF-70*Math.sin(Math.PI*Math.min(k/0.4,1))*(k<0.4?1:0)+(2*HALF+10)*ss(0.12,0.92,k);
+  const lift=250*Math.pow(Math.sin(Math.PI*Math.min(1,k*1.12)),1.25);
+  const sole=lerp(0.9,-0.18,ss(0.15,0.95,k));
+  return[x,ground-lift-46*(1-ss(0,0.2,k)),sole]}
+function pose(R){ // R: {x,y(feet world),s,dist(rig px),run(0..1)}
+  const ph=(R.dist/STRIDE)%1, run=R.run;
+  const bob=(1-0.4*(1-run))*12*Math.cos(2*Math.PI*(2*ph-0.32));
+  const lean=0.12*run;                      // forward lean (rad)
+  const pel=[P0[0],P0[1]+6*run+bob];       // pelvis in rig space (feet stay on the rig ground y 955)
+  const B={};
+  B.body={s:pel,a:BA.body+lean,from:BONES.body[0]};
+  const bodyPt=p=>rot([p[0]-P0[0]+pel[0],p[1]-P0[1]+pel[1]],pel,lean);
+  // legs
+  const legs=[['n',ph,955],['f',(ph+0.5)%1,945]];
+  for(const[s,u,gnd]of legs){
+    const hip=bodyPt(BONES[s+'_th'][0]);
+    let[dx,ay,sole]=legTarget(u,gnd-69);
+    if(run<1){dx*=run;ay=lerp(BONES[s+'_sh'][1][1],ay,run);sole*=run}
+    const ankle=[hip[0]+dx,ay];
+    const[a1,a2,K]=ik(hip,ankle,BL[s+'_th'],BL[s+'_sh']);
+    const An=[K[0]+Math.cos(a2)*BL[s+'_sh'],K[1]+Math.sin(a2)*BL[s+'_sh']];
+    B[s+'_th']={s:hip,a:a1};B[s+'_sh']={s:K,a:a2};
+    B[s+'_ft']={s:An,a:BA[s+'_ft']+(sole-SOLE[s])*(s==='f'?1:1)+(s==='f'?0:0)};
+  }
+  // arms swing against the legs; elbows bent about 90 degrees
+  const sw=-Math.cos(2*Math.PI*(ph-0.04));
+  for(const[s,a]of[['n',sw],['f',-sw]]){
+    const sh=bodyPt(BONES[s+'_up'][0]);
+    const amp=lerp(0.25,1,run);
+    const up=(90-(a>0?40:55)*a*amp)*Math.PI/180+lean*0.5, lo=up-(78+8*Math.max(a,0))*Math.PI/180*amp-(1-amp)*0.1;
+    const el=[sh[0]+Math.cos(up)*BL[s+'_up'],sh[1]+Math.sin(up)*BL[s+'_up']];
+    const wr=[el[0]+Math.cos(lo)*BL[s+'_lo'],el[1]+Math.sin(lo)*BL[s+'_lo']];
+    B[s+'_up']={s:sh,a:up};B[s+'_lo']={s:el,a:lo};B[s+'_hand']={s:wr,a:lo+0.1};
+  }
+  B.cap={s:bodyPt(BONES.cap[0]),a:BA.cap+lean};
+  return{B,ph,pel}}
+function drawRunner(R){
+  const{B,ph}=pose(R),s=R.s,ox=R.x,oy=R.y;           // rig ground (y 955 at x 250) -> world feet point
+  const toW=(p)=>[ox+(p[0]-P0[0])*s,oy+(p[1]-955)*s];
+  const M={};for(const k in B){const b=B[k],from=b.from||BONES[k][0],da=b.a-BA[k],c=Math.cos(da),sn=Math.sin(da);M[k]=[from,b.s,c,sn]}
+  gl.viewport(0,0,W,H);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform2f(uRes,W,H);
+  for(const m of MESH){
+    const n=m.v.length/2,D=new Float32Array(m.v.length);
+    for(let i=0;i<n;i++){const x=m.v[2*i],y=m.v[2*i+1];let X=0,Y=0;
+      for(let j=0;j<2;j++){const w=m.bw[2*i+j];if(!w)continue;const[f,st,c,sn]=M[m.bones[m.bi[2*i+j]]],dx=x-f[0],dy=y-f[1];
+        X+=w*(st[0]+c*dx-sn*dy);Y+=w*(st[1]+sn*dx+c*dy)}
+      const p=toW([X,Y]);D[2*i]=p[0];D[2*i+1]=p[1]}
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufP);gl.bufferData(gl.ARRAY_BUFFER,D,gl.DYNAMIC_DRAW);gl.enableVertexAttribArray(aP);gl.vertexAttribPointer(aP,2,gl.FLOAT,false,0,0);
+    gl.bindBuffer(gl.ARRAY_BUFFER,bufUV);gl.bufferData(gl.ARRAY_BUFFER,m.uv,gl.STATIC_DRAW);gl.enableVertexAttribArray(aUV);gl.vertexAttribPointer(aUV,2,gl.FLOAT,false,0,0);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,bufI);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,m.t,gl.DYNAMIC_DRAW);
+    gl.bindTexture(gl.TEXTURE_2D,m.tex);gl.drawElements(gl.TRIANGLES,m.t.length,gl.UNSIGNED_SHORT,0);
+  }
+  // feet in world space (for dust kicks and the shadow)
+  const feet=['n','f'].map(k=>{const b=B[k+'_ft'];return toW([b.s[0]+Math.cos(b.a)*50,b.s[1]+Math.sin(b.a)*50+40])});
+  return{feet,ph}}
+// ---------------------------------------------------------------- runner path
+const T_OUT=0.10,T_DOOR=0.32,T_WALK=0.72,VR=1400;  // VR: run speed in rig px/s
+function runnerAt(t){
+  // door (small, far) -> across the lawn toward us -> along the sidewalk to the right
+  if(t<T_OUT)return null;
+  let x,y,s;
+  if(t<T_WALK){const k=ss(T_OUT,T_WALK,t),k2=(t-T_OUT)/(T_WALK-T_OUT);x=lerp(438,640,k2);y=lerp(906,966,k);s=lerp(0.23,0.36,k)}
+  else{s=0.36;y=966;x=640+VR*s*(t-T_WALK)}
+  return{x,y,s}}
+// distance in rig px (for the cycle phase) integrated along the path
+const DIST=[0];{let pv=null;for(let f=1;f<=Math.ceil(DUR*FPS)+2;f++){const t=f/FPS,a=runnerAt(t),b=runnerAt(t-1/FPS);let d=0;
+  if(a&&b)d=Math.hypot(a.x-b.x,(a.y-b.y)*0.4)/a.s;DIST.push(DIST[f-1]+d)}}
+// ---------------------------------------------------------------- collapse pieces
+const T_CRACK=1.05,T_FALL=1.38,FLOOR=690,G=1700;
+let CH=[];
+function chunkState(c,t){
+  const band={r:0,'3':0.08,'2':0.16}[c.band],side=c.side==='L'?-1:1;
+  let dx=0,dy=0,a=0;
+  if(t>T_CRACK){const k=t-T_CRACK;dx=Math.sin(k*70+c.x)*2.2*ss(0,0.2,k);dy=Math.sin(k*53+c.y)*1.5*ss(0,0.2,k)}
+  if(c.band==='r'&&t>T_FALL-0.22){const k=ss(T_FALL-0.22,T_FALL+0.05,t);a+=-side*0.10*k;dy+=22*k}
+  const ts=T_FALL+band;
+  if(t>ts){const k=t-ts;dy+=0.5*G*k*k;a+=side*(0.25+0.15*(c.band==='2'))*k*k*3+(c.band==='r'?-side*0.10:0)*0;dx+=side*60*k*k}
+  return{dx,dy,a}}
+// ---------------------------------------------------------------- particles (deterministic, stepped)
+let S=null;
+function reset(){seed=11;S={f:-1,smoke:[],dust:[],bricks:[],embers:[],kicks:[],cam:{x:640,y:650,z:1.38},lastPh:null,shake:0};}
+function puff(arr,o){arr.push(Object.assign({a:0,life:3,vx:0,vy:-60,r0:20,r1:80,col:'#2b2c3b',hi:'#3e4054',lo:'#20202c',rot:R(0,6.28)},o))}
+function step(f){
+  const t=f/FPS,dt=1/FPS;
+  // smoke from the building (dark) and later from the ruins (grey, like the painted cloud)
+  const col=t>T_FALL+0.4;
+  if(!col){if(f%2===0)puff(S.smoke,{x:R(930,990),y:R(170,330),vx:R(30,70),vy:R(-110,-70),r0:R(25,40),r1:R(90,140),life:R(2.2,3.2)});
+}
+  else if(f%2===0)puff(S.smoke,{x:R(500,1050),y:R(470,640),vx:R(20,60),vy:R(-120,-70),r0:R(40,60),r1:R(130,190),life:R(2.6,3.6),col:'#5e5a5b',hi:'#7b7574',lo:'#47444a'});
+  // dust from the cracks before the fall, then the big burst when the floors come down
+  if(t>T_CRACK&&t<T_FALL+0.1&&f%2===0)puff(S.dust,{x:R(250,900),y:R(110,240),vx:R(-20,20),vy:R(40,120),r0:3,r1:R(6,10),life:R(0.5,0.8),col:'#6f625b',hi:'#7d7068',lo:'#574c47',g:400});
+  if(t>T_FALL+0.25&&t<T_FALL+0.9){const n=t<T_FALL+0.4?6:t<T_FALL+0.6?2:1;for(let i=0;i<n;i++){const x=R(300,980);
+    puff(S.dust,{x,y:R(560,720),vx:(x-600)*R(0.3,0.8)+R(0,120),vy:R(-300,-60),r0:R(80,120),r1:R(130,210),life:R(2.2,3.0),col:'#8f8279',hi:'#a09286',lo:'#6e635c',drag:1.6})}}
+  // the low rolling front along the sidewalk, chasing the runner
+  if(t>T_FALL+0.35&&t<T_FALL+0.95&&f%2===0)for(let i=0;i<2;i++)puff(S.dust,{x:R(800,1050),y:R(890,980),vx:R(380,640),vy:R(-60,0),r0:R(70,90),r1:R(90,140),life:R(1.8,2.5),col:'#8f8279',hi:'#a09286',lo:'#6e635c',drag:1.1});
+  // bricks thrown out when the floors hit the ground floor
+  if(t>T_FALL+0.28&&t<T_FALL+0.75&&f%2===0)for(let i=0;i<2;i++)S.bricks.push({x:R(250,980),y:R(640,700),vx:R(-150,520),vy:R(-650,-150),a:R(0,6),va:R(-9,9),w:R(26,44),h:R(13,19),gy:R(935,1000),age:0,rest:false});
+  // embers
+  const ebase=col?[[R(500,1100),R(520,760)]]:[[R(200,1000),R(260,640)],[R(420,520),R(720,900)]];
+  if(f%1===0)for(const[x,y]of ebase)S.embers.push({x,y,vx:R(-20,60),vy:R(-220,-90),age:0,life:R(0.9,1.8),r:R(1.6,3.4),ph:R(0,6)});
+  for(const p of[...S.smoke,...S.dust]){p.a+=dt;const dr=p.drag||0;p.vx*=Math.exp(-dr*dt);p.vy*=Math.exp(-dr*dt);if(p.g)p.vy+=p.g*dt;p.vx+=10*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.rot+=0.2*dt}
+  S.smoke=S.smoke.filter(p=>p.a<p.life);S.dust=S.dust.filter(p=>p.a<p.life);
+  for(const b of S.bricks){b.age+=dt;if(b.rest)continue;b.vy+=2600*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;b.a+=b.va*dt;
+    if(b.y>b.gy){b.y=b.gy;if(Math.abs(b.vy)<160){b.rest=true;b.a=Math.round(b.a/Math.PI)*Math.PI+R(-0.2,0.2)}else{b.vy*=-0.32;b.vx*=0.6;b.va*=0.5}}}
+  for(const e of S.embers){e.age+=dt;e.x+=e.vx*dt+Math.sin(e.age*5+e.ph)*0.8;e.y+=e.vy*dt}
+  S.embers=S.embers.filter(e=>e.age<e.life);
+  for(const k of S.kicks)k.a+=dt;S.kicks=S.kicks.filter(k=>k.a<0.7);
+  // camera: hold on the door, then follow the runner, then settle wide on the ruins
+  const r=runnerAt(t);let tx,ty,tz;
+  if(t<0.45){tx=600;ty=650;tz=1.38}
+  else if(t<T_FALL-0.15){tx=r.x+80;ty=650;tz=lerp(1.38,1.2,ss(0.4,1.2,t))}
+  else if(r&&r.x<1780){tx=lerp(r.x+80,1060,ss(T_FALL-0.15,T_FALL+0.3,t));ty=lerp(650,540,ss(T_FALL-0.15,T_FALL+0.3,t));tz=lerp(1.2,1.02,ss(T_FALL-0.15,T_FALL+0.3,t))}
+  else{tx=960;ty=540;tz=lerp(1.12,1.0,ss(3.3,5.2,t))}
+  const k=t<0.45?1:1-Math.exp(-dt*(t>3.2?1.6:t>T_FALL-0.2?4.5:3.2));
+  S.cam.x+=(tx-S.cam.x)*k;S.cam.y+=(ty-S.cam.y)*k;S.cam.z+=(tz-S.cam.z)*k;
+  {const hw=960/S.cam.z+20,hh=540/S.cam.z+20;S.cam.x=cl(S.cam.x,hw,W-hw);S.cam.y=cl(S.cam.y,hh,H-hh)}
+  S.shake=0.4*ss(T_CRACK,T_CRACK+0.15,t)*(1-ss(T_FALL,T_FALL+0.01,t))+14*ss(T_FALL+0.1,T_FALL+0.25,t)*(1-ss(T_FALL+0.35,T_FALL+1.3,t));
+}
+// ---------------------------------------------------------------- drawing helpers
+const CL=document.createElement('canvas');CL.width=W;CL.height=H;const cl2=CL.getContext('2d');
+function cloud(list,alpha){
+  const L=list.map(p=>{const k=p.a/p.life,r=lerp(p.r0,p.r1,1-Math.pow(1-k,2.2))*(1-0.75*ss(0.55,1,k))*Math.min(1,p.a/0.12+0.3);return{p,r}}).filter(o=>o.r>2);
+  if(!L.length||alpha<=0.01)return;
+  cl2.setTransform(1,0,0,1,0,0);cl2.clearRect(0,0,W,H);cl2.setTransform(cx.getTransform());
+  for(const pass of[0,1,2])for(const{p,r}of L){cl2.beginPath();
+    if(pass===0){cl2.fillStyle=p.lo;cl2.arc(p.x+r*0.05,p.y+r*0.14,r,0,7)}
+    else if(pass===1){cl2.fillStyle=p.col;cl2.arc(p.x-r*0.04,p.y,r*0.93,0,7)}
+    else{cl2.fillStyle=p.hi;cl2.arc(p.x-r*0.22,p.y-r*0.30,r*0.62,0,7)}cl2.fill()}
+  cx.save();cx.setTransform(1,0,0,1,0,0);cx.globalAlpha=alpha;cx.drawImage(CL,0,0);cx.restore()}
+function drawPuff(p,alpha){
+  const k=p.a/p.life,r=lerp(p.r0,p.r1,1-Math.pow(1-k,2.2)),al=alpha*Math.min(1,p.a/0.15)*(1-ss(0.65,1,k));
+  if(al<=0.01)return;cx.save();cx.globalAlpha=al;cx.translate(p.x,p.y);
+  cx.fillStyle=p.lo;cx.beginPath();cx.arc(0,r*0.12,r,0,7);cx.fill();
+  cx.fillStyle=p.col;cx.beginPath();cx.arc(-r*0.06,0,r*0.94,0,7);cx.fill();
+  cx.fillStyle=p.hi;cx.beginPath();cx.arc(-r*0.32,-r*0.34,r*0.5,0,7);cx.fill();cx.restore()}
+function flicker(t,i){return 0.5+0.5*Math.sin(t*13.1+i*1.7)*Math.sin(t*7.3+i*2.9)+0.25*Math.sin(t*23+i)}
+function drawFlames(img,boxes,t,alpha,filter){
+  if(alpha<=0)return;cx.save();cx.globalAlpha=alpha;
+  boxes.forEach((b,i)=>{if(filter&&!filter(b))return;const[x,y,w,h]=b,pad=26,X=x-pad,Y=y-pad*2,WW=w+2*pad,HH=h+pad*2.5;
+    const st=1+0.10*flicker(t,i),base=Y+HH;
+    for(let yy=0;yy<HH;yy+=3){const v=(base-(Y+yy))/HH,dx=Math.sin(t*9+yy*0.08+i)*4*v+Math.sin(t*17+yy*0.21)*1.6*v;
+      const dy=base-(base-(Y+yy))*st;cx.drawImage(img,X,Y+yy,WW,3,X+dx,dy,WW,3*st+0.6)}
+    // light spill on the bricks around the window
+    cx.globalCompositeOperation='lighter';const g=cx.createRadialGradient(x+w/2,y+h*0.6,4,x+w/2,y+h*0.6,Math.max(w,h)*1.1);
+    const a=0.10+0.08*flicker(t,i+5);g.addColorStop(0,`rgba(255,150,60,${a})`);g.addColorStop(1,'rgba(255,120,40,0)');cx.fillStyle=g;cx.fillRect(x-w,y-h,w*3,h*2.6);cx.globalCompositeOperation='source-over'});
+  cx.restore()}
+const grain=document.createElement('canvas');grain.width=480;grain.height=270;{const g=grain.getContext('2d'),d=g.createImageData(480,270);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}g.putImageData(d,0,0)}
+// ---------------------------------------------------------------- frame
+async function frame(f){
+  const t=f/FPS;
+  const cam=S.cam,shx=Math.sin(t*61)*S.shake+Math.sin(t*37)*S.shake*0.5,shy=Math.cos(t*53)*S.shake*0.8;
+  const view=(par)=>{const z=1+(cam.z-1)*par,X=960+(cam.x-960)*par,Y=540+(cam.y-540)*par;cx.setTransform(z,0,0,z,W/2-X*z+shx*par,H/2-Y*z+shy*par)};
+  const xf=ss(T_FALL+0.95,T_FALL+1.7,t);              // painting cross fade intact -> collapsed (under the dust)
+  cx.setTransform(1,0,0,1,0,0);cx.fillStyle='#000';cx.fillRect(0,0,W,H);
+  view(0.45);cx.drawImage(IM.S_sky,-200,0,W+400,H);cx.drawImage(IM.S_sky,0,0);
+  view(1);
+  // fore layer: intact painting, the collapsed painting behind the moving pieces, then the cross fade
+  if(xf<1)cx.drawImage(IM.S_plate,0,0);
+  if(t>T_FALL&&xf<1)cx.drawImage(IM.S_behind,0,0);
+  if(xf>0){cx.globalAlpha=xf;cx.drawImage(IM.S_collapsed,0,0);cx.globalAlpha=1}
+  // flames: the painting's own flames dance; upper floor flames go with the falling pieces
+  drawFlames(IM.F_plate,J.flames.plate,t,1-xf,b=>b[1]>660||t<T_CRACK);
+  drawFlames(IM.F_collapsed,J.flames.collapsed,t,xf);
+  // smoke behind the pieces
+  cloud(S.smoke,0.95);
+  // falling pieces (they sink behind the ground floor line)
+  if(xf<1&&t>=T_CRACK){cx.save();cx.beginPath();cx.rect(0,-500,W,FLOOR+500);cx.clip();
+    for(const c of J.chunks){const st=chunkState(c,t),im=IM[c.img.replace('.png','')],px=c.x+c.w/2,py=c.y+c.h;
+      cx.save();cx.translate(px+st.dx,py+st.dy);cx.rotate(st.a);cx.drawImage(im,-c.w/2,-c.h);cx.restore()}
+    cx.restore();
+    // flames riding on the upper pieces keep moving
+  } else if(t<T_CRACK){for(const c of J.chunks){}}
+  // dust behind the runner
+  BRICKS();
+  const DA=1-0.85*ss(T_FALL+1.5,T_FALL+3.4,t);
+  cloud(S.dust.filter(p=>p.y<900),DA);
+  function BRICKS(){for(const b of S.bricks){const al=1-ss(T_FALL+1.1,T_FALL+1.7,t);if(al<=0)continue;cx.save();cx.globalAlpha=al;cx.translate(b.x,b.y-b.h/2);cx.rotate(b.a);
+    cx.fillStyle='#5a281f';cx.fillRect(-b.w/2-1.5,-b.h/2-1.5,b.w+3,b.h+3);cx.fillStyle='#93412f';cx.fillRect(-b.w/2,-b.h/2,b.w,b.h);cx.fillStyle='#b8603f';cx.fillRect(-b.w/2,-b.h/2,b.w,b.h*0.3);cx.restore()}}
+  // runner: shadow on the sidewalk (fire light from behind him, so it falls to the right), then the skinned figure
+  const r=runnerAt(t);
+  if(r&&r.x<2300){const dist=DIST[f];const run=ss(T_OUT,T_WALK-0.1,t)*0.5+0.5;
+    const res=drawRunner({x:r.x,y:r.y,s:r.s,dist,run});
+    // dust kicks at each heel strike
+    const ph=res.ph;if(S.lastPh!==null){for(const[k,off]of[[0,0],[1,0.5]]){const a=(S.lastPh-off+1)%1,b=(ph-off+1)%1;if(b<a&&r.x>700)S.kicks.push({x:res.feet[k][0],y:r.y,a:0})}}S.lastPh=ph;
+    // shadow
+    cx.save();cx.globalCompositeOperation='multiply';const sl=lerp(0.55,0.35,ss(500,1500,r.x));
+    const gsh=cx.createRadialGradient(0,0,2,0,0,1);cx.translate(r.x+40*r.s/0.36,r.y+4);cx.scale(150*r.s/0.36,14*r.s/0.36);
+    gsh.addColorStop(0,`rgba(40,25,40,${sl})`);gsh.addColorStop(1,'rgba(40,25,40,0)');cx.fillStyle=gsh;cx.beginPath();cx.arc(0,0,1,0,7);cx.fill();cx.restore();
+    for(const k of S.kicks){const q=k.a/0.7;cx.save();cx.globalAlpha=0.5*(1-q);cx.fillStyle='#a3958a';for(let i=0;i<3;i++){cx.beginPath();cx.arc(k.x-14*i-q*30,k.y-6-q*16-i*4,(6+i*3)*(0.6+q),0,7);cx.fill()}cx.restore()}
+    // the figure: lit by the fire behind him; the light falls off as he gets away from it
+    const near=1-ss(450,1500,r.x),fl=flicker(t,3);
+    cx.save();cx.filter=`brightness(${(0.88+0.16*near+0.06*fl*near).toFixed(3)}) saturate(${(1+0.1*near).toFixed(2)})`;
+    if(t<T_DOOR){cx.beginPath();cx.rect(395,600,140,312);cx.clip()}
+    cx.setTransform(1,0,0,1,0,0);
+    // gl canvas is in world space: draw it through the same camera
+    view(1);cx.drawImage(gl.canvas,0,0);cx.restore();
+    // warm rim flash from the doorway right as he comes out
+    if(t<0.9){cx.save();view(1);cx.globalCompositeOperation='lighter';const gg=cx.createRadialGradient(465,800,10,465,800,260);gg.addColorStop(0,`rgba(255,140,50,${0.35*(1-ss(0.2,0.9,t))})`);gg.addColorStop(1,'rgba(255,120,40,0)');cx.fillStyle=gg;cx.fillRect(200,540,540,520);cx.restore()}
+  }
+  view(1);
+  // dust in front (the rolling front at ground level passes in front of the sidewalk)
+  cloud(S.dust.filter(p=>p.y>=900),1-0.85*ss(T_FALL+1.5,T_FALL+3.4,t));
+  // embers
+  cx.save();cx.globalCompositeOperation='lighter';for(const e of S.embers){const k=e.age/e.life,a=(1-k)*(0.6+0.4*Math.sin(e.age*20+e.ph));cx.fillStyle=`rgba(255,${150+60*(1-k)|0},70,${a})`;cx.beginPath();cx.arc(e.x,e.y,e.r,0,7);cx.fill()}cx.restore();
+  // one grade over everything: cool evening, warm fire flicker, impact flash, vignette, grain
+  cx.setTransform(1,0,0,1,0,0);
+  cx.save();cx.globalCompositeOperation='multiply';cx.globalAlpha=0.16;cx.fillStyle='#4a52a0';cx.fillRect(0,0,W,H);cx.restore();
+  const fl=0.10+0.05*flicker(t,9)+0.18*ss(T_FALL+0.12,T_FALL+0.2,t)*(1-ss(T_FALL+0.2,T_FALL+0.7,t));
+  cx.save();cx.globalCompositeOperation='soft-light';cx.globalAlpha=fl;const og=cx.createRadialGradient(W*0.3,H*0.6,50,W*0.3,H*0.6,W*0.9);og.addColorStop(0,'#ffb060');og.addColorStop(1,'#ff8a40');cx.fillStyle=og;cx.fillRect(0,0,W,H);cx.restore();
+  cx.save();const vg=cx.createRadialGradient(W/2,H/2,H*0.42,W/2,H/2,H*1.05);vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(15,8,25,.45)');cx.fillStyle=vg;cx.fillRect(0,0,W,H);cx.restore();
+  cx.save();cx.globalCompositeOperation='overlay';cx.globalAlpha=0.07;cx.drawImage(grain,(f*37)%40-40,(f*53)%30-30,W+80,H+60);cx.restore();
+}
+let READY=(async()=>{await Promise.all(['S_sky','S_plate','S_collapsed','S_behind','F_plate','F_collapsed','L_fararm','L_farleg','L_nearleg','L_body','L_neararm'].map(load));
+  J=window.FIREBG;await Promise.all(J.chunks.map(c=>load(c.img.replace('.png',''))));initGL();reset()})();
+window.__seek=async t=>{await READY;const f=Math.round(t*FPS);if(f<=S.f)reset();while(S.f<f){S.f++;step(S.f)}await frame(f)};
+</script></body></html>

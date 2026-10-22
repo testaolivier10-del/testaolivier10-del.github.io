@@ -6,7 +6,7 @@ const path = require('path');
 (async () => {
   const [page_, out, secs, fps_ = 30, w = 1920, h = 1080] = process.argv.slice(2);
   const fps = +fps_;
-  const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-sandbox'] });
+  const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-sandbox', '--allow-file-access-from-files'] });
   const page = await browser.newPage({ viewport: { width: +w, height: +h } });
   await page.goto('file://' + path.resolve(page_));
   const cdp = await page.context().newCDPSession(page);
