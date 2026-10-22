@@ -29,7 +29,7 @@ LEGACY = os.path.join(ROOT, "modal_ledger.json")
 RUNFILE = os.path.join(ROOT, ".git", "lp_run")     # inside .git: never shows up as an untracked file
 RATE = 0.0011          # USD per second, H100 on Modal (about $3.95 an hour), estimate
 CAP = 27.0             # monthly cap: the free $30 credit minus a $3 safety margin
-EST = {"video": 0.65, "images": 0.12}   # price of one call (per image prompt for images) while it is open
+EST = {"video": 0.65, "images": 0.12, "animate": 2.0}   # price of one call (per image prompt for images) while it is open
 STALE_H = 12           # a run file untouched this long belongs to a run that is over
 OPEN_MAX_H = 2         # no single Modal call lasts this long
 WEIGHT = {"shorts-sun": 4.0, "shorts-wed": 3.0, "long": 0.5}   # Shorts first (video standard 3c)
@@ -38,7 +38,7 @@ _COLLECTED = set()
 
 def _now(): return time.time()
 def _month(): return datetime.date.today().strftime("%Y-%m")
-def _est(o): return (EST["video"] if o["kind"].startswith("video") else EST["images"]) * o.get("n", 1)
+def _est(o): return (EST["animate"] if o["kind"].startswith("animate") else EST["video"] if o["kind"].startswith("video") else EST["images"]) * o.get("n", 1)
 
 def _need_repo():
     if not os.path.isdir(os.path.join(ROOT, ".git")):
