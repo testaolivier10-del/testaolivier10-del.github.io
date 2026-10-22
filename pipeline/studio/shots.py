@@ -13,7 +13,7 @@ python3 shots.py template <id> <seconds> ... -> writes a starter file with every
 import json, sys
 
 ITEMS = {
-    "art": "style bible followed, layered parts, same finish as the best shot, real reference checked, grayscale composition passes",
+    "art": "full lit style B scene matching the approved scenes (and the style bible once it exists), moving parts split from the painting, same finish as the best shot, real reference checked, grayscale composition passes",
     "motion_source": "motion comes from science simulation, a real human reference, or simple procedural motion (never hand keyed full body acting, never a pan over a still standing in for animation)",
     "rig": "joints bend smoothly, no detached parts, contacts stay planted",
     "life": "breathing and blinks on every visible person, springs on loose parts",
@@ -22,9 +22,9 @@ ITEMS = {
     "timing": "eased, no pops, smears on fast moves, a sound on every action",
     "accuracy": "matches the checked step list and protocol, nothing shown wrong",
     "consistency": "no visible drop or jump in quality from neighbouring shots",
-    "camera": "continuous moves between scales and places, purposeful framing",
+    "camera": "purposeful framing; continuous moves between scales and places when the camera moves (na for a static calm teaching shot)",
 }
-NA_OK = {"rig", "life", "liquids", "face"}
+NA_OK = {"rig", "life", "liquids", "face", "camera"}
 
 
 def check(path):
@@ -57,6 +57,7 @@ if __name__ == "__main__":
         vid, cuts = a[1], [float(x) for x in a[2:]]
         shots = [dict(id=f"s{i+1}", t0=cuts[i], t1=cuts[i + 1], what="", motion_source="", checks={k: "" for k in ITEMS}, notes="")
                  for i in range(len(cuts) - 1)]
+        import os; os.makedirs(f"/home/claude/lp/out/{vid}", exist_ok=True)
         json.dump(dict(video=vid, shots=shots), open(f"/home/claude/lp/out/{vid}/shots.json", "w"), indent=1)
         print("wrote", f"/home/claude/lp/out/{vid}/shots.json")
     elif a:

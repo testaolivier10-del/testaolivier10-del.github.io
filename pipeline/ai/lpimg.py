@@ -12,7 +12,7 @@ def req(path, data=None, method='GET'):
 job = json.load(open(sys.argv[1])); pre = sys.argv[2]
 job['refs_b64'] = [base64.b64encode(open(p, 'rb').read()).decode() for p in job.pop('refs')]
 n = max(1, len(job.get('prompts', [])))
-if not ledger.can_spend(ledger.EST['images'] * n): sys.exit('Not enough Modal budget left for this run (its reserved share or the month) (python3 ledger.py month). Use library stills instead.')
+if not ledger.can_spend(ledger.EST['images'] * n): sys.exit('Modal call refused (see the message above). Use library art or Gemini in Chrome (claude/levlprep-studio-wan.md), or redesign the shot; a stills fallback never ships.')
 s, b = req('/images', job, 'POST'); cid = b['call_id']; print('call', cid, flush=True); ledger.start(cid, 'images', n)
 t0 = time.time()
 while True:

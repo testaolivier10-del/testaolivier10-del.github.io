@@ -14,8 +14,9 @@ usage: python3 story.py template <id> [short|long]  > out/<id>/story.json   (a f
 story.json:
 { "id": "...", "format": "short" | "long", "duration": 27.5,
   "answer": {"kind": "place" | "action" | "definition", "what": "two inches above the wound, never on a joint"},
-  "beats": [ {"t0": 0.0, "t1": 1.2, "kind": "mistake" | "result" | "explain" | "answer" | "payoff" | "cta" | "other",
-              "person": true, "diagram": false,
+  "long_reason": "",                   # only for a Short over 30 s (allowed up to 40 s): why the idea needs it
+  "beats": [ {"t0": 0.0, "t1": 1.2, "kind": "mistake" | "surprise" | "question" | "result" | "explain" | "answer" | "payoff" | "cta" | "other",
+              "person": true, "anchor": false, "diagram": false,     # anchor = the story's object (a flask, a ball) when there is no person
               "changes": [0.0, 0.6],          # times (s) of visible changes inside this beat (moves, cuts, pops)
               "what": "tourniquet goes on over the knee", "source": "" } ] }
 For a long video the same checks run on the first 60 s with "promise" and "first_visual" beats due by 30 s.
@@ -53,11 +54,17 @@ def check(st):
     if not beats:
         return [("FAIL", "no beats")]
     if fmt == "short":
-        ok(SHORT_MIN <= dur <= SHORT_MAX, f"length {dur:.1f}s is within {SHORT_MIN:.0f} to {SHORT_MAX:.0f}s")
+        if SHORT_MIN <= dur <= SHORT_MAX:
+            ok(True, f"length {dur:.1f}s is within {SHORT_MIN:.0f} to {SHORT_MAX:.0f}s")
+        elif SHORT_MAX < dur <= 40.0:
+            ok(bool((st.get("long_reason") or "").strip()), f"length {dur:.1f}s is over 30s, allowed up to 40s only with a long_reason saying why the idea needs it")
+        else:
+            ok(False, f"length {dur:.1f}s is within 25 to 40s")
         hook_end, window, first = 2.0, (4.0, 10.0), [b for b in beats if b["t0"] < 2.0]
-        ok(any(b["kind"] == "mistake" for b in first), "a mistake is on screen before 2s")
-        ok(any(b["kind"] in ("result", "mistake") and b["t1"] <= 3.0 for b in beats if b["kind"] == "result") or
-           any(b["kind"] == "result" and b["t0"] < 2.0 for b in beats), "its result is visible by about 2s (by 3s at the latest)")
+        HOOK = ("mistake", "surprise", "question")   # a visible mistake (best), a surprising change, or a visual question
+        ok(any(b["kind"] in HOOK for b in first), "a mistake, a surprising change or a visual question is on screen before 2s")
+        ok(any(b["kind"] == "result" and b["t0"] < 3.0 for b in beats) or not any(b["kind"] == "mistake" for b in first),
+           "a mistake's result is visible by about 2s (by 3s at the latest)")
     else:
         hook_end, window, first = 4.0, (4.0, 30.0), [b for b in beats if b["t0"] < 4.0]
         ok(any(b["kind"] == "mistake" for b in first) or any(b["kind"] == "first_visual" and b["t0"] < 4 for b in beats),
@@ -68,7 +75,7 @@ def check(st):
     # person stays on screen when the diagram first appears
     d0 = next((b for b in beats if b.get("diagram")), None)
     if d0:
-        ok(bool(d0.get("person")), f"the person is still on screen when the diagram first appears ({d0['t0']:.1f}s)")
+        ok(bool(d0.get("person") or d0.get("anchor")), f"the person (or the story's object, \"anchor\": true) is still on screen when the diagram first appears ({d0['t0']:.1f}s)")
     # visible change cadence in the window
     ts = sorted({float(t) for b in beats for t in (b.get("changes") or [])} | {float(b["t0"]) for b in beats})
     a, z = window

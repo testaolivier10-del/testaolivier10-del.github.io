@@ -32,7 +32,7 @@ CAP = 27.0             # monthly cap: the free $30 credit minus a $3 safety marg
 EST = {"video": 0.65, "images": 0.12, "animate": 2.0}   # price of one call (per image prompt for images) while it is open
 STALE_H = 12           # a run file untouched this long belongs to a run that is over
 OPEN_MAX_H = 2         # no single Modal call lasts this long
-WEIGHT = {"shorts-sun": 4.0, "shorts-wed": 3.0, "long": 0.5}   # Shorts first (video standard 3c)
+WEIGHT = {"shorts-sun": 4.0, "shorts-wed": 3.0, "long": 0.5}   # Shorts first when splitting a fixed reservation
 GIT = ["git", "-C", ROOT, "-c", "user.name=LevlPrep automation", "-c", "user.email=noreply@levlprep.com"]
 _COLLECTED = set()
 
@@ -144,6 +144,10 @@ def real_usage_ok(usd=0.0):
     on Olivier's laptop and records it: python3 ledger.py real <usd>. Calls are refused unless that reading is
     from the last 3 hours of this calendar month and reading + this call stays under $26."""
     import datetime
+    from zoneinfo import ZoneInfo
+    if datetime.datetime.now(ZoneInfo("America/Los_Angeles")) < datetime.datetime(2026, 11, 1, tzinfo=ZoneInfo("America/Los_Angeles")):
+        print("ledger: October 2026's Modal credit is used up; no Modal calls before November 1 (Pacific).", file=sys.stderr)
+        return False
     try:
         d = json.load(open(REAL_FILE))
         t = datetime.datetime.fromisoformat(d["at"])
@@ -152,7 +156,8 @@ def real_usage_ok(usd=0.0):
               "then python3 ledger.py real <usd shown as usage this period>.", file=sys.stderr)
         return False
     now = datetime.datetime.now(datetime.timezone.utc)
-    if (now - t).total_seconds() > 3 * 3600 or (t.year, t.month) != (now.year, now.month):
+    pac = ZoneInfo("America/Los_Angeles")
+    if (now - t).total_seconds() > 3 * 3600 or (t.astimezone(pac).year, t.astimezone(pac).month) != (now.astimezone(pac).year, now.astimezone(pac).month):
         print("ledger: the real usage reading is older than 3 hours or from another month; read it again.", file=sys.stderr)
         return False
     if float(d["usd"]) + float(usd) >= REAL_CAP:
@@ -267,7 +272,7 @@ def begin(task, want="auto"):
         d = _read(_path(rid)) or _new_run(rid, task)
         d["reservation"] = {"usd": 0.0, "status": "active", "month": _month(), "asked": 0, "free_when_granted": 0}
         _save(rid, d)
-    print(f"run {rid}: the reservation was not accepted; reserved $0 (use reused art or the fallback in video standard section 2)")
+    print(f"run {rid}: the reservation was not accepted; reserved $0 (use library art or Gemini in Chrome, or the shot waits)")
     return 0.0
 
 def _run_line(rid, d):
