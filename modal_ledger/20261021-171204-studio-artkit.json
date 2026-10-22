@@ -1,0 +1,16 @@
+{
+ "run": "20261021-171204-studio-artkit",
+ "task": "studio-artkit",
+ "started": 1792627925.5146778,
+ "reservation": {
+  "usd": 8.0,
+  "status": "active",
+  "month": "2026-10",
+  "asked": 8.0,
+  "free_when_granted": 24.32
+ },
+ "spent_in_run": 0.0,
+ "open": {},
+ "calls": [],
+ "touched": 1792627925.514726
+}
