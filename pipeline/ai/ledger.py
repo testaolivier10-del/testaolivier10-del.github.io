@@ -131,7 +131,34 @@ def can_spend(usd):
         print("ledger: no reservation in this workspace. Run python3 ledger.py begin <task> auto first "
               "(or set LP_MANUAL=1 for a hand run in a chat).", file=sys.stderr)
         return False
+    if not real_usage_ok(usd):
+        return False
     return left() >= usd
+
+REAL_CAP = 26.0
+REAL_FILE = "/root/.lpkey/modal_real_usage.json"
+
+def real_usage_ok(usd=0.0):
+    """Since 2026-10-21 the ledger's own estimates are not trusted (October: $8.66 estimated, $30.13 real).
+    Before any Modal call the run reads the real usage on modal.com/settings/testaolivier10/usage in the browser
+    on Olivier's laptop and records it: python3 ledger.py real <usd>. Calls are refused unless that reading is
+    from the last 3 hours of this calendar month and reading + this call stays under $26."""
+    import datetime
+    try:
+        d = json.load(open(REAL_FILE))
+        t = datetime.datetime.fromisoformat(d["at"])
+    except Exception:
+        print("ledger: no real Modal usage reading. Read modal.com/settings/testaolivier10/usage in the browser, "
+              "then python3 ledger.py real <usd shown as usage this period>.", file=sys.stderr)
+        return False
+    now = datetime.datetime.now(datetime.timezone.utc)
+    if (now - t).total_seconds() > 3 * 3600 or (t.year, t.month) != (now.year, now.month):
+        print("ledger: the real usage reading is older than 3 hours or from another month; read it again.", file=sys.stderr)
+        return False
+    if float(d["usd"]) + float(usd) >= REAL_CAP:
+        print(f"ledger: real Modal usage {d['usd']} plus this call would reach the ${REAL_CAP:.0f} stop.", file=sys.stderr)
+        return False
+    return True
 
 # ---------- git ----------
 def _git(*a): return subprocess.run(GIT + list(a), capture_output=True, text=True)
@@ -276,6 +303,11 @@ if __name__ == "__main__":
     if cmd == "begin": begin(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "auto")
     elif cmd == "end": end()
     elif cmd == "sweep": sweep()
+    elif cmd == "real":
+        import datetime
+        os.makedirs(os.path.dirname(REAL_FILE), exist_ok=True)
+        json.dump({"usd": float(sys.argv[2]), "at": datetime.datetime.now(datetime.timezone.utc).isoformat()}, open(REAL_FILE, "w"))
+        print(f"real Modal usage recorded: ${float(sys.argv[2]):.2f} (stop at ${REAL_CAP:.0f}); valid for 3 hours")
     else:
         _need_repo()
         rid = run_id(); s, h, free = status(exclude=rid)
