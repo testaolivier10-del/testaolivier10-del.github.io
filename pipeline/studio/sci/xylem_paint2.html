@@ -1,0 +1,94 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script>
+// Painted version of the xylem scene: the painting (art/xylem_bg.jpg, Gemini, style B) shows the empty vessel; the engine
+// fills it with water that moves along the vessel's real path (vertical stem, curve, vein into the leaf), leaves the vein
+// into the leaf and exits the stoma as vapor. Cohesion = hydrogen bonds between neighbours, adhesion = slower near walls.
+const W=1920,H=1080,FPS=30,DUR=12,N=Math.round(DUR*FPS),cx=c.getContext('2d');
+let seed=5;const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
+// vessel centre line (measured on the painting) and half width along it
+const P=[[959,872],[959,468],[967,351],[991,253],[1034,179],[1102,125],[1189,94],[1326,78],[1482,72]];
+const HW=s=>s<420?44:Math.max(16,44-(s-420)*0.07);
+const SEG=[];let L=0;for(let i=0;i<P.length-1;i++){const dx=P[i+1][0]-P[i][0],dy=P[i+1][1]-P[i][1],l=Math.hypot(dx,dy);SEG.push({x:P[i][0],y:P[i][1],dx:dx/l,dy:dy/l,l,s0:L});L+=l}
+function at(s,u){s=Math.max(0,Math.min(L-0.01,s));let g=SEG[SEG.length-1];for(const q of SEG)if(s<q.s0+q.l){g=q;break}const t=s-g.s0;return[g.x+g.dx*t-g.dy*u*HW(s),g.y+g.dy*t+g.dx*u*HW(s)]}
+const STOMA={x:1579,y:322}, EXIT=L-40;                     // water leaves the vein near its end, into the leaf
+const sun=t=>Math.min(1,Math.max(0,(t-2.2)/1.6)), rate=t=>0.3+1.0*sun(t), VMAX=170;
+const LANES=[-0.7,-0.23,0.23,0.7],GAP=30,R=11;
+let mol=[];const spawn=(i,s)=>mol.push({lane:i,s,u:LANES[i]+(rnd()-0.5)*0.12,a:rnd()*6.28,ph:'v',x:0,y:0,vx:0,vy:0});
+for(let s=0;s<EXIT;s+=GAP*0.9)for(let i=0;i<4;i++)spawn(i,s+(i%2)*GAP*0.45);
+const frames=[],VAP=[];const dt=1/FPS;
+for(let f=0;f<N;f++){const t=f*dt,k=rate(t);
+  for(const m of mol){
+    if(m.ph==='v'){const prof=1-0.45*Math.pow(Math.abs(m.u),4);m.s+=VMAX*k*prof*dt;m.a+=0.03;
+      if(m.s>=EXIT){m.ph='leaf';[m.x,m.y]=at(m.s,m.u);m.vx=0;m.vy=60}}
+    else if(m.ph==='leaf'){const dx=STOMA.x-m.x,dy=STOMA.y-m.y,d=Math.hypot(dx,dy);m.vx+=dx/d*700*dt*(0.6+k);m.vy+=dy/d*700*dt*(0.6+k);m.vx*=0.93;m.vy*=0.93;m.x+=m.vx*dt;m.y+=m.vy*dt;m.a+=0.06;
+      if(d<22){m.ph='gone';VAP.push({t0:t,s:rnd()})}}}
+  mol=mol.filter(m=>m.ph!=='gone');
+  for(let i=0;i<4;i++){const ss=mol.filter(m=>m.ph==='v'&&m.lane===i).map(m=>m.s);const lo=ss.length?Math.min(...ss):1e9;if(lo>GAP*0.9)spawn(i,lo-GAP*0.9)}
+  frames.push(mol.map(m=>{const p=m.ph==='v'?at(m.s,m.u):[m.x,m.y];return[p[0],p[1],m.a,m.ph==='leaf'?1:0]}));
+}
+
+// ---------- one scene, not a background with stickers ----------
+// layers cut from the painting (art/L_*.png): far sky, the plant, the vessel's rings and walls IN FRONT of the water, soil in front
+const IM={};const LOAD=(k,u)=>new Promise(r=>{const i=new Image();i.onload=()=>{IM[k]=i;r()};i.src=u});
+const READY=Promise.all([LOAD('sky','art/L_sky.jpg'),LOAD('plant','art/L_plant.png'),LOAD('front','art/L_vesselfront.png'),LOAD('soil','art/L_soil.png')]);
+const grain=document.createElement('canvas');grain.width=480;grain.height=270;{const g=grain.getContext('2d'),d=g.createImageData(480,270);let q=7;for(let i=0;i<d.data.length;i+=4){q=(q*16807)%2147483647;const v=128+((q%64)-32);d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}g.putImageData(d,0,0)}
+const sm=x=>x*x*(3-2*x), lerp=(a,b,k)=>a+(b-a)*k;
+function camAt(t){ // continuous camera: wide, push to the stem, then glide up the vessel to the leaf and stoma
+  const K=[[0,960,540,1.0],[3,960,560,1.06],[6.5,985,560,1.3],[9,1150,360,1.3],[12,1235,330,1.4]];
+  for(let i=0;i<K.length-1;i++)if(t<=K[i+1][0]){const k=sm((t-K[i][0])/(K[i+1][0]-K[i][0]));return[lerp(K[i][1],K[i+1][1],k),lerp(K[i][2],K[i+1][2],k),lerp(K[i][3],K[i+1][3],k)]}
+  const z=K[K.length-1];return[z[1],z[2],z[3]]}
+function layer(img,cam,par,draw){const [x,y,z]=cam,zz=1+(z-1)*par;cx.save();cx.translate(W/2,H/2);cx.scale(zz,zz);cx.translate(-(W/2+(x-W/2)*par),-(H/2+(y-H/2)*par));if(draw)draw();else cx.drawImage(img,0,0,W,H);cx.restore()}
+function h2o(x,y,a,s=1,al=1){cx.save();cx.globalAlpha=al;cx.translate(x,y);cx.rotate(a);
+  // painted look: soft shadow, gradient, warm rim light from the upper left like the painting
+  cx.fillStyle='rgba(20,40,70,.25)';cx.beginPath();cx.ellipse(2,4,R*1.5*s,R*1.1*s,0,0,7);cx.fill();
+  const hx=Math.cos(0.91)*R*0.95*s,hy=Math.sin(0.91)*R*0.95*s;
+  for(const sx of[-1,1]){const g=cx.createRadialGradient(sx*hx-2,hy-2,1,sx*hx,hy,6*s);g.addColorStop(0,'#ffffff');g.addColorStop(1,'#cfdbe9');cx.fillStyle=g;cx.beginPath();cx.arc(sx*hx,hy,6*s,0,7);cx.fill()}
+  const g=cx.createRadialGradient(-3*s,-3*s,1,0,0,R*s);g.addColorStop(0,'#ff9f8f');g.addColorStop(0.7,'#e0503f');g.addColorStop(1,'#b8362a');cx.fillStyle=g;cx.beginPath();cx.arc(0,0,R*0.85*s,0,7);cx.fill();cx.strokeStyle='rgba(110,34,24,.85)';cx.lineWidth=1.4*s;cx.stroke();
+  cx.strokeStyle='rgba(255,230,180,.7)';cx.lineWidth=1.6*s;cx.beginPath();cx.arc(0,0,R*0.85*s,3.6,4.9);cx.stroke();cx.restore()}
+const ease=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)};
+function label(txt,x,y,lx,ly,t0,t,col){const a=ease((t-t0)/0.5);if(a<=0)return;cx.save();cx.globalAlpha=a;cx.strokeStyle=col;cx.lineWidth=4;cx.beginPath();cx.moveTo(x,y);cx.lineTo(lx,ly);cx.stroke();
+  cx.font='800 38px Inter,Arial';const w=cx.measureText(txt).width+40,bx=lx<x?lx-w:lx;cx.fillStyle='rgba(16,26,52,.86)';cx.beginPath();cx.roundRect(bx,ly-33,w,62,18);cx.fill();cx.fillStyle=col;cx.fillText(txt,bx+20,ly+10);cx.restore()}
+
+window.__seek=async function(t){await READY;const f=Math.min(N-1,Math.max(0,Math.round(t*FPS))),s=sun(t),cam=camAt(t);
+  cx.clearRect(0,0,W,H);
+  // far sky drifts least (parallax), clouds creep, the sun rises and its light grows
+  layer(IM.sky,cam,0.35,()=>{cx.drawImage(IM.sky,-30+t*3,0,W+60,H)});
+  layer(null,cam,0.35,()=>{cx.save();cx.globalCompositeOperation='screen';cx.globalAlpha=0.15+0.45*s;const sg=cx.createRadialGradient(120,40,10,120,40,1100);sg.addColorStop(0,'#fff1c0');sg.addColorStop(0.4,'rgba(255,214,120,.35)');sg.addColorStop(1,'rgba(255,200,100,0)');cx.fillStyle=sg;cx.fillRect(-200,-200,W+400,H+400);
+    for(let i=0;i<5;i++){cx.globalAlpha=(0.05+0.07*s)*(0.6+0.4*Math.sin(t*0.7+i));cx.fillStyle='#fff6d8';cx.beginPath();const a=0.35+i*0.11+Math.sin(t*0.2+i)*0.01;cx.moveTo(120,40);cx.lineTo(120+2600*Math.cos(a),40+2600*Math.sin(a));cx.lineTo(120+2600*Math.cos(a+0.035),40+2600*Math.sin(a+0.035));cx.fill()}cx.restore()});
+  // the plant: the leaf sways on its stem, the whole plant breathes a little
+  layer(null,cam,1.0,()=>{
+    cx.save();cx.beginPath();cx.rect(0,0,1060,H);cx.rect(1060,420,W,H);cx.clip();cx.drawImage(IM.plant,0,0,W,H);cx.restore();
+    cx.save();cx.beginPath();cx.rect(1060,0,W,420);cx.clip();const a=Math.sin(t*1.1)*0.004+Math.sin(t*2.3)*0.0015;cx.translate(1040,170);cx.rotate(a);cx.translate(-1040,-170);cx.drawImage(IM.plant,0,0,W,H);cx.restore();
+    // water fills the vessel as a liquid (continuous column), molecules inside it
+    cx.save();cx.lineCap='round';cx.lineJoin='round';cx.beginPath();for(let q=0;q<=EXIT;q+=12){const p=at(q,0);q?cx.lineTo(p[0],p[1]):cx.moveTo(p[0],p[1])}
+    cx.strokeStyle='rgba(110,175,240,.32)';cx.lineWidth=70;cx.stroke();cx.restore();
+    const M=frames[f];
+    cx.save();cx.setLineDash([5,5]);cx.lineWidth=2.5;
+    for(let i=0;i<M.length;i++){if(M[i][3])continue;for(let j=i+1;j<M.length;j++){if(M[j][3])continue;const dx=M[i][0]-M[j][0],dy=M[i][1]-M[j][1],d=dx*dx+dy*dy;if(d<40*40){cx.strokeStyle=`rgba(60,120,200,${0.75-d/1600*0.45})`;cx.beginPath();cx.moveTo(M[i][0],M[i][1]);cx.lineTo(M[j][0],M[j][1]);cx.stroke()}}}
+    cx.restore();
+    for(const m of M)h2o(m[0],m[1],m[2],m[3]?0.85:1);
+    // the vessel's rings and walls are IN FRONT of the water: the water is inside the tube, not pasted on it
+    cx.save();cx.globalAlpha=0.82;cx.drawImage(IM.front,0,0,W,H);cx.restore();
+    // the stoma reacts: a soft glow each time vapor leaves, stronger in sun
+    let pulse=0;for(const v of VAP){const a=t-v.t0;if(a>=0&&a<0.6)pulse=Math.max(pulse,1-a/0.6)}
+    cx.save();cx.globalCompositeOperation='screen';cx.globalAlpha=0.35*pulse*(0.4+0.6*s);const gg=cx.createRadialGradient(STOMA.x,STOMA.y,2,STOMA.x,STOMA.y,60);gg.addColorStop(0,'#e8fbff');gg.addColorStop(1,'rgba(200,240,255,0)');cx.fillStyle=gg;cx.fillRect(STOMA.x-70,STOMA.y-70,140,140);cx.restore();
+    for(const v of VAP){const a=t-v.t0;if(a<0||a>2.4)continue;const p=a/2.4,x=STOMA.x+(v.s-0.5)*80*p+Math.sin(a*2+v.s*9)*12*p,y=STOMA.y+20+170*p;cx.save();cx.globalAlpha=(1-p)*0.6;cx.strokeStyle='#ffffff';cx.lineWidth=6*(1-p*0.5);cx.lineCap='round';cx.beginPath();cx.moveTo(x,y);cx.bezierCurveTo(x+16*Math.sin(a*4),y+20,x-16,y+40,x+8*Math.sin(a*5),y+60);cx.stroke();cx.restore();h2o(x,y,a*3,0.7,(1-p)*0.85)}
+  });
+  // soil is the nearest layer: it slides a bit more than the plant (depth)
+  layer(IM.soil,cam,1.12);
+  // one grade over everything so every layer shares the same light: warm as the sun comes up, a soft vignette, the same grain
+  cx.save();cx.globalCompositeOperation='multiply';cx.globalAlpha=0.22*(1-s);cx.fillStyle='#4a5a9a';cx.fillRect(0,0,W,H);cx.restore();
+  cx.save();cx.globalCompositeOperation='soft-light';cx.globalAlpha=0.25*s;cx.fillStyle='#ffd08a';cx.fillRect(0,0,W,H);cx.restore();
+  cx.save();const vg=cx.createRadialGradient(W/2,H/2,H*0.45,W/2,H/2,H*1.05);vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(20,10,30,.35)');cx.fillStyle=vg;cx.fillRect(0,0,W,H);cx.restore();
+  cx.save();cx.globalCompositeOperation='overlay';cx.globalAlpha=0.07;cx.drawImage(grain,(f*37)%40-40,(f*53)%30-30,W+80,H+60);cx.restore();
+  // labels follow the camera (they point at things in the scene)
+  layer(null,cam,1.0,()=>{
+    const win=(a,b)=>t>=a&&t<b+0.5;
+    if(win(3.6,6.2))label('cohesion: H bonds hold the chain',1000,600,1060,560,3.6,t,'#9fd2ff');
+    if(win(5.6,8.4))label('adhesion: water clings to the walls',1000,720,1060,700,5.6,t,'#ffd9a0');
+    if(t>=8.8)label('evaporation pulls the chain up',STOMA.x,STOMA.y+60,STOMA.x-10,STOMA.y+250,8.8,t,'#e8f4ff');
+  });
+};
+__seek(0);
+</script></body></html>
