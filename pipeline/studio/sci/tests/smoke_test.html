@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735;overflow:hidden}svg,canvas{position:absolute;left:0;top:0}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d2b5e"/><stop offset="1" stop-color="#4a5f9a"/></linearGradient>
+<linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f5a45"/><stop offset="1" stop-color="#1c3a2c"/></linearGradient></defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<rect y="880" width="1920" height="200" fill="url(#gr)"/><rect y="880" width="1920" height="8" fill="#4f8a62"/>
+<g id="scene"></g></svg>
+<canvas id="cv" width="1920" height="1080"></canvas>
+<svg id="fg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><g id="front"></g><g id="ui"></g></svg>
+<script src="../common.js"></script><script src="../smoke.js"></script>
+<script>
+const S = LPSci, sc = document.getElementById('scene'), fr = document.getElementById('front'), ui = document.getElementById('ui');
+S.defs(sc); S.defs(fr);
+// campfire logs (in front of the flame base)
+S.mk('rect', { x: 230, y: 860, width: 200, height: 34, rx: 17, fill: S.lin(fr, '#8a5a3a', '#5a3622', 90), transform: 'rotate(-14 330 877)', filter: 'url(#sciRim)' }, fr);
+S.mk('rect', { x: 230, y: 860, width: 200, height: 34, rx: 17, fill: S.lin(fr, '#9a6844', '#5a3622', 90), transform: 'rotate(14 330 877)', filter: 'url(#sciRim)' }, fr);
+for (let i = 0; i < 7; i++) S.mk('ellipse', { cx: 250 + i * 27, cy: 896, rx: 16, ry: 9, fill: S.sphere(fr, '#8b8f9c') }, fr);
+// factory with a smokestack
+S.mk('rect', { x: 760, y: 700, width: 300, height: 180, rx: 10, fill: S.lin(sc, '#7f8db3', '#52608a', 90), filter: 'url(#sciRim)' }, sc);
+S.mk('rect', { x: 960, y: 420, width: 64, height: 300, rx: 8, fill: S.lin(sc, '#a5b0cc', '#6b779c', 0), filter: 'url(#sciRim)' }, sc);
+S.mk('rect', { x: 952, y: 408, width: 80, height: 26, rx: 8, fill: '#c9d1e6' }, sc);
+for (let i = 0; i < 3; i++) S.mk('rect', { x: 790 + i * 80, y: 760, width: 50, height: 60, rx: 6, fill: '#ffd98a', opacity: 0.85 }, sc);
+// stove and kettle
+S.mk('rect', { x: 1440, y: 780, width: 300, height: 100, rx: 14, fill: S.lin(sc, '#e6e9f2', '#a9b0c4', 90), filter: 'url(#sciRim)' }, sc);
+S.mk('path', { d: 'M1500 780 C1500 690 1680 690 1680 780Z', fill: S.lin(sc, '#e5574a', '#a92f2f', 90), filter: 'url(#sciRim)' }, sc);
+S.mk('path', { d: 'M1670 740 L1760 676 L1772 690 L1684 760Z', fill: '#c4433a' }, sc);
+S.mk('rect', { x: 1565, y: 676, width: 50, height: 20, rx: 10, fill: '#3a3f52' }, sc);
+const sm = new LPSmoke(document.getElementById('cv'), { seed: 4, wind: [[0, 70, 0], [8, 70, 0]], emitters: [
+  { preset: 'smoke', x: 330, y: 740, w: 46, rate: 16, start: 0 },
+  { preset: 'flame', x: 330, y: 864, w: 80, rate: 80, start: 0 },
+  { preset: 'plume', x: 992, y: 404, w: 44, rate: 16, start: 0 },
+  { preset: 'steam', x: 1762, y: 678, w: 14, rate: 26, start: 0, dir: [0.8, -1], scale: 0.9 },
+] });
+const L = ['Combustion: flame and smoke', 'Pollution plume in the wind', 'Steam (condensed water droplets)'].map(() => S.label(ui, { size: 28 }));
+window.__seek = (t) => { sm.draw(t + 4); L[0].set('Combustion: flame and smoke', 330, 120); L[1].set('Pollution plume in the wind', 992, 120); L[2].set('Steam (condensed water droplets)', 1600, 120); };
+</script></body></html>

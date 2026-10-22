@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<rect width="1920" height="1080" fill="#1d3a6a"/><g id="s"></g><g id="ui"></g></svg>
+<script src="../common.js"></script><script src="../signal.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+const syn = new LPSynapse(document.getElementById('s'), { x: 960, y: 560, scale: 1.1, release: 0.6 });
+const L = S.label(ui, { size: 30 });
+window.__seek = (t) => { const r = syn.draw(t); const tr = t - 0.6;
+  L.set(tr < 0 ? 'Action potential arriving' : tr < 0.5 ? 'Ca²⁺ channels open, Ca²⁺ flows in' : tr < 1.2 ? 'Vesicles fuse and release neurotransmitter' : `Neurotransmitter binds receptors (${r.bound} open)`, 960, 60); };
+</script></body></html>

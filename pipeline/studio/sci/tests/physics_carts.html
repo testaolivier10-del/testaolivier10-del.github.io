@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2753"/><stop offset="1" stop-color="#0f1534"/></linearGradient></defs>
+<rect width="1920" height="1080" fill="url(#bg)"/><g id="c"></g><g id="ui"></g>
+</svg>
+<script src="../common.js"></script><script src="../vendor/planck-1.4.2.min.js"></script><script src="../physics.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+const C = new LPCarts(document.getElementById('c'), { track: { x0: 100, x1: 1820, y: 560 }, scale: 150, e: 1, walls: false, vScale: 120,
+  carts: [{ m: 2, v: 1.2, x: 1.0, w: 1.3, color: '#4a86e8' }, { m: 1, v: 0, x: 3.6, w: 0.9, color: '#f08a3c' }] });
+const L = [S.label(ui, { size: 32 })];
+// momentum bars: p1 + p2 stacked, total stays the same through the collision
+const pg = S.mk('g', {}, ui), PX = 560, PY = 760, PS = 260;
+const bar1 = S.mk('rect', { y: PY, height: 54, rx: 12, fill: '#4a86e8' }, pg), bar2 = S.mk('rect', { y: PY, height: 54, rx: 12, fill: '#f08a3c' }, pg);
+const ke1 = S.mk('rect', { y: PY + 110, height: 54, rx: 12, fill: '#4a86e8' }, pg), ke2 = S.mk('rect', { y: PY + 110, height: 54, rx: 12, fill: '#f08a3c' }, pg);
+const txt = (x, y, s, a) => { const e = S.mk('text', { x, y, 'font-family': 'Inter', 'font-weight': 800, 'font-size': s, fill: '#e8ecf8', 'text-anchor': a || 'start' }, pg); return e; };
+const tp = txt(PX - 30, PY + 38, 30, 'end'), tk = txt(PX - 30, PY + 148, 30, 'end'), vp = txt(0, PY + 38, 30), vk = txt(0, PY + 148, 30);
+tp.textContent = 'momentum p = mv'; tk.textContent = 'kinetic energy';
+window.__seek = (t) => {
+  const st = C.draw(t), [a, b] = st.carts;
+  let x = PX; bar1.setAttribute('x', x); bar1.setAttribute('width', Math.max(0, a.p * PS)); bar2.setAttribute('x', x + Math.max(0, a.p * PS)); bar2.setAttribute('width', Math.max(0, b.p * PS));
+  ke1.setAttribute('x', x); ke1.setAttribute('width', a.ke * PS); ke2.setAttribute('x', x + a.ke * PS); ke2.setAttribute('width', b.ke * PS);
+  vp.setAttribute('x', PX + st.P * PS + 24); vp.textContent = `${a.p.toFixed(2)} + ${b.p.toFixed(2)} = ${st.P.toFixed(2)} kg·m/s`;
+  vk.setAttribute('x', PX + st.KE * PS + 24); vk.textContent = `${a.ke.toFixed(2)} + ${b.ke.toFixed(2)} = ${st.KE.toFixed(2)} J`;
+  L[0].set('Elastic collision · momentum and kinetic energy are conserved', 960, 90);
+};
+</script></body></html>

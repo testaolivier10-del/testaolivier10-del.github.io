@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<rect width="1920" height="1080" fill="#16204a"/><g id="sp"></g><g id="pe"></g><g id="in"></g><g id="ui"></g></svg>
+<script src="../common.js"></script><script src="../vendor/planck-1.4.2.min.js"></script><script src="../physics.js"></script>
+<script>
+const sp = new LPSpring(document.getElementById('sp'), { wall: [120, 860], scale: 260, k: 20, m: 1, x0: 0.35, rest: 1.0, fScale: 14 });
+const pe = new LPPendulum(document.getElementById('pe'), { pivot: [560, 90], scale: 260, L: 1.6, theta0: 35, fScale: 9 });
+const inc = new LPIncline(document.getElementById('in'), { origin: [1000, 1000], scale: 100, angle: 32, len: 8.5, m: 2, mu_s: 0.4, mu_k: 0.25, start: 7, fScale: 8 });
+window.__seek = (t) => { sp.draw(t); pe.draw(t); inc.draw(t); };
+</script></body></html>

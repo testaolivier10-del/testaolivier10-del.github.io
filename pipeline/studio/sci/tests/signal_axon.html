@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3462"/><stop offset="1" stop-color="#122248"/></linearGradient></defs>
+<rect width="1920" height="1080" fill="url(#bg)"/><g id="a"></g><g id="b"></g><g id="ui"></g></svg>
+<script src="../common.js"></script><script src="../signal.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+const common = { x: 140, length: 1640, radius: 40, lengthMM: 30, msPerSec: 0.25, stimAt: 0.3 };
+const A = new LPAxon(document.getElementById('a'), Object.assign({ y: 360, myelin: false, seed: 1 }, common));
+const B = new LPAxon(document.getElementById('b'), Object.assign({ y: 850, myelin: true, internodeMM: 3, seed: 2 }, common));
+const L = [S.label(ui, { size: 30 }), S.label(ui, { size: 30 }), S.label(ui, { size: 24, bg: '#2a3a72' }), S.label(ui, { size: 24, bg: '#2a3a72' }), S.label(ui, { size: 26, bg: '#2a3a72' })];
+const pl1 = S.label(ui, { size: 20, bg: '#3a3420', fg: '#ffd34d' }), pl2 = S.label(ui, { size: 20, bg: '#3a3420', fg: '#ffd34d' });
+window.__seek = (t) => {
+  const a = A.draw(t), b = B.draw(t);
+  L[0].set('Unmyelinated axon: continuous conduction', 520, 50); L[1].set('Myelinated axon: saltatory conduction (node to node)', 640, 560);
+  L[2].set(a.vel ? `${a.vel.toFixed(0)} m/s` : '…', 1720, 50, 1); L[3].set(b.vel ? `${b.vel.toFixed(0)} m/s` : '…', 1720, 560, 1);
+  const pa = A.profBase, pb = B.profBase; pl1.set('membrane potential along the axon', 300, pa - 118, 1); pl2.set('membrane potential along the axon', 300, pb - 118, 1);
+  L[4].set(`t = ${a.tau.toFixed(2)} ms (slowed)`, 1680, 1040, 1);
+};
+</script></body></html>

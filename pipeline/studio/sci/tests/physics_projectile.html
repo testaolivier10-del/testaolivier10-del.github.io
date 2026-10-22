@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f3a78"/><stop offset="1" stop-color="#5b7fc4"/></linearGradient></defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<circle cx="1660" cy="170" r="70" fill="#ffd98a" opacity="0.9"/><circle cx="1660" cy="170" r="110" fill="#ffd98a" opacity="0.15"/>
+<g id="ground"></g><g id="drag"></g><g id="p"></g><g id="ui"></g>
+</svg>
+<script src="../common.js"></script><script src="../physics.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+LPPhysicsArt.ground(document.getElementById('ground'), document.getElementById('ground'), 0, 1920, 940);
+// launch pad
+S.mk('path', { d: 'M120 940 L240 940 L220 905 L140 905Z', fill: '#2b3560' }, document.getElementById('ground'));
+const base = { origin: [180, 905], scale: 46, v0: 18, angle: 55, launchAt: 0.4, vScale: 15, r: 26 };
+const withDrag = new LPProjectile(document.getElementById('drag'), Object.assign({}, base, { drag: 0.012, color: '#7db7ff', showComponents: false, showVelocity: false, strobe: 1e9 }));
+const P = new LPProjectile(document.getElementById('p'), base);
+const L = [S.label(ui, { size: 30 }), S.label(ui, { size: 26, bg: '#2f5a9e' })];
+window.__seek = (t) => {
+  const d = withDrag.draw(t), st = P.draw(t);
+  L[0].set(`Projectile · v₀ = 18 m/s at 55° · t = ${Math.max(0, Math.min(st.tt, st.tf || 0)).toFixed(2)} s`, 960, 64);
+  const [dx, dy] = withDrag.px(d.x, d.y); L[1].set('with air drag', dx + 30, dy + 40, d.pre ? 0 : 1);
+};
+</script></body></html>

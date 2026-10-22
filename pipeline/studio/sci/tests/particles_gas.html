@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2753"/><stop offset="1" stop-color="#0f1534"/></linearGradient></defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<g id="heat"></g><g id="a"></g><g id="b"></g><g id="ui"></g>
+</svg>
+<script src="../common.js"></script><script src="../particles.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+const species = { N2: { shape: 'diatomic', r: 11, m: 28, color: '#4b74e0' }, O2: { shape: 'diatomic', r: 11, m: 32, color: '#e5483b' } };
+const mkSys = (id, x, T, bg, seed) => new LPParticles(document.getElementById(id), { box: { x, y: 130, w: 800, h: 520 }, species, bg, seed,
+  fill: [{ s: 'N2', n: 104 }, { s: 'O2', n: 26 }], T, vScale: 150, trails: true, hist: { bins: 20, vmax: 700, tau: 0.8 } });
+const cold = mkSys('a', 120, 150, '#1b3a6e', 3), hot = mkSys('b', 1000, 600, '#4a2342', 4);
+// heater glow under the hot box, frost under the cold
+S.mk('ellipse', { cx: 1400, cy: 680, rx: 420, ry: 40, fill: '#ff7a3c', opacity: 0.35, filter: 'url(#sciGlow)' }, document.getElementById('heat'));
+S.mk('ellipse', { cx: 520, cy: 680, rx: 420, ry: 40, fill: '#7fc8ff', opacity: 0.25, filter: 'url(#sciGlow)' }, document.getElementById('heat'));
+const lab = [S.label(ui, { size: 34, bg: '#1d4f8f' }), S.label(ui, { size: 34, bg: '#a8402c' })];
+// speed histograms with the Maxwell-Boltzmann (2D: Rayleigh) curve for each temperature
+const H = { y0: 1010, h: 220, w: 800, vmax: 700, bins: 20 };
+function hist(sys, x0, T, col) {
+  const g = sys._hg || (sys._hg = S.mk('g', {}, ui));
+  if (!sys._bars) {
+    S.mk('rect', { x: x0, y: H.y0 + 2, width: H.w, height: 5, rx: 2.5, fill: '#c9d4f2', opacity: 0.6 }, g);
+    sys._bars = []; for (let i = 0; i < H.bins; i++) sys._bars.push(S.mk('rect', { rx: 5, fill: S.lin(ui, S.lighten(col, 0.3), col, 90) }, g));
+    sys._curve = S.mk('path', { fill: 'none', stroke: '#fff1d6', 'stroke-width': 5, 'stroke-linecap': 'round', opacity: 0.9 }, g);
+    const tx = S.mk('text', { x: x0 + H.w, y: H.y0 + 44, 'text-anchor': 'end', 'font-family': 'Inter', 'font-weight': 700, 'font-size': 26, fill: '#c9d4f2' }, g); tx.textContent = 'molecular speed →';
+    const ty = S.mk('text', { x: x0, y: H.y0 - H.h + 40, 'font-family': 'Inter', 'font-weight': 700, 'font-size': 26, fill: '#c9d4f2' }, g); ty.textContent = 'number of molecules';
+  }
+  return (t) => {
+    const fr = sys.state(t).hist, bw = H.vmax / H.bins;
+    fr.forEach((c, i) => { const h = c * (H.h / 0.30); const b = sys._bars[i];
+      b.setAttribute('x', x0 + i * H.w / H.bins + 3); b.setAttribute('width', H.w / H.bins - 6); b.setAttribute('y', H.y0 - h); b.setAttribute('height', Math.max(0, h)); });
+    // expected fraction per bin from the Rayleigh pdf (mass-weighted mix of N2 and O2)
+    const pts = []; for (let v = 0; v <= H.vmax; v += 8) { let f = 0; [[28, 0.8], [32, 0.2]].forEach(([m, w]) => { const s = sys.sigma(T, m); f += w * v / (s * s) * Math.exp(-v * v / (2 * s * s)); });
+      pts.push([x0 + v / H.vmax * H.w, H.y0 - f * bw * (H.h / 0.30)]); }
+    sys._curve.setAttribute('d', S.smooth(pts, false));
+  };
+}
+const h1 = hist(cold, 120, 150, '#4f8fe0'), h2 = hist(hot, 1000, 600, '#ef7a45');
+window.__seek = (t) => {
+  cold.draw(t); hot.draw(t); h1(t); h2(t);
+  lab[0].set('Cold gas · 150 K', 520, 82); lab[1].set('Hot gas · 600 K', 1400, 82);
+};
+</script></body></html>

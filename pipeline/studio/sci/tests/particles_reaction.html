@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<rect width="1920" height="1080" fill="#151d44"/><g id="a"></g><g id="b"></g><g id="ui"></g></svg>
+<script src="../common.js"></script><script src="../particles.js"></script>
+<script>
+// A + B -> AB with activation energy Ea = 2.5 kT(300 K): the hot box reacts much faster (Arrhenius-like)
+const S = LPSci, ui = document.getElementById('ui');
+const species = { A: { shape: 'ball', r: 14, m: 20, color: '#4fa3e8' }, B: { shape: 'ball', r: 12, m: 16, color: '#f0b53c' }, C: { shape: 'pair', r: 18, m: 36, color: '#4fa3e8', color2: '#f0b53c' } };
+const mk = (id, x, T, seed) => new LPParticles(document.getElementById(id), { box: { x, y: 160, w: 800, h: 760 }, species, seed, T, vScale: 160, bg: T > 400 ? '#4a2342' : '#1b3a6e',
+  fill: [{ s: 'A', n: 50 }, { s: 'B', n: 50 }], reactions: [{ a: 'A', b: 'B', c: 'C', Ea: 2.5 }], thermostat: 0.5 });
+const cold = mk('a', 120, 250, 1), hot = mk('b', 1000, 700, 2);
+const L = [S.label(ui, { bg: '#1d4f8f' }), S.label(ui, { bg: '#a8402c' })];
+window.__seek = (t) => { const a = cold.draw(t), b = hot.draw(t);
+  L[0].set(`250 K · ${a.reacted} products`, 520, 90); L[1].set(`700 K · ${b.reacted} products`, 1400, 90); };
+</script></body></html>

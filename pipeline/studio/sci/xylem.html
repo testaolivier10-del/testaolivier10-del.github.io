@@ -1,0 +1,91 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#0d1530}canvas{display:block}</style></head><body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script>
+// Water rising in a xylem vessel (transpiration pull, cohesion, adhesion). Deterministic: every frame is precomputed.
+const W=1920,H=1080,FPS=30,DUR=12,N=Math.round(DUR*FPS);
+const cx=c.getContext('2d');
+let seed=11;const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
+// vessel geometry
+const VX0=760,VX1=1000,VTOP=250,VBOT=1000;            // tube interior
+const STOMA={x:1500,y:250};                               // pore on the leaf underside, right
+const sun=t=>Math.min(1,Math.max(0,(t-2.2)/1.6));        // sunlight comes up at 2.2 s
+const rate=t=>0.25+1.0*sun(t);                            // column speed scale (evaporation pulls harder in sun)
+const VMAX=150;                                           // px/s at the vessel centre in full sun
+// molecules: lattice in the tube
+const R=13, GAP=34;
+let mol=[];
+const NL=Math.floor((VX1-VX0-2*R)/GAP);
+function spawn(i,y){mol.push({lane:i,x:VX0+R+6+i*GAP+(rnd()-0.5)*6,y:y+(rnd()-0.5)*6,a:rnd()*6.28,ph:'col',vx:0,vy:0})}
+function spawnRow(y){for(let i=0;i<NL;i++)spawn(i,y)}
+for(let y=VBOT-R;y>VTOP-60;y-=GAP*0.88)spawnRow(y);
+let nextRow=VBOT+GAP*0.88-R, frames=[], vapor=[], rowAcc=0;
+const dt=1/FPS;
+for(let f=0;f<N;f++){
+  const t=f*dt,k=rate(t);
+  for(const m of mol){
+    if(m.ph==='col'){
+      const u=(m.x-VX0)/(VX1-VX0);               // 0..1 across the vessel
+      const prof=Math.max(0.55,1-0.6*Math.pow(2*u-1,6)); // adhesion: water at the walls is held back
+      m.y-=VMAX*k*prof*dt; m.x+=Math.sin(t*3+m.a)*0.25; m.a+=0.02;
+      if(m.y<VTOP-40){m.ph='leaf';m.vx=(70+rnd()*60);m.vy=-(10+rnd()*20);}  // reaches the leaf, heads for the stoma
+    }else if(m.ph==='leaf'){
+      const dx=STOMA.x-m.x,dy=STOMA.y-m.y,d=Math.hypot(dx,dy);
+      m.vx+=dx/d*900*dt*(0.6+k); m.vy+=dy/d*900*dt*(0.6+k); m.vx*=0.94;m.vy*=0.94;
+      m.x+=m.vx*dt;m.y+=m.vy*dt; m.a+=0.06;
+      if(d<30){m.ph='gone';vapor.push({x:STOMA.x,y:STOMA.y+10,t0:t,s:rnd()})}
+    }
+  }
+  mol=mol.filter(m=>m.ph!=='gone');
+  // keep the column continuous from the roots: a new row enters when the bottom row has moved up
+  for(let i=0;i<NL;i++){const ys=mol.filter(m=>m.ph==='col'&&m.lane===i).map(m=>m.y);const low=ys.length?Math.max(...ys):-1e9;if(low<VBOT-R-GAP*0.88+2)spawn(i,low+GAP*0.88)}
+  frames.push(mol.map(m=>[m.x,m.y,m.a,m.ph==='leaf'?1:0,(m.x-VX0)/(VX1-VX0)]));
+}
+const VAP=vapor;
+function drawMol(x,y,a,s=1,al=1){cx.save();cx.globalAlpha=al;cx.translate(x,y);cx.rotate(a);
+  const hx=Math.cos(0.91)*R*0.95,hy=Math.sin(0.91)*R*0.95;
+  for(const sx of[-1,1]){const g=cx.createRadialGradient(sx*hx-2,hy-2,1,sx*hx,hy,7*s);g.addColorStop(0,'#ffffff');g.addColorStop(1,'#cfd9e8');cx.fillStyle=g;cx.beginPath();cx.arc(sx*hx,hy,7*s,0,7);cx.fill()}
+  const g=cx.createRadialGradient(-4,-4,2,0,0,R*s);g.addColorStop(0,'#ff8a80');g.addColorStop(1,'#d8443a');cx.fillStyle=g;cx.beginPath();cx.arc(0,0,R*0.85*s,0,7);cx.fill();cx.restore()}
+function ease(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)}
+function label(txt,x,y,lx,ly,t0,t,col){const a=ease((t-t0)/0.5);if(a<=0)return;cx.save();cx.globalAlpha=a;cx.strokeStyle=col;cx.lineWidth=4;cx.beginPath();cx.moveTo(x,y);cx.lineTo(lx,ly);cx.stroke();
+  cx.fillStyle='rgba(10,18,44,.85)';cx.font='800 40px Inter,Arial';const w=cx.measureText(txt).width+40;cx.beginPath();cx.roundRect(lx-(lx<x?w:0),ly-34,w,64,18);cx.fill();cx.fillStyle=col;cx.fillText(txt,lx-(lx<x?w:0)+20,ly+10);cx.restore()}
+window.__seek=function(t){
+  const f=Math.min(N-1,Math.max(0,Math.round(t*FPS))),s=sun(t);
+  // sky and leaf tissue background
+  const bg=cx.createLinearGradient(0,0,0,H);bg.addColorStop(0,`rgb(${20+60*s},${32+70*s},${70+60*s})`);bg.addColorStop(1,'#0d1530');cx.fillStyle=bg;cx.fillRect(0,0,W,H);
+  // sun
+  cx.save();cx.globalAlpha=0.25+0.75*s;const sg=cx.createRadialGradient(240,140,10,240,140,260*(0.6+0.4*s));sg.addColorStop(0,'#fff6c8');sg.addColorStop(0.25,'#ffd34d');sg.addColorStop(1,'rgba(255,200,60,0)');cx.fillStyle=sg;cx.fillRect(0,0,700,560);cx.restore();
+  // leaf (top band) with mesophyll cells
+  cx.fillStyle='#2f7a3a';cx.beginPath();cx.roundRect(560,40,1300,230,60);cx.fill();
+  const lg=cx.createLinearGradient(0,40,0,270);lg.addColorStop(0,`rgba(180,240,120,${0.25+0.35*s})`);lg.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=lg;cx.beginPath();cx.roundRect(560,40,1300,230,60);cx.fill();
+  for(let i=0;i<18;i++)for(let j=0;j<2;j++){const x=620+i*68+(j*30),y=95+j*80;cx.fillStyle=j?'#3f9a48':'#4fae55';cx.beginPath();cx.ellipse(x,y,26,j?30:36,0,0,7);cx.fill();cx.fillStyle='rgba(20,90,30,.8)';for(let q=0;q<3;q++){cx.beginPath();cx.ellipse(x-9+q*9,y-6+(q%2)*12,5,3,0.5,0,7);cx.fill()}}
+  // air space and stoma (guard cells) on the underside, right
+  cx.fillStyle='#173f22';cx.beginPath();cx.ellipse(1320,232,300,32,0,0,7);cx.fill();
+  cx.fillStyle='#5cbf5f';for(const sx of[-1,1]){cx.beginPath();cx.ellipse(STOMA.x+sx*34,STOMA.y+18,30,18,0,0,7);cx.fill()}
+  // stem walls
+  const wall=(x)=>{const g=cx.createLinearGradient(x-50,0,x+50,0);g.addColorStop(0,'#7a5a2e');g.addColorStop(0.5,'#c9a46a');g.addColorStop(1,'#7a5a2e');cx.fillStyle=g;cx.fillRect(x-40,VTOP-20,80,VBOT-VTOP+80)};
+  // vessel interior
+  const vi=cx.createLinearGradient(VX0,0,VX1,0);vi.addColorStop(0,'#cfe8ff');vi.addColorStop(0.5,'#eef7ff');vi.addColorStop(1,'#cfe8ff');cx.fillStyle=vi;cx.fillRect(VX0,VTOP-40,VX1-VX0,VBOT-VTOP+100);
+  cx.fillStyle='rgba(90,160,230,.28)';cx.fillRect(VX0,VTOP-40,VX1-VX0,VBOT-VTOP+100);
+  wall(VX0-40);wall(VX1+40);
+  cx.strokeStyle='#e6c88e';cx.lineWidth=6;for(let y=VTOP;y<VBOT+60;y+=56){for(const x of[VX0-4,VX1+4]){cx.beginPath();cx.ellipse(x,y,8,22,0,0,7);cx.stroke()}}  // lignin rings
+  // soil and root at the bottom
+  cx.fillStyle='#4a3020';cx.fillRect(0,1000,W,80);for(let i=0;i<60;i++){cx.fillStyle=i%2?'#5c3d28':'#3d2618';cx.beginPath();cx.arc((i*97)%W,1020+(i*37)%50,10+(i%5)*3,0,7);cx.fill()}
+  // hydrogen bonds (cohesion) between neighbours, then molecules
+  const M=frames[f];
+  cx.save();cx.setLineDash([6,6]);cx.lineWidth=4;
+  for(let i=0;i<M.length;i++){if(M[i][3])continue;for(let j=i+1;j<M.length;j++){if(M[j][3])continue;const dx=M[i][0]-M[j][0],dy=M[i][1]-M[j][1];const d=dx*dx+dy*dy;if(d<46*46){cx.strokeStyle=`rgba(120,190,255,${0.75-d/(46*46)*0.5})`;cx.beginPath();cx.moveTo(M[i][0],M[i][1]);cx.lineTo(M[j][0],M[j][1]);cx.stroke()}}}
+  cx.restore();
+  for(const m of M){if(m[1]>VTOP-60||m[3])drawMol(m[0],m[1],m[2],m[3]?0.8:1,1)}
+  // vapor wisps leaving the stoma
+  for(const v of VAP){const a=t-v.t0;if(a<0||a>2.2)continue;const p=a/2.2;cx.save();cx.globalAlpha=(1-p)*0.8;cx.strokeStyle='#e8f4ff';cx.lineWidth=5;cx.beginPath();
+    const x=v.x+ (v.s-0.5)*60*p, y=v.y+30+140*p;cx.moveTo(x,y);cx.bezierCurveTo(x+20*Math.sin(a*4),y+20,x-20,y+40,x+10*Math.sin(a*5),y+60);cx.stroke();drawMol(x,y,a*3,0.6,(1-p)*0.9);cx.restore()}
+  // speed meter
+  cx.save();cx.fillStyle='rgba(10,18,44,.85)';cx.beginPath();cx.roundRect(1260,760,520,150,24);cx.fill();cx.fillStyle='#bfe3ff';cx.font='700 34px Inter,Arial';cx.fillText('water flow up the stem',1290,812);
+  cx.fillStyle='#24345e';cx.beginPath();cx.roundRect(1290,836,460,40,20);cx.fill();cx.fillStyle='#5fb8ff';cx.beginPath();cx.roundRect(1290,836,460*rate(t)/1.25,40,20);cx.fill();cx.restore();
+  label('sunlight: more evaporation',130,270,140,440,2.6,t,'#ffd34d');
+  label('evaporation pulls',STOMA.x,STOMA.y+30,1540,520,4.2,t,'#e8f4ff');
+  label('cohesion: H bonds hold the chain',VX1-30,640,1080,640,6.0,t,'#7fc4ff');
+  label('adhesion: water clings to the walls',VX0+12,820,700,940,8.0,t,'#e6c88e');
+};
+__seek(0);
+</script></body></html>

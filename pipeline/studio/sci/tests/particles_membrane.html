@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2753"/><stop offset="1" stop-color="#0f1534"/></linearGradient></defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<g id="a"></g><g id="b"></g><g id="ui"></g>
+</svg>
+<script src="../common.js"></script><script src="../particles.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+const species = {
+  water: { shape: 'water', r: 8, m: 18, color: '#e8402f' },
+  glucose: { shape: 'ring', r: 15, m: 180, color: '#f3d36b' },
+};
+// A: glucose diffuses down its gradient, only through its channel proteins; water crosses through aquaporins
+const A = new LPParticles(document.getElementById('a'), { box: { x: 140, y: 110, w: 1640, h: 380 }, species, seed: 11, vScale: 380, trails: false,
+  bg: '#173a63', fluid: '#3f8fd0',
+  fill: [{ s: 'glucose', n: 40, region: [520, 110, 420, 380] }, { s: 'water', n: 70, region: [140, 110, 800, 380] }, { s: 'water', n: 80, region: [980, 110, 800, 380] }],
+  membrane: { x: 960, th: 60, channels: [{ y: 175, h: 88, pass: ['glucose'], kind: 'carrier' }, { y: 300, h: 56, pass: ['water'], kind: 'aquaporin' }, { y: 425, h: 88, pass: ['glucose'], kind: 'carrier' }] } });
+// B: osmosis. Glucose can't cross (no glucose channels); water moves toward the side with more solute and its level rises
+const B = new LPParticles(document.getElementById('b'), { box: { x: 140, y: 600, w: 1640, h: 400 }, species, seed: 5, vScale: 150, trails: false,
+  bg: '#173a63', fluid: '#3f8fd0',
+  fill: [{ s: 'water', n: 150, region: [140, 740, 800, 260] }, { s: 'glucose', n: 34, region: [980, 740, 800, 260] }, { s: 'water', n: 104, region: [980, 740, 800, 260] }],
+  membrane: { x: 960, th: 60, osmosis: true, fill0: 0.62, channels: [{ y: 800, h: 56, pass: ['water'], kind: 'aquaporin' }, { y: 880, h: 56, pass: ['water'], kind: 'aquaporin' }, { y: 960, h: 56, pass: ['water'], kind: 'aquaporin' }] } });
+const L = { a: S.label(ui, { size: 30 }), b: S.label(ui, { size: 30 }), aL: S.label(ui, { size: 26, bg: '#2a3a72' }), aR: S.label(ui, { size: 26, bg: '#2a3a72' }),
+  bL: S.label(ui, { size: 26, bg: '#2a3a72' }), bR: S.label(ui, { size: 26, bg: '#2a3a72' }) };
+window.__seek = (t) => {
+  A.draw(t); const st = B.draw(t);
+  const ca = A.counts(t), cb = B.counts(t);
+  L.a.set('Diffusion through channel proteins', 960, 56);
+  L.aL.set(`glucose: ${ca.L.glucose || 0}`, 540, 445, 1); L.aR.set(`glucose: ${ca.R.glucose || 0}`, 1380, 445, 1);
+  L.b.set('Osmosis: water moves toward more solute', 960, 548);
+  L.bL.set(`water level`, 540, st.level[-1] - 30, 1); L.bR.set(`water level`, 1380, st.level[1] - 30, 1);
+};
+</script></body></html>

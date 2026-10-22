@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#101735}</style></head><body>
+<svg id="svg" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="bg" cx="0.45" cy="0.45" r="0.75"><stop offset="0" stop-color="#26346b"/><stop offset="1" stop-color="#0f1534"/></radialGradient></defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<g id="h"></g><g id="ui"></g>
+</svg>
+<script src="../common.js"></script><script src="../organ.js"></script>
+<script>
+const S = LPSci, ui = document.getElementById('ui');
+const H = new LPHeart(document.getElementById('h'), { x: 700, y: 560, scale: 0.8, rotate: -10, bpm: 75, cycleSec: 3, cells: 140 });
+// labels (screen positions follow anchors)
+const lab = {}, names = { RA: 'Right atrium', RV: 'Right ventricle', LA: 'Left atrium', LV: 'Left ventricle' };
+for (const k in names) lab[k] = S.label(ui, { size: 22, bg: '#141c38', op: 0.75 });
+const vlab = [['svc', 'from body (SVC)', '#4d58b8'], ['ivc', 'from body (IVC)', '#4d58b8'], ['rpa', 'to lungs', '#4d58b8'], ['lpa', 'to lungs', '#4d58b8'], ['pvU', 'from lungs', '#b8323f'], ['aoOut', 'to body (aorta)', '#b8323f']]
+  .map(([k, t, c]) => [k, t, S.label(ui, { size: 22, bg: c })]);
+const phaseL = S.label(ui, { size: 38, bg: '#141c38' });
+// timeline (one cycle), phases from LPHeart.PHASES
+const TL = { x: 1340, y: 300, w: 500 }, tg = S.mk('g', {}, ui);
+const cols = { as: '#e98a5a', ivc: '#d6455a', ej: '#ef4f6c', ivr: '#7a6be0', rf: '#4f94e8', ds: '#4fb8c8' };
+const T = 0.8, rows = [];
+LPHeart.PHASES.forEach((p, i) => {
+  const y = TL.y + i * 62;
+  const bar = S.mk('rect', { x: TL.x, y, width: TL.w, height: 46, rx: 23, fill: '#1b2550' }, tg);
+  const fill = S.mk('rect', { x: TL.x + p.a / T * TL.w, y, width: (p.b - p.a) / T * TL.w, height: 46, rx: 12, fill: cols[p.key], opacity: 0.35 }, tg);
+  const tx = S.mk('text', { x: TL.x + 22, y: y + 31, 'font-family': 'Inter', 'font-weight': 800, 'font-size': 22, fill: '#e8ecf8' }, tg); tx.textContent = p.name;
+  rows.push({ p, fill, bar });
+});
+const ttl = S.mk('text', { x: TL.x, y: TL.y - 60, 'font-family': 'Inter', 'font-weight': 800, 'font-size': 26, fill: '#aab4d8' }, tg); ttl.textContent = 'One beat at 75 bpm (0.8 s), slowed to 3 s';
+for (const [tt, s] of [[0.10, 'S1'], [0.36, 'S2']]) { const x = TL.x + tt / T * TL.w; S.mk('rect', { x: x - 2, y: TL.y - 14, width: 4, height: 6 * 62 + 4, fill: '#ffd34d', opacity: 0.8 }, tg);
+  const e = S.mk('text', { x, y: TL.y - 22, 'text-anchor': 'middle', 'font-family': 'Inter', 'font-weight': 800, 'font-size': 22, fill: '#ffd34d' }, tg); e.textContent = s; }
+const cursor = S.mk('rect', { y: TL.y - 14, width: 6, height: 6 * 62 + 4, rx: 3, fill: '#ffffff' }, tg);
+const vt = S.mk('text', { x: TL.x, y: TL.y + 6 * 62 + 50, 'font-family': 'Inter', 'font-weight': 700, 'font-size': 24, fill: '#c9d4f2' }, tg);
+const vt2 = S.mk('text', { x: TL.x, y: TL.y + 6 * 62 + 86, 'font-family': 'Inter', 'font-weight': 700, 'font-size': 24, fill: '#c9d4f2' }, tg);
+const vt3 = S.mk('text', { x: TL.x, y: TL.y + 6 * 62 + 86, 'font-family': 'Inter', 'font-weight': 700, 'font-size': 24, fill: '#c9d4f2' }, tg);
+window.__seek = (t) => {
+  const r = H.draw(t);
+  for (const k in names) { const [x, y] = H.toScreen(...H.anchors[k]); lab[k].set(names[k], x, y, 0.9); }
+  for (const [k, txt, L] of vlab) { const [x, y] = H.toScreen(...H.anchors[k]); L.set(txt, Math.min(1240, Math.max(110, x)), Math.min(1040, Math.max(40, y))); }
+  phaseL.set(r.phase.name, 1590, 140);
+  cursor.setAttribute('x', TL.x + r.c / T * TL.w - 3);
+  rows.forEach((q) => { const on = q.p.key === r.phase.key; q.fill.setAttribute('opacity', on ? 1 : 0.3); });
+  const v = r.valves, o = (x) => (x > 0.5 ? 'open' : 'shut');
+  vt.textContent = `AV valves: tricuspid ${o(v.tri)}, mitral ${o(v.mit)}`; vt3.textContent = `Semilunar: pulmonary ${o(v.pul)}, aortic ${o(v.ao)}`;
+  vt2.setAttribute('y', TL.y + 6 * 62 + 122); vt2.textContent = `LV volume ${r.V.LV.toFixed(0)} mL · LA volume ${r.V.LA.toFixed(0)} mL`;
+};
+</script></body></html>
