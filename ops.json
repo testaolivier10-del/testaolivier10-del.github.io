@@ -25,7 +25,8 @@
     "2026-10-18 weekly batch (9:10pm PT): analytics done (YouTube API with YT_CRED pointing at the staged file, because copying the key to /root/.lpkey was blocked by this session's permission check; TikTok Studio; Supabase; Search Console URL prefix property, the sc-domain one is not accessible). Search PR #73 opened (3 ochem pages, not merged). Shorts NOT built: queue covers 10 days from 2026-10-19 (8 scheduled through 10-26 plus w1014-03 and w1014-02 approved). TikTok profile shows no bio or website link.",
     "2026-10-19 daily run (6:14pm PT): checkup clean. Scheduled w1014-03-caffeine-block (2026-10-27) and w1014-02-cold-pack (2026-10-28) on TikTok and YouTube; no approved Shorts left, Buffer covers through 2026-10-28. w1007-01-tourniquet got youtube_id IgVaPkxVlso; its Studio thumbnail and related video were skipped because Studio showed 'Oops, something went wrong' (also with authuser=1). Related video backfill: w1014-03 to the A&P intro, w1014-02 to the orgo intro (no AP Bio or AP Chem long video live yet); study tip Shorts w1006-04 and w1007-10 left without one. yt-apbio-01 (due today) NOT uploaded: Zapier says task limits reached; item stays approved. No new comments on YouTube or TikTok; the 2 TikTok drafts still wait for Olivier's OK.",
     "2026-10-19 ~9:50pm PT: yt-apbio-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/sD7QbtHbVsw, public, not for kids, AI use No, tags and English set in Studio; thumbnail, playlist 'AP Biology | LevlPrep' (new) and captions by API; comment posted and pinned; embed PR #74. Chrome account route: Studio URL ?authuser=levlprepofficial@gmail.com opens the Levl Prep channel (authuser=1 opens Olivier's personal channel). Same session set the tourniquet Short thumbnail and related video. w1014-03 related video now points to the AP Bio water video.",
-    "2026-10-20 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-01-tourniquet set to posted. w1007-10-pretest got youtube_id odEdKBmtYlc and its Studio thumbnail (Studio worked with ?authuser=levlprepofficial@gmail.com); no related video by design. No new YouTube comments; 3 new TikTok comments on the tourniquet Short, 2 replies drafted (war.lord11 emojis, no reply). yt-orgo-02-orbitals due 2026-10-22."
+    "2026-10-20 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-01-tourniquet set to posted. w1007-10-pretest got youtube_id odEdKBmtYlc and its Studio thumbnail (Studio worked with ?authuser=levlprepofficial@gmail.com); no related video by design. No new YouTube comments; 3 new TikTok comments on the tourniquet Short, 2 replies drafted (war.lord11 emojis, no reply). yt-orgo-02-orbitals due 2026-10-22.",
+    "2026-10-21 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-10-pretest set to posted. w1007-07-acid-resonance got youtube_id -aVZ1QSGQOA, its Studio thumbnail and related video (orgo atomic structure); Studio worked with ?authuser=levlprepofficial@gmail.com. Its live YouTube description has a bare levlprep.com instead of a tracked link; left as is. No new YouTube comments; 1 new TikTok reply drafted (lil.miwa on the tourniquet Short), viewer to viewer thread hazard_5522/cabezon_85 needs no reply. 5 TikTok drafts wait for Olivier's OK. yt-orgo-02-orbitals due 2026-10-22."
   ],
   "pending_reruns": [],
   "related_check_after": null,
@@ -35,7 +36,10 @@
     "tt:fattie8652:chair-flip:axial hydrogens",
     "tt:robbiebehnke2:tourniquet:high and tight",
     "tt:cabezon_85:tourniquet:not certified",
-    "tt:war.lord11:tourniquet:emojis"
+    "tt:war.lord11:tourniquet:emojis",
+    "tt:lil.miwa:tourniquet:high and tight military",
+    "tt:hazard_5522:tourniquet:people do it all the time",
+    "tt:cabezon_85:tourniquet:reply to hazard_5522"
   ],
   "comment_drafts": [
     {
@@ -69,6 +73,14 @@
       "comment": "If not certified to place a tourniquet on someone you will cause more harm than good",
       "reply": "Training really helps, and a free Stop the Bleed class takes about an hour. But on a life threatening bleed a tourniquet is the right call even for bystanders, and limb damage is rare when it comes off within about two hours.",
       "status": "drafted 2026-10-20"
+    },
+    {
+      "platform": "tiktok",
+      "video": "w1007-01-tourniquet",
+      "author": "lil.miwa",
+      "comment": "Most people aren't doing a high and tight that a very military and like police thing this is like your at work in a civilian jobs",
+      "reply": "Fair point. High and tight comes from tactical care, where you can't stop to find the wound. If you can see the bleed, 2 to 3 inches above it works best.",
+      "status": "drafted 2026-10-21"
     }
   ]
 }
