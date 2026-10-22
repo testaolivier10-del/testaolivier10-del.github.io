@@ -46,7 +46,7 @@ anim_image = (
     modal.Image.debian_slim(python_version="3.11")
     .apt_install("git", "ffmpeg")
     .pip_install("torch==2.7.0", "torchvision==0.22.0", extra_index_url="https://download.pytorch.org/whl/cu126")
-    .pip_install("git+https://github.com/huggingface/diffusers.git@refs/pull/14412/head", "transformers>=4.51.3", "decord", "opencv-python-headless", "accelerate>=1.6.0",
+    .pip_install("git+https://github.com/huggingface/diffusers.git@refs/pull/14412/head", "transformers>=5.0", "decord", "opencv-python-headless", "accelerate>=1.6.0",
                  "sentencepiece", "ftfy", "imageio[ffmpeg]", "numpy", "pillow", "huggingface_hub[hf_transfer]", "av")
     .run_commands("pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.7cxx11abiFALSE-cp311-cp311-linux_x86_64.whl || echo 'flash-attn wheel not available, using PyTorch attention'")
     .env({"HF_HUB_ENABLE_HF_TRANSFER": "1", "HF_HOME": MODEL_DIR + "/hf"})
@@ -74,8 +74,34 @@ def animate(job: dict) -> bytes:
     import diffusers
     from diffusers.utils import export_to_video, load_video
     Pipe = getattr(diffusers, "WanAnimate2Pipeline")
-    pipe = Pipe.from_pretrained(ANIM2_ID, torch_dtype=torch.bfloat16, cache_dir=MODEL_DIR + "/hf/hub")
-    pipe.to("cuda")
+    import traceback, transformers
+    steps = []
+    try:
+        steps.append("text_encoder")      # load the transformers parts on their own first: a meta tensor error names its part
+        te = transformers.UMT5EncoderModel.from_pretrained(ANIM2_ID, subfolder="text_encoder", torch_dtype=torch.bfloat16,
+                                                           cache_dir=MODEL_DIR + "/hf/hub")
+        if te.encoder.embed_tokens.weight.is_meta:     # newer transformers can leave the tied word embedding unloaded
+            te.encoder.embed_tokens = te.shared
+        bad = [n for n, t in list(te.named_parameters()) + list(te.named_buffers()) if t.is_meta]
+        if bad: raise RuntimeError(f"text encoder weights not loaded: {bad[:10]}")
+        te = te.to("cuda")
+        steps.append("image_encoder")
+        ie = transformers.CLIPVisionModel.from_pretrained(ANIM2_ID, subfolder="image_encoder", torch_dtype=torch.bfloat16,
+                                                          cache_dir=MODEL_DIR + "/hf/hub").to("cuda")
+        steps.append("pipeline")
+        pipe = Pipe.from_pretrained(ANIM2_ID, text_encoder=te, image_encoder=ie, torch_dtype=torch.bfloat16,
+                                    cache_dir=MODEL_DIR + "/hf/hub")
+        steps.append("remap")
+        _fill_meta_blocks(pipe.transformer, torch)
+        steps.append("to_cuda")
+        meta = [f"{cn}.{n}" for cn, c in pipe.components.items() if isinstance(c, torch.nn.Module)
+                for n, t in list(c.named_parameters()) + list(c.named_buffers()) if t.is_meta]
+        if meta:
+            raise RuntimeError(f"{len(meta)} weights not loaded (meta): {meta[:12]}")
+        pipe.to("cuda")
+    except Exception:
+        raise RuntimeError(f"load failed at {steps[-1]} (transformers {transformers.__version__}, diffusers {diffusers.__version__}):\n"
+                           + traceback.format_exc()[-2500:])
     ref = Image.open(io.BytesIO(base64.b64decode(job["image_b64"]))).convert("RGB")
     tmp = tempfile.mkdtemp(); vp = tmp + "/drive.mp4"; open(vp, "wb").write(base64.b64decode(job["video_b64"]))
     drive = None if "driving_video" in inspect.signature(pipe.__call__).parameters else load_video(vp)
@@ -101,6 +127,35 @@ def animate(job: dict) -> bytes:
     p = tmp + "/out.mp4"
     export_to_video(frames, p, fps=int(job.get("fps", 16)))
     return open(p, "rb").read()
+
+
+def _fill_meta_blocks(tr, torch):
+    """The Diffusers checkpoint of Wan-Animate-2 names its block weights the Diffusers way (blocks.N.self_attn.to_q)
+    while the pipeline code names them the original way (blocks.N.block.self_attn.q). Weights left unloaded (meta)
+    are filled from the checkpoint under their renamed keys."""
+    import glob, re
+    from safetensors import safe_open
+    want = {n for n, t in tr.named_parameters() if t.is_meta}
+    if not want: return
+    ren = [(r"\.to_out\.0\.", ".o."), (r"\.to_q\.", ".q."), (r"\.to_k\.", ".k."), (r"\.to_v\.", ".v."),
+           (r"\.add_k_proj\.", ".k_img."), (r"\.add_v_proj\.", ".v_img."), (r"\.norm_added_k\.", ".norm_k_img.")]
+    def rename(k):
+        k = re.sub(r"^blocks\.(\d+)\.", r"blocks.\1.block.", k)
+        for a, b in ren: k = re.sub(a, b, k)
+        return k
+    files = glob.glob(MODEL_DIR + "/hf/hub/models--Wan-AI--Wan2.2-Animate-2-14B-Distilled-Diffusers/snapshots/*/transformer/*.safetensors")
+    fp32 = tr._keep_in_fp32_modules or []
+    sd = {}
+    for f in files:
+        with safe_open(f, "pt") as h:
+            for k in h.keys():
+                n = rename(k)
+                if n in want:
+                    t = h.get_tensor(k)
+                    sd[n] = t.float() if any(m in n.split(".") for m in fp32) else t.to(torch.bfloat16)
+    missing = want - set(sd)
+    if missing: raise RuntimeError(f"{len(missing)} block weights still missing after renaming, e.g. {sorted(missing)[:8]}")
+    tr.load_state_dict(sd, strict=False, assign=True)
 
 
 def _fit(img, pipe, area):
