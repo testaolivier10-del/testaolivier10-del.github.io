@@ -10,7 +10,13 @@
   "free_when_granted": 24.32
  },
  "spent_in_run": 5.254,
- "open": {},
+ "open": {
+  "fc-01M5GHAASVWW3TJA1H01D93T05": {
+   "t": 1792630139.507393,
+   "kind": "images",
+   "n": 1
+  }
+ },
  "calls": [
   {
    "date": "2026-10-21",
@@ -83,5 +89,5 @@
    "call": "fc-01M5GH8A3QX41Z7A29K5SG870Y"
   }
  ],
- "touched": 1792630137.1309004
+ "touched": 1792630139.5074499
 }
