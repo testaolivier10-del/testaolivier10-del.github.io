@@ -496,7 +496,7 @@
    "related_set": false
   },
   {
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-22",
    "date": null,
    "buffer": null,
@@ -514,10 +514,12 @@
    "yt_title": "Pure water in an IV? Watch the red blood cells",
    "yt_description": "3% saline: does water rush into the cells, or out? Hypotonic vs isotonic IV fluids and why pure water makes red blood cells burst (osmosis, hemolysis; AP Biology, Unit 2).\n\nFree AP Bio notes and practice: https://levlprep.com/bio/notes/tonicity-osmoregulation.html?ref=yt-iv-water\n\n#APBio #biology #osmosis",
    "pin_question": "Which tonicity word always trips you up?",
-   "review_blob": "a45580b788f2fed1599f49820a98ad57f7079c33"
+   "review_blob": "a45580b788f2fed1599f49820a98ad57f7079c33",
+   "approved_on": "2026-10-22",
+   "approved_blob": "a45580b788f2fed1599f49820a98ad57f7079c33"
   },
   {
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-22",
    "date": null,
    "buffer": null,
@@ -539,10 +541,12 @@
     "name": "AP exam traps",
     "n": 1
    },
-   "review_blob": "6161775a6853009b55f68fb176691742fff56b22"
+   "review_blob": "6161775a6853009b55f68fb176691742fff56b22",
+   "approved_on": "2026-10-22",
+   "approved_blob": "6161775a6853009b55f68fb176691742fff56b22"
   },
   {
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-22",
    "date": null,
    "buffer": null,
@@ -574,7 +578,9 @@
    "posted_yt": false,
    "handoff_sent": false,
    "poll_reminded": false,
-   "review_blob": "7ed72acdd74a5652353aa53d123facc14a22a3a5"
+   "review_blob": "7ed72acdd74a5652353aa53d123facc14a22a3a5",
+   "approved_on": "2026-10-22",
+   "approved_blob": "7ed72acdd74a5652353aa53d123facc14a22a3a5"
   }
  ]
 }
