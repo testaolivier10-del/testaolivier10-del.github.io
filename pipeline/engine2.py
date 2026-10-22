@@ -197,7 +197,7 @@ def build(spec):
         import fullbleed
         stage = fullbleed.wrap(stage)
     c.L.insert(0, 'tl.fromTo("#tt0",{opacity:1,scale:1.06},{opacity:1,scale:1,duration:0.5,ease:"back.out(2)"},0);')
-    tE = c.T[last]
+    tE = c.T[last] + (c.D[last] + spec.get("end_pad", 0.25) if spec.get("end_after_last") else 0)  # end card after the last line (Shorts that end on a question)
     c.g(f'tl.fromTo("#end",{{opacity:0}},{{opacity:1,duration:0.3}},{tE:.2f});')
     c.g(f'tl.fromTo("#end-l1",{{opacity:0,y:30}},{{opacity:1,y:0,duration:0.35,ease:"power3.out"}},{tE+0.1:.2f});')
     c.g(f'tl.fromTo("#end-site",{{opacity:0,scale:1.4}},{{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"}},{tE+0.35:.2f});')

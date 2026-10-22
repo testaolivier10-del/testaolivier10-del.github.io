@@ -1,47 +1,87 @@
 {
- "entries": [
-  {
-   "id": "t1018-pulse-full",
-   "date": "2026-10-18",
-   "pieces": [
-    "kit_fb",
-    "cu_fb",
-    "L_thumb_fb",
-    "L_fing_fb",
-    "watch2_0",
-    "clips/kitA",
-    "clips/kitB"
-   ],
-   "setting": "kitchen",
-   "lighting": "night, warm window and pendant",
-   "camera": "wide side view, then wrist close up"
-  },
-  {
-   "id": "t1018-caffeine-full",
-   "date": "2026-10-18",
-   "pieces": [
-    "dorm_fb",
-    "syn_fb",
-    "rec",
-    "brain_fb",
-    "clips/cafA",
-    "clips/cafB"
-   ],
-   "setting": "dorm desk",
-   "lighting": "night, desk lamp and laptop glow",
-   "camera": "wide side view, then lens into head, synapse"
-  },
-  {
-   "id": "yt-nremt-35-bleeding",
-   "date": "2026-10-20",
-   "pieces": [
-    "garage_cut",
-    "forearm_cu",
-    "nose_kitchen"
-   ],
-   "setting": "home garage; kitchen",
-   "lighting": "late afternoon daylight; morning daylight",
-   "camera": "wide side view, forearm close up, side view leaning forward"
-  }
- ]
+  "entries": [
+    {
+      "id": "t1018-pulse-full",
+      "date": "2026-10-18",
+      "pieces": [
+        "kit_fb",
+        "cu_fb",
+        "L_thumb_fb",
+        "L_fing_fb",
+        "watch2_0",
+        "clips/kitA",
+        "clips/kitB"
+      ],
+      "setting": "kitchen",
+      "lighting": "night, warm window and pendant",
+      "camera": "wide side view, then wrist close up"
+    },
+    {
+      "id": "t1018-caffeine-full",
+      "date": "2026-10-18",
+      "pieces": [
+        "dorm_fb",
+        "syn_fb",
+        "rec",
+        "brain_fb",
+        "clips/cafA",
+        "clips/cafB"
+      ],
+      "setting": "dorm desk",
+      "lighting": "night, desk lamp and laptop glow",
+      "camera": "wide side view, then lens into head, synapse"
+    },
+    {
+      "id": "yt-nremt-35-bleeding",
+      "date": "2026-10-20",
+      "pieces": [
+        "garage_cut",
+        "forearm_cu",
+        "nose_kitchen"
+      ],
+      "setting": "home garage; kitchen",
+      "lighting": "late afternoon daylight; morning daylight",
+      "camera": "wide side view, forearm close up, side view leaning forward"
+    },
+    {
+      "id": "w1021-01-iv-water",
+      "date": "2026-10-22",
+      "pieces": [
+        "w1021/v1_room_ext",
+        "w1021/v1_vein_bg",
+        "w1021/cell0-9",
+        "w1021/v1_cell_a",
+        "w1021/v1_cell_swollen",
+        "w1021/v1_cell_burst"
+      ],
+      "setting": "hospital room at night; inside a vein; one red blood cell",
+      "lighting": "night window light, warm lamp; red vessel glow",
+      "camera": "wide on the IV bag, pan down the tubing, lens into the vein, close up cell"
+    },
+    {
+      "id": "w1021-02-ball-top",
+      "date": "2026-10-22",
+      "pieces": [
+        "w1021/v2_park_bg",
+        "w1021/ball",
+        "w1021/stu_body",
+        "w1021/stu_arm"
+      ],
+      "setting": "sunny park",
+      "lighting": "midday sun, rim light",
+      "camera": "low wide from behind the student"
+    },
+    {
+      "id": "w1021-03-speedometer",
+      "date": "2026-10-22",
+      "pieces": [
+        "w1021/v3_dash_tall",
+        "w1021/needle",
+        "w1021/cap"
+      ],
+      "setting": "car dashboard on a highway",
+      "lighting": "dusk, warm dash glow",
+      "camera": "driver's view, dial close up"
+    }
+  ]
 }
