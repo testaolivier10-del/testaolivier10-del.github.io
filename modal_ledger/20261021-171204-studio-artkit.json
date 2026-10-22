@@ -9,14 +9,8 @@
   "asked": 8.0,
   "free_when_granted": 24.32
  },
- "spent_in_run": 5.548,
- "open": {
-  "fc-01M5GKKK5BPCFRAZDT268Q0FDS": {
-   "t": 1792632539.946329,
-   "kind": "animate",
-   "n": 1
-  }
- },
+ "spent_in_run": 5.596,
+ "open": {},
  "calls": [
   {
    "date": "2026-10-21",
@@ -122,7 +116,14 @@
    "seconds": 48,
    "usd": 0.052,
    "call": "fc-01M5GKF18HNV96KQG6VPN2GVJN"
+  },
+  {
+   "date": "2026-10-21",
+   "kind": "animate",
+   "seconds": 43,
+   "usd": 0.048,
+   "call": "fc-01M5GKKK5BPCFRAZDT268Q0FDS"
   }
  ],
- "touched": 1792632539.9463732
+ "touched": 1792632583.229717
 }
