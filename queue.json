@@ -324,7 +324,7 @@
   },
   {
    "id": "w1007-07-acid-resonance",
-   "status": "scheduled",
+   "status": "posted",
    "added_on": "2026-10-06",
    "approved_on": "2026-10-06",
    "date": "2026-10-21",
@@ -496,10 +496,10 @@
    "related_set": false
   },
   {
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-10-22",
-   "date": null,
-   "buffer": null,
+   "date": "2026-10-29",
+   "buffer": "6adab57f8d2197cb2a0bfa57",
    "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
