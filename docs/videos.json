@@ -228,6 +228,71 @@
           "Next: the elements of life"
         ]
       ]
+    },
+    {
+      "id": "GDdECy1YAw4",
+      "course": "ochem",
+      "title": "Atomic Orbitals and Electron Configuration (s and p, Hund's Rule)",
+      "seconds": 978,
+      "posted": "2026-10-22",
+      "pages": [
+        "ochem/notes/orbitals.html",
+        "ochem/lessons/orbitals.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          78,
+          "What an orbital is"
+        ],
+        [
+          154,
+          "Two electrons per orbital"
+        ],
+        [
+          221,
+          "s and p orbital shapes"
+        ],
+        [
+          338,
+          "Why 2 and 8"
+        ],
+        [
+          400,
+          "Phase: the two colors"
+        ],
+        [
+          471,
+          "Filling order and configurations"
+        ],
+        [
+          595,
+          "The 4s and 3d trap"
+        ],
+        [
+          668,
+          "Hund's rule, box by box"
+        ],
+        [
+          804,
+          "Reading the periodic table"
+        ],
+        [
+          837,
+          "Recap"
+        ],
+        [
+          877,
+          "Practice problems"
+        ],
+        [
+          953,
+          "Next: hybridization"
+        ]
+      ]
     }
   ]
 }
