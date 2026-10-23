@@ -1,91 +1,101 @@
 {
-  "refired": {
-    "trig_01LMp7RmpbfjZZQzzAsxni8v": "pending_rerun 2026-10-12"
+ "refired": {
+  "trig_01LMp7RmpbfjZZQzzAsxni8v": "pending_rerun 2026-10-12"
+ },
+ "notes": [
+  "2026-10-09 daily run: b2-05-ap-pulmonary-artery and b2-04-orgo-markovnikov have no badge or hook, so thumb.py cannot make a Studio thumbnail; skipped until Olivier decides.",
+  "2026-10-11 weekly batch: analytics done for TikTok and site; YouTube skipped (Downloads folder not attached to the task, key files unreadable). PART B not built: queue full (14 days covered from 2026-10-12: 8 scheduled + 6 approved).",
+  "2026-10-11 daily run: Studio showed 'Oops, something went wrong' (also with authuser=1), so thumbnails for b3-04-mitral-valve, w1006-01-bag-rate, w1006-02-heart-wiring were skipped; PNGs are already in Downloads\\LevlPrep-posting\\thumbs.",
+  "2026-10-12 long build: yt-nremt-01-ems-system script written and audited (saved in project as claude/levlprep-pipeline/long/01_nremt_script.py, '# audited, not voiced'). Stopped before voice: Downloads folder not attached to the task, so the ElevenLabs key could not be read. Resume at step 6.",
+  "2026-10-12 daily run: refired LevlPrep long video build from pending_reruns; the scheduler said the refire runs cloud only (no signed laptop approval), so it may again be unable to read the ElevenLabs key. Buffer top-up of w1007-02-jaw-thrust (one free slot per channel, for 2026-10-22) was blocked by this session's permission check; nothing was posted.",
+  "2026-10-12 long build refire (cloud only, 18:16 PT): did not build. No laptop access, so no ElevenLabs key. Also the project's 01_nremt_script.py header says it was already voiced, built and rendered on 2026-10-12 by another session (spec saved 18:08 PT), but no video is on the media branch yet. Left yt-nremt-01-ems-system as building and did not add a rerun, to avoid voicing it twice; waiting for Olivier.",
+  "2026-10-12 long build: yt-nremt-01-ems-system finished in the same chat after Olivier attached Downloads; status pending review.",
+  "2026-10-12 7:35pm PT: yt-nremt-01-ems-system upload via Zapier failed: Zapier task limit reached for the billing period. Item stays approved (date 2026-10-12); the daily run retries. Olivier may upload by hand in Studio; then the next run only needs youtube_id plus thumbnail, playlist and captions.",
+  "2026-10-12 ~7:50pm PT: yt-nremt-01-ems-system published by hand through YouTube Studio in Olivier's Chrome (Zapier out of tasks): https://youtu.be/lqxfWZZtRgE, thumbnail set, new public playlist 'NREMT Prep | LevlPrep' (oldest first) created and added. Studio route: fetch the mp4 from the raw media URL in page JS and dispatch a drop event on the upload dialog (file_upload tool is limited to 10 MB).",
+  "2026-10-13 daily run: scheduled w1007-02-jaw-thrust (2026-10-22) and w1007-08-oxygen-curve (2026-10-23) on TikTok and YouTube; Buffer full at 10 per channel, w1007-05-sn2-umbrella and w1007-04-gcs-floor still approved and waiting. w1006-03-chair-flip got youtube_id TrK9lBe_364 and its Studio thumbnail. Seen: the YouTube uploads list has two copies of the burn Short from 2026-10-12 (A2Vr9TetCUs, the one in the queue, and R-_p0T45FwQ); left as is. The chair flip Short's live YouTube description has a bare levlprep.com instead of a tracked link; left as is.",
+  "2026-10-14 daily run: scheduled w1007-05-sn2-umbrella for 2026-10-24 on TikTok and YouTube; Buffer full again (10 per channel), w1007-04-gcs-floor still approved and waiting. w1006-04-mix-it-up got youtube_id oOY3he1Ngt8. D1 related_video filled for 14 NREMT and orgo Shorts. D3 comments posted on both long videos (orgo used ref yt-atomic-structure-c since its description has no tracked slug). Studio showed 'Oops, something went wrong' again (also after authuser=1), so the w1006-04 thumbnail and D2 were skipped. D4 pin skipped: on youtube.com the comment menu only offers Report, so Chrome is signed in as a viewer account, not the Levl Prep channel. yt-nremt-01-ems-system has no site embed PR (pr_url empty): nremt/study-notes.html is rendered by JS, so the embed spot is unclear (nremt/notes/introduction-to-ems.html looks like the right page); left for Olivier.",
+  "2026-10-14 midweek build (7:42pm PT): did not build w1014. Downloads folder not attached to the task (get_device_info connectedFolders empty), so the ElevenLabs key could not be read. Also: Sunday's weekly batch built 0 Shorts (queue was full), not 4. Queue covers through 2026-10-24 scheduled plus w1007-04-gcs-floor approved (about 11 days from 2026-10-15). Nothing posted or approved.",
+  "2026-10-14 midweek build: rerun in the same chat after Olivier attached Downloads; built w1014-01-aspirin-chew (NREMT), w1014-03-caffeine-block (AP Bio), w1014-02-cold-pack (AP Chem), all pending review. New characters: student (3 poses) and EMT B (3 poses). engine2.py: levlprep.com watermark (left), empty beats allowed, gently moving end card; el_split.py writes offsets.json.",
+  "2026-10-15 daily run: scheduled w1007-04-gcs-floor for 2026-10-25 on TikTok and YouTube (Buffer full again at 10 per channel; w1014-01, w1014-03, w1014-02 approved and waiting). w1006-05-airway-sizing got youtube_id 2xul4FXiT1c. New pro thumbnails made (thumb_v2) for b2-05, b2-04, w1006-04, w1006-05 and w1007-03, copied to Downloads\\LevlPrep-posting\\thumbs. Studio upload of the w1006-04 thumbnail was sent and Save clicked, but the laptop went offline before it could be confirmed, so shorts_thumb stays false and the next run rechecks it; the other three uploads, D2 and D4 were skipped. yt-ap-01-intro-levels-of-organization upload failed: Zapier task limit reached; stays approved. D1: gcs-floor related_video set to the NREMT long video.",
+  "2026-10-15 ~9pm PT: yt-ap-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/aMvkCfwrepA, public, not for kids, AI use answered No (Olivier: AI narration does not need the label), tags and English set in Studio; thumbnail, playlist 'Anatomy and Physiology | LevlPrep' (new) and captions set by API; comment posted (not pinned yet); embed PR #69 (A&P notes are generated: edit anatomy-physiology/data/notes/<id>.html and run node scripts/build-anp.mjs). w1006-04 Studio thumbnail confirmed.",
+  "2026-10-17 daily run (fired 2:39pm PT, late): scheduled w1014-01-aspirin-chew for 2026-10-26 on TikTok and YouTube; Buffer full again, w1014-03 and w1014-02 approved and waiting. w1007-03-co-pulseox got youtube_id Dx8qhZ820nI and its Studio thumbnail. New pro thumbnails for w1007-09, w1007-06, w1007-01. yt_api.py and yt_comment.py were missing from pipeline/ and were added from the Project copies. Studio now opens as the Levl Prep channel and the comment menu offers Pin, but both Related video and Pin ask for YouTube's one time verification (advanced features); b2-04 related_set unavailable, related_check_after 2026-10-24; no pins done. Related video backfill: 5 A&P Shorts to aMvkCfwrepA. The co-pulseox live description has a bare levlprep.com; left as is.",
+  "2026-10-17 evening: Olivier completed YouTube advanced features verification on Levl Prep (levlprepofficial@gmail.com). Related video set in Studio on all 12 Shorts that had one (b2-04 included).",
+  "2026-10-18 daily run (fired 11am PT): checkup clean. Buffer top-up of w1014-03-caffeine-block (one free slot per channel, for 2026-10-27) was blocked by this session's permission check (same as 2026-10-12); nothing was posted, w1014-03 and w1014-02 stay approved. Buffer covers through 2026-10-26. w1007-09-sarcomere got youtube_id dHMBVSkC0pE, its Studio thumbnail and related video. New pro thumbnails (thumb_v2) for w1007-10, w1007-07, w1007-02, copied to Downloads\\LevlPrep-posting\\thumbs. Comments: 1 generic YouTube comment on w1006-04 (spam like, no reply); 2 TikTok replies drafted in comment_drafts. Sarcomere live description has a bare levlprep.com; left as is.",
+  "2026-10-18 daily run (6:14pm PT): checkup clean. Buffer top-up of w1014-03-caffeine-block blocked again by this session's permission check (second time today, also 2026-10-12); nothing posted, w1014-03 and w1014-02 stay approved, Buffer covers through 2026-10-26. w1007-06-rs-steering got youtube_id _ZBtmm2K32E, its Studio thumbnail and related video. New pro thumbnails (thumb_v2) for w1007-08, w1007-05, w1007-04 (all old style ones on upcoming Shorts are now done). Posted w1006-03 and w1006-02 redesigned and re-uploaded in Studio. No new comments on YouTube or TikTok; the 2 TikTok drafts still wait for Olivier. Study tip Shorts (w1006-04, w1007-10) have no related long video by design. rs-steering live description has a bare levlprep.com; left as is.",
+  "2026-10-18 weekly batch (9:10pm PT): analytics done (YouTube API with YT_CRED pointing at the staged file, because copying the key to /root/.lpkey was blocked by this session's permission check; TikTok Studio; Supabase; Search Console URL prefix property, the sc-domain one is not accessible). Search PR #73 opened (3 ochem pages, not merged). Shorts NOT built: queue covers 10 days from 2026-10-19 (8 scheduled through 10-26 plus w1014-03 and w1014-02 approved). TikTok profile shows no bio or website link.",
+  "2026-10-19 daily run (6:14pm PT): checkup clean. Scheduled w1014-03-caffeine-block (2026-10-27) and w1014-02-cold-pack (2026-10-28) on TikTok and YouTube; no approved Shorts left, Buffer covers through 2026-10-28. w1007-01-tourniquet got youtube_id IgVaPkxVlso; its Studio thumbnail and related video were skipped because Studio showed 'Oops, something went wrong' (also with authuser=1). Related video backfill: w1014-03 to the A&P intro, w1014-02 to the orgo intro (no AP Bio or AP Chem long video live yet); study tip Shorts w1006-04 and w1007-10 left without one. yt-apbio-01 (due today) NOT uploaded: Zapier says task limits reached; item stays approved. No new comments on YouTube or TikTok; the 2 TikTok drafts still wait for Olivier's OK.",
+  "2026-10-19 ~9:50pm PT: yt-apbio-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/sD7QbtHbVsw, public, not for kids, AI use No, tags and English set in Studio; thumbnail, playlist 'AP Biology | LevlPrep' (new) and captions by API; comment posted and pinned; embed PR #74. Chrome account route: Studio URL ?authuser=levlprepofficial@gmail.com opens the Levl Prep channel (authuser=1 opens Olivier's personal channel). Same session set the tourniquet Short thumbnail and related video. w1014-03 related video now points to the AP Bio water video.",
+  "2026-10-20 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-01-tourniquet set to posted. w1007-10-pretest got youtube_id odEdKBmtYlc and its Studio thumbnail (Studio worked with ?authuser=levlprepofficial@gmail.com); no related video by design. No new YouTube comments; 3 new TikTok comments on the tourniquet Short, 2 replies drafted (war.lord11 emojis, no reply). yt-orgo-02-orbitals due 2026-10-22.",
+  "2026-10-21 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-10-pretest set to posted. w1007-07-acid-resonance got youtube_id -aVZ1QSGQOA, its Studio thumbnail and related video (orgo atomic structure); Studio worked with ?authuser=levlprepofficial@gmail.com. Its live YouTube description has a bare levlprep.com instead of a tracked link; left as is. No new YouTube comments; 1 new TikTok reply drafted (lil.miwa on the tourniquet Short), viewer to viewer thread hazard_5522/cabezon_85 needs no reply. 5 TikTok drafts wait for Olivier's OK. yt-orgo-02-orbitals due 2026-10-22.",
+  "2026-10-21 midweek build (7:41pm PT run): built nothing. Modal endpoint answers 'workspace is disabled' (likely the October free credit is used up; the ledger estimates $23.22 spent, the studio art kit session spent about $6 tonight). With no new art possible, no Short could pass the studio gate (no fallback ships; the only library acting shots are kitchen pulse and dorm caffeine, both used in the last 3 weeks). No Modal reservation was made. Queue covers through 2026-10-28. ElevenLabs 73,218 left.",
+  "2026-10-22 midweek build (continued from the 10-21 run, Gemini route while Modal is out): built w1021-01-iv-water, w1021-02-ball-top (AP exam traps #1), w1021-03-speedometer (poll post, next topic). Art painted in Gemini in Olivier's Chrome, full size downloads in Downloads/LevlPrep-art/w1021; student arm rigged with paintskin. Fresh eyes 8.2 / 8 / 8, every shot 8+. Modal spend $0. Sent for review, pending. ElevenLabs about 71,500 left.",
+  "2026-10-22 daily run: checkup clean. Scheduled w1021-01-iv-water (2026-10-29) and w1021-02-ball-top (2026-10-30) on TikTok and YouTube; w1021-03-speedometer (poll post) holds 2026-10-31 as manual, to be posted from the laptop that evening. Buffer covers through 2026-10-31. w1007-07-acid-resonance set to posted. w1007-02-jaw-thrust got youtube_id YVjMJ06hes4, its Studio thumbnail and related video (NREMT intro). yt-orgo-02-orbitals (due today) NOT uploaded: the Zapier upload call was refused by this session's permission check (auto mode, 'create public surface'); stays approved, legacy fingerprint recorded. Related video left empty for ball-top (AP Physics) and speedometer (AP Calc): no long video in those courses yet. No new YouTube comments; 1 new TikTok comment (Cool on acid resonance), reply drafted; 6 TikTok drafts wait for Olivier's OK."
+ ],
+ "pending_reruns": [],
+ "related_check_after": null,
+ "comments_seen": [
+  "yt:UgzKkSO9S4e721tY4O14AaABAg",
+  "tt:sparkie_90:co-pulseox:put on end tidal",
+  "tt:fattie8652:chair-flip:axial hydrogens",
+  "tt:robbiebehnke2:tourniquet:high and tight",
+  "tt:cabezon_85:tourniquet:not certified",
+  "tt:war.lord11:tourniquet:emojis",
+  "tt:lil.miwa:tourniquet:high and tight military",
+  "tt:hazard_5522:tourniquet:people do it all the time",
+  "tt:cabezon_85:tourniquet:reply to hazard_5522",
+  "tt:user7239963906276:acid-resonance:cool"
+ ],
+ "comment_drafts": [
+  {
+   "platform": "tiktok",
+   "video": "w1007-03-co-pulseox",
+   "author": "sparkie_90",
+   "comment": "Put on end tidal or rad57 will help too",
+   "reply": "Good call on the Rad 57. A CO oximeter reads carbon monoxide directly, which a regular pulse ox can't. End tidal is great for breathing, but it measures CO2, so it won't flag CO poisoning on its own.",
+   "status": "drafted 2026-10-18"
   },
-  "notes": [
-    "2026-10-09 daily run: b2-05-ap-pulmonary-artery and b2-04-orgo-markovnikov have no badge or hook, so thumb.py cannot make a Studio thumbnail; skipped until Olivier decides.",
-    "2026-10-11 weekly batch: analytics done for TikTok and site; YouTube skipped (Downloads folder not attached to the task, key files unreadable). PART B not built: queue full (14 days covered from 2026-10-12: 8 scheduled + 6 approved).",
-    "2026-10-11 daily run: Studio showed 'Oops, something went wrong' (also with authuser=1), so thumbnails for b3-04-mitral-valve, w1006-01-bag-rate, w1006-02-heart-wiring were skipped; PNGs are already in Downloads\\LevlPrep-posting\\thumbs.",
-    "2026-10-12 long build: yt-nremt-01-ems-system script written and audited (saved in project as claude/levlprep-pipeline/long/01_nremt_script.py, '# audited, not voiced'). Stopped before voice: Downloads folder not attached to the task, so the ElevenLabs key could not be read. Resume at step 6.",
-    "2026-10-12 daily run: refired LevlPrep long video build from pending_reruns; the scheduler said the refire runs cloud only (no signed laptop approval), so it may again be unable to read the ElevenLabs key. Buffer top-up of w1007-02-jaw-thrust (one free slot per channel, for 2026-10-22) was blocked by this session's permission check; nothing was posted.",
-    "2026-10-12 long build refire (cloud only, 18:16 PT): did not build. No laptop access, so no ElevenLabs key. Also the project's 01_nremt_script.py header says it was already voiced, built and rendered on 2026-10-12 by another session (spec saved 18:08 PT), but no video is on the media branch yet. Left yt-nremt-01-ems-system as building and did not add a rerun, to avoid voicing it twice; waiting for Olivier.",
-    "2026-10-12 long build: yt-nremt-01-ems-system finished in the same chat after Olivier attached Downloads; status pending review.",
-    "2026-10-12 7:35pm PT: yt-nremt-01-ems-system upload via Zapier failed: Zapier task limit reached for the billing period. Item stays approved (date 2026-10-12); the daily run retries. Olivier may upload by hand in Studio; then the next run only needs youtube_id plus thumbnail, playlist and captions.",
-    "2026-10-12 ~7:50pm PT: yt-nremt-01-ems-system published by hand through YouTube Studio in Olivier's Chrome (Zapier out of tasks): https://youtu.be/lqxfWZZtRgE, thumbnail set, new public playlist 'NREMT Prep | LevlPrep' (oldest first) created and added. Studio route: fetch the mp4 from the raw media URL in page JS and dispatch a drop event on the upload dialog (file_upload tool is limited to 10 MB).",
-    "2026-10-13 daily run: scheduled w1007-02-jaw-thrust (2026-10-22) and w1007-08-oxygen-curve (2026-10-23) on TikTok and YouTube; Buffer full at 10 per channel, w1007-05-sn2-umbrella and w1007-04-gcs-floor still approved and waiting. w1006-03-chair-flip got youtube_id TrK9lBe_364 and its Studio thumbnail. Seen: the YouTube uploads list has two copies of the burn Short from 2026-10-12 (A2Vr9TetCUs, the one in the queue, and R-_p0T45FwQ); left as is. The chair flip Short's live YouTube description has a bare levlprep.com instead of a tracked link; left as is.",
-    "2026-10-14 daily run: scheduled w1007-05-sn2-umbrella for 2026-10-24 on TikTok and YouTube; Buffer full again (10 per channel), w1007-04-gcs-floor still approved and waiting. w1006-04-mix-it-up got youtube_id oOY3he1Ngt8. D1 related_video filled for 14 NREMT and orgo Shorts. D3 comments posted on both long videos (orgo used ref yt-atomic-structure-c since its description has no tracked slug). Studio showed 'Oops, something went wrong' again (also after authuser=1), so the w1006-04 thumbnail and D2 were skipped. D4 pin skipped: on youtube.com the comment menu only offers Report, so Chrome is signed in as a viewer account, not the Levl Prep channel. yt-nremt-01-ems-system has no site embed PR (pr_url empty): nremt/study-notes.html is rendered by JS, so the embed spot is unclear (nremt/notes/introduction-to-ems.html looks like the right page); left for Olivier.",
-    "2026-10-14 midweek build (7:42pm PT): did not build w1014. Downloads folder not attached to the task (get_device_info connectedFolders empty), so the ElevenLabs key could not be read. Also: Sunday's weekly batch built 0 Shorts (queue was full), not 4. Queue covers through 2026-10-24 scheduled plus w1007-04-gcs-floor approved (about 11 days from 2026-10-15). Nothing posted or approved.",
-    "2026-10-14 midweek build: rerun in the same chat after Olivier attached Downloads; built w1014-01-aspirin-chew (NREMT), w1014-03-caffeine-block (AP Bio), w1014-02-cold-pack (AP Chem), all pending review. New characters: student (3 poses) and EMT B (3 poses). engine2.py: levlprep.com watermark (left), empty beats allowed, gently moving end card; el_split.py writes offsets.json.",
-    "2026-10-15 daily run: scheduled w1007-04-gcs-floor for 2026-10-25 on TikTok and YouTube (Buffer full again at 10 per channel; w1014-01, w1014-03, w1014-02 approved and waiting). w1006-05-airway-sizing got youtube_id 2xul4FXiT1c. New pro thumbnails made (thumb_v2) for b2-05, b2-04, w1006-04, w1006-05 and w1007-03, copied to Downloads\\LevlPrep-posting\\thumbs. Studio upload of the w1006-04 thumbnail was sent and Save clicked, but the laptop went offline before it could be confirmed, so shorts_thumb stays false and the next run rechecks it; the other three uploads, D2 and D4 were skipped. yt-ap-01-intro-levels-of-organization upload failed: Zapier task limit reached; stays approved. D1: gcs-floor related_video set to the NREMT long video.",
-    "2026-10-15 ~9pm PT: yt-ap-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/aMvkCfwrepA, public, not for kids, AI use answered No (Olivier: AI narration does not need the label), tags and English set in Studio; thumbnail, playlist 'Anatomy and Physiology | LevlPrep' (new) and captions set by API; comment posted (not pinned yet); embed PR #69 (A&P notes are generated: edit anatomy-physiology/data/notes/<id>.html and run node scripts/build-anp.mjs). w1006-04 Studio thumbnail confirmed.",
-    "2026-10-17 daily run (fired 2:39pm PT, late): scheduled w1014-01-aspirin-chew for 2026-10-26 on TikTok and YouTube; Buffer full again, w1014-03 and w1014-02 approved and waiting. w1007-03-co-pulseox got youtube_id Dx8qhZ820nI and its Studio thumbnail. New pro thumbnails for w1007-09, w1007-06, w1007-01. yt_api.py and yt_comment.py were missing from pipeline/ and were added from the Project copies. Studio now opens as the Levl Prep channel and the comment menu offers Pin, but both Related video and Pin ask for YouTube's one time verification (advanced features); b2-04 related_set unavailable, related_check_after 2026-10-24; no pins done. Related video backfill: 5 A&P Shorts to aMvkCfwrepA. The co-pulseox live description has a bare levlprep.com; left as is.",
-    "2026-10-17 evening: Olivier completed YouTube advanced features verification on Levl Prep (levlprepofficial@gmail.com). Related video set in Studio on all 12 Shorts that had one (b2-04 included).",
-    "2026-10-18 daily run (fired 11am PT): checkup clean. Buffer top-up of w1014-03-caffeine-block (one free slot per channel, for 2026-10-27) was blocked by this session's permission check (same as 2026-10-12); nothing was posted, w1014-03 and w1014-02 stay approved. Buffer covers through 2026-10-26. w1007-09-sarcomere got youtube_id dHMBVSkC0pE, its Studio thumbnail and related video. New pro thumbnails (thumb_v2) for w1007-10, w1007-07, w1007-02, copied to Downloads\\LevlPrep-posting\\thumbs. Comments: 1 generic YouTube comment on w1006-04 (spam like, no reply); 2 TikTok replies drafted in comment_drafts. Sarcomere live description has a bare levlprep.com; left as is.",
-    "2026-10-18 daily run (6:14pm PT): checkup clean. Buffer top-up of w1014-03-caffeine-block blocked again by this session's permission check (second time today, also 2026-10-12); nothing posted, w1014-03 and w1014-02 stay approved, Buffer covers through 2026-10-26. w1007-06-rs-steering got youtube_id _ZBtmm2K32E, its Studio thumbnail and related video. New pro thumbnails (thumb_v2) for w1007-08, w1007-05, w1007-04 (all old style ones on upcoming Shorts are now done). Posted w1006-03 and w1006-02 redesigned and re-uploaded in Studio. No new comments on YouTube or TikTok; the 2 TikTok drafts still wait for Olivier. Study tip Shorts (w1006-04, w1007-10) have no related long video by design. rs-steering live description has a bare levlprep.com; left as is.",
-    "2026-10-18 weekly batch (9:10pm PT): analytics done (YouTube API with YT_CRED pointing at the staged file, because copying the key to /root/.lpkey was blocked by this session's permission check; TikTok Studio; Supabase; Search Console URL prefix property, the sc-domain one is not accessible). Search PR #73 opened (3 ochem pages, not merged). Shorts NOT built: queue covers 10 days from 2026-10-19 (8 scheduled through 10-26 plus w1014-03 and w1014-02 approved). TikTok profile shows no bio or website link.",
-    "2026-10-19 daily run (6:14pm PT): checkup clean. Scheduled w1014-03-caffeine-block (2026-10-27) and w1014-02-cold-pack (2026-10-28) on TikTok and YouTube; no approved Shorts left, Buffer covers through 2026-10-28. w1007-01-tourniquet got youtube_id IgVaPkxVlso; its Studio thumbnail and related video were skipped because Studio showed 'Oops, something went wrong' (also with authuser=1). Related video backfill: w1014-03 to the A&P intro, w1014-02 to the orgo intro (no AP Bio or AP Chem long video live yet); study tip Shorts w1006-04 and w1007-10 left without one. yt-apbio-01 (due today) NOT uploaded: Zapier says task limits reached; item stays approved. No new comments on YouTube or TikTok; the 2 TikTok drafts still wait for Olivier's OK.",
-    "2026-10-19 ~9:50pm PT: yt-apbio-01 published by hand through YouTube Studio in Olivier's Chrome at his request (Zapier out of tasks): https://youtu.be/sD7QbtHbVsw, public, not for kids, AI use No, tags and English set in Studio; thumbnail, playlist 'AP Biology | LevlPrep' (new) and captions by API; comment posted and pinned; embed PR #74. Chrome account route: Studio URL ?authuser=levlprepofficial@gmail.com opens the Levl Prep channel (authuser=1 opens Olivier's personal channel). Same session set the tourniquet Short thumbnail and related video. w1014-03 related video now points to the AP Bio water video.",
-    "2026-10-20 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-01-tourniquet set to posted. w1007-10-pretest got youtube_id odEdKBmtYlc and its Studio thumbnail (Studio worked with ?authuser=levlprepofficial@gmail.com); no related video by design. No new YouTube comments; 3 new TikTok comments on the tourniquet Short, 2 replies drafted (war.lord11 emojis, no reply). yt-orgo-02-orbitals due 2026-10-22.",
-    "2026-10-21 daily run: checkup clean. No approved Shorts, nothing new in Buffer (covers through 2026-10-28). w1007-10-pretest set to posted. w1007-07-acid-resonance got youtube_id -aVZ1QSGQOA, its Studio thumbnail and related video (orgo atomic structure); Studio worked with ?authuser=levlprepofficial@gmail.com. Its live YouTube description has a bare levlprep.com instead of a tracked link; left as is. No new YouTube comments; 1 new TikTok reply drafted (lil.miwa on the tourniquet Short), viewer to viewer thread hazard_5522/cabezon_85 needs no reply. 5 TikTok drafts wait for Olivier's OK. yt-orgo-02-orbitals due 2026-10-22.",
-    "2026-10-21 midweek build (7:41pm PT run): built nothing. Modal endpoint answers 'workspace is disabled' (likely the October free credit is used up; the ledger estimates $23.22 spent, the studio art kit session spent about $6 tonight). With no new art possible, no Short could pass the studio gate (no fallback ships; the only library acting shots are kitchen pulse and dorm caffeine, both used in the last 3 weeks). No Modal reservation was made. Queue covers through 2026-10-28. ElevenLabs 73,218 left.",
-    "2026-10-22 midweek build (continued from the 10-21 run, Gemini route while Modal is out): built w1021-01-iv-water, w1021-02-ball-top (AP exam traps #1), w1021-03-speedometer (poll post, next topic). Art painted in Gemini in Olivier's Chrome, full size downloads in Downloads/LevlPrep-art/w1021; student arm rigged with paintskin. Fresh eyes 8.2 / 8 / 8, every shot 8+. Modal spend $0. Sent for review, pending. ElevenLabs about 71,500 left."
-  ],
-  "pending_reruns": [],
-  "related_check_after": null,
-  "comments_seen": [
-    "yt:UgzKkSO9S4e721tY4O14AaABAg",
-    "tt:sparkie_90:co-pulseox:put on end tidal",
-    "tt:fattie8652:chair-flip:axial hydrogens",
-    "tt:robbiebehnke2:tourniquet:high and tight",
-    "tt:cabezon_85:tourniquet:not certified",
-    "tt:war.lord11:tourniquet:emojis",
-    "tt:lil.miwa:tourniquet:high and tight military",
-    "tt:hazard_5522:tourniquet:people do it all the time",
-    "tt:cabezon_85:tourniquet:reply to hazard_5522"
-  ],
-  "comment_drafts": [
-    {
-      "platform": "tiktok",
-      "video": "w1007-03-co-pulseox",
-      "author": "sparkie_90",
-      "comment": "Put on end tidal or rad57 will help too",
-      "reply": "Good call on the Rad 57. A CO oximeter reads carbon monoxide directly, which a regular pulse ox can't. End tidal is great for breathing, but it measures CO2, so it won't flag CO poisoning on its own.",
-      "status": "drafted 2026-10-18"
-    },
-    {
-      "platform": "tiktok",
-      "video": "w1006-03-chair-flip",
-      "author": "fattie8652",
-      "comment": "wouldn't the axial hydrogens turn into equatorial",
-      "reply": "You're right, good catch. In a real ring flip every axial spot becomes equatorial, hydrogens included, and our animation left those two axial. We've fixed it. Thanks for watching that closely!",
-      "status": "drafted 2026-10-18"
-    },
-    {
-      "platform": "tiktok",
-      "video": "w1007-01-tourniquet",
-      "author": "robbiebehnke2",
-      "comment": "repeat after me high and tight",
-      "reply": "High and tight is the right move when you can't see the wound or the scene isn't safe. Once you can see it, 2 to 3 inches above the wound and off the joint works best.",
-      "status": "drafted 2026-10-20"
-    },
-    {
-      "platform": "tiktok",
-      "video": "w1007-01-tourniquet",
-      "author": "cabezon_85",
-      "comment": "If not certified to place a tourniquet on someone you will cause more harm than good",
-      "reply": "Training really helps, and a free Stop the Bleed class takes about an hour. But on a life threatening bleed a tourniquet is the right call even for bystanders, and limb damage is rare when it comes off within about two hours.",
-      "status": "drafted 2026-10-20"
-    },
-    {
-      "platform": "tiktok",
-      "video": "w1007-01-tourniquet",
-      "author": "lil.miwa",
-      "comment": "Most people aren't doing a high and tight that a very military and like police thing this is like your at work in a civilian jobs",
-      "reply": "Fair point. High and tight comes from tactical care, where you can't stop to find the wound. If you can see the bleed, 2 to 3 inches above it works best.",
-      "status": "drafted 2026-10-21"
-    }
-  ],
-  "series_counts": {
-    "AP exam traps": 1
+  {
+   "platform": "tiktok",
+   "video": "w1006-03-chair-flip",
+   "author": "fattie8652",
+   "comment": "wouldn't the axial hydrogens turn into equatorial",
+   "reply": "You're right, good catch. In a real ring flip every axial spot becomes equatorial, hydrogens included, and our animation left those two axial. We've fixed it. Thanks for watching that closely!",
+   "status": "drafted 2026-10-18"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1007-01-tourniquet",
+   "author": "robbiebehnke2",
+   "comment": "repeat after me high and tight",
+   "reply": "High and tight is the right move when you can't see the wound or the scene isn't safe. Once you can see it, 2 to 3 inches above the wound and off the joint works best.",
+   "status": "drafted 2026-10-20"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1007-01-tourniquet",
+   "author": "cabezon_85",
+   "comment": "If not certified to place a tourniquet on someone you will cause more harm than good",
+   "reply": "Training really helps, and a free Stop the Bleed class takes about an hour. But on a life threatening bleed a tourniquet is the right call even for bystanders, and limb damage is rare when it comes off within about two hours.",
+   "status": "drafted 2026-10-20"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1007-01-tourniquet",
+   "author": "lil.miwa",
+   "comment": "Most people aren't doing a high and tight that a very military and like police thing this is like your at work in a civilian jobs",
+   "reply": "Fair point. High and tight comes from tactical care, where you can't stop to find the wound. If you can see the bleed, 2 to 3 inches above it works best.",
+   "status": "drafted 2026-10-21"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1007-07-acid-resonance",
+   "author": "user7239963906276",
+   "comment": "Cool.:)",
+   "reply": "Thanks! Glad the resonance part clicked.",
+   "status": "drafted 2026-10-22"
   }
+ ],
+ "series_counts": {
+  "AP exam traps": 1
+ }
 }
