@@ -519,10 +519,10 @@
    "approved_blob": "a45580b788f2fed1599f49820a98ad57f7079c33"
   },
   {
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-10-22",
-   "date": null,
-   "buffer": null,
+   "date": "2026-10-30",
+   "buffer": "6adab5b48d2197cb2a0c0685",
    "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
