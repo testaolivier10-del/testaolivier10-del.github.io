@@ -1,0 +1,102 @@
+{
+ "id": "landing-impulse",
+ "format": "short",
+ "duration": 31.583225806451626,
+ "answer": {
+  "kind": "action",
+  "what": "pull your hands back to stretch the stop out (more time, smaller force)"
+ },
+ "long_reason": "",
+ "beats": [
+  {
+   "t0": 0.0,
+   "t1": 3.7912903225806454,
+   "kind": "mistake",
+   "person": true,
+   "diagram": false,
+   "what": "she faces us, turns (front, three quarter, side), jumps and lands with locked knees (labelled acted out): hips stop dead, jolt, red flash at knees, force meter slams to about 9x body weight, red X",
+   "source": "impulse momentum theorem; locked curve illustrative"
+  },
+  {
+   "t0": 3.7912903225806454,
+   "t1": 4.341290322580646,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "what": "rewind back to the crouch",
+   "source": ""
+  },
+  {
+   "t0": 4.341290322580646,
+   "t1": 7.669032258064513,
+   "kind": "payoff",
+   "person": true,
+   "diagram": false,
+   "what": "the same jump lands for real with bent knees (motion capture); meter peaks about 2.8x",
+   "source": "CMU mocap 13_11"
+  },
+  {
+   "t0": 7.669032258064513,
+   "t1": 12.591935483870966,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "what": "slow motion replay: vertical momentum arrow 2.3 m/s shrinks to 0 as the CoM stops; chip: delta p same for both landings",
+   "source": "CoM from segment masses; flight parabola gives scale"
+  },
+  {
+   "t0": 12.591935483870966,
+   "t1": 15.031935483870965,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "what": "card: delta p = F x delta t, F = net force",
+   "source": "AP Physics 1 unit 4"
+  },
+  {
+   "t0": 15.031935483870965,
+   "t1": 19.063225806451616,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "what": "replay locked landing; stopwatch 0.06 s; graph draws the illustrative spike (about 9x mg, about 30 ms to peak)",
+   "source": "illustrative"
+  },
+  {
+   "t0": 19.063225806451616,
+   "t1": 22.965483870967752,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "what": "replay bent landing; stopwatch about 0.2 s; ground force arrow F = m(g + a) live; graph draws the recorded curve, peak 2.8x mg",
+   "source": "computed from mocap"
+  },
+  {
+   "t0": 22.965483870967752,
+   "t1": 25.173870967741948,
+   "kind": "rule",
+   "person": true,
+   "diagram": true,
+   "what": "both areas above mg shaded equal (same delta p), arrow from the tall peak to the low one",
+   "source": ""
+  },
+  {
+   "t0": 25.173870967741948,
+   "t1": 29.783225806451625,
+   "kind": "question",
+   "person": true,
+   "diagram": false,
+   "what": "she turns back to us; water balloon icon; chips PULL HANDS BACK? / HOLD STILL?",
+   "source": ""
+  },
+  {
+   "t0": 29.783225806451625,
+   "t1": 31.583225806451626,
+   "kind": "end",
+   "person": false,
+   "diagram": false,
+   "what": "end card",
+   "source": ""
+  }
+ ]
+}

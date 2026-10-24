@@ -1,6 +1,22 @@
 # Building a LevlPrep video the code drawn way (current method, Olivier 2026-10-24)
 
-Reference build: runner/short_sprint.py (sprint lean Short, AP Physics 1). Read it first; copy its structure.
+Reference builds: jump/short_jump.py (landing impulse Short: traced background, three view character, graph;
+the newest, copy this one) and runner/short_sprint.py (sprint lean Short). Read one first; copy its structure.
+
+New since the jump Short (Olivier asked: characters are not only side view; backgrounds traced like characters):
+- Backgrounds are traced in code from a Gemini painting, like the characters: jump/bgtrace2.py (Felzenszwalb
+  regions on a smoothed 3x upscale, potrace per region, a fitted linear gradient per region, regions sorted into
+  far / building / trees / wall / ground layers) and jump/bgdraw2.py (draws them; sky, sun glow and clouds in code).
+  jump/world.py places the painting in world px for the vertical frame: grass extended below it, code tufts in
+  front, tree sway (each tree shears about its trunk base), depth of field (back layers blurred together, wall a
+  little, ground sharp), parallax per layer.
+- Characters come as a turnaround (Gemini: front, three quarter, side on green). The side view is the motion
+  capture rig (jump/side: extract.py, trace.py, model.py with a ponytail that swings on a spring about its tie);
+  front and three quarter are posed models (jump/views.py: rigid traced parts with breathing, sway, head tilt,
+  arm sway, blinks). Turns swap views for a few frames each (front, three quarter, side) at the rig's spot.
+- Physics read off the motion itself (jump/jphys.py, Curves in short_jump.py): gravity from the flight parabola
+  gives px per metre; ground force F = m(g + a) from the 8 Hz filtered centre of mass; touchdown, stop time and
+  the impulse area all from the recording, so labels and graphs match what is shown.
 
 1. Setup: bash /tmp/m/pipeline/studio/codechar/setup_codechar.sh (installs skia, potrace, Inkscape; copies the
    code to /home/claude/{rig,trace,mocap,runner,neuro,short}, the paths the modules import from).

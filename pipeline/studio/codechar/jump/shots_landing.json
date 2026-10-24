@@ -1,0 +1,205 @@
+{
+ "video": "landing-impulse",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0.0,
+   "t1": 3.7912903225806454,
+   "what": "she faces us, turns (front, three quarter, side), jumps and lands with locked knees (labelled acted out): hips stop dead, jolt, red flash at knees, force meter slams to about 9x body weight, red X",
+   "motion_source": "motion capture to touchdown, then keyed (labelled acted out)",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 3.7912903225806454,
+   "t1": 4.341290322580646,
+   "what": "rewind back to the crouch",
+   "motion_source": "motion capture",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 4.341290322580646,
+   "t1": 7.669032258064513,
+   "what": "the same jump lands for real with bent knees (motion capture); meter peaks about 2.8x",
+   "motion_source": "motion capture, slowed",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 7.669032258064513,
+   "t1": 12.591935483870966,
+   "what": "slow motion replay: vertical momentum arrow 2.3 m/s shrinks to 0 as the CoM stops; chip: delta p same for both landings",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s5",
+   "t0": 12.591935483870966,
+   "t1": 15.031935483870965,
+   "what": "card: delta p = F x delta t, F = net force",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s6",
+   "t0": 15.031935483870965,
+   "t1": 19.063225806451616,
+   "what": "replay locked landing; stopwatch 0.06 s; graph draws the illustrative spike (about 9x mg, about 30 ms to peak)",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s7",
+   "t0": 19.063225806451616,
+   "t1": 22.965483870967752,
+   "what": "replay bent landing; stopwatch about 0.2 s; ground force arrow F = m(g + a) live; graph draws the recorded curve, peak 2.8x mg",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s8",
+   "t0": 22.965483870967752,
+   "t1": 25.173870967741948,
+   "what": "both areas above mg shaded equal (same delta p), arrow from the tall peak to the low one",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s9",
+   "t0": 25.173870967741948,
+   "t1": 29.783225806451625,
+   "what": "she turns back to us; water balloon icon; chips PULL HANDS BACK? / HOLD STILL?",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s10",
+   "t0": 29.783225806451625,
+   "t1": 31.583225806451626,
+   "what": "end card",
+   "motion_source": "motion capture replays and posed views",
+   "checks": {
+    "art": "pending",
+    "motion_source": "pending",
+    "rig": "pending",
+    "life": "pending",
+    "liquids": "pending",
+    "face": "pending",
+    "timing": "pending",
+    "accuracy": "pending",
+    "consistency": "pending",
+    "camera": "pending"
+   },
+   "notes": ""
+  }
+ ]
+}

@@ -14,6 +14,7 @@ cp $S/codechar/mocap/*.py /home/claude/mocap/
 cp $S/codechar/runner/* /home/claude/runner/
 cp $S/codechar/neuro/* /home/claude/neuro/
 cp $S/codechar/kit/layout.py /home/claude/short/
+mkdir -p /home/claude/jump && cp -r $S/codechar/jump/* /home/claude/jump/
 cp /tmp/m/sfx/*.wav /home/claude/lp/assets/ 2>/dev/null || true
 (cd /tmp/m/pipeline && python3 sfx.py >/dev/null 2>&1) || true      # UI sounds (swish, pop, check, wrong, shimmer, pat)
 python3 -c "import sys; sys.path[:0]=['/home/claude/rig','/home/claude/trace','/home/claude/mocap','/home/claude/runner']; import partrig, model, mocap_perf; print('codechar studio ready')"
