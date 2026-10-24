@@ -16,9 +16,20 @@ import numpy as np, skia
 from PIL import Image
 sys.path.insert(0, '/home/claude/rig'); sys.path.insert(0, '/home/claude/trace')
 import acting, partrig, model
+sys.path.insert(0, '/home/claude/mocap')
+import mocap_perf as MP
+IDLE = MP.Take('82_08', near='Left')
+WALK = MP.Take('104_19', near='Right')
+
+
+def mplan(t):
+    """Real motion: standing (82_08), then a walk start (104_19) whose near calf pushes off as the signal arrives."""
+    w = MP.xfade(t, 6.2, 6.6)
+    return [('idle', IDLE, 1.0 + t, 1 - w), ('walk', WALK, 0.85 + (t - 6.2), w)]
+
 from acting import Track, ease_io
 
-FPS, DUR = 60, 10.0
+FPS, DUR = 60, 9.2
 W_, H_ = 1080, 1920
 TEAL, VIOLET, YELLOW, CORAL, NAVY = (0x2e, 0xe6, 0xd6), (0x9b, 0x7b, 0xff), (0xff, 0xd2, 0x3f), (0xff, 0x6b, 0x6b), (0x08, 0x14, 0x28)
 FONT = skia.Typeface.MakeFromFile('/usr/share/fonts/opentype/inter/Inter-Black.otf')
@@ -171,7 +182,8 @@ def caption(c, text, a, y=210, size=58, color=(255, 255, 255)):
 # ---------------------------------------------------------------- render
 def main(out='/home/claude/neuro/brain_to_foot.mp4', stills=()):
     rig, spec, joints, radius = model.build()
-    P = acting.Performer(rig, spec)
+    rig.springs = {'n_hand': dict(freq=5, damp=0.7), 'f_hand': dict(freq=5, damp=0.7)}
+    P = MP.MocapPerformer(rig, spec, mplan, ground_take=WALK)
     bg = skia.Image.fromarray(np.array(Image.open('/tmp/m/characters/style_b/w1021/v2_park_bg.png').convert('RGBA').resize((W_, H_), Image.LANCZOS)),
                               colorType=skia.ColorType.kRGBA_8888_ColorType)
     rng = np.random.default_rng(3)
@@ -182,10 +194,11 @@ def main(out='/home/claude/neuro/brain_to_foot.mp4', stills=()):
                                  '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '17',
                                  '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
     gaps = 0
+    main.freeze = None; main.cut_done = False
     burst = rng.normal(0, 1, (26, 2))
     for i in range(int(DUR * FPS)):
         t = i / FPS
-        W = P.pose(t, script)
+        W = P.pose(t)
         rig.blink = 1.0 if any(b <= t < b + 5 / 60 for b in (0.7, 5.6, 9.1)) else 0.0
         X = smooth((t - 1.3) / 0.8) * (1 - smooth((t - 7.55) / 0.7))           # x-ray amount
         # signal positions in char space (for the camera)
@@ -193,7 +206,7 @@ def main(out='/home/claude/neuro/brain_to_foot.mp4', stills=()):
         upc = catmull(mapped(rig, W, I3, UPPER)); loc = catmull(mapped(rig, W, I3, LOWER))
         duc, dlc = arclen(upc), arclen(loc)
         brain_c = np.array(model.compose(np.eye(3)[:2], rig.bm(W, 'head')) @ np.array([*brain_pt(360, 260), 1.0]))
-        FULL = (0.0, -266.7, 1.07); CALF = (0.0, 17.0, 1.25)
+        FULL = (271.0, -266.7, 1.07); CALF = (P.x + 60.0, 17.0, 1.25)   # she starts on the left third
         if t < 1.3: want = FULL
         elif t < 2.1:
             k = ease_io((t - 1.3) / 0.8); hd = (brain_c[0], brain_c[1] + 30, 2.3)
@@ -203,11 +216,16 @@ def main(out='/home/claude/neuro/brain_to_foot.mp4', stills=()):
             sp = at(upc, duc, ease_io(min(1, (t - 2.85) / 1.5)) * duc[-1]); want = (sp[0] - 20, sp[1] + 60, 1.9)
         elif t < 6.95:
             sp = at(loc, dlc, min(1, (t - 4.85) / 2.1) * dlc[-1]); want = (sp[0] - 10, sp[1] + 40, 2.05)
-        elif t < 7.7: want = CALF
-        else: want = FULL
+        elif t < 7.55: want = CALF
+        else:                                   # hard cut (while dark) to the wide park shot, her on the left third
+            if main.freeze is None:
+                main.freeze = P.x + (540 - 170) / 1.07
+            want = (main.freeze, FULL[1], FULL[2])
         if i == 0: cam = np.array(FULL, float)
         rate = 0.09 if t < 7.6 else 0.06
         cam = cam + (np.array(want, float) - cam) * rate
+        if t >= 7.55 and not getattr(main, 'cut_done', False):
+            cam = np.array(want, float); main.cut_done = True
         tx, ty, zoom = cam
         xf = np.array([[zoom, 0, 540 - zoom * tx], [0, zoom, 1000 - zoom * ty], [0, 0, 1.0]])
         surf = skia.Surface(W_, H_); cv = surf.getCanvas()
@@ -227,10 +245,9 @@ def main(out='/home/claude/neuro/brain_to_foot.mp4', stills=()):
         M = xf[:2]
         if X > 0:
             S = rig.shapes(W, M)
-            sil = rig.silhouette(S)
-            # x-ray body: dark translucent, teal edge
-            cv.drawPath(sil, skia.Paint(AntiAlias=True, Color=skia.Color(14, 24, 62, int(205 * X))))
-            cv.drawPath(sil, skia.Paint(AntiAlias=True, Color=col(TEAL, 140 * X), Style=skia.Paint.kStroke_Style, StrokeWidth=3))
+            # x-ray body: dark translucent, teal edge (pixel layers: exact silhouette, no boolean ops)
+            rig.silhouette_fill(cv, S, skia.Color(14, 24, 62), alpha=205 / 255 * X)
+            rig.silhouette_edge(cv, S, col(TEAL), width=3.0, alpha=140 / 255 * X)
             # brain inside the skull
             mb = model.compose(M, rig.bm(W, 'head'))
             cv.save(); cv.clipPath(S['head'][0][0], doAntiAlias=True)
@@ -313,8 +330,8 @@ def main(out='/home/claude/neuro/brain_to_foot.mp4', stills=()):
             label(cv, 'Sciatic nerve', at(lo, dl, dl[-1] * 0.38), win(t, 5.2, 6.4) * X, side=-1)
             label(cv, 'Calf muscle', at(lo, dl, dl[-1] * 0.72) + np.array([-25 * zoom, 0]), win(t, 6.9, 7.9) * X, side=-1)
         caption(cv, 'Brain to foot, slowed down', win(t, 1.6, 6.8, 0.35), y=230)
-        caption(cv, 'Real time: about 1/30 of a second', win(t, 7.7, 9.9, 0.35), y=230, color=YELLOW)
-        g = partrig.gap_check(rig, W, np.array([[0.5, 0, 270], [0, 0.5, 700], [0, 0, 1.0]]), (W_, H_), joints, radius)
+        caption(cv, 'Real time: about 1/30 of a second', win(t, 7.6, 9.15, 0.3), y=230, color=YELLOW)
+        g = partrig.gap_check(rig, W, np.array([[0.5, 0, 540 - 0.5 * P.x], [0, 0.5, 700], [0, 0, 1.0]]), (W_, H_), joints, radius)
         if max(g[j] for j in joints) > 0.02 or g['components'] > 1: gaps += 1
         frame = surf.makeImageSnapshot().toarray()
         if i in stills:

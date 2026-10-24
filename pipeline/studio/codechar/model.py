@@ -98,6 +98,35 @@ def smooth_closed(pts, M=None, tension=0.5):
     return path
 
 
+def wind(*paths):
+    """Overlapping shapes as ONE path filled with the winding rule: the fill is the exact union, no boolean ops."""
+    w = skia.Path()
+    for p in paths:
+        w.addPath(p)
+    w.setFillType(skia.PathFillType.kWinding)
+    return w
+
+
+def union(a, b):
+    """Robust union: boolean op, verified against a winding fill of both shapes (path ops can fail on near
+    tangent caps at some scales and drop a sliver, which the gap check catches)."""
+    w = skia.Path(a); w.addPath(b); w.setFillType(skia.PathFillType.kWinding)
+    try:
+        u = skia.Op(a, b, skia.PathOp.kUnion_PathOp)
+    except Exception:
+        u = None
+    if u is None or u.isEmpty():
+        return w
+    # verify: dense samples inside each input shape must be inside the union
+    for p in (b, a):
+        bx = p.computeTightBounds()
+        for x in np.linspace(bx.left(), bx.right(), 19)[1:-1]:
+            for y in np.linspace(bx.top(), bx.bottom(), 19)[1:-1]:
+                if p.contains(x, y) and not u.contains(x, y):
+                    return w
+    return u
+
+
 # tube half widths (front, back) at the start and end of each segment, measured on the painting
 TUBES = {
     "up": ((38, 39), (33, 33)), "lo": ((31, 32), (25, 25)),
@@ -169,30 +198,35 @@ class Paramedic(Rig):
         if not end_cap:                      # flat end reaches a little past the joint (sleeve over glove, hem over boot)
             d = q2 - P(b2); q2 = q2 + d / (np.linalg.norm(d) + 1e-9) * 5 * s
         t2 = self.tube(P(b2), q2, w(kind2, 0), w(kind2, 1), cap0=True, cap1=end_cap)
-        return skia.Op(t1, t2, skia.PathOp.kUnion_PathOp)
+        return wind(t1, t2)
 
-    # ---------------------------------------------------------------- lighting
-    def lit(self, c, path, base, M, sh_w=22, k=1.0, details=None, sh_k=None):
-        """Fill path with base, details clipped inside, then the hard shadow band on the side away from the light."""
+    # ---------------------------------------------------------------- lighting (pixel layers, no boolean ops)
+    def lit(self, c, path, base, M, sh_w=22, k=1.0, details=None, sh_k=None, clip=None):
+        """Fill path with base, details clipped inside, a soft light gradient, then the hard shadow band on the
+        side away from the light (the path minus itself shifted toward the light, cut in a pixel layer)."""
         s = math.hypot(M[0, 0], M[1, 0])
         Lx, Ly = self.L
         paint = skia.Paint(AntiAlias=True)
+        c.save()
+        if clip is not None:
+            c.clipPath(clip, doAntiAlias=True)
         paint.setColor(C(base, k=k)); c.drawPath(path, paint)
         c.save(); c.clipPath(path, doAntiAlias=True)
         for p, col in (details or []):
             paint.setColor(C(vec_rgb(col), k=k)); c.drawPath(p, paint)
-        # soft light gradient across the shape: brighter toward the light, like the painted scenes
-        b = path.computeTightBounds()
-        cx, cy = b.centerX(), b.centerY()
-        R = 0.5 * math.hypot(b.width(), b.height())
-        p0 = skia.Point(cx + Lx * R, cy + Ly * R); p1 = skia.Point(cx - Lx * R, cy - Ly * R)
-        g = skia.GradientShader.MakeLinear([p0, p1], [skia.Color(255, 236, 205, 26), skia.Color(255, 236, 205, 0)])
+        bnd = path.computeTightBounds()
+        cx, cy = bnd.centerX(), bnd.centerY()
+        R = 0.5 * math.hypot(bnd.width(), bnd.height())
+        g = skia.GradientShader.MakeLinear([skia.Point(cx + Lx * R, cy + Ly * R), skia.Point(cx - Lx * R, cy - Ly * R)],
+                                           [skia.Color(255, 236, 205, 26), skia.Color(255, 236, 205, 0)])
         c.drawPaint(skia.Paint(AntiAlias=True, Shader=g))
         c.restore()
+        c.saveLayer(None, skia.Paint(Alphaf=1 - (sh_k or self.shadow_k)))
+        c.drawPath(path, skia.Paint(AntiAlias=True, Color=skia.Color(10, 14, 40)))
         moved = skia.Path(path); moved.offset(Lx * sh_w * s, Ly * sh_w * s)
-        sh = skia.Op(path, moved, skia.PathOp.kDifference_PathOp)
-        paint.setColor(skia.Color(10, 14, 40, int(255 * (1 - (sh_k or self.shadow_k)))))
-        c.drawPath(sh, paint)
+        c.drawPath(moved, skia.Paint(AntiAlias=True, Color=skia.ColorBLACK, BlendMode=skia.BlendMode.kDstOut))
+        c.restore()
+        c.restore()
 
     def occlude(self, c, path, under, M, r=7, a=95):
         """Soft contact shadow of path onto what is already drawn (clipped to `under`)."""
@@ -203,11 +237,47 @@ class Paramedic(Rig):
                                   MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, r * s)))
         c.restore()
 
-    def rim_light(self, c, sil, M, w=4.2):
+    def part_list(self, S):
+        """Every visible part as (path, clip or None): together they are her exact silhouette."""
+        out = [(S['torso'], None), (S['nleg'], S['nleg_clip'])]
+        for k in ('farm', 'fleg', 'narm', 'fwstub', 'nwstub', 'fastub', 'nastub'):
+            out.append((S[k], None))
+        for k in ('fboot', 'nboot', 'fglove', 'nglove', 'head'):
+            out.append((S[k][0][0], None))
+        return out
+
+    def fill_parts(self, c, S, paint, dx=0.0, dy=0.0):
+        for p, clip in self.part_list(S):
+            c.save()
+            if clip is not None:
+                c.clipPath(clip, doAntiAlias=True)
+            c.translate(dx, dy)
+            c.drawPath(p, paint)
+            c.restore()
+
+    def rim_light(self, c, S, M, w=4.2):
+        """Warm rim on her outer silhouette, on the side facing the light (silhouette minus itself shifted)."""
         s = math.hypot(M[0, 0], M[1, 0])
-        moved = skia.Path(sil); moved.offset(-self.L[0] * w * s, -self.L[1] * w * s)
-        rimp = skia.Op(sil, moved, skia.PathOp.kDifference_PathOp)
-        c.drawPath(rimp, skia.Paint(AntiAlias=True, Color=C(self.rim, a=self.rim_a)))
+        c.saveLayer(None, skia.Paint(Alphaf=self.rim_a / 255))
+        self.fill_parts(c, S, skia.Paint(AntiAlias=True, Color=C(self.rim)))
+        self.fill_parts(c, S, skia.Paint(AntiAlias=True, Color=skia.ColorBLACK, BlendMode=skia.BlendMode.kDstOut),
+                        dx=-self.L[0] * w * s, dy=-self.L[1] * w * s)
+        c.restore()
+
+    def silhouette_fill(self, c, S, color, alpha=1.0):
+        """Her silhouette filled once (no alpha build up where parts overlap)."""
+        c.saveLayer(None, skia.Paint(Alphaf=alpha))
+        self.fill_parts(c, S, skia.Paint(AntiAlias=True, Color=color))
+        c.restore()
+
+    def silhouette_edge(self, c, S, color, width=3.0, alpha=1.0):
+        """A line along her outer silhouette (silhouette minus an eroded copy)."""
+        c.saveLayer(None, skia.Paint(Alphaf=alpha))
+        self.fill_parts(c, S, skia.Paint(AntiAlias=True, Color=color))
+        c.saveLayer(None, skia.Paint(BlendMode=skia.BlendMode.kDstOut, ImageFilter=skia.ImageFilters.Erode(width, width)))
+        self.fill_parts(c, S, skia.Paint(AntiAlias=True, Color=skia.ColorBLACK))
+        c.restore()
+        c.restore()
 
     # ---------------------------------------------------------------- draw
     def shapes(self, W, M):
@@ -222,7 +292,7 @@ class Paramedic(Rig):
             u = (lo_t - lo_h) / (np.linalg.norm(lo_t - lo_h) + 1e-9)
             cuff = self.tube(lo_t - u * 24 * sc, lo_t + u * 6 * sc, (30 * sc, 30 * sc), (30 * sc, 30 * sc), cap0=False, cap1=False)
             S[sd + 'arm'] = arm
-            S[sd + 'cuff'] = skia.Op(cuff, arm, skia.PathOp.kIntersect_PathOp)
+            S[sd + 'cuff'] = cuff                     # drawn clipped to the arm
             S[sd + 'glove'] = self.traced('glove', compose(bm(sd + '_hand'), M_HAND))
             wr = M @ np.array([*self.joint(W, sd + '_hand'), 1]); hu = M @ np.array([*self.tail(W, sd + '_hand'), 1]) - wr
             hu /= np.linalg.norm(hu) + 1e-9
@@ -238,46 +308,48 @@ class Paramedic(Rig):
         S['head'] = self.traced('head', S['Mhd'], skip_tags=('eye',) if self.blink > 0.5 else ())
         # near leg shows from the belt down (its top tucks under the belt)
         hipcut = smooth_closed([(-2000, -30), (2000, -22), (2000, 3000), (-2000, 3000)], Mb, tension=0.0)
-        S['nleg'] = skia.Op(S['nleg'], hipcut, skia.PathOp.kIntersect_PathOp)
+        S['nleg_clip'] = hipcut
         Mu = compose(bm('n_up'), M_UPARM)
         S['armdet'] = self.traced('crease', Mu)[1:] + self.traced('patch', Mu)[1:]
         # belt: a band across the torso, clipped to it, slightly lower at the front
         belt = smooth_closed([(-120, BELT_Y[0]), (120, BELT_Y[0] + 9), (120, BELT_Y[1] + 9), (-120, BELT_Y[1])],
                              Mb, tension=0.0)
-        S['belt'] = skia.Op(belt, S['torso'], skia.PathOp.kIntersect_PathOp)
+        S['belt'] = belt                              # drawn clipped to the torso
         loop = smooth_closed([(-22, BELT_Y[0] - 3), (-14, BELT_Y[0] - 3), (-14, BELT_Y[1] + 4), (-22, BELT_Y[1] + 4)],
                              Mb, tension=0.0)
-        S['loop'] = skia.Op(loop, S['torso'], skia.PathOp.kIntersect_PathOp)
+        S['loop'] = loop
         return S
 
     def silhouette(self, S):
         u = skia.Path(S['torso'])
         for k in ('farm', 'fleg', 'nleg', 'narm', 'fcuff', 'ncuff', 'fwstub', 'nwstub', 'fastub', 'nastub'):
-            u = skia.Op(u, S[k], skia.PathOp.kUnion_PathOp)
+            u = union(u, S[k])
         for k in ('fboot', 'nboot', 'fglove', 'nglove', 'head'):
-            u = skia.Op(u, S[k][0][0], skia.PathOp.kUnion_PathOp)
+            u = union(u, S[k][0][0])
         return u
 
     def draw(self, c, W, xf=None, only_alpha=False, z_override=None):
         M = np.eye(3)[:2] if xf is None else np.asarray(xf, float)[:2]
         S = self.shapes(W, M)
-        if only_alpha:
-            c.drawPath(self.silhouette(S), skia.Paint(AntiAlias=True, Color=skia.ColorBLACK))
+        if only_alpha:     # exact coverage: every part drawn on its own, like the colour render
+            self.fill_parts(c, S, skia.Paint(AntiAlias=True, Color=skia.ColorBLACK))
             return
         kf = FAR_TINT
         paint = skia.Paint(AntiAlias=True)
-        drawn = skia.Path()
+        drawn = skia.Path(); drawn.setFillType(skia.PathFillType.kWinding)
 
         def add(p):
-            nonlocal drawn
-            drawn = skia.Op(drawn, p, skia.PathOp.kUnion_PathOp)
+            drawn.addPath(p)
+
+        def clipped(path, clip, color):
+            c.save(); c.clipPath(clip, doAntiAlias=True); paint.setColor(color); c.drawPath(path, paint); c.restore()
 
         # far side (darker)
         g = S['fglove']
         paint.setColor(C(vec_rgb(g[1][1]), k=kf)); c.drawPath(S['fwstub'], paint)
         self.lit(c, g[0][0], vec_rgb(g[1][1]), M, sh_w=10, k=kf); add(g[0][0])
         self.lit(c, S['farm'], NAVY, M, sh_w=18, k=kf); add(S['farm'])
-        paint.setColor(C(CUFF, k=kf)); c.drawPath(S['fcuff'], paint)
+        clipped(S['fcuff'], S['farm'], C(CUFF, k=kf))
         b = S['fboot']; paint.setColor(C(vec_rgb(b[1][1]), k=kf)); c.drawPath(S['fastub'], paint)
         self.lit(c, b[0][0], vec_rgb(b[1][1]), M, sh_w=8, k=kf, details=b[2:]); add(b[0][0])
         self.lit(c, S['fleg'], NAVY, M, sh_w=24, k=kf); add(S['fleg'])
@@ -290,22 +362,24 @@ class Paramedic(Rig):
         self.occlude(c, S['torso'], drawn, M, r=8, a=70)
         coll = self.traced('collar', S['Mt'])[1:]
         self.lit(c, S['torso'], NAVY, M, sh_w=26, details=coll); add(S['torso'])
-        # near leg over the hip, boot first
+        # near leg over the hip (its top tucks under the belt), boot first
         b = S['nboot']; paint.setColor(C(vec_rgb(b[1][1]))); c.drawPath(S['nastub'], paint)
         self.lit(c, b[0][0], vec_rgb(b[1][1]), M, sh_w=8, details=b[2:]); add(b[0][0])
+        c.save(); c.clipPath(S['nleg_clip'], doAntiAlias=True)
         self.occlude(c, S['nleg'], drawn, M)
-        self.lit(c, S['nleg'], NAVY, M, sh_w=24); add(S['nleg'])
-        paint.setColor(C((0x10, 0x0f, 0x19))); c.drawPath(S['belt'], paint)
-        paint.setColor(C((0x1e, 0x24, 0x44))); c.drawPath(S['loop'], paint)
+        c.restore()
+        self.lit(c, S['nleg'], NAVY, M, sh_w=24, clip=S['nleg_clip']); add(S['nleg'])
+        clipped(S['belt'], S['torso'], C((0x10, 0x0f, 0x19)))
+        clipped(S['loop'], S['torso'], C((0x1e, 0x24, 0x44)))
         # near arm on top
         self.occlude(c, S['narm'], drawn, M, r=9, a=110)
         g = S['nglove']
         paint.setColor(C(vec_rgb(g[1][1]))); c.drawPath(S['nwstub'], paint)
         self.lit(c, g[0][0], vec_rgb(g[1][1]), M, sh_w=10); add(g[0][0])
         self.lit(c, S['narm'], NAVY, M, sh_w=18, details=S['armdet']); add(S['narm'])
-        paint.setColor(C(CUFF)); c.drawPath(S['ncuff'], paint)
+        clipped(S['ncuff'], S['narm'], C(CUFF))
         # warm rim on the outer silhouette, on the side facing the light
-        self.rim_light(c, self.silhouette(S), M)
+        self.rim_light(c, S, M)
 
     def lid(self, c, Mhd):
         """Closed eye: a short dark arc where the eye was (painting coords 678..694, 206..214)."""
