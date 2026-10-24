@@ -378,8 +378,9 @@
       "thumbnail_set": null,
       "yt_buffer": "6acee579848c31c809572632",
       "related_video": "aMvkCfwrepA",
-      "related_set": false,
-      "thumb_v2": true
+      "related_set": true,
+      "thumb_v2": true,
+      "shorts_thumb": true
     },
     {
       "id": "w1007-05-sn2-umbrella",
