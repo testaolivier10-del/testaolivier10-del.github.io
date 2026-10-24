@@ -1,0 +1,145 @@
+{
+ "video": "sprint-lean",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0.0,
+   "t1": 4.018387096774194,
+   "what": "upright push off, the whole body tips backward about the CoM (labelled 'what physics predicts'), red X",
+   "motion_source": "procedural (keyed what-if, labelled)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": "keyed only because no real person does this; labelled as a prediction"
+  },
+  {
+   "id": "s2",
+   "t0": 4.018387096774194,
+   "t1": 4.518387096774194,
+   "what": "rewind back to standing",
+   "motion_source": "procedural (the s1 motion reversed)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 4.518387096774194,
+   "t1": 7.547096774193547,
+   "what": "real launch, leaning, slow motion into a freeze, camera pushes in",
+   "motion_source": "mocap CMU 104_55 + IK, cleaned",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 7.547096774193547,
+   "t1": 23.360645161290332,
+   "what": "paused frame: forces build (foot on ground, static friction, contact, CoM, mg, ghost + torque arc, normal, total force through CoM, net torque chip)",
+   "motion_source": "mocap pose (paused) + science diagram",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": "freeze frame marked PAUSED; blinks suppressed while paused; flames keep moving"
+  },
+  {
+   "id": "s5",
+   "t0": 23.360645161290332,
+   "t1": 28.63709677419357,
+   "what": "he runs on; speed meter rises, body lean meter falls; far layer parallax",
+   "motion_source": "mocap CMU 104_55 -> 09_01 phase matched, looped stride",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s6",
+   "t0": 28.63709677419357,
+   "t1": 31.856129032258085,
+   "what": "brake question with two chips while he keeps running",
+   "motion_source": "mocap CMU 09_01 loop",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s7",
+   "t0": 31.856129032258085,
+   "t1": 33.656129032258086,
+   "what": "end card",
+   "motion_source": "procedural (house end card)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  }
+ ]
+}

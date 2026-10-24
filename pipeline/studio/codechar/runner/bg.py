@@ -42,7 +42,16 @@ class Street:
         parts = [near[:, :x_keep].astype(np.float32)]
         while sum(p.shape[1] for p in parts) < 11000:
             parts.append(tile)
-        strip = np.concatenate(parts, 1).clip(0, 255).astype(np.uint8)
+        strip = np.concatenate(parts, 1).clip(0, 255).astype(np.float32)
+        # the road under the sidewalk: warm fire light fading across it and faded lane dashes, so it reads as a street
+        yy = np.arange(strip.shape[0])[:, None]
+        road0 = int((H * PS) - y0) + 40
+        warm = np.clip(1 - np.abs(yy - road0 - 160) / 260, 0, 1) * (yy > road0)
+        strip += warm[..., None] * np.array([28, 12, 4])[None, None, :] * 1.0
+        ly = road0 + 230
+        for x in range(0, strip.shape[1], 300):
+            strip[ly:ly + 12, x:x + 150] = strip[ly:ly + 12, x:x + 150] * 0.45 + np.array([200, 190, 210]) * 0.55
+        strip = strip.clip(0, 255).astype(np.uint8)
         a = np.full(strip.shape[:2], 255, np.uint8)
         a[:10] = np.linspace(0, 255, 10).astype(np.uint8)[:, None]
         self.near_y = y0

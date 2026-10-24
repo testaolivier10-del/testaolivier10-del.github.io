@@ -44,22 +44,30 @@ def lerp(a, b, u):
 
 # ------------------------------------------------------------------ hook: keyed 'what physics predicts' fall
 def hook_pose(t, T):
-    u_drive = smooth((t - 0.2) / 0.35)
-    u_tip = smooth((t - 0.55) / (T['x'] - 0.55)) if t > 0.55 else 0.0
-    u_tip = min(u_tip, 1.0)
-    tip = -1.12 * (u_tip ** 1.6)                           # backward rotation (radians, counterclockwise)
-    wob = math.sin(t * 13) * 0.18 * u_tip
+    """Push off with the trunk kept upright: friction at the feet turns the whole body backward about the centre of
+    of mass; the straight legs rotate with it, so the feet slide forward along the ground while the hips drop, and he
+    lands on his back (a 'what physics predicts' illustration, keyed)."""
+    crouch = smooth((t - 0.12) / 0.3) * (1 - smooth((t - 0.45) / 0.12))
+    u = smooth((t - 0.45) / (T['x'] - 0.45)) if t > 0.45 else 0.0
+    th = -math.radians(82) * (u ** 1.7)                      # backward rotation (counterclockwise)
+    land = smooth((t - T['x'] + 0.12) / 0.12)
+    wob = math.sin(t * 14) * 0.2 * u
+    L_leg = 8 + model.TH_L + model.SHIN_L
+    g_ank = L_leg - 7.0                                       # ankle height (rig y) on the ground
+    root_y = g_ank - L_leg * math.cos(th) + 16 * crouch * 1.0
+    root_y = min(root_y, g_ank - 64)
     d = {}
-    d['n_th'] = lerp(lerp(0.0, -0.95, u_drive), -1.05, u_tip); d['n_sh'] = lerp(lerp(0.0, 1.05, u_drive), 0.35, u_tip)
-    d['f_th'] = lerp(lerp(0.0, 0.32, u_drive), -0.55, u_tip); d['f_sh'] = lerp(lerp(0.0, 0.35, u_drive), 0.55, u_tip)
-    d['n_ft'] = lerp(0.0, -0.25, u_tip); d['f_ft'] = lerp(lerp(0.0, 0.5, u_drive), -0.15, u_tip)
-    d['n_up'] = lerp(lerp(0.12, 0.75, u_drive), -2.05 + wob, u_tip); d['n_lo'] = lerp(lerp(-0.3, -1.25, u_drive), -0.45, u_tip)
-    d['f_up'] = lerp(lerp(0.05, -0.65, u_drive), -2.45 - wob, u_tip); d['f_lo'] = lerp(lerp(-0.3, -1.3, u_drive), -0.35, u_tip)
+    knee = 0.38 * crouch + 0.12 * u
+    d['n_th'] = -0.5 * knee - 0.35 * land; d['n_sh'] = knee
+    d['f_th'] = -0.4 * knee - 0.15 * land; d['f_sh'] = knee * 0.9
+    d['n_ft'] = -th - 0.5 * knee * 0 + 0.25 * land; d['f_ft'] = -th + 0.15 * land
+    d['n_ft'] = -th * (1 - land) + 0.0; d['f_ft'] = -th * (1 - land)
+    d['n_up'] = lerp(lerp(0.12, 0.45, crouch), -2.1 + wob, u); d['n_lo'] = lerp(-0.35, -0.5, u)
+    d['f_up'] = lerp(lerp(0.05, -0.35, crouch), -2.5 - wob, u); d['f_lo'] = lerp(-0.35, -0.4, u)
     d['n_hand'] = -0.1; d['f_hand'] = -0.1
-    d['head'] = lerp(0.0, 0.32, u_tip)
-    lift = 70 * math.sin(math.pi * min(u_tip * 1.1, 1.0)) * u_tip
-    root = (95 * u_drive + 140 * u_tip, -7.0 - lift + 40 * u_tip ** 3)
-    return dict(delta=d, world={}, root=root, root_rot=tip)
+    d['head'] = 0.35 * u
+    root = (20 * u + 40 * u * u, root_y)
+    return dict(delta=d, world={}, root=root, root_rot=th)
 
 
 # ------------------------------------------------------------------ drawing helpers
@@ -160,12 +168,14 @@ def x_stamp(c, x, y, s, a):
 def build(tl, out=None, stills=(), music=True, sim_only=False):
     k = tl.k
     T = {}
-    T['x'] = min(2.45, k('hook', 'tip') + 0.25)                       # fall stops, red X
+    T['x'] = 1.85                                                       # he lands on his back, red X
     T['rw0'] = max(T['x'] + 0.9, tl.beat_span('hook')[1] + 0.05)       # rewind
     T['rw1'] = T['rw0'] + 0.5
     T['m0'] = T['rw1']
-    T['launch'] = T['m0'] + 0.45
-    T['freeze'] = max(tl.beat_span('why')[1] + 0.2, T['launch'] + 1.7)
+    T['launch'] = T['m0'] + 0.4                                         # real time burst
+    T['cut'] = T['launch'] + 1.2                                        # cut to the slow motion replay
+    T['freeze'] = max(tl.beat_span('why')[1] + 0.2, T['cut'] + 1.3)
+    T['below'] = k('torque', 'below')
     T['foot'] = k('push', 'shoves', 1)
     T['fric'] = k('push', 'ground', 2)
     T['feet'] = k('torque', 'feet')
@@ -184,33 +194,43 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
     T['fwd'] = k('ask', 'forward'); T['back'] = k('ask', 'back')
     T['end'] = tl.end + 0.4
     DUR = T['end'] + 1.8
-    MF = 2.02 - perf.TAU0                                               # freeze on the push off
+    MF = 1.95 - perf.TAU0                                               # freeze on the push off (single support)
+    M_R0 = 0.40                                                         # replay starts here
 
-    # ---------------- mocap clock
-    def Mclock(t):
-        if t < T['m0']:
-            return 0.0
+    # ---------------- mocap clocks: M1 = the real time burst, M2 = the replay (slow motion, freeze, run on)
+    def M1(t):
         if t < T['launch']:
-            return 0.20 * (t - T['m0']) / (T['launch'] - T['m0'])
+            return 0.20 * max(0.0, t - T['m0']) / (T['launch'] - T['m0'])
+        return 0.20 + (t - T['launch'])
+
+    def M2(t):
         if t < T['freeze']:
-            v = (t - T['launch']) / (T['freeze'] - T['launch'])
-            return 0.20 + (MF - 0.20) * (1 - (1 - v) ** 2.2)
+            v = (t - T['cut']) / (T['freeze'] - T['cut'])
+            return M_R0 + (MF - M_R0) * (1 - (1 - v) ** 2.2)
         if t < T['unf']:
             return MF
-        dt = t - T['unf']
-        ramp = 0.45                                                     # speed eases 0 -> 0.5x over ramp
-        return MF + (0.5 * (dt * dt / (2 * ramp)) if dt < ramp else 0.5 * (ramp / 2 + dt - ramp))
+        # speed 0 -> 0.5x over 0.45 s, then 0.5x, slowing to 0.15x for the question
+        def speed(tt):
+            if tt < T['unf']:
+                return 0.0
+            a = 0.5 * smooth((tt - T['unf']) / 0.45)
+            return lerp(a, 0.15, smooth((tt - T['ask']) / 1.2))
+        n = int((t - T['unf']) * 120)
+        return MF + sum(speed(T['unf'] + (j + 0.5) / 120) for j in range(n)) / 120
 
     # ---------------- pass 1: simulate every 1/60 s
     rig, spec, joints, radius = model.build()
     rig.springs = {'n_hand': dict(freq=5, damp=0.7), 'f_hand': dict(freq=5, damp=0.7)}
-    P = MP.MocapPerformer(rig, spec, lambda t: perf.plan_m(Mclock(t)), ground_take=perf.START)
-    P.extra = lambda t: perf.extra_m(Mclock(t))
-    SOLE = None
+    clk = {'M': 0.0}
+    def performer():
+        p = MP.MocapPerformer(rig, spec, lambda t: perf.plan_m(clk['M']), ground_take=perf.START)
+        p.extra = lambda t: perf.extra_m(clk['M'])
+        return p
+    P1, P2 = performer(), performer()
+    SOLE = P1.ground + model.ANKLE_H
+    m2_cache = {}
     sim = []
     n60 = int(DUR * 60) + 2
-    lean_s, last_inst = None, None
-    hook_frames = []
     for i in range(n60):
         t = i / 60
         if t < T['m0']:
@@ -219,56 +239,52 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
                 th = T['x'] * (1 - (t - T['rw0']) / (T['rw1'] - T['rw0']))
             pose = hook_pose(th, T)
             W = rig.fk(pose)
-            mode = 'rew' if t >= T['rw0'] else 'hook'
-            x_rig = pose['root'][0]
-            sole = None
-            info = dict(mode=mode, W=W, x=x_rig, th=th)
+            sim.append(dict(mode='rew' if t >= T['rw0'] else 'hook', W=W, x=pose['root'][0], th=th, seg=0))
+            continue
+        if t < T['cut']:
+            P, M, seg = P1, M1(t), 1
         else:
-            W = P.pose(t)
-            if SOLE is None:
-                SOLE = P.ground + model.ANKLE_H
-            M = Mclock(t)
-            com = phys.com(rig, W)
-            # stance contact: ball of the planted foot, on the ground
-            cont = None
-            for sd, side in (('n', 'near'), ('f', 'far')):
-                if P.lock_w[side] > 0.5:
-                    an = rig.joint(W, sd + '_ft'); wa = rig.world_angle(W, sd + '_ft')
-                    ball = an + np.array([math.cos(wa) * 0.72 * model.FOOT_LEN - math.sin(wa) * model.ANKLE_H,
-                                          math.sin(wa) * 0.72 * model.FOOT_LEN + math.cos(wa) * model.ANKLE_H])
-                    cont = np.array([ball[0], P.ground + model.ANKLE_H])
-            if cont is not None:
-                inst = math.degrees(math.atan2(com[0] - cont[0], cont[1] - com[1]))
-                last_inst = inst
-            elif last_inst is not None:
-                inst = last_inst
-            else:
-                inst = 0.0
-            dM = (Mclock(t) - Mclock(t - 1 / 60)) if i else 0.0
-            if lean_s is None:
-                lean_s = inst
-            if dM > 0:
-                lean_s += (inst - lean_s) * min(1.0, dM / 0.12)
-            info = dict(mode='mocap', W=W, x=P.x, M=M, com=com, cont=cont, lean=lean_s, locks=dict(P.lock_w))
-        sim.append(info)
-    if SOLE is None:
-        SOLE = P.ground + model.ANKLE_H
+            if not m2_cache:                                  # bring the replay performer up to its start, unseen
+                for j in range(int(M_R0 * 120)):
+                    clk['M'] = j / 120; P2.pose(j / 120)
+                m2_cache['ok'] = True
+            P, M, seg = P2, M2(t), 2
+        clk['M'] = M
+        W = P.pose(t)
+        com = phys.com(rig, W)
+        cont = None
+        for sd, side in (('n', 'near'), ('f', 'far')):
+            if P.lock_w[side] > 0.5:
+                an = rig.joint(W, sd + '_ft'); wa = rig.world_angle(W, sd + '_ft')
+                ball = an + np.array([math.cos(wa) * 0.72 * model.FOOT_LEN - math.sin(wa) * model.ANKLE_H,
+                                      math.sin(wa) * 0.72 * model.FOOT_LEN + math.cos(wa) * model.ANKLE_H])
+                cont = np.array([ball[0], P.ground + model.ANKLE_H])
+        sim.append(dict(mode='mocap', W=W, x=P.x, M=M, com=com, cont=cont, locks=dict(P.lock_w), seg=seg))
     HOOK_SOLE = 8 + model.TH_L + model.SHIN_L + model.ANKLE_H - 7.0       # keyed legs straight, root y -7
-    for s in sim:
-        s['sole'] = SOLE
-    # speed (rig px per mocap s) from root travel
-    xs = np.array([s['x'] for s in sim]); Ms = np.array([s.get('M', 0.0) for s in sim])
-    spd = np.zeros(len(sim))
-    for i in range(1, len(sim)):
-        dm = Ms[i] - Ms[i - 1]
-        spd[i] = spd[i - 1] if dm <= 1e-6 else (xs[i] - xs[i - 1]) / dm
-    spd_s = spd.copy()
-    for i in range(1, len(sim)):
-        spd_s[i] = spd_s[i - 1] + (spd[i] - spd_s[i - 1]) * 0.12
+    for s_ in sim:
+        s_['sole'] = SOLE
+    # meters: speed, speed up (acceleration) and the lean physics asks for, tan(lean) = a / g, from the motion itself
+    from scipy.ndimage import gaussian_filter1d
+    clk['M'] = 0.0
+    P3 = performer(); xs3 = []
+    for j in range(int(6.0 * 120)):
+        clk['M'] = j / 120; P3.pose(j / 120); xs3.append(P3.x)
+    pxm = (model.TH_L + model.SHIN_L) / 0.87                             # rig px per metre (leg 0.87 m)
+    v3 = gaussian_filter1d(np.gradient(np.array(xs3), 1 / 120), 0.18 * 120)
+    a3 = gaussian_filter1d(np.gradient(v3, 1 / 120), 0.12 * 120)
+    lean3 = np.degrees(np.arctan2(np.maximum(a3, 0) / pxm, 9.81))
+    pk = int(np.argmax(lean3))
+    lean3[pk:] = np.minimum.accumulate(lean3[pk:])                       # past the peak it only falls (step averaged)
+    acc3 = np.maximum(a3, 0); acc3[pk:] = np.minimum.accumulate(acc3[pk:])
+    v3 = np.maximum.accumulate(v3)
+    def meter(M):
+        j = min(int(M * 120), len(v3) - 1)
+        return v3[j] / pxm, acc3[j] / acc3.max(), lean3[j]
 
     # freeze geometry (rig coords)
     i_f = int(T['freeze'] * 60) + 3
     FZ = sim[i_f]
+    assert FZ['seg'] == 2
     assert FZ['cont'] is not None, 'freeze frame has no planted foot'
     phi = math.atan2(FZ['com'][0] - FZ['cont'][0], FZ['cont'][1] - FZ['com'][1])
     print('freeze M', round(FZ['M'], 3), 'contact->CoM angle', round(math.degrees(phi), 1))
@@ -287,14 +303,16 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
         z = 1.0 + 0.30 * zf
         if s['mode'] == 'mocap':
             fz_mid = (to_world(FZ, FZ['com']) + to_world(FZ, FZ['cont'])) / 2
-        follow_x = hip[0] + 140 + 170 * smooth((t - T['unf']) / 1.5)
+        follow_x = hip[0] + 140 + 120 * smooth((t - T['unf']) / 0.9) + (120 if s['seg'] == 1 else 0)
         want_x = lerp(follow_x, fz_mid[0] if s['mode'] == 'mocap' else follow_x, zf)
         if cam is None:
             cam = np.array([want_x, 0.0])
         rate = 0.06 if s['mode'] == 'mocap' else 0.0
         if s['mode'] != 'mocap':
             cam[0] = X0 + CS * 0 + 140 + 60
-        cam[0] += (want_x - cam[0]) * rate
+        if i and s['seg'] != sim[i - 1]['seg'] and s['seg'] == 2:
+            cam[0] = X0 + 200                                       # cut to the replay
+        cam[0] += (want_x - cam[0]) * (0.12 if s['seg'] == 1 else rate)
         # vertical: ground at screen 1340 when z=1; when zoomed, the freeze mid point sits at screen 980
         cy_base = GROUND_W - (1340 - 960) / z
         cy_zoom = (fz_mid[1] if s['mode'] == 'mocap' else cy_base) - (980 - 960) / z
@@ -319,7 +337,7 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
 
     if sim_only:
         return dict(T=T, DUR=DUR, cams=cams, hipx=[to_world(s, s['W']['body'][2])[0] for s in sim], world_w=street.W, shifts=shifts,
-                    lean=[s.get('lean') for s in sim], M=[s.get('M', 0) for s in sim])
+                    M=[s.get('M', 0) for s in sim], seg=[s['seg'] for s in sim], phi=math.degrees(phi))
 
     def world_to_screen(i, p):
         cx, cy, z = cams[i]
@@ -348,7 +366,7 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
     def snd(name, t, gain):
         sounds.append((name, round(t, 3), gain))
     snd('whoosh_real', 0.25, 0.7); snd('wrong', T['x'], 0.45); snd('swish', T['rw0'], 0.5)
-    snd('whoosh_real', T['launch'] + 0.15, 0.6)
+    snd('whoosh_real', T['launch'] + 0.05, 0.7); snd('swish', T['cut'], 0.5); snd('pat', T['x'], 0.6)
     snd('swish', T['foot'], 0.35); snd('swish', T['fric'], 0.45); snd('pat', T['com'], 0.5); snd('pat', T['feet'], 0.35); snd('swish', T['mg'], 0.3)
     snd('swish', T['tip'], 0.45); snd('swish', T['normal'], 0.4); snd('shimmer', T['total'], 0.45); snd('check', T['notip'], 0.5)
     snd('swish', T['unf'], 0.35); snd('pat', T['fwd'], 0.5); snd('pat', T['back'], 0.5)
@@ -401,6 +419,8 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
             cv.restore()
         # the runner
         rig.draw(cv, W, xf)
+        if t >= T['end'] and last_frame is None:
+            last_frame = surf.makeImageSnapshot()
         # ---- forces on the freeze
         if com_s is not None and cont_s is not None and T['freeze'] - 0.2 <= t < T['unf'] + 0.8:
             fa = 1 - smooth((t - T['unf']) / 0.45)
@@ -411,18 +431,19 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
             # foot pushes ground (backward, at the ground, coral), then fades
             a_fp = smooth((t - T['foot']) / 0.2) * (1 - smooth((t - T['fric'] - 0.7) / 0.4)) * fa
             arrow(cv, c0 + np.array([0, 22]), c0 + np.array([-flen * 0.95, 22]), CORAL, a=a_fp, grow=smooth((t - T['foot']) / 0.3))
-            label(cv, 'foot pushes ground', c0[0] - 150, c0[1] + 95, CORAL, a_fp, 32)
+            label(cv, 'foot pushes ground', c0[0] - 205, c0[1] + 95, CORAL, a_fp, 32)
             # static friction: ground on foot, forward
             a_fr = smooth((t - T['fric']) / 0.2) * fa
             arrow(cv, c0, c0 + np.array([flen, 0]), TEAL, a=a_fr, grow=smooth((t - T['fric']) / 0.3))
-            label(cv, 'static friction', c0[0] + flen * 0.5 + 40, c0[1] + 82, TEAL, a_fr * (1 - smooth((t - T['total'] - 0.6) / 0.4)), 32)
+            label(cv, 'static friction', c0[0] + max(flen, 60) + 120, c0[1] + 4, TEAL, a_fr * (1 - smooth((t - T['total'] - 0.6) / 0.4)), 32)
             # 'down at your feet': the contact point rings
             a_ft = smooth((t - T['feet'] + 0.1) / 0.2) * (1 - smooth((t - T['com'] - 0.3) / 0.3)) * fa
             if a_ft > 0.01:
                 for kk in range(2):
                     ph = ((t - T['feet']) * 1.4 + kk * 0.5) % 1.0
-                    cv.drawCircle(*c0, 18 + 60 * ph, skia.Paint(AntiAlias=True, Color=col(TEAL, 230 * a_ft * (1 - ph)),
-                                                             Style=skia.Paint.kStroke_Style, StrokeWidth=6))
+                    cv.drawCircle(*c0, 22 + 90 * ph, skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * a_ft * (1 - ph)),
+                                                             Style=skia.Paint.kStroke_Style, StrokeWidth=9))
+                cv.drawCircle(*c0, 13, skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * a_ft)))
             # centre of mass and weight
             a_c = smooth((t - T['com']) / 0.2) * fa
             if a_c > 0.01:
@@ -430,12 +451,20 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
                 cv.drawCircle(*com_s[:2], 21 * pulse, skia.Paint(AntiAlias=True, Color=col((8, 10, 24), 200 * a_c)))
                 cv.drawCircle(*com_s[:2], 15 * pulse, skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * a_c)))
                 cv.drawCircle(*com_s[:2], 5 * pulse, skia.Paint(AntiAlias=True, Color=col((8, 10, 24), 255 * a_c)))
-                label(cv, 'center of mass', com_s[0] + 215, com_s[1] - 95, YELLOW, a_c * (1 - smooth((t - T['tip'] - 0.4) / 0.4)) +
-                      a_c * smooth((t - T['ctr']) / 0.2) * (1 - smooth((t - T['notip'] - 0.8) / 0.3)), 32)
+                label(cv, 'center of mass', com_s[0] + 270, com_s[1] + 70, YELLOW, a_c * (1 - smooth((t - T['notip']) / 0.25)), 32)
+            # lever arm: the friction line sits below the centre of mass
+            a_la = smooth((t - T['below']) / 0.25) * (1 - smooth((t - T['tip'] - 0.2) / 0.3)) * fa
+            if a_la > 0.01:
+                xb = c0[0] - 55
+                dashed(cv, (xb - 10, com_s[1]), (com_s[0] - 22, com_s[1]), YELLOW, w=5, a=a_la)
+                pa = skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * a_la), StrokeWidth=6, Style=skia.Paint.kStroke_Style, StrokeCap=skia.Paint.kRound_Cap)
+                cv.drawLine(xb, com_s[1], xb, c0[1], pa)
+                cv.drawLine(xb - 16, com_s[1], xb + 16, com_s[1], pa); cv.drawLine(xb - 16, c0[1], xb + 16, c0[1], pa)
+                label(cv, 'below the CoM', xb - 110, (com_s[1] + c0[1]) / 2, YELLOW, a_la, 32)
             a_mg = smooth((t - T['mg']) / 0.2) * fa
             arrow(cv, com_s[:2], com_s[:2] + np.array([0, Nlen]), GREY, w=11, head=34, a=a_mg * 0.95, grow=smooth((t - T['mg']) / 0.3))
             if a_mg > 0.01:
-                text(cv, 'mg', com_s[0] + 22, com_s[1] + Nlen * 0.8, 40, GREY, a_mg)
+                label(cv, 'mg', com_s[0] + 62, com_s[1] + Nlen * 0.78, GREY, a_mg, 34)
             # torque about the CoM from friction alone
             a_tq = smooth((t - T['tip']) / 0.2) * (1 - smooth((t - T['lean']) / 0.35))
             torque_arc(cv, com_s[:2], 150 * z / 1.3, CORAL, a=a_tq, grow=smooth((t - T['tip']) / 0.5))
@@ -455,12 +484,17 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
             a_l = smooth((t - T['lines']) / 0.3) * fa
             if a_l > 0.01:
                 d = np.array([flen, -Nlen]); d /= np.linalg.norm(d)
-                end = c0 + d * (np.linalg.norm(com_s[:2] - c0) + 180 * z / 1.3)
+                end = c0 + d * (np.linalg.norm(com_s[:2] - c0) + 90 * z / 1.3)
                 dashed(cv, c0 + d * (np.hypot(flen, Nlen) + 10), end, YELLOW, w=6, a=a_l, phase=-t * 60)
             a_nt = smooth((t - T['notip']) / 0.2) * fa
             if a_nt > 0.01:
-                L.chip(cv, 'net torque about CoM = 0', 540, 600, YELLOW, 40, a_nt, scale=0.85 + 0.15 * smooth((t - T['notip']) / 0.2))
+                L.chip(cv, 'net torque about CoM = 0', 600, 590, YELLOW, 38, a_nt, scale=0.85 + 0.15 * smooth((t - T['notip']) / 0.2))
         # ---- time is paused while the forces are built
+        rz = smooth((t - T['cut']) / 0.15) * (1 - smooth((t - T['freeze'] + 0.1) / 0.15))
+        if rz > 0.01:
+            r = skia.RRect.MakeRectXY(skia.Rect(56, 556, 320, 616), 30, 30)
+            cv.drawRRect(r, skia.Paint(AntiAlias=True, Color=skia.Color(5, 12, 26, int(200 * rz))))
+            text(cv, 'SLOW MOTION', 82, 598, 30, YELLOW, rz)
         pz = smooth((t - T['freeze'] + 0.1) / 0.3) * (1 - smooth((t - T['unf']) / 0.3))
         if pz > 0.01:
             r = skia.RRect.MakeRectXY(skia.Rect(56, 556, 250, 616), 30, 30)
@@ -470,32 +504,39 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
             text(cv, 'PAUSED', 124, 598, 30, WHITE, pz)
         # ---- what physics predicts / red X
         if s['mode'] == 'hook':
-            label(cv, 'what physics predicts', 540, 610, GREY, smooth((t - 0.15) / 0.25), 34)
+            label(cv, 'what physics predicts', 540, 565, GREY, smooth((t - 0.15) / 0.25), 34)
             x_a = smooth((t - T['x']) / 0.12)
             x_stamp(cv, hip_s[0] + 20, hip_s[1] - 160, 1.0 + 0.3 * math.exp(-max(0, t - T['x']) * 9), x_a)
         # ---- meters (speed and lean) while he runs again
         hud_a = smooth((t - T['unf'] - 0.2) / 0.3) * (1 - smooth((t - T['ask'] + 0.1) / 0.3))
         if hud_a > 0.01 and s['mode'] == 'mocap':
-            x0, y0 = 668, 590
-            card(cv, x0, y0, 360, 230, hud_a)
-            text(cv, 'SPEED', x0 + 26, y0 + 54, 32, WHITE, hud_a)
-            sp = min(max(spd_s[i] / 1750.0, 0), 1)
-            cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0 + 26, y0 + 70, x0 + 334, y0 + 92), 11, 11), skia.Paint(AntiAlias=True, Color=skia.Color(255, 255, 255, int(40 * hud_a))))
-            cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0 + 26, y0 + 70, x0 + 26 + 308 * sp, y0 + 92), 11, 11), skia.Paint(AntiAlias=True, Color=col(TEAL, 255 * hud_a)))
-            text(cv, 'BODY LEAN', x0 + 26, y0 + 146, 32, WHITE, hud_a)
-            lean = max(0.0, s['lean'])
-            text(cv, f'{lean:.0f}°', x0 + 26, y0 + 205, 54, YELLOW, hud_a)
-            # little lean dial: vertical reference and the lean line
-            ox, oy = x0 + 270, y0 + 212
+            spd_ms, acc_k, lean = meter(s['M'])
+            x0, y0 = 676, 556
+            card(cv, x0, y0, 360, 300, hud_a)
+            def bar(y, label_, val, colr):
+                text(cv, label_, x0 + 26, y, 30, WHITE, hud_a)
+                cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0 + 26, y + 14, x0 + 334, y + 36), 11, 11), skia.Paint(AntiAlias=True, Color=skia.Color(255, 255, 255, int(40 * hud_a))))
+                cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0 + 26, y + 14, x0 + 26 + 308 * min(max(val, 0.0), 1.0), y + 36), 11, 11), skia.Paint(AntiAlias=True, Color=col(colr, 255 * hud_a)))
+            bar(y0 + 48, 'SPEED', spd_ms / 4.0, TEAL)
+            bar(y0 + 124, 'SPEEDING UP', acc_k, CORAL)
+            text(cv, 'LEAN', x0 + 26, y0 + 224, 30, WHITE, hud_a)
+            text(cv, f'{lean:.0f}°', x0 + 26, y0 + 280, 54, YELLOW, hud_a)
+            ox, oy = x0 + 270, y0 + 282
             cv.drawLine(ox, oy, ox, oy - 92, skia.Paint(AntiAlias=True, Color=skia.Color(255, 255, 255, int(90 * hud_a)), StrokeWidth=3))
             r = math.radians(lean)
             cv.drawLine(ox, oy, ox + 92 * math.sin(r), oy - 92 * math.cos(r), skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * hud_a), StrokeWidth=7, StrokeCap=skia.Paint.kRound_Cap))
             cv.drawCircle(ox, oy, 7, skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * hud_a)))
         # ---- answer chips
-        for txt, t0, yy, colr in (('LEAN FORWARD?', T['fwd'] - 0.05, 700, TEAL), ('LEAN BACK?', T['back'] - 0.05, 815, CORAL)):
+        for txt, t0, yy, colr, tilt in (('LEAN FORWARD?', T['fwd'] - 0.05, 650, TEAL, 1), ('LEAN BACK?', T['back'] - 0.05, 800, CORAL, -1)):
             a = smooth((t - t0) / 0.2) * (1 - smooth((t - T['end']) / 0.2))
             if a > 0:
-                L.chip(cv, txt, 822, yy, colr, 44, a, scale=0.85 + 0.15 * smooth((t - t0) / 0.18))
+                sc_ = 0.85 + 0.15 * smooth((t - t0) / 0.18)
+                L.chip(cv, txt, 700, yy, colr, 52, a, scale=sc_)
+                # a little leaning stick figure line next to the chip
+                f_ = skia.Font(L.BLACK, 52); ix, iy = 700 + f_.measureText(txt) / 2 + 26 + 46, yy + 26
+                r = math.radians(22 * tilt)
+                cv.drawLine(ix, iy, ix + 70 * math.sin(r), iy - 70 * math.cos(r), skia.Paint(AntiAlias=True, Color=col(colr, 255 * a), StrokeWidth=9, StrokeCap=skia.Paint.kRound_Cap))
+                cv.drawCircle(ix + 82 * math.sin(r), iy - 82 * math.cos(r), 12, skia.Paint(AntiAlias=True, Color=col(colr, 255 * a)))
         # ---- rewind look
         rw_a = smooth((t - T['rw0']) / 0.08) * (1 - smooth((t - T['rw1']) / 0.1))
         rewind_fx(cv, t, rw_a)
@@ -517,8 +558,6 @@ def build(tl, out=None, stills=(), music=True, sim_only=False):
                     cur_word = n
             L.caption(cv, ws, cur_word)
         if t >= T['end']:
-            if last_frame is None:
-                last_frame = surf.makeImageSnapshot()
             L.end_card(cv, last_frame, t - T['end'], [[('Brakes: lean ', WHITE), ('forward', TEAL)], [('or ', WHITE), ('back?', CORAL)]])
         g = partrig.gap_check(rig, W, np.array([[0.5, 0, 540 - 0.5 * s['x']], [0, 0.5, 700], [0, 0, 1.0]]), (W_, H_), joints, radius)
         if max(g[j] for j in joints) > 0.02 or g['components'] > 1:
