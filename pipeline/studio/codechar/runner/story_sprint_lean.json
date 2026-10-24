@@ -1,0 +1,155 @@
+{
+ "id": "sprint-lean",
+ "format": "short",
+ "duration": 33.66,
+ "answer": {
+  "kind": "action",
+  "what": "lean so the push from the ground lines up with your center of mass"
+ },
+ "long_reason": "three forces and a torque argument (friction, normal, weight, total force through the CoM) need seven short beats; cutting one breaks the logic chain",
+ "beats": [
+  {
+   "t0": 0.0,
+   "t1": 2.45,
+   "kind": "mistake",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0.0,
+    0.25,
+    0.6,
+    1.2,
+    1.8,
+    2.45
+   ],
+   "what": "he pushes off with his body kept upright and the whole body tips backward (labelled what physics predicts)",
+   "source": "rigid body torque about the CoM, AP Physics 1 unit 5"
+  },
+  {
+   "t0": 2.45,
+   "t1": 4.518387096774194,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    2.45,
+    3.0500000000000003,
+    4.018387096774194,
+    4.518387096774194
+   ],
+   "what": "red X on the fall, then a rewind back to standing",
+   "source": ""
+  },
+  {
+   "t0": 4.518387096774194,
+   "t1": 7.547096774193547,
+   "kind": "payoff",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    4.518387096774194,
+    4.968387096774194,
+    5.968387096774194,
+    6.968387096774194,
+    7.547096774193547
+   ],
+   "what": "real launch (motion capture), trunk leans about 35 degrees, slows to a freeze on the push off",
+   "source": "CMU mocap 104_55"
+  },
+  {
+   "t0": 7.547096774193547,
+   "t1": 14.669999999999998,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    7.547096774193547,
+    8.313225806451612,
+    10.237096774193548,
+    12.137096774193548,
+    12.737096774193548,
+    14.669999999999998
+   ],
+   "what": "foot pushes the ground back (coral), static friction pushes him forward (teal), contact point rings",
+   "source": "Newton's third law; static friction, OpenStax College Physics 4.4"
+  },
+  {
+   "t0": 14.669999999999998,
+   "t1": 18.15709677419355,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    14.669999999999998,
+    15.119999999999997,
+    16.649354838709677,
+    17.749354838709678,
+    18.15709677419355
+   ],
+   "what": "centre of mass dot, weight mg, ghost rotates backward about the CoM with a torque arc",
+   "source": "torque about the CoM, OpenStax University Physics 10.6; Kugler and Janshen 2010"
+  },
+  {
+   "t0": 18.15709677419355,
+   "t1": 23.360645161290332,
+   "kind": "explain",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    18.15709677419355,
+    19.115806451612908,
+    19.631935483870972,
+    20.212580645161296,
+    21.211290322580652,
+    22.20096774193549,
+    23.360645161290332
+   ],
+   "what": "normal force up, total ground force (friction + normal) from the contact along the line through the CoM, net torque about CoM = 0",
+   "source": "Kugler and Janshen 2010, J Biomech 43:343"
+  },
+  {
+   "t0": 23.360645161290332,
+   "t1": 28.63709677419357,
+   "kind": "answer",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    23.360645161290332,
+    24.860645161290332,
+    26.360645161290332,
+    26.075161290322594,
+    27.575161290322594,
+    28.63709677419357
+   ],
+   "what": "he runs on (motion capture); speed meter fills while the body lean meter falls toward 0 degrees",
+   "source": "biomechanics of sprint running: trunk upright at max velocity"
+  },
+  {
+   "t0": 28.63709677419357,
+   "t1": 31.856129032258085,
+   "kind": "question",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    28.63709677419357,
+    30.43193548387099,
+    31.0435483870968,
+    31.856129032258085
+   ],
+   "what": "brake question with two chips: lean forward? lean back?",
+   "source": ""
+  },
+  {
+   "t0": 31.856129032258085,
+   "t1": 33.66,
+   "kind": "cta",
+   "person": false,
+   "diagram": false,
+   "changes": [
+    31.856129032258085
+   ],
+   "what": "end card",
+   "source": ""
+  }
+ ]
+}
