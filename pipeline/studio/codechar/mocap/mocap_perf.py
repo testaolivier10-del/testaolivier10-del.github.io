@@ -71,6 +71,16 @@ class MocapPerformer:
         self.root = np.zeros(2)
         self.x = 0.0
         self.hand_curl, self.head_k = hand_curl, head_k
+        # procedural layer on top of the recording: extra(t) -> dict(spine=rad lean, dx=root px, heel=rad, head=rad)
+        self.extra = None
+
+    def heel_ankle(self, ankle0, th):
+        """Ankle position when the foot pivots by th about the ball of the foot (the toe of the boot, on the sole)."""
+        fl, ah = self.s['foot_len'], self.s['ankle_h']
+        ball = ankle0 + np.array([self.f * 0.95 * fl, ah - 3.0])   # a stiff boot rocks on its toe
+        d = ankle0 - ball
+        c, s_ = math.cos(self.f * th), math.sin(self.f * th)
+        return ball + np.array([c * d[0] - s_ * d[1], s_ * d[0] + c * d[1]])
 
     def layer(self, take, tau):
         ix = take.b.ix
@@ -132,6 +142,12 @@ class MocapPerformer:
         live = {lid for lid, *_ in layers}
         self.anchor = {k_: v for k_, v in self.anchor.items() if k_ in live}
         self.root = root
+        ex = self.extra(t) if self.extra else {}
+        heel = ex.get('heel', 0.0)
+        A['spine'] = A['spine'] + self.f * ex.get('spine', 0.0)
+        A['head'] = A['head'] + self.f * ex.get('head', 0.0)
+        lift = (self.ground - self.heel_ankle(np.array([0.0, self.ground]), heel)[1]) * 0.97 if heel > 1e-4 else 0.0
+        root = root + np.array([ex.get('dx', 0.0), -lift])
         sp = rig.b[s['spine']]
         pose = {'delta': {}, 'world': {}, 'root': (root[0], root[1]), 'root_rot': A['spine'] - sp['a0']}
         pose['world'][s['head']] = A['head']
@@ -152,8 +168,11 @@ class MocapPerformer:
             if self.locks[side_] is not None:
                 w = self.lock_w[side_]
                 target = target * (1 - w) + self.locks[side_] * w
+            if heel > 1e-4 and self.locks[side_] is not None:
+                # heel raise: the ball of the foot stays on the floor, the ankle swings up around it
+                target = self.heel_ankle(self.locks[side_], heel)
             rig.ik2(W0, pose, thb, shb, target, bend=self.f)
-            pose['world'][ftb] = A[side_ + '_foot']
+            pose['world'][ftb] = A[side_ + '_foot'] + self.f * max(heel, 0.0)
         W = rig.fk(pose, 1 / 60)
         self.x = root[0]
         return W
