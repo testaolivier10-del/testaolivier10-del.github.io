@@ -28,7 +28,7 @@ class Performer:
         th, sh = spec["legs"]["near"][:2]
         self.L = rig.b[th]["len"] + rig.b[sh]["len"]
         self.hip0 = rig.b[th]["head"].copy()
-        self.ground = self.hip0[1] + 0.965 * self.L                      # ankle line while standing
+        self.ground = self.hip0[1] + spec.get("stand_k", 0.965) * self.L   # ankle line while standing
         sp = rig.b[spec["spine"]]
         self.spine_len = sp["len"]
         # standing feet: near foot a touch forward
@@ -141,17 +141,17 @@ def script(t, P):
     sway = math.sin(2 * PI * t / 4.3)
     # near arm: hang -> anticipation -> point (fast, overshoot) -> hold -> return -> raise -> wave -> walk
     tr_s = Track([(0.0, 0.06), (1.2, 0.06), (1.42, -0.28, "io"), (1.62, 1.42, "back"), (3.0, 1.36, "io"),
-                  (3.5, 0.10, "io"), (3.8, 0.10), (4.35, 2.75, "back"), (5.9, 2.70), (6.35, 0.0, "io")])
+                  (3.5, 0.10, "io"), (3.8, 0.10), (4.35, 1.95, "back"), (5.9, 1.90), (6.35, 0.0, "io")])
     tr_b = Track([(0.0, 0.18), (1.2, 0.18), (1.42, 0.55, "io"), (1.62, 0.04, "back"), (3.0, 0.08),
-                  (3.5, 0.22, "io"), (3.8, 0.22), (4.35, 0.35, "io")])
+                  (3.5, 0.22, "io"), (3.8, 0.22), (4.35, 1.05, "io")])
     s = tr_s(t) + 0.02 * sway
     b = tr_b(t)
     if 4.35 <= t < 5.9:                                                     # wave: forearm swings, hand lags
         k = (t - 4.35) / (5.9 - 4.35)
         env = math.sin(PI * min(1, k * 1.15)) ** 0.6
-        b = 0.35 + 0.55 * env * (0.5 + 0.5 * math.sin(2 * PI * 2.4 * (t - 4.35) - PI / 2))
+        b = 1.05 + 0.42 * env * math.sin(2 * PI * 2.2 * (t - 4.35))
     if t >= 5.9:
-        b = Track([(5.9, 0.35), (6.35, 0.25, "io")])(t)
+        b = Track([(5.9, 1.05), (6.35, 0.25, "io")])(t)
     c["near_arm"] = (s, b, 0.0)
     c["far_arm"] = (-0.04 - 0.02 * sway, 0.16, 0.0)
     c["lean"] = Track([(0, 0.02), (1.3, 0.02), (1.62, 0.09, "back"), (3.0, 0.08), (3.5, 0.02, "io"),

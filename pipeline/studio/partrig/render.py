@@ -27,6 +27,8 @@ def run(mod, out, size=(1080, 1080), scale=0.9, origin=(300, 120), dur=9.0, bg=N
     for i in range(n):
         t = i / acting.FPS
         W = P.pose(t, acting.script)
+        if hasattr(rig, 'blink'):   # blinks: 5 frames closed, never during a big move
+            rig.blink = 1.0 if any(b <= t < b + 5 / 60 for b in (0.85, 3.25, 5.05, 7.55)) else 0.0
         # camera follows the hips once walking, eased
         target = P.x * scale if follow else 0.0
         cam += (target - cam) * 0.06
