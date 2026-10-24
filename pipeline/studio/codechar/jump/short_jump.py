@@ -140,19 +140,27 @@ def stopwatch(c, x, y, R, secs, running, colr, a, label=None):
         text(c, label, x, y - R - 26, 26, colr, a, center=True)
 
 
-def balloon(c, x, y, s, a):
-    """A water balloon icon: a blue drop with a knot and a highlight."""
+def balloon(c, x, y, s, a, t=0.0, slosh=0.0):
+    """A water balloon: a round, slightly squashed blue ball tied at the top, water sloshing inside, a highlight."""
     if a <= 0.01:
         return
-    p = skia.Path()
-    p.moveTo(x, y - 46 * s)
-    p.cubicTo(x + 42 * s, y - 46 * s, x + 44 * s, y + 10 * s, x + 6 * s, y + 38 * s)
-    p.lineTo(x - 6 * s, y + 38 * s)
-    p.cubicTo(x - 44 * s, y + 10 * s, x - 42 * s, y - 46 * s, x, y - 46 * s); p.close()
-    sh = skia.GradientShader.MakeLinear([skia.Point(x - 40 * s, y - 40 * s), skia.Point(x + 40 * s, y + 40 * s)], [col((120, 200, 255), 255 * a), col((40, 110, 220), 255 * a)])
-    c.drawPath(p, skia.Paint(AntiAlias=True, Shader=sh))
-    c.drawCircle(x, y + 44 * s, 7 * s, skia.Paint(AntiAlias=True, Color=col((40, 110, 220), 255 * a)))
-    c.drawOval(skia.Rect(x - 26 * s, y - 34 * s, x - 10 * s, y - 8 * s), skia.Paint(AntiAlias=True, Color=col(WHITE, 150 * a)))
+    sq = 1 + 0.06 * slosh * math.sin(t * 11)
+    rx, ry = 44 * s * sq, 40 * s / sq
+    body = skia.Path(); body.addOval(skia.Rect(x - rx, y - ry, x + rx, y + ry))
+    sh = skia.GradientShader.MakeRadial(skia.Point(x - rx * 0.35, y - ry * 0.4), rx * 1.5,
+                                        [col((150, 215, 255), 255 * a), col((50, 130, 230), 255 * a), col((25, 80, 180), 255 * a)], [0.0, 0.6, 1.0])
+    c.drawPath(body, skia.Paint(AntiAlias=True, Shader=sh))
+    # water inside: a darker lower half with a tilting surface
+    c.save(); c.clipPath(body, doAntiAlias=True)
+    tilt = 0.18 * slosh * math.sin(t * 7)
+    w = skia.Path(); w.moveTo(x - rx * 1.2, y + ry * 0.05 + rx * tilt)
+    w.quadTo(x, y - ry * 0.05, x + rx * 1.2, y + ry * 0.05 - rx * tilt); w.lineTo(x + rx * 1.2, y + ry * 1.2); w.lineTo(x - rx * 1.2, y + ry * 1.2); w.close()
+    c.drawPath(w, skia.Paint(AntiAlias=True, Color=col((20, 70, 170), 150 * a)))
+    c.restore()
+    # knot on top
+    k = skia.Path(); k.moveTo(x - 8 * s, y - ry - 10 * s); k.lineTo(x + 8 * s, y - ry - 10 * s); k.lineTo(x + 3 * s, y - ry + 2 * s); k.lineTo(x - 3 * s, y - ry + 2 * s); k.close()
+    c.drawPath(k, skia.Paint(AntiAlias=True, Color=col((30, 90, 200), 255 * a)))
+    c.drawOval(skia.Rect(x - rx * 0.62, y - ry * 0.72, x - rx * 0.22, y - ry * 0.32), skia.Paint(AntiAlias=True, Color=col(WHITE, 160 * a)))
 
 
 # ------------------------------------------------------------------ the force curves
@@ -179,8 +187,13 @@ class Curves:
         self.area = float(np.trapezoid(self.F[i_c:i_st + 1] - 1, tau[i_c:i_st + 1]))
         self.v_td = float(self.vy[i_c])
         self.peak = float(self.F[i_c:i_st + 30].max())
-        self.D = 2 * self.area / (PK_STIFF - 1)
-        print('contact (force rising) at', round(self.T0, 3))                               # sin^2 pulse with the same area
+        lo, hi = 0.01, 0.5                                                   # solve the pulse length for the same area above mg
+        for _ in range(60):
+            self.D = (lo + hi) / 2
+            ss = np.linspace(0, self.D, 2000)
+            ar = np.trapezoid(np.maximum([self.stiff(v) - 1 for v in ss], 0), ss)
+            lo, hi = (self.D, hi) if ar < self.area else (lo, self.D)
+        print('contact (force rising) at', round(self.T0, 3), 'locked pulse area', round(float(ar), 4))
         print(f'touchdown {TD:.3f} stop {self.STOP:.3f} ({self.STOP - TD:.3f} s)  v_td {self.v_td:.2f} m/s  peak {self.peak:.2f} mg  '
               f'area {self.area:.3f} (v/g {self.v_td / 9.81:.3f})  stiff pulse {self.D * 1000:.0f} ms')
 
@@ -191,7 +204,9 @@ class Curves:
     def stiff(self, s):
         if s < 0:
             return 0.0
-        if s < self.D:
+        if s < self.D / 2:                                                   # 0 -> peak
+            return PK_STIFF * math.sin(math.pi * s / self.D) ** 2
+        if s < self.D:                                                       # peak -> standing (1 mg)
             return 1 + (PK_STIFF - 1) * math.sin(math.pi * s / self.D) ** 2
         return 1.0
 
@@ -248,20 +263,43 @@ def build(tl, out=None, stills=(), sim_only=False):
         return float(np.interp(tau, ref['tau'], ref[name]))
 
     # locked knee landing: keep the hips where they were at touchdown (a few cm of give over the pulse), trunk upright
+    FIX = {'tau': None, 'dy': None, 'live': 0.0}
+    T_STR = 0.10                                                             # legs straighten over the last 0.1 s of the fall
+
+    def fix_w(tau):
+        return smooth((tau - (TD - T_STR)) / T_STR)
+
     def extra_stiff(tau):
-        if not clk['stiff'] or tau <= TD:
+        if not clk['stiff'] or tau <= TD - T_STR:
             return {}
+        fx = FIX['live'] if FIX['tau'] is None else float(np.interp(tau, FIX['tau'], FIX['dy']))
+        if tau <= TD:
+            return dict(dy=fx * fix_w(tau))
         s = tau - TD
-        give = 0.035 * pxm * smooth(s / CV.D)                                # ~3.5 cm of give
-        jolt = 7.0 * math.exp(-s * 18) * math.sin(s * 70) * smooth(s / 0.02)
-        dy = (R('ry', TD) + give + jolt) - R('ry', tau)
-        dx = (R('rx', TD) + 0.02 * pxm * smooth(s / CV.D)) - R('rx', tau)
+        give = 0.01 * pxm * smooth(s / CV.D)                                 # ~1 cm of give: knees locked
+        jolt = 6.0 * math.exp(-s * 18) * math.sin(s * 70) * smooth(s / 0.02)
+        dy = (R('ry', TD) + give + jolt) - R('ry', tau) + fx
+        dx = (R('rx', TD) + 0.01 * pxm * smooth(s / CV.D)) - R('rx', tau)
         sp = -(R('ang', tau) - R('ang', TD)) / P.f
         return dict(dx=dx, dy=dy, spine=sp, head=-0.6 * sp)
 
     def extra_idle(tau):
         return {}
     extra = lambda tau: extra_stiff(tau)
+    # feedback pass: raise the hips until the shorter leg is straight (97.5 % of its length), record per tau
+    LEG = model.TH_L + model.SHIN_L
+    clk['stiff'] = True
+    Pf = performer(); ft, fd = [], []
+    for j in range(int((TAU_END - 0.7) * 120)):
+        tau = 0.7 + j / 120; clk['tau'] = tau
+        Wf = Pf.pose(j / 120)
+        if tau > TD - T_STR - 0.05:
+            d = min(np.linalg.norm(rig.joint(Wf, sd + '_ft') - rig.joint(Wf, sd + '_th')) for sd in ('n', 'f'))
+            FIX['live'] = float(np.clip(FIX['live'] - 0.7 * (0.975 * LEG - d), -90.0, 0.0))
+        ft.append(tau); fd.append(FIX['live'])
+    FIX['tau'], FIX['dy'] = np.array(ft), np.array(fd)
+    clk['stiff'] = False
+    print('locked landing: hips raised by up to', round(-float(np.min(fd)), 1), 'rig px to straighten the legs')
 
 
     # ---------------- ponytail: damped spring about the tie, driven by the felt gravity at the head, per tau (real time)
@@ -288,10 +326,11 @@ def build(tl, out=None, stills=(), sim_only=False):
 
     # ---------------- times
     T = {}
-    T['turn0'] = 0.38; T['turn1'] = 0.56                                   # front -> 3q -> side
-    T['go'] = T['turn1']
-    TAU_GO = 1.05
-    T['td1'] = T['go'] + (TD - TAU_GO)                                      # locked landing (real time)
+    T['go'] = 0.0                                                           # frame zero: she is already dipping into the jump
+    TAU_GO = 1.22
+    CROUCH_SPD = 0.62                                                       # the dip plays a little slow, flight and landing real time
+    T['off1'] = T['go'] + (takeoff - TAU_GO) / CROUCH_SPD
+    T['td1'] = T['off1'] + (TD - takeoff)                                   # locked landing
     T['hit'] = k('hook', 'hit')
     T['rw0'] = max(T['td1'] + 1.25, tl.beat_span('hook')[1] + 0.05)
     T['rw1'] = T['rw0'] + 0.55
@@ -306,6 +345,7 @@ def build(tl, out=None, stills=(), sim_only=False):
     T['dp'] = k('same', 'same')
     T['imp0'] = tl.beat_span('impulse')[0] - 0.1
     T['F'] = k('impulse', 'force'); T['dt'] = k('impulse', 'time')
+    T['tv0'] = T['imp0'] + 0.2; T['tv1'] = T['tv0'] + 0.3                 # side -> three quarter -> front (faces us for the card)
     # replays on the graph: locked, then bent
     T['g0'] = tl.beat_span('stiff')[0] - 0.2
     T['d_td'] = k('stiff', 'instantly')
@@ -317,6 +357,7 @@ def build(tl, out=None, stills=(), sim_only=False):
     T['area'] = k('graph', 'same'); T['small'] = k('graph', 'smaller')
     T['ask0'] = tl.beat_span('ask')[0] - 0.1
     T['bal'] = k('ask', 'balloon')
+    T['mom'] = k('same', 'momentum')
     T['back'] = k('ask', 'back'); T['still'] = k('ask', 'still')
     T['end'] = tl.end + 0.4
     DUR = T['end'] + 1.8
@@ -334,7 +375,8 @@ def build(tl, out=None, stills=(), sim_only=False):
         if t < T['go']:
             return None
         if t < T['rw0']:
-            return min(TAU_GO + (t - T['go']), TAU_END), True, 'A'
+            tau = TAU_GO + (t - T['go']) * CROUCH_SPD if t < T['off1'] else takeoff + (t - T['off1'])
+            return min(tau, TAU_END), True, 'A'
         if t < T['rw1']:
             return 'rewind'
         if t < T['c0']:
@@ -364,8 +406,8 @@ def build(tl, out=None, stills=(), sim_only=False):
     for i in range(n60):
         t = i / HZ
         ck = clock(t)
-        if ck is None or (t >= T['ask0'] + 0.62):
-            sim.append(dict(mode='view', t=t)); continue
+        if t >= T['ask0']:
+            sim.append(dict(mode='catch', t=t)); continue
         if ck == 'rewind':
             # play the locked landing back to the crouch
             src = seg_frames['A']
@@ -400,27 +442,27 @@ def build(tl, out=None, stills=(), sim_only=False):
     VIEW_X2 = to_world((R('rx', STAND), 0))[0]
 
     def cam_target(t, s):
-        hipx = to_world(s['W']['body'][2])[0] if s['mode'] in ('mocap', 'rew') else (VIEW_X1 if t < 1 else VIEW_X2)
+        hipx = to_world(s['W']['body'][2])[0] if s['mode'] in ('mocap', 'rew') else VIEW_X2 + 22
         if t < T['c0']:
-            z = 4.4; cx = lerp(470, hipx, 0.4); feet_scr = 1385
+            z = 4.4 * (1 + (0.07 * math.exp(-(t - T['hit']) * 3) if t > T['hit'] else 0)); cx = lerp(470, hipx, 0.4); feet_scr = 1385
         elif t < T['imp0']:
             z = 4.9; cx = hipx - 25; feet_scr = 1380
         elif t < T['g0']:
             z = 3.3; cx = hipx; feet_scr = 1400
-        elif t < T['ask0'] + 0.3:
-            z = 3.0; cx = hipx - 10; feet_scr = 1395
+        elif t < T['ask0']:
+            z = 2.9; cx = hipx + 40; feet_scr = 1408
         else:
-            z = 4.2; cx = hipx; feet_scr = 1385
+            z = 4.4; cx = hipx; feet_scr = 1405
         cy = WLD.FEET_Y - (feet_scr - 960) / z
         return np.array([cx, cy, z])
 
     cams = []
     cam = None
-    cut_times = [T['c0'], T['g0'], T['e0']]
+    cut_times = [T['c0'], T['g0'], T['e0'], T['ask0']]
     for i, s in enumerate(sim):
         t = i / HZ
         want = cam_target(t, s)
-        if cam is None or any(abs(t - ct) < 0.5 / HZ for ct in cut_times):
+        if cam is None or any((t - 1 / HZ) < ct <= t for ct in cut_times):
             cam = want.copy()
         else:
             cam = cam + (want - cam) * np.array([0.07, 0.06, 0.06])
@@ -428,7 +470,7 @@ def build(tl, out=None, stills=(), sim_only=False):
     # camera shake on the locked landing
     for i in range(len(cams)):
         t = i / HZ
-        for t_hit, amp in ((T['td1'], 2.2), ):
+        for t_hit, amp in ((T['td1'], 2.2), (T['hit'], 1.4)):
             if 0 <= t - t_hit < 0.6:
                 e = math.exp(-(t - t_hit) * 9) * amp
                 cams[i] = cams[i] + np.array([e * math.sin(t * 95), e * math.cos(t * 77), 0])
@@ -447,21 +489,21 @@ def build(tl, out=None, stills=(), sim_only=False):
     frames = int(DUR * FPS)
     chunks = tl.chunks(3)
     titles = [
-        (0.0, T['rw0'], [[('Land with', WHITE)], [('LOCKED KNEES?', CORAL)]]),
+        (-1.0, T['rw0'], [[('Land with', WHITE)], [('LOCKED KNEES?', CORAL)]]),
         (T['rw1'], T['c0'] + 0.2, [[('Bend your knees:', WHITE)], [('SOFT LANDING', TEAL)]]),
         (T['c0'] + 0.2, T['imp0'], [[('The ground has to', WHITE)], [('STOP YOU', YELLOW)]]),
         (T['imp0'], T['g0'], [[('Change in momentum', WHITE)], [('= FORCE × TIME', YELLOW)]]),
         (T['g0'], T['e0'], [[('Locked: tiny time,', WHITE)], [('HUGE FORCE', CORAL)]]),
         (T['e0'], T['area'] - 0.1, [[('Bent: more time,', WHITE)], [('SMALLER FORCE', TEAL)]]),
         (T['area'] - 0.1, T['ask0'], [[('Same area.', WHITE)], [('WAY SMALLER PEAK', TEAL)]]),
-        (T['ask0'], T['end'], [[('Catching a', WHITE), (' water balloon?', WHITE)]]),
+        (T['ask0'], T['end'], [[('Catching a', WHITE)], [('WATER BALLOON?', YELLOW)]]),
     ]
     blinks = (1.4, 4.9, 9.1, 13.4, 19.8, 24.2, 26.6)
     sounds = []
 
     def snd(name, t, gain):
         sounds.append((name, round(t, 3), gain))
-    snd('swish', T['turn0'], 0.35); snd('swish', T['go'] + (takeoff - TAU_GO) - 0.05, 0.5)
+    snd('swish', T['off1'] - 0.05, 0.5); snd('thud', T['hit'], 0.45); snd('swish', T['tv0'], 0.3); snd('swish', T['bal'] - 0.5, 0.35)
     snd('thud', T['td1'], 0.9); snd('wrong', T['td1'] + 0.35, 0.4)
     snd('rewind', T['rw0'], 0.6)
     snd('swish', T['b0'] + (takeoff - TAU_B) - 0.05, 0.45); snd('soft', T['td2'], 0.7)
@@ -515,28 +557,24 @@ def build(tl, out=None, stills=(), sim_only=False):
         frozen = False
         rig.blink = 1.0 if (any(b <= t < b + 0.12 for b in blinks) and not frozen) else 0.0
         com_s = feet_s = None
-        if s['mode'] == 'view' or (T['ask0'] <= t < T['ask0'] + 0.62 and s['mode'] != 'view'):
-            pass
-        if s['mode'] == 'view':
-            front_time = t < T['turn0'] or t >= T['ask0'] + 0.62
-            vx = VIEW_X1 if t < 1 else VIEW_X2
-            p = WLD.World.to_screen(cam, (vx, WLD.FEET_Y))
-            cv.drawOval(skia.Rect(p[0] - 120 * a_px / 0.8, p[1] - 12, p[0] + 120 * a_px / 0.8, p[1] + 12),
-                        skia.Paint(AntiAlias=True, Color=skia.Color(60, 40, 20, 80), MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 9)))
-            act = dict(breath=math.sin(t * 2.4), sway=0.012 * math.sin(t * 0.9), head=0.03 * math.sin(t * 0.7 + 1),
-                       arm_l=0.03 * math.sin(t * 1.1), arm_r=-0.03 * math.sin(t * 1.1 + 0.4))
-            if t >= T['ask0']:
-                act['head'] = 0.06 * smooth((t - T['bal']) / 0.4) * (1 - 0.5 * smooth((t - T['back']) / 0.4))
-            v = VF if front_time else VQ
-            v.blink = rig.blink
-            if t < T['turn0']:
-                pass
-            elif t < T['turn1']:
-                v = VQ
-            elif T['ask0'] <= t < T['ask0'] + 0.62:
-                v = VQ
-            v.blink = rig.blink
-            v.draw(cv, p[0], p[1], a_px, t, act)
+        if s['mode'] == 'catch':
+            # keyed: standing (rest pose, breathing), arms rise to catch, eyes up to the balloon
+            u = smooth((t - T['ask0'] - 0.25) / 0.7)
+            W0 = rig.fk(dict(delta={}, world={}, root=(0, 0), root_rot=0.0))
+            wa = {kk: rig.world_angle(W0, kk) for kk in ('n_up', 'n_lo', 'n_hand', 'f_up', 'f_lo', 'f_hand')}
+            D_ = math.radians
+            tgt = dict(n_up=D_(52), n_lo=D_(-8), n_hand=D_(-22), f_up=D_(60), f_lo=D_(-2), f_hand=D_(-16))
+            br = math.sin(t * 2.4)
+            world_ = {kk: lerp(wa[kk], tgt[kk], u) + 0.015 * br for kk in wa}
+            Wc = rig.fk(dict(delta={'head': -0.12 * smooth((t - T['bal'] + 0.3) / 0.5)}, world=world_, root=(0, -1.5 * br), root_rot=0.0))
+            rig.pony = 0.04 * math.sin(t * 1.3)
+            sole_rest = 8 + model.TH_L + model.SHIN_L + model.ANKLE_H
+            p = WLD.World.to_screen(cam, (VIEW_X2, WLD.FEET_Y))
+            xf = np.array([[a_px, 0, p[0]], [0, a_px, p[1] - a_px * sole_rest], [0, 0, 1.0]])
+            cv.drawOval(skia.Rect(p[0] - 125 * a_px / 0.8, p[1] - 12, p[0] + 125 * a_px / 0.8, p[1] + 12),
+                        skia.Paint(AntiAlias=True, Color=skia.Color(60, 40, 20, 85), MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 9)))
+            rig.draw(cv, Wc, xf)
+            hands = (xf @ np.array([*rig.tail(Wc, 'n_hand'), 1.0]))[:2]
         else:
             W = s['W']
             rig.pony = s['pony']
@@ -549,16 +587,25 @@ def build(tl, out=None, stills=(), sim_only=False):
             sha = 1 - min(height / 260, 0.7)
             cv.drawOval(skia.Rect(hip_s[0] - 105 * a_px / 0.8 * sha, gy - 11, hip_s[0] + 105 * a_px / 0.8 * sha, gy + 11),
                         skia.Paint(AntiAlias=True, Color=skia.Color(60, 40, 20, int(85 * sha)), MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 9)))
-            if T['ask0'] <= t < T['ask0'] + 0.62 and t >= T['ask0'] + 0.25:
-                # turning back to us: 3q view at the rig's spot
-                VQ.blink = 0; VQ.draw(cv, hip_s[0], gy, a_px, t, dict(breath=math.sin(t * 2.4)))
+            if T['tv0'] <= t < T['g0']:
+                # she turns to face us for the equation card: side -> three quarter -> front, short cross fades
+                k1 = smooth((t - T['tv0']) / 0.05); k2 = smooth((t - T['tv1']) / 0.05)
+                act = dict(breath=math.sin(t * 2.4), sway=0.01 * math.sin(t * 0.9), head=0.03 * math.sin(t * 0.7 + 1),
+                           arm_l=0.03 * math.sin(t * 1.1), arm_r=-0.03 * math.sin(t * 1.1 + 0.4))
+                VQ.blink = VF.blink = rig.blink
+                if k1 < 0.999:
+                    cv.saveLayer(None, skia.Paint(Alphaf=1 - k1)); rig.draw(cv, W, xf); cv.restore()
+                if k1 > 0.001 and k2 < 0.999:
+                    VQ.draw(cv, hip_s[0], gy, a_px, t, act, alpha=k1 * (1 - k2))
+                if k2 > 0.001:
+                    VF.draw(cv, hip_s[0], gy, a_px, t, act, alpha=k2)
             else:
                 rig.draw(cv, W, xf)
             com_s = xf @ np.array([*com_w, 1.0])
             feet_s = np.array([hip_s[0] + 10 * a_px, gy])
             # stiff landing: red flash at the knees
             if s['stiff'] and s['tau'] > TD:
-                fl_a = math.exp(-(s['tau'] - TD) * (6 if s['seg'] == 'A' else 3)) + (0.6 * math.exp(-max(0, t - T['hit']) * 4) if s['seg'] == 'A' and t > T['hit'] else 0)
+                fl_a = math.exp(-(s['tau'] - TD) * (6 if s['seg'] == 'A' else 3)) + (1.0 * math.exp(-max(0, t - T['hit']) * 3) if s['seg'] == 'A' and t > T['hit'] else 0)
                 for sd in ('n', 'f'):
                     kn = xf @ np.array([*rig.joint(W, sd + '_sh'), 1.0])
                     an = xf @ np.array([*rig.joint(W, sd + '_ft'), 1.0])
@@ -579,38 +626,42 @@ def build(tl, out=None, stills=(), sim_only=False):
             last_frame = surf.makeImageSnapshot()
 
         # ---- hook / why: force meter (x body weight)
-        m_a = smooth((t - 0.9) / 0.3) * (1 - smooth((t - T['c0'] + 0.15) / 0.25))
+        m_a = smooth((t - 0.15) / 0.3) * (1 - smooth((t - T['c0'] + 0.15) / 0.25))
         if m_a > 0.01:
             if s['mode'] == 'mocap':
                 sd_ = s['tau'] - TD
                 fval = CV.stiff(sd_) if (s['stiff'] and sd_ > 0) else float(np.interp(s['tau'], CV.tau, CV.F))
             else:
                 fval = 1.0
-            if s['mode'] != 'mocap' or s['tau'] < TD - 0.05:
-                peak_hold['v'] = fval                                   # live while she pushes off and flies
-            else:
-                peak_hold['v'] = max(fval, peak_hold['v'] * 0.997)      # hold the landing peak
+            # the bar follows the force but falls back quickly enough to be seen (a 60 ms spike is 2 frames)
+            peak_hold['v'] = max(fval, fval + (peak_hold['v'] - fval) * 0.82)
+            if s['mode'] == 'rew':
+                peak_hold['v'] = 1.0
             mx, my0, mh = 930, 1150, 480
-            card(cv, mx - 70, my0 - mh - 110, 140, mh + 238, m_a)
-            text(cv, 'FORCE', mx, my0 - mh - 70, 28, WHITE, m_a, center=True)
-            text(cv, 'on legs', mx, my0 - mh - 38, 24, (200, 210, 230), m_a, center=True)
+            card(cv, mx - 74, my0 - mh - 110, 148, mh + 228, m_a)
+            text(cv, 'FORCE', mx, my0 - mh - 70, 30, WHITE, m_a, center=True)
+            text(cv, 'on legs', mx, my0 - mh - 38, 26, (200, 210, 230), m_a, center=True)
             cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(mx - 24, my0 - mh, mx + 24, my0), 14, 14), skia.Paint(AntiAlias=True, Color=skia.Color(255, 255, 255, int(40 * m_a))))
             hv = min(peak_hold['v'], F_MAX) / F_MAX * mh
             colr = CORAL if peak_hold['v'] > 5 else (YELLOW if peak_hold['v'] > 4 else TEAL)
             cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(mx - 24, my0 - hv, mx + 24, my0), 14, 14), skia.Paint(AntiAlias=True, Color=col(colr, 255 * m_a)))
-            # body weight tick
             yb = my0 - 1 / F_MAX * mh
             cv.drawLine(mx - 34, yb, mx + 34, yb, skia.Paint(AntiAlias=True, Color=col(WHITE, 200 * m_a), StrokeWidth=3))
-            text(cv, '1×', mx - 62, yb + 9, 24, WHITE, m_a * 0.8, center=True)
-            text(cv, f'{peak_hold["v"]:.1f}×', mx, my0 + 50, 34, colr, m_a, center=True)
-            # the locked peak stays marked once the bent landing plays
-            if t > T['rw1']:
-                yl = my0 - PK_STIFF / F_MAX * mh
-                cv.drawLine(mx - 34, yl, mx + 34, yl, skia.Paint(AntiAlias=True, Color=col(CORAL, 230 * m_a), StrokeWidth=5,
-                                                             PathEffect=skia.DashPathEffect.Make([10, 7], 0)))
-                text(cv, 'locked', mx - 92, yl + 9, 24, CORAL, m_a, center=True)
-            text(cv, '× body', mx, my0 + 82, 22, (200, 210, 230), m_a, center=True)
-            text(cv, 'weight', mx, my0 + 106, 22, (200, 210, 230), m_a, center=True)
+            text(cv, '1', mx - 52, yb + 10, 26, WHITE, m_a * 0.85, center=True)
+            text(cv, f'{peak_hold["v"]:.1f}', mx, my0 + 50, 38, colr, m_a, center=True)
+            text(cv, 'body', mx, my0 + 82, 24, (200, 210, 230), m_a, center=True)
+            text(cv, 'weights', mx, my0 + 108, 24, (200, 210, 230), m_a, center=True)
+            # peak marks: locked (illustrative) from its landing on, bent from its landing on
+            for pk_v, pk_c, pk_t, nm in ((PK_STIFF, CORAL, T['td1'], 'peak ≈ 9'), (CV.peak, TEAL, T['td2'], f'peak {CV.peak:.1f}')):
+                if t > pk_t + 0.02:
+                    yl = my0 - pk_v / F_MAX * mh
+                    cv.drawLine(mx - 34, yl, mx + 34, yl, skia.Paint(AntiAlias=True, Color=col(pk_c, 240 * m_a), StrokeWidth=5,
+                                                                 PathEffect=skia.DashPathEffect.Make([10, 7], 0)))
+                    lw = tw(nm, 28)
+                    card(cv, mx - 92 - lw - 16, yl - 26, lw + 32, 44, m_a, r=14)
+                    text(cv, nm, mx - 92 - lw, yl + 10, 28, pk_c, m_a)
+                    if pk_c == CORAL:
+                        text(cv, 'illustrative', mx - 92 - tw('illustrative', 24), yl + 46, 24, (255, 200, 200), m_a)
         # 'keyed' tag on the locked landing, red X
         if s['mode'] == 'mocap' and s['seg'] == 'A':
             L.chip(cv, 'locked knees (acted out)', 540, 590, GREY, 30, smooth((t - T['go']) / 0.3) * (1 - smooth((t - T['rw0'] + 0.1) / 0.2)))
@@ -621,7 +672,7 @@ def build(tl, out=None, stills=(), sim_only=False):
 
         # ---- slow motion replay: momentum arrow shrinking to zero as she stops
         if T['c0'] <= t < T['imp0'] and s['mode'] == 'mocap':
-            pill(cv, 'SLOW MOTION', 56, 560, YELLOW, 30, smooth((t - T['c0']) / 0.15) * (1 - smooth((t - T['c1']) / 0.3)))
+            pill(cv, 'SLOW MOTION', 56, 560, YELLOW, 30, smooth((t - T['c0']) / 0.15) * (1 - smooth((t - T['mom'] + 0.25) / 0.2)))
             sd_ = s['tau'] - TD
             vy = CV.bent_vy(sd_) if s['tau'] > TD - 0.25 else 0.0
             pa = smooth((t - T['c0'] - 0.15) / 0.3) * (1 - smooth((t - T['imp0'] + 0.3) / 0.3))
@@ -633,12 +684,21 @@ def build(tl, out=None, stills=(), sim_only=False):
                 cv.drawCircle(*cs, 15, skia.Paint(AntiAlias=True, Color=col((8, 10, 24), 210 * pa)))
                 cv.drawCircle(*cs, 10, skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * pa)))
                 arrow(cv, cs, cs + np.array([0, Lp]), YELLOW, w=16, head=44, a=pa)
-                text(cv, f'{max(vy, 0):.1f} m/s', cs[0] - 60 - tw(f'{max(vy, 0):.1f} m/s', 46), cs[1] + 40, 46, YELLOW, pa)
-                text(cv, 'momentum (vertical)', cs[0] - 60 - tw('momentum (vertical)', 30), cs[1] - 6, 30, WHITE, pa)
+                l1, l2 = 'momentum p = m × v', f'v = {max(vy, 0):.1f} m/s down'
+                wl = max(tw(l1, 30), tw(l2, 40))
+                card(cv, cs[0] - 70 - wl - 24, cs[1] - 44, wl + 48, 112, pa, r=20)
+                text(cv, l1, cs[0] - 70 - wl, cs[1] - 6, 30, WHITE, pa)
+                text(cv, l2, cs[0] - 70 - wl, cs[1] + 46, 40, YELLOW, pa)
             a0_ = smooth((t - T['c_st']) / 0.2) * (1 - smooth((t - T['imp0'] + 0.2) / 0.2))
             L.chip(cv, 'stopped: p = 0', 540, 1120 + 0 * a0_, YELLOW, 40, a0_ * (1 - smooth((t - T['dp']) / 0.2)))
             ad = smooth((t - T['dp']) / 0.2) * (1 - smooth((t - T['imp0'] + 0.15) / 0.2))
-            L.chip(cv, 'Δp: same for both landings', 540, 1120, YELLOW, 42, ad, scale=0.85 + 0.15 * smooth((t - T['dp']) / 0.2))
+            L.chip(cv, 'Δp: same for both landings', 540, 1210, YELLOW, 42, ad, scale=0.85 + 0.15 * smooth((t - T['dp']) / 0.2))
+            # both landings start at the same speed and end at rest
+            cm_a = smooth((t - T['mom']) / 0.25) * (1 - smooth((t - T['imp0'] + 0.15) / 0.2))
+            if cm_a > 0.01:
+                card(cv, 70, 500, 470, 170, cm_a, r=24)
+                text(cv, f'Locked: {CV.v_td:.1f} m/s → 0', 100, 568, 36, CORAL, cm_a)
+                text(cv, f'Bent:     {CV.v_td:.1f} m/s → 0', 100, 630, 36, (120, 255, 240), smooth((t - T['mom'] - 0.3) / 0.25) * cm_a)
 
         # ---- the impulse card
         ia = smooth((t - T['imp0'] - 0.1) / 0.25) * (1 - smooth((t - T['g0'] + 0.1) / 0.25))
@@ -646,23 +706,23 @@ def build(tl, out=None, stills=(), sim_only=False):
             card(cv, 120, 470, 840, 290, ia, r=34)
             parts = [('Δp', YELLOW), (' = ', WHITE), ('F', CORAL if t >= T['F'] else WHITE), (' × ', WHITE), ('Δt', TEAL if t >= T['dt'] else WHITE)]
             L.rich_line(cv, parts, 540, 645, 120, ia, shadow=False)
-            text(cv, 'F = net force (ground push minus weight)', 540, 722, 30, (200, 210, 230), ia, center=True)
+            text(cv, 'F = average net force (ground push minus weight)', 540, 722, 30, (200, 210, 230), ia, center=True)
 
         # ---- graph (locked, bent, then both with areas)
-        ga = smooth((t - T['g0']) / 0.3) * (1 - smooth((t - T['ask0']) / 0.3))
+        ga = smooth((t - T['g0']) / 0.3) * (1 - smooth((t - T['ask0'] + 0.3) / 0.3))
         if ga > 0.01:
             card(cv, GX0 - 110, GY0 - 66, GW + 160, GH + 162, ga)
             ax = skia.Paint(AntiAlias=True, Color=col(WHITE, 220 * ga), StrokeWidth=4, StrokeCap=skia.Paint.kRound_Cap)
             cv.drawLine(GX0, GY0 - 10, GX0, GY0 + GH, ax); cv.drawLine(GX0, GY0 + GH, GX0 + GW, GY0 + GH, ax)
             text(cv, 'force (× mg)', GX0 - 60, GY0 - 26, 26, WHITE, ga)
-            text(cv, 'time after touchdown', GX0 + GW - tw('time after touchdown', 26), GY0 + GH + 40, 26, WHITE, ga)
-            for sv in (0.0, 0.1, 0.2, 0.3):
+            text(cv, 'time after touchdown', GX0 + GW / 2, GY0 + GH + 80, 28, WHITE, ga, center=True)
+            for sv in (0.0, 0.1, 0.2, 0.3, 0.4):
                 q = gpt(sv, 0)
                 cv.drawLine(q[0], q[1], q[0], q[1] + 10, ax)
-                text(cv, f'{sv:.1f} s', q[0], q[1] + 40, 22, (200, 210, 230), ga, center=True)
+                text(cv, f'{sv:.1f} s', q[0], q[1] + 40, 26, (200, 210, 230), ga, center=True)
             for fv in (5, 10):
                 q = gpt(-0.04, fv)
-                text(cv, f'{fv}', q[0] - 26, q[1] + 8, 22, (200, 210, 230), ga, center=True)
+                text(cv, f'{fv}', q[0] - 28, q[1] + 9, 26, (200, 210, 230), ga, center=True)
             # mg line
             q0, q1 = gpt(-0.04, 1), gpt(S_MAX, 1)
             cv.drawLine(q0[0], q0[1], q1[0], q1[1], skia.Paint(AntiAlias=True, Color=col(GREY, 230 * ga), StrokeWidth=4, PathEffect=skia.DashPathEffect.Make([14, 9], 0)))
@@ -678,30 +738,38 @@ def build(tl, out=None, stills=(), sim_only=False):
             if sa > 0.01:
                 cv.drawPath(area_path(CV.stiff, 0, CV.D), skia.Paint(AntiAlias=True, Color=col(CORAL, 110 * sa)))
                 cv.drawPath(area_path(CV.bent, 0, CV.stop_s()), skia.Paint(AntiAlias=True, Color=col(TEAL, 110 * sa)))
-                L.chip(cv, 'same area above mg', 760, GY0 + 95, YELLOW, 32, sa)
-                L.chip(cv, '= same Δp', 760, GY0 + 160, YELLOW, 32, sa)
+                L.chip(cv, 'same area above mg', 780, GY0 + 40, YELLOW, 32, sa)
+                L.chip(cv, '= same Δp', 780, GY0 + 100, YELLOW, 32, sa)
             if sl > -0.04:
                 p = curve_path(CV.stiff, -0.04, min(sl, S_MAX), n=400)
                 cv.drawPath(p, skia.Paint(AntiAlias=True, Color=col(CORAL, 255 * ga), StrokeWidth=7, Style=skia.Paint.kStroke_Style, StrokeJoin=skia.Paint.kRound_Join))
                 if sl > CV.D * 0.5:
                     pk = gpt(CV.D / 2, PK_STIFF)
-                    text(cv, f'locked ≈ {PK_STIFF:.0f}× mg', pk[0] + 30, pk[1] + 20, 30, CORAL, ga)
-                    text(cv, 'illustrative', pk[0] + 30, pk[1] + 52, 24, (255, 190, 190), ga)
+                    text(cv, f'locked ≈ {PK_STIFF:.0f}× mg', pk[0] + 34, pk[1] + 22, 32, CORAL, ga)
+                    text(cv, 'illustrative', pk[0] + 34, pk[1] + 54, 26, (255, 190, 190), ga)
             if sb > -0.04:
-                p = curve_path(CV.bent, -0.04, min(sb, S_MAX), n=200)
+                st_ = CV.stop_s()
+                p = curve_path(CV.bent, -0.04, min(sb, st_), n=200)
                 cv.drawPath(p, skia.Paint(AntiAlias=True, Color=col(TEAL, 255 * ga), StrokeWidth=7, Style=skia.Paint.kStroke_Style, StrokeJoin=skia.Paint.kRound_Join))
+                if sb > st_:                                         # after she has stopped (standing back up): faded
+                    p = curve_path(CV.bent, st_, min(sb, S_MAX), n=120)
+                    cv.drawPath(p, skia.Paint(AntiAlias=True, Color=col(TEAL, 90 * ga), StrokeWidth=5, Style=skia.Paint.kStroke_Style,
+                                              PathEffect=skia.DashPathEffect.Make([10, 8], 0)))
+                    q_ = gpt(st_, CV.bent(st_))
+                    text(cv, 'stopped', q_[0] + 12, q_[1] - 16, 26, (180, 240, 235), ga * smooth((t - T['e_st']) / 0.3) if s.get('seg') == 'E' else ga)
                 if t > T['peak'] - 0.1:
                     ss = np.linspace(0, 0.2, 200); spk = ss[int(np.argmax([CV.bent(v) for v in ss]))]
                     pk = gpt(spk, CV.peak)
                     pa_ = smooth((t - T['peak'] + 0.1) / 0.25) * ga
-                    text(cv, f'bent ≈ {CV.peak:.1f}× mg', pk[0] + 40, pk[1] - 14, 30, TEAL, pa_)
-                    text(cv, 'from the motion capture', pk[0] + 40, pk[1] + 16, 22, (180, 240, 235), pa_)
+                    text(cv, f'bent ≈ {CV.peak:.1f}× mg', pk[0] + 40, pk[1] - 66, 32, TEAL, pa_)
+                    text(cv, 'from the motion capture', pk[0] + 40, pk[1] - 36, 26, (180, 240, 235), pa_)
             # pulsing peaks on 'smaller'
             pp = smooth((t - T['small']) / 0.2) * ga * (1 - smooth((t - T['ask0'] + 0.3) / 0.3))
             if pp > 0.01:
                 q1_ = gpt(CV.D / 2, PK_STIFF); ss = np.linspace(0, 0.2, 200); spk = ss[int(np.argmax([CV.bent(v) for v in ss]))]
                 q2_ = gpt(spk, CV.peak)
-                arrow(cv, (q1_[0] + 120, q1_[1] + 30), (q2_[0] + 10, q2_[1] - 30), YELLOW, w=9, head=30, a=pp)
+                q0_ = gpt(CV.D * 0.85, 5.0)
+                arrow(cv, (q0_[0] + 16, q0_[1]), (q2_[0] - 4, q2_[1] - 16), YELLOW, w=9, head=30, a=pp)
 
         # ---- replays under the graph: stopwatch, ground force arrow, weight
         if s['mode'] == 'mocap' and s['seg'] in ('D', 'E') and t < T['ask0']:
@@ -719,27 +787,62 @@ def build(tl, out=None, stills=(), sim_only=False):
                 fv = 0.0
             fa = sw_a
             if fa > 0.01 and feet_s is not None:
-                Lf = fv * 62 * z / 3.0
-                base = feet_s + np.array([-6, 0])
-                arrow(cv, base, base + np.array([0, -min(Lf, 680)]), colr, w=16, head=44, a=fa * smooth(fv / 0.4))
+                Lf = fv * 46 * z / 3.0
+                CAP = 300
+                toe = xf @ np.array([*rig.tail(W, 'n_ft'), 1.0])
+                base = np.array([toe[0] + 4, gy])                         # at the sole, at the toes, clear of the shin
+                tip = base + np.array([0, -min(Lf, CAP)])
+                arrow(cv, base, tip, colr, w=16, head=44, a=fa * smooth(fv / 0.4))
+                if Lf > CAP and fv > 0.4:                                  # off the scale: a break mark
+                    for dy_ in (CAP * 0.45, CAP * 0.45 + 16):
+                        cv.drawLine(base[0] - 18, base[1] - dy_ + 6, base[0] + 18, base[1] - dy_ - 6, skia.Paint(AntiAlias=True, Color=col(WHITE, 255 * fa), StrokeWidth=5))
                 if fv > 0.4:
-                    text(cv, 'ground force', base[0] + 34, base[1] - 70, 30, colr, fa)
-                    text(cv, f'{fv:.1f}× mg', base[0] + 34, base[1] - 30, 38, colr, fa)
+                    l1, l2 = 'ground force', f'{fv:.1f}× mg'
+                    wl = max(tw(l1, 28), tw(l2, 38))
+                    lx, ly = base[0] + 34, base[1] - 150
+                    card(cv, lx - 14, ly - 40, wl + 28, 100, fa, r=18)
+                    text(cv, l1, lx, ly - 6, 28, colr, fa)
+                    text(cv, l2, lx, ly + 42, 38, colr, fa)
                 # weight at the CoM
                 cs = com_s[:2]
                 arrow(cv, cs, cs + np.array([0, 62 * z / 3.0]), GREY, w=10, head=28, a=fa * 0.9)
                 cv.drawCircle(*cs, 10, skia.Paint(AntiAlias=True, Color=col(YELLOW, 255 * fa)))
-                text(cv, 'mg', cs[0] + 20, cs[1] + 58, 28, GREY, fa)
+                text(cv, 'mg', cs[0] - 52, cs[1] + 58, 28, GREY, fa)
             if stiff:
-                L.chip(cv, 'locked knees (acted out)', 880, 1330, GREY, 24, sw_a)
+                L.chip(cv, 'locked knees (acted out)', 760, 960, GREY, 28, sw_a)
 
-        # ---- question chips
-        for txt, t0, yy, colr in (('PULL HANDS BACK?', T['back'] - 0.05, 470, TEAL), ('HOLD STILL?', T['still'] - 0.05, 575, CORAL)):
-            a = smooth((t - t0) / 0.2) * (1 - smooth((t - T['end']) / 0.2))
-            if a > 0:
-                L.chip(cv, txt, 590, yy, colr, 48, a, scale=0.85 + 0.15 * smooth((t - t0) / 0.18))
-        ba = smooth((t - T['bal']) / 0.25) * (1 - smooth((t - T['end']) / 0.2))
-        balloon(cv, 125, 520 + 8 * math.sin(t * 3), 1.3 + 0.2 * math.exp(-max(0, t - T['bal']) * 6), ba)
+        # ---- question: a water balloon falls toward her hands, freezes just above them
+        if s['mode'] == 'catch':
+            t_hover = T['bal'] + 0.35
+            hy = hands[1] - 92
+            if t < t_hover:
+                u = max(0.0, (t - (T['bal'] - 0.55)) / (t_hover - (T['bal'] - 0.55)))
+                by = lerp(-140, hy, u * u)
+            else:
+                by = hy + 6 * math.sin((t - t_hover) * 3)
+            wob = 1 + 0.08 * math.sin(t * 9) * math.exp(-max(0, t - t_hover) * 2)
+            if t > T['bal'] - 0.55:
+                balloon(cv, hands[0] + 10, by, 1.25, 1.0, t, slosh=1.0 if t < t_hover + 0.6 else 0.4)
+            pz = smooth((t - t_hover) / 0.25) * (1 - smooth((t - T['end']) / 0.2))
+            if pz > 0.01:
+                r_ = skia.RRect.MakeRectXY(skia.Rect(56, 556, 250, 616), 30, 30)
+                cv.drawRRect(r_, skia.Paint(AntiAlias=True, Color=skia.Color(5, 12, 26, int(200 * pz))))
+                for bx in (84, 100):
+                    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(bx, 572, bx + 10, 600), 3, 3), skia.Paint(AntiAlias=True, Color=col(WHITE, 240 * pz)))
+                text(cv, 'PAUSED', 124, 598, 30, WHITE, pz)
+            a1 = smooth((t - T['back'] + 0.05) / 0.2) * (1 - smooth((t - T['end']) / 0.2))
+            if a1 > 0.01:
+                arrow(cv, hands + np.array([-20, 42]), hands + np.array([-210, 42]), TEAL, w=12, head=36, a=a1)
+                L.chip(cv, 'PULL HANDS BACK?', 540, 488, TEAL, 46, a1, scale=0.85 + 0.15 * smooth((t - T['back']) / 0.18))
+            a2 = smooth((t - T['still'] + 0.05) / 0.2) * (1 - smooth((t - T['end']) / 0.2))
+            if a2 > 0.01:
+                lx, ly = hands[0] + 64, hands[1] + 20               # a padlock next to her hands: hold them still
+                pl = skia.Paint(AntiAlias=True, Color=col(CORAL, 255 * a2), Style=skia.Paint.kStroke_Style, StrokeWidth=7)
+                cv.drawArc(skia.Rect(lx - 14, ly - 34, lx + 14, ly - 6), 180, 180, False, pl)
+                cv.drawLine(lx - 14, ly - 20, lx - 14, ly - 6, pl); cv.drawLine(lx + 14, ly - 20, lx + 14, ly - 6, pl)
+                cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(lx - 22, ly - 8, lx + 22, ly + 26), 6, 6), skia.Paint(AntiAlias=True, Color=col(CORAL, 255 * a2)))
+                cv.drawCircle(lx, ly + 8, 4, skia.Paint(AntiAlias=True, Color=col((40, 10, 10), 255 * a2)))
+                L.chip(cv, 'HOLD STILL?', 540, 580, CORAL, 46, a2, scale=0.85 + 0.15 * smooth((t - T['still']) / 0.18))
 
         # ---- rewind look
         rw_a = smooth((t - T['rw0']) / 0.08) * (1 - smooth((t - T['rw1']) / 0.1))

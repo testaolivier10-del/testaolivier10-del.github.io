@@ -6,7 +6,7 @@
   "kind": "action",
   "what": "pull your hands back to stretch the stop out (more time, smaller force)"
  },
- "long_reason": "",
+ "long_reason": "eight short beats: the comparison needs both landings, the momentum stop, the impulse card and both replays on one graph; final length follows the voice",
  "beats": [
   {
    "t0": 0.0,
@@ -14,7 +14,7 @@
    "kind": "mistake",
    "person": true,
    "diagram": false,
-   "what": "she faces us, turns (front, three quarter, side), jumps and lands with locked knees (labelled acted out): hips stop dead, jolt, red flash at knees, force meter slams to about 9x body weight, red X",
+   "what": "frame zero: she is already dipping into a jump (title up); she lands with locked knees, legs straight (labelled acted out): hips stop dead, jolt, red flash at knees, force meter slams to about 9x body weight, red X",
    "source": "impulse momentum theorem; locked curve illustrative"
   },
   {
@@ -50,7 +50,7 @@
    "kind": "explain",
    "person": true,
    "diagram": true,
-   "what": "card: delta p = F x delta t, F = net force",
+   "what": "she turns to face us (side, three quarter, front); card: delta p = F x delta t, F = average net force",
    "source": "AP Physics 1 unit 4"
   },
   {
@@ -86,7 +86,7 @@
    "kind": "question",
    "person": true,
    "diagram": false,
-   "what": "she turns back to us; water balloon icon; chips PULL HANDS BACK? / HOLD STILL?",
+   "what": "cut: she holds her hands out, a water balloon falls toward them and pauses just above; chips PULL HANDS BACK? (arrow back) / HOLD STILL?",
    "source": ""
   },
   {
