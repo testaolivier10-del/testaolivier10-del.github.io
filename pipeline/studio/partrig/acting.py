@@ -69,7 +69,7 @@ class Performer:
             st = self.state[k]
             if ww <= 0.001 and st["mode"] != "swing":
                 st["mode"] = "stand"
-                tilt[k] = 0.0
+                tilt[k] = c.get(k + "_heel", 0.0)          # heel raise on the spot (calf push)
                 continue
             pu = self.prev_u.get(k, u)
             if st["mode"] in ("stand", "stance") and u >= beta and pu < beta:
