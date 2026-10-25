@@ -5,7 +5,7 @@ References for the house style (claude/levlprep-video-standard.md section 0). Ge
 - ref_courtyard_day.png, ref_emt_night.png, ref_lab.png: scenes in three palettes (day, night, indoor).
 - ref_heart.png, ref_neuron.png: diagrams with every part given a colour (no grey).
 - ref_heart_labelled.png: labels and flow arrows drawn in code on top (never by Gemini).
-- format_*.png: teaching formats (section 7c): memory scene, body parts as workers, body as a factory, game battle with a code HUD.
+- format_*.png: teaching formats (video standard section 7, "Teaching formats"): memory scene, body parts as workers, body as a factory, game battle with a code HUD.
 - style_board.png: the comparison board Olivier chose from.
 
 Prompt core (add to every scene or diagram prompt, then name a colour for every part):
