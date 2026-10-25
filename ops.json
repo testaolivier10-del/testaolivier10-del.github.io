@@ -31,7 +31,8 @@
     "2026-10-22 midweek build (continued from the 10-21 run, Gemini route while Modal is out): built w1021-01-iv-water, w1021-02-ball-top (AP exam traps #1), w1021-03-speedometer (poll post, next topic). Art painted in Gemini in Olivier's Chrome, full size downloads in Downloads/LevlPrep-art/w1021; student arm rigged with paintskin. Fresh eyes 8.2 / 8 / 8, every shot 8+. Modal spend $0. Sent for review, pending. ElevenLabs about 71,500 left.",
     "2026-10-22 daily run: checkup clean. Scheduled w1021-01-iv-water (2026-10-29) and w1021-02-ball-top (2026-10-30) on TikTok and YouTube; w1021-03-speedometer (poll post) holds 2026-10-31 as manual, to be posted from the laptop that evening. Buffer covers through 2026-10-31. w1007-07-acid-resonance set to posted. w1007-02-jaw-thrust got youtube_id YVjMJ06hes4, its Studio thumbnail and related video (NREMT intro). yt-orgo-02-orbitals (due today) NOT uploaded: the Zapier upload call was refused by this session's permission check (auto mode, 'create public surface'); stays approved, legacy fingerprint recorded. Related video left empty for ball-top (AP Physics) and speedometer (AP Calc): no long video in those courses yet. No new YouTube comments; 1 new TikTok comment (Cool on acid resonance), reply drafted; 6 TikTok drafts wait for Olivier's OK.",
     "2026-10-22 ~6:50pm PT: yt-orgo-02-orbitals published through YouTube Studio in Olivier's Chrome at his request in the daily run chat (Zapier upload was blocked by the permission check): https://youtu.be/GDdECy1YAw4, public, not for kids, altered content No, tags, English, Education; thumbnail set in the upload dialog; playlist and captions by API; comment posted and pinned (youtube.com with &authuser=levlprepofficial@gmail.com shows Pin); site PR #83. Tip: pressing Escape in the upload dialog closes it (the upload keeps going; reopen it from the pencil in the upload panel).",
-    "2026-10-23 daily run: Studio edit pages show 'Oops' with no authuser or authuser=1 (1 now redirects to sign in); https://studio.youtube.com/video/<id>/edit?authuser=levlprepofficial@gmail.com opens the Levl Prep channel."
+    "2026-10-23 daily run: Studio edit pages show 'Oops' with no authuser or authuser=1 (1 now redirects to sign in); https://studio.youtube.com/video/<id>/edit?authuser=levlprepofficial@gmail.com opens the Levl Prep channel.",
+    "2026-10-25 daily run (fired 4:26pm PT, nearly a day late): checkup clean. Nothing approved to schedule; Buffer covers through 2026-10-31 (w1021-03 poll post is manual for 10-31). oxygen-curve and sn2-umbrella set to posted. sn2-umbrella got youtube_id wN-7vODGHuY, Studio thumbnail and related video (atomic structure). No long video due. No new YouTube comments; 1 new TikTok comment (cg02q_ on sn2), reply drafted; 7 TikTok drafts wait for Olivier's OK."
   ],
   "pending_reruns": [],
   "related_check_after": null,
@@ -45,7 +46,8 @@
     "tt:lil.miwa:tourniquet:high and tight military",
     "tt:hazard_5522:tourniquet:people do it all the time",
     "tt:cabezon_85:tourniquet:reply to hazard_5522",
-    "tt:user7239963906276:acid-resonance:cool"
+    "tt:user7239963906276:acid-resonance:cool",
+    "tt:cg02q_:sn2-umbrella:love sn2 not ai"
   ],
   "comment_drafts": [
     {
@@ -95,6 +97,14 @@
       "comment": "Cool.:)",
       "reply": "Thanks! Glad the resonance part clicked.",
       "status": "drafted 2026-10-22"
+    },
+    {
+      "platform": "tiktok",
+      "video": "w1007-05-sn2-umbrella",
+      "author": "cg02q_",
+      "comment": "I love SN2 but not AI",
+      "reply": "Fair! The art gets AI help, but the chemistry is checked before anything posts. Glad you love SN2 too.",
+      "status": "drafted 2026-10-25"
     }
   ],
   "series_counts": {
