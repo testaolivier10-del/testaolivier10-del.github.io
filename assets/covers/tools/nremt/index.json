@@ -1,0 +1,42 @@
+[
+ {
+  "slug": "body-map",
+  "title": "Body Map",
+  "file": "body-map.svg"
+ },
+ {
+  "slug": "flowcharts",
+  "title": "Flow Diagrams",
+  "file": "flowcharts.svg"
+ },
+ {
+  "slug": "formulary",
+  "title": "Drug Formulary",
+  "file": "formulary.svg"
+ },
+ {
+  "slug": "mnemonics",
+  "title": "Mnemonics",
+  "file": "mnemonics.svg"
+ },
+ {
+  "slug": "reference-cards",
+  "title": "Reference Cards",
+  "file": "reference-cards.svg"
+ },
+ {
+  "slug": "scenario-sim",
+  "title": "Scenario Simulator",
+  "file": "scenario-sim.svg"
+ },
+ {
+  "slug": "skillsheets",
+  "title": "Skill Sheets",
+  "file": "skillsheets.svg"
+ },
+ {
+  "slug": "sound-trainer",
+  "title": "Sound Trainer",
+  "file": "sound-trainer.svg"
+ }
+]

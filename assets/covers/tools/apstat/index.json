@@ -1,0 +1,52 @@
+[
+ {
+  "slug": "chi-square-lab",
+  "title": "Chi-Square Lab",
+  "file": "apstat/chi-square-lab.svg"
+ },
+ {
+  "slug": "ci-capture",
+  "title": "Interval Capture",
+  "file": "apstat/ci-capture.svg"
+ },
+ {
+  "slug": "data-explorer",
+  "title": "Data Explorer",
+  "file": "apstat/data-explorer.svg"
+ },
+ {
+  "slug": "design-randomizer",
+  "title": "Design Randomizer",
+  "file": "apstat/design-randomizer.svg"
+ },
+ {
+  "slug": "distribution-areas",
+  "title": "Distribution Areas",
+  "file": "apstat/distribution-areas.svg"
+ },
+ {
+  "slug": "p-value-explorer",
+  "title": "P-Value Explorer",
+  "file": "apstat/p-value-explorer.svg"
+ },
+ {
+  "slug": "probability-trees",
+  "title": "Probability Trees",
+  "file": "apstat/probability-trees.svg"
+ },
+ {
+  "slug": "regression-lab",
+  "title": "Regression Lab",
+  "file": "apstat/regression-lab.svg"
+ },
+ {
+  "slug": "sampling-distributions",
+  "title": "Sampling Distributions",
+  "file": "apstat/sampling-distributions.svg"
+ },
+ {
+  "slug": "sampling-lab",
+  "title": "Sampling Lab",
+  "file": "apstat/sampling-lab.svg"
+ }
+]

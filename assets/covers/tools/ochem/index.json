@@ -1,0 +1,42 @@
+[
+ {
+  "slug": "acid-base",
+  "title": "Acid/Base Comparator",
+  "file": "acid-base.svg"
+ },
+ {
+  "slug": "arrow-pusher",
+  "title": "Arrow Pusher",
+  "file": "arrow-pusher.svg"
+ },
+ {
+  "slug": "conformations",
+  "title": "Conformation Lab",
+  "file": "conformations.svg"
+ },
+ {
+  "slug": "reaction-predictor",
+  "title": "Reaction Predictor",
+  "file": "reaction-predictor.svg"
+ },
+ {
+  "slug": "reagent-roadmap",
+  "title": "Reagent Roadmap",
+  "file": "reagent-roadmap.svg"
+ },
+ {
+  "slug": "resonance",
+  "title": "Resonance Explorer",
+  "file": "resonance.svg"
+ },
+ {
+  "slug": "spectroscopy",
+  "title": "Spectroscopy Lab",
+  "file": "spectroscopy.svg"
+ },
+ {
+  "slug": "viewer-3d",
+  "title": "3D Molecule Viewer",
+  "file": "viewer-3d.svg"
+ }
+]
