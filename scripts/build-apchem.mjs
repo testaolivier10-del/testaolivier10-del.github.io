@@ -29,6 +29,7 @@
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
+import { apHomeMain } from './lib/course-home.mjs';
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
@@ -643,116 +644,16 @@ ${tail({ depth, section: 'learn', extra: ['chem-toc.js', 'chem-book.js'] })}
     const partCount = id => map.chapters.filter(c => c.part === id).length;
     const partTopics = id => topics.filter(t => chapterById(t.chapter).part === id).length;
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
+        const HOME = {
+      key: COURSE_KEY, prefix: 'chem', mainClass: 'chem-home', courseHtml: COURSE_HTML, beta: BETA_PILL,
+      t2: `one particle at a time.`, lede: `Each topic taught from scratch at the particle level, in framework order, then practice that checks your reasoning.`, storageKey: 'apchem_progress_v1',
+      first, firstCh, unitLabel, freeUnits, freeUnitsText, dailyFree, chapters: map.chapters, topicsOf, chapterBuilt,
+      partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive), toolIcon: TOOL_ICON,
+      exam: { mcq: 60, mcqTime: '90 minutes', frq: 7, frqTime: '' }, sample: homeSample(depth),
+    };
     const body = `
 ${bodyOpen()}
-<main id="main" class="xshell chem-home">
-  ${courseBanner('apchem')}
-  <header class="hero chem-home-hero">
-    <div>
-      <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
-      <h1>${COURSE_HTML}, one particle at a time.</h1>
-      <p class="lede">Each topic taught from scratch at the particle level, in framework order, then practice that checks your reasoning.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apchem_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
-    </div>
-    <div class="chem-level-card" id="chemLevel" data-lv-zero>
-      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-      <div class="chem-level-top">
-        <div class="chem-level-chip"><div class="level-ring" id="chemLvRing">L1</div><div class="t"><b id="chemLvTitle">Mole Counter</b><span id="chemLvSub">Level 1 &middot; 0 XP</span></div></div>
-        <div class="streak-chip" id="chemStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="chemStreakN">0</span></div>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="chemXpFill" style="width:0%"></div></div>
-      <div class="xp-label" id="chemXpLabel">0 / 100 XP to Level 2</div>
-      <div class="chem-part-bars">${bars}</div>
-    </div>
-  </header>
-
-  <section class="xsection" aria-label="What to do now">
-    <div class="chem-now-row cx-now-row">
-      <div class="chem-now-card cx-now-card" id="chemStart">
-        <div class="k">Start here</div>
-        ${first ? `<h2>${esc(first.title)}</h2>
-        <p>${esc(unitLabel(firstCh))} &middot; ${esc(firstCh.title)}.${freeUnitsText ? ` ${freeUnitsText} lessons and every notes page are free.` : ' Every notes page is free.'}</p>
-        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any unit</h2><p>Every notes page is free.</p>`}
-      </div>
-      <div class="chem-now-card cx-now-card" id="chemReview">
-        <div class="k">Review queue</div>
-        <h2>Missed questions come back</h2>
-        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
-        <a class="link-quiet" href="review.html">Open review &rarr;</a>
-      </div>
-      <div class="chem-now-card cx-now-card" id="chemGoal">
-        <div class="k">Today&rsquo;s goal</div>
-        <h2>A little every day</h2>
-        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.${dailyFree ? ` ${dailyFree} practice questions a day are free.` : ''}</p>
-        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="xsection" aria-labelledby="h-path">
-    <div class="section-head">
-      <h2 id="h-path">The path through the course</h2>
-      <p class="section-lede">The units in framework order, then the math refresher: logs, exponents, scientific notation, significant figures and units, each placed just before the topic that first needs it. Tap one to open it.</p>
-    </div>
-    <div class="chem-path-legend">${map.parts.map(p => `<span style="--c:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"><i></i>${p.id === 'course' ? `${partCount(p.id)} units` : esc(PART_LABEL[p.id] || p.title)} &middot; ${partTopics(p.id)} topics</span>`).join('')}</div>
-    ${homePath(depth)}
-  </section>
-
-  <section class="xsection chem-home-about" aria-label="About the course">
-    <div>
-      <h2 id="h-covers">What the course covers</h2>
-      <p>${units.length} units and ${unitTopics.length} topics in the order of the 2024 course framework, plus ${skillTopics} math refresher topics built on the official equations and constants sheet. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation. Practice checks what the exam checks: units, significant figures, particle diagrams and justifications that compare both species.</p>
-      <p class="chem-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
-    </div>
-    <div>
-      <h2 id="h-how">How to use it</h2>
-      <ol class="chem-sample-list chem-how">
-        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.</span></li>
-        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
-        <li><span class="n" aria-hidden="true">3</span><span><b>Train the hard parts.</b> Justifications, particle diagrams, equilibrium and buffer drills, each checked step by step.</span></li>
-        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows it by unit, topic and science practice, and every miss links to its lesson.</span></li>
-      </ol>
-    </div>
-  </section>
-${sims.length ? `
-  <section class="xsection" aria-labelledby="h-tools">
-    <div class="chem-feature">
-      <div class="icon-circle" aria-hidden="true">
-        <svg viewBox="0 0 170 170" fill="none" focusable="false">
-          <path d="M70 34v38L40 128a10 10 0 0 0 9 15h72a10 10 0 0 0 9-15L100 72V34" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linejoin="round"/>
-          <path d="M62 34h46" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M52 108h66l11 20a5 5 0 0 1-4 7H45a5 5 0 0 1-4-7z" fill="#B3C8F7" fill-opacity=".55"/>
-          <circle cx="76" cy="96" r="4" fill="#fff" fill-opacity=".8"/><circle cx="92" cy="84" r="3" fill="#fff" fill-opacity=".7"/><circle cx="86" cy="120" r="5" fill="#fff" fill-opacity=".9"/>
-        </svg>
-      </div>
-      <div>
-        <h2 id="h-tools">${word(sims.length)} trainers for what the exam marks hardest.</h2>
-        <p>Write a justification and check it against the rubric, place the ions and water molecules in a particle diagram, run unlimited equilibrium and buffer drills, then answer the questions about what you did.${freeSim ? ` The ${esc(freeSim.name.toLowerCase())} trainer is free.` : ''}</p>
-        <div class="chem-tool-chips">${sims.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}${t.premium ? '' : ' &middot; free'}</a>`).join('')}</div>
-        <a class="btn-press alt" href="tools.html">See all tools</a>
-      </div>
-    </div>
-  </section>` : ''}
-${homeSample(depth)}
-  <section class="xsection" aria-labelledby="h-go">
-    <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="chem-cards chem-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
-      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
-      `<li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>`,
-      `<li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>`,
-      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
-  </section>
-
-  <section class="xsection" aria-label="About LevlPrep">
-    <div class="trust-row">
-      <div class="trust-pill">Every notes page free</div>
-      ${freeUnitsText ? `<div class="trust-pill">${freeUnitsText} lessons free</div>` : ''}
-      <div class="trust-pill">Unit sheets free to print</div>
-      <div class="trust-pill">Progress saved on your device</div>
-    </div>
-  </section>
-</main>
+${apHomeMain(HOME)}
 ${footer(depth, 'home')}
 ${tail({ depth, section: 'home', extra: ['chem-home.js'] })}
 </body>

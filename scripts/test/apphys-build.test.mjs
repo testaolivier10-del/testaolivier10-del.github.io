@@ -61,10 +61,11 @@ test('nothing published: no topic pages, every page noindex', () => {
 test('the course home has its own headline and the amber pendulum, not Chemistry\'s', () => {
   const { root } = build('unit-1');
   const home = readFileSync(join(root, 'physics/index.html'), 'utf8');
-  assert.match(home, /<h1>AP&reg; Physics 1, one force at a time\.<\/h1>/);
+  assert.match(home, /<h1 id="chTitle">AP&reg; Physics 1, <span>one force at a time\.<\/span><\/h1>/);
   assert.doesNotMatch(home, /Chemistry|Biology|particle|Mole Counter/);
   assert.match(home, /assets\/phys\.css/);
-  assert.match(home, /Point Particle/);
+  assert.match(home, /data-cover="apphys"/);
+  assert.match(home, /assets\/covers\/apphys\.svg/);
   const css = readFileSync('physics/assets/phys.css', 'utf8');
   assert.match(css, /body\.phys\{--ctint:#FBEED5;--cink:#734200;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apphys"\]\{--ctint:#FBEED5;--cink:#734200;\}/);
