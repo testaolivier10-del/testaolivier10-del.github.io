@@ -7,7 +7,7 @@ https://claude.ai/artifact/5fmnuUYa5ZodTEsagNPQg2 (top row: Home, Course page, P
 Practice at phone width). The full rationale and sources are in the Project doc `claude/levlprep-site-redesign.md`.
 
 ## System
-- Page: the theme's paper colour with a faint 44 px grid. Headlines in Inter 800 to 900 (`assets/fonts/display.css`,
+- Page: the theme's paper colour with a faint 44 px grid. Headlines in Inter 800 to 900 (end of `assets/fonts/fonts.css`,
   family `'Inter Display'`), two-tone (ink, then `--accent`). One handwritten line in Kalam 700 in `--amber-text`
   (`#F2C14E` in dark). Body text stays Nunito. Buttons: channel navy `#0B1A33` (dark theme: teal `#2EE6D6`).
 - Course covers: `assets/covers/<course key>.svg`, 640 x 320, background, grid, glow and the drawing; the two-tone
