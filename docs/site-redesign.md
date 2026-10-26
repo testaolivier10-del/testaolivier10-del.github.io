@@ -32,3 +32,24 @@ later pass; existing course homes already have practice, notes and Premium cards
   progress card, AP® cards, pricing, FAQ, structured data.
 - The try-one question is plain HTML with a 300-byte script (no :has needed).
 - Free-claims rule: say "free to start" / "notes free forever", never "no account needed".
+
+## Round 2: every page (approved 2026-10-26)
+Olivier saw parts 1 to 3 and said they still looked like the old site. He approved 27 new mockups (canvas rows
+"Every page, 1 of 4" to "4 of 4", files `S01` to `S22`, in the design canvas linked at the top) and said "do all".
+Six PRs, each stacked on `claude/redesign-study` (#88), built in parallel:
+
+| Step | Branch | Owns (only edit these, plus new files) | Mockups |
+|---|---|---|---|
+| 1 Shared parts | `claude/redesign-r2-chrome` | `assets/theme.css` token values incl. dark, `assets/course/base.css`, `assets/site-chrome.js`, every `*/assets/*nav*.js`, footer | top bar, course tab bar, footer on all |
+| 2 Course homes | `claude/redesign-r2-courses` | `assets/course/hub.css`, `hub.js`, course home builders, `nremt/index.html`, `ochem/index.html` | S01, S02 |
+| 3 Practice and study | `claude/redesign-r2-study` | `assets/course/study.css`, `study.js`, each course's practice/exam/review/flashcard CSS and pages | S03 to S09 |
+| 4 Progress | `claude/redesign-r2-progress` | dashboard pages and their CSS/JS | S10 |
+| 5 Reading | `claude/redesign-r2-reading` | `book.css`, `glossary.css`, `lesson.css`, notes/learn/glossary/tools/FRQ pages and builders | S11 to S16 |
+| 6 Site pages | `claude/redesign-r2-site` | `premium` section of build-pricing, `about`, `account`, `search`, `changelog`, `privacy`, `terms`, `404` | S17 to S22 |
+
+Rules for every step: colors only through theme tokens (dark mode must work); display face `'Inter Display'` 900
+for headlines, Kalam for the one hand line; no example data ships (real progress or nothing); copy rules from
+`scripts/site-rules/`; no em dashes. The integration pass (after all six) bumps `sw.js`, writes the changelog entry,
+and resolves `scripts/check-weight.mjs` budgets.
+Open for Olivier: is "No human expert has reviewed it yet" on About still true; a photo for About (none ships until
+he sends one).
