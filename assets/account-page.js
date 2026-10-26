@@ -173,7 +173,9 @@
       var state = !end ? 'Not active'
         : live.some(isLongGrant) ? 'Full access, no end date'
         : (paid ? 'Premium active until ' : 'Free month until ') + day(end);
+      // Each row carries the course's own cover (site redesign, round 2).
       return '<div class="panel course">' +
+        '<img class="sp-cv" src="assets/covers/' + esc(course) + '.svg" alt="" width="640" height="320" loading="lazy" decoding="async">' +
         '<div><b>' + esc(courseName(course)) + '</b>' +
         '<span class="state' + (end ? ' on' : '') + '">' + esc(state) + '</span></div>' +
         (live.some(isLongGrant) ? '' : '<div class="buy"><button type="button" class="btn-press sm" data-buy="' + course + '">' +

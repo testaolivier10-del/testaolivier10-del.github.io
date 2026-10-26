@@ -40,39 +40,6 @@
 <style>
   /* Homepage-only layout. Everything visual (cards, buttons, path nodes,
      XP/streak chips) comes from the shared system in assets/theme.css. */
-  .home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,52px);align-items:center;}
-
-  /* Hero progress card — level ring, XP bar, and the four most-practiced domains. */
-  .progress-card{
-    background:var(--white);border:var(--bw) solid var(--line);border-radius:22px;
-    padding:26px 26px 22px;box-shadow:var(--lift-lg);
-  }
-  .progress-card__top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
-  .level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
-  .level-chip .t b{display:block;font-weight:900;font-size:16px;}
-  .level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
-
-  /* Five-domain skill path + its sticky side rail. */
-  .path-row{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(28px,4vw,48px);align-items:start;margin-top:40px;}
-  .side-rail{position:sticky;top:calc(var(--site-header-h) + 16px);display:flex;flex-direction:column;gap:16px;}
-
-  /* Dark feature panel for the interactive tools. */
-  .feature-card{
-    background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);
-    display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;
-  }
-  /* The body map's own anatomy render (nremt/assets/body-figs), cropped to
-     the head and trunk on a light panel so the organs read on the navy. */
-  .feature-card .feature-art{
-    width:min(100%,300px);height:250px;border-radius:18px;margin:0 auto;overflow:hidden;
-    background:radial-gradient(circle at 50% 35%,#FFFFFF 0%,#E7F1EE 70%);
-  }
-  .feature-card .feature-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 4%;transform:scale(1.35);transform-origin:50% 0;}
-  .feature-card .feature-credit{font-size:11.5px;font-weight:600;opacity:.7;margin:16px 0 0;max-width:46ch;}
-  .feature-card .feature-credit a{color:inherit;}
-  .feature-card h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
-  .feature-card p{opacity:.85;font-size:15px;font-weight:600;margin:0 0 20px;max-width:38ch;}
-
   /* Sample-question section. */
   .sample-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
   /* A legend of the item types, not controls: plain text, no card or
@@ -94,9 +61,7 @@
   .sample-feedback:empty{display:none;}
 
   @media(max-width:900px){
-    .home-hero,.feature-card,.path-row,.sample-row{grid-template-columns:1fr;}
-    .side-rail{position:static;}
-    .feature-card{text-align:center;}
+    .sample-row{grid-template-columns:1fr;}
   }
 </style>
 <!-- levlprep-structured-data -->
@@ -165,146 +130,57 @@
 <div class="course-nav"></div>
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 
-<div class="xshell">
+<div class="xshell ch-home" data-cover="nremt">
 
-  <div class="hero">
-    <div class="home-hero">
-      <div>
-        <div class="eyebrow">NREMT&#8209;EMT &middot; Cognitive exam</div>
-        <h1>Level up before the real exam does.</h1>
-        <p class="lede">2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.</p>
-        <!-- The primary button is rewritten below for anyone with work
-             waiting: an attempt to resume, or questions due for review. The
-             markup here is the new-visitor state, and the state anyone sees
-             if the script never runs. -->
-        <div class="hero-ctas">
-          <a href="practice.html" class="btn-press" id="heroPrimaryCta">Start practicing</a>
-          <script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>
-          <a href="#sample" class="link-quiet">See a sample question</a>
-        </div>
-        <p class="hero-founder">Made by Olivier Testa, an EMT who studied with this course and passed the NREMT when it shut off at 70 questions. <a href="../about.html">More about me</a></p>
-      </div>
-
-      <!-- Live progress card. Rendered from localStorage by the script below;
-           this markup is the signed-out / brand-new-user state. -->
-      <div class="progress-card" id="heroProgress" data-lv-zero>
-        <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-        <div class="progress-card__top">
-          <div class="level-chip">
-            <div class="level-ring" id="heroLevelRing">L1</div>
-            <div class="t">
-              <b id="heroLevelTitle">First Responder</b>
-              <span id="heroLevelSub">Level 1 &middot; 0 XP</span>
-            </div>
-          </div>
-          <div class="streak-chip" id="heroStreak" hidden>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>
-            <span id="heroStreakCount">0</span>
-          </div>
-        </div>
-
-        <div class="xp-track"><div class="xp-fill" id="heroXpFill" style="width:0%"></div></div>
-        <div class="xp-label" id="heroXpLabel">0 / 100 XP to Level 2</div>
-
-        <div id="heroDomains" style="margin-top:14px"></div>
-      </div>
-    </div>
+  <!-- course-home:top:start -->
+<section class="ch-hero" aria-labelledby="chTitle">
+  <div class="ch-hero-copy">
+    <p class="ch-pill">NREMT&#8209;EMT &middot; Cognitive exam</p>
+    <h1 id="chTitle">Level up before <span>the real exam does.</span></h1>
+    <p class="ch-hand">911 call to hospital, one chapter at a time</p>
+    <p class="ch-lede">2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.</p>
+    <div class="ch-btns"><a href="practice.html" class="ch-cta" id="heroPrimaryCta">Start practicing</a>
+          <script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a href="#sample" class="ch-ghost">See a sample question</a></div>
+    <p class="ch-trust">Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="../about.html">More about me</a></p>
   </div>
-
-  <!-- What to do now: the same three cards as every course home
-       (assets/course/hub.css). This markup is the new-visitor state;
-       renderNow() below fills them from the practice-engine records. -->
-  <section class="xsection" aria-label="What to do now">
-    <div class="cx-now-row">
-      <div class="cx-now-card" id="nrStart">
-        <div class="k">Start here</div>
-        <h2>A 20-question domain drill</h2>
-        <p>Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.</p>
-        <a class="btn-press" href="practice.html">Start a drill</a>
-      </div>
-      <div class="cx-now-card" id="nrReview">
-        <div class="k">Review queue</div>
-        <h2>Nothing due yet</h2>
-        <p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p>
-        <a class="link-quiet" href="review.html">Open review &rarr;</a>
-      </div>
-      <div class="cx-now-card" id="nrGoal">
-        <div class="k">Today&rsquo;s goal</div>
-        <h2>0 of 15</h2>
-        <p>Questions, cards and tool steps from any LevlPrep subject count toward a daily goal and a shared streak.</p>
-        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="xsection">
-    <div class="section-head">
-      <h2>The five exam domains</h2>
-      <p class="section-lede">The National Registry&rsquo;s EMT exam since 7 April 2025 follows a call from arrival to handover. Every question here is tagged by the step it tests, and practice exams draw them in the exam&rsquo;s proportions.</p>
-    </div>
-
-    <div class="path-row">
-      <div class="path">
-        <div class="node left">
-          <a class="node-circle" href="practice.html?domain=Scene%20Size-Up%20%26%20Safety" style="--c:#C9973A;--cd:#A67A28" aria-label="Practice Scene Size-Up and Safety">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 8l13 23H7z" stroke="#C9973A" stroke-width="3" stroke-linejoin="round"/><path d="M20 17v6M20 27v.5" stroke="#C9973A" stroke-width="3" stroke-linecap="round"/></svg>
-          </a>
-          <div class="node-text"><div class="n">Scene Size-Up &amp; Safety</div><div class="d">15&ndash;19% &middot; hazards, PPE, resources, triage</div></div>
-        </div>
-        <div class="node right">
-          <a class="node-circle" href="practice.html?domain=Primary%20Assessment" style="--c:#2C9C8B;--cd:#1F7A6C" aria-label="Practice Primary Assessment">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="16" stroke="#2C9C8B" stroke-width="3"/><path d="M13 20h5l2-6 4 12 2-6h5" stroke="#2C9C8B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <div class="node-text"><div class="n">Primary Assessment</div><div class="d">39&ndash;43% &middot; impression, ABCs, life threats, priority</div></div>
-        </div>
-        <div class="node left">
-          <a class="node-circle" href="practice.html?domain=Secondary%20Assessment" style="--c:#E8776A;--cd:#C15A4E" aria-label="Practice Secondary Assessment">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="8" stroke="#E8776A" stroke-width="3"/><path d="M23 23l8 8" stroke="#E8776A" stroke-width="3" stroke-linecap="round"/></svg>
-          </a>
-          <div class="node-text"><div class="n">Secondary Assessment</div><div class="d">5&ndash;9% &middot; history, focused exam, reassessment</div></div>
-        </div>
-        <div class="node right">
-          <a class="node-circle" href="practice.html?domain=Patient%20Treatment%20%26%20Transport" style="--c:#2C9C8B;--cd:#1F7A6C" aria-label="Practice Patient Treatment and Transport">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 30s-11-6.5-11-14a6 6 0 0111-3 6 6 0 0111 3c0 7.5-11 14-11 14z" stroke="#2C9C8B" stroke-width="3" stroke-linejoin="round"/></svg>
-          </a>
-          <div class="node-text"><div class="n">Patient Treatment &amp; Transport</div><div class="d">20&ndash;24% &middot; interventions, medications, transport</div></div>
-        </div>
-        <div class="node center">
-          <a class="node-circle" href="practice.html?domain=Operations" style="--c:#C9973A;--cd:#A67A28" aria-label="Practice Operations">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="9" y="12" width="22" height="16" rx="2" stroke="#C9973A" stroke-width="3"/><path d="M9 18h22M16 12v-3h8v3" stroke="#C9973A" stroke-width="3" stroke-linecap="round"/></svg>
-          </a>
-          <div class="node-text"><div class="n">Operations</div><div class="d">10&ndash;14% &middot; equipment, documentation, legal, wellness</div></div>
-        </div>
-      </div>
-
-      <div class="side-rail" id="sideRail">
-        <div class="tip-card">
-          <div class="k">Ready for the full length?</div>
-          <div class="v"><a href="exams.html">100-question timed exam</a></div>
-          <div class="s">Full-length, exam-paced, scored by domain when you finish.</div>
-        </div>
-        <div class="tip-card">
-          <div class="k">Before you book</div>
-          <div class="v"><a href="exam-day.html">How the real exam works</a></div>
-          <div class="s">Adaptive format, the two-hour clock, cost, eligibility, retakes and what to bring.</div>
-        </div>
-      </div>
-    </div>
+  <div class="ch-panel">
+    <div class="ch-art" aria-hidden="true"><img src="../assets/covers/nremt.svg" alt="" width="640" height="320" decoding="async"><span class="ch-art-t"><b>NREMT<span>EMT Prep</span></b></span></div>
+    <div class="ch-card" id="nrStart"><div class="k">Start here</div><h2>A 20-question domain drill</h2><p>Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.</p><a class="btn-press" href="practice.html">Start a drill</a></div>
+    <div class="ch-mini" id="nrReview"><span class="k">Review queue</span><h2>Nothing due yet</h2><p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p><a href="review.html">Open review &rarr;</a></div>
   </div>
-
-  <div class="xsection">
-    <div class="feature-card">
-      <div class="feature-art">
-        <img src="assets/body-figs/adult-front-anat.webp" alt="" width="480" height="1200" loading="lazy" decoding="async">
-      </div>
-      <div>
-        <h2>Learn the anatomy by pointing at it.</h2>
-        <p>A 3D body map and a sound trainer, plus twenty-five branching scenarios with Premium.</p>
-        <a href="body-map.html" class="btn-press alt">Open the body map</a>
-        <p class="feature-credit">Figure from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a> &copy; 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 JP</a>.</p>
-      </div>
-    </div>
+</section>
+<section class="ch-sec" aria-labelledby="chStart">
+  <div class="ch-sh"><div><h2 id="chStart">Start <span>here</span></h2><p>New to the course? Three steps, in this order.</p></div></div>
+  <ol class="ch-steps"><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">1</span><h3>Run a 20-question drill</h3><p>Short and focused, with every answer explained. Your weakest topic areas show up once you have answered a few.</p><a class="ch-go" href="practice.html">Start a drill &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">2</span><h3>Read what it points to</h3><p>Forty chapters of notes, free forever, from the call to the handover.</p><a class="ch-go" href="study-notes.html">Open the notes &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">3</span><h3>Sit a timed exam</h3><p>A full length exam on the clock, scored by domain when you finish, so test day feels familiar.</p><a class="ch-go" href="exams.html">See the exams &rarr;</a></li></ol>
+</section>
+<section class="ch-sec" aria-labelledby="chPractice">
+  <div class="ch-sh"><div><h2 id="chPractice">Practice by <span>exam domain</span></h2><p>The National Registry&rsquo;s EMT exam since 7 April 2025 follows a call from arrival to handover. Every question here is tagged by the step it tests, and practice exams draw them in the exam&rsquo;s proportions.</p></div></div>
+  <ul class="ch-box ch-doms"><li class="ch-dom"><div class="ch-dom-t"><h3>Primary Assessment</h3><p>Impression, ABCs, life threats and priority.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:100%"></i></span><span><b>39 to 43%</b> of the exam &middot; 853 questions</span></div><a class="ch-ghost" href="practice.html?domain=Primary%20Assessment">Practice this<span class="sr-only">: Primary Assessment</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Patient Treatment &amp; Transport</h3><p>Interventions, medications and transport.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:56%"></i></span><span><b>20 to 24%</b> of the exam &middot; 619 questions</span></div><a class="ch-ghost" href="practice.html?domain=Patient%20Treatment%20%26%20Transport">Practice this<span class="sr-only">: Patient Treatment &amp; Transport</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Scene Size-Up &amp; Safety</h3><p>Hazards, PPE, resources and triage.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:44%"></i></span><span><b>15 to 19%</b> of the exam &middot; 172 questions</span></div><a class="ch-ghost" href="practice.html?domain=Scene%20Size-Up%20%26%20Safety">Practice this<span class="sr-only">: Scene Size-Up &amp; Safety</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Operations</h3><p>Equipment, documentation, legal and wellness.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:33%"></i></span><span><b>10 to 14%</b> of the exam &middot; 258 questions</span></div><a class="ch-ghost" href="practice.html?domain=Operations">Practice this<span class="sr-only">: Operations</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Secondary Assessment</h3><p>History, the focused exam and reassessment.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:21%"></i></span><span><b>5 to 9%</b> of the exam &middot; 131 questions</span></div><a class="ch-ghost" href="practice.html?domain=Secondary%20Assessment">Practice this<span class="sr-only">: Secondary Assessment</span></a></li></ul>
+</section>
+<!-- course-home:top:end -->
+  <!-- course-home:mid:start -->
+<section class="ch-sec ch-two" aria-label="Notes and exams">
+  <div class="ch-box ch-notes">
+    <p class="ch-eye">Learn &middot; free forever</p>
+    <h2>Forty chapters <span>of notes</span></h2>
+    <p>Every chapter of the EMT curriculum, with glossary terms, flowcharts and mnemonics alongside.</p>
+    <ul class="ch-chips"><li><a href="notes/airway-management.html">Airway Management<i>Ch 9</i></a></li><li><a href="notes/primary-assessment.html">Primary Assessment<i>Ch 12</i></a></li><li><a href="notes/respiratory-emergencies.html">Respiratory Emergencies<i>Ch 19</i></a></li><li><a href="notes/cardiac-emergencies.html">Cardiac Emergencies<i>Ch 20</i></a></li><li><a href="notes/bleeding-control.html">Bleeding Control<i>Ch 29</i></a></li><li><a href="notes/ems-operations.html">EMS Operations<i>Ch 38</i></a></li></ul>
+    <a class="ch-ghost" href="study-notes.html">Open the notes</a>
   </div>
+  <div class="ch-box ch-exam">
+    <p class="ch-eye">Exams</p>
+    <p class="ch-clock"><b>100</b><span>questions on the clock</span></p>
+    
+    <p>Full length, exam paced, scored by domain when you finish.</p>
+    <a class="ch-cta" href="exams.html">Start a timed exam</a>
+    <p class="ch-small"><a href="exam-day.html">How the real exam works</a>: the adaptive format, the two-hour clock, cost, eligibility and retakes.</p>
+  </div>
+</section>
+<section class="ch-sec" aria-labelledby="chTools">
+  <div class="ch-sh"><div><h2 id="chTools">Tools for the <span>hands on part</span></h2><p>Anatomy, sounds, protocol flow, call simulations and the skill sheets.</p></div><a class="ch-go" href="tools.html">All tools &rarr;</a></div>
+  <ul class="ch-tools"><li><a class="ch-box ch-tool" href="body-map.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v7M8 10h8M10 21l2-6 2 6"/></svg></span><span><b>Body Map</b><small>A real 3D model. Turn the body, tap a region and get the structures, landmarks and findings.</small></span></a></li><li><a class="ch-box ch-tool" href="scenario-sim.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12h4l2-5 4 10 2-5h4"/></svg></span><span><b>Scenarios</b><small>Twenty-five branching calls, dispatch to handover. With Premium.</small></span></a></li><li><a class="ch-box ch-tool" href="skillsheets.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><span><b>Skill Sheets</b><small>The psychomotor stations and what fails them.</small></span></a></li><li><a class="ch-box ch-tool" href="sound-trainer.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span><span><b>Sound Trainer</b><small>Wheezes, crackles, stridor and heart sounds, by ear.</small></span></a></li><li><a class="ch-box ch-tool" href="flowcharts.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="4" y="3" width="7" height="5" rx="1"/><rect x="13" y="16" width="7" height="5" rx="1"/><path d="M7.5 8v5h9v3"/></svg></span><span><b>Flow Diagrams</b><small>Ten sequences: assessment, CPR, anaphylaxis, choking, triage.</small></span></a></li><li><a class="ch-box ch-tool" href="formulary.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="4" y="9" width="16" height="6" rx="3"/><path d="M12 9v6"/></svg></span><span><b>Drug Formulary</b><small>The seven core EMT drugs: doses, contraindications, and what stops you.</small></span></a></li></ul>
+</section>
+<!-- course-home:mid:end -->
 
   <div class="xsection" id="sample">
     <div class="sample-row">
@@ -333,13 +209,26 @@
     </div>
   </div>
 
-  <div class="xsection">
-    <div class="trust-row">
-      <div class="trust-pill">Free to start</div>
-      <div class="trust-pill">Works offline</div>
-      <div class="trust-pill">Private by default</div>
-    </div>
+  <!-- course-home:deal:start -->
+<section class="ch-sec ch-deal" aria-labelledby="chDeal">
+  <h2 id="chDeal" class="sr-only">Free and Premium</h2>
+  <div class="ch-box ch-plan">
+    <p class="ch-pill">Free</p>
+    <h3>Everything to start</h3>
+    <ul><li>Study notes, glossary, flowcharts, mnemonics, flashcards and the body map</li><li>15 practice or review questions a day, any topic</li><li>One full timed exam</li></ul>
+    <a class="ch-ghost" href="practice.html">Start practicing</a>
   </div>
+  <div class="ch-box ch-plan prem">
+    <p class="ch-pill">Premium &middot; NREMT-EMT</p>
+    <p class="ch-amt"><span data-founding-until="2027-01-31">$20.30 <s>$29</s></span><span data-founding-after="2027-01-31" hidden>$29</span></p>
+    <p class="ch-note"><span data-founding-until="2027-01-31">Founding price until 31 January 2027. </span>One payment for 90 days.</p>
+    <ul><li>The full 2,033-question bank, unlimited</li><li>Unlimited timed 100-question exams</li><li>Unlimited missed-question review and spaced repetition</li><li>Readiness score and domain breakdowns</li><li>The clinical scenario simulator</li></ul>
+    <a class="ch-cta gold" href="../premium.html#nremt">Get Premium for NREMT-EMT</a>
+    <p class="ch-sure">Never renews. Full refund within 7 days.</p>
+  </div>
+</section>
+<script>(function(){var n=Date.now(),d=document.getElementById('chDeal').parentNode;[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
+<!-- course-home:deal:end -->
 
   <div class="xsection">
     <footer style="margin-top:0">
@@ -383,6 +272,8 @@ document.addEventListener('DOMContentLoaded', function(){
   function render(){
     var XP = window.LevlXP;
     if(!XP) return; // nav.js hasn't loaded yet; the retry below covers it
+    // The round 2 home has no level card (docs/site-redesign.md): just the button and the cards.
+    if(!document.getElementById('heroProgress')){ renderPrimaryCta(); renderNow(); return; }
 
     // Level + XP
     var state = XP.loadXp();
@@ -491,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function(){
       text: due ? 'Each right answer pushes that question further out.' : 'Anything you miss comes back when you are about to forget it, not on a fixed date.',
       cta: { href: due ? 'review.html?start=spaced' : 'review.html', label: due ? 'Review now &rarr;' : 'Open review &rarr;' }, primary: false });
     if(due > 0){ var b = start.querySelector('a.btn-press'); if(b) b.className = 'btn-outline'; }
-    if(HP){
+    if(HP && goal){
       var st = HP.streak(), done = Math.min(st.todayCount, st.goal);
       goal.innerHTML = H.nowCard({ kicker: 'Today’s goal', title: done + ' of ' + st.goal, bar: Math.round(done / Math.max(1, st.goal) * 100),
         text: st.metToday ? 'Goal met for today. Your streak is safe.' : 'Questions, cards and tool steps from any LevlPrep subject count.',
@@ -537,13 +428,13 @@ document.addEventListener('DOMContentLoaded', function(){
     var P = window.LevlPremium;
     var spent = !!(P && P.launched && P.launched() && !P.has('nremt') && P.quota('nremt').left <= 0);
     if(due > 0 && spent){
-      cta.textContent = 'Read the notes \u2014 free questions reset tomorrow';
+      cta.textContent = 'Read the notes; free questions reset tomorrow';
       cta.href = 'study-notes.html';
       if(R) R.set('nremt', '/nremt/study-notes.html', 'Read the notes');
       return;
     }
     if(due > 0){
-      cta.textContent = 'Continue \u2014 ' + due + ' due for review';
+      cta.textContent = 'Continue: ' + due + ' due for review';
       cta.href = 'review.html?start=spaced';
       if(R) R.set('nremt', '/nremt/review.html?start=spaced', due + ' due for review');
       return;

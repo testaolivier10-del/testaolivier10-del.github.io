@@ -78,7 +78,7 @@ const RUNNER_SCREENS = `
     <div class="results-side">
       <div class="score-card">
         <div class="big" id="scoreBig">0/100</div>
-        <div class="sub" id="scoreSub">0% correct &mdash; completed in 0:00:00</div>
+        <div class="sub" id="scoreSub">0% correct, finished in 0:00:00</div>
         <div class="domain-breakdown" id="domainBreakdown"></div>
         <div id="readinessUpdate"></div>
       </div>
@@ -667,7 +667,7 @@ function renderReadiness(targetId, opts){
   // practice scores; nobody has checked it against real NREMT outcomes, so it
   // is named and explained as a readiness scale, never as odds of passing.
   const note = (r.lowConfidence
-    ? 'Based on very few attempts — take a few more full exams for a steadier number. '
+    ? 'Based on very few attempts. Take a few more full exams for a steadier number. '
     : '') + 'A 0–100 readiness scale from your own practice scores. It is not calibrated against real NREMT results and is not a chance of passing.';
 
   if(opts.compact){
@@ -711,7 +711,7 @@ function renderReadiness(targetId, opts){
    between questions is an interruption. */
 const DOMAIN_TOOL = {
   'Airway & Respiratory': { href:'sound-trainer.html', label:'Sound Trainer',
-    why:'wheezes, crackles and stridor by ear — the distinction these questions turn on' },
+    why:'wheezes, crackles and stridor by ear, the distinction these questions turn on' },
   'Cardiac & Medical': { href:'sound-trainer.html', label:'Sound Trainer',
     why:'heart sounds and murmur timing, plus the chest pain scenario' },
   'Trauma': { href:'scenario-sim.html', label:'Scenarios',
@@ -727,7 +727,7 @@ const DOMAIN_TOOL = {
 function toolForDomain(domain){
   const t = DOMAIN_TOOL[domain];
   if(!t) return '';
-  return `<a class="r-tool" href="${t.href}"><b>${t.label}</b> — ${t.why} &rarr;</a>`;
+  return `<a class="r-tool" href="${t.href}"><b>${t.label}</b>: ${t.why} &rarr;</a>`;
 }
 function renderProgressChart(){
   const history = loadHistory();
@@ -1112,7 +1112,7 @@ function maybeShowStudyReminder(){
   if(s.lastNotifiedDate === today) return;
   try {
     new Notification('Keep your streak going!', {
-      body: `You're at ${todayCount}/${st.goal} questions today — a quick session keeps it alive.`,
+      body: `You're at ${todayCount}/${st.goal} questions today. A quick session keeps it alive.`,
     });
   } catch(e) { /* some browsers restrict Notification outside a user gesture — ignore */ }
   s.lastNotifiedDate = today;
@@ -1127,7 +1127,7 @@ function renderStreakWidget(){
   const pct = Math.min(100, Math.round(st.todayCount / st.goal * 100));
 
   let nudge;
-  if(st.freezePending && !st.metToday) nudge = `<span class="streak-warn">A streak freeze is holding yesterday open — study today to keep it</span>`;
+  if(st.freezePending && !st.metToday) nudge = `<span class="streak-warn">A streak freeze is holding yesterday open. Study today to keep it.</span>`;
   else if(st.metToday) nudge = `<span class="streak-done">Today's goal complete ✓</span>`;
   // Any study today already keeps the streak; the goal is a separate target.
   // Saying "practice today to keep your streak" after they have was wrong.
@@ -1166,8 +1166,8 @@ function renderStreakWidget(){
           <label><input type="checkbox" id="remindersCb" ${s.remindersEnabled?'checked':''}> Remind me in-browser if I haven't hit my goal by</label>
           <select id="reminderHourSelect">${hourOptions}</select>
         </div>
-        <p class="streak-note">${st.freezes ? `You have ${st.freezes} streak freeze in hand — miss a single day and your streak survives it.` : `Study seven days in a row to earn a streak freeze, which covers one missed day.`} Miss several days and your daily goal eases off on its own until you're back.</p>
-        <p class="streak-note">Browser reminders only fire while this tab or browser is open — a static site like this can't message you once it's fully closed. Your browser will ask permission the first time you turn this on.</p>
+        <p class="streak-note">${st.freezes ? `You have ${st.freezes} streak freeze in hand: miss a single day and your streak survives it.` : `Study seven days in a row to earn a streak freeze, which covers one missed day.`} Miss several days and your daily goal eases off on its own until you're back.</p>
+        <p class="streak-note">Browser reminders only fire while this tab or browser is open. A static site like this can't message you once it's fully closed. Your browser will ask permission the first time you turn this on.</p>
       </div>
     </div>
   `;
@@ -1390,7 +1390,7 @@ function examStateSummary(state){
     const remaining = Math.max(0, TIME_LIMIT_MS - (Date.now() - state.startTime));
     extra = ` · ${formatDuration(remaining)} left`;
   }
-  return `${label} in progress — question ${state.current+1} of ${totalLen}, ${answeredN} answered${extra}`;
+  return `${label} in progress: question ${state.current+1} of ${totalLen}, ${answeredN} answered${extra}`;
 }
 function renderResumeCard(){
   const card = $id('resumeExamCard');
@@ -1712,7 +1712,7 @@ function renderWeakDomainsPanel(){
   if(weak.length === 0){ panel.innerHTML = ''; return; }
   panel.innerHTML = `
     <div class="weak-domains-panel">
-      <div class="weak-domains-title">Your weaker topic areas — worth a focused drill</div>
+      <div class="weak-domains-title">Your weaker topic areas, worth a focused drill</div>
       ${weak.map(r => `
         <div class="weak-domain-row">
           <span class="name">${r.domain}</span>
@@ -1893,20 +1893,20 @@ function beginQuiz(withTimer, resumeState){
   if(!withTimer){
     banner.style.display = 'block';
     if(mode === 'review'){
-      banner.textContent = 'Missed-question review — untimed practice mode';
+      banner.textContent = 'Missed-question review, untimed';
     } else if(mode === 'flagged'){
-      banner.textContent = 'Flagged-question review — untimed practice mode';
+      banner.textContent = 'Flagged-question review, untimed';
     } else if(mode === 'adaptive'){
-      banner.textContent = 'Weak-spot practice — untimed, retargets after every question';
+      banner.textContent = 'Weak-spot practice, untimed. It retargets after every question.';
     } else if(mode === 'spaced'){
-      banner.textContent = 'Spaced review — untimed, oldest/weakest items first';
+      banner.textContent = 'Spaced review, untimed. Oldest and weakest come first.';
     } else if(mode === 'single'){
-      banner.textContent = 'One question from search — answer it, or head back to the start';
+      banner.textContent = 'One question from search. Answer it, or head back to the start.';
     } else {
       // Named from the choice that built the drill, not from whichever
       // question happened to come first (which said "EMS Operations" for an
       // all-domains drill).
-      banner.textContent = `Domain drill: ${choiceLabel(selectedDomain)} — untimed, each answer checked as you go`;
+      banner.textContent = `Domain drill: ${choiceLabel(selectedDomain)}, untimed. Each answer is checked as you go.`;
     }
   } else {
     banner.style.display = 'none';
@@ -1960,10 +1960,10 @@ function updateTimer(){
   const paceSec = Math.round(avgPace/1000);
 
   if(paceDiff >= 0){
-    paceEl.textContent = `Pace: ${paceSec}s/question avg (target ${targetSec}s) — ahead of pace`;
+    paceEl.textContent = `Pace: ${paceSec}s/question avg (target ${targetSec}s), ahead of pace`;
     paceEl.className = 'pace-line ahead';
   } else {
-    paceEl.textContent = `Pace: ${paceSec}s/question avg (target ${targetSec}s) — behind pace`;
+    paceEl.textContent = `Pace: ${paceSec}s/question avg (target ${targetSec}s), behind pace`;
     paceEl.className = 'pace-line behind';
   }
 }
@@ -2263,7 +2263,7 @@ $id('nextBtn').addEventListener('click', () => {
   }
 });
 $id('exitBtn').addEventListener('click', () => {
-  if(confirm('Exit for now? Your progress is saved — you can resume this exact attempt from the start screen.')){
+  if(confirm('Exit for now? Your progress is saved. You can resume this exact attempt from the start screen.')){
     clearInterval(timerInterval);
     quizScreen.style.display = 'none';
     $id('timerBar').style.display = 'none';
@@ -2469,7 +2469,7 @@ function showResults(){
     tags: Object.values(domainStats).flatMap(s => Object.keys(s.topics).filter(t => s.topics[t].total >= 5)).map(t => 'nremt:' + t) }) : '';
 
   $id('scoreBig').textContent = `${score}/${activeIndices.length}`;
-  $id('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct — completed in ${formatDuration(elapsed)}`;
+  $id('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct, finished in ${formatDuration(elapsed)}`;
 
   // By exam domain, in the order the exam outline lists them; each domain's
   // rows underneath are the topic areas its questions came from.
@@ -2498,7 +2498,7 @@ function showResults(){
   const clearedNote = $id('clearedNote');
   if(mode === 'review' && missedSet.size === 0){
     clearedNote.style.display = 'block';
-    clearedNote.textContent = "You've cleared your entire missed-question queue. Nice work — take the full exam again to build a new one, or just keep it clean.";
+    clearedNote.textContent = "You've cleared your entire missed-question queue. Nice work. Take the full exam again to build a new one, or just keep it clean.";
   } else if(mode === 'review'){
     clearedNote.style.display = 'block';
     clearedNote.textContent = `${missedSet.size} question${missedSet.size===1?'':'s'} still in your review queue for next time.`;
@@ -2507,7 +2507,7 @@ function showResults(){
     clearedNote.style.display = 'block';
     clearedNote.textContent = stillFlagged === 0
       ? "You've unflagged everything in this review session. Flag any question again from its answer screen whenever something's worth coming back to."
-      : `${stillFlagged} question${stillFlagged===1?'':'s'} still flagged for review. Flags don't clear on their own — unflag one with its Flag button once you're confident on it.`;
+      : `${stillFlagged} question${stillFlagged===1?'':'s'} still flagged for review. Flags don't clear on their own. Unflag one with its Flag button once you're confident on it.`;
   } else {
     clearedNote.style.display = 'none';
   }

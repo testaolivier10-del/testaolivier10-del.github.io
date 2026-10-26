@@ -280,7 +280,7 @@ button.bio-fc-face:hover{border-color:var(--accent);}
 .bio-db-ring{width:48px;height:48px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(244,210,140,0.16);border:3px solid #F4D28C;color:#F4D28C;font:900 15px var(--font-ui);}
 .bio-db-level-track{height:10px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.15);overflow:hidden;margin-bottom:8px;}
 .bio-db-level-track i{display:block;height:100%;background:#F4D28C;border-radius:var(--radius-pill);}
-.bio-db-level-sub{display:block;margin:4px 0 0;font:700 12px/1.5 var(--font-ui);color:#DCEFEA;}
+.bio-db-level-sub{display:block;margin:4px 0 0;font:700 12px/1.5 var(--font-ui);color:#DCE5F1;}
 
 /* ---- search ---- */
 .bio-sr{max-width:820px;}

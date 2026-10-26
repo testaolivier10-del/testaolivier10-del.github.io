@@ -12,6 +12,8 @@
 
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
 import { Hub } from './lib/hub.mjs';
+import { courseBanner } from './lib/covers.mjs';
+import { homeHero, homeSteps, homeDomains, notesAndExams, homeTools, homeDeal } from './lib/course-home.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
@@ -30,6 +32,7 @@ import {
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { dashboardPage } from './lib/dashboard-page.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, 'anatomy-physiology');
@@ -739,121 +742,59 @@ function homePage() {
   const partCount = id => map.chapters.filter(c => c.part === id).length;
   const tools = PAGES.tools;
   const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${PART_COLORS[p.id][0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
+  const ANP_TOOL_ICON = {
+    'lab-practical': '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+    predict: '<path d="M7 17V7M4 10l3-3 3 3M17 7v10M14 14l3 3 3-3"/>',
+    'feedback-loops': '<path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4.5h-4.5"/>',
+    pathways: '<circle cx="5" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M6.5 7.5l4 8.5M13.5 16l4-8.5"/>',
+    graphs: '<path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/>',
+    calculators: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2"/>',
+    'word-roots': '<path d="M4 6h16M4 12h10M4 18h6"/>',
+  };
   const body = `
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell anp-home">
-  <header class="hero anp-home-hero">
-    <div>
-      <div class="eyebrow">${COURSE_NAME} ${BETA_PILL}</div>
-      <h1>Anatomy &amp; physiology that builds in order.</h1>
-      <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
-    </div>
-    <div class="anp-level-card" id="anpLevel" data-lv-zero>
-      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-      <div class="anp-level-top">
-        <div class="anp-level-chip"><div class="level-ring" id="anpLvRing">L1</div><div class="t"><b id="anpLvTitle">Cell Scout</b><span id="anpLvSub">Level 1 &middot; 0 XP</span></div></div>
-        <div class="streak-chip" id="anpStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="anpStreakN">0</span></div>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="anpXpFill" style="width:0%"></div></div>
-      <div class="xp-label" id="anpXpLabel">0 / 100 XP to Level 2</div>
-      <div class="anp-part-bars">${bars}</div>
-    </div>
-  </header>
-
-  <section class="xsection" aria-label="What to do now">
-    <div class="anp-now-row cx-now-row">
-      <div class="anp-now-card cx-now-card" id="anpStart">
-        <div class="k">Start here</div>
-        ${first ? `<h2>${esc(first.title)}</h2>
-        <p>Foundations &middot; ${esc(firstCh.title)}. Foundations is recommended, not required: nothing is locked.</p>
-        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any chapter</h2><p>Nothing is locked.</p>`}
-      </div>
-      <div class="anp-now-card cx-now-card" id="anpReview">
-        <div class="k">Review queue</div>
-        <h2>Missed questions come back</h2>
-        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
-        <a class="link-quiet" href="review.html">Open review &rarr;</a>
-      </div>
-      <div class="anp-now-card cx-now-card" id="anpGoal">
-        <div class="k">Today&rsquo;s goal</div>
-        <h2>A little every day</h2>
-        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.</p>
-        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="xsection" aria-labelledby="h-path">
-    <div class="section-head">
-      <h2 id="h-path">The path through the course</h2>
-      <p class="section-lede">Foundations first, then A&amp;P I and A&amp;P II. Each chapter leans on the last. Tap one to open it.</p>
-    </div>
-    <div class="anp-path-legend">${map.parts.map(p => `<span style="--c:${PART_COLORS[p.id][0]}"><i></i>${esc(p.title)} &middot; ${partCount(p.id)} chapters</span>`).join('')}</div>
-    ${homePath(depth)}
-  </section>
-
-  <section class="xsection anp-home-about" aria-label="About the course">
-    <div>
-      <h2 id="h-covers">What the course covers</h2>
-      <p>${map.chapters.length} chapters and ${map.topics.length} topics: the full scope of a two-semester college A&amp;P course, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, the HAPS learning outcomes and the TEAS&nbsp;7 A&amp;P content areas. Each topic has an interactive lesson and a full notes page.</p>
-      <p class="anp-small">${nb === map.topics.length ? `All ${nb} topics are built, each with its lesson, notes and questions.` : `So far, ${nb} of ${map.topics.length} topics are built. The rest are listed so you can see where everything fits; they arrive chapter by chapter.`}</p>
-    </div>
-    <div>
-      <h2 id="h-how">How to use it</h2>
-      <ol class="anp-sample-list anp-how">
-        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It opens with a patient, checks what you need first, then walks the mechanism one cause at a time.</span></li>
-        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
-        <li><span class="n" aria-hidden="true">3</span><span><b>Use the tools.</b> Predict what changes, build feedback loops, trace pathways, read graphs and practice for lab practicals.</span></li>
-        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows your weakest topics and core concepts, and what to do next.</span></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="xsection" aria-labelledby="h-tools">
-    <div class="anp-feature">
-      <div class="icon-circle" aria-hidden="true">
-        <svg viewBox="0 0 170 170" fill="none" focusable="false">
-          <path d="M85 128s-40-24-40-54a22 22 0 0 1 40-13 22 22 0 0 1 40 13c0 30-40 54-40 54z" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linejoin="round"/>
-          <path d="M58 80h14l7-14 10 28 7-14h16" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="132" cy="44" r="6" fill="#F2B9A9"/><path d="M127.5 48.5L112 64" stroke="#F2B9A9" stroke-width="3" stroke-linecap="round"/>
-          <path d="M38 138l10-10M38 128l10 10" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div>
-        <h2 id="h-tools">${HOME_WORDS[tools.length] || tools.length} tools that make you do the physiology.</h2>
-        <p>Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.</p>
-        <div class="anp-tool-chips">${tools.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}</a>`).join('')}</div>
-        <a class="btn-press alt" href="tools.html">See all tools</a>
-      </div>
-    </div>
-  </section>
+<main id="main" class="xshell anp-home ch-home" data-cover="anp">
+${homeHero({
+  key: 'anp', up: '../',
+  pill: `${COURSE_NAME} &middot; free to start ${BETA_PILL}`,
+  t1: 'Anatomy &amp; physiology', t2: 'that builds in order.',
+  lede: `${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time.`,
+  primary: first ? `<a class="ch-cta" id="heroPrimaryCta" href="lessons/${first.id}.html">Start the first lesson</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : '<a class="ch-cta" href="learn.html">See the chapters</a>',
+  secondary: '<a class="ch-ghost" href="learn.html">All chapters</a>',
+  trust: 'Every notes page is free, and so are the Foundations lessons. Nothing is locked behind an order: Foundations is recommended, not required.',
+  cardId: 'anpStart',
+  card: first ? `<div class="k">Start here</div><h2>${esc(first.title)}</h2><p>Foundations &middot; ${esc(firstCh.title)}. Foundations is recommended, not required: nothing is locked.</p><a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : '<div class="k">Start here</div><h2>Pick any chapter</h2><p>Nothing is locked.</p>',
+  panelExtra: '<div class="ch-mini" id="anpReview"><span class="k">Review queue</span><h2>Missed questions come back</h2><p>Anything you miss returns when you are about to forget it, not on a fixed date.</p><a href="review.html">Open review &rarr;</a></div>',
+})}
+${homeSteps([
+  first ? { h: 'Learn a topic from scratch', p: `Start with ${esc(first.title.toLowerCase())}. Each lesson opens with a patient, checks what you need first, then walks the mechanism one cause at a time.`, href: `lessons/${first.id}.html`, go: 'Start the first lesson' } : { h: 'Pick a chapter', p: 'Every notes page is free.', href: 'learn.html', go: 'See the chapters' },
+  { h: 'Answer as you go', p: 'Topic, system and core concept drills. Anything you miss goes into your review queue and comes back when you are about to forget it.', href: 'practice.html', go: 'Practice now' },
+  { h: 'Sit an exam', p: 'Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice.', href: 'exams.html', go: 'See the exams' },
+], 'New to the course? Three steps, in this order.')}
+${homeDomains({
+  id: 'chParts', a: 'Three parts,', b: 'in order',
+  lede: 'Foundations first, then A&amp;P I and A&amp;P II. Each chapter leans on the last.',
+  rows: (() => {
+    const rows = map.parts.map(p => { const chs = map.chapters.filter(c => c.part === p.id); const nt = map.topics.filter(t => chs.some(c => c.id === t.chapter)).length; return { p, chs, nt }; });
+    const most = Math.max(...rows.map(r => r.nt));
+    return rows.map(r => ({ h: esc(r.p.title), p: esc(r.chs.slice(0, 4).map(c => c.title).join(', ') + (r.chs.length > 4 ? ' and more' : '')), share: r.nt / most, weight: `<b>${r.chs.length} chapters</b> &middot; ${r.nt} topics`, href: `chapters/${r.chs[0].id}.html`, go: 'Open the first chapter' }));
+  })(),
+})}
+${notesAndExams({
+  notes: { eye: 'Learn &middot; free forever', a: 'Every topic,', b: 'in notes', p: `A free notes page for every topic, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, plus ${HOME_WORDS[map.coreConcepts.length] || map.coreConcepts.length} core concepts that explain every system.`,
+    chips: map.chapters.slice(0, 6).map(c => ({ t: c.title, href: `chapters/${c.id}.html` })), href: 'learn.html', go: 'Open the notes' },
+  exam: { eye: 'Exams', h: 'Quizzes, finals <span>and the TEAS</span>', p: 'Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice, every option explained.', href: 'exams.html', go: 'See the exams' },
+})}
+${homeTools({
+  a: 'Tools that make you', b: 'do the physiology', lede: 'Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.',
+  allHref: 'tools.html',
+  tools: tools.slice(0, 6).map(t => ({ href: `tools/${t.slug}.html`, name: t.name, desc: t.blurb, icon: ANP_TOOL_ICON[t.slug] })),
+})}
 ${homeSample(depth)}
-  <section class="xsection" aria-labelledby="h-go">
-    <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="anp-cards">
-      <li><a href="practice.html"><b>Practice</b><span>Topic, system and core concept drills, mixed review and your missed questions.</span></a></li>
-      <li><a href="review.html"><b>Review</b><span>Your spaced review queue.</span></a></li>
-      <li><a href="exams.html"><b>Exams</b><span>Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice.</span></a></li>
-      <li><a href="tools.html"><b>Tools</b><span>Lab practical, predict the change, feedback loops, pathways, graphs, calculators and word roots.</span></a></li>
-      <li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary and comparison tables.</span></a></li>
-      <li><a href="glossary.html"><b>Glossary</b><span>Every term, with word roots and where it is taught.</span></a></li>
-      <li><a href="concepts/index.html"><b>Core concepts</b><span>${HOME_WORDS[map.coreConcepts.length] || map.coreConcepts.length} ideas that explain every system.</span></a></li>
-      <li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by topic, system and core concept.</span></a></li>
-    </ul>
-  </section>
-
-  <section class="xsection" aria-label="About LevlPrep">
-    <div class="trust-row">
-      <div class="trust-pill">Every notes page free</div>
-      <div class="trust-pill">Foundations lessons free</div>
-      <div class="trust-pill">Progress saved on your device</div>
-      <div class="trust-pill">No subscription</div>
-    </div>
-    <p class="anp-disclaimer anp-home-legal">${esc(TEAS_DISCLAIMER)} OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
-  </section>
+${homeDeal({ key: 'anp', up: '../', freeCta: first ? `<a class="ch-ghost" href="lessons/${first.id}.html">Start the first lesson</a>` : '' })}
+  <p class="ch-disc anp-disclaimer anp-home-legal">${esc(TEAS_DISCLAIMER)} OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
 </main>
 ${footer(depth)}
 ${tail({ depth, section: 'home', extra: ['anp-home.js'] })}
@@ -915,6 +856,8 @@ ${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'd
   // left out of the sitemap (scripts/lib/app-pages.mjs).
   const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
   const page = head({ title: courseTitle(entry.title, AP_LABELS, FULL), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
+  if (entry.slug === 'dashboard') return dashboardPage(page);
   return study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
     `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
 }

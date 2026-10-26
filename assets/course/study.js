@@ -54,4 +54,51 @@
     try{ var s = window.HubProgress && window.HubProgress.streak(); return s ? s.current : 0; }catch(e){ return 0; }
   }
   window.LevlStudy = { rail: rail, stat: stat, empty: empty, actions: actions, free: free, streak: streak, esc: esc, plural: plural };
+
+  /* Site redesign round 2 (docs/site-redesign.md): the opener of Practice,
+     Review, Exams and Flashcards becomes a hero card with the course's own
+     cover art and one handwritten line, like the homepage. Decorative only:
+     the course is named by the eyebrow and the page by its h1. */
+  var COVER = { nremt: 'nremt', ochem: 'ochem', 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem',
+    physics: 'apphys', calculus: 'apcalc', statistics: 'apstat', 'environmental-science': 'apenv' };
+  var HAND = { practice: 'every answer comes with the why', review: 'what you miss comes back before you forget it',
+    exams: 'on the clock, like test day', flashcards: 'grade yourself honestly' };
+  var TONE = { practice: 'one at a time.', review: 'before you forget.',
+    exams: 'the full run.', flashcards: 'quick recall.' };
+  var me = document.currentScript && document.currentScript.src;
+  function hero(){
+    var head = document.querySelector('.page-head');
+    if (!head || head.classList.contains('cx-hero') || !document.querySelector('.cx-study')) return;
+    var m = location.pathname.match(/\/([a-z-]+)\/(practice|review|exams|flashcards)(?:\.html)?$/);
+    var key = m && COVER[m[1]];
+    if (!key || !me) return;
+    var root = me.replace(/assets\/course\/study\.js(?:[?#].*)?$/, '');
+    head.classList.add('cx-hero');
+    var text = document.createElement('div');
+    text.className = 'cx-hero-text';
+    while (head.firstChild) text.appendChild(head.firstChild);
+    var h1 = text.querySelector('h1');
+    /* Two-tone headline (mockups S03 to S09): the page name stays first, a
+       short second line in the course colour says what the page is for. */
+    if (h1 && !h1.querySelector('.tone') && TONE[m[2]]) {
+      var tone = document.createElement('span');
+      tone.className = 'tone br';
+      tone.textContent = TONE[m[2]];
+      h1.appendChild(document.createTextNode(' '));
+      h1.appendChild(tone);
+    }
+    if (h1) {
+      var hand = document.createElement('p');
+      hand.className = 'cx-hand';
+      hand.textContent = HAND[m[2]];
+      h1.insertAdjacentElement('afterend', hand);
+    }
+    var cover = document.createElement('div');
+    cover.className = 'cx-cover';
+    cover.setAttribute('aria-hidden', 'true');
+    cover.innerHTML = '<img src="' + esc(root + 'assets/covers/' + key + '.svg') + '" alt="" width="640" height="320" decoding="async">';
+    head.appendChild(text);
+    head.appendChild(cover);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hero); else hero();
 })();

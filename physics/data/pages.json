@@ -43,7 +43,7 @@
    "desc": "Physics free-response practice in the four exam types, each with a point-by-point rubric, a full-credit sample answer and a printable answer sheet.",
    "card": "All four free-response types, with rubrics and sample answers.",
    "script": "pages/frq.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "justify",
@@ -93,7 +93,7 @@
    "desc": "Physics trainers: free-body diagrams, motion graphs, energy bar charts, collisions, torque, oscillators, fluids and lab design, each followed by questions.",
    "card": "Trainers and drills, then the questions about what you did.",
    "script": "pages/tools.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "dashboard",

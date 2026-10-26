@@ -128,17 +128,65 @@ function courseSection(key) {
   const from = lowest(c).price;
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
-          <summary><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
+          <summary><img class="pp-cover" src="assets/covers/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
             <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
           </div>
           <ul class="pp-passes">${c.passes.map(passRow).join('')}</ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="${key}" data-premium-source="pricing-page">Get Premium for ${esc(c.name)}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
+          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
           ${c.guarantee ? `<p class="pp-guarantee" id="pass-or-extend">${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p>` : ''}${c.passes.some((p) => p.until) ? `
           <p>One pass, whenever you buy it: it lasts through ${esc(longDate(c.passes.find((p) => p.until).until))}, the end of the 2027 exam season.</p>` : ''}
         </details>`;
 }
+
+/* The price ticket at the top of premium.html (site redesign round 2): one
+   row per kind of pass, courses with the same pass and price sharing a row
+   ("Every AP® Course, through June 30, 2027"). With a founding offer it shows the
+   discount, and a plain version takes over the day the offer ends. */
+const SHORT_NAME = { nremt: 'NREMT', ochem: 'Organic Chemistry', anp: 'A&P' };
+function priceGroups() {
+  const groups = new Map();
+  for (const k of ORDER) {
+    for (const p of COURSES[k].passes) {
+      const lab = p.label.replace(/\s*\(.*\)$/, '');
+      const key = `${p.price}|${lab}`;
+      if (!groups.has(key)) groups.set(key, { price: p.price, label: lab, keys: [] });
+      groups.get(key).keys.push(k);
+    }
+  }
+  return [...groups.values()].map((g) => {
+    const ap = g.keys.every((k) => /^ap/.test(k));
+    const who = ap && g.keys.length > 1 ? 'Every AP® Course' : g.keys.map((k) => SHORT_NAME[k] || COURSES[k].name).join(' or ');
+    const lab = /^Through /.test(g.label) ? g.label.replace(/^Through/, 'through') : g.label.toLowerCase();
+    return { ...g, text: `${who}, ${lab}` };
+  });
+}
+function ticketHtml() {
+  const rows = priceGroups();
+  const plain = `<div class="sp-panel pp-ticket"${founding ? ` data-founding-after="${founding.until}" hidden` : ''}>
+      <p class="hand">one-time passes</p>
+      <p class="pp-big">$${LOW} <span>to $${HIGH}</span></p>
+      <p class="pp-till">one course, one payment, never renewed</p>
+      <ul class="pp-rows">${rows.map((r) => `<li><span>${esc(r.text)}</span><b>${money(r.price)}</b></li>`).join('')}</ul>
+    </div>`;
+  if (!founding) return plain;
+  return `<div class="sp-panel pp-ticket" data-founding-until="${founding.until}">
+      <p class="hand">founding price</p>
+      <p class="pp-big">${FOUNDING.off}% <span>off</span></p>
+      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}</p>
+      <ul class="pp-rows">${rows.map((r) => `<li><span>${esc(r.text)}</span><span><s>${money(r.price)}</s> <b>${money(foundingPrice(r.price))}</b></span></li>`).join('')}</ul>
+    </div>
+    ${plain}`;
+}
+
+const PP_ICON = {
+  renew: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>',
+  refund: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
+  notes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>',
+  keep: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>',
+};
 
 function premiumPage() {
   const title = 'Free vs Premium: Prices and Passes | LevlPrep';
@@ -184,39 +232,87 @@ function premiumPage() {
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <style>
+  /* Free vs Premium in the light channel look (docs/site-redesign.md,
+     round 2). Shared parts are in assets/site-pages.css. */
+  .pp-hero h1{font-size:clamp(40px,5.4vw,68px);}
+  .pp-ticket{position:relative;padding:30px 30px 26px;overflow:hidden;}
+  .pp-ticket::before,.pp-ticket::after{content:"";position:absolute;top:50%;width:28px;height:28px;border-radius:50%;background:var(--paper);transform:translateY(-50%);}
+  .pp-ticket::before{left:-14px;}.pp-ticket::after{right:-14px;}
+  .pp-ticket .hand{margin:0;}
+  .pp-big{font:900 clamp(56px,6vw,76px)/.9 var(--display);letter-spacing:-.05em;margin:6px 0 6px;color:var(--panel-ink);}
+  .pp-big span{color:var(--gold);}
+  .pp-till{color:var(--panel-muted);margin:0 0 18px;font-size:15.5px;}
+  .pp-rows{list-style:none;margin:0;padding:16px 0 0;border-top:2px dashed var(--panel-line);display:grid;gap:9px;font-size:15px;}
+  .pp-rows li{display:flex;justify-content:space-between;gap:12px;color:var(--panel-muted);}
+  .pp-rows b{color:var(--panel-ink);font-weight:900;white-space:nowrap;}
+  .pp-rows li > span:last-child{white-space:nowrap;}
+  .pp-rows s{opacity:.8;margin-right:4px;}
+  .pp-promise{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+  .pp-pr{padding:18px 18px 16px;display:grid;gap:6px;align-content:start;}
+  .pp-pr b{font:900 16.5px var(--font-ui);letter-spacing:-.01em;color:var(--ink);}
+  .pp-pr span{color:var(--muted);font-size:14.5px;line-height:1.45;}
+  .pp-pr svg{width:24px;height:24px;color:var(--accent);}
+  /* One <details> per course. */
   .pp p,.pp li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;}
   .pp strong{color:var(--ink);font-weight:800;}
-  .pp h2{font-size:19px;margin:0 0 10px;}
-  .pp h3{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 6px;}
-  .pp-course{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:0 20px;margin:0 0 12px;background:var(--white);}
-  .pp-course[open]{padding-bottom:18px;}
-  .pp-course{scroll-margin-top:calc(var(--chrome-row1-h) + 16px);}
-  .pp-course > summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 0;cursor:pointer;}
+  .pp h3{font:900 12.5px var(--font-ui);text-transform:uppercase;letter-spacing:.08em;color:var(--accent-text);margin:0 0 10px;}
+  .pp-list{display:grid;gap:12px;}
+  .pp-course{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:0 22px;scroll-margin-top:calc(var(--chrome-row1-h) + 16px);}
+  .pp-course[open]{padding-bottom:22px;}
+  .pp-course > summary{list-style:none;display:flex;align-items:center;gap:16px;padding:14px 0;cursor:pointer;}
   .pp-course > summary::-webkit-details-marker{display:none;}
-  .pp-course > summary::before{content:var(--disclose);font:900 20px/1 var(--font-ui);color:var(--muted);width:12px;flex-shrink:0;transition:transform .15s ease;}
-  .pp-course[open] > summary::before{transform:rotate(90deg);}
-  .pp-course > summary h2{margin:0;flex:1;min-width:0;}
-  .pp .pp-from{font:900 14px var(--font-ui);color:var(--muted);white-space:nowrap;}
+  .pp-course > summary::after{content:var(--disclose);font:900 24px/1 var(--font-ui);color:var(--accent);flex-shrink:0;width:16px;text-align:center;transition:transform .15s ease;}
+  .pp-course[open] > summary::after{transform:rotate(90deg);}
+  .pp-course > summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:12px;}
+  .pp-course > summary .pp-cover{width:120px;height:60px;object-fit:cover;object-position:right center;border-radius:10px;flex-shrink:0;background:var(--panel);}
+  .pp-course > summary h2{margin:0;flex:1;min-width:0;font:900 clamp(19px,2vw,23px)/1.2 var(--display);letter-spacing:-.025em;color:var(--ink);}
+  .pp .pp-from{font:900 17px var(--font-ui);color:var(--ink);white-space:nowrap;}
   .pp-course[open] .pp-from{visibility:hidden;}
-  @media (prefers-reduced-motion:reduce){.pp-course > summary::before{transition:none;}}
-  .pp-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .pp-cols ul{padding-left:18px;margin:0;}
-  .pp-cols li{margin-bottom:5px;}
-  .pp-passes{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:6px;}
-  .pp-passes li{display:flex;justify-content:space-between;gap:12px;border-top:var(--bw) solid var(--line);padding-top:8px;margin:0;max-width:none;}
+  .pp-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  .pp-cols > div{padding:20px 22px;}
+  .pp-cols > div:last-child{background-color:var(--panel);background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;}
+  .pp-cols > div:last-child h3{color:var(--gold);}
+  .pp-cols > div:last-child li{color:var(--panel-ink);}
+  .pp-cols ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+  .pp-cols li{position:relative;padding-left:26px;margin:0;}
+  .pp-cols li::before{content:"";position:absolute;left:3px;top:8px;width:11px;height:6px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg);}
+  .pp-cols > div:last-child li::before{border-color:var(--teal-hi);}
+  .pp-passes{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:0;}
+  .pp-passes li{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;margin:0;max-width:none;}
+  .pp-passes li:first-child{border-top:0;}
   .pp-label{color:var(--ink);font-weight:800;}
-  .pp-price b{color:var(--ink);font-weight:900;}
-  .pp-actions{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:14px 0 0;}
-  .pp-guarantee{background:var(--tint-accent);border-radius:var(--radius);padding:12px 14px;margin:14px 0 0;}
-  .pp ul.pp-rules{padding-left:20px;}
-  @media (max-width:560px){.pp-cols{grid-template-columns:1fr;}}
+  .pp-price b{color:var(--ink);font-weight:900;font-size:17px;}
+  .pp-price small{font-weight:700;}
+  .pp-actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:14px 0 0;}
+  .pp .pp-actions .btn-press{background:var(--gold);color:var(--gold-ink);box-shadow:none;font:900 16px var(--font-ui);padding:13px 20px;border-radius:12px;}
+  .pp-actions a{color:var(--accent-text);font-weight:800;}
+  .pp .pp-sure{margin:8px 0 0;font-size:13.5px;}
+  .pp-guarantee{background:var(--tint-accent);border-radius:14px;padding:12px 14px;margin:14px 0 0;}
+  .pp-guarantee a{color:var(--accent-text);}
+  .pp-rules p{color:var(--muted);margin:0 0 12px;max-width:40em;}
+  .pp-rules a{color:var(--accent-text);}
+  @media (prefers-reduced-motion:reduce){.pp-course > summary::after{transition:none;}}
+  @media (max-width:900px){.pp-promise{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}}
+  @media (max-width:560px){
+    .pp-promise{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;}
+    .pp-pr{padding:14px;}
+    .pp-pr span{font-size:13.5px;}
+    .pp-cols{grid-template-columns:minmax(0,1fr);}
+    .pp-course{padding:0 14px;}
+    .pp-course > summary{gap:12px;}
+    .pp-course > summary .pp-cover{width:52px;height:52px;}
+    .pp-course > summary h2{font-size:18px;overflow-wrap:anywhere;hyphens:auto;}
+    .pp .pp-from{font-size:15px;}
+    .pp-ticket{padding:24px 22px 22px;}
+  }
 </style>
 <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
 </script>
 </head>
-<body>
+<body class="sp-page">
 <!-- The shared site header (site-chrome.js renders it from data-site-header),
      with its own skip link like the other pages outside a course. -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -226,40 +322,58 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">Free vs Premium</div>
-    <h1>What&rsquo;s free, and what Premium adds.</h1>
-    <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $${LOW} to $${HIGH}, with no subscription and a 7-day refund.${founding ? ` <span data-founding-until="${founding.until}">${FOUNDING.off}% off until ${longDate(founding.until)}.</span>` : ''}</p>
-  </div>
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <section class="sp-hero pp-hero" aria-labelledby="ppTitle">
+    <div>
+      <span class="sp-pill">Free vs Premium</span>
+      <h1 id="ppTitle">What&rsquo;s free,<span>and what Premium adds.</span></h1>
+      <p class="hand">one payment, never a subscription</p>
+      <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $${LOW} to $${HIGH}, with no subscription and a 7-day refund.${founding ? ` <span data-founding-until="${founding.until}">${FOUNDING.off}% off until ${longDate(founding.until)}.</span>` : ''}</p>
+      <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a><a class="btn-ghost" href="/#subjects">Start free</a></div>
+    </div>
+    ${ticketHtml()}
+  </section>
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Courses</div>
-      <div class="xcontent narrow pp">
+  <section class="pp-promise sp-sec" aria-label="What every pass promises">
+    <div class="sp-box pp-pr">${PP_ICON.renew}<b>Never renews</b><span>One payment for one course. It ends on its own, with nothing to cancel.</span></div>
+    <div class="sp-box pp-pr">${PP_ICON.refund}<b>Refund it yourself</b><span>In full, from your Account page, within 7 days of buying.</span></div>
+    <div class="sp-box pp-pr">${PP_ICON.notes}<b>Notes free forever</b><span>Every notes and textbook page, in every course, with no ads.</span></div>
+    <div class="sp-box pp-pr">${PP_ICON.keep}<b>Progress stays</b><span>When a pass ends, your progress, XP and streaks stay. Only the Premium parts lock.</span></div>
+  </section>
+
+  <section class="sp-sec" id="courses" aria-labelledby="ppCourses">
+    <div class="sp-sh"><h2 class="sp-h2" id="ppCourses">What you get in <span>each course</span></h2><p>Open a course to compare free and Premium side by side.</p></div>
+    <div class="pp pp-list">
 ${ORDER.map(courseSection).join('\n')}
-      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">The rules</div>
-      <div class="xcontent narrow pp">
-        <p>${esc(FREE_SENTENCE)}</p>
-        <p>A pass costs $${LOW} to $${HIGH}, about what ${tutorSpan} with a private tutor costs (<a href="${TUTOR_HOUR.source}" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $${TUTOR_HOUR.rate} an hour, ${TUTOR_HOUR.checked}).</p>
-        <ul class="pp-rules">
-          <li><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</li>
-          <li><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</li>
-          <li><strong>Refunds:</strong> refund a pass yourself, in full, from your <a href="account.html">Account</a> page within 7 days of buying it. Once per account and email address.</li>
-          <li><strong>When a pass ends</strong>, your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</li>
-        </ul>
-        <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
-        <p><strong>Under 18?</strong> You need a parent or guardian&rsquo;s permission, and they accept the <a href="terms.html#premium">terms</a> for you; under 16, they should make the purchase.</p>
-      </div>
+  <section class="sp-sec" aria-labelledby="ppHow">
+    <div class="sp-sh"><h2 class="sp-h2" id="ppHow">How a pass <span>works</span></h2></div>
+    <ol class="sp-steps" style="list-style:none;margin:0;padding:0">
+      <li class="sp-box sp-step"><span class="n" aria-hidden="true">1</span><h3>Start free</h3><p>Everything free works without an account: the notes, and each course&rsquo;s free practice.</p></li>
+      <li class="sp-box sp-step"><span class="n" aria-hidden="true">2</span><h3>Buy one course</h3><p>A free account holds the pass, so it follows you to every device.</p></li>
+      <li class="sp-box sp-step"><span class="n" aria-hidden="true">3</span><h3>Study without limits</h3><p>Everything Premium adds, until the pass ends. Buying another adds its days after this one.</p></li>
+      <li class="sp-box sp-step"><span class="n" aria-hidden="true">4</span><h3>It ends on its own</h3><p>No renewal. Your progress stays and the free parts keep working.</p></li>
+    </ol>
+  </section>
+
+  <section class="sp-faq sp-sec" aria-labelledby="ppRules">
+    <div class="sp-faq__intro">
+      <h2 class="sp-h2" id="ppRules">The rules, <span>in plain words</span></h2>
+      <p class="hand">no fine print</p>
+      <p>${esc(FREE_SENTENCE)}</p>
+      <p>A pass costs $${LOW} to $${HIGH}, about what ${tutorSpan} with a private tutor costs (<a href="${TUTOR_HOUR.source}" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $${TUTOR_HOUR.rate} an hour, ${TUTOR_HOUR.checked}).</p>
+      <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
     </div>
-  </div>
-
+    <div class="sp-qa pp-rules">
+      <details class="sp-box" open><summary>Is this a subscription?</summary><p><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</p></details>
+      <details class="sp-box"><summary>Do I need an account?</summary><p><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</p></details>
+      <details class="sp-box"><summary>How do refunds work?</summary><p>Refund a pass yourself, in full, from your <a href="account.html">Account</a> page within 7 days of buying it. Once per account and email address.</p></details>
+      <details class="sp-box"><summary>What happens when a pass ends?</summary><p>Your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${DATED.length ? ` A pass with an end date (${esc(listWords(DATED.map((k) => COURSES[k].name)))}) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.` : ''}</p></details>
+      <details class="sp-box"><summary>I&rsquo;m under 18. Can I buy one?</summary><p>You need a parent or guardian&rsquo;s permission, and they accept the <a href="terms.html#premium">terms</a> for you; under 16, they should make the purchase.</p></details>
+    </div>
+  </section>
 </div>
 <div class="xshell narrow">
   <footer>
@@ -321,35 +435,34 @@ put('premium.html', premiumPage());
    FREE_SENTENCE, so the cards cannot drift from what every other page says. */
 function hubPricing() {
   const low = Math.min(...ORDER.map((k) => lowest(COURSES[k]).price));
-  const price = founding
-    ? `From ${money(low)}, one-time<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
-    : `From ${money(low)}, one-time`;
   const cap = (t) => t[0].toUpperCase() + t.slice(1);
   const [notes, lessons, adds] = FREE_SENTENCE.replace(/\.$/, '').split('; ');
   if (!adds || !/^Premium adds /.test(adds)) throw new Error('build-pricing: FREE_SENTENCE no longer reads "…; …; Premium adds …"');
   const premium = adds.replace(/^Premium adds /, '').split(/, | and /);
   const li = (t) => `<li>${esc(cap(t))}</li>`;
-  return `  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Free and Premium</div>
-      <div class="xcontent">
-        <div class="hub-plans">
-          <div class="hub-plan">
-            <h3>Free</h3>
-            <p class="hub-plan__price">Every course, free to start</p>
-            <ul>${li(notes)}${li(lessons)}</ul>
-          </div>
-          <div class="hub-plan hub-plan--premium">
-            <h3>Premium</h3>
-            <p class="hub-plan__price">${price}</p>
-            <ul>${premium.map(li).join('')}</ul>
-            <p class="hub-plan__note">One pass per course. No subscription, and a 7-day refund.</p>
-          </div>
-        </div>
-        <a class="featured-cta hub-plans__more" href="premium.html">What&rsquo;s free in each course, and the prices &rarr;</a>
-      </div>
+  /* Free and Premium side by side (site redesign 2026-10): what is free first,
+     then the price with the risk-reversal line right under its button, where a
+     guarantee line has been measured to help most. */
+  const amount = founding
+    ? `From ${money(low)}<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
+    : `From ${money(low)}`;
+  return `  <section class="home-deal" aria-label="Free and Premium">
+    <div class="plan">
+      <span class="pill">Free</span>
+      <h3>Start now, keep it free</h3>
+      <p class="plan__note">Start in any course, with no card.</p>
+      <ul>${li(notes)}${li(lessons)}<li>Your level, streak and weak topics</li><li>No ads</li></ul>
+      <a class="btn-ghost" href="nremt/practice.html">Start a free practice test</a>
     </div>
-  </div>
+    <div class="plan plan--premium">
+      <span class="pill">Premium</span>
+      <p class="plan__amt">${amount}</p>
+      <p class="plan__note">One-time pass per course. No subscription.</p>
+      <ul>${premium.map(li).join('')}</ul>
+      <a class="btn-gold" href="premium.html">See prices for your course</a>
+      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
+    </div>
+  </section>
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>`;
 }
 
@@ -375,17 +488,13 @@ const FAQ = [
 ];
 
 function hubFaq() {
-  return `  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Questions</div>
-      <div class="xcontent">
-        <div class="hub-faq">
-${FAQ.map(([q, a], i) => `          <h2>${esc(q)}</h2>
-          <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
-        </div>
-      </div>
+  return `  <section class="home-faq" aria-labelledby="home-faq-h">
+    <h2 id="home-faq-h">Questions</h2>
+    <div class="hub-faq">
+${FAQ.map(([q, a], i) => `      <h3>${esc(q)}</h3>
+      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
     </div>
-  </div>`;
+  </section>`;
 }
 
 function hubLd() {
@@ -421,143 +530,45 @@ function hubLd() {
   return `<script type="application/ld+json">\n${JSON.stringify(ld).replace(/<\//g, '<\\/')}\n</script>`;
 }
 
-/* AP® Biology's hub card, once a unit is out. What it says is counted from
-   what is published (scripts/build-apbio.mjs), never typed. "N published
-   topics", not "N topics": check-site reads "N topics" on the hub as the
-   ochem curriculum's count. */
+/* The homepage course cards (site redesign 2026-10, docs/site-redesign.md):
+   each course's own cover art (assets/covers/<key>.svg, never a video
+   thumbnail) with its two-tone title and handwritten line, then the name, a
+   badge and one line. The three complete courses are typed in index.html in
+   the same shape; the AP® cards come from here, counted from what is
+   published, never typed. "N published topics", not "N topics": check-site
+   reads "N topics" on the hub as the ochem curriculum's count. */
+export function courseCard({ href, tint, cover, t1, t2, hand, name, tag, line }) {
+  return `        <a class="ccard" href="${href}" data-tint="${tint}">
+          <span class="cover" data-cover="${cover}"><img src="assets/covers/${cover}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>${t1}<span>${t2}</span></b><em>${hand}</em></span></span>
+          <span class="cmeta"><span class="cname">${name}</span><span class="tag${tag === 'Beta' ? ' tag--beta' : ''}">${tag}</span></span>
+          <span class="cdesc">${line}</span>
+        </a>`;
+}
+const published = (all, topics, rest) => (all ? `All ${fmt(topics)} published topics, ${rest}.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, ${rest}.`);
+const apCard = (o) => courseCard({ tag: 'Beta', t1: 'AP®', ...o });
 function hubBioCard() {
-  const topics = N.apbioTopics;
-  return `        <a class="featured-card" href="bio/" data-tint="bio">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Biology</p>
-            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${BIO_ALL ? `All ${fmt(topics)} published topics, from the chemistry of life to ecology.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Stimulus sets</span>
-            <span>Statistics skills</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'bio/', tint: 'bio', cover: 'apbio', t2: 'Biology', hand: 'every unit, data questions', name: 'AP® Biology',
+    line: published(BIO_ALL, N.apbioTopics, 'with data-heavy practice like the real exam') });
 }
-
-/* AP® Chemistry's hub card, the same way: counted, never typed. */
 function hubChemCard() {
-  const topics = N.apchemTopics;
-  return `        <a class="featured-card" href="chem/" data-tint="apchem">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3"/><path d="M7.5 3h9M6.7 14h10.6"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Chemistry</p>
-            <p class="featured-desc">Built on the 2024 course framework, in its order: lessons from scratch at the particle level, practice that checks units and significant figures, and justification training. ${CHEM_ALL ? `All ${fmt(topics)} published topics, from the math you need to electrochemistry.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Particle diagrams</span>
-            <span>Units and sig figs</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'chem/', tint: 'apchem', cover: 'apchem', t2: 'Chemistry', hand: 'units and sig figs, checked', name: 'AP® Chemistry',
+    line: published(CHEM_ALL, N.apchemTopics, 'with units and significant figures checked') });
 }
-
-/* AP® Physics 1's hub card, the same way: the pendulum icon (docs/apphys-spec.md
-   decision 3), counted, never typed. */
 function hubPhysCard() {
-  const topics = N.apphysTopics;
-  return `        <a class="featured-card" href="physics/" data-tint="apphys">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16"/><path d="M12 3v11.5"/><circle cx="12" cy="17.5" r="3"/><path d="M6.5 15.5a7 7 0 0 0 11 0" stroke-dasharray="1.5 2.5"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Physics 1</p>
-            <p class="featured-desc">Built on the 2024-25 course framework, in its order: lessons from scratch, free-body diagrams graded force by force, and trainers that are also tests. ${PHYS_ALL ? `All ${fmt(topics)} published topics, from the math you need to fluids.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Free-body diagrams</span>
-            <span>Lab design</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'physics/', tint: 'apphys', cover: 'apphys', t2: 'Physics 1', hand: 'force by force', name: 'AP® Physics 1',
+    line: published(PHYS_ALL, N.apphysTopics, 'with free-body diagrams graded force by force') });
 }
-
-/* AP® Calculus AB's hub card, the same way: the integral sign over a curve
-   (docs/apcalc-spec.md decision 6), counted, never typed. */
 function hubCalcCard() {
-  const topics = N.apcalcTopics;
-  return `        <a class="featured-card" href="calculus/" data-tint="apcalc">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Calculus AB</p>
-            <p class="featured-desc">Built on the course framework, in its order: lessons from scratch, answers you type as expressions and are graded by value, and calculator and no-calculator practice as the exam splits it. ${CALC_ALL ? `All ${fmt(topics)} published topics, from the math you need to volumes.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Tangent tracer</span>
-            <span>Typed answers</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'calculus/', tint: 'apcalc', cover: 'apcalc', t2: 'Calculus AB', hand: 'typed like real math', name: 'AP® Calculus AB',
+    line: published(CALC_ALL, N.apcalcTopics, 'with answers you type as expressions') });
 }
-
-/* AP® Statistics's hub card, the same way: a bell curve over histogram bars
-   in plum (docs/apstat-spec.md decision 5), counted, never typed. */
 function hubStatCard() {
-  const topics = N.apstatTopics;
-  return `        <a class="featured-card" href="statistics/" data-tint="apstat">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20v-4M10 20v-8M14 20v-8M17 20v-4" stroke-opacity=".55"/><path d="M3 18c4 0 5-13 9-13s5 13 9 13"/><path d="M2 21h20"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Statistics</p>
-            <p class="featured-desc">Built on the revised course framework for the May 2027 exam: lessons from scratch, numbers from a table or a calculator both accepted, and conclusions checked part by part in context. ${STAT_ALL ? `All ${fmt(topics)} published topics, from the math you need to regression.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Sampling simulator</span>
-            <span>Conclusions in context</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'statistics/', tint: 'apstat', cover: 'apstat', t2: 'Statistics', hand: 'conclusions in context', name: 'AP® Statistics',
+    line: published(STAT_ALL, N.apstatTopics, 'with conclusions checked in context') });
 }
-
-/* AP® Environmental Science's hub card, the same way: a leaf over a globe
-   line in olive (docs/apenv-spec.md decision 5), counted, never typed. */
 function hubEnvCard() {
-  const topics = N.apenvTopics;
-  return `        <a class="featured-card" href="environmental-science/" data-tint="apenv">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke-opacity=".55"/><path d="M4 13h16" stroke-opacity=".55"/><path d="M12 3c4 2 6 5 6 9-4 0-7-2-8-6"/><path d="M12 3c-1 4 0 7 3 9"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Environmental Science</p>
-            <p class="featured-desc">Built on the course framework for the May 2027 exam: lessons from scratch, every calculation drilled with its setup and units, and written answers made specific enough to score. ${ENV_ALL ? `All ${fmt(topics)} published topics, from ecosystems to global change.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Calculation studio</span>
-            <span>Specific answers</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'environmental-science/', tint: 'apenv', cover: 'apenv', t1: 'AP® Environmental', t2: 'Science', hand: 'every calculation, with units', name: 'AP® Environmental Science',
+    line: published(ENV_ALL, N.apenvTopics, 'with every calculation drilled with units') });
 }
 
 {
@@ -575,8 +586,8 @@ function hubEnvCard() {
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
   for (const [re, txt] of [
-    [/(<div class="eyebrow">)\w+ courses( &middot; free to start<\/div>)/, `$1${word} courses$2`],
-    [/(<a class="featured-cta hero-more" href="#subjects">See all )\w+( courses &rarr;<\/a>)/, `$1${word.toLowerCase()}$2`],
+    [/(<div class="eyebrow">Free to start &middot; )\w+( courses &middot; notes free forever<\/div>)/, `$1${word.toLowerCase()}$2`],
+    [/(<a class="btn-ghost hero-more" href="#subjects">See all )\w+( courses<\/a>)/, `$1${word.toLowerCase()}$2`],
   ]) {
     if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
     src = src.replace(re, txt);
@@ -703,39 +714,39 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
 {
   const rel = '404.html';
   const src = readFileSync(join(ROOT, rel), 'utf8');
-  const card = `    <a class="card nf-card" href="/ochem/">
-      <h2>Organic Chemistry &rarr;</h2>
+  const card = `    <a class="card nf-card" href="/ochem/"><img class="sp-cv" src="/assets/covers/ochem.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>Organic Chemistry</h2>
       <p>${N.ochemChapters} chapters and ${N.ochemTopics} topics, ${N.ochemMechanisms} mechanisms you perform yourself, and ${N.ochemTools} tools.</p>
     </a>`;
   let out = between(src, '<!-- nf-ochem:start -->', '<!-- nf-ochem:end -->', card, rel);
-  const bio = `    <a class="card nf-card" href="/bio/">
-      <h2>AP® Biology (Beta) &rarr;</h2>
-      <p>${BIO_ALL ? `All ${fmt(N.apbioTopics)} published topics` : `${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far`}, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+  const bio = `    <a class="card nf-card" href="/bio/"><img class="sp-cv" src="/assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Biology (Beta)</h2>
+      <p>${BIO_ALL ? `All ${fmt(N.apbioTopics)} published topics` : `${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far`}, in the order of the 2025 course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
-  const chem = `    <a class="card nf-card" href="/chem/">
-      <h2>AP® Chemistry (Beta) &rarr;</h2>
-      <p>${CHEM_ALL ? `All ${fmt(N.apchemTopics)} published topics` : `${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far`}, in the order of the 2024 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+  const chem = `    <a class="card nf-card" href="/chem/"><img class="sp-cv" src="/assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Chemistry (Beta)</h2>
+      <p>${CHEM_ALL ? `All ${fmt(N.apchemTopics)} published topics` : `${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far`}, in the order of the 2024 course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-chem:start -->', '<!-- nf-chem:end -->', CHEM ? chem : '', rel);
-  const phys = `    <a class="card nf-card" href="/physics/">
-      <h2>AP® Physics 1 (Beta) &rarr;</h2>
-      <p>${PHYS_ALL ? `All ${fmt(N.apphysTopics)} published topics` : `${fmt(N.apphysTopics)} published topic${N.apphysTopics === 1 ? '' : 's'} so far`}, in the order of the 2024-25 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+  const phys = `    <a class="card nf-card" href="/physics/"><img class="sp-cv" src="/assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Physics 1 (Beta)</h2>
+      <p>${PHYS_ALL ? `All ${fmt(N.apphysTopics)} published topics` : `${fmt(N.apphysTopics)} published topic${N.apphysTopics === 1 ? '' : 's'} so far`}, in the order of the 2024-25 course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-phys:start -->', '<!-- nf-phys:end -->', PHYS ? phys : '', rel);
-  const calc = `    <a class="card nf-card" href="/calculus/">
-      <h2>AP® Calculus AB (Beta) &rarr;</h2>
-      <p>${CALC_ALL ? `All ${fmt(N.apcalcTopics)} published topics` : `${fmt(N.apcalcTopics)} published topic${N.apcalcTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+  const calc = `    <a class="card nf-card" href="/calculus/"><img class="sp-cv" src="/assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Calculus AB (Beta)</h2>
+      <p>${CALC_ALL ? `All ${fmt(N.apcalcTopics)} published topics` : `${fmt(N.apcalcTopics)} published topic${N.apcalcTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-calc:start -->', '<!-- nf-calc:end -->', CALC ? calc : '', rel);
-  const stat = `    <a class="card nf-card" href="/statistics/">
-      <h2>AP® Statistics (Beta) &rarr;</h2>
-      <p>${STAT_ALL ? `All ${fmt(N.apstatTopics)} published topics` : `${fmt(N.apstatTopics)} published topic${N.apstatTopics === 1 ? '' : 's'} so far`}, in the order of the revised course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+  const stat = `    <a class="card nf-card" href="/statistics/"><img class="sp-cv" src="/assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Statistics (Beta)</h2>
+      <p>${STAT_ALL ? `All ${fmt(N.apstatTopics)} published topics` : `${fmt(N.apstatTopics)} published topic${N.apstatTopics === 1 ? '' : 's'} so far`}, in the order of the revised course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-stat:start -->', '<!-- nf-stat:end -->', STAT ? stat : '', rel);
-  const env = `    <a class="card nf-card" href="/environmental-science/">
-      <h2>AP® Environmental Science (Beta) &rarr;</h2>
-      <p>${ENV_ALL ? `All ${fmt(N.apenvTopics)} published topics` : `${fmt(N.apenvTopics)} published topic${N.apenvTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+  const env = `    <a class="card nf-card" href="/environmental-science/"><img class="sp-cv" src="/assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Environmental Science (Beta)</h2>
+      <p>${ENV_ALL ? `All ${fmt(N.apenvTopics)} published topics` : `${fmt(N.apenvTopics)} published topic${N.apenvTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-env:start -->', '<!-- nf-env:end -->', ENV ? env : '', rel);
   put(rel, out);

@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <style>
   .log h2{font-size:19px;margin:30px 0 8px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
   .log h2:first-of-type{margin-top:6px;}
@@ -38,7 +39,7 @@
   :root[data-theme="dark"] .log .tag.anp{background:rgba(236,132,108,0.18);color:#F2B9A9;}
 </style>
 </head>
-<body>
+<body class="sp-page">
 <a class="skip-link" href="#main">Skip to content</a>
 <header id="site-header" data-site-header>
   <div class="site-header__inner">
@@ -46,17 +47,36 @@
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">What&rsquo;s new</div>
-    <h1>What changed, and when.</h1>
-    <p class="lede">Newest first. Content changes are listed alongside the site ones, because a corrected question matters more to you than a faster page.</p>
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <div class="sp-hero sp-hero--text">
+    <div>
+    <span class="sp-pill">What&rsquo;s new</span>
+    <h1>What changed, <span>and when.</span></h1>
+    <p class="hand">newest first, corrections included</p>
+    <p class="lede">Content changes are listed alongside the site ones, because a corrected question matters more to you than a faster page.</p>
+    </div>
+    <p class="sp-aside">Found something wrong?<br><a href="mailto:hello@levlprep.com">hello@levlprep.com</a></p>
   </div>
 
   <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Log</div>
-      <div class="xcontent narrow log">
+    <div class="sp-doc">
+      <nav class="sp-toc" aria-label="On this page" data-months data-label="Months"></nav>
+      <div class="sp-prose sp-log log">
+        <h2>A new look for every page <span class="date">26 October 2026</span></h2>
+        <ul>
+          <li><strong>Every course page</strong> now matches the home page: the course&rsquo;s cover art, bigger headlines and a calmer, lighter layout, in light and dark mode.</li>
+          <li><strong>Course homes</strong> start with three steps, then practice by domain or unit with real question counts, notes, exams and tools in one place.</li>
+          <li><strong>Practice, exams, review and flashcards</strong> use one clear question card with bigger answer buttons, and the progress page shows where you stand on one screen.</li>
+          <li><strong>Notes, glossary, pricing, search and account</strong> pages got the same look, with a contents list on long pages.</li>
+        </ul>
+
+        <h2>A new look for the home page <span class="date">25 October 2026</span></h2>
+        <ul>
+          <li><strong>The same look as our videos</strong>, kept light and calm: every course now has its own cover art, drawn for the site rather than borrowed from a video.</li>
+          <li><strong>Try a question first</strong>: the home page opens with an NREMT question you can answer right there, with the explanation, before you pick a course.</li>
+          <li><strong>On a phone</strong> the courses are a compact list, and &ldquo;Start a free practice test&rdquo; stays at the bottom of the screen.</li>
+        </ul>
+
         <h2>New course: AP&reg; Environmental Science (Beta) <span class="date">20 October 2026</span></h2>
         <ul>
           <li><strong>All nine units are out</strong>, from ecosystems to global change, in the order of the course framework, plus a &ldquo;Math you need&rdquo; chapter (scientific notation and metric prefixes, rates and per-capita values, unit conversions, percents and percent change, doubling time and the rule of 70) placed just before each skill is first used. Every topic has a lesson that teaches from scratch, a free notes page and practice with an explanation for every option. Units 1 and 2 and the math lessons are free. <a href="environmental-science/">Start the course</a>.</li>
@@ -442,6 +462,7 @@
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
 <script src="assets/site-chrome.js" defer></script>
+<script src="assets/site-toc.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   if(window.HubProgress) window.HubProgress.mount('hub');

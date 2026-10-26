@@ -32,6 +32,9 @@
    Nothing it writes is edited by hand. Every served path avoids the token
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
+import { courseBanner } from './lib/covers.mjs';
+import { apHomeMain } from './lib/course-home.mjs';
+import { MCQ_PARTS, FRQ_PARTS, FRQ_TOTAL } from './lib/apenv-exams.mjs';
 import { join, dirname } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { Hub } from './lib/hub.mjs';
@@ -47,6 +50,7 @@ import {
 } from './lib/apenv-build.mjs';
 import { entryPages } from './lib/apenv-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { dashboardPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -651,114 +655,16 @@ ${tail({ depth, section: 'learn', extra: ['env-toc.js', 'env-book.js'] })}
     const partCount = id => map.chapters.filter(c => c.part === id).length;
     const partTopics = id => topics.filter(t => chapterById(t.chapter).part === id).length;
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
+        const HOME = {
+      key: COURSE_KEY, prefix: 'env', mainClass: 'env-home', courseHtml: COURSE_HTML, beta: BETA_PILL,
+      t2: `${esc(IDENTITY.headline)}`, lede: `Each topic taught from scratch for the May 2027 exam, then practice that checks your setup, your answer and its units, and answers specific enough to score.`, storageKey: 'apenv_progress_v1',
+      first, firstCh, unitLabel, freeUnits, freeUnitsText, dailyFree, chapters: map.chapters, topicsOf, chapterBuilt,
+      partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive), toolIcon: TOOL_ICON,
+      exam: { mcq: MCQ_PARTS.reduce((n, p) => n + p.n, 0), mcqTime: `${MCQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes`, frq: FRQ_TOTAL, frqTime: `${FRQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes` }, sample: homeSample(depth),
+    };
     const body = `
 ${bodyOpen()}
-<main id="main" class="xshell env-home">
-  <header class="hero env-home-hero">
-    <div>
-      <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
-      <h1>${COURSE_HTML}, ${esc(IDENTITY.headline)}</h1>
-      <p class="lede">Each topic taught from scratch for the May 2027 exam, then practice that checks your setup, your answer and its units, and answers specific enough to score.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apenv_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
-    </div>
-    <div class="env-level-card" id="envLevel" data-lv-zero>
-      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-      <div class="env-level-top">
-        <div class="env-level-chip"><div class="level-ring" id="envLvRing">L1</div><div class="t"><b id="envLvTitle">${esc(IDENTITY.firstRank)}</b><span id="envLvSub">Level 1 &middot; 0 XP</span></div></div>
-        <div class="streak-chip" id="envStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="envStreakN">0</span></div>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="envXpFill" style="width:0%"></div></div>
-      <div class="xp-label" id="envXpLabel">0 / 100 XP to Level 2</div>
-      <div class="env-part-bars">${bars}</div>
-    </div>
-  </header>
-
-  <section class="xsection" aria-label="What to do now">
-    <div class="env-now-row cx-now-row">
-      <div class="env-now-card cx-now-card" id="envStart">
-        <div class="k">Start here</div>
-        ${first ? `<h2>${esc(first.title)}</h2>
-        <p>${esc(unitLabel(firstCh))} &middot; ${esc(firstCh.title)}.${freeUnitsText ? ` ${freeUnitsText} lessons and every notes page are free.` : ' Every notes page is free.'}</p>
-        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any unit</h2><p>Every notes page is free.</p>`}
-      </div>
-      <div class="env-now-card cx-now-card" id="envReview">
-        <div class="k">Review queue</div>
-        <h2>Missed questions come back</h2>
-        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
-        <a class="link-quiet" href="review.html">Open review &rarr;</a>
-      </div>
-      <div class="env-now-card cx-now-card" id="envGoal">
-        <div class="k">Today&rsquo;s goal</div>
-        <h2>A little every day</h2>
-        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.${dailyFree ? ` ${dailyFree} practice questions a day are free.` : ''}</p>
-        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="xsection" aria-labelledby="h-path">
-    <div class="section-head">
-      <h2 id="h-path">The path through the course</h2>
-      <p class="section-lede">The units in framework order, then the math you need: scientific notation, rates and per-capita values, unit conversions, percent change and doubling time, each placed just before the topic that first needs it. Tap one to open it.</p>
-    </div>
-    <div class="env-path-legend">${map.parts.map(p => `<span style="--c:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"><i></i>${p.id === 'course' ? `${partCount(p.id)} units` : esc(PART_LABEL[p.id] || p.title)} &middot; ${partTopics(p.id)} topics</span>`).join('')}</div>
-    ${homePath(depth)}
-  </section>
-
-  <section class="xsection env-home-about" aria-label="About the course">
-    <div>
-      <h2 id="h-covers">What the course covers</h2>
-      <p>${units.length} units and ${unitTopics.length} topics in the order of the course framework, for the May 2027 exam, plus ${skillTopics} math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in sets that share one data table, graph, model or passage, as on the real exam. Every option has its own explanation. Practice checks what the exam's readers check: the setup typed with brackets and units, the answer, and its units, each marked on its own, with the slip named. There is no formula sheet on the exam, so the formulas you must memorize have their own page and flashcards.</p>
-      <p class="env-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
-    </div>
-    <div>
-      <h2 id="h-how">How to use it</h2>
-      <ol class="env-sample-list env-how">
-        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.</span></li>
-        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
-        <li><span class="n" aria-hidden="true">3</span><span><b>Train the hard parts.</b> Calculations, cycles, energy flow, population growth, pollution chains and the greenhouse effect, each checked step by step.</span></li>
-        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson.</span></li>
-      </ol>
-    </div>
-  </section>
-${sims.length ? `
-  <section class="xsection" aria-labelledby="h-tools">
-    <div class="env-feature">
-      <div class="icon-circle" aria-hidden="true">
-        <svg viewBox="0 0 170 170" fill="none" focusable="false">
-          <circle cx="85" cy="95" r="52" stroke="#fff" stroke-opacity=".45" stroke-width="8"/>
-          <path d="M33 95h104M85 43c-18 16-18 88 0 104M85 43c18 16 18 88 0 104" stroke="#fff" stroke-opacity=".45" stroke-width="5"/>
-          <path d="M85 30c34 10 48 34 44 66-30 2-52-14-58-44" stroke="${IDENTITY.accent.soft}" stroke-opacity=".95" stroke-width="6" stroke-linejoin="round"/>
-          <path d="M85 30c-6 28 4 50 28 62" stroke="${IDENTITY.accent.soft}" stroke-opacity=".95" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div>
-        <h2 id="h-tools">${word(sims.length)} trainers for what the exam marks hardest.</h2>
-        <p>Type a calculation as the exam's readers grade it and see the setup, answer and units marked; move energy up a food chain, tap a step of a cycle, overshoot a carrying capacity, run smog through a day, then answer the questions about what you saw.${freeLine ? ` ${esc(freeLine)}` : ''}</p>
-        <div class="env-tool-chips">${sims.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}${t.premium ? '' : ' &middot; free'}</a>`).join('')}</div>
-        <a class="btn-press alt" href="tools.html">See all tools</a>
-      </div>
-    </div>
-  </section>` : ''}
-${homeSample(depth)}
-  <section class="xsection" aria-labelledby="h-go">
-    <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="env-cards env-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
-      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
-      `<li><a href="formula-sheet.html"><b>Formulas you must memorize</b><span>The exam gives no formula sheet: every equation you need, when to use it and the classic trap.</span></a></li>`,
-      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
-  </section>
-
-  <section class="xsection" aria-label="About LevlPrep">
-    <div class="trust-row">
-      <div class="trust-pill">Every notes page free</div>
-      ${freeUnitsText ? `<div class="trust-pill">${freeUnitsText} lessons free</div>` : ''}
-      <div class="trust-pill">Unit sheets free to print</div>
-      <div class="trust-pill">Progress saved on your device</div>
-    </div>
-  </section>
-</main>
+${apHomeMain(HOME)}
 ${footer(depth, 'home')}
 ${tail({ depth, section: 'home', extra: ['env-home.js'] })}
 </body>
@@ -835,6 +741,8 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
 </html>
 `;
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
+    // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
+    if (a.slug === 'dashboard') return dashboardPage(page);
     return study ? page.replace('<link rel="stylesheet" href="assets/env.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/env.css">') : page;
   }
@@ -909,6 +817,7 @@ ${bodyOpen(` data-frq="${f.id}"`)}
 </main>
 ${footer(depth, `frq:${f.id}`)}
 <link rel="stylesheet" href="../assets/pages/pages.css">
+<link rel="stylesheet" href="../../assets/course/reading.css">
 ${tail({ depth, section: 'exams', extra: ['env-expr.js', 'env-math.js', 'env-calc.js', 'env-grade.js', 'pages/frq-kit.js', 'pages/frq.js'], premium: true })}
 </body>
 </html>

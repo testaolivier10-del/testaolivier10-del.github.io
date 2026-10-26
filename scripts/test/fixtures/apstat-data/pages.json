@@ -43,7 +43,7 @@
    "desc": "Statistics free-response practice in the four exam question types, 10 points each, with a rubric, a full-credit sample and a printable sheet.",
    "card": "The four free-response question types, with 10-point rubrics and sample answers.",
    "script": "pages/frq.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "justify",
@@ -93,7 +93,7 @@
    "desc": "Statistics trainers: sampling distributions, data, sampling, experiments, probability, distributions, intervals, p-values, chi-square and regression.",
    "card": "Trainers and simulators, then the questions about what you saw.",
    "script": "pages/tools.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "dashboard",

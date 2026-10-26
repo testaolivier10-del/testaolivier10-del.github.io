@@ -178,3 +178,137 @@ a.bk-row-title:hover{color:var(--cink);}
   .bk .tb-main{max-width:none;padding-top:0;}
   .bk-notes .bk-head{padding-right:0;}
 }
+
+/* ==========================================================================
+   Round 2 of the site redesign (docs/site-redesign.md, mockups S11 and S12):
+   the channel look on every notes, Learn and unit page. Grid paper ground,
+   the display face, the course's own cover art beside the headline, white
+   cards for the reading column, and the rail's current item in navy.
+   Colors come only from theme tokens, so dark mode follows.
+   ========================================================================== */
+.bk{--bk-display:'Inter Display',var(--font-display,'Nunito'),system-ui,sans-serif;}
+body:has(.bk){background-image:linear-gradient(color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px);background-size:44px 44px;}
+
+/* Header: pill eyebrow, display headline, meta as chips, cover on the right. */
+.bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head)){display:grid;grid-template-columns:minmax(0,1fr);column-gap:28px;align-items:center;border-bottom:0;padding:6px 0 4px;margin:0 0 22px;}
+.bk :is(.bk-eyebrow,.tb-chapter-eyebrow){justify-self:start;display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;max-width:100%;box-sizing:border-box;border:1.5px solid currentColor;border-radius:999px;padding:3px 12px;font:800 12px/1.35 var(--font-ui);letter-spacing:.05em;text-transform:none;color:var(--cink);margin:0 0 12px;}
+.bk :is(.bk-title,.tb-chapter-title){font:900 clamp(29px,5.2vw,58px)/1.04 var(--bk-display);letter-spacing:-.04em;margin:0 0 14px;text-wrap:balance;color:var(--ink);}
+.bk-meta,.bk .tb-chapter-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;}
+.bk-meta .bk-small,.bk .tb-chapter-meta>span{display:inline-block;font:700 13.5px var(--font-ui);color:var(--muted);background:var(--white);box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;padding:4px 12px;}
+.bk .tb-chapter-meta .bk-actions,.bk-head .bk-actions{margin:0;}
+.bk .bk-head .bk-actions{margin-top:12px;}
+.bk-action{border-width:1.5px;border-color:var(--line);color:var(--ink);font-weight:700;}
+.bk .bk-lede{font:600 17px/1.65 var(--font-ui);color:var(--muted);max-width:40em;margin:16px 0 0;grid-column:1;}
+/* The course's own cover, beside the headline on a wide screen and above it
+   on a phone. Decorative: the eyebrow and headline already name the course. */
+.bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head))::after{content:"";display:block;aspect-ratio:2/1;width:100%;border-radius:20px;background:var(--bk-cbg,var(--navy)) center/cover no-repeat;background-image:var(--bk-cover,none);box-shadow:0 18px 40px -30px color-mix(in srgb,var(--ink) 70%,transparent);}
+body[data-course="nremt"]{--bk-cover:url(../covers/nremt.svg);--bk-cbg:#0D3B36;}
+body[data-course="ochem"]{--bk-cover:url(../covers/ochem.svg);--bk-cbg:#241A63;}
+body[data-course="anp"]{--bk-cover:url(../covers/anp.svg);--bk-cbg:#4A1A1F;}
+body[data-course="apbio"]{--bk-cover:url(../covers/apbio.svg);--bk-cbg:#1B4422;}
+body[data-course="apchem"]{--bk-cover:url(../covers/apchem.svg);--bk-cbg:#1A2C78;}
+body[data-course="apphys"]{--bk-cover:url(../covers/apphys.svg);--bk-cbg:#2A1D06;}
+body[data-course="apcalc"]{--bk-cover:url(../covers/apcalc.svg);--bk-cbg:#4A1230;}
+body[data-course="apstat"]{--bk-cover:url(../covers/apstat.svg);--bk-cbg:#0E3A52;}
+body[data-course="apenv"]{--bk-cover:url(../covers/apenv.svg);--bk-cbg:#22400F;}
+body:not([data-course]) .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
+@media (min-width:1101px){
+  .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head)){grid-template-columns:minmax(0,1fr) 260px;}
+  .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head))>*{grid-column:1;}
+  .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head))::after{grid-column:2;grid-row:1 / span 3;align-self:start;margin-top:4px;}
+  .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head))>.bk-lede{grid-column:1 / -1;}
+}
+@media (max-width:1100px){
+  .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head))::after{grid-row:1;aspect-ratio:auto;height:clamp(96px,26vw,150px);background-position:right center;background-size:auto 100%;margin:0 0 16px;}
+}
+/* The "Practice this lesson" pills sit in their own row above the header on
+   a wide screen instead of over the cover, and still stick while you read. */
+@media (min-width:901px){
+  .bk .tb-main>.bk-pillbar{height:auto;margin:0 0 14px;flex-wrap:wrap;gap:8px;}
+  .bk-notes .bk-head{padding-right:0;}
+}
+.bk-pill{background:var(--navy);color:var(--on-accent);border-radius:12px;padding:9px 14px 9px 12px;font:800 13.5px var(--font-ui);}
+.bk-pill:hover{color:var(--on-accent);}
+.bk-pill i{background:var(--on-accent);color:var(--navy);}
+@media (max-width:900px){
+  .bk-pillbar{max-width:calc(100vw - 24px);overflow-x:auto;flex-wrap:nowrap;gap:6px;justify-content:flex-start;scrollbar-width:none;}
+  .bk-pill{white-space:nowrap;padding:8px 12px 8px 10px;font-size:12.5px;flex-shrink:0;}
+}
+
+/* Reading column: white cards with room to breathe. */
+.bk-notes .tb-main,.bk-book .tb-main{max-width:820px;}
+.bk-notes .bk-prose,.bk-book .bk-sec{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:30px clamp(18px,4vw,44px) 26px;box-shadow:0 20px 44px -40px color-mix(in srgb,var(--ink) 60%,transparent);}
+.bk-book .bk-sec{margin:0 0 18px;}
+.bk-book .bk-sec:last-of-type{border-bottom:1px solid var(--line);}
+.bk-prose{font-size:17px;}
+.bk-prose p,.bk-prose li{font-weight:500;line-height:1.72;}
+.bk-prose p{max-width:40em;}
+.bk-prose h2{font:900 clamp(24px,2.8vw,30px)/1.12 var(--bk-display,var(--font-ui));letter-spacing:-.03em;}
+.bk-prose h3{font:800 19px/1.3 var(--font-ui);letter-spacing:-.01em;}
+.bk-notes .bk-prose > h2{border-top:0;padding-top:0;margin:40px 0 12px;}
+.bk-sec-head{align-items:center;}
+.bk-sec-head h2{font:900 clamp(24px,2.8vw,30px)/1.12 var(--bk-display,var(--font-ui));letter-spacing:-.03em;align-items:center;gap:12px;}
+.bk-sec-head h2 .bk-toc-n{top:0;height:26px;min-width:38px;border-radius:8px;font:900 14px var(--font-ui);font-variant-numeric:tabular-nums;}
+.bk-prose figure{background:var(--surface2);border:1px solid var(--line);border-radius:18px;padding:18px;}
+/* A diagram reaches into the white card's side padding, so a figure drawn at
+   700 units still fits the column beside the contents rail instead of turning
+   into a sideways scroller (which also failed axe's keyboard rule). */
+.bk-prose .notes-figure{margin-left:calc(12px - clamp(18px,4vw,44px));margin-right:calc(12px - clamp(18px,4vw,44px));padding-left:10px;padding-right:10px;}
+.bk-prose .worked{border:1.5px solid var(--line);box-shadow:none;border-radius:18px;padding:18px 20px;}
+.bk-prose .going-further,.bk-prose .for-your-exam{border-radius:16px;padding:16px 18px;}
+
+/* Rail: the current chapter and section in navy, like the mockup. */
+.bk-toc-chap{background:var(--navy);color:var(--on-accent);border-radius:14px;}
+.bk-toc-chap:hover{color:var(--on-accent);}
+.bk-toc-chap-n{background:var(--on-accent);color:var(--navy);}
+.bk-toc-chap small{color:var(--on-accent);opacity:.8;}
+.bk-toc-list .current>a{background:var(--navy);color:var(--on-accent);border-radius:10px;}
+.bk-toc-list .current .bk-toc-n{background:var(--on-accent);color:var(--navy);}
+.bk-toc-list>li>a,.bk-toc-other{border-radius:10px;font-size:13px;}
+.bk-toc-list>li>a:hover,.bk-toc-other:hover{background:var(--white);}
+.bk .tb-toc-modhead[aria-current]{background:var(--navy);color:var(--on-accent);}
+.bk .tb-toc-modhead[aria-current] .tb-toc-num{background:var(--on-accent);color:var(--navy);}
+.bk .tb-toc-modhead[aria-current] .tb-toc-count{color:var(--on-accent);}
+.bk .tb-toc-topic.current{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+.bk .tb-progress-track{height:7px;}
+.bk .tb-progress-fill{background:var(--cink);}
+
+/* Previous and next chapter: two white cards. */
+.bk .tb-chapter-link{border-width:1px;border-radius:16px;padding:14px 18px;}
+.bk .tb-chapter-link b{font:900 16px var(--bk-display);letter-spacing:-.01em;}
+
+/* Unit and chapter overview pages. */
+/* The Learn reader's chapter header (ochem, A&P, the AP® courses) and the unit
+   and chapter overview pages: the same opener as a notes page (S11, S12), so
+   no white card; pill eyebrow, display headline, the course's cover beside it
+   on a wide screen and as a band above it on a phone, actions under the meta. */
+.bk .bk-chap-head{display:grid;grid-template-columns:minmax(0,1fr);column-gap:28px;align-items:center;justify-content:normal;background:transparent;border:0;border-radius:0;padding:6px 0 4px;margin:0 0 22px;}
+.bk .bk-chap-head>div{min-width:0;}
+.bk .bk-chap-head .bk-chap-acts{margin-top:16px;}
+.bk .bk-chap-head .tb-chapter-title{font:900 clamp(32px,4.8vw,54px)/1.04 var(--bk-display);letter-spacing:-.04em;}
+.bk .bk-chap-head::after{content:"";display:block;border-radius:20px;background:var(--bk-cbg,var(--navy)) right center/auto 100% no-repeat;background-image:var(--bk-cover,none);box-shadow:0 18px 40px -30px color-mix(in srgb,var(--ink) 70%,transparent);grid-row:1;height:clamp(96px,26vw,150px);margin:0 0 16px;}
+@media (min-width:1101px){
+  .bk .bk-chap-head{grid-template-columns:minmax(0,1fr) 240px;}
+  .bk .bk-chap-head>*{grid-column:1;}
+  .bk .bk-chap-head>.bk-chap-acts{grid-row:2;}
+  .bk .bk-chap-head::after{grid-column:2;grid-row:1 / span 2;height:auto;aspect-ratio:2/1;background-size:cover;background-position:center;margin:0;align-self:center;}
+}
+.bk-chapter .bk-list{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:6px 22px;}
+.bk-row:last-child{border-bottom:0;}
+.bk-row-title{font:800 17px/1.35 var(--font-ui);}
+.bk-h{font:900 22px/1.15 var(--bk-display);letter-spacing:-.025em;text-transform:none;color:var(--ink);margin:34px 0 12px;}
+.bk-card,.bk-toolset{border:1px solid var(--line);box-shadow:none;border-radius:18px;}
+.bk-card:hover{box-shadow:0 16px 34px -28px color-mix(in srgb,var(--ink) 70%,transparent);}
+.bk-btn{border-radius:12px;min-height:42px;font-size:13.5px;}
+
+@media (max-width:700px){
+  .bk-notes .bk-prose,.bk-book .bk-sec{border-radius:18px;padding:22px 16px 18px;}
+  .bk-prose{font-size:16.5px;}
+  .bk-chap-head{padding:18px 16px;}
+  .bk-chapter .bk-list{padding:4px 14px;}
+}
+@media print{
+  body:has(.bk){background-image:none;}
+  .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
+  .bk-notes .bk-prose,.bk-book .bk-sec,.bk-chap-head,.bk-chapter .bk-list{border:0;box-shadow:none;padding:0;background:none;}
+}

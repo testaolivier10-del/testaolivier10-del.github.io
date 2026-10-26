@@ -148,7 +148,17 @@ const SHELL_BUDGETS = [
   /* 296.5 -> 297.5 for registering AP® Environmental Science (docs/apenv-spec.md, Phase 0): the ninth course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam date
      and the theme tint (+1.0 KB measured alone). */
-  ['site', 297.5],
+  /* 297.5 -> 330.5 for the site redesign (docs/site-redesign.md, owner 2026-10-25): the two display faces now at
+     the end of assets/fonts/fonts.css so every page can use them, Inter 800-900 and Kalam 700, cut to latin
+     (20.5 KB and 12.5 KB of woff2, which gzip cannot shrink). They carry the channel look's headlines; body text
+     stays Nunito, and font-display: optional means a face that is late is skipped, never waited for.
+     Measured 330.0 KB. */
+  /* 330.5 -> 332 for redesign round 2 step 1 (docs/site-redesign.md): theme.css section 9, the shared
+     channel look every page now uses (grid ground, ring cards, display headlines, .tone/.hand helpers, the
+     new top bar, tabs and footer) in place of each page restyling itself. Measured 331.7 KB. */
+  /* 332 -> 333 when all six round 2 steps are combined: the steps' own additions (study.css session look,
+     quick-answer.css) land in the same shared assets bucket. Measured 332.1 KB. */
+  ['site', 333],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -399,7 +409,9 @@ const BUDGETS = [
      the offers. Measured 9.6 KB. 9.8 -> 10.1 for AP® Environmental Science's
      launch (docs/apenv-spec.md decision 12): its hub card, its pass in the FAQ
      and the offers. Measured 9.8 KB. */
-  ['index.html', 10.1],
+  /* 10.1 -> 11.3 for the redesigned homepage (docs/site-redesign.md): the answer-it-here question with its
+     explanation, the founder line, the course covers' markup and the steps. Measured 11.1 KB. */
+  ['index.html', 11.3],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -445,7 +457,8 @@ const BUDGETS = [
   // nremt/practice-study.js mapping it onto the engine's controls (W-C).
   /* 48 -> 48.4 (polish 2026-10-17, B11): XP paid as each answer is checked. */
   /* 48.4 -> 48.7: per-question tallies and exam-quit hooks in practice-engine.js (analytics depth). */
-  ['nremt/practice.html', 48.7],
+  /* 48.7 -> 49.5 (redesign round 2, 2026-10): the session and results restyle in practice.css. */
+  ['nremt/practice.html', 49.5],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

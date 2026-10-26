@@ -97,9 +97,10 @@
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
 
-  <header class="page-head">
-    <div class="eyebrow">NREMT-EMT</div>
-    <h1>Dashboard</h1>
+  <header class="page-head db-head">
+    <div class="eyebrow">NREMT-EMT <span>&middot; Dashboard</span></div>
+    <h1>Where you <span>stand today.</span></h1>
+    <p class="db-hand">worked out in your browser from every answer you give</p>
     <p id="headSub">Everything this browser knows about how you&rsquo;re doing, in six topic areas and the five exam domains.</p>
   </header>
   <div data-levl-cross="nremt"></div>
@@ -348,18 +349,26 @@ document.addEventListener('DOMContentLoaded', function(){
     const pcts = history.map(h2 => Math.round(h2.score/h2.total*100));
     const avg = Math.round(pcts.reduce((a,b)=>a+b,0)/pcts.length);
     const best = Math.max(...pcts);
-    const w=600,h=100,pad=6;
-    const stepX = pcts.length > 1 ? (w-pad*2)/(pcts.length-1) : 0;
-    const pts = pcts.map((p,i) => [pad + i*stepX, h - pad - (p/100)*(h-pad*2)]);
-    const line = pts.length > 1
-      ? pts.map((p,i) => (i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')
-      : `M${pts[0][0]},${pts[0][1]} L${pts[0][0]+0.01},${pts[0][1]}`;
-    set('historyBox', H.panel({ id: 'nr-history', title: 'Score over time', body:
-      `<div class="progress-stats"><span>Average: <b>${avg}%</b></span><span>Best: <b>${best}%</b></span><span>Attempts: <b>${history.length}</b></span></div>
-      <svg class="progress-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Score trend across recent attempts">
-        <path d="${line}" fill="none" stroke="var(--cink)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-        ${pts.map(p => `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.5" fill="var(--ink)"/>`).join('')}
-      </svg>` }));
+    // Drawn to scale (0 to 100%) in the progress pages' chart style
+    // (assets/course/dashboard.css, site redesign round 2). Two drawings of
+    // the same numbers, one shaped for a wide column and one for a phone, so
+    // the labels stay at reading size in both; CSS shows one.
+    function scoreChart(cls, CW, CH){
+      const L = 40, R = CW - 10, T = 12, B = CH - 26;
+      const y = p => B - (p / 100) * (B - T);
+      const stepX = pcts.length > 1 ? (R - L) / (pcts.length - 1) : 0;
+      const pts = pcts.map((p, i) => [pcts.length > 1 ? L + i * stepX : (L + R) / 2, y(p)]);
+      const grid = [0, 25, 50, 75, 100].map(g => `<line class="db-grid" x1="${L}" x2="${R}" y1="${y(g).toFixed(1)}" y2="${y(g).toFixed(1)}"/><text x="${L - 8}" y="${(y(g) + 4).toFixed(1)}" text-anchor="end">${g}%</text>`).join('');
+      const poly = pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+      const last = pts[pts.length - 1];
+      return `<svg class="db-chart ${cls}" viewBox="0 0 ${CW} ${CH}" role="img" aria-label="Full exam scores, oldest to newest: ${pcts.join('%, ')}%">${grid}` +
+        (pts.length > 1 ? `<polygon class="db-area" points="${L},${B} ${poly} ${R},${B}"/><polyline class="db-line" points="${poly}"/>` : '') +
+        `<circle class="db-dot" cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="6"/>` +
+        `<text x="${L}" y="${CH - 4}">${pts.length > 1 ? 'first exam' : ''}</text><text x="${R}" y="${CH - 4}" text-anchor="end">latest, ${pcts[pcts.length - 1]}%</text></svg>`;
+    }
+    set('historyBox', H.panel({ id: 'nr-history', title: 'Score over time', hint: 'Every full timed exam you have finished, oldest on the left.', body:
+      `<p class="db-figs"><span><b>${avg}%</b>average</span><span><b>${best}%</b>best</span><span><b>${history.length}</b>${history.length === 1 ? 'exam' : 'exams'}</span></p>` +
+      scoreChart('db-chart-wide', 640, 220) + scoreChart('db-chart-narrow', 330, 200) }));
   }
 
   // ---- Level & XP ----
@@ -506,5 +515,6 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 <script src="assets/nav.js" defer></script>
+<link rel="stylesheet" href="../assets/course/dashboard.css">
 </body>
 </html>

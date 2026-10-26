@@ -31,6 +31,9 @@
    Nothing it writes is edited by hand. Every served path avoids the token
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
+import { courseBanner } from './lib/covers.mjs';
+import { apHomeMain } from './lib/course-home.mjs';
+import { MCQ_PARTS, FRQ_PARTS, FRQ_TOTAL } from './lib/apstat-exams.mjs';
 import { join, dirname } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { Hub } from './lib/hub.mjs';
@@ -46,6 +49,7 @@ import {
 } from './lib/apstat-build.mjs';
 import { entryPages } from './lib/apstat-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { dashboardPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -650,113 +654,16 @@ ${tail({ depth, section: 'learn', extra: ['stat-toc.js', 'stat-book.js'] })}
     const partCount = id => map.chapters.filter(c => c.part === id).length;
     const partTopics = id => topics.filter(t => chapterById(t.chapter).part === id).length;
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
+        const HOME = {
+      key: COURSE_KEY, prefix: 'stat', mainClass: 'stat-home', courseHtml: COURSE_HTML, beta: BETA_PILL,
+      t2: `${esc(IDENTITY.headline)}`, lede: `Each topic taught from scratch for the 2027 exam, then practice that checks your numbers, your setup and your conclusions in context.`, storageKey: 'apstat_progress_v1',
+      first, firstCh, unitLabel, freeUnits, freeUnitsText, dailyFree, chapters: map.chapters, topicsOf, chapterBuilt,
+      partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive), toolIcon: TOOL_ICON,
+      exam: { mcq: MCQ_PARTS.reduce((n, p) => n + p.n, 0), mcqTime: `${MCQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes`, frq: FRQ_TOTAL, frqTime: `${FRQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes` }, sample: homeSample(depth),
+    };
     const body = `
 ${bodyOpen()}
-<main id="main" class="xshell stat-home">
-  <header class="hero stat-home-hero">
-    <div>
-      <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
-      <h1>${COURSE_HTML}, ${esc(IDENTITY.headline)}</h1>
-      <p class="lede">Each topic taught from scratch for the 2027 exam, then practice that checks your numbers, your setup and your conclusions in context.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apstat_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
-    </div>
-    <div class="stat-level-card" id="statLevel" data-lv-zero>
-      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-      <div class="stat-level-top">
-        <div class="stat-level-chip"><div class="level-ring" id="statLvRing">L1</div><div class="t"><b id="statLvTitle">${esc(IDENTITY.firstRank)}</b><span id="statLvSub">Level 1 &middot; 0 XP</span></div></div>
-        <div class="streak-chip" id="statStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="statStreakN">0</span></div>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="statXpFill" style="width:0%"></div></div>
-      <div class="xp-label" id="statXpLabel">0 / 100 XP to Level 2</div>
-      <div class="stat-part-bars">${bars}</div>
-    </div>
-  </header>
-
-  <section class="xsection" aria-label="What to do now">
-    <div class="stat-now-row cx-now-row">
-      <div class="stat-now-card cx-now-card" id="statStart">
-        <div class="k">Start here</div>
-        ${first ? `<h2>${esc(first.title)}</h2>
-        <p>${esc(unitLabel(firstCh))} &middot; ${esc(firstCh.title)}.${freeUnitsText ? ` ${freeUnitsText} lessons and every notes page are free.` : ' Every notes page is free.'}</p>
-        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any unit</h2><p>Every notes page is free.</p>`}
-      </div>
-      <div class="stat-now-card cx-now-card" id="statReview">
-        <div class="k">Review queue</div>
-        <h2>Missed questions come back</h2>
-        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
-        <a class="link-quiet" href="review.html">Open review &rarr;</a>
-      </div>
-      <div class="stat-now-card cx-now-card" id="statGoal">
-        <div class="k">Today&rsquo;s goal</div>
-        <h2>A little every day</h2>
-        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.${dailyFree ? ` ${dailyFree} practice questions a day are free.` : ''}</p>
-        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="xsection" aria-labelledby="h-path">
-    <div class="section-head">
-      <h2 id="h-path">The path through the course</h2>
-      <p class="section-lede">The units in framework order, then the math you need: fractions and percents, formulas and square roots, inequalities in words, factorials and combinations, and lines, each placed just before the topic that first needs it. Tap one to open it.</p>
-    </div>
-    <div class="stat-path-legend">${map.parts.map(p => `<span style="--c:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"><i></i>${p.id === 'course' ? `${partCount(p.id)} units` : esc(PART_LABEL[p.id] || p.title)} &middot; ${partTopics(p.id)} topics</span>`).join('')}</div>
-    ${homePath(depth)}
-  </section>
-
-  <section class="xsection stat-home-about" aria-label="About the course">
-    <div>
-      <h2 id="h-covers">What the course covers</h2>
-      <p>${units.length} units and ${unitTopics.length} topics in the order of the course framework (the revised course, first examined in May 2027), plus ${skillTopics} math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets that share one data set, plot or table, as on the real exam. Every option has its own explanation; a number from a table and the same number from a calculator are both right. Practice checks what the exam checks: data and plots to read, the setup shown as the exam asks, and conclusions written in context, with the math you need placed just before it is used.</p>
-      <p class="stat-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
-    </div>
-    <div>
-      <h2 id="h-how">How to use it</h2>
-      <ol class="stat-sample-list stat-how">
-        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.</span></li>
-        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
-        <li><span class="n" aria-hidden="true">3</span><span><b>Train the hard parts.</b> Sampling distributions, intervals, p-values, chi-square and regression, each checked step by step.</span></li>
-        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson.</span></li>
-      </ol>
-    </div>
-  </section>
-${sims.length ? `
-  <section class="xsection" aria-labelledby="h-tools">
-    <div class="stat-feature">
-      <div class="icon-circle" aria-hidden="true">
-        <svg viewBox="0 0 170 170" fill="none" focusable="false">
-          <path d="M40 132v-26M62 132v-52M85 132v-70M108 132v-52M130 132v-26" stroke="#fff" stroke-opacity=".45" stroke-width="12" stroke-linecap="round"/>
-          <path d="M24 132c26 0 34-92 61-92s35 92 61 92" stroke="${IDENTITY.accent.soft}" stroke-opacity=".95" stroke-width="5" stroke-linecap="round"/>
-          <path d="M20 140h130" stroke="#fff" stroke-opacity=".9" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div>
-        <h2 id="h-tools">${word(sims.length)} trainers for what the exam marks hardest.</h2>
-        <p>Take a thousand samples and watch a sampling distribution build, drag a point and watch the mean and the regression line move, capture a parameter with a hundred intervals, shade a p-value, then answer the questions about what you saw.${freeLine ? ` ${esc(freeLine)}` : ''}</p>
-        <div class="stat-tool-chips">${sims.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}${t.premium ? '' : ' &middot; free'}</a>`).join('')}</div>
-        <a class="btn-press alt" href="tools.html">See all tools</a>
-      </div>
-    </div>
-  </section>` : ''}
-${homeSample(depth)}
-  <section class="xsection" aria-labelledby="h-go">
-    <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="stat-cards stat-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`),
-      `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
-      `<li><a href="formula-sheet.html"><b>The reference sheet, explained</b><span>Every formula on the sheet the exam gives you, what it means and when to use it, how to read the tables, and what is not on it.</span></a></li>`,
-      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
-  </section>
-
-  <section class="xsection" aria-label="About LevlPrep">
-    <div class="trust-row">
-      <div class="trust-pill">Every notes page free</div>
-      ${freeUnitsText ? `<div class="trust-pill">${freeUnitsText} lessons free</div>` : ''}
-      <div class="trust-pill">Unit sheets free to print</div>
-      <div class="trust-pill">Progress saved on your device</div>
-    </div>
-  </section>
-</main>
+${apHomeMain(HOME)}
 ${footer(depth, 'home')}
 ${tail({ depth, section: 'home', extra: ['stat-home.js'] })}
 </body>
@@ -833,6 +740,8 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
 </html>
 `;
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
+    // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
+    if (a.slug === 'dashboard') return dashboardPage(page);
     return study ? page.replace('<link rel="stylesheet" href="assets/stat.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/stat.css">') : page;
   }
@@ -906,6 +815,7 @@ ${bodyOpen(` data-frq="${f.id}"`)}
 </main>
 ${footer(depth, `frq:${f.id}`)}
 <link rel="stylesheet" href="../assets/pages/pages.css">
+<link rel="stylesheet" href="../../assets/course/reading.css">
 ${tail({ depth, section: 'exams', extra: ['stat-grade.js', 'pages/frq-kit.js', 'pages/frq.js'], premium: true })}
 </body>
 </html>

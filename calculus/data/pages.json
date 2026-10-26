@@ -43,7 +43,7 @@
    "desc": "Calculus free-response practice in the recurring exam types, 9 points each, with a point-by-point rubric, a full-credit sample and a printable answer sheet.",
    "card": "Every recurring free-response type, with 9-point rubrics and sample answers.",
    "script": "pages/frq.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "justify",
@@ -93,7 +93,7 @@
    "desc": "Calculus trainers: tangent tracer, limit explorer, rule drills, related rates, motion, curve analysis, Riemann sums, accumulation, slope fields and volumes.",
    "card": "Trainers and drills, then the questions about what you did.",
    "script": "pages/tools.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "dashboard",

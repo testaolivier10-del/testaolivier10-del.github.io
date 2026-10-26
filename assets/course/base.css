@@ -90,3 +90,9 @@ a.gl{cursor:pointer;}
 .cx-tip .cx-tip-say{font-weight:700;opacity:.8;}
 /* Dark theme: --ink turns light, so an inverted card would glow on a dark page. */
 :root[data-theme="dark"] .cx-tip{background:var(--surface2);color:var(--ink);box-shadow:0 0 0 1px var(--line),var(--shadow-pop);}
+
+/* ---- Channel look (site redesign 2026-10, docs/site-redesign.md) ----
+   Every course page's opener headline and the textbook's chapter and section
+   headings in the display face the homepage and the channel thumbnails use
+   (Inter 800-900, assets/fonts/fonts.css); body text stays Nunito. */
+main .hero h1,main .page-head h1,.bk h1,.bk-prose h2,.bk-sec-head h2{font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.03em;}
