@@ -38,14 +38,14 @@ Olivier saw parts 1 to 3 and said they still looked like the old site. He approv
 "Every page, 1 of 4" to "4 of 4", files `S01` to `S22`, in the design canvas linked at the top) and said "do all".
 Six PRs, each stacked on `claude/redesign-study` (#88), built in parallel:
 
-| Step | Branch | Owns (only edit these, plus new files) | Mockups |
-|---|---|---|---|
-| 1 Shared parts | `claude/redesign-r2-chrome` | `assets/theme.css` token values incl. dark, `assets/course/base.css`, `assets/site-chrome.js`, every `*/assets/*nav*.js`, footer | top bar, course tab bar, footer on all |
-| 2 Course homes | `claude/redesign-r2-courses` | `assets/course/hub.css`, `hub.js`, course home builders, `nremt/index.html`, `ochem/index.html` | S01, S02 |
-| 3 Practice and study | `claude/redesign-r2-study` | `assets/course/study.css`, `study.js`, each course's practice/exam/review/flashcard CSS and pages | S03 to S09 |
-| 4 Progress | `claude/redesign-r2-progress` | dashboard pages and their CSS/JS | S10 |
-| 5 Reading | `claude/redesign-r2-reading` | `book.css`, `glossary.css`, `lesson.css`, notes/learn/glossary/tools/FRQ pages and builders | S11 to S16 |
-| 6 Site pages | `claude/redesign-r2-site` | `premium` section of build-pricing, `about`, `account`, `search`, `changelog`, `privacy`, `terms`, `404` | S17 to S22 |
+| Step | Branch | Owns (only edit these, plus new files) | Mockups | PR |
+|---|---|---|---|---|
+| 1 Shared parts | `claude/redesign-r2-chrome` | `assets/theme.css` token values incl. dark, `assets/course/base.css`, `assets/site-chrome.js`, every `*/assets/*nav*.js`, footer | top bar, course tab bar, footer on all | #89 |
+| 2 Course homes | `claude/redesign-r2-courses` | `assets/course/hub.css`, `hub.js`, course home builders, `nremt/index.html`, `ochem/index.html` | S01, S02 | #94 |
+| 3 Practice and study | `claude/redesign-r2-study` | `assets/course/study.css`, `study.js`, each course's practice/exam/review/flashcard CSS and pages | S03 to S09 | #90 |
+| 4 Progress | `claude/redesign-r2-progress` | dashboard pages and their CSS/JS | S10 | #91 |
+| 5 Reading | `claude/redesign-r2-reading` | `book.css`, `glossary.css`, `lesson.css`, notes/learn/glossary/tools/FRQ pages and builders | S11 to S16 | #92 |
+| 6 Site pages | `claude/redesign-r2-site` | `premium` section of build-pricing, `about`, `account`, `search`, `changelog`, `privacy`, `terms`, `404` | S17 to S22 | #93 |
 
 Rules for every step: colors only through theme tokens (dark mode must work); display face `'Inter Display'` 900
 for headlines, Kalam for the one hand line; no example data ships (real progress or nothing); copy rules from
@@ -53,3 +53,31 @@ for headlines, Kalam for the one hand line; no example data ships (real progress
 and resolves `scripts/check-weight.mjs` budgets.
 Open for Olivier: is "No human expert has reviewed it yet" on About still true; a photo for About (none ships until
 he sends one).
+
+### Combined branch and status (2026-10-26)
+All six steps are merged, without conflicts, on `claude/redesign-r2-all` (the branch to review and merge as one;
+the six PRs show each step alone). The integration pass on it: cache `levlprep-v90` with `assets/site-pages.css`
+and `assets/site-toc.js` precached, the changelog entry "A new look for every page", site budget 333 KB, and:
+- Learn reader chapter header (ochem, A&P, AP®) and unit/chapter overview pages: no white card, course cover beside
+  the headline (band above it on a phone), `assets/course/book.css`.
+- Ochem tool pages: opener without the tinted panel, cover on the right (`ochem/assets/tools.css #tool-top`).
+- Study pages (Practice, Review, Exams, Flashcards on the shared engines): two-tone headline added by
+  `assets/course/study.js` (`TONE`), beside step 3's cover and hand line.
+- NREMT mnemonics letters in the display face instead of mono.
+- Text on navy cards: the old green-gray tints (#DCEFEA, #9FB5AE, #C7DED8, #D0DED9) became cool tints site-wide.
+- Checked, no change needed: course stylesheets' remaining literal colors are var() fallbacks or the Okabe-Ito
+  figure palettes (deliberate, light and dark pairs); Flashcards marking the Practice tab is deliberate (nav.js and
+  ochem-nav.js: flashcards are a Practice mode); AP® Biology numeric inputs render correctly in light, dark and on
+  a phone; no level/XP copy left on course homes; the NREMT home start card switches with real progress (Keep
+  drilling, then Shore up your weakest area once an area has 5 answers; Pick up where you left off with a session open).
+
+### Still open
+- Olivier: dashboards' level, streak and badge cards (ochem, AP®) kept; not in the S10 mockup, his call.
+- Olivier: About review wording, About photo.
+- Results wording in the S05 style ("11 right. 4 to fix.") needs each engine's results screen; not done.
+- Studio tool pages (AP®, A&P, NREMT reference pages) keep the calm studio layout (`docs/tools-calm.md`); only the
+  ochem tool pages got the S15 opener.
+- `--font-mono` (IBM Plex Mono) is still used for data labels on many pages (about 5,500 uses); a site-wide switch
+  to the display face with tabular numbers would finish the look, but is a separate decision.
+- NREMT home founder line wording on the course home ("an EMT who studied with this course and passed the NREMT")
+  differs from the homepage's FTC wording; check-site accepts it.
