@@ -1,0 +1,52 @@
+# R2-NREMT-Setup inventory
+Every item found on the live page (Playwright dump + engine source), and where it lives in the mockup. Nothing removed.
+
+- [x] Skip to content link: kept (first focusable, not drawn)
+- [x] LevlPrep logo and course name in the top bar: kept, top bar
+- [x] Search button (opens the / search overlay): kept, top bar
+- [x] Level chip (L1), appears after the first answers: kept, top bar
+- [x] Daily count chip next to the level chip, appears after answering: kept, top bar (noted on Results board)
+- [x] Log in / account button: kept, top bar
+- [x] Answer sounds toggle: kept, top bar
+- [x] Dark mode toggle: kept, top bar
+- [x] Course tabs: Home, Learn, Practice, Review, Exams, Glossary, Tools, Dashboard: kept, tab row (slimmer during a session)
+- [x] Breadcrumb LevlPrep › course › Practice: kept, under tabs
+- [x] Ask me anything tutor button: kept, floating bottom right
+- [x] Footer: About these questions link: kept, footer
+- [x] Footer links: Privacy, Terms, About, Sources, What's new, Premium, Account, Contact: kept, footer
+- [x] Eyebrow NREMT-EMT: kept as pill NREMT-EMT · Practice
+- [x] Headline Practice / one at a time.: kept, two-tone h1
+- [x] Hand line: every answer comes with the why: kept
+- [x] Lede: Drills from the 2,033-question bank...: kept
+- [x] Course cover: added beside the headline (approved S03 look)
+- [x] Resume exam card with Resume Exam and Discard (unfinished exam only): kept, navy card above the form, labeled as conditional
+- [x] Discard confirm: Discard this in-progress attempt? This cannot be undone.: kept (behavior, not drawn)
+- [x] Best score line: Your best score so far: N/100 (completed in time): kept inside the resume card
+- [x] Step 1 What do you want to practice?: kept
+- [x] Mode Weak spots + description: kept, Default badge
+- [x] Mode One domain or area + description: kept, count line 5 domains · 6 topic areas
+- [x] Mode Questions I missed + count (0 waiting until you get them right): kept with live count
+- [x] Mode Flagged questions + count (0 you marked to come back to): kept with live count
+- [x] Step 2 Where you are weakest (weakDomainsPanel): kept, with empty state
+- [x] Step 2 Which topic? (One domain mode): kept, panel under step 2
+- [x] Domain or area select: All domains (exam mix), 5 domains, 6 topic areas: kept, grouped into Exam domains and Topic areas
+- [x] Difficulty select: All levels, Easy only, Medium only, Hard only, Expert only: kept
+- [x] Pool of N questions: kept
+- [x] Flip through this set as cards: kept, link in the pool line
+- [x] Step 3 How many questions? 10, 15, 20, 30, 50: kept, sizes above 15 marked Premium
+- [x] Summary line: 15 questions, weak spots: kept, summary card title
+- [x] Feedback after every answer. Misses go to your review queue.: kept, summary card
+- [x] Start practice button (adaptive, domain, missed and flagged variants): kept, one button that follows the mode
+- [x] Free: 15 of 15 questions left today, shared with review. + PREMIUM badge: kept, under Start
+- [x] Premium notice card: This is part of Premium, 3 benefits, price line, Pass-or-extend, See Premium: kept, full card under the form
+- [x] Readiness card: Take a full exam to see your readiness score.: kept, rail
+- [x] Your numbers: Answered, Due for review, To fix, Day streak (with sublines): kept, rail
+- [x] Review queue card: Your queue is clear, spacing line, Open review: kept, rail
+- [x] Flashcards link: Short facts on spaced cards.: kept, rail
+- [x] Exams link: The timed 100-question exam.: kept, rail
+- [x] Streak widget: 0 days, 0/15 questions today, start a streak line: kept, rail Daily goal card
+- [x] Streak settings gear: kept
+- [x] Streak settings: Daily goal 10/15/20/30/50 questions/day (more than the free 15): kept, shown open
+- [x] Streak settings: Remind me in-browser if I haven't hit my goal by [hour]: kept
+- [x] Streak freeze text (earn after 7 days; daily goal eases off): kept
+- [x] Notifications not supported message: kept (behavior, not drawn)

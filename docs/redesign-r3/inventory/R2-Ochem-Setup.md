@@ -1,0 +1,43 @@
+# R2-Ochem-Setup inventory
+Every item found on the live page (Playwright dump + engine source), and where it lives in the mockup. Nothing removed.
+
+- [x] Skip to content link: kept (first focusable, not drawn)
+- [x] LevlPrep logo and course name in the top bar: kept, top bar
+- [x] Search button (opens the / search overlay): kept, top bar
+- [x] Level chip (L1), appears after the first answers: kept, top bar
+- [x] Daily count chip next to the level chip, appears after answering: kept, top bar (noted on Results board)
+- [x] Log in / account button: kept, top bar
+- [x] Answer sounds toggle: kept, top bar
+- [x] Dark mode toggle: kept, top bar
+- [x] Course tabs: Home, Learn, Practice, Review, Exams, Glossary, Tools, Dashboard: kept, tab row (slimmer during a session)
+- [x] Breadcrumb LevlPrep › course › Practice: kept, under tabs
+- [x] Ask me anything tutor button: kept, floating bottom right
+- [x] Footer: About these questions link: kept, footer
+- [x] Footer links: Privacy, Terms, About, Sources, What's new, Premium, Account, Contact: kept, footer
+- [x] Eyebrow ORGANIC CHEMISTRY: kept as pill
+- [x] Headline Practice / one at a time.: kept
+- [x] Hand line: kept
+- [x] Lede: The question that will teach you the most right now...: kept
+- [x] Course cover: added
+- [x] Mode Diagnostic DEFAULT: kept with Default badge
+- [x] Mode One topic: kept
+- [x] Mode Quick 5: kept
+- [x] Mode Cumulative review: kept
+- [x] Mode Questions I missed (Nothing missed. Nice.): kept
+- [x] Mode Flagged questions (Nothing flagged yet.): kept
+- [x] Step 2 What the engine suggests (headline, detail, cta): kept, suggestion card
+- [x] Suggestion variants: You keep missing X, Redo X, Go to the lesson, Practice X, Review mistakes, Start diagnostic, See the queue, See your mastery map: kept, listed under the card
+- [x] Step 2 Which topic? Topic select (123 topics): kept, panel
+- [x] Difficulty select: Any, Foundational, Intermediate, Advanced, Challenge (with descriptions): kept
+- [x] Step 3 How many: 5, 10, 20: kept
+- [x] Summary 10 questions · Diagnostic: kept
+- [x] Feedback line with the concept behind a miss: kept
+- [x] Start practice: kept
+- [x] Free line: 15 of 15 free questions, first four chapters unlimited + PREMIUM: kept
+- [x] Next in your path: Atomic structure / Finish the lesson first: kept, navy link in rail
+- [x] 3,835 questions across 123 topics, 89 interactive. Concept map on the Dashboard.: kept, rail
+- [x] Your numbers: Answered, Due for review, To fix, Day streak: kept
+- [x] Review queue: Your queue is clear, Concepts come back... Open review: kept
+- [x] Flashcards: Concepts, pKa, IR and NMR values and reagents.: kept
+- [x] Exams: Timed tests on a chapter, a range or the course.: kept
+- [x] Periodic table button: kept, floating

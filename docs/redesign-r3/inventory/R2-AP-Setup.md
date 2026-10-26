@@ -1,0 +1,49 @@
+# R2-AP-Setup inventory
+Every item found on the live page (Playwright dump + engine source), and where it lives in the mockup. Nothing removed.
+
+- [x] Skip to content link: kept (first focusable, not drawn)
+- [x] LevlPrep logo and course name in the top bar: kept, top bar
+- [x] Search button (opens the / search overlay): kept, top bar
+- [x] Level chip (L1), appears after the first answers: kept, top bar
+- [x] Daily count chip next to the level chip, appears after answering: kept, top bar (noted on Results board)
+- [x] Log in / account button: kept, top bar
+- [x] Answer sounds toggle: kept, top bar
+- [x] Dark mode toggle: kept, top bar
+- [x] Course tabs: Home, Learn, Practice, Review, Exams, Glossary, Tools, Dashboard: kept, tab row (slimmer during a session)
+- [x] Breadcrumb LevlPrep › course › Practice: kept, under tabs
+- [x] Ask me anything tutor button: kept, floating bottom right
+- [x] Footer: About these questions link: kept, footer
+- [x] Footer links: Privacy, Terms, About, Sources, What's new, Premium, Account, Contact: kept, footer
+- [x] Eyebrow AP® BIOLOGY + BETA: kept
+- [x] Headline and hand line: kept
+- [x] Lede: kept
+- [x] Course cover: added
+- [x] Mode Build a set: kept
+- [x] Mode My weakest topics (Answer some questions first / Your lowest-mastery topics, mixed.): kept
+- [x] Mode Questions I missed (Nothing missed. Nice. / Retried until you get each one right.): kept
+- [x] Mode Flagged (Nothing flagged. Use Flag...): kept
+- [x] Step 2 Choose the questions: Unit select (11 options): kept
+- [x] Topic select (every topic and skill topic): kept
+- [x] Science practice select (7): kept
+- [x] Question type: All, Standalone, Stimulus sets, Numeric answers: kept
+- [x] Difficulty: Any, Easier, Medium, Harder: kept
+- [x] Where you are weakest / Lowest mastery right now / No topic below 80% mastery: kept, hint
+- [x] Match line: About N questions of 1487 that match (N stimulus sets...): kept
+- [x] No questions match yet. Loosen a filter.: kept
+- [x] Step 3 How many: 5, 10, 20, All: kept
+- [x] Feedback line: Stimulus sets stay whole and in order: kept
+- [x] Start practice: kept
+- [x] Free line, Units 1 and 2 are unlimited + PREMIUM: kept
+- [x] Share to Google Classroom (opens in a new tab): kept, For teachers card
+- [x] Copy link: kept
+- [x] Print as a worksheet + PREMIUM: kept
+- [x] Add the answer key on a separate page: kept
+- [x] Your numbers: Answered, Due for review, To fix, Topics studied (of 75): kept
+- [x] Review queue + PREMIUM: kept
+- [x] Flashcards: Spaced cards from the glossary.: kept
+- [x] Exams: Unit tests and full practice exams.: kept
+- [x] Free-response practice: All six types, with rubrics.: kept
+- [x] Beta notice + Report a problem: kept, footer
+- [x] Trademark line: kept, footer
+- [x] Other AP® courses: Mathematical practice, Typed expressions, Calculator / No-calculator, All four types: kept, variant panel
+- [x] A&P modes: One topic, One chapter, A core concept, Everything I have studied, My weak spots, Missed tool items, Questions I missed, Flagged; Which chapter / core concept; exams line: kept, variant panel

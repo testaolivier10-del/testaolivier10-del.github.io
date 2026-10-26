@@ -81,3 +81,12 @@ and `assets/site-toc.js` precached, the changelog entry "A new look for every pa
   to the display face with tabular numbers would finish the look, but is a separate decision.
 - NREMT home founder line wording on the course home ("an EMT who studied with this course and passed the NREMT")
   differs from the homepage's FTC wording; check-site accepts it.
+
+## Round 3: rebuild every page to its mockup, nothing removed (2026-10-26)
+Round 2 shipped (#95) but kept old layouts with new paint, and dropped some course home items (level and goal
+cards, NREMT topic bars, ochem Daily Rounds, A&P chapter path and link grid, AP® simulators and link grid, among
+others). Olivier asked for every page redesigned again, keeping everything that exists. 73 mockups (R1 to R6) are on
+the design canvas page "Every page, nothing removed". `docs/redesign-r3/inventory/<board>.md` lists every element of
+the live page and where it lives in the mockup; the rebuild must satisfy those checklists. Brief: `docs/redesign-r3/brief.md`.
+Known live bug: AP® Biology Learn topic headings number 1, 4, 5, 7 (counter bug), fix in the rebuild.
+Waiting on Olivier: approval of the R mockups; level/streak/badge cards (kept for now); About review wording and photo.

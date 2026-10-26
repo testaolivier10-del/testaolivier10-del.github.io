@@ -1,0 +1,32 @@
+# R2-NREMT-Results inventory
+Every item found on the live page (Playwright dump + engine source), and where it lives in the mockup. Nothing removed.
+
+- [x] Skip to content link: kept (first focusable, not drawn)
+- [x] LevlPrep logo and course name in the top bar: kept, top bar
+- [x] Search button (opens the / search overlay): kept, top bar
+- [x] Level chip (L1), appears after the first answers: kept, top bar
+- [x] Daily count chip next to the level chip, appears after answering: kept, top bar (noted on Results board)
+- [x] Log in / account button: kept, top bar
+- [x] Answer sounds toggle: kept, top bar
+- [x] Dark mode toggle: kept, top bar
+- [x] Course tabs: Home, Learn, Practice, Review, Exams, Glossary, Tools, Dashboard: kept, tab row (slimmer during a session)
+- [x] Breadcrumb LevlPrep › course › Practice: kept, under tabs
+- [x] Ask me anything tutor button: kept, floating bottom right
+- [x] Footer: About these questions link: kept, footer
+- [x] Footer links: Privacy, Terms, About, Sources, What's new, Premium, Account, Contact: kept, footer
+- [x] Back to Start (top): kept
+- [x] Print or save as PDF: kept
+- [x] Share result: kept
+- [x] Score N/N: kept, big number
+- [x] N% correct, finished in time: kept
+- [x] Per-domain rows with N/N: kept, By domain bars
+- [x] +25 XP: kept, chip
+- [x] Review your misses (N) with description: kept, card
+- [x] N questions still in your review queue for next time: kept, under the card
+- [x] Next step card (Back to the NREMT home, Nothing is due and every lesson so far is done): kept, navy card
+- [x] Filter: All, Incorrect only, Unanswered only: kept, chips
+- [x] Review list items: domain, difficulty, Flag, stem, Your answer ✗, Correct answer, explanation, Report a problem: kept
+- [x] Back to Start (bottom): kept
+- [x] Screen reader status: Exam complete. You scored N out of N, N percent.: kept, visually hidden
+- [x] Timed exam variant: Exam finished, pace line, On track / Within reach / Needs more practice: kept, state panel
+- [x] Hand line 11 right. 4 to fix.: added (approved S05 wording)
