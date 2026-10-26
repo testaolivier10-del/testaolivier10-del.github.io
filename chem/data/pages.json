@@ -43,7 +43,7 @@
    "desc": "Chemistry free-response practice, long and short questions, each with a point-by-point rubric, a full-credit sample answer and a printable answer sheet.",
    "card": "Long and short free-response questions, with rubrics and sample answers.",
    "script": "pages/frq.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "justify",
@@ -93,7 +93,7 @@
    "desc": "Chemistry trainers and drills: justifications, particle diagrams, equilibrium and buffer drills, titration curves, each followed by questions.",
    "card": "Trainers and drills, then the questions about what you did.",
    "script": "pages/tools.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "dashboard",

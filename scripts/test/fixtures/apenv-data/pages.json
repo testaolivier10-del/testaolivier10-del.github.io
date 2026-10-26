@@ -43,7 +43,7 @@
    "desc": "Environmental science free-response practice in the three exam question types, 10 points each, with a rubric, a full-credit sample and a check for your numbers.",
    "card": "The three free-response question types, with 10-point rubrics and sample answers.",
    "script": "pages/frq.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "justify",
@@ -93,7 +93,7 @@
    "desc": "Environmental science trainers: calculations, energy flow, cycles, populations, soil, climate, energy, air and water pollution, toxicity and climate change.",
    "card": "Trainers and simulators, then the questions about what you saw.",
    "script": "pages/tools.js",
-   "css": "pages/pages.css"
+   "css": ["pages/pages.css", "../../assets/course/reading.css"]
   },
   {
    "slug": "dashboard",

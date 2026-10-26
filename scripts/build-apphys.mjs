@@ -907,6 +907,7 @@ ${bodyOpen(` data-frq="${f.id}"`)}
 </main>
 ${footer(depth, `frq:${f.id}`)}
 <link rel="stylesheet" href="../assets/pages/pages.css">
+<link rel="stylesheet" href="../../assets/course/reading.css">
 ${tail({ depth, section: 'exams', extra: ['pages/frq-kit.js', 'pages/frq.js'], premium: true })}
 </body>
 </html>
