@@ -270,3 +270,15 @@
 .cx-flaglist p{margin:0 0 8px;}
 .cx-flaglist-b{display:flex;flex-wrap:wrap;gap:8px;}
 .cx-flaglist-b .btn-outline{min-height:40px;padding:6px 14px;font-size:13px;}
+
+/* ---- 8. Channel look for the question card (site redesign 2026-10) ----
+   Larger, calmer answer rows (at least 52 px tall, easy to hit with a thumb), a
+   bigger stem, and the card on a hairline instead of a shadow. Every option
+   already carries its own "why" once answered (opt-why), which is the part
+   research says helps most: explanations, not just the right letter. */
+.cx-q{border:1px solid var(--line);box-shadow:0 22px 44px -34px rgba(11,26,51,.45);border-radius:22px;}
+.cx-q .cx-q-stem,.cx-q-stem{font:900 19px/1.42 var(--font-ui);letter-spacing:-.005em;}
+.cx-q .cx-opt{min-height:52px;align-items:center;border-radius:14px;font-size:16px;padding:12px 14px;}
+.cx-q .cx-opt .letter{flex-basis:30px;width:30px;height:30px;border-radius:9px;font-size:13px;}
+.cx-q .cx-fb{border-radius:14px;padding:16px 18px;font-size:15px;}
+@media (max-width:640px){.cx-q .cx-q-stem,.cx-q-stem{font-size:17.5px;}}

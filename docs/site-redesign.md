@@ -18,9 +18,14 @@ Practice at phone width). The full rationale and sources are in the Project doc 
 ## Status
 | Part | What | Status |
 |---|---|---|
-| 1 | Covers, display fonts, homepage (`index.html`; AP® cards and pricing from `scripts/build-pricing.mjs` `courseCard`) | PR open |
-| 2 | Course home pages: Start here (3 steps), practice by domain or unit, notes behind search, tools, Premium card | to do |
-| 3 | Practice (focus mode, explanation for every option), notes layout, `premium.html` | to do |
+| 1 | Covers, display fonts, homepage (`index.html`; AP® cards and pricing from `scripts/build-pricing.mjs` `courseCard`) | PR #86 |
+| 2 | Course home pages: cover banner over each hero (`scripts/lib/covers.mjs` `courseBanner`, styles in `assets/course/hub.css`) | PR #87 |
+| 3 | Display headlines on every course page (`assets/course/base.css`), question card restyle (`study.css` section 8), cover per course on `premium.html` (`courseSection` in build-pricing) | PR open |
+
+Merge order: #86, then #87, then part 3 (each stacked on the one before). #85 and #86 both edit the site budget line in
+`scripts/check-weight.mjs`; whichever merges second keeps the higher number.
+Not done yet: the course home layout changes from the canvas (Start here steps, practice by domain) are left for a
+later pass; existing course homes already have practice, notes and Premium cards.
 
 ## Homepage decisions
 - Keeps every generated block and script: from-video card, Continue card, hero facts (now a strip, hidden on phones),

@@ -38,6 +38,11 @@
   .pp-course > summary::before{content:var(--disclose);font:900 20px/1 var(--font-ui);color:var(--muted);width:12px;flex-shrink:0;transition:transform .15s ease;}
   .pp-course[open] > summary::before{transform:rotate(90deg);}
   .pp-course > summary h2{margin:0;flex:1;min-width:0;}
+  /* Each course's own cover (site redesign 2026-10, docs/site-redesign.md). */
+  .pp-course > summary .pp-cover{width:88px;height:44px;object-fit:cover;object-position:right center;border-radius:8px;flex-shrink:0;}
+  .pp-course > summary h2{font-family:'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;}
+  .hero h1{font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.035em;}
+  @media (max-width:480px){.pp-course > summary{gap:10px;}.pp-course > summary .pp-cover{width:44px;height:44px;}.pp-course > summary h2{font-size:18px;overflow-wrap:anywhere;hyphens:auto;}}
   .pp .pp-from{font:900 14px var(--font-ui);color:var(--muted);white-space:nowrap;}
   .pp-course[open] .pp-from{visibility:hidden;}
   @media (prefers-reduced-motion:reduce){.pp-course > summary::before{transition:none;}}
@@ -290,7 +295,7 @@
       <div class="xcontent narrow pp">
 
         <details class="pp-course" id="nremt" data-path="/nremt/">
-          <summary><h2 id="pp-nremt">NREMT-EMT Prep</h2><span class="pp-from"><span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/nremt.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-nremt">NREMT-EMT Prep</h2><span class="pp-from"><span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Study notes, glossary, flowcharts, mnemonics, flashcards and the body map</li><li>15 practice or review questions a day, any topic</li><li>One full timed exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>The full 2,033-question bank, unlimited</li><li>Unlimited timed 100-question exams</li><li>Unlimited missed-question review and spaced repetition</li><li>Readiness score and domain breakdowns</li><li>The clinical scenario simulator</li></ul></div>
@@ -301,7 +306,7 @@
         </details>
 
         <details class="pp-course" id="ochem" data-path="/ochem/">
-          <summary><h2 id="pp-ochem">Organic Chemistry</h2><span class="pp-from">from <span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/ochem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-ochem">Organic Chemistry</h2><span class="pp-from">from <span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>The textbook section for every topic, and the flashcards</li><li>The first four chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson and mechanism walkthrough</li><li>The full 3,675-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>Mastery dashboard and gap detection</li><li>All eight interactive tools</li></ul></div>
@@ -312,7 +317,7 @@
         </details>
 
         <details class="pp-course" id="anp" data-path="/anatomy-physiology/">
-          <summary><h2 id="pp-anp">Anatomy &amp; Physiology</h2><span class="pp-from">from <span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/anp.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-anp">Anatomy &amp; Physiology</h2><span class="pp-from">from <span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>The notes page for every topic, the glossary and the flashcards</li><li>The Foundations chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>The full 3,321-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>All the interactive tools, including the lab practical</li><li>Detailed dashboard analytics</li></ul></div>
@@ -323,7 +328,7 @@
         </details>
 
         <details class="pp-course" id="apbio" data-path="/bio/">
-          <summary><h2 id="pp-apbio">AP® Biology</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apbio">AP® Biology</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every skills lesson</li><li>One simulator</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every simulator</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
@@ -335,7 +340,7 @@
         </details>
 
         <details class="pp-course" id="apchem" data-path="/chem/">
-          <summary><h2 id="pp-apchem">AP® Chemistry</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apchem">AP® Chemistry</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every math refresher lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer and drill: justifications, particle diagrams, equilibrium and buffer drills</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
@@ -347,7 +352,7 @@
         </details>
 
         <details class="pp-course" id="apphys" data-path="/physics/">
-          <summary><h2 id="pp-apphys">AP® Physics 1</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apphys">AP® Physics 1</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: free-body diagrams, motion graphs and the scaling drills</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: free-body diagrams, motion graphs, energy bar charts, collisions, lab design and more</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
@@ -359,7 +364,7 @@
         </details>
 
         <details class="pp-course" id="apcalc" data-path="/calculus/">
-          <summary><h2 id="pp-apcalc">AP® Calculus AB</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apcalc">AP® Calculus AB</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the tangent tracer, the limit explorer and the rule drills</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: related rates, motion, curve analysis, Riemann sums, accumulation, slope fields, area and volume</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and mathematical practice</li></ul></div>
@@ -371,7 +376,7 @@
         </details>
 
         <details class="pp-course" id="apstat" data-path="/statistics/">
-          <summary><h2 id="pp-apstat">AP® Statistics</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apstat">AP® Statistics</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The reference sheet, explained, and the cram-kit study plan outline</li><li>Every lesson in Unit 1, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the sampling distribution machine, the data explorer and probability trees</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: sampling, experiments, distribution areas, interval capture, p-values and power, chi-square and regression</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and skill</li></ul></div>
@@ -383,7 +388,7 @@
         </details>
 
         <details class="pp-course" id="apenv" data-path="/environmental-science/">
-          <summary><h2 id="pp-apenv">AP® Environmental Science</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apenv">AP® Environmental Science</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The formulas you must memorize, explained, and the cram-kit study plan outline</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the calculation studio, energy flow and the nutrient cycles</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: population growth, age structure, soil, climate, energy, pollution, dose-response and climate change</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>

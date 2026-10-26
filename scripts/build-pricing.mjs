@@ -128,7 +128,7 @@ function courseSection(key) {
   const from = lowest(c).price;
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
-          <summary><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
+          <summary><img class="pp-cover" src="assets/covers/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
             <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
@@ -197,6 +197,11 @@ function premiumPage() {
   .pp-course > summary::before{content:var(--disclose);font:900 20px/1 var(--font-ui);color:var(--muted);width:12px;flex-shrink:0;transition:transform .15s ease;}
   .pp-course[open] > summary::before{transform:rotate(90deg);}
   .pp-course > summary h2{margin:0;flex:1;min-width:0;}
+  /* Each course's own cover (site redesign 2026-10, docs/site-redesign.md). */
+  .pp-course > summary .pp-cover{width:88px;height:44px;object-fit:cover;object-position:right center;border-radius:8px;flex-shrink:0;}
+  .pp-course > summary h2{font-family:'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;}
+  .hero h1{font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.035em;}
+  @media (max-width:480px){.pp-course > summary{gap:10px;}.pp-course > summary .pp-cover{width:44px;height:44px;}.pp-course > summary h2{font-size:18px;overflow-wrap:anywhere;hyphens:auto;}}
   .pp .pp-from{font:900 14px var(--font-ui);color:var(--muted);white-space:nowrap;}
   .pp-course[open] .pp-from{visibility:hidden;}
   @media (prefers-reduced-motion:reduce){.pp-course > summary::before{transition:none;}}

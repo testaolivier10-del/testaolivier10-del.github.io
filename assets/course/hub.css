@@ -269,8 +269,6 @@ body[data-course="anp"] .cx-feat{--feat-hi:#F2B9A9;}
   .course-banner .cv-t{left:18px;max-width:55%;}
   .course-banner .cv-t em{display:none;}
 }
-/* The headline of every course page opener in the channel's display face. */
-main .hero h1,main .page-head h1{font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.035em;}
 /* The faint grid paper of the homepage behind a course home. */
 body:has(.course-banner){background-image:linear-gradient(rgba(20,40,60,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(20,40,60,.035) 1px,transparent 1px);background-size:44px 44px;}
 :root[data-theme="dark"] body:has(.course-banner){background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);}
