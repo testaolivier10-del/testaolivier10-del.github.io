@@ -20,28 +20,33 @@
      a lie. -->
 <link rel="stylesheet" href="/assets/theme.css">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site-pages.css">
 <style>
-  .nf-path{
-    font:600 13px var(--font-mono);
-    color:var(--muted);
-    background:var(--track);
-    border:var(--bw) solid var(--line);
-    border-radius:8px;
-    padding:8px 12px;
-    display:inline-block;
-    max-width:100%;
-    overflow-wrap:anywhere;
-    margin:0 0 26px;
-  }
-  .nf-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:0 0 40px;}
-  .nf-card{display:block;text-decoration:none;color:inherit;}
-  .nf-search{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;max-width:520px;}
-  .nf-search input{flex:1;min-width:0;min-height:44px;padding:0 14px;border-radius:12px;border:var(--bw) solid var(--line);background:var(--white);color:var(--ink);font:700 15px var(--font-ui);}
-  .nf-card h2{font-size:17px;margin:0 0 6px;}
-  .nf-card p{margin:0;color:var(--muted);font-size:14px;font-weight:700;}
+  /* The 404 in the light channel look (docs/site-redesign.md, round 2).
+     Shared parts are in assets/site-pages.css. */
+  .nf-hero{gap:48px;}
+  .nf-path{font:600 13px var(--font-mono);color:var(--muted);background:var(--white);border:1px solid var(--line);border-radius:8px;padding:8px 12px;display:inline-block;max-width:100%;overflow-wrap:anywhere;margin:0 0 18px;}
+  .nf-search{display:flex;align-items:center;gap:10px;background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:6px 6px 6px 16px;margin:0 0 16px;max-width:540px;box-shadow:0 20px 40px -30px rgba(11,26,51,.5);}
+  .nf-search:focus-within{outline:3px solid var(--accent);outline-offset:3px;}
+  .nf-glass{width:20px;height:20px;color:var(--muted);flex-shrink:0;}
+  .nf-search input#nfQ{flex:1;min-width:0;border:0;border-radius:0;box-shadow:none;min-height:0;background:transparent;color:var(--ink);font:800 17px var(--font-ui);padding:10px 0;}
+  .nf-search input#nfQ:focus{outline:none;box-shadow:none;}
+  .nf-draw{position:relative;padding:10px;}
+  .nf-draw svg{display:block;width:100%;height:auto;}
+  .nf-k{position:absolute;right:26px;bottom:24px;font:700 20px var(--hand-font);color:var(--gold);transform:rotate(-4deg);}
+  .nf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 28px;}
+  .nf-card{display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:14px;row-gap:2px;align-items:start;padding:10px 14px 12px 10px;text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:none;}
+  .nf-card:hover{border-color:var(--muted);}
+  .nf-card:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+  .nf-card .sp-cv{grid-row:1/3;}
+  .nf-card h2{font:900 16px/1.25 var(--font-ui);margin:4px 0 0;letter-spacing:-.01em;}
+  .nf-card p{margin:0;color:var(--muted);font-size:13.5px;font-weight:600;line-height:1.45;}
+  .nf-tm{color:var(--muted);font-size:13px;margin:0 0 40px;}
+  @media (max-width:900px){.nf-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}.nf-draw{display:none;}}
+  @media (max-width:560px){.nf-grid{grid-template-columns:minmax(0,1fr);}.nf-search input#nfQ{font-size:16px;}}
 </style>
 </head>
-<body>
+<body class="sp-page">
 <a class="skip-link" href="#main">Skip to content</a>
 <header id="site-header" data-site-header>
   <div class="site-header__inner">
@@ -50,79 +55,93 @@
 </header>
 
 <main id="main" class="xshell" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">404</div>
-    <h1>That page isn&rsquo;t here.</h1>
-    <p class="lede">The link may be out of date, or the address may have a typo in it. Nothing is broken on your end.</p>
-    <p class="nf-path" id="nfPath" hidden></p>
-    <form class="nf-search" action="/search.html" method="get" role="search">
-      <label class="sr-only" for="nfQ">Search every course</label>
-      <input type="search" id="nfQ" name="q" placeholder="Search notes, terms, questions" autocomplete="off" enterkeyhint="search">
-      <button type="submit" class="btn-press sm">Search</button>
-    </form>
-    <div class="hero-ctas">
-      <a class="btn-press" href="/">Go to LevlPrep</a>
-      <button type="button" class="link-underline" id="nfBack" hidden>Back to the last page</button>
+  <section class="sp-hero nf-hero" aria-labelledby="nfTitle">
+    <div>
+      <span class="sp-pill">404</span>
+      <h1 id="nfTitle">That page<span>isn&rsquo;t here.</span></h1>
+      <p class="hand">the link may be out of date, or have a typo</p>
+      <p class="lede">Nothing is broken on your end. Search for what you wanted, or pick a course below.</p>
+      <p class="nf-path" id="nfPath" hidden></p>
+      <form class="nf-search" action="/search.html" method="get" role="search">
+        <label class="sr-only" for="nfQ">Search every course</label>
+        <svg class="nf-glass" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <input type="search" id="nfQ" name="q" placeholder="A topic, term or question" autocomplete="off" enterkeyhint="search">
+        <button type="submit" class="btn-chan btn-sm">Search</button>
+      </form>
+      <div class="sp-btns">
+        <a class="btn-ghost" href="/">Go to LevlPrep</a>
+        <button type="button" class="btn-ghost" id="nfBack" hidden>Back to the last page</button>
+      </div>
     </div>
-  </div>
+    <div class="sp-box nf-draw">
+      <svg viewBox="0 0 520 380" aria-hidden="true" focusable="false">
+        <rect x="10" y="20" width="500" height="340" rx="26" fill="#0D3B36"/>
+        <g stroke="#ffffff" stroke-opacity=".06" stroke-width="1"><path d="M10 64H510M10 108H510M10 152H510M10 196H510M10 240H510M10 284H510M10 328H510"/><path d="M54 20V360M98 20V360M142 20V360M186 20V360M230 20V360M274 20V360M318 20V360M362 20V360M406 20V360M450 20V360M494 20V360"/></g>
+        <path d="M30 250 H120 L136 210 L154 290 L174 150 L192 250 H262 L276 228 L290 250 H330" fill="none" stroke="#2EE6D6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M330 250 H352" fill="none" stroke="#2EE6D6" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>
+        <g stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M418 130 V320"/><rect x="352" y="70" width="136" height="92" rx="12" fill="#FFD23F"/></g>
+        <text x="420" y="134" text-anchor="middle" font-family="'Inter Display',Nunito,Arial,sans-serif" font-weight="900" font-size="46" fill="#0B1A33">404</text>
+        <path d="M392 320 H444" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <g fill="#2EE6D6"><circle cx="60" cy="70" r="5"/><circle cx="300" cy="90" r="4"/><circle cx="470" cy="330" r="6"/></g>
+      </svg>
+      <span class="nf-k" aria-hidden="true">just a bad link</span>
+    </div>
+  </section>
 
-  <h2 class="section-head">Or pick up where you meant to go</h2>
+  <div class="sp-sh"><h2 class="sp-h2">Or pick up <span>where you meant to go</span></h2></div>
   <div class="nf-grid">
-    <a class="card nf-card" href="/nremt/">
-      <h2>NREMT-EMT Prep &rarr;</h2>
+    <a class="card nf-card" href="/nremt/"><img class="sp-cv" src="/assets/covers/nremt.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>NREMT-EMT Prep</h2>
       <p>Practice exams, study notes, scenarios and the 3D body map.</p>
     </a>
 <!-- nf-ochem:start -->
-    <a class="card nf-card" href="/ochem/">
-      <h2>Organic Chemistry &rarr;</h2>
+    <a class="card nf-card" href="/ochem/"><img class="sp-cv" src="/assets/covers/ochem.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>Organic Chemistry</h2>
       <p>25 chapters and 123 topics, 10 mechanisms you perform yourself, and 8 tools.</p>
     </a>
 <!-- nf-ochem:end -->
-    <a class="card nf-card" href="/anatomy-physiology/">
-      <h2>Anatomy &amp; Physiology &rarr;</h2>
+    <a class="card nf-card" href="/anatomy-physiology/"><img class="sp-cv" src="/assets/covers/anp.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>Anatomy &amp; Physiology</h2>
       <p>A two-semester college course, from Foundations to development, with a virtual lab practical.</p>
     </a>
 <!-- nf-bio:start -->
-    <a class="card nf-card" href="/bio/">
-      <h2>AP® Biology (Beta) &rarr;</h2>
-      <p>All 75 published topics, in the order of the 2025 course framework, with free notes for every one. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <a class="card nf-card" href="/bio/"><img class="sp-cv" src="/assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Biology (Beta)</h2>
+      <p>All 75 published topics, in the order of the 2025 course framework, with free notes for every one.</p>
     </a>
 <!-- nf-bio:end -->
 <!-- nf-chem:start -->
-    <a class="card nf-card" href="/chem/">
-      <h2>AP® Chemistry (Beta) &rarr;</h2>
-      <p>All 96 published topics, in the order of the 2024 course framework, with free notes for every one. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <a class="card nf-card" href="/chem/"><img class="sp-cv" src="/assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Chemistry (Beta)</h2>
+      <p>All 96 published topics, in the order of the 2024 course framework, with free notes for every one.</p>
     </a>
 <!-- nf-chem:end -->
 <!-- nf-phys:start -->
-    <a class="card nf-card" href="/physics/">
-      <h2>AP® Physics 1 (Beta) &rarr;</h2>
-      <p>All 48 published topics, in the order of the 2024-25 course framework, with free notes for every one. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <a class="card nf-card" href="/physics/"><img class="sp-cv" src="/assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Physics 1 (Beta)</h2>
+      <p>All 48 published topics, in the order of the 2024-25 course framework, with free notes for every one.</p>
     </a>
 <!-- nf-phys:end -->
 <!-- nf-calc:start -->
-    <a class="card nf-card" href="/calculus/">
-      <h2>AP® Calculus AB (Beta) &rarr;</h2>
-      <p>All 88 published topics, in the order of the course framework, with free notes for every one. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <a class="card nf-card" href="/calculus/"><img class="sp-cv" src="/assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Calculus AB (Beta)</h2>
+      <p>All 88 published topics, in the order of the course framework, with free notes for every one.</p>
     </a>
 <!-- nf-calc:end -->
 <!-- nf-stat:start -->
-    <a class="card nf-card" href="/statistics/">
-      <h2>AP® Statistics (Beta) &rarr;</h2>
-      <p>All 60 published topics, in the order of the revised course framework, with free notes for every one. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <a class="card nf-card" href="/statistics/"><img class="sp-cv" src="/assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Statistics (Beta)</h2>
+      <p>All 60 published topics, in the order of the revised course framework, with free notes for every one.</p>
     </a>
 <!-- nf-stat:end -->
 <!-- nf-env:start -->
-    <a class="card nf-card" href="/environmental-science/">
-      <h2>AP® Environmental Science (Beta) &rarr;</h2>
-      <p>All 104 published topics, in the order of the course framework, with free notes for every one. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <a class="card nf-card" href="/environmental-science/"><img class="sp-cv" src="/assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Environmental Science (Beta)</h2>
+      <p>All 104 published topics, in the order of the course framework, with free notes for every one.</p>
     </a>
 <!-- nf-env:end -->
-    <a class="card nf-card" href="/search.html">
-      <h2>Search every course &rarr;</h2>
-      <p>Find a topic, term, question or protocol in any course.</p>
-    </a>
   </div>
+  <p class="nf-tm">AP&reg; is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
 </main>
 
 <script src="/assets/hub-progress.js" defer></script>

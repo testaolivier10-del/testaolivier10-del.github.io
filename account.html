@@ -26,38 +26,66 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <style>
-  .acct h2{font-size:19px;margin:30px 0 10px;}
-  .acct h2:first-child{margin-top:6px;}
-  .acct p{font-size:15px;font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;margin:0 0 10px;}
+  /* Account in the light channel look (docs/site-redesign.md, round 2).
+     Shared parts are in assets/site-pages.css; the rows inside #acctCourses,
+     #acctOrders and #acctGuarantee are written by assets/account-page.js. */
+  .ac-hero{padding-bottom:28px;}
+  .ac-hero h1{font-size:clamp(40px,5vw,62px);}
+  .acct{margin:0 0 56px;}
+  .acct p{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;margin:0 0 10px;}
   .acct strong{color:var(--ink);font-weight:800;}
-  .acct .panel{background:var(--tint-accent);border:var(--bw) solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:0 0 12px;}
-  .acct .course{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;}
-  .acct .course b{font-size:16px;font-weight:900;color:var(--ink);}
+  .acct a{color:var(--accent-text);font-weight:700;}
+  .ac-h{font-weight:900;font-size:26px;letter-spacing:-.03em;line-height:1.1;margin:0 0 14px;color:var(--ink);}
+  .ac-h span{color:var(--accent);}
+  .sp-panel .ac-h{color:var(--panel-ink);}
+  .sp-panel .ac-h span{color:var(--gold);}
+  .ac-out{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:24px;align-items:stretch;}
+  .ac-signin{padding:30px;display:grid;gap:14px;align-content:start;}
+  .ac-signin .ac-h{font-size:32px;margin:0;}
+  .ac-signin p{margin:0;}
+  .ac-wide{width:100%;}
+  .ac-small{font-size:14.5px !important;}
+  .ac-why{padding:30px;display:grid;gap:16px;align-content:start;}
+  .ac-why .sp-chk{font-size:16px;color:var(--panel-ink);}
+  .acct .ac-why p{color:var(--panel-muted);margin:0;}
+  .ac-who{font-size:16px !important;margin:0 0 16px !important;}
+  .ac-pnl{padding:24px 26px;margin:0 0 20px;}
+  .ac-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;}
+  .ac-two .ac-pnl{margin:0 0 20px;}
+  /* One row per course, with the course's own cover. */
+  .acct .course{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;margin:0;}
+  .acct .course:first-child{border-top:0;padding-top:0;}
+  .acct .course .sp-cv{width:56px;height:56px;}
+  .acct .course b{font-size:16.5px;font-weight:900;color:var(--ink);}
   .acct .course .state{display:block;font:700 13.5px var(--font-ui);color:var(--muted);margin-top:3px;}
   .acct .course .state.on{color:var(--good-text);}
   .acct .buy{display:flex;align-items:center;}
   .acct .orders{list-style:none;padding:0;margin:0;}
-  .acct .order{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:0 0 10px;}
+  .acct .order{border-top:1px solid var(--line);padding:12px 0;}
+  .acct .order:first-child{border-top:0;padding-top:0;}
   .acct .order .top{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;align-items:baseline;}
-  .acct .order .top b{font-size:15px;font-weight:900;color:var(--ink);}
+  .acct .order .top b{font-size:15.5px;font-weight:900;color:var(--ink);}
   .acct .order .meta{font:700 13px var(--font-ui);color:var(--muted);margin-top:4px;}
-  .acct .chip{font:800 11px var(--font-mono);letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--tint-accent);color:var(--accent-text);}
+  .acct .chip{font:800 11.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--tint-accent);color:var(--accent-text);}
   .acct .chip.ended,.acct .chip.refunded{background:var(--line);color:var(--muted);}
   .acct .refund{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font:700 13.5px var(--font-ui);color:var(--muted);}
   .acct .note{font:700 14px var(--font-ui);margin:8px 0 0;min-height:1.2em;}
   .acct .note.good{color:var(--good-text);}
   .acct .note.bad{color:var(--bad-text);}
-  .acct ul.links{padding-left:20px;margin:6px 0 0;}
-  .acct ul.links li{font-size:15px;font-weight:600;color:var(--muted);line-height:1.6;margin-bottom:6px;}
+  .acct ul.links{padding-left:20px;margin:0;}
+  .acct ul.links li{font-size:15px;font-weight:600;color:var(--muted);line-height:1.6;margin-bottom:8px;}
   .acct [hidden]{display:none !important;}
   .acct .gform{display:grid;gap:10px;max-width:420px;margin-top:10px;}
   .acct .gform label{font:800 13.5px var(--font-ui);color:var(--ink);display:grid;gap:4px;}
-  .acct .gform input[type=text],.acct .gform input[type=date]{font:600 15px var(--font-ui);padding:9px 11px;border:var(--bw) solid var(--line);border-radius:var(--radius);background:var(--bg,#fff);color:var(--ink);}
+  .acct .gform input[type=text],.acct .gform input[type=date]{font:600 15px var(--font-ui);padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);}
   .acct .gform .check{display:flex;gap:8px;align-items:flex-start;font-weight:700;}
+  @media (max-width:900px){.ac-out,.ac-two{grid-template-columns:minmax(0,1fr);}}
+  @media (max-width:480px){.acct .course{grid-template-columns:44px minmax(0,1fr);}.acct .course .sp-cv{width:44px;height:44px;}.acct .course .buy{grid-column:2;}.ac-signin,.ac-why{padding:22px;}}
 </style>
 </head>
-<body>
+<body class="sp-page">
 <!-- Like privacy.html, this page draws its own header instead of calling
      LevlChrome.render, so it carries its own skip link too. -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -67,49 +95,72 @@
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">Account</div>
-    <h1>Your account &amp; Premium.</h1>
-    <p class="lede">What you have, when it ends, receipts, and refunds, in one place.</p>
-  </div>
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <section class="sp-hero sp-hero--solo ac-hero" aria-labelledby="acTitle">
+    <div>
+      <span class="sp-pill">Account</span>
+      <h1 id="acTitle">Your passes,<span>in one place.</span></h1>
+      <p class="hand">what you have, when it ends, receipts and refunds</p>
+    </div>
+  </section>
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Premium</div>
-      <div class="xcontent narrow acct">
+  <div class="acct">
 
-        <div id="acctOut" class="panel">
-          <p><strong>Sign in to see your passes.</strong> Premium is attached to your account, so it follows you to every device.</p>
-          <button type="button" class="btn-press sm" id="acctSignIn">Log in</button>
-          <p style="margin-top:12px"><a href="premium.html">What&rsquo;s free, what Premium adds, and the prices</a></p>
-        </div>
+    <div id="acctOut" class="ac-out">
+      <section class="sp-box ac-signin" aria-labelledby="acSignTitle">
+        <h2 class="sp-d ac-h" id="acSignTitle">Sign <span>in</span></h2>
+        <p>Sign in to see your passes. Premium is attached to your account, so it follows you to every device. Everything free works without one.</p>
+        <button type="button" class="btn-chan ac-wide" id="acctSignIn">Log in</button>
+        <p class="ac-small"><a href="premium.html">What&rsquo;s free, what Premium adds, and the prices</a></p>
+      </section>
+      <section class="sp-panel ac-why" aria-labelledby="acWhyTitle">
+        <h2 class="sp-d ac-h" id="acWhyTitle">What your <span>account holds</span></h2>
+        <ul class="sp-chk">
+          <li>Your Premium passes, on every device you sign in on</li>
+          <li>Your progress, synced between devices</li>
+          <li>Your purchases, with a refund button for 7 days after each</li>
+          <li>The NREMT Pass-or-extend claim, when it applies</li>
+        </ul>
+        <p>Passes never renew and never charge you again.</p>
+      </section>
+    </div>
 
-        <div id="acctIn" hidden>
-          <p id="acctWho"></p>
-          <h2>Your courses</h2>
-          <div id="acctCourses"></div>
-          <p>Passes never renew and never charge you again. Buying another pass while one is running adds its days on after the current one ends, so nothing is lost. <a href="premium.html">Free vs Premium, and prices</a>.</p>
+    <div id="acctIn" hidden>
+      <p id="acctWho" class="ac-who"></p>
 
-          <h2>Purchases</h2>
+      <section class="sp-box ac-pnl" aria-labelledby="acCourses">
+        <h2 class="sp-d ac-h" id="acCourses">Your <span>courses</span></h2>
+        <div id="acctCourses"></div>
+        <p class="ac-small">Passes never renew and never charge you again. Buying another pass while one is running adds its days on after the current one ends, so nothing is lost. <a href="premium.html">Free vs Premium, and prices</a>.</p>
+      </section>
+
+      <div class="ac-two">
+        <section class="sp-box ac-pnl" aria-labelledby="acOrders">
+          <h2 class="sp-d ac-h" id="acOrders">Purchases</h2>
           <ul class="orders" id="acctOrders"></ul>
           <p id="acctNoOrders" hidden>No purchases yet.</p>
-
-          <h2>Refunds</h2>
-          <p>You can refund a pass yourself, in full, within <strong>7 days</strong> of buying it, from its entry above. The pass ends straight away and the money goes back to your card, usually within 5&ndash;10 business days. Each account and email address gets one refund; after that, or after 7 days, passes can&rsquo;t be refunded. Full terms are on the <a href="terms.html#premium">Terms</a> page.</p>
-
-          <h2>NREMT Pass-or-extend</h2>
+        </section>
+        <section class="sp-box ac-pnl" aria-labelledby="acGuar">
+          <h2 class="sp-d ac-h" id="acGuar">NREMT <span>Pass-or-extend</span></h2>
           <div id="acctGuarantee"></div>
+        </section>
+      </div>
 
-          <h2>Receipts &amp; help</h2>
+      <div class="ac-two">
+        <section class="sp-box ac-pnl" aria-labelledby="acRefunds">
+          <h2 class="sp-d ac-h" id="acRefunds">Refunds</h2>
+          <p>You can refund a pass yourself, in full, within <strong>7 days</strong> of buying it, from its entry under Purchases. The pass ends straight away and the money goes back to your card, usually within 5 to 10 business days. Each account and email address gets one refund; after that, or after 7 days, passes can&rsquo;t be refunded. Full terms are on the <a href="terms.html#premium">Terms</a> page.</p>
+        </section>
+        <section class="sp-box ac-pnl" aria-labelledby="acHelp">
+          <h2 class="sp-d ac-h" id="acHelp">Receipts <span>and help</span></h2>
           <ul class="links">
-            <li><a href="https://polar.sh/levlprep/portal" target="_blank" rel="noopener">Receipts and invoices</a> &mdash; on our payment provider, Polar. Sign in there with the email you paid with.</li>
+            <li><a href="https://polar.sh/levlprep/portal" target="_blank" rel="noopener">Receipts and invoices</a> are on our payment provider, Polar. Sign in there with the email you paid with.</li>
             <li>Sync, sign out and delete your account are in the menu under your name, top right. Backups and your data are on the <a href="privacy.html">Privacy</a> page.</li>
           </ul>
-        </div>
-
+        </section>
       </div>
     </div>
+
   </div>
 </div>
 <div class="xshell narrow">

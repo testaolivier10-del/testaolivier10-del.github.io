@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <style>
   .privacy h2{font-size:19px;margin:30px 0 8px;}
   .privacy h2:first-of-type{margin-top:6px;}
@@ -51,7 +52,7 @@
   .privacy .controls .file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
 </style>
 </head>
-<body>
+<body class="sp-page">
 <!-- Like the hub, this page draws its own header instead of calling
      LevlChrome.render, so it carries its own skip link too. -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -61,18 +62,22 @@
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">Privacy</div>
-    <h1>What leaves your browser.</h1>
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <div class="sp-hero sp-hero--text">
+    <div>
+    <span class="sp-pill">Privacy</span>
+    <h1>What leaves <span>your browser.</span></h1>
+    <p class="hand">what is kept, where, and for how long</p>
     <p class="lede">Short version: almost nothing. There are no ads, the site sets no cookies, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one. <a href="#reminders">Study reminders</a> are off unless you turn them on. If you buy a Premium pass, <a href="#purchases">Buying a Premium pass</a> says what the payment company and we keep about it.</p>
     <p class="updated">Last updated 25 October 2026</p>
+    </div>
+    <p class="sp-aside">Found something wrong?<br><a href="mailto:hello@levlprep.com">hello@levlprep.com</a></p>
   </div>
 
   <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Details</div>
-      <div class="xcontent narrow privacy">
+    <div class="sp-doc">
+      <nav class="sp-toc" aria-label="On this page"></nav>
+      <div class="sp-prose privacy">
 
         <h2 id="on-device">Your progress stays on your device</h2>
         <p>Answers, scores, streaks, XP, mastery, flagged questions, your exam date and your light/dark preference are all written to your browser's <strong>localStorage</strong>. That is a store only this site can read, it never travels with a request, and clearing your browser data erases it. No account is needed to use any free feature on this site, except the study assistant&rsquo;s AI answers (see <a href="#assistant">The study assistant</a>). Buying Premium needs one.</p>
@@ -259,6 +264,7 @@
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
 <script src="assets/site-chrome.js" defer></script>
+<script src="assets/site-toc.js" defer></script>
 <!-- This page draws its own header rather than calling LevlChrome.render, so
      nothing has mounted analytics.js for it. Loaded here on its own account:
      the opt-out switch below needs LevlAnalytics to read and write. -->
