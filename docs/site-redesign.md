@@ -90,3 +90,11 @@ the design canvas page "Every page, nothing removed". `docs/redesign-r3/inventor
 the live page and where it lives in the mockup; the rebuild must satisfy those checklists. Brief: `docs/redesign-r3/brief.md`.
 Known live bug: AP® Biology Learn topic headings number 1, 4, 5, 7 (counter bug), fix in the rebuild.
 Waiting on Olivier: approval of the R mockups; level/streak/badge cards (kept for now); About review wording and photo.
+
+## Round 3, chosen system (2026-10-26)
+Olivier picked course home V09b (cover band, contents list beside the try-one question, no full course directory)
+and asked for every course page built from it, cohesive. Rules he set: the "Who makes this / How the questions are
+written / What changes" block only on course homes (and site home, About); no "Other states" panels; inner pages
+open with a short cover band. 41 boards are on the canvas page "The whole course, one system"; copies and the shared
+markup are in `docs/redesign-r3/r10/` (`R10-SYSTEM.md` is the class and markup reference), placement lists in
+`docs/redesign-r3/inventory/R10-*.md`. Open: ochem chapter count (home says 23, textbook 25).
