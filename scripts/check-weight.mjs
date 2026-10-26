@@ -148,7 +148,10 @@ const SHELL_BUDGETS = [
   /* 296.5 -> 297.5 for registering AP® Environmental Science (docs/apenv-spec.md, Phase 0): the ninth course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam date
      and the theme tint (+1.0 KB measured alone). */
-  ['site', 297.5],
+  /* 297.5 -> 305.5 for the site redesign (docs/site-redesign.md, owner 2026-10-25): assets/fonts/display.css and
+     its two faces, Inter 800-900 and Kalam 700, cut to latin (20.5 KB and 12.5 KB of woff2). They carry the
+     channel look's headlines; body text stays Nunito. Measured 305.0 KB. */
+  ['site', 305.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -399,7 +402,9 @@ const BUDGETS = [
      the offers. Measured 9.6 KB. 9.8 -> 10.1 for AP® Environmental Science's
      launch (docs/apenv-spec.md decision 12): its hub card, its pass in the FAQ
      and the offers. Measured 9.8 KB. */
-  ['index.html', 10.1],
+  /* 10.1 -> 11.3 for the redesigned homepage (docs/site-redesign.md): the answer-it-here question with its
+     explanation, the founder line, the course covers' markup and the steps. Measured 11.1 KB. */
+  ['index.html', 11.3],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */

@@ -1,0 +1,10 @@
+/* The two display faces of the channel look (docs/site-redesign.md): Inter
+   for the heavy two-tone headlines and course titles, the face the YouTube and
+   TikTok thumbnails use, and Kalam for the one handwritten line. Self-hosted
+   like fonts.css, latin only, cut down to what the headlines need: Inter's
+   800 to 900 range and Kalam 700. Both are SIL Open Font License 1.1
+   (OFL-inter.txt, OFL-kalam.txt). Body text stays Nunito.
+   font-display: optional, as in fonts.css: a face not ready at first paint is
+   skipped for that page rather than swapped in and re-flowing the headline. */
+@font-face{font-family:'Inter Display';font-style:normal;font-weight:800 900;font-display:optional;src:url(inter-display-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+2013-2014, U+2018-201F, U+2026, U+2122;}
+@font-face{font-family:'Kalam';font-style:normal;font-weight:700;font-display:optional;src:url(kalam-700-latin.woff2) format('woff2');unicode-range:U+0000-007E, U+2018-201F, U+2026;}

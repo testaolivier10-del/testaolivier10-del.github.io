@@ -321,35 +321,34 @@ put('premium.html', premiumPage());
    FREE_SENTENCE, so the cards cannot drift from what every other page says. */
 function hubPricing() {
   const low = Math.min(...ORDER.map((k) => lowest(COURSES[k]).price));
-  const price = founding
-    ? `From ${money(low)}, one-time<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
-    : `From ${money(low)}, one-time`;
   const cap = (t) => t[0].toUpperCase() + t.slice(1);
   const [notes, lessons, adds] = FREE_SENTENCE.replace(/\.$/, '').split('; ');
   if (!adds || !/^Premium adds /.test(adds)) throw new Error('build-pricing: FREE_SENTENCE no longer reads "…; …; Premium adds …"');
   const premium = adds.replace(/^Premium adds /, '').split(/, | and /);
   const li = (t) => `<li>${esc(cap(t))}</li>`;
-  return `  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Free and Premium</div>
-      <div class="xcontent">
-        <div class="hub-plans">
-          <div class="hub-plan">
-            <h3>Free</h3>
-            <p class="hub-plan__price">Every course, free to start</p>
-            <ul>${li(notes)}${li(lessons)}</ul>
-          </div>
-          <div class="hub-plan hub-plan--premium">
-            <h3>Premium</h3>
-            <p class="hub-plan__price">${price}</p>
-            <ul>${premium.map(li).join('')}</ul>
-            <p class="hub-plan__note">One pass per course. No subscription, and a 7-day refund.</p>
-          </div>
-        </div>
-        <a class="featured-cta hub-plans__more" href="premium.html">What&rsquo;s free in each course, and the prices &rarr;</a>
-      </div>
+  /* Free and Premium side by side (site redesign 2026-10): what is free first,
+     then the price with the risk-reversal line right under its button, where a
+     guarantee line has been measured to help most. */
+  const amount = founding
+    ? `From ${money(low)}<span data-founding-until="${founding.until}"> (${money(foundingPrice(low))} founding price until ${longDate(founding.until)})</span>`
+    : `From ${money(low)}`;
+  return `  <section class="home-deal" aria-label="Free and Premium">
+    <div class="plan">
+      <span class="pill">Free</span>
+      <h3>Start now, keep it free</h3>
+      <p class="plan__note">Start in any course, with no card.</p>
+      <ul>${li(notes)}${li(lessons)}<li>Your level, streak and weak topics</li><li>No ads</li></ul>
+      <a class="btn-ghost" href="nremt/practice.html">Start a free practice test</a>
     </div>
-  </div>
+    <div class="plan plan--premium">
+      <span class="pill">Premium</span>
+      <p class="plan__amt">${amount}</p>
+      <p class="plan__note">One-time pass per course. No subscription.</p>
+      <ul>${premium.map(li).join('')}</ul>
+      <a class="btn-gold" href="premium.html">See prices for your course</a>
+      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
+    </div>
+  </section>
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>`;
 }
 
@@ -375,17 +374,13 @@ const FAQ = [
 ];
 
 function hubFaq() {
-  return `  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Questions</div>
-      <div class="xcontent">
-        <div class="hub-faq">
-${FAQ.map(([q, a], i) => `          <h2>${esc(q)}</h2>
-          <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
-        </div>
-      </div>
+  return `  <section class="home-faq" aria-labelledby="home-faq-h">
+    <h2 id="home-faq-h">Questions</h2>
+    <div class="hub-faq">
+${FAQ.map(([q, a], i) => `      <h3>${esc(q)}</h3>
+      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
     </div>
-  </div>`;
+  </section>`;
 }
 
 function hubLd() {
@@ -421,143 +416,45 @@ function hubLd() {
   return `<script type="application/ld+json">\n${JSON.stringify(ld).replace(/<\//g, '<\\/')}\n</script>`;
 }
 
-/* AP® Biology's hub card, once a unit is out. What it says is counted from
-   what is published (scripts/build-apbio.mjs), never typed. "N published
-   topics", not "N topics": check-site reads "N topics" on the hub as the
-   ochem curriculum's count. */
+/* The homepage course cards (site redesign 2026-10, docs/site-redesign.md):
+   each course's own cover art (assets/covers/<key>.svg, never a video
+   thumbnail) with its two-tone title and handwritten line, then the name, a
+   badge and one line. The three complete courses are typed in index.html in
+   the same shape; the AP® cards come from here, counted from what is
+   published, never typed. "N published topics", not "N topics": check-site
+   reads "N topics" on the hub as the ochem curriculum's count. */
+export function courseCard({ href, tint, cover, t1, t2, hand, name, tag, line }) {
+  return `        <a class="ccard" href="${href}" data-tint="${tint}">
+          <span class="cover" data-cover="${cover}"><img src="assets/covers/${cover}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>${t1}<span>${t2}</span></b><em>${hand}</em></span></span>
+          <span class="cmeta"><span class="cname">${name}</span><span class="tag${tag === 'Beta' ? ' tag--beta' : ''}">${tag}</span></span>
+          <span class="cdesc">${line}</span>
+        </a>`;
+}
+const published = (all, topics, rest) => (all ? `All ${fmt(topics)} published topics, ${rest}.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, ${rest}.`);
+const apCard = (o) => courseCard({ tag: 'Beta', t1: 'AP®', ...o });
 function hubBioCard() {
-  const topics = N.apbioTopics;
-  return `        <a class="featured-card" href="bio/" data-tint="bio">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Biology</p>
-            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${BIO_ALL ? `All ${fmt(topics)} published topics, from the chemistry of life to ecology.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Stimulus sets</span>
-            <span>Statistics skills</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'bio/', tint: 'bio', cover: 'apbio', t2: 'Biology', hand: 'every unit, data questions', name: 'AP® Biology',
+    line: published(BIO_ALL, N.apbioTopics, 'with data-heavy practice like the real exam') });
 }
-
-/* AP® Chemistry's hub card, the same way: counted, never typed. */
 function hubChemCard() {
-  const topics = N.apchemTopics;
-  return `        <a class="featured-card" href="chem/" data-tint="apchem">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3"/><path d="M7.5 3h9M6.7 14h10.6"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Chemistry</p>
-            <p class="featured-desc">Built on the 2024 course framework, in its order: lessons from scratch at the particle level, practice that checks units and significant figures, and justification training. ${CHEM_ALL ? `All ${fmt(topics)} published topics, from the math you need to electrochemistry.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Particle diagrams</span>
-            <span>Units and sig figs</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'chem/', tint: 'apchem', cover: 'apchem', t2: 'Chemistry', hand: 'units and sig figs, checked', name: 'AP® Chemistry',
+    line: published(CHEM_ALL, N.apchemTopics, 'with units and significant figures checked') });
 }
-
-/* AP® Physics 1's hub card, the same way: the pendulum icon (docs/apphys-spec.md
-   decision 3), counted, never typed. */
 function hubPhysCard() {
-  const topics = N.apphysTopics;
-  return `        <a class="featured-card" href="physics/" data-tint="apphys">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16"/><path d="M12 3v11.5"/><circle cx="12" cy="17.5" r="3"/><path d="M6.5 15.5a7 7 0 0 0 11 0" stroke-dasharray="1.5 2.5"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Physics 1</p>
-            <p class="featured-desc">Built on the 2024-25 course framework, in its order: lessons from scratch, free-body diagrams graded force by force, and trainers that are also tests. ${PHYS_ALL ? `All ${fmt(topics)} published topics, from the math you need to fluids.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Free-body diagrams</span>
-            <span>Lab design</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'physics/', tint: 'apphys', cover: 'apphys', t2: 'Physics 1', hand: 'force by force', name: 'AP® Physics 1',
+    line: published(PHYS_ALL, N.apphysTopics, 'with free-body diagrams graded force by force') });
 }
-
-/* AP® Calculus AB's hub card, the same way: the integral sign over a curve
-   (docs/apcalc-spec.md decision 6), counted, never typed. */
 function hubCalcCard() {
-  const topics = N.apcalcTopics;
-  return `        <a class="featured-card" href="calculus/" data-tint="apcalc">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Calculus AB</p>
-            <p class="featured-desc">Built on the course framework, in its order: lessons from scratch, answers you type as expressions and are graded by value, and calculator and no-calculator practice as the exam splits it. ${CALC_ALL ? `All ${fmt(topics)} published topics, from the math you need to volumes.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Tangent tracer</span>
-            <span>Typed answers</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'calculus/', tint: 'apcalc', cover: 'apcalc', t2: 'Calculus AB', hand: 'typed like real math', name: 'AP® Calculus AB',
+    line: published(CALC_ALL, N.apcalcTopics, 'with answers you type as expressions') });
 }
-
-/* AP® Statistics's hub card, the same way: a bell curve over histogram bars
-   in plum (docs/apstat-spec.md decision 5), counted, never typed. */
 function hubStatCard() {
-  const topics = N.apstatTopics;
-  return `        <a class="featured-card" href="statistics/" data-tint="apstat">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20v-4M10 20v-8M14 20v-8M17 20v-4" stroke-opacity=".55"/><path d="M3 18c4 0 5-13 9-13s5 13 9 13"/><path d="M2 21h20"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Statistics</p>
-            <p class="featured-desc">Built on the revised course framework for the May 2027 exam: lessons from scratch, numbers from a table or a calculator both accepted, and conclusions checked part by part in context. ${STAT_ALL ? `All ${fmt(topics)} published topics, from the math you need to regression.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Sampling simulator</span>
-            <span>Conclusions in context</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'statistics/', tint: 'apstat', cover: 'apstat', t2: 'Statistics', hand: 'conclusions in context', name: 'AP® Statistics',
+    line: published(STAT_ALL, N.apstatTopics, 'with conclusions checked in context') });
 }
-
-/* AP® Environmental Science's hub card, the same way: a leaf over a globe
-   line in olive (docs/apenv-spec.md decision 5), counted, never typed. */
 function hubEnvCard() {
-  const topics = N.apenvTopics;
-  return `        <a class="featured-card" href="environmental-science/" data-tint="apenv">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke-opacity=".55"/><path d="M4 13h16" stroke-opacity=".55"/><path d="M12 3c4 2 6 5 6 9-4 0-7-2-8-6"/><path d="M12 3c-1 4 0 7 3 9"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Environmental Science</p>
-            <p class="featured-desc">Built on the course framework for the May 2027 exam: lessons from scratch, every calculation drilled with its setup and units, and written answers made specific enough to score. ${ENV_ALL ? `All ${fmt(topics)} published topics, from ecosystems to global change.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Calculation studio</span>
-            <span>Specific answers</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
-        </a>`;
+  return apCard({ href: 'environmental-science/', tint: 'apenv', cover: 'apenv', t1: 'AP® Environmental', t2: 'Science', hand: 'every calculation, with units', name: 'AP® Environmental Science',
+    line: published(ENV_ALL, N.apenvTopics, 'with every calculation drilled with units') });
 }
 
 {
@@ -575,8 +472,8 @@ function hubEnvCard() {
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
   for (const [re, txt] of [
-    [/(<div class="eyebrow">)\w+ courses( &middot; free to start<\/div>)/, `$1${word} courses$2`],
-    [/(<a class="featured-cta hero-more" href="#subjects">See all )\w+( courses &rarr;<\/a>)/, `$1${word.toLowerCase()}$2`],
+    [/(<div class="eyebrow">Free to start &middot; )\w+( courses &middot; notes free forever<\/div>)/, `$1${word.toLowerCase()}$2`],
+    [/(<a class="btn-ghost hero-more" href="#subjects">See all )\w+( courses<\/a>)/, `$1${word.toLowerCase()}$2`],
   ]) {
     if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
     src = src.replace(re, txt);

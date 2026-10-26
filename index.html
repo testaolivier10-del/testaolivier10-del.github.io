@@ -31,145 +31,161 @@
 <script src="assets/site-chrome.js" defer></script>
 <script src="assets/hub-home.js" defer></script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/fonts/display.css">
 <style>
-  /* Hub-only components. The shared system in assets/theme.css — the same file
-     the NREMT app loads — carries the palette, typography, cards and buttons. */
-  .hero .lede{max-width:62ch;}
-  /* A returning student's way back in, drawn in the hero. */
-  .hero-continue{
-    display:flex;flex-direction:column;gap:2px;margin-top:20px;max-width:440px;text-decoration:none;
-    background:var(--navy);color:var(--on-accent);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--lift);
-  }
+  /* Homepage in the light channel look (docs/site-redesign.md): the YouTube
+     and TikTok thumbnails' two-tone headlines, handwritten line and course
+     colours, on the site's own light theme so it reads calm, not loud. The
+     shared system in assets/theme.css carries the palette and the dark theme. */
+  body.home{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;}
+  .home{--grid:rgba(20,40,60,.035);--chan:#0B1A33;--chan-press:#16284A;--on-chan:#fff;--hand:var(--amber-text);--display:'Inter Display','Nunito',system-ui,sans-serif;}
+  :root[data-theme="dark"] .home{--grid:rgba(255,255,255,.03);--chan:#2EE6D6;--chan-press:#7FF0E6;--on-chan:#081428;--hand:#F2C14E;}
+  .hwrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .pill,.home .eyebrow{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:2px 11px;font:800 12.5px var(--font-ui);letter-spacing:.02em;text-transform:none;color:var(--accent);margin:0;}
+  .home-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:40px 0 48px;}
+  .home h1,.home h2,.cv-t b,.plan__amt{font-family:var(--display);}
+  .home h1{font-weight:900;font-size:clamp(42px,5.4vw,66px);line-height:1;letter-spacing:-.04em;margin:16px 0 12px;}
+  .home h1 span{display:block;color:var(--accent);}
+  .hand{font:700 clamp(20px,2.2vw,25px)/1.2 'Kalam','Nunito',cursive;color:var(--hand);margin:0 0 16px;}
+  .home .lede{color:var(--muted);font-size:17.5px;margin:0 0 26px;max-width:32em;}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-chan,.btn-ghost,.btn-gold{display:inline-block;text-decoration:none;font:900 16.5px var(--font-ui);padding:14px 22px;border-radius:12px;}
+  .btn-chan{background:var(--chan);color:var(--on-chan);}
+  .btn-chan:hover{background:var(--chan-press);}
+  .btn-ghost{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--muted);}
+  .btn-gold{background:#FFD23F;color:#0B1A33;}
+  .founder{display:flex;gap:12px;align-items:center;margin-top:20px;font-size:14.5px;color:var(--muted);max-width:32em;}
+  .founder .av{flex:none;width:38px;height:38px;border-radius:50%;background:#0B1A33;color:#2EE6D6;display:grid;place-items:center;font:900 13px var(--font-ui);}
+  .founder a{color:var(--accent-text);}
+  .hero-continue{display:flex;flex-direction:column;gap:2px;margin-top:18px;max-width:440px;text-decoration:none;background:var(--navy);color:var(--on-accent);border-radius:var(--radius);padding:12px 16px;}
   .hero-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.8;}
-  .hero-continue b{font:900 15.5px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .hero-continue:hover{background:var(--navy2);}
+  .hero-continue b{font:900 15px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   #fromVideo.fv-wait{min-height:414px;}@media(min-width:600px){#fromVideo.fv-wait{min-height:314px;}}
-  /* On a phone the facts would push the courses below the fold. */
-  @media (max-width:640px){ .hero .fact-row{display:none;} }
-  /* Two lines rather than four at desktop width, so the three subjects are on
-     screen without scrolling. */
-  .hero h1{max-width:32ch;}
-  .hero-ctas .hero-more{text-decoration:none;}
-  .fact-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;font:800 13px var(--font-ui);color:var(--muted);}
-  .fact-row span{display:inline-flex;align-items:center;gap:7px;}
-  .fact-row .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-
-  /* The subject tile is already a raised card, so the section wrapper must not
-     add a second one around it. */
-  .xgrid:has(> .xlabel) > .xcontent:has(.featured-card){
-    background:none;border:0;padding:0;box-shadow:none;
-  }
-  /* Two subjects, side by side once there's room for them. Stacked, they left
-     the right half of a desktop page empty while the hero, the cards and the
-     section rules each stopped at a different width. */
-  .subject-grid{display:grid;gap:20px;grid-template-columns:1fr;}
-  @media (min-width:700px){
-    .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .subject-grid > .featured-card:last-child:nth-child(odd){grid-column:1 / -1;}
-  }
-  /* Three across; rows always fill (polish A5): with 3n+1 cards the first
-     and last span two columns, with 3n+2 the last does. */
-  @media (min-width:1000px){
-    .subject-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
-    .subject-grid > .featured-card:last-child:nth-child(odd){grid-column:auto;}
-    .subject-grid:has(> .featured-card:nth-child(3n+4):last-child) > .featured-card:is(:first-child,:last-child),
-    .subject-grid:has(> .featured-card:nth-child(3n+2):last-child) > .featured-card:last-child{grid-column:span 2;}
-    .featured-card{padding:24px 22px;}
-  }
-  .featured-card{
-    display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;
-    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
-    box-shadow:var(--lift-lg);padding:28px 26px;
-    transition:border-color .12s ease,transform .08s ease,box-shadow .08s ease;
-  }
-  .featured-card:hover{border-color:var(--accent);transform:translateY(2px);box-shadow:var(--lift-sm);}
-  .featured-card:active{transform:translateY(5px);box-shadow:0 0 0 var(--line);}
-  .featured-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
-  /* Each course's icon in its own tint (theme.css [data-tint]; polish A3). */
-  .featured-card[data-tint]:hover{border-color:var(--cink);}
-  .featured-icon{
-    width:48px;height:48px;border-radius:14px;background:var(--ctint);color:var(--cink);
-    display:flex;align-items:center;justify-content:center;font:900 22px var(--font-ui);
-    flex-shrink:0;
-  }
-  .status-badge{
-    font:900 11.5px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:6px;color:var(--good-text);background:var(--tint-good);
-    border-radius:var(--radius-pill);padding:6px 12px;flex-shrink:0;
-  }
-  .status-badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
-  .featured-name{font:900 21px var(--font-ui);margin:0;color:var(--ink);letter-spacing:-0.02em;}
-  .featured-desc{font-size:14.5px;font-weight:600;color:var(--muted);margin:6px 0 0;max-width:60ch;text-wrap:pretty;}
-  .featured-tags{display:flex;flex-wrap:wrap;gap:8px;}
-  .featured-tags span{
-    font:800 12px var(--font-ui);color:var(--ink);background:var(--paper);
-    border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:6px 13px;
-  }
-  .featured-cta{font:900 14px var(--font-ui);color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
-  .featured-card:hover .featured-cta{gap:10px;}
-
-  /* Your-progress card. Only rendered once there is progress to show, so a
-     first-time visitor sees the subjects immediately instead of an empty
-     scoreboard. */
-  .hub-progress-card{
-    background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);
-    padding:22px 24px;box-shadow:var(--lift-lg);
-  }
+  /* The try-one question: answering it shows why, before any sign-up. */
+  .tryq{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4);}
+  .tryq__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .tryq__top .hand{margin:0;font-size:19px;}
+  .tryq__stem{font:900 20px/1.28 var(--font-ui);color:var(--ink);margin:0 0 14px;letter-spacing:-.01em;}
+  .tryq fieldset{border:0;margin:0;padding:0;display:grid;gap:8px;}
+  .tryq legend{position:absolute;left:-9999px;}
+  .tryq label{display:flex;gap:12px;align-items:center;min-height:48px;box-sizing:border-box;padding:10px 14px;border-radius:12px;background:var(--surface2);border:1.5px solid transparent;font-weight:700;cursor:pointer;}
+  .tryq label:hover{border-color:var(--line);}
+  .tryq input{flex:none;width:20px;height:20px;margin:0;accent-color:var(--ink);}
+  .tryq.done label{cursor:default;}
+  .tryq.done label.ok{background:var(--tint-good);border-color:var(--good);}
+  .tryq.done label.picked:not(.ok){background:var(--tint-bad);border-color:var(--bad);}
+  .tryq__why,.tryq__more{display:none;}
+  .tryq.done .tryq__why{display:block;margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--tint-good);border-left:4px solid var(--good);font-size:15px;color:var(--ink);}
+  .tryq__why b{display:block;}
+  .tryq.done .tryq__more{display:block;margin:12px 0 0;font-weight:900;}
+  .tryq__more a{color:var(--accent-text);}
+  .tryq.done .tryq__tip{display:none;}
+  .tryq__tip{margin:12px 0 0;}
+  /* The counted facts, as a strip under the hero. */
+  .fact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 44px;}
+  .fact-row > span{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font:800 14px/1.35 var(--font-ui);color:var(--ink);}
+  .fact-row .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .home-sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin:0 0 18px;}
+  .home h2{font-weight:900;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.035em;line-height:1.05;margin:0;}
+  .home h2 span{color:var(--accent);}
+  .home-sh p{margin:0;color:var(--muted);max-width:30em;}
+  /* Course cards: each course's own cover, never a video thumbnail. */
+  .subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:64px;}
+  .ccard{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:18px;padding:8px 8px 14px;}
+  .ccard:hover{border-color:var(--muted);box-shadow:0 14px 30px -24px rgba(11,26,51,.5);}
+  .cover{position:relative;display:block;aspect-ratio:2/1;border-radius:12px;overflow:hidden;background:#0B1A33;}
+  .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;}
+  .cv-t{position:absolute;left:6%;top:50%;transform:translateY(-50%);max-width:48%;color:#fff;}
+  .cv-t b{display:block;font-weight:900;font-size:clamp(17px,1.9vw,24px);line-height:.98;letter-spacing:-.03em;}
+  .cv-t b span{display:block;}
+  .cv-t em{display:block;margin-top:6px;font:700 14px/1.15 'Kalam','Nunito',cursive;color:#FFD23F;}
+  [data-cover="nremt"] .cv-t span{color:#2EE6D6;}[data-cover="ochem"] .cv-t span{color:#A18FFF;}[data-cover="anp"] .cv-t span{color:#FF8A6B;}
+  [data-cover="apbio"] .cv-t span{color:#7CCB6B;}[data-cover="apchem"] .cv-t span{color:#8FAEFF;}[data-cover="apphys"] .cv-t span{color:#FFB21E;}
+  [data-cover="apcalc"] .cv-t span{color:#FF5C9A;}[data-cover="apstat"] .cv-t span{color:#5CC8F0;}[data-cover="apenv"] .cv-t span{color:#A6DB5C;}
+  .cmeta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 6px 0;}
+  .cname{font:900 17px var(--font-ui);}
+  .tag{font:800 12px var(--font-ui);border-radius:999px;padding:2px 10px;white-space:nowrap;background:var(--tint-good);color:var(--good-text);}
+  .tag--beta{background:#FFF3D6;color:var(--amber-text);}
+  :root[data-theme="dark"] .tag--beta{background:rgba(242,193,78,.14);}
+  :root[data-theme="dark"] .founder .av{background:#2EE6D6;color:#081428;}
+  .cdesc{margin:0 6px;font-size:14.5px;color:var(--muted);line-height:1.45;}
+  .home-how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 64px;}
+  .home-how h2{grid-column:1/-1;margin-bottom:4px;}
+  .step{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px 22px;}
+  .step .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#0B1A33;color:#2EE6D6;font:900 14px var(--font-ui);margin-bottom:8px;}
+  .step h3{margin:0 0 4px;font:900 18px var(--font-ui);letter-spacing:-.01em;}
+  .step p{margin:0;color:var(--muted);font-size:15px;}
+  .home-deal{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0 0 64px;}
+  .plan{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:26px;}
+  .plan h3{font:900 24px var(--font-ui);letter-spacing:-.02em;margin:10px 0 4px;}
+  .plan__note{color:var(--muted);margin:0 0 12px;}
+  .plan ul{margin:0 0 18px;padding:0;list-style:none;display:grid;gap:7px;}
+  .plan li{padding-left:24px;position:relative;}
+  .plan li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:6px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg);}
+  .plan--premium{background:#0B1A33;border-color:#0B1A33;color:#fff;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;}
+  .plan--premium .pill{color:#FFD23F;}
+  .plan--premium .plan__note,.plan__sure{color:#B9C8E2;}
+  .plan--premium li::before{border-color:#2EE6D6;}
+  .plan__amt{font-weight:900;font-size:40px;letter-spacing:-.04em;line-height:1.05;color:#FFD23F;margin:10px 0 4px;}
+  .plan__amt span{display:block;font:800 15px var(--font-ui);letter-spacing:0;color:#fff;margin-top:4px;}
+  .plan__sure{font-size:13.5px;margin:10px 0 0;}
+  .home-faq{display:grid;grid-template-columns:240px 1fr;gap:24px;margin:0 0 56px;}
+  .hub-faq{max-width:68ch;}
+  .hub-faq h3{font:900 16.5px/1.3 var(--font-ui);margin:0 0 4px;}
+  .hub-faq p{margin:0 0 16px;font-size:15px;color:var(--muted);line-height:1.6;}
+  .hub-faq a{color:var(--ink);}
+  .about-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 40px;}
+  .about-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px 20px;}
+  .about-card .k{font:900 15px var(--font-ui);margin-bottom:6px;}
+  .about-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.6;}
+  .about-card a{color:var(--ink);}
+  /* Your-progress card, once there is progress to show. */
+  #hubProgress{margin:0 0 40px;}
+  .hub-progress-card{background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);padding:22px 24px;}
   .hub-progress-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-  .hub-level-ring{
-    width:52px;height:52px;border-radius:50%;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
-    font:900 17px var(--font-ui);background:rgba(255,255,255,0.14);
-    border:2px solid rgba(255,255,255,0.28);
-  }
-  .hub-level-title{font:900 19px var(--font-ui);margin:0;letter-spacing:-0.01em;}
+  .hub-level-ring{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font:900 17px var(--font-ui);background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.28);}
+  .hub-level-title{font:900 19px var(--font-ui);margin:0;}
   .hub-level-sub{font:700 13px var(--font-ui);margin:3px 0 0;opacity:.78;}
-  .hub-track{height:9px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.16);overflow:hidden;}
+  .hub-track{height:9px;border-radius:var(--radius-pill);background:rgba(255,255,255,.16);overflow:hidden;}
   .hub-fill{height:100%;background:var(--on-accent);border-radius:var(--radius-pill);}
-  .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);}
-  .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,0.16);color:#F4D28C;}
-  /* One "Continue" per course you have started, each to the exact place that
-     course's home would send you (the course homes leave a pointer in
-     localStorage['levl_resume']; without one it is the course home). */
+  .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,.15);}
+  .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,.16);color:#F4D28C;}
   .hub-continue{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:16px;}
-  .hub-continue a{
-    display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--on-accent);
-    background:rgba(255,255,255,0.10);border-radius:var(--radius);padding:11px 14px;
-    transition:background-color .12s ease;
-  }
-  .hub-continue a:hover{background:rgba(255,255,255,0.18);}
+  .hub-continue a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--on-accent);background:rgba(255,255,255,.10);border-radius:var(--radius);padding:11px 14px;}
+  .hub-continue a:hover{background:rgba(255,255,255,.18);}
   .hub-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.75;}
   .hub-continue b{font:900 14.5px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  /* The three trust cards under the subjects: who makes this, how the
-     questions are written, how to report one. */
-  .about-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
-  .about-card{background:var(--tint-accent);border-radius:var(--radius);padding:18px 20px;}
-  .about-card .k{font:800 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
-  .about-card p{margin:0;font-size:14px;font-weight:600;color:var(--muted);line-height:1.6;text-wrap:pretty;}
-  .about-card a{color:var(--ink);}
-  /* Free and Premium side by side (generated by scripts/build-pricing.mjs). */
-  .hub-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
-  .hub-plan{background:var(--paper);border:var(--bw) solid var(--line);border-radius:var(--radius);padding:18px 20px;}
-  .hub-plan--premium{background:var(--tint-accent);border-color:transparent;}
-  .hub-plan h3{font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin:0 0 6px;}
-  .hub-plan__price{font:900 18px/1.35 var(--font-ui);color:var(--ink);margin:0 0 10px;letter-spacing:-0.01em;}
-  .hub-plan ul{margin:0;padding-left:18px;}
-  .hub-plan li{font-size:14.5px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 4px;}
-  .hub-plan__note{margin:10px 0 0;font-size:13.5px;font-weight:700;color:var(--muted);}
-  .hub-plans__more{margin-top:16px;text-decoration:none;}
-  /* The three questions (generated by scripts/build-pricing.mjs). */
-  .hub-faq{max-width:68ch;}
-  .hub-faq h2{font:900 16px/1.3 var(--font-ui);color:var(--ink);margin:0 0 6px;}
-  .hub-faq p{margin:0 0 18px;font-size:14.5px;font-weight:600;color:var(--muted);line-height:1.6;}
-  .hub-faq p:last-child{margin-bottom:0;}
-  .hub-faq a{color:var(--ink);}
+  .home-foot{border-top:1px solid var(--line);padding:22px 0 40px;font-size:14px;color:var(--muted);}
+  .home-foot p{margin:0 0 6px;}
+  .home-foot a{color:inherit;}
+  .sticky-cta{display:none;}
+  @media (max-width:860px){
+    .hwrap{padding:0 16px;}
+    .home-hero{grid-template-columns:1fr;gap:26px;padding:20px 0 34px;}
+    .hero-ctas .btn-ghost{display:none;}
+    .fact-row{grid-template-columns:1fr 1fr;margin-bottom:34px;}
+    .subject-grid{grid-template-columns:1fr;gap:10px;}
+    .ccard{display:grid;grid-template-columns:92px 1fr;grid-template-rows:auto 1fr;column-gap:12px;row-gap:2px;padding:8px;}
+    .ccard .cover{grid-row:1/3;aspect-ratio:1;}
+    .ccard .cv-t{display:none;}
+    .cmeta{margin:2px 0 0;}
+    .cname{font-size:16px;}
+    .cdesc{margin:0;font-size:14px;}
+    .home-sh{flex-direction:column;align-items:flex-start;gap:6px;}
+    .home-how,.home-deal,.home-faq,.about-row{grid-template-columns:1fr;}
+    .sticky-cta{display:flex;position:sticky;bottom:0;z-index:5;margin:0 -16px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--line);}
+    .sticky-cta .btn-chan{flex:1;text-align:center;}
+  }
+  @media (max-width:640px){.fact-row{display:none;}}
 </style>
+
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://levlprep.com/#org","name":"LevlPrep","url":"https://levlprep.com/","logo":{"@type":"ImageObject","url":"https://levlprep.com/assets/icon-512.png","width":512,"height":512},"description":"Exam prep tools and interactive courses. All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics. No ads.","founder":{"@type":"Person","name":"Olivier Testa"},"sameAs":["https://www.youtube.com/@levlprep","https://www.tiktok.com/@levl.prep"],"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"hello@levlprep.com","url":"https://levlprep.com/terms.html"}},{"@type":"WebSite","@id":"https://levlprep.com/#website","name":"LevlPrep","url":"https://levlprep.com/","publisher":{"@id":"https://levlprep.com/#org"},"inLanguage":"en"},{"@type":"FAQPage","@id":"https://levlprep.com/#faq","mainEntity":[{"@type":"Question","name":"Is LevlPrep free?","acceptedAnswer":{"@type":"Answer","text":"All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics."}},{"@type":"Question","name":"How much does Premium cost?","acceptedAnswer":{"@type":"Answer","text":"Premium is a one-time pass per course, with no subscription: NREMT-EMT Prep, $29 for 90 days; Organic Chemistry, $29 a semester (5 months) or $49 a full year; Anatomy & Physiology, $29 a semester (5 months) or $49 a full year (A&P I and II); AP® Biology, $25 for a pass valid through 30 June 2027; AP® Chemistry, $25 for a pass valid through 30 June 2027; AP® Physics 1, $25 for a pass valid through 30 June 2027; AP® Calculus AB, $25 for a pass valid through 30 June 2027; AP® Statistics, $25 for a pass valid through 30 June 2027; AP® Environmental Science, $25 for a pass valid through 30 June 2027. Prices are in US dollars."}},{"@type":"Question","name":"Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?","acceptedAnswer":{"@type":"Answer","text":"No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."}}]},{"@type":"ItemList","name":"Courses and exam prep on LevlPrep","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Course","@id":"https://levlprep.com/nremt/#course","name":"NREMT-EMT Prep","url":"https://levlprep.com/nremt/","description":"NREMT-EMT Prep, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, 90 days","category":"Partially Free","price":"29","priceCurrency":"USD","url":"https://levlprep.com/premium.html#nremt"}]}},{"@type":"ListItem","position":2,"item":{"@type":"Course","@id":"https://levlprep.com/ochem/#course","name":"Organic Chemistry","url":"https://levlprep.com/ochem/","description":"Organic Chemistry, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Semester (5 months)","category":"Partially Free","price":"29","priceCurrency":"USD","url":"https://levlprep.com/premium.html#ochem"},{"@type":"Offer","name":"Premium, Full year","category":"Partially Free","price":"49","priceCurrency":"USD","url":"https://levlprep.com/premium.html#ochem"}]}},{"@type":"ListItem","position":3,"item":{"@type":"Course","@id":"https://levlprep.com/anatomy-physiology/#course","name":"Anatomy & Physiology","url":"https://levlprep.com/anatomy-physiology/","description":"Anatomy & Physiology, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Semester (5 months)","category":"Partially Free","price":"29","priceCurrency":"USD","url":"https://levlprep.com/premium.html#anp"},{"@type":"Offer","name":"Premium, Full year (A&P I and II)","category":"Partially Free","price":"49","priceCurrency":"USD","url":"https://levlprep.com/premium.html#anp"}]}},{"@type":"ListItem","position":4,"item":{"@type":"Course","@id":"https://levlprep.com/bio/#course","name":"AP® Biology","url":"https://levlprep.com/bio/","description":"AP® Biology, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Through June 30, 2027","category":"Partially Free","price":"25","priceCurrency":"USD","url":"https://levlprep.com/premium.html#apbio"}]}},{"@type":"ListItem","position":5,"item":{"@type":"Course","@id":"https://levlprep.com/chem/#course","name":"AP® Chemistry","url":"https://levlprep.com/chem/","description":"AP® Chemistry, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Through June 30, 2027","category":"Partially Free","price":"25","priceCurrency":"USD","url":"https://levlprep.com/premium.html#apchem"}]}},{"@type":"ListItem","position":6,"item":{"@type":"Course","@id":"https://levlprep.com/physics/#course","name":"AP® Physics 1","url":"https://levlprep.com/physics/","description":"AP® Physics 1, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Through June 30, 2027","category":"Partially Free","price":"25","priceCurrency":"USD","url":"https://levlprep.com/premium.html#apphys"}]}},{"@type":"ListItem","position":7,"item":{"@type":"Course","@id":"https://levlprep.com/calculus/#course","name":"AP® Calculus AB","url":"https://levlprep.com/calculus/","description":"AP® Calculus AB, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Through June 30, 2027","category":"Partially Free","price":"25","priceCurrency":"USD","url":"https://levlprep.com/premium.html#apcalc"}]}},{"@type":"ListItem","position":8,"item":{"@type":"Course","@id":"https://levlprep.com/statistics/#course","name":"AP® Statistics","url":"https://levlprep.com/statistics/","description":"AP® Statistics, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Through June 30, 2027","category":"Partially Free","price":"25","priceCurrency":"USD","url":"https://levlprep.com/premium.html#apstat"}]}},{"@type":"ListItem","position":9,"item":{"@type":"Course","@id":"https://levlprep.com/environmental-science/#course","name":"AP® Environmental Science","url":"https://levlprep.com/environmental-science/","description":"AP® Environmental Science, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Through June 30, 2027","category":"Partially Free","price":"25","priceCurrency":"USD","url":"https://levlprep.com/premium.html#apenv"}]}}]}]}
 </script>
 </head>
-<body>
+<body class="home">
 <!-- The hub draws its own header rather than calling LevlChrome.render — it
      has no course to name and no section tabs — so it also carries its own
      skip link, which the chrome injects for every other page on the site. -->
@@ -180,20 +196,21 @@
   </div>
 </header>
 
-<div class="xshell" id="main" data-skip-target tabindex="-1" role="main">
-
-  <div class="hero">
+<div class="hwrap" id="main" data-skip-target tabindex="-1" role="main">
     <div id="fromVideo"></div>
     <script>
     /* TikTok/Instagram visitors: docs/from-video.md */
     (function(){try{if(!/[?&]ref=(tt|ig)-/.test(location.search)&&!/musical_ly|BytedanceWebview|TikTok|Instagram/i.test(navigator.userAgent||''))return;document.getElementById('fromVideo').className='fv-wait';var s=document.createElement('script');s.src='/assets/from-video.js';s.async=true;document.body.appendChild(s);}catch(e){}})();
     </script>
-    <div class="eyebrow">Nine courses &middot; free to start</div>
-    <h1>Question banks and interactive courses for hard subjects, free to start.</h1>
-    <p class="lede">NREMT-EMT practice tests, organic chemistry, anatomy &amp; physiology, and AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics and AP® Environmental Science. Start without an account; notes are free forever.</p>
+  <section class="home-hero">
+    <div>
+    <div class="eyebrow">Free to start &middot; nine courses &middot; notes free forever</div>
+    <h1>Hard subjects,<span>made clear.</span></h1>
+    <p class="hand">practice that explains every answer</p>
+    <p class="lede">Question banks and interactive courses for NREMT-EMT, organic chemistry, anatomy &amp; physiology, and AP® Biology, Chemistry, Physics 1, Calculus AB, Statistics and Environmental Science. Each lesson builds on the last, and every answer tells you why.</p>
     <div class="hero-ctas">
-      <a class="btn-press" href="nremt/practice.html">Start a free practice test</a>
-      <a class="featured-cta hero-more" href="#subjects">See all nine courses &rarr;</a>
+      <a class="btn-chan" href="nremt/practice.html">Start a free practice test</a>
+      <a class="btn-ghost hero-more" href="#subjects">See all nine courses</a>
     </div>
     <div id="heroContinue"></div>
     <script>
@@ -230,6 +247,24 @@
       }catch(e){}
     })();
     </script>
+    <p class="founder"><span class="av" aria-hidden="true">OT</span><span>Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="about.html">Why I built it</a></span></p>
+    </div>
+    <form class="tryq" id="tryq" aria-labelledby="tryq-stem">
+      <div class="tryq__top"><span class="pill">NREMT &middot; Bleeding</span><p class="hand">try one, it&rsquo;s free</p></div>
+      <p class="tryq__stem" id="tryq-stem">Bright red blood is spurting from a thigh wound. Firm pressure isn&rsquo;t stopping it. What&rsquo;s next?</p>
+      <fieldset>
+        <legend>Choose one answer</legend>
+        <label><input type="radio" name="tryq">Elevate the leg above the heart</label>
+        <label class="ok"><input type="radio" name="tryq">Tourniquet, 2 to 3 inches above the wound</label>
+        <label><input type="radio" name="tryq">Add more gauze and keep pressing</label>
+        <label><input type="radio" name="tryq">Check for a pulse below the wound</label>
+      </fieldset>
+      <p class="hand tryq__tip">pick one to see why</p>
+      <div class="tryq__why" role="status" aria-live="polite"><b>A tourniquet, above the wound.</b>Arterial bleeding from a limb that direct pressure can&rsquo;t control gets a tourniquet 2 to 3 inches above the wound, never over a joint. Elevating the leg and checking a pulse waste time the patient doesn&rsquo;t have.</div>
+      <p class="tryq__more"><a href="nremt/practice.html">Keep going with free NREMT questions</a></p>
+    </form>
+    <script>(function(){var f=document.getElementById('tryq');f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script>
+  </section>
 <!-- hero-facts:start -->
     <div class="fact-row">
       <span><span class="dot"></span>16,784 practice questions, each one explained</span>
@@ -238,260 +273,137 @@
       <span><span class="dot"></span>No ads</span>
     </div>
 <!-- hero-facts:end -->
-  </div>
 
-  <div class="xsection" id="hubProgress" hidden></div>
+  <div id="hubProgress" hidden></div>
 
-  <div class="xsection" id="subjects">
-    <div class="xgrid">
-      <div class="xlabel">Subjects</div>
-      <div class="xcontent">
-        <div class="subject-grid">
-        <a class="featured-card" href="nremt/" data-tint="nremt">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></div>
-            <span class="status-badge">Free to start</span>
-          </div>
-          <div>
-            <p class="featured-name">NREMT-EMT Prep</p>
-            <p class="featured-desc">2,033 questions, timed exams, forty chapters of notes, a 3D body map, a sound trainer and branching scenarios.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Timed exams</span>
-            <span>Domain drills</span>
-            <span>Spaced flashcards</span>
-            <span>3D body map</span>
-            <span>Sound trainer</span>
-          </div>
-          <span class="featured-cta">Start practicing &rarr;</span>
+  <section id="subjects" aria-labelledby="subjects-h">
+    <div class="home-sh"><h2 id="subjects-h">Pick your <span>course</span></h2><p>Notes are free in every course. Start any of them right now, and sign in only when you want your progress saved.</p></div>
+    <div class="subject-grid">
+        <a class="ccard" href="nremt/" data-tint="nremt">
+          <span class="cover" data-cover="nremt"><img src="assets/covers/nremt.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>NREMT<span>EMT Prep</span></b><em>911 call to hospital</em></span></span>
+          <span class="cmeta"><span class="cname">NREMT-EMT</span><span class="tag">Free to start</span></span>
+          <span class="cdesc">2,033 questions, timed exams, forty chapters of notes and a 3D body map.</span>
         </a>
-        <a class="featured-card" href="ochem/" data-tint="ochem">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/><circle cx="12" cy="12" r="3.6"/></svg></div>
-            <span class="status-badge">Free to start</span>
-          </div>
-          <div>
-            <p class="featured-name">Organic Chemistry</p>
-            <p class="featured-desc">123 topics and 10 mechanisms you perform yourself, plus eight tools that compute their answers.</p>
-          </div>
-          <div class="featured-tags">
-            <span>123 topics</span>
-            <span>10 mechanisms</span>
-            <span>8 tools</span>
-            <span>Mastery tracking</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="ochem/" data-tint="ochem">
+          <span class="cover" data-cover="ochem"><img src="assets/covers/ochem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>Organic<span>Chemistry</span></b><em>push the arrows yourself</em></span></span>
+          <span class="cmeta"><span class="cname">Organic Chemistry</span><span class="tag">Free to start</span></span>
+          <span class="cdesc">123 topics and 10 mechanisms you perform yourself.</span>
         </a>
-        <a class="featured-card" href="anatomy-physiology/" data-tint="anp">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.3-9.4C1.4 8.2 3.5 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.7 0 5.8 3.7 4.5 7.1C19.5 16.4 12 21 12 21z"/></svg></div>
-            <span class="status-badge">Free to start</span>
-          </div>
-          <div>
-            <p class="featured-name">Anatomy &amp; Physiology</p>
-            <p class="featured-desc">27 chapters, from body organization to development, taught in an order where nothing is used before it is taught, with a virtual lab practical and physiology reasoning drills.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Lab practical</span>
-            <span>Predict the change</span>
-            <span>Feedback loops</span>
-            <span>TEAS A&amp;P practice</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="anatomy-physiology/" data-tint="anp">
+          <span class="cover" data-cover="anp"><img src="assets/covers/anp.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>Anatomy &amp;<span>Physiology</span></b><em>how your body is built</em></span></span>
+          <span class="cmeta"><span class="cname">Anatomy &amp; Physiology</span><span class="tag">Free to start</span></span>
+          <span class="cdesc">27 chapters, taught so nothing is used before it is taught.</span>
         </a>
 <!-- hub-bio:start -->
-        <a class="featured-card" href="bio/" data-tint="bio">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Biology</p>
-            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. All 75 published topics, from the chemistry of life to ecology.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Stimulus sets</span>
-            <span>Statistics skills</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="bio/" data-tint="bio">
+          <span class="cover" data-cover="apbio"><img src="assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>AP®<span>Biology</span></b><em>every unit, data questions</em></span></span>
+          <span class="cmeta"><span class="cname">AP® Biology</span><span class="tag tag--beta">Beta</span></span>
+          <span class="cdesc">All 75 published topics, with data-heavy practice like the real exam.</span>
         </a>
 <!-- hub-bio:end -->
 <!-- hub-chem:start -->
-        <a class="featured-card" href="chem/" data-tint="apchem">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3"/><path d="M7.5 3h9M6.7 14h10.6"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Chemistry</p>
-            <p class="featured-desc">Built on the 2024 course framework, in its order: lessons from scratch at the particle level, practice that checks units and significant figures, and justification training. All 96 published topics, from the math you need to electrochemistry.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Particle diagrams</span>
-            <span>Units and sig figs</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="chem/" data-tint="apchem">
+          <span class="cover" data-cover="apchem"><img src="assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>AP®<span>Chemistry</span></b><em>units and sig figs, checked</em></span></span>
+          <span class="cmeta"><span class="cname">AP® Chemistry</span><span class="tag tag--beta">Beta</span></span>
+          <span class="cdesc">All 96 published topics, with units and significant figures checked.</span>
         </a>
 <!-- hub-chem:end -->
 <!-- hub-phys:start -->
-        <a class="featured-card" href="physics/" data-tint="apphys">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16"/><path d="M12 3v11.5"/><circle cx="12" cy="17.5" r="3"/><path d="M6.5 15.5a7 7 0 0 0 11 0" stroke-dasharray="1.5 2.5"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Physics 1</p>
-            <p class="featured-desc">Built on the 2024-25 course framework, in its order: lessons from scratch, free-body diagrams graded force by force, and trainers that are also tests. All 48 published topics, from the math you need to fluids.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Free-body diagrams</span>
-            <span>Lab design</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="physics/" data-tint="apphys">
+          <span class="cover" data-cover="apphys"><img src="assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>AP®<span>Physics 1</span></b><em>force by force</em></span></span>
+          <span class="cmeta"><span class="cname">AP® Physics 1</span><span class="tag tag--beta">Beta</span></span>
+          <span class="cdesc">All 48 published topics, with free-body diagrams graded force by force.</span>
         </a>
 <!-- hub-phys:end -->
 <!-- hub-calc:start -->
-        <a class="featured-card" href="calculus/" data-tint="apcalc">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Calculus AB</p>
-            <p class="featured-desc">Built on the course framework, in its order: lessons from scratch, answers you type as expressions and are graded by value, and calculator and no-calculator practice as the exam splits it. All 88 published topics, from the math you need to volumes.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Tangent tracer</span>
-            <span>Typed answers</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="calculus/" data-tint="apcalc">
+          <span class="cover" data-cover="apcalc"><img src="assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>AP®<span>Calculus AB</span></b><em>typed like real math</em></span></span>
+          <span class="cmeta"><span class="cname">AP® Calculus AB</span><span class="tag tag--beta">Beta</span></span>
+          <span class="cdesc">All 88 published topics, with answers you type as expressions.</span>
         </a>
 <!-- hub-calc:end -->
 <!-- hub-stat:start -->
-        <a class="featured-card" href="statistics/" data-tint="apstat">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20v-4M10 20v-8M14 20v-8M17 20v-4" stroke-opacity=".55"/><path d="M3 18c4 0 5-13 9-13s5 13 9 13"/><path d="M2 21h20"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Statistics</p>
-            <p class="featured-desc">Built on the revised course framework for the May 2027 exam: lessons from scratch, numbers from a table or a calculator both accepted, and conclusions checked part by part in context. All 60 published topics, from the math you need to regression.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Sampling simulator</span>
-            <span>Conclusions in context</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="statistics/" data-tint="apstat">
+          <span class="cover" data-cover="apstat"><img src="assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>AP®<span>Statistics</span></b><em>conclusions in context</em></span></span>
+          <span class="cmeta"><span class="cname">AP® Statistics</span><span class="tag tag--beta">Beta</span></span>
+          <span class="cdesc">All 60 published topics, with conclusions checked in context.</span>
         </a>
 <!-- hub-stat:end -->
 <!-- hub-env:start -->
-        <a class="featured-card" href="environmental-science/" data-tint="apenv">
-          <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke-opacity=".55"/><path d="M4 13h16" stroke-opacity=".55"/><path d="M12 3c4 2 6 5 6 9-4 0-7-2-8-6"/><path d="M12 3c-1 4 0 7 3 9"/></svg></div>
-            <span class="status-badge">Beta</span>
-          </div>
-          <div>
-            <p class="featured-name">AP® Environmental Science</p>
-            <p class="featured-desc">Built on the course framework for the May 2027 exam: lessons from scratch, every calculation drilled with its setup and units, and written answers made specific enough to score. All 104 published topics, from ecosystems to global change.</p>
-          </div>
-          <div class="featured-tags">
-            <span>Beta</span>
-            <span>Free notes</span>
-            <span>Calculation studio</span>
-            <span>Specific answers</span>
-          </div>
-          <span class="featured-cta">Start learning &rarr;</span>
+        <a class="ccard" href="environmental-science/" data-tint="apenv">
+          <span class="cover" data-cover="apenv"><img src="assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>AP® Environmental<span>Science</span></b><em>every calculation, with units</em></span></span>
+          <span class="cmeta"><span class="cname">AP® Environmental Science</span><span class="tag tag--beta">Beta</span></span>
+          <span class="cdesc">All 104 published topics, with every calculation drilled with units.</span>
         </a>
 <!-- hub-env:end -->
-        </div>
-
-      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="home-how" aria-label="How every course works">
+    <h2>How every course <span>works</span></h2>
+    <div class="step"><span class="n">1</span><h3>Read a short lesson</h3><p>One idea at a time, in order, so nothing shows up before it has been taught.</p></div>
+    <div class="step"><span class="n">2</span><h3>Practice with reasons</h3><p>Every question says why the right answer is right and why yours wasn&rsquo;t.</p></div>
+    <div class="step"><span class="n">3</span><h3>Test like it&rsquo;s exam day</h3><p>Timed practice exams in the real format, so the real one feels familiar.</p></div>
+  </section>
 
 <!-- pricing:start -->
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Free and Premium</div>
-      <div class="xcontent">
-        <div class="hub-plans">
-          <div class="hub-plan">
-            <h3>Free</h3>
-            <p class="hub-plan__price">Every course, free to start</p>
-            <ul><li>All notes and textbook pages are free forever</li><li>Interactive lessons are free in the early chapters</li></ul>
-          </div>
-          <div class="hub-plan hub-plan--premium">
-            <h3>Premium</h3>
-            <p class="hub-plan__price">From $25, one-time<span data-founding-until="2027-01-31"> ($17.50 founding price until 31 January 2027)</span></p>
-            <ul><li>Unlimited practice</li><li>Exams</li><li>Every lesson</li><li>Analytics</li></ul>
-            <p class="hub-plan__note">One pass per course. No subscription, and a 7-day refund.</p>
-          </div>
-        </div>
-        <a class="featured-cta hub-plans__more" href="premium.html">What&rsquo;s free in each course, and the prices &rarr;</a>
-      </div>
+  <section class="home-deal" aria-label="Free and Premium">
+    <div class="plan">
+      <span class="pill">Free</span>
+      <h3>Start now, keep it free</h3>
+      <p class="plan__note">Start in any course, with no card.</p>
+      <ul><li>All notes and textbook pages are free forever</li><li>Interactive lessons are free in the early chapters</li><li>Your level, streak and weak topics</li><li>No ads</li></ul>
+      <a class="btn-ghost" href="nremt/practice.html">Start a free practice test</a>
     </div>
-  </div>
+    <div class="plan plan--premium">
+      <span class="pill">Premium</span>
+      <p class="plan__amt">From $25<span data-founding-until="2027-01-31"> ($17.50 founding price until 31 January 2027)</span></p>
+      <p class="plan__note">One-time pass per course. No subscription.</p>
+      <ul><li>Unlimited practice</li><li>Exams</li><li>Every lesson</li><li>Analytics</li></ul>
+      <a class="btn-gold" href="premium.html">See prices for your course</a>
+      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
+    </div>
+  </section>
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>
 <!-- pricing:end -->
 
 <!-- faq:start -->
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">Questions</div>
-      <div class="xcontent">
-        <div class="hub-faq">
-          <h2>Is LevlPrep free?</h2>
-          <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics.</p>
-          <h2>How much does Premium cost?</h2>
-          <p>A one-time pass for one course, from $25 to $49 in US dollars, with no subscription. <a href="premium.html">Every price, course by course</a>.</p>
-          <h2>Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?</h2>
-          <p>No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
-        </div>
-      </div>
+  <section class="home-faq" aria-labelledby="home-faq-h">
+    <h2 id="home-faq-h">Questions</h2>
+    <div class="hub-faq">
+      <h3>Is LevlPrep free?</h3>
+      <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics.</p>
+      <h3>How much does Premium cost?</h3>
+      <p>A one-time pass for one course, from $25 to $49 in US dollars, with no subscription. <a href="premium.html">Every price, course by course</a>.</p>
+      <h3>Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?</h3>
+      <p>No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
     </div>
-  </div>
+  </section>
 <!-- faq:end -->
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">About</div>
-      <div class="xcontent">
-        <div class="about-row">
-          <div class="about-card">
-            <div class="k">Who makes this</div>
-            <p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.</p>
-          </div>
-          <div class="about-card">
-            <div class="k">How the questions are written</div>
-            <p>Every question in every course is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, Organic Chemistry and A&amp;P questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.</p>
-          </div>
-          <div class="about-card">
-            <div class="k">What changes</div>
-            <p>Corrected questions, new lessons and site fixes are listed, dated, on <a href="changelog.html">What&rsquo;s new</a>. The checks that run on every change are described under <a href="sources.html">Sources</a>.</p>
-          </div>
-        </div>
-      </div>
+  <section class="about-row" aria-label="About LevlPrep">
+    <div class="about-card">
+      <div class="k">Who makes this</div>
+      <p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.</p>
     </div>
-  </div>
+    <div class="about-card">
+      <div class="k">How the questions are written</div>
+      <p>Every question in every course is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, Organic Chemistry and A&amp;P questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.</p>
+    </div>
+    <div class="about-card">
+      <div class="k">What changes</div>
+      <p>Corrected questions, new lessons and site fixes are listed, dated, on <a href="changelog.html">What&rsquo;s new</a>. The checks that run on every change are described under <a href="sources.html">Sources</a>.</p>
+    </div>
+  </section>
+
+  <div class="sticky-cta"><a class="btn-chan" href="nremt/practice.html">Start a free practice test</a></div>
 </div>
-<div class="xshell">
-  <div class="xsection">
-    <footer style="margin-top:0">
-      <p>Progress is stored on your device. Sign in to sync it across devices.</p>
-      <p class="tm-note">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
-      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
-    </footer>
-  </div>
+<div class="hwrap">
+  <footer class="home-foot">
+    <p>Progress is stored on your device. Sign in to sync it across devices. Videos on <a href="https://www.youtube.com/@levlprep" rel="me">YouTube</a> and <a href="https://www.tiktok.com/@levl.prep" rel="me">TikTok</a>.</p>
+    <p class="tm-note">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
 </div>
 <script>
 // Runs after the deferred scripts above it: every external script on this
