@@ -94,7 +94,7 @@ and a clear refund lower risk (Lambrecht & Skiera 2006; Janakiraman et al. 2016)
 checkout-abandon reason (Baymard). Prices themselves are unchanged ($29, $49, $25; no decoy tier, no trial).
 - Every pass shows its price per day (`dayText`/`perDay` in `assets/premium.js`; a dated pass counts its days left).
 - Next to the button: "One payment. Never renews. Full refund within 7 days." The tax sentence moved to the fine print.
-- "For comparison" lines (premium.js `compare`): NREMT vs Pocket Prep EMS; AP vs UWorld and Fiveable. Checked on
+- "For comparison" lines (premium.js `compare`): NREMT vs Pocket Prep EMS; AP vs Fiveable. Checked on
   their own pages 2026-10-25; sources linked on premium.html (`COMPARE_SOURCES` in `scripts/build-pricing.mjs`).
   Re-check before changing a figure.
 - Pass-or-extend is one sentence with the conditions one tap away (dialog: Conditions link; page: details).

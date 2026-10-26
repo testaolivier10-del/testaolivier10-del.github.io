@@ -145,7 +145,7 @@
       freeChapters: ['unit-1', 'unit-2'],
       // A fixed-date pass: it lasts until `until` whenever it is bought, and
       // the Worker never ends it sooner (PASSES in worker/src/premium.js).
-      compare: 'For comparison: UWorld AP® courses start at $99, and Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'bio-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -173,7 +173,7 @@
       // As AP® Biology: Units 1 and 2 open, and every math-skills lesson
       // (topic.free in chem-curriculum.js, isFreeTopic in scripts/lib/apchem-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: UWorld AP® courses start at $99, and Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'chem-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -200,7 +200,7 @@
       // As AP® Chemistry (docs/apphys-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apphys-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: UWorld AP® courses start at $99, and Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'phys-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -228,7 +228,7 @@
       // As AP® Physics 1 (docs/apcalc-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apcalc-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: UWorld AP® courses start at $99, and Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'calc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -257,7 +257,7 @@
       // every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apstat-build.mjs (build-pricing --check compares them).
       freeChapters: ['unit-1'],
-      compare: 'For comparison: UWorld AP® courses start at $99, and Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'stat-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -288,7 +288,7 @@
       // and every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apenv-build.mjs.
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: UWorld AP® courses start at $99, and Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'env-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],

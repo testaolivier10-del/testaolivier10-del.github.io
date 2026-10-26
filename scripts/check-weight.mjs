@@ -148,7 +148,10 @@ const SHELL_BUDGETS = [
   /* 296.5 -> 297.5 for registering AP® Environmental Science (docs/apenv-spec.md, Phase 0): the ninth course in
      every generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam date
      and the theme tint (+1.0 KB measured alone). */
-  ['site', 297.5],
+  /* 297.5 -> 298.5 (2026-10-25) for the price presentation in premium.js and theme.css: per-day prices,
+     the never-renews and refund line by the button, and the comparison lines (docs/trust-conversion-plan.md,
+     "Price presentation"). Measured 298.2 KB. */
+  ['site', 298.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

@@ -78,7 +78,7 @@ const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
    together if it moves. */
 /* Where each "For comparison" line in premium.js comes from (checked on the
    competitors' own pages, 2026-10-25). Re-check before changing a sentence. */
-const AP_SOURCES = [['UWorld', 'https://collegeprep.uworld.com/ap/ap-online-courses/'], ['Fiveable', 'https://fiveable.me/pricing']];
+const AP_SOURCES = [['Fiveable', 'https://fiveable.me/pricing']];
 const COMPARE_SOURCES = {
   nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
   apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES,
