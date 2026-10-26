@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v89';
+const CACHE_NAME = 'levlprep-v90';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -76,6 +76,9 @@ const PRECACHE_URLS = [
   'certificate.html',
   'assets/certificate.js',
   'search.html',
+  // The site pages' shared look and contents rail (search, privacy, terms, changelog).
+  'assets/site-pages.css',
+  'assets/site-toc.js',
   'assets/site-search-all.js',
   'assets/site-search.js',
 ];
