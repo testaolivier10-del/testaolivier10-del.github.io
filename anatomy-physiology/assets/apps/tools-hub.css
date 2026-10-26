@@ -1,3 +1,5 @@
+/* The shared reading-page look for tools hubs (assets/course/reading.css). */
+@import url(../../../assets/course/reading.css);
 /* The A&P tools hub (tools.html). The page shape, the featured block and the
    tool cards are shared (assets/course/hub.css, .cx-feat and .cx-tool); what
    is left here is A&P's own: the ?chapter= bar, the lab practical's mode

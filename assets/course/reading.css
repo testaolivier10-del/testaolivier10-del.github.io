@@ -1,0 +1,84 @@
+/* Tools hubs and free-response pages in the channel look: round 2 of the
+   site redesign (docs/site-redesign.md, mockups S14 and S16).
+
+   Loaded only by those pages: every course's tools.html (nremt and ochem by
+   hand, the AP® courses through data/pages.json "css", A&P through an
+   @import at the top of its apps/tools-hub.css), every AP® frq.html (pages.json)
+   and every single free-response page (the frq template in each
+   scripts/build-ap*.mjs). The page head and cover rules match the glossary's
+   (assets/course/glossary.css), which does not load this file.
+
+   The free-response markup carries a course prefix (bio-frq, chem-frq,
+   phys-frq ...), so those rules match on the suffix instead of naming six
+   courses. Colors only from theme tokens; the cover colors are the cover
+   art's own, the same in both themes. */
+
+body:has(.cx-tools),body:has(.xshell[class*="-frq-page"]),body:has(.xshell[class*="-app"] [data-slug="frq"]){background-image:linear-gradient(color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px);background-size:44px 44px;}
+body[data-course="nremt"]{--rd-cover:url(../covers/nremt.svg);--rd-cbg:#0D3B36;}
+body[data-course="ochem"]{--rd-cover:url(../covers/ochem.svg);--rd-cbg:#241A63;}
+body[data-course="anp"]{--rd-cover:url(../covers/anp.svg);--rd-cbg:#4A1A1F;}
+body[data-course="apbio"]{--rd-cover:url(../covers/apbio.svg);--rd-cbg:#1B4422;}
+body[data-course="apchem"]{--rd-cover:url(../covers/apchem.svg);--rd-cbg:#1A2C78;}
+body[data-course="apphys"]{--rd-cover:url(../covers/apphys.svg);--rd-cbg:#2A1D06;}
+body[data-course="apcalc"]{--rd-cover:url(../covers/apcalc.svg);--rd-cbg:#4A1230;}
+body[data-course="apstat"]{--rd-cover:url(../covers/apstat.svg);--rd-cbg:#0E3A52;}
+body[data-course="apenv"]{--rd-cover:url(../covers/apenv.svg);--rd-cbg:#22400F;}
+
+/* ---- Page head: pill eyebrow, display headline, cover on the right ------ */
+.xshell>.page-head,.xshell>.hero[class*="-hero"]{display:grid;grid-template-columns:minmax(0,1fr);column-gap:32px;align-items:center;background:none;border:0;box-shadow:none;padding:10px 0 4px;margin-top:8px;border-radius:0;}
+.xshell>:is(.page-head,.hero[class*="-hero"]) .eyebrow{justify-self:start;display:inline-flex;align-items:center;gap:6px;border:1.5px solid currentColor;border-radius:999px;padding:3px 12px;font:800 12px/1.35 var(--font-ui);letter-spacing:.05em;text-transform:none;color:var(--cink);margin:0 0 14px;}
+.xshell>:is(.page-head,.hero[class*="-hero"]) h1{font:900 clamp(38px,5.6vw,62px)/1.02 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.04em;margin:0 0 12px;text-wrap:balance;color:var(--ink);}
+.xshell>:is(.page-head,.hero[class*="-hero"]) :is(p,.lede){font:500 17px/1.6 var(--font-ui);color:var(--muted);max-width:36em;}
+.xshell>:is(.page-head,.hero[class*="-hero"])::after{content:"";display:none;aspect-ratio:2/1;width:100%;border-radius:20px;background:var(--rd-cbg,var(--navy)) center/cover no-repeat;background-image:var(--rd-cover,none);box-shadow:0 18px 40px -30px color-mix(in srgb,var(--ink) 70%,transparent);}
+@media (min-width:900px){
+  .xshell>:is(.page-head,.hero[class*="-hero"]){grid-template-columns:minmax(0,1fr) 300px;}
+  .xshell>:is(.page-head,.hero[class*="-hero"])>*{grid-column:1;}
+  body[data-course] .xshell>:is(.page-head,.hero[class*="-hero"])::after{display:block;grid-column:2;grid-row:1 / span 4;}
+}
+
+/* ---- Tools hub (mockup S14) ---------------------------------------------- */
+.cx-tools-h{align-items:flex-end;margin-bottom:16px;}
+.cx-tools-h h2{font:900 clamp(26px,3vw,34px)/1.05 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.035em;}
+.cx-tools-h p{font:600 15px var(--font-ui);}
+.cx-tool-grid{gap:14px;}
+.cx-tool{border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 40px -36px color-mix(in srgb,var(--ink) 70%,transparent);padding:20px 20px 16px;gap:10px;}
+.cx-tool:hover{transform:translateY(-2px);box-shadow:0 22px 44px -30px color-mix(in srgb,var(--ink) 70%,transparent);}
+/* The icon becomes a small tile in the course's cover colors. */
+.cx-tool-icon{width:52px;height:52px;border-radius:14px;background:var(--rd-cbg,var(--navy));color:var(--paper);background-image:linear-gradient(color-mix(in srgb,var(--paper) 8%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--paper) 8%,transparent) 1px,transparent 1px);background-size:13px 13px;}
+:root[data-theme="dark"] .cx-tool-icon{color:var(--ink);}
+.cx-tool-icon svg{width:26px;height:26px;}
+.cx-tool-name{font:900 18px/1.2 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.015em;}
+.cx-tool-desc{font:500 14.5px/1.5 var(--font-ui);}
+.cx-tool-foot{border-top:1px solid var(--line);font:800 11px/1.4 var(--font-ui);}
+.cx-tool-go{display:inline-flex;align-items:center;padding:6px 12px;border-radius:10px;background:var(--navy);color:var(--on-accent);letter-spacing:.03em;}
+.cx-tool:hover .cx-tool-go{filter:brightness(1.12);}
+/* The featured tool: the navy card gets the cover's grid paper and the display face. */
+.cx-feat{border-radius:26px;background-image:linear-gradient(color-mix(in srgb,var(--on-accent) 5%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--on-accent) 5%,transparent) 1px,transparent 1px);background-size:30px 30px;}
+.cx-feat h2{font-family:'Inter Display',var(--font-display),system-ui,sans-serif;font-size:clamp(32px,4.2vw,48px);letter-spacing:-.04em;}
+.cx-feat-cta{border-radius:12px;}
+
+/* ---- Free-response list (frq.html): two cards a row, display titles ------ */
+[class$="-fq-list"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+a[class$="-fq-card"]{border:1px solid var(--line);border-radius:18px;padding:16px 18px;gap:6px;box-shadow:0 16px 34px -32px color-mix(in srgb,var(--ink) 70%,transparent);}
+a[class$="-fq-card"]:hover{border-color:var(--cink);box-shadow:0 20px 40px -28px color-mix(in srgb,var(--ink) 70%,transparent);}
+a[class$="-fq-card"] b{font:900 17.5px/1.3 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.015em;}
+[class$="-fq-work"]{border:1px solid var(--line);border-radius:22px;box-shadow:none;}
+@media (max-width:760px){[class$="-fq-list"]{grid-template-columns:minmax(0,1fr);}}
+
+/* ---- One free-response question (mockup S16) ------------------------------ */
+article[class$="-frq"]{display:grid;gap:16px;margin-top:22px;}
+section[class$="-stim"]{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px clamp(18px,3.5vw,32px);box-shadow:0 20px 44px -40px color-mix(in srgb,var(--ink) 60%,transparent);}
+section[class$="-stim"]>h3{font:900 clamp(20px,2.4vw,24px)/1.2 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.02em;}
+section[class$="-stim"] p{font-size:16.5px;line-height:1.7;}
+section[class$="-stim"] table{border-collapse:collapse;}
+ol[class$="-frq-parts"]{display:grid;gap:14px;margin:0;padding:0;list-style:none;}
+li[class$="-frq-part"]{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:20px clamp(18px,3.5vw,28px);}
+p[class$="-frq-prompt"]{font:600 17px/1.6 var(--font-ui);color:var(--ink);margin:0 0 10px;}
+b[class$="-frq-label"]{display:inline-grid;place-items:center;min-width:34px;height:30px;padding:0 6px;margin-right:8px;box-sizing:border-box;border-radius:9px;background:var(--navy);color:var(--on-accent);font:900 14px var(--font-ui);vertical-align:1px;}
+
+@media print{
+  body:has(.cx-tools),body:has(.xshell[class*="-frq-page"]){background-image:none;}
+  .xshell>:is(.page-head,.hero[class*="-hero"])::after{display:none !important;}
+  section[class$="-stim"],li[class$="-frq-part"]{border:0;box-shadow:none;padding:0;background:none;}
+  b[class$="-frq-label"]{background:none;color:inherit;min-width:0;padding:0;}
+}
