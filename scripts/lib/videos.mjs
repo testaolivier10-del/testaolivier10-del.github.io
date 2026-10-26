@@ -17,6 +17,7 @@
    the video on YouTube. docs/video-lessons.md has the whole design. */
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { applyQuickAnswer } from './quick-answers.mjs';
 import { fileURLToPath } from 'node:url';
 
 export const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
@@ -162,7 +163,14 @@ const SPOTS = [
 const BLOCK_RE = new RegExp(`[ \\t]*${START}[\\s\\S]*?${END}\\n?`, 'g');
 
 /* rel is the page's path from the repo root, e.g. "bio/notes/water.html". */
+/* The quick answer box (scripts/lib/quick-answers.mjs) goes through here too,
+   after the video, so it sits first under the header and every caller of
+   applyVideo writes and checks both. */
 export function applyVideo(rel, html, videos = loadVideos()) {
+  return applyQuickAnswer(rel, placeVideo(rel, html, videos));
+}
+
+function placeVideo(rel, html, videos) {
   const stripped = html.replace(BLOCK_RE, '');
   const v = videos.byPage.get(rel);
   if (!v) return stripped;

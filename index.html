@@ -43,6 +43,18 @@
   .hero-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.8;}
   .hero-continue b{font:900 15.5px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .hero-continue:hover{background:var(--navy2);}
+  /* Visitors from TikTok or Instagram: the newest Shorts' topics, first. */
+  .from-video{margin:0 0 18px;max-width:520px;padding:14px 16px 16px;border:var(--bw,2px) solid var(--line);border-radius:var(--radius);background:var(--white);box-shadow:var(--lift-sm,none);}
+  .from-video .fv-k{margin:0;font:900 11.5px/1.3 var(--font-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--accent-text);}
+  .from-video .fv-t{margin:2px 0 10px;font:900 19px/1.3 var(--font-display);color:var(--ink);}
+  .fv-item{display:flex;flex-direction:column;gap:3px;margin-top:8px;padding:12px 14px;min-height:48px;border-radius:12px;text-decoration:none;
+    border:var(--bw,2px) solid var(--line);color:var(--ink);background:var(--ctint,var(--white));}
+  .fv-item b{font:900 16px/1.3 var(--font-ui);}
+  .fv-item small{font:700 13px/1.4 var(--font-ui);color:var(--muted);}
+  .fv-item.is-new{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .fv-item.is-new small{color:inherit;opacity:.85;}
+  .fv-item:hover{border-color:var(--accent);}
+  .fv-item.is-new:hover{background:var(--navy2);}
   /* On a phone the facts would push the courses below the fold. */
   @media (max-width:640px){ .hero .fact-row{display:none;} }
   /* Two lines rather than four at desktop width, so the three subjects are on
@@ -182,6 +194,59 @@
 <div class="xshell" id="main" data-skip-target tabindex="-1" role="main">
 
   <div class="hero">
+    <div id="fromVideo"></div>
+    <script>
+    /* Visitors from TikTok or Instagram (the profile link ?ref=tt-bio or
+       ig-bio, any tt- or ig- video tag, or those apps' own browsers) get the
+       topics of the newest Shorts first, so the video they just watched is one
+       tap away. Drawn before first paint, so nothing moves. The list comes from
+       docs/from-video.json (scripts/build-from-video.mjs); a Short shows from
+       6pm local time on its posting day. */
+    (function(){
+      try{
+        var NAMES = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science' };
+        // from-video:begin (generated from docs/from-video.json by scripts/build-from-video.mjs; edit there)
+        var V = [
+          {"d":"2026-10-17","c":"anp","t":"Sarcomeres and the sliding filaments","h":"Your muscle shortens. Its filaments never do.","p":"/anatomy-physiology/notes/skeletal-muscle-structure.html"},
+          {"d":"2026-10-18","c":"ochem","t":"R and S configuration","h":"Your R might secretly be an S.","p":"/ochem/notes/rs-configuration.html"},
+          {"d":"2026-10-19","c":"nremt","t":"Bleeding control and tourniquets","h":"Wrong spot, and the tourniquet fails.","p":"/nremt/notes/bleeding-control.html"},
+          {"d":"2026-10-21","c":"ochem","t":"What makes an acid stronger","h":"Same OH. So why is one 100 billion times more acidic?","p":"/ochem/notes/acidity-factors.html"},
+          {"d":"2026-10-22","c":"nremt","t":"Airway management: jaw thrust or head tilt","h":"Tilt this head, and the spine moves.","p":"/nremt/notes/airway-management.html"},
+          {"d":"2026-10-23","c":"anp","t":"Oxygen transport and the dissociation curve","h":"Your muscles make your blood let go of oxygen.","p":"/anatomy-physiology/notes/oxygen-transport.html"},
+          {"d":"2026-10-24","c":"ochem","t":"SN2 reactions","h":"This reaction flips a molecule inside out.","p":"/ochem/notes/sn2.html"},
+          {"d":"2026-10-25","c":"nremt","t":"The Glasgow Coma Scale","h":"The lowest GCS isn't zero.","p":"/nremt/reference-cards.html"},
+          {"d":"2026-10-26","c":"nremt","t":"Cardiac emergencies and aspirin","h":"Chest pain? Don't swallow it whole.","p":"/nremt/notes/cardiac-emergencies.html"},
+          {"d":"2026-10-27","c":"apbio","t":"Signal transduction (how caffeine works)","h":"Caffeine doesn't give you energy.","p":"/bio/notes/signal-transduction-pathways.html"},
+          {"d":"2026-10-28","c":"apchem","t":"Dissolving and free energy","h":"No freezer. Ice cold in seconds?","p":"/chem/notes/dissolution-free-energy.html"},
+          {"d":"2026-10-29","c":"apbio","t":"Tonicity and osmosis","h":"Pure water in an IV?","p":"/bio/notes/tonicity-osmoregulation.html"},
+          {"d":"2026-10-30","c":"apphys","t":"Motion graphs and acceleration","h":"Acceleration at the top: zero?","p":"/physics/notes/motion-representations.html"},
+          {"d":"2026-10-31","c":"apcalc","t":"Average and instantaneous rates","h":"Your speedometer does calculus.","p":"/calculus/notes/average-and-instant-rates.html"},
+        ];
+        // from-video:end
+        var m = /[?&]ref=([a-z0-9-]{1,40})/.exec(location.search), ref = m ? m[1] : '';
+        var app = /musical_ly|BytedanceWebview|TikTok|Instagram/i.test(navigator.userAgent || '');
+        if(!/^(tt|ig)-/.test(ref) && !app) return;
+        var now = new Date(), p2 = function(n){ return (n < 10 ? '0' : '') + n; };
+        var today = now.getFullYear() + '-' + p2(now.getMonth() + 1) + '-' + p2(now.getDate());
+        var list = V.filter(function(v){ return v.d < today || (v.d === today && now.getHours() >= 18); }).slice(-3).reverse();
+        if(!list.length) return;
+        var host = document.getElementById('fromVideo'), box = document.createElement('section');
+        box.className = 'from-video'; box.setAttribute('aria-label', 'From our videos');
+        var k = document.createElement('p'); k.className = 'fv-k'; k.textContent = 'From our videos'; box.appendChild(k);
+        var t = document.createElement('p'); t.className = 'fv-t'; t.textContent = 'Pick up where the video left off'; box.appendChild(t);
+        list.forEach(function(v, i){
+          var a = document.createElement('a'), b = document.createElement('b'), s = document.createElement('small');
+          a.className = 'fv-item' + (i === 0 ? ' is-new' : ''); a.href = v.p;
+          b.textContent = v.t;
+          s.textContent = (NAMES[v.c] || '') + ' · the video: “' + v.h + '”';
+          a.appendChild(b); a.appendChild(s);
+          a.addEventListener('click', function(){ try{ window.LevlAnalytics && window.LevlAnalytics.event('from-video-open', { course: v.c, at: i + 1 }); }catch(e){} });
+          box.appendChild(a);
+        });
+        host.appendChild(box);
+      }catch(e){}
+    })();
+    </script>
     <div class="eyebrow">Nine courses &middot; free to start</div>
     <h1>Question banks and interactive courses for hard subjects, free to start.</h1>
     <p class="lede">NREMT-EMT practice tests, organic chemistry, anatomy &amp; physiology, and AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics and AP® Environmental Science. Start without an account; notes are free forever.</p>

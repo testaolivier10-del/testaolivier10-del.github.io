@@ -23,6 +23,8 @@
      Not dropped: Akamai, Cloudflare and Fastly, because iCloud Private Relay
      (Safari on an iPhone with iCloud+) exits through them, and those are real
      students.
+   - known crawler fingerprints that come from ordinary networks (country plus
+     an unusual screen size; BOT_FINGERPRINTS below).
    - bodies that are not small JSON events for this site's website id, so the
      route cannot be used to write into somebody else's Umami.
 
@@ -91,6 +93,22 @@ export function fromDatacenter(request) {
   return Number.isFinite(asn) && DATACENTER_ASNS.has(asn);
 }
 
+/* A crawler that is not on a hosting network, so the ASN list misses it. On
+   2026-10-25 it was 330 of 519 weekly "visitors": every session from
+   Singapore, desktop Chrome on Windows 10, a 1280x1200 screen (a few
+   1366x1366), under one page per visit. Real laptops and phones do not report
+   these square-ish sizes, so the pair (country, screen) is matched, not the
+   country alone: a student in Singapore still counts. */
+export const BOT_FINGERPRINTS = [
+  { country: 'SG', screens: ['1280x1200', '1366x1366'] },
+];
+
+export function botFingerprint(request, body) {
+  const country = String(request?.cf?.country || '').toUpperCase();
+  const screen = String(body?.payload?.screen || '');
+  return BOT_FINGERPRINTS.some((f) => f.country === country && f.screens.includes(screen));
+}
+
 const AUTOMATED_UA = /HeadlessChrome|PhantomJS|Playwright|Puppeteer|Lighthouse|PageSpeed|GTmetrix|bot\b|crawler|spider|python-requests|curl\/|wget/i;
 
 /* The body the tracker (or the site's own beacon) sends: one pageview or one
@@ -113,7 +131,9 @@ export async function umamiProxy(request, env, cors, fetchImpl = fetch) {
   if (!ua || AUTOMATED_UA.test(ua) || fromDatacenter(request)) return quiet(cors);
 
   const text = await request.text();
-  if (!acceptableEvent(text)) return new Response('Bad event', { status: 400, headers: cors });
+  const body = acceptableEvent(text);
+  if (!body) return new Response('Bad event', { status: 400, headers: cors });
+  if (botFingerprint(request, body)) return quiet(cors);
 
   const ip = request.headers.get('CF-Connecting-IP') || '';
   const headers = { 'Content-Type': 'application/json', 'User-Agent': ua };

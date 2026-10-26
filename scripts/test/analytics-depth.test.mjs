@@ -107,3 +107,19 @@ test('exam date is reported in weeks, never as a date', () => {
   const e = sent.find((x) => x.name === 'exam-date-set');
   assert.deepEqual({ course: e.data.course, weeks: e.data.weeks }, { course: 'nremt', weeks: '4-8' });
 });
+
+test('parts checked together share the time instead of the first part taking it all', () => {
+  const { b, rpcs, A } = page('http://localhost/bio/tools/water-potential.html');
+  A.mount();
+  b.setNow(b.now() + 40000);
+  for(const k of ['a', 'b', 'c', 'd']) A.answer('apbio', 'wp:' + k, true, 'water');
+  b.setNow(b.now() + 30000);
+  A.answer('apbio', 'wp:e', false, 'water');
+  A.answer('apbio', 'exam:x', true, 'water', 12);
+  for(let i = 0; i < 14; i++){ b.setNow(b.now() + 5000); A.answer('apbio', 'q' + i, true, 'water'); }
+  const items = rpcs[0].args.p_items;
+  assert.deepEqual([...items.slice(0, 4)].map((x) => x.s), [10, 10, 10, 10], '40 seconds over 4 parts');
+  assert.equal(items[4].s, 30, 'a lone answer keeps its own time');
+  assert.equal(items[5].s, 12, 'a given time (exam average) is kept');
+  assert.equal(items[6].s, 5);
+});

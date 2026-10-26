@@ -73,3 +73,20 @@ test('the owner\'s purchases are not counted; sources are single clean words', a
   assert.equal(isSource('https://x.com/a'), false);
   assert.equal(isSource('A'.repeat(50)), false);
 });
+
+test('the Singapore crawler fingerprint is dropped, a Singapore student is not', async () => {
+  const sendFrom = (country, screen) => {
+    globalThis.fetch = async () => new Response('ok', { status: 200 });
+    const req = new Request('https://api.levlprep.com/api/send', {
+      method: 'POST',
+      headers: { Origin: 'https://levlprep.com', 'User-Agent': BROWSER, 'CF-Connecting-IP': '203.0.113.9' },
+      body: body({ screen }),
+    });
+    Object.defineProperty(req, 'cf', { value: { asn: 9506, country } });
+    return worker.fetch(req, {});
+  };
+  assert.equal((await sendFrom('SG', '1280x1200')).status, 204);
+  assert.equal((await sendFrom('SG', '1366x1366')).status, 204);
+  assert.equal((await sendFrom('SG', '390x844')).status, 200, 'a phone in Singapore counts');
+  assert.equal((await sendFrom('US', '1280x1200')).status, 200, 'the screen alone is not enough');
+});

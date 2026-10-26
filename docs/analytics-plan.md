@@ -18,6 +18,7 @@ questions were hard, where exams were abandoned, or how far notes were read.
 | Item | Where |
 |---|---|
 | Events go to `api.levlprep.com/api/send` and the Worker forwards them to `gateway.umami.is` (Umami's own Cloud proxy guide: visitor IP in X-Forwarded-For, User-Agent kept) | `worker/src/umami.js`, route in `worker/src/index.js`, `HOST_URL` in `assets/analytics.js` |
+| Known crawler fingerprints from ordinary networks dropped: Singapore with a 1280x1200 or 1366x1366 screen (2026-10-25: 330 of 519 weekly visitors) | `BOT_FINGERPRINTS` in `worker/src/umami.js` |
 | Data-center networks dropped by ASN (AWS, Google Cloud, Azure, Alibaba, Tencent, DO, OVH, Hetzner...); Akamai, Cloudflare and Fastly kept (iCloud Private Relay) | `DATACENTER_ASNS` in `worker/src/umami.js` |
 | Headless and webdriver browsers never mount the tracker | `automated()` in `assets/analytics.js` |
 | Owner excluded: his signed-in browsers opt out automatically (SHA-256 of his two addresses); `?notrack=1` on any page opts a browser out, `?notrack=0` back in; his test purchases are not sent as sales | `signedIn()`, `takeNoTrack()`, `isOwnerEmail()` |
@@ -70,4 +71,5 @@ answered an FRQ (claude, backup, none, cached) with Claude's token sums. The wee
 ## Progress log
 
 - 2026-10-20: built, tests added (`analytics-depth`, `worker-umami`, one in `worker-premium`); full local CI green.
+- 2026-10-25: the Singapore crawler came back from a network not on the ASN list (330 of 519 Umami visitors in a week); dropped by fingerprint (country plus screen) in the Worker. Answer timing fixed: one Check grading several parts gave the first part all the time and the rest 0 seconds; the time is now shared across answers that arrive within 1.5 s (`answer()` in `assets/analytics.js`). AP® Bio skill tools: a Try this one again button after Check (its answers are not tallied twice; `apbio-skill-check` carries `retry`), and tapping a locked answer says why (most of the week's rage clicks).
 - 2026-10-20: migration 2026-10j applied to the live database (table empty until the site change is merged), plus `revoke all on question_stats from anon, authenticated`.

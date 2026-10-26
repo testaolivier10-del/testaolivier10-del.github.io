@@ -64,8 +64,10 @@ jobs:
         run: node scripts/build-notes-pages.mjs --check
       # Video lessons: docs/videos.json lists each posted YouTube video and its
       # pages; the block on those pages (and on no others) is generated from it.
-      - name: video lessons match docs/videos.json
+      - name: video lessons and quick answers match docs/videos.json and docs/quick-answers.json
         run: node scripts/build-videos.mjs --check
+      - name: homepage video topics match docs/from-video.json
+        run: node scripts/build-from-video.mjs --check
       # The ochem glossary page and the JSON behind its popups are generated
       # from ochem/data/glossary.json; the check also rejects a term filed under
       # a topic that does not exist, a spelling claimed by two terms, and a
