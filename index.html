@@ -43,6 +43,7 @@
   .hero-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.8;}
   .hero-continue b{font:900 15.5px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .hero-continue:hover{background:var(--navy2);}
+  #fromVideo.fv-wait{min-height:414px;}@media(min-width:600px){#fromVideo.fv-wait{min-height:314px;}}
   /* On a phone the facts would push the courses below the fold. */
   @media (max-width:640px){ .hero .fact-row{display:none;} }
   /* Two lines rather than four at desktop width, so the three subjects are on
@@ -182,6 +183,11 @@
 <div class="xshell" id="main" data-skip-target tabindex="-1" role="main">
 
   <div class="hero">
+    <div id="fromVideo"></div>
+    <script>
+    /* TikTok/Instagram visitors: docs/from-video.md */
+    (function(){try{if(!/[?&]ref=(tt|ig)-/.test(location.search)&&!/musical_ly|BytedanceWebview|TikTok|Instagram/i.test(navigator.userAgent||''))return;document.getElementById('fromVideo').className='fv-wait';var s=document.createElement('script');s.src='/assets/from-video.js';s.async=true;document.body.appendChild(s);}catch(e){}})();
+    </script>
     <div class="eyebrow">Nine courses &middot; free to start</div>
     <h1>Question banks and interactive courses for hard subjects, free to start.</h1>
     <p class="lede">NREMT-EMT practice tests, organic chemistry, anatomy &amp; physiology, and AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics and AP® Environmental Science. Start without an account; notes are free forever.</p>

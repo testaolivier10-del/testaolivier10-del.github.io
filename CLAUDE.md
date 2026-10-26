@@ -88,6 +88,12 @@ locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scrip
 `scripts/add-video.mjs` adds one (the daily long-video run), `scripts/build-videos.mjs` writes the click-to-load block.
 Never paste a YouTube iframe into a page.
 
+## Quick answers and the homepage video card
+
+`docs/quick-answers.md`: the "Quick answer" box on notes pages (`docs/quick-answers.json`, placed through
+`applyVideo`). `docs/from-video.md`: the homepage card for visitors from TikTok and Instagram
+(`docs/from-video.json`, `scripts/build-from-video.mjs`).
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.

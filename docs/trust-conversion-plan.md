@@ -77,6 +77,15 @@ and taking it back can feel like a bait and switch and cheapen it; revisit with 
   earlier covers more of the school year.
 - The dialog's AP® trademark line now covers every `ap*` course (AP® Environmental Science was missing).
 
+## Where buyers stop (2026-10-25)
+
+Since the honest counting began (2026-10-13): 139 gate-shown, 11 limit-hit, 7 opened Premium (interest), 0 reached
+the sign-in step (`signin-for-checkout`), 1 checkout start (Oct 20, possibly a signed-in owner test), 0 paid. The
+Premium dialog already shows the prices and what unlocks before any sign-in, and Google is already the first
+sign-in option, so sign-in is not the leak: people open the dialog, see the price, and leave. What would change
+that (price, a cheaper short pass, the founder and refund line next to the button, item 3 below) is the owner's
+call; nothing was changed.
+
 ## Plan and status (owner decisions 2026-10-08)
 
 | # | Item | Status |

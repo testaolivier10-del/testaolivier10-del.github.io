@@ -602,7 +602,10 @@
       var r = M.rng(seed), ctx = r.pick(contexts), input = P.generate[kind](r, ctx);
       return { input: input, topic: ctx.topic, unit: ctx.unit, cid: ctx.id, title: 'Practice problem', code: seed, text: input.text };
     }
-    function draw(focus){
+    // retry: the same problem drawn again after a Check ("Try this one
+    // again"). Its answers are not tallied a second time, so question stats
+    // keep measuring first attempts.
+    function draw(focus, retry){
       var cur = current(), sol = P.solve[kind](cur.input), done = false;
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h">' + esc(cur.title) + '</h2>' + (cur.code ? '<p class="bt-code">Problem code <b>' + cur.code + '</b> <a href="?seed=' + cur.code + '">Link to this problem</a></p>' : '') + '</div>' +
         '<div class="bt-context">' + (cur.text || '') + '</div>' + (sol.table ? wrapTables(sol.table) : '') +
@@ -653,15 +656,25 @@
           sol.parts.forEach(function(p, i){ g[p.key] = { correct: res[i].correct, answered: res[i].answered }; });
           state.answers = answers(); state.graded = g; state.phase = 'checked'; stage.redraw(state);
         }
-        record(slug, sol.parts.map(function(p, i){
+        if(!retry) record(slug, sol.parts.map(function(p, i){
           return { id: slug + ':' + cur.cid + ':' + p.key, correct: res[i].correct, topic: (data.partTopics && data.partTopics[p.key]) || cur.topic, practice: p.practice, level: 'apply', diff: 2, group: p.key };
         }));
-        event('apbio-skill-check', { tool: slug, correct: right, total: sol.parts.length });
+        event('apbio-skill-check', { tool: slug, correct: right, total: sol.parts.length, retry: retry ? 1 : 0 });
         var nx = area.querySelector('.bt-next');
-        nx.innerHTML = mode === 'practice' ? '<button type="button" class="btn-press sm bt-again">New problem</button>'
-          : (at < problems.length - 1 ? '<button type="button" class="btn-press sm bt-again">Next problem</button>' : '<p>That is the whole set. Switch to Practice for new numbers.</p>');
+        var redo = right < sol.parts.length ? '<button type="button" class="btn-press sm bt-redo">Try this one again</button> ' : '';
+        nx.innerHTML = redo + (mode === 'practice' ? '<button type="button" class="btn-press sm bt-again">New problem</button>'
+          : (at < problems.length - 1 ? '<button type="button" class="btn-press sm bt-again">Next problem</button>' : '<p>That is the whole set. Switch to Practice for new numbers.</p>'));
         var again = nx.querySelector('.bt-again');
         if(again) again.addEventListener('click', function(){ if(mode === 'practice') seed = freshSeed(); else at++; draw(true); });
+        var redoBtn = nx.querySelector('.bt-redo');
+        if(redoBtn) redoBtn.addEventListener('click', function(){ draw(true, true); });
+        // Answers lock after Check. Students kept tapping the locked boxes
+        // (rage clicks, 2026-10-25), so say why and point to the way on.
+        form.addEventListener('pointerdown', function(ev){
+          if(!ev.target.closest || !ev.target.closest('.bt-part')) return;
+          area.querySelector('.bt-result').textContent = right + ' of ' + sol.parts.length + ' parts right. Answers lock once checked: ' +
+            (redo ? 'press Try this one again to redo it, or ' : '') + (again ? 'press ' + again.textContent + ' for a fresh one.' : 'switch to Practice for new numbers.');
+        });
         solEl.querySelector('h3').setAttribute('tabindex', '-1');
         solEl.querySelector('h3').focus();
       });

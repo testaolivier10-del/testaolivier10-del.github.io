@@ -525,20 +525,37 @@
   var QID = /^[A-Za-z0-9_.:-]{1,64}$/;
   var TOPIC = /^[A-Za-z0-9_.:-]{1,48}$/;
 
+  // Answers checked together (one "Check answers" grades every part of a
+  // problem) arrive within a moment of each other. Without this the first
+  // part got all the time and the rest 0 seconds (2026-10-25 report), so the
+  // time is shared evenly across the parts of one check.
+  var BURST_MS = 1500;
+  var burst = null;
+
   // secs: optional (an exam scored at once passes its average).
   function answer(course, qid, correct, topic, secs){
     if(exam && exam.course === course) exam.answered++;
     if(!enabled || optedOut() || automated()) return;
     qid = String(qid == null ? '' : qid);
     if(!QID.test(qid) || !/^[a-z]{2,8}$/.test(String(course))) return;
-    var now = Date.now();
-    if(typeof secs !== 'number' || !isFinite(secs)) secs = (now - lastAnswerAt) / 1000;
-    secs = Math.min(900, Math.max(0, Math.round(secs)));
+    var now = Date.now(), given = typeof secs === 'number' && isFinite(secs);
+    var clamp = function(x){ return Math.min(900, Math.max(0, Math.round(x))); };
+    var inBurst = !given && burst && burst.course === course && now - burst.last < BURST_MS;
+    if(!given && !inBurst) secs = (now - lastAnswerAt) / 1000;
+    secs = clamp(given || !inBurst ? secs : 0);
     lastAnswerAt = now;
     topic = String(topic || '').toLowerCase().replace(/[^a-z0-9.:]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48);
     var buf = answerBuf[course] || (answerBuf[course] = []);
-    buf.push({ q: qid, c: correct ? 1 : 0, s: secs, t: TOPIC.test(topic) ? topic : '' });
-    if(buf.length >= ANSWER_BATCH) flushAnswers(course);
+    var item = { q: qid, c: correct ? 1 : 0, s: secs, t: TOPIC.test(topic) ? topic : '' };
+    buf.push(item);
+    if(given) burst = null;
+    else if(inBurst){
+      burst.items.push(item);
+      burst.last = now;
+      var share = burst.total / burst.items.length;
+      burst.items.forEach(function(it){ it.s = clamp(share); });
+    } else burst = { course: course, last: now, total: secs, items: [item] };
+    if(buf.length >= ANSWER_BATCH){ flushAnswers(course); burst = null; }
   }
 
   function flushAnswers(only){

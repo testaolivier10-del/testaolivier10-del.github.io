@@ -1,4 +1,5 @@
-/* Puts each video from docs/videos.json on its pages, and takes it off pages
+/* Puts each video from docs/videos.json (and each quick answer from
+   docs/quick-answers.json) on its pages, and takes it off pages
    that no longer list it.
 
      node scripts/build-videos.mjs           write the pages
@@ -12,10 +13,11 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, COURSE_DIRS, loadVideos, validate, applyVideo, DATA_FILE } from './lib/videos.mjs';
+import { loadQuickAnswers, validateQuickAnswers } from './lib/quick-answers.mjs';
 
 const check = process.argv.includes('--check');
 const videos = loadVideos();
-const errs = validate(videos.data);
+const errs = [...validate(videos.data), ...validateQuickAnswers(loadQuickAnswers().data)];
 if (errs.length) {
   for (const e of errs) console.error(`FAIL: ${e}`);
   process.exit(1);
