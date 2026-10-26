@@ -36,9 +36,7 @@
   "2026-10-25 weekly batch: analytics done (YouTube API, TikTok Studio, Supabase, Umami, Search Console via /u/1/). Google impressions collapsed to near zero since about Oct 12 (793 pages still indexed); flagged to Olivier, no search PR. Shorts w1025 planned and fact checked (pipeline/w1025/PLAN.md) but not built: the laptop dropped off before the art step; added to pending_reruns.",
   "2026-10-26 Olivier: the existing traced cast (paramedic, hoodie runner, jump girl) counts as flat layered; use it with new flat scenes."
  ],
- "pending_reruns": [
-  "LevlPrep weekly batch"
- ],
+ "pending_reruns": [],
  "related_check_after": null,
  "comments_seen": [
   "yt:UgzKkSO9S4e721tY4O14AaABAg",
