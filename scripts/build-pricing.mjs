@@ -76,6 +76,13 @@ const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
    a private tutor's hour. Care.com's national figure for a tutor's starting
    rate was about $26 an hour in October 2026; update the number and the date
    together if it moves. */
+/* Where each "For comparison" line in premium.js comes from (checked on the
+   competitors' own pages, 2026-10-25). Re-check before changing a sentence. */
+const AP_SOURCES = [['UWorld', 'https://collegeprep.uworld.com/ap/ap-online-courses/'], ['Fiveable', 'https://fiveable.me/pricing']];
+const COMPARE_SOURCES = {
+  nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
+  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES,
+};
 const TUTOR_HOUR = { rate: 26, source: 'https://www.care.com/cost/private-tutors/boston-ma', checked: 'October 2026' };
 const PRICES = ORDER.flatMap((k) => COURSES[k].passes.map((x) => x.price));
 const LOW = Math.min(...PRICES), HIGH = Math.max(...PRICES);
@@ -116,7 +123,7 @@ function passRow(p) {
     (founding
       ? `<span data-founding-until="${founding.until}"><s>${money(p.price)}</s> <b>${money(foundingPrice(p.price))}</b> <small>founding price</small></span><b data-founding-after="${founding.until}" hidden>${money(p.price)}</b>`
       : `<b>${money(p.price)}</b>`) +
-    `</span></li>`;
+    `</span> <small class="pp-day" data-pass="${p.id}"></small></li>`;
 }
 
 /* One <details> per course (polish 2026-10-17, A8): the page opens on the
@@ -128,14 +135,16 @@ function courseSection(key) {
   const from = lowest(c).price;
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
-          <summary><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
+          <summary><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
             <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
           </div>
           <ul class="pp-passes">${c.passes.map(passRow).join('')}</ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="${key}" data-premium-source="pricing-page">Get Premium for ${esc(c.name)}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
-          ${c.guarantee ? `<p class="pp-guarantee" id="pass-or-extend">${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p>` : ''}${c.passes.some((p) => p.until) ? `
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>${c.compare ? `
+          <p class="pp-compare">${esc(c.compare)} Sources: ${(COMPARE_SOURCES[key] || []).map(([n, u]) => `<a href="${u}" rel="noopener">${esc(n)}</a>`).join(', ')}.</p>` : ''}
+          ${c.guarantee ? `<details class="pp-guarantee" id="pass-or-extend"><summary>Pass-or-extend: if you don&rsquo;t pass the NREMT during your pass, you can claim more days free.</summary><p>${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p></details>` : ''}${c.passes.some((p) => p.until) ? `
           <p>One pass, whenever you buy it: it lasts through ${esc(longDate(c.passes.find((p) => p.until).until))}, the end of the 2027 exam season.</p>` : ''}
         </details>`;
 }
@@ -204,11 +213,18 @@ function premiumPage() {
   .pp-cols ul{padding-left:18px;margin:0;}
   .pp-cols li{margin-bottom:5px;}
   .pp-passes{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:6px;}
-  .pp-passes li{display:flex;justify-content:space-between;gap:12px;border-top:var(--bw) solid var(--line);padding-top:8px;margin:0;max-width:none;}
+  .pp-passes li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:var(--bw) solid var(--line);padding-top:8px;margin:0;max-width:none;}
   .pp-label{color:var(--ink);font-weight:800;}
   .pp-price b{color:var(--ink);font-weight:900;}
   .pp-actions{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:14px 0 0;}
   .pp-guarantee{background:var(--tint-accent);border-radius:var(--radius);padding:12px 14px;margin:14px 0 0;}
+  .pp-guarantee > summary{cursor:pointer;font-weight:800;}
+  .pp-guarantee > p{margin:8px 0 0;}
+  .pp-day{display:block;flex-basis:100%;text-align:right;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:-4px;}
+  .pp-day:empty{display:none;}
+  .pp .pp-len{display:block;font:700 11.5px var(--font-ui);color:var(--muted);text-align:right;}
+  .pp-sure{margin:12px 0 0;font-weight:900;}
+  .pp-compare{margin:6px 0 0;font-size:14px;color:var(--muted);}
   .pp ul.pp-rules{padding-left:20px;}
   @media (max-width:560px){.pp-cols{grid-template-columns:1fr;}}
 </style>
@@ -230,7 +246,7 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
   <div class="hero">
     <div class="eyebrow">Free vs Premium</div>
     <h1>What&rsquo;s free, and what Premium adds.</h1>
-    <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $${LOW} to $${HIGH}, with no subscription and a 7-day refund.${founding ? ` <span data-founding-until="${founding.until}">${FOUNDING.off}% off until ${longDate(founding.until)}.</span>` : ''}</p>
+    <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from ${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(LOW))} (founding price until ${longDate(founding.until)})</span><span data-founding-after="${founding.until}" hidden>${money(LOW)}</span>` : money(LOW)}, with a full refund within 7 days.</p>
   </div>
 
   <div class="xsection">
@@ -301,6 +317,15 @@ ${MARK ? `    ${TM_HTML}
     if (now > Date.parse(el.getAttribute('data-founding-after') + 'T23:59:59Z')) el.hidden = false;
   });
 })();
+</script>
+<script>
+// Each pass's price per day, from premium.js once it has loaded (a dated pass
+// counts the days it has left, so this cannot be written at build time).
+document.addEventListener('DOMContentLoaded', function(){
+  var P = window.LevlPremium;
+  if (!P || !P.perDay) return;
+  [].forEach.call(document.querySelectorAll('.pp-day[data-pass]'), function(el){ el.textContent = P.perDay(el.getAttribute('data-pass')); });
+});
 </script>
 <script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
