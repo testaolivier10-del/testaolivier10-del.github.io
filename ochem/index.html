@@ -40,32 +40,13 @@
      XP bar, mastery rows, the dark feature panel — comes from the shared
      system in ../assets/theme.css, so this page matches the NREMT course
      component for component. */
-  .home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,52px);align-items:center;}
 
   /* Hero progress card — level ring, XP bar, and the four modules you've
      finished the most lessons in. */
-  .progress-card{
-    background:var(--white);border:var(--bw) solid var(--line);border-radius:22px;
-    padding:26px 26px 22px;box-shadow:var(--lift-lg);
-  }
-  .progress-card__top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
-  .level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
-  .level-chip .t b{display:block;font-weight:900;font-size:16px;}
-  .level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
 
   /* "What now" row: the lesson you left, the review queue, the weak
      prerequisite. Each card is rewritten by ochem-home.js when there's real
      progress to report; the authored markup is the first-visit state. */
-  .now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
-  .now-card{
-    background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
-    padding:22px 24px;box-shadow:var(--lift-lg);
-  }
-  .now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
-  .now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-  .now-card h3{margin:0 0 6px;font-size:19px;}
-  .now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
-  .now-card p:last-child{margin-bottom:0;}
 
   /* The curriculum as a snaking path. Nodes sit on a grid; the script
      orders them boustrophedon (left to right, then right to left) and draws
@@ -122,22 +103,6 @@
   }
 
   /* Dark feature panel for the interactive tools. */
-  .feature-card{
-    background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);
-    display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;
-  }
-  .feature-card .icon-circle{
-    width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.10);
-    display:flex;align-items:center;justify-content:center;margin:0 auto;
-  }
-  .feature-card h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
-  .feature-card p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:40ch;}
-  .tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
-  .tool-chips a{
-    font:800 12px var(--font-ui);color:#fff;text-decoration:none;
-    background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;
-  }
-  .tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
 
   /* Sample mechanism step. */
   .sample-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
@@ -163,8 +128,7 @@
 
   @media(max-width:1000px){ .now-row{grid-template-columns:1fr;} }
   @media(max-width:900px){
-    .home-hero,.feature-card,.sample-row{grid-template-columns:1fr;}
-    .feature-card{text-align:center;}
+    .sample-row{grid-template-columns:1fr;}
   }
 </style>
 <!-- levlprep-structured-data -->
@@ -1209,86 +1173,34 @@
 <div class="course-nav"></div>
 <noscript><div class="site-nav-fallback" style="max-width:1180px;margin:0 auto;padding:14px clamp(18px,3.5vw,48px)"><a href="index.html">Home</a> &middot; <a href="learn.html">Learn</a> &middot; <a href="practice.html">Practice</a> &middot; <a href="review.html">Review</a> &middot; <a href="exams.html">Exams</a> &middot; <a href="glossary.html">Glossary</a> &middot; <a href="tools.html">Tools</a> &middot; <a href="dashboard.html">Dashboard</a></div></noscript>
 
-<div class="xshell">
+<div class="xshell ch-home" data-cover="ochem">
 
-  <!-- course-banner (scripts/lib/covers.mjs) -->
-  <div class="course-banner" data-cover="ochem" aria-hidden="true"><img src="../assets/covers/ochem.svg" alt="" width="640" height="320" decoding="async"><span class="cv-t"><b>Organic<span>Chemistry</span></b><em>push the arrows yourself</em></span></div>
-  <div class="hero">
-    <div class="home-hero">
-      <div>
-        <div class="eyebrow">Organic Chemistry</div>
-        <h1>Push the arrows yourself.</h1>
-        <p class="lede">Twenty-three chapters, 123 topics and ten mechanisms you perform yourself, with the why on every wrong step.</p>
-        <div class="hero-ctas">
-          <a href="learn.html" class="btn-press" id="heroPrimaryCta">Open the textbook</a>
-          <script>try{if((localStorage.getItem('ochem_progress')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>
-          <a href="tools/arrow-pusher.html?start=sn2-bromoethane" class="link-quiet">Push the SN2 arrows, free &rarr;</a>
-          <a href="how-to-study.html" class="link-quiet">How to study ochem &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Live progress card — the same component the NREMT course opens with,
-           reading this course's own module mastery. Rendered from localStorage
-           by assets/ochem-home.js; this markup is the signed-out / brand-new
-           state, and stands on its own with JS off. -->
-      <div class="progress-card" id="heroProgress" data-lv-zero>
-        <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-        <div class="progress-card__top">
-          <div class="level-chip">
-            <div class="level-ring" id="heroLevelRing">L1</div>
-            <div class="t">
-              <b id="heroLevelTitle">Lewis Apprentice</b>
-              <span id="heroLevelSub">Level 1 &middot; 0 XP</span>
-            </div>
-          </div>
-          <div class="streak-chip" id="heroStreak" hidden>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>
-            <span id="heroStreakCount">0</span>
-          </div>
-        </div>
-
-        <div class="xp-track"><div class="xp-fill" id="heroXpFill" style="width:0%"></div></div>
-        <div class="xp-label" id="heroXpLabel">0 / 100 XP to Level 2</div>
-
-        <div id="heroModules" style="margin-top:14px">
-          <div class="mini-domain-row" style="border-top:1px solid var(--line-soft);color:var(--muted);font-weight:700;font-size:12.5px;display:block;padding-top:12px">
-            Finish a lesson and your module readings appear here.
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- course-home:top:start -->
+<section class="ch-hero" aria-labelledby="chTitle">
+  <div class="ch-hero-copy">
+    <p class="ch-pill">Organic Chemistry &middot; free to start</p>
+    <h1 id="chTitle">Push the arrows <span>yourself.</span></h1>
+    <p class="ch-hand">the why on every wrong step</p>
+    <p class="ch-lede">Twenty-three chapters, 123 topics and ten mechanisms you perform yourself, with the why on every wrong step.</p>
+    <div class="ch-btns"><a href="learn.html" class="ch-cta" id="heroPrimaryCta">Open the textbook</a>
+          <script>try{if((localStorage.getItem('ochem_progress')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a href="tools/arrow-pusher.html?start=sn2-bromoethane" class="ch-ghost">Push the SN2 arrows, free</a></div>
+    <p class="ch-trust">Every textbook page is free, and so are the first four chapters. <a href="how-to-study.html">How to study ochem</a></p>
   </div>
-
-  <!-- What to do right now. Each card is the first-visit state until
-       ochem-home.js has real progress to put in it. -->
-  <div class="xsection">
-    <div class="now-row cx-now-row">
-      <div class="now-card cx-now-card" id="homeResume">
-        <div class="k">Start here</div>
-        <h3>Atomic structure</h3>
-        <p>Foundations. The groundwork every later arrow uses.</p>
-        <a href="lessons/atomic-structure.html" class="btn-press">Start the first lesson</a>
-      </div>
-      <div class="now-card cx-now-card" id="homeReview">
-        <div class="k">Review queue</div>
-        <h3>Nothing due yet</h3>
-        <p>Finished concepts come back when they're shakiest, not on a fixed date.</p>
-      </div>
-      <div class="now-card cx-now-card" id="homeNext">
-        <div class="k">Daily Rounds</div>
-        <h3>A short set each day</h3>
-        <p>A short daily set from what you're closest to forgetting.</p>
-        <a href="practice.html" class="link-quiet">See practice &rarr;</a>
-      </div>
-    </div>
+  <div class="ch-panel">
+    <div class="ch-art" aria-hidden="true"><img src="../assets/covers/ochem.svg" alt="" width="640" height="320" decoding="async"><span class="ch-art-t"><b>Organic<span>Chemistry</span></b></span></div>
+    <div class="ch-card" id="homeResume"><div class="k">Start here</div><h3>Atomic structure</h3><p>Foundations. The groundwork every later arrow uses.</p><a href="lessons/atomic-structure.html" class="btn-press">Start the first lesson</a></div>
+    <div class="ch-mini" id="homeReview"><span class="k">Review queue</span><h3>Nothing due yet</h3><p>Finished concepts come back when they&rsquo;re shakiest, not on a fixed date.</p></div>
   </div>
+</section>
+<section class="ch-sec" aria-labelledby="chStart">
+  <div class="ch-sh"><div><h2 id="chStart">Start <span>here</span></h2><p>New to the course? Three steps, in this order.</p></div></div>
+  <ol class="ch-steps"><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">1</span><h3>Learn a topic from scratch</h3><p>Start with atomic structure: the groundwork every later arrow uses. The first four chapters are free.</p><a class="ch-go" href="lessons/atomic-structure.html">Start the first lesson &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">2</span><h3>Push the arrows yourself</h3><p>Draw a mechanism and watch what it makes, with the why on every wrong step.</p><a class="ch-go" href="tools/arrow-pusher.html?start=sn2-bromoethane">Open the arrow pusher &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">3</span><h3>Practice and review</h3><p>Questions from every chapter, 15 a day free. Finished concepts come back when they&rsquo;re shakiest.</p><a class="ch-go" href="practice.html">Practice now &rarr;</a></li></ol>
+</section>
+<!-- course-home:top:end -->
 
   <!-- The chapters as a path; ochem-home.js fills the rings and the line. -->
-  <div class="xsection">
-    <div class="section-head">
-      <h2>The path through the course</h2>
-      <p class="section-lede">Each leans on the last. Tap one to open its chapter.</p>
-    </div>
+  <div class="ch-sec">
+    <div class="ch-sh"><div><h2 id="chPath">The path through <span>the course</span></h2><p>Each chapter leans on the last. Tap one to open it.</p></div></div>
     <div class="mod-path" id="modulePath">
       <svg class="path-line" aria-hidden="true"><path class="path-track" d=""/><path class="path-fill" d=""/></svg>
       <!-- mod-path:start -->
@@ -1396,34 +1308,29 @@
     </div>
   </div>
 
-  <div class="xsection">
-    <div class="feature-card">
-      <div class="icon-circle">
-        <svg width="110" height="110" viewBox="0 0 110 110" fill="none" aria-hidden="true">
-          <circle cx="55" cy="22" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
-          <circle cx="24" cy="66" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
-          <circle cx="86" cy="66" r="9" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
-          <circle cx="55" cy="92" r="7" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
-          <path d="M48 29L31 59M62 29l17 30M33 70l15 17m29-17L62 87" stroke="#fff" stroke-opacity=".9" stroke-width="3"/>
-        </svg>
-      </div>
-      <div>
-        <h2>Eight tools that do the chemistry, not a lookup.</h2>
-        <p>Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its &#185;H NMR.</p>
-        <div class="tool-chips">
-          <a href="tools/arrow-pusher.html">Arrow Pusher</a>
-          <a href="tools/resonance.html">Resonance Explorer</a>
-          <a href="tools/viewer-3d.html">3D Viewer</a>
-          <a href="tools/conformations.html">Conformation Lab</a>
-          <a href="tools/reaction-predictor.html">Reaction Predictor</a>
-          <a href="tools/acid-base.html">Acid/Base Comparator</a>
-          <a href="tools/spectroscopy.html">Spectroscopy Lab</a>
-          <a href="tools/reagent-roadmap.html">Reagent Roadmap</a>
-        </div>
-        <a href="tools/arrow-pusher.html" class="btn-press alt">Open the arrow pusher</a>
-      </div>
-    </div>
+  <!-- course-home:mid:start -->
+<section class="ch-sec ch-two" aria-label="Notes and exams">
+  <div class="ch-box ch-notes">
+    <p class="ch-eye">Learn &middot; free forever</p>
+    <h2>The textbook, <span>free</span></h2>
+    <p>The textbook section for every topic is free, and so are the flashcards. The first four chapters are fully interactive.</p>
+    
+    <a class="ch-ghost" href="learn.html">Open the textbook</a>
   </div>
+  <div class="ch-box ch-exam">
+    <p class="ch-eye">Exams</p>
+    
+    <h2>Timed tests <span>on your terms</span></h2>
+    <p>Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
+    <a class="ch-cta" href="exams.html">See the exams</a>
+    
+  </div>
+</section>
+<section class="ch-sec" aria-labelledby="chTools">
+  <div class="ch-sh"><div><h2 id="chTools">Tools that do <span>the chemistry</span></h2><p>Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its &#185;H NMR.</p></div><a class="ch-go" href="tools.html">All tools &rarr;</a></div>
+  <ul class="ch-tools"><li><a class="ch-box ch-tool" href="tools/arrow-pusher.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 17c2-8 10-10 14-6"/><path d="M19 7v4h-4"/></svg></span><span><b>Arrow Pusher</b><small>Draw a mechanism and watch what it makes.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/resonance.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12h5M15 12h5M9 9l3 3-3 3M15 9l-3 3 3 3"/></svg></span><span><b>Resonance Explorer</b><small>Find every valid resonance form, and rank them.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/conformations.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="7"/><path d="M12 5v14M6 8.5l12 7"/></svg></span><span><b>Conformation Lab</b><small>Turn the bond. Watch the energy.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/reaction-predictor.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12h12M12 7l5 5-5 5"/></svg></span><span><b>Reaction Predictor</b><small>SN1, SN2, E1 or E2, and why, factor by factor.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/spectroscopy.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 18h18M5 18l2-8 2 8 2-12 2 12 2-5 2 5"/></svg></span><span><b>Spectroscopy Lab</b><small>Read the peaks, name the compound.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/reagent-roadmap.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h6a4 4 0 0 1 0 8h-4a4 4 0 0 0 0 8"/></svg></span><span><b>Reagent Roadmap</b><small>From any functional group to any other, with the reagents.</small></span></a></li></ul>
+</section>
+<!-- course-home:mid:end -->
 
   <div class="xsection" id="sample">
     <div class="sample-row">
@@ -1454,12 +1361,27 @@
     </div>
   </div>
 
+  <!-- course-home:deal:start -->
+<section class="ch-sec ch-deal" aria-labelledby="chDeal">
+  <h2 id="chDeal" class="sr-only">Free and Premium</h2>
+  <div class="ch-box ch-plan">
+    <p class="ch-pill">Free</p>
+    <h3>Everything to start</h3>
+    <ul><li>The textbook section for every topic, and the flashcards</li><li>The first four chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li></ul>
+    <a class="ch-ghost" href="lessons/atomic-structure.html">Start the first lesson</a>
+  </div>
+  <div class="ch-box ch-plan prem">
+    <p class="ch-pill">Premium &middot; Organic Chemistry</p>
+    <p class="ch-amt"><span data-founding-until="2027-01-31">From $20.30 <s>$29</s></span><span data-founding-after="2027-01-31" hidden>From $29</span></p>
+    <p class="ch-note"><span data-founding-until="2027-01-31">Founding price until 31 January 2027. </span>One payment for semester (5 months).</p>
+    <ul><li>Every interactive lesson and mechanism walkthrough</li><li>The full 3,675-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>Mastery dashboard and gap detection</li><li>All eight interactive tools</li></ul>
+    <a class="ch-cta gold" href="../premium.html#ochem">Get Premium for Organic Chemistry</a>
+    <p class="ch-sure">Never renews. Full refund within 7 days.</p>
+  </div>
+</section>
+<script>(function(){var n=Date.now(),d=document.getElementById('chDeal').parentNode;[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
+<!-- course-home:deal:end -->
   <div class="xsection">
-    <div class="trust-row">
-      <div class="trust-pill">Every textbook page free</div>
-      <div class="trust-pill">Progress saved on your device</div>
-      <div class="trust-pill">First four chapters free</div>
-    </div>
     <p class="disclaimer">Independent study aid. Progress is stored on your device; sign in to sync it. <a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
   </div>
 

@@ -186,6 +186,10 @@ jobs:
       # would show a reader, and a search engine, the wrong course.
       - name: the ochem homepage's chapter list matches the curriculum
         run: node scripts/build-ochem-home.mjs --check
+      # The NREMT and ochem course homes carry blocks written by
+      # scripts/build-course-homes.mjs (question counts per domain, prices).
+      - name: the NREMT and ochem course home blocks are current
+        run: node scripts/build-course-homes.mjs --check
       # A lesson's title is its topic's name and its chapter's name, both of
       # which live in curriculum.js — so it is generated, not retyped. Retyped,
       # it drifted twice: 121 lessons shipped the same title as their notes

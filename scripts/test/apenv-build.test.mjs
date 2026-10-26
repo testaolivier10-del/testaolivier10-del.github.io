@@ -103,11 +103,11 @@ test('the real published list holds every chapter since the launch', () => {
 test('the course home has its own headline, olive and its own icon, not Statistics\'', () => {
   const { root } = build('unit-3');
   const home = readFileSync(join(root, `${D}/index.html`), 'utf8');
-  assert.match(home, /<h1>AP&reg; Environmental Science, one system at a time\.<\/h1>/);
+  assert.match(home, /<h1 id="chTitle">AP&reg; Environmental Science, <span>one system at a time\.<\/span><\/h1>/);
   assert.doesNotMatch(home, /Statistics|Chemistry|Calculus|Physics|Data Collector|bell curve|score-calculator/);
   assert.match(home, /assets\/env\.css/);
-  assert.match(home, /Field Observer/);
-  assert.match(home, /--pc:#7E8126/);
+  assert.match(home, /data-cover="apenv"/);
+  assert.match(home, /assets\/covers\/apenv\.svg/);
   const css = readFileSync(`${D}/assets/env.css`, 'utf8');
   assert.match(css, /body\.env\{--ctint:#EFF0DA;--cink:#474A10;\}/);
   assert.match(readFileSync('assets/theme.css', 'utf8'), /body\[data-course="apenv"\]\{--ctint:#EFF0DA;--cink:#474A10;\}/);

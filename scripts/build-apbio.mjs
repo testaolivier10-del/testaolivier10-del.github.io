@@ -25,6 +25,7 @@
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
+import { apHomeMain } from './lib/course-home.mjs';
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
@@ -616,115 +617,16 @@ ${tail({ depth, section: 'learn', extra: ['bio-toc.js', 'bio-book.js'] })}
     const partCount = id => map.chapters.filter(c => c.part === id).length;
     const partTopics = id => topics.filter(t => chapterById(t.chapter).part === id).length;
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
+        const HOME = {
+      key: COURSE_KEY, prefix: 'bio', mainClass: 'bio-home', courseHtml: COURSE_HTML, beta: BETA_PILL,
+      t2: `taught from scratch, in order.`, lede: `Each topic taught from scratch, in framework order. See the process, then answer data-heavy questions like the real exam.`, storageKey: 'apbio_progress_v1',
+      first, firstCh, unitLabel, freeUnits, freeUnitsText, dailyFree, chapters: map.chapters, topicsOf, chapterBuilt,
+      partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive), toolIcon: TOOL_ICON,
+      exam: { mcq: 60, mcqTime: '90 minutes', frq: 6, frqTime: '90 minutes' }, sample: homeSample(depth),
+    };
     const body = `
 ${bodyOpen()}
-<main id="main" class="xshell bio-home">
-  ${courseBanner('apbio')}
-  <header class="hero bio-home-hero">
-    <div>
-      <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>
-      <h1>${COURSE_HTML}, taught from scratch, in order.</h1>
-      <p class="lede">Each topic taught from scratch, in framework order. See the process, then answer data-heavy questions like the real exam.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apbio_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All units &rarr;</a>${freeSim ? `<a class="link-quiet" href="tools/${freeSim.slug}.html">${esc(freeSim.name)} &rarr;</a>` : ''}</div>
-    </div>
-    <div class="bio-level-card" id="bioLevel" data-lv-zero>
-      <div class="cx-lv-zero"><div class="k">Your level</div><p>Starts with your first answer. Every question, card and lesson earns XP toward one level that counts across every LevlPrep course, and a day of study keeps a shared streak going.</p></div>
-      <div class="bio-level-top">
-        <div class="bio-level-chip"><div class="level-ring" id="bioLvRing">L1</div><div class="t"><b id="bioLvTitle">Water Watcher</b><span id="bioLvSub">Level 1 &middot; 0 XP</span></div></div>
-        <div class="streak-chip" id="bioStreak" hidden title="Day streak, across every subject">${STREAK_SVG}<span id="bioStreakN">0</span></div>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="bioXpFill" style="width:0%"></div></div>
-      <div class="xp-label" id="bioXpLabel">0 / 100 XP to Level 2</div>
-      <div class="bio-part-bars">${bars}</div>
-    </div>
-  </header>
-
-  <section class="xsection" aria-label="What to do now">
-    <div class="bio-now-row cx-now-row">
-      <div class="bio-now-card cx-now-card" id="bioStart">
-        <div class="k">Start here</div>
-        ${first ? `<h2>${esc(first.title)}</h2>
-        <p>${esc(unitLabel(firstCh))} &middot; ${esc(firstCh.title)}.${freeUnitsText ? ` ${freeUnitsText} lessons and every notes page are free.` : ' Every notes page is free.'}</p>
-        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any unit</h2><p>Every notes page is free.</p>`}
-      </div>
-      <div class="bio-now-card cx-now-card" id="bioReview">
-        <div class="k">Review queue</div>
-        <h2>Missed questions come back</h2>
-        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
-        <a class="link-quiet" href="review.html">Open review &rarr;</a>
-      </div>
-      <div class="bio-now-card cx-now-card" id="bioGoal">
-        <div class="k">Today&rsquo;s goal</div>
-        <h2>A little every day</h2>
-        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.${dailyFree ? ` ${dailyFree} practice questions a day are free.` : ''}</p>
-        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="xsection" aria-labelledby="h-path">
-    <div class="section-head">
-      <h2 id="h-path">The path through the course</h2>
-      <p class="section-lede">The units in framework order, then the skills track: the math and experimental design the exam tests. Tap one to open it.</p>
-    </div>
-    <div class="bio-path-legend">${map.parts.map(p => `<span style="--c:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"><i></i>${p.id === 'course' ? `${partCount(p.id)} units` : esc(PART_LABEL[p.id] || p.title)} &middot; ${partTopics(p.id)} topics</span>`).join('')}</div>
-    ${homePath(depth)}
-  </section>
-
-  <section class="xsection bio-home-about" aria-label="About the course">
-    <div>
-      <h2 id="h-covers">What the course covers</h2>
-      <p>${units.length} units and ${unitTopics.length} topics in the order of the 2025 course framework, plus ${skillTopics} skills topics built on the official formula sheet: statistics, rates, water potential and experimental design. Each topic is taught from scratch for when your class moves too fast, with an interactive lesson, a free notes page and exam-style practice, and each unit has a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
-      <p class="bio-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
-    </div>
-    <div>
-      <h2 id="h-how">How to use it</h2>
-      <ol class="bio-sample-list bio-how">
-        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.</span></li>
-        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
-        <li><span class="n" aria-hidden="true">3</span><span><b>Run the simulators.</b> Watch the process, change one variable, then answer the data questions about what you saw.</span></li>
-        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows it by unit, topic and science practice, and every miss links to its lesson.</span></li>
-      </ol>
-    </div>
-  </section>
-${sims.length ? `
-  <section class="xsection" aria-labelledby="h-tools">
-    <div class="bio-feature">
-      <div class="icon-circle" aria-hidden="true">
-        <svg viewBox="0 0 170 170" fill="none" focusable="false">
-          <ellipse cx="85" cy="88" rx="50" ry="40" stroke="#fff" stroke-opacity=".9" stroke-width="3.5"/>
-          <ellipse cx="85" cy="88" rx="41" ry="31" stroke="#fff" stroke-opacity=".45" stroke-width="2.5" stroke-dasharray="5 6"/>
-          <circle cx="94" cy="84" r="13" stroke="#fff" stroke-opacity=".9" stroke-width="3.5"/>
-          <circle cx="94" cy="84" r="4" fill="#B6E2A2"/>
-          <path d="M18 64h20m-7-7l7 7-7 7M152 112h-20m7-7l-7 7 7 7" stroke="#B6E2A2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="62" cy="100" r="3" fill="#fff" fill-opacity=".7"/><circle cx="72" cy="112" r="3" fill="#fff" fill-opacity=".7"/><circle cx="110" cy="106" r="3" fill="#fff" fill-opacity=".7"/>
-        </svg>
-      </div>
-      <div>
-        <h2 id="h-tools">${word(sims.length)} simulators that let you see the process.</h2>
-        <p>Change one thing and watch water move, an enzyme slow down, an operon switch on or a population grow, then answer the questions about what you saw.${freeSim ? ` The ${esc(freeSim.name.toLowerCase())} simulator is free.` : ''}</p>
-        <div class="bio-tool-chips">${sims.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}${t.premium ? '' : ' &middot; free'}</a>`).join('')}</div>
-        <a class="btn-press alt" href="tools.html">See all tools</a>
-      </div>
-    </div>
-  </section>` : ''}
-${homeSample(depth)}
-  <section class="xsection" aria-labelledby="h-go">
-    <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
-    <ul class="bio-cards bio-go">${[...(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`), `<li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>`,
-      ...(units.filter(chapterBuilt).length ? [`<li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>`] : [])].join('')}</ul>
-  </section>
-
-  <section class="xsection" aria-label="About LevlPrep">
-    <div class="trust-row">
-      <div class="trust-pill">Every notes page free</div>
-      ${freeUnitsText ? `<div class="trust-pill">${freeUnitsText} lessons free</div>` : ''}
-      <div class="trust-pill">Unit sheets free to print</div>
-      <div class="trust-pill">Progress saved on your device</div>
-    </div>
-  </section>
-</main>
+${apHomeMain(HOME)}
 ${footer(depth, 'home')}
 ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
 </body>
