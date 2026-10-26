@@ -153,7 +153,10 @@ const SHELL_BUDGETS = [
      (20.5 KB and 12.5 KB of woff2, which gzip cannot shrink). They carry the channel look's headlines; body text
      stays Nunito, and font-display: optional means a face that is late is skipped, never waited for.
      Measured 330.0 KB. */
-  ['site', 330.5],
+  /* 330.5 -> 332 for redesign round 2 step 1 (docs/site-redesign.md): theme.css section 9, the shared
+     channel look every page now uses (grid ground, ring cards, display headlines, .tone/.hand helpers, the
+     new top bar, tabs and footer) in place of each page restyling itself. Measured 331.7 KB. */
+  ['site', 332],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

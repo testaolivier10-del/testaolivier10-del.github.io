@@ -25,12 +25,12 @@
    ========================================================================== */
 :root{
   /* Core palette */
-  --navy:#1F4A42;        /* deep teal — primary buttons, dark panels */
-  --navy-press:#173B35;  /* darker teal — pressed / hover on navy */
-  --navy2:#2A5F55;       /* secondary teal — hover states */
-  --paper:#F3F6F4;       /* page background — pale mint ground */
+  --navy:#0B1A33;        /* deep teal — primary buttons, dark panels */
+  --navy-press:#081428;  /* darker teal — pressed / hover on navy */
+  --navy2:#1B2D4E;       /* secondary teal — hover states */
+  --paper:#F7F9FC;       /* page background — pale mint ground */
   --white:#FFFFFF;       /* card surface */
-  --surface2:#F7FAF8;    /* a quieter surface inside a card: answer rows, inputs */
+  --surface2:#F6F8FB;    /* a quieter surface inside a card: answer rows, inputs */
   /* Deep teal. This used to be the mint #2C9C8B, which measured 3.37:1 on white
      — under the 4.5:1 AA needs for body text — and the accent carries real text
      all over this site: eyebrow labels, links, section heads, and white-on-fill
@@ -45,9 +45,9 @@
      on the same green as a button fill failed by the same ratio, so one value
      was two failures. This clears both: 5.81:1 on white, 4.99:1 on the tint.
      Do not lighten it back without re-running that check. */
-  --accent:#127264;
-  --accent-press:#156D60;
-  --accent-bright:#35B39F;
+  --accent:#0B7268;
+  --accent-press:#09645B;
+  --accent-bright:#2EE6D6;
   --amber:#E0A63C;       /* streaks, "in progress" */
   --amber-press:#B8842A;
   --coral:#F08A7C;       /* warm highlight, difficulty tags */
@@ -57,23 +57,23 @@
 
   /* Course tint: the panel every page opens with, and the active tab. The
      chrome sets data-course on <body>; ochem swaps these for lilac. */
-  --ctint:#DFF2ED;
-  --cink:#0F5F53;
+  --ctint:#E1F6F2;
+  --cink:#0B6B62;
 
   /* Lines + tracks */
-  --line:#E4ECE8;        /* hairlines and the inset ring on form controls */
-  --line-soft:#EDF2EF;   /* 1px dividers between rows inside a card */
-  --track:#E9F0ED;       /* unfilled portion of a progress bar */
-  --hover-tint:#EEF4F1;
+  --line:#E3E9F2;        /* hairlines and the inset ring on form controls */
+  --line-soft:#EDF1F7;   /* 1px dividers between rows inside a card */
+  --track:#E6ECF4;       /* unfilled portion of a progress bar */
+  --hover-tint:#EEF2F8;
 
   /* Text */
-  --ink:#1B2A26;
+  --ink:#0B1A33;
   /* Secondary text. Darkened from #55706A, which cleared 4.5:1 on white and on
      the standard surface but landed at 4.47:1 on the Organic Chemistry course
      tint — under the line by three hundredths, on the lede of every ochem page.
      A colour that passes on one course's panel and fails on the other's is the
      kind of thing only a checker finds. 4.74:1 on the ochem tint now. */
-  --muted:#526C66;
+  --muted:#56667F;
   --on-accent:#FFFFFF;   /* text on a solid navy/bad fill — white in both themes */
   /* Text on a solid --accent fill, which is NOT the same thing: dark mode lifts
      the accent to a bright mint that white text cannot sit on (2.37:1). Kept
@@ -81,7 +81,7 @@
   --on-accent-fill:#FFFFFF;
   /* Secondary text on the dark navy panels that appear in BOTH themes — the
      light theme's --muted is a dark grey and vanishes on them. */
-  --muted-on-dark:#A8BDB6;
+  --muted-on-dark:#AFC0D8;
 
   /* Status */
   --good:#2F9E5B;
@@ -98,10 +98,10 @@
   --amber-text:#8A5E10;
   --good-text:#1F6E3E;
   --bad-text:#A83B2C;
-  --accent-text:#0F5F53;
+  --accent-text:#0B7268;
 
   /* Pale tints — badge and answer-state backgrounds */
-  --tint-accent:#DFF2ED;
+  --tint-accent:#E1F6F2;
   --tint-amber:#FBEFD6;
   --tint-coral:#FDE7E2;
   --tint-good:#E2F4E8;
@@ -111,7 +111,7 @@
 
   /* Type */
   --font-ui:'Nunito','Segoe UI',system-ui,sans-serif;
-  --font-display:'Nunito','Segoe UI',system-ui,sans-serif;
+  --font-display:'Inter Display','Nunito','Segoe UI',system-ui,sans-serif;
   --font-serif:'Nunito','Segoe UI',system-ui,sans-serif; /* legacy alias — the serif is gone */
   --font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
 
@@ -127,18 +127,18 @@
      rests on the page (cards, chips, controls), elev-2 for anything raised
      above it (featured cards, menus, dialogs). The older names stay as
      aliases so no rule had to change. */
-  --elev-1:0 1px 2px rgba(20,40,35,0.04),0 6px 16px rgba(20,40,35,0.06);
-  --elev-2:0 2px 4px rgba(20,40,35,0.05),0 18px 40px rgba(20,40,35,0.10);
+  --elev-1:0 1px 2px rgba(11,26,51,0.04),0 6px 16px rgba(11,26,51,0.06);
+  --elev-2:0 2px 4px rgba(11,26,51,0.05),0 18px 40px rgba(11,26,51,0.10);
   --lift-sm:var(--elev-1);
   --lift:var(--elev-1);
   --lift-lg:var(--elev-2);
   --shadow-card:var(--lift);
   --shadow-pop:var(--elev-2);
-  --btn-shadow:0 8px 20px rgba(31,74,66,0.28);
-  --btn-shadow-accent:0 8px 20px rgba(28,140,123,0.30);
+  --btn-shadow:0 8px 20px rgba(11,26,51,0.22);
+  --btn-shadow-accent:0 8px 20px rgba(11,114,104,0.25);
 
-  --overlay-bg:rgba(243,246,244,0.92);
-  --header-bg:rgba(243,246,244,0.82);
+  --overlay-bg:rgba(247,249,252,0.92);
+  --header-bg:rgba(247,249,252,0.85);
   --site-header-h:112px; /* fallback for both chrome rows; site-chrome.js
                             measures the real heights (see --chrome-row1-h) */
   --chrome-row1-h:60px;
@@ -150,33 +150,33 @@
      near-black page the light theme's #16332E is almost invisible, so dark
      lifts it to the mid teal — buttons stay legible and the dark panels read
      as a distinct surface rather than merging into the page. */
-  --navy:#2A5F55;
-  --navy-press:#1F4A42;
-  --navy2:#33756A;
-  --paper:#0F1917;
-  --white:#17241F;
-  --surface2:#1C2B26;
-  --accent:#3FC2A9;
-  --accent-press:#2E8D80;
-  --accent-bright:#3FC2A9;
+  --navy:#1E3A66;
+  --navy-press:#17305A;
+  --navy2:#24467A;
+  --paper:#0A1322;
+  --white:#111D31;
+  --surface2:#16243B;
+  --accent:#2EE6D6;
+  --accent-press:#22B8AB;
+  --accent-bright:#2EE6D6;
   --lilac:#9C8FE0;
-  --ctint:rgba(63,194,169,0.14);
-  --cink:#9FE6D6;
-  --on-accent-fill:#0C1F1A;  /* 6.9:1 on the mint; white would be 2.37:1 */
-  --muted-on-dark:#C9D8D3;   /* 5.0:1 on the dark-mode navy panel (#A8BDB6 was 3.7) */
+  --ctint:rgba(46,230,214,0.10);
+  --cink:#8FF0E6;
+  --on-accent-fill:#04211E;  /* 6.9:1 on the mint; white would be 2.37:1 */
+  --muted-on-dark:#C3D0E2;   /* 5.0:1 on the dark-mode navy panel (#A8BDB6 was 3.7) */
   --amber:#D9A54B;
   --amber-press:#A67A28;
   --coral:#E8776A;
   --coral-press:#C15A4E;
   --accent-2:#E8776A;
 
-  --line:#243530;
-  --line-soft:#213029;
-  --track:#22322D;
-  --hover-tint:#1E2E29;
+  --line:#22324C;
+  --line-soft:#1C2A41;
+  --track:#1F2E46;
+  --hover-tint:#172540;
 
-  --ink:#E7F1EE;
-  --muted:#8CA39B;
+  --ink:#E8EEF7;
+  --muted:#9AABC4;
 
   --good:#4FBE79;
   --good-press:#237A45;
@@ -188,9 +188,9 @@
   --amber-text:#E5BC72;
   --good-text:#6FD094;
   --bad-text:#F0938A;
-  --accent-text:#5FC7B3;
+  --accent-text:#5CE8DB;
 
-  --tint-accent:rgba(63,194,169,0.14);
+  --tint-accent:rgba(46,230,214,0.12);
   --tint-amber:rgba(229,184,90,0.16);
   --tint-coral:rgba(242,154,142,0.16);
   --tint-good:rgba(79,190,121,0.18);
@@ -205,10 +205,10 @@
   --lift-lg:var(--elev-2);
   --shadow-pop:var(--elev-2);
   --btn-shadow:0 8px 20px rgba(0,0,0,0.35);
-  --btn-shadow-accent:0 8px 20px rgba(63,194,169,0.22);
+  --btn-shadow-accent:0 8px 20px rgba(46,230,214,0.18);
 
-  --overlay-bg:rgba(15,25,23,0.92);
-  --header-bg:rgba(15,25,23,0.82);
+  --overlay-bg:rgba(10,19,34,0.92);
+  --header-bg:rgba(10,19,34,0.85);
 }
 
 /* The ochem course's tint. Set on <body> by site-chrome.js from the course
@@ -1820,3 +1820,97 @@ html.lso-open{overflow:hidden;}
    var(--disclose), turned 90° when its <details> is open. Reaction arrows in
    chemistry content are notation, not UI, and are not covered here. */
 :root{--disclose:"\203A";}
+
+/* ==========================================================================
+   9. Channel look (site redesign round 2, 2026-10; docs/site-redesign.md)
+   The homepage's look applied to every page from here, so a page only has to
+   use the shared classes: a faint grid-paper ground, white cards set off by
+   a hairline ring instead of a heavy shadow, headlines in the display face
+   (Inter 800-900, assets/fonts/fonts.css) with an optional second line in the
+   course colour (.tone), and one handwritten line (.hand, Kalam) per page.
+   Body text stays Nunito. Token values above carry the new palette (navy ink,
+   teal accent, cool neutrals); everything below reads only tokens, so dark
+   mode follows.
+   ========================================================================== */
+:root{
+  --grid:rgba(11,26,51,0.035);
+  --hand:#A86F00;              /* the handwritten line: 3.9:1 on the page, used at 19px+ bold (large text) */
+  --ring:0 0 0 1px var(--line);
+  --lift-sm:var(--ring),0 1px 2px rgba(11,26,51,0.04);
+  --lift:var(--ring),0 1px 2px rgba(11,26,51,0.04),0 6px 16px rgba(11,26,51,0.04);
+  --lift-lg:var(--ring),0 1px 2px rgba(11,26,51,0.04),0 10px 28px rgba(11,26,51,0.05);
+  --shadow-card:var(--lift);
+  --radius-lg:22px;
+}
+:root[data-theme="dark"]{
+  --grid:rgba(232,238,247,0.03);
+  --hand:#F5B04A;
+  --lift-sm:var(--ring);
+  --lift:var(--ring),0 6px 16px rgba(0,0,0,0.25);
+  --lift-lg:var(--ring),0 10px 28px rgba(0,0,0,0.3);
+  --shadow-card:var(--lift);
+}
+body{
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+
+/* Headlines. h1/h2 in the display face everywhere; h3 too (800). */
+h1,h2{font-family:var(--font-display);font-weight:900;letter-spacing:-0.035em;}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.02;text-wrap:balance;}
+h2{letter-spacing:-0.03em;}
+h3{font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;}
+/* Two-tone headline: <h1>Plain words, <span class="tone">the point.</span></h1>.
+   .tone.br puts the coloured part on its own line, as on the homepage. */
+.tone{color:var(--cink);}
+.tone.br{display:block;}
+/* The one handwritten line under a headline. */
+.hand{font:700 clamp(19px,2.2vw,25px)/1.25 'Kalam','Comic Sans MS',cursive;color:var(--hand);margin:0 0 18px;letter-spacing:0;}
+/* A small outlined label above a headline (course name, page kind). */
+.eyebrow-pill{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:2px 11px;font:800 12px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);}
+
+/* Page openers sit on the ground, no tinted slab: the headline carries the page. */
+.hero,.page-head{background:transparent;border-radius:0;padding-left:0;padding-right:0;}
+.hero{padding-top:clamp(20px,3vw,36px);padding-bottom:clamp(8px,1.5vw,16px);}
+.page-head{padding-top:clamp(18px,2.6vw,30px);padding-bottom:4px;}
+.hero h1{max-width:18ch;}
+.page-head h1{font-size:clamp(32px,4.4vw,48px);margin:2px 0 10px;}
+.page-head p{font-size:16px;font-weight:600;}
+.hero .lede{font-weight:600;font-size:18px;}
+
+/* Buttons: navy (or the course colour) block, 12px corners, no heavy drop. */
+.btn-press,.btn-dark,.start-btn,.auth-modal-submit{border-radius:12px;box-shadow:none;font-weight:800;font-size:16px;padding:14px 24px;}
+.btn-press.sm{border-radius:10px;}
+.btn-press:hover,.btn-dark:hover,.start-btn:hover{filter:brightness(1.08);}
+.btn-outline,.review-btn,.domain-btn{border-radius:12px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);}
+
+/* ---- Top bar ---------------------------------------------------------- */
+#site-header{border-bottom:1px solid transparent;}
+.site-header__inner{padding-top:12px;padding-bottom:12px;}
+.site-header__brand{gap:11px;font:900 21px var(--font-display);letter-spacing:-0.03em;}
+.site-header__brand .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);color:var(--accent-bright);font:900 24px/1 var(--font-display);box-shadow:none;}
+:root[data-theme="dark"] .site-header__brand .brand-mark{background:#0B1A33;box-shadow:inset 0 0 0 1px var(--line);}
+.site-header__brand .brand-mark svg{width:20px;height:20px;}
+.site-header__course{font:800 14px var(--font-ui);color:var(--ink);}
+.site-header__course::before{background:var(--line);}
+.theme-toggle{background:var(--white);box-shadow:var(--lift-sm);}
+.account-btn{height:38px;padding:0 16px;border-radius:10px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);font:800 14px var(--font-ui);}
+.account-btn:hover{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);}
+
+/* ---- Course tabs: plain words, the current one underlined in the course colour */
+.course-nav{border-bottom:1px solid var(--line);}
+.course-nav__inner{gap:26px;padding-top:0;padding-bottom:0;}
+.course-nav__link{padding:12px 0 11px;border-radius:0;font:700 15px var(--font-ui);color:var(--muted);box-shadow:inset 0 -3px 0 transparent;transition:color .15s ease,box-shadow .15s ease;}
+.course-nav__link:hover{color:var(--ink);background:transparent;box-shadow:inset 0 -3px 0 var(--line);}
+.course-nav__link.active{color:var(--ink);background:transparent;box-shadow:inset 0 -3px 0 var(--cink);}
+.course-nav{min-height:48px;}
+@media (max-width:640px){
+  .bottom-nav{box-shadow:0 -1px 0 var(--line),0 -8px 24px rgba(11,26,51,0.06);}
+}
+
+/* ---- Footer ------------------------------------------------------------ */
+footer{border-top:1px solid var(--line);padding-top:24px;padding-bottom:40px;margin-top:56px;font-size:14px;line-height:1.6;max-width:none;color:var(--muted);}
+footer > p,footer > div{max-width:78ch;}
+footer a{color:var(--muted);text-underline-offset:2px;}
+footer a:hover{color:var(--ink);}
