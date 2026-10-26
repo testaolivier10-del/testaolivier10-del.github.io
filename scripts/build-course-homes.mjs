@@ -53,7 +53,7 @@ function nremt() {
     primary: `<a href="practice.html" class="ch-cta" id="heroPrimaryCta">Start practicing</a>
           <script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>`,
     secondary: '<a href="#sample" class="ch-ghost">See a sample question</a>',
-    trust: 'Made by Olivier Testa, an EMT who studied with this course and passed the NREMT when it shut off at 70 questions. <a href="../about.html">More about me</a>',
+    trust: 'Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="../about.html">More about me</a>',
     cardId: 'nrStart',
     card: '<div class="k">Start here</div><h2>A 20-question domain drill</h2><p>Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.</p><a class="btn-press" href="practice.html">Start a drill</a>',
     panelExtra: '<div class="ch-mini" id="nrReview"><span class="k">Review queue</span><h2>Nothing due yet</h2><p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p><a href="review.html">Open review &rarr;</a></div>',
