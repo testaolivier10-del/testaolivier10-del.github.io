@@ -156,7 +156,9 @@ const SHELL_BUDGETS = [
   /* 330.5 -> 332 for redesign round 2 step 1 (docs/site-redesign.md): theme.css section 9, the shared
      channel look every page now uses (grid ground, ring cards, display headlines, .tone/.hand helpers, the
      new top bar, tabs and footer) in place of each page restyling itself. Measured 331.7 KB. */
-  ['site', 332],
+  /* 332 -> 333 when all six round 2 steps are combined: the steps' own additions (study.css session look,
+     quick-answer.css) land in the same shared assets bucket. Measured 332.1 KB. */
+  ['site', 333],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
