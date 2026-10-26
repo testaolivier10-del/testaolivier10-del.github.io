@@ -81,7 +81,7 @@ def build(vid_out=None, stills=()):
     T['close'] = k('fix', 'close')
     T['locked'] = k('fix', 'back')
     T['sq0'] = T['locked'] - 0.3
-    T['squat'] = k('fix', 'squat')
+    T['squat'] = k('fix', 'squats')
     T['legs'] = k('payoff', 'legs')
     T['rise0'] = k('payoff', 'now')
     T['rise1'] = tl.span('payoff')[1] + 0.2

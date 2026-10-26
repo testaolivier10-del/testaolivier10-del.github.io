@@ -1,0 +1,114 @@
+{
+ "w1025-01-power-lift": [
+  [
+   "hook",
+   "She bends at the waist to lift the jump bag."
+  ],
+  [
+   "result",
+   "That's how EMTs wreck their backs."
+  ],
+  [
+   "rewind",
+   "Rewind."
+  ],
+  [
+   "why",
+   "Legs straight, the bag hangs way out past her spine, and her lower back becomes a lever. The farther out the weight, the harder her back muscles pull."
+  ],
+  [
+   "fix",
+   "Power lift. Feet shoulder width apart, bag in close, back locked, squat."
+  ],
+  [
+   "payoff",
+   "Now her legs do the lifting."
+  ],
+  [
+   "ask",
+   "Heavier bag next time. Pull it closer, or lift faster?"
+  ]
+ ],
+ "w1025-02-free-throw": [
+  [
+   "hook",
+   "Five missed free throws in a row."
+  ],
+  [
+   "myth",
+   "Next one's due, right?"
+  ],
+  [
+   "bust",
+   "Nope, that's the gambler's fallacy. If her shots are independent, the ball has no memory. She's a seventy percent shooter, so this one's still seventy."
+  ],
+  [
+   "lln",
+   "The law of large numbers is real. Over ten shots her percentage jumps around. Over hundreds, it settles near seventy."
+  ],
+  [
+   "why",
+   "Old misses don't get paid back. They just get drowned out."
+  ],
+  [
+   "ask",
+   "Still independent. Five makes in a row. On fire, or still seventy?"
+  ],
+  [
+   "cta",
+   "Free practice for this on levlprep dot com."
+  ]
+ ],
+ "w1025-03-dead-zone": [
+  [
+   "hook",
+   "He fertilized his lawn right before a storm."
+  ],
+  [
+   "result",
+   "Now the lake is in trouble."
+  ],
+  [
+   "chain",
+   "Rain washes the nitrogen and phosphorus into the water, and algae explode into a green bloom."
+  ],
+  [
+   "die",
+   "They die and sink. Bacteria eat them and use up the oxygen. The fish suffocate."
+  ],
+  [
+   "name",
+   "That's eutrophication."
+  ],
+  [
+   "fix",
+   "Use less fertilizer, skip it before rain, and leave a strip of plants by the shore."
+  ],
+  [
+   "ask",
+   "Mowed to the water, or a wild plant strip. Which saves the fish?"
+  ]
+ ],
+ "w1025-04-head-rush": [
+  [
+   "hook",
+   "He stands up fast, and his vision goes dark."
+  ],
+  [
+   "why",
+   "Gravity pulls about half a liter of blood into his legs. Less gets back to his heart, so his blood pressure dips, and his brain runs short for a few seconds."
+  ],
+  [
+   "fix",
+   "Sensors in his neck and chest catch it. His heart speeds up, his vessels squeeze, and the pressure bounces back."
+  ],
+  [
+   "tip",
+   "So stand up slower, or flex your calves first."
+  ],
+  [
+   "ask",
+   "Hot shower or cold room. Where's his next head rush worse?"
+  ]
+ ]
+}

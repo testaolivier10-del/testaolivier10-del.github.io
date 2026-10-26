@@ -138,12 +138,12 @@ def build(vid_out=None, stills=()):
     T['misses'] = k('why', 'misses')
     T['drowned'] = k('why', 'drowned')
     T['ff1'] = tl.span('why')[0] - 0.2
-    T['still2'] = k('ask', 'independent')
+    T['still2'] = tl.span('ask')[0]
     T['five'] = k('ask', 'five')
     T['row'] = k('ask', 'row')
     T['fire'] = k('ask', 'fire')
     T['seventy2'] = k('ask', 'seventy')
-    T['end'] = tl.span('cta')[0] - 0.15
+    T['end'] = tl.end + 0.45
     DUR = tl.end + 1.6
 
     # ---------------- girl clock

@@ -1,36 +1,110 @@
 {
-"w1025-01-power-lift": [
- ["hook", "She bends at the waist to lift the jump bag."],
- ["result", "That's the classic way EMTs hurt their backs."],
- ["rewind", "Rewind."],
- ["why", "With her legs straight, the bag hangs way out in front of her spine. Her lower back acts like a lever, so the farther out that weight is, the harder her back muscles have to pull."],
- ["fix", "So, power lift. Feet shoulder width, bag in close, back locked, then she squats."],
- ["payoff", "Now the weight sits near her spine, and her big leg muscles do the lifting."],
- ["ask", "Next time the bag's heavier. Do you pull it in closer, or just lift faster?"]
-],
-"w1025-02-free-throw": [
- ["hook", "Five missed free throws in a row."],
- ["myth", "So the next one's due, right?"],
- ["bust", "Nope, that's the gambler's fallacy. If her shots are independent, the ball has no memory. She's a seventy percent shooter, so this one's still seventy percent."],
- ["lln", "The law of large numbers is real, but it's slow. Across ten shots, her percentage bounces all over. Over hundreds, it settles near seventy."],
- ["why", "It's not that her made shots catch up. The old misses just get drowned out."],
- ["ask", "Same rules, independent shots. Five makes in a row. On fire, or still seventy?"],
- ["cta", "Free practice for this on levlprep dot com."]
-],
-"w1025-03-dead-zone": [
- ["hook", "He fertilized his lawn right before a storm."],
- ["result", "And the lake down the hill is about to choke."],
- ["chain", "Rain washes the extra nitrogen and phosphorus into the lake, and the algae blow up into a big green bloom."],
- ["die", "Then they die and sink. Bacteria break them down and use up the oxygen, so the fish suffocate."],
- ["name", "That's called eutrophication, and when it gets big, it leaves dead zones."],
- ["fix", "The fix is kind of boring. Use less fertilizer, don't put it down before rain, and leave a strip of plants along the shore."],
- ["ask", "Lawn mowed right down to the water, or a strip of wild plants? Which one saves the fish?"]
-],
-"w1025-04-head-rush": [
- ["hook", "He stands up fast, and his vision goes dark."],
- ["why", "Gravity pulls about half a liter of blood down into his legs. Less blood gets back to his heart, so his blood pressure dips, and his brain runs short on blood for a few seconds."],
- ["fix", "Pressure sensors in his neck and chest catch it. They tell his heart to speed up and his vessels to squeeze, and the pressure bounces back."],
- ["tip", "So stand up slower, or flex your calves first."],
- ["ask", "So where's his next head rush worse, a hot shower or a cold room?"]
-]
+ "w1025-01-power-lift": [
+  [
+   "hook",
+   "She bends at the waist to grab the jump bag."
+  ],
+  [
+   "result",
+   "That's how EMTs wreck their backs."
+  ],
+  [
+   "rewind",
+   "Rewind."
+  ],
+  [
+   "why",
+   "With her legs straight, the bag hangs way out past her spine, and her lower back turns into a lever. The farther out it hangs, the harder her back has to pull."
+  ],
+  [
+   "fix",
+   "So this time she does a power lift. She plants her feet shoulder width apart and pulls the bag in close, then keeps her back locked while she squats."
+  ],
+  [
+   "payoff",
+   "Now her legs do the lifting."
+  ],
+  [
+   "ask",
+   "If the bag's heavier, do you pull it closer or lift faster?"
+  ]
+ ],
+ "w1025-02-free-throw": [
+  [
+   "hook",
+   "She's missed five free throws in a row."
+  ],
+  [
+   "myth",
+   "Next one's due, right?"
+  ],
+  [
+   "bust",
+   "Nope, that's the gambler's fallacy. Her shots are independent, and the ball has no memory. She hits seventy percent, so this one's still a seventy percent shot."
+  ],
+  [
+   "lln",
+   "That's the law of large numbers. Over ten shots her percentage jumps around, but over hundreds it settles near seventy."
+  ],
+  [
+   "why",
+   "The old misses don't get paid back, they just get drowned out."
+  ],
+  [
+   "ask",
+   "Now she makes five in a row. Is she on fire, or still seventy?"
+  ]
+ ],
+ "w1025-03-dead-zone": [
+  [
+   "hook",
+   "He fertilized his lawn right before a storm."
+  ],
+  [
+   "result",
+   "Now the lake is in trouble."
+  ],
+  [
+   "chain",
+   "Rain washes nitrogen and phosphorus into the water, and the algae explode into a green bloom."
+  ],
+  [
+   "die",
+   "Then they die and sink, and the bacteria eating them use up the oxygen, so the fish suffocate."
+  ],
+  [
+   "name",
+   "That's eutrophication."
+  ],
+  [
+   "fix",
+   "So he could use less, hold off before rain, and leave a strip of plants by the shore."
+  ],
+  [
+   "ask",
+   "Mowed to the water, or a wild plant strip, which one saves the fish?"
+  ]
+ ],
+ "w1025-04-head-rush": [
+  [
+   "hook",
+   "He stands up fast, and his vision goes dark."
+  ],
+  [
+   "why",
+   "Gravity pulls about half a liter of blood down into his legs. Less blood makes it back to his heart, so his pressure dips, and for a moment his brain runs short."
+  ],
+  [
+   "fix",
+   "Luckily, sensors in his neck and chest catch the drop, so his heart speeds up and his vessels squeeze until the pressure bounces back."
+  ],
+  [
+   "tip",
+   "So if it happens to you, stand up slower, or flex your calves first."
+  ],
+  [
+   "ask",
+   "Hot shower or cold room, where would his next head rush hit harder?"
+  ]
+ ]
 }
