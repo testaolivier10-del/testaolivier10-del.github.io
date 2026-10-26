@@ -57,12 +57,12 @@ export function loadQuickAnswers(root = ROOT) {
 export function quickAnswerBox(rel, qa) {
   const id = 'qa-' + rel.replace(/^.*\//, '').replace(/\.html$/, '');
   return `${QA_START}
-<aside class="qa-box" aria-labelledby="${id}">
+<div class="qa-box">
   <link rel="stylesheet" href="/assets/quick-answer.css">
   <p class="qa-k">Quick answer</p>
   <p class="qa-q" id="${id}">${esc(qa.q.trim())}</p>
   <p class="qa-a">${esc(qa.a.trim())}</p>
-</aside>
+</div>
 ${QA_END}
 `;
 }
