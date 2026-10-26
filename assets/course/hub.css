@@ -98,7 +98,7 @@
 .cx-level.is-zero h2{margin-bottom:6px;}
 .cx-level-track{height:10px;border-radius:var(--radius-pill);background:rgba(255,255,255,.15);overflow:hidden;margin-bottom:8px;}
 .cx-level-track i{display:block;height:100%;background:#F4D28C;border-radius:var(--radius-pill);}
-.cx-level-sub{display:block;margin:4px 0 0;font:700 12px/1.5 var(--font-ui);color:#DCEFEA;}
+.cx-level-sub{display:block;margin:4px 0 0;font:700 12px/1.5 var(--font-ui);color:#DCE5F1;}
 .cx-level-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
 .cx-level-chips span{padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.12);font:800 11px var(--font-ui);color:#fff;}
 
