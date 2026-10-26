@@ -5,7 +5,7 @@ check applied). STOPPED before art: the laptop (Gemini in Chrome, device bridge)
 (Chrome extension and device bridge both unreachable). Rerun continues at spec step 7 (art) with this plan.
 ElevenLabs key was staged; balance not yet read. Nothing voiced, nothing built.
 
-Decision for review: the house look is flat layered (video standard section 0, 2026-10-25). The traced cast
+DECIDED (Olivier, 2026-10-26, in the weekly batch chat: "Existing flat is fine"): keep the existing traced cast with the flat scenes. Background: the house look is flat layered (video standard section 0, 2026-10-25). The traced cast
 (paramedic codechar/model.py, hoodie runner runner/model.py) are flat colour vector traces with two tones and a rim
 light, so this batch uses them with NEW flat layered scenes (prompt core from characters/flat/README.md,
 references characters/flat/ref_*.png). The jump girl (codechar/jump) is already the flat courtyard character.
