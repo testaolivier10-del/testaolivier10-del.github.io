@@ -282,3 +282,121 @@
 .cx-q .cx-opt .letter{flex-basis:30px;width:30px;height:30px;border-radius:9px;font-size:13px;}
 .cx-q .cx-fb{border-radius:14px;padding:16px 18px;font-size:15px;}
 @media (max-width:640px){.cx-q .cx-q-stem,.cx-q-stem{font-size:17.5px;}}
+
+/* ---- 9. Round 2 of the site redesign (docs/site-redesign.md, S03 to S09) --
+   The homepage's language on every study page: a hero card with the course
+   cover and a handwritten line (study.js adds both), white cards on a
+   hairline, numbered steps on navy dots, bigger answer rows and one clear
+   primary action. Colours only through theme tokens, so dark mode follows.
+   The hand line uses the same Kalam file as fonts.css, but swapped in when
+   it arrives: fonts.css loads it with display:optional, which leaves a serif
+   fallback on a first visit, and this one decorative line can reflow safely. */
+@font-face{font-family:'Kalam Hand';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/kalam-700-latin.woff2) format('woff2');unicode-range:U+0000-007E, U+2018-201F, U+2026;}
+.cx-study,.cx-study + *{--cx-display:'Inter Display','Nunito',system-ui,sans-serif;--cx-hand:'Kalam','Kalam Hand','Segoe Print','Bradley Hand','Comic Sans MS',cursive;}
+.page-head.cx-hero{--cx-display:'Inter Display','Nunito',system-ui,sans-serif;--cx-hand:'Kalam','Kalam Hand','Segoe Print','Bradley Hand','Comic Sans MS',cursive;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,400px);gap:clamp(18px,3vw,36px);align-items:center;
+  background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:0 26px 50px -42px rgba(11,26,51,.5);
+  padding:clamp(20px,3.6vw,38px);}
+.page-head.cx-hero[hidden]{display:none;}
+.cx-hero > :not(.cx-hero-text):not(.cx-cover){grid-column:1 / -1;}
+.cx-hero-text{min-width:0;}
+.cx-hero .eyebrow{display:inline-flex;align-items:center;gap:6px;margin:0;border:1.5px solid currentColor;border-radius:999px;padding:3px 12px;font:800 11.5px var(--font-ui);letter-spacing:.07em;color:var(--accent-text);}
+.cx-hero .eyebrow .cx-beta{margin-left:2px;}
+.page-head.cx-hero h1{font:900 clamp(40px,5.6vw,62px)/1 var(--cx-display);letter-spacing:-.04em;color:var(--ink);margin:16px 0 8px;text-wrap:balance;}
+.page-head.cx-hero .cx-hand{font:700 clamp(19px,2.2vw,24px)/1.2 var(--cx-hand);color:var(--amber-text);margin:0 0 14px;max-width:none;}
+.page-head.cx-hero .cx-hand + .lede{margin-top:0;}
+.page-head.cx-hero .lede{font:600 16.5px/1.6 var(--font-ui);color:var(--muted);max-width:36em;margin:0;}
+.cx-cover{position:relative;aspect-ratio:2 / 1;border-radius:18px;overflow:hidden;background:var(--navy);box-shadow:0 18px 36px -28px rgba(11,26,51,.6);}
+.cx-cover img{display:block;width:100%;height:100%;object-fit:cover;}
+@media (max-width:760px){
+  .page-head.cx-hero{grid-template-columns:minmax(0,1fr);gap:16px;padding:20px;}
+  .cx-cover{order:-1;aspect-ratio:auto;height:112px;border-radius:14px;}
+  .cx-cover img{object-position:right center;}
+  .page-head.cx-hero h1{font-size:clamp(34px,10vw,44px);margin-top:12px;}
+}
+@media (prefers-reduced-motion:reduce){.page-head.cx-hero{animation:none;}}
+
+/* Setup: each step a white card on a hairline, numbered on a navy dot. */
+.cx-study .cx-card{border:1px solid var(--line);border-radius:22px;box-shadow:0 22px 44px -40px rgba(11,26,51,.45);}
+.cx-study .cx-builder{padding:clamp(20px,3.4vw,32px);}
+.cx-study .cx-step-h,.cx-study .cx-step > legend{font:900 clamp(18px,2vw,21px)/1.25 var(--cx-display);letter-spacing:-.02em;gap:12px;margin-bottom:14px;}
+.cx-study .cx-step-n{flex:0 0 32px;height:32px;background:var(--navy);color:var(--on-accent);font:900 14px var(--font-ui);}
+.cx-study .cx-choice{padding:16px 18px;border-radius:16px;min-height:64px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .12s ease,background .12s ease;}
+.cx-study .cx-choice:hover:not(:has(input:disabled)){box-shadow:inset 0 0 0 1.5px var(--cink);}
+.cx-study .cx-choice b{font:900 16px/1.3 var(--font-ui);}
+.cx-study .cx-choice span{font:600 13.5px/1.5 var(--font-ui);margin-top:4px;}
+.cx-study .cx-choice:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2.5px var(--cink);}
+.cx-study .cx-choice input{width:18px;height:18px;margin-top:2px;}
+.cx-study .cx-start{background:var(--surface2);border:1px solid var(--line);border-radius:18px;padding:16px 18px;}
+.cx-study .cx-sum{font:800 15px/1.45 var(--font-ui);}
+.cx-study .cx-start .btn-press,.cx-study .cx-actions .btn-press{min-height:52px;padding:14px 26px;font-size:16px;border-radius:14px;}
+
+/* Your numbers rail and review queue: quieter tiles, big display numbers. */
+.cx-study .cx-rail-h{margin-bottom:-4px;}
+.cx-study .cx-stat-num{font-family:var(--cx-display);font-weight:900;letter-spacing:-.03em;}
+.cx-study .cx-empty-num{font-family:var(--cx-display);font-weight:900;letter-spacing:-.04em;border-radius:18px;}
+.cx-study .cx-empty h2{font:900 clamp(22px,2.6vw,28px)/1.15 var(--cx-display);letter-spacing:-.03em;margin:0 0 6px;}
+.cx-study .cx-list li{border:1px solid var(--line);box-shadow:none;border-radius:14px;padding:13px 16px;}
+.cx-study .cx-link{border-radius:16px;}
+
+/* In a session: one quiet bar, a thick progress track, then the card. */
+.cx-sbar{margin:16px 0 12px;}
+.cx-sbar-t{font:800 12px var(--font-ui);letter-spacing:.07em;}
+.cx-sbar-n{font:900 15px var(--font-ui);color:var(--ink);}
+.cx-progress{height:10px;margin-bottom:18px;}
+.cx-q{padding:clamp(20px,3.4vw,36px);}
+.cx-q .cx-q-stem,.cx-q-stem{font:900 clamp(19px,2vw,23px)/1.32 var(--cx-display,'Inter Display','Nunito',sans-serif);letter-spacing:-.02em;margin:0 0 20px;}
+.cx-q .cx-opts{gap:12px;}
+.cx-q .cx-opt{min-height:60px;padding:13px 16px;border-radius:16px;font-size:16.5px;gap:6px 14px;}
+.cx-q .cx-opt .letter{flex-basis:34px;width:34px;height:34px;border-radius:10px;font-size:14px;}
+.cx-q .cx-fb{margin-top:18px;padding:18px 20px;border-radius:18px;font-size:15.5px;line-height:1.65;}
+.cx-q .cx-fb.is-right{background:var(--tint-good);box-shadow:none;}
+.cx-q .cx-fb.is-wrong{background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);}
+.cx-q .cx-fb .cx-fb-head{font:900 19px var(--cx-display,'Inter Display','Nunito',sans-serif);letter-spacing:-.02em;margin-bottom:8px;}
+.cx-q .cx-opt [class*="opt-why"]{font-size:14px;line-height:1.55;color:var(--ink);opacity:.85;}
+.cx-next-row{margin-top:20px;}
+.cx-next-row .btn-press,.cx-next{min-height:54px;padding:14px 30px;font-size:16.5px;border-radius:14px;}
+
+/* Flashcards: a big white card, display type, self-grading row. */
+.fc-face{border:1px solid var(--line);border-radius:24px;box-shadow:0 26px 50px -40px rgba(11,26,51,.55);padding:clamp(22px,3.6vw,34px);min-height:300px;}
+.fc-q{font-family:'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.025em;}
+.fc-ans div{border-radius:14px;}
+.fc-grades{gap:10px;}
+.fc-grades button{min-height:62px;border-radius:16px;font-size:15px;}
+.cx-study .cx-deckcard h2{font:900 clamp(22px,2.6vw,28px)/1.15 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.03em;}
+.cx-study .cx-plist{border-radius:22px;}
+
+/* ---- 10. Results and exams in every engine (round 2, mockups S05 to S07) ---
+   A&P and the six AP courses write the same class names behind a course
+   prefix (bio-pr-score, chem-ex-top ...); Organic Chemistry uses the bare
+   ex-* names. Scoped under .cx-study so they win over the course sheets,
+   which load after this one. */
+.cx-study :is(.bio-pr-score,.chem-pr-score,.phys-pr-score,.calc-pr-score,.stat-pr-score,.env-pr-score,.anp-pr-score){background:var(--white);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3.4vw,32px);gap:clamp(16px,3vw,28px);box-shadow:0 26px 50px -42px rgba(11,26,51,.5);margin:6px 0 18px;}
+.cx-study :is(.bio-pr-score-big,.chem-pr-score-big,.phys-pr-score-big,.calc-pr-score-big,.stat-pr-score-big,.env-pr-score-big,.anp-pr-score-big){font:900 clamp(60px,8vw,92px)/.95 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.05em;color:var(--ink);}
+.cx-study :is(.bio-pr-score-big,.chem-pr-score-big,.phys-pr-score-big,.calc-pr-score-big,.stat-pr-score-big,.env-pr-score-big,.anp-pr-score-big) small{font-size:.4em;letter-spacing:-.02em;color:var(--muted);}
+.cx-study :is(.bio-pr-score,.chem-pr-score,.phys-pr-score,.calc-pr-score,.stat-pr-score,.env-pr-score,.anp-pr-score) b{font:900 clamp(20px,2.4vw,26px)/1.2 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;color:var(--ink);}
+.cx-study :is(.bio-pr-summary,.chem-pr-summary,.phys-pr-summary,.calc-pr-summary,.stat-pr-summary,.env-pr-summary,.anp-pr-summary) > h2{font:900 clamp(24px,2.8vw,32px)/1.1 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.03em;margin:32px 0 14px;}
+.cx-study :is(.bio-pr-next-list,.chem-pr-next-list,.phys-pr-next-list,.calc-pr-next-list,.stat-pr-next-list,.env-pr-next-list,.anp-pr-next-list) li{border:1px solid var(--line);box-shadow:none;border-radius:16px;padding:14px 16px;}
+.cx-study :is(.bio-pr-actions,.chem-pr-actions,.phys-pr-actions,.calc-pr-actions,.stat-pr-actions,.env-pr-actions,.anp-pr-actions) .btn-press{min-height:52px;padding:14px 24px;border-radius:14px;font-size:16px;}
+.cx-study :is(.bio-pr-actions,.chem-pr-actions,.phys-pr-actions,.calc-pr-actions,.stat-pr-actions,.env-pr-actions,.anp-pr-actions) .btn-outline{min-height:52px;border-radius:14px;}
+.cx-study :is(.bio-ex-top,.chem-ex-top,.phys-ex-top,.calc-ex-top,.stat-ex-top,.env-ex-top,.anp-ex-top,.ex-top){background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:none;padding:14px 18px;}
+.cx-study :is(.bio-ex-time,.chem-ex-time,.phys-ex-time,.calc-ex-time,.stat-ex-time,.env-ex-time,.anp-ex-time,.ex-time){font:900 clamp(24px,2.6vw,30px)/1 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.cx-study :is(.bio-ex-nav,.chem-ex-nav,.phys-ex-nav,.calc-ex-nav,.stat-ex-nav,.env-ex-nav,.anp-ex-nav,.ex-nav) button{border-radius:10px;min-height:40px;font-family:var(--font-ui);font-variant-numeric:tabular-nums;}
+.cx-study :is(.bio-ex-opt,.chem-ex-opt,.phys-ex-opt,.calc-ex-opt,.stat-ex-opt,.env-ex-opt,.anp-ex-opt,.ex-opt){min-height:58px;align-items:center;border:0;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);font-size:16px;padding:12px 16px;}
+.cx-study :is(.bio-ex-opt,.chem-ex-opt,.phys-ex-opt,.calc-ex-opt,.stat-ex-opt,.env-ex-opt,.anp-ex-opt,.ex-opt):has(input:checked){box-shadow:inset 0 0 0 2.5px var(--cink,var(--accent));background:var(--ctint,var(--tint-accent));}
+.cx-study :is(.bio-ex-letter,.chem-ex-letter,.phys-ex-letter,.calc-ex-letter,.stat-ex-letter,.env-ex-letter,.anp-ex-letter,.ex-letter){font:900 14px var(--font-ui);}
+.cx-study :is(.bio-ex-score,.chem-ex-score,.phys-ex-score,.calc-ex-score,.stat-ex-score,.env-ex-score,.anp-ex-score,.ex-score){border-radius:24px;}
+.cx-study :is(.bio-ex-ritem,.chem-ex-ritem,.phys-ex-ritem,.calc-ex-ritem,.stat-ex-ritem,.env-ex-ritem,.anp-ex-ritem,.ex-ritem){border:1px solid var(--line);border-radius:18px;}
+.cx-study :is(.bio-ex-rstem,.chem-ex-rstem,.phys-ex-rstem,.calc-ex-rstem,.stat-ex-rstem,.env-ex-rstem,.anp-ex-rstem,.ex-rstem){font:900 17px/1.4 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.01em;}
+.cx-study :is(.bio-ex-kind,.chem-ex-kind,.phys-ex-kind,.calc-ex-kind,.stat-ex-kind,.env-ex-kind,.anp-ex-kind,.ex-kind){border-radius:16px;box-shadow:none;padding:16px 18px;}
+.cx-study :is(.bio-ex-q,.chem-ex-q,.phys-ex-q,.calc-ex-q,.stat-ex-q,.env-ex-q,.anp-ex-q,.ex-q) .step-title{font:900 clamp(19px,2.2vw,25px)/1.3 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.02em;}
+.cx-study :is(.bio-fc-face,.chem-fc-face,.phys-fc-face,.calc-fc-face,.stat-fc-face,.env-fc-face,.anp-fc-face){border:1px solid var(--line);border-radius:24px;box-shadow:0 26px 50px -40px rgba(11,26,51,.55);}
+.cx-study :is(.bio-fc-q,.chem-fc-q,.phys-fc-q,.calc-fc-q,.stat-fc-q,.env-fc-q,.anp-fc-q){font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.025em;}
+/* Phones: one choice per row so the bigger cards keep their words whole. */
+@media (max-width:560px){
+  .cx-study .cx-step .cx-choices{grid-template-columns:minmax(0,1fr);}
+  .cx-study .cx-choice{min-height:56px;padding:14px 16px;}
+  .cx-q{padding:18px 16px;border-radius:18px;}
+  .cx-q .cx-opt{min-height:56px;font-size:16px;padding:12px 14px;}
+  .cx-q .cx-opt .letter{flex-basis:30px;width:30px;height:30px;}
+}

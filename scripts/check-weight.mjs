@@ -455,7 +455,8 @@ const BUDGETS = [
   // nremt/practice-study.js mapping it onto the engine's controls (W-C).
   /* 48 -> 48.4 (polish 2026-10-17, B11): XP paid as each answer is checked. */
   /* 48.4 -> 48.7: per-question tallies and exam-quit hooks in practice-engine.js (analytics depth). */
-  ['nremt/practice.html', 48.7],
+  /* 48.7 -> 49.5 (redesign round 2, 2026-10): the session and results restyle in practice.css. */
+  ['nremt/practice.html', 49.5],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
