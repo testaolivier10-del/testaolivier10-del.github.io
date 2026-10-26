@@ -63,6 +63,8 @@
     physics: 'apphys', calculus: 'apcalc', statistics: 'apstat', 'environmental-science': 'apenv' };
   var HAND = { practice: 'every answer comes with the why', review: 'what you miss comes back before you forget it',
     exams: 'on the clock, like test day', flashcards: 'grade yourself honestly' };
+  var TONE = { practice: 'one at a time.', review: 'before you forget.',
+    exams: 'the full run.', flashcards: 'quick recall.' };
   var me = document.currentScript && document.currentScript.src;
   function hero(){
     var head = document.querySelector('.page-head');
@@ -76,6 +78,15 @@
     text.className = 'cx-hero-text';
     while (head.firstChild) text.appendChild(head.firstChild);
     var h1 = text.querySelector('h1');
+    /* Two-tone headline (mockups S03 to S09): the page name stays first, a
+       short second line in the course colour says what the page is for. */
+    if (h1 && !h1.querySelector('.tone') && TONE[m[2]]) {
+      var tone = document.createElement('span');
+      tone.className = 'tone br';
+      tone.textContent = TONE[m[2]];
+      h1.appendChild(document.createTextNode(' '));
+      h1.appendChild(tone);
+    }
     if (h1) {
       var hand = document.createElement('p');
       hand.className = 'cx-hand';
