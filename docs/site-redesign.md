@@ -20,7 +20,7 @@ Practice at phone width). The full rationale and sources are in the Project doc 
 |---|---|---|
 | 1 | Covers, display fonts, homepage (`index.html`; AP® cards and pricing from `scripts/build-pricing.mjs` `courseCard`) | PR #86 |
 | 2 | Course home pages: cover banner over each hero (`scripts/lib/covers.mjs` `courseBanner`, styles in `assets/course/hub.css`) | PR #87 |
-| 3 | Display headlines on every course page (`assets/course/base.css`), question card restyle (`study.css` section 8), cover per course on `premium.html` (`courseSection` in build-pricing) | PR open |
+| 3 | Display headlines on every course page (`assets/course/base.css`), question card restyle (`study.css` section 8), cover per course on `premium.html` (`courseSection` in build-pricing) | PR #88 |
 
 Merge order: #86, then #87, then part 3 (each stacked on the one before). #85 and #86 both edit the site budget line in
 `scripts/check-weight.mjs`; whichever merges second keeps the higher number.
