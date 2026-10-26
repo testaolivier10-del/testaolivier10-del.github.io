@@ -274,8 +274,21 @@ body:not([data-course]) .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
 .bk .tb-chapter-link b{font:900 16px var(--bk-display);letter-spacing:-.01em;}
 
 /* Unit and chapter overview pages. */
-.bk-chap-head{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px 28px;}
-.bk-chap-head .tb-chapter-title{font:900 clamp(32px,4.4vw,48px)/1.04 var(--bk-display);letter-spacing:-.035em;}
+/* The Learn reader's chapter header (ochem, A&P, the AP® courses) and the unit
+   and chapter overview pages: the same opener as a notes page (S11, S12), so
+   no white card; pill eyebrow, display headline, the course's cover beside it
+   on a wide screen and as a band above it on a phone, actions under the meta. */
+.bk .bk-chap-head{display:grid;grid-template-columns:minmax(0,1fr);column-gap:28px;align-items:center;justify-content:normal;background:transparent;border:0;border-radius:0;padding:6px 0 4px;margin:0 0 22px;}
+.bk .bk-chap-head>div{min-width:0;}
+.bk .bk-chap-head .bk-chap-acts{margin-top:16px;}
+.bk .bk-chap-head .tb-chapter-title{font:900 clamp(32px,4.8vw,54px)/1.04 var(--bk-display);letter-spacing:-.04em;}
+.bk .bk-chap-head::after{content:"";display:block;border-radius:20px;background:var(--bk-cbg,var(--navy)) right center/auto 100% no-repeat;background-image:var(--bk-cover,none);box-shadow:0 18px 40px -30px color-mix(in srgb,var(--ink) 70%,transparent);grid-row:1;height:clamp(96px,26vw,150px);margin:0 0 16px;}
+@media (min-width:1101px){
+  .bk .bk-chap-head{grid-template-columns:minmax(0,1fr) 240px;}
+  .bk .bk-chap-head>*{grid-column:1;}
+  .bk .bk-chap-head>.bk-chap-acts{grid-row:2;}
+  .bk .bk-chap-head::after{grid-column:2;grid-row:1 / span 2;height:auto;aspect-ratio:2/1;background-size:cover;background-position:center;margin:0;align-self:center;}
+}
 .bk-chapter .bk-list{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:6px 22px;}
 .bk-row:last-child{border-bottom:0;}
 .bk-row-title{font:800 17px/1.35 var(--font-ui);}
