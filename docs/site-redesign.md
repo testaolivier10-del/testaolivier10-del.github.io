@@ -98,3 +98,19 @@ written / What changes" block only on course homes (and site home, About); no "O
 open with a short cover band. 41 boards are on the canvas page "The whole course, one system"; copies and the shared
 markup are in `docs/redesign-r3/r10/` (`R10-SYSTEM.md` is the class and markup reference), placement lists in
 `docs/redesign-r3/inventory/R10-*.md`. Open: ochem chapter count (home says 23, textbook 25).
+
+## Round 3 build (approved 2026-10-26: "center the images ... and then you can go ahead")
+Tool covers are centered (`assets/covers/tools/<course>/<slug>.svg`, `index.json` per course). Course covers stay
+as they are (the course name sits over their left side).
+Build in stacked PRs from `claude/redesign-r3`, each judged against its boards in `docs/redesign-r3/r10/boards/`
+(render a board with `node docs/redesign-r3/render-board.mjs <board> <out.png> [width]`) and its placement list in
+`docs/redesign-r3/inventory/R10-*.md`. Every PR ships side by side images (board | built page) for every board it
+covers; no PR without them.
+| Step | Branch | Boards |
+|---|---|---|
+| B1 shared system and course homes | `claude/r3-homes` | R10-Home-* (all nine), R10-SYSTEM.md |
+| B2 practice, review, flashcards | `claude/r3-practice` | R10-Practice-*, R10-Review, R10-Flashcards* |
+| B3 exams and progress | `claude/r3-exams` | R10-Exams, R10-Exam-*, R10-AP-Exams, R10-AP-UnitTest, R10-Progress*, R10-ExamDay |
+| B4 reading | `claude/r3-reading` | R10-Learn, R10-Notes*, R10-Lesson, R10-Unit, R10-Glossary, R10-Search |
+| B5 tools and AP® pages | `claude/r3-tools` | R10-Tools*, R10-Tool*, R10-ToolCovers, R10-AP-FRQ*, R10-AP-Cram, R10-AP-Teachers |
+B1 goes first; B2 to B5 branch from it and run in parallel, each owning only its pages' files.
