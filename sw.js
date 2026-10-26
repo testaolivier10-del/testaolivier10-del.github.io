@@ -76,7 +76,7 @@ const PRECACHE_URLS = [
   'certificate.html',
   'assets/certificate.js',
   'search.html',
-  // The site pages' shared look and contents rail (search, privacy, terms, changelog).
+  // Shared look and contents rail of the site pages (search, privacy, terms, changelog).
   'assets/site-pages.css',
   'assets/site-toc.js',
   'assets/site-search-all.js',
