@@ -411,6 +411,9 @@ class Runner(Rig):
         self.seam(c, S['nseam'], M); c.restore()
         self.lit(c, S['nhem'], JEANS_HEM, M, sh_w=10); add(S['nhem'])
         self.hemline(c, S, 'n', M)
+        # a prop held between the body and the near arm (a bag, a ball): optional hook, (canvas) -> None
+        if getattr(self, 'between', None):
+            self.between(c)
         # near arm on top
         self.occlude(c, S['narm'], drawn, M, r=9, a=110)
         fist('n', 1.0)

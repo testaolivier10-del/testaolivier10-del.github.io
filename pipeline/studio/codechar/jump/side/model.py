@@ -390,6 +390,9 @@ class GirlSide(Rig):
         c.save(); c.clipPath(S['nleg'], doAntiAlias=True); c.clipPath(S['nleg_clip'], doAntiAlias=True)
         self.stripe(c, S['nstripe'], M); c.restore()
         self.lit(c, S['nhem'], JEANS_HEM, M, sh_w=8); add(S['nhem'])
+        # a prop held between the body and the near arm (a bag, a ball): optional hook, (canvas) -> None
+        if getattr(self, 'between', None):
+            self.between(c)
         # near arm on top
         self.occlude(c, S['narm'], drawn, M, r=8, a=90)
         arm('n', 1.0)

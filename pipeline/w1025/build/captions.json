@@ -1,0 +1,32 @@
+{
+"w1025-01-power-lift": {
+  "badge": "NREMT", "hook": "Bending at the waist to lift the jump bag?", "cta": "none",
+  "tiktok_caption": "Heavier jump bag next time: pull it in closer or lift faster? Bending at the waist vs the EMT power lift, why your lower back works like a lever. EMT traps #1. Free NREMT practice at levlprep.com #NREMT #EMT #EMTtraps",
+  "yt_title": "The EMT lifting mistake that wrecks backs",
+  "yt_description": "Heavier jump bag next time: pull it in closer or lift faster? Bending at the waist vs the EMT power lift (feet shoulder width apart, bag close, back locked, squat), and why your lower back works like a lever. EMT traps #1.\n\nFree NREMT notes and practice: https://levlprep.com/nremt/notes/lifting-and-moving-patients.html?ref=yt-power-lift\n\n#NREMT #EMT",
+  "pin_question": "What's the heaviest thing you've had to lift on a call?",
+  "series": {"name": "EMT traps", "n": 1}
+},
+"w1025-02-free-throw": {
+  "badge": "AP STATISTICS", "hook": "Five misses in a row. Is the next one due?", "cta": "spoken",
+  "tiktok_caption": "Independent shots, 5 makes in a row: is she on fire, or still a 70% shooter? The gambler's fallacy vs the law of large numbers, explained with free throws. Free AP Statistics practice at levlprep.com #APStatistics #statistics #probability",
+  "yt_title": "Five misses in a row. Is the next one due?",
+  "yt_description": "Independent shots, 5 makes in a row: is she on fire, or still a 70% shooter? The gambler's fallacy vs the law of large numbers (AP Statistics, probability and simulation), shown with free throws and a live running percentage over 300 shots.\n\nFree AP Statistics notes and practice: https://levlprep.com/statistics/notes/simulation.html?ref=yt-free-throw-due\n\n#APStatistics #statistics",
+  "pin_question": "What's something you were sure was due to happen?"
+},
+"w1025-03-dead-zone": {
+  "badge": "AP ENV SCI", "hook": "He fertilized right before a storm.", "cta": "none",
+  "tiktok_caption": "Lawn mowed right down to the water, or a strip of wild plants: which one saves the fish? How fertilizer runoff causes algal blooms, low oxygen and dead zones (eutrophication). Free AP Environmental Science practice at levlprep.com #APES #environmentalscience",
+  "yt_title": "He fertilized his lawn before a storm. The lake paid",
+  "yt_description": "Lawn mowed right down to the water, or a strip of wild plants: which one saves the fish? How nitrogen and phosphorus runoff feeds an algal bloom, why the oxygen crashes when the algae die, and what a plant buffer strip does (AP Environmental Science, eutrophication).\n\nFree AP Environmental Science notes and practice: https://levlprep.com/environmental-science/notes/eutrophication.html?ref=yt-dead-zone\n\n#APES #environmentalscience",
+  "pin_question": "Is there a lake or pond near you that turns green in summer?"
+},
+"w1025-04-head-rush": {
+  "badge": "A&P", "hook": "He stands up fast and his vision goes dark.", "cta": "none",
+  "tiktok_caption": "Hot shower or cold room: where's his next head rush worse? Why standing up fast makes your vision go dark (orthostatic blood pressure drop) and how the baroreceptor reflex fixes it. levlprep.com #anatomy #physiology #APandP",
+  "yt_title": "Why your vision goes dark when you stand up fast",
+  "yt_description": "Hot shower or cold room: where's his next head rush worse? Why standing up fast makes your vision go dark: blood pools in the legs, blood pressure dips, and the baroreceptors in the neck and chest bring it back (A&P, short term blood pressure control).\n\nFree A&P notes and practice: https://levlprep.com/anatomy-physiology/notes/bp-short-term.html?ref=yt-head-rush\n\n#anatomy #physiology",
+  "pin_question": "When do you get head rushes the most?",
+  "poll": {"type": "audience", "question": "What are you studying for?", "options": ["NREMT", "An AP class"], "place": "upper middle, from the first second"}
+}
+}

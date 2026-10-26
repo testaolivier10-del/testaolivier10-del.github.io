@@ -82,6 +82,51 @@
       "setting": "car dashboard on a highway",
       "lighting": "dusk, warm dash glow",
       "camera": "driver's view, dial close up"
+    },
+    {
+      "id": "w1025-01-power-lift",
+      "date": "2026-10-26",
+      "pieces": [
+        "w1025/a_bay_clean",
+        "w1025/a_bag"
+      ],
+      "setting": "ambulance bay with open rear doors and supply shelves",
+      "lighting": "bright day, flat layered",
+      "camera": "side view, full body"
+    },
+    {
+      "id": "w1025-02-free-throw",
+      "date": "2026-10-26",
+      "pieces": [
+        "w1025/b_court_wide"
+      ],
+      "setting": "outdoor basketball court at sunset",
+      "lighting": "warm sunset, flat layered",
+      "camera": "side view, shooter and hoop"
+    },
+    {
+      "id": "w1025-03-dead-zone",
+      "date": "2026-10-26",
+      "pieces": [
+        "w1025/c_lawn2",
+        "w1025/c_lake",
+        "w1025/c_bloom",
+        "w1025/c_buffer"
+      ],
+      "setting": "lawn sloping to a lake; lake cut away; algae bloom; buffer strip",
+      "lighting": "storm then clear day, flat layered",
+      "camera": "three quarter wide; side cut away of the water"
+    },
+    {
+      "id": "w1025-04-head-rush",
+      "date": "2026-10-26",
+      "pieces": [
+        "w1025/d_kitchen",
+        "w1025/d_body"
+      ],
+      "setting": "home kitchen with a high stool; flat body circulation diagram",
+      "lighting": "morning window light, flat layered",
+      "camera": "side view full body; front body diagram"
     }
   ]
 }

@@ -182,3 +182,19 @@ def xfade(t, a, b):
     """0 before a, 1 after b, eased."""
     u = min(max((t - a) / max(b - a, 1e-6), 0), 1)
     return u * u * (3 - 2 * u)
+
+
+class ClampedPerformer(MocapPerformer):
+    """Same retargeting; elbow flexion limited to elbow_max radians (a traced arm tube shows a seam at the
+    elbow beyond about 130 degrees of flexion, a limit of the drawing, not of the motion)."""
+    elbow_max = math.radians(128)
+
+    def layer(self, take, tau):
+        A, hip, feet = super().layer(take, tau)
+        for sd in ('near', 'far'):
+            d = wrapd(A[sd + '_lo'] - A[sd + '_up'])
+            if abs(d) > self.elbow_max:
+                nd = math.copysign(self.elbow_max, d)
+                A[sd + '_lo'] = A[sd + '_up'] + nd
+                A[sd + '_hand'] = A[sd + '_lo'] - self.f * self.hand_curl
+        return A, hip, feet

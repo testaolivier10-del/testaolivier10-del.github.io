@@ -371,6 +371,9 @@ class Paramedic(Rig):
         self.lit(c, S['nleg'], NAVY, M, sh_w=24, clip=S['nleg_clip']); add(S['nleg'])
         clipped(S['belt'], S['torso'], C((0x10, 0x0f, 0x19)))
         clipped(S['loop'], S['torso'], C((0x1e, 0x24, 0x44)))
+        # a prop held between the body and the near arm (a bag, a ball): optional hook, (canvas) -> None
+        if getattr(self, 'between', None):
+            self.between(c)
         # near arm on top
         self.occlude(c, S['narm'], drawn, M, r=9, a=110)
         g = S['nglove']

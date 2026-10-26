@@ -12,3 +12,6 @@ Prompt core (add to every scene or diagram prompt, then name a colour for every 
 "flat layered vector illustration, no outlines, no texture, clean geometric shapes, flat colour with at most two tones per shape,
 depth shown by layers getting lighter and hazier with distance, a soft warm rim light on one side, fully in colour, no grey,
 no text, no letters"
+
+## w1025 (2026-10-26)
+Gemini (Levl Prep account) flat layered scenes from ref_*.png: a_bay_clean (bag cut to a_bag.png, floor filled in code), b_court_wide, c_lawn2, c_lake, c_bloom, c_buffer, d_kitchen, d_body. Cast is the traced code drawn cast.

@@ -30,3 +30,11 @@ Adding more: Freesound refuses the cloud workspace, so search and download on Ol
 (key in ~/mnt/Downloads/levlprep/freesound_key.txt, read only inside commands; CC0 filter; previews["preview-hq-mp3"]),
 stage the mp3s into the workspace, convert to mono 44.1 kHz wav, trim leading silence, normalize, add a row here and to
 freesound.json, and push to sfx/ on the media branch.
+| rim_real | basketball hitting the rim | 7.3 s |
+| bounce_real | basketball bounce on court | 2.5 s |
+| rain_real | steady rain | 12.2 s |
+| thunder_real | thunder clap | 13.2 s |
+| bagdrop_real | bag set down on floor | 1.2 s |
+| birds_real | birds outdoors | 5.2 s |
+| underwater_real | underwater ambience | 16.1 s |
+| series_emt_traps | EMT traps series sting (synthesized) | 1.0 s |
