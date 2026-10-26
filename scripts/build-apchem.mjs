@@ -28,6 +28,7 @@
    Nothing it writes is edited by hand. Every served path avoids the token
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
+import { courseBanner } from './lib/covers.mjs';
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
@@ -644,6 +645,7 @@ ${tail({ depth, section: 'learn', extra: ['chem-toc.js', 'chem-book.js'] })}
     const body = `
 ${bodyOpen()}
 <main id="main" class="xshell chem-home">
+  ${courseBanner('apchem')}
   <header class="hero chem-home-hero">
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>

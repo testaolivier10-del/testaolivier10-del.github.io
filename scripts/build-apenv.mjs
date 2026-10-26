@@ -32,6 +32,7 @@
    Nothing it writes is edited by hand. Every served path avoids the token
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
+import { courseBanner } from './lib/covers.mjs';
 import { join, dirname } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { Hub } from './lib/hub.mjs';
@@ -654,6 +655,7 @@ ${tail({ depth, section: 'learn', extra: ['env-toc.js', 'env-book.js'] })}
     const body = `
 ${bodyOpen()}
 <main id="main" class="xshell env-home">
+  ${courseBanner('apenv')}
   <header class="hero env-home-hero">
     <div>
       <div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div>

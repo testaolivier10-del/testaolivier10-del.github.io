@@ -249,3 +249,28 @@ body[data-course="anp"] .cx-feat{--feat-hi:#F2B9A9;}
 .cx-flagcard span{flex:1 1 220px;}
 .cx-flagcard b{font-weight:900;margin-right:4px;}
 .cx-flagcard a{font:900 14px var(--font-ui);color:var(--amber-text);}
+
+/* ---- Course banner and channel headlines (site redesign 2026-10, docs/site-redesign.md) ----
+   Every course home opens with its own cover art (assets/covers/<key>.svg) as a
+   banner, the two-tone title and handwritten line over it, and the headline in
+   the display face, the way the homepage cards and the channel thumbnails look. */
+.course-banner{position:relative;display:block;height:176px;border-radius:20px;overflow:hidden;margin:4px 0 20px;
+  background-color:var(--cbg,#0B1A33);background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px;}
+.course-banner img{position:absolute;right:0;top:0;height:100%;width:auto;max-width:none;}
+.course-banner .cv-t{position:absolute;left:32px;top:50%;transform:translateY(-50%);max-width:52%;color:#fff;}
+.course-banner .cv-t b{display:block;font:900 clamp(26px,3.4vw,40px)/.95 'Inter Display','Nunito',system-ui,sans-serif;letter-spacing:-.035em;}
+.course-banner .cv-t b span{display:block;color:var(--cac,#2EE6D6);}
+.course-banner .cv-t em{display:block;margin-top:8px;font:700 clamp(16px,1.8vw,21px)/1.15 'Kalam','Nunito',cursive;font-style:normal;color:#FFD23F;}
+[data-cover="nremt"]{--cbg:#0D3B36;--cac:#2EE6D6;}[data-cover="ochem"]{--cbg:#241A63;--cac:#A18FFF;}[data-cover="anp"]{--cbg:#4A1A1F;--cac:#FF8A6B;}
+[data-cover="apbio"]{--cbg:#1B4422;--cac:#7CCB6B;}[data-cover="apchem"]{--cbg:#1A2C78;--cac:#8FAEFF;}[data-cover="apphys"]{--cbg:#2A1D06;--cac:#FFB21E;}
+[data-cover="apcalc"]{--cbg:#4A1230;--cac:#FF5C9A;}[data-cover="apstat"]{--cbg:#0E3A52;--cac:#5CC8F0;}[data-cover="apenv"]{--cbg:#22400F;--cac:#A6DB5C;}
+@media (max-width:640px){
+  .course-banner{height:118px;border-radius:16px;margin-bottom:14px;}
+  .course-banner .cv-t{left:18px;max-width:55%;}
+  .course-banner .cv-t em{display:none;}
+}
+/* The headline of every course page opener in the channel's display face. */
+main .hero h1,main .page-head h1{font-family:'Inter Display','Nunito',system-ui,sans-serif;font-weight:900;letter-spacing:-.035em;}
+/* The faint grid paper of the homepage behind a course home. */
+body:has(.course-banner){background-image:linear-gradient(rgba(20,40,60,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(20,40,60,.035) 1px,transparent 1px);background-size:44px 44px;}
+:root[data-theme="dark"] body:has(.course-banner){background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);}

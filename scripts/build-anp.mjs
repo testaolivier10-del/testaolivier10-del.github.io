@@ -12,6 +12,7 @@
 
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
 import { Hub } from './lib/hub.mjs';
+import { courseBanner } from './lib/covers.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
@@ -744,6 +745,7 @@ function homePage() {
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-home">
+  ${courseBanner('anp')}
   <header class="hero anp-home-hero">
     <div>
       <div class="eyebrow">${COURSE_NAME} ${BETA_PILL}</div>
