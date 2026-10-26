@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, QA_START, QA_END, applyQuickAnswer, validateQuickAnswers, loadQuickAnswers } from '../lib/quick-answers.mjs';
 import { applyVideo, loadVideos, START as V_START } from '../lib/videos.mjs';
-import { validate as validateFromVideo, render as renderFromVideo } from '../build-from-video.mjs';
+import { validate as validateFromVideo, render as renderFromVideo, OUT as FROM_VIDEO_JS } from '../build-from-video.mjs';
 
 const one = (rel, q = 'What is it?', a = 'It is this.') => ({ byPage: new Map([[rel, { q, a }]]) });
 const none = { byPage: new Map() };
@@ -49,10 +49,11 @@ test('text is escaped and dashes as punctuation are refused', () => {
   assert.equal(validateQuickAnswers({ pages: { 'ochem/lessons/sn2.html': { q: 'What?', a: 'This.' } } }).length, 1, 'notes pages only');
 });
 
-test('the homepage video topics are sound and match the page', () => {
+test('the homepage video topics are sound and the card script is current', () => {
   const data = JSON.parse(readFileSync(join(ROOT, 'docs/from-video.json'), 'utf8'));
   assert.deepEqual(validateFromVideo(data), []);
-  assert.ok(readFileSync(join(ROOT, 'index.html'), 'utf8').includes(renderFromVideo(data)), 'run node scripts/build-from-video.mjs');
+  assert.equal(readFileSync(join(ROOT, FROM_VIDEO_JS), 'utf8'), renderFromVideo(data), 'run node scripts/build-from-video.mjs');
+  assert.match(readFileSync(join(ROOT, 'index.html'), 'utf8'), /src='\/assets\/from-video\.js'/, 'the homepage loads the card only from the inline check');
   const bad = validateFromVideo({ videos: [{ date: '2026-10-20', course: 'nremt', topic: 'A', hook: 'B', page: 'nremt/notes/nope.html' }] });
   assert.equal(bad.length, 1);
 });

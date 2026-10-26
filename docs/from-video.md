@@ -14,12 +14,13 @@ visitors that week was on a phone, though the videos' audience is almost all pho
 
 - `docs/from-video.json`: one entry per Short (posting date, course, plain topic name, the video's hook, the
   notes page that teaches it). Keep it in date order.
-- `scripts/build-from-video.mjs` writes the list into `index.html` between the `from-video` markers;
+- `scripts/build-from-video.mjs` writes `assets/from-video.js` (the list, the drawing code and its styles);
   `--check` runs in CI and `scripts/ci-local.sh`.
-- The inline script in the hero draws the card before first paint, only when the address has a `tt-` or `ig-`
-  ref or the browser is TikTok's or Instagram's own. It shows the newest 3 Shorts whose posting time has come
-  (from 6pm local time on the posting day), newest first and highlighted. Every other visitor sees the page as
-  before.
+- `index.html` keeps only a one-line check in the hero: when the address has a `tt-` or `ig-` ref or the
+  browser is TikTok's or Instagram's own, it reserves room for the card before first paint (`fv-wait`, so
+  nothing moves) and loads `assets/from-video.js`. Every other visitor downloads nothing extra (the homepage
+  is at its weight budget). The card shows the newest 3 Shorts whose posting time has come (from 6pm local
+  time on the posting day), newest first and highlighted.
 - A tap sends `from-video-open` {course, at} to Umami.
 
 ## Keeping it current
