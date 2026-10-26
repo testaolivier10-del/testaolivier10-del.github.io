@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <style>
   .privacy h2{font-size:19px;margin:30px 0 8px;}
   .privacy h2:first-of-type{margin-top:6px;}
@@ -51,7 +52,7 @@
   .privacy .controls .file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
 </style>
 </head>
-<body>
+<body class="sp-page">
 <!-- Like privacy.html, this page draws its own header instead of calling
      LevlChrome.render, so it carries its own skip link too. -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -61,18 +62,22 @@
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">Terms of Use</div>
-    <h1>Study material, not medical advice.</h1>
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <div class="sp-hero sp-hero--text">
+    <div>
+    <span class="sp-pill">Terms of Use</span>
+    <h1>Study material, <span>not medical advice.</span></h1>
+    <p class="hand">short terms, and the first one matters most</p>
     <p class="lede">All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics. Premium is a one-time pass (see <a href="premium.html">Free vs Premium</a>). The terms are short. The one that matters is the first: this is material for studying, written to help you pass an exam and understand the material behind it. It is not medical advice, it is not a certification, and it does not replace an accredited course, a licensed instructor, or the protocols you actually work under.</p>
     <p class="updated">Last updated 25 October 2026</p>
+    </div>
+    <p class="sp-aside">Found something wrong?<br><a href="mailto:hello@levlprep.com">hello@levlprep.com</a></p>
   </div>
 
   <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">The terms</div>
-      <div class="xcontent narrow privacy">
+    <div class="sp-doc">
+      <nav class="sp-toc" aria-label="On this page"></nav>
+      <div class="sp-prose privacy">
 
         <h2 id="not-medical-advice">This is not medical advice</h2>
         <p>Everything here &mdash; the notes, the question banks, the flow diagrams, the scenarios, the drug pages and the reference cards &mdash; exists to help somebody learn. None of it is advice about a real patient, and reading it does not create any clinician&ndash;patient relationship or any professional relationship with you.</p>
@@ -137,5 +142,6 @@
 <script src="assets/account.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
 <script src="assets/site-chrome.js" defer></script>
+<script src="assets/site-toc.js" defer></script>
 </body>
 </html>

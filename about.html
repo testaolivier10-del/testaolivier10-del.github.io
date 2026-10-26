@@ -24,18 +24,57 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/site-pages.css">
 <style>
-  .src h2{font-size:19px;margin:30px 0 8px;}
-  .src h2:first-of-type{margin-top:6px;}
-  .src p,.src li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.65;max-width:66ch;}
-  .src li{margin-bottom:7px;}
-  .src strong{color:var(--ink);font-weight:800;}
-  .src ul{padding-left:20px;margin:8px 0 0;}
-  .src code{font:600 13.5px var(--font-mono);}
-  .src .updated{font:700 12px var(--font-mono);color:var(--muted);letter-spacing:.04em;}
+  /* About in the light channel look (docs/site-redesign.md, round 2). Shared
+     parts are in assets/site-pages.css; these are this page's own. */
+  .ab-hero h1{font-size:clamp(44px,6vw,76px);}
+  .ab-used{padding:30px 30px 26px;}
+  .ab-used .hand{margin:0 0 4px;}
+  .ab-used .ab-big{font:900 clamp(56px,6vw,76px)/.95 var(--display);letter-spacing:-.05em;color:var(--panel-ink);margin:0 0 14px;}
+  .ab-used .ab-big span{display:block;font-size:.42em;letter-spacing:-.03em;color:var(--gold);margin-top:6px;}
+  .ab-used p{margin:0 0 10px;font-size:16px;line-height:1.55;color:var(--panel-ink);}
+  .ab-used .ab-small{color:var(--panel-muted);font-size:14.5px;margin:0;}
+  .ab-why{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:40px;padding:40px 44px;}
+  .ab-eb{margin:0;}
+  .ab-why .hand{margin:10px 0 0;}
+  .ab-quote{margin:0;font:800 clamp(21px,2.4vw,29px)/1.3 var(--font-ui);letter-spacing:-.02em;color:var(--ink);}
+  .ab-quote span{color:var(--accent);}
+  .ab-more{margin:16px 0 0;color:var(--muted);font-size:16.5px;max-width:42em;}
+  .ab-made{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
+  .ab-card{padding:24px 22px;display:grid;gap:8px;align-content:start;}
+  .ab-card h3{margin:6px 0 0;font:900 19px var(--font-ui);letter-spacing:-.01em;}
+  .ab-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.55;}
+  .ab-card a,.ab-pad a{color:var(--accent-text);font-weight:800;}
+  .ab-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;}
+  .ab-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+  .ab-pad{padding:28px;}
+  .ab-pad p{margin:0 0 12px;color:var(--muted);font-size:15.5px;line-height:1.6;}
+  .ab-pad p:last-child{margin-bottom:0;}
+  .ab-h3{font-weight:900;font-size:24px;letter-spacing:-.03em;line-height:1.15;margin:8px 0 10px;color:var(--ink);}
+  .ab-h3 span{color:var(--accent);}
+  .sp-panel .ab-h3{color:var(--panel-ink);margin-top:0;}
+  .sp-panel .ab-h3 span{color:var(--gold);}
+  .sp-panel.ab-pad p{color:var(--panel-muted);}
+  .sp-panel.ab-pad a{color:var(--teal-hi);}
+  .ab-fix{padding:30px 32px;}
+  .ab-fix__head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin:0 0 18px;}
+  .ab-fix__head .ab-h3{margin:0;}
+  .ab-fix__head p{margin:0;}
+  .ab-fix a{color:var(--teal-hi);font-weight:800;}
+  .ab-fixes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+  .ab-fixes li{border-left:2px solid var(--panel-line);padding-left:16px;font-size:15px;line-height:1.5;color:var(--panel-ink);}
+  .ab-fixes .d{display:block;font:700 17px var(--hand-font);color:var(--gold);margin-bottom:2px;}
+  .ab-links{display:flex;flex-direction:column;gap:6px;}
+  @media (max-width:900px){
+    .ab-why{grid-template-columns:minmax(0,1fr);gap:14px;padding:26px 22px;}
+    .ab-made{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+    .ab-two,.ab-three,.ab-fixes{grid-template-columns:minmax(0,1fr);}
+  }
+  @media (max-width:560px){.ab-made{grid-template-columns:minmax(0,1fr);}.ab-pad{padding:22px;}}
 </style>
 </head>
-<body>
+<body class="sp-page">
 <!-- Like the hub, this page draws its own header instead of calling
      LevlChrome.render, so it carries its own skip link too. -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -45,47 +84,99 @@
   </div>
 </header>
 
-<div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
-  <div class="hero">
-    <div class="eyebrow">About</div>
-    <h1>Hi, I&rsquo;m Olivier.</h1>
-    <p class="lede">I&rsquo;m Olivier Testa, an EMT and a pre-med student at UC San Diego. I make LevlPrep, and I run it myself.</p>
-  </div>
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <section class="sp-hero ab-hero" aria-labelledby="abTitle">
+    <div>
+      <span class="sp-pill">About</span>
+      <h1 id="abTitle">Hi, I&rsquo;m<span>Olivier.</span></h1>
+      <p class="hand">I make LevlPrep, and I run it myself</p>
+      <p class="lede">I&rsquo;m Olivier Testa, an EMT and a pre-med student at UC San Diego. LevlPrep is the study site I wanted when I was studying: short lessons you do rather than read, and practice that explains every answer.</p>
+      <div class="sp-btns"><a class="btn-chan" href="nremt/">See the NREMT course</a><a class="btn-ghost" href="mailto:hello@levlprep.com">Email me</a></div>
+    </div>
+    <div class="sp-panel ab-used">
+      <p class="hand">I used it myself</p>
+      <p class="ab-big">70 <span>questions</span></p>
+      <p>I studied for the NREMT with LevlPrep&rsquo;s <a href="nremt/">NREMT-EMT course</a>, and I passed: the exam shut off at 70 questions, the fewest it gives.</p>
+      <p class="ab-small">That is one person&rsquo;s result, not a promise about yours. What I can promise is that the course is the one I wanted when I was studying.</p>
+    </div>
+  </section>
 
-  <div class="xsection">
-    <div class="xgrid">
-      <div class="xlabel">About</div>
-      <div class="xcontent narrow src">
+  <section class="sp-box ab-why sp-sec" aria-labelledby="abWhy">
+    <div>
+      <h2 class="sp-pill ab-eb" id="abWhy">Why I built it</h2>
+      <p class="hand">tired of textbooks that throw it all at you</p>
+    </div>
+    <div>
+      <p class="ab-quote">I wanted lessons you <strong>do</strong> rather than read: short steps that ask you something, each one building on the last, so <span>nothing turns up before you&rsquo;ve been taught what it rests on.</span></p>
+      <p class="ab-more">I was tired of textbooks that throw information at you and leave you to sort it out. That is what every course here is built around, and a script checks the order on every change to the site.</p>
+    </div>
+  </section>
 
-        <h2>Why I built it</h2>
-        <p>I was tired of textbooks that throw information at you and leave you to sort it out. I wanted lessons you <strong>do</strong> rather than read: short steps that ask you something, each one building on the last, so nothing turns up before you&rsquo;ve been taught what it rests on. That is what every course here is built around, and a script checks the order on every change to the site.</p>
-
-        <h2>I used it myself</h2>
-        <p>I studied for the NREMT with LevlPrep&rsquo;s <a href="nremt/">NREMT-EMT course</a>, and I passed: the exam shut off at 70 questions, the fewest it gives. That is one person&rsquo;s result, not a promise about yours. What I can promise is that the course is the one I wanted when I was studying.</p>
-
-        <h2>How it is made and checked</h2>
-        <ul>
-          <li><strong>Original.</strong> Every question, lesson and explanation is written for this site. None is copied from an exam, a textbook&rsquo;s test bank or another prep product.</li>
-          <li><strong>Checked twice.</strong> Science content gets a second accuracy check, an independent automated review by an AI model that did not write it, and automated checks run on every change. No human expert has reviewed it yet; the <strong>Beta</strong> labels below say so until one has.</li>
-          <li><strong>Honest labels.</strong> A course says <strong>Beta</strong> until a teacher or instructor in that subject has reviewed it, and the NREMT bank has not yet been reviewed by a paramedic or EMS instructor. The <a href="sources.html">Sources</a> page says exactly what each course is written against and what has not happened yet.</li>
-          <li><strong>Corrections in public.</strong> Every question has a <strong>Report a problem</strong> link, and fixes are listed on <a href="changelog.html">What&rsquo;s new</a>.</li>
-        </ul>
-
-        <h2>Free, and what Premium is</h2>
-        <p>All notes and textbook pages are free forever, with no ads. Premium is a one-time pass, never a subscription, and if it isn&rsquo;t what you expected you can refund it yourself, in full, from your <a href="account.html">Account</a> page within 7 days (<a href="premium.html">Free vs Premium</a>, <a href="terms.html">terms</a>).</p>
-
-        <h2>What LevlPrep is not</h2>
-        <p>It is an independent project. It is not affiliated with, or endorsed by, the National Registry of Emergency Medical Technicians, the College Board, UC San Diego, OpenStax or any training program. AP&reg; is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
-
-        <h2>Watch</h2>
-        <p>I teach short lessons on <a href="https://www.tiktok.com/@levl.prep" rel="noopener">TikTok (@levl.prep)</a> and <a href="https://www.youtube.com/@levlprep" rel="noopener">YouTube (@levlprep)</a>.</p>
-
-        <h2>Reach me</h2>
-        <p>Email <a href="mailto:hello@levlprep.com">hello@levlprep.com</a>. I read every message and every problem report.</p>
-
+  <section class="sp-sec" aria-labelledby="abMade">
+    <div class="sp-sh"><h2 class="sp-h2" id="abMade">How it&rsquo;s made <span>and checked</span></h2></div>
+    <div class="ab-made">
+      <div class="sp-box ab-card">
+        <span class="sp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></span>
+        <h3>Original</h3>
+        <p>Every question, lesson and explanation is written for this site. None is copied from an exam, a textbook&rsquo;s test bank or another prep product.</p>
+      </div>
+      <div class="sp-box ab-card">
+        <span class="sp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+        <h3>Checked twice</h3>
+        <p>Science content gets a second accuracy check, an independent automated review by an AI model that did not write it, and automated checks run on every change. No human expert has reviewed it yet; the <strong>Beta</strong> labels say so until one has.</p>
+      </div>
+      <div class="sp-box ab-card">
+        <span class="sp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L2 12V2h10l8.6 8.6a2 2 0 010 2.8z"/><circle cx="7" cy="7" r="1.5"/></svg></span>
+        <h3>Honest labels</h3>
+        <p>A course says <strong>Beta</strong> until a teacher or instructor in that subject has reviewed it, and the NREMT bank has not yet been reviewed by a paramedic or EMS instructor. The <a href="sources.html">Sources</a> page says exactly what each course is written against and what has not happened yet.</p>
+      </div>
+      <div class="sp-box ab-card">
+        <span class="sp-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></span>
+        <h3>Corrections in public</h3>
+        <p>Every question has a <strong>Report a problem</strong> link, and fixes are listed on <a href="changelog.html">What&rsquo;s new</a>.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="sp-panel ab-fix sp-sec" aria-labelledby="abFix">
+    <div class="ab-fix__head">
+      <h2 class="sp-d ab-h3" id="abFix">Recent <span>corrections</span></h2>
+      <p><a href="changelog.html">Every change, on What&rsquo;s new</a></p>
+    </div>
+    <ul class="ab-fixes">
+      <li><span class="d">14 October 2026</span>An independent review of all 2,033 NREMT questions corrected 22 questions and explanations.</li>
+      <li><span class="d">22 September 2026</span>The NREMT questions an accuracy review could not fix with a word change were rebuilt against current published guidance.</li>
+      <li><span class="d">15 September 2026</span>Forty corrections, and three more checks.</li>
+    </ul>
+  </section>
+
+  <section class="ab-two sp-sec">
+    <div class="sp-box ab-pad">
+      <span class="sp-pill">Free and Premium</span>
+      <h2 class="sp-d ab-h3" id="abFree">Notes free, <span>forever</span></h2>
+      <p>All notes and textbook pages are free forever, with no ads. Premium is a one-time pass, never a subscription, and if it isn&rsquo;t what you expected you can refund it yourself, in full, from your <a href="account.html">Account</a> page within 7 days (<a href="premium.html">Free vs Premium</a>, <a href="terms.html">terms</a>).</p>
+    </div>
+    <div class="sp-box ab-pad">
+      <span class="sp-pill">What it is not</span>
+      <h2 class="sp-d ab-h3">Independent</h2>
+      <p>It is an independent project. It is not affiliated with, or endorsed by, the National Registry of Emergency Medical Technicians, the College Board, UC San Diego, OpenStax or any training program. AP&reg; is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    </div>
+  </section>
+
+  <section class="ab-two sp-sec">
+    <div class="sp-box ab-pad">
+      <span class="sp-pill">Watch</span>
+      <h2 class="sp-d ab-h3">Short lessons</h2>
+      <p>I teach short lessons on video.</p>
+      <p class="ab-links"><a href="https://www.tiktok.com/@levl.prep" rel="noopener">TikTok @levl.prep</a><a href="https://www.youtube.com/@levlprep" rel="noopener">YouTube @levlprep</a></p>
+    </div>
+    <div class="sp-box ab-pad">
+      <span class="sp-pill">Reach me</span>
+      <h2 class="sp-d ab-h3">I read everything</h2>
+      <p>I read every message and every problem report.</p>
+      <p class="ab-links"><a href="mailto:hello@levlprep.com">hello@levlprep.com</a></p>
+    </div>
+  </section>
 </div>
 <div class="xshell">
   <div class="xsection">
