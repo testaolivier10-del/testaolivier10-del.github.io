@@ -303,15 +303,7 @@ for (const [path, what] of PAGES) {
   page.on('pageerror', (e) => pageErrors.push(e.message));
 
   try {
-    /* One retry when the local server is slow to answer: a navigation timeout on a busy CI runner says
-       nothing about the page (PRs #102 and #104 failed on a different page each run). A page that times
-       out twice still fails. */
-    try {
-      await page.goto(`http://127.0.0.1:${PORT}${path}`, { waitUntil: 'domcontentloaded' });
-    } catch (e) {
-      if (!/Timeout/.test(String(e && e.message))) throw e;
-      await page.goto(`http://127.0.0.1:${PORT}${path}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
-    }
+    await page.goto(`http://127.0.0.1:${PORT}${path}`, { waitUntil: 'domcontentloaded' });
 
     /* Wait for the chrome to actually be there rather than for a number of
        milliseconds. The header, the skip link, the tutor and the announcer all
