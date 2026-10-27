@@ -239,7 +239,8 @@
       else if(A && (near(v / 1e6, A, tol) || near(v * 1e6, A, tol))) notes.unshift('Value: off by a factor of a million. Check "million" or the power of ten (× 10^6).');
       else if(A && (near(v / 1e9, A, tol) || near(v * 1e9, A, tol))) notes.unshift('Value: off by a factor of a billion. Check "billion" or the power of ten (× 10^9).');
       else if(A && near(-v, A, tol)) notes.unshift('Value: the size is right but the sign is wrong. Check the order of the subtraction (new minus old).');
-      else if(A && near(v, A, tol * 10)) notes.unshift('Value: close. Keep every digit until the last step, then round.');
+      else if(A && near(v, A, tol * 2) && Math.abs(v - A) <= 0.25 * Math.abs(A)) notes.unshift('Value: close. Keep every digit until the last step, then round.');
+      else if(A && isFinite(v)) notes.unshift('Value: not this number. ' + (A < 0 && v < 0 ? 'Yours is too ' + (v < A ? 'large' : 'small') + ' a decrease' : 'Yours is too ' + (v > A ? 'high' : 'low')) + '; check the setup step by step.');
       else notes.unshift('Value: not this number. Check the setup step by step.');
     }
     var graded = ['value', 'unit'].filter(function(k){ return parts[k] !== null; });

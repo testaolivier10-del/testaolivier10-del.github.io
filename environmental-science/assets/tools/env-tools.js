@@ -532,6 +532,44 @@
   var coefText = function(x){ return M.coefText ? M.coefText(x) : String(x); };
   function numOf(raw){ return Q.parseNumber(String(raw || '').replace(/%\s*$/, '')); }
   function shownNum(c, d){ return d != null ? F(c.answer, d) : M.fmt(c.answer, 3); }
+  /* One method hint per step (tool-audit X1): the step's own hint, else the
+     tool's (o.method(step, problem) -> html), else one for the kind of step.
+     It says how to get there, never the answer. */
+  function methodOf(s, p, o){
+    var m = s.hint || (o.method && o.method(s, p)) || '';
+    if(m) return m;
+    var lab = String(s.label || '').replace(/<[^>]+>/g, '');
+    if(s.kind === 'setup') return 'Write the formula in words first, then put each number from the problem in its place. Keep brackets around a difference before you divide, and multiply by 100 for a percent.';
+    if(s.kind === 'unit') return 'Work the number out (from your setup, if there is one), keeping every digit until the end. Then write the unit the question asks for (%, mg/L, kg/day...).';
+    if(/table/i.test(lab)) return 'Find the row and column you need in the table, then read the value where they meet.';
+    if(s.kind === 'vol' || /^read\b|graph|curve/i.test(lab)) return 'Find the point on the picture first, then read straight across (or down) to the axis and use its scale.';
+    if(s.kind === 'num') return 'Find the numbers you need in the problem or on the picture, then do one operation at a time.';
+    if(s.kind === 'choice') return 'Look at the picture and the numbers first. Rule out the options that contradict them, then pick the one that also explains why.';
+    return 'Use the numbers in the problem, one step at a time.';
+  }
+  /* What the student typed or picked, for drawing on the stage. */
+  function attemptOf(s, input, uIn, el){
+    var a = { kind: s.kind, key: s.key };
+    if(s.kind === 'num' || s.kind === 'vol'){ a.raw = input.value.trim(); a.value = numOf(a.raw); a.text = a.raw + (s.unit ? ' ' + s.unit : ''); }
+    else if(s.kind === 'unit'){ a.raw = input.value.trim(); a.value = numOf(a.raw); a.unit = uIn.value.trim(); a.text = a.raw + (a.unit ? ' ' + a.unit : ''); }
+    else if(s.kind === 'setup'){ a.raw = input.value.trim(); var r = a.raw ? M.evaluate(a.raw, s.cell.setup.bind || {}, s.cell.setup.units || []) : null; a.value = r && r.ok ? r.value : NaN; a.text = a.raw + (r && r.ok && !/^[-+]?[\d.,]+$/.test(a.raw) ? ' = ' + M.fmt(r.value, 4) : ''); }
+    else if(s.kind === 'choice'){ var c = el.querySelector('input:checked'); a.pick = c ? +c.value : -1; a.text = a.pick > -1 ? plainText(String(s.options[a.pick])) : ''; }
+    return a;
+  }
+  /* The key as text, for the stage card after Show the answer. */
+  function keyText(s){
+    if(s.kind === 'num' || s.kind === 'vol') return shownNum(s.cell, s.d) + (s.unit ? ' ' + s.unit : '');
+    if(s.kind === 'unit') return window.ApEnvGrade.formatKey(s.cell.numeric);
+    if(s.kind === 'setup') return s.cell.setup.answer;
+    if(s.kind === 'choice') return plainText(String(s.options[s.correct]));
+    return '';
+  }
+  /* No authored slip matched a number: say which way it is off. */
+  function gapNote(c, x){
+    if(!isFinite(x) || !c || !isFinite(c.answer)) return '';
+    if(c.answer < 0 && x < 0) return (x < c.answer ? 'Too large a decrease.' : 'Too small a decrease.') + ' Use the method above, then check again.';
+    return (x > c.answer ? 'Too high.' : 'Too low.') + ' Use the method above, then check again.';
+  }
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
@@ -550,7 +588,23 @@
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
         '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
-      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra');
+      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra'), lastTry = null;
+      /* The try card on the stage, beside the figure: the student's answer
+         against the right one (after Show the answer, or a later right try).
+         A tool that marks the attempt on its own picture (o.onTry) still
+         gets the card, so the two values are always side by side in words. */
+      function tryCard(s, att, final, gotIt){
+        var hostEl = sd ? sd.stage : exEl;
+        if(!hostEl || !att || !att.text) return;
+        var c = hostEl.querySelector(':scope > .cd-try');
+        if(!c){ c = document.createElement('div'); c.className = 'cd-try'; c.setAttribute('aria-live', 'polite'); hostEl.appendChild(c); }
+        var short = function(t){ t = String(t); return t.length > 90 ? t.slice(0, 88) + '…' : t; };
+        var n = p.steps.indexOf(s) + 1;
+        c.innerHTML = '<span class="cd-try-k">Step ' + n + '</span>' +
+          '<span class="cd-try-v is-no"><span class="cd-try-l">' + (gotIt ? 'First try' : 'Your answer') + '</span> <s>' + esc(short(att.text)) + '</s></span>' +
+          (final ? '<span class="cd-try-v is-ok"><span class="cd-try-l">' + (gotIt ? 'Then' : 'Right answer') + '</span> <b>' + esc(short(keyText(s))) + '</b></span>' : '<span class="cd-try-v is-wait"><span class="cd-try-l">Right answer</span> check again or show it</span>');
+      }
+      function clearTry(){ var hostEl = sd ? sd.stage : exEl, c = hostEl && hostEl.querySelector(':scope > .cd-try'); if(c) c.remove(); }
       // The table rows to fill live in the figure, which the Tool Studio
       // moves to the stage: reach them through it, not through the area.
       function rowsAll(sel){ return exEl.querySelectorAll(sel).length ? exEl.querySelectorAll(sel) : area.querySelectorAll(sel); }
@@ -560,11 +614,17 @@
       function step(i){
         if(i >= p.steps.length) return finish();
         var s = p.steps[i], sid = gid + '-s' + i, tries = 0, done = false;
+        lastTry = null;
         var el = document.createElement('form');
         el.className = 'bt-part cd-step';
         el.setAttribute('novalidate', '');
         el.setAttribute('aria-labelledby', sid + '-l');
-        var head = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + s.label + '</p>' + (s.hint ? '<p class="bt-small" id="' + sid + '-h">' + s.hint + '</p>' : '');
+        // The method hint: the step's own, else the tool's (o.method), else
+        // one for the kind of step. Folded until asked for or until a wrong
+        // try; "Show the answer" comes only after it (tool-audit X1).
+        var method = methodOf(s, p, o);
+        var head = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + s.label + '</p>' +
+          '<div class="cd-method" id="' + sid + '-h" hidden><span class="cd-method-k">Method</span> <span class="cd-method-t">' + method + '</span></div>';
         var body = '';
         if(s.kind === 'num' || s.kind === 'vol'){
           body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + sid + '-h"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
@@ -585,8 +645,11 @@
         } else {
           body = '<p class="bt-small cd-rowhint">Type each value in the ' + esc(s.row) + ' row of the table.</p>';
         }
-        el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
+        el.innerHTML = head + body + '<button type="button" class="cd-hintbtn">Show a hint</button><div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        var methodEl = el.querySelector('.cd-method'), hintBtn = el.querySelector('.cd-hintbtn'), hinted = false;
+        function showMethod(){ if(hinted) return; hinted = true; methodEl.hidden = false; hintBtn.hidden = true; }
+        hintBtn.addEventListener('click', function(){ showMethod(); event('apenv-drill-hint', { tool: slug, step: s.key }); var f = el.querySelector('input:not([readonly]):not([disabled])'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){} });
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
           rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
@@ -642,6 +705,7 @@
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
           fb.innerHTML = '<span class="env-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
+          tryCard(s, lastTry, true);
           lock(); next(false);
         }
         function check(){
@@ -682,14 +746,24 @@
           }
           if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'setup' ? 'Type the setup first, for example (150 - 120) / 120 * 100.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
+          var att = attemptOf(s, input, uIn, el);
           if(ok){
             el.classList.add('is-right');
             fb.innerHTML = '<span class="env-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
+            if(lastTry) tryCard(s, att, true, true); else clearTry();
             lock(); next(tries === 1);
             return;
           }
           el.classList.add('is-wrong');
-          fb.innerHTML = '<span class="env-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
+          lastTry = att;
+          // The wrong answer goes on the picture (the tool's own mark, else a
+          // card on the stage); the method hint opens with the feedback, and
+          // "Show the answer" sits after it.
+          if(o.onTry) try{ o.onTry(s, att, api); }catch(e){}
+          tryCard(s, att, false);
+          showMethod();
+          var near = !notes.length && (s.kind === 'num' || s.kind === 'vol') ? gapNote(s.cell, att.value) : '';
+          fb.innerHTML = '<span class="env-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' ' + (near || 'Not this one. Use the method above, then check again.')) +
             '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
           fb.querySelector('.cd-show').addEventListener('click', reveal);
         }
@@ -829,6 +903,7 @@
     if(more) s.add('details', more, only);
     if(about){ about.open = true; s.add('about', about, only); }
     return {
+      stage: stage,
       fresh: function(p){
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
         why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
@@ -865,12 +940,19 @@
         s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
       },
       done: function(right, total){
+        // The worked solution opens by itself in the dock, under the result
+        // (tool-audit X6); Why keeps a copy for later.
         var sol = area.querySelector(':scope > .bt-solution');
-        if(sol){ why.innerHTML = ''; why.appendChild(sol); }
+        if(sol){
+          why.innerHTML = ''; var cp = sol.cloneNode(true); cp.hidden = false; cp.querySelectorAll('[tabindex]').forEach(function(x){ x.removeAttribute('tabindex'); }); why.appendChild(cp);
+          sol.classList.add('is-open'); sol.hidden = false;
+          var nx = area.querySelector(':scope > .bt-next'); if(nx) area.insertBefore(sol, nx.nextSibling);
+        }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is below.', m);
         var again = area.querySelector('.cd-again');
-        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus({ preventScroll: true }); }
+        if(sol && sol.scrollIntoView) try{ sol.scrollIntoView({ block: 'nearest' }); }catch(e){}
       }
     };
   }
@@ -893,7 +975,22 @@
     var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
     function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
     s.add('stage', box('env-ls-stage', o.stage), only);
-    var dock = [box('env-ls-dock', o.dock)], row = null;
+    // o.primary: the main slider (and its Play row), first in the dock right
+    // under the caption, so it is on the first screen of a 390 px phone
+    // (tool-audit X7). Each keeps following its old group's hidden state
+    // (a view switch that hides the group hides its slider too).
+    var prim = null, follow = [];
+    if(o.primary && o.primary.length){
+      var dockRoot = (o.dock || [])[0];
+      o.primary.forEach(function(el){
+        if(!el) return;
+        var anc = []; for(var a = el.parentElement; a && a !== dockRoot && a !== pane; a = a.parentElement) anc.push(a);
+        follow.push({ el: el, anc: anc });
+      });
+      prim = box('env-ls-primary', follow.map(function(f){ return f.el; }));
+      if(o.primaryLoose) prim.classList.add('is-loose');
+    }
+    var dock = (prim ? [prim] : []).concat([box('env-ls-dock', o.dock)]), row = null;
     var more = q('details.bt-more');
     if(o.setup && more){
       row = document.createElement('button');
@@ -904,6 +1001,15 @@
       dock.push(row);
     }
     s.add('dock', dock, only);
+    function syncPrim(){
+      // data-off on the element itself: the tool hides it (e.g. nothing to run yet)
+      follow.forEach(function(f){ var off = f.el.hasAttribute('data-off') || f.anc.some(function(a){ return a.hidden; }); if(f.el.hidden !== off) f.el.hidden = off; });
+      if(prim) prim.hidden = follow.every(function(f){ return f.el.hidden; });
+    }
+    if(follow.length){
+      syncPrim();
+      try{ var mo = new MutationObserver(syncPrim); follow.forEach(function(f){ mo.observe(f.el, { attributes: true, attributeFilter: ['data-off'] }); f.anc.forEach(function(a){ mo.observe(a, { attributes: true, attributeFilter: ['hidden'] }); }); }); }catch(e){}
+    }
     // The "Start here" cue reads as the first line of Why.
     var why = box('ls-sec env-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
     s.add('why', why, only);
@@ -925,11 +1031,39 @@
       open: openAll, why: why, details: det
     };
   }
+  /* dragOn(svg, fn, o): one finger (or the mouse) drags on the picture.
+     fn(x, y, phase, e) gets the point in the svg's viewBox units; phase is
+     'start', 'move' or 'end'. fn('start') returning false lets the touch
+     through (a tap on a button in the picture, a scroll). The stage's own
+     two-finger pan and pinch still work: only single pointers are taken. */
+  function dragOn(svg, fn, o){
+    o = o || {};
+    var id = null;
+    function pt(e){
+      var vb = svg.viewBox && svg.viewBox.baseVal, r = svg.getBoundingClientRect();
+      if(!vb || !vb.width || !r.width) return null;
+      // preserveAspectRatio xMidYMid meet: the picture is centered in its box
+      var s = Math.min(r.width / vb.width, r.height / vb.height), ox = r.left + (r.width - vb.width * s) / 2, oy = r.top + (r.height - vb.height * s) / 2;
+      return [vb.x + (e.clientX - ox) / s, vb.y + (e.clientY - oy) / s];
+    }
+    svg.addEventListener('pointerdown', function(e){
+      if(id != null || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      var p = pt(e); if(!p) return;
+      if(fn(p[0], p[1], 'start', e) === false) return;
+      id = e.pointerId;
+      try{ svg.setPointerCapture(id); }catch(x){}
+      e.preventDefault();
+    });
+    svg.addEventListener('pointermove', function(e){ if(e.pointerId !== id) return; var p = pt(e); if(p) fn(p[0], p[1], 'move', e); });
+    function end(e){ if(e.pointerId !== id) return; id = null; var p = pt(e); fn(p ? p[0] : 0, p ? p[1] : 0, 'end', e); }
+    svg.addEventListener('pointerup', end); svg.addEventListener('pointercancel', end);
+    if(o.cursor !== false) svg.style.touchAction = 'pan-y pinch-zoom';
+  }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApEnvTools = {
-    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, dragOn: dragOn,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

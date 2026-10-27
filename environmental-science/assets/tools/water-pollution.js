@@ -351,14 +351,25 @@
       // decomposers on the bottom (bacteria), as many as decomposition is fast
       var nB = D < 1 ? 0 : Math.min(BAC.length, Math.round(0.12 * D * 14));
       BAC.slice(0, nB).forEach(function(p){ var x = lakeL + 30 + p[0] * (R - lakeL - 46), y = bottom - 4 - p[1] * 10; g.push('<rect class="wp-bac" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="6" height="2.6" rx="1.3" transform="rotate(' + Math.round(p[2] * 60 - 30) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')"/>'); });
-      // fish: down in the bottom water when it has oxygen, up near the surface when stressed, dead below 2 mg/L
-      var fishN = 4;
+      // fish: down in the bottom water when it has oxygen, up near the surface
+      // when stressed; below 2 mg/L (hypoxic) the fish that can swim leave
+      // for oxygenated water, heading out of the picture, and the ones that
+      // cannot get out in time die (tool-audit: show fish leaving below 2 mg/L).
+      var fishN = 5, hyp = o < W.HYPOXIC, nDead = !hyp ? 0 : o < 1 ? 2 : 1, out0 = !hyp ? 0 : Math.min(1, (W.HYPOXIC - o) / 1.2 + 0.35), leaving = [];
       for(var fi = 0; fi < fishN; fi++){
-        var fx = lakeL + 60 + fi * (R - lakeL - 110) / (fishN - 1), dead = o < W.HYPOXIC && fi < (o < 1 ? 4 : 3), up = o < 4.5;
+        var fx = lakeL + 60 + fi * (R - lakeL - 110) / (fishN - 1), dead = hyp && fi < nDead, up = o < 4.5;
         var fy = dead ? surf - 2 : up ? surf + 10 + (fi % 2) * 8 : mid + 14 + (fi % 2) * (bottom - mid - 34);
-        g.push(fish(fx, fy, dead, fi % 2 === 1));
+        if(hyp && !dead){
+          // swimming out toward open water on the right, the farther the lower the oxygen
+          fx = fx + (R + 30 - fx) * out0 * (0.55 + 0.15 * (fi - nDead));
+          fy = surf + 12 + (fi % 2) * 10;
+          leaving.push([fx, fy]);
+          g.push('<path class="wp-swim" d="M' + (fx - 34).toFixed(1) + ' ' + (fy - 3).toFixed(1) + ' h-14 M' + (fx - 30).toFixed(1) + ' ' + (fy + 3).toFixed(1) + ' h-10"/>');
+          g.push(fish(fx, fy, false, false));
+        } else g.push(fish(fx, fy, dead, fi % 2 === 1));
       }
       g.push('</g>');
+      if(leaving.length) g.push(tag(Math.min(R - 6, leaving[0][0] - 10), surf + 46, 'Fish leave the dead zone', 'wp-c-oxy', 'end'));
       g.push('<path class="wp-shore" d="' + lakePath() + '"/>');
       g.push('<line class="wp-thermo" x1="' + (lakeL + 30) + '" x2="' + (R - 4) + '" y1="' + mid + '" y2="' + mid + '"/>');
       // the oxygen gauge on the bottom water
@@ -541,7 +552,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.wp-fig')], dock: [$('.wp-ctl')], setup: 'Settings', moreLabel: 'Lake and river temperature', why: [$('.wp-say')], details: [$('.wp-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.wp-fig')], dock: [$('.wp-ctl')], primary: [sLevel.el, $('.wp-grp-act'), sWarm.el, sStage.el], setup: 'Settings', moreLabel: 'Lake and river temperature', why: [$('.wp-say')], details: [$('.wp-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
@@ -572,8 +583,14 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { chain: 'The eutrophication chain', dochange: 'Percent change in dissolved oxygen', thermal: 'Thermal pollution', sewage: 'Sewage treatment', load: 'A nitrate load' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
+      onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
+      // a wrong reading is drawn on the graph as a red line at the student's value
+      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); }
     });
+  }
+  /* The student's wrong reading: a dashed red line across the graph. */
+  function tryLine(L, R, y, text){
+    return '<line class="wp-try" x1="' + L + '" x2="' + R + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="wp-try-t" x="' + (R - 4) + '" y="' + (y - 6).toFixed(1) + '" text-anchor="end">' + esc(text) + '</text>';
   }
   /* The drill's figure, drawn from the problem's own numbers; a value is
      written on it only once its step is answered, so it never gives a key
@@ -590,6 +607,7 @@
       [0, 10, 20, 30, 40, 50, 60].forEach(function(d){ out.push('<line class="wp-grid" x1="' + x(d).toFixed(1) + '" x2="' + x(d).toFixed(1) + '" y1="' + top + '" y2="' + bot + '"/><text class="wp-tk" x="' + x(d).toFixed(1) + '" y="' + (bot + 15) + '" text-anchor="middle">' + d + '</text>'); });
       out.push('<polygon class="wp-algae-a" points="' + L + ',' + bot + ' ' + g.algae.map(function(q){ return x(q[0]).toFixed(1) + ',' + ya(q[1]).toFixed(1); }).join(' ') + ' ' + R + ',' + bot + '"/>');
       out.push('<polyline class="wp-do" points="' + g.series.map(function(q){ return x(q[0]).toFixed(1) + ',' + y(q[1]).toFixed(1); }).join(' ') + '"/>');
+      if(st.try && st.try.key === 'lowest' && isFinite(st.try.v) && st.try.v >= 0 && st.try.v <= yMax) out.push(tryLine(L, R, y(st.try.v), 'Yours: ' + F(st.try.v) + ' mg/L'));
       out.push('<line class="wp-axis" x1="' + L + '" x2="' + R + '" y1="' + bot + '" y2="' + bot + '"/><line class="wp-axis" x1="' + L + '" x2="' + L + '" y1="' + top + '" y2="' + bot + '"/>');
       out.push('<text class="wp-axl wp-c-oxy" x="' + L + '" y="' + (top - 10) + '">Bottom-water oxygen (mg/L)</text><text class="wp-axl wp-c-alg" x="' + R + '" y="' + (top - 10) + '" text-anchor="end">algae (relative)</text><text class="wp-axl" x="' + R + '" y="' + (bot + 30) + '" text-anchor="end">Day</text>');
       label = 'Graph of bottom-water dissolved oxygen over 60 days at ' + g.T + ' °C, with the algae shaded behind it and a line at 2 mg/L. Values every 10 days: ' + g.series.filter(function(q){ return q[0] % 10 === 0; }).map(function(q){ return 'day ' + q[0] + ' ' + F(q[1]) + ' mg/L'; }).join(', ') + '.';
@@ -607,6 +625,7 @@
       out.push('<polyline class="wp-osat" points="' + W.OSAT.map(function(q){ return xs(q[0]).toFixed(1) + ',' + ys(q[1]).toFixed(1); }).join(' ') + '"/>');
       W.OSAT.forEach(function(q){ out.push('<circle class="wp-osat-pt" cx="' + xs(q[0]).toFixed(1) + '" cy="' + ys(q[1]).toFixed(1) + '" r="3.5"/><text class="wp-tk" x="' + (xs(q[0]) + 4).toFixed(1) + '" y="' + (ys(q[1]) - 7).toFixed(1) + '">' + F(q[1]) + '</text>'); });
       [g.t0, g.t1].forEach(function(t, i){ out.push('<line class="wp-guide ' + (i ? 'is-warm' : '') + '" x1="' + xs(t).toFixed(1) + '" x2="' + xs(t).toFixed(1) + '" y1="' + top + '" y2="' + bot + '"/>'); });
+      if(st.try && st.try.key === 'read' && isFinite(st.try.v) && st.try.v >= 0 && st.try.v <= 16) out.push(tryLine(L, R, ys(st.try.v), 'Yours: ' + F(st.try.v) + ' mg/L'));
       out.push('<line class="wp-axis" x1="' + L + '" x2="' + R + '" y1="' + bot + '" y2="' + bot + '"/><line class="wp-axis" x1="' + L + '" x2="' + L + '" y1="' + top + '" y2="' + bot + '"/><text class="wp-axl wp-c-oxy" x="' + L + '" y="' + (top - 10) + '">Oxygen at saturation (mg/L), USGS</text><text class="wp-axl" x="' + R + '" y="' + (bot + 30) + '" text-anchor="end">Temperature (°C)</text>');
       label = 'Oxygen saturation of fresh water against temperature, USGS: ' + W.OSAT.map(function(q){ return q[0] + ' °C ' + F(q[1]) + ' mg/L'; }).join(', ') + '. Dashed lines at ' + g.t0 + ' and ' + g.t1 + ' °C.';
     } else if(g.kind === 'plant'){

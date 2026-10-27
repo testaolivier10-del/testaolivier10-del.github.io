@@ -120,3 +120,13 @@
 .ec-chips[hidden]{display:none;}
 /* the first-run hint points here: a small spot near the top of the picture */
 .ec-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}
+
+/* Explore: Earth on the orbit inset is the date handle; the picture can be
+   dragged (env-tools.js dragOn). */
+.ec-orbit-halo{fill:var(--cink);fill-opacity:.16;stroke:var(--cink);stroke-width:1.5;stroke-dasharray:3 3;}
+.ls-root .ec-fig .ec-svg{cursor:grab;}
+.ls-root .ec-fig .ec-svg:active{cursor:grabbing;}
+@media (max-width:640px){
+  .ls-root .ec-enso{flex-wrap:nowrap;gap:6px;}
+  .ls-root .ec-enso .tchip{flex:1 1 auto;padding-left:8px;padding-right:8px;white-space:nowrap;min-width:0;}
+}

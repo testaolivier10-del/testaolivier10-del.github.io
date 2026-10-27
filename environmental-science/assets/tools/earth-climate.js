@@ -33,6 +33,8 @@
   var T = window.ApEnvTools, M = window.ApEnvMath;
   if(!T || !M || !M.earthClimate) return;
   var E = M.earthClimate, esc = T.esc, RAD = Math.PI / 180;
+  // The geometry of the last explore picture, for dragging on it.
+  var LAST = {};
   function f1(x){ return T.F(x, 1); }
   function f0(x){ return T.F(x, 0); }
   function n2(x){ return (+x).toFixed(1); }
@@ -121,17 +123,21 @@
     var yw = youText.length * 6.9 + 12, av = o.avoid;
     var clash = av && A[1] - 25 < av[3] && A[1] - 6 > av[1] && A[0] - 10 - yw < av[2] && A[0] - 10 > av[0];
     out.push(clash ? tag(A[0] + 8, A[1] + 26, youText, 'ec-tag-you', 'start') : tag(A[0] - 10, A[1] - 12, youText, 'ec-tag-you', 'end'));
+    if(!o.quiz) LAST.globe = { cx: cx, cy: cy, R: R, th: th };
     return { svg: out.join(''), R: R, cx: cx, cy: cy };
   }
   /* The orbit seen from above the North Pole: the axis keeps pointing the same
      way (toward the right of the picture's sun at the June solstice). */
-  function orbit(x, y, r, day, small){
+  function orbit(x, y, r, day, small, handle){
+    LAST.orbit = { x: x, y: y, r: r };
     var a = 2 * Math.PI * (day - 172) / 365, ex = x + Math.cos(a) * r, ey = y - Math.sin(a) * r * 0.62, out = [];
     out.push('<ellipse class="ec-orbit" cx="' + n2(x) + '" cy="' + n2(y) + '" rx="' + n2(r) + '" ry="' + n2(r * 0.62) + '"/>');
     out.push('<circle class="ec-sunball" cx="' + n2(x) + '" cy="' + n2(y) + '" r="' + n2(r * 0.16) + '"/>');
     [['Jun', 0], ['Sep', 90], ['Dec', 180], ['Mar', 270]].forEach(function(m){
       var b = m[1] * RAD; out.push(txt(x + Math.cos(b) * (r + (small ? 14 : 18)), y - Math.sin(b) * (r * 0.62 + 10) + 4, m[0], 'ec-t ec-s ec-muted', 'middle'));
     });
+    // explore: Earth is the date handle (drag it around the orbit)
+    if(handle) out.push('<circle class="ec-orbit-halo" cx="' + n2(ex) + '" cy="' + n2(ey) + '" r="' + n2(Math.max(11, r * 0.3)) + '"/>');
     out.push('<circle class="ec-earthball" cx="' + n2(ex) + '" cy="' + n2(ey) + '" r="' + n2(Math.max(5, r * 0.12)) + '"/>');
     out.push(arrow(ex, ey, ex - r * 0.3, ey - r * 0.18, 'ec-axisarrow', 5));
     return out.join('');
@@ -168,6 +174,7 @@
      (solid) with the two solstices (dashed). */
   function insChart(x0, y0, w, h, decl, lat){
     var L = x0 + 40, Rt = x0 + w - 48, Tp = y0 + 22, B = y0 + h - 26, out = [];
+    LAST.chart = { L: L, R: Rt, T: Tp, B: B };
     function X(l){ return L + (l + 90) / 180 * (Rt - L); }
     function Y(v){ return B - v / 560 * (B - Tp); }
     out.push(txt(x0 + 4, y0 + 12, 'Daily sunlight by latitude (W/m², top of the atmosphere)', 'ec-t ec-s ec-b'));
@@ -194,6 +201,7 @@
     var q = o.quiz, end = q && q.cell, show = q ? { rise: q.air || end, belts: q.climate || end, winds: q.wind || end, names: q.cell } : { rise: 1, belts: 1, winds: 1, names: 1 };
     function SY(l){ return st + (90 - l) / 180 * (sb - st); }
     function GY(l){ return cy - R * Math.sin(l * RAD); }
+    if(!o.quiz) LAST.wind = { cx: cx, cy: cy, R: R, sx0: sx0, sx1: sx1, st: st, sb: sb };
     // belts on the globe
     out.push('<circle class="ec-globe" cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/>');
     out.push('<clipPath id="ec-gclip"><circle cx="' + n2(cx) + '" cy="' + n2(cy) + '" r="' + n2(R) + '"/></clipPath><g clip-path="url(#ec-gclip)">');
@@ -256,6 +264,7 @@
     function X(u){ return L + u * (Rt - L); }
     function Y(z){ return B - z / zmax * (B - Tp); }
     function ground(u){ var d = (u - 0.52) / 0.17; return S.H * Math.exp(-d * d * 0.9); }
+    if(!o.quiz) LAST.shadow = { B: B, Tp: Tp, zmax: zmax };
     function pz(u){ return ground(u) + 0.2 * zmax / 4.5; }
     out.push('<rect class="ec-skybg" x="' + L + '" y="' + Tp + '" width="' + n2(Rt - L) + '" height="' + n2(B - Tp) + '"/>');
     for(var z = 0; z <= zmax + 0.01; z += 1){ out.push(line(L, Y(z), Rt, Y(z), 'ec-grid')); out.push(txt(L - 5, Y(z) + 4, z + ' km', 'ec-t ec-tk', 'end')); }
@@ -401,6 +410,49 @@
     $('[data-g="shadow"]').appendChild(sH.el); $('[data-g="shadow"]').appendChild(sRh.el); $('[data-g="shadow"]').appendChild(go);
     $('.ec-more-shadow').appendChild(sT0.el); $('.ec-more-enso').appendChild(sA.el);
     var svg = $('.ec-svg');
+    /* Drag on the picture. Seasons: drag Earth around the orbit inset to set
+       the date (the inset is the date control), or drag on the globe or the
+       latitude chart to set the latitude. Winds: drag the balloon up and
+       down the globe. Rain shadow: drag the mountain's top. */
+    var dragMode = null;
+    T.dragOn(svg, function(x, y, ph){
+      if(ph === 'start'){ stop(); dragMode = null; }
+      var g = geo;
+      if(st.scene === 'sun'){
+        if(ph === 'start'){
+          var o = g.orbit, gl = g.globe, ch = g.chart;
+          if(o && Math.hypot((x - o.x) / o.r, (y - o.y) / (o.r * 0.62)) < 1.6) dragMode = 'date';
+          else if(gl && Math.hypot(x - gl.cx, y - gl.cy) < gl.R * 1.15) dragMode = 'lat';
+          else if(ch && x > ch.L - 10 && x < ch.R + 10 && y > ch.T - 10 && y < ch.B + 24) dragMode = 'chart';
+          else return false;
+        }
+        if(dragMode === 'date'){
+          var a = Math.atan2(-(y - g.orbit.y) / 0.62, x - g.orbit.x), d = Math.round(172 + a / (2 * Math.PI) * 365);
+          d = ((d - 1) % 365 + 365) % 365 + 1;
+          if(d !== st.day){ st.day = d; sDay.set(d); sDay.relabel(); act(); draw(); }
+        } else if(dragMode === 'lat'){
+          var R = g.globe.R, th = g.globe.th, dx = x - g.globe.cx, dy = y - g.globe.cy;
+          // undo the tilt: latitude from the height along the axis
+          var v = -(dx * Math.sin(th) + dy * Math.cos(th)) / R, lat = Math.round(Math.asin(Math.max(-1, Math.min(1, v))) * 180 / Math.PI);
+          lat = Math.max(-80, Math.min(80, lat));
+          if(lat !== st.lat){ st.lat = lat; sLat.set(lat); sLat.relabel(); act(); draw(); }
+        } else if(dragMode === 'chart'){
+          var l2 = Math.max(-80, Math.min(80, Math.round((x - g.chart.L) / (g.chart.R - g.chart.L) * 180 - 90)));
+          if(l2 !== st.lat){ st.lat = l2; sLat.set(l2); sLat.relabel(); act(); draw(); }
+        }
+      } else if(st.scene === 'winds'){
+        var w = g.wind; if(!w) return false;
+        if(ph === 'start' && x > w.cx + w.R + 8 && !(x > w.sx0 && x < w.sx1)) return false;
+        var wl = x > w.sx0 ? Math.round(90 - (y - w.st) / (w.sb - w.st) * 180) : Math.round(Math.asin(Math.max(-1, Math.min(1, (w.cy - y) / w.R))) * 180 / Math.PI);
+        wl = Math.max(-88, Math.min(88, wl));
+        if(wl !== st.wlat){ st.wlat = wl; sW.set(wl); sW.relabel(); act(); draw(); }
+      } else if(st.scene === 'shadow'){
+        var sh = g.shadow; if(!sh) return false;
+        var hh = Math.max(0.5, Math.min(5, Math.round((sh.B - y) / (sh.B - sh.Tp) * sh.zmax * 2) / 2));
+        if(hh !== st.H){ st.H = hh; st.at = null; sH.set(hh); act(); draw(); }
+      } else return false;
+      if(ph === 'end') speak();
+    });
 
     function S(){ return E.rainShadow({ T0: st.T0, H: st.H, rh: st.rh }); }
     function size(){
@@ -418,17 +470,19 @@
     }
     $('.ec-send').addEventListener('click', send);
 
+    var geo = {};
     function draw(){
       var wh = size(), W = wh[0], H = wh[1], phone = W < 560, inner = '', label = '';
+      LAST = {};
       if(st.scene === 'sun'){
         var d = E.declination(st.day), ang = E.noonAngle(st.lat, d), dl = E.dayLength(st.lat, d), ins = E.insolation(st.lat, d);
         if(!phone){
           var ew = W * 0.56;
           var es = earthSide(0, 0, ew, H, d, st.lat);
-          inner = es.svg + orbit(ew - 70, 54, 46, st.day) + sky(ew + 12, 6, W - ew - 16, H * 0.5, ang, dl, ins) + insChart(ew + 6, H * 0.55, W - ew - 10, H * 0.45 - 4, d, st.lat);
+          inner = es.svg + orbit(ew - 70, 54, 46, st.day, false, true) + sky(ew + 12, 6, W - ew - 16, H * 0.5, ang, dl, ins) + insChart(ew + 6, H * 0.55, W - ew - 10, H * 0.45 - 4, d, st.lat);
         } else {
           var eh = H * 0.56, es2 = earthSide(0, 0, W, eh, d, st.lat, { avoid: [0, 0, 64 + 28 + 26, 36 + 28 * 0.62 + 14] });
-          inner = es2.svg + orbit(64, 36, 28, st.day, true) + sky(4, eh + 4, W - 8, H - eh - 8, ang, dl, ins);
+          inner = es2.svg + orbit(64, 36, 28, st.day, true, true) + sky(4, eh + 4, W - 8, H - eh - 8, ang, dl, ins);
         }
         label = dateText(st.day) + ': the sun is overhead at ' + E.latText(M.round(d, 1)) + '. At ' + E.latText(st.lat) + ' the noon sun is ' + (ang > 0 ? f1(ang) + '° above the horizon' : 'below the horizon') + ', daylight lasts ' + f1(dl) + ' hours, and daily sunlight at the top of the atmosphere averages ' + f0(ins) + ' W/m².';
       } else if(st.scene === 'winds'){
@@ -453,6 +507,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svg.setAttribute('aria-label', label);
       svg.innerHTML = inner;
+      geo = LAST; LAST = {};
       words();
     }
     function speak(){ say(svg.getAttribute('aria-label')); }
@@ -543,13 +598,14 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ec-fig')], dock: [$('.ec-ctl')], why: [$('.ec-say')], details: [$('.ec-nums')] });
+      T.studioPane(pane, s, { stage: [$('.ec-fig')], dock: [$('.ec-ctl')], primary: [sDay.el, sW.el, go, $('.ec-enso')], why: [$('.ec-say')], details: [$('.ec-nums')] });
       host.removeEventListener('click', onClick);
       s.root.addEventListener('click', onClick);
       draw();
+      // The hint points at the control it names; the picture is draggable too.
       if(s.mode() === 'explore'){
-        $('.ec-fig').insertAdjacentHTML('beforeend', '<span class="ec-hintspot" aria-hidden="true"></span>');
-        s.hint({ target: $('.ec-hintspot'), text: ({ sun: 'Start here: drag the Date slider', winds: 'Start here: move the balloon', shadow: 'Start here: Send the air over', enso: 'Start here: try Side by side' })[st.scene] });
+        var ht = ({ sun: [sDay.input, 'Start here: drag the date, or Earth around its orbit'], winds: [sW.input, 'Start here: drag the balloon up the globe'], shadow: [$('.ec-send'), 'Start here: Send the air over'], enso: [$('.ec-cmp'), 'Start here: try Side by side'] })[st.scene];
+        s.hint({ target: ht[0], text: ht[1] });
       }
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ec-fig')); }
       window.addEventListener('resize', function(){ if(!anim) draw(); });

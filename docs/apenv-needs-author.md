@@ -224,3 +224,16 @@ Reviewer notes from `docs/apenv-reviews/u1-math.md`.
   the passage. A teacher may still prefer to drop it.
 - **math-doubling builds only with Unit 3 (open, by design).** Its map anchor is `before: population-growth`, so the
   build skips it until Unit 3 is published.
+- **Tool audit fixes (2026-10-27), for a teacher to glance at.** (a) Water pollution: below 2 mg/L the picture now
+  shows mobile fish swimming out of the hypoxic water while one or two die; this follows NOAA's description of
+  dead zones (mobile animals leave, sessile ones die). (b) Cycles: the carbon model stops burning when its 930 GtC
+  fossil reservoir is empty (about year 98 at 9.5 GtC a year) and says real reserves are larger; the 45/25/30 split
+  of emissions is unchanged. (c) Energy flow: to scale, the 90% between levels is labeled "not passed up (mostly
+  heat)", since some is also left as uneaten or undigested matter.
+- **Accuracy review of the tool audit fixes (2026-10-27), open points.** (a) Cycles: the end-of-fossil message now says
+  the model's 930 GtC of reserves (IPCC AR6 figure 5.12) is used up and more carbon lies in deposits not yet worth
+  mining; the earlier "real reserves are larger" contradicted the source of the 930. A teacher may prefer to drop the
+  stop entirely, since students should not read "fossil fuels run out in about 100 years" as a forecast. (b) "Close"
+  in the drills is now within 2x the tolerance and 25% of the key, with no 2% floor, and an authored slip that lands
+  within 2.5x the tolerance of the key (10 x the pH difference vs 10 to that power when the difference is 0.9) is
+  named instead of being called close. A teacher may want a wider "close" on graph reads.

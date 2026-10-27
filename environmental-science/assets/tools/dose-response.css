@@ -94,3 +94,12 @@ body.ls-on .env-crumb{display:none;}
 /* Room for the first-run tip while it shows (hintSlot). */
 .env-tipslot{height:58px;flex:none;}
 .dr-lbg{fill:var(--white);fill-opacity:.85;}
+
+/* Dead vs alive by shape too (on its back, X eye, legs up) and a key. */
+.dr-mouse .dr-x{fill:none;stroke:var(--dr-bad);stroke-width:1.3;stroke-linecap:round;}
+.dr-mouse .dr-legs{fill:none;stroke:var(--dr-edge);stroke-width:1.1;stroke-linecap:round;}
+.dr-mouse .dr-eye{fill:var(--dr-edge);stroke:none;}
+.dr-key{fill:var(--ink);font:800 12px var(--font-ui);}
+.dr-try{fill:none;stroke:var(--bad-text);stroke-width:2;stroke-dasharray:5 4;}
+.dr-try-pt{fill:var(--bad-text);stroke:var(--white);stroke-width:2;}
+.dr-try-t{fill:var(--bad-text);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}

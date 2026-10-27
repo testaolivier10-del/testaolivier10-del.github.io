@@ -298,7 +298,9 @@
       var p = e.p, i = e.i, cv = cvs[p.id], sel = o.sel === p.id, dim = o.sel && !sel, ask = o.ask === p.id;
       if(o.hideLabels && !sel && !ask) return;
       var label = ask && o.hideName ? '?' : p.n ? p.n + '. ' + p.name : p.name;
-      if(phone && !sel && !ask) label = p.human ? (PHONE_HUMAN[p.id] || p.name.split(' ')[0]) : String(NUM[p.id]);
+      // on a phone a short name, not a bare number (tool-audit: process
+      // markers were 20 px numbers with their names in a list below)
+      if(phone && !sel && !ask) label = p.human ? (PHONE_HUMAN[p.id] || p.name.split(' ')[0]) : o.interactive ? ((PHONE_NAME[cy] || {})[p.id] || p.name) : String(NUM[p.id]);
       var fs = phone ? 12 : 12.5, tw = Math.max(textW(label, fs, 800) + 14, fs + 9), th = fs + 9;
       var pref = (LABEL_T[cy] || {})[p.id], tries = pref ? [pref].concat(TRY) : TRY, best = null;
       tries.forEach(function(tt){
@@ -346,6 +348,12 @@
     var m = function(id, cls, sz){ return '<marker id="' + mk + id + '" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="' + sz + '" markerHeight="' + sz + '" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 L2.5 5z" class="' + cls + '"/></marker>'; };
     return '<defs>' + m('', 'cy-head', 15) + m('-s', 'cy-head s', 18) + m('-h', 'cy-head h', 16) + '</defs>';
   }
+  var PHONE_NAME = {
+    carbon: { photo: 'Photosynthesis', resp: 'Respiration', death: 'Litter', decomp: 'Decay', uptake: 'Uptake', release: 'Release', sediment: 'Shells', volcano: 'Volcanoes', burial: 'Burial' },
+    nitrogen: { fix: '1 Fixation', nitr: '2 Nitrification', assim: '3 Assimilation', ammon: '4 Ammonification', denit: '5 Denitrification', waste: 'Waste', light: 'Lightning', leach: 'Leaching', wdenit: 'Denitrification' },
+    phosphorus: { weather: 'Weathering', assim: 'Uptake', decomp: 'Decay', runoff: 'Runoff', sediment: 'Settling', uplift: 'Uplift' },
+    water: { evap: 'Evaporation', oprecip: 'Rain (sea)', lprecip: 'Rain (land)', et: 'Transpiration', runoff: 'Runoff', infil: 'Infiltration', seep: 'Seepage', rivers: 'Rivers' }
+  };
   var PHONE_HUMAN = { burn: 'Burn', clear: 'Clear', plant: 'Plant', haber: 'Fertilizer', mine: 'Mine', sewage: 'Sewage', melt: 'Melt', pump: 'Pump' };
   var LABEL_T = { nitrogen: { fix: 0.62, wdenit: 0.55 }, carbon: { volcano: 0.55 }, water: { melt: 0.45 } };
   var mkN = 0;
@@ -368,20 +376,22 @@
     function root(){ return LS ? LS.root : host; }
     host.innerHTML = '<section class="bt-problem cy-cardx" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Biogeochemical cycles</h2>' +
       '<div class="cy-fig"><svg class="cy-svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="' + nid + '-d"></svg><p class="sr-only" id="' + nid + '-d"></p></div>' +
+      '<div class="cy-trend" hidden><svg class="cy-tsvg" xmlns="http://www.w3.org/2000/svg" role="img"></svg></div>' +
       '<div class="cy-ctl">' +
-        '<div class="cy-cycles" role="group" aria-label="Cycle">' + CY.CYCLE_IDS.map(function(id){ return '<button type="button" class="tchip cy-cy" data-c="' + id + '" aria-pressed="false">' + esc(CY.CYCLES[id].name.replace(' cycle', '')) + '</button>'; }).join('') + '</div>' +
-        '<div class="cy-lbl ls-lbl">Tap a process</div><div class="cy-procs" role="group" aria-label="Processes"></div>' +
+        '<div class="cy-cycles ls-scroll" role="group" aria-label="Cycle">' + CY.CYCLE_IDS.map(function(id){ return '<button type="button" class="tchip cy-cy" data-c="' + id + '" aria-pressed="false">' + esc(CY.CYCLES[id].name.replace(' cycle', '')) + '</button>'; }).join('') + '</div>' +
         '<div class="cy-lbl ls-lbl">What people change</div><div class="cy-changes" role="group" aria-label="Human changes"></div>' +
+        '<div class="cy-run" data-off="" hidden><div class="cy-yrs"></div><div class="cy-go"><button type="button" class="btn-press sm ls-btn ls-pri cy-play">Pause</button><button type="button" class="bt-btn cy-reset">Undo every change</button></div></div>' +
+        '<div class="cy-lbl ls-lbl">Tap a process</div><div class="cy-procs ls-scroll" role="group" aria-label="Processes"></div>' +
       '</div>' +
       '<div class="cy-say"></div>' +
-      T.moreHtml('<div class="cy-years"></div><div class="bt-buttons"><button type="button" class="bt-btn cy-reset">Undo every change</button></div><p class="bt-small">The years run forward when you switch a change on. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'years, undo') +
+      T.moreHtml('<p class="bt-small">The years run forward when you switch a change on: press Pause to stop, or drag the years. Carbon is in GtC (billion tonnes of carbon); nitrogen and phosphorus are relative amounts (each reservoir starts at 100%); water is in km³.</p>', 'units') +
       '<div class="cy-nums"></div><p class="sr-only cy-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cy-live'));
     var cue = T.cue('Tap a process to see what moves where.');
     $('.cy-ctl').insertBefore(cue.el, $('.cy-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var yrs = T.slider({ label: 'Years since the change', min: 0, max: 100, step: 5, value: 0, unit: 'years', onInput: function(v){ stopRun(); st.years = v; st.target = v; act(); render(); } });
-    $('.cy-years').appendChild(yrs.el);
+    $('.cy-yrs').appendChild(yrs.el);
     var svg = $('.cy-svg');
 
     function chips(){
@@ -394,29 +404,35 @@
       b = e.target.closest('.cy-p'); if(b){ pickProc(b.getAttribute('data-p')); return; }
       b = e.target.closest('.cy-c'); if(b){ var id = b.getAttribute('data-ch'); st.on[id] = !st.on[id]; if(!st.on[id]) delete st.on[id]; act(); runYears(); return; }
       if(e.target.closest('.cy-reset')){ st.on = {}; stopRun(); st.years = 0; yrs.set(0); render(true); return; }
+      if(e.target.closest('.cy-play')){ if(run) stopRun(); else { if(st.years >= 100) st.years = 0; st.target = 100; runYears(true); } return; }
     }
     host.addEventListener('click', onClick);
     function pickProc(id){ act(); st.sel = st.sel === id ? null : id; render(true); }
     svg.addEventListener('click', function(e){ var g = e.target.closest('.cy-plabel'); if(g) pickProc(g.getAttribute('data-p')); });
     svg.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ var g = e.target.closest('.cy-plabel'); if(g){ e.preventDefault(); pickProc(g.getAttribute('data-p')); var f = svg.querySelector('.cy-plabel[data-p="' + g.getAttribute('data-p') + '"]'); if(f) f.focus(); } } });
 
+    /* The years run forward at about 8 a second once a change is on, so the
+       carbon visibly leaves one reservoir and piles up in others, and CO2
+       climbs on the trend under the picture; Pause stops, the slider scrubs
+       (tool-audit: human actions should actually move carbon). */
     var run = 0;
-    function stopRun(){ if(run){ cancelAnimationFrame(run); run = 0; } }
-    function runYears(){
+    function playLabel(){ var b = $('.cy-play'); if(b) b.textContent = run ? 'Pause' : st.years >= 100 ? 'Run again' : 'Play the years'; }
+    function stopRun(){ if(run){ cancelAnimationFrame(run); run = 0; } playLabel(); }
+    function runYears(keep){
       stopRun();
       var any = Object.keys(st.on).length;
-      st.target = any ? Math.max(st.years, 50) : 0;
       if(!any){ st.years = 0; yrs.set(0); render(true); return; }
-      if(T.reduced()){ st.years = st.target; yrs.set(st.years); render(true); return; }
-      var y0 = st.years === st.target ? 0 : st.years, t0 = 0;
+      if(!keep) st.target = 100;
+      if(T.reduced()){ st.years = Math.max(st.years, 50); yrs.set(st.years); render(true); return; }
+      var y0 = st.years, t0 = 0;
       function step(t){
         if(!t0) t0 = t;
-        var u = Math.min(1, (t - t0) / 1600);
-        st.years = Math.round(y0 + (st.target - y0) * (1 - Math.pow(1 - u, 2)));
-        yrs.set(st.years); render(u >= 1);
-        run = u < 1 ? requestAnimationFrame(step) : 0;
+        var y = Math.min(st.target, Math.round(y0 + (t - t0) / 125));
+        if(y !== st.years){ st.years = y; yrs.set(y); render(y >= st.target); }
+        run = y < st.target ? requestAnimationFrame(step) : 0;
+        if(!run) playLabel();
       }
-      render(); run = requestAnimationFrame(step);
+      run = requestAnimationFrame(step); playLabel(); render();
     }
     function size(){
       var r = svg.getBoundingClientRect(), w = r.width || 360, h = r.height || 420;
@@ -435,6 +451,7 @@
         var sm = sim.pools[st.years], parts = [];
         Y.reservoirs.forEach(function(r){ var d = deltaText(Y, r, sm[r.id]); if(d) parts.push(r.name.toLowerCase() + ' ' + d.replace(/[▲▼] ?/, '')); });
         head = ids.map(function(id){ return Y.changes.filter(function(c){ return c.id === id; })[0].did; }).join(' and ') + ', after ' + st.years + ' years: ' + (parts.slice(0, 3).join(', ') || 'little change yet') + '.';
+        if(st.cy === 'carbon' && st.on.fuel && sm.fossil < 1) head += ' In this model the 930 GtC of fossil fuel reserves is used up, so burning stops (more carbon lies in deposits not yet worth mining).';
         why = effectWhy(st.cy, ids);
       } else {
         head = { carbon: 'Carbon moves between air, living things, soil, ocean and rock. Tap a process to see what moves where.', nitrogen: 'Bacteria do most of the nitrogen cycle\'s work. Tap the numbered processes in order, 1 to 5.', phosphorus: 'Phosphorus has no gas phase: it moves from rock to soil, life and water, slowly.', water: 'The sun drives the water cycle: evaporation, then precipitation, runoff and infiltration.' }[st.cy];
@@ -485,8 +502,43 @@
         LS.pills(st.sel ? [{ k: 'Process', html: esc((Y.processes.filter(function(p){ return p.id === st.sel; })[0] || {}).name || ''), tone: 'accent' }] : [], 'right', 'explore');
         LS.root.querySelectorAll('.env-ls-why details.bt-why').forEach(function(d){ d.open = true; });
       }
+      var anyOn = onIds().length, runEl = $('.cy-run');
+      if(runEl){ if(anyOn) runEl.removeAttribute('data-off'); else runEl.setAttribute('data-off', ''); runEl.hidden = !anyOn; }
+      trend();
       if(announce) say(w.head);
       kick();
+    }
+    /* The trend under the picture: atmospheric CO2 (carbon) or the most
+       changed reservoir, year by year, with this year marked. */
+    function trend(){
+      var box = $('.cy-trend'), ts = $('.cy-tsvg'), Y = CY.CYCLES[st.cy], ids = onIds();
+      if(!box || !ts) return;
+      if(!ids.length){ box.hidden = true; return; }
+      box.hidden = false;
+      var id = 'atm', unit = 'ppm', conv = function(v){ return v / CY.PPM; }, name = 'CO₂ in the air';
+      if(st.cy !== 'carbon'){
+        var best = null; Y.reservoirs.forEach(function(r){ var d = Math.abs(sim.pools[100][r.id] - r.amount) / r.amount; if(!best || d > best.d) best = { d: d, r: r }; });
+        id = best.r.id; unit = Y.relative ? '%' : Y.unit; conv = function(v){ return v; }; name = best.r.name;
+      }
+      var r0 = box.getBoundingClientRect(), W = Math.max(280, Math.round(r0.width) || 600), H = 80, L = 52, R = W - 62, T0 = 22, B = H - 20;
+      var vals = sim.pools.map(function(p){ return conv(p[id]); }), lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+      if(hi - lo < 1e-9) hi = lo + 1;
+      var pad = (hi - lo) * 0.12; lo -= pad; hi += pad;
+      var X = function(t){ return L + (R - L) * t / 100; }, Yv = function(v){ return B - (B - T0) * (v - lo) / (hi - lo); };
+      var start = Y.start || 0, now = vals[st.years], o = [];
+      o.push('<text class="cy-tk cy-th" x="' + L + '" y="13">' + esc(name) + ', ' + esc(unit) + '</text>');
+      o.push('<text class="cy-tk" x="' + (L - 6) + '" y="' + (Yv(vals[0]) + 4).toFixed(1) + '" text-anchor="end">' + esc(M.fmt(vals[0], 3)) + '</text>');
+      o.push('<line class="cy-taxis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/>');
+      [0, 50, 100].forEach(function(t){ o.push('<text class="cy-tk" x="' + X(t).toFixed(1) + '" y="' + (H - 4) + '" text-anchor="' + (t === 0 ? 'start' : t === 100 ? 'end' : 'middle') + '">' + (start ? start + t : '+' + t + ' yr') + '</text>'); });
+      o.push('<polyline class="cy-tghost" points="' + vals.map(function(v, t){ return X(t).toFixed(1) + ',' + Yv(v).toFixed(1); }).join(' ') + '"/>');
+      o.push('<polyline class="cy-tline" points="' + vals.slice(0, st.years + 1).map(function(v, t){ return X(t).toFixed(1) + ',' + Yv(v).toFixed(1); }).join(' ') + '"/>');
+      o.push('<circle class="cy-tdot" cx="' + X(st.years).toFixed(1) + '" cy="' + Yv(now).toFixed(1) + '" r="5"/>');
+      var lab = M.fmt(now, 3) + ' ' + unit + (start ? ' in ' + (start + st.years) : ' after ' + st.years + ' yr');
+      var lx = X(st.years) > R - 140 ? X(st.years) - 8 : X(st.years) + 8;
+      o.push('<text class="cy-tnow" x="' + lx.toFixed(1) + '" y="' + Math.max(T0 + 2, Yv(now) - 8).toFixed(1) + '"' + (X(st.years) > R - 140 ? ' text-anchor="end"' : '') + '>' + esc(lab) + '</text>');
+      ts.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      ts.setAttribute('aria-label', name + ' over 100 years: from ' + M.fmt(vals[0], 3) + ' to ' + M.fmt(vals[100], 3) + ' ' + unit + '; now ' + lab + '.');
+      ts.innerHTML = o.join('');
     }
 
     /* particles along the arrows; rate from each flow */
@@ -500,7 +552,8 @@
       Y.processes.forEach(function(p){
         var cv = geo.curves[p.id]; if(!cv) return;
         var f = sim.flux[p.id] || 0, rate = st.sel ? (st.sel === p.id ? 0.006 : 0) : (Y.relative ? 0.00006 * f : 0.0009 * Math.log10(f * 10 + 1)) * (p.slow ? 0.25 : 1);
-        if(p.human) rate = st.sel && st.sel !== p.id ? 0 : 0.004;
+        // human flows: dots in proportion to the flow, like the natural ones
+        if(p.human) rate = st.sel && st.sel !== p.id ? 0 : Y.relative ? 0.00006 * f + 0.002 : 0.0011 * Math.log10(f * 10 + 1) + 0.002;
         if(Math.random() < rate * dt) dots.push({ p: p.id, s: 0, h: !!p.human });
       });
       dots = dots.filter(function(d){ d.s += dt / 1800; return d.s < 1 && geo.curves[d.p]; });
@@ -511,7 +564,7 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.cy-fig')], dock: [$('.cy-ctl')], why: [$('.cy-say')], details: [$('.cy-nums')], moreLabel: 'Years and undo' });
+      T.studioPane(pane, s, { stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], moreLabel: 'Units' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();
