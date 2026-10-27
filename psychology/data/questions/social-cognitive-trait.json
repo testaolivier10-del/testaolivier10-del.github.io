@@ -426,7 +426,7 @@
    "stimulus": "social-cognitive-trait-s2",
    "q": "A school leader concludes from these data that raising students' conscientiousness would raise their GPAs. What is the main problem with this conclusion?",
    "options": [
-    "The sample of 10 students is too large to show a clear pattern of results",
+    "The sample of 10 students is too small to show any pattern at all",
     "The scatterplot shows a negative relationship",
     "GPA is a grade, so it is not a true number that can be correlated",
     "It is correlational; a third variable such as sleep could explain both"
@@ -435,7 +435,7 @@
    "why": {
     "correct": "A correlational study cannot show that one variable causes the other; name a possible third variable.",
     "options": [
-     "A sample of 10 is small, not large, and size is not the main problem here.",
+     "Ten students is a small sample, which calls for caution, but the pattern is clear. The main problem is that the study is correlational.",
      "The relationship is positive.",
      "GPA is a number; that is not the problem.",
      "Right: correlation does not show causation; sleep or home support could raise both scores."

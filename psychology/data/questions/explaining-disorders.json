@@ -84,7 +84,7 @@
    "q": "Theo lives alone in a cabin without electricity, dyes his hair bright green and plays the accordion at midnight. He is content, keeps steady work as a carpenter and has close friends. Why would a clinician most likely not diagnose a psychological disorder?",
    "options": [
     "His behavior is too common to count as deviation",
-    "Clinicians diagnose disorders in people under the age of 18 years",
+    "He lives alone, so no one can observe his symptoms",
     "His unusual behavior causes no distress or dysfunction",
     "He has no diathesis, so a disorder is impossible for him"
    ],
@@ -93,7 +93,7 @@
     "correct": "A pattern counts as a disorder when it is unusual and also causes distress or gets in the way of life. Being different is not a disorder.",
     "options": [
      "His habits are unusual, so deviation is present. What is missing is distress and dysfunction.",
-     "Disorders are diagnosed at any age. Age is not the reason here.",
+     "Living alone does not prevent a diagnosis. What matters is whether the pattern causes distress or dysfunction.",
      "Right: deviation alone is not enough. A disorder also involves distress or dysfunction, and Theo shows neither.",
      "Diathesis is a possible cause, not part of the definition, and nothing in the scenario tells us about it."
     ]

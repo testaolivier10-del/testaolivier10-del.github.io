@@ -47,9 +47,9 @@
 <line x1="272.3" y1="356.5" x2="350" y2="328" stroke="#1F2A28" stroke-width="1.2"/><circle cx="350" cy="328" r="2.6" fill="#1F2A28"/>
 <rect x="147" y="356.5" width="125.3" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
 <text x="150" y="372" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="150" dy="0">Pituitary gland</tspan></text>
-<line x1="345.6" y1="416.5" x2="372" y2="364" stroke="#1F2A28" stroke-width="1.2"/><circle cx="372" cy="364" r="2.6" fill="#1F2A28"/>
-<rect x="117" y="416.5" width="228.6" height="39" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
-<text x="120" y="432" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="120" dy="0">Amygdala</tspan><tspan x="120" dy="18">(deep, in the temporal lobe)</tspan></text>
+<line x1="363" y1="404.5" x2="372" y2="364" stroke="#1F2A28" stroke-width="1.2"/><circle cx="372" cy="364" r="2.6" fill="#1F2A28"/>
+<rect x="134.4" y="404.5" width="228.6" height="39" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="360" y="420" font-size="15" text-anchor="end" fill="#1F2A28"><tspan x="360" dy="0">Amygdala</tspan><tspan x="360" dy="18">(deep, in the temporal lobe)</tspan></text>
 <line x1="587" y1="304.5" x2="530" y2="300" stroke="#1F2A28" stroke-width="1.2"/><circle cx="530" cy="300" r="2.6" fill="#1F2A28"/>
 <rect x="587" y="304.5" width="228.6" height="39" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
 <text x="590" y="320" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="590" dy="0">Hippocampus</tspan><tspan x="590" dy="18">(deep, in the temporal lobe)</tspan></text>
@@ -59,9 +59,9 @@
 <line x1="170" y1="155.5" x2="170" y2="170" stroke="#1F2A28" stroke-width="1.2"/><circle cx="170" cy="170" r="2.6" fill="#1F2A28"/>
 <rect x="57" y="134.5" width="141.2" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
 <text x="60" y="150" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="60" dy="0">Prefrontal cortex</tspan></text>
-<line x1="402" y1="472.5" x2="448" y2="420" stroke="#1F2A28" stroke-width="1.2"/><circle cx="448" cy="420" r="2.6" fill="#1F2A28"/>
-<rect x="237" y="472.5" width="165" height="57" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
-<text x="240" y="488" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="240" dy="0">Reticular activating</tspan><tspan x="240" dy="18">system (core of</tspan><tspan x="240" dy="18">the brainstem)</tspan></text>
+<line x1="431" y1="454.5" x2="448" y2="420" stroke="#1F2A28" stroke-width="1.2"/><circle cx="448" cy="420" r="2.6" fill="#1F2A28"/>
+<rect x="266" y="454.5" width="165" height="57" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="428" y="470" font-size="15" text-anchor="end" fill="#1F2A28"><tspan x="428" dy="0">Reticular activating</tspan><tspan x="428" dy="18">system (core of</tspan><tspan x="428" dy="18">the brainstem)</tspan></text>
 <line x1="537" y1="484.5" x2="474" y2="470" stroke="#1F2A28" stroke-width="1.2"/><circle cx="474" cy="470" r="2.6" fill="#1F2A28"/>
 <rect x="537" y="484.5" width="61.7" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
 <text x="540" y="500" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="540" dy="0">Medulla</tspan></text>

@@ -178,7 +178,7 @@
    "options": [
     "Bipolar II disorder",
     "Generalized anxiety disorder",
-    "Seasonal sleep disorder",
+    "Posttraumatic stress disorder",
     "Persistent depressive disorder"
    ],
    "correct": 3,
@@ -187,7 +187,7 @@
     "options": [
      "Bipolar II needs at least one hypomanic episode, a period of unusually high energy and mood. Marcus has none.",
      "Generalized anxiety disorder centers on excessive worry, not on a long-lasting low mood.",
-     "The course lists no such disorder, and his low mood lasts all year, not in one season.",
+     "PTSD follows a traumatic event and centers on intrusive memories, avoidance and feeling on edge. No trauma is described.",
      "Right: a depressed mood on most days for at least two years in an adult is the core of persistent depressive disorder."
     ]
    }
@@ -839,7 +839,7 @@
    ],
    "correct": 2,
    "why": {
-    "correct": "The DSM-5-TR moved PTSD out of the anxiety disorders into the trauma- and stressor-related category, as the figure shows.",
+    "correct": "Since the DSM-5 (2013), and still in the DSM-5-TR, PTSD has been in the trauma- and stressor-related category rather than with the anxiety disorders, as the figure shows.",
     "options": [
      "Anxiety is a large part of PTSD, but the figure and the DSM-5-TR place it in the trauma- and stressor-related category.",
      "Dissociative disorders involve gaps in memory or identity. PTSD has its own category.",

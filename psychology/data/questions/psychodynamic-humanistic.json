@@ -365,7 +365,7 @@
    "q": "A researcher wants an assessment that fits the left panel of the figure. Which choice best fits, and why?",
    "options": [
     "A rating of how warmly a parent responds, because acceptance shapes growth",
-    "Asking what a person sees in an inkblot, because ambiguous images may reveal hidden concerns",
+    "Asking what a person sees in inkblots, which may reveal hidden concerns",
     "Counting rewards a person receives, because rewards shape behavior",
     "Scanning brain activity, because thoughts are made by neurons"
    ],
@@ -524,7 +524,7 @@
    "q": "What was the independent variable in this experiment?",
    "options": [
     "The percentage of mistakes each student marked",
-    "Whether the experimenter's appreciation had conditions or not",
+    "Conditional or unconditional appreciation",
     "How hard the puzzle was",
     "The number of students in each group"
    ],

@@ -293,11 +293,11 @@ function brocaWernicke(f) {
   f.label('thalamus', 'Thalamus', 610, 250, { to: [464, 254], concept: 'thalamus' });
   f.label('hypothalamus', 'Hypothalamus', 150, 330, { to: [354, 284], concept: 'hypothalamus' });
   f.label('pituitary', 'Pituitary gland', 150, 372, { to: [350, 328], concept: 'pituitary' });
-  f.label('amygdala', ['Amygdala', '(deep, in the temporal lobe)'], 120, 432, { to: [372, 364], concept: 'amygdala' });
+  f.label('amygdala', ['Amygdala', '(deep, in the temporal lobe)'], 360, 420, { anchor: 'end', to: [372, 364], concept: 'amygdala' });
   f.label('hippocampus', ['Hippocampus', '(deep, in the temporal lobe)'], 590, 320, { to: [530, 300], concept: 'hippocampus' });
   f.label('reward', ['Reward center', '(nucleus accumbens, deep)'], 60, 250, { to: [306, 268], concept: 'reward-center' });
   f.label('prefrontal', 'Prefrontal cortex', 60, 150, { to: [170, 170], concept: 'prefrontal' });
-  f.label('ras', ['Reticular activating', 'system (core of', 'the brainstem)'], 240, 488, { to: [448, 420], concept: 'reticular' });
+  f.label('ras', ['Reticular activating', 'system (core of', 'the brainstem)'], 428, 470, { anchor: 'end', to: [448, 420], concept: 'reticular' });
   f.label('medulla', 'Medulla', 540, 500, { to: [474, 470], concept: 'medulla' });
   f.label('cerebellum', 'Cerebellum', 690, 440, { to: [646, 408], concept: 'cerebellum' });
   f.label(null, 'Front', 40, 540, { size: 13, halo: false });
@@ -395,9 +395,9 @@ export const NIGHT = [[0, 4], [10, 2], [16, 1], [30, 0], [62, 1], [75, 3], [85, 
   f.label('cochlea', ['Cochlea (hair cells', 'turn vibration into', 'neural signals)'], 560, 100, { to: [520, 186], concept: 'cochlea' });
   f.label('nerve', 'Auditory nerve (to the brain)', 560, 300, { to: [660, 264], concept: 'sensorineural' });
   // brackets for the two kinds of deafness
-  f.add(`<path d="M150 22 L150 14 L424 14 L424 22" fill="none" stroke="${VERM}" stroke-width="2.5"/><path d="M440 22 L440 14 L700 14 L700 22" fill="none" stroke="${PURPLE}" stroke-width="2.5"/>`);
-  f.label('conduction', 'Damage here: conduction deafness', 287, 10, { anchor: 'middle', size: 13, concept: 'conduction-deafness', halo: false });
-  f.label('sensorineural', 'Damage here: sensorineural deafness', 570, 10, { anchor: 'middle', size: 13, concept: 'sensorineural', halo: false });
+  f.add(`<path d="M150 31 L150 23 L424 23 L424 31" fill="none" stroke="${VERM}" stroke-width="2.5"/><path d="M440 31 L440 23 L700 23 L700 31" fill="none" stroke="${PURPLE}" stroke-width="2.5"/>`);
+  f.label('conduction', 'Damage here: conduction deafness', 287, 18, { anchor: 'middle', size: 13, concept: 'conduction-deafness', halo: false });
+  f.label('sensorineural', 'Damage here: sensorineural deafness', 570, 18, { anchor: 'middle', size: 13, concept: 'sensorineural', halo: false });
   // the uncoiled cochlea for place theory
   f.add(`<defs><linearGradient id="${f.id}-g" x1="0" x2="1"><stop offset="0" stop-color="${BLUE}"/><stop offset="1" stop-color="#CFE3EE"/></linearGradient></defs>`);
   f.add(`<path d="M120 380 L700 372 C716 372 716 404 700 404 L120 396 Z" fill="url(#${f.id}-g)" stroke="${INK}" stroke-width="1.5"/>`);

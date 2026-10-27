@@ -121,7 +121,7 @@
    "diff": 2,
    "type": "single",
    "practice": "1.A",
-   "q": "Every spring, salmon swim back to the stream where they hatched to spawn, even salmon raised in a hatchery that never saw another salmon make the trip. Which concept best explains this behavior?",
+   "q": "A spider raised alone in a lab, which has never seen another spider build a web, spins the same complex web pattern as every other spider of its species on its first try. Which concept best explains this behavior?",
    "options": [
     "Incentive theory",
     "Instinct theory",
@@ -134,7 +134,7 @@
     "options": [
      "Incentives are learned rewards; this pattern appears without learning.",
      "Right: an unlearned, fixed pattern found throughout a species is an instinct.",
-     "The hatchery salmon never saw the behavior, so they could not have learned it by watching.",
+     "The spider was raised alone and never saw another spider build a web, so it could not have learned by watching.",
      "Sensation seeking is a human trait of craving new, intense experiences."
     ]
    }

@@ -17,7 +17,7 @@
   "invented": true,
   "study": {
    "introduction": "Some people keep working on a hard problem long after others give up. Researchers asked how much of this difference in persistence is linked to heredity and how much to the environment people grow up in. They hypothesized that persistence is partly heritable: pairs of people who share more genes would have more similar persistence scores, even when raised apart.",
-   "participants": "1,240 adults aged 18 to 30 from a national twin and adoption registry in one Northern European country. They formed five kinds of pairs: 210 pairs of identical twins raised together; 190 pairs of fraternal twins raised together; 60 pairs of identical twins raised in different adoptive families; 85 pairs of adopted siblings (not related by birth) raised in the same home; and 75 pairs of adoptees and their birth parents. 58% were women. Almost all had finished secondary school.",
+   "participants": "1,240 adults from a national twin and adoption registry in one Northern European country. They formed five kinds of pairs: 210 pairs of identical twins raised together; 190 pairs of fraternal twins raised together; 60 pairs of identical twins raised in different adoptive families; 85 pairs of adopted siblings (not related by birth) raised in the same home; and 75 pairs of adoptees and their birth parents. Everyone except the birth parents was aged 18 to 30; the birth parents were 38 to 62. 58% were women. Almost all had finished secondary school.",
    "method": "Each participant worked alone at a computer on a set of puzzles. Unknown to them, the last puzzle had no solution. Persistence was the number of minutes a participant kept working on that puzzle before pressing \"give up\" (the program stopped at 30 minutes). Researchers then computed a correlation between the two members of each kind of pair. The study was approved by a university ethics review board. Participants gave written informed consent, were told afterward that the last puzzle could not be solved, and were identified only by code numbers so that no one outside the research team could link scores to names.",
    "results": "Identical twins raised together had the most similar scores ($r = .50$), followed by identical twins raised apart ($r = .44$). Fraternal twins raised together were less similar ($r = .26$). Adoptees and their birth parents showed a small correlation ($r = .21$), while adopted siblings raised in the same home showed almost none ($r = .06$).",
    "discussion": "Pairs who share more genes had more similar persistence, even when they grew up in different homes, which suggests heredity contributes to persistence. Because no correlation was close to 1, the environment and chance also matter. The authors caution that a twin study cannot identify which genes, or which experiences, are involved."
@@ -124,14 +124,14 @@
    "prompt": "<b>Explain</b> whether the results of the study can be generalized to high school students in the United States.",
    "rubric": [
     {
-     "point": "Takes a position and supports it with participant characteristics from the summary (adults aged 18 to 30, from one Northern European country, almost all with secondary education), not with sample size.",
+     "point": "Takes a position and supports it with participant characteristics from the summary (adults, most aged 18 to 30, from one Northern European country, almost all with secondary education), not with sample size.",
      "accept": [
-      "no, because the participants were adults 18 to 30 from one Northern European country, not US teenagers",
+      "no, because the participants were adults, most 18 to 30, from one Northern European country, not US teenagers",
       "only partly: the pattern may hold, but the sample was adults from one European country, so ages and culture differ"
      ]
     }
    ],
-   "sample": "The results may not generalize to US high school students. The participants were adults aged 18 to 30 from a single Northern European country, so they were older than high school students and grew up in a different culture and school system, which could change how much the environment shapes persistence."
+   "sample": "The results may not generalize to US high school students. The participants were adults (most aged 18 to 30, the birth parents older) from a single Northern European country, so they were older than high school students and grew up in a different culture and school system, which could change how much the environment shapes persistence."
   },
   {
    "label": "F",

@@ -72,7 +72,7 @@
    "name": "Damage here: conduction deafness",
    "box": [
     172,
-    -5,
+    3,
     229,
     21
    ],
@@ -83,7 +83,7 @@
    "name": "Damage here: sensorineural deafness",
    "box": [
     445,
-    -5,
+    3,
     250,
     21
    ],

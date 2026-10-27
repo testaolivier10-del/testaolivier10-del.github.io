@@ -29,7 +29,7 @@
    "study": {
     "introduction": "Researchers tested whether a night of sleep after learning helps people keep what they learned.",
     "participants": "48 university students aged 18 to 22 in one US city, who reported no sleep problems. All gave informed consent and were paid.",
-    "method": "At 9 p.m. every student studied 40 pairs of unrelated words (such as \"river - candle\") until they could recall 25. Students were randomly assigned to sleep normally in the lab (sleep group) or to stay awake all night under supervision (sleep-deprived group). Both groups then had a normal night of sleep the next night. Three days after learning, all students saw the first word of each pair and wrote the second.",
+    "method": "At 9 p.m. every student studied 40 pairs of unrelated words (such as \"river - candle\") until they could recall at least 34. Students were randomly assigned to sleep normally in the lab (sleep group) or to stay awake all night under supervision (sleep-deprived group). Both groups then had a normal night of sleep the next night. Three days after learning, all students saw the first word of each pair and wrote the second.",
     "results": "The sleep group recalled an average of 31 of 40 pairs; the sleep-deprived group recalled an average of 24. A difference this large would be very unlikely if sleep made no difference."
    },
    "plot": {
@@ -220,7 +220,7 @@
      ]
     }
    ],
-   "sample": "This supports my claim because the short-sleep students learned less from the same lesson. Restoration theory explains this: sleep lets the brain recover and clear waste built up during waking, so a brain that has had five short nights is not restored and works less well. The 5-hour group had about three times as many attention lapses, and their quiz scores were lowest on their worst days, so an unrestored brain missed parts of the lesson. That shows sleep deprivation harms learning."
+   "sample": "This supports my claim because the short-sleep students learned less from the same lesson. Restoration theory explains this: sleep lets the brain and body recover from the day's work, so a brain that has had five short nights is not restored and works less well. The 5-hour group had about three times as many attention lapses, and their quiz scores were lowest on their worst days, so an unrestored brain missed parts of the lesson. That shows sleep deprivation harms learning."
   }
  ]
 }

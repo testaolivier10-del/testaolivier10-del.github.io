@@ -4,7 +4,7 @@
    "kind": "data",
    "title": "Sleep stages across one night (a hypnogram)",
    "invented": true,
-   "html": "<p>A sleep lab recorded one 17-year-old volunteer's brain waves, eye movements and muscle activity through an 8-hour night (invented data for practice). The graph shows which stage she was in at each moment, using the codes sleep labs use: W is awake, R is REM sleep, and N1, N2 and N3 are the NREM stages from light to deep. The five REM periods lasted 10, 20, 25, 25, 30 minutes, in order.</p>",
+   "html": "<p>A sleep lab recorded one 17-year-old volunteer's brain waves, eye movements and muscle activity through an 8-hour night (invented data for practice). The graph shows which stage she was in at each moment, from Awake at the top to N3 at the bottom; N1, N2 and N3 are the NREM stages from light to deep. The five REM periods lasted 10, 20, 25, 25, 30 minutes, in order.</p>",
    "plot": {
     "label": "Hypnogram of one invented 8-hour night: stage against hours after lights out, cycling about every 90 minutes, with deep N3 early and longer REM periods toward morning",
     "kind": "line",

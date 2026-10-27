@@ -49,8 +49,8 @@
    "id": "amygdala",
    "name": "Amygdala (deep, in the temporal lobe)",
    "box": [
-    116,
-    415,
+    133,
+    403,
     231,
     41
    ],
@@ -93,8 +93,8 @@
    "id": "ras",
    "name": "Reticular activating system (core of the brainstem)",
    "box": [
-    236,
-    471,
+    265,
+    453,
     167,
     59
    ],
