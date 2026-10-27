@@ -1,0 +1,59 @@
+{
+  "id": "primary-assessment",
+  "title": "The primary assessment",
+  "chapter": 12,
+  "section": "ch12-primary-assessment",
+  "hook": "<p>You walk up to a man sitting against a wall outside a gym. He is pale and sweaty, his eyes are closed, and his breathing makes a gurgling sound. A friend says he collapsed a few minutes ago. You have not taken a single vital sign yet, and you do not need one to know this patient is in trouble.</p><p>The primary assessment is the first minute or two of every call. It finds and fixes whatever will kill the patient in the next few minutes, in a fixed set of six parts, before anything else in the assessment happens.</p>",
+  "steps": [
+    { "find": "As you approach, you take in the scene, the chief complaint and how the patient looks: moving or still, breathing or gasping, pale and sweaty, in the tripod position.", "act": "That is the general impression. A patient who looks lifeless gets a pulse check and compressions first (C-A-B); a patient with signs of life gets airway, breathing and circulation in order (A-B-C)." },
+    { "find": "You speak to the patient, then touch, then pinch the trapezius if there is no response.", "act": "That places him on the AVPU scale: Alert, responds to Verbal stimuli, responds only to Painful stimuli, or Unresponsive. If a spinal injury is possible, a partner holds the head in line while you do this." },
+    { "find": "A patient who is talking or crying clearly has an open airway. One who is not alert, or whose breathing is noisy, does not.", "act": "Open the airway with a jaw-thrust or a head-tilt/chin-lift, suction what is in it, and place an oropharyngeal or nasopharyngeal airway if needed." },
+    { "find": "You look at the rate and depth of breathing and listen for how hard the patient is working.", "act": "Breathing that is absent or inadequate gets ventilations with oxygen; adequate breathing with signs of distress or low oxygen gets oxygen guided by the pulse oximeter and the exam." },
+    { "find": "You feel a pulse (only three answers matter here: normal, too slow or too fast), look at the skin, and sweep for bleeding.", "act": "Severe bleeding is controlled the moment you find it, because it can kill in one to two minutes." },
+    { "find": "Everything you have found sorts the patient as stable, potentially unstable or unstable.", "act": "That is the transport priority. An unresponsive patient, a patient who cannot follow commands, difficulty breathing, shock, uncontrolled bleeding and cardiac-type chest pain are all high priority." }
+  ],
+  "ideas": [
+    "The primary assessment has <b>six parts in order</b>: general impression, mental status, airway, breathing, circulation, priority.",
+    "<b>A-B-C is a guide, not a rule.</b> Exsanguinating bleeding comes before everything, material in the airway is suctioned before you ventilate, and a pulseless patient gets C-A-B.",
+    "<b>Mental status</b> uses AVPU. An alert patient is then checked for orientation to person, place and time. A depressed mental status may mean hypoxia or shock: give oxygen and make the patient a high priority.",
+    "<b>Spinal motion restriction</b> starts on first contact when the mechanism suggests a spinal injury, but it never outranks the airway, ventilation or bleeding control.",
+    "<b>Priority can change</b> during the call, so the primary assessment is repeated whenever the patient changes."
+  ],
+  "misconception": {
+    "wrong": "The ABCs are a strict order: you must finish the airway before you are allowed to touch the bleeding.",
+    "right": "Exsanguinating bleeding is the first concern in the primary assessment, ahead of the airway. A-B-C guides the order of interventions; you do what the patient needs most first, and with more than one EMT several priorities are handled at the same time."
+  },
+  "check": [
+    {
+      "q": "A patient keeps his eyes closed and does not answer when you speak to him, but he groans and pulls away when you squeeze his trapezius. Where does he fall on the AVPU scale?",
+      "options": ["Alert", "Verbal", "Painful", "Unresponsive"],
+      "correct": 2,
+      "why": "He responds only to a painful stimulus, so he is P on the AVPU scale. A patient at V responds to your voice; a patient at U does not respond even to pain."
+    },
+    {
+      "q": "You reach a patient with bright red blood spurting from a thigh wound. He is also breathing with a snoring sound. What comes first?",
+      "options": ["Open the airway with a jaw-thrust", "Control the bleeding from the thigh", "Apply oxygen with a non-rebreather mask", "Measure his blood pressure"],
+      "correct": 1,
+      "why": "Exsanguinating bleeding is the first concern in the primary assessment and can kill in one to two minutes. With a partner, the airway is opened at the same time; alone, the bleeding comes first."
+    },
+    {
+      "q": "Your general impression of an adult is that she looks lifeless: no movement and no normal breathing. Which order do you follow?",
+      "options": ["Airway, then breathing, then a pulse check", "Breathing, then airway, then circulation", "Mental status, then a full set of vital signs", "Circulation first: pulse check and compressions"],
+      "correct": 3,
+      "why": "A patient who appears lifeless or pulseless gets C-A-B: check the pulse and start compressions if there is none. A-B-C is for patients who show signs of life."
+    },
+    {
+      "q": "A patient is sitting up and answering your questions in full sentences. What does that tell you about the airway in the primary assessment?",
+      "options": ["The airway is open for now", "The airway needs an oropharyngeal airway", "Nothing until you have measured the oxygen saturation", "The airway needs suctioning before you go on"],
+      "correct": 0,
+      "why": "A patient who is alert and talking clearly has an open airway. You still watch for changes, but no airway intervention is needed at this point."
+    },
+    {
+      "q": "Which of these patients is a high transport priority?",
+      "options": ["An alert patient with a twisted ankle and normal vital signs", "A patient who is awake but cannot follow simple commands", "A patient with a small cut on the hand that has stopped bleeding", "An alert patient asking for a ride to clinic for a cough"],
+      "correct": 1,
+      "why": "Failure to follow commands is on the list of high-priority conditions, along with unresponsiveness, difficulty breathing, shock, uncontrolled bleeding, cardiac-type chest pain and severe pain."
+    }
+  ],
+  "summary": "<p>The primary assessment finds and treats immediate threats to life in six parts: general impression, mental status (AVPU, with spinal stabilization if indicated), airway, breathing, circulation and priority. A-B-C guides the order, but exsanguinating bleeding comes first, the airway is cleared before ventilating, and a lifeless patient gets C-A-B. It ends with a priority decision, which is repeated whenever the patient changes.</p>"
+}

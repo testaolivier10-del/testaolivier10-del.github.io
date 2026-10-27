@@ -1,0 +1,60 @@
+{
+  "id": "tourniquets-and-wound-packing",
+  "title": "Tourniquets and wound packing",
+  "chapter": 29,
+  "section": "ch29-tourniquets",
+  "hook": "<p>A worker's lower leg was caught by machinery. Bright red blood is pumping from a wound below the knee and pooling fast. Hand pressure is not slowing it.</p><p>For years a tourniquet was taught as the last thing you tried. Military experience changed that: a correctly applied tourniquet rarely costs the limb, and waiting costs lives. Life-threatening bleeding from a limb gets a tourniquet right away.</p>",
+  "steps": [
+    { "find": "The bleeding from a limb is life-threatening.", "act": "Apply a commercial windlass tourniquet now, not after other measures fail. An improvised one is a fallback only: it is usually too narrow to close the artery." },
+    { "find": "You can see where the bleeding is coming from.", "act": "Place the tourniquet 2 to 3 inches above the wound, between the wound and the heart, and never over a joint. If it is an amputation, there are several wounds, or you cannot find the source, go high and tight on the limb." },
+    { "find": "You are tightening the windlass.", "act": "Keep turning until the bleeding stops and the pulse below the tourniquet is gone. Both endpoints matter: closing the veins but not the artery traps blood in the limb and makes the bleeding worse." },
+    { "find": "The tourniquet is on and the patient is in severe pain.", "act": "Tell the patient beforehand that it will hurt; pain is not a reason to loosen it. Write the time it was applied on the tourniquet and in your report, say it at handoff, leave it visible, and never loosen it in the field." },
+    { "find": "One tourniquet, fully tightened, has not stopped the bleeding.", "act": "Apply a second tourniquet just above the first instead of forcing the first past its limit." },
+    { "find": "The wound is in the groin, the armpit or the base of the neck, where no tourniquet fits.", "act": "In the groin or armpit, pack gauze (plain or hemostatic) into the wound down to the source of the bleeding, fill the cavity tightly, and hold firm pressure for at least 3 minutes. A neck wound is not packed the usual way, because packing can press on the airway: it gets an occlusive dressing and pressure that does not block breathing." }
+  ],
+  "ideas": [
+    "<b>Not a last resort.</b> Current civilian practice, including the American College of Surgeons' Stop the Bleed program, puts a tourniquet on life-threatening limb bleeding immediately.",
+    "<b>Placement:</b> 2 to 3 inches above the wound and never over a joint, because there is no single bone there to press the artery against.",
+    "<b>Endpoint:</b> the bleeding stops and the distal pulse is gone.",
+    "<b>After it is on:</b> record the time, keep it visible, do not loosen or remove it in the field.",
+    "<b>Junctional areas</b> (groin, armpit, base of the neck) take wound packing or a junctional device, not a tourniquet.",
+    "<b>Never pack the chest or abdomen.</b> There is nothing to pack against, and the gauze goes where you cannot control it."
+  ],
+  "misconception": {
+    "wrong": "A tourniquet is the last resort, because it will almost certainly cost the patient the limb.",
+    "right": "A correctly applied tourniquet left in place for a prehospital transport rarely costs the limb. Life-threatening limb bleeding gets one immediately; hesitating is what costs lives."
+  },
+  "check": [
+    {
+      "q": "A patient's arm is bleeding heavily from a wound just below the elbow. Where does the tourniquet go?",
+      "options": ["Directly over the elbow, on the joint", "On the forearm, below the wound", "On the upper arm, above the elbow", "On the wrist, so the wound stays visible"],
+      "correct": 2,
+      "why": "The tourniquet goes 2 to 3 inches above the wound and never over a joint. Here that would land on the elbow, so it goes above the elbow, on the upper arm, where there is a single bone to compress the artery against."
+    },
+    {
+      "q": "You tighten a thigh tourniquet. The bleeding slows, but you can still feel a pulse in the foot and the leg below looks swollen and dark. What do you do?",
+      "options": ["Tighten it until the bleeding stops and the distal pulse is gone", "Loosen it slightly to let some circulation back into the leg", "Leave it as it is, since the bleeding has slowed", "Remove it and go back to direct pressure"],
+      "correct": 0,
+      "why": "A tourniquet that closes the veins but not the artery lets blood in but not out, which makes bleeding worse. The endpoint is both: no bleeding and no distal pulse."
+    },
+    {
+      "q": "One tourniquet is fully tightened on a leg and the wound is still bleeding. What is the next step?",
+      "options": ["Remove it and apply it again higher up", "Add a second tourniquet just above the first", "Pack the wound and loosen the tourniquet", "Turn the windlass further until it breaks free"],
+      "correct": 1,
+      "why": "If one tourniquet does not control the bleeding, a second one goes just above the first. Forcing the first past its limit can break it, and loosening it restarts the bleeding."
+    },
+    {
+      "q": "A patient has a deep, heavily bleeding wound in the groin. What is the right approach?",
+      "options": ["A tourniquet placed as high on the thigh as it will go", "A single gauze pad laid on top and taped in place", "An occlusive dressing with no pressure on it", "Pack gauze into the wound, then hold firm pressure at least 3 minutes"],
+      "correct": 3,
+      "why": "The groin is a junctional area where a tourniquet will not fit. Gauze is packed into the wound down to the bleeding source and held under firm pressure for at least 3 minutes. Gauze laid on top is a dressing, not packing."
+    },
+    {
+      "q": "Two minutes after you apply a tourniquet, the patient begs you to loosen it because of the pain. What do you do?",
+      "options": ["Loosen it for a minute, then tighten it again", "Keep it on, explain that pain is expected, and continue care", "Swap it for direct pressure so the patient is comfortable", "Loosen it slightly until the patient can tolerate it"],
+      "correct": 1,
+      "why": "A working tourniquet hurts, often badly, and pain is not a reason to loosen it. Warn the patient beforehand and never loosen or remove it in the field once the bleeding is controlled."
+    }
+  ],
+  "summary": "<p>Life-threatening bleeding from a limb gets a commercial windlass tourniquet immediately: 2 to 3 inches above the wound, never over a joint, or high and tight when the source is unclear. Tighten until the bleeding stops and the distal pulse is gone, expect pain, record the time, keep it visible and never loosen it in the field; add a second one above the first if needed. Groin and armpit wounds are packed and held for at least 3 minutes; the neck gets an occlusive dressing; the chest and abdomen are never packed.</p>"
+}

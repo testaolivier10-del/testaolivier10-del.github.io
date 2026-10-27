@@ -232,6 +232,10 @@ jobs:
       # page saying something the reader no longer says.
       - name: the NREMT chapter pages match their data file
         run: node scripts/build-nremt-notes-pages.mjs --check
+      # The NREMT interactive lessons (docs/nremt-lessons-spec.md) are built from
+      # nremt/data/lessons/*.json, and the reader's section-to-lesson index with them.
+      - name: the NREMT lesson pages match their data files
+        run: node scripts/build-nremt-lessons.mjs --check
       # The generated textbook figures. These are drawn from coordinates, so a
       # stale one is not a broken build — it is a diagram that quietly says
       # something the prose next to it no longer says.
