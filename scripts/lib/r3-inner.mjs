@@ -144,13 +144,13 @@ ${chips ? `<div class="r3-card"><h2 class="r3-card-h">Other units</h2><p class="
   },
 };
 
-/* The free unit tests row under an AP® exams page (board R10-AP-Exams): one card per unit test that exists. */
+/* The free unit tests under an AP® exams page: one short line of links, not a card per unit (Olivier,
+   2026-10-26, the cards read like a repeat of the picker). These are fixed tests, the same for everyone, unlike
+   the picker's unit test, which builds a new set from the bank each time. */
 export function unitTestRow(tests) {
   if (!tests.length) return '';
   return `
-<section class="r3-units" aria-labelledby="r3UnitsH">
-<p class="kicker">Free unit tests <i></i></p>
-<div class="ruled-h"><h2 id="r3UnitsH">One test <span>per unit</span></h2><p>Each one free, exam-style, with sets that share a table, graph or experiment.</p></div>
-<div class="r3-unit-grid">${tests.map(t => `<a class="ccard r3-unit" href="${t.href}"><span class="cmeta"><span class="cname">${t.name}</span><span class="tag free">Free</span></span><span class="cdesc">${t.desc}</span></a>`).join('')}</div>
+<section class="r3-units" aria-label="Free unit tests">
+<p class="r3-units-line"><b>Free fixed tests, one per unit:</b> ${tests.map(t => `<a href="${t.href}">${t.name}</a>`).join(' · ')}</p>
 </section>`;
 }

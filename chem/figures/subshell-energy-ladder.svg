@@ -5,7 +5,7 @@
 <defs><marker id="u" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 10 L5 0 L10 10 z" fill="#1D44A6"/></marker></defs>
 <g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
   <line x1="40" y1="350" x2="40" y2="30" stroke="#1D44A6" stroke-width="3" marker-end="url(#u)"/>
-  <text x="56" y="40" font-size="14" fill="#1D44A6">higher energy</text>
+  <text x="62" y="38" font-size="14" fill="#1D44A6">higher energy</text>
   <g stroke="#1B2440" stroke-width="1.5" fill="#E3EAFA">
     <rect x="150" y="330" width="26" height="22"/>
     <rect x="150" y="290" width="26" height="22"/>

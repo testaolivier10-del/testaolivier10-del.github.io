@@ -90,7 +90,7 @@ body[data-course="apenv"]{--rd-cover:url(../covers/apenv.svg);--rd-cbg:#22400F;}
 .gx-rail a:hover{background:var(--navy);color:var(--on-accent);box-shadow:none;}
 .gx-group{margin-top:30px;}
 .gx-group h2{font:900 34px/1 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.03em;margin:0 0 14px;}
-.gx-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0;background:none;}
+.gx-terms{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:0;background:none;}
 .gx-t{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:16px 20px;border-bottom:1px solid var(--line);}
 .gx-t:last-child{border-bottom:1px solid var(--line);}
 .gx-t dt{font:900 18px/1.3 'Inter Display',var(--font-display),system-ui,sans-serif;letter-spacing:-.015em;}

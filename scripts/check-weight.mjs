@@ -180,7 +180,9 @@ const SHELL_BUDGETS = [
   // 26 -> 35 (redesign round 3, docs/site-redesign.md): r3.css, the shared round 3 system (course homes, B1), and
   // r3-inner.css and r3-db.js (exams, progress, exam day, unit tests, B3), r3-tools.css (tools hubs, tool page bands, free-response, cram and teachers pages, B5). Each loads only on the
   // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
-  ['assets/course', 35],
+  /* 35 -> 36 for the fixes after round 3 went live: tap-to-open questions, phone card stacking, the textbook
+     Contents panel and the progress page column fit. Measured 35.2 KB. */
+  ['assets/course', 36],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

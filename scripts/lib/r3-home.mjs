@@ -200,9 +200,14 @@ export function r3HomeMain(key, ctx) {
     return `<a href="${href}">${img}<span class="cmeta"><span class="cname">${nm}</span>${tag}</span><span class="cdesc">${desc}</span></a>`;
   };
   const th = Array.isArray(d.tools_h) ? `${d.tools_h[0]} ${d.tools_h[1]}` : (d.trainh || d.tools_h).replace(/\.$/, '');
-  const also = (d.tools_also || []).map(([h, xs]) => `<p class="also-line"><b>${h}:</b> ${xs.map((x) => { const t = findTool(key, x, tools); return t ? `<a href="${t.href}">${x}</a>` : x; }).join(', ')}</p>`).join('');
+  const also = ''; void (d.tools_also || []).map(([h, xs]) => `<p class="also-line"><b>${h}:</b> ${xs.map((x) => { const t = findTool(key, x, tools); return t ? `<a href="${t.href}">${x}</a>` : x; }).join(', ')}</p>`).join('');
   const credit = d.tool_credit ? `<p class="credit">${d.tool_credit.replace(/<a href="#">Life Science/g, '<a href="https://lifesciencedb.jp/bp3d/" rel="noopener">Life Science').replace(/<a href="#">CC BY-SA/g, '<a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" rel="noopener">CC BY-SA')}</p>` : '';
-  const toolsBlock = `<p class="kicker">${th} <i></i></p><div class="ruled-h"><p>${d.tools_lede}</p><a class="go" href="${L.tools || 'tools.html'}">All tools &rarr;</a></div><div class="dept">${d.tools.map(toolRow).join('')}</div>${also}${credit}`;
+  /* The home shows the course's three lead tools and links to the rest (Olivier, 2026-10-26: "you dont need
+     to show all tools just the top 3 best ones and then the link to all tools"). The full list, its intro and
+     the extra tool lines live on the Tools page. */
+  const top = d.tools.slice(0, 3);
+  const allN = d.tools.length;
+  const toolsBlock = `<p class="kicker">${th} <i></i></p><div class="dept">${top.map(toolRow).join('')}</div><p class="tools-more"><a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a></p>${credit}`;
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {
@@ -269,7 +274,7 @@ export function r3HomeMain(key, ctx) {
   if (d.beta) qa.push(['Is this course finished?', `It is in Beta. ${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
   qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
-  const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<h3>${q}</h3><div class="ans">${a}</div>`).join('')}</div></section>`;
+  const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
 
   const about = `<section class="about-row" aria-label="About LevlPrep">
     <div class="about-card"><div class="k">Who makes this</div><p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.</p></div>

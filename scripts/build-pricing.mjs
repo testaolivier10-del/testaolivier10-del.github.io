@@ -491,8 +491,8 @@ function hubFaq() {
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
-${FAQ.map(([q, a], i) => `      <h3>${esc(q)}</h3>
-      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
+${FAQ.map(([q, a], i) => `      <details class="faq-item"><summary>${esc(q)}</summary>
+      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p></details>`).join('\n')}
     </div>
   </section>`;
 }

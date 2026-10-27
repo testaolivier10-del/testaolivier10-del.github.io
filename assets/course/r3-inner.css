@@ -267,3 +267,7 @@ body:has(.r3-exams > #quizScreen[style*="grid"]) .r3-focusbar{display:block;posi
 .r3-dashboard .r3-db-side:not(:has(> :not(:empty))){display:none}
 .r3-dashboard .r3-db-two:has(> .r3-db-side:not(:has(> :not(:empty)))){grid-template-columns:1fr}
 .r3-dashboard .r3-db-lead:has(> .r3-db-side:not(:has(> :not(:empty)))){grid-template-columns:1fr}
+
+.r3-units-line{margin:18px 0 0;font:600 15px/1.7 var(--font-ui);color:var(--muted)}
+.r3-units-line b{color:var(--ink)}
+.r3-units-line a{color:var(--accent-text,var(--accent));font-weight:800}

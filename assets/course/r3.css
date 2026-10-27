@@ -426,3 +426,18 @@
   .r3 .dept a > .tc{grid-row:1/3;margin:0;aspect-ratio:1}
   .r3 .dept a > :not(.tc){grid-column:2}
 }
+
+/* Desktop balance (Olivier, 2026-10-26): side-by-side blocks of very different heights left big empty areas.
+   The try one card stays in view beside a long contents list, cards keep their own height instead of
+   stretching to the taller column, and the exam tile is a band, not a half-screen block. */
+@media (min-width:861px){
+  .r3 .lead{align-items:start}
+  .r3 .lead > :last-child{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
+  .r3 .story{align-items:start}
+  .r3 .story .ccard{align-self:start}
+  .r3 .clock{aspect-ratio:auto;min-height:120px;max-height:170px}
+}
+
+.r3 .tools-more{margin:4px 0 26px;font-weight:900}
+.r3 .tools-more .go{font:900 15px var(--font-ui);color:var(--accent);text-decoration:none}
+.r3 .tools-more .go:hover{text-decoration:underline}
