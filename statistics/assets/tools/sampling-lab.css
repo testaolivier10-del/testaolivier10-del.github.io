@@ -25,7 +25,7 @@ body.stat{
   --sl-floor:#202328;--sl-hall:#2A2E34;--sl-room:#1A1D21;--sl-roomk:#4C525B;--sl-board:#4E7A69;--sl-desk:#5B4B36;--sl-office:#283845;
   --sl-shirt0:#5C8DBA;--sl-shirt1:#C0704F;--sl-shirt2:#6B9B67;--sl-shirt3:#9A80B2;
   --sl-t0:#1E3243;--sl-t1:#244868;--sl-t2:#2C6593;--sl-t3:#3F87C0;--sl-t4:#77BDEF;
-  --sl-ink:#E6E8E7;
+  --sl-ink:#E6E8E7;--sl-halo:rgba(20,22,24,.75);
 }
 
 /* The stage: the picture fills it, the process strip and the dotplot below. */
@@ -105,7 +105,6 @@ body.stat{
 /* Labels: on desktop and in Enlarge; a phone shows them only when enlarged. */
 .sl-lab{fill:var(--muted);font:800 12px var(--font-mono);}
 .sl-lab-plot{fill:var(--sl-ink);opacity:.6;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-lab{display:none;}
 .sl-u{cursor:pointer;transition:opacity .25s;}
 .sl-hit{fill:transparent;}
 .sl-scene.has-sample .sl-u:not(.is-pick){opacity:.36;}
@@ -182,16 +181,11 @@ body.stat{
 .nf-c{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
 .nf-c.is-on{fill:var(--stat-s2);stroke:var(--stat-s2);}
 
-/* Phones (audit X8): readable scene text, and chips that never truncate. Street names
-   and labels are shown when the picture is enlarged; the streets are named in the strip. */
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-lane-t{display:none;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-zone{font-size:40px;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-vert{font-size:36px;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-room-t{font-size:34px;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-room-g{display:none;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-hall-t,.ls-root.ls-phone .ls-stage:not(.is-big) .sl-office-t{font-size:34px;}
-.sl-room-g2{display:none;fill:var(--muted);font:800 32px var(--font-ui);}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-room-g2{display:inline;}
+/* Phones (audit X8): scene text is sized from the drawn scale in the JS (readable()):
+   at least 11.5px, street names in a left gutter when the lane is too thin, unit numbers
+   and badges only where they fit. Chips never truncate. */
+.sl-room-g2{display:none;fill:var(--muted);font:800 15px var(--font-ui);}
+.sl-lane-t,.sl-zone,.sl-vert,.sl-room-t,.sl-room-g,.sl-room-g2,.sl-hall-t,.sl-office-t,.sl-lab{paint-order:stroke;stroke:var(--sl-halo, rgba(255,255,255,.7));stroke-width:.18em;stroke-linejoin:round;}
 .ls-root.ls-phone .sl-seg .ls-seg > button{padding:0 3px;font-size:13px;letter-spacing:-.01em;}
 .sl-seg .ls-seg > button{white-space:nowrap;}
 /* drills: the student's answer in red dashes; the sample's numbers on the tape */

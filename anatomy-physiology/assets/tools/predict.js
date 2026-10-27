@@ -237,7 +237,7 @@
         var nid = sid + '-v' + i;
         return '<div class="pc-var" data-k="' + i + '">' +
           '<div class="pc-var-name" id="' + nid + '">' + esc(v.name) + '</div>' +
-          '<div class="pc-dir" role="radiogroup" aria-labelledby="' + nid + '">' + DIRS.map(function(d, j){
+          '<div class="pc-dir" data-ls-answer role="radiogroup" aria-labelledby="' + nid + '">' + DIRS.map(function(d, j){
             return '<button type="button" role="radio" aria-checked="false" tabindex="' + (j === 0 ? '0' : '-1') + '" data-v="' + d.v + '"><span class="pc-g" aria-hidden="true">' + d.glyph + '</span> ' + d.label + '</button>';
           }).join('') + '</div>' +
           '<div class="pc-fb" hidden></div>' +

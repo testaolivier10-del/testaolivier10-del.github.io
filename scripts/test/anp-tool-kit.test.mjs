@@ -46,3 +46,16 @@ test('lookups are exact, case-insensitive, and never partial', () => {
   assert.equal(K.bodyName('Radial'), '');
   assert.equal(K.bodyName(''), '');
 });
+
+/* "See it in 3D" (lab practical, word roots) opens the A&P 3D anatomy tool
+   (tools/anatomy-3d.html?focus=<id>); every id must be one of its structures. */
+test('every 3D anatomy link names a structure the 3D tool has', () => {
+  const K = kit();
+  const ids = new Set(JSON.parse(read('anatomy-physiology/data/tools/anatomy-3d.json')).structures.map(s => s.id));
+  for (const [k, v] of Object.entries(K.A3D)) assert.ok(ids.has(v), `${k} -> ${v}`);
+  assert.equal(K.a3dId('Gall bladder'), 'gallbladder');
+  assert.equal(K.a3dId('Heart'), '');          // the model has the heart wall, not the whole heart
+  assert.equal(K.a3dId('Left ventricle'), '');
+  assert.match(K.body3d('Femur'), /tools\/anatomy-3d\.html\?focus=femur"/);
+  assert.equal(K.body3d('Nucleus'), '');
+});

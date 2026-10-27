@@ -11,6 +11,7 @@
      opts.structures  names of anatomical structures: each that is a body map
                       Browse-by-name label gets "See it on the 3D body"
    AnpToolKit.bodyName(name)      the body map label for name, or ''
+   AnpToolKit.a3dId(name)         the 3D anatomy tool's structure id for name, or ''
    AnpToolKit.picker(host, opts)  a compact chooser: a disclosure with a
                                   search box over the whole item list
      opts.label   'Choose a loop'      opts.noun  'loops'
@@ -50,6 +51,46 @@
   };
   var BY = {};
   BODY.forEach(function(n){ BY[n.toLowerCase()] = n; });
+  /* The A&P 3D anatomy tool's structures (anatomy-physiology/data/tools/
+     anatomy-3d.json ids) for the lab practical's label names and the word
+     roots' terms: the "See it in 3D" button opens tools/anatomy-3d.html on
+     that structure. Exact names (case aside) only; a whole organ never links
+     to one of its parts, nor a part to the whole. scripts/test/
+     anp-tool-kit.test.mjs fails when an id is not in the 3D tool. */
+  var A3D = {
+    'adrenal gland': 'adrenal-glands', 'adrenal glands': 'adrenal-glands', 'aortic arch': 'aortic-arch',
+    'arch of aorta': 'aortic-arch', 'appendix': 'appendix', 'ascending aorta': 'ascending-aorta',
+    'carpal': 'carpals', 'carpals': 'carpals', 'cerebellum': 'cerebellum', 'cerebral aqueduct': 'cerebral-aqueduct',
+    'cervical vertebrae': 'cervical-vertebrae', 'clavicle': 'clavicle', 'common carotid artery': 'common-carotid',
+    'left common carotid': 'common-carotid', 'left common carotid artery': 'common-carotid',
+    'right common carotid': 'common-carotid', 'right common carotid artery': 'common-carotid',
+    'coronary sinus': 'coronary-sinus', 'costal cartilages': 'costal-cartilages',
+    'descending aorta': 'descending-aorta', 'diaphragm': 'diaphragm', 'esophagus': 'esophagus', 'eye': 'eyeball',
+    'femur': 'femur', 'fibula': 'fibula', 'fourth ventricle': 'fourth-ventricle', 'frontal bone': 'frontal-bone',
+    'gall bladder': 'gallbladder', 'gallbladder': 'gallbladder', 'coxal (hip) bone': 'hip-bone',
+    'hip bone': 'hip-bone', 'humerus': 'humerus', 'inferior vena cava': 'inferior-vena-cava',
+    'internal jugular': 'internal-jugular', 'left internal jugular vein': 'internal-jugular',
+    'right internal jugular vein': 'internal-jugular', 'kidney': 'kidneys',
+    'right lateral ventricle': 'lateral-ventricles', 'left coronary artery': 'left-coronary-artery',
+    'liver': 'liver', 'lumbar vertebrae': 'lumbar-vertebrae', 'mandible': 'mandible', 'metacarpal': 'metacarpals',
+    'metacarpals': 'metacarpals', 'metacarpals (1–5)': 'metacarpals', 'metatarsal': 'metatarsals',
+    'metatarsals': 'metatarsals', 'midbrain': 'midbrain', 'mitral (bicuspid) valve': 'mitral-valve',
+    'mitral valve': 'mitral-valve', 'occipital bone': 'occipital-bone', 'pancreas': 'pancreas',
+    'papillary muscle': 'papillary-muscles', 'parietal bone': 'parietal-bone', 'patella': 'patella',
+    'posterior cardiac vein': 'posterior-lv-vein', 'prostate': 'prostate', 'prostate gland': 'prostate',
+    'left pulmonary arteries': 'pulmonary-arteries', 'left pulmonary artery': 'pulmonary-arteries',
+    'right pulmonary arteries': 'pulmonary-arteries', 'right pulmonary artery': 'pulmonary-arteries',
+    'pulmonary valve': 'pulmonary-valve', 'left pulmonary veins': 'pulmonary-veins',
+    'right pulmonary veins': 'pulmonary-veins', 'radius': 'radius', 'rectum': 'rectum',
+    'right coronary artery': 'right-coronary-artery', 'sacrum': 'sacrum', 'scapula': 'scapula', 'skin': 'skin',
+    'spleen': 'spleen', 'stomach': 'stomach', 'superior vena cava': 'superior-vena-cava', 'tarsal': 'tarsals',
+    'tarsals': 'tarsals', 'temporal bone': 'temporal-bone', 'testes': 'testes', 'testis': 'testes',
+    'third ventricle': 'third-ventricle', 'thoracic vertebrae': 'thoracic-vertebrae',
+    'thyroid cartilage': 'thyroid-cartilage', 'tibia': 'tibia', 'trachea': 'trachea',
+    'tricuspid valve': 'tricuspid-valve', 'ulna': 'ulna', 'ureter': 'ureters', 'bladder': 'urinary-bladder',
+    'urinary bladder': 'urinary-bladder'
+  };
+  function a3dId(name){ return A3D[String(name || '').replace(/<[^>]+>/g, '').trim().toLowerCase()] || ''; }
   function bodyName(name){
     var k = String(name || '').replace(/<[^>]+>/g, '').trim().toLowerCase();
     return BY[k] || ALIAS[k] || '';
@@ -186,12 +227,12 @@
     try{ var r = window.AnpCore && window.AnpCore.load().q[id]; if(!r || !r.n) return 'new'; return r.right ? 'right' : 'missed'; }catch(e){ return 'new'; }
   }
 
-  /* A "See it in 3D" button for a structure the body map has by name (the
-     same exact-name rule as the strip), or '' when it has none. */
+  /* A "See it in 3D" button for a structure the A&P 3D anatomy tool has
+     (A3D), opening it focused on that structure; '' when it has none. */
   function body3d(name, cls){
-    var b = bodyName(name);
-    if(!b) return '';
-    return '<a class="kg-3dbtn' + (cls ? ' ' + cls : '') + '" href="' + esc(BASE + '../nremt/body-map.html?focus=' + encodeURIComponent(b)) + '" aria-label="See the ' + esc(b.toLowerCase()) + ' on the 3D body">' +
+    var id = a3dId(name), b = String(name || '').replace(/<[^>]+>/g, '').trim();
+    if(!id) return '';
+    return '<a class="kg-3dbtn' + (cls ? ' ' + cls : '') + '" href="' + esc(BASE + 'tools/anatomy-3d.html?focus=' + encodeURIComponent(id)) + '" aria-label="See the ' + esc(b.toLowerCase()) + ' in 3D">' +
       '<span class="kg-3dico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle class="f" cx="12" cy="5" r="2.4"/><path class="f" d="M9.4 8.4h5.2l1.4 6.2h-1.9l-.6 6.4h-3l-.6-6.4H8z"/><ellipse cx="12" cy="14.2" rx="10" ry="3.6"/><path class="f" d="M20.6 12.3l1.8 1.9-2.6.4z"/></svg></span>See it in 3D</a>';
   }
 
@@ -245,6 +286,8 @@
     var s = window.LevlStudio.mount({
       title: o.title || (h1 ? h1.textContent : document.title), course: 'Anatomy & Physiology',
       back: BASE + 'tools.html', home: BASE, slug: 'anp-' + slug, host: app,
+      // the shell's quiz modes plus the pathway drills (Order, Missing step, Spot the error)
+      quiz: ['quiz', 'practice', 'test', 'drill', 'drills', 'predict', 'puzzle', 'chal', 'questions', 'practical', 'order', 'missing', 'error'],
       // the second tab and its dock button, named for what is in it
       detailsTitle: o.detailsTitle || ({ calculators: 'Formula & every step', graphs: 'Topic & options', 'word-roots': 'Options', 'feedback-loops': 'Topic & all loops',
         pathways: 'Topic & next pathway', 'lab-practical': 'Topic', predict: 'Level & scenarios' })[slug] || 'Topic',
@@ -288,5 +331,5 @@
     return s;
   }
 
-  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, BODY: BODY, ALIAS: ALIAS };
+  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, a3dId: a3dId, A3D: A3D, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, BODY: BODY, ALIAS: ALIAS };
 })();
