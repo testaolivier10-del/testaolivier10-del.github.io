@@ -66,6 +66,8 @@
        caption     override the molecule's caption ('' hides it)
        onChange(state, editor)   after every add/remove
        hint        text under the toolbar; defaults to a usage line
+       targets(source) -> [keys]  optional: atoms and bonds to pulse once a
+                   source is picked, as a nudge (never a restriction)
   */
   function mount(container, config){
     config = config || {};
@@ -105,6 +107,8 @@
           clickable: interactive ? 'all' : [],
           clickableBonds: interactive ? 'all' : [],
           chosen: chosen,
+          // Opt-in: a tool passes targets(source) and the likely ends pulse.
+          targets: pending && config.targets ? (config.targets(pending) || []) : null,
           arrows: drawn,
           caption: config.caption
         }) +

@@ -302,27 +302,180 @@
     '</article>';
   }
 
-  /* ---- The ladder map --------------------------------------------------- */
+  /* ---- The map: a node graph (audit 2026-10) -----------------------------
 
-  function mapHtml(marks, pressed){
-    return '<div class="rr-map">' + D.BANDS.map(function(b){
-      var nodes = D.NODES.filter(function(n){ return n.band === b.id; });
-      return '<div class="rr-band' + (b.id === 'ar' ? ' rr-band--ring' : '') + '">' +
-        '<div class="rr-band__k"><b>' + esc(b.title) + '</b><small>' + esc(b.sub) + '</small></div>' +
-        '<div class="rr-band__row">' + nodes.map(function(n){
-          var m = marks && marks[n.id];
-          var cls = 'rr-node' + (m ? ' ' + m.cls : '') + (marks && !m ? ' is-dim' : '');
-          return '<button type="button" class="' + cls + '" data-node="' + esc(n.id) + '"' +
-            (pressed !== undefined ? ' aria-pressed="' + (pressed === n.id) + '"' : '') + '>' +
-            (m && m.badge !== undefined ? '<span class="rr-node__n" aria-hidden="true">' + m.badge + '</span>' : '') +
-            '<span class="rr-node__name">' + esc(n.name) + '</span>' +
-            '<span class="rr-node__f">' + esc(n.short) + '</span>' +
-            (m && m.label ? '<span class="sr-only"> (' + esc(m.label) + ')</span>' : '') +
-          '</button>';
-        }).join('') + '</div>' +
-      '</div>';
-    }).join('') + '</div>';
+     It was a grid of text tiles with no arrows, 12 px on a phone and taller
+     than the stage. Now it is a drawn graph on the oxidation ladder: each
+     group a node in its band, every reaction in the course an arrow, faint
+     until it matters. A route is drawn bold, numbered step by step, and the
+     view zooms to fit it so start and target are both on screen; Whole map
+     zooms back out. Groups draws what the picked group becomes and what makes
+     it; the puzzle draws your steps.
+
+     Two hand-placed layouts, because a ladder that reads on a wide stage is
+     too small on a phone: TALL (four columns) under 760 px, WIDE (eight)
+     above. Nodes keep the .rr-node class, data-node, aria-pressed and the
+     is-start / is-end / is-on / is-here marks the rest of the file uses. */
+  var GN = { acid:'Acid', 'acid-chloride':'Acid chloride', diol:'1,2-diol', 'alcohol-1':'1° alcohol', 'alcohol-2':'2° alcohol',
+    'alcohol-3':'3° alcohol', 'halide-1':'1° halide', 'halide-2':'2° halide', 'halide-3':'3° halide', arene:'Benzene',
+    diazonium:'Diazonium' };
+  var GF = { amine:'R–NH₂', epoxide:'C–O–C ring' };
+  var LAYOUT = {
+    tall: { w:400, h:560, nw:92, nh:40, cols:[50, 148, 252, 350], bands:[
+        { id:3, y:14, top:22, bot:110 }, { id:2, y:124, top:132, bot:220 }, { id:1, y:234, top:242, bot:378 },
+        { id:0, y:392, top:400, bot:438 }, { id:'ar', y:454, top:462, bot:550 } ],
+      at:{ 'acid-chloride':[0,40], ester:[1,40], acid:[2,40], amide:[3,40], nitrile:[2,88],
+        aldehyde:[0,150], ketone:[1,150], alkyne:[2,150], epoxide:[3,150], diol:[3,198],
+        'alcohol-1':[0,260], 'alcohol-2':[1,260], 'alcohol-3':[2,260], ether:[3,260],
+        'halide-1':[0,308], 'halide-2':[1,308], 'halide-3':[2,308], amine:[3,308], alkene:[200,356],
+        alkane:[200,418],
+        arene:[0,480], alkylbenzene:[1,480], 'aryl-ketone':[2,480], nitroarene:[3,480],
+        phenol:[0,528], 'aryl-halide':[1,528], diazonium:[2,528], aniline:[3,528] } },
+    wide: { w:1010, h:480, nw:100, nh:42, cols:[185, 295, 405, 515, 625, 735, 845, 955], bands:[
+        { id:3, top:12, bot:68 }, { id:2, top:102, bot:158 }, { id:1, top:187, bot:296 },
+        { id:0, top:322, bot:378 }, { id:'ar', top:408, bot:470 } ],
+      at:{ 'acid-chloride':[0,40], ester:[1,40], acid:[2,40], amide:[3,40], nitrile:[4,40],
+        aldehyde:[1,130], ketone:[2,130], alkyne:[4,130], epoxide:[5,130], diol:[6,130],
+        'alcohol-1':[0,215], 'alcohol-2':[1,215], 'alcohol-3':[2,215], ether:[4,215], amine:[5,215],
+        'halide-1':[0,268], 'halide-2':[1,268], 'halide-3':[2,268], alkene:[3,268],
+        alkane:[3,350],
+        arene:[0,440], alkylbenzene:[1,440], 'aryl-ketone':[2,440], nitroarene:[3,440],
+        aniline:[4,440], diazonium:[5,440], 'aryl-halide':[6,440], phenol:[7,440] } }
+  };
+  function tallMap(){ return !(window.matchMedia && window.matchMedia('(min-width: 760px)').matches); }
+  function lay(){ return tallMap() ? LAYOUT.tall : LAYOUT.wide; }
+  function pos(L, id){
+    var p = L.at[id]; if(!p) return null;
+    // A small number is a column; anything bigger is an x in units.
+    return { x: p[0] < L.cols.length ? L.cols[p[0]] : p[0], y: p[1] };
   }
+  // Where the line from a node's centre toward (tx, ty) leaves its box.
+  function edgeOf(L, c, tx, ty, pad){
+    var dx = tx - c.x, dy = ty - c.y, hw = L.nw / 2 + pad, hh = L.nh / 2 + pad;
+    var k = Math.min(hw / (Math.abs(dx) || 1e-6), hh / (Math.abs(dy) || 1e-6));
+    return { x: c.x + dx * k, y: c.y + dy * k };
+  }
+  var PAIRS = null;
+  function pairs(){
+    if(PAIRS) return PAIRS;
+    var seen = {}; PAIRS = [];
+    D.EDGES.forEach(function(e){
+      if(e.from === e.to) return;
+      var k = e.from + '>' + e.to;
+      if(seen[k]) return;
+      seen[k] = 1; PAIRS.push({ from: e.from, to: e.to });
+    });
+    return PAIRS;
+  }
+  /* One arrow: a gentle curve (so A to B and B to A do not overlap), with
+     its head drawn as a path along the end tangent. */
+  function arrow(L, from, to, cls, n){
+    var a = pos(L, from), b = pos(L, to);
+    if(!a || !b) return '';
+    var dx = b.x - a.x, dy = b.y - a.y, len = Math.sqrt(dx*dx + dy*dy) || 1;
+    // Long arrows bow further, so they arc round the boxes between their ends.
+    var bow = (from < to ? 1 : -1) * Math.max(12, Math.min(60, len * 0.16));
+    var nx = -dy / len, ny = dx / len;
+    var mx = (a.x + b.x) / 2 + nx * bow, my = (a.y + b.y) / 2 + ny * bow;
+    var p1 = edgeOf(L, a, mx, my, 2), p2 = edgeOf(L, b, mx, my, 5);
+    var tx = p2.x - mx, ty = p2.y - my, tl = Math.sqrt(tx*tx + ty*ty) || 1; tx /= tl; ty /= tl;
+    var hs = cls === 'is-faint' ? 0 : 9, hw = 4.6;
+    var end = { x: p2.x - tx * hs * 0.6, y: p2.y - ty * hs * 0.6 };
+    var d = 'M ' + p1.x.toFixed(1) + ' ' + p1.y.toFixed(1) + ' Q ' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' ' + end.x.toFixed(1) + ' ' + end.y.toFixed(1);
+    var head = hs ? '<path class="rr-edge__head" d="M ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1) +
+      ' L ' + (p2.x - tx*hs - ty*hw).toFixed(1) + ' ' + (p2.y - ty*hs + tx*hw).toFixed(1) +
+      ' L ' + (p2.x - tx*hs + ty*hw).toFixed(1) + ' ' + (p2.y - ty*hs - tx*hw).toFixed(1) + ' Z"/>' : '';
+    // The step number rides the middle of the curve.
+    var qx = 0.25 * p1.x + 0.5 * mx + 0.25 * p2.x, qy = 0.25 * p1.y + 0.5 * my + 0.25 * p2.y;
+    var badge = n !== undefined ? '<g class="rr-edge__n"><circle cx="' + qx.toFixed(1) + '" cy="' + qy.toFixed(1) + '" r="10"/>' +
+      '<text x="' + qx.toFixed(1) + '" y="' + (qy + 4).toFixed(1) + '" text-anchor="middle">' + n + '</text></g>' : '';
+    return '<g class="rr-edge ' + cls + '"><path class="rr-edge__line" d="' + d + '"/>' + head + badge + '</g>';
+  }
+
+  /* mapHtml(marks, pressed, opts)
+       marks    {id: {cls, badge, label}}  as before
+       pressed  the id that is aria-pressed (Groups)
+       opts.edges  [{from, to, cls, n}]   arrows drawn bold over the faint web
+       opts.fit    [ids]                  zoom to these (Whole map undoes it)
+       opts.still  true                   nodes are a picture, not controls */
+  var wholeMap = false;
+  function mapHtml(marks, pressed, opts){
+    opts = opts || {};
+    var L = lay();
+    var lanes = L.bands.map(function(b){
+      var band = D.BANDS.filter(function(x){ return x.id === b.id; })[0];
+      var t = esc(band ? band.title : '');
+      return '<rect class="rr-lane' + (b.id === 'ar' ? ' rr-lane--ring' : '') + '" x="2" y="' + b.top + '" width="' + (L.w - 4) + '" height="' + (b.bot - b.top) + '" rx="12"/>' +
+        (L === LAYOUT.tall
+          ? '<text class="rr-lane__k" x="8" y="' + b.y + '">' + t + '</text>'
+          : '<text class="rr-lane__k" x="14" y="' + ((b.top + b.bot) / 2 + 4) + '">' + t + '<title>' + esc(band ? band.sub : '') + '</title></text>');
+    }).join('');
+    var bold = opts.edges || [], boldKey = {};
+    bold.forEach(function(e){ boldKey[e.from + '>' + e.to] = 1; });
+    var web = pairs().filter(function(p){ return !boldKey[p.from + '>' + p.to]; }).map(function(p){ return arrow(L, p.from, p.to, 'is-faint'); }).join('');
+    var strong = bold.map(function(e){ return arrow(L, e.from, e.to, e.cls || 'is-route', e.n); }).join('');
+    var nodes = D.NODES.map(function(n){
+      var c = pos(L, n.id); if(!c) return '';
+      var m = marks && marks[n.id];
+      var cls = 'rr-node' + (m ? ' ' + m.cls : '') + (marks && !m ? ' is-dim' : '');
+      var x = c.x - L.nw / 2, y = c.y - L.nh / 2;
+      var label = n.name + ', ' + n.short + (m && m.label ? ' (' + m.label + ')' : '');
+      return '<g class="' + cls + '" data-node="' + esc(n.id) + '"' +
+        (opts.still ? ' aria-label="' + esc(label) + '"' : ' role="button" tabindex="0" aria-label="' + esc(label) + '"') +
+        (pressed !== undefined && !opts.still ? ' aria-pressed="' + (pressed === n.id) + '"' : '') + '>' +
+        '<rect class="rr-node__box" x="' + x + '" y="' + y + '" width="' + L.nw + '" height="' + L.nh + '" rx="10"/>' +
+        '<text class="rr-node__name" x="' + c.x + '" y="' + (c.y - 2) + '" text-anchor="middle">' + esc(GN[n.id] || n.name) + '</text>' +
+        '<text class="rr-node__f" x="' + c.x + '" y="' + (c.y + 13) + '" text-anchor="middle">' + esc(GF[n.id] || n.short) + '</text>' +
+        (m && m.badge !== undefined ? '<g class="rr-node__nb" aria-hidden="true"><circle cx="' + (x + L.nw - 2) + '" cy="' + (y + 2) + '" r="10"/>' +
+          '<text x="' + (x + L.nw - 2) + '" y="' + (y + 6) + '" text-anchor="middle">' + m.badge + '</text></g>' : '') +
+      '</g>';
+    }).join('');
+    // The view: the whole ladder, or the route and a margin round it.
+    var vb = '0 0 ' + L.w + ' ' + L.h, fitIds = (opts.fit || []).filter(function(id){ return pos(L, id); });
+    if(fitIds.length && !wholeMap){
+      var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+      fitIds.forEach(function(id){ var c = pos(L, id); x0 = Math.min(x0, c.x); x1 = Math.max(x1, c.x); y0 = Math.min(y0, c.y); y1 = Math.max(y1, c.y); });
+      var padX = L.nw / 2 + 26, padY = L.nh / 2 + 34;
+      x0 -= padX; x1 += padX; y0 -= padY; y1 += padY;
+      var minW = L.w * (L === LAYOUT.tall ? 0.75 : 0.72), minH = L.h * (L === LAYOUT.tall ? 0.45 : 0.62);
+      if(x1 - x0 < minW){ var gx = (minW - (x1 - x0)) / 2; x0 -= gx; x1 += gx; }
+      if(y1 - y0 < minH){ var gy = (minH - (y1 - y0)) / 2; y0 -= gy; y1 += gy; }
+      x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(L.w, x1); y1 = Math.min(L.h, y1);
+      vb = x0.toFixed(0) + ' ' + y0.toFixed(0) + ' ' + (x1 - x0).toFixed(0) + ' ' + (y1 - y0).toFixed(0);
+    }
+    return '<div class="rr-map rr-graph' + (L === LAYOUT.tall ? ' is-tall' : ' is-wide') + '">' +
+      (fitIds.length ? '<button type="button" class="rr-zoom" data-zoom="1" aria-pressed="' + wholeMap + '">' + (wholeMap ? 'Fit the route' : 'Whole map') + '</button>' : '') +
+      '<svg viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Map of the functional groups, with an arrow for each reaction">' +
+        // The route is drawn over the nodes (with a halo) so no box can hide it.
+        lanes + '<g class="rr-web" aria-hidden="true">' + web + '</g>' + nodes + '<g class="rr-strong" aria-hidden="true">' + strong + '</g>' +
+      '</svg>' +
+      // What each level means, as the tile map used to say beside each band.
+      '<details class="rr-levels"><summary>What the levels mean</summary><dl>' + D.BANDS.map(function(b){
+        return '<div><dt>' + esc(b.title) + '</dt><dd>' + esc(b.sub) + '</dd></div>'; }).join('') +
+      '<div><dt>Arrows</dt><dd>Every reaction in the course is an arrow. Up the ladder is an oxidation, down is a reduction.</dd></div></dl></details>' +
+      '</div>';
+  }
+  /* SVG nodes are not buttons: Enter and Space click them, and Whole map
+     toggles the zoom wherever the map is. One listener for every map. */
+  root.addEventListener('keydown', function(e){
+    var g = e.target.closest && e.target.closest('.rr-graph .rr-node[role="button"]');
+    if(!g || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault();
+    g.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+  });
+  document.addEventListener('click', function(e){
+    var z = e.target.closest && e.target.closest('.rr-zoom');
+    if(!z || !z.closest('.rr-graph')) return;
+    wholeMap = !wholeMap;
+    if(S.mode === 'route') renderRoute(); else if(S.mode === 'puzzle') renderPuzzle(); else if(S.mode === 'groups') renderGroups();
+    var again = document.querySelector('.rr-zoom'); if(again) again.focus({ preventScroll: true });
+  });
+  var lastTall = tallMap();
+  if(window.addEventListener) window.addEventListener('resize', function(){
+    if(tallMap() === lastTall) return;
+    lastTall = tallMap();
+    if(S.mode === 'route') renderRoute(); else if(S.mode === 'groups') renderGroups(); else if(S.mode === 'puzzle') renderPuzzle();
+  });
 
   /* ---- State ------------------------------------------------------------- */
 
@@ -455,6 +608,17 @@
     '</div>';
   }
 
+  /* The route as step cards (audit 2026-10: it was one run-on line of
+     reagents): each step's group change over its reagents. */
+  function stepCards(r){
+    return '<ol class="rr-stepcards" aria-label="The route, step by step">' + r.hops.map(function(alts, i){
+      var e = alts[0];
+      return '<li class="rr-stepcard"><span class="rr-stepcard__n">' + (i + 1) + '</span>' +
+        '<span class="rr-stepcard__to">' + esc(nodeName(r.nodes[i])) + ' &rarr; <b>' + esc(nodeName(r.nodes[i + 1])) + '</b></span>' +
+        '<span class="rr-stepcard__rx">' + rxHtml(e) + '</span></li>';
+    }).join('') + '</ol>';
+  }
+
   var sameOpen = false;
   function renderRoute(){
     var res = routes(S.from, S.to, { skeleton: S.skeleton });
@@ -523,7 +687,10 @@
       '</div>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head rr-maphead"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target — tap a group to make it the target</span></div>' +
-        mapHtml(marks) +
+        mapHtml(marks, undefined, {
+          edges: picked ? picked.nodes.slice(1).map(function(id, i){ return { from: picked.nodes[i], to: id, n: i + 1 }; }) : [],
+          fit: picked ? picked.nodes : [S.from, S.to] }) +
+        (picked ? stepCards(picked) : '') +
       '</div>' +
       '<div aria-live="polite" id="rrRoutes">' + body + '</div>';
 
@@ -644,7 +811,11 @@
     elGroups.innerHTML =
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Pick a group</span></div>' +
-        mapHtml(null, n.id) +
+        mapHtml(null, n.id, { edges:
+          out.filter(function(e, i, a){ return a.findIndex(function(x){ return x.to === e.to; }) === i && e.to !== n.id; }).map(function(e){ return { from: n.id, to: e.to, cls: 'is-out' }; })
+          .concat(into.filter(function(e, i, a){ return a.findIndex(function(x){ return x.from === e.from; }) === i; }).map(function(e){ return { from: e.from, to: n.id, cls: 'is-in' }; })),
+          fit: [n.id].concat(out.map(function(e){ return e.to; }), into.map(function(e){ return e.from; })) }) +
+        '<p class="rr-glegend"><span class="rr-gk rr-gk--out"></span>what it becomes <span class="rr-gk rr-gk--in"></span>what makes it</p>' +
       '</div>' +
       '<div aria-live="polite" id="rrGroupOut">' +
         '<div class="tpanel rr-group">' +
@@ -892,7 +1063,9 @@
       '<div class="rr-pzgrid">' +
       '<div class="tpanel rr-pz rr-pz__map">' +
         '<div class="tpanel__head"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target</span></div>' +
-        mapHtml(marks) +
+        mapHtml(marks, undefined, { still: true,
+          edges: P.steps.map(function(st, i){ return { from: st.from, to: st.e.to, n: i + 1, cls: st.dead ? 'is-dead' : 'is-route' }; }),
+          fit: [P.from, P.to, P.at].concat(P.steps.map(function(st){ return st.e.to; })) }) +
       '</div>' +
       '<div class="tpanel rr-pz__bench">' +
         '<p class="rr-pz__goal">Get from <b class="rr-pz__ab">A</b> <b>' + esc(nodeName(P.from)) + '</b> to <b class="rr-pz__ab">B</b> <b>' + esc(nodeName(P.to)) + '</b></p>' +
@@ -919,7 +1092,7 @@
     var u = document.getElementById('rrPzUndo'); if(u) u.addEventListener('click', undo);
     document.getElementById('rrPzNew').addEventListener('click', function(){ newPuzzle(); var n = document.getElementById('rrPzNew'); if(n) n.focus(); });
     // The map is the picture here, not a control: the tiles are how you move.
-    elPuzzle.querySelectorAll('.rr-node').forEach(function(b){ b.disabled = true; });
+    // (the map is drawn with still: true, so its nodes are not controls)
     if(moved){
       var here = elPuzzle.querySelector('.rr-node.is-here');
       if(here && !(window.LevlMotion && window.LevlMotion.reduced())){ here.classList.add('is-arrive'); }
@@ -984,19 +1157,18 @@
   function put(key, els){ els.forEach(function(el){ if(el) ls.box[key].appendChild(el); }); }
 
   function studioRoute(){
-    put('route-stage', [elRoute.querySelector('.rr-maphead'), elRoute.querySelector('.rr-map')]);
+    put('route-stage', [elRoute.querySelector('.rr-maphead'), elRoute.querySelector('.rr-map'), elRoute.querySelector('.rr-stepcards')]);
     put('route-dock', [elRoute.querySelector('.rr-pick'), elRoute.querySelector('#rrCC')]);
     put('route-why', [elRoute.querySelector('#rrRoutes')]);
-    showNode(ls.box['route-stage'], '.rr-node.is-start');
+    // (the map zooms to the route itself)
     var res = routes(S.from, S.to, { skeleton: S.skeleton }), r = res.shortest[S.pick], cap, pills = [];
     if(S.from === S.to){ cap = '<b>Start and target are the same group.</b> Pick two different ones.'; }
     else if(!r){
       cap = '<b>No route from ' + esc(lc0(nodeName(S.from))) + ' to ' + esc(lc0(nodeName(S.to))) + (S.skeleton ? ' keeping the skeleton' : '') + '.</b> Why? says what would.';
       pills.push({ html: 'No route', tone: 'warn' });
     } else {
-      cap = '<b>' + res.length + ' step' + (res.length > 1 ? 's' : '') + ':</b> ' + esc(nodeName(r.nodes[0])) + r.hops.map(function(alts, i){
-        return ' → ' + esc(lc0(nodeName(r.nodes[i + 1]))) + ' <span class="rr-ls-rx">(' + esc(rxText(alts[0])) + ')</span>';
-      }).join('') + '. Why? has every reagent card' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
+      cap = '<b>' + esc(nodeName(r.nodes[0])) + ' to ' + esc(lc0(nodeName(r.nodes[r.nodes.length - 1]))) + ' in ' + res.length + ' step' + (res.length > 1 ? 's' : '') + '.</b> ' +
+        'The steps are on the map. Why? has every reagent card' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
       pills.push({ html: res.length + ' step' + (res.length > 1 ? 's' : '') }, { html: S.skeleton ? 'Same skeleton' : 'C–C steps allowed', tone: 'ghost' });
     }
     studio.caption(cap, 'route');
@@ -1034,7 +1206,7 @@
     var acts = elPuzzle.querySelector('.rr-pz__acts');
     put('puzzle-dock', [elPuzzle.querySelector('.rr-tiles'), acts]);
     put('puzzle-why', [elPuzzle.querySelector('#rrPzNote'), elPuzzle.querySelector('.rr-pz__steps')]);
-    showNode(ls.box['puzzle-stage'], '.rr-node.is-here');
+    // (the map zooms to the puzzle itself)
     var last = P.steps[P.steps.length - 1], cap, pills = [];
     var goal = 'Get from <b>' + esc(nodeName(P.from)) + '</b> to <b>' + esc(nodeName(P.to)) + '</b>';
     if(P.done){

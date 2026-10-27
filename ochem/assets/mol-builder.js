@@ -926,6 +926,52 @@
     }catch(e){ return null; }
   }
 
+  /* Draw the hydrogens as atoms, the way the ready-made arrow-pushing
+     molecules are drawn (audit 2026-10: Build hid them, Ready-made showed
+     them). An arrow can then start at a C–H bond or end on an H. Ring C–H
+     stay implied by the skeleton, as in the library's benzene. Returns a new
+     structure; the input is left alone. */
+  function withHydrogens(st0){
+    var st = C.clone(st0);
+    var ringAtoms = {};
+    Object.keys(st.atoms).forEach(function(k){ if(findRing(st, [k])) ringAtoms[k] = true; });
+    var n = 0, D = 40;
+    Object.keys(st0.atoms).forEach(function(k){
+      var a = st.atoms[k];
+      if(!a.el || a.group || a.el === 'H') return;
+      var h = a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0);
+      if(!h || (ringAtoms[k] && a.el === 'C')) return;
+      var used = C.neighbors(st, k).map(function(o){ return Math.atan2(st.atoms[o].y - a.y, st.atoms[o].x - a.x); });
+      for(var i = 0; i < h; i++){
+        var best = 0, bs = -Infinity;
+        for(var t = 0; t < 24; t++){
+          var ang = -Math.PI + t * Math.PI / 12;
+          var sep = used.length ? Math.min.apply(null, used.map(function(u){ var d = Math.abs(ang - u) % (2*Math.PI); return d > Math.PI ? 2*Math.PI - d : d; })) : Math.PI;
+          var px = a.x + D*Math.cos(ang), py = a.y + D*Math.sin(ang), room = Infinity;
+          Object.keys(st.atoms).forEach(function(o){ if(o !== k) room = Math.min(room, Math.hypot(st.atoms[o].x - px, st.atoms[o].y - py)); });
+          var sc = sep * 60 + Math.min(room, 60);
+          if(sc > bs){ bs = sc; best = ang; }
+        }
+        used.push(best);
+        var hk = 'h' + (++n);
+        while(st.atoms[hk]) hk = 'h' + (++n);
+        st.atoms[hk] = { el:'H', label:'H', group:false, x: Math.round(a.x + D*Math.cos(best)), y: Math.round(a.y + D*Math.sin(best)), r:12, lp:0, charge:0, hImplicit:0, hFixed:0 };
+        st.bonds.push({ a:k, b:hk, order:1 });
+      }
+      a.hImplicit = 0; a.hFixed = 0;
+    });
+    spreadOut(st);
+    centre(st);
+    // centre() only shrinks; a small molecule grows (up to 1.4x) to fill the frame.
+    var ks = Object.keys(st.atoms), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    ks.forEach(function(k){ var a = st.atoms[k], p = a.r + 10;
+      x0 = Math.min(x0, a.x - p); x1 = Math.max(x1, a.x + p); y0 = Math.min(y0, a.y - p); y1 = Math.max(y1, a.y + p); });
+    var g = Math.min(1.4, 320 / (x1 - x0), 170 / (y1 - y0));
+    if(g > 1.02) ks.forEach(function(k){ var a = st.atoms[k];
+      a.x = Math.round(160 + (a.x - (x0 + x1) / 2) * g); a.y = Math.round(85 + (a.y - (y0 + y1) / 2) * g); });
+    return st;
+  }
+
   function blank(){
     return { atoms:{}, bonds:[], name:null, viewBox:'0 0 320 170' };
   }
@@ -951,6 +997,7 @@
     to3D: to3D,
     search: search,
     fromLibrary: fromLibrary,
-    findRing: findRing
+    findRing: findRing,
+    withHydrogens: withHydrogens
   };
 })();

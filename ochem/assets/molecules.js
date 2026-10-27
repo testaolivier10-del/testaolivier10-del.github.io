@@ -1174,7 +1174,7 @@
   }
 
   // Lone pairs take the directions farthest from bonds (and each other).
-  function lonePairDots(a, dirs, bare){
+  function lonePairDots(a, dirs, bare, picks){
     if(!a.lp) return '';
     var out = '', angles = [-90, 0, 90, 180];
     if(dirs && dirs.length){
@@ -1193,6 +1193,7 @@
       }
       angles = picked;
     }
+    if(picks) for(var p = 0; p < Math.min(a.lp, 4); p++) picks.push(angles[p]);
     for(var i=0;i<Math.min(a.lp, 4);i++){
       var rad = angles[i] * Math.PI/180;
       var d = bare ? labelR(a) + 4.5 : a.r + 6;
@@ -1212,11 +1213,63 @@
     return Math.min(a.r, fs * (0.52 + 0.3 * Math.max(0, n - 1)) + 2.5);
   }
 
+  /* Skeletal rings on tool stages (audit 2026-10): a ring C is a bare vertex
+     unless charged, with lone pairs, or in opts.labelled; ring C=C is drawn
+     with an inner line. Lessons are unchanged (no .tool-root). A bond is in a
+     ring when its ends stay connected without it. */
+  function ringInfo(mol){
+    var adj = {}, inRing = {}, ringBond = {};
+    mol.bonds.forEach(function(b){
+      if(!mol.atoms[b.a] || !mol.atoms[b.b]) return;
+      (adj[b.a] = adj[b.a] || []).push(b.b);
+      (adj[b.b] = adj[b.b] || []).push(b.a);
+    });
+    mol.bonds.forEach(function(b){
+      if(!adj[b.a]) return;
+      var seen = {}, q = [b.a]; seen[b.a] = 1;
+      while(q.length){
+        var k = q.shift();
+        (adj[k] || []).forEach(function(n){
+          if(seen[n]) return;
+          if((k === b.a && n === b.b) || (k === b.b && n === b.a)) return;
+          seen[n] = 1; q.push(n);
+        });
+      }
+      if(seen[b.b]){ inRing[b.a] = inRing[b.b] = true; ringBond[b.a + '|' + b.b] = true; }
+    });
+    return { adj: adj, inRing: inRing, ringBond: ringBond };
+  }
+
+  function isVertex(key, a, ri, opts){
+    if(!ri || !ri.inRing[key] || a.skeletal === false) return false;
+    var lab = String(a.label || '');
+    if(!/^C(H[₀-₉]?)?$/.test(lab)) return false;
+    if(a.charge || a.lp) return false;
+    if(opts.labelled && opts.labelled.indexOf(key) !== -1) return false;
+    return true;
+  }
+
+  // Which side of a ring bond the ring is on: +1 or -1 along the bond normal
+  // (-uy, ux), read from the ring neighbours of both ends.
+  function ringInside(mol, b, ux, uy){
+    var ri = mol._ring, a = mol.atoms[b.a], c = mol.atoms[b.b];
+    var mx = (a.x + c.x) / 2, my = (a.y + c.y) / 2, s = 0;
+    [[b.a, b.b], [b.b, b.a]].forEach(function(p){
+      (ri.adj[p[0]] || []).forEach(function(n){
+        if(n === p[1] || !(ri.ringBond[p[0] + '|' + n] || ri.ringBond[n + '|' + p[0]])) return;
+        var t = mol.atoms[n];
+        s += (t.x - mx) * -uy + (t.y - my) * ux;
+      });
+    });
+    return s > 0 ? 1 : (s < 0 ? -1 : 0);
+  }
+
   function bondPath(mol, b){
     var a = mol.atoms[b.a], c = mol.atoms[b.b];
     if(!a || !c) return '';
-    a = { x:a.x, y:a.y, r:Math.min(a.r, labelR(a) + 2) || a.r };
-    c = { x:c.x, y:c.y, r:Math.min(c.r, labelR(c) + 2) || c.r };
+    var va = mol._vertex && mol._vertex[b.a], vc = mol._vertex && mol._vertex[b.b];
+    a = { x:a.x, y:a.y, r: va ? 1 : (Math.min(a.r, labelR(a) + 2) || a.r) };
+    c = { x:c.x, y:c.y, r: vc ? 1 : (Math.min(c.r, labelR(c) + 2) || c.r) };
     var stroke = b.style === 'faint' ? 'var(--line-soft)' : 'var(--line)';
     var dx = c.x - a.x, dy = c.y - a.y, len = Math.sqrt(dx*dx + dy*dy) || 1;
     // Stop the line at each atom's edge so it doesn't run under the label.
@@ -1234,6 +1287,14 @@
     var fc = b.style === 'faint' ? ' class="bond-faint"' : '';
     if(order === 1){
       return '<line' + fc + ' x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + stroke + '" stroke-width="2.5"/>';
+    }
+    var inSide = order === 2 && mol._ring && (mol._ring.ringBond[b.a + '|' + b.b] || mol._ring.ringBond[b.b + '|' + b.a]) && (va || vc)
+      ? ringInside(mol, b, ux, uy) : 0;
+    if(inSide){
+      var ix = -uy * 6 * inSide, iy = ux * 6 * inSide;
+      var L = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)), trim = Math.min(9, L * 0.16);
+      return '<line' + fc + ' x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + stroke + '" stroke-width="2.2"/>' +
+        '<line' + fc + ' x1="' + (x1 + ux*trim + ix).toFixed(1) + '" y1="' + (y1 + uy*trim + iy).toFixed(1) + '" x2="' + (x2 - ux*trim + ix).toFixed(1) + '" y2="' + (y2 - uy*trim + iy).toFixed(1) + '" stroke="' + stroke + '" stroke-width="2.2"/>';
     }
     var out = '', offsets = order === 2 ? [-3, 3] : [-4.5, 0, 4.5];
     offsets.forEach(function(o){
@@ -1270,9 +1331,8 @@
     return (m[1] === b.a && m[2] === b.b) || (m[1] === b.b && m[2] === b.a);
   }
 
-  /* Invisible fat line over each bond so it can be clicked. Drawn after the
-     bond strokes but before the atoms, so an atom always wins a click where
-     the two overlap. */
+  /* Invisible fat line over each bond so it can be clicked. It stops short of
+     each atom's label, so the label always belongs to the atom. */
   function bondHit(mol, b, opts){
     var a = mol.atoms[b.a], c = mol.atoms[b.b];
     if(!a || !c) return '';
@@ -1280,17 +1340,54 @@
     var on = opts.clickableBonds === 'all' ||
              (opts.clickableBonds && opts.clickableBonds.some(function(k){ return sameBond(k, b); }));
     if(!on) return '';
+    // Between the labels, above the atoms, at least 26 units (audit 2026-10: some were 0 px).
+    var dx = c.x - a.x, dy = c.y - a.y, len = Math.sqrt(dx*dx + dy*dy) || 1, ux = dx/len, uy = dy/len;
+    var va = opts._vertex && opts._vertex[b.a], vc = opts._vertex && opts._vertex[b.b];
+    var ra = va ? 10 : (opts._bare ? labelR(a) + 3 : Math.max(a.r, 21) + 8), rc = vc ? 10 : (opts._bare ? labelR(c) + 3 : Math.max(c.r, 21) + 8);
+    var room = len - ra - rc;
+    if(room < 26){ var give = (26 - room) / 2; ra = Math.max(0, ra - give); rc = Math.max(0, rc - give); }
+    var x1 = a.x + ux*ra, y1 = a.y + uy*ra, x2 = c.x - ux*rc, y2 = c.y - uy*rc;
     var cls = 'obond';
     if(opts.chosen && opts.chosen.some(function(k){ return sameBond(k, b); })) cls += ' chosen';
+    else if(opts.targets && opts.targets.some(function(k){ return sameBond(k, b); })) cls += ' obond--target';
     /* A focusable target with no accessible name announces as "button" and
        nothing else, which in a molecule of nine of them is unusable. The name
        says which bond it is, in the terms the tool talks about. */
     var order = b.order || 1;
     var label = (order === 3 ? 'Triple' : order === 2 ? 'Double' : 'Single') +
-      ' bond between ' + esc(a.label || '') + ' and ' + esc(c.label || '');
-    return '<line class="' + cls + '" data-key="' + esc(key) + '" tabindex="0" role="button"' +
-      ' aria-label="' + label + '"' +
-      ' x1="' + a.x + '" y1="' + a.y + '" x2="' + c.x + '" y2="' + c.y + '"/>';
+      ' bond between ' + esc(va ? 'ring C' : (a.label || '')) + ' and ' + esc(vc ? 'ring C' : (c.label || ''));
+    var head = ' data-key="' + esc(key) + '" tabindex="0" role="button" aria-label="' + label + '"';
+    if(opts._bare){
+      // A filled band, not a stroked line: a vertical line has a zero-width box.
+      var hw = 13, nx = -uy*hw, ny = ux*hw;
+      return '<path class="' + cls + ' obond--band"' + head + ' d="M ' + (x1+nx).toFixed(1) + ' ' + (y1+ny).toFixed(1) +
+        ' L ' + (x2+nx).toFixed(1) + ' ' + (y2+ny).toFixed(1) + ' L ' + (x2-nx).toFixed(1) + ' ' + (y2-ny).toFixed(1) +
+        ' L ' + (x1-nx).toFixed(1) + ' ' + (y1-ny).toFixed(1) + ' Z"/>';
+    }
+    return '<line class="' + cls + '"' + head +
+      ' x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>';
+  }
+
+  // Tool stages draw a charge as a colored badge in the freest direction near upper right.
+  function chargeAngle(dirs){
+    var best = -45, bs = -1;
+    for(var t = -180; t < 180; t += 15){
+      var clear = dirs && dirs.length ? Math.min.apply(null, dirs.map(function(d){ return Math.abs(((t - d) % 360 + 540) % 360 - 180); })) : 180;
+      var pref = Math.abs(((t + 45) % 360 + 540) % 360 - 180);
+      var sc = Math.min(clear, 70) * 2 - pref * 0.35;
+      if(sc > bs){ bs = sc; best = t; }
+    }
+    return best;
+  }
+  function chargeBadge(a, ang, vertex){
+    var q = String(a.charge), neg = q.indexOf('⁻') >= 0 || q.indexOf('-') >= 0;
+    var mag = q.replace(/[⁺⁻+\-]/g, '').replace(/[²³⁴]/g, function(c){ return { '²':'2','³':'3','⁴':'4' }[c]; });
+    var glyph = (mag || '') + (neg ? '−' : '+');
+    var d = (vertex ? 6 : labelR(a)) + 7, rad = ang * Math.PI/180;
+    var cx = a.x + d*Math.cos(rad), cy = a.y + d*Math.sin(rad), r = mag ? 8.5 : 7;
+    return '<g class="atom-chg ' + (neg ? 'atom-chg--neg' : 'atom-chg--pos') + '" aria-hidden="true">' +
+      '<circle class="chg-bg" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + r + '"/>' +
+      '<text x="' + cx.toFixed(1) + '" y="' + (cy + 4).toFixed(1) + '" text-anchor="middle" font-size="' + (mag ? 10 : 12) + '">' + glyph + '</text></g>';
   }
 
   // Element of a label (CH₃ C, OH O), a class for heteroatom colors.
@@ -1304,14 +1401,18 @@
     var clickable = opts.clickable === 'all' || (opts.clickable && opts.clickable.indexOf(key) !== -1);
     if(!clickable) cls += ' atom--static';
     if(opts.chosen && opts.chosen.indexOf(key) !== -1) cls += ' chosen';
+    else if(opts.targets && opts.targets.indexOf(key) !== -1) cls += ' atom--target';
     if(opts.highlight && opts.highlight.indexOf(key) !== -1) cls += ' atom--highlight';
     if(opts.correct && opts.correct.indexOf(key) !== -1) cls += ' atom--correct';
     if(opts.wrong && opts.wrong.indexOf(key) !== -1) cls += ' atom--wrong';
     var fontSize = a.r > 15 ? 14.5 : (a.r > 12 ? 12.5 : 11);
+    var vertex = opts._vertex && opts._vertex[key];
+    if(vertex) cls += ' atom--vertex';
+    var badge = opts._bare && a.charge, lpAng = [];
     /* Element, charge and lone pairs — the three things that decide whether an
        arrow may start or end here, said out loud for anyone who cannot see the
        dots. */
-    var name = (a.label || '') +
+    var name = (vertex ? 'Ring carbon' : (a.label || '')) +
       (a.charge ? ', charge ' + (String(a.charge).indexOf('⁻') >= 0 ? 'minus' : 'plus') : '') +
       (a.lp ? ', ' + a.lp + ' lone pair' + (a.lp === 1 ? '' : 's') : '');
     return '<g class="' + cls + '" data-key="' + esc(key) + '"' +
@@ -1319,12 +1420,13 @@
       // A clickable atom is drawn at 11-17 units; an invisible ring around it
       // gives a finger about 44 px to land on (audit 2026-10).
       (clickable ? '<circle class="atom-hit" cx="' + a.x + '" cy="' + a.y + '" r="' + Math.max(a.r + 6, 21) + '"/>' : '') +
-      lonePairDots(a, opts._dirs && opts._dirs[key], opts._bare) +
-      '<circle class="atom-knock" cx="' + a.x + '" cy="' + a.y + '" r="' + labelR(a).toFixed(1) + '"/>' +
-      '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + a.r + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
-      '<text x="' + a.x + '" y="' + (a.y + fontSize*0.35) + '" text-anchor="middle" font-size="' + fontSize + '">' +
-        esc(a.label) + (a.charge ? esc(a.charge) : '') +
-      '</text>' +
+      lonePairDots(a, opts._dirs && opts._dirs[key], opts._bare, lpAng) +
+      (vertex ? '' : '<circle class="atom-knock" cx="' + a.x + '" cy="' + a.y + '" r="' + labelR(a).toFixed(1) + '"/>') +
+      '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + (vertex ? Math.min(a.r, 11) : a.r) + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
+      (vertex ? '' : '<text x="' + a.x + '" y="' + (a.y + fontSize*0.35) + '" text-anchor="middle" font-size="' + fontSize + '">' +
+        esc(a.label) + (a.charge && !badge ? esc(a.charge) : '') +
+      '</text>') +
+      (badge ? chargeBadge(a, chargeAngle(((opts._dirs && opts._dirs[key]) || []).concat(lpAng)), vertex) : '') +
     '</g>';
   }
 
@@ -1409,7 +1511,10 @@
        opts.wrong      [keys]           marked red after the answer
        opts.arrows     [{from,to,color,bow}] — from/to are atom keys or "bond:a-b"
        opts.clickableBonds 'all' | [bond keys]  which bonds respond to clicks
-       opts.caption    override the molecule's own caption ('' to hide) */
+       opts.caption    override the molecule's own caption ('' to hide)
+       opts.targets    [keys]           atoms/bonds to pulse as likely arrow ends
+       opts.skeletal   bool             ring carbons as bare vertices (default: on tool pages)
+       opts.labelled   [keys]           ring carbons that keep their label anyway */
   function svg(molOrId, opts){
     var mol = typeof molOrId === 'string' ? M[molOrId] : molOrId;
     if(!mol) return '';
@@ -1423,11 +1528,18 @@
     });
     // Tool pages draw bare labels: lone pairs and arrow ends hug the label.
     var bare = opts.bare !== undefined ? !!opts.bare : !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.tool-root'));
-    opts = Object.assign({}, opts, { _dirs: dirs, _bare: bare });
+    var skeletal = opts.skeletal !== undefined ? !!opts.skeletal : bare;
+    var vertex = {}, ri = null;
+    if(skeletal){
+      ri = ringInfo(mol);
+      Object.keys(mol.atoms).forEach(function(k){ if(isVertex(k, mol.atoms[k], ri, opts)) vertex[k] = true; });
+    }
+    opts = Object.assign({}, opts, { _dirs: dirs, _bare: bare, _vertex: vertex });
+    var view = Object.assign({}, mol, { _vertex: vertex, _ring: ri });
     var body = (mol.decor || '') +
-      mol.bonds.map(function(b){ return bondPath(mol, b); }).join('') +
-      mol.bonds.map(function(b){ return bondHit(mol, b, opts); }).join('') +
+      mol.bonds.map(function(b){ return bondPath(view, b); }).join('') +
       Object.keys(mol.atoms).map(function(k){ return atomGroup(k, mol.atoms[k], opts); }).join('') +
+      mol.bonds.map(function(b){ return bondHit(mol, b, opts); }).join('') +
       (opts.arrows || []).map(function(ar, i){ return arrowPath(mol, ar, i, bare); }).join('');
     var caption = opts.caption === undefined ? mol.caption : opts.caption;
     /* role="img" makes assistive technology treat the whole SVG as a single
