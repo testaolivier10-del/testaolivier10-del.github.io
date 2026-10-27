@@ -13,7 +13,7 @@
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
 import { Hub } from './lib/hub.mjs';
 import { courseBanner } from './lib/covers.mjs';
-import { homeHero, homeSteps, homeDomains, notesAndExams, homeTools, homeDeal } from './lib/course-home.mjs';
+import { r3HomeMain, parseSample } from './lib/r3-home.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
@@ -755,53 +755,30 @@ function homePage() {
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell anp-home ch-home" data-cover="anp">
-${homeHero({
-  key: 'anp', up: '../',
-  pill: `${COURSE_NAME} &middot; free to start ${BETA_PILL}`,
-  t1: 'Anatomy &amp; physiology', t2: 'that builds in order.',
-  lede: `${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time.`,
-  primary: first ? `<a class="ch-cta" id="heroPrimaryCta" href="lessons/${first.id}.html">Start the first lesson</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : '<a class="ch-cta" href="learn.html">See the chapters</a>',
-  secondary: '<a class="ch-ghost" href="learn.html">All chapters</a>',
-  trust: 'Every notes page is free, and so are the Foundations lessons. Nothing is locked behind an order: Foundations is recommended, not required.',
-  cardId: 'anpStart',
-  card: first ? `<div class="k">Start here</div><h2>${esc(first.title)}</h2><p>Foundations &middot; ${esc(firstCh.title)}. Foundations is recommended, not required: nothing is locked.</p><a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : '<div class="k">Start here</div><h2>Pick any chapter</h2><p>Nothing is locked.</p>',
-  panelExtra: '<div class="ch-mini" id="anpReview"><span class="k">Review queue</span><h2>Missed questions come back</h2><p>Anything you miss returns when you are about to forget it, not on a fixed date.</p><a href="review.html">Open review &rarr;</a></div>',
+${r3HomeMain('anp', {
+  up: '../',
+  hooks: { kind: 'ap', prefix: 'anp' },
+  primaryHref: first ? `lessons/${first.id}.html` : 'learn.html',
+  primaryScript: first ? `<script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : '',
+  parts: map.parts.map(p => p.id),
+  tools: tools.map(t => ({ slug: t.slug, name: t.name, href: `tools/${t.slug}.html` })),
+  sample: parseSample(homeSample(depth)),
+  links: {
+    btn2: 'learn.html', btn3: 'tools/predict.html',
+    toc: map.parts.map(p => { const ch = map.chapters.find(c => c.part === p.id); return ch ? `chapters/${ch.id}.html` : ''; }),
+    notes: 'learn.html', chips: map.chapters.slice(0, 6).map(c => `chapters/${c.id}.html`),
+    steps: [first ? `lessons/${first.id}.html` : 'learn.html', 'practice.html', 'exams.html'],
+    exam: 'exams.html', extras: ['concepts/index.html', 'credits.html'],
+    extraItems: ['homeostasis', 'structure-function', 'gradients', 'communication', 'compartments', 'energy', 'mass-balance', 'interdependence'].map(s => `concepts/${s}.html`),
+    guide: 'dashboard.html', freeCta: first ? `lessons/${first.id}.html` : 'learn.html',
+  },
 })}
-${homeSteps([
-  first ? { h: 'Learn a topic from scratch', p: `Start with ${esc(first.title.toLowerCase())}. Each lesson opens with a patient, checks what you need first, then walks the mechanism one cause at a time.`, href: `lessons/${first.id}.html`, go: 'Start the first lesson' } : { h: 'Pick a chapter', p: 'Every notes page is free.', href: 'learn.html', go: 'See the chapters' },
-  { h: 'Answer as you go', p: 'Topic, system and core concept drills. Anything you miss goes into your review queue and comes back when you are about to forget it.', href: 'practice.html', go: 'Practice now' },
-  { h: 'Sit an exam', p: 'Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice.', href: 'exams.html', go: 'See the exams' },
-], 'New to the course? Three steps, in this order.')}
-${homeDomains({
-  id: 'chParts', a: 'Three parts,', b: 'in order',
-  lede: 'Foundations first, then A&amp;P I and A&amp;P II. Each chapter leans on the last.',
-  rows: (() => {
-    const rows = map.parts.map(p => { const chs = map.chapters.filter(c => c.part === p.id); const nt = map.topics.filter(t => chs.some(c => c.id === t.chapter)).length; return { p, chs, nt }; });
-    const most = Math.max(...rows.map(r => r.nt));
-    return rows.map(r => ({ h: esc(r.p.title), p: esc(r.chs.slice(0, 4).map(c => c.title).join(', ') + (r.chs.length > 4 ? ' and more' : '')), share: r.nt / most, weight: `<b>${r.chs.length} chapters</b> &middot; ${r.nt} topics`, href: `chapters/${r.chs[0].id}.html`, go: 'Open the first chapter' }));
-  })(),
-})}
-${notesAndExams({
-  notes: { eye: 'Learn &middot; free forever', a: 'Every topic,', b: 'in notes', p: `A free notes page for every topic, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, plus ${HOME_WORDS[map.coreConcepts.length] || map.coreConcepts.length} core concepts that explain every system.`,
-    chips: map.chapters.slice(0, 6).map(c => ({ t: c.title, href: `chapters/${c.id}.html` })), href: 'learn.html', go: 'Open the notes' },
-  exam: { eye: 'Exams', h: 'Quizzes, finals <span>and the TEAS</span>', p: 'Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice, every option explained.', href: 'exams.html', go: 'See the exams' },
-})}
-${homeTools({
-  a: 'Tools that make you', b: 'do the physiology', lede: 'Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.',
-  allHref: 'tools.html',
-  tools: tools.slice(0, 6).map(t => ({ href: `tools/${t.slug}.html`, name: t.name, desc: t.blurb, icon: ANP_TOOL_ICON[t.slug] })),
-})}
-${homeSample(depth)}
-${homeDeal({ key: 'anp', up: '../', freeCta: first ? `<a class="ch-ghost" href="lessons/${first.id}.html">Start the first lesson</a>` : '' })}
-  <p class="ch-disc anp-disclaimer anp-home-legal">${esc(TEAS_DISCLAIMER)} OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
-</main>
 ${footer(depth)}
 ${tail({ depth, section: 'home', extra: ['anp-home.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: '', depth, ogType: 'website', jsonld, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/anp-home.css">\n' }) + body;
+  return head({ title, desc, path: '', depth, ogType: 'website', jsonld, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/anp-home.css">\n<link rel="stylesheet" href="../assets/course/r3.css">\n' }) + body;
 }
 
 /* ---------------------------------------------------- apps and tools */

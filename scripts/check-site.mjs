@@ -21,6 +21,8 @@ function walk(dir, exts, out = []) {
   for (const name of readdirSync(dir)) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
+    // The redesign's design boards (docs/redesign-r3/, .dc.html mockups) are reference files, not pages.
+    if (relative(ROOT, full).split(sep).join('/') === 'docs/redesign-r3') continue;
     const st = statSync(full);
     // The A&P, AP Biology and AP Chemistry notes sources are HTML fragments that
     // build-anp.mjs, build-apbio.mjs, build-apchem.mjs, build-apphys.mjs and build-apcalc.mjs wrap into pages; the

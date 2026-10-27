@@ -114,3 +114,23 @@ covers; no PR without them.
 | B4 reading | `claude/r3-reading` | R10-Learn, R10-Notes*, R10-Lesson, R10-Unit, R10-Glossary, R10-Search |
 | B5 tools and AP® pages | `claude/r3-tools` | R10-Tools*, R10-Tool*, R10-ToolCovers, R10-AP-FRQ*, R10-AP-Cram, R10-AP-Teachers |
 B1 goes first; B2 to B5 branch from it and run in parallel, each owning only its pages' files.
+
+### B1 built (claude/r3-homes)
+All nine course homes are the R10-Home board layout, from one module:
+- `scripts/lib/r3-home.mjs`: `r3HomeMain(key, ctx)` renders the whole `<main id="main" class="r3 r3-home" data-cover>`;
+  `homeData(key)` and `parseSample(html)` are exported too. Words come from `scripts/lib/course-homes.json`
+  (exported from the board generator); prices and the free and Premium lists from `assets/premium.js`; NREMT counts,
+  the ochem path and the ochem sample from their data (`scripts/build-course-homes.mjs`).
+- Callers: `apHomeMain` / `apHomeCtx` in `scripts/lib/course-home.mjs` (the six AP® builders), `build-anp.mjs`
+  `homePage`, and `build-course-homes.mjs` (the `<!-- course-home:main -->` block in `nremt/index.html` and
+  `ochem/index.html`). `build-ochem-home.mjs` now keeps only the JSON-LD (the path and sample markers are gone).
+- Styles: `assets/course/r3.css`, everything scoped to `.r3` (the page's `<main>`), course colour per
+  `data-cover` (`--accent`, `--ctint`, `--bbg`, `--bac`) with dark values. Later steps load the same file and reuse:
+  `.band` / `.band.short` (kicker `.issue`, `.mast`, `.deck`, `.hand`, `.lede`, `.hero-ctas`, `.art`), `.lead`,
+  `.contents` + `.toc`, `.tryq`, `.fact-row`, `.kicker`, `.ruled-h`, `.story`, `.ccard` (`.cover`, `.cmeta`, `.cname`,
+  `.tag free|prem|beta`, `.cdesc`, `.chiprow`), `.step`, `.dept` (rows with `.tc` tool covers), `.feat`, `.else-x`,
+  `.home-deal` (`.plan`, `.plan--premium`, `.plan__amt`, `.plan__sure`), `.home-faq` (`.hub-faq`), `.about-row`
+  (homes only), `.btn-chan`, `.btn-ghost`, `.btn-gold`, `.sticky-cta`.
+- Band art: `assets/covers/art/<key>.svg` (the course drawing alone). Tool covers: `assets/covers/tools/<key>/`.
+- The site's own top bar, course tabs and footer stay (site-chrome.js, the nav scripts); only `<main>` changed.
+- Proof: board | built images for every home board, light, phone and dark, in the B1 PR.

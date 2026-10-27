@@ -1,0 +1,3974 @@
+{
+ "nremt": {
+  "name": "NREMT-EMT Prep",
+  "short": "NREMT",
+  "tabname": "NREMT-EMT Prep",
+  "pill": "NREMT-EMT · Cognitive exam",
+  "beta": false,
+  "h1a": "Level up before",
+  "h1b": "the real exam does.",
+  "hand": "911 call to hospital, one chapter at a time",
+  "lede": "2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.",
+  "btn1": "Start practicing",
+  "btn2": "See a sample question",
+  "btn3": "How the real exam works",
+  "trust": [
+   "founder",
+   "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep.",
+   "More about me"
+  ],
+  "pills": [
+   "Free to start",
+   "Works offline",
+   "Private by default"
+  ],
+  "strip_label": "The real exam",
+  "strip": [
+   [
+    "Length",
+    "70 to 120",
+    "questions, computer-adaptive"
+   ],
+   [
+    "Clock",
+    "2 hours",
+    "whatever length you get"
+   ],
+   [
+    "Cost",
+    "$104",
+    "exam fee, per attempt"
+   ],
+   [
+    "Retakes",
+    "15 days",
+    "wait before a retake"
+   ]
+  ],
+  "strip_note": "Figures checked September 2026. Confirm every one on nremt.org before you book.",
+  "start": [
+   "Start here",
+   "A 20-question domain drill",
+   "Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.",
+   "Start a drill"
+  ],
+  "review": [
+   "Review queue",
+   "Nothing due yet",
+   "Anything you miss comes back when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "0 of 15",
+   "Questions, cards and tool steps from any LevlPrep subject count toward a daily goal and a shared streak.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "First Responder",
+   null,
+   "Answer a few questions and your topic-area readings appear here."
+  ],
+  "steps": [
+   [
+    "Run a 20-question drill",
+    "Short and focused, with every answer explained. Your weakest topic areas show up once you have answered a few.",
+    "Start a drill →"
+   ],
+   [
+    "Read what it points to",
+    "Forty chapters of notes, free forever, from the call to the handover.",
+    "Open the notes →"
+   ],
+   [
+    "Sit a timed exam",
+    "A full length exam on the clock, scored by domain when you finish, so test day feels familiar.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "domains",
+  "map_h": [
+   "Practice by",
+   "exam domain"
+  ],
+  "covers_h": "What the exam covers",
+  "covers": [
+   "The National Registry’s EMT exam since 7 April 2025 follows a call from arrival to handover. Every question here is tagged by the step it tests, and practice exams draw them in the exam’s proportions."
+  ],
+  "map_lede": "Five domains, weighted as on the exam. Pick one to drill it.",
+  "doms": [
+   [
+    "Primary Assessment",
+    "Impression, ABCs, life threats and priority.",
+    "39 to 43%",
+    "853",
+    86
+   ],
+   [
+    "Patient Treatment &amp; Transport",
+    "Interventions, medications and transport.",
+    "20 to 24%",
+    "619",
+    48
+   ],
+   [
+    "Scene Size-Up &amp; Safety",
+    "Hazards, PPE, resources and triage.",
+    "15 to 19%",
+    "172",
+    38
+   ],
+   [
+    "Operations",
+    "Equipment, documentation, legal and wellness.",
+    "10 to 14%",
+    "258",
+    28
+   ],
+   [
+    "Secondary Assessment",
+    "History, the focused exam and reassessment.",
+    "5 to 9%",
+    "131",
+    18
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Forty chapters",
+    "of notes"
+   ],
+   "p": "Every chapter of the EMT curriculum, with glossary terms, flowcharts and mnemonics alongside.",
+   "chips": [
+    [
+     "Airway Management",
+     "Ch 9"
+    ],
+    [
+     "Primary Assessment",
+     "Ch 12"
+    ],
+    [
+     "Respiratory Emergencies",
+     "Ch 19"
+    ],
+    [
+     "Cardiac Emergencies",
+     "Ch 20"
+    ],
+    [
+     "Bleeding Control",
+     "Ch 29"
+    ],
+    [
+     "EMS Operations",
+     "Ch 38"
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Exams",
+   "big": "100",
+   "bigs": "questions on the clock",
+   "p": "Full length, exam paced, scored by domain when you finish.",
+   "cta": "Start a timed exam",
+   "small": ""
+  },
+  "guide": {
+   "eye": "Before you book",
+   "h": "What the NREMT-EMT exam is actually like.",
+   "p": "The format, the clock, the cost, who can sit it, what happens if you fail, and what to bring. The practice here trains the content; this page covers everything around it.",
+   "items": [
+    "The format: adaptive, not fixed",
+    "What it covers: the 2025 exam outline",
+    "Who can sit it",
+    "Cost",
+    "If you don’t pass",
+    "On the day",
+    "The week before"
+   ],
+   "cta": "Read how the real exam works"
+  },
+  "tools_h": [
+   "Tools for the",
+   "hands on part"
+  ],
+  "tools_lede": "Anatomy, sounds, protocol flow, call simulations and the skill sheets.",
+  "tools": [
+   [
+    "Body Map",
+    "A real 3D model. Turn the body, tap a region and get the structures, landmarks and findings.",
+    "free"
+   ],
+   [
+    "Scenarios",
+    "Twenty-five branching calls, dispatch to handover.",
+    "Premium"
+   ],
+   [
+    "Skill Sheets",
+    "The psychomotor stations and what fails them.",
+    "free"
+   ],
+   [
+    "Sound Trainer",
+    "Wheezes, crackles, stridor and heart sounds, by ear.",
+    "free"
+   ],
+   [
+    "Flow Diagrams",
+    "Ten sequences: assessment, CPR, anaphylaxis, choking, triage.",
+    "free"
+   ],
+   [
+    "Drug Formulary",
+    "The seven core EMT drugs: doses, contraindications, and what stops you.",
+    "free"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "Body Map figure from BodyParts3D © 2008 <a href=\"#\">Life Science Integrated Database Center</a>, <a href=\"#\">CC BY-SA 2.1 JP</a>.",
+  "extras": [
+   {
+    "kind": "feature",
+    "eye": "Only in NREMT-EMT",
+    "h": "Learn the anatomy by pointing at it.",
+    "p": "A 3D body map and a sound trainer, plus twenty-five branching scenarios with Premium.",
+    "cta": "Open the body map",
+    "fig": "Body map figure, adult front",
+    "credit": "Figure from BodyParts3D © 2008 <a href=\"#\">Life Science Integrated Database Center</a>, <a href=\"#\">CC BY-SA 2.1 JP</a>."
+   }
+  ],
+  "grid": [
+   [
+    "Study notes",
+    "A forty-chapter NREMT-EMT textbook: chapter openers, numbered sections, key terms, review questions from the bank, and the whole book printable."
+   ],
+   [
+    "Practice",
+    "Drills from the 2,033-question bank in multiple-choice, select-N and build-list formats, each answer checked as you go."
+   ],
+   [
+    "Review",
+    "Questions you have answered come back as they fade, weakest and longest-unseen first, up to 40 a session."
+   ],
+   [
+    "Exams",
+    "A full 100-question exam in the proportions of the five exam domains, on a two-hour clock and scored by domain."
+   ],
+   [
+    "Flashcards",
+    "The facts, terms, mnemonics and numbers the exam keeps asking for, across all six topic areas."
+   ],
+   [
+    "Glossary",
+    "150 EMS terms used across the questions and notes, in plain words."
+   ],
+   [
+    "Tools",
+    "Body map, sound trainer, branching scenarios, flow diagrams and the psychomotor skills guide."
+   ],
+   [
+    "Dashboard",
+    "Study streak, readiness estimate, accuracy by exam domain and by topic, and your review queue."
+   ],
+   [
+    "Mnemonics",
+    "The core EMT mnemonics, letter by letter."
+   ],
+   [
+    "Reference cards",
+    "The tables worth looking up rather than half-remembering: type a vital sign to check it."
+   ],
+   [
+    "Exam day",
+    "The format, the clock, the cost, who can sit it, what happens if you fail, and what to bring."
+   ]
+  ],
+  "sample": {
+   "h": [
+    "Try",
+    "one."
+   ],
+   "lede": "A sample from the practice bank. Pick an answer to check it.",
+   "legend_title": "Question types in the bank",
+   "legend": [
+    [
+     "A",
+     "Single best answer"
+    ],
+    [
+     "N",
+     "Select N (the item says how many)"
+    ],
+    [
+     "S",
+     "Build list (put steps in order)"
+    ]
+   ],
+   "note": "The real exam also uses drag-and-drop sorting and options-table items. This site does not simulate those two yet; its build-list items use move-up and move-down buttons rather than dragging.",
+   "tags": [
+    "Patient Treatment &amp; Transport",
+    "Moderate"
+   ],
+   "q": "A patient has a penetrating chest wound with an audible sucking sound on inspiration. Your next action is to:",
+   "opts": [
+    "Apply high-flow oxygen via non-rebreather",
+    "Seal the wound with an occlusive dressing",
+    "Begin positive-pressure ventilation",
+    "Position the patient supine and transport"
+   ],
+   "more": "Try a drill"
+  },
+  "deal": {
+   "free": [
+    "Study notes, glossary, flowcharts, mnemonics, flashcards and the body map",
+    "15 practice or review questions a day, any topic",
+    "One full timed exam"
+   ],
+   "freecta": "Start practicing",
+   "amt": "$20.30",
+   "was": "$29",
+   "note": "Founding price until 31 January 2027. One payment for 90 days.",
+   "prem": [
+    "The full 2,033-question bank, unlimited",
+    "Unlimited timed 100-question exams",
+    "Unlimited missed-question review and spaced repetition",
+    "Readiness score and domain breakdowns",
+    "The clinical scenario simulator"
+   ],
+   "name": "NREMT-EMT"
+  },
+  "foot": [
+   "Independent study aid. Not affiliated with or endorsed by the National Registry of Emergency Medical Technicians."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "What’s new",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": null,
+  "ink": "#0B6B62",
+  "tint": "#E1F6F2",
+  "bbg": "#0D3B36",
+  "bac": "#2EE6D6",
+  "t1": "NREMT",
+  "t2": "EMT Prep",
+  "coverhand": "911 call to hospital",
+  "try": {
+   "ok": 1,
+   "title": "Seal the wound first.",
+   "why": "An open chest wound is sealed first, with a vented chest seal or an occlusive dressing, so air stops entering the chest through it; then watch for a developing tension pneumothorax."
+  },
+  "note": "2025 outline",
+  "mapsub": ""
+ },
+ "ochem": {
+  "name": "Organic Chemistry",
+  "short": "Ochem",
+  "tabname": "Organic Chemistry",
+  "pill": "Organic Chemistry · free to start",
+  "beta": false,
+  "h1a": "Push the arrows",
+  "h1b": "yourself.",
+  "hand": "the why on every wrong step",
+  "lede": "Twenty-three chapters, 123 topics and ten mechanisms you perform yourself, with the why on every wrong step.",
+  "btn1": "Open the textbook",
+  "btn2": "Push the SN2 arrows, free",
+  "btn3": "How to study ochem",
+  "trust": [
+   "note",
+   "Every textbook page is free, and so are the first four chapters."
+  ],
+  "pills": [
+   "Every textbook page free",
+   "Progress saved on your device",
+   "First four chapters free"
+  ],
+  "strip_label": "The course",
+  "strip": [
+   [
+    "Chapters",
+    "25",
+    "both semesters, foundations to polymers"
+   ],
+   [
+    "Topics",
+    "123",
+    "each with a free textbook section"
+   ],
+   [
+    "Mechanisms",
+    "10",
+    "you push yourself"
+   ],
+   [
+    "Question bank",
+    "3,675",
+    "questions, the full bank with Premium"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Atomic structure",
+   "Foundations. The groundwork every later arrow uses.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Nothing due yet",
+   "Finished concepts come back when they’re shakiest, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Daily Rounds",
+   "A short set each day",
+   "A short daily set from what you’re closest to forgetting. 0 of 5 today.",
+   "See practice →",
+   0
+  ],
+  "level": [
+   "Lewis Apprentice",
+   null,
+   "Finish a lesson and your module readings appear here."
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with atomic structure: the groundwork every later arrow uses. The first four chapters are free.",
+    "Start the first lesson →"
+   ],
+   [
+    "Push the arrows yourself",
+    "Draw a mechanism and watch what it makes, with the why on every wrong step.",
+    "Open the arrow pusher →"
+   ],
+   [
+    "Practice and review",
+    "Questions from every chapter, 15 a day free. Finished concepts come back when they’re shakiest.",
+    "Practice now →"
+   ]
+  ],
+  "map_kind": "path",
+  "map_h": [
+   "The path through",
+   "the course"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "The whole organic chemistry sequence as one free textbook: 25 chapters and 123 sections covering both semesters, from foundations through polymers.",
+   "Each chapter leans on the last. Tap one to open it."
+  ],
+  "map_lede": "25 chapters, in order. “You are here” moves with you.",
+  "path": [
+   [
+    1,
+    "Foundations",
+    10
+   ],
+   [
+    2,
+    "Drawing Molecules &amp; Moving Electrons",
+    3
+   ],
+   [
+    3,
+    "IUPAC Nomenclature",
+    4
+   ],
+   [
+    4,
+    "Acids &amp; Bases",
+    5
+   ],
+   [
+    5,
+    "Alkanes &amp; Conformations",
+    5
+   ],
+   [
+    6,
+    "Stereochemistry",
+    9
+   ],
+   [
+    7,
+    "How Reactions Happen",
+    7
+   ],
+   [
+    8,
+    "Substitution &amp; Elimination",
+    5
+   ],
+   [
+    9,
+    "Alkenes &amp; Alkynes",
+    7
+   ],
+   [
+    10,
+    "IR &amp; Mass Spectrometry",
+    2
+   ],
+   [
+    11,
+    "Conjugation &amp; Pericyclic Reactions",
+    6
+   ],
+   [
+    12,
+    "Aromatic Chemistry",
+    3
+   ],
+   [
+    13,
+    "Alcohols, Ethers &amp; Related Chemistry",
+    3
+   ],
+   [
+    14,
+    "Organometallic Bonding &amp; Grignard Reagents",
+    2
+   ],
+   [
+    15,
+    "Carbonyl Chemistry",
+    7
+   ],
+   [
+    16,
+    "Oxidation &amp; Reduction",
+    3
+   ],
+   [
+    17,
+    "Carboxylic Acids &amp; Derivatives",
+    6
+   ],
+   [
+    18,
+    "Organolithiums, Cuprates &amp; Cross-Coupling",
+    3
+   ],
+   [
+    19,
+    "Enolate Chemistry",
+    7
+   ],
+   [
+    20,
+    "Amines",
+    4
+   ],
+   [
+    21,
+    "Aromatic Follow-Through",
+    5
+   ],
+   [
+    22,
+    "NMR Spectroscopy",
+    2
+   ],
+   [
+    23,
+    "Synthesis &amp; Retrosynthesis",
+    5
+   ],
+   [
+    24,
+    "Biomolecules",
+    5
+   ],
+   [
+    25,
+    "Polymers",
+    5
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "The textbook,",
+    "free"
+   ],
+   "p": "The textbook section for every topic is free, and so are the flashcards. The first four chapters are fully interactive.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Glossary",
+     "516 terms"
+    ]
+   ],
+   "cta": "Open the textbook"
+  },
+  "exam": {
+   "eye": "Exams",
+   "big": "50",
+   "bigs": "question cumulative final",
+   "p": "Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.",
+   "cta": "See the exams",
+   "small": ""
+  },
+  "guide": {
+   "eye": "How to study",
+   "h": "How to study organic chemistry.",
+   "p": "Most people who struggle with this course are studying hard and studying wrong: memorizing an ever-growing list of reactions instead of the handful of patterns underneath them. Here is what to do instead.",
+   "items": [
+    "Push the arrows yourself",
+    "Work problems, don’t reread",
+    "Fix gaps backwards",
+    "Draw structures constantly",
+    "Space it out"
+   ],
+   "cta": "Read How to study ochem"
+  },
+  "tools_h": [
+   "Eight tools that",
+   "do the chemistry"
+  ],
+  "tools_lede": "Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its ¹H NMR.",
+  "tools": [
+   [
+    "Arrow Pusher",
+    "Draw a mechanism and watch what it makes.",
+    "free"
+   ],
+   [
+    "Resonance Explorer",
+    "Find every valid resonance form, and rank them.",
+    "free"
+   ],
+   [
+    "3D Molecule Viewer",
+    "Rotate it until the shape stops being abstract. VSEPR, hybridization, stereochemistry.",
+    "free"
+   ],
+   [
+    "Conformation Lab",
+    "Turn the bond. Watch the energy.",
+    "Premium"
+   ],
+   [
+    "Reaction Predictor",
+    "SN1, SN2, E1 or E2, and why, factor by factor.",
+    "Premium"
+   ],
+   [
+    "Acid/Base Comparator",
+    "Two structures. Which proton comes off first?",
+    "Premium"
+   ],
+   [
+    "Spectroscopy Lab",
+    "Read the peaks, name the compound.",
+    "Premium"
+   ],
+   [
+    "Reagent Roadmap",
+    "From any functional group to any other, with the reagents.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "list",
+    "eye": "Only in Organic Chemistry",
+    "h": "Ten mechanisms you perform yourself.",
+    "p": "Push every arrow, step by step, with the why on every wrong step. SN2 is free.",
+    "items": [
+     "SN2",
+     "SN1",
+     "E2",
+     "E1",
+     "Alkene addition",
+     "Carbonyl addition",
+     "Acyl substitution",
+     "Aldol",
+     "Claisen",
+     "EAS"
+    ],
+    "cta": "Push the SN2 arrows, free"
+   },
+   {
+    "kind": "small",
+    "eye": "On every page",
+    "h": "Periodic table reference",
+    "p": "The ⚛ button opens the periodic table over any page of the course."
+   }
+  ],
+  "grid": [
+   [
+    "Textbook",
+    "The whole organic chemistry sequence as one free textbook: 25 chapters and 123 sections."
+   ],
+   [
+    "Practice",
+    "The question that will teach you the most right now, picked from your own answers."
+   ],
+   [
+    "Review",
+    "Concepts come back when they are closest to being forgotten, inside a fresh problem."
+   ],
+   [
+    "Exams",
+    "Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end."
+   ],
+   [
+    "Flashcards",
+    "Every concept, value and reagent in the course, one card at a time."
+   ],
+   [
+    "Glossary",
+    "516 terms from all 25 chapters, in plain words, each linked to the section that teaches it."
+   ],
+   [
+    "Tools",
+    "Eight interactive tools. The arrow pusher, resonance explorer and 3D molecule viewer are free."
+   ],
+   [
+    "Dashboard",
+    "Your mastery by module, based on every question you have answered."
+   ],
+   [
+    "How to study",
+    "Why memorizing reactions fails, and how to study mechanisms instead."
+   ]
+  ],
+  "sample": {
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the practice bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the step"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See why the arrows work that way"
+    ]
+   ],
+   "note": "",
+   "tags": [
+    "Drawing Molecules &amp; Moving Electrons",
+    "Curved arrows"
+   ],
+   "q": "A proposed step has one curved arrow: from a lone pair on hydroxide to the carbon bonded to Cl in CH₃CH₂–Cl. No other arrow is drawn. What is wrong?",
+   "opts": [
+    "The carbon would end up with five bonds",
+    "The tail should start on the carbon instead",
+    "Hydroxide has no lone pair to give",
+    "Nothing, since one arrow is enough"
+   ],
+   "more": "Open the free lesson on curved arrows"
+  },
+  "deal": {
+   "free": [
+    "The textbook section for every topic, and the flashcards",
+    "The first four chapters, fully interactive",
+    "15 practice or review questions a day from any chapter",
+    "One full exam, and three of the interactive tools"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "From $20.30",
+   "was": "$29",
+   "note": "Founding price until 31 January 2027. One payment for semester (5 months).",
+   "prem": [
+    "Every interactive lesson and mechanism walkthrough",
+    "The full 3,675-question bank, unlimited practice and review",
+    "Unlimited exams",
+    "Mastery dashboard and gap detection",
+    "All eight interactive tools"
+   ],
+   "name": "Organic Chemistry"
+  },
+  "foot": [
+   "Independent study aid. Progress is stored on your device; sign in to sync it."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "What’s new",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": null,
+  "ptable": true,
+  "ink": "#4B3BA8",
+  "tint": "#ECE8FB",
+  "bbg": "#241A63",
+  "bac": "#A18FFF",
+  "t1": "Organic",
+  "t2": "Chemistry",
+  "coverhand": "push the arrows yourself",
+  "try": {
+   "ok": 0,
+   "title": "Five bonds on one carbon.",
+   "why": "The arrow makes a new O–C bond, but that carbon already has four bonds. Unless a second arrow breaks the C–Cl bond and sends that pair to chlorine, the carbon would hold five bonds. Hydroxide does have lone pairs, and the tail belongs on them."
+  },
+  "note": "Textbook level",
+  "mapsub": "Read them in order: each chapter leans on the last."
+ },
+ "anp": {
+  "name": "Anatomy &amp; Physiology",
+  "short": "A&amp;P",
+  "tabname": "Anatomy &amp; Physiology",
+  "pill": "Anatomy &amp; Physiology · free to start",
+  "beta": true,
+  "h1a": "Anatomy &amp; physiology",
+  "h1b": "that builds in order.",
+  "hand": "how your body is built",
+  "lede": "27 chapters and 162 topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.",
+  "btn1": "Start the first lesson",
+  "btn2": "All chapters",
+  "btn3": "Predict the change",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the Foundations lessons. Nothing is locked behind an order: Foundations is recommended, not required."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Foundations lessons free",
+   "Progress saved on your device",
+   "No subscription"
+  ],
+  "strip_label": "The course",
+  "strip": [
+   [
+    "Chapters",
+    "27",
+    "Foundations, A&amp;P I and A&amp;P II"
+   ],
+   [
+    "Topics",
+    "162",
+    "each with a lesson and a notes page"
+   ],
+   [
+    "Question bank",
+    "3,321",
+    "questions, every option explained"
+   ],
+   [
+    "Exams",
+    "TEAS",
+    "quizzes, system exams, finals and TEAS A&amp;P practice"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Levels of organization and organ systems",
+   "Foundations · Orientation to the body. Foundations is recommended, not required: nothing is locked.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 0 of 15 today.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Cell Scout",
+   [
+    "Foundations",
+    "A&amp;P I",
+    "A&amp;P II"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with levels of organization and organ systems. Each lesson opens with a patient, checks what you need first, then walks the mechanism one cause at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Answer as you go",
+    "Topic, system and core concept drills. Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "Practice now →"
+   ],
+   [
+    "Sit an exam",
+    "Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "parts",
+  "map_h": [
+   "Three parts,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "27 chapters and 162 topics: the full scope of a two-semester college A&amp;P course, matched to the OpenStax Anatomy and Physiology 2e textbook, the HAPS learning outcomes and the TEAS 7 A&amp;P content areas. Each topic has an interactive lesson and a full notes page.",
+   "<b class=\"ink\">All 162 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Foundations first, then A&amp;P I and A&amp;P II. Each chapter leans on the last. Tap one to open it.",
+  "parts": [
+   [
+    "Foundations",
+    1,
+    5,
+    "5 chapters · 33 topics"
+   ],
+   [
+    "A&amp;P I",
+    6,
+    16,
+    "11 chapters · 50 topics"
+   ],
+   [
+    "A&amp;P II",
+    17,
+    27,
+    "11 chapters · 79 topics"
+   ]
+  ],
+  "chapters": [
+   [
+    1,
+    "Orientation to the body",
+    6
+   ],
+   [
+    2,
+    "Chemistry and physics for physiology",
+    8
+   ],
+   [
+    3,
+    "Cells",
+    9
+   ],
+   [
+    4,
+    "Tissues",
+    4
+   ],
+   [
+    5,
+    "Signals, repair and control",
+    6
+   ],
+   [
+    6,
+    "Integumentary system",
+    4
+   ],
+   [
+    7,
+    "Bone tissue",
+    5
+   ],
+   [
+    8,
+    "The skeleton",
+    5
+   ],
+   [
+    9,
+    "Joints",
+    3
+   ],
+   [
+    10,
+    "Muscle tissue",
+    8
+   ],
+   [
+    11,
+    "The muscular system",
+    5
+   ],
+   [
+    12,
+    "Nervous tissue and neural signaling",
+    4
+   ],
+   [
+    13,
+    "The brain and spinal cord",
+    4
+   ],
+   [
+    14,
+    "Nerves, reflexes and pathways",
+    6
+   ],
+   [
+    15,
+    "Special senses",
+    3
+   ],
+   [
+    16,
+    "The autonomic nervous system",
+    3
+   ],
+   [
+    17,
+    "The endocrine system",
+    6
+   ],
+   [
+    18,
+    "Blood",
+    5
+   ],
+   [
+    19,
+    "The cardiovascular system",
+    16
+   ],
+   [
+    20,
+    "Lymphatic and immune systems",
+    6
+   ],
+   [
+    21,
+    "The respiratory system",
+    9
+   ],
+   [
+    22,
+    "The digestive system",
+    7
+   ],
+   [
+    23,
+    "Metabolism and nutrition",
+    5
+   ],
+   [
+    24,
+    "The urinary system",
+    6
+   ],
+   [
+    25,
+    "Fluid, electrolyte and acid–base balance",
+    4
+   ],
+   [
+    26,
+    "The reproductive system",
+    6
+   ],
+   [
+    27,
+    "Development and inheritance",
+    9
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, matched to the OpenStax Anatomy and Physiology 2e textbook, plus eight core concepts that explain every system.",
+   "chips": [
+    [
+     "Orientation to the body",
+     "Ch 1"
+    ],
+    [
+     "Chemistry and physics for physiology",
+     "Ch 2"
+    ],
+    [
+     "Cells",
+     "Ch 3"
+    ],
+    [
+     "Tissues",
+     "Ch 4"
+    ],
+    [
+     "Signals, repair and control",
+     "Ch 5"
+    ],
+    [
+     "Integumentary system",
+     "Ch 6"
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Exams",
+   "big": "TEAS",
+   "bigs": "and course finals",
+   "p": "Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice, every option explained.",
+   "cta": "See the exams",
+   "small": ""
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It opens with a patient, checks what you need first, then walks the mechanism one cause at a time.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Use the tools.</b> Predict what changes, build feedback loops, trace pathways, read graphs and practice for lab practicals.",
+    "<b>Check your mastery.</b> Your dashboard shows your weakest topics and core concepts, and what to do next."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": [
+   "Seven tools that make you",
+   "do the physiology"
+  ],
+  "tools_lede": "Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.",
+  "tools": [
+   [
+    "Virtual lab practical",
+    "Identify structures on real figures: explore, study, quiz, or a timed practical.",
+    ""
+   ],
+   [
+    "Predict the change",
+    "Something changes in the body: predict what goes up, down or stays the same, then see the chain.",
+    ""
+   ],
+   [
+    "Feedback loop builder",
+    "Build each homeostatic loop from stimulus to response.",
+    ""
+   ],
+   [
+    "Pathway tracer",
+    "Put the steps of a pathway in order, find the missing step, or spot the error.",
+    ""
+   ],
+   [
+    "Graph reader",
+    "Read values off physiology graphs, name the phases, and predict how curves shift.",
+    ""
+   ],
+   [
+    "Worked-example calculators",
+    "Cardiac output, MAP, flow and resistance, and capillary filtration, every step shown.",
+    ""
+   ],
+   [
+    "Word root builder",
+    "Split any term into parts you already know. 957 terms.",
+    ""
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "list",
+    "eye": "Only in Anatomy &amp; Physiology",
+    "h": "Eight core concepts that explain every system.",
+    "p": "The ideas the whole course keeps returning to, each with its own page and drills.",
+    "items": [
+     "Homeostasis",
+     "Structure and function",
+     "Flow down gradients",
+     "Cell-to-cell communication",
+     "Membranes and compartments",
+     "Energy and ATP",
+     "Mass balance",
+     "Interdependence of systems"
+    ],
+    "cta": "Open the core concepts"
+   },
+   {
+    "kind": "small",
+    "eye": "Figures",
+    "h": "Figure credits",
+    "p": "Every figure’s source and license, on its own page."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Topic, system and core concept drills, mixed review and your missed questions."
+   ],
+   [
+    "Review",
+    "Your spaced review queue."
+   ],
+   [
+    "Exams",
+    "Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice."
+   ],
+   [
+    "Tools",
+    "Lab practical, predict the change, feedback loops, pathways, graphs, calculators and word roots."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary and comparison tables."
+   ],
+   [
+    "Glossary",
+    "Every term, with word roots and where it is taught."
+   ],
+   [
+    "Core concepts",
+    "Eight ideas that explain every system."
+   ],
+   [
+    "Dashboard",
+    "Mastery by topic, system and core concept."
+   ]
+  ],
+  "sample": {
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read what changed"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": "",
+   "tags": [
+    "Chemistry and physics for physiology",
+    "Gradients, pressure and flow"
+   ],
+   "q": "The radius of a tube is cut to half its original value. The pressures at both ends stay the same, and so do the tube’s length and the fluid. What happens to the flow?",
+   "opts": [
+    "It falls to 1/2 of the original",
+    "It falls to 1/4 of the original",
+    "It is unchanged: pressure alone sets the flow",
+    "It falls to 1/16 of the original"
+   ],
+   "more": "Open the lesson on gradients, pressure and flow"
+  },
+  "deal": {
+   "free": [
+    "The notes page for every topic, the glossary and the flashcards",
+    "The Foundations chapters, fully interactive",
+    "15 practice or review questions a day from any chapter",
+    "One full exam, and three of the interactive tools"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "From $20.30",
+   "was": "$29",
+   "note": "Founding price until 31 January 2027. One payment for semester (5 months).",
+   "prem": [
+    "Every interactive lesson",
+    "The full 3,321-question bank, unlimited practice and review",
+    "Unlimited exams",
+    "All the interactive tools, including the lab practical",
+    "Detailed dashboard analytics"
+   ],
+   "name": "Anatomy &amp; Physiology"
+  },
+  "foot": [
+   "LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for. OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Figure credits",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the Sources page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.",
+  "ink": "#A33B26",
+  "tint": "#FBE9E4",
+  "bbg": "#4A1A1F",
+  "bac": "#FF8A6B",
+  "t1": "Anatomy &amp;",
+  "t2": "Physiology",
+  "coverhand": "how your body is built",
+  "try": {
+   "ok": 3,
+   "title": "One sixteenth of the flow.",
+   "why": "Resistance depends on 1 ÷ radius to the fourth power. Halving the radius makes the radius to the fourth power (½)⁴ = 1/16 as large, so resistance becomes 16 times larger. With ΔP unchanged, F = ΔP / R becomes 1/16 of the original."
+  },
+  "note": "OpenStax and HAPS aligned",
+  "mapsub": "Three parts, read in order."
+ },
+ "apbio": {
+  "name": "AP® Biology",
+  "short": "AP® Biology",
+  "tabname": "AP® Biology",
+  "pill": "AP® Biology · free to start",
+  "beta": true,
+  "h1a": "AP® Biology,",
+  "h1b": "taught from scratch, in order.",
+  "hand": "every unit, data questions",
+  "lede": "Each topic taught from scratch, in framework order. See the process, then answer data-heavy questions like the real exam.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Osmosis and water potential",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Units 1 and 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Units 1 and 2 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "60 questions",
+    "multiple choice · 90 minutes"
+   ],
+   [
+    "Section II",
+    "6 free response",
+    "written answers · 90 minutes"
+   ],
+   [
+    "The question bank",
+    "1,487 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Structure of Water and Hydrogen Bonding",
+   "Unit 1 · Chemistry of Life. Units 1 and 2 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Water Watcher",
+   [
+    "Units",
+    "Skills track"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with structure of water and hydrogen bonding: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a science practice, with stimulus sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams, scored with rubrics.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "8 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "8 units and 61 topics in the order of the 2025 course framework, plus 14 skills topics built on the official formula sheet: statistics, rates, water potential and experimental design. Each topic is taught from scratch for when your class moves too fast, with an interactive lesson, a free notes page and exam-style practice, and each unit has a printable unit sheet.",
+   "1,487 practice questions, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.",
+   "<b class=\"ink\">All 75 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Units 1 and 2 are free too. The units in framework order, then the skills track: the math and experimental design the exam tests.",
+  "units": [
+   [
+    "1",
+    "Chemistry of Life",
+    "7 topics",
+    "8 to 11%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Cell Structure and Function",
+    "10 topics",
+    "10 to 13%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "Cellular Energetics",
+    "6 topics",
+    "12 to 16%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Cell Communication and Cell Cycle",
+    "6 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Heredity",
+    "5 topics",
+    "8 to 11%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Gene Expression and Regulation",
+    "8 topics",
+    "12 to 16%",
+    false,
+    false
+   ],
+   [
+    "7",
+    "Natural Selection",
+    "12 topics",
+    "13 to 20%",
+    false,
+    false
+   ],
+   [
+    "8",
+    "Ecology",
+    "7 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Statistics and math",
+    "9 topics",
+    "Skills track",
+    false,
+    true
+   ],
+   [
+    "S2",
+    "Experimental design and argumentation",
+    "5 topics",
+    "Skills track",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Justification trainer",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "6",
+   "bigs": "free response questions on the exam",
+   "p": "All six free-response types, with rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams, scored with rubrics."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Run the simulators.</b> Watch the process, change one variable, then answer the data questions about what you saw.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and science practice, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Ten simulators ",
+  "tools_h2": null,
+  "tools_lede": "Change one thing and watch water move, an enzyme slow down, an operon switch on or a population grow, then answer the questions about what you saw. The osmosis and water potential simulator is free.",
+  "tools": [
+   [
+    "Osmosis and water potential",
+    "Compare water potential inside and out, watch the mass change, and build the potato core graph.",
+    "free"
+   ],
+   [
+    "Enzyme activity and inhibition",
+    "Saturation, temperature and pH optima, and competitive against noncompetitive inhibitors, with data you collect.",
+    "Premium"
+   ],
+   [
+    "Signal transduction and amplification",
+    "Receptor to response: where a signal is amplified, how it is switched off, and what each block does.",
+    "Premium"
+   ],
+   [
+    "Cell cycle checkpoints",
+    "G1, G2 and M checkpoints, p53, Rb and oncogenes, with a DNA content histogram.",
+    "Premium"
+   ],
+   [
+    "Meiosis and nondisjunction",
+    "Crossing over, independent assortment and 2ⁿ, n+1 and n−1 gametes, and a comparison with mitosis.",
+    "Premium"
+   ],
+   [
+    "Lac and trp operons",
+    "Inducible and repressible operons, CAP–cAMP, repressor mutations and the mRNA–enzyme lag.",
+    "Premium"
+   ],
+   [
+    "Hardy-Weinberg and genetic drift",
+    "Drift, selection, gene flow, mutation and non-random mating, with fixation counts and chi-square.",
+    "Premium"
+   ],
+   [
+    "Phylogenetic tree reading",
+    "Cladograms and a DNA tree: rotation, MRCA, clades, characters on branches, and building a tree.",
+    "Premium"
+   ],
+   [
+    "Population growth",
+    "dN/dt = r_max N and r_max N(K − N)/K, the hump at K/2, and density-independent events.",
+    "Premium"
+   ],
+   [
+    "Energy flow and ecological pyramids",
+    "GPP and NPP, heat lost at each level, energy and biomass pyramids, and biomagnification.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [
+   [
+    "Skills tools",
+    [
+     "Mean, SD and standard error",
+     "Confidence intervals and error bars",
+     "Chi-square test",
+     "Rates and percent change",
+     "Water potential calculations",
+     "Hardy-Weinberg calculations",
+     "Simpson’s diversity index",
+     "Graph builder"
+    ]
+   ],
+   [
+    "Drills",
+    [
+     "Experimental design and argumentation"
+    ]
+   ]
+  ],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Biology",
+    "h": "Justification trainer",
+    "p": "Explain and justify with a mechanism and evidence, checked against a rubric."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Biology",
+    "h": "Free unit practice tests",
+    "p": "A free sample test for every unit, with every option explained."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a science practice, with stimulus sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams, scored with rubrics."
+   ],
+   [
+    "Free-response practice",
+    "All six free-response types, with rubrics and sample answers."
+   ],
+   [
+    "Justification trainer",
+    "Explain and justify with a mechanism and evidence, checked against a rubric."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary."
+   ],
+   [
+    "Tools",
+    "Simulators, then the questions about what you saw."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and science practice."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 2 · Cell Structure and Function",
+    "Cell Size"
+   ],
+   "q": "On hot days, African elephants flap their very large, thin ears, which are full of blood vessels. How do the ears help the elephant?",
+   "opts": [
+    "They add a lot of surface for little volume, so heat leaves the blood faster.",
+    "They make the elephant look larger to predators, so it can rest more and use less oxygen per gram.",
+    "They store extra water, which the elephant draws on to keep its blood cool on hot days.",
+    "They lower the elephant's volume, which lowers its body temperature."
+   ],
+   "more": "Open the free lesson on cell size",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The cram-kit study plan outline, printable",
+    "Every lesson in Units 1 and 2, and every skills lesson",
+    "One simulator",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every simulator",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and science practice"
+   ],
+   "name": "AP® Biology"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Ten simulators that let you see the process.",
+  "hidden": false,
+  "ink": "#2D6A1F",
+  "tint": "#E4F1DD",
+  "bbg": "#1B4422",
+  "bac": "#7CCB6B",
+  "t1": "AP®",
+  "t2": "Biology",
+  "coverhand": "every unit, data questions",
+  "try": {
+   "ok": 0,
+   "title": "More surface for little volume.",
+   "why": "A huge animal has a low surface area ÷ volume and loses heat slowly. Large, thin ears with many blood vessels add a lot of exchange surface, and flapping moves air over it, so heat leaves the blood faster."
+  },
+  "note": "2026 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
+ "apchem": {
+  "name": "AP® Chemistry",
+  "short": "AP® Chemistry",
+  "tabname": "AP® Chemistry",
+  "pill": "AP® Chemistry · free to start",
+  "beta": true,
+  "h1a": "AP® Chemistry,",
+  "h1b": "one particle at a time.",
+  "hand": "units and sig figs, checked",
+  "lede": "Each topic taught from scratch at the particle level, in framework order, then practice that checks your reasoning.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Periodic trends and PES",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Units 1 and 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Units 1 and 2 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "60 questions",
+    "multiple choice · 90 minutes"
+   ],
+   [
+    "Section II",
+    "7 free response",
+    "written answers"
+   ],
+   [
+    "The question bank",
+    "1,565 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Units and Dimensional Analysis",
+   "Skills · Math you need. Units 1 and 2 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Mole Counter",
+   [
+    "Units",
+    "Math you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with units and dimensional analysis: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a science practice, with stimulus sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the real 60 + 7 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "9 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "9 units and 91 topics in the order of the 2024 course framework, plus 5 math refresher topics built on the official equations and constants sheet. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "1,565 practice questions, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation. Practice checks what the exam checks: units, significant figures, particle diagrams and justifications that compare both species.",
+   "<b class=\"ink\">All 96 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Units 1 and 2 are free too. The units in framework order, then the math refresher: logs, exponents, scientific notation, significant figures and units, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "Atomic Structure and Properties",
+    "8 topics",
+    "7 to 9%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Compound Structure and Properties",
+    "7 topics",
+    "7 to 9%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "Properties of Substances and Mixtures",
+    "13 topics",
+    "18 to 22%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Chemical Reactions",
+    "9 topics",
+    "7 to 9%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Kinetics",
+    "11 topics",
+    "7 to 9%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Thermochemistry",
+    "9 topics",
+    "7 to 9%",
+    false,
+    false
+   ],
+   [
+    "7",
+    "Equilibrium",
+    "12 topics",
+    "7 to 9%",
+    false,
+    false
+   ],
+   [
+    "8",
+    "Acids and Bases",
+    "11 topics",
+    "11 to 15%",
+    false,
+    false
+   ],
+   [
+    "9",
+    "Thermodynamics and Electrochemistry",
+    "11 topics",
+    "7 to 9%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Math you need",
+    "5 topics",
+    "Math you need",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Justification trainer",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "7",
+   "bigs": "free response questions on the exam",
+   "p": "Long and short free-response questions, with rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the real 60 + 7 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Justifications, particle diagrams, equilibrium and buffer drills, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and science practice, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Five trainers ",
+  "tools_h2": null,
+  "tools_lede": "Write a justification and check it against the rubric, place the ions and water molecules in a particle diagram, run unlimited equilibrium and buffer drills, then answer the questions about what you did. The periodic trends and pes trainer is free.",
+  "tools": [
+   [
+    "Periodic trends and PES",
+    "Color the table by a trend, tap an atom for its spectrum, and explain every comparison with Coulomb's law.",
+    "free"
+   ],
+   [
+    "Particle diagrams",
+    "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle.",
+    "free"
+   ],
+   [
+    "Q vs K",
+    "Q from numbers or particles, the direction of the shift, and the wording that earns the point.",
+    "Premium"
+   ],
+   [
+    "Equilibrium and kinetics simulator",
+    "Heat, compress, add or remove molecules and add a catalyst; watch Q return to K and the collision energies change.",
+    "Premium"
+   ],
+   [
+    "Titration curve reader",
+    "Equivalence, half-equivalence and pKa, indicator choice and the species at each point.",
+    "free"
+   ]
+  ],
+  "tools_also": [
+   [
+    "Skills tools",
+    [
+     "Units and significant figures"
+    ]
+   ],
+   [
+    "Drills",
+    [
+     "ICE table drills",
+     "Buffer and Henderson-Hasselbalch drills"
+    ]
+   ]
+  ],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Chemistry",
+    "h": "Equations sheet, explained",
+    "p": "What each equation and constant is for, and what the sheet leaves out."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Chemistry",
+    "h": "Score calculator",
+    "p": "An estimated score from your multiple-choice and free-response results."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a science practice, with stimulus sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the real 60 + 7 format."
+   ],
+   [
+    "Free-response practice",
+    "Long and short free-response questions, with rubrics and sample answers."
+   ],
+   [
+    "Justification trainer",
+    "Explain and justify prompts with a rubric checklist and two model answers."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary."
+   ],
+   [
+    "Tools",
+    "Trainers and drills, then the questions about what you did."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and science practice."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Equations sheet, explained",
+    "What each equation and constant is for, and what the sheet leaves out."
+   ],
+   [
+    "Score calculator",
+    "An estimated score from your multiple-choice and free-response results."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · Atomic Structure and Properties",
+    "Moles and Molar Mass"
+   ],
+   "q": "What does one mole of a substance contain?",
+   "opts": [
+    "One gram of the substance, whatever it is made of",
+    "The number of atoms in one molecule of the substance",
+    "6.022 × 10²³ of the particles named, such as atoms or molecules",
+    "Enough of the substance to fill a 1-liter container"
+   ],
+   "more": "Open the free lesson on moles and molar mass",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The cram-kit study plan outline, printable",
+    "Every lesson in Units 1 and 2, and every math refresher lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer and drill: justifications, particle diagrams, equilibrium and buffer drills",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and science practice"
+   ],
+   "name": "AP® Chemistry"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Five trainers for what the exam marks hardest.",
+  "hidden": false,
+  "ink": "#1D44A6",
+  "tint": "#E3EAFA",
+  "bbg": "#1A2C78",
+  "bac": "#8FAEFF",
+  "t1": "AP®",
+  "t2": "Chemistry",
+  "coverhand": "units and sig figs, checked",
+  "try": {
+   "ok": 2,
+   "title": "6.022 × 10²³ particles.",
+   "why": "One mole is Avogadro’s number, 6.022 × 10²³, of whatever particles you name. A mole is a count, not a mass or a volume."
+  },
+  "note": "2026 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
+ "apphys": {
+  "name": "AP® Physics 1",
+  "short": "AP® Physics 1",
+  "tabname": "AP® Physics 1",
+  "pill": "AP® Physics 1 · free to start",
+  "beta": true,
+  "h1a": "AP® Physics 1,",
+  "h1b": "one force at a time.",
+  "hand": "force by force",
+  "lede": "Each topic taught from scratch, in framework order, then practice that checks diagrams, graphs and justifications.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Motion graphs",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Units 1 and 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Units 1 and 2 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "42 questions",
+    "multiple choice · 85 minutes"
+   ],
+   [
+    "Section II",
+    "4 free response",
+    "written answers · 95 minutes"
+   ],
+   [
+    "The question bank",
+    "747 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Units, Prefixes and Significant Figures",
+   "Skills · Math you need. Units 1 and 2 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Point Particle",
+   [
+    "Units",
+    "Math you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with units, prefixes and significant figures: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a science practice, with stimulus sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the real 42 + 4 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "8 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "8 units and 43 topics in the order of the 2024-25 course framework, plus 5 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "747 practice questions, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation. Practice checks what the exam checks: free-body diagrams, graphs, units and justifications that name the condition.",
+   "<b class=\"ink\">All 48 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Units 1 and 2 are free too. The units in framework order, then the math you need: units, symbols, proportions, graphs and vector components, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "Kinematics",
+    "5 topics",
+    "10 to 15%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Force and Translational Dynamics",
+    "9 topics",
+    "18 to 23%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "Work, Energy, and Power",
+    "5 topics",
+    "18 to 23%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Linear Momentum",
+    "4 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Torque and Rotational Dynamics",
+    "6 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Energy and Momentum of Rotating Systems",
+    "6 topics",
+    "5 to 8%",
+    false,
+    false
+   ],
+   [
+    "7",
+    "Oscillations",
+    "4 topics",
+    "5 to 8%",
+    false,
+    false
+   ],
+   [
+    "8",
+    "Fluids",
+    "4 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Math you need",
+    "5 topics",
+    "Math you need",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Justification trainer",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "4",
+   "bigs": "free response questions on the exam",
+   "p": "All four free-response types, with rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the real 42 + 4 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Free-body diagrams, energy bar charts, motion graphs and lab design, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and science practice, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Ten trainers ",
+  "tools_h2": null,
+  "tools_lede": "Drag forces onto a real scene and get each one graded, drive a cart and watch its graphs draw, build energy and momentum bar charts, design a lab, then answer the questions about what you did. The motion graphs and free-body diagrams trainers are free.",
+  "tools": [
+   [
+    "Motion graphs",
+    "Drive a cart and watch x, v and a draw themselves; read slope and area.",
+    "free"
+   ],
+   [
+    "Lab design",
+    "What to measure with what, what to plot for a straight line, and what the slope means.",
+    "Premium"
+   ],
+   [
+    "Projectile lab",
+    "Launch at any angle and speed; components, range and time of flight.",
+    "Premium"
+   ],
+   [
+    "Free-body diagrams",
+    "Drag and size the forces on real scenes; each force graded, every miss named.",
+    "free"
+   ],
+   [
+    "Energy bar charts",
+    "Skater track, spring launcher and rough ramp, with live energy bars.",
+    "Premium"
+   ],
+   [
+    "Collision lab",
+    "Elastic to sticky collisions with momentum and energy bars, and impulse.",
+    "Premium"
+   ],
+   [
+    "Torque balance",
+    "Balance a meter stick with masses; lever arms, torques and rotational inertia.",
+    "Premium"
+   ],
+   [
+    "Rotation lab",
+    "Rolling races, a spinning skater and orbit energy.",
+    "Premium"
+   ],
+   [
+    "Oscillator lab",
+    "Spring and pendulum: graphs, energy, and what sets the period.",
+    "Premium"
+   ],
+   [
+    "Fluids tank",
+    "Buoyancy, pressure with depth and flow through a pipe.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [
+   [
+    "Skills tools",
+    [
+     "Scaling drills"
+    ]
+   ]
+  ],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Physics 1",
+    "h": "Equations sheet, explained",
+    "p": "What each equation and constant is for, and what the sheet leaves out."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Physics 1",
+    "h": "Score calculator",
+    "p": "An estimated score from your multiple-choice and free-response results."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a science practice, with stimulus sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the real 42 + 4 format."
+   ],
+   [
+    "Free-response practice",
+    "All four free-response types, with rubrics and sample answers."
+   ],
+   [
+    "Justification trainer",
+    "Explain and justify prompts with a rubric checklist and two model answers."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary."
+   ],
+   [
+    "Tools",
+    "Trainers and drills, then the questions about what you did."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and science practice."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Equations sheet, explained",
+    "What each equation and constant is for, and what the sheet leaves out."
+   ],
+   [
+    "Score calculator",
+    "An estimated score from your multiple-choice and free-response results."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · Kinematics",
+    "Displacement, Velocity and Acceleration"
+   ],
+   "q": "Two bikes each gain 6.0 m/s of velocity. Bike A takes 3.0 s and bike B takes 1.5 s. How does bike B's average acceleration compare with bike A's?",
+   "opts": [
+    "Half as large",
+    "The same, because both gain 6.0 m/s",
+    "Twice as large",
+    "Four times as large"
+   ],
+   "more": "Open the free lesson on displacement, velocity and acceleration",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The cram-kit study plan outline, printable",
+    "Every lesson in Units 1 and 2, and every \"Math you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: free-body diagrams, motion graphs and the scaling drills"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: free-body diagrams, motion graphs, energy bar charts, collisions, lab design and more",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and science practice"
+   ],
+   "name": "AP® Physics 1"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Ten trainers for what the exam marks hardest.",
+  "hidden": false,
+  "ink": "#734200",
+  "tint": "#FBEED5",
+  "bbg": "#2A1D06",
+  "bac": "#FFB21E",
+  "t1": "AP®",
+  "t2": "Physics 1",
+  "coverhand": "force by force",
+  "try": {
+   "ok": 2,
+   "title": "Twice as large.",
+   "why": "a = Δv/Δt: 6.0/3.0 = 2.0 m/s² and 6.0/1.5 = 4.0 m/s². Halving Δt for the same Δv doubles the acceleration."
+  },
+  "note": "2026 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
+ "apcalc": {
+  "name": "AP® Calculus AB",
+  "short": "AP® Calculus AB",
+  "tabname": "AP® Calculus AB",
+  "pill": "AP® Calculus AB · free to start",
+  "beta": true,
+  "h1a": "AP® Calculus AB,",
+  "h1b": "one idea at a time.",
+  "hand": "typed like real math",
+  "lede": "Each topic taught from scratch, in framework order, then practice that grades typed answers and justifications.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Limit explorer",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Units 1 and 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Units 1 and 2 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "42 questions",
+    "multiple choice · 100 minutes"
+   ],
+   [
+    "Section II",
+    "6 free response",
+    "written answers · 90 minutes"
+   ],
+   [
+    "The question bank",
+    "1,392 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Functions and Their Graphs",
+   "Skills · Math you need. Units 1 and 2 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Limit Seeker",
+   [
+    "Units",
+    "Math you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with functions and their graphs: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a mathematical practice, with graph and table sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the real four-part format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "8 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "8 units and 81 topics in the order of the course framework (the Calculus AB topics only), plus 7 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "1,392 practice questions, many in stimulus sets of four or five that share one graph or table, as on the real exam. Every option has its own explanation, and typed answers are graded by their value, so any correct form counts. Practice checks what the exam checks: answers you type as expressions, graphs and tables, calculator and no-calculator parts, and justifications that name the theorem.",
+   "<b class=\"ink\">All 88 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Units 1 and 2 are free too. The units in framework order, then the math you need: functions and their graphs, exponents, algebra for limits, trigonometry, exponentials and logarithms, inverse functions and geometry, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "Limits and Continuity",
+    "16 topics",
+    "10 to 15%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Differentiation: Definition and Fundamental Properties",
+    "10 topics",
+    "10 to 15%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "Differentiation: Composite, Implicit, and Inverse Functions",
+    "6 topics",
+    "5 to 10%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Contextual Applications of Differentiation",
+    "7 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Analytical Applications of Differentiation",
+    "12 topics",
+    "15 to 20%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Integration and Accumulation of Change",
+    "11 topics",
+    "15 to 20%",
+    false,
+    false
+   ],
+   [
+    "7",
+    "Differential Equations",
+    "7 topics",
+    "5 to 10%",
+    false,
+    false
+   ],
+   [
+    "8",
+    "Applications of Integration",
+    "12 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Math you need",
+    "7 topics",
+    "Math you need",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Justification trainer",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "6",
+   "bigs": "free response questions on the exam",
+   "p": "Every recurring free-response type, with 9-point rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the real four-part format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Tangent lines, limits, derivative rules, Riemann sums and slope fields, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and mathematical practice, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Nine trainers ",
+  "tools_h2": null,
+  "tools_lede": "Drag a point and watch the secant become the tangent, zoom in on a limit, build derivatives rule by rule, fill an area with rectangles, trace a slope field, then answer the questions about what you saw. The limit explorer and tangent tracer trainers are free, and so are the rule drills.",
+  "tools": [
+   [
+    "Limit explorer",
+    "Zoom in on a point and watch the limit from each side.",
+    "free"
+   ],
+   [
+    "Tangent tracer",
+    "The secant becomes the tangent; the derivative draws itself.",
+    "free"
+   ],
+   [
+    "Related rates",
+    "Watch rates change together, then write the equation that links them.",
+    "Premium"
+   ],
+   [
+    "Motion lab",
+    "A particle on a line, with its three graphs linked.",
+    "Premium"
+   ],
+   [
+    "Curve analyzer",
+    "Read a function from its derivatives, and justify what you see.",
+    "Premium"
+   ],
+   [
+    "Riemann sums",
+    "Build left, right, midpoint and trapezoid sums, from graphs and tables.",
+    "Premium"
+   ],
+   [
+    "Accumulation",
+    "Watch g(x) accumulate the area under f.",
+    "Premium"
+   ],
+   [
+    "Slope fields",
+    "Draw the field, trace a solution, then solve it exactly.",
+    "Premium"
+   ],
+   [
+    "Area and volume",
+    "Regions, discs, washers and cross sections, in 3D.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [
+   [
+    "Drills",
+    [
+     "Rule drills"
+    ]
+   ]
+  ],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Calculus AB",
+    "h": "Formulas to know",
+    "p": "No formula sheet is given on the exam: every formula and theorem you need, and where it is taught."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Calculus AB",
+    "h": "Score calculator",
+    "p": "An estimated score from your multiple-choice and free-response results."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a mathematical practice, with graph and table sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the real four-part format."
+   ],
+   [
+    "Free-response practice",
+    "Every recurring free-response type, with 9-point rubrics and sample answers."
+   ],
+   [
+    "Justification trainer",
+    "Justify with the right theorem and its hypotheses, checked against a rubric."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary."
+   ],
+   [
+    "Tools",
+    "Trainers and drills, then the questions about what you did."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and mathematical practice."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Formulas to know",
+    "No formula sheet is given on the exam: every formula and theorem you need, and where it is taught."
+   ],
+   [
+    "Score calculator",
+    "An estimated score from your multiple-choice and free-response results."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · Limits and Continuity",
+    "What a Limit Is and How to Write It"
+   ],
+   "q": "A function k has k(3) = 8, and as x approaches 3 from either side, the values k(x) close in on 6. Which is correct?",
+   "opts": [
+    "lim<sub>x→3</sub> k(x) = 6 and k(3) = 8",
+    "lim<sub>x→3</sub> k(x) = 8 and k(3) = 6",
+    "lim<sub>x→3</sub> k(x) = 8 and k(3) = 8",
+    "lim<sub>x→6</sub> k(x) = 3 and k(3) = 8"
+   ],
+   "more": "Open the free lesson on what a limit is and how to write it",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The cram-kit study plan outline, printable",
+    "Every lesson in Units 1 and 2, and every \"Math you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the tangent tracer, the limit explorer and the rule drills"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: related rates, motion, curve analysis, Riemann sums, accumulation, slope fields, area and volume",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and mathematical practice"
+   ],
+   "name": "AP® Calculus AB"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Nine trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#8C1036",
+  "tint": "#FCE8EE",
+  "bbg": "#4A1230",
+  "bac": "#FF5C9A",
+  "t1": "AP®",
+  "t2": "Calculus AB",
+  "coverhand": "typed like real math",
+  "try": {
+   "ok": 0,
+   "title": "Limit 6, value 8.",
+   "why": "The limit is where the values head (6); the value at 3 is what k actually gives there (8)."
+  },
+  "note": "2026 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
+ "apstat": {
+  "name": "AP® Statistics",
+  "short": "AP® Statistics",
+  "tabname": "AP® Statistics",
+  "pill": "AP® Statistics · free to start",
+  "beta": true,
+  "h1a": "AP® Statistics,",
+  "h1b": "one idea at a time.",
+  "hand": "conclusions in context",
+  "lede": "Each topic taught from scratch for the 2027 exam, then practice that checks your numbers, your setup and your conclusions in context.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Data explorer",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Unit 1. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Unit 1 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "42 questions",
+    "multiple choice · 90 minutes"
+   ],
+   [
+    "Section II",
+    "4 free response",
+    "written answers · 90 minutes"
+   ],
+   [
+    "The question bank",
+    "939 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Introducing Statistics: What Can We Learn from Data?",
+   "Unit 1 · Exploring One-Variable Data and Collecting Data. Unit 1 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Data Collector",
+   [
+    "Units",
+    "Math you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with introducing statistics: what can we learn from data?: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a skill, with the probability and regression sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "5 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "5 units and 55 topics in the order of the course framework (the revised course, first examined in May 2027), plus 5 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "939 practice questions, many in stimulus sets that share one data set, plot or table, as on the real exam. Every option has its own explanation; a number from a table and the same number from a calculator are both right. Practice checks what the exam checks: data and plots to read, the setup shown as the exam asks, and conclusions written in context, with the math you need placed just before it is used.",
+   "<b class=\"ink\">All 60 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Unit 1 are free too. The units in framework order, then the math you need: fractions and percents, formulas and square roots, inequalities in words, factorials and combinations, and lines, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "Exploring One-Variable Data and Collecting Data",
+    "13 topics",
+    "20 to 30%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Probability, Random Variables, and Probability Distributions",
+    "12 topics",
+    "15 to 25%",
+    false,
+    false
+   ],
+   [
+    "3",
+    "Inference for Categorical Data: Proportions",
+    "15 topics",
+    "15 to 25%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Inference for Quantitative Data: Means",
+    "10 topics",
+    "10 to 20%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Regression Analysis",
+    "5 topics",
+    "10 to 20%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Math you need",
+    "5 topics",
+    "Math you need",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Say it in context",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "4",
+   "bigs": "free response questions on the exam",
+   "p": "The four free-response question types, with 10-point rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Sampling distributions, intervals, p-values, chi-square and regression, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Ten trainers ",
+  "tools_h2": null,
+  "tools_lede": "Take a thousand samples and watch a sampling distribution build, drag a point and watch the mean and the regression line move, capture a parameter with a hundred intervals, shade a p-value, then answer the questions about what you saw. The data explorer, probability trees and sampling distributions trainers are free.",
+  "tools": [
+   [
+    "Data explorer",
+    "Drag a point and watch the mean, median and spread respond.",
+    "free"
+   ],
+   [
+    "Sampling lab",
+    "Draw four kinds of random sample and see where bias comes from.",
+    "Premium"
+   ],
+   [
+    "Design randomizer",
+    "Randomize an experiment and see why it allows cause and effect.",
+    "Premium"
+   ],
+   [
+    "Probability trees",
+    "Slice a two-way table and watch conditional probability appear.",
+    "free"
+   ],
+   [
+    "Distribution areas",
+    "Shade the area and read the probability, normal or binomial.",
+    "Premium"
+   ],
+   [
+    "Sampling distributions",
+    "Watch a sampling distribution build, sample by sample.",
+    "free"
+   ],
+   [
+    "Interval capture",
+    "See what 95% confident really means, one hundred intervals at a time.",
+    "Premium"
+   ],
+   [
+    "p-value explorer",
+    "Shade the p-value, then see Type I and II errors and power.",
+    "Premium"
+   ],
+   [
+    "Chi-square lab",
+    "Fill in expected counts and watch the chi-square statistic build.",
+    "Premium"
+   ],
+   [
+    "Regression lab",
+    "Drag points and watch the least-squares line and residuals respond.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Statistics",
+    "h": "The reference sheet, explained",
+    "p": "Every formula on the sheet the exam gives you, what it means and when to use it, how to read the tables, and what is not on it."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Statistics",
+    "h": "Say it in context",
+    "p": "Conclusions and interpretations in context, checked against a rubric."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a skill, with the probability and regression sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 format."
+   ],
+   [
+    "Free-response practice",
+    "The four free-response question types, with 10-point rubrics and sample answers."
+   ],
+   [
+    "Say it in context",
+    "Conclusions and interpretations in context, checked against a rubric."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary."
+   ],
+   [
+    "Tools",
+    "Trainers and simulators, then the questions about what you saw."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and skill."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "The reference sheet, explained",
+    "Every formula on the sheet the exam gives you, what it means and when to use it, how to read the tables, and what is not on it."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · Exploring One-Variable Data and Collecting Data",
+    "Potential Problems with Sampling"
+   ],
+   "q": "A talk show asks viewers to text in their opinion of a new law; 50,000 viewers respond and 85% oppose the law. What is the best criticism?",
+   "opts": [
+    "50,000 responses is too small for a law that affects millions",
+    "Viewers chose to respond, so strong views are overrepresented",
+    "Texting costs money, so the results are illegal to report",
+    "85% is too high a result to be a real survey finding"
+   ],
+   "more": "Open the free lesson on potential problems with sampling",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The reference sheet, explained, and the cram-kit study plan outline",
+    "Every lesson in Unit 1, and every \"Math you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the sampling distribution machine, the data explorer and probability trees"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: sampling, experiments, distribution areas, interval capture, p-values and power, chi-square and regression",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and skill"
+   ],
+   "name": "AP® Statistics"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Ten trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#6E2470",
+  "tint": "#F5E6F4",
+  "bbg": "#0E3A52",
+  "bac": "#5CC8F0",
+  "t1": "AP®",
+  "t2": "Statistics",
+  "coverhand": "conclusions in context",
+  "try": {
+   "ok": 1,
+   "title": "Who chose to respond.",
+   "why": "A voluntary response sample is biased toward people with strong views. A huge sample does not fix it."
+  },
+  "note": "2026 to 2027 framework",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
+ "apenv": {
+  "name": "AP® Environmental Science",
+  "short": "AP® Environmental Science",
+  "tabname": "AP® Environmental Science",
+  "pill": "AP® Environmental Science · free to start",
+  "beta": true,
+  "h1a": "AP® Environmental Science,",
+  "h1b": "one system at a time.",
+  "hand": "every calculation, with units",
+  "lede": "Each topic taught from scratch for the May 2027 exam, then practice that checks your setup, your answer and its units, and answers specific enough to score.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Calculation studio",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Units 1 and 2. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Units 1 and 2 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "80 questions",
+    "multiple choice · 90 minutes"
+   ],
+   [
+    "Section II",
+    "3 free response",
+    "written answers · 70 minutes"
+   ],
+   [
+    "The question bank",
+    "1,625 questions",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Introduction to Ecosystems",
+   "Unit 1 · The Living World: Ecosystems. Units 1 and 2 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Field Observer",
+   [
+    "Units",
+    "Math you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with introduction to ecosystems: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a skill, with data, model and passage sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "9 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "9 units and 99 topics in the order of the course framework, for the May 2027 exam, plus 5 math topics placed where they are first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "1,625 practice questions, many in sets that share one data table, graph, model or passage, as on the real exam. Every option has its own explanation. Practice checks what the exam's readers check: the setup typed with brackets and units, the answer, and its units, each marked on its own, with the slip named. There is no formula sheet on the exam, so the formulas you must memorize have their own page and flashcards.",
+   "<b class=\"ink\">All 104 topics are built</b>, each with its lesson, notes and questions."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Units 1 and 2 are free too. The units in framework order, then the math you need: scientific notation, rates and per-capita values, unit conversions, percent change and doubling time, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "The Living World: Ecosystems",
+    "11 topics",
+    "6 to 8%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "The Living World: Biodiversity",
+    "7 topics",
+    "6 to 8%",
+    true,
+    false
+   ],
+   [
+    "3",
+    "Populations",
+    "9 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Earth Systems and Resources",
+    "9 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Land and Water Use",
+    "17 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "6",
+    "Energy Resources and Consumption",
+    "13 topics",
+    "10 to 15%",
+    false,
+    false
+   ],
+   [
+    "7",
+    "Atmospheric Pollution",
+    "8 topics",
+    "7 to 10%",
+    false,
+    false
+   ],
+   [
+    "8",
+    "Aquatic and Terrestrial Pollution",
+    "15 topics",
+    "7 to 10%",
+    false,
+    false
+   ],
+   [
+    "9",
+    "Global Change",
+    "10 topics",
+    "15 to 20%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Math you need",
+    "5 topics",
+    "Math you need",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Make it specific",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "3",
+   "bigs": "free response questions on the exam",
+   "p": "The three free-response question types, with 10-point rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Calculations, cycles, energy flow, population growth, pollution chains and the greenhouse effect, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Twelve trainers ",
+  "tools_h2": null,
+  "tools_lede": "Type a calculation as the exam's readers grade it and see the setup, answer and units marked; move energy up a food chain, tap a step of a cycle, overshoot a carrying capacity, run smog through a day, then answer the questions about what you saw. The calculation studio, energy flow and cycles trainers are free.",
+  "tools": [
+   [
+    "Calculation studio",
+    "Setup, answer and units, each graded the way the readers grade them.",
+    "free"
+   ],
+   [
+    "Energy flow",
+    "Move energy up a food chain and watch 90% leave as heat.",
+    "free"
+   ],
+   [
+    "Cycles",
+    "Tap a process, then perturb a reservoir and watch the flows shift.",
+    "free"
+   ],
+   [
+    "Population growth",
+    "Grow a population to its carrying capacity, and past it.",
+    "Premium"
+   ],
+   [
+    "Age structure",
+    "Build a population pyramid and read its future.",
+    "Premium"
+   ],
+   [
+    "Soil texture",
+    "Find a soil on the texture triangle and see how it holds water.",
+    "Premium"
+   ],
+   [
+    "Earth and climate",
+    "Move through the year with the tilted Earth, then switch between El Niño and La Niña.",
+    "Premium"
+   ],
+   [
+    "Energy chain",
+    "Follow energy from fuel to outlet, step by step.",
+    "Premium"
+   ],
+   [
+    "Air pollution",
+    "Run smog through a day and trap it under an inversion.",
+    "Premium"
+   ],
+   [
+    "Water pollution",
+    "Add fertilizer to a lake and follow the oxygen down.",
+    "Premium"
+   ],
+   [
+    "Dose and response",
+    "Read LD50 off a curve and watch a toxin climb a food chain.",
+    "Premium"
+   ],
+   [
+    "Climate change",
+    "Keep the greenhouse effect and the ozone layer apart for good.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Environmental Science",
+    "h": "Formulas you must memorize",
+    "p": "The exam gives no formula sheet: every equation you need, when to use it and the classic trap."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Environmental Science",
+    "h": "Make it specific",
+    "p": "Hypotheses, chains and solutions specific enough to score, checked against a rubric."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a skill, with data, model and passage sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 format."
+   ],
+   [
+    "Free-response practice",
+    "The three free-response question types, with 10-point rubrics and sample answers."
+   ],
+   [
+    "Make it specific",
+    "Hypotheses, chains and solutions specific enough to score, checked against a rubric."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary and the formulas."
+   ],
+   [
+    "Tools",
+    "Trainers and simulators, then the questions about what you saw."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and skill."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Formulas you must memorize",
+    "The exam gives no formula sheet: every equation you need, when to use it and the classic trap."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · The Living World: Ecosystems",
+    "Free unit practice test, question 9"
+   ],
+   "q": "Why does burning fossil fuels increase the CO₂ in the atmosphere so much faster than natural processes remove it?",
+   "opts": [
+    "It releases in decades carbon buried over millions of years.",
+    "It turns the oxygen in the air directly into carbon dioxide.",
+    "It stops photosynthesis in the forests near the fuel.",
+    "It releases methane, which then hardens into rock."
+   ],
+   "more": "Take the free Unit 1 practice test",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One real question from the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See the cause and effect behind it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The formulas you must memorize, explained, and the cram-kit study plan outline",
+    "Every lesson in Units 1 and 2, and every \"Math you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the calculation studio, energy flow and the nutrient cycles"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: population growth, age structure, soil, climate, energy, pollution, dose-response and climate change",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and science practice"
+   ],
+   "name": "AP® Environmental Science"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Environmental Science teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Twelve trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#474A10",
+  "tint": "#EFF0DA",
+  "bbg": "#22400F",
+  "bac": "#A6DB5C",
+  "t1": "AP® Environmental",
+  "t2": "Science",
+  "coverhand": "every calculation, with units",
+  "try": {
+   "ok": 0,
+   "title": "Old carbon, released fast.",
+   "why": "Fossil fuels are ancient carbon that the slow part of the cycle buried. Combustion releases it far faster than photosynthesis, the ocean and sedimentation can take it back up."
+  },
+  "note": "2026 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
+ "_founder": "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep."
+}

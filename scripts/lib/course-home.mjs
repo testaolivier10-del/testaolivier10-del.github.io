@@ -9,6 +9,7 @@
    script (the AP® and A&P homes fill the start card) or, for NREMT and ochem, from levl_resume. */
 import { COVERS } from './covers.mjs';
 import { premiumData, foundingPrice, money, longDate } from './premium-data.mjs';
+import { r3HomeMain, homeData, parseSample } from './r3-home.mjs';
 
 const esc = (s) => String(s).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -116,6 +117,49 @@ export function homeTools({ a = 'Tools', b, lede, tools, allHref }) {
         freeUnits, freeUnitsText, dailyFree, chapters, topicsOf, chapterBuilt, partLabel, nq, apps, tools,
         toolIcon, exam: { mcq, mcqTime, frq, frqTime }, sample } */
 export function apHomeMain(o) {
+  return r3HomeMain(o.key, apHomeCtx(o));
+}
+
+/* Round 3: the AP® course home is r3HomeMain (scripts/lib/r3-home.mjs). This turns the builder's locals
+   into its links and hooks. */
+const EXTRA_PAGE = {
+  'justification trainer': 'justify.html', 'say it in context': 'justify.html', 'make it specific': 'justify.html',
+  'free unit practice tests': 'exams.html', 'score calculator': 'score-calculator.html',
+  'equations sheet, explained': 'equations-sheet.html', 'formulas to know': 'formula-sheet.html',
+  'the reference sheet, explained': 'formula-sheet.html', 'formulas you must memorize': 'formula-sheet.html',
+};
+export function apHomeCtx(o) {
+  const d = homeData(o.key);
+  const first = o.first;
+  const firstHref = first ? `lessons/${first.id}.html` : 'learn.html';
+  const tools = (o.tools || []).map((t) => ({ slug: t.slug, name: t.name, href: `tools/${t.slug}.html` }));
+  const app = (h1) => (o.apps || []).find((a) => a.h1.toLowerCase() === String(h1).toLowerCase());
+  const byTitle = (t) => o.chapters.find((c) => c.title.replace(/&/g, '&amp;') === t || c.title === t);
+  const sample = parseSample(o.sample);
+  const heroTool = tools.find((t) => t.name.toLowerCase() === d.btn3.toLowerCase());
+  return {
+    up: '../',
+    hooks: { kind: 'ap', prefix: o.prefix },
+    primaryHref: firstHref,
+    primaryScript: first ? `<script>try{var d=JSON.parse(localStorage.getItem('${o.storageKey}')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : '',
+    parts: [...new Set(o.chapters.map((c) => c.part))],
+    tools,
+    sample,
+    links: {
+      btn2: 'learn.html', btn3: heroTool ? heroTool.href : 'tools.html',
+      toc: d.units.map(([, t]) => { const ch = byTitle(t); return ch && o.chapterBuilt(ch) ? `units/${ch.id}.html` : ''; }),
+      notes: 'learn.html',
+      chips: d.notes.chips.map(([t]) => (t === 'Glossary' ? 'glossary.html' : app(t) ? `${app(t).slug}.html` : '')),
+      steps: [firstHref, 'practice.html', 'exams.html'],
+      exam: 'frq.html',
+      tryMore: sample && sample.moreHref ? sample.moreHref : firstHref,
+      extras: d.extras.map((x) => EXTRA_PAGE[x.h.toLowerCase()] || ''),
+      guide: 'dashboard.html', freeCta: firstHref,
+    },
+  };
+}
+
+export function apHomeMainR2(o) {
   const P = o.prefix;
   const app = (slug) => (o.apps || []).find((a) => a.slug === slug);
   const prem = premiumData().COURSES[o.key] || { free: [] };

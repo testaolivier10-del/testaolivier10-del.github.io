@@ -670,7 +670,7 @@ ${tail({ depth, section: 'home', extra: ['env-home.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/env-home.css">\n' }) + body;
+    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/env-home.css">\n<link rel="stylesheet" href="../assets/course/r3.css">\n' }) + body;
   }
 
   /* --------------------------------------------------- app page shells */

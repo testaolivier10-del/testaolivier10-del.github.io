@@ -89,7 +89,8 @@ test('nothing published: no topic pages, every page noindex', () => {
 test('the course home has its own headline, plum and the bell curve, not Calculus\'', () => {
   const { root } = build('unit-4');
   const home = readFileSync(join(root, 'statistics/index.html'), 'utf8');
-  assert.match(home, /<h1 id="chTitle">AP&reg; Statistics, <span>one idea at a time\.<\/span><\/h1>/);
+  assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Statistics<\/span><\/h1>/);
+  assert.match(home, /<p class="deck">AP® Statistics, <span>one idea at a time\.<\/span><\/p>/);
   assert.doesNotMatch(home, /Chemistry|Biology|Physics|Calculus|derivative|integral|Limit Seeker|score-calculator/);
   assert.match(home, /assets\/stat\.css/);
   assert.match(home, /data-cover="apstat"/);

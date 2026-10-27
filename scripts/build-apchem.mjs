@@ -659,7 +659,7 @@ ${tail({ depth, section: 'home', extra: ['chem-home.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/chem-home.css">\n' }) + body;
+    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/chem-home.css">\n<link rel="stylesheet" href="../assets/course/r3.css">\n' }) + body;
   }
 
   /* --------------------------------------------------- app page shells */
