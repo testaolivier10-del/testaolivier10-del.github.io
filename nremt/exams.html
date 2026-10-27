@@ -40,6 +40,8 @@
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="practice.css">
+<link rel="stylesheet" href="../assets/course/r3.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 {
@@ -96,21 +98,22 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav></div>
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<main class="wrap cx-study" id="main">
+<main class="r3 r3-inner r3-exams cx-study" id="main" data-cover="nremt">
 
   <div id="introScreen">
-    <header class="page-head">
-      <div class="eyebrow">NREMT-EMT</div>
-      <h1>Exams</h1>
-      <p class="lede">A full 100-question exam in the proportions of the National Registry&rsquo;s five EMT exam domains (April 2025 outline), on a two-hour clock and scored by domain. Leave mid-way and it waits here for you.</p>
-    </header>
-
+<!-- r3-band:start -->
+<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav>
+<p class="issue">NREMT-EMT &middot; Exams <i></i></p>
+<h1 class="deck" id="r3Title">Exams <span>the full run.</span></h1>
+<p class="hand">on the clock, like test day</p>
+<p class="lede">A full 100-question exam in the proportions of the National Registry&rsquo;s five EMT exam domains (April 2025 outline), on a two-hour clock and scored by domain. Leave mid-way and it waits here for you.</p>
+<div class="hero-ctas"><a class="btn-chan" href="#r3Body" data-r3-start>Start timed exam</a></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/nremt.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<!-- r3-band:end -->
+    <div class="xshell r3-body" id="r3Body">
     <div class="cx-body has-rail">
       <div class="cx-main">
-        <!-- The free-exam notice: top of the body, as in every course
-             (practice-engine.js renderPremium fills #examGate). -->
-        <div id="examGate" class="premium-slot cx-notice-slot"></div>
-
         <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
           <div class="resume-exam-text" id="resumeExamText"></div>
           <div class="resume-exam-actions">
@@ -118,8 +121,11 @@
             <button class="exit-link" id="discardExamBtn">Discard</button>
           </div>
         </div>
-
-        <form class="cx-card cx-builder" novalidate aria-label="Set up an exam" onsubmit="return false">
+        <form class="cx-card cx-builder" id="setup" novalidate aria-label="Set up an exam" onsubmit="return false">
+          <div class="cx-builder-head"><h2>Set up <span>your exam</span></h2><p>Two steps, then the clock starts.</p></div>
+          <!-- The free-exam notice: top of the body, as in every course
+             (practice-engine.js renderPremium fills #examGate). -->
+        <div id="examGate" class="premium-slot cx-notice-slot"></div>
           <fieldset class="cx-step">
             <legend><span class="cx-step-n" aria-hidden="true">1</span>Choose an exam</legend>
             <div class="cx-choices">
@@ -153,15 +159,6 @@
             <button type="button" class="btn-press" id="startBtn">Start timed exam</button>
           </div>
         </form>
-
-        <div class="intro-row">
-          <div id="readinessCard"></div>
-          <div>
-            <div class="best-score" id="bestScoreLine"></div>
-            <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
-            <div class="progress-panel" id="progressPanel" style="display:none;"></div>
-          </div>
-        </div>
       </div>
 
       <aside class="cx-rail" aria-labelledby="cx-rail-h">
@@ -178,6 +175,36 @@
           <a class="cx-link" href="flashcards.html"><b>Flashcards<small>Short facts on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
         </nav>
       </aside>
+    </div>
+
+    <div class="fact-row r3-facts" aria-label="The exam at a glance"><span><i class="dot" aria-hidden="true"></i>100 questions, fixed length</span><span><i class="dot" aria-hidden="true"></i>2:00:00 on the clock</span><span><i class="dot" aria-hidden="true"></i>5 domains in the 2025 proportions</span><span><i class="dot" aria-hidden="true"></i>Scored by domain when you submit</span></div>
+
+<!-- r3-exams-built:start -->
+<section class="r3-built" aria-labelledby="r3BuiltH">
+<p class="kicker">How the exam is built <i></i></p>
+<div class="r3-built-grid">
+<div class="contents"><h2 class="r3-h2" id="r3BuiltH">Drawn like <span>the real one</span></h2><p class="sub">The National Registry&rsquo;s five EMT exam domains, April 2025 outline, in the same proportions.</p>
+<ol class="toc"><li><div class="toc-row"><span class="n">01</span><span><b>Primary Assessment</b><small>its share of the 100</small></span><span class="w">39 to 43%<small>of the exam</small><span class="wbar"><i style="width:86%"></i></span></span></div></li><li><div class="toc-row"><span class="n">02</span><span><b>Patient Treatment &amp; Transport</b><small>its share of the 100</small></span><span class="w">20 to 24%<small>of the exam</small><span class="wbar"><i style="width:48%"></i></span></span></div></li><li><div class="toc-row"><span class="n">03</span><span><b>Scene Size-Up &amp; Safety</b><small>its share of the 100</small></span><span class="w">15 to 19%<small>of the exam</small><span class="wbar"><i style="width:38%"></i></span></span></div></li><li><div class="toc-row"><span class="n">04</span><span><b>Operations</b><small>its share of the 100</small></span><span class="w">10 to 14%<small>of the exam</small><span class="wbar"><i style="width:28%"></i></span></span></div></li><li><div class="toc-row"><span class="n">05</span><span><b>Secondary Assessment</b><small>its share of the 100</small></span><span class="w">5 to 9%<small>of the exam</small><span class="wbar"><i style="width:18%"></i></span></span></div></li></ol></div>
+<ol class="r3-steps">
+<li class="step"><span class="n">1</span><h3>Answer all 100</h3><p>No feedback while the clock runs. Leave mid-way and it waits here for you.</p></li>
+<li class="step"><span class="n">2</span><h3>Submit and see every answer</h3><p>Each question is reviewed with its explanation, and the score is broken down by domain.</p></li>
+<li class="step"><span class="n">3</span><h3>Fix what you missed</h3><p>Misses go to your <a href="review.html">review queue</a> and come back before you forget them.</p></li>
+</ol>
+</div>
+</section>
+<!-- r3-exams-built:end -->
+
+    <section class="r3-record" aria-labelledby="r3RecordH">
+      <p class="kicker" id="r3RecordH">Your exam record <i></i></p>
+        <div class="intro-row r3-record-row">
+          <div id="readinessCard"></div>
+          <div>
+            <div class="best-score" id="bestScoreLine"></div>
+            <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
+            <div class="progress-panel" id="progressPanel" style="display:none;"></div>
+          </div>
+        </div>
+    </section>
     </div>
   </div>
 
@@ -196,5 +223,6 @@
 <script src="../assets/course/study.js" defer></script>
 <script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-r3-start]');if(!a)return;var b=document.querySelector('#r3Body #startBtn,#r3Body .cx-start button,#r3Body [data-start]');if(b&&!b.disabled){e.preventDefault();b.click();}});</script>
 </body>
 </html>

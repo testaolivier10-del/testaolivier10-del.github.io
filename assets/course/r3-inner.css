@@ -1,0 +1,111 @@
+/* Site redesign round 3, inner pages (docs/site-redesign.md, step B3; scripts/lib/r3-inner.mjs).
+   The frame under the short cover band (.r3-body, pulled up over the band's foot), and the parts of the
+   exams, progress, exam day and unit test pages (boards R10-Exams, R10-AP-Exams, R10-AP-UnitTest,
+   R10-Progress, R10-ExamDay, R10-Exam-Live, R10-Exam-Results). Loaded after r3.css, scoped to .r3-inner.
+   Colours only through theme tokens and the course tokens r3.css sets per data-cover. */
+
+/* ---- the band on inner pages ---- */
+.r3-inner{padding-bottom:0}
+.r3-inner .band.short .deck span{display:block}
+.r3-inner .band.short .deck .tag.beta{display:inline-block;vertical-align:middle;font:800 12px var(--font-ui);letter-spacing:0;margin:0 0 0 2px}
+.r3-inner .band.short .hwrap{padding-bottom:84px}
+.r3-inner .band.short .lede{font-size:16.5px;margin-bottom:22px}
+.r3-inner .r3-crumb{font:700 13px var(--font-ui);color:rgba(255,255,255,.74);margin:0 0 12px}
+.r3-inner .r3-crumb a{color:rgba(255,255,255,.86);text-decoration:none}
+.r3-inner .r3-crumb a:hover{color:#fff;text-decoration:underline}
+.r3-inner .r3-crumb [aria-current]{color:#fff}
+.r3-inner .band.short .art{max-width:280px}
+/* the site's own breadcrumb row is replaced by the one in the band */
+body:has(.r3-inner) > [data-crumb]{display:none}
+
+/* ---- the body, pulled up over the band ---- */
+.r3-inner .r3-body{position:relative;z-index:2;margin-top:-56px;padding-bottom:40px}
+.r3-inner .r3-body > .page-head{display:none}
+
+/* ---- cards and the dark rail, shared by every page kind ---- */
+.r3-inner .r3-card,.r3-inner .cx-card,.r3-inner .cx-db .panel,.r3-inner .cx-db-panel{background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 50px -36px rgba(11,26,51,.45)}
+.r3-inner .r3-card{padding:20px 22px}
+.r3-inner .r3-card-h{font:900 18px/1.25 var(--font-ui)!important;letter-spacing:-.01em!important;margin:0 0 6px!important}
+.r3-inner .r3-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.r3-inner .r3-card a{color:var(--accent-text)}
+.r3-inner .r3-navy{background:var(--r3-navy);color:#fff;border-radius:20px;padding:20px 22px;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px}
+.r3-inner .r3-navy .kicker{color:#FFD23F}
+.r3-inner .r3-navy p{color:#C4D1E8;font-size:14px;margin:12px 0 0}
+.r3-inner .r3-navy a{color:#fff}
+
+/* ---- a page with a rail (unit tests) ---- */
+.r3-inner .r3-split{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start}
+.r3-inner .r3-rail{display:grid;gap:14px;position:sticky;top:16px}
+.r3-inner .r3-railbtns{display:grid;gap:8px}
+.r3-inner .r3-railbtns a{display:block;text-align:center;text-decoration:none;font:900 15px var(--font-ui);padding:11px 14px;border-radius:12px}
+.r3-inner .r3-railbtns .btn-gold{background:#FFD23F;color:#0B1A33}
+.r3-inner .r3-railbtns .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.r3-inner .r3-railbtns .btn-line:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.r3-inner .r3-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px!important}
+.r3-inner .r3-chips a,.r3-inner .r3-chips span{font:800 13px var(--font-ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:4px 11px;text-decoration:none}
+.r3-inner .r3-chips span[aria-current]{background:var(--accent);color:var(--white)}
+:root[data-theme="dark"] .r3-inner .r3-chips span[aria-current]{color:#0B1A33}
+
+/* unit test questions: each set (and each single question) is a white card */
+.r3-unit-test .r3-col > [data-set="check"]{display:grid;gap:18px}
+.r3-unit-test .r3-col > [data-set="check"] > *{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px 24px;margin:0;box-shadow:0 24px 50px -36px rgba(11,26,51,.45)}
+
+/* ---- the free unit tests row (AP® exams pages) ---- */
+.r3-inner .r3-units{margin:52px 0 10px}
+.r3-inner .r3-unit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.r3-inner .r3-unit{padding:16px 18px}
+.r3-inner .r3-unit .cmeta{margin:0 0 4px}
+.r3-inner .r3-unit .cdesc{margin:0}
+
+@media (max-width:980px){
+  .r3-inner .r3-split{grid-template-columns:1fr}
+  .r3-inner .r3-rail{position:static}
+  .r3-inner .r3-unit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .r3-inner .band.short .hwrap{padding-bottom:70px}
+  .r3-inner .band.short .deck{font-size:34px}
+  .r3-inner .band.short .art{display:none}
+  .r3-inner .r3-body{margin-top:-46px}
+  .r3-unit-test .r3-col > [data-set="check"] > *{padding:18px}
+}
+@media (max-width:560px){
+  .r3-inner .r3-unit-grid{grid-template-columns:1fr}
+}
+
+/* ---- headings the course scripts render keep their own size; only the round 3 headings are display size ---- */
+.r3-inner .r3-body h2{font:900 19px/1.25 var(--font-ui);letter-spacing:-.01em;margin:0}
+.r3-inner .r3-body h2 span{display:inline;color:inherit}
+.r3-inner .r3-body h3{letter-spacing:-.005em}
+.r3-inner .r3-body .ruled-h h2,.r3-inner .r3-body .cx-builder-head h2,.r3-inner .r3-body .r3-h2{font:900 clamp(28px,3.4vw,38px)/1.05 var(--display);letter-spacing:-.035em}
+.r3-inner .r3-body .ruled-h h2 span,.r3-inner .r3-body .cx-builder-head h2 span,.r3-inner .r3-body .r3-h2 span{color:var(--accent)}
+
+/* ---- exam setup (boards R10-Exams, R10-AP-Exams): the setup card with its heading, the dark numbers rail ---- */
+.r3-inner .cx-body.has-rail{grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.r3-inner .cx-builder{padding:26px 28px}
+.r3-inner .cx-builder-head{margin:0 0 14px}
+.r3-inner .cx-builder-head p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.r3-inner .cx-builder .cx-notice{display:block;max-width:none;margin:0 0 18px;border-radius:14px;background:#FFF6DD;border:1px solid #F2DFA8;color:var(--ink)}
+:root[data-theme="dark"] .r3-inner .cx-builder .cx-notice{background:rgba(245,176,74,.1);border-color:rgba(245,176,74,.3)}
+.r3-inner .cx-step .cx-choices{grid-template-columns:minmax(0,1fr);gap:8px}
+.r3-inner .cx-step legend,.r3-inner .cx-step-h{display:flex;align-items:center;gap:10px;width:100%}
+.r3-inner .cx-step legend::after,.r3-inner .cx-step-h::after{content:"";flex:1;height:1px;background:var(--line)}
+.r3-inner .r3-body .cx-step-n{background:var(--r3-navy);color:#2EE6D6}
+.r3-inner .cx-choice:has(input:checked){background:var(--ctint);border-color:var(--accent)}
+.r3-inner .cx-start{background:none;border:0;padding:6px 0 0;box-shadow:none}
+.r3-inner .cx-start .btn-press,.r3-inner .cx-start button{background:var(--chan);color:var(--on-chan);border-radius:12px;box-shadow:none}
+
+/* the rail: "Your numbers" and its tiles on navy, then white cards */
+.r3-inner .cx-rail{display:grid;gap:12px}
+.r3-inner .cx-rail > .cx-rail-h{margin:0 0 -12px;padding:18px 20px 10px;background:var(--r3-navy);border-radius:20px 20px 0 0;color:#FFD23F;font:900 12px var(--font-ui);letter-spacing:.1em}
+.r3-inner .cx-rail > .cx-stats{background:var(--r3-navy);border-radius:0 0 20px 20px;padding:0 14px 14px;gap:8px;box-shadow:none}
+.r3-inner .cx-rail > .cx-stats .cx-stat{background:rgba(255,255,255,.07);border-radius:12px;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.r3-inner .cx-rail > .cx-stats .cx-stat *{color:inherit}
+.r3-inner .cx-rail > .cx-stats .cx-stat small,.r3-inner .cx-rail > .cx-stats .cx-stat span:not(.cx-stat-num){color:#B9C8E2}
+.r3-inner .cx-rail .cx-qcard,.r3-inner .cx-rail .cx-links{background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 50px -36px rgba(11,26,51,.45)}
+.r3-inner .cx-rail .cx-links{padding:6px 18px;display:grid}
+.r3-inner .cx-rail .cx-link{background:none;color:var(--ink);box-shadow:none;border-radius:0;padding:12px 0;border-top:1px solid var(--line)}
+.r3-inner .cx-rail .cx-link:first-child{border-top:0}
+.r3-inner .cx-rail .cx-link small{color:var(--muted)}
+.r3-inner .cx-rail .cx-link > span{color:var(--accent)}
+@media (max-width:980px){.r3-inner .cx-body.has-rail{grid-template-columns:1fr}}

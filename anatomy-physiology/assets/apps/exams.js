@@ -361,8 +361,9 @@
     view('setup');
     if(!cfg.chapter) cfg.chapter = builtChapters()[0].id;
     var fe = Core.freeExam ? Core.freeExam() : { unlimited: true, available: true };
-    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' + freeExamHtml(fe) +
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder anp-pr-setup anp-ex-setup" novalidate aria-label="Set up an exam">' +
+      '<div class="cx-builder-head"><h2>Set up <span>an exam</span></h2><p>Pick the kind, then the timing.</p></div>' + freeExamHtml(fe) +
       '<fieldset class="cx-step"><legend><span class="cx-step-n" aria-hidden="true">1</span>Choose an exam</legend><div class="cx-choices">' + KINDS.map(function(k){
         return '<label class="cx-choice"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '><span><b>' + esc(k.title) + '</b><span>' + esc(k.desc) + '</span></span></label>';
       }).join('') + '</div></fieldset>' +

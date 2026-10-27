@@ -32,7 +32,7 @@ import {
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 import { applyVideo } from './lib/videos.mjs';
-import { dashboardPage } from './lib/dashboard-page.mjs';
+import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, 'anatomy-physiology');
@@ -834,9 +834,10 @@ ${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'd
   const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
   const page = head({ title: courseTitle(entry.title, AP_LABELS, FULL), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
   // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
-  if (entry.slug === 'dashboard') return dashboardPage(page);
-  return study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
+  if (entry.slug === 'dashboard') return dashboardPage(page, 'anp');
+  const out = study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
     `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
+  return entry.slug === 'exams' && !depth ? examsPage(out, 'anp') : out;
 }
 const STUDY_PAGES = new Set(['practice', 'review', 'exams', 'flashcards']);
 
