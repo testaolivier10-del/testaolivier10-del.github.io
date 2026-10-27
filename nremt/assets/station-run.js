@@ -272,8 +272,23 @@
     var su = stepIdx('suction'); if(su < 0) return false;
     return ['vent1', 'vent2'].some(function(id){ var v = stepIdx(id); return v >= 0 && done[v] && (!done[su] || doneAt[su] > doneAt[v]); });
   }
+  /* The PPE criterion is about touching the patient unprotected, so a late
+     BSI fails only when a hands-on step was ticked before it. Calling for
+     help or setting up suction first is not a failure on the real sheet.
+     Patient stations mark hands-on steps (touch); on the others a scene
+     size-up phase is the one step that is not hands-on. */
+  function handsOn(j){
+    var st = station.steps[j];
+    if(station.vis) return !!st.touch;
+    return !/scene size-up/i.test(st.text);
+  }
+  function ppeLate(){
+    if(!done[0]) return false;
+    for(var j = 1; j < done.length; j++) if(done[j] && doneAt[j] < doneAt[0] && handsOn(j)) return true;
+    return false;
+  }
   function critFromOrder(c){
-    if(RE_PPE.test(c) && late(0)) return true;
+    if(RE_PPE.test(c) && ppeLate()) return true;
     if(/suction/i.test(c) && /before/i.test(c) && ventBeforeSuction()) return true;
     return false;
   }

@@ -52,9 +52,10 @@
     return { tone: 'good', h: 'Normal (15)', p: 'Eyes open on their own, oriented, obeys commands.' };
   }
   function apgarRead(t){
-    if(t >= 7) return { tone: 'good', h: '7 to 10: reassuring', p: 'Routine newborn care: keep the baby warm and dry, and score again at 5 minutes.' };
-    if(t >= 4) return { tone: 'warn', h: '4 to 6: moderately abnormal', p: 'This baby needs help: dry, warm and stimulate; ventilate with a BVM if the baby is not breathing, is gasping, or the heart rate is under 100. Score again at 5 minutes.' };
-    return { tone: 'bad', h: '0 to 3: low', p: 'Resuscitate now, by the newborn steps your program teaches. Care never waits for the score: the score records what you saw.' };
+    // Care follows breathing and heart rate, never the total (NRP): a baby can score 7 with a heart rate under 100.
+    if(t >= 7) return { tone: 'good', h: '7 to 10: reassuring', p: 'Routine newborn care: keep the baby warm and dry, and score again at 5 minutes. If the baby is not breathing well or the heart rate is under 100, ventilate whatever the total.' };
+    if(t >= 4) return { tone: 'warn', h: '4 to 6: moderately abnormal', p: 'This baby needs help: dry, warm and stimulate; ventilate with a BVM if the baby is not breathing, is gasping, or the heart rate is under 100. Score again at 5 minutes, then every 5 minutes while it stays under 7.' };
+    return { tone: 'bad', h: '0 to 3: low', p: 'Resuscitate now: ventilate with a BVM, and start chest compressions if the heart rate stays under 60 after 30 seconds of ventilation that moves the chest. Care never waits for the score: the score records what you saw.' };
   }
   // The combinations, by the sides marked abnormal (A appearance, B work of breathing, C circulation).
   var PAT_READ = {

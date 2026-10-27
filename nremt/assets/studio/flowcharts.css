@@ -105,6 +105,9 @@
 .nx-flowcharts .branch-label{font:800 12px/1 var(--font-ui);color:var(--white);}
 .nx-flowcharts .branch-label::before{content:none;}
 .nx-flowcharts .flow-branch .branch-label{display:flex;justify-content:center;}
+/* The answer tab sits in the arm's flow (not absolute), so a two- or three-line answer pushes the arm down instead of
+   being hidden behind the first box: on a three-armed triage fork the whole answer is the branch's meaning. */
+.nx-flowcharts .flow-branch > div > .branch-label{position:relative;top:auto;left:auto;right:auto;z-index:1;margin:-33px 0 0;}
 .nx-flowcharts .flow-branch .branch-label > span,.nx-flowcharts .flow-branch .branch-label{pointer-events:none;}
 .nx-flowcharts .fc-tab{display:inline-block;max-width:100%;padding:5px 10px;border-radius:999px;background:var(--cink);color:var(--white);font:800 12px/1.2 var(--font-ui);
   box-shadow:0 0 0 3px var(--white);white-space:normal;text-align:center;}
@@ -124,6 +127,11 @@
   .nx-flowcharts .flow-branch .flow-box{padding:10px 10px 10px 38px;font-size:14px;}
   .nx-flowcharts .flow-branch .flow-box::before{left:9px;width:20px;height:20px;margin-top:-10px;}
   .nx-flowcharts .flow-branch .flow-box.decision{padding-left:44px;}
+  .nx-flowcharts .fc-tab{border-radius:12px;}
+  /* Three arms do not fit side by side on a phone: they stack, each still headed by its answer tab. */
+  .nx-flowcharts .flow-branch:has(> div:nth-child(3)){flex-direction:column;gap:22px;}
+  .nx-flowcharts .flow-branch:has(> div:nth-child(3))::after{left:calc(50% - 1px);right:calc(50% - 1px);}
+  .nx-flowcharts .flow-branch:has(> div:nth-child(3)) > div{flex:none;}
 }
 /* The legend for the three shapes, at the top of Why. */
 .nx-flowcharts .fc-legend{display:flex;flex-direction:column;gap:8px;margin:0;}

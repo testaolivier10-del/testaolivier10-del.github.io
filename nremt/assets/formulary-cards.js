@@ -39,7 +39,9 @@
       rule: 'Maximum dose already taken' },
     { id: 'ntg-none', drug: 'Nitroglycerin', give: false,
       pt: '50-year-old with first-ever chest pain.', vitals: 'HR 88 · BP 150/92', hx: 'No cardiac history.', meds: 'None. A bystander offers his own nitroglycerin.',
-      rule: 'in a patient with their own prescribed nitroglycerin' },
+      rule: 'in a patient with their own prescribed nitroglycerin',
+      // The rule line is the indication; the verdict says why it fails here.
+      verdict: 'an EMT assists only with the patient\u2019s own prescribed nitroglycerin, and this patient has none.' },
     { id: 'glu-give', drug: 'Oral glucose', give: true,
       pt: '45-year-old diabetic, confused and sweaty, sitting up.', vitals: 'Glucose 48 mg/dL · HR 104', hx: 'Type 1 diabetes. Swallows on command when you ask.', meds: 'Insulin',
       rule: 'in a patient who can still swallow and protect their airway' },
@@ -222,7 +224,7 @@
     why.innerHTML =
       // The verdict leads with the deciding fact: the answer, then the line on the card that decides it (audit 2026-10).
       '<div class="gw-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right. ' : 'Not this time. ') + '<b>' + (c.give ? 'Give ' : 'Withhold ') + esc(c.drug.toLowerCase()) + '</b>' +
-        (line ? ': ' + esc(deciding(line, c.rule)) : '.') + '</div>' +
+        (c.verdict ? ': ' + esc(c.verdict) : line ? ': ' + esc(deciding(line, c.rule)) : '.') + '</div>' +
       (line ? '<div class="gw-rule"><span class="gw-rule-k">' + esc(c.drug) + ' · ' + esc(section(line)) + '</span>' + line.innerHTML + '</div>' : '') +
       (c.give && dose ? '<div class="gw-dose"><span class="gw-rule-k">Dose</span><b>' + esc(txt(dose)) + '</b>' +
         (dose.nextElementSibling && dose.nextElementSibling.tagName === 'DD' ? ' ' + dose.nextElementSibling.innerHTML : '') + '</div>' : '') +
