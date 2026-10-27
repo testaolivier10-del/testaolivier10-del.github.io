@@ -93,7 +93,8 @@
   fetch('assets/questions.json')
     .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error(r.status)); })
     .then(function(all){
-      pool = all.filter(function(x){ return x.topic === 'Pharmacology' && Array.isArray(x.options); });
+      // Single-answer items only: this drill draws one right option per question.
+      pool = all.filter(function(x){ return x.topic === 'Pharmacology' && !x.type && Array.isArray(x.options); });
       if(!pool.length){
         mount.innerHTML = '<h2>Drill</h2><p class="section-sub">No pharmacology questions found in the bank.</p>';
         return;

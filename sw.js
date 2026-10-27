@@ -110,6 +110,8 @@ COURSE_URLS.nremt = [
   'nremt/review.html',
   'nremt/exams.html',
   'nremt/practice-engine.js',
+  'nremt/assets/tei-items.js',
+  'nremt/assets/cat.js',
   'nremt/practice.css',
   'nremt/practice-study.js',
   'nremt/flashcards.html',

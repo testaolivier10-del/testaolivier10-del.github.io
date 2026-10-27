@@ -472,7 +472,10 @@ const BUDGETS = [
   /* 48.7 -> 49.5 (redesign round 2, 2026-10): the session and results restyle in practice.css. */
   /* 49.5 -> 49.9 (redesign round 3, B2): the session rail's Read the notes and Keyboard cards in
      practice-engine.js (board R10-Practice-Question). Measured 49.6 KB. */
-  ['nremt/practice.html', 49.9],
+  /* 49.9 -> 55.2 (tools upgrade, 2026-10-27): the exam's drag-and-drop and options-table items, dragging build
+     lists and the Adaptive exam (engine routing, results, setup) in practice-engine.js and practice.css. The item
+     interactions themselves are in nremt/assets/tei-items.js (course bucket). Measured 54.8 KB. */
+  ['nremt/practice.html', 55.2],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
