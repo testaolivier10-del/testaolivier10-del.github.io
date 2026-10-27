@@ -234,10 +234,18 @@ html.rt-leaving .tb-main{visibility:hidden}
   .rt-bar.rt-inhero{margin:0 0 14px}
   .rt-opt{min-height:34px;padding:0 12px;font-size:13px}
   .tb-main > .rt-book + *{padding-top:0}
-  /* ochem keeps its "In this chapter" menu stuck under the header: the switch sits just below it */
-  .tb-main:has(.tb-jump) > .rt-bar.rt-book{top:calc(var(--site-header-h,60px) + 62px)}
+  /* ochem's "In this chapter" menu sticks below the Contents row instead of under it (it used to sit at the
+     header, behind the pinned Contents button) */
+  .tb-shell:has(> .tb-toc-btn) .tb-jump{top:calc(env(safe-area-inset-top,0px) + 128px);z-index:19}
   .rt-bar.rt-book{margin-top:-52px;margin-bottom:52px}
 }
 /* a section opened from the contents or a link lands below the floating switch, not under it */
 .tb-main:has(> .rt-book) .bk-sec{scroll-margin-top:calc(var(--site-header-h,112px) + 64px)}
-@media (max-width:860px){.tb-main:has(> .rt-book) .bk-sec{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 130px)}}
+@media (max-width:860px){.tb-main:has(> .rt-book) .bk-sec{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 130px)}
+  .tb-main:has(.tb-jump) .bk-sec{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 186px)}}
+
+/* AP® and A&P lessons on a wide screen: the hero band bleeds the full width, so the steps rail beside it is a
+   card above the band (as ochem's lesson rail already is), instead of dark text hidden under the band. */
+@media (min-width:901px){
+  .cx-ls > aside{position:sticky;z-index:3;align-self:start;background:var(--white);border-radius:20px;box-shadow:0 0 0 1px var(--line),0 18px 40px -26px rgba(11,26,51,.35);padding:18px 14px 20px}
+}
