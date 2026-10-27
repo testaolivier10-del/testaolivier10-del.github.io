@@ -41,10 +41,10 @@
      narrow (a launch near 90 degrees) the height sets the scale, the x axis
      covers far more meters than the flight, and gridStep alone crowds the
      labels together. */
-  var NICE = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
+  var TICKS = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
   function pxStep(span, ppm, minPx){
     var s = gridStep(span);
-    for(var i = 0; i < NICE.length && s * ppm < minPx; i++){ if(NICE[i] > s) s = NICE[i]; }
+    for(var i = 0; i < TICKS.length && s * ppm < minPx; i++){ if(TICKS[i] > s) s = TICKS[i]; }
     return s;
   }
 

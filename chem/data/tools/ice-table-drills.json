@@ -47,7 +47,7 @@
    ],
    "Kfix": 54.3,
    "T": "430 °C",
-   "Ksource": "Kc = 54.3 at 430 °C (703 K) for H2(g) + I2(g) ⇌ 2HI(g): the value quoted in general chemistry worked examples at 430 °C (others give 55.3 to 55.6 near 698 to 700 K); see docs/apchem-needs-author.md ice-hi-k."
+   "Ksource": "Kc = 54.3 at 430 °C (703 K) for H2(g) + I2(g) ⇌ 2HI(g): R. Chang, Chemistry, 9th ed. (McGraw-Hill), Example 14.9; consistent with Kp = Kc ≈ 54 at 700 K (Δn = 0). See docs/apchem-needs-author.md ice-hi-k."
   },
   {
    "id": "dinitrogen-tetroxide",

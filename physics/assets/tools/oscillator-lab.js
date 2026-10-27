@@ -278,10 +278,11 @@
       });
     }
     /* Before the first Play the graphs are not empty: a faint dashed preview
-       of the motion over the window (the same simulation, run ahead), which
+       of the motion over the window (the same simulation, run ahead from the
+       current release, so a pull to the left previews from -A), which
        the live trace then draws over (audit 2026-10). */
     function ghost(){
-      var w = gEls.x.w, q = OL.init(sys), pts = { x: [], v: [], a: [] }, n = Math.ceil(w / 0.01);
+      var w = gEls.x.w, q = st ? { t: 0, x: st.x, v: st.v } : OL.init(sys), pts = { x: [], v: [], a: [] }, n = Math.ceil(w / 0.01);
       for(var i = 0; i <= n; i++){ var h = sample(q); ['x', 'v', 'a'].forEach(function(k){ pts[k].push(n1(GL + h.t / w * gEls[k].PW) + ',' + n1(GT + gEls[k].PH / 2 - h[k] / gEls[k].ym * gEls[k].PH / 2)); }); q = OL.advance(sys, q, 0.01); }
       return pts;
     }

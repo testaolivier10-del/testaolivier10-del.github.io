@@ -497,13 +497,17 @@ are with the exams agent.
 
 The radius table uses 12-coordinate metallic radii for Ga, In, Sn, Tl, Pb and Bi (Teatum, Gschneidner and Waber via
 the mendeleev package), which give In 158 < Sn 163 and Tl 160 < Pb 170 < Bi 178, against the across-a-period trend.
-Other sets also break it there (Pyykkö covalent: In 142, Sn 140; Tl 144, Pb 144, Bi 151). The tool now greys those
+Other sets also break it there (Pyykkö covalent: In 142, Sn 140; Tl 144, Pb 144, Bi 151). The tool now grays those
 five out on the radius table with a note; the values themselves are unchanged. Decide whether to keep them grayed,
 switch the p-block to one covalent set, or drop them from the radius view.
 
-## ice-hi-k: the H₂ + I₂ constant (open, 2026-10-27)
+## ice-hi-k: the H₂ + I₂ constant (resolved, 2026-10-27)
 
-The HI context now uses K<sub>c</sub> = 54.3 at 430 °C, the value quoted in general chemistry worked examples (source text not pinned down;
-other texts quote 55.3 or 55.6 near 698 to 700 K, about 50 at 448 °C). Confirm the value and temperature against the
-course's chosen text.
-
+The HI context uses K<sub>c</sub> = 54.3 at 430 °C (703 K). Source: R. Chang, *Chemistry*, 9th ed.
+(McGraw-Hill), Example 14.9 (H₂ and I₂ heated at 430 °C, K<sub>c</sub> = 54.3 at this
+temperature); the same value and temperature appear in course notes
+built on that text, and the Scilab textbook companion for the 9th edition (FOSSEE, book 884,
+Example 14.9) uses K<sub>c</sub> = 54.3. It agrees with the other common figures, which are at
+nearby temperatures: K ≈ 54 to 55 at 698 to 700 K, and about 50 at 448 °C (K falls as T rises,
+since the forward reaction is exothermic). Only the constant and its temperature are used; the
+drill's amounts are generated, not taken from the example. The problem text names 430 °C.
