@@ -101,12 +101,14 @@
     ],
     "frqThemes": [
      {
+      "id": "frq-heredity-environment-aaq",
       "title": "A twin and adoption study of a trait: the method, the operational definition of the trait, what the correlations show, confidentiality, and who the results describe",
       "topic": "heredity-environment",
       "type": "aaq",
       "author": "B"
      },
      {
+      "id": "frq-sleep-ebq",
       "title": "Does sleep deprivation harm learning? Three sources on sleep, memory consolidation and performance",
       "topic": "sleep",
       "type": "ebq",
@@ -178,12 +180,14 @@
     ],
     "frqThemes": [
      {
+      "id": "frq-forgetting-aaq",
       "title": "An experiment on the misinformation effect: the method, how recall was measured, the statistic, the safeguards, and generalization",
       "topic": "forgetting",
       "type": "aaq",
       "author": "C"
      },
      {
+      "id": "frq-retrieving-memories-ebq",
       "title": "Does retrieval practice beat rereading? Three sources on the testing effect and spaced practice",
       "topic": "retrieving-memories",
       "type": "ebq",
@@ -262,24 +266,28 @@
     ],
     "frqThemes": [
      {
+      "id": "frq-development-methods-aaq",
       "title": "A longitudinal study of parenting style and adolescent outcomes: the design, the operational definitions, the results, the ethics with minors, and generalization",
       "topic": "development-methods",
       "type": "aaq",
       "author": "D"
      },
      {
+      "id": "frq-social-emotional-development-ebq",
       "title": "Does early attachment predict later relationships? Three sources on attachment across the lifespan",
       "topic": "social-emotional-development",
       "type": "ebq",
       "author": "D"
      },
      {
+      "id": "frq-social-cognitive-learning-ebq",
       "title": "Does watching aggression lead to aggression? Three sources on observational learning",
       "topic": "social-cognitive-learning",
       "type": "ebq",
       "author": "E"
      },
      {
+      "id": "frq-operant-conditioning-aaq",
       "title": "An experiment on reinforcement schedules and persistence: method, variables, results and limits",
       "topic": "operant-conditioning",
       "type": "aaq",
@@ -353,24 +361,28 @@
     ],
     "frqThemes": [
      {
+      "id": "frq-social-situations-aaq",
       "title": "An experiment on the bystander effect: method, the operational definition of helping, the results, deception and debriefing, generalization",
       "topic": "social-situations",
       "type": "aaq",
       "author": "E"
      },
      {
+      "id": "frq-social-situations-ebq",
       "title": "Does the presence of others help or hurt performance? Three sources on social facilitation and social loafing",
       "topic": "social-situations",
       "type": "ebq",
       "author": "E"
      },
      {
+      "id": "frq-motivation-aaq",
       "title": "An experiment on intrinsic motivation and rewards: method, measures, results, ethics and limits",
       "topic": "motivation",
       "type": "aaq",
       "author": "F"
      },
      {
+      "id": "frq-social-cognitive-trait-ebq",
       "title": "Is personality stable across the lifespan? Three sources on the Big Five over time",
       "topic": "social-cognitive-trait",
       "type": "ebq",
@@ -432,18 +444,21 @@
     "simulators": [],
     "frqThemes": [
      {
+      "id": "frq-treatment-depression-ebq",
       "title": "Does exercise reduce symptoms of depression? Three sources on exercise, therapy and medication",
       "topic": "treatment",
       "type": "ebq",
       "author": "G"
      },
      {
+      "id": "frq-health-psychology-ebq",
       "title": "Does social support buffer stress? Three sources on coping and health",
       "topic": "health-psychology",
       "type": "ebq",
       "author": "F"
      },
      {
+      "id": "frq-treatment-anxiety-ebq",
       "title": "Are cognitive-behavioral treatments effective for anxiety? Three sources comparing treatments",
       "topic": "treatment",
       "type": "ebq",
@@ -517,12 +532,14 @@
     ],
     "frqThemes": [
      {
+      "id": "frq-research-methods-aaq",
       "title": "An experiment on sleep and recall: name the method, operationally define recall, read the group means, apply informed consent and debriefing, judge generalization to high-school students",
       "topic": "research-methods",
       "type": "aaq",
       "author": "A"
      },
      {
+      "id": "frq-stats-correlation-aaq",
       "title": "A correlational study of screen time and attention: why no cause can be claimed, the third variable, the sample and who the results describe",
       "topic": "stats-correlation",
       "type": "aaq",

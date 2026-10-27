@@ -177,7 +177,7 @@ function build() {
     const check = (L.check || []).map(x => byId.get(x)).filter(Boolean).map(questionForPage);
     const stimuli = stimuliFor(id, check);
     const title = courseTitle(C.descriptions.titles?.[id] || t.title, [`${LABEL} Lesson`, LABEL]);
-    const desc = C.descriptions.lessons?.[id] || clampDesc(L.summary, `${t.title}: an psychology lesson taught from scratch, step by step, with exam-style practice questions.`);
+    const desc = C.descriptions.lessons?.[id] || clampDesc(L.summary, `${t.title}: a psychology lesson taught from scratch, step by step, with exam-style practice questions.`);
     const url = `${SITE}${BASE}lessons/${id}.html`;
     const fig = L.figure && L.figure.figure ? C.figures[L.figure.figure] : null;
     const earlier = buildsOn(id);
@@ -626,7 +626,7 @@ ${tail({ depth, section: 'learn', extra: ['psy-toc.js', 'psy-book.js'], site: ['
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
-    const desc = 'Psychology exam prep for May 2027, in framework order: lessons from scratch, free notes, simulators, and the article analysis and evidence-based questions drilled part by part.';
+    const desc = 'Psychology exam prep for May 2027: lessons from scratch, free notes, simulators, and both free-response questions drilled part by part.';
     const url = `${SITE}${BASE}`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'Course', '@id': COURSE_ID, name: COURSE_NAME, url, description: desc, inLanguage: 'en', ...(offers ? { offers } : {}),

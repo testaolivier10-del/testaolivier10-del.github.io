@@ -83,7 +83,7 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   assert.ok(!CU.topics.find(t => t.id === T).free, 'Unit 3 is Premium');
   // One free tier: the build's FREE_UNITS and premium.js agree; not on sale until the owner checklist.
   const prem = readFileSync('assets/premium.js', 'utf8');
-  const block = prem.slice(prem.indexOf('    appsych: {'), prem.indexOf('    appsych: {') + 2000);
+  const block = prem.slice(prem.indexOf('    appsych: {'), prem.indexOf('\n    },', prem.indexOf('    appsych: {')));
   assert.deepEqual(FREE_UNITS, ['unit-1']);
   assert.match(block, /freeChapters: \['unit-1'\]/);
   assert.match(block, /onSale: false/, 'not on sale until the owner checklist');

@@ -82,7 +82,7 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   assert.ok(!CU.topics.find(t => t.unit === 'unit-9').free, 'Unit 9 is Premium');
   // One free tier: the build's FREE_UNITS and premium.js agree.
   const prem = readFileSync('assets/premium.js', 'utf8');
-  const block = prem.slice(prem.indexOf('    apenv: {'), prem.indexOf('    apenv: {') + 2000);
+  const block = prem.slice(prem.indexOf('    apenv: {'), prem.indexOf('\n    },', prem.indexOf('    apenv: {')));
   assert.match(block, /freeChapters: \['unit-1', 'unit-2'\]/);
   assert.doesNotMatch(block, /onSale: false/, 'on sale since 2026-10-20 (Polar product created, launch checklist)');
   assert.match(block, /id: 'env-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);

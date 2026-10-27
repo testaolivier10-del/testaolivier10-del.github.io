@@ -29,7 +29,7 @@
    "section": "exams",
    "h1": "Exams",
    "title": "Unit tests and practice exams",
-   "desc": "Timed psychology unit tests and full practice exams in the May 2027 format: 75 multiple-choice questions, then the article analysis and evidence-based questions.",
+   "desc": "Timed psychology unit tests and full practice exams in the May 2027 format: 75 multiple-choice questions, then the two free-response questions.",
    "card": "Unit tests and full timed practice exams in the May 2027 format.",
    "script": "pages/exams.js",
    "css": "pages/pages.css"
@@ -40,7 +40,7 @@
    "section": "exams",
    "h1": "Free-response practice",
    "title": "Free-response practice",
-   "desc": "Psychology free-response practice in the two exam question types, the article analysis and the evidence-based question, 7 points each, with a rubric and a full-credit sample.",
+   "desc": "Psychology free-response practice: the article analysis and evidence-based questions, 7 points each, with a rubric and a full-credit sample.",
    "card": "The article analysis and evidence-based questions, with 7-point rubrics and sample answers.",
    "script": "pages/frq.js",
    "css": [

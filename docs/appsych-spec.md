@@ -100,12 +100,37 @@ One branch, `claude/appsych`, one PR at the end.
 | Phase | What | Status |
 |---|---|---|
 | R | Research: `docs/appsych-research/framework.md`, `market.md`; this spec | **done 2026-10-27** |
-| 0 | Fork AP® Environmental Science: runtime `psychology/assets/` (`psy-*`), `ApPsychStats` (descriptive statistics) in place of `ApEnvCalc`, generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | in progress |
+| 0 | Fork AP® Environmental Science: runtime `psychology/assets/` (`psy-*`), `ApPsychStats` (descriptive statistics) in place of `ApEnvCalc`, generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-27** (decision 7) |
 | 1 | Content: lessons, notes, banks (incl. stimulus sets), AAQs and EBQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
 | 3 | Two fixed practice exams, unit tests, cram kit, extras | |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
 | Launch | Publish, generators, continuity pass, "ten courses" wording, full CI with browser checks, PR | |
+
+### 5a. Authoring split
+
+Balanced by work (the research skills topics are short; Unit 5's disorders and treatments are heavy). Each author
+owns every file of its topics and the FRQs listed (17 in all: 8 AAQ, 9 EBQ, ids in
+`docs/appsych-dependency-map.json`); briefs in `docs/appsych-briefs/`.
+
+| Author | Topics | Count | FRQs | Stimulus sets |
+|---|---|---|---|---|
+| A | "Research skills you need" (7) and 1.1-1.2 | 9 | 2 AAQ (research methods, correlation) | study, 2 data, visual |
+| B | 1.3-1.6 | 4 | AAQ heredity and environment, EBQ sleep | visual, study, data |
+| C | Unit 2 (2.1-2.8) | 8 | AAQ forgetting, EBQ retrieval | 2 data, study, visual |
+| D | 3.1-3.6 | 6 | AAQ development methods, EBQ social-emotional development | study, data |
+| E | 3.7-3.9, 4.1-4.3 | 6 | 2 AAQ (operant conditioning, social situations), 2 EBQ (social-cognitive learning, social situations) | 2 data, 2 study |
+| F | 4.4-4.7, 5.1-5.2 | 6 | AAQ motivation, 2 EBQ (personality, health psychology) | visual, data |
+| G | 5.3-5.5 | 3 | 2 EBQ (treatment of depression, of anxiety) | study, data |
+
+Trainer builders (Phase 2), four at once, each owning whole slugs:
+
+| Builder | Trainers |
+|---|---|
+| T1 | `article-studio` (flagship), `evidence-builder` |
+| T2 | `neuron`, `brain-map`, `sensation` |
+| T3 | `memory-lab`, `conditioning-lab`, `stats-lab` |
+| T4 | `development`, `social-influence` |
 
 ## 6. Trainers (proposed; final list after the CED map)
 
@@ -149,3 +174,27 @@ with one rubric line per point and full-credit samples.
    Psychology, from neuron to society." Ranks: Curious Observer, Hypothesis Maker, Neuron Firer, Data Reader,
    Theory Tester, Behavior Analyst, Psychology Legend.
 6. (2026-10-27) **No score calculator, no readiness band, no Beta label.**
+7. (2026-10-27) **Exam format as researched** (framework.md section 5): 75 four-option MCQ in 90 min (66.7%), AAQ
+   and EBQ in 70 min (33.3%), 7 points each, no calculator, Friday 14 May 2027 (`assets/exam-date.js`). Item types
+   keep `numeric` (descriptive statistics by hand, unit optional) and `specific` (method, variable, operational
+   definition, claim, citation); no `setup` items, no expression grader, no calculator page.
+8. (2026-10-27) **Stimulus kinds `study`, `data`, `visual`.** A `study` stimulus is a summary in the exam's
+   sections (introduction, participants, method, results, discussion); every study or data stimulus is
+   `invented: true` or cites a real study by authors and year (content check). Plot kinds: line, bar, scatter
+   (with r), histogram, normal (68-95-99.7 bands, shaded region); pyramid, dual-axis and curve dropped.
+9. (2026-10-27) **Free tier (proposed, owner to confirm):** Unit 1 and the seven research skills topics, 13 of 42
+   topics (31%); free trainers `article-studio`, `neuron`, `brain-map`.
+10. (2026-10-27) **Phase 0 done, as built** (`docs/appsych-phase0.md`, `docs/appsych-architecture.md`). Accent:
+    deep cerulean, light `--cink #084F78` on `--ctint #E3F0F8` (7.5:1; 8.8:1 on white, 8.3:1 as button text on
+    the page), dark `--cink #A8D8F0` (11.1:1 on the card) on `rgba(80,170,220,0.10)` (9.4:1); soft `#8CC8E8`;
+    header short name "Psychology". Cover deep purple `#33184A` with lilac `#D99CFF` (needs-author `identity`:
+    close to Organic Chemistry's indigo). Choices the spec left open or that differ from it: (a) the course adds a
+    "Research skills you need" chapter (7 topics placed before the topic that first needs each), 42 topics in
+    all; (b) `ApPsychStats` recipes `{fn, args, pick}` evaluated to 12 significant digits, the 68-95-99.7 rule
+    exact; (c) FRQ JSON carries `readings` (one study for an AAQ, three sources for an EBQ), `restricted` terms
+    and part `write` rules, so the FRQ page gives live hints (cite a source, name a concept, restricted term) in
+    place of "check my number"; (d) the content check refuses common myths (unless inside `.psy-myth`), slurs
+    and "commit suicide", inferential test names and skills 4.A/4.B on items; (e) practice weights not enforced
+    until confirmed (`practicesConfirmed`); (f) the AI FRQ grader is not wired for this course (needs-author
+    `frq-grader`); (g) the site shell budget went from 334 to 335 KB. SQL migration `2026-10l-appsych.sql`
+    written, not applied.

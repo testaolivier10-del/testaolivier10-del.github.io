@@ -61,6 +61,15 @@ writing rules (setups with brackets and units, specific answers, content traps):
 map and the CED check: `docs/apenv-phase0.md`; open points: `docs/apenv-needs-author.md`; briefs (authors A-G,
 builders T1-T4): `docs/apenv-briefs/`. Registered `hidden` until launch.
 
+## AP® Psychology course
+
+`docs/appsych-spec.md` is the source of truth (owner brief, research summary, trainers, grading, build plan,
+decisions); read it before AP® Psychology work and update it in the same commit. Research: `docs/appsych-research/`.
+Formats, `ApPsychStats` recipes, study summaries and AAQ/EBQ FRQs: `docs/appsych-architecture.md`; writing rules
+(apply concepts, research methods, mental-health language, no myths): `docs/appsych-authoring-guide.md`; map and the
+CED check: `docs/appsych-phase0.md`; open points: `docs/appsych-needs-author.md`; briefs (authors A-G, builders
+T1-T4): `docs/appsych-briefs/`. Registered `hidden` until launch.
+
 ## AI FRQ grader (AP® courses)
 
 `docs/frq-grader.md` is the status file (owner decisions, design, setup, eval and launch rule). Worker:
