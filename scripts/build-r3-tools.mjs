@@ -36,9 +36,9 @@ function put(rel, start, end, body, anchor) {
 
 /* ---- the tool pages ---- */
 const BAND = ['<!-- r3-toolband:start -->', '<!-- r3-toolband:end -->'];
-// The full-screen tools (Tool Studio mount); mnemonics and reference cards are slim reference pages that scroll and
+// The full-screen tools (Tool Studio mount); mnemonics is a slim reference page that scrolls and
 // keep the band.
-const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'scenario-sim', 'skillsheets', 'sound-trainer']);
+const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'reference-cards', 'scenario-sim', 'skillsheets', 'sound-trainer']);
 const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 for (const t of toolCovers('nremt')) {
   const rel = `nremt/${t.slug}.html`;

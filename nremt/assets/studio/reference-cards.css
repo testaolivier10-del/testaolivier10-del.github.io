@@ -1,0 +1,103 @@
+/* Reference cards in the Tool Studio (docs/tools-calm.md; assets/ref-cards.js): Vitals, GCS, APGAR and the
+   pediatric assessment triangle, one card per mode. Loaded after nremt-studio.css, on reference-cards.html only. */
+.nx-reference-cards .rc-stage{flex:1;min-height:0;overflow:auto;margin:0 -14px -14px;padding:4px 14px 14px;display:flex;flex-direction:column;}
+.nx-reference-cards .rc-stage > [hidden]{display:none !important;}
+@media (min-width:1000px){ .nx-reference-cards .rc-stage{margin:0 -24px -24px;padding:4px 24px 24px;} }
+.nx-reference-cards .rc-stage > div{width:100%;max-width:720px;margin:0 auto;}
+/* the live total */
+.nx-reference-cards .rc-total{display:flex;align-items:center;gap:12px;margin:0 0 12px;}
+.nx-reference-cards .rc-total-n{display:grid;place-items:center;min-width:64px;height:64px;padding:0 10px;border-radius:20px;background:var(--tint-good);color:var(--good-text);
+  font:900 34px/1 var(--font-ui);font-variant-numeric:tabular-nums;transition:background .2s,color .2s;}
+.nx-reference-cards .rc-total[data-tone=warn] .rc-total-n{background:var(--tint-amber);color:var(--amber-text,var(--ink));}
+.nx-reference-cards .rc-total[data-tone=bad] .rc-total-n{background:var(--tint-bad);color:var(--bad-text);}
+.nx-reference-cards .rc-total-k{font:800 var(--ls-s)/1.35 var(--font-ui);color:var(--muted);}
+/* an option: a number badge and the table's words */
+.nx-reference-cards .rc-opt{display:flex;align-items:center;gap:8px;width:100%;min-height:48px;margin:0;padding:6px 10px 6px 6px;border:0;border-radius:14px;
+  background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);text-align:left;font:700 var(--ls-s)/1.25 var(--font-ui);cursor:pointer;}
+.nx-reference-cards .rc-opt b{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);font:900 15px var(--font-ui);}
+.nx-reference-cards .rc-opt:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.nx-reference-cards .rc-opt.on{background:var(--cink);color:var(--white);box-shadow:none;}
+.nx-reference-cards .rc-opt.on b{background:var(--white);color:var(--cink);box-shadow:none;}
+.nx-reference-cards .rc-opt.is-right{background:var(--tint-good);color:var(--ink);box-shadow:inset 0 0 0 2.5px var(--good-text);}
+.nx-reference-cards .rc-opt.is-right b{background:var(--good-text);color:var(--white);}
+.nx-reference-cards .rc-opt.is-wrong{background:var(--tint-bad);color:var(--ink);box-shadow:inset 0 0 0 2.5px var(--bad-text);}
+.nx-reference-cards .rc-opt.is-wrong b{background:var(--bad-text);color:var(--white);}
+.nx-reference-cards .rc-opt.is-key{box-shadow:inset 0 0 0 2.5px var(--good-text);background:var(--white);}
+.nx-reference-cards .rc-opt.is-key::after{content:"Right answer";margin-left:auto;flex:none;font:800 11px var(--font-ui);color:var(--good-text);}
+/* GCS: three columns */
+.nx-reference-cards .rc-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:start;}
+.nx-reference-cards .rc-col{display:flex;flex-direction:column;gap:6px;}
+.nx-reference-cards .rc-col-h{display:flex;align-items:center;gap:6px;margin:0 0 2px;font:900 var(--ls-s) var(--font-ui);color:var(--cink);}
+.nx-reference-cards .rc-col-h svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+@media (max-width:640px){
+  .nx-reference-cards .rc-cols{gap:5px;}
+  .nx-reference-cards .rc-col .rc-opt{flex-direction:column;align-items:flex-start;gap:3px;min-height:56px;padding:6px;font-size:12.5px;line-height:1.2;}
+  .nx-reference-cards .rc-col .rc-opt b{width:24px;height:24px;font-size:13px;border-radius:8px;}
+  .nx-reference-cards .rc-col .rc-opt.is-key::after{margin-left:0;}
+  .nx-reference-cards .rc-total{margin-bottom:8px;}
+  .nx-reference-cards .rc-total-n{min-width:54px;height:54px;font-size:28px;}
+}
+/* APGAR: five rows */
+.nx-reference-cards .rc-ap-rows{display:flex;flex-direction:column;gap:12px;}
+.nx-reference-cards .rc-ap-h{font:800 var(--ls-m) var(--font-ui);margin:0 0 6px;color:var(--ink);}
+.nx-reference-cards .rc-ap-h b{color:var(--cink);font-size:1.25em;}
+.nx-reference-cards .rc-ap-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+@media (max-width:640px){
+  .nx-reference-cards .rc-ap-opts .rc-opt{flex-direction:column;align-items:flex-start;gap:3px;min-height:52px;padding:6px;font-size:12.5px;line-height:1.2;}
+  .nx-reference-cards .rc-ap-opts .rc-opt b{width:24px;height:24px;font-size:13px;border-radius:8px;}
+  .nx-reference-cards .rc-ap-rows{gap:8px;}
+  .nx-reference-cards .rc-ap-h{margin-bottom:4px;font-size:15px;}
+}
+/* PAT: the triangle */
+.nx-reference-cards .rc-pat{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.nx-reference-cards .rc-tri{width:100%;max-width:440px;height:auto;overflow:visible;}
+.nx-reference-cards .rc-tri-fill{fill:var(--tint-good);transition:fill .25s;}
+.nx-reference-cards .rc-tri[data-tone=warn] .rc-tri-fill{fill:var(--tint-amber);}
+.nx-reference-cards .rc-tri[data-tone=bad] .rc-tri-fill{fill:var(--tint-bad);}
+.nx-reference-cards .rc-side{cursor:pointer;outline:none;}
+.nx-reference-cards .rc-side-hit{stroke:transparent;stroke-width:44;stroke-linecap:round;fill:none;}
+.nx-reference-cards .rc-side-line{stroke:var(--good-text);stroke-width:9;stroke-linecap:round;fill:none;transition:stroke .2s;}
+.nx-reference-cards .rc-side.on .rc-side-line{stroke:var(--bad-text);stroke-dasharray:14 9;}
+.nx-reference-cards .rc-side:hover .rc-side-line,.nx-reference-cards .rc-side:focus-visible .rc-side-line{stroke-width:12;}
+.nx-reference-cards .rc-side:focus-visible .rc-side-hit{stroke:color-mix(in srgb,var(--cink) 18%,transparent);}
+.nx-reference-cards .rc-side-t{font:900 14px var(--font-ui);fill:var(--ink);}
+.nx-reference-cards .rc-side-s{font:800 12px var(--font-ui);fill:var(--good-text);}
+.nx-reference-cards .rc-side.on .rc-side-s{fill:var(--bad-text);}
+.nx-reference-cards .rc-side.is-right .rc-side-line{stroke:var(--good-text);stroke-dasharray:none;stroke-width:12;}
+.nx-reference-cards .rc-side.is-wrong .rc-side-line{stroke:var(--bad-text);stroke-dasharray:none;stroke-width:12;}
+.nx-reference-cards .rc-side.is-wrong .rc-side-s{fill:var(--bad-text);}
+.nx-reference-cards .rc-side.is-key .rc-side-line{stroke:var(--bad-text);stroke-dasharray:14 9;stroke-width:12;}
+.nx-reference-cards .rc-mid-h{font:900 16px var(--font-ui);fill:var(--ink);}
+.nx-reference-cards .rc-pat-read{width:100%;max-width:520px;font-size:var(--ls-s);line-height:1.45;}
+.nx-reference-cards .rc-pat-read ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;}
+.nx-reference-cards .rc-pat-read p{margin:0;text-align:center;}
+/* the vitals check, now the stage */
+.nx-reference-cards .rc-vitals .vc{margin:0;border:0;padding:0;background:none;}
+/* dock: actions and practice */
+.nx-reference-cards .rc-dock{display:flex;flex-direction:column;gap:12px;}
+.nx-reference-cards .rc-acts[hidden],.nx-reference-cards .rc-prac[hidden],.nx-reference-cards .rc-prac [hidden]{display:none !important;}
+.nx-reference-cards .rc-prac{display:flex;flex-direction:column;gap:10px;}
+.nx-reference-cards .rc-case{margin:0;padding:10px 12px;border-radius:14px;background:var(--ctint);color:var(--ink);font-size:var(--ls-m);line-height:1.45;}
+.nx-reference-cards .rc-hint{margin:0;padding:10px 12px;border-radius:14px;background:var(--tint-amber);font-size:var(--ls-s);line-height:1.45;}
+.nx-reference-cards .rc-verdict:empty{display:none;}
+.nx-reference-cards .rc-verdict{font-size:var(--ls-s);line-height:1.45;}
+.nx-reference-cards .rc-verdict ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;}
+.nx-reference-cards .rc-verdict li.no{color:var(--ink);}
+.nx-reference-cards .rc-verdict.ok > b:first-child{color:var(--good-text);}
+.nx-reference-cards .rc-verdict.no > b:first-child{color:var(--bad-text);}
+/* Why and Details */
+.nx-reference-cards .rc-why{display:flex;flex-direction:column;gap:12px;}
+.nx-reference-cards .rc-why .sub{margin:0;font-size:var(--ls-m);color:var(--ink);}
+.nx-reference-cards .rc-why .ref-notes > summary{display:none;}
+.nx-reference-cards .rc-why .refnote{margin:0 0 10px;padding:10px 12px;border:0;border-radius:12px;background:var(--surface2);font-size:var(--ls-s);line-height:1.55;color:var(--ink);}
+.nx-reference-cards .rc-tables .table-scroll{margin:0 0 6px;}
+.nx-reference-cards .rc-tables table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.nx-reference-cards .rc-tables th,.nx-reference-cards .rc-tables td{padding:6px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top;}
+.nx-reference-cards .rc-tables th{font:800 11px var(--font-ui);color:var(--muted);}
+.nx-reference-cards .rc-tables td.n{font:700 12.5px var(--font-mono);}
+.nx-reference-cards .rc-tables #pedsVitals tbody tr.vc-on td{background:var(--tint-accent);}
+@media (max-width:640px){
+  .nx-reference-cards .rc-gcs .rc-total,.nx-reference-cards .rc-apgar .rc-total{display:none;}
+  .nx-reference-cards .rc-col .rc-opt{min-height:48px;}
+  .nx-reference-cards .rc-tri{max-width:360px;}
+}

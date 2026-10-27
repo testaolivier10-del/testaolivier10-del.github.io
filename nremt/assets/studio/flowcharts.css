@@ -58,3 +58,88 @@
 .nx-flowcharts .branch-label,.nx-flowcharts .drill-branchlabel,.nx-flowcharts .flow-rejoin,.nx-flowcharts .flow-box.terminal::after{font:700 12px var(--font-ui);text-transform:none;letter-spacing:0;}
 .nx-flowcharts .bd-slot .bd-q,.nx-flowcharts .bd-status{font:700 12px var(--font-ui);text-transform:none;letter-spacing:0;}
 @media (max-width:999.98px){.nx-flowcharts .bd-tray{padding-bottom:6px;}}
+
+/* ---- Read mode as a drawn flowchart (audit 2026-10) ---------------------------------------------------------
+   Three shapes, each with a small icon so the kind reads without colour: an action is a card with a solid accent
+   edge and a "do" glyph; a decision is a hexagon (the flowchart question shape) with a "?" glyph; an end is a
+   stadium with a stop glyph. Arrows are drawn connectors with heads, and a decision's arms hang off a forked
+   connector, each arm headed by its answer as a tab, so Yes / No read as a fork, not as labels. */
+.nx-flowcharts .diagram-card{--fc-line:color-mix(in srgb,var(--muted) 70%,transparent);--fc-dec:var(--cink);display:flex;flex-direction:column;align-items:stretch;}
+.nx-flowcharts .flow-box{position:relative;margin:0;padding:12px 14px 12px 44px;border:0;border-radius:14px;background:var(--white);text-align:left;
+  font:700 var(--ls-m)/1.4 var(--font-ui);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line),0 2px 0 var(--line-soft);}
+.nx-flowcharts .flow-box::before{content:"";position:absolute;left:12px;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:7px;
+  background:var(--surface2) no-repeat center/14px 14px;box-shadow:inset 0 0 0 1.5px var(--line);}
+/* action: solid edge, a hand-on glyph */
+.nx-flowcharts .flow-box.action{font-weight:800;box-shadow:inset 4px 0 0 var(--cink),inset 0 0 0 1.5px color-mix(in srgb,var(--cink) 55%,var(--line)),0 2px 0 var(--line-soft);}
+.nx-flowcharts .flow-box.action::before{background-color:var(--cink);box-shadow:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8h7M8.5 4.5L12 8l-3.5 3.5' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");}
+/* decision: hexagon */
+.nx-flowcharts .flow-box.decision{background:none;box-shadow:none;padding:14px 34px 14px 52px;isolation:isolate;font-weight:800;}
+.nx-flowcharts .flow-box.decision::after{content:"";position:absolute;inset:0;z-index:-1;background:color-mix(in srgb,var(--cink) 10%,var(--white));
+  clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,18px 100%,0 50%);
+  filter:drop-shadow(1.5px 0 0 var(--fc-dec)) drop-shadow(-1.5px 0 0 var(--fc-dec)) drop-shadow(0 1.5px 0 var(--fc-dec)) drop-shadow(0 -1.5px 0 var(--fc-dec));}
+.nx-flowcharts .flow-box.decision::before{left:22px;border-radius:50%;background-color:var(--white);box-shadow:inset 0 0 0 1.5px var(--cink);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.6 5.8a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.2.9-1.2 1.8' fill='none' stroke='%23146b5c' stroke-width='1.9' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='12.6' r='1.1' fill='%23146b5c'/%3E%3C/svg%3E");}
+/* end: stadium, stop glyph, dashed */
+.nx-flowcharts .flow-box.terminal{border-radius:999px;padding-left:46px;padding-right:18px;font-weight:700;background:var(--paper);
+  box-shadow:inset 0 0 0 1.5px var(--muted);}
+.nx-flowcharts .flow-box.terminal::before{left:14px;border-radius:50%;background-color:var(--muted);box-shadow:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='4.5' y='4.5' width='7' height='7' rx='1.2' fill='white'/%3E%3C/svg%3E");}
+.nx-flowcharts .flow-box.terminal::after{content:"Stop here";display:block;margin-top:3px;font:800 11.5px var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;}
+/* plain step: a quiet card, a dot glyph */
+.nx-flowcharts .flow-box:not(.action):not(.decision):not(.terminal)::before{background-image:radial-gradient(circle,var(--muted) 3px,transparent 3.5px);background-size:auto;}
+:root[data-theme="dark"] .nx-flowcharts .flow-box.decision::before{background-color:var(--surface2);}
+/* connectors */
+.nx-flowcharts .flow-arrow{position:relative;height:24px;margin:0;font-size:0;color:transparent;}
+.nx-flowcharts .flow-arrow::before{content:"";position:absolute;left:50%;top:0;bottom:6px;width:2px;margin-left:-1px;background:var(--fc-line);border-radius:1px;}
+.nx-flowcharts .flow-arrow::after{content:"";position:absolute;left:50%;bottom:0;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top:7px solid var(--fc-line);}
+/* the fork: a stem from the question, a bar across the arms, a drop into each arm */
+.nx-flowcharts .flow-box.decision + .flow-branch,.nx-flowcharts .flow-arrow + .flow-branch{margin-top:0;}
+.nx-flowcharts .flow-branch{position:relative;display:flex;flex-direction:row;gap:10px;margin:0;padding-top:30px;}
+.nx-flowcharts .flow-branch::before{content:"";position:absolute;left:50%;top:0;height:12px;width:2px;margin-left:-1px;background:var(--fc-dec);}
+.nx-flowcharts .flow-branch::after{content:"";position:absolute;top:12px;left:calc(25% - 2.5px);right:calc(25% - 2.5px);height:2px;background:var(--fc-dec);border-radius:1px;}
+.nx-flowcharts .flow-branch > div{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;border:0;border-radius:14px;padding:22px 8px 8px;margin-top:8px;
+  background:color-mix(in srgb,var(--cink) 4%,var(--surface2));box-shadow:inset 0 0 0 1.5px var(--line-soft);}
+.nx-flowcharts .flow-branch > div::before{content:"";position:absolute;left:50%;top:-18px;height:16px;width:2px;margin-left:-1px;background:var(--fc-dec);}
+.nx-flowcharts .flow-branch .branch-label{position:absolute;top:-11px;left:8px;right:8px;margin:0;text-align:center;}
+.nx-flowcharts .branch-label{font:800 12px/1 var(--font-ui);color:var(--white);}
+.nx-flowcharts .branch-label::before{content:none;}
+.nx-flowcharts .flow-branch .branch-label{display:flex;justify-content:center;}
+.nx-flowcharts .flow-branch .branch-label > span,.nx-flowcharts .flow-branch .branch-label{pointer-events:none;}
+.nx-flowcharts .fc-tab{display:inline-block;max-width:100%;padding:5px 10px;border-radius:999px;background:var(--cink);color:var(--white);font:800 12px/1.2 var(--font-ui);
+  box-shadow:0 0 0 3px var(--white);white-space:normal;text-align:center;}
+.nx-flowcharts .flow-rejoin{margin:2px 0 0;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--cink);}
+.nx-flowcharts .flow-rejoin::before{content:"";width:2px;height:12px;background:var(--cink);border-radius:1px;}
+.nx-flowcharts .flow-note{margin:10px 0 4px;padding:10px 12px;border:0;border-radius:12px;background:var(--tint-amber);color:var(--ink);font-size:var(--ls-s);line-height:1.5;}
+/* After a fork, the main line picks up again with a short connector. */
+.nx-flowcharts .flow-branch + .flow-box,.nx-flowcharts .flow-note + .flow-box{margin-top:18px;}
+.nx-flowcharts .flow-branch + .flow-box::after,.nx-flowcharts .flow-note + .flow-box::after{}
+/* Many-armed forks (SALT): two columns of arms, so each stays readable. */
+.nx-flowcharts .flow-branch.is-many{flex-wrap:wrap;}
+.nx-flowcharts .flow-branch.is-many > div{flex:1 1 calc(50% - 5px);}
+.nx-flowcharts .flow-branch.is-many::after{left:12px;right:12px;}
+@media (max-width:420px){
+  .nx-flowcharts .flow-branch{gap:8px;}
+  .nx-flowcharts .flow-branch > div{padding:22px 6px 6px;}
+  .nx-flowcharts .flow-branch .flow-box{padding:10px 10px 10px 38px;font-size:14px;}
+  .nx-flowcharts .flow-branch .flow-box::before{left:9px;width:20px;height:20px;margin-top:-10px;}
+  .nx-flowcharts .flow-branch .flow-box.decision{padding-left:44px;}
+}
+/* The legend for the three shapes, at the top of Why. */
+.nx-flowcharts .fc-legend{display:flex;flex-direction:column;gap:8px;margin:0;}
+.nx-flowcharts .fc-legend .flow-box{font-size:var(--ls-s);}
+
+/* ---- Build: the bank is a vertical bottom sheet on a phone (no sideways scroll), the chart scrolls to the next
+   empty slot after each placement. */
+@media (max-width:999.98px){
+  .nx-flowcharts .bd-pick{flex-wrap:nowrap;margin-right:-14px;padding-right:14px;}
+  .nx-flowcharts .bd-tray{flex-direction:column;overflow-x:hidden;overflow-y:auto;max-height:min(20vh,150px);scroll-snap-type:none;gap:6px;padding:2px 2px 6px;}
+  .nx-flowcharts .bd-tile{width:auto;flex:none;font-size:14px;line-height:1.35;padding:10px 12px 10px 26px;}
+  .nx-flowcharts .bd-side{border-top:0;border-radius:20px 20px 0 0;box-shadow:0 -10px 24px rgba(20,40,35,.12);padding-top:14px;}
+  .nx-flowcharts .bd-side::before{content:"";display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:-4px auto 8px;}
+  .nx-flowcharts .bd-side.is-low .bd-tray{max-height:0;overflow:hidden;padding:0;}
+  .nx-flowcharts .bd-sheet-t{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+}
+.nx-flowcharts .bd-slot.is-next{box-shadow:0 0 0 4px var(--tint-accent);border-style:solid;}
+.nx-flowcharts .bd-slot.k-decision.is-next{box-shadow:none;}
+.nx-flowcharts .bd-side .bd-fb{max-height:4.5em;overflow:auto;}

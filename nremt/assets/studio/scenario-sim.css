@@ -85,3 +85,31 @@
 @media (min-width:1000px){ .nx-scenario-sim .sim-box.active{margin:0 -24px -24px;padding:0 24px 24px;} }
 .nx-scenario-sim .pt-seg button,.nx-scenario-sim .pt-bar .pt-skin{min-height:44px;}
 .nx-scenario-sim[data-sim=call] .sim-ls-dock > .sim-header{display:none;}
+/* Audit 2026-10. Picker: category chips with a drawn icon, and an icon on each card. */
+.nx-scenario-sim .picker-cats{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:8px;margin:0 -14px 12px;padding:2px 14px;position:sticky;top:-4px;z-index:2;background:var(--white);}
+.nx-scenario-sim .picker-cats::-webkit-scrollbar{display:none;}
+.nx-scenario-sim .picker-cats button{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:0;border-radius:999px;background:var(--surface2);
+  box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:800 var(--ls-s) var(--font-ui);}
+.nx-scenario-sim .picker-cats button span{color:var(--muted);font-weight:700;}
+.nx-scenario-sim .picker-cats button[aria-pressed=true]{background:var(--cink);color:var(--white);box-shadow:none;}
+.nx-scenario-sim .picker-cats button[aria-pressed=true] span{color:inherit;opacity:.75;}
+.nx-scenario-sim .picker-cats svg,.nx-scenario-sim .scenario-ico svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.nx-scenario-sim .scenario-card{display:flex;align-items:flex-start;gap:12px;text-align:left;}
+.nx-scenario-sim .scenario-txt{display:block;min-width:0;}
+.nx-scenario-sim .scenario-domain{display:block;}
+.nx-scenario-sim .scenario-ico{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--ctint);color:var(--cink);margin-top:2px;}
+.nx-scenario-sim .scenario-ico svg{width:24px;height:24px;}
+.nx-scenario-sim .scenario-ico[data-cat=peds]{background:var(--tint-accent);}
+.nx-scenario-sim .scenario-ico[data-cat=trauma],.nx-scenario-sim .scenario-ico[data-cat=arrest]{background:var(--tint-bad);color:var(--bad-text);}
+.nx-scenario-sim .scenario-ico[data-cat=ob]{background:var(--tint-good);color:var(--good-text);}
+.nx-scenario-sim .scenario-ico[data-cat=env],.nx-scenario-sim .scenario-ico[data-cat=behav]{background:var(--tint-amber);color:var(--amber-text,var(--ink));}
+@media (min-width:1000px){ .nx-scenario-sim .picker-cats{margin:0 -24px 14px;padding:2px 24px;flex-wrap:wrap;} }
+/* The opening call: the whole text, never clamped. */
+.nx-scenario-sim[data-sim-first] .ls-caption{display:block;-webkit-line-clamp:unset;overflow:visible;}
+/* End: Try again and Next call are the primary pair; the site's next step follows, quieter. */
+.nx-scenario-sim .sim-end-acts{display:flex;gap:10px;}
+.nx-scenario-sim .sim-end-acts .ls-btn{flex:1;min-height:52px;min-width:0;}
+.nx-scenario-sim .sim-next{display:flex;flex-direction:column;justify-content:center;line-height:1.15;padding:6px 14px;}
+.nx-scenario-sim .sim-next small{display:block;max-width:100%;font:700 12px var(--font-ui);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nx-scenario-sim .sim-ls-dock .levl-next{margin:4px 0 0;}
+.nx-scenario-sim .sim-ls-dock .levl-next__go{background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}

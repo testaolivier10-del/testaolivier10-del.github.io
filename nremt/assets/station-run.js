@@ -251,13 +251,39 @@
     // BSI is step 0; skipped once any later step is ticked without it.
     return !done[0] && done.slice(1).some(Boolean);
   }
+  /* Out of order, live (audit 2026-10). A critical step still unticked while
+     a later step is ticked is "skipped" (flagged at once); a critical step
+     ticked after a later one stays flagged "out of order". Only the official
+     criteria that are about order light by themselves: No PPE (BSI skipped
+     or late, as before) and, on the BVM sheet, no suctioning before
+     ventilating. Other out-of-order steps are flagged on the list, not
+     scored: the sheet does not fail them for order alone. */
+  function skipped(i){
+    return station.steps[i].critical && !done[i] && done.slice(i + 1).some(Boolean);
+  }
+  function late(i){
+    if(!station.steps[i].critical || !done[i]) return false;
+    for(var j = i + 1; j < done.length; j++) if(done[j] && doneAt[j] < doneAt[i]) return true;
+    return false;
+  }
+  function stepIdx(id){ for(var i = 0; i < station.steps.length; i++) if(station.steps[i].id === id) return i; return -1; }
+  // BVM: a ventilation step ticked while suction is not yet ticked.
+  function ventBeforeSuction(){
+    var su = stepIdx('suction'); if(su < 0) return false;
+    return ['vent1', 'vent2'].some(function(id){ var v = stepIdx(id); return v >= 0 && done[v] && (!done[su] || doneAt[su] > doneAt[v]); });
+  }
+  function critFromOrder(c){
+    if(RE_PPE.test(c) && late(0)) return true;
+    if(/suction/i.test(c) && /before/i.test(c) && ventBeforeSuction()) return true;
+    return false;
+  }
 
   function lightCriteria(sec){
     if(!station.criteria.length) return;
     var over = sec > targetMin * 60;
     station.criteria.forEach(function(c, i){
       if(flagged[i] === 'self') return;
-      var auto = (RE_PPE.test(c) && bsiSkipped()) || (RE_TIME.test(c) && over);
+      var auto = (RE_PPE.test(c) && bsiSkipped()) || (RE_TIME.test(c) && over) || critFromOrder(c);
       flagged[i] = auto ? 'auto' : '';
     });
     var box = document.getElementById('runCrit');
@@ -355,6 +381,7 @@
               ? 'The station limit from the Registry’s exam guide (see "The official sheets at a glance" below). Change it if your program differs.'
               : 'Commonly published for this station — confirm against your own program’s sheet.') + '</div>' +
             '<a class="run-badge" id="runCritBadge" href="#runCrit" hidden></a>' +
+            '<span class="run-badge run-skip" id="runSkipBadge" role="status" hidden></span>' +
           '</div>' +
         '</div>' +
 
@@ -387,8 +414,16 @@
         doneAt[i] = box.checked ? ++order : 0;
         if(patient){ patient.set(doneMap()); box.closest('.run-step').classList.toggle('is-hold', patient.hold(i)); }
         box.closest('.run-step').classList.toggle('is-done', box.checked);
-        var li0 = ctl().querySelector('.run-step');
-        if(li0) li0.classList.toggle('is-skipped', bsiSkipped());
+        var lis = ctl().querySelectorAll('.run-step');
+        lis.forEach(function(li, k){
+          var was = li.classList.contains('is-skipped'), now = k === 0 ? bsiSkipped() : skipped(k);
+          li.classList.toggle('is-skipped', now);
+          li.classList.toggle('is-late', !now && late(k));
+          if(now && !was && k > 0 && window.LevlAnnounce) window.LevlAnnounce.say('Skipped a critical step: ' + station.steps[k].text);
+        });
+        var nSkip = [].filter.call(lis, function(li){ return li.classList.contains('is-skipped') || li.classList.contains('is-late'); }).length;
+        var sb = document.getElementById('runSkipBadge');
+        if(sb){ sb.hidden = !nSkip; sb.textContent = nSkip === 1 ? '1 critical step out of order' : nSkip + ' critical steps out of order'; }
         lightCriteria(elapsed());
       });
     });
@@ -477,6 +512,10 @@
         (flagged.some(Boolean)
           ? '<div class="run-flagbox"><b>Critical criteria that lit up:</b><ul>' +
               station.criteria.filter(function(c, i){ return flagged[i]; }).map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') +
+            '</ul></div>' : '') +
+        (station.steps.some(function(st, i){ return late(i); })
+          ? '<div class="run-flagbox"><b>Critical items done out of order:</b><ul>' +
+              station.steps.map(function(st, i){ return late(i) ? '<li>' + esc(st.text) + '<small>Ticked after a step that comes later on the sheet.</small></li>' : ''; }).join('') +
             '</ul></div>' : '') +
         (missedOther ? '<p class="run-note">' + missedOther + ' other phase' + (missedOther === 1 ? '' : 's') +
                        ' left unticked.</p>' : '') +

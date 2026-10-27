@@ -769,7 +769,14 @@ function renderQuizRound(){
   const round = quizState.rounds[quizState.current];
   quizState.answered = false;
 
+  // The sound set, switchable on the round itself (it starts a fresh round), so
+  // Test yourself opens on round 1 rather than on a start screen.
+  const qCounts = { all: SOUNDS.filter(s => s.available).length, heart: SOUNDS.filter(s => s.available && s.group === 'heart').length };
+  const qGroup = quizState.current === 0 && !quizState.log.length
+    ? `<div class="st-qgroup" role="group" aria-label="Which sounds to be asked about">${[['all','Everything'],['heart','Heart only']].map(([k, l]) =>
+        `<button type="button" data-qgroup="${k}" aria-pressed="${quizGroup === k}">${l}<span>${qCounts[k]}</span></button>`).join('')}</div>` : '';
   box.innerHTML = `
+    ${qGroup}
     <div class="quiz-progress">Round ${quizState.current + 1} of ${quizState.rounds.length}<span class="quiz-score">Score: ${quizState.score}/${quizState.current}</span></div>
     <button type="button" class="big-play-btn" id="quizPlayBtn">&#9658;</button>
     <div class="quiz-hint">Play the clip (press again to stop), then pick what you hear</div>
@@ -779,6 +786,10 @@ function renderQuizRound(){
     <div class="feedback" id="quizFeedback"></div>
   `;
 
+  box.querySelectorAll('[data-qgroup]').forEach(b => b.addEventListener('click', () => {
+    if (quizGroup === b.dataset.qgroup) return;
+    quizGroup = b.dataset.qgroup; startQuiz();
+  }));
   document.getElementById('quizPlayBtn').addEventListener('click', () => playClip(round));
   // auto-play on round start
   playClip(round);
@@ -981,11 +992,18 @@ if (studio) (function(){
     const w = side.querySelector('details.st-why');
     const chip = side.querySelector('[data-finding][aria-pressed="true"]');
     const snd = chip && SOUNDS.find(x => x.id === chip.dataset.finding);
-    why.innerHTML = (snd ? '<h3 class="ls-title-l">' + snd.label + '</h3><p>' + snd.description + '</p><p class="tmuted">' + snd.clinical + '</p>' : '') +
+    const made = snd && window.LevlSoundBank && window.LevlSoundBank.isSynthetic(snd);
+    why.innerHTML = (snd ? '<h3 class="ls-title-l">' + snd.label + '</h3><p>' + snd.description + '</p><p class="tmuted">' + snd.clinical + '</p>' +
+      '<p class="ls-sub"><b>' + (made ? 'A generated sound.' : 'A real recording.') + '</b> ' + (made
+        ? 'Every heart sound here is generated: what separates them is where each sound falls in the beat, which a generated sound reproduces exactly.'
+        : 'The lung and airway clips are real auscultation recordings (credits in Settings &amp; every sound).') + '</p>' : '') +
       (w ? '<h3 class="ls-h">Why this spot</h3>' + [...w.children].filter(c => c.tagName !== 'SUMMARY').map(c => c.outerHTML).join('') : '');
     if (here) studio.pills([{ html: here.textContent, tone: here.classList.contains('is-best') ? 'good' : here.classList.contains('is-faint') ? 'warn' : 'accent' }], 'right', 'explore');
   }
   pick.addEventListener('click', () => setTimeout(paint));
+  // Name it opens on round 1, not on a start screen (audit 2026-10).
+  const autoStart = () => { if (!quiz.hidden && !quizState) startQuiz(); };
+  new MutationObserver(autoStart).observe(quiz, { attributes: true, attributeFilter: ['hidden'] });
   paint();
   // Test answers land on the stage: the verdict as a pill.
   const verdictPill = () => {
@@ -995,7 +1013,8 @@ if (studio) (function(){
   [side, timing, quiz].forEach(el => new MutationObserver(() => { verdictPill(); paint(); }).observe(el, { childList: true, subtree: true }));
   // The chest's spots are redrawn when its figure data lands, so the hint
   // points at Play, which stays put.
-  studio.hint({ target: side.querySelector('[data-play-which="a"]') || fig, text: 'Play it, or tap a spot on the chest' });
+  // Anchored inside the chest, so the bubble never sits over the sound chips (audit 2026-10).
+  studio.hint({ target: fig, inside: true, text: 'Tap a spot on the chest, or Play below' });
   // From Review: #snd-<id> opens that sound's card in Details.
   if (location.hash.indexOf('#snd-') === 0) {
     const card = document.getElementById(location.hash.slice(1));

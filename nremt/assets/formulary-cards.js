@@ -96,6 +96,13 @@
     }
     return null;
   }
+  /* The sentence of a card line that holds the rule's phrase, for the verdict. */
+  function deciding(el, phrase){
+    var t = txt(el), norm = function(x){ return x.replace(/[‘’]/g, "'"); };
+    var parts = t.split(/(?<=[.;])\s+/), hit = parts.filter(function(p){ return norm(p).indexOf(norm(phrase)) >= 0; })[0] || t;
+    hit = hit.replace(/[.;:]\s*$/, '');
+    return hit.charAt(0).toLowerCase() + hit.slice(1) + '.';
+  }
   function section(el){
     if(el.classList && el.classList.contains('stop')) return 'Before you give it';
     var dd = el.tagName === 'DD' ? el : el.closest('dd');
@@ -104,7 +111,7 @@
     return dt ? txt(dt) : '';
   }
 
-  var deck = [], at = 0, right = 0, answered = false;
+  var deck = [], at = 0, right = 0, answered = false, missed = [];
 
   /* A host page may give the decision its own place (the Tool Studio's dock:
      #gwDock): the patient card stays here, the Give / Withhold buttons and
@@ -119,16 +126,29 @@
     firstId = null;
     deck = shuffle(CARDS.filter(function(c){ return c !== first; }));
     if(first) deck.unshift(first);
-    deck = deck.slice(0, 8); at = 0; right = 0; render();
+    deck = deck.slice(0, 8); at = 0; right = 0; missed = []; render();
+  }
+  /* "Drill my misses": the cards just missed, dealt again in a new order. */
+  function drillMisses(){
+    var ids = missed.slice();
+    deck = shuffle(CARDS.filter(function(c){ return ids.indexOf(c.id) >= 0; }));
+    at = 0; right = 0; missed = []; render();
   }
 
   function render(){
     if(at >= deck.length){
+      var miss = CARDS.filter(function(c){ return missed.indexOf(c.id) >= 0; });
+      var endActs = (miss.length ? '<button type="button" class="btn-press" id="gwDrill">Drill my misses (' + miss.length + ')</button>' : '') +
+        '<button type="button" class="' + (miss.length ? 'link-quiet gw-again2' : 'btn-press') + '" id="gwAgain">Deal a new deck</button>';
       mount.innerHTML = '<div class="gw-end"><div class="gw-end-n">' + right + ' / ' + deck.length + '</div>' +
         '<p>' + (right === deck.length ? 'Every call right.' : 'The ones you missed went to your Review list.') + '</p>' +
-        '<button type="button" class="btn-press" id="gwAgain">Deal again</button></div>';
-      if(dk()) dk().innerHTML = '';
+        (miss.length ? '<ul class="gw-end-miss">' + miss.map(function(c){
+          return '<li><span class="gw-pill">' + esc(c.drug) + '</span> ' + esc(c.pt) + ' <b class="gw-end-ans">' + (c.give ? 'Give it' : 'Withhold it') + '</b></li>';
+        }).join('') + '</ul>' : '') +
+        (dk() ? '' : '<div class="gw-end-acts">' + endActs + '</div>') + '</div>';
+      if(dk()) dk().innerHTML = '<div class="gw-end-acts">' + endActs + '</div>';
       document.getElementById('gwAgain').addEventListener('click', start);
+      var dr = document.getElementById('gwDrill'); if(dr) dr.addEventListener('click', drillMisses);
       return;
     }
     var controls =
@@ -188,8 +208,9 @@
     if(answered) return;
     answered = true;
     var c = deck[at], ok = give === c.give;
-    if(ok) right++;
-    var tally = mount.querySelector('.gw-right'); if(tally) tally.textContent = right + ' right';
+    if(ok) right++; else if(missed.indexOf(c.id) < 0) missed.push(c.id);
+    var tally = mount.querySelector('.gw-right');
+    if(tally){ tally.textContent = right + ' right'; tally.classList.remove('bump', 'ok', 'no'); void tally.offsetWidth; tally.classList.add('bump', ok ? 'ok' : 'no'); }
     var card = document.getElementById('gwCard');
     card.classList.add(give ? 'went-give' : 'went-hold', ok ? 'is-ok' : 'is-no');
     card.style.transform = '';
@@ -199,7 +220,9 @@
     var dc = drugCard(c.drug), line = dc && ruleLine(dc, c.rule), dose = dc && dc.querySelector('dd.dose');
     var why = document.getElementById('gwWhy');
     why.innerHTML =
-      '<div class="gw-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right: ' : 'No: ') + (c.give ? 'give it.' : 'withhold it.') + '</div>' +
+      // The verdict leads with the deciding fact: the answer, then the line on the card that decides it (audit 2026-10).
+      '<div class="gw-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right. ' : 'Not this time. ') + '<b>' + (c.give ? 'Give ' : 'Withhold ') + esc(c.drug.toLowerCase()) + '</b>' +
+        (line ? ': ' + esc(deciding(line, c.rule)) : '.') + '</div>' +
       (line ? '<div class="gw-rule"><span class="gw-rule-k">' + esc(c.drug) + ' · ' + esc(section(line)) + '</span>' + line.innerHTML + '</div>' : '') +
       (c.give && dose ? '<div class="gw-dose"><span class="gw-rule-k">Dose</span><b>' + esc(txt(dose)) + '</b>' +
         (dose.nextElementSibling && dose.nextElementSibling.tagName === 'DD' ? ' ' + dose.nextElementSibling.innerHTML : '') + '</div>' : '') +
