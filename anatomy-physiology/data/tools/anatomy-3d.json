@@ -1,0 +1,2169 @@
+{
+ "about": "Content for the A&P 3D anatomy tool (anatomy-physiology/tools/anatomy-3d.html). Each structure is one or more meshes of the shared BodyParts3D model (assets/body3d/body3d.glb), named by FMA id; every name was checked against the BodyParts3D 4.0 concept tables and the FMA. parts: the meshes; partNames: what each mesh is when it is tapped; context: meshes drawn but never named because their identity could not be confirmed. Validated by scripts/lib/anp-tool-checks/anatomy-3d.mjs.",
+ "model": {
+  "credit": "BodyParts3D, &copy; The Database Center for Life Science, <a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"noopener license\">CC BY 4.0</a> (<a href=\"https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html\" rel=\"noopener\">license</a>). Meshes grouped and colored by LevlPrep.",
+  "contains": "This is a real anatomical model, but a partial one. It has the bones of the skull vault and jaw, most of the vertebral column, the ribs, the girdles and limb bones; the heart wall, three valves and some coronary vessels; the great vessels; the lung lobes and the trachea; the main organs of the abdomen and the male pelvis; parts of the brain; and the skin.",
+  "missing": "It has no skeletal muscles of the limbs, trunk or head (the diaphragm and the papillary muscles of the heart are its only muscles), no nerves, no cerebral cortex, no bone markings (processes, foramina, fossae) and no microscopic structure. It is a male body. Missing pieces include the facial bones other than the mandible, the sphenoid and ethmoid, the atlas and axis, the coccyx, the manubrium and xiphoid process, the triquetrum, the finger and toe bones, the aortic valve, the pulmonary trunk, the bronchi, the cecum, the pons and medulla, the spinal cord (only a short piece of its central canal is modeled) and the female reproductive organs. For those, use the virtual lab practical, which works on labeled figures."
+ },
+ "systems": {
+  "skeletal": "Skeletal",
+  "nervous": "Nervous",
+  "senses": "Special senses",
+  "cardiovascular": "Cardiovascular",
+  "respiratory": "Respiratory",
+  "digestive": "Digestive",
+  "lymphatic": "Lymphatic",
+  "urinary": "Urinary",
+  "endocrine": "Endocrine",
+  "reproductive": "Reproductive",
+  "integumentary": "Integumentary"
+ },
+ "order": [
+  "skeletal",
+  "nervous",
+  "senses",
+  "cardiovascular",
+  "respiratory",
+  "digestive",
+  "lymphatic",
+  "urinary",
+  "endocrine",
+  "reproductive",
+  "integumentary"
+ ],
+ "context": [
+  "BP24",
+  "BP28"
+ ],
+ "partNames": {
+  "FMA12521": "C3 (third cervical vertebra)",
+  "FMA12522": "C4 (fourth cervical vertebra)",
+  "FMA12523": "C5 (fifth cervical vertebra)",
+  "FMA12524": "C6 (sixth cervical vertebra)",
+  "FMA12525": "C7 (seventh cervical vertebra)",
+  "FMA9165": "T1 (first thoracic vertebra)",
+  "FMA9187": "T2 (second thoracic vertebra)",
+  "FMA9209": "T3 (third thoracic vertebra)",
+  "FMA9248": "T4 (fourth thoracic vertebra)",
+  "FMA9922": "T5 (fifth thoracic vertebra)",
+  "FMA9945": "T6 (sixth thoracic vertebra)",
+  "FMA9968": "T7 (seventh thoracic vertebra)",
+  "FMA9991": "T8 (eighth thoracic vertebra)",
+  "FMA10014": "T9 (ninth thoracic vertebra)",
+  "FMA10037": "T10 (tenth thoracic vertebra)",
+  "FMA10059": "T11 (eleventh thoracic vertebra)",
+  "FMA10081": "T12 (twelfth thoracic vertebra)",
+  "FMA13072": "L1 (first lumbar vertebra)",
+  "FMA13073": "L2 (second lumbar vertebra)",
+  "FMA13074": "L3 (third lumbar vertebra)",
+  "FMA13075": "L4 (fourth lumbar vertebra)",
+  "FMA13076": "L5 (fifth lumbar vertebra)",
+  "FMA7857": "Right first rib (rib 1)",
+  "FMA7882": "Right second rib (rib 2)",
+  "FMA7909": "Right third rib (rib 3)",
+  "FMA7957": "Right fourth rib (rib 4)",
+  "FMA8066": "Right fifth rib (rib 5)",
+  "FMA8175": "Right sixth rib (rib 6)",
+  "FMA8229": "Right seventh rib (rib 7)",
+  "FMA8283": "Right eighth rib (rib 8)",
+  "FMA8364": "Right ninth rib (rib 9)",
+  "FMA8445": "Right tenth rib (rib 10)",
+  "FMA8531": "Right eleventh rib (rib 11)",
+  "FMA8533": "Right twelfth rib (rib 12)",
+  "FMA7987": "Left first rib (rib 1)",
+  "FMA8012": "Left second rib (rib 2)",
+  "FMA8039": "Left third rib (rib 3)",
+  "FMA8148": "Left fourth rib (rib 4)",
+  "FMA8093": "Left fifth rib (rib 5)",
+  "FMA8202": "Left sixth rib (rib 6)",
+  "FMA8256": "Left seventh rib (rib 7)",
+  "FMA8310": "Left eighth rib (rib 8)",
+  "FMA8391": "Left ninth rib (rib 9)",
+  "FMA8472": "Left tenth rib (rib 10)",
+  "FMA8532": "Left eleventh rib (rib 11)",
+  "FMA8534": "Left twelfth rib (rib 12)",
+  "FMA7886": "Right second costal cartilage",
+  "FMA8031": "Left second costal cartilage",
+  "FMA8248": "Right seventh costal cartilage",
+  "FMA8275": "Left seventh costal cartilage",
+  "FMA24435": "Right scaphoid",
+  "FMA24437": "Right lunate",
+  "FMA24443": "Right trapezium",
+  "FMA23725": "Right trapezoid",
+  "FMA24446": "Right capitate",
+  "FMA24448": "Right hamate",
+  "FMA24441": "Right pisiform",
+  "FMA24436": "Left scaphoid",
+  "FMA24438": "Left lunate",
+  "FMA24444": "Left trapezium",
+  "FMA24445": "Left trapezoid",
+  "FMA24447": "Left capitate",
+  "FMA24449": "Left hamate",
+  "FMA24442": "Left pisiform",
+  "FMA24464": "Right first metacarpal",
+  "FMA24466": "Right second metacarpal",
+  "FMA24468": "Right third metacarpal",
+  "FMA24470": "Right fourth metacarpal",
+  "FMA24472": "Right fifth metacarpal",
+  "FMA24465": "Left first metacarpal",
+  "FMA24467": "Left second metacarpal",
+  "FMA24469": "Left third metacarpal",
+  "FMA24471": "Left fourth metacarpal",
+  "FMA24473": "Left fifth metacarpal",
+  "FMA24482": "Right talus",
+  "FMA24497": "Right calcaneus",
+  "FMA24500": "Right navicular",
+  "FMA24528": "Right cuboid",
+  "FMA24521": "Right medial cuneiform",
+  "FMA24523": "Right intermediate cuneiform",
+  "FMA24525": "Right lateral cuneiform",
+  "FMA24483": "Left talus",
+  "FMA24498": "Left calcaneus",
+  "FMA24501": "Left navicular",
+  "FMA24529": "Left cuboid",
+  "FMA24522": "Left medial cuneiform",
+  "FMA24524": "Left intermediate cuneiform",
+  "FMA24526": "Left lateral cuneiform",
+  "FMA24507": "Right first metatarsal",
+  "FMA24509": "Right second metatarsal",
+  "FMA24511": "Right third metatarsal",
+  "FMA24513": "Right fourth metatarsal",
+  "FMA24515": "Right fifth metatarsal",
+  "FMA24508": "Left first metatarsal",
+  "FMA24510": "Left second metatarsal",
+  "FMA24512": "Left third metatarsal",
+  "FMA24514": "Left fourth metatarsal",
+  "FMA24516": "Left fifth metatarsal",
+  "FMA52788": "Right parietal bone",
+  "FMA52789": "Left parietal bone",
+  "FMA52738": "Right temporal bone",
+  "FMA52739": "Left temporal bone",
+  "FMA13322": "Right clavicle",
+  "FMA13323": "Left clavicle",
+  "FMA13395": "Right scapula",
+  "FMA13396": "Left scapula",
+  "FMA16586": "Right hip bone",
+  "FMA16587": "Left hip bone",
+  "FMA23130": "Right humerus",
+  "FMA23131": "Left humerus",
+  "FMA23464": "Right radius",
+  "FMA23465": "Left radius",
+  "FMA23467": "Right ulna",
+  "FMA23468": "Left ulna",
+  "FMA24474": "Right femur",
+  "FMA24475": "Left femur",
+  "FMA24486": "Right patella",
+  "FMA24487": "Left patella",
+  "FMA24477": "Right tibia",
+  "FMA24478": "Left tibia",
+  "FMA24480": "Right fibula",
+  "FMA24481": "Left fibula",
+  "FMA78449": "Right lateral ventricle",
+  "FMA78450": "Left lateral ventricle",
+  "FMA72924": "Right fornix",
+  "FMA72925": "Left fornix",
+  "FMA61970": "Commissure of the fornix",
+  "FMA274027": "Right choroid plexus (lateral ventricle)",
+  "FMA274029": "Left choroid plexus (lateral ventricle)",
+  "FMA7260": "Anterior papillary muscle of the right ventricle",
+  "FMA7261": "Posterior papillary muscle of the right ventricle",
+  "FMA7262": "Septal papillary muscle of the right ventricle",
+  "FMA9352nsn": "Papillary muscle of the left ventricle",
+  "FMA7266": "Posterior papillary muscle of the left ventricle",
+  "FMA3802": "Trunk of the right coronary artery",
+  "FMA3818": "Marginal branch of the right coronary artery",
+  "FMA71669": "Septal branches of the right coronary artery",
+  "FMA71670": "Septal branches of the left coronary artery",
+  "FMA3941": "Right common carotid artery",
+  "FMA4058": "Left common carotid artery",
+  "FMA4754": "Right internal jugular vein",
+  "FMA4762": "Left internal jugular vein",
+  "FMA7204": "Right kidney",
+  "FMA7205": "Left kidney",
+  "FMA15629": "Right adrenal gland",
+  "FMA15630": "Left adrenal gland",
+  "FMA15571": "Right ureter",
+  "FMA15572": "Left ureter",
+  "FMA7211": "Right testis",
+  "FMA7212": "Left testis",
+  "FMA3784": "Descending aorta (thoracic and abdominal parts)"
+ },
+ "structures": [
+  {
+   "id": "frontal-bone",
+   "name": "Frontal bone",
+   "system": "skeletal",
+   "topic": "skull",
+   "kind": "bone",
+   "parts": [
+    "FMA52734"
+   ],
+   "what": "A cranial bone: one of the eight bones that enclose the brain.",
+   "where": "The forehead, from the hairline down to the upper edge of each eye socket.",
+   "features": "It forms the roof of each orbit and holds the frontal sinuses. It meets the two parietal bones at the coronal suture.",
+   "related": [
+    "parietal-bone",
+    "temporal-bone"
+   ]
+  },
+  {
+   "id": "parietal-bone",
+   "name": "Parietal bones",
+   "system": "skeletal",
+   "topic": "skull",
+   "kind": "bone",
+   "parts": [
+    "FMA52788",
+    "FMA52789"
+   ],
+   "what": "A pair of cranial bones that form most of the roof and upper sides of the skull.",
+   "where": "Top and upper sides of the head, behind the frontal bone.",
+   "features": "The two meet each other at the sagittal suture, the frontal bone at the coronal suture and the occipital bone at the lambdoid suture.",
+   "related": [
+    "frontal-bone",
+    "occipital-bone",
+    "temporal-bone"
+   ],
+   "accept": [
+    "parietal bone"
+   ]
+  },
+  {
+   "id": "temporal-bone",
+   "name": "Temporal bones",
+   "system": "skeletal",
+   "topic": "skull",
+   "kind": "bone",
+   "parts": [
+    "FMA52738",
+    "FMA52739"
+   ],
+   "what": "A pair of cranial bones on the lower sides of the skull.",
+   "where": "Each side of the head, around and behind the ear.",
+   "features": "Each holds the external acoustic meatus (the ear canal opening), the mastoid process behind it, and the mandibular fossa where the mandible forms the jaw joint.",
+   "related": [
+    "mandible",
+    "parietal-bone",
+    "occipital-bone"
+   ],
+   "accept": [
+    "temporal bone"
+   ]
+  },
+  {
+   "id": "occipital-bone",
+   "name": "Occipital bone",
+   "system": "skeletal",
+   "topic": "skull",
+   "kind": "bone",
+   "parts": [
+    "FMA52735"
+   ],
+   "what": "The cranial bone that forms the back and base of the skull.",
+   "where": "The back of the head, curving under to the skull base.",
+   "features": "The foramen magnum, the large opening in its base, is where the brain continues into the spinal cord. The occipital condyles beside it rest on the first cervical vertebra.",
+   "related": [
+    "parietal-bone",
+    "cervical-vertebrae",
+    "cerebellum"
+   ]
+  },
+  {
+   "id": "mandible",
+   "name": "Mandible",
+   "system": "skeletal",
+   "topic": "skull",
+   "kind": "bone",
+   "parts": [
+    "FMA52748"
+   ],
+   "what": "The lower jaw: a facial bone, and the only skull bone that moves.",
+   "where": "The lower face and chin.",
+   "features": "Its body holds the lower teeth; each ramus rises to a condylar process that forms the jaw joint with the temporal bone.",
+   "related": [
+    "temporal-bone"
+   ],
+   "accept": [
+    "lower jaw",
+    "lower jaw bone",
+    "lower jawbone"
+   ]
+  },
+  {
+   "id": "cervical-vertebrae",
+   "name": "Cervical vertebrae (C3 to C7)",
+   "system": "skeletal",
+   "topic": "vertebral-column",
+   "kind": "bone",
+   "parts": [
+    "FMA12521",
+    "FMA12522",
+    "FMA12523",
+    "FMA12524",
+    "FMA12525"
+   ],
+   "what": "The neck vertebrae. This model has C3 to C7; the atlas (C1) and axis (C2) are not in it.",
+   "where": "The neck, between the skull and the first thoracic vertebra.",
+   "features": "Small bodies and a transverse foramen in each transverse process, which no other region has. C7 has a long spinous process that is not split, the bump at the base of your neck.",
+   "related": [
+    "thoracic-vertebrae",
+    "occipital-bone"
+   ],
+   "accept": [
+    "cervical vertebrae",
+    "cervical vertebra",
+    "cervical spine"
+   ]
+  },
+  {
+   "id": "thoracic-vertebrae",
+   "name": "Thoracic vertebrae (T1 to T12)",
+   "system": "skeletal",
+   "topic": "vertebral-column",
+   "kind": "bone",
+   "parts": [
+    "FMA9165",
+    "FMA9187",
+    "FMA9209",
+    "FMA9248",
+    "FMA9922",
+    "FMA9945",
+    "FMA9968",
+    "FMA9991",
+    "FMA10014",
+    "FMA10037",
+    "FMA10059",
+    "FMA10081"
+   ],
+   "what": "The 12 vertebrae of the chest, each carrying a pair of ribs.",
+   "where": "The upper and middle back, behind the thoracic cavity.",
+   "features": "Heart-shaped bodies, long spinous processes that slope down, and costal facets where the ribs meet them.",
+   "related": [
+    "cervical-vertebrae",
+    "lumbar-vertebrae",
+    "true-ribs"
+   ],
+   "accept": [
+    "thoracic vertebrae",
+    "thoracic vertebra",
+    "thoracic spine"
+   ]
+  },
+  {
+   "id": "lumbar-vertebrae",
+   "name": "Lumbar vertebrae (L1 to L5)",
+   "system": "skeletal",
+   "topic": "vertebral-column",
+   "kind": "bone",
+   "parts": [
+    "FMA13072",
+    "FMA13073",
+    "FMA13074",
+    "FMA13075",
+    "FMA13076"
+   ],
+   "what": "The five vertebrae of the lower back.",
+   "where": "The lower back, between the thoracic vertebrae and the sacrum.",
+   "features": "The largest, thickest bodies in the column, because they carry the weight of the whole trunk. Short, blunt spinous processes and no transverse foramina or costal facets.",
+   "related": [
+    "thoracic-vertebrae",
+    "sacrum"
+   ],
+   "accept": [
+    "lumbar vertebrae",
+    "lumbar vertebra",
+    "lumbar spine"
+   ]
+  },
+  {
+   "id": "sacrum",
+   "name": "Sacrum",
+   "system": "skeletal",
+   "topic": "vertebral-column",
+   "kind": "bone",
+   "parts": [
+    "FMA16202"
+   ],
+   "what": "One triangular bone formed when five vertebrae fuse in early adulthood.",
+   "where": "The back of the pelvis, between the two hip bones, below L5.",
+   "features": "It joins each hip bone at the back of the pelvis, so the weight of the trunk passes through it to the legs. The coccyx (tailbone) below it is not in this model.",
+   "related": [
+    "lumbar-vertebrae",
+    "hip-bone"
+   ]
+  },
+  {
+   "id": "sternum-body",
+   "name": "Body of the sternum",
+   "system": "skeletal",
+   "topic": "thoracic-cage",
+   "kind": "bone",
+   "parts": [
+    "FMA7487"
+   ],
+   "what": "The long middle piece of the sternum (breastbone). The manubrium above it and the xiphoid process below it are not in this model.",
+   "where": "The middle of the front of the chest.",
+   "features": "The costal cartilages of ribs 2 to 7 attach along its sides. It meets the manubrium at the sternal angle, level with the second ribs.",
+   "related": [
+    "costal-cartilages",
+    "true-ribs"
+   ],
+   "accept": [
+    "sternum",
+    "sternal body",
+    "body of sternum"
+   ]
+  },
+  {
+   "id": "true-ribs",
+   "name": "True ribs (ribs 1 to 7)",
+   "system": "skeletal",
+   "topic": "thoracic-cage",
+   "kind": "bone",
+   "parts": [
+    "FMA7857",
+    "FMA7882",
+    "FMA7909",
+    "FMA7957",
+    "FMA8066",
+    "FMA8175",
+    "FMA8229",
+    "FMA7987",
+    "FMA8012",
+    "FMA8039",
+    "FMA8148",
+    "FMA8093",
+    "FMA8202",
+    "FMA8256"
+   ],
+   "what": "Ribs whose own costal cartilage reaches the sternum directly.",
+   "where": "The upper seven pairs of ribs.",
+   "features": "The first rib is the shortest, flattest and most curved, tucked under the collarbone. Behind, each rib meets the thoracic vertebrae at its head and tubercle.",
+   "related": [
+    "false-ribs",
+    "floating-ribs",
+    "sternum-body",
+    "thoracic-vertebrae"
+   ],
+   "accept": [
+    "true ribs",
+    "true rib",
+    "vertebrosternal ribs"
+   ]
+  },
+  {
+   "id": "false-ribs",
+   "name": "Ribs 8 to 10 (false ribs)",
+   "system": "skeletal",
+   "topic": "thoracic-cage",
+   "kind": "bone",
+   "parts": [
+    "FMA8283",
+    "FMA8364",
+    "FMA8445",
+    "FMA8310",
+    "FMA8391",
+    "FMA8472"
+   ],
+   "what": "Ribs that reach the sternum only indirectly: each one's cartilage joins the cartilage of the rib above.",
+   "where": "Ribs 8, 9 and 10, below the true ribs.",
+   "features": "Their joined cartilages form the curved lower edge of the front of the rib cage. This course counts ribs 8 to 12 as false ribs; here ribs 8 to 10 are one structure and the floating ribs (11 and 12) another.",
+   "related": [
+    "true-ribs",
+    "floating-ribs",
+    "costal-cartilages"
+   ],
+   "accept": [
+    "ribs 8 to 10",
+    "vertebrochondral ribs"
+   ]
+  },
+  {
+   "id": "floating-ribs",
+   "name": "Floating ribs (ribs 11 and 12)",
+   "system": "skeletal",
+   "topic": "thoracic-cage",
+   "kind": "bone",
+   "parts": [
+    "FMA8531",
+    "FMA8533",
+    "FMA8532",
+    "FMA8534"
+   ],
+   "what": "The last two pairs of ribs, which have no attachment at the front. They are counted among the false ribs.",
+   "where": "The lowest ribs, at the back and sides of the lower chest.",
+   "features": "Their tips end in the muscles of the abdominal wall. They lie behind the upper part of each kidney.",
+   "related": [
+    "false-ribs",
+    "kidneys"
+   ],
+   "accept": [
+    "floating ribs",
+    "floating rib",
+    "ribs 11 and 12",
+    "vertebral ribs"
+   ]
+  },
+  {
+   "id": "costal-cartilages",
+   "name": "Costal cartilages (2nd and 7th)",
+   "system": "skeletal",
+   "topic": "thoracic-cage",
+   "kind": "bone",
+   "parts": [
+    "FMA7886",
+    "FMA8031",
+    "FMA8248",
+    "FMA8275"
+   ],
+   "what": "Bars of hyaline cartilage that join the front ends of ribs to the sternum. Only the second and seventh pairs are labeled in this model.",
+   "where": "The front of the chest, between the rib ends and the sternum.",
+   "features": "The cartilage keeps the rib cage flexible, so the chest can widen when you breathe in. The second costal cartilage meets the sternum at the sternal angle.",
+   "related": [
+    "sternum-body",
+    "true-ribs",
+    "false-ribs"
+   ],
+   "accept": [
+    "costal cartilage",
+    "costal cartilages"
+   ],
+   "color": "#D9E2E6"
+  },
+  {
+   "id": "clavicle",
+   "name": "Clavicle",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA13322",
+    "FMA13323"
+   ],
+   "what": "The collarbone: the front bone of the pectoral girdle.",
+   "where": "Across the top of the chest, from the sternum to the shoulder.",
+   "features": "An S-shaped strut. Its medial end meets the manubrium and its lateral end meets the acromion of the scapula, holding the arm out from the trunk.",
+   "related": [
+    "scapula",
+    "sternum-body"
+   ],
+   "accept": [
+    "collarbone",
+    "collar bone",
+    "clavicles"
+   ]
+  },
+  {
+   "id": "scapula",
+   "name": "Scapula",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA13395",
+    "FMA13396"
+   ],
+   "what": "The shoulder blade: the back bone of the pectoral girdle.",
+   "where": "The upper back, over ribs 2 to 7.",
+   "features": "A flat triangle with a spine across its back that ends in the acromion. The shallow glenoid cavity holds the head of the humerus at the shoulder joint.",
+   "related": [
+    "clavicle",
+    "humerus"
+   ],
+   "accept": [
+    "shoulder blade",
+    "scapulae"
+   ]
+  },
+  {
+   "id": "humerus",
+   "name": "Humerus",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA23130",
+    "FMA23131"
+   ],
+   "what": "The single bone of the arm, from shoulder to elbow.",
+   "where": "The arm, between the scapula and the forearm.",
+   "features": "Its rounded head fits the glenoid cavity. At the elbow, the trochlea meets the ulna and the capitulum meets the radius.",
+   "related": [
+    "scapula",
+    "radius",
+    "ulna"
+   ]
+  },
+  {
+   "id": "radius",
+   "name": "Radius",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA23464",
+    "FMA23465"
+   ],
+   "what": "The lateral bone of the forearm, on the thumb side.",
+   "where": "The forearm, on the thumb side in anatomical position.",
+   "features": "Its head spins at the elbow when you turn your palm down. Its wide lower end meets the carpals and carries most of the wrist.",
+   "related": [
+    "ulna",
+    "humerus",
+    "carpals"
+   ],
+   "accept": [
+    "radius bone",
+    "radii"
+   ]
+  },
+  {
+   "id": "ulna",
+   "name": "Ulna",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA23467",
+    "FMA23468"
+   ],
+   "what": "The medial bone of the forearm, on the little-finger side.",
+   "where": "The forearm, on the little-finger side in anatomical position.",
+   "features": "Its trochlear notch grips the trochlea of the humerus, so it hinges at the elbow and stays still when you turn your palm. The olecranon is the point of your elbow.",
+   "related": [
+    "radius",
+    "humerus"
+   ],
+   "accept": [
+    "ulnas",
+    "ulnae"
+   ]
+  },
+  {
+   "id": "carpals",
+   "name": "Carpals",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24435",
+    "FMA24437",
+    "FMA24443",
+    "FMA23725",
+    "FMA24446",
+    "FMA24448",
+    "FMA24441",
+    "FMA24436",
+    "FMA24438",
+    "FMA24444",
+    "FMA24445",
+    "FMA24447",
+    "FMA24449",
+    "FMA24442"
+   ],
+   "what": "The eight short bones of the wrist, in two rows of four. Seven are modeled on each side; the triquetrum is not in this model.",
+   "where": "The wrist, between the radius and ulna and the metacarpals.",
+   "features": "Proximal row, thumb side first: scaphoid, lunate, triquetrum, pisiform. Distal row: trapezium, trapezoid, capitate, hamate. Tap one to see which it is.",
+   "related": [
+    "metacarpals",
+    "radius"
+   ],
+   "accept": [
+    "carpal bones",
+    "carpal",
+    "wrist bones"
+   ]
+  },
+  {
+   "id": "metacarpals",
+   "name": "Metacarpals",
+   "system": "skeletal",
+   "topic": "upper-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24464",
+    "FMA24466",
+    "FMA24468",
+    "FMA24470",
+    "FMA24472",
+    "FMA24465",
+    "FMA24467",
+    "FMA24469",
+    "FMA24471",
+    "FMA24473"
+   ],
+   "what": "The five long bones of the palm, numbered 1 (thumb) to 5.",
+   "where": "The palm, between the carpals and the finger bones.",
+   "features": "Their heads are your knuckles. The phalanges (finger bones) are not in this model.",
+   "related": [
+    "carpals"
+   ],
+   "accept": [
+    "metacarpal bones",
+    "metacarpal"
+   ]
+  },
+  {
+   "id": "hip-bone",
+   "name": "Hip bones (os coxae)",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA16586",
+    "FMA16587"
+   ],
+   "what": "The pair of bones that form the pelvic girdle; with the sacrum and coccyx they form the bony pelvis. Each is three bones fused: ilium, ischium and pubis.",
+   "where": "The sides and front of the pelvis.",
+   "features": "The iliac crest is the ridge you feel at your waist. The acetabulum is the deep socket for the head of the femur. The two hip bones meet in front at the pubic symphysis.",
+   "related": [
+    "sacrum",
+    "femur"
+   ],
+   "accept": [
+    "hip bone",
+    "os coxae",
+    "coxal bone",
+    "coxal bones",
+    "pelvic bone",
+    "innominate bone"
+   ]
+  },
+  {
+   "id": "femur",
+   "name": "Femur",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24474",
+    "FMA24475"
+   ],
+   "what": "The thigh bone: the longest and strongest bone in the body.",
+   "where": "The thigh, from the hip to the knee.",
+   "features": "Its head fits the acetabulum, and a long neck angles it away from the shaft. The greater trochanter is the bump at the side of your hip. Its two condyles rest on the tibia.",
+   "related": [
+    "hip-bone",
+    "tibia",
+    "patella"
+   ],
+   "accept": [
+    "thigh bone",
+    "thighbone",
+    "femurs"
+   ]
+  },
+  {
+   "id": "patella",
+   "name": "Patella",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24486",
+    "FMA24487"
+   ],
+   "what": "The kneecap: a sesamoid bone, which forms inside a tendon.",
+   "where": "The front of the knee.",
+   "features": "It sits in the tendon of the large muscle on the front of the thigh and glides on the front of the femur, giving that muscle more leverage.",
+   "related": [
+    "femur",
+    "tibia"
+   ],
+   "accept": [
+    "kneecap",
+    "knee cap"
+   ]
+  },
+  {
+   "id": "tibia",
+   "name": "Tibia",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24477",
+    "FMA24478"
+   ],
+   "what": "The shin bone: the medial and weight-bearing bone of the leg.",
+   "where": "The leg (knee to ankle), on the big-toe side.",
+   "features": "The tibial tuberosity below the knee anchors the ligament that runs down from the patella. The medial malleolus is the inner bump of your ankle.",
+   "related": [
+    "fibula",
+    "femur",
+    "tarsals"
+   ],
+   "accept": [
+    "shin bone",
+    "shinbone"
+   ]
+  },
+  {
+   "id": "fibula",
+   "name": "Fibula",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24480",
+    "FMA24481"
+   ],
+   "what": "The thin lateral bone of the leg, which carries little weight.",
+   "where": "The leg, on the little-toe side, beside the tibia.",
+   "features": "It anchors muscles and steadies the ankle. Its lower end is the lateral malleolus, the outer bump of your ankle.",
+   "related": [
+    "tibia",
+    "tarsals"
+   ],
+   "accept": [
+    "fibulae",
+    "fibulas"
+   ]
+  },
+  {
+   "id": "tarsals",
+   "name": "Tarsals",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24482",
+    "FMA24497",
+    "FMA24500",
+    "FMA24528",
+    "FMA24521",
+    "FMA24523",
+    "FMA24525",
+    "FMA24483",
+    "FMA24498",
+    "FMA24501",
+    "FMA24529",
+    "FMA24522",
+    "FMA24524",
+    "FMA24526"
+   ],
+   "what": "The seven bones of the ankle and back of the foot.",
+   "where": "The ankle, heel and arch of the foot.",
+   "features": "The talus meets the tibia and fibula at the ankle; the calcaneus is the heel. The navicular, cuboid and three cuneiforms complete the group. Tap one to see which it is.",
+   "related": [
+    "metatarsals",
+    "tibia",
+    "fibula"
+   ],
+   "accept": [
+    "tarsal bones",
+    "tarsal",
+    "ankle bones"
+   ]
+  },
+  {
+   "id": "metatarsals",
+   "name": "Metatarsals",
+   "system": "skeletal",
+   "topic": "lower-limb",
+   "kind": "bone",
+   "parts": [
+    "FMA24507",
+    "FMA24509",
+    "FMA24511",
+    "FMA24513",
+    "FMA24515",
+    "FMA24508",
+    "FMA24510",
+    "FMA24512",
+    "FMA24514",
+    "FMA24516"
+   ],
+   "what": "The five long bones of the middle of the foot, numbered 1 (big toe) to 5.",
+   "where": "The foot, between the tarsals and the toe bones.",
+   "features": "With the tarsals they form the arches of the foot. The phalanges (toe bones) are not in this model.",
+   "related": [
+    "tarsals"
+   ],
+   "accept": [
+    "metatarsal bones",
+    "metatarsal"
+   ]
+  },
+  {
+   "id": "cerebral-white-matter",
+   "name": "Cerebral white matter",
+   "system": "nervous",
+   "topic": "brain-regions",
+   "kind": "organ",
+   "parts": [
+    "FMA61822"
+   ],
+   "what": "The white matter of the cerebral hemispheres: bundles of myelinated axons under the cortex.",
+   "where": "Inside each cerebral hemisphere, under the outer gray matter. This model has no cortex (gray surface) or gyri.",
+   "features": "Its tracts link areas within a hemisphere, link the two hemispheres (the corpus callosum) and run down to the brainstem. Shown see-through so the ventricles inside it can be tapped.",
+   "related": [
+    "lateral-ventricles",
+    "fornix",
+    "cerebellum"
+   ],
+   "accept": [
+    "white matter of the cerebrum",
+    "cerebral hemisphere white matter"
+   ],
+   "color": "#E9DCD2",
+   "opacity": 0.38,
+   "inner": [
+    "lateral-ventricles",
+    "fornix",
+    "choroid-plexus",
+    "third-ventricle",
+    "cerebral-aqueduct"
+   ]
+  },
+  {
+   "id": "lateral-ventricles",
+   "name": "Lateral ventricles",
+   "system": "nervous",
+   "topic": "brain-protection",
+   "kind": "organ",
+   "parts": [
+    "FMA78449",
+    "FMA78450"
+   ],
+   "what": "Two C-shaped spaces filled with cerebrospinal fluid (CSF), one in each cerebral hemisphere.",
+   "where": "Deep in each hemisphere, curving from the frontal lobe back and down into the temporal lobe.",
+   "features": "They hold the largest choroid plexuses. Each opens into the third ventricle through an interventricular foramen.",
+   "related": [
+    "third-ventricle",
+    "choroid-plexus",
+    "cerebral-white-matter"
+   ],
+   "accept": [
+    "lateral ventricle"
+   ],
+   "color": "#5DA9D6"
+  },
+  {
+   "id": "third-ventricle",
+   "name": "Third ventricle",
+   "system": "nervous",
+   "topic": "brain-protection",
+   "kind": "organ",
+   "parts": [
+    "FMA78454"
+   ],
+   "what": "A narrow, CSF-filled slit in the midline of the diencephalon.",
+   "where": "The middle of the brain, between the two halves of the thalamus.",
+   "features": "The thalamus and hypothalamus form its walls. CSF from the lateral ventricles enters it and leaves through the cerebral aqueduct.",
+   "related": [
+    "lateral-ventricles",
+    "cerebral-aqueduct"
+   ],
+   "color": "#5DA9D6"
+  },
+  {
+   "id": "cerebral-aqueduct",
+   "name": "Cerebral aqueduct",
+   "system": "nervous",
+   "topic": "brain-protection",
+   "kind": "organ",
+   "parts": [
+    "FMA78467"
+   ],
+   "what": "A narrow canal through the midbrain that carries CSF.",
+   "where": "The midbrain, between the third and fourth ventricles.",
+   "features": "It is the narrowest point of the CSF path, so a blockage here backs fluid up into the third and lateral ventricles (hydrocephalus).",
+   "related": [
+    "third-ventricle",
+    "fourth-ventricle",
+    "midbrain"
+   ],
+   "accept": [
+    "aqueduct of the midbrain",
+    "mesencephalic aqueduct"
+   ],
+   "color": "#5DA9D6",
+   "quiz": false
+  },
+  {
+   "id": "fourth-ventricle",
+   "name": "Fourth ventricle",
+   "system": "nervous",
+   "topic": "brain-protection",
+   "kind": "organ",
+   "parts": [
+    "FMA78469"
+   ],
+   "what": "A tent-shaped, CSF-filled space in the hindbrain.",
+   "where": "Between the pons and medulla in front and the cerebellum behind.",
+   "features": "CSF leaves the ventricles through openings in its walls (the apertures) into the subarachnoid space around the brain and cord.",
+   "related": [
+    "cerebral-aqueduct",
+    "cerebellum"
+   ],
+   "color": "#5DA9D6"
+  },
+  {
+   "id": "choroid-plexus",
+   "name": "Choroid plexus of the lateral ventricles",
+   "system": "nervous",
+   "topic": "brain-protection",
+   "kind": "organ",
+   "parts": [
+    "FMA274027",
+    "FMA274029"
+   ],
+   "what": "Tufts of capillaries covered by modified ependymal cells that make most of the CSF.",
+   "where": "In the body and inferior horn of each lateral ventricle. Every ventricle has one; only the lateral ventricles' are modeled.",
+   "features": "It secretes about 500 mL of CSF a day, so the whole volume is replaced three to four times daily.",
+   "related": [
+    "lateral-ventricles"
+   ],
+   "accept": [
+    "choroid plexus",
+    "choroid plexuses"
+   ],
+   "color": "#B5577A",
+   "quiz": false
+  },
+  {
+   "id": "fornix",
+   "name": "Fornix",
+   "system": "nervous",
+   "topic": "brain-regions",
+   "kind": "organ",
+   "parts": [
+    "FMA72924",
+    "FMA72925",
+    "FMA61970"
+   ],
+   "what": "An arching band of white matter, part of the limbic system.",
+   "where": "Under the corpus callosum, curving over the thalamus on each side.",
+   "features": "It carries output from the hippocampus (memory) forward and down to the hypothalamus. The two sides are joined by a commissure.",
+   "related": [
+    "lateral-ventricles",
+    "cerebral-white-matter"
+   ],
+   "accept": [
+    "fornices"
+   ],
+   "color": "#C9B48A",
+   "quiz": false,
+   "note": "The course names the fornix only here, as part of the limbic system; it is not in the quizzes."
+  },
+  {
+   "id": "midbrain",
+   "name": "Midbrain",
+   "system": "nervous",
+   "topic": "brain-regions",
+   "kind": "organ",
+   "parts": [
+    "FMA61993nsn"
+   ],
+   "what": "The top part of the brainstem.",
+   "where": "Below the diencephalon, above the pons.",
+   "features": "A narrow fluid canal runs through it. It relays visual and auditory reflexes and carries motor tracts. The pons and medulla below it are not in this model.",
+   "related": [
+    "cerebral-peduncles",
+    "cerebral-aqueduct"
+   ],
+   "accept": [
+    "mesencephalon"
+   ],
+   "color": "#D7A4A0"
+  },
+  {
+   "id": "cerebral-peduncles",
+   "name": "Cerebral peduncles",
+   "system": "nervous",
+   "topic": "brain-regions",
+   "kind": "organ",
+   "parts": [
+    "FMA62394"
+   ],
+   "what": "The two large stalks on the front of the midbrain.",
+   "where": "The front of the midbrain, one on each side.",
+   "features": "They carry the descending motor tracts from the cerebral cortex down through the brainstem.",
+   "related": [
+    "midbrain"
+   ],
+   "accept": [
+    "cerebral peduncle",
+    "peduncles of the midbrain"
+   ],
+   "color": "#C98E8A",
+   "quiz": false
+  },
+  {
+   "id": "cerebellum",
+   "name": "Cerebellum",
+   "system": "nervous",
+   "topic": "brain-regions",
+   "kind": "organ",
+   "parts": [
+    "FMA67944"
+   ],
+   "what": "The \"little brain\" behind the brainstem that coordinates movement.",
+   "where": "The back of the skull, under the occipital lobes of the cerebrum.",
+   "features": "It compares the movement you intend with what your body is doing and corrects it, for smooth, accurate movement and balance.",
+   "related": [
+    "fourth-ventricle",
+    "occipital-bone"
+   ],
+   "color": "#D9A9A2"
+  },
+  {
+   "id": "central-canal",
+   "name": "Central canal of the spinal cord (upper part)",
+   "system": "nervous",
+   "topic": "spinal-cord",
+   "kind": "organ",
+   "parts": [
+    "FMA78497"
+   ],
+   "what": "The thin CSF-filled canal that runs down the middle of the spinal cord. Only a short upper piece is modeled, and the cord itself is not.",
+   "where": "The center of the gray matter of the spinal cord, here in the upper neck.",
+   "features": "It is continuous with the fourth ventricle above.",
+   "related": [
+    "fourth-ventricle",
+    "cervical-vertebrae"
+   ],
+   "accept": [
+    "central canal"
+   ],
+   "color": "#5DA9D6",
+   "quiz": false
+  },
+  {
+   "id": "eyeball",
+   "name": "Eyeballs",
+   "system": "senses",
+   "topic": "vision",
+   "kind": "organ",
+   "parts": [
+    "FMA12513"
+   ],
+   "what": "The eye itself: a sphere with three layers (tunics) around the lens and humors. Both eyes are one piece in this model.",
+   "where": "Each in its orbit, under the frontal bone.",
+   "features": "Outer fibrous tunic (sclera and cornea), middle vascular tunic (choroid, ciliary body, iris), inner retina. This model shows only its outer surface.",
+   "related": [
+    "frontal-bone"
+   ],
+   "accept": [
+    "eye",
+    "eyeballs",
+    "eyes",
+    "globe"
+   ],
+   "color": "#DCD6C8"
+  },
+  {
+   "id": "heart-wall",
+   "name": "Heart wall",
+   "system": "cardiovascular",
+   "topic": "heart-anatomy",
+   "kind": "organ",
+   "parts": [
+    "FMA7274"
+   ],
+   "what": "The wall of the heart, mostly myocardium (cardiac muscle), lined by endocardium and covered by epicardium. Shown see-through so the valves inside can be tapped.",
+   "where": "In the mediastinum, behind the sternum, with its apex pointing down and to the left.",
+   "features": "The left ventricle's wall is the thickest, because it pumps against about five times the pressure the right ventricle does.",
+   "related": [
+    "mitral-valve",
+    "tricuspid-valve",
+    "papillary-muscles",
+    "ascending-aorta"
+   ],
+   "accept": [
+    "heart",
+    "myocardium",
+    "cardiac wall",
+    "wall of the heart"
+   ],
+   "color": "#9E2B2B",
+   "opacity": 0.42,
+   "inner": [
+    "mitral-valve",
+    "tricuspid-valve",
+    "pulmonary-valve",
+    "papillary-muscles"
+   ]
+  },
+  {
+   "id": "tricuspid-valve",
+   "name": "Tricuspid valve",
+   "system": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "kind": "organ",
+   "parts": [
+    "FMA7234"
+   ],
+   "what": "The right atrioventricular (AV) valve, with three cusps.",
+   "where": "Between the right atrium and the right ventricle.",
+   "features": "It closes when the right ventricle contracts, so blood goes out to the lungs instead of back into the atrium. Chordae tendineae tie its cusps to papillary muscles.",
+   "related": [
+    "mitral-valve",
+    "papillary-muscles",
+    "pulmonary-valve"
+   ],
+   "accept": [
+    "right atrioventricular valve",
+    "right av valve"
+   ],
+   "color": "#F1E3C8"
+  },
+  {
+   "id": "mitral-valve",
+   "name": "Mitral (bicuspid) valve",
+   "system": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "kind": "organ",
+   "parts": [
+    "FMA7235"
+   ],
+   "what": "The left atrioventricular (AV) valve, with two cusps.",
+   "where": "Between the left atrium and the left ventricle.",
+   "features": "It closes when the left ventricle contracts, so blood goes into the aorta instead of back into the left atrium.",
+   "related": [
+    "tricuspid-valve",
+    "papillary-muscles",
+    "heart-wall"
+   ],
+   "accept": [
+    "mitral valve",
+    "bicuspid valve",
+    "left atrioventricular valve",
+    "left av valve"
+   ],
+   "color": "#F1E3C8"
+  },
+  {
+   "id": "pulmonary-valve",
+   "name": "Pulmonary valve",
+   "system": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "kind": "organ",
+   "parts": [
+    "FMA7246"
+   ],
+   "what": "A semilunar valve with three pocket-like cusps.",
+   "where": "At the exit of the right ventricle, where the pulmonary trunk begins.",
+   "features": "It opens when the right ventricle contracts and closes when the ventricle relaxes, so blood cannot fall back. The aortic valve, its twin on the left, is not in this model.",
+   "related": [
+    "tricuspid-valve",
+    "pulmonary-arteries"
+   ],
+   "accept": [
+    "pulmonary semilunar valve",
+    "pulmonic valve"
+   ],
+   "color": "#F1E3C8"
+  },
+  {
+   "id": "papillary-muscles",
+   "name": "Papillary muscles",
+   "system": "cardiovascular",
+   "topic": "heart-chambers-valves",
+   "kind": "organ",
+   "parts": [
+    "FMA7260",
+    "FMA7261",
+    "FMA7262",
+    "FMA9352nsn",
+    "FMA7266"
+   ],
+   "what": "Cone-shaped muscles that rise from the inner wall of each ventricle.",
+   "where": "Inside the right and left ventricles.",
+   "features": "They contract with the ventricle and pull on the chordae tendineae, which keeps the AV valve cusps from turning inside out into the atria.",
+   "related": [
+    "tricuspid-valve",
+    "mitral-valve"
+   ],
+   "accept": [
+    "papillary muscle"
+   ],
+   "color": "#C2615A"
+  },
+  {
+   "id": "right-coronary-artery",
+   "name": "Right coronary artery",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA3802",
+    "FMA3818"
+   ],
+   "what": "One of the two arteries that supply the heart muscle itself.",
+   "where": "It leaves the aorta just above the aortic valve and runs in the coronary sulcus to the right.",
+   "features": "Its marginal branch runs along the right edge of the heart. It supplies the right atrium and most of the right ventricle.",
+   "related": [
+    "left-coronary-artery",
+    "coronary-sinus"
+   ],
+   "accept": [
+    "rca",
+    "right coronary"
+   ],
+   "color": "#C42020"
+  },
+  {
+   "id": "left-coronary-artery",
+   "name": "Left coronary artery",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA4685"
+   ],
+   "what": "The short main stem of the left coronary circulation.",
+   "where": "It leaves the aorta just above the aortic valve, behind the pulmonary trunk.",
+   "features": "It splits almost at once into the anterior interventricular (left anterior descending) and circumflex arteries, which are not modeled.",
+   "related": [
+    "right-coronary-artery"
+   ],
+   "accept": [
+    "lca",
+    "left main coronary artery",
+    "left coronary"
+   ],
+   "color": "#C42020",
+   "quiz": false
+  },
+  {
+   "id": "septal-branches",
+   "name": "Septal branches of the coronary arteries",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA71669",
+    "FMA71670"
+   ],
+   "what": "Small branches that dive into the interventricular septum.",
+   "where": "Inside the wall between the two ventricles.",
+   "features": "They feed the septum, the thick muscular wall between the two ventricles.",
+   "related": [
+    "right-coronary-artery",
+    "left-coronary-artery"
+   ],
+   "accept": [
+    "septal branches",
+    "interventricular septal branches"
+   ],
+   "color": "#C42020",
+   "quiz": false
+  },
+  {
+   "id": "coronary-sinus",
+   "name": "Coronary sinus",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA4706"
+   ],
+   "what": "A wide vein that collects blood from the heart wall.",
+   "where": "In the coronary sulcus on the back of the heart.",
+   "features": "The cardiac veins drain into it, and it empties into the right atrium.",
+   "related": [
+    "posterior-lv-vein",
+    "right-coronary-artery"
+   ],
+   "color": "#2A5FA0"
+  },
+  {
+   "id": "posterior-lv-vein",
+   "name": "Posterior cardiac vein",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA76751"
+   ],
+   "what": "A cardiac vein that drains the back of the left ventricle (also called the posterior vein of the left ventricle).",
+   "where": "On the back surface of the left ventricle.",
+   "features": "It empties into the coronary sinus.",
+   "related": [
+    "coronary-sinus"
+   ],
+   "accept": [
+    "posterior vein of the left ventricle",
+    "posterior veins of the left ventricle",
+    "posterior vein of left ventricle"
+   ],
+   "color": "#2A5FA0",
+   "quiz": false
+  },
+  {
+   "id": "ascending-aorta",
+   "name": "Ascending aorta",
+   "system": "cardiovascular",
+   "topic": "heart-anatomy",
+   "kind": "vessel",
+   "parts": [
+    "FMA3736"
+   ],
+   "what": "The first part of the aorta, rising out of the left ventricle.",
+   "where": "Above the heart, behind the sternum.",
+   "features": "The two arteries that feed the heart muscle itself branch from its base.",
+   "related": [
+    "aortic-arch",
+    "right-coronary-artery"
+   ],
+   "color": "#C42020"
+  },
+  {
+   "id": "aortic-arch",
+   "name": "Aortic arch",
+   "system": "cardiovascular",
+   "topic": "heart-anatomy",
+   "kind": "vessel",
+   "parts": [
+    "FMA3768"
+   ],
+   "what": "The curve of the aorta over the top of the heart.",
+   "where": "Behind the manubrium, curving back and to the left.",
+   "features": "Three large arteries leave its top, carrying blood to the head, neck and arms.",
+   "related": [
+    "ascending-aorta",
+    "descending-aorta",
+    "common-carotid"
+   ],
+   "accept": [
+    "arch of the aorta",
+    "arch of aorta",
+    "aortic arch"
+   ],
+   "color": "#C42020"
+  },
+  {
+   "id": "descending-aorta",
+   "name": "Descending aorta",
+   "system": "cardiovascular",
+   "topic": "systemic-arteries",
+   "kind": "vessel",
+   "parts": [
+    "FMA3784"
+   ],
+   "what": "The long part of the aorta that runs down through the chest (thoracic aorta) and abdomen (abdominal aorta).",
+   "where": "In front of the vertebral column, to the left of the midline.",
+   "features": "It passes through the diaphragm into the abdomen and splits into the common iliac arteries in the lower abdomen.",
+   "related": [
+    "aortic-arch",
+    "inferior-vena-cava",
+    "diaphragm"
+   ],
+   "accept": [
+    "thoracic aorta",
+    "abdominal aorta"
+   ],
+   "color": "#C42020"
+  },
+  {
+   "id": "common-carotid",
+   "name": "Common carotid arteries",
+   "system": "cardiovascular",
+   "topic": "systemic-arteries",
+   "kind": "vessel",
+   "parts": [
+    "FMA3941",
+    "FMA4058"
+   ],
+   "what": "The main arteries of the neck, one on each side.",
+   "where": "Up each side of the neck, beside the trachea.",
+   "features": "The left one leaves the aortic arch directly; the right one comes from the brachiocephalic trunk. Each splits into internal and external carotid arteries.",
+   "related": [
+    "aortic-arch",
+    "internal-jugular"
+   ],
+   "accept": [
+    "common carotid artery",
+    "carotid artery",
+    "carotid arteries",
+    "carotids"
+   ],
+   "color": "#C42020"
+  },
+  {
+   "id": "internal-jugular",
+   "name": "Internal jugular veins",
+   "system": "cardiovascular",
+   "topic": "systemic-veins",
+   "kind": "vessel",
+   "parts": [
+    "FMA4754",
+    "FMA4762"
+   ],
+   "what": "The large veins that drain the brain, face and neck.",
+   "where": "Down each side of the neck, beside the common carotid artery.",
+   "features": "Each joins the subclavian vein to form a brachiocephalic vein, which leads to the superior vena cava.",
+   "related": [
+    "common-carotid",
+    "superior-vena-cava"
+   ],
+   "accept": [
+    "internal jugular vein",
+    "jugular vein",
+    "jugular veins",
+    "ijv"
+   ],
+   "color": "#2A5FA0"
+  },
+  {
+   "id": "superior-vena-cava",
+   "name": "Superior vena cava",
+   "system": "cardiovascular",
+   "topic": "heart-anatomy",
+   "kind": "vessel",
+   "parts": [
+    "FMA4720"
+   ],
+   "what": "The large vein that returns blood from the upper body to the heart.",
+   "where": "To the right of the ascending aorta, entering the top of the right atrium.",
+   "features": "It forms where the large veins from the two sides of the head, neck and arms join.",
+   "related": [
+    "inferior-vena-cava",
+    "internal-jugular"
+   ],
+   "accept": [
+    "svc"
+   ],
+   "color": "#2A5FA0"
+  },
+  {
+   "id": "inferior-vena-cava",
+   "name": "Inferior vena cava",
+   "system": "cardiovascular",
+   "topic": "heart-anatomy",
+   "kind": "vessel",
+   "parts": [
+    "FMA10951"
+   ],
+   "what": "The largest vein, returning blood from the lower body to the heart.",
+   "where": "Up the back of the abdomen to the right of the aorta, through the diaphragm into the right atrium.",
+   "features": "It runs behind the liver and collects veins from the kidneys and liver on its way.",
+   "related": [
+    "superior-vena-cava",
+    "descending-aorta",
+    "liver"
+   ],
+   "accept": [
+    "ivc"
+   ],
+   "color": "#2A5FA0"
+  },
+  {
+   "id": "pulmonary-arteries",
+   "name": "Pulmonary arteries",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA66326"
+   ],
+   "what": "The arteries that carry deoxygenated blood from the right ventricle to the lungs.",
+   "where": "From the split of the pulmonary trunk, under the aortic arch, into the root of each lung and out to every lobe. The pulmonary trunk itself is not in this model.",
+   "features": "They are the only arteries after birth that carry deoxygenated blood, which is why \"artery\" means \"away from the heart\", not \"oxygenated\".",
+   "related": [
+    "pulmonary-veins",
+    "pulmonary-valve"
+   ],
+   "accept": [
+    "pulmonary artery",
+    "pulmonary arterial tree"
+   ],
+   "color": "#3F5AA0"
+  },
+  {
+   "id": "pulmonary-veins",
+   "name": "Pulmonary veins",
+   "system": "cardiovascular",
+   "topic": "blood-flow-heart",
+   "kind": "vessel",
+   "parts": [
+    "FMA66643"
+   ],
+   "what": "The veins that carry oxygenated blood from the lungs to the left atrium.",
+   "where": "From every lobe of each lung back to the heart, usually entering as four veins.",
+   "features": "The only veins after birth that carry oxygenated blood.",
+   "related": [
+    "pulmonary-arteries"
+   ],
+   "accept": [
+    "pulmonary vein",
+    "pulmonary venous tree"
+   ],
+   "color": "#D55E00"
+  },
+  {
+   "id": "right-upper-lobe",
+   "name": "Right lung, superior lobe",
+   "system": "respiratory",
+   "topic": "lower-airway-lungs",
+   "kind": "organ",
+   "parts": [
+    "FMA7333"
+   ],
+   "what": "The top lobe of the right lung.",
+   "where": "The upper right chest, rising above the clavicle at its apex.",
+   "features": "The horizontal fissure separates it from the middle lobe and the oblique fissure from the inferior lobe. Each lobe gets its own secondary bronchus.",
+   "related": [
+    "right-middle-lobe",
+    "right-lower-lobe"
+   ],
+   "accept": [
+    "right upper lobe",
+    "superior lobe of the right lung",
+    "upper lobe of the right lung",
+    "right superior lobe"
+   ],
+   "color": "#E9A9A1"
+  },
+  {
+   "id": "right-middle-lobe",
+   "name": "Right lung, middle lobe",
+   "system": "respiratory",
+   "topic": "lower-airway-lungs",
+   "kind": "organ",
+   "parts": [
+    "FMA7383"
+   ],
+   "what": "The middle lobe, which only the right lung has.",
+   "where": "The front of the lower right chest, between the horizontal and oblique fissures.",
+   "features": "The right lung has three lobes and the left only two, because the heart takes up room on the left.",
+   "related": [
+    "right-upper-lobe",
+    "right-lower-lobe",
+    "left-upper-lobe"
+   ],
+   "accept": [
+    "right middle lobe",
+    "middle lobe",
+    "middle lobe of the right lung"
+   ],
+   "color": "#DD8F87"
+  },
+  {
+   "id": "right-lower-lobe",
+   "name": "Right lung, inferior lobe",
+   "system": "respiratory",
+   "topic": "lower-airway-lungs",
+   "kind": "organ",
+   "parts": [
+    "FMA7337"
+   ],
+   "what": "The bottom lobe of the right lung.",
+   "where": "The lower back of the right chest, resting on the diaphragm.",
+   "features": "Below the oblique fissure. Its base sits higher than the left lung's because the liver pushes the right dome of the diaphragm up.",
+   "related": [
+    "right-middle-lobe",
+    "diaphragm",
+    "liver"
+   ],
+   "accept": [
+    "right lower lobe",
+    "inferior lobe of the right lung",
+    "lower lobe of the right lung",
+    "right inferior lobe"
+   ],
+   "color": "#E39890"
+  },
+  {
+   "id": "left-upper-lobe",
+   "name": "Left lung, superior lobe",
+   "system": "respiratory",
+   "topic": "lower-airway-lungs",
+   "kind": "organ",
+   "parts": [
+    "FMA7370"
+   ],
+   "what": "The top lobe of the left lung.",
+   "where": "The upper left chest and the front of the left lung.",
+   "features": "Its front edge has the cardiac notch, a hollow that makes room for the heart.",
+   "related": [
+    "left-lower-lobe",
+    "heart-wall"
+   ],
+   "accept": [
+    "left upper lobe",
+    "superior lobe of the left lung",
+    "upper lobe of the left lung",
+    "left superior lobe"
+   ],
+   "color": "#E9A9A1"
+  },
+  {
+   "id": "left-lower-lobe",
+   "name": "Left lung, inferior lobe",
+   "system": "respiratory",
+   "topic": "lower-airway-lungs",
+   "kind": "organ",
+   "parts": [
+    "FMA7371"
+   ],
+   "what": "The bottom lobe of the left lung.",
+   "where": "The lower back of the left chest, resting on the diaphragm.",
+   "features": "The oblique fissure, the left lung's only fissure, separates it from the superior lobe.",
+   "related": [
+    "left-upper-lobe",
+    "diaphragm"
+   ],
+   "accept": [
+    "left lower lobe",
+    "inferior lobe of the left lung",
+    "lower lobe of the left lung",
+    "left inferior lobe"
+   ],
+   "color": "#E39890"
+  },
+  {
+   "id": "trachea",
+   "name": "Trachea",
+   "system": "respiratory",
+   "topic": "lower-airway-lungs",
+   "kind": "organ",
+   "parts": [
+    "FMA7394"
+   ],
+   "what": "The windpipe: the airway from the larynx to the primary bronchi.",
+   "where": "The front of the neck and upper chest, in front of the esophagus.",
+   "features": "About 10 to 12 cm long, held open by 16 to 20 C-shaped rings of hyaline cartilage that are open at the back, where the trachealis muscle lies against the esophagus.",
+   "related": [
+    "thyroid-cartilage",
+    "esophagus"
+   ],
+   "accept": [
+    "windpipe",
+    "wind pipe"
+   ],
+   "color": "#EDE6D4"
+  },
+  {
+   "id": "thyroid-cartilage",
+   "name": "Thyroid cartilage",
+   "system": "respiratory",
+   "topic": "upper-airway",
+   "kind": "organ",
+   "parts": [
+    "FMA55099"
+   ],
+   "what": "The largest cartilage of the larynx.",
+   "where": "The front of the neck; its ridge is the laryngeal prominence (Adam's apple).",
+   "features": "Two plates of hyaline cartilage meet in front to shield the vocal folds behind them. It is larger in males after puberty.",
+   "related": [
+    "trachea"
+   ],
+   "accept": [
+    "adams apple",
+    "adam's apple",
+    "laryngeal prominence"
+   ],
+   "color": "#C7C7C0"
+  },
+  {
+   "id": "diaphragm",
+   "name": "Diaphragm",
+   "system": "respiratory",
+   "topic": "body-cavities",
+   "kind": "organ",
+   "parts": [
+    "FMA13295"
+   ],
+   "what": "The dome-shaped muscle that separates the thoracic and abdominopelvic cavities, and the main muscle of breathing.",
+   "where": "Across the bottom of the rib cage, domed up under the lungs and heart.",
+   "features": "Contracting flattens it, which enlarges the chest and draws air in. The esophagus and the largest blood vessels pass through openings in it.",
+   "related": [
+    "right-lower-lobe",
+    "liver",
+    "esophagus"
+   ],
+   "color": "#B5715A"
+  },
+  {
+   "id": "esophagus",
+   "name": "Esophagus",
+   "system": "digestive",
+   "topic": "mouth-esophagus",
+   "kind": "organ",
+   "parts": [
+    "FMA7131"
+   ],
+   "what": "The muscular tube that carries swallowed food from the pharynx to the stomach.",
+   "where": "Down the chest behind the trachea and heart, through the diaphragm, to the stomach.",
+   "features": "About 25 cm long. Its lining is stratified squamous epithelium, which resists scraping by food. Peristalsis moves food down it.",
+   "related": [
+    "trachea",
+    "stomach",
+    "diaphragm"
+   ],
+   "accept": [
+    "oesophagus",
+    "gullet"
+   ],
+   "color": "#D59CA6"
+  },
+  {
+   "id": "stomach",
+   "name": "Stomach",
+   "system": "digestive",
+   "topic": "stomach",
+   "kind": "organ",
+   "parts": [
+    "FMA7148"
+   ],
+   "what": "A J-shaped muscular sac that stores food and begins protein digestion.",
+   "where": "The upper left abdomen, under the diaphragm.",
+   "features": "Four regions: cardia, fundus, body and pylorus. Gastric glands make hydrochloric acid and pepsinogen. The pyloric sphincter lets chyme into the small intestine a little at a time.",
+   "related": [
+    "esophagus",
+    "duodenum",
+    "spleen"
+   ],
+   "color": "#C99A63"
+  },
+  {
+   "id": "liver",
+   "name": "Liver",
+   "system": "digestive",
+   "topic": "liver-pancreas-gallbladder",
+   "kind": "organ",
+   "parts": [
+    "FMA7197"
+   ],
+   "what": "The largest internal organ: an accessory digestive organ that makes bile and processes nutrients from the gut.",
+   "where": "The upper right abdomen, under the diaphragm, mostly behind the lower right ribs.",
+   "features": "It receives blood from the hepatic portal vein and the hepatic artery. Its tiny lobules process nutrients, store glycogen, make plasma proteins and break down toxins.",
+   "related": [
+    "gallbladder",
+    "diaphragm",
+    "inferior-vena-cava"
+   ],
+   "color": "#8B3A2E"
+  },
+  {
+   "id": "gallbladder",
+   "name": "Gallbladder",
+   "system": "digestive",
+   "topic": "liver-pancreas-gallbladder",
+   "kind": "organ",
+   "parts": [
+    "FMA7202"
+   ],
+   "what": "A small sac that stores and concentrates bile.",
+   "where": "Under the right lobe of the liver.",
+   "features": "When fatty chyme reaches the duodenum, the hormone CCK makes it contract and push bile through the bile duct into the duodenum.",
+   "related": [
+    "liver",
+    "duodenum"
+   ],
+   "accept": [
+    "gall bladder"
+   ],
+   "color": "#5C8A46"
+  },
+  {
+   "id": "pancreas",
+   "name": "Pancreas",
+   "system": "digestive",
+   "topic": "liver-pancreas-gallbladder",
+   "kind": "organ",
+   "parts": [
+    "FMA7198nsn"
+   ],
+   "what": "A gland that is both exocrine (digestive enzymes) and endocrine (insulin and glucagon).",
+   "where": "Behind the stomach, with its head in the curve of the duodenum and its tail reaching toward the spleen.",
+   "features": "Its acinar cells make pancreatic juice with bicarbonate and enzymes for every nutrient; its islets release hormones into the blood.",
+   "related": [
+    "duodenum",
+    "stomach",
+    "spleen"
+   ],
+   "color": "#E6C58F"
+  },
+  {
+   "id": "duodenum",
+   "name": "Duodenum",
+   "system": "digestive",
+   "topic": "small-intestine",
+   "kind": "organ",
+   "parts": [
+    "FMA7206"
+   ],
+   "what": "The first and shortest part of the small intestine.",
+   "where": "A C-shaped curve around the head of the pancreas, just past the stomach.",
+   "features": "Bile and the digestive juice of the pancreas enter it, so it is where stomach acid is neutralized and much of chemical digestion takes place.",
+   "related": [
+    "stomach",
+    "jejunum",
+    "pancreas"
+   ],
+   "color": "#E29CA2"
+  },
+  {
+   "id": "jejunum",
+   "name": "Jejunum",
+   "system": "digestive",
+   "topic": "small-intestine",
+   "kind": "organ",
+   "parts": [
+    "FMA7207"
+   ],
+   "what": "The middle part of the small intestine.",
+   "where": "Coiled mostly in the upper left abdomen.",
+   "features": "About two fifths of the length after the duodenum. It absorbs most nutrients, with tall, close-set folds and villi.",
+   "related": [
+    "duodenum",
+    "ileum"
+   ],
+   "color": "#E8A7AC"
+  },
+  {
+   "id": "ileum",
+   "name": "Ileum",
+   "system": "digestive",
+   "topic": "small-intestine",
+   "kind": "organ",
+   "parts": [
+    "FMA7208"
+   ],
+   "what": "The last and longest part of the small intestine.",
+   "where": "Coiled in the lower right abdomen and pelvis.",
+   "features": "It absorbs vitamin B12, reclaims parts of bile for reuse, and has many Peyer's patches. It ends at the ileocecal valve, where it joins the large intestine.",
+   "related": [
+    "jejunum",
+    "colon",
+    "appendix"
+   ],
+   "color": "#DE9399"
+  },
+  {
+   "id": "colon",
+   "name": "Colon",
+   "system": "digestive",
+   "topic": "large-intestine",
+   "kind": "organ",
+   "parts": [
+    "FMA14543nsn"
+   ],
+   "what": "The longest part of the large intestine, in four sections: ascending, transverse, descending and sigmoid.",
+   "where": "It frames the small intestine: up the right side, across the top and down the left side of the abdomen.",
+   "features": "Teniae coli bunch its wall into pouches called haustra. It absorbs most of the remaining water and electrolytes, and its bacteria ferment leftover fiber.",
+   "related": [
+    "ileum",
+    "appendix",
+    "rectum"
+   ],
+   "color": "#D4787E"
+  },
+  {
+   "id": "appendix",
+   "name": "Appendix",
+   "system": "digestive",
+   "topic": "large-intestine",
+   "kind": "organ",
+   "parts": [
+    "FMA14542"
+   ],
+   "what": "A narrow tube of lymphoid tissue, about 8 cm long.",
+   "where": "Hanging from the cecum (not modeled) in the lower right abdomen.",
+   "features": "Its lymphoid tissue makes it one of the secondary lymphoid organs. Inflamed (appendicitis), it causes pain that settles in the right lower quadrant.",
+   "related": [
+    "colon",
+    "ileum"
+   ],
+   "accept": [
+    "vermiform appendix"
+   ],
+   "color": "#C9666D"
+  },
+  {
+   "id": "rectum",
+   "name": "Rectum",
+   "system": "digestive",
+   "topic": "large-intestine",
+   "kind": "organ",
+   "parts": [
+    "FMA14544"
+   ],
+   "what": "The straight final part of the large intestine before the anal canal.",
+   "where": "In the pelvis, in front of the sacrum.",
+   "features": "Stretch of its wall by feces triggers the defecation reflex.",
+   "related": [
+    "colon",
+    "urinary-bladder",
+    "sacrum"
+   ],
+   "color": "#C06B6F"
+  },
+  {
+   "id": "spleen",
+   "name": "Spleen",
+   "system": "lymphatic",
+   "topic": "lymphatic-system",
+   "kind": "organ",
+   "parts": [
+    "FMA7196"
+   ],
+   "what": "The largest lymphoid organ, which filters blood, not lymph.",
+   "where": "The upper left abdomen, behind the stomach, under the 9th to 11th ribs.",
+   "features": "Its white pulp holds lymphocytes that respond to antigens in the blood; its red pulp removes old and damaged red blood cells.",
+   "related": [
+    "stomach",
+    "pancreas",
+    "kidneys"
+   ],
+   "color": "#6B2F4E"
+  },
+  {
+   "id": "kidneys",
+   "name": "Kidneys",
+   "system": "urinary",
+   "topic": "kidney-anatomy",
+   "kind": "organ",
+   "parts": [
+    "FMA7204",
+    "FMA7205"
+   ],
+   "what": "The bean-shaped organs that filter the blood and make urine.",
+   "where": "Against the back wall of the abdomen, behind the peritoneum (retroperitoneal), from about T12 to L3.",
+   "features": "The right kidney sits a little lower because the liver is above it. Vessels and the ureter enter and leave at the hilum on its medial side.",
+   "related": [
+    "ureters",
+    "adrenal-glands",
+    "floating-ribs"
+   ],
+   "accept": [
+    "kidney"
+   ],
+   "color": "#7D4038"
+  },
+  {
+   "id": "ureters",
+   "name": "Ureters",
+   "system": "urinary",
+   "topic": "kidney-anatomy",
+   "kind": "organ",
+   "parts": [
+    "FMA15571",
+    "FMA15572"
+   ],
+   "what": "The tubes that carry urine from each kidney to the urinary bladder.",
+   "where": "Down the back wall of the abdomen into the pelvis.",
+   "features": "Waves of smooth muscle contraction (peristalsis) push urine along. They enter the bladder at an angle, which keeps urine from flowing back.",
+   "related": [
+    "kidneys",
+    "urinary-bladder"
+   ],
+   "accept": [
+    "ureter"
+   ],
+   "color": "#8C5A3C"
+  },
+  {
+   "id": "urinary-bladder",
+   "name": "Urinary bladder",
+   "system": "urinary",
+   "topic": "kidney-anatomy",
+   "kind": "organ",
+   "parts": [
+    "FMA15900"
+   ],
+   "what": "A hollow, stretchy organ that stores urine.",
+   "where": "In the pelvis, behind the pubic symphysis.",
+   "features": "Its wall is the detrusor muscle. The trigone on its floor is the triangle between the two ureter openings and the urethra.",
+   "related": [
+    "ureters",
+    "prostate",
+    "rectum"
+   ],
+   "accept": [
+    "bladder"
+   ],
+   "color": "#9C6B45"
+  },
+  {
+   "id": "adrenal-glands",
+   "name": "Adrenal glands",
+   "system": "endocrine",
+   "topic": "adrenal-glands",
+   "kind": "organ",
+   "parts": [
+    "FMA15629",
+    "FMA15630"
+   ],
+   "what": "Endocrine glands that are really two glands in one: an outer cortex and an inner medulla.",
+   "where": "On top of each kidney.",
+   "features": "The cortex makes steroids (aldosterone, cortisol and androgens); the medulla releases epinephrine and norepinephrine.",
+   "related": [
+    "kidneys"
+   ],
+   "accept": [
+    "adrenal gland",
+    "suprarenal gland",
+    "suprarenal glands"
+   ],
+   "color": "#E3C752"
+  },
+  {
+   "id": "testes",
+   "name": "Testes",
+   "system": "reproductive",
+   "topic": "male-anatomy",
+   "kind": "organ",
+   "parts": [
+    "FMA7211",
+    "FMA7212"
+   ],
+   "what": "The male gonads, which make sperm and testosterone.",
+   "where": "In the scrotum, outside the pelvis.",
+   "features": "Their seminiferous tubules make sperm; interstitial cells between the tubules make testosterone. The scrotum keeps them a few degrees below body temperature.",
+   "related": [
+    "prostate"
+   ],
+   "accept": [
+    "testis",
+    "testicle",
+    "testicles"
+   ],
+   "color": "#E3C5A8"
+  },
+  {
+   "id": "prostate",
+   "name": "Prostate",
+   "system": "reproductive",
+   "topic": "male-anatomy",
+   "kind": "organ",
+   "parts": [
+    "FMA9600"
+   ],
+   "what": "A male accessory gland that adds fluid to semen.",
+   "where": "Just below the urinary bladder, around the first part of the urethra.",
+   "features": "The urethra and the ejaculatory ducts pass through it. When it enlarges with age it can squeeze the urethra and slow urine flow.",
+   "related": [
+    "urinary-bladder",
+    "testes"
+   ],
+   "accept": [
+    "prostate gland"
+   ],
+   "color": "#C5A0B0"
+  },
+  {
+   "id": "skin",
+   "name": "Skin",
+   "system": "integumentary",
+   "topic": "skin-layers",
+   "kind": "skin",
+   "parts": [
+    "FMA7163"
+   ],
+   "what": "The largest organ: the epidermis and the dermis, over the hypodermis.",
+   "where": "The whole outer surface of the body.",
+   "features": "Shown as a see-through shell. The model has no separate layers, hair or glands.",
+   "related": [],
+   "accept": [
+    "integument",
+    "cutaneous membrane"
+   ],
+   "quiz": false
+  }
+ ]
+}

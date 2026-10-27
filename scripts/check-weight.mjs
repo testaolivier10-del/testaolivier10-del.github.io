@@ -72,6 +72,12 @@ const SHELL_BUDGETS = [
      only by pages that show a video; measured 3.5 KB. Thumbnails are images,
      not counted here, and load lazily from this site. */
   ['assets/video', 4],
+  /* The shared 3D body's engine, assets/body3d/viewer.js (2026-10-27, docs/tools-upgrade.md "3D anatomy"): moved
+     out of nremt/assets when the A&P 3D anatomy tool began to share it, without its EMS content (now
+     nremt/assets/body-content.js). Loaded only by the body map and the A&P tool. The model (3.3 MB) and three.js
+     load on demand, as before, and are not counted. */
+  /* Measured 14.8 KB (the old nremt/assets/body-viewer.js with its content was 26.5 KB). */
+  ['assets/body3d', 15],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -327,7 +333,9 @@ const SHELL_BUDGETS = [
   /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
   /* 49.5 -> 53.5 (calm tools P1, docs/tools-calm-notes/anp.md): each tool's Tool Studio arrangement and AnpToolKit.studio; lab practical measured 53.1 KB. */
   /* 53.5 -> 54 (honest labels): per-tool names for the second tab. */
-  ['anatomy-physiology', 54],
+  /* 54 -> 54.5 (3D anatomy tool, 2026-10-27): its page is now the largest measure of this shell (anatomy-3d.js
+     10.6 KB and .css 1.4 KB gzipped with the shared tool kit); measured 54.1 KB. */
+  ['anatomy-physiology', 54.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -585,6 +593,10 @@ const BUDGETS = [
   ['anatomy-physiology/notes/cardiac-cycle.html', 19.8],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
+  /* The 3D anatomy tool's page (2026-10-27). Its runtime is counted in the anatomy-physiology shell
+     (tools/anatomy-3d.js and .css) and the site shell (assets/body3d/viewer.js, which the NREMT body map
+     loads too); the model and three.js load on demand and are not counted, as on the body map. */
+  ['anatomy-physiology/tools/anatomy-3d.html', 3],
   ['anatomy-physiology/exams.html', 3],
   /* AP® Biology: the home, the app shells and, once a unit is published, its
      first lesson, notes page and unit sheet (BIO_PAGES below, from what the
@@ -912,6 +924,9 @@ function bucketOf(relPath) {
   // The video lesson player (docs/video-lessons.md) loads only on pages that
   // show a video, so it is its own shell, not part of every page's.
   if (parts[0] === 'assets' && parts[1] === 'video') return 'assets/video';
+  // The shared 3D body (assets/body3d/viewer.js) loads only on the NREMT body
+  // map and the A&P 3D anatomy tool, so it is its own shell too.
+  if (parts[0] === 'assets' && parts[1] === 'body3d') return 'assets/body3d';
   if (parts[0] === 'assets') return 'site';
   if (parts.length > 1 && parts[1] === 'assets') return parts[0];
   return 'page';

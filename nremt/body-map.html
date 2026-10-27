@@ -425,16 +425,17 @@
 <script type="importmap">
 {
   "imports": {
-    "three": "./assets/vendor/three/build/three.module.min.js"
+    "three": "../assets/body3d/vendor/three/build/three.module.min.js"
   }
 }
 </script>
 <script src="assets/tool-results.js" defer></script>
-<script src="assets/body-viewer.js" defer></script>
+<script src="assets/body-content.js" defer></script>
+<script src="../assets/body3d/viewer.js" defer></script>
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/burns.js" defer></script>
 <script>
-/* The model, picking, layers and the hunt live in assets/body-viewer.js
+/* The model, picking, layers and the hunt live in ../assets/body3d/viewer.js
    (LevlBodyViewer); this page wires its own controls to it.
    body-map.html?focus=<name> selects and frames a structure on arrival, where
    <name> is its Browse-by-name label, case-insensitive (?focus=heart). */

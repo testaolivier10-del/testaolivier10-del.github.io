@@ -1,5 +1,10 @@
 [
  {
+  "slug": "anatomy-3d",
+  "title": "3D anatomy",
+  "file": "anatomy-3d.svg"
+ },
+ {
   "slug": "calculators",
   "title": "Calculators with every step shown",
   "file": "calculators.svg"
