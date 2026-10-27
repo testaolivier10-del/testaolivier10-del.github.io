@@ -1,0 +1,752 @@
+{
+ "stimuli": {
+  "motivation-s1": {
+   "kind": "visual",
+   "title": "The Yerkes-Dodson relationship",
+   "figure": "motivation-yerkes-dodson"
+  },
+  "motivation-s2": {
+   "kind": "study",
+   "title": "Plate size and how much people eat",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether an external cue, the size of the serving bowl, changes how much pasta people eat when they are equally hungry.",
+    "participants": "64 adult volunteers (ages 18 to 45) at a university in Ohio. All gave informed consent, had not eaten for three hours, and were told they could stop at any time. At the end they were told the true purpose of the study, which had been described as a taste test.",
+    "method": "Participants were randomly assigned to serve themselves pasta from either a large bowl or a small bowl, with the same total amount of pasta in each. The researchers weighed each plate before and after the meal to find how many grams each person ate. Participants also rated their hunger from 1 to 7 before and after.",
+    "results": "Participants in the large-bowl group ate more pasta (mean 410 grams) than those in the small-bowl group (mean 320 grams). Hunger ratings before the meal did not differ between groups, and both groups rated themselves equally full afterward."
+   }
+  },
+  "motivation-s3": {
+   "kind": "data",
+   "title": "Rewards and free-choice drawing",
+   "invented": true,
+   "text": "<p>Preschoolers who liked drawing were randomly assigned to three groups. One group was told in advance they would get a \"good player\" certificate for drawing (expected reward), one got the certificate as a surprise afterward (unexpected reward), and one got no certificate. A week later, observers recorded how many minutes of a free-play hour each child spent drawing.</p>",
+   "table": {
+    "caption": "Minutes spent drawing during free play one week later (invented data for practice)",
+    "cols": [
+     "Group",
+     "Child 1",
+     "Child 2",
+     "Child 3",
+     "Child 4",
+     "Child 5"
+    ],
+    "rows": [
+     [
+      "Expected reward",
+      "4",
+      "9",
+      "6",
+      "5",
+      "6"
+     ],
+     [
+      "Unexpected reward",
+      "14",
+      "12",
+      "17",
+      "15",
+      "12"
+     ],
+     [
+      "No reward",
+      "16",
+      "13",
+      "14",
+      "11",
+      "16"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-motivation-1",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a long run on a hot day, Tomas feels thirsty and drinks until the feeling goes away. Which theory of motivation best explains his behavior?",
+   "options": [
+    "Drive-reduction",
+    "Incentive theory",
+    "Arousal theory",
+    "Instinct theory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Drive-reduction theory: a need creates a drive, and behavior reduces it, restoring homeostasis.",
+    "options": [
+     "Right: a body need (water) creates a drive (thirst) that pushes him to act until balance is restored.",
+     "Incentive theory stresses a pull from outside rewards; here an inner need is pushing him.",
+     "Arousal theory is about seeking a best level of stimulation, not restoring water balance.",
+     "Instinct theory explains fixed, unlearned patterns in animals, not a learned choice to drink."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-2",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Liam has just eaten a large dinner and feels full, yet he orders dessert when he sees the cheesecake on the menu. Which theory best explains this choice?",
+   "options": [
+    "Drive-reduction theory",
+    "Instinct theory",
+    "Incentive theory",
+    "Self-determination theory"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Incentives are outside rewards that pull behavior, even when no drive is present.",
+    "options": [
+     "His hunger drive is already reduced, so it cannot explain eating more.",
+     "Choosing cheesecake from a menu is not a fixed, unlearned behavior pattern.",
+     "Right: an attractive outside stimulus pulls him to act even without a body need.",
+     "Self-determination theory is about needs for autonomy, competence and relatedness, not dessert."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-3",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Every spring, salmon swim back to the stream where they hatched to spawn, even salmon raised in a hatchery that never saw another salmon make the trip. Which concept best explains this behavior?",
+   "options": [
+    "Incentive theory",
+    "Instinct theory",
+    "Observational learning",
+    "Sensation seeking"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Instinct theory works best for fixed, unlearned patterns in non-human animals.",
+    "options": [
+     "Incentives are learned rewards; this pattern appears without learning.",
+     "Right: an unlearned, fixed pattern found throughout a species is an instinct.",
+     "The hatchery salmon never saw the behavior, so they could not have learned it by watching.",
+     "Sensation seeking is a human trait of craving new, intense experiences."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-4",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Kenji goes skydiving on weekends, rides the fastest roller coasters, and gets bored with routine jobs. Which concept best describes him?",
+   "options": [
+    "Drive-reduction",
+    "Extrinsic motivation",
+    "The overjustification effect",
+    "Sensation seeking"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "High sensation seekers prefer a higher level of arousal and seek novel, intense experiences.",
+    "options": [
+     "Drive-reduction predicts acting to lower tension, but Kenji seeks out more of it.",
+     "Nothing suggests he does these things for outside rewards such as money.",
+     "The overjustification effect is about rewards lowering interest, not a love of thrills.",
+     "Right: he looks for varied, new and intense experiences and will take risks for them."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-5",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ari plays guitar for hours because she loves how it feels to finally nail a hard song. Which kind of motivation is this?",
+   "options": [
+    "Intrinsic motivation",
+    "Extrinsic motivation",
+    "Drive-reduction",
+    "Incentive motivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Intrinsic motivation comes from the activity itself; extrinsic from rewards or pressures outside it.",
+    "options": [
+     "Right: she does it for the enjoyment and satisfaction of the activity itself.",
+     "Extrinsic motivation would be playing for pay, grades or praise.",
+     "No body need is being restored by playing guitar.",
+     "Incentives are outside rewards; she is moved by the activity itself."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-6",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A child loves drawing. Her parents start paying her a dollar for every drawing. Months later the payments stop, and she draws much less than she did before the payments began. Which concept best explains the drop?",
+   "options": [
+    "Extinction of a conditioned response",
+    "Drive-reduction theory",
+    "The overjustification effect",
+    "Sensation seeking"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Expected, tangible rewards for an already enjoyed task can undermine intrinsic motivation.",
+    "options": [
+     "Extinction explains a return toward the starting level; she now draws less than she did before any payment.",
+     "No body need is involved in drawing.",
+     "Right: an expected reward for something she already enjoyed shifted her reason to the reward, lowering her intrinsic interest.",
+     "Sensation seeking describes craving intense experiences, not a loss of interest."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-7",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Jada must choose between two colleges she loves equally: one near the beach and one with a great music program. Which kind of motivational conflict is this?",
+   "options": [
+    "Avoidance-avoidance",
+    "Approach-approach",
+    "Approach-avoidance",
+    "Multiple approach-avoidance"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Approach-approach: two desirable goals, only one can be chosen.",
+    "options": [
+     "Avoidance-avoidance is a choice between two unwanted options.",
+     "Right: she must choose between two attractive options.",
+     "Approach-avoidance is one option with both good and bad sides.",
+     "That would be several options, each with good and bad sides; here both are simply attractive."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-8",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Omar wants to try out for the school play because he loves acting, but the idea of performing in front of the whole school terrifies him. Which kind of conflict is he facing?",
+   "options": [
+    "Approach-approach",
+    "Avoidance-avoidance",
+    "Displacement",
+    "Approach-avoidance"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Approach-avoidance: one goal with both attractive and unattractive features.",
+    "options": [
+     "He is not choosing between two attractive goals.",
+     "He is not choosing between two unpleasant options.",
+     "Displacement is a defense mechanism, not a conflict between goals.",
+     "Right: one goal, the play, both attracts him and frightens him."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-9",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Before lunch, a person's stomach releases a hormone that signals hunger to the brain. Which hormone is this?",
+   "options": [
+    "Ghrelin",
+    "Leptin",
+    "Melatonin",
+    "Oxytocin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ghrelin from the stomach signals hunger; leptin from fat cells signals fullness over the longer term.",
+    "options": [
+     "Right: ghrelin rises when the stomach is empty and signals hunger to the hypothalamus.",
+     "Leptin comes from fat cells and signals that the body has enough stored energy, lowering appetite.",
+     "Melatonin helps regulate sleep, not hunger.",
+     "Oxytocin is linked to bonding and social behavior, not hunger signals from the stomach."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-10",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Mice with a gene change that leaves them unable to make leptin eat far more than normal mice and become very heavy. What best explains this?",
+   "options": [
+    "They make too much ghrelin, a hormone that signals fullness to the brain",
+    "Their external eating cues are stronger than other mice's",
+    "Without leptin, the brain never learns fat stores are full, so appetite stays high",
+    "Leptin increases appetite, so less leptin should cause weight loss"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Leptin signals stored energy to the hypothalamus; without it, the brain keeps signaling hunger.",
+    "options": [
+     "Ghrelin signals hunger, not fullness, and the change affects leptin.",
+     "The cause is a missing hormone, not cues in the environment.",
+     "Right: leptin from fat cells tells the hypothalamus that energy stores are full.",
+     "This reverses leptin's role; it lowers appetite."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-11",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At a party, Mia keeps eating chips from a big bowl in front of her even though she ate dinner an hour ago. When the bowl is moved across the room, she stops. Which concept best explains her eating?",
+   "options": [
+    "Ghrelin",
+    "External eating cues",
+    "Drive-reduction",
+    "Leptin"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "External cues, such as seeing food, portion size and time of day, can trigger eating without hunger.",
+    "options": [
+     "Ghrelin is a hunger signal from an empty stomach; she ate an hour ago.",
+     "Right: the sight and nearness of food, not body need, prompted her eating.",
+     "Her body need had already been met by dinner.",
+     "Leptin is a fullness signal and would lower eating, not raise it."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-12",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "First-year students who join a club in their first month report less loneliness and are more likely to stay at the college. Which motive does this finding most directly illustrate?",
+   "options": [
+    "The overjustification effect",
+    "Sensation seeking",
+    "Drive-reduction",
+    "The need to belong"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The need to belong (belongingness) is a basic motive to form lasting, positive relationships.",
+    "options": [
+     "No reward is lowering interest here.",
+     "Joining a club is not about seeking intense, novel experiences.",
+     "Drive-reduction refers to body needs such as hunger and thirst.",
+     "Right: people are motivated to form and keep close relationships, and meeting that need supports mood and health."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-13",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "motivation-s1",
+   "q": "According to the figure, what happens to performance as arousal rises from very low to very high?",
+   "options": [
+    "It rises to a peak, then falls",
+    "It rises steadily the whole way",
+    "It falls steadily the whole way",
+    "It stays flat until arousal is high"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Yerkes-Dodson law: performance is best at a moderate level of arousal.",
+    "options": [
+     "Right: both curves are inverted U shapes, with the best performance at a moderate level.",
+     "Both curves turn down at high arousal.",
+     "Both curves rise first, from very low arousal.",
+     "Both curves start rising well before arousal is high."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-14",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "motivation-s1",
+   "q": "A skilled typist and a beginner both take a typing test in a loud, high-pressure room. Based on the figure, who is more likely to perform worse than usual?",
+   "options": [
+    "The skilled typist, because high arousal harms well-practiced tasks most",
+    "Neither, because arousal does not affect typing",
+    "The beginner, because for a new task performance drops at a lower level of arousal",
+    "Both equally, because their curves have the same shape and peak"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Difficult or unfamiliar tasks are best at lower arousal; simple or well-learned ones tolerate more.",
+    "options": [
+     "For a well-practiced task the solid curve still performs well at fairly high arousal.",
+     "The figure shows that arousal affects performance on both kinds of task.",
+     "Right: the dashed curve, for difficult or new tasks, peaks at lower arousal and falls sooner.",
+     "The curves peak at different levels of arousal."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-15",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "motivation-s1",
+   "q": "A coach wants her team, who are experts at a simple drill, to perform it at their best. Using the figure, what level of arousal should she aim for?",
+   "options": [
+    "As low as possible, so players stay fully relaxed",
+    "Fairly high, near the peak of the solid curve",
+    "As high as possible, because more arousal keeps helping",
+    "Low, near the peak of the dashed curve"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For simple, well-learned tasks, the best arousal is moderately high.",
+    "options": [
+     "At very low arousal, the solid curve is near the bottom.",
+     "Right: a simple, well-practiced task peaks at a higher level of arousal.",
+     "Past the peak, even the solid curve falls.",
+     "The dashed curve is for difficult or new tasks, not a drill the team knows well."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-16",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "motivation-s2",
+   "q": "Which concept does this study most directly test?",
+   "options": [
+    "Ghrelin as a hunger signal",
+    "The need to belong",
+    "External eating cues",
+    "Drive-reduction theory"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The manipulated variable, bowl size, is an external cue.",
+    "options": [
+     "Hunger ratings were equal across groups, and no hormone was measured.",
+     "Participants ate alone with a bowl; belonging was not studied.",
+     "Right: the bowl size, a cue outside the body, was manipulated while hunger was held equal.",
+     "Both groups started equally hungry, yet ate different amounts, which a drive alone cannot explain."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-17",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "motivation-s2",
+   "q": "What was the dependent variable in this study?",
+   "options": [
+    "Grams of pasta eaten, from weighing plates before and after",
+    "The size of the serving bowl, large or small",
+    "Three hours without eating before the study",
+    "The age range of participants, 18 to 45"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The dependent variable is what the researchers measured: grams eaten.",
+    "options": [
+     "Right: it was measured and expected to change with bowl size.",
+     "Bowl size was manipulated, so it is the independent variable.",
+     "Fasting was the same for everyone, a controlled condition.",
+     "Age describes the sample; it was not measured as an outcome."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-18",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "motivation-s2",
+   "q": "Which ethical safeguard did the researchers use because they had told participants it was a taste test?",
+   "options": [
+    "Confidentiality, by keeping names off the data sheets",
+    "Random assignment, by placing people in bowl groups by chance",
+    "Informed assent, by asking children to agree to take part",
+    "Debriefing, by telling them the true purpose at the end"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Deception (the \"taste test\") is followed by debriefing, which the summary describes.",
+    "options": [
+     "The summary does not describe how names were handled.",
+     "Random assignment is a design feature, not an ethical safeguard.",
+     "The participants were adults, who gave informed consent.",
+     "Right: when a study uses deception, participants are told the truth afterward."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-19",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "motivation-s2",
+   "q": "Write the operational definition of how much people ate in this study.",
+   "why": {
+    "correct": "An operational definition gives the exact measure: grams eaten, from weighing plates."
+   },
+   "specific": {
+    "frame": "Amount eaten was measured as ___, found by ___.",
+    "write": {
+     "context": [
+      "grams",
+      "weigh"
+     ]
+    },
+    "model": "Amount eaten was measured as the grams of pasta each person ate, found by weighing the plate before and after the meal.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the grams of pasta each person ate",
+       "how hungry the person felt",
+       "the size of the serving bowl"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Hunger was a separate 1 to 7 rating, not the amount eaten.",
+       "2": "Bowl size was the independent variable, which the researchers manipulated."
+      }
+     },
+     "how": {
+      "label": "Found by",
+      "options": [
+       "weighing the plate before and after the meal",
+       "asking people to estimate how much they ate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The researchers weighed plates; they did not rely on estimates."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-motivation-20",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "motivation-s3",
+   "q": "What is the mean number of minutes the expected-reward group spent drawing?",
+   "why": {
+    "correct": "$\\frac{4 + 9 + 6 + 5 + 6}{5} = \\frac{30}{5} = 6$ minutes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       4,
+       9,
+       6,
+       5,
+       6
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         4,
+         9,
+         6,
+         5,
+         6
+        ]
+       ]
+      },
+      "why": "30 is the total for the group. Divide by the 5 children."
+     },
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         14,
+         12,
+         17,
+         15,
+         12
+        ]
+       ]
+      },
+      "why": "That is the unexpected-reward group's mean. Use the expected-reward row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-21",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "motivation-s3",
+   "q": "What is the range of minutes for the unexpected-reward group?",
+   "why": {
+    "correct": "$17 - 12 = 5$ minutes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "range",
+     "args": [
+      [
+       14,
+       12,
+       17,
+       15,
+       12
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 17,
+      "why": "17 is the highest value. Subtract the lowest, 12."
+     },
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         14,
+         12,
+         17,
+         15,
+         12
+        ]
+       ]
+      },
+      "why": "That is the mean. The range is highest minus lowest."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-22",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "motivation-s3",
+   "q": "Which conclusion do these data best support?",
+   "options": [
+    "Any reward lowers children's later interest in drawing",
+    "Rewards raise interest, because the rewarded children drew more",
+    "The no-reward group drew least, so rewards are needed to keep interest",
+    "An expected reward, but not a surprise reward, lowered later drawing"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Compare all three groups: only the expected-reward group dropped, which fits the overjustification effect.",
+    "options": [
+     "The unexpected-reward group drew about as much as the no-reward group.",
+     "The expected-reward group drew the least.",
+     "The no-reward group drew among the most.",
+     "Right: expected mean 6 minutes, versus about 14 for both other groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-motivation-23",
+   "unit": "unit-4",
+   "topic": "motivation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "motivation-s3",
+   "q": "Which concept best explains why the expected reward lowered drawing, while the surprise reward did not?",
+   "options": [
+    "Drive-reduction, because the certificate lowered the children's drive to draw",
+    "The overjustification effect: drawing for a promised prize made it feel like work",
+    "Sensation seeking, because certificates are less exciting than drawing",
+    "An approach-avoidance conflict, because the children wanted and feared the certificate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The overjustification effect depends on the reward being expected and tied to doing the task.",
+    "options": [
+     "Drawing is not a body need that a certificate could reduce.",
+     "Right: an expected reward shifts the reason for the task from enjoyment to the reward.",
+     "Sensation seeking is a trait, and the groups were formed by random assignment.",
+     "Nothing suggests the children feared the certificate."
+    ]
+   }
+  }
+ ]
+}

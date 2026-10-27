@@ -1,0 +1,1366 @@
+{
+ "stimuli": {
+  "disorders-s1": {
+   "kind": "visual",
+   "title": "Categories of psychological disorders",
+   "figure": "disorders-categories"
+  },
+  "disorders-s2": {
+   "kind": "data",
+   "title": "Shared diagnosis of schizophrenia by relationship",
+   "invented": true,
+   "plot": {
+    "label": "Bar graph of the percent of people with schizophrenia whose relative also has it: identical twin 46%, fraternal twin 15%, sibling 9%, unrelated person 1% (invented data for practice)",
+    "kind": "bar",
+    "categories": [
+     "Identical twin",
+     "Fraternal twin",
+     "Sibling",
+     "Unrelated"
+    ],
+    "values": [
+     46,
+     15,
+     9,
+     1
+    ],
+    "xLabel": "Relative of a person with schizophrenia",
+    "yLabel": "Percent who also have schizophrenia"
+   }
+  },
+  "disorders-s3": {
+   "kind": "study",
+   "title": "Hurricane exposure and later PTSD symptoms",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether adults who went through more of a hurricane's dangers would report more symptoms of posttraumatic stress six months later.",
+    "participants": "Seven adults, ages 24 to 61, from one coastal town volunteered after reading flyers at a community center. Each gave informed consent, and the researchers kept every name confidential by giving each person a number.",
+    "method": "Each adult reported how many of eight hurricane dangers they had faced (for example, flooding in the home or being injured). Six months later, each completed a 20-item symptom checklist about flashbacks, avoidance, mood and feeling on edge; the total score could range from 0 to 80. The researchers did not assign anyone to a level of danger.",
+    "results": "Symptom scores were 8, 12, 15, 22, 30, 41 and 48. Adults who had faced more dangers tended to have higher scores (correlation $r = 0.78$).",
+    "discussion": "Greater exposure to the hurricane's dangers went with more symptoms of posttraumatic stress."
+   }
+  },
+  "disorders-s4": {
+   "kind": "data",
+   "title": "Daily mood ratings over twelve weeks",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of weekly average mood rating, from 1 (very low) to 9 (very high), over 12 weeks for two people: Person A dips to 2 in weeks 3 to 6 and returns to 5; Person B rises to 9 in weeks 4 to 6, then falls to 2 in weeks 9 to 11 (invented data for practice)",
+    "kind": "line",
+    "xLabel": "Week",
+    "yLabel": "Average mood (1 = very low, 9 = very high)",
+    "y": [
+     0,
+     10
+    ],
+    "series": [
+     {
+      "name": "Person A",
+      "points": [
+       [
+        1,
+        5
+       ],
+       [
+        2,
+        4
+       ],
+       [
+        3,
+        2
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        5,
+        2
+       ],
+       [
+        6,
+        2
+       ],
+       [
+        7,
+        4
+       ],
+       [
+        8,
+        5
+       ],
+       [
+        9,
+        5
+       ],
+       [
+        10,
+        5
+       ],
+       [
+        11,
+        5
+       ],
+       [
+        12,
+        5
+       ]
+      ]
+     },
+     {
+      "name": "Person B",
+      "points": [
+       [
+        1,
+        5
+       ],
+       [
+        2,
+        6
+       ],
+       [
+        3,
+        8
+       ],
+       [
+        4,
+        9
+       ],
+       [
+        5,
+        9
+       ],
+       [
+        6,
+        9
+       ],
+       [
+        7,
+        6
+       ],
+       [
+        8,
+        4
+       ],
+       [
+        9,
+        2
+       ],
+       [
+        10,
+        2
+       ],
+       [
+        11,
+        2
+       ],
+       [
+        12,
+        4
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-disorders-1",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For the past three years, Marcus has felt low on most days, with poor appetite and low energy. He keeps working and seeing friends, but he says he cannot remember the last time he felt good for more than a week or two. Which disorder best fits this pattern?",
+   "options": [
+    "Bipolar II disorder",
+    "Generalized anxiety disorder",
+    "Seasonal sleep disorder",
+    "Persistent depressive disorder"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A long-lasting low mood (two years or more in adults), often milder than a major depressive episode, fits persistent depressive disorder.",
+    "options": [
+     "Bipolar II needs at least one hypomanic episode, a period of unusually high energy and mood. Marcus has none.",
+     "Generalized anxiety disorder centers on excessive worry, not on a long-lasting low mood.",
+     "The course lists no such disorder, and his low mood lasts all year, not in one season.",
+     "Right: a depressed mood on most days for at least two years in an adult is the core of persistent depressive disorder."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-2",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For ten days, Jordan has slept two or three hours a night yet feels full of energy. He talks so fast that friends cannot follow, has spent his savings on a plan to start five companies, and says he is destined to be famous. He has never had a depressive episode. Which disorder best fits?",
+   "options": [
+    "Bipolar II disorder",
+    "Major depressive disorder",
+    "Bipolar I disorder",
+    "Generalized anxiety disorder"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Bipolar I disorder is defined by at least one manic episode. Many people with bipolar I also have depressive episodes, but one is not needed for the diagnosis.",
+    "options": [
+     "Bipolar II involves hypomania, a milder high that does not seriously disrupt life, plus a major depressive episode. Jordan's episode is severe and he has had no depression.",
+     "Major depressive disorder involves low mood or loss of interest, the opposite of Jordan's high energy.",
+     "Right: a full manic episode lasting at least a week, with reduced need for sleep, racing speech, risky spending and grandiosity, defines bipolar I. A depressive episode is not required.",
+     "Generalized anxiety disorder is about ongoing worry, not about a long stretch of high energy and grandiosity."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-3",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Last year, Kim had a major depressive episode that lasted two months. This spring she had five days of unusually high energy: she slept less, felt very confident and started many projects, though she kept going to work and nobody needed to step in. Which diagnosis fits this history best?",
+   "options": [
+    "Bipolar I disorder",
+    "Bipolar II disorder",
+    "Persistent depressive disorder",
+    "Major depressive disorder"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Bipolar II combines at least one hypomanic episode with at least one major depressive episode, and never a full manic one.",
+    "options": [
+     "Bipolar I needs a full manic episode, severe enough to seriously disrupt life. Kim's high was milder and she kept working.",
+     "Right: a hypomanic episode (a milder high of at least four days) plus a major depressive episode is the pattern of bipolar II.",
+     "Persistent depressive disorder is a long low mood with no periods of high energy.",
+     "Major depressive disorder fits the depression, but it does not explain the period of high energy."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-4",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A man with schizophrenia hears a voice commenting on everything he does, even when he is alone in a quiet room. What is this symptom?",
+   "options": [
+    "A hallucination",
+    "A delusion",
+    "A negative symptom",
+    "A compulsion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A hallucination is a false perception, most often hearing voices in schizophrenia. It is a positive symptom because it adds an experience.",
+    "options": [
+     "Right: perceiving something, here a voice, that is not there is a hallucination.",
+     "A delusion is a false belief held despite clear evidence. Hearing a voice is a false perception.",
+     "Negative symptoms are losses, such as flat emotion or little speech. Hearing a voice adds something.",
+     "A compulsion is a repeated act done to reduce anxiety, as in obsessive-compulsive disorder."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-5",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Elena firmly believes that her neighbors have put a device in her wall to read her thoughts. When her brother shows her the empty wall, she says the device must be invisible. Which symptom does this show?",
+   "options": [
+    "A hallucination",
+    "An obsession",
+    "Flat affect",
+    "A delusion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Delusions are false beliefs held firmly in spite of evidence; beliefs about being watched or controlled are common in schizophrenia.",
+    "options": [
+     "A hallucination is a false perception, such as hearing or seeing something. Elena holds a false belief.",
+     "An obsession is an unwanted thought the person usually knows is excessive and tries to push away. Elena is convinced hers is true.",
+     "Flat affect is a lack of emotional expression, a negative symptom, not a false belief.",
+     "Right: a fixed false belief that does not change with clear evidence is a delusion."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-6",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Over two years, Dev has stopped seeing friends, speaks only a few words at a time, shows almost no facial expression and has trouble starting even simple tasks such as showering. His doctor says these are symptoms of schizophrenia. Which kind of symptoms are they?",
+   "options": [
+    "Positive symptoms",
+    "Manic symptoms",
+    "Negative symptoms",
+    "Dissociative symptoms"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Negative symptoms are the absence or reduction of normal behavior; \"positive\" and \"negative\" mean added and taken away, not good and bad.",
+    "options": [
+     "Positive symptoms add experiences, such as hallucinations and delusions. Dev shows losses instead.",
+     "Mania involves high energy and fast speech, the opposite of what Dev shows.",
+     "Right: withdrawal, little speech, flat expression and low motivation are losses of normal functions, which are negative symptoms.",
+     "Dissociative symptoms involve gaps in memory or identity, not withdrawal and flat expression."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-7",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A news story calls a woman with schizophrenia a person with a \"split personality.\" Why is that description wrong?",
+   "options": [
+    "Schizophrenia is a mood disorder, not a psychotic one",
+    "Schizophrenia involves a break from reality, not separate identities",
+    "Schizophrenia involves several identities, not one split",
+    "Schizophrenia begins in early childhood, not later"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "\"Split personality\" confuses schizophrenia with dissociative identity disorder. In schizophrenia the \"split\" is from reality: false perceptions and beliefs.",
+    "options": [
+     "Schizophrenia is in the schizophrenia spectrum, not among the mood disorders.",
+     "Right: schizophrenia involves symptoms such as hallucinations and delusions. Distinct identity states belong to dissociative identity disorder.",
+     "Schizophrenia does not involve separate identities at all.",
+     "Schizophrenia usually begins in late adolescence or early adulthood, not in early childhood."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-8",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Friends notice that Ruth sometimes speaks and acts like a very different person, with a different name, voice and handwriting, and afterward she has no memory of what happened during those times. Which disorder do these symptoms describe?",
+   "options": [
+    "Dissociative identity disorder",
+    "Schizophrenia",
+    "Bipolar I disorder",
+    "Borderline personality disorder"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissociative identity disorder involves two or more distinct identity states and recurrent gaps in memory. Some researchers debate how often it arises from trauma versus from social and therapeutic influences.",
+    "options": [
+     "Right: two or more distinct identity states with gaps in memory are the core of dissociative identity disorder.",
+     "Schizophrenia involves hallucinations, delusions or negative symptoms, not distinct identity states.",
+     "Bipolar I involves shifts in mood and energy, not separate identities with memory gaps.",
+     "Borderline personality disorder involves unstable emotions and relationships, not distinct identity states."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-9",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A man is found working at a diner in a city 400 miles from home. He cannot recall his name, his family or how he got there. Doctors find no head injury or drug use, and his memory loss began right after a frightening event. Which diagnosis fits best?",
+   "options": [
+    "Anterograde amnesia from brain damage",
+    "Dissociative identity disorder",
+    "Posttraumatic stress disorder",
+    "Dissociative amnesia with dissociative fugue"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Dissociative amnesia is memory loss, usually for personal and stressful information, that is not ordinary forgetting or the result of injury. \"With fugue\" adds wandering or travel.",
+    "options": [
+     "Anterograde amnesia is trouble forming new memories after brain injury. Doctors found no injury, and he lost old memories.",
+     "He has lost his identity, not shifted between two or more distinct identity states.",
+     "PTSD involves vivid, unwanted memories of the trauma, not loss of memory for one's whole identity.",
+     "Right: loss of memory for one's identity and past, with travel away from home, after a stressful event and no physical cause, is dissociative amnesia with fugue."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-10",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Several times over the past few months, Sasha has suddenly felt her heart pound, her chest tighten and an overwhelming fear that she was dying, once while sitting calmly on her couch. Since then she worries every day about the next attack. Which disorder best fits?",
+   "options": [
+    "Specific phobia",
+    "Social anxiety disorder",
+    "Panic disorder",
+    "Bipolar II disorder"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Panic disorder means unexpected panic attacks plus ongoing worry about future attacks or changes in behavior to avoid them.",
+    "options": [
+     "A specific phobia is fear of one object or situation. Sasha's attacks come out of the blue.",
+     "Social anxiety centers on fear of being judged by others. Her attacks happen even when she is alone.",
+     "Right: repeated unexpected panic attacks followed by at least a month of worry about more attacks define panic disorder.",
+     "Bipolar II involves periods of high and low mood, not sudden attacks of intense fear."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-11",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Omar stopped riding the bus, going to the mall and standing in lines, because he fears he would not be able to get out or get help if he started to panic. He now rarely leaves his apartment. Which disorder fits best?",
+   "options": [
+    "Specific phobia",
+    "Agoraphobia",
+    "Generalized anxiety disorder",
+    "Obsessive-compulsive disorder"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Agoraphobia is fear of situations such as crowds, public transportation or lines because escape might be difficult or help unavailable.",
+    "options": [
+     "A specific phobia focuses on one object or situation, such as spiders. Omar fears many places for the same reason.",
+     "Right: fear and avoidance of several situations where escape or help might be hard to reach is agoraphobia.",
+     "Generalized anxiety disorder is broad worry about many life matters, not fear of places where escape is hard.",
+     "His avoidance is not a repeated ritual done to quiet an intrusive thought."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-12",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Leah is a strong student but has skipped every class presentation this year. Days before each one, she imagines classmates laughing at her shaking voice, and she feels sick with fear of being judged. Which disorder best fits?",
+   "options": [
+    "Social anxiety disorder",
+    "Agoraphobia",
+    "Panic disorder",
+    "Avoidant personality disorder"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Social anxiety disorder centers on fear of scrutiny and negative evaluation, which leads people to avoid or dread social situations.",
+    "options": [
+     "Right: intense fear of being judged or embarrassed in social situations, with avoidance, is social anxiety disorder.",
+     "Agoraphobia is fear of places where escape is hard. Leah's fear is of being judged.",
+     "Panic disorder involves unexpected attacks. Leah's fear is predictable and tied to being watched.",
+     "Avoidant personality disorder is a long-lasting pattern across most relationships, not a fear focused on performance situations."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-13",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For more than a year, Paolo has worried most days about his grades, his parents' health, money and the news. He cannot turn the worry off, sleeps poorly, feels tense and tires easily. Nothing specific sets it off. Which disorder fits best?",
+   "options": [
+    "Panic disorder",
+    "Specific phobia",
+    "Persistent depressive disorder",
+    "Generalized anxiety disorder"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Generalized anxiety disorder is excessive, hard-to-control worry about many topics for at least six months, with symptoms such as tension, fatigue and poor sleep.",
+    "options": [
+     "Panic disorder centers on sudden attacks of intense fear. Paolo has steady worry, not attacks.",
+     "A specific phobia is fear of one object or situation. Paolo worries about many things.",
+     "Persistent depressive disorder is a long low mood. Paolo's main problem is worry.",
+     "Right: hard-to-control worry about many things, on most days for six months or more, with tension and poor sleep, is generalized anxiety disorder."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-14",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Nadia has unwanted thoughts that she left the stove on and will cause a fire. She knows the thought is unlikely, but it makes her so anxious that she checks the stove 20 times before leaving home, which makes her late every day. Which disorder best fits?",
+   "options": [
+    "Generalized anxiety disorder",
+    "Obsessive-compulsive personality disorder",
+    "Obsessive-compulsive disorder",
+    "Hoarding disorder"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In obsessive-compulsive disorder, obsessions raise anxiety and compulsions lower it for a while, which keeps the cycle going. The DSM-5-TR places it in its own category, apart from the anxiety disorders.",
+    "options": [
+     "Generalized anxiety disorder involves broad worry without a ritual that the person feels driven to repeat.",
+     "That personality disorder is about perfectionism and control. It does not involve unwanted thoughts relieved by rituals.",
+     "Right: an intrusive thought (the obsession) and the repeated checking to relieve the anxiety (the compulsion) define obsessive-compulsive disorder.",
+     "Hoarding disorder is difficulty discarding possessions, not checking the stove."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-15",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Glen's house is so full of old newspapers, broken appliances and empty boxes that he cannot use his kitchen or sit on his couch. When his sister offers to clear some out, he becomes very upset and insists he may need every item. Which disorder fits best?",
+   "options": [
+    "Obsessive-compulsive disorder",
+    "Hoarding disorder",
+    "Major depressive disorder",
+    "Dependent personality disorder"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Hoarding disorder is in the obsessive-compulsive and related category; its core is difficulty parting with possessions, whatever their value.",
+    "options": [
+     "Hoarding disorder is related to it, in the same DSM-5-TR category, but Glen's problem is saving and not discarding, not intrusive thoughts and rituals.",
+     "Right: persistent difficulty discarding possessions, distress at the thought of parting with them, and clutter that blocks living spaces describe hoarding disorder.",
+     "Depression can make cleaning hard, but it does not explain his distress at discarding objects.",
+     "Dependent personality disorder is about relying on others, not about saving possessions."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-16",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Three months after a serious car crash, Ana has nightmares and vivid flashbacks of the crash, avoids driving and the road where it happened, feels on edge and jumps at sudden noises. Which disorder best fits?",
+   "options": [
+    "Posttraumatic stress disorder",
+    "Specific phobia",
+    "Panic disorder",
+    "Dissociative amnesia"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "PTSD follows exposure to a traumatic event and includes intrusive memories, avoidance, negative changes in thought and mood, and heightened arousal for over a month.",
+    "options": [
+     "Right: after a traumatic event, intrusive memories, avoidance, negative mood and high arousal lasting more than a month define PTSD.",
+     "A phobia of driving would not explain the flashbacks, nightmares and constant jumpiness that followed a trauma.",
+     "Panic disorder involves unexpected attacks. Ana's symptoms are tied to the memory of the crash.",
+     "Dissociative amnesia involves losing memories. Ana has too much memory of the event, not too little."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-17",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A 17-year-old has a weight in the normal range. Several times a week she eats a very large amount of food in a short time while feeling out of control, then tries to make up for it by fasting or exercising for hours. Which disorder best fits?",
+   "options": [
+    "Anorexia nervosa",
+    "Obsessive-compulsive disorder",
+    "Major depressive disorder",
+    "Bulimia nervosa"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Bulimia nervosa involves cycles of binge eating and compensating behaviors; people with it are often at an average weight, which is one way to tell it from anorexia nervosa.",
+    "options": [
+     "Anorexia nervosa involves a significantly low body weight from restricting food. Her weight is in the normal range.",
+     "Her eating pattern is not a ritual done to quiet an intrusive thought.",
+     "Changes in appetite can occur in depression, but binges followed by fasting point to an eating disorder.",
+     "Right: repeated binge eating followed by behaviors to make up for it, often at a normal weight, is bulimia nervosa."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-18",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Since first grade, Theo has had trouble finishing tasks, loses his homework, is easily distracted and often interrupts. His parents see the same pattern at home, and his teachers see it at school. Which disorder fits best?",
+   "options": [
+    "Autism spectrum disorder",
+    "Generalized anxiety disorder",
+    "Attention-deficit/hyperactivity disorder",
+    "Bipolar I disorder"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ADHD is a neurodevelopmental disorder: inattention and/or hyperactivity-impulsivity that begins in childhood and appears in more than one setting, such as home and school.",
+    "options": [
+     "Autism spectrum disorder centers on differences in social communication plus restricted, repetitive behaviors or interests.",
+     "Worry can disturb focus, but nothing here describes excessive worry.",
+     "Right: a lasting pattern of inattention and hyperactivity or impulsivity that began in childhood and shows up in two or more settings fits ADHD.",
+     "Bipolar I involves distinct episodes of mania, not a steady pattern since early childhood."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-19",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A four-year-old rarely makes eye contact, does not point to share interest, and has trouble with back-and-forth play. He lines up his toy cars in the same order each day and becomes very upset if anyone moves one. Which disorder do these signs suggest a clinician would assess for?",
+   "options": [
+    "Obsessive-compulsive disorder",
+    "Autism spectrum disorder",
+    "Attention-deficit/hyperactivity disorder",
+    "Social anxiety disorder"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Autism spectrum disorder is a neurodevelopmental disorder with two core features, and \"spectrum\" means support needs range widely.",
+    "options": [
+     "Lining up toys is repetitive, but OCD does not explain the differences in social communication from early childhood.",
+     "Right: differences in social communication plus restricted, repetitive behaviors from early childhood are the two core features of autism spectrum disorder.",
+     "ADHD is about inattention and hyperactivity, not social communication with insistence on sameness.",
+     "Social anxiety is fear of being judged. Nothing here suggests fear of judgment."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-20",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For as long as anyone can remember, Victor has believed that coworkers, neighbors and even relatives are secretly plotting against him. He reads hidden insults into kind remarks and trusts no one. To which cluster of personality disorders does this pattern belong?",
+   "options": [
+    "Cluster A: odd or eccentric",
+    "Cluster B: dramatic or emotional",
+    "Cluster C: anxious or fearful",
+    "No cluster: this is a delusion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cluster A, odd or eccentric, includes paranoid, schizoid and schizotypal personality disorders. Paranoid personality disorder is pervasive distrust of others.",
+    "options": [
+     "Right: lasting, widespread distrust and suspicion is paranoid personality disorder, in Cluster A.",
+     "Cluster B includes antisocial, histrionic, narcissistic and borderline personality disorders, none of which centers on distrust.",
+     "Cluster C includes avoidant, dependent and obsessive-compulsive personality disorders, which center on anxiety, not suspicion.",
+     "His suspicion is a lasting personality pattern, not a fixed false belief from a psychotic disorder such as schizophrenia."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-21",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Since his early teens, a 30-year-old man has repeatedly lied to and cheated people, broken laws, and shown no remorse for harming others. To which personality disorder does this lasting pattern point?",
+   "options": [
+    "Avoidant personality disorder",
+    "Schizoid personality disorder",
+    "Dependent personality disorder",
+    "Antisocial personality disorder"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Antisocial personality disorder, in Cluster B, is diagnosed in adults with a pattern of disregard for others' rights that began in childhood or the early teen years.",
+    "options": [
+     "Avoidant personality disorder involves shyness and fear of rejection, the opposite of disregard for others.",
+     "Schizoid personality disorder is detachment from relationships, not harming and deceiving others.",
+     "Dependent personality disorder is an excessive need to be cared for by others.",
+     "Right: a lasting disregard for and violation of other people's rights, with little remorse, is antisocial personality disorder, in Cluster B."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-22",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Mei insists that every report at work follow her exact rules. She rechecks details so often that projects miss their deadlines and she refuses to let others help. She has no unwanted, intrusive thoughts; she sees her standards as simply correct. Which diagnosis fits best?",
+   "options": [
+    "Obsessive-compulsive disorder",
+    "Generalized anxiety disorder",
+    "Obsessive-compulsive personality disorder",
+    "Narcissistic personality disorder"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The names are similar, but OCD involves unwanted thoughts and rituals that relieve anxiety, while obsessive-compulsive personality disorder is a lasting, perfectionistic way of relating to tasks and people.",
+    "options": [
+     "OCD involves unwanted intrusive thoughts and rituals to relieve them. Mei has no intrusive thoughts and sees her habits as right.",
+     "Generalized anxiety disorder is worry about many things, not a lasting need for order and control.",
+     "Right: a lasting focus on order, perfection and control, without true obsessions or compulsions, is obsessive-compulsive personality disorder, in Cluster C.",
+     "Narcissistic personality disorder centers on a need for admiration, not on rules and perfection."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-23",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In Japan, a young man feels intense fear that his body odor and gaze make other people uncomfortable, so he avoids eye contact and meetings. Which concept from the course does this example illustrate?",
+   "options": [
+    "Agoraphobia",
+    "A culture-bound syndrome (taijin kyofusho)",
+    "Paranoid personality disorder",
+    "Ataque de nervios"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Culture-bound syndromes (the DSM-5-TR calls them cultural concepts of distress) show how culture shapes symptoms. Taijin kyofusho focuses on the fear of offending others, unlike social anxiety, which focuses on fear of embarrassing oneself.",
+    "options": [
+     "Agoraphobia is fear of places where escape is hard, not fear of offending others.",
+     "Right: taijin kyofusho, a fear of offending others with one's body or behavior, is an example of how culture shapes the form distress takes.",
+     "That disorder involves distrust of others, not fear that one's own body offends them.",
+     "Ataque de nervios is a different cultural example: an episode of intense distress, such as shouting, crying and trembling, after a stressful event."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-24",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Some stimulant drugs that increase dopamine activity can, at high doses, produce hallucinations and delusions in people with no history of a disorder, while drugs that block dopamine receptors tend to reduce these symptoms. Which explanation do these findings support?",
+   "options": [
+    "The dopamine hypothesis of schizophrenia",
+    "The diathesis-stress model of depression",
+    "The cognitive explanation of anxiety disorders",
+    "The behavioral explanation of phobias"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The dopamine hypothesis is a biological explanation of the positive symptoms of schizophrenia. It is part of the picture, not a complete explanation.",
+    "options": [
+     "Right: the hypothesis links too much dopamine activity to positive symptoms such as hallucinations and delusions.",
+     "That model is about vulnerability plus stress. These findings are about one neurotransmitter and psychotic symptoms.",
+     "These findings are about brain chemistry, not about patterns of thinking.",
+     "Phobias are not involved, and the findings are biological, not about learning."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-25",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "1.A",
+   "q": "A doctor lists symptoms seen in people with schizophrenia. Which of them are positive symptoms? Select all that apply.",
+   "options": [
+    "Hearing voices that others do not hear",
+    "Showing almost no emotion in the face or voice",
+    "Believing that a TV host is sending secret messages",
+    "Speaking very little, even when asked questions",
+    "Withdrawing from friends and daily activities"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Positive symptoms add something (hallucinations, delusions, disorganized speech); negative symptoms take something away (emotion, speech, motivation).",
+    "options": [
+     "Right: a hallucination adds an experience, so it is a positive symptom.",
+     "Flat affect is the loss of normal expression, a negative symptom.",
+     "Right: this is a delusion, a false belief added to experience, so it is a positive symptom.",
+     "Reduced speech is a loss of normal behavior, a negative symptom.",
+     "Withdrawal and low motivation are losses of normal functions, negative symptoms."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-26",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disorders-s1",
+   "q": "Using the figure, into which category does posttraumatic stress disorder fall in the DSM-5-TR?",
+   "options": [
+    "Anxiety",
+    "Dissociative",
+    "Trauma- and stressor-related",
+    "Depressive"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The DSM-5-TR moved PTSD out of the anxiety disorders into the trauma- and stressor-related category, as the figure shows.",
+    "options": [
+     "Anxiety is a large part of PTSD, but the figure and the DSM-5-TR place it in the trauma- and stressor-related category.",
+     "Dissociative disorders involve gaps in memory or identity. PTSD has its own category.",
+     "Right: the figure places PTSD in its own category, defined by exposure to a traumatic event.",
+     "Depressive disorders center on low mood and loss of interest. PTSD follows trauma."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-27",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disorders-s1",
+   "q": "According to the figure, which pair of disorders shares a category?",
+   "options": [
+    "Obsessive-compulsive disorder and generalized anxiety",
+    "Obsessive-compulsive disorder and hoarding disorder",
+    "Major depressive disorder and bipolar I disorder",
+    "Schizophrenia and dissociative identity disorder"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The figure groups obsessive-compulsive disorder with hoarding disorder, apart from the anxiety disorders.",
+    "options": [
+     "They are in different boxes: generalized anxiety is with the anxiety disorders.",
+     "Right: both are in the obsessive-compulsive and related category.",
+     "The figure gives depressive and bipolar disorders separate boxes.",
+     "They are in different categories, and confusing them is a common error."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-28",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "disorders-s1",
+   "q": "A student sees that \"Depressive\" and \"Bipolar\" are separate boxes in the figure. What best explains why they are separated?",
+   "options": [
+    "Bipolar disorders include periods of mania or hypomania",
+    "Depression does not occur in people with bipolar disorder",
+    "Bipolar disorders are a kind of personality disorder",
+    "Depressive disorders begin in early childhood"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The bipolar disorders are set apart by manic or hypomanic episodes. Low mood can occur in both categories.",
+    "options": [
+     "Right: what defines the bipolar disorders is a period of abnormally high mood and energy, which depressive disorders never include.",
+     "Many people with bipolar disorder also have depressive episodes; bipolar II requires one.",
+     "They are mood-related disorders with episodes, not lasting personality patterns.",
+     "Depressive disorders can begin at any age."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-29",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disorders-s1",
+   "q": "A person has had a distrustful, rigid way of relating to others since adolescence, across almost every setting. Which box in the figure fits this pattern?",
+   "options": [
+    "Anxiety",
+    "Schizophrenia spectrum",
+    "Neurodevelopmental",
+    "Personality"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Personality disorders are enduring, inflexible patterns of thinking, feeling and relating that differ from cultural expectations and cause distress or dysfunction.",
+    "options": [
+     "Anxiety disorders center on fear and worry, not on a lifelong, rigid way of relating to everyone.",
+     "Nothing here mentions hallucinations, delusions or negative symptoms.",
+     "Neurodevelopmental disorders begin in early childhood and include ADHD and autism spectrum disorder.",
+     "Right: a lasting, inflexible pattern that begins by adolescence or early adulthood and shows up across settings is a personality disorder."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-30",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disorders-s2",
+   "q": "What pattern does the graph show?",
+   "options": [
+    "Fraternal twins share the diagnosis more often than identical twins",
+    "Siblings share the diagnosis as often as identical twins",
+    "The more genes two people share, the more often both have schizophrenia",
+    "Relatives are no more likely than unrelated people to share it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Shared diagnosis rises with genetic relatedness, which points to a genetic contribution.",
+    "options": [
+     "Identical twins are at 46%, about three times the 15% for fraternal twins.",
+     "Siblings are at 9%, far below the 46% for identical twins.",
+     "Right: identical twins (all genes shared) are highest, then fraternal twins and siblings, then unrelated people.",
+     "Each kind of relative is well above the 1% for unrelated people."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-31",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "disorders-s2",
+   "q": "How many percentage points higher is the rate for identical twins than for fraternal twins?",
+   "why": {
+    "correct": "$46 - 15 = 31$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      46,
+      15
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 46,
+      "why": "46% is the rate for identical twins alone. Subtract the fraternal-twin rate, 15%."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        46,
+        9
+       ]
+      },
+      "why": "That compares identical twins with siblings. The question asks about fraternal twins, 15%."
+     }
+    ],
+    "unit": "%"
+   }
+  },
+  {
+   "id": "psy-disorders-32",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "disorders-s2",
+   "q": "Identical twins share all their genes, yet in this graph fewer than half of the identical twins of people with schizophrenia also have it. What does that suggest?",
+   "options": [
+    "Environmental factors, such as stress, also play a role",
+    "Genes play no part in schizophrenia",
+    "The researchers made an error with the identical twins",
+    "Schizophrenia is caused by being a twin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A genetic vulnerability raises risk but does not decide the outcome; this is the diathesis-stress idea applied to schizophrenia.",
+    "options": [
+     "Right: if genes were the whole story, identical twins would match far more often. A vulnerability plus environmental stress fits the diathesis-stress model.",
+     "The steady rise with genetic relatedness shows genes do play a part.",
+     "Nothing in the graph suggests an error. A match well under 100% is expected when environment also matters.",
+     "Being a twin is not a cause; the unrelated group gives the base rate for comparison."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-33",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "disorders-s2",
+   "q": "Twins usually grow up in the same home. Why does that make it harder to conclude from this graph alone that genes cause the higher rate in twins?",
+   "options": [
+    "Twins are too few to be studied in research",
+    "Identical twins share no environment with each other",
+    "Fraternal twins share more genes than identical twins",
+    "Shared family environment is a possible third variable"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Genes and a shared home are confounded in twins raised together, so the correlation alone cannot prove that genes are the cause.",
+    "options": [
+     "Twins are often studied. The issue is that genes and environment are tangled together.",
+     "Twins raised together share much of their environment, which is the problem.",
+     "Identical twins share all their genes; fraternal twins share about half, like other siblings.",
+     "Right: twins share a home as well as genes, so a shared environment could explain part of the match. Adoption studies help separate the two."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-34",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "disorders-s3",
+   "q": "Which research method did this study use?",
+   "options": [
+    "An experiment",
+    "A case study",
+    "A correlational study",
+    "Naturalistic observation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Exposure was measured, not manipulated, so the study is correlational.",
+    "options": [
+     "An experiment needs a manipulated variable and random assignment. No one was assigned to a hurricane danger.",
+     "A case study looks at one person in depth. This study measured seven adults on the same two variables.",
+     "Right: the researchers measured exposure and symptoms as they occurred and looked at their relationship, without assigning exposure.",
+     "Researchers did not watch behavior in a natural setting. Adults reported their own exposure and symptoms."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-35",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "disorders-s3",
+   "q": "What is the median of the seven symptom scores?",
+   "why": {
+    "correct": "In order the scores are 8, 12, 15, 22, 30, 41, 48. With seven scores, the median is the fourth: 22."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       8,
+       12,
+       15,
+       22,
+       30,
+       41,
+       48
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         8,
+         12,
+         15,
+         22,
+         30,
+         41,
+         48
+        ]
+       ]
+      },
+      "why": "That is the mean, the sum (176) divided by 7. The median is the middle score when the scores are in order."
+     },
+     {
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         8,
+         12,
+         15,
+         22,
+         30,
+         41,
+         48
+        ]
+       ]
+      },
+      "why": "That is the range, 48 minus 8. The median is the fourth of the seven ordered scores."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-36",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "disorders-s3",
+   "q": "Can the researchers conclude that facing more hurricane dangers caused more PTSD symptoms?",
+   "options": [
+    "No: a correlation does not show cause, and a third variable could explain it",
+    "Yes: the correlation of 0.78 is strong enough to prove cause",
+    "Yes: the symptoms were measured after the hurricane, not before",
+    "No: the correlation is negative, so exposure lowered symptoms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The study shows a strong positive relationship, but a third variable, such as poverty or lack of support, could produce both.",
+    "options": [
+     "Right: for example, adults with fewer resources may have faced more danger and also had less support afterward.",
+     "No correlation, however strong, proves cause on its own. Exposure was not manipulated.",
+     "Timing helps, but without manipulation a third variable could still explain the link.",
+     "The correlation is positive, 0.78: more exposure went with more symptoms."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-37",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "disorders-s3",
+   "q": "To which group can these results most reasonably be generalized?",
+   "options": [
+    "Children who have lived through any kind of disaster",
+    "Adults who have faced any kind of trauma",
+    "Soldiers returning from a war zone",
+    "Adults in similar coastal towns hit by a hurricane"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Generalize from who was studied: adults from one coastal town after a hurricane. A small, volunteer sample limits the claim further.",
+    "options": [
+     "No children took part, and only one kind of disaster was studied.",
+     "The sample was seven volunteers from one town, after one hurricane.",
+     "Combat is a different kind of trauma from a hurricane, and no soldiers were studied.",
+     "Right: the volunteers were adults from one coastal town after a hurricane, so the results best fit similar adults in similar settings."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-38",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "disorders-s3",
+   "q": "Which ethical safeguard does the summary describe, and how was it applied?",
+   "options": [
+    "Debriefing: adults were told after the study that they had been deceived",
+    "Random assignment: adults were placed in danger groups by chance",
+    "Confidentiality: each adult was given a number in place of a name",
+    "Right to withdraw: adults could stop the checklist halfway at any time"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Name a safeguard the summary actually describes. Here: informed consent, and confidentiality through numbers in place of names.",
+    "options": [
+     "The summary describes no deception and no debriefing.",
+     "No one was assigned to a level of danger, and random assignment is a design feature, not an ethical safeguard.",
+     "Right: the summary says the researchers kept names confidential by giving each person a number.",
+     "The right to withdraw is a real safeguard, but this summary does not describe it."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-39",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "disorders-s4",
+   "q": "Which person's ratings show a period of very high mood followed later by a period of very low mood?",
+   "options": [
+    "Person A",
+    "Person B",
+    "Both people",
+    "Neither person"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Person B's line shows a high stretch and a later low stretch; Person A's shows only a low stretch.",
+    "options": [
+     "Person A dips to 2 and returns to 5, but never rises far above 5.",
+     "Right: Person B rises to 9 in weeks 4 to 6 and falls to 2 in weeks 9 to 11.",
+     "Only Person B has a high period. Person A only dips.",
+     "Person B clearly shows both a high and a low period."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-40",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "disorders-s4",
+   "q": "Suppose clinicians confirmed that Person B's high period was a full manic episode and the low period a major depressive episode. Which diagnosis would fit Person B best?",
+   "options": [
+    "Bipolar I disorder",
+    "Major depressive disorder",
+    "Persistent depressive disorder",
+    "Bipolar II disorder"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Once a full manic episode has occurred, the diagnosis is bipolar I, whether or not there is also depression.",
+    "options": [
+     "Right: a full manic episode is what defines bipolar I; the depressive episode is common but not required.",
+     "Major depressive disorder has no manic episodes. The high period rules it out.",
+     "That is a long, steady low mood, not a high followed by a low.",
+     "Bipolar II involves hypomania, a milder high, and never a full manic episode."
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-41",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "disorders-s4",
+   "q": "What is Person A's mean mood rating over weeks 1 to 4 (ratings 5, 4, 2 and 2)?",
+   "why": {
+    "correct": "$\\frac{5 + 4 + 2 + 2}{4} = 3.25$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       5,
+       4,
+       2,
+       2
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         5,
+         4,
+         2,
+         2
+        ]
+       ]
+      },
+      "why": "13 is the sum of the four ratings. Divide by the number of weeks, 4."
+     },
+     {
+      "from": {
+       "fn": "median",
+       "args": [
+        [
+         5,
+         4,
+         2,
+         2
+        ]
+       ]
+      },
+      "why": "3 is the median, the middle of the ordered ratings. The mean divides the sum by 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-disorders-42",
+   "unit": "unit-5",
+   "topic": "disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "disorders-s4",
+   "q": "Person A's low period lasts four weeks. Which DSM-5-TR rule makes that long enough to count as a major depressive episode, if the other symptoms are present?",
+   "options": [
+    "At least two years of symptoms",
+    "At least six months of symptoms",
+    "At least two weeks of symptoms",
+    "At least one day of symptoms"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A major depressive episode needs five or more symptoms, including low mood or loss of interest, for at least two weeks.",
+    "options": [
+     "Two years is the rule for persistent depressive disorder in adults, not for a major depressive episode.",
+     "Six months is the rule for generalized anxiety disorder, not for a depressive episode.",
+     "Right: a major depressive episode requires symptoms on most days for at least two weeks.",
+     "One day is far too short. A major depressive episode needs two weeks."
+    ]
+   }
+  }
+ ]
+}

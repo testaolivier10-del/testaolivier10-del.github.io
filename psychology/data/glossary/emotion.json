@@ -1,0 +1,23 @@
+{
+ "emotion": {
+  "def": "A response of the whole person that combines physiological arousal, expressive behavior and conscious experience (thoughts and feelings)."
+ },
+ "physiological-arousal": {
+  "def": "The body's activation in emotion, such as a racing heart, faster breathing and sweating, produced mainly by the sympathetic nervous system."
+ },
+ "cognitive-appraisal": {
+  "def": "How a person interprets a situation. In one view of emotion, arousal plus this appraisal (a label for the arousal) determines which emotion is felt."
+ },
+ "facial-feedback": {
+  "def": "The facial feedback hypothesis: facial expressions can influence the emotions a person feels. Evidence is mixed; a large multi-lab replication of the pen-in-teeth study found no reliable effect, and other methods show small effects at most."
+ },
+ "broaden-and-build": {
+  "def": "Barbara Fredrickson's theory that positive emotions broaden attention and thinking in the moment and, over time, build lasting personal resources such as skills and relationships."
+ },
+ "universal-emotions": {
+  "def": "Basic emotions, often listed as happiness, sadness, fear, anger, surprise and disgust, whose facial expressions are recognized above chance across many cultures. Recognition is better within one's own culture, and how universal they are is still debated."
+ },
+ "display-rules": {
+  "def": "Cultural norms about when, how and how much emotion to show, such as expressing grief loudly in one culture and quietly in another."
+ }
+}

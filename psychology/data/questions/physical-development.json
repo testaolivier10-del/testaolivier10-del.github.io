@@ -1,0 +1,664 @@
+{
+ "stimuli": {
+  "physical-development-s1": {
+   "kind": "study",
+   "title": "The visual cliff",
+   "source": "Gibson & Walk (1960)",
+   "study": {
+    "introduction": "Eleanor Gibson and Richard Walk asked whether babies who have just learned to crawl can perceive depth, and whether they avoid a drop.",
+    "participants": "36 infants aged 6 to 14 months, each tested with their mother. Young animals of several species were also tested.",
+    "method": "Each baby was placed on a board in the middle of a glass table. Under the glass on one side, a checkered pattern sat right below (the shallow side); on the other side, the same pattern lay far below (the deep side, the \"cliff\"). The glass made both sides safe. The mother called the baby from one side and then the other, and researchers recorded which way each baby crawled.",
+    "results": "Of the 27 babies who moved off the center board, all crawled onto the shallow side at least once. Only 3 crept onto the deep side. Many babies called from the deep side crawled away from their mother or cried.",
+    "discussion": "Most crawling babies perceive depth. Later research found that wariness of the drop grows with crawling experience, so experience and maturation both play a part."
+   }
+  },
+  "physical-development-s2": {
+   "kind": "data",
+   "title": "Age at first independent steps",
+   "invented": true,
+   "text": "<p>A pediatric clinic recorded the age at which five babies first took three steps without help.</p>",
+   "table": {
+    "caption": "Age at first steps (invented data for practice)",
+    "cols": [
+     "Baby",
+     "Age at first steps (months)"
+    ],
+    "rows": [
+     [
+      "A",
+      "9"
+     ],
+     [
+      "B",
+      "11"
+     ],
+     [
+      "C",
+      "11"
+     ],
+     [
+      "D",
+      "12"
+     ],
+     [
+      "E",
+      "17"
+     ]
+    ]
+   }
+  },
+  "physical-development-s3": {
+   "kind": "study",
+   "title": "Smoking during pregnancy and birth weight",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether smoking during pregnancy is linked to lower birth weight.",
+    "participants": "400 pregnant women at two city hospitals, who gave informed consent. Their records were kept confidential under code numbers.",
+    "method": "At the first prenatal visit, each woman reported how many cigarettes she smoked per day. Nurses weighed each baby at birth. The researchers did not ask anyone to smoke or to stop; they compared the groups as they were.",
+    "results": "Babies of women who smoked 10 or more cigarettes a day weighed on average 250 grams less than babies of nonsmokers. Babies of light smokers fell in between."
+   },
+   "plot": {
+    "label": "Bar graph of mean birth weight: nonsmokers 3,400 g, light smokers 3,280 g, heavy smokers 3,150 g (invented data)",
+    "kind": "bar",
+    "categories": [
+     "None",
+     "1-9 a day",
+     "10+ a day"
+    ],
+    "values": [
+     3400,
+     3280,
+     3150
+    ],
+    "xLabel": "Cigarettes per day in pregnancy",
+    "yLabel": "Mean birth weight (g)",
+    "y": [
+     0,
+     3600
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-physical-development-1",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "physical-development-s1",
+   "q": "Most crawling babies in this study refused to cross the deep side. Which ability does that best show?",
+   "options": [
+    "Depth perception",
+    "The rooting reflex",
+    "Imprinting",
+    "Sensory adaptation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Avoiding the deep side means the baby saw the difference in distance.",
+    "options": [
+     "Right: babies treated the far-away pattern as a drop, so they perceived depth.",
+     "The rooting reflex is turning toward a touch on the cheek; it has nothing to do with seeing a drop.",
+     "Imprinting is a newborn animal following the first moving thing it sees; the babies were avoiding a drop.",
+     "Sensory adaptation is reduced response to an unchanging stimulus; the babies responded to a drop."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-2",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "physical-development-s1",
+   "q": "Which best describes the research method?",
+   "options": [
+    "An experiment with babies randomly assigned to the deep side or the shallow side",
+    "A longitudinal study following the babies for years",
+    "A survey of mothers about their babies’ fear of heights",
+    "Observation in a set-up situation, recording which side babies crawled to"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Building a test situation is not the same as manipulating a variable between groups.",
+    "options": [
+     "Every baby faced both sides; no one was assigned to a condition.",
+     "Each baby was tested in one session.",
+     "Researchers watched babies; they did not ask mothers questions.",
+     "Right: the researchers built a setting and recorded behavior; no variable was assigned to groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-3",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "physical-development-s1",
+   "q": "The babies were 6 to 14 months old and had all learned to crawl. Why can this study not settle whether depth perception is present at birth?",
+   "options": [
+    "The mothers were not present during testing",
+    "The researchers measured birth weight instead of crawling",
+    "Babies had to crawl to be tested, so they had months of visual experience",
+    "The glass made the deep side dangerous, so the babies were too scared to move off the board"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A test that needs crawling can only test babies who are months old.",
+    "options": [
+     "The mothers were present and called their babies.",
+     "The study recorded which way babies crawled.",
+     "Right: by crawling age, experience could have shaped depth perception.",
+     "The glass made both sides safe."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-4",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "physical-development-s1",
+   "q": "Later studies found that babies with more weeks of crawling experience were more wary of the drop than babies of the same age who had just started. What does this add?",
+   "options": [
+    "Older babies are the ones most likely to cross the deep side",
+    "Experience shapes the fear of heights",
+    "Wariness of heights is fixed at birth",
+    "Crawling is a teratogen"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Holding age steady and comparing experience separates maturation from experience.",
+    "options": [
+     "The finding is about experience, and older babies avoided the drop more, not less.",
+     "Right: at the same age, more crawling experience meant more wariness.",
+     "Wariness changed with crawling experience, so it is not fixed at birth.",
+     "A teratogen is something that harms prenatal development."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-5",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "physical-development-s2",
+   "q": "What is the mean age, in months, at first steps for these five babies?",
+   "why": {
+    "correct": "$\\frac{9 + 11 + 11 + 12 + 17}{5} = \\frac{60}{5} = 12$ months."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       9,
+       11,
+       11,
+       12,
+       17
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         9,
+         11,
+         11,
+         12,
+         17
+        ]
+       ]
+      },
+      "why": "That is the total. Divide by the number of babies, 5."
+     },
+     {
+      "from": {
+       "fn": "median",
+       "args": [
+        [
+         9,
+         11,
+         11,
+         12,
+         17
+        ]
+       ]
+      },
+      "why": "That is the median, the middle value. The mean is the total divided by 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-6",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "physical-development-s2",
+   "q": "What is the median age, in months, at first steps?",
+   "why": {
+    "correct": "In order, 9, 11, 11, 12, 17: the middle (third) value is 11."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       9,
+       11,
+       11,
+       12,
+       17
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         9,
+         11,
+         11,
+         12,
+         17
+        ]
+       ]
+      },
+      "why": "That is the mean. The median is the middle value when the ages are in order."
+     },
+     {
+      "value": 12,
+      "why": "That value is fourth in order. With five values, the median is the third."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-7",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "physical-development-s2",
+   "q": "Baby E walked at 17 months. Which measure of central tendency describes a typical baby in this group best, and why?",
+   "options": [
+    "The range, because it shows the spread",
+    "The mode, because it is the highest value",
+    "The median, since one late walker pulls the mean up",
+    "The mean, because it is computed from each of the five values"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An outlier pulls the mean toward it; the median resists outliers.",
+    "options": [
+     "The range is a measure of variation, not of a typical value.",
+     "The mode is the most frequent value (11), not the highest.",
+     "Right: 17 is far above the others, so the median (11) describes the typical baby better than the mean (12).",
+     "Using every value is why the mean is pulled toward the outlier."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-8",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "physical-development-s2",
+   "q": "Baby E’s parents worry because the other babies walked months earlier. What does research on motor development suggest?",
+   "options": [
+    "Babies who walk late skip the earlier milestones",
+    "Milestones come in a similar order, but timing varies among healthy babies",
+    "Walking after 12 months is a sign of a lasting problem with intellectual growth",
+    "Practice can make any baby walk by 9 months"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Maturation sets the sequence; genes, experience and culture shift the timing.",
+    "options": [
+     "Late walkers still sit and stand first; the order stays similar.",
+     "Right: most babies walk between about 9 and 17 months; the order is more predictable than the age.",
+     "Walking age in the normal range does not predict later intelligence.",
+     "Maturation limits how early skills appear; practice cannot override it."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-9",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "physical-development-s3",
+   "q": "Which research method did this study use?",
+   "options": [
+    "A correlational study: smoking was measured as it occurred",
+    "An experiment, because the women were sorted into three groups by smoking",
+    "A case study of one hospital",
+    "A cross-sectional study of different age groups"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With no manipulation and no random assignment, the method is correlational.",
+    "options": [
+     "Right: the researchers measured smoking and birth weight without assigning anyone.",
+     "Groups formed by what people already do are not conditions the researcher assigned.",
+     "A case study looks at one person or a few in depth; this study measured 400 women.",
+     "The groups differ in smoking, not age."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-10",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "physical-development-s3",
+   "q": "Nicotine crosses the placenta. In this study, what role does cigarette smoke most likely play?",
+   "options": [
+    "A critical period, a time when experience has its strongest effect",
+    "Maturation, the unfolding of growth set by genes",
+    "A reflex present at birth",
+    "A teratogen, a substance that can harm development before birth"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Alcohol, nicotine, some medicines and some infections are teratogens.",
+    "options": [
+     "A critical period is a time window, not a substance.",
+     "Maturation is biological growth, not an outside substance.",
+     "Reflexes are automatic responses, not substances.",
+     "Right: substances that cross the placenta and harm the baby are teratogens."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-11",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "physical-development-s3",
+   "q": "Women who smoked heavily were also more likely to have low incomes and poor diets. Why does this matter for the conclusion?",
+   "options": [
+    "It means the study counts as an experiment, since the groups were compared",
+    "It shows the birth weights were measured incorrectly",
+    "Income or diet may be a third variable that lowers birth weight",
+    "It proves smoking has no effect on birth weight"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Correlation is not causation: a third variable can produce a link. (Other research, including animal experiments, supports a causal effect of nicotine.)",
+    "options": [
+     "Other differences between groups are a reason it is not an experiment.",
+     "Nurses weighed babies directly; the issue is what else differed between groups.",
+     "Right: without random assignment, other differences between groups may explain the link.",
+     "A third variable weakens a causal claim; it does not prove there is no effect."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-12",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "physical-development-s3",
+   "q": "How many grams lighter, on average, were babies of heavy smokers than babies of nonsmokers? Use the graph.",
+   "why": {
+    "correct": "$3{,}400 - 3{,}150 = 250$ grams."
+   },
+   "numeric": {
+    "unit": "g",
+    "from": {
+     "fn": "sub",
+     "args": [
+      3400,
+      3150
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        3400,
+        3280
+       ]
+      },
+      "why": "That compares nonsmokers with light smokers. The question asks about heavy smokers (10+ a day)."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        3280,
+        3150
+       ]
+      },
+      "why": "That compares light and heavy smokers. Compare heavy smokers with nonsmokers."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-13",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A nurse strokes a newborn’s cheek, and the baby turns toward the touch and opens its mouth. What is this?",
+   "options": [
+    "The rooting reflex",
+    "A learned habit from feeding",
+    "Imprinting",
+    "A motor milestone such as sitting up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Newborn reflexes are automatic, unlearned responses that help survival.",
+    "options": [
+     "Right: turning toward a touch on the cheek, mouth open, helps a newborn find food.",
+     "It is present at birth, before any feeding experience.",
+     "Imprinting is a young animal following the first moving object it sees.",
+     "Milestones are skills that appear over months; this is an automatic response at birth."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-14",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Goslings hatched in a lab follow the first moving thing they see, a researcher’s boots, and keep following it. Geese that see no moving object in the first days do not form this bond later. Which concepts does this show?",
+   "options": [
+    "A sensitive period for learning language",
+    "Maturation of motor skills",
+    "A teratogen acting before birth",
+    "Imprinting in a critical period"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A critical period is a window when a specific experience is needed for normal development.",
+    "options": [
+     "Language does not apply to goslings; this is a bond formed in a narrow window.",
+     "Walking is not the point; the point is whom they follow and when.",
+     "Nothing harmful acted before hatching.",
+     "Right: the bond forms only in a narrow early window, and missing it means it does not form."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-15",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ana moved to the United States at 4 and speaks English with no accent. Her father moved at 35 and, after 30 years, still has a clear accent, though he speaks fluently. Which concept best explains the difference?",
+   "options": [
+    "A teratogen affecting her father",
+    "Menopause slowing her father’s learning",
+    "A sensitive period, when language is easiest to learn",
+    "A critical period for language that had already closed for her father"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A sensitive period makes learning easier; a critical period makes it necessary.",
+    "options": [
+     "Nothing harmed his development before birth.",
+     "Menopause is the end of menstruation, which does not apply here.",
+     "Right: learning is easiest early, but her father could still learn, so the window is sensitive rather than absolute.",
+     "Her father became fluent, so learning did not stop; that points to a sensitive period."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-16",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Over one summer, 13-year-old Marcus grows 8 cm, his voice deepens and hair grows on his face. Which change is a secondary sex characteristic?",
+   "options": [
+    "His growth in height",
+    "His voice deepening",
+    "His testes producing sperm",
+    "His first ejaculation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Primary sex characteristics are the reproductive organs; secondary ones are other sex-related traits (voice, body hair, breasts).",
+    "options": [
+     "Both sexes have growth spurts; height is not a sex characteristic.",
+     "Right: a deeper voice is a sex-related trait that is not part of the reproductive organs.",
+     "Changes in the reproductive organs are primary sex characteristics.",
+     "That is spermarche, a milestone of the reproductive system."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-17",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In her health class, a girl learns the word for her first menstrual period. Which term is it?",
+   "options": [
+    "Menarche",
+    "Menopause",
+    "Spermarche",
+    "Maturation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Menarche starts, menopause ends; spermarche is the first ejaculation.",
+    "options": [
+     "Right: menarche is the first menstrual period, a milestone of puberty.",
+     "Menopause is when menstruation ends, usually around age 50.",
+     "Spermarche is the first ejaculation in boys.",
+     "Maturation is the general unfolding of growth, not one event."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-18",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Sixteen-year-old Theo understands the risks of speeding but speeds anyway when friends are in the car. Which explanation fits current brain research best?",
+   "options": [
+    "His brain stopped growing at puberty",
+    "Teenagers do not understand that speeding is risky",
+    "His rooting reflex has returned",
+    "His prefrontal cortex, key to self-control, is still maturing"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Brain areas tied to emotion and reward mature earlier than the frontal areas tied to judgment and control.",
+    "options": [
+     "The brain keeps changing well after puberty, especially the frontal areas.",
+     "Theo knows the risks; the issue is control in the moment.",
+     "Reflexes from infancy do not explain risk-taking.",
+     "Right: the prefrontal cortex keeps developing into the early to mid 20s, so control lags behind thrill-seeking with peers."
+    ]
+   }
+  },
+  {
+   "id": "psy-physical-development-19",
+   "unit": "unit-3",
+   "topic": "physical-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At 72, Grace needs brighter light to read, takes longer to react when a ball is thrown to her, and still recalls her favorite recipes perfectly. What do these changes show?",
+   "options": [
+    "A critical period that closed at age 70",
+    "Imprinting on a new caregiver",
+    "Normal aging: senses and speed decline",
+    "A teratogen acting late in life"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Gradual sensory and motor decline is a normal part of aging, and it varies with health and activity.",
+    "options": [
+     "Critical periods are early-life windows.",
+     "Imprinting is an early-life bond in some animals, not a change of aging.",
+     "Right: vision and reaction time slow with age, while well-practiced knowledge stays.",
+     "Teratogens act before birth; these are normal changes of later life."
+    ]
+   }
+  }
+ ]
+}

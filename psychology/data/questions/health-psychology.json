@@ -1,0 +1,722 @@
+{
+ "stimuli": {
+  "health-psychology-s1": {
+   "kind": "data",
+   "title": "A long stressor and the body's resistance",
+   "invented": true,
+   "text": "<p>Researchers followed 30 nursing students through a demanding 12-week hospital placement. Each week they measured an index of immune activity from a saliva sample, scored so that 100 is each student's own normal level. Students also reported how many days each week they had cold symptoms.</p>",
+   "plot": {
+    "label": "Line graph of mean immune index by week, 0 to 12: dips at week 1, rises above normal weeks 2 to 8, falls below normal weeks 10 to 12 (invented data)",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Mean immune index",
+      "points": [
+       [
+        0,
+        100
+       ],
+       [
+        1,
+        86
+       ],
+       [
+        2,
+        112
+       ],
+       [
+        3,
+        118
+       ],
+       [
+        4,
+        120
+       ],
+       [
+        5,
+        119
+       ],
+       [
+        6,
+        120
+       ],
+       [
+        7,
+        117
+       ],
+       [
+        8,
+        114
+       ],
+       [
+        9,
+        104
+       ],
+       [
+        10,
+        92
+       ],
+       [
+        11,
+        82
+       ],
+       [
+        12,
+        76
+       ]
+      ]
+     },
+     {
+      "name": "Normal level",
+      "points": [
+       [
+        0,
+        100
+       ],
+       [
+        12,
+        100
+       ]
+      ],
+      "dashed": true
+     }
+    ],
+    "xLabel": "Week of placement",
+    "yLabel": "Immune index (100 = normal)"
+   }
+  },
+  "health-psychology-s2": {
+   "kind": "visual",
+   "title": "The general adaptation syndrome",
+   "figure": "health-psychology-gas"
+  },
+  "health-psychology-s3": {
+   "kind": "study",
+   "title": "Daily hassles and colds",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether people who report more daily hassles also report more days of cold symptoms.",
+    "participants": "150 adults (ages 25 to 60) living in one city in Canada, recruited through online ads. All gave informed consent and were told they could leave the study at any time. Names were replaced by code numbers.",
+    "method": "Each evening for eight weeks, participants rated how many hassles they had that day on a 0 to 10 scale and noted whether they had cold symptoms. The researchers compared each person's average hassle score with their total days of symptoms.",
+    "results": "People with higher average hassle scores tended to have more days of cold symptoms ($r = 0.35$)."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-health-psychology-1",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ines is nervous but excited about starting her dream job. The challenge pushes her to learn quickly and she feels energized. Which concept describes this kind of stress?",
+   "options": [
+    "Distress",
+    "Eustress",
+    "A daily hassle",
+    "The exhaustion stage"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Eustress is stress felt as a motivating challenge; distress is stress felt as harmful.",
+    "options": [
+     "Distress is harmful, overwhelming stress; Ines feels energized and challenged.",
+     "Right: positive stress that motivates and feels like a challenge.",
+     "Daily hassles are small, everyday annoyances, not a major positive life change.",
+     "Exhaustion follows long, unrelenting stress; she is just starting and energized."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-2",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Over a month, Cole deals with a slow laptop, long lines at the cafeteria, a noisy roommate and lost keys. Researchers would classify these as which kind of stressor?",
+   "options": [
+    "Catastrophic events",
+    "Eustress",
+    "Adverse childhood experiences",
+    "Daily hassles"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Daily hassles are minor everyday stressors; their buildup predicts health problems.",
+    "options": [
+     "Catastrophes are large-scale disasters, such as earthquakes or wars.",
+     "These annoyances are not motivating challenges.",
+     "Adverse childhood experiences are serious early events such as abuse or neglect.",
+     "Right: small, everyday irritations that can add up and affect health."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-3",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A deer freezes in the headlights of a car, and a hiker who meets a bear stands perfectly still. Which response do these examples show?",
+   "options": [
+    "The freeze part of fight-flight-freeze",
+    "Tend-and-befriend response to danger",
+    "Problem-focused coping with a threat",
+    "The resistance stage"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fight-flight-freeze is the fast, automatic response to threat driven by sympathetic arousal.",
+    "options": [
+     "Right: under sudden threat, the body may freeze as well as fight or flee.",
+     "Tend-and-befriend means caring for others and seeking support, not going still.",
+     "Problem-focused coping is a planned effort to change the stressor, not an automatic reaction.",
+     "The resistance stage comes after the first alarm, during long-term stress."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-4",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a tornado damages their town, many parents gather their children close and then join neighbors to share food and look after one another. Which stress response does this best illustrate?",
+   "options": [
+    "Fight-flight-freeze",
+    "The alarm reaction",
+    "Tend-and-befriend",
+    "Emotion-focused coping by denial"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Tend-and-befriend: under stress, people protect those close to them and seek social support; it was first described in women and is linked to oxytocin.",
+    "options": [
+     "They are not fighting, fleeing or freezing; they are caring for others.",
+     "The alarm reaction is the body's first sympathetic arousal, not the social behavior described.",
+     "Right: protecting offspring (tend) and seeking support from others (befriend).",
+     "They are building support, not refusing to accept what happened."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-5",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Lena is stressed about a chemistry test next week. She makes a study schedule, forms a study group and asks the teacher for practice problems. Which coping strategy is she using?",
+   "options": [
+    "Emotion-focused coping",
+    "Problem-focused coping",
+    "Displacement",
+    "The exhaustion stage"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Problem-focused coping tackles the stressor itself.",
+    "options": [
+     "Emotion-focused coping manages the feelings rather than changing the stressor.",
+     "Right: she takes direct action on the cause of her stress.",
+     "Displacement is a defense mechanism that moves feelings to a safer target.",
+     "Exhaustion is a stage of long-term stress, not a coping strategy."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-6",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Marco's grandmother has died. He cannot change what happened, so he talks with friends, journals about his feelings and goes for long walks. Which coping strategy fits best?",
+   "options": [
+    "Emotion-focused coping",
+    "Problem-focused coping",
+    "Fight-flight-freeze",
+    "Sensation seeking"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Emotion-focused coping regulates feelings; it suits stressors we cannot control.",
+    "options": [
+     "Right: when a stressor cannot be changed, managing the emotional response is often the better fit.",
+     "There is no problem he can act on to change the loss.",
+     "That is an automatic response to sudden threat, not a chosen coping strategy.",
+     "Sensation seeking is a trait of seeking intense experiences."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-7",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student facing a stressor she can partly control decides which coping strategy to use. Which choice best matches the research on coping?",
+   "options": [
+    "Use emotion-focused coping, since changing problems rarely works",
+    "Avoid coping until the stressor passes on its own",
+    "Use problem-focused coping, even on parts she has no control over",
+    "Act on the parts she can change and manage feelings about the rest"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Flexible coping: problem-focused for what is controllable, emotion-focused for what is not.",
+    "options": [
+     "Problem-focused coping often works well when a person has some control.",
+     "Avoidance tends to predict worse outcomes over time.",
+     "Trying to fix what cannot be changed adds frustration.",
+     "Right: matching the strategy to how controllable the stressor is works best."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-8",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "In a study of thousands of adults, those who reported four or more adverse childhood experiences had higher rates of heart disease decades later. Which conclusion is justified?",
+   "options": [
+    "Adverse childhood experiences directly cause heart disease in most adults who have them",
+    "They are linked to poorer later health, but other variables may contribute",
+    "Heart disease in adulthood causes people to recall more childhood stress",
+    "There is no link between childhood stress and adult health"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Correlation is not causation: name possible third variables.",
+    "options": [
+     "The study is correlational, and many people with these experiences stay healthy.",
+     "Right: the data are correlational, so third variables such as income or smoking could play a role.",
+     "This reverses the timing; still, memory bias is worth noting.",
+     "The study found higher rates in the group with more adverse experiences."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-9",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which field studies how psychological factors such as stress, behavior and social support affect physical health and illness?",
+   "options": [
+    "Industrial-organizational psychology",
+    "Developmental psychology",
+    "Health psychology",
+    "Evolutionary psychology"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Health psychology studies how psychological and social factors affect physical health.",
+    "options": [
+     "I/O psychology studies behavior in the workplace.",
+     "Developmental psychology studies change across the lifespan.",
+     "Right: health psychology links mind, behavior and physical health.",
+     "Evolutionary psychology studies how natural selection shaped behavior."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-10",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "health-psychology-s1",
+   "q": "Which stage of the general adaptation syndrome do weeks 3 to 7 best represent?",
+   "options": [
+    "Alarm reaction",
+    "Resistance",
+    "Exhaustion",
+    "Recovery after the stressor ends"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In resistance the body's defenses stay raised while the stressor continues.",
+    "options": [
+     "The alarm reaction is the brief dip at the start, around week 1.",
+     "Right: the index stays well above normal as the body copes with the continuing stressor.",
+     "Exhaustion is when the index falls below normal, around weeks 10 to 12.",
+     "The placement is still going on in weeks 3 to 7."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-11",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "health-psychology-s1",
+   "q": "Students reported the most days with cold symptoms in weeks 10 to 12. How does the general adaptation syndrome explain this?",
+   "options": [
+    "The alarm reaction makes people sick at the start of stress",
+    "Eustress protects people from illness, so the students got sick from boredom",
+    "Resistance is highest at the end of a long stressor",
+    "Long stress drained reserves, so the body reached exhaustion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Exhaustion: reserves run down after prolonged stress, and vulnerability to illness rises.",
+    "options": [
+     "Weeks 10 to 12 are at the end of the placement, not the start.",
+     "Long, demanding stress here is distress, and eustress is no guarantee of health.",
+     "The graph shows the index falling below normal at the end.",
+     "Right: the index fell below 100, matching the exhaustion stage and more illness."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-12",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "health-psychology-s1",
+   "q": "What is the mean immune index for weeks 3, 4, 5, 6 and 7 (values 118, 120, 119, 120 and 117)?",
+   "why": {
+    "correct": "$\\frac{118 + 120 + 119 + 120 + 117}{5} = \\frac{594}{5} = 118.8$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       118,
+       120,
+       119,
+       120,
+       117
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mode",
+       "args": [
+        [
+         118,
+         120,
+         119,
+         120,
+         117
+        ]
+       ]
+      },
+      "why": "120 is the mode, the most common value. The mean adds all five and divides by 5."
+     },
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         118,
+         120,
+         119,
+         120,
+         117
+        ]
+       ]
+      },
+      "why": "594 is the total. Divide by the 5 weeks."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-13",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "health-psychology-s1",
+   "q": "A reader concludes from this graph that the placement caused the drop in immune activity. Why should that claim be made with caution?",
+   "options": [
+    "With no comparison group, something else, like flu season, could explain it",
+    "Immune activity is hard to measure from saliva, so the numbers are made up",
+    "The sample of 30 students is far too large to be meaningful",
+    "A line graph is the wrong way to show weekly change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Following one group over time without a comparison group cannot rule out other causes.",
+    "options": [
+     "Right: without a control group, a third variable that changed over time could explain the pattern.",
+     "Saliva can be used for some immune measures; the issue is the design.",
+     "Thirty is a small sample, and size is not the main problem.",
+     "Line graphs are the standard way to show change over time."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-14",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "health-psychology-s2",
+   "q": "In the figure, why does resistance first dip below normal?",
+   "options": [
+    "The body has used up its reserves after long stress",
+    "The person chose emotion-focused coping",
+    "The sudden stressor causes shock before sympathetic arousal begins",
+    "The stressor has ended and the body is recovering"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Alarm: a brief drop at the shock of the stressor, then the sympathetic system mobilizes the body.",
+    "options": [
+     "That describes exhaustion, at the end of the curve.",
+     "The figure shows a body response, not a coping choice.",
+     "Right: the alarm stage starts with shock, then sympathetic arousal.",
+     "The figure shows a stressor that continues."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-15",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "health-psychology-s2",
+   "q": "A worker has had a high-pressure job for two years with no breaks. He now catches every cold that goes around. Which stage of the figure does he most likely match?",
+   "options": [
+    "Alarm",
+    "Resistance",
+    "Normal level of resistance",
+    "Exhaustion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Exhaustion follows long, unrelenting stress.",
+    "options": [
+     "Alarm is the start of a stressor, not two years in.",
+     "In resistance the body is still coping; frequent illness points to the next stage.",
+     "His frequent illness suggests resistance has fallen below normal.",
+     "Right: after prolonged stress, reserves run down and illness becomes more likely."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-16",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "health-psychology-s2",
+   "q": "The general adaptation syndrome was first described from studies of rats exposed to many kinds of stressors. Which statement is most accurate about applying it to people?",
+   "options": [
+    "It does not apply to people, because it came from studies of rats",
+    "The broad pattern fits people, but appraisal and coping change it",
+    "It shows that stress of any kind is harmful to physical health",
+    "It shows that people go through each stage at the same speed"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The stages describe a general pattern; appraisal, coping and support change it for individuals.",
+    "options": [
+     "Animal findings often generalize in part; human research has supported the broad pattern.",
+     "Right: the stages describe the body's response, and appraisal and coping shape how strongly it happens.",
+     "Short-term stress and eustress can be helpful.",
+     "People differ a great deal in how quickly stress affects them, so the speed is not fixed."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-17",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "health-psychology-s3",
+   "q": "Which research method did this study use?",
+   "options": [
+    "An experiment",
+    "A case study",
+    "A correlational study",
+    "Naturalistic observation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Measuring a relationship without manipulating anything is correlational.",
+    "options": [
+     "The researchers did not manipulate hassles or assign people to conditions.",
+     "A case study examines one person in depth; this one followed 150 people.",
+     "Right: it measured how two variables, hassles and symptom days, were related.",
+     "Participants reported their own hassles; no one observed them."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-18",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "health-psychology-s3",
+   "q": "What does $r = 0.35$ mean here?",
+   "options": [
+    "A weak to moderate positive link: more hassles, more cold days",
+    "A strong negative relationship: more hassles went with fewer cold days",
+    "Hassles caused 35% of the colds",
+    "No relationship between hassles and colds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read direction and strength from r; a correlation is not a cause.",
+    "options": [
+     "Right: a positive r below about .4 is weak to moderate.",
+     "A positive r means the two rose together.",
+     "A correlation does not show cause or a percentage of cases.",
+     "An r of 0.35 shows some relationship."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-19",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "health-psychology-s3",
+   "q": "Which is the best alternative explanation for the finding?",
+   "options": [
+    "The study used too many participants to find a real link",
+    "The colds were caused by the hassle ratings themselves",
+    "The participants were randomly assigned to have more hassles in their lives",
+    "Poor sleep could raise both hassles and the risk of colds"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Always name a possible third variable for a correlation.",
+    "options": [
+     "A larger sample makes a link more trustworthy, not less.",
+     "Rating hassles cannot cause colds.",
+     "No one was assigned to have hassles.",
+     "Right: a third variable, such as poor sleep, could explain both."
+    ]
+   }
+  },
+  {
+   "id": "psy-health-psychology-20",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "health-psychology-s3",
+   "q": "Write the operational definition of daily hassles used in this study.",
+   "why": {
+    "correct": "Give the measure the study used: a 0 to 10 rating each evening, averaged over eight weeks."
+   },
+   "specific": {
+    "frame": "Daily hassles were measured as ___, reported ___.",
+    "write": {
+     "context": [
+      "0 to 10",
+      "scale",
+      "rating",
+      "rated"
+     ]
+    },
+    "model": "Daily hassles were measured as a rating of that day's hassles on a 0 to 10 scale, reported each evening for eight weeks and averaged for each person.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "a rating of that day's hassles on a 0 to 10 scale",
+       "small annoyances that build up and cause stress",
+       "the number of days with cold symptoms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the general meaning of the concept, not how the study measured it.",
+       "2": "Symptom days were the other variable."
+      }
+     },
+     "when": {
+      "label": "Reported",
+      "options": [
+       "each evening for eight weeks, then averaged",
+       "once at the start of the study"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Participants rated hassles every evening, not once."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-health-psychology-21",
+   "unit": "unit-5",
+   "topic": "health-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two students face the same hard final exam. One sees it as a threat she cannot handle; the other sees it as a challenge she can prepare for. The second student shows less distress. What best explains the difference?",
+   "options": [
+    "How each student appraised the stressor",
+    "The exam was a daily hassle for one and not the other",
+    "One student was in the alarm stage and the other in exhaustion",
+    "One of them lacks a working sympathetic nervous system"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The same stressor can produce distress or eustress depending on appraisal.",
+    "options": [
+     "Right: stress depends on how we appraise a stressor and our ability to handle it.",
+     "It is the same exam for both students.",
+     "Nothing suggests either has had a long-lasting stressor.",
+     "Nothing suggests a difference in their nervous systems; the difference is in how they see the exam."
+    ]
+   }
+  }
+ ]
+}

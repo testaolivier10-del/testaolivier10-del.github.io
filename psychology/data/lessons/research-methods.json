@@ -1,0 +1,47 @@
+{
+ "topic": "research-methods",
+ "hook": "A video says a supplement \"boosts memory\" and shows three students who took it and aced a test. A month later, a study with 400 students randomly assigned to the supplement or a look-alike pill finds no difference at all. Both are \"evidence\". Only one can tell you whether the supplement causes anything, and knowing which one is the most useful skill in psychology.",
+ "prereq": [],
+ "figure": {
+  "figure": "research-methods-experiment",
+  "caption": "An experiment: random assignment, a treatment and a control group, then the same measurement for both."
+ },
+ "chain": [
+  {
+   "cause": "A researcher manipulates one variable (the independent variable) and randomly assigns people to conditions",
+   "effect": "the groups start out alike, on average, in everything else"
+  },
+  {
+   "cause": "The groups then differ only in the treatment",
+   "effect": "a difference in the dependent variable can be traced to the treatment: cause and effect"
+  },
+  {
+   "cause": "Without manipulation and random assignment (a correlational study, a case study, observation or a survey)",
+   "effect": "a third variable or the reverse direction could explain the result, so no cause can be claimed"
+  },
+  {
+   "cause": "Placebos and double-blind procedures hide the conditions",
+   "effect": "expectations of participants and researchers cannot push the results"
+  }
+ ],
+ "ideas": [
+  "Name the method exactly. An <b>experiment</b> needs a manipulated <b>independent variable</b> and <b>random assignment</b>. Otherwise it is a <b>correlational study</b>, a <b>case study</b>, <b>naturalistic observation</b> or a <b>survey</b>.",
+  "An <b>operational definition</b> says how this study measured a variable: \"the number of words written down in two minutes\", not \"memory\".",
+  "Controls: a <b>control group</b> (often given a <b>placebo</b>), and <b>single-blind</b> or <b>double-blind</b> procedures against expectations and <b>experimenter bias</b>.",
+  "Surveys are open to <b>wording effects</b> and <b>social desirability bias</b>. Science corrects itself through <b>peer review</b>, <b>replication</b> and <b>meta-analysis</b>."
+ ],
+ "misconception": {
+  "wrong": "Any study that compares groups is an experiment, so its results show a cause.",
+  "right": "A study is an experiment only when the researcher assigns the conditions at random. Comparing groups that already exist (pet owners and non-owners, students who chose a course) is correlational and cannot show a cause."
+ },
+ "check": [
+  "psy-research-methods-1",
+  "psy-research-methods-2",
+  "psy-research-methods-5",
+  "psy-research-methods-13",
+  "psy-research-methods-14",
+  "psy-research-methods-15",
+  "psy-research-methods-16"
+ ],
+ "summary": "Psychologists test hypotheses with operationally defined variables. Only an experiment, with a manipulated independent variable and random assignment, supports a cause-and-effect conclusion; correlational studies, case studies, naturalistic observation and surveys describe and predict. Control groups, placebos and blinding control confounding variables and expectations, and peer review, replication and meta-analysis decide which findings hold up."
+}

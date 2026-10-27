@@ -1,0 +1,501 @@
+{
+ "stimuli": {
+  "language-development-s1": {
+   "kind": "visual",
+   "title": "Milestones of early speech",
+   "figure": "language-development-milestones"
+  },
+  "language-development-s2": {
+   "kind": "study",
+   "title": "Babies hearing sounds from other languages",
+   "source": "Werker & Tees (1984)",
+   "study": {
+    "introduction": "Janet Werker and Richard Tees asked whether babies raised hearing English can tell apart speech sounds that English does not use but Hindi and a First Nations language (Nthlakampx) do.",
+    "participants": "Infants from English-speaking homes in Canada, tested at 6 to 8, 8 to 10 and 10 to 12 months, some of them followed across these ages. Hindi- and Nthlakampx-learning infants and English-speaking adults were also tested.",
+    "method": "Each baby heard one speech sound repeated, then a switch to a similar sound. Babies were trained to turn their heads toward a toy display when they heard the sound change; a head turn right after a switch counted as noticing the difference.",
+    "results": "Most 6- to 8-month-olds from English-speaking homes noticed the non-English sound differences. By 10 to 12 months, few did. Babies learning Hindi or Nthlakampx still noticed the differences in their own languages at 10 to 12 months.",
+    "discussion": "Babies start able to hear sound differences from many languages and, by their first birthday, tune in to the sounds of the language around them."
+   }
+  },
+  "language-development-s3": {
+   "kind": "data",
+   "title": "Words heard in a short visit",
+   "invented": true,
+   "text": "<p>A researcher recorded how many different words each of five 18-month-olds said during a 30-minute home visit.</p>",
+   "table": {
+    "caption": "Different words spoken in 30 minutes (invented data for practice)",
+    "cols": [
+     "Child",
+     "Different words"
+    ],
+    "rows": [
+     [
+      "P",
+      "4"
+     ],
+     [
+      "Q",
+      "7"
+     ],
+     [
+      "R",
+      "10"
+     ],
+     [
+      "S",
+      "10"
+     ],
+     [
+      "T",
+      "19"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-language-development-1",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "language-development-s1",
+   "q": "A 6-month-old says \"ba-ba-ba, da-da-da\" while playing alone. Which milestone in the figure is this?",
+   "options": [
+    "Babbling",
+    "Cooing",
+    "The one-word stage",
+    "Telegraphic speech"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Babbling begins around 6 months and gradually takes on the sounds of the home language.",
+    "options": [
+     "Right: repeated consonant-vowel syllables, made in play, are babbling.",
+     "Cooing is vowel-like sounds such as \"ooh,\" which come earlier, around 2 months.",
+     "Repeating syllables in play is not using a word to mean something.",
+     "Telegraphic speech combines two or more words."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-2",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "language-development-s1",
+   "q": "A 13-month-old points at the door and says \"Out!\" meaning \"I want to go outside.\" Which stage does this show?",
+   "options": [
+    "Telegraphic speech",
+    "Babbling",
+    "Overgeneralization",
+    "The one-word stage"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Around the first birthday, children use single words that carry a sentence of meaning.",
+    "options": [
+     "Telegraphic speech uses two or more words, such as \"Go out.\"",
+     "Babbling is syllables made in play, without meaning.",
+     "Overgeneralization is applying a grammar rule where it does not fit.",
+     "Right: a single word stands for a whole idea."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-3",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "language-development-s1",
+   "q": "A 2-year-old says \"Daddy go car.\" Which stage is this, and what does it show?",
+   "options": [
+    "Babbling: sounds without meaning",
+    "Cooing: vowel-like sounds",
+    "Telegraphic speech: key words in order",
+    "The one-word stage: one word stands for a whole idea"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Telegraphic speech follows the word order (syntax) of the language even though it leaves out small words.",
+    "options": [
+     "Each word has a clear meaning.",
+     "Cooing comes in the first months and has no words.",
+     "Right: like a telegram, it keeps content words in order and drops \"is,\" \"in\" and \"the.\"",
+     "The child uses three words."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-4",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "language-development-s1",
+   "q": "Near the end of the timeline, a child says \"I goed outside\" and \"I saw two mouses.\" What do these errors show?",
+   "options": [
+    "Babbling: sounds without meaning",
+    "Overgeneralization of grammar rules",
+    "That the child is copying adults’ words exactly",
+    "Telegraphic speech: leaving out small words"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "These errors are a good sign: the child has learned a rule and is using it.",
+    "options": [
+     "The words have clear meanings.",
+     "Right: the child applies the \"-ed\" and \"-s\" rules to irregular words.",
+     "Adults do not say \"goed,\" so the child is using a rule, not copying.",
+     "Nothing is left out; a rule is applied too widely."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-5",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "language-development-s2",
+   "q": "Werker and Tees found that 6- to 8-month-olds from English-speaking homes could hear sound differences from Hindi. Which unit of language were the babies telling apart?",
+   "options": [
+    "Phonemes, the smallest units of sound",
+    "Morphemes, the smallest units of meaning",
+    "Syntax, the rules for word order",
+    "Semantics, the rules for meaning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A phoneme is a basic speech sound; languages use different sets of phonemes.",
+    "options": [
+     "Right: the babies heard differences between speech sounds.",
+     "The sounds were not words or word parts with meaning.",
+     "No words were put in order.",
+     "The task was about sounds, not meaning."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-6",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "language-development-s2",
+   "q": "Which statement best summarizes the results?",
+   "options": [
+    "Older babies were better at noticing speech sound differences in general",
+    "Babies learning Hindi lost the ability to hear Hindi sounds",
+    "Babies could not tell any sounds apart until 10 months",
+    "By age 1, babies tuned in to their own language’s sounds"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Early hearing is broad; experience narrows it toward the home language.",
+    "options": [
+     "English-learning babies got worse at the non-English differences as they got older.",
+     "They still noticed the differences in their own language.",
+     "Most 6- to 8-month-olds noticed the differences.",
+     "Right: English-learning babies stopped noticing non-English differences by 10 to 12 months, while babies learning Hindi kept noticing theirs."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-7",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "language-development-s2",
+   "q": "Which idea from physical development do these results support?",
+   "options": [
+    "Imprinting, the bond young geese form with a moving object",
+    "Menarche, the first menstrual period",
+    "A sensitive period for hearing speech sounds",
+    "Teratogens, which harm development before birth"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Early experience has its strongest effect during a sensitive period; adults can still learn new sounds with practice, though with more effort.",
+    "options": [
+     "Imprinting is a social bond, not speech perception.",
+     "That is a milestone of puberty.",
+     "Right: hearing the home language in the first year narrows which sound differences babies notice.",
+     "Nothing harmful is involved."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-8",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "language-development-s3",
+   "q": "What is the mean number of different words the five children said?",
+   "why": {
+    "correct": "$\\frac{4 + 7 + 10 + 10 + 19}{5} = \\frac{50}{5} = 10$ words."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       4,
+       7,
+       10,
+       10,
+       19
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         4,
+         7,
+         10,
+         10,
+         19
+        ]
+       ]
+      },
+      "why": "That is the total. Divide by the number of children, 5."
+     },
+     {
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         4,
+         7,
+         10,
+         10,
+         19
+        ]
+       ]
+      },
+      "why": "That is the range (19 minus 4). The mean is the total divided by 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-9",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "language-development-s3",
+   "q": "What is the range of the number of different words?",
+   "why": {
+    "correct": "Highest minus lowest: $19 - 4 = 15$ words."
+   },
+   "numeric": {
+    "from": {
+     "fn": "range",
+     "args": [
+      [
+       4,
+       7,
+       10,
+       10,
+       19
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 19,
+      "why": "That is the highest value. Subtract the lowest, 4."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        19,
+        4
+       ]
+      },
+      "why": "You added the highest and lowest. The range is the difference."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-10",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "language-development-s3",
+   "q": "What does the spread of these numbers suggest about language development at 18 months?",
+   "options": [
+    "Child T has a language disorder",
+    "Each child should be saying about 10 words",
+    "The children are in the cooing stage",
+    "Healthy toddlers vary widely in word use"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Milestones come in a similar order, but vocabulary size varies a great deal between healthy children.",
+    "options": [
+     "One high count in one visit does not show a disorder, and T is ahead.",
+     "The mean describes the group, not a target for each child.",
+     "Cooing has no words; all five children used words.",
+     "Right: a range of 15 words in one visit is typical variation at this age."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-11",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "The word \"unhappiness\" can be split into \"un,\" \"happy\" and \"ness,\" each carrying meaning. What are these parts?",
+   "options": [
+    "Syntax rules",
+    "Babbling sounds",
+    "Morphemes",
+    "Phonemes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Phonemes build morphemes; morphemes build words.",
+    "options": [
+     "Syntax is about word order in sentences.",
+     "Babbling is an infant stage of making syllables.",
+     "Right: a morpheme is the smallest unit that carries meaning.",
+     "Phonemes are sounds; \"un\" has two of them but one meaning."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-12",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "\"The dog bit the man\" and \"The man bit the dog\" use the same words but mean different things. Which part of grammar explains this?",
+   "options": [
+    "Cooing, an early infant sound",
+    "Syntax, the rules for word order",
+    "Phonemes, the smallest sound units",
+    "Morphemes, the smallest units of meaning"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Grammar includes semantics (meaning) and syntax (order); here the order carries the meaning.",
+    "options": [
+     "Cooing is a stage of infancy.",
+     "Right: changing the order changed who did what.",
+     "The sounds are the same; the order differs.",
+     "Both sentences have the same morphemes."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-13",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A 4-year-old says, \"The zorp is snoozling on the blicket,\" a sentence nobody has ever said to her. What does this show about language?",
+   "options": [
+    "Generativity: rules create new sentences",
+    "Telegraphic speech: leaving out small words",
+    "That she is copying a sentence she heard on TV",
+    "The one-word stage"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Generativity is the ability to produce and understand an unlimited number of new sentences.",
+    "options": [
+     "Right: she combined words with grammar rules to make a sentence she never heard.",
+     "Her sentence includes \"is,\" \"on\" and \"the.\"",
+     "No one has said it to her.",
+     "She used a full sentence."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-14",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A child knows \"hot\" means something that burns and learns that \"cool\" can also mean \"great.\" Which aspect of language is she learning?",
+   "options": [
+    "Syntax, the rules for word order",
+    "Phonemes, the smallest speech sounds",
+    "Babbling, an early infant stage",
+    "Semantics, the rules of meaning"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Semantics covers meaning, including multiple meanings of a word.",
+    "options": [
+     "Word order is not what she is learning here.",
+     "The sounds are unchanged; the meaning is new.",
+     "She is long past babbling.",
+     "Right: semantics is about what words and sentences mean."
+    ]
+   }
+  },
+  {
+   "id": "psy-language-development-15",
+   "unit": "unit-3",
+   "topic": "language-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put these stages of early language in the order they usually appear.",
+   "options": [
+    "Cooing (\"ooh,\" \"aah\")",
+    "Babbling (\"ba-ba-ba\")",
+    "One-word stage (\"Doggy!\")",
+    "Telegraphic speech (\"Want juice.\")"
+   ],
+   "why": {
+    "correct": "Cooing (about 2 months), babbling (about 6 months), one word (about 12 months), telegraphic speech (about 18 to 24 months)."
+   }
+  }
+ ]
+}

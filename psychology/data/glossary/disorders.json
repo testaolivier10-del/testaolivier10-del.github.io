@@ -1,0 +1,92 @@
+{
+ "neurodevelopmental": {
+  "def": "Disorders that begin in early development and affect how the brain grows and functions, such as ADHD and autism spectrum disorder."
+ },
+ "adhd": {
+  "def": "A neurodevelopmental disorder: a lasting pattern of inattention and/or hyperactivity and impulsivity that begins in childhood and appears in two or more settings, such as home and school."
+ },
+ "asd": {
+  "def": "A neurodevelopmental disorder with differences in social communication and interaction plus restricted, repetitive behaviors or interests, present from early childhood; \"spectrum\" means support needs vary widely."
+ },
+ "schizophrenia": {
+  "def": "A disorder in the schizophrenia spectrum marked by a break from reality: two or more of delusions, hallucinations, disorganized speech, disorganized behavior and negative symptoms, with signs lasting at least six months."
+ },
+ "delusion": {
+  "def": "A firmly held false belief that does not change in the face of clear evidence, such as believing one is being watched or controlled."
+ },
+ "hallucination": {
+  "def": "A false perception, such as hearing a voice that no one else hears, without an outside stimulus."
+ },
+ "positive-symptoms": {
+  "def": "Symptoms of schizophrenia that add experiences or behaviors: hallucinations, delusions and disorganized speech or behavior."
+ },
+ "negative-symptoms": {
+  "def": "Symptoms of schizophrenia that reduce or remove normal functions: flat emotional expression, little speech, low motivation and social withdrawal."
+ },
+ "dopamine-hypothesis": {
+  "def": "The idea that too much dopamine activity in some brain pathways contributes to the positive symptoms of schizophrenia. It explains part of the disorder, not all of it."
+ },
+ "mdd": {
+  "def": "A depressive disorder: one or more major depressive episodes, each with at least five symptoms (including low mood or loss of interest) on most days for at least two weeks."
+ },
+ "pdd": {
+  "def": "A depressive disorder: a depressed mood on most days for at least two years in adults (one year in children and teens), often milder than a major depressive episode."
+ },
+ "bipolar": {
+  "def": "Disorders with periods of abnormally high mood and energy. Bipolar I requires at least one manic episode (a week or more of severe high mood); bipolar II requires a hypomanic episode (milder, four days or more) and a major depressive episode."
+ },
+ "anxiety-disorder": {
+  "def": "Disorders marked by excessive fear or worry and avoidance that cause distress or get in the way of life, such as specific phobia, panic disorder and generalized anxiety disorder."
+ },
+ "specific-phobia": {
+  "def": "Intense, lasting fear of a particular object or situation, such as heights or spiders, out of proportion to the real danger, usually with avoidance."
+ },
+ "agoraphobia": {
+  "def": "Fear and avoidance of situations where escape might be hard or help unavailable, such as crowds, public transportation or lines."
+ },
+ "panic-disorder": {
+  "def": "Repeated, unexpected panic attacks (sudden surges of intense fear with symptoms such as a pounding heart) followed by ongoing worry about more attacks."
+ },
+ "social-anxiety": {
+  "def": "Intense fear of social situations in which one might be watched or judged, with fear of embarrassment and avoidance."
+ },
+ "gad": {
+  "def": "Excessive, hard-to-control worry about many things on most days for at least six months, with symptoms such as tension, fatigue and poor sleep."
+ },
+ "culture-bound": {
+  "def": "A pattern of distress shaped by a particular culture (the DSM-5-TR calls them cultural concepts of distress), such as ataque de nervios in Latin American cultures and taijin kyofusho in Japan."
+ },
+ "ocd": {
+  "def": "Obsessive-compulsive disorder: unwanted, intrusive thoughts or urges (obsessions) and repeated behaviors or mental acts done to reduce the anxiety they cause (compulsions), taking up much time or causing distress."
+ },
+ "hoarding": {
+  "def": "Persistent difficulty discarding possessions, whatever their value, because of a felt need to save them, leading to clutter that blocks living spaces."
+ },
+ "dissociative": {
+  "def": "Disorders involving a disruption of memory, identity or awareness, such as dissociative amnesia (memory loss for personal, often stressful, information), sometimes with fugue (travel or wandering)."
+ },
+ "did": {
+  "def": "Dissociative identity disorder: two or more distinct identity states with recurrent gaps in memory. It is not schizophrenia; researchers still debate the roles of trauma and social influence in its causes."
+ },
+ "ptsd": {
+  "def": "Posttraumatic stress disorder: after a traumatic event, more than a month of intrusive memories, avoidance, negative changes in thoughts and mood, and heightened arousal."
+ },
+ "anorexia": {
+  "def": "An eating disorder: restricting food so that body weight becomes significantly low, with an intense fear of gaining weight and a distorted view of one's body."
+ },
+ "bulimia": {
+  "def": "An eating disorder: repeated episodes of binge eating followed by behaviors to make up for them, such as vomiting or fasting, often at an average body weight."
+ },
+ "personality-disorder": {
+  "def": "A lasting, inflexible pattern of thinking, feeling and relating to others that differs from cultural expectations, begins by adolescence or early adulthood, and causes distress or dysfunction."
+ },
+ "cluster-a": {
+  "def": "Odd or eccentric personality disorders: paranoid (distrust), schizoid (detachment from relationships) and schizotypal (odd beliefs and discomfort in close relationships)."
+ },
+ "cluster-b": {
+  "def": "Dramatic, emotional or erratic personality disorders: antisocial (disregard for others' rights), histrionic (attention seeking), narcissistic (grandiosity) and borderline (unstable emotions and relationships)."
+ },
+ "cluster-c": {
+  "def": "Anxious or fearful personality disorders: avoidant (fear of rejection), dependent (need to be cared for) and obsessive-compulsive personality disorder (perfectionism and control)."
+ }
+}

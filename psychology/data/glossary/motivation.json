@@ -1,0 +1,47 @@
+{
+ "motivation": {
+  "def": "A need or desire that starts, directs and keeps behavior going toward a goal."
+ },
+ "instinct-theory": {
+  "def": "The idea that behavior is driven by instincts: complex, unlearned behavior patterns found throughout a species, such as salmon returning to spawn. It explains some animal behavior well but explains little of human behavior."
+ },
+ "drive-reduction": {
+  "def": "The theory that a body need (such as for food or water) creates an aroused state, a drive, that pushes us to act to reduce it and return to homeostasis."
+ },
+ "arousal-theory": {
+  "def": "The theory that people are motivated to keep an optimal level of arousal: we seek stimulation when bored and calm when overstimulated."
+ },
+ "yerkes-dodson": {
+  "def": "The finding that performance is best at a moderate level of arousal, falling when arousal is too low or too high. The best level is lower for difficult or new tasks and higher for simple or well-practiced ones."
+ },
+ "incentive-theory": {
+  "def": "The theory that behavior is pulled by outside rewards (incentives), such as money, praise or tasty food, even when no body need is present."
+ },
+ "self-determination": {
+  "def": "A theory (Deci and Ryan) that people have basic needs for autonomy (choice), competence (mastery) and relatedness (connection), and that meeting them supports intrinsic motivation."
+ },
+ "intrinsic": {
+  "def": "Intrinsic motivation: the desire to do something for its own sake, because it is interesting or satisfying."
+ },
+ "extrinsic": {
+  "def": "Extrinsic motivation: the desire to do something to gain a reward or avoid a punishment from outside the activity."
+ },
+ "overjustification": {
+  "def": "The overjustification effect: giving an expected reward for an activity a person already enjoys can lower their intrinsic motivation, because they come to explain their behavior by the reward. It is strongest for expected, tangible rewards."
+ },
+ "motivational-conflict": {
+  "def": "Conflicts between goals, as described by Kurt Lewin: approach-approach (two attractive options), avoidance-avoidance (two unattractive options), approach-avoidance (one option with good and bad sides) and multiple approach-avoidance (several options, each with good and bad sides)."
+ },
+ "sensation-seeking": {
+  "def": "A trait of seeking varied, new, intense experiences and being willing to take risks for them; high sensation seekers prefer a higher level of arousal."
+ },
+ "hunger": {
+  "def": "The motive to eat. Ghrelin from an empty stomach signals hunger, leptin from fat cells signals stored energy and lowers appetite, and the hypothalamus combines these signals; learned and external cues also matter."
+ },
+ "external-eating": {
+  "def": "External eating cues: signals outside the body that prompt eating, such as the sight or smell of food, portion size, the time of day or other people eating."
+ },
+ "belongingness": {
+  "def": "The need to belong: a basic human motive to form and keep close, lasting relationships. Being accepted supports mood and health; being excluded is painful."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "social-cognitive-trait",
+ "hook": "A friend you have known since kindergarten was the loudest kid in class and is still the one who starts conversations with strangers. Yet she is quiet in her new job, where the boss criticizes every idea. Is she \"an extravert\", or does it depend on the situation? Psychologists answer with two tools: traits that describe what is stable, and a social-cognitive view that explains how people and situations shape each other.",
+ "prereq": [
+  {
+   "q": "A child watches an older sibling get praised for sharing and later shares too. Which concept explains this?",
+   "options": [
+    "Social learning through observation",
+    "Classical conditioning",
+    "Instinctive drift",
+    "Habituation"
+   ],
+   "correct": 0,
+   "why": "Learning by watching others and the consequences they receive is social learning, the base of social-cognitive theory.",
+   "review": "social-cognitive-learning"
+  },
+  {
+   "q": "Scores on two measures rise and fall together across many people. What does this show?",
+   "options": [
+    "A positive correlation",
+    "A negative correlation",
+    "That one causes the other",
+    "Random assignment"
+   ],
+   "correct": 0,
+   "why": "When both rise together the correlation is positive; correlation alone does not show cause.",
+   "review": "stats-correlation"
+  }
+ ],
+ "figure": {
+  "figure": "social-cognitive-trait-reciprocal",
+  "caption": "Reciprocal determinism: person factors, behavior and environment each influence the other two."
+ },
+ "chain": [
+  {
+   "cause": "You believe you can succeed at a task (high self-efficacy)",
+   "effect": "you try it and keep going when it gets hard"
+  },
+  {
+   "cause": "You keep trying",
+   "effect": "you improve and find settings, such as a club or team, that support you"
+  },
+  {
+   "cause": "Success and support in that setting",
+   "effect": "raise your self-efficacy further: person, behavior and environment shape each other"
+  },
+  {
+   "cause": "Researchers rate many people on many trait words and run factor analysis",
+   "effect": "the ratings cluster into five broad traits, the Big Five, measured with personality inventories"
+  }
+ ],
+ "ideas": [
+  "The <b>social-cognitive</b> view (Albert Bandura) explains personality through <b>reciprocal determinism</b>: person factors (beliefs, expectations), behavior and environment influence one another.",
+  "<b>Self-concept</b> is who you think you are; <b>self-esteem</b> is how you value yourself overall; <b>self-efficacy</b> is your belief you can succeed at a specific task.",
+  "<b>Trait theories</b> describe stable tendencies. <b>Factor analysis</b> of ratings gives the <b>Big Five</b>: openness, conscientiousness, extraversion, agreeableness, neuroticism.",
+  "Traits are measured with <b>personality inventories</b>: many clear self-report items scored against norms. Traits are fairly stable in adults but still change across the lifespan."
+ ],
+ "misconception": {
+  "wrong": "Self-efficacy and self-esteem mean the same thing.",
+  "right": "Self-esteem is your overall sense of worth. Self-efficacy is your belief about one task or area. You can value yourself highly and still doubt you can pass calculus."
+ },
+ "check": [
+  "psy-social-cognitive-trait-2",
+  "psy-social-cognitive-trait-6",
+  "psy-social-cognitive-trait-10",
+  "psy-social-cognitive-trait-11",
+  "psy-social-cognitive-trait-12",
+  "psy-social-cognitive-trait-14",
+  "psy-social-cognitive-trait-16"
+ ],
+ "summary": "The social-cognitive view explains personality as reciprocal determinism among person factors, behavior and environment, with self-concept, self-esteem and self-efficacy as key person factors. Trait theories describe stable tendencies; factor analysis of trait ratings yields the Big Five (openness, conscientiousness, extraversion, agreeableness, neuroticism), measured with personality inventories. Traits are fairly stable across adulthood but still change, and situations shape how they show."
+}

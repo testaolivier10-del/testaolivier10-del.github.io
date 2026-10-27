@@ -1,0 +1,67 @@
+{
+ "topic": "stats-correlation",
+ "hook": "Cities with more churches have more crime. Kids with bigger feet read better. Countries that eat more chocolate win more Nobel prizes. Each of these relationships has turned up in real data, and none means what it seems to: bigger cities have more of everything, older kids have bigger feet and read better, and richer countries buy more chocolate and fund more science. Reading a correlation well means asking what else could explain it.",
+ "prereq": [
+  {
+   "q": "A researcher records hours of sleep and grades for 200 students, without changing anything. What can she conclude?",
+   "options": [
+    "Whether sleep and grades are related, but not whether one causes the other",
+    "That more sleep causes better grades",
+    "That better grades cause more sleep",
+    "Nothing, because no one was randomly sampled"
+   ],
+   "correct": 0,
+   "why": "This is a correlational study: it shows whether variables are related, not cause and effect.",
+   "review": "research-methods"
+  },
+  {
+   "q": "What is a third variable?",
+   "options": [
+    "An outside variable that affects both of two related variables",
+    "The variable a researcher manipulates in an experiment",
+    "The variable that is measured in an experiment",
+    "A variable that appears in only one of the groups"
+   ],
+   "correct": 0,
+   "why": "A third variable can create a relationship between two variables that do not affect each other.",
+   "review": "research-methods"
+  }
+ ],
+ "figure": {
+  "figure": "stats-correlation-three",
+  "caption": "Positive, near-zero and negative correlations (invented data)."
+ },
+ "chain": [
+  {
+   "cause": "Two variables are measured for the same people and plotted as points",
+   "effect": "a scatterplot shows whether they rise together, move in opposite directions or show no pattern"
+  },
+  {
+   "cause": "The correlation coefficient r summarizes the pattern",
+   "effect": "its sign gives the direction and its size, from 0 to 1, gives the strength"
+  },
+  {
+   "cause": "Nothing was manipulated or randomly assigned",
+   "effect": "a third variable or the reverse direction may explain the relationship, so no cause can be claimed"
+  }
+ ],
+ "ideas": [
+  "The <b>correlation coefficient</b> $r$ runs from $-1$ to $+1$. The sign is the direction; the size (ignoring the sign) is the strength. $r = -0.8$ is stronger than $r = +0.5$.",
+  "A <b>positive correlation</b>: both variables rise and fall together. A <b>negative correlation</b>: as one rises, the other tends to fall.",
+  "A <b>scatterplot</b> shows each person as a point; the <b>line of best fit</b> shows the trend and allows prediction.",
+  "Correlation is not causation: a <b>third variable</b> or the <b>directionality problem</b> can explain it. An <b>illusory correlation</b> is a relationship people believe in that the data do not show."
+ ],
+ "misconception": {
+  "wrong": "A negative correlation means a weak or bad relationship, and a strong correlation proves cause and effect.",
+  "right": "Negative only means the variables move in opposite directions: $r = -0.9$ is very strong. And no correlation, however strong, shows cause without an experiment."
+ },
+ "check": [
+  "psy-stats-correlation-1",
+  "psy-stats-correlation-2",
+  "psy-stats-correlation-5",
+  "psy-stats-correlation-8",
+  "psy-stats-correlation-9",
+  "psy-stats-correlation-10"
+ ],
+ "summary": "A correlation describes how two variables are related. On a scatterplot, points rising to the right show a positive correlation and points falling to the right a negative one; the correlation coefficient $r$ gives the direction by its sign and the strength by its size, from 0 to 1. A correlation allows prediction but never shows cause: a third variable or the reverse direction may explain it, and some correlations people believe in are illusory."
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" width="800" height="540" role="img" aria-labelledby="brain-lobes-letters-t brain-lobes-letters-d" font-family="Arial, Helvetica, sans-serif">
+<title id="brain-lobes-letters-t">The left hemisphere from the side, regions marked A to F</title>
+<desc id="brain-lobes-letters-d">The side view of the left hemisphere with six regions marked by letters. A marks the front of the frontal lobe (the prefrontal area). B marks the motor cortex strip. C marks the occipital lobe. D marks Broca's area. E marks Wernicke's area. F marks the cerebellum.</desc>
+<rect width="800" height="540" fill="#FFFFFF"/>
+<defs><clipPath id="brain-lobes-letters-cl"><path d="M165 318 C120 290 105 200 150 145 C200 80 300 55 400 58 C500 60 600 95 650 165 C690 220 700 280 672 318 C650 345 610 350 585 340 C560 365 540 385 505 392 C430 400 330 395 270 372 C240 360 232 330 245 315 C230 318 200 325 165 318 Z"/></clipPath></defs>
+<path d="M432 360 C436 410 438 450 446 500 L486 500 C484 452 488 410 496 360 Z" fill="#DADADA" stroke="#1F2A28" stroke-width="2"/>
+<path d="M500 372 C520 342 600 334 650 352 C680 366 676 410 640 428 C600 446 540 440 512 420 C494 406 490 388 500 372 Z" fill="#E7E2D6" stroke="#1F2A28" stroke-width="2"/>
+<path d="M514 392 C560 378 620 374 658 384" fill="none" stroke="#A89E86" stroke-width="1.2"/>
+<path d="M518 400 C560 387 620 383 652 392" fill="none" stroke="#A89E86" stroke-width="1.2"/>
+<path d="M522 408 C560 396 620 392 646 400" fill="none" stroke="#A89E86" stroke-width="1.2"/>
+<path d="M526 416 C560 405 620 401 640 408" fill="none" stroke="#A89E86" stroke-width="1.2"/>
+<path d="M530 424 C560 414 620 410 634 416" fill="none" stroke="#A89E86" stroke-width="1.2"/>
+<g clip-path="url(#brain-lobes-letters-cl)"><polygon points="0,0 432,0 426,40 345,287 245,315 215,330 150,600 0,600" fill="#D6E6F0"/><polygon points="432,0 600,0 598,110 606,240 480,248 345,287 426,40" fill="#D3EFE6"/><polygon points="245,315 345,287 480,248 606,240 612,330 612,600 150,600 215,330" fill="#FBE3D0"/><polygon points="600,0 800,0 800,600 612,600 612,330 606,240 598,110" fill="#EBD9F2"/><polygon points="426,40 345,287 315,293 396,40" fill="#9CC2DA"/><polygon points="426,40 345,287 375,279 456,40" fill="#9AD8C3"/><path d="M180 150 C220 140 250 170 300 150" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M170 230 C210 220 240 250 290 230" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M240 110 C270 100 300 120 340 100" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M480 120 C510 140 540 120 580 140" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M470 190 C510 200 540 180 590 200" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M300 340 C350 330 400 345 460 330" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M630 200 C650 230 660 260 660 290" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M270 285 C300 270 320 280 330 265" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/><path d="M426 40 L345 287" stroke="#1F2A28" stroke-width="2.5" fill="none"/><path d="M245 315 L480 248 L520 236" stroke="#1F2A28" stroke-width="3" fill="none"/><path d="M480 248 L606 240" stroke="#1F2A28" stroke-width="1.2" stroke-dasharray="5 4" fill="none"/><path d="M598 100 L598 110 L606 240 L612 340" stroke="#1F2A28" stroke-width="1.2" stroke-dasharray="5 4" fill="none"/></g>
+<path d="M165 318 C120 290 105 200 150 145 C200 80 300 55 400 58 C500 60 600 95 650 165 C690 220 700 280 672 318 C650 345 610 350 585 340 C560 365 540 385 505 392 C430 400 330 395 270 372 C240 360 232 330 245 315 C230 318 200 325 165 318 Z" fill="none" stroke="#1F2A28" stroke-width="2.5"/>
+<ellipse cx="292" cy="278" rx="30" ry="17" fill="#D55E00" fill-opacity="0.35" stroke="#D55E00" stroke-width="2.5"/>
+<ellipse cx="498" cy="276" rx="34" ry="17" fill="#CC79A7" fill-opacity="0.35" stroke="#CC79A7" stroke-width="2.5"/>
+<line x1="60" y1="160" x2="170" y2="190" stroke="#1F2A28" stroke-width="1.4"/><circle cx="170" cy="190" r="2.8" fill="#1F2A28"/>
+<circle cx="60" cy="160" r="14" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/><text x="60" y="165.5" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A28">A</text>
+<line x1="360" y1="26" x2="388" y2="110" stroke="#1F2A28" stroke-width="1.4"/><circle cx="388" cy="110" r="2.8" fill="#1F2A28"/>
+<circle cx="360" cy="26" r="14" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/><text x="360" y="31.5" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A28">B</text>
+<line x1="740" y1="250" x2="652" y2="260" stroke="#1F2A28" stroke-width="1.4"/><circle cx="652" cy="260" r="2.8" fill="#1F2A28"/>
+<circle cx="740" cy="250" r="14" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/><text x="740" y="255.5" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A28">C</text>
+<line x1="160" y1="420" x2="282" y2="288" stroke="#1F2A28" stroke-width="1.4"/><circle cx="282" cy="288" r="2.8" fill="#1F2A28"/>
+<circle cx="160" cy="420" r="14" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/><text x="160" y="425.5" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A28">D</text>
+<line x1="560" y1="470" x2="500" y2="290" stroke="#1F2A28" stroke-width="1.4"/><circle cx="500" cy="290" r="2.8" fill="#1F2A28"/>
+<circle cx="560" cy="470" r="14" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/><text x="560" y="475.5" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A28">E</text>
+<line x1="730" y1="440" x2="646" y2="410" stroke="#1F2A28" stroke-width="1.4"/><circle cx="646" cy="410" r="2.8" fill="#1F2A28"/>
+<circle cx="730" cy="440" r="14" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/><text x="730" y="445.5" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A28">F</text>
+</svg>

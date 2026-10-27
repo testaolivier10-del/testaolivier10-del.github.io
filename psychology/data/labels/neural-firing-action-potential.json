@@ -1,0 +1,60 @@
+{
+ "figure": "neural-firing-action-potential",
+ "labels": [
+  {
+   "id": "refractory",
+   "name": "Refractory period: it cannot fire again yet",
+   "box": [
+    337,
+    57,
+    187,
+    39
+   ],
+   "concept": "refractory-period"
+  },
+  {
+   "id": "threshold",
+   "name": "Threshold (about -55 mV)",
+   "box": [
+    482,
+    231,
+    187,
+    22
+   ],
+   "concept": "threshold-neural"
+  },
+  {
+   "id": "rest",
+   "name": "Resting potential (-70 mV)",
+   "box": [
+    528,
+    293,
+    201,
+    22
+   ],
+   "concept": "resting-potential"
+  },
+  {
+   "id": "depol",
+   "name": "Depolarization: the inside turns positive",
+   "box": [
+    88,
+    67,
+    127,
+    56
+   ],
+   "concept": "depolarization"
+  },
+  {
+   "id": "peak",
+   "name": "Peak, about +40 mV, the same every time",
+   "box": [
+    309,
+    18,
+    149,
+    39
+   ],
+   "concept": "all-or-none"
+  }
+ ]
+}

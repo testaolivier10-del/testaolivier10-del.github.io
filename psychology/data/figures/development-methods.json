@@ -1,0 +1,12 @@
+{
+ "development-methods-designs": {
+  "file": "figures/development-methods-designs.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top panel: a cross-sectional study tests four different groups, aged 20, 40, 60 and 80, all in the same year, 2025; it is fast but mixes up age with birth year. Bottom panel: a longitudinal study tests one group in 2025 at age 20, then again in 2045, 2065 and 2085; the group shrinks as people drop out. It shows change within the same people but is slow. Neither design alone shows cause and effect."
+ }
+}

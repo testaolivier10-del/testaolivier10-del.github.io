@@ -1,0 +1,12 @@
+{
+ "intelligence-iq-curve": {
+  "file": "figures/intelligence-iq-curve.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bell-shaped normal curve of modern IQ scores with a mean of 100 and a standard deviation of 15. Marks at 55, 70, 85, 100, 115, 130 and 145 are z scores of minus 3 to plus 3. By the 68-95-99.7 rule, 34% of scores fall between 85 and 100 and 34% between 100 and 115, so 68% score 85 to 115; 13.5% fall in each band from 70 to 85 and 115 to 130; 2.35% in each band from 55 to 70 and 130 to 145. The percentile at each mark is 0.15, 2.5, 16, 50, 84, 97.5 and 99.85."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "encoding-memories-serial": {
+  "file": "figures/encoding-memories-serial.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A line graph of the percent of people who recalled each word, by its position in a 15-word list heard once and recalled right away in any order (invented data for practice). Recall starts high for the first words (72% for word 1), falls to about 30% for the middle words (29% at its lowest), then rises for the last words (88% for word 15). The high start is labeled the primacy effect and the high end the recency effect."
+ }
+}

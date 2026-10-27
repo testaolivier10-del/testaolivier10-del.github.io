@@ -1,0 +1,93 @@
+{
+ "figure": "sensation-eye",
+ "labels": [
+  {
+   "id": "cornea",
+   "name": "Cornea",
+   "box": [
+    166,
+    53,
+    56,
+    23
+   ],
+   "concept": "vision"
+  },
+  {
+   "id": "iris",
+   "name": "Iris (colored ring)",
+   "box": [
+    232,
+    19,
+    160,
+    23
+   ],
+   "concept": "vision"
+  },
+  {
+   "id": "pupil",
+   "name": "Pupil (the opening)",
+   "box": [
+    116,
+    283,
+    160,
+    23
+   ],
+   "concept": "vision"
+  },
+  {
+   "id": "lens",
+   "name": "Lens",
+   "box": [
+    296,
+    313,
+    40,
+    23
+   ],
+   "concept": "vision"
+  },
+  {
+   "id": "retina",
+   "name": "Retina (lines the back)",
+   "box": [
+    516,
+    13,
+    191,
+    23
+   ],
+   "concept": "retina"
+  },
+  {
+   "id": "fovea",
+   "name": "Fovea (cones packed here)",
+   "box": [
+    616,
+    123,
+    160,
+    41
+   ],
+   "concept": "fovea"
+  },
+  {
+   "id": "optic",
+   "name": "Optic nerve (to the brain)",
+   "box": [
+    586,
+    333,
+    215,
+    23
+   ],
+   "concept": "optic-nerve"
+  },
+  {
+   "id": "blindspot",
+   "name": "Blind spot: no rods or cones where the nerve leaves",
+   "box": [
+    376,
+    375,
+    231,
+    41
+   ],
+   "concept": "blind-spot"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "cognitive-development-conservation": {
+  "file": "figures/cognitive-development-conservation.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Top: two equal glasses of water; one is poured into a tall, thin glass and the child is asked which has more. A typical 4-year-old says the tall one has more, focusing on height alone. A typical 8-year-old says they are the same because the water was only poured. Bottom: Piaget’s four stages with typical ages: sensorimotor, birth to about 2 (object permanence); preoperational, about 2 to 7 (make-believe, egocentrism); concrete operational, about 7 to 11 (conservation, logic about real things); formal operational, about 12 and up (abstract, hypothetical thinking). Later research finds the skills often appear earlier."
+ }
+}

@@ -1,0 +1,809 @@
+{
+ "stimuli": {
+  "operant-conditioning-s1": {
+   "kind": "data",
+   "title": "Invented data: cumulative lever presses on four schedules",
+   "invented": true,
+   "plot": {
+    "label": "Cumulative lever presses over 30 minutes for four rats, one on each schedule of reinforcement: variable-ratio rises fastest and steadily, fixed-ratio rises fast with short flat steps, variable-interval rises slowly and steadily, fixed-interval rises in scallops (invented data)",
+    "kind": "line",
+    "xLabel": "Minutes",
+    "yLabel": "Total presses so far",
+    "y": [
+     0,
+     1200
+    ],
+    "series": [
+     {
+      "name": "A",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        5,
+        190
+       ],
+       [
+        10,
+        380
+       ],
+       [
+        15,
+        570
+       ],
+       [
+        20,
+        760
+       ],
+       [
+        25,
+        950
+       ],
+       [
+        30,
+        1140
+       ]
+      ]
+     },
+     {
+      "name": "B",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        4,
+        160
+       ],
+       [
+        5,
+        160
+       ],
+       [
+        9,
+        320
+       ],
+       [
+        10,
+        320
+       ],
+       [
+        14,
+        480
+       ],
+       [
+        15,
+        480
+       ],
+       [
+        19,
+        640
+       ],
+       [
+        20,
+        640
+       ],
+       [
+        24,
+        800
+       ],
+       [
+        25,
+        800
+       ],
+       [
+        29,
+        960
+       ],
+       [
+        30,
+        960
+       ]
+      ]
+     },
+     {
+      "name": "C",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        5,
+        75
+       ],
+       [
+        10,
+        150
+       ],
+       [
+        15,
+        225
+       ],
+       [
+        20,
+        300
+       ],
+       [
+        25,
+        375
+       ],
+       [
+        30,
+        450
+       ]
+      ]
+     },
+     {
+      "name": "D",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        3,
+        5
+       ],
+       [
+        5,
+        40
+       ],
+       [
+        6,
+        40
+       ],
+       [
+        8,
+        45
+       ],
+       [
+        10,
+        80
+       ],
+       [
+        11,
+        80
+       ],
+       [
+        13,
+        85
+       ],
+       [
+        15,
+        120
+       ],
+       [
+        16,
+        120
+       ],
+       [
+        18,
+        125
+       ],
+       [
+        20,
+        160
+       ],
+       [
+        21,
+        160
+       ],
+       [
+        23,
+        165
+       ],
+       [
+        25,
+        200
+       ],
+       [
+        26,
+        200
+       ],
+       [
+        28,
+        205
+       ],
+       [
+        30,
+        240
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  },
+  "operant-conditioning-s2": {
+   "kind": "study",
+   "title": "Invented study: rewards on every try or some tries",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether being rewarded every time or only some of the time changes how long people keep trying once rewards stop.",
+    "participants": "40 high school students (ages 15 to 18) from two schools in Ohio took part with a parent's permission and their own assent. They were randomly assigned to two groups of 20.",
+    "method": "Students played a simple online game, pressing a button to try to win points. In the every-time group, every press won a point for the first 60 presses. In the some-times group, presses won a point at random, on average every fourth press. Then, without warning, presses stopped winning points in both groups. Persistence was the number of presses each student made before choosing to quit, up to a limit of 200. Students were debriefed at the end.",
+    "results": "After points stopped, the every-time group made a mean of 24 presses before quitting. The some-times group made a mean of 71 presses."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-operant-conditioning-1",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Every time Ravi buckles his seatbelt, the car's loud beeping stops. He now buckles up as soon as he sits down. Which concept explains the change?",
+   "options": [
+    "Negative reinforcement",
+    "Positive punishment",
+    "Negative punishment",
+    "Positive reinforcement"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "\"Negative\" means something is removed and \"reinforcement\" means the behavior increases. The beeping is removed, and buckling up increases.",
+    "options": [
+     "Right: buckling up removes an unpleasant stimulus (the beeping), so buckling up increases.",
+     "Punishment makes a behavior less likely. Buckling up became more likely.",
+     "Negative punishment removes something wanted and lowers a behavior. Ravi lost nothing he wanted.",
+     "Positive reinforcement adds something wanted. Here something unpleasant was taken away."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-2",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A teenager comes home an hour past curfew, and her parents take away her phone for the weekend. She is home on time after that. Which concept is this?",
+   "options": [
+    "Negative punishment",
+    "Negative reinforcement",
+    "Positive punishment",
+    "Extinction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Think of the behavior that changes: coming home late. It decreases (punishment), because a wanted thing was removed (negative).",
+    "options": [
+     "Right: something wanted (the phone) is removed, and the behavior (coming home late) decreases.",
+     "Negative reinforcement removes something unpleasant and increases a behavior. Losing the phone is not removing something unpleasant.",
+     "Positive punishment adds something unpleasant, such as extra chores. Here something was taken away.",
+     "Extinction is no longer reinforcing a behavior. The parents added a consequence instead."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-3",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A coach makes a player run extra laps every time he shows up late to practice, and he starts arriving on time. For the behavior of arriving late, the laps are",
+   "options": [
+    "positive punishment",
+    "negative reinforcement",
+    "negative punishment",
+    "a primary reinforcer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Name the behavior first (being late). It decreases, so this is punishment; something unpleasant was added, so it is positive.",
+    "options": [
+     "Right: an unpleasant consequence is added, and lateness decreases.",
+     "Negative reinforcement removes something unpleasant and increases a behavior. Laps were added, and lateness fell.",
+     "Negative punishment removes something wanted. Laps are added, not taken away.",
+     "A primary reinforcer satisfies a biological need and increases a behavior. Laps lower the behavior."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-4",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A trainer teaching a dog to ring a bell to go outside first gives a treat for looking at the bell, then only for walking to it, then only for touching it with its nose, and finally only for ringing it. Which concept is the trainer using?",
+   "options": [
+    "Shaping",
+    "Instinctive drift",
+    "Higher-order conditioning",
+    "Superstitious behavior"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Shaping reinforces closer and closer approximations of a behavior the animal would rarely produce on its own.",
+    "options": [
+     "Right: reinforcing successive approximations, each closer to the target behavior.",
+     "Instinctive drift is an animal sliding back toward inborn behavior. The trainer is building a new behavior.",
+     "Higher-order conditioning pairs a stimulus with a CS. The trainer is rewarding behaviors the dog makes.",
+     "Superstitious behavior comes from accidental reinforcement. These rewards are planned."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-5",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A basketball player once scored 30 points while wearing mismatched socks. Now she wears mismatched socks to every game, although the socks have nothing to do with how she plays. Which concept explains her habit?",
+   "options": [
+    "Superstitious behavior",
+    "Shaping",
+    "Learned helplessness",
+    "Stimulus discrimination"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reinforcement strengthens whatever came just before it, even when there is no real link. That accidental link is superstitious behavior.",
+    "options": [
+     "Right: a behavior that happened to come just before a reward was reinforced by accident.",
+     "Shaping is planned reinforcement of steps toward a goal. Nobody planned this.",
+     "Learned helplessness is giving up after events seem uncontrollable. She is acting, not giving up.",
+     "Discrimination is responding to one stimulus and not similar ones. It is not about her own behavior being rewarded."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-6",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Trainers taught a pig to drop wooden coins into a piggy bank for food. After a few weeks the pig began dropping the coins and pushing them along the ground with its snout, slowing down, even though this delayed the food. Which concept explains the change?",
+   "options": [
+    "Instinctive drift",
+    "Superstitious behavior",
+    "Spontaneous recovery",
+    "Shaping"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Instinctive drift: learned behaviors can slide back toward behaviors the species does by instinct, which limits what conditioning can teach.",
+    "options": [
+     "Right: the animal drifts back toward an inborn food-getting behavior (rooting) that competes with the trained one.",
+     "Superstitious behavior is reinforced by accident. Rooting was never reinforced; it delayed the food.",
+     "Spontaneous recovery is the return of an extinguished conditioned response, not a slide toward an inborn behavior.",
+     "Shaping builds a target behavior step by step. The rooting moved away from the target."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-7",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Lena failed her first three chemistry quizzes no matter how she studied. On the fourth quiz, with a fair test and a clear study guide, she does not study at all, saying \"Nothing I do matters.\" Which concept explains her behavior?",
+   "options": [
+    "Learned helplessness",
+    "Negative reinforcement",
+    "Instinctive drift",
+    "Shaping"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Learned helplessness: after experiences that seem uncontrollable, a person or animal stops trying to escape or succeed, even when control is possible again.",
+    "options": [
+     "Right: after repeated outcomes she could not control, she stops trying even when trying would now help.",
+     "Negative reinforcement would increase a behavior by removing something unpleasant. Her studying stopped.",
+     "Instinctive drift is a slide toward inborn behavior, such as a pig rooting.",
+     "Shaping builds a behavior step by step through reinforcement. Nothing is being built here."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-8",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A café gives a stamp for every coffee, and 10 stamps earn a free drink. The stamps themselves have no value but customers work to collect them. The stamps are best described as",
+   "options": [
+    "secondary reinforcers",
+    "primary reinforcers",
+    "negative reinforcers",
+    "unconditioned stimuli"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Money, grades, points and stamps are secondary (conditioned) reinforcers: they work because they lead to primary ones.",
+    "options": [
+     "Right: they gained value by being linked to something already rewarding.",
+     "Primary reinforcers satisfy biological needs, such as food or warmth. A stamp does not.",
+     "A negative reinforcer is something unpleasant that is removed. Stamps are added.",
+     "That is a classical conditioning term for a stimulus that triggers a reflex. Stamps trigger no reflex."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-9",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which situation is an example of operant conditioning rather than classical conditioning?",
+   "options": [
+    "A child cleans her room more often after earning praise for it",
+    "A child feels nervous at the sound of a dentist's drill",
+    "A child's mouth waters at the jingle of an ice-cream truck",
+    "A child flinches at a balloon after one popped in her face"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Classical conditioning links two stimuli and changes reflex-like responses; operant conditioning links a behavior to its consequence and changes how often the behavior happens.",
+    "options": [
+     "Right: a voluntary behavior changes because of its consequence.",
+     "This is a reaction to a signal paired with pain: classical conditioning.",
+     "Watering at a signal for food is a classically conditioned response.",
+     "The flinch is a reaction to a stimulus paired with a startling bang: classical conditioning."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-10",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student checks a social media app many times a day. Sometimes a new post is there and often nothing is, and she cannot tell how many checks it will take. Which schedule best describes the reward for checking?",
+   "options": [
+    "Variable-interval",
+    "Fixed-ratio",
+    "Fixed-interval",
+    "Continuous reinforcement"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Posts appear after unpredictable stretches of time, not after a number of checks: a variable-interval schedule, which produces slow, steady checking.",
+    "options": [
+     "Right: new posts arrive after unpredictable amounts of time, and the first check after one arrives is rewarded.",
+     "A fixed-ratio schedule rewards every set number of responses, such as every fifth check. Posts do not arrive that way.",
+     "A fixed-interval schedule rewards the first response after a set time, such as a post every hour on the hour.",
+     "Continuous reinforcement rewards every response. Often there is nothing new."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-11",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A worker is paid \\$5 for every 20 boxes she packs. Which pattern of work does this schedule usually produce?",
+   "options": [
+    "Fast work, with a short pause after each payment",
+    "Slow work that speeds up just before the payment time",
+    "Slow, steady work with no pauses",
+    "Work that stops after the first payment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pay per 20 boxes is a fixed ratio. More responding brings more pay, so the rate is high, with a pause after each reinforcer.",
+    "options": [
+     "Right: a fixed-ratio schedule produces high response rates with a brief pause after each reinforcer.",
+     "That scalloped pattern belongs to a fixed-interval schedule, paid by time.",
+     "That pattern fits a variable-interval schedule.",
+     "A ratio schedule keeps paying for responses, so work continues."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-12",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "operant-conditioning-s1",
+   "q": "Curve D rises slowly after each reinforcer and then steeply just before the next one, every 5 minutes. Which schedule is curve D?",
+   "options": [
+    "Fixed-interval",
+    "Variable-ratio",
+    "Fixed-ratio",
+    "Variable-interval"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Scallops (slow, then fast, then a pause at each set time) are the signature of a fixed-interval schedule.",
+    "options": [
+     "Right: responding is slow after a reinforcer and speeds up as the set time approaches, giving a scalloped curve.",
+     "A variable-ratio schedule gives the fastest, steadiest curve, with no pauses. That is curve A.",
+     "A fixed-ratio schedule gives fast responding with brief flat pauses after each reinforcer. That is curve B.",
+     "A variable-interval schedule gives slow, steady responding with no scallops. That is curve C."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-13",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "operant-conditioning-s1",
+   "q": "Which curve most likely shows a variable-ratio schedule?",
+   "options": [
+    "Curve A, the steepest, with no pauses",
+    "Curve B, steep with short flat steps",
+    "Curve C, a slow steady line",
+    "Curve D, with scallops"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On a variable ratio every press could be the one that pays, so there is no reason to pause: the fastest, steadiest curve.",
+    "options": [
+     "Right: reward after an unpredictable number of presses keeps responding fast and steady.",
+     "Short pauses after each reward are typical of a fixed ratio.",
+     "Slow steady responding fits a variable interval: more presses do not bring rewards sooner.",
+     "Scallops fit a fixed interval."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-14",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "operant-conditioning-s1",
+   "q": "How many lever presses did the rat on curve C make per minute, on average, over the 30 minutes? (Read the total at 30 minutes.)",
+   "why": {
+    "correct": "Curve C reaches 450 presses at 30 minutes: $\\frac{450}{30} = 15$ presses per minute."
+   },
+   "numeric": {
+    "from": {
+     "fn": "div",
+     "args": [
+      450,
+      30
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 450,
+      "why": "450 is the total number of presses. Divide it by the 30 minutes to get presses per minute."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        1140,
+        30
+       ]
+      },
+      "why": "38 per minute is curve A. Curve C ends at 450 presses."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-15",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "operant-conditioning-s1",
+   "q": "Curves A and C each reward presses on an unpredictable basis. Why is curve A so much steeper than curve C?",
+   "options": [
+    "On A, more presses bring the reward sooner; on C, only time does",
+    "Rat A was hungrier, since it received fewer rewards",
+    "Curve C is on continuous reinforcement",
+    "Curve A shows extinction, which raises responding"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ratio schedules reward the number of responses, so responding faster earns more. Interval schedules reward the first response after time passes, so faster responding earns little.",
+    "options": [
+     "Right: ratio schedules pay for responses, interval schedules pay for the passage of time.",
+     "Nothing in the data shows hunger, and the difference matches the known effect of schedule type.",
+     "Continuous reinforcement rewards every press. Curve C is described as unpredictable.",
+     "Extinction lowers responding over time; curve A rises steadily."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-16",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "operant-conditioning-s2",
+   "q": "Which research method did the researchers use?",
+   "options": [
+    "An experiment",
+    "A correlational study",
+    "Naturalistic observation",
+    "A case study"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A manipulated variable (the schedule) plus random assignment makes it an experiment.",
+    "options": [
+     "Right: they manipulated the reward schedule and randomly assigned students to the two groups.",
+     "A correlational study measures variables as they occur. Here the schedule was manipulated.",
+     "Students were placed in a controlled game the researchers designed, not watched in daily life.",
+     "A case study looks closely at one person or a few. This compared two groups of 20."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-17",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "operant-conditioning-s2",
+   "q": "Which concept best explains why the some-times group pressed longer after points stopped?",
+   "options": [
+    "Partial reinforcement makes behavior more resistant to extinction",
+    "Continuous reinforcement makes behavior more resistant to extinction",
+    "Negative reinforcement made the some-times group press more",
+    "Learned helplessness made the other group quit early"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Partial (intermittent) reinforcement produces behavior that lasts longer in extinction than continuous reinforcement does.",
+    "options": [
+     "Right: when rewards were already unpredictable, a run of no rewards does not signal that rewards have ended.",
+     "The every-time group, on continuous reinforcement, quit sooner. Continuous reinforcement gives fast learning but fast extinction.",
+     "No unpleasant stimulus was removed when students pressed.",
+     "Learned helplessness follows uncontrollable events. The every-time group had full control until points stopped."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-18",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "operant-conditioning-s2",
+   "q": "Five students in the some-times group made 58, 71, 64, 90 and 82 presses before quitting. What is the median number of presses for these five students?",
+   "why": {
+    "correct": "In order: 58, 64, 71, 82, 90. The middle value is 71 presses."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       58,
+       71,
+       64,
+       90,
+       82
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         58,
+         71,
+         64,
+         90,
+         82
+        ]
+       ]
+      },
+      "why": "73 is the mean. The median is the middle value once the numbers are in order."
+     },
+     {
+      "value": 64,
+      "why": "64 is the middle of the list as written. Put the values in order first: 58, 64, 71, 82, 90."
+     },
+     {
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         58,
+         71,
+         64,
+         90,
+         82
+        ]
+       ]
+      },
+      "why": "32 is the range (90 minus 58). The median is the middle value in order."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-19",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "operant-conditioning-s2",
+   "q": "State the operational definition of persistence in this study.",
+   "why": {
+    "correct": "Persistence was the count of presses after points stopped, which is how this study measured it."
+   },
+   "specific": {
+    "frame": "Persistence was measured as ___ after ___.",
+    "write": {
+     "context": [
+      "press",
+      "quit"
+     ]
+    },
+    "model": "Persistence was measured as the number of button presses a student made before choosing to quit, up to 200, after the presses stopped winning points.",
+    "slots": {
+     "opdef": {
+      "label": "What was counted",
+      "options": [
+       "the number of button presses before choosing to quit, up to 200",
+       "how determined each student felt",
+       "the number of points each student won"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A feeling was not measured; the study counted presses.",
+       "2": "Points were won before the extinction phase; they are part of the training, not the measure of persistence."
+      }
+     },
+     "when": {
+      "label": "When",
+      "options": [
+       "presses stopped winning points",
+       "the first 60 presses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The first 60 presses were the training phase. Persistence was measured after rewards stopped."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

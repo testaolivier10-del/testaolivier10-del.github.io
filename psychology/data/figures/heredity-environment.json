@@ -1,0 +1,12 @@
+{
+ "heredity-environment-designs": {
+  "file": "figures/heredity-environment-designs.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left panel, twin study: identical twins share all their genes; fraternal twins share about half, like other siblings. Both kinds grow up in the same home at the same time. If identical twins are more alike on a trait than fraternal twins, genes contribute to differences in that trait. Right panel, adoption study: an adopted child shares genes with the biological parents and a home with the adoptive parents. Being more like the biological parents is evidence for heredity; being more like the adoptive parents is evidence for environment. A note says most traits show both."
+ }
+}

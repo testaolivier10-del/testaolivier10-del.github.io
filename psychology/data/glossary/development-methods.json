@@ -1,0 +1,20 @@
+{
+ "developmental-psychology": {
+  "def": "The study of how people change, physically, mentally and socially, and how they stay the same, from conception to death."
+ },
+ "stability-change": {
+  "def": "A theme in development: does a trait such as shyness stay steady in a person over time (stability), or does it shift as they grow (change)? Research usually finds some of each."
+ },
+ "continuity": {
+  "def": "A theme in development: does change happen gradually and smoothly (continuous development) or in distinct steps or stages, each a different way of functioning (discontinuous development)?"
+ },
+ "cross-sectional": {
+  "def": "A research design that compares people of different ages at the same point in time. It is fast, but age groups also differ in birth year, so cohort effects can creep in."
+ },
+ "longitudinal": {
+  "def": "A research design that follows and retests the same people over a long period. It shows change within individuals but is slow, costly and loses participants (attrition)."
+ },
+ "cohort-effect": {
+  "def": "A difference between age groups caused by the times they grew up in (schooling, health care, technology, history) rather than by age itself; a key weakness of cross-sectional studies."
+ }
+}

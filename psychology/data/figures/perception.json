@@ -1,0 +1,22 @@
+{
+ "perception-gestalt": {
+  "file": "figures/perception-gestalt.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four panels. Proximity: dots set close together in pairs are seen as three columns of pairs. Similarity: an evenly spaced grid of dots in alternating blue and orange rows is seen as rows of the same color. Closure: a broken circle and a square drawn with gaps are seen as a whole circle and a whole square. Figure-ground: a white vase shape on a black background can be seen as a vase (the figure) or as two black faces in profile looking at each other; what counts as figure and ground flips."
+ },
+ "perception-figure-set": {
+  "file": "figures/perception-figure-set.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Figure A: a grid of six columns of dots. The columns alternate black and white dots, and the columns are spaced in pairs, so a black column sits close to a white column. Figure B: a road narrows toward the horizon; fence posts shrink and crowd together toward the horizon; a large blue person stands in the foreground, a small blue person of the same shape stands far down the road, and an orange person stands partly hidden behind a box. Figure C: two lines converge toward the top like railroad tracks, with evenly spaced cross lines; two orange bars of exactly equal length sit between them, one high and one low, and the upper bar looks longer."
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "operant-conditioning": {
+  "def": "Learning in which a voluntary behavior becomes more or less likely depending on the consequences that follow it. Also called instrumental conditioning."
+ },
+ "law-of-effect": {
+  "def": "Thorndike's principle that behaviors followed by satisfying consequences become more likely and behaviors followed by unpleasant ones become less likely."
+ },
+ "reinforcement": {
+  "def": "Any consequence that makes the behavior it follows more likely. A reinforcer is the stimulus that does this."
+ },
+ "positive-reinforcement": {
+  "def": "Adding a wanted stimulus after a behavior, which makes the behavior more likely (praise after homework)."
+ },
+ "negative-reinforcement": {
+  "def": "Removing an unpleasant stimulus after a behavior, which makes the behavior more likely (buckling up stops the beeping). It increases behavior; it is not punishment."
+ },
+ "punishment": {
+  "def": "Any consequence that makes the behavior it follows less likely."
+ },
+ "positive-punishment": {
+  "def": "Adding an unpleasant stimulus after a behavior, which makes the behavior less likely (extra laps for being late)."
+ },
+ "negative-punishment": {
+  "def": "Removing a wanted stimulus after a behavior, which makes the behavior less likely (losing a phone after missing curfew)."
+ },
+ "primary-reinforcer": {
+  "def": "A reinforcer that satisfies a biological need and works without learning, such as food, water or warmth."
+ },
+ "secondary-reinforcer": {
+  "def": "A reinforcer that has value because it is linked to primary reinforcers, such as money, grades, points or praise. Also called a conditioned reinforcer."
+ },
+ "shaping": {
+  "def": "Teaching a new behavior by reinforcing successive approximations: steps that come closer and closer to the target behavior."
+ },
+ "instinctive-drift": {
+  "def": "The tendency of a trained animal to slide back toward inborn, species-typical behavior, even when that behavior delays reinforcement."
+ },
+ "superstitious": {
+  "def": "Superstitious behavior: a behavior strengthened by accidental reinforcement, because a reward happened to follow it although the behavior did not cause the reward."
+ },
+ "learned-helplessness": {
+  "def": "Passive giving up that follows repeated unpleasant events a person or animal could not control, even after control becomes possible."
+ },
+ "continuous-reinforcement": {
+  "def": "Reinforcing every correct response. Learning is fast, but the behavior extinguishes quickly when reinforcement stops."
+ },
+ "partial-reinforcement": {
+  "def": "Reinforcing only some responses (intermittent reinforcement). Learning is slower, but the behavior is much more resistant to extinction."
+ },
+ "fixed-ratio": {
+  "def": "A schedule that reinforces after a set number of responses (every 20 boxes packed). It produces high response rates with a brief pause after each reinforcer."
+ },
+ "variable-ratio": {
+  "def": "A schedule that reinforces after an unpredictable number of responses (a slot machine). It produces the highest, steadiest response rates and the most resistance to extinction."
+ },
+ "fixed-interval": {
+  "def": "A schedule that reinforces the first response after a set amount of time. Responding speeds up as the time approaches and drops after each reinforcer, a scalloped pattern."
+ },
+ "variable-interval": {
+  "def": "A schedule that reinforces the first response after an unpredictable amount of time (checking for new messages). It produces slow, steady responding."
+ }
+}

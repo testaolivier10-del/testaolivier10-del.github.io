@@ -1,0 +1,12 @@
+{
+ "social-emotional-development-ecological": {
+  "file": "figures/social-emotional-development-ecological.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Nested ovals around a child. Microsystem, closest: family, classroom, friends. Mesosystem: the links between them, such as parents talking with teachers. Exosystem: settings the child is not in that still matter, such as a parent’s workplace, the school board and media. Macrosystem, outermost: culture, values, laws and the economy. An arrow along the bottom shows the chronosystem: every layer changes over time, through life changes and historical events."
+ }
+}

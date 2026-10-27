@@ -1,0 +1,92 @@
+{
+ "scientific-method": {
+  "def": "A way of answering questions with evidence: ask a question, form a testable hypothesis, collect data systematically, and accept or revise ideas based on what the data show. Evidence gathered by observation or measurement is called empirical evidence."
+ },
+ "psych-perspective": {
+  "def": "A broad way of explaining behavior and mental processes: biological (the body and brain), behavioral (learning from the environment and consequences), cognitive (thinking and memory), psychodynamic (inner conflicts and motives outside awareness), humanistic (growth and free choice), sociocultural (culture and other people) and evolutionary (traits that helped survival and reproduction)."
+ },
+ "science-theory": {
+  "def": "In science, a broad explanation that organizes many observations and predicts new ones. A theory is tested and revised, not a guess."
+ },
+ "hypothesis": {
+  "def": "A specific, testable prediction about how variables are related, stated so that a study’s results could support or refute it."
+ },
+ "experiment": {
+  "def": "A research method in which the researcher manipulates an independent variable and randomly assigns participants to conditions, then measures a dependent variable. It is the only method that supports cause-and-effect conclusions."
+ },
+ "independent-variable": {
+  "def": "In an experiment, the variable the researcher manipulates (for example, which drink a participant gets)."
+ },
+ "dependent-variable": {
+  "def": "In an experiment, the variable that is measured to see whether the independent variable changed it (for example, reaction time)."
+ },
+ "operational-definition": {
+  "def": "A statement of exactly how a variable is measured or manipulated in a particular study, such as \"the number of words recalled in two minutes\"."
+ },
+ "experimental-group": {
+  "def": "The group in an experiment that receives the treatment, the level of the independent variable being tested."
+ },
+ "control-group": {
+  "def": "The group in an experiment that does not receive the treatment (or receives a placebo), giving a baseline for comparison."
+ },
+ "random-assignment": {
+  "def": "Using chance, such as a coin flip, to decide which condition each participant is in, so the groups start out alike on average."
+ },
+ "confounding-variable": {
+  "def": "A variable other than the independent variable that differs between conditions and could explain the results."
+ },
+ "placebo": {
+  "def": "An inactive substance or fake treatment that looks like the real one. The placebo effect is a change caused by expecting a treatment to work."
+ },
+ "single-blind": {
+  "def": "A procedure in which participants do not know which condition they are in."
+ },
+ "double-blind": {
+  "def": "A procedure in which neither the participants nor the researchers who collect the data know who is in which condition."
+ },
+ "experimenter-bias": {
+  "def": "When a researcher’s expectations influence how a study is run or how results are recorded; double-blind procedures guard against it."
+ },
+ "correlation": {
+  "def": "A relationship between two variables, so that knowing one helps predict the other. A correlation alone does not show that one causes the other."
+ },
+ "correlational-research": {
+  "def": "A research method that measures two or more variables as they naturally occur, to see whether and how strongly they are related. It can predict but cannot show cause and effect."
+ },
+ "third-variable": {
+  "def": "An outside variable that affects both of two correlated variables and may explain why they are related."
+ },
+ "case-study": {
+  "def": "An in-depth study of one person or a small group, often someone with a rare condition. It can suggest hypotheses, but the case may not be typical."
+ },
+ "naturalistic-observation": {
+  "def": "Watching and recording behavior in its natural setting without trying to change it."
+ },
+ "survey": {
+  "def": "A research method that asks many people to report their own attitudes, beliefs or behaviors, through questionnaires or interviews."
+ },
+ "self-report-bias": {
+  "def": "The tendency to answer questions in a way that makes oneself look good, which distorts self-reports. Also called social desirability bias."
+ },
+ "wording-effect": {
+  "def": "A change in people’s answers caused by how a question is phrased."
+ },
+ "likert-scale": {
+  "def": "A rating scale that asks how strongly a person agrees or disagrees with a statement, for example from 1 (strongly disagree) to 5 (strongly agree)."
+ },
+ "quantitative-data": {
+  "def": "Data recorded as numbers, such as scores, counts or times."
+ },
+ "qualitative-data": {
+  "def": "Data recorded as words or descriptions, such as interview answers, later sorted into themes."
+ },
+ "meta-analysis": {
+  "def": "A statistical method that combines the results of many studies on the same question to estimate the overall effect."
+ },
+ "replication": {
+  "def": "Repeating a study, often with new participants, to see whether its result holds. Findings that fail to replicate are treated as doubtful; the replication crisis is the discovery that many published psychology findings did not."
+ },
+ "peer-review": {
+  "def": "The process in which other experts evaluate a study’s methods and conclusions before a journal publishes it."
+ }
+}

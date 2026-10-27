@@ -1,0 +1,32 @@
+{
+ "brain-lobes": {
+  "file": "figures/brain-lobes.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 540,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Side view of the left hemisphere, front on the left. Frontal lobe at the front with the motor cortex as a strip at its back edge; the central sulcus; then the somatosensory cortex and the parietal lobe; the occipital lobe at the back; the temporal lobe below the lateral fissure. Broca's area is in the lower frontal lobe, Wernicke's area in the upper back of the temporal lobe. The cerebellum is under the back of the brain and the brainstem runs down from its middle."
+ },
+ "brain-lobes-letters": {
+  "file": "figures/brain-lobes-letters.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 540,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The side view of the left hemisphere with six regions marked by letters and no names: A the front of the frontal lobe, B the motor cortex strip, C the occipital lobe, D Broca's area, E Wernicke's area, F the cerebellum."
+ },
+ "brain-inner": {
+  "file": "figures/brain-inner.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 560,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The brain cut down the middle, front on the left. An arched band, the corpus callosum, joins the hemispheres. Under it is the thalamus; below and in front of that the hypothalamus with the pituitary gland hanging beneath. Drawn dashed because they lie deeper, inside the temporal lobe: the amygdala and, behind it, the hippocampus. The reward center lies deep below the front of the corpus callosum. The prefrontal cortex is at the front. The brainstem runs down to the spinal cord, the medulla at its base and the reticular activating system through its core; the cerebellum sits behind it."
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "topic": "cognitive-development",
+ "hook": "Pour juice from a short, wide glass into a tall, thin one, and a 4-year-old will often insist there is more juice now. An 8-year-old will roll her eyes: you only poured it. Same juice, same eyes. What changed between 4 and 8 is how the child thinks.",
+ "prereq": [
+  {
+   "q": "A toddler calls a cat a \"doggy\" because it has four legs and fur. What is she doing?",
+   "options": [
+    "Assimilation: fitting something new into an existing schema",
+    "Accommodation: changing a schema",
+    "Using a heuristic",
+    "Showing a reflex"
+   ],
+   "correct": 0,
+   "why": "She fits the cat into her existing \"doggy\" schema.",
+   "review": "thinking"
+  },
+  {
+   "q": "What does an intelligence test measure in a person compared with others of the same age?",
+   "options": [
+    "Mental ability relative to peers",
+    "Personality traits",
+    "Reaction time only",
+    "Memories from early childhood"
+   ],
+   "correct": 0,
+   "why": "Intelligence tests compare a person’s performance with others of the same age.",
+   "review": "intelligence"
+  },
+  {
+   "q": "Which design compares different age groups at one time?",
+   "options": [
+    "Cross-sectional",
+    "Longitudinal",
+    "Case study",
+    "Experiment"
+   ],
+   "correct": 0,
+   "why": "Cross-sectional studies test different ages at once.",
+   "review": "development-methods"
+  }
+ ],
+ "figure": {
+  "figure": "cognitive-development-conservation",
+  "caption": "The liquid conservation task, and Piaget’s four stages with typical ages."
+ },
+ "chain": [
+  {
+   "cause": "Children act on the world and meet things their schemas do not fit",
+   "effect": "they assimilate what fits and accommodate their schemas when it does not"
+  },
+  {
+   "cause": "Infants learn through senses and actions",
+   "effect": "they develop object permanence by about their first birthday"
+  },
+  {
+   "cause": "Preschoolers think with symbols but focus on one feature at a time",
+   "effect": "they play make-believe, but are egocentric and fail conservation"
+  },
+  {
+   "cause": "School-age children reason logically about concrete things",
+   "effect": "they conserve; by adolescence many reason about abstract and hypothetical ideas"
+  },
+  {
+   "cause": "Support from a more skilled person targets tasks in the zone of proximal development",
+   "effect": "children learn more than they could alone (Vygotsky)"
+  }
+ ],
+ "ideas": [
+  "Piaget: children build understanding by <b>assimilating</b> new experiences and <b>accommodating</b> their schemas, moving through four stages.",
+  "<b>Sensorimotor</b> (birth to about 2): <b>object permanence</b>. <b>Preoperational</b> (about 2 to 7): make-believe play, <b>egocentrism</b>, no <b>conservation</b>. <b>Concrete operational</b> (7 to 11): logic about real things. <b>Formal operational</b> (12+): abstract thought.",
+  "<b>Theory of mind</b>, understanding that others have their own beliefs, usually appears around age 4 to 5.",
+  "Vygotsky: learning happens in the <b>zone of proximal development</b> with <b>scaffolding</b> from others. In adulthood, <b>crystallized intelligence</b> holds or grows while <b>fluid intelligence</b> declines; <b>dementia</b> is disease, not normal aging."
+ ],
+ "misconception": {
+  "wrong": "A 4-year-old who says the tall glass has more juice is not paying attention.",
+  "right": "She is attending closely, to the height. Preoperational thinkers focus on one feature and do not yet mentally reverse the pour, so they do not conserve."
+ },
+ "check": [
+  "psy-cognitive-development-1",
+  "psy-cognitive-development-2",
+  "psy-cognitive-development-3",
+  "psy-cognitive-development-4",
+  "psy-cognitive-development-13",
+  "psy-cognitive-development-14",
+  "psy-cognitive-development-15"
+ ],
+ "summary": "Piaget described four stages of thinking, from object permanence in infancy, through the egocentrism and failed conservation of the preschool years, to logical and then abstract thought; research supports his order more than his ages. Vygotsky added that learning moves forward with scaffolding in the zone of proximal development. In adulthood, crystallized intelligence holds while fluid intelligence slowly declines, and dementia is a disease, not normal aging."
+}

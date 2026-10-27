@@ -1,0 +1,71 @@
+{
+ "topic": "language-development",
+ "hook": "A 3-year-old announces, \"I goed to the park and saw two gooses!\" Nobody ever said \"goed\" to her. It is a mistake, but a brilliant one: it shows she has worked out a rule of English all by herself.",
+ "prereq": [
+  {
+   "q": "What is a sensitive period?",
+   "options": [
+    "A window when learning is easiest, though still possible later",
+    "A window that must not be missed",
+    "A substance that harms development before birth",
+    "A reflex present at birth"
+   ],
+   "correct": 0,
+   "why": "Learning is easiest during a sensitive period but still possible later.",
+   "review": "physical-development"
+  },
+  {
+   "q": "A toddler fits a new animal into her \"doggy\" category. What is this?",
+   "options": [
+    "Assimilation",
+    "Accommodation",
+    "Conservation",
+    "Object permanence"
+   ],
+   "correct": 0,
+   "why": "Fitting the new into an existing schema is assimilation.",
+   "review": "cognitive-development"
+  }
+ ],
+ "figure": {
+  "figure": "language-development-milestones",
+  "caption": "From cooing to sentences in the first two and a half years."
+ },
+ "chain": [
+  {
+   "cause": "Babies hear the speech around them",
+   "effect": "by about their first birthday they tune in to the phonemes of their own language"
+  },
+  {
+   "cause": "Cooing gives way to babbling around 6 months",
+   "effect": "babbling comes to sound like the home language"
+  },
+  {
+   "cause": "Around 12 months, single words carry whole ideas",
+   "effect": "by about 2, children combine key words in telegraphic speech"
+  },
+  {
+   "cause": "Children work out grammar rules from what they hear",
+   "effect": "they overgeneralize rules (\"goed\") and generate sentences they never heard"
+  }
+ ],
+ "ideas": [
+  "Language is built in layers: <b>phonemes</b> (sounds) form <b>morphemes</b> (units of meaning), which form words; <b>grammar</b> includes <b>semantics</b> (meaning) and <b>syntax</b> (word order).",
+  "Language is <b>generative</b>: a limited set of rules can produce an unlimited number of new sentences.",
+  "The sequence: <b>cooing</b> (about 2 months), <b>babbling</b> (about 6 months), the <b>one-word stage</b> (about 12 months), <b>telegraphic speech</b> (about 18 to 24 months), then full sentences.",
+  "<b>Overgeneralization</b> (\"goed,\" \"mouses\") shows a child has learned a rule and applies it too widely."
+ ],
+ "misconception": {
+  "wrong": "Children learn to talk by copying the exact sentences they hear.",
+  "right": "Children work out rules. That is why they say things adults never say, such as \"goed\" and \"mouses,\" and why they can create new sentences."
+ },
+ "check": [
+  "psy-language-development-1",
+  "psy-language-development-2",
+  "psy-language-development-3",
+  "psy-language-development-4",
+  "psy-language-development-12",
+  "psy-language-development-13"
+ ],
+ "summary": "Language has layers, from phonemes to morphemes to words, organized by grammar: semantics for meaning and syntax for order. It is generative, so rules make endless new sentences. Children move from cooing to babbling, single words and telegraphic speech, tuning in to their home language’s sounds in the first year and overgeneralizing grammar rules as they learn them."
+}

@@ -1,0 +1,126 @@
+{
+ "figure": "brain-inner",
+ "labels": [
+  {
+   "id": "cc",
+   "name": "Corpus callosum",
+   "box": [
+    356,
+    123,
+    128,
+    23
+   ],
+   "concept": "corpus-callosum"
+  },
+  {
+   "id": "thalamus",
+   "name": "Thalamus",
+   "box": [
+    606,
+    233,
+    72,
+    23
+   ],
+   "concept": "thalamus"
+  },
+  {
+   "id": "hypothalamus",
+   "name": "Hypothalamus",
+   "box": [
+    146,
+    313,
+    104,
+    23
+   ],
+   "concept": "hypothalamus"
+  },
+  {
+   "id": "pituitary",
+   "name": "Pituitary gland",
+   "box": [
+    146,
+    355,
+    128,
+    23
+   ],
+   "concept": "pituitary"
+  },
+  {
+   "id": "amygdala",
+   "name": "Amygdala (deep, in the temporal lobe)",
+   "box": [
+    116,
+    415,
+    231,
+    41
+   ],
+   "concept": "amygdala"
+  },
+  {
+   "id": "hippocampus",
+   "name": "Hippocampus (deep, in the temporal lobe)",
+   "box": [
+    586,
+    303,
+    231,
+    41
+   ],
+   "concept": "hippocampus"
+  },
+  {
+   "id": "reward",
+   "name": "Reward center (nucleus accumbens, deep)",
+   "box": [
+    56,
+    233,
+    207,
+    41
+   ],
+   "concept": "reward-center"
+  },
+  {
+   "id": "prefrontal",
+   "name": "Prefrontal cortex",
+   "box": [
+    56,
+    133,
+    144,
+    23
+   ],
+   "concept": "prefrontal"
+  },
+  {
+   "id": "ras",
+   "name": "Reticular activating system (core of the brainstem)",
+   "box": [
+    236,
+    471,
+    167,
+    59
+   ],
+   "concept": "reticular"
+  },
+  {
+   "id": "medulla",
+   "name": "Medulla",
+   "box": [
+    536,
+    483,
+    64,
+    23
+   ],
+   "concept": "medulla"
+  },
+  {
+   "id": "cerebellum",
+   "name": "Cerebellum",
+   "box": [
+    686,
+    423,
+    88,
+    23
+   ],
+   "concept": "cerebellum"
+  }
+ ]
+}

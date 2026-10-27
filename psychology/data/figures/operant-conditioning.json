@@ -1,0 +1,12 @@
+{
+ "operant-conditioning-grid": {
+  "file": "figures/operant-conditioning-grid.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A 2 by 2 grid: positive means a stimulus is added and negative means one is removed; reinforcement makes a behavior more likely and punishment less likely, with an everyday example in each cell."
+ }
+}

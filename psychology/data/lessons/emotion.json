@@ -1,0 +1,72 @@
+{
+ "topic": "emotion",
+ "hook": "A car horn blares behind you. Your heart slams, your hands shake, and a second later you feel scared. Did you feel afraid because your heart raced, did your heart race because you were afraid, or did both happen at once? Psychologists have argued about this order for more than a century, and the exam asks you to recognize each sequence in a scenario.",
+ "prereq": [
+  {
+   "q": "Which part of the nervous system speeds the heart and breathing in a frightening moment?",
+   "options": [
+    "Sympathetic nervous system",
+    "Parasympathetic nervous system",
+    "Somatic nervous system",
+    "Spinal reflex arc"
+   ],
+   "correct": 0,
+   "why": "The sympathetic division arouses the body for action; the parasympathetic calms it afterward.",
+   "review": "nervous-system"
+  },
+  {
+   "q": "A study finds a difference that is \"not statistically significant.\" What does that mean?",
+   "options": [
+    "The difference could plausibly be due to chance",
+    "The difference is large and important",
+    "The study used random sampling",
+    "The two variables are correlated"
+   ],
+   "correct": 0,
+   "why": "Not significant means the result could plausibly have happened by chance; it says nothing about size or importance.",
+   "review": "stats-significance"
+  }
+ ],
+ "figure": {
+  "figure": "emotion-sequences",
+  "caption": "Three sequences for emotion; the exam asks you to match a scenario to its sequence."
+ },
+ "chain": [
+  {
+   "cause": "A frightening event happens",
+   "effect": "the sympathetic nervous system produces physiological arousal: racing heart, fast breathing, sweating"
+  },
+  {
+   "cause": "In one view, you notice that arousal",
+   "effect": "and the feeling follows from it (arousal first, then emotion)"
+  },
+  {
+   "cause": "In another view, the brain signals body and cortex at once",
+   "effect": "so arousal and the feeling happen together, neither causing the other"
+  },
+  {
+   "cause": "In a third view, you appraise the situation and label the arousal",
+   "effect": "the same arousal can become excitement or fear, depending on the label"
+  }
+ ],
+ "ideas": [
+  "Three sequences: <b>arousal first</b>, then the feeling; arousal and feeling <b>at the same time</b>; arousal plus a <b>cognitive appraisal</b>, then the feeling. Some reactions are fast, before appraisal.",
+  "<b>Physiological arousal</b> comes mainly from the sympathetic nervous system. The amygdala helps detect threats quickly.",
+  "The <b>facial feedback hypothesis</b> says expressions can shape feelings. Evidence is mixed: large replications of the pen-in-teeth study found no reliable effect.",
+  "Some <b>universal emotions</b> are recognized across cultures above chance, but better within one's own culture. <b>Display rules</b> govern how much is shown. <b>Broaden-and-build</b>: positive emotions widen thinking and build resources."
+ ],
+ "misconception": {
+  "wrong": "The facial feedback hypothesis is proven: smiling reliably makes you happier.",
+  "right": "Evidence is mixed. A classic pen-in-teeth study reported an effect, but a large replication across 17 labs found none, and later multi-lab work found at most small effects for some methods. Teach it as a hypothesis with mixed support."
+ },
+ "check": [
+  "psy-emotion-1",
+  "psy-emotion-2",
+  "psy-emotion-3",
+  "psy-emotion-10",
+  "psy-emotion-11",
+  "psy-emotion-12",
+  "psy-emotion-6"
+ ],
+ "summary": "Emotion combines physiological arousal, a felt experience and expression. Theories differ in sequence: arousal first, then the feeling; arousal and feeling at the same time; or arousal plus a cognitive appraisal that labels it, with some fast reactions coming before appraisal. The facial feedback hypothesis has mixed evidence. Some emotions are recognized across cultures above chance, though better within one's own culture, and display rules shape expression. Broaden-and-build theory says positive emotions widen thinking and build resources."
+}

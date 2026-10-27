@@ -1,0 +1,618 @@
+{
+ "stimuli": {
+  "emotion-s1": {
+   "kind": "visual",
+   "title": "Three sequences for emotion",
+   "figure": "emotion-sequences"
+  },
+  "emotion-s2": {
+   "kind": "data",
+   "title": "Recognizing facial expressions across cultures",
+   "invented": true,
+   "text": "<p>Researchers showed 60 photos of posed facial expressions (six emotions) to 40 adults in each of two countries. Half of the photos showed people from the viewer's own culture and half from the other culture. Each viewer chose one of six emotion words for each photo, so guessing would be right about 17% of the time.</p>",
+   "plot": {
+    "label": "Bar graph: mean percent correct, own-culture faces 84, other-culture faces 71, chance 17 (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Own-culture faces",
+     "Other-culture faces",
+     "Chance"
+    ],
+    "values": [
+     84,
+     71,
+     17
+    ],
+    "yLabel": "Mean % correct",
+    "xLabel": "Photo type"
+   }
+  },
+  "emotion-s3": {
+   "kind": "study",
+   "title": "Does holding a pen in your teeth make cartoons funnier?",
+   "invented": true,
+   "study": {
+    "introduction": "An early, well-known study reported that people rated cartoons as funnier when they held a pen in their teeth, which forces a smile-like expression, than when they held it in their lips, which prevents smiling. This replication tested the same idea in a larger sample.",
+    "participants": "400 undergraduate students (ages 18 to 24) at three universities in the Netherlands and Germany. All gave informed consent. An institutional review board at each university approved the study.",
+    "method": "Students were randomly assigned to hold a pen either in their teeth (smile condition) or in their lips (no-smile condition). Without being told the purpose, they rated four cartoons from 0 (not at all funny) to 9 (very funny). At the end, each student was told the real purpose of the pen.",
+    "results": "The mean funniness rating was 4.6 in the smile condition and 4.5 in the no-smile condition. The difference was not statistically significant."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-emotion-1",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Walking home at night, Nia hears footsteps behind her. Her heart races, and only then, noticing her pounding heart, does she realize she feels afraid. Which sequence of emotion does her experience fit?",
+   "options": [
+    "The feeling of fear comes first and then causes the body to react",
+    "Body arousal comes first, and noticing it produces the feeling",
+    "Arousal and the feeling happen at the same time, neither causing the other",
+    "A display rule tells her which feeling is acceptable to show"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "One view says we feel an emotion because we notice our body's arousal.",
+    "options": [
+     "In her account the body reacts first and the feeling follows.",
+     "Right: arousal, then awareness of the arousal, then the emotion.",
+     "She describes the feeling coming after she noticed her racing heart.",
+     "Display rules govern showing an emotion, not the order in which it arises."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-2",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A researcher argues that when a snake appears, the brain sends signals to the body (racing heart) and to the cortex (the feeling of fear) at the same moment. Which sequence is she describing?",
+   "options": [
+    "Arousal first, then the feeling",
+    "A cognitive appraisal first, then arousal, then the conscious feeling",
+    "Arousal and the feeling occur together, neither causing the other",
+    "The feeling first, then a facial expression that matches it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A second view says the brain triggers arousal and the conscious feeling at the same time.",
+    "options": [
+     "She says neither comes first.",
+     "She does not describe a thinking step that labels the arousal.",
+     "Right: signals go to body and cortex at the same time.",
+     "The claim is about body arousal and feeling, not facial expression."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-3",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two students feel the same racing heart and sweaty palms before a concert. One thinks, \"I'm so excited!\" and the other thinks, \"I'm terrified.\" Which idea best explains why they report different emotions?",
+   "options": [
+    "The arousal is labeled by an appraisal of the situation",
+    "Arousal and feeling occur at the same time, so labels do not matter",
+    "The facial feedback hypothesis",
+    "Display rules for performers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A third view adds a cognitive label: arousal plus the appraisal of the situation produce the emotion.",
+    "options": [
+     "Right: the same arousal is labeled differently, so they feel different emotions.",
+     "This view leaves no role for labeling, but the labels here make the difference.",
+     "Nothing in the scenario involves their facial expressions changing their feelings.",
+     "Display rules affect what emotion is shown, not what is felt."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-4",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A person sees a car swerve toward her, and before she can think, she jumps back and feels a jolt of fear. Later, she realizes it was a toy car. Which point does this support?",
+   "options": [
+    "A conscious appraisal of the situation comes before each emotion felt",
+    "Emotions are learned display rules",
+    "Arousal and appraisal are the same process",
+    "Some emotional reactions occur quickly, before conscious appraisal"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Some emotional responses take a fast route that bypasses conscious thought; appraisal can come after.",
+    "options": [
+     "Her fear came before she had time to think about the situation.",
+     "Display rules affect showing emotion, not her immediate fear.",
+     "Her later realization is an appraisal separate from the fast reaction.",
+     "Right: a fast pathway through the amygdala can trigger fear before thinking catches up."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-5",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Before a job interview, Rafi forces himself to smile and finds he feels a little more relaxed. Which concept does he believe explains this?",
+   "options": [
+    "The facial feedback hypothesis",
+    "Cultural display rules for interviews",
+    "Cognitive appraisal",
+    "Universal emotions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The facial feedback hypothesis: expressions feed back to change emotional experience (mixed evidence).",
+    "options": [
+     "Right: the idea that facial expressions can influence the emotion felt. Evidence for it is mixed, and effects are small at best.",
+     "Display rules are cultural norms for showing emotion, not a claim that expressions change feelings.",
+     "He changes his face, not his interpretation of the situation.",
+     "Universal emotions concern recognition across cultures, not changing your own feeling."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-6",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At a funeral in her community, Hana weeps loudly, as is expected there. In her new workplace abroad, she hides her sadness at a coworker's funeral because quiet grief is expected. Which concept explains the difference?",
+   "options": [
+    "Universal emotions",
+    "The facial feedback hypothesis",
+    "Display rules",
+    "Physiological arousal"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Display rules are cultural norms about expressing emotion.",
+    "options": [
+     "Her sadness is the same; what changes is how much she shows.",
+     "She is not changing her feelings through her face.",
+     "Right: cultural norms tell people when, how and how much emotion to show.",
+     "Arousal is a body state; the difference is in the expression her culture expects."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-7",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "People from many cultures, including a remote group with little contact with outsiders, match photos of faces to stories about happiness, sadness and fear far more often than chance. What does this best support?",
+   "options": [
+    "Display rules for showing emotion are much the same across cultures",
+    "Some facial expressions of emotion are widely recognized across cultures",
+    "Emotional expressions are learned mostly by watching television and film",
+    "The facial feedback hypothesis is strongly supported"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Recognition well above chance in many cultures supports some universal expressions; the evidence is still debated.",
+    "options": [
+     "Display rules differ across cultures; this finding is about recognition.",
+     "Right: recognition above chance in many cultures supports some universal expressions, though recognition is better within one's own culture.",
+     "The remote group had little media exposure, which argues against this.",
+     "Recognizing others' faces is not the same as one's own face changing one's feelings."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-8",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a day of laughing with friends, Tess finds she is more willing to try new activities and she makes a new friend. Over months, she builds lasting skills and relationships. Which theory explains this pattern?",
+   "options": [
+    "Drive-reduction theory",
+    "The arousal-first sequence of emotion",
+    "Display rules",
+    "Broaden-and-build theory"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Broaden-and-build: positive emotions widen what we notice and try, building resources over time.",
+    "options": [
+     "No body need is being reduced.",
+     "That explains how one emotion arises, not long-term effects of positive emotions.",
+     "Display rules concern showing emotion, not building skills.",
+     "Right: positive emotions broaden attention and thinking, which over time builds lasting personal resources."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-9",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which part of the nervous system produces the racing heart, fast breathing and sweating that come with fear?",
+   "options": [
+    "The sympathetic nervous system",
+    "The parasympathetic nervous system",
+    "The somatic nervous system",
+    "The cerebellum"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Physiological arousal in emotion comes mostly from the sympathetic nervous system.",
+    "options": [
+     "Right: it arouses the body for action.",
+     "The parasympathetic division calms the body after arousal.",
+     "The somatic system controls voluntary skeletal muscles, not heart rate.",
+     "The cerebellum coordinates movement and balance, not arousal."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-10",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "emotion-s1",
+   "q": "A patient with a spinal cord injury that reduces body feedback reports that his emotions feel less intense than before. Which sequence in the figure does this support most?",
+   "options": [
+    "Sequence 1, since it says the feeling depends on noticing arousal",
+    "Sequence 2, because it says the body is the source of the feeling",
+    "Sequence 3, because it says there is no role for the body",
+    "No sequence, since body feedback is missing from each of the three"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If feelings come from noticing arousal (sequence 1), reducing body feedback should weaken them.",
+    "options": [
+     "Right: if body feedback drives the feeling, less feedback should mean weaker feelings.",
+     "Sequence 2 says arousal and feeling are separate and simultaneous, so less body feedback should not weaken feelings.",
+     "Sequence 3 includes body arousal as one of its steps.",
+     "Body arousal appears in each of the three sequences."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-11",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "emotion-s1",
+   "q": "In an experiment, people given an arousing (but harmless) injection without being told its effects felt angry when a partner acted angry and happy when a partner acted silly. Which sequence does this best fit?",
+   "options": [
+    "Sequence 1, because the arousal by itself produced one fixed emotion for everyone",
+    "Sequence 2, because arousal and feeling were simultaneous",
+    "Sequence 3, because people labeled the same arousal by the situation",
+    "No sequence, because the injection lowered arousal in these people"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The same arousal, labeled differently by situation, produced different emotions: the appraisal sequence. (Later studies found this effect hard to replicate in full.)",
+    "options": [
+     "The same arousal produced different emotions, so arousal alone cannot decide the feeling.",
+     "The emotion depended on the partner, which points to a labeling step.",
+     "Right: arousal plus a cognitive appraisal of the situation produced the emotion.",
+     "The injection increased arousal."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-12",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "emotion-s1",
+   "q": "Which step appears in sequence 3 but not in sequence 1?",
+   "options": [
+    "Body arousal such as a pounding heart",
+    "An appraisal that labels arousal",
+    "The event that starts the whole sequence",
+    "The emotion that results at the end"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The appraisal step is what sets sequence 3 apart.",
+    "options": [
+     "Both sequences 1 and 3 include body arousal.",
+     "Right: sequence 3 adds a thinking step that interprets the situation.",
+     "All three sequences start with the same event.",
+     "All three sequences end in an emotion."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-13",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "emotion-s2",
+   "q": "Which conclusion do these results best support?",
+   "options": [
+    "People recognize emotions well in own-culture faces but not other-culture faces",
+    "Recognition was no better than guessing",
+    "People from the other culture showed no emotion in their photos",
+    "Expressions were recognized well above chance, but better in own-culture faces"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Read all three bars: both well above chance, with an in-group advantage. This is the mixed picture for universal emotions.",
+    "options": [
+     "Other-culture faces were recognized at 71%, far above chance.",
+     "Both bars are far above the 17% chance level.",
+     "The photos were posed expressions, and viewers recognized them well.",
+     "Right: 84% and 71% versus 17% chance, with a 13-point advantage for own-culture faces."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-14",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.A",
+   "stimulus": "emotion-s2",
+   "q": "By how many percentage points did recognition of own-culture faces exceed recognition of other-culture faces?",
+   "why": {
+    "correct": "$84 - 71 = 13$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      84,
+      71
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        84,
+        17
+       ]
+      },
+      "why": "67 compares own-culture faces with chance. Compare own-culture with other-culture faces."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        71,
+        17
+       ]
+      },
+      "why": "54 compares other-culture faces with chance. Compare the two face types."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-15",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "emotion-s2",
+   "q": "A critic says the photos showed posed, exaggerated expressions. Why does this limit the conclusion?",
+   "options": [
+    "Real-life expressions are subtler, so everyday recognition may be lower",
+    "Posed photos are not allowed in studies comparing two countries",
+    "Posed photos turn the study into an experiment instead of a survey design",
+    "Posed photos guarantee that recognition will be at chance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Posed, exaggerated faces may not represent the subtler expressions of real life, a key reason the evidence is called mixed.",
+    "options": [
+     "Right: posed faces may overstate how well people read emotions in daily life.",
+     "They can; the issue is how well posed faces represent real ones.",
+     "Posing affects realism, not the name of the method.",
+     "The data show recognition far above chance."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-16",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "emotion-s3",
+   "q": "What do the results suggest about the facial feedback hypothesis in this study?",
+   "options": [
+    "They strongly support it, because the smile group rated cartoons higher",
+    "They prove the hypothesis is false for people and expressions of any kind",
+    "They do not support it: the small difference may be due to chance",
+    "They show that holding a pen makes cartoons less funny for everyone"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Not statistically significant: the difference could plausibly be due to chance. Large replications of this pen method mostly found no reliable effect.",
+    "options": [
+     "A 0.1-point difference that is not statistically significant does not strongly support anything.",
+     "One study cannot prove that; other methods and expressions may show small effects.",
+     "Right: not statistically significant means the 4.6 versus 4.5 gap may be chance.",
+     "Ratings were similar in both conditions."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-17",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "emotion-s3",
+   "q": "Which was the independent variable?",
+   "options": [
+    "Where the pen was held: in the teeth or in the lips",
+    "The funniness rating each student gave, from 0 to 9",
+    "The four cartoons shown to each student",
+    "The three universities where students were tested"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The independent variable is what the researchers manipulate: pen position.",
+    "options": [
+     "Right: the researchers manipulated pen position and randomly assigned students to it.",
+     "The rating was measured, so it is the dependent variable.",
+     "Everyone saw the same cartoons, so they were held constant.",
+     "Location was part of the sample, not a manipulated condition."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-18",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "emotion-s3",
+   "q": "Which ethical safeguard does the summary describe, and how was it applied?",
+   "options": [
+    "Confidentiality, by keeping ratings anonymous",
+    "Random assignment, by placing students in conditions by chance",
+    "The right to withdraw, by letting students stop at any time",
+    "Debriefing, by revealing the pen's real purpose at the end"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Name a safeguard the summary describes (debriefing, informed consent or IRB approval) and say how it was applied.",
+    "options": [
+     "The summary does not describe how data were stored.",
+     "Random assignment is a design feature, not an ethical safeguard.",
+     "The summary does not mention the right to withdraw.",
+     "Right: students were not told the purpose during the task, so they were told afterward."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-19",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "emotion-s3",
+   "q": "Why did the researchers not tell students the purpose of the pen until the end?",
+   "options": [
+    "To keep the study's aim confidential from the universities taking part",
+    "To reduce demand characteristics, since knowing the aim could change ratings",
+    "Because informed consent is not required when a study repeats an earlier published one",
+    "To turn the study into a case study rather than an experiment"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Hiding the hypothesis keeps participants from guessing it and changing their behavior.",
+    "options": [
+     "The universities' review boards approved the study, so it was not hidden from them.",
+     "Right: knowing the hypothesis could change ratings, so the purpose was hidden until debriefing.",
+     "All students gave informed consent; hiding the hypothesis is a different matter.",
+     "Hiding the purpose does not change the method."
+    ]
+   }
+  },
+  {
+   "id": "psy-emotion-20",
+   "unit": "unit-4",
+   "topic": "emotion",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "emotion-s3",
+   "q": "Write the operational definition of perceived funniness in this study.",
+   "why": {
+    "correct": "Give the measure as the study used it: a 0 to 9 rating of four cartoons."
+   },
+   "specific": {
+    "frame": "Funniness was measured as ___ for ___.",
+    "write": {
+     "context": [
+      "0",
+      "9",
+      "rating",
+      "rated"
+     ]
+    },
+    "model": "Funniness was measured as each student's rating from 0 (not at all funny) to 9 (very funny) for four cartoons.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "each student's rating from 0 to 9",
+       "how much the student smiled",
+       "how happy the student felt"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Smiling was what the pen position manipulated, not the measure of funniness.",
+       "2": "A general feeling is the concept, not how this study measured it."
+      }
+     },
+     "what": {
+      "label": "For",
+      "options": [
+       "four cartoons",
+       "a funny video"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The students rated four cartoons; there was no video."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

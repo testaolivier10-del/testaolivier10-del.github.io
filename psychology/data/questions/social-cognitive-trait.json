@@ -1,0 +1,685 @@
+{
+ "stimuli": {
+  "social-cognitive-trait-s1": {
+   "kind": "visual",
+   "title": "Reciprocal determinism",
+   "figure": "social-cognitive-trait-reciprocal"
+  },
+  "social-cognitive-trait-s2": {
+   "kind": "data",
+   "title": "Conscientiousness and grades",
+   "invented": true,
+   "text": "<p>Researchers gave 10 high school seniors a personality inventory and recorded each student's grade point average (GPA). The scatterplot shows each student's conscientiousness score (0 to 50) and GPA.</p>",
+   "plot": {
+    "label": "Scatterplot of conscientiousness score against GPA for 10 students, with a rising trend line (invented data)",
+    "kind": "scatter",
+    "trend": true,
+    "points": [
+     [
+      18,
+      2.4
+     ],
+     [
+      22,
+      2.9
+     ],
+     [
+      25,
+      2.6
+     ],
+     [
+      28,
+      3
+     ],
+     [
+      30,
+      3.3
+     ],
+     [
+      33,
+      2.9
+     ],
+     [
+      36,
+      3.5
+     ],
+     [
+      39,
+      3.4
+     ],
+     [
+      42,
+      3.8
+     ],
+     [
+      45,
+      3.6
+     ]
+    ],
+    "xLabel": "Conscientiousness score",
+    "yLabel": "GPA"
+   }
+  },
+  "social-cognitive-trait-s3": {
+   "kind": "study",
+   "title": "Practice feedback and self-efficacy",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether early success on easy practice items raises self-efficacy and persistence on a hard task.",
+    "participants": "90 students in grades 7 and 8 at two public middle schools in one Texas school district. Parents gave written permission and each student agreed to take part. Students were told they could stop at any time.",
+    "method": "Students were randomly assigned to two groups. One group first solved 5 easy puzzles (success group); the other first solved 5 very hard puzzles (struggle group). All students then rated \"How sure are you that you can solve the next puzzle?\" from 1 (not at all sure) to 7 (completely sure) and worked on an unsolvable puzzle. Persistence was the number of minutes before a student gave up, up to 20.",
+    "results": "The success group rated their confidence higher (mean 5.6) than the struggle group (mean 3.9) and worked longer on the unsolvable puzzle (mean 14 minutes versus 9 minutes)."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-social-cognitive-trait-1",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Dani believes she can learn to code, so she signs up for a coding club. In the club she meets students who help her debug, which makes her even more confident, and she starts a project of her own. Which concept best explains this pattern?",
+   "options": [
+    "Stable trait theory",
+    "Factor analysis",
+    "Reciprocal determinism",
+    "Sublimation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reciprocal determinism: person factors, behavior and environment each influence the other two.",
+    "options": [
+     "Trait theory describes stable characteristics; it does not explain how belief, behavior and setting change one another.",
+     "Factor analysis is a statistical method for finding clusters of related items, not an account of Dani's experience.",
+     "Right: her belief (person), joining the club (behavior) and the helpful members (environment) keep influencing each other.",
+     "Sublimation channels an unacceptable urge into a valued activity; nothing here is a hidden urge being redirected."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-2",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Before a free throw, Marcus thinks, \"I have made this shot hundreds of times in practice. I can make it now.\" Which concept does his thought show most directly?",
+   "options": [
+    "Self-efficacy",
+    "Self-esteem",
+    "Self-concept",
+    "External locus of control"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Self-efficacy is a task-specific belief in your ability to succeed.",
+    "options": [
+     "Right: self-efficacy is his belief that he can succeed at this specific task.",
+     "Self-esteem is his overall sense of his own worth, not his belief about one shot.",
+     "Self-concept is his whole set of beliefs about who he is, broader than one task.",
+     "An external locus of control would credit luck or others; he credits his own practice."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-3",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Elena describes herself as \"a musician, a big sister, a night owl, and not much of an athlete.\" Which concept do these statements describe?",
+   "options": [
+    "Self-efficacy",
+    "Self-concept",
+    "Self-esteem",
+    "A projective test"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Self-concept is the set of beliefs you hold about yourself.",
+    "options": [
+     "Self-efficacy is a belief about succeeding at a task, not a description of who she is.",
+     "Right: her self-concept is her answer to \"Who am I?\", made of her beliefs about herself.",
+     "Self-esteem is how she evaluates her worth; these statements describe rather than judge.",
+     "A projective test uses ambiguous images; she is simply describing herself."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-4",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A researcher gives 2,000 adults a list of 300 adjectives to rate about themselves. A statistical method shows that ratings of \"talkative\", \"outgoing\" and \"energetic\" rise and fall together, while \"worried\" and \"tense\" form another cluster. Which method did the researcher use to find the clusters?",
+   "options": [
+    "A case study",
+    "A projective test",
+    "Naturalistic observation",
+    "Factor analysis"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Factor analysis groups items that are correlated, revealing underlying factors such as traits.",
+    "options": [
+     "A case study looks deeply at one person; this study found patterns across 2,000 people.",
+     "A projective test uses ambiguous images, not adjective ratings.",
+     "Participants rated themselves on a list; no everyday behavior was observed.",
+     "Right: factor analysis finds groups of items that correlate with each other, which is how the Big Five were identified."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-5",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A job applicant answers 120 true-or-false statements such as \"I keep my desk organized\" and \"I finish what I start.\" Her answers are scored against norms from thousands of adults. What kind of assessment is this?",
+   "options": [
+    "A personality inventory",
+    "A projective test",
+    "An achievement test",
+    "A clinical case study"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Personality inventories, such as Big Five questionnaires, are objective self-report tests of traits.",
+    "options": [
+     "Right: a personality inventory is a questionnaire of many items about typical behavior and feelings, scored against norms.",
+     "Projective tests use ambiguous images; these statements are clear and direct.",
+     "An achievement test measures what someone has learned, not typical behavior.",
+     "A case study is an in-depth study of one person, not a standard questionnaire."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-6",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Sam always arrives early, keeps a detailed planner and double-checks his work. On which Big Five trait would he most likely score high?",
+   "options": [
+    "Openness to experience",
+    "Conscientiousness",
+    "Agreeableness",
+    "Extraversion"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Conscientiousness describes organized, careful and dependable behavior.",
+    "options": [
+     "Openness is curiosity and interest in new ideas and experiences, not organization.",
+     "Right: conscientiousness is being organized, careful, dependable and goal-directed.",
+     "Agreeableness is being warm, cooperative and trusting toward others.",
+     "Extraversion is being sociable, energetic and drawn to social settings."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-7",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Rina feels calm in most situations, rarely worries, and recovers quickly from setbacks. How would she most likely score on the Big Five trait of neuroticism?",
+   "options": [
+    "High, because she has strong emotions",
+    "High, because she bounces back",
+    "Low, because she is emotionally stable",
+    "Neither, because neuroticism measures sociability"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Neuroticism runs from emotionally stable (low) to anxious and easily upset (high).",
+    "options": [
+     "People high in neuroticism tend to feel anxious and upset easily; Rina is calm.",
+     "Bouncing back quickly is a sign of emotional stability, the low end of neuroticism.",
+     "Right: low neuroticism means calm, secure and emotionally stable.",
+     "Sociability belongs to extraversion; neuroticism is about emotional stability."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-8",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A coach says, \"You can't understand a player's performance by looking only at their personality. You have to see how their beliefs, their habits and the team they play on all affect each other.\" Which perspective on personality does the coach take?",
+   "options": [
+    "The psychodynamic unconscious perspective",
+    "The humanistic perspective",
+    "Stable trait theory",
+    "The social-cognitive perspective"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The social-cognitive perspective (Albert Bandura) stresses reciprocal determinism.",
+    "options": [
+     "The psychodynamic view stresses unconscious conflicts, not beliefs, habits and setting influencing each other.",
+     "The humanistic view stresses growth and acceptance rather than the interplay of beliefs, behavior and setting.",
+     "Trait theory describes stable characteristics, which is exactly what the coach says is not enough.",
+     "Right: it explains personality through the interaction of thoughts, behavior and environment."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-9",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student with high self-esteem fails one chemistry quiz. Which outcome is most consistent with what self-esteem means?",
+   "options": [
+    "She still feels worthwhile but doubts her chemistry skills for now",
+    "She believes she has no chance of passing any science course",
+    "She begins to see herself as a totally different kind of person now",
+    "She blames her poor score on the teacher's handwriting"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Self-esteem is a global feeling of self-worth; self-efficacy is belief about specific tasks.",
+    "options": [
+     "Right: self-esteem is overall self-worth, which can stay high while task confidence dips.",
+     "Expecting to fail every science course reflects low self-efficacy, which is task-specific.",
+     "One quiz is unlikely to change her whole self-concept.",
+     "Blaming the teacher is a self-serving attribution, a different concept."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-10",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "social-cognitive-trait-s1",
+   "q": "Using the figure, which example shows the environment influencing a person factor?",
+   "options": [
+    "A student practices the piano for an hour each day after school",
+    "A teacher's praise leads a student to expect she can learn piano",
+    "A student's belief in her ability leads her to practice more",
+    "A student who practices more is invited to join a band"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Environment to person: something outside you, such as feedback, changes your beliefs or expectations.",
+    "options": [
+     "Practicing is a behavior; the example needs something in the setting changing a belief.",
+     "Right: the teacher (environment) changes the student's expectation (person).",
+     "That is person influencing behavior, a different arrow.",
+     "That is behavior changing the environment."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-11",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-cognitive-trait-s1",
+   "q": "According to the figure, why would a trait-only account of a shy student be incomplete?",
+   "options": [
+    "Because traits are measured mainly with ambiguous projective tests",
+    "Because traits are unconscious wishes held back by defense mechanisms",
+    "Because her shyness shapes the settings she picks, which shape her in turn",
+    "Because shyness is caused by the environment rather than the person"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reciprocal determinism adds the back-and-forth that a trait description leaves out.",
+    "options": [
+     "Traits are usually measured with personality inventories, not projective tests, and the figure is about interaction.",
+     "That is the psychodynamic view, not a description of traits.",
+     "Right: the arrows run in all directions, so a fixed trait label leaves out how person, behavior and setting change one another.",
+     "The figure shows two-way influence, not the environment acting on its own."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-12",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-cognitive-trait-s1",
+   "q": "A teen with low self-efficacy in math avoids hard problems, so she gets less practice, and her test scores stay low. In the figure, which two factors does this cycle connect most directly?",
+   "options": [
+    "Person and behavior",
+    "Environment and environment",
+    "Behavior and the unconscious",
+    "Environment and traits"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Low self-efficacy shapes behavior, and the behavior's results confirm the belief.",
+    "options": [
+     "Right: her belief (person) leads to avoiding problems (behavior), and the results feed back into her belief.",
+     "An influence runs between different factors, not within one.",
+     "The unconscious is not part of this model.",
+     "Neither her setting nor a trait label drives this cycle; her belief and her actions do."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-13",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "social-cognitive-trait-s2",
+   "q": "Which statement best describes the relationship in the scatterplot?",
+   "options": [
+    "A strong negative correlation: higher conscientiousness goes with lower GPA",
+    "A strong positive correlation: higher conscientiousness goes with higher GPA",
+    "No correlation: the points are scattered randomly",
+    "A perfect correlation: each of the points sits on the trend line"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Read the direction (upward) and how tightly the points hug the line (closely).",
+    "options": [
+     "The points rise from left to right, so the correlation is positive.",
+     "Right: the points rise together and cluster near the trend line ($r$ is about $0.9$ for these invented data).",
+     "The points follow a clear upward trend.",
+     "Several points sit above or below the line, so the correlation is not perfect."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-14",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "social-cognitive-trait-s2",
+   "q": "A school leader concludes from these data that raising students' conscientiousness would raise their GPAs. What is the main problem with this conclusion?",
+   "options": [
+    "The sample of 10 students is too large to show a clear pattern of results",
+    "The scatterplot shows a negative relationship",
+    "GPA is a grade, so it is not a true number that can be correlated",
+    "It is correlational; a third variable such as sleep could explain both"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A correlational study cannot show that one variable causes the other; name a possible third variable.",
+    "options": [
+     "A sample of 10 is small, not large, and size is not the main problem here.",
+     "The relationship is positive.",
+     "GPA is a number; that is not the problem.",
+     "Right: correlation does not show causation; sleep or home support could raise both scores."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-15",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "social-cognitive-trait-s2",
+   "q": "The five students with the lowest conscientiousness scores had GPAs of 2.4, 2.9, 2.6, 3.0 and 3.3. What is the median GPA of these five students?",
+   "why": {
+    "correct": "In order: 2.4, 2.6, <b>2.9</b>, 3.0, 3.3. The middle value is $2.9$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       2.4,
+       2.9,
+       2.6,
+       3,
+       3.3
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2.6,
+      "why": "2.6 is the middle of the list as written. Put the values in order first: 2.4, 2.6, 2.9, 3.0, 3.3."
+     },
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         2.4,
+         2.9,
+         2.6,
+         3,
+         3.3
+        ]
+       ]
+      },
+      "why": "That is the mean. The median is the middle value once the list is in order."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-16",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "social-cognitive-trait-s2",
+   "q": "On the inventory's published norms, conscientiousness scores follow a normal curve with a mean of 30 and a standard deviation of 6. By the 68-95-99.7 rule, about what percent of people score below 36?",
+   "why": {
+    "correct": "$36$ is one standard deviation above the mean. Below it lie $50\\% + 34\\% = 84\\%$ of scores."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "percentileRule",
+     "args": [
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "34% is only the slice between the mean and one standard deviation above it. Add the 50% below the mean."
+     },
+     {
+      "value": 68,
+      "why": "68% lies within one standard deviation on both sides. The question asks for everything below 36."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-17",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "social-cognitive-trait-s3",
+   "q": "Which research method did this study use?",
+   "options": [
+    "An experiment",
+    "A correlational study",
+    "A survey",
+    "A longitudinal study"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Manipulation plus random assignment makes it an experiment.",
+    "options": [
+     "Right: the researchers manipulated the practice puzzles and randomly assigned students to groups.",
+     "The type of practice was manipulated, not just measured.",
+     "Students rated their confidence, but the study also manipulated a variable and compared groups.",
+     "Students were tested once, not followed over years."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-18",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "social-cognitive-trait-s3",
+   "q": "Write the operational definition of persistence in this study.",
+   "why": {
+    "correct": "Name the measure exactly: minutes before giving up on the unsolvable puzzle."
+   },
+   "specific": {
+    "frame": "Persistence was measured as ___ on ___.",
+    "write": {
+     "context": [
+      "minutes",
+      "puzzle"
+     ]
+    },
+    "model": "Persistence was measured as the number of minutes, up to 20, a student worked before giving up on the unsolvable puzzle.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the number of minutes, up to 20, before giving up",
+       "how determined the student felt",
+       "the confidence rating from 1 to 7"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A feeling of determination is the concept, not how it was measured.",
+       "2": "The 1 to 7 rating measured self-efficacy, the other dependent variable."
+      }
+     },
+     "task": {
+      "label": "On",
+      "options": [
+       "the unsolvable puzzle",
+       "the 5 practice puzzles"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The practice puzzles were the manipulation; persistence was timed on the unsolvable puzzle."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-19",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "social-cognitive-trait-s3",
+   "q": "Which statement correctly describes the confidence results?",
+   "options": [
+    "The struggle group was more confident, which shows failure builds self-efficacy",
+    "Both groups were equally confident, so practice made no difference",
+    "The success group was more confident, as social-cognitive theory predicts",
+    "The success group was more confident because they were naturally smarter"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "State which group was higher, by how much, and what that shows for these students.",
+    "options": [
+     "The struggle group's mean (3.9) was lower than the success group's (5.6).",
+     "The means differ by 1.7 points on a 7-point scale.",
+     "Right: 5.6 versus 3.9, as social-cognitive theory predicts.",
+     "Random assignment makes the groups similar at the start, so ability is unlikely to explain the difference."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-20",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "social-cognitive-trait-s3",
+   "q": "To which population can these results most reasonably be generalized?",
+   "options": [
+    "Adults in the United States, because 90 students is a large sample for a study",
+    "US middle schoolers, since the participants were public school 7th and 8th graders",
+    "Students in many countries, because puzzles look much the same across cultures",
+    "No one, because the puzzle was unsolvable"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalize from participant characteristics (age, setting), not from sample size.",
+    "options": [
+     "Generalizing depends on who the participants were; middle schoolers may not represent adults.",
+     "Right: the participants' ages and school setting match that population, though only one district took part.",
+     "All participants were from one Texas district; culture and schooling may differ elsewhere.",
+     "The unsolvable puzzle was a planned way to measure persistence; it does not stop the results generalizing."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-trait-21",
+   "unit": "unit-4",
+   "topic": "social-cognitive-trait",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Twins Ava and Bea score almost the same on extraversion. Ava becomes a teacher in a busy school; Bea works alone as a night-shift lab technician. Ten years later, Ava reports more confidence speaking in groups. Which conclusion best combines trait theory and social-cognitive theory?",
+   "options": [
+    "Their traits match, so the difference likely comes from unconscious conflicts",
+    "Traits decide behavior, so the difference is probably a measurement error",
+    "Similar traits can lead to different self-efficacy in different environments",
+    "Extraversion is a learned habit that has little link to heredity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Traits describe; reciprocal determinism explains how person, behavior and environment interact over time.",
+    "options": [
+     "Unconscious conflict is a psychodynamic idea and is not needed to explain this.",
+     "Traits describe tendencies; settings and experience still shape behavior and beliefs.",
+     "Right: a trait describes a starting tendency, and reciprocal determinism explains how setting and behavior build on it.",
+     "Twin studies show traits are partly heritable, so this overstates the role of learning."
+    ]
+   }
+  }
+ ]
+}

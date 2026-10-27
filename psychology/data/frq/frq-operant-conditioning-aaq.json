@@ -1,0 +1,154 @@
+{
+ "id": "frq-operant-conditioning-aaq",
+ "type": "aaq",
+ "points": 7,
+ "title": "Reinforcement schedules and persistence",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "operant-conditioning"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.C",
+  "2.D",
+  "4.B"
+ ],
+ "study": {
+  "title": "Invented study: Practice rewards and persistence on a puzzle game",
+  "invented": true,
+  "study": {
+   "introduction": "Partial reinforcement is thought to make behavior last longer once rewards stop than continuous reinforcement does. Researchers tested this with a puzzle app. Hypothesis: students rewarded on only some puzzles during practice would keep trying unsolvable puzzles longer than students rewarded on every puzzle.",
+   "participants": "90 students in grades 10 to 12 from two public high schools in Georgia took part during a free period. 48 were girls and 42 were boys; 41% were Black, 33% White, 17% Hispanic and 9% Asian American. The study was approved by an institutional review board. Parents gave written informed consent, and each student gave assent and was told they could stop at any time without penalty.",
+   "method": "Students were randomly assigned to one of three groups of 30. Each solved 30 short practice puzzles on a tablet. In the continuous group, every solved puzzle earned 10 points and a sound. In the fixed-ratio group, every third solved puzzle earned 30 points. In the variable-ratio group, solved puzzles earned 30 points on average every third puzzle, at unpredictable times. Then every student received the same set of puzzles that could not be solved and earned no points. Persistence was the number of minutes a student kept working on these puzzles before pressing \"Quit,\" up to 20 minutes. Afterward, students were debriefed: told that the last puzzles had no solution and why, and that quitting said nothing about their ability.",
+   "results": "Mean persistence was 6.2 minutes in the continuous group, 9.8 minutes in the fixed-ratio group and 13.5 minutes in the variable-ratio group. The difference between the continuous and variable-ratio groups was statistically significant, and so was the difference between the fixed-ratio and variable-ratio groups.",
+   "discussion": "The researchers concluded that partial reinforcement, especially on a variable-ratio schedule, made students persist longer once rewards stopped. They noted that the study lasted one session and used points in a game, not real rewards such as grades."
+  },
+  "plot": {
+   "label": "Bar graph of mean minutes students kept working on unsolvable puzzles: continuous 6.2, fixed-ratio 9.8, variable-ratio 13.5 (invented data)",
+   "kind": "bar",
+   "categories": [
+    "Continuous",
+    "Fixed-ratio",
+    "Variable-ratio"
+   ],
+   "values": [
+    6.2,
+    9.8,
+    13.5
+   ],
+   "yLabel": "Mean minutes before quitting",
+   "y": [
+    0,
+    20
+   ]
+  },
+  "ethics": [
+   "institutional review board approval",
+   "informed consent from parents and assent from students",
+   "the right to withdraw at any time",
+   "debriefing after the unsolvable puzzles"
+  ]
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Identify</b> the research method used in the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the method as an experiment",
+     "accept": [
+      "an experiment",
+      "a laboratory experiment",
+      "an experimental design with random assignment"
+     ]
+    }
+   ],
+   "sample": "This study is an experiment: the researchers manipulated the reinforcement schedule (continuous, fixed-ratio, variable-ratio) and randomly assigned students to the three groups."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>State</b> the operational definition of persistence.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States persistence as the number of minutes a student kept working on the unsolvable puzzles before pressing \"Quit,\" up to 20 minutes",
+     "accept": [
+      "minutes spent on the unsolvable puzzles before quitting",
+      "time until the student pressed Quit on the puzzles with no solution, up to 20 minutes"
+     ]
+    }
+   ],
+   "sample": "Persistence was the number of minutes a student kept working on the unsolvable, pointless puzzles before pressing \"Quit,\" up to a limit of 20 minutes."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Describe</b> what the difference between the mean persistence of the continuous group and the variable-ratio group shows.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Says the variable-ratio group persisted longer (13.5 versus 6.2 minutes, more than twice as long), and since the difference was statistically significant it is unlikely to be due to chance",
+     "accept": [
+      "students rewarded at unpredictable times kept going about 7 minutes longer, a difference unlikely to be due to chance alone"
+     ]
+    }
+   ],
+   "sample": "Students rewarded on a variable-ratio schedule kept working a mean of 13.5 minutes, more than twice as long as the 6.2 minutes of students rewarded on every puzzle. Because the difference was statistically significant, it is unlikely to be due to chance, so the schedule probably made the difference."
+  },
+  {
+   "label": "D",
+   "prompt": "<b>Identify</b> one ethical guideline the researchers followed, and <b>explain</b> how they applied it in this study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a safeguard the summary describes and how it was applied: debriefing (students were told afterward the puzzles had no solution and that quitting said nothing about their ability), informed consent and assent, the right to withdraw, or IRB approval",
+     "accept": [
+      "debriefing: students were told the last puzzles were unsolvable and why",
+      "informed consent: parents signed consent and students gave assent",
+      "right to withdraw: students were told they could stop any time without penalty"
+     ]
+    }
+   ],
+   "sample": "The researchers debriefed the students. Because students were not told the last puzzles had no solution, afterward the researchers explained that the puzzles were unsolvable, why, and that quitting said nothing about their ability, so no one left thinking they had failed."
+  },
+  {
+   "label": "E",
+   "prompt": "<b>Explain</b> the extent to which the research findings may or may not be generalizable using specific and relevant evidence from the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Makes a claim about generalizing to a named population, supported by participant characteristics",
+     "accept": [
+      "generalizes to US high school students, since participants were grades 10 to 12, boys and girls of several racial and ethnic groups",
+      "may not generalize to younger children or adults, since all were 15 to 18",
+      "partly: varied high school students, but only two schools in one state"
+     ]
+    }
+   ],
+   "sample": "The results may generalize to high school students in the United States, because the participants were students in grades 10 to 12, both girls and boys, from several racial and ethnic groups. They may not generalize to adults or younger children, because everyone was in high school."
+  },
+  {
+   "label": "F",
+   "prompt": "<b>Explain</b> how at least one of the research findings supports or refutes the researchers' hypothesis that students rewarded on only some puzzles would persist longer than students rewarded on every puzzle.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Uses a specific, accurate result from the study",
+     "accept": [
+      "both partial groups (9.8 and 13.5 minutes) persisted longer than the continuous group (6.2 minutes)"
+     ]
+    },
+    {
+     "point": "Explains how the result supports the hypothesis",
+     "accept": [
+      "so the result supports the hypothesis: partial reinforcement made the behavior more resistant to extinction"
+     ]
+    }
+   ],
+   "sample": "The findings support the hypothesis. Both partial groups persisted longer than the continuous group: 9.8 minutes for fixed-ratio and 13.5 for variable-ratio, against 6.2 for continuous. Students who were used to getting points on every puzzle noticed quickly when points stopped, but students who were used to long runs without points could not tell that rewards had ended, so their puzzle-solving was more resistant to extinction."
+  }
+ ]
+}

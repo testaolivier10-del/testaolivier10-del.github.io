@@ -1,0 +1,725 @@
+{
+ "stimuli": {
+  "explaining-disorders-s1": {
+   "kind": "visual",
+   "title": "The diathesis-stress model",
+   "figure": "explaining-disorders-diathesis"
+  },
+  "explaining-disorders-s2": {
+   "kind": "data",
+   "title": "Family history, stressful events and depression",
+   "invented": true,
+   "table": {
+    "caption": "Percent of 600 adults who had a period of depression during a five-year study, by family history and number of stressful life events (invented data for practice)",
+    "cols": [
+     "Family history of depression",
+     "0 events",
+     "1 or 2 events",
+     "3 or more events"
+    ],
+    "rows": [
+     [
+      "No",
+      "6%",
+      "8%",
+      "14%"
+     ],
+     [
+      "Yes",
+      "10%",
+      "18%",
+      "32%"
+     ]
+    ]
+   }
+  },
+  "explaining-disorders-s3": {
+   "kind": "study",
+   "title": "Does a diagnostic label change how people judge a coworker?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether knowing that someone has a diagnosed psychological disorder changes how willing people are to work with that person.",
+    "participants": "120 college students from one university volunteered. Each read a consent form and agreed in writing to take part, and the university's institutional review board approved the study.",
+    "method": "Each student read the same one-page description of a coworker, \"Sam,\" who is quiet, works carefully and sometimes misses lunch with the team. Students were randomly assigned to one of two versions. In the label version, one added sentence said that Sam has a diagnosed psychological disorder; in the no-label version, that sentence was left out. Each student then rated \"How willing would you be to work on a project with Sam?\" from 1 (not at all) to 7 (very willing). Afterward, students were told the purpose of the study.",
+    "results": "The mean willingness rating was 4.1 in the label version and 5.6 in the no-label version. The difference was statistically significant.",
+    "discussion": "The same description led to lower willingness when a label was added, which suggests that diagnostic labels can carry stigma."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-explaining-disorders-1",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Dana has felt low most of the day for five weeks. She has stopped going to her classes and lost her part-time job because she cannot get out of bed on time. Which part of the definition of a psychological disorder do the missed classes and the lost job show most directly?",
+   "options": [
+    "Deviation: the pattern is unusual for her culture",
+    "Distress: the pattern causes her inner suffering",
+    "Diathesis: the pattern comes from a vulnerability",
+    "Dysfunction: it interferes with daily life"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Dysfunction means the pattern interferes with work, school, relationships or self-care; her missed classes and lost job are exactly that.",
+    "options": [
+     "Deviation is about how unusual a pattern is in its culture. Missed classes and a lost job show interference with life, not unusualness.",
+     "Distress is the inner pain she feels. The missed classes and lost job are about what she can no longer do.",
+     "A diathesis is a vulnerability in the diathesis-stress model, a possible cause, not part of the definition.",
+     "Right: missing classes and losing a job are signs that the pattern interferes with daily functioning."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-2",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Theo lives alone in a cabin without electricity, dyes his hair bright green and plays the accordion at midnight. He is content, keeps steady work as a carpenter and has close friends. Why would a clinician most likely not diagnose a psychological disorder?",
+   "options": [
+    "His behavior is too common to count as deviation",
+    "Clinicians diagnose disorders in people under the age of 18 years",
+    "His unusual behavior causes no distress or dysfunction",
+    "He has no diathesis, so a disorder is impossible for him"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A pattern counts as a disorder when it is unusual and also causes distress or gets in the way of life. Being different is not a disorder.",
+    "options": [
+     "His habits are unusual, so deviation is present. What is missing is distress and dysfunction.",
+     "Disorders are diagnosed at any age. Age is not the reason here.",
+     "Right: deviation alone is not enough. A disorder also involves distress or dysfunction, and Theo shows neither.",
+     "Diathesis is a possible cause, not part of the definition, and nothing in the scenario tells us about it."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-3",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In one community, people in mourning are expected to speak aloud to a relative who has died, at a family altar, for several weeks. A visiting clinician from another country first thinks this behavior is a sign of a disorder. Which idea best explains the clinician's error?",
+   "options": [
+    "Distress is the single criterion that decides a diagnosis",
+    "Deviation depends on the person's own cultural norms",
+    "The diathesis-stress model says that grief causes disorders",
+    "The behavior is a symptom, so the culture does not matter"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The sociocultural perspective reminds clinicians that what counts as unusual depends on the culture. A behavior expected in mourning is not deviant in that setting.",
+    "options": [
+     "Distress is one part of the definition, but the error here is about cultural norms, not distress.",
+     "Right: speaking to the dead is expected in that community, so it is not deviant there. Judging it by the clinician's home norms is the mistake.",
+     "Grief is a normal response to loss, and the model does not say grief alone causes a disorder.",
+     "The opposite is true: whether a behavior is unusual depends on its cultural context."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-4",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A clinic in Brazil records each diagnosis with a code from the classification system published by the World Health Organization, which health systems in many countries use for all illnesses. Which system is the clinic using?",
+   "options": [
+    "The International Classification of Diseases (ICD)",
+    "The Diagnostic and Statistical Manual (DSM-5-TR)",
+    "The biopsychosocial model of psychological disorders",
+    "The eclectic approach to classifying and treating"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ICD comes from the World Health Organization and covers all health conditions; the DSM-5-TR comes from the American Psychiatric Association.",
+    "options": [
+     "Right: the ICD is the World Health Organization's system, used worldwide for physical and psychological conditions.",
+     "The DSM-5-TR is published by the American Psychiatric Association, not the World Health Organization.",
+     "The biopsychosocial model explains causes. It is not a system of diagnostic codes.",
+     "The eclectic approach means drawing on several perspectives. It is not a classification system."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-5",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a large dog bit him at age seven, Luis began to panic whenever he saw any dog, and he crossed the street to avoid them. A psychologist says his fear was learned by pairing dogs with pain and is kept going because avoiding dogs brings relief. Which perspective is the psychologist using?",
+   "options": [
+    "Psychodynamic",
+    "Humanistic",
+    "Evolutionary",
+    "Behavioral"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The behavioral perspective explains a disorder by learning: the bite paired dogs with pain, and the relief of avoiding dogs reinforces the avoidance.",
+    "options": [
+     "A psychodynamic explanation would point to unconscious conflicts, not to learning from a bite.",
+     "A humanistic explanation would focus on self-concept and growth, not on conditioning.",
+     "An evolutionary explanation would say fears of dangerous animals helped ancestors survive. The psychologist talks about Luis's own learning.",
+     "Right: the explanation uses learning, classical conditioning for the fear and negative reinforcement for the avoidance."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-6",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Priya gets one low quiz grade and thinks, \"This proves I am stupid and will fail at everything.\" She feels hopeless for days. A psychologist says her low mood comes mostly from the way she interprets events. Which perspective explains her mood this way?",
+   "options": [
+    "Biological",
+    "Sociocultural",
+    "Cognitive",
+    "Behavioral"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The cognitive perspective explains disorders through patterns of thinking, such as overgeneralizing one failure into a belief about oneself.",
+    "options": [
+     "A biological explanation would point to genes, brain structures or neurotransmitters, not her interpretation of a grade.",
+     "A sociocultural explanation would look at her culture, family or social conditions, not her own thought pattern.",
+     "Right: the cognitive perspective looks at thoughts and interpretations, such as turning one low grade into proof of failure.",
+     "A behavioral explanation would look at reinforcement and learning, not at how she interprets the grade."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-7",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A therapist suggests that a client's constant worry may come from conflicts he is unaware of, rooted in his relationship with a demanding parent, which he keeps out of awareness with defense mechanisms. Which perspective is the therapist using?",
+   "options": [
+    "Humanistic",
+    "Psychodynamic",
+    "Cognitive",
+    "Biological"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The psychodynamic perspective explains disorders through unconscious conflicts, often from childhood, kept out of awareness by defense mechanisms.",
+    "options": [
+     "The humanistic perspective focuses on growth and self-concept in the present, not on unconscious conflicts.",
+     "Right: unconscious conflicts from early relationships, held back by defense mechanisms, are the psychodynamic explanation.",
+     "The cognitive perspective looks at conscious thought patterns, not at conflicts kept out of awareness.",
+     "The biological perspective looks at the brain, genes and body chemistry, not at early relationships."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-8",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Fears of snakes, heights and the dark are far more common than fears of cars or electrical outlets, even though cars and outlets injure more people today. Which perspective best explains this pattern?",
+   "options": [
+    "Evolutionary",
+    "Humanistic",
+    "Psychodynamic",
+    "Cognitive"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The evolutionary perspective says people are prepared to fear dangers that threatened survival for our ancestors, so those fears are common.",
+    "options": [
+     "Right: fears of dangers our ancestors faced, such as snakes and heights, may have helped them survive and are learned more easily.",
+     "The humanistic perspective is about self-concept and growth, and it says nothing about which fears are common.",
+     "The psychodynamic perspective looks at a person's unconscious conflicts, not at why some fears are common across people.",
+     "A cognitive account would focus on a person's thoughts, but it does not explain why ancient dangers are feared more than modern ones."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-9",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Growing up, Jonah felt loved only when he earned top grades. Now he feels empty and anxious because the person he believes he must be does not match how he actually feels and acts. Which perspective explains his distress this way?",
+   "options": [
+    "Behavioral",
+    "Biological",
+    "Sociocultural",
+    "Humanistic"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The humanistic perspective links distress to conditional regard and to a mismatch between the self a person thinks they should be and their real experience.",
+    "options": [
+     "A behavioral account would look at what reinforced his behavior, not at a gap between his self-concept and experience.",
+     "A biological account would look at genes or brain chemistry, not at conditional love and self-concept.",
+     "A sociocultural account would look at wider cultural or economic conditions, not at his self-concept.",
+     "Right: love that depends on conditions and a gap between self-concept and experience are the humanistic explanation."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-10",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A clinician assessing Rosa notes three things: her mother and grandmother both had long periods of depression; Rosa tends to blame herself for anything that goes wrong; and she recently lost her job in a town with few others. Which approach is the clinician using?",
+   "options": [
+    "The cognitive perspective alone",
+    "The International Classification of Diseases",
+    "The biopsychosocial model",
+    "The evolutionary perspective"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The biopsychosocial model explains a disorder as the product of biological, psychological and social factors acting together.",
+    "options": [
+     "Self-blame is cognitive, but the clinician also weighs family history and social conditions.",
+     "The ICD is a classification system. It does not combine causes into an explanation.",
+     "Right: family history (biological), self-blame (psychological) and job loss in a hard economy (social) are combined.",
+     "Nothing here is about survival value. The clinician combines biological, psychological and social factors."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-11",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A therapist helps one client change self-critical thoughts, teaches another to face feared situations step by step, and with a third explores how childhood relationships still shape her choices. She picks methods from different perspectives to fit each person. What is this called?",
+   "options": [
+    "The diathesis-stress model",
+    "The eclectic approach",
+    "The behavioral perspective",
+    "The DSM-5-TR classification"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The eclectic approach uses ideas and methods from several perspectives instead of one, matched to the person.",
+    "options": [
+     "The diathesis-stress model explains why a disorder appears. It is not about choosing methods from several perspectives.",
+     "Right: drawing on several perspectives and choosing what fits each client is the eclectic approach.",
+     "Facing feared situations is behavioral, but she also uses cognitive and psychodynamic methods.",
+     "The DSM-5-TR classifies disorders. It does not tell a therapist which perspective to use."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-12",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Identical twins Ana and Bea share the same genes. Both have a family history that raises their risk of depression. Ana loses her home in a flood and goes through a long period of depression; Bea, living elsewhere, faces no major losses and does not. Which model best explains the difference?",
+   "options": [
+    "The diathesis-stress model",
+    "The eclectic approach",
+    "The evolutionary perspective",
+    "The psychodynamic perspective"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the diathesis-stress model a vulnerability alone is not enough: a disorder appears when vulnerability meets enough stress.",
+    "options": [
+     "Right: both share the vulnerability (diathesis), but only Ana met a major stressor, so only she developed depression.",
+     "The eclectic approach is about drawing on several perspectives in treatment, not about why one twin became ill.",
+     "The evolutionary perspective explains why traits are common, not why one twin and not the other developed depression.",
+     "Nothing in the scenario points to unconscious conflicts. The difference is the stressful event."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-13",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A psychologist studying depression in different countries finds that it is diagnosed more often in groups facing poverty, discrimination and job loss. She concludes that social conditions shape who develops depression. Which perspective is she using?",
+   "options": [
+    "Humanistic",
+    "Biological",
+    "Psychodynamic",
+    "Sociocultural"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The sociocultural perspective explains disorders through culture, social roles and conditions such as poverty and discrimination.",
+    "options": [
+     "The humanistic perspective is about self-concept and growth, not about poverty and discrimination.",
+     "The biological perspective looks at genes and the brain, not at social conditions.",
+     "The psychodynamic perspective looks at unconscious conflicts, not at social conditions across groups.",
+     "Right: poverty, discrimination and economic conditions are social and cultural factors."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-14",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "explaining-disorders-s1",
+   "q": "In the figure, why does Person 2 stay below the threshold while Person 1 passes it, even though both face the same small stress?",
+   "options": [
+    "Person 2 faces a larger stress than Person 1 does",
+    "Person 1 has no vulnerability, just stress",
+    "Person 1 starts with a much larger vulnerability",
+    "Person 2 is above the threshold as well"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With equal stress, the person with the greater diathesis is the one whose total passes the threshold.",
+    "options": [
+     "The stress bars for Person 1 and Person 2 are the same height. The difference is vulnerability.",
+     "Person 1's vulnerability bar is the tallest in the figure.",
+     "Right: the stress is the same size, so the larger vulnerability carries Person 1 over the threshold.",
+     "Person 2's bar ends well below the dashed threshold line."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-15",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "explaining-disorders-s1",
+   "q": "According to the model in the figure, what would most likely happen if Person 2 later faced a stress as large as Person 3's?",
+   "options": [
+    "Person 2 would stay below the threshold",
+    "Person 2 would also pass the threshold",
+    "Person 2's vulnerability would become zero",
+    "The threshold for Person 2 would rise"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the model, total load is vulnerability plus stress. Person 2 and Person 3 have the same vulnerability, so equal stress gives the same result.",
+    "options": [
+     "Person 3 has the same vulnerability and passes the threshold with that stress, so Person 2 would as well.",
+     "Right: Person 2 has the same small vulnerability as Person 3, so the same large stress would carry Person 2 over the threshold too.",
+     "Stress does not remove a vulnerability. The two add together in the model.",
+     "The threshold is the same line for everyone in the model."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-16",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "explaining-disorders-s1",
+   "q": "Which real situation fits the pattern shown for Person 3?",
+   "options": [
+    "Someone with no family history becomes depressed after several severe losses",
+    "A person with a strong family history develops depression after a minor argument",
+    "A person with a strong family history stays well through a calm, easy year",
+    "A person with no family history stays well after a minor argument with a friend"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Person 3 has a small vulnerability and a very large stress, and the stress alone carries the total over the threshold.",
+    "options": [
+     "Right: low vulnerability but a very large stress, like Person 3.",
+     "That is high vulnerability with small stress, the pattern of Person 1.",
+     "That is high vulnerability with little stress, which matches none of the bars.",
+     "That is low vulnerability with small stress, the pattern of Person 2."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-17",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 1,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "explaining-disorders-s2",
+   "q": "Which group in the table had the highest percent with a period of depression?",
+   "options": [
+    "Adults without a family history and 3 or more events",
+    "Adults with a family history and 0 events",
+    "Adults with a family history and 1 or 2 events",
+    "Adults with a family history and 3 or more events"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The 32% cell, family history plus 3 or more events, is the highest.",
+    "options": [
+     "That group reached 14%, less than half of the 32% for the family-history group.",
+     "That group had 10%, one of the lowest values.",
+     "That group had 18%, lower than the 32% at 3 or more events.",
+     "Right: 32% is the highest value in the table."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-18",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "explaining-disorders-s2",
+   "q": "Among adults with a family history, how many percentage points higher was the rate of depression with 3 or more stressful events than with 0 events?",
+   "why": {
+    "correct": "In the \"Yes\" row, $32 - 10 = 22$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      32,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 32,
+      "why": "32% is the rate with 3 or more events. Subtract the rate with 0 events, 10%, to get the difference."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        14,
+        6
+       ]
+      },
+      "why": "That difference, 14 minus 6, is for adults without a family history. Use the \"Yes\" row."
+     }
+    ],
+    "unit": "%"
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-19",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "explaining-disorders-s2",
+   "q": "How do the data in the table best support the diathesis-stress model?",
+   "options": [
+    "Adults with no family history had no periods of depression",
+    "Stressful events raised the rate far more for adults with a family history",
+    "Stressful events made no difference to the rate",
+    "Family history made the same difference at each level of stress"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The diathesis-stress model predicts the largest effect where vulnerability and stress meet, and the 32% cell shows that.",
+    "options": [
+     "They did have some, 6% to 14%. The model does not say a vulnerability is required.",
+     "Right: with a family history the rate climbed from 10% to 32%; without one it climbed from 6% to 14%. Vulnerability and stress combine.",
+     "The rate rose with more events in both rows.",
+     "The gap between rows grew from 4 points at 0 events to 18 points at 3 or more events."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-20",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "explaining-disorders-s2",
+   "q": "The researchers measured family history and stressful events as they occurred and did not assign them. What can they conclude?",
+   "options": [
+    "Stress and family history are linked to depression, but not that they cause it",
+    "Stressful events cause depression in people with a family history",
+    "Family history has no relationship with depression",
+    "The results apply to adults in other countries as well"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because nothing was manipulated, this is correlational research. It shows a relationship; a third variable, such as financial hardship, could produce both.",
+    "options": [
+     "Right: this is a correlational study, so a third variable, such as poverty, could explain the links.",
+     "A causal claim needs an experiment with random assignment. Nothing was manipulated here.",
+     "The rates were higher in the \"Yes\" row at every level of stress.",
+     "Generalizing depends on who was studied, and the table tells us only about these 600 adults."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-21",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "explaining-disorders-s3",
+   "q": "Which research method did this study use?",
+   "options": [
+    "A correlational study",
+    "A case study",
+    "Naturalistic observation",
+    "An experiment"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The label was manipulated and students were randomly assigned, so the study is an experiment.",
+    "options": [
+     "A correlational study measures variables without manipulating them. Here the label was manipulated.",
+     "A case study looks at one person in depth. This study compared 120 students in two conditions.",
+     "Students were not watched in a natural setting. They read a description and gave a rating.",
+     "Right: the researchers manipulated the label and randomly assigned students to versions."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-22",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "explaining-disorders-s3",
+   "q": "Write the operational definition of willingness to work with Sam, as this study measured it.",
+   "why": {
+    "correct": "An operational definition says exactly how the study measured the variable: the question asked and the scale used."
+   },
+   "specific": {
+    "frame": "Willingness was measured as ___ on a ___ scale.",
+    "write": {
+     "context": [
+      "rating",
+      "1",
+      "7"
+     ]
+    },
+    "model": "Willingness was measured as each student's rating of \"How willing would you be to work on a project with Sam?\" on a 1 (not at all) to 7 (very willing) scale.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "each student's rating of \"How willing would you be to work on a project with Sam?\"",
+       "how much each student liked Sam as a person",
+       "whether Sam had a diagnosed disorder"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Liking Sam was not measured. The study asked about working on a project.",
+       "2": "That is the independent variable, what was manipulated, not what was measured."
+      }
+     },
+     "scale": {
+      "label": "Scale",
+      "options": [
+       "1 (not at all) to 7 (very willing)",
+       "yes or no",
+       "0 to 100 percent"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The rating was not a yes or no answer. Students chose a number from 1 to 7.",
+       "2": "The scale ran from 1 to 7, not 0 to 100."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-23",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "explaining-disorders-s3",
+   "q": "What does it mean that the difference between 4.1 and 5.6 was statistically significant?",
+   "options": [
+    "Each student in the label version gave a rating of 4.1",
+    "A difference this large is unlikely to be due to chance alone",
+    "The label made the difference in willingness very large",
+    "The results will apply to workers in other countries"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Statistically significant means a difference this large would rarely happen by chance alone, so the label probably made a real difference for these students.",
+    "options": [
+     "A mean is an average. Individual students gave different ratings.",
+     "Right: statistical significance means the difference is unlikely to have happened by chance.",
+     "Significance is not size. A small difference can be significant in a large sample.",
+     "Significance says nothing about who the results generalize to."
+    ]
+   }
+  },
+  {
+   "id": "psy-explaining-disorders-24",
+   "unit": "unit-5",
+   "topic": "explaining-disorders",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "explaining-disorders-s3",
+   "q": "Which ethical safeguard does the summary say the researchers used?",
+   "options": [
+    "Written informed consent from each student before taking part",
+    "Random assignment of students to the two versions",
+    "Payment to each student who completed the rating",
+    "A follow-up interview a year after the study"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Informed consent is in the summary: students read a consent form and agreed in writing. Review by the institutional review board is also described.",
+    "options": [
+     "Right: the summary says each student read a consent form and agreed in writing.",
+     "Random assignment is a design feature, not an ethical safeguard.",
+     "The summary does not mention payment.",
+     "The summary describes no follow-up interview."
+    ]
+   }
+  }
+ ]
+}

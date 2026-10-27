@@ -1,0 +1,12 @@
+{
+ "attitudes-dissonance": {
+  "file": "figures/attitudes-dissonance.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An attitude and an action that clash produce discomfort (cognitive dissonance), reduced by changing the attitude, changing the action, or adding a justification."
+ }
+}

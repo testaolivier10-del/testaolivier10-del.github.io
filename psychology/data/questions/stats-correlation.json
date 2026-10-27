@@ -1,0 +1,491 @@
+{
+ "stimuli": {
+  "stats-correlation-s1": {
+   "kind": "data",
+   "title": "Hours studied and quiz scores",
+   "invented": true,
+   "plot": {
+    "label": "Scatterplot of hours studied (x) against quiz score out of 100 (y) for 12 students, with a rising line of best fit; invented data, r = .88",
+    "kind": "scatter",
+    "points": [
+     [
+      1,
+      55
+     ],
+     [
+      2,
+      62
+     ],
+     [
+      2,
+      70
+     ],
+     [
+      3,
+      64
+     ],
+     [
+      4,
+      74
+     ],
+     [
+      5,
+      70
+     ],
+     [
+      5,
+      82
+     ],
+     [
+      6,
+      78
+     ],
+     [
+      7,
+      86
+     ],
+     [
+      8,
+      88
+     ],
+     [
+      3,
+      58
+     ],
+     [
+      6,
+      72
+     ]
+    ],
+    "trend": true,
+    "xLabel": "Hours studied in the week before the quiz",
+    "yLabel": "Quiz score (out of 100)"
+   }
+  },
+  "stats-correlation-s2": {
+   "kind": "data",
+   "title": "Correlations from a survey of 400 high-school students",
+   "invented": true,
+   "table": {
+    "caption": "Correlation coefficients between pairs of self-reported measures (invented data for practice)",
+    "cols": [
+     "Variable pair",
+     "r"
+    ],
+    "rows": [
+     [
+      "Hours of sleep and daytime sleepiness rating",
+      "-0.62"
+     ],
+     [
+      "Minutes of exercise and mood rating",
+      "+0.31"
+     ],
+     [
+      "Hours of part-time work and homework hours",
+      "-0.18"
+     ],
+     [
+      "Phone checks per hour and distraction rating",
+      "+0.71"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-stats-correlation-1",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Which correlation coefficient shows the strongest relationship between two variables?",
+   "options": [
+    "$r = -0.82$",
+    "$r = +0.45$",
+    "$r = +0.10$",
+    "$r = -0.30$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Strength is the size of r, ignoring the sign. A coefficient near -1 or +1 is strong; near 0 is weak.",
+    "options": [
+     "Right: its size, 0.82, is the largest; the minus sign gives only the direction.",
+     "Its size, 0.45, is smaller than 0.82.",
+     "This is close to zero: a very weak relationship.",
+     "Its size, 0.30, is smaller than 0.82."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-2",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Across 50 towns, the more ice cream is sold in a month, the more drownings occur. Which explanation is most likely?",
+   "options": [
+    "Eating ice cream causes people to drown more often",
+    "Hot weather raises both swimming and ice cream sales",
+    "Drownings make the people of a town buy more ice cream",
+    "The relationship is likely an illusory correlation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Two variables can move together because a third variable affects both. Hot months bring more swimming (and drownings) and more ice cream.",
+    "options": [
+     "A correlation does not show cause; a third variable explains this one.",
+     "Right: summer heat drives both.",
+     "That reverses the direction, and it still ignores the obvious third variable.",
+     "An illusory correlation is a relationship people believe in that the data do not show; here the data show one."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-3",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Students who eat breakfast have higher grades. A news story says, \"Breakfast boosts grades.\" What is the best criticism?",
+   "options": [
+    "The relationship is negative, so breakfast actually lowers grades",
+    "Grades are not a variable that a behavior like breakfast can be correlated with",
+    "A correlation shows no cause; family routines may affect both",
+    "The correlation proves that grades are caused by sleep, not by breakfast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A correlational finding does not justify \"boosts\". Families with regular routines may provide both breakfast and support for schoolwork.",
+    "options": [
+     "Higher grades with breakfast is a positive correlation, not a negative one.",
+     "Any two measured variables can be correlated.",
+     "Right: a third variable, such as a structured home life, may explain both.",
+     "A correlation proves no cause, including sleep."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-4",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "As the number of hours a teen spends on homework rises, the number of hours of free time falls. Which correlation coefficient fits best?",
+   "options": [
+    "$r = +0.75$",
+    "$r = 0.00$",
+    "$r = +1.50$",
+    "$r = -0.75$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When one variable goes up as the other goes down, the correlation is negative.",
+    "options": [
+     "A positive r means both rise together; here one falls as the other rises.",
+     "Zero means no relationship; these two clearly move together.",
+     "r is always between -1 and +1, so 1.50 is impossible.",
+     "Right: as one rises the other falls, and the link is fairly strong."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-5",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "Children who play violent video games more often are rated by teachers as more aggressive. Which is an example of the directionality problem in this finding?",
+   "options": [
+    "Already aggressive children may choose violent games more",
+    "Parents’ supervision may affect both game time and aggression",
+    "Teachers who rate the children may know about their games",
+    "The children were not randomly sampled from the population of children"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The directionality problem: in a correlation we cannot tell which of the two variables affects the other.",
+    "options": [
+     "Right: aggression could lead to game choice, the reverse of the usual story.",
+     "That is a third variable, a separate problem from directionality.",
+     "That is a source of bias in the measure, not directionality.",
+     "That limits generalizing; it is not about which variable came first."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-6",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A nurse is sure that more babies are born on nights with a full moon. Hospital records show no relationship between moon phase and births. What explains the nurse’s belief?",
+   "options": [
+    "A negative correlation between the moon and births",
+    "An illusory correlation: busy full-moon nights stand out",
+    "A third variable that causes both full moons and births",
+    "Experimenter bias in the hospital’s birth records"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An illusory correlation is a relationship people believe in that the data do not show, often because memorable cases stand out.",
+    "options": [
+     "The records show no relationship at all, positive or negative.",
+     "Right: people remember the cases that fit their belief.",
+     "There is no relationship in the records for a third variable to explain.",
+     "The records were kept for other purposes, not by researchers with a hypothesis."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-7",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "q": "Which of these describe a positive correlation? Select all that apply.",
+   "options": [
+    "The more hours students sleep, the higher their quiz scores",
+    "The more a person practices piano, the fewer mistakes they make",
+    "The less people exercise, the less energy they report",
+    "Shoe size and grade average are unrelated in adults"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "A positive correlation means the two variables move in the same direction, both up or both down together.",
+    "options": [
+     "Right: both rise together.",
+     "Practice rises as mistakes fall: negative.",
+     "Both fall together, which is also positive.",
+     "No relationship: r near zero."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-8",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-correlation-s1",
+   "q": "Which statement best describes the relationship in the scatterplot?",
+   "options": [
+    "A strong negative correlation",
+    "A weak positive correlation",
+    "A strong positive correlation",
+    "No correlation between hours and scores"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The points slope upward and cluster tightly around the line of best fit: strong and positive. For these invented data r = .88.",
+    "options": [
+     "The points rise from left to right, so the correlation is positive.",
+     "The points sit close to the line, so the relationship is strong.",
+     "Right: scores rise with hours and the points lie close to the line (r = .88).",
+     "There is a clear upward pattern."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-9",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "stats-correlation-s1",
+   "q": "A teacher concludes from this plot that studying more causes higher quiz scores. What is the problem with that conclusion?",
+   "options": [
+    "The correlation is negative, so studying lowers scores",
+    "The plot shows no relationship between hours and scores",
+    "A scatterplot shows the cause, but this one has too few students",
+    "The data are correlational; interest could raise both"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The students chose how much to study, so this is a correlational study. Interest, prior knowledge or free time could affect both hours and scores. An experiment that randomly assigns study time would be needed to show cause.",
+    "options": [
+     "The points rise from left to right: the correlation is positive.",
+     "There is a clear, strong pattern.",
+     "A scatterplot shows a relationship, never a cause, whatever its size.",
+     "Right: a third variable, such as interest, could explain the pattern."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-10",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-correlation-s1",
+   "q": "Using the line of best fit, about what score would you predict for a student who studied 4 hours?",
+   "options": [
+    "About 70",
+    "About 55",
+    "About 88",
+    "About 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The line of best fit passes near 70 at 4 hours. A correlation lets you predict one variable from the other, even though it does not show cause.",
+    "options": [
+     "Right: the line passes near 70 at 4 hours.",
+     "That is near the line at 1 hour.",
+     "That is near the line at 8 hours.",
+     "That is the number of hours, not a score."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-11",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.C",
+   "stimulus": "stats-correlation-s1",
+   "q": "Build a statement about this scatterplot that a reader would accept.",
+   "why": {
+    "correct": "Name the direction and strength, then say what the correlation does and does not show."
+   },
+   "specific": {
+    "frame": "Hours studied and quiz scores show ___; this means that ___.",
+    "model": "Hours studied and quiz scores show a strong positive correlation; this means that students who studied more tended to score higher, but the data cannot show that studying caused the higher scores.",
+    "slots": {
+     "describe": {
+      "label": "Relationship",
+      "options": [
+       "a strong positive correlation",
+       "a strong negative correlation",
+       "a weak positive correlation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The points rise to the right: positive, not negative.",
+       "2": "The points sit close to the line: strong, not weak."
+      }
+     },
+     "meaning": {
+      "label": "Meaning",
+      "options": [
+       "studying more caused every student to score higher",
+       "students who studied more tended to score higher, though the data cannot show cause",
+       "students who scored higher must have studied less"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "A correlation shows a tendency, not a cause, and not for every student.",
+       "2": "That is the reverse of the pattern in the plot."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-stats-correlation-12",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-correlation-s2",
+   "q": "Which pair of variables has the strongest relationship?",
+   "options": [
+    "Hours of sleep and daytime sleepiness rating",
+    "Phone checks per hour and distraction rating",
+    "Minutes of exercise and mood rating",
+    "Hours of part-time work and homework hours"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare the size of r without the sign: 0.71 is the largest.",
+    "options": [
+     "0.62 is strong, but smaller than 0.71.",
+     "Right: 0.71 is the largest size in the table.",
+     "0.31 is a weak to moderate relationship.",
+     "0.18 is weak."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-13",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-correlation-s2",
+   "q": "What does $r = -0.62$ for sleep and daytime sleepiness mean?",
+   "options": [
+    "Students who sleep more tend to report more daytime sleepiness",
+    "Sleeping more causes 62% less daytime sleepiness",
+    "Students who sleep more tend to report less daytime sleepiness",
+    "Sleep and daytime sleepiness are unrelated in teenagers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The sign gives the direction (negative: as one rises, the other tends to fall); the size, 0.62, says the relationship is moderately strong.",
+    "options": [
+     "That would be a positive correlation.",
+     "r is not a percent, and a correlation does not show cause.",
+     "Right: a negative r means one tends to fall as the other rises.",
+     "An r of -0.62 is a fairly strong relationship."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-correlation-14",
+   "unit": "skills-research",
+   "topic": "stats-correlation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "stats-correlation-s2",
+   "q": "A student says the table proves that checking a phone often causes distraction. Which response is best?",
+   "options": [
+    "The student is right, because 0.71 is a strong correlation",
+    "The correlation is negative, so phones reduce distraction",
+    "The student is right, because the survey had 400 students",
+    "Distracted students may check phones more: direction is unclear"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Even a strong correlation cannot show which variable affects the other, or rule out a third variable such as boredom or anxiety.",
+    "options": [
+     "Strength does not turn a correlation into a cause.",
+     "The r is +0.71, positive.",
+     "A large sample does not show cause either.",
+     "Right: the directionality problem, plus possible third variables."
+    ]
+   }
+  }
+ ]
+}

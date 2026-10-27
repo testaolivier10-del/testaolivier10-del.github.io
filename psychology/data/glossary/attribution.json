@@ -1,0 +1,38 @@
+{
+ "attribution-theory": {
+  "def": "The theory that people explain behavior by crediting either the person's disposition or the situation."
+ },
+ "dispositional": {
+  "def": "Dispositional attribution: explaining behavior by the person's traits, abilities, effort or character."
+ },
+ "situational": {
+  "def": "Situational attribution: explaining behavior by outside circumstances, such as the task, luck or other people."
+ },
+ "explanatory-style": {
+  "def": "A habitual way of explaining bad events. An optimistic style sees them as temporary, limited and not wholly one's fault; a pessimistic style sees them as personal, lasting and affecting everything."
+ },
+ "actor-observer": {
+  "def": "Actor-observer bias: explaining one's own behavior by the situation but another person's similar behavior by disposition."
+ },
+ "fae": {
+  "def": "Fundamental attribution error: overestimating disposition and underestimating the situation when explaining other people's behavior. It is generally weaker in cultures that emphasize context."
+ },
+ "self-serving": {
+  "def": "Self-serving bias: crediting one's successes to oneself and blaming one's failures on the situation."
+ },
+ "locus-of-control": {
+  "def": "A belief about who controls one's outcomes. An internal locus of control credits one's own actions; an external locus of control credits luck, fate or other people."
+ },
+ "mere-exposure": {
+  "def": "Mere exposure effect: the tendency to like people and things more as they become familiar through repeated exposure."
+ },
+ "self-fulfilling": {
+  "def": "Self-fulfilling prophecy: an expectation that changes behavior in ways that make the expectation come true."
+ },
+ "social-comparison": {
+  "def": "Judging one's own abilities and situation against other people. Upward social comparison is with people who are better off; downward social comparison is with people who are worse off."
+ },
+ "relative-deprivation": {
+  "def": "The sense of being worse off than a group one compares oneself with, whatever one's actual situation."
+ }
+}

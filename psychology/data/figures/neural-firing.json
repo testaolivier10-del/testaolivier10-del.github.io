@@ -1,0 +1,32 @@
+{
+ "neural-firing-neuron": {
+  "file": "figures/neural-firing-neuron.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 540,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A neuron, left to right: branching dendrites, the cell body with its nucleus, an axon wrapped in segments of myelin sheath, and branching axon terminals; an arrow shows the action potential traveling from the cell body toward the terminals. An enlarged synapse below shows vesicles of neurotransmitter in the sending terminal, molecules crossing the synaptic gap to receptor sites on the receiving dendrite, and a reuptake arrow back into the sending terminal."
+ },
+ "neural-firing-neuron-letters": {
+  "file": "figures/neural-firing-neuron-letters.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 540,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The neuron and synapse with six parts marked by letters: A a dendrite, B the cell body, C a segment of myelin sheath on the axon, D an axon terminal, E the synaptic gap in the enlarged synapse, F a receptor site on the receiving dendrite. The letters are the answers to questions, so the figure gives no names."
+ },
+ "neural-firing-action-potential": {
+  "file": "figures/neural-firing-action-potential.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph of the charge inside a neuron over 6 milliseconds. The line starts flat at the resting potential, about -70 mV, rises to the threshold, about -55 mV (a dashed line), then shoots up to a peak of about +40 mV, which every action potential reaches. It falls back, dips below rest to about -80 mV, and returns to -70 mV. A bracket marks the refractory period, from the peak until the charge is back at rest."
+ }
+}

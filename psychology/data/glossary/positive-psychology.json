@@ -1,0 +1,23 @@
+{
+ "positive-psychology": {
+  "def": "The scientific study of human flourishing: well-being, positive emotions, character strengths and the conditions that help people and communities thrive. Martin Seligman helped found it."
+ },
+ "subjective-well-being": {
+  "def": "A person's own judgment of their happiness: how satisfied they are with life, plus the balance of pleasant over unpleasant feelings. Measured by self-report."
+ },
+ "resilience": {
+  "def": "The ability to adapt well and bounce back after adversity, trauma or stress, returning to one's earlier level of functioning. Research finds it is common."
+ },
+ "gratitude": {
+  "def": "Noticing and appreciating the good things in life and the people responsible for them. Gratitude exercises, such as writing down good things, show small gains in well-being."
+ },
+ "signature-strengths": {
+  "def": "The few character strengths a person shows most often and that feel most central to who they are, such as curiosity or kindness."
+ },
+ "virtues": {
+  "def": "Six broad categories of character strengths found across many cultures and traditions: wisdom, courage, humanity, justice, temperance and transcendence."
+ },
+ "ptg": {
+  "def": "Posttraumatic growth: positive psychological change, such as new priorities, closer relationships or a sense of personal strength, after struggling with a highly challenging event. It can occur alongside distress."
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "topic": "physical-development",
+ "hook": "A baby crawls happily across a glass table until the pattern under the glass suddenly drops away. She stops, looks down and will not go on, even when her mother calls. Nobody taught her to fear the drop. How did she know, and when did her body and brain become ready?",
+ "prereq": [
+  {
+   "q": "Which cue lets you judge depth with both eyes?",
+   "options": [
+    "Retinal disparity",
+    "Interposition",
+    "Relative size",
+    "Linear perspective"
+   ],
+   "correct": 0,
+   "why": "Each eye sees a slightly different image; the brain uses the difference to judge distance.",
+   "review": "perception"
+  },
+  {
+   "q": "What is a reflex?",
+   "options": [
+    "An automatic, unlearned response to a stimulus",
+    "A habit formed by practice",
+    "A conscious decision",
+    "A hormone"
+   ],
+   "correct": 0,
+   "why": "Reflexes happen without thought or learning, like pulling a hand off a hot stove.",
+   "review": "neural-firing"
+  },
+  {
+   "q": "Which design follows the same people over time?",
+   "options": [
+    "Longitudinal",
+    "Cross-sectional",
+    "Case study",
+    "Survey"
+   ],
+   "correct": 0,
+   "why": "A longitudinal study retests the same people.",
+   "review": "development-methods"
+  }
+ ],
+ "figure": {
+  "figure": "physical-development-lifespan",
+  "caption": "From teratogens before birth to menopause and sensory change in later life."
+ },
+ "chain": [
+  {
+   "cause": "Teratogens such as alcohol and nicotine cross the placenta",
+   "effect": "they can harm the developing baby, often for life"
+  },
+  {
+   "cause": "Maturation unfolds on a genetic timetable",
+   "effect": "motor milestones appear in a similar order, at ages that vary between healthy babies"
+  },
+  {
+   "cause": "Some experiences are needed within a time window (critical period) or are easiest then (sensitive period)",
+   "effect": "missing the window can leave lasting effects"
+  },
+  {
+   "cause": "Puberty raises sex hormones",
+   "effect": "primary and secondary sex characteristics develop, with menarche and spermarche"
+  },
+  {
+   "cause": "Later in life, senses and speed decline and menopause ends fertility in women",
+   "effect": "adults adjust, while practiced knowledge and skills stay strong"
+  }
+ ],
+ "ideas": [
+  "<b>Teratogens</b> (alcohol, nicotine, some medicines and infections) can harm development before birth; there is no known safe amount of alcohol in pregnancy.",
+  "Newborns arrive with reflexes such as the <b>rooting reflex</b>; <b>motor development</b> follows a similar order in most babies, with wide variation in timing.",
+  "A <b>critical period</b> is a window when an experience is needed (<b>imprinting</b> in geese); a <b>sensitive period</b> is when learning is easiest (accent-free language).",
+  "<b>Puberty</b> brings primary and secondary sex characteristics, <b>menarche</b> and <b>spermarche</b>; the brain’s frontal areas keep maturing into the 20s.",
+  "In later adulthood, vision, hearing and reaction time decline gradually and <b>menopause</b> ends menstruation, often around 50."
+ ],
+ "misconception": {
+  "wrong": "A baby who walks at 15 months is behind and will stay behind.",
+  "right": "Milestones come in a similar order, but healthy babies walk anywhere from about 9 to 17 months. Walking age in that range does not predict later ability."
+ },
+ "check": [
+  "psy-physical-development-1",
+  "psy-physical-development-2",
+  "psy-physical-development-13",
+  "psy-physical-development-14",
+  "psy-physical-development-15",
+  "psy-physical-development-18"
+ ],
+ "summary": "Physical development runs from before birth to old age. Teratogens can harm the developing baby. Newborns have reflexes, and motor milestones follow maturation in a similar order with varied timing. Critical and sensitive periods show that timing matters. Puberty brings sex characteristics, menarche and spermarche, while the brain keeps maturing into the 20s. Adulthood brings gradual sensory and motor decline and menopause."
+}

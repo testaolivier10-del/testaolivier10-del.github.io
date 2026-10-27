@@ -1,0 +1,93 @@
+{
+ "figure": "sensation-ear",
+ "labels": [
+  {
+   "id": "outer",
+   "name": "Outer ear",
+   "box": [
+    26,
+    323,
+    80,
+    23
+   ],
+   "concept": "hearing"
+  },
+  {
+   "id": "canal",
+   "name": "Ear canal",
+   "box": [
+    196,
+    129,
+    80,
+    23
+   ],
+   "concept": "hearing"
+  },
+  {
+   "id": "eardrum",
+   "name": "Eardrum",
+   "box": [
+    296,
+    253,
+    64,
+    23
+   ],
+   "concept": "conduction-deafness"
+  },
+  {
+   "id": "bones",
+   "name": "Middle-ear bones",
+   "box": [
+    326,
+    103,
+    136,
+    23
+   ],
+   "concept": "conduction-deafness"
+  },
+  {
+   "id": "cochlea",
+   "name": "Cochlea (hair cells turn vibration into neural signals)",
+   "box": [
+    556,
+    83,
+    160,
+    59
+   ],
+   "concept": "cochlea"
+  },
+  {
+   "id": "nerve",
+   "name": "Auditory nerve (to the brain)",
+   "box": [
+    556,
+    283,
+    239,
+    23
+   ],
+   "concept": "sensorineural"
+  },
+  {
+   "id": "conduction",
+   "name": "Damage here: conduction deafness",
+   "box": [
+    172,
+    -5,
+    229,
+    21
+   ],
+   "concept": "conduction-deafness"
+  },
+  {
+   "id": "sensorineural",
+   "name": "Damage here: sensorineural deafness",
+   "box": [
+    445,
+    -5,
+    250,
+    21
+   ],
+   "concept": "sensorineural"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "forgetting-curve": {
+  "file": "figures/forgetting-curve.svg",
+  "ext": "svg",
+  "w": 840,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A line graph of Ebbinghaus's 1885 results. The vertical axis is savings, the percent of the original learning time saved when he relearned a list of nonsense syllables. Savings were 58.2% after 20 minutes, 44.2% after 1 hour, 35.8% after about 9 hours, 33.7% after 1 day, 27.8% after 2 days, 25.4% after 6 days and 21.1% after 31 days. The curve drops steeply in the first hours and then levels into a slow tail. Time is on a square-root scale so both parts show."
+ },
+ "forgetting-interference": {
+  "file": "figures/forgetting-interference.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two rows on a timeline from old learning on the left to new learning on the right. Top row, proactive interference: an arrow points forward from the old learning (last year's locker code) to the new learning (this year's locker code); the old code keeps coming out, so old learning blocks new. Bottom row, retroactive interference: an arrow points backward from the new learning (French words this year) to the old learning (Spanish words from 9th grade); the new French words crowd out the Spanish, so new learning blocks old."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "language-development-milestones": {
+  "file": "figures/language-development-milestones.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A timeline from birth to 30 months. Cooing at about 2 months (\"ooh\", \"aah\"); babbling at about 6 months (\"ba-ba-ba\"); the one-word stage at about 12 months (\"Doggy!\"); telegraphic speech at about 18 to 24 months (\"Want juice.\"); sentences by about 27 months, often with overgeneralized rules (\"I goed outside.\"). Ages are typical; children vary by several months."
+ }
+}

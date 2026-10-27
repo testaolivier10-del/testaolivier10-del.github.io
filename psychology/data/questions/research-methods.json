@@ -1,0 +1,716 @@
+{
+ "stimuli": {
+  "research-methods-s1": {
+   "kind": "study",
+   "title": "Does a new caffeine-free energy drink improve reaction time?",
+   "invented": true,
+   "study": {
+    "introduction": "A company claims its caffeine-free energy drink makes people react faster. Researchers tested the claim.",
+    "participants": "Eighty college students volunteered (ages 18 to 22, 44 women and 36 men) at one university.",
+    "method": "A computer randomly assigned each student to one of two groups. The experimental group drank the energy drink; the control group drank a look-alike drink with the same taste and color but none of the active ingredients. Neither the students nor the research assistants who ran the test knew which drink each student had. Twenty minutes later, each student pressed a key as fast as possible when a light flashed, 20 times. Reaction time was the average number of milliseconds between the flash and the key press.",
+    "results": "The experimental group’s average reaction time was 312 milliseconds; the control group’s was 318 milliseconds.",
+    "discussion": "The researchers concluded that the drink made at most a very small difference in reaction time."
+   }
+  },
+  "research-methods-s2": {
+   "kind": "data",
+   "title": "Practice testing and quiz scores",
+   "invented": true,
+   "table": {
+    "caption": "Quiz scores out of 20, one week after studying (invented data for practice)",
+    "cols": [
+     "Study condition",
+     "Number of students",
+     "Average score"
+    ],
+    "rows": [
+     [
+      "Reread the chapter twice",
+      "30",
+      "11"
+     ],
+     [
+      "Reread once, then answered practice questions",
+      "30",
+      "15"
+     ],
+     [
+      "Did not study the chapter",
+      "30",
+      "6"
+     ]
+    ]
+   }
+  },
+  "research-methods-s3": {
+   "kind": "study",
+   "title": "A school survey on homework and sleep",
+   "invented": true,
+   "study": {
+    "introduction": "A student council wanted to know whether homework load is related to how much students sleep.",
+    "participants": "All 240 students in grades 9 to 12 at one high school were invited; 150 returned the form.",
+    "method": "Students answered two questions on a paper form with no name on it: \"About how many hours of homework do you do on a school night?\" and \"About how many hours do you sleep on a school night?\" They also rated the statement \"I get enough sleep\" from 1 (strongly disagree) to 5 (strongly agree).",
+    "results": "Students who reported more homework also reported less sleep. The average rating of \"I get enough sleep\" was 2.1."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-research-methods-1",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A psychologist sits in a park café for six weeks and records how often strangers who share a table start a conversation. She never speaks to them or changes anything about the setting. Which research method is she using?",
+   "options": [
+    "Naturalistic observation",
+    "A field experiment in a café",
+    "A case study of café customers",
+    "A survey of café customers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "She watches and records natural behavior in its real setting without intervening, which is naturalistic observation.",
+    "options": [
+     "Right: she records behavior where it happens and changes nothing.",
+     "An experiment needs a variable the researcher manipulates and random assignment to conditions; she changes nothing.",
+     "A case study looks in depth at one person or a small group; she counts behavior across many strangers.",
+     "A survey asks people to report on themselves; she never asks anyone anything."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-2",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Researchers ask 900 teenagers how many hours they sleep on school nights and how often they feel irritable, then find that teens who sleep less report feeling irritable more often. What can the researchers conclude?",
+   "options": [
+    "Losing sleep causes teenagers to become more irritable",
+    "Sleep and irritability are related, but the study cannot show which causes which",
+    "Feeling irritable keeps teenagers from falling asleep easily at night, which is what the data show",
+    "The relationship is due to chance because the data came from teenagers’ own self-reports"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The researchers measured two variables as they occurred. A correlational study shows that variables are related, not that one causes the other: a third variable, such as stress, could affect both.",
+    "options": [
+     "Nothing was manipulated and no one was randomly assigned, so a cause cannot be claimed.",
+     "Right: this is a correlational study; it shows a relationship, not a cause.",
+     "That is one possible direction, but the data cannot show it any more than the reverse.",
+     "Self-reports can be biased, but that does not make a relationship a chance result."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-3",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A neurologist writes a detailed report on one patient who, after a stroke, can read words aloud but cannot understand what they mean. Which statement best describes what this method can and cannot do?",
+   "options": [
+    "It can show what causes reading problems in stroke patients in general",
+    "It is weak because the patient was not randomly assigned to have a stroke",
+    "It can suggest ideas to test, but one person may not be typical of others",
+    "It measures how strongly two variables are related across many patients"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A case study examines one person (or a few) in depth. It is useful for rare conditions and for generating hypotheses, but what is true of one person may not be true of others.",
+    "options": [
+     "One patient, with nothing manipulated, cannot show a general cause.",
+     "Random assignment belongs to experiments; the issue with a case study is that one person may be atypical.",
+     "Right: a case study is rich in detail and can spark hypotheses, but one patient may be unusual.",
+     "That describes a correlational study, which needs many people; this is one patient."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-4",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A team wants to test whether background music lowers reading comprehension. Which hypothesis is stated in a way the team could test?",
+   "options": [
+    "Music has some kind of effect on the way that students think about and remember the things that they read in class",
+    "Does background music change how much students understand when they read?",
+    "Students probably focus much better on their reading when their surroundings feel calm, quiet and pleasant to them",
+    "Students reading with lyrics playing will answer fewer comprehension questions than students reading in silence"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A testable hypothesis is a specific prediction about how variables relate, stated so that data could support or refute it.",
+    "options": [
+     "\"Some kind of effect\" names no direction and no measurement, so no result could clearly support or refute it.",
+     "A hypothesis is a testable statement, not a question.",
+     "\"Focus\" and \"calm and pleasant\" are not defined as measurements, and music is not mentioned.",
+     "Right: it names the groups, a measurable outcome and a direction."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-5",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In a study, the researchers define \"aggression\" as the number of times a child hits or kicks the inflatable doll during a 10-minute play session. What have the researchers written?",
+   "options": [
+    "An operational definition",
+    "A hypothesis",
+    "A theory",
+    "A confounding variable"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An operational definition turns a concept into the exact procedure or count used to measure it, here hits and kicks counted in 10 minutes.",
+    "options": [
+     "Right: it states exactly how aggression is measured in this study.",
+     "A hypothesis predicts how variables are related; this only says how one variable is measured.",
+     "A theory is a broad explanation that organizes many findings, not a measurement rule.",
+     "A confounding variable is an unwanted difference between groups; this is the measure of the outcome."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-6",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Volunteers who chose to take a new memory course remembered more words than volunteers who chose not to take it. Why can the researchers not conclude that the course caused the difference?",
+   "options": [
+    "The study did not state a hypothesis, so its results are hard to interpret",
+    "People picked their own group, so motivation may have differed from the start",
+    "Word recall is too imprecise a measure to compare two groups of people",
+    "The course group was too small to reveal a difference in memory"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Only random assignment makes the groups alike, on average, in everything except the treatment. When people choose their own group, differences such as motivation can explain the result: a confounding variable.",
+    "options": [
+     "The question is not about a missing hypothesis; the problem is how people got into the groups.",
+     "Right: without random assignment, motivation is a confounding variable.",
+     "Word recall can be counted; the problem is how the groups were formed.",
+     "Nothing in the stem gives group sizes; the problem is that people chose their own groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-7",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "In a study of a new pain pill, neither the patients nor the nurses who rate their pain know which patients received the real pill and which received a sugar pill. What is this procedure called, and what does it control?",
+   "options": [
+    "A single-blind procedure, which controls the experimenter’s bias but not placebo effects",
+    "Random assignment, which makes the groups alike in age and health before the study",
+    "A double-blind procedure, which controls placebo effects and experimenter bias",
+    "An operational definition, which says how the patients’ pain will be measured"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When both participants and the people who collect data are unaware of the conditions, the study is double-blind. It controls participants’ expectations (placebo effects) and the researchers’ expectations (experimenter bias).",
+    "options": [
+     "In a single-blind study only the participants are kept unaware; here the raters are unaware too.",
+     "Random assignment decides who gets which pill; keeping everyone unaware is blinding.",
+     "Right: neither side knows, so neither expectations nor ratings can favor one group.",
+     "An operational definition is a measurement rule; this procedure is about who knows the conditions."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-8",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "A survey asks, \"Do you agree that the school’s unfair phone ban should be lifted?\" A second version asks, \"Should the school’s phone policy be changed?\" More students favor change on the first version. What explains the difference?",
+   "options": [
+    "Experimenter bias",
+    "A placebo effect",
+    "Social desirability bias",
+    "A wording effect"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Small changes in how a question is phrased can change answers. Calling the ban \"unfair\" pushes respondents toward agreeing.",
+    "options": [
+     "Experimenter bias is a researcher’s expectations shaping the results during data collection; here the printed question itself differs.",
+     "A placebo effect is a change caused by expecting a treatment to work; no treatment is given here.",
+     "That bias is answering to look good; the difference here comes from how the question is phrased.",
+     "Right: the loaded word \"unfair\" nudges people toward one answer."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-9",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "q": "On an anonymous online form, 30% of students say they have cheated on a test. When a teacher asks the same students face to face, 8% say they have. Which concept best explains the gap?",
+   "options": [
+    "Social desirability bias",
+    "A wording effect",
+    "Experimenter bias",
+    "A confounding variable in an experiment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "People tend to report what makes them look good, especially when someone they know is listening. Answering without giving a name reduces this self-report bias.",
+    "options": [
+     "Right: face to face, students answer in the way that looks better.",
+     "The question was the same; what changed was who heard the answer.",
+     "This is about how the participants answered, not about the researcher’s expectations shaping the data.",
+     "No variable was manipulated and nothing was randomly assigned, so this is not an experiment."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-10",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "In psychological science, what does a meta-analysis do?",
+   "options": [
+    "It repeats one study with new participants to see whether the result holds",
+    "It combines many studies of one question to estimate the overall effect",
+    "It has other experts check a study’s methods before a journal publishes it",
+    "It studies one rare person in great detail to suggest new hypotheses"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A meta-analysis statistically combines many studies of the same question, so one unusual study counts for less.",
+    "options": [
+     "That is a replication.",
+     "Right: it pools many studies into one estimate.",
+     "That is peer review.",
+     "That is a case study."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-11",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "An early, widely reported study found a striking effect. Several larger studies using the same procedure later found no effect. How should a careful student describe the finding?",
+   "options": [
+    "It is proven, because it was published in a peer-reviewed journal",
+    "It is proven for the participants of the first study, though perhaps not for others",
+    "It failed to replicate, so the evidence for it is weak",
+    "The later studies were probably done badly, since the first one was famous"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Replication is how science corrects itself. When larger, careful repeats of a study cannot reproduce its result, the original finding is doubtful.",
+    "options": [
+     "Peer review checks a study’s methods; it does not guarantee that the result will hold up.",
+     "One study does not prove a result even for its own sample; and later studies with the same procedure found no effect.",
+     "Right: a finding that larger repeats cannot reproduce should not be taught as established.",
+     "Being famous is not evidence; larger studies with the same procedure count for more."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-12",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "One psychologist explains a student’s test anxiety by the student’s racing heart and stress hormones; another explains it by the student’s habit of thinking \"I always fail.\" Which psychological perspectives are these?",
+   "options": [
+    "Behavioral and humanistic",
+    "Sociocultural and psychodynamic",
+    "Evolutionary and behavioral",
+    "Biological and cognitive"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The biological perspective looks at the body and brain; the cognitive perspective looks at how people think, remember and interpret events.",
+    "options": [
+     "The behavioral perspective looks at learning from consequences, and the humanistic at growth and free choice; neither fits.",
+     "Sociocultural looks at culture and groups, psychodynamic at inner conflicts outside awareness; neither fits.",
+     "Evolutionary explanations appeal to survival and reproduction; neither explanation does.",
+     "Right: the body’s processes, then patterns of thinking."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-13",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "research-methods-s1",
+   "q": "What is the independent variable in this study?",
+   "options": [
+    "Which drink a student was given, the energy drink or the look-alike",
+    "The number of milliseconds between the flash and the key press",
+    "Whether the research assistants knew which drink each student had",
+    "The students’ ages, from 18 to 22 years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The independent variable is the one the researchers manipulate: here, the type of drink.",
+    "options": [
+     "Right: the researchers set this for each student.",
+     "That is measured, so it is the dependent variable.",
+     "That is part of the blinding procedure, kept the same for everyone.",
+     "Age describes the participants; the researchers did not manipulate it."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-14",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "research-methods-s1",
+   "q": "Why did the control group receive a look-alike drink instead of no drink at all?",
+   "options": [
+    "To make the two groups the same size so the averages could be compared",
+    "To control the placebo effect, so both groups expected a boost",
+    "To give the control group an operational definition of reaction time",
+    "To let the research assistants see which students were in which group"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A placebo looks like the treatment but has no active ingredient. If expecting a boost made people faster, both groups would show it, so any difference left over points to the drink itself.",
+    "options": [
+     "Group size is set by assignment, not by what the control group drinks.",
+     "Right: a placebo makes expectations the same in both groups.",
+     "The operational definition is the same for both groups; the placebo is about expectations.",
+     "The look-alike drink keeps the conditions hidden, not visible."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-15",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "research-methods-s1",
+   "q": "What feature of the method allows the researchers to draw a cause-and-effect conclusion about the drink?",
+   "options": [
+    "Students were volunteers from one university",
+    "Reaction time was measured in milliseconds",
+    "Students were randomly assigned to the two drinks",
+    "Each student pressed a key 20 times instead of once"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Random assignment spreads differences such as alertness or sleep evenly across the groups, so a difference afterward can be traced to the drink.",
+    "options": [
+     "Volunteering says who took part; it does not make the two groups comparable.",
+     "A precise measure is useful, but it does not by itself allow a causal claim.",
+     "Right: random assignment makes the groups alike, on average, before the drinks.",
+     "Several trials make the measure steadier; they do not make the groups comparable."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-16",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "research-methods-s1",
+   "q": "Build the operational definition of reaction time used in this study.",
+   "why": {
+    "correct": "An operational definition says exactly how this study measured the variable, with the unit and the procedure."
+   },
+   "specific": {
+    "frame": "Reaction time was measured as ___, averaged over ___.",
+    "write": {
+     "context": [
+      "millisecond",
+      "flash",
+      "key"
+     ]
+    },
+    "model": "Reaction time was the average number of milliseconds between the light flashing and the student pressing the key, over 20 trials.",
+    "slots": {
+     "opdef": {
+      "label": "Measure",
+      "options": [
+       "the number of milliseconds between the light flashing and the key press",
+       "how alert each student felt after the drink",
+       "which drink each student was given"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A feeling is the concept in general, not how this study measured it.",
+       "2": "That is the independent variable, not the measure."
+      }
+     },
+     "when": {
+      "label": "Averaged over",
+      "options": [
+       "a whole day of normal activity",
+       "20 trials, 20 minutes after the drink",
+       "the students who felt the drink worked"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "The study measured 20 key presses in one session, not a whole day.",
+       "2": "Every student was measured, whatever they felt."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-research-methods-17",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "research-methods-s2",
+   "q": "Students were randomly assigned to the three conditions. Which conclusion do the averages in the table support?",
+   "options": [
+    "Rereading twice led to the highest quiz scores of the three conditions",
+    "Studying the chapter made little difference to quiz scores at the end of the week",
+    "Practice questions help some students and hurt the others in roughly equal numbers",
+    "Practice questions led to higher quiz scores than rereading did"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "With random assignment the groups started out alike, so the higher average after practice questions (15 versus 11) points to the practice questions as the cause.",
+    "options": [
+     "Rereading averaged 11, below the practice-question group’s 15.",
+     "Both studying groups scored well above the group that did not study (6).",
+     "Averages describe groups; the table gives no information about individual students.",
+     "Right: 15 is higher than 11, and random assignment allows a causal reading."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-18",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "research-methods-s2",
+   "q": "What is the role of the group that did not study the chapter?",
+   "options": [
+    "A control group showing how students score without studying",
+    "A confounding variable that weakens the conclusions of the study",
+    "The dependent variable that the researchers measured",
+    "A double-blind procedure that hides the conditions from researchers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A control group gets no treatment (or a placebo) and provides the baseline that shows whether the treatments made a difference.",
+    "options": [
+     "Right: it gives a baseline to compare both studying groups with.",
+     "A comparison group is part of the design, not an unwanted difference.",
+     "The dependent variable is the quiz score; this is a group.",
+     "Blinding is about who knows the conditions, not about a group."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-19",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "research-methods-s2",
+   "q": "Which change would most improve this study as a test of practice questions against rereading?",
+   "options": [
+    "Letting students choose the condition they like best",
+    "Giving both studying groups equal study time",
+    "Telling the students which condition is expected to work best",
+    "Dropping the group that did not study the chapter"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "If the two studying groups spent different amounts of time, time is a confounding variable. Holding it equal leaves the kind of studying as the only difference.",
+    "options": [
+     "Choosing your own group removes random assignment and adds confounding variables.",
+     "Right: otherwise the practice group may simply have studied for a different length of time.",
+     "That would add expectation effects to the results.",
+     "That group shows whether studying helps at all; it does not need to go."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-20",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-methods-s3",
+   "q": "What research method did the student council use?",
+   "options": [
+    "An experiment",
+    "Naturalistic observation",
+    "A survey",
+    "A case study"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A survey asks many people to report on themselves. Here students wrote down their own homework and sleep.",
+    "options": [
+     "Nothing was manipulated and no one was assigned to a homework load.",
+     "No one watched students do homework or sleep; students reported it themselves.",
+     "Right: students reported on their own homework and sleep.",
+     "A case study looks at one person in depth; 150 students answered the same questions."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-21",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "research-methods-s3",
+   "q": "The rating \"I get enough sleep\" from 1 to 5 is an example of which kind of measure?",
+   "options": [
+    "A double-blind measure",
+    "Qualitative data",
+    "A placebo",
+    "A Likert scale"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A Likert scale asks how strongly a person agrees or disagrees with a statement, on a numbered scale.",
+    "options": [
+     "Blinding is about who knows the conditions; this is a kind of rating question.",
+     "Ratings are numbers, so they are quantitative data.",
+     "A placebo is a fake treatment; nothing was given to the students.",
+     "Right: a rating of agreement with a statement."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-22",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "research-methods-s3",
+   "q": "Why might the hours reported on the form be less accurate than hours recorded by a sleep tracker?",
+   "options": [
+    "People estimate their own habits poorly and may report what sounds better",
+    "The form gave students no name to sign, so no one could check it",
+    "Surveys measure opinions and feelings, not hours",
+    "The students were randomly assigned to their homework loads"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Self-reports depend on people’s memory and honesty, so estimates can be off, and people may report healthier habits than they have.",
+    "options": [
+     "Right: self-reports are open to memory errors and social desirability bias.",
+     "Leaving names off usually makes answers more honest, not less.",
+     "Surveys can ask about behavior; the problem is how well people report it.",
+     "Nobody was assigned anything; homework load was reported, not set."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-methods-23",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "2.B",
+   "q": "Put the steps of an experiment in order.",
+   "options": [
+    "State a testable hypothesis",
+    "Operationally define the variables",
+    "Randomly assign participants to conditions",
+    "Measure the dependent variable",
+    "Compare the groups and report the results"
+   ],
+   "why": {
+    "correct": "A study starts from a hypothesis, defines how each variable will be measured, assigns people to conditions by chance, measures the outcome and then compares the groups."
+   }
+  },
+  {
+   "id": "psy-research-methods-24",
+   "unit": "skills-research",
+   "topic": "research-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "2.A",
+   "q": "A researcher finds that people who own pets report less loneliness than people who do not. Which explanations could account for this result? Select the ones that apply.",
+   "options": [
+    "Owning a pet reduces loneliness",
+    "Lonely people are less likely to choose to get a pet",
+    "People pick their pets at random, so the result is caused by the pets",
+    "The result is a placebo effect caused by the survey questions"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "In a correlational study the relationship can run either way, or a third variable (such as having more free time, or living with family) can affect both.",
+    "options": [
+     "Possible: the result fits this, but the data alone cannot show it.",
+     "Possible: the direction could run the other way.",
+     "Nobody was randomly assigned a pet, so no causal claim follows.",
+     "A placebo effect comes from expecting a treatment to work; no treatment was given."
+    ]
+   }
+  }
+ ]
+}

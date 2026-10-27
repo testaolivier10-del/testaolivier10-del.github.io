@@ -1,0 +1,1066 @@
+{
+ "stimuli": {
+  "treatment-s1": {
+   "kind": "study",
+   "title": "Therapy, medication or a waitlist for depression",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether cognitive-behavioral therapy (CBT) and antidepressant medication each reduce symptoms of depression more than waiting for treatment.",
+    "participants": "150 adults ages 18 to 65, all diagnosed with major depressive disorder by a clinician, were recruited from three community clinics in one US state. Each gave written informed consent after being told the risks of each treatment and that they could leave the study at any time. A university institutional review board approved the study.",
+    "method": "Participants were randomly assigned to 12 weeks of weekly CBT sessions, 12 weeks of an SSRI antidepressant, or a 12-week waitlist (they were offered treatment when the study ended). Depression was measured with a 21-item symptom questionnaire (scores from 0 to 63; higher scores mean more severe symptoms), given before and after the 12 weeks by an interviewer who did not know each person's group.",
+    "results": "Mean scores fell from 30 to 16 in the CBT group, from 30 to 17 in the medication group, and from 30 to 26 in the waitlist group. The CBT and medication groups each improved significantly more than the waitlist group; the difference between CBT and medication was not statistically significant.",
+    "discussion": "Both treatments outperformed waiting, and neither clearly outperformed the other over 12 weeks."
+   }
+  },
+  "treatment-s2": {
+   "kind": "data",
+   "title": "Anxiety scores before and after treatment",
+   "invented": true,
+   "plot": {
+    "label": "Grouped bar graph of mean anxiety scores (0 to 40, higher is more anxious) before and after 10 weeks: exposure therapy 28 then 12, anti-anxiety medication 28 then 18, waitlist 27 then 24 (invented data for practice)",
+    "kind": "bar",
+    "categories": [
+     "Exposure therapy",
+     "Medication",
+     "Waitlist"
+    ],
+    "series": [
+     {
+      "name": "Before",
+      "values": [
+       28,
+       28,
+       27
+      ]
+     },
+     {
+      "name": "After 10 weeks",
+      "values": [
+       12,
+       18,
+       24
+      ]
+     }
+    ],
+    "xLabel": "Group (20 adults with social anxiety disorder in each)",
+    "yLabel": "Mean anxiety score (0 to 40)"
+   }
+  },
+  "treatment-s3": {
+   "kind": "visual",
+   "title": "Approaches to treatment",
+   "figure": "treatment-approaches"
+  }
+ },
+ "items": [
+  {
+   "id": "psy-treatment-1",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Lying on a couch, a client is asked to say whatever comes to mind, however silly or embarrassing, while the therapist listens for patterns that may reveal hidden conflicts. Which technique is this?",
+   "options": [
+    "Active listening",
+    "Cognitive restructuring",
+    "Systematic desensitization",
+    "Free association"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Free association comes from psychodynamic therapy: unguarded talk may reveal unconscious conflicts.",
+    "options": [
+     "Active listening is the person-centered therapist echoing and clarifying feelings, not looking for hidden conflicts.",
+     "Cognitive restructuring targets conscious, distorted thoughts and replaces them with more accurate ones.",
+     "Systematic desensitization pairs relaxation with feared situations. It is a behavioral technique.",
+     "Right: saying whatever comes to mind, so the therapist can look for unconscious themes, is free association, a psychodynamic technique."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-2",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A therapist mostly listens. She restates what her client says (\"It sounds like you felt invisible at that dinner\"), never judges him, and lets him lead each session, trusting that he can find his own way forward. Which therapy is she using?",
+   "options": [
+    "Cognitive restructuring therapy",
+    "Psychodynamic therapy",
+    "Person-centered therapy",
+    "Aversion therapy"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Person-centered therapy offers genuineness, empathy shown through active listening, and unconditional positive regard, and the client directs the work.",
+    "options": [
+     "A cognitive therapist would actively challenge distorted thoughts, not mainly reflect feelings.",
+     "A psychodynamic therapist would interpret unconscious conflicts, not mainly mirror feelings.",
+     "Right: active listening, unconditional positive regard and a client-led session are the core of person-centered (humanistic) therapy.",
+     "Aversion therapy pairs an unwanted behavior with an unpleasant stimulus. It is behavioral."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-3",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ines is terrified of elevators. Her therapist first teaches her deep muscle relaxation. Then, while relaxed, she imagines a list of scenes from least to most frightening, starting with looking at a photo of an elevator and ending with riding one to the top floor. Which technique is this?",
+   "options": [
+    "Aversion therapy",
+    "Systematic desensitization",
+    "Token economy",
+    "Psychodynamic free association"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Systematic desensitization counterconditions a fear: relaxation, which is incompatible with anxiety, is paired with feared scenes step by step.",
+    "options": [
+     "Aversion therapy pairs an unwanted behavior with something unpleasant, the reverse of pairing fear with relaxation.",
+     "Right: relaxation paired with a step-by-step hierarchy of feared scenes is systematic desensitization, a form of counterconditioning.",
+     "A token economy rewards target behaviors with tokens. Nothing is being rewarded here.",
+     "Free association is a psychodynamic technique of saying whatever comes to mind."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-4",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A person who wants to stop drinking alcohol takes a medication that makes him feel sick whenever he drinks. Over time, the taste of alcohol alone makes him feel queasy. Which technique is this, and what learning does it rely on?",
+   "options": [
+    "Aversion therapy, using classical conditioning",
+    "Token economy, using operant conditioning",
+    "Exposure therapy, using extinction of fear",
+    "Biofeedback, using signals from the body"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Aversion therapy uses classical conditioning to attach an unpleasant response to an unwanted behavior. Its effects often fade unless other supports are added.",
+    "options": [
+     "Right: alcohol (the conditioned stimulus) is paired with nausea, so alcohol alone comes to trigger queasiness.",
+     "A token economy rewards a target behavior with tokens. Here something unpleasant is paired with alcohol.",
+     "Exposure reduces a fear by facing it without harm. This method creates an unpleasant response.",
+     "Biofeedback shows a person their own body signals, such as heart rate, so they can learn to control them."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-5",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a hospital unit, patients earn plastic chips for making their beds, attending group sessions and taking their medication. They trade the chips for snacks, phone time or outings. Which technique is this?",
+   "options": [
+    "Aversion therapy",
+    "Systematic desensitization",
+    "Group therapy",
+    "A token economy"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A token economy uses secondary reinforcers, the tokens, to strengthen desired behaviors through operant conditioning.",
+    "options": [
+     "Aversion therapy pairs an unwanted behavior with something unpleasant. Here desired behaviors are rewarded.",
+     "Systematic desensitization reduces fear with relaxation. Nothing here is about fear.",
+     "Group therapy is talk in a group led by a therapist, not trading tokens for rewards.",
+     "Right: tokens (secondary reinforcers) given for target behaviors and traded for rewards are a token economy, an operant technique."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-6",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Watching a screen that shows her muscle tension as a rising line, a woman with frequent tension headaches learns to relax her forehead and jaw until the line drops. Which technique is this?",
+   "options": [
+    "Transcranial magnetic stimulation",
+    "Exposure therapy",
+    "Biofeedback",
+    "Cognitive restructuring"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Biofeedback gives information about body processes such as muscle tension or heart rate so a person can learn to control them.",
+    "options": [
+     "TMS uses magnetic pulses on the scalp to stimulate the brain. Nothing is applied to her brain here.",
+     "Exposure therapy is facing a feared stimulus. She is learning to control a body signal.",
+     "Right: showing a person a live signal from their own body so they can learn to change it is biofeedback.",
+     "Cognitive restructuring changes thoughts. Here she learns to change a body response using feedback."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-7",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A therapist tells a client who keeps saying \"I must be liked by everyone or I am worthless\": \"Where is the evidence that you must be liked by everyone? Is it a disaster, or just disappointing, if one person does not like you?\" Which therapy is this?",
+   "options": [
+    "Person-centered (humanistic) therapy",
+    "Rational emotive behavior therapy (REBT)",
+    "Psychodynamic insight-oriented therapy",
+    "Systematic desensitization with relaxation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "REBT, a cognitive therapy, confronts irrational beliefs such as \"I must be liked by everyone\" and replaces them with more realistic ones.",
+    "options": [
+     "A person-centered therapist would not argue with the client's beliefs but would reflect feelings without judgment.",
+     "Right: directly and forcefully disputing irrational \"must\" beliefs is the hallmark of REBT.",
+     "A psychodynamic therapist would look for unconscious roots, not dispute the belief head on.",
+     "That behavioral technique pairs relaxation with feared scenes; it does not dispute beliefs."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-8",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A therapist notices that her client with depression sees himself as a failure, expects the future to be hopeless, and believes everyone thinks badly of him. Which concept describes this set of thoughts?",
+   "options": [
+    "The cognitive triad",
+    "Learned helplessness",
+    "Unconditional positive regard",
+    "Free association"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The cognitive triad is negative thinking about oneself, the world and the future. Cognitive therapy helps people test and change these thoughts.",
+    "options": [
+     "Right: negative views of the self, the world and the future are the cognitive triad that cognitive therapy targets in depression.",
+     "Learned helplessness is giving up after uncontrollable events. The scenario describes three kinds of negative thoughts.",
+     "That is the accepting attitude of a person-centered therapist, not a pattern of client thoughts.",
+     "Free association is a psychodynamic technique, not a set of negative beliefs."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-9",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A teen who has strong emotional swings and has harmed herself joins a program that teaches mindfulness, ways to tolerate distress and skills for handling relationships, balanced with acceptance of who she is. Which therapy is this?",
+   "options": [
+    "Rational emotive behavior therapy",
+    "Aversion therapy",
+    "Psychodynamic therapy",
+    "Dialectical behavior therapy"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "DBT was developed for people with intense emotions and self-harm, including many with borderline personality disorder; it combines acceptance with skills for change.",
+    "options": [
+     "REBT disputes irrational beliefs. It does not center on mindfulness and distress-tolerance skills.",
+     "Aversion therapy pairs a behavior with something unpleasant. It does not teach coping skills.",
+     "Psychodynamic therapy explores unconscious conflicts rather than teaching specific skills.",
+     "Right: DBT, a form of CBT, blends acceptance with change and teaches mindfulness, distress tolerance, emotion regulation and relationship skills."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-10",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A family therapist meets with a teenager, his parents and his sister together, because she sees the teen's problems as part of how the whole family communicates. What is the main advantage of this format over individual sessions?",
+   "options": [
+    "It is the best-supported format for each disorder",
+    "It removes the need for a therapeutic alliance with the teen",
+    "It works on patterns in the relationships that the problem is part of",
+    "It lets the therapist prescribe medication to the family"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Group and family formats let people see they are not alone, practice new ways of relating and change patterns in a whole system; they also cost less per person.",
+    "options": [
+     "No one format is best for every disorder. The choice depends on the problem and the people.",
+     "An alliance still matters, now with each family member.",
+     "Right: family and group therapy treat the person within a system of relationships, so patterns between people can change.",
+     "Most psychologists do not prescribe, and the format has nothing to do with medication."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-11",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two therapists use the same method. Clients of the first, whom they describe as warm, trusting and working with them on shared goals, improve more than clients of the second. Which concept best explains the difference?",
+   "options": [
+    "Deinstitutionalization",
+    "The therapeutic alliance",
+    "The placebo effect",
+    "Aversion therapy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Across many kinds of therapy, a strong therapeutic alliance predicts better outcomes.",
+    "options": [
+     "Deinstitutionalization is the move of patients out of hospitals into community care, not a feature of a therapy relationship.",
+     "Right: the bond of trust between therapist and client, with agreement on goals and tasks, is one of the strongest predictors of improvement.",
+     "The placebo effect is improvement from expectations alone. Both groups expected treatment; the difference was the relationship.",
+     "Aversion therapy is a behavioral technique, and both therapists used the same method."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-12",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A therapist working with a family who recently moved from Somalia asks them how they understand the son's distress, what healing means in their community, and admits what she does not yet know about their culture. Which concept does this show?",
+   "options": [
+    "Cultural humility",
+    "The eclectic approach",
+    "Ethnocentrism",
+    "Free association"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cultural humility means staying curious about each client's culture and being honest about one's own limits, which supports the therapeutic alliance.",
+    "options": [
+     "Right: an ongoing attitude of learning from clients about their culture, and recognizing the limits of one's own view, is cultural humility.",
+     "The eclectic approach is about mixing methods from several perspectives, not about learning a client's cultural view.",
+     "Ethnocentrism is judging other cultures by one's own, the opposite of what she does.",
+     "Free association is a psychodynamic technique, not an attitude toward a client's culture."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-13",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Starting in the 1950s, US state hospitals released many long-term patients to live in their communities, helped by new antipsychotic drugs. Too few community services followed. Which term describes this shift, and what was one result?",
+   "options": [
+    "Psychosurgery; many people lost their memory",
+    "Cultural humility; therapists learned new cultures",
+    "The therapeutic alliance; patients trusted doctors",
+    "Deinstitutionalization; many people lacked care"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Deinstitutionalization moved care from large hospitals to communities; without enough community services, many people were left without care.",
+    "options": [
+     "Psychosurgery is brain surgery to change behavior, not the move out of hospitals.",
+     "Cultural humility is an attitude in therapy, not a change in where patients live.",
+     "The alliance is the bond in therapy, not a shift in hospital policy.",
+     "Right: moving patients out of hospitals is deinstitutionalization, and underfunded community care left many people without support, some homeless."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-14",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A woman with bipolar I disorder takes a medication that evens out her mood and makes manic episodes less likely, and she has regular blood tests because the right dose is close to a harmful dose. Which medication is this?",
+   "options": [
+    "An SSRI antidepressant",
+    "An anti-anxiety drug",
+    "Lithium",
+    "An antipsychotic drug"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Lithium stabilizes mood in bipolar disorder and lowers suicide risk; its narrow safe range requires regular blood tests.",
+    "options": [
+     "An SSRI treats depression and anxiety. Given alone in bipolar disorder, it can risk triggering mania.",
+     "Anti-anxiety drugs calm anxiety; they do not prevent manic episodes.",
+     "Right: lithium is a mood stabilizer for bipolar disorder that needs blood tests because its safe range is narrow.",
+     "Some antipsychotics are used in bipolar disorder, but the blood-level monitoring described here points to lithium."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-15",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A man with schizophrenia has fewer hallucinations after he starts a medication that blocks dopamine receptors. After years on an older drug of this kind, he develops repeated, involuntary movements of his lips and tongue. What is the drug, and what is the side effect?",
+   "options": [
+    "An antidepressant; serotonin syndrome",
+    "An antipsychotic; tardive dyskinesia",
+    "Lithium; manic episodes",
+    "An anti-anxiety drug; dependence"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Antipsychotics act as dopamine antagonists. Tardive dyskinesia, involuntary facial and tongue movements, can follow long-term use and may not go away.",
+    "options": [
+     "Antidepressants target serotonin and other transmitters, not dopamine receptors, and do not mainly treat hallucinations.",
+     "Right: antipsychotics block dopamine receptors to reduce positive symptoms; long-term use, especially of older ones, can cause tardive dyskinesia.",
+     "Lithium is a mood stabilizer for bipolar disorder. It does not block dopamine receptors.",
+     "Anti-anxiety drugs act on GABA, not on dopamine receptors, and do not reduce hallucinations."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-16",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A man with severe depression has not improved with two medications and several months of therapy. With his informed consent, under anesthesia and with a muscle relaxant, doctors pass a brief electric current through his brain to cause a short seizure, several times over a few weeks. Which treatment is this?",
+   "options": [
+    "Electroconvulsive therapy (ECT)",
+    "Transcranial magnetic stimulation (TMS)",
+    "Psychosurgery",
+    "Biofeedback"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ECT is an effective treatment for severe, treatment-resistant depression; short-term memory loss around the treatment period is its main side effect.",
+    "options": [
+     "Right: a brief, controlled seizure under anesthesia, used mainly for severe depression that has not responded to other treatments, is ECT.",
+     "TMS uses magnetic pulses through the scalp while the person is awake, with no seizure and no anesthesia.",
+     "Psychosurgery removes or destroys brain tissue. ECT removes no tissue.",
+     "Biofeedback teaches a person to control body signals. It does not involve electric current or seizures."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-17",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "While a woman with depression sits awake in a chair, a coil held against her scalp sends repeated magnetic pulses to an area of her prefrontal cortex, five days a week for several weeks. Which treatment is this?",
+   "options": [
+    "Electroconvulsive therapy (ECT) under anesthesia",
+    "Lobotomy",
+    "Biofeedback training for relaxation",
+    "Transcranial magnetic stimulation (TMS)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "TMS stimulates targeted brain areas with magnetic pulses and is used for depression that has not responded to medication; it needs no anesthesia.",
+    "options": [
+     "ECT uses electric current to cause a seizure under anesthesia. She is awake and has no seizure.",
+     "A lobotomy cut connections to the frontal lobes. It is surgery, now abandoned.",
+     "Biofeedback shows a person their body signals. TMS applies magnetic pulses to the brain.",
+     "Right: magnetic pulses through the scalp to the brain, with the person awake, is TMS."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-18",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A woman asks a hypnotist to help her \"recover\" memories from early childhood. Based on research, what is the most accurate response?",
+   "options": [
+    "Hypnosis reliably brings back accurate early memories",
+    "Hypnosis lets people relive childhood exactly as it happened",
+    "Hypnosis can increase confidence in memories without making them more accurate",
+    "Hypnosis has no use in treatment of any kind"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Hypnosis can help with pain and anxiety, but it does not recover accurate memories or regress people to an earlier age.",
+    "options": [
+     "Research does not support this. Hypnosis raises confidence but also false memories.",
+     "Age regression under hypnosis does not take people back. They act out what they expect.",
+     "Right: under hypnosis, people report more \"memories\" and feel more sure of them, but false memories increase too.",
+     "Hypnosis has some evidence for reducing pain and anxiety when combined with other treatment."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-19",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A psychologist chooses a treatment for a client by combining the best available research on that problem, her own clinical skill, and the client's values, culture and preferences. What is this approach called?",
+   "options": [
+    "The eclectic approach",
+    "Evidence-based practice",
+    "Deinstitutionalization",
+    "Cultural humility"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Evidence-based practice joins the best research evidence with clinical expertise and the client's culture, values and preferences.",
+    "options": [
+     "The eclectic approach draws on several perspectives, but it does not by itself require weighing research evidence.",
+     "Right: combining the best research, clinical expertise and the client's characteristics and preferences is evidence-based practice.",
+     "Deinstitutionalization was a shift from hospitals to community care.",
+     "Cultural humility is one part of good care, but the approach described also weighs research and expertise."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-20",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "A client tells her therapist that she is struggling at work. Later, her boss calls the therapist to ask how the client is doing. What should the therapist do, and why?",
+   "options": [
+    "Not share anything, because of confidentiality",
+    "Share a short summary, because the boss is concerned",
+    "Share everything, because the job is at stake",
+    "Tell the boss the diagnosis but nothing else"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Therapists protect confidentiality. Exceptions are narrow, such as a serious risk of harm to the client or others, and clients are told about them at the start.",
+    "options": [
+     "Right: without the client's written permission, therapists keep what clients say private. The main exceptions involve serious risk of harm.",
+     "Concern is not permission. Sharing would break confidentiality.",
+     "A job being at stake does not override confidentiality without the client's consent.",
+     "A diagnosis is private health information too; sharing it breaks confidentiality."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-21",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A man with panic disorder is prescribed a fast-acting drug that increases the calming effect of GABA. His doctor warns him to use it only for a short time. Why the warning?",
+   "options": [
+    "The drug works after several weeks of daily use",
+    "The drug blocks dopamine and causes tardive dyskinesia",
+    "The drug is a mood stabilizer that needs blood tests",
+    "These drugs can lead to tolerance and dependence"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Anti-anxiety drugs that act on GABA work quickly but carry risks of tolerance, dependence and withdrawal, so they are often limited to short-term use.",
+    "options": [
+     "Drugs of this kind act within minutes to hours, which is part of why they are used for short periods.",
+     "Blocking dopamine is what antipsychotics do. This drug increases GABA's effect.",
+     "That describes lithium, used for bipolar disorder.",
+     "Right: drugs that boost GABA, such as benzodiazepines, calm anxiety fast, but regular use can lead to tolerance, dependence and withdrawal."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-22",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the steps of exposure-based treatment for a fear of dogs in the order a therapist would use them, from first to last.",
+   "options": [
+    "Build a list of dog situations ranked from least to most frightening",
+    "Look at photos of dogs until the fear drops",
+    "Stand across the room from a calm, leashed dog",
+    "Pet a calm dog while the therapist is nearby"
+   ],
+   "why": {
+    "correct": "Exposure starts with a ranked list, then works up one step at a time, staying with each step until the fear falls, so the fear extinguishes without the feared harm."
+   }
+  },
+  {
+   "id": "psy-treatment-23",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "treatment-s1",
+   "q": "What was the independent variable in this study?",
+   "options": [
+    "The score on the 21-item symptom questionnaire",
+    "The treatment condition each person received",
+    "The participants' ages, from 18 to 65 years",
+    "Whether the interviewer knew each person's group"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The independent variable is what the researchers manipulated: the treatment condition.",
+    "options": [
+     "That is the dependent variable, what was measured.",
+     "Right: the researchers manipulated which condition each participant received.",
+     "Age was not manipulated; it describes the sample.",
+     "The interviewer was kept unaware to reduce bias. That is a design feature, not the independent variable."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-24",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "treatment-s1",
+   "q": "Why did the researchers include a waitlist group?",
+   "options": [
+    "To show how symptoms change without treatment",
+    "To give the waitlist group a different medication",
+    "To make sure the groups had identical starting scores",
+    "To test whether waiting causes depression to get worse"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The waitlist is the control group: it shows how symptoms change over 12 weeks with no study treatment, which may include natural improvement and the effect of expecting help later.",
+    "options": [
+     "Right: depression often eases somewhat on its own; the waitlist group is a control showing that change, so the treatment effects can be judged against it.",
+     "The waitlist group received no study treatment during the 12 weeks.",
+     "All groups started at 30, but the waitlist is there as a comparison, not to equalize scores.",
+     "The question was whether treatments beat waiting, not whether waiting harms. Scores in that group actually fell a little."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-25",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "treatment-s1",
+   "q": "The difference between CBT and medication was not statistically significant. What does that mean?",
+   "options": [
+    "CBT and medication had no effect on symptoms",
+    "Medication was better than CBT for most participants",
+    "The study was not ethical, so its results do not count",
+    "The 1-point gap could plausibly be due to chance"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Not statistically significant means the difference could plausibly be due to chance; it does not prove the two treatments are identical.",
+    "options": [
+     "Both groups improved significantly more than the waitlist. The non-significant result is only about CBT compared with medication.",
+     "The CBT mean (16) was slightly lower, and the difference was not significant either way.",
+     "Statistical significance has nothing to do with ethics.",
+     "Right: \"not statistically significant\" means the gap of 1 point could be due to chance, so neither treatment can be called better from this study."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-26",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "treatment-s1",
+   "q": "Which ethical safeguard is described in the summary?",
+   "options": [
+    "Debriefing after deception about the true purpose",
+    "Random assignment of participants to three groups",
+    "The right to withdraw at any time",
+    "A blind interviewer who did not know the groups"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The summary describes informed consent, the right to withdraw and institutional review board approval. Offering waitlisted people treatment afterward also protects them.",
+    "options": [
+     "No deception is described, so no debriefing after deception is mentioned.",
+     "Random assignment is a design feature that supports causal claims, not an ethical safeguard.",
+     "Right: the summary says participants were told they could leave the study at any time.",
+     "Keeping the interviewer unaware reduces bias. It is a design feature, not an ethical safeguard."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-27",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "treatment-s1",
+   "q": "To which population can these results most reasonably be generalized?",
+   "options": [
+    "Teenagers with any kind of psychological disorder",
+    "US clinic adults with major depressive disorder",
+    "Adults with schizophrenia living in hospitals",
+    "Any adult in the world who feels sad at times"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalize to people like the participants: adults with diagnosed major depressive disorder in similar community clinics.",
+    "options": [
+     "No teenagers took part, and all participants had major depressive disorder.",
+     "Right: the participants were adults 18 to 65 diagnosed with major depressive disorder at community clinics in one US state.",
+     "No participants had schizophrenia, and they were recruited at community clinics.",
+     "Feeling sad at times is not a diagnosis, and the sample came from one US state."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-28",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "treatment-s2",
+   "q": "By how many points did the mean anxiety score fall in the exposure therapy group?",
+   "why": {
+    "correct": "$28 - 12 = 16$ points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      28,
+      12
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "12 is the score after treatment. The drop is the before score minus the after score: 28 minus 12."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        28,
+        18
+       ]
+      },
+      "why": "That is the drop for the medication group (28 to 18). Use the exposure therapy bars."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-29",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "treatment-s2",
+   "q": "What is the mean of the three groups' drops in anxiety score (exposure 16, medication 10, waitlist 3)?",
+   "why": {
+    "correct": "$\\frac{16 + 10 + 3}{3} \\approx 9.67$ points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       16,
+       10,
+       3
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         16,
+         10,
+         3
+        ]
+       ]
+      },
+      "why": "29 is the total of the three drops. Divide by the number of groups, 3."
+     },
+     {
+      "from": {
+       "fn": "median",
+       "args": [
+        [
+         16,
+         10,
+         3
+        ]
+       ]
+      },
+      "why": "10 is the median drop, the middle value. The mean divides the total by 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-30",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "treatment-s2",
+   "q": "Which conclusion do the data in the graph best support?",
+   "options": [
+    "Medication lowered anxiety more than exposure therapy or waiting",
+    "The waitlist group improved as much as the medication group",
+    "Exposure lowered anxiety most; both treatments beat waiting",
+    "No group changed from before to after treatment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare the drops: 16 for exposure, 10 for medication, 3 for the waitlist.",
+    "options": [
+     "Medication fell 10 points, less than exposure therapy's 16.",
+     "The waitlist fell 3 points, far less than medication's 10.",
+     "Right: exposure fell 16 points, medication 10 and the waitlist 3.",
+     "Every group's score fell, by 3 to 16 points."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-31",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "treatment-s2",
+   "q": "The waitlist group's mean fell by 3 points with no treatment. Which idea best explains why researchers expect some change in a control group like this?",
+   "options": [
+    "The waitlist group secretly received exposure therapy",
+    "Symptoms can ease with time, and expecting help can matter",
+    "Anxiety scores fall from one test to the next by rule",
+    "The waitlist group had a different disorder from the others"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Control groups show the change that happens without the treatment, from time, natural recovery and expectations, so the treatment effect is the extra change beyond it.",
+    "options": [
+     "Nothing in the summary suggests this. Some change without treatment is common.",
+     "Right: natural improvement over time and expectations can lower scores, which is why a control group is needed for comparison.",
+     "Scores can rise or fall. The waitlist simply improved a little.",
+     "All 60 adults had social anxiety disorder."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-32",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "treatment-s2",
+   "q": "Suppose the 60 adults had been randomly assigned to the three groups. Why would that let researchers say exposure therapy caused the larger drop?",
+   "options": [
+    "The groups would be alike on average before treatment",
+    "The adults would be a random sample of all people with anxiety",
+    "The anxiety scores would be measured without error",
+    "The researchers would know the true population mean score"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Random assignment makes groups equivalent on average, so differences after treatment can be attributed to the independent variable.",
+    "options": [
+     "Right: random assignment spreads differences between people evenly across groups, so a later difference can be traced to the treatment.",
+     "That is random sampling, which affects generalizing, not random assignment.",
+     "Random assignment does not remove measurement error.",
+     "Random assignment says nothing about the population mean."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-33",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "treatment-s3",
+   "q": "Using the figure, which approach would a therapist most likely use for a client whose main problem is the belief \"I always ruin everything\"?",
+   "options": [
+    "Biomedical",
+    "Psychodynamic",
+    "Humanistic",
+    "Cognitive"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A conscious, distorted belief is the target of cognitive approaches such as cognitive restructuring.",
+    "options": [
+     "Biomedical treatments target brain chemistry and activity, not a specific belief.",
+     "Psychodynamic therapy targets unconscious conflicts, not conscious distorted beliefs.",
+     "Humanistic therapy supports growth and self-acceptance but does not directly challenge the belief.",
+     "Right: the figure says the cognitive approach targets distorted, negative thoughts, such as this belief."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-34",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "treatment-s3",
+   "q": "According to the figure, which pair of techniques both belong to the behavioral approach?",
+   "options": [
+    "Free association and dream interpretation",
+    "Active listening and unconditional positive regard",
+    "Systematic desensitization and token economy",
+    "TMS and electroconvulsive therapy"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Behavioral techniques apply classical and operant conditioning: exposure, systematic desensitization, aversion therapy and token economies.",
+    "options": [
+     "Those are psychodynamic techniques.",
+     "Those belong to humanistic, person-centered therapy.",
+     "Right: both are listed under behavioral, since both change learned behavior through conditioning.",
+     "Those are biomedical treatments."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-35",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "treatment-s3",
+   "q": "A client wants to understand how painful early relationships still shape his choices today. Which row of the figure best fits his goal?",
+   "options": [
+    "Behavioral",
+    "Psychodynamic",
+    "Cognitive-behavioral",
+    "Biomedical"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Psychodynamic therapy seeks insight into unconscious conflicts rooted in earlier experience.",
+    "options": [
+     "Behavioral therapy changes current behavior through conditioning, not insight into early relationships.",
+     "Right: exploring how early experiences and unconscious conflicts shape the present is the psychodynamic goal.",
+     "CBT focuses on present thoughts and behaviors, not on unconscious roots in early relationships.",
+     "Biomedical treatments change brain chemistry or activity and do not aim at insight."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-36",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "treatment-s3",
+   "q": "A woman with severe depression has not improved with several kinds of psychotherapy. According to the figure, which row lists the treatments a doctor might consider next?",
+   "options": [
+    "Biomedical",
+    "Humanistic",
+    "Psychodynamic",
+    "Behavioral"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The biomedical row targets brain chemistry and activity: medication, TMS, ECT and, rarely, psychosurgery.",
+    "options": [
+     "Right: the biomedical row lists medication, TMS and ECT, which are used when psychotherapy alone has not helped.",
+     "Humanistic therapy is a psychotherapy, and she has already tried several.",
+     "Psychodynamic therapy is another psychotherapy, not a next step beyond them.",
+     "Behavioral techniques are psychotherapy too; the figure places medication and brain stimulation under biomedical."
+    ]
+   }
+  },
+  {
+   "id": "psy-treatment-37",
+   "unit": "unit-5",
+   "topic": "treatment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "treatment-s3",
+   "q": "According to the figure, what do the cognitive and cognitive-behavioral approaches have in common?",
+   "options": [
+    "Both target unconscious conflicts from childhood",
+    "Both change brain chemistry with medication",
+    "Both rely mainly on reflecting a client's feelings",
+    "Both work on how people think"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Cognitive therapy changes thoughts; CBT changes thoughts and behaviors together.",
+    "options": [
+     "That is the psychodynamic row.",
+     "That is the biomedical row.",
+     "Reflecting feelings is active listening, in the humanistic row.",
+     "Right: both target thoughts; CBT adds direct work on behavior."
+    ]
+   }
+  }
+ ]
+}

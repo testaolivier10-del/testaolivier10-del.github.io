@@ -1,0 +1,44 @@
+{
+ "piaget-stages": {
+  "def": "Jean Piaget’s theory that children’s thinking develops through four stages (sensorimotor, preoperational, concrete operational, formal operational), each a qualitatively different way of understanding the world."
+ },
+ "sensorimotor": {
+  "def": "Piaget’s first stage, from birth to about age 2, when infants learn about the world through their senses and actions and develop object permanence."
+ },
+ "object-permanence": {
+  "def": "The understanding that objects continue to exist when they cannot be seen, heard or touched; it develops during the first year."
+ },
+ "preoperational": {
+  "def": "Piaget’s second stage, from about 2 to 7, when children use words and images and play make-believe, but are egocentric and do not yet reason logically about changes such as pouring."
+ },
+ "egocentrism": {
+  "def": "In Piaget’s theory, a young child’s difficulty taking another person’s point of view; it means seeing the world only from one’s own perspective, not selfishness."
+ },
+ "conservation": {
+  "def": "The understanding that an amount (of liquid, number or mass) stays the same when its shape or arrangement changes; it usually develops in the concrete operational stage."
+ },
+ "theory-of-mind": {
+  "def": "The understanding that other people have their own thoughts, feelings and beliefs, which can differ from one’s own and can be false; usually clear by age 4 to 5."
+ },
+ "concrete-operational": {
+  "def": "Piaget’s third stage, from about 7 to 11, when children reason logically about concrete, real situations and understand conservation."
+ },
+ "formal-operational": {
+  "def": "Piaget’s fourth stage, from about age 12, when people can reason about abstract ideas and hypothetical situations."
+ },
+ "zpd": {
+  "def": "Vygotsky’s zone of proximal development: the range of tasks a learner cannot yet do alone but can do with help from someone more skilled."
+ },
+ "scaffolding": {
+  "def": "Temporary support (hints, steps, demonstrations) from a more skilled person that helps a learner in the zone of proximal development, removed as skill grows."
+ },
+ "crystallized": {
+  "def": "Crystallized intelligence: accumulated knowledge and skills such as vocabulary and facts; it holds steady or grows into later adulthood."
+ },
+ "fluid": {
+  "def": "Fluid intelligence: the ability to reason quickly and solve new problems; it tends to decline gradually from early adulthood."
+ },
+ "dementia": {
+  "def": "A decline in memory and thinking severe enough to interfere with daily life, caused by brain disease (most often Alzheimer’s disease); it is not a normal part of aging."
+ }
+}

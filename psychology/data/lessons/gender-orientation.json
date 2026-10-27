@@ -1,0 +1,71 @@
+{
+ "topic": "gender-orientation",
+ "hook": "At a baby shower, a cake reveals pink frosting inside, and guests start buying dolls. That cake told them one thing: the baby’s body. It did not tell them who the child will feel they are, what roles they will take on, or whom they will love one day. Psychology treats those as four separate questions.",
+ "prereq": [
+  {
+   "q": "What does a twin study compare?",
+   "options": [
+    "How similar identical twins are with how similar fraternal twins are",
+    "Twins with only children",
+    "A twin before and after an experiment",
+    "Two random strangers"
+   ],
+   "correct": 0,
+   "why": "Identical twins share nearly all genes and fraternal twins about half, so comparing them shows a genetic contribution.",
+   "review": "heredity-environment"
+  },
+  {
+   "q": "What is a schema?",
+   "options": [
+    "A mental framework that organizes and interprets information",
+    "A reflex present at birth",
+    "A kind of research design",
+    "A hormone"
+   ],
+   "correct": 0,
+   "why": "Schemas are mental frameworks; they guide what we notice and expect.",
+   "review": "perception"
+  }
+ ],
+ "figure": {
+  "figure": "gender-orientation-dimensions",
+  "caption": "Biological sex, gender identity, gender roles and sexual orientation answer four different questions."
+ },
+ "chain": [
+  {
+   "cause": "Biology sets sex (chromosomes, hormones, anatomy)",
+   "effect": "most bodies fit male or female patterns, and some people have intersex traits"
+  },
+  {
+   "cause": "A culture expects different things of women and men",
+   "effect": "children learn those gender roles, a process called gender typing"
+  },
+  {
+   "cause": "Children build mental frameworks for what is \"for girls\" and \"for boys\"",
+   "effect": "they use labels to choose toys and activities for themselves"
+  },
+  {
+   "cause": "Gender identity and sexual orientation develop from many interacting factors",
+   "effect": "no single cause explains them, and how a child is raised has not been found to set orientation"
+  }
+ ],
+ "ideas": [
+  "<b>Biological sex</b> is about the body; <b>gender</b> is the set of meanings a culture attaches to being female or male, plus a person’s own sense of self.",
+  "<b>Gender identity</b> is a person’s inner sense of being a woman, a man, both or neither. A transgender person’s identity differs from the sex they were assigned at birth.",
+  "<b>Gender roles</b> are a culture’s expectations for women and men; <b>gender typing</b> is how children learn and adopt them, through adults, peers and their own mental frameworks.",
+  "<b>Sexual orientation</b> is a lasting pattern of attraction. Genes and prenatal factors play a part, it is not chosen, and no way of raising a child has been found to cause it."
+ ],
+ "misconception": {
+  "wrong": "Sex, gender identity and sexual orientation all come as one package, so knowing one tells you the others.",
+  "right": "They are separate: a person’s body, sense of self, cultural role and attractions can combine in many ways."
+ },
+ "check": [
+  "psy-gender-orientation-1",
+  "psy-gender-orientation-2",
+  "psy-gender-orientation-3",
+  "psy-gender-orientation-5",
+  "psy-gender-orientation-6",
+  "psy-gender-orientation-15"
+ ],
+ "summary": "Sex refers to biology; gender to identity and to the roles a culture expects. Gender identity is a person’s inner sense of their gender, and gender typing is how children learn their culture’s gender roles. Sexual orientation is a separate, lasting pattern of attraction, shaped by many factors and not by parenting. Most average differences between girls and boys are small."
+}

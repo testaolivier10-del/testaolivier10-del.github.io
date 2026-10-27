@@ -1,0 +1,12 @@
+{
+ "stats-normal-curve": {
+  "file": "figures/stats-normal-curve.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bell-shaped normal curve with vertical lines at the mean and at 1, 2 and 3 standard deviations on each side. The bands hold 34% of scores between the mean and 1 SD on each side, 13.5% between 1 and 2 SD, 2.35% between 2 and 3 SD, and 0.15% beyond 3 SD. Below the axis, z scores run from minus 3 to plus 3, with percentiles 0.15, 2.5, 16, 50, 84, 97.5 and 99.85. Brackets show 68% of scores within 1 SD of the mean, 95% within 2 SD and 99.7% within 3 SD."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "psychodynamic-humanistic",
+ "hook": "Your friend loses a close game and spends the ride home blaming the referee, then snaps at his little brother at dinner. Another friend loses the same game, says \"I played badly,\" and asks the coach for extra practice. Why do two people react so differently to the same loss? Two old but influential views of personality give very different answers.",
+ "prereq": [
+  {
+   "q": "A woman cannot remember a frightening event from her childhood, and a theory says the memory was pushed out of awareness to protect her. What is this idea called?",
+   "options": [
+    "Repression",
+    "Retroactive interference",
+    "Encoding failure",
+    "Source amnesia"
+   ],
+   "correct": 0,
+   "why": "Repression is the proposed pushing of painful memories out of awareness; memory researchers find little evidence that it explains most forgetting.",
+   "review": "forgetting"
+  },
+  {
+   "q": "Two scorers rate the same answers and often give very different scores. Which quality of the measure is weak?",
+   "options": [
+    "Reliability",
+    "Standardization",
+    "Heritability",
+    "Random sampling"
+   ],
+   "correct": 0,
+   "why": "Reliability is consistency; scorers who disagree make the measure unreliable.",
+   "review": "intelligence"
+  }
+ ],
+ "figure": {
+  "figure": "psychodynamic-humanistic-views",
+  "caption": "The psychodynamic view stresses what lies below awareness; the humanistic view stresses growth when acceptance is unconditional."
+ },
+ "chain": [
+  {
+   "cause": "A thought or urge would cause anxiety if you admitted it",
+   "effect": "in the psychodynamic view, a defense mechanism keeps it out of awareness or disguises it"
+  },
+  {
+   "cause": "The defense works without your noticing",
+   "effect": "it shows up as behavior, such as excuses (rationalization) or anger aimed at a safer target (displacement)"
+  },
+  {
+   "cause": "Psychologists cannot ask directly about unconscious material",
+   "effect": "they use projective tests, such as inkblots, whose ambiguous images may reveal hidden concerns"
+  },
+  {
+   "cause": "In the humanistic view, a person is accepted without conditions (unconditional positive regard)",
+   "effect": "they can see themselves honestly, and the self-actualizing tendency moves them toward growth"
+  }
+ ],
+ "ideas": [
+  "The <b>psychodynamic</b> view says much of personality runs on the <b>unconscious</b>: wishes, fears and memories outside awareness that still shape behavior.",
+  "<b>Defense mechanisms</b> protect us from anxiety: repression, denial, displacement, projection, rationalization, reaction formation, regression and sublimation. Learn to spot each in a scenario.",
+  "<b>Projective tests</b> (Rorschach inkblots, the Thematic Apperception Test) use ambiguous images. Scoring often has weak reliability and validity.",
+  "The <b>humanistic</b> view stresses free choice and growth: <b>unconditional positive regard</b> frees the <b>self-actualizing tendency</b>."
+ ],
+ "misconception": {
+  "wrong": "Projection means being angry at someone and taking it out on someone else.",
+  "right": "That is displacement (a feeling moved to a safer target). Projection is seeing your own unacceptable trait or urge in other people, such as a dishonest person accusing everyone of lying."
+ },
+ "check": [
+  "psy-psychodynamic-humanistic-2",
+  "psy-psychodynamic-humanistic-4",
+  "psy-psychodynamic-humanistic-8",
+  "psy-psychodynamic-humanistic-14",
+  "psy-psychodynamic-humanistic-15",
+  "psy-psychodynamic-humanistic-16",
+  "psy-psychodynamic-humanistic-17"
+ ],
+ "summary": "The psychodynamic view explains personality through unconscious processes and the defense mechanisms that protect us from anxiety (repression, denial, displacement, projection, rationalization, reaction formation, regression, sublimation), assessed with projective tests whose reliability and validity are often weak. The humanistic view stresses growth: when people receive unconditional positive regard, the self-actualizing tendency moves them toward their potential. Both views are influential but hard to test."
+}

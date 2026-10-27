@@ -1,0 +1,12 @@
+{
+ "classical-conditioning-pairing": {
+  "file": "figures/classical-conditioning-pairing.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Before conditioning a tone (neutral stimulus) causes no salivation and food (UCS) causes salivation (UCR). During acquisition the tone and food are paired. After, the tone alone (now the CS) causes salivation (CR)."
+ }
+}

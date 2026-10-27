@@ -1,0 +1,12 @@
+{
+ "attribution-biases": {
+  "file": "figures/attribution-biases.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 500,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Dispositional attributions explain behavior by the person, situational ones by the circumstances. Below: the fundamental attribution error, the actor-observer bias and the self-serving bias, each in one line."
+ }
+}

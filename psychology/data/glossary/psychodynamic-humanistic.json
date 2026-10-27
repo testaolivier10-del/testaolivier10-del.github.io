@@ -1,0 +1,47 @@
+{
+ "personality": {
+  "def": "A person's characteristic pattern of thinking, feeling and acting that stays fairly consistent across time and situations."
+ },
+ "psychodynamic": {
+  "def": "A view of personality, begun by Sigmund Freud, that explains behavior through unconscious motives and conflicts, often rooted in childhood, and the defenses we use against anxiety."
+ },
+ "unconscious": {
+  "def": "In the psychodynamic view, the large part of mental life outside awareness: wishes, fears and memories that still influence behavior. Modern research supports unconscious processing in a narrower form, such as priming."
+ },
+ "defense-mechanism": {
+  "def": "In the psychodynamic view, an unconscious strategy that protects a person from anxiety by distorting or hiding a threatening thought, feeling or fact. The eight usually taught: repression, denial, displacement, projection, rationalization, reaction formation, regression and sublimation."
+ },
+ "denial": {
+  "def": "A defense mechanism: refusing to accept a threatening reality, such as insisting a persistent cough is nothing."
+ },
+ "displacement": {
+  "def": "A defense mechanism: shifting a feeling, often anger, from its real source to a safer target, such as yelling at a sibling after being criticized by a boss."
+ },
+ "projection": {
+  "def": "A defense mechanism: seeing your own unacceptable thoughts, feelings or urges in other people, such as a person tempted to cheat accusing others of cheating."
+ },
+ "rationalization": {
+  "def": "A defense mechanism: giving reasonable-sounding but false explanations for your behavior to hide the real, threatening reason."
+ },
+ "reaction-formation": {
+  "def": "A defense mechanism: acting in a way that is the exaggerated opposite of an unacceptable feeling, such as being overly sweet to someone you resent."
+ },
+ "regression": {
+  "def": "A defense mechanism: retreating to behavior from an earlier stage of development under stress, such as a school-age child returning to thumb sucking."
+ },
+ "sublimation": {
+  "def": "A defense mechanism: channeling an unacceptable impulse into a socially valued activity, such as turning aggressive urges into competitive sport."
+ },
+ "projective-test": {
+  "def": "A personality test that shows ambiguous images, such as the Rorschach inkblots or the Thematic Apperception Test pictures, on the idea that responses reveal unconscious concerns. Scoring often has weak reliability and validity."
+ },
+ "humanistic": {
+  "def": "A view of personality, linked to Carl Rogers, that stresses free will, the person's own view of themselves and the drive to grow."
+ },
+ "upr": {
+  "def": "Unconditional positive regard: accepting and valuing a person without conditions, even while judging a behavior. In the humanistic view it lets people see themselves honestly and grow."
+ },
+ "self-actualizing": {
+  "def": "In the humanistic view, the built-in drive to grow and fulfill one's potential, which flourishes when a person feels accepted."
+ }
+}

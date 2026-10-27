@@ -1,0 +1,23 @@
+{
+ "correlation-coefficient": {
+  "def": "A number, r, from -1 to +1 that describes the direction (its sign) and strength (its size) of the relationship between two variables."
+ },
+ "positive-correlation": {
+  "def": "A relationship in which two variables tend to rise and fall together; r is above 0."
+ },
+ "negative-correlation": {
+  "def": "A relationship in which one variable tends to fall as the other rises; r is below 0."
+ },
+ "scatterplot": {
+  "def": "A graph of paired data in which each point is one person or case, placed by its values on two variables."
+ },
+ "trend-line": {
+  "def": "The straight line that best fits the points on a scatterplot, showing the trend and allowing predictions. Also called a trend line."
+ },
+ "directionality": {
+  "def": "In a correlation, not knowing which variable affects the other: A may lead to B, or B to A. Also called reverse causation."
+ },
+ "illusory-correlation": {
+  "def": "A relationship that people believe exists between two things when the data show none, often because memorable cases stand out."
+ }
+}

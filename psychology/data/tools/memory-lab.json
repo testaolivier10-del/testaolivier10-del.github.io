@@ -1,0 +1,71 @@
+{
+ "slug": "memory-lab",
+ "kind": "simulator",
+ "topic": "memory-intro",
+ "intro": "<p>Run memory experiments on yourself. Study a list of words, type back what you remember and see your own serial position curve next to a class of simulated learners, then add a 30-second distraction and watch the end of the curve collapse. Plot the forgetting curve and try massed and spaced review schedules on it. Then sort out proactive and retroactive interference on a timeline.</p>",
+ "howItWorksTitle": "What the curves are",
+ "howItWorks": "<p>Your own recall is scored exactly: a word counts when you type it (capital letters, a plural or one wrong letter are forgiven). The class curve and the forgetting curve are small teaching models built to show the shapes researchers found, not data from any one study: the serial position curve with its primacy and recency effects and the recency effect lost after a short filled delay (Murdock, 1962; Glanzer &amp; Cunitz, 1966), and the forgetting curve, steep at first and then level (Ebbinghaus, 1885), flattened most by reviews spread out over time (the spacing effect).</p><p>Every percent and mean you compute in the drills comes from the course's statistics library. The data in the drills are invented for practice.</p>",
+ "partTopics": {
+  "primacy": "encoding-memories",
+  "lastmean": "encoding-memories",
+  "delay": "encoding-memories",
+  "iv": "encoding-memories",
+  "spaced": "encoding-memories",
+  "massed": "encoding-memories",
+  "concl": "encoding-memories",
+  "which": "forgetting",
+  "kind": "forgetting",
+  "drop1": "forgetting",
+  "drop2": "forgetting",
+  "shape": "forgetting",
+  "fix": "forgetting"
+ },
+ "contexts": [
+  {
+   "id": "word-list",
+   "topic": "encoding-memories",
+   "types": ["serial"],
+   "lead": "In an invented memory experiment, a psychology class repeats a classic free-recall study.",
+   "groups": [20, 25, 30]
+  },
+  {
+   "id": "vocab-study",
+   "topic": "encoding-memories",
+   "types": ["spacing"],
+   "lead": "In an invented experiment, a teacher tests two ways to study vocabulary.",
+   "material": "40 vocabulary words",
+   "minutes": 60,
+   "sessions": 3,
+   "max": 40
+  },
+  {
+   "id": "anatomy-study",
+   "topic": "encoding-memories",
+   "types": ["spacing"],
+   "lead": "In an invented experiment, a researcher compares two study schedules for a set of anatomy terms.",
+   "material": "30 anatomy terms",
+   "minutes": 45,
+   "sessions": 3,
+   "max": 30
+  },
+  {
+   "id": "two-memories",
+   "topic": "forgetting",
+   "types": ["interference"],
+   "people": ["Jada", "Marcus", "Elena", "Kofi", "Ines"]
+  },
+  {
+   "id": "nonsense-syllables",
+   "topic": "forgetting",
+   "types": ["forgetting"],
+   "lead": "In an invented study modeled on Ebbinghaus's method, a group learns a list of nonsense syllables until they can recite it once without error, then is retested after different delays."
+  },
+  {
+   "id": "class-facts",
+   "topic": "forgetting",
+   "types": ["forgetting"],
+   "lead": "In an invented study, students learn 50 facts from a history lesson and are tested on them after different delays, without studying in between.",
+   "decay": [0.35, 0.4, 0.45]
+  }
+ ]
+}

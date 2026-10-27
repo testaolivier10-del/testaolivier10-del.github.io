@@ -1,0 +1,12 @@
+{
+ "research-ethics-timeline": {
+  "file": "figures/research-ethics-timeline.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A timeline with four stages. Before: an institutional review board, or an animal care committee for animal research, reviews and approves the plan. At the start: informed consent, where participants learn what will happen and agree; minors give assent and a parent consents. During: the right to withdraw at any time, protection from harm with risks kept minimal, and confidentiality. After: debriefing, where the true purpose is explained, including any deception. A note says that on the exam you name a safeguard the summary describes and say how the researchers applied it."
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "health-psychology": {
+  "def": "The field that studies how psychological, behavioral and social factors, such as stress, habits and support from others, affect physical health and illness."
+ },
+ "stress": {
+  "def": "The process by which we appraise and respond to events (stressors) that we see as threatening or challenging. Our response depends partly on how we interpret the event and our ability to handle it."
+ },
+ "stressor": {
+  "def": "An event or condition that triggers stress, from catastrophes and major life changes to daily hassles."
+ },
+ "eustress": {
+  "def": "Positive stress, felt as a motivating challenge, such as the excitement of starting a new job."
+ },
+ "distress-stress": {
+  "def": "Distress: negative stress that feels overwhelming or harmful; when intense or long-lasting it is linked to poorer health."
+ },
+ "daily-hassles": {
+  "def": "Small, everyday stressors, such as traffic, lost keys or a noisy roommate, that can add up and affect health."
+ },
+ "gas": {
+  "def": "The general adaptation syndrome, described by Hans Selye: the body's response to a continuing stressor in three stages. Alarm (shock, then sympathetic arousal), resistance (the body copes with arousal kept high) and exhaustion (reserves run down and vulnerability to illness rises)."
+ },
+ "fff": {
+  "def": "The fight-flight-freeze response: the fast, automatic reaction to a threat, driven by the sympathetic nervous system, that prepares the body to fight, run or go still."
+ },
+ "tend-befriend": {
+  "def": "The tend-and-befriend response: under stress, protecting and caring for others (tend) and seeking social support (befriend). First described in women by Shelley Taylor and linked to oxytocin."
+ },
+ "coping": {
+  "def": "Efforts to manage stress, either by changing the stressor or by managing the reaction to it."
+ },
+ "problem-focused": {
+  "def": "Problem-focused coping: dealing with stress by acting directly on the stressor, such as making a study plan for a hard test. Works best when the stressor can be changed."
+ },
+ "emotion-focused": {
+  "def": "Emotion-focused coping: dealing with stress by managing the emotional reaction, such as talking with friends or exercising. Fits best when the stressor cannot be changed."
+ }
+}

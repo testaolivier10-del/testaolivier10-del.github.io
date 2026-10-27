@@ -1,0 +1,72 @@
+{
+ "topic": "motivation",
+ "hook": "Why do you eat dessert when you are already full, practice an instrument nobody pays you to play, and freeze on a test you studied hard for? Motivation is whatever starts, directs and keeps behavior going, and psychologists have several theories, each good at explaining a different kind of \"why\".",
+ "prereq": [
+  {
+   "q": "Which brain structure helps keep the body's internal balance, including hunger and thirst?",
+   "options": [
+    "Hypothalamus",
+    "Cerebellum",
+    "Occipital lobe",
+    "Broca's area"
+   ],
+   "correct": 0,
+   "why": "The hypothalamus regulates hunger, thirst, body temperature and other parts of homeostasis.",
+   "review": "brain"
+  },
+  {
+   "q": "A child gets a sticker every time she cleans her room, and she cleans more often. Which concept explains the increase?",
+   "options": [
+    "Positive reinforcement",
+    "Negative punishment",
+    "Habituation",
+    "Extinction"
+   ],
+   "correct": 0,
+   "why": "Adding something pleasant after a behavior makes it more likely: positive reinforcement.",
+   "review": "operant-conditioning"
+  }
+ ],
+ "figure": {
+  "figure": "motivation-yerkes-dodson",
+  "caption": "Performance is best at a moderate level of arousal; harder tasks peak at lower arousal."
+ },
+ "chain": [
+  {
+   "cause": "The body lacks something it needs, such as water",
+   "effect": "a drive (thirst) pushes you to act, and drinking restores homeostasis: drive-reduction theory"
+  },
+  {
+   "cause": "An attractive reward is in view, such as dessert",
+   "effect": "it pulls behavior even without a body need: incentive theory"
+  },
+  {
+   "cause": "Arousal is too low or too high for the task",
+   "effect": "performance drops; it is best at a moderate level, lower for hard tasks (Yerkes-Dodson law)"
+  },
+  {
+   "cause": "An expected reward is given for something you already enjoy",
+   "effect": "your reason shifts to the reward and intrinsic motivation can fall (overjustification effect)"
+  }
+ ],
+ "ideas": [
+  "<b>Instinct theory</b> fits fixed, unlearned patterns in animals. <b>Drive-reduction</b>: needs create drives that push us toward homeostasis. <b>Incentive theory</b>: outside rewards pull us.",
+  "<b>Arousal theory</b>: we seek an optimal level of arousal. The <b>Yerkes-Dodson law</b> says performance peaks at moderate arousal, lower for hard tasks. <b>Sensation seekers</b> prefer high arousal.",
+  "<b>Self-determination theory</b>: needs for autonomy, competence and relatedness. <b>Intrinsic</b> motivation comes from the activity; <b>extrinsic</b> from rewards. Expected rewards can undermine intrinsic interest (<b>overjustification</b>).",
+  "<b>Hunger</b>: ghrelin (stomach) signals hunger, leptin (fat cells) signals stored energy, the hypothalamus integrates them; <b>external cues</b> also trigger eating. The <b>need to belong</b> is a basic motive."
+ ],
+ "misconception": {
+  "wrong": "Any reward will kill a person's interest in an activity.",
+  "right": "The undermining effect is strongest for expected, tangible rewards given just for doing a task the person already enjoys. Surprise rewards and specific praise for good work usually do not lower interest, and rewards can help with tasks no one enjoys."
+ },
+ "check": [
+  "psy-motivation-1",
+  "psy-motivation-2",
+  "psy-motivation-13",
+  "psy-motivation-14",
+  "psy-motivation-15",
+  "psy-motivation-6",
+  "psy-motivation-8"
+ ],
+ "summary": "Motivation theories explain different behavior: instincts for fixed animal patterns, drive-reduction for body needs and homeostasis, incentives for outside pulls, arousal theory and the Yerkes-Dodson law for the best level of arousal, and self-determination theory for intrinsic motivation, which expected rewards can undermine (the overjustification effect). Motivational conflicts are approach-approach, avoidance-avoidance, approach-avoidance and multiple approach-avoidance. Hunger involves ghrelin, leptin, the hypothalamus and external cues; the need to belong drives social behavior."
+}

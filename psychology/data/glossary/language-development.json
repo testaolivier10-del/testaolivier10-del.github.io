@@ -1,0 +1,38 @@
+{
+ "language": {
+  "def": "A system of spoken, written or signed words and the rules for combining them to communicate meaning."
+ },
+ "phoneme": {
+  "def": "The smallest distinct unit of sound in a language, such as the \"b\" in \"bat\"; languages use different sets of phonemes."
+ },
+ "morpheme": {
+  "def": "The smallest unit of language that carries meaning, such as \"un,\" \"happy\" and \"ness\" in \"unhappiness.\""
+ },
+ "semantics": {
+  "def": "The rules for deriving meaning from words, word parts and sentences, such as knowing that \"-ed\" makes a verb past tense."
+ },
+ "grammar": {
+  "def": "A language’s system of rules that lets people communicate and understand one another; it includes semantics and syntax."
+ },
+ "syntax": {
+  "def": "The rules for combining words into grammatically sensible sentences, such as word order (\"The dog bit the man\")."
+ },
+ "generativity-language": {
+  "def": "The ability to combine a limited set of words and rules to produce and understand an unlimited number of new sentences."
+ },
+ "cooing": {
+  "def": "An infant’s early vowel-like sounds, such as \"ooh\" and \"aah,\" starting at about 2 months."
+ },
+ "babbling": {
+  "def": "The stage, starting at about 6 months, when infants make repeated consonant-vowel syllables (\"ba-ba-ba\") that gradually come to sound like the home language."
+ },
+ "one-word": {
+  "def": "The stage, around the first birthday, when children speak mostly in single words that often stand for a whole idea (\"Out!\" for \"I want to go out\")."
+ },
+ "telegraphic": {
+  "def": "Early speech, around 18 to 24 months, that keeps key content words in the right order and leaves out small words (\"Daddy go car\"), like a telegram."
+ },
+ "overgeneralization": {
+  "def": "Applying a grammar rule to words it does not fit, such as \"goed\" or \"mouses\"; it shows a child has learned the rule."
+ }
+}

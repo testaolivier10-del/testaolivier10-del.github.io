@@ -1,0 +1,389 @@
+{
+ "stimuli": {
+  "research-sampling-s1": {
+   "kind": "study",
+   "title": "Does a daily 15-minute walk lift mood?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers tested whether a 15-minute walk outdoors each day improves mood over two weeks.",
+    "participants": "Researchers placed an ad in one city’s newspaper. Of 300 adults who answered, 120 were chosen at random to take part (ages 30 to 65; 70% women; most were retired or worked part time).",
+    "method": "A computer randomly assigned half the participants to take a 15-minute walk outdoors each day; the other half spent 15 minutes each day reading indoors. Before and after the two weeks, each person rated their mood from 1 (very low) to 7 (very high).",
+    "results": "Mood ratings rose by an average of 0.9 points in the walking group and by 0.2 points in the reading group."
+   }
+  },
+  "research-sampling-s2": {
+   "kind": "data",
+   "title": "Who answered an online sleep survey?",
+   "invented": true,
+   "table": {
+    "caption": "Ages of survey respondents compared with the town’s adult population (invented data for practice)",
+    "cols": [
+     "Age group",
+     "Share of respondents",
+     "Share of the town’s adults"
+    ],
+    "rows": [
+     [
+      "18 to 29",
+      "55%",
+      "20%"
+     ],
+     [
+      "30 to 49",
+      "30%",
+      "35%"
+     ],
+     [
+      "50 to 69",
+      "12%",
+      "30%"
+     ],
+     [
+      "70 and older",
+      "3%",
+      "15%"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-research-sampling-1",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A researcher wants to know how U.S. high-school seniors feel about college costs. She gives a questionnaire to 300 seniors chosen by lottery from a national list of all seniors. In this study, who is the population?",
+   "options": [
+    "All U.S. high-school seniors",
+    "The 300 seniors who received the questionnaire",
+    "The seniors who answered \"very worried\"",
+    "Everyone who will attend college in the U.S."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The population is the whole group a study wants to draw conclusions about; the sample is the smaller group actually studied.",
+    "options": [
+     "Right: the population is everyone the study wants to describe.",
+     "Those 300 are the sample, the part of the population actually studied.",
+     "That is a subgroup of answers, not the group the study is about.",
+     "The study is about current seniors, not all future college students."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-2",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "To study teen screen habits, a researcher posts a link on a gaming forum and analyzes the 2,000 replies. Which problem most limits who the results describe?",
+   "options": [
+    "There was no random assignment to screen habits",
+    "Sampling bias: forum users may differ from typical teens",
+    "The sample of 2,000 replies is too small to describe teens in general",
+    "A wording effect in the questions that the forum survey used"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A convenience sample takes whoever is easy to reach. Gaming-forum users differ from teens in general, so the sample is biased no matter how many reply.",
+    "options": [
+     "Random assignment matters for causal claims in experiments; the question is who the results describe.",
+     "Right: a convenience sample of forum users is unlikely to be representative.",
+     "2,000 is a large sample; size cannot fix a sample drawn from the wrong place.",
+     "The stem says nothing about the wording; the problem it describes is where the sample came from."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-3",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Which plan gives the best chance of a sample that represents all 1,600 students at a high school?",
+   "options": [
+    "Ask the first 100 students who walk into the cafeteria",
+    "Ask 100 volunteers who answer a poster in the hallway",
+    "Draw 100 names at random from the full school list",
+    "Ask each student in the four largest classes"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Random sampling gives every member of the population an equal chance of being included, which makes a representative sample likely.",
+    "options": [
+     "Only students who eat in the cafeteria at that time can be chosen.",
+     "Volunteers differ from those who do not volunteer.",
+     "Right: every student has the same chance of being chosen.",
+     "Students in large classes, often required courses, may differ from others."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-4",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A study of a new reading program randomly selects 60 schools from across the state, then randomly assigns 30 to use the program and 30 to continue as usual. What does each random step allow?",
+   "options": [
+    "Random selection supports a causal claim; random assignment supports generalizing to the state’s schools",
+    "Both steps do the same job, so the second one adds nothing to the study design",
+    "Neither step matters much, because 60 schools is a large enough sample on its own",
+    "Random selection supports generalizing to the state’s schools; random assignment supports a causal claim"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Random sampling (selection) lets results generalize to the population; random assignment to conditions lets an experiment show cause and effect.",
+    "options": [
+     "This swaps the two: assignment is what allows the cause-and-effect conclusion.",
+     "They do different jobs: one is about who is studied, the other about which condition each gets.",
+     "Size does not replace either step: a large biased sample is still biased.",
+     "Right: sampling decides who is studied, assignment decides which condition."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-5",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "An experiment on a memory strategy used 40 psychology majors at one private university, ages 19 to 22. A teacher asks whether the results apply to her ninth graders. Which answer is best supported?",
+   "options": [
+    "Only partly: it helped young adults, but ninth graders are younger",
+    "No, because 40 participants is too few for a study to give useful results",
+    "Yes, because the study was an experiment that used random assignment",
+    "Yes, because memory works in much the same way in people of any age"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Generalizability depends on how similar the participants are to the group you want to describe: here, age and type of school differ.",
+    "options": [
+     "Right: it argues from participant characteristics, both sides.",
+     "Generalizing depends on who the participants were, not on the count alone.",
+     "Random assignment supports a causal claim for these participants; it says nothing about other ages.",
+     "Ages, schooling and backgrounds differ; a claim about everyone needs evidence from different groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-6",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A radio host asks listeners to call in and say whether they support a new curfew; 80% of callers oppose it. Why is this poor evidence about the whole town’s opinion?",
+   "options": [
+    "Phone calls serve as an operational definition of support for the curfew",
+    "Callers chose themselves and may hold stronger views",
+    "The host did not use a double-blind procedure when taking the calls",
+    "The result is a correlation, so it says little about the curfew itself"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "People who choose to respond often care more about the issue than others, so a self-selected sample does not represent the population.",
+    "options": [
+     "An operational definition is a measurement rule; the problem is who called.",
+     "Right: a self-selected sample is a biased sample.",
+     "Blinding belongs to experiments; this is about who is in the sample.",
+     "A percent of callers is a description of a sample, and the problem is the sample."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-7",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s1",
+   "q": "From what population was the sample drawn?",
+   "options": [
+    "Adults across the United States, of any age",
+    "The 60 participants in the walking group",
+    "Adults in one city who answered an ad",
+    "Retired adults across the country"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Random selection gave every ad responder the same chance, so the sample represents the people who answered the ad, not adults in general.",
+    "options": [
+     "Nobody outside the people who answered the ad could be chosen.",
+     "That is one condition of the experiment, not the population.",
+     "Right: the 120 were chosen at random from those 300 people.",
+     "Many were retired, but the pool was one city’s ad responders."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-8",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s1",
+   "q": "Which feature of the participants most limits generalizing the results to high-school students?",
+   "options": [
+    "They were randomly assigned to one of two daily activities",
+    "Mood was rated on a scale from 1 to 7",
+    "The study lasted two weeks",
+    "They were adults aged 30 to 65, mostly retired"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Generalizability is argued from participant characteristics, such as age and life situation, compared with the group you want to describe.",
+    "options": [
+     "Random assignment supports the causal claim; it does not limit generalizing.",
+     "The measure applies to anyone; the participants’ characteristics are the issue.",
+     "Duration is a design feature; the question asks about who the participants were.",
+     "Right: their age and daily life differ from teenagers’."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-9",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s1",
+   "q": "Build a statement about whether these results generalize to all U.S. adults.",
+   "why": {
+    "correct": "A generalizability answer names the population and supports the claim with specific characteristics of the participants."
+   },
+   "specific": {
+    "frame": "The results ___ generalize to all U.S. adults, because the participants ___.",
+    "model": "The results may not generalize to all U.S. adults, because the participants were ad responders from one city, mostly women, and mostly retired or part-time workers.",
+    "slots": {
+     "claim": {
+      "label": "Claim",
+      "options": [
+       "may not",
+       "definitely do",
+       "cannot ever"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "One city’s ad responders are not shown to be typical of all U.S. adults.",
+       "2": "The results may well apply to many adults; the claim must be argued from who took part."
+      }
+     },
+     "population": {
+      "label": "Because the participants",
+      "options": [
+       "were randomly assigned to two conditions",
+       "were ad responders from one city, mostly women, mostly retired or part-time workers",
+       "were only 120 people in total"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "Random assignment is about the causal claim, not who the results describe.",
+       "2": "Generalizing is argued from who the participants were, not the count."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-research-sampling-10",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "research-sampling-s2",
+   "q": "What does the table show about the survey’s sample?",
+   "options": [
+    "Young adults are overrepresented; older adults, underrepresented",
+    "The sample matches the town’s age makeup closely in each group",
+    "Older adults are overrepresented in the sample",
+    "Adults aged 30 to 49 are missing from the sample"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare each row: a share among respondents far above the town’s share means overrepresented; far below means underrepresented.",
+    "options": [
+     "Right: 55% versus 20% for ages 18 to 29, and 3% versus 15% for 70 and older.",
+     "Every age group differs, some by more than 30 points.",
+     "The two oldest groups make up a smaller share of respondents than of the town.",
+     "They make up 30% of respondents, close to their 35% of the town."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-11",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s2",
+   "q": "The survey found that most respondents sleep under seven hours. Why should the town not conclude that most of its adults do?",
+   "options": [
+    "A survey is a poor way to measure how long people sleep",
+    "The sample is biased toward younger adults",
+    "The survey was not an experiment, so it has no results",
+    "Seven hours is not an operational definition of sleep"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An online survey that mostly reached young adults is a biased sample, so its results describe young respondents more than the town.",
+    "options": [
+     "Surveys can ask about sleep; the problem here is who answered.",
+     "Right: a sample that misrepresents the population cannot describe it.",
+     "Surveys produce descriptive results; the issue is the sample.",
+     "The measure is clear enough; the problem is who answered."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-sampling-12",
+   "unit": "skills-research",
+   "topic": "research-sampling",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "research-sampling-s2",
+   "q": "Which change would most improve how well the survey represents the town’s adults?",
+   "options": [
+    "Leave the online survey open longer to get more replies",
+    "Ask the respondents to share the link with their friends",
+    "Contact a random sample from the town’s address list",
+    "Randomly assign respondents to two versions of the survey"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Random sampling from a list of the whole population gives every adult the same chance of being chosen, so all age groups appear in about their true shares.",
+    "options": [
+     "More replies from the same kind of respondents does not fix the bias.",
+     "Friends of young respondents are likely to be young too.",
+     "Right: random sampling from the whole population.",
+     "Random assignment compares conditions; it does not change who is in the sample."
+    ]
+   }
+  }
+ ]
+}

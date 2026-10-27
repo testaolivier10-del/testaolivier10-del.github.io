@@ -1,0 +1,603 @@
+{
+ "stimuli": {
+  "cognitive-development-s1": {
+   "kind": "study",
+   "title": "Conservation of liquid at ages 4, 6 and 8",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked at what age children understand that pouring water into a differently shaped glass does not change how much water there is.",
+    "participants": "90 children from three public elementary schools in one city: 30 aged 4, 30 aged 6 and 30 aged 8 (about half girls). Parents gave informed consent, each child agreed to play \"a water game,\" and children could stop at any time. Results were reported only as group totals.",
+    "method": "Each child saw two identical short glasses with the same amount of water and agreed they held the same amount. While the child watched, the researcher poured one glass into a tall, thin glass and asked, \"Is there more water in this glass, more in that glass, or the same in both?\" A child passed the task by saying \"the same\" and giving a reason, such as \"You only poured it.\" Each child was tested once.",
+    "results": "The percentage of children who passed rose with age: 10% at age 4, 40% at 6 and 87% at 8. Most children who failed said the tall glass had more water.",
+    "discussion": "Understanding of conservation grew sharply between 4 and 8, but there was wide variation within each age group."
+   },
+   "plot": {
+    "label": "Bar graph of percent of children passing the liquid conservation task: age 4, 10%; age 6, 40%; age 8, 87% (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Age 4",
+     "Age 6",
+     "Age 8"
+    ],
+    "values": [
+     10,
+     40,
+     87
+    ],
+    "xLabel": "Age group",
+    "yLabel": "Percent who passed",
+    "y": [
+     0,
+     100
+    ]
+   }
+  },
+  "cognitive-development-s2": {
+   "kind": "visual",
+   "title": "The liquid conservation task and Piaget’s stages",
+   "figure": "cognitive-development-conservation"
+  },
+  "cognitive-development-s3": {
+   "kind": "data",
+   "title": "Two kinds of test scores across adulthood",
+   "invented": true,
+   "text": "<p>A research team gave adults of different ages two kinds of tests in the same year: a vocabulary and general-knowledge test, and a test of solving new puzzles quickly. Scores are group means on a 0-100 scale.</p>",
+   "plot": {
+    "label": "Line graph of mean test scores by age: vocabulary and knowledge rise from 60 at 25 to 72 at 65 then dip to 70 at 75; new-puzzle speed falls from 80 at 25 to 50 at 75 (invented data)",
+    "kind": "line",
+    "xLabel": "Age (years)",
+    "yLabel": "Mean score (0-100)",
+    "y": [
+     40,
+     90
+    ],
+    "series": [
+     {
+      "name": "Vocabulary and knowledge",
+      "points": [
+       [
+        25,
+        60
+       ],
+       [
+        35,
+        64
+       ],
+       [
+        45,
+        68
+       ],
+       [
+        55,
+        71
+       ],
+       [
+        65,
+        72
+       ],
+       [
+        75,
+        70
+       ]
+      ]
+     },
+     {
+      "name": "Solving new puzzles quickly",
+      "points": [
+       [
+        25,
+        80
+       ],
+       [
+        35,
+        76
+       ],
+       [
+        45,
+        70
+       ],
+       [
+        55,
+        64
+       ],
+       [
+        65,
+        57
+       ],
+       [
+        75,
+        50
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-cognitive-development-1",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "cognitive-development-s1",
+   "q": "Which research design did this study use?",
+   "options": [
+    "A cross-sectional study comparing age groups at one time",
+    "A longitudinal study, following the same children from 4 to 8",
+    "An experiment, randomly assigning children to ages 4, 6 and 8",
+    "A case study of one child’s thinking"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Different people of different ages, tested at the same time, is a cross-sectional design.",
+    "options": [
+     "Right: three groups of different ages were each tested once.",
+     "Each child was tested once; the age groups were different children.",
+     "Age cannot be randomly assigned.",
+     "The study tested 90 children on the same task."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-2",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "cognitive-development-s1",
+   "q": "Most 4-year-olds said the tall glass held more water. In Piaget’s terms, why?",
+   "options": [
+    "They lack object permanence and forget the poured water exists",
+    "They are formal operational and reason about hypotheses",
+    "They have no theory of mind about the researcher",
+    "They are preoperational: they focus on height alone"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Conservation, the idea that amount stays the same when shape changes, marks the move from preoperational to concrete operational thought.",
+    "options": [
+     "They watched the water and talked about it, so they know it exists.",
+     "Formal operational thinking comes around adolescence and would conserve easily.",
+     "The task asks about amounts of water, not about what another person thinks.",
+     "Right: preoperational children center on one feature and do not yet conserve."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-3",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "cognitive-development-s1",
+   "q": "There were 30 children in the age-6 group. How many of them passed the task?",
+   "why": {
+    "correct": "40% of 30 is $0.40 \\times 30 = 12$ children."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      0.4,
+      30
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "That is the percent who passed. Find 40% of the 30 children: multiply 0.40 by 30."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.6,
+        30
+       ]
+      },
+      "why": "That is the number who failed (60% of 30). The question asks how many passed."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-4",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "cognitive-development-s1",
+   "q": "What do the results in the graph show?",
+   "options": [
+    "The biggest jump came between ages 4 and 6",
+    "Passing rose with age, most between 6 and 8",
+    "Most 8-year-olds failed the task",
+    "The share of children who passed fell as age went up"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Compare the differences between bars: 30 points, then 47.",
+    "options": [
+     "That rise is 30 points; the rise from 6 to 8 is 47 points.",
+     "Right: 10% to 40% is a 30-point rise; 40% to 87% is a 47-point rise.",
+     "87% of 8-year-olds passed, so most succeeded.",
+     "The bars rise from 10% to 87%."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-5",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "cognitive-development-s1",
+   "q": "Later researchers asked the conservation question only once and in a way that made sense to children, and more 4- and 5-year-olds passed. What does this suggest about Piaget’s timeline?",
+   "options": [
+    "Children may conserve earlier than Piaget found",
+    "Piaget’s stage order is reversed",
+    "Conservation is not learned until about age 11 or later",
+    "Asking the same question twice is what raises children’s scores"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Piaget’s sequence has held up better than his ages; simpler tasks often reveal abilities earlier.",
+    "options": [
+     "Right: changes to the task revealed skills earlier, a common criticism of Piaget’s ages.",
+     "The later studies shifted ages; they did not reverse the order.",
+     "Many children conserve liquid by about 7, and some earlier.",
+     "Asking twice can make a child think the earlier reply was wrong, which lowers scores."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-6",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "cognitive-development-s2",
+   "q": "A 9-month-old watches his father hide a toy under a blanket and immediately pulls the blanket off to find it. According to the figure, which stage and concept does this show?",
+   "options": [
+    "Preoperational stage: conservation",
+    "Concrete operational stage: reversibility",
+    "Formal operational stage: hypothetical thinking",
+    "Sensorimotor stage: object permanence"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Babies who search for a hidden toy understand that out of sight is not out of existence.",
+    "options": [
+     "Conservation is about amount despite changes in shape, and it comes later.",
+     "A 9-month-old is in the sensorimotor stage.",
+     "Hypothetical thinking comes around adolescence.",
+     "Right: knowing that a hidden object still exists develops during the sensorimotor stage."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-7",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "cognitive-development-s2",
+   "q": "A 3-year-old covers her eyes during hide-and-seek and says, \"You can’t see me!\" Which concept from the preoperational stage does this show?",
+   "options": [
+    "Object permanence",
+    "Abstract reasoning",
+    "Egocentrism",
+    "Conservation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Egocentrism in Piaget’s sense is difficulty taking another person’s point of view, not selfishness.",
+    "options": [
+     "She knows you still exist; the error is about your point of view.",
+     "Abstract reasoning belongs to the formal operational stage.",
+     "Right: she assumes others see what she sees; if she cannot see you, you cannot see her.",
+     "Conservation is about amounts staying the same when appearance changes."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-8",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "cognitive-development-s2",
+   "q": "Sam, 15, debates what would happen to society if no one ever needed to sleep. Which stage in the figure does his reasoning fit?",
+   "options": [
+    "Sensorimotor",
+    "Formal operational",
+    "Concrete operational stage",
+    "Preoperational"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Abstract, \"what if\" reasoning about possibilities marks the formal operational stage.",
+    "options": [
+     "The sensorimotor stage is infancy, before language-based reasoning.",
+     "Right: reasoning about a hypothetical situation that is not real is formal operational thought.",
+     "Concrete operational thinkers reason logically about real, present things.",
+     "Preoperational children have trouble with logic about even concrete things."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-9",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "cognitive-development-s3",
+   "q": "Which line shows crystallized intelligence?",
+   "options": [
+    "Vocabulary and knowledge",
+    "Solving new puzzles quickly",
+    "Both lines equally",
+    "Neither line, since crystallized intelligence is not measured by tests"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Crystallized intelligence is what you know; fluid intelligence is reasoning speed and flexibility with new problems.",
+    "options": [
+     "Right: crystallized intelligence is accumulated knowledge and skills, which holds up or grows with age.",
+     "Fast reasoning about new problems is fluid intelligence.",
+     "The lines measure different abilities and move in opposite directions.",
+     "Vocabulary and knowledge tests measure it."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-10",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "cognitive-development-s3",
+   "q": "By how many points does the mean new-puzzle score drop from age 25 to age 75?",
+   "why": {
+    "correct": "$80 - 50 = 30$ points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      80,
+      50
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        70,
+        60
+       ]
+      },
+      "why": "That is the change on the vocabulary and knowledge line. Use the new-puzzle line: 80 down to 50."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        80,
+        57
+       ]
+      },
+      "why": "That stops at age 65 (57). The question asks about age 75 (50)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-11",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "cognitive-development-s3",
+   "q": "All adults were tested in the same year. Why should a researcher be cautious about saying the fall in puzzle scores is caused by aging?",
+   "options": [
+    "The study randomly assigned people to ages",
+    "Puzzle scores are known to rise with age in other studies",
+    "Age groups differ in birth year, so it may be a cohort effect",
+    "The vocabulary line rose, which cancels out the puzzle line"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cross-sectional comparisons mix age with cohort; longitudinal studies confirm a fluid decline but usually a smaller one.",
+    "options": [
+     "Age cannot be assigned, which is the problem.",
+     "Longitudinal studies also find fluid abilities decline, though often less steeply.",
+     "Right: in a cross-sectional design, older groups also grew up in different times.",
+     "The two lines measure different abilities; one does not cancel the other."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-12",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A 2-year-old calls every four-legged animal \"doggy.\" When she sees a cow and her mother says \"cow,\" she starts using a new word for cows. In Piaget’s terms, what happened when she learned \"cow\"?",
+   "options": [
+    "Egocentrism: she took her mother’s point of view",
+    "Accommodation: she changed her schema",
+    "Assimilation: she fit the cow into her existing schema",
+    "Conservation: she knew the amount stayed the same"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Assimilation fits the new into old schemas; accommodation changes schemas when they do not fit.",
+    "options": [
+     "Egocentrism is difficulty taking another view; it does not describe forming a new category.",
+     "Right: she created a new category instead of forcing the cow into \"doggy.\"",
+     "Calling the cow \"doggy\" was assimilation; learning \"cow\" changed the schema.",
+     "Conservation is about amount, not categories."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-13",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Maria can do long division only when her tutor breaks each problem into steps and gives hints; without help she gets stuck. In Vygotsky’s terms, what are long-division problems for Maria right now?",
+   "options": [
+    "In her zone of proximal development, with scaffolding",
+    "Beyond her ability, so she is not ready to learn them",
+    "A sign she is still in the sensorimotor stage",
+    "Something she has mastered on her own"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Vygotsky stressed that learning moves forward through guided help from more skilled people.",
+    "options": [
+     "Right: tasks she can do with help but not alone are in her ZPD, and support that is later removed is scaffolding.",
+     "She can do them with help, which is exactly where Vygotsky said learning happens.",
+     "Long division is far beyond infancy; this is about social support, not Piaget’s stages.",
+     "She cannot yet do them without help."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-14",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A puppet named Sally puts a ball in a basket and leaves. Anne moves it to a box. A child is asked where Sally will look for the ball. Most 3-year-olds say \"the box\"; most 5-year-olds say \"the basket.\" What has the older child developed?",
+   "options": [
+    "Object permanence: knowing the ball still exists",
+    "Conservation: knowing amounts stay the same",
+    "Crystallized intelligence: stored knowledge",
+    "Theory of mind: others can hold false beliefs"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Passing a false-belief task is a classic sign of theory of mind, typically around age 4 to 5.",
+    "options": [
+     "Both ages know the ball exists; the difference is understanding Sally’s belief.",
+     "Nothing changed shape or amount.",
+     "This is a skill of reading minds, not stored facts.",
+     "Right: the 5-year-old knows Sally did not see the move and so believes something untrue."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-15",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ruth, 80, forgets where she put her glasses and needs longer to learn a new phone. Her neighbor, 78, gets lost on his daily walk and no longer recognizes his son. Which comparison is most accurate?",
+   "options": [
+    "Both show normal aging, which includes not recognizing family",
+    "Ruth shows dementia because she is older than her neighbor",
+    "Ruth: normal aging; her neighbor: likely dementia",
+    "Both show dementia, which is a normal part of aging"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Dementia is a decline in memory and thinking severe enough to disrupt daily life, most often from Alzheimer’s disease.",
+    "options": [
+     "Failing to recognize close family is not normal aging.",
+     "Age alone does not make a diagnosis; the kind of change matters.",
+     "Right: mild slowing is normal; losing the way home and failing to recognize family point to disease.",
+     "Dementia is caused by disease and is not a normal part of aging."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-16",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Eight-year-old Leo can figure out that if Ana is taller than Ben and Ben is taller than Cal, Ana is taller than Cal, when he sees them in person. He struggles with the same logic using made-up letters. Which stage fits Leo?",
+   "options": [
+    "Sensorimotor stage",
+    "Concrete operational stage",
+    "Formal operational stage",
+    "Preoperational stage"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Concrete operational thinking is logical but tied to concrete situations.",
+    "options": [
+     "Leo uses language and logic, far beyond infancy.",
+     "Right: he reasons logically about real, visible things but not yet about abstract symbols.",
+     "He struggles with the abstract version, which formal operational thinkers handle.",
+     "He already reasons logically about real people."
+    ]
+   }
+  },
+  {
+   "id": "psy-cognitive-development-17",
+   "unit": "unit-3",
+   "topic": "cognitive-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A teacher is told that \"children cannot learn fractions until 11 because Piaget said so.\" Which response reflects current research best?",
+   "options": [
+    "His order holds up better than his ages, which vary with tasks and support",
+    "Piaget’s stages have been shown to be wrong about how children think",
+    "Piaget’s ages are exact for the children in each culture studied",
+    "Vygotsky showed that children learn best on their own"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Researchers now see development as more continuous and more shaped by culture than Piaget proposed.",
+    "options": [
+     "Right: research supports the sequence more than the exact ages, and culture and schooling shape timing.",
+     "Much of the sequence has held up; the timing and the stage-like jumps have been questioned.",
+     "Ages vary with tasks, schooling and culture.",
+     "Vygotsky argued the opposite: learning is social."
+    ]
+   }
+  }
+ ]
+}

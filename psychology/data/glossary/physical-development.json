@@ -1,0 +1,50 @@
+{
+ "prenatal": {
+  "def": "Development before birth, from conception to delivery, when the baby gets nutrients and some harmful substances through the placenta."
+ },
+ "teratogen": {
+  "def": "A substance or infection that can harm development before birth, such as alcohol, nicotine, some medicines and the rubella virus."
+ },
+ "maturation": {
+  "def": "Biological growth that unfolds on a largely genetic timetable, setting when skills such as walking or puberty can appear."
+ },
+ "motor-development": {
+  "def": "The growth of body movement skills (rolling over, sitting, standing, walking), which appear in a similar order in most babies with wide variation in age."
+ },
+ "rooting-reflex": {
+  "def": "A newborn’s automatic response of turning toward a touch on the cheek and opening the mouth, which helps it find food."
+ },
+ "visual-cliff": {
+  "def": "A glass table with a shallow side and an apparent drop, used by Gibson and Walk (1960) to show that most crawling babies perceive depth and avoid the drop."
+ },
+ "critical-period": {
+  "def": "A limited window early in life when a specific experience is needed for normal development; if it is missed, the ability may not develop fully."
+ },
+ "sensitive-period": {
+  "def": "A window when an experience has its strongest effect and learning is easiest, though learning is still possible later (as with learning a language without an accent)."
+ },
+ "imprinting": {
+  "def": "The process by which some young animals, such as geese, form a strong bond with the first moving object they see during a critical period after hatching."
+ },
+ "adolescence": {
+  "def": "The period from the start of puberty to adult independence, roughly ages 11 to 18 or later, marked by physical, mental and social change."
+ },
+ "puberty": {
+  "def": "The time of sexual maturation, when rising sex hormones make a person able to reproduce and bring primary and secondary sex characteristics."
+ },
+ "primary-sex": {
+  "def": "The body structures directly involved in reproduction (ovaries, uterus, testes, penis), which mature during puberty."
+ },
+ "secondary-sex": {
+  "def": "Sex-related traits not directly involved in reproduction, such as breasts and wider hips, a deeper voice, and body and facial hair."
+ },
+ "menarche": {
+  "def": "The first menstrual period, a milestone of puberty; in the United States it typically comes around age 12."
+ },
+ "spermarche": {
+  "def": "The first ejaculation, a milestone of puberty in boys, typically around age 13 or 14."
+ },
+ "menopause": {
+  "def": "The time when menstruation stops for good and a woman can no longer become pregnant, usually around age 50."
+ }
+}
