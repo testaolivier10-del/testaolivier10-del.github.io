@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v90';
+const CACHE_NAME = 'levlprep-v91';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -64,6 +64,12 @@ const PRECACHE_URLS = [
   // The shared course shell (docs/course-shell.md): every study page loads these.
   'assets/course/base.css',
   'assets/course/study.css',
+  // Round 3 redesign styles (docs/site-redesign.md).
+  'assets/course/r3-inner.css',
+  'assets/course/r3-reading.css',
+  'assets/course/r3-study.css',
+  'assets/course/r3-tools.css',
+  'assets/course/r3.css',
   'assets/course/study.js',
   'assets/course/glossary-tip.js',
   'assets/course/glossary-page.js',
