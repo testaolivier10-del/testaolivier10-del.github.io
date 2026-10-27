@@ -44,6 +44,7 @@ import {
 } from './lib/apchem-build.mjs';
 import { entryPages } from './lib/apchem-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
@@ -69,7 +70,7 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 const put = (rel, content) => {
   if (hasApToken(rel)) throw new Error(`build-apchem: output path chem/${rel} contains the token "ap" (spec decision 2)`);
   // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-  outputs.set(rel, rel.endsWith('.html') ? applyVideo(`chem/${rel}`, wrapTables(content)) : content);
+  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`chem/${rel}`, wrapTables(content)), { key: 'apchem', rel: `chem/${rel}` }) : content);
 };
 
 if (map) build();

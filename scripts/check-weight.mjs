@@ -573,7 +573,10 @@ const BUDGETS = [
   ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.8],
   /* 19 -> 19.5 (audit 2026-10, W8): each figure's <picture> with its AVIF
      srcset (about 0.03 KB gzipped a figure) in exchange for AVIF images. */
-  ['anatomy-physiology/notes/cardiac-cycle.html', 19.5],
+  /* 19.5 -> 19.8 (redesign round 3, B4, docs/site-redesign.md): the notes page's cover band and its side
+     column (Check your understanding, In the reader) from scripts/lib/r3-reading.mjs, about 0.3 KB on
+     every notes page; this is the largest notes page. Measured 19.6 KB. */
+  ['anatomy-physiology/notes/cardiac-cycle.html', 19.8],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
   ['anatomy-physiology/exams.html', 3],

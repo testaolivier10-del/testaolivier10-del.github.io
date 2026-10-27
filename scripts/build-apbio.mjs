@@ -40,6 +40,7 @@ import {
 } from './lib/apbio-build.mjs';
 import { entryPages } from './lib/apbio-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
@@ -63,7 +64,7 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 const put = (rel, content) => {
   if (hasApToken(rel)) throw new Error(`build-apbio: output path bio/${rel} contains the token "ap" (spec decision 2)`);
   // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-  outputs.set(rel, rel.endsWith('.html') ? applyVideo(`bio/${rel}`, wrapTables(content)) : content);
+  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`bio/${rel}`, wrapTables(content)), { key: 'apbio', rel: `bio/${rel}` }) : content);
 };
 
 if (map) build();

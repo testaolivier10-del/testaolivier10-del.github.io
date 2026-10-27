@@ -73,11 +73,24 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 </head>
 <body class="stat" data-unit="unit-5">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bk bk-chapter">
+<div class="r3 r3-read-top" data-cover="apstat">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Regression Analysis</span></nav>
+<p class="issue">Unit 5 <i></i> 10&ndash;20% of the exam <span class="stat-beta stat-nav-ref">Beta</span></p>
+<h1 class="deck tb-chapter-title" id="r3Title">Regression <span>Analysis</span></h1>
+<p class="hand">conclusions in context</p>
+<div class="hero-ctas"><a class="btn-chan" href="../practice.html?unit=unit-5">Practice this unit</a><a class="btn-ghost" href="../unit-sheets/unit-5.html">Unit sheet</a></div>
+<p class="r3-chips tb-chapter-meta"><span>5 topics</span><span data-unit-meta="unit-5">not practiced yet</span></p>
+
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apstat.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-chapter r3 r3-read" data-cover="apstat">
   <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Contents</button>
   <aside class="tb-rail stat-nav-ref" id="stat-rail">
     <p class="tb-rail-title">Contents</p>
@@ -86,16 +99,8 @@
     <nav class="tb-contents" aria-label="Course contents"><p class="bk-toc-group">Units</p><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-1.html"><span class="tb-toc-num">1</span><span class="tb-toc-modtitle">Exploring One-Variable Data and Collecting Data</span><span class="tb-toc-count" data-toc-ch="unit-1">0/13</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-2.html"><span class="tb-toc-num">2</span><span class="tb-toc-modtitle">Probability, Random Variables, and Probability Distributions</span><span class="tb-toc-count" data-toc-ch="unit-2">0/12</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-3.html"><span class="tb-toc-num">3</span><span class="tb-toc-modtitle">Inference for Categorical Data: Proportions</span><span class="tb-toc-count" data-toc-ch="unit-3">0/15</span></a></div><div class="tb-toc-mod"><a class="tb-toc-modhead" href="unit-4.html"><span class="tb-toc-num">4</span><span class="tb-toc-modtitle">Inference for Quantitative Data: Means</span><span class="tb-toc-count" data-toc-ch="unit-4">0/10</span></a></div><div class="tb-toc-mod open"><a class="tb-toc-modhead" href="#main" aria-current="page"><span class="tb-toc-num">5</span><span class="tb-toc-modtitle">Regression Analysis</span><span class="tb-toc-count" data-toc-ch="unit-5">0/5</span></a><div class="tb-toc-topics"><a class="tb-toc-topic" href="../lessons/scatterplots.html" data-toc-t="scatterplots"><span class="tb-toc-tick"></span>Graphical Representations Between Two Quantitative Variables</a><a class="tb-toc-topic" href="../lessons/correlation.html" data-toc-t="correlation"><span class="tb-toc-tick"></span>Correlation</a><a class="tb-toc-topic" href="../lessons/linear-models.html" data-toc-t="linear-models"><span class="tb-toc-tick"></span>Linear Regression Models</a><a class="tb-toc-topic" href="../lessons/residuals.html" data-toc-t="residuals"><span class="tb-toc-tick"></span>Residuals</a><a class="tb-toc-topic" href="../lessons/least-squares-regression.html" data-toc-t="least-squares-regression"><span class="tb-toc-tick"></span>Least-Squares Regression</a></div></div><p class="bk-toc-group">Skills</p><div class="tb-toc-mod"><a class="tb-toc-modhead" href="skills-math.html"><span class="tb-toc-num">S</span><span class="tb-toc-modtitle">Math you need</span><span class="tb-toc-count" data-toc-ch="skills-math">0/5</span></a></div></nav>
   </aside>
   <main class="tb-main" id="main">
-    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Regression Analysis</span></nav>
-    <header class="tb-chapter-head bk-chap-head">
-      <div>
-        <p class="tb-chapter-eyebrow">Unit 5 &middot; 10&ndash;20% of the exam <span class="stat-beta stat-nav-ref">Beta</span></p>
-        <h1 class="tb-chapter-title">Regression Analysis</h1>
-        <p class="tb-chapter-meta">5 topics &middot; <span data-unit-meta="unit-5">not practiced yet</span></p>
-      </div>
-      <p class="bk-chap-acts"><a class="bk-btn solid" href="../practice.html?unit=unit-5">Practice this unit</a><a class="bk-btn ghost" href="../unit-sheets/unit-5.html">Unit sheet</a></p>
-    </header>
-    <h2 class="bk-h" id="h-topics">Topics, in course order</h2>
+    <!-- r3:head -->
+    <h2 class="bk-h" id="h-topics">Topics, <span>in course order</span></h2>
     <ol class="bk-list" aria-labelledby="h-topics"><li class="bk-row" data-topic="scatterplots"><span class="bk-row-n">5.1</span><a class="bk-row-title" href="../lessons/scatterplots.html">Graphical Representations Between Two Quantitative Variables</a><span class="bk-chip" data-chip-topic="scatterplots">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/scatterplots.html" aria-label="Lesson: Graphical Representations Between Two Quantitative Variables">Lesson</a><a class="bk-btn ghost" href="../notes/scatterplots.html" aria-label="Notes: Graphical Representations Between Two Quantitative Variables">Notes</a></span></li><li class="bk-row" data-topic="correlation"><span class="bk-row-n">5.2</span><a class="bk-row-title" href="../lessons/correlation.html">Correlation</a><span class="bk-chip" data-chip-topic="correlation">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/correlation.html" aria-label="Lesson: Correlation">Lesson</a><a class="bk-btn ghost" href="../notes/correlation.html" aria-label="Notes: Correlation">Notes</a></span></li><li class="bk-row" data-topic="linear-models"><span class="bk-row-n">5.3</span><a class="bk-row-title" href="../lessons/linear-models.html">Linear Regression Models</a><span class="bk-chip" data-chip-topic="linear-models">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/linear-models.html" aria-label="Lesson: Linear Regression Models">Lesson</a><a class="bk-btn ghost" href="../notes/linear-models.html" aria-label="Notes: Linear Regression Models">Notes</a></span></li><li class="bk-row" data-topic="residuals"><span class="bk-row-n">5.4</span><a class="bk-row-title" href="../lessons/residuals.html">Residuals</a><span class="bk-chip" data-chip-topic="residuals">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/residuals.html" aria-label="Lesson: Residuals">Lesson</a><a class="bk-btn ghost" href="../notes/residuals.html" aria-label="Notes: Residuals">Notes</a></span></li><li class="bk-row" data-topic="least-squares-regression"><span class="bk-row-n">5.5</span><a class="bk-row-title" href="../lessons/least-squares-regression.html">Least-Squares Regression</a><span class="bk-chip" data-chip-topic="least-squares-regression">Not practiced</span><span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/least-squares-regression.html" aria-label="Lesson: Least-Squares Regression">Lesson</a><a class="bk-btn ghost" href="../notes/least-squares-regression.html" aria-label="Notes: Least-Squares Regression">Notes</a></span></li></ol>
     <h2 class="bk-h" id="h-practice">Practice this unit</h2>
     <div class="bk-cards">

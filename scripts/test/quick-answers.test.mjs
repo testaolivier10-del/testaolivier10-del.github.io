@@ -20,7 +20,9 @@ test('the box goes right under the notes header, once, and comes off cleanly', (
     const html = applyQuickAnswer(rel, readFileSync(join(ROOT, rel), 'utf8'), none);
     const out = applyQuickAnswer(rel, html, one(rel));
     assert.equal(out.split(QA_START).length, 2, `${rel}: one box`);
-    assert.match(out, /<\/header>\n<!-- quick-answer:start -->/, `${rel}: directly after the header`);
+    /* Round 3 (scripts/lib/r3-reading.mjs) moves the header into the cover band and leaves <!-- r3:head -->
+       (and the header's lede, when it had one) where it was; the box still sits directly after that spot. */
+    assert.match(out, /(<\/header>|<!-- r3:head -->(\n<p class="bk-lede">[\s\S]*?<\/p>)?)\n<!-- quick-answer:start -->/, `${rel}: directly after the header`);
     assert.equal(applyQuickAnswer(rel, out, one(rel)), out, `${rel}: placing it again changes nothing`);
     assert.equal(applyQuickAnswer(rel, out, none), html, `${rel}: removing it restores the page`);
   }

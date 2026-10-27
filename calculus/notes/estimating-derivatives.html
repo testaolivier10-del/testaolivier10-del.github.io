@@ -87,11 +87,24 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 </head>
 <body class="calc" data-topic="estimating-derivatives" data-unit="unit-2">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bk bk-notes">
+<div class="r3 r3-read-top" data-cover="apcalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Estimating a Derivative at a Point: notes</span></nav>
+<p class="issue">Unit 2 <i></i> Topic 2.3 <span class="calc-beta calc-nav-ref">Beta</span></p>
+<h1 class="deck bk-title" id="r3Title">Estimating a Derivative <span>at a Point</span></h1>
+<p class="hand">typed like real math</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/estimating-derivatives.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">5 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="estimating-derivatives">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Festimating-derivatives.html&amp;title=Estimating%20a%20Derivative%20at%20a%20Point%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/estimating-derivatives.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalc">
   <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
   <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
     <p class="tb-rail-title">Contents</p>
@@ -102,14 +115,7 @@
     <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
   </aside>
   <main class="tb-main" id="main">
-    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Estimating a Derivative at a Point: notes</span></nav>
-    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/estimating-derivatives.html">Practice this lesson</a></div>
-    <header class="bk-head">
-      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.3 <span class="calc-beta calc-nav-ref">Beta</span></p>
-      <h1 class="bk-title">Estimating a Derivative at a Point</h1>
-      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="estimating-derivatives">Not practiced</span></p>
-      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Festimating-derivatives.html&amp;title=Estimating%20a%20Derivative%20at%20a%20Point%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/estimating-derivatives.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
-    </header>
+    <!-- r3:head -->
     <article class="calc-prose bk-prose">
 <p>The definition of the <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> needs a formula: you substitute <math class="calc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">a + h</annotation></semantics></math>, simplify and take a <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>. Real data rarely comes with a formula. A thermometer gives readings every few minutes; a graph gives a picture. This page shows how to estimate <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> from a table, from a graph and with a calculator, and how to say what the estimate means.</p>
 
@@ -180,6 +186,7 @@
     <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:estimating-derivatives">Report a problem</button></p>
     <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="derivative-definition.html"><span>&larr; Previous</span><b>The Derivative and Its Notation</b></a><a class="tb-chapter-link next" href="differentiability.html"><span>Next &rarr;</span><b>Differentiability and Continuity</b></a></nav>
   </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/estimating-derivatives.html">Practice this lesson &rarr;</a></div></aside>
 </div>
 <footer class="calc-foot xshell">
   <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:estimating-derivatives">Report a problem</button></span></p>

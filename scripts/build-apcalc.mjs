@@ -50,6 +50,7 @@ import {
 } from './lib/apcalc-build.mjs';
 import { entryPages } from './lib/apcalc-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
@@ -78,7 +79,7 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 const put = (rel, content) => {
   if (hasApToken(rel)) throw new Error(`build-apcalc: output path calculus/${rel} contains the token "ap" (spec decision 2)`);
   // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-  outputs.set(rel, rel.endsWith('.html') ? applyVideo(`calculus/${rel}`, wrapTables(content)) : content);
+  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`calculus/${rel}`, wrapTables(content)), { key: 'apcalc', rel: `calculus/${rel}` }) : content);
 };
 
 if (map) {

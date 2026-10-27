@@ -45,6 +45,7 @@ import vm from 'node:vm';
 import { CSP } from './lib/site-config.mjs';
 import { courseTitle } from './lib/page-title.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 // Hand-written meta descriptions, for sections whose opening paragraph has no
@@ -377,7 +378,7 @@ ordered.forEach((entry, i) => {
   prose = prose.replace(/^\n+|\n+$/g, '');
 
   // The video lesson block, if docs/videos.json lists one (scripts/lib/videos.mjs).
-  const next = applyVideo(`ochem/notes/${entry.topic.id}.html`, page({
+  const next = r3Reading(applyVideo(`ochem/notes/${entry.topic.id}.html`, page({
     topic: entry.topic,
     module: entry.module,
     modIndex: entry.modIndex,
@@ -388,7 +389,7 @@ ordered.forEach((entry, i) => {
     next: i + 1 < ordered.length ? ordered[i + 1].topic : null,
     index: i + 1,
     total: ordered.length,
-  }));
+  })), { key: 'ochem', rel: `ochem/notes/${entry.topic.id}.html` });
 
   if (next === current) return;
   if (check) { stale.push(entry.topic.id); return; }

@@ -32,6 +32,7 @@ import {
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -76,7 +77,7 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 // 2026-10: until now only questions had the link.
 const reportPage = (pageId) => `<p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="${esc(pageId)}">Report a problem</button></p>`;
 // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-const put = (rel, content) => outputs.set(rel, rel.endsWith('.html') ? applyVideo(`anatomy-physiology/${rel}`, wrapTables(content)) : content);
+const put = (rel, content) => outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`anatomy-physiology/${rel}`, wrapTables(content)), { key: 'anp', rel: `anatomy-physiology/${rel}` }) : content);
 
 const topicById = id => map.topics[C.topicIndex.get(id)];
 const chapterById = id => map.chapters.find(c => c.id === id);

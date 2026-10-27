@@ -87,11 +87,24 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 </head>
 <body class="stat" data-topic="ci-two-means" data-unit="unit-4">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bk bk-notes">
+<div class="r3 r3-read-top" data-cover="apstat">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constructing a Confidence Interval for the Difference Between Two Population Means: notes</span></nav>
+<p class="issue">Unit 4 <i></i> Topic 4.7 <span class="stat-beta stat-nav-ref">Beta</span></p>
+<h1 class="deck bk-title" id="r3Title">Constructing a Confidence Interval <span>for the Difference Between Two Population Means</span></h1>
+<p class="hand">conclusions in context</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/ci-two-means.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta stat-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="ci-two-means">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fci-two-means.html&amp;title=Constructing%20a%20Confidence%20Interval%20for%20the%20Difference%20Between%20Two%20Population%20Means%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/ci-two-means.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apstat.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apstat">
   <button type="button" class="tb-toc-btn" aria-controls="stat-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
   <aside class="tb-rail stat-nav-ref bk-rail" id="stat-rail">
     <p class="tb-rail-title">Contents</p>
@@ -102,14 +115,7 @@
     <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Regression Analysis</a>
   </aside>
   <main class="tb-main" id="main">
-    <nav class="stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Inference for Quantitative Data: Means</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constructing a Confidence Interval for the Difference Between Two Population Means: notes</span></nav>
-    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ci-two-means.html">Practice this lesson</a></div>
-    <header class="bk-head">
-      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.7 <span class="stat-beta stat-nav-ref">Beta</span></p>
-      <h1 class="bk-title">Constructing a Confidence Interval for the Difference Between Two Population Means</h1>
-      <p class="bk-meta stat-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="ci-two-means">Not practiced</span></p>
-      <div class="bk-actions stat-share stat-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fstatistics%2Fnotes%2Fci-two-means.html&amp;title=Constructing%20a%20Confidence%20Interval%20for%20the%20Difference%20Between%20Two%20Population%20Means%3A%20statistics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/statistics/notes/ci-two-means.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
-    </header>
+    <!-- r3:head -->
     <article class="stat-prose bk-prose">
 <p>The last topic described how <math class="stat-m"><semantics><mrow><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo stretchy="true">&#x00AF;</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bar{x}_1 - \bar{x}_2</annotation></semantics></math> varies when the <a class="gl" href="../notes/intro-statistics.html" data-c="population">population</a> <a class="gl" href="../notes/summary-statistics.html" data-c="standard-deviation">standard deviations</a> are known. In practice they are not, so, exactly as for one <a class="gl" href="../notes/summary-statistics.html" data-c="mean">mean</a>, we <a class="gl" href="../notes/estimators.html" data-c="estimator">estimate</a> them with the <a class="gl" href="../notes/intro-statistics.html" data-c="sample">sample</a> standard deviations and switch from <math class="stat-m"><semantics><mrow><msup><mi>z</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">z^*</annotation></semantics></math> to <math class="stat-m"><semantics><mrow><msup><mi>t</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">t^*</annotation></semantics></math>. The result is the <b><span class="gl" tabindex="0" data-c="two-sample-t-interval">two-sample t interval</span></b>.</p>
 
@@ -168,6 +174,7 @@
     <p class="stat-report-page stat-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-two-means">Report a problem</button></p>
     <nav class="tb-chapter-nav stat-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sampling-dist-two-means.html"><span>&larr; Previous</span><b>Sampling Distributions for the Difference Between Two Sample Means</b></a><a class="tb-chapter-link next" href="ci-two-means-claims.html"><span>Next &rarr;</span><b>Justifying a Claim Based on a Confidence Interval for the Difference Between Two Population Means</b></a></nav>
   </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/ci-two-means.html">Practice this lesson &rarr;</a></div></aside>
 </div>
 <footer class="stat-foot xshell">
   <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="notes:ci-two-means">Report a problem</button></span></p>

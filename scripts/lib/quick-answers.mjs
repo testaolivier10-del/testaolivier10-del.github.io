@@ -68,7 +68,7 @@ ${QA_END}
 }
 
 // The same spot the video block uses on notes pages (scripts/lib/videos.mjs SPOTS).
-const HEAD_RE = /<header class="bk-head">[\s\S]*?<\/header>\n|<header class="tb-chapter-head">[\s\S]*?<\/header>\n/;
+const HEAD_RE = /<header class="bk-head">[\s\S]*?<\/header>\n|<header class="tb-chapter-head">[\s\S]*?<\/header>\n|<!-- r3:head -->\n(?:<p class="bk-lede">[\s\S]*?<\/p>\n)?/;
 const BOX_RE = new RegExp(`[ \\t]*${QA_START}[\\s\\S]*?${QA_END}\\n?`, 'g');
 
 export function applyQuickAnswer(rel, html, answers = loadQuickAnswers()) {
