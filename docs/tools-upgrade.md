@@ -170,7 +170,11 @@ breadcrumbs truncate on phones; the burns figure's 1% region is a small tap targ
 - The lab practical's and word roots' "See it in 3D" buttons still open the NREMT body map; pointing them at
   `anatomy-3d.html?focus=<structure>` needs a name map like `AnpToolKit.BODY` for the A&P structures.
 - Headless checks: SwiftShader takes 1 to 2 minutes to load the model, so a full point-to-it round was not
-  driven by taps in CI; the quiz flow (wrong answer recorded to review) and a filter were.
+  driven by taps, and the full `BROWSER=1 scripts/ci-local.sh` was not run (shared machine); targeted checks
+  were: build/check scripts for touched outputs, A&P tests, axe on the new page, tools hub, course home and body
+  map (two serious findings on the tools hub and body map exist on main too). The quiz flow (wrong answer recorded
+  to review) and a filter were driven in Chromium. Fixed on the way: `body-map.html?focus=` threw a
+  ReferenceError (onSelect ran before mount returned).
 - `sw.js` CACHE is not bumped (decision 6: once at merge).
 
 ## Verification
