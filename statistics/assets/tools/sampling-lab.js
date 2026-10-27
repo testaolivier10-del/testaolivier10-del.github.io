@@ -55,7 +55,7 @@
       bg.push('<path class="sl-ripple" d="M60 ' + (L.H - 14) + ' q 20 -6 40 0 M300 ' + (L.H - 10) + ' q 20 -6 40 0 M620 ' + (L.H - 12) + ' q 20 -6 40 0 M860 ' + (L.H - 9) + ' q 20 -6 40 0"/>');
       for(var y = 0; y < sc.rows; y++){
         var ly = rowY(y) + 62;
-        bg.push('<rect class="sl-lane" x="0" y="' + ly + '" width="' + W + '" height="16"/><text class="sl-lane-t" x="10" y="' + (ly + 12) + '">' + esc(sc.clusters.names[y]) + '</text>');
+        bg.push('<rect class="sl-lane" x="0" y="' + ly + '" width="' + W + '" height="16"/><text class="sl-lane-t" x="10" y="' + (ly + 12) + '" data-y="' + (ly + 12) + '" data-gy="' + (rowY(y) + 40) + '">' + esc(sc.clusters.names[y]) + '</text>');
         L.clusters.push({ x: 6, y: rowY(y) - 4, w: W - 12, h: rh - 4, name: sc.clusters.names[y] });
       }
       L.zones = [{ x: 14, y: 27, name: sc.strata.groups[0].name }, { x: 14, y: rowY(split) - 11, name: sc.strata.groups[1].name }];
@@ -159,12 +159,91 @@
     var lo = Infinity, hi = -Infinity;
     pop.units.forEach(function(u){ lo = Math.min(lo, u.value); hi = Math.max(hi, u.value); });
     o.lo = lo; o.hi = hi;
-    return '<svg class="sl-scene sl-' + sc.kind + '" viewBox="0 0 ' + L.W + ' ' + L.H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="' + o.lid + '">' +
+    return '<svg class="sl-scene sl-' + sc.kind + '" viewBox="0 0 ' + L.W + ' ' + L.H + '" data-w="' + L.W + '" data-h="' + L.H + '" data-ls-text="keep" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="' + o.lid + '">' +
       '<title id="' + o.lid + '">' + esc(o.label) + '</title>' +
       '<g class="sl-bg" aria-hidden="true">' + L.bg + '</g><g class="sl-bands" aria-hidden="true"></g>' +
       '<g class="sl-units" aria-hidden="true">' + pop.units.map(function(u){ return unitSvg(sc, u, L.at[u.i], o); }).join('') + '</g>' +
       '<g class="sl-marks" aria-hidden="true"></g>' +
       (L.zones || []).map(function(z, k){ return '<text class="sl-zone" data-z="' + k + '" x="' + z.x + '" y="' + z.y + '"' + (z.mid ? ' text-anchor="middle"' : '') + '>' + esc(z.name) + '</text>'; }).join('') + '</svg>';
+  }
+
+  /* Scene text that reads at any size (audit X8). The scene is drawn in
+     1000-unit coordinates and shrinks to fit the stage (to about a quarter on
+     a phone), so each label's size is set from the drawn scale: at least
+     11.5 px on screen. Street names that no longer fit in their lane move
+     into a gutter on the left (the picture is height-bound on a phone, so
+     the gutter uses spare width); a selected unit's number badge and the
+     unit numbers show only where they fit (the strip under the picture
+     lists the sample's numbers either way). quick: the badges only. */
+  var MINPX = 11.5;
+  function readable(svg, sc, quick){
+    if(!svg || !svg.isConnected || !svg.getClientRects().length) return;
+    var W = +svg.getAttribute('data-w'), H = +svg.getAttribute('data-h'), k = svg._k;
+    function all(sel){ return Array.prototype.slice.call(svg.querySelectorAll(sel)); }
+    function size(sel, css, min){ var u = Math.max(css, (min || MINPX) / k); all(sel).forEach(function(t){ t.style.fontSize = u.toFixed(1) + 'px'; }); return u; }
+    if(!quick || !k){
+      var gut = 0;
+      for(var pass = 0; pass < 3; pass++){
+        svg.setAttribute('viewBox', (-gut) + ' 0 ' + (W + gut) + ' ' + H);
+        var m = svg.getScreenCTM(); if(!m || !m.a) return;
+        k = svg._k = Math.abs(m.a);
+        var need = 0;
+        if(sc.kind === 'houses'){
+          var fs = Math.max(11, MINPX / k), out = fs > 18, wmax = 0;
+          all('.sl-lane-t').forEach(function(t){
+            t.style.fontSize = fs.toFixed(1) + 'px';
+            t.setAttribute('x', out ? -12 : 10);
+            t.setAttribute('text-anchor', out ? 'end' : 'start');
+            t.setAttribute('y', out ? (+t.getAttribute('data-gy') + fs * 0.35).toFixed(1) : t.getAttribute('data-y'));
+            if(out) wmax = Math.max(wmax, t.getComputedTextLength());
+          });
+          if(out) need = Math.ceil(wmax + 24);
+        }
+        if(Math.abs(need - gut) < 4) break;
+        gut = need;
+      }
+      // the streets, the land and the strata bands run into the gutter
+      all('.sl-lane, .sl-land').forEach(function(r){ r.setAttribute('x', -gut); r.setAttribute('width', W + gut); });
+      svg.classList.toggle('sl-gut', gut > 0);
+      var z = size('.sl-zone', 21, 12.5);
+      // the top label stays inside the picture
+      all('.sl-zone').forEach(function(t, i){ if(sc.kind === 'plots' || i === 0) t.setAttribute('y', Math.max(sc.kind === 'plots' ? 30 : 27, z * 0.85).toFixed(1)); });
+      size('.sl-vert', 15);
+      size('.sl-room-t', 18, 12);
+      size('.sl-hall-t, .sl-office-t', 17);
+      // a room's grade: beside its name while that fits, else on the line below
+      var g = Math.max(15, MINPX / k), below = g > 17;
+      all('.sl-room-g').forEach(function(t){ t.style.display = below ? 'none' : ''; t.style.fontSize = g.toFixed(1) + 'px'; });
+      all('.sl-room-g2').forEach(function(t){ t.style.display = below ? 'inline' : 'none'; t.style.fontSize = g.toFixed(1) + 'px'; });
+      // a label wider than its room or office is left out (the strip names the groups)
+      if(sc.kind === 'rooms'){
+        var rw = (W - 2 * 14 - 3 * 12) / 4 - 24;
+        // a room's name, then its number alone ("101"), then nothing
+        all('.sl-room-t').forEach(function(t){
+          var full = t.getAttribute('data-full') || t.textContent; t.setAttribute('data-full', full);
+          t.style.display = ''; t.textContent = full;
+          if(t.getComputedTextLength() > rw){ t.textContent = full.split(' ').pop(); if(t.getComputedTextLength() > rw) t.style.display = 'none'; }
+        });
+        all('.sl-room-g2').forEach(function(t){ if(t.style.display !== 'none' && t.getComputedTextLength() > rw) t.style.display = 'none'; });
+        all('.sl-office-t').forEach(function(t){ t.style.display = ''; if(t.getComputedTextLength() > 140) t.style.display = 'none'; });
+      }
+      var lab = Math.max(12, MINPX / k), labOn = lab <= 26;
+      all('.sl-lab').forEach(function(t){ t.style.display = labOn ? '' : 'none'; t.style.fontSize = lab.toFixed(1) + 'px'; });
+    }
+    var b = Math.max(15, MINPX / k), bOn = b <= 32;
+    all('.sl-badge').forEach(function(gb){
+      gb.style.display = bOn ? '' : 'none';
+      if(!bOn) return;
+      var c = gb.querySelector('circle'), t = gb.querySelector('text');
+      c.setAttribute('r', b.toFixed(1)); t.style.fontSize = b.toFixed(1) + 'px'; t.setAttribute('y', (+c.getAttribute('cy') + b * 0.34).toFixed(1));
+    });
+  }
+  // Re-fit when the drawn size changes (the stage, Enlarge, zoom).
+  function keepReadable(svg, sc){
+    if(!svg) return;
+    readable(svg, sc);
+    if(window.ResizeObserver){ var t = 0; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ readable(svg, sc); }, 40); }).observe(svg); }
+    else window.addEventListener('resize', function(){ readable(svg, sc); });
   }
 
   /* --------------------------------------------- the dotplot of means */
@@ -257,6 +336,7 @@
         act(); sel = +g.getAttribute('data-i'); marks(); text();
       });
       bands(); marks();
+      keepReadable(svg, sc);
     }
     function syncSeg(){
       [host, LS && LS.root].forEach(function(r){ if(!r) return; r.querySelectorAll('.sl-seg button').forEach(function(b){
@@ -292,6 +372,7 @@
       }
       mk.innerHTML = out.join('');
       bands();
+      readable(svg, sc, true);
     }
     function drawMeans(){
       var box = $('.sl-meansbox'); if(!box) return;
@@ -573,6 +654,7 @@
       marks += (dy.picks || []).map(function(i){ return ringSvg(sc, L.at[i], null).replace('class="sl-ring"', 'class="sl-ring is-yours"'); }).join('');
     }
     bandsG.innerHTML = bands; mk.innerHTML = marks;
+    keepReadable(svg, sc);
     // Tap a unit to read its label, group and whether it is in the sample.
     svg.addEventListener('click', function(e){
       var g = e.target.closest('.sl-u'); if(!g) return;
