@@ -11,13 +11,19 @@ Recipe, every Short:
   4. One graphic that points at the payoff: a red X stamp, a hand drawn arrow, a ring, a pain burst or a prop.
   5. Course pill at the very top, small LevlPrep mark bottom right; nothing important in the bottom 300 px.
   6. Check at feed size with preview() (180x320 and 360x640) and keep the clearest of 2 concepts.
+Approved by Olivier 2026-10-26 (w1025 set: pipeline/thumbpro/w1025/make_w1025.py is the reference build).
+
+Cutting out the hero:  python3 cut.py <frame.png> <x0,y0,x1,y1> <out.png>   (rembg isnet-general-use, keeps the largest
+part and opens the mask so thin background slivers go; check the cutout on magenta before use). setup: bash setup_thumbpro.sh
 """
 import math, numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageChops, ImageEnhance
 
 W, H = 1080, 1920
-ANTON = '/home/claude/fonts/Anton-Regular.ttf.ttf'
-MONT = '/home/claude/fonts/Montserrat.ttf'
+import os
+_F = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fonts')
+ANTON = os.path.join(_F, 'Anton-Regular.ttf')
+MONT = os.path.join(_F, 'Montserrat.ttf')
 YELLOW = (255, 214, 10); RED = (255, 59, 48); WHITE = (255, 255, 255); INK = (10, 14, 28)
 COURSE = {'NREMT': (63, 194, 169), 'ORGO': (156, 143, 224), 'A&P': (236, 132, 108), 'AP BIO': (140, 200, 110),
           'AP CHEM': (90, 130, 230), 'AP PHYSICS': (235, 165, 50), 'AP CALC': (232, 80, 122),

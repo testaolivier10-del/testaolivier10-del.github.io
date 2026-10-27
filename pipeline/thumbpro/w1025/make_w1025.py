@@ -1,5 +1,5 @@
 import sys, math
-sys.path.insert(0, '/tmp/th')
+sys.path.insert(0, '/home/claude/lp/thumbpro'); sys.path.insert(0, '/tmp/th')
 from PIL import Image, ImageDraw, ImageFilter
 import thumbpro as T
 
