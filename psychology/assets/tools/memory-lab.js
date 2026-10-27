@@ -261,7 +261,7 @@
     }
 
     function listScene(W, H){
-      var phone = W < 560, g = [], L = phone ? 40 : 56, R = W - (phone ? 16 : 26);
+      var phone = W < 560, g = [], L = phone ? 40 : 56, R = W - (phone ? 36 : 26);
       var cardH = phase === 'ready' || phase === 'done' ? 0 : Math.min(150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
       var you = phase === 'done' && result ? 58 : 0, B = H - (phone ? 52 : 58) - you;
       var x = function(i){ return L + (i + 0.5) / N * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
@@ -288,9 +288,9 @@
       // primacy and recency zones
       g.push('<rect class="ml-zone" x="' + (x(0) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
       g.push('<rect class="ml-zone" x="' + (x(7) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
-      g.push(txt(x(1), B - 10, 'Primacy', 'ml-zt'), txt(x(8), B - 10, 'Recency', 'ml-zt'));
+      g.push(txt(x(1), T0 + 16, 'Primacy', 'ml-zt'), txt(x(8), T0 + 16, 'Recency', 'ml-zt'));
       [0, 25, 50, 75, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });
-      if(phase === 'study' && at >= 0) g.push('<rect class="ml-now" x="' + (x(at) - (R - L) / N / 2 + 2).toFixed(1) + '" y="' + T0 + '" width="' + ((R - L) / N - 4).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '" rx="6"/>');
+      if(phase === 'study' && at >= 0) g.push('<rect class="ml-now" x="' + (x(at) - (R - L) / N / 2 + 2).toFixed(1) + '" y="' + (T0 + 24) + '" width="' + ((R - L) / N - 4).toFixed(1) + '" height="' + (B - T0 - 24).toFixed(1) + '" rx="6"/>');
       // the two class curves; the chosen condition is drawn strong
       function poly(a, c2, dim){ var d = dim ? ' is-dim' : ''; return '<polyline class="' + c2 + d + '" points="' + a.map(function(v, i){ return x(i).toFixed(1) + ',' + y(v).toFixed(1); }).join(' ') + '"/>' + a.map(function(v, i){ return '<circle class="' + c2 + '-pt' + d + '" cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="4.5"/>'; }).join(''); }
       g.push(poly(cls.imm, 'ml-imm', delayed), poly(cls.del, 'ml-del', !delayed));

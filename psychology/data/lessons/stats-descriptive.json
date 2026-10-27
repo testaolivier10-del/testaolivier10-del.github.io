@@ -1,0 +1,71 @@
+{
+ "topic": "stats-descriptive",
+ "hook": "A news story says the \"average\" reaction time in a driving study was 362 milliseconds. But on nine of ten trials the driver reacted in 320 ms or less; one trial was slow because the driver sneezed. Which number describes this driver? Choosing between the mean and the median is a question the exam asks again and again.",
+ "prereq": [
+  {
+   "q": "Which kind of data is a list of reaction times in milliseconds?",
+   "options": [
+    "Quantitative data",
+    "Qualitative data",
+    "A Likert scale",
+    "A case study"
+   ],
+   "correct": 0,
+   "why": "Numbers such as times, scores and counts are quantitative data.",
+   "review": "research-methods"
+  },
+  {
+   "q": "A scatterplot of hours studied against quiz scores shows points rising to the right. What does this show?",
+   "options": [
+    "A positive correlation",
+    "A negative correlation",
+    "No correlation",
+    "That studying causes higher scores"
+   ],
+   "correct": 0,
+   "why": "Points rising together show a positive correlation, which does not by itself show cause.",
+   "review": "stats-correlation"
+  }
+ ],
+ "figure": {
+  "figure": "stats-descriptive-skew",
+  "caption": "In a positively skewed distribution, the mean is pulled toward the tail, past the median (invented data)."
+ },
+ "chain": [
+  {
+   "cause": "Add every value and divide by how many there are",
+   "effect": "the mean, which uses every value and so moves toward any outlier"
+  },
+  {
+   "cause": "Put the values in order and take the middle one (or the average of the two middle ones)",
+   "effect": "the median, which stays with the typical values even when there are outliers"
+  },
+  {
+   "cause": "A few extreme values stretch one side of a distribution",
+   "effect": "the distribution is skewed and the mean moves toward the tail, so the median is the better summary"
+  },
+  {
+   "cause": "Scores sit far from the mean",
+   "effect": "the range and the standard deviation are large: more variation"
+  }
+ ],
+ "ideas": [
+  "<b>Central tendency</b>: the <b>mean</b> ($\\bar{x}$, the total divided by the count), the <b>median</b> (the middle value in order) and the <b>mode</b> (the most frequent value). Two peaks make a <b>bimodal distribution</b>.",
+  "An <b>outlier</b> pulls the mean toward it. In a <b>skewed distribution</b> the mean sits toward the tail, so the median describes the typical case better.",
+  "<b>Variation</b>: the <b>range</b> is highest minus lowest; the <b>standard deviation</b> is roughly the typical distance of scores from the mean.",
+  "A <b>frequency distribution</b> counts how often each value or range occurs; a histogram shows it as touching bars."
+ ],
+ "misconception": {
+  "wrong": "The mean is always the best \"average\", and a negative skew means the scores are low.",
+  "right": "With outliers or skew, the median is usually the better summary. Skew is named for the tail: a negative skew has a tail toward the low values, often because most scores are high."
+ },
+ "check": [
+  "psy-stats-descriptive-1",
+  "psy-stats-descriptive-2",
+  "psy-stats-descriptive-7",
+  "psy-stats-descriptive-10",
+  "psy-stats-descriptive-11",
+  "psy-stats-descriptive-12"
+ ],
+ "summary": "Descriptive statistics summarize a set of numbers. The mean, median and mode describe the center; the range and standard deviation describe the spread. Outliers pull the mean toward them, so in a skewed distribution the median is the better summary of a typical value. A frequency distribution or histogram shows the shape: symmetric, skewed toward a tail, or bimodal with two peaks."
+}
