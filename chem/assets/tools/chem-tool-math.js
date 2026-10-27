@@ -164,7 +164,10 @@
      withProduct?: true (findK: a product may start above zero),
      Ksmall: [log lo, log hi] (smallx), Kfail?: [log lo, log hi] (smallx where
      the 5% check fails; the exact equation must be a quadratic),
-     Ksq: [log lo, log hi] (square: A + B ⇌ products with K a perfect square) } */
+     Ksq: [log lo, log hi] (square: A + B ⇌ products with K a perfect square),
+     Kfix?: a measured K used for every problem of the context (findK data
+     are built to give it within 3%; square uses it), with T, the temperature
+     it was measured at, named in the problem text } */
   var ICE_TOPIC = { findK: 'calculating-k', smallx: 'equilibrium-concentrations', square: 'equilibrium-concentrations' };
   var VOLS = [1.00, 2.00, 0.500, 5.00, 4.00];
   function iceGenerate(r, ctx, type){
@@ -188,12 +191,15 @@
     var x, K, meas = null, mj = null, pct = null, ok = null, xa = null, xEx = null, fail = false;
     if(type === 'findK'){
       var xmax = Math.min.apply(null, reac.map(function(i){ return c0[i] / -sp[i].nu; }));
-      x = (0.15 + 0.5 * r()) * xmax;
+      x = ctx.Kfix ? solveExtent(sp, c0, ctx.Kfix) : (0.15 + 0.5 * r()) * xmax;
       mj = r.pick(prod);
       meas = M.sig(c0[mj] + sp[mj].nu * x, 3);
       x = (meas - c0[mj]) / sp[mj].nu;
       if(!(x > 0)) return null;
       K = Q(sp, at(sp, c0, x));
+      // Rounding the measured amount to three figures moves K a little; keep
+      // the data close to the measured constant.
+      if(ctx.Kfix && Math.abs(K / ctx.Kfix - 1) > 0.03) return null;
     } else if(type === 'smallx'){
       fail = !!(ctx.Kfail && r() < 0.3);
       var kr = fail ? ctx.Kfail : ctx.Ksmall;
@@ -205,7 +211,7 @@
       xEx = solveExtent(sp, c0, K);
       x = ok ? xa : xEx;
     } else {
-      K = logBetween(r, ctx.Ksq[0], ctx.Ksq[1], 3);
+      K = ctx.Kfix || logBetween(r, ctx.Ksq[0], ctx.Ksq[1], 3);
       var P = 1; prod.forEach(function(i){ P *= Math.pow(sp[i].nu, sp[i].nu); });
       x = c0[reac[0]] * Math.sqrt(K) / (Math.sqrt(P) + Math.sqrt(K));
       xEx = solveExtent(sp, c0, K);
@@ -226,7 +232,7 @@
       return o.c0[i] ? (o.Kp ? s.html + ' at ' + fmt(o.c0[i], 3) + ' atm' : fmt(o.c0[i], 3) + ' M ' + s.html) : null;
     }).filter(Boolean);
     var vessel = o.mol ? 'a ' + fmt(o.V, 3) + ' L flask' : o.Kp ? 'a rigid vessel' : 'a sealed flask';
-    var text = '<p class="bt-eq">' + eqHtml(sp) + '</p><p>A mixture of ' + list(start) + ' is placed in ' + vessel + ' at constant temperature. ';
+    var text = '<p class="bt-eq">' + eqHtml(sp) + '</p><p>A mixture of ' + list(start) + ' is placed in ' + vessel + (o.ctx.T ? ' and held at ' + o.ctx.T + '. ' : ' at constant temperature. ');
     text += o.type === 'findK' ? 'At equilibrium, ' + name(o.mj) + ' = ' + fmt(o.meas, 3) + ' ' + u + '. Find ' + Kname + '.</p>'
       : Kname + ' = ' + fmt(o.K, o.type === 'square' ? 3 : 2) + ' at this temperature. Find the equilibrium ' + (o.Kp ? 'partial pressures' : 'concentrations') + '.</p>';
     var I = sp.map(function(s, i){
@@ -284,7 +290,7 @@
       steps.push(Erow);
     }
     return {
-      kind: 'ice', type: o.type, ctx: o.ctx.id, topic: ICE_TOPIC[o.type], Kp: o.Kp, unit: u,
+      kind: 'ice', type: o.type, ctx: o.ctx.id, topic: ICE_TOPIC[o.type], Kp: o.Kp, unit: u, T: o.ctx.T || null,
       species: sp.map(function(s){ return { html: s.html, nu: s.nu }; }), equation: eqHtml(sp), expr: exprHtml(sp, o.Kp),
       text: text, c0: o.c0, x: o.x, K: o.K, E: o.E, pct: o.pct, ok: o.ok, xApprox: o.xa, xExact: o.xEx, steps: steps,
       solution: iceSolution(o)

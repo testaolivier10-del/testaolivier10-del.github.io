@@ -692,7 +692,22 @@
 /* Pinned only on a phone, where the tiles run off the screen; on wide screens the whole setup fits and a pinned bar would cover the tiles. */
 @media (max-width:700px){.us-sticky{position:sticky;top:calc(var(--site-header-h,64px) + 4px);z-index:2;}}
 .us-frac{overflow-x:auto;min-height:44px;display:flex;justify-content:center;}
-.us-none{margin:0;align-self:center;}
+.us-frac{flex-direction:column;align-items:center;gap:10px;}
+.us-eqn{display:flex;align-items:center;justify-content:center;gap:10px;max-width:100%;}
+.us-goal{display:flex;align-items:center;gap:8px;}
+.us-eq{font:800 22px var(--font-ui);color:var(--muted);}
+.us-target{border-style:dashed;}
+.us-target.is-done{border-style:solid;background:color-mix(in srgb,var(--chem-s3) 14%,var(--white));color:var(--ink);}
+.us-slot{display:inline-flex;align-items:center;justify-content:center;min-width:110px;min-height:40px;padding:0 12px;border:2px dashed var(--line);border-radius:10px;font:700 13px var(--font-ui);color:var(--muted);}
+.us-num .us-vals,.us-den .us-vals{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;}
+.us-times{font:700 14px var(--font-mono);color:var(--muted);}
+.us-qty{display:inline-flex;align-items:baseline;gap:4px;min-height:40px;padding:6px 10px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:700 14px var(--font-mono);cursor:pointer;}
+.us-qty span{color:var(--cink);font-weight:800;}
+.us-qty:hover{border-color:var(--cink);}
+.us-qty:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.us-qtyt,.us-qtyb{border-color:color-mix(in srgb,var(--cink) 55%,var(--line));background:var(--ctint);}
+.us-tray{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding-top:8px;border-top:1px dashed var(--line);width:100%;}
+.us-tray-k{width:100%;text-align:center;font:700 12px var(--font-ui);color:var(--muted);}
 .us-sticky .tx-where{font-size:14px;padding:8px 12px;}
 .us-fr{display:inline-grid;gap:4px;min-width:min(100%,280px);}
 .us-num,.us-den{display:flex;flex-direction:column;align-items:center;gap:4px;}
