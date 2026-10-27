@@ -31,7 +31,11 @@
         types: [{ value: 'tree', label: 'From a tree' }, { value: 'table', label: 'From a two-way table' }, { value: 'rules', label: 'Or, mutually exclusive, independent' }],
         typeLabel: 'Kind of problem',
         title: function(p){ return { tree: 'Probabilities from a tree', table: 'Probabilities from a table', rules: 'The addition rule and independence' }[p.type] || 'Practice problem'; },
-        extra: function(el, p){ qfig(el, p); } }); },
+        extra: function(el, p, api){ api.fig = el; api.st = { q: null, done: {}, yours: null }; qfig(el, p, api.st); },
+        onStepStart: function(s, api){ api.st.q = PT.QS[s.key] ? s.key : null; api.st.yours = null; qfig(api.fig, api.problem, api.st); },
+        onStep: function(s, right, api){ api.st.done[s.key] = true; },
+        onTry: function(s, t, api){ if(t.right || s.kind !== 'num' || !isFinite(t.value)) return; api.st.yours = { key: s.key, v: t.value }; qfig(api.fig, api.problem, api.st); },
+        method: methodOf }); },
       onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
@@ -47,12 +51,14 @@
 
   function treeSvg(J, sc, q, o){
     var W = 560, H = 344, x0 = 26, x1 = 196, x2 = 358, ys = { A: 92, nA: 252 }, leaf = { AB: 46, AnB: 138, nAB: 206, nAnB: 298 }, y0 = 172;
+    if(o.compact){ W = 380; x0 = 14; x1 = 104; x2 = 226; }
     var w = function(p){ return (2.5 + 15 * p).toFixed(1); };
     function st(cells){ var s = cells.map(function(c){ return cellState(q, c); }); return s.indexOf('num') > -1 ? 'num' : s.indexOf('den') > -1 ? 'den' : s.every(function(x){ return x === 'off'; }) ? 'off' : 'dim'; }
+    var bend = o.compact ? 30 : 50;
     function branch(xa, ya, xb, yb, p, label, cells, cls, tap){
       var mx = (xa + xb) / 2, my = (ya + yb) / 2, s = st(cells), up = yb < ya;
-      return '<g class="pt-br pt-' + cls + ' is-' + s + '" data-q="' + tap + '"><path class="pt-brl" d="M' + xa + ' ' + ya + ' C ' + (xa + 50) + ' ' + ya + ', ' + (xb - 50) + ' ' + yb + ', ' + xb + ' ' + yb + '" stroke-width="' + w(p) + '"/>' +
-        '<path class="pt-hitl" d="M' + xa + ' ' + ya + ' C ' + (xa + 50) + ' ' + ya + ', ' + (xb - 50) + ' ' + yb + ', ' + xb + ' ' + yb + '"/>' +
+      return '<g class="pt-br pt-' + cls + ' is-' + s + '" data-q="' + tap + '"><path class="pt-brl" d="M' + xa + ' ' + ya + ' C ' + (xa + bend) + ' ' + ya + ', ' + (xb - bend) + ' ' + yb + ', ' + xb + ' ' + yb + '" stroke-width="' + w(p) + '"/>' +
+        '<path class="pt-hitl" d="M' + xa + ' ' + ya + ' C ' + (xa + bend) + ' ' + ya + ', ' + (xb - bend) + ' ' + yb + ', ' + xb + ' ' + yb + '"/>' +
         '<text class="pt-brt" x="' + mx + '" y="' + (my + (up ? -10 : 20)) + '" text-anchor="middle">' + esc(label) + '</text></g>';
     }
     var g = [];
@@ -70,7 +76,7 @@
     PT.CELLS.forEach(function(c){
       var y = leaf[c], s = cellState(q, c), isB = c === 'AB' || c === 'nAB';
       g.push('<g class="pt-leaf ' + (isB ? 'pt-lb' : 'pt-lnb') + ' is-' + s + '" data-q="' + c + '"><rect x="' + x2 + '" y="' + (y - 21) + '" width="' + (W - x2 - 8) + '" height="42" rx="10"/>' +
-        '<text class="pt-lt" x="' + (x2 + 12) + '" y="' + (y - 3) + '">' + esc(LN[c][0]) + '</text><text class="pt-lv" x="' + (W - 18) + '" y="' + (y + 6) + '" text-anchor="end">' + F4(J[c]) + '</text>' +
+        '<text class="pt-lt" x="' + (x2 + 12) + '" y="' + (y - 3) + '">' + esc(LN[c][0]) + '</text><text class="pt-lv" x="' + (W - 18) + '" y="' + (o.compact ? y - 3 : y + 6) + '" text-anchor="end">' + F4(J[c]) + '</text>' +
         '<text class="pt-ls" x="' + (x2 + 12) + '" y="' + (y + 14) + '">' + esc(LN[c][1]) + '</text></g>');
     });
     return '<svg class="pt-tree-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.label) + '">' + g.join('') + '</svg>';
@@ -135,7 +141,7 @@
   /* --------------------------------------------------------- explore */
   function explore(host, data){
     var scenes = (data.explore && data.explore.scenes) || [];
-    var LS = null, nid = T.nid('pt'), sc, pA, pBgA, pBgNA, J, q = 'AB', view = 'tree', outs = [], touched = false, anim = null, N = 1000;
+    var LS = null, nid = T.nid('pt'), sc, pA, pBgA, pBgNA, J, q = 'AB', view = 'tree', outs = [], touched = false, anim = null, N = 1000, pending = null;
     var rng = M.rng(1000 + Math.floor(Math.random() * 9000));
     function $(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); }
     function $$(s){ var a = Array.prototype.slice.call(host.querySelectorAll(s)); if(LS) a = a.concat(Array.prototype.slice.call(LS.root.querySelectorAll(s))); return a.filter(function(x, i){ return a.indexOf(x) === i; }); }
@@ -165,14 +171,14 @@
     $('.pt-sim1').addEventListener('click', function(){ act(); sim(100); });
     $('.pt-sim2').addEventListener('click', function(){ act(); sim(1000); });
     $('.pt-indep').addEventListener('click', function(){ act(); pBgNA = pBgA; sl.pBgNA.set(pBgNA); changed(); say('Now P(B | not A) = P(B | A) = ' + nice(pBgA) + ': A and B are independent.'); });
-    $('.pt-reset').addEventListener('click', function(){ stop(); outs = []; draw(); say('The simulation is cleared.'); });
+    $('.pt-reset').addEventListener('click', function(){ pending = null; stop(); outs = []; draw(); say('The simulation is cleared.'); });
     // taps on any view
     $('.pt-views').addEventListener('click', function(e){ var t = e.target.closest('[data-q]'); if(!t) return; act(); ask(t.getAttribute('data-q')); });
     function act(){ if(!touched){ touched = true; cue.done(); } }
-    function setScene(s){ stop(); sc = s; pA = s.pA; pBgA = s.pBgA; pBgNA = s.pBgNA; sl.pA.set(pA); sl.pBgA.set(pBgA); sl.pBgNA.set(pBgNA); outs = []; changed(true);
+    function setScene(s){ pending = null; stop(); sc = s; pA = s.pA; pBgA = s.pBgA; pBgNA = s.pBgNA; sl.pA.set(pA); sl.pBgA.set(pBgA); sl.pBgNA.set(pBgNA); outs = []; changed(true);
       var sv = LS && LS.root.querySelector('.stat-ls-setup .ls-v'); if(sv) sv.textContent = sc.name; }
     function changed(keep){
-      J = PT.joint(pA, pBgA, pBgNA); if(!keep){ stop(); outs = []; }
+      J = PT.joint(pA, pBgA, pBgNA); if(!keep){ pending = null; stop(); outs = []; }
       // the table's total: the first that makes every count a whole number
       N = [1000, 1200, 600, 6000, 10000, 12000, 100000].filter(function(t){ return PT.CELLS.every(function(c){ var x = J[c] * t; return Math.abs(x - Math.round(x)) < 1e-6; }); })[0] || 1000;
       draw();
@@ -203,7 +209,8 @@
     function draw(){
       var lbl = sc.name + '. A: ' + sc.A + '. B: ' + sc.B + '. ' + QNAME[q] + ' = ' + F4(PT.value(J, q)) + '.';
       $('.pt-events').innerHTML = '<span class="pt-ea">A: ' + esc(sc.A) + '</span><span class="pt-eb">B: ' + esc(sc.B) + '</span>';
-      $('.pt-v-tree .pt-vbody').innerHTML = treeSvg(J, sc, q, { label: 'Tree diagram. ' + lbl });
+      var tb = $('.pt-v-tree .pt-vbody'), tw = tb ? tb.getBoundingClientRect().width : 0;
+      tb.innerHTML = treeSvg(J, sc, q, { label: 'Tree diagram. ' + lbl, compact: tw > 0 && tw < 520 });
       $('.pt-v-table .pt-vbody').innerHTML = tableHtml(J, sc, q, N);
       $('.pt-v-venn .pt-vbody').innerHTML = vennSvg(J, sc, q, { label: 'Venn diagram. ' + lbl });
       $$('.pt-q').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-q') === q)); });
@@ -243,11 +250,17 @@
       if(narrow) setView('sim');
       if(T.reduced()){ outs = outs.concat(add); drawSim(); text(); allBox(); return; }
       var done = 0, per = Math.max(1, Math.ceil(k / 30));
-      anim = window.ApStatPlot.loop(function(){ var n = Math.min(k, done + per); outs = outs.concat(add.slice(done, n)); done = n; drawSim(); return done < k; },
-        { onEnd: function(){ anim = null; text(); allBox(); say(outs.length + ' trials. ' + QNAME[q] + ' simulated ' + F4(PT.estimate(outs, q).p) + ', exact ' + F4(PT.value(J, q)) + '.'); } });
+      pending = add.slice();
+      anim = window.ApStatPlot.loop(function(){ var n = Math.min(k, done + per); outs = outs.concat(add.slice(done, n)); done = n; pending = add.slice(done); drawSim(); return done < k; },
+        { onEnd: function(){ anim = null; pending = null; text(); allBox(); say(outs.length + ' trials. ' + QNAME[q] + ' simulated ' + F4(PT.estimate(outs, q).p) + ', exact ' + F4(PT.value(J, q)) + '.'); } });
       anim.start();
     }
-    function stop(){ if(anim){ anim.stop(); anim = null; } }
+    function stop(){
+      if(anim){ anim.stop(); anim = null; }
+      // A simulation still drawing keeps every trial it promised (audit: 1,000 during 100 gave 1,084).
+      if(pending && pending.length){ outs = outs.concat(pending); pending = null; drawSim(); text(); allBox(); }
+      pending = null;
+    }
     function studio(pane, s){
       LS = s;
       var sp = T.studioPane(pane, s, { stage: [$('.pt-fig')], dock: [$('.pt-ctl')], setup: 'Events', moreLabel: 'The events and the simulation', why: [$('.pt-say')], details: [$('.pt-all')] });
@@ -263,16 +276,57 @@
     return { stop: stop, studio: studio };
   }
 
-  /* A drill's picture: the problem's tree (its three given numbers only,
-     the answers left as question marks) or its two-way table. */
-  function qfig(el, p){
+  /* A drill's picture: the problem's tree (its three given numbers; each
+     path value appears once its step is answered), its two-way table, or a
+     Venn diagram of the rules problem. The current step's outcomes are
+     filled and its slice outlined, as in Explore. */
+  function qfig(el, p, st){
     if(!el) return;
-    if(p.type === 'table'){ el.innerHTML = '<div class="pt-qtable">' + p.table.html + '</div>'; return; }
+    st = st || { done: {} };
+    var phone = (window.innerWidth || 1280) <= 640, yours = st.yours ? '<p class="pt-yours">Yours: ' + esc(F4(st.yours.v)) + (st.q ? ' for ' + esc(QNAME[st.q]) : '') + '</p>' : '';
+    if(p.type === 'table'){
+      el.innerHTML = '<div class="pt-qtable">' + p.table.html + '</div>' + yours;
+      // cells in reading order: AB, AnB, A / nAB, nAnB, nA / B, nB, N
+      var keys = ['AB', 'AnB', 'A', 'nAB', 'nAnB', 'nA', 'B', 'nB', 'N'], tds = el.querySelectorAll('tbody td');
+      Array.prototype.forEach.call(tds, function(td, i){
+        var k = keys[i]; if(!k || !st.q) return;
+        var Q = PT.QS[st.q], cellLike = PT.CELLS.indexOf(k) > -1;
+        var isNum = cellLike ? Q.num.indexOf(k) > -1 : k === st.q;
+        var isDen = Q.den ? (cellLike ? Q.den.indexOf(k) > -1 : (k === 'A' && Q.den.join() === 'AB,AnB') || (k === 'B' && Q.den.join() === 'AB,nAB')) : k === 'N';
+        td.classList.toggle('is-num', isNum); td.classList.toggle('is-den', !isNum && isDen);
+      });
+      return;
+    }
+    if(p.type === 'rules'){
+      var f0 = p.figure, J0 = { A: f0.pA, B: f0.pB, AB: f0.pAB, AnB: f0.pA - f0.pAB, nAB: f0.pB - f0.pAB, nAnB: 1 - f0.pA - f0.pB + f0.pAB };
+      var v = vennSvg(J0, { A: 'A', B: 'B' }, st.q === 'AorB' ? 'AorB' : null, { label: 'Venn diagram with P(A) = ' + f0.pA + ', P(B) = ' + f0.pB + ' and P(A and B) = ' + f0.pAB + '.' });
+      // the outside region is the answer to "or": a question mark until it is answered
+      if(!st.done.AorB) v = v.replace(/(<text class="pt-vt pt-vt-out"[^>]*>)[^<]*</, '$1?<');
+      el.innerHTML = '<figure class="pt-qvenn">' + v + '</figure>' + yours;
+      return;
+    }
     if(p.type !== 'tree'){ el.innerHTML = ''; return; }
     var f = p.figure, J = PT.joint(f.pA, f.pBgA, f.pBgNA);
-    var svg = treeSvg(J, { A: 'A', B: 'B' }, null, { label: 'Tree diagram with P(A) = ' + f.pA + ', P(B | A) = ' + f.pBgA + ' and P(B | not A) = ' + f.pBgNA + '. The path probabilities are left for you.' });
-    // hide the leaves' values: they are what the problem asks
-    svg = svg.replace(/<text class="pt-lv"[^>]*>[^<]*<\/text>/g, function(m){ return m.replace(/>[^<]*</, '>?<'); });
-    el.innerHTML = '<figure class="pt-qtree">' + svg + '</figure>';
+    var svg = treeSvg(J, { A: 'A', B: 'B' }, st.q, { label: 'Tree diagram with P(A) = ' + f.pA + ', P(B | A) = ' + f.pBgA + ' and P(B | not A) = ' + f.pBgNA + '. The path probabilities are left for you.', compact: phone });
+    // hide the leaves' values the problem asks for, until their step is answered
+    var shown = { AB: !!(st.done.AB), nAB: !!(st.done.B) };
+    svg = svg.replace(/<g class="pt-leaf ([^"]*)" data-q="(\w+)">([\s\S]*?)<\/g>/g, function(m, cls, k, inner){
+      if(shown[k]) return m;
+      return '<g class="pt-leaf ' + cls + '" data-q="' + k + '">' + inner.replace(/(<text class="pt-lv"[^>]*>)[^<]*</, '$1?<') + '</g>';
+    });
+    el.innerHTML = '<figure class="pt-qtree">' + svg + '</figure>' + yours;
+  }
+  function methodOf(s, p){
+    var H = {
+      A: 'Use the A row total over the grand total.',
+      AB: p.type === 'tree' ? 'Multiply along the highlighted path: P(A) × P(B | A).' : 'The highlighted cell over the grand total.',
+      AorB: p.type === 'rules' ? 'P(A or B) = P(A) + P(B) − P(A and B): the shaded union, the overlap counted once.' : 'Add the three highlighted cells (everyone in A, in B or in both), then divide by the grand total.',
+      BgA: 'Given A: the outlined A row is the whole. The highlighted cell over the A row total.',
+      B: 'Add the two highlighted paths that end in B: P(A)P(B | A) + P(not A)P(B | not A).',
+      AgB: 'Given B: only the outlined B paths count. P(A and B) ÷ P(B), from the two steps above.',
+      indep: p.type === 'rules' ? 'Independent when P(A) × P(B) equals P(A and B).' : 'Independent when P(B | A) equals P(B): compare the step you found with the B column total over the grand total.',
+      me: 'Mutually exclusive means they cannot happen together: P(A and B) = 0.'
+    };
+    return H[s.key] || null;
   }
 })();

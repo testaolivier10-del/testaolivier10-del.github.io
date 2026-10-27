@@ -48,7 +48,7 @@ body.stat{--pt-num:color-mix(in srgb,var(--cink) 26%,var(--white));--pt-den:colo
 .pt-leaf.is-den rect{fill:var(--pt-den);stroke:var(--cink);stroke-width:2.5;stroke-dasharray:6 4;}
 .pt-leaf.is-dim{opacity:.38;}
 .pt-lt{fill:var(--ink);font:900 14px var(--font-ui);}
-.pt-ls{fill:var(--muted);font:700 11.5px var(--font-ui);}
+.pt-ls{fill:var(--muted);font:700 12px var(--font-ui);}
 .pt-lv{fill:var(--ink);font:800 16px var(--font-mono);}
 
 /* table */
@@ -102,15 +102,25 @@ body.stat{--pt-num:color-mix(in srgb,var(--cink) 26%,var(--white));--pt-den:colo
 /* dock */
 .pt-ctl{display:flex;flex-direction:column;gap:12px;}
 .pt-qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
-.pt-q{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-mono);cursor:pointer;padding:4px;}
+.pt-q{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;padding:4px;}
 .pt-q[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
 .pt-btns{display:flex;gap:8px;} .pt-btns > *{flex:1 1 0;min-width:0;}
 .pt-change summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:800 14px var(--font-ui);color:var(--cink);}
 .pt-sliders{display:flex;flex-direction:column;gap:6px;}
-.ls-root .pt-ctl .bt-slider label{font:800 var(--ls-s) var(--font-mono);color:var(--muted);}
+.ls-root .pt-ctl .bt-slider label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
 @media (prefers-reduced-motion:reduce){.pt-leaf,.pt-reg,.pt-tbl td,.pt-brl{transition:none;}}
 
 /* drills */
 .pt-qtable,.pt-qtree{margin:auto 0;}
 .pt-qtable .stat-data{width:100%;font-size:calc(15px * var(--ls-scale, 1));}
 .pt-qtree svg{width:100%;height:auto;max-height:100%;}
+
+/* Phones: the Venn's labels at a readable size (its picture is drawn about 0.7 of its width). */
+.ls-root.ls-phone .ls-stage:not(.is-big) .pt-vt{font-size:17px;}
+.ls-root.ls-phone .ls-stage:not(.is-big) .pt-vh{font-size:16px;}
+/* drills: the step's cells, its slice, and the student's answer */
+.pt-qtable td.is-num{background:var(--pt-num);box-shadow:inset 0 0 0 3px var(--cink);font-weight:900;}
+.pt-qtable td.is-den{background:var(--pt-den);box-shadow:inset 0 0 0 2px var(--cink);}
+.pt-qvenn{margin:auto 0;}
+.pt-qvenn svg{width:100%;height:auto;max-height:100%;}
+.pt-yours{margin:6px 0 0;text-align:center;font:800 15px var(--font-ui);color:var(--bad-text);}
