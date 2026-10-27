@@ -88,3 +88,12 @@ body:has(> .r3-toolband) main > nav[aria-label="Breadcrumb"]{display:none}
 body:has(> .r3-toolband) .tool-top .tool-title{display:none}
 /* the hub breadcrumb lives in its band */
 body:has(main.r3-tools) [data-crumb]{display:none}
+/* phones: the short band stacks (r3.css sets two columns on .band.short without a phone rule) */
+@media (max-width:860px){
+  .r3 .band.short .hwrap{grid-template-columns:1fr;gap:14px;padding-top:22px;padding-bottom:40px}
+  .r3 .band.short .deck{font-size:34px}
+  .r3 .band.short .art{max-width:220px;justify-self:start;order:-1}
+  .r3-tools .band.short .art{max-width:200px}
+  .r3 .r3-feat{grid-template-columns:1fr}
+  .r3 .band .issue{flex-wrap:wrap;gap:6px 12px;letter-spacing:.06em}
+}
