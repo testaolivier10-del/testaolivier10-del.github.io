@@ -121,7 +121,8 @@ export function recheck(p, c, w, errs) {
     need(named && c.ethics.some(e => e.g === named) && named === g.ethic, `ethics key "${right(se)}" is not a safeguard the summary describes`);
     for (const o of se.options) { const k = Object.entries(GUIDES).filter(([, n]) => n === o).map(([x]) => x)[0]; if (k && o !== right(se)) need(!c.ethics.some(e => e.g === k), `distractor "${o}" is a safeguard the summary describes`); }
     const sx = stepOf(p, 'ehow');
-    need(sx && right(sx) === c.ethics.find(e => e.g === named).how, 'the "how" key is not how the summary applied that guideline');
+    const applied = c.ethics.find(e => e.g === named);
+    need(sx && applied && right(sx) === applied.how, 'the "how" key is not how the summary applied that guideline');
   }
   const sg = stepOf(p, 'gen');
   if (sg) {

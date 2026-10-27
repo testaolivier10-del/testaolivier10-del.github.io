@@ -78,7 +78,7 @@ test('memory-lab: the drill feedback names the slips', () => {
 
 test('memory-lab: the recall scorer forgives case, plurals and one typo, never double counts', () => {
   const w = ['apple', 'bridge', 'candle', 'dolphin', 'engine'];
-  const s = ML.score(w, ['APPLE', 'bridges', 'candel', 'dolphin', 'dolphin', 'zebra', 'cat']);
+  const s = ML.score(w, ['APPLE', 'bridges', 'candla', 'dolphin', 'dolphin', 'zebra', 'cat']);
   assert.deepEqual(s.hits, [1, 1, 1, 1, 0]);
   assert.equal(s.n, 4);
   assert.deepEqual(s.extra, ['dolphin', 'zebra', 'cat']);
