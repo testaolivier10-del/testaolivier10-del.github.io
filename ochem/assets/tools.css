@@ -502,6 +502,58 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-trail__n.is-new{animation:rr-in .35s ease-out;}
 .rr-trail__gap{font:900 13px var(--font-mono);color:var(--muted);padding:4px 10px;border:2px dashed var(--line);border-radius:var(--radius-pill);}
 .rr-trail__arrow{color:var(--muted);font-weight:900;}
+/* ---- Reagent roadmap: the map as a node graph (audit 2026-10) ----------- */
+.rr-graph{position:relative;}
+.rr-graph svg{display:block;width:100%;height:auto;max-height:70vh;overflow:hidden;}
+.rr-graph .rr-lane{fill:var(--paper);stroke:var(--line-soft);stroke-width:1.5;}
+.rr-graph .rr-lane--ring{stroke-dasharray:5 4;}
+.rr-graph .rr-lane__k{font:900 11px var(--font-ui);fill:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
+.rr-graph.is-wide .rr-lane__k{font-size:11.5px;}
+.rr-graph .rr-edge__line{fill:none;stroke:var(--line);stroke-width:1.1;}
+.rr-graph .rr-edge.is-faint .rr-edge__line{stroke:var(--line-soft);opacity:.85;}
+.rr-graph .rr-edge.is-route .rr-edge__line,.rr-graph .rr-edge.is-out .rr-edge__line,.rr-graph .rr-edge.is-in .rr-edge__line,.rr-graph .rr-edge.is-dead .rr-edge__line{stroke-width:3.4;stroke-linecap:round;}
+.rr-graph .rr-edge.is-route .rr-edge__line{stroke:var(--accent);}
+.rr-graph .rr-edge.is-route .rr-edge__head{fill:var(--accent);}
+.rr-graph .rr-edge.is-out .rr-edge__line{stroke:#1F8A6B;} .rr-graph .rr-edge.is-out .rr-edge__head{fill:#1F8A6B;}
+.rr-graph .rr-edge.is-in .rr-edge__line{stroke:#C27A12;stroke-dasharray:6 4;} .rr-graph .rr-edge.is-in .rr-edge__head{fill:#C27A12;}
+.rr-graph .rr-edge.is-dead .rr-edge__line{stroke:var(--bad-text,#C62828);stroke-dasharray:5 4;} .rr-graph .rr-edge.is-dead .rr-edge__head{fill:var(--bad-text,#C62828);}
+.rr-graph .rr-edge__n circle{fill:var(--accent);stroke:var(--white);stroke-width:2;}
+.rr-graph .rr-edge__n text{font:900 11px var(--font-mono);fill:var(--on-accent-fill,#fff);}
+.rr-graph .rr-node{cursor:pointer;}
+.rr-graph .rr-node__box{fill:var(--white);stroke:var(--line);stroke-width:1.5;transition:stroke .12s ease,fill .12s ease;}
+.rr-graph .rr-node:hover .rr-node__box,.rr-graph .rr-node:focus-visible .rr-node__box{stroke:var(--accent);stroke-width:2.5;}
+.rr-graph .rr-node:focus{outline:none;}
+.rr-graph .rr-node__name{font:800 12px var(--font-ui);fill:var(--ink);}
+.rr-graph .rr-node__f{font:600 10px var(--font-mono);fill:var(--muted);}
+.rr-graph .rr-node.is-dim .rr-node__box{stroke:var(--line-soft);}
+.rr-graph .rr-node.is-dim text{opacity:.62;}
+.rr-graph .rr-node.is-on .rr-node__box{stroke:var(--accent);fill:var(--tint-accent);stroke-width:2.2;}
+.rr-graph .rr-node.is-start .rr-node__box,.rr-graph .rr-node.is-end .rr-node__box,.rr-graph .rr-node[aria-pressed="true"] .rr-node__box{fill:var(--navy);stroke:var(--navy);}
+.rr-graph .rr-node.is-start text,.rr-graph .rr-node.is-end text,.rr-graph .rr-node[aria-pressed="true"] text{fill:var(--on-accent,#fff);}
+.rr-graph .rr-node.is-here .rr-node__box{stroke:var(--accent);stroke-width:4;}
+.rr-graph .rr-node__nb circle{fill:var(--accent);stroke:var(--white);stroke-width:2;}
+.rr-graph .rr-node__nb text{font:900 10.5px var(--font-mono);fill:var(--on-accent-fill,#fff);}
+.rr-graph .rr-zoom{position:absolute;top:4px;right:4px;z-index:2;min-height:36px;padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font:800 13px var(--font-ui);cursor:pointer;}
+.rr-graph .rr-zoom:hover,.rr-graph .rr-zoom:focus-visible{border-color:var(--accent);outline:none;}
+.rr-graph .rr-strong{pointer-events:none;}
+.rr-graph .rr-strong .rr-edge__line{paint-order:stroke;}
+.rr-graph .rr-strong .rr-edge.is-route .rr-edge__line,.rr-graph .rr-strong .rr-edge.is-out .rr-edge__line,.rr-graph .rr-strong .rr-edge.is-in .rr-edge__line,.rr-graph .rr-strong .rr-edge.is-dead .rr-edge__line{filter:drop-shadow(0 0 1.5px var(--white)) drop-shadow(0 0 1.5px var(--white));}
+.rr-glegend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 0;font:700 12px var(--font-ui);color:var(--muted);}
+.rr-gk{display:inline-block;width:22px;height:4px;border-radius:2px;}
+.rr-gk--out{background:#1F8A6B;} .rr-gk--in{background:repeating-linear-gradient(90deg,#C27A12 0 6px,transparent 6px 9px);}
+/* The route as step cards. */
+.rr-stepcards{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.rr-stepcard{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline;padding:8px 10px;border-radius:12px;background:var(--surface2,var(--paper));}
+.rr-stepcard__n{grid-row:span 2;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:12px;background:var(--accent);color:var(--on-accent-fill,#fff);font:900 12px var(--font-mono);}
+.rr-stepcard__to{font:700 14px var(--font-ui);color:var(--ink);}
+.rr-stepcard__rx{font:600 13px/1.35 var(--font-ui);color:var(--ink-2,var(--muted));}
+/* In the studio the map takes the stage's height and the step cards sit under it. */
+.rr-ls .rr-ls-route-stage,.rr-ls .rr-ls-groups-stage,.rr-ls .rr-ls-puzzle-stage{height:100%;}
+.rr-ls .rr-ls-box > .rr-graph{flex:1 1 auto;min-height:260px;display:flex;}
+.rr-ls .rr-ls-box > .rr-graph svg{flex:1;width:100%;height:100%;max-height:none;}
+.rr-ls .rr-ls-box > .rr-stepcards{flex:none;margin:0;}
+.ls-root.ls-phone .rr-graph .rr-node__name{font-size:13px;}
+.ls-root.ls-phone .rr-graph .rr-node__f{font-size:11px;}
 .rr-pz .rr-node:disabled{cursor:default;opacity:1;}
 .rr-pz .rr-node.is-here{box-shadow:0 0 0 3px var(--accent);}
 .rr-pz .rr-node.is-arrive{animation:rr-arrive .6s cubic-bezier(.2,.8,.2,1);}
