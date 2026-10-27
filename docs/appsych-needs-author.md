@@ -127,7 +127,7 @@ reliability (E); posttraumatic growth smaller in prospective studies than people
 and universal emotions (recognized above chance, better within one's own culture, debated; F); repression taught
 with the mainstream caution (C, F); multiple intelligences without naming Gardner (C); short-term memory "about
 seven, newer estimates about four chunks" in notes, "a few items, about 20 to 30 seconds" in the figure and
-glossary (C). A reviewer should confirm each.
+glossary (C); sleep clearing brain waste as a tentative finding mostly from animal studies, glia "about as numerous" as neurons (B, Phase 4 review). A reviewer should confirm each.
 
 ## numbers-secondary: figures taken from secondary sources (open, 2026-10-27)
 
