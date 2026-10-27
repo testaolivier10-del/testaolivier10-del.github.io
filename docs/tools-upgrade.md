@@ -77,5 +77,11 @@ NREMT item types and adaptive exam (2026-10-27):
   is enough data. Owner questions (free attempt, Pass-or-extend, syncing `nremt_cat_history`) are in
   `docs/nremt-needs-author.md`.
 - The study-notes chapter review and the formulary drill skip typed items (they show single-answer questions only).
+- Verification on a shared machine: the targeted checks (question bank, r3 tools and inner pages, course homes,
+  pricing, weight, crumbs, OG tags, tutor bank, `check-site.mjs`, and the NREMT, premium, ids, service-worker and
+  cross-course tests) pass; axe (WCAG A/AA) is clean at 390 px light and dark on exams, practice, review, the hub,
+  premium and the three live item types. The full `BROWSER=1 scripts/ci-local.sh` did not finish within its time
+  limit while about ten agents shared the machine; run it once at merge. Seen on `nremt/tools.html` in dark mode
+  only: the injected `.premium-badge` on the Scenarios card fails color contrast (pre-existing, `assets/theme.css`).
 - `sw.js` CACHE is not bumped on this branch; bump it once at merge: `nremt/assets/tei-items.js` and `nremt/assets/cat.js` are new
   precached files.
