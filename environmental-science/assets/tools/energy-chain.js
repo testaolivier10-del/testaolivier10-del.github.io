@@ -88,7 +88,8 @@
       }
       out.push('<path class="ech-band" d="M' + P(xa, mid - h0 / 2) + 'C' + P(xm, mid - h0 / 2) + ' ' + P(xm, mid - h1 / 2) + ' ' + P(xb, mid - h1 / 2) + 'L' + P(xb, mid + h1 / 2) + 'C' + P(xm, mid + h1 / 2) + ' ' + P(xm, mid - h0 / 2 + h1) + ' ' + P(xa, mid - h0 / 2 + h1) + 'Z"/>');
     });
-    out.push(vert ? txt(cEnd + 4, A0 + 2, 'Heat', 'ech-t ech-s ech-c-heat', 'start') : txt(A0, cEnd + 14, 'Waste heat', 'ech-t ech-s ech-c-heat'));
+    // every number is in units of energy out of the 100 the fuel holds (= % of the fuel's energy)
+    out.push(vert ? txt(W - 4, A0 + 2, 'Heat lost', 'ech-t ech-s ech-c-heat', 'end') + txt(W - 4, A0 + 16, '(units)', 'ech-t ech-s ech-c-heat', 'end') : txt(A0, cEnd + 14, 'Waste heat (units of the 100)', 'ech-t ech-s ech-c-heat'));
     // the stage labels and tap targets
     var labels = [{ name: S.name, k: S.icon, e: 100 }].concat(c.stages.map(function(s){ return { name: s.name, k: s.id === 'grid' ? 'grid' : s.id, e: s.eout, eff: s.eff }; })).concat([{ name: 'Your outlet', k: 'home', e: c.delivered }]);
     labels.forEach(function(l, i){

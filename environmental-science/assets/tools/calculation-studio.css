@@ -88,6 +88,7 @@
 .cs-tile[disabled]{opacity:.4;cursor:default;border-style:dashed;}
 .cs-tile .cs-frac{font-size:14.5px;padding:4px 6px;}
 .cs-acts{display:flex;gap:8px;}
+.cs-acts[hidden]{display:none;}
 .cs-acts .bt-btn{flex:1;}
 .cs-acts .bt-btn:disabled{opacity:.5;cursor:default;}
 
@@ -192,7 +193,10 @@
   .cs-frac{font-size:14px;padding:4px 6px;}
   .cs-tray .cs-tile{flex:1 1 40%;}
   .cs-tile{min-height:54px;}
-  .cs-scene{width:92px;}
+  /* the scene is a picture, not a thumbnail: full width above the question */
+  .cs-head{flex-direction:column;align-items:stretch;gap:6px;}
+  .cs-scene{width:100%;}
+  .cs-scene-svg{width:100%;height:96px;}
   .cs-stage{gap:10px;}
   .cs-tray-h{font-size:12.5px;margin-bottom:6px;}
   .cs-tile .cs-frac{font-size:13px;}

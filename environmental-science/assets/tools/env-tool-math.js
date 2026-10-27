@@ -95,7 +95,9 @@
     if(near(x / 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
     if(near(x / 1000, A, r, ab) || near(x * 1000, A, r, ab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
     if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
-    if(near(x, A, Math.max(10 * r, 0.02), 10 * (ab || 0))) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
+    // "Close" only within about twice the tolerance, and never more than a
+    // quarter of the answer away (tool-audit X5: 0 was "close" to 1.4).
+    if(near(x, A, Math.max(2 * r, 0.02), 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
     return { ok: false };
   }
 

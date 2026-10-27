@@ -74,6 +74,8 @@
 .ech-fig .ech-ev,.ech-fig .ech-wv,.ech-fig .ech-wastehead{pointer-events:none;}
 /* chip rows wrap from their left edge (no sideways scroll) */
 .ech-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
+/* phones: one scrolling row, never clipped (tool-audit: chips overflow) */
+@media (max-width:640px){.ls-root .ech-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-12px;padding-right:12px;}.ls-root .ech-chips::-webkit-scrollbar{display:none;}.ls-root .ech-chips .tchip{flex:none;white-space:nowrap;}}
 .ech-chips[hidden]{display:none;}
 /* the first-run hint points here: a small spot near the top of the picture */
 .ech-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}

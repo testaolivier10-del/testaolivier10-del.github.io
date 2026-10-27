@@ -140,7 +140,7 @@
     var sx = phone ? 34 : 54, sy = strTop + (phone ? -2 : 4), sr = phone ? 20 : 26;
     g.push('<circle class="cc-sun" cx="' + sx + '" cy="' + sy + '" r="' + sr + '"/>'); Lo.rect(sx - sr - 3, sy - sr - 3, sx + sr + 3, sy + sr + 3);
     // molecules: ozone in its layer (fewer with CFCs), chlorine, CO2 in the troposphere
-    var nO3 = Math.round((phone ? 26 : 46) * (du - 60) / 240), nCl = Math.round((phone ? 8 : 14) * st.cfc), nCO2 = Math.round((phone ? 10 : 18) * Math.min(4.3, st.ppm / 280));
+    var nO3 = Math.round((phone ? 18 : 46) * (du - 60) / 240), nCl = Math.round((phone ? 6 : 14) * st.cfc), nCO2 = Math.round((phone ? 7 : 18) * Math.min(4.3, st.ppm / 280));
     O3P.slice(0, nO3).forEach(function(p){ g.push(o3(L + 70 + p[0] * (R - L - 80), strTop + 12 + p[1] * (strBot - strTop - 20), phone ? 0.85 : 1)); });
     CLP.slice(0, nCl).forEach(function(p){ g.push(cl(L + 80 + p[0] * (R - L - 90), strTop + 14 + p[1] * (strBot - strTop - 24))); });
     CO2P.slice(0, nCO2).forEach(function(p){ g.push(co2(L + 50 + p[0] * (R - L - 60), tropTop + 14 + p[1] * (ground - tropTop - 50), phone ? 0.8 : 1)); });
@@ -188,8 +188,10 @@
     lab(phone ? 'Stratosphere' : 'Stratosphere, 15 to 35 km: the ozone layer', 'cc-layer', 13, [[labX, strBot - 8, 'start'], [labX, tropTop - 6, 'start']].concat(grid(xs, steps(strTop + 16, tropTop - 4, 6), [0, tropTop], 'start')), STRAT);
     var hx0 = hits.length ? hits[0][0] : Wd * 0.78, hy0 = hits.length ? hits[0][1] : tropTop + 20;
     lab(phone ? 'CO₂ traps IR' : 'CO₂ absorbs infrared', 'cc-call cc-c-ir', 12.5, near(hx0, hy0 - 22, steps(tropTop + 16, ground - 40, 10)), TROP);
-    lab('UV-B ×' + F(uv, 2), 'cc-call cc-c-uv', 12.5, near(ux + 30, ground - 24, steps(tropTop + 16, ground - 6, 14)), TROP);
-    lab('+' + F(dT, 1) + ' °C', 'cc-call cc-c-ir', 13, [[thx + 9, ground - 46, 'start'], [thx - 9, ground - 46, 'end'], [thx + 9, ground - 30, 'start'], [thx - 9, ground - 30, 'end'], [thx, ground - 64, 'middle']].concat(near(thx, ground - 40, steps(tropTop + 20, ground - 6, 10))), TROP);
+    // phones: the UV-B and warming numbers are in the pills and the two mini
+    // charts already, so the scene keeps only the processes (tool-audit: busy on phones)
+    if(!phone) lab('UV-B ×' + F(uv, 2), 'cc-call cc-c-uv', 12.5, near(ux + 30, ground - 24, steps(tropTop + 16, ground - 6, 14)), TROP);
+    if(!phone) lab('+' + F(dT, 1) + ' °C', 'cc-call cc-c-ir', 13, [[thx + 9, ground - 46, 'start'], [thx - 9, ground - 46, 'end'], [thx + 9, ground - 30, 'start'], [thx - 9, ground - 30, 'end'], [thx, ground - 64, 'middle']].concat(near(thx, ground - 40, steps(tropTop + 20, ground - 6, 10))), TROP);
     lab(phone ? 'Troposphere' : 'Troposphere, 0 to 12 km: greenhouse gases', 'cc-layer', 13, [[labX, ground - 30, 'start'], [labX, ground - 48, 'start']].concat(grid(xs, steps(tropTop + 16, ground - 6, 10), [0, ground], 'start')), TROP, phone);
     return { svg: g.join(''), du: du, uv: uv, fo: fo, dT: dT, clash: Lo.clash(), misses: Lo.misses() };
   }
@@ -288,7 +290,9 @@
       T.explain($('.cc-say'), '<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), why);
       nums();
       if(LS){
-        LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
+        // a phone shows the first line whole; the second sentence is under Why
+        var narrow = (window.innerWidth || 1280) <= 640;
+        LS.caption('<b>' + esc(head) + '</b>' + (sub && !narrow ? ' ' + esc(sub) : ''), 'explore');
         if(view === 'air'){
           var d2 = K.ozone(cfc);
           LS.pills([{ k: 'Greenhouse', html: '+' + F(K.warming(ppm), 1) + ' °C', tone: K.warming(ppm) > 2 ? 'bad' : K.warming(ppm) > 0.5 ? 'warn' : 'good' }], 'left', 'explore');
@@ -442,12 +446,12 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.cc-fig')], dock: [$('.cc-ctl')], primary: [sCO2.el, sOc.el, sW.el], setup: 'Presets', moreLabel: 'Years and CFC history', why: [$('.cc-say')], details: [$('.cc-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.cc-grp-air .bt-slider'), 'Start here: add CO₂', s.root.querySelector('.cc-grp-air .bt-slider'));
+      if(s.mode() === 'explore') s.hint({ target: sCO2.input, text: 'Start here: add CO₂' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.cc-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

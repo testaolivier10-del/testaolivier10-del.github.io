@@ -89,3 +89,6 @@
 .st-sl{display:grid;gap:4px;}
 .st-sl[hidden],.st-presets[hidden]{display:none;}
 .st-s-sand input{accent-color:#B7791F;} .st-s-silt input{accent-color:#4A6FA5;} .st-s-clay input{accent-color:#B5452A;}
+/* Phones: the drill triangle is drawn about 360 units wide, so its text is
+   set larger in those units to read at 11 px or more on a 390 px screen. */
+@media (max-width:640px){.st-qfig .st-svg .st-axis{font-size:15px;}.st-qfig .st-svg .st-tick{font-size:12.5px;}.st-qfig .st-svg .st-name{font-size:12.5px;}}

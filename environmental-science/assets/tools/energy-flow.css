@@ -67,7 +67,7 @@
 .ef-web-h{fill:var(--ef-link);}
 .ef-node-t{font-weight:800;font-size:13.5px;fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
 @media (max-width:640px){.ef-svg .ef-node-t{font-size:14px;}}
-.ef-node.is-removed .ef-art,.ef-node.is-gone .ef-art{opacity:.3;}
+.ef-node.is-removed .ef-art{display:none;}
 .ef-node.is-removed .ef-disc,.ef-node.is-gone .ef-disc{stroke:var(--ef-bad);stroke-dasharray:5 4;}
 .ef-node.is-up .ef-disc{stroke:var(--ef-good);stroke-width:4;}
 .ef-node.is-down .ef-disc{stroke:var(--ef-warn);stroke-width:4;}
@@ -84,3 +84,12 @@
 .ef-eff{white-space:nowrap;}
 .ef-eff.up{color:var(--good-text,#1F7A4A);} .ef-eff.down{color:var(--warn-text,#8A5A00);} .ef-eff.gone{color:var(--bad-text,#A0291E);}
 @media (prefers-reduced-motion:reduce){.ef-fx{display:none;}}
+
+/* The web responds in the picture: sizes, an empty ring, grey and crossed out. */
+.ef-hole{fill:var(--paper);stroke:var(--ef-bad);stroke-width:2.5;stroke-dasharray:6 4;}
+.ef-grey{filter:grayscale(1);opacity:.55;}
+.ef-cross{stroke:var(--ef-bad);stroke-width:3.5;stroke-linecap:round;}
+.ef-was{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 3;}
+/* To scale: the energy lost between levels, a faint ghost of the level below. */
+.ef-lost{fill:var(--ef-heat);fill-opacity:.08;stroke:var(--ef-heat);stroke-opacity:.5;stroke-width:1.2;stroke-dasharray:4 3;}
+.ef-lost-t{font-weight:800;font-size:12px;fill:var(--ef-heat);}

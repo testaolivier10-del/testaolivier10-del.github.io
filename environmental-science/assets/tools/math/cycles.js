@@ -169,7 +169,11 @@
       var E = 0, fuel = on.fuel ? on.fuel.rate : 0, clr = on.forest ? on.forest.rate : 0, pl = on.trees ? on.trees.rate : 0;
       E = fuel + clr;
       flux.burn = fuel; flux.clear = clr; flux.plant = pl;
+      var E0 = E; // the yearly rates the arrows and the sinks show
       for(var y = 1; y <= years; y++){
+        // Burning stops when the fossil reservoir is used up (at 9.5 GtC a
+        // year the 930 GtC lasts about 98 years), so no pool goes negative.
+        if(fuel > pool.fossil){ fuel = Math.max(0, pool.fossil); E = fuel + clr; }
         pool.atm += Cc.evaluate({ fn: 'percentOf', args: [SPLIT.air * 100, E] }) - pl;
         pool.ocean += Cc.evaluate({ fn: 'percentOf', args: [SPLIT.ocean * 100, E] });
         var land = Cc.evaluate({ fn: 'percentOf', args: [SPLIT.land * 100, E] });
@@ -178,9 +182,9 @@
         pool.fossil -= fuel;
         out.pools.push(clone(pool));
       }
-      out.sinks = { air: SPLIT.air * E, ocean: SPLIT.ocean * E, land: SPLIT.land * E, emissions: E };
-      flux.uptake = Y.processes.filter(function(p){ return p.id === 'uptake'; })[0].flux + SPLIT.ocean * E;
-      flux.photo = 120 + SPLIT.land * E + pl;
+      out.sinks = { air: SPLIT.air * E0, ocean: SPLIT.ocean * E0, land: SPLIT.land * E0, emissions: E0 };
+      flux.uptake = Y.processes.filter(function(p){ return p.id === 'uptake'; })[0].flux + SPLIT.ocean * E0;
+      flux.photo = 120 + SPLIT.land * E0 + pl;
       out.flux = flux;
       return out;
     }

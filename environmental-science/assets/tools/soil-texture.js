@@ -288,6 +288,7 @@
       }
       var name = S.nameOf(id), hold = S.word(P.holding), perm = S.word(P.permeability);
       var head = st.pt[0] + '% sand, ' + st.pt[1] + '% silt, ' + st.pt[2] + '% clay: ' + name.toLowerCase() + '. Drainage ' + perm + ', water held ' + hold + '.';
+      if(!touched) head = 'Drag the point across the triangle. ' + head;
       var why = '<p>' + esc({ 'sand': 'Big grains leave big pores: water and air move through fast, but little water or nutrients are held. Good drainage, poor for most crops without irrigation.', 'loamy-sand': 'Mostly sand with a little silt and clay: drains fast, holds a little more water than pure sand.', 'sandy-loam': 'Enough silt and clay to hold some water, enough sand to drain: easy to work.', 'loam': 'A balance of sand, silt and clay: drains well yet holds water and nutrients. The best texture for most crops.', 'silt-loam': 'Mostly silt: holds water well and is fertile, but crusts and erodes easily when bare.', 'silt': 'Fine, smooth particles: holds water, drains slowly, erodes easily by water and wind.', 'sandy-clay-loam': 'Sand with a good share of clay: holds water and nutrients, drains moderately.', 'clay-loam': 'Clay-rich but balanced: fertile and water-holding, slow to drain, can compact.', 'silty-clay-loam': 'Silt and clay: holds a lot of water and nutrients, drains slowly.', 'sandy-clay': 'Sand and clay: sticky when wet, hard when dry, slow to drain.', 'silty-clay': 'Fine particles only: holds much water, drains very slowly, waterlogs.', 'clay': 'Tiny, flat particles: the most total pore space and water held, but the pores are so small that water drains very slowly and roots can lack air. Holds nutrients well.' }[id]) + '</p><p class="bt-small">Porosity is the total pore space (clay has the most); permeability is how fast water moves through (sand is fastest, because its pores are big and connected).</p>';
       return { head: head, why: why, id: id, P: P };
     }
@@ -339,7 +340,7 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Particle sizes' });
+      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Particle sizes' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();

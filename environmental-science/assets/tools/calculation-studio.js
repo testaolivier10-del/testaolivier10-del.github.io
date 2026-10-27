@@ -79,7 +79,7 @@
       '<rect class="cs-desk" x="20" y="92" width="160" height="7" rx="2"/><path class="cs-leg" d="M30 99v14M170 99v14"/>'
   };
   function sceneSvg(id, title){
-    return '<svg class="cs-scene-svg" viewBox="0 0 200 120" aria-hidden="true" focusable="false"><title>' + esc(title) + '</title>' + (SCENE[id] || '') + '</svg>';
+    return '<svg class="cs-scene-svg" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><title>' + esc(title) + '</title>' + (SCENE[id] || '') + '</svg>';
   }
 
   /* ----------------------------------------------------- explore: chain */
@@ -102,6 +102,8 @@
       T.moreHtml('<div class="cs-start"></div>', 'the start number') +
       '<div class="cs-nums"></div><p class="sr-only cs-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.cs-live'));
+    // '20 bulbs', not '20 bulb': a counted thing takes its plural; a rate (kWh, mi/yr) does not
+    function startUnit(){ var u = S.pretty(scn.start.unit); return /^[a-z]+$/.test(u) && start !== 1 ? u + 's' : u; }
     var cue = T.cue('Tap the factor that cancels the start unit. Units that cancel are struck through.');
     $('.cs-ctl').insertBefore(cue.el, $('.cs-ctl').firstChild);
     // Keyboard: Delete or Backspace on a placed factor removes it.
@@ -136,7 +138,7 @@
       $('.cs-scene').innerHTML = sceneSvg(scn.scene, scn.title);
       $('.cs-ask').innerHTML = '<p class="cs-title">' + esc(scn.title) + '</p><p class="cs-q">' + esc(scn.ask) + '</p><p class="cs-goal"><span class="cs-k">Goal</span> ' + esc(st.targetText) + '</p>';
       var parts = [];
-      parts.push('<span class="cs-link cs-startc" role="listitem" aria-label="Start: ' + esc(nf(start, 0) + ' ' + S.pretty(scn.start.unit)) + '">' + frac(fnum(start) + ' ' + uSpan(rows[0].top), rows[0].bot.length ? uSpan(rows[0].bot) : '') + '</span>');
+      parts.push('<span class="cs-link cs-startc" role="listitem" aria-label="Start: ' + esc(nf(start, 0) + ' ' + startUnit()) + '">' + frac(fnum(start) + ' ' + uSpan(rows[0].top), rows[0].bot.length ? uSpan(rows[0].bot) : '') + '</span>');
       rows.slice(1).forEach(function(r, k){
         var tr = trayOf(r.id), f = r.flipped ? [tr.f[2], tr.f[3], tr.f[0], tr.f[1]] : tr.f;
         var cls = st.wrongWay.indexOf(r.id) > -1 ? 'is-wrong' : r.decoy ? 'is-decoy' : '';
@@ -154,7 +156,10 @@
       $('.cs-meter').innerHTML = st.done ? '<span class="cs-ok">✓ Only the goal unit is left.</span>' : '<span class="cs-k">Still to cancel</span> <span class="cs-left">' + esc(extra.map(function(e){ return S.pretty(e.u); }).join(', ') || '·') + '</span>';
       setTray();
       ['.cs-scn'].forEach(function(){ (LS ? LS.root : host).querySelectorAll('.cs-scn').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === scn.id)); }); });
+      // Undo and Start over appear once a factor is on the chain (a greyed
+      // Undo on landing looked broken; tool-audit)
       $('.cs-undo').disabled = !placed.length; $('.cs-clear').disabled = !placed.length;
+      $('.cs-acts').hidden = !placed.length;
       words(st, extra, need);
       if(st.done && !lastDone && touched) T.event('apenv-tool-run', { tool: 'calculation-studio', chain: scn.id });
       lastDone = st.done;
@@ -162,7 +167,7 @@
     function words(st, extra, need){
       var head, tone = 'warn', last = placed.length ? placed[placed.length - 1] : null, ltr = last && trayOf(last.id);
       var cancelled = []; st.rows.forEach(function(r){ r.top.concat(r.bot).forEach(function(c){ if(c.pair && cancelled.indexOf(c.u) < 0) cancelled.push(c.u); }); });
-      if(!placed.length) head = 'Start with ' + nf(start, 0) + ' ' + S.pretty(scn.start.unit) + '. Tap the factor whose bottom unit cancels ' + S.pretty(S.tokens(scn.start.unit, 1)[0].u) + '.';
+      if(!placed.length) head = 'Start with ' + nf(start, 0) + ' ' + startUnit() + '. Tap the factor whose bottom unit cancels ' + S.pretty(S.tokens(scn.start.unit, 1)[0].u) + '.';
       else if(st.wrongWay.length && last && st.wrongWay.indexOf(last.id) > -1) head = 'Upside down: ' + S.pretty(S.tokens(last.flipped ? ltr.f[1] : ltr.f[3], 1)[0].u) + ' did not cancel. Tap the factor to turn it over.';
       else if(st.wrongWay.length) head = 'A factor is upside down (outlined). Tap it to turn it over so its units cancel.';
       else if(st.decoys.length) head = 'True but not needed: ' + trayOf(st.decoys[0]).note + ' Remove it with ×.';
@@ -182,12 +187,12 @@
       }
     }
     function chainText(st){
-      return nf(start, 0) + ' ' + S.pretty(scn.start.unit) + st.rows.slice(1).map(function(r){ var tr = trayOf(r.id), f = r.flipped ? [tr.f[2], tr.f[3], tr.f[0], tr.f[1]] : tr.f; return ' times ' + nf(f[0], 4) + ' ' + S.pretty(f[1]) + ' per ' + nf(f[2], 4) + ' ' + S.pretty(f[3]); }).join('') + ' equals ' + nf(st.value, 4) + ' ' + st.leftText;
+      return nf(start, 0) + ' ' + startUnit() + st.rows.slice(1).map(function(r){ var tr = trayOf(r.id), f = r.flipped ? [tr.f[2], tr.f[3], tr.f[0], tr.f[1]] : tr.f; return ' times ' + nf(f[0], 4) + ' ' + S.pretty(f[1]) + ' per ' + nf(f[2], 4) + ' ' + S.pretty(f[3]); }).join('') + ' equals ' + nf(st.value, 4) + ' ' + st.leftText;
     }
     /* The setup as a reader sees it written out: each factor in brackets, units after every number. */
     function setupHtml(st){
       var f = st.rows.slice(1).map(function(r){ var tr = trayOf(r.id), x = r.flipped ? [tr.f[2], tr.f[3], tr.f[0], tr.f[1]] : tr.f; return ' × (' + nf(x[0], 4) + ' ' + S.pretty(x[1]) + ' / ' + nf(x[2], 4) + ' ' + S.pretty(x[3]) + ')'; }).join('');
-      return '<p class="cs-mono">' + esc(nf(start, 0) + ' ' + S.pretty(scn.start.unit) + f) + '</p><p class="bt-small">Typed in the answer box: <code>' + esc(st.setup) + '</code></p>';
+      return '<p class="cs-mono">' + esc(nf(start, 0) + ' ' + startUnit() + f) + '</p><p class="bt-small">Typed in the answer box: <code>' + esc(st.setup) + '</code></p>';
     }
     function whyHtml(st){
       var key = S.keyOrder(scn), p = [];
