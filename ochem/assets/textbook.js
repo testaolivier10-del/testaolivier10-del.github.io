@@ -300,17 +300,19 @@
     return notesCache[id];
   }
 
-  /* A notes-only topic's href points at its own notes page, which is the
-     page you are already reading here — so it gets the label rather than a
-     link back to itself. */
+  /* The interactive lesson is reached from the Read | Interactive switch at the top of the book
+     (assets/course/read-toggle.js), which reads data-lesson on each section; its Premium tag comes from
+     data-lesson-premium. A notes-only topic says so here, where the lesson button used to be. */
   function sectionActionsHtml(t){
     if(!C.hasLesson(t)) return '<p class="tb-soon">' + escapeHtml(C.NOTES_ONLY_LABEL) + '</p>';
-    var links = ['<a class="btn-press sm" href="' + t.href + '">Do the interactive lesson &rarr;</a>'];
-    if(t.mechanism) links.push('<a class="btn-press alt sm" href="' + t.mechanism + '">Draw the mechanism &#9883;</a>');
-    // The reading is free; the lesson is Premium past the free chapters.
+    if(!t.mechanism) return '';
+    return '<div class="tb-actions"><a class="btn-press alt sm" href="' + t.mechanism + '">Draw the mechanism &#9883;</a></div>';
+  }
+  function lessonAttrs(t){
+    if(!C.hasLesson(t)) return ' data-lesson=""';
     var G = window.OchemPremium;
-    if(G) links.push(G.badge(TOPIC_META[t.id] && TOPIC_META[t.id].moduleId));
-    return '<div class="tb-actions">' + links.join('') + '</div>';
+    var prem = G && G.pill && G.pill(TOPIC_META[t.id] && TOPIC_META[t.id].moduleId) ? ' data-lesson-premium="1"' : '';
+    return ' data-lesson="' + escapeHtml(t.href) + '"' + prem;
   }
 
   /* "In this chapter": the chapter's sections as a menu that stays under the
@@ -387,7 +389,7 @@
       // 134,000 px tall on a phone). Every section's shell is here so the
       // jump menu and search can name it; showSection() reveals one and
       // fetches only its notes (and the next one's, ahead of the tap).
-      return '<section class="tb-section bk-sec" id="' + t.id + '" data-topic="' + t.id + '" hidden>' +
+      return '<section class="tb-section bk-sec" id="' + t.id + '" data-topic="' + t.id + '"' + lessonAttrs(t) + ' hidden>' +
         '<div class="tb-section-head bk-sec-head">' +
           '<h2 class="tb-section-title"><span class="bk-toc-n">' + (ALL_TOPICS.findIndex(function(e){ return e.topic.id === t.id; }) + 1) + '</span>' + escapeHtml(t.title) + '</h2>' +
           '<div class="tb-section-meta bk-sec-acts">' +

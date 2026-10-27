@@ -241,7 +241,7 @@ ${parts.map((p, i) => `  <section class="env-part env-step${i === 0 ? ' is-on' :
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="env-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['env-questions.js', 'env-lesson.js'], premium: true, site: ['course/lesson.js'] })}
+${tail({ depth, section: 'learn', extra: ['env-questions.js', 'env-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -554,7 +554,7 @@ ${bodyOpen()}
   </main>
 </div>
 ${footer(depth, 'learn')}
-${tail({ depth, section: 'learn', extra: ['env-toc.js', 'env-book.js'] })}
+${tail({ depth, section: 'learn', extra: ['env-toc.js', 'env-book.js'], site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;
