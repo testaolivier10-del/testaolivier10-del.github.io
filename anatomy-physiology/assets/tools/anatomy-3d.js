@@ -573,6 +573,9 @@
           if(key && BY[key]) onSelected(BY[key], part); else onCleared();
         },
         onPick: function(key, c, part){ if(key) onPicked(key, part); },
+        // A filter from the link (?system=, ?chapter=) frames its structures
+        // once the model is in, so they fill the view instead of the whole body.
+        onLoad: function(){ if((filter.system || filter.chapter) && MODE === 'explore' && !viewer.selected()) viewer.frame(inPlay().map(function(s){ return s.id; })); },
       });
       if(window.ResizeObserver) new ResizeObserver(function(){ window.dispatchEvent(new Event('resize')); }).observe(stage);
       applyFilter();
