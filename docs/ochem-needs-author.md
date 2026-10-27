@@ -1043,3 +1043,28 @@ confirm it.
   with a group even though the map has no edge for it, so they are never offered as "not a step from here".
   It is hand-written from standard reactivity (acid-base with strong bases, EAS on activated/deactivated rings,
   E2 on 2° halides, epoxide openings, diol oxidations). If the map gains edges, entries can go.
+
+## Synthesis Trainer (2026-10-27)
+
+The trainer (`ochem/tools/synthesis.html`) walks the Reagent Roadmap's graph, so its verdicts inherit the roadmap's
+simplifications. Points for a person, from the build's accuracy pass:
+
+### synth-e2-regio: 2° halide E2 always gives the Zaitsev alkene on a problem's skeleton
+`rx2-e2` lists NaOEt (Zaitsev) and notes that KOC(CH₃)₃ shifts toward the less substituted alkene, but the trainer
+treats the step as giving one molecule: on the butane skeleton, 2-bromobutane gives but-2-ene. So a student who wants
+but-1-ene from 2-bromobutane with a bulky base cannot get it, and "butane to butan-1-amine" style detours are judged
+dead ends although a 5-step bulky-base route exists. No curated problem's shortest route depends on it. Fix would be a
+separate roadmap edge for the bulky base on a 2° halide (`map` to the less substituted pattern).
+
+### synth-dead-diol: a 1,2-diol is a dead end
+The course has no periodate cleavage or pinacol rearrangement, so OsO₄ on any alkene is offered as a dead end ("the
+Reagent Roadmap has no reaction that takes a 1,2-diol on"). True of the course; confirm the course does not want
+NaIO₄ cleavage added.
+
+### synth-ether-final: joining steps only end a route
+Williamson, esterification and acylation are treated as last steps only (the roadmap's `final`). Cleaving an ether back
+with HI is in the roadmap but a route through an ether is never offered. Confirm that is the intended teaching.
+
+### synth-mixtures: Hg²⁺ hydration of pent-2-yne
+Shown as "pentan-2-one and pentan-3-one (a mixture)" and drawn as pentan-2-one only. Fine as a dead-end display;
+change the drawing if the owner prefers no structure for a mixture.

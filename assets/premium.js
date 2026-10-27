@@ -113,7 +113,7 @@
         'The full 3,675-question bank, unlimited practice and review', // count:ochem
         'Unlimited exams',
         'Mastery dashboard and gap detection',
-        'All eight interactive tools',
+        'All nine interactive tools',
       ],
     },
     anp: {

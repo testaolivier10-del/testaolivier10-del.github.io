@@ -78,7 +78,11 @@
 
   function allowed(e, opts, target){
     if(e.from === e.to) return false;
-    if(opts.skeleton && e.cc) return false;
+    // ccOk / edgeOk: a caller's own rules (the Synthesis Trainer allows the
+    // one C–C step a problem is built on, and bans a step a problem's
+    // substrate cannot do).
+    if(opts.skeleton && e.cc && !(opts.ccOk && opts.ccOk(e))) return false;
+    if(opts.edgeOk && !opts.edgeOk(e, target)) return false;
     // A step that fastens a second molecule on can only end a route: after
     // it, "the product" is two things and the next step would not say which.
     if(e.final && e.to !== target) return false;
@@ -108,7 +112,7 @@
     var seen = {}; seen[from] = true;
     function go(node, set, nodes){
       if(found.length >= cap) return;
-      if(node === to){ if(nodes.length - 1 === len) found.push(nodes.slice()); return; }
+      if(node === to){ if(nodes.length - 1 === len && (!opts.end || inter(set, opts.end).length)) found.push(nodes.slice()); return; }
       if(nodes.length - 1 >= len) return;
       var byNext = {};
       OUT[node].forEach(function(e){
@@ -144,7 +148,9 @@
       cand[i].forEach(function(e){ nx = union(nx, through(e, R[i])); });
       R[i + 1] = nx;
     }
-    var N = []; N[k] = R[k];
+    // opts.end: the patterns the route has to arrive with (a target that is a
+    // particular alkene, say). Used by the Synthesis Trainer.
+    var N = []; N[k] = opts.end ? inter(R[k], opts.end) : R[k];
     for(i = k - 1; i >= 0; i--){
       N[i] = R[i].filter(function(p){
         return cand[i].some(function(e){ return inter(through(e, [p]), N[i + 1]).length > 0; });
@@ -166,6 +172,8 @@
      the ones worth knowing (the anti diol is one step longer than the syn). */
   function routes(from, to, opts){
     opts = opts || {};
+    /* opts: skeleton (refuse C–C steps), set (the patterns the start can
+       have; default all), end (the patterns the end must have; default any). */
     var res = { shortest: [], longer: [], length: 0 };
     if(!from || !to || from === to) return res;
     var dist = distancesTo(to, opts);
@@ -766,36 +774,10 @@
     return P.tray;
   }
 
-  /* Reagents that DO react with a group even though the map draws no edge
-     for it (acid-base, a second EAS, a reaction the map files under another
-     group). A decoy is offered as "not a step from here"; offering one of
-     these would tell a student that KOtBu does nothing to a 2° bromide or
-     that H₃O⁺ leaves an ester alone. Keys are the reagent keys in
-     reagent-roadmap-data.js. Accuracy review, 2026-10. */
-  var REACTS_OFF_MAP = {
-    'acid': ['NaOH', 'NaH', 'NaOEt', 'tBuOK', 'NaNH2', 'BH3', 'PBr3', 'amine'],
-    'acid-chloride': ['NaOH', 'H3O', 'Fischer', 'NaH', 'NaOEt', 'tBuOK', 'NaN3', 'DIBAL', 'phthalimide'],
-    'ester': ['H3O', 'Fischer', 'NaOEt', 'tBuOK', 'NaH'],
-    'aldehyde': ['LiAlHOtBu3', 'H2Pd', 'NaOH', 'NaOEt', 'tBuOK', 'NaH', 'Fischer', 'Br2'],
-    'ketone': ['LiAlHOtBu3', 'NaOEt', 'tBuOK', 'NaH', 'NaNH2', 'Fischer', 'Br2'],
-    'alkyne': ['HX', 'HBrROOR', 'BH3', 'HgOAc2', 'Br2', 'Br2FeBr3', 'KMnO4'],
-    'epoxide': ['NaOH', 'NaN3', 'Fischer', 'HX', 'NaH', 'NaOEt', 'amine', 'NaNH2', 'H2O'],
-    'diol': ['PCC', 'DMP', 'Swern', 'Jones', 'KMnO4', 'PBr3', 'SOCl2', 'TsCl', 'acylCl', 'Fischer', 'NaH', 'HX', 'H2SO4heat'],
-    'alcohol-1': ['HX', 'H2SO4heat'],
-    'alcohol-2': ['HX', 'TsCl'],
-    'halide-1': ['NaOEt'],
-    'halide-2': ['NaOH', 'tBuOK', 'NaN3', 'NaH', 'NaNH2'],
-    'halide-3': ['NaOH', 'NaH', 'NaNH2', 'H3O', 'Fischer'],
-    'amine': ['NaH', 'NaOH', 'NaNO2', 'HX'],
-    'alkene': ['R2BH', 'HgSO4', 'NBS', 'Br2FeBr3', 'Fischer'],
-    'alkylbenzene': ['Br2FeBr3', 'HNO3', 'Br2hv'],
-    'aryl-ketone': ['Br2FeBr3', 'HNO3', 'LiAlH4', 'amine'],
-    'nitroarene': ['Br2FeBr3', 'HNO3', 'ZnHg'],
-    'aniline': ['Br2FeBr3', 'HNO3', 'CH3I', 'HX'],
-    'diazonium': ['H2O'],
-    'aryl-halide': ['Br2FeBr3', 'HNO3'],
-    'phenol': ['NaH', 'acylCl', 'Br2FeBr3', 'HNO3', 'Br2']
-  };
+  /* Reagents that react with a group although the map draws no edge for it:
+     kept in reagent-roadmap-data.js (D.REACTS_OFF_MAP), shared with the
+     Synthesis Trainer, which offers the same kind of decoy. */
+  var REACTS_OFF_MAP = D.REACTS_OFF_MAP;
   function rxShort(k){ return k.length > 46 ? k.slice(0, 44) + '…' : k; }
 
   function play(i){

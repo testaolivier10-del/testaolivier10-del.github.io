@@ -637,7 +637,7 @@
    "cta": "Read How to study ochem"
   },
   "tools_h": [
-   "Eight tools that",
+   "Nine tools that",
    "do the chemistry"
   ],
   "tools_lede": "Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its ¹H NMR.",
@@ -680,6 +680,11 @@
    [
     "Reagent Roadmap",
     "From any functional group to any other, with the reagents.",
+    "Premium"
+   ],
+   [
+    "Synthesis Trainer",
+    "Plan the route, one step at a time.",
     "Premium"
    ]
   ],
@@ -739,7 +744,7 @@
    ],
    [
     "Tools",
-    "Eight interactive tools. The arrow pusher, resonance explorer and 3D molecule viewer are free."
+    "Nine interactive tools. The arrow pusher, resonance explorer and 3D molecule viewer are free."
    ],
    [
     "Dashboard",
@@ -801,7 +806,7 @@
     "The full 3,675-question bank, unlimited practice and review",
     "Unlimited exams",
     "Mastery dashboard and gap detection",
-    "All eight interactive tools"
+    "All nine interactive tools"
    ],
    "name": "Organic Chemistry"
   },

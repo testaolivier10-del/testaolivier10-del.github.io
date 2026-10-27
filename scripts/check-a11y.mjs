@@ -72,8 +72,10 @@ const PAGES = [
   ['/ochem/glossary.html', 'a glossary with filters'],
   // The tools are a template of their own — shared chrome from tool-shell.js,
   // a quiz from tool-quiz.js — and none was on this list. The roadmap stands
-  // in for all eight: it renders the shell, the quiz and a page of controls.
+  // in for all of them: it renders the shell, the quiz and a page of controls.
   ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
+  // Structures, tiles that grade, and a live verdict region (2026-10-27).
+  ['/ochem/tools/synthesis.html', 'the synthesis trainer'],
   ['/privacy.html', 'a prose page with controls'],
   // Opened fresh, as anyone a certificate link was shared with sees it: the
   // course card and the "earned this yourself?" note, not the certificate.

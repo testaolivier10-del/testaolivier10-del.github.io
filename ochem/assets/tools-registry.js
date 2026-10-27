@@ -52,7 +52,14 @@
     route:
       '<circle cx="5" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/>' +
       '<circle cx="19" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/>' +
-      '<path d="M7.5 19H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+      '<path d="M7.5 19H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    // A start, a step and a target: a route built one step at a time.
+    steps:
+      '<rect x="2.5" y="9" width="5" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>' +
+      '<rect x="16.5" y="9" width="5" height="6" rx="1.5" fill="currentColor"/>' +
+      '<path d="M8 12h2.5M13.5 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '<circle cx="12" cy="12" r="1.6" fill="currentColor"/>' +
+      '<path d="M5 9V6.5h14V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 3"/>'
   };
 
   var TOOLS = [
@@ -143,6 +150,17 @@
       teaches: 'Functional group interconversion, reagents, synthesis',
       topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis'],
       terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon'],
+      studio: true
+    },
+    {
+      slug: 'synthesis',
+      name: 'Synthesis Trainer',
+      icon: ICONS.steps,
+      tagline: 'Plan the route, one step at a time.',
+      blurb: 'Build a multistep synthesis step by step, forward or backward, and see why a dead end is one.',
+      teaches: 'Multistep synthesis, retrosynthesis',
+      topic: ['multistep-synthesis', 'retrosynthesis', 'functional-group-interconversion'],
+      terms: ['multistep-synthesis', 'retrosynthesis', 'disconnection', 'functional-group-interconversion'],
       studio: true
     }
   ];

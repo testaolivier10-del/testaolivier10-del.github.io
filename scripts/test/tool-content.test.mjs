@@ -344,12 +344,16 @@ test('the comparator answers from the measured pKa, never from the rules', () =>
    right answers marks a student wrong for being right, which is worse than
    no quiz at all. */
 const QUIZ_TOOLS = ['acid-base', 'viewer-3d', 'conformations', 'resonance',
-                    'reaction-predictor', 'spectroscopy', 'arrow-pusher', 'reagent-roadmap'];
+                    'reaction-predictor', 'spectroscopy', 'arrow-pusher', 'reagent-roadmap', 'synthesis'];
 
 /* A tool whose data lives in a file of its own loads it first, as its page
    does. */
 const TOOL_DEPS = {
   'reagent-roadmap': ['ochem/assets/curriculum.js', 'ochem/assets/tools/reagent-roadmap-data.js'],
+  // The Synthesis Trainer walks the roadmap's graph with the roadmap's engine.
+  // Its own route and explanation checks are in synthesis-trainer.test.mjs.
+  'synthesis': ['ochem/assets/curriculum.js', 'ochem/assets/mol-builder.js', 'ochem/assets/tools/reagent-roadmap-data.js',
+                'ochem/assets/tools/reagent-roadmap.js', 'ochem/assets/tools/synthesis-data.js'],
 };
 
 function quizConfigs(){

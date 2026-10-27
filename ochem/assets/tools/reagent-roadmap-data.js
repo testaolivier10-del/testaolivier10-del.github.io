@@ -959,8 +959,41 @@
   REAGENTS.forEach(function(r){ REAGENT[r.id] = r; });
   EDGES.forEach(function(e){ EDGE[e.id] = e; });
 
+  /* Reagents that DO react with a group even though the map draws no edge
+     for it (acid-base, a second EAS, a reaction the map files under another
+     group). The Reagent Roadmap puzzle and the
+     Synthesis Trainer offer a decoy as "not a step from here"; offering one of
+     these would tell a student that KOtBu does nothing to a 2° bromide or
+     that H₃O⁺ leaves an ester alone. Keys are the reagent keys in
+     reagent-roadmap-data.js. Accuracy review, 2026-10; extended for the Synthesis
+     Trainer (2026-10-27): acid-base on acids, amines, anilines and phenols, and
+     the organometallics and hydrides an acidic O–H or N–H destroys. */
+  var REACTS_OFF_MAP = {
+    'acid': ['NaOH', 'NaH', 'NaOEt', 'tBuOK', 'NaNH2', 'BH3', 'PBr3', 'amine', 'acylCl', 'LiAlHOtBu3', 'DIBAL', 'RMgX', 'R2CuLi', 'NaNH3', 'N2H4', 'phthalimide'],
+    'acid-chloride': ['NaOH', 'H3O', 'Fischer', 'NaH', 'NaOEt', 'tBuOK', 'NaN3', 'DIBAL', 'phthalimide'],
+    'ester': ['H3O', 'Fischer', 'NaOEt', 'tBuOK', 'NaH'],
+    'aldehyde': ['LiAlHOtBu3', 'H2Pd', 'NaOH', 'NaOEt', 'tBuOK', 'NaH', 'Fischer', 'Br2'],
+    'ketone': ['LiAlHOtBu3', 'NaOEt', 'tBuOK', 'NaH', 'NaNH2', 'Fischer', 'Br2'],
+    'alkyne': ['HX', 'HBrROOR', 'BH3', 'HgOAc2', 'Br2', 'Br2FeBr3', 'KMnO4', 'NaH', 'RMgX', 'Mg', 'LiAlH4', 'O3', 'Br2hv'],
+    'epoxide': ['NaOH', 'NaN3', 'Fischer', 'HX', 'NaH', 'NaOEt', 'amine', 'NaNH2', 'H2O'],
+    'diol': ['PCC', 'DMP', 'Swern', 'Jones', 'KMnO4', 'PBr3', 'SOCl2', 'TsCl', 'acylCl', 'Fischer', 'NaH', 'HX', 'H2SO4heat'],
+    'alcohol-1': ['HX', 'H2SO4heat'],
+    'alcohol-2': ['HX', 'TsCl'],
+    'halide-1': ['NaOEt'],
+    'halide-2': ['NaOH', 'tBuOK', 'NaN3', 'NaH', 'NaNH2'],
+    'halide-3': ['NaOH', 'NaH', 'NaNH2', 'H3O', 'Fischer'],
+    'amine': ['NaH', 'NaOH', 'NaNO2', 'HX', 'RMgX', 'LiAlH4'],
+    'alkene': ['R2BH', 'HgSO4', 'NBS', 'Br2FeBr3', 'Fischer'],
+    'alkylbenzene': ['Br2FeBr3', 'HNO3', 'Br2hv'],
+    'aryl-ketone': ['Br2FeBr3', 'HNO3', 'LiAlH4', 'amine'],
+    'nitroarene': ['Br2FeBr3', 'HNO3', 'ZnHg', 'LiAlH4', 'DIBAL', 'NaNH3'],
+    'aniline': ['Br2FeBr3', 'HNO3', 'CH3I', 'HX', 'HgOAc2', 'LiAlH4', 'LiAlHOtBu3', 'DIBAL', 'RMgX', 'NaH', 'Br2', 'H3O', 'ZnHg', 'HgSO4'],
+    'diazonium': ['H2O'],
+    'aryl-halide': ['Br2FeBr3', 'HNO3', 'NaNH3', 'R2CuLi'],
+    'phenol': ['NaH', 'acylCl', 'Br2FeBr3', 'HNO3', 'Br2', 'HgOAc2', 'RMgX', 'LiAlH4', 'NaNH2']
+  };
   window.OchemRoadmap = {
-    BANDS: BANDS, PATTERNS: PATTERNS,
+    BANDS: BANDS, PATTERNS: PATTERNS, REACTS_OFF_MAP: REACTS_OFF_MAP,
     NODES: NODES, REAGENTS: REAGENTS, EDGES: EDGES,
     node: function(id){ return NODE[id] || null; },
     reagent: function(id){ return REAGENT[id] || null; },
