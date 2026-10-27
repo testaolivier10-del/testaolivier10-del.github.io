@@ -75,3 +75,5 @@
 .ls-root.ls-phone .rs-tank-svg .rs-tank-v{font-size:21px;}
 /* keep the plot's right end clear of the Enlarge button */
 @media (max-width:640px){ .ls-root.ls-phone .rs-fig{padding-bottom:40px;} }
+/* The figure caption stays clear of the stage Enlarge button (bottom right). */
+.ls-root .ls-drill-stage .rs-qfig figcaption{padding-right:52px;}

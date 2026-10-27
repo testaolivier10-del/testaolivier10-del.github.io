@@ -99,3 +99,15 @@
 @media (max-width:640px){.ls-root .ls-drill-stage .bt-context.ls-drill-text{font-size:14.5px;line-height:1.4;}}
 /* A long formula in the caption scrolls inside its line instead of pushing past the dock. */
 body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;}
+/* Test yourself: the field picked on a wrong try, dashed (the right one turns green when the step is done) */
+.sf-mfig.is-pick{border-color:var(--bad-text);border-style:dashed;}
+.sf-mfig.is-pick figcaption::after{content:" (yours)";color:var(--bad-text);}
+
+/* The equation chips wrap instead of running off the edge (audit 2026-10). */
+.ls-root .sf-chips.ls-scroll{flex-wrap:wrap;overflow:visible;margin-right:0;padding:2px 0;-webkit-mask-image:none;mask-image:none;}
+.ls-root.ls-phone .sf-chips .ls-chip,.ls-root.ls-phone .sf-chips button{padding:0 12px;}
+/* Phones: segments read as segments, not hatching (audit 2026-10). */
+.ls-root.ls-phone .calc-plot .sf-field line{stroke-width:2;stroke-opacity:.8;}
+:root[data-theme="dark"] .ls-root.ls-phone .calc-plot .sf-field line{stroke-opacity:.72;}
+/* bigger answer fields in Test yourself */
+.ls-root .ls-drill .cd-num input{width:100%;min-height:52px;font-size:18px;}

@@ -200,3 +200,10 @@
    tick and label clear of the Enlarge button (bottom right of the stage). */
 .ls-root.ls-phone .tt-fig-table{padding-bottom:40px;}
 .ls-root .ls-stage.is-big .tt-fig-table{padding-bottom:0;}
+
+/* Test yourself on the shared drill (calc-tools.js drill; audit 2026-10): the
+   figure fills the drill stage; the picked times on a wrong try are outlined. */
+.ls-root .ls-drill-stage .tt-qfig{flex:1;min-height:0;height:auto;}
+.tt-vt td.is-yours{box-shadow:inset 0 0 0 2px #D55E00;}
+.cd-pics .tt-pic svg{display:block;width:100%;height:auto;}
+.tt-skhow{margin:0;}

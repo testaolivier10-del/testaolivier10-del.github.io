@@ -83,6 +83,9 @@ test('compare: equivalent forms are right, wrong forms are wrong', () => {
   const r = E.compare('-sin(x)', 'sin(x)', { domain: [-3, 3] });
   assert.ok(r.sign && !r.equal);
   assert.equal(E.compare('6x^2', '3x^2', { domain: [-3, 3] }).factor, 2);
+  // 0 is not "0 times the right one" (tool audit 2026-10, X4): no factor note at 0.
+  assert.equal(E.compare('0', '3x^2', { domain: [-3, 3] }).factor, undefined);
+  assert.ok(!/times the right one/.test((E.grade({ expr: { answer: '2x', domain: [-3, 3] } }, '0').notes || []).join(' ')));
   assert.ok(E.compare('x^2 + 5', 'x^2', { domain: [-3, 3] }).constant);
   assert.ok(E.compare('1/x', '1/x', { domain: [0, 0] }).tooFew, 'a key with too few defined points is reported');
 });

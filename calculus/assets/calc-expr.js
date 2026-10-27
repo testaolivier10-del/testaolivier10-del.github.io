@@ -367,7 +367,8 @@
       var nz = pairs.filter(function(q){ return Math.abs(q[1]) > 1e-6; });
       if(nz.length >= 6 && bad === 0){
         var r0 = median(nz.map(function(q){ return q[0] / q[1]; }));
-        if(isFinite(r0) && Math.abs(r0 - 1) > 1e-6 && nz.every(function(q){ return close(q[0] / q[1], r0); }) && pairs.every(function(q){ return Math.abs(q[1]) > 1e-6 || Math.abs(q[0]) <= 1e-6; })) out.factor = r0;
+        // A zero answer is not "0 times the right one": no factor note at 0.
+        if(isFinite(r0) && Math.abs(r0) > 1e-6 && Math.abs(r0 - 1) > 1e-6 && nz.every(function(q){ return close(q[0] / q[1], r0); }) && pairs.every(function(q){ return Math.abs(q[1]) > 1e-6 || Math.abs(q[0]) <= 1e-6; })) out.factor = r0;
       }
     }
     return out;

@@ -221,8 +221,14 @@
     [reg.a].concat(reg.cuts, [reg.b]).forEach(function(u){ var w = reg.F(u); if(Math.abs(w - reg.Gf(u)) < 1e-6){ var p = v === 'x' ? [F.sx(u), F.sy(w)] : [F.sx(w), F.sy(u)]; out.push('<circle class="av-cross" cx="' + r2(p[0]) + '" cy="' + r2(p[1]) + '" r="4"/>'); } });
     if(o.axis){
       var ax = o.axis;
-      out.push(ax.dir === 'h' ? '<line class="av-axis" x1="' + F.pad.l + '" x2="' + (F.w - F.pad.r) + '" y1="' + r2(F.sy(ax.at)) + '" y2="' + r2(F.sy(ax.at)) + '"/>' : '<line class="av-axis" y1="' + F.pad.t + '" y2="' + (F.h - F.pad.b) + '" x1="' + r2(F.sx(ax.at)) + '" x2="' + r2(F.sx(ax.at)) + '"/>');
-      out.push('<text class="av-axlab" ' + (ax.dir === 'h' ? 'x="' + (F.pad.l + 6) + '" y="' + r2(F.sy(ax.at) - 6) + '"' : 'x="' + r2(F.sx(ax.at) + 6) + '" y="' + (F.pad.t + 30) + '"') + '>axis</text>');
+      // The axis of rotation: a wide halo under a dashed line, so it reads
+      // apart from the x- or y-axis it may sit on, and a turning arrow at its end.
+      var axl = ax.dir === 'h' ? 'x1="' + F.pad.l + '" x2="' + (F.w - F.pad.r) + '" y1="' + r2(F.sy(ax.at)) + '" y2="' + r2(F.sy(ax.at)) + '"' : 'y1="' + F.pad.t + '" y2="' + (F.h - F.pad.b) + '" x1="' + r2(F.sx(ax.at)) + '" x2="' + r2(F.sx(ax.at)) + '"';
+      out.push('<line class="av-axis-halo" ' + axl + '/><line class="av-axis" ' + axl + '/>');
+      var ex = ax.dir === 'h' ? F.w - F.pad.r - 14 : F.sx(ax.at), ey = ax.dir === 'h' ? F.sy(ax.at) : F.pad.t + 14;
+      out.push(ax.dir === 'h' ? '<path class="av-turn-arrow" d="M' + r2(ex - 6) + ' ' + r2(ey - 11) + 'a7 11 0 1 0 12 0"/><path class="av-turn-head" d="M' + r2(ex + 6) + ' ' + r2(ey - 11) + 'l-1 -5 m1 5 l-5 1"/>'
+        : '<path class="av-turn-arrow" d="M' + r2(ex - 11) + ' ' + r2(ey - 6) + 'a11 7 0 1 0 0 12"/><path class="av-turn-head" d="M' + r2(ex - 11) + ' ' + r2(ey + 6) + 'l5 1 m-5 -1 l1 5"/>');
+      out.push('<text class="av-axlab" ' + (ax.dir === 'h' ? 'x="' + (F.pad.l + 6) + '" y="' + r2(F.sy(ax.at) - 8) + '"' : 'x="' + r2(F.sx(ax.at) + 8) + '" y="' + (F.pad.t + 36) + '"') + '>axis of rotation' + (ax.at ? (ax.dir === 'h' ? ': y = ' : ': x = ') + clean(ax.at) : ax.dir === 'h' ? ' (x-axis)' : ' (y-axis)') + '</text>');
     }
     return out.join('');
   }
@@ -280,7 +286,15 @@
       T.moreHtml('<div class="av-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn av-resetview">Reset the 3D view</button></div><p class="bt-small">Keyboard: the slice handle moves with the arrow keys (Home and End jump to the ends); the solid turns with the arrow keys when it has focus.</p>', 'region, 3D view') +
       '<div class="av-nums"></div><p class="sr-only av-live"></p></section>';
     var say = T.announcer($('.av-live'));
-    var cue = T.cue('Drag the orange slice across the region; then pick Discs & washers or Cross sections to build a solid.');
+    var cue = T.cue('Drag the orange slice across the region; then tap Revolve or Cross sections to build a solid.');
+    // After the first slice in Area: point at Revolve (once), so the 3D solid is found.
+    var nudged = false;
+    function nudge(){
+      if(nudged || mode !== 'area') return;
+      nudged = true;
+      var rb = $('.av-mode button[data-k="rev"]'); if(rb) rb.classList.add('av-try');
+      words();
+    }
     $('.av-ctl').insertBefore(cue.el, $('.av-ctl').firstChild);
     var lineSl = T.slider({ label: 'Line position', min: -3, max: 3, step: 0.25, value: -1, decimals: 2, onInput: function(v){ act(); lineAt = v; fixLine(); draw(); } });
     $('.av-line').appendChild(lineSl.el);
@@ -295,7 +309,7 @@
       var grp = b.parentNode, k = b.getAttribute('data-k');
       if(b.disabled) return;
       act();
-      if(grp.classList.contains('av-mode')){ mode = k; if(mode === 'rev') chooseAxis(axisK); setRegion(true); }
+      if(grp.classList.contains('av-mode')){ mode = k; nudged = true; $$('.av-try').forEach(function(x){ x.classList.remove('av-try'); }); if(mode === 'rev') chooseAxis(axisK); setRegion(true); }
       else if(grp.classList.contains('av-axes')) chooseAxis(k);
       else if(grp.classList.contains('av-shapes')){ shape = k; draw(); }
       else if(grp.classList.contains('av-slicein')){ inY = k === 'y'; setRegion(true); }
@@ -365,7 +379,7 @@
       var mid = function(t){ return (A.hi(reg, t) + A.lo(reg, t)) / 2; };
       var hadFocus = H && document.activeElement === H.el;
       H = sliceHandle(svg, F, { u: u, v: reg.v, lo: reg.a, hi: reg.b, at: mid, label: function(t){ return reg.v + ' = ' + clean(t); },
-        onMove: function(t){ act(); u = t; schedule(); }, onEnd: function(){ announce(); } });
+        onMove: function(t){ act(); u = t; schedule(); }, onEnd: function(){ announce(); nudge(); } });
       if(hadFocus) H.el.focus();
       draw();
     }
@@ -432,7 +446,7 @@
       if(nm) nm.innerHTML = '<h3 class="ls-title-l">The numbers</h3><table class="ls-tbl"><caption class="sr-only">The region, the slice and the result</caption><tbody>' + row('Region', esc(G().name) + (reg.v === 'y' ? ', in y' : '')) + nums.join('') + '</tbody></table>';
       if(solid) solid.label(mode === 'area' ? '' : 'The solid ' + (mode === 'rev' ? 'formed by revolving the region about ' + (axis().dir === 'h' ? 'y = ' : 'x = ') + clean(axis().at) : 'with ' + A.SHAPES[shape] + ' cross sections on the region') + '. The slice at ' + reg.v + ' = ' + clean(u) + ' is highlighted. Volume ' + d3(val) + '.');
       if(LS){
-        LS.caption(T.sayHead($('.av-say')), 'explore');
+        LS.caption(T.sayHead($('.av-say')) + (mode === 'area' && $$('.av-try').length ? ' <span class="av-next">Next: tap <b>Revolve</b> to spin this region into a solid.</span>' : ''), 'explore');
         LS.pills([{ k: mode === 'area' ? 'A' : 'V', html: d3(val), tone: 'readout' }], 'left', 'explore');
         var q2 = mode === 'rev' ? A.radii(reg, axis(), u) : null;
         LS.pills([{ html: mode === 'rev' ? 'R ' + clean(q2.R) + (q2.r > 1e-6 ? ', r ' + clean(q2.r) : '') : mode === 'cross' ? 's ' + clean(top - bot) : (v === 'x' ? 'height ' : 'length ') + clean(top - bot), tone: 'ghost' }], 'right', 'explore');
@@ -469,10 +483,53 @@
         { value: 'discOther', label: 'Discs about another line' }, { value: 'washerAxes', label: 'Washers about an axis' }, { value: 'washerOther', label: 'Washers about another line' }],
       generate: function(r, ctx, type){ return A.generate(r, ctx, type); },
       title: function(p){ return /^area/.test(p.type) ? 'Area between curves' : /^cross/.test(p.type) ? 'Volume with known cross sections' : 'Volume of a solid of revolution'; },
-      extra: function(el, p, api){ api.fig = figure(el, p); },
-      onStep: function(s, right, api){ if(api.fig) api.fig.after(s); }
+      extra: function(el, p, api){ QM.clear(); QM.last = {}; QA.paint = function(){}; api.fig = figure(el, p); QA.gauge = el.querySelector('.av-gauge'); QA.by = {}; },
+      onStep: function(s, right, api){ if(api.fig) api.fig.after(s); },
+      method: function(s, p){ return AMETHOD[s.key + (/^disc|^washer/.test(p.type) ? 'Rev' : '')] || AMETHOD[s.key] || ''; },
+      onTry: function(s, t, api){ return avTry(s, t, api.problem); }
     };
     T.drill(host, data, o);
+  }
+  /* Test yourself is visual (docs/tool-audit-2026-10.md X1): a limit is a
+     line across the region, an integrand, radius or side a curve against
+     the right one, and an area or volume a number line; yours dashed, the
+     right one solid. */
+  var QM = T.tries(), QA = { paint: function(){}, reg: null, ax: null, gauge: null, by: {} };
+  var AMETHOD = {
+    lo: 'Set the two curves equal and solve: the region starts at the smaller intersection.',
+    hi: 'The other intersection (or the given line) ends the region.',
+    ig: 'Top minus bottom (or right minus left): test a point between the limits to see which curve is farther out.',
+    igRev: 'A disc is π R²; a washer is π(R² − r²). Square each radius first, then subtract.',
+    R: 'A radius runs from the axis to a curve: the farther curve minus the axis line (or the line minus the curve).',
+    side: 'The side of a cross section is the length across the base: top curve minus bottom curve.',
+    Ax: 'Put the side into the area of the shape: s² for a square, (√3/4)s² for an equilateral triangle, (π/8)s² for a semicircle on its diameter.',
+    A: 'Integrate the integrand between the limits (antiderivative, then top limit minus bottom limit).',
+    V: 'Integrate the area of a slice between the limits. A disc or washer volume keeps its π.',
+    setup: 'Where the curves cross, top and bottom swap: split the integral there so each piece is top minus bottom.'
+  };
+  function avTry(s, t, p){
+    var reg = QA.reg, who = t.ok || t.shown ? 'right' : 'yours', mk = [], k = s.key, N = T.numText;
+    if(!reg) return false;
+    var val = who === 'right' && s.kind === 'num' ? s.cell.answer : t.value, vx = reg.v === 'x';
+    if((k === 'lo' || k === 'hi') && isFinite(val)){
+      mk.push(vx ? { vline: val, who: who, label: (who === 'yours' ? 'yours: ' : '') + 'x = ' + N(val) } : { hline: val, who: who, label: (who === 'yours' ? 'yours: ' : '') + 'y = ' + N(val) });
+    } else if(t.fn && (k === 'R' || k === 'side' || (k === 'ig' && /^area/.test(p.type)))){
+      // A length at each u, drawn up from the bottom curve (or out from the axis),
+      // so it lands on the top curve exactly when it is right.
+      var base = k === 'R' && QA.ax ? function(){ return QA.ax.at; } : reg.Gf, sg = k === 'R' && QA.ax ? (A.hi(reg, (reg.a + reg.b) / 2) >= QA.ax.at ? 1 : -1) : 1;
+      var path = [];
+      for(var i = 0; i <= 120; i++){ var u = reg.a + (reg.b - reg.a) * i / 120, w = base(u) + sg * t.fn(u); path.push(vx ? [u, w] : [w, u]); }
+      mk.push({ path: path, who: who, label: who === 'yours' ? (k === 'R' ? 'your R from the axis' : 'yours, from the bottom curve') : '' });
+    } else if((k === 'A' || k === 'V') && isFinite(val)){
+      var list = (QA.by[k] || []).filter(function(m){ return m.who === 'yours'; }).concat([{ v: val, who: who }]);
+      QA.by[k] = list;
+      if(QA.gauge){ QA.gauge.hidden = false; QA.gauge.innerHTML = '<p class="av-gk">' + (k === 'A' ? 'Area' : 'Volume') + '</p>' + T.gauge(list); }
+      return true;
+    } else return false;
+    if(!mk.length) return false;
+    if(who === 'yours') QM.last[k] = mk; else if(QM.last[k]) mk = QM.last[k].concat(mk);
+    QM.set(k, mk); QA.paint();
+    return true;
   }
   /* sized(box, draw): draw(w, h) at a default size, again once the Tool
      Studio has placed the figure and whenever its box changes, so the SVG
@@ -492,7 +549,7 @@
   function figure(el, p){
     var R = p.reg, reg = { id: 'q', v: R.v, f: R.top, g: R.bot, ftex: R.ttex, gtex: R.btex, F: M.fn(R.top, [R.v]), Gf: M.fn(R.bot, [R.v]), a: R.a, b: R.b, cuts: p.fig.cuts || [] };
     var ax = p.axis || null, vw = viewOf(reg, ax), done = [], solid = null, mid = (R.a + R.b) / 2, svg = null, F = null;
-    el.innerHTML = '<div class="av-qfig"><figure class="cd-fig av-q2d"></figure><div class="av-q3d" hidden><div class="av-solid"></div><p class="av-turn">Drag to turn the solid</p></div></div>';
+    el.innerHTML = '<div class="av-qfig"><figure class="cd-fig av-q2d"></figure><div class="av-q3d" hidden><div class="av-solid"></div><p class="av-turn">Drag to turn the solid</p></div></div><div class="av-gauge" hidden></div>';
     var fig2 = el.querySelector('.av-q2d');
     function curveLab(){
       var out = '';
@@ -513,8 +570,12 @@
         }
       });
       if(done.some(function(k){ return k === 'ig' || k === 'R' || k === 'side'; })) shown.push(stripSvg(reg, F, mid, { axis: ax, cross: /^cross/.test(p.type) }));
+      // X1: the student's tries (dashed) and the right answers (solid)
+      shown.push(QM.svg(F));
       svg.querySelector('.av-dyn').innerHTML = shown.join('');
     }
+    QA.paint = function(){ if(svg) overlay(); };
+    QA.reg = reg; QA.ax = ax;
     sized(fig2, function(w, h){
       var spec = { label: 'The region in the problem' + (ax ? ', with the axis of rotation dashed' : ''), width: w, height: h, x: vw.x, y: vw.y, xLabel: 'x', yLabel: 'y' };
       fig2.innerHTML = P.svg(spec).replace('</svg>', '<g class="av-stat"></g><g class="av-dyn"></g></svg>');

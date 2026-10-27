@@ -126,10 +126,14 @@
 
     /* ---------------------------------------------- the road and the car */
     function trackLayout(){
-      var w = Math.max(280, Math.round(track.clientWidth || 600)), h = w < 520 ? 98 : 112;
+      // On a phone the strip is drawn in fewer units than its CSS width (zoom
+      // 1.35), so the car, its arrows and the road numbers are drawn larger
+      // and the strip is about 130 px tall instead of 98 (audit 2026-10).
+      var cw0 = Math.round(track.clientWidth || 600), z = cw0 < 520 ? 1.35 : 1;
+      var w = Math.max(250, Math.round(cw0 / z)), h = cw0 < 520 ? 98 : 112;
       var tb = info().tb, lo = Math.min.apply(null, tb.x), hi = Math.max.apply(null, tb.x);
       var span = Math.max(2, hi - lo), pad = span * 0.12; lo = Math.floor(lo - pad); hi = Math.ceil(hi + pad);
-      return { w: w, h: h, lo: lo, hi: hi, L: 22, R: w - 22, road: h - 30, sx: function(x){ return 22 + (x - lo) / (hi - lo) * (w - 44); } };
+      return { cw: cw0, w: w, h: h, lo: lo, hi: hi, L: 22, R: w - 22, road: h - 30, sx: function(x){ return 22 + (x - lo) / (hi - lo) * (w - 44); } };
     }
     function drawTrack(){
       if(!tl) tl = trackLayout();
@@ -327,7 +331,7 @@
     if(window.ResizeObserver){
       var ro = new ResizeObserver(function(){
         var w1 = Math.round(track.clientWidth), w2 = Math.round(gwrap.clientWidth), h2 = Math.round(gwrap.clientHeight);
-        if(tl && w1 === tl.w && gl && w2 === gl.w && h2 === gl.h) return;
+        if(tl && w1 === tl.cw && gl && w2 === gl.w && h2 === gl.h) return;
         tl = null; gl = null; draw(false);
       });
       ro.observe(track.parentNode); ro.observe(gwrap);
@@ -363,7 +367,7 @@
     if(W <= 999 && Hh <= 540) return [440, Math.round(Math.max(220, Math.min(300, Hh - 110)))];
     return [w, h];
   }
-  function figure(p){
+  function figSpec(p){
     var f = p.fig, Tm = f.T, n = 160, ys = [];
     for(var i = 0; i <= n; i++) ys.push(f.f(Tm * i / n));
     var lo = Math.min(0, Math.min.apply(null, ys)), hi = Math.max(0, Math.max.apply(null, ys)), pad = (hi - lo) * 0.12 || 1;
@@ -373,7 +377,72 @@
     if(f.pts) spec.points = f.pts.map(function(q){ return { at: q, cls: 's2' }; });
     if(f.mark != null) spec.points.push({ at: [f.mark, f.f(f.mark)], cls: f.kind === 'x' ? 's1' : 's2', label: 't = ' + ML.n(f.mark) });
     if(f.pts){ spec.yStep = 1; }
-    try{ return '<div class="ml-figwrap">' + P.svg(spec) + '</div>'; }catch(e){ return ''; }
+    return spec;
+  }
+  /* Signed areas between v and the t-axis on [a, b], split where v changes
+     sign: fill marks toned by sign (above the axis blue, below vermillion),
+     with their values once the answer is right or shown. */
+  function areaMarks(f, a, b, labels, kinks){
+    // The sign changes first (exact roots), then each piece's area by
+    // adaptive Simpson, split at the graph's corners (so a label reads 1.5,
+    // never a sampled 1.497).
+    var N = 320, cuts = [a], out = [], i;
+    for(i = 1; i <= N; i++){
+      var t0 = a + (b - a) * (i - 1) / N, t1 = a + (b - a) * i / N, y0 = f(t0), y1 = f(t1);
+      if(y0 * y1 < 0){ var z = M.root(f, t0, t1); if(isFinite(z)) cuts.push(z); }
+    }
+    cuts.push(b);
+    function area(lo, hi){ var pts = [lo].concat((kinks || []).filter(function(k){ return k > lo && k < hi; }), [hi]), s = 0; for(var j = 0; j < pts.length - 1; j++) s += M.integral(f, pts[j], pts[j + 1]); return s; }
+    for(i = 0; i < cuts.length - 1; i++){
+      var lo = cuts[i], hi = cuts[i + 1], A = area(lo, hi);
+      if(Math.abs(A) < 1e-9 || hi - lo < 1e-9) continue;
+      var tone = A > 0 ? 'pos' : 'neg', poly = [[lo, 0]];
+      for(var j = 0; j <= 60; j++){ var t = lo + (hi - lo) * j / 60; poly.push([t, f(t)]); }
+      poly.push([hi, 0]);
+      out.push({ fill: poly, who: 'right', tone: tone });
+      if(labels){ var tm = (lo + hi) / 2; out.push({ label: (A > 0 ? '+' : '−') + ML.n(M.round(Math.abs(A), 3)), at: [tm, f(tm) / 2], who: 'right', tone: tone, anchor: 'middle' }); }
+    }
+    return out;
+  }
+  var METHOD = {
+    v: 'Velocity is the derivative of position: differentiate x(t) term by term (product or chain rule where a term needs it).',
+    a: 'Acceleration is the derivative of velocity: differentiate v(t) once more.',
+    vt: 'Put the time into v(t). On the graph it is the slope of x(t) at that time (or the height of v(t)).',
+    at: 'Put the time into a(t) = v′(t). On a velocity graph it is the slope of v at that time.',
+    state: 'Compare the signs of v and a at that time: the same sign means speeding up, opposite signs slowing down.',
+    z: 'Solve v(t) = 0, and take the smallest positive solution.',
+    sign: 'The particle turns only where v changes sign. Read the sign of v just before and just after.',
+    all: 'Find every zero of v inside the interval, then keep the ones where the graph of v crosses the axis.',
+    disp: 'Displacement is the integral of v: area above the axis counts plus, area below counts minus.',
+    dist: 'Total distance is the integral of |v|: every area counts as positive.',
+    xT: 'Position = starting position + displacement (the signed area up to that time).',
+    xm: 'Position = starting position + the signed area under v from 0 to that time.'
+  };
+  function onTry(fig, s, t, p){
+    if(!fig) return false;
+    var f = p.fig, mk = [], who = t.ok || t.shown ? 'right' : 'yours', k = s.key, t0 = f.mark, last = fig.last || (fig.last = {});
+    var val = who === 'right' && s.kind === 'num' ? s.cell.answer : t.value;
+    if(f.kind === 'x' && t0 != null){
+      // on the graph of x(t): a velocity is the slope of the tangent at t0
+      if(k === 'vt' && isFinite(val)) mk.push({ tangent: [t0, f.f(t0)], slope: val, half: f.T / 5, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + T.numText(val) });
+      if(k === 'v' && t.fn){ var sl = t.fn(t0); if(isFinite(sl)) mk.push({ tangent: [t0, f.f(t0)], slope: sl, half: f.T / 5, who: who, label: (who === 'yours' ? 'your v(' + ML.n(t0) + ') as a slope: ' : 'slope ') + T.numText(sl) }); }
+    } else if(f.kind === 'v'){
+      if(k === 'vt' && isFinite(val)) mk.push({ point: [t0, val], who: who, label: (who === 'yours' ? 'yours: ' : '') + T.numText(val) });
+      if(k === 'at' && isFinite(val) && t0 != null) mk.push({ tangent: [t0, f.f(t0)], slope: val, half: f.T / 6, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + T.numText(val) });
+      if(k === 'z' && isFinite(val)) mk.push({ vline: val, who: who, label: (who === 'yours' ? 'yours: ' : '') + 't = ' + T.numText(val) });
+      if((k === 'all' || k === 'sign') && s.kind === 'choice' && t.pick > -1) T.choiceMarks(s.options[t.pick], 't').xs.forEach(function(x){ mk.push({ vline: x, who: who, label: 't = ' + T.numText(x) }); });
+      if(k === 'disp' || k === 'dist' || k === 'xT' || k === 'xm'){
+        // The areas, toned by sign; their values once right or shown.
+        var b = k === 'xm' ? p.values.mid : f.T;
+        mk = areaMarks(f.f, 0, b, who === 'right', f.pts ? f.pts.map(function(q){ return q[0]; }) : null);
+        // the typed number in the top corner (markSvg keeps a label inside the plot)
+        if(who === 'yours' && isFinite(val)) mk.push({ label: 'yours: ' + T.numText(val) + ' m', at: [f.T, 1e9], who: 'yours', anchor: 'end' });
+      }
+    }
+    if(!mk.length) return false;
+    if(who === 'yours') last[k] = mk; else if(last[k] && !/^(disp|dist|xT|xm)$/.test(k)) mk = last[k].concat(mk);
+    fig.marks.set(k, mk); fig.redraw();
+    return true;
   }
   /* On the Tool Studio, caption the problem with its formulas rendered
      (after the frame sets its own plain-text caption). */
@@ -382,9 +451,16 @@
     if(s && p) setTimeout(function(){ s.caption(String(p.text).replace(/<\/?p[^>]*>/g, ' ').trim(), 'quiz'); }, 0);
   }
   function quiz(host, data){
+    var fig = null;
     T.drill(host, data, { slug: 'motion-lab', noun: 'drill',
       types: ML.KINDS.map(function(k){ return { value: k, label: ML.TITLE[k] }; }), typeLabel: 'Problem type',
       generate: ML.generate, title: function(p){ return p.title; },
-      extra: function(el, p, api){ el.innerHTML = figure(p); plainCaption(api.area, p); } });
+      extra: function(el, p, api){
+        var box = document.createElement('div'); el.appendChild(box);
+        fig = T.markedFigure(box, function(){ return figSpec(p); }, 'ml-figwrap');
+        plainCaption(api.area, p);
+      },
+      method: function(s){ return METHOD[s.key]; },
+      onTry: function(s, t, api){ return onTry(fig, s, t, api.problem); } });
   }
 })();
