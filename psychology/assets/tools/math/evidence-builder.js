@@ -122,7 +122,7 @@
     if(!cl) notes.A = 'Choose a claim that answers the question.';
     else if(cl.defensible){ out.A = 1; notes.A = 'A defensible claim that answers the question.'; }
     else notes.A = cl.why;
-    if(cl && !cl.defensible){ ev = intendedClaim(ctx, b) || cl; if(ev !== cl) notes.A += ' (B and C can still score: your evidence and reasoning set up the claim you meant.)'; }
+    if(!cl || !cl.defensible){ ev = intendedClaim(ctx, b) || cl; if(ev !== cl) notes.A += ' (B and C can still score: your evidence and reasoning set up the claim you meant.)'; }
     var eb = evPoint(ctx, ev, b.b), ec = evPoint(ctx, ev, b.c);
     out.Bi = eb.pt; notes.Bi = eb.why;
     if(b.c && b.b && b.c.src != null && b.c.src === b.b.src && ec.usable){ ec = { pt: 0, why: 'This is Source ' + (b.c.src + 1) + ' again. C(i) needs evidence from a different source than B(i).', bad: 'same', usable: true }; }
