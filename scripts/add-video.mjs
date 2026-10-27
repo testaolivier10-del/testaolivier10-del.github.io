@@ -185,4 +185,7 @@ const after = validate(data);
 if (after.length) die(after.join('\n'));
 writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 execFileSync('node', [join(ROOT, 'scripts', 'build-videos.mjs')], { stdio: 'inherit' });
+// The course home's "Watch the lessons" strip (scripts/lib/r3-home.mjs) comes from the home's builder.
+const HOME_BUILDER = { nremt: 'build-course-homes.mjs', ochem: 'build-course-homes.mjs', anp: 'build-anp.mjs' };
+execFileSync('node', [join(ROOT, 'scripts', HOME_BUILDER[course] || `build-${course}.mjs`)], { stdio: 'inherit' });
 console.log(`add-video: ${src.id} "${src.title}" on ${pages.join(', ')} (${chapters.length} chapters).`);

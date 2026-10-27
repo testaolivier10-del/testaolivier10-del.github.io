@@ -479,7 +479,7 @@ const BUDGETS = [
   // is an 18 KB shell and the chapters are 144 KB of JSON fetched alongside
   // it, budgeted under DATA_BUDGETS below. First paint no longer waits on
   // thirty-nine chapters nobody asked for.
-  ['nremt/study-notes.html', 20],
+  ['nremt/study-notes.html', 21], // +1 (2026-10-26): inline JSON for the chapter video cards (#lpv-reader, docs/video-lessons.md)
   ['nremt/glossary.html', 10],
 
   // Added when the scenario set went from eight cases to twenty-five and the
@@ -501,7 +501,7 @@ const BUDGETS = [
   // again for any reason OTHER than new sections, find out why first.
   // Raised to 5 KB when the self-study pass added four sections (energy
   // diagrams, carbocations, cis/trans & E/Z, prochirality): 121 lines now.
-  ['ochem/learn.html', 5],
+  ['ochem/learn.html', 7], // +2 (2026-10-26): inline JSON for two topic video cards (#lpv-reader, docs/video-lessons.md)
 
   // One textbook section, standing in for the other 120. They became real
   // pages when the ochem prose was made readable without JavaScript

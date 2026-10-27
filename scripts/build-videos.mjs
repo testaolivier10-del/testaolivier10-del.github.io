@@ -5,14 +5,15 @@
      node scripts/build-videos.mjs           write the pages
      node scripts/build-videos.mjs --check   fail if the data is wrong or any page is stale (CI)
 
-   Every lesson and notes page of every course is scanned, so removing a video
+   Every lesson and notes page of every course is scanned, and every course
+   reader (learn.html, nremt/study-notes.html) gets its chapters' cards, so removing a video
    from the data removes it from the site. The course builders and the two
    notes-page generators call the same applyVideo() (scripts/lib/videos.mjs)
    when they write a page, so their own --check agrees with this one.
    docs/video-lessons.md explains the design and how new videos arrive. */
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, COURSE_DIRS, loadVideos, validate, applyVideo, DATA_FILE } from './lib/videos.mjs';
+import { ROOT, COURSE_DIRS, READERS, loadVideos, validate, applyVideo, DATA_FILE } from './lib/videos.mjs';
 import { loadQuickAnswers, validateQuickAnswers } from './lib/quick-answers.mjs';
 
 const check = process.argv.includes('--check');
@@ -41,6 +42,17 @@ for (const dir of Object.values(COURSE_DIRS)) {
       if (!check) writeFileSync(join(ROOT, rel), want);
     }
   }
+}
+
+// The course readers (learn.html, nremt/study-notes.html): each carries its chapters' cards.
+for (const rel of Object.values(READERS)) {
+  if (!existsSync(join(ROOT, rel))) continue;
+  const html = readFileSync(join(ROOT, rel), 'utf8');
+  pages++;
+  const want = applyVideo(rel, html, videos);
+  if (want === html) continue;
+  stale.push(rel);
+  if (!check) writeFileSync(join(ROOT, rel), want);
 }
 
 const shown = videos.byPage.size;

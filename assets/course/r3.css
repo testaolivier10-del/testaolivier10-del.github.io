@@ -145,10 +145,10 @@
 .r3 .chiprow{display:flex;flex-wrap:wrap;gap:6px;margin:6px 6px 0}
 .r3 .chiprow span{font:800 13px var(--font-ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:3px 10px;text-decoration:none}
 .r3 .chiprow span i{font-style:normal;margin-left:4px}
-.r3 .clock{position:relative;display:flex;align-items:flex-end;gap:12px;aspect-ratio:2/1;border-radius:12px;background:var(--r3-navy);color:#fff;padding:18px;box-sizing:border-box;overflow:hidden}
+.r3 .clock{position:relative;display:flex;align-items:center;gap:12px;border-radius:12px;background:var(--r3-navy);color:#fff;padding:18px;box-sizing:border-box;overflow:hidden}
 .r3 .clock::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px}
-.r3 .clock b{position:relative;z-index:1;font:900 86px/0.9 var(--display);letter-spacing:-.05em;color:#FFD23F}
-.r3 .clock span{position:relative;z-index:1;font:800 16px/1.3 var(--font-ui);max-width:12em;padding-bottom:6px}
+.r3 .clock b{position:relative;z-index:1;font:900 48px/0.9 var(--display);letter-spacing:-.05em;color:#FFD23F}
+.r3 .clock span{position:relative;z-index:1;font:800 15px/1.3 var(--font-ui);max-width:12em}
 .r3 .cvart svg{width:100%;height:auto;display:block}
 .r3 .credit{font-size:13px;color:var(--muted);margin:-16px 0 26px}
 .r3 .credit a{color:var(--muted)}
@@ -200,8 +200,6 @@
 .r3 .toc small{font-size:14px;color:var(--muted)}
 .r3 .toc .w{text-align:right;font:900 20px var(--display);letter-spacing:-.02em;min-width:7.5em}
 .r3 .toc .w small{display:block;font:800 12.5px/1.3 var(--font-ui);letter-spacing:0;color:var(--accent);text-wrap:balance}
-.r3 .toc .wbar{display:block;height:5px;border-radius:9px;background:var(--ctint);margin-top:6px;overflow:hidden}
-.r3 .toc .wbar i{display:block;height:100%;background:var(--accent)}
 .r3 .lead .tryq{align-self:start}
 .r3 .kicker{font:900 13px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;display:flex;align-items:center;gap:12px}
 .r3 .kicker i{flex:1;height:2px;background:var(--ink);opacity:.9}
@@ -406,7 +404,6 @@
   .r3 .toc li a,.r3 .toc-row{grid-template-columns:44px minmax(0,1fr)}
   .r3 .toc .w{grid-column:2;text-align:left;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;font-size:17px}
   .r3 .toc .w small{display:inline}
-  .r3 .toc .wbar{flex-basis:100%;max-width:160px}
 }
 
 /* Phone cards (fix 2026-10-26, from Olivier's screenshots): only a card that leads with a picture (.cover or the
@@ -435,9 +432,25 @@
   .r3 .lead > :last-child{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
   .r3 .story{align-items:start}
   .r3 .story .ccard{align-self:start}
-  .r3 .clock{aspect-ratio:auto;min-height:120px;max-height:170px}
 }
 
 .r3 .tools-more{margin:4px 0 26px;font-weight:900}
 .r3 .tools-more .go{font:900 15px var(--font-ui);color:var(--accent);text-decoration:none}
 .r3 .tools-more .go:hover{text-decoration:underline}
+
+/* Watch the lessons (course homes, scripts/lib/r3-home.mjs): up to 3 video thumbnails, each a link to its
+   notes page, where the click-to-load player is. Same-origin WebP, no YouTube request until play there. */
+.r3 .vstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:6px 0 14px}
+.r3 .vcard{display:block;text-decoration:none;color:var(--ink)}
+.r3 .vthumb{position:relative;display:block;border-radius:12px;overflow:hidden;background:#0d1b1e;aspect-ratio:16/9;border:1px solid var(--line)}
+.r3 .vthumb img{display:block;width:100%;height:100%;object-fit:cover}
+.r3 .vplay{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(10,20,22,.78);display:grid;place-items:center;transition:transform .15s}
+.r3 .vplay svg{fill:#fff;margin-left:2px}
+.r3 .vlen{position:absolute;right:8px;bottom:8px;padding:2px 6px;border-radius:5px;background:rgba(10,20,22,.85);color:#fff;font:800 12px var(--font-ui)}
+.r3 .vtitle{display:block;margin:10px 0 2px;font:800 16px/1.3 var(--font-ui)}
+.r3 .vmeta{display:block;font-size:13.5px;color:var(--muted)}
+.r3 .vcard:hover .vtitle{color:var(--accent)}
+.r3 .vcard:hover .vplay{transform:scale(1.08)}
+.r3 .vcard:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:12px}
+@media (max-width:760px){.r3 .vstrip{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.r3 .vplay{transition:none}}

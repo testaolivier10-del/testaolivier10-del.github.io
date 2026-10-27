@@ -16,6 +16,7 @@ import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { premiumData, foundingPrice, money, longDate } from './premium-data.mjs';
+import { loadVideos, displayTitle, clock, THUMB_DIR, THUMB_WIDTHS } from './videos.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'course-homes.json'), 'utf8'));
@@ -83,7 +84,7 @@ export function r3HomeMain(key, ctx) {
   const rows = [];
   const kind = d.map_kind;
   if (kind === 'domains') {
-    (ctx.doms || d.doms).forEach(([n, desc, w, q, bar], i) => rows.push({ n: String(i + 1).padStart(2, '0'), b: n, small: `${desc} ${q} questions`, right: `${w}<small>of the exam</small><span class="wbar"><i style="width:${bar}%"></i></span>` }));
+    (ctx.doms || d.doms).forEach(([n, desc, w, q, bar], i) => rows.push({ n: String(i + 1).padStart(2, '0'), b: n, small: `${desc} ${q} questions`, right: `${w}<small>of the exam</small>` }));
   } else if (kind === 'path') {
     const p = d.path;
     for (let g = 0; g < p.length; g += 5) {
@@ -110,7 +111,7 @@ export function r3HomeMain(key, ctx) {
       else {
         const hi = +w.replace('%', '').split(' to ')[1];
         rows.push({ n: num.length > 1 ? num : String(+num).padStart(2, '0'), b: t, small: meta,
-          right: `${w}${free ? '<small class="free">lessons free</small>' : '<small>of the exam</small>'}<span class="wbar"><i style="width:${Math.min(100, hi * 4)}%"></i></span>` });
+          right: `${w}${free ? '<small class="free">lessons free</small>' : '<small>of the exam</small>'}` });
       }
     }
   }
@@ -223,8 +224,11 @@ export function r3HomeMain(key, ctx) {
     return href ? `<a class="ccard" href="${href}"><span class="cmeta"><span class="cname">${x.h}</span></span><span class="cdesc">${x.p}</span></a>`
       : `<div class="ccard"><span class="cmeta"><span class="cname">${x.h}</span></span><span class="cdesc">${x.p}</span></div>`;
   });
-  const who = key === 'anp' ? 'A&amp;P' : key === 'ochem' ? 'Organic Chemistry' : d.short;
-  const extras = `<p class="kicker kicker-gap">Only in ${who} <i></i></p><div class="else-x${xs.length > 1 ? '' : ' one'}">${xs.join('')}</div>`;
+  /* The "Only in this course" band is left off the home (Olivier, 2026-10-26: "doesnt feel needed since the
+     tools are right above"): every item in it is a tool or a page the Tools page and the course nav already link.
+     The data stays in course-homes.json in case a course wants it back. */
+  void xs;
+  const extras = '';
 
   /* ---- free and premium, from assets/premium.js ---- */
   const { COURSES, FOUNDING } = premiumData();
@@ -284,6 +288,18 @@ export function r3HomeMain(key, ctx) {
 
   const sticky = `<div class="sticky-cta"><a class="btn-chan" href="${ctx.primaryHref}">${d.btn1}</a></div>`;
 
+  /* ---- watch the lessons: the course's videos from docs/videos.json, newest first, at most 3. Each is
+     the same-origin thumbnail linking to its notes page (where the click-to-load player is), never an
+     iframe. Nothing when the course has no video yet. scripts/add-video.mjs reruns the home builders. ---- */
+  const vids = (ctx.videos || loadVideos().data.videos || []).filter((v) => v.course === key)
+    .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 3);
+  const watch = !vids.length ? '' : `<p class="kicker">Watch the lessons <i></i></p><div class="vstrip">${vids.map((v) => {
+    const page = (v.pages || []).find((p) => /\/notes\//.test(p)) || v.pages[0];
+    const t = displayTitle(v);
+    const srcset = THUMB_WIDTHS.map((w) => `${up}${THUMB_DIR}/${v.id}-${w}.webp ${w}w`).join(', ');
+    return `<a class="vcard" href="${up}${page}"><span class="vthumb"><img src="${up}${THUMB_DIR}/${v.id}-480.webp" srcset="${srcset}" sizes="(max-width: 760px) 100vw, 340px" width="1280" height="720" alt="" loading="lazy" decoding="async"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="vlen">${clock(v.seconds)}</span></span><span class="vtitle">${attr(t).replace(/</g, "&lt;")}</span><span class="vmeta">Video lesson &middot; ${Math.max(1, Math.round(v.seconds / 60))} min</span></a>`;
+  }).join('')}</div><p class="tools-more"><a class="go" href="https://www.youtube.com/@LevlPrep">All videos on our YouTube channel &rarr;</a></p>`;
+
   return `<main id="main" class="r3 r3-home" data-cover="${key}">
 ${band}
 <div class="hwrap">
@@ -291,8 +307,7 @@ ${lead}
 ${facts}
 ${progress}
 ${story}
-${toolsBlock}
-${extras}
+${watch ? watch + '\n' : ''}${toolsBlock}
 ${deal}
 ${faq}
 ${about}

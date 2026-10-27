@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import vm from 'node:vm';
-import { ROOT, START, END, COURSE_DIRS, loadVideos, validate, applyVideo, videoBlock, clock, chaptersFromText } from '../lib/videos.mjs';
+import { ROOT, START, END, COURSE_DIRS, READERS, R_START, R_END, readerCards, loadVideos, validate, applyVideo, videoBlock, clock, chaptersFromText } from '../lib/videos.mjs';
 
 const videos = loadVideos();
 const SAMPLE = videos.data.videos[0];
@@ -202,4 +202,23 @@ test('add-video refuses a topic page it cannot place, without --allow-partial', 
   const r = addVideo([...base, '--pages', 'ochem/notes/orbitals.html,ochem/somewhere-else.html']);
   assert.equal(r.ok, false);
   assert.match(r.msg, /cannot place ochem\/somewhere-else\.html/);
+});
+
+test('each reader carries its own chapters\' cards, once, with no YouTube src', () => {
+  const videos = loadVideos();
+  for (const [course, rel] of Object.entries(READERS)) {
+    if (!existsSync(join(ROOT, rel))) continue;
+    const html = readFileSync(join(ROOT, rel), 'utf8');
+    const cards = readerCards(rel, videos);
+    const want = videos.data.videos.filter((v) => v.course === course && v.pages.some((p) => /\/notes\//.test(p))).length;
+    assert.equal(cards.length, want, `${rel}: one card per video with a notes page`);
+    assert.equal(html.split(R_START).length - 1, cards.length ? 1 : 0, `${rel}: reader block present only with a video`);
+    assert.equal(applyVideo(rel, html, videos), html, `${rel}: up to date`);
+    for (const c of cards) {
+      assert.ok(!c.html.includes(START) && !c.html.includes('<script') && !/src="https?:\/\/[^"]*youtube/.test(c.html), `${rel}: ${c.id} is a bare facade`);
+      if (course === 'nremt') assert.match(c.at, /^\[data-chapter="\d+"\] > \.tb-chapter-head$/);
+    }
+    const off = applyVideo(rel, html, { data: { videos: [] }, byPage: new Map() });
+    assert.ok(!off.includes(R_START) && !off.includes(R_END), `${rel}: removing the videos removes the block`);
+  }
 });
