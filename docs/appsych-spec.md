@@ -35,7 +35,36 @@ lessons, quick answers, the AI FRQ grader and the analytics work), so every newe
 
 ## 2. What the research says
 
-Filled from `docs/appsych-research/` when Phase R lands.
+Details and URLs in `docs/appsych-research/` (done 2026-10-27).
+
+**Not revised for 2026-27.** The 2024-25 framework stands; the Fall 2025 CED and its October 2025 clarifications
+stay in force. One change matters: AAQ Part D asks for one ethical guideline the summary describes and how the
+researchers applied it.
+
+**Framework.** 5 units, 35 topics, every unit 15-25% of the MCQ section: U1 Biological Bases of Behavior (6), U2
+Cognition (8), U3 Development and Learning (9), U4 Social Psychology and Personality (7), U5 Mental and Physical
+Health (5). Titles official (Course at a Glance; CED for 1.1-2.6). Four science practices; MCQ practice weights
+(about 65/25/10) third party only. CED text after 2.6 read from a third-party copy: exclusions (Maslow's hierarchy,
+psychosexual stages, named emotion theories, pragmatics, classical conditioning timing variants) unconfirmed.
+
+**Exam (Fri 14 May 2027, Session 2), digital in Bluebook, 2 h 40 min, no calculator.** Section I: 75 four-option
+MCQ, 90 min, 66.7%. Section II: 70 min, 33.3%, two FRQs of 7 points. AAQ (about 25 min): one study summary; method,
+operational definition, statistic interpretation, ethics, generalizability (1 each), argumentation (2). EBQ (about
+45 min): three labelled sources; claim (1), two pieces of evidence each cited and from different sources (1 each),
+two reasoning parts (2 each: the second point needs a psychology concept, a different one in the second part).
+
+**Scores.** 2025: 334,038 takers, 70.5% 3+, mean 3.20. 2026: 74% 3+, 15% fives.
+
+**Where students lose points** (2025 Chief Reader Reports, 2025-26 scoring guidelines; the EBQ scores below the
+AAQ). EBQ reasoning with no concept, a bare definition, or the same concept twice (C(ii) weakest); evidence not
+cited, a method instead of a result, one source used twice; a restricted term offered as the concept (random
+assignment, statistical significance, mean, the prompt's own topic). AAQ statistic restated instead of interpreted,
+or its direction reversed; wrong or several methods; a textbook definition instead of how this study measured the
+variable; generalizability argued from sample size instead of participant traits; ethics guidelines the summary
+never mentions.
+
+**Market.** See `market.md`: paid prep (UWorld, Fiveable, Albert, Barron's, Princeton Review) is mostly videos and
+question banks; almost nothing drills the AAQ and EBQ part by part. That is the gap.
 
 ## 3. Positioning and what makes it better (proposed, refined after research)
 
@@ -70,7 +99,7 @@ One branch, `claude/appsych`, one PR at the end.
 
 | Phase | What | Status |
 |---|---|---|
-| R | Research: `docs/appsych-research/framework.md`, `market.md`; this spec | in progress |
+| R | Research: `docs/appsych-research/framework.md`, `market.md`; this spec | **done 2026-10-27** |
 | 0 | Fork AP® Environmental Science: runtime `psychology/assets/` (`psy-*`), `ApPsychStats` (descriptive statistics) in place of `ApEnvCalc`, generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | in progress |
 | 1 | Content: lessons, notes, banks (incl. stimulus sets), AAQs and EBQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
