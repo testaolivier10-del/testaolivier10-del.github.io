@@ -410,7 +410,7 @@
     var sp3 = has(/sp³ C–H|sp3/), arom = has(/aromatic|Ar|ring/) || has(/sp² C–H/) && /C₆|benz|phen|xyl|styr|tolu/i.test((c.name || '') + (c.formula || ''));
     if(sp3){
       out.push({ cm:1462, w:9, a:toA(32), eta:0.4 });
-      if(/CH₃|CH3|Me|methyl|ethyl|propyl|butyl|hex|acet|xyl|tolu|ether|isoprop/i.test((c.structure || '') + (c.name || ''))) out.push({ cm:1376, w:7, a:toA(24), eta:0.4 });
+      if(/CH₃|CH3/.test((c.structure || '') + ' ' + (c.build || ''))) out.push({ cm:1376, w:7, a:toA(24), eta:0.4 });
     }
     if(arom){
       [1960, 1880, 1810, 1740].forEach(function(cm, k){ if(!has(/C=O/)) out.push({ cm:cm, w:10, a:toA(5 - k * 0.6), eta:0.3 }); });
@@ -842,8 +842,10 @@
           '<td style="white-space:nowrap;"><b>' + esc(p.label) + '</b></td><td>' + esc(p.note) + '</td></tr>';
       }).join('') +
       '</tbody></table></div>' +
-      '<p class="tmuted" style="margin-top:10px;">Click a marker on the spectrum to highlight its row. The curve is drawn from these ' +
-      'numbers, so the picture and the table cannot disagree.</p></details>';
+      '<p class="tmuted" style="margin-top:10px;">Click a marker on the spectrum to highlight its row. The marked bands are drawn from these ' +
+      'numbers. The unmarked ones are what every real spectrum also has: the C–H bends near 1460 and 1375, weak ring overtones between 2000 and 1650, ' +
+      'and below 1500 the fingerprint region, drawn here as a typical pattern rather than this compound’s measured one. Read the marked bands; ' +
+      'use the fingerprint only to match a spectrum against a known one.</p></details>';
     document.getElementById('spIRBox').addEventListener('toggle', function(e){ spIROpen = e.target.open; });
 
     document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR, true);

@@ -448,7 +448,12 @@
       '<svg viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Map of the functional groups, with an arrow for each reaction">' +
         // The route is drawn over the nodes (with a halo) so no box can hide it.
         lanes + '<g class="rr-web" aria-hidden="true">' + web + '</g>' + nodes + '<g class="rr-strong" aria-hidden="true">' + strong + '</g>' +
-      '</svg></div>';
+      '</svg>' +
+      // What each level means, as the tile map used to say beside each band.
+      '<details class="rr-levels"><summary>What the levels mean</summary><dl>' + D.BANDS.map(function(b){
+        return '<div><dt>' + esc(b.title) + '</dt><dd>' + esc(b.sub) + '</dd></div>'; }).join('') +
+      '<div><dt>Arrows</dt><dd>Every reaction in the course is an arrow. Up the ladder is an oxidation, down is a reduction.</dd></div></dl></details>' +
+      '</div>';
   }
   /* SVG nodes are not buttons: Enter and Space click them, and Whole map
      toggles the zoom wherever the map is. One listener for every map. */

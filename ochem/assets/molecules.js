@@ -1362,7 +1362,7 @@
     var va = opts._vertex && opts._vertex[b.a], vc = opts._vertex && opts._vertex[b.b];
     // Bubble drawings (lessons) give the atom its whole disc; bare ones its label.
     // (lesson hit lines have 8-unit round caps, so they stop 8 further out)
-    var ra = va ? 10 : (opts._bare ? labelR(a) + 3 : a.r + 8), rc = vc ? 10 : (opts._bare ? labelR(c) + 3 : c.r + 8);
+    var ra = va ? 10 : (opts._bare ? labelR(a) + 3 : Math.max(a.r, 21) + 8), rc = vc ? 10 : (opts._bare ? labelR(c) + 3 : Math.max(c.r, 21) + 8);
     // Never shorter than 26 units (about 28 px on a phone stage): keep the middle.
     var room = len - ra - rc;
     if(room < 26){ var give = (26 - room) / 2; ra = Math.max(0, ra - give); rc = Math.max(0, rc - give); }
