@@ -288,3 +288,4 @@
 .calc-cmp-v{min-width:3.5em;text-align:right;color:var(--ink);}
 .calc-ls .ls-stage-body > .calc-pic-q{min-height:130px;}
 .ls-root.ls-phone.calc-ls .ls-stage-body > .calc-pic-q{margin-bottom:44px;}
+.calc-ls .ls-dock .calc-hintbox .calc-actions{position:static;box-shadow:none;background:none;}
