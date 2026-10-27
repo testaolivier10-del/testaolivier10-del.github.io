@@ -178,3 +178,8 @@ from every full tool page in every course:
 ## Dashboards replaced (2026-10-26)
 Every course dashboard is now the five-question layout in `docs/dashboard.md` (design F, owner approved); the
 R10-Progress kicker layout and `assets/course/r3-db.js` no longer drive any dashboard.
+
+### Centered cover thumbnails (owner 2026-10-27)
+The Premium page course list uses `assets/covers/thumb/<course>.svg`: the course cover with its drawing centered and
+fitted to a square, so the small tiles show the drawing in the middle instead of at the right edge. Regenerate with
+`node scripts/make-cover-thumbs.cjs` after changing a cover.

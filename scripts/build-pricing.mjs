@@ -135,7 +135,7 @@ function courseSection(key) {
   const from = lowest(c).price;
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
-          <summary><img class="pp-cover" src="assets/covers/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
+          <summary><img class="pp-cover" src="assets/covers/thumb/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
             <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
@@ -274,7 +274,7 @@ function premiumPage() {
   .pp-course > summary::after{content:var(--disclose);font:900 24px/1 var(--font-ui);color:var(--accent);flex-shrink:0;width:16px;text-align:center;transition:transform .15s ease;}
   .pp-course[open] > summary::after{transform:rotate(90deg);}
   .pp-course > summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:12px;}
-  .pp-course > summary .pp-cover{width:120px;height:60px;object-fit:cover;object-position:right center;border-radius:10px;flex-shrink:0;background:var(--panel);}
+  .pp-course > summary .pp-cover{width:120px;height:60px;object-fit:cover;object-position:center;border-radius:10px;flex-shrink:0;background:var(--panel);}
   .pp-course > summary h2{margin:0;flex:1;min-width:0;font:900 clamp(19px,2vw,23px)/1.2 var(--display);letter-spacing:-.025em;color:var(--ink);}
   .pp .pp-from{font:900 17px var(--font-ui);color:var(--ink);white-space:nowrap;}
   .pp-course[open] .pp-from{visibility:hidden;}
