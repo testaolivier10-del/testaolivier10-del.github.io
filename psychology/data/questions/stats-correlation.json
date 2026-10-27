@@ -58,6 +58,14 @@
      ]
     ],
     "trend": true,
+    "x": [
+     0,
+     9
+    ],
+    "y": [
+     50,
+     90
+    ],
     "xLabel": "Hours studied in the week before the quiz",
     "yLabel": "Quiz score (out of 100)"
    }

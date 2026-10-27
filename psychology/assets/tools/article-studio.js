@@ -26,7 +26,8 @@
   var PART = {}; A.PARTS.forEach(function(p){ PART[p.k] = p; });
   var STEP_PART = { method: 'A', what: 'B', how: 'B', diff: 'C', stat: 'C', rstat: 'C', ethics: 'D', ehow: 'D', gen: 'E', argue: 'F' };
   var SECTION_OF = { A: 'method', B: 'method', C: 'results', D: 'method', E: 'participants', F: 'results' };
-  var RESULT = [{ v: 'support', label: 'As predicted' }, { v: 'null', label: 'No real difference' }, { v: 'reverse', label: 'The opposite' }];
+  var SECTION_NAME = { A: 'the Method', B: 'the Method', C: 'the Results', D: 'the Method', E: 'the Participants', F: 'the Introduction and Results' };
+  var RESULT = [{ v: 'support', label: 'Predicted' }, { v: 'null', label: 'No difference' }, { v: 'reverse', label: 'Opposite' }];
   /* What each part asks and how the readers score it, in our own words (the
      2025-2026 scoring guidelines and Chief Reader Reports). */
   var ASK = {
@@ -129,6 +130,7 @@
     var to = box.scrollTop + (a.top - b.top) - Math.max(16, (box.clientHeight - a.height) / 3);
     try{ box.scrollTo({ top: Math.max(0, to), behavior: T.reduced() ? 'auto' : 'smooth' }); }catch(e){ box.scrollTop = Math.max(0, to); }
   }
+  function cap(t){ t = String(t); return t.charAt(0).toUpperCase() + t.slice(1); }
   function phone(){ return (window.innerWidth || 1280) <= 640; }
 
   /* ------------------------------------------------------------ explore */
@@ -139,9 +141,9 @@
     host.innerHTML = '<section class="bt-problem as-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Article analysis studio</h2>' +
       '<div class="as-fig"></div>' +
       '<div class="as-ctl">' +
-        '<div class="as-parts" role="group" aria-label="AAQ part">' + A.PARTS.map(function(p){ return '<button type="button" class="as-pbtn" data-part="' + p.k + '" aria-pressed="false"><span class="as-pk">' + p.k + '</span><span class="as-pn">' + esc(p.name) + '</span></button>'; }).join('') + '</div>' +
+        '<div class="as-parts" role="group" aria-label="AAQ part">' + A.PARTS.map(function(p){ return '<button type="button" class="as-pbtn" data-part="' + p.k + '" aria-pressed="false"><span class="as-pk">' + p.k + '</span><span class="as-pn">' + esc(p.short) + '</span></button>'; }).join('') + '</div>' +
         '<div class="as-pcard" aria-live="polite"></div>' +
-        '<div class="as-res-row"><span class="as-res-k" id="' + nid + '-r">Result</span><div class="ls-seg as-res" role="group" aria-labelledby="' + nid + '-r">' + RESULT.map(function(x){ return '<button type="button" data-v="' + x.v + '" aria-pressed="false">' + x.label + '</button>'; }).join('') + '</div></div>' +
+        '<div class="as-res-row"><span class="as-res-k" id="' + nid + '-r">The result</span><div class="ls-seg as-res" role="group" aria-labelledby="' + nid + '-r">' + RESULT.map(function(x){ return '<button type="button" data-v="' + x.v + '" aria-pressed="false">' + x.label + '</button>'; }).join('') + '</div></div>' +
       '</div>' +
       '<div class="as-say"></div>' +
       T.moreHtml('<div class="as-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn as-new">Run it again (new numbers)</button></div>', 'choose a study') +
@@ -171,7 +173,7 @@
       sync(); card();
       var first = $('.as-paper .as-hl[data-part="' + k + '"]');
       if(scroll !== false) reveal(first);
-      say('Part ' + k + ', ' + PART[k].name.toLowerCase() + '. Look in ' + SECTION_OF[k] + '. ' + plain(A.parts(ctx, st)[k].earns));
+      say('Part ' + k + ', ' + PART[k].name.toLowerCase() + '. Look in ' + SECTION_NAME[k] + '. ' + plain(A.parts(ctx, st)[k].earns));
     }
     function sync(){
       var root = LS ? LS.root : host;
@@ -195,12 +197,12 @@
     }
     function words(){
       var a = ASK[part], P = A.parts(ctx, st)[part];
-      var head = '<b>Part ' + part + ': look in ' + SECTION_OF[part] + '.</b> ' + esc(P.where);
+      var head = '<b>Part ' + part + ': look in ' + SECTION_NAME[part] + '.</b> ' + cap(P.where);
       var why = '<p>' + esc(a.rule) + '</p><p class="as-why-k">What the readers saw students miss</p><ul>' + a.slips.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>';
       T.explain($('.as-say'), head, why);
       if(LS){
-        LS.caption('<b>Part ' + part + ', ' + esc(PART[part].name.toLowerCase()) + ':</b> ' + esc(P.where), 'explore');
-        LS.pills([{ html: 'Part ' + part + ' · ' + PART[part].pts + ' pt', tone: 'accent' }, { html: RESULT.filter(function(x){ return x.v === variant; })[0].label, tone: 'ghost' }], 'left', 'explore');
+        LS.caption('<b>Part ' + part + ' · ' + esc(PART[part].name) + '.</b> Look in ' + SECTION_NAME[part] + ': ' + esc(P.where), 'explore');
+        LS.pills([{ html: 'Part ' + part + ' · ' + PART[part].pts + ' pt', tone: 'accent' }, { html: 'Result: ' + RESULT.filter(function(x){ return x.v === variant; })[0].label.toLowerCase(), tone: 'ghost' }], 'left', 'explore');
         if(LS.why) LS.why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
       }
     }
@@ -229,7 +231,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.as-pbtn[data-part="C"]'), text: 'Start here: tap a part' });
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.as-parts'), text: 'Start here: tap a part, A to F' });
       var w = window.innerWidth, t = null;
       window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(function(){ if((window.innerWidth <= 640) !== (w <= 640)){ w = window.innerWidth; draw(); } }, 120); });
     }

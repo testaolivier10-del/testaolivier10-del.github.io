@@ -1,0 +1,101 @@
+{
+ "brain": {
+  "def": "The organ inside the skull that, with the spinal cord, makes up the central nervous system; it controls the body and produces thought, emotion and behavior."
+ },
+ "brainstem": {
+  "def": "The oldest part of the brain, joining the spinal cord to the rest of the brain; it controls automatic survival functions and contains the medulla and the reticular activating system."
+ },
+ "medulla": {
+  "def": "The base of the brainstem, which controls heart rate and breathing."
+ },
+ "reticular": {
+  "def": "A network of neurons running through the brainstem that controls arousal: waking, sleeping, alertness and attention to the surroundings."
+ },
+ "reward-center": {
+  "def": "A set of structures deep in the brain, including the nucleus accumbens, where dopamine signals produce pleasure and drive motivation toward rewards such as food and, in addiction, drugs."
+ },
+ "cerebellum": {
+  "def": "The \"little brain\" at the back, under the cerebrum, that coordinates balance and smooth, timed movement and helps with some kinds of learning."
+ },
+ "cerebral-cortex": {
+  "def": "The thin, wrinkled outer layer of the brain's two hemispheres, where sensing, planning, language and thinking take place."
+ },
+ "hemisphere": {
+  "def": "One of the two halves of the cerebrum, left and right, joined by the corpus callosum."
+ },
+ "frontal-lobe": {
+  "def": "The lobe at the front of each hemisphere, involved in planning, judgment, decision making and movement; it contains the motor cortex and Broca's area."
+ },
+ "prefrontal": {
+  "def": "The front part of the frontal lobe, involved in planning, judgment, impulse control and personality."
+ },
+ "motor-cortex": {
+  "def": "A strip at the back of the frontal lobe that sends commands for voluntary movement to muscles on the opposite side of the body."
+ },
+ "parietal-lobe": {
+  "def": "The lobe at the top and upper back of each hemisphere that processes touch and body position and helps with spatial reasoning."
+ },
+ "somatosensory": {
+  "def": "A strip at the front of the parietal lobe, just behind the motor cortex, that registers touch, temperature and pain from the opposite side of the body."
+ },
+ "occipital-lobe": {
+  "def": "The lobe at the back of each hemisphere that processes visual information."
+ },
+ "temporal-lobe": {
+  "def": "The lobe on the side of each hemisphere, below the lateral fissure, that processes hearing and contains Wernicke's area."
+ },
+ "association-areas": {
+  "def": "Areas of the cortex not tied to one sense or movement that combine information for higher thinking such as learning, remembering, judging and speaking."
+ },
+ "limbic-system": {
+  "def": "A group of structures deep in the brain, below the cortex, involved in emotion, drives and memory, including the hippocampus and amygdala."
+ },
+ "thalamus": {
+  "def": "The brain's sensory relay station: it routes signals from every sense except smell to the right areas of the cortex."
+ },
+ "hypothalamus": {
+  "def": "A small structure below the thalamus that keeps homeostasis by regulating hunger, thirst, body temperature and sex drive, and directs the pituitary gland."
+ },
+ "homeostasis": {
+  "def": "The body's tendency to keep a steady internal state, such as body temperature and blood sugar, by correcting changes."
+ },
+ "hippocampus": {
+  "def": "A curved structure deep in each temporal lobe that is needed to form new memories of facts and events."
+ },
+ "amygdala": {
+  "def": "Two almond-shaped clusters deep in the temporal lobes involved in fear and other emotional reactions to threats."
+ },
+ "corpus-callosum": {
+  "def": "The thick band of axons that connects the left and right hemispheres and lets them share information."
+ },
+ "contralateral": {
+  "def": "The crossed wiring of the brain: each hemisphere receives sensations from, and controls movement on, the opposite side of the body."
+ },
+ "lateralization": {
+  "def": "The tendency of each hemisphere to be more involved in certain tasks, such as language mostly on the left in most people; the two still work together."
+ },
+ "split-brain": {
+  "def": "A condition in which the corpus callosum has been cut, usually to treat severe epilepsy, so the two hemispheres cannot share information directly."
+ },
+ "brocas-area": {
+  "def": "An area in the lower left frontal lobe in most people that helps produce speech; damage makes speech slow and effortful."
+ },
+ "wernickes-area": {
+  "def": "An area in the upper back of the left temporal lobe in most people that helps understand language; damage leaves speech fluent but hard to understand."
+ },
+ "aphasia": {
+  "def": "Loss of the ability to produce or understand language after brain damage, such as Broca's aphasia (slow, effortful speech) or Wernicke's aphasia (fluent speech with little meaning)."
+ },
+ "plasticity": {
+  "def": "The brain's ability to change by forming new connections and reorganizing after learning or damage; it is greatest in childhood."
+ },
+ "eeg": {
+  "def": "Electroencephalogram: a recording of the brain's electrical activity from electrodes on the scalp; it shows when activity changes, millisecond by millisecond, but not precisely where."
+ },
+ "fmri": {
+  "def": "Functional magnetic resonance imaging: a scan that tracks blood oxygen changes to show which brain areas are more active during a task; good for where, slower for when."
+ },
+ "lesion": {
+  "def": "Damaged or destroyed brain tissue, from injury or disease, or made on purpose in animal research to learn what a region does."
+ }
+}

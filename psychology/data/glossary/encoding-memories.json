@@ -1,0 +1,32 @@
+{
+ "mnemonic": {
+  "def": "A memory aid that links new information to a pattern, image or phrase that is easier to remember, such as an acronym like ROY G BIV."
+ },
+ "method-of-loci": {
+  "def": "A mnemonic that places each item to be remembered at a location along a familiar route, then mentally walks the route to recall them (a memory palace)."
+ },
+ "chunking": {
+  "def": "Grouping separate pieces of information into larger, meaningful units, so short-term memory can hold more (a phone number as three chunks)."
+ },
+ "hierarchies": {
+  "def": "Organizing information from broad categories down to specific details, such as an outline, which makes it easier to encode and retrieve."
+ },
+ "spacing-effect": {
+  "def": "The finding that study spread out over time leads to better long-term retention than the same amount of study done all at once."
+ },
+ "distributed-practice": {
+  "def": "Studying in several sessions spread out over time (spaced practice)."
+ },
+ "massed-practice": {
+  "def": "Studying in one long session (cramming). It can help on a test soon after, but memories fade faster than with distributed practice."
+ },
+ "serial-position": {
+  "def": "The tendency to recall the first and last items in a list better than the middle ones, which gives a U-shaped serial position curve."
+ },
+ "primacy": {
+  "def": "Better recall of the first items in a list, because they get more repetition and are encoded into long-term memory."
+ },
+ "recency": {
+  "def": "Better recall of the last items in a list, because they are still held in short-term memory when recall begins."
+ }
+}

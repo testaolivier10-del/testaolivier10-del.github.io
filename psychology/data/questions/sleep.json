@@ -1,0 +1,808 @@
+{
+ "stimuli": {
+  "sleep-s1": {
+   "kind": "data",
+   "title": "Sleep stages across one night (a hypnogram)",
+   "invented": true,
+   "html": "<p>A sleep lab recorded one 17-year-old volunteer's brain waves, eye movements and muscle activity through an 8-hour night (invented data for practice). The graph shows which stage she was in at each moment. The five REM periods lasted 10, 20, 25, 25, 30 minutes, in order.</p>",
+   "plot": {
+    "label": "Hypnogram of one invented 8-hour night: stage against hours after lights out, cycling about every 90 minutes, with deep N3 early and longer REM periods toward morning",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Stage",
+      "points": [
+       [
+        0,
+        4
+       ],
+       [
+        0.16666666666666666,
+        4
+       ],
+       [
+        0.16666666666666666,
+        2
+       ],
+       [
+        0.26666666666666666,
+        2
+       ],
+       [
+        0.26666666666666666,
+        1
+       ],
+       [
+        0.5,
+        1
+       ],
+       [
+        0.5,
+        0
+       ],
+       [
+        1.0333333333333334,
+        0
+       ],
+       [
+        1.0333333333333334,
+        1
+       ],
+       [
+        1.25,
+        1
+       ],
+       [
+        1.25,
+        3
+       ],
+       [
+        1.4166666666666667,
+        3
+       ],
+       [
+        1.4166666666666667,
+        1
+       ],
+       [
+        1.6666666666666667,
+        1
+       ],
+       [
+        1.6666666666666667,
+        0
+       ],
+       [
+        2.1,
+        0
+       ],
+       [
+        2.1,
+        1
+       ],
+       [
+        2.5,
+        1
+       ],
+       [
+        2.5,
+        3
+       ],
+       [
+        2.8333333333333335,
+        3
+       ],
+       [
+        2.8333333333333335,
+        1
+       ],
+       [
+        3.2666666666666666,
+        1
+       ],
+       [
+        3.2666666666666666,
+        0
+       ],
+       [
+        3.466666666666667,
+        0
+       ],
+       [
+        3.466666666666667,
+        1
+       ],
+       [
+        4.083333333333333,
+        1
+       ],
+       [
+        4.083333333333333,
+        3
+       ],
+       [
+        4.5,
+        3
+       ],
+       [
+        4.5,
+        4
+       ],
+       [
+        4.566666666666666,
+        4
+       ],
+       [
+        4.566666666666666,
+        2
+       ],
+       [
+        4.666666666666667,
+        2
+       ],
+       [
+        4.666666666666667,
+        1
+       ],
+       [
+        5.5,
+        1
+       ],
+       [
+        5.5,
+        3
+       ],
+       [
+        5.916666666666667,
+        3
+       ],
+       [
+        5.916666666666667,
+        1
+       ],
+       [
+        6.833333333333333,
+        1
+       ],
+       [
+        6.833333333333333,
+        3
+       ],
+       [
+        7.333333333333333,
+        3
+       ],
+       [
+        7.333333333333333,
+        1
+       ],
+       [
+        7.8,
+        1
+       ],
+       [
+        7.8,
+        2
+       ],
+       [
+        7.9,
+        2
+       ],
+       [
+        7.9,
+        4
+       ],
+       [
+        8,
+        4
+       ],
+       [
+        8,
+        4
+       ]
+      ],
+      "markers": false
+     }
+    ],
+    "x": [
+     0,
+     8
+    ],
+    "xStep": 1,
+    "y": [
+     0,
+     4
+    ],
+    "yTickList": [
+     {
+      "v": 4,
+      "text": "Awake"
+     },
+     {
+      "v": 3,
+      "text": "REM"
+     },
+     {
+      "v": 2,
+      "text": "N1"
+     },
+     {
+      "v": 1,
+      "text": "N2"
+     },
+     {
+      "v": 0,
+      "text": "N3"
+     }
+    ],
+    "xLabel": "Hours after lights out",
+    "yLabel": "Stage"
+   }
+  },
+  "sleep-s2": {
+   "kind": "study",
+   "title": "Phones at bedtime and teens' sleep",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether teens who use a phone more in the hour before bed sleep less.",
+    "participants": "240 students aged 14 to 18 at three public high schools in one city volunteered. Parents gave permission, students agreed to take part, and answers were stored without names.",
+    "method": "For two weeks, each student's phone app recorded minutes of screen use in the hour before the student's bedtime, and a wrist tracker recorded total minutes of sleep each night. The researchers averaged each student's nights.",
+    "results": "Students with more screen minutes before bed slept fewer minutes. The correlation was $r = -0.42$.",
+    "discussion": "The authors note that bright screens can delay the evening rise in melatonin, but that the study cannot show the phones caused the shorter sleep."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-sleep-1",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "sleep-s1",
+   "q": "According to the hypnogram, when did the sleeper spend the most time in N3, the deepest stage?",
+   "options": [
+    "In the first half of the night",
+    "In the last two hours of the night",
+    "Spread evenly across the night",
+    "Just before each REM period"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The line reaches N3 in the first three to four hours and does not reach it after that. Deep N3 sleep is concentrated early in the night.",
+    "options": [
+     "Right: N3 appears in the first half of the night and then fades.",
+     "In the last two hours the sleeper cycles between N2 and REM, with no N3.",
+     "N3 is bunched early, not spread evenly.",
+     "REM periods follow N2, not N3."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-2",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "sleep-s1",
+   "q": "What pattern do the REM periods show across the night?",
+   "options": [
+    "They come in cycles of about 90 minutes and get longer toward morning",
+    "They come in cycles of about 90 minutes and get shorter toward morning",
+    "They come once, in the middle of the night, and last about an hour",
+    "They come at random times and stay about the same length each time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "REM periods start at about 1.3, 2.5, 4.1, 5.5, 6.8 hours, roughly every 90 minutes, and grow from 10 to 30 minutes.",
+    "options": [
+     "Right: regular cycles of about 90 minutes, with longer REM periods later.",
+     "This reverses the trend: the last REM period is the longest.",
+     "There are five REM periods, not one.",
+     "They follow a regular cycle and their lengths increase."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-3",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.A",
+   "stimulus": "sleep-s1",
+   "q": "Using the REM period lengths given above the graph, how many minutes did the sleeper spend in REM in all?",
+   "why": {
+    "correct": "10 + 20 + 25 + 25 + 30 = 110 minutes of REM."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sum",
+     "args": [
+      [
+       10,
+       20,
+       25,
+       25,
+       30
+      ]
+     ]
+    },
+    "unit": "min",
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "5 is the number of REM periods. The question asks for minutes: add the 5 lengths."
+     },
+     {
+      "value": 30,
+      "why": "30 minutes is only the last REM period. Add all 5 lengths."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-4",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.A",
+   "stimulus": "sleep-s1",
+   "q": "What percent of the 480-minute night did the sleeper spend in REM? Give your answer to the nearest whole percent.",
+   "why": {
+    "correct": "110 / 480 = 0.229, which is about 23%. Adults typically spend about 20 to 25% of sleep in REM."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sum",
+         "args": [
+          [
+           10,
+           20,
+           25,
+           25,
+           30
+          ]
+         ]
+        },
+        480
+       ]
+      },
+      100
+     ]
+    },
+    "unit": "%",
+    "places": 0,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sum",
+         "args": [
+          [
+           10,
+           20,
+           25,
+           25,
+           30
+          ]
+         ]
+        },
+        8
+       ]
+      },
+      "why": "Dividing by 8 hours gives minutes of REM per hour, not a percent. Divide the REM minutes by 480 minutes, then multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-5",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "sleep-s2",
+   "q": "Which research method did this study use?",
+   "options": [
+    "A correlational study",
+    "An experiment",
+    "A case study",
+    "Naturalistic observation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The researchers measured two variables as they occurred (screen minutes and sleep minutes) and computed a correlation. Nothing was manipulated and no one was assigned to use the phone more or less.",
+    "options": [
+     "Right: two measured variables and a correlation coefficient make it correlational.",
+     "An experiment would assign students to different amounts of screen time; this study did not.",
+     "A case study examines one person or a few in depth; this study had 240 students.",
+     "The data came from phone apps and trackers, and the point was the relationship between two variables, which makes it correlational."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-6",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "sleep-s2",
+   "q": "What does $r = -0.42$ tell you about these students?",
+   "options": [
+    "More bedtime screen use went with less sleep, a moderate relationship",
+    "More bedtime screen use went with more sleep, a moderate relationship",
+    "Bedtime screen use caused 42% less sleep in these students",
+    "Screen use and sleep were unrelated in these students"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A negative r means that as one variable goes up the other tends to go down. A size of about 0.4 is a moderate relationship.",
+    "options": [
+     "Right: negative direction, moderate strength.",
+     "A negative correlation means the two variables move in opposite directions.",
+     "A correlation is not a percent and cannot show cause.",
+     "An r of -0.42 is clearly different from zero, so the variables are related."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-7",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "sleep-s2",
+   "q": "Which is a third variable that could explain the correlation without phones causing shorter sleep?",
+   "options": [
+    "Heavy homework loads, which keep students up late and on their phones",
+    "The wrist tracker, which measured how many minutes each student slept",
+    "The number of students, 240, who took part in the study",
+    "The two-week length of the study, which covered weekends"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A third variable affects both measured variables. Heavy homework could make students stay up later (less sleep) and use their phones more before bed, creating the correlation on its own.",
+    "options": [
+     "Right: homework could raise screen use and cut sleep at the same time.",
+     "The tracker is how sleep was measured (the operational definition), not a third variable.",
+     "Sample size does not create a relationship between the two variables.",
+     "The study length is part of the method; it does not drive both variables."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-8",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "sleep-s2",
+   "q": "State the operational definition of sleep in this study.",
+   "why": {
+    "correct": "An operational definition says how this study measured the variable: total minutes of sleep from the wrist tracker."
+   },
+   "specific": {
+    "frame": "Sleep was measured as ___, recorded by ___.",
+    "model": "Sleep was operationally defined as the total minutes of sleep each night, recorded by a wrist tracker and averaged over two weeks.",
+    "write": {
+     "context": [
+      "minutes",
+      "tracker"
+     ]
+    },
+    "slots": {
+     "opdef": {
+      "label": "Measure",
+      "options": [
+       "total minutes of sleep each night",
+       "how rested each student felt",
+       "minutes of screen use before bed"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Feeling rested was never measured; a feeling is not a measure unless the study says how it was scored.",
+       "2": "Screen minutes is the other variable, not sleep."
+      }
+     },
+     "method": {
+      "label": "Recorded by",
+      "options": [
+       "a wrist tracker",
+       "a sleep diary",
+       "a phone app"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The summary says a tracker recorded sleep; no diary was used.",
+       "2": "The phone app recorded screen use, not sleep."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-sleep-9",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Kenji flies from Los Angeles to Tokyo. For several days he is wide awake at 3 a.m. and sleepy at noon. What best explains this?",
+   "options": [
+    "His circadian rhythm is still set to Los Angeles time",
+    "He is spending too long in N3 sleep each night",
+    "He has developed narcolepsy from the long flight",
+    "His REM sleep has been replaced by NREM sleep"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The body's roughly 24-hour clock, set mainly by light, takes days to shift to a new time zone. Until it does, his sleepiness follows home time.",
+    "options": [
+     "Right: jet lag is a circadian rhythm out of step with local time.",
+     "Deep N3 sleep does not explain being awake at night and sleepy at noon.",
+     "Narcolepsy is a lasting disorder of sudden sleep attacks, not a result of travel.",
+     "He still cycles through both REM and NREM; the timing of sleep is off."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-10",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "As she drifts off, Priya suddenly feels as if she is falling and her leg jerks, waking her. In which stage did this most likely happen?",
+   "options": [
+    "N1",
+    "N3",
+    "REM",
+    "N2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hypnagogic sensations, such as the feeling of falling and a sudden jerk, happen in N1, the light transition from waking to sleep.",
+    "options": [
+     "Right: falling sensations and jerks come as you first drift off, in N1.",
+     "N3 is deep sleep later in the cycle; people are hard to wake from it.",
+     "In REM the major muscles are largely paralyzed, so a jerking leg is not typical.",
+     "N2 comes after N1; the falling feeling marks the very start of sleep."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-11",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A sleep technician sees a sleeper's EEG show fast, irregular waves like those of waking, while the eyes dart under the lids and the arm and leg muscles are limp. Which stage is this?",
+   "options": [
+    "REM sleep",
+    "N3 sleep",
+    "N1 sleep",
+    "Awake"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "REM sleep combines an active, waking-like brain, rapid eye movements and near-paralysis of the major muscles. Vivid dreams are most common here.",
+    "options": [
+     "Right: active brain, darting eyes and limp muscles define REM.",
+     "N3 shows large, slow delta waves, not fast waves.",
+     "N1 is light drifting-off sleep without rapid eye movements or muscle paralysis.",
+     "An awake person has normal muscle tone; limp muscles point to REM."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-12",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A 9-year-old gets up about an hour after falling asleep, walks to the kitchen with open eyes, and remembers nothing in the morning. Which disorder fits, and in which stage does it usually happen?",
+   "options": [
+    "Somnambulism, in N3 sleep",
+    "Somnambulism, in REM sleep",
+    "Narcolepsy, in REM sleep",
+    "REM sleep behavior disorder, in N3 sleep"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sleepwalking (somnambulism) happens during deep N3 sleep, which is why it occurs early in the night and is more common in children, who have more N3.",
+    "options": [
+     "Right: sleepwalking arises from deep N3 sleep early in the night.",
+     "In REM the major muscles are largely paralyzed, so ordinary sleepwalking does not come from REM.",
+     "Narcolepsy is sudden sleep during the day, not walking at night.",
+     "REM sleep behavior disorder happens in REM, not N3, and involves acting out dreams."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-13",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A 68-year-old man punches and kicks in his sleep. When woken he describes a dream of fighting off an attacker. Which disorder fits best?",
+   "options": [
+    "REM sleep behavior disorder",
+    "Somnambulism",
+    "Sleep apnea",
+    "Insomnia"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In REM sleep behavior disorder, the normal muscle paralysis of REM fails, so people act out their dreams. It is most common in older men.",
+    "options": [
+     "Right: acting out a dream means REM paralysis has failed.",
+     "Sleepwalking comes from N3 and people rarely recall a dream.",
+     "Sleep apnea is repeated pauses in breathing, not acting out dreams.",
+     "Insomnia is trouble falling or staying asleep."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-14",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Marcus snores loudly. His partner notices he stops breathing for several seconds, then gasps, many times a night. He is exhausted every day. Which disorder is most likely?",
+   "options": [
+    "Sleep apnea",
+    "Narcolepsy",
+    "Insomnia",
+    "REM sleep behavior disorder"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In sleep apnea breathing repeatedly stops during sleep. Each pause briefly wakes the person to breathe, so sleep is broken and daytime sleepiness follows.",
+    "options": [
+     "Right: pauses in breathing with gasping and loud snoring point to sleep apnea.",
+     "Narcolepsy is sudden attacks of sleep during the day, not pauses in breathing at night.",
+     "People with insomnia have trouble falling or staying asleep, but not pauses in breathing.",
+     "Acting out dreams is a REM problem, not pauses in breathing."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-15",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "During a funny conversation, a college student suddenly falls asleep in her chair, and a sleep study shows she enters REM within minutes. Which disorder fits?",
+   "options": [
+    "Narcolepsy",
+    "Sleep apnea",
+    "Somnambulism",
+    "Insomnia"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Narcolepsy brings sudden, uncontrollable sleep attacks, often going straight into REM; strong emotions such as laughter can trigger a sudden loss of muscle tone.",
+    "options": [
+     "Right: sudden sleep with a quick drop into REM is narcolepsy.",
+     "Sleep apnea causes tiredness from broken sleep, not sudden sleep in the middle of a conversation.",
+     "Sleepwalking happens at night in N3, not as sudden daytime sleep.",
+     "Insomnia is difficulty sleeping, not falling asleep without warning."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-16",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement matches the activation-synthesis theory of dreaming?",
+   "options": [
+    "In REM, random brainstem signals are woven by the cortex into a story",
+    "Dreams replay the day so the brain can sort and store new memories",
+    "Sleep lets the body repair tissue and restore energy used during the day",
+    "Dreams show hidden wishes that the dreamer would reject while awake"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Activation-synthesis says dreams start as random neural activity from the brainstem during REM; the cortex synthesizes it into a story, which is why dreams can be bizarre.",
+    "options": [
+     "Right: random activation, then the cortex makes sense of it.",
+     "That is the consolidation view of sleep and dreaming.",
+     "That is the restoration theory, about why we sleep, not what dreams are.",
+     "Hidden-wish dream theories are outside this course and have little scientific support."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-17",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Students learn a list of word pairs at 9 p.m. Half sleep normally; half are kept awake all night and nap the next afternoon. The next evening, the sleep group recalls more pairs. Which idea does this support?",
+   "options": [
+    "Sleep helps consolidate new memories",
+    "Sleep mainly restores the body's energy",
+    "Dreams come from random brainstem activity",
+    "Sleep timing is set by the circadian rhythm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Recalling more after a night of sleep supports the idea that sleep helps stabilize and store new memories (consolidation).",
+    "options": [
+     "Right: better recall after sleep fits the consolidation view.",
+     "Restoring energy is a different function; the measure here was memory.",
+     "This finding is about memory, not where dreams come from.",
+     "The circadian rhythm times sleep but the study tested memory."
+    ]
+   }
+  },
+  {
+   "id": "psy-sleep-18",
+   "unit": "unit-1",
+   "topic": "sleep",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "For three months, Ana has lain awake for over an hour most nights and wakes at 4 a.m., unable to fall back asleep, and is tired at work. Which disorder fits?",
+   "options": [
+    "Insomnia",
+    "Narcolepsy",
+    "Sleep apnea",
+    "Somnambulism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Insomnia is persistent trouble falling asleep or staying asleep, with daytime effects, lasting months.",
+    "options": [
+     "Right: long-lasting trouble falling and staying asleep is insomnia.",
+     "Narcolepsy is falling asleep suddenly, the opposite problem.",
+     "Sleep apnea involves breathing pauses, usually with loud snoring.",
+     "Sleepwalking happens during deep sleep; it is not lying awake."
+    ]
+   }
+  }
+ ]
+}

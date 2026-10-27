@@ -42,12 +42,12 @@
   var TYPES = ['full', 'design', 'results', 'ethics'];
   var TYPE_LABEL = { full: 'The whole AAQ', design: 'Method and variable (A, B)', results: 'Statistic and argument (C, F)', ethics: 'Ethics and generalizing (D, E)' };
   var PARTS = [
-    { k: 'A', name: 'Research method', pts: 1, skill: '2.A' },
-    { k: 'B', name: 'Operational definition', pts: 1, skill: '2.B' },
-    { k: 'C', name: 'Statistic', pts: 1, skill: '3.B' },
-    { k: 'D', name: 'Ethical guideline', pts: 1, skill: '2.D' },
-    { k: 'E', name: 'Generalizability', pts: 1, skill: '2.A' },
-    { k: 'F', name: 'Argumentation', pts: 2, skill: '4.B' }
+    { k: 'A', name: 'Research method', short: 'Method', pts: 1, skill: '2.A' },
+    { k: 'B', name: 'Operational definition', short: 'Variable', pts: 1, skill: '2.B' },
+    { k: 'C', name: 'Statistic', short: 'Statistic', pts: 1, skill: '3.B' },
+    { k: 'D', name: 'Ethical guideline', short: 'Ethics', pts: 1, skill: '2.D' },
+    { k: 'E', name: 'Generalizability', short: 'Generalize', pts: 1, skill: '2.A' },
+    { k: 'F', name: 'Argumentation', short: 'Argue', pts: 2, skill: '4.B' }
   ];
   /* The research methods a student may name (framework.md section 7: the wrong
      method, several methods, or a hybrid lose part A). */
@@ -179,18 +179,18 @@
   function parts(ctx, st){
     var g = ctx.generalize[0], e = ctx.ethics[0];
     return {
-      A: { where: 'Method: how people ended up in each condition.', earns: METHODS[ctx.method] + '. ' + ctx.methodWhy,
+      A: { where: 'how people ended up in each condition.', earns: METHODS[ctx.method] + '. ' + ctx.methodWhy,
         misses: METHODS[ctx.method === 'experiment' ? 'correlational' : 'experiment'] + ', or two methods at once.', slip: 'The readers saw the wrong method, several methods, or a hybrid such as "an experimental correlation". Name one method, and only if the design fits it.' },
-      B: { where: 'Method: the sentence that says what was counted or scored.', earns: cap(ctx.dv.what) + ' ' + ctx.dv.how + '.',
+      B: { where: 'the sentence that says what was counted or scored, and when.', earns: cap(ctx.dv.what) + ' ' + ctx.dv.how + '.',
         misses: cap(ctx.dv.vague) + '.', slip: 'Describing the concept in general, not how this study measured it. Say what was counted or scored, on what scale, and when.' },
-      C: { where: 'Results: the numbers for the groups (or r), and whether the difference was significant.', earns: statRight(ctx, st),
+      C: { where: 'the numbers for each group (or r), and whether the difference was statistically significant.', earns: statRight(ctx, st),
         misses: st.kind === 'r' ? 'The correlation was ' + rtxt(st.r2) + '.' : 'The mean of ' + ctx.groups[st.hi].name + ' was ' + fx(st.means[st.hi], st.dec) + ' and the mean of ' + ctx.groups[st.lo].name + ' was ' + fx(st.means[st.lo], st.dec) + '.',
         slip: 'Restating the numbers without saying what they show for these groups, reversing the direction, or defining "mean" or "significant" in general.' },
-      D: { where: 'Method: the sentences about consent, withdrawal, review or debriefing.', earns: GUIDE[e.g].name + ': ' + e.how,
+      D: { where: 'the sentences about consent, withdrawal, review or debriefing.', earns: GUIDE[e.g].name + ': ' + e.how,
         misses: GUIDE[ctx.ethicsAbsent[0]].name + ' (the summary never mentions it), or random assignment (a design feature, not an ethical guideline).', slip: 'Naming a guideline the summary never describes, or not saying how the researchers applied it.' },
-      E: { where: 'Participants: age, place, culture and how they were recruited.', earns: cap(g.key) + ', for ' + g.pop + ': ' + g.because,
+      E: { where: 'age, place, culture and how they were recruited.', earns: cap(g.key) + ', for ' + g.pop + ': ' + g.because,
         misses: 'No, only ' + ctx.participants.n + ' people took part.', slip: 'Arguing from sample size or a design flaw instead of who the participants were. Name the population and the trait that matters.' },
-      F: { where: 'Introduction (the hypothesis) and Results (the finding).', earns: argueRight(ctx, st),
+      F: { where: 'the hypothesis in the Introduction, then the finding in the Results.', earns: argueRight(ctx, st),
         misses: 'It proves that ' + ctx.hypothesis + '.', slip: 'Evidence with no explanation, an explanation with no result, misreading the result, or saying a study "proves" an idea.' }
     };
   }
@@ -354,7 +354,7 @@
       steps.push(stepArgue(r, ctx, st));
       solution.push('<b>F.</b> ' + argueRight(ctx, st));
     }
-    var text = '<p><b>' + esc(ctx.title) + '.</b> Read the study on the left, then answer ' + (type === 'full' ? 'each part as the AAQ asks' : 'the parts below') + '.</p>';
+    var text = '<p><b>' + esc(ctx.title) + '.</b> Read the study, then answer ' + (type === 'full' ? 'each part as the AAQ asks' : 'the parts below') + '.</p>';
     return { type: type, ctx: ctx.id, topic: ctx.topic, text: text, steps: steps, solution: solution, study: st,
       given: { variant: variant, kind: st.kind, means: st.means, hi: st.hi, lo: st.lo, points: st.points, r: st.r, ethic: extra.ethic, pop: extra.pop } };
   }

@@ -1,0 +1,71 @@
+{
+ "topic": "encoding-memories",
+ "hook": "Two students study the same notes for the same three hours. One crams the night before; the other spreads the time over a month. On exam day they score about the same. A month later, one of them still remembers most of it. How you put information in decides how long it stays.",
+ "prereq": [
+  {
+   "q": "About how long does short-term memory hold information without repetition?",
+   "options": [
+    "About 20 to 30 seconds",
+    "Less than one second",
+    "About a day",
+    "For years"
+   ],
+   "correct": 0,
+   "why": "Short-term memory fades within about 20 to 30 seconds unless the information is repeated or worked on.",
+   "review": "memory-intro"
+  },
+  {
+   "q": "Which kind of processing leads to the strongest memory?",
+   "options": [
+    "Deep processing of meaning",
+    "Shallow processing of how a word looks",
+    "Shallow processing of how a word sounds",
+    "No processing at all"
+   ],
+   "correct": 0,
+   "why": "Thinking about meaning (deep processing) produces stronger memories than attending to appearance or sound.",
+   "review": "memory-intro"
+  }
+ ],
+ "figure": {
+  "figure": "encoding-memories-serial",
+  "caption": "The serial position curve: first and last words are recalled best (invented data for practice)."
+ },
+ "chain": [
+  {
+   "cause": "Information is organized into chunks, hierarchies or mnemonics",
+   "effect": "more of it fits in short-term memory and it links to what you know"
+  },
+  {
+   "cause": "Study is spread over several sessions",
+   "effect": "each session rebuilds the memory, so it lasts longer (the spacing effect)"
+  },
+  {
+   "cause": "A list is learned in one pass",
+   "effect": "the first items reach long-term memory (primacy) and the last stay in short-term memory (recency)"
+  },
+  {
+   "cause": "A delay fills short-term memory with something else",
+   "effect": "the recency effect fades but the primacy effect stays"
+  }
+ ],
+ "ideas": [
+  "<b>Mnemonics</b> link new information to an easy pattern; the <b>method of loci</b> places items along an imagined route.",
+  "<b>Chunking</b> groups items into meaningful units; <b>hierarchies</b> organize from general to specific. Both use what you already know.",
+  "<b>Distributed practice</b> beats <b>massed practice</b> (cramming) for long-term memory: the <b>spacing effect</b>.",
+  "The <b>serial position effect</b>: the first items (<b>primacy</b>, in long-term memory) and last items (<b>recency</b>, still in short-term memory) are recalled best."
+ ],
+ "misconception": {
+  "wrong": "Cramming works just as well as spacing, because you can do well on the next day's test.",
+  "right": "Cramming can help on a test the next day, but spaced study leads to much better memory weeks later. If you need it for the final or the AP® Psychology exam, spread it out."
+ },
+ "check": [
+  "psy-encoding-memories-1",
+  "psy-encoding-memories-2",
+  "psy-encoding-memories-3",
+  "psy-encoding-memories-9",
+  "psy-encoding-memories-10",
+  "psy-encoding-memories-14"
+ ],
+ "summary": "Encoding improves when information is organized (mnemonics, the method of loci, chunking, hierarchies) and when study is spread out (distributed practice and the spacing effect) instead of crammed (massed practice). In a list, the first items (primacy) and last items (recency) are remembered best, giving the U-shaped serial position curve."
+}

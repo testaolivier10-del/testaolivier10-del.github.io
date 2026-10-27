@@ -1,0 +1,29 @@
+{
+ "nervous-system": {
+  "def": "The body’s communication network of neurons, made of the central nervous system and the peripheral nervous system."
+ },
+ "cns": {
+  "def": "The brain and spinal cord, which take in information, make decisions and send out commands."
+ },
+ "spinal-cord": {
+  "def": "The column of nerve tissue inside the backbone that carries messages between the brain and the body; part of the central nervous system."
+ },
+ "pns": {
+  "def": "All the nerves outside the brain and spinal cord, linking the central nervous system to the body; made of the somatic and autonomic nervous systems."
+ },
+ "somatic": {
+  "def": "The part of the peripheral nervous system that controls voluntary movement of the skeletal muscles and carries sensations from the body."
+ },
+ "autonomic": {
+  "def": "The part of the peripheral nervous system that controls automatic functions such as heart rate, breathing, digestion and glands; made of the sympathetic and parasympathetic divisions."
+ },
+ "sympathetic": {
+  "def": "The division of the autonomic nervous system that arouses the body for action: it speeds the heart, widens the pupils, slows digestion and increases sweating."
+ },
+ "parasympathetic": {
+  "def": "The division of the autonomic nervous system that calms the body and conserves energy: it slows the heart and lets digestion resume."
+ },
+ "neuron": {
+  "def": "A nerve cell: the basic cell of the nervous system, specialized to receive and send information."
+ }
+}

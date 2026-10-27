@@ -1,0 +1,160 @@
+{
+ "id": "frq-research-methods-aaq",
+ "type": "aaq",
+ "points": 7,
+ "title": "Article analysis: a night of short sleep and word recall",
+ "units": [
+  "skills-research"
+ ],
+ "topics": [
+  "research-methods"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.C",
+  "2.D",
+  "2.A",
+  "4.B"
+ ],
+ "study": {
+  "title": "Does a short night of sleep reduce recall of new words?",
+  "invented": true,
+  "study": {
+   "introduction": "Sleep after learning is thought to help the brain hold on to new information. The researchers predicted that people who slept only 4 hours after studying a word list would recall fewer words the next morning than people who slept 8 hours.",
+   "participants": "Sixty undergraduate students (ages 18 to 23; 34 women and 26 men) at one university in the United States volunteered for course credit. All reported normal sleep and no sleep disorders. Before taking part, each student read and signed a consent form that described the sleep schedule and stated that they could stop at any time without losing credit. The university’s institutional review board approved the study.",
+   "method": "At 9 p.m., every student studied the same list of 40 unrelated nouns for 10 minutes in the sleep laboratory. A computer then randomly assigned each student to one of two conditions. Students in the short-sleep condition were allowed to sleep from 3 a.m. to 7 a.m. (4 hours); students in the full-sleep condition slept from 11 p.m. to 7 a.m. (8 hours). Short-sleep students watched nature documentaries with a research assistant until 3 a.m. At 8 a.m., each student had 3 minutes to write down as many words from the list as they could remember. A research assistant who did not know each student’s condition counted the correctly recalled words.",
+   "results": "The full-sleep group recalled an average of 17 words and the short-sleep group an average of 12 words (see the graph). The difference was statistically significant ($p < .05$).",
+   "discussion": "The researchers concluded that a short night of sleep after learning reduced recall the next morning. At the end of the session, each student was told the purpose of the study and given information on healthy sleep habits."
+  },
+  "plot": {
+   "label": "Bar graph of the mean number of words recalled out of 40: full sleep (8 hours) 17, short sleep (4 hours) 12; invented data",
+   "kind": "bar",
+   "categories": [
+    "Full (8 hours)",
+    "Short (4 hours)"
+   ],
+   "xLabel": "Sleep condition",
+   "values": [
+    17,
+    12
+   ],
+   "yLabel": "Mean words recalled (out of 40)",
+   "y": [
+    0,
+    20
+   ]
+  },
+  "ethics": [
+   "institutional review board approval",
+   "informed consent",
+   "the right to withdraw",
+   "debriefing"
+  ]
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Identify</b> the research method used in the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the method as an experiment.",
+     "accept": [
+      "an experiment",
+      "a true experiment",
+      "an experimental study"
+     ]
+    }
+   ],
+   "sample": "The study is an experiment: the researchers manipulated how long students slept and randomly assigned each student to the short-sleep or full-sleep condition."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>State</b> the operational definition of recall in the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States recall as the number of words from the 40-word list written down correctly in 3 minutes the next morning (at 8 a.m.).",
+     "accept": [
+      "the number of the 40 nouns each student correctly wrote down in 3 minutes at 8 a.m.",
+      "how many list words a student wrote down in 3 minutes the next morning"
+     ]
+    }
+   ],
+   "sample": "Recall was the number of words from the 40-noun list that each student correctly wrote down in 3 minutes at 8 a.m. the next morning."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Describe</b> what the difference between the group means shows.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Describes that the full-sleep group recalled more words on average (17) than the short-sleep group (12), and that because the difference was statistically significant it is unlikely to be due to chance alone.",
+     "accept": [
+      "students who slept 8 hours remembered about 5 more words on average than those who slept 4 hours, a difference unlikely to be due to chance",
+      "the short-sleep group recalled fewer words, and the significant result means the gap is probably not chance"
+     ]
+    }
+   ],
+   "sample": "On average, students who slept 8 hours recalled 17 words and students who slept 4 hours recalled 12, so the full-sleep group remembered about 5 more words. Because the difference was statistically significant, it is unlikely to be due to chance alone."
+  },
+  {
+   "label": "D",
+   "prompt": "<b>Identify</b> one ethical guideline the researchers followed and <b>describe</b> how they applied it in this study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies a guideline described in the summary (institutional review board approval, informed consent, right to withdraw or debriefing) and describes how it was applied in this study.",
+     "accept": [
+      "informed consent: each student read and signed a form describing the sleep schedule before taking part",
+      "right to withdraw: the form told students they could stop at any time without losing course credit",
+      "IRB approval: the university’s review board approved the study before it began",
+      "debriefing: at the end, each student was told the purpose of the study"
+     ]
+    }
+   ],
+   "sample": "The researchers obtained informed consent: before the study, each student read and signed a consent form that described the sleep schedule they might be given, so they knew what taking part involved before agreeing."
+  },
+  {
+   "label": "E",
+   "prompt": "<b>Explain</b> the extent to which the results of the study can be generalized to high-school students.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Explains the extent of generalizability using characteristics of the participants (for example, ages 18 to 23, undergraduates at one U.S. university, students with normal sleep) compared with high-school students.",
+     "accept": [
+      "partly: high-school students also learn new material and need sleep, but the participants were 18 to 23 and attended one university, while high-school students are about 14 to 18",
+      "not fully, because all participants were university students aged 18 to 23, older than most high-school students"
+     ]
+    }
+   ],
+   "sample": "The results generalize only partly to high-school students. Like high-school students, the participants were students learning new material. But they were undergraduates aged 18 to 23 at one U.S. university who reported normal sleep, while high-school students are mostly 14 to 18, and teenagers’ sleep needs and schedules differ from young adults’."
+  },
+  {
+   "label": "F",
+   "prompt": "<b>Explain</b> how the results of the study support or refute the researchers’ hypothesis that short sleep after learning reduces recall.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Uses a specific, accurate result: the short-sleep group recalled fewer words on average (12) than the full-sleep group (17).",
+     "accept": [
+      "the 4-hour group recalled 12 words compared with 17 for the 8-hour group",
+      "students allowed only 4 hours of sleep remembered about 5 fewer words"
+     ]
+    },
+    {
+     "point": "Explains how that result supports the hypothesis: because students were randomly assigned and the only planned difference was the amount of sleep, the lower recall can be attributed to short sleep.",
+     "accept": [
+      "random assignment made the groups alike, so the lower recall after short sleep supports the claim that short sleep reduced recall",
+      "this supports the hypothesis because the only planned difference between the groups was how long they slept"
+     ]
+    }
+   ],
+   "sample": "The results support the hypothesis. The short-sleep group recalled an average of 12 words, compared with 17 for the full-sleep group. Because students were randomly assigned to the conditions and both groups studied the same list at the same time, the main planned difference was the amount of sleep, so the lower recall after 4 hours of sleep supports the idea that short sleep after learning reduces recall.",
+   "write": {
+    "mechanism": true
+   }
+  }
+ ]
+}

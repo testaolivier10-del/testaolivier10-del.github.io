@@ -1,0 +1,110 @@
+/* Development (psychology/assets/tools/development.js). OWNED BY THIS TOOL ONLY (builder T4).
+   One color per lane, the same on the timeline, the now card and the
+   drills: thinking cerulean, identity vermillion, relationships green, body
+   and roles reddish purple (the course plot colors; lighter in dark mode).
+   Text in a lane color uses its ink shade for contrast, and every band is
+   labeled, so color is never the only cue. People are flat illustrations;
+   their clothes and the room come from the tokens below. */
+.dv-svg,.dv-qfig{--dv-c1:#084F78;--dv-c1-f:#D6E9F5;--dv-c1-on:#2C83B8;--dv-c2:#A84A00;--dv-c2-f:#FBE3D2;--dv-c2-on:#D9661A;
+  --dv-c3:#00704F;--dv-c3-f:#D3F0E6;--dv-c3-on:#16A27A;--dv-c4:#7A3D6A;--dv-c4-f:#F2DEEC;--dv-c4-on:#A8508A;
+  --dv-room:#F4F7FA;--dv-floor:#E3D7C6;--dv-wall:#E9EEF3;--dv-window:#CFE6F3;--dv-line:#3A4A5C;
+  --dv-shirt:#2C83B8;--dv-shirt2:#C2577F;--dv-pants:#34465C;--dv-kid:#E6A532;--dv-kidpants:#5A7FA6;--dv-shoe:#2B2B33;
+  --dv-wood:#B98A5A;--dv-wood2:#8C643E;}
+:root[data-theme="dark"] .dv-svg,:root[data-theme="dark"] .dv-qfig{--dv-c1:#A8D8F0;--dv-c1-f:#17344A;--dv-c1-on:#3C8FC4;--dv-c2:#FFB385;--dv-c2-f:#3E2618;--dv-c2-on:#C65E1E;
+  --dv-c3:#7BE0C1;--dv-c3-f:#123A2E;--dv-c3-on:#1F8E6C;--dv-c4:#F0B8DF;--dv-c4-f:#38202F;--dv-c4-on:#9A4D80;
+  --dv-room:#1A2533;--dv-floor:#3A3226;--dv-wall:#1F2B3A;--dv-window:#24445A;--dv-line:#C5D2E0;
+  --dv-shirt:#3C8FC4;--dv-shirt2:#C8638B;--dv-pants:#516A88;--dv-kid:#D9982A;--dv-kidpants:#6E92B8;--dv-shoe:#0E1117;
+  --dv-wood:#8C6A48;--dv-wood2:#6A4E33;}
+.dv-card{display:grid;gap:14px;}
+.dv-fig{position:relative;min-height:420px;height:min(76vh,680px);}
+.ls-root .dv-fig{flex:1 1 auto;height:auto;min-height:360px;}
+.dv-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:none;}
+.dv-fig .dv-svg{position:absolute;inset:0;}
+.dv-qfig{margin:0;}
+.dv-qfig .dv-svg{height:auto;touch-action:auto;}
+.dv-grp[hidden],.dv-go[hidden]{display:none;}
+.dv-go{display:flex;gap:8px;}
+.dv-tipslot{height:52px;}
+.dv-chips{display:flex;gap:8px;flex-wrap:wrap;}
+/* the room */
+.dv-room{fill:var(--dv-room);}
+.dv-room.is-key{stroke:var(--cink);stroke-width:2;}
+.dv-floor{fill:var(--dv-floor);}
+.dv-window{fill:var(--dv-window);stroke:var(--dv-line);stroke-width:1.2;opacity:.85;}
+.dv-mullion{stroke:var(--dv-line);stroke-width:1.2;opacity:.6;}
+.dv-mat{fill:#9FD3C1;opacity:.75;}
+:root[data-theme="dark"] .dv-mat{fill:#2E6A58;}
+.dv-door{fill:var(--dv-wood);stroke:var(--dv-wood2);stroke-width:1.2;}
+.dv-door.is-open{fill:var(--dv-wall);stroke-dasharray:4 3;}
+.dv-knob{fill:var(--dv-wood2);}
+.dv-blk1{fill:#E05A47;} .dv-blk2{fill:#F2B33D;} .dv-blk3{fill:#3E8ED0;}
+.dv-desk{fill:var(--dv-wood);} .dv-deskleg{stroke:var(--dv-wood2);stroke-width:3;}
+.dv-book{fill:#C2577F;}
+.dv-chair rect{fill:var(--dv-wood);} .dv-chair line{stroke:var(--dv-wood2);stroke-width:3;stroke-linecap:round;}
+.dv-board{fill:var(--white);stroke:var(--dv-line);stroke-width:1.4;}
+.dv-chart{fill:none;stroke:var(--dv-c3-on);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;}
+.dv-plane path{fill:#E05A47;stroke:#A63A2B;stroke-width:.8;}
+.dv-rattle line{stroke:#C2577F;stroke-width:2.4;stroke-linecap:round;} .dv-rattle circle{fill:#F2B33D;stroke:#B07A10;stroke-width:1;}
+.dv-phone{fill:#20262E;stroke:#5A6370;stroke-width:.8;}
+.dv-pack{fill:#3E8ED0;stroke:#2A6699;stroke-width:1;}
+.dv-mug{fill:#F2F2F2;stroke:#7A8590;stroke-width:1;}
+.dv-steam{fill:none;stroke:#9AA6B2;stroke-width:1.4;stroke-linecap:round;}
+.dv-case{fill:#6B4A2E;stroke:#4A3220;stroke-width:1;}
+.dv-cane{fill:none;stroke:var(--dv-wood2);stroke-width:3.2;stroke-linecap:round;}
+.dv-arrow{fill:none;stroke:var(--cink);stroke-width:2.4;marker-end:none;stroke-dasharray:6 4;}
+/* people */
+.dv-shoe{fill:var(--dv-shoe);}
+.dv-diaper{fill:#FFFFFF;stroke:#C9D3DC;stroke-width:1;}
+.dv-far{opacity:.82;}
+.dv-eye{fill:#1E2430;}
+.dv-brow{stroke:#2A2018;stroke-width:1.6;stroke-linecap:round;fill:none;}
+.dv-mouth{fill:none;stroke:#5A2A20;stroke-width:1.6;stroke-linecap:round;}
+.dv-mouth-o{fill:#7A2E26;}
+.dv-tear{fill:#7CC4F0;}
+.dv-blush{fill:#E8857A;opacity:.35;}
+.dv-glass circle,.dv-glass path{fill:none;stroke:#2A2F38;stroke-width:1.3;}
+:root[data-theme="dark"] .dv-glass circle,:root[data-theme="dark"] .dv-glass path{stroke:#0E1117;}
+.dv-q{font-weight:900;font-size:22px;fill:var(--dv-c2);}
+/* timeline */
+.dv-band{stroke:none;}
+.dv-c1{fill:var(--dv-c1-f);} .dv-c2{fill:var(--dv-c2-f);} .dv-c3{fill:var(--dv-c3-f);} .dv-c4{fill:var(--dv-c4-f);}
+.dv-band.is-alt{opacity:.72;}
+.dv-c1.is-on{fill:var(--dv-c1-on);} .dv-c2.is-on{fill:var(--dv-c2-on);} .dv-c3.is-on{fill:var(--dv-c3-on);} .dv-c4.is-on{fill:var(--dv-c4-on);}
+.dv-band-t{font-weight:800;fill:var(--ink);pointer-events:none;}
+.dv-band-t.is-on{fill:#FFFFFF;}
+.dv-c1-t{fill:var(--dv-c1);} .dv-c2-t{fill:var(--dv-c2);} .dv-c3-t{fill:var(--dv-c3);} .dv-c4-t{fill:var(--dv-c4);}
+.dv-lane-h{font-weight:900;font-size:13px;}
+.dv-lane-s{font-weight:700;font-size:10.5px;fill:var(--muted);}
+.dv-axis{stroke:var(--muted);stroke-width:1.2;}
+.dv-grid{stroke:var(--line);stroke-width:1;}
+.dv-tick{font-weight:700;font-size:11.5px;fill:var(--muted);font-variant-numeric:tabular-nums;}
+.dv-mark{stroke:var(--ink);stroke-width:2;stroke-dasharray:5 4;}
+.dv-handle circle{fill:var(--cink);stroke:var(--white);stroke-width:2.5;cursor:ew-resize;}
+.dv-handle text{fill:var(--white);font-size:11px;font-weight:900;pointer-events:none;}
+.dv-now-h{font-weight:900;font-size:17px;fill:var(--ink);}
+.dv-now-k{font-weight:900;font-size:12.5px;}
+.dv-now-v{font-weight:700;font-size:13.5px;fill:var(--ink);}
+.dv-dotk.dv-c1{fill:var(--dv-c1-on);} .dv-dotk.dv-c2{fill:var(--dv-c2-on);} .dv-dotk.dv-c3{fill:var(--dv-c3-on);} .dv-dotk.dv-c4{fill:var(--dv-c4-on);}
+/* attachment */
+.dv-ptitle{font-weight:900;font-size:13px;fill:var(--ink);}
+.dv-pnote{font-weight:700;font-size:12px;fill:var(--muted);}
+.dv-pnote.is-key{fill:var(--cink);font-weight:900;}
+/* parenting */
+.dv-quad{fill:var(--surface2);stroke:var(--line);stroke-width:1;}
+.dv-quad.is-on{fill:var(--ctint);}
+.dv-quad-t{font-weight:800;font-size:13px;fill:var(--muted);}
+.dv-quad-t.is-on{fill:var(--cink);font-weight:900;}
+.dv-gridbox{fill:none;stroke:var(--muted);stroke-width:1.4;}
+.dv-axl{font-weight:800;font-size:12.5px;fill:var(--ink);}
+.dv-dot{fill:var(--cink);stroke:var(--white);stroke-width:3;cursor:grab;}
+.dv-bubble{fill:var(--white);stroke:var(--line);stroke-width:1.2;}
+:root[data-theme="dark"] .dv-bubble{fill:#243244;stroke:#3A4C60;}
+.dv-speech{font-weight:800;font-size:13.5px;fill:var(--ink);}
+/* aging */
+.dv-cry{fill:none;stroke:var(--dv-c1-on);stroke-width:3.2;stroke-linejoin:round;}
+.dv-flu{fill:none;stroke:var(--dv-c2-on);stroke-width:3.2;stroke-linejoin:round;stroke-dasharray:9 5;}
+.dv-pt1{fill:var(--dv-c1-on);stroke:var(--white);stroke-width:2;} .dv-pt2{fill:var(--dv-c2-on);stroke:var(--white);stroke-width:2;}
+.dv-lab{font-weight:900;font-size:12.5px;paint-order:stroke;stroke:var(--dv-room);stroke-width:4px;stroke-linejoin:round;}
+.dv-note{font-weight:700;font-size:11.5px;fill:var(--muted);font-style:italic;}
+.ls-root.ls-phone .dv-now-h{font-size:16px;}
+@media (prefers-reduced-motion: reduce){ .dv-svg *{transition:none !important;} }

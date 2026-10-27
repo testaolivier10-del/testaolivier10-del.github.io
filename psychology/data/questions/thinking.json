@@ -1,0 +1,516 @@
+{
+ "stimuli": {
+  "thinking-s1": {
+   "kind": "data",
+   "title": "Same facts, different wording",
+   "invented": true,
+   "plot": {
+    "label": "Bar graph of the percent of participants who chose the surgery: 80% when told 90% survive, 40% when told 10% die (invented data)",
+    "kind": "bar",
+    "categories": [
+     "\"90% survive\"",
+     "\"10% die\""
+    ],
+    "values": [
+     80,
+     40
+    ],
+    "yLabel": "Percent who chose surgery",
+    "xLabel": "How the outcome was described",
+    "y": [
+     0,
+     100
+    ]
+   },
+   "html": "<p>Sixty adults read about a surgery and decided whether they would choose it. A computer randomly assigned each person to one of two versions. Half (30) read that 90% of patients survive the surgery; the other half (30) read that 10% of patients die from it. The graph shows the percent in each version who chose the surgery.</p>"
+  },
+  "thinking-s2": {
+   "kind": "study",
+   "title": "The candle problem and the box of tacks",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether seeing an object in its usual role makes it harder to use it in a new way. Participants had to attach a candle to a wall so it could burn without dripping wax on the table, using a candle, a book of matches and a box of thumbtacks. The solution is to empty the box, tack it to the wall and use it as a shelf.",
+    "participants": "48 high school juniors from two schools took part with written parental permission and their own agreement. Each was told they could stop at any time.",
+    "method": "Students were randomly assigned to one of two groups of 24. In the full-box group, the tacks were given inside the box. In the empty-box group, the tacks were given beside the empty box. Each student worked alone, and a researcher timed how many minutes the student took to reach the solution, up to 10 minutes.",
+    "results": "The empty-box group solved the problem in an average of 2 minutes; the full-box group took an average of 6 minutes, and 7 of its students did not solve it within 10 minutes.",
+    "discussion": "The researchers concluded that seeing the box as a container made it harder to see it as a shelf."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-thinking-1",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "thinking-s1",
+   "q": "Both versions give the same survival odds. Which concept explains why the choices differed?",
+   "options": [
+    "The framing effect",
+    "The availability heuristic",
+    "Functional fixedness",
+    "The gambler's fallacy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The facts were identical; only the wording changed. A gain frame (\"90% survive\") led to more choices of surgery than a loss frame (\"10% die\"). That is the framing effect.",
+    "options": [
+     "Right: The facts were identical; only the wording changed. A gain frame (\"90% survive\") led to more choices of surgery than a loss frame (\"10% die\"). That is the framing effect.",
+     "The availability heuristic is judging likelihood by how easily examples come to mind. Nothing here asked people to recall examples.",
+     "Functional fixedness is seeing an object only in its usual use. No object or problem to solve is involved.",
+     "The gambler's fallacy is expecting a run of outcomes to \"even out\". The participants made one choice from one description."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-2",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "thinking-s1",
+   "q": "In the \"10% die\" version, 12 of the 30 people chose the surgery. Check the graph: what percent is that?",
+   "why": {
+    "correct": "$\\frac{12}{30} \\times 100 = 40\\%$, the height of the second bar."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        12,
+        30
+       ]
+      },
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          12,
+          60
+         ]
+        },
+        100
+       ]
+      },
+      "why": "20% divides by all 60 people. Only 30 read the \"10% die\" version, so divide by 30."
+     },
+     {
+      "value": 12,
+      "why": "12 is the count of people, not a percent. Divide by 30 and multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-3",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "thinking-s1",
+   "q": "Why can the researchers conclude that the wording caused the difference in choices?",
+   "options": [
+    "Sixty adults is enough people to prove any result is true",
+    "Chance alone decided which version each person read, so the groups were alike except for the wording",
+    "The people chose freely, so their answers show their real preferences",
+    "Both versions were read on a computer screen in the same lab room"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Random assignment spreads people's other differences evenly across the two groups, so the wording is the only systematic difference. That allows a cause-and-effect claim.",
+    "options": [
+     "Sample size alone never proves a cause. What allows the causal claim is that the wording was manipulated and people were randomly assigned.",
+     "Right: Random assignment spreads people's other differences evenly across the two groups, so the wording is the only systematic difference. That allows a cause-and-effect claim.",
+     "Free choice does not rule out other explanations; random assignment is what makes the groups comparable.",
+     "Keeping the setting the same helps, but without random assignment the groups could still differ in other ways."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-4",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "thinking-s2",
+   "q": "Which concept best explains why the full-box group took longer?",
+   "options": [
+    "The representativeness heuristic",
+    "Divergent thinking",
+    "Functional fixedness",
+    "Priming"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With the tacks inside, students saw the box only as a container, its usual function, and were slow to see it as a shelf. That is functional fixedness.",
+    "options": [
+     "The representativeness heuristic judges how likely something is by how well it matches a prototype. Students were not judging likelihood.",
+     "Divergent thinking is producing many possible solutions, the opposite of being stuck. It describes what helped, not what slowed students down.",
+     "Right: With the tacks inside, students saw the box only as a container, its usual function, and were slow to see it as a shelf. That is functional fixedness.",
+     "Priming is earlier exposure making a related idea come to mind faster. It could help solve problems, but the slowdown came from seeing the box only as a container."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-5",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "thinking-s2",
+   "q": "What was the operational definition of problem-solving performance in this study?",
+   "options": [
+    "Whether the tacks came inside or beside the box",
+    "How creative each student felt during the task",
+    "The number of students who were in each of the groups",
+    "Minutes a student took to reach the solution, up to 10"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An operational definition states how the study measured the variable: the timed minutes to solve, with a 10-minute limit.",
+    "options": [
+     "That is the independent variable, the condition the researchers changed.",
+     "A feeling is not what the study measured. It timed how long students took.",
+     "The group size (24) describes the sample, not the measure of performance.",
+     "Right: An operational definition states how the study measured the variable: the timed minutes to solve, with a 10-minute limit."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-6",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "thinking-s2",
+   "q": "Which ethical safeguard does the summary describe, and how was it applied?",
+   "options": [
+    "Informed assent and permission: parents gave written permission and each student agreed to take part",
+    "Debriefing after deception: students were told the true purpose after a cover story",
+    "Random assignment: each student had an equal chance of being in either group",
+    "Confidentiality: names were replaced with code numbers before analysis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For minors, researchers get a parent's informed consent and the young person's own agreement (assent). The summary says both were obtained.",
+    "options": [
+     "Right: For minors, researchers get a parent's informed consent and the young person's own agreement (assent). The summary says both were obtained.",
+     "The summary describes no deception and no debriefing, so this safeguard cannot be credited to the study.",
+     "Random assignment is a design feature that supports cause and effect. It is not an ethical guideline.",
+     "The summary never mentions how names were handled, so this is not a safeguard it describes."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-7",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "thinking-s2",
+   "q": "A student in the full-box group first tried to melt wax to glue the candle to the wall, then kept trying versions of that same idea. Which concept describes this second problem?",
+   "options": [
+    "The sunk-cost fallacy",
+    "Mental set",
+    "Convergent thinking",
+    "The framing effect"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A mental set is the tendency to keep using an approach that worked before, or that came to mind first, even when it is not working.",
+    "options": [
+     "The sunk-cost fallacy is continuing because of what you have already invested (money, time). Nothing suggests the student kept going because of time already spent.",
+     "Right: A mental set is the tendency to keep using an approach that worked before, or that came to mind first, even when it is not working.",
+     "Convergent thinking narrows to one best answer. It is a normal step in problem-solving, not getting stuck on one failing approach.",
+     "The framing effect is about how wording changes a choice. The task wording was the same for everyone."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-8",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Asked to picture a \"bird\", most people imagine something like a robin, not a penguin. A robin is the bird category's what?",
+   "options": [
+    "Algorithm",
+    "Heuristic",
+    "Prototype",
+    "Mental set"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A prototype is the best, most typical example of a concept. People judge membership by comparing new cases with it, which is why a penguin feels like a less \"birdy\" bird.",
+    "options": [
+     "An algorithm is a step-by-step procedure for solving a problem, not an example of a category.",
+     "A heuristic is a mental shortcut for judging or solving. The robin is the example, not the shortcut.",
+     "Right: A prototype is the best, most typical example of a concept. People judge membership by comparing new cases with it, which is why a penguin feels like a less \"birdy\" bird.",
+     "A mental set is a habit of approaching problems one way. It is not the typical example of a category."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-9",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A child calls every four-legged animal at the farm a \"dog\". Later she learns that cows and horses are different, and she makes new categories for them. What is the second step?",
+   "options": [
+    "Assimilation",
+    "Priming",
+    "Functional fixedness",
+    "Accommodation"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Changing a schema, or making a new one, to fit information that does not fit the old one is accommodation.",
+    "options": [
+     "Assimilation is fitting new things into an existing schema, which is the first step (calling every animal a dog).",
+     "Priming is earlier exposure making a related idea come to mind faster. It does not describe changing a category.",
+     "Functional fixedness is seeing an object only in its usual use. It is not about building categories.",
+     "Right: Changing a schema, or making a new one, to fit information that does not fit the old one is accommodation."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-10",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ana needs to find a misspelled name in a list of 500, so she checks every name, one by one, against the class roster. Which strategy is she using?",
+   "options": [
+    "An algorithm",
+    "A heuristic",
+    "Divergent thinking",
+    "A mental set"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Checking every case in order is a step-by-step procedure that is slow but guaranteed to find the error if she follows it. That is an algorithm.",
+    "options": [
+     "Right: Checking every case in order is a step-by-step procedure that is slow but guaranteed to find the error if she follows it. That is an algorithm.",
+     "A heuristic would be a shortcut, such as checking only the names that look odd. Ana checks every name.",
+     "Divergent thinking is generating many different ideas. Ana is following one fixed procedure.",
+     "A mental set is sticking with an old approach that may not fit. Nothing suggests her method is wrong for the job."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-11",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "After a week of news stories about a plane crash, Jordan decides to drive across the country instead of flying, though driving is far more dangerous per mile. Which concept explains his judgment?",
+   "options": [
+    "The representativeness heuristic",
+    "The availability heuristic",
+    "The sunk-cost fallacy",
+    "Functional fixedness"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Vivid, recent crash stories come to mind easily, so Jordan judges flying as more dangerous than it is. That is the availability heuristic.",
+    "options": [
+     "Representativeness is judging by how well something matches a prototype. Jordan is judging by how easily examples come to mind.",
+     "Right: Vivid, recent crash stories come to mind easily, so Jordan judges flying as more dangerous than it is. That is the availability heuristic.",
+     "The sunk-cost fallacy is sticking with something because of what you have already invested. Jordan has invested nothing.",
+     "Functional fixedness is about seeing objects only in their usual use, not about judging risk."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-12",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Told that a quiet man loves poetry, most people guess he is a classics professor rather than a truck driver, even though there are far more truck drivers. Which concept explains the guess?",
+   "options": [
+    "The availability heuristic",
+    "The framing effect",
+    "The representativeness heuristic",
+    "Mental set"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "People judge by how well he matches their prototype of a professor and ignore how common each job is. That is the representativeness heuristic.",
+    "options": [
+     "Availability is about how easily examples come to mind. The guess comes from matching a description to a prototype.",
+     "The framing effect is about wording a choice as a gain or a loss. Nothing is framed that way here.",
+     "Right: People judge by how well he matches their prototype of a professor and ignore how common each job is. That is the representativeness heuristic.",
+     "A mental set is a habit of solving problems one way. This is a judgment of likelihood, not a problem-solving habit."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-13",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A roulette wheel has landed on red seven times in a row. Malik bets on black, sure it is \"due\". Which concept describes his error?",
+   "options": [
+    "The sunk-cost fallacy",
+    "The availability heuristic",
+    "Priming",
+    "The gambler's fallacy"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Each spin is independent; past spins do not change the odds of the next. Expecting a streak to reverse is the gambler's fallacy.",
+    "options": [
+     "The sunk-cost fallacy is continuing because of what you already spent. Malik's error is about predicting the next spin.",
+     "Availability is judging by examples that come to mind easily. Malik is reasoning about a streak, not recalled examples.",
+     "Priming is earlier exposure speeding up a related idea. It does not explain believing an outcome is \"due\".",
+     "Right: Each spin is independent; past spins do not change the odds of the next. Expecting a streak to reverse is the gambler's fallacy."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-14",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Priya has paid for a concert ticket. On the night she is sick and would rather stay home, but she goes anyway because \"I already paid for it.\" Which concept explains her choice?",
+   "options": [
+    "The sunk-cost fallacy",
+    "The gambler's fallacy",
+    "The framing effect",
+    "Mental set"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The money is spent whether she goes or not. Letting a past, unrecoverable cost drive a choice is the sunk-cost fallacy.",
+    "options": [
+     "Right: The money is spent whether she goes or not. Letting a past, unrecoverable cost drive a choice is the sunk-cost fallacy.",
+     "The gambler's fallacy is about expecting random outcomes to even out. No chance event is involved.",
+     "The framing effect is a change in choice caused by wording. The ticket was not described two ways.",
+     "A mental set is a habit of solving problems one way. Priya is deciding whether to go, not solving a problem."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-15",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Students who first read a list including the word \"ocean\" are faster to recognize the word \"wave\" a minute later. Which concept explains this?",
+   "options": [
+    "Accommodation",
+    "Priming",
+    "The framing effect",
+    "Convergent thinking"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Earlier exposure to \"ocean\" activated related ideas, so \"wave\" was recognized faster. That is priming, often without awareness.",
+    "options": [
+     "Accommodation is changing a schema to fit new information. Nothing about the schema changed.",
+     "Right: Earlier exposure to \"ocean\" activated related ideas, so \"wave\" was recognized faster. That is priming, often without awareness.",
+     "The framing effect changes a choice through wording. There is no choice here, only faster recognition.",
+     "Convergent thinking narrows to one best answer to a problem. Recognizing a word is not problem-solving."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-16",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a brainstorming session, Leo is asked to list as many uses for a brick as he can in two minutes. Which kind of thinking is the task measuring?",
+   "options": [
+    "Convergent thinking",
+    "Functional fixedness",
+    "Divergent thinking",
+    "An algorithm"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Generating many different possible answers is divergent thinking, a key part of creativity.",
+    "options": [
+     "Convergent thinking narrows to one correct answer, as on a multiple-choice test.",
+     "Functional fixedness would make it hard to think of new uses. The task measures the opposite.",
+     "Right: Generating many different possible answers is divergent thinking, a key part of creativity.",
+     "An algorithm is a fixed step-by-step procedure. There is no single procedure for listing uses."
+    ]
+   }
+  },
+  {
+   "id": "psy-thinking-17",
+   "unit": "unit-2",
+   "topic": "thinking",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After damage to her prefrontal cortex, a patient can still define words and do arithmetic but struggles to plan a meal, switch between tasks and stop herself from interrupting. Which abilities are most affected?",
+   "options": [
+    "Prototypes",
+    "Perceptual constancy",
+    "Convergent thinking",
+    "Executive functions"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Planning, switching attention and controlling impulses are executive functions, which depend heavily on the prefrontal cortex.",
+    "options": [
+     "Prototypes are typical examples of categories. Her knowledge of words is intact.",
+     "Constancy keeps objects looking stable in size, shape and color. Her trouble is planning and control, not perception.",
+     "She can still find single correct answers (arithmetic). Her trouble is organizing and controlling behavior.",
+     "Right: Planning, switching attention and controlling impulses are executive functions, which depend heavily on the prefrontal cortex."
+    ]
+   }
+  }
+ ]
+}

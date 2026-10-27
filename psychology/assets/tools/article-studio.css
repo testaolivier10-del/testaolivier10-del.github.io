@@ -45,7 +45,8 @@
 
 /* Where each part is answered: a quiet underline everywhere, a highlight on the part shown. */
 .as-hl{border-radius:4px;transition:background-color .25s,box-shadow .25s;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
-.as-paper.has-tags .as-hl{cursor:pointer;text-decoration:underline dotted color-mix(in srgb, var(--cink) 45%, transparent);text-underline-offset:3px;}
+.as-paper.has-tags .as-hl{cursor:pointer;}
+.as-paper.has-tags .as-hl:hover{background:color-mix(in srgb, var(--ctint) 60%, transparent);}
 .as-hl.is-on{background:var(--ctint);box-shadow:0 0 0 2px var(--ctint),inset 0 -2px 0 var(--cink);text-decoration:none;}
 .as-tag{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 4px 0 0;padding:0;border-radius:999px;vertical-align:1px;
   border:1.5px solid var(--cink);background:var(--white);color:var(--cink);font:900 12px/1 var(--font-ui);}
@@ -55,13 +56,13 @@ button.as-tag::after{content:"";position:absolute;inset:-11px;}
 
 /* The dock: part switch, part card, result switch. */
 .as-ctl{display:flex;flex-direction:column;gap:12px;min-width:0;}
-.as-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
-.as-pbtn{display:flex;align-items:center;gap:8px;min-height:48px;padding:6px 10px;border:0;border-radius:12px;background:var(--surface2,var(--paper));color:var(--ink);
-  font:800 13px/1.2 var(--font-ui);text-align:left;cursor:pointer;min-width:0;}
+.as-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;}
+.as-pbtn{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:7px;min-height:48px;padding:6px 8px;border:0;border-radius:12px;background:var(--surface2,var(--paper));color:var(--ink);
+  font:800 13px/1.15 var(--font-ui);text-align:left;cursor:pointer;min-width:0;}
 .as-pbtn:hover{background:var(--hover-tint,var(--ctint));}
 .as-pbtn[aria-pressed="true"]{background:var(--cink);color:var(--white);}
 .as-pk{flex:none;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;background:var(--white);color:var(--cink);font:900 14px var(--font-ui);}
-.as-pn{min-width:0;overflow-wrap:anywhere;}
+.as-pn{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .as-pcard{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);}
 .as-ph{margin:0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font:900 16px var(--font-ui);}
 .as-pl{color:var(--cink);}
@@ -86,9 +87,8 @@ button.as-tag::after{content:"";position:absolute;inset:-11px;}
 @media (max-width:640px){
   .as-paper{padding:12px 12px 16px;border-radius:12px;font-size:15px;line-height:1.58;}
   .as-sec{padding:6px 8px 2px;margin:0 -8px;}
-  .as-parts{gap:5px;}
-  .as-pbtn{flex-direction:column;align-items:flex-start;gap:3px;padding:6px 8px;min-height:56px;font-size:12px;}
-  .as-pk{width:22px;height:22px;font-size:12.5px;}
+  .as-pbtn{gap:5px;padding:6px 6px;font-size:12.5px;}
+  .as-pk{width:24px;height:24px;font-size:13px;}
   .as-res > button{font-size:12.5px;padding:0 4px;}
 }
 @media (prefers-reduced-motion:reduce){.as-sec,.as-hl{transition:none;}}

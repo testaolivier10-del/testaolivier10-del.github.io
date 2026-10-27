@@ -1,0 +1,72 @@
+{
+ "topic": "memory-intro",
+ "hook": "You can ride a bike without being able to explain how. You know the capital of France but not when you learned it. You remember your last birthday in detail. These are different kinds of memory, and the brain keeps them in partly different ways.",
+ "prereq": [
+  {
+   "q": "What is the hippocampus best known for?",
+   "options": [
+    "Helping form new long-term memories of facts and events",
+    "Coordinating balance and movement",
+    "Processing what the eyes see",
+    "Controlling breathing and heart rate"
+   ],
+   "correct": 0,
+   "why": "The hippocampus, in the limbic system, is key to forming new explicit memories.",
+   "review": "brain"
+  },
+  {
+   "q": "Where do two neurons communicate?",
+   "options": [
+    "At the synapse",
+    "Inside the myelin sheath",
+    "In the cell body only",
+    "At the retina"
+   ],
+   "correct": 0,
+   "why": "Neurons release neurotransmitters across the synapse, the gap between them.",
+   "review": "neural-firing"
+  }
+ ],
+ "figure": {
+  "figure": "memory-intro-stores",
+  "caption": "The multi-store model, with working memory inside the short-term store."
+ },
+ "chain": [
+  {
+   "cause": "Sensory input arrives",
+   "effect": "sensory memory holds it for a moment"
+  },
+  {
+   "cause": "Attention selects some of it",
+   "effect": "it enters short-term (working) memory, where it can be worked on"
+  },
+  {
+   "cause": "It is encoded, especially by thinking about meaning",
+   "effect": "it is stored in long-term memory, supported by stronger synapses (LTP)"
+  },
+  {
+   "cause": "A later need arises",
+   "effect": "retrieval brings it back into working memory"
+  }
+ ],
+ "ideas": [
+  "Memory works in three steps: <b>encoding</b>, <b>storage</b> and <b>retrieval</b>.",
+  "<b>Explicit memory</b> can be stated: <b>episodic</b> (events) and <b>semantic</b> (facts). <b>Implicit memory</b> shows in behavior, like <b>procedural</b> skills. <b>Prospective memory</b> is remembering to act later.",
+  "The <b>multi-store model</b>: sensory memory, then short-term memory, then long-term memory. <b>Working memory</b> is the active short-term workspace: central executive, phonological loop, visuospatial sketchpad.",
+  "Some information is encoded by <b>automatic processing</b>, some only by <b>effortful processing</b>. <b>Deep processing</b> of meaning beats <b>shallow processing</b>.",
+  "<b>Long-term potentiation</b> strengthens synapses and is thought to underlie learning and memory."
+ ],
+ "misconception": {
+  "wrong": "Memory is one thing: you either have a good memory or a bad one.",
+  "right": "There are several memory systems. A person can lose the ability to form new event memories yet still learn new skills, because explicit and implicit memory depend partly on different brain systems."
+ },
+ "check": [
+  "psy-memory-intro-1",
+  "psy-memory-intro-2",
+  "psy-memory-intro-5",
+  "psy-memory-intro-8",
+  "psy-memory-intro-10",
+  "psy-memory-intro-15"
+ ],
+ "summary": "Memory is encoding, storage and retrieval. Explicit memory (episodic and semantic) can be stated; implicit memory (procedural) shows in what we do; prospective memory is remembering to act. Information moves from sensory to short-term to long-term memory, working memory is the active workspace, deeper processing gives stronger memories, and long-term potentiation strengthens the synapses involved."
+}
