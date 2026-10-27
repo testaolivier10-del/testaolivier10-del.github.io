@@ -686,7 +686,7 @@
   var NAMES = { I2: 'I₂', HI: 'HI', NO: 'NO', NO2: 'NO₂', N2O4: 'N₂O₄', SO2: 'SO₂', SO3: 'SO₃', NOCl: 'NOCl', PCl3: 'PCl₃', PCl5: 'PCl₅', A: 'A', B: 'B', A2: 'A₂', B2: 'B₂', AB: 'AB', H2: 'H₂', O2: 'O₂', N2: 'N₂', Cl2: 'Cl₂', CO: 'CO', H2O: 'H₂O', NH3: 'NH₃', CO2: 'CO₂', HCl: 'HCl', HA: 'HA', 'A-': 'A⁻', 'H3O+': 'H₃O⁺' };
   function rot(dx, dy, a){ var c = Math.cos(a), s = Math.sin(a); return [dx * c - dy * s, dx * s + dy * c]; }
   function atomSvg(x, y, at){
-    var rr = at.r || 9, lab = at.label || at.el, fs = rr < 7 ? 8 : lab.length > 1 ? 9 : 11;
+    var rr = at.r || 9, lab = at.label || at.el, fs = rr < 7 ? 9 : lab.length > 1 ? 9.5 : 11;
     // A space-filling sphere: the colored body, a soft shadow on the lower
     // right and a specular highlight on the upper left (no gradients, so the
     // markup works in any SVG it is pasted into). The circle comes first:

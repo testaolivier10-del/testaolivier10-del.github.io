@@ -167,12 +167,40 @@
       typeLabel: 'Show the mixture as',
       title: function(p){ return p.mode === 'particles' ? 'Count the particles, then compare Q with K' : 'Compare Q with K'; },
       extra: function(host, p){
-        if(p.mode !== 'particles') return;
-        var counts = {}, names = {};
-        p.species.forEach(function(s, i){ if(s.draw){ counts[s.draw] = p.counts[i]; names[s.draw] = s.html + (p.counts[i] === 1 ? ' particle' : ' particles'); } });
-        host.innerHTML = '<figure class="cd-fig">' + M.particles.box(counts, p.counts.join('') * 7 + 11, { w: 300, h: 190, names: names }) +
-          '<figcaption class="bt-small">Each particle represents ' + M.fmt(p.per, 2) + ' ' + p.unit + '.</figcaption></figure>';
+        var fig = '';
+        if(p.mode === 'particles'){
+          var counts = {}, names = {};
+          p.species.forEach(function(s, i){ if(s.draw){ counts[s.draw] = p.counts[i]; names[s.draw] = s.html + (p.counts[i] === 1 ? ' particle' : ' particles'); } });
+          fig = '<figure class="cd-fig">' + M.particles.box(counts, p.counts.join('') * 7 + 11, { w: 300, h: 190, names: names }) +
+            '<figcaption class="bt-small">Each particle represents ' + M.fmt(p.per, 2) + ' ' + p.unit + '.</figcaption></figure>';
+        }
+        // The Q-K bar from Explore: K in the middle; Q appears once it is
+        // calculated (the student's own Q too, when it was off).
+        host.innerHTML = fig + '<div class="qk-qbar lb" aria-live="polite">' + qkBar(p, null, null) + '</div>';
+      },
+      onStep: function(s, right, api){
+        if(s.key !== 'Q') return;
+        var bar = api.area.querySelector('.qk-qbar') || document.querySelector('.qk-qbar'); if(!bar) return;
+        var inp = api.area.querySelector('.cd-step .cd-num input'), mine = inp && window.ApChemQuestions ? window.ApChemQuestions.parseNumber(inp.dataset.first || inp.value) : NaN;
+        bar.innerHTML = qkBar(api.problem, right ? null : mine, true);
       }
     });
+    // Remember the first number the student typed for Q, so the bar can draw
+    // it next to the right one after Show the answer fills the box in. On the
+    // document: the Tool Studio moves the drill out of app.
+    document.addEventListener('submit', function(e){
+      var inp = e.target.querySelector && e.target.querySelector('.cd-num input');
+      if(inp && !inp.dataset.first && inp.value.trim()) inp.dataset.first = inp.value;
+    }, true);
+    function qkBar(p, mine, shown){
+      var lk = Math.log10(p.K), pos = function(q){ return Math.max(0, Math.min(100, 50 + (Math.log10(Math.max(q, 1e-30)) - lk) * 25)); };
+      var t = ''; ['÷100', '÷10', '', '×10', '×100'].forEach(function(w, i){ t += '<i style="left:' + (i * 25) + '%"' + (i === 2 ? ' class="lb-tk7"' : '') + '></i>' + (i === 0 || i === 4 ? '<em class="lb-e' + i + '" style="left:' + (i * 25) + '%">' + w + '</em>' : ''); });
+      var dir = p.dir === 'f' ? 'fwd' : p.dir === 'r' ? 'rev' : 'eq', bad = shown && isFinite(mine) && mine > 0 && Math.abs(mine / p.Q - 1) > 0.05;
+      return '<p class="qk-qbar-h"><b>Q against K</b> <span class="bt-small">' + (shown ? 'log scale: each step is ×10' : 'Q appears here once you calculate it.') + '</span></p>' +
+        '<div class="lb-scale lb-qk lb-' + (shown ? dir : 'eq') + '"><span class="lb-scale-bar"></span><span class="lb-tks">' + t + '</span><span class="lb-k" style="left:50%"><b>K</b></span>' +
+        (shown ? '<span class="lb-mark" style="left:' + pos(p.Q).toFixed(1) + '%"><b>Q</b></span>' : '') +
+        (bad ? '<span class="lb-mark qk-mine" style="left:' + pos(mine).toFixed(1) + '%"><b>yours</b></span>' : '') + '</div>' +
+        (bad ? '<p class="bt-small qk-mine-t">Your Q, ' + M.fmt(mine, 3) + ', is on the dashed mark; the right Q is ' + M.fmt(p.Q, 3) + '.</p>' : '');
+    }
   }
 })();

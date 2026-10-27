@@ -504,6 +504,16 @@
 .lb-tks em.lb-e0{transform:none;} .lb-tks em.lb-e4{transform:translateX(-100%);}
 .lb-scale-l,.lb-scale-m,.lb-scale-r{position:absolute;top:28px;font:700 11.5px var(--font-ui);color:var(--muted);}
 .lb-scale-l{left:-6px;} .lb-scale-r{right:-6px;} .lb-scale-m{left:50%;transform:translateX(-50%);}
+/* Q vs K test: the same bar, with the student's own Q dashed. */
+.qk-qbar{margin:8px 6px 0;}
+.qk-qbar-h{margin:0 0 4px;font:600 13px var(--font-ui);}
+.qk-qbar .lb-qk{margin-top:18px;}
+.qk-mine::before{background:transparent!important;border:2px dashed #D55E00;box-shadow:0 0 0 2px var(--white)!important;}
+.qk-mine b{color:#B34700;bottom:auto;top:100%;margin:22px 0 0;}
+.qk-qbar .lb-scale{margin-bottom:16px;}
+.ls-root .ls-drill-stage .cd-extra:has(> .qk-qbar:only-child){flex:1;display:flex;flex-direction:column;justify-content:center;max-width:640px;width:100%;margin:0 auto;}
+.ls-root .ls-drill-stage .qk-qbar-h{font-size:var(--ls-m,15px);}
+.qk-mine-t{margin:2px 0 0;}
 .lb-dir{margin:0;font:900 14px var(--font-ui);color:var(--cink);}
 .lb-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;}
 .lb-legend li{display:flex;align-items:center;gap:6px;font:800 14px var(--font-ui);}
