@@ -455,7 +455,7 @@
   /* The drill's figure, from the problem's own numbers (ApPsychPlot). A
      share is written on it only once its step is answered. */
   function figure(el, p, st){
-    var g = p.figure, html = '', wide = (window.innerWidth || 1280) > 900, PW = wide ? 680 : 380, PH = wide ? 400 : 250;
+    var g = p.figure, html = '', wide = (window.innerWidth || 1280) > 900, PW = wide ? 680 : 380, PH = wide ? 400 : Math.round(Math.max(260, Math.min(440, (window.innerHeight || 800) * 0.46)));
     if(!g){ el.innerHTML = ''; return; }
     if(g.kind === 'normal'){
       var reveal = st.below || st.pct, spec = { label: 'Normal curve, mean ' + g.mean + ', standard deviation ' + g.sd + ', ticks at the mean and every standard deviation' + (g.show === 'below' ? ', shaded below ' + g.marks[0] : ', shaded between ' + g.marks[0] + ' and ' + g.marks[1]) + '.',
@@ -467,9 +467,13 @@
         return '<div><p class="sl-two-h">' + esc(t.name.charAt(0).toUpperCase() + t.name.slice(1)) + ': ' + t.x + '</p>' + P.svg({ label: 'Normal curve of the ' + t.name + ', mean ' + t.mean + ', standard deviation ' + t.sd + (on ? ', shaded below the score ' + t.x : '') + '.', kind: 'normal', mean: t.mean, sd: t.sd, width: wide ? 560 : 380, height: wide ? 210 : 150, region: on ? { from: null, to: t.x } : null, points: [{ at: [t.x, 0], cls: 's2', label: on ? 'z = ' + zTxt((t.x - t.mean) / t.sd) : String(t.x) }] }) + '</div>';
       }).join('') + '</div>';
     } else if(g.kind === 'dots'){
-      var d = g.data, lo = Math.min.apply(null, d), hi = Math.max.apply(null, d), w = Math.max(1, niceStep(hi - lo + 1, 10)), start = Math.floor(lo / w) * w, bins = [];
+      // Whole-number bin widths (1, 2, 5, 10...) so every edge is a whole number,
+      // an empty bin first (never below 0) so the first edge label clears the y axis, and
+      // whole-number count ticks.
+      var d = g.data, lo = Math.min.apply(null, d), hi = Math.max.apply(null, d), span = hi - lo + 1, w = [1, 2, 5, 10, 20].filter(function(x){ return span / x <= 12; })[0] || 20, start = Math.max(0, Math.floor(lo / w) * w - w), bins = [];
       for(var a = start; a <= hi; a += w) bins.push([a, a + w, d.filter(function(v){ return v >= a && v < a + w; }).length]);
-      html = P.svg({ label: 'Histogram of the ' + d.length + ' values, ' + d.join(', ') + ', in bins of ' + w + '.', kind: 'histogram', bins: bins, xLabel: g.unit, yLabel: 'Count', width: PW, height: PH, y: [0, Math.max(3, Math.max.apply(null, bins.map(function(b){ return b[2]; })) + 1)] });
+      var cmax = Math.max.apply(null, bins.map(function(b){ return b[2]; })), ytop = Math.max(3, cmax + 1);
+      html = P.svg({ label: 'Histogram of the ' + d.length + ' values, ' + d.join(', ') + ', in bins of ' + w + '.', kind: 'histogram', bins: bins, xLabel: g.unit, yLabel: 'Count', width: PW, height: PH, y: [0, ytop], yStep: ytop > 8 ? 2 : 1 });
     } else if(g.kind === 'scatter'){
       html = P.svg({ label: 'Scatterplot of ' + g.points.length + ' invented points, ' + g.x.toLowerCase() + ' against ' + g.y.toLowerCase() + '.', kind: 'scatter', points: g.points, x: g.xs, y: g.ys, xLabel: g.x, yLabel: g.y, width: PW, height: wide ? 440 : 280 });
     }

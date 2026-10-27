@@ -224,8 +224,8 @@
   var SCHED_STORIES = {
     fr: ['A factory worker is paid $5 for every 20 shirts she finishes.', 'A coffee shop stamps a card and gives a free drink after every 10th purchase.', 'A student earns a sticker for every 5 math problems completed.'],
     vr: ['A gambler plays a slot machine that pays out after an unpredictable number of plays.', 'A salesperson closes a sale on some calls but never knows which call will work.', 'A child begs for candy at the store; sometimes the parent gives in after one request, sometimes after many.'],
-    fi: ['A teacher gives a quiz every Friday, and a student studies mostly on Thursday night.', 'A worker is paid every two weeks, no matter how much work she does.', 'A patient can press a button for pain medication, but the pump only delivers a dose once every 15 minutes.'],
-    vi: ['A fisher casts a line; a fish bites after varying stretches of time.', 'A student checks a social media app for new messages that arrive at unpredictable times.', 'A teacher gives pop quizzes on random days, and students study a little every day.']
+    fi: ['A patient can press a button for pain medication, but the pump only delivers a dose for the first press after each 15-minute lockout.', 'Mail is delivered at noon every day; checking the mailbox finds new mail only on the first check after noon, and Jae checks more and more often as noon nears.', 'A website posts new grades every Monday at 9 a.m.; refreshing the page shows new grades only the first time after each posting, and a student refreshes more and more as Monday morning nears.'],
+    vi: ['A fisher casts a line; a fish bites after varying stretches of time.', 'A student checks a social media app for new messages that arrive at unpredictable times.', 'A caller keeps redialing a busy help line; the line frees up after unpredictable stretches of time, and only the first call after it frees gets through.']
   };
   function genSchedule(r, c){
     var k = r.pick(c.schedules || ['fr', 'vr', 'fi', 'vi']), sc = schedOf(k), story = r.pick(SCHED_STORIES[k]);

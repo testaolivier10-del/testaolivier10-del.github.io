@@ -422,7 +422,7 @@
     });
   }
   function figure(el, p, st){
-    var g = p.figure, wide = (window.innerWidth || 1280) > 900, PW = wide ? 680 : 380, PH = wide ? 380 : 250, html = '';
+    var g = p.figure, wide = (window.innerWidth || 1280) > 900, PW = wide ? 680 : 380, PH = wide ? 380 : Math.round(Math.max(280, Math.min(460, (window.innerHeight || 800) * 0.5))), html = '';
     if(!g){ el.innerHTML = ''; return; }
     // Every value is written on the plot (no table on the stage), on the
     // side away from the other series.
@@ -439,7 +439,7 @@
         (show ? '<p class="ml-means">Mean: massed <b>' + M.fixed(ms, 1) + '</b>, spaced <b>' + M.fixed(ss, 1) + '</b></p>' : '');
     } else if(g.kind === 'forget'){
       html = P.svg({ label: 'Percent remembered after each delay: ' + g.pts.map(function(q){ return 'day ' + q[0] + ' ' + q[1] + '%'; }).join(', ') + '.', kind: 'line', width: PW, height: PH, x: [-1, 34], y: [0, 112], xStep: 5, yStep: 20,
-        series: [{ name: 'Remembered', points: g.pts }], labels: g.pts.map(function(q){ return { at: [q[0] + 0.6, q[1] + 4], text: q[1] + '%', anchor: 'start', cls: 's1' }; }), xLabel: 'Days since learning', yLabel: 'Percent remembered' });
+        series: [{ name: 'Remembered', points: g.pts }], labels: g.pts.map(function(q){ return q[0] === 0 ? { at: [1.6, 95], text: '100%', anchor: 'start', cls: 's1' } : { at: [q[0] + 0.6, q[1] + 4], text: q[1] + '%', anchor: 'start', cls: 's1' }; }), xLabel: 'Days since learning', yLabel: 'Percent remembered' });
     } else if(g.kind === 'interf'){
       var named = st.kind, want = g.testOld ? g.old : g.nw;
       html = '<div class="ml-qtl"><div class="ml-qc' + (named && !g.testOld ? ' is-intr' : '') + (named && g.testOld ? ' is-want' : '') + '"><span>Learned first</span><b>' + esc(g.old) + '</b></div><div class="ml-qa" aria-hidden="true">→</div>' +
