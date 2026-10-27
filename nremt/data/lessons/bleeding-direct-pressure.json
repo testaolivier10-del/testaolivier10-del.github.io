@@ -1,0 +1,100 @@
+{
+  "id": "bleeding-direct-pressure",
+  "title": "Direct pressure and the bleeding ladder",
+  "chapter": 29,
+  "section": "ch29-bleeding-control",
+  "hook": "<p>A cook has slipped with a knife and opened a deep cut on his forearm. Dark red blood flows steadily onto the floor. His coworker has already pressed three paper towels onto it and is about to peel them off to see how it looks.</p><p>Most external bleeding stops with one thing done well: firm pressure, held, and left alone. This lesson is how to do that, and how to tell when it is not enough.</p>",
+  "steps": [
+    {
+      "find": "You look at the blood: bright red and spurting, dark red and flowing steadily, or a dark ooze.",
+      "act": "That tells you the vessel. Arterial bleeding (bright red, spurting with the pulse) is the hardest to control and the fastest to kill; venous bleeding flows steadily; capillary bleeding oozes and often stops on its own."
+    },
+    {
+      "find": "The bleeding is severe or spurting and you have no dressing in your hand.",
+      "act": "Put a gloved hand straight on the wound. Do not spend time looking for a dressing first."
+    },
+    {
+      "find": "Your hand or a dressing is on the wound.",
+      "act": "Press firmly, toward a bone where there is one, and hold the pressure without letting up. Do not lift it to check; for massive bleeding, keep it on all the way to the hospital."
+    },
+    {
+      "find": "Blood keeps coming through what you placed.",
+      "act": "Do not peel the dressing off to look. If the bleeding continues, escalate rather than relying on more layers: wound packing with a hemostatic agent where protocol allows, or a tourniquet for a wound on a limb."
+    },
+    {
+      "find": "The bleeding has stopped.",
+      "act": "Convert to a pressure dressing: bandage the dressing firmly so the pressure holds without your hands, and keep checking for bleed-through."
+    }
+  ],
+  "ideas": [
+    "<b>Pressure works</b> by squeezing the tissue around the wound, slowing the flow through the damaged vessels and giving the body time to clot.",
+    "<b>Don't peel a dressing off to look.</b> Lifting it tears away the clot forming under it.",
+    "<b>More layers are not the fix.</b> Gauze soaks up blood without stopping it, and a thick pile cushions your hand away from the wound. Continued bleeding means escalate.",
+    "<b>Volume depends on size.</b> An adult holds about 5 to 6 liters of blood. A sudden loss of about 1 liter is serious in an adult, about 500 mL in a child and 100 to 200 mL in an infant.",
+    "<b>Elevation and pressure points</b> are no longer recommended for bleeding control.",
+    "<b>Life-threatening bleeding from a limb</b> does not climb this ladder: it gets a tourniquet straight away (the next lesson).",
+    "<b>Nosebleeds</b> are managed by sitting the patient up, leaning forward, and pinching the soft part of the nostrils. Leaning back sends blood into the stomach and causes vomiting."
+  ],
+  "misconception": {
+    "wrong": "When a dressing soaks through, take it off and put on a fresh, dry one so you can see the wound.",
+    "right": "Leave the dressing where it is: lifting it disrupts the clot. Continued bleeding is the signal to escalate to packing with a hemostatic agent where protocol allows or, on a limb, a tourniquet."
+  },
+  "check": [
+    {
+      "q": "Blood is bright red and spurting from a wound in time with the patient's pulse. Which vessel is most likely open?",
+      "options": [
+        "A capillary bed",
+        "A large vein",
+        "An artery",
+        "A small vein"
+      ],
+      "correct": 2,
+      "why": "Arterial blood is bright red because it is fully oxygenated, and it spurts because it is under the pressure the heart generates. It is the hardest bleeding to control and the fastest to kill."
+    },
+    {
+      "q": "You have held firm, uninterrupted pressure on a heavily bleeding leg wound, and blood keeps soaking through the gauze. What is the next step?",
+      "options": [
+        "Remove the gauze and apply a fresh dressing",
+        "Escalate: apply a tourniquet above the wound",
+        "Add more gauze and ease off the pressure",
+        "Elevate the leg and press on a pressure point"
+      ],
+      "correct": 1,
+      "why": "Pressure has failed on a severe limb bleed, so escalate: a tourniquet on a limb, or packing for a wound that cannot take one. Don't peel the gauze off, easing off lets it bleed more, and elevation and pressure points are no longer recommended."
+    },
+    {
+      "q": "A patient has a steady nosebleed that started on its own. How should you position them?",
+      "options": [
+        "Sitting up, leaning forward, pinching the soft part of the nose",
+        "Lying flat on the back with the legs raised",
+        "Sitting up with the head tilted back",
+        "Lying on the side with the head lower than the feet"
+      ],
+      "correct": 0,
+      "why": "Upright, leaning forward, with the soft part of the nostrils pinched. Tilting the head back sends the blood down the throat into the stomach, which causes vomiting."
+    },
+    {
+      "q": "Which sudden blood loss is serious for a child, according to the usual rule of thumb?",
+      "options": [
+        "About 50 mL",
+        "About 1.5 liters",
+        "About 100 mL",
+        "About 500 mL"
+      ],
+      "correct": 3,
+      "why": "A sudden loss of about 500 mL is serious in a child, about 1 liter in an adult, and as little as 100 to 200 mL in an infant."
+    },
+    {
+      "q": "A patient's forearm is bleeding heavily and you have no dressing in reach. What do you do?",
+      "options": [
+        "Go back to the ambulance for a trauma dressing",
+        "Place your gloved hand directly on the wound",
+        "Wait for your partner to bring the jump kit",
+        "Ask the patient to hold the arm above the head"
+      ],
+      "correct": 1,
+      "why": "For severe or spurting bleeding, a gloved hand goes straight onto the wound. Time spent hunting for a dressing is blood the patient does not get back."
+    }
+  ],
+  "summary": "<p>Direct pressure controls most external bleeding: compress the wound (a gloved hand at once if it is severe), hold firm pressure without lifting it to check, leave what you placed undisturbed, and escalate if it fails. Continued bleeding means packing with a hemostatic agent where protocol allows or, on a limb, a tourniquet, not more layers and not removing the dressing. Once bleeding stops, a pressure dressing holds it. Life-threatening limb bleeding skips straight to a tourniquet.</p>"
+}

@@ -10,7 +10,7 @@ run() { out=$("$@" 2>&1) || { echo "FAIL: $*"; echo "$out" | tail -20; fail=1; }
 run node scripts/check-site.mjs
 for s in build-og-tags build-sitemap build-notes-pages build-videos build-from-video build-ochem-glossary build-nremt-glossary check-curriculum \
          check-anp-map build-anp check-anp-content check-apbio-map build-apbio check-apbio-content check-apchem-map build-apchem check-apchem-content check-apphys-map build-apphys check-apphys-content check-apcalc-map build-apcalc check-apcalc-content check-apstat-map build-apstat check-apstat-content check-apenv-map build-apenv check-apenv-content build-ochem-home build-course-homes build-r3-inner build-r3-tools build-lesson-meta build-leads-to build-crumbs \
-         build-tool-pages build-nremt-notes-toc build-nremt-notes-pages build-ochem-figures build-notes-figures build-flashcards \
+         build-tool-pages build-nremt-notes-toc build-nremt-lessons build-nremt-notes-pages build-ochem-figures build-notes-figures build-flashcards \
          build-nremt-flashcards build-question-bank build-ochem-bank build-worker build-site-config build-courses check-courses build-pricing check-weight; do
   run node "scripts/$s.mjs" --check
 done

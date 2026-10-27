@@ -53,6 +53,7 @@ import { CSP } from './lib/site-config.mjs';
 import { loadChapters, chapterSlug } from './lib/nremt-notes.mjs';
 import { applyVideo } from './lib/videos.mjs';
 import { r3Reading } from './lib/r3-reading.mjs';
+import { loadLessons } from './lib/nremt-lessons.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -65,6 +66,8 @@ const stripTags = (html) => String(html || '').replace(/<[^>]*>/g, ' ').replace(
 
 const chapters = loadChapters(ROOT);
 const reader = readFileSync(READER, 'utf8');
+// Each section's interactive lesson, when built (scripts/build-nremt-lessons.mjs).
+const LESSON_BY_SECTION = new Map(loadLessons(ROOT, chapters).map((L) => [L.section, L]));
 
 /* ---- what is read out of the reader page ---------------------------------- */
 
@@ -149,7 +152,7 @@ function sectionHtml(sec, si, ch, counter) {
       <h2><span class="bk-toc-n">${sectionNumber(ch, si)}</span>${sec.title}</h2>
       ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
     </div>
-    ${sec.note ? `<p class="section-note">${rebase(sec.note)}</p>\n    ` : ''}<div class="bk-prose" data-glossary-topic="">${topicsHtml}</div>${takeaways}
+    ${LESSON_BY_SECTION.has(sec.id) ? `<p class="nl-link"><a href="../lessons/${LESSON_BY_SECTION.get(sec.id).id}.html">Interactive lesson: ${esc(LESSON_BY_SECTION.get(sec.id).title)} &rarr;</a></p>\n    ` : ''}${sec.note ? `<p class="section-note">${rebase(sec.note)}</p>\n    ` : ''}<div class="bk-prose" data-glossary-topic="">${topicsHtml}</div>${takeaways}
   </section>`;
 }
 
