@@ -99,8 +99,25 @@
         '<line class="rl-at' + (outR ? ' is-warn' : '') + '" x1="' + padL + '" x2="' + sx(xa).toFixed(1) + '" y1="' + sy(ya).toFixed(1) + '" y2="' + sy(ya).toFixed(1) + '"/>' +
         '<circle class="rl-hat' + (outR ? ' is-warn' : '') + '" cx="' + sx(xa).toFixed(1) + '" cy="' + sy(ya).toFixed(1) + '" r="6"/>';
     }
+    // the target x of a prediction, before it is answered: a guide up to the line
+    if(o.guide != null && L && o.at == null){
+      var xg = Math.max(X.lo, Math.min(X.hi, o.guide));
+      g += '<line class="rl-at" x1="' + sx(xg).toFixed(1) + '" x2="' + sx(xg).toFixed(1) + '" y1="' + sc.y1 + '" y2="' + sy(L.a + L.b * xg).toFixed(1) + '"/>';
+    }
+    // the student's answer: a predicted point, or a residual from the chosen point
+    if(o.yours){
+      var Yo = o.yours;
+      if(Yo.kind === 'point'){ var ypx = sy(Yo.y); g += '<circle class="stat-yours" cx="' + sx(Yo.x).toFixed(1) + '" cy="' + ypx.toFixed(1) + '" r="7"/>'; }
+      if(Yo.kind === 'resid' && o.sel != null && o.sel > -1){ var jx = sx(xs[o.sel]), yh3 = L ? L.a + L.b * xs[o.sel] : ys[o.sel]; g += '<line class="stat-yours" x1="' + (jx + 6).toFixed(1) + '" x2="' + (jx + 6).toFixed(1) + '" y1="' + sy(yh3).toFixed(1) + '" y2="' + sy(yh3 + Yo.e).toFixed(1) + '"/><circle class="stat-yours-f" cx="' + (jx + 6).toFixed(1) + '" cy="' + sy(yh3 + Yo.e).toFixed(1) + '" r="4"/>'; }
+    }
     g += '</g>';
     out.push(g);
+    if(o.yours){
+      var yl = 'yours: ' + o.yours.t, yy0 = o.yours.kind === 'point' ? sy(o.yours.y) : sc.y0 + 30, yx = o.yours.kind === 'point' ? sx(o.yours.x) : W - padR - 4;
+      var yclip = o.yours.kind === 'point' && (o.yours.y < Y.lo || o.yours.y > Y.hi);
+      var yw = yl.length * fs * 0.56, isPt = o.yours.kind === 'point';
+      out.push('<text class="stat-yours-t" x="' + (isPt ? Math.max(padL + yw / 2, Math.min(W - padR - yw / 2, yx)) : yx).toFixed(1) + '" y="' + (isPt ? Math.max(sc.y0 + 30, Math.min(sc.y1 - 6, yy0 - 14)) : yy0).toFixed(1) + '" text-anchor="' + (isPt ? 'middle' : 'end') + '" style="font-size:' + fs + 'px">' + esc(yl + (yclip ? (o.yours.y > Y.hi ? ' ↑' : ' ↓') : '')) + '</text>');
+    }
     if(o.at != null && L){
       var xa2 = Math.max(X.lo, Math.min(X.hi, o.at)), ya2 = L.a + L.b * xa2, ly = sy(ya2), t = 'ŷ = ' + nf(M.round(ya2, sig(ya2))) + (o.extrap ? ' (extrapolation)' : '');
       // on the y axis end of the dashed guide, clear of the points
@@ -134,14 +151,19 @@
     // ---- residual plot
     if(rp){
       var res = L ? xs.map(function(x, i){ return ys[i] - (L.a + L.b * x); }) : null;
-      var m = res ? Math.max.apply(null, res.map(Math.abs).concat([1e-9])) : 1, rt = P.ticks(-m * 1.15, m * 1.15, 3), rm = Math.max(Math.abs(rt[0] || m), Math.abs(rt[rt.length - 1] || m), m * 1.15);
+      var m = res ? Math.max.apply(null, res.map(Math.abs).concat([1e-9])) : 1;
+      // A round tick step, then the scale to the first tick past the largest residual.
+      var rs = (function(x){ var p = Math.pow(10, Math.floor(Math.log10(x))), k = x / p; return (k <= 1 ? 1 : k <= 2 ? 2 : k <= 2.5 ? 2.5 : k <= 5 ? 5 : 10) * p; })(m / 1.6);
+      var rtop = Math.ceil(m / rs - 1e-9) * rs, rm = Math.max(rtop, m) * 1.12, rticks = [];
+      for(var rk = rs; rk <= rtop + 1e-9; rk += rs) rticks.push(+rk.toPrecision(6));
+      if(rticks.length > 2) rticks = [rticks[Math.floor((rticks.length - 1) / 2)], rticks[rticks.length - 1]];
       var ry = function(e){ return (rp.y0 + rp.y1) / 2 - e / rm * ((rp.y1 - rp.y0) / 2 - 4); };
       var rg = '<g class="rl-res"><text class="rl-axt" x="' + (padL + 6) + '" y="' + (rp.y0 + 2) + '" style="font-size:' + (fs - 0.5) + 'px">Residual plot: y − ŷ (' + esc(Y.unit) + ')' + (sh.mine ? ', from the least-squares line' : '') + '</text>' +
         '<line class="rl-axis-l" x1="' + padL + '" x2="' + padL + '" y1="' + rp.y0 + '" y2="' + rp.y1 + '"/>';
       if(res){
         rg += '<line class="rl-zero" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + ry(0).toFixed(1) + '" y2="' + ry(0).toFixed(1) + '"/>' +
-          [-1, 1].map(function(k){ var v = k * rm / 1.15; return '<text class="rl-rt" x="' + (padL - 6) + '" y="' + (ry(v) + 4).toFixed(1) + '" text-anchor="end" style="font-size:' + (fs - 1.5) + 'px">' + esc(M.fmt(M.round(v, 2), 3)) + '</text>'; }).join('') +
-          '<text class="rl-rt" x="' + (padL - 6) + '" y="' + (ry(0) + 4).toFixed(1) + '" text-anchor="end" style="font-size:' + (fs - 1.5) + 'px">0</text>';
+          rticks.slice(-1).concat(rticks.slice(-1).map(function(v){ return -v; })).map(function(v){ return '<line class="rl-rgrid" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + ry(v).toFixed(1) + '" y2="' + ry(v).toFixed(1) + '"/><text class="rl-rt" x="' + (padL - 6) + '" y="' + (ry(v) + 4).toFixed(1) + '" text-anchor="end" style="font-size:' + (fs - 1) + 'px">' + esc(String(v).replace('-', '−')) + '</text>'; }).join('') +
+          '<text class="rl-rt" x="' + (padL - 6) + '" y="' + (ry(0) + 4).toFixed(1) + '" text-anchor="end" style="font-size:' + (fs - 1) + 'px">0</text>';
         res.forEach(function(e, i){ var x = sx(xs[i]).toFixed(1); rg += '<line class="rl-stem' + (o.sel === i ? ' is-sel' : '') + '" x1="' + x + '" x2="' + x + '" y1="' + ry(0).toFixed(1) + '" y2="' + ry(e).toFixed(1) + '"/><circle class="rl-rpt' + (o.sel === i ? ' is-sel' : '') + '" cx="' + x + '" cy="' + ry(e).toFixed(1) + '" r="' + (small ? 4.5 : 5) + '"/>'; });
       } else rg += '<text class="rl-ph" x="' + (padL + pw / 2) + '" y="' + ((rp.y0 + rp.y1) / 2 + 4) + '" text-anchor="middle" style="font-size:' + fs + 'px">The residual plot appears with the line.</text>';
       out.push(rg + '</g>');
@@ -264,11 +286,12 @@
       return '<h3 class="rl-h">The least-squares line</h3><p>Of every possible line, ' + esc(eqText(F.a, F.b, sig(F.a), sig(F.b))) + ' makes the sum of the squared residuals smallest (' + esc(nf(M.round(F.sse, 2))) + '). Turn on Squares to see them, then Your line to try to beat it. It always passes through (x̄, ȳ) = (' + esc(fx(F.xbar, 2)) + ', ' + esc(fx(F.ybar, 2)) + ').</p>' +
         '<h3 class="rl-h">Slope</h3><p>' + esc(X.per) + ', the predicted ' + esc(Y.name) + ' ' + (F.b >= 0 ? 'increases' : 'decreases') + ' by about ' + esc(M.fixed(Math.abs(F.b), sig(F.b))) + ' ' + esc(Y.unit) + '. Say “predicted”: individual points scatter around the line.</p>' +
         '<h3 class="rl-h">r and r²</h3><p>r = ' + esc(fx(F.r, 3)) + ' measures the direction and strength of the linear association (' + esc(R.strength(F.r)) + ', ' + esc(R.direction(F.r)) + '; ' + esc(R.RULES.strength) + ') r² = ' + esc(fx(F.r2, 3)) + ': about ' + Math.round(F.r2 * 100) + '% of the variation in ' + esc(Y.name) + ' is accounted for by the linear model using ' + esc(X.name) + '.</p>' +
+        '<details class="rl-more"><summary>More: residuals, outliers and extrapolation</summary>' +
         '<h3 class="rl-h">s and residuals</h3><p>A residual is actual minus predicted, y − ŷ: above the line is positive. s = ' + esc(fx(F.s, 2)) + ' ' + esc(Y.unit) + ' is the typical size of a residual, the typical prediction error.</p>' +
         '<h3 class="rl-h">The residual plot</h3><p>' + (Math.abs(curve) > 0.6 ? 'Here the residuals curve (pattern score ' + esc(fx(curve, 2)) + '): a line misses the form, even though r is ' + esc(fx(F.r, 2)) + '.' : 'Here the residuals scatter with no clear curve (pattern score ' + esc(fx(curve, 2)) + '), so a line fits the form.') + ' The pattern score is the correlation of the residuals with (x − x̄)²; above 0.6 in size it flags a bend.</p>' +
         '<h3 class="rl-h">Outliers, leverage, influence</h3><p>' + esc(R.RULES.outlier + ' ' + R.RULES.leverage + ' ' + R.RULES.influential) + ' Drag a point far to the right of the others and up or down: it pulls the line with it.</p>' +
         '<h3 class="rl-h">Extrapolation</h3><p>The line is solid over the x values in the data and dashed beyond them. Predictions out there assume the pattern continues.</p>' +
-        '<h3 class="rl-h">Correlation is not causation</h3><p>Only a randomized experiment supports a cause and effect conclusion.</p>';
+        '<h3 class="rl-h">Correlation is not causation</h3><p>Only a randomized experiment supports a cause and effect conclusion.</p></details>';
     }
     function nums(curve){
       var X = cur.x, Y = cur.y, rows = [['n', String(F.n)], ['Equation', eqText(F.a, F.b, 4, 4)], ['Slope, b', fx(F.b, 4)], ['Intercept, a', fx(F.a, 4)], ['r', fx(F.r, 4)], ['r²', fx(F.r2, 4)], ['s', fx(F.s, 4)],
@@ -378,7 +401,30 @@
       generate: function(r, ctx, type){ var p = R.generate(r, ctx, type); o.textOnStage = p.type === 'residual' || p.type === 'lsrl' || p.type === 'predict'; return p; },
       title: function(p){ return ({ describe: 'Describe the scatterplot', correlation: 'Correlation', predict: 'Predict and interpret', residual: 'A residual', lsrl: 'The line from summary statistics' })[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.shown = {}; figure(el, p, api.shown); },
-      onStep: function(s, right, api){ var f = api.problem.figure, k = f.reveal && f.reveal[s.key]; if(k){ api.shown[k] = true; figure(api.fig, api.problem, api.shown); } }
+      onStep: function(s, right, api){ var f = api.problem.figure, k = f.reveal && f.reveal[s.key]; api.shown.yours = null; if(k) api.shown[k] = true; figure(api.fig, api.problem, api.shown); },
+      // A wrong ŷ is drawn as a point above x, a wrong residual as a segment from the line.
+      onTry: function(s, t, api){
+        if(t.right || s.kind !== 'num' || !isFinite(t.value)) return;
+        var f = api.problem.figure, d = s.d != null ? s.d : 2;
+        if(s.key === 'yhat' && f.at != null) api.shown.yours = { kind: 'point', x: f.at, y: t.value, t: 'ŷ = ' + M.fixed(t.value, d) };
+        else if(s.key === 'resid' && f.sel != null){ api.shown.seg = true; api.shown.yours = { kind: 'resid', e: t.value, t: 'residual ' + M.fixed(t.value, d) }; }
+        else api.shown.yours = { kind: 'tag', t: M.fixed(t.value, d) };
+        figure(api.fig, api.problem, api.shown);
+      },
+      method: function(s, p){
+        var d = p.data || {};
+        var H = { dir: 'As x increases, does y tend to increase (positive) or decrease (negative)?', form: 'Does a straight line follow the points, or do they bend?',
+          str: 'How tightly do the points hug a line? Close is strong, loose is weak.', pickr: 'r has the sign of the slope, and its size grows as the points hug a line.',
+          rmeans: 'r measures the direction and strength of a linear association only.', units: 'r has no units: changing units does not change it.',
+          yhat: 'Put x into the line: ŷ = a + b·x. The dashed guide marks that x; your ŷ is the red circle.',
+          who: 'The slope describes the predicted y, not individual values.', how: 'Use the sign and the size of the slope, per one unit of x.',
+          extrap: 'Compare x with the smallest and largest x values in the data.',
+          resid: 'Residual = actual − predicted: y − ŷ, with ŷ from the line at that x. Your residual is the red segment.',
+          rsign: 'A positive residual means the point is above the line: the actual value is more than predicted.',
+          plot: 'A good linear fit leaves residuals scattered with no curve or fan.', b: 'b = r · s_y / s_x, using the summary statistics.',
+          a: 'a = ȳ − b·x̄, with the slope from step 1.', r2: 'r² is the share of the variation in y accounted for by the linear model.', s: 's is the typical size of a residual: the typical prediction error.' };
+        return H[s.key] || null;
+      }
     };
     T.drill(host, data, o);
   }
@@ -393,7 +439,7 @@
     if(Math.min.apply(null, ys) >= 0 && yr.lo < 0) yr.lo = 0;
     var o = { xs: xs, ys: ys, x: { lo: xr.lo, hi: xr.hi, name: f.x.name, unit: f.x.unit }, y: { lo: yr.lo, hi: yr.hi, name: f.y.name, unit: f.y.unit },
       fit: F, line: showLine ? L : null, show: {}, residPanel: !!f.residPlot && !!shown.resid, sel: f.sel != null ? f.sel : -1, segOnly: shown.seg && f.sel != null ? f.sel : null,
-      at: shown.at ? f.at : null, far: shown.far ? f.far : null, clip: 'rlq' + (++qid), dataRange: false };
+      at: shown.at ? f.at : null, far: shown.far ? f.far : null, clip: 'rlq' + (++qid), dataRange: false, guide: f.at, yours: shown.yours || null };
     if(!showLine) o.fit = null;
     function render(){
       var box = el.querySelector('.rl-qfig') || el, rc = box.getBoundingClientRect();

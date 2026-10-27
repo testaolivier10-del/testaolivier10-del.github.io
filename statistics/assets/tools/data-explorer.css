@@ -64,3 +64,8 @@ body.ls-on .stat-crumb{display:none;} /* Tool Studio hides the other courses' cr
 .dx-h{font-size:1rem;font-weight:700;margin:16px 0 4px;color:var(--ink);}
 .bt-why-b > .dx-h:first-child{margin-top:4px;}
 .dx-ph{fill:var(--muted) !important;font-style:italic;}
+
+/* Test yourself: the student's value, and the Why sheet's second half behind one tap. */
+.dx-svg .dx-yt{fill:var(--bad-text);font-weight:800;}
+.dx-ycap{margin:4px 0 0;text-align:center;font:800 14px var(--font-ui);color:var(--bad-text);}
+.dx-more > summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:900 14px var(--font-ui);color:var(--cink);}
