@@ -51,20 +51,27 @@
   if(!M) return;
   function S(){ return G.ApPsychStats; }
 
+  /* Group size: Asch's mean errors out of 12 critical trials for unanimous
+     majorities of 1, 2, 3, 4, 8 and 16 (Asch, 1951, 1956), as a percent of
+     answers; alone (controls) under 1%; one partner who answers correctly
+     5.5% (Asch, 1952). Majorities of 5 to 7 were not run; the tool draws
+     straight lines between the sizes that were, and says so. */
   var ASCH = {
-    source: 'Asch (1951, 1955)',
-    alone: 0.7,       // control: errors under 1% judging alone (Asch, 1951)
-    bySize: [null, 3.6, 13.6, 31.8], // 1, 2, 3 unanimous confederates (Asch, 1955)
-    plateau: 35.7,    // a majority of 7 to 9 (Asch, 1951): about a third of critical trials
-    partner: 5.5,     // one confederate gives the right answer (Asch, 1952 report)
-    everOnce: 74      // gave at least one wrong answer in 12 critical trials
+    source: 'Asch (1951, 1956)',
+    sizes: [[0, 0.7], [1, 2.8], [2, 12.8], [3, 33.3], [4, 35], [8, 32], [16, 31.3]],
+    errors: { 1: 0.33, 2: 1.53, 3: 4.0, 4: 4.2, 8: 3.84, 16: 3.75 },
+    plateau: 36.8,    // majorities of 7 to 9, 123 students (Asch, 1955)
+    partner: 5.5,     // one confederate gives the right answer (Asch, 1952)
+    everOnce: 74      // gave at least one wrong answer in 12 critical trials (Asch, 1951)
   };
   function aschPct(n, partner){
-    if(n <= 0) return ASCH.alone;
-    if(partner) return ASCH.partner;
-    if(n <= 3) return ASCH.bySize[n];
-    return ASCH.plateau;
+    if(partner && n > 0) return ASCH.partner;
+    var z = ASCH.sizes;
+    if(n <= 0) return z[0][1];
+    for(var i = 1; i < z.length; i++) if(n <= z[i][0]){ var a = z[i - 1], b = z[i]; return a[1] + (b[1] - a[1]) * (n - a[0]) / (b[0] - a[0]); }
+    return z[z.length - 1][1];
   }
+  function aschMeasured(n){ return ASCH.sizes.some(function(q){ return q[0] === n; }); }
   var MILGRAM = [
     { id: 'remote', name: 'Learner in another room, silent but for pounding on the wall', short: 'Remote', pct: 65, n: 40, src: 'Milgram (1963)' },
     { id: 'voice', name: 'Learner heard protesting through the wall', short: 'Voice', pct: 62.5, n: 40, src: 'Milgram (1974)' },
@@ -206,7 +213,7 @@
     var key = t.task === 'clear' ? 'normative' : 'informational';
     var whyDir = ch.change === 'partner' ? 'One ally breaks the group\'s unanimity; in Asch\'s studies a single partner cut conformity to about a quarter of its usual level.' :
       ch.change === 'private' ? 'Answering in private removes the fear of standing out, so conformity drops, which is why Asch\'s effect is mostly normative.' :
-      'Conformity rose as a unanimous majority grew from 1 to 3 people (about 4% to 32% of answers in Asch\'s studies), then leveled off.';
+      'Conformity rose as a unanimous majority grew from 1 to 3 people (about 3% to 33% of answers in Asch\'s studies), then leveled off.';
     var text = fill(t.text, name, w[1], n);
     return {
       type: 'conformity', ctx: ctx.id, topic: ctx.topic, given: { task: t.task, public: t.public, n: n, change: ch.change, name: name },
@@ -327,6 +334,6 @@
     ASCH: ASCH, MILGRAM: MILGRAM, DARLEY: DARLEY, FACIL: FACIL, LOAF: LOAF, CONCEPTS: CONCEPTS,
     CONF_T: CONF_T, OBEY_T: OBEY_T, BY_T: BY_T, GROUP_T: GROUP_T, GROUP_OTHER: GROUP_OTHER, ATTR_T: ATTR_T, COMP_T: COMP_T,
     CONF_STUDY: CONF_STUDY, OBEY_STUDY: OBEY_STUDY, BY_STUDY: BY_STUDY,
-    aschPct: aschPct, byId: byId, TYPES: TYPES, generate: generate
+    aschPct: aschPct, aschMeasured: aschMeasured, byId: byId, TYPES: TYPES, generate: generate
   });
 })(typeof window !== 'undefined' ? window : globalThis);

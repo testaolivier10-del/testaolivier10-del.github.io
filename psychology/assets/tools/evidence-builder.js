@@ -222,7 +222,7 @@
       LS.setupRow = sp;
       sp.setup(ctx.title);
       drawAll();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.eb-parts'), 'Start here: pick a claim, then build each part');
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.eb-parts'), 'Start here: pick a claim');
       var w = window.innerWidth, t = null;
       window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(function(){ if((window.innerWidth <= 640) !== (w <= 640)){ w = window.innerWidth; drawStage(); } }, 120); });
     }
