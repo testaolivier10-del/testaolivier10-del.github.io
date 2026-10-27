@@ -291,8 +291,19 @@
       "why": "That is the mean. The median is the middle value when the ages are in order."
      },
      {
-      "value": 12,
-      "why": "That value is fourth in order. With five values, the median is the third."
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         9,
+         11,
+         11,
+         12,
+         17
+        ]
+       ]
+      },
+      "why": "That is the range (17 minus 9). The median is the middle value when the ages are in order."
      }
     ]
    }

@@ -1,0 +1,161 @@
+{
+ "id": "frq-development-methods-aaq",
+ "type": "aaq",
+ "points": 7,
+ "title": "Parenting style and teen outcomes over four years",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "development-methods",
+  "social-emotional-development"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.C",
+  "2.D",
+  "4.B"
+ ],
+ "study": {
+  "title": "Invented study: Does parenting style at 13 predict how teens are doing at 17?",
+  "invented": true,
+  "study": {
+   "introduction": "Many studies have found that teens whose parents are both warm and firm do well in school. Most of those studies measured parenting and outcomes at the same time. The researchers wanted to know whether parenting style at age 13 predicts school performance and self-reliance four years later. They hypothesized that teens with authoritative parents at 13 would have higher grades and self-reliance at 17 than teens with authoritarian or permissive parents.",
+   "participants": "540 eighth graders, all age 13, from six public middle schools in suburban Ohio and Minnesota took part (51% girls; 74% White, 12% Black, 8% Latino, 6% Asian American; most from middle-income families). 462 (86%) were still in the study at age 17. A university institutional review board approved the study. A parent of each student gave written informed consent, and each student gave written assent at 13 and again at 17. Students were told they could skip any question or leave the study at any time; 78 left over the four years. Names were replaced with code numbers, and no school or parent saw any student’s answers.",
+   "method": "At 13, students completed a 24-item questionnaire about their parents (for example, \"My parents explain the reasons for their rules,\" rated 1 to 5). From the warmth and rule-setting scores, each family was classified as authoritative (high warmth, high explained rules), authoritarian (low warmth, high strict rules) or permissive (high warmth, few rules). The researchers did not assign or change any family’s parenting. At 17, the researchers collected each student’s grade point average (GPA, on a 0 to 4.0 scale) for the junior year from school records, and students completed a 10-item self-reliance scale (scored 10 to 50) with items such as \"I can usually solve problems on my own.\"",
+   "results": "At 17, teens classified as having authoritative parents at 13 had a mean GPA of 3.3, compared with 3.0 for teens with authoritarian parents and 2.8 for teens with permissive parents. The difference between the authoritative and permissive groups was statistically significant ($p < .05$). Mean self-reliance scores were 38 (authoritative), 33 (authoritarian) and 35 (permissive). Teens who left the study had slightly lower eighth-grade GPAs than those who stayed.",
+   "discussion": "Authoritative parenting at 13 predicted higher grades and self-reliance at 17. Because parenting was measured, not assigned, the researchers cautioned that other differences between families, and teens’ own traits, could explain part of the link."
+  },
+  "plot": {
+   "label": "Bar graph of mean junior-year GPA at age 17 by parenting style at age 13: authoritative 3.3, authoritarian 3.0, permissive 2.8 (invented data)",
+   "kind": "bar",
+   "categories": [
+    "Authoritative",
+    "Authoritarian",
+    "Permissive"
+   ],
+   "values": [
+    3.3,
+    3,
+    2.8
+   ],
+   "xLabel": "Parenting style at age 13",
+   "yLabel": "Mean GPA at 17 (0-4.0)",
+   "y": [
+    0,
+    4
+   ]
+  },
+  "ethics": [
+   "institutional review board approval",
+   "informed consent from a parent",
+   "assent from each student at 13 and 17",
+   "the right to withdraw",
+   "confidentiality through code numbers"
+  ]
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Identify</b> the research method used in the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Identifies the method as correlational (a longitudinal correlational design); naming it an experiment, or listing several methods, does not earn the point",
+     "accept": [
+      "a correlational study",
+      "a longitudinal correlational study",
+      "a non-experimental longitudinal study in which parenting was measured, not assigned"
+     ]
+    }
+   ],
+   "sample": "This is a correlational study with a longitudinal design: the researchers measured parenting style at 13 and outcomes at 17 in the same teens, without assigning or changing anyone’s parenting."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>State</b> the operational definition of school performance in the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States school performance as the student’s junior-year GPA (0 to 4.0) from school records at age 17",
+     "accept": [
+      "junior-year grade point average from school records",
+      "GPA on a 0-4.0 scale collected from school records when students were 17"
+     ]
+    }
+   ],
+   "sample": "School performance was operationally defined as each student’s junior-year grade point average, on a 0 to 4.0 scale, taken from school records when the student was 17."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Describe</b> what the difference in mean GPA between the authoritative and permissive groups shows.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Says teens with authoritative parents at 13 had a higher mean GPA at 17 (3.3) than teens with permissive parents (2.8), and that because the difference is statistically significant it is unlikely to be due to chance",
+     "accept": [
+      "authoritative-group teens averaged half a grade point higher than permissive-group teens, a difference unlikely to be due to chance",
+      "the authoritative group had higher grades, and the statistically significant difference means chance is an unlikely explanation"
+     ]
+    }
+   ],
+   "sample": "Teens whose parents were authoritative at 13 had a mean GPA of 3.3 at 17, half a grade point higher than teens with permissive parents (2.8). Because the difference was statistically significant, it is unlikely to be due to chance alone, so parenting style at 13 really does predict later grades in this sample."
+  },
+  {
+   "label": "D",
+   "prompt": "<b>Identify</b> one ethical guideline the researchers followed, and <b>explain</b> how they applied it in this study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names a safeguard the summary describes and how it was applied: parental informed consent with student assent, the right to withdraw, confidentiality through code numbers, or IRB approval",
+     "accept": [
+      "informed consent and assent: a parent gave written consent and each student gave written assent at 13 and 17",
+      "right to withdraw: students were told they could skip questions or leave at any time, and 78 left",
+      "confidentiality: names were replaced with code numbers and no parent or school saw answers",
+      "IRB approval: a university review board approved the study before it began"
+     ]
+    }
+   ],
+   "sample": "The researchers protected confidentiality. They replaced every student’s name with a code number, and no parent or school saw any student’s answers, so teens could report honestly about their parents without anyone at home or school knowing what they said."
+  },
+  {
+   "label": "E",
+   "prompt": "<b>Explain</b> the extent to which the research findings may or may not be generalizable using specific and relevant evidence from the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Makes a claim about generalizing to a named population, supported by participant characteristics (not sample size or design)",
+     "accept": [
+      "may generalize to suburban, mostly middle-income US teens, since participants came from suburban public schools in two states",
+      "may not generalize to urban, rural or low-income teens, or to teens in other cultures, since participants were suburban, mostly middle-income and mostly White",
+      "partly: both genders and several ethnic groups, but all suburban Midwestern public-school students"
+     ]
+    }
+   ],
+   "sample": "The findings may generalize to suburban, middle-income teens in the US Midwest, since participants came from public middle schools in suburban Ohio and Minnesota. They may not generalize to teens in cities, rural areas or other cultures, where parenting styles and their links to grades can differ, because 74% of participants were White and most were middle-income suburban students."
+  },
+  {
+   "label": "F",
+   "prompt": "The researchers hypothesized that teens with authoritative parents at 13 would have higher grades and self-reliance at 17. <b>Explain</b> the extent to which the research findings support or refute the researchers’ hypothesis, using specific and relevant evidence from the study.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Uses a specific, accurately read result: for example, authoritative 3.3 mean GPA versus 3.0 authoritarian and 2.8 permissive, or self-reliance 38 versus 33 and 35",
+     "accept": [
+      "the authoritative group had the highest mean GPA (3.3) and self-reliance (38)",
+      "GPA 3.3 versus 2.8 for permissive, a statistically significant difference"
+     ]
+    },
+    {
+     "point": "Explains how that result supports the hypothesis (authoritative highest on both outcomes), and may note that a correlational design supports prediction, not cause",
+     "accept": [
+      "supports the hypothesis because the authoritative group was highest on both outcomes, though measured parenting cannot show cause",
+      "supports it: the predicted group scored highest four years later, which is what the hypothesis said"
+     ]
+    }
+   ],
+   "sample": "The findings support the hypothesis. Teens with authoritative parents at 13 had the highest mean GPA at 17 (3.3, compared with 3.0 and 2.8) and the highest self-reliance (38, compared with 33 and 35), which is exactly the pattern the researchers predicted. Because parenting was measured rather than assigned, this supports the hypothesis that authoritative parenting predicts better outcomes, but it does not show that the parenting caused them."
+  }
+ ]
+}

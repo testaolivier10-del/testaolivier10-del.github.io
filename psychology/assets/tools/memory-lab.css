@@ -74,6 +74,7 @@ body.ls-on .psy-crumb{display:none;}
 .ml-time{stroke:var(--muted);stroke-width:2;}
 .ml-timeh{fill:var(--muted);}
 .ml-tdot{fill:var(--muted);}
+.ml-tstem{stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 4;}
 .ml-tdot.is-test{fill:var(--ml-acc);}
 .ml-tc{fill:var(--white);stroke:var(--line);stroke-width:2;}
 .ml-tc.is-want{fill:var(--ml-acc-tint);stroke:var(--ml-acc);stroke-width:2.5;}
@@ -84,8 +85,6 @@ body.ls-on .psy-crumb{display:none;}
 .ml-tcw{fill:var(--muted);font-weight:700;font-size:12px;}
 .ml-arr{fill:none;stroke:var(--ml-alt);stroke-width:3;}
 .ml-arrh{fill:var(--ml-alt);}
-.ml-flow{stroke:var(--muted);stroke-width:2;stroke-dasharray:4 4;}
-.ml-flowh{fill:var(--muted);}
 /* drills */
 .ml-data{font:800 16px/1.7 var(--font-mono);}
 .ml-means{margin:6px 0 0;text-align:center;font:700 calc(15px * var(--ls-scale,1)) var(--font-ui);color:var(--ink);}

@@ -1,0 +1,676 @@
+{
+ "stimuli": {
+  "neural-firing-s1": {
+   "kind": "visual",
+   "title": "A neuron and a synapse, parts marked A to F",
+   "figure": "neural-firing-neuron-letters"
+  },
+  "neural-firing-s2": {
+   "kind": "study",
+   "title": "Two pain medications and time to relief",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers wanted to know whether a drug that acts like the body's endorphins relieves pain faster than one that does not act on endorphin receptors.",
+    "participants": "90 adults having a tooth removed at a dental clinic volunteered. Each was randomly assigned to one of three groups of 30.",
+    "method": "After surgery, one group took Drug E, which binds to and activates endorphin receptors; one took Drug N, which reduces swelling but does not act on those receptors; one took a placebo pill. Patients and the dentists who recorded their answers did not know which pill was which. Each patient rated pain from 0 (none) to 10 (worst) every 10 minutes, and relief was the number of minutes until the rating fell below 4.",
+    "results": "Average minutes to relief: Drug E 20, Drug N 35, placebo 55. In a follow-up, patients who took Drug E every day for two weeks needed a larger dose to get the same relief."
+   },
+   "table": {
+    "caption": "Average minutes until pain fell below 4 (invented data for practice)",
+    "cols": [
+     "Group",
+     "Minutes to relief"
+    ],
+    "rows": [
+     [
+      "Drug E",
+      "20"
+     ],
+     [
+      "Drug N",
+      "35"
+     ],
+     [
+      "Placebo",
+      "55"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-neural-firing-1",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "neural-firing-s1",
+   "q": "In the figure, which lettered part receives messages from other neurons and carries them toward the cell body?",
+   "options": [
+    "The part marked A",
+    "The part marked C",
+    "The part marked D",
+    "The part marked E"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A marks a dendrite, the branching fiber that collects incoming signals and passes them to the cell body.",
+    "options": [
+     "Right: A is a dendrite, which receives messages from other neurons.",
+     "C is a segment of myelin sheath, which insulates the axon; it does not receive messages.",
+     "D is an axon terminal, where the neuron sends its message out, not where it receives one.",
+     "E is the synaptic gap, the space between two neurons, not a part of the receiving cell."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-2",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "neural-firing-s1",
+   "q": "In a person with multiple sclerosis, the immune system damages the part marked C. What change in neural firing would you predict?",
+   "options": [
+    "Signals along the axon slow down or fail",
+    "Neurotransmitter stops being taken back up",
+    "Dendrites stop receiving incoming signals",
+    "The cell body stops making any proteins"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "C is the myelin sheath. Myelin lets the action potential jump quickly down the axon; when it is damaged, as in multiple sclerosis, signals slow, scramble or stop, which causes weakness, numbness and vision problems.",
+    "options": [
+     "Right: damaged myelin slows or blocks signals traveling down the axon.",
+     "Reuptake happens at the axon terminal and synapse, not at the myelin.",
+     "Dendrites receive signals; multiple sclerosis attacks the myelin on the axon.",
+     "The cell body keeps working; the problem is how fast the signal travels."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-3",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "neural-firing-s1",
+   "q": "A drug blocks the receptor sites marked F, so the neurotransmitter released into E cannot bind there. How is this drug classified?",
+   "options": [
+    "An antagonist",
+    "An agonist",
+    "A reuptake inhibitor",
+    "A hormone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A drug that occupies or blocks receptors so the neurotransmitter cannot act is an antagonist: it weakens that neurotransmitter's effect.",
+    "options": [
+     "Right: blocking the receptor stops the neurotransmitter from working, so the drug is an antagonist.",
+     "An agonist mimics or boosts a neurotransmitter; this drug stops it from acting.",
+     "A reuptake inhibitor keeps neurotransmitter in the gap longer; it does not block receptor sites.",
+     "A hormone is a chemical messenger carried in the blood, not a drug that blocks a receptor."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-4",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "neural-firing-s1",
+   "q": "In the figure, neurotransmitter crosses E and binds at F, then some returns into the sending terminal. If a drug stopped that return trip, what would happen?",
+   "options": [
+    "More neurotransmitter would stay in the gap, so its effect would last longer",
+    "Less neurotransmitter would be released, so its effect would be weaker",
+    "The receiving neuron would lose its receptor sites and stop firing",
+    "The myelin on the sending axon would break down over time"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The return trip is reuptake. A drug that blocks it (a reuptake inhibitor) leaves more neurotransmitter in the synaptic gap, so the message to the receiving neuron is stronger and longer.",
+    "options": [
+     "Right: blocking reuptake leaves more neurotransmitter in the gap for longer.",
+     "Release happens before reuptake; blocking reuptake does not reduce how much is released.",
+     "Receptors stay in place; with more neurotransmitter around they are used more, not lost.",
+     "Reuptake has nothing to do with myelin, which insulates the axon."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-5",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A neuron receives a weak burst of excitatory input that raises its charge from -70 mV to -62 mV, then the input stops. What happens?",
+   "options": [
+    "It does not fire, because the charge never reached threshold",
+    "It fires a small action potential that matches the weak input",
+    "It fires a full action potential, but more slowly than usual",
+    "It enters its refractory period and is unable to fire for a while"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Threshold is about -55 mV. Below it nothing fires; at or above it the neuron fires a full action potential. There is no partial action potential (the all-or-none principle).",
+    "options": [
+     "Right: -62 mV is below a threshold of about -55 mV, so the neuron does not fire.",
+     "There are no small action potentials: firing is all-or-none.",
+     "Action potential speed depends on the axon (such as myelin), not on how strong the input was.",
+     "The refractory period follows an action potential; this neuron never fired."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-6",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Marisol touches a warm mug, then a hot stove. Her sensory neurons send a stronger message about the stove. Which change explains how they signal \"stronger\"?",
+   "options": [
+    "They fire more often, and more neurons fire",
+    "Each action potential grows taller and larger",
+    "Each action potential travels a longer path",
+    "The neurons release a different neurotransmitter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because each action potential is all-or-none, a neuron cannot make a single signal bigger. A stronger stimulus makes neurons fire more often and recruits more neurons.",
+    "options": [
+     "Right: intensity is coded by firing rate and the number of neurons firing.",
+     "All-or-none: every action potential is the same size, whatever the stimulus.",
+     "The path from her hand to the spinal cord is the same length for the mug and the stove.",
+     "A neuron does not switch neurotransmitters to signal a stronger stimulus."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-7",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "recall",
+   "diff": 1,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the events of one neural message in order, starting with a neuron at rest.",
+   "options": [
+    "The neuron sits at its resting potential, negative inside",
+    "Excitatory input depolarizes it past threshold",
+    "An action potential travels down the axon",
+    "Vesicles release neurotransmitter into the synapse",
+    "Neurotransmitter binds to receptors on the next neuron",
+    "Leftover neurotransmitter is taken back by reuptake"
+   ],
+   "why": {
+    "correct": "Rest, threshold, the action potential down the axon, release at the terminal, binding across the synapse, then reuptake clears the gap."
+   }
+  },
+  {
+   "id": "psy-neural-firing-8",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Dev steps on a tack and his foot jerks back before he feels any pain. Which pathway carried this reflex?",
+   "options": [
+    "Sensory neuron to interneuron in the spinal cord to motor neuron",
+    "Motor neuron to interneuron in the spinal cord to sensory neuron",
+    "Sensory neuron straight to the brain, then back to a motor neuron",
+    "Interneuron in the foot to sensory neuron to motor neuron"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a reflex arc the sensory neuron carries the message into the spinal cord, an interneuron passes it on, and a motor neuron moves the muscle. The brain gets the message a moment later, which is when he feels the pain.",
+    "options": [
+     "Right: sensory neuron in, interneuron in the spinal cord, motor neuron out.",
+     "This runs the arc backward: sensory neurons carry information in and motor neurons carry commands out.",
+     "The spinal cord handles the reflex without waiting for the brain, which is why the foot moves before the pain is felt.",
+     "Interneurons sit in the brain and spinal cord, not in the foot."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-9",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A patient's eyelids droop and her arm muscles tire after a few movements. Tests show her immune system is attacking the receptors where nerves signal her muscles. Which condition fits, and which neurotransmitter is involved?",
+   "options": [
+    "Myasthenia gravis; acetylcholine",
+    "Multiple sclerosis; acetylcholine",
+    "Myasthenia gravis; dopamine",
+    "Multiple sclerosis; serotonin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In myasthenia gravis the immune system attacks acetylcholine receptors at the junction between nerve and muscle, so muscles weaken with use.",
+    "options": [
+     "Right: myasthenia gravis blocks acetylcholine signals to muscles.",
+     "Multiple sclerosis damages myelin in the brain and spinal cord, not the receptors on muscles.",
+     "Dopamine is involved in movement planning and reward; the muscle receptor here is for acetylcholine.",
+     "Multiple sclerosis damages myelin, and serotonin is not the muscle neurotransmitter."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-10",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "neural-firing-s2",
+   "q": "Drug E binds to endorphin receptors and activates them. How should it be classified?",
+   "options": [
+    "An agonist, because it mimics the endorphins",
+    "An antagonist, because it blocks the endorphins",
+    "A reuptake inhibitor, because it keeps endorphins in the gap",
+    "A stimulant, because it speeds up the nervous system"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A drug that binds to a neurotransmitter's receptors and triggers the same effect is an agonist. Opioid pain medicines work this way at endorphin receptors.",
+    "options": [
+     "Right: Drug E mimics endorphins at their receptors, so it is an agonist.",
+     "An antagonist would block the receptors and stop pain relief, the opposite of what Drug E did.",
+     "The summary says Drug E binds to receptors, not that it slows reuptake.",
+     "Drugs that mimic endorphins are opioids, which slow the nervous system; stimulants speed it up."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-11",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "neural-firing-s2",
+   "q": "Why can the researchers conclude that Drug E caused faster relief than the placebo?",
+   "options": [
+    "Patients were randomly assigned to groups and the drug was manipulated",
+    "Patients were dental patients who volunteered at one clinic",
+    "Pain was rated on a 0 to 10 scale at 10-minute intervals",
+    "Ninety people took part, which is a large number"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An experiment manipulates the variable (which pill) and randomly assigns participants, so the groups start out alike and the pill is the likely cause of the difference.",
+    "options": [
+     "Right: manipulation plus random assignment is what allows a cause-and-effect conclusion.",
+     "Volunteering at one clinic describes who was studied; it does not support a causal claim.",
+     "The rating scale is how relief was measured (the operational definition), not why a causal conclusion holds.",
+     "A larger sample helps, but without random assignment the groups could still differ in other ways."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-12",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.A",
+   "stimulus": "neural-firing-s2",
+   "q": "From the table, how many minutes sooner did the Drug E group reach relief than the placebo group?",
+   "why": {
+    "correct": "Placebo 55 minutes minus Drug E 20 minutes is 35 minutes sooner."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      55,
+      20
+     ]
+    },
+    "unit": "min",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        35,
+        20
+       ]
+      },
+      "why": "15 minutes compares Drug E with Drug N. The question asks about the placebo group, 55 minutes."
+     },
+     {
+      "value": 75,
+      "why": "75 adds the two times. \"How many minutes sooner\" is a difference: 55 minus 20."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-13",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "neural-firing-s2",
+   "q": "Which is the operational definition of pain relief in this study?",
+   "options": [
+    "The number of minutes until a patient's 0 to 10 pain rating fell below 4",
+    "How much better each patient felt after the surgery was over",
+    "Whether the patient took Drug E, Drug N or the placebo",
+    "The amount of endorphin activity in each patient's brain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An operational definition says exactly how this study measured the variable: minutes until the self-rated pain score dropped below 4.",
+    "options": [
+     "Right: relief was measured as minutes until the 0 to 10 rating fell below 4.",
+     "Feeling better is the concept in general; it does not say how it was measured.",
+     "Which pill a patient took is the independent variable, not the measure of relief.",
+     "Brain endorphin activity was never measured in this study."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-14",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "neural-firing-s2",
+   "q": "In the follow-up, patients who used Drug E daily needed a larger dose for the same relief. Which concept does this show?",
+   "options": [
+    "Tolerance",
+    "Withdrawal",
+    "Reuptake",
+    "The refractory period"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With repeated use the brain adapts to a drug, so the same dose has less effect: tolerance.",
+    "options": [
+     "Right: needing more of a drug for the same effect is tolerance.",
+     "Withdrawal is the unpleasant symptoms when a drug is stopped; these patients were still taking it.",
+     "Reuptake is how a neuron takes back its own neurotransmitter; it does not explain a growing dose.",
+     "The refractory period is a brief pause after one action potential, measured in milliseconds."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-15",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A medication slows the reuptake of serotonin, and over several weeks a patient's low mood improves. What does the medication do at the synapse?",
+   "options": [
+    "Leaves more serotonin in the synapse for longer",
+    "Blocks serotonin receptors on the next neuron",
+    "Releases a burst of adrenaline into the blood",
+    "Speeds up the firing of motor neurons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slowing reuptake means serotonin stays in the synaptic gap longer and keeps reaching the receptors. That is what a reuptake inhibitor does.",
+    "options": [
+     "Right: a reuptake inhibitor keeps serotonin available in the synapse.",
+     "Blocking receptors would make the drug an antagonist and weaken serotonin's effect.",
+     "Adrenaline is a hormone from the adrenal glands; this drug acts on serotonin at the synapse.",
+     "Motor neuron firing controls muscles; the drug changes serotonin, which is linked to mood."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-16",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Twenty minutes before lunch, Jae feels his stomach growl and can think of little else but food. Which hormone most likely rose?",
+   "options": [
+    "Ghrelin",
+    "Leptin",
+    "Melatonin",
+    "Oxytocin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ghrelin is released by an empty stomach and signals hunger to the brain.",
+    "options": [
+     "Right: ghrelin rises before meals and makes people feel hungry.",
+     "Leptin, released by fat cells, signals that the body has enough stored energy; it reduces appetite.",
+     "Melatonin rises in the dark and helps time sleep, not hunger.",
+     "Oxytocin is linked to bonding, childbirth and nursing, not mealtime hunger."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-17",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A runner feels much less pain and a calm, good mood an hour into a long race, despite sore legs. Which neurotransmitter best explains it?",
+   "options": [
+    "Endorphins",
+    "Substance P",
+    "Glutamate",
+    "Acetylcholine"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Endorphins are the body's natural painkillers; strenuous exercise can raise them, easing pain and lifting mood.",
+    "options": [
+     "Right: endorphins reduce pain and can lift mood.",
+     "Substance P carries pain signals, so more of it would increase the pain.",
+     "Glutamate is the main excitatory neurotransmitter, not a natural painkiller.",
+     "Acetylcholine makes muscles contract; it does not explain pain relief."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-18",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At a party, a teen drinks alcohol and becomes slow to react and less careful. Alcohol increases the effect of GABA. What does this tell you about the drug?",
+   "options": [
+    "It is a depressant that boosts the main inhibitory neurotransmitter",
+    "It is a stimulant that boosts the main excitatory neurotransmitter",
+    "It is a hallucinogen that blocks the main inhibitory neurotransmitter",
+    "It is an opioid that mimics the body's natural painkillers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "GABA is the brain's main inhibitory neurotransmitter: it makes neurons less likely to fire. A drug that boosts GABA slows the nervous system, so it is a depressant.",
+    "options": [
+     "Right: boosting the inhibitory neurotransmitter GABA slows the brain, as a depressant does.",
+     "Stimulants speed up the nervous system; GABA slows neurons, and glutamate is the excitatory one.",
+     "Hallucinogens distort perception; alcohol boosts GABA rather than blocking it.",
+     "Opioids act at endorphin receptors; the stem says alcohol works through GABA."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-19",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Hearing a crash downstairs at night, Amara's heart pounds and her breathing quickens within seconds, and the feeling lingers for minutes. Which chemical messenger, carried in the blood, helps keep her body on alert?",
+   "options": [
+    "Adrenaline",
+    "Melatonin",
+    "Leptin",
+    "Serotonin"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adrenaline (epinephrine) is a hormone released by the adrenal glands into the blood during danger. It speeds the heart and breathing, and because the blood carries it, the effect lasts longer than a single neural signal.",
+    "options": [
+     "Right: adrenaline prepares the body for an emergency and keeps it aroused for minutes.",
+     "Melatonin helps time sleep; it would make her drowsy, not alert.",
+     "Leptin signals fullness; it is not part of the emergency response.",
+     "Serotonin is a neurotransmitter linked to mood and sleep, not a blood-borne alarm signal."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-20",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A website claims that a nasal spray of oxytocin makes people trust strangers. What is the most accurate response, based on current research?",
+   "options": [
+    "Oxytocin is linked to bonding, but larger studies have not reliably confirmed a simple trust effect",
+    "Oxytocin is a neurotransmitter for pain, so it cannot have anything to do with trust",
+    "Oxytocin is the hormone that controls hunger, so the claim confuses it with ghrelin",
+    "Oxytocin has been proven in many large studies to make people trust strangers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Oxytocin is a hormone released during childbirth, nursing and close contact and is linked to bonding. An early study reported more trust after a nasal spray, but later, larger studies did not reliably reproduce a simple trust effect.",
+    "options": [
+     "Right: the bonding link is real; the \"trust spray\" claim has not held up reliably.",
+     "Pain signaling involves substance P and endorphins; oxytocin is a hormone linked to bonding.",
+     "Ghrelin signals hunger; oxytocin is linked to bonding and birth.",
+     "The early finding was not reliably replicated, so \"proven\" overstates the evidence."
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-21",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.A",
+   "q": "A signal must travel 0.9 meters along a myelinated axon that conducts at 60 meters per second. How many milliseconds does the trip take? (1 second = 1,000 milliseconds.)",
+   "why": {
+    "correct": "Time = distance / speed = 0.9 / 60 = 0.015 seconds, which is 15 milliseconds. Without myelin, at about 1 meter per second, the same trip would take most of a second."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        0.9,
+        60
+       ]
+      },
+      1000
+     ]
+    },
+    "unit": "ms",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        0.9,
+        60
+       ]
+      },
+      "why": "0.015 is the time in seconds. Multiply by 1,000 to give milliseconds: 15 ms."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.9,
+        60
+       ]
+      },
+      "why": "54 multiplies distance by speed. Time is distance divided by speed: 0.9 / 60 seconds."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-neural-firing-22",
+   "unit": "unit-1",
+   "topic": "neural-firing",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.A",
+   "q": "A friend says, \"Cocaine makes you feel good because it adds dopamine to your brain.\" Build a more accurate explanation.",
+   "why": {
+    "correct": "Cocaine does not add dopamine. It blocks reuptake, so the dopamine the neuron already released lingers in the synapse."
+   },
+   "specific": {
+    "frame": "Cocaine is a ___, so ___ stays in the synapse longer.",
+    "model": "Cocaine is a reuptake inhibitor: it blocks the reuptake of dopamine, so dopamine stays in the synapse longer and keeps stimulating the receiving neuron.",
+    "slots": {
+     "concept": {
+      "label": "Kind of drug action",
+      "options": [
+       "reuptake inhibitor",
+       "antagonist",
+       "hormone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An antagonist blocks receptors and weakens the neurotransmitter; cocaine strengthens dopamine's effect.",
+       "2": "A hormone travels in the blood; cocaine acts directly at the synapse."
+      }
+     },
+     "variable": {
+      "label": "Neurotransmitter",
+      "options": [
+       "dopamine",
+       "acetylcholine",
+       "melatonin"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Acetylcholine controls muscles; cocaine's rewarding effect comes from dopamine.",
+       "2": "Melatonin is a hormone that times sleep, not a neurotransmitter cocaine acts on."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

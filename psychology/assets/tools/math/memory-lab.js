@@ -158,7 +158,7 @@
       if(shapeOk(imm, del)) break;
     }
     var last3 = imm.slice(n - 3), mean3 = E('mean', [last3]), dlast = del.slice(n - 3);
-    var text = '<p>' + c.lead + ' Each of ' + k + ' participants heard ' + n + ' unrelated words, one every two seconds. One group wrote down every word they could remember at once; another group first counted backward by threes for 30 seconds. The table gives the percent of participants who recalled the word in each position (invented data for practice).</p>';
+    var text = '<p>' + c.lead + ' Each of ' + k + ' participants heard ' + n + ' unrelated words, one every two seconds. One group wrote down every word they could remember at once; another group first counted backward by threes for 30 seconds. The graph gives the percent of participants who recalled the word in each position (invented data for practice).</p>';
     var steps = [
       choice('primacy', 'Which part of the immediate-recall curve shows the primacy effect?', [
         ['Positions 1 to 3, recalled more than the middle of the list.', 'The first words get the most rehearsal, so more of them reach long-term memory.'],
@@ -265,7 +265,7 @@
       if(pts[0][1] - pts[1][1] > 2 * (pts[3][1] - pts[4][1])) break;
     }
     var d1 = E('sub', [pts[0][1], pts[1][1]]), d2 = E('sub', [pts[3][1], pts[4][1]]);
-    var text = '<p>' + c.lead + ' The table shows the percent of the material the group still remembered after each delay (invented data for practice).</p>';
+    var text = '<p>' + c.lead + ' The graph shows the percent of the material the group still remembered after each delay (invented data for practice).</p>';
     var steps = [
       num('drop1', 'How many percentage points were lost between day 0 and day 1?', d1, 0, { hint: 'Day 0 percent minus day 1 percent.', mistakes: [{ value: pts[1][1], why: 'That is the percent still remembered on day 1. The question asks how much was lost.' }] }),
       num('drop2', 'How many percentage points were lost between day 7 and day 14?', d2, 0, { hint: 'Day 7 percent minus day 14 percent.', mistakes: [{ value: pts[4][1], why: 'That is the percent still remembered on day 14. Subtract it from day 7.' }] }),

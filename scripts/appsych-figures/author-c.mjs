@@ -116,9 +116,10 @@ function axes(o) {
   // Panel A: a grid where color (similarity) and spacing (proximity) both group
   b.push(rect(20, 44, 270, 330, { fill: SOFT, stroke: GRID }));
   b.push(text(155, 70, 'Figure A', { anchor: 'middle', size: 15, bold: true, fill: CER }));
+  // Equal spacing everywhere; the columns alternate circles and squares.
   for (let c = 0; c < 6; c++) for (let r = 0; r < 6; r++) {
-    const x = 20 + 52 + Math.floor(c / 2) * 72 + (c % 2) * 26, y = 112 + r * 38;
-    b.push(circle(x, y, 8, { fill: c % 2 ? '#FFFFFF' : INK, stroke: INK, w: 2 }));
+    const x = 20 + 60 + c * 30, y = 112 + r * 38;
+    b.push(c % 2 ? rect(x - 8, y - 8, 16, 16, { fill: INK, rx: 1 }) : circle(x, y, 8.5, { fill: INK }));
   }
   // Panel B: a road scene with linear perspective, relative size, interposition, texture
   const bx = 310;
@@ -148,7 +149,7 @@ function axes(o) {
   b.push(rect(cxp + 135 - barW / 2, 300, barW, 10, { fill: VERM, rx: 1 }));
   b.push(text(W / 2, 404, 'In Figure C the two orange bars are exactly the same length.', { anchor: 'middle', size: 13, fill: GREY }));
   fig('perception', 'perception-figure-set', W, H, 'Three perception figures: grouping, a road scene and an illusion',
-    'Figure A: a grid of six columns of dots. The columns alternate black and white dots, and the columns are spaced in pairs, so a black column sits close to a white column. Figure B: a road narrows toward the horizon; fence posts shrink and crowd together toward the horizon; a large blue person stands in the foreground, a small blue person of the same shape stands far down the road, and an orange person stands partly hidden behind a box. Figure C: two lines converge toward the top like railroad tracks, with evenly spaced cross lines; two orange bars of exactly equal length sit between them, one high and one low, and the upper bar looks longer.', b.join(''));
+    'Figure A: an evenly spaced grid of six columns and six rows of black shapes; the columns alternate circles and squares, so each column holds one kind of shape. Figure B: a road narrows toward the horizon; fence posts shrink and crowd together toward the horizon; a large blue person stands in the foreground, a small blue person of the same shape stands far down the road, and an orange person stands partly hidden behind a box. Figure C: two lines converge toward the top like railroad tracks, with evenly spaced cross lines; two orange bars of exactly equal length sit between them, one high and one low, and the upper bar looks longer.', b.join(''));
 }
 
 /* ------------------------------------- 2.2 thinking: algorithm versus heuristic */

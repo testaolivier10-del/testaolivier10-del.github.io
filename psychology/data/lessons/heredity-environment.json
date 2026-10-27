@@ -1,0 +1,79 @@
+{
+ "topic": "heredity-environment",
+ "hook": "Identical twins Jim Lewis and Jim Springer were adopted by different families as babies and did not meet until they were 39. Reports of their reunion listed striking matches: similar habits, hobbies and even pets’ names. Some of those matches were surely coincidence, and twins raised apart differ in plenty of ways too. But large studies of twins and adopted children, not single stories, are how psychology measures what heredity and environment each contribute.",
+ "prereq": [
+  {
+   "q": "Which correlation shows the strongest relationship?",
+   "options": [
+    "$r = +0.80$",
+    "$r = +0.30$",
+    "$r = -0.20$",
+    "$r = 0.00$"
+   ],
+   "correct": 0,
+   "why": "Strength is the size of r; 0.80 is the largest here.",
+   "review": "stats-correlation"
+  },
+  {
+   "q": "A study finds that children who read more at home have higher test scores. Why can it not show that reading causes higher scores?",
+   "options": [
+    "A third variable, such as family resources, could affect both",
+    "The correlation is too strong to be meaningful",
+    "Children were randomly assigned to read",
+    "Test scores cannot be correlated with reading"
+   ],
+   "correct": 0,
+   "why": "Correlational data cannot rule out a third variable or the reverse direction.",
+   "review": "stats-correlation"
+  },
+  {
+   "q": "A study uses 50 pairs of twins from one city. Who do its results describe most safely?",
+   "options": [
+    "Twins similar to those in the sample",
+    "All people everywhere",
+    "Only identical twins raised apart",
+    "Nobody, since twins are unusual"
+   ],
+   "correct": 0,
+   "why": "Results generalize to people similar to the participants.",
+   "review": "research-sampling"
+  }
+ ],
+ "figure": {
+  "figure": "heredity-environment-designs",
+  "caption": "Twin studies compare identical and fraternal twins; adoption studies compare biological and adoptive families."
+ },
+ "chain": [
+  {
+   "cause": "People inherit tendencies from their biological parents (heredity)",
+   "effect": "relatives who share more genes tend to be more alike on many traits"
+  },
+  {
+   "cause": "The environment, from nutrition to schooling to culture, shapes how those tendencies develop",
+   "effect": "the same inheritance can lead to different outcomes in different environments"
+  },
+  {
+   "cause": "Twin, family and adoption studies compare relatives who share different amounts of genes and environment",
+   "effect": "researchers can estimate heritability: how much of the variation in a group is linked to genetic differences"
+  }
+ ],
+ "ideas": [
+  "<b>Nature and nurture</b> interact: <b>heredity</b> sets tendencies, and the environment shapes how they develop. Behavior comes from both, never one alone.",
+  "<b>Heritability</b> is the share of variation in a trait, within one group and environment, linked to genetic differences. It says nothing about one person, or about differences between groups.",
+  "<b>Twin studies</b> compare identical twins (all genes shared) with fraternal twins (about half); <b>adoption studies</b> compare a child with biological and adoptive parents; <b>family studies</b> track a trait across relatives.",
+  "<b>Evolutionary psychology</b> explains shared human traits by <b>natural selection</b>. Its misuse to rank people led to <b>eugenics</b> and forced sterilization."
+ ],
+ "misconception": {
+  "wrong": "A heritability of 0.60 means 60% of a person’s trait comes from genes, and a heritable trait cannot be changed.",
+  "right": "Heritability describes differences among people in a group, not the makeup of one person. A highly heritable condition such as PKU can be transformed by the environment."
+ },
+ "check": [
+  "psy-heredity-environment-1",
+  "psy-heredity-environment-2",
+  "psy-heredity-environment-8",
+  "psy-heredity-environment-9",
+  "psy-heredity-environment-10",
+  "psy-heredity-environment-14"
+ ],
+ "summary": "Behavior and mental processes come from heredity and environment working together. Twin, family and adoption studies estimate heritability, the share of variation in a trait within a group that is linked to genetic differences; it does not describe individuals or explain differences between groups. The evolutionary perspective explains shared human traits by natural selection, and its misuse in eugenics shows why claims about heredity must be read carefully."
+}

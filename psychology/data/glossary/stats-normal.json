@@ -1,0 +1,14 @@
+{
+ "normal-curve": {
+  "def": "A symmetric, bell-shaped frequency distribution in which most scores fall near the mean and fewer fall farther out; the mean, median and mode are equal."
+ },
+ "empirical-rule": {
+  "def": "In a normal distribution, about 68% of scores lie within one standard deviation of the mean, 95% within two and 99.7% within three. Also called the empirical rule."
+ },
+ "z-score": {
+  "def": "How many standard deviations a score is above (positive) or below (negative) the mean: $z = \\frac{x - \\bar{x}}{\\text{SD}}$. Also called a standard score."
+ },
+ "percentile-rank": {
+  "def": "The percent of scores in a distribution that fall below a given score."
+ }
+}

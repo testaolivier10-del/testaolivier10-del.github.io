@@ -75,7 +75,12 @@
   var VARIANTS = ['support', 'null', 'reverse'];
 
   /* ------------------------------------------------------------ numbers */
-  function variantOf(r){ var u = r(); return u < 0.6 ? 'support' : u < 0.85 ? 'null' : 'reverse'; }
+  /* A context may limit its results (ctx.variants): a reversed result is not
+     offered where it would teach a false fact (caffeine helping sleep). */
+  function variantOf(r, ctx){
+    var u = r(), v = u < 0.6 ? 'support' : u < 0.85 ? 'null' : 'reverse', ok = (ctx && ctx.variants) || VARIANTS;
+    return ok.indexOf(v) > -1 ? v : ok[0];
+  }
   function study(ctx, variant, r){
     variant = variant || 'support';
     r = r || M.rng(7);
@@ -238,7 +243,7 @@
       opt(cap(dv.how), 'Right: the scale and the timing make the definition measurable and repeatable.', true),
       opt(cap(dv.howNear), 'Check the Method again: it says ' + dv.how + '.'),
       opt('Using a rating scale', 'Naming a scale without saying what was rated, on what range, or when does not make the variable measurable. The readers refuse "a Likert scale" alone.'),
-      opt('By asking the participants how they felt', 'Too vague: say what number was recorded and how, as the study did.')
+      opt('At some point during the study', 'Too vague: an operational definition says when the measure was taken, so another researcher could repeat it.')
     ];
     return choice(r, 'how', 'Now finish it: how or when was it measured?', opts, '2.B', 'Look for the scale, the count and the moment of measurement.');
   }
@@ -277,7 +282,7 @@
       if(st.sig) opts.push(opt('Statistically significant means the difference is large and important.', 'Significance is not size. It means the difference is unlikely to be due to chance alone; and the answer must be about these groups.'));
       else opts.push(opt(cap(H) + ' ' + ctx.dv.more + ', so ' + ctx.groups[st.higher].short + ' made a real difference.', 'Not statistically significant means the difference could plausibly be due to chance, so it is not evidence of a real difference.'));
     }
-    return choice(r, st.kind === 'r' ? 'rstat' : 'stat', '<b>Part C.</b> Explain what the result ' + (st.kind === 'r' ? '(<i>r</i>)' : '') + ' shows for these participants.', opts, st.kind === 'r' ? '3.A' : '3.C', st.kind === 'r' ? 'Sign gives the direction; distance from 0 gives the strength.' : 'Which group was higher, and was the difference statistically significant?');
+    return choice(r, st.kind === 'r' ? 'rstat' : 'stat', '<b>Part C.</b> Explain what the result' + (st.kind === 'r' ? ' (<i>r</i>)' : '') + ' shows for these participants.', opts, st.kind === 'r' ? '3.A' : '3.C', st.kind === 'r' ? 'Sign gives the direction; distance from 0 gives the strength.' : 'Which group was higher, and was the difference statistically significant?');
   }
   function stepEthics(r, ctx){
     var e = ctx.ethics[Math.floor(r() * ctx.ethics.length)];
@@ -310,8 +315,8 @@
     var right = argueRight(ctx, st), w = supportsWord(st);
     var wrongW = w === 'Supports' ? 'Does not support' : 'Supports';
     var opts = [opt(right, 'Right: it uses a specific, accurately read result and says whether it fits the hypothesis.', true),
-      opt('Proves it: the study shows that ' + ctx.hypothesis + ' for everyone.', 'A single study supports or refutes a hypothesis; it never proves it, and one sample is not everyone.'),
-      opt(wrongW + ': ' + ctx.concept + ' explains why ' + ctx.hypothesis + '.', 'An explanation with no study result does not score. Use the numbers in the Results' + (w === 'Supports' ? '' : ', and read them again: they do not ' + (w === 'Refutes' ? 'match' : 'show') + ' the prediction') + '.')];
+      opt('It proves the hypothesis: the study shows that ' + ctx.hypothesis + '.', 'A study supports or refutes a hypothesis; it never proves it. Name the result and say whether it fits.'),
+      opt(w + ': ' + low(ctx.concept) + ' predicts that ' + ctx.hypothesis + '.', 'This names a concept but cites no result from the study. Part F needs a specific result from the Results and what it means for the hypothesis.')];
     if(st.kind === 'r') opts.push(opt(wrongW + ': ' + (st.variant === 'support' ? 'r is not 1, so there is no relationship at all.' : 'any r at all shows the predicted effect.'), st.variant === 'support' ? 'r does not have to be 1. A clear ' + (st.dir > 0 ? 'positive' : 'negative') + ' r fits the predicted relationship.' : 'The size and sign of r matter: this r does not show the predicted relationship.'));
     else opts.push(opt(wrongW + ': ' + (st.variant === 'support' ? 'the difference of ' + fx(st.diff, st.dec) + ' is too small to matter.' : ctx.groups[st.hi].name + ' had a mean of ' + fx(st.means[st.hi], st.dec) + '.'), st.variant === 'support' ? 'The difference is statistically significant and in the predicted direction, so the result supports the hypothesis.' : 'One mean alone is not a comparison, and it misreads the result. Compare both groups and use the significance.'));
     return choice(r, 'argue', '<b>Part F.</b> Does the result support the hypothesis that ' + ctx.hypothesis + '? Use a specific result.', opts, '4.B', 'Pick the answer that cites a result AND says what it means for the hypothesis.');
@@ -320,7 +325,7 @@
   function generate(r, ctx, type){
     type = type || 'full';
     if(TYPES.indexOf(type) < 0) throw new Error('articleStudio: unknown type ' + type);
-    var variant = variantOf(r), st = study(ctx, variant, r), steps = [], solution = [], extra = {};
+    var variant = variantOf(r, ctx), st = study(ctx, variant, r), steps = [], solution = [], extra = {};
     var A = type === 'full' || type === 'design', C = type === 'full' || type === 'results', D = type === 'full' || type === 'ethics';
     if(A){
       steps.push(stepMethod(r, ctx));

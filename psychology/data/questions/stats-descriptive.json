@@ -331,7 +331,7 @@
    "practice": "3.B",
    "q": "A store reports the \"average\" income of its customers. A few customers are billionaires. Which measure would best describe a typical customer’s income?",
    "options": [
-    "The mean, because it uses every customer’s income",
+    "The mean, because it uses each customer’s income",
     "The median, because extreme values barely move it",
     "The range, because it covers the lowest and highest incomes",
     "The standard deviation, because it shows variation"
@@ -357,7 +357,7 @@
    "practice": "3.A",
    "q": "Scores on a reading test cluster in two separate peaks, one around 40 and one around 80, with few scores in between. How is this distribution described?",
    "options": [
-    "Normal",
+    "Symmetric with one peak",
     "Positively skewed",
     "Bimodal",
     "Negatively skewed"
@@ -366,7 +366,7 @@
    "why": {
     "correct": "A bimodal distribution has two peaks. It often means two different groups are mixed together, such as students who did and did not read the assigned book.",
     "options": [
-     "A normal distribution has one peak in the middle.",
+     "A symmetric distribution with one peak has a single hump in the middle.",
      "Skew is one peak with a long tail on one side.",
      "Right: two modes, two peaks.",
      "Skew is one peak with a long tail on one side."
@@ -531,9 +531,9 @@
    "q": "Which statistic gives the better summary of this participant’s usual reaction time, and why?",
    "options": [
     "The median, because the 900 ms sneeze trial pulls the mean up",
-    "The mean, because it uses every trial including the 900 ms one",
+    "The mean, because it uses each trial, including the 900 ms one",
     "The range, because it shows the fastest and slowest trials",
-    "The mode and the mean are equal, so either one works"
+    "The mode and the mean are equal, so either works"
    ],
    "correct": 0,
    "why": {
@@ -601,7 +601,7 @@
    "stimulus": "stats-descriptive-s1",
    "q": "If the researcher drops the 900 ms trial as a recording error, what happens to the mean and the median?",
    "options": [
-    "Both drop by the same amount",
+    "Both drop by about the same amount",
     "The mean drops a lot; the median stays at 300",
     "The median drops a lot; the mean stays about the same",
     "Neither changes, since one trial is a small part of the data"
@@ -631,7 +631,7 @@
     "Positively skewed",
     "Bimodal",
     "Negatively skewed",
-    "Normal"
+    "Symmetric"
    ],
    "correct": 2,
    "why": {
@@ -640,7 +640,7 @@
      "A positive skew has its tail toward the high values; this tail points to the low scores.",
      "There is one peak, from 80 to 90.",
      "Right: most scores are high, with a tail stretching toward the low scores.",
-     "A normal distribution is symmetric; this one has a tail on the left."
+     "A symmetric distribution has matching sides; this one has a tail on the left."
     ]
    }
   },

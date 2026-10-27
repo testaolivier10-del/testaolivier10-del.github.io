@@ -1,0 +1,29 @@
+{
+ "nature-nurture": {
+  "def": "The question of how heredity (nature) and environment and experience (nurture) contribute to behavior and mental processes. Psychologists now study how the two interact rather than which one wins."
+ },
+ "heredity": {
+  "def": "The passing of traits and tendencies from biological parents to their children."
+ },
+ "heritability": {
+  "def": "The proportion of the variation in a trait, within a particular group and environment, that is linked to genetic differences. It does not apply to one person and can change when the environment changes."
+ },
+ "evolutionary-psychology": {
+  "def": "The study of how behavior and mental processes may have been shaped by natural selection because they helped our ancestors survive and reproduce."
+ },
+ "natural-selection": {
+  "def": "The process by which inherited traits that help an organism survive and reproduce are passed on more often, becoming more common over generations."
+ },
+ "eugenics": {
+  "def": "A discredited movement, begun in the late 1800s, that tried to \"improve\" humanity by controlling who could have children; it led to forced sterilization and, in Nazi Germany, mass murder."
+ },
+ "twin-study": {
+  "def": "A study that compares how alike identical twins (who share all their genes) and fraternal twins (who share about half) are on a trait, to estimate genetic influence."
+ },
+ "adoption-study": {
+  "def": "A study that compares adopted children with their biological parents (shared genes) and their adoptive parents (shared environment)."
+ },
+ "family-study": {
+  "def": "A study of how often a trait appears among relatives of different closeness, to see whether it runs in families."
+ }
+}

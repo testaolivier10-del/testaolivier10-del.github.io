@@ -1,0 +1,71 @@
+{
+ "topic": "stats-normal",
+ "hook": "You score 72 on a biology test and 85 on a history test. Which went better? It depends on how everyone else did. If the class averaged 60 in biology and 80 in history, your 72 might be the more impressive score. The normal curve and the z score let you compare scores from different tests on the same scale.",
+ "prereq": [
+  {
+   "q": "A test has a mean of 75 and a standard deviation of 15. What does the standard deviation describe?",
+   "options": [
+    "How spread out the scores are around the mean",
+    "The most common score on the test",
+    "The middle score when they are put in order",
+    "The difference between the highest and lowest scores"
+   ],
+   "correct": 0,
+   "why": "The standard deviation is roughly the typical distance of scores from the mean.",
+   "review": "stats-descriptive"
+  },
+  {
+   "q": "What is the mean of 6, 8 and 10?",
+   "options": [
+    "8",
+    "24",
+    "6",
+    "10"
+   ],
+   "correct": 0,
+   "why": "The total is 24, and 24 divided by 3 values is 8.",
+   "review": "stats-descriptive"
+  }
+ ],
+ "figure": {
+  "figure": "stats-normal-curve",
+  "caption": "The normal curve: 68% of scores within one standard deviation of the mean, 95% within two and 99.7% within three."
+ },
+ "chain": [
+  {
+   "cause": "Many traits and test scores are shaped by many small influences",
+   "effect": "their frequency distribution is bell-shaped and symmetric: the normal curve"
+  },
+  {
+   "cause": "Mark the mean and each standard deviation on the curve",
+   "effect": "the 68-95-99.7 rule gives the share of scores between the marks"
+  },
+  {
+   "cause": "Subtract the mean from a score and divide by the standard deviation",
+   "effect": "the z score says how many standard deviations the score is from the mean"
+  },
+  {
+   "cause": "Add up the share of scores below a mark",
+   "effect": "the percentile rank: 50 at the mean, 84 at one SD above, 16 at one SD below"
+  }
+ ],
+ "ideas": [
+  "A <b>normal curve</b> is symmetric and bell-shaped: mean, median and mode are equal, in the middle.",
+  "The <b>68-95-99.7 rule</b>: about 68% of scores lie within 1 standard deviation of the mean, 95% within 2 and 99.7% within 3. Bands: 34%, 13.5%, 2.35% on each side.",
+  "A <b>z score</b>: $z = \\frac{x - \\bar{x}}{\\text{SD}}$. Above the mean, positive; below, negative.",
+  "A <b>percentile rank</b> is the percent of scores below a score, not the percent correct. One SD above the mean is the 84th percentile."
+ ],
+ "misconception": {
+  "wrong": "The 90th percentile means getting 90% of the questions right, and 68% means a score at the 68th percentile.",
+  "right": "A percentile is a rank among test takers: the 90th percentile beats about 90% of them, whatever the percent correct. 68% is the share of scores within one standard deviation on both sides, not a percentile."
+ },
+ "check": [
+  "psy-stats-normal-1",
+  "psy-stats-normal-4",
+  "psy-stats-normal-6",
+  "psy-stats-normal-8",
+  "psy-stats-normal-9",
+  "psy-stats-normal-11"
+ ],
+ "summary": "In a normal distribution, scores form a symmetric bell curve around the mean. By the 68-95-99.7 rule, about 68% of scores lie within one standard deviation of the mean, 95% within two and 99.7% within three. A z score gives a score’s distance from the mean in standard deviations, which lets you compare scores from different tests, and a percentile rank gives the percent of scores below it."
+}

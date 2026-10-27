@@ -1,0 +1,311 @@
+{
+ "stimuli": {
+  "stats-significance-s1": {
+   "kind": "data",
+   "title": "Does a 10-minute walk before a test reduce worry?",
+   "invented": true,
+   "plot": {
+    "label": "Bar graph of mean worry ratings from 1 to 10 before a test: walking group 4.8, sitting group 5.6; invented data",
+    "kind": "bar",
+    "categories": [
+     "Walked for 10 minutes",
+     "Sat quietly for 10 minutes"
+    ],
+    "values": [
+     4.8,
+     5.6
+    ],
+    "yLabel": "Mean worry rating (1 to 10)",
+    "y": [
+     0,
+     10
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-stats-significance-1",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "A study reports that students who slept 8 hours recalled more words than students who slept 5 hours, and that the difference was statistically significant ($p < .05$). What does \"statistically significant\" mean here?",
+   "options": [
+    "The difference is unlikely to be due to chance",
+    "The difference is large and important for students",
+    "Sleep definitely causes better recall in everyone",
+    "About 5% of the students recalled more words"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A statistically significant result is one that would be unlikely if only chance were at work. By convention, psychologists use $p < .05$: less than a 5% chance of a difference this large if the groups did not really differ.",
+    "options": [
+     "Right: a result this large would rarely appear by chance if sleep made no difference.",
+     "Significance does not say how big or important a difference is; that is effect size.",
+     "Significance is a statement about chance, not certainty, and not about every individual.",
+     "$p < .05$ is a probability about chance, not a share of the students."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-2",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "A study finds that a reading app raised test scores by 3 points, but the difference was not statistically significant. Which interpretation is best?",
+   "options": [
+    "The app lowered test scores by 3 points",
+    "The 3-point gain could plausibly be due to chance",
+    "The study proves that the app has no effect",
+    "The app works, though for just 3% of the students"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Not statistically significant means the difference is small enough that chance alone could plausibly explain it. It does not prove the app does nothing.",
+    "options": [
+     "The app group scored 3 points higher, not lower.",
+     "Right: \"not significant\" means chance cannot be ruled out.",
+     "Failing to find a significant effect is not proof of no effect; the study may have been too small.",
+     "Neither significance nor the 3-point difference says anything about a share of students."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-3",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Study A, with 20,000 participants, finds a statistically significant difference of 0.5 points on a 100-point scale. Study B, with 40 participants, finds a 15-point difference that is not significant. What explains this?",
+   "options": [
+    "Study A found the larger effect because its result was significant",
+    "Study B probably made an error, since 15 points is a big difference",
+    "Big samples make tiny effects significant; small ones miss big ones",
+    "The two studies used different operational definitions of the scale"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With a huge sample even a trivial difference is unlikely to be chance, so it is significant. With a small sample, chance can produce big differences, so a large one may still not be significant. That is why researchers report effect size too.",
+    "options": [
+     "0.5 points is a much smaller effect than 15 points; significance is not size.",
+     "With only 40 people, chance can produce large differences, so caution is reasonable.",
+     "Right: significance depends on sample size as well as effect size.",
+     "Both used a 100-point scale; the difference comes from sample size."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-4",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Which question does an effect size answer?",
+   "options": [
+    "Could the result be due to chance alone?",
+    "Who was in the sample, and how were they chosen?",
+    "Did the participants give informed consent?",
+    "How large is the difference or relationship?"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Effect size describes how big a difference or relationship is, often in standard deviations, regardless of the sample size.",
+    "options": [
+     "That is what statistical significance addresses.",
+     "That is about sampling and generalizability.",
+     "That is an ethical question, not a statistical one.",
+     "Right: effect size is about magnitude."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-5",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "Researchers measure 300 randomly sampled high-school students and use the results to draw conclusions about high-school students in general. What kind of statistics lets them do this?",
+   "options": [
+    "Inferential statistics",
+    "Descriptive statistics",
+    "A frequency distribution",
+    "A case study"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inferential statistics use data from a sample to draw conclusions, with a stated chance of error, about the population it came from.",
+    "options": [
+     "Right: inferring from a sample to a population.",
+     "Descriptive statistics summarize the sample itself.",
+     "A frequency distribution describes how often values occur in the data.",
+     "A case study is a research method, not a kind of statistics."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-6",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "q": "A news story says, \"Scientists found a significant link between chewing gum and test scores.\" What should a careful reader ask first?",
+   "options": [
+    "Whether the scientists were sure the result was not due to chance",
+    "How big the difference was, and if it was an experiment",
+    "Whether the word \"significant\" means the effect is important",
+    "Which brand of gum the participants were given to chew"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In statistics, \"significant\" means unlikely to be chance. It says nothing about size, and a \"link\" from a correlational study does not show cause.",
+    "options": [
+     "\"Significant\" already says chance is unlikely; the open questions are size and design.",
+     "Right: significance does not tell you the size, and a link may not be a cause.",
+     "In statistics \"significant\" means unlikely to be chance, not important.",
+     "The brand matters less than the size of the effect and the method."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-7",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-significance-s1",
+   "q": "Students were randomly assigned to walk or sit before a test, then rated their worry. Which group reported less worry on average?",
+   "options": [
+    "The sitting group, at 5.6 compared with 4.8",
+    "Neither, since both ratings are near the middle",
+    "The walking group, at 4.8 compared with 5.6",
+    "Both groups, since the ratings were below 10"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The walking group’s mean worry rating (4.8) is 0.8 points lower than the sitting group’s (5.6).",
+    "options": [
+     "A higher rating means more worry, not less.",
+     "Both are near the middle of the scale, but 4.8 is lower than 5.6.",
+     "Right: a lower rating means less worry.",
+     "The question compares the two groups with each other."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-8",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s1",
+   "q": "The researchers report that the difference was statistically significant ($p < .05$). What does this tell you about the 0.8-point difference?",
+   "options": [
+    "It is large enough to matter to most students",
+    "It will appear in 95% of students who walk",
+    "It was caused by the students’ expectations",
+    "It is unlikely to have arisen by chance alone"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Statistically significant means a difference this large would rarely appear if walking made no difference. Because students were randomly assigned, the walk is the likely cause.",
+    "options": [
+     "Significance does not say the difference is large or matters to everyone.",
+     "The .05 is a probability about chance, not a share of students.",
+     "Significance says nothing about what caused the difference.",
+     "Right: that is what statistical significance means."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-9",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s1",
+   "q": "The researchers also report that the effect size was small. How should this be read alongside the significant result?",
+   "options": [
+    "The walk reliably lowered worry, but only by a little",
+    "The result is not real because the effect was small",
+    "The walk had a large effect on how much students worried",
+    "The effect size shows that the result was due to chance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Significance and size are separate questions. Here the difference is probably not chance, but it is modest: a 0.8-point drop on a 10-point scale.",
+    "options": [
+     "Right: significant (probably real) and small (not large) can both be true.",
+     "A small effect can still be a real one; that is what significance addresses.",
+     "The researchers report the effect size as small.",
+     "Effect size is about size; chance is what significance addresses."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-significance-10",
+   "unit": "skills-research",
+   "topic": "stats-significance",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "3.C",
+   "stimulus": "stats-significance-s1",
+   "q": "Build an answer to: explain what the difference between the group means shows.",
+   "why": {
+    "correct": "Name the groups, the direction, and what the significant difference means for them."
+   },
+   "specific": {
+    "frame": "The ___ group reported ___ worry than the other group, and because the difference was statistically significant, ___.",
+    "model": "The walking group reported less worry (4.8) than the sitting group (5.6), and because the difference was statistically significant, it is unlikely to be due to chance alone.",
+    "slots": {
+     "statistic": {
+      "label": "Group and direction",
+      "options": [
+       "walking group reported less",
+       "sitting group reported less",
+       "walking group reported more"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sitting group’s mean, 5.6, is higher: more worry.",
+       "2": "The walking group’s mean, 4.8, is lower: less worry."
+      }
+     },
+     "meaning": {
+      "label": "What significance means",
+      "options": [
+       "it is a large and important difference",
+       "it is unlikely to be due to chance alone",
+       "every student who walks will worry less"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "Significance is not size; the effect size was small.",
+       "2": "Means describe groups, not every individual."
+      }
+     }
+    }
+   }
+  }
+ ]
+}
