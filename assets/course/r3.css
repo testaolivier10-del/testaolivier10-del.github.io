@@ -144,7 +144,7 @@
 .r3 .tag.prem{background:#FFF3D6;color:var(--amber-text)}
 .r3 .chiprow{display:flex;flex-wrap:wrap;gap:6px;margin:6px 6px 0}
 .r3 .chiprow span{font:800 13px var(--font-ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:3px 10px;text-decoration:none}
-.r3 .chiprow span i{font-style:normal;opacity:.75;margin-left:4px}
+.r3 .chiprow span i{font-style:normal;margin-left:4px}
 .r3 .clock{position:relative;display:flex;align-items:flex-end;gap:12px;aspect-ratio:2/1;border-radius:12px;background:var(--r3-navy);color:#fff;padding:18px;box-sizing:border-box;overflow:hidden}
 .r3 .clock::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px}
 .r3 .clock b{position:relative;z-index:1;font:900 86px/0.9 var(--display);letter-spacing:-.05em;color:#FFD23F}
@@ -304,7 +304,7 @@
 .r3 .cmeta a.cname{color:var(--ink);text-decoration:none}
 .r3 .cmeta a.cname:hover{color:var(--accent)}
 .r3 .chiprow a{font:800 13px var(--font-ui);background:var(--ctint);color:var(--accent);border-radius:999px;padding:3px 10px;text-decoration:none}
-.r3 .chiprow a i{font-style:normal;opacity:.75;margin-left:4px}
+.r3 .chiprow a i{font-style:normal;margin-left:4px}
 .r3 .step .go{color:var(--accent);font-weight:800;text-decoration:none;white-space:nowrap}
 .r3 .story .step .n{background:var(--r3-navy)}
 .r3 .ruled-h .go,.r3 .xcard .go{font:900 14.5px var(--font-ui);color:var(--accent);text-decoration:none;white-space:nowrap}
@@ -333,7 +333,8 @@
 .r3 .hub-split .trk em{font-style:normal;opacity:.8}
 .r3 .hub-tracks{margin-top:12px}
 .r3 .hub-tracks .hp-note{margin:0}
-.r3 .hub-tracks .mini-domain-row{display:grid;grid-template-columns:110px 1fr 44px;gap:10px;align-items:center;font:800 12.5px var(--font-ui);padding:4px 0}
+.r3 .hub-tracks .mini-domain-row{display:grid;grid-template-columns:110px 1fr 44px;gap:10px;align-items:center;font:800 12.5px var(--font-ui);padding:4px 0;color:#DCE6F5}
+.r3 .hub-tracks .mini-domain-row .pct{color:#DCE6F5}
 .r3 .hub-tracks .mini-domain-row .bar{display:block;height:6px;border-radius:9px;background:rgba(255,255,255,.16);overflow:hidden}
 .r3 .hub-tracks .mini-domain-row .bar i{display:block;height:100%;background:var(--dc,#F4D28C)}
 .r3 .hub-tracks .mini-domain-row .pct{text-align:right}
