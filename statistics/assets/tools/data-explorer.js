@@ -64,7 +64,7 @@
     var box = { y0: (hist ? hist.y1 : dot.y1) + gap, y1: H - axisH };
     if((maxStack * 2 * r) > hDot - 40) r = Math.max(2.6, (hDot - 40) / maxStack / 2);
     var ticks = P.ticks(lo, hi, small ? 5 : 8);
-    var fs = small ? 12 : 13.5;
+    var fs = small ? 13 : 13.5;
     // grid and the shared axis
     out.push('<g class="dx-grid" aria-hidden="true">' + ticks.map(function(t){ var x = sx(t).toFixed(1); return '<line x1="' + x + '" x2="' + x + '" y1="' + dot.y0 + '" y2="' + box.y1 + '"/>'; }).join('') + '</g>');
     out.push('<g class="dx-axis" aria-hidden="true"><line x1="' + padL + '" x2="' + (W - padR) + '" y1="' + box.y1 + '" y2="' + box.y1 + '"/>' +
@@ -82,7 +82,7 @@
           if(!c) return '';
           var x0 = sx(B.edges[j][0]), x1 = sx(B.edges[j][1]), y = hy(c), wpx = x1 - x0;
           return '<rect class="dx-bar" x="' + x0.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + Math.max(0.5, wpx).toFixed(1) + '" height="' + Math.max(0, hist.y1 - y).toFixed(1) + '"/>' +
-            (wpx >= 13 ? '<text class="dx-blab" x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle" style="font-size:' + (fs - 1.5) + 'px">' + c + '</text>' : '');
+            (wpx >= 13 ? '<text class="dx-blab" x="' + ((x0 + x1) / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle" style="font-size:' + (fs - 1) + 'px">' + c + '</text>' : '');
         }).join('') + '<line class="dx-base" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + hist.y1 + '" y2="' + hist.y1 + '"/></g>');
       title(hist.y0, 'Histogram, bins of ' + M.fmt(o.bin, 4) + ' ' + (o.short || o.unit));
     }
@@ -111,6 +111,13 @@
       labs.push({ v: Sa.mean, cls: 'mean', t: 'new mean ' + fx(Sa.mean, 1) });
     }
 
+    // ---- the student's answer in Test yourself (a value on this scale)
+    if(o.yours && isFinite(o.yours.v)){
+      var yv = o.yours.v, yin = yv >= lo && yv <= hi, yxx = sx(Math.max(lo, Math.min(hi, yv)));
+      if(yin) out.push('<line class="stat-yours" x1="' + yxx.toFixed(1) + '" x2="' + yxx.toFixed(1) + '" y1="' + (dot.y0 + 36) + '" y2="' + box.y1 + '"/>');
+      var yt = 'yours: ' + o.yours.t + (yin ? '' : yv > hi ? ' →' : ' ←'), yw = yt.length * fs * 0.56, yx0 = Math.max(padL, Math.min(W - padR - yw, yxx - yw / 2));
+      out.push('<text class="dx-yt" x="' + (yx0 + yw / 2).toFixed(1) + '" y="' + (dot.y0 + 31) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(yt) + '</text>');
+    }
     // ---- fences
     if(sh.fences){
       var flab = [];
@@ -294,12 +301,13 @@
     function whyHtml(S){
       var u = cur.unit, w = cur.what;
       var outs = S.outliers.length ? S.outliers.map(nf).join(', ') + ' ' + u : 'none';
-      return '<h3 class="dx-h">Mean and median</h3><p>The mean (' + esc(fx(S.mean, 2)) + ' ' + esc(u) + ') adds every value, so one far value pulls it. The median (' + esc(nf(S.med)) + ') only cares which value is in the middle: it is <b>resistant</b>. Drag the largest value further out and the mean follows; the median does not.</p>' +
-        '<h3 class="dx-h">SD and IQR</h3><p>The SD (' + esc(fx(S.sd, 2)) + ') measures the typical distance from the mean and uses every value, so it is not resistant. The IQR (' + esc(nf(S.iqr)) + ' = Q3 − Q1 = ' + esc(nf(S.q3)) + ' − ' + esc(nf(S.q1)) + ') is the width of the box, the middle half of the data: resistant.</p>' +
+      return '<h3 class="dx-h">Mean and median</h3><p>The mean (' + esc(fx(S.mean, 2)) + ' ' + esc(u) + ') uses every value, so one far value pulls it. The median (' + esc(nf(S.med)) + ') is the middle value: it is <b>resistant</b>.</p>' +
+        '<h3 class="dx-h">SD and IQR</h3><p>The SD (' + esc(fx(S.sd, 2)) + ') uses every value: not resistant. The IQR (' + esc(nf(S.iqr)) + ' = ' + esc(nf(S.q3)) + ' − ' + esc(nf(S.q1)) + ') is the width of the box: resistant.</p>' +
+        '<details class="dx-more"><summary>More: outliers, shape, z-scores and bins</summary>' +
         '<h3 class="dx-h">Outliers: the 1.5 × IQR rule</h3><p>A value is an outlier when it is below Q1 − 1.5 × IQR = ' + esc(fx(S.fences[0], 2)) + ' or above Q3 + 1.5 × IQR = ' + esc(fx(S.fences[1], 2)) + '. Here: ' + esc(outs) + '. The whiskers stop at the most extreme values inside the fences (' + esc(nf(S.whiskers[0])) + ' and ' + esc(nf(S.whiskers[1])) + '); outliers are drawn as their own dots.</p>' +
         '<h3 class="dx-h">Shape</h3><p>These ' + esc(w) + 's look ' + esc(S.shape.word) + '. In a skewed distribution the mean is pulled toward the long tail, away from the median. ' + esc(X.SHAPE_RULE) + ' (Skewness here: ' + esc(fx(S.g, 2)) + '.) A boxplot cannot show modality or gaps: the dotplot and histogram can.</p>' +
         '<h3 class="dx-h">z-scores</h3><p>Tap a dot to read its z-score, z = (value − mean) ÷ SD: how many standard deviations it is above (+) or below (−) the mean.</p>' +
-        '<h3 class="dx-h">Bin width</h3><p>The same data can look different with other bins: wide bins hide detail, narrow bins look ragged. Bins include their left edge.</p>';
+        '<h3 class="dx-h">Bin width</h3><p>The same data can look different with other bins: wide bins hide detail, narrow bins look ragged. Bins include their left edge.</p></details>';
     }
     function nums(S){
       var u = cur.unit, start = X.binStart(cur.x[0], bin), B = X.bins(vals, start, bin);
@@ -401,7 +409,27 @@
       generate: function(r, ctx, type){ var p = X.generate(r, ctx, type); o.textOnStage = p.type !== 'describe'; return p; },
       title: function(p){ return ({ summary: 'Summary statistics', resist: 'Resistant or not?', fences: 'Outliers and the boxplot', describe: 'Describe the distribution', zscore: 'A z-score' })[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.shown = {}; figure(el, p, api.shown); },
-      onStep: function(s, right, api){ var f = api.problem.figure, k = f.reveal && f.reveal[s.key]; if(k){ api.shown[k] = true; figure(api.fig, api.problem, api.shown); } }
+      onStep: function(s, right, api){ var f = api.problem.figure, k = f.reveal && f.reveal[s.key]; api.shown.yours = null; if(k) api.shown[k] = true; if(s.key === 'isout' || (api.problem.type === 'describe' && s.key === 'vs')) api.shown.fence = true; figure(api.fig, api.problem, api.shown); },
+      // A wrong value on the data's own scale is drawn on the dots (mean, median, quartiles, fence, whisker, the z-score's value).
+      onTry: function(s, t, api){
+        if(t.right || s.kind !== 'num' || !isFinite(t.value)) return;
+        var p = api.problem, d = p.data || {}, v = t.value, lab = M.fixed(v, s.d != null ? s.d : 2);
+        if(s.key === 'z' && d.sd) { v = d.mean + t.value * d.sd; lab = 'z = ' + M.fixed(t.value, 2); }
+        if(s.key === 'sd' || s.key === 'iqr' || s.key === 'dmean' || s.key === 'dmed') { api.shown.yours = null; api.shown.yoursTag = lab; figure(api.fig, p, api.shown); return; }
+        api.shown.yours = { v: v, t: lab }; figure(api.fig, p, api.shown);
+      },
+      method: function(s, p){
+        var H = { mean: 'Add all the values, then divide by how many there are.', median: 'Put the values in order; the median is the middle one (or the mean of the two middle ones).',
+          iqr: 'IQR = Q3 − Q1: the medians of the upper and lower halves, not counting the median itself when n is odd.', sd: 'Technology: 1-Var Stats gives s (the sample SD, dividing by n − 1).',
+          dmean: 'The mean moves by the change divided by n.', dmed: 'Is the changed value still on the same side of the middle? If so the median does not move.',
+          spread: 'Which measure uses every value (not resistant) and which uses only the middle half (resistant)?',
+          q1: 'Order the values; Q1 is the median of the lower half.', q3: 'Order the values; Q3 is the median of the upper half.',
+          fence: 'Upper fence = Q3 + 1.5 × IQR; lower fence = Q1 − 1.5 × IQR.', isout: 'A value is an outlier when it lies beyond the fence drawn on the plot.',
+          whisk: 'A whisker ends at the most extreme data value inside the fences.', shape: 'Look at where the long tail points: the tail names the skew.',
+          vs: 'The mean is pulled toward the long tail; the median is not.', sentence: 'Full credit: shape, center, spread and outliers, with numbers and in context.',
+          z: 'z = (value − mean) ÷ SD, with the mean and SD given. Your z is drawn as the value it stands for.', zread: 'Say how many SDs above or below the mean, in context.', zrule: 'Is the value more than 2 SDs from the mean, by the z-score?' };
+        return H[s.key] || null;
+      }
     };
     T.drill(host, data, o);
   }
@@ -416,7 +444,7 @@
       box: !!(shown.box || shown.whisk), whisk: !!shown.whisk || (p.type === 'describe' && !!shown.box),
       fences: !!shown.fence, fenceSide: f.side, sd: false, zscale: !!shown.zscale };
     var o = { values: vals, lo: lo, hi: hi, unit: f.unit, label: f.label, step: Math.pow(10, -(f.dp || 0)), bin: niceBin(span), show: show,
-      mark: f.mark, given: shown.zscale ? f.given : null, after: f.after || null, changedIndex: p.data.index,
+      mark: f.mark, given: shown.zscale ? f.given : null, after: f.after || null, changedIndex: p.data.index, yours: shown.yours || (shown.yoursTag ? { v: NaN } : null),
       boxPanel: p.type !== 'zscore' && p.type !== 'resist', placeholder: 'The boxplot is drawn here as you answer.' };
     function render(){
       var box = el.querySelector('.dx-qfig') || el, rc = box.getBoundingClientRect();
@@ -424,7 +452,7 @@
       if(!(H >= 180)) H = phone() ? 300 : f.hist ? 360 : 300;
       W = Math.max(280, Math.min(1200, W)); H = Math.min(H, 760);
       var g = inner(o, W, H);
-      el.innerHTML = '<figure class="dx-qfig"><svg class="dx-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(ariaQ(o, g.S, show)) + '">' + g.html + '</svg></figure>';
+      el.innerHTML = '<figure class="dx-qfig"><svg class="dx-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(ariaQ(o, g.S, show) + (shown.yours ? ' Your answer: ' + shown.yours.t + '.' : shown.yoursTag ? ' Your answer: ' + shown.yoursTag + '.' : '')) + '">' + g.html + '</svg>' + (shown.yoursTag ? '<figcaption class="dx-ycap">Yours: ' + esc(shown.yoursTag) + '</figcaption>' : '') + '</figure>';
     }
     render();
     if(window.ResizeObserver && !el.__dxRO){ var t = null; el.__dxRO = new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(el.__dxDraw) el.__dxDraw(); }, 60); }); el.__dxRO.observe(el); }

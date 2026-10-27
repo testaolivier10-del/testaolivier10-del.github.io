@@ -31,7 +31,11 @@
   function TX(){ return window.ApStatTex; }
   function tx(s){ return TX() ? TX().html(String(s), { wrap: true }) : esc(s); }
   function F(x, d){ return T.F(x, d); }
-  function P4(p){ return DA.P4(p); }
+  function P4(p){ return p < 0.00005 ? '< 0.0001' : p > 0.99995 ? '> 0.9999' : DA.P4(p); }
+  function cap1(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
+  function EQ(p){ var t = P4(p); return /^[<>]/.test(t) ? t : '= ' + t; }
+  // A percent that never shows 100.0% for 0.9996 or 0.0% for 0.0004.
+  function PCT(p){ var x = p * 100; if(x >= 99.995) return 'more than 99.99'; if(x <= 0.005) return 'less than 0.01'; return x < 1 || x > 99 ? F(x, 2) : F(x, 1); }
   function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
 
   /* ================================================================ drawing */
@@ -116,6 +120,21 @@
         out.push('<path class="da-lead" d="M' + f2(G.sx(ix)) + ' ' + f2(iy) + 'L' + f2(lx) + ' ' + f2(ly + 4) + '"/>' + txt(lx, ly, lbl, 'da-parea', side > 0 ? 'start' : 'end'));
       }
     }
+    if(v.yours){
+      var Y = v.yours;
+      if(Y.lo != null){
+        var ylo = Math.max(G.lo, Y.lo), yhi = Math.min(G.hi, Y.hi);
+        if(yhi > ylo) out.push('<path class="da-yours-a" d="' + areaPath(f, G, ylo, yhi) + '"/>');
+      }
+      if(Y.x != null && Y.x > G.lo && Y.x < G.hi){
+        var yx = G.sx(Y.x);
+        out.push('<line class="stat-yours" x1="' + f2(yx) + '" y1="' + f2(G.t + 26) + '" x2="' + f2(yx) + '" y2="' + f2(G.b) + '"/>');
+      }
+      if(Y.text){
+        var tx0 = Y.x != null ? G.sx(Math.max(G.lo, Math.min(G.hi, Y.x))) : Y.lo != null ? G.sx(Math.max(G.lo, Math.min(G.hi, (Math.max(G.lo, Y.lo) + Math.min(G.hi, Y.hi)) / 2))) : (G.l + G.r) / 2;
+        out.push(tag(G, tx0, G.t + 22, 'Yours ' + Y.text, 'da-ytag'));
+      }
+    }
     out.push(txt(G.sx(mu), G.sy(peak) - 6, 'μ', 'da-cl'));
     out.push(xAxis(G, { minDec: v.places || 0, z: v.noZ ? null : { mu: mu, sd: sd }, label: v.label, avoid: v.handles ? bounds.map(function(x){ return G.sx(x); }) : null }));
     return { svg: out.join(''), G: G };
@@ -146,6 +165,10 @@
       var a0 = Math.max(v.lo, Math.ceil(lo)), b0 = Math.min(v.hi, Math.floor(hi)), x1 = G.sx(a0) - bw / 2, x2 = G.sx(b0) + bw / 2, by = Math.max(G.t + 22, G.sy(mx) - (v.barLabels && bw >= 30 && n <= 20 ? 24 : 10));
       out.push('<path class="da-brk is-ev" d="M' + f2(x1) + ' ' + f2(by + 6) + 'V' + f2(by) + 'H' + f2(x2) + 'V' + f2(by + 6) + '"/>');
       out.push(txt(Math.max(G.l + 34, Math.min(G.r - 34, (x1 + x2) / 2)), by - 6, P4(Math.min(1, s)), 'da-parea'));
+    }
+    if(v.yours){
+      if(v.yours.x != null && v.yours.x > lo && v.yours.x < hi){ var yb = G.sx(v.yours.x); out.push('<line class="stat-yours" x1="' + f2(yb) + '" y1="' + f2(G.t + 26) + '" x2="' + f2(yb) + '" y2="' + f2(G.b) + '"/>'); }
+      if(v.yours.text) out.push(tag(G, v.yours.x != null ? G.sx(Math.max(lo, Math.min(hi, v.yours.x))) : (G.l + G.r) / 2, G.t + 22, 'Yours ' + v.yours.text, 'da-ytag'));
     }
     out.push(txt(G.l - 5, G.t + 2, 'P(X = k)', 'da-yl da-ylab', 'start'));
     // count axis
@@ -229,7 +252,7 @@
     empB.addEventListener('click', function(){ act(); S.emp = !S.emp; empB.setAttribute('aria-pressed', String(S.emp)); draw(); });
     var nrow = el('div', 'da-row'); nrow.appendChild(empB); q('.da-dn').appendChild(nrow);
     // Binomial controls
-    var relSeg = seg('Event', [{ value: 'atMost', label: 'at most' }, { value: 'fewer', label: 'fewer than' }, { value: 'exactly', label: 'exactly' }, { value: 'atLeast', label: 'at least' }, { value: 'more', label: 'more than' }], S.rel, function(v){ act(); S.rel = v; draw(); }, 'da-chips');
+    var relSeg = seg('Event', [{ value: 'atMost', label: 'at most' }, { value: 'fewer', label: 'fewer than' }, { value: 'exactly', label: 'exactly' }, { value: 'atLeast', label: 'at least' }, { value: 'more', label: 'more than' }], S.rel, function(v){ act(); S.rel = v; buildK(); draw(); }, 'da-chips');
     q('.da-db').appendChild(relSeg.el);
     var kBox = el('div', 'da-kbox'); q('.da-db').appendChild(kBox);
     var kSl = null;
@@ -263,12 +286,17 @@
     }
     function buildNP(){
       var box = det.querySelector('.da-np'); box.innerHTML = '';
-      nSl = T.slider({ label: 'Number of trials n', min: 1, max: 60, step: 1, value: S.n, onInput: function(v){ act(); S.n = v; S.k = Math.min(S.k, v); buildK(); draw(); } });
+      nSl = T.slider({ label: 'Number of trials n', min: 1, max: 60, step: 1, value: S.n, onInput: function(v){ act(); S.n = v; buildK(); draw(); } });
       pSl = T.slider({ label: 'Probability of success p', min: 0.01, max: 0.99, step: 0.01, value: S.p, decimals: 2, onInput: function(v){ act(); S.p = v; draw(); } });
       box.appendChild(nSl.el); box.appendChild(pSl.el);
     }
+    /* "Fewer than 0" and "more than n" hold no counts: k stays where the event exists. */
+    function kRange(){ return [S.rel === 'fewer' ? 1 : 0, S.rel === 'more' ? Math.max(0, S.n - 1) : S.n]; }
+    function clampK(){ var r = kRange(); S.k = Math.max(r[0], Math.min(r[1], S.k)); }
     function buildK(){
-      kSl = T.slider({ label: 'Boundary count k', min: 0, max: S.n, step: 1, value: S.k, onInput: function(v){ act(); S.k = v; draw(); } });
+      clampK();
+      var r = kRange();
+      kSl = T.slider({ label: 'Boundary count k', min: r[0], max: r[1], step: 1, value: S.k, onInput: function(v){ act(); S.k = v; draw(); } });
       kBox.innerHTML = ''; kBox.appendChild(kSl.el);
     }
     function clampAB(){ var lo = S.mu - 3.6 * S.sd, hi = S.mu + 3.6 * S.sd; S.a = Math.max(lo, Math.min(hi, S.a)); S.b = Math.max(lo, Math.min(hi, S.b)); if(S.mode === 'between' && S.a > S.b){ var t = S.a; S.a = S.b; S.b = t; } }
@@ -297,7 +325,7 @@
     }
     function setFromPx(which, px){
       var v = G.ix(px);
-      if(which === 'k'){ S.k = Math.max(0, Math.min(S.n, Math.round(v))); kSl.set(S.k); }
+      if(which === 'k'){ var kr = kRange(); S.k = Math.max(kr[0], Math.min(kr[1], Math.round(v))); kSl.set(S.k); }
       else {
         var lo = S.mu - 3.6 * S.sd, hi = S.mu + 3.6 * S.sd, x = Math.max(lo, Math.min(hi, snap(v)));
         if(which === 'a'){ S.a = S.mode === 'between' ? Math.min(x, S.b - (S.ns.grid || 0.1)) : x; }
@@ -321,7 +349,7 @@
         if(k === 'ArrowRight' || k === 'ArrowUp' || k === 'PageUp') dir = 1; else if(k === 'ArrowLeft' || k === 'ArrowDown' || k === 'PageDown') dir = -1; else return;
         e.preventDefault(); act();
         var w = which();
-        if(w === 'k'){ S.k = Math.max(0, Math.min(S.n, S.k + dir * (big > 1 ? 5 : 1))); kSl.set(S.k); }
+        if(w === 'k'){ var kr2 = kRange(); S.k = Math.max(kr2[0], Math.min(kr2[1], S.k + dir * (big > 1 ? 5 : 1))); kSl.set(S.k); }
         else {
           var g = (S.ns.grid || 0.1) * big, lo = S.mu - 3.6 * S.sd, hi = S.mu + 3.6 * S.sd;
           if(w === 'a') S.a = Math.max(lo, Math.min(S.mode === 'between' ? S.b - S.ns.grid : hi, M.round(S.a + dir * g, 4)));
@@ -344,6 +372,7 @@
       var wh = sized.size(); if(!wh[0]) return;
       var W = wh[0], H = wh[1];
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
+      if(S.dist === 'binom') clampK();
       if(S.dist === 'normal'){
         var c = S.ns, r = normalFig({ mu: S.mu, sd: S.sd, mode: S.mode, a: S.a, b: S.b, shade: true, showP: true, emp: S.emp, W: W, H: H, handles: true, label: c.var.charAt(0).toUpperCase() + c.var.slice(1) + ' (' + c.units + ')', places: c.places });
         layer.innerHTML = r.svg; G = r.G;
@@ -369,7 +398,7 @@
       var c = S.ns, d = c.places, u = ' ' + c.units, ev = evTex(), pct = res.p * 100;
       var words = c.who + ' have a ' + c.var + (S.mode === 'less' ? ' below ' + F(S.b, d) + u : S.mode === 'greater' ? ' above ' + F(S.a, d) + u : ' between ' + F(S.a, d) + ' and ' + F(S.b, d) + u);
       if(LS){
-        LS.caption('About ' + (pct < 1 ? F(pct, 2) : F(pct, 1)) + '% of ' + esc(words) + ': ' + tx('$P(' + ev + ') = ' + P4(res.p) + '$') + '.', 'explore');
+        LS.caption((/^(more|less)/.test(PCT(res.p)) ? cap1(PCT(res.p)) : 'About ' + PCT(res.p)) + '% of ' + esc(words) + ': ' + tx('$P(' + ev + ') ' + EQ(res.p) + '$') + '.', 'explore');
         var zp = S.mode === 'between' ? [{ k: 'z', html: minus(F(res.za, 2)) + ' to ' + minus(F(res.zb, 2)), tone: 'ghost' }] : [{ k: 'z', html: minus(F(S.mode === 'less' ? res.zb : res.za, 2)), tone: 'ghost' }];
         LS.pills([{ k: esc(plainEv(ev)), html: P4(res.p), tone: 'readout' }].concat(zp), 'left', 'explore');
       }
@@ -383,7 +412,7 @@
       var shown = { atMost: 'X \\le ' + k, fewer: 'X < ' + k, exactly: 'X = ' + k, atLeast: 'X \\ge ' + k, more: 'X > ' + k }[rel];
       var same = shown === eq;
       if(LS){
-        LS.caption('<b>' + esc(b.words.charAt(0).toUpperCase() + b.words.slice(1)) + ' ' + k + '</b> means ' + tx('$' + (same ? eq : shown + '$, that is $' + eq) + '$') + ': ' + tx('$P = ' + P4(b.p) + '$') + '.', 'explore');
+        LS.caption('<b>' + esc(b.words.charAt(0).toUpperCase() + b.words.slice(1)) + ' ' + k + '</b> means ' + tx('$' + (same ? eq : shown + '$, that is $' + eq) + '$') + ': ' + tx('$P ' + EQ(b.p) + '$') + '.', 'explore');
         LS.pills([{ k: esc(plainEv(shown)), html: P4(b.p), tone: 'readout' }, { k: 'mean', html: F(b.mean, 2), tone: 'ghost' }], 'left', 'explore');
       }
       setupB.querySelector('.ls-v').textContent = 'n = ' + S.n + ', p = ' + F(S.p, 2);
@@ -404,9 +433,9 @@
       var c = S.ns, d = c.places, ev = evTex(), Dd = D();
       var zline = S.mode === 'between' ? '$z = \\frac{' + F(S.a, d) + ' - ' + F(S.mu, d) + '}{' + F(S.sd, d) + '} = ' + texN(res.za) + '$ and $z = \\frac{' + F(S.b, d) + ' - ' + F(S.mu, d) + '}{' + F(S.sd, d) + '} = ' + texN(res.zb) + '$'
         : '$z = \\frac{' + F(S.mode === 'less' ? S.b : S.a, d) + ' - ' + F(S.mu, d) + '}{' + F(S.sd, d) + '} = ' + texN(S.mode === 'less' ? res.zb : res.za) + '$';
-      var pline = S.mode === 'less' ? '$P(' + ev + ') = P(Z < ' + texN(res.zb) + ') = ' + P4(res.p) + '$'
-        : S.mode === 'greater' ? '$P(' + ev + ') = P(Z > ' + texN(res.za) + ') = 1 - ' + P4(Dd.normCdf(res.za)) + ' = ' + P4(res.p) + '$'
-        : '$P(' + ev + ') = ' + P4(Dd.normCdf(res.zb)) + ' - ' + P4(Dd.normCdf(res.za)) + ' = ' + P4(res.p) + '$';
+      var pline = S.mode === 'less' ? '$P(' + ev + ') = P(Z < ' + texN(res.zb) + ') ' + EQ(res.p) + '$'
+        : S.mode === 'greater' ? '$P(' + ev + ') = P(Z > ' + texN(res.za) + ') = 1 - ' + DA.P4(Dd.normCdf(res.za)) + ' ' + EQ(res.p) + '$'
+        : '$P(' + ev + ') = ' + DA.P4(Dd.normCdf(res.zb)) + ' - ' + DA.P4(Dd.normCdf(res.za)) + ' ' + EQ(res.p) + '$';
       var body = '<ol class="da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + c.var + ', normal with $\\mu = ' + F(S.mu, d) + '$ and $\\sigma = ' + F(S.sd, d) + '$ ' + c.units + '.') + '</li>' +
         '<li>' + tx('<b>Boundary and direction.</b> The event is $' + ev + '$: the area ' + (S.mode === 'less' ? 'to the left of ' + F(S.b, d) : S.mode === 'greater' ? 'to the right of ' + F(S.a, d) : 'between ' + F(S.a, d) + ' and ' + F(S.b, d)) + '.') + '</li>' +
         '<li>' + tx('<b>Standardize.</b> ' + zline + '.') + '</li>' +
@@ -422,7 +451,7 @@
         : '$P(X = ' + b.lo + ') = \\binom{' + n + '}{' + b.lo + '}(' + F(p, 2) + ')^{' + b.lo + '}(' + q1 + ')^{' + (n - b.lo) + '}$, one bar.';
       var body = '<ol class="da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + (S.bs ? S.bs.X : 'the count') + ', binomial with $n = ' + n + '$ and $p = ' + F(p, 2) + '$.') + '</li>' +
         '<li>' + tx('<b>Words to symbols.</b> "' + b.words + ' ' + S.k + '" is $' + eq + '$' + (S.rel === 'fewer' ? ': ' + S.k + ' itself is left out.' : S.rel === 'more' ? ': ' + S.k + ' itself is left out.' : S.rel === 'exactly' ? '.' : ': ' + S.k + ' itself is included.')) + '</li>' +
-        '<li>' + tx('<b>The probability.</b> ' + how + ' $= ' + P4(b.p) + '$.') + '</li>' +
+        '<li>' + tx('<b>The probability.</b> ' + how + ' $' + EQ(b.p) + '$.') + '</li>' +
         '<li>' + tx('<b>Center and spread.</b> $\\mu_X = np = ' + F(b.mean, 2) + '$, $\\sigma_X = \\sqrt{np(1 - p)} = ' + F(b.sd, 3) + '$.') + '</li></ol>' +
         '<p class="bt-small">' + tx('"Fewer than" and "more than" leave the boundary out; "at most" and "at least" keep it. For counts this changes the answer; the reader report names it as a common slip.') + '</p>' +
         (S.curve ? '<p>' + tx('The dashed curve is the normal shape with the same mean and SD, drawn only to compare shapes. With $np$ and $n(1 - p)$ both large the bars follow it closely; every probability here is still the exact binomial one.') + '</p>' : '');
@@ -478,23 +507,100 @@
     var fg = p.fig;
     if(!fg) return;
     var box = el('div', 'da-qfig');
-    box.innerHTML = '<svg class="da-svg" role="img"><title></title><g class="da-layer"></g></svg>';
+    box.innerHTML = '<svg class="da-svg" role="img"><title></title><g class="da-layer"></g>' + handleEl('da-qh') + '</svg>';
     host.appendChild(box);
-    var svg = box.querySelector('svg'), layer = box.querySelector('.da-layer'), title = box.querySelector('title');
-    var st = { shade: fg.kind === 'normal' && !!fg.hideX, showP: !!fg.hideX, x: false, emp: false };
+    var svg = box.querySelector('svg'), layer = box.querySelector('.da-layer'), title = box.querySelector('title'), hq = box.querySelector('.da-qh');
+    var st = { shade: fg.kind === 'normal' && !!fg.hideX, showP: !!fg.hideX, x: false, emp: false, yours: null, drag: false, at: null }, G = null;
+    hq.style.display = 'none';
     function draw(w, h){
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svg.setAttribute('width', w); svg.setAttribute('height', h);
       if(fg.kind === 'binom'){
-        layer.innerHTML = binomFig({ n: fg.n, p: fg.p, lo: fg.lo, hi: fg.hi, shade: st.shade, showP: st.showP, W: w, H: h, label: fg.label }).svg;
-        title.textContent = 'Binomial distribution with n = ' + fg.n + ' and p = ' + fg.p + (st.shade ? ', the event shaded' : '');
+        var rb = binomFig({ n: fg.n, p: fg.p, lo: fg.lo, hi: fg.hi, shade: st.shade, showP: st.showP, W: w, H: h, label: fg.label, yours: st.yours });
+        layer.innerHTML = rb.svg; G = rb.G;
+        title.textContent = 'Binomial distribution with n = ' + fg.n + ' and p = ' + fg.p + (st.shade ? ', the event shaded' : '') + (st.yours && st.yours.text ? '. Your answer: ' + st.yours.text : '');
       } else {
         var a = isFinite(fg.a) ? fg.a : fg.b, b = isFinite(fg.b) ? fg.b : fg.a;
-        layer.innerHTML = normalFig({ mu: fg.mu, sd: fg.sd, mode: fg.mode, a: a, b: b, shade: st.shade || fg.emp && st.emp, showP: st.showP && !fg.emp, emp: fg.emp && st.emp, W: w, H: h, label: fg.label, hideX: fg.hideX && !st.x, places: fg.places != null ? fg.places : 1, tags: fg.emp ? st.emp : true }).svg;
-        title.textContent = 'Normal curve with mean ' + fg.mu + ' and standard deviation ' + fg.sd;
+        // Dragging the boundary (inverse problem): the region follows the student's x.
+        if(st.drag && st.at != null){ a = st.at; b = st.at; }
+        var r = normalFig({ mu: fg.mu, sd: fg.sd, mode: fg.mode, a: a, b: b, shade: st.shade || fg.emp && st.emp || st.drag, showP: (st.showP || st.drag) && !fg.emp, emp: fg.emp && st.emp, W: w, H: h, label: fg.label, hideX: fg.hideX && !st.x && !(st.drag && st.at != null), places: fg.places != null ? fg.places + (st.drag ? 1 : 0) : 1, tags: fg.emp ? st.emp : true, yours: st.yours });
+        layer.innerHTML = r.svg; G = r.G;
+        title.textContent = 'Normal curve with mean ' + fg.mu + ' and standard deviation ' + fg.sd + (st.yours && st.yours.text ? '. Your answer: ' + st.yours.text : '');
+        if(st.drag){
+          var hx = st.at != null ? st.at : fg.mu;
+          hq.style.display = ''; hq.setAttribute('transform', 'translate(' + f2(G.sx(hx)) + ' ' + f2(G.b) + ')');
+          hq.setAttribute('aria-label', 'Boundary: drag to set ' + (fg.label || 'x')); hq.setAttribute('aria-valuetext', st.at != null ? F(st.at, (fg.places || 0) + 1) : 'not set');
+        } else hq.style.display = 'none';
       }
     }
     var sized = fit(box, draw);
-    api.daFig = { set: function(k){ st[k] = true; sized.redraw(); } };
+    function setAt(px){
+      if(!G) return;
+      var dp = (fg.places || 0) + 1, lo = fg.mu - 3.6 * fg.sd, hi = fg.mu + 3.6 * fg.sd;
+      st.at = Math.max(lo, Math.min(hi, M.round(G.ix(px), dp)));
+      st.yours = null; sized.redraw();
+      if(api.answer) api.answer(st.at, dp);
+    }
+    function local(e){ var rc = svg.getBoundingClientRect(); return (e.clientX - rc.left) * (G ? G.W / Math.max(1, rc.width) : 1); }
+    var dragging = false;
+    svg.addEventListener('pointerdown', function(e){ if(!st.drag) return; dragging = true; svg.classList.add('is-drag'); try{ svg.setPointerCapture(e.pointerId); }catch(x){} setAt(local(e)); e.preventDefault(); });
+    svg.addEventListener('pointermove', function(e){ if(dragging) setAt(local(e)); });
+    function up(){ dragging = false; svg.classList.remove('is-drag'); }
+    svg.addEventListener('pointerup', up); svg.addEventListener('pointercancel', up);
+    hq.addEventListener('keydown', function(e){
+      if(!st.drag) return;
+      var dir = e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowDown' ? -1 : 0; if(!dir || !G) return;
+      e.preventDefault(); var g = fg.sd / 20 * (e.shiftKey ? 10 : 1); st.at = M.round((st.at != null ? st.at : fg.mu) + dir * g, (fg.places || 0) + 1); setAt(G.sx(st.at));
+    });
+    api.daFig = {
+      set: function(k){ st[k] = true; if(k === 'x'){ st.drag = false; box.classList.remove('is-drag-on'); } st.yours = null; sized.redraw(); },
+      clear: function(){ st.yours = null; sized.redraw(); },
+      // The inverse problem's x step: drag the boundary to the student's answer.
+      drag: function(on){ st.drag = !!on; st.at = null; box.classList.toggle('is-drag-on', !!on); svg.style.touchAction = on ? 'none' : ''; sized.redraw(); },
+      yours: function(y){ st.yours = y; sized.redraw(); }
+    };
+  }
+  // The student's wrong number, as something to draw: a z or an x as a boundary,
+  // a probability as the region it is the area of (or a tag), a mean as a line.
+  function yoursOf(s, v, p){
+    var fg = p.fig, d = p.data || {}, Dd = D();
+    if(!isFinite(v) || !fg) return null;
+    var dsh = function(x){ return F(x, s.d != null ? s.d : 2); };
+    if(fg.kind === 'binom'){
+      if(s.key === 'mean') return { x: v, text: dsh(v) };
+      return { text: dsh(v) };
+    }
+    var mu = fg.mu, sd = fg.sd;
+    if(s.key === 'z' || s.key === 'za' || s.key === 'zb' || s.key === 'zstar') return { x: mu + v * sd, text: 'z = ' + minus(dsh(v)) };
+    if(s.key === 'x') return { x: v, text: dsh(v) };
+    if((s.key === 'p' || s.key === 'exact') && v > 0 && v < 1){
+      // The region whose area is the student's number, on the side the event asks for.
+      if(fg.mode === 'less') return { lo: -Infinity, hi: mu + Dd.invNorm(v) * sd, text: dsh(v) };
+      if(fg.mode === 'greater') return { lo: mu + Dd.invNorm(1 - v) * sd, hi: Infinity, text: dsh(v) };
+      return { text: dsh(v) };
+    }
+    if(s.key === 'pct') return { text: dsh(v) + '%' };
+    return { text: dsh(v) };
+  }
+  // One method hint per step, in this problem's numbers.
+  function methodOf(s, p){
+    var d = p.data || {}, fg = p.fig || {}, pl = fg.places || 0;
+    var X = { sketch: '"Less than" is the area to the left of the boundary, "greater than" to the right. A probability is an area, never a height.',
+      event: 'Translate the words: "at most k" keeps k, "fewer than k" stops at k − 1, "at least k" keeps k, "more than k" starts at k + 1.',
+      work: 'Full credit names the distribution, its parameters, the boundary and the direction, then gives the number.',
+      check: 'A small upper tail is above the mean; a small lower tail is below it.' };
+    if(X[s.key]) return X[s.key];
+    if(fg.kind === 'normal' && /^z[ab]?$/.test(s.key)){
+      var bx = s.key === 'za' || (s.key === 'z' && fg.mode === 'greater') ? fg.a : fg.b;
+      if(fg.emp) return null;
+      return tx('Standardize the boundary: $z = \\frac{x - \\mu}{\\sigma} = \\frac{' + F(bx, pl) + ' - ' + F(fg.mu, pl) + '}{' + F(fg.sd, pl + (fg.sd < 1 ? 2 : 0)) + '}$. Values above the mean get positive z. Your z is the dashed line.');
+    }
+    if(s.key === 'p' && fg.kind === 'normal') return tx(fg.mode === 'less' ? 'Read the area to the LEFT of z: $P(Z < z)$ from technology or Table A. The dashed region is the area your number would be.' : fg.mode === 'greater' ? 'Technology and Table A give the area to the left; "greater than" is $1 - P(Z < z)$. The dashed region is the area your number would be.' : 'Subtract the two left areas: $P(Z < z_b) - P(Z < z_a)$.');
+    if(s.key === 'p') return tx(d.rel === 'atLeast' || d.rel === 'more' ? 'Technology adds from 0: use $1 - P(X \\le ' + (d.lo - 1) + ')$ with $n = ' + d.n + '$ and $p = ' + d.p + '$.' : d.rel === 'exactly' ? 'One bar: $\\binom{n}{k}p^k(1 - p)^{n - k}$ with $n = ' + d.n + '$, $k = ' + d.k + '$.' : 'Add the shaded bars from 0 to ' + d.hi + ': the binomial cdf with $n = ' + d.n + '$ and $p = ' + d.p + '$.');
+    if(s.key === 'zstar') return tx(d.side === 'right' ? 'Technology and Table A use the area to the left: look up $' + F(1 - d.area, 2) + '$, not ' + F(d.area, 2) + '.' : 'Look up an area of $' + F(d.area, 2) + '$ to the left (inverse normal).');
+    if(s.key === 'x') return tx('$x = \\mu + z\\sigma$ with the z from step 1. You can also drag the boundary on the curve until the shaded area is ' + F(d.area, 2) + '.');
+    if(s.key === 'pct') return 'Mark the boundaries as whole standard deviations from the mean, then add the halves of each band: 34%, 13.5% and 2.35% on each side.';
+    if(s.key === 'exact') return tx('Use the exact z-scores of the two boundaries: $P(Z < z_b) - P(Z < z_a)$.');
+    return null;
   }
 
   T.mount(SLUG, function(app, data){
@@ -514,7 +620,10 @@
             if(s.key === 'p'){ api.daFig.set('shade'); api.daFig.set('showP'); }
             if(s.key === 'x') api.daFig.set('x');
             if(s.key === 'pct') api.daFig.set('emp');
-          }
+          },
+          onStepStart: function(s, api){ if(!api.daFig) return; api.daFig.clear(); api.daFig.drag(s.key === 'x'); },
+          onTry: function(s, t, api){ if(api.daFig && !t.right && s.kind === 'num') api.daFig.yours(yoursOf(s, t.value, api.problem)); },
+          method: methodOf
         });
       },
       studio: { explore: function(pane, s){ if(ex) ex.studio(pane, s); } }

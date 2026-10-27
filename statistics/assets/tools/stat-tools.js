@@ -519,17 +519,34 @@
        coef   { row, cells: [cell...] }    the change row, typed as −x, +2x, 0
        choice { options, optionsHtml?, correct, fixed?, why: [...] }
      Each step is checked on its own; a wrong answer gets the feedback for
-     the specific slip it matches, and the student can try again or show the
-     answer. The first try is what is recorded, as "<slug>:<context>:<step>".
+     the specific slip it matches plus one method hint (s.method, else the
+     step's hint, else a general one for its kind), and "Show the answer"
+     only appears after that hint has had a try. The first try is what is
+     recorded, as "<slug>:<context>:<step>".
      o: { slug, generate, types?: [{ value, label }], typeLabel?, contexts?,
      extra(host, problem, api)?, onVol(v, step, api)?, onStep(step, right, api)?,
-     title(problem)?, newLabel? } */
+     onStepStart(step, api)?  a step became current (arm a stage control)
+     onTry(step, { value, right, shown }, api)?  every graded try (value: the
+       number typed or the option index; shown: true when revealed), so the
+       stage can draw the student's answer next to the right one
+     title(problem)?, newLabel? }
+     api.answer(v) fills the current number step (a tap or drag on the
+     stage), api.choose(k) picks option k of the current choice step. */
   // Statistics drills have no ICE "coef" rows; the step kind stays for a tool
   // that wants a row of symbolic cells, parsed by its own model if it has one.
   var parseCoef = function(raw){ return M.parseCoef ? M.parseCoef(raw) : numOf(raw); };
   var coefText = function(x){ return M.coefText ? M.coefText(x) : String(x); };
   function numOf(raw){ return Q.parseNumber(String(raw || '').replace(/%\s*$/, '')); }
   function shownNum(c, d){ return d != null ? F(c.answer, d) : M.fmt(c.answer, 3); }
+  // The fallback method hint when a step has none of its own.
+  var METHOD = {
+    num: 'Write the formula first, then put in the numbers from the problem. Keep full precision and round only at the end.',
+    vol: 'Read the value where the marker sits on the curve.',
+    expr: 'Write the rule for this step first, then apply it one piece at a time.',
+    choice: 'Reread the question, then rule out each choice that contradicts the picture or a definition.',
+    row: 'Fill one cell at a time from the row above it.',
+    coef: 'Use the coefficients of the balanced equation.'
+  };
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
@@ -617,6 +634,17 @@
           sync(+range.value);
         } else api.setVol = null;
         el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
+        // The stage can answer for the student (a tap, a drag) while this step is open.
+        api.step = s;
+        api.answer = input ? function(v, d){ if(done) return; input.value = typeof v === 'number' ? (d != null ? M.fixed(v, d) : String(v)) : String(v); input.classList.remove('is-wrong', 'is-right'); input.dispatchEvent(new Event('input', { bubbles: true })); } : null;
+        api.choose = s.kind === 'choice' ? function(k){ if(done) return; var c = el.querySelector('input[value="' + k + '"]'); if(c){ c.checked = true; c.dispatchEvent(new Event('change', { bubbles: true })); } } : null;
+        if(o.onStepStart) o.onStepStart(s, api);
+        function methodHint(){
+          var m = o.method ? o.method(s, p) : null;
+          m = m || s.method || METHOD[s.kind] || '';
+          return m ? '<p class="cd-method"><span class="cd-method-k">Method</span> ' + m + '</p>' : '';
+        }
+        function tell(v, right, shown){ if(o.onTry) try{ o.onTry(s, { value: v, right: right, shown: !!shown }, api); }catch(e){ try{ console.error(e); }catch(x){} } }
         function lock(){
           done = true;
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
@@ -639,6 +667,7 @@
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
           fb.innerHTML = '<span class="stat-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
+          tell(s.kind === 'choice' ? s.correct : s.cell ? s.cell.answer : null, true, true);
           lock(); next(false);
         }
         function check(){
@@ -673,16 +702,24 @@
           }
           if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'expr' ? 'Type an expression first, for example 3x^2 + 1.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
+          var tried = s.kind === 'num' || s.kind === 'vol' ? numOf(input.value) : s.kind === 'choice' ? +el.querySelector('input:checked').value : null;
           if(ok){
             el.classList.add('is-right');
+            el.classList.remove('is-wrong');
             fb.innerHTML = '<span class="stat-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
+            tell(tried, true);
             lock(); next(tries === 1);
             return;
           }
           el.classList.add('is-wrong');
-          fb.innerHTML = '<span class="stat-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
-            '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
-          fb.querySelector('.cd-show').addEventListener('click', reveal);
+          tell(tried, false);
+          // First miss: the slip it matches and one method hint. Show the
+          // answer is offered from the second miss, so the hint gets a try.
+          var generic = s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : s.kind === 'choice' ? '' : ' Not this value.';
+          fb.innerHTML = '<span class="stat-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : generic) +
+            methodHint() +
+            (tries > 1 ? '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>' : '<p class="bt-small cd-again-t">Try again with the method above.</p>');
+          var sb = fb.querySelector('.cd-show'); if(sb) sb.addEventListener('click', reveal);
         }
       }
       function finish(){
@@ -859,9 +896,14 @@
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is open under Why.', m);
         var again = area.querySelector('.cd-again');
+        // Focus New problem first, so closing the sheet comes back to it.
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+        // The worked solution opens by itself (audit X6); New problem stays in the dock.
+        var h3 = why.querySelector('h3');
+        if(h3) h3.setAttribute('tabindex', '-1');
+        s.open('why', h3 || undefined);
       }
     };
   }

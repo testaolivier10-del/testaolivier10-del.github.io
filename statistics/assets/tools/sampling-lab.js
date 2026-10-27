@@ -88,7 +88,8 @@
         var by = top2 ? ry2 + 16 : ry2 + rhh - 22;
         bg.push('<rect class="sl-board" x="' + (rx + 30) + '" y="' + by + '" width="' + (rw - 60) + '" height="7" rx="3"/>');
         var ty = top2 ? ry2 + 44 : ry2 + rhh - 34;
-        bg.push('<text class="sl-room-t" x="' + (rx + 14) + '" y="' + ty + '">' + esc(sc.clusters.names[q]) + '</text><text class="sl-room-g" x="' + (rx + rw - 14) + '" y="' + ty + '" text-anchor="end">' + esc(sc.strata.groups[pop.units.filter(function(u){ return u.room === q; })[0].stratum].name) + '</text>');
+        bg.push('<text class="sl-room-t" x="' + (rx + 14) + '" y="' + ty + '">' + esc(sc.clusters.names[q]) + '</text><text class="sl-room-g" x="' + (rx + rw - 14) + '" y="' + ty + '" text-anchor="end">' + esc(sc.strata.groups[pop.units.filter(function(u){ return u.room === q; })[0].stratum].name) + '</text>' +
+          '<text class="sl-room-g2" x="' + (rx + 14) + '" y="' + (top2 ? ty + 30 : ty - 34) + '">' + esc(sc.strata.groups[pop.units.filter(function(u){ return u.room === q; })[0].stratum].name) + '</text>');
         L.clusters.push({ x: rx - 4, y: ry2 - 4, w: rw + 8, h: rhh + 8, name: sc.clusters.names[q] });
         var sx = (rw - 20) / R.seatCols, sy = (rhh - 86) / R.seatRows, sy0 = top2 ? ry2 + 58 : ry2 + 12;
         for(var s2 = 0; s2 < R.seatRows * R.seatCols; s2++){
@@ -110,14 +111,14 @@
     var cls = 'sl-u' + (o.values ? ' sl-tone-' + tone(u.value, o.lo, o.hi) : '');
     var g = '<g class="' + cls + '" data-i="' + u.i + '">';
     if(sc.kind === 'houses'){
-      var cx = a.x + a.w / 2, base = a.y + 58, w = 54, h = 30, rf = hash(u.i, 1) % 4, wl = hash(u.i, 2) % 3, big = u.stratum === 0;
-      if(big){ w = 60; h = 32; }
+      var cx = a.x + a.w / 2, base = a.y + 58, w = 76, h = 36, rf = hash(u.i, 1) % 4, wl = hash(u.i, 2) % 3, big = u.stratum === 0;
+      if(big){ w = 80; h = 38; }
       var l = cx - w / 2;
       if(hash(u.i, 3) % 3 === 0) g += '<circle class="sl-bush" cx="' + (l - 3) + '" cy="' + (base - 7) + '" r="8"/>';
       g += '<rect class="sl-wall sl-wall-' + wl + '" x="' + l + '" y="' + (base - h) + '" width="' + w + '" height="' + h + '"/>' +
-        '<path class="sl-roof sl-roof-' + rf + '" d="M' + (l - 6) + ' ' + (base - h + 1) + ' L' + cx + ' ' + (base - h - 22) + ' L' + (l + w + 6) + ' ' + (base - h + 1) + ' Z"/>' +
-        '<rect class="sl-win" x="' + (l + 7) + '" y="' + (base - h + 8) + '" width="11" height="10" rx="1.5"/><rect class="sl-win" x="' + (l + w - 18) + '" y="' + (base - h + 8) + '" width="11" height="10" rx="1.5"/>' +
-        '<rect class="sl-doorx" x="' + (cx - 6) + '" y="' + (base - 17) + '" width="12" height="17" rx="1.5"/>' +
+        '<path class="sl-roof sl-roof-' + rf + '" d="M' + (l - 6) + ' ' + (base - h + 1) + ' L' + cx + ' ' + (base - h - 20) + ' L' + (l + w + 6) + ' ' + (base - h + 1) + ' Z"/>' +
+        '<rect class="sl-win" x="' + (l + 8) + '" y="' + (base - h + 8) + '" width="13" height="12" rx="1.5"/><rect class="sl-win" x="' + (l + w - 21) + '" y="' + (base - h + 8) + '" width="13" height="12" rx="1.5"/>' +
+        '<rect class="sl-doorx" x="' + (cx - 7) + '" y="' + (base - 19) + '" width="14" height="19" rx="1.5"/>' +
         (big && hash(u.i, 4) % 2 ? '<rect class="sl-chim" x="' + (l + w - 16) + '" y="' + (base - h - 18) + '" width="8" height="14"/>' : '') +
         '<rect class="sl-hit" x="' + a.x + '" y="' + (a.y - 4) + '" width="' + a.w + '" height="' + (a.h + 4) + '"/>' +
         '<text class="sl-lab" x="' + (l + w + 3) + '" y="' + (base - 2) + '">' + u.label + '</text>';
@@ -423,54 +424,120 @@
 
   /* ------------------------------------------------------ test yourself */
   function quiz(host, data){
-    var scenes = {}; ((data.explore && data.explore.scenes) || []).forEach(function(s){ scenes[s.id] = s; });
+    var scenes = {}, ctxs = {}; ((data.explore && data.explore.scenes) || []).forEach(function(s){ scenes[s.id] = s; });
+    (data.contexts || []).forEach(function(c){ ctxs[c.id] = c; });
     var o = { slug: 'sampling-lab', noun: 'drill',
       generate: S.generate,
       types: [{ value: 'method', label: 'Which kind of sample?' }, { value: 'procedure', label: 'Write the procedure' }, { value: 'bias', label: 'Spot the bias' }, { value: 'numbers', label: 'Systematic, strata and clusters' }],
       typeLabel: 'Kind of problem',
       title: function(p){ return { method: 'Which kind of sample?', procedure: 'Write the procedure', bias: 'Spot the bias', numbers: 'The numbers of a sample' }[p.type] || 'Practice problem'; },
-      extra: function(el, p, api){ api.fig = el; qfig(el, p, scenes, false); },
-      onStep: function(s, right, api){
-        if(s.key === 'method') qfig(api.fig, api.problem, scenes, true);
-        else if(s.key === 'k' || s.key === 'alloc' || s.key === 'm'){
-          api.fig.innerHTML = numFig(api.problem.figure);
-          var stage = document.querySelector('.ls-root .ls-drill-stage');
-          if(stage && !stage.contains(api.fig)) stage.appendChild(api.fig);
-        }
+      extra: function(el, p, api){ api.fig = el; api.qs = { yours: null, done: {} }; draw(api); },
+      onStep: function(s, right, api){ api.qs.done[s.key] = true; api.qs.yours = null; draw(api); },
+      onTry: function(s, t, api){
+        if(t.right) return;
+        if(s.kind === 'choice' && s.key === 'method'){ var m = methodOfOption(s.options[t.value]); if(m) { api.qs.yours = { method: m }; draw(api); } return; }
+        if(s.kind === 'num' && isFinite(t.value)){ api.qs.yours = { key: s.key, v: t.value }; draw(api); }
+      },
+      method: function(s, p){
+        var H = { method: 'Look at the picture: one random draw from everyone (simple), a random sample from every group (stratified), whole groups (cluster), every k-th (systematic), or no chance at all (convenience, voluntary).',
+          groups: 'Strata are the groups sampled from; clusters are the groups taken whole.', chance: 'Simple random means every GROUP of n is equally likely, not only every unit.',
+          represent: 'A nonrandom method can push the estimate one way. Size does not fix that.',
+          label: 'Give every unit in the population its own number.', generate: 'Say what the generator makes: integers in the same range as the labels.',
+          repeats: 'Sampling is without replacement: a unit cannot be chosen twice.', select: 'Tie the numbers back to the units, and say when to stop.',
+          k: 'k = population size ÷ sample size. Your k is marked in red on the list.', start: 'The start is random, within the first k labels.',
+          alloc: 'In proportion: sample size × (group size ÷ population size). Your count is the red bar.', within: 'Strata get a random sample inside; clusters are taken whole.',
+          m: 'Number of groups = units wanted ÷ units per group. Your choice is outlined in red.',
+          bias: 'Ask who was left out, who chose to answer, who did not answer, or what pushed the answers.', direction: 'Think about which way the missing or pushed answers lean.' };
+        return H[s.key] || null;
       }
     };
+    function draw(api){
+      var p = api.problem, st = api.qs;
+      if(p.type === 'numbers'){ api.fig.innerHTML = numFig(p.figure, st); return; }
+      if(p.type === 'procedure'){ qtape(api.fig, p, st); return; }
+      if(!SCENE_FOR[p.ctx] && p.type === 'method' && ctxs[p.ctx]){ api.fig.innerHTML = rosterFig(ctxs[p.ctx], p.figure.method, st); return; }
+      qfig(api.fig, p, scenes, st);
+    }
     T.drill(host, data, o);
+  }
+  /* A setting with no drawn scene (batteries, patients): a model of its list,
+     100 numbered entries in rows of 10 (a row stands for a box or a day),
+     colored by group, with the described sample ringed and, after a wrong
+     answer, what the student's method would look like in red dashes. */
+  function rosterFig(c, m, st){
+    var N = 100, cols = 10, cs = 58, W = cols * cs + 20, top = 34, gN = c.strata.groups.length, sizes = c.strata.groups.map(function(g){ return g.size; });
+    var tot = sizes.reduce(function(a, b){ return a + b; }, 0), cuts = [], acc = 0;
+    sizes.forEach(function(z){ acc += z; cuts.push(Math.round(acc / tot * N)); });
+    var grp = function(i){ for(var k = 0; k < cuts.length; k++) if(i < cuts[k]) return k; return gN - 1; };
+    function pick(mm, seed){
+      var r = M.rng(seed), out = [], all = []; for(var i = 0; i < N; i++) all.push(i);
+      if(mm === 'srs') out = M.sample(r, all, 10);
+      else if(mm === 'vol') out = M.sample(r, all.slice(70), 10); // the ones who chose to answer: bunched, not spread by chance
+      else if(mm === 'strat'){ var al = S.allocate ? S.allocate(sizes, 10) : sizes.map(function(z){ return Math.round(z / tot * 10); }); al.forEach(function(a, k){ out = out.concat(M.sample(r, all.filter(function(i){ return grp(i) === k; }), a)); }); }
+      else if(mm === 'cluster'){ M.sample(r, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 1).forEach(function(row){ for(var j = 0; j < cols; j++) out.push(row * cols + j); }); }
+      else if(mm === 'sys'){ var st0 = r.int(0, 9); for(var j2 = st0; j2 < N; j2 += 10) out.push(j2); }
+      else out = all.slice(0, 10);
+      return out;
+    }
+    var on = {}, yo = {}, Y = st && st.yours && st.yours.method !== m ? st.yours.method : null;
+    pick(m, 7).forEach(function(i){ on[i] = true; });
+    if(Y) pick(Y, 19).forEach(function(i){ yo[i] = true; });
+    var g = ['<text class="sl-rh" x="10" y="20">' + esc('100 of the ' + c.N + ' ' + c.units + ' on the list (each row: one ' + c.clusters.one + ')') + '</text>'];
+    for(var i = 0; i < N; i++){
+      var x = 10 + (i % cols) * cs, y = top + Math.floor(i / cols) * cs;
+      g.push('<g class="sl-ro sl-rg' + (grp(i) % 4) + (on[i] ? ' is-pick' : '') + '"><rect x="' + (x + 3) + '" y="' + (y + 3) + '" width="' + (cs - 6) + '" height="' + (cs - 6) + '" rx="9"/><text x="' + (x + cs / 2) + '" y="' + (y + cs / 2 + 6) + '" text-anchor="middle">' + (i + 1) + '</text>' +
+        (yo[i] ? '<rect class="sl-ro-y" x="' + (x + 1) + '" y="' + (y + 1) + '" width="' + (cs - 2) + '" height="' + (cs - 2) + '" rx="11"/>' : '') + '</g>');
+    }
+    var H = top + 10 * cs + 8;
+    var key = c.strata.groups.map(function(gg, k){ return '<span class="sl-rk sl-rg' + (k % 4) + '">' + esc(gg.name) + '</span>'; }).join('');
+    return '<figure class="sl-qfig sl-roster"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('A model of the list: 100 numbered ' + c.units + ' colored by group, the sample described ringed' + (Y ? ', and a ' + S.NAME[Y] + ' in red dashes' : '') + '.') + '">' + g.join('') + '</svg>' +
+      '<figcaption class="bt-small"><span class="sl-rkey">' + key + '</span>' + (Y ? ' <span class="sl-qy">Red dashes: a ' + esc(S.NAME[Y]) + ', your answer.</span>' : '') + '</figcaption></figure>';
+  }
+  // The method a choice option names ("Cluster sample" -> 'cluster').
+  function methodOfOption(t){ t = String(t).replace(/<[^>]+>/g, '').toLowerCase(); var hit = null; S.METHODS.forEach(function(m){ if(t.indexOf(S.NAME[m]) === 0) hit = m; }); return hit; }
+  // The procedure's random number tape; once Select is answered the first n different numbers are marked.
+  function qtape(el, p, st){
+    var d = p.figure.draws.slice(0, 16), n = 0, fin = st.done && st.done.select, keep = {};
+    if(fin){ var seen = 0; p.figure.draws.forEach(function(x, i){ if(!x.repeat && seen < 16){ keep[i] = true; seen++; } }); }
+    el.innerHTML = '<figure class="sl-qtape"><figcaption class="bt-small">What a random number generator gave, in order' + (fin ? ': the sample is the first different labels (marked)' : '') + '</figcaption><div class="sl-strip sl-strip-q">' +
+      d.map(function(x, i){ return '<span class="sl-num' + (x.repeat ? ' is-rep' : '') + (fin && keep[i] ? ' is-pick' : '') + '">' + x.v + '</span>'; }).join('') + (p.figure.draws.length > 16 ? '<span class="sl-k">and so on</span>' : '') + '</div></figure>';
   }
   /* After a numbers step: the systematic list, the proportional split or the
      chosen clusters, drawn from the problem's own numbers. */
-  function numFig(f){
-    var W = 640, g = [], H, cap;
+  function numFig(f, st){
+    st = st || { done: {} };
+    var W = 640, g = [], H, cap, Y = st.yours, done = st.done || {};
     if(f.which === 'sys'){
-      var k = f.k, st = Math.ceil(k / 2), show = Math.min(f.N, 3 * k + st), cols = Math.min(show, 24), cw = (W - 20) / cols, rows = Math.ceil(show / cols);
+      var k = f.k, kk = done.k ? k : Y && Y.key === 'k' && Y.v >= 1 && Y.v <= 60 ? Math.round(Y.v) : 0, st0 = Math.ceil(k / 2), show = Math.min(f.N, 3 * k + st0), cols = Math.min(show, 24), cw = (W - 20) / cols, rows = Math.ceil(show / cols);
       H = rows * 44 + 20;
       for(var i = 1; i <= show; i++){
-        var x = 10 + ((i - 1) % cols) * cw, y = 10 + Math.floor((i - 1) / cols) * 44, on = i >= st && (i - st) % k === 0;
-        g.push('<g class="nf-l' + (on ? ' is-on' : '') + '"><rect x="' + (x + 1) + '" y="' + y + '" width="' + (cw - 2) + '" height="36" rx="6"/><text x="' + (x + cw / 2) + '" y="' + (y + 23) + '" text-anchor="middle">' + i + '</text></g>');
+        var x = 10 + ((i - 1) % cols) * cw, y = 10 + Math.floor((i - 1) / cols) * 44, on = done.k && i >= st0 && (i - st0) % k === 0, yours = !done.k && kk && i >= st0 && (i - st0) % kk === 0;
+        g.push('<g class="nf-l' + (on ? ' is-on' : '') + (yours ? ' is-yours' : '') + '"><rect x="' + (x + 1) + '" y="' + y + '" width="' + (cw - 2) + '" height="36" rx="6"/><text x="' + (x + cw / 2) + '" y="' + (y + 23) + '" text-anchor="middle">' + i + '</text></g>');
       }
-      cap = 'With k = ' + k + ' and a random start of, say, ' + st + ': labels ' + st + ', ' + (st + k) + ', ' + (st + 2 * k) + ' and so on, ' + f.n + ' in all.';
+      cap = done.k ? 'With k = ' + k + ' and a random start of, say, ' + st0 + ': labels ' + st0 + ', ' + (st0 + k) + ', ' + (st0 + 2 * k) + ' and so on, ' + f.n + ' in all.'
+        : kk ? 'Your k = ' + kk + ' (red): ' + (kk * f.n > f.N ? f.n + ' units that far apart would need ' + (kk * f.n) + ' labels, but there are ' + f.N + '.' : f.n + ' units that far apart reach only label ' + (kk * f.n) + ' of ' + f.N + ', so the end of the list could never be chosen.') : 'The list, labeled 1 to ' + f.N + ' (the start is shown as an example).';
     } else if(f.which === 'strat'){
       var N = f.N, x0 = 10, bw = W - 20, nn = f.n; H = 200;
       g.push('<text class="nf-k" x="10" y="20">Population, ' + N + '</text><text class="nf-k" x="10" y="122">Sample, ' + nn + '</text>');
       var a = x0, b = x0;
       f.sizes.forEach(function(sz, j){
-        var w1 = bw * sz / N, w2 = bw * f.alloc[j] / nn, cls = 'nf-s nf-s' + (j % 4) + (j === f.h ? ' is-on' : '');
+        var w1 = bw * sz / N, w2 = bw * f.alloc[j] / nn, cls = 'nf-s nf-s' + (j % 4) + (j === f.h ? ' is-on' : ''), hide = j === f.h && !done.alloc;
         g.push('<g class="' + cls + '"><rect x="' + a + '" y="28" width="' + Math.max(1, w1 - 3) + '" height="52" rx="6"/><text x="' + (a + w1 / 2) + '" y="59" text-anchor="middle">' + sz + '</text></g>');
-        g.push('<g class="' + cls + '"><rect x="' + b + '" y="130" width="' + Math.max(1, w2 - 3) + '" height="52" rx="6"/><text x="' + (b + w2 / 2) + '" y="161" text-anchor="middle">' + f.alloc[j] + '</text></g>');
+        g.push('<g class="' + cls + '"><rect x="' + b + '" y="130" width="' + Math.max(1, w2 - 3) + '" height="52" rx="6"/><text x="' + (b + w2 / 2) + '" y="161" text-anchor="middle">' + (hide ? '?' : f.alloc[j]) + '</text></g>');
+        if(hide && Y && Y.key === 'alloc' && Y.v > 0){ var wy = Math.min(bw, bw * Y.v / nn); g.push('<rect class="nf-yours" x="' + b + '" y="186" width="' + Math.max(2, wy - 3) + '" height="10" rx="3"/>'); }
         g.push('<path class="nf-link" d="M' + (a + w1 / 2) + ' 82 L ' + (b + w2 / 2) + ' 128"/>');
         a += w1; b += w2;
       });
-      cap = 'Each stratum keeps its share: ' + f.names.map(function(n, j){ return n + ' ' + f.sizes[j] + ' to ' + f.alloc[j]; }).join(', ') + '.';
+      if(Y && Y.key === 'alloc') H = 214;
+      cap = done.alloc ? 'Each stratum keeps its share: ' + f.names.map(function(n, j){ return n + ' ' + f.sizes[j] + ' to ' + f.alloc[j]; }).join(', ') + '.'
+        : Y && Y.key === 'alloc' ? 'Yours: ' + T.F(Y.v, 0) + ' (the red bar). The sample bar keeps the same shares as the population bar above it.' : 'Each stratum keeps its share of the sample. The highlighted one is asked.';
     } else {
-      var cnt = f.count, cols2 = Math.min(cnt, cnt > 60 ? 15 : 10), cs = Math.min(46, (W - 20) / cols2), rows2 = Math.ceil(cnt / cols2), on2 = {};
-      (f.pick || []).forEach(function(i){ on2[i] = true; });
+      var cnt = f.count, cols2 = Math.min(cnt, cnt > 60 ? 15 : 10), cs = Math.min(46, (W - 20) / cols2), rows2 = Math.ceil(cnt / cols2), on2 = {}, yo = {};
+      if(done.m) (f.pick || []).forEach(function(i){ on2[i] = true; });
+      else if(Y && Y.key === 'm' && Y.v > 0) for(var q = 0; q < Math.min(cnt, Math.round(Y.v)); q++) yo[(f.pick && f.pick[q] != null) ? f.pick[q] : q] = true;
       H = rows2 * cs + 20; W = Math.max(cols2 * cs + 20, 200);
-      for(var c = 0; c < cnt; c++) g.push('<rect class="nf-c' + (on2[c] ? ' is-on' : '') + '" x="' + (10 + (c % cols2) * cs + 2) + '" y="' + (10 + Math.floor(c / cols2) * cs + 2) + '" width="' + (cs - 4) + '" height="' + (cs - 4) + '" rx="6"/>');
-      cap = f.m + ' of the ' + cnt + ' ' + f.many + ' chosen at random, everyone in them sampled.';
+      for(var c = 0; c < cnt; c++) g.push('<rect class="nf-c' + (on2[c] ? ' is-on' : '') + (yo[c] ? ' is-yours' : '') + '" x="' + (10 + (c % cols2) * cs + 2) + '" y="' + (10 + Math.floor(c / cols2) * cs + 2) + '" width="' + (cs - 4) + '" height="' + (cs - 4) + '" rx="6"/>');
+      cap = done.m ? f.m + ' of the ' + cnt + ' ' + f.many + ' chosen at random, everyone in them sampled.' : Y && Y.key === 'm' ? 'Yours: ' + T.F(Y.v, 0) + ' ' + f.many + ' (red). Each brings the same number of units.' : 'The ' + cnt + ' ' + f.many + '.';
     }
     return '<figure class="sl-nfig"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(cap) + '">' + g.join('') + '</svg><figcaption class="bt-small">' + esc(cap) + '</figcaption></figure>';
   }
@@ -478,29 +545,41 @@
   /* A drill's picture. Procedure: the random number tape. Method: a small
      model of the setting; once the method is answered, that method's sample
      drawn on it (it is a model of the idea, not the real numbers). */
-  function qfig(el, p, scenes, reveal){
+  function qfig(el, p, scenes, st){
     if(!el) return;
-    if(p.type === 'procedure'){
-      var d = p.figure.draws.slice(0, 14);
-      el.innerHTML = '<figure class="sl-qtape"><figcaption class="bt-small">What a random number generator gave, in order</figcaption><div class="sl-strip sl-strip-q">' + d.map(function(x){ return '<span class="sl-num' + (x.repeat ? ' is-rep' : '') + '">' + x.v + '</span>'; }).join('') + (p.figure.draws.length > 14 ? '<span class="sl-k">and so on</span>' : '') + '</div></figure>';
-      return;
-    }
+    st = st || {};
     var id = SCENE_FOR[p.ctx], sc = id && scenes[id];
     if(p.type !== 'method' || !sc){ el.innerHTML = ''; return; }
-    var pop = S.population(sc), L = layout(sc, pop), lid = T.nid('slq');
-    var html = '<figure class="sl-qfig' + (reveal ? ' is-on' : '') + '">' + sceneSvg(sc, pop, L, { lid: lid, label: 'A small model of the setting: ' + pop.N + ' ' + sc.units + (reveal ? ', with a ' + S.NAME[p.figure.method] + ' drawn on it' : '') + '.' }) +
-      '<figcaption class="bt-small">' + (reveal ? 'The same method on a small model: ' + esc(S.NAME[p.figure.method]) + '.' : 'A small model of the setting.') + '</figcaption></figure>';
+    var pop = S.population(sc), L = layout(sc, pop), lid = T.nid('slq'), m = p.figure.method, Y = st.yours && st.yours.method !== m ? st.yours.method : null;
+    var html = '<figure class="sl-qfig">' + sceneSvg(sc, pop, L, { lid: lid, label: 'A small model of the setting: ' + pop.N + ' ' + sc.units + ', with the sample from the problem drawn on it' + (Y ? ', and in red dashes what a ' + S.NAME[Y] + ' would look like' : '') + '.' }) +
+      '<figcaption class="bt-small sl-qcap">' + (Y ? '<span class="sl-qy">Red dashes: a ' + esc(S.NAME[Y]) + ', your answer.</span> Orange: the sample described.' : 'The sample described, on a small model of the setting. Tap a ' + esc(sc.unit) + ' to read it.') + '</figcaption></figure>';
     el.innerHTML = html;
-    if(!reveal) return;
-    var m = p.figure.method, nn = m === 'cluster' ? 2 * pop.N / pop.clusters.length : sc.n;
-    var d2 = S.draw(M.rng(7), pop, m === 'vol' && !sc.voluntary ? 'conv' : m, nn, sc);
-    var svg = el.querySelector('svg'), mk = svg.querySelector('.sl-marks'), on = {};
+    var svg = el.querySelector('svg'), mk = svg.querySelector('.sl-marks'), bandsG = svg.querySelector('.sl-bands');
+    function sampleOf(mm, seed){ var nn = mm === 'cluster' ? 2 * pop.N / pop.clusters.length : sc.n; return S.draw(M.rng(seed), pop, mm === 'vol' && !sc.voluntary ? 'conv' : mm, nn, sc); }
+    var d2 = sampleOf(m, 7), on = {};
     d2.picks.forEach(function(i){ on[i] = true; });
     svg.classList.add('has-sample');
     svg.querySelectorAll('.sl-u').forEach(function(g){ g.classList.toggle('is-pick', !!on[+g.getAttribute('data-i')]); });
-    var bandsG = svg.querySelector('.sl-bands');
-    if(m === 'strat') bandsG.innerHTML = L.strata.map(function(b, k){ return '<rect class="sl-band is-strat sl-band-' + (k % 4) + '" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>'; }).join('');
-    if(m === 'cluster') bandsG.innerHTML = (d2.clusters || []).map(function(c){ var b = L.clusters[c]; return '<rect class="sl-band is-cluster is-on" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>'; }).join('');
-    mk.innerHTML = d2.picks.map(function(i){ return ringSvg(sc, L.at[i], null); }).join('');
+    // The strata or clusters are outlined once the method is answered (the rings alone are the picture of the description).
+    var bands = '', named = !!(st.done && st.done.method);
+    if(!named){ /* rings only */ }
+    else if(m === 'strat') bands += L.strata.map(function(b, k){ return '<rect class="sl-band is-strat sl-band-' + (k % 4) + '" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>'; }).join('');
+    else if(m === 'cluster') bands += (d2.clusters || []).map(function(c){ var b = L.clusters[c]; return '<rect class="sl-band is-cluster is-on" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>'; }).join('');
+    var marks = d2.picks.map(function(i){ return ringSvg(sc, L.at[i], null); }).join('');
+    if(Y){
+      var dy = sampleOf(Y, 19);
+      if(Y === 'cluster') bands += (dy.clusters || []).map(function(c){ var b = L.clusters[c]; return '<rect class="sl-band is-yours" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>'; }).join('');
+      if(Y === 'strat') bands += L.strata.map(function(b){ return '<rect class="sl-band is-yours" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="10"/>'; }).join('');
+      marks += (dy.picks || []).map(function(i){ return ringSvg(sc, L.at[i], null).replace('class="sl-ring"', 'class="sl-ring is-yours"'); }).join('');
+    }
+    bandsG.innerHTML = bands; mk.innerHTML = marks;
+    // Tap a unit to read its label, group and whether it is in the sample.
+    svg.addEventListener('click', function(e){
+      var g = e.target.closest('.sl-u'); if(!g) return;
+      var u = pop.units[+g.getAttribute('data-i')], where = sc.kind === 'rooms' ? pop.clusters[u.cluster].name + ', ' + sc.strata.groups[u.stratum].name : pop.clusters[u.cluster].name + ' (' + sc.strata.groups[u.stratum].name + ')';
+      svg.querySelectorAll('.sl-u.is-sel').forEach(function(x){ x.classList.remove('is-sel'); }); g.classList.add('is-sel');
+      var cap = el.querySelector('.sl-qcap');
+      if(cap) cap.innerHTML = '<b>' + esc(sc.unit.charAt(0).toUpperCase() + sc.unit.slice(1) + ' ' + u.label) + '</b>, ' + esc(where) + ': ' + (on[u.i] ? 'in the sample.' : 'not in the sample.');
+    });
   }
 })();
