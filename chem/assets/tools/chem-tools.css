@@ -649,7 +649,8 @@
 .pb-fig svg{width:100%;height:auto;display:block;}
 .pb-hint{font-weight:600;}
 .pb-after{border-radius:12px;transition:box-shadow .2s;}
-.pb-after.is-over{box-shadow:0 0 0 3px var(--cink);}
+.pb-after.is-target{box-shadow:0 0 0 2px color-mix(in srgb,var(--cink) 45%,transparent);}
+.pb-after.is-over{box-shadow:0 0 0 4px var(--cink);}
 .pb-svg .pb-p{cursor:pointer;transition:opacity .3s ease;}
 .pb-svg .pb-p.is-in{opacity:0;}
 .pb-empty{font:700 13px var(--font-ui);fill:var(--muted);}
@@ -907,7 +908,8 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-stage .cd-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;align-items:stretch;}
 .ls-root .ls-drill-stage .cd-fig > svg{flex:1;min-height:0;width:100%;height:100%;}
 .ls-root .ls-drill-stage .cd-fig figcaption{flex:none;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:center;}
-.ls-root .cd-pics svg{max-height:84px;}
+/* Big enough to count the particles: two rows of pictures share the stage. */
+.ls-root .cd-pics svg{max-height:clamp(120px,calc((100dvh - 440px) / 2),240px);}
 /* Buffer drill: the beaker (or the two for capacity) fills the stage. */
 .ls-root .ls-drill-stage .bf-qb,.ls-root .ls-drill-stage .bf-two{flex:1;min-height:0;display:flex;gap:8px;}
 .ls-root .ls-drill-stage .bf-two > div{flex:1 1 0;min-width:0;min-height:0;display:flex;}
