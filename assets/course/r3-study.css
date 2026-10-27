@@ -104,10 +104,72 @@ main.cx-study.r3-under .exit-row .exit-link{border-radius:10px;}
 .quiz-side .r3-kbd,.quiz-side .r3-notes{margin-top:14px;}
 
 /* ---- Results --------------------------------------------------------------------------------------- */
+/* Board R10-Practice-Results: the score and the question list in the wide column, the ways on (review the
+   misses, next step, print or share, back to start) down the rail. NREMT's results grid is re-placed here. */
+main.cx-study.r3-under #resultsScreen{grid-template-columns:minmax(0,1fr) 320px;gap:18px 22px;grid-auto-flow:row dense;align-items:start;}
+main.cx-study.r3-under #resultsScreen .results-side{display:contents;}
+main.cx-study.r3-under #resultsScreen .score-card{grid-column:1;grid-row:1;margin:0;}
+main.cx-study.r3-under #resultsScreen .results-main{grid-column:1;grid-row:2 / span 12;}
+main.cx-study.r3-under #resultsScreen .results-top-row,main.cx-study.r3-under #resultsScreen #nextStep,
+main.cx-study.r3-under #resultsScreen #clearedNote,main.cx-study.r3-under #resultsScreen #nextSlot,
+main.cx-study.r3-under #resultsScreen #premiumSlot{grid-column:2;margin:0;}
+main.cx-study.r3-under #resultsScreen .results-top-row{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 20px;}
+main.cx-study.r3-under #resultsScreen .results-top-row::before{content:"Keep this result";flex:1 0 100%;font:900 17px var(--font-ui);color:var(--ink);}
+main.cx-study.r3-under #resultsScreen #nextStep:not(:empty),main.cx-study.r3-under #resultsScreen #nextSlot:not(:empty){background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 20px;}
+main.cx-study.r3-under #resultsScreen #nextSlot{order:1;}
+main.cx-study.r3-under #resultsScreen #clearedNote{order:2;}
+main.cx-study.r3-under #resultsScreen #nextStep{order:3;}
+main.cx-study.r3-under #resultsScreen .results-top-row{order:4;}
+main.cx-study.r3-under #resultsScreen #premiumSlot{order:5;}
+main.cx-study.r3-under #resultsScreen #nextSlot:not(:empty){background:var(--navy);border-color:transparent;color:#fff;}
+main.cx-study.r3-under #resultsScreen #nextSlot:not(:empty) *{color:inherit;}
+main.cx-study.r3-under #resultsScreen #nextSlot .btn-press,main.cx-study.r3-under #resultsScreen #nextSlot button,main.cx-study.r3-under #resultsScreen #nextSlot a.primary{background:#FFD23F !important;color:#0B1A33 !important;box-shadow:none;}
+main.cx-study.r3-under #resultsScreen #nextSlot p,main.cx-study.r3-under #resultsScreen #nextSlot small{color:rgba(255,255,255,.78);}
+main.cx-study.r3-under .score-card{background:var(--white);background-image:none;color:var(--ink);padding:24px 26px;}
+main.cx-study.r3-under .score-card .big{color:var(--ink);}
+main.cx-study.r3-under .score-card .sub{color:var(--muted);}
+main.cx-study.r3-under .score-card .domain-breakdown{border-top:2px solid var(--ink);}
+main.cx-study.r3-under .score-card .domain-breakdown .row{color:var(--ink);}
+main.cx-study.r3-under .score-card .domain-breakdown .topic-row{color:var(--muted);}
+main.cx-study.r3-under .score-card button,main.cx-study.r3-under .score-card .retry-btn{color:var(--ink);}
+@media (max-width:960px){
+  main.cx-study.r3-under #resultsScreen{grid-template-columns:minmax(0,1fr);}
+  main.cx-study.r3-under #resultsScreen .results-top-row,main.cx-study.r3-under #resultsScreen #nextStep,
+  main.cx-study.r3-under #resultsScreen #clearedNote,main.cx-study.r3-under #resultsScreen #nextSlot,
+  main.cx-study.r3-under #resultsScreen #premiumSlot{grid-column:1;}
+  main.cx-study.r3-under #resultsScreen .results-main{grid-row:auto;}
+}
 main.cx-study.r3-under .score-card{padding:22px 24px;}
 main.cx-study.r3-under .score-card .big,main.cx-study.r3-under .bio-pr-score-big{font:900 clamp(56px,7vw,84px)/.95 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.05em;}
 main.cx-study.r3-under .results-main{padding:22px 24px;}
 main.cx-study.r3-under .results-top-row .retry-btn{border-radius:12px;}
+
+/* ---- Flashcards home (board R10-Flashcards), every course: choosing the deck and the topic list in the
+   wide column, today's deck as the one navy card in the rail with its numbers, Study and Study ahead. ---- */
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard){grid-template-columns:minmax(0,1fr) 320px;gap:18px 22px;align-items:start;}
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard) > *{grid-column:1;}
+main.cx-study.r3-under .cx-main > .cx-deckcard{grid-column:2;grid-row:1 / span 6;position:sticky;top:calc(var(--site-header-h,112px) + 14px);
+  background:var(--navy);border-color:transparent;color:#fff;padding:20px 22px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard::before{content:"Today\2019s deck";display:inline-block;background:#FFD23F;color:#0B1A33;border-radius:999px;padding:2px 10px;font:900 12px var(--font-ui);margin-bottom:10px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard h2{font:900 24px/1.1 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);color:#fff;letter-spacing:-.02em;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stat{background:rgba(255,255,255,.08);color:#fff;box-shadow:none;border-radius:12px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stat *{color:#fff;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stat-label{color:rgba(255,255,255,.74);}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-small,main.cx-study.r3-under .cx-main > .cx-deckcard .cx-how,
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-caught{color:rgba(255,255,255,.8);}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-how b{color:#fff;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-actions{display:grid;gap:8px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .btn-press{background:#FFD23F;color:#0B1A33;box-shadow:none;width:100%;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .btn-outline{background:transparent;color:#FFD23F;box-shadow:none;border:0;width:100%;}
+main.cx-study.r3-under .cx-main > .cx-deck{padding:22px 24px;}
+main.cx-study.r3-under .cx-main > .cx-deck h2,main.cx-study.r3-under .cx-main .cx-h2{font:900 21px/1.2 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.02em;}
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard) > section:not(.cx-card){background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 22px;}
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard) > section:not(.cx-card) .cx-h2{margin-top:0;}
+@media (max-width:960px){
+  main.cx-study.r3-under .cx-main:has(> .cx-deckcard){grid-template-columns:minmax(0,1fr);}
+  main.cx-study.r3-under .cx-main > .cx-deckcard{grid-column:1;grid-row:auto;position:static;order:-1;}
+}
 
 /* ---- Review and flashcards: the same panels ------------------------------------------------------- */
 main.cx-study.r3-under .cx-empty-num{font:900 64px/.9 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.04em;background:none;box-shadow:none;}

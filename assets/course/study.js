@@ -153,8 +153,8 @@
     return { kicker: B.base.kicker, h1a: B.base.h1a, h1b: B.base.h1b, hand: B.base.hand,
       cta: start ? [{ label: txt(start), el: start }] : [] };
   }
-  var pending = 0;
-  function refresh(){ if (pending) return; pending = requestAnimationFrame(function(){ pending = 0; paint(state()); }); }
+  var pending = 0, placeLede = function(){};
+  function refresh(){ if (pending) return; pending = requestAnimationFrame(function(){ pending = 0; placeLede(); paint(state()); }); }
   function band(){
     var head = document.querySelector('.page-head');
     var main = document.getElementById('main');
@@ -185,8 +185,19 @@
     if (h1) { h1.setAttribute('aria-hidden', 'true'); h1.removeAttribute('id'); }
     head.classList.add('r3-moved');
     var lede = head.querySelector('.lede');
-    var panel = main.querySelector('.cx-main > .cx-builder, .cx-main > .cx-card');
-    if (lede && panel) { lede.classList.add('cx-lede'); panel.insertBefore(lede, panel.firstChild); }
+    /* Some engines draw their first panel after this runs; the lede follows
+       it there as soon as it appears (placeLede, on every refresh). */
+    placeLede = function(){
+      if (!lede || main.querySelector('.cx-lede')) return;
+      var panel = main.querySelector('.cx-main > .cx-builder, .cx-main > .cx-card:not(.cx-deckcard), .cx-main > .cx-deck');
+      if (!panel) return;
+      /* A copy, so an engine that redraws the panel gets it back next time. */
+      var c = lede.cloneNode(true);
+      c.className = 'cx-lede';
+      c.removeAttribute('id');
+      panel.insertBefore(c, panel.firstChild);
+    };
+    placeLede();
     main.classList.add('r3-under');
     /* NREMT's readiness card sits at the top of the rail (board R10-Practice-Setup);
        while it is locked it is the Premium card instead, which the board puts
