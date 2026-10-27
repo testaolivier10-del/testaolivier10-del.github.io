@@ -85,8 +85,8 @@
         'Your progress, XP, streak and weak topics',
       ],
       premium: [
-        'The full 2,033-question bank, unlimited', // count:nremt
-        'Unlimited timed 100-question exams',
+        'The full 2,093-question bank, unlimited', // count:nremt
+        'Unlimited timed and adaptive exams',
         'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',
         'The clinical scenario simulator',

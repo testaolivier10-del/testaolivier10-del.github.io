@@ -34,10 +34,11 @@
 
   /* ---- the daily allowance ---------------------------------------------- */
 
-  // The timed exam has its own one-exam rule; every other way of being shown a
-  // bank question (drills, weak-spot, flagged, missed and spaced review, a
-  // search result, flashcard flips) draws on the same 15.
-  function quotaApplies(mode) { return locked() && mode !== 'full'; }
+  // The two exams (timed 'full' and adaptive 'cat') share the one-exam rule;
+  // every other way of being shown a bank question (drills, weak-spot, flagged,
+  // missed and spaced review, a search result, flashcard flips) draws on the
+  // same 15.
+  function quotaApplies(mode) { return locked() && mode !== 'full' && mode !== 'cat'; }
 
   function quotaLeft() {
     if (!locked()) return Infinity;
