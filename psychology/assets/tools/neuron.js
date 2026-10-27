@@ -393,19 +393,19 @@
       }
     }
     function fireWhy(){
-      return '<ul class="ls-steps"><li><b>Resting potential.</b> At rest the inside of the neuron is about 70 mV more negative than the outside (' + mv(N.REST) + ').</li>' +
-        '<li><b>Threshold.</b> Messages from other neurons push the charge up. If it reaches ' + mv(N.THRESH) + ', channels open, positive sodium ions rush in and the neuron fires: depolarization to about +40 mV.</li>' +
-        '<li><b>All-or-none.</b> A neuron fires completely or not at all. A stronger stimulus does not make a bigger spike; held on, it makes the neuron fire more often.</li>' +
-        '<li><b>Repolarization and the refractory period.</b> Potassium ions flow out and the charge falls, briefly below rest. For about ' + N.ABS + ' ms the neuron cannot fire at all (absolute refractory period), then for a few more ms it needs a stronger push (relative).</li>' +
-        '<li><b>Down the axon.</b> The action potential travels to the terminals; myelin makes it jump from node to node, which is much faster.</li></ul>';
+      return '<ul class="ls-steps"><li><span><b>Resting potential.</b> At rest the inside of the neuron is about 70 mV more negative than the outside (' + mv(N.REST) + ').</span></li>' +
+        '<li><span><b>Threshold.</b> Messages from other neurons push the charge up. If it reaches ' + mv(N.THRESH) + ', channels open, positive sodium ions rush in and the neuron fires: depolarization to about +40 mV.</span></li>' +
+        '<li><span><b>All-or-none.</b> A neuron fires completely or not at all. A stronger stimulus does not make a bigger spike; held on, it makes the neuron fire more often.</span></li>' +
+        '<li><span><b>Repolarization and the refractory period.</b> Potassium ions flow out and the charge falls, briefly below rest. For about ' + N.ABS + ' ms the neuron cannot fire at all (absolute refractory period), then for a few more ms it needs a stronger push (relative).</span></li>' +
+        '<li><span><b>Down the axon.</b> The action potential travels to the terminals; myelin makes it jump from node to node, which is much faster.</span></li></ul>';
     }
     function synWhy(){
       var lower = ntLower(nt);
-      return '<ul class="ls-steps"><li><b>Release.</b> When the action potential reaches the axon terminal, vesicles release ' + lower + ' into the synapse (the tiny gap between neurons).</li>' +
-        '<li><b>Binding.</b> ' + ntName(nt) + ' binds to receptors on the receiving neuron like a key in a lock. ' + N.NT[nt].does + '</li>' +
-        '<li><b>Clearing.</b> ' + (/^reuptake/.test(N.NT[nt].clear) ? 'Reuptake: the sending neuron takes the neurotransmitter back in, ending the signal.' : 'Here ' + N.NT[nt].clear + '.') + '</li>' +
-        '<li><b>Agonist</b>: activates the receptors itself, so the effect grows. <b>Antagonist</b>: binds without activating, blocking the neurotransmitter. <b>Reuptake inhibitor</b>: blocks reuptake, so the neurotransmitter keeps acting.</li>' +
-        '<li>' + N.NT[nt].low + '</li></ul>';
+      return '<ul class="ls-steps"><li><span><b>Release.</b> When the action potential reaches the axon terminal, vesicles release ' + lower + ' into the synapse (the tiny gap between neurons).</span></li>' +
+        '<li><span><b>Binding.</b> ' + ntName(nt) + ' binds to receptors on the receiving neuron like a key in a lock. ' + N.NT[nt].does + '</span></li>' +
+        '<li><span><b>Clearing.</b> ' + (/^reuptake/.test(N.NT[nt].clear) ? 'Reuptake: the sending neuron takes the neurotransmitter back in, ending the signal.' : 'Here ' + N.NT[nt].clear + '.') + '</span></li>' +
+        '<li><span><b>Agonist</b>: activates the receptors itself, so the effect grows. <b>Antagonist</b>: binds without activating, blocking the neurotransmitter. <b>Reuptake inhibitor</b>: blocks reuptake, so the neurotransmitter keeps acting.</span></li>' +
+        '<li><span>' + N.NT[nt].low + '</span></li></ul>';
     }
     function nums(){
       var el = $('.nr-nums'); if(!el) return;

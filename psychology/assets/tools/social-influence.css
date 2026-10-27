@@ -1,0 +1,86 @@
+/* Social influence (psychology/assets/tools/social-influence.js). OWNED BY THIS TOOL ONLY (builder T4).
+   The participant is always in the course cerulean; the published result
+   that matches the scene is the cerulean bar; wrong answers vermillion,
+   right answers green. Every value is also written, so color is never the
+   only cue. People are flat illustrations; clothes and rooms come from the
+   tokens below. */
+.si-svg,.si-qfig{--si-room:#F4F7FA;--si-floor:#E3D7C6;--si-wood:#B98A5A;--si-wood2:#8C643E;--si-outline:rgba(30,36,48,.28);
+  --si-shirt:#2C83B8;--si-pants:#34465C;--si-kid:#E6A532;--si-s1:#C2577F;--si-s2:#5E9F6E;--si-s3:#E6A532;--si-s4:#8A7BC8;--si-coat:#9AA3AD;
+  --si-bad:#A84A00;--si-bad-f:#FBE3D2;--si-good:#00704F;--si-good-f:#D3F0E6;--si-bar:#B9CCDB;--si-bar-on:#084F78;--si-alt:#E8C9DD;--si-felt:#2E8B57;--si-office:#EFE9DF;}
+:root[data-theme="dark"] .si-svg,:root[data-theme="dark"] .si-qfig{--si-room:#1A2533;--si-floor:#3A3226;--si-wood:#8C6A48;--si-wood2:#6A4E33;--si-outline:rgba(0,0,0,.45);
+  --si-shirt:#3C8FC4;--si-pants:#516A88;--si-kid:#D9982A;--si-s1:#C8638B;--si-s2:#5A9A6A;--si-s3:#D9982A;--si-s4:#8F82C8;--si-coat:#7D8792;
+  --si-bad:#FFB385;--si-bad-f:#3E2618;--si-good:#7BE0C1;--si-good-f:#123A2E;--si-bar:#2C3E52;--si-bar-on:#8CC8E8;--si-alt:#4A3044;--si-felt:#246B45;--si-office:#262A2E;}
+.si-card{display:grid;gap:14px;}
+.si-fig{position:relative;min-height:440px;height:min(76vh,680px);}
+.ls-root .si-fig{flex:1 1 auto;height:auto;min-height:380px;}
+.si-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.si-fig .si-svg{position:absolute;inset:0;}
+.si-qfig{margin:0;} .si-qfig .si-svg{height:auto;}
+.si-grp[hidden]{display:none;}
+.si-grp{display:flex;flex-direction:column;gap:10px;}
+.si-tipslot{height:52px;}
+.si-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.si-lbl{margin:0 0 6px;font:700 var(--ls-s,14px)/1.3 var(--font-ui);color:var(--muted);}
+.ls-root .si-chips .tchip[aria-pressed=true],.si-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--paper);}
+/* rooms */
+.si-room{fill:var(--si-room);} .si-room.is-office{fill:var(--si-office);}
+.si-floor{fill:var(--si-floor);}
+.si-ol,.dv-ol{stroke:var(--si-outline);stroke-width:1;stroke-linejoin:round;}
+.si-window{fill:#CFE8F7;stroke:#FFFFFF;stroke-width:4;} :root[data-theme="dark"] .si-window{fill:#29506B;stroke:#33475C;}
+.si-bldg{fill:#8FA3B5;} :root[data-theme="dark"] .si-bldg{fill:#4D6278;}
+.si-wall{fill:var(--si-wood2);opacity:.8;}
+.si-table{fill:var(--si-wood);} .si-tablefront{fill:color-mix(in srgb, var(--si-wood) 70%, var(--si-wood2));} .si-tableleg{fill:var(--si-wood2);}
+.si-felt{fill:var(--si-felt);stroke:var(--si-wood2);stroke-width:3;}
+.si-ball{stroke:rgba(0,0,0,.3);stroke-width:.8;} .si-ball.b0{fill:#FFFFFF;} .si-ball.b1{fill:#E05A47;} .si-ball.b2{fill:#F2B33D;}
+.si-cue{stroke:#C9A27A;stroke-width:3;stroke-linecap:round;}
+.si-card rect,.si-card > rect{fill:#FFFFFF;stroke:#C9D3DC;stroke-width:1.2;}
+.si-line{stroke:#1E2430;stroke-width:4;stroke-linecap:butt;}
+.si-line.is-c{stroke:#1E2430;}
+.si-cl{font-weight:800;font-size:11px;fill:#56667F;}
+.si-gen{fill:#5B6670;stroke:#3A434C;stroke-width:1.2;} .si-genstand{fill:#4A545D;}
+.si-sw{fill:#E6E9EC;} .si-sw.is-danger{fill:#F2B33D;} .si-sw.is-xxx{fill:#E05A47;}
+.si-gl{font-weight:900;font-size:9.5px;fill:#FFFFFF;}
+.si-plate{fill:#9AA3AD;stroke:#5B6670;}
+.si-wave{fill:none;stroke:var(--si-bad);stroke-width:2.2;stroke-linecap:round;}
+.si-phone rect{fill:#2B2F36;} .si-phone path{fill:none;stroke:#2B2F36;stroke-width:4;stroke-linecap:round;}
+.si-booth{fill:none;stroke:var(--si-wood2);stroke-width:2;stroke-dasharray:6 4;opacity:.7;}
+.si-booth.is-me{stroke:var(--cink);stroke-dasharray:none;stroke-width:2.5;opacity:1;}
+.si-intercom rect{fill:#5B6670;} .si-intercom path{fill:none;stroke:#5B6670;stroke-width:1.6;}
+.si-headset{fill:none;stroke:#2B2F36;stroke-width:2.4;}
+.si-blind{fill:#2B2F36;}
+.si-mask{fill:#7A4F9E;}
+/* people (shared drawing code; classes renamed per tool) */
+.si-shoe{fill:#2B2B33;} :root[data-theme="dark"] .si-shoe{fill:#0E1117;}
+.si-diaper{fill:#FFFFFF;stroke:#C9D3DC;stroke-width:1;}
+.si-far{opacity:.82;}
+.si-eye{fill:#1E2430;}
+.si-brow{stroke:#2A2018;stroke-width:1.6;stroke-linecap:round;fill:none;}
+.si-nose{fill:none;stroke:rgba(90,42,32,.55);stroke-width:1.3;stroke-linecap:round;}
+.si-wrinkle{fill:none;stroke:rgba(90,42,32,.45);stroke-width:1;stroke-linecap:round;}
+.si-mouth{fill:none;stroke:#5A2A20;stroke-width:1.6;stroke-linecap:round;}
+.si-mouth-o{fill:#7A2E26;}
+.si-tear{fill:#7CC4F0;}
+.si-blush{fill:#E8857A;opacity:.35;}
+.si-glass circle,.si-glass path{fill:none;stroke:#2A2F38;stroke-width:1.3;}
+/* bubbles and labels */
+.si-bub rect,.si-bub path{fill:var(--white);stroke:var(--line);stroke-width:1.2;}
+.si-bub text{font-weight:900;fill:var(--ink);}
+.si-bub.is-wrong rect,.si-bub.is-wrong path{fill:var(--si-bad-f);stroke:var(--si-bad);} .si-bub.is-wrong text{fill:var(--si-bad);}
+.si-bub.is-right rect,.si-bub.is-right path{fill:var(--si-good-f);stroke:var(--si-good);} .si-bub.is-right text{fill:var(--si-good);}
+.si-bub.is-me rect,.si-bub.is-me path{fill:var(--ctint);stroke:var(--cink);} .si-bub.is-me text{fill:var(--cink);}
+:root[data-theme="dark"] .si-bub rect,:root[data-theme="dark"] .si-bub path{fill:#243244;}
+.si-note{font-weight:700;font-size:11.5px;fill:var(--muted);}
+.si-note.is-me{fill:var(--cink);font-weight:900;} .si-note.is-bad{fill:var(--si-bad);font-weight:800;}
+.si-you{font-weight:900;font-size:12px;fill:var(--cink);}
+.si-ptitle{font-weight:900;font-size:13px;fill:var(--ink);}
+/* graphs */
+.si-gt{font-weight:900;font-size:13px;fill:var(--ink);}
+.si-grid{stroke:var(--line);stroke-width:1;}
+.si-axis{stroke:var(--muted);stroke-width:1.2;}
+.si-tk{font-weight:700;font-size:11px;fill:var(--muted);font-variant-numeric:tabular-nums;}
+.si-bar{fill:var(--si-bar);} .si-bar.is-alt{fill:var(--si-alt);} .si-bar.is-on{fill:var(--si-bar-on);}
+.si-bl{font-weight:700;font-size:11.5px;fill:var(--muted);} .si-bl.is-on{fill:var(--ink);font-weight:900;}
+.si-bv{font-weight:800;font-size:11.5px;fill:var(--muted);font-variant-numeric:tabular-nums;} .si-bv.is-on{fill:var(--cink);font-weight:900;}
+.si-src{font-weight:700;font-size:10.5px;fill:var(--muted);font-style:italic;}
+.si-dot{fill:var(--si-bar);} .si-dot.is-on{fill:var(--si-bar-on);}
+.si-bl.is-s{font-size:10px;}

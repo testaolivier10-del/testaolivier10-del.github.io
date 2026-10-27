@@ -480,20 +480,20 @@
       }
     }
     function mapWhy(){
-      return '<ul class="ls-steps"><li><b>Four lobes</b> on each side: frontal (planning, movement, speech), parietal (touch and space), temporal (hearing and language), occipital (vision).</li>' +
-        '<li><b>Contralateral control.</b> Each hemisphere moves and feels the opposite side of the body: the motor strip is just in front of the central sulcus, the somatosensory strip just behind it.</li>' +
-        '<li><b>Language</b> usually sits in the left hemisphere: Broca’s area produces speech, Wernicke’s area understands it.</li>' +
-        '<li><b>Below the cortex</b>: the thalamus relays the senses, the hypothalamus keeps the body in balance and controls the pituitary, the hippocampus stores new memories, the amygdala handles fear.</li>' +
-        '<li><b>The brainstem</b> keeps you alive (the medulla: heartbeat and breathing) and awake (the reticular activating system); the cerebellum coordinates movement.</li>' +
-        '<li><b>Plasticity.</b> After damage, other areas can take over some functions, especially in children.</li>' +
-        '<li class="psy-myth">The hemispheres specialize, but everyone uses both, all the time. There are no “left-brained” or “right-brained” people.</li></ul>';
+      return '<ul class="ls-steps"><li><span><b>Four lobes</b> on each side: frontal (planning, movement, speech), parietal (touch and space), temporal (hearing and language), occipital (vision).</span></li>' +
+        '<li><span><b>Contralateral control.</b> Each hemisphere moves and feels the opposite side of the body: the motor strip is just in front of the central sulcus, the somatosensory strip just behind it.</span></li>' +
+        '<li><span><b>Language</b> usually sits in the left hemisphere: Broca’s area produces speech, Wernicke’s area understands it.</span></li>' +
+        '<li><span><b>Below the cortex</b>: the thalamus relays the senses, the hypothalamus keeps the body in balance and controls the pituitary, the hippocampus stores new memories, the amygdala handles fear.</span></li>' +
+        '<li><span><b>The brainstem</b> keeps you alive (the medulla: heartbeat and breathing) and awake (the reticular activating system); the cerebellum coordinates movement.</span></li>' +
+        '<li><span><b>Plasticity.</b> After damage, other areas can take over some functions, especially in children.</span></li>' +
+        '<li class="psy-myth"><span>The hemispheres specialize, but everyone uses both, all the time. There are no “left-brained” or “right-brained” people.</span></li></ul>';
     }
     function splitWhy(){
-      return '<ul class="ls-steps"><li><b>Each visual field goes to the opposite hemisphere.</b> Look at a dot: everything to its left reaches the right hemisphere first, and everything to its right the left hemisphere.</li>' +
-        '<li><b>The corpus callosum</b> normally shares it at once. Surgeons cut it in a few people with severe epilepsy to stop seizures spreading.</li>' +
-        '<li><b>Speech</b> is usually in the left hemisphere, so a split-brain patient can name only what the left hemisphere sees.</li>' +
-        '<li><b>Each hand is run by the opposite hemisphere</b>, so the left hand can find by touch what only the right hemisphere saw, even when the patient says they saw nothing.</li>' +
-        '<li>Roger Sperry and Michael Gazzaniga’s split-brain studies (from the 1960s) showed this; in everyday life the patients function well.</li></ul>';
+      return '<ul class="ls-steps"><li><span><b>Each visual field goes to the opposite hemisphere.</b> Look at a dot: everything to its left reaches the right hemisphere first, and everything to its right the left hemisphere.</span></li>' +
+        '<li><span><b>The corpus callosum</b> normally shares it at once. Surgeons cut it in a few people with severe epilepsy to stop seizures spreading.</span></li>' +
+        '<li><span><b>Speech</b> is usually in the left hemisphere, so a split-brain patient can name only what the left hemisphere sees.</span></li>' +
+        '<li><span><b>Each hand is run by the opposite hemisphere</b>, so the left hand can find by touch what only the right hemisphere saw, even when the patient says they saw nothing.</span></li>' +
+        '<li><span>Roger Sperry and Michael Gazzaniga’s split-brain studies (from the 1960s) showed this; in everyday life the patients function well.</span></li></ul>';
     }
     function nums(){
       var el = $('.bm-nums'); if(!el) return;

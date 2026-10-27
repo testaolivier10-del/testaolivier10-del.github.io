@@ -55,6 +55,8 @@
   }
   function r0(x){ return String(Math.round(x)); }
 
+  /* Room kept clear at the stage's foot on a phone for the Enlarge button (bottom right, about 48 px). */
+  var ENL = 46;
   T.mount('conditioning-lab', function(app, data){
     var ex = null;
     T.modes(app, { slug: 'conditioning-lab',
@@ -326,7 +328,7 @@
       if(dropLab) g.push(tag(R, 22, dropLab + (drops ? ' (' + drops + ')' : ''), food ? 'is-ucs' : drops >= 1 ? 'is-cs' : 'is-ns', 'end'));
       if(k === 'rest') g.push(tag(dx, dy - 80 * sc, 'Resting a day', 'is-ns'));
       // the record
-      var gT = sceneH + (phone ? 34 : 40), gB = H - (phone ? 46 : 48), gL = phone ? 34 : 50, gR = W - (phone ? 16 : 30);
+      var gT = sceneH + (phone ? 34 : 40), gB = H - (phone ? 46 + ENL : 48), gL = phone ? 34 : 50, gR = W - (phone ? 16 : 30);
       var shown = trials.filter(function(t){ return t !== 'rest'; }).length, X = Math.max(20, shown + 2);
       var x = function(i){ return gL + (i - 0.5) / X * (gR - gL); }, y = function(v){ return gB - v / cap * (gB - gT); };
       // phase bands
@@ -362,7 +364,7 @@
       g.push(skinner(bx, by, boxW, boxH, pressing, pellet, pellet));
       g.push(txt(bx + boxW / 2, by + boxH + 18, 'Skinner box, ' + sc.name.toLowerCase() + ' (' + sc.short + ')', 'cl-axn'));
       if(!phone){ var words2 = (sc.how.charAt(0).toUpperCase() + sc.how.slice(1) + '.').split(' '), ln = '', yy3 = by + boxH + 38; words2.forEach(function(wd){ if(tw(ln + ' ' + wd, 12, 700) > boxW && ln){ g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); yy3 += 16; ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); }
-      var gT = phone ? by + boxH + 50 : by + 8, gB = H - (phone ? 52 : 56), gR = phone ? R : bx - 30;
+      var gT = phone ? by + boxH + 50 : by + 8, gB = H - (phone ? 52 + ENL : 56), gR = phone ? R : bx - 30;
       var maxN = Math.max.apply(null, CL.SCHEDULES.map(function(s){ return CL.session(s.k, seed, MIN).presses.length; }));
       // One y scale for every schedule, so a steeper line really is faster responding.
       var yMax = maxN, step = yMax > 2000 ? 500 : yMax > 800 ? 200 : yMax > 300 ? 100 : 50;

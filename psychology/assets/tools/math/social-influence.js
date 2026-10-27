@@ -52,8 +52,8 @@
   function S(){ return G.ApPsychStats; }
 
   /* Group size: Asch's mean errors out of 12 critical trials for unanimous
-     majorities of 1, 2, 3, 4, 8 and 16 (Asch, 1951, 1956), as a percent of
-     answers; alone (controls) under 1%; one partner who answers correctly
+     majorities of 1, 2, 3, 4, 8 and 10 to 15 (Asch, 1951; the last group is
+     stored at 16), as a percent of answers; alone (controls) under 1%; one partner who answers correctly
      5.5% (Asch, 1952). Majorities of 5 to 7 were not run; the tool draws
      straight lines between the sizes that were, and says so. */
   var ASCH = {

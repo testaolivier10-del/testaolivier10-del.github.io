@@ -48,6 +48,8 @@
   function txt(x, y, s, cls, anchor){ return '<text class="' + cls + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="' + (anchor || 'middle') + '">' + esc(s) + '</text>'; }
   function r0(x){ return String(Math.round(x)); }
 
+  /* Room kept clear at the stage's foot on a phone for the Enlarge button (bottom right, about 48 px). */
+  var ENL = 46;
   T.mount('memory-lab', function(app, data){
     var ex = null;
     T.modes(app, { slug: 'memory-lab',
@@ -89,9 +91,9 @@
       '<div class="ml-ctl">' +
         '<div class="ls-seg ml-views" role="group" aria-label="Scene">' + VIEWS.map(function(v){ return '<button type="button" data-v="' + v.v + '" aria-pressed="false">' + v.label + '</button>'; }).join('') + '</div>' +
         '<div class="ml-grp ml-grp-list">' +
-          '<div class="ls-seg ml-when" role="group" aria-label="When you recall"><button type="button" data-d="0" aria-pressed="true">Recall at once</button><button type="button" data-d="1" aria-pressed="false">After 30 s of counting</button></div>' +
           '<form class="ml-recall" hidden novalidate><label for="' + nid + '-in">Type a word you remember, then Enter</label><div class="ml-recall-row"><input id="' + nid + '-in" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="enter"><button type="submit" class="bt-btn">Add</button></div></form>' +
           '<div class="ml-go"><button type="button" class="btn-press sm ls-btn ls-pri ml-start">Start: study 10 words</button></div>' +
+          '<div class="ls-seg ml-when" role="group" aria-label="When you recall"><button type="button" data-d="0" aria-pressed="true">Recall at once</button><button type="button" data-d="1" aria-pressed="false">After 30 s of counting</button></div>' +
         '</div>' +
         '<div class="ml-grp ml-grp-forget"><div class="ml-presets" role="group" aria-label="Review schedule">' + ML.PRESETS.map(function(p, i){ return '<button type="button" class="ml-pre" data-i="' + i + '" aria-pressed="false">' + esc(p.name.split(':')[0]) + '</button>'; }).join('') + '</div></div>' +
         '<div class="ml-grp ml-grp-interf"><div class="ls-seg ml-want" role="group" aria-label="Which memory you are trying to recall"><button type="button" data-o="1" aria-pressed="false">Recall the older one</button><button type="button" data-o="0" aria-pressed="true">Recall the newer one</button></div></div>' +
@@ -279,7 +281,7 @@
     function listScene(W, H){
       var phone = W < 560, g = [], L = phone ? 40 : 56, R = W - (phone ? 36 : 26);
       var cardH = phase === 'ready' || phase === 'done' ? 0 : Math.min(150, H * 0.3), T0 = (phone ? 54 : 60) + (cardH ? cardH + 18 : 0);
-      var you = phase === 'done' && result ? 58 : 0, B = H - (phone ? 52 : 58) - you;
+      var you = phase === 'done' && result ? 58 : 0, B = H - (phone ? 52 + ENL : 58) - you;
       var x = function(i){ return L + (i + 0.5) / N * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
       // the card: a word, the countdown or the typed words
       if(cardH){
@@ -326,7 +328,7 @@
     }
 
     function forgetScene(W, H){
-      var phone = W < 560, g = [], L = phone ? 44 : 60, R = W - (phone ? 16 : 30), T0 = phone ? 60 : 66, B = H - (phone ? 64 : 70), D = 30;
+      var phone = W < 560, g = [], L = phone ? 44 : 60, R = W - (phone ? 16 : 30), T0 = phone ? 60 : 66, B = H - (phone ? 64 + ENL : 70), D = 30;
       var x = function(d){ return L + d / D * (R - L); }, y = function(v){ return B - v / 100 * (B - T0); };
       hit = { L: L, R: R, T: T0, inv: function(px){ return (px - L) / (R - L) * D; } };
       [0, 20, 40, 60, 80, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });

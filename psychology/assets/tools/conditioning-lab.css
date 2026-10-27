@@ -140,6 +140,6 @@ body.ls-on .psy-crumb{display:none;}
 .cl-q4c.is-key{border-width:3px;color:var(--ink);}
 .ls-root .ls-drill-stage .cl-qfig{justify-content:center;}
 /* Room for the first-run tip while it shows (hintSlot). */
-.psy-tipslot{height:58px;flex:none;}
+.psy-tipslot{height:70px;flex:none;}
 /* The primary row sits in the dock's flow (not stuck to the screen's foot), so the first-run tip above it never covers the scene switch. */
 .ls-dock .cl-trial,.ls-dock .cl-go{position:static !important;box-shadow:none !important;}

@@ -185,9 +185,9 @@
    "topic": "sensation",
    "name": "Sensation and perception",
    "title": "Sensation and Perception",
-   "desc": "Absolute and difference thresholds, signal detection, sensory adaptation, and the perceptual cues and illusions the exam uses.",
-   "blurb": "Thresholds, signal detection and the illusions that fool you.",
-   "lede": "Find a threshold, then see what top-down processing changes.",
+   "desc": "Signal detection with hits and false alarms, thresholds and Weber's law, a real afterimage for opponent-process theory, and the depth cues and Gestalt principles the exam uses.",
+   "blurb": "Signal detection, Weber's law, afterimages and depth cues.",
+   "lede": "Move your criterion, find a JND, then see an afterimage.",
    "premium": "tools",
    "studio": true
   },

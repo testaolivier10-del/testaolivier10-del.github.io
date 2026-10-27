@@ -55,6 +55,8 @@
   function clampX(x, w, L, R){ return Math.max(L + w / 2, Math.min(R - w / 2, x)); }
   function niceStep(span, n){ var raw = span / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p; }
 
+  /* Room kept clear at the stage's foot on a phone for the Enlarge button (bottom right, about 48 px). */
+  var ENL = 46;
   T.mount('stats-lab', function(app, data){
     var ex = null;
     T.modes(app, { slug: 'stats-lab',
@@ -278,7 +280,7 @@
 
     function curveScene(W, H){
       // Side margins keep the +3 label clear of the Enlarge button (bottom right).
-      var b = SC(), phone = W < 560, L = phone ? 44 : 56, R = W - (phone ? 44 : 56), base = H - (phone ? 62 : 70), top = phone ? 64 : 72;
+      var b = SC(), phone = W < 560, L = phone ? 44 : 56, R = W - (phone ? 44 : 56), base = H - (phone ? 62 + ENL : 70), top = phone ? 64 : 72;
       var lo = b.mean - 3.5 * b.sd, hi = b.mean + 3.5 * b.sd;
       var sx = function(v){ return L + (v - lo) / (hi - lo) * (R - L); }, peak = SL.pdf(b.mean, b.mean, b.sd), sy = function(d){ return base - d / peak * (base - top); };
       geo = { inv: function(px){ return lo + (px - L) / (R - L) * (hi - lo); }, lo: b.min, hi: b.max, step: 1 };
@@ -396,7 +398,7 @@
     }
     function corrScene(W, H){
       geo = null;
-      var pr = SL.PAIRS[pair], phone = W < 560, L = phone ? 46 : 64, R = W - (phone ? 14 : 28), T0 = phone ? 22 : 28, B = H - (phone ? 52 : 58);
+      var pr = SL.PAIRS[pair], phone = W < 560, L = phone ? 46 : 64, R = W - (phone ? 14 : 28), T0 = phone ? 22 : 28, B = H - (phone ? 52 + ENL : 58);
       var sx = function(q){ return L + (q - pr.xs[0]) / (pr.xs[1] - pr.xs[0]) * (R - L); }, sy = function(q){ return B - (q - pr.ys[0]) / (pr.ys[1] - pr.ys[0]) * (B - T0); };
       var g = [], xstep = niceStep(pr.xs[1] - pr.xs[0], phone ? 5 : 8), ystep = niceStep(pr.ys[1] - pr.ys[0], phone ? 5 : 6);
       for(var a = Math.ceil(pr.xs[0] / xstep) * xstep; a <= pr.xs[1] + 1e-9; a += xstep) g.push('<line class="sl-grid" x1="' + sx(a).toFixed(1) + '" x2="' + sx(a).toFixed(1) + '" y1="' + T0 + '" y2="' + B + '"/>' + txt(sx(a), B + 18, String(M.round(a, 2)), 'sl-tv'));

@@ -57,8 +57,8 @@
 /* afterimage */
 .af-frame{fill:none;stroke:var(--line);stroke-width:1.5;}
 .af-white{fill:#FFFFFF;stroke:var(--line);stroke-width:1.5;}
-.af-dot{fill:#111111;}
-.af-cross{stroke:#111111;stroke-width:1.5;opacity:.4;}
+.af-dot{fill:#FFFFFF;stroke:#111111;stroke-width:2.5;}
+.af-cross{stroke:#7A7A7A;stroke-width:1.5;opacity:.7;}
 .af-t{fill:var(--ink);font-weight:800;}
 /* depth scenes */
 .dp-sky{fill:var(--sn-sky);} .dp-ground{fill:var(--sn-ground);}

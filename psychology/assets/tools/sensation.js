@@ -44,7 +44,7 @@
   /* Signal detection curves in the box. o: { d, c, trials: [{ x, sig, out }], grid, fs } */
   function sdtArt(x0, y0, w, h, o){
     var g = [], fs = o.fs || 13, d = o.d, c = o.c, r = X.sdt(d, c);
-    var gridH = o.grid === false ? 0 : Math.min(150, Math.max(104, h * 0.3)), stripH = o.trials ? 46 : 0;
+    var gridH = o.grid === false ? 0 : Math.min(150, Math.max(104, h * 0.3)), stripH = o.trials ? 40 + fs : 0;
     var L = x0 + 10, R = x0 + w - 10, top = y0 + fs * 2.6, bot = y0 + h - gridH - stripH - fs * 2.2;
     var lo = -3.4, hi = Math.max(3.4, d + 3.4), sx = function(v){ return L + (v - lo) / (hi - lo) * (R - L); };
     var peak = X.pdf(0, 0), sy = function(v){ return bot - v / peak * (bot - top); };
@@ -64,13 +64,16 @@
     g.push('<text class="sd-crit-t" x="' + r1(Math.max(L + 4, cxp - 6)) + '" y="' + r1(bot + fs * 1.7 + 6) + '" text-anchor="' + (cxp < L + 120 ? 'start' : 'end') + '" font-size="' + (fs * 0.92) + '">← “no”</text>');
     // trial dots: signal trials on the upper row, noise on the lower
     if(o.trials){
-      var ty0 = bot + fs * 2.6 + 6;
-      g.push('<text class="sd-tk" x="' + r1(L) + '" y="' + r1(ty0 - 4) + '" font-size="' + (fs * 0.85) + '">trials: signal (top), no signal (bottom)</text>');
-      o.trials.forEach(function(t){ var yy = ty0 + (t.sig ? 10 : 28), xx = Math.max(L + 5, Math.min(R - 5, sx(t.x))); g.push('<circle class="sd-dot is-' + t.out + '" cx="' + r1(xx) + '" cy="' + r1(yy) + '" r="5"/>'); });
+      var ty0 = bot + fs * 2.6 + 10;
+      if(o.trials.length){
+        g.push('<text class="sd-tk" x="' + r1(L) + '" y="' + r1(ty0 + 14) + '" font-size="' + (fs * 0.8) + '">signal</text><text class="sd-tk" x="' + r1(L) + '" y="' + r1(ty0 + 32) + '" font-size="' + (fs * 0.8) + '">none</text>');
+      }
+      var tl = L + fs * 3.4;
+      o.trials.forEach(function(t){ var yy = ty0 + (t.sig ? 10 : 28), xx = Math.max(tl, Math.min(R - 5, sx(t.x))); g.push('<circle class="sd-dot is-' + t.out + '" cx="' + r1(xx) + '" cy="' + r1(yy) + '" r="5"/>'); });
     }
     // the four outcomes
     if(o.grid !== false){
-      var gy = y0 + h - gridH + 6, gw = Math.min(w - 4, 520), gx = x0 + (w - gw) / 2, rh = (gridH - 6 - fs * 1.6) / 2, cw = (gw - fs * 6.2) / 2, hx = gx + fs * 6.2;
+      var gy = y0 + h - gridH + 6, gw = Math.min(w - 4 - (o.enl ? 60 : 0), 520), gx = x0 + (w - gw - (o.enl ? 60 : 0)) / 2, rh = (gridH - 6 - fs * 1.6) / 2, cw = (gw - fs * 6.2) / 2, hx = gx + fs * 6.2;
       g.push('<text class="sd-gh" x="' + r1(hx + cw / 2) + '" y="' + r1(gy + fs) + '" text-anchor="middle" font-size="' + fs + '">Said yes</text><text class="sd-gh" x="' + r1(hx + cw * 1.5) + '" y="' + r1(gy + fs) + '" text-anchor="middle" font-size="' + fs + '">Said no</text>');
       var rowsY = [gy + fs * 1.6, gy + fs * 1.6 + rh];
       g.push('<text class="sd-gh" x="' + r1(gx) + '" y="' + r1(rowsY[0] + rh / 2 + fs * 0.35) + '" font-size="' + fs + '">Signal</text><text class="sd-gh" x="' + r1(gx) + '" y="' + r1(rowsY[1] + rh / 2 + fs * 0.35) + '" font-size="' + fs + '">No signal</text>');
@@ -132,7 +135,7 @@
       g.push('<rect class="af-white" x="' + r1(fx) + '" y="' + r1(fy) + '" width="' + r1(fw) + '" height="' + r1(fh) + '" rx="6"/>');
       if(o.phase === 'shown') draw(fx, cols, true, 0.42);
     }
-    if(!side){ var cx = fx + fw / 2, cy = fy + fh / 2; g.push('<circle class="af-dot" cx="' + r1(cx) + '" cy="' + r1(cy) + '" r="5"/><path class="af-cross" d="M' + r1(cx - 12) + ' ' + r1(cy) + ' h24 M' + r1(cx) + ' ' + r1(cy - 12) + ' v24"/>'); }
+    if(!side){ var cx = fx + fw / 2, cy = fy + fh / 2; g.push('<path class="af-cross" d="M' + r1(cx - 14) + ' ' + r1(cy) + ' h28 M' + r1(cx) + ' ' + r1(cy - 14) + ' v28"/><circle class="af-dot" cx="' + r1(cx) + '" cy="' + r1(cy) + '" r="6"/>'); }
     return { svg: g.join(''), box: [fx, fy, fw, fh] };
   }
   /* A depth-cue scene. show: draw what the brain uses. */
@@ -336,7 +339,7 @@
         start = trials.length;
         anim = P.loop(function(dt, t){ var n = Math.min(20, Math.floor(t / 2.4 * 20) + 1); while(trials.length < start + n) trials.push(batch[trials.length - start]); reclass(); draw(); return n < 20; },
           { duration: 2.4, still: function(){ batch.forEach(function(b){ trials.push(b); }); reclass(); draw(); }, onEnd: function(){ anim = null; while(trials.length < start + 20) trials.push(batch[trials.length - start]); reclass(); draw(); words(); say(tally()); var a = $('.sn-act'); if(a) a.textContent = actLabel(); } });
-        anim.start(); var a = $('.sn-act'); if(a) a.textContent = 'Pause';
+        var a = $('.sn-act'); if(a) a.textContent = 'Pause'; anim.start();
       } else if(scene === 'color'){
         if(left != null){ stopStare(); draw(); words(); sync(); return; }
         if(phase === 'white'){ phase = 'shown'; draw(); words(); sync(); say('Most people see ' + afterWords() + '.'); return; }
@@ -357,23 +360,23 @@
         var r = X.sdt(d, c);
         head = 'Criterion ' + wordsC(c) + ': hits ' + pc(r.hit) + ', false alarms ' + pc(r.fa) + '.';
         sub = trials.length ? tally() : 'Press Run 20 trials: half have the signal, half do not.';
-        why = '<ul class="ls-steps"><li><b>Signal detection theory.</b> Whether you report a faint signal depends on how strong it is and on your criterion: your expectations, motivation and what a mistake costs.</li><li><b>The four outcomes.</b> Hit (signal, yes), miss (signal, no), false alarm (no signal, yes), correct rejection (no signal, no).</li><li><b>Move the criterion</b> left (lenient) and both hits and false alarms rise; right (strict) and both fall. Only a stronger signal (curves farther apart) raises hits without more false alarms.</li><li>A radiologist reading scans, a lifeguard watching swimmers, an airport screener: each sets a criterion.</li></ul>';
+        why = '<ul class="ls-steps"><li><span><b>Signal detection theory.</b> Whether you report a faint signal depends on how strong it is and on your criterion: your expectations, motivation and what a mistake costs.</span></li><li><span><b>The four outcomes.</b> Hit (signal, yes), miss (signal, no), false alarm (no signal, yes), correct rejection (no signal, no).</span></li><li><span><b>Move the criterion</b> left (lenient) and both hits and false alarms rise; right (strict) and both fall. Only a stronger signal (curves farther apart) raises hits without more false alarms.</span></li><li><span>A radiologist reading scans, a lifeguard watching swimmers, an airport screener: each sets a criterion.</span></li></ul>';
       } else if(scene === 'weber'){
         var j = X.jnd(I, X.WEBER.brightness.k), noticed = add >= j - 1e-9;
         head = 'Starting brightness ' + I + ': the JND is ' + M.fmt(j, 3) + '. A change of ' + add + ' is ' + (noticed ? 'noticed.' : 'usually not noticed.');
         sub = 'Double the starting brightness in More options: the JND doubles too.';
-        why = '<ul class="ls-steps"><li><b>Absolute threshold</b>: the weakest stimulus you detect half the time.</li><li><b>Difference threshold (just noticeable difference, JND)</b>: the smallest change you notice half the time.</li><li><b>Weber’s law</b>: the JND is a constant fraction of the starting stimulus. For brightness that fraction is about 8% (a textbook value), so a dim light needs a small change and a bright one a large change.</li><li>That is why one candle is obvious in a dark room and invisible in sunlight.</li></ul>';
+        why = '<ul class="ls-steps"><li><span><b>Absolute threshold</b>: the weakest stimulus you detect half the time.</span></li><li><span><b>Difference threshold (just noticeable difference, JND)</b>: the smallest change you notice half the time.</span></li><li><span><b>Weber’s law</b>: the JND is a constant fraction of the starting stimulus. For brightness that fraction is about 8% (a textbook value), so a dim light needs a small change and a bright one a large change.</span></li><li><span>That is why one candle is obvious in a dark room and invisible in sunlight.</span></li></ul>';
       } else if(scene === 'color'){
         if(left != null){ head = 'Keep your eyes on the dot: ' + left + ' s.'; sub = 'Do not move your eyes.'; }
         else if(phase === 'white'){ head = 'Keep looking at the dot. What colors do you see?'; sub = 'The afterimage fades in a few seconds.'; }
         else if(phase === 'shown'){ head = 'Most people see ' + afterWords() + '.'; sub = 'Each color is replaced by its opponent: yellow by blue, green by red, black by white.'; }
         else { head = 'Stare at the dot for ' + secs + ' seconds, then look at the white page.'; sub = 'Press Start staring.'; }
-        why = '<ul class="ls-steps"><li><b>Opponent-process theory.</b> Further along the visual pathway, cells work in opposing pairs: red-green, blue-yellow, black-white. Staring at one color tires its side of the pair.</li><li>On a white page, the rested side wins for a moment, so you see the opponent color: an <b>afterimage</b>.</li><li><b>Trichromatic theory</b> explains the first step: three kinds of cones (most sensitive to red, green and blue light) whose mix gives every color. Both theories are right, at different stages.</li><li><b>Color vision deficiency</b> usually means one kind of cone works differently, so some colors (often red and green) look alike.</li></ul>';
+        why = '<ul class="ls-steps"><li><span><b>Opponent-process theory.</b> Further along the visual pathway, cells work in opposing pairs: red-green, blue-yellow, black-white. Staring at one color tires its side of the pair.</span></li><li><span>On a white page, the rested side wins for a moment, so you see the opponent color: an <b>afterimage</b>.</span></li><li><span><b>Trichromatic theory</b> explains the first step: three kinds of cones (most sensitive to red, green and blue light) whose mix gives every color. Both theories are right, at different stages.</span></li><li><span><b>Color vision deficiency</b> usually means one kind of cone works differently, so some colors (often red and green) look alike.</span></li></ul>';
       } else {
         var D = X.DEPTH[fig], Gs = X.GESTALT[fig];
         head = figName(fig) + ': ' + (D || Gs).look;
         sub = D ? (D.kind === 'monocular' ? 'A monocular cue: it works with one eye, even in a flat picture.' : 'A binocular cue: it needs both eyes.') : 'A Gestalt principle: the brain organizes parts into a whole.';
-        why = '<ul class="ls-steps"><li><b>Bottom-up</b> processing builds a picture from the senses; <b>top-down</b> processing uses knowledge and expectations (schemas, perceptual set) to interpret it.</li><li><b>Depth cues.</b> Binocular: retinal disparity, convergence. Monocular: relative size, interposition, linear perspective, texture gradient, relative clarity.</li><li><b>Gestalt principles</b>: the whole is different from the sum of its parts: closure, figure-ground, proximity, similarity.</li></ul>';
+        why = '<ul class="ls-steps"><li><span><b>Bottom-up</b> processing builds a picture from the senses; <b>top-down</b> processing uses knowledge and expectations (schemas, perceptual set) to interpret it.</span></li><li><span><b>Depth cues.</b> Binocular: retinal disparity, convergence. Monocular: relative size, interposition, linear perspective, texture gradient, relative clarity.</span></li><li><span><b>Gestalt principles</b>: the whole is different from the sum of its parts: closure, figure-ground, proximity, similarity.</span></li></ul>';
       }
       T.explain($('.sn-say'), '<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), why);
       nums();
@@ -399,7 +402,7 @@
     function size(){ var rc = $('.sn-fig').getBoundingClientRect(); return [Math.max(300, Math.min(1500, Math.round(rc.width) || 640)), Math.max(300, Math.min(1000, Math.round(rc.height) || 480))]; }
     function draw(){
       var wh = size(), W = wh[0], H = wh[1], phone = W < 560, fs = phone ? 12.5 : 14, out, label;
-      if(scene === 'detect'){ var a = sdtArt(6, 4, W - 12, H - 8, { d: d, c: c, trials: trials, fs: fs, drag: true }); geo = a; out = a.svg; label = 'Two normal curves: noise only, and signal plus noise ' + d + ' SD to the right. The criterion line is ' + wordsC(c) + '. ' + sdtLine() + (trials.length ? ' ' + tally() : ''); }
+      if(scene === 'detect'){ var a = sdtArt(6, 4, W - 12, H - 8, { d: d, c: c, trials: trials, fs: fs, drag: true, enl: true }); geo = a; out = a.svg; label = 'Two normal curves: noise only, and signal plus noise ' + d + ' SD to the right. The criterion line is ' + wordsC(c) + '. ' + sdtLine() + (trials.length ? ' ' + tally() : ''); }
       else if(scene === 'weber'){ out = weberArt(6, 4, W - 12, H - 8, { I: I, add: add, k: X.WEBER.brightness.k, fs: fs }).svg; label = 'Two patches of light, starting brightness ' + I + ' and comparison ' + (I + add) + '. ' + weberLine() + ' A graph shows the JND rising in a straight line with the starting brightness.'; }
       else if(scene === 'color'){ out = afterArt(6, 4, W - 12, H - 8, { pic: pic, phase: left != null ? 'stare' : phase, fs: fs }).svg; label = phase === 'white' ? 'A white page with a dot. Look for the afterimage.' : phase === 'shown' ? 'The afterimage most people see: ' + afterWords() + '.' : 'A picture to stare at: ' + (pic === 'flag' ? 'a flag with yellow, black and green stripes' : 'a ' + pic + ' square') + ', with a dot in the middle.'; }
       else { var isD = !!X.DEPTH[fig]; out = isD ? depthArt(6, 4, W - 12, H - 8, fig, show, fs) : gestaltArt(6, 4, W - 12, H - 8, fig, show, fs); label = figName(fig) + '. ' + figLook() + (show ? ' The cue is drawn.' : ''); }
