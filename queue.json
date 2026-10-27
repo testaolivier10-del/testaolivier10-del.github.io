@@ -588,11 +588,11 @@
   },
   {
    "id": "w1025-01-power-lift",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-26",
    "date": "2026-11-01",
-   "buffer": "manual",
-   "yt_buffer": "manual",
+   "buffer": null,
+   "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -605,24 +605,24 @@
    "yt_title": "The EMT lifting mistake that wrecks backs",
    "yt_description": "Heavier jump bag next time: pull it in closer or lift faster? Bending at the waist vs the EMT power lift (feet shoulder width apart, bag close, back locked, squat), and why your lower back works like a lever. EMT traps #1.\n\nFree NREMT notes and practice: https://levlprep.com/nremt/notes/lifting-and-moving-patients.html?ref=yt-power-lift\n\n#NREMT #EMT",
    "pin_question": "What's the heaviest thing you've had to lift on a call?",
-   "manual": true,
-   "posted_tt": false,
-   "posted_yt": false,
+   "manual": false,
    "handoff_sent": false,
    "poll_reminded": false,
    "series": {
     "name": "EMT traps",
     "n": 1
    },
-   "review_blob": "6a910b06300277941577f2f99e385e0b7d9d3285"
+   "review_blob": "6a910b06300277941577f2f99e385e0b7d9d3285",
+   "approved_on": "2026-10-27",
+   "approved_blob": "6a910b06300277941577f2f99e385e0b7d9d3285"
   },
   {
    "id": "w1025-02-free-throw",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-26",
    "date": "2026-11-02",
-   "buffer": "manual",
-   "yt_buffer": "manual",
+   "buffer": null,
+   "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -635,20 +635,20 @@
    "yt_title": "Five misses in a row. Is the next one due?",
    "yt_description": "Independent shots, 5 makes in a row: is she on fire, or still a 70% shooter? The gambler's fallacy vs the law of large numbers (AP Statistics, probability and simulation), shown with free throws and a live running percentage over 300 shots.\n\nFree AP Statistics notes and practice: https://levlprep.com/statistics/notes/simulation.html?ref=yt-free-throw-due\n\n#APStatistics #statistics",
    "pin_question": "What's something you were sure was due to happen?",
-   "manual": true,
-   "posted_tt": false,
-   "posted_yt": false,
+   "manual": false,
    "handoff_sent": false,
    "poll_reminded": false,
-   "review_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a"
+   "review_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a",
+   "approved_on": "2026-10-27",
+   "approved_blob": "81fec0fd0e68f4aec2bb56701ec2fe05c8172a5a"
   },
   {
    "id": "w1025-03-dead-zone",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-26",
    "date": "2026-11-03",
-   "buffer": "manual",
-   "yt_buffer": "manual",
+   "buffer": null,
+   "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -661,20 +661,20 @@
    "yt_title": "He fertilized his lawn before a storm. The lake paid",
    "yt_description": "Lawn mowed right down to the water, or a strip of wild plants: which one saves the fish? How nitrogen and phosphorus runoff feeds an algal bloom, why the oxygen crashes when the algae die, and what a plant buffer strip does (AP Environmental Science, eutrophication).\n\nFree AP Environmental Science notes and practice: https://levlprep.com/environmental-science/notes/eutrophication.html?ref=yt-dead-zone\n\n#APES #environmentalscience",
    "pin_question": "Is there a lake or pond near you that turns green in summer?",
-   "manual": true,
-   "posted_tt": false,
-   "posted_yt": false,
+   "manual": false,
    "handoff_sent": false,
    "poll_reminded": false,
-   "review_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd"
+   "review_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd",
+   "approved_on": "2026-10-27",
+   "approved_blob": "64d9c3a4f9ebf9909317ea0dcd3a840098d933bd"
   },
   {
    "id": "w1025-04-head-rush",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-10-26",
    "date": "2026-11-04",
-   "buffer": "manual",
-   "yt_buffer": "manual",
+   "buffer": null,
+   "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
    "thumb_v2": true,
@@ -701,7 +701,9 @@
     ],
     "place": "upper middle, from the first second"
    },
-   "review_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d"
+   "review_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d",
+   "approved_on": "2026-10-27",
+   "approved_blob": "dec372a16c538bdc8e5da6f6a713c8bb363d457d"
   }
  ]
 }
