@@ -46,3 +46,7 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
   (the format was first examined in May 2025): now says a practice form is not the real exam and the raw-to-1-5
   conversion is unpublished. The save prompt said "74 missed questions queued" while the page said 54 (it
   counted exam-only questions, which never enter the queue): six AP® courses now count queued misses only.
+- MathML text lost its edge spaces in Chromium ("68% within1SD, 95% within2" on the statistics page, and any
+  `\text{ ... }` with spaces on any course): `mtext{white-space:pre}` in shared `theme.css`.
+- Checked, no change: tool full screen (stats lab, 390 and 1440 dark; the "turn your phone sideways" toast is
+  shared and leaves after 3 s), unit test page, exam results breakdowns.

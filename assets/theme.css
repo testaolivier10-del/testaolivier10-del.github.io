@@ -1961,3 +1961,6 @@ footer a:hover{color:var(--ink);}
 .faq-item > :not(summary){margin-top:0;}
 .faq-item > :last-child{margin-bottom:16px;}
 @media (prefers-reduced-motion:reduce){.faq-item > summary::after{transition:none;}}
+
+/* MathML: Chromium trims the spaces at the ends of an <mtext> ("68% within1SD"), so keep them. */
+mtext{white-space:pre;}
