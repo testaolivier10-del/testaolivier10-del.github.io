@@ -21,7 +21,8 @@ three builds. Read this before continuing any of it.
 Harness: loads every tool at 390 px and 1280 px with Premium unlocked locally, records console errors, failed
 requests and sideways scroll, and screenshots before and after interacting. Mechanical result: every tool page
 loads clean; `nremt/sound-trainer.html` and `bio/tools/tree-reading.html` scroll sideways at 390 px.
-Per-tool ratings and fixes: `docs/tool-audit-2026-10.md`.
+Per-tool ratings and fixes: `docs/tool-audit-2026-10.md`. Fixing those findings is not part of the three builds;
+it waits for the owner's go-ahead.
 
 ## Builds
 
