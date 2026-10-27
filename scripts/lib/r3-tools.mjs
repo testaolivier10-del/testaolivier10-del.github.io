@@ -133,6 +133,59 @@ export function apToolsHubMain(o) {
   });
 }
 
+/* ---- the AP® course pages that share the tools step's boards: free-response practice (list and each question),
+   the cram kit and the teachers page (boards R10-AP-FRQList, R10-AP-FRQ, R10-AP-Cram, R10-AP-Teachers). The builder
+   makes the page as before; this turns its <main> into a round 3 page: the short cover band in place of the old
+   breadcrumb and hero (the share bar moves into the band), and the page's own content below it. */
+function heroParts(inner) {
+  const crumb = /\s*<nav class="[^"]*crumb[^"]*"[^>]*aria-label="Breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(inner);
+  let rest = crumb ? inner.replace(crumb[0], '') : inner;
+  const hero = /\s*<header class="(?:hero|page-head)[^"]*">([\s\S]*?)<\/header>/.exec(rest);
+  if (hero) rest = rest.replace(hero[0], '');
+  const h = hero ? hero[1] : '';
+  const share = /<div class="[a-z]+-share[^"]*"[^>]*role="group"[\s\S]*?<\/div>/.exec(h);
+  const pick = (re) => { const m = re.exec(h); return m ? m[1].trim() : ''; };
+  return { rest, crumbs: crumb ? crumb[1].trim() : '', share: share ? share[0] : '', h1: pick(/<h1[^>]*>([\s\S]*?)<\/h1>/), lede: pick(/<p class="lede">([\s\S]*?)<\/p>/) };
+}
+export function r3PageMain(page, o) {
+  const a = page.indexOf('<main id="main" class="xshell');
+  if (a < 0) throw new Error('r3-tools: no xshell <main> in the page');
+  const te = page.indexOf('>', a), b = page.indexOf('</main>', te);
+  const cls = (/class="xshell ?([^"]*)"/.exec(page.slice(a, te + 1)) || [, ''])[1];
+  const p = heroParts(page.slice(te + 1, b));
+  const band = bandShort({
+    kicker: `${o.kicker}${o.beta ? ' <span class="tag beta">Beta</span>' : ''}`, note: o.note || '',
+    h1: o.h1 || (o.plainH1 ? p.h1 : twoTone(p.h1)), hand: o.hand, lede: o.lede ?? p.lede, cta: o.cta, cta2: o.cta2,
+    art: `<img src="${o.up}assets/covers/art/${o.key}.svg" alt="" width="640" height="400" decoding="async">`,
+  }).replace('<p class="issue">', p.crumbs ? `<nav class="crumbs" aria-label="Breadcrumb">${p.crumbs}</nav>\n<p class="issue">` : '<p class="issue">')
+    .replace('</div>\n</div><div class="art"', `${p.share ? `\n<div class="r3-share">${p.share}</div>` : ''}\n</div>\n</div><div class="art"`);
+  const main = `<main id="main" class="r3 r3-page ${o.pageClass || ''} ${cls}" data-cover="${o.key}">\n${band}\n<div class="hwrap r3-page-body">${p.rest}</div>\n</main>`;
+  let out = page.slice(0, a) + main + page.slice(b + 7);
+  if (!out.includes('assets/course/r3-tools.css')) out = out.replace('</head>', `${r3ToolsCss(o.up)}\n</head>`);
+  return out;
+}
+/* ctx: { key, courseHtml, frqFirst (href or ''), frqCount } */
+export function apPageR3(slug, page, ctx) {
+  const k = ctx.key, C = COURSE_SHORT[k];
+  if (slug === 'frq') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-frqlist', kicker: `${C} &middot; Free response`,
+    h1: 'Free-response <span>practice.</span>', hand: 'every part scored point by point',
+    cta: ctx.frqFirst ? { href: ctx.frqFirst, label: 'Start with the first question' } : null });
+  if (slug === 'cram') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-cram', kicker: `${C} &middot; Cram kit`,
+    h1: 'Counted back from <span>your exam date.</span>', hand: 'study days, practice exams and rest days',
+    cta: { href: '#app', label: 'Set your exam date' }, cta2: { href: 'learn.html', label: 'Read the free notes for every topic' } });
+  if (slug === 'teachers') return r3PageMain(page, { key: k, up: '../', beta: true, pageClass: 'r3-teachers', kicker: `${C} &middot; For teachers`,
+    h1: 'Assign it <span>with a link.</span>', hand: 'no login for students',
+    cta: { href: 'mailto:hello@levlprep.com', label: 'Email hello@levlprep.com' }, cta2: { href: '#h-align', label: 'Jump to the alignment' } });
+  return page;
+}
+export function apFrqItemR3(page, ctx) {
+  const k = ctx.key, C = COURSE_SHORT[k];
+  const unit = (/<div class="eyebrow">Free response &middot; ([^<]*?) ?<span/.exec(page) || [, ''])[1].trim();
+  return r3PageMain(page, { key: k, up: '../../', beta: true, pageClass: 'r3-frq', plainH1: true, kicker: `${C} &middot; Free response${unit ? ` &middot; ${unit}` : ''}`,
+    hand: 'write it first, then score yourself point by point',
+    cta: { href: '#app', label: 'Start writing' }, cta2: { href: '../frq.html', label: `All ${ctx.frqCount} questions` } });
+}
+
 /* The opener of a tool page. o: { key, up ('../../'), slug, title?, hand, lede, back: {href,label}, crumbs } */
 export function toolBand(o) {
   const list = toolCovers(o.key);

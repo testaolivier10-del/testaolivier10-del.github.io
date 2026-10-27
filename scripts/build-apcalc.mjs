@@ -33,7 +33,7 @@
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
-import { apToolsHubMain, swapMain, toolBand } from './lib/r3-tools.mjs';
+import { apToolsHubMain, swapMain, toolBand, apPageR3, apFrqItemR3 } from './lib/r3-tools.mjs';
 import { apHomeMain } from './lib/course-home.mjs';
 import { MCQ_PARTS, FRQ_PARTS, FRQ_TOTAL } from './lib/apcalc-exams.mjs';
 import { join, dirname } from 'node:path';
@@ -1091,9 +1091,11 @@ window.ApCalcCurriculum = ${JSON.stringify(data)};
   put('glossary.html', glossaryPage());
   for (const ch of map.chapters.filter(chapterBuilt)) { put(`units/${ch.id}.html`, unitPage(ch.id)); put(`unit-sheets/${ch.id}.html`, unitSheet(ch.id)); }
   for (const t of built) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
-  for (const a of C.pages.apps || []) put(`${a.slug}.html`, a.static ? teachersPage(a) : appShell(a));
+  // Round 3 (scripts/lib/r3-tools.mjs): free-response practice, the cram kit and the teachers page open with the short cover band.
+  const r3Ctx = { key: 'apcalc', frqFirst: frqs.length ? `frq/${frqs[0].id}.html` : '', frqCount: frqs.length };
+  for (const a of C.pages.apps || []) put(`${a.slug}.html`, apPageR3(a.slug, a.static ? teachersPage(a) : appShell(a), r3Ctx));
   put('assets/frq/index.json', frqIndex());
-  for (const f of frqs) { put(`assets/frq/${f.id}.json`, JSON.stringify(frqJson(f))); put(`frq/${f.id}.html`, frqPage(f)); }
+  for (const f of frqs) { put(`assets/frq/${f.id}.json`, JSON.stringify(frqJson(f))); put(`frq/${f.id}.html`, apFrqItemR3(frqPage(f), r3Ctx)); }
   put('assets/summaries.json', JSON.stringify(Object.fromEntries(built.map(t => [t.id, text(C.lessons[t.id].summary)]))));
   for (const t of (C.pages.tools || []).filter(toolLive)) { put(`tools/${t.slug}.html`, toolShell(t)); put(`assets/tool-data/${t.slug}.json`, JSON.stringify(toolData(t))); }
   put('assets/calc-curriculum.js', curriculumJs());
