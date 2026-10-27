@@ -33,8 +33,9 @@ Previous and Continue, the part in the URL hash, the last step remembered per le
 step's questions are answered. Finishing every check question marks the lesson done (`nremt_lessons_v1` in
 localStorage) and awards 40 XP the first time (`HubProgress.award('nremt', 40)`), the same as A&P.
 
-Answer options are shuffled at build time with a seed from the question text, so the right answer's position has no
-pattern and a rebuild never moves it.
+Each lesson's right answers are spread across A to D at build time (the slots dealt A, B, C, D in turn, then put in an
+order seeded by the lesson; the wrong options seeded by the question), so the answer's position has no pattern and a
+rebuild never moves it.
 
 ## Engine
 

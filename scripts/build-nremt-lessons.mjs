@@ -9,8 +9,8 @@
    pages (scripts/build-nremt-notes-pages.mjs) use to link each section to its
    lesson.
 
-   Answer options are shuffled here with a seed taken from the question, so the
-   right answer's position carries no pattern and a rebuild never moves it.
+   Each lesson's right answers are spread across A to D with a seed taken from
+   the lesson, so their position carries no pattern and a rebuild never moves them.
 
      node scripts/build-nremt-lessons.mjs           write
      node scripts/build-nremt-lessons.mjs --check   exit 1 if anything is stale (CI) */
@@ -51,15 +51,25 @@ function seeded(str) {
   for (let i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
   return () => { h = Math.imul(h ^ (h >>> 16), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; };
 }
-function shuffled(q) {
+/* Each lesson spreads its right answers across A to D: the slots are dealt in turn (A, B, C, D, A...) and then
+   put in an order seeded by the lesson, so no slot is favoured and a rebuild never moves an answer. The wrong
+   options fill the other slots in an order seeded by the question. */
+function slotsFor(L) {
+  const slots = L.check.map((_, i) => i % 4);
+  const rnd = seeded(`slots:${L.id}`);
+  for (let i = slots.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [slots[i], slots[j]] = [slots[j], slots[i]]; }
+  return slots;
+}
+function shuffled(q, slot) {
   const rnd = seeded(q.q);
-  const idx = q.options.map((_, i) => i);
-  for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
-  return { options: idx.map((i) => q.options[i]), correct: idx.indexOf(q.correct) };
+  const wrong = q.options.map((_, i) => i).filter((i) => i !== q.correct);
+  for (let i = wrong.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [wrong[i], wrong[j]] = [wrong[j], wrong[i]]; }
+  const idx = [...wrong.slice(0, slot), q.correct, ...wrong.slice(slot)];
+  return { options: idx.map((i) => q.options[i]), correct: slot };
 }
 
-function questionHtml(L, q, n) {
-  const s = shuffled(q);
+function questionHtml(L, q, n, slot) {
+  const s = shuffled(q, slot);
   const qid = `${L.id}-${n}`;
   return `<div class="nl-q" data-qid="${qid}" data-correct="${s.correct}">
       <p class="nl-q-stem"><span class="nl-q-n">${n}</span>${esc(q.q)}</p>
@@ -85,7 +95,7 @@ function lessonPage(L, i) {
     { id: 'how', nav: 'What you find, what you do', h: 'What you find, and what you do', html: `<ol class="nl-chain">${L.steps.map((s) => `<li><span class="nl-find"><b>You find</b>${esc(s.find)}</span><span class="nl-act"><b>You do</b>${esc(s.act)}</span></li>`).join('')}</ol>` },
     { id: 'ideas', nav: 'Key ideas', h: 'Key ideas', html: `<ul class="nl-ideas">${L.ideas.map((x) => `<li>${x}</li>`).join('')}</ul>` },
     { id: 'mistake', nav: 'A common mistake', h: 'A common mistake', html: `<p class="nl-wrong"><b>The wrong idea:</b> ${esc(L.misconception.wrong)}</p><p class="nl-right"><b>What is actually true:</b> ${esc(L.misconception.right)}</p>` },
-    { id: 'check', nav: 'Check yourself', h: 'Check yourself', html: `<div class="nl-qs">${L.check.map((q, n) => questionHtml(L, q, n + 1)).join('\n    ')}</div><noscript><p>The questions need JavaScript. Everything this lesson teaches is in the <a href="${notesHref}">chapter notes</a>.</p></noscript>` },
+    { id: 'check', nav: 'Check yourself', h: 'Check yourself', html: `<div class="nl-qs">${(() => { const slots = slotsFor(L); return L.check.map((q, n) => questionHtml(L, q, n + 1, slots[n])).join('\n    '); })()}</div><noscript><p>The questions need JavaScript. Everything this lesson teaches is in the <a href="${notesHref}">chapter notes</a>.</p></noscript>` },
     { id: 'summary', nav: 'Summary', h: 'Summary', html: L.summary },
     { id: 'next', nav: 'What comes next', h: 'What comes next', html: next ? `<p><a class="nl-next" href="${next.id}.html">${esc(next.title)} &rarr;</a></p>` : `<p>That is the last lesson built so far. <a href="../study-notes.html">Back to the textbook</a>.</p>` },
   ];
