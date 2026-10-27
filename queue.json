@@ -455,9 +455,9 @@
    "buffer": "6ad3ecaf938409f1d0a3beb9",
    "yt_buffer": "6ad3ecbf938409f1d0a3bf9a",
    "youtube_id": "6TiRP0hL4BQ",
-   "shorts_thumb": null,
+   "shorts_thumb": true,
    "thumbnail_set": null,
-   "related_set": false
+   "related_set": true
   },
   {
    "id": "w1014-03-caffeine-block",
