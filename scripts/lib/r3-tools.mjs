@@ -72,17 +72,18 @@ export function toolCard(t) {
 /* The hub's <main>. o: {
      key, up ('../'), course (html name for crumbs), crumbs, kicker, h1 (html), hand, lede, cta, cta2,
      featured: { slug, href, name, kick, hand, desc, cta, credit (html) } | null,
-     groups: [{ h (html), p, kick, cards: [toolCard input] }], note (html), mountClass, mountAttrs, after (html) } */
+     featHtml (html, replaces featured), before (html, first inside #app), status (cards get a .cx-tool-status),
+     groups: [{ h (html), p, kick, big, cards: [toolCard input] }], note (html), mountClass, mountAttrs, after (html) } */
 export function toolsHubMain(o) {
   const up = o.up ?? '../';
-  const total = o.groups.reduce((n, g) => n + g.cards.length, 0) + (o.featured ? 1 : 0);
+  const total = o.groups.reduce((n, g) => n + g.cards.length, 0) + (o.featured || o.featHtml ? 1 : 0);
   const band = bandShort({
     crumbs: o.crumbs, kicker: o.kicker || `${COURSE_SHORT[o.key]} &middot; Tools`, note: `${total} tool${total === 1 ? '' : 's'}`,
     h1: o.h1, hand: o.hand, lede: o.lede, cta: o.cta, cta2: o.cta2,
     art: `<img src="${up}assets/covers/art/${o.key}.svg" alt="" width="640" height="400" decoding="async">`,
   });
   const f = o.featured;
-  const feat = f ? `<p class="kicker">${f.kick || 'Featured tool'} <i></i></p>
+  const feat = o.featHtml ? o.featHtml : f ? `<p class="kicker">${f.kick || 'Featured tool'} <i></i></p>
 <div class="feat r3-feat"><div><h2 class="cname">${esc(f.name)}</h2>${f.hand ? `<p class="hand">${f.hand}</p>` : ''}<p class="cdesc">${f.desc}</p><a class="btn-gold" href="${f.href}">${f.cta} &rarr;</a>${f.credit ? `<p class="credit">${f.credit}</p>` : ''}</div><a class="fig tcfig" href="${f.href}" tabindex="-1" aria-hidden="true"><img src="${coverSrc(o.key, f.slug, up)}" alt="" width="640" height="320" decoding="async"></a></div>` : '';
   const groups = o.groups.map((g) => {
     const cards = g.cards.map((c) => toolCard({ key: o.key, up, status: o.status, ...c })).join('');
@@ -93,7 +94,8 @@ export function toolsHubMain(o) {
   }).join('\n');
   return `<main id="main" class="r3 r3-tools" data-cover="${o.key}">
 ${band}
-<div class="hwrap r3-tools-body"><div id="app" class="${o.mountClass || ''}" data-slug="tools"${o.mountAttrs || ''}>
+<div class="hwrap r3-tools-body"><div id="${o.mountId || 'app'}" class="${o.mountClass || ''}" data-slug="tools"${o.mountAttrs || ''}>
+${o.before || ''}
 ${feat}
 ${groups}
 ${o.note ? `<p class="r3-tools-note">${o.note}</p>` : ''}

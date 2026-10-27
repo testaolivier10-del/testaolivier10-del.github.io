@@ -78,3 +78,13 @@
 .r3 .band .crumbs a:hover{color:#fff;text-decoration:underline}
 .r3 .band .crumbs span[aria-hidden]{opacity:.55}
 .r3 .band .crumbs [aria-current]{color:#fff}
+
+/* The band names the tool and links back, so the page's older opener (its hero, breadcrumb and tool top bar) is
+   not shown twice; a Premium lock or a no-script note under it still shows. */
+body:has(> .r3-toolband) main > .hero,
+body:has(> .r3-toolband) [data-crumb],
+body:has(> .r3-toolband) main > .site-crumb,
+body:has(> .r3-toolband) main > nav[aria-label="Breadcrumb"]{display:none}
+body:has(> .r3-toolband) .tool-top .tool-title{display:none}
+/* the hub breadcrumb lives in its band */
+body:has(main.r3-tools) [data-crumb]{display:none}

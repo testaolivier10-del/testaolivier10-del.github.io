@@ -14,6 +14,7 @@
 import { Hub } from './lib/hub.mjs';
 import { courseBanner } from './lib/covers.mjs';
 import { r3HomeMain, parseSample } from './lib/r3-home.mjs';
+import { toolsHubMain, swapMain, toolBand, coverSrc } from './lib/r3-tools.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
@@ -810,7 +811,8 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 <body data-app="${entry.slug}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell anp-app">
+${isTool ? `${toolBand({ key: 'anp', up: '../../', slug: entry.slug, title: entry.name, hand: esc(entry.lede || entry.tag || entry.blurb), lede: esc(entry.desc), backHref: '../tools.html',
+  crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: esc(COURSE_NAME), href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(entry.name) }] })}\n` : ''}<main id="main" class="xshell anp-app">
   ${study || (HUB_PAGES.has(entry.slug) && !isTool) ? crumbNav(crumbItems, depth).replace('class="anp-crumb"', 'class="anp-crumb cx-crumb"') : crumbNav(crumbItems, depth)}
   ${study || (HUB_PAGES.has(entry.slug) && !isTool)
     ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(study && hero ? hero.h1 : h1)}</h1><p class="lede">${hero ? hero.ledeHtml : esc(lede)}</p></header>`
@@ -957,6 +959,44 @@ function toolsHubMount() {
   `;
 }
 
+/* The tools hub, round 3 (scripts/lib/r3-tools.mjs, board R10-Tools): the cover band, the lab practical as the
+   featured tool (its cover, modes, counts and status), then every other tool led by its own cover. The hooks
+   apps/tools-hub.js fills are kept: .anp-hub-filter, [data-tool] with data-n / data-ch / data-unit / data-chq,
+   .cx-tool-count, .cx-tool-status, .cx-tool-top and the featured .cx-feat-kick. */
+function toolsHubR3() {
+  const tools = PAGES.tools;
+  const lab = tools.find(t => t.slug === 'lab-practical');
+  const labData = hubToolCounts('lab-practical');
+  const figN = Object.keys(labData.figures).length;
+  const others = tools.filter(t => t.slug !== 'lab-practical');
+  const featHtml = `<p class="kicker">Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])} <i></i></p>
+<section class="feat r3-feat" aria-labelledby="cx-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}><div>
+  <p class="cx-feat-kick r3-feat-kick">${esc(lab.tag || '')}</p>
+  <h2 class="cname" id="cx-feat-h">${esc(lab.name)}</h2>
+  <p class="cdesc">${esc(lab.blurb)} Every structure tells you what it does and which lesson teaches it.</p>
+  <ul class="anp-hub-modes r3-modes" aria-label="Modes">${LAB_MODES.map(m => `<li><a class="anp-hub-mode${m.key === 'quiz' ? ' is-on' : ''}" href="tools/lab-practical.html#${m.key}" data-hash="${m.key}"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${m.icon}</svg>${esc(m.label)}</b><span>${esc(m.blurb)}</span></a></li>`).join('')}</ul>
+  <p class="r3-feat-row"><a class="btn-gold" href="tools/lab-practical.html">Start the lab practical &rarr;</a> <span class="cx-feat-stats"><b>${figN}</b> figures &middot; <b>${labData.sets.length}</b> sets &middot; <span class="cx-tool-count"><b>${labData.n}</b> stations</span></span></p>
+  <p class="cx-tool-status" aria-live="polite"></p>
+</div><a class="fig tcfig" href="tools/lab-practical.html" tabindex="-1" aria-hidden="true"><img src="${coverSrc('anp', 'lab-practical', '../')}" alt="" width="640" height="320" decoding="async"></a></section>`;
+  return toolsHubMain({
+    key: 'anp', up: '../', status: true, mountClass: 'anp-app-mount',
+    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: esc(COURSE_NAME), href: 'index.html' }, { name: 'Tools' }],
+    h1: 'Start at <span>the lab bench.</span>', hand: 'then work the physiology',
+    lede: `${numWord(tools.length)} tools. Name structures on real figures, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
+    cta: { href: 'tools/lab-practical.html', label: 'Start the lab practical' }, cta2: { href: 'search.html', label: 'Search everything' },
+    before: '<div class="anp-hub-filter" hidden></div>', featHtml,
+    groups: [{ big: true, h: `${numWord(others.length)} more ways <span>to practice</span>`, p: 'Physiology, numbers and words.', label: 'More tools',
+      cards: others.map(t => {
+        const c = hubToolCounts(t.slug);
+        const [pl, sg] = HUB_ITEMS[t.slug];
+        return { slug: t.slug, href: `tools/${t.slug}.html`, name: t.name, desc: t.tag || t.blurb, free: !t.premium,
+          attrs: ` data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}${t.premium ? ' data-premium="1"' : ''}`,
+          foot: `<span class="cx-tool-count"><b>${c.n}</b> ${c.n === 1 ? sg : pl}</span> &middot; ${esc(HUB_SKILL[t.slug] || '')}` };
+      }) }],
+    note: 'Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.',
+  });
+}
+
 // Per-app extras for appShell: a hero shaped for the page and, for the tools
 // hub, the static page body. Other app pages keep the default hero.
 const APP_EXTRAS = {
@@ -970,7 +1010,10 @@ const APP_EXTRAS = {
   }),
 };
 
-for (const a of PAGES.apps) put(`${a.slug}.html`, appShell(a, { path: `${a.slug}.html`, depth: '', h1: a.h1, eyebrow: COURSE_NAME, lede: a.desc, section: a.section, ...(APP_EXTRAS[a.slug] ? APP_EXTRAS[a.slug]() : {}) }));
+for (const a of PAGES.apps) {
+  const html = appShell(a, { path: `${a.slug}.html`, depth: '', h1: a.h1, eyebrow: COURSE_NAME, lede: a.desc, section: a.section, ...(APP_EXTRAS[a.slug] ? APP_EXTRAS[a.slug]() : {}) });
+  put(`${a.slug}.html`, a.slug === 'tools' ? swapMain(html, toolsHubR3(), '../') : html);
+}
 // Old URLs of renamed pages: a stub that forwards the query string and hash.
 // mastery.html became dashboard.html when every course's progress tab became
 // "Dashboard".
