@@ -373,15 +373,15 @@
     var pw = phone ? W - 16 : W * 0.34, gx = phone ? 44 : pw + 64, gy = phone ? Math.round(H * 0.46) : 24, gw = W - gx - 16, gh = phone ? H - gy - 40 : H - gy - 48;
     var sceneH = phone ? gy - 30 : H - 16;
     g.push(lifeScene(A, 8, 8, pw, sceneH, phone));
-    var sx = function(v){ return gx + (v - 20) / 70 * gw; }, sy = function(v){ return gy + gh - (v - 40) / 100 * gh; };
+    var sx = function(v){ return gx + (v - 20) / 70 * gw; }, sy = function(v){ return gy + gh - (v - 30) / 110 * gh; };
     for(var t = 20; t <= 90; t += 10) g.push('<line class="dv-grid" x1="' + sx(t) + '" x2="' + sx(t) + '" y1="' + gy + '" y2="' + (gy + gh) + '"/><text class="dv-tick" x="' + sx(t) + '" y="' + (gy + gh + 15) + '" text-anchor="middle">' + t + '</text>');
     var ptsC = [], ptsF = [];
     for(var k = 20; k <= 90; k += 1){ ptsC.push(sx(k).toFixed(1) + ',' + sy(D.crystallized(k)).toFixed(1)); ptsF.push(sx(k).toFixed(1) + ',' + sy(D.fluid(k)).toFixed(1)); }
     g.push('<polyline class="dv-cry" points="' + ptsC.join(' ') + '"/><polyline class="dv-flu" points="' + ptsF.join(' ') + '"/>');
     g.push('<line class="dv-axis" x1="' + gx + '" x2="' + (gx + gw) + '" y1="' + (gy + gh) + '" y2="' + (gy + gh) + '"/><line class="dv-axis" x1="' + gx + '" x2="' + gx + '" y1="' + gy + '" y2="' + (gy + gh) + '"/>');
-    g.push('<text class="dv-tick" x="' + (gx + gw) + '" y="' + (gy + gh + 30) + '" text-anchor="end">Age (years)</text>');
-    g.push('<text class="dv-lab dv-c1-t" x="' + (sx(52)) + '" y="' + (sy(D.crystallized(52)) - 10) + '" text-anchor="middle">Crystallized: knowledge, words</text>');
-    g.push('<text class="dv-lab dv-c2-t" x="' + (sx(30)) + '" y="' + (sy(D.fluid(30)) + (phone ? 24 : 26)) + '" text-anchor="start">Fluid: new problems, speed</text>');
+    g.push('<text class="dv-tick" x="' + gx + '" y="' + (gy + gh + 30) + '">Age (years)</text>');
+    g.push('<text class="dv-lab dv-c1-t" x="' + (sx(22)) + '" y="' + (sy(D.crystallized(36)) - 14) + '" text-anchor="start">Crystallized: knowledge, words</text>');
+    g.push('<text class="dv-lab dv-c2-t" x="' + (sx(22)) + '" y="' + (sy(D.fluid(30)) + (phone ? 24 : 28)) + '" text-anchor="start">Fluid: new problems, speed</text>');
     g.push('<line class="dv-mark" x1="' + sx(A) + '" x2="' + sx(A) + '" y1="' + gy + '" y2="' + (gy + gh) + '"/><circle class="dv-pt1" cx="' + sx(A) + '" cy="' + sy(D.crystallized(A)) + '" r="6"/><circle class="dv-pt2" cx="' + sx(A) + '" cy="' + sy(D.fluid(A)) + '" r="6"/>');
     g.push('<text class="dv-note" x="' + gx + '" y="' + (gy - 8) + '">A sketch of the usual pattern, not data. People vary a lot.</text>');
     return g.join('');
