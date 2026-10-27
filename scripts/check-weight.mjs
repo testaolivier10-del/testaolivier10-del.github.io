@@ -180,7 +180,9 @@ const SHELL_BUDGETS = [
   // 26 -> 35 (redesign round 3, docs/site-redesign.md): r3.css, the shared round 3 system (course homes, B1), and
   // r3-inner.css and r3-db.js (exams, progress, exam day, unit tests, B3), r3-tools.css (tools hubs, tool page bands, free-response, cram and teachers pages, B5). Each loads only on the
   // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
-  ['assets/course', 35],
+  /* 35 -> 36 for the fixes after round 3 went live: tap-to-open questions, phone card stacking, the textbook
+     Contents panel and the progress page column fit. Measured 35.2 KB. */
+  ['assets/course', 36],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -477,7 +479,7 @@ const BUDGETS = [
   // is an 18 KB shell and the chapters are 144 KB of JSON fetched alongside
   // it, budgeted under DATA_BUDGETS below. First paint no longer waits on
   // thirty-nine chapters nobody asked for.
-  ['nremt/study-notes.html', 20],
+  ['nremt/study-notes.html', 21], // +1 (2026-10-26): inline JSON for the chapter video cards (#lpv-reader, docs/video-lessons.md)
   ['nremt/glossary.html', 10],
 
   // Added when the scenario set went from eight cases to twenty-five and the
@@ -499,7 +501,7 @@ const BUDGETS = [
   // again for any reason OTHER than new sections, find out why first.
   // Raised to 5 KB when the self-study pass added four sections (energy
   // diagrams, carbocations, cis/trans & E/Z, prochirality): 121 lines now.
-  ['ochem/learn.html', 5],
+  ['ochem/learn.html', 7], // +2 (2026-10-26): inline JSON for two topic video cards (#lpv-reader, docs/video-lessons.md)
 
   // One textbook section, standing in for the other 120. They became real
   // pages when the ochem prose was made readable without JavaScript

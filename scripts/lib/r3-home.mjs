@@ -16,6 +16,7 @@ import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { premiumData, foundingPrice, money, longDate } from './premium-data.mjs';
+import { loadVideos, displayTitle, clock, THUMB_DIR, THUMB_WIDTHS } from './videos.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'course-homes.json'), 'utf8'));
@@ -83,7 +84,7 @@ export function r3HomeMain(key, ctx) {
   const rows = [];
   const kind = d.map_kind;
   if (kind === 'domains') {
-    (ctx.doms || d.doms).forEach(([n, desc, w, q, bar], i) => rows.push({ n: String(i + 1).padStart(2, '0'), b: n, small: `${desc} ${q} questions`, right: `${w}<small>of the exam</small><span class="wbar"><i style="width:${bar}%"></i></span>` }));
+    (ctx.doms || d.doms).forEach(([n, desc, w, q, bar], i) => rows.push({ n: String(i + 1).padStart(2, '0'), b: n, small: `${desc} ${q} questions`, right: `${w}<small>of the exam</small>` }));
   } else if (kind === 'path') {
     const p = d.path;
     for (let g = 0; g < p.length; g += 5) {
@@ -110,7 +111,7 @@ export function r3HomeMain(key, ctx) {
       else {
         const hi = +w.replace('%', '').split(' to ')[1];
         rows.push({ n: num.length > 1 ? num : String(+num).padStart(2, '0'), b: t, small: meta,
-          right: `${w}${free ? '<small class="free">lessons free</small>' : '<small>of the exam</small>'}<span class="wbar"><i style="width:${Math.min(100, hi * 4)}%"></i></span>` });
+          right: `${w}${free ? '<small class="free">lessons free</small>' : '<small>of the exam</small>'}` });
       }
     }
   }
@@ -200,9 +201,14 @@ export function r3HomeMain(key, ctx) {
     return `<a href="${href}">${img}<span class="cmeta"><span class="cname">${nm}</span>${tag}</span><span class="cdesc">${desc}</span></a>`;
   };
   const th = Array.isArray(d.tools_h) ? `${d.tools_h[0]} ${d.tools_h[1]}` : (d.trainh || d.tools_h).replace(/\.$/, '');
-  const also = (d.tools_also || []).map(([h, xs]) => `<p class="also-line"><b>${h}:</b> ${xs.map((x) => { const t = findTool(key, x, tools); return t ? `<a href="${t.href}">${x}</a>` : x; }).join(', ')}</p>`).join('');
+  const also = ''; void (d.tools_also || []).map(([h, xs]) => `<p class="also-line"><b>${h}:</b> ${xs.map((x) => { const t = findTool(key, x, tools); return t ? `<a href="${t.href}">${x}</a>` : x; }).join(', ')}</p>`).join('');
   const credit = d.tool_credit ? `<p class="credit">${d.tool_credit.replace(/<a href="#">Life Science/g, '<a href="https://lifesciencedb.jp/bp3d/" rel="noopener">Life Science').replace(/<a href="#">CC BY-SA/g, '<a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" rel="noopener">CC BY-SA')}</p>` : '';
-  const toolsBlock = `<p class="kicker">${th} <i></i></p><div class="ruled-h"><p>${d.tools_lede}</p><a class="go" href="${L.tools || 'tools.html'}">All tools &rarr;</a></div><div class="dept">${d.tools.map(toolRow).join('')}</div>${also}${credit}`;
+  /* The home shows the course's three lead tools and links to the rest (Olivier, 2026-10-26: "you dont need
+     to show all tools just the top 3 best ones and then the link to all tools"). The full list, its intro and
+     the extra tool lines live on the Tools page. */
+  const top = d.tools.slice(0, 3);
+  const allN = d.tools.length;
+  const toolsBlock = `<p class="kicker">Tools <i></i></p><div class="dept">${top.map(toolRow).join('')}</div><p class="tools-more"><a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a></p>${credit}`;
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {
@@ -218,8 +224,11 @@ export function r3HomeMain(key, ctx) {
     return href ? `<a class="ccard" href="${href}"><span class="cmeta"><span class="cname">${x.h}</span></span><span class="cdesc">${x.p}</span></a>`
       : `<div class="ccard"><span class="cmeta"><span class="cname">${x.h}</span></span><span class="cdesc">${x.p}</span></div>`;
   });
-  const who = key === 'anp' ? 'A&amp;P' : key === 'ochem' ? 'Organic Chemistry' : d.short;
-  const extras = `<p class="kicker kicker-gap">Only in ${who} <i></i></p><div class="else-x${xs.length > 1 ? '' : ' one'}">${xs.join('')}</div>`;
+  /* The "Only in this course" band is left off the home (Olivier, 2026-10-26: "doesnt feel needed since the
+     tools are right above"): every item in it is a tool or a page the Tools page and the course nav already link.
+     The data stays in course-homes.json in case a course wants it back. */
+  void xs;
+  const extras = '';
 
   /* ---- free and premium, from assets/premium.js ---- */
   const { COURSES, FOUNDING } = premiumData();
@@ -269,7 +278,7 @@ export function r3HomeMain(key, ctx) {
   if (d.beta) qa.push(['Is this course finished?', `It is in Beta. ${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
   qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
-  const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<h3>${q}</h3><div class="ans">${a}</div>`).join('')}</div></section>`;
+  const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
 
   const about = `<section class="about-row" aria-label="About LevlPrep">
     <div class="about-card"><div class="k">Who makes this</div><p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.</p></div>
@@ -279,6 +288,18 @@ export function r3HomeMain(key, ctx) {
 
   const sticky = `<div class="sticky-cta"><a class="btn-chan" href="${ctx.primaryHref}">${d.btn1}</a></div>`;
 
+  /* ---- watch the lessons: the course's videos from docs/videos.json, newest first, at most 3. Each is
+     the same-origin thumbnail linking to its notes page (where the click-to-load player is), never an
+     iframe. Nothing when the course has no video yet. scripts/add-video.mjs reruns the home builders. ---- */
+  const vids = (ctx.videos || loadVideos().data.videos || []).filter((v) => v.course === key)
+    .sort((a, b) => String(b.posted).localeCompare(String(a.posted))).slice(0, 3);
+  const watch = !vids.length ? '' : `<p class="kicker">Watch the lessons <i></i></p><div class="vstrip">${vids.map((v) => {
+    const page = (v.pages || []).find((p) => /\/notes\//.test(p)) || v.pages[0];
+    const t = displayTitle(v);
+    const srcset = THUMB_WIDTHS.map((w) => `${up}${THUMB_DIR}/${v.id}-${w}.webp ${w}w`).join(', ');
+    return `<a class="vcard" href="${up}${page}"><span class="vthumb"><img src="${up}${THUMB_DIR}/${v.id}-480.webp" srcset="${srcset}" sizes="(max-width: 760px) 100vw, 340px" width="1280" height="720" alt="" loading="lazy" decoding="async"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg></span><span class="vlen">${clock(v.seconds)}</span></span><span class="vtitle">${attr(t).replace(/</g, "&lt;")}</span><span class="vmeta">Video lesson &middot; ${Math.max(1, Math.round(v.seconds / 60))} min</span></a>`;
+  }).join('')}</div><p class="tools-more"><a class="go" href="https://www.youtube.com/@LevlPrep">All videos on our YouTube channel &rarr;</a></p>`;
+
   return `<main id="main" class="r3 r3-home" data-cover="${key}">
 ${band}
 <div class="hwrap">
@@ -286,8 +307,7 @@ ${lead}
 ${facts}
 ${progress}
 ${story}
-${toolsBlock}
-${extras}
+${watch ? watch + '\n' : ''}${toolsBlock}
 ${deal}
 ${faq}
 ${about}

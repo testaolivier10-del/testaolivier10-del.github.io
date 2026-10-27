@@ -30,7 +30,6 @@
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
 <script src="assets/site-chrome.js" defer></script>
-<script src="assets/hub-home.js" defer></script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
   /* Homepage in the light channel look (docs/site-redesign.md): the YouTube
@@ -209,8 +208,8 @@
     <p class="hand">practice that explains every answer</p>
     <p class="lede">Question banks and interactive courses for NREMT-EMT, organic chemistry, anatomy &amp; physiology, and AP® Biology, Chemistry, Physics 1, Calculus AB, Statistics and Environmental Science. Each lesson builds on the last, and every answer tells you why.</p>
     <div class="hero-ctas">
-      <a class="btn-chan" href="nremt/practice.html">Start a free practice test</a>
-      <a class="btn-ghost hero-more" href="#subjects">See all nine courses</a>
+      <a class="btn-chan" href="#subjects">Choose your course</a>
+      <a class="btn-ghost hero-more" href="#tryq">Try a question first</a>
     </div>
     <div id="heroContinue"></div>
     <script>
@@ -263,7 +262,9 @@
       <div class="tryq__why" role="status" aria-live="polite"><b>A tourniquet, above the wound.</b>Arterial bleeding from a limb that direct pressure can&rsquo;t control gets a tourniquet 2 to 3 inches above the wound, never over a joint. Elevating the leg and checking a pulse waste time the patient doesn&rsquo;t have.</div>
       <p class="tryq__more"><a href="nremt/practice.html">Keep going with free NREMT questions</a></p>
     </form>
-    <script>(function(){var f=document.getElementById('tryq');f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script>
+<!-- home-try:start -->
+    <script src="assets/home-try.js" defer></script>
+<!-- home-try:end -->
   </section>
 <!-- hero-facts:start -->
     <div class="fact-row">
@@ -353,7 +354,7 @@
       <h3>Start now, keep it free</h3>
       <p class="plan__note">Start in any course, with no card.</p>
       <ul><li>All notes and textbook pages are free forever</li><li>Interactive lessons are free in the early chapters</li><li>Your level, streak and weak topics</li><li>No ads</li></ul>
-      <a class="btn-ghost" href="nremt/practice.html">Start a free practice test</a>
+      <a class="btn-ghost" href="#subjects">Choose a course</a>
     </div>
     <div class="plan plan--premium">
       <span class="pill">Premium</span>
@@ -371,12 +372,12 @@
   <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
-      <h3>Is LevlPrep free?</h3>
-      <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics.</p>
-      <h3>How much does Premium cost?</h3>
-      <p>A one-time pass for one course, from $25 to $49 in US dollars, with no subscription. <a href="premium.html">Every price, course by course</a>.</p>
-      <h3>Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?</h3>
-      <p>No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+      <details class="faq-item"><summary>Is LevlPrep free?</summary>
+      <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics.</p></details>
+      <details class="faq-item"><summary>How much does Premium cost?</summary>
+      <p>A one-time pass for one course, from $25 to $49 in US dollars, with no subscription. <a href="premium.html">Every price, course by course</a>.</p></details>
+      <details class="faq-item"><summary>Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?</summary>
+      <p>No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p></details>
     </div>
   </section>
 <!-- faq:end -->
@@ -396,7 +397,7 @@
     </div>
   </section>
 
-  <div class="sticky-cta"><a class="btn-chan" href="nremt/practice.html">Start a free practice test</a></div>
+  <div class="sticky-cta"><a class="btn-chan" href="#subjects">Choose your course</a></div>
 </div>
 <div class="hwrap">
   <footer class="home-foot">
@@ -456,7 +457,6 @@ document.addEventListener('DOMContentLoaded', function(){
           return '<span>' + (LABELS[k] || k) + ' &middot; ' + info.subjects[k] + ' XP</span>';
         }).join('') + '</div>' : '') +
       '</div>';
-    if(window.LevlHubContinue) window.LevlHubContinue(box.firstChild, info);
     box.hidden = false;
   })();
 });

@@ -989,9 +989,16 @@ footer .privacy-link a:hover{color:var(--ink);}
   .nav-right{gap:6px;}
   .nav-right .theme-toggle::after,.nav-right .level-badge::after{inset:-6px;}
 }
-@media (max-width:400px){
+@media (max-width:480px){
+  /* One header row on every phone (fix 2026-10-26): the streak chip hides below 480px, not 400, and the
+     brand row gives way (the course name truncates) instead of pushing the buttons onto a second row. */
   .nav-streak{display:none;}
+  .site-header__inner{flex-wrap:nowrap;}
+  .site-header__brand-row{min-width:0;overflow:hidden;}
+  .site-header__course{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+  .nav-right{flex-shrink:0;}
 }
+@media (max-width:370px){.site-header__course{display:none;}}
 /* The assistant button, docked in the phone header by tutor-launcher.js
    (polish A10); the id outranks tutor.js's floating rules. */
 #site-header .lp-launch{
@@ -1914,3 +1921,20 @@ footer{border-top:1px solid var(--line);padding-top:24px;padding-bottom:40px;mar
 footer > p,footer > div{max-width:78ch;}
 footer a{color:var(--muted);text-underline-offset:2px;}
 footer a:hover{color:var(--ink);}
+
+/* Questions open on a tap (Olivier, 2026-10-26: "make it the question and then you have to click to reveal").
+   Used by the course homes, the homepage and exam day; the answer text stays in the page for search. */
+.faq-item{border-top:1px solid var(--line);}
+.faq-item:last-child{border-bottom:1px solid var(--line);}
+.faq-item > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 2px;font:900 16.5px/1.35 var(--font-ui);color:var(--ink);}
+.faq-item > summary::-webkit-details-marker{display:none;}
+.faq-item > summary h2,.faq-item > summary h3{font:inherit;margin:0;color:inherit;}
+.faq-item > summary::after{content:var(--disclose);flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  border:1.5px solid var(--line);font:900 18px/1 var(--font-ui);color:var(--accent-text,var(--accent));transition:transform .15s ease;}
+.faq-item[open] > summary::after{transform:rotate(90deg);}
+.faq-item > summary:hover{color:var(--accent-text,var(--accent));}
+.faq-item > summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px;}
+.faq-item > :not(summary){margin-top:0;}
+.faq-item > :last-child{margin-bottom:16px;}
+@media (prefers-reduced-motion:reduce){.faq-item > summary::after{transition:none;}}

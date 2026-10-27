@@ -6,10 +6,30 @@
      (where you are weak, your exams, your level and practice detail) and the Premium card last.
    Panels are found by the end of their id (-db-weak, -db-u, -db-ch, -db-ex, -db-p, -db-f, -db-s, -db-t);
    anything it does not know stays in the last section, so nothing a course adds can disappear. */
+/* Two-column sections fall back to one column whenever only one column has anything to show (a new
+   student has no alerts yet, or a course fills only one side), or one side is far taller than the other, so a lone panel uses the full width instead of
+   sitting in half the page (Olivier, 2026-10-26). Runs on every progress page, including NREMT and ochem. */
+(function(){
+  function fit(){
+    document.querySelectorAll('.r3-db-two, .r3-db-lead').forEach(function(g){
+      // Measure as two columns, then stack when only one side has content or one side is far taller than the
+      // other (a short panel beside a long one leaves a block of empty page under it).
+      g.classList.remove('one');
+      var hs = [];
+      for(var i = 0; i < g.children.length; i++){ var r = g.children[i].getBoundingClientRect(); if(r.height > 2) hs.push(r.height); }
+      var lopsided = hs.length > 1 && Math.min.apply(null, hs) / Math.max.apply(null, hs) < 0.6;
+      g.classList.toggle('one', hs.length < 2 || lopsided);
+    });
+  }
+  var t; function soon(){ clearTimeout(t); t = setTimeout(fit, 60); }
+  function start(){ fit(); new MutationObserver(soon).observe(document.body, { childList: true, subtree: true }); window.addEventListener('resize', soon); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+
 (function(){
   var app = document.querySelector('.r3-dashboard [data-slug="dashboard"]');
   if(!app) return;
-  var KICKER = { weak: 'Where you are weak', exams: 'Your exams', more: 'Your level and the detail' };
+  var KICKER = { weak: 'Where you are weak', exams: 'Your exams', more: 'The detail' };
 
   function sec(key, left, right){
     left = left.filter(Boolean); right = right.filter(Boolean);
@@ -53,10 +73,12 @@
     if(next) lead.appendChild(next);
     lead.appendChild(side);
 
-    var parts = [lead, stats,
+    // Your level leads the page (Olivier, 2026-10-26: "this should be moved to the top in like all courses").
+    if(level) level.classList.add('r3-db-levelTop');
+    var parts = [level, lead, stats,
       sec('weak', [weak, weakc, units], [prac, skills]),
       sec('exams', [exams], [frq, tools]),
-      sec('more', [level].concat(rest), [])];
+      sec('more', rest, [])];
     var foot = document.createElement('div');
     foot.className = 'r3-db-premium';
     gates.forEach(function(g){ foot.appendChild(g); });
@@ -64,6 +86,7 @@
 
     var grid = db.querySelector('.cx-db-grid');
     parts.forEach(function(p){ if(p) db.appendChild(p); });
+    if(level) db.insertBefore(level, db.firstChild);
     if(grid){
       /* whatever else the course put in its columns goes to the last section, then the empty grid goes */
       var left = Array.prototype.slice.call(grid.querySelectorAll('.cx-db-col > *'));

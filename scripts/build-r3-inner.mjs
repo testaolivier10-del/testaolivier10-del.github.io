@@ -37,7 +37,7 @@ function examsBuilt() {
 <p class="kicker">How the exam is built <i></i></p>
 <div class="r3-built-grid">
 <div class="contents"><h2 class="r3-h2" id="r3BuiltH">Drawn like <span>the real one</span></h2><p class="sub">The National Registry&rsquo;s five EMT exam domains, April 2025 outline, in the same proportions.</p>
-<ol class="toc">${doms.map(([name, , w, , bar], i) => `<li><div class="toc-row"><span class="n">0${i + 1}</span><span><b>${name}</b><small>its share of the 100</small></span><span class="w">${w}<small>of the exam</small><span class="wbar"><i style="width:${bar}%"></i></span></span></div></li>`).join('')}</ol></div>
+<ol class="toc">${doms.map(([name, , w, , bar], i) => `<li><div class="toc-row"><span class="n">0${i + 1}</span><span><b>${name}</b><small>its share of the 100</small></span><span class="w">${w}<small>of the exam</small></span></div></li>`).join('')}</ol></div>
 <ol class="r3-steps">
 <li class="step"><span class="n">1</span><h3>Answer all 100</h3><p>No feedback while the clock runs. Leave mid-way and it waits here for you.</p></li>
 <li class="step"><span class="n">2</span><h3>Submit and see every answer</h3><p>Each question is reviewed with its explanation, and the score is broken down by domain.</p></li>

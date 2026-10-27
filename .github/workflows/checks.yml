@@ -326,10 +326,22 @@ jobs:
       # the skip link actually landing somewhere focusable, and the main and
       # nav landmarks surviving the runtime-rendered header.
       - name: axe-core, and the site's own accessibility rules
-        run: node scripts/check-a11y.mjs --check
+        # On a failure, the lines that name the page are repeated as annotations, so the reason can be read
+        # from the check itself (the raw log is not always reachable).
+        run: |
+          node scripts/check-a11y.mjs --check > a11y.log 2>&1 && { tail -5 a11y.log; exit 0; }
+          cat a11y.log
+          grep -E "FAIL|SERIOUS|CRITICAL|uncaught|navigation:|duplicate id|failed request|Error" a11y.log | head -40 | sed 's/^/::error::/'
+          exit 1
       # Every other check here reads the files. This one runs them: a page that
       # parses, resolves and renders can still throw on load and be dead in
       # front of a student. errors.js already reports this class of bug — from
       # production, after somebody hit it. This asks before the commit lands.
       - name: every page loads without a runtime error
-        run: node scripts/check-console.mjs --check
+        # On a failure, the lines that name the page are repeated as annotations, so the reason can be read
+        # from the check itself (the raw log is not always reachable).
+        run: |
+          node scripts/check-console.mjs --check > console.log 2>&1 && { tail -5 console.log; exit 0; }
+          cat console.log
+          grep -E "FAIL|SERIOUS|CRITICAL|uncaught|navigation:|duplicate id|failed request|Error" console.log | head -40 | sed 's/^/::error::/'
+          exit 1

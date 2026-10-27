@@ -452,7 +452,7 @@ function hubPricing() {
       <h3>Start now, keep it free</h3>
       <p class="plan__note">Start in any course, with no card.</p>
       <ul>${li(notes)}${li(lessons)}<li>Your level, streak and weak topics</li><li>No ads</li></ul>
-      <a class="btn-ghost" href="nremt/practice.html">Start a free practice test</a>
+      <a class="btn-ghost" href="#subjects">Choose a course</a>
     </div>
     <div class="plan plan--premium">
       <span class="pill">Premium</span>
@@ -487,12 +487,39 @@ const FAQ = [
   [MARK ? 'Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?' : 'Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
 ];
 
+function homeTry() {
+  const H = JSON.parse(readFileSync(join(ROOT, 'scripts/lib/course-homes.json'), 'utf8'));
+  const items = OPEN.map((c) => {
+    const d = H[c.key];
+    if (!d || !d.sample || !d.try || !Array.isArray(d.sample.opts)) return null;
+    return { k: c.key, pill: `${d.short || d.name} &middot; ${(d.sample.tags || [])[0] || 'Sample'}`, q: d.sample.q, o: d.sample.opts,
+      ok: d.try.ok, t: d.try.title, w: d.try.why, href: `${c.dir}/practice.html`, name: d.short || d.name };
+  }).filter(Boolean);
+  const json = JSON.stringify(items).replace(/</g, '\\u003c');
+  // The questions and the script live in assets/home-try.js (written here), so the homepage stays inside
+  // its weight budget; the page keeps the NREMT question as its no-JavaScript fallback.
+  const js = `/* Written by scripts/build-pricing.mjs from scripts/lib/course-homes.json; do not edit. */
+(function(){var DATA=${json};
+var f=document.getElementById('tryq');if(!f)return;var all=DATA;
+var ok=1;if(all.length){var last=null;try{last=localStorage.getItem('levl_tryq_last');}catch(e){}
+var pool=all.filter(function(x){return x.k!==last;});var it=(pool.length?pool:all)[Math.floor(Math.random()*(pool.length||all.length))];
+try{localStorage.setItem('levl_tryq_last',it.k);}catch(e){}ok=it.ok;
+f.querySelector('.pill').innerHTML=it.pill;document.getElementById('tryq-stem').innerHTML=it.q;
+var fs=f.querySelector('fieldset');fs.querySelectorAll('label').forEach(function(l){l.remove();});
+it.o.forEach(function(t,i){var l=document.createElement('label');var inp=document.createElement('input');inp.type='radio';inp.name='tryq';l.appendChild(inp);var sp=document.createElement('span');sp.innerHTML=t;l.appendChild(sp);if(i===ok)l.className='ok';fs.appendChild(l);});
+var why=f.querySelector('.tryq__why');why.innerHTML='<b>'+it.t+'</b>'+it.w;var m=f.querySelector('.tryq__more a');m.href=it.href;m.textContent='Keep going with free '+it.name+' questions';}
+f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();
+`;
+  put('assets/home-try.js', js);
+  return `    <script src="assets/home-try.js" defer></script>`;
+}
+
 function hubFaq() {
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
-${FAQ.map(([q, a], i) => `      <h3>${esc(q)}</h3>
-      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p>`).join('\n')}
+${FAQ.map(([q, a], i) => `      <details class="faq-item"><summary>${esc(q)}</summary>
+      <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p></details>`).join('\n')}
     </div>
   </section>`;
 }
@@ -587,11 +614,15 @@ function hubEnvCard() {
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
   for (const [re, txt] of [
     [/(<div class="eyebrow">Free to start &middot; )\w+( courses &middot; notes free forever<\/div>)/, `$1${word.toLowerCase()}$2`],
-    [/(<a class="btn-ghost hero-more" href="#subjects">See all )\w+( courses<\/a>)/, `$1${word.toLowerCase()}$2`],
   ]) {
     if (!re.test(src)) throw new Error(`${rel}: the hero no longer matches ${re}`);
     src = src.replace(re, txt);
   }
+  /* The try one question (Olivier, 2026-10-26: NREMT should not lead the homepage): every open course's
+     own sample question from its course home (scripts/lib/course-homes.json, already published there), one
+     picked per visit and never the same course twice in a row. The NREMT question in the markup is the
+     no-JavaScript fallback. */
+  src = between(src, '<!-- home-try:start -->', '<!-- home-try:end -->', homeTry(), rel);
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. */
   const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv };

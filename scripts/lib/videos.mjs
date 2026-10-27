@@ -167,7 +167,73 @@ const BLOCK_RE = new RegExp(`[ \\t]*${START}[\\s\\S]*?${END}\\n?`, 'g');
    after the video, so it sits first under the header and every caller of
    applyVideo writes and checks both. */
 export function applyVideo(rel, html, videos = loadVideos()) {
-  return applyQuickAnswer(rel, placeVideo(rel, html, videos));
+  return applyQuickAnswer(rel, placeReader(rel, placeVideo(rel, html, videos), videos));
+}
+
+/* COURSE READERS. The one-page books (each course's learn.html and the NREMT
+   reader nremt/study-notes.html) draw their chapters with JavaScript, so the
+   card cannot be written into the markup where it shows. Instead the page
+   carries, between the two markers below and just before </body>, the cards
+   for its own chapters as inline JSON, each with the selector of the header it
+   goes under, plus assets/video/reader-video.js, which puts each card in when
+   the reader draws that chapter. A video's notes page names its chapter: the
+   NREMT chapter of that notes page, or the topic section with the notes
+   page's slug. Pages with no video get nothing. */
+export const R_START = '<!-- video:reader -->';
+export const R_END = '<!-- video:reader-end -->';
+const R_RE = new RegExp(`${R_START}[\\s\\S]*?${R_END}\\n?`, 'g');
+
+export const READERS = Object.fromEntries(Object.entries(COURSE_DIRS)
+  .map(([course, dir]) => [course, course === 'nremt' ? 'nremt/study-notes.html' : `${dir}/learn.html`]));
+
+let nremtNums = null;
+function nremtChapter(slug, root = ROOT) {
+  if (!nremtNums) {
+    const data = JSON.parse(readFileSync(join(root, 'nremt', 'assets', 'study-notes.json'), 'utf8'));
+    const slugOf = (t) => String(t).toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    nremtNums = new Map(data.chapters.map((c, i) => [slugOf(c.title), c.num || i + 1]));
+  }
+  return nremtNums.get(slug);
+}
+
+/* The cards one reader shows, in reading order of the data file. */
+export function readerCards(rel, videos = loadVideos()) {
+  const course = Object.keys(READERS).find((c) => READERS[c] === rel);
+  if (!course) return [];
+  const dir = COURSE_DIRS[course];
+  const out = [];
+  for (const v of videos.data.videos || []) {
+    if (v.course !== course) continue;
+    for (const page of v.pages || []) {
+      const m = page.match(new RegExp(`^${dir}/notes/([a-z0-9-]+)\\.html$`));
+      if (!m) continue;
+      let at;
+      if (course === 'nremt') {
+        const n = nremtChapter(m[1]);
+        if (!n) throw new Error(`${page}: no NREMT chapter has this notes page`);
+        at = `[data-chapter="${n}"] > .tb-chapter-head`;
+      } else {
+        at = `section[id="${m[1]}"] > .bk-sec-head, section[id="${m[1]}"] > .tb-section-head`;
+      }
+      const html = videoBlock(v, { kind: 'reader' })
+        .replace(START + '\n', '').replace('\n' + END + '\n', '')
+        .replace(/\n  <link rel="stylesheet"[^>]*>/, '').replace(/\n  <script[^>]*><\/script>/, '');
+      out.push({ id: v.id, at, html });
+    }
+  }
+  return out;
+}
+
+function placeReader(rel, html, videos) {
+  if (!Object.values(READERS).includes(rel)) return html;
+  const stripped = html.replace(R_RE, '');
+  const cards = readerCards(rel, videos);
+  if (!cards.length) return stripped;
+  const i = stripped.lastIndexOf('</body>');
+  if (i < 0) throw new Error(`${rel}: a reader with no </body>`);
+  const json = JSON.stringify(cards).replace(/</g, '\\u003c');
+  const block = `${R_START}\n<script type="application/json" id="lpv-reader">${json}</script>\n<script src="/assets/video/reader-video.js" defer></script>\n${R_END}\n`;
+  return stripped.slice(0, i) + block + stripped.slice(i);
 }
 
 function placeVideo(rel, html, videos) {
