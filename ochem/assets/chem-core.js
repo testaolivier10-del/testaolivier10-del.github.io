@@ -178,12 +178,8 @@
 
   /* Back to something molecules.js can draw. Bonds of order 0 are dropped
      rather than drawn as nothing, so a bond that broke visibly disappears. */
-  /* One hydrogen convention for every tool (audit 2026-10): a hydrogen drawn
-     as an atom is an atom; every other hydrogen is written into its atom's
-     label (CH₃, OH, NH₂). Skeletal ring vertices then drop the C and its H's
-     in the renderer. Before this, a built molecule showed bare C's while the
-     ready-made ones showed every H. Pass {hydrogens:false} for the old bare
-     labels. */
+  /* One hydrogen convention (audit 2026-10): implicit H's go in the label
+     (CH₃, OH); {hydrogens:false} keeps bare labels. */
   function hLabel(st, k){
     var a = st.atoms[k];
     if(!a.el || a.group || a.el === 'H') return a.label;
@@ -743,11 +739,8 @@
     return { structure: next, issues: issues, steps: steps };
   }
 
-  /* Where electrons from `from` could sensibly go, for the pulse a tool shows
-     after a source is picked (audit 2026-10). Not an answer key: it lists
-     every legal destination that is electron-poor or polarized toward
-     receiving, which on a real mechanism includes the right one and leaves
-     out the atoms that only give (anions, lone-pair-rich atoms). */
+  /* Legal arrow ends that can receive electrons, for the pulse after a source
+     is picked (audit 2026-10). A nudge, not an answer key. */
   function destinations(st, from){
     var out = [];
     if(!st || !from) return out;
@@ -807,9 +800,7 @@
       var other = fb ? (sharedAtom(fb, { a:b.a, b:b.b }) === b.a ? b.b : b.a) : (b.a === from ? b.b : b.a);
       if(st.atoms[other] && st.atoms[other].el === 'H') return;
       if(!fb && (b.a === from || b.b === from)){
-        /* A lone pair into its own bond makes a pi bond, so only toward an atom
-           that can take it: a cation, an open octet, an atom already in a pi
-           bond (resonance), or one with a leaving group to push out. */
+        // Into its own bond only toward a cation, open octet, pi bond or leaving group.
         var o = st.atoms[other];
         var canTake = formalCharge(st, other) > 0 || electronCount(st, other) < octetOf(st, other) ||
           bondsAt(st, other).some(function(x){ return x.order >= 2; }) ||

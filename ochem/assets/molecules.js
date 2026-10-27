@@ -1213,22 +1213,10 @@
     return Math.min(a.r, fs * (0.52 + 0.3 * Math.max(0, n - 1)) + 2.5);
   }
 
-  /* ---- Skeletal drawing (tool pages, audit 2026-10) ----------------------
-
-     Tool stages draw rings the way a textbook does: a ring carbon is a bare
-     vertex, its hydrogens implied, and a ring double bond is a second line
-     inside the ring. Every other atom keeps its label, hydrogens included
-     (CH₃, OH), unless the hydrogen is drawn as an atom of its own. That is the
-     one hydrogen convention all the ochem tools share.
-
-     A ring carbon keeps its label when the label is the point: it carries a
-     charge or a lone pair, or the caller lists it in opts.labelled (the
-     acidic CH₂ the Which proton? question asks about). The lessons and
-     practice pages are unchanged: they do not sit in a .tool-root, so
-     skeletal is off unless they ask for it. */
-
-  // Atoms in at least one ring: a bond is in a ring when its ends stay
-  // connected without it.
+  /* Skeletal rings on tool stages (audit 2026-10): a ring C is a bare vertex
+     unless charged, with lone pairs, or in opts.labelled; ring C=C is drawn
+     with an inner line. Lessons are unchanged (no .tool-root). A bond is in a
+     ring when its ends stay connected without it. */
   function ringInfo(mol){
     var adj = {}, inRing = {}, ringBond = {};
     mol.bonds.forEach(function(b){
@@ -1300,8 +1288,6 @@
     if(order === 1){
       return '<line' + fc + ' x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + stroke + '" stroke-width="2.5"/>';
     }
-    /* A ring double bond in a skeletal drawing: the full line on the ring and
-       a shorter one inside it, on the side of the ring's other atoms. */
     var inSide = order === 2 && mol._ring && (mol._ring.ringBond[b.a + '|' + b.b] || mol._ring.ringBond[b.b + '|' + b.a]) && (va || vc)
       ? ringInside(mol, b, ux, uy) : 0;
     if(inSide){
@@ -1354,16 +1340,10 @@
     var on = opts.clickableBonds === 'all' ||
              (opts.clickableBonds && opts.clickableBonds.some(function(k){ return sameBond(k, b); }));
     if(!on) return '';
-    /* The hit line runs between the two labels, not centre to centre, and is
-       drawn above the atoms. Drawn under them, the atoms' 44 px finger rings
-       covered all of a short bond (an O–H, a vertical C–H) and left it 0 px to
-       tap (audit 2026-10). The label itself still belongs to the atom. */
+    // Between the labels, above the atoms, at least 26 units (audit 2026-10: some were 0 px).
     var dx = c.x - a.x, dy = c.y - a.y, len = Math.sqrt(dx*dx + dy*dy) || 1, ux = dx/len, uy = dy/len;
     var va = opts._vertex && opts._vertex[b.a], vc = opts._vertex && opts._vertex[b.b];
-    // Bubble drawings (lessons) give the atom its whole disc; bare ones its label.
-    // (lesson hit lines have 8-unit round caps, so they stop 8 further out)
     var ra = va ? 10 : (opts._bare ? labelR(a) + 3 : Math.max(a.r, 21) + 8), rc = vc ? 10 : (opts._bare ? labelR(c) + 3 : Math.max(c.r, 21) + 8);
-    // Never shorter than 26 units (about 28 px on a phone stage): keep the middle.
     var room = len - ra - rc;
     if(room < 26){ var give = (26 - room) / 2; ra = Math.max(0, ra - give); rc = Math.max(0, rc - give); }
     var x1 = a.x + ux*ra, y1 = a.y + uy*ra, x2 = c.x - ux*rc, y2 = c.y - uy*rc;
@@ -1378,9 +1358,7 @@
       ' bond between ' + esc(va ? 'ring C' : (a.label || '')) + ' and ' + esc(vc ? 'ring C' : (c.label || ''));
     var head = ' data-key="' + esc(key) + '" tabindex="0" role="button" aria-label="' + label + '"';
     if(opts._bare){
-      /* On tool stages the target is a filled band 26 units across rather than
-         a fat stroke on a line: a vertical line has a zero-width box, which some
-         browsers and test tools treat as nothing there to tap. */
+      // A filled band, not a stroked line: a vertical line has a zero-width box.
       var hw = 13, nx = -uy*hw, ny = ux*hw;
       return '<path class="' + cls + ' obond--band"' + head + ' d="M ' + (x1+nx).toFixed(1) + ' ' + (y1+ny).toFixed(1) +
         ' L ' + (x2+nx).toFixed(1) + ' ' + (y2+ny).toFixed(1) + ' L ' + (x2-nx).toFixed(1) + ' ' + (y2-ny).toFixed(1) +
@@ -1390,10 +1368,7 @@
       ' x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>';
   }
 
-  /* A charge on a tool stage is a circled sign beside the label, big enough
-     to read on a phone and colored by sign (audit 2026-10: charges were
-     superscripts a few pixels tall). It takes the free direction nearest the
-     upper right, clear of the bonds. */
+  // Tool stages draw a charge as a colored badge in the freest direction near upper right.
   function chargeAngle(dirs){
     var best = -45, bs = -1;
     for(var t = -180; t < 180; t += 15){
@@ -1433,7 +1408,6 @@
     var fontSize = a.r > 15 ? 14.5 : (a.r > 12 ? 12.5 : 11);
     var vertex = opts._vertex && opts._vertex[key];
     if(vertex) cls += ' atom--vertex';
-    // Tool stages draw the charge as a badge; elsewhere it stays in the label.
     var badge = opts._bare && a.charge, lpAng = [];
     /* Element, charge and lone pairs — the three things that decide whether an
        arrow may start or end here, said out loud for anyone who cannot see the
@@ -1554,7 +1528,6 @@
     });
     // Tool pages draw bare labels: lone pairs and arrow ends hug the label.
     var bare = opts.bare !== undefined ? !!opts.bare : !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.tool-root'));
-    // Skeletal rings follow the bare-label look unless the caller says otherwise.
     var skeletal = opts.skeletal !== undefined ? !!opts.skeletal : bare;
     var vertex = {}, ri = null;
     if(skeletal){
@@ -1562,7 +1535,6 @@
       Object.keys(mol.atoms).forEach(function(k){ if(isVertex(k, mol.atoms[k], ri, opts)) vertex[k] = true; });
     }
     opts = Object.assign({}, opts, { _dirs: dirs, _bare: bare, _vertex: vertex });
-    // bondPath reads the ring facts off the molecule; a shallow view keeps the record clean.
     var view = Object.assign({}, mol, { _vertex: vertex, _ring: ri });
     var body = (mol.decor || '') +
       mol.bonds.map(function(b){ return bondPath(view, b); }).join('') +
