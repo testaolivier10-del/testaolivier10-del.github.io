@@ -60,7 +60,7 @@
    "options": [
     "Contact comfort as a basis of attachment",
     "Imprinting on the first moving object",
-    "Feeding as the main source of the bond",
+    "Feeding as the main source of the infant’s bond",
     "Egocentrism in infant monkeys"
    ],
    "correct": 0,
@@ -85,7 +85,7 @@
    "stimulus": "social-emotional-development-s1",
    "q": "Frightened infants ran to the cloth mother, clung to it and then began to explore. In human attachment research, what does the cloth mother act as?",
    "options": [
-    "A source of separation anxiety",
+    "A source of separation anxiety for the infant",
     "An example of permissive parenting",
     "An example of parallel play",
     "A secure base from which to explore"
@@ -139,8 +139,8 @@
    "stimulus": "social-emotional-development-s1",
    "q": "A student says, \"Harlow proved that human babies need hugs more than food.\" What is the best response?",
    "options": [
-    "The study is invalid because it was correlational",
-    "It studied monkeys, so it suggests but cannot prove this for humans",
+    "The study is invalid because its design was correlational",
+    "It studied monkeys, so it only suggests this for humans",
     "The study proves it because monkeys and humans are the same",
     "The study shows food does not matter to babies"
    ],
@@ -355,7 +355,7 @@
    "options": [
     "The mesosystem; it links the baby’s home and school",
     "No layer; laws reach adults, not individual babies",
-    "The macrosystem; it shapes parents’ time with the baby",
+    "The macrosystem, through parents’ time",
     "The microsystem; the law is part of the baby’s home"
    ],
    "correct": 2,
@@ -460,7 +460,7 @@
    "options": [
     "Parenting style has no relationship with grades",
     "Children with high grades cause their parents to be strict",
-    "They are correlated; children’s traits and culture may also explain it",
+    "A correlation; child traits and culture may also explain it",
     "Authoritative parenting causes higher grades across cultures"
    ],
    "correct": 2,
@@ -510,7 +510,7 @@
    "practice": "1.A",
    "q": "At 9 months, Sam cries hard whenever his mother leaves the room, though he was calm about it at 4 months. What is this?",
    "options": [
-    "Separation anxiety, a sign of attachment",
+    "Separation anxiety",
     "An avoidant attachment",
     "Egocentrism",
     "A permissive parenting style"
@@ -668,7 +668,7 @@
    "options": [
     "Intimacy versus isolation",
     "Identity versus role confusion",
-    "Integrity versus despair",
+    "Integrity vs. despair",
     "Generativity versus stagnation"
    ],
    "correct": 2,
@@ -693,7 +693,7 @@
    "q": "At 45, Marcus volunteers as a youth soccer coach and mentors new workers. Which of Erikson’s stages is he working through?",
    "options": [
     "Trust versus mistrust",
-    "Generativity versus stagnation",
+    "Generativity vs. stagnation",
     "Integrity versus despair",
     "Industry versus inferiority"
    ],
@@ -718,7 +718,7 @@
    "practice": "1.A",
    "q": "Toddler Mila insists, \"Me do it!\" when dressing, even though it takes 20 minutes. Her parents let her try. Which of Erikson’s stages does this fit?",
    "options": [
-    "Autonomy versus shame and doubt",
+    "Autonomy vs. shame and doubt",
     "Trust versus mistrust",
     "Initiative versus guilt",
     "Industry versus inferiority"
@@ -822,9 +822,9 @@
    "practice": "1.A",
    "q": "Kayla, 15, pictures herself as a future veterinarian and also fears ending up stuck in a job she hates. She starts volunteering at an animal shelter. Which concept does this show?",
    "options": [
-    "Possible selves, hoped-for and feared",
+    "Possible selves",
     "The imaginary audience",
-    "Identity diffusion",
+    "Identity diffusion, drifting without goals",
     "Permissive parenting"
    ],
    "correct": 0,

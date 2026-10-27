@@ -1,0 +1,327 @@
+{
+ "slug": "article-studio",
+ "kind": "simulator",
+ "topic": "research-methods",
+ "about": "Article Analysis Studio (docs/appsych-spec.md sections 3.1 and 6; builder T1). Each context is one invented study, laid out as the exam's study summaries; the model (psychology/assets/tools/math/article-studio.js) draws its numbers from ApPsychStats and builds the drill. Every study is invented for practice (decision 4) and says so on the page.",
+ "intro": "<p>The article analysis question (AAQ) gives you one study and asks six things about it: the research method, an operational definition, what a statistic shows, an ethical guideline the researchers applied, whether the results generalize, and whether the results support the hypothesis. It is worth 7 points, and each part has its own trap.</p><p>Pick a part to see exactly where in the summary its answer is, then what earns the point and what the readers saw students miss. Change the result to see how parts C and F change with it.</p>",
+ "howItWorksTitle": "How the studio works",
+ "howItWorks": "<p>Every study here is invented for practice, written in the layout the exam uses: Introduction, Participants, Method and Results with a graph. The numbers are generated each time you run the study and are computed with the course's statistics code, so the graph, the results text and the answers always agree.</p><p>The slips under each part come from the College Board's 2025 Chief Reader Reports and the 2025 and 2026 scoring guidelines, in our own words: the wrong or several methods, a definition of the concept instead of how the study measured it, numbers restated instead of interpreted, an ethical guideline the summary never describes, generalizing from sample size, and a claim that a study proves an idea.</p>",
+ "partTopics": {
+  "method": "research-methods",
+  "what": "research-methods",
+  "how": "research-methods",
+  "diff": "stats-descriptive",
+  "stat": "stats-significance",
+  "rstat": "stats-correlation",
+  "ethics": "research-ethics",
+  "ehow": "research-ethics",
+  "gen": "research-sampling"
+ },
+ "contexts": [
+  {
+   "id": "sleep-words",
+   "topic": "sleep",
+   "kind": "means",
+   "title": "Sleep and memory for word pairs",
+   "method": "experiment",
+   "methodWhy": "The researchers manipulated how much the students slept and randomly assigned them to the two groups.",
+   "iv": "how much the students slept",
+   "ivWhat": "whether a student slept a full night or was kept awake until 4 a.m.",
+   "intro": "Sleep may help the brain hold on to what was learned during the day.",
+   "hypothesis": "students who sleep a full night after learning recall more word pairs the next morning than students kept awake for most of the night",
+   "concept": "Consolidation theory",
+   "design": "Participants were randomly assigned to a full-sleep group or a short-sleep group.",
+   "procedure": "At 9 p.m. every participant studied 40 word pairs (such as <i>ocean / ladder</i>) in a sleep lab. The full-sleep group slept from 11 p.m. to 7 a.m.; the short-sleep group was kept awake with quiet activities until 4 a.m. and then slept until 7 a.m.",
+   "participants": {
+    "n": 60,
+    "html": "Sixty university students (ages 18 to 22) at one university in Ohio, recruited through an introductory psychology course; 34 women and 26 men.",
+    "table": [["Ages", "18 to 22 (mean 19.6)"], ["Women and men", "34 and 26"], ["Recruited from", "An introductory psychology course in Ohio"]]
+   },
+   "groups": [
+    { "name": "the full-sleep group", "short": "a full night of sleep", "label": "Full sleep" },
+    { "name": "the short-sleep group", "short": "staying awake", "label": "Short sleep" }
+   ],
+   "predict": [0, 1],
+   "dv": {
+    "name": "recall",
+    "what": "the number of word pairs (out of 40) a participant completed correctly when shown the first word",
+    "how": "at 9 a.m. the next morning",
+    "howNear": "right after studying the list at 9 p.m.",
+    "vague": "how well the students remembered the words",
+    "near": "the hours each student slept, from a sleep tracker",
+    "sentence": "At 9 a.m. the next morning, each participant saw the first word of each pair and wrote the second; recall was the number of pairs completed correctly (0 to 40).",
+    "res": "{g} recalled a mean of {m} word pairs",
+    "more": "recalled more word pairs",
+    "axis": "Mean word pairs recalled (of 40)",
+    "max": 40,
+    "base": [18, 24],
+    "gap": [4, 7],
+    "nullGap": [0.5, 1.5],
+    "dec": 1
+   },
+   "ethics": [
+    { "g": "consent", "how": "Before the study, the students signed a consent form that described the overnight stay and the sleep loss." },
+    { "g": "withdraw", "how": "Students were told they could leave at any time, even during the night, and still receive their course credit." },
+    { "g": "irb", "how": "The university's institutional review board approved the study before it began." }
+   ],
+   "ethicsAbsent": ["debrief", "confidential", "parent"],
+   "generalize": [
+    { "key": "no", "pop": "adults over 65", "because": "every participant was a university student aged 18 to 22, and both sleep and memory change with age." },
+    { "key": "yes", "pop": "first-year students at other US universities", "because": "the participants were 18- to 22-year-old university students in an introductory course, much like first-year students elsewhere in the US." }
+   ],
+   "flaw": "the students knew which group they were in."
+  },
+  {
+   "id": "caffeine-sleep",
+   "topic": "sleep",
+   "kind": "r",
+   "title": "Caffeine and nightly sleep",
+   "method": "correlational",
+   "methodWhy": "The researchers measured caffeine and sleep in each person as they were and related them with r; nothing was manipulated and no one was assigned to a condition.",
+   "iv": "daily caffeine",
+   "ivWhat": "the milligrams of caffeine a participant took in per day, from a two-week drink diary",
+   "intro": "Caffeine is a stimulant, and many adults have it every day.",
+   "hypothesis": "adults who take in more caffeine sleep fewer hours per night",
+   "concept": "The stimulant effect of caffeine",
+   "design": "The researchers measured each participant's caffeine intake and sleep without changing either.",
+   "procedure": "For two weeks, participants recorded every drink with caffeine in a diary, which the researchers converted to milligrams per day.",
+   "participants": {
+    "n": 40,
+    "html": "Forty adults (ages 25 to 50) who worked day shifts at one hospital in Atlanta; 26 women and 14 men.",
+    "table": [["Ages", "25 to 50 (mean 37)"], ["Women and men", "26 and 14"], ["Work", "Day shifts at one hospital in Atlanta"]]
+   },
+   "x": { "name": "daily caffeine", "more": "took in more caffeine", "axis": "Caffeine per day (mg)", "range": [0, 400], "dec": 0 },
+   "y": { "name": "sleep time", "up": "sleep longer", "down": "sleep less", "axis": "Sleep per night (hours)", "range": [5, 9], "dec": 1 },
+   "direction": -1,
+   "dv": {
+    "name": "sleep time",
+    "what": "the average hours of sleep per night",
+    "how": "recorded by a wrist sleep tracker over the same two weeks",
+    "howNear": "reported by each participant in one interview at the end",
+    "vague": "how well-rested the participants felt",
+    "near": "the number of cups of coffee each participant drank",
+    "sentence": "Each participant wore a wrist sleep tracker for the same two weeks; sleep time was the average hours of sleep per night."
+   },
+   "ethics": [
+    { "g": "consent", "how": "Participants signed a consent form that explained the drink diary and the sleep tracker." },
+    { "g": "confidential", "how": "Diaries and tracker data were labeled with code numbers instead of names." }
+   ],
+   "ethicsAbsent": ["debrief", "parent", "irb"],
+   "generalize": [
+    { "key": "no", "pop": "night-shift workers", "because": "every participant worked day shifts, and night-shift workers sleep on a different schedule." },
+    { "key": "yes", "pop": "adult day-shift hospital workers in other US cities", "because": "the participants were 25- to 50-year-old day-shift hospital workers." }
+   ],
+   "flaw": "the diaries depended on participants remembering every drink."
+  },
+  {
+   "id": "quiz-reread",
+   "topic": "retrieving-memories",
+   "kind": "means",
+   "title": "Practice quizzes, rereading and highlighting",
+   "method": "experiment",
+   "methodWhy": "The researchers manipulated the study activity and randomly assigned students to the three conditions.",
+   "iv": "the study activity",
+   "ivWhat": "which study activity a student was given: practice quizzes, rereading or highlighting",
+   "intro": "Students often reread or highlight a text, but answering questions from memory may build stronger memories.",
+   "hypothesis": "students who take practice quizzes on a text score higher on a test one week later than students who reread it",
+   "concept": "The testing effect",
+   "design": "Students were randomly assigned to one of three study conditions.",
+   "procedure": "Each student read a 900-word passage about volcanoes for 10 minutes. Then, for 20 minutes, the quiz group answered short practice questions about the passage, the reread group read it again, and the highlight group reread it with a highlighter.",
+   "participants": {
+    "n": 90,
+    "html": "Ninety high school juniors (ages 16 and 17) from two public schools in Texas; 48 girls and 42 boys.",
+    "table": [["Ages", "16 and 17"], ["Girls and boys", "48 and 42"], ["Schools", "Two public high schools in Texas"]]
+   },
+   "groups": [
+    { "name": "the quiz group", "short": "practice quizzes", "label": "Quiz" },
+    { "name": "the reread group", "short": "rereading", "label": "Reread" },
+    { "name": "the highlight group", "short": "highlighting", "label": "Highlight" }
+   ],
+   "predict": [0, 1],
+   "dv": {
+    "name": "test score",
+    "what": "the number of questions (out of 30) a student answered correctly on a short-answer test about the passage",
+    "how": "one week after the study session",
+    "howNear": "right after the 20-minute study session",
+    "vague": "how much the students learned about volcanoes",
+    "near": "the minutes each student spent studying at home",
+    "sentence": "One week later, every student took the same 30-question short-answer test on the passage; the score was the number answered correctly (0 to 30).",
+    "res": "{g} scored a mean of {m}",
+    "more": "scored higher",
+    "axis": "Mean test score (of 30)",
+    "max": 30,
+    "base": [15, 19],
+    "gap": [3, 6],
+    "nullGap": [0.3, 1.2],
+    "dec": 1
+   },
+   "ethics": [
+    { "g": "parent", "how": "A parent or guardian of each student signed a permission form before the study." },
+    { "g": "assent", "how": "Each student also agreed in writing after a researcher explained the study in plain words." },
+    { "g": "confidential", "how": "Test scores were stored under code numbers, and teachers never saw individual results." }
+   ],
+   "ethicsAbsent": ["debrief", "irb", "harm"],
+   "generalize": [
+    { "key": "no", "pop": "college students in Japan", "because": "all participants were 16- and 17-year-olds in two Texas public schools, so differences in age and school culture could change how students study." },
+    { "key": "yes", "pop": "high school juniors in other US public schools", "because": "the participants were 16- and 17-year-old juniors from two US public schools, the same age and kind of school." }
+   ],
+   "flaw": "the test used only one passage, about volcanoes."
+  },
+  {
+   "id": "reading-points",
+   "topic": "operant-conditioning",
+   "kind": "means",
+   "title": "Points for reading at home",
+   "method": "experiment",
+   "methodWhy": "The researchers manipulated whether students earned points and randomly assigned them to the two groups.",
+   "iv": "whether students earned points",
+   "ivWhat": "whether a student earned points toward small prizes for reading",
+   "intro": "Schools often reward reading. A reward that follows a behavior may make the behavior more frequent.",
+   "hypothesis": "fourth graders who earn points toward small prizes for reading at home log more minutes of reading than fourth graders who earn no points",
+   "concept": "Positive reinforcement",
+   "design": "Students were randomly assigned to a points group or a no-points group.",
+   "procedure": "For four weeks, students in the points group earned one point for every 15 minutes of reading at home and could trade 10 points for a small prize such as a bookmark. Students in the no-points group kept the same reading log with no points.",
+   "participants": {
+    "n": 64,
+    "html": "Sixty-four fourth graders (ages 9 and 10) from three elementary schools in a suburb of Minneapolis; 30 girls and 34 boys.",
+    "table": [["Ages", "9 and 10"], ["Girls and boys", "30 and 34"], ["Schools", "Three suburban elementary schools near Minneapolis"]]
+   },
+   "groups": [
+    { "name": "the points group", "short": "earning points", "label": "Points" },
+    { "name": "the no-points group", "short": "earning no points", "label": "No points" }
+   ],
+   "predict": [0, 1],
+   "dv": {
+    "name": "reading time",
+    "what": "the total minutes of reading a student logged, with a parent's signature on each entry",
+    "how": "added up over the four weeks of the program",
+    "howNear": "counted only in the week after the program ended",
+    "vague": "how motivated the students were to read",
+    "near": "the number of books each student owned at home",
+    "sentence": "Students recorded each reading session in a log that a parent signed; reading time was the total minutes logged over the four weeks.",
+    "res": "{g} logged a mean of {m} minutes",
+    "more": "logged more minutes of reading",
+    "axis": "Mean minutes read in 4 weeks",
+    "base": [380, 460],
+    "gap": [90, 160],
+    "nullGap": [5, 25],
+    "dec": 0
+   },
+   "ethics": [
+    { "g": "parent", "how": "Parents received a letter about the program and signed a permission form before their child took part." },
+    { "g": "assent", "how": "Each child agreed to take part after a teacher explained the reading log in plain words." },
+    { "g": "withdraw", "how": "Families were told that a child could stop at any time with no effect on grades." }
+   ],
+   "ethicsAbsent": ["debrief", "irb", "confidential"],
+   "generalize": [
+    { "key": "no", "pop": "high school students", "because": "every participant was a 9- or 10-year-old fourth grader, and older students may respond differently to small prizes." },
+    { "key": "yes", "pop": "fourth graders in other US suburban schools", "because": "the participants were 9- and 10-year-old fourth graders from three suburban US schools." }
+   ],
+   "flaw": "parents might have signed some logs without checking them."
+  },
+  {
+   "id": "trail-runners",
+   "topic": "social-situations",
+   "kind": "means",
+   "title": "Runners on a park trail",
+   "method": "naturalistic",
+   "methodWhy": "The researchers watched and timed runners in a public park without stepping in; nothing was manipulated, and runners chose whether to run near others.",
+   "iv": "whether another runner was in view",
+   "ivWhat": "whether another runner was within about 20 meters of the runner",
+   "intro": "People sometimes perform simple, well-practiced tasks faster when others are around.",
+   "hypothesis": "runners cover a marked 200-meter stretch faster when another runner is in view than when they are alone",
+   "concept": "Social facilitation",
+   "design": "The researchers observed runners in their natural setting and did not interact with them.",
+   "procedure": "On weekday mornings, two observers on a bench noted whether another runner was within about 20 meters of each runner who passed.",
+   "participants": {
+    "n": 80,
+    "html": "Eighty adult runners (estimated ages 20 to 60) on a public trail in one Denver park, observed on weekday mornings in May. Runners were not approached.",
+    "table": [["Ages (estimated)", "20 to 60"], ["Place", "One public park trail in Denver"], ["Times", "Weekday mornings in May"]]
+   },
+   "groups": [
+    { "name": "runners alone", "short": "running alone", "label": "Alone" },
+    { "name": "runners with another runner in view", "short": "having another runner nearby", "label": "Runner in view" }
+   ],
+   "predict": [0, 1],
+   "dv": {
+    "name": "running speed",
+    "what": "the time in seconds a runner took to cover a marked 200-meter stretch of the trail",
+    "how": "timed with a stopwatch by an observer who did not speak to the runner",
+    "howNear": "read from each runner's own fitness watch",
+    "vague": "how hard the runners were trying",
+    "near": "how many other people were in the park that morning",
+    "sentence": "The observers timed each runner over a marked 200-meter stretch with a stopwatch; a shorter time means a faster runner.",
+    "res": "{g} took a mean of {m} seconds",
+    "more": "took longer",
+    "axis": "Mean seconds for 200 meters",
+    "base": [44, 52],
+    "gap": [3, 6],
+    "nullGap": [0.2, 0.9],
+    "dec": 1
+   },
+   "ethics": [
+    { "g": "irb", "how": "A university review board approved observing public behavior before the study began." },
+    { "g": "confidential", "how": "The observers recorded no names, photos or descriptions that could identify a runner." }
+   ],
+   "ethicsAbsent": ["consent", "debrief", "withdraw"],
+   "generalize": [
+    { "key": "no", "pop": "people who do not run for exercise", "because": "everyone observed was an adult who chose to run on a park trail, and regular runners may react to others differently than non-runners do." },
+    { "key": "yes", "pop": "adult runners on other city park trails in the US", "because": "the participants were adult runners, about 20 to 60 years old, on a public city trail." }
+   ],
+   "flaw": "the observers estimated the runners' ages by eye."
+  },
+  {
+   "id": "walk-stress",
+   "topic": "health-psychology",
+   "kind": "means",
+   "title": "A walk before a stressful task",
+   "method": "experiment",
+   "methodWhy": "The researchers manipulated whether participants walked or sat and randomly assigned them to the two groups.",
+   "iv": "whether participants walked or sat",
+   "ivWhat": "whether a participant walked briskly or sat quietly for 20 minutes",
+   "intro": "Physical activity may change how strongly people react to a stressor.",
+   "hypothesis": "adults who walk briskly for 20 minutes before a stressful task report less stress during the task than adults who sit quietly",
+   "concept": "Coping with a stressor",
+   "design": "Participants were randomly assigned to walk briskly on a treadmill or to sit quietly, each for 20 minutes.",
+   "procedure": "Then every participant did the same five-minute timed mental-math task while a researcher watched.",
+   "participants": {
+    "n": 50,
+    "html": "Fifty adults (ages 30 to 55) who worked in offices in Seattle, recruited through a newspaper ad; 28 women and 22 men.",
+    "table": [["Ages", "30 to 55 (mean 41)"], ["Women and men", "28 and 22"], ["Work", "Office jobs in Seattle"]]
+   },
+   "groups": [
+    { "name": "the sitting group", "short": "sitting quietly", "label": "Sat" },
+    { "name": "the walking group", "short": "walking", "label": "Walked" }
+   ],
+   "predict": [0, 1],
+   "dv": {
+    "name": "stress",
+    "what": "a rating from 1 (no stress) to 10 (extreme stress) of how stressed the participant felt",
+    "how": "given right after the five-minute timed math task",
+    "howNear": "given on the morning before the session",
+    "vague": "how anxious and tense the participants were",
+    "near": "each participant's heart rate during the walk",
+    "sentence": "Right after the math task, each participant rated how stressed they felt from 1 (no stress) to 10 (extreme stress).",
+    "res": "{g} gave a mean rating of {m}",
+    "more": "reported more stress",
+    "axis": "Mean stress rating (1 to 10)",
+    "max": 10,
+    "base": [4, 5.2],
+    "gap": [1.2, 2.2],
+    "nullGap": [0.1, 0.4],
+    "dec": 1
+   },
+   "ethics": [
+    { "g": "debrief", "how": "Participants were not told at first that the math task was meant to be stressful; afterward, a researcher explained the true purpose and answered questions." },
+    { "g": "withdraw", "how": "Participants could stop the math task at any moment without losing their payment." },
+    { "g": "consent", "how": "Participants signed a consent form that described a walk or rest, a math task and a questionnaire." }
+   ],
+   "ethicsAbsent": ["parent", "confidential", "irb"],
+   "generalize": [
+    { "key": "no", "pop": "teenagers", "because": "every participant was an office worker aged 30 to 55, and younger people with different routines may respond differently." },
+    { "key": "yes", "pop": "adult office workers in other US cities", "because": "the participants were adults aged 30 to 55 who worked in offices in a large US city." }
+   ],
+   "flaw": "the participants knew whether they had walked."
+  }
+ ]
+}

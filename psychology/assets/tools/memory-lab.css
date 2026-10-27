@@ -49,6 +49,7 @@
 .ml-chip{fill:var(--ml-acc-tint);stroke:var(--ml-acc);stroke-opacity:.35;}
 .ml-chipt{fill:var(--ink);font-weight:800;font-size:14px;}
 .ml-zone{fill:var(--ml-acc-fill);}
+:root[data-theme="dark"] .ml-zone{fill:rgba(140,200,232,.07);}
 .ml-zt{fill:var(--ml-acc);font-weight:900;font-size:12.5px;letter-spacing:.02em;}
 .ml-now{fill:var(--ml-acc);fill-opacity:.12;stroke:var(--ml-acc);stroke-width:1.5;}
 .ml-imm{fill:none;stroke:var(--ml-acc);stroke-width:3;stroke-linejoin:round;}

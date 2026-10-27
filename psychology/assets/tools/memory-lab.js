@@ -36,7 +36,7 @@
   if(!T || !M || !M.memoryLab || M.memoryLab.stub) return;
   var ML = M.memoryLab, S = M.Stats(), esc = T.esc;
   var VIEWS = [{ v: 'list', label: 'List' }, { v: 'forget', label: 'Forgetting' }, { v: 'interf', label: 'Interference' }];
-  var N = 10, STUDY_MS = 1500, DELAY_S = 30, CLASS = 30;
+  var N = 10, STUDY_MS = 1500, DELAY_S = 30;
   var MEAS = null;
   function tw(t, size, weight){
     try{
@@ -62,7 +62,8 @@
     var view = 'list', LS = null, touched = false, nid = T.nid('ml');
     // List scene state
     var seed = 1 + Math.floor(Math.random() * 9999), words = ML.list(seed, N), phase = 'ready', at = -1, delayed = false, left = 0, timer = null, typed = [], result = null, countFrom = 0;
-    var cls = { imm: ML.simulate(11, CLASS, N, false).pct, del: ML.simulate(12, CLASS, N, true).pct };
+    // The typical curves: the model's chance of recall at each position.
+    var cls = { imm: M.repeat(N, function(i){ return 100 * ML.recallP(i + 1, N, false); }), del: M.repeat(N, function(i){ return 100 * ML.recallP(i + 1, N, true); }) };
     // Forgetting scene state
     var preset = 2, reviews = ML.PRESETS[2].reviews.slice();
     // Interference scene state
@@ -186,15 +187,15 @@
     function words_(){
       var head, sub = '', why = '';
       if(view === 'list'){
-        if(phase === 'ready'){ head = 'Study ten words, then recall them.'; sub = 'Choose when you recall, then press Start. The curve shows ' + CLASS + ' simulated learners.'; }
+        if(phase === 'ready'){ head = 'Study ten words, then recall them.'; sub = 'Choose when you recall, then press Start. The curves show the typical pattern.'; }
         else if(phase === 'study'){ head = 'Word ' + (at + 1) + ' of ' + N + '.'; sub = 'Just read each word once.'; }
         else if(phase === 'delay'){ head = 'Count backward by threes from ' + countFrom + ', out loud.'; sub = left + ' seconds left. This keeps the last words from being rehearsed.'; }
         else if(phase === 'recall'){ head = 'Type every word you remember, in any order.'; sub = ML.score(words, typed).n + ' so far. Press Done when you are out of words.'; }
-        else { var p = parts(result.hits); head = 'You recalled ' + result.n + ' of ' + N + '.'; sub = 'First 3: ' + p.f + ', middle 4: ' + p.m + ', last 3: ' + p.l + '. ' + (delayed ? 'After the counting, the class lost its recency effect.' : 'Most people recall the ends best.'); }
+        else { var p = parts(result.hits); head = 'You recalled ' + result.n + ' of ' + N + '.'; sub = 'First 3: ' + p.f + ', middle 4: ' + p.m + ', last 3: ' + p.l + '. ' + (delayed ? 'After counting, the end of the list usually loses its advantage.' : 'Most people recall the ends best.'); }
         why = '<p><b>Serial position effect.</b> Recall depends on where an item was in the list: the beginning and the end beat the middle, a U-shaped curve.</p>' +
           '<p><b>Primacy effect.</b> The first words get the most rehearsal, so more of them reach long-term memory.</p>' +
           '<p><b>Recency effect.</b> The last words are still in short-term memory when recall starts. Thirty seconds of counting backward displaces them, so recency disappears while primacy stays: evidence for separate short-term and long-term stores (the pattern Glanzer and Cunitz reported in 1966).</p>' +
-          '<p><b>One person is not a curve.</b> Your own row is one try; the curve is many learners. The class curve here is a teaching model of the published shape, not real data.</p>';
+          '<p><b>One person is not a curve.</b> Your own row is one try; a curve averages many learners. The curves here are a teaching model of the published shape, not real data.</p>';
       } else if(view === 'forget'){
         head = forgetLine();
         sub = reviews.length && reviews[reviews.length - 1] - reviews[0] < 0.5 ? 'Massed reviews come before any forgetting, so they add little.' : reviews.length ? 'Each review after some forgetting makes the curve fall more slowly.' : 'Without review, most is lost in the first days, then the curve levels off.';
@@ -230,7 +231,7 @@
     function nums(){
       var h = '';
       if(view === 'list'){
-        h = T.dataTable(['Position', 'Recall at once (class)', 'After 30 s (class)'].concat(result ? ['You'] : []), cls.imm.map(function(v, i){ return [String(i + 1), r0(v) + '%', r0(cls.del[i]) + '%'].concat(result ? [result.hits[i] ? 'recalled' : 'missed'] : []); }), 'Percent of ' + CLASS + ' simulated learners recalling each position');
+        h = T.dataTable(['Position', 'Recall at once (typical)', 'After 30 s (typical)'].concat(result ? ['You'] : []), cls.imm.map(function(v, i){ return [String(i + 1), r0(v) + '%', r0(cls.del[i]) + '%'].concat(result ? [result.hits[i] ? 'recalled' : 'missed'] : []); }), 'Typical percent recalled at each position (teaching model)');
         if(result && phase === 'done') h += '<p class="bt-small">The list: ' + words.map(esc).join(', ') + '.' + (result.extra.length ? ' Not on the list: ' + result.extra.map(esc).join(', ') + '.' : '') + '</p>';
       } else if(view === 'forget'){
         h = T.dataTable(['Day', 'No review', 'This schedule'], [1, 2, 7, 14, 30].map(function(d){ return [String(d), r0(ML.retention([], d)) + '%', r0(ML.retention(reviews, d)) + '%']; }), 'Percent kept (teaching model)');
@@ -287,13 +288,13 @@
       // primacy and recency zones
       g.push('<rect class="ml-zone" x="' + (x(0) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
       g.push('<rect class="ml-zone" x="' + (x(7) - (R - L) / N / 2).toFixed(1) + '" y="' + T0 + '" width="' + (3 * (R - L) / N).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '"/>');
-      g.push(txt(x(1), T0 + 16, 'Primacy', 'ml-zt'), txt(x(8), T0 + 16, 'Recency', 'ml-zt'));
+      g.push(txt(x(1), B - 10, 'Primacy', 'ml-zt'), txt(x(8), B - 10, 'Recency', 'ml-zt'));
       [0, 25, 50, 75, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });
       if(phase === 'study' && at >= 0) g.push('<rect class="ml-now" x="' + (x(at) - (R - L) / N / 2 + 2).toFixed(1) + '" y="' + T0 + '" width="' + ((R - L) / N - 4).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '" rx="6"/>');
       // the two class curves; the chosen condition is drawn strong
       function poly(a, c2, dim){ var d = dim ? ' is-dim' : ''; return '<polyline class="' + c2 + d + '" points="' + a.map(function(v, i){ return x(i).toFixed(1) + ',' + y(v).toFixed(1); }).join(' ') + '"/>' + a.map(function(v, i){ return '<circle class="' + c2 + '-pt' + d + '" cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="4.5"/>'; }).join(''); }
       g.push(poly(cls.imm, 'ml-imm', delayed), poly(cls.del, 'ml-del', !delayed));
-      var li = txt(x(9) - 8, y(cls.imm[9]) - 12, 'at once', 'ml-lab ml-c-imm', 'end'), ld = txt(x(9) - 8, y(cls.del[9]) + 22, 'after 30 s', 'ml-lab ml-c-del', 'end');
+      var li = txt(x(4.5), y(cls.imm[4]) - 14, 'recall at once', 'ml-lab ml-c-imm'), ld = txt(x(4.5), y(cls.del[4]) + 24, 'after 30 s of counting', 'ml-lab ml-c-del');
       g.push(li, ld);
       g.push('<line class="ml-axis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/>');
       for(var i = 0; i < N; i++) g.push(txt(x(i), B + 18, String(i + 1), 'ml-tv'));
@@ -303,7 +304,7 @@
         g.push(txt(L - 8, yy2 + 20, 'You', 'ml-axn', 'end'));
         result.hits.forEach(function(h, j){ var cx2 = x(j); g.push('<circle class="ml-you' + (h ? ' is-hit' : '') + '" cx="' + cx2.toFixed(1) + '" cy="' + (yy2 + 15) + '" r="' + (phone ? 10 : 12) + '"/>' + (h ? '<path class="ml-tick" d="M' + (cx2 - 5).toFixed(1) + ' ' + (yy2 + 15) + ' l3.5 4 l7 -8"/>' : '')); });
       }
-      var label = 'Serial position curve of ' + CLASS + ' simulated learners: recall at once ' + cls.imm.map(r0).join(', ') + ' percent by position; after 30 seconds of counting ' + cls.del.map(r0).join(', ') + ' percent. ' + (result ? listLine() : phaseLine());
+      var label = 'Typical serial position curves (a teaching model): recall at once ' + cls.imm.map(r0).join(', ') + ' percent by position; after 30 seconds of counting ' + cls.del.map(r0).join(', ') + ' percent. ' + (result ? listLine() : phaseLine());
       return { svg: g.join(''), label: label };
     }
 
