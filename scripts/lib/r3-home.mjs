@@ -1,5 +1,5 @@
 /* The course home, site redesign round 3 (docs/site-redesign.md, boards docs/redesign-r3/r10/boards/R10-Home-*):
-   one layout for all nine courses, chosen by Olivier from twelve versions (V09b, "cover band").
+   one layout for all ten courses, chosen by Olivier from twelve versions (V09b, "cover band").
 
    In order: the tall cover band (kicker, course name, two-tone headline, hand line, lede, buttons, pills,
    founder line, the cover drawing); "In this course" (the course map) beside a try-one question; the fact

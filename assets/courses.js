@@ -106,10 +106,11 @@
     {
       // As AP® Environmental Science (docs/appsych-spec.md decision 2): the
       // mark only in the full names, never in a URL; the key travels as its
-      // folder, "psychology". 'hidden' until published.
+      // folder, "psychology". Was 'hidden' until published; 'live' since the
+      // launch (docs/appsych-spec.md decision 13).
       key: 'appsych', short: 'Psychology', name: 'AP® Psychology', productName: 'AP® Psychology',
       path: '/psychology/', dir: 'psychology', storagePrefix: 'appsych_', rankLabel: 'Psychology rank',
-      searchLabel: 'Psychology', aliases: ['psychology', 'psych', 'psy'], paid: true, status: 'hidden', order: 10,
+      searchLabel: 'Psychology', aliases: ['psychology', 'psych', 'psy'], paid: true, status: 'live', order: 10,
     },
   ];
 

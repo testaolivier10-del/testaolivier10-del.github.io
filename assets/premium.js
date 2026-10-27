@@ -316,9 +316,9 @@
     },
     appsych: {
       name: 'AP® Psychology',
-      // Not on sale until the owner checklist (docs/appsych-spec.md decision 3):
-      // nothing is locked and no checkout opens. The Polar product for
-      // "psy-2027" is created at launch.
+      // Published (docs/appsych-spec.md decision 13) but not on sale until its
+      // Polar product exists (decision 3, launch checklist): nothing locked,
+      // no checkout.
       onSale: false,
       dailyFree: 15,
       // The free tier (docs/appsych-spec.md decision 9, proposed): Unit 1 and

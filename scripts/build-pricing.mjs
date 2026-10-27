@@ -117,7 +117,7 @@ const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
 /* The address terms.html and privacy.html publish. When hello@levlprep.com
    is set up (owner checklist), change it here and on those two pages. */
 const CONTACT_EMAIL = 'hello@levlprep.com';
-const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
 // The courses whose pass runs through a date (the AP® passes), for the rules and terms.html#fixed-date.
 const DATED = ORDER.filter((k) => COURSES[k].passes.some((p) => p.until));

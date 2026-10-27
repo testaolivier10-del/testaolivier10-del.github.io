@@ -184,8 +184,14 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('environmental-science'), 'apenv');
   assert.equal(A.parseCourse('apes'), 'apenv');
   assert.equal(A.parseCourse('envsci'), 'apenv');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv']);
+  // AP® Psychology (live since its launch): key appsych, named by its folder, aliases psych and psy.
+  assert.equal(A.urlKey('appsych'), 'psychology');
+  assert.equal(A.parseCourse('psychology'), 'appsych');
+  assert.equal(A.parseCourse('psych'), 'appsych');
+  assert.equal(A.parseCourse('psy'), 'appsych');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys', 'apcalc', 'apstat', 'apenv', 'appsych']);
   eq(A.scopeKeys('apenv'), ['apenv']);
+  eq(A.scopeKeys('appsych'), ['appsych']);
   eq(A.scopeKeys('ochem'), ['ochem']);
   eq(A.scopeKeys('apphys'), ['apphys']);
   eq(A.scopeKeys('apcalc'), ['apcalc']);

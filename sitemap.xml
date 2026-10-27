@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://levlprep.com/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -43,6 +43,11 @@
   <url>
     <loc>https://levlprep.com/physics/</loc>
     <lastmod>2026-10-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/</loc>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -212,7 +217,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/flashcards.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -232,7 +237,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/study-notes.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -247,7 +252,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/flashcards.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -257,7 +262,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/how-to-study.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -267,7 +272,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/practice.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -307,7 +312,37 @@
   </url>
   <url>
     <loc>https://levlprep.com/premium.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/exams.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/flashcards.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/glossary.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/learn.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/practice.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools.html</loc>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -3317,202 +3352,202 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/abdominal-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/airway-management.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/allergic-reactions.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/anatomy-and-physiology.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/behavioral-and-psychiatric-emergencies-and-suicide.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/bleeding-control.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/cardiac-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/chest-and-abdominal-trauma.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/communication-and-documentation.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/diabetic-emergencies-and-altered-mental-status.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/emergencies-for-patients-with-special-challenges.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/ems-operations.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/environmental-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/general-pharmacology.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/hazardous-materials-mcis-and-incident-management.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/hematologic-and-renal-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/highway-safety-and-vehicle-extrication.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/infectious-diseases-and-sepsis.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/introduction-to-ems.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/life-span-development.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/lifting-and-moving-patients.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/medical-legal-and-ethical-issues.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/medical-terminology.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/multisystem-trauma.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/musculoskeletal-trauma.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/obstetric-and-gynecologic-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/poisoning-and-overdose-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/primary-assessment.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/principles-of-assessment.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/principles-of-pathophysiology.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/reassessment.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/respiratory-emergencies.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/resuscitation.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/scene-size-up.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/secondary-assessment.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/soft-tissue-trauma.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/trauma-to-the-head-neck-and-spine.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/ventilation-and-oxygen-equipment.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/vital-signs-and-monitoring-devices.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/notes/well-being-of-the-emt.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -8772,52 +8807,52 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/acyl-substitution.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/addition.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/aldol.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/carbonyl-addition.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/claisen.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/e1.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/e2.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/eas.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/sn1.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/sn2.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -10142,22 +10177,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/lessons/bleeding-direct-pressure.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/lessons/internal-bleeding-and-shock.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/lessons/primary-assessment.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/lessons/tourniquets-and-wound-packing.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -10318,6 +10353,666 @@
   <url>
     <loc>https://levlprep.com/physics/unit-tests/unit-8.html</loc>
     <lastmod>2026-10-26</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/formula-sheet.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-development-methods-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-forgetting-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-health-psychology-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-heredity-environment-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-motivation-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-operant-conditioning-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-research-methods-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-retrieving-memories-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-sleep-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-social-cognitive-learning-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-social-cognitive-trait-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-social-emotional-development-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-social-situations-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-social-situations-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-stats-correlation-aaq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-treatment-anxiety-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/frq/frq-treatment-depression-ebq.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/justify.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/attitudes.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/attribution.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/brain.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/classical-conditioning.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/cognitive-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/development-methods.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/disorders.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/emotion.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/encoding-memories.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/explaining-disorders.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/forgetting.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/gender-orientation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/health-psychology.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/heredity-environment.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/intelligence.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/language-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/memory-intro.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/motivation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/nervous-system.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/neural-firing.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/operant-conditioning.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/perception.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/physical-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/positive-psychology.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/psychodynamic-humanistic.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/research-ethics.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/research-methods.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/research-sampling.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/retrieving-memories.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/sensation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/sleep.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/social-cognitive-learning.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/social-cognitive-trait.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/social-emotional-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/social-situations.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/stats-correlation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/stats-descriptive.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/stats-normal.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/stats-significance.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/storing-memories.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/thinking.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/lessons/treatment.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/attitudes.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/attribution.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/brain.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/classical-conditioning.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/cognitive-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/development-methods.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/disorders.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/emotion.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/encoding-memories.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/explaining-disorders.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/forgetting.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/gender-orientation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/health-psychology.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/heredity-environment.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/intelligence.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/language-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/memory-intro.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/motivation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/nervous-system.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/neural-firing.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/operant-conditioning.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/perception.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/physical-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/positive-psychology.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/psychodynamic-humanistic.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/research-ethics.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/research-methods.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/research-sampling.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/retrieving-memories.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/sensation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/sleep.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/social-cognitive-learning.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/social-cognitive-trait.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/social-emotional-development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/social-situations.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/stats-correlation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/stats-descriptive.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/stats-normal.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/stats-significance.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/storing-memories.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/thinking.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/notes/treatment.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/teachers.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/article-studio.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/brain-map.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/conditioning-lab.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/development.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/evidence-builder.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/memory-lab.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/neuron.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/sensation.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/social-influence.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/tools/stats-lab.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-sheets/skills-research.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-sheets/unit-1.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-sheets/unit-2.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-sheets/unit-3.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-sheets/unit-4.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-sheets/unit-5.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-tests/unit-1.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-tests/unit-2.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-tests/unit-3.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-tests/unit-4.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/unit-tests/unit-5.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/units/skills-research.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/units/unit-1.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/units/unit-2.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/units/unit-3.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/units/unit-4.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/psychology/units/unit-5.html</loc>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

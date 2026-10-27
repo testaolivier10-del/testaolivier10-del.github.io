@@ -97,9 +97,11 @@ test('nothing published: no topic pages, every page noindex', () => {
   for (const f of html) assert.match(readFileSync(f, 'utf8'), /<meta name="robots" content="noindex/, f);
 });
 
-test('the real published list is empty until a unit passes its review, and the course is registered hidden', () => {
-  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters, []);
-  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'appsych'[\s\S]*?aliases: \['psychology', 'psych', 'psy'\], paid: true, status: 'hidden', order: 10/);
+test('the real published list holds every chapter since the launch, and the course is registered live', () => {
+  assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters,
+    ['skills-research', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5']);
+  assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'appsych'[\s\S]*?aliases: \['psychology', 'psych', 'psy'\], paid: true, status: 'live', order: 10/);
+  assert.match(readFileSync('assets/premium.js', 'utf8'), /appsych: \{[\s\S]*?onSale: false,/, 'not on sale until the owner checklist');
 });
 
 test('the course home has its own headline, cerulean and its own cover, not Environmental Science\'s', () => {

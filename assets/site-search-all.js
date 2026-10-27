@@ -33,7 +33,7 @@
     { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'live' },
     { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'live' },
     { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'live' },
-    { key: 'appsych', searchLabel: 'Psychology', name: 'AP® Psychology', dir: 'psychology', aliases: ['psychology', 'psych', 'psy'], status: 'hidden' },
+    { key: 'appsych', searchLabel: 'Psychology', name: 'AP® Psychology', dir: 'psychology', aliases: ['psychology', 'psych', 'psy'], status: 'live' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
