@@ -35,6 +35,7 @@
 <script src="../assets/site-chrome.js" defer></script>
 <script src="../assets/site-search.js" defer></script>
 <script src="../assets/course/hub.js" defer></script>
+<script src="assets/search-index.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/course/base.css">
 <link rel="stylesheet" href="../assets/course/hub.css">
@@ -71,6 +72,20 @@
 </script>
 <link rel="stylesheet" href="../assets/course/r3.css">
 <link rel="stylesheet" href="../assets/course/r3-reading.css">
+<style>
+  /* Phones (audit 2026-10): using the box folds the cover band, so the results are on the first screen. */
+  @media (max-width:760px){
+    body.sr-active .r3-pagetop,body.sr-active [data-crumb]{display:none;}
+    body.sr-active .r3-search .cx-sr{margin-top:8px;}
+    .cx-sr-filters{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px;}
+    .cx-sr-filters::-webkit-scrollbar{display:none;}
+    .cx-sr-filters .cx-pill{flex:none;}
+  }
+  .r3-search .cx-sr-gh{font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;padding:0;border:0;}
+  .r3-search .cx-sr-gh span{font:800 12px var(--font-mono);letter-spacing:0;color:var(--muted);}
+  .cx-sr-group[aria-label="Tools"] .cx-sr-hit{border-color:color-mix(in srgb,var(--cink) 45%,var(--line));}
+  .cx-sr-group[aria-label="Tools"] .cx-sr-meta::before{content:"Open in ";color:var(--muted);font-weight:700;}
+</style>
 </head>
 <body>
   <header id="site-header"></header>
@@ -103,44 +118,15 @@
 // page is deferred so the page can paint before they arrive, and deferred
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
-  const PAGES = [
-    { file: 'study-notes.html', title: 'Study notes' },
-    { file: 'glossary.html', title: 'Glossary' },
-    { file: 'mnemonics.html', title: 'Mnemonics' },
-    { file: 'flowcharts.html', title: 'Flow diagrams' },
-    { file: 'skillsheets.html', title: 'Skills guide' },
-    { file: 'scenario-sim.html', title: 'Scenarios' },
-    { file: 'exam-day.html', title: 'Exam day' },
-  ];
-
-  function extractChunks(doc, page){
-    const chunks = [];
-    let heading = page.title;
-    const nodes = doc.body.querySelectorAll('h1,h2,h3,h4,p,li,dt,dd,td,summary');
-    nodes.forEach(el => {
-      const tag = el.tagName.toLowerCase();
-      const text = (el.textContent || '').replace(/\s+/g, ' ').trim();
-      if(!text) return;
-      if(/^h[1-4]$/.test(tag)){
-        heading = text;
-        return;
-      }
-      if(text.length < 12) return;
-      chunks.push({ page: page.title, file: page.file, heading, text, fragment: 1 });
-    });
-    return chunks;
-  }
-
   // The practice question bank lives in its own JSON files (see practice.html),
-  // rather than being buried in that page's inline script — which is what makes
+  // rather than being buried in that page's inline script, which is what makes
   // indexing it here possible at all.
   //
   // Both halves, and both in parallel: searching questions without their
-  // explanations would lose most of what there is to match on — the
-  // explanations are the longest prose in the bank. practice.html defers the
+  // explanations would lose most of what there is to match on (the
+  // explanations are the longest prose in the bank). practice.html defers the
   // second file because it can show a question without it; this page cannot
-  // index one without it, so it waits for both. They arrive together rather
-  // than one after the other.
+  // index one without it, so it waits for both.
   async function fetchQuestionChunks(){
     const [core, explanations] = await Promise.all([
       fetch('assets/questions-core.json').then(r => r.json()),
@@ -154,8 +140,7 @@ document.addEventListener('DOMContentLoaded', function(){
       page: 'Practice questions',
       meta: 'Practice question',
       // Deep link straight to the one question, which practice.html opens on its
-      // own in review mode. Without the index a question result could only land
-      // the reader on the exam start screen with no way back to what they found.
+      // own in review mode.
       file: 'practice.html?q=' + (typeof q.id === 'number' ? q.id : i),
       heading: q.domain + (q.topic ? ' — ' + q.topic : ''),
       text: q.q + ' ' + (q.explain || ''),
@@ -163,26 +148,29 @@ document.addEventListener('DOMContentLoaded', function(){
     }));
   }
 
-  // Every source is allowed to fail on its own: offline, a reader gets
-  // whatever is cached, and the status line says what is missing.
-  function pageChunks(page){
-    return fetch(page.file).then(res => { if(!res.ok) throw 0; return res.text(); }).then(html => {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      doc.querySelectorAll('script,style').forEach(n => n.remove());
-      return extractChunks(doc, page);
-    }).catch(() => []);
-  }
-  // Matching, ranking and snippet highlighting live in /assets/site-search.js
-  // and the page itself (box, filters, results, keyboard) in
-  // /assets/course/hub.js, both shared with every course.
+  /* Results grouped by type, tools first (audit 2026-10): a tool result opens
+     the tool on the thing (assets/search-index.js); notes open the chapter at
+     the section. Matching, ranking and highlighting are /assets/site-search.js;
+     the box, filters, groups and keyboard are /assets/course/hub.js. */
+  const X = window.NremtSearchIndex;
   const sr = window.LevlHub.search({
     mount: document.getElementById('app'), prefix: 'nremt-sr', label: 'Search this course',
     placeholder: 'Search the course… (e.g. “OPQRST”, “tension pneumothorax”)',
-    kinds: ['Practice questions', 'Study notes', 'Glossary', 'Mnemonics', 'Flow diagrams', 'Skills guide', 'Scenarios', 'Exam day'],
-    engine: window.LevlSearch, allHref: '../search.html',
+    kinds: ['Tools', 'Study notes', 'Practice questions', 'Glossary', 'Mnemonics', 'Skills guide', 'Exam day'],
+    engine: window.LevlSearch, allHref: '../search.html', perGroup: 5,
   });
-  sr.add(Promise.all(PAGES.map(pageChunks)).then(all => all.reduce((a, b) => a.concat(b), [])), 'the notes and reference pages');
+  sr.add(X.tools(), 'the tools');
+  sr.add(X.notes(), 'the study notes');
+  sr.add(X.pages(), 'the reference pages');
   sr.add(fetchQuestionChunks(), 'the practice question bank');
+
+  /* On a phone the cover band takes the first screen: once the box is in
+     use, the band folds away and the results sit under the box. */
+  const box = sr.box;
+  const phone = () => matchMedia('(max-width:760px)').matches;
+  const fold = () => { document.body.classList.toggle('sr-active', phone() && (!!box.value.trim() || document.activeElement === box)); };
+  ['focus', 'blur', 'input'].forEach(t => box.addEventListener(t, () => setTimeout(fold)));
+  fold();
 });
 </script>
 <script src="assets/nav.js" defer></script>

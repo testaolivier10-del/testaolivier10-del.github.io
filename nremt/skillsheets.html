@@ -501,8 +501,13 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     var c = card(name && name.firstChild ? name.firstChild.textContent : '');
     var hs = run.querySelector('.run-hearsay'), cs = run.querySelector('.run-crit-sub');
-    why.innerHTML = INTRO + (hs ? '<p class="ls-sub"><b>The limit.</b> ' + hs.innerHTML + '</p>' : '') + (cs ? '<p class="ls-sub"><b>The critical criteria.</b> ' + cs.innerHTML + '</p>' : '') + (c ? '<h3 class="ls-h">' + c.querySelector('h3').textContent + '</h3>' +
-      [].filter.call(c.children, function(x){ return x.tagName !== 'H3'; }).map(function(x){ return '<p>' + x.innerHTML + '</p>'; }).join('') : '');
+    // The patient's program notes and figure credit read here, not on the stage (audit 2026-10).
+    var pn = run.querySelector('.sp-notes ul'), pc = run.querySelector('.sp-credit');
+    why.innerHTML = INTRO + (hs ? '<p class="ls-sub"><b>The limit.</b> ' + hs.innerHTML + '</p>' : '') + (cs ? '<p class="ls-sub"><b>The critical criteria.</b> ' + cs.innerHTML + '</p>' : '') +
+      (pn ? '<h3 class="ls-h">What varies by program</h3><ul class="sk-ls-notes">' + pn.innerHTML + '</ul>' : '') +
+      (c ? '<h3 class="ls-h">' + c.querySelector('h3').textContent + '</h3>' +
+      [].filter.call(c.children, function(x){ return x.tagName !== 'H3'; }).map(function(x){ return '<p>' + x.innerHTML + '</p>'; }).join('') : '') +
+      (pc ? '<p class="ls-sub">' + pc.innerHTML + '</p>' : '');
     if(st === 'run'){
       studio.caption('<b>Say it out loud,</b> then tick it. Finish when the station is done.');
     } else {
@@ -514,6 +519,15 @@ document.addEventListener('DOMContentLoaded', function(){
   /* One phase at a time: the shared stepper over the run's checkboxes. A tick
      moves on to the next phase; Back and Next walk them; the last one is
      followed by Finish. */
+  /* The run's buttons (audit 2026-10: Next, Finish and Pick another station
+     competed and sat half off-screen): Next stays the one primary; Finish and
+     the station switch become one short row under it. */
+  function tidyActs(){
+    var f = dock.querySelector('#runFinish'), q = dock.querySelector('#runQuit');
+    if(f && f.textContent !== 'Finish the run'){ f.textContent = 'Finish the run'; f.setAttribute('aria-label', 'Finish and see the run'); }
+    if(q && q.textContent !== 'Other station'){ q.textContent = 'Other station'; q.setAttribute('aria-label', 'Pick another station'); }
+  }
+  new MutationObserver(tidyActs).observe(dock, { childList: true });
   new MutationObserver(function(){
     var wrap = dock.querySelector('.run-stepper');
     if(wrap && wrap !== stepped){
@@ -531,6 +545,13 @@ document.addEventListener('DOMContentLoaded', function(){
   new MutationObserver(paint).observe(run, { childList: true });
   paint();
   studio.hint({ target: run.querySelector('.run-station'), text: 'Pick a station to run', round: 16 });
+  // From Search: skillsheets.html#station-<name> starts that station.
+  var sm = /^#station-([a-z0-9-]+)$/.exec(location.hash);
+  if(sm){
+    var slug = function(t){ return t.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); };
+    var b = [].filter.call(run.querySelectorAll('.run-station'), function(x){ var n = x.querySelector('.n'); return n && slug(n.firstChild.textContent) === sm[1]; })[0];
+    if(b) b.click();
+  }
 });
 </script>
 </body>

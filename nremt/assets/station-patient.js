@@ -545,6 +545,22 @@
       el('circle', { cx:240, cy:112, r:11, fill:'#5b6970', stroke:'#3c474c', 'stroke-width':1.2 }, P.bvm);
       el('rect', { x:235, y:52, width:10, height:58, rx:3, fill:'#6b7a81' }, P.bvm);
       P.bvmHands = el('g', {}, P.bvm);
+      // help on the way: a radio by the shoulder, with signal arcs (stays once called)
+      P.radio = el('g', { class:'sp-item', filter:'url(#' + u + 'Drop)' }, o);
+      el('rect', { x:372, y:236, width:26, height:44, rx:5, fill:'#2c3438', stroke:'#151a1d', 'stroke-width':1.2 }, P.radio);
+      el('rect', { x:377, y:244, width:16, height:11, rx:2, fill:'#9fd3c0' }, P.radio);
+      el('rect', { x:390, y:220, width:4, height:18, rx:2, fill:'#2c3438' }, P.radio);
+      el('path', { d:'M402 226 q8 8 0 16 M408 220 q14 14 0 28', stroke:'#0f5c50', 'stroke-width':2.4, fill:'none', 'stroke-linecap':'round' }, P.radio);
+      // the suction unit, set up and running beside the head (stays once prepared)
+      P.unit = el('g', { class:'sp-item', filter:'url(#' + u + 'Drop)' }, o);
+      el('rect', { x:300, y:-24, width:58, height:44, rx:8, fill:'#e9eef0', stroke:'#8fa0a7', 'stroke-width':1.4 }, P.unit);
+      el('circle', { cx:319, cy:-2, r:10, fill:'#fff', stroke:'#6f8f99', 'stroke-width':1.4 }, P.unit);
+      el('path', { d:'M319 -2 l6 -6', stroke:'#0f5c50', 'stroke-width':2, 'stroke-linecap':'round' }, P.unit);
+      el('circle', { cx:345, cy:8, r:4, fill:'#3cb371' }, P.unit);
+      // the pulse rechecked after ventilation started: a small check by the neck that stays
+      P.rechk = el('g', { class:'sp-item' }, o);
+      el('circle', { cx:L.carotid[0] - 34, cy:L.carotid[1] + 4, r:12, fill:'#0f5c50' }, P.rechk);
+      el('path', { d:'M' + (L.carotid[0] - 40) + ' ' + (L.carotid[1] + 4) + ' l4 4 l8 -8', stroke:'#fff', 'stroke-width':2.6, fill:'none', 'stroke-linecap':'round', 'stroke-linejoin':'round' }, P.rechk);
     },
 
     update:function(P, st){
@@ -595,6 +611,9 @@
         hand(P.bvmHands, { uid:P.uid, x:282, y:-60, rot:-96, s:0.84, gloved:g2 });
       }
       P.stomach.setAttribute('opacity', Math.min(1, st.gastric || 0).toFixed(2));
+      P.show(P.radio, has(d, 'help'));
+      P.show(P.unit, has(d, 'prep'));
+      P.show(P.rechk, has(d, 'recheck') && !P.showing('recheck'));
       P.breathing = bvmOn;
     },
 

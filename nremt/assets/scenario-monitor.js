@@ -345,12 +345,14 @@
     var r = function(x){ return Math.round(x); };
     set('hr', t.pulseless ? '0' : s.hr == null ? '—' : r(s.hr), t.pulseless ? 'low' : judge('hr', s.hr, m));
     set('spo2', s.spo2 == null ? '—' : r(s.spo2), judge('spo2', s.spo2, m));
+    // No saturation in the case yet: the probe is not on, which is what a real monitor would show (audit 2026-10).
+    el.querySelector('.mon-tile[data-k="spo2"] .mon-u').textContent = s.spo2 == null ? 'probe not on yet' : '%';
     set('bp', s.sys == null ? '—' : r(s.sys) + '/' + r(s.dia), judge('sbp', s.sys, m));
     set('rr', s.rr == null ? (t.rrText === 'assisted' ? 'BVM' : t.rrText === 'agonal' ? 'agonal' : '—') : r(s.rr), t.rrText === 'assisted' || t.rrText === 'agonal' ? null : judge('rr', s.rr, m));
     var rrTile = el.querySelector('.mon-tile[data-k="rr"] .mon-u');
     rrTile.textContent = t.rrText === 'assisted' ? (s.rr == null ? 'assisted' : '/min, assisted') : '/min';
     el.querySelector('[data-off="ecg"]').textContent = t.pulseless ? 'No pulse' : s.hr == null ? 'Not measured' : '';
-    el.querySelector('[data-off="pleth"]').textContent = s.spo2 == null ? 'No reading' : '';
+    el.querySelector('[data-off="pleth"]').textContent = s.spo2 == null ? 'Pulse ox not on yet' : '';
   };
 
   /* Stylized traces. The ECG is a rate marker drawn as a generic complex, not

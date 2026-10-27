@@ -2265,16 +2265,66 @@ function renderPicker(){
     return;
   }
   document.querySelector('.picker-cue').hidden = false;
-  grid.innerHTML = SCENARIOS.map(s => `
+  const list = pickCat === 'all' ? SCENARIOS : SCENARIOS.filter(s => catOf(s) === pickCat);
+  const counts = {}; SCENARIOS.forEach(s => { const c = catOf(s); counts[c] = (counts[c] || 0) + 1; });
+  const chips = document.getElementById('pickerCats');
+  if (chips) chips.innerHTML = [['all', 'All calls', SCENARIOS.length]].concat(CATS.filter(c => counts[c.k]).map(c => [c.k, c.label, counts[c.k]]))
+    .map(([k, l, n]) => `<button type="button" data-cat="${k}" aria-pressed="${pickCat === k}">${k === 'all' ? '' : catIcon(k)}${l}<span>${n}</span></button>`).join('');
+  grid.innerHTML = list.map(s => `
     <button type="button" class="scenario-card" data-scenario="${s.id}">
-      <div class="scenario-domain">${s.domain}</div>
+      <span class="scenario-ico" data-cat="${catOf(s)}" aria-hidden="true">${catIcon(catOf(s))}</span>
+      <span class="scenario-txt">
+      <span class="scenario-domain">${s.domain}</span>
       <h3>${s.title}</h3>
       <p>${s.blurb}</p>
+      </span>
     </button>
   `).join('');
   grid.querySelectorAll('[data-scenario]').forEach(btn => {
     btn.addEventListener('click', () => startScenario(btn.dataset.scenario));
   });
+}
+/* The picker's categories (audit 2026-10: 26 text-only cards). Each call's
+   domain line decides its group, first match wins, so a pediatric arrest is
+   under Pediatrics. The icons are small line drawings, one per group. */
+const CATS = [
+  { k: 'peds', label: 'Pediatrics', re: /Pediatric/ },
+  { k: 'ob', label: 'Obstetrics', re: /Obstetric/ },
+  { k: 'trauma', label: 'Trauma', re: /Trauma/ },
+  { k: 'arrest', label: 'Cardiac arrest', re: /Cardiac Arrest/ },
+  { k: 'behav', label: 'Behavioral', re: /Behavioral/ },
+  { k: 'env', label: 'Environmental', re: /Environmental/ },
+  { k: 'med', label: 'Medical', re: /./ },
+];
+const CAT_ICON = {
+  peds: '<circle cx="12" cy="7" r="3.2"/><path d="M7.5 21v-4.5c0-2.6 2-4.7 4.5-4.7s4.5 2.1 4.5 4.7V21"/><path d="M6 13.5l2.4 1.4M18 13.5l-2.4 1.4"/>',
+  ob: '<circle cx="12" cy="5.5" r="2.6"/><path d="M9.5 21v-6.2c-1.6-.9-2.3-2.6-1.6-4.3.6-1.6 2.2-2.5 3.9-2.3 3.4.4 5.6 3.5 5.2 6.8-.3 2.2-1.9 3.6-3.6 3.9V21"/>',
+  trauma: '<rect x="3.5" y="9" width="17" height="6" rx="3" transform="rotate(-45 12 12)"/><path d="M10.6 10.6l2.8 2.8M12 9.2l2.8 2.8M9.2 12l2.8 2.8"/>',
+  arrest: '<path d="M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.7-7 10-7 10z"/><path d="M12.8 8.5l-2.3 3.7h3l-2.3 3.8"/>',
+  behav: '<path d="M14.5 20v-3h2a2 2 0 0 0 2-2v-2.5l1.6-.8-1.6-3A6.5 6.5 0 0 0 6 9c0 2.2.9 3.8 2.3 5V20"/><path d="M10.5 9.5a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.5"/>',
+  env: '<circle cx="8" cy="8" r="3"/><path d="M8 2.5v1.2M8 12.3v1.2M2.5 8h1.2M12.3 8h1.2"/><path d="M3 20l6.5-7.5 3.5 4 2.5-2.8L21 20z"/>',
+  med: '<path d="M6 3.5v5a4 4 0 0 0 8 0v-5"/><path d="M10 12.5V15a4.5 4.5 0 0 0 9 0v-2"/><circle cx="19" cy="11" r="2"/>',
+};
+function catOf(s){ return (CATS.find(c => c.re.test(s.domain)) || CATS[CATS.length - 1]).k; }
+function catIcon(k){ return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + (CAT_ICON[k] || CAT_ICON.med) + '</svg>'; }
+let pickCat = 'all';
+(function(){
+  const grid = document.getElementById('pickerGrid');
+  const chips = document.createElement('div'); chips.id = 'pickerCats'; chips.className = 'picker-cats';
+  chips.setAttribute('role', 'group'); chips.setAttribute('aria-label', 'Filter calls by kind');
+  grid.parentNode.insertBefore(chips, grid);
+  chips.addEventListener('click', e => {
+    const b = e.target.closest('[data-cat]'); if (!b) return;
+    pickCat = b.dataset.cat; renderPicker();
+    const again = chips.querySelector('[data-cat="' + pickCat + '"]'); if (again) again.focus();
+    const scr = document.getElementById('pickerScreen'); if (scr) scr.scrollTop = 0;
+  });
+})();
+/* The call after this one, in the picker's order (within its category when one is chosen). */
+function nextScenario(){
+  const list = pickCat === 'all' ? SCENARIOS : SCENARIOS.filter(s => catOf(s) === pickCat);
+  const i = list.findIndex(s => s.id === currentScenario.id);
+  return i >= 0 ? list[(i + 1) % list.length] : SCENARIOS[(SCENARIOS.indexOf(currentScenario) + 1) % SCENARIOS.length];
 }
 
 function startScenario(id){
@@ -2463,8 +2513,14 @@ function renderNode(consequenceText){
           <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
         </div>
         ${missedSteps ? `<p class="debrief-review">${missedSteps} skipped or out-of-order step${missedSteps === 1 ? '' : 's'} went to your <a href="review.html">Review queue</a>. Each leaves it when you take the better choice on a later run.</p>` : ''}
-        ${window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id],
-          also: [{ label: 'Try this scenario again', act: () => startScenario(currentScenario.id) }] }) : ''}`;
+        <div class="sim-end-acts">
+          <button type="button" class="ls-btn ls-pri" id="simAgain">Try this call again</button>
+          <button type="button" class="ls-btn ls-pri sim-next" id="simNext"><span>Next call</span><small>${nextScenario().title}</small></button>
+        </div>
+        ${window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id] }) : ''}`;
+      const nxt = nextScenario();
+      document.getElementById('simAgain').addEventListener('click', () => startScenario(currentScenario.id));
+      document.getElementById('simNext').addEventListener('click', () => startScenario(nxt.id));
       box.innerHTML = `
       <span class="ending-badge ${node.ending}">${outcome}</span>
       <p class="node-text">${node.text}</p>
@@ -2550,7 +2606,9 @@ function renderNode(consequenceText){
     studio.root.setAttribute('data-sim', 'call');
     studio.pills(hesitateTo ? [{ html: 'Time-critical', tone: 'bad' }] : [], 'right');
     // The caption is the situation; what the last choice did lands on the stage.
+    // The opening call is never clamped: its details are the case (audit 2026-10).
     studio.caption(node.text);
+    studio.root.toggleAttribute('data-sim-first', !pathLog.length);
     const what = box.querySelector('.sim-ls-what');
     if (what) { what.hidden = !consequenceText; what.innerHTML = consequenceText ? '<b>What happened.</b> ' + consequenceText : ''; }
     studioWhy();

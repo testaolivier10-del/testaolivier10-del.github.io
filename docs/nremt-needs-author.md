@@ -14,7 +14,7 @@ Decided (2026-10-26, Olivier):
 
 Open: none.
 
-## Exam item types and the adaptive exam (2026-10-27, `docs/tools-upgrade.md`)
+## Exam item types and the adaptive exam (2026-10-27, `docs/tools-upgrade-2026-10.md`)
 
 Open, for Olivier:
 
@@ -33,3 +33,19 @@ Open, for Olivier:
 5. **Reviewer notes left as is:** 2118 suctioning without known airborne disease is keyed eye and face protection
    (some services treat suctioning as aerosol-generating and want an N95); 2144 (diabetic emergencies) stays tagged
    Primary Assessment. Change either if your program teaches otherwise.
+
+Open (tool audit fixes, 2026-10-27, branch fix-nremt-tools):
+
+- **Reference cards, score readings.** The GCS bands (15 normal, 13 to 14 mild, 9 to 12 moderate, 8 or below severe), the APGAR
+  bands (7 to 10 reassuring, 4 to 6 moderately abnormal, 0 to 3 low, ventilate for apnea, gasping or a heart rate
+  under 100 whatever the total; compressions if the heart rate stays under 60 after 30 seconds of effective ventilation) and the pediatric assessment triangle categories (appearance alone: systemic; breathing alone:
+  respiratory distress; skin alone: compensated shock; appearance plus breathing: respiratory failure; appearance
+  plus skin: decompensated shock; all three: cardiopulmonary failure) are written in `nremt/assets/ref-cards.js`.
+  Breathing plus skin with a normal appearance has no standard name; the tool says "both abnormal, still
+  compensating". Confirm the wording against the textbook the course follows.
+- **Skill station, live order flags.** A critical step ticked after a later one is flagged "out of order" on the run
+  and in the result. Only two official criteria light from order by themselves (No PPE, and only when a hands-on step was
+  ticked before BSI, since calling for help or a scene size-up first is not a failure; on BVM, no suctioning before
+  ventilating); the rest are flagged, not scored. Confirm that is the right line for examiners' practice.
+- **Formulary, bystander nitroglycerin card.** Its verdict now says why (an EMT assists only with the patient's own
+  prescription) instead of quoting the indication line, which read as a reason to give. Confirm the wording.

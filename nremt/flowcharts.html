@@ -840,7 +840,9 @@
   if(mode) mode.addEventListener('click', function(){ setTimeout(sync, 0); });
   new MutationObserver(sync).observe(host, { attributes: true, attributeFilter: ['hidden'] });
   sync();
-  window.NremtFlowPick = { show: function(id){ pairs.forEach(function(p, k){ if(p.h.id === id) show(k); }); } };
+  window.NremtFlowPick = { show: function(id){ pairs.forEach(function(p, k){ if(p.h.id === id) show(k); }); },
+    // Read mode's short name for a diagram, by its title (Build and Drill use it too).
+    shortName: function(title){ var hit = null; pairs.forEach(function(p){ if(p.h.textContent.replace(/\s+/g, ' ').trim() === String(title).trim()) hit = p; }); return hit ? short(hit.h.textContent, hit.h.id) : title; } };
   window.addEventListener('beforeprint', function(){ pairs.forEach(function(p){ p.h.hidden = false; if(p.card) p.card.hidden = false; }); });
   window.addEventListener('afterprint', fromHash);
 })();
@@ -862,6 +864,13 @@ document.addEventListener('DOMContentLoaded', function(){
   var mode = $('flowMode'), chips = $('flowChips'), host = $('flowDiagrams');
   var dock = document.createElement('div'); dock.id = 'flowDrillDock'; dock.className = 'fl-ls-drill';
   chips.classList.add('ls-scroll');
+  /* Read mode drawn as a flowchart (flowcharts.css): each arm's answer becomes
+     a tab on the fork. The text is unchanged (flow-drill.js and flow-build.js
+     read the same words). */
+  host.querySelectorAll('.flow-branch').forEach(function(br){
+    br.querySelectorAll(':scope > div > .branch-label').forEach(function(l){ var t = document.createElement('span'); t.className = 'fc-tab'; while(l.firstChild) t.appendChild(l.firstChild); l.appendChild(t); });
+    if(br.children.length > 3) br.classList.add('is-many');
+  });
   // The diagram scrolls inside the stage: reachable by keyboard.
   window.NremtStudio.scrollable(host, 'Diagram');
   window.NremtStudio.scrollable([$('flowBuild'), $('flowDrill')], 'Board');
@@ -885,7 +894,8 @@ document.addEventListener('DOMContentLoaded', function(){
       if(on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, on.offsetLeft - 16);
       var card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
       how.innerHTML = '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>' +
-        '<p>Plain boxes are actions, shaded boxes are what you check (decisions are diamonds when you build a flow), and each arm under a decision is labeled with its answer. The notes under a chart say why the order is what it is.</p>' +
+        '<div class="fc-legend" aria-label="The three shapes"><div class="flow-box action">An action: something you do</div><div class="flow-box decision">A question you check</div><div class="flow-box terminal">The end of that path</div></div>' +
+        '<p>Each fork under a question is labeled with its answer; follow the one that fits the patient. The notes under a chart say why the order is what it is.</p>' +
         [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
     } else if(m === 'build'){
       studio.caption('Drag each step into the chart, or tap a step and then the place it goes. Two steps belong to other protocols.', 'build');
@@ -903,6 +913,31 @@ document.addEventListener('DOMContentLoaded', function(){
     var v = dock.querySelector('.drill-verdict');
     studio.pills(v ? [{ html: v.classList.contains('ok') ? 'Yes' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'drill');
   }).observe(dock, { childList: true, subtree: true });
+  /* Build and Drill name each sequence by Read mode's short name (the long
+     titles were truncated on chips), and after each placement the chart
+     scrolls to the next empty slot, marked. */
+  var fb = $('flowBuild'), fd = $('flowDrill'), lastN = -1;
+  function tidy(){
+    var P = window.NremtFlowPick;
+    if(P && P.shortName){
+      fb.querySelectorAll('.bd-proto:not([data-short])').forEach(function(b){ b.setAttribute('data-short', ''); b.title = b.textContent; b.textContent = P.shortName(b.textContent); });
+      var dp = fd.querySelector('.drill-proto:not([data-short])'); if(dp){ dp.setAttribute('data-short', ''); dp.textContent = P.shortName(dp.textContent); }
+    }
+    var slots = fb.querySelectorAll('.bd-slot'), open = fb.querySelector('.bd-slot:not(:disabled)');
+    fb.querySelectorAll('.bd-slot.is-next').forEach(function(x){ if(x !== open) x.classList.remove('is-next'); });
+    if(open && !open.classList.contains('is-next')) open.classList.add('is-next');
+    var n = fb.querySelectorAll('.bd-slot.is-filled').length;
+    if(n !== lastN){
+      var moved = lastN >= 0 && n > lastN; lastN = n;
+      if(moved && open){
+        var r = open.getBoundingClientRect(), sr = fb.getBoundingClientRect(), side = fb.querySelector('.bd-side'), bottom = side && getComputedStyle(side).position === 'sticky' ? side.getBoundingClientRect().top : sr.bottom;
+        if(r.top < sr.top + 8 || r.bottom > bottom - 8) fb.scrollBy({ top: r.top - sr.top - Math.max(40, (bottom - sr.top) / 3), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
+    }
+  }
+  new MutationObserver(tidy).observe(fb, { childList: true, subtree: true });
+  new MutationObserver(tidy).observe(fd, { childList: true, subtree: true });
+  tidy();
   // A build's bounce or finish, too.
   new MutationObserver(function(){
     var fb = $('flowBuild').querySelector('.bd-fb'), done = $('flowBuild').querySelector('.bd-done-h');

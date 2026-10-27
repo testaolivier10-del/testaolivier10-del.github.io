@@ -216,7 +216,11 @@ const SHELL_BUDGETS = [
      nremt-studio.js/.css plus the tool's own studio/<slug>.css; measured 26.2 KB on scenario-sim.html. */
   /* 26.5 -> 27 when the five round 3 steps are combined (docs/site-redesign.md): the NREMT exam bar and band
      script (B3) and the tools band (B5) both land in the NREMT shell. Measured 26.5 KB. */
-  ['nremt', 27],
+  /* 27 -> 28 (tool audit fixes 2026-10-27, branch fix-nremt-tools): the per-tool studio CSS grew (scenario picker
+     chips and icons, the drawn flowchart shapes, the skill station flags, the formulary end summary) and the
+     scenario monitor says "probe not on yet". Measured 27.2 KB on scenario-sim.html. The new reference-cards and
+     search scripts load only on their own pages. */
+  ['nremt', 28],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -505,7 +509,9 @@ const BUDGETS = [
   /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
   // 52 -> 53 (simplify pass 2026-10): the pick-a-call cue and the short-window sticky rule; it sat 0.1 KB under.
   /* 53 -> 55 (calm tools P1): the inline Tool Studio arrangement (stage/dock/Why, the call so far); measured 54.3 KB. */
-  ['nremt/scenario-sim.html', 55],
+  /* 55 -> 57 (tool audit fixes 2026-10-27): the picker's category chips with seven drawn icons, the end screen's
+     Try again / Next call pair and the unclamped opening call; measured 56.3 KB. The case data is unchanged. */
+  ['nremt/scenario-sim.html', 57],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
