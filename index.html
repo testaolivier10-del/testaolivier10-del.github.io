@@ -57,9 +57,6 @@
   .founder{display:flex;gap:12px;align-items:center;margin-top:20px;font-size:14.5px;color:var(--muted);max-width:32em;}
   .founder .av{flex:none;width:38px;height:38px;border-radius:50%;background:#0B1A33;color:#2EE6D6;display:grid;place-items:center;font:900 13px var(--font-ui);}
   .founder a{color:var(--accent-text);}
-  .hero-continue{display:flex;flex-direction:column;gap:2px;margin-top:18px;max-width:440px;text-decoration:none;background:var(--navy);color:var(--on-accent);border-radius:var(--radius);padding:12px 16px;}
-  .hero-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.8;}
-  .hero-continue b{font:900 15px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   #fromVideo.fv-wait{min-height:414px;}@media(min-width:600px){#fromVideo.fv-wait{min-height:314px;}}
   /* The try-one question: answering it shows why, before any sign-up. */
   .tryq{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 50px -32px rgba(11,26,51,.4);}
@@ -211,41 +208,6 @@
       <a class="btn-chan" href="#subjects">Choose your course</a>
       <a class="btn-ghost hero-more" href="#tryq">Try a question first</a>
     </div>
-    <div id="heroContinue"></div>
-    <script>
-    /* Returning students get a "Continue" card here, drawn before first paint
-       so it does not push the page down: the most recent place any course
-       home saved in levl_resume (site-chrome.js, LevlResume). */
-    (function(){
-      try{
-        var r = JSON.parse(localStorage.getItem('levl_resume') || '{}') || {}, best = null, k;
-        // courses:begin COURSE_LIST key,name (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
-        var COURSE_LIST = [
-          { key: 'nremt', name: 'NREMT-EMT' },
-          { key: 'ochem', name: 'Organic Chemistry' },
-          { key: 'anp', name: 'Anatomy & Physiology' },
-          { key: 'apbio', name: 'AP® Biology' },
-          { key: 'apchem', name: 'AP® Chemistry' },
-          { key: 'apphys', name: 'AP® Physics 1' },
-          { key: 'apcalc', name: 'AP® Calculus AB' },
-          { key: 'apstat', name: 'AP® Statistics' },
-          { key: 'apenv', name: 'AP® Environmental Science' },
-        ];
-        // courses:end
-        var NAMES = {};
-        COURSE_LIST.forEach(function(c){ NAMES[c.key] = c.name; });
-        for(k in r){ var e = r[k]; if(NAMES[k] && e && typeof e.url === 'string' && /^\/[^\/]/.test(e.url) && (!best || e.t > best.t)) best = { k: k, url: e.url, label: e.label, t: e.t || 0 }; }
-        if(!best) return;
-        var a = document.createElement('a'), sm = document.createElement('small'), b = document.createElement('b');
-        a.className = 'hero-continue'; a.href = best.url;
-        sm.textContent = 'Continue \u00b7 ' + NAMES[best.k];
-        b.textContent = (best.label || 'Pick up where you left off') + ' \u2192';
-        a.appendChild(sm); a.appendChild(b);
-        document.getElementById('heroContinue').appendChild(a);
-        window.__levlHeroContinue = best.k;
-      }catch(e){}
-    })();
-    </script>
     <p class="founder"><span class="av" aria-hidden="true">OT</span><span>Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="about.html">Why I built it</a></span></p>
     </div>
     <form class="tryq" id="tryq" aria-labelledby="tryq-stem">
