@@ -940,19 +940,15 @@
         s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
       },
       done: function(right, total){
-        // The worked solution opens by itself in the dock, under the result
-        // (tool-audit X6); Why keeps a copy for later.
+        // The worked solution moves to Why; the studio opens it by itself
+        // once (tool-audit X6): the sheet on a phone, the drawer on a desktop.
         var sol = area.querySelector(':scope > .bt-solution');
-        if(sol){
-          why.innerHTML = ''; var cp = sol.cloneNode(true); cp.hidden = false; cp.querySelectorAll('[tabindex]').forEach(function(x){ x.removeAttribute('tabindex'); }); why.appendChild(cp);
-          sol.classList.add('is-open'); sol.hidden = false;
-          var nx = area.querySelector(':scope > .bt-next'); if(nx) area.insertBefore(sol, nx.nextSibling);
-        }
+        if(sol){ why.innerHTML = ''; sol.hidden = false; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is below.', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is open under Why.', m);
         var again = area.querySelector('.cd-again');
+        // Focus New problem first, so closing the sheet comes back to it.
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus({ preventScroll: true }); }
-        if(sol && sol.scrollIntoView) try{ sol.scrollIntoView({ block: 'nearest' }); }catch(e){}
       }
     };
   }
@@ -989,6 +985,11 @@
       });
       prim = box('env-ls-primary', follow.map(function(f){ return f.el; }));
       if(o.primaryLoose) prim.classList.add('is-loose');
+      // The shell's data-ls-primary: on a phone the studio pins this group in
+      // its sticky band above the action row (the slider stays on screen as
+      // the page scrolls); on a wider screen it stays here, first in the dock.
+      // This file only places the group and follows its groups' hidden state.
+      prim.setAttribute('data-ls-primary', '');
     }
     var dock = (prim ? [prim] : []).concat([box('env-ls-dock', o.dock)]), row = null;
     var more = q('details.bt-more');

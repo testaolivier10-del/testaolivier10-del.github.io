@@ -339,17 +339,19 @@ body[data-app^="tool-"] .env-hero .eyebrow{margin-bottom:4px;}
 .ls-root .env-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;}
 .ls-root .env-ls-stage > *{min-height:0;}
 .ls-root .env-ls-dock{display:flex;flex-direction:column;gap:10px;}
-/* The main slider first in the dock (studioPane o.primary; tool-audit X7). */
+/* The main slider first in the dock (studioPane o.primary; tool-audit X7);
+   on a phone the shell's data-ls-primary band holds it. */
 .ls-root .env-ls-primary{display:flex;flex-direction:column;gap:8px;}
 .ls-root .env-ls-primary[hidden],.ls-root .env-ls-primary > [hidden]{display:none;}
 .ls-root .env-ls-primary .bt-slider{gap:2px;}
 /* On a phone the block is compact (label, then the slider row, then its
-   Play row) so both sit on the first screen under the caption. */
+   Play row): it rides in the shell's sticky band (data-ls-primary). */
 @media (max-width:640px){
   .ls-root .env-ls-primary{gap:4px;}
-  /* a slightly shorter stage (course-local; the shell's is 62svh) so the
-     slider and its Play row both sit on the first screen */
-  .ls-root:has(.ls-dock .env-ls-primary:not([hidden])) .ls-stage:not(.is-big){height:57vh;height:57svh;}
+  /* The group carries the shell's data-ls-primary: the studio pins it in
+     its sticky band above the action row and sizes the stage (--ls-sh), so
+     there is no course-local stage height here. Its Play row stays in the
+     band's flow (not sticky inside a sticky band). */
   .ls-root .env-ls-primary .bt-slider{gap:0;}
   .ls-root .env-ls-primary .bt-slider > label{font-size:12.5px;line-height:1.2;color:var(--muted);}
   .ls-root .ls-dock .env-ls-primary .ls-act,.ls-root .ls-dock .env-ls-primary .bt-actions,.ls-root .ls-dock .env-ls-primary div:has(> .btn-press){position:static !important;box-shadow:none !important;}

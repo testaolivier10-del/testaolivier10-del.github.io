@@ -899,11 +899,9 @@
         s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is open under Why.', m);
         var again = area.querySelector('.cd-again');
         // Focus New problem first, so closing the sheet comes back to it.
-        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
-        // The worked solution opens by itself (audit X6); New problem stays in the dock.
-        var h3 = why.querySelector('h3');
-        if(h3) h3.setAttribute('tabindex', '-1');
-        s.open('why', h3 || undefined);
+        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus({ preventScroll: true }); }
+        // The studio opens the worked solution by itself, once (audit X6):
+        // the sheet on a phone, the drawer on a desktop. New problem stays in the dock.
       }
     };
   }
