@@ -1043,3 +1043,22 @@ confirm it.
   with a group even though the map has no edge for it, so they are never offered as "not a step from here".
   It is hand-written from standard reactivity (acid-base with strong bases, EAS on activated/deactivated rings,
   E2 on 2° halides, epoxide openings, diol oxidations). If the map gains edges, entries can go.
+
+### tools-audit-2026-10-ir-fingerprint: drawn IR fingerprint is illustrative
+- **Status:** decide whether to keep. The Spectroscopy lab now draws a seeded, illustrative pattern below
+  1500 cm⁻¹ (labelled "fingerprint region (illustrative pattern)" on every chart, and explained under "Every
+  band, in a table") plus real-position C–H bends, overtones and acid dimer bands. The marked bands are still
+  the tabulated data. Options: keep; replace the pattern with measured band lists per compound (for example
+  from SDBS or NIST); or drop it. The accuracy reviewer's fixes (no strong fake band at 1000–1300 without a
+  C–O, capped depth, label on every chart) are in.
+
+### tools-audit-2026-10-styrene-geminal: styrene =CH₂ drawn as doublets
+- **Status:** simplification kept and stated in the notes. Each terminal vinyl H is really a dd (about 1 Hz
+  geminal); the tool draws a d and says the small splitting is ignored.
+
+### tools-audit-2026-10-arrow-pulse: which arrow ends pulse
+- **Status:** review the rule if a pulse looks wrong. After a source is picked, the arrow pusher pulses atoms
+  and bonds that can receive electrons (`destinations()` in `chem-core.js`: cations, open octets, δ+ atoms and
+  carbons holding a halogen, acidic or β-hydrogens, a sigma bond only onto its own ends); the resonance
+  explorer pulses conjugated bonds and the electronegative end of a pi bond (`resTargets()` in
+  `resonance.js`). It is a nudge, never grading: every tap still works.

@@ -266,7 +266,8 @@
        front partners, as textbooks do, so a back group is never hidden behind
        a front bond or its label. The angle reported is still theta. */
     var m120 = ((theta % 120) + 120) % 120, toEclipse = m120 > 60 ? m120 - 120 : m120;
-    var nudge = Math.abs(toEclipse) < 12 ? (toEclipse >= 0 ? 1 : -1) * (12 - Math.abs(toEclipse)) : 0;
+    // Continuous: 8° at eclipsed, easing to nothing 12° away, so the slider still shows the approach.
+    var nudge = Math.abs(toEclipse) < 12 ? 8 * (1 - Math.abs(toEclipse) / 12) : 0;
     var backParts = tor.back.map(function(label, i){
       var a = frontAngles[i] + theta + nudge;
       var edge = dirAt(a, R), tip = dirAt(a, R + OUT), lab = dirAt(a, R + OUT + 16);
@@ -388,8 +389,9 @@
         (nq.hint ? '' : '<button type="button" class="tchip" id="cfNqHint">Hint</button>') +
         '<button type="button" class="tchip" id="cfNqShow">Show the answer</button></div>';
       if(nq.hint) html += '<div class="tnote tnote--info" id="cfNqHintBox"><span class="tnote__k">Method</span>' +
-        'First look at the front bonds: if each one hides a back bond, it is eclipsed, a peak. If each front bond sits between two back bonds, it is staggered, a valley. ' +
-        'Then find the two biggest groups: 180° apart is usually the lowest valley, 60° apart (gauche) a higher one, and lined up with each other the highest peak.</div>';
+        'First look at the front bonds: if each one lines up with a back bond (drawn just beside it), it is eclipsed, a peak. If each sits between two back bonds, it is staggered, a valley. ' +
+        'Then find the two biggest groups: 180° apart (anti) is usually the lowest valley and 60° apart (gauche) a higher one. The exceptions here are 1,2-difluoroethane and ethylene glycol, where gauche is lowest. ' +
+        'Big groups lined up with each other is the highest peak.</div>';
     } else {
       var answer = nq.pick === null;
       html += '<div class="tnote ' + (answer ? 'tnote--info' : ok ? 'tnote--good' : 'tnote--bad') + '" id="cfNqSay" tabindex="-1"><span class="tnote__k">' +

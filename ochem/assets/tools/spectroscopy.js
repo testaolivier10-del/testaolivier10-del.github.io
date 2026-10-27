@@ -292,8 +292,8 @@
         { cm:1600, w:22, d:32, label:'aromatic C=C', note:'The ring, just below the vinyl band.' }
       ],
       nmr:[
-        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂, H cis to =CH–', note:'The two vinyl hydrogens are NOT equivalent: this one is cis to the =CH– hydrogen (trans to the ring), the other is trans to it, and they couple to the middle hydrogen with very different constants.' },
-        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂, H trans to =CH–', note:'An 18 Hz coupling to the =CH– hydrogen. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them.' },
+        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂, H cis to =CH–', note:'The two vinyl hydrogens are NOT equivalent: this one is cis to the =CH– hydrogen (trans to the ring), the other is trans to it, and they couple to the middle hydrogen with very different constants. (Each also shows a tiny, about 1 Hz, geminal splitting, ignored here.)' },
+        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂, H trans to =CH–', note:'An 18 Hz coupling to the =CH– hydrogen. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them. (A tiny, about 1 Hz, geminal splitting is ignored here.)' },
         { ppm:6.72, h:1, mult:'dd', j:11, j2:18, label:'=CH–', note:'A doublet of doublets: it couples to both of the others, with two different constants.' },
         { ppm:7.30, h:5, mult:'m', label:'C₆H₅', note:'A monosubstituted ring — five hydrogens in a lump around 7.3.' }
       ],
@@ -394,12 +394,14 @@
       var A = toA(p.d);
       if(/sp³ C–H/.test(p.label)){
         // The C–H stretching cluster: antisymmetric CH₃, antisymmetric CH₂, symmetric CH₃.
+        // At its real positions (about 2962, 2926, 2872), clear of the aldehyde C–H near 2820.
         out.push({ cm:p.cm, w:11, a:A, eta:0.4, src:i });
-        out.push({ cm:p.cm - 35, w:11, a:A * 0.8, eta:0.4 });
-        out.push({ cm:p.cm - 95, w:12, a:A * 0.45, eta:0.4 });
+        [2962, 2926, 2872].forEach(function(cm, k){
+          if(Math.abs(cm - p.cm) > 12) out.push({ cm:cm, w:11, a:A * [0.9, 0.8, 0.45][k], eta:0.4 });
+        });
       } else if(/sp² C–H/.test(p.label)){
         out.push({ cm:p.cm, w:9, a:A, eta:0.4, src:i });
-        out.push({ cm:p.cm - 32, w:9, a:A * 0.7, eta:0.4 });
+        out.push({ cm:p.cm + 30, w:9, a:A * 0.7, eta:0.4 });   // sp² C–H stays above 3000
       } else if(p.w >= 120){
         // A hydrogen-bonded O–H: broad, and lopsided toward low wavenumber.
         out.push({ cm:p.cm, w:p.w * (p.w >= 300 ? 0.85 : 0.62), a:A, eta:0, skew:0.35, src:i });
@@ -423,7 +425,9 @@
     for(var k = 0; k < n; k++){
       var cm = Math.round(1440 - rnd() * 860);
       if(c.ir.some(function(p){ return Math.abs(p.cm - cm) < 28; }) || Math.abs(cm - 1376) < 14) continue;
-      out.push({ cm:cm, w:5 + rnd() * 8, a:toA(6 + rnd() * 26), eta:0.4, fp:true });
+      // Never a strong band where a C–O stretch would be, unless the compound has one.
+      if(!has(/C–O/) && cm > 1000 && cm < 1300) continue;
+      out.push({ cm:cm, w:5 + rnd() * 8, a:toA(6 + rnd() * 14), eta:0.4, fp:true });
     }
     return out;
   }
@@ -452,7 +456,9 @@
     }
     // Where the fingerprint region starts, marked and named on the chart.
     var fpBand = '<rect x="' + irX(1500).toFixed(1) + '" y="' + IR_T + '" width="' + (irX(IR_MIN) - irX(1500)).toFixed(1) + '" height="' + (IR_H - IR_T - IR_B) + '" class="sp-fp"/>' +
-      '<text class="sp-fp-t" x="' + ((irX(1500) + irX(IR_MIN)) / 2).toFixed(1) + '" y="' + (IR_H - IR_B - 8) + '" text-anchor="middle">fingerprint region</text>';
+      // Two short lines, right-aligned in the region, so the label fits a phone chart.
+      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 22) + '" text-anchor="end">fingerprint region</text>' +
+      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 8) + '" text-anchor="end">(illustrative pattern)</text>';
 
     var grid = [4000, 3500, 3000, 2500, 2000, 1500, 1000, 500].map(function(cm){
       return '<line x1="' + irX(cm).toFixed(1) + '" y1="' + IR_T + '" x2="' + irX(cm).toFixed(1) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line-soft)" stroke-width="1"/>' +
@@ -562,7 +568,10 @@
       grid +
       '<line x1="' + NM_L + '" y1="' + base + '" x2="' + (NM_W - 14) + '" y2="' + base + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<text class="sp-axis sp-axis-t" x="' + (NM_W / 2) + '" y="' + (NM_H - 4) + '" text-anchor="middle">chemical shift (ppm)</text>' +
-      '<text class="sp-key" x="' + (NM_W - 14) + '" y="' + (NM_T + 4) + '" text-anchor="end">s singlet · d doublet · t triplet · q quartet · m multiplet</text>' +
+      '<text class="sp-key" x="' + (NM_W - 14) + '" y="' + (NM_T + 4) + '" text-anchor="end">' + (function(){
+        var used = {}; c.nmr.forEach(function(s){ used[s.mult] = 1; });
+        return Object.keys(used).map(function(m){ return esc((MULT_ABBR[m] || m) + ' ' + (MULT_NAME[m] || m)); }).join(' · ');
+      })() + '</text>' +
       sticks +
     '</svg>';
   }
@@ -844,8 +853,8 @@
       '</tbody></table></div>' +
       '<p class="tmuted" style="margin-top:10px;">Click a marker on the spectrum to highlight its row. The marked bands are drawn from these ' +
       'numbers. The unmarked ones are what every real spectrum also has: the C–H bends near 1460 and 1375, weak ring overtones between 2000 and 1650, ' +
-      'and below 1500 the fingerprint region, drawn here as a typical pattern rather than this compound’s measured one. Read the marked bands; ' +
-      'use the fingerprint only to match a spectrum against a known one.</p></details>';
+      'and below 1500 the fingerprint region, drawn here as an illustrative pattern, not this compound’s measured one. On a real spectrum ' +
+      'the fingerprint is used only to match against a known reference; here, read the marked bands.</p></details>';
     document.getElementById('spIRBox').addEventListener('toggle', function(e){ spIROpen = e.target.open; });
 
     document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR, true);

@@ -191,8 +191,8 @@
     if(!h) return a.el;
     var hs = 'H' + (h > 1 ? sub(h) : '');
     var heavy = Object.keys(st.atoms).filter(function(o){ return st.atoms[o].el !== 'H'; }).length;
-    // Hydrides read hydrogen-first (HBr, H₂O); in a bigger molecule element-first (OH).
-    return /^(F|Cl|Br|I)$/.test(a.el) || (heavy === 1 && a.el !== 'N' && a.el !== 'C') ? hs + a.el : a.el + hs;
+    // HX and H₂O, H₂S read hydrogen-first; BH₃, CH₄, NH₃, PH₃ and every group in a bigger molecule element-first (OH).
+    return /^(F|Cl|Br|I)$/.test(a.el) || (heavy === 1 && /^(O|S|Se)$/.test(a.el)) ? hs + a.el : a.el + hs;
   }
 
   function toMolecule(st, opts){
@@ -772,11 +772,11 @@
           });
         });
       }
-      // δ+: bonded to something more electronegative (C–Br, C=O).
+      // δ+: bonded to something more electronegative (C–Br, C=O), or a carbon carrying a leaving group (C–I too).
       return neighbors(st, k).some(function(n){
         var b = st.atoms[n];
         return b && b.el && info(b.el) && info(a.el) && info(b.el).en - info(a.el).en > 0.35;
-      });
+      }) || (a.el === 'C' && neighbors(st, k).some(function(n){ return /^(Cl|Br|I)$/.test(st.atoms[n].el || ''); }));
     }
     var fb = isBondKey(from) ? parseBondKey(from) : null;
     var fbOrder = fb ? ((findBond(st, fb.a, fb.b) || {}).order || 0) : 0;
@@ -806,6 +806,17 @@
       // Into a bond only toward an electron-poor partner (a new pi bond, a C=C forming).
       var other = fb ? (sharedAtom(fb, { a:b.a, b:b.b }) === b.a ? b.b : b.a) : (b.a === from ? b.b : b.a);
       if(st.atoms[other] && st.atoms[other].el === 'H') return;
+      if(!fb && (b.a === from || b.b === from)){
+        /* A lone pair into its own bond makes a pi bond, so only toward an atom
+           that can take it: a cation, an open octet, an atom already in a pi
+           bond (resonance), or one with a leaving group to push out. */
+        var o = st.atoms[other];
+        var canTake = formalCharge(st, other) > 0 || electronCount(st, other) < octetOf(st, other) ||
+          bondsAt(st, other).some(function(x){ return x.order >= 2; }) ||
+          neighbors(st, other).some(function(n){ var e = st.atoms[n]; return n !== from && e && (/^(Cl|Br|I)$/.test(e.el || '') || (e.el === 'O' && formalCharge(st, n) > 0)); });
+        if(o && canTake) out.push(key);
+        return;
+      }
       if(poor(other)) out.push(key);
     });
     return out;

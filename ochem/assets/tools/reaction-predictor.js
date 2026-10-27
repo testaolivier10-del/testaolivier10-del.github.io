@@ -900,8 +900,8 @@
       elV.innerHTML = '<h3 class="ls-title-l">Make your call first</h3><p>Read the flask, then tap the tile on the stage you think wins. The reasons appear here after you choose.</p>' +
         '<h3 class="ls-h">A method</h3><ol class="ls-steps">' +
         '<li><span><span class="ls-k">The carbon</span> Methyl or primary leans SN2; tertiary cannot do SN2 at all.</span></li>' +
-        '<li><span><span class="ls-k">The reagent</span> A strong base pushes toward E2; a strong nucleophile that is a weak base toward SN2; a weak one waits for a carbocation (SN1 or E1).</span></li>' +
-        '<li><span><span class="ls-k">Solvent and heat</span> Polar protic helps a carbocation form; heat favors elimination.</span></li></ol>';
+        '<li><span><span class="ls-k">The reagent</span> A bulky strong base (KOtBu, DBU) gives E2, even on a primary carbon. A strong base that is also a good nucleophile (NaOH, NaOEt) gives SN2 on primary and E2 on secondary or tertiary. A good nucleophile that is a weak base (CN⁻, I⁻, N₃⁻, HS⁻) gives SN2. A weak nucleophile (water, an alcohol) needs a carbocation, so SN1 or E1, and only on secondary or tertiary.</span></li>' +
+        '<li><span><span class="ls-k">Solvent and heat</span> Polar protic helps a carbocation form; polar aprotic speeds SN2; heat favors elimination.</span></li></ol>';
       ls.det.innerHTML = '<h3 class="ls-title-l">The numbers</h3><p class="ls-sub">The split between the four paths appears after your call.</p>';
       return;
     }

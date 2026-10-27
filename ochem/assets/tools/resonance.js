@@ -201,7 +201,8 @@
     if(!bond || bond.order < 2) return out;
     [b.a, b.b].forEach(function(end){
       var other = end === b.a ? b.b : b.a;
-      if(st.atoms[end].el !== 'C' || C.info(st.atoms[end].el).en >= C.info(st.atoms[other].el).en) out.push(end);
+      // A pi bond collapses onto an end only toward the more electronegative atom (C=O onto O, never C=C onto C).
+      if(C.info(st.atoms[end].el).en > C.info(st.atoms[other].el).en) out.push(end);
       C.neighbors(st, end).forEach(function(n){
         if(n === other || st.atoms[n].el === 'H') return;
         if(piAt(n) || poor(n)) out.push('bond:' + end + '-' + n);
