@@ -1257,3 +1257,9 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
   .ls-root .chem-ls-stage .ek-plot{min-height:0;}
   .ls-root .chem-ls-stage .ek-share{font-size:12px;}
 }
+
+/* A focused radio keeps a round ring (Chromium draws a square one, which reads as a checkbox among the radios). */
+.bt-radio input[type=radio]{border-radius:50%;}
+.bt-radio input[type=radio]:focus{outline:none;}
+.bt-radio input[type=radio]:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bt-radio:has(input[type=radio]:focus-visible){box-shadow:inset 0 0 0 2px var(--cink);}
