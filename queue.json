@@ -404,7 +404,7 @@
   },
   {
    "id": "w1007-04-gcs-floor",
-   "status": "scheduled",
+   "status": "posted",
    "added_on": "2026-10-06",
    "approved_on": "2026-10-06",
    "date": "2026-10-25",
@@ -454,7 +454,7 @@
    "date": "2026-10-26",
    "buffer": "6ad3ecaf938409f1d0a3beb9",
    "yt_buffer": "6ad3ecbf938409f1d0a3bf9a",
-   "youtube_id": null,
+   "youtube_id": "6TiRP0hL4BQ",
    "shorts_thumb": null,
    "thumbnail_set": null,
    "related_set": false
