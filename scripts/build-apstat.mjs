@@ -240,7 +240,7 @@ ${parts.map((p, i) => `  <section class="stat-part stat-step${i === 0 ? ' is-on'
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="stat-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['stat-questions.js', 'stat-lesson.js'], premium: true, site: ['course/lesson.js'] })}
+${tail({ depth, section: 'learn', extra: ['stat-questions.js', 'stat-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -553,7 +553,7 @@ ${bodyOpen()}
   </main>
 </div>
 ${footer(depth, 'learn')}
-${tail({ depth, section: 'learn', extra: ['stat-toc.js', 'stat-book.js'] })}
+${tail({ depth, section: 'learn', extra: ['stat-toc.js', 'stat-book.js'], site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;

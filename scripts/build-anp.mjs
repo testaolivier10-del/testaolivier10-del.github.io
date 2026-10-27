@@ -260,7 +260,7 @@ ${STEP_FIRST_PAINT}
 ${footer(depth)}
 <script type="application/json" id="anp-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
 <script src="../../assets/report-question.js" defer></script>
-${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], premium: true, site: ['course/lesson.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -662,7 +662,7 @@ function learnPage() {
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'], site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;
