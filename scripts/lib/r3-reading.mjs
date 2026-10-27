@@ -286,7 +286,7 @@ function learnBand(html, { key, up, shell, mainOpen }) {
 <section class="band short r3-rband" aria-label="${name.replace(/<[^>]+>/g, '').replace(/"/g, '&quot;')}"><div class="hwrap"><div>
 ${crumbHtml}
 <p class="issue">Learn <i></i> Free forever</p>
-<p class="deck" aria-hidden="true">${twoTone(name)}</p>
+<p class="deck" aria-hidden="true">${/\s(study notes|textbook|notes)$/i.test(name) ? name.replace(/\s(study notes|textbook|notes)$/i, ' <span>$1</span>') : twoTone(name)}</p>
 ${hand ? `<p class="hand">${hand}</p>` : ''}
 <p class="lede">${toc.m[2].trim()}</p>
 ${first ? `<div class="hero-ctas"><a class="btn-chan" href="${first}">Start at the first page</a></div>` : ''}
