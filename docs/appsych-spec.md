@@ -244,3 +244,4 @@ Items (a)-(e) below were done in Phase 3 (decision 12); the Tool Studio sticky-r
 - Tool Studio on a phone: the sticky primary-action row (e.g. Stimulate, Run 20 trials) covers the scene switch
   under it until the dock scrolls (neuron, sensation). Check whether other courses' trainers do the same; fix in the
   shared file at launch.
+- Shared: at 390 the "Skip to content" link shows over the tool dock after a drill step is checked (tools-a review); fix in the shared file at launch and check other courses.
