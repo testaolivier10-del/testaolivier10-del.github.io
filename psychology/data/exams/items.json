@@ -10,16 +10,16 @@
     "participants": "Sixty university students aged 18 to 22 (34 women and 26 men) from one university volunteered and were paid for their time. All reported drinking fewer than two caffeinated drinks a day.",
     "method": "Students were randomly assigned to swallow either a capsule with 200 mg of caffeine or an identical-looking placebo capsule at 4 p.m. Neither the students nor the researchers who scored the sleep recordings knew which capsule each student took. That night in a sleep lab, sleep onset latency was measured as the minutes from lights out until the EEG first showed 30 seconds of stage N1 sleep. A review board approved the study, students signed consent forms, and they were told they could stop at any time.",
     "results": "The caffeine group took a mean of 31 minutes to fall asleep; the placebo group took a mean of 14 minutes. The difference was statistically significant.",
-    "discussion": "The authors suggest that caffeine delays sleep by blocking adenosine, a chemical that builds up during waking hours and promotes sleepiness."
+    "discussion": "The authors suggest that caffeine delays sleep by blocking receptors for adenosine, a chemical that builds up during waking hours and promotes sleepiness."
    }
   },
   "exam-1-s2": {
    "kind": "data",
    "title": "Recall after two ways of studying",
    "invented": true,
-   "text": "<p>Ten students studied the same 20 words. Five were asked whether each word was pleasant (thinking about its meaning); five were asked whether each word had a letter e (looking at its letters). An hour later each student wrote down every word they could recall.</p>",
+   "text": "<p>Ten students studied the same 30 words. Five were asked whether each word was pleasant (thinking about its meaning); five were asked whether each word had a letter e (looking at its letters). An hour later each student wrote down every word they could recall.</p>",
    "table": {
-    "caption": "Words recalled out of 20 (invented data for practice)",
+    "caption": "Words recalled out of 30 (invented data for practice)",
     "cols": [
      "Student",
      "Meaning group",
@@ -133,7 +133,7 @@
     "options": [
      "Right: random assignment to caffeine or placebo makes it an experiment.",
      "A correlational study measures variables as they are; here caffeine was given by the researchers.",
-     "A case study looks closely at one person or a few; this study compared two groups of 30.",
+     "A case study looks closely at one person or a few; this study compared two groups of students.",
      "Naturalistic observation watches behavior in its usual setting without any manipulation."
     ]
    }
@@ -176,7 +176,7 @@
    "stimulus": "exam-1-s1",
    "q": "To which group can these results most safely be generalized?",
    "options": [
-    "Healthy young adults who drink little caffeine",
+    "Young adult students who drink little caffeine",
     "Adults of any age, since sixty students is a large sample",
     "Heavy coffee drinkers, since they take in the most caffeine",
     "Children, since caffeine works the same way at any age"

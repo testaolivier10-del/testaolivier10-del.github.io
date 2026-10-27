@@ -87,7 +87,7 @@
       "correct": 0,
       "why": {
        "1": "Confidence was not measured; the test counted correct translations.",
-       "2": "Study time is the independent variable (one session or three), not the measure of retention."
+       "2": "Both groups studied for 60 minutes in all; how that time was spaced (one session or three) is the independent variable, not the measure of retention."
       }
      },
      "when": {

@@ -114,6 +114,16 @@ test('a form in the real format passes, and every way to break it is caught', ()
   const one = forms[0].mcq.find(b => b.length === 1)[0];
   ctx5.bank.set(one, { ...ctx.bank.get(one), type: 'numeric' });
   bad(() => {}, /not a four-option single-answer question/, ctx5);
+  // A set is whole: a usable question of its stimulus left out is caught,
+  // unless it is a lesson check item or not a four-option single answer.
+  const ctx6 = { ...ctx, bank: new Map(ctx.bank) };
+  const set = forms[0].mcq.find(b => b.length === 3), stim = ctx.bank.get(set[0]).stimulus, extra = `${set[0]}-extra`;
+  ctx6.bank.set(extra, { ...ctx.bank.get(set[0]), id: extra });
+  bad(() => {}, new RegExp(`set ${stim} leaves out ${extra}`), ctx6);
+  assert.deepEqual(checkForms(forms, { ...ctx6, lessonChecks: new Set([extra]) }), []);
+  ctx6.bank.set(extra, { ...ctx.bank.get(set[0]), id: extra, type: 'numeric', options: undefined });
+  assert.deepEqual(checkForms(forms, ctx6), []);
+  bad(f => { const b = f[0].mcq.find(x => x.length === 3); b.pop(); }, /leaves out/);
 });
 
 test('the "Make it specific" checker refuses a claim that is a question, evidence without a source, reasoning that does not link, and a slot without a why', () => {

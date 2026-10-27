@@ -60,15 +60,15 @@
    "practice": "3.C",
    "skill": "statistic",
    "title": "Significant, but how big?",
-   "context": "<p>Eighty adults were randomly assigned to write three things they were grateful for each night for six weeks, or three things that happened that day. Life satisfaction was rated from 1 to 10 before and after. The gratitude group rose from 5.1 to 6.3 on average and the control group from 5.0 to 5.2. The difference between the groups' changes was statistically significant, with a small effect size (invented study for practice).</p>",
+   "context": "<p>Eight hundred adults were randomly assigned to write three things they were grateful for each night for six weeks, or three things that happened that day. Life satisfaction was rated from 1 to 10 before and after. The gratitude group rose from 5.1 to 5.6 on average and the control group from 5.0 to 5.2. The difference between the groups' changes was statistically significant, with a small effect size (invented study for practice).</p>",
    "prompt": "<b>Explain</b> what the results show about the gratitude group compared with the control group.",
    "checklist": [
-    "Gives the direction: the gratitude group rose 1.2 points against 0.2, 1 point more",
+    "Gives the direction: the gratitude group rose 0.5 points against 0.2, 0.3 point more",
     "Explains significance: the difference is unlikely to be due to chance alone",
     "Uses the effect size: the difference is small, so the benefit was modest"
    ],
    "earns": {
-    "answer": "The gratitude group's life satisfaction rose 1.2 points while the control group's rose 0.2, a gain 1 point larger. The difference is statistically significant, so it is unlikely to be due to chance alone, but the effect size is small, so writing down gratitude gave these adults a real but modest boost in subjective well-being.",
+    "answer": "The gratitude group's life satisfaction rose 0.5 points while the control group's rose 0.2, a gain 0.3 point larger. The difference is statistically significant, so it is unlikely to be due to chance alone, but the effect size is small, so writing down gratitude gave these adults a real but modest boost in subjective well-being.",
     "why": "Direction and size for the groups, what significance means, and what the effect size adds."
    },
    "misses": {
@@ -80,9 +80,9 @@
      "statistic": {
       "label": "Result",
       "options": [
-       "the gratitude group gained 1 point more (1.2 against 0.2)",
+       "the gratitude group gained 0.3 point more (0.5 against 0.2)",
        "the control group gained more",
-       "both groups gained 1.2"
+       "both groups gained 0.5"
       ],
       "correct": 0,
       "why": {

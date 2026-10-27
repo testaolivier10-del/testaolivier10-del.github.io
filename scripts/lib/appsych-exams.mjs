@@ -81,7 +81,7 @@ export function unitRange(weight, n = MCQ_TOTAL) {
   return [Math.floor(weight[0] / 100 * n + 1e-9), Math.ceil(weight[1] / 100 * n - 1e-9)];
 }
 
-/* ctx: { map, bank: Map(id -> item), examItems: Map(id -> item), stimuli(id) -> stimulus, frqs: { id: frq }, orderOf(id) }.
+/* ctx: { map, bank: Map(id -> item), examItems: Map(id -> item), stimuli(id) -> stimulus, frqs: { id: frq }, orderOf(id), lessonChecks?: Set(id) }.
    A form passes when Section I has exactly 75 four-option single-answer
    questions; each block is a whole stimulus set in authored order (or one
    standalone question); its sets fall in EXAM_SETS (study, data, figure;
@@ -126,6 +126,14 @@ export function checkForms(forms, ctx) {
         if (qs.length < 2 || qs.length > 5) errs.push(`${w}: set ${stim} has ${qs.length} questions in the exam (2 to 5)`);
         const order = qs.map(q => ctx.orderOf(q.id));
         if (order.some((x, i) => i && x <= order[i - 1])) errs.push(`${w}: set ${stim} is not in authored order`);
+      }
+      // A set is whole: every exam-eligible item of its stimulus (four-option
+      // single answer, not a lesson check item a student met on a free lesson)
+      // is in the block.
+      if (stim && (qs.length > 1 || !examItems.has(qs[0].id))) {
+        const left = [...bank.values(), ...examItems.values()].filter(q => q.stimulus === stim && !block.includes(q.id) &&
+          q.type === 'single' && (q.options || []).length === 4 && !(ctx.lessonChecks && ctx.lessonChecks.has(q.id)));
+        if (left.length) errs.push(`${w}: set ${stim} leaves out ${left.map(q => q.id).join(', ')}; a set in a form includes every one of its usable questions`);
       }
     }
     for (const [k, [lo, hi]] of Object.entries(EXAM_SETS)) if ((sets[k] || 0) < lo || (sets[k] || 0) > hi) errs.push(`${w}: Section I has ${sets[k] || 0} ${k} sets; the exam has ${lo === hi ? lo : `${lo} to ${hi}`}`);
@@ -230,7 +238,7 @@ export function checkJustify(prompts, ctx) {
 const C = (fn, ...args) => Stats.evaluate({ fn, args });
 // Form 1, set exam-1-s1: sleep onset means 31 (caffeine) and 14 (placebo) minutes.
 const onset = { caf: 31, pla: 14 };
-// Form 1, set exam-1-s2: words recalled out of 20.
+// Form 1, set exam-1-s2: words recalled out of 30.
 const meaning = [14, 21, 9, 17, 14], letters = [6, 9, 5, 8, 7];
 // Form 2, set exam-2-s2: stress symptoms in one week (Ben's 19 is the outlier).
 const symptoms = [5, 19, 3, 2, 6, 3, 4];
@@ -264,7 +272,7 @@ export const JUSTIFY_NUMBERS = [
   { id: 'u3-schedule-argue', has: [`${C('sub', 48, 11)} minutes longer`] },
   { id: 'u4-smoke-statistic', has: [`${C('sub', 70, 30)} percentage points more`] },
   { id: 'u4-certificate-argue', has: [`8 minutes, half as long as the 16`], check: () => C('div', 8, 16) === 0.5 },
-  { id: 'u5-gratitude-statistic', has: [`rose ${C('round', C('sub', 6.3, 5.1), 1)} points`, `rose ${C('round', C('sub', 5.2, 5.0), 1)}`, `a gain ${C('round', C('sub', C('sub', 6.3, 5.1), C('sub', 5.2, 5.0)), 1)} point larger`] },
+  { id: 'u5-gratitude-statistic', has: [`rose ${C('round', C('sub', 5.6, 5.1), 1)} points`, `rose ${C('round', C('sub', 5.2, 5.0), 1)}`, `a gain ${C('round', C('sub', C('sub', 5.6, 5.1), C('sub', 5.2, 5.0)), 1)} point larger`] },
   { id: 'u5-exercise-evidence', has: [`${C('sub', 14, 6)} points more`] },
   { id: 'rs-phone-statistic', has: [`${Stats.describe(-0.45)}`] },
   { id: 'rs-brake-statistic', has: [`The median, ${C('median', brake)} milliseconds`, `mean up to ${C('mean', brake)} milliseconds`], check: () => brake.filter(x => x < C('mean', brake)).length === 4 },

@@ -328,39 +328,39 @@
    "skill": "reasoning",
    "title": "Recovering speech after surgery",
    "context": "<p>Question: does damage to one hemisphere permanently remove the abilities it controlled? Claim: young brains can often recover abilities after one hemisphere is damaged. Source 1: 10 children had most of the left hemisphere removed before age 6 to stop severe seizures; 9 of them were using everyday speech again within two years (invented study for practice).</p>",
-   "prompt": "<b>Explain</b> how the evidence from Source 1 supports the claim, using a psychology concept.",
+   "prompt": "<b>Explain</b> how the evidence from Source 1 supports the claim, using a psychology concept other than neuroplasticity, the claim's own topic.",
    "checklist": [
     "Restates the evidence briefly and cites it: 9 of 10 children regained speech (Source 1)",
-    "Applies a concept from the unit: neuroplasticity, or hemispheric specialization of speech",
-    "Links the concept to the claim: other regions took over speech, so the ability came back"
+    "Applies a concept from the unit that is not the claim's own topic: hemispheric specialization (lateralization), for example",
+    "Links the concept to the claim: speech was not yet fully specialized in the left hemisphere, so the right hemisphere could take it over"
    ],
    "earns": {
-    "answer": "In Source 1, 9 of 10 children regained everyday speech after most of the left hemisphere was removed. This supports the claim because of neuroplasticity: speech usually depends on the left hemisphere, including Broca's area, but a young brain can reorganize, so the right hemisphere took over speech and the ability returned.",
-    "why": "Evidence, then the concept applied to these children, then the link to the claim."
+    "answer": "In Source 1, 9 of 10 children regained everyday speech after most of the left hemisphere was removed before age 6. This supports the claim because of hemispheric specialization: in most adults speech depends mainly on the left hemisphere, including Broca's area, but in young children that specialization is not yet complete, so the right hemisphere could take over speech and the ability returned.",
+    "why": "Evidence, then a concept that is not the claim's own topic applied to these children, then the link to the claim."
    },
    "misses": {
-    "answer": "Source 1 shows 9 of 10 children regained speech. Neuroplasticity is the brain's ability to change.",
-    "why": "The definition is dropped in and never linked. Say how reorganizing let these children speak again."
+    "answer": "Source 1 shows 9 of 10 children regained speech, which shows neuroplasticity, the brain's ability to change.",
+    "why": "Neuroplasticity is the claim's own topic, so it cannot earn the concept point, and the definition is dropped in without a link. Use a different concept and say how it let these children speak again."
    },
    "specific": {
     "slots": {
      "concept": {
       "label": "Concept",
       "options": [
+       "hemispheric specialization",
        "neuroplasticity",
-       "contralateral organization",
        "the all-or-none principle"
       ],
       "correct": 0,
       "why": {
-       "1": "Contralateral organization is about each side controlling the opposite side of the body, not recovery.",
+       "1": "Neuroplasticity is the claim's own topic, a restricted term: it cannot earn the concept point.",
        "2": "The all-or-none principle is about one neuron firing; it does not explain recovery after surgery."
       }
      },
      "link": {
       "label": "Link to the claim",
       "options": [
-       "the right hemisphere took over speech, so the ability returned",
+       "speech was not yet fully specialized in the left hemisphere, so the right hemisphere took it over",
        "the left hemisphere grew back",
        "speech never depended on the brain"
       ],

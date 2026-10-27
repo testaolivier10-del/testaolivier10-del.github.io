@@ -741,7 +741,10 @@ if (isMain) {
     for (const f of exists(frqDir) ? readdirSync(frqDir).filter(f => f.endsWith('.json')) : []) { const d = readJson(join(frqDir, f)); frqs[d.id] = d; }
     const bank = new Map(allItems.map(q => [q.id, q]));
     const stimOf = sid => ex.stimuli[sid] || allStimuli[sid];
-    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf })) bad2(e);
+    // Lesson check items (on the free lessons) never go in a form: checkForms skips them as set fillers too.
+    const lessonChecks = new Set();
+    for (const t of map.topics) { const p = join(DATA, 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
+    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf, lessonChecks })) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
     // Spec section 7: 40+ prompts, 6 to 9 per unit and in the research skills
     // chapter (JUSTIFY_PER_CHAPTER).
@@ -750,8 +753,6 @@ if (isMain) {
     for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no "Make it specific" prompt practises "${k}"`);
     // Each form: mostly bank items that are not lesson-check items (those are on
     // the free lessons), plus 12-14 exam-only items of its own.
-    const lessonChecks = new Set();
-    for (const t of map.topics) { const p = join(DATA, 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
     for (const f of ex.forms) {
       const ids = (f.mcq || []).flat(), own = ids.filter(id => examItems.has(id)).length;
       if (own < 20 || own > 30) bad2(`${f.id}: ${own} exam-only items (20 to 30)`);

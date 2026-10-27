@@ -170,15 +170,19 @@
      "psy-exam-1-17"
     ],
     [
-     "psy-treatment-30",
-     "psy-treatment-31",
-     "psy-treatment-32"
-    ],
-    [
      "psy-treatment-1"
     ],
     [
      "psy-exam-1-16"
+    ],
+    [
+     "psy-treatment-5"
+    ],
+    [
+     "psy-treatment-6"
+    ],
+    [
+     "psy-treatment-7"
     ]
    ],
    "frq": [
@@ -191,10 +195,10 @@
    "title": "Practice exam 2",
    "mcq": [
     [
-     "psy-heredity-environment-7"
+     "psy-exam-2-09"
     ],
     [
-     "psy-exam-2-09"
+     "psy-heredity-environment-6"
     ],
     [
      "psy-nervous-system-6"
@@ -217,12 +221,16 @@
      "psy-brain-18"
     ],
     [
-     "psy-sleep-5",
-     "psy-sleep-6",
-     "psy-sleep-7"
+     "psy-sleep-18"
     ],
     [
-     "psy-sleep-18"
+     "psy-sleep-13"
+    ],
+    [
+     "psy-sleep-14"
+    ],
+    [
+     "psy-sleep-15"
     ],
     [
      "psy-sensation-24"
@@ -231,15 +239,22 @@
      "psy-perception-16"
     ],
     [
-     "psy-thinking-5",
-     "psy-thinking-6",
-     "psy-thinking-7"
+     "psy-perception-14"
     ],
     [
      "psy-thinking-17"
     ],
     [
      "psy-exam-2-12"
+    ],
+    [
+     "psy-thinking-13"
+    ],
+    [
+     "psy-thinking-15"
+    ],
+    [
+     "psy-thinking-16"
     ],
     [
      "psy-memory-intro-13"
@@ -251,11 +266,10 @@
      "psy-encoding-memories-16"
     ],
     [
-     "psy-storing-memories-5",
-     "psy-storing-memories-7"
+     "psy-storing-memories-15"
     ],
     [
-     "psy-storing-memories-15"
+     "psy-storing-memories-14"
     ],
     [
      "psy-retrieving-memories-15"
@@ -268,10 +282,6 @@
     ],
     [
      "psy-development-methods-17"
-    ],
-    [
-     "psy-physical-development-7",
-     "psy-physical-development-8"
     ],
     [
      "psy-physical-development-9",
@@ -294,13 +304,19 @@
      "psy-exam-2-13"
     ],
     [
+     "psy-cognitive-development-16"
+    ],
+    [
      "psy-language-development-14"
     ],
     [
      "psy-social-emotional-development-29"
     ],
     [
-     "psy-classical-conditioning-11"
+     "psy-social-emotional-development-16"
+    ],
+    [
+     "psy-classical-conditioning-3"
     ],
     [
      "psy-exam-2-14"
@@ -312,11 +328,6 @@
      "psy-attitudes-10"
     ],
     [
-     "psy-social-situations-30",
-     "psy-social-situations-31",
-     "psy-social-situations-32"
-    ],
-    [
      "psy-exam-2-01",
      "psy-exam-2-02",
      "psy-exam-2-03",
@@ -326,9 +337,22 @@
      "psy-social-situations-19"
     ],
     [
-     "psy-psychodynamic-humanistic-18",
-     "psy-psychodynamic-humanistic-19",
-     "psy-psychodynamic-humanistic-21"
+     "psy-social-situations-7"
+    ],
+    [
+     "psy-social-situations-8"
+    ],
+    [
+     "psy-social-situations-9"
+    ],
+    [
+     "psy-psychodynamic-humanistic-5"
+    ],
+    [
+     "psy-psychodynamic-humanistic-6"
+    ],
+    [
+     "psy-psychodynamic-humanistic-7"
     ],
     [
      "psy-exam-2-16"
@@ -341,9 +365,6 @@
      "psy-exam-2-06",
      "psy-exam-2-07",
      "psy-exam-2-08"
-    ],
-    [
-     "psy-health-psychology-21"
     ],
     [
      "psy-positive-psychology-19"
@@ -363,7 +384,8 @@
      "psy-treatment-33",
      "psy-treatment-34",
      "psy-treatment-35",
-     "psy-treatment-36"
+     "psy-treatment-36",
+     "psy-treatment-37"
     ]
    ],
    "frq": [
