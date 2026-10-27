@@ -274,13 +274,19 @@
     function stopUi(){ playing = false; var b = btns.querySelector('.cl-play'); if(b){ b.textContent = st.mode === 'explode' ? 'Release' : 'Crash'; b.setAttribute('aria-pressed', 'false'); } }
     function pause(){ loop.stop(); stopUi(); }
     // Drag a cart's velocity arrow (or the cart) sideways to set its velocity.
-    pane.addEventListener('pointerdown', function(e){
-      var svg = e.target.closest && e.target.closest('.cl-track svg'); if(!svg || st.mode === 'explode') return;
-      var b0 = svg.getBoundingClientRect(), x0 = (e.clientX - b0.left) * W / b0.width, s = R.at(t);
+    // Listen on the track figure itself: the Tool Studio moves the stage out of
+    // `pane`, so a listener on `pane` never hears a drag (audit 2026-10).
+    var trackFig = $('.cl-track');
+    trackFig.addEventListener('pointerdown', function(e){
+      if(!(e.target.closest && e.target.closest('.cl-track svg')) || st.mode === 'explode') return;
+      e.preventDefault();
+      // The svg is redrawn on every move, so measure the figure's live svg each time.
+      var svg = function(){ return trackFig.querySelector('svg') || trackFig; };
+      var b0 = svg().getBoundingClientRect(), x0 = (e.clientX - b0.left) * W / b0.width, s = R.at(t);
       var which = Math.abs(x0 - (TR.x0 + s.x1 * TR.ppm)) < Math.abs(x0 - (TR.x0 + s.x2 * TR.ppm)) ? 1 : 2, cx = TR.x0 + (which === 1 ? s.x1 : s.x2) * TR.ppm;
       pause(); t = 0;
       var move = function(ev){
-        var b = svg.getBoundingClientRect(), x = (ev.clientX - b.left) * W / b.width, v = Math.round((x - cx) / 30 * 10) / 10;
+        var b = svg().getBoundingClientRect(), x = (ev.clientX - b.left) * W / b.width, v = Math.round((x - cx) / 30 * 10) / 10;
         if(which === 1){ v = Math.max(-1, Math.min(3, v)); st.v1 = v; sl.v1.set(v); } else { v = Math.max(-3, Math.min(1, v)); st.v2 = v; sl.v2.set(v); }
         start.done(); rebuild();
       };
