@@ -1,11 +1,11 @@
 /* Shared markup for the study pages (docs/course-shell.md, W-C).
 
    Each course's engine works out its own numbers; these helpers turn them
-   into the same HTML in every course, so a "Your numbers" rail, an empty
-   review queue or a free-tier line cannot drift apart again. Styles are in
+   into the same HTML in every course, so the study rail, an empty review
+   queue or a free-tier line cannot drift apart again. Styles are in
    assets/course/study.css and base.css. No storage, no course names.
 
-     LevlStudy.rail({ stats, due, links })   the right-hand rail
+     LevlStudy.rail({ links })              the right-hand rail (other ways to study)
      LevlStudy.stat(label, num, sub, cls)    one .cx-stat tile
      LevlStudy.empty({ num, unit, h, p, actions })   a .cx-empty card body
      LevlStudy.actions([{ href|act, label, primary }])
@@ -25,22 +25,18 @@
         : '<button type="button" class="' + cls + '" data-act="' + esc(a.act) + '"' + (a.attrs || '') + '>' + a.label + '</button>';
     }).join('') + '</div>';
   }
-  /* o.stats: [[label, num, sub, cls]]; o.due: { n, href, pill, noun };
-     o.links: [{ href, title, sub }] (siblings: Flashcards, Exams, ...). */
+  /* The rail beside Practice, Review and Exams: only the other ways to study.
+     The "Your numbers" card and the review queue card used to sit here on all
+     three pages, repeating what Progress and Review show; Olivier (2026-10-26)
+     wants each page to do one job, so o.stats and o.due are accepted and
+     ignored, and the numbers stay on Progress. o.links: [{ href, title, sub }]. */
   function rail(o){
     o = o || {};
-    var due = o.due;
-    return '<aside class="cx-rail" aria-labelledby="cx-rail-h">' +
-      '<div class="cx-card cx-numbers"><h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>' +
-      '<div class="cx-stats">' + (o.stats || []).map(function(s){ return stat(s[0], s[1], s[2], s[3]); }).join('') + '</div></div>' +
-      (due ? '<div class="cx-card cx-qcard"><p class="cx-kicker">Review queue' + (due.pill || '') + '</p>' +
-        (due.n ? '<h3>' + plural(due.n, due.noun || 'item') + ' due now</h3><p>' + (due.text || 'What you missed comes back on a spacing schedule, so it sticks. Clear it before new work.') + '</p>'
-               : '<h3>Your queue is clear</h3><p>' + (due.text || 'What you miss comes back here on a spacing schedule, so it sticks.') + '</p>') +
-        '<a class="cx-more" href="' + esc(due.href || 'review.html') + '">' + (due.n ? 'Start your review' : 'Open review') + ' <span aria-hidden="true">&rarr;</span></a>' +
-        '</div>' : '') +
-      (o.links && o.links.length ? '<nav class="cx-links" aria-label="More ways to study">' + o.links.map(function(l){
+    if (!o.links || !o.links.length) return '';
+    return '<aside class="cx-rail" aria-label="Other ways to study">' +
+      '<nav class="cx-links" aria-label="More ways to study">' + o.links.map(function(l){
         return '<a class="cx-link" href="' + esc(l.href) + '"><b>' + l.title + (l.sub ? '<small>' + l.sub + '</small>' : '') + '</b><span aria-hidden="true">&rarr;</span></a>';
-      }).join('') + '</nav>' : '') +
+      }).join('') + '</nav>' +
     '</aside>';
   }
   /* The review empty state: the due-count tile, a heading, a sentence and
