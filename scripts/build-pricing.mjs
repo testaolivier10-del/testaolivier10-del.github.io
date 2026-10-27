@@ -537,12 +537,23 @@ f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e
   return `    <script src="assets/home-try.js" defer></script>`;
 }
 
+/* Who makes this, how the questions are written and what changes, folded into the FAQ instead of a row of
+   cards under it (Olivier, 2026-10-26). They carry links, so they are written as HTML and stay out of the
+   FAQPage data. */
+const HOME_ABOUT_QA = [
+  ['Who makes LevlPrep?', 'An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.'],
+  ['How are the questions written?', 'Every question in every course is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, every other course&rsquo;s questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.'],
+  ['How do I see what changed?', 'Corrected questions, new lessons and site fixes are listed, dated, on <a href="changelog.html">What&rsquo;s new</a>.'],
+];
+
 function hubFaq() {
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
 ${FAQ.map(([q, a], i) => `      <details class="faq-item"><summary>${esc(q)}</summary>
       <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p></details>`).join('\n')}
+${HOME_ABOUT_QA.map(([q, a]) => `      <details class="faq-item"><summary>${q}</summary>
+      <p>${a}</p></details>`).join('\n')}
     </div>
   </section>`;
 }
