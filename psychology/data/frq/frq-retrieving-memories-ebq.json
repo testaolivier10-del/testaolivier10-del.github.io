@@ -27,7 +27,7 @@
  ],
  "sources": [
   {
-   "title": "Source 1",
+   "title": "Testing versus restudying a science passage",
    "source": "Roediger & Karpicke (2006), Experiment 1",
    "study": {
     "introduction": "Henry Roediger and Jeffrey Karpicke asked whether taking a test on a passage, with no feedback, helps students remember it better than studying it again.",
@@ -89,7 +89,7 @@
    }
   },
   {
-   "title": "Source 2",
+   "title": "Ungraded quizzes in high school biology",
    "invented": true,
    "study": {
     "introduction": "Researchers tested whether short, ungraded quizzes in class improve end-of-unit test scores in a high school biology course.",
@@ -119,7 +119,7 @@
    }
   },
   {
-   "title": "Source 3",
+   "title": "What students predict and what they remember",
    "invented": true,
    "study": {
     "introduction": "Researchers asked whether students can tell which study method works better for them.",

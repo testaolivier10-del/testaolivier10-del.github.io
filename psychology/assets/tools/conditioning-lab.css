@@ -25,8 +25,6 @@ body.ls-on .psy-crumb{display:none;}
 .cl-trial > *{min-height:48px;padding:0 8px;white-space:nowrap;}
 .cl-trial > .cl-pair{grid-column:1 / -1;}
 .cl-go .btn-press{width:100%;}
-.ls-dock .cl-go{position:static;box-shadow:none;}
-.ls-dock .cl-trial{position:static;box-shadow:none;}
 .cl-exrow{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:6px;align-items:end;}
 .cl-exrow > .bt-btn{min-height:44px;padding:0;font:900 22px var(--font-ui);}
 .cl-exsel .bt-select{display:block;}
@@ -141,3 +139,7 @@ body.ls-on .psy-crumb{display:none;}
 .cl-q4c.is-on{border-color:var(--cl-acc);color:var(--ink);background:var(--cl-acc-tint);}
 .cl-q4c.is-key{border-width:3px;color:var(--ink);}
 .ls-root .ls-drill-stage .cl-qfig{justify-content:center;}
+/* Room for the first-run tip while it shows (hintSlot). */
+.psy-tipslot{height:58px;flex:none;}
+/* The primary row sits in the dock's flow (not stuck to the screen's foot), so the first-run tip above it never covers the scene switch. */
+.ls-dock .cl-trial,.ls-dock .cl-go{position:static !important;box-shadow:none !important;}

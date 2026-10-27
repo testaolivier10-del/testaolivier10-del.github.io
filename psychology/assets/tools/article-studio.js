@@ -124,8 +124,10 @@
   /* Bring an element into view inside its own scrolling box (the stage), never by scrolling the page. */
   function reveal(el){
     if(!el) return;
-    var box = el.closest('.ls-stage-body') || el.closest('.as-fig');
-    if(!box || box.scrollHeight <= box.clientHeight + 2) return;
+    // The nearest ancestor that actually scrolls (the figure or the stage body).
+    var box = el.parentElement;
+    while(box && box !== document.body && !(box.scrollHeight > box.clientHeight + 2 && /(auto|scroll)/.test(getComputedStyle(box).overflowY))) box = box.parentElement;
+    if(!box || box === document.body) return;
     var a = el.getBoundingClientRect(), b = box.getBoundingClientRect();
     var to = box.scrollTop + (a.top - b.top) - Math.max(16, (box.clientHeight - a.height) / 3);
     try{ box.scrollTo({ top: Math.max(0, to), behavior: T.reduced() ? 'auto' : 'smooth' }); }catch(e){ box.scrollTop = Math.max(0, to); }

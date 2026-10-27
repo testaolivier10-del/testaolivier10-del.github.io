@@ -326,10 +326,13 @@
     permissive: '“Come home whenever you like, sweetie.”',
     uninvolved: '“Mm-hm.” (still looking at the phone)'
   };
-  function parentScene(w, d, W, H){
-    var phone = W < 560, g = [], st = D.parentStyle(w, d);
+  /* o.blank: the grid only (a drill before its style step: no dot, no
+     highlight, no scene, so nothing gives the key away). */
+  function parentScene(w, d, W, H, o){
+    o = o || {};
+    var phone = W < 560, g = [], st = o.blank ? null : D.parentStyle(w, d);
     // grid
-    var gs = phone ? Math.min(W - 70, H * 0.48) : Math.min(H - 70, W * 0.42), gx = phone ? (W - gs) / 2 + 12 : 52, gy = phone ? 16 : (H - gs) / 2 - 6;
+    var gs = o.blank ? Math.min(W - 80, H - 70) : phone ? Math.min(W - 70, H * 0.48) : Math.min(H - 70, W * 0.42), gx = o.blank ? (W - gs) / 2 + 12 : phone ? (W - gs) / 2 + 12 : 52, gy = o.blank ? (H - gs) / 2 - 10 : phone ? 16 : (H - gs) / 2 - 6;
     var sx = function(v){ return gx + v / 10 * gs; }, sy = function(v){ return gy + gs - v / 10 * gs; };
     D.PARENT.forEach(function(p){
       var qx = p.warm ? sx(5) : sx(0), qy = p.demand ? sy(10) : sy(5), on = p === st;
@@ -339,10 +342,11 @@
     g.push('<rect x="' + gx + '" y="' + gy + '" width="' + gs + '" height="' + gs + '" class="dv-gridbox"/>');
     g.push('<text class="dv-axl" x="' + (gx + gs / 2) + '" y="' + (gy + gs + 24) + '" text-anchor="middle">Warmth →</text>');
     g.push('<text class="dv-axl" transform="translate(' + (gx - 14) + ',' + (gy + gs / 2) + ') rotate(-90)" text-anchor="middle">Demands and rules →</text>');
+    if(o.blank) return { svg: g.join(''), grid: { x: gx, y: gy, s: gs } };
     g.push('<circle class="dv-dot" cx="' + sx(w) + '" cy="' + sy(d) + '" r="11"/>');
     // scene: parent and teen with a speech bubble
     var sX = phone ? 8 : gx + gs + 36, sY = phone ? gy + gs + 40 : 14, sW = phone ? W - 16 : W - sX - 10, sH = phone ? H - sY - 8 : H - 28;
-    if(sW > 120 && sH > 90){
+    if(sW > 120 && sH > 120){
       g.push('<rect x="' + sX + '" y="' + sY + '" width="' + sW + '" height="' + sH + '" rx="14" class="dv-room"/>');
       var floor = sY + sH - 12, hh = Math.min(sH * 0.62, sW * 0.7);
       g.push('<rect x="' + sX + '" y="' + floor + '" width="' + sW + '" height="12" class="dv-floor"/>');
@@ -350,10 +354,10 @@
       g.push(person({ x: px, y: floor, h: hh, age: 42, skin: SKIN[0], hair: '#6B4A2E', hairStyle: 'bun', shirt: 'var(--dv-shirt2)', pose: st.id === 'uninvolved' ? 'phone' : st.id === 'authoritarian' ? 'point' : st.id === 'permissive' ? 'reach' : 'hold', facing: 1, face: st.id === 'authoritarian' ? 'angry' : st.id === 'uninvolved' ? 'neutral' : 'smile', look: st.id === 'uninvolved' ? null : null,
         prop: st.id === 'uninvolved' ? function(p){ return '<rect x="' + (p.hand[0] - p.R * 0.18) + '" y="' + (p.hand[1] - p.R * 0.45) + '" width="' + (p.R * 0.36) + '" height="' + (p.R * 0.62) + '" rx="' + (p.R * 0.08) + '" class="dv-phone"/>'; } : null }));
       g.push(person({ x: tx, y: floor, h: hh * 0.92, age: 15, skin: SKIN[0], hair: '#6B4A2E', shirt: 'var(--dv-kid)', pose: st.id === 'authoritarian' ? 'cross' : 'stand', facing: -1, face: st.id === 'authoritarian' ? 'sad' : st.id === 'uninvolved' ? 'worried' : 'smile' }));
-      var bw = sW - 24, bx = sX + 12, byy = sY + 12, lines = wrap(SAYS[st.id], bw - 20, phone ? 12.5 : 13.5);
-      var bh = 14 + lines.length * (phone ? 16 : 18);
+      var fs = phone ? 12.5 : 13.5, bw = sW - 24, bx = sX + 12, byy = sY + 12, lines = wrap(SAYS[st.id], bw - 24, fs + 1);
+      var bh = 14 + lines.length * (fs + 4.5);
       g.push('<rect x="' + bx + '" y="' + byy + '" width="' + bw + '" height="' + bh + '" rx="10" class="dv-bubble"/><path d="M' + (px + 6) + ' ' + (byy + bh) + ' l8 12 l6 -12 Z" class="dv-bubble"/>');
-      lines.forEach(function(l, i){ g.push('<text class="dv-speech" x="' + (bx + 10) + '" y="' + (byy + 20 + i * (phone ? 16 : 18)) + '">' + esc(l) + '</text>'); });
+      lines.forEach(function(l, i){ g.push('<text class="dv-speech" font-size="' + fs + '" x="' + (bx + 10) + '" y="' + (byy + 20 + i * (fs + 4.5)) + '">' + esc(l) + '</text>'); });
     }
     return { svg: g.join(''), grid: { x: gx, y: gy, s: gs } };
   }
@@ -639,8 +643,7 @@
       out += t.svg + '<text class="dv-now-h" x="' + (tx + (phone ? 0 : 124)) + '" y="' + (ty - (phone ? 2 : 10)) + '">' + esc(g.name) + ', age ' + esc(ageWords(g.age)) + '</text>';
       label = g.name + ', age ' + ageWords(g.age) + ', on the ' + D.LANES.filter(function(l){ return l.id === lane; })[0].name.toLowerCase() + ' lane of the lifespan timeline' + (open ? '.' : '; the stages are revealed after you answer.');
     } else if(g.kind === 'parent'){
-      var ps = parentScene(st.style ? g.warm : 5, st.style ? g.demand : 5, W, H);
-      out = st.style ? ps.svg : ps.svg.replace(/<circle class="dv-dot"[^>]*\/>/, '');
+      out = parentScene(g.warm, g.demand, W, H, { blank: !st.style }).svg;
       label = 'Parenting grid of warmth and demands' + (st.style ? ', with this home placed in its quadrant.' : '.');
     } else if(g.kind === 'adult'){
       out = agingScene(g.age, W, H);

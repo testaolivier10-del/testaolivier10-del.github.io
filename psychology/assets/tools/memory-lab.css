@@ -100,3 +100,7 @@ body.ls-on .psy-crumb{display:none;}
 @media (max-width:560px){ .ml-qtl{grid-template-columns:minmax(0,1fr);} .ml-qa{transform:rotate(90deg);justify-self:center;line-height:1;} .ml-qc{min-height:76px;} }
 .ls-root .ls-drill-stage .ml-qfig{justify-content:center;}
 .ls-root .ls-drill-stage .ml-qfig > svg.psy-plot{flex:1 1 auto;}
+/* Room for the first-run tip while it shows (hintSlot). */
+.psy-tipslot{height:58px;flex:none;}
+/* The primary row sits in the dock's flow (not stuck to the screen's foot), so the first-run tip above it never covers the scene switch. */
+.ls-dock .ml-go{position:static !important;box-shadow:none !important;}

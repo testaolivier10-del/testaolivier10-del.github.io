@@ -99,7 +99,7 @@
 .dv-dot{fill:var(--cink);stroke:var(--white);stroke-width:3;cursor:grab;}
 .dv-bubble{fill:var(--white);stroke:var(--line);stroke-width:1.2;}
 :root[data-theme="dark"] .dv-bubble{fill:#243244;stroke:#3A4C60;}
-.dv-speech{font-weight:800;font-size:13.5px;fill:var(--ink);}
+.dv-speech{font-weight:800;fill:var(--ink);}
 /* aging */
 .dv-cry{fill:none;stroke:var(--dv-c1-on);stroke-width:3.2;stroke-linejoin:round;}
 .dv-flu{fill:none;stroke:var(--dv-c2-on);stroke-width:3.2;stroke-linejoin:round;stroke-dasharray:9 5;}
