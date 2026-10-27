@@ -149,6 +149,9 @@
       var txt = 'p-value ' + P4(p), tw = txt.length * 7.6, anchor = side > 0 ? 'start' : 'end';
       if(side > 0 && lx + tw > G.W - 4){ lx = G.W - 4 - tw; }
       if(side < 0 && lx - tw < 4){ lx = 4 + tw; }
+      var tx0 = side > 0 ? lx : lx - tw, tx1 = side > 0 ? lx + tw : lx, top = G.b;
+      for(var k = 0; k <= 12; k++){ var xv = G.ix(tx0 + (tx1 - tx0) * k / 12); if(xv >= G.lo && xv <= G.hi) top = Math.min(top, G.sy(nm.f(xv))); }
+      ly = Math.max(G.t + 12, Math.min(ly, top - 10));
       out.push('<path class="pv-lead" d="M' + f2(G.sx(inX)) + ' ' + f2(inY) + 'L' + f2(lx) + ' ' + f2(ly + 5) + '"/><circle class="pv-leaddot" cx="' + f2(G.sx(inX)) + '" cy="' + f2(inY) + '" r="3"/>');
       out.push(svgText(lx + (side > 0 ? 2 : -2), ly, txt, 'pv-parea', anchor));
     }
@@ -550,7 +553,7 @@
     box.innerHTML = '<svg class="pv-svg" role="img" aria-labelledby="' + svgId + '-t"><title id="' + svgId + '-t"></title><g class="pv-layer"></g></svg>';
     host.appendChild(box);
     var svg = box.querySelector('svg'), layer = box.querySelector('.pv-layer'), title = box.querySelector('title');
-    var state = { shade: false, showP: false, cut: false, power: false };
+    var state = { shade: false, showP: false, cut: false, power: false, yours: null };
     function draw(w, h){
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svg.setAttribute('width', w); svg.setAttribute('height', h);
       if(fg.kind === 'errors'){
@@ -559,11 +562,47 @@
         return;
       }
       var v = { W: w, H: h, shade: state.shade, showP: state.showP, cut: state.cut }; for(var k in fg) v[k] = fg[k];
-      var rr = pFigure(v, svgId); layer.innerHTML = rr.svg;
+      var rr = pFigure(v, svgId), extra = '';
+      // The student's test statistic, as a dashed line where it would put the observed value.
+      if(state.yours && rr.nm && rr.G){
+        var Y = state.yours, G = rr.G, nm = rr.nm, xv = null;
+        if(Y.key === 'z' || Y.key === 't') xv = nm.center + Y.v * nm.se;
+        if(Y.key === 'se') xv = nm.center + (nm.obs - nm.center) / nm.se * Y.v; // the observed value's z with their SE
+        if(xv != null && isFinite(xv)){
+          var inside = xv > G.lo && xv < G.hi, px = G.sx(Math.max(G.lo, Math.min(G.hi, xv)));
+          if(inside) extra += '<line class="stat-yours" x1="' + f2(px) + '" y1="' + f2(G.t + 28) + '" x2="' + f2(px) + '" y2="' + f2(G.b) + '"/>';
+          extra += svgText(Math.max(50, Math.min(G.W - 50, px)), G.t + 20, 'yours: ' + (Y.key === 'se' ? 'z = ' + F((nm.obs - nm.center) / Y.v, 2) : Y.key + ' = ' + F(Y.v, 2)) + (inside ? '' : (xv > G.hi ? ' →' : ' ←')), 'stat-yours-t', 'middle');
+        } else extra += svgText(G.W - 8, G.t + 4, 'Yours: ' + F(Y.v, Y.key === 'df' ? 0 : 4), 'stat-yours-t', 'end');
+      }
+      layer.innerHTML = rr.svg + extra;
       title.textContent = 'Null distribution with the observed value' + (state.shade ? ' and the p-value shaded' : '');
     }
     var sized = fit(box, draw);
-    api.pvFig = { set: function(k){ state[k] = true; sized.redraw(); } };
+    api.pvFig = { set: function(k){ state[k] = true; state.yours = null; sized.redraw(); }, yours: function(y){ state.yours = y; sized.redraw(); } };
+  }
+
+  // One method hint per step, in this problem's numbers.
+  function methodOf(s, p){
+    var fg = p.fig || {}, tl = fg.ha === 'two' ? 'both tails (double one tail)' : fg.ha === 'greater' ? 'the right tail' : 'the left tail';
+    var H = {
+      tail: 'Read the alternative hypothesis: ">" is the right tail, "<" the left tail, "≠" both tails.',
+      se: tx('Use the null value, not $\\hat{p}$: $\\text{SE} = \\sqrt{\\frac{p_0(1 - p_0)}{n}}$ with $p_0 = ' + fg.p0 + '$ and $n = ' + fg.n + '$.'),
+      z: tx('$z = \\frac{\\hat{p} - p_0}{\\text{SE}}$: statistic minus null value, over the SE from step 1. Your z is the dashed line.'),
+      t: tx('$t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$: statistic minus null value, over the standard error. Your t is the dashed line.'),
+      df: tx('One sample mean: $df = n - 1$.'),
+      p: 'The p-value is the shaded area beyond the observed value: ' + tl + ' of the null distribution.',
+      decide: 'Reject the null hypothesis only when the p-value is less than α.',
+      conclude: tx('Evidence language, $H_a$ in context, about the population parameter.'),
+      shade: 'The p-value is the area as extreme as the dot or more, in the direction of the alternative.',
+      meaning: 'A p-value assumes the null hypothesis is true and asks how often a result this extreme or more would happen by chance.',
+      sides: 'A two-sided test counts both tails, so its p-value is twice the one-sided value.',
+      which: 'Rejecting can only be a Type I error; failing to reject can only be a Type II error.',
+      typeI: 'A Type I error rejects a null hypothesis that is true. Put that in the words of this study.',
+      pI: 'The chance of a Type I error is the significance level α, set before the data.',
+      power: 'Power and the Type II error add to 1: power = 1 − β.',
+      increase: 'Power grows with a larger sample, a larger α, or a true value farther from the null.'
+    };
+    return H[s.key] || null;
   }
 
   T.mount(SLUG, function(app, data){
@@ -585,7 +624,9 @@
             if(s.key === 'p'){ api.pvFig.set('shade'); api.pvFig.set('showP'); api.pvFig.set('cut'); }
             if(s.key === 'pI') api.pvFig.set('cut');
             if(s.key === 'power') api.pvFig.set('power');
-          }
+          },
+          onTry: function(s, t, api){ if(api.pvFig && !t.right && s.kind === 'num' && isFinite(t.value)) api.pvFig.yours({ key: s.key, v: t.value }); },
+          method: methodOf
         });
       },
       studio: { explore: function(pane, s){ if(ex) ex.studio(pane, s); } }
