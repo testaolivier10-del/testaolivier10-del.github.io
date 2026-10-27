@@ -352,18 +352,6 @@
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
-  function hintSlot(s, target, text, before){
-    if(!target) return;
-    var slot = document.createElement('div');
-    slot.className = 'bm-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    (before || target).parentNode.insertBefore(slot, before || target);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-  }
 
   /* ------------------------------------------------------------ explore */
   var TASKS = B.ACTIVE;
@@ -521,7 +509,7 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.bm-lab[data-r="frontal"]') || s.root.querySelector('.bm-fig'), 'Start here: tap a part of the brain');
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.bm-lab[data-r="frontal"]') || s.root.querySelector('.bm-fig'), 'Start here: tap a part of the brain', { cls: 'bm-tipslot' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.bm-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

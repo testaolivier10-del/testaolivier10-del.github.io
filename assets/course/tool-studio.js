@@ -541,6 +541,42 @@
     });
     paintScale();
 
+    /* ---------------- the primary row on a portrait phone (AP® Psychology launch, docs/tools-calm.md "Phones")
+       The dock's primary row (Stimulate, Play, Launch) sticks to the foot of the screen so it stays in view
+       under long drill text. Pinned there on landing it sat over the scene switch or the sliders below the
+       caption until the page scrolled. So it pins only while pinning covers no other control in the dock:
+       over text it stays, over a control it waits in its own place (.ls-unpin) until scrolling reaches it. */
+    var pinQ = mq('(max-width:640px)'), pinRaf = 0;
+    function pinRows(){
+      return Array.prototype.filter.call(s.dockEl.querySelectorAll('.ls-act,.bt-actions,div,p'), function(e){
+        if(e.hasAttribute('data-ls-pin')) return true;
+        if(e.offsetParent && getComputedStyle(e).position === 'sticky'){ e.setAttribute('data-ls-pin', ''); return true; }
+        return false;
+      });
+    }
+    function paintPins(){
+      pinRaf = 0;
+      var rows = pinRows(), phone = !!(pinQ && pinQ.matches);
+      rows.forEach(function(row){
+        row.classList.remove('ls-unpin');
+        if(!phone || !row.offsetParent) return;
+        var r = row.getBoundingClientRect(), vh = window.innerHeight;
+        if(r.bottom < vh - 1 || r.top >= vh) return;
+        var hit = Array.prototype.some.call(s.dockEl.querySelectorAll('button,input,select,textarea,[role=tab],[role=radio],[role=slider],a[href]'), function(c){
+          if(row.contains(c) || !c.offsetParent) return false;
+          var b = c.getBoundingClientRect();
+          return b.height > 0 && b.bottom > r.top + 1 && b.top < r.bottom - 1 && b.top < vh;
+        });
+        if(hit) row.classList.add('ls-unpin');
+      });
+    }
+    function queuePins(){ if(!pinRaf) pinRaf = requestAnimationFrame(paintPins); }
+    window.addEventListener('scroll', queuePins, { passive: true });
+    window.addEventListener('resize', queuePins);
+    s.dockEl.addEventListener('click', queuePins);
+    if(window.MutationObserver) new MutationObserver(queuePins).observe(s.dockEl, { childList: true, subtree: true });
+    s.repin = queuePins;
+
     /* ---------------- menu */
     function say(t){ toast.textContent = t; toast.classList.add('show'); clearTimeout(say.t); say.t = setTimeout(function(){ toast.classList.remove('show'); toast.textContent = ''; }, 3200); }
     s.say = say;
@@ -656,6 +692,7 @@
     ['stage', 'dock', 'why', 'details', 'about'].forEach(function(r){ if(opts[r]) s.add(r, opts[r]); });
     s.caption(opts.caption || '');
     if(opts.hint) s.hint(opts.hint);
+    queuePins();
     return s;
   }
 
@@ -682,7 +719,7 @@
       if(ids.length) el.setAttribute('aria-describedby', ids.join(' ')); else el.removeAttribute('aria-describedby');
     }
     describe(target, true);
-    var gone = false, raf = 0;
+    var gone = false, raf = 0, away = false;
     function box(sel){ var e = s.root.querySelector(sel); if(!e || !e.offsetParent) return null; var b = e.getBoundingClientRect(); return b.width && b.height ? b : null; }
     function over(a, b){ return b ? Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) * Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top)) : 0; }
     function place(){
@@ -695,6 +732,10 @@
       }
       var r = target.getBoundingClientRect();
       if(!r.width && !r.height){ ring.style.display = tip.style.display = 'none'; return; }
+      /* A target still below the fold (a phone's primary row in its own place, tool-studio.js paintPins):
+         wait for it rather than clamp the tip over the controls above it. */
+      away = r.top >= window.innerHeight - 8;
+      if(away){ ring.style.display = tip.style.display = 'none'; return; }
       ring.style.display = tip.style.display = '';
       var sx = window.scrollX, sy = window.scrollY, pad = 4, vw0 = document.documentElement.clientWidth;
       // The ring never reaches past the viewport's sides: a full-width target
@@ -739,16 +780,18 @@
       describe(target, false);
       Array.prototype.forEach.call(document.querySelectorAll('[aria-describedby]'), function(el){ if((' ' + el.getAttribute('aria-describedby') + ' ').indexOf(' ' + tip.id + ' ') >= 0) describe(el, false); });
       window.removeEventListener('resize', queue); window.removeEventListener('scroll', queue, true);
-      ['pointerdown', 'keydown', 'input', 'change'].forEach(function(t){ s.root.removeEventListener(t, onUse, true); });
+      ['pointerdown', 'click', 'keydown', 'input', 'change'].forEach(function(t){ s.root.removeEventListener(t, onUse, true); });
       clearInterval(iv);
     }
     function onUse(e){
       if(e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return;
+      // While the tip waits below the fold, a finger that only scrolls the page does not count as use.
+      if(away && e.type === 'pointerdown') return;
       if(e.target.closest && e.target.closest('.ls-bar')) return;
       dismiss();
     }
     window.addEventListener('resize', queue); window.addEventListener('scroll', queue, true);
-    ['pointerdown', 'keydown', 'input', 'change'].forEach(function(t){ s.root.addEventListener(t, onUse, true); });
+    ['pointerdown', 'click', 'keydown', 'input', 'change'].forEach(function(t){ s.root.addEventListener(t, onUse, true); });
     // The layout can still be settling (fonts, a late redraw): follow it briefly.
     var n = 0, iv = setInterval(function(){ queue(); if(++n > 20) clearInterval(iv); }, 150);
     queue();

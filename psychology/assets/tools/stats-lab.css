@@ -23,7 +23,6 @@
 .sl-mk:hover{border-color:var(--cink);color:var(--cink);}
 /* The course breadcrumb is not in the Tool Studio's hide list (shared change
    reported); hidden here so the studio stays one screen. */
-body.ls-on .psy-crumb{display:none;}
 .sl-opt{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:700;}
 /* scene: normal curve */
 .sl-band{fill:var(--sl-band);}

@@ -339,8 +339,6 @@ body[data-app^="tool-"] .psy-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
 .ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
 
-/* Tool Studio on (body.ls-on): the course crumb hides with the site header
-   (assets/course/tool-studio.css hides the other courses' crumbs). */
-body.ls-on .psy-crumb{display:none;}
+/* The course crumb hides in the studio from assets/course/tool-studio.css, with the other courses' crumbs. */
 /* Room for the first-run tip while it shows (ApPsychTools.hintSlot). */
 .psy-tipslot{height:58px;flex:none;}

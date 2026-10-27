@@ -134,18 +134,6 @@
   }
   /* The first-run tip sits in an empty slot opened just above its target, so it
      never covers the dock heading or another control; the slot goes on the first action. */
-  function hintSlot(s, target, text){
-    if(!target) return;
-    var slot = document.createElement('div');
-    slot.className = 'as-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    target.parentNode.insertBefore(slot, target);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-  }
   function cap(t){ t = String(t); return t.charAt(0).toUpperCase() + t.slice(1); }
   function phone(){ return (window.innerWidth || 1280) <= 640; }
 
@@ -247,7 +235,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       draw();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.as-parts'), 'Start here: tap a part, A to F');
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.as-parts'), 'Start here: tap a part, A to F', { cls: 'as-tipslot' });
       var w = window.innerWidth, t = null;
       window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(function(){ if((window.innerWidth <= 640) !== (w <= 640)){ w = window.innerWidth; draw(); } }, 120); });
     }

@@ -919,6 +919,11 @@ footer .privacy-link a:hover{color:var(--ink);}
   box-shadow:var(--shadow-pop);
 }
 .skip-link:focus{transform:translateY(0);}
+/* Off the top is not enough on its own: a full-page capture, or a phone browser whose toolbar shifts the
+   fixed layer while the page scrolls to a drill input, drew the parked link over a tool's figures (AP®
+   Psychology launch, docs/appsych-spec.md decision 13). Transparent and click-through until it has focus;
+   opacity keeps it focusable, unlike visibility or display. */
+.skip-link:not(:focus){opacity:0;pointer-events:none;}
 
 /* The skip target is a plain container, so it is given tabindex="-1" to be
    focusable at all — otherwise the viewport jumps but the keyboard stays in

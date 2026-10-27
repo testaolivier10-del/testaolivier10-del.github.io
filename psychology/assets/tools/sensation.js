@@ -241,18 +241,6 @@
       onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
-  function hintSlot(s, target, text, before){
-    if(!target) return;
-    var slot = document.createElement('div');
-    slot.className = 'sn-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    (before || target).parentNode.insertBefore(slot, before || target);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-  }
 
   /* ------------------------------------------------------------ explore */
   var SCENES = [{ v: 'detect', label: 'Detect' }, { v: 'weber', label: 'Weber' }, { v: 'color', label: 'Color' }, { v: 'perceive', label: 'Perceive' }];
@@ -417,7 +405,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.sn-act'), 'Start here: run 20 trials', s.root.querySelector('.sn-act'));
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.sn-act'), 'Start here: run 20 trials', { cls: 'sn-tipslot' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.sn-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

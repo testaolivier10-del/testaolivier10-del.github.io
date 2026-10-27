@@ -12,7 +12,7 @@ body.ls-full #site-header, body.ls-full .course-nav, body.ls-full .r3-toolband{d
 }
 body.ls-on .bottom-nav, body.ls-on .bottom-sheet,
 body.ls-on .bottom-scrim, body.ls-on .site-crumb, body.ls-on [data-crumb], body.ls-on .cx-crumb,
-body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on .env-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
+body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on .env-crumb, body.ls-on .psy-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
 body.ls-on .lp-launch, body.ls-on .lp-tip, body.ls-on .pt-fab{display:none !important;}
 body.ls-on{padding-bottom:0 !important;}
 body.ls-on .ls-host{max-width:none;padding:0;margin:0;}
@@ -100,13 +100,16 @@ html.ls-lock{overflow:hidden;}
    holding the primary one) stays in view at the foot of a dock that scrolls. */
 .ls-dock .ls-act,.ls-dock .bt-actions,
 .ls-dock :is(div,p):has(> .btn-press,> .ls-pri):not(:has(input,select,textarea,fieldset,.ls-stepper,.ls-act)){position:sticky;bottom:0;z-index:2;background:var(--white);box-shadow:0 0 0 6px var(--white);}
+/* Unpinned on a portrait phone while pinning would cover another control (tool-studio.js paintPins). */
+.ls-dock .ls-unpin{position:static !important;box-shadow:none !important;}
 .ls-modes[hidden]{display:none;}
 
 /* the segmented control (modes and the sheet's tabs) */
 .ls-seg{display:flex;gap:0;padding:3px;margin:0;border:0;border-radius:999px;background:var(--track);min-width:0;}
-.ls-seg > button,.ls-seg > .bt-mode{position:relative;flex:1;min-width:0;min-height:38px;padding:0 12px;margin:0;border:0;border-radius:999px;background:transparent;
+.ls-seg > button,.ls-seg > .bt-mode{position:relative;flex:1;min-width:0;min-height:44px;padding:0 12px;margin:0;border:0;border-radius:999px;background:transparent;
   color:var(--muted);font:800 var(--ls-s)/1.2 var(--font-ui);cursor:pointer;box-shadow:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ls-seg > button::after{content:"";position:absolute;inset:-3px 0;}
+/* 44 px at every width (AP® Psychology launch; was 38 and 36 on a desktop): the target size the rest of the dock uses. */
 /* The selected segment: a raised card with a course-colour ring and text, so it
    reads at a glance in both themes (dark: a tinted fill, the track is darker). */
 .ls-seg > button[aria-pressed=true],.ls-seg > button[aria-selected=true],.ls-seg > button.on,.ls-seg > .bt-mode.on{background:var(--white);color:var(--cink);
@@ -121,7 +124,7 @@ html.ls-lock{overflow:hidden;}
 .ls-cap.is-empty{justify-content:flex-end;}
 .ls-caption{flex:1;min-width:0;margin:0;font-size:var(--ls-m);line-height:1.4;color:var(--ink);}
 .ls-caption b{font-weight:900;}
-.ls-why{position:relative;flex:none;display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 13px;border:0;border-radius:999px;
+.ls-why{position:relative;flex:none;display:inline-flex;align-items:center;gap:5px;height:44px;padding:0 14px;border:0;border-radius:999px;
   background:var(--ctint);color:var(--cink);font:800 var(--ls-s) var(--font-ui);cursor:pointer;}
 .ls-why::after{content:"";position:absolute;inset:-4px 0;}
 .ls-why .ls-i{width:18px;height:18px;}

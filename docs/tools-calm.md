@@ -90,7 +90,13 @@ change only (`tool-studio.css/js`); desktop (≥1000 px) is unchanged apart from
 - **Portrait ≤640 px:** the stage is `62svh` (min 300 px), full width (no side margin, 4 px inner padding), bar 52 px.
   The dock follows below with tighter spacing and no inner scroll; the page scrolls for long drill text (the
   `.ls-act` / primary row stays sticky at the bottom of the screen). The caption shows 3 lines; a tap shows the
-  rest (screen readers get it all). Segments and Why? are 44 px tall.
+  rest (screen readers get it all). Segments and Why? are 44 px tall (at every width since 2026-10-27).
+- **Primary row pinning (2026-10-27, AP® Psychology launch):** pinned at the foot of the screen, the row covered the
+  scene switch or the sliders under the caption on landing (neuron, population growth, projectile lab and 12 more).
+  `paintPins()` in `tool-studio.js` now unpins it (`.ls-unpin`) whenever pinning would cover another dock control,
+  so it waits in its own place until scrolling reaches it; over plain text it stays pinned. A first-run tip whose
+  target is below the fold stays hidden until the target scrolls in. `s.repin()` re-measures after a tool changes
+  its dock outside a click.
 - **Phone on its side** (≤999 px wide and ≤540 px tall, landscape): picture | dock side by side (dock 36%, min 270 px,
   scrolls inside), bar 44 px, safe-area insets respected.
 - **Enlarge** (`.ls-enl`, bottom-right of the stage, every size; shown only when the stage holds an svg, canvas or img at

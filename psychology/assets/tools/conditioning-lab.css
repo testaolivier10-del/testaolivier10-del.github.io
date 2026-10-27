@@ -14,7 +14,6 @@
 .ls-root .cl-fig{flex:1 1 auto;height:auto;min-height:300px;}
 .cl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 .cl-fig .cl-svg{position:absolute;inset:0;}
-body.ls-on .psy-crumb{display:none;}
 /* dock */
 .cl-ctl{display:flex;flex-direction:column;gap:10px;}
 .cl-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
@@ -140,6 +139,5 @@ body.ls-on .psy-crumb{display:none;}
 .cl-q4c.is-key{border-width:3px;color:var(--ink);}
 .ls-root .ls-drill-stage .cl-qfig{justify-content:center;}
 /* Room for the first-run tip while it shows (hintSlot). */
-.psy-tipslot{height:70px;flex:none;}
 /* The primary row sits in the dock's flow (not stuck to the screen's foot), so the first-run tip above it never covers the scene switch. */
 .ls-dock .cl-trial,.ls-dock .cl-go{position:static !important;box-shadow:none !important;}

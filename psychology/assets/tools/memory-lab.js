@@ -61,18 +61,6 @@
 
   /* The first-run tip sits just above its target; an empty slot is opened
      there while the tip shows, so it never covers another control. */
-  function hintSlot(s, target, text){
-    if(!target) return;
-    var slot = document.createElement('div');
-    slot.className = 'psy-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    target.parentNode.insertBefore(slot, target);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-  }
 
   /* ------------------------------------------------------------ explore */
   function explore(host, data){
@@ -402,7 +390,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); redraw();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.ml-go'), 'Start here: study ten words');
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.ml-go'), 'Start here: study ten words');
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(redraw, 60); }).observe($('.ml-fig')); }
       try{ new MutationObserver(function(){ redraw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

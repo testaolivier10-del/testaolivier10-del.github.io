@@ -912,16 +912,34 @@
     if(!s || !s.hint || !target) return null;
     if(opts && opts.nodeType) opts = { before: opts };
     opts = opts || {};
-    var at = opts.before || target, slot = document.createElement('div');
-    slot.className = opts.cls || 'psy-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    at.parentNode.insertBefore(slot, at);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return null; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-    return h;
+    /* A target below the fold (a phone): wait until it is fully in view, so the slot never opens a gap
+       nobody sees (development and social influence did this first). */
+    var rb = target.getBoundingClientRect();
+    if(window.IntersectionObserver && (rb.bottom > window.innerHeight || rb.top < 0)){
+      var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); setTimeout(function(){ now(); }, 120); } }, { threshold: 1 });
+      io.observe(target);
+      return { dismiss: function(){ io.disconnect(); }, place: function(){} };
+    }
+    return now();
+    function now(){
+      var at = opts.before || target, slot = document.createElement('div');
+      slot.className = opts.cls || 'psy-tipslot'; slot.setAttribute('aria-hidden', 'true');
+      at.parentNode.insertBefore(slot, at);
+      var h = s.hint({ target: target, text: text });
+      if(!h){ slot.remove(); return null; }
+      // The slot is as tall as the tip, so the tip sits in it and covers no control or label.
+      var tipEl = document.querySelector('.ls-coach');
+      if(tipEl && tipEl.offsetHeight) slot.style.height = (tipEl.offsetHeight + 16) + 'px';
+      var EV = ['pointerdown', 'click', 'keydown', 'input', 'change'];
+      function done(e){
+        if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return;
+        EV.forEach(function(t){ s.root.removeEventListener(t, done, true); });
+        setTimeout(function(){ slot.remove(); if(h.place) h.place(); }, 0);
+      }
+      EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
+      if(h.place) h.place();
+      return h;
+    }
   }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }

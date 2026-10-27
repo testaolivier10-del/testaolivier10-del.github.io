@@ -6,7 +6,7 @@
    pyramid, curve) are gone. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { createBrowser } from './harness.mjs';
 
 const B = createBrowser();
@@ -82,10 +82,15 @@ test('the left margin fits the widest y tick label (measured, not fixed), so lon
   assert.ok(x - 'REM sleep'.length * 6.4 >= 0, 'the label starts inside the picture');
 });
 
-test('shared tool helpers: hintSlot in psy-tools.js, the crumb hidden in the studio and the tip slot in psy-tools.css', () => {
+test('shared tool helpers: hintSlot in psy-tools.js, the crumb hidden by the Tool Studio and the tip slot in psy-tools.css; no trainer keeps a copy', () => {
   const js = readFileSync('psychology/assets/tools/psy-tools.js', 'utf8'), css = readFileSync('psychology/assets/tools/psy-tools.css', 'utf8');
   assert.match(js, /function hintSlot\(s, target, text, opts\)/);
   assert.match(js, /hintSlot: hintSlot/);
-  assert.match(css, /body\.ls-on \.psy-crumb\{display:none;\}/);
+  assert.match(readFileSync('assets/course/tool-studio.css', 'utf8'), /body\.ls-on \.psy-crumb/);
   assert.match(css, /\.psy-tipslot\{/);
+  // Launch: the trainers' own copies are gone (docs/appsych-spec.md decision 13).
+  for (const f of readdirSync('psychology/assets/tools').filter(f => /\.(js|css)$/.test(f) && !f.startsWith('psy-'))) {
+    const src = readFileSync(`psychology/assets/tools/${f}`, 'utf8');
+    assert.doesNotMatch(src, /function hint(Slot|Now)\(|\.psy-crumb\{display:none/, f);
+  }
 });

@@ -258,18 +258,6 @@
 
   /* The first-run tip sits just above its target; an empty slot is opened
      there while the tip shows, so it never covers another control. */
-  function hintSlot(s, target, text, before){
-    if(!target) return;
-    var slot = document.createElement('div');
-    slot.className = 'nr-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    (before || target).parentNode.insertBefore(slot, before || target);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-  }
 
   /* ------------------------------------------------------------ explore */
   var PATTERNS = [{ value: 'pulse', label: 'One brief pulse' }, { value: 'pair', label: 'Two pulses' }, { value: 'held', label: 'Held on' }];
@@ -474,7 +462,7 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       LS.setupRow = sp;
       syncView(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.nr-play'), 'Start here: fire the neuron', s.root.querySelector('.nr-play'));
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.nr-play'), 'Start here: fire the neuron', { cls: 'nr-tipslot' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.nr-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

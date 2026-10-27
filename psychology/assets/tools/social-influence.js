@@ -356,29 +356,6 @@
   /* On a phone the dock starts below the first screen: the tip waits until
      its control is fully in view, so it is placed above it in its slot and
      never pinned over other controls. */
-  function hintSlot(s, target, text, before){
-    if(!target) return;
-    var rb = target.getBoundingClientRect();
-    if(window.IntersectionObserver && (rb.bottom > window.innerHeight || rb.top < 0)){
-      var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); setTimeout(function(){ hintNow(s, target, text, before); }, 120); } }, { threshold: 1 });
-      io.observe(target); return;
-    }
-    hintNow(s, target, text, before);
-  }
-  function hintNow(s, target, text, before){
-    var slot = document.createElement('div');
-    slot.className = 'si-tipslot'; slot.setAttribute('aria-hidden', 'true');
-    (before || target).parentNode.insertBefore(slot, before || target);
-    var h = s.hint({ target: target, text: text });
-    if(!h){ slot.remove(); return; }
-    // The slot is as tall as the tip, so the tip sits in it and covers no control or label.
-    var tipEl = document.querySelector('.ls-coach');
-    if(tipEl) slot.style.height = (tipEl.offsetHeight + 16) + 'px';
-    var EV = ['click', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); setTimeout(function(){ slot.remove(); if(h.place) h.place(); }, 0); }
-    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
-    if(h.place) h.place();
-  }
   function chips(cls, label, items){
     return '<div class="si-grp-row ' + cls + '" role="group" aria-label="' + esc(label) + '"><p class="si-lbl" aria-hidden="true">' + esc(label) + '</p><div class="si-chips">' + items.map(function(x){ return '<button type="button" class="tchip" data-k="' + x[0] + '" aria-pressed="false">' + esc(x[1]) + '</button>'; }).join('') + '</div></div>';
   }
@@ -547,7 +524,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp; sp.setup('Scene and results');
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, sSize.el, 'Start here: add people who answer wrong', sSize.el);
+      if(s.mode() === 'explore') ApPsychTools.hintSlot(s, sSize.el, 'Start here: add people who answer wrong', { cls: 'si-tipslot' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.si-fig')); }
     }
     sync(); draw(); words();
