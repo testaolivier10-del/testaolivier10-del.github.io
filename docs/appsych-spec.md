@@ -101,11 +101,11 @@ One branch, `claude/appsych`, one PR at the end.
 |---|---|---|
 | R | Research: `docs/appsych-research/framework.md`, `market.md`; this spec | **done 2026-10-27** |
 | 0 | Fork AP® Environmental Science: runtime `psychology/assets/` (`psy-*`), `ApPsychStats` (descriptive statistics) in place of `ApEnvCalc`, generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-27** (decision 7) |
-| 1 | Content: lessons, notes, banks (incl. stimulus sets), AAQs and EBQs, glossary, figures | |
-| 2 | Trainers (section 6) | |
+| 1 | Content: lessons, notes, banks (incl. stimulus sets), AAQs and EBQs, glossary, figures | **done 2026-10-27** (authors A-G, `docs/appsych-reviews/self-*.md`) |
+| 2 | Trainers (section 6) | **done 2026-10-27** (builders T1-T4) |
 | 3 | Two fixed practice exams, unit tests, cram kit, extras | **built 2026-10-27** (decision 12, `docs/appsych-reviews/phase3.md`): two forms (75 in course order, 15 per unit, 20 exam-only + 55 bank each, 10 sets each, AAQ then EBQ), every exam-only number recomputed, timed sections; FRQ teaching-order check and six FRQs refiled; measured plot margins; shared `hintSlot` and crumb hide; help note as a lesson field; heritability wording reconciled; needs-author merged. "Make it specific": 46 prompts (7-8 per unit and the research skills chapter, every AAQ and EBQ skill, a builder on each, first 3 free, numbers in `JUSTIFY_NUMBERS`) |
-| 4 | Independent accuracy checks per unit group, tools and exams | |
-| Launch | Publish, generators, continuity pass, "ten courses" wording, full CI with browser checks, PR | |
+| 4 | Independent accuracy checks per unit group, tools and exams | **done 2026-10-27** (`docs/appsych-reviews/u*.md`, `tools-*.md`, `exams-justify.md`) |
+| Launch | Publish, generators, continuity pass, "ten courses" wording, full CI with browser checks, PR | **done 2026-10-27** (decision 13, `docs/appsych-reviews/launch.md`); Premium on sale after the owner checklist (section 9) |
 
 ### 5a. Authoring split
 
@@ -227,9 +227,68 @@ with one rubric line per point and full-credit samples.
     heritability is "about 0.5 in adults (lower in childhood), mostly from samples in wealthier countries" in both
     1.1 and 2.8. The "Make it specific" prompts followed the same day (needs-author `justify-prompts`, resolved).
 
+13. (2026-10-27, launch) **Published, Premium not on sale**, as AP® Environmental Science decision 12.
+    - All five units and `skills-research` in `psychology/data/published.json`; registry `status: 'live'` (no Beta
+      label, env decision 14; the "not yet reviewed by a teacher" note stays on every page); every generator rerun
+      (course, courses, pricing with the hub card and the 404 card, OG tags, sitemap, crumbs). `onSale: false`
+      stays. `sw.js` cache v94. Changelog entry 2026-10-27. Ten courses: hub hero count and facts (generated),
+      manifest, `search.html`, `sources.html` (new section), Premium rules and `terms.html#fixed-date`.
+    - Publishing turned on the title check: 16 lesson and notes `<title>`s were cut with an ellipsis, so they got a
+      short name in `descriptions.json` `titles` ("Heredity and Environment", "Psychological Disorders", ...).
+    - Fixes from the continuity pass (psychology vs environmental science, every shared page type, 390/1440,
+      light/dark, Playwright; log in `docs/appsych-reviews/launch.md`). Shared, so every course gains them: (a) the
+      home's "free response questions on the exam" tile was cut in its 92 px phone column (`r3.css`); (b) a phone
+      header with a level badge cut the course name, so the wordmark gives way under 430 px while a badge shows
+      (`theme.css`); (c) the coach ring around a tall answer box spilled over the dock below a phone's stage
+      (`tool-studio.js`); (d) course search cut result titles at the first match ("… Memory"), now marked in
+      full (`site-search.js` option `whole`); (e) the review empty state ran "due now" together and offered
+      Flashcards twice; (f) MathML text lost its edge spaces in Chromium ("68% within1SD"), `mtext{white-space:pre}`;
+      (g) the teachers page said the AP® trademark line twice; (h) the exam save prompt counted exam-only
+      questions as "queued for review". Psychology only: practice and search said "mathematical practice" (now
+      "science practice", also fixed in environmental science, whose FRQ link said "four types" for three); the
+      exam results said May 2027 is the first exam in this format (it began in May 2025); the FRQ cite hint always
+      said "Source 2"; "Also accept" lists joined sentences as ".;"; five AAQs had no live hint, so every AAQ part F
+      has the "Link it" (`mechanism`) rule. Tool Studio phone sticky row, Skip to content and 44 px controls were
+      fixed in the shared files before the restart (commit 082ef38d).
+    - Budgets unchanged by the pass (every `check-weight` budget passes).
+
+## 9. Open items for the owner
+
+- Confirm the identity (decision 5 and 11), now live: accent, cover, icon, headline and ranks.
+- `page-title-dash` (needs-author): page titles use the shared " — " separator in every course; changing it is a
+  site-wide call.
+- Uncertain research and teacher questions: `docs/appsych-needs-author.md` (list below).
+
+**Launch checklist (owner), to put AP® Psychology Premium on sale:**
+- [ ] Apply migration `scripts/sql/migrations/2026-10l-appsych.sql` in Supabase (adds `appsych` to the course
+      checks; check the live function bodies first, as for env's `2026-10k-apenv.sql`).
+- [ ] Create the Polar product "AP® Psychology Premium (through June 30, 2027)", one-time, at the AP® price ($25),
+      and make sure the "Founding member" discount applies to it.
+- [ ] Add `"psy-2027": "<id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker (levlprep-ask) settings; the Worker code
+      already knows the pass (`worker/src/premium.js`) and redeploys on merge.
+- [ ] Remove `onSale: false` from `COURSES.appsych` in `assets/premium.js`, bump `sw.js`, and grant owner access.
+- [ ] Merge the PR.
+- [ ] Optional: an AP® Psychology teacher reviews the course (the "not yet reviewed" note stays until then).
+
+**Open for a teacher** (details in `docs/appsych-needs-author.md`):
+- `ced-text` and `exclusions`: learning objectives for 2.7-5.5 and several exclusion statements come from a
+  third-party copy of the CED; 3.3 had no readable essential knowledge. Check Units 3-5 and 2.7-2.8.
+- `practice-weights` and `mcq-sets`: Section I practice weights and the number and kind of question sets are third
+  party or our choice; forms do not enforce practice weights until confirmed.
+- `frq-scoring`: the wording of each AAQ and EBQ rubric line and the restricted-term lists (structure is official).
+- `replication`, `milgram-detail`, `wording-cautious`: how classic studies and cautious claims are worded (Milgram,
+  Stanford prison, facial feedback, bystander effect, cognitive dissonance, marshmallow test and others).
+- `sensitive-scope`: 3.3 Gender and Sexual Orientation and the Unit 5 categories, DSM-5-TR time rules and treatment
+  evidence.
+- `numbers-secondary`, `poll-1936`, `effect-size`: figures from secondary sources (Ebbinghaus, Asch, the 1936 poll)
+  and Cohen's benchmarks.
+- `help-scope`: the 988 note on 3.6, and a line for readers outside the US.
+- `figures-schematic`: the brain figures and the hypnogram.
+- `frq-grader`: the AI FRQ grader is not wired for the 7-point AAQ and EBQ (self-scoring meanwhile).
+
 ## 10. Lead notes for Phase 3 and 4 (from author reports)
 
-Items (a)-(e) below were done in Phase 3 (decision 12); the Tool Studio sticky-row note stays for launch.
+Items (a)-(e) below were done in Phase 3 (decision 12); the Tool Studio sticky-row note was done at launch (decision 13).
 
 - FRQs are filed on a topic but may use terms taught later (`frq-heredity-environment-aaq` part D needs research
   ethics; `frq-development-methods-aaq` uses 3.6 parenting styles). The content check does not scan FRQs for teaching
