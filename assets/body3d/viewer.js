@@ -905,7 +905,9 @@
     if (infoEl) infoEl.innerHTML = placeholder;
     renderList();
     const focusKey = resolve(opts.focus);
-    if (focusKey) selectGroup(focusKey, 'focus');
+    // After mount() returns, so an onSelect handler can already use the
+    // returned viewer (the body map's ?focus= threw here before 2026-10-27).
+    if (focusKey) Promise.resolve().then(() => { if (!destroyed && !selectedGroupKey) selectGroup(focusKey, 'focus'); });
 
     const api = {
       el,
