@@ -194,6 +194,10 @@ jobs:
       # cover band written by scripts/build-r3-inner.mjs.
       - name: the round 3 bands on the hand-written inner pages are current
         run: node scripts/build-r3-inner.mjs --check
+      # The NREMT tools hub and every NREMT tool page's cover band (round 3) come
+      # from scripts/build-r3-tools.mjs.
+      - name: the NREMT tools hub and tool bands are current
+        run: node scripts/build-r3-tools.mjs --check
       # A lesson's title is its topic's name and its chapter's name, both of
       # which live in curriculum.js — so it is generated, not retyped. Retyped,
       # it drifted twice: 121 lessons shipped the same title as their notes

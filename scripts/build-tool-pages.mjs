@@ -42,6 +42,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { lockedLd } from './lib/premium-data.mjs';
+import { toolsHubMain, toolBand } from './lib/r3-tools.mjs';
 
 /* The free tools, from the one list ochem-premium.js gates by. The rest are
    Premium, so their structured data marks the tool (.tool-root) as locked and
@@ -227,6 +228,16 @@ function loadTopics() {
 const TOPICS = loadTopics();
 const TERMS = new Map(JSON.parse(readFileSync(join(ROOT, 'ochem', 'assets', 'glossary.json'), 'utf8')).terms.map((t) => [t.id, t]));
 
+/* Round 3: the cover band at the top of each tool page, and the hub's round 3 <main> (board R10-Tools). The
+   registry's tagline is the hand line and its blurb the lede; dashes in them read as a colon here. */
+const BAND_START = '<!-- r3-toolband:start -->', BAND_END = '<!-- r3-toolband:end -->';
+const undash = (s) => esc(s).replace(/\s+[—–]\s+/g, ': ');
+function bandHtml(tool) {
+  return toolBand({ key: 'ochem', up: '../../', slug: tool.slug, title: tool.name, hand: undash(tool.tagline), lede: undash(tool.blurb), backHref: '../tools.html',
+    crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: 'Organic Chemistry', href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(tool.name) }] })
+    .replace(`${BAND_START}\n`, '').replace(`\n${BAND_END}`, '');
+}
+
 const tools = loadTools();
 const stale = [];
 const broken = [];
@@ -250,6 +261,10 @@ for (const tool of tools) {
   next = splice(next, FOOT_START, FOOT_END, footHtml(tool, tools), '<div id="tool-foot">');
   if (next === null) { broken.push(`${tool.slug}: no <div id="tool-foot">`); continue; }
 
+  // Round 3 (scripts/lib/r3-tools.mjs): the tool's cover band, after the breadcrumb.
+  next = splice(next, BAND_START, BAND_END, bandHtml(tool), '<!-- crumb:end -->');
+  if (next === null) { broken.push(`${tool.slug}: no <!-- crumb:end --> to put the cover band after`); continue; }
+
   if (next === current) continue;
   if (check) { stale.push(tool.slug); continue; }
   writeFileSync(file, next);
@@ -260,12 +275,24 @@ for (const tool of tools) {
    (assets/course/hub.js, the same card every course's tools hub uses),
    written into the page so it reads and links without JavaScript.
    tools-page.js adds the Premium pills at runtime. */
-const HUB_START = '<!-- tool-hub:start -->', HUB_END = '<!-- tool-hub:end -->';
+const HUB_START = '<!-- r3-tools:start -->', HUB_END = '<!-- r3-tools:end -->';
 const hubFile = join(ROOT, 'ochem', 'tools.html');
-const hubHtml = '\n    ' + Hub.toolGrid(tools.map((t) => ({
-  href: `tools/${t.slug}.html`, name: t.name, desc: t.tagline, icon: t.icon,
-  attrs: ` data-tool="${esc(t.slug)}"`, foot: esc(t.teaches),
-})), 'Tools') + '\n    ';
+const card = (t) => ({ slug: t.slug, href: `tools/${t.slug}.html`, name: t.name, desc: undash(t.tagline), foot: esc(t.teaches), free: FREE_TOOLS.includes(t.slug), attrs: ` data-tool="${esc(t.slug)}"` });
+const freeTools = tools.filter((t) => FREE_TOOLS.includes(t.slug)), paidTools = tools.filter((t) => !FREE_TOOLS.includes(t.slug));
+const NUM = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const hubHtml = '\n' + toolsHubMain({
+  key: 'ochem', up: '../', mountId: 'toolHub', mountClass: 'cx-tools',
+  crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'Organic Chemistry', href: 'index.html' }, { name: 'Tools' }],
+  h1: `${NUM[tools.length] || tools.length} places <span>to push electrons.</span>`, hand: 'nothing graded, and every one tells you why',
+  lede: 'Push electrons, turn a molecule over, plan a route or make a prediction. For the same chemistry with a right answer, see <a href="practice.html">Practice</a>.',
+  cta: { href: `tools/${tools[0].slug}.html`, label: `Open the ${esc(tools[0].name.toLowerCase())}` }, cta2: { href: 'search.html', label: 'Search everything' },
+  before: '<noscript><div class="site-nav-fallback"><p>Each tool computes its answer in your browser and needs JavaScript to run; the list below still links to every one.</p></div></noscript>',
+  groups: [
+    { big: true, h: 'Free <span>to use</span>', p: 'Open any of these now.', label: 'Free tools', cards: freeTools.map(card) },
+    ...(paidTools.length ? [{ big: true, h: 'With <span>Premium</span>', p: 'Part of the Organic Chemistry pass.', label: 'Premium tools', cards: paidTools.map(card) }] : []),
+  ],
+  note: 'Or <a href="search.html">search the whole course at once</a>: the textbook, every lesson and mechanism, these tools, and every practice question.',
+}) + '\n';
 {
   const cur = readFileSync(hubFile, 'utf8');
   const a = cur.indexOf(HUB_START), b = cur.indexOf(HUB_END);

@@ -1,0 +1,160 @@
+/* Round 3, step B5 (docs/site-redesign.md): the tools hub of every course and the opener of every tool page.
+   Builds on assets/course/r3.css (the cover band, kicker, ruled heading, .feat, .tc); markup from
+   scripts/lib/r3-tools.mjs. Boards: docs/redesign-r3/r10/boards/R10-Tools*, R10-Tool*. */
+
+/* ---------------------------------------------------------------- the hub */
+.r3-tools .r3-tools-body{padding-top:36px}
+.r3-tools .band.short .art{max-width:320px}
+.r3-tools .r3-tools-group{margin:0 0 34px}
+.r3-tools .r3-tools-h{margin-bottom:18px}
+.r3-tools .r3-tools-p{margin:-2px 0 16px;color:var(--muted);font-size:15px;max-width:40em}
+.r3-tools .kicker{margin-top:4px}
+.r3 .r3-tool-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 24px}
+.r3 .r3-tool-grid > li{display:flex;min-width:0}
+.r3 a.r3-tool{display:flex;flex-direction:column;gap:4px;width:100%;text-decoration:none;color:var(--ink);background:none;border:0;border-radius:0;box-shadow:none;padding:0 0 14px;border-bottom:1px solid var(--line);min-height:0}
+.r3 a.r3-tool:hover{background:none;transform:none;box-shadow:none}
+.r3 a.r3-tool .tc{margin:0 0 12px;transition:transform .15s ease,box-shadow .15s ease}
+.r3 a.r3-tool:hover .tc{transform:translateY(-2px);box-shadow:0 18px 30px -22px rgba(11,26,51,.55)}
+.r3 a.r3-tool .cx-tool-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0}
+.r3 a.r3-tool .cx-tool-name{font:900 17px/1.25 var(--font-ui);color:var(--ink);letter-spacing:-.005em}
+.r3 a.r3-tool:hover .cx-tool-name{color:var(--accent)}
+.r3 a.r3-tool .cx-tool-top .tag,.r3 a.r3-tool .cx-tool-top .premium-badge{flex:none;margin-left:auto}
+.r3 a.r3-tool .premium-badge{font:800 12px var(--font-ui);border-radius:999px;padding:2px 10px;white-space:nowrap;background:#FFF3D6;color:var(--amber-text);border:0;box-shadow:none}
+.r3 a.r3-tool .cx-tool-top .tag + .premium-badge{margin-left:6px}
+.r3 a.r3-tool[data-premium] .tag.free{display:none}
+.r3 a.r3-tool .cx-tool-desc{font-size:14.5px;line-height:1.45;color:var(--muted);margin:0}
+.r3 a.r3-tool .cx-tool-status{display:flex;flex-direction:column;gap:4px;margin:6px 0 0;font:700 13px var(--font-ui);color:var(--muted)}
+.r3 a.r3-tool .cx-tool-status:empty{display:none}
+.r3 a.r3-tool .cx-tool-stat b{color:var(--ink)}
+.r3 a.r3-tool .cx-tool-status .track{height:5px;border-radius:9px;background:var(--ctint);overflow:hidden;max-width:160px}
+.r3 a.r3-tool .cx-tool-status .track i{display:block;height:100%;background:var(--accent)}
+.r3 a.r3-tool .cx-tool-foot{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin:8px 0 0;padding:0;border:0;font:800 13px/1.4 var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink)}
+.r3 a.r3-tool .cx-tool-foot > span:first-child:empty{display:none}
+.r3 a.r3-tool .cx-tool-go{display:inline;padding:0;border-radius:0;background:none;color:var(--accent);font:900 14.5px var(--font-ui);letter-spacing:0;text-transform:none}
+.r3 a.r3-tool .cx-tool-name{font-family:var(--font-ui)}
+.r3 .r3-feat{margin:0 0 40px;grid-template-columns:minmax(0,1fr) minmax(0,46%);gap:28px;padding:26px 28px}
+.r3 .r3-feat h2.cname{font:900 26px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:#fff}
+.r3 .r3-feat .hand{color:#FFD23F;margin:6px 0 8px;font-size:22px}
+.r3 .r3-feat .cdesc{font-size:15.5px;margin:0 0 16px;max-width:34em}
+.r3 .r3-feat .credit{font-size:12.5px;line-height:1.45}
+.r3 .r3-feat .fig.tcfig{border-radius:14px}
+.r3 .r3-tools-note{color:var(--muted);font-size:14.5px;max-width:60em;margin:4px 0 30px}
+.r3 .r3-tools-note a{color:var(--ink)}
+.r3-tools .r3-tools-after{margin:0 0 30px}
+@media (max-width:980px){.r3 .r3-tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .r3 .r3-tool-grid{grid-template-columns:1fr;gap:0}
+  .r3 a.r3-tool{display:grid;grid-template-columns:112px minmax(0,1fr);grid-template-rows:auto auto auto auto;column-gap:14px;row-gap:3px;padding:12px 0}
+  .r3 a.r3-tool .tc{grid-row:1/5;margin:0;aspect-ratio:1/1;align-self:start}
+  .r3 a.r3-tool .tc img{object-position:center}
+  .r3 a.r3-tool .cx-tool-name{font-size:16px}
+  .r3 a.r3-tool .cx-tool-foot{margin-top:2px}
+  .r3 .r3-feat{padding:18px;gap:16px}
+  .r3 .r3-feat .fig.tcfig{order:-1}
+  .r3-tools .r3-tools-body{padding-top:24px}
+}
+
+/* --------------------------------------------------------- a tool's opener */
+.r3-toolband{padding-bottom:0;background-image:none}
+.r3-toolband .band.short .hwrap{padding-bottom:44px}
+.r3-toolband .band .art.tool{max-width:340px}
+.r3-toolband .band .art.tool img{border-radius:18px;filter:drop-shadow(0 24px 34px rgba(0,0,0,.35))}
+.r3-toolband .band .issue{margin-bottom:12px}
+.r3-toolband .hand{margin-bottom:10px}
+.r3-toolband .lede{margin-bottom:20px}
+/* The studio keeps the site header and the course tabs above it on a desktop (it hides them on a phone:
+   assets/course/tool-studio.css); the tool then fills one screen under this band. */
+@media (max-width:999.98px){
+  body.ls-on .r3-toolband{display:none}
+}
+@media (max-width:860px){
+  .r3-toolband .band.short .hwrap{padding-bottom:28px}
+  .r3-toolband .band .art.tool{max-width:260px;margin:0}
+}
+
+/* the band's breadcrumb (hub and tool pages) */
+.r3 .band .crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;font:800 13px var(--font-ui);color:rgba(255,255,255,.72)}
+.r3 .band .crumbs a{color:rgba(255,255,255,.86);text-decoration:none}
+.r3 .band .crumbs a:hover{color:#fff;text-decoration:underline}
+.r3 .band .crumbs span[aria-hidden]{opacity:.55}
+.r3 .band .crumbs [aria-current]{color:#fff}
+
+/* The band names the tool and links back, so the page's older opener (its hero, breadcrumb and tool top bar) is
+   not shown twice; a Premium lock or a no-script note under it still shows. */
+body:has(> .r3-toolband) main > .hero,
+body:has(> .r3-toolband) [data-crumb],
+body:has(> .r3-toolband) main > .site-crumb,
+body:has(> .r3-toolband) main > nav[aria-label="Breadcrumb"]{display:none}
+body:has(> .r3-toolband) .tool-top .tool-title{display:none}
+/* the hub breadcrumb lives in its band */
+body:has(main.r3-tools) [data-crumb]{display:none}
+/* phones: the short band stacks (r3.css sets two columns on .band.short without a phone rule) */
+@media (max-width:860px){
+  .r3 .band.short .hwrap{grid-template-columns:1fr;gap:14px;padding-top:22px;padding-bottom:40px}
+  .r3 .band.short .deck{font-size:34px}
+  .r3 .band.short .art{max-width:220px;justify-self:start;order:-1}
+  .r3-tools .band.short .art{max-width:200px}
+  .r3 .r3-feat{grid-template-columns:1fr}
+  .r3 .band .issue{flex-wrap:wrap;gap:6px 12px;letter-spacing:.06em}
+}
+
+/* ------------------------------------------------ AP® pages that open with the short band (r3PageMain) */
+.r3-page .r3-page-body{padding-top:32px;padding-bottom:20px}
+.r3-page .r3-share{margin-top:14px}
+.r3-page .r3-share [role="group"]{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.r3-page .r3-share a,.r3-page .r3-share button{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;border:0;background:rgba(255,255,255,.12);color:#fff;font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28)}
+.r3-page .r3-share a:hover,.r3-page .r3-share button:hover{background:rgba(255,255,255,.2)}
+.r3-page .band .issue .tag.beta{letter-spacing:0;text-transform:none;margin-left:4px}
+.r3-page .r3-page-body > * + *{margin-top:0}
+.r3-card,.r3-page .r3-cardish{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 24px 50px -36px rgba(11,26,51,.35)}
+
+/* the free-response list: the filters and the questions as rows in one card, how it works beside it */
+.r3-frqlist #app{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"form how" "count how" "list how";column-gap:24px;align-items:start}
+.r3-frqlist #app > form{grid-area:form;display:flex;flex-wrap:wrap;gap:12px;background:var(--white);border:1px solid var(--line);border-bottom:0;border-radius:20px 20px 0 0;padding:20px 22px 6px;margin:0}
+.r3-frqlist #app > [id$="-fq-count"]{grid-area:count;background:var(--white);border-left:1px solid var(--line);border-right:1px solid var(--line);margin:0;padding:6px 22px 10px;color:var(--muted)}
+.r3-frqlist #app > [class*="-fq-list"]{grid-area:list;list-style:none;margin:0;padding:0 22px 12px;display:block;background:var(--white);border:1px solid var(--line);border-top:0;border-radius:0 0 20px 20px;box-shadow:0 24px 50px -36px rgba(11,26,51,.35)}
+.r3-frqlist #app > [class*="-fq-list"] > li{display:block;margin:0}
+.r3-frqlist [class*="-fq-card"]:not([class*="-fq-card-k"]){display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:12px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;color:var(--ink);text-decoration:none}
+.r3-frqlist [class*="-fq-card"]:not([class*="-fq-card-k"]):hover b{color:var(--accent)}
+.r3-frqlist [class*="-fq-card-k"]{font:900 11.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.r3-frqlist [class*="-fq-card"] b{font:900 16px/1.3 var(--font-ui)}
+.r3-frqlist #app > [class*="-fq-how"]{grid-area:how;margin:0;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:20px 22px;font-size:14.5px;line-height:1.55;color:var(--muted)}
+@media (max-width:900px){
+  .r3-frqlist #app{grid-template-columns:1fr;grid-template-areas:"form" "count" "list" "how"}
+  .r3-frqlist #app > [class*="-fq-how"]{margin-top:16px}
+}
+
+/* one free-response question: the question beside the answer workspace */
+.r3-frq .r3-page-body{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
+.r3-frq .r3-page-body > article{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 24px 50px -36px rgba(11,26,51,.35)}
+.r3-frq .r3-page-body > #app{min-width:0;position:sticky;top:16px}
+.r3-frq .r3-page-body > :not(article):not(#app){grid-column:1/-1}
+@media (max-width:980px){
+  .r3-frq .r3-page-body{grid-template-columns:1fr}
+  .r3-frq .r3-page-body > #app{position:static}
+}
+
+/* the cram kit and the teachers page: the page in white cards */
+.r3-cram #app{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:24px 26px;box-shadow:0 24px 50px -36px rgba(11,26,51,.35)}
+.r3-cram #app h2{font:900 30px/1.1 var(--display);letter-spacing:-.03em}
+.r3-teachers .r3-page-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.r3-teachers .r3-page-body > section{margin:0;min-width:0;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 24px 50px -36px rgba(11,26,51,.35)}
+.r3-teachers .r3-page-body > section h2{font:900 22px/1.15 var(--display);letter-spacing:-.02em;margin:0 0 10px}
+.r3-teachers .r3-page-body > section p,.r3-teachers .r3-page-body > section li{font-size:14.5px;line-height:1.55}
+.r3-teachers .r3-page-body > section:nth-of-type(n+4),.r3-teachers .r3-page-body > :not(section){grid-column:1/-1}
+.r3-teachers .r3-page-body > section:nth-of-type(n+4) h2{font-size:30px}
+.r3-teachers .r3-page-body > section:nth-of-type(4) ul{columns:3 260px;column-gap:28px}
+.r3-teachers .r3-page-body > section:nth-of-type(4) li{break-inside:avoid;margin:0 0 8px}
+.r3-teachers .r3-page-body > section:nth-of-type(5) > section{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.r3-teachers .r3-page-body table{width:100%;border-collapse:collapse;font-size:14px}
+.r3-teachers .r3-page-body th,.r3-teachers .r3-page-body td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft,var(--line))}
+.r3-teachers .r3-page-body code{font-size:12.5px;overflow-wrap:anywhere}
+@media (max-width:980px){.r3-teachers .r3-page-body{grid-template-columns:1fr}}
+/* the course sheets cap the old page column; the round 3 body sets its own widths */
+.r3-page .r3-page-body > *,.r3-page .r3-page-body #app{max-width:none}
+.r3-frqlist #app{grid-template-rows:auto auto 1fr}
+.r3-frqlist #app > [class*="-fq-how"]{align-self:start}
+.r3-frqlist #app > form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.r3-frqlist #app > form{grid-template-columns:1fr}}
+/* NREMT reference pages (nremt-studio.js, slim): the band is hidden on a phone too, like the full studio */
+@media (max-width:999.98px){body.nx-slim-on .r3-toolband{display:none}}

@@ -3,7 +3,12 @@
    course --ctint / --cink is the one accent. Three text sizes: 13, 16, 22. */
 
 /* ------------------------------------------------------------ chrome diet */
-body.ls-on #site-header, body.ls-on .course-nav, body.ls-on .bottom-nav, body.ls-on .bottom-sheet,
+/* Round 3 (docs/site-redesign.md, board R10-Tool): on a desktop the site header, the course tabs and the
+   tool's cover band (assets/course/r3-tools.css) stay above the studio; a phone gives the tool the screen. */
+@media (max-width:999.98px){
+  body.ls-on #site-header, body.ls-on .course-nav{display:none !important;}
+}
+body.ls-on .bottom-nav, body.ls-on .bottom-sheet,
 body.ls-on .bottom-scrim, body.ls-on .site-crumb, body.ls-on [data-crumb], body.ls-on .cx-crumb,
 body.ls-on .bio-crumb, body.ls-on .chem-crumb, body.ls-on .phys-crumb, body.ls-on .calc-crumb, body.ls-on .stat-crumb, body.ls-on .env-crumb, body.ls-on main > .hero, body.ls-on .tool-top,
 body.ls-on .lp-launch, body.ls-on .lp-tip, body.ls-on .pt-fab{display:none !important;}

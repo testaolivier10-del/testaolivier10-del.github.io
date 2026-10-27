@@ -177,10 +177,10 @@ const SHELL_BUDGETS = [
   // 22 -> 25.5 (2026-10-13): Tool Studio phone layout and the Enlarge view (docs/tools-calm.md, "Phones").
   // 25.5 -> 26 (polish 2026-10-17): flags.js (D1) and the hint that sits inside a big answer box
   // instead of over the question text (justification trainers). Measured 25.5 KB.
-  // 26 -> 30 (redesign round 3, step B3, docs/site-redesign.md): the inner pages (exams, progress, exam day,
-  // unit tests) now load the round 3 system, r3.css, and their own frame, r3-inner.css and r3-db.js, so the
-  // shell bucket counts them. Measured 29.3 KB.
-  ['assets/course', 30],
+  // 26 -> 35 (redesign round 3, docs/site-redesign.md): r3.css, the shared round 3 system (course homes, B1), and
+  // r3-inner.css and r3-db.js (exams, progress, exam day, unit tests, B3), r3-tools.css (tools hubs, tool page bands, free-response, cram and teachers pages, B5). Each loads only on the
+  // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
+  ['assets/course', 35],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -204,7 +204,9 @@ const SHELL_BUDGETS = [
      scenario-sim.html; the anatomy images are fetched on demand and not counted. */
   /* 22 -> 26.5 (calm tools P1, docs/tools-calm.md): the Tool Studio frame's NREMT side,
      nremt-studio.js/.css plus the tool's own studio/<slug>.css; measured 26.2 KB on scenario-sim.html. */
-  ['nremt', 26.5],
+  /* 26.5 -> 27 when the five round 3 steps are combined (docs/site-redesign.md): the NREMT exam bar and band
+     script (B3) and the tools band (B5) both land in the NREMT shell. Measured 26.5 KB. */
+  ['nremt', 27],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with

@@ -875,8 +875,9 @@ if (existsSync(registryPath) && existsSync(toolsPagePath)) {
   new Function('window', readFileSync(registryPath, 'utf8'))(w);
   const wanted = w.OchemTools.ALL.map(t => `tools/${t.slug}.html`);
   const page = readFileSync(toolsPagePath, 'utf8');
-  const have = [...page.matchAll(/<a class="cx-tool" href="([^"]+)"/g)].map(m => m[1]);
-  if (have.length !== wanted.length || have.some((h, i) => h !== wanted[i])) {
+  // Round 3 groups the cards into free and Premium (scripts/lib/r3-tools.mjs), so the set must match, not the order.
+  const have = [...page.matchAll(/<a class="cx-tool(?: [^"]*)?" href="([^"]+)"/g)].map(m => m[1]);
+  if (have.length !== wanted.length || [...have].sort().some((h, i) => h !== [...wanted].sort()[i])) {
     fail(`ochem/tools.html: the tool cards differ from tools-registry.js (${have.length} on the page, ${wanted.length} in the registry). Run node scripts/build-tool-pages.mjs.`);
   }
 }
