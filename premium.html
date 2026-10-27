@@ -73,7 +73,7 @@
   .pp-cols li::before{content:"";position:absolute;left:3px;top:8px;width:11px;height:6px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg);}
   .pp-cols > div:last-child li::before{border-color:var(--teal-hi);}
   .pp-passes{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:0;}
-  .pp-passes li{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;margin:0;max-width:none;}
+  .pp-passes li{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;gap:4px 14px;border-top:1px solid var(--line);padding:10px 0;margin:0;max-width:none;}
   .pp-passes li:first-child{border-top:0;}
   .pp-label{color:var(--ink);font-weight:800;}
   .pp-price b{color:var(--ink);font-weight:900;font-size:17px;}
@@ -100,6 +100,12 @@
     .pp .pp-from{font-size:15px;}
     .pp-ticket{padding:24px 22px 22px;}
   }
+  .pp-guarantee > summary{cursor:pointer;font-weight:800;}
+  .pp-guarantee > p{margin:8px 0 0;}
+  .pp-day{display:block;flex-basis:100%;text-align:left;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:-4px;}
+  .pp-day:empty{display:none;}
+  .pp .pp-len{display:block;font:700 11.5px var(--font-ui);color:var(--muted);text-align:right;}
+  .pp-compare{margin:6px 0 0;font-size:14px;color:var(--muted);}
 </style>
 <script type="application/ld+json">
 {
@@ -331,7 +337,7 @@
       <span class="sp-pill">Free vs Premium</span>
       <h1 id="ppTitle">What&rsquo;s free,<span>and what Premium adds.</span></h1>
       <p class="hand">one payment, never a subscription</p>
-      <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $25 to $49, with no subscription and a 7-day refund. <span data-founding-until="2027-01-31">30% off until 31 January 2027.</span></p>
+      <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from <span data-founding-until="2027-01-31">$17.50 (founding price until 31 January 2027)</span><span data-founding-after="2027-01-31" hidden>$25</span>, with a full refund within 7 days.</p>
       <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a><a class="btn-ghost" href="/#subjects">Start free</a></div>
     </div>
     <div class="sp-panel pp-ticket" data-founding-until="2027-01-31">
@@ -360,15 +366,16 @@
     <div class="pp pp-list">
 
         <details class="pp-course" id="nremt" data-path="/nremt/">
-          <summary><img class="pp-cover" src="assets/covers/nremt.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-nremt">NREMT-EMT Prep</h2><span class="pp-from"><span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/nremt.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-nremt">NREMT-EMT Prep</h2><span class="pp-from"><span data-founding-until="2027-01-31">$20.30</span><span data-founding-after="2027-01-31" hidden>$29</span><small class="pp-len">90 days</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Study notes, glossary, flowcharts, mnemonics, flashcards and the body map</li><li>15 practice or review questions a day, any topic</li><li>One full timed exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>The full 2,033-question bank, unlimited</li><li>Unlimited timed 100-question exams</li><li>Unlimited missed-question review and spaced repetition</li><li>Readiness score and domain breakdowns</li><li>The clinical scenario simulator</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">90 days</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">90 days</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span> <small class="pp-day" data-pass="nremt-90"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="nremt" data-premium-source="pricing-page">Get Premium for NREMT-EMT Prep</button> <a href="/nremt/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
-          <p class="pp-guarantee" id="pass-or-extend">Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, and you can claim one free 90-day extension from your Account page within 30 days of the exam. It needs at least 2 full timed exams on LevlPrep, finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. Once per account and email address. It extends your access; it is not a refund. <a href="terms.html#pass-or-extend">The full terms</a>.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Pocket Prep EMS is $15.99 a month or $39.99 for 3 months (checked October 2026). Sources: <a href="https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128" rel="noopener">App Store</a>.</p>
+          <details class="pp-guarantee" id="pass-or-extend"><summary>Pass-or-extend: if you don&rsquo;t pass the NREMT during your pass, you can claim more days free.</summary><p>Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, and you can claim one free 90-day extension from your Account page within 30 days of the exam. It needs at least 2 full timed exams on LevlPrep, finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. Once per account and email address. It extends your access; it is not a refund. <a href="terms.html#pass-or-extend">The full terms</a>.</p></details>
         </details>
 
         <details class="pp-course" id="ochem" data-path="/ochem/">
@@ -377,9 +384,9 @@
             <div><h3>Free</h3><ul><li>The textbook section for every topic, and the flashcards</li><li>The first four chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson and mechanism walkthrough</li><li>The full 3,675-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>Mastery dashboard and gap detection</li><li>All eight interactive tools</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Semester (5 months)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span></li><li><span class="pp-label">Full year</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$49</s> <b>$34.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$49</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Semester (5 months)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span> <small class="pp-day" data-pass="ochem-semester"></small></li><li><span class="pp-label">Full year</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$49</s> <b>$34.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$49</b></span> <small class="pp-day" data-pass="ochem-year"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="ochem" data-premium-source="pricing-page">Get Premium for Organic Chemistry</button> <a href="/ochem/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
           
         </details>
 
@@ -389,86 +396,92 @@
             <div><h3>Free</h3><ul><li>The notes page for every topic, the glossary and the flashcards</li><li>The Foundations chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>The full 3,321-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>All the interactive tools, including the lab practical</li><li>Detailed dashboard analytics</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Semester (5 months)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span></li><li><span class="pp-label">Full year (A&amp;P I and II)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$49</s> <b>$34.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$49</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Semester (5 months)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$29</s> <b>$20.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$29</b></span> <small class="pp-day" data-pass="anp-semester"></small></li><li><span class="pp-label">Full year (A&amp;P I and II)</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$49</s> <b>$34.30</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$49</b></span> <small class="pp-day" data-pass="anp-year"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="anp" data-premium-source="pricing-page">Get Premium for Anatomy &amp; Physiology</button> <a href="/anatomy-physiology/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
           
         </details>
 
         <details class="pp-course" id="apbio" data-path="/bio/">
-          <summary><img class="pp-cover" src="assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apbio">AP® Biology</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apbio">AP® Biology</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span><small class="pp-len">school year</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every skills lesson</li><li>One simulator</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every simulator</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span> <small class="pp-day" data-pass="bio-2027"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apbio" data-premium-source="pricing-page">Get Premium for AP® Biology</button> <a href="/bio/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Fiveable is $29 a month or $79 a year (checked October 2026). Sources: <a href="https://fiveable.me/pricing" rel="noopener">Fiveable</a>.</p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
         </details>
 
         <details class="pp-course" id="apchem" data-path="/chem/">
-          <summary><img class="pp-cover" src="assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apchem">AP® Chemistry</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apchem">AP® Chemistry</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span><small class="pp-len">school year</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every math refresher lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer and drill: justifications, particle diagrams, equilibrium and buffer drills</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span> <small class="pp-day" data-pass="chem-2027"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apchem" data-premium-source="pricing-page">Get Premium for AP® Chemistry</button> <a href="/chem/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Fiveable is $29 a month or $79 a year (checked October 2026). Sources: <a href="https://fiveable.me/pricing" rel="noopener">Fiveable</a>.</p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
         </details>
 
         <details class="pp-course" id="apphys" data-path="/physics/">
-          <summary><img class="pp-cover" src="assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apphys">AP® Physics 1</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apphys">AP® Physics 1</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span><small class="pp-len">school year</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: free-body diagrams, motion graphs and the scaling drills</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: free-body diagrams, motion graphs, energy bar charts, collisions, lab design and more</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span> <small class="pp-day" data-pass="phys-2027"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apphys" data-premium-source="pricing-page">Get Premium for AP® Physics 1</button> <a href="/physics/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Fiveable is $29 a month or $79 a year (checked October 2026). Sources: <a href="https://fiveable.me/pricing" rel="noopener">Fiveable</a>.</p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
         </details>
 
         <details class="pp-course" id="apcalc" data-path="/calculus/">
-          <summary><img class="pp-cover" src="assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apcalc">AP® Calculus AB</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apcalc">AP® Calculus AB</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span><small class="pp-len">school year</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The cram-kit study plan outline, printable</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the tangent tracer, the limit explorer and the rule drills</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: related rates, motion, curve analysis, Riemann sums, accumulation, slope fields, area and volume</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and mathematical practice</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span> <small class="pp-day" data-pass="calc-2027"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apcalc" data-premium-source="pricing-page">Get Premium for AP® Calculus AB</button> <a href="/calculus/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Fiveable is $29 a month or $79 a year (checked October 2026). Sources: <a href="https://fiveable.me/pricing" rel="noopener">Fiveable</a>.</p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
         </details>
 
         <details class="pp-course" id="apstat" data-path="/statistics/">
-          <summary><img class="pp-cover" src="assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apstat">AP® Statistics</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apstat">AP® Statistics</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span><small class="pp-len">school year</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The reference sheet, explained, and the cram-kit study plan outline</li><li>Every lesson in Unit 1, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the sampling distribution machine, the data explorer and probability trees</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: sampling, experiments, distribution areas, interval capture, p-values and power, chi-square and regression</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and skill</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span> <small class="pp-day" data-pass="stat-2027"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apstat" data-premium-source="pricing-page">Get Premium for AP® Statistics</button> <a href="/statistics/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Fiveable is $29 a month or $79 a year (checked October 2026). Sources: <a href="https://fiveable.me/pricing" rel="noopener">Fiveable</a>.</p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
         </details>
 
         <details class="pp-course" id="apenv" data-path="/environmental-science/">
-          <summary><img class="pp-cover" src="assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apenv">AP® Environmental Science</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span></span></summary>
+          <summary><img class="pp-cover" src="assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-apenv">AP® Environmental Science</h2><span class="pp-from"><span data-founding-until="2027-01-31">$17.50</span><span data-founding-after="2027-01-31" hidden>$25</span><small class="pp-len">school year</small></span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul><li>Every notes page, the glossary, the flashcards and the printable unit sheets</li><li>The formulas you must memorize, explained, and the cram-kit study plan outline</li><li>Every lesson in Units 1 and 2, and every &quot;Math you need&quot; lesson</li><li>15 practice or review questions a day from any unit</li><li>One full practice exam</li><li>Three trainers: the calculation studio, energy flow and the nutrient cycles</li><li>Your progress, XP, streak and weak topics</li></ul></div>
             <div><h3>Premium adds</h3><ul><li>Every interactive lesson</li><li>Unlimited practice and review from the whole question bank</li><li>Every trainer: population growth, age structure, soil, climate, energy, pollution, dose-response and climate change</li><li>All free-response questions, unit tests and practice exams</li><li>The cram kit: a study plan fitted to your weakest units, and timed mixed sets</li><li>The full dashboard: mastery by unit, topic and science practice</li></ul></div>
           </div>
-          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span></li></ul>
+          <ul class="pp-passes"><li><span class="pp-label">Through June 30, 2027</span> <span class="pp-price"><span data-founding-until="2027-01-31"><s>$25</s> <b>$17.50</b> <small>founding price</small></span><b data-founding-after="2027-01-31" hidden>$25</b></span> <small class="pp-day" data-pass="env-2027"></small></li></ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="apenv" data-premium-source="pricing-page">Get Premium for AP® Environmental Science</button> <a href="/environmental-science/">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>
+          <p class="pp-compare">For comparison: Fiveable is $29 a month or $79 a year (checked October 2026). Sources: <a href="https://fiveable.me/pricing" rel="noopener">Fiveable</a>.</p>
           
           <p>One pass, whenever you buy it: it lasts through 30 June 2027, the end of the 2027 exam season.</p>
         </details>
@@ -542,6 +555,15 @@
     if (now > Date.parse(el.getAttribute('data-founding-after') + 'T23:59:59Z')) el.hidden = false;
   });
 })();
+</script>
+<script>
+// Each pass's price per day, from premium.js once it has loaded (a dated pass
+// counts the days it has left, so this cannot be written at build time).
+document.addEventListener('DOMContentLoaded', function(){
+  var P = window.LevlPremium;
+  if (!P || !P.perDay) return;
+  [].forEach.call(document.querySelectorAll('.pp-day[data-pass]'), function(el){ el.textContent = P.perDay(el.getAttribute('data-pass')); });
+});
 </script>
 <script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>

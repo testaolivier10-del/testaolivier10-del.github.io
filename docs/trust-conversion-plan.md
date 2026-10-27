@@ -86,6 +86,22 @@ sign-in option, so sign-in is not the leak: people open the dialog, see the pric
 that (price, a cheaper short pass, the founder and refund line next to the button, item 3 below) is the owner's
 call; nothing was changed.
 
+## Price presentation (2026-10-25, owner approved)
+
+Research summary (sources in the PR): small one-time prices feel smaller per day (Gourville 1998; Atlas &
+Bartels 2018, field test +77%); a reference price helps when the gap is large (Krishna et al. 2002); "no renewal"
+and a clear refund lower risk (Lambrecht & Skiera 2006; Janakiraman et al. 2016); a forced account is a top
+checkout-abandon reason (Baymard). Prices themselves are unchanged ($29, $49, $25; no decoy tier, no trial).
+- Every pass shows its price per day (`dayText`/`perDay` in `assets/premium.js`; a dated pass counts its days left).
+- Next to the button: "One payment. Never renews. Full refund within 7 days." The tax sentence moved to the fine print.
+- "For comparison" lines (premium.js `compare`): NREMT vs Pocket Prep EMS; AP vs Fiveable. Checked on
+  their own pages 2026-10-25; sources linked on premium.html (`COMPARE_SOURCES` in `scripts/build-pricing.mjs`).
+  Re-check before changing a figure.
+- Pass-or-extend is one sentence with the conditions one tap away (dialog: Conditions link; page: details).
+- premium.html opens with the lowest current price and "never renews" instead of "$25 to $49".
+- Not done: a "send to a parent" link (conflicts with item 5 below, and a parent would buy on their own account);
+  paying before creating an account (bigger change, later).
+
 ## Plan and status (owner decisions 2026-10-08)
 
 | # | Item | Status |

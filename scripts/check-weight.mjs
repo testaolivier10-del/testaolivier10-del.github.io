@@ -158,7 +158,9 @@ const SHELL_BUDGETS = [
      new top bar, tabs and footer) in place of each page restyling itself. Measured 331.7 KB. */
   /* 332 -> 333 when all six round 2 steps are combined: the steps' own additions (study.css session look,
      quick-answer.css) land in the same shared assets bucket. Measured 332.1 KB. */
-  ['site', 333],
+  /* 333 -> 334 for the price presentation (PR #85, owner 2026-10-25): per-day prices, the never-renews and
+     refund line and the competitor comparison in assets/premium.js. Measured 333.4 KB. */
+  ['site', 334],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
