@@ -42,6 +42,8 @@
 .tb-shell.r3-read .bk-toc-chap{border-radius:12px}
 .tb-shell.r3-read > .tb-main{background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4);padding:30px clamp(22px,3.2vw,40px) 36px;max-width:none;min-width:0}
 .tb-shell.r3-read.bk-chapter > .tb-main{padding-top:24px}
+/* The reading card is the one card: the prose inside it loses the old inner box and its narrow cap. */
+.tb-shell.r3-read .tb-main > .bk-prose,.tb-shell.r3-read .tb-main > article{border:0;box-shadow:none;background:none;padding:0;border-radius:0;max-width:none;margin-left:0;margin-right:0}
 .tb-shell.r3-read > .tb-main > .bk-lede{margin:0 0 20px;font:500 17px/1.7 var(--font-body,var(--font-ui));color:var(--ink);max-width:none}
 .tb-shell.r3-read h2{font:900 clamp(22px,2.3vw,27px)/1.18 var(--display);letter-spacing:-.025em;margin:0 0 10px}
 .tb-shell.r3-read h2 span{display:inline;color:inherit}
@@ -52,6 +54,28 @@
 .tb-shell.r3-read .bk-sec .domain-tag{background:none;padding:0;color:var(--muted);font:700 12.5px var(--font-ui);flex-basis:100%}
 .tb-shell.r3-read .bk-h{color:var(--ink)}
 .tb-shell.r3-read .bk-h::after{content:"";display:inline-block}
+/* the course book (R10-Learn): the band names the book, so its contents heading and intro are kept for
+   screen readers and the outline only */
+.tb-shell.r3-read .tb-static-toc > h1,.tb-shell.r3-read .tb-static-toc > h1 + p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.r3-learn .band .lede{color:rgba(255,255,255,.82);margin:0 0 18px}
+.tb-shell.r3-read .tb-static-toc h2,.tb-shell.r3-read .tb-static-toc h3{font:900 18px/1.25 var(--display);letter-spacing:-.015em;margin:22px 0 8px;color:var(--ink)}
+.tb-shell.r3-read .tb-static-toc ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 22px}
+.tb-shell.r3-read .tb-static-toc li{border-bottom:1px solid var(--line);padding:9px 0}
+.tb-shell.r3-read .tb-static-toc li a{font:800 15px/1.35 var(--font-ui);color:var(--ink);text-decoration:none}
+.tb-shell.r3-read .tb-static-toc li a b{display:inline-block;min-width:34px;font:900 20px/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.tb-shell.r3-read .tb-static-toc li a:hover{color:var(--accent)}
+
+/* unit and chapter pages (R10-Unit) */
+.tb-shell.r3-read h2#h-topics span{color:var(--accent)}
+.tb-shell.r3-read.bk-chapter h2.bk-h:not(#h-topics){display:flex;align-items:center;gap:12px;font:900 12.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:30px 0 12px}
+.tb-shell.r3-read.bk-chapter h2.bk-h:not(#h-topics)::after{content:"";flex:1;height:2px;background:var(--ink);display:block}
+.tb-shell.r3-read .bk-list{border:0;box-shadow:none;background:none;padding:0;border-radius:0}
+.tb-shell.r3-read .bk-row{border-radius:0;border:0;border-bottom:1px solid var(--line);background:none;padding:12px 0}
+.tb-shell.r3-read .bk-row:last-child{border-bottom:0}
+.tb-shell.r3-read .bk-row-n{background:none;color:var(--accent);font:900 22px/1 var(--display);letter-spacing:-.04em;min-width:52px;padding:0;height:auto;border-radius:0;text-align:left}
+.tb-shell.r3-read .bk-row-title{font:900 16px/1.3 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.tb-shell.r3-read .bk-row-btns .bk-btn{background:var(--ctint);color:var(--accent);border:0;box-shadow:none;font:900 13.5px var(--font-ui);padding:7px 13px;border-radius:9px}
+.tb-shell.r3-read .bk-row-btns .bk-btn:hover{filter:brightness(.96)}
 .tb-shell.r3-read .tb-chapter-nav{margin-top:26px}
 .tb-shell.r3-read .tb-chapter-link{background:var(--white);border:1px solid var(--line);border-radius:16px}
 

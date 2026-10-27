@@ -27,15 +27,16 @@ export const R3_HEAD_MARK = '<!-- r3:head -->';
 
 const SMALL = new Set(['and', 'of', 'the', '&amp;', '&', 'in', 'to', 'for', 'a', 'an', 'with', 'on', 'vs', 'vs.', 'or', 'as', 'by', 'at']);
 
-/* "Airway Management" -> Airway <span>Management</span>; longer titles split near the middle, keeping a
-   joining word with the first half. Titles carrying markup (a span, an em) are left in one colour. */
+/* "Airway Management" -> Airway <span>Management</span>; longer titles split near the middle, a joining
+   word starting the second half. Titles carrying markup (a span, an em) are left in one colour. */
 export function twoTone(title) {
   if (/<(?!\/?(i|em|sub|sup)\b)/.test(title)) return title;
   const words = title.trim().split(/\s+/);
   if (words.length < 2) return title;
   let cut = Math.ceil(words.length / 2);
   if (words.length === 2) cut = 1;
-  while (cut < words.length - 1 && SMALL.has(words[cut].toLowerCase())) cut++;
+  /* A joining word opens the second line ("Chemistry / of Life"), never ends the first. */
+  while (cut > 1 && SMALL.has(words[cut - 1].toLowerCase())) cut--;
   return `${words.slice(0, cut).join(' ')} <span>${words.slice(cut).join(' ')}</span>`;
 }
 
@@ -83,11 +84,15 @@ export function r3Reading(html, { key, rel }) {
   const shell = find(html, /<div class="tb-shell bk (bk-notes|bk-chapter|bk-book)">/);
   if (!shell) return html;
   const kind = shell.m[1];
-  const mainOpen = find(html, /<main class="tb-main" id="main">/, shell.end);
+  const mainOpen = find(html, /<main class="tb-main" id="(?:main|tbMain)">/, shell.end);
   if (!mainOpen) return html;
+  const up = '../'.repeat(Math.max(0, rel.split('/').length - 1));
+  /* A course book opens on its static contents (and keeps its chapter template inside a script). */
+  if (html.includes('<div class="tb-static-toc">')) return learnBand(html, { key, up, shell, mainOpen });
   const head = find(html, /<header class="(?:bk-head|tb-chapter-head[^"]*)">[\s\S]*?<\/header>\n?/, mainOpen.end);
   if (!head) return html;
-  const up = '../'.repeat(Math.max(0, rel.split('/').length - 1));
+  const scriptAt = html.indexOf('<script', mainOpen.end);
+  if (scriptAt !== -1 && scriptAt < head.start) return html;
 
   /* Pieces that move into the band, in the order they sit between <main> and the header's end. */
   let between = html.slice(mainOpen.end, head.start);
@@ -170,14 +175,49 @@ ${links}
   let out = html.slice(0, shell.start) + band
     + `<div class="tb-shell bk ${kind} r3 r3-read" data-cover="${key}">`
     + html.slice(shell.end, mainOpen.end) + between + newHead + html.slice(head.end);
+  /* The unit and chapter pages' list heading in two tones, as on R10-Unit: "Topics, <span>in course order</span>". */
+  out = out.replace(/<h2 class="bk-h" id="h-topics">([^<,]+), ([^<]+)<\/h2>/, '<h2 class="bk-h" id="h-topics">$1, <span>$2</span></h2>');
   if (side) {
     const mc = out.indexOf('</main>', out.indexOf('<main class="tb-main" id="main">'));
     if (mc > 0) out = out.slice(0, mc + 7) + side + out.slice(mc + 7);
   }
-  /* The styles, once, after the course stylesheets. */
-  if (!out.includes('assets/course/r3-reading.css')) {
-    const css = `${out.includes('assets/course/r3.css') ? '' : `<link rel="stylesheet" href="${up}assets/course/r3.css">\n`}<link rel="stylesheet" href="${up}assets/course/r3-reading.css">\n`;
-    out = out.replace('</head>', `${css}</head>`);
-  }
-  return out;
+  return withStyles(out, up);
+}
+
+/* The styles, once, after the course stylesheets. */
+function withStyles(out, up) {
+  if (out.includes('assets/course/r3-reading.css')) return out;
+  const css = `${out.includes('assets/course/r3.css') ? '' : `<link rel="stylesheet" href="${up}assets/course/r3.css">\n`}<link rel="stylesheet" href="${up}assets/course/r3-reading.css">\n`;
+  return out.replace('</head>', `${css}</head>`);
+}
+
+/* The course book (learn.html, NREMT study-notes.html; R10-Learn): a reader that opens on its static
+   contents and swaps a chapter in. Its band names the book (the contents' own h1 stays in the page for
+   the outline and screen readers, shown only to them while the band is there) and starts at the first
+   page; the crumb moves into the band; the shell becomes the card layout. */
+function learnBand(html, { key, up, shell, mainOpen }) {
+  const toc = find(html, /<div class="tb-static-toc">\s*<h1>([\s\S]*?)<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/, mainOpen.end);
+  if (!toc) return html;
+  let between = html.slice(mainOpen.end);
+  const crumb = find(between, /<nav class="[^"]*crumb[^"]*" aria-label="Breadcrumb">[\s\S]*?<\/nav>\s*/);
+  let crumbHtml = '';
+  if (crumb && crumb.start < 400) { crumbHtml = crumb.text.trim(); between = between.slice(0, crumb.start) + between.slice(crumb.end); }
+  const first = (html.slice(toc.start).match(/href="(notes\/[a-z0-9-]+\.html)"/) || [])[1];
+  const name = toc.m[1].replace(/^The\s+/i, '').trim();
+  const hand = handFor(key);
+  const band = `<div class="r3 r3-read-top r3-learn" data-cover="${key}">
+<section class="band short r3-rband" aria-label="${name.replace(/<[^>]+>/g, '').replace(/"/g, '&quot;')}"><div class="hwrap"><div>
+${crumbHtml}
+<p class="issue">Learn <i></i> Free forever</p>
+<p class="deck" aria-hidden="true">${twoTone(name)}</p>
+${hand ? `<p class="hand">${hand}</p>` : ''}
+<p class="lede">${toc.m[2].trim()}</p>
+${first ? `<div class="hero-ctas"><a class="btn-chan" href="${first}">Start at the first page</a></div>` : ''}
+</div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+`;
+  const out = html.slice(0, shell.start) + band
+    + `<div class="tb-shell bk ${shell.m[1]} r3 r3-read" data-cover="${key}">`
+    + html.slice(shell.end, mainOpen.end) + between;
+  return withStyles(out, up);
 }
