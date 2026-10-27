@@ -102,7 +102,7 @@ markup are in `docs/redesign-r3/r10/` (`R10-SYSTEM.md` is the class and markup r
 ## Round 3 build (approved 2026-10-26: "center the images ... and then you can go ahead")
 Tool covers are centered (`assets/covers/tools/<course>/<slug>.svg`, `index.json` per course). Course covers stay
 as they are (the course name sits over their left side).
-Build in stacked PRs from `claude/redesign-r3`, each judged against its boards in `docs/redesign-r3/r10/boards/`
+Build in stacked PRs from `claude/redesign-r3`, each judged against its boards in `docs/redesign-r3/r10/boards/` (saved as `.dc.txt` so the site checks do not treat them as pages)
 (render a board with `node docs/redesign-r3/render-board.mjs <board> <out.png> [width]`) and its placement list in
 `docs/redesign-r3/inventory/R10-*.md`. Every PR ships side by side images (board | built page) for every board it
 covers; no PR without them.
