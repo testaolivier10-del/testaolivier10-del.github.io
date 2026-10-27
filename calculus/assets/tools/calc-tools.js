@@ -500,19 +500,287 @@
        vol    { cell, max }                a volume read off a graph (number + slider)
        row    { row, cells: [cell...] }    one row of an ICE table, a cell per species
        coef   { row, cells: [cell...] }    the change row, typed as −x, +2x, 0
-       choice { options, optionsHtml?, correct, fixed?, why: [...] }
+       choice { options, optionsHtml?, picLabel?, correct, fixed?, why: [...] }
+       custom { checkLabel? }               drawn and graded by the tool: o.custom(step, api)
+                                           -> { html, init(el), check() -> { blank?, msg?, ok, notes? },
+                                           reveal(), lock() } (the tangent tracer's sketch of f′)
      Each step is checked on its own; a wrong answer gets the feedback for
-     the specific slip it matches, and the student can try again or show the
-     answer. The first try is what is recorded, as "<slug>:<context>:<step>".
+     the specific slip it matches and one method hint (step.method, else
+     o.method(step, problem)); Show the answer appears from the second wrong
+     try, so the hint always comes first. The first try is what is recorded,
+     as "<slug>:<context>:<step>".
+     Test yourself is visual (docs/tool-audit-2026-10.md X1): every graded
+     try calls o.onTry(step, try, api) with try = { ok, shown, value (a
+     number step's number), raw (an expr step's text), fn (it as a function
+     of the step's first variable, or null), pick (a choice's option index) };
+     on Show the answer it is called again with shown: true and the right
+     value. A tool draws the student's answer on its figure (dashed, "yours")
+     and, once right or shown, the right one beside it; returning true says
+     something was drawn, so the feedback points at the picture.
+     o.onInput(step, raw, api) runs as an expr step is typed (a live preview).
      o: { slug, generate, types?: [{ value, label }], typeLabel?, contexts?,
      extra(host, problem, api)?, onVol(v, step, api)?, onStep(step, right, api)?,
-     title(problem)?, newLabel? } */
+     onTry?, onInput?, method?, custom?, detailsHtml?, title(problem)?, newLabel? } */
   // Calculus drills have no ICE "coef" rows; the step kind stays for a tool
   // that wants a row of symbolic cells, parsed by its own model if it has one.
   var parseCoef = function(raw){ return M.parseCoef ? M.parseCoef(raw) : numOf(raw); };
   var coefText = function(x){ return M.coefText ? M.coefText(x) : String(x); };
   function numOf(raw){ return Q.parseNumber(String(raw || '').replace(/%\s*$/, '')); }
   function shownNum(c, d){ return d != null ? F(c.answer, d) : M.fmt(c.answer, 3); }
+  /* A typed expression as a function of its first variable (null when it
+     does not read, or has more than one variable): what a tool draws. */
+  function fnOf(raw, vars){
+    vars = vars || ['x'];
+    raw = String(raw || '').replace(/\+\s*C\s*$/, '').trim();
+    if(!raw || vars.length !== 1) return null;
+    try{ var r = M.read(raw, { vars: vars }); if(!r || !r.ok) return null; var f = M.fn(raw, vars); return function(x){ try{ return f(x); }catch(e){ return NaN; } }; }catch(e){ return null; }
+  }
+  /* "Yours | Right" side by side, after Show the answer (or a right second
+     try), for a number or an expression: what was typed against the key. */
+  function compareHtml(s, t){
+    if(!t || t.ok) return '';
+    var tex = window.ApCalcTex, yours = '', right = '';
+    if(s.kind === 'num' || s.kind === 'vol'){
+      if(!isFinite(t.value)) return '';
+      yours = esc(M.fmt(t.value, 4).replace(/^-/, '−')); right = esc(shownNum(s.cell, s.d));
+    } else if(s.kind === 'expr'){
+      var a = M.read(t.raw, { vars: s.cell.expr.vars, allowC: s.cell.expr.mode === 'constant' }), b = M.read(s.cell.expr.answer, { vars: s.cell.expr.vars });
+      if(!a || !a.ok || !b || !b.ok || !tex) return '';
+      yours = tex.render(a.tex); right = tex.render(b.tex + (s.cell.expr.mode === 'constant' ? ' + C' : ''));
+    } else return '';
+    return '<div class="cd-cmp" role="group" aria-label="Your answer and the right answer"><span class="cd-cmp-y"><span class="cd-cmp-k">Yours</span> ' + yours + '</span><span class="cd-cmp-r"><span class="cd-cmp-k">Right</span> ' + right + '</span></div>';
+  }
+  /* ------------------------------------------- yours and right, drawn */
+  /* tries() -> a per-problem store of marks a tool draws on its figure:
+       set(key, marks), clear(), list(), svg(frame) -> '<g class="cd-marks">...</g>'
+     A mark (plot coordinates, frame from ApCalcPlot.frame or any { sx, sy,
+     x: [a, b], y: [c, d] }):
+       { curve: f, domain?, who: 'yours'|'right', label? }
+       { line: [[x1, y1], [x2, y2]], who, label? }         a segment
+       { tangent: [x0, y0], slope, half?, who, label? }   a short tangent line
+       { vline: x, who, label? }  { hline: y, who, label? }
+       { point: [x, y], who, label? }
+       { fill: [[x, y]...], who, tone? }                    a closed polygon (tone 'pos'|'neg': a signed area)
+       { label: 'text', at: [x, y], who, anchor? } */
+  function markSvg(Fr, list){
+    var X0 = Math.min(Fr.sx(Fr.x[0]), Fr.sx(Fr.x[1])), X1 = Math.max(Fr.sx(Fr.x[0]), Fr.sx(Fr.x[1]));
+    var Y0 = Math.min(Fr.sy(Fr.y[0]), Fr.sy(Fr.y[1])), Y1 = Math.max(Fr.sy(Fr.y[0]), Fr.sy(Fr.y[1]));
+    function cx(v){ return Math.max(X0, Math.min(X1, v)); } function cy(v){ return Math.max(Y0 - 2, Math.min(Y1 + 2, v)); }
+    function r1(v){ return Math.round(v * 10) / 10; }
+    function txt(x, y, s, who, anchor){
+      x = cx(x); y = Math.max(Y0 + 12, Math.min(Y1 - 4, y));
+      var a = anchor || (x > (X0 + X1) / 2 ? 'end' : 'start');
+      return '<text class="cd-' + who + ' cd-mlab" x="' + r1(x + (a === 'end' ? -6 : a === 'start' ? 6 : 0)) + '" y="' + r1(y) + '" text-anchor="' + a + '" paint-order="stroke">' + esc(s) + '</text>';
+    }
+    var out = [];
+    (list || []).forEach(function(m){
+      var w = m.who === 'right' ? 'right' : 'yours';
+      if(m.curve){
+        var a = m.domain ? m.domain[0] : Fr.x[0], b = m.domain ? m.domain[1] : Fr.x[1], d = '', pen = false, last = null;
+        for(var i = 0; i <= 240; i++){
+          var x = a + (b - a) * i / 240, y = m.curve(x);
+          if(!isFinite(y) || y < Fr.y[0] - (Fr.y[1] - Fr.y[0]) * 2 || y > Fr.y[1] + (Fr.y[1] - Fr.y[0]) * 2 || (last != null && Math.abs(y - last) > (Fr.y[1] - Fr.y[0]))){ pen = false; last = isFinite(y) ? y : null; continue; }
+          d += (pen ? 'L' : 'M') + r1(Fr.sx(x)) + ' ' + r1(Fr.sy(y)); pen = true; last = y;
+        }
+        if(d) out.push('<path class="cd-' + w + '" d="' + d + '"/>');
+        if(m.label){ var lx = a + (b - a) * (w === 'right' ? 0.82 : 0.62), ly = m.curve(lx); if(isFinite(ly)) out.push(txt(Fr.sx(lx), Fr.sy(ly) - 8, m.label, w)); }
+      } else if(m.line || m.tangent){
+        var p0, p1;
+        if(m.line){ p0 = m.line[0]; p1 = m.line[1]; }
+        else { var h = m.half || (Fr.x[1] - Fr.x[0]) / 6; p0 = [m.tangent[0] - h, m.tangent[1] - h * m.slope]; p1 = [m.tangent[0] + h, m.tangent[1] + h * m.slope]; }
+        out.push('<line class="cd-' + w + '" x1="' + r1(Fr.sx(p0[0])) + '" y1="' + r1(Fr.sy(p0[1])) + '" x2="' + r1(Fr.sx(p1[0])) + '" y2="' + r1(Fr.sy(p1[1])) + '"/>');
+        // yours labelled at the left end, the right one at the right end, so the two never overlap
+        if(m.label) out.push(w === 'right' ? txt(Fr.sx(p1[0]), Fr.sy(p1[1]) - 8, m.label, w, 'end') : txt(Fr.sx(p0[0]), Fr.sy(p0[1]) + 16, m.label, w, 'start'));
+      } else if(m.vline != null){
+        var vx = r1(Fr.sx(m.vline));
+        out.push('<line class="cd-' + w + '" x1="' + vx + '" y1="' + r1(Y0) + '" x2="' + vx + '" y2="' + r1(Y1) + '"/>');
+        if(m.label) out.push(txt(+vx, Y0 + (w === 'right' ? 14 : 30), m.label, w));
+      } else if(m.hline != null){
+        var hy = r1(Fr.sy(m.hline));
+        out.push('<line class="cd-' + w + '" x1="' + r1(X0) + '" y1="' + hy + '" x2="' + r1(X1) + '" y2="' + hy + '"/>');
+        if(m.label) out.push(txt(w === 'right' ? X1 : X0, +hy - 6, m.label, w, w === 'right' ? 'end' : 'start'));
+      } else if(m.point){
+        var px = r1(cx(Fr.sx(m.point[0]))), py = r1(cy(Fr.sy(m.point[1])));
+        out.push('<circle class="cd-' + w + '" cx="' + px + '" cy="' + py + '" r="' + (w === 'right' ? 5.5 : 6.5) + '"/>');
+        if(m.label) out.push(txt(+px, +py + (w === 'right' ? -10 : 20), m.label, w));
+      } else if(m.path){
+        // an open polyline in plot coordinates (a curve x = g(y), say)
+        var pd = '', pon = false;
+        m.path.forEach(function(q){ if(!isFinite(q[0]) || !isFinite(q[1])){ pon = false; return; } pd += (pon ? 'L' : 'M') + r1(Fr.sx(q[0])) + ' ' + r1(Fr.sy(q[1])); pon = true; });
+        if(pd) out.push('<path class="cd-' + w + '" d="' + pd + '"/>');
+        if(m.label && m.path.length){ var lq = m.path[Math.floor(m.path.length * (w === 'right' ? 0.8 : 0.6))]; if(lq && isFinite(lq[0]) && isFinite(lq[1])) out.push(txt(Fr.sx(lq[0]), Fr.sy(lq[1]) - 8, m.label, w)); }
+      } else if(m.band){
+        // an interval as a bar along the foot of the plot (a sign-chart row):
+        // the right one lowest, yours just above it
+        var b0 = cx(Fr.sx(Math.max(Fr.x[0], m.band[0]))), b1 = cx(Fr.sx(Math.min(Fr.x[1], m.band[1]))), by = w === 'right' ? Y1 - 9 : Y1 - 20;
+        if(b1 - b0 > 1) out.push('<rect class="cd-' + w + '-fill cd-band" x="' + r1(b0) + '" y="' + r1(by) + '" width="' + r1(b1 - b0) + '" height="8" rx="4"/>');
+        if(m.label) out.push(txt(b0, by - 3, m.label, w, 'start'));
+      } else if(m.fill){
+        out.push('<polygon class="' + (m.tone ? 'cd-' + m.tone + '-fill' : 'cd-' + w + '-fill') + '" points="' + m.fill.map(function(q){ return r1(Fr.sx(q[0])) + ',' + r1(Fr.sy(q[1])); }).join(' ') + '"/>');
+      } else if(m.label){
+        out.push(txt(Fr.sx(m.at[0]), Fr.sy(m.at[1]), m.label, m.tone || w, m.anchor));
+      }
+    });
+    return out.length ? '<g class="cd-marks" aria-hidden="true">' + out.join('') + '</g>' : '';
+  }
+  function tries(){
+    var by = {}, order = [];
+    return {
+      // A new step's marks: earlier steps keep only their right answers.
+      set: function(k, marks){
+        if(!(k in by)){ order.forEach(function(o0){ by[o0] = by[o0].filter(function(m){ return m.who === 'right'; }); }); order.push(k); }
+        by[k] = marks || [];
+      },
+      clear: function(k){ if(k == null){ by = {}; order = []; } else { delete by[k]; order = order.filter(function(x){ return x !== k; }); } },
+      list: function(){ return order.reduce(function(a, k){ return a.concat(by[k]); }, []); },
+      svg: function(Fr){ return markSvg(Fr, this.list()); },
+      has: function(){ return order.length > 0; }
+    };
+  }
+  /* x-values and intervals named in a choice's text ("x = −1 and x = 3",
+     "(−∞, −2) and (1, 4)", "t = 2"), so a picked option can be drawn. */
+  function choiceMarks(html, v){
+    var t = plainText(String(html || '')).replace(/−/g, '-').replace(/∞/g, 'Infinity').replace(/\\infty/g, 'Infinity');
+    var num = '(-?(?:Infinity|\\d+(?:\\.\\d+)?(?:/\\d+)?))';
+    var ivs = [], xs = [], m, re = new RegExp('[\\(\\[]\\s*' + num + '\\s*,\\s*' + num + '\\s*[\\)\\]]', 'g');
+    function val(s){ if(/Infinity/.test(s)) return s.charAt(0) === '-' ? -Infinity : Infinity; var q = s.split('/'); return q.length > 1 ? +q[0] / +q[1] : +s; }
+    while((m = re.exec(t))) ivs.push([val(m[1]), val(m[2])]);
+    var re2 = new RegExp('\\b' + (v || '[xt]') + '\\s*(?:=|≈)\\s*' + num + '((?:\\s*(?:,|and|or)\\s*(?:' + (v || '[xt]') + '\\s*=\\s*)?-?\\d+(?:\\.\\d+)?(?:/\\d+)?)*)', 'g');
+    while((m = re2.exec(t))){
+      xs.push(val(m[1]));
+      (m[2].match(/-?\d+(?:\.\d+)?(?:\/\d+)?/g) || []).forEach(function(s){ xs.push(val(s)); });
+    }
+    return { xs: xs.filter(isFinite), ivs: ivs };
+  }
+  /* autoMarks(step, try, o) -> marks for a step whose answer is a place on
+     the figure: o names the steps by key.
+       o.x     { key: true }   a number that is an x-value: a vertical line
+       o.y     { key: true }   a number that is a height: a horizontal line
+       o.pt    { key: x }      a number that is the height at x: a point
+       o.curve { key: true }   an expression drawn as a curve on the figure
+       o.pick  { key: 'x'|'band'|'pt' }  a choice whose text names x-values or
+                               intervals: lines, bars, or points on o.f
+       o.v     the variable's name in labels ('x', 't'); o.f the curve (for 'pt')
+     Yours (dashed) when wrong; the right one (solid) once right or shown. */
+  function autoMarks(s, t, o){
+    var v = o.v || 'x', out = [], k = s.key;
+    function add(who, val, raw, opt){
+      if(s.kind === 'num'){
+        if(!isFinite(val)) return;
+        var lab = (who === 'yours' ? 'yours: ' : '') + numText(val);
+        if(o.x && o.x[k]) out.push({ vline: val, who: who, label: (who === 'yours' ? 'yours: ' : '') + v + ' = ' + numText(val) });
+        else if(o.y && o.y[k]) out.push({ hline: val, who: who, label: lab });
+        else if(o.pt && o.pt[k] != null) out.push({ point: [o.pt[k], val], who: who, label: lab });
+      } else if(s.kind === 'expr'){
+        if(o.curve && o.curve[k]){ var f = fnOf(raw, s.cell.expr.vars); if(f) out.push({ curve: f, who: who, label: who === 'yours' ? 'yours' : 'right' }); }
+      } else if(s.kind === 'choice' && o.pick && o.pick[k] && opt != null){
+        var cm = choiceMarks(s.options[opt], o.pickVar || v), how = o.pick[k];
+        if(how === 'band') cm.ivs.forEach(function(iv, j){ out.push({ band: iv, who: who, label: j ? '' : who === 'yours' ? 'yours' : 'right' }); });
+        else cm.xs.forEach(function(x, j){
+          if(how === 'pt' && o.f){ var y = o.f(x); if(isFinite(y)) out.push({ point: [x, y], who: who, label: j ? '' : who === 'yours' ? 'yours' : '' }); }
+          else out.push({ vline: x, who: who, label: who === 'yours' ? (j ? '' : 'yours') : v + ' = ' + numText(x) });
+        });
+      }
+    }
+    if(!t.ok && !t.shown) add('yours', t.value, t.raw, t.pick);
+    if(t.ok || t.shown) add('right', s.kind === 'num' ? s.cell.answer : NaN, s.kind === 'expr' ? s.cell.expr.answer : '', s.kind === 'choice' ? s.correct : null);
+    return out;
+  }
+  /* markedFigure(box, specFn, cls?) -> { marks, redraw() }: an ApCalcPlot
+     figure (specFn() -> spec, sized by the tool) with a marks layer on top. */
+  function markedFigure(box, specFn, cls){
+    var P = window.ApCalcPlot, marks = tries();
+    function redraw(){
+      var spec = specFn(); if(!spec) return;
+      var svg; try{ svg = P.svg(spec); }catch(e){ return; }
+      box.innerHTML = (cls ? '<div class="' + cls + '">' : '') + svg.replace(/<\/svg>$/, marks.svg(P.frame(spec)) + '</svg>') + (cls ? '</div>' : '');
+    }
+    redraw();
+    return { marks: marks, redraw: redraw };
+  }
+  /* A tool's onTry in one line: keep the marks for this step (yours while
+     wrong; on right or shown, the right one plus the last wrong try), redraw. */
+  function tryOn(fig, o){
+    return function(s, t){
+      if(!fig()) return false;
+      var F = fig(), mk = autoMarks(s, t, o), last = F.last || (F.last = {});
+      if(!t.ok && !t.shown) last[s.key] = mk;
+      else mk = (last[s.key] || []).concat(mk);
+      if(!mk.length) return false;
+      F.marks.set(s.key, mk); F.redraw();
+      return true;
+    };
+  }
+  /* gauge(marks, o) -> svg string: a number line with the student's value
+     (dashed arrow from 0) and the right one (solid), for a number that has no
+     place on the figure (a rate, a limit from the limit laws). marks: [{ v,
+     who, label }]; o: { w, unit, x, y } (x, y: where to put it inside a
+     bigger svg; omitted, it is its own svg). Sign and size read at a glance. */
+  function gauge(list, o){
+    o = o || {};
+    var W = o.w || 360, H = 56, L = 18, R = W - 18, vals = list.map(function(m){ return m.v; }).filter(isFinite).concat([0]);
+    if(vals.length < 2) return '';
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), span = hi - lo || 1;
+    lo -= span * 0.12; hi += span * 0.12;
+    var sx = function(v){ return L + (v - lo) / (hi - lo) * (R - L); }, r1 = function(v){ return Math.round(v * 10) / 10; };
+    var y0 = 40; H = 64;
+    var out = ['<line class="cd-gauge-axis" x1="' + L + '" y1="' + y0 + '" x2="' + R + '" y2="' + y0 + '"/>',
+      '<line class="cd-gauge-axis" x1="' + r1(sx(0)) + '" y1="' + (y0 - 6) + '" x2="' + r1(sx(0)) + '" y2="' + (y0 + 6) + '"/>',
+      '<text class="cd-gauge-0" x="' + r1(sx(0)) + '" y="' + (y0 + 18) + '" text-anchor="middle">0</text>'];
+    // yours on the upper track, the right one just above the axis
+    list.forEach(function(m){
+      if(!isFinite(m.v)) return;
+      var w = m.who === 'right' ? 'right' : 'yours', yy = w === 'right' ? y0 - 5 : y0 - 22, x1 = sx(m.v), x0 = sx(0);
+      out.push('<line class="cd-' + w + '" x1="' + r1(x0) + '" y1="' + yy + '" x2="' + r1(x1) + '" y2="' + yy + '"/>');
+      out.push('<circle class="cd-' + w + '" cx="' + r1(x1) + '" cy="' + yy + '" r="4"/>');
+      // the label beyond the dot, away from the arrow (outward from 0)
+      var anchor = x1 >= x0 ? 'start' : 'end';
+      if(anchor === 'start' && x1 > R - 90) anchor = 'end';
+      if(anchor === 'end' && x1 < L + 90) anchor = 'start';
+      var lx = anchor === 'start' ? x1 + 8 : x1 - 8, ly = (anchor === 'start') === (x1 >= x0) ? yy + 4 : yy - 7;
+      out.push('<text class="cd-' + w + ' cd-mlab" x="' + r1(lx) + '" y="' + r1(ly) + '" text-anchor="' + anchor + '">' + esc(m.label || ((w === 'yours' ? 'yours: ' : '') + numText(m.v) + (o.unit ? ' ' + o.unit : ''))) + '</text>');
+    });
+    var g = '<g class="cd-gauge calc-plot" aria-hidden="true"' + (o.x != null ? ' transform="translate(' + o.x + ' ' + o.y + ')"' : '') + '>' + out.join('') + '</g>';
+    return o.x != null ? g : '<svg class="calc-plot cd-gauge-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(list.map(function(m){ return (m.who === 'right' ? 'right: ' : 'yours: ') + numText(m.v); }).join(', ')) + '">' + g + '</svg>';
+  }
+  /* A typed or found number as the student sees it. */
+  function numText(v){ return isFinite(v) ? M.fmt(M.round(v, 3), 4).replace(/^-/, '−') : '?'; }
+  /* A small "yours against the right one" graph of an expression step, for
+     a tool whose figure has no place for it. Drawn after a wrong try: the
+     right curve solid, yours dashed. */
+  function exprPlot(s, t){
+    var P = window.ApCalcPlot, E = s.cell && s.cell.expr;
+    if(!P || !E || E.vars.length !== 1 || !t.fn) return '';
+    var key = fnOf(E.answer, E.vars); if(!key) return '';
+    var dom = E.domain && E.domain.length === 2 && isFinite(E.domain[0]) ? E.domain : [-3, 3];
+    var a = dom[0], b = dom[1], vals = [];
+    if(!(b > a)) return '';
+    var same = true;
+    for(var i = 0; i <= 120; i++){
+      var x = a + (b - a) * i / 120, k = key(x), y = t.fn(x);
+      if(isFinite(k)) vals.push(k); if(isFinite(y)) vals.push(y);
+      if(isFinite(k) && isFinite(y) && Math.abs(k - y) > 1e-6 * Math.max(1, Math.abs(k))) same = false;
+    }
+    if(vals.length < 10) return '';
+    vals.sort(function(p, q){ return p - q; });
+    var lo = vals[Math.floor(vals.length * 0.03)], hi = vals[Math.ceil(vals.length * 0.97) - 1];
+    if(hi - lo < 1e-6){ lo -= 1; hi += 1; }
+    var pad = (hi - lo) * 0.12; lo = Math.min(lo - pad, 0); hi = Math.max(hi + pad, 0);
+    var v = E.vars[0], spec = { label: 'Your expression and the right one, graphed for ' + v + ' from ' + M.fmt(a, 3) + ' to ' + M.fmt(b, 3), width: 320, height: 170, x: [a, b], y: [lo, hi], xLabel: v, yLabel: '' };
+    var svg;
+    try{ svg = P.svg(spec); }catch(e){ return ''; }
+    var Fr = P.frame(spec);
+    var marks = [{ curve: key, who: 'right', label: 'right' }, { curve: t.fn, who: 'yours', label: same && E.mode === 'constant' ? 'yours (shifted by C)' : 'yours' }];
+    return '<figure class="cd-xplot">' + svg.replace(/<\/svg>$/, markSvg(Fr, marks) + '</svg>') + '<figcaption class="bt-small">' + (E.mode === 'constant' ? 'Antiderivatives that differ by a constant are parallel curves.' : 'Where the two graphs part, your expression gives a different value.') + '</figcaption></figure>';
+  }
+  /* The method hint a step gets when its tool names none. */
+  var DEFAULT_METHOD = {
+    num: 'Write the setup first: the formula with the given numbers in it. Then compute, and round only at the end.',
+    vol: 'Read the scale on each axis before you read a value off the curve.',
+    expr: 'Build it one piece at a time from the rule this step names, then test your expression at an easy value such as x = 1.',
+    choice: 'Test each option against the picture or the definition, and rule out the ones that fail.',
+    custom: 'Work through the picture one mark at a time.'
+  };
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
@@ -530,8 +798,8 @@
       var r = M.rng(seed), ctx = pickCtx(r), p = o.generate(r, ctx, type || undefined), results = [];
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
-        '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
-      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra');
+        '<div class="bt-solution" hidden></div><div class="bt-next"></div>' + (o.detailsHtml || '');
+      var api = { area: area, problem: p, fnOf: fnOf, say: function(h){ if(sd) sd.say(h); } }, exEl = area.querySelector('.cd-extra');
       // The table rows to fill live in the figure, which the Tool Studio
       // moves to the stage: reach them through it, not through the area.
       function rowsAll(sel){ return exEl.querySelectorAll(sel).length ? exEl.querySelectorAll(sel) : area.querySelectorAll(sel); }
@@ -561,13 +829,19 @@
             var id = sid + '-o' + k;
             // A text option is one inline run (text and formulas keep their
             // spaces) with a plain-text name, so a formula-only label is named.
-            return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"' + (s.optionsHtml ? '' : ' aria-label="' + esc(plainText(String(s.options[k]))) + '"') + '><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">Picture ' + (n + 1) + '</span>' + s.optionsHtml[k] : '<span class="cd-opt-t">' + s.options[k] + '</span>') + '</label></div>';
+            return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"' + (s.optionsHtml ? '' : ' aria-label="' + esc(plainText(String(s.options[k]))) + '"') + '><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">' + esc(s.picLabel || 'Picture') + ' ' + (n + 1) + '</span>' + s.optionsHtml[k] : '<span class="cd-opt-t">' + s.options[k] + '</span>') + '</label></div>';
           }).join('') + '</fieldset>';
+        } else if(s.kind === 'custom'){
+          var cu = o.custom(s, api);
+          body = cu.html || '';
         } else {
           body = '<p class="bt-small cd-rowhint">Type each value in the ' + esc(s.row) + ' row of the table.</p>';
         }
-        el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
+        el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">' + esc(s.checkLabel || 'Check') + '</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        if(cu && cu.init) cu.init(el);
+        // the figure can show which part this step works on
+        if(o.onStart) try{ o.onStart(s, api); }catch(e){ try{ console.error(e); }catch(x){} }
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
           rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
@@ -589,6 +863,7 @@
             tmr = setTimeout(function(){
               var v = input.value.trim(), r = v ? M.read(v, { vars: E.vars, allowC: E.mode === 'constant' }) : null;
               pv.innerHTML = !r ? '' : r.ok ? '<span class="bt-small">Reads as</span> ' + window.ApCalcTex.render(r.tex) : '<span class="calc-expr-err">' + esc(r.error) + '</span>';
+              if(o.onInput) o.onInput(s, r && r.ok ? v : '', api);
             }, 120);
           });
         }
@@ -600,8 +875,21 @@
           sync(+range.value);
         } else api.setVol = null;
         el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
+        // The student's last wrong try, kept to draw beside the right answer.
+        var lastWrong = null;
+        function tryOf(ok, shown){
+          var t = { ok: ok, shown: !!shown, value: NaN, raw: '', fn: null, pick: -1 };
+          if(s.kind === 'num' || s.kind === 'vol') t.value = shown ? s.cell.answer : numOf(input.value);
+          else if(s.kind === 'expr'){ t.raw = shown ? s.cell.expr.answer : input.value.trim(); t.fn = fnOf(t.raw, s.cell.expr.vars); }
+          else if(s.kind === 'choice'){ var c0 = el.querySelector('input:checked'); t.pick = shown ? s.correct : c0 ? +c0.value : -1; }
+          return t;
+        }
+        // onTry returns true (drawn), or a sentence saying what the picture shows now
+        var drewNote = '';
+        function drawTry(t){ try{ var r = o.onTry && o.onTry(s, t, api); drewNote = typeof r === 'string' ? r : ''; return !!r; }catch(e){ try{ console.error(e); }catch(x){} return false; } }
         function lock(){
           done = true;
+          if(cu && cu.lock) cu.lock();
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
           if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
@@ -609,6 +897,7 @@
         function next(right){
           results.push({ id: slug + ':' + p.ctx + ':' + s.key, correct: right, topic: (data.partTopics && data.partTopics[s.key]) || p.topic, practice: s.practice, level: s.level || 'apply', diff: 2, group: s.key });
           el.querySelector('.bt-actions').innerHTML = '';
+          if(sd) sd.clear();
           if(o.onStep) o.onStep(s, right, api);
           step(i + 1);
           var nx = host.lastElementChild;
@@ -619,11 +908,16 @@
           else if(s.kind === 'expr'){ input.value = s.cell.expr.answer + (s.cell.expr.mode === 'constant' ? ' + C' : ''); input.dispatchEvent(new Event('input', { bubbles: true })); }
           else if(s.kind === 'row') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = M.fmt(c.answer, 3); });
           else if(s.kind === 'coef') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = coefText(c.answer); });
+          else if(s.kind === 'custom'){ if(cu.reveal) cu.reveal(); }
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
-          fb.innerHTML = '<span class="calc-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
+          var drew = s.kind === 'custom' ? false : drawTry(tryOf(true, true));
+          fb.innerHTML = '<span class="calc-mark no">Shown</span> ' + (s.kind === 'custom' ? (cu.shownMsg || 'The answer is drawn.') : 'The answer is filled in. ') + (s.kind === 'choice' ? s.why[s.correct] : '') +
+            (drew ? ' <span class="cd-onpic">' + esc(drewNote || (s.kind === 'choice' ? 'The picture shows the right answer.' : lastWrong ? 'The picture shows yours (dashed) beside the right one.' : 'The picture shows the right answer.')) + '</span>' : '') + compareHtml(s, lastWrong);
           lock(); next(false);
         }
+        // One method hint per step, before Show the answer is offered.
+        function methodOf(){ var m = s.method || (o.method && o.method(s, p)); return m || DEFAULT_METHOD[s.kind] || ''; }
         function check(){
           if(done) return;
           // blank: nothing entered yet, so the try does not count.
@@ -638,7 +932,7 @@
             var rawE = input.value.trim(), ge = M.diagnoseExpr(s.cell, rawE);
             if(!rawE) blank = true;
             else if(ge.error){ fb.innerHTML = '<span class="bt-small">' + esc(ge.error) + '</span>'; return; }
-            else { ok = ge.ok; if(ge.why) notes.push(esc(ge.why)); }
+            else { ok = ge.ok; if(ge.why) notes.push(/<math/.test(ge.why) ? ge.why : window.ApCalcTex ? window.ApCalcTex.html(esc(ge.why)) : esc(ge.why)); }
             input.classList.toggle('is-wrong', !blank && !ok); input.classList.toggle('is-right', ok);
           } else if(s.kind === 'row' || s.kind === 'coef'){
             s.cells.forEach(function(c, k){
@@ -649,6 +943,10 @@
               else if(!g.ok){ ok = false; notes.push('<b>' + esc(who) + ':</b> ' + (g.why || (s.kind === 'coef' ? 'Write the change as a multiple of x, from the coefficient: −x, +2x.' : 'Not this value. Recheck the arithmetic.'))); }
               rowInputs[k].classList.toggle('is-wrong', !!raw && !g.ok); rowInputs[k].classList.toggle('is-right', !!g.ok);
             });
+          } else if(s.kind === 'custom'){
+            var gc = cu.check();
+            if(gc.blank){ fb.innerHTML = '<span class="bt-small">' + (gc.msg || 'Answer first.') + '</span>'; return; }
+            ok = gc.ok; (gc.notes || []).forEach(function(n){ notes.push(n); });
           } else {
             var c = el.querySelector('input:checked');
             if(!c) blank = true;
@@ -656,16 +954,29 @@
           }
           if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'expr' ? 'Type an expression first, for example 3x^2 + 1.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
+          if(s.kind === 'choice') el.querySelectorAll('.cd-opt').forEach(function(op){ var r0 = op.querySelector('input'); op.classList.toggle('is-wrong', !ok && r0.checked); op.classList.toggle('is-right', ok && r0.checked); });
+          var t = s.kind === 'custom' ? null : tryOf(ok, false), drew = t ? drawTry(t) : !!gc.drew;
+          // a tool's own diagnosis when no authored slip matched (o.note(step, try) -> html)
+          if(!ok && t && !notes.length && o.note){ var nn = o.note(s, t, api); if(nn) notes.push(nn); }
           if(ok){
             el.classList.add('is-right');
-            fb.innerHTML = '<span class="calc-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
+            // Right after a wrong try: the right answer beside the earlier one.
+            fb.innerHTML = '<span class="calc-mark ok">Correct</span> ' + (s.kind === 'choice' || s.kind === 'custom' ? notes.join(' ') : '') + (tries > 1 ? compareHtml(s, lastWrong) : '');
             lock(); next(tries === 1);
             return;
           }
+          if(t) lastWrong = t;
           el.classList.add('is-wrong');
-          fb.innerHTML = '<span class="calc-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
-            '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
-          fb.querySelector('.cd-show').addEventListener('click', reveal);
+          var meth = methodOf();
+          // An expression the tool's figure has no place for gets its own small graph: yours against the right one.
+          var xp = s.kind === 'expr' && !drew && t ? exprPlot(s, t) : '';
+          fb.innerHTML = '<span class="calc-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : '') +
+            (drew ? '<p class="cd-onpic">' + esc(drewNote || (s.kind === 'choice' ? 'The picture shows your choice.' : s.kind === 'custom' ? 'The numbered marks on the picture show what to fix.' : 'The picture shows your answer, dashed.')) + '</p>' : xp) +
+            (meth ? '<p class="cd-method"><span class="cd-method-k">Method</span> ' + meth + '</p>' : '') +
+            // Show the answer comes after the hint: from the second wrong try (or at once with no hint).
+            (tries > 1 || !meth ? '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>' : '<p class="bt-small cd-again-hint">Use the method, change your answer and Check again.</p>');
+          var sh = fb.querySelector('.cd-show'); if(sh) sh.addEventListener('click', reveal);
+          if(sd) sd.wrong(drew);
         }
       }
       function finish(){
@@ -815,7 +1126,9 @@
         if(onStage){ ctx.classList.add('ls-drill-text'); stage.appendChild(ctx); }
         // The figure is the stage, table rows to fill included (drill()
         // reaches them through the figure).
-        if(fig) stage.appendChild(extra);
+        // With the text on the stage, the (maybe empty) figure host goes there
+        // too, so a picture a tool draws after a try appears under the problem.
+        if(fig || (onStage && extra)) stage.appendChild(extra);
         if(ctx && !onStage && !ctx.querySelector('[data-row], input')) det.appendChild(ctx);
         Array.prototype.slice.call(area.querySelectorAll(':scope > details')).forEach(function(d){ det.appendChild(d); });
         var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
@@ -836,15 +1149,31 @@
         }
         s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
       },
+      // A wrong try: the pill says so (the step's own feedback has the note and the method).
+      wrong: function(drew){ s.pills([{ html: drew ? 'Not yet: see the picture' : 'Not yet', tone: 'warn' }], 'left', m); },
+      clear: function(){ s.pills([], 'left', m); },
+      say: function(h){ s.caption(h, m); },
       done: function(right, total){
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is open under Why.', m);
         var again = area.querySelector('.cd-again');
-        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+        if(again){ again.classList.add('ls-btn', 'ls-pri'); }
+        // X6: the worked solution opens by itself; closing it returns to New problem.
+        openSolution(s, again);
       }
     };
+  }
+  /* Open the Why sheet on the worked solution once a problem is done
+     (docs/tool-audit-2026-10.md X6), with focus on its heading; closing it
+     returns focus to the button given (New problem). */
+  function openSolution(s, back){
+    try{
+      if(back) back.focus({ preventScroll: true });
+      var h = s.root.querySelector('.ls-why-panel .bt-solution h3, .ls-why-panel .bt-steps');
+      s.open('why', h || undefined);
+    }catch(e){ if(back) back.focus(); }
   }
 
   /* studioPane(pane, s, o): the usual arrangement of an explore view (the
@@ -907,6 +1236,8 @@
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
     gradePart: gradePart, partHtml: partHtml, unitOf: unitOf,
-    drill: drill, parseCoef: parseCoef, coefText: coefText
+    drill: drill, parseCoef: parseCoef, coefText: coefText,
+    tries: tries, markSvg: markSvg, numText: numText, fnOf: fnOf, choiceMarks: choiceMarks, plainText: plainText,
+    autoMarks: autoMarks, markedFigure: markedFigure, tryOn: tryOn, gauge: gauge
   };
 })();

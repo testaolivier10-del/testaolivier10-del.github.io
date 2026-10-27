@@ -246,6 +246,8 @@
     rs.options = rs.options.map(tex); rs.why = rs.why.map(tex);
     return {
       type: 'overunder', topic: 'riemann-sums', text: tex(text), figure: figure, stageText: !useRate,
+      // a rate given only by the signs of its derivatives: the page draws a sketch with that shape
+      sketch: figure ? null : { inc: sh.inc, conc: sh.conc, a: a, b: b, sumKind: kind, rate: c.rate, v: c.var, varUnit: c.varUnit },
       steps: [
         step('verdict', 'Over or under?', ver),
         choice('reason', 'Which reason justifies it?', rs.options, rs.correct, rs.why)

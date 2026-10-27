@@ -25,9 +25,10 @@
    estimate f′(a) from a tangent line; a difference quotient from a table
    with units; which graph is f′; SKETCH f′ from f, graded point by point
    with named misses; write the tangent line, typed and drawn live on the
-   graph; where f is not differentiable and why). One step at a time in the
-   dock, the figure on the stage, first tries recorded as
-   tangent-tracer:<context>:<step>. */
+   graph; where f is not differentiable and why), on the shared drill
+   (ApCalcTools.drill: one step at a time, method hint, Show the answer)
+   like the other nine trainers; the figure on the stage shows each try,
+   first tries recorded as tangent-tracer:<context>:<step>. */
 (function(){
   'use strict';
   var T = window.ApCalcTools, M = window.ApCalcMath, P = window.ApCalcPlot;
@@ -55,9 +56,6 @@
   function texN(v){ return isFinite(v) ? (v < 0 ? '{' + n(M.round(v, 3)) + '}' : n(M.round(v, 3))) : v > 0 ? '\\infty' : '{-\\infty}'; }
   function paren(v){ return v < 0 ? '(' + n(M.round(v, 3)) + ')' : texN(v); }
   function r1(v){ return Math.round(v * 10) / 10; }
-  function seedFromUrl(){ try{ var m = /[?&#]seed=(\d+)/.exec(location.search + location.hash); if(m) return +m[1]; }catch(e){} return 0; }
-  function freshSeed(){ return 10000 + Math.floor(Math.random() * 89999); }
-  function parseNum(raw){ var Q = window.ApCalcQuestions; return Q && Q.parseNumber ? Q.parseNumber(raw) : parseFloat(raw); }
   function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
 
   /* Redraw an svg at the pixel size of its box, so text and strokes keep
@@ -591,7 +589,9 @@
       Array.prototype.slice.call(pane.querySelectorAll(':scope > *')).forEach(function(k){ if(k.textContent.trim()) d.appendChild(k); });
       s.add('details', d, o);
       boot();
-      if(s.mode() === 'explore') s.hint({ target: hs, text: 'Slide h toward 0' });
+      // The tip points at the whole h control (label, slider and ruler), so it
+      // sits above or below it and never over the "Distance h" label (audit 2026-10).
+      if(s.mode() === 'explore') s.hint({ target: q('.tt-hctl'), text: 'Slide h toward 0', round: 14 });
     }
     function boot(){
       // On a phone the stage needs the room: the table starts folded.
@@ -608,53 +608,72 @@
   }
 
   /* ========================================================= TEST YOURSELF */
+  /* The shared drill (ApCalcTools.drill), the stepper every other calculus
+     trainer uses (docs/tool-audit-2026-10.md): the figure is the drill's
+     stage, each step is a drill step (the sketch of f′ a custom step drawn
+     and graded here), the method hint comes before Show the answer, and
+     each try is drawn on the figure: the student's slope, line or graph
+     dashed, the right one solid. */
   function quiz(host, data){
-    var contexts = data.contexts || [], seed = seedFromUrl() || freshSeed(), only = '', LS = T.studioOf(host), id = 'tq' + (++uid);
-    host.innerHTML = '<section class="bt-problem tt-q" aria-labelledby="' + id + '-h"><h2 id="' + id + '-h" class="sr-only">Test yourself</h2>' +
-      '<div class="tt-qstage"><div class="tt-qfig"></div><p class="sr-only tt-qlive" aria-live="polite"></p></div>' +
-      '<div class="tt-qdock"><div class="tt-done" hidden></div><div class="tt-step"></div><div class="bt-next tt-next"></div></div>' +
-      '<div class="tt-qwhy"></div>' +
-      '<div class="tt-qdet"><h3 class="ls-title-l">This problem</h3><div class="bt-context tt-qtext"></div><p class="bt-code tt-code"></p><div class="tt-qpick"></div>' +
-      '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Sketch steps: Tab to a point, then ↑ ↓ move it (Page Up and Page Down move it farther), 0 puts it on the axis, Enter keeps it where it is. Every other step is a form: Tab, type or choose, then Enter.</p></details></div></section>';
-    var $ = function(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); };
-    var figEl = $('.tt-qfig'), stepEl = $('.tt-step'), nextEl = $('.tt-next'), doneEl = $('.tt-done'), qlive = T.announcer($('.tt-qlive'));
-    var kinds = TT.TYPES.filter(function(t){ return contexts.some(function(c){ return (c.types || []).indexOf(t.value) > -1; }); });
-    if(kinds.length > 1){
-      var pk = T.choiceSelect({ label: 'Kind of problem', options: [{ value: '', label: 'Any kind' }].concat(kinds), value: '', onChange: function(v){ only = v; seed = freshSeed(); load(true); } });
-      $('.tt-qpick').appendChild(pk.el);
+    var id = 'tq' + (++uid), Q = { p: null, figEl: null, sized: null, figState: null, SK: null, live: null };
+    // The model's TeX strings render once, so the drill shows them as HTML.
+    function texify(p){
+      p.text = '<p>' + tx(p.text) + '</p>';
+      p.solution = p.solution.map(tx);
+      p.steps.forEach(function(s){
+        s.label = tx(s.label);
+        if(s.hint) s.hint = tx(s.hint);
+        if(s.why) s.why = s.why.map(tx);
+        if(s.cell && s.cell.mistakes) s.cell.mistakes.forEach(function(mk){ mk.why = tx(mk.why); });
+        if(s.kind === 'choice'){
+          if(s.pics){ s.optionsHtml = s.pics.map(function(g){ return '<span class="tt-pic">' + miniGraph(g) + '</span><span class="sr-only">' + esc(g.label.replace(/^Graph \d+: /, '')) + '</span>'; }); s.picLabel = 'Graph'; s.options = s.options.map(function(o){ return esc(o.replace(/^Graph \d+: /, '')); }); }
+          else s.options = s.options.map(function(o){ return '<span class="tt-opt">' + tx(o) + '</span>'; });
+        }
+        if(s.kind === 'sketch'){ s.kind = 'custom'; s.checkLabel = 'Check my sketch'; }
+      });
+      return p;
     }
-    if(LS){
-      var o = { mode: 'quiz' };
-      var stg = el('div', 'tt-ls-qstage'); stg.appendChild($('.tt-qstage')); LS.add('stage', stg, o);
-      var dk = $('.tt-qdock'); dk.classList.add('tt-ls-qdock'); LS.add('dock', dk, o);
-      var wy = el('div', 'ls-sec'); wy.appendChild($('.tt-qwhy')); LS.add('why', wy, o);
-      var dt = el('div', 'ls-sec'); dt.appendChild($('.tt-qdet')); LS.add('details', dt, o);
-    }
-    var p, results, k, figState, sized = null;
-    function pickCtx(r){ var ok = contexts.filter(function(c){ return !only || (c.types || []).indexOf(only) > -1; }); return r.pick(ok.length ? ok : contexts); }
-    function caption(h){ if(LS) LS.caption(h, 'quiz'); else { var c = $('.tt-qcap'); if(c) c.innerHTML = h; } }
-    function pills(list){ if(LS) LS.pills(list, 'left', 'quiz'); }
+    T.drill(host, data, { slug: SLUG, noun: 'drill', typeLabel: 'Kind of problem',
+      types: TT.TYPES.map(function(t){ return { value: t.value, label: t.label }; }),
+      generate: function(r, ctx, type){ return texify(TT.generate(r, ctx, type)); },
+      title: function(p){ var t = TT.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
+      detailsHtml: '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Sketch steps: Tab to a point, then ↑ ↓ move it (Page Up and Page Down move it farther), 0 puts it on the axis, Enter keeps it where it is. Every other step is a form: Tab, type or choose, then Enter.</p></details>',
+      extra: function(el, p){ Q.p = p; Q.figState = { marks: {}, typed: null, mine: {} }; buildFig(el); },
+      onStep: function(s){ afterStep(s); },
+      onInput: function(s, raw){ if(s.line){ var g = raw ? T.fnOf(raw, ['x']) : null; Q.figState.typed = g; redrawFig(); } },
+      onTry: function(s, t){ return tryOn(s, t); },
+      note: function(s, t){ return s.kind === 'expr' && s.line && t.raw ? lineNote(t.raw, s.line) : ''; },
+      method: function(s, p){ return p.type === 'tanline' && s.key === 'slope' && s.kind === 'num' ? 'Differentiate f, then put x = a into f′.' : METHOD[p.type + '.' + s.key] || METHOD[s.key] || ''; },
+      custom: function(s){ return sketchStep(s); }
+    });
 
-    function load(focus){
-      var r = M.rng(seed), ctx = pickCtx(r);
-      p = TT.generate(r, ctx, only || undefined);
-      results = []; k = 0; figState = { marks: {}, typed: null, sketch: null, chosen: null };
-      $('.tt-qtext').innerHTML = '<p>' + tx(p.text) + '</p>';
-      $('.tt-code').innerHTML = 'Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a>';
-      $('.tt-qwhy').innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
-      nextEl.innerHTML = ''; doneEl.hidden = true; doneEl.innerHTML = '';
-      pills([]); if(LS) LS.pills([], 'right', 'quiz');
-      buildFig();
-      runStep(focus);
-    }
+    var METHOD = {
+      'estimate.slope': 'Count the grid squares between the two marked points on the tangent line: rise (up or down) over run (across).',
+      compare: 'Picture the tangent line at B: is it steeper upward than the one at a, or less steep? Compare slopes, not heights.',
+      interval: 'Use the two times closest to the time on either side of it, so the secant is as close to the tangent as the table allows.',
+      'table.value': 'Change in the quantity divided by change in time between those two rows.',
+      units: 'A rate of change has the units of the quantity per unit of time.',
+      graph: 'Where f is flat, f′ = 0; where f rises, f′ is above the axis; where it falls, below.',
+      zeros: 'The tangent to f is flat at its peaks and valleys: f′ = 0 there.',
+      sketch: 'Above the axis where f rises, below where it falls, on the axis where f is flat; steeper means farther from the axis.',
+      'tanline.slope': 'The slope of the tangent line at x = a is f′(a): read it in the f′ row of the table.',
+      value: 'Put x = a into f to get the point of tangency.',
+      'tanline.line': 'Point-slope form: y = f(a) + f′(a)(x − a), with the numbers from the earlier steps.',
+      line: 'Point-slope form: y = f(a) + f′(a)(x − a), with the numbers from the earlier steps.',
+      where: 'Zoom in on each dashed line in your mind: smooth curves look straight; a corner, cusp, vertical tangent or break does not.',
+      why: 'Compare the slopes from the left and the right, and check whether the graph is unbroken.',
+      continuous: 'Continuous means no hole and no jump: you can draw through that x without lifting the pencil.'
+    };
+    METHOD['tanline.value'] = METHOD.value;
 
     /* ---------------- the stage figure ---------------- */
-    function buildFig(){
-      var f = p.fig;
+    function buildFig(host2){
+      var p = Q.p, f = p.fig, figEl = document.createElement('div');
+      host2.appendChild(figEl); Q.figEl = figEl; Q.SK = null;
       figEl.className = 'tt-qfig tt-fig-' + f.kind;
       if(f.kind === 'graph'){
         figEl.innerHTML = '<div class="tt-fbox"></div>';
-        sized = fit(figEl.querySelector('.tt-fbox'), drawGraph);
+        Q.sized = fit(figEl.querySelector('.tt-fbox'), drawGraph);
       } else if(f.kind === 'table' || f.kind === 'given' || f.kind === 'formula'){
         var top = '';
         if(f.kind === 'table'){
@@ -667,18 +686,22 @@
             '<tr><th scope="row">' + tx("$f'(x)$") + '</th>' + f.d.map(function(v, j){ return '<td data-c="' + j + '"' + (f.xs[j] === f.a ? ' class="is-a"' : '') + '>' + sv(v) + '</td>'; }).join('') + '</tr></tbody></table></div>';
         } else top = '<p class="tt-formula">' + mm(f.tex, true) + '</p>';
         figEl.innerHTML = '<div class="tt-ftop">' + top + '</div><div class="tt-fbox"></div>';
-        sized = fit(figEl.querySelector('.tt-fbox'), drawGraph);
+        Q.sized = fit(figEl.querySelector('.tt-fbox'), drawGraph);
       } else if(f.kind === 'sketch'){
-        figEl.innerHTML = '<div class="tt-fbox tt-sk"><svg class="calc-plot tt-svg tt-sksvg" role="group" aria-labelledby="' + id + '-skd"><title id="' + id + '-skd">The graph of f, and a grid to sketch f′ on</title><defs class="tt-skdefs"></defs><g class="tt-skbg"></g><g class="tt-skpts"></g></svg></div>';
+        figEl.innerHTML = '<div class="tt-fbox tt-sk"><svg class="calc-plot tt-svg tt-sksvg" role="group" aria-labelledby="' + id + '-skd"><title id="' + id + '-skd">The graph of f, and a grid to sketch f′ on</title><defs class="tt-skdefs"></defs><g class="tt-skbg"></g><g class="tt-skpts"></g></svg></div><p class="sr-only tt-qlive" aria-live="polite"></p>';
+        Q.live = T.announcer(figEl.querySelector('.tt-qlive'));
         setupSketch();
-        sized = fit(figEl.querySelector('.tt-fbox'), drawSketch);
+        Q.sized = fit(figEl.querySelector('.tt-fbox'), drawSketch);
       }
+      // the stage has its size only once placed: draw again then
+      setTimeout(redrawFig, 0); setTimeout(redrawFig, 120);
     }
+    function redrawFig(){ if(Q.sized) Q.sized.redraw(); }
     function plotSpec(w, h){
-      var f = p.fig, base = f.kind === 'graph' ? f : f.kind === 'table' ? tableSpec(w) : f.plot, s = JSON.parse(JSON.stringify(base));
+      var p = Q.p, f = p.fig, base = f.kind === 'graph' ? f : f.kind === 'table' ? tableSpec(w) : f.plot, s = JSON.parse(JSON.stringify(base));
       s.width = w; s.height = h;
       s.curves = (s.curves || []).slice(); s.lines = (s.lines || []).slice(); s.points = (s.points || []).slice(); s.labels = (s.labels || []).slice();
-      var mk = figState.marks;
+      var mk = Q.figState.marks;
       if(p.type === 'estimate' && mk.tangentAt){ s.curves.push({ fn: (function(b, mb, fb){ return function(x){ return Math.abs(x - b) < 1.6 ? fb + mb * (x - b) : NaN; }; })(p.b, p.mb, p.fig.points[2].at[1]), cls: 's4 tt-tanb', dashed: true }); }
       if(p.type === 'whichgraph' && mk.fprime) s.curves.push({ fn: p.d, cls: 's2', label: "f′" });
       if(p.type === 'table'){
@@ -687,15 +710,16 @@
         s.lines.push({ through: [[F.c, -1e6], [F.c, 1e6]], cls: 'tt-guide', dashed: true });
       }
       if(p.type === 'tanline'){
-        if(figState.typed) s.curves.push({ fn: figState.typed, cls: 's5 tt-yours', dashed: true, label: 'yours' });
+        if(Q.figState.typed) s.curves.push({ fn: Q.figState.typed, cls: 's5 tt-yours', dashed: true, label: 'yours' });
         if(mk.line) s.curves.push({ fn: p.line.fn, cls: 's4', label: 'tangent' });
       }
       return s;
     }
-    /* Marks drawn over the plot in its own coordinates (P.frame of the same
-       spec): the rise and run of the tangent, a ring at the point in question. */
+    /* Marks over the plot in its own coordinates: the rise and run of the
+       tangent, a ring at the point in question, and each try (yours dashed,
+       the right one solid). */
     function overlay(Fr){
-      var mk = figState.marks, o = [], X = function(v){ return r1(Fr.sx(v)); }, Y = function(v){ return r1(Fr.sy(v)); };
+      var p = Q.p, mk = Q.figState.marks, mine = Q.figState.mine, o = [], X = function(v){ return r1(Fr.sx(v)); }, Y = function(v){ return r1(Fr.sy(v)); };
       if(p.type === 'estimate' && mk.triangle){
         var a0 = p.fig.points[0].at, b0 = p.fig.points[1].at;
         o.push('<path class="tt-tri tt-tri-q" d="M' + X(a0[0]) + ' ' + Y(a0[1]) + 'H' + X(b0[0]) + 'V' + Y(b0[1]) + '"/>');
@@ -703,44 +727,88 @@
         o.push('<text class="tt-tril tt-c5" x="' + r1(Fr.sx(b0[0]) + 7) + '" y="' + r1((Fr.sy(a0[1]) + Fr.sy(b0[1])) / 2 + 4) + '">rise ' + sv(b0[1] - a0[1]) + '</text>');
       }
       if(p.type === 'notdiff' && mk.zoom){ var yc = p.f(p.c); if(!isFinite(yc)) yc = 0; o.push('<circle class="tt-ring-c" cx="' + X(p.c) + '" cy="' + Y(Math.max(Fr.y[0], Math.min(Fr.y[1], yc))) + '" r="16"/>'); }
-      return o.join('');
+      var list = [];
+      Object.keys(mine).forEach(function(k){ list = list.concat(mine[k]); });
+      return o.join('') + T.markSvg(Fr, list);
     }
-    // Narrow (a phone): the x-axis says just t (the table above names the
-    // unit) and the axis runs a little past the last time, so its label
-    // never sits on the last data point.
     function tableSpec(w){
-      var F = p.fig, lo = Math.min.apply(null, F.vs), hi = Math.max.apply(null, F.vs), pad = Math.max(2, (hi - lo) * 0.15), nw = w < 520;
+      var F = Q.p.fig, lo = Math.min.apply(null, F.vs), hi = Math.max.apply(null, F.vs), pad = Math.max(2, (hi - lo) * 0.15), nw = w < 520;
       return { label: 'The data from the table: ' + F.F + ' against ' + F.t + ', with the time t = ' + F.c + ' marked', x: [F.ts[0] - 0.5, F.ts[4] + (nw ? 0.5 + (F.ts[4] - F.ts[0]) * 0.1 : 0.5)], y: [Math.floor(lo - pad), Math.ceil(hi + pad)], xLabel: nw ? F.t : F.t + ' (' + F.tu + ')', yLabel: F.F + ' (' + F.unit + ')' };
     }
     function drawGraph(w, h){
-      var box = figEl.querySelector('.tt-fbox'); if(!box) return;
-      var s = plotSpec(w, h);
-      var svgS = '';
+      var figEl = Q.figEl, box = figEl && figEl.querySelector('.tt-fbox'); if(!box) return;
+      var s = plotSpec(w, h), svgS = '';
       try{ svgS = P.svg(s); }catch(e){ svgS = ''; }
       box.innerHTML = svgS.replace(/<\/svg>$/, overlay(P.frame(s)) + '</svg>');
-      var sv0 = box.querySelector('svg'); if(sv0){ sv0.classList.add('tt-qsvg'); }
-      if(p.type === 'table'){
-        var F = p.fig, i = F.i, on = figState.marks.interval;
-        figEl.querySelectorAll('.tt-vt td').forEach(function(td){ var j = +td.getAttribute('data-c'); td.classList.toggle('is-pick', !!on && (j === i || j === i + 1)); });
+      var sv0 = box.querySelector('svg'); if(sv0) sv0.classList.add('tt-qsvg');
+      if(Q.p.type === 'table'){
+        var F = Q.p.fig, i = F.i, on = Q.figState.marks.interval, pick = Q.figState.pick;
+        figEl.querySelectorAll('.tt-vt td').forEach(function(td){ var j = +td.getAttribute('data-c'); td.classList.toggle('is-pick', !!on && (j === i || j === i + 1)); td.classList.toggle('is-yours', !on && pick != null && pick.indexOf(j) > -1); });
       }
     }
-    function redrawFig(){ if(sized) sized.redraw(); }
+    function afterStep(s){
+      var p = Q.p, mk = Q.figState.marks;
+      if(p.type === 'estimate' && s.key === 'slope') mk.triangle = true;
+      if(p.type === 'estimate' && s.key === 'compare') mk.tangentAt = true;
+      if(p.type === 'table' && s.key === 'interval'){ mk.interval = true; Q.figState.pick = null; }
+      if(p.type === 'whichgraph' && s.key === 'graph') mk.fprime = true;
+      if(p.type === 'notdiff' && s.key === 'where') mk.zoom = true;
+      if(p.type === 'tanline' && s.key === 'line') mk.line = true;
+      redrawFig();
+    }
+    /* Each try on the figure: the student's dashed, the right one solid. */
+    function tryOn(s, t){
+      var p = Q.p, who = t.ok || t.shown ? 'right' : 'yours', mine = Q.figState.mine, mk = [], val = who === 'right' && s.kind === 'num' ? s.cell.answer : t.value, k = s.key;
+      var keepYours = function(){ return (mine[k] || []).filter(function(m){ return m.who === 'yours'; }); };
+      if(p.type === 'estimate' && k === 'slope' && isFinite(val)){
+        var a0 = p.fig.points[0].at;
+        mk.push({ tangent: a0, slope: val, half: 1.8, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + sv(M.round(val, 3)) });
+      } else if(p.type === 'estimate' && k === 'compare' && t.pick > -1 && who === 'yours'){
+        // the picked order, as a tangent at B steeper or shallower than at a
+        var fb = p.fig.points[2].at[1], sl = t.pick === 0 ? p.m + 1.5 : t.pick === 1 ? p.m - 1.5 : p.m;
+        mk.push({ tangent: [p.b, fb], slope: sl, half: 1.2, who: 'yours', label: 'yours' });
+      } else if(p.type === 'table' && k === 'interval' && t.pick > -1 && who === 'yours'){
+        // the two picked times, highlighted in the table and joined on the plot
+        var F = p.fig, ts = T.choiceMarks(s.options[t.pick], 't').xs, js = ts.map(function(x){ return F.ts.indexOf(x); }).filter(function(j){ return j > -1; });
+        Q.figState.pick = js;
+        if(js.length === 2) mk.push({ line: [[F.ts[js[0]], F.vs[js[0]]], [F.ts[js[1]], F.vs[js[1]]]], who: 'yours', label: 'your secant' });
+      } else if(p.type === 'table' && k === 'value' && isFinite(val)){
+        var G = p.fig, yc = G.vs[G.i] + (G.vs[G.i + 1] - G.vs[G.i]) * (G.c - G.ts[G.i]) / (G.ts[G.i + 1] - G.ts[G.i]);
+        mk.push({ tangent: [G.c, yc], slope: val, half: (G.ts[4] - G.ts[0]) / 5, who: who, label: (who === 'yours' ? 'yours: ' : '') + sv(M.round(val, 3)) + ' ' + G.unit + '/' + G.tu.replace(/s$/, '') });
+      } else if(p.type === 'whichgraph' && k === 'zeros' && t.pick > -1){
+        // x-values where f is flat, as lines: a point on y = 0 would read as a zero of f
+        T.choiceMarks(s.options[t.pick], 'x').xs.forEach(function(x, j){ mk.push({ vline: x, who: who, label: who === 'yours' ? (j ? '' : 'yours') : 'x = ' + T.numText(x) }); });
+      } else if(p.type === 'tanline' && (k === 'value' || k === 'slope') && isFinite(val)){
+        if(k === 'value') mk.push({ point: [p.a, val], who: who, label: (who === 'yours' ? 'yours: ' : '') + '(' + sv(p.a) + ', ' + sv(M.round(val, 3)) + ')' });
+        else mk.push({ tangent: [p.a, p.fa], slope: val, half: 1.4, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + sv(M.round(val, 3)) });
+      } else if(p.type === 'tanline' && k === 'slope' && t.pick > -1){
+        var vv = T.plainText(s.options[t.pick]).replace(/−/g, '-'), sl2 = parseFloat(vv);
+        if(isFinite(sl2)) mk.push({ tangent: [p.a, p.fa], slope: sl2, half: 1.4, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + sv(sl2) });
+      } else if(p.type === 'tanline' && k === 'line'){
+        // the typed line is already drawn live (dashed); the right one appears with the step
+        return who === 'yours' && !!t.fn ? 'Your line is drawn dashed on the graph: it should touch the curve at the point and match its steepness there.' : false;
+      } else if(p.type === 'notdiff' && k === 'where' && t.pick > -1 && who === 'yours'){
+        var xw = p.marks[t.pick]; if(xw != null){ var yw = p.f(xw); mk.push({ point: [xw, isFinite(yw) ? yw : 0], who: 'yours', label: 'yours: smooth here' }); }
+      } else return false;
+      if(!mk.length) return false;
+      if(who === 'right') mk = keepYours().concat(mk);
+      mine[k] = mk; redrawFig();
+      return true;
+    }
 
-    /* ---------------- the sketch grid ---------------- */
-    var SK = null;
+    /* ---------------- the sketch of f′: a custom drill step ---------------- */
     function setupSketch(){
-      var st = p.steps[0];
-      SK = { vals: st.xs.map(function(){ return null; }), marks: null, show: false, locked: false, G: null, sel: 0 };
+      var st = Q.p.steps[0], figEl = Q.figEl;
+      var SK = Q.SK = { vals: st.xs.map(function(){ return null; }), marks: null, show: false, locked: false, G: null, sel: 0 };
       var pts = figEl.querySelector('.tt-skpts'), svgEl = figEl.querySelector('.tt-sksvg');
       pts.innerHTML = st.xs.map(function(x, j){ return '<g class="tt-skp" data-j="' + j + '" tabindex="0" role="slider" aria-label="f′ at x = ' + sv(x) + '" aria-valuemin="' + n(-st.Y) + '" aria-valuemax="' + n(st.Y) + '"><circle class="tt-hit" r="20"/><circle class="tt-skdot" r="8"/><text class="tt-skq" y="4" text-anchor="middle">?</text><g class="tt-badge" style="display:none"><circle r="9"/><text y="4" text-anchor="middle"></text></g></g>'; }).join('');
       function setV(j, v, say){
         if(SK.locked) return;
         v = Math.max(-st.Y, Math.min(st.Y, Math.round(v / st.snap) * st.snap));
         SK.vals[j] = M.round(v, 4); SK.marks = null; drawSketch();
-        var fbx = stepEl.querySelector('.tt-skfb'); if(fbx && !SK.locked) fbx.innerHTML = '';
-        if(say) qlive('f′(' + sv(st.xs[j]) + ') set to ' + sv(SK.vals[j]) + '. ' + SK.vals.filter(function(x){ return x != null; }).length + ' of ' + st.xs.length + ' points set.');
+        if(SK.onChange) SK.onChange();
+        if(say && Q.live) Q.live('f′(' + sv(st.xs[j]) + ') set to ' + sv(SK.vals[j]) + '. ' + SK.vals.filter(function(x){ return x != null; }).length + ' of ' + st.xs.length + ' points set.');
       }
-      SK.setV = setV;
       var drag = null;
       function local(e){ var r = svgEl.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
       function nearest(px){ var B = SK.G.bot, best = 0; st.xs.forEach(function(x, j){ if(Math.abs(B.sx(x) - px) < Math.abs(B.sx(st.xs[best]) - px)) best = j; }); return Math.abs(B.sx(st.xs[best]) - px) < Math.max(28, (B.sx(1) - B.sx(0)) * 0.6) ? best : -1; }
@@ -755,10 +823,9 @@
         if(!tgt) setV(j, B.iy(pq.y), false); else if(SK.vals[j] == null) setV(j, 0, false);
         try{ svgEl.setPointerCapture(e.pointerId); }catch(x){}
         e.preventDefault();
-        if(window.LevlStudio && LS) LS.pills([], 'right', 'quiz');
       });
       svgEl.addEventListener('pointermove', function(e){ if(!drag) return; var pq = local(e); if(Math.abs(pq.y - drag.y0) > 2) drag.moved = true; if(drag.moved) setV(drag.j, SK.G.bot.iy(pq.y), false); });
-      function up(){ if(!drag) return; var j = drag.j; drag = null; qlive('f′(' + sv(st.xs[j]) + ') set to ' + sv(SK.vals[j]) + '.'); var g = pts.querySelector('[data-j="' + j + '"]'); if(g) g.focus({ preventScroll: true }); }
+      function up(){ if(!drag) return; var j = drag.j; drag = null; if(Q.live) Q.live('f′(' + sv(st.xs[j]) + ') set to ' + sv(SK.vals[j]) + '.'); var g = pts.querySelector('[data-j="' + j + '"]'); if(g) g.focus({ preventScroll: true }); }
       svgEl.addEventListener('pointerup', up); svgEl.addEventListener('pointercancel', up);
       pts.addEventListener('keydown', function(e){
         var g = e.target.closest('.tt-skp'); if(!g || SK.locked) return;
@@ -772,7 +839,7 @@
       });
     }
     function drawSketch(w, h){
-      var st = p.steps[0], f = p.fig, svgEl = figEl.querySelector('.tt-sksvg'); if(!svgEl) return;
+      var p = Q.p, st = p.steps[0], f = p.fig, figEl = Q.figEl, SK = Q.SK, svgEl = figEl && figEl.querySelector('.tt-sksvg'); if(!svgEl || !SK) return;
       if(w == null){ var b = figEl.querySelector('.tt-fbox'); w = b.clientWidth; h = b.clientHeight; }
       if(!(w > 60 && h > 60)) return;
       svgEl.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svgEl.setAttribute('width', w); svgEl.setAttribute('height', h);
@@ -791,7 +858,6 @@
         if(f.dPieces) f.dPieces.forEach(function(pc){ var v = +pc.fn; o.push('<line class="calc-plot-curve s2 tt-ans" x1="' + r1(B.sx(pc.domain[0])) + '" y1="' + r1(B.sy(v)) + '" x2="' + r1(B.sx(pc.domain[1])) + '" y2="' + r1(B.sy(v)) + '"/>'); });
         else { var dfn = M.fn(f.d); o.push(curvePath(function(x){ return dfn(x); }, B, null, null, 's2 tt-ans')); }
       }
-      // the student's polyline through the set points
       var set = st.xs.map(function(x, j){ return SK.vals[j] == null ? null : [x, SK.vals[j]]; }).filter(Boolean);
       if(set.length > 1 && p.variant !== 'lines') o.push('<path class="tt-skline" d="M' + set.map(function(q0){ return r1(B.sx(q0[0])) + ' ' + r1(B.sy(q0[1])); }).join('L') + '"/>');
       o.push('</g>');
@@ -806,89 +872,31 @@
         bd.style.display = mk ? '' : 'none'; if(mk){ bd.setAttribute('transform', 'translate(14 -14)'); bd.querySelector('text').textContent = mk.ok ? '✓' : mk.n; }
       });
     }
-
-    /* ---------------- steps ---------------- */
-    function runStep(focus){
-      var s = p.steps[k];
-      if(!s) return finish();
-      var lab = '<p class="tt-slabel">' + (p.steps.length > 1 ? '<span class="tt-sn">Step ' + (k + 1) + ' of ' + p.steps.length + '</span> ' : '') + tx(s.label) + '</p>' + (s.hint ? '<p class="bt-small tt-shint" id="' + id + '-hint' + k + '">' + tx(s.hint) + '</p>' : '');
-      caption(stepCaption());
-      if(s.kind === 'sketch') return stepSketch(s, lab);
-      var form = el('form', 'cd-step bt-part tt-sform');
-      form.setAttribute('novalidate', '');
-      var body = '';
-      var sid = id + '-s' + k;
-      if(s.kind === 'num'){
-        body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '">' + esc(plain(s.label)) + '</label><input type="text" id="' + sid + '" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + id + '-hint' + k + '"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
-      } else if(s.kind === 'expr'){
-        body = '<div class="bt-num-row cd-expr"><span class="cd-expr-lhs" aria-hidden="true">' + mm(s.lhs) + '</span><label class="sr-only" for="' + sid + '">' + esc(plain(s.label)) + ' y =</label><input type="text" id="' + sid + '" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + sid + '-p" placeholder="4 - 3(x - 2)"></div>' +
-          '<div class="cd-expr-preview calc-expr-preview" id="' + sid + '-p" aria-live="polite"></div>';
-      } else {
-        var order = s.fixed ? s.options.map(function(x, i){ return i; }) : (window.ApCalcQuestions ? window.ApCalcQuestions.shuffle(s.options.map(function(x, i){ return i; })) : s.options.map(function(x, i){ return i; }));
-        body = '<fieldset class="cd-opts' + (s.pics ? ' tt-pics' : '') + '"><legend class="sr-only">' + esc(plain(s.label)) + '</legend>' + order.map(function(i, j){
-          var oid = sid + '-o' + i;
-          var inner = s.pics ? '<span class="tt-picn">Graph ' + (j + 1) + '</span><span class="tt-pic">' + miniGraph(s.pics[i]) + '</span><span class="sr-only">' + esc(s.options[i].replace(/^Graph \d+: /, '')) + '</span>' : '<span class="tt-opt">' + tx(s.options[i]) + '</span>';
-          return '<div class="bt-radio cd-opt" data-i="' + i + '"><input type="radio" name="' + sid + '" id="' + oid + '" value="' + i + '"><label for="' + oid + '">' + inner + '</label></div>';
-        }).join('') + '</fieldset>';
-      }
-      form.innerHTML = lab + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
-      stepEl.innerHTML = ''; stepEl.appendChild(form);
-      var input = form.querySelector('input[type=text]'), fb = form.querySelector('.cd-fb'), tries = 0, done = false;
-      if(s.kind === 'expr'){
-        var pv = form.querySelector('.cd-expr-preview'), tmr = null;
-        input.addEventListener('input', function(){
-          clearTimeout(tmr);
-          tmr = setTimeout(function(){
-            var v = input.value.trim(), r = v ? M.read(v, { vars: ['x'] }) : null;
-            pv.innerHTML = !r ? '' : r.ok ? '<span class="bt-small">Reads as</span> ' + mm('y = ' + r.tex) : '<span class="calc-expr-err">' + esc(r.error) + '</span>';
-            if(s.line){ var g = r && r.ok ? M.fn(v) : null; figState.typed = g ? function(x){ return g(x); } : null; redrawFig(); }
-          }, 140);
-        });
-      }
-      if(s.pics){
-        // The stage shows f; the four graphs share its x-axis and dashed lines.
-        form.querySelectorAll('.cd-opt input').forEach(function(r0){ r0.addEventListener('change', function(){ form.querySelectorAll('.cd-opt').forEach(function(o0){ o0.classList.toggle('is-picked', o0.querySelector('input').checked); }); }); });
-      }
-      form.addEventListener('submit', function(e){
-        e.preventDefault(); if(done) return;
-        var ok, note = '';
-        if(s.kind === 'num'){
-          var raw = input.value.trim();
-          if(!raw){ fb.innerHTML = '<span class="bt-small">Type a number first, for example 2.5 or −0.333.</span>'; return; }
-          var g = M.diagnose(s.cell, parseNum(raw));
-          if(g.blank){ fb.innerHTML = '<span class="bt-small">Type a number, for example 2.5 or −0.333.</span>'; return; }
-          ok = g.ok; note = g.why ? tx(g.why) : '';
-          input.classList.toggle('is-wrong', !ok); input.classList.toggle('is-right', ok);
-        } else if(s.kind === 'expr'){
-          var rawE = input.value.trim();
-          if(!rawE){ fb.innerHTML = '<span class="bt-small">Type the right side of y = …, for example 4 - 3(x - 2).</span>'; return; }
-          var ge = M.diagnoseExpr(s.cell, rawE);
-          if(ge.error){ fb.innerHTML = '<span class="bt-small">' + esc(ge.error) + '</span>'; return; }
-          ok = ge.ok; note = ge.why ? tx(ge.why) : '';
-          if(!ok && !note && s.line) note = lineNote(rawE, s.line);
-          input.classList.toggle('is-wrong', !ok); input.classList.toggle('is-right', ok);
-        } else {
-          var c = form.querySelector('input:checked');
-          if(!c){ fb.innerHTML = '<span class="bt-small">Choose an answer first.</span>'; return; }
-          var pick = +c.value; ok = pick === s.correct; note = tx(s.why[pick]);
-          form.querySelectorAll('.cd-opt').forEach(function(o0){ o0.classList.toggle('is-wrong', o0.querySelector('input').checked && !ok); });
-        }
-        tries++;
-        if(ok){ done = true; fb.innerHTML = '<span class="calc-mark ok">Correct</span> ' + (s.kind === 'choice' ? note : ''); form.classList.add('is-right'); afterStep(s, true); lock(form); pass(s, tries === 1, form); return; }
-        fb.innerHTML = '<span class="calc-mark no">Not yet</span> ' + (note || 'Recheck the arithmetic.') + '<div class="tt-showrow"><button type="button" class="bt-btn tt-show">Show the answer</button></div>';
-        pills([{ html: 'Not yet', tone: 'warn' }]);
-        fb.querySelector('.tt-show').addEventListener('click', function(){
-          done = true;
-          if(s.kind === 'num') input.value = sv(M.round(s.cell.answer, 3));
-          else if(s.kind === 'expr'){ input.value = s.cell.expr.answer; input.dispatchEvent(new Event('input')); }
-          else { var rr = form.querySelector('input[value="' + s.correct + '"]'); if(rr) rr.checked = true; }
-          fb.innerHTML = '<span class="calc-mark no">Shown</span> ' + (s.kind === 'choice' ? tx(s.why[s.correct]) : s.kind === 'expr' ? tx('$y = ' + p.line.tex.replace(/^y = /, '') + '$') : 'The answer is ' + esc(sv(M.round(s.cell.answer, 3))) + '.');
-          afterStep(s, false); lock(form); pass(s, false, form);
-        });
-        qlive('Not yet. ' + plain(String(note).replace(/<[^>]+>/g, ' ')));
-      });
-      if(focus){ var f0 = form.querySelector('input'); if(f0) f0.focus(); }
+    /* The sketch as a drill step: the points on the stage are the input;
+       Check grades every point (a numbered note for each miss, drawn on its
+       point); Show the answer moves them onto f′ and draws f′. */
+    function sketchStep(s){
+      var LS = T.studioOf(host);
+      return {
+        html: '<p class="bt-small tt-skhow">Drag each point on the lower graph to the value of f′ there.</p>',
+        init: function(){
+          if(LS && LS.mode() === 'quiz') setTimeout(function(){ var t0 = Q.figEl && Q.figEl.querySelector('.tt-skp'); if(t0) LS.hint({ target: t0, text: 'Drag each point to the slope of f', key: 'levl_hint_apcalc-tangent-tracer-sketch' }); }, 300);
+        },
+        check: function(){
+          var SK = Q.SK, unset = SK.vals.filter(function(v){ return v == null; }).length;
+          if(unset){ var u = Q.figEl.querySelector('.tt-skp.is-unset'); if(u) u.focus({ preventScroll: true }); return { blank: true, msg: 'Set every point first: ' + unset + ' still ' + (unset === 1 ? 'shows' : 'show') + ' “?”. Drag each one, or tap it to keep it on the axis.' }; }
+          var g = TT.gradeSketch(s, SK.vals), notes = [], nn = 0;
+          SK.marks = g.points.map(function(pt){ if(pt.ok) return { ok: true }; nn++; notes.push('<span class="tt-nb">' + nn + '</span> ' + tx(pt.why)); return { ok: false, n: nn }; });
+          if(g.ok){ SK.locked = true; SK.show = true; }
+          drawSketch();
+          return { ok: g.ok, notes: g.ok ? ['Every point has the right sign and size. The solid curve is the exact graph of f′.'] : notes, drew: true };
+        },
+        reveal: function(){ var SK = Q.SK; SK.vals = s.answers.slice(); SK.marks = s.answers.map(function(){ return { ok: true }; }); SK.locked = true; SK.show = true; drawSketch(); },
+        shownMsg: 'The points are moved to the values of f′, and the solid curve is the graph of f′.',
+        lock: function(){ if(Q.SK){ Q.SK.locked = true; drawSketch(); } }
+      };
     }
+
     /* A small picture for a choice: frame, axes, the dashed lines of the
        stage, and the curve; no tick labels (the stage carries the scale). */
     function miniGraph(g){
@@ -905,82 +913,6 @@
       if(Math.abs(m - L.m) > 1e-4) bad.push('its slope is ' + (isFinite(m) ? '$' + n(M.round(m, 3)) + '$' : 'not constant') + ', not $' + n(M.round(L.m, 3)) + '$');
       return bad.length ? tx('Your line ' + bad.join(', and ') + '.') : '';
     }
-    function lock(form){ form.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio') x.disabled = true; else x.readOnly = true; }); var a = form.querySelector(':scope > .bt-actions'); if(a) a.innerHTML = ''; }
-    function afterStep(s, right){
-      var mk = s.mark || {};
-      if(p.type === 'estimate' && s.key === 'slope') figState.marks.triangle = true;
-      if(p.type === 'estimate' && s.key === 'compare') figState.marks.tangentAt = true;
-      if(p.type === 'table' && s.key === 'interval') figState.marks.interval = true;
-      if(p.type === 'whichgraph' && s.key === 'graph') figState.marks.fprime = true;
-      if(p.type === 'notdiff' && s.key === 'where') figState.marks.zoom = true;
-      if(p.type === 'tanline' && s.key === 'line') figState.marks.line = true;
-      if(mk) redrawFig();
-    }
-    function pass(s, right, form){
-      results.push({ id: SLUG + ':' + p.ctx + ':' + s.key, correct: right, topic: (data.partTopics && data.partTopics[s.key]) || p.topic, practice: s.practice, level: s.level || 'apply', diff: 2, group: s.key });
-      doneEl.hidden = false;
-      doneEl.innerHTML = results.map(function(r0, j){ return '<span class="tt-dchip ' + (r0.correct ? 'ok' : 'no') + '">' + (r0.correct ? '✓ ' : '✗ ') + 'Step ' + (j + 1) + '</span>'; }).join('');
-      pills([{ html: right ? 'Right the first time' : 'Compare with the picture', tone: right ? 'good' : 'warn' }]);
-      var last = k === p.steps.length - 1;
-      var a = form.querySelector(':scope > .bt-actions') || form.appendChild(el('div', 'bt-actions'));
-      a.innerHTML = '<button type="button" class="btn-press sm tt-go">' + (last ? 'See the result' : 'Next step') + '</button>';
-      var b = a.querySelector('.tt-go');
-      b.addEventListener('click', function(){ k++; runStep(true); });
-      b.focus({ preventScroll: true });
-      caption(stepCaption(true));
-    }
-    function stepCaption(after){
-      var s = p.steps[k];
-      if(p.type === 'sketch') return tx(p.text);
-      if(p.type === 'table') return tx(p.text);
-      return tx(p.text);
-    }
-    function stepSketch(s, lab){
-      var box = el('div', 'cd-step tt-sform tt-skstep');
-      box.innerHTML = lab + '<div class="cd-fb tt-skfb" role="status" aria-live="polite"></div><div class="bt-actions"><button type="button" class="btn-press sm tt-skcheck">Check my sketch</button></div>';
-      stepEl.innerHTML = ''; stepEl.appendChild(box);
-      var fb = box.querySelector('.tt-skfb'), tries = 0;
-      box.querySelector('.tt-skcheck').addEventListener('click', function(){
-        if(SK.locked) return;
-        var unset = SK.vals.filter(function(v){ return v == null; }).length;
-        if(unset){ fb.innerHTML = '<span class="bt-small">Set every point first: ' + unset + ' still ' + (unset === 1 ? 'shows' : 'show') + ' “?”. Drag each one, or tap it to keep it on the axis.</span>'; var u = figEl.querySelector('.tt-skp.is-unset'); if(u) u.focus({ preventScroll: true }); return; }
-        tries++;
-        var g = TT.gradeSketch(s, SK.vals), notes = [], nn = 0;
-        SK.marks = g.points.map(function(pt){ if(pt.ok) return { ok: true }; nn++; notes.push('<li><span class="tt-nb">' + nn + '</span><span class="tt-nt">' + tx(pt.why) + '</span></li>'); return { ok: false, n: nn }; });
-        drawSketch();
-        if(g.ok){
-          SK.locked = true; SK.show = true; drawSketch();
-          fb.innerHTML = '<span class="calc-mark ok">Correct</span> Every point has the right sign and size. The dashed curve is the exact graph of f′.';
-          passSketch(s, tries === 1, box); return;
-        }
-        pills([{ html: 'Not yet: ' + nn + ' to fix', tone: 'warn' }]);
-        fb.innerHTML = '<span class="calc-mark no">Not yet</span><ul class="cd-notes tt-notes">' + notes.join('') + '</ul><div class="tt-showrow"><button type="button" class="bt-btn tt-show">Show the answer</button></div>';
-        fb.querySelector('.tt-show').addEventListener('click', function(){
-          SK.vals = s.answers.slice(); SK.marks = s.answers.map(function(){ return { ok: true }; }); SK.locked = true; SK.show = true; drawSketch();
-          fb.innerHTML = '<span class="calc-mark no">Shown</span> The points are moved to the values of f′, and the dashed curve is the graph of f′.';
-          passSketch(s, false, box);
-        });
-        caption('<b>Fix the numbered points, then check again.</b> ' + tx(p.text));
-        qlive('Not yet. ' + nn + ' points to fix. ' + plain(notes.join(' ').replace(/<[^>]+>/g, ' ')));
-      });
-      if(LS && LS.mode() === 'quiz') LS.hint({ target: figEl.querySelector('.tt-skp'), text: 'Drag each point to the slope of f', key: 'levl_hint_apcalc-tangent-tracer-sketch' });
-    }
-    function passSketch(s, right, box){ pass(s, right, box); }
-    function finish(){
-      var right = results.filter(function(r0){ return r0.correct; }).length;
-      T.record(SLUG, results);
-      T.event('apcalc-drill-check', { tool: SLUG, correct: right, total: results.length });
-      $('.tt-qwhy').innerHTML = '<h3 class="ls-title-l">Worked solution</h3><ol class="bt-steps">' + p.solution.map(function(x){ return '<li>' + tx(x) + '</li>'; }).join('') + '</ol>';
-      stepEl.innerHTML = '';
-      nextEl.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm ls-btn ls-pri tt-again">New problem</button>' + T.report(SLUG + ':' + p.ctx) + '</div>';
-      nextEl.querySelector('.tt-again').addEventListener('click', function(){ seed = freshSeed(); load(true); });
-      T.keepGoing(nextEl, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
-      pills([{ html: right + ' of ' + results.length + ' right', tone: right === results.length ? 'good' : 'warn' }]);
-      caption('<b>' + right + ' of ' + results.length + ' steps right the first time.</b> The worked solution is under Why.');
-      nextEl.querySelector('.tt-again').focus({ preventScroll: true });
-    }
-    if(!LS) $('.tt-qstage').insertAdjacentHTML('afterend', '<p class="tx-where tt-qcap"></p>');
-    load(false);
     return { redraw: redrawFig };
   }
 

@@ -192,7 +192,36 @@
 .cd-fb{font:700 14.5px/1.5 var(--font-ui);}
 .cd-fb:empty{display:none;}
 .cd-notes{margin:6px 0 0;padding-left:20px;display:grid;gap:4px;font-weight:600;}
-.cd-step .bt-actions:empty{display:none;}
+/* Visual feedback (docs/tool-audit-2026-10.md X1): the note, a pointer to
+   the picture, one method hint, then Show the answer; after it, yours and
+   the right answer side by side. */
+.cd-onpic{margin:6px 0 0;font:700 13.5px/1.45 var(--font-ui);color:var(--muted);}
+.cd-method{margin:8px 0 0;padding:8px 12px;border-radius:12px;background:var(--paper);border-left:4px solid var(--cink);font:600 14px/1.5 var(--font-ui);color:var(--ink);}
+.cd-method-k{display:inline-block;margin-right:4px;padding:1px 8px;border-radius:999px;background:var(--cink);color:var(--white);font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;vertical-align:1px;}
+.cd-again-hint{margin:6px 0 0;}
+.cd-cmp{display:flex;flex-wrap:wrap;gap:6px 10px;margin:8px 0 0;}
+.cd-cmp > span{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:4px 10px;border-radius:10px;border:2px dashed var(--bad-text);font:700 15px var(--font-ui);max-width:100%;overflow-x:auto;}
+.cd-cmp > .cd-cmp-r{border-style:solid;border-color:var(--good-text);}
+.cd-cmp-k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.cd-gauge-axis{stroke:var(--ink);stroke-width:1.4;}
+.calc-plot text.cd-gauge-0{fill:var(--muted);font:700 12px var(--font-ui);}
+.cd-gauge-svg{display:block;width:100%;max-width:420px;height:auto;margin:6px auto 0;}
+.cd-xplot{margin:8px 0 0;display:grid;gap:2px;max-width:340px;}
+.cd-xplot svg{width:100%;height:auto;display:block;}
+.calc-plot text.cd-mlab{stroke:var(--white,#fff);stroke-width:3px;stroke-linejoin:round;stroke-dasharray:none;}
+.cd-opt.is-wrong{box-shadow:inset 0 0 0 2px var(--bad-text);border-radius:12px;}
+.cd-opt.is-right{box-shadow:inset 0 0 0 2px var(--good-text);border-radius:12px;}
+/* On a figure: the student's answer (dashed, warm) and the right one (solid, green). */
+.calc-plot .cd-yours{stroke:#D55E00;stroke-dasharray:7 5;fill:none;stroke-width:2.6;}
+.calc-plot .cd-right{stroke:#00805C;fill:none;stroke-width:2.6;}
+.calc-plot text.cd-yours,.calc-plot text.cd-right{stroke-dasharray:none;font:800 12px var(--font-ui);}
+.calc-plot text.cd-yours{fill:#B34700;} .calc-plot text.cd-right{fill:#00805C;}
+.calc-plot circle.cd-yours{fill:var(--white,#fff);} .calc-plot circle.cd-right{fill:#00805C;}
+.calc-plot .cd-yours-fill{fill:#D55E00;fill-opacity:.16;stroke:#D55E00;stroke-dasharray:5 4;stroke-width:1.4;}
+.calc-plot .cd-right-fill{fill:#009E73;fill-opacity:.16;stroke:#00805C;stroke-width:1.4;}
+:root[data-theme="dark"] .calc-plot .cd-yours{stroke:#F29A5C;} :root[data-theme="dark"] .calc-plot text.cd-yours{fill:#F29A5C;}
+:root[data-theme="dark"] .calc-plot .cd-right{stroke:#52CFA6;} :root[data-theme="dark"] .calc-plot text.cd-right{fill:#52CFA6;} :root[data-theme="dark"] .calc-plot circle.cd-right{fill:#52CFA6;}
+:root[data-theme="dark"] .calc-plot circle.cd-yours{fill:var(--white,#1b1b1b);}.cd-step .bt-actions:empty{display:none;}
 .cd-ice{width:100%;border-collapse:collapse;}
 .cd-ice th,.cd-ice td{padding:6px;text-align:center;vertical-align:middle;border-bottom:1px solid var(--line);font:700 14px var(--font-ui);}
 .cd-ice th[scope=row]{text-align:left;white-space:nowrap;}
@@ -309,7 +338,8 @@ body[data-app^="tool-"] .calc-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-stage .cd-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;align-items:stretch;}
 .ls-root .ls-drill-stage .cd-fig > svg{flex:1;min-height:0;width:100% !important;height:100% !important;max-width:none !important;max-height:100% !important;}
 .ls-root .ls-drill-stage .cd-fig figcaption{flex:none;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:center;}
-.ls-root .ls-drill-stage > .ls-drill-text:only-child{margin:auto 0;font:600 var(--ls-l)/1.45 var(--font-ui);}
+.ls-root .ls-drill-stage > .ls-drill-text:only-child,.ls-root .ls-drill-stage > .ls-drill-text:has(+ .cd-extra:empty:last-child){margin:auto 0;font:600 var(--ls-l)/1.45 var(--font-ui);}
+.ls-root .ls-drill-stage > .cd-extra:empty{display:none;}
 .ls-root .ls-drill-stage .calc-plot{flex:1;min-height:0;width:100%;height:100%;}
 
 /* Tool Studio, the other trainers (calc-tools.js studioPane; docs/tools-calm.md):
@@ -338,3 +368,10 @@ body[data-app^="tool-"] .calc-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-pics .cd-n{display:none;}
 .ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
 .ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+/* Signed areas drawn as feedback: above the axis blue, below vermillion with a dashed edge. */
+.calc-plot .cd-pos-fill{fill:#0072B2;fill-opacity:.18;stroke:#0072B2;stroke-width:1.2;}
+.calc-plot .cd-neg-fill{fill:#D55E00;fill-opacity:.2;stroke:#B34E00;stroke-width:1.2;stroke-dasharray:5 3;}
+.calc-plot text.cd-pos{fill:#005A8C;font:800 12px var(--font-ui);} .calc-plot text.cd-neg{fill:#9A3F00;font:800 12px var(--font-ui);}
+:root[data-theme="dark"] .calc-plot text.cd-pos{fill:#8FD0F5;} :root[data-theme="dark"] .calc-plot text.cd-neg{fill:#F29A5C;}
+.ls-root.ls-phone .calc-plot .cd-mlab{font-size:13px;}
+:root[data-theme="dark"] .calc-plot text.cd-mlab{stroke:var(--white);}
