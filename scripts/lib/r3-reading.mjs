@@ -82,7 +82,11 @@ function splitChips(inner) {
 export function r3Reading(html, { key, rel }) {
   if (!key || html.includes('class="r3 r3-read')) return html;
   const shell = find(html, /<div class="tb-shell bk (bk-notes|bk-chapter|bk-book)">/);
-  if (!shell) return /(^|\/)(glossary|search)\.html$/.test(rel) ? r3PageHead(html, { key, rel }) : html;
+  if (!shell) {
+    if (/(^|\/)(glossary|search)\.html$/.test(rel)) return r3PageHead(html, { key, rel });
+    if (/\/lessons\//.test(rel)) return r3Lesson(html, { key, rel });
+    return html;
+  }
   const kind = shell.m[1];
   const mainOpen = find(html, /<main class="tb-main" id="(?:main|tbMain)">/, shell.end);
   if (!mainOpen) return html;
@@ -235,6 +239,25 @@ ${lede ? `<p class="lede">${lede}</p>` : ''}
     ? boxTag.text.replace(/class="([^"]*)"/, `class="$1 r3 r3-page r3-${kindM ? kindM[1] : 'page'}" data-cover="${key}"`)
     : boxTag.text.replace(/>$/, ` class="r3 r3-page" data-cover="${key}">`);
   const out = html.slice(0, boxStart) + band + tag + between + `${R3_HEAD_MARK}\n` + html.slice(head.end);
+  return withStyles(out, up);
+}
+
+/* Lessons (R10-Lesson): the lesson engines (ochem's lesson-engine.js, step-back.js and ochem-premium.js; the
+   AP® and A&P lesson scripts) find their hero and shell by class, and the video block anchors inside the
+   hero, so the markup stays where it is. The shell is marked .r3 .r3-lesson with the course, and
+   r3-reading.css draws the hero as the full width cover band with the course drawing, and the steps as
+   the card over it. Idempotent. */
+export function r3Lesson(html, { key, rel }) {
+  if (/class="[^"]*\br3-lesson\b/.test(html)) return html;
+  const up = '../'.repeat(Math.max(0, rel.split('/').length - 1));
+  let out = html;
+  const ap = out.match(/<main id="main" class="([a-z]+-ls-main[^"]*)"/);
+  if (ap) out = out.replace(ap[0], `<main id="main" class="${ap[1]} r3 r3-lesson" data-cover="${key}"`);
+  else {
+    const oc = out.match(/<div class="xshell lesson-shell"/);
+    if (!oc) return html;
+    out = out.replace(oc[0], `<div class="xshell lesson-shell r3 r3-lesson" data-cover="${key}"`);
+  }
   return withStyles(out, up);
 }
 

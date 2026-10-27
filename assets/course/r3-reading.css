@@ -127,6 +127,36 @@
   .r3-glossary .gx,.r3-search #app,.r3-search .bio-app-mount{margin-top:-44px}
 }
 
+/* ---- lessons (R10-Lesson): the hero is the band, the steps are the card over it ---- */
+.r3.r3-lesson{background-image:none;padding-bottom:28px}
+.r3-lesson > .hero,.r3-lesson > [class$="-ls-hero"]{position:relative;background-color:var(--bbg);color:#fff;box-shadow:0 0 0 100vmax var(--bbg);clip-path:inset(0 -100vmax);border:0;border-radius:0;margin:0 0 0;padding:30px min(34%,330px) 96px 0;background-repeat:no-repeat;background-position:right 0 center;background-size:min(30%,300px) auto}
+.r3-lesson[data-cover="nremt"] > .hero,.r3-lesson[data-cover="nremt"] > [class$="-ls-hero"]{background-image:url(../covers/art/nremt.svg)}
+.r3-lesson[data-cover="ochem"] > .hero,.r3-lesson[data-cover="ochem"] > [class$="-ls-hero"]{background-image:url(../covers/art/ochem.svg)}
+.r3-lesson[data-cover="anp"] > .hero,.r3-lesson[data-cover="anp"] > [class$="-ls-hero"]{background-image:url(../covers/art/anp.svg)}
+.r3-lesson[data-cover="apbio"] > [class$="-ls-hero"]{background-image:url(../covers/art/apbio.svg)}
+.r3-lesson[data-cover="apchem"] > [class$="-ls-hero"]{background-image:url(../covers/art/apchem.svg)}
+.r3-lesson[data-cover="apphys"] > [class$="-ls-hero"]{background-image:url(../covers/art/apphys.svg)}
+.r3-lesson[data-cover="apcalc"] > [class$="-ls-hero"]{background-image:url(../covers/art/apcalc.svg)}
+.r3-lesson[data-cover="apstat"] > [class$="-ls-hero"]{background-image:url(../covers/art/apstat.svg)}
+.r3-lesson[data-cover="apenv"] > [class$="-ls-hero"]{background-image:url(../covers/art/apenv.svg)}
+.r3-lesson > .hero .eyebrow,.r3-lesson > [class$="-ls-hero"] .eyebrow{border:0;padding:0;color:rgba(255,255,255,.76);font:800 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;background:none}
+.r3-lesson > .hero h1,.r3-lesson > [class$="-ls-hero"] h1{color:#fff;font:900 clamp(40px,4.6vw,56px)/1 var(--display) !important;letter-spacing:-.04em;margin:10px 0 10px !important}
+.r3-lesson > .hero .lede,.r3-lesson > [class$="-ls-hero"] .lede{color:rgba(255,255,255,.84) !important;font-size:17px;max-width:36em}
+.r3-lesson > [class$="-ls-hero"] [class$="-tags"] span{background:rgba(255,255,255,.14);color:#fff;border:0}
+.r3-lesson > .hero .lpv,.r3-lesson > [class$="-ls-hero"] .lpv{background:var(--white);color:var(--ink);border-radius:16px;max-width:560px}
+.r3-lesson > .hero + *,.r3-lesson > [class$="-ls-hero"] + *{position:relative;z-index:2;margin-top:-56px}
+.r3-lesson > [class$="-ls-card"],.r3-lesson > [class$="-ls-card"] + [class$="-ls-card"]{background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4)}
+:root[data-theme="dark"] .r3-lesson > .hero .lpv{background:var(--white)}
+/* ochem lessons with the steps rail: the band spans both columns, the rail is a card over it */
+.r3-lesson.lesson-shell:has(.lesson-rail) > .hero{grid-column:1 / -1;grid-row:1;padding-bottom:96px}
+.r3-lesson.lesson-shell > .lesson-rail{grid-row:2 / span 30;margin-top:-56px;z-index:3;background:var(--white);border-radius:20px;box-shadow:0 0 0 1px var(--line),0 18px 40px -26px rgba(11,26,51,.35);padding:18px 14px 20px}
+.r3-lesson.lesson-shell > .lesson-rail .lesson-rail-k{color:var(--accent)}
+.r3-lesson .lesson-card{border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4)}
+@media (max-width:900px){
+  .r3-lesson > .hero,.r3-lesson > [class$="-ls-hero"]{padding:150px 0 76px;background-position:left 0 top 24px;background-size:150px auto}
+  .r3-lesson > .hero + *,.r3-lesson > [class$="-ls-hero"] + *{margin-top:-44px}
+}
+
 /* ---- narrower screens ---- */
 @media (max-width:1080px){
   .tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){grid-template-columns:230px minmax(0,1fr)}
