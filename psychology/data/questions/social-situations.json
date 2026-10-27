@@ -36,9 +36,9 @@
    "study": {
     "introduction": "Stanley Milgram asked how far ordinary people would go in obeying an authority who told them to hurt another person.",
     "participants": "40 men aged 20 to 50 from New Haven, Connecticut, and nearby towns, with a range of jobs, recruited by newspaper ad and mail and paid \\$4.50 for taking part.",
-    "method": "Each man was told the study was about the effect of punishment on learning and was assigned the role of \"teacher.\" A \"learner\" (a confederate) was strapped into a chair in another room. The teacher was told to give a shock for each wrong answer, increasing by 15 volts each time on a panel from 15 to 450 volts. No real shocks were given. When the teacher hesitated, the experimenter, in a gray lab coat, used set prompts such as \"The experiment requires that you continue.\" Obedience was the highest shock the teacher gave before refusing to go on.",
+    "method": "Each man was told the study was about the effect of punishment on learning and was assigned the role of \"teacher.\" A \"learner\" (a confederate) was strapped into a chair in another room. The teacher was told to give a shock for each wrong answer, increasing by 15 volts each time on a panel from 15 to 450 volts. The learner never received real shocks; each teacher was given one mild sample shock of 45 volts so the setup seemed real. When the teacher hesitated, the experimenter, in a gray lab coat, used set prompts such as \"The experiment requires that you continue.\" Obedience was the highest shock the teacher gave before refusing to go on.",
     "results": "26 of the 40 men (65%) continued to the maximum 450 volts. Every man went to at least 300 volts. Many showed strong signs of stress, such as sweating, trembling and nervous laughter.",
-    "discussion": "Later variations found less obedience when the experimenter gave orders by phone or when other \"teachers\" refused. A 2009 partial replication by Jerry Burger, stopped at 150 volts for ethical reasons, found 70% willing to continue past that point. Historians who studied Milgram's records note that the prompts were not always given as scripted and that some participants doubted the shocks were real."
+    "discussion": "Later variations found less obedience when the experimenter gave orders by phone or when other \"teachers\" refused. A 2009 partial replication by Jerry Burger, stopped at 150 volts for ethical reasons, found 70% willing to continue past that point. Researchers who later studied Milgram's archived records note that the prompts were not always given as scripted and that some participants doubted the shocks were real."
    }
   },
   "social-situations-s3": {
@@ -826,7 +826,7 @@
    "type": "single",
    "practice": "2.C",
    "stimulus": "social-situations-s2",
-   "q": "A student says Milgram's study proves that people are cruel by nature. Which response best uses the study's own results?",
+   "q": "A student says Milgram's study proves that people are cruel by nature. Which response best uses the evidence in the summary?",
    "options": [
     "Obedience changed with the situation, such as when orders came by phone",
     "The study had too few participants to show anything",

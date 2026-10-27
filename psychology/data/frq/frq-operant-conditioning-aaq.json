@@ -138,6 +138,7 @@
     {
      "point": "Uses a specific, accurate result from the study",
      "accept": [
+      "the variable-ratio group persisted 13.5 minutes against 6.2 for the continuous group, a statistically significant difference",
       "both partial groups (9.8 and 13.5 minutes) persisted longer than the continuous group (6.2 minutes)"
      ]
     },
@@ -148,7 +149,7 @@
      ]
     }
    ],
-   "sample": "The findings support the hypothesis. Both partial groups persisted longer than the continuous group: 9.8 minutes for fixed-ratio and 13.5 for variable-ratio, against 6.2 for continuous. Students who were used to getting points on every puzzle noticed quickly when points stopped, but students who were used to long runs without points could not tell that rewards had ended, so their puzzle-solving was more resistant to extinction."
+   "sample": "The findings support the hypothesis. Students rewarded on only some puzzles at unpredictable times (variable-ratio) kept working 13.5 minutes, against 6.2 minutes for students rewarded on every puzzle, a statistically significant difference; the fixed-ratio group (9.8 minutes) also lasted longer, though that difference was not reported as significant. Students who were used to getting points on every puzzle noticed quickly when points stopped, but students who were used to long runs without points could not tell that rewards had ended, so their puzzle-solving was more resistant to extinction."
   }
  ]
 }

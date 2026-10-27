@@ -99,7 +99,7 @@
     "introduction": "Some toddlers freeze and go quiet around strangers; others walk right up to them. Researchers asked whether this early shyness lasts into the teen years.",
     "participants": "120 children from one Midwestern city, recruited at age 2 through pediatric clinics (52% girls; 70% White, 18% Black, 12% Latino). 96 were still in the study at age 15. Parents gave informed consent, children gave their own assent at ages 7 and 15, and a university IRB approved the study. Names were replaced by code numbers.",
     "method": "At age 2, observers watching through a one-way window rated how long each child took to approach a friendly stranger. At 7 and again at 15, each child spent 10 minutes in a waiting room with an unfamiliar peer, and coders counted how many times the child spoke first. No conditions were assigned.",
-    "results": "Toddlers who were slowest to approach the stranger tended to speak first fewer times at 15 ($r = -.35$). Even so, about half of the shyest toddlers were in the typical range by 15.",
+    "results": "Toddlers who were slowest to approach the stranger tended to speak first fewer times at 15 ($r = -.45$). Even so, about half of the shyest toddlers were in the typical range by 15.",
     "discussion": "Early shyness predicted teen shyness to a moderate degree, but many shy toddlers changed."
    }
   }
@@ -332,7 +332,7 @@
      "About half of the shyest toddlers were in the typical range by 15.",
      "Nothing in the study measured stages; it measured how strongly one score predicted a later one.",
      "Right: the moderate correlation shows some stability, and half the shyest toddlers changed.",
-     "There was a moderate link ($r = -.35$), so early shyness did predict later behavior."
+     "There was a moderate link ($r = -.45$), so early shyness did predict later behavior."
     ]
    }
   },
@@ -349,7 +349,7 @@
    "options": [
     "The children were randomly assigned to be shy or outgoing",
     "Shyness was measured, not manipulated, so a third variable may explain it",
-    "The correlation of $-.35$ is too strong to be a real finding about children",
+    "The correlation of $-.45$ is too strong to be a real finding about children",
     "The study used too few observers to measure shyness"
    ],
    "correct": 1,
@@ -358,7 +358,7 @@
     "options": [
      "No one was assigned; that is exactly why a causal claim does not follow.",
      "Right: a correlation cannot show cause; a family that keeps a child home could make a child both shy at 2 and quiet at 15.",
-     "A correlation of $-.35$ is moderate; its size is not the problem.",
+     "A correlation of $-.45$ is moderate; its size is not the problem.",
      "The number of observers does not decide whether a cause can be claimed."
     ]
    }

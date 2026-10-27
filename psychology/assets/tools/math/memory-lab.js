@@ -279,7 +279,7 @@
         ['Testing yourself on it on days 1, 3 and 7.', 'Spaced retrieval practice: each review after some forgetting makes the memory last longer (the spacing and testing effects).'],
         ['Rereading it three times in a row on day 0.', 'Massed rereading feels fluent but adds little: the reviews come before any forgetting.'],
         ['Studying it once for longer on day 0.', 'More time in one session is still massed practice.'],
-        ['Waiting until day 29 and cramming.', 'Cramming helps for a test the next day; it does not keep material for weeks.']
+        ['Rereading it once on day 2, then never again.', 'One review helps a little, but several spaced reviews help far more, and testing yourself beats rereading.']
       ])
     ];
     var sol = [

@@ -106,17 +106,28 @@
     if(other && other === cid) return { pt: 1, why: 'You used ' + c.name + ' in B(ii). C(ii) needs a different concept; reusing it caps the part at 1 point.', bad: 'reuse' };
     return { pt: 2, why: 'Evidence, then ' + c.name + ', then the link to the claim: ' + c.links[String(e.src)] };
   }
+  /* With no claim that earns A, the scoring guidelines (2026) let the
+     evidence and reasoning establish an intended claim in Part B: B and C are
+     then scored against a defensible claim that the chosen results support
+     (both of them when both are results, else B's), and A still earns 0. */
+  function intendedClaim(ctx, b){
+    var srcs = [b.b, b.c].filter(function(e){ return e && e.src != null && e.what !== 'detail'; }).map(function(e){ return e.src; });
+    if(!srcs.length) return null;
+    var ok = function(n){ return ctx.claims.filter(function(c){ return c.defensible && srcs.slice(0, n).every(function(k){ return ctx.sources[k].supports.indexOf(c.id) > -1; }); })[0] || null; };
+    return ok(srcs.length) || ok(1);
+  }
   function score(ctx, nums, b){
     b = b || {};
-    var cl = claimOf(ctx, b.claim), notes = {}, out = { A: 0, Bi: 0, Bii: 0, Ci: 0, Cii: 0 };
+    var cl = claimOf(ctx, b.claim), notes = {}, out = { A: 0, Bi: 0, Bii: 0, Ci: 0, Cii: 0 }, ev = cl;
     if(!cl) notes.A = 'Choose a claim that answers the question.';
     else if(cl.defensible){ out.A = 1; notes.A = 'A defensible claim that answers the question.'; }
     else notes.A = cl.why;
-    var eb = evPoint(ctx, cl, b.b), ec = evPoint(ctx, cl, b.c);
+    if(cl && !cl.defensible){ ev = intendedClaim(ctx, b) || cl; if(ev !== cl) notes.A += ' (B and C can still score: your evidence and reasoning set up the claim you meant.)'; }
+    var eb = evPoint(ctx, ev, b.b), ec = evPoint(ctx, ev, b.c);
     out.Bi = eb.pt; notes.Bi = eb.why;
     if(b.c && b.b && b.c.src != null && b.c.src === b.b.src && ec.usable){ ec = { pt: 0, why: 'This is Source ' + (b.c.src + 1) + ' again. C(i) needs evidence from a different source than B(i).', bad: 'same', usable: true }; }
     out.Ci = ec.pt; notes.Ci = ec.why;
-    var rb = reasonPoint(ctx, cl, b.b, eb, b.bc), rc = reasonPoint(ctx, cl, b.c, ec, b.cc, b.bc);
+    var rb = reasonPoint(ctx, ev, b.b, eb, b.bc), rc = reasonPoint(ctx, ev, b.c, ec, b.cc, b.bc);
     out.Bii = rb.pt; notes.Bii = rb.why; out.Cii = rc.pt; notes.Cii = rc.why;
     out.total = out.A + out.Bi + out.Bii + out.Ci + out.Cii;
     out.notes = notes;

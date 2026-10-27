@@ -58,9 +58,9 @@
    "invented": true,
    "study": {
     "introduction": "Researchers asked whether the way adults describe their feelings in close relationships, using the same categories as infant attachment, relates to how their romantic relationships go.",
-    "participants": "620 adults aged 18 to 60 in the United States who were in or had been in a romantic relationship, recruited through an online newspaper survey (68% women). Responses were anonymous.",
+    "participants": "480 adults aged 18 to 60 in the United States who were in or had been in a romantic relationship, recruited through a social media survey (61% women). Responses were anonymous.",
     "method": "Participants chose which of three descriptions best fit how they feel in close relationships (secure, avoidant or anxious) and reported the length of their longest romantic relationship in years. They also rated how much they trusted their current or most recent partner on a 1 to 7 scale.",
-    "results": "Adults who described themselves as secure reported longer relationships (mean 10 years) than avoidant adults (6 years) or anxious adults (5 years), and higher trust in their partners (mean 5.9, compared with 4.3 and 4.0).",
+    "results": "Adults who described themselves as secure reported longer relationships (mean 9 years) than avoidant adults (6 years) or anxious adults (5 years), and higher trust in their partners (mean 5.8, compared with 4.4 and 4.1).",
     "discussion": "Adult relationship patterns resemble infant attachment patterns. Because adults described themselves at one time, the study cannot show that their infant attachment caused these patterns."
    },
    "table": {
@@ -73,18 +73,18 @@
     "rows": [
      [
       "Secure",
-      "10",
-      "5.9"
+      "9",
+      "5.8"
      ],
      [
       "Avoidant",
       "6",
-      "4.3"
+      "4.4"
      ],
      [
       "Anxious",
       "5",
-      "4.0"
+      "4.1"
      ]
     ]
    }
@@ -94,13 +94,13 @@
    "invented": true,
    "study": {
     "introduction": "Researchers asked how stable attachment is from infancy to early adulthood, and what predicts change.",
-    "participants": "60 young adults from middle-income families in California who had been observed in the strange situation at 12 months. They gave informed consent at 19, and an IRB approved the follow-up.",
+    "participants": "60 young adults from middle-income families in one Northeastern US city who had been observed in the strange situation at 12 months. They gave informed consent at 19, and an IRB approved the follow-up.",
     "method": "At 19, each participant completed a structured interview about their childhood relationships, which trained raters, unaware of the infant results, classified as secure or insecure. Participants also reported major stressful life events since childhood, such as a parent’s death, divorce or serious illness.",
-    "results": "Overall, 64% of participants had the same classification at 19 as at 12 months. Among those with no major stressful events, 78% kept the same classification; among those with one or more major events, 44% did. Most changes from secure to insecure followed a major stressful event.",
+    "results": "Overall, 65% of participants (39 of 60) had the same classification at 19 as at 12 months. Among the 36 with no major stressful events, 78% (28) kept the same classification; among the 24 with one or more major events, 46% (11) did. Most changes from secure to insecure followed a major stressful event.",
     "discussion": "Attachment showed moderate stability, and change was more likely after stressful family events."
    },
    "plot": {
-    "label": "Bar graph of percent with the same attachment classification at 1 and at 19: no major stressful events 78%, one or more major events 44% (invented data)",
+    "label": "Bar graph of percent with the same attachment classification at 1 and at 19: no major stressful events 78%, one or more major events 46% (invented data)",
     "kind": "bar",
     "categories": [
      "No major events",
@@ -108,7 +108,7 @@
     ],
     "values": [
      78,
-     44
+     46
     ],
     "xLabel": "Major stressful life events since childhood",
     "yLabel": "Percent with same classification",
@@ -145,8 +145,8 @@
      "point": "Gives a specific, accurate result from one source, cited (for example, \"Source 1\"); a method or participant detail does not count",
      "accept": [
       "Children secure at 12 months were rated more socially skilled at 10 (7.2 versus 5.4) (Source 1).",
-      "Secure adults reported longer relationships (10 years versus 5 or 6) and more trust (Source 2).",
-      "64% kept the same classification from 1 to 19 (Source 3)."
+      "Secure adults reported longer relationships (9 years versus 5 or 6) and more trust (Source 2).",
+      "65% kept the same classification from 1 to 19 (Source 3)."
      ]
     }
    ],
@@ -201,12 +201,12 @@
     {
      "point": "Gives a specific, accurate result from a different source than B(i), cited",
      "accept": [
-      "Only 44% of people with major stressful events kept the same classification, compared with 78% with none (Source 3).",
-      "Secure adults reported more trust in partners (5.9) than anxious adults (4.0) (Source 2)."
+      "Only 46% of people with major stressful events kept the same classification, compared with 78% with none (Source 3).",
+      "Secure adults reported more trust in partners (5.8) than anxious adults (4.1) (Source 2)."
      ]
     }
    ],
-   "sample": "According to Source 3, 78% of participants with no major stressful life events had the same attachment classification at 19 as at 12 months, but only 44% of those with one or more major events did.",
+   "sample": "According to Source 3, 78% of participants with no major stressful life events had the same attachment classification at 19 as at 12 months, but only 46% of those with one or more major events did.",
    "write": {
     "cite": true
    }
@@ -231,7 +231,7 @@
      ]
     }
    ],
-   "sample": "This supports the claim that early attachment predicts later relationships only to a moderate degree. Most people with no major stressful events kept the same classification (78%), but fewer than half of those with a parent’s death, divorce or serious illness did (44%) (Source 3). This shows the developmental theme of stability and change: attachment is fairly stable, which is why it predicts later relationships, but it can change when the chronosystem brings major events, which is why the prediction is not fixed.",
+   "sample": "This supports the claim that early attachment predicts later relationships only to a moderate degree. Most people with no major stressful events kept the same classification (78%), but fewer than half of those with a parent’s death, divorce or serious illness did (46%) (Source 3). This shows the developmental theme of stability and change: attachment is fairly stable, which is why it predicts later relationships, but it can change when the chronosystem brings major events, which is why the prediction is not fixed.",
    "write": {
     "concept": [
      "stability and change",

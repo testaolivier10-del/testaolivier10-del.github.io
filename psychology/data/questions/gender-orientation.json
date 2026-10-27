@@ -81,7 +81,7 @@
    "type": "single",
    "practice": "1.A",
    "stimulus": "gender-orientation-s1",
-   "q": "Alex was born with a male body, has always known she is a girl, and lives as a woman. Which row of the figure describes \"has always known she is a girl\"?",
+   "q": "Alex was assigned male at birth, has always known she is a girl, and lives as a woman. Which row of the figure describes \"has always known she is a girl\"?",
    "options": [
     "Gender identity",
     "Biological sex",
@@ -166,7 +166,7 @@
    "options": [
     "A boy who likes trucks because his friends like trucks too",
     "A cisgender woman who is a firefighter and bisexual",
-    "A man who is attracted to women and works as a nurse",
+    "A man who is attracted to women and works as a builder",
     "A girl whose body and identity are both female"
    ],
    "correct": 1,
@@ -175,7 +175,7 @@
     "options": [
      "This repeats a gender role; it does not separate the four questions.",
      "Right: her sex, identity, role and orientation each answer a different question.",
-     "This example gives only two facts and shows no mismatch.",
+     "Every answer here is the one many people expect, so it cannot show that the answers are separate.",
      "This gives two answers that match, so it cannot show independence."
     ]
    }

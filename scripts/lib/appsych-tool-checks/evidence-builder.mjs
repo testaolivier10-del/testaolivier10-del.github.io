@@ -148,6 +148,9 @@ export function recheck(p, c, w, errs) {
   need(E.score(c, p.nums, { ...full, cc: g.bc }).Cii === 1, 'the B(ii) concept reused in C(ii) is not capped at 1');
   need(E.score(c, p.nums, { ...full, bc: c.restricted[0].id }).Bii === 1, 'a restricted term earns the concept point');
   need(E.score(c, p.nums, { ...full, b: { ...full.b, what: 'detail' } }).Bi === 0, 'a method detail earns the evidence point');
+  // 2026 scoring guidelines: with no claim that earns A, B and C still score on the intended claim.
+  const noA = E.score(c, p.nums, { ...full, claim: c.claims.find(x => !x.defensible).id });
+  need(noA.A === 0 && noA.total === 6, `with a refused claim, B and C score ${noA.total - noA.A}, not 6 (an intended claim can be set up in Part B)`);
   need(E.score(c, p.nums, { ...full, bc: E.NONE }).Bii === 1 && E.score(c, p.nums, { ...full, bc: null }).Bii === 0, 'reasoning with no concept is not capped at 1, or an unbuilt part scores');
   const keys = p.steps.map(s => s.key);
   const want = { full: ['claim', 'evB', 'conB', 'linkB', 'evC', 'conC', 'linkC'], evidence: ['claim', ...([g.b, g.c].some(i => c.sources[i].kind === 'means') ? ['read'] : []), 'evB', 'evC'], reasoning: ['conB', 'linkB', 'conC', 'linkC'] }[p.type];
