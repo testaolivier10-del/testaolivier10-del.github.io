@@ -82,7 +82,7 @@ function splitChips(inner) {
 export function r3Reading(html, { key, rel }) {
   if (!key || html.includes('class="r3 r3-read')) return html;
   const shell = find(html, /<div class="tb-shell bk (bk-notes|bk-chapter|bk-book)">/);
-  if (!shell) return html;
+  if (!shell) return /(^|\/)(glossary|search)\.html$/.test(rel) ? r3PageHead(html, { key, rel }) : html;
   const kind = shell.m[1];
   const mainOpen = find(html, /<main class="tb-main" id="(?:main|tbMain)">/, shell.end);
   if (!mainOpen) return html;
@@ -181,6 +181,60 @@ ${links}
     const mc = out.indexOf('</main>', out.indexOf('<main class="tb-main" id="main">'));
     if (mc > 0) out = out.slice(0, mc + 7) + side + out.slice(mc + 7);
   }
+  return withStyles(out, up);
+}
+
+/* Glossary and course search (R10-Glossary, R10-Search): pages with a plain <header class="page-head">
+   (eyebrow, h1, lede) in an .xshell. The header becomes the short band (its h1 kept, in two tones with the
+   board's second line), and the page is marked .r3 .r3-page so its first block (the glossary's find
+   tools, the search box) sits as the white card over the band. The crumb moves in when it is in the page;
+   a crumb kept between build-crumbs markers stays where that script puts it. */
+const PAGE_WORDS = {
+  glossary: { t2: 'in plain words', hand: 'every word the questions use' },
+  search: { t2: 'the whole course', hand: 'one box for everything' },
+};
+export function r3PageHead(html, { key, rel }) {
+  if (html.includes('class="r3 r3-read-top')) return html;
+  const kindM = rel.match(/(glossary|search)\.html$/);
+  const words = PAGE_WORDS[kindM ? kindM[1] : ''] || {};
+  const body = html.indexOf('<body');
+  const head = find(html, /<header class="page-head">([\s\S]*?)<\/header>\n?/, body);
+  if (!head) return html;
+  const scriptAt = html.indexOf('<script', body);
+  if (scriptAt !== -1 && scriptAt < head.start) return html;
+  const up = '../'.repeat(Math.max(0, rel.split('/').length - 1));
+  const inner = head.m[1];
+  const eyebrow = (inner.match(/<div class="eyebrow">([\s\S]*?)<\/div>/) || [])[1] || '';
+  const h1 = inner.match(/<h1([^>]*)>([\s\S]*?)<\/h1>/);
+  const lede = (inner.match(/<p[^>]*>([\s\S]*?)<\/p>/) || [])[1] || '';
+  if (!h1) return html;
+  /* The container the header lives in: <main ... class="xshell ..."> or a plain <div class="xshell">. */
+  const boxStart = Math.max(html.lastIndexOf('<main', head.start), html.lastIndexOf('<div class="xshell">', head.start));
+  if (boxStart < body) return html;
+  const boxTag = find(html, /<(main|div)\b[^>]*>/, boxStart);
+  let between = html.slice(boxTag.end, head.start);
+  const crumb = find(between, /<nav class="[^"]*crumb[^"]*" aria-label="Breadcrumb">[\s\S]*?<\/nav>\s*/);
+  let crumbHtml = '';
+  if (crumb) { crumbHtml = crumb.text.trim(); between = between.slice(0, crumb.start) + between.slice(crumb.end); }
+  const titleText = h1[2].trim();
+  const titleId = (h1[1].match(/id="([^"]+)"/) || [])[1] || 'r3Title';
+  const title = words.t2 ? `${titleText} <span>${words.t2}</span>` : twoTone(titleText);
+  const hand = words.hand || handFor(key);
+  const band = `<div class="r3 r3-read-top r3-pagetop" data-cover="${key}">
+<section class="band short r3-rband" aria-labelledby="${titleId}"><div class="hwrap"><div>
+${crumbHtml}
+<p class="issue">${eyebrow} <i></i> ${titleText}</p>
+<h1 class="deck"${h1[1].includes('id=') ? h1[1] : `${h1[1]} id="${titleId}"`}>${title}</h1>
+${hand ? `<p class="hand">${hand}</p>` : ''}
+${lede ? `<p class="lede">${lede}</p>` : ''}
+</div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+`;
+  /* Mark the container (keeping its own classes) and drop the header, leaving the marker. */
+  const tag = boxTag.text.includes('class="')
+    ? boxTag.text.replace(/class="([^"]*)"/, `class="$1 r3 r3-page r3-${kindM ? kindM[1] : 'page'}" data-cover="${key}"`)
+    : boxTag.text.replace(/>$/, ` class="r3 r3-page" data-cover="${key}">`);
+  const out = html.slice(0, boxStart) + band + tag + between + `${R3_HEAD_MARK}\n` + html.slice(head.end);
   return withStyles(out, up);
 }
 

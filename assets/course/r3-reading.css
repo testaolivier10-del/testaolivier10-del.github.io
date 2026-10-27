@@ -96,6 +96,37 @@
 .r3-side-tools .chapter-tools a small{display:block;font:600 12.5px var(--font-ui);color:var(--muted)}
 :root[data-theme="dark"] .r3-side-card.navy{background:#16294A}
 
+/* ---- glossary and course search (R10-Glossary, R10-Search) ---- */
+.r3.r3-page{background-image:none;padding-bottom:32px}
+.r3.r3-page > [class*="crumb"]{display:none}
+.r3-pagetop .band .lede{color:rgba(255,255,255,.82);margin:0;max-width:40em}
+.r3-glossary .gx{margin-top:-60px;position:relative;z-index:2}
+.r3-glossary .gx-tools,.r3-glossary .gx-status,.r3-glossary .gx-rail{background:var(--white);margin:0;box-shadow:0 0 0 1px var(--line)}
+.r3-glossary .gx-tools{border-radius:22px 22px 0 0;padding:22px 24px 10px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px;align-items:end}
+.r3-glossary .gx-tools::before{content:"Find a term";grid-column:1/-1;font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 -8px}
+.r3-glossary .gx-tools > *{min-width:0}
+.r3-glossary .gx-ch,.r3-glossary .gx-ch select{width:100%;max-width:100%;box-sizing:border-box}
+.r3-glossary .gx-status{padding:0 24px;min-height:0;clip-path:inset(0 -1px)}
+.r3-glossary .gx-rail{border-radius:0 0 22px 22px;padding:8px 24px 20px;display:flex;flex-wrap:wrap;gap:6px;position:static;clip-path:inset(0 -1px -1px -1px)}
+.r3-glossary .gx-rail a,.r3-glossary .gx-rail span{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:8px;background:var(--ctint);color:var(--accent);font:900 13px var(--font-ui);text-decoration:none}
+.r3-glossary .gx-rail a:hover{background:var(--accent);color:var(--white)}
+.r3-glossary .gx-rail .gx-off{background:none;color:var(--muted);opacity:.5}
+.r3-glossary .gx-group{margin:34px 0 0;border-top:2px solid var(--ink);padding-top:14px}
+.r3-glossary .gx-group h2{font:900 40px/1 var(--display);letter-spacing:-.04em;color:var(--accent);display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
+.r3-glossary .gx-group h2 .gx-n{font:700 13px var(--font-ui);letter-spacing:0;color:var(--muted)}
+.r3-glossary .gx-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px;background:none;border:0;box-shadow:none;padding:0;margin:0}
+.r3-glossary .gx-t{padding:0;border:0;background:none;min-width:0}
+.r3-glossary .gx-t dt{font:900 16px/1.3 var(--display);color:var(--ink)}
+.r3-glossary .gx-t dd{margin:4px 0 0;font:500 14px/1.5 var(--font-ui);color:var(--muted)}
+.r3-glossary .gx-src{display:block;margin-top:6px;font:800 13px var(--font-ui);color:var(--accent)}
+.r3-glossary .gx-src a{color:var(--accent)}
+.r3-search #app,.r3-search .bio-app-mount{position:relative;z-index:2;margin-top:-60px;background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4);padding:24px clamp(18px,3vw,30px) 28px}
+@media (max-width:900px){
+  .r3-glossary .gx-tools{grid-template-columns:1fr}
+  .r3-glossary .gx-terms{grid-template-columns:minmax(0,1fr)}
+  .r3-glossary .gx,.r3-search #app,.r3-search .bio-app-mount{margin-top:-44px}
+}
+
 /* ---- narrower screens ---- */
 @media (max-width:1080px){
   .tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){grid-template-columns:230px minmax(0,1fr)}
