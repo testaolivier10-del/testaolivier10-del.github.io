@@ -113,6 +113,32 @@ Each batch is one PR with its accuracy review, built in textbook order inside th
   stops; firm pressure on a packed wound for 3 to 8 minutes. The lesson says "at least 3 minutes", which matches.
 - Neck wounds: the notes say they are "not packed in the usual sense"; the lesson keeps that wording instead of a
   flat "never pack the neck".
-- Not done yet: the independent reviewer pass (step 2 of the review process). The session that built the pilot
-  could not start a reviewer agent, so this must run before merge. Checklist for the reviewer: every step, idea,
-  misconception and answer key in the four `nremt/data/lessons/*.json` files, against current sources.
+- Independent reviewer pass (2026-10-26, a separate agent not shown the author's reasoning): no wrong answer keys.
+  Fixes applied:
+  - Direct pressure: the soaked-dressing question's "add more layers" option was defensible from classic texts, so
+    it is now "Add more gauze and ease off the pressure", and the stem says firm pressure has failed on a heavy
+    bleed (answer: escalate with a tourniquet). "Never remove a dressing" and "don't pile on gauze" are softened to:
+    don't peel the dressing off to look; if bleeding continues, escalate rather than relying on more layers
+    (contested, `docs/nremt-needs-author.md` item 4). No more "check after 5 to 10 minutes": firm uninterrupted
+    pressure, not lifted to check. Adult blood volume about 5 to 6 liters. Hemostatic agents "where protocol
+    allows". Added: elevation and pressure points are no longer recommended.
+  - Tourniquets: the "no single bone" rationale (the outdated two-bone rule) is gone: never over the elbow, wrist,
+    knee or ankle, because the joint's structure stops the artery from being compressed and the nerves there can be
+    injured (2023 joint position statement). Trigger: life-threatening limb bleeding (spurting, pooling, amputation)
+    or bleeding pressure does not control. "High and tight" only for an unclear source or several wounds.
+    Improvised tourniquets often fail (no windlass, too narrow). Neck wounds: occlusive dressing to prevent air
+    embolism, pressure that does not compress the airway or both carotids, packing only with caution and per
+    protocol.
+  - Internal bleeding: no field fix for chest or abdominal bleeding, but long-bone and pelvic fractures are
+    stabilized (splint, pelvic binder per protocol); supine, oxygen if indicated, warm, nothing by mouth even if
+    thirsty, rapid transport.
+  - Primary assessment: a patient who is not alert cannot be assumed to have an open airway, so it is assessed;
+    noisy breathing is partial obstruction; jaw-thrust if spinal injury is suspected; OPA only without a gag reflex;
+    no NPA with a suspected basilar skull or severe facial fracture. Pulse: present (radial, else carotid), rate,
+    strength, regularity. Severe bleeding kills "within minutes". Altered mental status: hypoxia, shock or another
+    cause such as hypoglycemia; oxygen if indicated, titrated to SpO2 at least 94%. One high-priority list, the same
+    in the steps and the question, with poor general impression, complicated childbirth and chest pain with a
+    systolic pressure under 100.
+- The Chapter 12 and 29 notes still carry some of the older wording (for example "never remove a dressing", "check
+  after 5 to 10 minutes", "no single bone"). Bringing the notes in line is a separate change for Olivier to approve
+  (`docs/nremt-needs-author.md` item 4).
