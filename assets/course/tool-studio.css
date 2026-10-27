@@ -172,6 +172,11 @@ html.ls-lock{overflow:hidden;}
 .ls-panel[hidden]{display:none;}
 .ls-panel:focus{outline:none;}
 .ls-det-body{display:flex;flex-direction:column;gap:14px;min-width:0;}
+/* A list item holding a wide table (a worked solution) shrinks to the sheet;
+   the table scrolls inside its own wrapper. */
+.ls-sheet :is(ol,ul) > li{min-width:0;}
+.ls-sheet .table-wrap{max-width:100%;overflow-x:auto;}
+.ls-sheet .ls-xf.ls-xe{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);}
 .ls-about{display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid var(--line-soft);}
 .ls-about[hidden]{display:none;}
 .ls-h,.ls-sheet h3.ls-h{margin:0;font:900 var(--ls-m)/1.3 var(--font-ui);color:var(--ink);}

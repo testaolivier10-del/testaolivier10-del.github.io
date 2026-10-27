@@ -402,6 +402,7 @@
         if(stay && !modal) f = null;
         if(f){ try{ f.focus({ preventScroll: t !== 'about' }); }catch(e){ f.focus(); } }
         if(t === 'about' && aboutS.scrollIntoView) aboutS.scrollIntoView({ block: 'start' });
+        if(current === s) queueTidy();
       });
       return s;
     };
@@ -779,7 +780,7 @@
       return true;
     }
     function sweep(){
-      [stageBody, dockBody, pbar].forEach(function(box){
+      (sheetOpen ? [stageBody, dockBody, pbar, sheet] : [stageBody, dockBody, pbar]).forEach(function(box){
         Array.prototype.forEach.call(box.querySelectorAll('*'), function(el){
           if(el instanceof SVGElement || !el.children.length || !shown(el)) return;
           var over = el.scrollWidth > el.clientWidth + 1;
