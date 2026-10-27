@@ -95,3 +95,6 @@ body{
   .cx-db .cx-next-list{grid-template-columns:1fr;}
 }
 @media (prefers-reduced-motion:reduce){.page-head.db-head{animation:none;}}
+
+/* One column when only one side of a two-column section has content (assets/course/r3-db.js adds .one). */
+.r3-dashboard .r3-db-two.one{grid-template-columns:1fr}

@@ -6,6 +6,22 @@
      (where you are weak, your exams, your level and practice detail) and the Premium card last.
    Panels are found by the end of their id (-db-weak, -db-u, -db-ch, -db-ex, -db-p, -db-f, -db-s, -db-t);
    anything it does not know stays in the last section, so nothing a course adds can disappear. */
+/* Two-column sections fall back to one column whenever only one column has anything to show (a new
+   student has no alerts yet, or a course fills only one side), so a lone panel uses the full width instead of
+   sitting in half the page (Olivier, 2026-10-26). Runs on every progress page, including NREMT and ochem. */
+(function(){
+  function fit(){
+    document.querySelectorAll('.r3-db-two').forEach(function(g){
+      var shown = 0;
+      for(var i = 0; i < g.children.length; i++){ var r = g.children[i].getBoundingClientRect(); if(r.height > 2) shown++; }
+      g.classList.toggle('one', shown < 2);
+    });
+  }
+  var t; function soon(){ clearTimeout(t); t = setTimeout(fit, 60); }
+  function start(){ fit(); new MutationObserver(soon).observe(document.body, { childList: true, subtree: true }); window.addEventListener('resize', soon); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+
 (function(){
   var app = document.querySelector('.r3-dashboard [data-slug="dashboard"]');
   if(!app) return;
