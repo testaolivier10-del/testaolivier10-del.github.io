@@ -264,9 +264,9 @@
     var freeNote = !r && !spent && !ex.unlimited
       ? '<p class="cx-notice"><b>Your free exam.</b> One full exam is free: any chapters, any length. Starting one uses it, and once started you can always finish it. ' + (window.LevlPremium && window.LevlPremium.badge ? window.LevlPremium.badge('ochem') : '') + '</p>' : '';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
-      (notice ? '<p class="ex-notice cx-notice" role="status">' + esc(notice) + '</p>' : '') + freeNote + resume +
+      (notice ? '<p class="ex-notice cx-notice" role="status">' + esc(notice) + '</p>' : '') + resume +
       '<form class="cx-card cx-builder ex-setup" novalidate aria-label="Set up an exam">' +
-      '<div class="cx-builder-head"><h2>Set up <span>an exam</span></h2><p>Pick the kind, then the timing.</p></div>' +
+      '<div class="cx-builder-head"><h2>Set up <span>an exam</span></h2><p>Pick the kind, then the timing.</p></div>' + freeNote +
         '<fieldset class="cx-step"><legend>' + n1 + '1</span>Choose an exam</legend><div class="cx-choices">' + KINDS.map(function(k){
           return '<label class="cx-choice"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '>' +
             '<span><b>' + esc(k.title) + '</b><span>' + esc(k.desc) + '</span></span></label>';

@@ -129,6 +129,39 @@
   </div>
 </div>
 </main>
+
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'dashboard';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/periodic-table.js" defer></script>
+<script src="assets/game-panel.js" defer></script>
+<script src="assets/tools-registry.js" defer></script>
+<script src="assets/mastery-page.js" defer></script>
+<script>
+  /* The exam-date card (../assets/exam-date.js). Per day: the concepts not
+     yet solid, spread over the days left. */
+  document.addEventListener('DOMContentLoaded', function(){
+    var M = window.OchemMastery;
+    if(!window.LevlExamDate) return;
+    window.LevlExamDate.mount(document.getElementById('examDateCard'), {
+      subject: 'ochem',
+      links: { review: 'review.html', exams: 'exams.html' },
+      target: function(days){
+        if(!M) return null;
+        var c = M.counts();
+        var total = (c.unseen || 0) + (c.shaky || 0) + (c.developing || 0) + (c.solid || 0) + (c.mastered || 0);
+        var left = total - (c.solid || 0) - (c.mastered || 0);
+        if(!left) return { done: 'Every concept is solid or mastered. Keep the review queue clear and take a timed exam.' };
+        return { n: Math.ceil(left / days), unit: left === 1 ? 'concept' : 'concepts', why: 'to solid covers the ' + left + ' that are not there yet' };
+      }
+    });
+  });
+</script>
 <div class="xshell r3-foot">
   <footer>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>

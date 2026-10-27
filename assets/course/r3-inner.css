@@ -63,8 +63,9 @@ body:has(.r3-inner) > [data-crumb]{display:none}
   .r3-inner .r3-unit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:860px){
-  .r3-inner .band.short .hwrap{padding-bottom:70px}
-  .r3-inner .band.short .deck{font-size:34px}
+  .r3-inner .band.short .hwrap{grid-template-columns:minmax(0,1fr);padding-bottom:70px}
+  .r3-inner .band.short .deck{font-size:30px}
+  .r3-inner .band.short .hand{font-size:19px}
   .r3-inner .band.short .art{display:none}
   .r3-inner .r3-body{margin-top:-46px}
   .r3-unit-test .r3-col > [data-set="check"] > *{padding:18px}
@@ -262,3 +263,7 @@ body:has(.r3-exams > #quizScreen[style*="grid"]) .r3-focusbar{display:block;posi
   .r3-exams > #resultsScreen[style*="grid"]{grid-template-columns:1fr;grid-template-areas:"side" "dom" "main"}
   .r3-fb-t small{display:none}
 }
+/* a column whose slots are all still empty (a new visitor) gives its room to the other one */
+.r3-dashboard .r3-db-side:not(:has(> :not(:empty))){display:none}
+.r3-dashboard .r3-db-two:has(> .r3-db-side:not(:has(> :not(:empty)))){grid-template-columns:1fr}
+.r3-dashboard .r3-db-lead:has(> .r3-db-side:not(:has(> :not(:empty)))){grid-template-columns:1fr}
