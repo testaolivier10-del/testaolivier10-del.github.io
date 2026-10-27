@@ -77,7 +77,15 @@ export function check(data, map) {
       if (cards.has(key)) err(`${where}: distractor repeats a card: "${d.text}"`);
       cards.add(key);
       if (POS_RE.test(d.why)) err(`${where}: distractor explanation refers to an option by letter or position`);
-      texts.push(d.text, d.why);
+      // The cards show short labels (tool audit 2026-10), so a distractor needs one too: a full sentence among
+      // short labels would give itself away.
+      if (!str(d.short)) err(`${where}: distractor "${d.text}" needs a short card label`);
+      else if (d.short.length > SHORT_MAX) err(`${where}: distractor short label over ${SHORT_MAX} characters`);
+      else {
+        const sk = d.short.trim().toLowerCase();
+        if (SLOTS.some(k => slots[k] && String(slots[k].short).trim().toLowerCase() === sk)) err(`${where}: distractor short label repeats a slot's: "${d.short}"`);
+      }
+      texts.push(d.text, d.short || '', d.why);
     }
     const f = l.failure;
     if (!f) err(`${where}: missing failure question`);
