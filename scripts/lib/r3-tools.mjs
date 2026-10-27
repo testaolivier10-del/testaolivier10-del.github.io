@@ -188,6 +188,9 @@ export function apFrqItemR3(page, ctx) {
 
 /* The opener of a tool page. o: { key, up ('../../'), slug, title?, hand, lede, back: {href,label}, crumbs } */
 export function toolBand(o) {
+  /* A full tool page owns the screen (Olivier, 2026-10-26): it gets no band, only the empty markers, so the builders
+     keep one place to write. Reference pages that scroll (o.ref: NREMT formulary, flowcharts and the like) keep it. */
+  if (!o.ref) return '<!-- r3-toolband:start -->\n\n<!-- r3-toolband:end -->';
   const list = toolCovers(o.key);
   const i = list.findIndex((t) => t.slug === o.slug);
   const t = i >= 0 ? list[i] : null;
