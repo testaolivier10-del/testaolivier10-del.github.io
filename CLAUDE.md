@@ -110,6 +110,11 @@ Never paste a YouTube iframe into a page.
 `applyVideo`). `docs/from-video.md`: the homepage card for visitors from TikTok and Instagram
 (`docs/from-video.json`, `scripts/build-from-video.mjs`).
 
+## Tools upgrade, second round (2026-10-27)
+
+`docs/tools-upgrade-2026-10.md` is the status file: the hands-on audit of every tool (`docs/tool-audit-2026-10.md`),
+the fixes for it, and three builds (NREMT exam item types and adaptive exam, ochem synthesis trainer, A&P 3D anatomy).
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.

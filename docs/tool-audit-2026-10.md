@@ -4,7 +4,7 @@ A hands-on pass through every study tool (93 tools across nine courses), rated a
 it just works, is very interactive, gives good information, is good at its job and is interesting; simple on
 landing with extra information revealed progressively; professional illustration quality; easy to see and use
 on a phone; opens full screen as just the tool. Scores are 1 to 5 against that bar. Tags: [bug] broken
-behaviour, [quick] under an hour, [bigger] more than an hour. Status file: `docs/tools-upgrade.md`.
+behaviour, [quick] under an hour, [bigger] more than an hour. Status file: `docs/tools-upgrade-2026-10.md`.
 
 How it was tested: every tool loaded at 390x844 and 1280x800 in headless Chromium with Premium unlocked
 locally, then driven like a student through every mode, with wrong answers on purpose, Show the answer and the

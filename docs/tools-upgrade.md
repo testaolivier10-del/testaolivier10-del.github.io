@@ -1,98 +1,126 @@
-# Tools upgrade (2026-10)
+# Tools upgrade: plan and status
 
-Status file for the tools work the owner asked for on 2026-10-27: a hands-on pass through every tool, then
-three builds. Read this before continuing any of it.
+Status file for upgrading every interactive tool on the site (owner request, 2026-10-09). A fresh session reads
+this file, `CLAUDE.md` and `docs/course-shell.md`, not the chat history. Update it in the same commit as the work.
 
 ## Owner brief
 
-- Research (2026-10-27) compared LevlPrep's tools with what students use and want. The owner chose three builds:
-  1. NREMT exam formats: drag-and-drop and options-table items (the Registry's technology-enhanced items), real
-     dragging for build-list items, then an adaptive exam mode that stops early like the real exam and reports
-     each domain as above, near or below passing.
-  2. An ochem synthesis trainer: start material to target, step by step, with the reason when a route dead ends.
-  3. A&P in 3D, reusing the NREMT body map engine (`nremt/assets/body-viewer.js`).
-- First: a hands-on pass through every tool, rated against the body map bar (just works, very interactive, good
-  information, good at its job, interesting; simple on landing with progressive disclosure; professional
-  illustration quality; readable on a phone; opens full screen as just the tool).
-- Ships as one pull request the owner reviews before merging.
+The NREMT body map (`nremt/body-map.html`) is the best tool. The owner's reasons: it just works, it is super
+interactive, you get good information, it is good at its one job, and it is interesting. Most other tools feel
+basic: a dropdown, typed answers, a Check button. Bring every tool up to the body map's level.
 
-## Hands-on pass
+### The test every tool must pass
 
-Harness: loads every tool at 390 px and 1280 px with Premium unlocked locally, records console errors, failed
-requests and sideways scroll, and screenshots before and after interacting. Mechanical result: every tool page
-loads clean; `nremt/sound-trainer.html` and `bio/tools/tree-reading.html` scroll sideways at 390 px.
-Per-tool ratings and fixes: `docs/tool-audit-2026-10.md`. Fixing those findings is not part of the three builds;
-it waits for the owner's go-ahead.
+1. **One clear job**, sayable in one line. If not, rethink the tool, don't polish it.
+2. **It just works.** Nothing confusing, slow or broken. Phone and desktop, light and dark, keyboard and screen reader.
+3. **Interactive.** The student acts on the thing itself (drag, tap, slide) and it reacts at once.
+4. **Real learning per action.** Every action teaches something specific (what it does, why, what goes wrong).
+5. **Interesting.** Something you want to keep playing with. A live visual wherever one helps understanding.
+6. **Starts with the good part.** On a phone the interactive piece is on the first screen.
+7. **No dead ends.** After an answer: links to the lesson and glossary entry; misses feed Review and progress.
 
-## Builds
+## Decisions (2026-10-09)
 
-| Build | Status | Files |
+1. Two pull requests: **PR 1 = Phase 1** (shared fixes and building blocks, branch `claude/tools-shared`, base
+   `main`); **PR 2 = Phases 2 and 3** (tool upgrades, branch `claude/tools-upgrades`, base `claude/tools-shared`).
+   The owner reviews both before merging.
+2. No new libraries or paid assets. three.js (already vendored for the body map), the existing SVG chart helpers
+   (`T.plot` in Bio and Chem), and plain SVG/canvas cover everything.
+3. Keep every existing mode, question bank, seed/problem-code link and storage key working. Upgrades add a live
+   visual and an explore mode on top; existing graded steps become the quiz. No content is deleted. Mnemonics and
+   Water potential stay as pages; they gain links into Scenario sim and Osmosis.
+4. Any tool whose science model or numbers change gets an independent accuracy check before the PR.
+5. Visuals follow the site style (theme tokens, each course's `--ctint`, dark mode via tokens), respect
+   `prefers-reduced-motion` (animation off, end state shown), and every drag has a keyboard and button path.
+6. `sw.js` CACHE is bumped once at merge, not per workstream. Weight budgets may be raised in
+   `scripts/check-weight.mjs` with a one-line reason each.
+
+### Contracts between workstreams
+
+- **Body map deep link:** `nremt/body-map.html?focus=<name>` selects and frames a structure, where `<name>` is the
+  label shown in its Browse-by-name list, case-insensitive (e.g. `?focus=heart`). Unknown names are ignored.
+- **Body viewer module:** `nremt/assets/body-viewer.js` exposes `window.LevlBodyViewer.mount(el, opts)` (the 3D
+  model, picking and layers, split out of body-map.html). The body map itself uses it.
+- **NREMT tool results:** `nremt/assets/tool-results.js` exposes `window.NremtToolResults.record({tool, id, correct,
+  label, href})`: misses go to the NREMT review queue, correct answers award progress.
+- **Related strip:** each course renders one "Keep going" strip after a graded answer or at the end of a run: lesson
+  link, glossary term(s), and for anatomy a "See it on the 3D body" link. Built from data the tool already has.
+- **Bio stage slot:** `ApBioTools.mount`/`skillTool` accept `stage(host, state)`; it renders first on phones and
+  redraws on input.
+- **Chem live beaker:** `chem/assets/tools/live-beaker.js` exposes `ApChemBeaker.mount(el, opts)`: a particle beaker
+  with a pH or Q readout that updates as amounts change, built on `ApChemMath`.
+
+## Phase 1: shared fixes and building blocks (PR 1)
+
+| Workstream | Scope | Status |
 |---|---|---|
-| NREMT item types and adaptive exam | built, accuracy reviewed, hands-on tested at 390 px (branch `tools-nremt-tei`) | `nremt/assets/tei-items.js` (dnd, table, order dragging), `nremt/assets/cat.js` (adaptive model), `nremt/practice-engine.js`, `nremt/practice.css`, `nremt/exams.html`, 60 items in `nremt/assets/questions.json` (ids 2113-2172), `scripts/test/nremt-tei.test.mjs`, tools hub counts in `scripts/build-r3-tools.mjs` |
-| Ochem synthesis trainer | in progress | |
-| A&P 3D anatomy | in progress | |
+| P1-NREMT | Open on the tool (phone); tool results hook wired into body map hunt, sound trainer, flow drill, formulary drill, scenario debrief; body viewer module; `?focus=` deep link | done: `LevlBodyViewer.mount(el,{list,info,focus,systems,skin,autoload,onSelect,onPick,pickSelects})` returns `select/find/highlight/clear/reset/setSystems/setSkin/info/structures/on/hunt.start({panel,live,first,onAnswer})`; `?focus=` and `?hunt=` (Review link back). `NremtToolResults.record` puts bank questions (formulary, `qid`) in `nremt_mastery`; other misses in synced `nremt_tool_review`, listed on Review as "From the tools" with a Try it again link, cleared by a later right answer; right answers 4 XP (60/day cap) + daily activity. Scenario debrief: a fork's consequence choice where a no-consequence one existed is a miss. |
+| P1-Ochem | `tool-shell.js`: tool first on phones, sibling chips compact below; keep handoff and quiz | done: opener is back link + share on one row, name, lede (compact on phones, tool starts ~265px down at 390); sibling chips moved into a generated Keep going strip under the tool (lessons from registry `topic`, glossary from new registry `terms`, Practice `?topic=`, other tools), written by `build-tool-pages.mjs` between `tool-foot` markers; each quiz answer links its own lesson and term (`q.topic`/`q.term`), missed items link their lesson |
+| P1-A&P | Open on a default item instead of the long chooser (compact picker); Keep going strip; 3D body link for anatomical items | done: `anatomy-physiology/assets/tools/tool-kit.js` + `.css` (loaded on every tool page by build-anp.mjs): `AnpToolKit.picker` (search disclosure over every item), `AnpToolKit.strip(host, {topic, terms, text, structures})` (Lesson, Notes, glossary terms, "See it on the 3D body" only for exact body map labels plus a few plural/spelling aliases; label list pinned by `scripts/test/anp-tool-kit.test.mjs`). Each tool opens on the next unfinished item (loops, graphs, pathways, scenarios as a session, lab set in the saved mode; calculators keep last-used); full lists at `#all` (graphs, pathways), `#<mode>` (lab), "All loops"/setup (loops, predict). Phone opener drops the crumb and lede. A&P runtime budget 46.5 -> 47.5 KB |
+| P1-Bio | Stage slot in `bio-tools.js`; phone layout (stage first, intro collapsed); Keep going strip from each tool's `topic` | done (branch `claude/tools-shared-bio`). **Stage API:** simulators `ApBioTools.mount(slug, fn, { stage(host, state) })`; `fn(app, data, ctx)` with `ctx = { stage: host, redraw(state) }`; `host` is `div.bt-stage-slot`, first child of `#app` (above controls). Called once after `fn` with the last state (initially `{ slug, data }`), whenever the tool calls `ctx.redraw(state)` (convention `{ inputs, result }`), and after any `input`/`change` in `#app` (last state); coalesced to one draw per animation frame; errors logged, not thrown. Skills: `skillTool(app, data, { slug, kind, stage(host, state), chart?, decorate? })`; host sits in the problem card above the problem text, redrawn on each new problem, each typed/picked answer and after Check, with `state = { slug, kind, mode: 'practice'\|'set', code (seed or null), index (set position or null), cid, topic, input, sol (from ApBioProblems.solve: parts, steps, table?, chart?), answers: { partKey: number\|option index\|null }, graded: null\|{ partKey: { correct, answered } }, phase: 'new'\|'input'\|'checked' }`; the old `chart(spec, input)` hook is the default stage (confidence intervals). **Phone:** tool pages get a slim hero at ≤640 px (bio.css, `body[data-app^="tool-"]`); `tidyAbout` moves intro + model box into one closed `details.bt-how.bt-about` after the tool; `figureFirst` moves a simulator card's `.bt-stage` (and a short key) above its first control. **Strip:** `keepGoing` runs from `record()` and `event('apbio-sim-run')`, in the card just used, after the answered question / worked solution / drill result / run note (`data-keep-host` redirects: graph builder to its feedback card): lesson + notes for the item's topic (if built), up to 3 glossary terms of that topic (`glossary.html#t-<id>`, terms named in the card first), Review after a miss. Phase 2 tools pass `stage` and call `ctx.redraw`. |
+| P1-Chem | Phone layout (problem first, intro collapsed); Keep going strip; `live-beaker.js` | **done 2026-10-09**: `ApChemTools.frame`/`kindPicker` (picker row, problem, "About this ..." folded below; compact opener under 640 px) in all 6 trainers; `keepGoing` strip after each graded problem (lesson, notes, lessons for missed steps' topics, glossary terms); Justify opens on the next unchecked prompt (`?list=1` for the list, `?p=` kept); equations sheet links each row to its trainers; beaker API below. Notes in `docs/apchem-spec.md` decision 20 |
 
-## Decisions
+### Chem live beaker API (built in P1-Chem)
+`chem/assets/tools/live-beaker.js`, loaded after `chem-tool-math.js` (and `chem-tools.js` if the page has it,
+for its announcer). No page loads it yet: add it to the tool's `extra` list in `toolShell()` (build-apchem.mjs).
+CSS is in `chem-tools.css` (`.lb-*`).
+```js
+var b = ApChemBeaker.mount(el, {
+  species: [{ key, label, mol?, name?, tone? }], // mol: an ApChemMath.particles template (A, B, A2, B2, AB,
+                                                 // HA, 'A-', 'H3O+', H2O, NH3, CO2 ...); else a disc, tone 1-6
+  readout: 'pH' | 'qk' | 'none',                 // default 'pH'
+  title: 'Acetic acid buffer',                   // starts the text description
+  max: 30,                                       // most particles drawn; larger counts scale down together
+  seed: 7                                        // particle layout
+});
+b.update({ counts: { HA: 6, 'A-': 4 }, pH: 4.57, note: 'Added 2 OH⁻.' });   // readout 'pH'
+b.update({ counts: { A2: 5, B2: 5, AB: 4 }, Q: 0.64, K: 4 });               // readout 'qk'
+b.destroy();
+```
+- Counts are particles, not moles: the caller maps concentration to a count (keep ratios honest).
+- Between updates particles keep their place and id; a species that grows takes the places another just
+  gave up (HA turns into A⁻ where it was), new ones fade in, lost ones fade out, the pH or Q marker slides.
+  `prefers-reduced-motion` (or `LevlMotion.reduced()`): end state at once.
+- Readouts: pH value + acidic/neutral/basic + a 0-14 scale; Q vs K: both values, `<`/`=`/`>` (equal within
+  1%), a log scale centred on K (two decades each way) and "Forward →" / "← Reverse" / "At equilibrium".
+- Accessibility: the SVG is `role="img"` labelled by the caption; the caption is a polite live region
+  (`ApChemTools.announcer`, debounced) with the counts by name, the readout and the direction in words.
+  Atoms carry their symbols, so color is never the only cue. Colors come from tokens (dark mode follows).
+- `ApChemBeaker.pure` = `{ slots, scale, assign, phWord, qk, describe }` (no DOM; tested in
+  `scripts/test/apchem-beaker.test.mjs`). `ApChemBeaker.demo(el)`: a buffer taking base in three steps.
 
-NREMT item types and adaptive exam (2026-10-27):
+## Phases 2 and 3: tool upgrades (PR 2)
 
-1. **Exam facts, checked on nremt.org (October 2026).** EMT exam: 70 to 120 items plus 10 pilot items, 2 hours,
-   computer adaptive; technology-enhanced items are build list, drag and drop, and option/check box (options table);
-   domains Scene Size-Up 15-19%, Primary 39-43%, Secondary 5-9%, Treatment and Transport 20-24%, Operations 10-14%
-   ([EMR and EMT examinations](https://nremt.org/Pages/Examinations/EMR-and-EMT-Certification-Examinations)). CAT starts
-   slightly below the standard and stops at 95% confidence above or below it, after a minimum, or at the time limit
-   ([Examination structure](https://nremt.org/Handbooks/Certification-Examinations/Examinations-Structure)). Score
-   scale 100-1500, pass 950; failing candidates get performance relative to the standard
-   ([EMT handbook, cognitive exam](https://www.nremt.org/Handbooks/EMT/Cognitive-Exam)). The Above/Near/Below domain
-   wording follows what `nremt/exam-day.html` already tells students; nremt.org's public pages do not spell it out.
-2. **Item shapes.** `dnd`: `bins`, `correct[i]` = bin per option. `table`: `cols`, `correct[i]` = column per row.
-   Rows shuffle per browser (stored in `nremt_option_order` like other items); groups never shuffle. Answers are
-   arrays of bin/column or null, so saved exam state, missed and flagged queues need no change.
-3. **Interaction.** Mouse drags anywhere on an item; touch drags only from the dotted grip, so a finger on the text
-   still scrolls the page. Tap an item then a group; keyboard Enter/Space picks, number keys place, Escape or 0 takes
-   it back out. Table rows are native radio groups. Build list keeps its arrow buttons and gains dragging.
-4. **Scoring.** All or nothing per item; the checked state, the results list and the flashcard back mark each row.
-5. **Adaptive model** (`nremt/assets/cat.js`): Rasch, tag difficulties -2/-1/0/+1, passing line 0, EAP on a grid
-   with an N(0,1) prior, next item nearest the estimate in the domain furthest behind `DOMAIN_TARGETS`, unseen items
-   first. Stops at 95% interval clear of the line after 70, at 120, or at 2 hours (best estimate decides; out of time
-   before 70 is a fail). Domains: shrunk per-domain estimate, Above/Below beyond one SE, otherwise Near. Simulated
-   students: level 0 runs about 116 items, levels of +/-0.6 stop near 77, and pass rates are 0% / 50% / 100% at
-   -0.6 / 0 / +0.6.
-6. **Premium.** Mode `cat` is an exam like `full`: `canStartExam` / `examStarted` (one free attempt each since decision 9), no daily
-   quota (`premium-gates.js quotaApplies`). Premium copy now says "Unlimited timed and adaptive exams".
-7. **Tools hub counts** come from the pages: scenario ids in `scenario-sim.html`, top-level `<h2>`s in
-   `flowcharts.html`, `.skill-card`s in `skillsheets.html`, `.drug` cards in `formulary.html`
-   (`scripts/build-r3-tools.mjs`). The hub on this branch already listed the Drug Formulary and 25 calls / 10
-   sequences; the "eight" figures in the brief were not found in this checkout, so the stations card now states
-   its count too (10) and every count is generated.
-8. **Accuracy review** (independent, strongest model, checklist: EMT-scope accuracy, one defensible answer per row,
-   no giveaways, explanation matches key). 60 items, 13 findings (3 must-fix, 4 should-fix, 6 notes); all must-fix
-   and should-fix applied (2149 Onset row could also be SAMPLE Events; 2136 infant HR 90 is the sleeping lower limit,
-   now 70; 2120 parking past the crash assumes a blocker, stem now says one is there; 2122 "hidden"; 2138
-   "mid-thigh"; 2154 own prescription; 2148 bin name), plus retags 2142/2146/2147 and wording notes. Two notes are
-   left for the owner in `docs/nremt-needs-author.md`.
-9. **Owner decisions (2026-10-27).** (a) The adaptive exam has its own free attempt, separate from the one free timed
-   exam: `premium-gates.js` keeps `nremt_free_cat_v1` (synced, registered in `nav.js`) beside `nremt_free_exam_v1`;
-   `canStartExam/examStarted/canUse` take the kind; the locked card says "You've used your free adaptive exam". Free
-   lists read "One full timed exam and one adaptive exam" (`assets/premium.js`, hub, premium.html, manifest).
-   (b) A finished adaptive exam counts toward Pass-or-extend: the page calls `LevlPremium.recordExam('nremt', n)`
-   when it ran its course (at least 70 questions; never one ended early), the database stamps it in
-   `exam_completions`, and the Worker's `countableExams` already counts anything of 50+ questions, so
-   `GUARANTEE.minExams` (2) is unchanged and agrees in both places. Wording now says "full timed or adaptive exams"
-   (premium.js `guaranteeText`, Worker refusal, terms.html, privacy.html, rule `premium-copy`, schema comment).
-   Its local history `nremt_cat_history` stays unsynced; the server record is what counts.
-10. **Dark-mode contrast:** the Premium pill on round 3 tool cards had cream background with light amber text; a
-   dark rule in `assets/theme.css` gives it the dark `.tag.prem` colors.
+Branch `claude/tools-upgrades` (base `claude/tools-shared`). Eight workstreams, each in its own worktree and
+branch `claude/tools-upgrades-<ws>`. Each writes its notes to `docs/tools-upgrade-notes/<ws>.md` (not this
+file, to avoid merge conflicts); this table is updated at merge.
 
-## Open points
+| Workstream | Tools | Status |
+|---|---|---|
+| U-NREMT-body | Sound trainer on the body (flagship 1), Body map burns / Rule of Nines mode (flagship 10) | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/nremt-body.md` |
+| U-NREMT-cases | Scenario sim live monitor + tap-to-assess (flagship 2), Flowcharts build-it, Formulary give/withhold, Skill sheets clock, Reference cards age slider, Mnemonics link into scenarios | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/nremt-cases.md` |
+| U-Ochem | Reaction predictor (flagship 8), Acid/base pKa line, Spectroscopy peak-hydrogen link, Reagent roadmap synthesis puzzle, 3D viewer predict-the-shape, Conformations chair flip, Resonance charge overlay, Arrow pusher mechanism challenge, fix `#v3Svg` a11y | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/ochem.md` |
+| U-AnP-loops | Feedback loops live loop (flagship 6), Predict gauge simulator (flagship 7) | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/anp-loops.md` |
+| U-AnP-rest | Graphs explore + live shifts, Pathways trace on figures, Calculators picture per formula, Lab practical and Word roots 3D link | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/anp-rest.md` |
+| U-Bio-sims | Osmosis (flagship 5, absorbs Water potential as quiz), Enzymes (flagship 9), Cell cycle, Meiosis, Operons, Signal transduction, Energy flow, Population growth, HW drift, Tree reading | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/bio-sims.md` |
+| U-Bio-skills | Chi-square (flagship 4), Hardy-Weinberg, Descriptive stats, Rates, Simpson, Confidence intervals, Water potential stage, Graph builder grid-first, Design drills tiles | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/bio-skills.md` |
+| U-Chem | Titration explorer (flagship 3), Buffers, Q vs K, ICE on the live beaker; Particle diagrams build mode; Units and sig figs cancellation | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/chem.md` |
 
-- NREMT adaptive exam: the passing line and difficulty tags are uncalibrated; refit from `question_stats` when there
-  is enough data (`docs/nremt-needs-author.md`).
-- The study-notes chapter review and the formulary drill skip typed items (they show single-answer questions only).
-- Verification on a shared machine: the targeted checks (question bank, r3 tools and inner pages, course homes,
-  pricing, weight, crumbs, OG tags, tutor bank, `check-site.mjs`, and the NREMT, premium, ids, service-worker and
-  cross-course tests) pass; axe (WCAG A/AA) is clean at 390 px light and dark on exams, practice, review, the hub,
-  premium and the three live item types. The full `BROWSER=1 scripts/ci-local.sh` did not finish within its time
-  limit while about ten agents shared the machine; run it once at merge.
-- `sw.js` CACHE is not bumped on this branch; bump it once at merge: `nremt/assets/tei-items.js` and `nremt/assets/cat.js` are new
-  precached files.
+### Phase 2 status (2026-10-10)
+
+All eight workstreams merged into `claude/tools-upgrades`. Independent accuracy reviews fixed 32 errors and logged
+the judgment calls in each course's needs-author doc (NREMT: `docs/TRACKER.md`). Two hands-on student passes fixed
+the remaining layout and interaction issues. Full `BROWSER=1 scripts/ci-local.sh`: ALL PASS. `sw.js` CACHE v65.
+
+Owner decisions open: child burn chart (infant chart only vs. adding Lund-Browder), state time limits for the four
+random skill stations, Simpson form (course uses 1 − Σ(n/N)²; confirm against the printed formula sheet), dialysis bag
+NaCl simplification, flat 1.6 kcal/mol 1,3-diaxial term, hives-only epinephrine card wording.
+
+Known leftovers: the two floating site buttons cover the right edge of some phone readouts (site chrome); long
+breadcrumbs truncate on phones; the burns figure's 1% region is a small tap target (drag-paint and keyboard work).
+
+## Verification
+
+Per workstream: before/after screenshots at 390 and 1280 (light and dark) of every touched page, the course's build
+`--check` scripts, `node --test scripts/test/*.test.mjs`, and `check-a11y`/`check-console` for touched pages. At merge:
+full `BROWSER=1 scripts/ci-local.sh`, a hands-on pass of every tool as a student would use it, then the PR.
