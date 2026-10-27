@@ -155,9 +155,10 @@ test('every lesson and mechanism names its chapter, so it can tell whether it is
   const ids = new Set(b.window.OchemCurriculum.MODULES.map((m) => m.id));
   for (const page of [...list('ochem/lessons'), ...list('ochem/mechanisms')]) {
     const html = readFileSync(page, 'utf8');
-    const m = html.match(/class="(?:xshell lesson-shell|eyebrow)" data-chapter="([a-z0-9-]+)"/);
+    /* Round 3 (scripts/lib/r3-reading.mjs) adds "r3 r3-lesson" and data-cover to the lesson shell. */
+    const m = html.match(/class="(?:xshell lesson-shell(?: r3 r3-lesson)?|eyebrow)"(?: data-cover="[a-z]+")? data-chapter="([a-z0-9-]+)"/);
     assert.ok(m, `${page} has no data-chapter on its shell or eyebrow`);
     assert.ok(ids.has(m[1]), `${page} names an unknown chapter "${m[1]}"`);
-    assert.ok(/class="xshell lesson-shell"/.test(html) && html.includes('id="card"'), `${page} has no lesson shell to gate`);
+    assert.ok(/class="xshell lesson-shell(?: r3 r3-lesson)?"/.test(html) && html.includes('id="card"'), `${page} has no lesson shell to gate`);
   }
 });
