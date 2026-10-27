@@ -77,6 +77,12 @@
 .bt-modes legend{font:900 15px var(--font-ui);margin-bottom:6px;padding:0;}
 .bt-radio{display:flex;align-items:center;gap:10px;min-height:44px;}
 .bt-radio input{width:22px;height:22px;flex:0 0 auto;accent-color:var(--cink);margin:0;}
+/* A focused radio keeps a round ring (Chromium draws a square one, which reads as a checkbox among the radios). */
+.bt-radio input[type=radio]{border-radius:50%;}
+.bt-radio input[type=radio]:focus{outline:none;}
+.bt-radio input[type=radio]:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bt-radio:has(input[type=radio]:focus-visible){box-shadow:inset 0 0 0 2px var(--cink);}
+
 .bt-radio label{font:700 15px/1.4 var(--font-ui);cursor:pointer;padding:6px 0;flex:1 1 auto;min-height:44px;display:flex;align-items:center;}
 .bt-problem{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
 .bt-problem>*{min-width:0;}

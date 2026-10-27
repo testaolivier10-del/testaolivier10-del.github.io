@@ -36,7 +36,7 @@
   });
 
   function explore(host, ctxs, M, toQuiz){
-    var esc = T.esc, F = T.F, ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, place = [];
+    var esc = T.esc, F = T.F, ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, place = [], order = [];
     // Lookups reach the Tool Studio too, where these parts move (studio()).
     var LS = null, SP = null, slot = {};
     function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
@@ -59,7 +59,7 @@
       if(p.setup.addsub) return addsub();
       place = p.setup.factors.map(function(){ return 0; });
       // Tiles in a fixed shuffled order, so position gives nothing away.
-      var order = p.setup.factors.map(function(f, i){ return i; }), r = M.rng(seed + 3);
+      order = p.setup.factors.map(function(f, i){ return i; }); var r = M.rng(seed + 3);
       for(var i = order.length - 1; i > 0; i--){ var j = Math.floor(r() * (i + 1)), t = order[i]; order[i] = order[j]; order[j] = t; }
       $('.us-build').innerHTML = '<p class="bt-cue us-how"><span class="bt-cue-k">Start here</span> <span>Put each quantity on top (×) or on the bottom (÷), or leave it out. Units that cancel are struck through.</span></p><div class="us-tiles">' + order.map(function(i){
         var f = p.setup.factors[i], nm = 'usx-' + seed + '-' + i;
@@ -70,8 +70,22 @@
       }).join('') + '</div>';
       $('.us-build').insertAdjacentHTML('afterbegin', '<div class="us-sticky"><div class="us-frac" aria-hidden="true"></div><div class="us-live" role="status" aria-live="polite"></div></div>');
       $$('.us-tile input').forEach(function(inp){ inp.addEventListener('change', function(){ place[+inp.closest('.us-tile').getAttribute('data-i')] = +inp.value; $('.us-how').classList.add('is-done'); draw(); }); });
+      // The fraction on the stage is live too: tap a quantity to move it
+      // from the tray to the top, the bottom and back (the dock follows).
+      $('.us-frac').addEventListener('click', function(e){
+        var b = e.target.closest('[data-q]'); if(!b) return;
+        var i = +b.getAttribute('data-q'), nx = place[i] === 0 ? 1 : place[i] === 1 ? -1 : 0;
+        setPlace(i, nx, b.getAttribute('data-q'));
+      });
       placeParts();
       draw();
+    }
+    function setPlace(i, v, refocus){
+      place[i] = v;
+      $$('.us-tile[data-i="' + i + '"] input').forEach(function(inp){ inp.checked = +inp.value === v; });
+      var how = $('.us-how'); if(how) how.classList.add('is-done');
+      draw();
+      if(refocus != null){ var b = $('.us-frac [data-q="' + refocus + '"]'); if(b) b.focus({ preventScroll: true }); }
     }
     function tokens(u, sign){
       var m = M.unitParse(u), out = [];
@@ -89,8 +103,16 @@
       // A cancelled pair shares a color and a slash, the way it is marked by hand.
       var chip = function(c){ return '<span class="us-chip' + (c.cancel ? ' is-cancel us-p' + c.pair : '') + '">' + esc(c.u) + '</span>'; };
       var valTop = used.filter(function(x){ return x.p > 0; }).map(function(x){ return esc(x.f.v); }), valBot = used.filter(function(x){ return x.p < 0; }).map(function(x){ return esc(x.f.v); });
-      $('.us-frac').innerHTML = used.length ? '<div class="us-fr"><div class="us-num"><span class="us-vals">' + (valTop.join(' × ') || '1') + '</span><span class="us-chips">' + (top.map(chip).join('') || '<span class="us-chip is-one">1</span>') + '</span></div>' +
-        (bot.length || valBot.length ? '<div class="us-bar"></div><div class="us-den"><span class="us-vals">' + valBot.join(' × ') + '</span><span class="us-chips">' + bot.map(chip).join('') + '</span></div>' : '') + '</div>' : '<p class="bt-small us-none">Your setup appears here.</p>';
+      // A quantity as a button: tap moves it tray -> top -> bottom -> tray.
+      var WHERE = { '1': 'on top', '-1': 'on the bottom', '0': 'left out' }, NEXT = { '0': 'top', '1': 'bottom', '-1': 'out' };
+      var qb = function(i){ var f = S.factors[i]; return '<button type="button" class="us-qty us-qty' + (place[i] > 0 ? 't' : place[i] < 0 ? 'b' : 'o') + '" data-q="' + i + '" aria-label="' + esc(f.v + ' ' + f.u + ', ' + f.label + ', ' + WHERE[String(place[i])] + '. Tap to move it ' + NEXT[String(place[i])]) + '"><b>' + esc(f.v) + '</b> <span>' + esc(f.u) + '</span></button>'; };
+      var topQ = order.filter(function(i){ return place[i] > 0; }), botQ = order.filter(function(i){ return place[i] < 0; }), trayQ = order.filter(function(i){ return !place[i]; });
+      var slot = function(list, word){ return list.length ? list.map(qb).join('<span class="us-times" aria-hidden="true">×</span>') : '<span class="us-slot">' + word + '</span>'; };
+      var goal = '<div class="us-goal"><span class="us-eq" aria-hidden="true">=</span><span class="us-chip us-target' + (used.length && left === S.target && !bad.length ? ' is-done' : '') + '">' + esc(S.target) + '</span></div>';
+      $('.us-frac').innerHTML = '<div class="us-eqn"><div class="us-fr"><div class="us-num"><span class="us-vals">' + slot(topQ, '× top') + '</span>' +
+        (top.length ? '<span class="us-chips">' + top.map(chip).join('') + '</span>' : '') + '</div>' +
+        '<div class="us-bar"></div><div class="us-den"><span class="us-vals">' + slot(botQ, '÷ bottom') + '</span>' + (bot.length ? '<span class="us-chips">' + bot.map(chip).join('') + '</span>' : '') + '</div></div>' + goal + '</div>' +
+        (trayQ.length ? '<div class="us-tray"><span class="us-tray-k">' + (used.length ? 'Not used' : 'Given: tap one to put it on top') + '</span>' + trayQ.map(qb).join('') + '</div>' : '');
       var left = M.unitText(M.unitMul(used.map(function(x){ return { u: x.f.u, p: x.p }; })));
       var val = used.reduce(function(v, x){ var n = x.f.u === 'kJ/J' ? 1 / 1000 : +x.f.v; return x.p > 0 ? v * n : v / n; }, 1);
       var bad = used.filter(function(x){ return !x.f.place || x.f.place !== x.p; });

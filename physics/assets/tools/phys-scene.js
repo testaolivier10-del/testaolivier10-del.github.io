@@ -101,5 +101,5 @@
     };
   }
 
-  window.ApPhysScene = { svg: svg, el: el, arrow: arrow, vector: vector, toSvg: toSvg, forceLabel: forceLabel, loop: loop, reduced: reduced, esc: esc };
+  window.ApPhysScene = { svg: svg, el: el, arrow: arrow, subText: subText, vector: vector, toSvg: toSvg, forceLabel: forceLabel, loop: loop, reduced: reduced, esc: esc };
 })();

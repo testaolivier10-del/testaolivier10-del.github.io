@@ -415,7 +415,10 @@
           '<text class="rl-t" x="' + cx + '" y="' + (cy + 70) + '" text-anchor="middle">' + c[1] + ': d = ' + gv(d) + ' m</text>' +
           '<path class="rl-spin" d="M' + n1(cx + 92) + ' ' + cy + 'A92 92 0 0 0 ' + cx + ' ' + (cy - 92) + '"/><path class="rl-spin-h" d="M' + (cx - 2) + ' ' + (cy - 92) + 'l11 -6l0 12z"/>';
       });
-      label = 'Top view of a student on a spinning stool, first with the dumbbells ' + gv(f.d0) + ' m from the axis, then pulled in to ' + gv(f.d1) + ' m.';
+      // The givens on the picture too: on a phone the problem text is cut to
+      // three lines, which hid the numbers the steps need (audit 2026-10).
+      if(f.I0 != null){ H = 284; out = '<text class="rl-t rl-given" x="' + (W / 2) + '" y="20" text-anchor="middle">Student + stool: I = ' + gv(f.I0) + ' kg·m²</text><text class="rl-t rl-given" x="' + (W / 2) + '" y="44" text-anchor="middle">Two ' + gv(f.m) + ' kg dumbbells · ω = ' + gv(f.w0) + ' rad/s arms out</text><g transform="translate(0 52)">' + out + '</g>'; }
+      label = 'Top view of a student on a spinning stool, first with the dumbbells ' + gv(f.d0) + ' m from the axis, then pulled in to ' + gv(f.d1) + ' m.' + (f.I0 != null ? ' Student and stool I = ' + gv(f.I0) + ' kg·m², two ' + gv(f.m) + ' kg dumbbells, ' + gv(f.w0) + ' rad/s with arms out.' : '');
     } else {
       H = 260; var cx = W / 2, cy = 130, e = f.e || 0, a = Math.min(220, 105 / Math.sqrt(1 - e * e)), b = a * Math.sqrt(1 - e * e), fx = cx + a * e;
       out += '<rect class="rl-space" x="0" y="0" width="' + W + '" height="' + H + '" rx="12"/><ellipse class="rl-orbit" cx="' + cx + '" cy="' + cy + '" rx="' + a + '" ry="' + n1(b) + '"/>' +

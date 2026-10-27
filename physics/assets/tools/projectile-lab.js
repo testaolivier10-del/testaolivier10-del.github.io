@@ -37,6 +37,16 @@
   var NICE = [5, 10, 20, 25, 50, 100, 200];
   function niceUp(x){ for(var i = 0; i < NICE.length; i++) if(x <= NICE[i]) return NICE[i]; return Math.ceil(x / 100) * 100; }
   function gridStep(span){ return span <= 10 ? 2 : span <= 25 ? 5 : span <= 50 ? 10 : span <= 100 ? 20 : 50; }
+  /* A tick step at least minPx apart on screen. When the flight is tall and
+     narrow (a launch near 90 degrees) the height sets the scale, the x axis
+     covers far more meters than the flight, and gridStep alone crowds the
+     labels together. */
+  var TICKS = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
+  function pxStep(span, ppm, minPx){
+    var s = gridStep(span);
+    for(var i = 0; i < TICKS.length && s * ppm < minPx; i++){ if(TICKS[i] > s) s = TICKS[i]; }
+    return s;
+  }
 
   T.mount('projectile-lab', function(app, data){
     var ex = null;
@@ -263,7 +273,7 @@
       else if(LS){ var D = duration(); if(st.t >= D - 1e-9) words(); else pillsNow(); }
     }
     function axisLabels(){
-      var p = [], step = gridStep(geo.spanX), xEnd = geo.x0 + (geo.w - geo.L - geo.R) / geo.ppm;
+      var p = [], step = pxStep(geo.spanX, geo.ppm, 40), xEnd = geo.x0 + (geo.w - geo.L - geo.R) / geo.ppm;
       for(var x = Math.ceil(geo.x0 / step) * step; x <= xEnd + 1e-9; x += step){
         p.push('<line class="pl-tick" x1="' + X(x).toFixed(1) + '" x2="' + X(x).toFixed(1) + '" y1="' + geo.ground + '" y2="' + (geo.ground + 5) + '"/>');
         p.push(label(X(x), geo.ground + 18, M.minus(String(M.round(x, 1))), 'middle', 'pl-tl'));
@@ -280,7 +290,7 @@
         label(x + px + 8, y + 4, m + ' m, across and up', 'start', 'pl-scale-t') + '</g>';
     }
     function heightRuler(){
-      var yMax = (geo.ground - geo.T) / geo.ppm, step = gridStep(yMax * 1.6), p = [], xr = geo.L - 10;
+      var yMax = (geo.ground - geo.T) / geo.ppm, step = pxStep(yMax * 1.6, geo.ppm, 24), p = [], xr = geo.L - 10;
       p.push('<line class="pl-ruler" x1="' + xr + '" x2="' + xr + '" y1="' + geo.ground + '" y2="' + Y(Math.floor(yMax / step) * step).toFixed(1) + '"/>');
       for(var y = 0; y <= yMax + 1e-9; y += step){ p.push('<line class="pl-tick" x1="' + (xr - 4) + '" x2="' + xr + '" y1="' + Y(y).toFixed(1) + '" y2="' + Y(y).toFixed(1) + '"/>'); p.push(label(xr - 6, Y(y) + 4, String(y), 'end', 'pl-tl')); }
       p.push(label(xr - 6, geo.T - 6, 'y (m)', 'end', 'pl-tl'));
@@ -364,7 +374,7 @@
       // In the cart's frame the ground slides backward: offset the ground marks by the cart's travel.
       var shift = inCart ? gq.cart : 0, p2 = [];
       p.push(grass(-1500, geo.w + 1500, geo.ground));
-      var step = gridStep(geo.spanX) / 2, xEnd = geo.x0 + (geo.w - geo.L - geo.R) / geo.ppm;
+      var step = pxStep(geo.spanX, geo.ppm, 40) / 2, xEnd = geo.x0 + (geo.w - geo.L - geo.R) / geo.ppm;
       for(var x = Math.floor((geo.x0 + shift) / step) * step; x - shift <= xEnd + step; x += step){
         var sx = X(x - shift);
         if(sx < -10 || sx > geo.w + 10) continue;

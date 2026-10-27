@@ -125,7 +125,7 @@
       var k = chip.getAttribute('data-k'), ghost = null, sx = e.clientX, sy = e.clientY, moved = false;
       function mv(ev){
         if(!moved && Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
-        if(!moved){ moved = true; ghost = document.createElement('div'); ghost.className = 'pb-ghost'; ghost.innerHTML = chip.querySelector('svg').outerHTML; document.body.appendChild(ghost); }
+        if(!moved){ moved = true; ghost = document.createElement('div'); ghost.className = 'pb-ghost'; ghost.innerHTML = chip.querySelector('svg').outerHTML; document.body.appendChild(ghost); $('.pb-after').classList.add('is-target'); }
         ghost.style.left = ev.clientX + 'px'; ghost.style.top = ev.clientY + 'px';
         var over = isOver(ev); $('.pb-after').classList.toggle('is-over', over);
         ev.preventDefault();
@@ -133,10 +133,17 @@
       function up(ev){
         window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
         if(ghost) ghost.remove();
-        $('.pb-after').classList.remove('is-over');
-        if(moved){ chip._dragged = true; if(isOver(ev)) add(k, 1); setTimeout(function(){ chip._dragged = false; }, 0); }
+        $('.pb-after').classList.remove('is-over', 'is-target');
+        if(moved){
+          chip._dragged = true; setTimeout(function(){ chip._dragged = false; }, 0);
+          if(ev.type === 'pointercancel') return;
+          if(isOver(ev)) add(k, 1);
+          else fb('<span class="bt-small">Drop it inside <b>After: your box</b> (or just tap the particle).</span>');
+        }
       }
-      function isOver(ev){ var r = $('.pb-after svg').getBoundingClientRect(); return ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom; }
+      // Forgiving drop: anywhere on the after box, with a finger's width of
+      // margin around it, counts (a fingertip hides the exact edge).
+      function isOver(ev){ var r = $('.pb-after svg').getBoundingClientRect(), m = 24; return ev.clientX >= r.left - m && ev.clientX <= r.right + m && ev.clientY >= r.top - m && ev.clientY <= r.bottom + m; }
       window.addEventListener('pointermove', mv, { passive: false }); window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
     }
     function draw(){

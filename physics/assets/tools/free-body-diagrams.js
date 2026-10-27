@@ -213,10 +213,23 @@
   /* Arrows of a solved situation, to scale, from the dot. */
   function fbdArrows(forces, dot, sc, o){
     o = o || {};
+    // Forces that point the same way (a hand pressing down beside gravity) would
+    // sit on top of each other: draw them side by side, a few px either side of
+    // the dot, with their labels on the outside so both read.
+    var dirKey = function(f){ return Math.round((((f.ang % 360) + 360) % 360) / 4); };
+    var groups = {}; forces.forEach(function(f, i){ if(f.mag > 1e-9){ var k = dirKey(f); (groups[k] = groups[k] || []).push(i); } });
     return forces.map(function(f, i){
-      var L = f.mag * sc.ppN, v = pv(f.ang, L);
+      var L = f.mag * sc.ppN, v = pv(f.ang, L), g = f.mag > 1e-9 ? groups[dirKey(f)] : null, x0 = dot.x, y0 = dot.y, lab = '';
+      var arrowO = { cls: TY[f.type].cls + ' fb-a', label: f.sym, width: 4, head: 11 };
+      if(g && g.length > 1){
+        var j = g.indexOf(i), off = (j - (g.length - 1) / 2) * 9, u = L > 0 ? { x: v.x / L, y: v.y / L } : { x: 0, y: 1 }, nx = -u.y, ny = u.x;
+        x0 += nx * off; y0 += ny * off; arrowO.label = '';
+        // Label beyond the tip, pushed out on this arrow's side of the pair.
+        var side = off === 0 ? 1 : off / Math.abs(off), lx = x0 + v.x + u.x * 14 + nx * side * 10, ly = y0 + v.y + u.y * 14 + ny * side * 10 + 5;
+        lab = '<g class="phys-arrow ' + TY[f.type].cls + ' fb-a"><text x="' + n1(lx) + '" y="' + n1(ly) + '" text-anchor="' + (nx * side < -0.3 ? 'end' : nx * side > 0.3 ? 'start' : 'middle') + '">' + A.subText(f.sym) + '</text></g>';
+      }
       return '<g class="fb-f' + (o.sel === i ? ' is-sel' : '') + '"' + (o.tap ? ' data-f="' + i + '" tabindex="0" role="button" aria-label="' + esc(plain(sub(f.sym)) + ', ' + f.agent + ' on ' + (o.obj || 'object') + ': ' + f3(f.mag) + ' newtons, ' + dirText(f.ang)) + '"' : '') + '>' +
-        (o.tap ? Ln(dot.x, dot.y, dot.x + v.x, dot.y + v.y, 'fb-hit') : '') + A.arrow(dot.x, dot.y, v.x, v.y, { cls: TY[f.type].cls + ' fb-a', label: f.sym, width: 4, head: 11 }) + '</g>';
+        (o.tap ? Ln(x0, y0, x0 + v.x, y0 + v.y, 'fb-hit') : '') + A.arrow(x0, y0, v.x, v.y, arrowO) + lab + '</g>';
     }).join('') + '<circle class="fb-dot" cx="' + n1(dot.x) + '" cy="' + n1(dot.y) + '" r="4.5"/>';
   }
   /* Forces tip to tail, and the dashed ΣF from start to end: the net force,

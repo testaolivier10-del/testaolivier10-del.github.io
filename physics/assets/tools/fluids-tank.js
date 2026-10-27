@@ -135,7 +135,7 @@
   function surfY(){ return TK.floor - TK.depth * TK.ppm; }
   function floatSvg(st){
     var p = 'ft' + (++gid), o = st.obj, ys = surfY(), by = ys + st.y * TK.ppm, cx = 200, h = FT.height(o) * TK.ppm;
-    var t = tankSvg(st.fluid, TK.x0, TK.x1, TK.rim, TK.floor, ys, p), inner = defs(p) + t.back + objSvg(o, cx, by, TK.ppm, p) + t.surf;
+    var t = tankSvg(st.fluid, TK.x0, TK.x1, TK.rim, TK.floor, ys, p), inner = defs(p) + t.back + '<g class="ft-o">' + objSvg(o, cx, by, TK.ppm, p) + '</g>' + t.surf;
     if(st.dims){
       var dy = Math.max(0, Math.min(h, st.y * TK.ppm));
       inner += '<path class="ft-dim" d="M' + (cx + h / 2 + 10) + ' ' + ys.toFixed(1) + 'v' + dy.toFixed(1) + 'm-5 0h10m-10 ' + (-dy).toFixed(1) + 'h10"/><text x="' + (cx + h / 2 + 18) + '" y="' + (ys + dy / 2 + 5).toFixed(1) + '" class="ft-mut">' + esc(st.dims) + '</text>';
@@ -307,7 +307,7 @@
     var $$ = function(sel){ var a = Array.prototype.slice.call(host.querySelectorAll(sel)); return LS ? a.concat(Array.prototype.slice.call(LS.root.querySelectorAll(sel))) : a; };
     var dock = host.querySelector('.ft-dock'), view = host.querySelector('.ft-view'), sceneEl = host.querySelector('.ft-scene'), panelEl = host.querySelector('.ft-panel');
     var say = T.announcer(host.querySelector('.ft-live'));
-    var cue = T.cue('Pick an object, then press <b>Drop it in</b>.');
+    var cue = T.cue('Pick an object, then press <b>Drop it in</b>, or drag it into the fluid.');
     dock.insertBefore(cue.el, dock.firstChild);
     var grp = function(g){ return host.querySelector('.ft-grp[data-g="' + g + '"]') || $('.ft-grp[data-g="' + g + '"]'); };
     var sl = {};
@@ -430,16 +430,25 @@
     /* Drag in the scene: the probe (pressure), the object (float), the scale's object (scale). */
     var dragging = false;
     function svgY(e, svg){ var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; var m = svg.getScreenCTM(); return m ? pt.matrixTransform(m.inverse()).y : 0; }
+    // The scene's svg is rebuilt as it changes (even mid-drag), which drops a
+    // pointer capture on it: listen on the scene box, then on the window for
+    // the rest of the drag (audit 2026-10: the block could not be dragged).
+    var bound = false;
     function bindScene(){
-      var svg = sceneEl.querySelector('svg'); if(!svg) return;
-      svg.onpointerdown = function(e){
-        if(st.scene !== 'pressure' && st.scene !== 'float' && st.scene !== 'scale') return;
-        dragging = true; touched(); try{ svg.setPointerCapture(e.pointerId); }catch(x){}
+      if(bound || !sceneEl) return; bound = true;
+      sceneEl.addEventListener('pointerdown', function(e){
+        if(!sceneEl.querySelector('svg') || (st.scene !== 'pressure' && st.scene !== 'float' && st.scene !== 'scale')) return;
+        if(e.button > 0) return;
+        dragging = true; touched();
         if(st.scene === 'float') stopLoop();
         move(e); e.preventDefault();
-      };
-      svg.onpointermove = function(e){ if(dragging) move(e); };
-      svg.onpointerup = svg.onpointercancel = function(){ if(!dragging) return; dragging = false; if(st.scene === 'float') drop(sim.state.y); };
+        var mv = function(ev){ if(dragging){ move(ev); ev.preventDefault(); } };
+        var up = function(){
+          window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
+          if(!dragging) return; dragging = false; if(st.scene === 'float') drop(sim.state.y);
+        };
+        window.addEventListener('pointermove', mv, { passive: false }); window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
+      });
     }
     function move(e){
       var svg = sceneEl.querySelector('svg'), y = svgY(e, svg);
@@ -569,7 +578,8 @@
       T.studioPane(pane, s, { stage: [view], dock: [dock], why: [host.querySelector('.ft-say')], details: [] });
       s.detailsTitle('Numbers');
       draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ft-drop'), text: 'Drop it in and watch the forces' });
+      // Aim at the object on the stage (always on screen); the Drop button can sit below the fold on a phone.
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ft-o') ? '.ft-o' : '.ft-drop', text: 'Drag it into the fluid' });
     }
     setScene(st.scene);
     return {
