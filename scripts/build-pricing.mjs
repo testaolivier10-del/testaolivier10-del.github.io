@@ -76,6 +76,13 @@ const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
    a private tutor's hour. Care.com's national figure for a tutor's starting
    rate was about $26 an hour in October 2026; update the number and the date
    together if it moves. */
+/* Where each "For comparison" line in premium.js comes from (checked on the
+   competitors' own pages, 2026-10-25). Re-check before changing a sentence. */
+const AP_SOURCES = [['Fiveable', 'https://fiveable.me/pricing']];
+const COMPARE_SOURCES = {
+  nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
+  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES,
+};
 const TUTOR_HOUR = { rate: 26, source: 'https://www.care.com/cost/private-tutors/boston-ma', checked: 'October 2026' };
 const PRICES = ORDER.flatMap((k) => COURSES[k].passes.map((x) => x.price));
 const LOW = Math.min(...PRICES), HIGH = Math.max(...PRICES);
@@ -116,7 +123,7 @@ function passRow(p) {
     (founding
       ? `<span data-founding-until="${founding.until}"><s>${money(p.price)}</s> <b>${money(foundingPrice(p.price))}</b> <small>founding price</small></span><b data-founding-after="${founding.until}" hidden>${money(p.price)}</b>`
       : `<b>${money(p.price)}</b>`) +
-    `</span></li>`;
+    `</span> <small class="pp-day" data-pass="${p.id}"></small></li>`;
 }
 
 /* One <details> per course (polish 2026-10-17, A8): the page opens on the
@@ -128,15 +135,16 @@ function courseSection(key) {
   const from = lowest(c).price;
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
-          <summary><img class="pp-cover" src="assets/covers/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}</span></summary>
+          <summary><img class="pp-cover" src="assets/covers/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
           <div class="pp-cols">
             <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
             <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
           </div>
           <ul class="pp-passes">${c.passes.map(passRow).join('')}</ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="${key}" data-premium-source="pricing-page">Get Premium for ${esc(c.name)}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
-          <p class="pp-sure">Never renews. Full refund within 7 days.</p>
-          ${c.guarantee ? `<p class="pp-guarantee" id="pass-or-extend">${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p>` : ''}${c.passes.some((p) => p.until) ? `
+          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>${c.compare ? `
+          <p class="pp-compare">${esc(c.compare)} Sources: ${(COMPARE_SOURCES[key] || []).map(([n, u]) => `<a href="${u}" rel="noopener">${esc(n)}</a>`).join(', ')}.</p>` : ''}
+          ${c.guarantee ? `<details class="pp-guarantee" id="pass-or-extend"><summary>Pass-or-extend: if you don&rsquo;t pass the NREMT during your pass, you can claim more days free.</summary><p>${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p></details>` : ''}${c.passes.some((p) => p.until) ? `
           <p>One pass, whenever you buy it: it lasts through ${esc(longDate(c.passes.find((p) => p.until).until))}, the end of the 2027 exam season.</p>` : ''}
         </details>`;
 }
@@ -280,7 +288,7 @@ function premiumPage() {
   .pp-cols li::before{content:"";position:absolute;left:3px;top:8px;width:11px;height:6px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg);}
   .pp-cols > div:last-child li::before{border-color:var(--teal-hi);}
   .pp-passes{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:0;}
-  .pp-passes li{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;margin:0;max-width:none;}
+  .pp-passes li{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;gap:4px 14px;border-top:1px solid var(--line);padding:10px 0;margin:0;max-width:none;}
   .pp-passes li:first-child{border-top:0;}
   .pp-label{color:var(--ink);font-weight:800;}
   .pp-price b{color:var(--ink);font-weight:900;font-size:17px;}
@@ -307,6 +315,12 @@ function premiumPage() {
     .pp .pp-from{font-size:15px;}
     .pp-ticket{padding:24px 22px 22px;}
   }
+  .pp-guarantee > summary{cursor:pointer;font-weight:800;}
+  .pp-guarantee > p{margin:8px 0 0;}
+  .pp-day{display:block;flex-basis:100%;text-align:left;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:-4px;}
+  .pp-day:empty{display:none;}
+  .pp .pp-len{display:block;font:700 11.5px var(--font-ui);color:var(--muted);text-align:right;}
+  .pp-compare{margin:6px 0 0;font-size:14px;color:var(--muted);}
 </style>
 <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
@@ -328,7 +342,7 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
       <span class="sp-pill">Free vs Premium</span>
       <h1 id="ppTitle">What&rsquo;s free,<span>and what Premium adds.</span></h1>
       <p class="hand">one payment, never a subscription</p>
-      <p class="lede">Every course is free to start. Premium is a one-time pass for one course, $${LOW} to $${HIGH}, with no subscription and a 7-day refund.${founding ? ` <span data-founding-until="${founding.until}">${FOUNDING.off}% off until ${longDate(founding.until)}.</span>` : ''}</p>
+      <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from ${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(LOW))} (founding price until ${longDate(founding.until)})</span><span data-founding-after="${founding.until}" hidden>${money(LOW)}</span>` : money(LOW)}, with a full refund within 7 days.</p>
       <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a><a class="btn-ghost" href="/#subjects">Start free</a></div>
     </div>
     ${ticketHtml()}
@@ -415,6 +429,15 @@ ${MARK ? `    ${TM_HTML}
     if (now > Date.parse(el.getAttribute('data-founding-after') + 'T23:59:59Z')) el.hidden = false;
   });
 })();
+</script>
+<script>
+// Each pass's price per day, from premium.js once it has loaded (a dated pass
+// counts the days it has left, so this cannot be written at build time).
+document.addEventListener('DOMContentLoaded', function(){
+  var P = window.LevlPremium;
+  if (!P || !P.perDay) return;
+  [].forEach.call(document.querySelectorAll('.pp-day[data-pass]'), function(el){ el.textContent = P.perDay(el.getAttribute('data-pass')); });
+});
 </script>
 <script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
@@ -514,12 +537,23 @@ f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e
   return `    <script src="assets/home-try.js" defer></script>`;
 }
 
+/* Who makes this, how the questions are written and what changes, folded into the FAQ instead of a row of
+   cards under it (Olivier, 2026-10-26). They carry links, so they are written as HTML and stay out of the
+   FAQPage data. */
+const HOME_ABOUT_QA = [
+  ['Who makes LevlPrep?', 'An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.'],
+  ['How are the questions written?', 'Every question in every course is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, every other course&rsquo;s questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.'],
+  ['How do I see what changed?', 'Corrected questions, new lessons and site fixes are listed, dated, on <a href="changelog.html">What&rsquo;s new</a>.'],
+];
+
 function hubFaq() {
   return `  <section class="home-faq" aria-labelledby="home-faq-h">
     <h2 id="home-faq-h">Questions</h2>
     <div class="hub-faq">
 ${FAQ.map(([q, a], i) => `      <details class="faq-item"><summary>${esc(q)}</summary>
       <p>${esc(i === 1 ? PRICE_SHORT : a)}${i === 1 ? ' <a href="premium.html">Every price, course by course</a>.' : ''}</p></details>`).join('\n')}
+${HOME_ABOUT_QA.map(([q, a]) => `      <details class="faq-item"><summary>${q}</summary>
+      <p>${a}</p></details>`).join('\n')}
     </div>
   </section>`;
 }

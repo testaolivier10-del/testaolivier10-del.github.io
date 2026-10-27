@@ -70,6 +70,7 @@
       name: 'NREMT-EMT Prep',
       dailyFree: 15,
       freeChapters: [],
+      compare: 'For comparison: Pocket Prep EMS is $15.99 a month or $39.99 for 3 months (checked October 2026).',
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
@@ -144,6 +145,7 @@
       freeChapters: ['unit-1', 'unit-2'],
       // A fixed-date pass: it lasts until `until` whenever it is bought, and
       // the Worker never ends it sooner (PASSES in worker/src/premium.js).
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'bio-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -171,6 +173,7 @@
       // As AP® Biology: Units 1 and 2 open, and every math-skills lesson
       // (topic.free in chem-curriculum.js, isFreeTopic in scripts/lib/apchem-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'chem-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -197,6 +200,7 @@
       // As AP® Chemistry (docs/apphys-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apphys-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'phys-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -224,6 +228,7 @@
       // As AP® Physics 1 (docs/apcalc-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apcalc-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'calc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -252,6 +257,7 @@
       // every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apstat-build.mjs (build-pricing --check compares them).
       freeChapters: ['unit-1'],
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'stat-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -282,6 +288,7 @@
       // and every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apenv-build.mjs.
       freeChapters: ['unit-1', 'unit-2'],
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
       passes: [
         { id: 'env-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -608,6 +615,31 @@
     return (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
   }
 
+  /* The price per day of access under each pass. A small one-time price reads
+     smaller per day than as one total (Gourville 1998; Atlas & Bartels 2018;
+     docs/trust-conversion-plan.md, 2026-10-25). Days match the Worker's PASSES;
+     a dated pass counts the days it has left. */
+  var PASS_DAYS = { '-90': 90, '-semester': 150, '-year': 365 };
+  function passDays(p) {
+    if (p.until) return Math.max(1, Math.ceil((Date.parse(p.until + 'T23:59:59-10:00') - Date.now()) / 864e5));
+    for (var k in PASS_DAYS) if (p.id.slice(-k.length) === k) return PASS_DAYS[k];
+    return 0;
+  }
+  function nowPrice(p) { return foundingLive() ? p.price * (100 - FOUNDING.off) / 100 : p.price; }
+  function dayText(p) {
+    var d = passDays(p);
+    if (!d) return '';
+    var cents = Math.max(1, Math.round(nowPrice(p) * 100 / d));
+    return 'about ' + (cents < 100 ? cents + '¢' : '$' + money(cents / 100)) + ' a day';
+  }
+  function perDay(passId) {
+    for (var k in COURSES) {
+      var hit = COURSES[k].passes.filter(function (p) { return p.id === passId; })[0];
+      if (hit) return dayText(hit);
+    }
+    return '';
+  }
+
   function gate(course, feature, source) {
     var c = COURSES[course];
     if (!c || has(course)) return '';
@@ -729,6 +761,7 @@
       (now !== null
         ? ' <s>$' + p.price + '</s> <b class="premium-pass__now">$' + money(now) + '</b>'
         : ' <b class="premium-pass__now">$' + p.price + '</b>') +
+      (dayText(p) ? '<small class="premium-pass__day">' + dayText(p) + '</small>' : '') +
       '</span>' +
       '<button type="button" class="auth-modal-submit premium-buy" data-premium-buy="' + esc(p.id) + '">Get it</button>' +
     '</li>';
@@ -808,22 +841,28 @@
       var dated = c.passes.filter(function (p) { return p.until; })[0];
       document.getElementById('premiumSub').textContent =
         (dated
-          ? 'A one-time pass, valid through ' + untilText(dated.until) + ' whenever you buy it, so the sooner you start, the more of the school year it covers. No subscription, nothing renews.'
-          : 'One-time passes. No subscription, nothing renews.') +
-        ' Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
-        (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
+          ? 'One payment, valid through ' + untilText(dated.until) + ' whenever you buy it, so the sooner you start, the more of the school year it covers.'
+          : 'One payment per pass.') +
+        (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + untilText(FOUNDING.until) + '.' : '');
       // A fixed-date pass is off sale once its day is over (the Worker refuses
       // it too); Hawaii time, the last US day to end.
       var sale = c.passes.filter(function (p) { return !p.until || Date.now() <= Date.parse(p.until + 'T23:59:59-10:00'); });
       body.innerHTML = (sale.length
         ? '<ul class="premium-passes">' + sale.map(function (p) { return passHtml(course, p); }).join('') + '</ul>'
         : '<p>This pass is no longer on sale.</p>') +
-        (c.guarantee ? '<p class="premium-guarantee">' + esc(guaranteeText()) + '</p>' : '');
+        // Next to the button: what removes the risk (2026-10-25: 7 opened
+        // Premium in two weeks, none went on to sign in). The full guarantee
+        // terms sit one tap away instead of in front of the price.
+        '<p class="premium-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>' +
+        (c.compare ? '<p class="premium-compare">' + esc(c.compare) + '</p>' : '') +
+        (c.guarantee ? '<p class="premium-guarantee">Pass-or-extend: if you don’t pass the NREMT during your pass, you can claim ' +
+          GUARANTEE.extendDays + ' more days free. <a href="/terms.html#pass-or-extend" target="_blank" rel="noopener">Conditions</a></p>' : '');
       // innerHTML for the links; every other part is a fixed string or
       // escaped, as elsewhere in this dialog.
       fine.innerHTML = esc(
         'When a pass ends, your progress stays; only the Premium parts lock again. ' +
-        'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
+        'Full refund within 7 days of buying, once per account and email address. ' +
+        'Prices in US dollars; any sales tax or VAT is shown before you pay. Secure checkout by Polar, our merchant of record. ' +
         'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
         (/^ap/.test(course) ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
@@ -1231,6 +1270,7 @@
     open: open,
     quota: quota,
     noteAnswer: noteAnswer,
+    perDay: perDay,
     courseTally: courseTally,
     todayScore: todayScore,
     freeExam: freeExam,
