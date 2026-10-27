@@ -228,7 +228,7 @@ ${parts.map((p, i) => `  <section class="phys-part phys-step${i === 0 ? ' is-on'
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="phys-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['phys-questions.js', 'phys-lesson.js'], premium: true, site: ['course/lesson.js'] })}
+${tail({ depth, section: 'learn', extra: ['phys-questions.js', 'phys-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -541,7 +541,7 @@ ${bodyOpen()}
   </main>
 </div>
 ${footer(depth, 'learn')}
-${tail({ depth, section: 'learn', extra: ['phys-toc.js', 'phys-book.js'] })}
+${tail({ depth, section: 'learn', extra: ['phys-toc.js', 'phys-book.js'], site: ['course/read-toggle.js'] })}
 </body>
 </html>
 `;
@@ -725,7 +725,7 @@ ${bodyOpen(` data-app="${a.slug}"`)}
   ${study || hub ? crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }]).replace('class="phys-crumb', 'class="cx-crumb phys-crumb')
     : crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }])}
   ${study || hub
-    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML} <span class="cx-beta">Beta</span></div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`
+    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`
     : `<header class="hero phys-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`}
   <div id="app" class="phys-app-mount${study ? ' cx-study' : ''}" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}${a.studio ? ' data-studio="1"' : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
     ? '<noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript>'
@@ -893,7 +893,7 @@ ${bodyOpen(' data-app="teachers"')}
 
   <section class="xsection" aria-labelledby="h-align">
     <h2 id="h-align">Alignment with the course framework</h2>
-    <p>The units and topics follow the order of the 2024-25 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. The course is in Beta: it has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
+    <p>The units and topics follow the order of the 2024-25 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. It has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
     ${units.map(unitTable).join('\n    ')}
     ${skills.length ? `<h3 class="phys-tc-skills">Skills</h3><p class="phys-small">Each math topic sits right before the framework topic that first needs it.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>

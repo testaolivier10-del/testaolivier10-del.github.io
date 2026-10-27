@@ -210,6 +210,9 @@
 
     document.documentElement.classList.add('ls-page');
     document.body.classList.add('ls-on');
+    // A full tool owns the screen: no site header, course tabs or cover band (Olivier, 2026-10-26: "clicking on a
+    // tool brought you to just the tool, like in full"). Slim reference pages keep the header on a desktop.
+    if(!slim) document.body.classList.add('ls-full');
 
     /* ---------------- regions */
     var modeOnly = [];
@@ -619,6 +622,7 @@
     s.suspend = function(on){
       root.hidden = !!on;
       document.body.classList.toggle('ls-on', !on);
+      if(!slim) document.body.classList.toggle('ls-full', !on);
       document.documentElement.classList.toggle('ls-page', !on);
       return s;
     };

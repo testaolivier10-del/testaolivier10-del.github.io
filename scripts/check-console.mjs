@@ -173,7 +173,15 @@ async function visit(path) {
   });
 
   try {
-    await page.goto(ORIGIN + path, { waitUntil: 'load', timeout: 30000 });
+    /* One retry on a navigation timeout: with 8 pages loading at once on a busy CI runner, a same-origin
+       page sometimes misses 30 s (PRs #102 and #104 failed on a different page each run, and every one
+       passed locally). A page that times out twice still fails. */
+    try {
+      await page.goto(ORIGIN + path, { waitUntil: 'load', timeout: 30000 });
+    } catch (e) {
+      if (!/Timeout/.test(String(e && e.message))) throw e;
+      await page.goto(ORIGIN + path, { waitUntil: 'load', timeout: 60000 });
+    }
     // Deferred scripts have run by 'load', but this site's per-page bootstraps
     // wait for DOMContentLoaded and then render. Give that work a moment to
     // throw before deciding the page is clean.

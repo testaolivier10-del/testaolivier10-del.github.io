@@ -29,7 +29,7 @@
   function builder(){
     var form = $('nrBuilder');
     if(!form) return;
-    var BTN = { weak: 'adaptiveStartBtn', domain: 'domainStartBtn', missed: 'reviewBtn', flagged: 'flaggedReviewBtn' };
+    var BTN = { weak: 'adaptiveStartBtn', domain: 'domainStartBtn', missed: 'reviewBtn' };  // flagged questions run from Review
     var LEN = { weak: 'adaptiveLength', domain: 'domainLength' };
     function mode(){ var r = form.querySelector('input[name="nrMode"]:checked'); return r ? r.value : 'weak'; }
     function n(id){ var el = $(id); return el ? parseInt(String(el.textContent).replace(/\D/g, ''), 10) || 0 : 0; }
@@ -51,13 +51,14 @@
     function sync(){
       var m = mode();
       // Empty queues stay visible but cannot be chosen, as in the other courses.
-      [['missed', 'missedCount', 'Nothing missed. Nice.'], ['flagged', 'flaggedCount', 'Nothing flagged.']].forEach(function(x){
+      [['missed', 'missedCount', 'Nothing missed. Nice.']].forEach(function(x){
         var input = form.querySelector('input[value="' + x[0] + '"]');
+        if(!input) return;
         var empty = n(x[1]) === 0;
         input.disabled = empty;
         if(empty && input.checked){ form.querySelector('input[value="weak"]').checked = true; m = 'weak'; }
       });
-      var queue = m === 'missed' || m === 'flagged';
+      var queue = m === 'missed';
       setStep('topic', m === 'domain');
       setStep('weak', m === 'weak');
       setStep('count', !queue, '3');
@@ -69,8 +70,7 @@
         var dom = $('domainSelect');
         sum.textContent = m === 'weak' ? len + ' questions, weak spots'
           : m === 'domain' ? len + ' questions, ' + (dom ? dom.options[dom.selectedIndex].text : '')
-          : m === 'missed' ? n('missedCount') + ' missed questions, until each is right'
-          : n('flaggedCount') + ' flagged questions';
+          : n('missedCount') + ' missed questions, until each is right';
       }
     }
     form.addEventListener('change', function(e){
@@ -80,7 +80,7 @@
     });
     // The engine repaints counts and caps the length selects whenever the
     // intro screen refreshes (sign-in, a pass, the allowance); follow it.
-    ['missedCount', 'flaggedCount', 'adaptiveLength', 'domainLength'].forEach(function(id){
+    ['missedCount', 'adaptiveLength', 'domainLength'].forEach(function(id){
       var el = $(id); if(el && window.MutationObserver) new MutationObserver(sync).observe(el, { childList: true, characterData: true, subtree: true });
     });
     sync();

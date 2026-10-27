@@ -72,7 +72,7 @@
     LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: 'AP® Chemistry', back: BASE + 'index.html', backLabel: 'Back to AP® Chemistry',
       slug: 'apchem-justify', host: app, detailsTitle: 'Topic',
       menu: { copyLink: true, report: { course: 'apchem', id: 'page:justify' }, allTools: { label: 'Course home' },
-        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
+        note: { label: 'Note.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
     if(lede){ var pp = document.createElement('p'); pp.textContent = lede.textContent; LS.add('about', pp); }
     app.hidden = true;
     return LS;

@@ -54,6 +54,10 @@ window.__notesData.catch(function(){});
      questions, tools) and the printable whole book. */
   .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
   .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  /* A section's interactive lesson (scripts/build-nremt-lessons.mjs). */
+  .nl-link{margin:4px 0 14px;}
+  .nl-link a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--tint-accent);color:var(--accent-text);font:800 13.5px var(--font-ui);text-decoration:none;}
+  .nl-link a:hover{text-decoration:underline;}
   .bk-sec .domain-tag{
     font:900 10.5px var(--font-ui);color:var(--cink);
     background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
@@ -381,6 +385,9 @@ window.__notesData.catch(function(){});
   </footer>
 </div>
 
+<!-- nremt-lessons:start (scripts/build-nremt-lessons.mjs) -->
+<script>window.NREMT_LESSONS = {"ch12-primary-assessment":{"href":"lessons/primary-assessment.html","title":"The primary assessment"},"ch29-bleeding-control":{"href":"lessons/bleeding-direct-pressure.html","title":"Direct pressure and the bleeding ladder"},"ch29-tourniquets":{"href":"lessons/tourniquets-and-wound-packing.html","title":"Tourniquets and wound packing"},"ch29-internal-bleeding":{"href":"lessons/internal-bleeding-and-shock.html","title":"Internal bleeding and hemorrhagic shock"}};</script>
+<!-- nremt-lessons:end -->
 <script>
 // Runs after the deferred scripts above it: every external script on this
 // page is deferred so the page can paint before they arrive, and deferred
@@ -654,6 +661,13 @@ function renderContents(activeIndex, q){
 }
 
 /* ---- one chapter ---------------------------------------------------- */
+// The section's interactive lesson, when one is built (scripts/build-nremt-lessons.mjs
+// writes window.NREMT_LESSONS between the nremt-lessons markers).
+function lessonLink(sec){
+  const L = (window.NREMT_LESSONS || {})[sec.id];
+  return L ? `<p class="nl-link"><a href="${L.href}">Interactive lesson: ${esc(L.title)} &rarr;</a></p>` : '';
+}
+
 function sectionHtml(sec, si, ch){
   const topicsHtml = sec.topics.map((t, ti) => {
     const body = t.paragraphs ? t.paragraphs.map(p => `<p>${p}</p>`).join('') : (t.html || '');
@@ -675,6 +689,7 @@ function sectionHtml(sec, si, ch){
       <h2><span class="bk-toc-n">${sectionNumber(ch, si)}</span>${sec.title}</h2>
       ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
     </div>
+    ${lessonLink(sec)}
     ${sec.note ? `<p class="section-note">${sec.note}</p>` : ''}
     <div class="bk-prose">${topicsHtml}</div>
     ${takeawaysHtml}

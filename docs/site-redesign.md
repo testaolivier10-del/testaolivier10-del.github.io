@@ -149,3 +149,29 @@ Exams, the running exam and its results, AP® unit tests, progress and exam day,
   into the kicker sections by `assets/course/r3-db.js` after each render; NREMT's running exam bar and results
   band are `nremt/assets/r3-exam.js`. Every exams script's setup card got its heading and holds the free notice.
 - Compare images (board left, built right): scratchpad `b3-compare/`.
+
+### Read | Interactive switch (owner 2026-10-26, claude/read-toggle)
+Olivier: the lesson button should not sit at the bottom of each textbook section; the textbook should toggle
+between reading and the interactive lessons. `assets/course/read-toggle.js` (styles at the end of
+`assets/course/r3-reading.css`) puts one Read | Interactive switch at the top of the textbook (ochem, A&P, the six AP®
+courses), floating in view while reading, and in each lesson's hero band. Interactive opens the lesson of the section
+being read (sections carry `data-lesson`, written by each `*-book.js` and by `ochem/assets/textbook.js`; a topic with
+no lesson has `data-lesson=""` and the switch shows Interactive as unavailable); Read opens the textbook at the
+lesson's topic. The choice is remembered per course (`levl_book_mode_<course>`): with Interactive chosen, opening the
+textbook goes to the last lesson (never on Back). The per-section Lesson button (AP®, A&P) and "Do the interactive
+lesson" (ochem) are gone; ochem's Premium tag moved onto the switch. NREMT has no lessons yet and gets the switch when
+it does. Builders load the script on book and lesson pages; the ochem lesson pages and `ochem/learn.html` carry the
+tag by hand.
+
+### Tools open full screen again (2026-10-26, owner)
+Olivier: "with the tools it's kind of annoying since it barely fits ... I liked how it was before where clicking on a
+tool brought you to just the tool, like in full." So the round 3 desktop header, course tabs and cover band are gone
+from every full tool page in every course:
+- `assets/course/tool-studio.js`: `mount()` adds `body.ls-full` unless `slim` (and `suspend()` clears it with
+  `ls-on`, so a Premium gate shows the normal page). `tool-studio.css` hides the site header, the course tabs and any
+  `.r3-toolband` under `ls-full` at every width. Slim reference pages keep the header and tabs on a desktop.
+- `scripts/lib/r3-tools.mjs` `toolBand()` writes only its empty markers unless `o.ref`, so the AP®, A&P and ochem
+  builders stop writing a band. `scripts/build-r3-tools.mjs` keeps the band only on NREMT's two slim reference pages
+  (mnemonics, reference cards); body map, flowcharts, formulary, scenarios, skill sheets and the sound trainer are
+  full tools. The Tools hubs keep the round 3 look.
+- Checked: the stage fills 1366x768 and 1920x1080 with no page scroll; phones unchanged (they already hid the chrome).

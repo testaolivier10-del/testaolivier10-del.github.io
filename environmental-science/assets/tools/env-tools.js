@@ -804,7 +804,7 @@
           return location.origin + location.pathname + (code ? '?seed=' + code.textContent : '');
         },
         report: { course: 'apenv', id: 'tool:' + slug },
-        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Environmental Science teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+        note: { label: 'Note.', html: 'This course has not yet been reviewed by an AP® Environmental Science teacher. <a href="' + base() + '../sources.html">Sources</a>' }
       }
     });
     if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }

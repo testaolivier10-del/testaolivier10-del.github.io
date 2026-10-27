@@ -36,6 +36,9 @@ function put(rel, start, end, body, anchor) {
 
 /* ---- the tool pages ---- */
 const BAND = ['<!-- r3-toolband:start -->', '<!-- r3-toolband:end -->'];
+// The full-screen tools (Tool Studio mount); mnemonics and reference cards are slim reference pages that scroll and
+// keep the band.
+const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'scenario-sim', 'skillsheets', 'sound-trainer']);
 const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 for (const t of toolCovers('nremt')) {
   const rel = `nremt/${t.slug}.html`;
@@ -46,7 +49,7 @@ for (const t of toolCovers('nremt')) {
   const desc = /<meta name="description" content="([^"]*)"/.exec(html);
   if (!lede) { broken.push(`${rel}: no <p class="lede"> to take the hand line from`); continue; }
   put(rel, BAND[0], BAND[1], toolBand({
-    key: 'nremt', up: '../', slug: t.slug, hand: lede[1].trim(), lede: desc ? desc[1] : '', backHref: 'tools.html',
+    ref: !FULL.has(t.slug), key: 'nremt', up: '../', slug: t.slug, hand: lede[1].trim(), lede: desc ? desc[1] : '', backHref: 'tools.html',
     crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: 'NREMT-EMT Prep', href: 'index.html' }, { name: 'Tools', href: 'tools.html' }, { name: strip(t.title) }],
   }), '<!-- crumb:end -->');
 }

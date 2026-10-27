@@ -1257,6 +1257,9 @@ function refreshIntroState(){
   // first thing a new visitor saw. (On review.html the due queue is the page,
   // and an empty one gets its own explanation instead — see renderDueSummary.)
   var anyQueue = false;
+  // Review's flagged card (review.html#nrFlagCard) shows only while something is flagged.
+  const flagCard = document.getElementById('nrFlagCard');
+  if(flagCard) flagCard.hidden = flagged.length === 0;
   ['reviewBtn','flaggedReviewBtn'].concat(RUNNER_PAGE === 'review' ? [] : ['spacedReviewBtn']).forEach(function(id){
     var btn = $id(id);
     btn.hidden = btn.disabled;
@@ -1479,6 +1482,7 @@ setInterval(maybeShowStudyReminder, 15*60*1000);
   const queues = {
     spaced: loadDueForReview,
     review: loadMissed,
+    flagged: loadFlagged,
   };
   const load = queues[start];
   if(!load) return;

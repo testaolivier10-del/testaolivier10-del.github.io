@@ -117,7 +117,7 @@
 
         <!-- One builder (docs/course-shell.md, W-C): pick a mode, a topic, a
              length, Start. Each mode keeps its own engine button
-             (adaptiveStartBtn, domainStartBtn, reviewBtn, flaggedReviewBtn);
+             (adaptiveStartBtn, domainStartBtn, reviewBtn); flagged questions are on Review.
              nremt-practice.js shows the one that matches the chosen mode. -->
         <form class="cx-card cx-builder" id="nrBuilder" novalidate aria-label="Build a practice set" onsubmit="return false">
           <fieldset class="cx-step">
@@ -126,7 +126,6 @@
               <label class="cx-choice"><input type="radio" name="nrMode" value="weak" checked><span><b>Weak spots</b><span>Weighted toward what you miss; retargets after every question.</span></span></label>
               <label class="cx-choice"><input type="radio" name="nrMode" value="domain"><span><b>One domain or area</b><span>A short set from one exam domain or topic area.</span></span></label>
               <label class="cx-choice"><input type="radio" name="nrMode" value="missed"><span><b>Questions I missed</b><span><span id="missedCount">0</span> waiting until you get them right.</span></span></label>
-              <label class="cx-choice"><input type="radio" name="nrMode" value="flagged"><span><b>Flagged questions</b><span><span id="flaggedCount">0</span> you marked to come back to.</span></span></label>
             </div>
           </fieldset>
 
@@ -194,30 +193,16 @@
             <button type="button" class="btn-press" id="adaptiveStartBtn">Start practice</button>
             <button type="button" class="btn-press" id="domainStartBtn" hidden>Start practice</button>
             <button type="button" class="btn-press" id="reviewBtn" hidden>Start practice</button>
-            <button type="button" class="btn-press" id="flaggedReviewBtn" hidden>Start practice</button>
           </div>
           <div id="premiumNotice" class="premium-slot"></div>
         </form>
 
       </div>
 
-      <!-- Rail order from board R10-Practice-Setup: readiness, your numbers,
-           daily goal, review queue, then the other ways to study. -->
-      <aside class="cx-rail" aria-labelledby="cx-rail-h">
+      <!-- Practice keeps only practicing (Olivier, 2026-10-26): the streak, the numbers and the review queue
+           live on Progress and Review. The rail keeps readiness and the other ways to study. -->
+      <aside class="cx-rail" aria-label="Readiness and other ways to study">
         <div class="intro-row r3-readiness"><div id="readinessCard"></div></div>
-        <div class="cx-card cx-numbers">
-          <h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>
-          <div class="cx-stats" id="nrStats"></div>
-        </div>
-        <div id="streakWidget"></div>
-        <div class="cx-card cx-qcard">
-          <p class="cx-kicker">Review queue</p>
-          <h3 data-due-state="ready" hidden><span data-due="all">0</span> due for another look</h3>
-          <h3 data-due-state="empty-new">Your queue is clear</h3>
-          <h3 data-due-state="empty-done" hidden>Your queue is clear</h3>
-          <p>Questions you answer come back on a spacing schedule, so they stick.</p>
-          <a class="cx-more" href="review.html">Open review <span aria-hidden="true">&rarr;</span></a>
-        </div>
         <nav class="cx-links" aria-label="More ways to study">
           <a class="cx-link" href="flashcards.html"><b>Flashcards<small>Short facts on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
           <a class="cx-link" href="exams.html"><b>Exams<small>The timed 100-question exam.</small></b><span aria-hidden="true">&rarr;</span></a>

@@ -26,13 +26,13 @@
   var COURSE_LIST = [
     { key: 'nremt', searchLabel: 'NREMT', name: 'NREMT-EMT', dir: 'nremt', aliases: [], status: 'live' },
     { key: 'ochem', searchLabel: 'Organic Chem', name: 'Organic Chemistry', dir: 'ochem', aliases: ['organic-chemistry'], status: 'live' },
-    { key: 'anp', searchLabel: 'A&P', name: 'Anatomy & Physiology', dir: 'anatomy-physiology', aliases: ['a&p', 'ap', 'anatomy-physiology'], status: 'beta' },
-    { key: 'apbio', searchLabel: 'Biology', name: 'AP® Biology', dir: 'bio', aliases: ['bio', 'biology'], status: 'beta' },
-    { key: 'apchem', searchLabel: 'Chemistry', name: 'AP® Chemistry', dir: 'chem', aliases: ['chem', 'chemistry'], status: 'beta' },
-    { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'beta' },
-    { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'beta' },
-    { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'beta' },
-    { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'beta' },
+    { key: 'anp', searchLabel: 'A&P', name: 'Anatomy & Physiology', dir: 'anatomy-physiology', aliases: ['a&p', 'ap', 'anatomy-physiology'], status: 'live' },
+    { key: 'apbio', searchLabel: 'Biology', name: 'AP® Biology', dir: 'bio', aliases: ['bio', 'biology'], status: 'live' },
+    { key: 'apchem', searchLabel: 'Chemistry', name: 'AP® Chemistry', dir: 'chem', aliases: ['chem', 'chemistry'], status: 'live' },
+    { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'live' },
+    { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'live' },
+    { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'live' },
+    { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'live' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {

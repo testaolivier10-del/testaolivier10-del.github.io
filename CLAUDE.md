@@ -11,6 +11,12 @@ the finished course (Phases 2 and 3).
 `docs/anp-needs-author.md` holds open questions and contested science for human
 review; add to it instead of guessing.
 
+## NREMT interactive lessons
+
+`docs/nremt-lessons-spec.md` is the source of truth (format, engine, free vs Premium, accuracy rules, review process,
+build plan and accuracy log); read it before NREMT lesson work and update it in the same commit. Data:
+`nremt/data/lessons/*.json`; builder: `scripts/build-nremt-lessons.mjs`; open points: `docs/nremt-needs-author.md`.
+
 ## AP® Biology course
 
 `docs/apbio-spec.md` is the source of truth (owner brief, phase status, decisions, launch checklist); read it

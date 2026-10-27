@@ -84,7 +84,7 @@ export function glossaryMain({ crumbs, courseHtml, beta = false, lede, chapters,
     : `<a href="${esc(c.href)}">${esc(c.name)}</a> <span aria-hidden="true">&rsaquo;</span>`).join(' ')}</nav>`;
   const noscript = [...groups].map(([L, list]) => `<h2>${L}</h2><ul>${list.map((t) => `<li>${t.href ? `<a href="${esc(t.href)}">${esc(t.term)}</a>` : esc(t.term)}</li>`).join('')}</ul>`).join('');
   return `${crumb}
-  <header class="page-head"><div class="eyebrow">${courseHtml}${beta ? ' <span class="cx-beta">Beta</span>' : ''}</div><h1>Glossary</h1><p class="lede">${lede}</p></header>
+  <header class="page-head"><div class="eyebrow">${courseHtml}</div><h1>Glossary</h1><p class="lede">${lede}</p></header>
   <div class="gx">
     <div class="gx-tools">
       <div class="cx-search">${SEARCH_ICON}<label class="sr-only" for="gx-q">Find a term</label><input type="search" id="gx-q" autocomplete="off" spellcheck="false" placeholder="${esc(placeholder)}" aria-controls="gx-list"></div>
