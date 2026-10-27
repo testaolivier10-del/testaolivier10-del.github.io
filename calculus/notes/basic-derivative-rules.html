@@ -87,11 +87,24 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 </head>
 <body class="calc" data-topic="basic-derivative-rules" data-unit="unit-2">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bk bk-notes">
+<div class="r3 r3-read-top" data-cover="apcalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constant, Sum, Difference and Constant Multiple Rules: notes</span></nav>
+<p class="issue">Unit 2 <i></i> Topic 2.6 <span class="calc-beta calc-nav-ref">Beta</span></p>
+<h1 class="deck bk-title" id="r3Title">Constant, Sum, Difference <span>and Constant Multiple Rules</span></h1>
+<p class="hand calc-nav-ref">typed like real math</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/basic-derivative-rules.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="basic-derivative-rules">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fbasic-derivative-rules.html&amp;title=Constant%2C%20Sum%2C%20Difference%20and%20Constant%20Multiple%20Rules%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/basic-derivative-rules.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalc">
   <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
   <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
     <p class="tb-rail-title">Contents</p>
@@ -102,14 +115,7 @@
     <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
   </aside>
   <main class="tb-main" id="main">
-    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Constant, Sum, Difference and Constant Multiple Rules: notes</span></nav>
-    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/basic-derivative-rules.html">Practice this lesson</a></div>
-    <header class="bk-head">
-      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.6 <span class="calc-beta calc-nav-ref">Beta</span></p>
-      <h1 class="bk-title">Constant, Sum, Difference and Constant Multiple Rules</h1>
-      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="basic-derivative-rules">Not practiced</span></p>
-      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fbasic-derivative-rules.html&amp;title=Constant%2C%20Sum%2C%20Difference%20and%20Constant%20Multiple%20Rules%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/basic-derivative-rules.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
-    </header>
+    <!-- r3:head -->
     <article class="calc-prose bk-prose">
 <p>The <a class="gl" href="../notes/power-rule.html" data-c="power-rule">power rule</a> handles one power of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> at a time. Real <a class="gl" href="../notes/math-functions.html" data-c="function">functions</a> are built from several: <math class="calc-m"><semantics><mrow><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">4x^3 - 5x + 2</annotation></semantics></math>, or <math class="calc-m"><semantics><mrow><mn>3</mn><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mn>2</mn><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">3f(x) - 2g(x)</annotation></semantics></math>. This page gives the rules that take <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivatives</a> through constants, constant factors, sums and differences. With them and the power rule, every <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomial</a> can be differentiated in one pass.</p>
 
@@ -184,6 +190,7 @@
     <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:basic-derivative-rules">Report a problem</button></p>
     <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="power-rule.html"><span>&larr; Previous</span><b>The Power Rule</b></a><a class="tb-chapter-link next" href="derivatives-sin-cos-exp-ln.html"><span>Next &rarr;</span><b>Derivatives of sin x, cos x, e to the x and ln x</b></a></nav>
   </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/basic-derivative-rules.html">Practice this lesson &rarr;</a></div></aside>
 </div>
 <footer class="calc-foot xshell">
   <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:basic-derivative-rules">Report a problem</button></span></p>

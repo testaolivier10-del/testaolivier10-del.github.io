@@ -83,7 +83,8 @@ test('nothing published: no topic pages, every page noindex', () => {
 test('the course home has its own headline, crimson and the integral sign, not Physics\'', () => {
   const { root } = build('unit-6');
   const home = readFileSync(join(root, 'calculus/index.html'), 'utf8');
-  assert.match(home, /<h1 id="chTitle">AP&reg; Calculus AB, <span>one idea at a time\.<\/span><\/h1>/);
+  assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Calculus AB<\/span><\/h1>/);
+  assert.match(home, /<p class="deck">AP® Calculus AB, <span>one idea at a time\.<\/span><\/p>/);
   assert.doesNotMatch(home, /Chemistry|Biology|Physics|force|pendulum|Point Particle/);
   assert.match(home, /assets\/calc\.css/);
   assert.match(home, /data-cover="apcalc"/);

@@ -203,6 +203,8 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../assets/course/r3.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
 </head>
 <body>
 <header id="site-header"></header>
@@ -211,14 +213,21 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav></div>
 <!-- crumb:end -->
 
-<main class="xshell cx-study" id="main" tabindex="-1">
-  <header class="page-head" id="examHero">
-    <div class="eyebrow">Organic Chemistry</div>
-    <h1>Exams</h1>
-    <p class="lede">Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
-  </header>
+<main class="r3 r3-inner r3-exams cx-study" id="main" tabindex="-1" data-cover="ochem">
+<!-- r3-band:start -->
+<section class="band short" id="examHero" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav>
+<p class="issue">Organic Chemistry &middot; Exams <i></i></p>
+<h1 class="deck" id="r3Title">Exams <span>the full run.</span></h1>
+<p class="hand">on the clock, like test day</p>
+<p class="lede">Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
+<div class="hero-ctas"><a class="btn-chan" href="#r3Body" data-r3-start>Set up an exam</a></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/ochem.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<!-- r3-band:end -->
+<div class="xshell r3-body" id="r3Body">
   <div id="examApp"></div>
   <noscript><div class="site-nav-fallback"><p>Exams draw their questions from the practice bank and keep the clock, which needs JavaScript. With scripts off you can still read the <a href="learn.html">textbook</a>.</p></div></noscript>
+</div>
 </main>
 
 <script src="assets/curriculum.js" defer></script>
@@ -246,5 +255,6 @@
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-r3-start]');if(!a)return;var b=document.querySelector('#r3Body #startBtn,#r3Body .cx-start button,#r3Body [data-start]');if(b&&!b.disabled){e.preventDefault();b.click();}});</script>
 </body>
 </html>

@@ -117,7 +117,7 @@
           // a topic landing never pushes the ones below it down the screen
           // (audit 2026-10, layout shift: CLS 0.57 on a phone).
           return '<section class="bk-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '" hidden>' +
-            '<div class="bk-sec-head"><h2 id="h-' + t.id + '"><span class="bk-toc-n">' + t.n + '</span>' + esc(t.title) + '</h2>' +
+            '<div class="bk-sec-head"><h2 id="h-' + t.id + '"><span class="bk-toc-n">' + esc(t.ced || String(t.n)) + '</span>' + esc(t.title) + '</h2>' +
             '<div class="bk-sec-acts"><span class="bk-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
             '<a class="bk-btn solid" href="lessons/' + t.id + '.html" aria-label="Lesson: ' + esc(t.title) + '">Lesson</a></div></div>' +
             '<div class="chem-prose bk-prose" data-book-t="' + t.id + '"><p class="bk-wait">Loading&hellip;</p></div></section>';

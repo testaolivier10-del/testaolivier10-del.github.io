@@ -1,0 +1,190 @@
+/* Site redesign round 3, step B4: the reading pages (notes, unit and chapter pages, the course books) in
+   the R10 system. Markup from scripts/lib/r3-reading.mjs; boards docs/redesign-r3/r10/boards/R10-Notes,
+   R10-Notes-Phone, R10-Unit, R10-Learn. Loaded after assets/course/r3.css, which supplies the band, the
+   type and the course colour (data-cover).
+   Layout: the short cover band, then the shell as cards overlapping it: contents rail | reading card |
+   side column (notes pages). Colours come from theme tokens and the course variables, so dark mode follows. */
+
+/* ---- the band over a reading page ---- */
+.r3-read-top{padding-bottom:0;background-image:none}
+.r3-read-top .band.short .hwrap{padding-bottom:86px;grid-template-columns:1.55fr 1fr;align-items:center}
+.r3-read-top .band .art{max-width:280px}
+.r3-read-top .band [class*="crumb"]{margin:0 0 12px;font:800 13px var(--font-ui);color:rgba(255,255,255,.82)}
+.r3-read-top .band [class*="crumb"] a{color:#fff;text-decoration:none}
+.r3-read-top .band [class*="crumb"] a:hover{text-decoration:underline}
+.r3-read-top .band [class*="crumb"] [aria-current]{color:#fff;font-weight:900}
+.r3-read-top .band .issue{margin:0 0 10px}
+.r3-read-top .band .issue .bio-beta,.r3-read-top .band .issue [class*="beta"]{text-transform:none;letter-spacing:0}
+.r3-read-top .band h1.deck{font:900 clamp(40px,4.6vw,56px)/1 var(--display);letter-spacing:-.04em;margin:4px 0 8px;color:#fff;max-width:none;padding:0}
+.r3-read-top .band h1.deck span{display:block;color:var(--bac)}
+.r3-read-top .band .hand{margin:0 0 18px;font-size:clamp(19px,2vw,23px)}
+.r3-read-top .band .hero-ctas{margin:0 0 16px}
+.r3-read-top .band .hero-ctas a,.r3-read-top .band .hero-ctas button{font-size:15.5px;padding:12px 18px;border:0;cursor:pointer}
+.r3-read-top .band .hero-ctas > *{display:inline-flex;align-items:center;gap:8px;line-height:1.2}
+.r3-read-top .band .hero-ctas i{font-style:normal;display:inline;width:auto;height:auto;background:none;border:0;margin:0;font-size:12px;line-height:1}
+.r3-read-top .band .btn-chan{background:#FFD23F;color:#0B1A33}
+.r3-read-top .band .btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.r3-read-top .band .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.r3-read-top .band .r3-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:0;font:800 12.5px var(--font-ui);color:#fff}
+.r3-read-top .band .r3-chips > span,.r3-read-top .band .r3-chips .bk-small,.r3-read-top .band .r3-chips .bk-chip{display:inline-block;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:4px 11px;font:800 12.5px var(--font-ui);border:0;margin:0}
+.r3-read-top .band .r3-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;font:800 13.5px var(--font-ui)}
+.r3-read-top .band .r3-links a,.r3-read-top .band .r3-links button{background:none;border:0;padding:0;color:#fff;font:inherit;cursor:pointer;text-decoration:none;box-shadow:none;min-height:0}
+.r3-read-top .band .r3-links a:hover,.r3-read-top .band .r3-links button:hover{text-decoration:underline}
+.r3-read-top .band .r3-links .sr-only{position:absolute}
+.r3-read-top .band .r3-links > *{margin:0 !important;padding:0 !important}
+.r3-read-top .band .r3-links .bk-action::before{display:none}
+
+/* ---- the shell as cards over the band ---- */
+.tb-shell.r3-read{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px;align-items:start;max-width:1180px;margin:-56px auto 0;padding:0 24px 40px;position:relative;z-index:2;background-image:none}
+.tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){grid-template-columns:230px minmax(0,1fr) 260px}
+.tb-shell.r3-read > .tb-rail{background:var(--white);border-radius:20px;box-shadow:0 0 0 1px var(--line),0 18px 40px -26px rgba(11,26,51,.35);padding:18px 14px 20px;top:calc(var(--site-header-h,112px) + 16px)}
+.tb-shell.r3-read > .tb-rail .tb-rail-title{color:var(--accent);padding:0 6px}
+.tb-shell.r3-read .bk-toc-chap{border-radius:12px}
+.tb-shell.r3-read > .tb-main{background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4);padding:30px clamp(22px,3.2vw,40px) 36px;max-width:none;min-width:0}
+.tb-shell.r3-read.bk-chapter > .tb-main{padding-top:24px}
+/* The reading card is the one card: the prose inside it loses the old inner box and its narrow cap. */
+.tb-shell.r3-read .tb-main > .bk-prose,.tb-shell.r3-read .tb-main > article{border:0;box-shadow:none;background:none;padding:0;border-radius:0;max-width:none;margin-left:0;margin-right:0}
+.tb-shell.r3-read > .tb-main > .bk-lede{margin:0 0 20px;font:500 17px/1.7 var(--font-body,var(--font-ui));color:var(--ink);max-width:none}
+.tb-shell.r3-read h2{font:900 clamp(22px,2.3vw,27px)/1.18 var(--display);letter-spacing:-.025em;margin:0 0 10px}
+.tb-shell.r3-read h2 span{display:inline;color:inherit}
+.tb-shell.r3-read .bk-sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 14px}
+.tb-shell.r3-read .bk-sec-head h2{margin:0;flex:1 1 300px;display:flex;align-items:baseline;gap:12px}
+.tb-shell.r3-read .bk-sec-head .bk-toc-n{background:none;color:var(--accent);font:900 26px/1 var(--display);letter-spacing:-.04em;padding:0;min-width:0;height:auto;border-radius:0}
+.tb-shell.r3-read .bk-sec{border:0;border-top:2px solid var(--ink);border-radius:0;box-shadow:none;background:none;padding:20px 0 0;margin:28px 0 0}
+.tb-shell.r3-read .bk-sec .domain-tag{background:none;padding:0;color:var(--muted);font:700 12.5px var(--font-ui);flex-basis:100%}
+.tb-shell.r3-read .bk-h{color:var(--ink)}
+.tb-shell.r3-read .bk-h::after{content:"";display:inline-block}
+/* the course book (R10-Learn): the band names the book, so its contents heading and intro are kept for
+   screen readers and the outline only */
+.tb-shell.r3-read .tb-static-toc > h1,.tb-shell.r3-read .tb-static-toc > h1 + p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.r3-learn .band .lede{color:rgba(255,255,255,.82);margin:0 0 18px}
+.tb-shell.r3-read .tb-static-toc h2,.tb-shell.r3-read .tb-static-toc h3{font:900 18px/1.25 var(--display);letter-spacing:-.015em;margin:22px 0 8px;color:var(--ink)}
+.tb-shell.r3-read .tb-static-toc ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 22px}
+.tb-shell.r3-read .tb-static-toc li{border-bottom:1px solid var(--line);padding:9px 0}
+.tb-shell.r3-read .tb-static-toc li a{font:800 15px/1.35 var(--font-ui);color:var(--ink);text-decoration:none}
+.tb-shell.r3-read .tb-static-toc li a b{display:inline-block;min-width:34px;font:900 20px/1 var(--display);color:var(--accent);letter-spacing:-.04em}
+.tb-shell.r3-read .tb-static-toc li a:hover{color:var(--accent)}
+
+/* unit and chapter pages (R10-Unit) */
+.tb-shell.r3-read h2#h-topics span{color:var(--accent)}
+.tb-shell.r3-read.bk-chapter h2.bk-h:not(#h-topics){display:flex;align-items:center;gap:12px;font:900 12.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:30px 0 12px}
+.tb-shell.r3-read.bk-chapter h2.bk-h:not(#h-topics)::after{content:"";flex:1;height:2px;background:var(--ink);display:block}
+.tb-shell.r3-read .bk-list{border:0;box-shadow:none;background:none;padding:0;border-radius:0}
+.tb-shell.r3-read .bk-row{border-radius:0;border:0;border-bottom:1px solid var(--line);background:none;padding:12px 0}
+.tb-shell.r3-read .bk-row:last-child{border-bottom:0}
+.tb-shell.r3-read .bk-row-n{background:none;color:var(--accent);font:900 22px/1 var(--display);letter-spacing:-.04em;min-width:52px;padding:0;height:auto;border-radius:0;text-align:left}
+.tb-shell.r3-read .bk-row-title{font:900 16px/1.3 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.tb-shell.r3-read .bk-row-btns .bk-btn{background:var(--ctint);color:var(--accent);border:0;box-shadow:none;font:900 13.5px var(--font-ui);padding:7px 13px;border-radius:9px}
+.tb-shell.r3-read .bk-row-btns .bk-btn:hover{filter:brightness(.96)}
+.tb-shell.r3-read .tb-chapter-nav{margin-top:26px}
+.tb-shell.r3-read .tb-chapter-link{background:var(--white);border:1px solid var(--line);border-radius:16px}
+
+/* ---- the side column on notes pages ---- */
+.r3-side{position:sticky;top:calc(var(--site-header-h,112px) + 16px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.r3-side-card{background:var(--white);border-radius:18px;box-shadow:0 0 0 1px var(--line);padding:16px 16px 18px;font:600 14px/1.5 var(--font-ui);color:var(--muted)}
+.r3-side-card p{margin:0 0 10px}
+.r3-side-card .k{font:900 11.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.r3-side-go{display:inline-block;font:900 14.5px var(--font-ui);color:var(--accent);text-decoration:none}
+.r3-side-go:hover{text-decoration:underline}
+.r3-side-card.navy{background:#0B1A33;box-shadow:none;color:rgba(255,255,255,.8)}
+.r3-side-card.navy .k{color:var(--bac)}
+.r3-side-card.navy .r3-side-go{color:#fff;font-size:16px}
+.r3-side-card .h{font:900 17px/1.25 var(--display);color:#fff;margin:0 0 6px}
+.r3-side-tools .chapter-tools{display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:10px;margin:0;padding:0;background:none;border:0;box-shadow:none}
+.r3-side-tools .chapter-tools__k{font:900 11.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-align:left}
+.r3-side-tools .chapter-tools a{display:block;font:900 14.5px var(--font-ui);color:var(--ink);text-decoration:none;padding:9px 0 0;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;text-align:left}
+.r3-side-tools .chapter-tools a small{display:block;font:600 12.5px var(--font-ui);color:var(--muted)}
+:root[data-theme="dark"] .r3-side-card.navy{background:#16294A}
+
+/* ---- glossary and course search (R10-Glossary, R10-Search) ---- */
+.r3.r3-page{background-image:none;padding-bottom:32px}
+.r3.r3-page > [class*="crumb"]{display:none}
+.r3-pagetop .band .lede{color:rgba(255,255,255,.82);margin:0;max-width:40em}
+.r3-glossary .gx{margin-top:-60px;position:relative;z-index:2}
+.r3-glossary .gx-tools,.r3-glossary .gx-status,.r3-glossary .gx-rail{background:var(--white);margin:0;box-shadow:0 0 0 1px var(--line)}
+.r3-glossary .gx-tools{border-radius:22px 22px 0 0;padding:22px 24px 10px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px;align-items:end}
+.r3-glossary .gx-tools::before{content:"Find a term";grid-column:1/-1;font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 -8px}
+.r3-glossary .gx-tools > *{min-width:0}
+.r3-glossary .gx-ch,.r3-glossary .gx-ch select{width:100%;max-width:100%;box-sizing:border-box}
+.r3-glossary .gx-status{padding:0 24px;min-height:0;clip-path:inset(0 -1px)}
+.r3-glossary .gx-rail{border-radius:0 0 22px 22px;padding:8px 24px 20px;display:flex;flex-wrap:wrap;gap:6px;position:static;clip-path:inset(0 -1px -1px -1px)}
+.r3-glossary .gx-rail a,.r3-glossary .gx-rail span{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:8px;background:var(--ctint);color:var(--accent);font:900 13px var(--font-ui);text-decoration:none}
+.r3-glossary .gx-rail a:hover{background:var(--accent);color:var(--white)}
+.r3-glossary .gx-rail .gx-off{background:none;color:var(--muted);opacity:.5}
+.r3-glossary .gx-group{margin:34px 0 0;border-top:2px solid var(--ink);padding-top:14px}
+.r3-glossary .gx-group h2{font:900 40px/1 var(--display);letter-spacing:-.04em;color:var(--accent);display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
+.r3-glossary .gx-group h2 .gx-n{font:700 13px var(--font-ui);letter-spacing:0;color:var(--muted)}
+.r3-glossary .gx-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px;background:none;border:0;box-shadow:none;padding:0;margin:0}
+.r3-glossary .gx-t{padding:0;border:0;background:none;min-width:0}
+.r3-glossary .gx-t dt{font:900 16px/1.3 var(--display);color:var(--ink)}
+.r3-glossary .gx-t dd{margin:4px 0 0;font:500 14px/1.5 var(--font-ui);color:var(--muted)}
+.r3-glossary .gx-src{display:block;margin-top:6px;font:800 13px var(--font-ui);color:var(--accent)}
+.r3-glossary .gx-src a{color:var(--accent)}
+.r3-search #app,.r3-search .bio-app-mount{position:relative;z-index:2;margin-top:-60px;background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4);padding:24px clamp(18px,3vw,30px) 28px}
+@media (max-width:900px){
+  .r3-glossary .gx-tools{grid-template-columns:1fr}
+  .r3-glossary .gx-terms{grid-template-columns:minmax(0,1fr)}
+  .r3-glossary .gx,.r3-search #app,.r3-search .bio-app-mount{margin-top:-44px}
+}
+
+/* ---- lessons (R10-Lesson): the hero is the band, the steps are the card over it ---- */
+.r3.r3-lesson{background-image:none;padding-bottom:28px}
+.r3-lesson > .hero,.r3-lesson > [class$="-ls-hero"]{position:relative;background-color:var(--bbg);color:#fff;box-shadow:0 0 0 100vmax var(--bbg);clip-path:inset(0 -100vmax);border:0;border-radius:0;margin:0 0 0;padding:30px min(34%,330px) 96px 0;background-repeat:no-repeat;background-position:right 0 center;background-size:min(30%,300px) auto}
+.r3-lesson[data-cover="nremt"] > .hero,.r3-lesson[data-cover="nremt"] > [class$="-ls-hero"]{background-image:url(../covers/art/nremt.svg)}
+.r3-lesson[data-cover="ochem"] > .hero,.r3-lesson[data-cover="ochem"] > [class$="-ls-hero"]{background-image:url(../covers/art/ochem.svg)}
+.r3-lesson[data-cover="anp"] > .hero,.r3-lesson[data-cover="anp"] > [class$="-ls-hero"]{background-image:url(../covers/art/anp.svg)}
+.r3-lesson[data-cover="apbio"] > [class$="-ls-hero"]{background-image:url(../covers/art/apbio.svg)}
+.r3-lesson[data-cover="apchem"] > [class$="-ls-hero"]{background-image:url(../covers/art/apchem.svg)}
+.r3-lesson[data-cover="apphys"] > [class$="-ls-hero"]{background-image:url(../covers/art/apphys.svg)}
+.r3-lesson[data-cover="apcalc"] > [class$="-ls-hero"]{background-image:url(../covers/art/apcalc.svg)}
+.r3-lesson[data-cover="apstat"] > [class$="-ls-hero"]{background-image:url(../covers/art/apstat.svg)}
+.r3-lesson[data-cover="apenv"] > [class$="-ls-hero"]{background-image:url(../covers/art/apenv.svg)}
+.r3-lesson > .hero .eyebrow,.r3-lesson > [class$="-ls-hero"] .eyebrow{border:0;padding:0;color:rgba(255,255,255,.76);font:800 13px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;background:none}
+.r3-lesson > .hero h1,.r3-lesson > [class$="-ls-hero"] h1{color:#fff;font:900 clamp(40px,4.6vw,56px)/1 var(--display) !important;letter-spacing:-.04em;margin:10px 0 10px !important}
+.r3-lesson > .hero .lede,.r3-lesson > [class$="-ls-hero"] .lede{color:rgba(255,255,255,.84) !important;font-size:17px;max-width:36em}
+.r3-lesson > [class$="-ls-hero"] [class$="-tags"] span{background:rgba(255,255,255,.14);color:#fff;border:0}
+.r3-lesson > .hero .lpv,.r3-lesson > [class$="-ls-hero"] .lpv{background:var(--white);color:var(--ink);border-radius:16px;max-width:560px}
+.r3-lesson > .hero + *,.r3-lesson > [class$="-ls-hero"] + *{position:relative;z-index:2;margin-top:-56px}
+.r3-lesson > [class$="-ls-card"],.r3-lesson > [class$="-ls-card"] + [class$="-ls-card"]{background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4)}
+:root[data-theme="dark"] .r3-lesson > .hero .lpv{background:var(--white)}
+/* ochem lessons with the steps rail: the band spans both columns, the rail is a card over it */
+.r3-lesson.lesson-shell:has(.lesson-rail) > .hero{grid-column:1 / -1;grid-row:1;padding-bottom:96px}
+.r3-lesson.lesson-shell > .lesson-rail{grid-row:2 / span 30;margin-top:-56px;z-index:3;background:var(--white);border-radius:20px;box-shadow:0 0 0 1px var(--line),0 18px 40px -26px rgba(11,26,51,.35);padding:18px 14px 20px}
+.r3-lesson.lesson-shell > .lesson-rail .lesson-rail-k{color:var(--accent)}
+.r3-lesson .lesson-card{border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4)}
+@media (max-width:900px){
+  .r3-lesson > .hero,.r3-lesson > [class$="-ls-hero"]{padding:150px 0 76px;background-position:left 0 top 24px;background-size:150px auto}
+  .r3-lesson > .hero + *,.r3-lesson > [class$="-ls-hero"] + *{margin-top:-44px}
+}
+
+/* ---- narrower screens ---- */
+@media (max-width:1080px){
+  .tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){grid-template-columns:230px minmax(0,1fr)}
+  .tb-shell.r3-read .r3-side{grid-column:2;position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+}
+@media (max-width:900px){
+  .r3-read-top .band.short .hwrap{grid-template-columns:1fr;padding-bottom:70px}
+  .r3-read-top .band .art{max-width:200px;order:-1;justify-self:start}
+  .tb-shell.r3-read,.tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){display:block;margin-top:-44px;padding:0 14px 32px}
+  .tb-shell.r3-read > .tb-toc-btn{background:var(--white);margin:0 0 12px;position:relative;z-index:3}
+  .tb-shell.r3-read > .tb-rail{margin:0 0 12px}
+  .tb-shell.r3-read > .tb-main{padding:22px 18px 26px;border-radius:18px}
+  .tb-shell.r3-read .r3-side{display:flex;margin-top:14px}
+}
+@media (max-width:560px){
+  .r3-read-top .band.short .hwrap{padding-left:16px;padding-right:16px}
+  .r3-read-top .band h1.deck{font-size:38px}
+  .r3-read-top .band .art{max-width:150px}
+}
+@media print{
+  .r3-read-top .band{background:none !important;color:#000}
+  .r3-read-top .band::after,.r3-read-top .band .art,.r3-read-top .band .hero-ctas,.r3-read-top .band .r3-links,.r3-read-top .band .hand,.r3-side{display:none !important}
+  .r3-read-top .band h1.deck,.r3-read-top .band h1.deck span{color:#000}
+  .tb-shell.r3-read{margin-top:0}
+  .tb-shell.r3-read > .tb-main{box-shadow:none;padding:0}
+}
+
+/* Round 3 notes column is narrower (the side rail sits beside it), so a 700-unit figure shrinks to the column
+   instead of scrolling sideways, as lesson cards already do (theme.css); a sideways scroller also fails axe's
+   keyboard rule. */
+.r3-read .notes-figure svg{min-width:min(calc(var(--vb,420) * 0.92px), 100%);}

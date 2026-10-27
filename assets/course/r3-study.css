@@ -1,0 +1,234 @@
+/* Site redesign round 3, step B2 (docs/site-redesign.md): Practice, Review and Flashcards in every course,
+   to the boards docs/redesign-r3/r10/boards/R10-Practice-*, R10-Review, R10-Flashcards*.
+   Loaded by assets/course/study.css (@import), so every study page in every course gets it.
+   The short cover band itself is r3.css (.r3 .band.short); study.js builds it (LevlStudy.band).
+   Here: the band's wrapper on study pages, the panel that overlaps it, the setup builder, the rail cards,
+   the question card in a session, the results, the review queue and the flashcard decks.
+   Colours only through theme tokens (--white, --ink, --muted, --line, --surface2, --cink, --ctint, --navy),
+   so dark mode follows; the two navy cards keep white text in both themes. */
+
+/* ---- The band on a study page ---------------------------------------------------------------------- */
+.r3.r3-sband{padding-bottom:0;background-image:none;}
+.r3.r3-sband .band.short .hwrap{padding-top:22px;padding-bottom:76px;}
+.r3.r3-sband .band.short .deck{margin-top:4px;}
+.r3.r3-sband .band .hand{margin:0 0 18px;}
+.r3.r3-sband .hero-ctas[hidden],.r3.r3-sband .hand[hidden]{display:none;}
+.r3.r3-sband .hero-ctas button{border:0;cursor:pointer;}
+.r3.r3-sband .r3-crumb .xshell{padding:0;max-width:none;margin:0 0 10px;}
+.r3.r3-sband .r3-crumb .site-crumb,.r3.r3-sband .r3-crumb .cx-crumb{font:800 13px var(--font-ui);color:rgba(255,255,255,.74);padding:0;margin:0 0 10px;}
+.r3.r3-sband .r3-crumb .site-crumb a,.r3.r3-sband .r3-crumb .cx-crumb a{color:rgba(255,255,255,.86);text-decoration:none;}
+.r3.r3-sband .r3-crumb a:hover{text-decoration:underline;}
+.r3.r3-sband .r3-crumb [aria-current]{color:#fff;}
+.r3.r3-sband .band .issue{margin-bottom:10px;}
+.page-head.r3-moved{display:none !important;}
+
+/* The page sits on the grid paper and its first row overlaps the band, as on the boards. */
+main.cx-study.r3-under{position:relative;z-index:2;margin-top:-52px;padding-top:0;}
+main.cx-study.r3-under .cx-body{margin-top:0;}
+main.cx-study.r3-under > :first-child{margin-top:0;}
+.cx-lede{font:600 15.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 22px;max-width:62ch;}
+
+/* ---- Panels: one white card per job --------------------------------------------------------------- */
+main.cx-study.r3-under .cx-builder,main.cx-study.r3-under .cx-card,main.cx-study.r3-under .cx-q,main.cx-study.r3-under .quiz-side,main.cx-study.r3-under .score-card,
+main.cx-study.r3-under .results-main,main.cx-study.r3-under .fc-deck,main.cx-study.r3-under .cx-deckcard,main.cx-study.r3-under .cx-queue{
+  background:var(--white);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 50px -36px rgba(11,26,51,.45);}
+main.cx-study.r3-under .cx-builder{padding:clamp(20px,3.4vw,30px);}
+
+/* Setup steps: navy number dots, display headings, roomy choice cards. */
+main.cx-study.r3-under .cx-step-h,main.cx-study.r3-under .cx-step > legend{font:900 21px/1.2 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.02em;gap:12px;margin-bottom:6px;}
+main.cx-study.r3-under .cx-step-n{flex:0 0 28px;height:28px;background:var(--navy);color:#fff;font-size:13px;}
+main.cx-study.r3-under .cx-step{border-bottom-color:var(--line);padding-bottom:26px;margin-bottom:26px;}
+main.cx-study.r3-under .cx-step .cx-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px;}
+main.cx-study.r3-under .cx-choice{border-radius:16px;padding:16px 18px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px transparent;}
+main.cx-study.r3-under .cx-choice:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);}
+main.cx-study.r3-under .cx-choice b{font:900 16px var(--font-ui);}
+main.cx-study.r3-under .cx-pills{display:flex;gap:10px;flex-wrap:wrap;}
+main.cx-study.r3-under .cx-pills .cx-pill{min-width:64px;min-height:48px;border-radius:12px;font:900 16px var(--font-ui);}
+main.cx-study.r3-under .cx-pill:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);}
+
+/* The summary under the steps: the one navy card, the Start button in yellow. */
+main.cx-study.r3-under .cx-start{background:var(--navy);color:#fff;border-radius:18px;padding:20px 22px;margin-top:6px;}
+main.cx-study.r3-under .cx-start .cx-sum{color:#fff;font:900 18px/1.3 var(--font-ui);}
+main.cx-study.r3-under .cx-start .cx-sum small{color:rgba(255,255,255,.74);font-size:13px;margin-top:4px;}
+main.cx-study.r3-under .cx-start .btn-press{background:#FFD23F;color:#0B1A33;box-shadow:none;font-weight:900;}
+main.cx-study.r3-under .cx-start .btn-press:hover{background:#FFDC66;color:#0B1A33;}
+main.cx-study.r3-under .cx-builder .cx-free{font:800 13px var(--font-ui);color:var(--muted);}
+
+/* Premium notes in the page: navy, gold button, the refund line beside it. */
+main.cx-study.r3-under .cx-main > .premium-slot > *:not(:empty),main.cx-study.r3-under .cx-gate,main.cx-study.r3-under .premium-card{border-radius:22px;}
+
+/* ---- The rail -------------------------------------------------------------------------------------- */
+main.cx-study.r3-under .cx-rail{display:flex;flex-direction:column;gap:14px;}
+main.cx-study.r3-under .cx-rail > *{margin:0;}
+main.cx-study.r3-under .cx-rail .intro-row{display:block;}
+main.cx-study.r3-under .cx-rail .intro-row:has(> :empty){display:none;}
+main.cx-study.r3-under .cx-rail .readiness-card{margin:0;padding:18px 20px;border-radius:22px;}
+main.cx-study.r3-under .cx-numbers{padding:18px 20px;}
+main.cx-study.r3-under .cx-numbers .cx-rail-h{font:900 17px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 12px;}
+main.cx-study.r3-under .cx-rail .cx-numbers .cx-stats{background:none;box-shadow:none;border-radius:0;gap:14px 12px;grid-template-columns:repeat(2,minmax(0,1fr));}
+main.cx-study.r3-under .cx-rail .cx-numbers .cx-stat{background:none;padding:0;}
+main.cx-study.r3-under .cx-rail .cx-numbers .cx-stat-num{font:900 30px/1 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);order:-1;}
+main.cx-study.r3-under .cx-rail .cx-numbers .cx-stat{display:flex;flex-direction:column;}
+main.cx-study.r3-under .cx-rail .cx-numbers .cx-stat-label{font:900 13px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px;}
+main.cx-study.r3-under .cx-rail .cx-qcard{padding:18px 20px;}
+main.cx-study.r3-under .cx-rail .cx-qcard .cx-kicker{font:900 17px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 8px;}
+main.cx-study.r3-under .cx-links{gap:14px;}
+main.cx-study.r3-under .cx-link{background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:none;padding:16px 18px;}
+main.cx-study.r3-under .cx-link:hover{background:var(--surface2);color:var(--ink);}
+main.cx-study.r3-under .cx-link small{color:var(--muted);}
+main.cx-study.r3-under .cx-link span[aria-hidden]{color:var(--cink);}
+main.cx-study.r3-under #streakWidget > *{border-radius:22px;}
+
+/* ---- In a session ----------------------------------------------------------------------------------- */
+/* The other engines open a session with a slim bar (mode, counter, End session): a white strip, so it
+   reads where it overlaps the band. */
+main.cx-study.r3-under .cx-sbar{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:10px 12px 10px 16px;box-shadow:0 18px 36px -30px rgba(11,26,51,.45);}
+main.cx-study.r3-under .cx-sbar + .cx-progress{margin-top:12px;}
+main.cx-study.r3-under .cx-q{padding:clamp(20px,3vw,30px);}
+main.cx-study.r3-under .quiz-side{padding:18px 20px;align-self:start;}
+main.cx-study.r3-under .q-prompt,main.cx-study.r3-under .cx-q .cx-stem,main.cx-study.r3-under .cx-q h2.cx-stem{font:900 clamp(19px,2vw,23px)/1.3 var(--font-ui);letter-spacing:-.01em;}
+main.cx-study.r3-under .cx-opts .option,main.cx-study.r3-under .cx-opt{border-radius:16px;min-height:56px;}
+main.cx-study.r3-under .cx-fb{border-radius:16px;}
+main.cx-study.r3-under .jump-row button,main.cx-study.r3-under .jump-row .jump{border-radius:10px;min-width:40px;min-height:36px;}
+main.cx-study.r3-under .nav-row #nextBtn,main.cx-study.r3-under .cx-next-row .primary{background:var(--navy);color:#fff;border-radius:12px;}
+main.cx-study.r3-under .exit-row .exit-link{border-radius:10px;}
+.r3-kbd{padding:18px 20px;}
+.r3-kbd h3,.r3-notes h3{font:900 17px var(--font-ui);margin:0 0 10px;color:var(--ink);}
+.r3-kbd dl{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;margin:0;align-items:center;font:700 13.5px var(--font-ui);color:var(--muted);}
+.r3-kbd dt{display:flex;gap:4px;margin:0;}
+.r3-kbd dd{margin:0;}
+.r3-kbd kbd{display:inline-block;min-width:26px;text-align:center;font:800 12px var(--font-ui);color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:2px 6px;}
+.r3-notes{padding:0;overflow:hidden;}
+.r3-notes .r3-notes-art{display:block;background:var(--cbg,#0D3B36);aspect-ratio:2 / 1;}
+.r3-notes .r3-notes-art img{display:block;width:100%;height:100%;object-fit:cover;}
+.r3-notes > div{padding:16px 20px 18px;}
+.r3-notes p{margin:0 0 10px;font:600 14px/1.5 var(--font-ui);color:var(--muted);}
+.r3-notes a{font:900 14px var(--font-ui);color:var(--cink);text-decoration:none;}
+.r3-notes a:hover{text-decoration:underline;}
+.quiz-side .r3-kbd,.quiz-side .r3-notes{margin-top:14px;}
+
+/* ---- Results --------------------------------------------------------------------------------------- */
+/* Board R10-Practice-Results: the score and the question list in the wide column, the ways on (review the
+   misses, next step, print or share, back to start) down the rail. NREMT's results grid is re-placed here. */
+main.cx-study.r3-under #resultsScreen{grid-template-columns:minmax(0,1fr) 320px;gap:18px 22px;grid-auto-flow:row dense;align-items:start;}
+main.cx-study.r3-under #resultsScreen .results-side{display:contents;}
+main.cx-study.r3-under #resultsScreen .score-card{grid-column:1;grid-row:1;margin:0;}
+main.cx-study.r3-under #resultsScreen .results-main{grid-column:1;grid-row:2 / span 12;}
+main.cx-study.r3-under #resultsScreen .results-top-row,main.cx-study.r3-under #resultsScreen #nextStep,
+main.cx-study.r3-under #resultsScreen #clearedNote,main.cx-study.r3-under #resultsScreen #nextSlot,
+main.cx-study.r3-under #resultsScreen #premiumSlot{grid-column:2;margin:0;}
+main.cx-study.r3-under #resultsScreen .results-top-row{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 20px;}
+main.cx-study.r3-under #resultsScreen .results-top-row::before{content:"Keep this result";flex:1 0 100%;font:900 17px var(--font-ui);color:var(--ink);}
+main.cx-study.r3-under #resultsScreen #nextStep:not(:empty),main.cx-study.r3-under #resultsScreen #nextSlot:not(:empty){background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 20px;}
+main.cx-study.r3-under #resultsScreen #nextStep{order:1;}
+main.cx-study.r3-under #resultsScreen #clearedNote{order:2;}
+main.cx-study.r3-under #resultsScreen #nextSlot{order:3;}
+main.cx-study.r3-under #resultsScreen .results-top-row{order:4;}
+main.cx-study.r3-under #resultsScreen #premiumSlot{order:5;}
+main.cx-study.r3-under #resultsScreen #nextStep:not(:empty){background:var(--navy);border-color:transparent;color:#fff;}
+main.cx-study.r3-under #resultsScreen #nextStep:not(:empty) *{color:inherit;}
+main.cx-study.r3-under #resultsScreen #nextStep .btn-press,main.cx-study.r3-under #resultsScreen #nextStep button,main.cx-study.r3-under #resultsScreen #nextStep a.primary{background:#FFD23F !important;color:#0B1A33 !important;box-shadow:none;}
+main.cx-study.r3-under #resultsScreen #nextStep p,main.cx-study.r3-under #resultsScreen #nextStep small{color:rgba(255,255,255,.78);}
+main.cx-study.r3-under #resultsScreen #nextSlot .levl-next{background:none;color:var(--ink);padding:0;margin:0;box-shadow:none;border:0;}
+main.cx-study.r3-under #resultsScreen #nextSlot .levl-next__k{font:900 17px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 6px;}
+main.cx-study.r3-under #resultsScreen #nextSlot .levl-next__why{color:var(--muted);}
+main.cx-study.r3-under #resultsScreen #nextSlot .levl-next__go{background:none;color:var(--cink);box-shadow:none;padding:0;min-height:0;font:900 14px var(--font-ui);}
+main.cx-study.r3-under #resultsScreen #nextSlot .levl-next__go::after{content:" \2192";}
+main.cx-study.r3-under .score-card{background:var(--white);background-image:none;color:var(--ink);padding:24px 26px;}
+main.cx-study.r3-under .score-card .big{color:var(--ink);}
+main.cx-study.r3-under .score-card .sub{color:var(--muted);}
+main.cx-study.r3-under .score-card .domain-breakdown{border-top:2px solid var(--ink);}
+main.cx-study.r3-under .score-card .domain-breakdown .row{color:var(--ink);}
+main.cx-study.r3-under .score-card .domain-breakdown .topic-row{color:var(--muted);}
+main.cx-study.r3-under .score-card button,main.cx-study.r3-under .score-card .retry-btn{color:var(--ink);}
+@media (max-width:960px){
+  main.cx-study.r3-under #resultsScreen{grid-template-columns:minmax(0,1fr);}
+  main.cx-study.r3-under #resultsScreen .results-top-row,main.cx-study.r3-under #resultsScreen #nextStep,
+  main.cx-study.r3-under #resultsScreen #clearedNote,main.cx-study.r3-under #resultsScreen #nextSlot,
+  main.cx-study.r3-under #resultsScreen #premiumSlot{grid-column:1;}
+  main.cx-study.r3-under #resultsScreen .results-main{grid-row:auto;}
+}
+main.cx-study.r3-under .score-card{padding:22px 24px;}
+main.cx-study.r3-under .score-card .big,main.cx-study.r3-under .bio-pr-score-big{font:900 clamp(56px,7vw,84px)/.95 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.05em;}
+main.cx-study.r3-under .results-main{padding:22px 24px;}
+main.cx-study.r3-under .results-top-row .retry-btn{border-radius:12px;}
+
+/* ---- Flashcards home (board R10-Flashcards), every course: choosing the deck and the topic list in the
+   wide column, today's deck as the one navy card in the rail with its numbers, Study and Study ahead. ---- */
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard){grid-template-columns:minmax(0,1fr) 320px;gap:18px 22px;align-items:start;}
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard) > *{grid-column:1;}
+main.cx-study.r3-under .cx-main > .cx-deckcard{grid-column:2;grid-row:1 / span 6;position:sticky;top:calc(var(--site-header-h,112px) + 14px);
+  background:var(--navy);border-color:transparent;color:#fff;padding:20px 22px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard::before{content:"Today\2019s deck";display:inline-block;background:#FFD23F;color:#0B1A33;border-radius:999px;padding:2px 10px;font:900 12px var(--font-ui);margin-bottom:10px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard h2{font:900 24px/1.1 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);color:#fff;letter-spacing:-.02em;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stat{background:rgba(255,255,255,.08);color:#fff;box-shadow:none;border-radius:12px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stat *{color:#fff;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-stat-label{color:rgba(255,255,255,.74);}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-small,main.cx-study.r3-under .cx-main > .cx-deckcard .cx-how,
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-caught{color:rgba(255,255,255,.8);}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-how b{color:#fff;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .cx-actions{display:grid;gap:8px;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .btn-press{background:#FFD23F;color:#0B1A33;box-shadow:none;width:100%;}
+main.cx-study.r3-under .cx-main > .cx-deckcard .btn-outline{background:transparent;color:#FFD23F;box-shadow:none;border:0;width:100%;}
+main.cx-study.r3-under .cx-main > .cx-deck{padding:22px 24px;}
+main.cx-study.r3-under .cx-main > .cx-deck h2,main.cx-study.r3-under .cx-main .cx-h2{font:900 21px/1.2 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.02em;}
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard) > section:not(.cx-card){background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 22px;}
+main.cx-study.r3-under .cx-main:has(> .cx-deckcard) > section:not(.cx-card) .cx-h2{margin-top:0;}
+@media (max-width:960px){
+  main.cx-study.r3-under .cx-main:has(> .cx-deckcard){grid-template-columns:minmax(0,1fr);}
+  main.cx-study.r3-under .cx-main > .cx-deckcard{grid-column:1;grid-row:auto;position:static;order:-1;}
+}
+
+/* ---- Review and flashcards: the same panels ------------------------------------------------------- */
+main.cx-study.r3-under .cx-empty-num{font:900 64px/.9 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.04em;background:none;box-shadow:none;}
+main.cx-study.r3-under .cx-deckcard{padding:22px 24px;}
+main.cx-study.r3-under .fc-face{border-radius:22px;}
+
+/* Phones: the band is shorter and the panel sits under it. */
+@media (max-width:760px){
+  .r3.r3-sband .band.short .hwrap{padding-top:18px;padding-bottom:58px;}
+  .r3.r3-sband .band.short .art{display:none;}
+  .r3.r3-sband .r3-crumb{display:none;}
+  .r3.r3-sband .band.short .deck{font-size:34px;}
+  .r3.r3-sband .band .issue{font-size:11.5px;}
+  .r3.r3-sband .band .hand{font-size:19px;margin-bottom:12px;}
+  main.cx-study.r3-under .quiz-main{order:1;}
+  main.cx-study.r3-under .quiz-side{order:2;margin-top:14px;}
+  main.cx-study.r3-under .quiz-side .r3-notes,main.cx-study.r3-under .quiz-side .r3-kbd{display:none;}
+  main.cx-study.r3-under{margin-top:-36px;}
+  main.cx-study.r3-under .cx-step .cx-choices{grid-template-columns:minmax(0,1fr);}
+}
+
+/* NREMT readiness: in the rail when it has a number or a hint; under the builder as the navy Premium card
+   while it is locked (study.js moves it). The Premium card in the page is the board's navy card. */
+main.cx-study.r3-under .cx-rail .readiness-empty{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px 20px;font:700 14px/1.5 var(--font-ui);color:var(--muted);}
+main.cx-study.r3-under .cx-rail .readiness-empty::before{content:"Readiness";display:block;font:900 17px var(--font-ui);color:var(--ink);margin-bottom:6px;}
+main.cx-study.r3-under .premium-card{background:var(--navy);color:#fff;border:0;border-radius:22px;padding:22px 26px;box-shadow:none;}
+main.cx-study.r3-under .premium-card *{color:inherit;}
+main.cx-study.r3-under .premium-card .premium-card__tag{display:inline-block;background:#FFD23F;color:#0B1A33;border-radius:999px;padding:2px 10px;font:900 12px var(--font-ui);}
+main.cx-study.r3-under .premium-card .premium-card__price{color:#fff;font-weight:900;}
+main.cx-study.r3-under .premium-card .premium-card__guarantee{color:rgba(255,255,255,.74);}
+main.cx-study.r3-under .premium-card .btn-press{background:#FFD23F;color:#0B1A33;box-shadow:none;}
+main.cx-study.r3-under .r3-readiness.is-gate{margin:0;}
+main.cx-study.r3-under .premium-card p{color:rgba(255,255,255,.84);}
+main.cx-study.r3-under .premium-card p.premium-card__guarantee{color:rgba(255,255,255,.7);}
+
+/* NREMT session rail: "This session" over the counter and the question map, then the notes and the keys
+   (hidden in a timed exam, where the rail is the clock). */
+main.cx-study.r3-under .quiz-side{display:flex;flex-direction:column;gap:0;background:none;border:0;box-shadow:none;padding:0;}
+main.cx-study.r3-under .quiz-side > #timerBar{margin:0 0 12px;}
+main.cx-study.r3-under .quiz-side .progress-row{background:var(--white);border:1px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0;padding:18px 20px 4px;margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;}
+main.cx-study.r3-under .quiz-side .progress-row::before{content:"This session";font:900 17px var(--font-ui);color:var(--ink);margin-bottom:6px;}
+main.cx-study.r3-under .quiz-side #progressText{font:900 26px/1.1 var(--cx-display,'Inter Display','Nunito',system-ui,sans-serif);letter-spacing:-.02em;color:var(--ink);}
+main.cx-study.r3-under .quiz-side #answeredText{font:700 13.5px var(--font-ui);color:var(--muted);}
+main.cx-study.r3-under .quiz-side .progress-track,main.cx-study.r3-under .quiz-side .jump-row,main.cx-study.r3-under .quiz-side > .nav-row{background:var(--white);border-left:1px solid var(--line);border-right:1px solid var(--line);margin:0;padding:10px 20px 0;}
+main.cx-study.r3-under .quiz-side .progress-track{height:auto;}
+main.cx-study.r3-under .quiz-side .jump-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;}
+main.cx-study.r3-under .quiz-side .jump-row > *{min-width:0;width:100%;min-height:38px;border-radius:10px;font:900 14px var(--font-ui);}
+main.cx-study.r3-under .quiz-side .progress-track .progress-fill{height:6px;border-radius:99px;}
+main.cx-study.r3-under .quiz-side > .nav-row{border-bottom:1px solid var(--line);border-radius:0 0 22px 22px;padding:14px 20px 18px;}
+main.cx-study.r3-under .quiz-side > .nav-row #submitBtn{width:100%;background:var(--white) !important;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);border-radius:12px;}
+main.cx-study.r3-under .quiz-side .r3-notes,main.cx-study.r3-under .quiz-side .r3-kbd{margin-top:14px;}
+main.cx-study.r3-under .quiz-side:has(#timerBar:not([style*="none"])) .r3-notes,
+main.cx-study.r3-under .quiz-side:has(#timerBar:not([style*="none"])) .r3-kbd{display:none;}

@@ -12,6 +12,7 @@
    No path carries the token "ap" (spec decision 2). The helpers come from
    the generator (ctx) so the pages share its head, crumbs, footer and tail. */
 import { loadJustify, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apbio-exams.mjs';
+import { r3Inner } from './r3-inner.mjs';
 
 export const SAMPLE_SIZE = 12;
 
@@ -102,7 +103,7 @@ ${tail({ depth, section: 'exams', extra: ['bio-questions.js', 'pages/sample.js']
 </body>
 </html>
 `;
-    out[path] = head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body;
+    out[path] = r3Inner(head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body, { key: 'apbio', slug: 'unit-test', up: '../../' });
   }
 
   /* ---------------------------------------------------- justification data */

@@ -1,0 +1,57 @@
+[
+ {
+  "slug": "collision-lab",
+  "title": "Collision lab",
+  "file": "collision-lab.svg"
+ },
+ {
+  "slug": "energy-bar-charts",
+  "title": "Energy bar charts",
+  "file": "energy-bar-charts.svg"
+ },
+ {
+  "slug": "fluids-tank",
+  "title": "Fluids tank",
+  "file": "fluids-tank.svg"
+ },
+ {
+  "slug": "free-body-diagrams",
+  "title": "Free-body diagrams",
+  "file": "free-body-diagrams.svg"
+ },
+ {
+  "slug": "lab-design",
+  "title": "Lab design",
+  "file": "lab-design.svg"
+ },
+ {
+  "slug": "motion-graphs",
+  "title": "Motion graphs",
+  "file": "motion-graphs.svg"
+ },
+ {
+  "slug": "oscillator-lab",
+  "title": "Oscillator lab",
+  "file": "oscillator-lab.svg"
+ },
+ {
+  "slug": "projectile-lab",
+  "title": "Projectile lab",
+  "file": "projectile-lab.svg"
+ },
+ {
+  "slug": "rotation-lab",
+  "title": "Rotation lab",
+  "file": "rotation-lab.svg"
+ },
+ {
+  "slug": "scaling-drills",
+  "title": "Scaling drills",
+  "file": "scaling-drills.svg"
+ },
+ {
+  "slug": "torque-balance",
+  "title": "Torque balance",
+  "file": "torque-balance.svg"
+ }
+]

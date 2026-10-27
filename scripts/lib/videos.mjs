@@ -155,7 +155,7 @@ ${END}
      ochem lessons: last thing in the hero, compact (inside it, so the rail
        step-back.js adds after first paint cannot reorder it: no shift). */
 const SPOTS = [
-  { test: /^[a-z-]+\/notes\//, kind: 'notes', compact: false, re: /<header class="bk-head">[\s\S]*?<\/header>\n|<header class="tb-chapter-head">[\s\S]*?<\/header>\n/, at: 'after' },
+  { test: /^[a-z-]+\/notes\//, kind: 'notes', compact: false, re: /<header class="bk-head">[\s\S]*?<\/header>\n|<header class="tb-chapter-head">[\s\S]*?<\/header>\n|<!-- r3:head -->\n(?:<p class="bk-lede">[\s\S]*?<\/p>\n)?/, at: 'after' },
   { test: /^ochem\/lessons\//, kind: 'lesson', compact: true, re: /<div class="hero">[\s\S]*?\n(?=  <\/div>\n)/, at: 'after' },
   { test: /^[a-z-]+\/lessons\//, kind: 'lesson', compact: true, re: /<header class="[a-z]+-ls-hero">[\s\S]*?\n(?=[ \t]*<\/header>)/, at: 'after' },
 ];

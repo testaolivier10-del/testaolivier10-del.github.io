@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
 import { apHomeMain } from './lib/course-home.mjs';
+import { apToolsHubMain, swapMain, toolBand, apPageR3, apFrqItemR3 } from './lib/r3-tools.mjs';
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
@@ -40,7 +41,8 @@ import {
 } from './lib/apbio-build.mjs';
 import { entryPages } from './lib/apbio-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
-import { dashboardPage } from './lib/dashboard-page.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
+import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -63,7 +65,7 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 const put = (rel, content) => {
   if (hasApToken(rel)) throw new Error(`build-apbio: output path bio/${rel} contains the token "ap" (spec decision 2)`);
   // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-  outputs.set(rel, rel.endsWith('.html') ? applyVideo(`bio/${rel}`, wrapTables(content)) : content);
+  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`bio/${rel}`, wrapTables(content)), { key: 'apbio', rel: `bio/${rel}` }) : content);
 };
 
 if (map) build();
@@ -633,7 +635,7 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/bio-home.css">\n' }) + body;
+    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/bio-home.css">\n<link rel="stylesheet" href="../assets/course/r3.css">\n' }) + body;
   }
 
   /* --------------------------------------------------- app page shells */
@@ -678,6 +680,16 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
   `;
   }
 
+  function toolsHubR3(a) {
+    const live = (C.pages.tools || []).filter(toolLive);
+    const topicTitle = t => { const id = JSON.parse(readFileSync(join(C.data, 'tools', `${t.slug}.json`), 'utf8')).topic; const x = map.topicById(id); return x ? x.title : ''; };
+    return apToolsHubMain({
+      key: 'apbio', up: '../', courseName: COURSE_HTML, lede: a.lede || a.desc, mountClass: 'bio-app-mount',
+      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => t.kind === g.kind).map(t => ({ ...t, foot: topicTitle(t) })) })),
+      note: 'Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.',
+    });
+  }
+
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));
@@ -710,9 +722,12 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
 `;
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
     // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
-    if (a.slug === 'dashboard') return dashboardPage(page);
-    return study ? page.replace('<link rel="stylesheet" href="assets/bio.css">',
+    if (a.slug === 'dashboard') return dashboardPage(page, 'apbio');
+    // Tools hub, round 3 (scripts/lib/r3-tools.mjs): the cover band and every tool led by its own cover.
+    if (a.slug === 'tools') return swapMain(page, toolsHubR3(a), '../');
+    const out = study ? page.replace('<link rel="stylesheet" href="assets/bio.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/bio.css">') : page;
+    return a.slug === 'exams' ? examsPage(out, 'apbio', map) : out;
   }
 
   /* ------------------------------------------------------------- FRQs */
@@ -908,6 +923,8 @@ ${tail({ depth, section: '' })}
     const extra = ['bio-questions.js', 'tools/bio-tool-math.js', ...(t.kind === 'skill' ? ['tools/bio-skill-problems.js'] : []), 'tools/bio-tools.js', ...(['energy-flow', 'population-growth', 'simpson-diversity', 'tree-reading'].includes(t.slug) ? ['tools/bio-art.js'] : []), ...(t.kind !== 'simulator' ? ['tools/bio-skill-stage.js'] : []), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
+${toolBand({ key: 'apbio', up: '../../', slug: t.slug, title: t.name, hand: esc(t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',
+  crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_HTML, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(t.name) }] })}
 <main id="main" class="xshell bio-app">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
   <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'simulator' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.tag || t.blurb)}</p></header>
@@ -998,9 +1015,11 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
   put('glossary.html', glossaryPage());
   for (const ch of map.chapters.filter(chapterBuilt)) { put(`units/${ch.id}.html`, unitPage(ch.id)); put(`unit-sheets/${ch.id}.html`, unitSheet(ch.id)); }
   for (const t of built) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
-  for (const a of C.pages.apps || []) put(`${a.slug}.html`, a.static ? teachersPage(a) : appShell(a));
+  // Round 3 (scripts/lib/r3-tools.mjs): free-response practice, the cram kit and the teachers page open with the short cover band.
+  const r3Ctx = { key: 'apbio', frqFirst: frqs.length ? `frq/${frqs[0].id}.html` : '', frqCount: frqs.length };
+  for (const a of C.pages.apps || []) put(`${a.slug}.html`, apPageR3(a.slug, a.static ? teachersPage(a) : appShell(a), r3Ctx));
   put('assets/frq/index.json', frqIndex());
-  for (const f of frqs) { put(`assets/frq/${f.id}.json`, JSON.stringify(frqJson(f))); put(`frq/${f.id}.html`, frqPage(f)); }
+  for (const f of frqs) { put(`assets/frq/${f.id}.json`, JSON.stringify(frqJson(f))); put(`frq/${f.id}.html`, apFrqItemR3(frqPage(f), r3Ctx)); }
   put('assets/summaries.json', JSON.stringify(Object.fromEntries(built.map(t => [t.id, text(C.lessons[t.id].summary)]))));
   for (const t of C.pages.tools || []) { put(`tools/${t.slug}.html`, toolShell(t)); put(`assets/tool-data/${t.slug}.json`, JSON.stringify(toolData(t))); }
   put('assets/bio-curriculum.js', curriculumJs());

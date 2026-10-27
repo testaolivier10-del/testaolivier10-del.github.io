@@ -1,0 +1,97 @@
+[
+ {
+  "slug": "cell-cycle-checkpoints",
+  "title": "Cell cycle checkpoints",
+  "file": "cell-cycle-checkpoints.svg"
+ },
+ {
+  "slug": "chi-square",
+  "title": "Chi-square test",
+  "file": "chi-square.svg"
+ },
+ {
+  "slug": "confidence-intervals",
+  "title": "Confidence intervals and error bars",
+  "file": "confidence-intervals.svg"
+ },
+ {
+  "slug": "descriptive-stats",
+  "title": "Mean, SD and standard error",
+  "file": "descriptive-stats.svg"
+ },
+ {
+  "slug": "design-drills",
+  "title": "Experimental design and argumentation",
+  "file": "design-drills.svg"
+ },
+ {
+  "slug": "energy-flow",
+  "title": "Energy flow and ecological pyramids",
+  "file": "energy-flow.svg"
+ },
+ {
+  "slug": "enzyme-activity",
+  "title": "Enzyme activity and inhibition",
+  "file": "enzyme-activity.svg"
+ },
+ {
+  "slug": "graph-builder",
+  "title": "Graph builder",
+  "file": "graph-builder.svg"
+ },
+ {
+  "slug": "hardy-weinberg",
+  "title": "Hardy-Weinberg calculations",
+  "file": "hardy-weinberg.svg"
+ },
+ {
+  "slug": "hardy-weinberg-drift",
+  "title": "Hardy-Weinberg and genetic drift",
+  "file": "hardy-weinberg-drift.svg"
+ },
+ {
+  "slug": "meiosis-nondisjunction",
+  "title": "Meiosis and nondisjunction",
+  "file": "meiosis-nondisjunction.svg"
+ },
+ {
+  "slug": "operons",
+  "title": "Lac and trp operons",
+  "file": "operons.svg"
+ },
+ {
+  "slug": "osmosis",
+  "title": "Osmosis and water potential",
+  "file": "osmosis.svg"
+ },
+ {
+  "slug": "population-growth",
+  "title": "Population growth",
+  "file": "population-growth.svg"
+ },
+ {
+  "slug": "rates",
+  "title": "Rates and percent change",
+  "file": "rates.svg"
+ },
+ {
+  "slug": "signal-transduction-amplification",
+  "title": "Signal transduction and amplification",
+  "file": "signal-transduction-amplification.svg"
+ },
+ {
+  "slug": "simpson-diversity",
+  "title": "Simpson’s diversity index",
+  "file": "simpson-diversity.svg"
+ },
+ {
+  "slug": "tree-reading",
+  "title": "Phylogenetic tree reading",
+  "file": "tree-reading.svg"
+ },
+ {
+  "slug": "water-potential",
+  "title": "Water potential calculations",
+  "file": "water-potential.svg"
+ }
+]

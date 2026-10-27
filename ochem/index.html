@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="stylesheet" href="../assets/course/base.css">
 <link rel="stylesheet" href="../assets/course/hub.css">
+<link rel="stylesheet" href="../assets/course/r3.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Homepage-only layout. Everything visual — cards, buttons, level ring,
@@ -1173,214 +1174,82 @@
 <div class="course-nav"></div>
 <noscript><div class="site-nav-fallback" style="max-width:1180px;margin:0 auto;padding:14px clamp(18px,3.5vw,48px)"><a href="index.html">Home</a> &middot; <a href="learn.html">Learn</a> &middot; <a href="practice.html">Practice</a> &middot; <a href="review.html">Review</a> &middot; <a href="exams.html">Exams</a> &middot; <a href="glossary.html">Glossary</a> &middot; <a href="tools.html">Tools</a> &middot; <a href="dashboard.html">Dashboard</a></div></noscript>
 
-<div class="xshell ch-home" data-cover="ochem">
-
-  <!-- course-home:top:start -->
-<section class="ch-hero" aria-labelledby="chTitle">
-  <div class="ch-hero-copy">
-    <p class="ch-pill">Organic Chemistry &middot; free to start</p>
-    <h1 id="chTitle">Push the arrows <span>yourself.</span></h1>
-    <p class="ch-hand">the why on every wrong step</p>
-    <p class="ch-lede">Twenty-three chapters, 123 topics and ten mechanisms you perform yourself, with the why on every wrong step.</p>
-    <div class="ch-btns"><a href="learn.html" class="ch-cta" id="heroPrimaryCta">Open the textbook</a>
-          <script>try{if((localStorage.getItem('ochem_progress')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a href="tools/arrow-pusher.html?start=sn2-bromoethane" class="ch-ghost">Push the SN2 arrows, free</a></div>
-    <p class="ch-trust">Every textbook page is free, and so are the first four chapters. <a href="how-to-study.html">How to study ochem</a></p>
-  </div>
-  <div class="ch-panel">
-    <div class="ch-art" aria-hidden="true"><img src="../assets/covers/ochem.svg" alt="" width="640" height="320" decoding="async"><span class="ch-art-t"><b>Organic<span>Chemistry</span></b></span></div>
-    <div class="ch-card" id="homeResume"><div class="k">Start here</div><h3>Atomic structure</h3><p>Foundations. The groundwork every later arrow uses.</p><a href="lessons/atomic-structure.html" class="btn-press">Start the first lesson</a></div>
-    <div class="ch-mini" id="homeReview"><span class="k">Review queue</span><h3>Nothing due yet</h3><p>Finished concepts come back when they&rsquo;re shakiest, not on a fixed date.</p></div>
-  </div>
-</section>
-<section class="ch-sec" aria-labelledby="chStart">
-  <div class="ch-sh"><div><h2 id="chStart">Start <span>here</span></h2><p>New to the course? Three steps, in this order.</p></div></div>
-  <ol class="ch-steps"><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">1</span><h3>Learn a topic from scratch</h3><p>Start with atomic structure: the groundwork every later arrow uses. The first four chapters are free.</p><a class="ch-go" href="lessons/atomic-structure.html">Start the first lesson &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">2</span><h3>Push the arrows yourself</h3><p>Draw a mechanism and watch what it makes, with the why on every wrong step.</p><a class="ch-go" href="tools/arrow-pusher.html?start=sn2-bromoethane">Open the arrow pusher &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">3</span><h3>Practice and review</h3><p>Questions from every chapter, 15 a day free. Finished concepts come back when they&rsquo;re shakiest.</p><a class="ch-go" href="practice.html">Practice now &rarr;</a></li></ol>
-</section>
-<!-- course-home:top:end -->
-
-  <!-- The chapters as a path; ochem-home.js fills the rings and the line. -->
-  <div class="ch-sec">
-    <div class="ch-sh"><div><h2 id="chPath">The path through <span>the course</span></h2><p>Each chapter leans on the last. Tap one to open it.</p></div></div>
-    <div class="mod-path" id="modulePath">
-      <svg class="path-line" aria-hidden="true"><path class="path-track" d=""/><path class="path-fill" d=""/></svg>
-      <!-- mod-path:start -->
-      <a class="node" href="learn.html#m-foundations" data-module="foundations" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Foundations</b><small>10 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-electron-movement" data-module="electron-movement" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Drawing Molecules &amp; Moving Electrons</b><small>3 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-nomenclature" data-module="nomenclature" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>IUPAC Nomenclature</b><small>4 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-acids-bases" data-module="acids-bases" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Acids &amp; Bases</b><small>5 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-alkanes-conformations" data-module="alkanes-conformations" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Alkanes &amp; Conformations</b><small>5 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-stereochemistry" data-module="stereochemistry" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Stereochemistry</b><small>9 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-reactivity" data-module="reactivity" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>How Reactions Happen</b><small>7 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-substitution-elimination" data-module="substitution-elimination" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Substitution &amp; Elimination</b><small>5 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-alkenes-alkynes" data-module="alkenes-alkynes" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Alkenes &amp; Alkynes</b><small>7 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-ir-mass-spec" data-module="ir-mass-spec" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">10</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>IR &amp; Mass Spectrometry</b><small>2 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-conjugation" data-module="conjugation" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">11</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Conjugation &amp; Pericyclic Reactions</b><small>6 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-aromatic-chemistry" data-module="aromatic-chemistry" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">12</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Aromatic Chemistry</b><small>3 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-alcohols-ethers" data-module="alcohols-ethers" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">13</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Alcohols, Ethers &amp; Related Chemistry</b><small>3 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-grignard" data-module="grignard" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">14</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Organometallic Bonding &amp; Grignard Reagents</b><small>2 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-carbonyl-chemistry" data-module="carbonyl-chemistry" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">15</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Carbonyl Chemistry</b><small>7 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-redox" data-module="redox" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">16</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Oxidation &amp; Reduction</b><small>3 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-carboxylic-acids" data-module="carboxylic-acids" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">17</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Carboxylic Acids &amp; Derivatives</b><small>6 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-organometallics" data-module="organometallics" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">18</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Organolithiums, Cuprates &amp; Cross-Coupling</b><small>3 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-enolate-chemistry" data-module="enolate-chemistry" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">19</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Enolate Chemistry</b><small>7 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-amines" data-module="amines" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">20</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Amines</b><small>4 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-aromatic-breadth" data-module="aromatic-breadth" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">21</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Aromatic Follow-Through</b><small>5 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-spectroscopy" data-module="spectroscopy" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">22</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>NMR Spectroscopy</b><small>2 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-synthesis" data-module="synthesis" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">23</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Synthesis &amp; Retrosynthesis</b><small>5 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-biomolecules" data-module="biomolecules" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">24</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Biomolecules</b><small>5 topics</small></span>
-      </a>
-      <a class="node" href="learn.html#m-polymers" data-module="polymers" style="--p:0">
-        <span class="ring" aria-hidden="true"><span class="n"><span class="num">25</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></span>
-        <span class="label"><b>Polymers</b><small>5 topics</small></span>
-      </a>
-      <!-- mod-path:end -->
+<!-- course-home:main:start -->
+<main id="main" class="r3 r3-home" data-cover="ochem">
+<section class="band" aria-labelledby="r3Title"><div class="hwrap"><div>
+<p class="issue">Organic Chemistry · free to start <i></i> Textbook level</p>
+<h1 class="mast" id="r3Title">Organic<span>Chemistry</span></h1>
+<p class="deck">Push the arrows <span>yourself.</span></p>
+<p class="hand">the why on every wrong step</p>
+<p class="lede">Twenty-three chapters, 123 topics and ten mechanisms you perform yourself, with the why on every wrong step.</p>
+<div class="hero-ctas"><a class="btn-chan" id="heroPrimaryCta" href="learn.html">Open the textbook</a><script>try{if((localStorage.getItem('ochem_progress')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a class="btn-ghost" href="tools/arrow-pusher.html?start=sn2-bromoethane">Push the SN2 arrows, free</a></div>
+<a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
+<script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})["ochem"];if(r&&typeof r.url==='string'&&/^\/[^\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
+<p class="hero-alt"><a href="how-to-study.html">How to study ochem &rarr;</a></p>
+<ul class="hero-pills" aria-label="At a glance"><li>Every textbook page free</li><li>Progress saved on your device</li><li>First four chapters free</li></ul>
+<p class="founder"><span class="av" aria-hidden="true">OT</span><span>Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="../about.html">Why I built it</a></span></p>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/ochem.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>
+<div class="hwrap">
+<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">25 chapters, in order. “You are here” moves with you. Read them in order: each chapter leans on the last.</p><ol class="toc"><li><a href="learn.html#m-foundations"><span class="n">01</span><span><b>First five chapters</b><small><span class="grp">Foundations, Drawing Molecules &amp; Moving Electrons, IUPAC Nomenclature, Acids &amp; Bases, Alkanes &amp; Conformations</span></small></span><span class="w txt">27<small class="free">topics, the first four chapters free</small></span></a></li><li><a href="learn.html#m-stereochemistry"><span class="n">06</span><span><b>Next five chapters</b><small><span class="grp">Stereochemistry, How Reactions Happen, Substitution &amp; Elimination, Alkenes &amp; Alkynes, IR &amp; Mass Spectrometry</span></small></span><span class="w txt">30<small>topics</small></span></a></li><li><a href="learn.html#m-conjugation"><span class="n">11</span><span><b>Then five chapters</b><small><span class="grp">Conjugation &amp; Pericyclic Reactions, Aromatic Chemistry, Alcohols, Ethers &amp; Related Chemistry, Organometallic Bonding &amp; Grignard Reagents, Carbonyl Chemistry</span></small></span><span class="w txt">21<small>topics</small></span></a></li><li><a href="learn.html#m-redox"><span class="n">16</span><span><b>Later five chapters</b><small><span class="grp">Oxidation &amp; Reduction, Carboxylic Acids &amp; Derivatives, Organolithiums, Cuprates &amp; Cross-Coupling, Enolate Chemistry, Amines</span></small></span><span class="w txt">23<small>topics</small></span></a></li><li><a href="learn.html#m-aromatic-breadth"><span class="n">21</span><span><b>Last five chapters</b><small><span class="grp">Aromatic Follow-Through, NMR Spectroscopy, Synthesis &amp; Retrosynthesis, Biomolecules, Polymers</span></small></span><span class="w txt">22<small>topics</small></span></a></li></ol></section><div id="try"><form class="tryq" id="tryq" aria-labelledby="tq-ochem">
+      <div class="tryq__top"><span class="pill">Ochem &middot; Curved arrows</span><p class="hand">try one, it&rsquo;s free</p></div>
+      <p class="tryq__stem" id="tq-ochem">A proposed step has one curved arrow: from a lone pair on hydroxide to the carbon bonded to Cl in CH₃CH₂–Cl. No other arrow is drawn. What is wrong?</p>
+      <fieldset><legend>Choose one answer</legend><label class="ok"><input type="radio" name="tq-ochem">The carbon would end up with five bonds</label><label><input type="radio" name="tq-ochem">The tail should start on the carbon instead</label><label><input type="radio" name="tq-ochem">Hydroxide has no lone pair to give</label><label><input type="radio" name="tq-ochem">Nothing, since one arrow is enough</label></fieldset>
+      <p class="hand tryq__tip">pick one to see why</p>
+      <div class="tryq__why" role="status"><b>Five bonds on one carbon.</b> The arrow makes a new O–C bond, but that carbon already has four bonds. Unless a second arrow breaks the C–Cl bond and sends that pair to chlorine, the carbon would hold five bonds. Hydroxide does have lone pairs, and the tail belongs on them.</div>
+      <p class="tryq__more"><a href="lessons/curved-arrows.html">Open the free lesson on curved arrows &rarr;</a></p>
+    </form>
+<script>(function(){var f=document.getElementById('tryq');if(!f)return;f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script></div></div>
+<div class="fact-row" aria-label="The course"><span><span class="dot"></span><span><b>25</b> both semesters, foundations to polymers</span></span><span><span class="dot"></span><span><b>123</b> each with a free textbook section</span></span><span><span class="dot"></span><span><b>10</b> you push yourself</span></span><span><span class="dot"></span><span><b>3,675</b> questions, the full bank with Premium</span></span></div>
+<div class="r3-progress">
+    <div class="hub-progress-card" id="heroProgress">
+      <div class="hub-progress-top">
+        <span class="hub-level-ring" id="heroLevelRing" aria-hidden="true">L1</span>
+        <div><p class="hub-level-title" id="heroLevelTitle">Lewis Apprentice</p><p class="hub-level-sub"><span id="heroLevelSub">Level 1 &middot; 0 XP</span> &middot; <span id="heroXpLabel">0 / 100 XP to Level 2</span>. One level and one streak count across every LevlPrep course.</p></div>
+        <span class="hub-streak" id="heroStreak" hidden><b id="heroStreakCount">0</b>-day streak</span>
+      </div>
+      <div class="hub-track" aria-hidden="true"><div class="hub-fill" id="heroXpFill" style="width:2%"></div></div>
+      <div class="hub-tracks" id="heroModules"><p class="hp-note">Finish a lesson and your module readings appear here.</p></div>
+      <div class="hub-continue">
+        <div class="first" id="homeResume"><div class="k">Start here</div><h3>Atomic structure</h3><p>Foundations. The groundwork every later arrow uses.</p><a class="btn-press" href="learn.html">Start the first lesson</a></div>
+        <div id="homeReview"><div class="k">Review queue</div><h3>Nothing due yet</h3><p>Finished concepts come back when they’re shakiest, not on a fixed date.</p><a class="link-quiet" href="review.html">Open review →</a></div>
+        <div id="homeNext"><div class="k">Daily Rounds</div><h3>A short set each day</h3><p>A short daily set from what you’re closest to forgetting. 0 of 5 today.</p><a class="link-quiet" href="practice.html">See practice →</a></div>
+      </div>
     </div>
   </div>
-
-  <!-- course-home:mid:start -->
-<section class="ch-sec ch-two" aria-label="Notes and exams">
-  <div class="ch-box ch-notes">
-    <p class="ch-eye">Learn &middot; free forever</p>
-    <h2>The textbook, <span>free</span></h2>
-    <p>The textbook section for every topic is free, and so are the flashcards. The first four chapters are fully interactive.</p>
-    
-    <a class="ch-ghost" href="learn.html">Open the textbook</a>
-  </div>
-  <div class="ch-box ch-exam">
-    <p class="ch-eye">Exams</p>
-    
-    <h2>Timed tests <span>on your terms</span></h2>
-    <p>Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
-    <a class="ch-cta" href="exams.html">See the exams</a>
-    
-  </div>
-</section>
-<section class="ch-sec" aria-labelledby="chTools">
-  <div class="ch-sh"><div><h2 id="chTools">Tools that do <span>the chemistry</span></h2><p>Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its &#185;H NMR.</p></div><a class="ch-go" href="tools.html">All tools &rarr;</a></div>
-  <ul class="ch-tools"><li><a class="ch-box ch-tool" href="tools/arrow-pusher.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 17c2-8 10-10 14-6"/><path d="M19 7v4h-4"/></svg></span><span><b>Arrow Pusher</b><small>Draw a mechanism and watch what it makes.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/resonance.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12h5M15 12h5M9 9l3 3-3 3M15 9l-3 3 3 3"/></svg></span><span><b>Resonance Explorer</b><small>Find every valid resonance form, and rank them.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/conformations.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="7"/><path d="M12 5v14M6 8.5l12 7"/></svg></span><span><b>Conformation Lab</b><small>Turn the bond. Watch the energy.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/reaction-predictor.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12h12M12 7l5 5-5 5"/></svg></span><span><b>Reaction Predictor</b><small>SN1, SN2, E1 or E2, and why, factor by factor.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/spectroscopy.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 18h18M5 18l2-8 2 8 2-12 2 12 2-5 2 5"/></svg></span><span><b>Spectroscopy Lab</b><small>Read the peaks, name the compound.</small></span></a></li><li><a class="ch-box ch-tool" href="tools/reagent-roadmap.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h6a4 4 0 0 1 0 8h-4a4 4 0 0 0 0 8"/></svg></span><span><b>Reagent Roadmap</b><small>From any functional group to any other, with the reagents.</small></span></a></li></ul>
-</section>
-<!-- course-home:mid:end -->
-
-  <div class="xsection" id="sample">
-    <div class="sample-row">
-      <div>
-        <h2 style="margin-top:0">Try a step.</h2>
-        <p class="section-lede" style="margin:0 0 24px;text-align:left">One real question from the practice bank. Pick an answer to see why it is right or wrong.</p>
-        <div class="sample-list">
-          <div class="row"><span class="n">1</span> Read the step</div>
-          <div class="row"><span class="n">2</span> Pick the answer you would bet on</div>
-          <div class="row"><span class="n">3</span> See why the arrows work that way</div>
-        </div>
-      </div>
-      <!-- sample:start -->
-      <div class="mechcard" id="ochemSample" data-correct="0">
-        <span class="tag domain">Drawing Molecules &amp; Moving Electrons</span> <span class="tag diff">Curved arrows</span>
-        <p class="qtext" id="ochemSampleQ">A proposed step has one curved arrow: from a lone pair on hydroxide to the carbon bonded to Cl in CH₃CH₂–Cl. No other arrow is drawn. What is wrong?</p>
-        <div role="group" aria-labelledby="ochemSampleQ">
-          <button type="button" class="qopt" data-i="0"><span class="letter">A</span> The carbon would end up with five bonds</button>
-          <button type="button" class="qopt" data-i="1"><span class="letter">B</span> The tail should start on the carbon instead</button>
-          <button type="button" class="qopt" data-i="2"><span class="letter">C</span> Hydroxide has no lone pair to give</button>
-          <button type="button" class="qopt" data-i="3"><span class="letter">D</span> Nothing, since one arrow is enough</button>
-        </div>
-        <p class="why" id="ochemSampleWhy" aria-live="polite"></p>
-        <details class="sample-key"><summary>Show the answer</summary><p><b>The carbon would end up with five bonds</b> The arrow makes a new O–C bond, but that carbon already has four bonds. Unless a second arrow breaks the C–Cl bond and sends that pair to chlorine, the carbon would hold five bonds. Hydroxide does have lone pairs, and the tail belongs on them.</p></details>
-        <p class="sample-more"><a class="link-quiet" href="lessons/curved-arrows.html">Open the free lesson on curved arrows &rarr;</a></p>
-      </div>
-      <!-- sample:end -->
+<p class="kicker">The lead <i></i></p><section class="story" aria-label="Notes, exams and how this course works"><div class="ccard"><a class="cover" href="learn.html" data-cover="ochem" tabindex="-1" aria-hidden="true"><img src="../assets/covers/ochem.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>The textbook,<span>free</span></b><em>Learn · free forever</em></span></a>
+    <span class="cmeta"><a class="cname" href="learn.html">Open the textbook</a><span class="tag free">Free forever</span></span>
+    <span class="cdesc">The textbook section for every topic is free, and so are the flashcards. The first four chapters are fully interactive.</span><span class="chiprow"><a href="flashcards.html">Flashcards</a><a href="glossary.html">Glossary<i>516 terms</i></a></span></div><div class="col"><h3>How this course works</h3><div class="step"><span class="n">1</span><h3>Learn a topic from scratch</h3><p>Start with atomic structure: the groundwork every later arrow uses. The first four chapters are free. <a class="go" href="lessons/atomic-structure.html">Start the first lesson →</a></p></div><div class="step"><span class="n">2</span><h3>Push the arrows yourself</h3><p>Draw a mechanism and watch what it makes, with the why on every wrong step. <a class="go" href="tools/arrow-pusher.html?start=sn2-bromoethane">Open the arrow pusher →</a></p></div><div class="step"><span class="n">3</span><h3>Practice and review</h3><p>Questions from every chapter, 15 a day free. Finished concepts come back when they’re shakiest. <a class="go" href="practice.html">Practice now →</a></p></div><a class="ccard" href="exams.html"><span class="clock"><b>50</b><span>question cumulative final</span></span><span class="cmeta"><span class="cname">See the exams</span><span class="tag">Exams</span></span><span class="cdesc">Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</span></a></div></section>
+<p class="kicker">Eight tools that do the chemistry <i></i></p><div class="ruled-h"><p>Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its ¹H NMR.</p><a class="go" href="tools.html">All tools &rarr;</a></div><div class="dept"><a href="tools/arrow-pusher.html"><span class="tc"><img src="../assets/covers/tools/ochem/arrow-pusher.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Arrow Pusher</span><span class="tag free">Free</span></span><span class="cdesc">Draw a mechanism and watch what it makes.</span></a><a href="tools/resonance.html"><span class="tc"><img src="../assets/covers/tools/ochem/resonance.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Resonance Explorer</span><span class="tag free">Free</span></span><span class="cdesc">Find every valid resonance form, and rank them.</span></a><a href="tools/viewer-3d.html"><span class="tc"><img src="../assets/covers/tools/ochem/viewer-3d.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">3D Molecule Viewer</span><span class="tag free">Free</span></span><span class="cdesc">Rotate it until the shape stops being abstract. VSEPR, hybridization, stereochemistry.</span></a><a href="tools/conformations.html"><span class="tc"><img src="../assets/covers/tools/ochem/conformations.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Conformation Lab</span><span class="tag prem">Premium</span></span><span class="cdesc">Turn the bond. Watch the energy.</span></a><a href="tools/reaction-predictor.html"><span class="tc"><img src="../assets/covers/tools/ochem/reaction-predictor.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Reaction Predictor</span><span class="tag prem">Premium</span></span><span class="cdesc">SN1, SN2, E1 or E2, and why, factor by factor.</span></a><a href="tools/acid-base.html"><span class="tc"><img src="../assets/covers/tools/ochem/acid-base.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Acid/Base Comparator</span><span class="tag prem">Premium</span></span><span class="cdesc">Two structures. Which proton comes off first?</span></a><a href="tools/spectroscopy.html"><span class="tc"><img src="../assets/covers/tools/ochem/spectroscopy.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Spectroscopy Lab</span><span class="tag prem">Premium</span></span><span class="cdesc">Read the peaks, name the compound.</span></a><a href="tools/reagent-roadmap.html"><span class="tc"><img src="../assets/covers/tools/ochem/reagent-roadmap.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Reagent Roadmap</span><span class="tag prem">Premium</span></span><span class="cdesc">From any functional group to any other, with the reagents.</span></a></div>
+<p class="kicker kicker-gap">Only in Organic Chemistry <i></i></p><div class="else-x"><div class="ccard xcard"><span class="cmeta"><span class="cname">Ten mechanisms you perform yourself.</span></span><span class="cdesc">Push every arrow, step by step, with the why on every wrong step. SN2 is free.</span><ul class="mlist"><li><a href="mechanisms/sn2.html">SN2</a></li><li><a href="mechanisms/sn1.html">SN1</a></li><li><a href="mechanisms/e2.html">E2</a></li><li><a href="mechanisms/e1.html">E1</a></li><li><a href="mechanisms/addition.html">Alkene addition</a></li><li><a href="mechanisms/carbonyl-addition.html">Carbonyl addition</a></li><li><a href="mechanisms/acyl-substitution.html">Acyl substitution</a></li><li><a href="mechanisms/aldol.html">Aldol</a></li><li><a href="mechanisms/claisen.html">Claisen</a></li><li><a href="mechanisms/eas.html">EAS</a></li></ul><a class="go" href="tools/arrow-pusher.html?start=sn2-bromoethane">Push the SN2 arrows, free &rarr;</a></div><div class="ccard"><span class="cmeta"><span class="cname">Periodic table reference</span></span><span class="cdesc">The ⚛ button opens the periodic table over any page of the course.</span></div></div>
+<section class="home-deal" id="r3Deal" aria-label="Free and Premium">
+    <div class="plan">
+      <span class="pill">Free</span>
+      <h3>Everything to start</h3>
+      <p class="plan__note">Start now, with no card.</p><p class="freenote">Every textbook page is free, and so are the first four chapters.</p>
+      <ul><li>The textbook section for every topic, and the flashcards</li><li>The first four chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li></ul>
+      <a class="btn-ghost" href="lessons/atomic-structure.html">Start the first lesson</a>
     </div>
-  </div>
-
-  <!-- course-home:deal:start -->
-<section class="ch-sec ch-deal" aria-labelledby="chDeal">
-  <h2 id="chDeal" class="sr-only">Free and Premium</h2>
-  <div class="ch-box ch-plan">
-    <p class="ch-pill">Free</p>
-    <h3>Everything to start</h3>
-    <ul><li>The textbook section for every topic, and the flashcards</li><li>The first four chapters, fully interactive</li><li>15 practice or review questions a day from any chapter</li><li>One full exam, and three of the interactive tools</li></ul>
-    <a class="ch-ghost" href="lessons/atomic-structure.html">Start the first lesson</a>
-  </div>
-  <div class="ch-box ch-plan prem">
-    <p class="ch-pill">Premium &middot; Organic Chemistry</p>
-    <p class="ch-amt"><span data-founding-until="2027-01-31">From $20.30 <s>$29</s></span><span data-founding-after="2027-01-31" hidden>From $29</span></p>
-    <p class="ch-note"><span data-founding-until="2027-01-31">Founding price until 31 January 2027. </span>One payment for semester (5 months).</p>
-    <ul><li>Every interactive lesson and mechanism walkthrough</li><li>The full 3,675-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>Mastery dashboard and gap detection</li><li>All eight interactive tools</li></ul>
-    <a class="ch-cta gold" href="../premium.html#ochem">Get Premium for Organic Chemistry</a>
-    <p class="ch-sure">Never renews. Full refund within 7 days.</p>
-  </div>
-</section>
-<script>(function(){var n=Date.now(),d=document.getElementById('chDeal').parentNode;[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
-<!-- course-home:deal:end -->
+    <div class="plan plan--premium">
+      <span class="pill">Premium &middot; Organic Chemistry</span>
+      <p class="plan__amt"><span data-founding-until="2027-01-31">From $20.30<s>$29</s></span><span data-founding-after="2027-01-31" hidden>From $29</span></p>
+      <p class="plan__note"><span data-founding-until="2027-01-31">Founding price until 31 January 2027. </span>One payment for semester (5 months).</p>
+      <ul><li>Every interactive lesson and mechanism walkthrough</li><li>The full 3,675-question bank, unlimited practice and review</li><li>Unlimited exams</li><li>Mastery dashboard and gap detection</li><li>All eight interactive tools</li></ul>
+      <a class="btn-gold" href="../premium.html#ochem">Get Premium for Organic Chemistry</a>
+      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
+    </div>
+  </section>
+<script>(function(){var n=Date.now(),d=document.getElementById('r3Deal');[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
+<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq"><h3>What the course covers</h3><div class="ans">The whole organic chemistry sequence as one free textbook: 25 chapters and 123 sections covering both semesters, from foundations through polymers. Each chapter leans on the last. Tap one to open it.</div><h3>How to study organic chemistry.</h3><div class="ans">Most people who struggle with this course are studying hard and studying wrong: memorizing an ever-growing list of reactions instead of the handful of patterns underneath them. Here is what to do instead. <a href="how-to-study.html">Read How to study ochem</a>.<ul><li>Push the arrows yourself</li><li>Work problems, don’t reread</li><li>Fix gaps backwards</li><li>Draw structures constantly</li><li>Space it out</li></ul></div><h3>What kinds of questions are there?</h3><div class="ans"><ul class="legend"><li><i>1</i>Read the step</li><li><i>2</i>Pick the answer you would bet on</li><li><i>3</i>See why the arrows work that way</li></ul></div><h3>Is this course free?</h3><div class="ans">Every textbook page is free, and so are the first four chapters.</div><h3>Is LevlPrep affiliated with the exam?</h3><div class="ans">Independent study aid. Progress is stored on your device; sign in to sync it.</div></div></section>
+<section class="about-row" aria-label="About LevlPrep">
+    <div class="about-card"><div class="k">Who makes this</div><p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="../premium.html">what is free</a> is listed course by course. No ads.</p></div>
+    <div class="about-card"><div class="k">How the questions are written</div><p>Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="../sources.html">Sources and checks</a>.</p></div>
+    <div class="about-card"><div class="k">What changes</div><p>Corrected questions, new lessons and site fixes are listed, dated, on <a href="../changelog.html">What&rsquo;s new</a>. The checks that run on every change are described under <a href="../sources.html">Sources</a>.</p></div>
+  </section>
+<div class="sticky-cta"><a class="btn-chan" href="learn.html">Open the textbook</a></div>
+</div>
+</main>
+<!-- course-home:main:end -->
+<div class="xshell r3-foot">
   <div class="xsection">
     <p class="disclaimer">Independent study aid. Progress is stored on your device; sign in to sync it. <a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
   </div>

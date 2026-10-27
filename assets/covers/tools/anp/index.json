@@ -1,0 +1,37 @@
+[
+ {
+  "slug": "calculators",
+  "title": "Calculators with every step shown",
+  "file": "calculators.svg"
+ },
+ {
+  "slug": "feedback-loops",
+  "title": "Feedback loop builder",
+  "file": "feedback-loops.svg"
+ },
+ {
+  "slug": "graphs",
+  "title": "Graph reader",
+  "file": "graphs.svg"
+ },
+ {
+  "slug": "lab-practical",
+  "title": "Virtual lab practical",
+  "file": "lab-practical.svg"
+ },
+ {
+  "slug": "pathways",
+  "title": "Pathway tracer",
+  "file": "pathways.svg"
+ },
+ {
+  "slug": "predict",
+  "title": "Predict the change",
+  "file": "predict.svg"
+ },
+ {
+  "slug": "word-roots",
+  "title": "Medical word root builder",
+  "file": "word-roots.svg"
+ }
+]

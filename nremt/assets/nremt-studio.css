@@ -25,7 +25,10 @@
 .nx-ls .levl-next__go{min-height:44px;}
 .nx-ls .levl-next__also .link-quiet{display:inline-flex;align-items:center;min-height:44px;}
 /* ---------------------------------------------------- reference pages (slim) */
-body.nx-slim-on #site-header,body.nx-slim-on .course-nav,body.nx-slim-on [data-crumb],body.nx-slim-on .bottom-nav,
+/* Round 3 (docs/site-redesign.md): on a desktop the site header and the course tabs stay above the page's cover
+   band; a phone gives the reference page the screen, as before. */
+@media (max-width:999.98px){body.nx-slim-on #site-header,body.nx-slim-on .course-nav{display:none !important;}}
+body.nx-slim-on [data-crumb],body.nx-slim-on .bottom-nav,
 body.nx-slim-on .bottom-sheet,body.nx-slim-on .bottom-scrim{display:none !important;}
 body.nx-slim-on{padding-bottom:0 !important;}
 .nx-slim-bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:4px;height:56px;padding:0 8px;

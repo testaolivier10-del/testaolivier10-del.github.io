@@ -28,6 +28,7 @@
      node scripts/build-nremt-glossary.mjs --check    fail if stale or invalid (CI)
 */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { r3Reading } from './lib/r3-reading.mjs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CSP } from './lib/site-config.mjs';
@@ -156,7 +157,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
 `;
 
 const stale = [];
-for (const [file, body] of [[OUT_JSON, jsonOut], [OUT_HTML, html]]) {
+for (const [file, body] of [[OUT_JSON, jsonOut], [OUT_HTML, r3Reading(html, { key: 'nremt', rel: 'nremt/glossary.html' })]]) {
   const current = existsSync(file) ? readFileSync(file, 'utf8') : null;
   if (current === body) continue;
   if (check) { stale.push(file.slice(ROOT.length + 1)); continue; }

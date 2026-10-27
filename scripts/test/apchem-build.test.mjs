@@ -59,7 +59,8 @@ test('nothing published: no topic pages, every page noindex', () => {
 test('the course home has its own headline and the cobalt flask, not Biology\'s', () => {
   const { root } = build('unit-1');
   const home = readFileSync(join(root, 'chem/index.html'), 'utf8');
-  assert.match(home, /<h1 id="chTitle">AP&reg; Chemistry, <span>one particle at a time\.<\/span><\/h1>/);
+  assert.match(home, /<h1 class="mast" id="r3Title">AP®<span>Chemistry<\/span><\/h1>/);
+  assert.match(home, /<p class="deck">AP® Chemistry, <span>one particle at a time\.<\/span><\/p>/);
   assert.doesNotMatch(home, /Biology|osmosis|Water Watcher/);
   assert.match(home, /assets\/chem\.css/);
 });

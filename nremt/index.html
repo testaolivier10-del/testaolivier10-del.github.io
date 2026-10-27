@@ -36,6 +36,7 @@
 <script src="../assets/course/hub.js" defer></script>
 <link rel="stylesheet" href="../assets/course/base.css">
 <link rel="stylesheet" href="../assets/course/hub.css">
+<link rel="stylesheet" href="../assets/course/r3.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Homepage-only layout. Everything visual (cards, buttons, path nodes,
@@ -130,106 +131,82 @@
 <div class="course-nav"></div>
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 
-<div class="xshell ch-home" data-cover="nremt">
-
-  <!-- course-home:top:start -->
-<section class="ch-hero" aria-labelledby="chTitle">
-  <div class="ch-hero-copy">
-    <p class="ch-pill">NREMT&#8209;EMT &middot; Cognitive exam</p>
-    <h1 id="chTitle">Level up before <span>the real exam does.</span></h1>
-    <p class="ch-hand">911 call to hospital, one chapter at a time</p>
-    <p class="ch-lede">2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.</p>
-    <div class="ch-btns"><a href="practice.html" class="ch-cta" id="heroPrimaryCta">Start practicing</a>
-          <script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a href="#sample" class="ch-ghost">See a sample question</a></div>
-    <p class="ch-trust">Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="../about.html">More about me</a></p>
-  </div>
-  <div class="ch-panel">
-    <div class="ch-art" aria-hidden="true"><img src="../assets/covers/nremt.svg" alt="" width="640" height="320" decoding="async"><span class="ch-art-t"><b>NREMT<span>EMT Prep</span></b></span></div>
-    <div class="ch-card" id="nrStart"><div class="k">Start here</div><h2>A 20-question domain drill</h2><p>Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.</p><a class="btn-press" href="practice.html">Start a drill</a></div>
-    <div class="ch-mini" id="nrReview"><span class="k">Review queue</span><h2>Nothing due yet</h2><p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p><a href="review.html">Open review &rarr;</a></div>
-  </div>
-</section>
-<section class="ch-sec" aria-labelledby="chStart">
-  <div class="ch-sh"><div><h2 id="chStart">Start <span>here</span></h2><p>New to the course? Three steps, in this order.</p></div></div>
-  <ol class="ch-steps"><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">1</span><h3>Run a 20-question drill</h3><p>Short and focused, with every answer explained. Your weakest topic areas show up once you have answered a few.</p><a class="ch-go" href="practice.html">Start a drill &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">2</span><h3>Read what it points to</h3><p>Forty chapters of notes, free forever, from the call to the handover.</p><a class="ch-go" href="study-notes.html">Open the notes &rarr;</a></li><li class="ch-box ch-step"><span class="ch-n" aria-hidden="true">3</span><h3>Sit a timed exam</h3><p>A full length exam on the clock, scored by domain when you finish, so test day feels familiar.</p><a class="ch-go" href="exams.html">See the exams &rarr;</a></li></ol>
-</section>
-<section class="ch-sec" aria-labelledby="chPractice">
-  <div class="ch-sh"><div><h2 id="chPractice">Practice by <span>exam domain</span></h2><p>The National Registry&rsquo;s EMT exam since 7 April 2025 follows a call from arrival to handover. Every question here is tagged by the step it tests, and practice exams draw them in the exam&rsquo;s proportions.</p></div></div>
-  <ul class="ch-box ch-doms"><li class="ch-dom"><div class="ch-dom-t"><h3>Primary Assessment</h3><p>Impression, ABCs, life threats and priority.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:100%"></i></span><span><b>39 to 43%</b> of the exam &middot; 853 questions</span></div><a class="ch-ghost" href="practice.html?domain=Primary%20Assessment">Practice this<span class="sr-only">: Primary Assessment</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Patient Treatment &amp; Transport</h3><p>Interventions, medications and transport.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:56%"></i></span><span><b>20 to 24%</b> of the exam &middot; 619 questions</span></div><a class="ch-ghost" href="practice.html?domain=Patient%20Treatment%20%26%20Transport">Practice this<span class="sr-only">: Patient Treatment &amp; Transport</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Scene Size-Up &amp; Safety</h3><p>Hazards, PPE, resources and triage.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:44%"></i></span><span><b>15 to 19%</b> of the exam &middot; 172 questions</span></div><a class="ch-ghost" href="practice.html?domain=Scene%20Size-Up%20%26%20Safety">Practice this<span class="sr-only">: Scene Size-Up &amp; Safety</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Operations</h3><p>Equipment, documentation, legal and wellness.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:33%"></i></span><span><b>10 to 14%</b> of the exam &middot; 258 questions</span></div><a class="ch-ghost" href="practice.html?domain=Operations">Practice this<span class="sr-only">: Operations</span></a></li><li class="ch-dom"><div class="ch-dom-t"><h3>Secondary Assessment</h3><p>History, the focused exam and reassessment.</p></div><div class="ch-dom-w"><span class="ch-track" aria-hidden="true"><i style="width:21%"></i></span><span><b>5 to 9%</b> of the exam &middot; 131 questions</span></div><a class="ch-ghost" href="practice.html?domain=Secondary%20Assessment">Practice this<span class="sr-only">: Secondary Assessment</span></a></li></ul>
-</section>
-<!-- course-home:top:end -->
-  <!-- course-home:mid:start -->
-<section class="ch-sec ch-two" aria-label="Notes and exams">
-  <div class="ch-box ch-notes">
-    <p class="ch-eye">Learn &middot; free forever</p>
-    <h2>Forty chapters <span>of notes</span></h2>
-    <p>Every chapter of the EMT curriculum, with glossary terms, flowcharts and mnemonics alongside.</p>
-    <ul class="ch-chips"><li><a href="notes/airway-management.html">Airway Management<i>Ch 9</i></a></li><li><a href="notes/primary-assessment.html">Primary Assessment<i>Ch 12</i></a></li><li><a href="notes/respiratory-emergencies.html">Respiratory Emergencies<i>Ch 19</i></a></li><li><a href="notes/cardiac-emergencies.html">Cardiac Emergencies<i>Ch 20</i></a></li><li><a href="notes/bleeding-control.html">Bleeding Control<i>Ch 29</i></a></li><li><a href="notes/ems-operations.html">EMS Operations<i>Ch 38</i></a></li></ul>
-    <a class="ch-ghost" href="study-notes.html">Open the notes</a>
-  </div>
-  <div class="ch-box ch-exam">
-    <p class="ch-eye">Exams</p>
-    <p class="ch-clock"><b>100</b><span>questions on the clock</span></p>
-    
-    <p>Full length, exam paced, scored by domain when you finish.</p>
-    <a class="ch-cta" href="exams.html">Start a timed exam</a>
-    <p class="ch-small"><a href="exam-day.html">How the real exam works</a>: the adaptive format, the two-hour clock, cost, eligibility and retakes.</p>
-  </div>
-</section>
-<section class="ch-sec" aria-labelledby="chTools">
-  <div class="ch-sh"><div><h2 id="chTools">Tools for the <span>hands on part</span></h2><p>Anatomy, sounds, protocol flow, call simulations and the skill sheets.</p></div><a class="ch-go" href="tools.html">All tools &rarr;</a></div>
-  <ul class="ch-tools"><li><a class="ch-box ch-tool" href="body-map.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v7M8 10h8M10 21l2-6 2 6"/></svg></span><span><b>Body Map</b><small>A real 3D model. Turn the body, tap a region and get the structures, landmarks and findings.</small></span></a></li><li><a class="ch-box ch-tool" href="scenario-sim.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12h4l2-5 4 10 2-5h4"/></svg></span><span><b>Scenarios</b><small>Twenty-five branching calls, dispatch to handover. With Premium.</small></span></a></li><li><a class="ch-box ch-tool" href="skillsheets.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><span><b>Skill Sheets</b><small>The psychomotor stations and what fails them.</small></span></a></li><li><a class="ch-box ch-tool" href="sound-trainer.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span><span><b>Sound Trainer</b><small>Wheezes, crackles, stridor and heart sounds, by ear.</small></span></a></li><li><a class="ch-box ch-tool" href="flowcharts.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="4" y="3" width="7" height="5" rx="1"/><rect x="13" y="16" width="7" height="5" rx="1"/><path d="M7.5 8v5h9v3"/></svg></span><span><b>Flow Diagrams</b><small>Ten sequences: assessment, CPR, anaphylaxis, choking, triage.</small></span></a></li><li><a class="ch-box ch-tool" href="formulary.html"><span class="ch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="4" y="9" width="16" height="6" rx="3"/><path d="M12 9v6"/></svg></span><span><b>Drug Formulary</b><small>The seven core EMT drugs: doses, contraindications, and what stops you.</small></span></a></li></ul>
-</section>
-<!-- course-home:mid:end -->
-
-  <div class="xsection" id="sample">
-    <div class="sample-row">
-      <div>
-        <h2 style="margin-top:0">Try one.</h2>
-        <p class="section-lede" style="margin:0 0 24px;text-align:left">A sample from the practice bank. Pick an answer to check it.</p>
-        <p class="sample-legend-h">Question types in the bank</p>
-        <ul class="sample-list">
-          <li><span class="n" aria-hidden="true">A</span> Single best answer</li>
-          <li><span class="n" aria-hidden="true">N</span> Select N (the item says how many)</li>
-          <li><span class="n" aria-hidden="true">S</span> Build list (put steps in order)</li>
-        </ul>
-        <p class="sample-note">The real exam also uses drag-and-drop sorting and options-table items. This site does not simulate those two yet; its build-list items use move-up and move-down buttons rather than dragging.</p>
+<!-- course-home:main:start -->
+<main id="main" class="r3 r3-home" data-cover="nremt">
+<section class="band" aria-labelledby="r3Title"><div class="hwrap"><div>
+<p class="issue">NREMT-EMT · Cognitive exam <i></i> 2025 outline</p>
+<h1 class="mast" id="r3Title">NREMT<span>EMT Prep</span></h1>
+<p class="deck">Level up before <span>the real exam does.</span></p>
+<p class="hand">911 call to hospital, one chapter at a time</p>
+<p class="lede">2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.</p>
+<div class="hero-ctas"><a class="btn-chan" id="heroPrimaryCta" href="practice.html">Start practicing</a><script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a class="btn-ghost" href="#try">See a sample question</a></div>
+<a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
+<script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})["nremt"];if(r&&typeof r.url==='string'&&/^\/[^\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
+<p class="hero-alt"><a href="exam-day.html">How the real exam works &rarr;</a></p>
+<ul class="hero-pills" aria-label="At a glance"><li>Free to start</li><li>Works offline</li><li>Private by default</li></ul>
+<p class="founder"><span class="av" aria-hidden="true">OT</span><span>Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep. <a href="../about.html">Why I built it</a></span></p>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/nremt.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>
+<div class="hwrap">
+<div class="lead"><section class="contents" aria-labelledby="toc-h"><h2 id="toc-h">In this <span>course</span></h2><p class="sub">Five domains, weighted as on the exam. Pick one to drill it.</p><ol class="toc"><li><a href="practice.html?domain=Primary%20Assessment"><span class="n">01</span><span><b>Primary Assessment</b><small>Impression, ABCs, life threats and priority. 853 questions</small></span><span class="w">39 to 43%<small>of the exam</small><span class="wbar"><i style="width:86%"></i></span></span></a></li><li><a href="practice.html?domain=Patient%20Treatment%20%26%20Transport"><span class="n">02</span><span><b>Patient Treatment &amp; Transport</b><small>Interventions, medications and transport. 619 questions</small></span><span class="w">20 to 24%<small>of the exam</small><span class="wbar"><i style="width:48%"></i></span></span></a></li><li><a href="practice.html?domain=Scene%20Size-Up%20%26%20Safety"><span class="n">03</span><span><b>Scene Size-Up &amp; Safety</b><small>Hazards, PPE, resources and triage. 172 questions</small></span><span class="w">15 to 19%<small>of the exam</small><span class="wbar"><i style="width:38%"></i></span></span></a></li><li><a href="practice.html?domain=Operations"><span class="n">04</span><span><b>Operations</b><small>Equipment, documentation, legal and wellness. 258 questions</small></span><span class="w">10 to 14%<small>of the exam</small><span class="wbar"><i style="width:28%"></i></span></span></a></li><li><a href="practice.html?domain=Secondary%20Assessment"><span class="n">05</span><span><b>Secondary Assessment</b><small>History, the focused exam and reassessment. 131 questions</small></span><span class="w">5 to 9%<small>of the exam</small><span class="wbar"><i style="width:18%"></i></span></span></a></li></ol></section><div id="try"><form class="tryq" id="tryq" aria-labelledby="tq-nremt">
+      <div class="tryq__top"><span class="pill">NREMT &middot; Patient Treatment &amp; Transport</span><p class="hand">try one, it&rsquo;s free</p></div>
+      <p class="tryq__stem" id="tq-nremt">A patient has a penetrating chest wound with an audible sucking sound on inspiration. Your next action is to:</p>
+      <fieldset><legend>Choose one answer</legend><label><input type="radio" name="tq-nremt">Apply high-flow oxygen via non-rebreather</label><label class="ok"><input type="radio" name="tq-nremt">Seal the wound with an occlusive dressing</label><label><input type="radio" name="tq-nremt">Begin positive-pressure ventilation</label><label><input type="radio" name="tq-nremt">Position the patient supine and transport</label></fieldset>
+      <p class="hand tryq__tip">pick one to see why</p>
+      <div class="tryq__why" role="status"><b>Seal the wound first.</b>An open chest wound is sealed first, with a vented chest seal or an occlusive dressing, so air stops entering the chest through it; then watch for a developing tension pneumothorax.</div>
+      <p class="tryq__more"><a href="practice.html">Try a drill &rarr;</a></p>
+    </form>
+<script>(function(){var f=document.getElementById('tryq');if(!f)return;f.addEventListener('change',function(e){if(f.classList.contains('done'))return;e.target.closest('label').classList.add('picked');f.classList.add('done');[].forEach.call(f.querySelectorAll('input'),function(i){i.disabled=true;});});f.addEventListener('submit',function(e){e.preventDefault();});})();</script></div></div>
+<div class="fact-row" aria-label="The real exam"><span><span class="dot"></span><span><b>70 to 120</b> questions, computer-adaptive</span></span><span><span class="dot"></span><span><b>2 hours</b> whatever length you get</span></span><span><span class="dot"></span><span><b>$104</b> exam fee, per attempt</span></span><span><span class="dot"></span><span><b>15 days</b> wait before a retake</span></span></div><p class="fact-note">The real exam. Figures checked September 2026. Confirm every one on nremt.org before you book.</p>
+<div class="r3-progress">
+    <div class="hub-progress-card" id="heroProgress">
+      <div class="hub-progress-top">
+        <span class="hub-level-ring" id="heroLevelRing" aria-hidden="true">L1</span>
+        <div><p class="hub-level-title" id="heroLevelTitle">First Responder</p><p class="hub-level-sub"><span id="heroLevelSub">Level 1 &middot; 0 XP</span> &middot; <span id="heroXpLabel">0 / 100 XP to Level 2</span>. One level and one streak count across every LevlPrep course.</p></div>
+        <span class="hub-streak" id="heroStreak" hidden><b id="heroStreakCount">0</b>-day streak</span>
       </div>
-      <div class="qcard" id="sampleCard">
-        <span class="tag domain">Patient Treatment &amp; Transport</span> <span class="tag diff">Moderate</span>
-        <div class="qtext" id="sampleQ">A patient has a penetrating chest wound with an audible sucking sound on inspiration. Your next action is to:</div>
-        <div class="sample-opts" role="group" aria-labelledby="sampleQ">
-          <button type="button" class="qopt" data-ok="0"><span class="letter">A</span> Apply high-flow oxygen via non-rebreather</button>
-          <button type="button" class="qopt" data-ok="1"><span class="letter">B</span> Seal the wound with an occlusive dressing</button>
-          <button type="button" class="qopt" data-ok="0"><span class="letter">C</span> Begin positive-pressure ventilation</button>
-          <button type="button" class="qopt" data-ok="0" style="margin-bottom:0"><span class="letter">D</span> Position the patient supine and transport</button>
-        </div>
-        <p class="sample-feedback" id="sampleFeedback" role="status"></p>
+      <div class="hub-track" aria-hidden="true"><div class="hub-fill" id="heroXpFill" style="width:2%"></div></div>
+      <div class="hub-tracks" id="heroDomains"><p class="hp-note">Answer a few questions and your topic-area readings appear here.</p></div>
+      <div class="hub-continue">
+        <div class="first" id="nrStart"><div class="k">Start here</div><h2>A 20-question domain drill</h2><p>Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.</p><a class="btn-press" href="practice.html">Start a drill</a></div>
+        <div id="nrReview"><div class="k">Review queue</div><h2>Nothing due yet</h2><p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p><a class="link-quiet" href="review.html">Open review →</a></div>
+        <div id="nrGoal"><div class="k">Today’s goal</div><h2>0 of 15</h2><p>Questions, cards and tool steps from any LevlPrep subject count toward a daily goal and a shared streak.</p><a class="link-quiet" href="practice.html">Practice now →</a></div>
       </div>
     </div>
   </div>
-
-  <!-- course-home:deal:start -->
-<section class="ch-sec ch-deal" aria-labelledby="chDeal">
-  <h2 id="chDeal" class="sr-only">Free and Premium</h2>
-  <div class="ch-box ch-plan">
-    <p class="ch-pill">Free</p>
-    <h3>Everything to start</h3>
-    <ul><li>Study notes, glossary, flowcharts, mnemonics, flashcards and the body map</li><li>15 practice or review questions a day, any topic</li><li>One full timed exam</li></ul>
-    <a class="ch-ghost" href="practice.html">Start practicing</a>
-  </div>
-  <div class="ch-box ch-plan prem">
-    <p class="ch-pill">Premium &middot; NREMT-EMT</p>
-    <p class="ch-amt"><span data-founding-until="2027-01-31">$20.30 <s>$29</s></span><span data-founding-after="2027-01-31" hidden>$29</span></p>
-    <p class="ch-note"><span data-founding-until="2027-01-31">Founding price until 31 January 2027. </span>One payment for 90 days.</p>
-    <ul><li>The full 2,033-question bank, unlimited</li><li>Unlimited timed 100-question exams</li><li>Unlimited missed-question review and spaced repetition</li><li>Readiness score and domain breakdowns</li><li>The clinical scenario simulator</li></ul>
-    <a class="ch-cta gold" href="../premium.html#nremt">Get Premium for NREMT-EMT</a>
-    <p class="ch-sure">Never renews. Full refund within 7 days.</p>
-  </div>
-</section>
-<script>(function(){var n=Date.now(),d=document.getElementById('chDeal').parentNode;[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
-<!-- course-home:deal:end -->
-
+<p class="kicker">The lead <i></i></p><section class="story" aria-label="Notes, exams and how this course works"><div class="ccard"><a class="cover" href="study-notes.html" data-cover="nremt" tabindex="-1" aria-hidden="true"><img src="../assets/covers/nremt.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>Forty chapters<span>of notes</span></b><em>Learn · free forever</em></span></a>
+    <span class="cmeta"><a class="cname" href="study-notes.html">Open the notes</a><span class="tag free">Free forever</span></span>
+    <span class="cdesc">Every chapter of the EMT curriculum, with glossary terms, flowcharts and mnemonics alongside.</span><span class="chiprow"><a href="notes/airway-management.html">Airway Management<i>Ch 9</i></a><a href="notes/primary-assessment.html">Primary Assessment<i>Ch 12</i></a><a href="notes/respiratory-emergencies.html">Respiratory Emergencies<i>Ch 19</i></a><a href="notes/cardiac-emergencies.html">Cardiac Emergencies<i>Ch 20</i></a><a href="notes/bleeding-control.html">Bleeding Control<i>Ch 29</i></a><a href="notes/ems-operations.html">EMS Operations<i>Ch 38</i></a></span></div><div class="col"><h3>How this course works</h3><div class="step"><span class="n">1</span><h3>Run a 20-question drill</h3><p>Short and focused, with every answer explained. Your weakest topic areas show up once you have answered a few. <a class="go" href="practice.html">Start a drill →</a></p></div><div class="step"><span class="n">2</span><h3>Read what it points to</h3><p>Forty chapters of notes, free forever, from the call to the handover. <a class="go" href="study-notes.html">Open the notes →</a></p></div><div class="step"><span class="n">3</span><h3>Sit a timed exam</h3><p>A full length exam on the clock, scored by domain when you finish, so test day feels familiar. <a class="go" href="exams.html">See the exams →</a></p></div><a class="ccard" href="exams.html"><span class="clock"><b>100</b><span>questions on the clock</span></span><span class="cmeta"><span class="cname">Start a timed exam</span><span class="tag">Exams</span></span><span class="cdesc">Full length, exam paced, scored by domain when you finish.</span></a></div></section>
+<p class="kicker">Tools for the hands on part <i></i></p><div class="ruled-h"><p>Anatomy, sounds, protocol flow, call simulations and the skill sheets.</p><a class="go" href="tools.html">All tools &rarr;</a></div><div class="dept"><a href="body-map.html"><span class="tc"><img src="../assets/covers/tools/nremt/body-map.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Body Map</span><span class="tag free">Free</span></span><span class="cdesc">A real 3D model. Turn the body, tap a region and get the structures, landmarks and findings.</span></a><a href="scenario-sim.html"><span class="tc"><img src="../assets/covers/tools/nremt/scenario-sim.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Scenarios</span><span class="tag prem">Premium</span></span><span class="cdesc">Twenty-five branching calls, dispatch to handover.</span></a><a href="skillsheets.html"><span class="tc"><img src="../assets/covers/tools/nremt/skillsheets.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Skill Sheets</span><span class="tag free">Free</span></span><span class="cdesc">The psychomotor stations and what fails them.</span></a><a href="sound-trainer.html"><span class="tc"><img src="../assets/covers/tools/nremt/sound-trainer.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Sound Trainer</span><span class="tag free">Free</span></span><span class="cdesc">Wheezes, crackles, stridor and heart sounds, by ear.</span></a><a href="flowcharts.html"><span class="tc"><img src="../assets/covers/tools/nremt/flowcharts.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Flow Diagrams</span><span class="tag free">Free</span></span><span class="cdesc">Ten sequences: assessment, CPR, anaphylaxis, choking, triage.</span></a><a href="formulary.html"><span class="tc"><img src="../assets/covers/tools/nremt/formulary.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></span><span class="cmeta"><span class="cname">Drug Formulary</span><span class="tag free">Free</span></span><span class="cdesc">The seven core EMT drugs: doses, contraindications, and what stops you.</span></a></div><p class="credit">Body Map figure from BodyParts3D © 2008 <a href="https://lifesciencedb.jp/bp3d/" rel="noopener">Life Science Integrated Database Center</a>, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" rel="noopener">CC BY-SA 2.1 JP</a>.</p>
+<p class="kicker kicker-gap">Only in NREMT <i></i></p><div class="else-x one"><div class="feat"><div><span class="cname">Learn the anatomy by pointing at it.</span><p class="cdesc">A 3D body map and a sound trainer, plus twenty-five branching scenarios with Premium.</p><a class="btn-gold" href="body-map.html">Open the body map</a></div><div class="fig tcfig" aria-hidden="true"><img src="../assets/covers/tools/nremt/body-map.svg" alt="" width="640" height="320" loading="lazy" decoding="async"></div></div></div>
+<section class="home-deal" id="r3Deal" aria-label="Free and Premium">
+    <div class="plan">
+      <span class="pill">Free</span>
+      <h3>Everything to start</h3>
+      <p class="plan__note">Start now, with no card.</p>
+      <ul><li>Study notes, glossary, flowcharts, mnemonics, flashcards and the body map</li><li>15 practice or review questions a day, any topic</li><li>One full timed exam</li></ul>
+      <a class="btn-ghost" href="practice.html">Start practicing</a>
+    </div>
+    <div class="plan plan--premium">
+      <span class="pill">Premium &middot; NREMT-EMT</span>
+      <p class="plan__amt"><span data-founding-until="2027-01-31">$20.30<s>$29</s></span><span data-founding-after="2027-01-31" hidden>$29</span></p>
+      <p class="plan__note"><span data-founding-until="2027-01-31">Founding price until 31 January 2027. </span>One payment for 90 days.</p>
+      <ul><li>The full 2,033-question bank, unlimited</li><li>Unlimited timed 100-question exams</li><li>Unlimited missed-question review and spaced repetition</li><li>Readiness score and domain breakdowns</li><li>The clinical scenario simulator</li></ul>
+      <a class="btn-gold" href="../premium.html#nremt">Get Premium for NREMT-EMT</a>
+      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
+    </div>
+  </section>
+<script>(function(){var n=Date.now(),d=document.getElementById('r3Deal');[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>
+<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq"><h3>What the exam covers</h3><div class="ans">The National Registry’s EMT exam since 7 April 2025 follows a call from arrival to handover. Every question here is tagged by the step it tests, and practice exams draw them in the exam’s proportions.</div><h3>What the NREMT-EMT exam is actually like.</h3><div class="ans">The format, the clock, the cost, who can sit it, what happens if you fail, and what to bring. The practice here trains the content; this page covers everything around it. <a href="exam-day.html">Read how the real exam works</a>.<ul><li>The format: adaptive, not fixed</li><li>What it covers: the 2025 exam outline</li><li>Who can sit it</li><li>Cost</li><li>If you don’t pass</li><li>On the day</li><li>The week before</li></ul></div><h3>Question types in the bank</h3><div class="ans"><ul class="legend"><li><i>A</i>Single best answer</li><li><i>N</i>Select N (the item says how many)</li><li><i>S</i>Build list (put steps in order)</li></ul>The real exam also uses drag-and-drop sorting and options-table items. This site does not simulate those two yet; its build-list items use move-up and move-down buttons rather than dragging.</div><h3>Are the exam figures current?</h3><div class="ans">Figures checked September 2026. Confirm every one on nremt.org before you book.</div><h3>Is this course free?</h3><div class="ans">All notes are free forever. Study notes, glossary, flowcharts, mnemonics, flashcards and the body map.</div><h3>Is LevlPrep affiliated with the exam?</h3><div class="ans">Independent study aid. Not affiliated with or endorsed by the National Registry of Emergency Medical Technicians.</div></div></section>
+<section class="about-row" aria-label="About LevlPrep">
+    <div class="about-card"><div class="k">Who makes this</div><p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="../premium.html">what is free</a> is listed course by course. No ads.</p></div>
+    <div class="about-card"><div class="k">How the questions are written</div><p>Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="../sources.html">Sources and checks</a>.</p></div>
+    <div class="about-card"><div class="k">What changes</div><p>Corrected questions, new lessons and site fixes are listed, dated, on <a href="../changelog.html">What&rsquo;s new</a>. The checks that run on every change are described under <a href="../sources.html">Sources</a>.</p></div>
+  </section>
+<div class="sticky-cta"><a class="btn-chan" href="practice.html">Start practicing</a></div>
+</div>
+</main>
+<!-- course-home:main:end -->
+<div class="xshell r3-foot">
   <div class="xsection">
     <footer style="margin-top:0">
       <p>Independent study aid. Not affiliated with or endorsed by the National Registry of Emergency Medical Technicians.</p>
@@ -312,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var box = document.getElementById('heroDomains');
     if(!attempted.length){
-      box.innerHTML = '<div class="mini-domain-row" style="border-top:1px solid var(--line-soft);color:var(--muted);font-weight:700;font-size:12.5px;display:block;padding-top:12px">' +
+      box.innerHTML = '<div class="mini-domain-row" style="border-top:1px solid var(--line-soft);color:inherit;opacity:.85;font-weight:700;font-size:12.5px;display:block;padding-top:12px">' +
         'Answer a few questions and your topic-area readings appear here.</div>';
       return;
     }

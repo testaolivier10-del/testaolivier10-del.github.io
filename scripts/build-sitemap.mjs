@@ -38,7 +38,8 @@ const check = process.argv.includes('--check');
 // dashboard (SQL, auth email templates) — none of it is a published page, so
 // none of it needs an OG tag or a sitemap entry. check-site.mjs has always
 // skipped it; these two now agree.
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'scripts']);
+// docs/ holds notes and design boards (docs/redesign-r3/r10/boards/*.dc.html), never a page of the site.
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'scripts', 'docs']);
 const SKIP_FILES = /^(404\.html|offline\.html|googleb[0-9a-f]+\.html)$/;
 
 function walk(dir, out = []) {

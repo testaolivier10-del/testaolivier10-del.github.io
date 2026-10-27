@@ -81,6 +81,8 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../assets/course/r3.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
 </head>
 <body>
 <header id="site-header"></header>
@@ -89,46 +91,44 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav></div>
 <!-- crumb:end -->
 
-<div class="xshell">
-  <header class="page-head db-head">
-    <div class="eyebrow">Organic Chemistry <span>&middot; Dashboard</span></div>
-    <h1>Where you <span>stand today.</span></h1>
-    <p class="db-hand">worked out in your browser from every answer you give</p>
-    <p>Mastery, not a readiness score: built from every question you have answered, not from lessons opened.</p>
-  </header>
-  <div data-levl-cross="ochem"></div>
-  <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'ochem'); }); });</script>
-
+<main id="main" class="r3 r3-inner r3-dashboard" data-cover="ochem">
+<!-- r3-band:start -->
+<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav>
+<p class="issue">Organic Chemistry &middot; Dashboard <i></i></p>
+<h1 class="deck" id="r3Title">Where you <span>stand today.</span></h1>
+<p class="hand">worked out in your browser from every answer you give</p>
+<p class="lede" id="headSub">Mastery, not a readiness score: built from every question you have answered, not from lessons opened.</p>
+<div class="hero-ctas"><a class="btn-chan" href="practice.html">Continue practicing</a></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/ochem.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<!-- r3-band:end -->
+<div class="xshell r3-body" id="r3Body">
   <!-- The shared dashboard (assets/course/hub.css): mastery-page.js and
-       game-panel.js fill these slots from the concept model and ochem-xp. -->
-  <div class="cx-db" id="ocDash">
+       game-panel.js fill these slots from the concept model and ochem-xp. Round 3
+       (board R10-Progress) groups them under kickers. -->
+  <div class="cx-db r3-db" id="ocDash">
     <noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript>
+    <div class="r3-db-lead"><div class="r3-db-side"><div id="ocStart"></div><div id="recRow"></div></div><div id="examDateCard"></div></div>
     <div id="ocStats"></div>
-    <div id="ocStart"></div>
-    <div id="recRow"></div>
-    <div id="examDateCard"></div>
-    <div class="cx-db-grid">
-      <div class="cx-db-col">
-        <div id="leechAlerts"></div>
-        <div id="dependencyAlerts"></div>
-        <div id="weakConcepts"></div>
-        <div id="moduleStats"></div>
-        <div id="familyStats"></div>
-      </div>
-      <aside class="cx-db-col" aria-label="Level, Rounds and badges">
-        <div id="gameLevel"></div>
-        <div id="gameRounds"></div>
-        <div id="gameDebt"></div>
-        <div id="gameConcepts"></div>
-        <div id="gameAchievements"></div>
-        <div id="ocPremium"></div>
-      </aside>
-    </div>
+    <div data-levl-cross="ochem"></div>
+    <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'ochem'); }); });</script>
+
+    <section class="r3-db-sec" aria-labelledby="r3dbWeak"><p class="kicker" id="r3dbWeak">Where you are weak <i></i></p>
+      <div class="r3-db-two"><div class="r3-db-side"><div id="leechAlerts"></div><div id="dependencyAlerts"></div><div id="weakConcepts"></div></div><div id="moduleStats"></div></div></section>
+    <section class="r3-db-sec" aria-labelledby="r3dbFam"><p class="kicker" id="r3dbFam">By concept <i></i></p>
+      <div class="r3-db-two"><div id="familyStats"></div><div id="gameConcepts"></div></div></section>
+    <section class="r3-db-sec" aria-labelledby="r3dbLevel"><p class="kicker" id="r3dbLevel">Level and Daily Rounds <i></i></p>
+      <div class="r3-db-two"><div class="r3-db-side"><div id="gameLevel"></div><div id="gameDebt"></div></div><div id="gameRounds"></div></div></section>
+    <section class="r3-db-sec" aria-labelledby="r3dbBadges"><p class="kicker" id="r3dbBadges">Badges and certificates <i></i></p>
+      <div class="r3-db-two"><div id="gameAchievements"></div><div>
+        <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->
+        <div id="levlMilestones"></div>
+        <script>document.addEventListener('DOMContentLoaded', function(){ if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'ochem'); }); });</script>
+      </div></div></section>
+    <div id="ocPremium" class="r3-db-premium"></div>
   </div>
-  <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->
-  <div id="levlMilestones"></div>
-  <script>document.addEventListener('DOMContentLoaded', function(){ if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'ochem'); }); });</script>
 </div>
+</main>
 
 <script src="assets/curriculum.js" defer></script>
 <script src="assets/concepts.js" defer></script>
@@ -162,7 +162,7 @@
     });
   });
 </script>
-<div class="xshell">
+<div class="xshell r3-foot">
   <footer>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>

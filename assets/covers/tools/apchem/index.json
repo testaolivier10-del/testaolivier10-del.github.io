@@ -1,0 +1,42 @@
+[
+ {
+  "slug": "buffer-drills",
+  "title": "Buffer and Henderson-Hasselbalch drills",
+  "file": "buffer-drills.svg"
+ },
+ {
+  "slug": "equilibrium-kinetics",
+  "title": "Equilibrium and kinetics simulator",
+  "file": "equilibrium-kinetics.svg"
+ },
+ {
+  "slug": "ice-table-drills",
+  "title": "ICE table drills",
+  "file": "ice-table-drills.svg"
+ },
+ {
+  "slug": "particle-diagrams",
+  "title": "Particle diagram trainer",
+  "file": "particle-diagrams.svg"
+ },
+ {
+  "slug": "periodic-trends-pes",
+  "title": "Periodic trends and PES explorer",
+  "file": "periodic-trends-pes.svg"
+ },
+ {
+  "slug": "q-vs-k",
+  "title": "Q vs K trainer",
+  "file": "q-vs-k.svg"
+ },
+ {
+  "slug": "titration-curve-reader",
+  "title": "Titration curve reader",
+  "file": "titration-curve-reader.svg"
+ },
+ {
+  "slug": "units-sig-figs",
+  "title": "Units and significant figures checker",
+  "file": "units-sig-figs.svg"
+ }
+]

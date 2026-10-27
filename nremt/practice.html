@@ -199,14 +199,17 @@
           <div id="premiumNotice" class="premium-slot"></div>
         </form>
 
-        <div class="intro-row">
-          <div id="readinessCard"></div>
-        </div>
       </div>
 
+      <!-- Rail order from board R10-Practice-Setup: readiness, your numbers,
+           daily goal, review queue, then the other ways to study. -->
       <aside class="cx-rail" aria-labelledby="cx-rail-h">
-        <h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>
-        <div class="cx-stats" id="nrStats"></div>
+        <div class="intro-row r3-readiness"><div id="readinessCard"></div></div>
+        <div class="cx-card cx-numbers">
+          <h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>
+          <div class="cx-stats" id="nrStats"></div>
+        </div>
+        <div id="streakWidget"></div>
         <div class="cx-card cx-qcard">
           <p class="cx-kicker">Review queue</p>
           <h3 data-due-state="ready" hidden><span data-due="all">0</span> due for another look</h3>
@@ -219,7 +222,6 @@
           <a class="cx-link" href="flashcards.html"><b>Flashcards<small>Short facts on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
           <a class="cx-link" href="exams.html"><b>Exams<small>The timed 100-question exam.</small></b><span aria-hidden="true">&rarr;</span></a>
         </nav>
-        <div id="streakWidget"></div>
       </aside>
     </div>
   </div>

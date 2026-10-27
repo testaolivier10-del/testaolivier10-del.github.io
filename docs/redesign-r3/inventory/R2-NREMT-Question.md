@@ -1,0 +1,42 @@
+# R2-NREMT-Question inventory
+Every item found on the live page (Playwright dump + engine source), and where it lives in the mockup. Nothing removed.
+
+- [x] Skip to content link: kept (first focusable, not drawn)
+- [x] LevlPrep logo and course name in the top bar: kept, top bar
+- [x] Search button (opens the / search overlay): kept, top bar
+- [x] Level chip (L1), appears after the first answers: kept, top bar
+- [x] Daily count chip next to the level chip, appears after answering: kept, top bar (noted on Results board)
+- [x] Log in / account button: kept, top bar
+- [x] Answer sounds toggle: kept, top bar
+- [x] Dark mode toggle: kept, top bar
+- [x] Course tabs: Home, Learn, Practice, Review, Exams, Glossary, Tools, Dashboard: kept, tab row (slimmer during a session)
+- [x] Breadcrumb LevlPrep › course › Practice: kept, under tabs
+- [x] Ask me anything tutor button: kept, floating bottom right
+- [x] Footer: About these questions link: kept, footer
+- [x] Footer links: Privacy, Terms, About, Sources, What's new, Premium, Account, Contact: kept, footer
+- [x] Session banner: Weak-spot practice, untimed. It retargets after every question.: kept, above the card
+- [x] Other session banners: Domain drill, Missed-question review, Flagged-question review, Spaced review, One question from search: kept, state panel
+- [x] Save and exit: kept, top right of the session
+- [x] Domain pill + difficulty tag: kept, card header
+- [x] Flag for review: kept, card header
+- [x] Question stem: kept
+- [x] Options A to D with letter keys: kept
+- [x] Check answer button (before answering): kept, state panel Before you answer
+- [x] Previous button: kept, under the card
+- [x] Next button: kept, primary under the card
+- [x] Result line Not quite. / Correct.: kept
+- [x] Answer: B) ... line: kept, explanation header
+- [x] Explanation paragraph: kept, full text
+- [x] Your answer and Correct markers on options: kept
+- [x] Misses go to the review queue: kept in result line
+- [x] Report this question button and form (A fact is wrong, A typo or formatting problem, It disagrees with current guidance, note, Send, Report sent. Thank you.): kept, link under the card + state panel
+- [x] Question N of 15: kept, rail
+- [x] N answered: kept, rail
+- [x] Question navigator pills: kept, rail
+- [x] End session button: kept, rail
+- [x] End session confirm: Submit now? You can still review all questions and answers after.: kept, state panel
+- [x] Keyboard: arrows, Home, End, Space, Enter: kept, rail (real keys)
+- [x] Select N type with counter messages: kept, state panel
+- [x] Build list type: Arrange these in the correct order, drag, Move up, Move down: kept, state panel
+- [x] Read the notes link for the domain: added from S04 (links to existing notes chapter)
+- [x] Answer sounds (play on check): kept, top bar toggle

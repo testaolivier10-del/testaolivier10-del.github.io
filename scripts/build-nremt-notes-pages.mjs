@@ -52,6 +52,7 @@ import vm from 'node:vm';
 import { CSP } from './lib/site-config.mjs';
 import { loadChapters, chapterSlug } from './lib/nremt-notes.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -432,7 +433,7 @@ chapters.forEach((ch, i) => {
   wanted.add(name);
   const file = join(OUT_DIR, name);
   // The video lesson block, if docs/videos.json lists one (scripts/lib/videos.mjs).
-  const html = applyVideo(`nremt/notes/${name}`, page(ch, i));
+  const html = r3Reading(applyVideo(`nremt/notes/${name}`, page(ch, i)), { key: 'nremt', rel: `nremt/notes/${name}` });
   const current = existsSync(file) ? readFileSync(file, 'utf8') : null;
   if (current === html) return;
   if (check) { stale.push(name); return; }

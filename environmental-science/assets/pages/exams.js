@@ -59,7 +59,7 @@
   var BASE = window.ApEnvBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .env-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .env-hero');
   var CUR = window.ApEnvCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApEnvCore, Q = window.ApEnvQuestions;
   var PREFS = 'apenv_prefs_v1';
@@ -310,8 +310,9 @@
     if(!cfg.unit && builtUnits()[0]) cfg.unit = builtUnits()[0].id;
     var fe = Core.freeExam ? Core.freeExam() : { unlimited: true, available: true };
     var n1 = '<span class="cx-step-n" aria-hidden="true">';
-    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' + freeExamHtml(fe) +
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder env-pr-setup env-ex-setup" novalidate aria-label="Set up an exam">' +
+      '<div class="cx-builder-head"><h2>Set up <span>an exam</span></h2><p>Pick the kind, then the timing.</p></div>' + freeExamHtml(fe) +
       '<fieldset class="cx-step"><legend>' + n1 + '1</span>Choose an exam</legend><div class="cx-choices">' +
         '<label class="cx-choice"><input type="radio" name="kind" value="full"' + (cfg.kind === 'full' ? ' checked' : '') + '><span><b>Practice exam</b><span>The May 2027 format: multiple choice, then free response, scored with rubrics.</span></span></label>' +
         '<label class="cx-choice"><input type="radio" name="kind" value="unit"' + (cfg.kind === 'unit' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span><b>Unit test</b><span>One unit, weighted by topic.</span></span></label>' +

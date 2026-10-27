@@ -1,0 +1,3 @@
+# R10-Progress-Phone (nremt/dashboard.html on a phone, first visit) placement. Source: R3-Dashboard-NREMT-Phone.md
+- Phone top bar and bottom bar with More marked (Dashboard lives under More).
+- Every desktop panel stacked in the same order: next box empty state ("Your dashboard fills in as you study" and its three steps), exam date (unset, date input, Save, note), tiles two by two, topic areas (6 rows, no answers yet), domains locked, readiness locked ("Take a full timed exam..."), score over time (narrow chart once there are exams; text until then), review queue empty text, level (first visit text), streak, badges, milestones (first visit summary), Premium, local data note.

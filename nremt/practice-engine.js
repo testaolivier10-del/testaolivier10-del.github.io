@@ -50,6 +50,19 @@ const RUNNER_SCREENS = `
       <div class="nav-row">
         <button class="primary" id="submitBtn" style="background:var(--accent);">Submit Now</button>
       </div>
+      <!-- Board R10-Practice-Question: the notes and the keys, under the session. -->
+      <div class="cx-card r3-notes">
+        <span class="r3-notes-art" aria-hidden="true"><img src="../assets/covers/nremt.svg" alt="" width="640" height="320" decoding="async" loading="lazy"></span>
+        <div><h3>Read the notes</h3><p>Forty chapters of notes, free forever, from the call to the handover.</p><a href="study-notes.html">Open the notes &rarr;</a></div>
+      </div>
+      <div class="cx-card r3-kbd">
+        <h3>Keyboard</h3>
+        <dl>
+          <dt><kbd aria-label="Up arrow">&uarr;</kbd><kbd aria-label="Down arrow">&darr;</kbd></dt><dd>move between answers</dd>
+          <dt><kbd>Home</kbd><kbd>End</kbd></dt><dd>first or last answer</dd>
+          <dt><kbd>Space</kbd><kbd>Enter</kbd></dt><dd>choose</dd>
+        </dl>
+      </div>
     </aside>
   </div>
 

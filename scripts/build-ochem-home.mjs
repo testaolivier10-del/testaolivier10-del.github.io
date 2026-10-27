@@ -44,13 +44,14 @@ const MODULES = loadModules();
 let html = readFileSync(PAGE, 'utf8');
 const before = html;
 
-/* ---- the chapter path ------------------------------------------------- */
+/* ---- the chapter path -------------------------------------------------
+   Round 3 (docs/site-redesign.md): the course home shows the chapters as the "In this course" contents
+   list and takes its sample question straight from the bank, both written by build-course-homes.mjs, so
+   the page no longer carries the path or the sample markers. Both blocks below run only if their
+   markers are present; the JSON-LD further down is always kept in step. */
 const START = '<!-- mod-path:start -->', END = '<!-- mod-path:end -->';
 const a = html.indexOf(START), b = html.indexOf(END);
-if (a === -1 || b === -1 || b < a) {
-  console.error(`ochem/index.html: expected ${START} … ${END} inside #modulePath.`);
-  process.exit(1);
-}
+if (a !== -1 && b > a) {
 const TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 const LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
 const nodes = MODULES.map((m, i) =>
@@ -60,6 +61,7 @@ const nodes = MODULES.map((m, i) =>
   `      </a>`
 ).join('\n');
 html = html.slice(0, a + START.length) + '\n' + nodes + '\n      ' + html.slice(b);
+}
 
 /* ---- the "Try a step" card (polish 2026-10-17, C5) ----------------------
    One real question from the practice bank (a free chapter, Curved arrows),
@@ -67,7 +69,7 @@ html = html.slice(0, a + START.length) + '\n' + nodes + '\n      ' + html.slice(
    page keeping a stale copy. ochem-home.js grades it in place; without
    JavaScript the answer sits in a "Show the answer" disclosure. */
 const SAMPLE = { topic: 'curved-arrows', stem: 'A proposed step has one curved arrow: from a lone pair on hydroxide' };
-{
+if (html.includes('<!-- sample:start -->')) {
   const bank = JSON.parse(readFileSync(join(ROOT, 'ochem', 'assets', 'practice-bank.json'), 'utf8'));
   const q = (bank[SAMPLE.topic] || []).find((x) => x.type === 'mcq' && x.q.startsWith(SAMPLE.stem));
   if (!q) { console.error(`ochem/index.html: the sample question ("${SAMPLE.stem}...") is no longer in the ${SAMPLE.topic} bank. Pick another in scripts/build-ochem-home.mjs.`); process.exit(1); }

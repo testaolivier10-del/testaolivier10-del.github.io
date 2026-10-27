@@ -1,0 +1,43 @@
+# R2-Ochem-Question inventory
+Every item found on the live page (Playwright dump + engine source), and where it lives in the mockup. Nothing removed.
+
+- [x] Skip to content link: kept (first focusable, not drawn)
+- [x] LevlPrep logo and course name in the top bar: kept, top bar
+- [x] Search button (opens the / search overlay): kept, top bar
+- [x] Level chip (L1), appears after the first answers: kept, top bar
+- [x] Daily count chip next to the level chip, appears after answering: kept, top bar (noted on Results board)
+- [x] Log in / account button: kept, top bar
+- [x] Answer sounds toggle: kept, top bar
+- [x] Dark mode toggle: kept, top bar
+- [x] Course tabs: Home, Learn, Practice, Review, Exams, Glossary, Tools, Dashboard: kept, tab row (slimmer during a session)
+- [x] Breadcrumb LevlPrep › course › Practice: kept, under tabs
+- [x] Ask me anything tutor button: kept, floating bottom right
+- [x] Footer: About these questions link: kept, footer
+- [x] Footer links: Privacy, Terms, About, Sources, What's new, Premium, Account, Contact: kept, footer
+- [x] Mode label DIAGNOSTIC: kept
+- [x] Question N / 8: kept
+- [x] Progress bar: kept
+- [x] End session: kept
+- [x] Topic · concept label: kept, pill
+- [x] Difficulty tier (FOUNDATIONAL): kept
+- [x] Question kind label (e.g. IDENTIFY ON THE MOLECULE): kept, per type panel
+- [x] Flag: kept
+- [x] Back arrow and Where you were →; Looking back, nothing is being re-scored: kept, header + state panel
+- [x] Stem and options: kept
+- [x] Submit (interactive types): kept in type panels
+- [x] Not quite. / You chose ...: kept
+- [x] This question turns on X, that is the idea to check.: kept
+- [x] Explanation: kept
+- [x] THE CONCEPT BEHIND IT card with concept text: kept
+- [x] Full lesson: X: kept
+- [x] Read the section: kept
+- [x] Mastery change line (X → 4% (first look)): kept
+- [x] Try a similar one: kept
+- [x] Report a problem: kept
+- [x] Next question / Finish session: kept
+- [x] Check, apply the fix follow-up: kept, state panel
+- [x] Right as far as it goes (partial): kept, state panel
+- [x] Here is what went wrong.: kept, state panel
+- [x] Types: Identify on the molecule, Identify all that apply, Rank these, Predict the product, Push the arrow (Tail on, Submit arrows), Draw the mechanism, Choose the mechanism, True or false, multiple choice: kept, one panel each
+- [x] Structure for this question (molecule shown with the stem): kept, in Predict panel
+- [x] Periodic table button and Escape to close: kept
