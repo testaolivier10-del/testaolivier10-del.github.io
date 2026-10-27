@@ -40,6 +40,11 @@ export function twoTone(title) {
   return `${words.slice(0, cut).join(' ')} <span>${words.slice(cut).join(' ')}</span>`;
 }
 
+/* The hand line is the course's tagline, not lesson text: mark it as navigation so the concept-order checks
+   (scripts/lib/*-map.mjs skip .<prefix>-nav-ref) do not read "force by force" as using force early. */
+const NAV_REF = { anp: 'anp', apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apstat: 'stat', apenv: 'env' };
+function handClass(key) { return NAV_REF[key] ? `hand ${NAV_REF[key]}-nav-ref` : 'hand'; }
+
 function handFor(key) {
   try { return homeData(key).hand; } catch { return (COVERS[key] || {}).hand || ''; }
 }
@@ -147,7 +152,7 @@ export function r3Reading(html, { key, rel }) {
 ${crumbHtml}
 ${kick ? `<p class="issue">${issue}</p>` : ''}
 ${h1}
-${hand ? `<p class="hand">${hand}</p>` : ''}
+${hand ? `<p class="${handClass(key)}">${hand}</p>` : ''}
 ${buttons ? `<div class="hero-ctas">${buttons}</div>` : ''}
 ${chips}
 ${links}
@@ -229,7 +234,7 @@ export function r3PageHead(html, { key, rel }) {
 ${crumbHtml}
 <p class="issue">${eyebrow} <i></i> ${titleText}</p>
 <h1 class="deck"${h1[1].includes('id=') ? h1[1] : `${h1[1]} id="${titleId}"`}>${title}</h1>
-${hand ? `<p class="hand">${hand}</p>` : ''}
+${hand ? `<p class="${handClass(key)}">${hand}</p>` : ''}
 ${lede ? `<p class="lede">${lede}</p>` : ''}
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
 </div>
@@ -287,7 +292,7 @@ function learnBand(html, { key, up, shell, mainOpen }) {
 ${crumbHtml}
 <p class="issue">Learn <i></i> Free forever</p>
 <p class="deck" aria-hidden="true">${/\s(study notes|textbook|notes)$/i.test(name) ? name.replace(/\s(study notes|textbook|notes)$/i, ' <span>$1</span>') : twoTone(name)}</p>
-${hand ? `<p class="hand">${hand}</p>` : ''}
+${hand ? `<p class="${handClass(key)}">${hand}</p>` : ''}
 <p class="lede">${toc.m[2].trim()}</p>
 ${first ? `<div class="hero-ctas"><a class="btn-chan" href="${first}">Start at the first page</a></div>` : ''}
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
