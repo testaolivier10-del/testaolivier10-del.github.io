@@ -99,3 +99,9 @@
   .eb-chip{font-size:13.5px;padding:8px 12px;}
 }
 @media (prefers-reduced-motion:reduce){.eb-src,.eb-res,.eb-det{transition:none;}}
+
+/* The first-run tip's slot, the question picker row that wraps, and the 16 px side gutter on a phone. */
+.eb-tipslot{height:58px;flex:none;}
+.ls-root .psy-ls-setup{min-height:44px;height:auto;padding-top:8px;padding-bottom:8px;}
+.ls-root .psy-ls-setup > span{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3;}
+@media (max-width:640px){ .ls-root .psy-ls-stage .eb-fig{padding:0 12px;} }

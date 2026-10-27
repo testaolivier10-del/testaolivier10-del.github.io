@@ -47,6 +47,20 @@
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
+  /* The first-run tip sits in an empty slot opened just above its target, so it
+     never covers the dock heading or another control; the slot goes on the first action. */
+  function hintSlot(s, target, text){
+    if(!target) return;
+    var slot = document.createElement('div');
+    slot.className = 'eb-tipslot'; slot.setAttribute('aria-hidden', 'true');
+    target.parentNode.insertBefore(slot, target);
+    var h = s.hint({ target: target, text: text });
+    if(!h){ slot.remove(); return; }
+    var EV = ['pointerdown', 'keydown', 'input', 'change'];
+    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
+    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
+    if(h.place) h.place();
+  }
   function cap(t){ t = String(t); return t.charAt(0).toUpperCase() + t.slice(1); }
   function phone(){ return (window.innerWidth || 1280) <= 640; }
 
@@ -141,7 +155,7 @@
         '<div class="ls-seg eb-tabs" role="group" aria-label="Sources">' + ctx.sources.map(function(x, k){ return '<button type="button" class="eb-tab" data-src="' + k + '" aria-pressed="' + (k === src) + '">Source ' + (k + 1) + (used[k] ? used[k].map(function(x){ return '<span class="eb-used" aria-label="used in ' + x + '">' + x + '</span>'; }).join('') : '') + '</button>'; }).join('') + '</div>' +
         sourceHtml(ctx, nums, src, { phone: phone() });
       if(ev && ev.src === src){ var el = fig.querySelector(ev.what === 'detail' ? '.eb-det' : '.eb-res'); if(el) el.classList.add('is-on', ev.what === 'detail' || s.bad[part === 'Bi' || part === 'Bii' ? 'Bi' : 'Ci'] ? 'is-bad' : 'is-good'); }
-      if(LS) LS.pills([{ html: 'Score ' + s.total + ' / 7', tone: s.total === 7 ? 'good' : s.total ? 'accent' : 'ghost' }].concat(E.PARTS.filter(function(p){ return p.k === part; }).map(function(p){ return { html: p.label + ' ' + s[p.k] + ' / ' + p.pts, tone: s[p.k] === p.pts ? 'good' : s[p.k] ? 'warn' : 'ghost' }; })), 'left', 'explore');
+      if(LS) LS.pills([{ html: 'Score ' + s.total + ' / 7', tone: s.total === 7 ? 'good' : s.total ? 'accent' : 'ghost' }], 'left', 'explore');
     }
     function drawParts(){
       var s = sc();
@@ -180,7 +194,7 @@
         '<p class="eb-why-k">Reader advice</p><p>Read all three sources and note each result before you write. For each reasoning part: the evidence, then the concept, then the link to the claim.</p>';
       T.explain($('.eb-say'), head, why);
       if(LS){
-        LS.caption('<b>Score ' + s.total + ' of 7.</b> ' + (s.total === 7 ? 'Every point earned. Try another claim or question.' : 'Part ' + PART[part].label + ': ' + esc(s.notes[part])), 'explore');
+        LS.caption(s.total === 7 ? '<b>Every point earned.</b> Try another claim or question.' : '<b>Part ' + PART[part].label + ', ' + esc(PART[part].name.toLowerCase()) + '.</b> ' + esc(s.notes[part]), 'explore');
         if(LS.why) LS.why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
       }
     }
@@ -208,7 +222,7 @@
       LS.setupRow = sp;
       sp.setup(ctx.title);
       drawAll();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.eb-pcard .eb-chip'), text: 'Start here: pick a claim' });
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.eb-parts'), 'Start here: pick a claim, then build each part');
       var w = window.innerWidth, t = null;
       window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(function(){ if((window.innerWidth <= 640) !== (w <= 640)){ w = window.innerWidth; drawStage(); } }, 120); });
     }
