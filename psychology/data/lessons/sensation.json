@@ -1,0 +1,72 @@
+{
+ "topic": "sensation",
+ "hook": "You stop smelling your own kitchen after a few minutes. A faint star vanishes when you look straight at it. Soup tastes like nothing when your nose is blocked. Each of these is a clue to how your senses turn light, sound, chemicals and pressure into the signals your brain reads.",
+ "prereq": [
+  {
+   "q": "Which lobe processes vision?",
+   "options": [
+    "The occipital lobe",
+    "The temporal lobe",
+    "The frontal lobe",
+    "The parietal lobe"
+   ],
+   "correct": 0,
+   "why": "The occipital lobe, at the back, processes visual information.",
+   "review": "brain"
+  },
+  {
+   "q": "What does the thalamus do with signals from the senses?",
+   "options": [
+    "Relays them to the right areas of the cortex",
+    "Turns them into motor commands",
+    "Converts them into hormones",
+    "Blocks them during the day"
+   ],
+   "correct": 0,
+   "why": "The thalamus relays signals from every sense except smell to the cortex.",
+   "review": "brain"
+  }
+ ],
+ "figure": {
+  "figure": "sensation-eye",
+  "caption": "The eye: light is focused on the retina, where rods and cones transduce it. Tap \"Hide labels\" to test yourself."
+ },
+ "chain": [
+  {
+   "cause": "Energy (light, sound waves, chemicals, pressure) reaches a sense organ",
+   "effect": "receptor cells transduce it into neural signals"
+  },
+  {
+   "cause": "The signal must be strong enough",
+   "effect": "it is detected at or above the absolute threshold; a change is noticed only above the just-noticeable difference (Weber's law)"
+  },
+  {
+   "cause": "A stimulus stays the same for a while",
+   "effect": "sensory adaptation lowers the response"
+  },
+  {
+   "cause": "Signals travel to the brain (most through the thalamus)",
+   "effect": "the brain codes color, pitch, taste and pain, explained by trichromatic and opponent-process, place and frequency, and gate control theories"
+  }
+ ],
+ "ideas": [
+  "<b>Sensation</b> starts with <b>transduction</b>. The <b>absolute threshold</b> is the faintest stimulus detected half the time; the <b>just-noticeable difference</b> grows with the stimulus (<b>Weber's law</b>: a constant proportion). <b>Signal detection theory</b> adds expectations and stakes.",
+  "Vision: <b>rods</b> (dim light, no color, around the edge) and <b>cones</b> (color, detail, packed in the <b>fovea</b>). Color: <b>trichromatic theory</b> (three cone types) and <b>opponent-process theory</b> (paired processes; afterimages).",
+  "Hearing: hair cells in the <b>cochlea</b>. <b>Place theory</b> explains high pitches, <b>frequency theory</b> low ones, the <b>volley principle</b> in between. <b>Conduction deafness</b>: outer or middle ear. <b>Sensorineural deafness</b>: cochlea or auditory nerve.",
+  "Chemical senses: <b>olfaction</b> and <b>gustation</b> (sweet, salty, sour, bitter, <b>umami</b>, and <b>oleogustus</b> for fat). Pain: <b>gate control theory</b>, <b>phantom limbs</b>. Body: <b>vestibular sense</b> (balance) and <b>kinesthesis</b> (position)."
+ ],
+ "misconception": {
+  "wrong": "Your eyes see everything in front of you in sharp color, all the time.",
+  "right": "Only the fovea sees sharp detail and color; the edges of your vision rely on rods that see poorly in color. You also have a blind spot in each eye with no receptors. The brain fills in the gaps."
+ },
+ "check": [
+  "psy-sensation-1",
+  "psy-sensation-2",
+  "psy-sensation-3",
+  "psy-sensation-12",
+  "psy-sensation-15",
+  "psy-sensation-16",
+  "psy-sensation-20"
+ ],
+ "summary": "Sensation is detecting energy and transducing it into neural signals. Thresholds, Weber's law and signal detection describe what we notice, and adaptation and interaction change it. Rods and cones see; trichromatic and opponent-process theories explain color. Hair cells in the cochlea hear; place, frequency and volley theories explain pitch, and hearing loss is conduction or sensorineural. Smell, taste, touch, pain, balance and body position complete the senses."
+}

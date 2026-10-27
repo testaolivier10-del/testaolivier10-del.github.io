@@ -1,0 +1,71 @@
+{
+ "topic": "forgetting",
+ "hook": "Two people see the same car crash. A week later one remembers broken glass on the road and the other does not. There was no broken glass. The only difference: one was asked how fast the cars were going when they \"smashed\" into each other. Memory is not a recording. It can fade, get blocked, and be rewritten.",
+ "prereq": [
+  {
+   "q": "Which strategy is most likely to reduce forgetting before a test four weeks away?",
+   "options": [
+    "Spaced practice over several sessions",
+    "One long cramming session",
+    "Rereading once the night before",
+    "Repeating facts silently once"
+   ],
+   "correct": 0,
+   "why": "The spacing effect: distributed practice gives better long-term retention.",
+   "review": "encoding-memories"
+  },
+  {
+   "q": "Why is recognition usually easier than recall?",
+   "options": [
+    "The options act as retrieval cues",
+    "Recognition uses sensory memory",
+    "Recall needs no stored memory",
+    "Recognition never involves retrieval"
+   ],
+   "correct": 0,
+   "why": "In recognition the options themselves cue the stored memory.",
+   "review": "retrieving-memories"
+  }
+ ],
+ "figure": {
+  "figure": "forgetting-curve",
+  "caption": "Ebbinghaus's (1885) forgetting curve: fast loss at first, then a slow tail."
+ },
+ "chain": [
+  {
+   "cause": "Information is never attended to",
+   "effect": "it is never stored (encoding failure)"
+  },
+  {
+   "cause": "Other learning competes with a memory",
+   "effect": "retrieval is blocked (proactive or retroactive interference)"
+  },
+  {
+   "cause": "A memory is retrieved and rebuilt",
+   "effect": "gaps are filled with expectations (constructive memory)"
+  },
+  {
+   "cause": "Misleading information or repeated imagining comes in during rebuilding",
+   "effect": "confident false memories form (misinformation effect, imagination inflation)"
+  }
+ ],
+ "ideas": [
+  "The <b>forgetting curve</b>: much is lost quickly, then the rest fades slowly. Spacing and retrieval practice flatten it.",
+  "Forgetting can be <b>encoding failure</b> (never stored), <b>interference</b> (<b>proactive</b>: old blocks new; <b>retroactive</b>: new blocks old), or retrieval failure (the <b>tip-of-the-tongue</b> state).",
+  "<b>Repression</b> is the psychodynamic account of forgetting threatening memories; the evidence for it is weak.",
+  "Memory is <b>constructive</b>: the <b>misinformation effect</b>, <b>source amnesia</b> and <b>imagination inflation</b> can create confident <b>false memories</b>."
+ ],
+ "misconception": {
+  "wrong": "If someone remembers an event vividly and confidently, the memory must be accurate.",
+  "right": "Confidence and vividness do not guarantee accuracy. Memories are rebuilt each time they are recalled, and misleading questions or repeated imagining can add details that never happened."
+ },
+ "check": [
+  "psy-forgetting-1",
+  "psy-forgetting-2",
+  "psy-forgetting-3",
+  "psy-forgetting-8",
+  "psy-forgetting-9",
+  "psy-forgetting-14"
+ ],
+ "summary": "We forget quickly at first and then more slowly (the forgetting curve). Forgetting comes from encoding failure, interference (proactive and retroactive) and retrieval failure; repression is the psychodynamic account, with weak evidence. Because memory is reconstructed, misleading information, forgotten sources and imagination can produce confident false memories."
+}

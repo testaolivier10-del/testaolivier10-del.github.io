@@ -92,7 +92,7 @@
     cerebellum: 'M655 560 C640 520 700 500 780 503 C860 506 920 520 925 565 C930 615 880 660 800 668 C720 676 668 640 655 600 C650 585 650 572 655 560Z',
     stem: 'M592 556 C566 584 563 626 585 650 C596 668 598 694 600 720 L652 720 C652 692 654 668 664 650 C678 626 674 584 656 558Z'
   };
-  var CC = [[350, 300], [362, 252], [420, 222], [500, 208], [580, 207], [650, 217], [712, 238], [748, 272], [748, 305], [728, 322], [704, 316], [680, 292], [620, 270], [540, 263], [462, 270], [412, 288], [394, 312], [396, 336], [382, 348], [362, 338]];
+  var CC = [[356, 292], [370, 250], [424, 222], [500, 208], [580, 206], [650, 214], [708, 232], [748, 260], [758, 290], [744, 316], [716, 320], [698, 300], [652, 268], [590, 252], [520, 250], [462, 256], [424, 272], [402, 298], [406, 330], [390, 344], [364, 332]];
   var CING = [[338, 250], [372, 198], [440, 172], [530, 160], [620, 165], [690, 180], [742, 198]];
   var POM = [[805, 150], [790, 205], [770, 255], [748, 298], [730, 330]];
   var CALC = [[730, 330], [780, 355], [840, 385], [910, 410]];
@@ -161,10 +161,6 @@
       art.push('<path class="bm-edge" d="' + S.stem + '"/><path class="bm-gyrus" d="M572 648 C590 652 640 652 664 648"/>');
       art.push('<g class="' + cls('cerebellum', 'bm-r bm-cbl') + '"' + tapA('cerebellum') + '><path d="' + S.cerebellum + '"/>' + [540, 562, 584, 606, 628, 648].map(function(y, i){ return '<path class="bm-folia" d="M' + (662 + i * 3) + ' ' + y + ' C720 ' + (y - 14 + i * 2) + ' 840 ' + (y - 18 + i * 3) + ' ' + (918 - i * 8) + ' ' + (y - 4 + i * 2) + '"/>'; }).join('') + '</g>');
     } else {
-      art.push('<path class="bm-r bm-stem bm-mid" d="' + S.stem + '"/>');
-      art.push('<clipPath id="' + id + 'S"><path d="' + S.stem + '"/></clipPath>');
-      art.push('<g clip-path="url(#' + id + 'S)"><rect class="' + cls('pons', 'bm-r bm-stem') + '"' + tapA('pons') + ' x="500" y="466" width="200" height="98"/><rect class="' + cls('medulla', 'bm-r bm-stem bm-med') + '"' + tapA('medulla') + ' x="500" y="564" width="200" height="160"/></g>');
-      art.push('<path class="bm-edge" d="' + S.stem + '"/>');
       art.push('<g class="' + cls('cerebellum', 'bm-r bm-cbl') + '"' + tapA('cerebellum') + '><path d="' + S.cerebellum + '"/>' + ARBOR.map(function(d, i){ return '<path class="bm-arbor" stroke-width="' + (i === 0 ? 9 : 5) + '" d="' + d + '"/>'; }).join('') + '</g>');
       art.push('<path class="bm-vent" d="M676 470 L700 500 L680 520 Z"/>');
     }
@@ -187,7 +183,7 @@
       // the deep middle: corpus callosum, fornix, thalamus, hypothalamus
       art.push('<path class="bm-core" d="M340 300 C360 360 420 420 470 440 C540 470 620 470 680 440 C720 420 750 360 740 300 C700 260 600 250 500 255 C420 260 360 270 340 300Z"/>');
       art.push('<path class="' + cls('callosum', 'bm-r bm-cc') + '"' + tapA('callosum') + ' d="' + S.callosum + '"/>');
-      art.push('<path class="bm-fornix" d="M700 304 C640 292 560 292 505 318 C482 332 472 350 470 368"/>');
+      art.push('<path class="bm-fornix" d="M706 304 C650 282 570 276 512 300 C488 314 478 336 476 362"/>');
       art.push('<path class="' + cls('thalamus', 'bm-r bm-deep0') + '"' + tapA('thalamus') + ' d="' + S.thalamus + '"/>');
       art.push('<path class="' + cls('hypothalamus', 'bm-r bm-deep0 bm-hyp') + '"' + tapA('hypothalamus') + ' d="' + S.hypothalamus + '"/>');
       art.push('<path class="bm-stalk" d="M478 402 C474 414 470 424 468 436"/><ellipse class="bm-chiasm" cx="440" cy="410" rx="15" ry="7"/>');
@@ -195,7 +191,12 @@
     }
     art.push('</g><path class="bm-outline" d="' + CER + '"/>');
     if(view === 'inside'){
-      // the stem drawn over the cerebrum's cut edge, then what runs in it
+      // the brainstem (midbrain, pons, medulla) is cut down the middle too:
+      // drawn over the cerebrum, then what runs in it
+      art.push('<path class="bm-r bm-stem bm-mid" d="' + S.stem + '"/>');
+      art.push('<clipPath id="' + id + 'S"><path d="' + S.stem + '"/></clipPath>');
+      art.push('<g clip-path="url(#' + id + 'S)"><rect class="' + cls('pons', 'bm-r bm-stem') + '"' + tapA('pons') + ' x="500" y="466" width="200" height="98"/><rect class="' + cls('medulla', 'bm-r bm-stem bm-med') + '"' + tapA('medulla') + ' x="500" y="564" width="200" height="160"/></g>');
+      art.push('<path class="bm-edge" d="' + S.stem + '"/><path class="bm-gyrus" d="M540 470 C580 462 640 462 672 470 M548 562 C590 568 640 568 668 562"/>');
       art.push('<path class="' + cls('ras', 'bm-r bm-ras') + '"' + tapA('ras') + ' d="' + S.ras + '"/>');
       if(sel === 'reward' || o.task === 'reward') art.push('<path class="bm-da" d="M598 440 C560 420 500 398 438 388"/><path class="bm-da-h" d="M446 382 L434 388 L447 394"/>');
       ['reward', 'amygdala', 'hippocampus'].forEach(function(k){ art.push('<path class="' + cls(k, 'bm-r bm-seen') + '"' + tapA(k) + ' d="' + S[k] + '"/>'); });
@@ -209,14 +210,13 @@
     }
     if(o.task && A[o.task]){ var ta = A[o.task]; art.push('<circle class="bm-fmri" cx="' + ta[0] + '" cy="' + ta[1] + '" r="' + (o.task === 'amygdala' || o.task === 'reward' ? 40 : 66) + '" fill="url(#' + id + 'F)"/>'); }
     // the body inset: contralateral control (outside view, motor or touch strip)
-    var bodyTxt = '';
-    if(o.body && (sel === 'motor' || sel === 'somatosensory') && view === 'outside'){
-      var hemi = mir ? 'right' : 'left', side = mir ? 'left' : 'right';
-      bodyTxt = (sel === 'motor' ? 'Moves' : 'Feels') + ' the ' + side + ' side';
-      art.push(bodyInset(mir ? 1000 - 150 : 150, 560, side, sel === 'motor' ? 'move' : 'feel', fs));
-    }
     var inner = '<g' + (mir ? ' transform="translate(1000 0) scale(-1 1)"' : '') + '>' + art.join('') + '</g>';
-    if(o.body && bodyTxt) inner += '<text class="bm-body-t" x="' + (mir ? 850 : 150) + '" y="' + r1(705) + '" text-anchor="middle" font-size="' + r1(fs * 0.95) + '">' + esc(bodyTxt) + '</text>';
+    // the body inset (not mirrored): the side of the body this strip serves
+    if(o.body && (sel === 'motor' || sel === 'somatosensory') && view === 'outside'){
+      var side = mir ? 'left' : 'right', bx = mir ? 870 : 130;
+      inner += bodyInset(bx, 590, side, fs);
+      inner += '<text class="bm-body-t" x="' + (mir ? X1 - 4 : X0 + 4) + '" y="' + r1(706) + '" text-anchor="' + (mir ? 'end' : 'start') + '" font-size="' + r1(fs * 0.95) + '">' + (sel === 'motor' ? 'Moves' : 'Feels') + ' the ' + side + ' side</text>';
+    }
     // front marker
     var ftx = mir ? X1 - 4 : X0 + 4;
     inner += '<text class="bm-front" x="' + r1(ftx) + '" y="' + r1(Y0 + fs * 0.6) + '" text-anchor="' + (mir ? 'end' : 'start') + '" font-size="' + r1(fs * 0.9) + '">' + (mir ? 'Front →' : '← Front') + '</text>';
@@ -270,7 +270,7 @@
   }
   function shortName(k){ return k === 'ras' ? 'Reticular activating system' : k === 'somatosensory' ? 'Somatosensory cortex' : nameOf(k); }
   /* A person seen from behind, one side lit. */
-  function bodyInset(cx, cy, side, how, fs){
+  function bodyInset(cx, cy, side, fs){
     var s = 0.9, g = [];
     var half = function(sgn){ return 'M' + cx + ' ' + (cy - 92 * s) + ' a' + (18 * s) + ' ' + (18 * s) + ' 0 0 ' + (sgn > 0 ? 1 : 0) + ' 0 ' + (36 * s) + ' Z' +
       'M' + cx + ' ' + (cy - 52 * s) + ' h' + (sgn * 26 * s) + ' q' + (sgn * 10 * s) + ' 0 ' + (sgn * 12 * s) + ' ' + (10 * s) + ' l' + (sgn * 14 * s) + ' ' + (62 * s) + ' l' + (-sgn * 10 * s) + ' ' + (3 * s) + ' l' + (-sgn * 14 * s) + ' ' + (-48 * s) + ' v' + (64 * s) + ' l' + (sgn * 6 * s) + ' ' + (70 * s) + ' h' + (-sgn * 14 * s) + ' l' + (-sgn * 14 * s) + ' ' + (-62 * s) + ' Z'; };
@@ -286,55 +286,59 @@
   function splitArt(pxW, pxH, o){
     var W = 1000, H = 1000, g = [], st = o.stage || 0, sb = B.splitBrain(o.field, o.cut);
     var scale = Math.min(pxW / W, pxH / H), fs = (o.fs || 13) / scale;
-    var cx = 500, headY = 560, hx = 245, hy = 300, hemi = sb.first, lit = function(side){ return st >= 1 && (side === hemi || (st >= 2 && !o.cut)); };
-    // screen
-    var sy = 70, sh = 120;
-    g.push('<rect class="sb-screen" x="150" y="' + sy + '" width="700" height="' + sh + '" rx="16"/><circle class="sb-fix" cx="' + cx + '" cy="' + (sy + sh / 2) + '" r="7"/>');
-    g.push('<text class="sb-tk" x="' + 325 + '" y="' + (sy + sh + fs * 1.3) + '" text-anchor="middle" font-size="' + r1(fs * 0.9) + '">Left visual field</text><text class="sb-tk" x="' + 675 + '" y="' + (sy + sh + fs * 1.3) + '" text-anchor="middle" font-size="' + r1(fs * 0.9) + '">Right visual field</text>');
-    var wx = o.field === 'left' ? 325 : 675;
-    g.push('<text class="sb-word' + (st >= 1 ? ' is-on' : '') + '" x="' + wx + '" y="' + (sy + sh / 2 + fs * 0.6) + '" text-anchor="middle" font-size="' + r1(fs * 1.8) + '">' + esc(o.object.toUpperCase()) + '</text>');
-    // head from above, nose toward the screen
-    g.push('<path class="sb-head" d="M' + cx + ' ' + (headY - hy) + ' C' + (cx + hx * 0.9) + ' ' + (headY - hy) + ' ' + (cx + hx) + ' ' + (headY - hy * 0.4) + ' ' + (cx + hx) + ' ' + headY + ' C' + (cx + hx) + ' ' + (headY + hy * 0.75) + ' ' + (cx + hx * 0.6) + ' ' + (headY + hy) + ' ' + cx + ' ' + (headY + hy) + ' C' + (cx - hx * 0.6) + ' ' + (headY + hy) + ' ' + (cx - hx) + ' ' + (headY + hy * 0.75) + ' ' + (cx - hx) + ' ' + headY + ' C' + (cx - hx) + ' ' + (headY - hy * 0.4) + ' ' + (cx - hx * 0.9) + ' ' + (headY - hy) + ' ' + cx + ' ' + (headY - hy) + 'Z"/>');
-    g.push('<path class="sb-nose" d="M' + (cx - 26) + ' ' + (headY - hy + 6) + ' L' + cx + ' ' + (headY - hy - 34) + ' L' + (cx + 26) + ' ' + (headY - hy + 6) + '"/>');
-    g.push('<ellipse class="sb-ear" cx="' + (cx - hx - 10) + '" cy="' + headY + '" rx="16" ry="34"/><ellipse class="sb-ear" cx="' + (cx + hx + 10) + '" cy="' + headY + '" rx="16" ry="34"/>');
-    // hemispheres
-    var hem = function(side){ var sg = side === 'left' ? -1 : 1, x0 = cx + sg * 14, x1 = cx + sg * (hx - 34); return 'M' + x0 + ' ' + (headY - hy + 64) + ' C' + (x1) + ' ' + (headY - hy + 50) + ' ' + (x1 + sg * 10) + ' ' + (headY - 40) + ' ' + (x1) + ' ' + (headY + 60) + ' C' + (x1 - sg * 10) + ' ' + (headY + hy - 70) + ' ' + (cx + sg * 80) + ' ' + (headY + hy - 30) + ' ' + x0 + ' ' + (headY + hy - 34) + ' Z'; };
-    ['left', 'right'].forEach(function(side){
-      var on = lit(side);
-      g.push('<path class="sb-hemi' + (on ? ' is-on' : '') + '" d="' + hem(side) + '"/>');
-      var tx = cx + (side === 'left' ? -1 : 1) * 125;
-      g.push('<text class="sb-hl" x="' + tx + '" y="' + (headY - 110) + '" text-anchor="middle" font-size="' + r1(fs) + '">' + (side === 'left' ? 'Left' : 'Right') + '</text><text class="sb-hl" x="' + tx + '" y="' + (headY - 110 + fs * 1.2) + '" text-anchor="middle" font-size="' + r1(fs) + '">hemisphere</text>');
-      if(side === 'left') g.push('<g class="sb-speech-badge"><rect x="' + (tx - 62) + '" y="' + (headY - 40) + '" width="124" height="' + r1(fs * 1.7) + '" rx="' + r1(fs * 0.85) + '"/><text x="' + tx + '" y="' + r1(headY - 40 + fs * 1.18) + '" text-anchor="middle" font-size="' + r1(fs * 0.9) + '">speech</text></g>');
-      if(on) g.push('<text class="sb-has" x="' + tx + '" y="' + (headY + 70) + '" text-anchor="middle" font-size="' + r1(fs * 1.3) + '">' + esc(o.object) + '</text>');
-    });
-    // corpus callosum
-    var ccY0 = headY - 90, ccY1 = headY + 120;
-    if(o.cut) g.push('<rect class="sb-cc is-cut" x="' + (cx - 14) + '" y="' + ccY0 + '" width="28" height="' + (ccY1 - ccY0) + '" rx="10"/><path class="sb-cut" d="M' + (cx - 30) + ' ' + (headY + 6) + ' L' + (cx + 30) + ' ' + (headY + 22) + ' M' + (cx - 30) + ' ' + (headY + 22) + ' L' + (cx + 30) + ' ' + (headY + 38) + '"/>');
-    else g.push('<rect class="sb-cc' + (st >= 2 ? ' is-on' : '') + '" x="' + (cx - 14) + '" y="' + ccY0 + '" width="28" height="' + (ccY1 - ccY0) + '" rx="10"/>');
-    g.push('<text class="sb-tk" x="' + cx + '" y="' + (ccY1 + fs * 1.4) + '" text-anchor="middle" font-size="' + r1(fs * 0.85) + '">corpus callosum' + (o.cut ? ' (cut)' : '') + '</text>');
-    // the visual pathway: word -> both eyes -> chiasm -> opposite hemisphere
-    var eyeY = headY - hy + 40;
-    g.push('<circle class="sb-eye" cx="' + (cx - 70) + '" cy="' + eyeY + '" r="16"/><circle class="sb-eye" cx="' + (cx + 70) + '" cy="' + eyeY + '" r="16"/>');
+    var cx = 500, cy = 560, hx = 232, hy = 255, hemi = sb.first, sg = function(side){ return side === 'left' ? -1 : 1; };
+    var lit = function(side){ return st >= 1 && (side === hemi || (st >= 2 && !o.cut)); };
+    // the screen, the fixation dot and the word
+    var sy = 36, sh = 120, wx = o.field === 'left' ? 300 : 700;
+    g.push('<rect class="sb-screen" x="110" y="' + sy + '" width="780" height="' + sh + '" rx="16"/><circle class="sb-fix" cx="' + cx + '" cy="' + (sy + sh / 2) + '" r="7"/>');
+    g.push('<text class="sb-scr-t" x="126" y="' + r1(sy + sh - 12) + '" font-size="' + r1(fs * 0.8) + '">left visual field</text><text class="sb-scr-t" x="874" y="' + r1(sy + sh - 12) + '" text-anchor="end" font-size="' + r1(fs * 0.8) + '">right visual field</text>');
+    g.push('<line class="sb-mid" x1="' + cx + '" y1="' + (sy + 10) + '" x2="' + cx + '" y2="' + (sy + sh - 10) + '"/>');
+    g.push('<text class="sb-word' + (st >= 1 ? ' is-on' : '') + '" x="' + wx + '" y="' + r1(sy + sh / 2 + fs * 0.55) + '" text-anchor="middle" font-size="' + r1(fs * 1.7) + '">' + esc(o.object.toUpperCase()) + '</text>');
+    // hemisphere names above the head
+    ['left', 'right'].forEach(function(side){ var lx = cx + sg(side) * 380; g.push('<text class="sb-hl' + (lit(side) ? ' is-on' : '') + '" x="' + lx + '" y="' + r1(cy - 120) + '" text-anchor="middle" font-size="' + r1(fs * 1.05) + '"><tspan x="' + lx + '">' + (side === 'left' ? 'Left' : 'Right') + '</tspan><tspan x="' + lx + '" dy="' + r1(fs * 1.25) + '">hemisphere</tspan></text>'); });
+    // the head from above, nose toward the screen
+    var top = cy - hy, bot = cy + hy;
+    g.push('<path class="sb-head" d="M' + cx + ' ' + top + ' C' + (cx + hx * 0.9) + ' ' + top + ' ' + (cx + hx) + ' ' + (cy - hy * 0.4) + ' ' + (cx + hx) + ' ' + cy + ' C' + (cx + hx) + ' ' + (cy + hy * 0.75) + ' ' + (cx + hx * 0.6) + ' ' + bot + ' ' + cx + ' ' + bot + ' C' + (cx - hx * 0.6) + ' ' + bot + ' ' + (cx - hx) + ' ' + (cy + hy * 0.75) + ' ' + (cx - hx) + ' ' + cy + ' C' + (cx - hx) + ' ' + (cy - hy * 0.4) + ' ' + (cx - hx * 0.9) + ' ' + top + ' ' + cx + ' ' + top + 'Z"/>');
+    g.push('<path class="sb-nose" d="M' + (cx - 24) + ' ' + (top + 6) + ' L' + cx + ' ' + (top - 30) + ' L' + (cx + 24) + ' ' + (top + 6) + '"/>');
+    g.push('<ellipse class="sb-ear" cx="' + (cx - hx - 9) + '" cy="' + cy + '" rx="15" ry="32"/><ellipse class="sb-ear" cx="' + (cx + hx + 9) + '" cy="' + cy + '" rx="15" ry="32"/>');
+    var hem = function(side){ var s2 = sg(side), x0 = cx + s2 * 16, x1 = cx + s2 * (hx - 30); return 'M' + x0 + ' ' + (top + 70) + ' C' + x1 + ' ' + (top + 56) + ' ' + (x1 + s2 * 8) + ' ' + (cy - 40) + ' ' + x1 + ' ' + (cy + 60) + ' C' + (x1 - s2 * 8) + ' ' + (bot - 66) + ' ' + (cx + s2 * 80) + ' ' + (bot - 26) + ' ' + x0 + ' ' + (bot - 30) + ' Z'; };
+    ['left', 'right'].forEach(function(side){ g.push('<path class="sb-hemi' + (lit(side) ? ' is-on' : '') + '" d="' + hem(side) + '"/>'); });
+    // the corpus callosum between them
+    var c0 = cy - 150, c1 = cy + 120;
+    g.push('<rect class="sb-cc' + (o.cut ? ' is-cut' : st >= 2 ? ' is-on' : '') + '" x="' + (cx - 13) + '" y="' + c0 + '" width="26" height="' + (c1 - c0) + '" rx="10"/>');
+    if(o.cut) g.push('<path class="sb-cut" d="M' + (cx - 30) + ' ' + (cy - 30) + ' L' + (cx + 30) + ' ' + (cy - 14) + ' M' + (cx - 30) + ' ' + (cy - 12) + ' L' + (cx + 30) + ' ' + (cy + 4) + '"/>');
+    // speech lives in the left hemisphere
+    var bx = cx - 130;
+    g.push('<g class="sb-speech-badge"><rect x="' + r1(bx - fs * 2.4) + '" y="' + r1(cy - 120) + '" width="' + r1(fs * 4.8) + '" height="' + r1(fs * 1.6) + '" rx="' + r1(fs * 0.8) + '"/><text x="' + bx + '" y="' + r1(cy - 120 + fs * 1.12) + '" text-anchor="middle" font-size="' + r1(fs * 0.85) + '">speech</text></g>');
+    // eyes and the optic pathway: from each eye to the hemisphere opposite the field
+    var ey = top + 46, eL = cx - 64, eR = cx + 64, tgt = cx + sg(hemi) * 118, back = bot - 70;
+    g.push('<circle class="sb-eye" cx="' + eL + '" cy="' + ey + '" r="15"/><circle class="sb-eye" cx="' + eR + '" cy="' + ey + '" r="15"/>');
     if(st >= 1){
-      var tx2 = cx + (hemi === 'left' ? -150 : 150);
-      g.push('<path class="sb-path" d="M' + wx + ' ' + (sy + sh) + ' L' + (cx - 70) + ' ' + eyeY + ' M' + wx + ' ' + (sy + sh) + ' L' + (cx + 70) + ' ' + eyeY + '"/>');
-      g.push('<path class="sb-path is-in" d="M' + (cx - 70) + ' ' + eyeY + ' Q' + cx + ' ' + (eyeY + 60) + ' ' + tx2 + ' ' + (headY + 150) + ' M' + (cx + 70) + ' ' + eyeY + ' Q' + cx + ' ' + (eyeY + 60) + ' ' + tx2 + ' ' + (headY + 150) + '"/>');
+      g.push('<path class="sb-path is-out" d="M' + wx + ' ' + (sy + sh) + ' L' + eL + ' ' + (ey - 15) + ' M' + wx + ' ' + (sy + sh) + ' L' + eR + ' ' + (ey - 15) + '"/>');
+      var near = hemi === 'left' ? eL : eR, far = hemi === 'left' ? eR : eL, side = cx + sg(hemi) * 70;
+      g.push('<path class="sb-path" d="M' + near + ' ' + (ey + 15) + ' C' + near + ' ' + (ey + 80) + ' ' + side + ' ' + (ey + 120) + ' ' + side + ' ' + (cy + 20) + ' S' + tgt + ' ' + (back - 40) + ' ' + tgt + ' ' + back + '"/>');
+      g.push('<path class="sb-path" d="M' + far + ' ' + (ey + 15) + ' C' + far + ' ' + (ey + 60) + ' ' + cx + ' ' + (ey + 70) + ' ' + side + ' ' + (ey + 130) + '"/>');
+      g.push('<path class="sb-arrow" d="M' + (tgt - 12) + ' ' + (back - 16) + ' L' + tgt + ' ' + back + ' L' + (tgt + 12) + ' ' + (back - 16) + '"/>');
     }
-    if(st >= 2 && !o.cut){ var other = hemi === 'left' ? 1 : -1; g.push('<path class="sb-cross" d="M' + (cx - other * 90) + ' ' + (headY + 40) + ' L' + (cx + other * 90) + ' ' + (headY + 40) + '"/><path class="sb-cross-h" d="M' + (cx + other * 90) + ' ' + (headY + 40) + ' l' + (-other * 16) + ' -10 m' + (other * 16) + ' 10 l' + (-other * 16) + ' 10"/>'); }
-    // speech bubble
+    if(st >= 2 && !o.cut){ var dir = sg(hemi) * -1; g.push('<path class="sb-cross" d="M' + (cx - dir * 80) + ' ' + (cy + 60) + ' L' + (cx + dir * 80) + ' ' + (cy + 60) + '"/><path class="sb-cross-h" d="M' + (cx + dir * 80 - dir * 16) + ' ' + (cy + 48) + ' L' + (cx + dir * 80) + ' ' + (cy + 60) + ' L' + (cx + dir * 80 - dir * 16) + ' ' + (cy + 72) + '"/>'); }
+    ['left', 'right'].forEach(function(side){ if(lit(side)) g.push('<text class="sb-has" x="' + (cx + sg(side) * 140) + '" y="' + r1(cy + 10) + '" text-anchor="middle" font-size="' + r1(fs * 1.25) + '">' + esc(o.object) + '</text>'); });
+    g.push('<text class="sb-tk sb-cc-t" x="' + (cx - 26) + '" y="' + r1(cy + 80) + '" text-anchor="end" font-size="' + r1(fs * 0.8) + '"><tspan x="' + (cx - 26) + '">corpus</tspan><tspan x="' + (cx - 26) + '" dy="' + r1(fs * 0.95) + '">callosum' + (o.cut ? ' (cut)' : '') + '</tspan></text>');
+    // hands, each wired to the opposite hemisphere, the wires leaving the head's sides
+    var hyp = 880;
+    ['left', 'right'].forEach(function(side){
+      var s2 = sg(side), hxp = cx + s2 * 390, has = side === 'left' ? sb.leftHand : sb.rightHand, show = st >= 4 && (o.hand === 'both' || o.hand === side);
+      var fx = cx - s2 * 110;
+      g.push('<path class="sb-wire' + (show && has ? ' is-on' : '') + '" d="M' + fx + ' ' + (bot - 60) + ' C' + fx + ' ' + (bot + 30) + ' ' + hxp + ' ' + (bot - 10) + ' ' + hxp + ' ' + (hyp - 60) + '"/>');
+      g.push('<path class="sb-hand' + (show ? (has ? ' is-yes' : ' is-no') : '') + '" d="M' + (hxp - 38) + ' ' + (hyp + 10) + ' C' + (hxp - 44) + ' ' + (hyp - 40) + ' ' + (hxp - 28) + ' ' + (hyp - 58) + ' ' + hxp + ' ' + (hyp - 58) + ' C' + (hxp + 28) + ' ' + (hyp - 58) + ' ' + (hxp + 44) + ' ' + (hyp - 40) + ' ' + (hxp + 38) + ' ' + (hyp + 10) + ' Z"/>');
+      g.push('<text class="sb-tk" x="' + hxp + '" y="' + r1(hyp + 10 + fs * 1.3) + '" text-anchor="middle" font-size="' + r1(fs * 0.9) + '">' + (side === 'left' ? 'Left hand' : 'Right hand') + '</text>');
+      if(show) g.push('<text class="sb-find' + (has ? ' is-yes' : ' is-no') + '" x="' + hxp + '" y="' + r1(hyp + 10 + fs * 2.5) + '" text-anchor="middle" font-size="' + r1(fs * 0.95) + '">' + (has ? 'finds the ' + esc(o.object) : 'cannot find it') + '</text>');
+    });
+    // what the patient says, under the head
     if(st >= 3){
       var said = sb.says ? '“' + o.object.charAt(0).toUpperCase() + o.object.slice(1) + '.”' : '“I saw nothing.”';
-      var bw2 = textW(said, Math.round(fs * scale * 1.1), 800) / scale + 40, bx = 30, by = headY - hy - 30;
-      g.push('<g class="sb-bubble' + (sb.says ? ' is-yes' : ' is-no') + '"><rect x="' + bx + '" y="' + by + '" width="' + r1(bw2) + '" height="' + r1(fs * 2.4) + '" rx="' + r1(fs * 1.2) + '"/><path d="M' + r1(bx + bw2 - 50) + ' ' + r1(by + fs * 2.4) + ' L' + r1(cx - 40) + ' ' + (headY - hy + 6) + ' L' + r1(bx + bw2 - 90) + ' ' + r1(by + fs * 2.4) + '"/><text x="' + r1(bx + bw2 / 2) + '" y="' + r1(by + fs * 1.55) + '" text-anchor="middle" font-size="' + r1(fs * 1.1) + '">' + esc(said) + '</text></g>');
+      var bw2 = textW(said, Math.round(fs * scale * 1.05), 800) / scale + fs * 2, by = bot + fs * 1.4;
+      g.push('<g class="sb-bubble' + (sb.says ? ' is-yes' : ' is-no') + '"><rect x="' + r1(cx - bw2 / 2) + '" y="' + r1(by) + '" width="' + r1(bw2) + '" height="' + r1(fs * 2.2) + '" rx="' + r1(fs * 1.1) + '"/><text x="' + cx + '" y="' + r1(by + fs * 1.45) + '" text-anchor="middle" font-size="' + r1(fs * 1.05) + '">' + esc(said) + '</text></g>');
     }
-    // hands, each wired to the opposite hemisphere
-    ['left', 'right'].forEach(function(side){
-      var sg = side === 'left' ? -1 : 1, hxp = cx + sg * 380, hyp = headY + 250, has = side === 'left' ? sb.leftHand : sb.rightHand, show = st >= 4 && (o.hand === 'both' || o.hand === side);
-      g.push('<path class="sb-wire' + (show && has ? ' is-on' : '') + '" d="M' + (cx - sg * 120) + ' ' + (headY + 160) + ' C' + (cx - sg * 60) + ' ' + (headY + 280) + ' ' + (cx + sg * 200) + ' ' + (headY + 300) + ' ' + (hxp - sg * 40) + ' ' + (hyp + 10) + '"/>');
-      g.push('<path class="sb-hand' + (show ? (has ? ' is-yes' : ' is-no') : '') + '" d="M' + (hxp - 40) + ' ' + (hyp + 60) + ' C' + (hxp - 46) + ' ' + (hyp - 10) + ' ' + (hxp - 30) + ' ' + (hyp - 50) + ' ' + hxp + ' ' + (hyp - 50) + ' C' + (hxp + 30) + ' ' + (hyp - 50) + ' ' + (hxp + 46) + ' ' + (hyp - 10) + ' ' + (hxp + 40) + ' ' + (hyp + 60) + ' Z"/>');
-      g.push('<text class="sb-tk" x="' + hxp + '" y="' + (hyp + 60 + fs * 1.3) + '" text-anchor="middle" font-size="' + r1(fs * 0.9) + '">' + (side === 'left' ? 'Left hand' : 'Right hand') + '</text>');
-      if(show) g.push('<text class="sb-find' + (has ? ' is-yes' : ' is-no') + '" x="' + hxp + '" y="' + (hyp + 60 + fs * 2.6) + '" text-anchor="middle" font-size="' + r1(fs) + '">' + (has ? 'finds the ' + esc(o.object) : 'cannot find it') + '</text>');
-    });
     return { svg: g.join(''), vb: [0, 0, W, H], scale: scale };
   }
 
@@ -466,7 +470,7 @@
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>' + (sub ? ' ' + esc(sub) : ''), 'explore');
         if(scene === 'map'){
-          LS.pills([{ html: view === 'outside' ? (mirror ? 'Outside, right hemisphere' : 'Outside, left hemisphere') : 'Inside view', tone: 'readout' }], 'left', 'explore');
+          LS.pills([{ html: view === 'outside' ? (mirror ? 'Right side' : 'Left side') : 'Inside', tone: 'readout' }], 'left', 'explore');
           LS.pills(sel ? [{ html: esc(shortName(sel)), tone: damage ? 'bad' : 'accent' }] : [], 'right', 'explore');
         } else {
           var sb = B.splitBrain(field, cut);

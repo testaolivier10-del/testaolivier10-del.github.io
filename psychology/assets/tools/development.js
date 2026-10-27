@@ -38,7 +38,9 @@
   var LANE_CLS = { think: 'dv-c1', self: 'dv-c2', bond: 'dv-c3', grow: 'dv-c4' };
   var TICKS = [0, 1, 2, 5, 7, 12, 18, 25, 40, 65, 90];
   function ageWords(a){ return D.ageWords(a); }
-  function ax(a){ return Math.log(1 + a) / Math.log(91); }
+  /* The age axis: square-root spaced, so infancy and old age both get room. */
+  function ax(a){ return Math.sqrt(Math.max(0, Math.min(90, a)) / 90); }
+  var LANE_SUB = { think: 'Piaget, then adult IQ', self: 'Erikson', bond: 'Attachment, play, peers', grow: 'Puberty to adulthood' };
 
   /* Text width for label fitting (the svg uses the page font). */
   var MEAS = null;
@@ -52,161 +54,184 @@
   function f1(v){ return (Math.round(v * 10) / 10).toFixed(1); }
 
   /* ---------------------------------------------------------- people
-     person(o) -> svg: a flat illustrated figure standing on (x, y), height h.
-     o: { x, y, h, age, pose, face, facing, look, shirt, pants, hair, skin,
-          hairStyle, gray, prop }
-     Proportions follow age (a baby's head is about a quarter of its length,
-     an adult's about an eighth). Poses: stand, sit, baby, reach, away,
-     cross, cane, phone, hold, point, write, freeze. */
+     person(o) -> svg: a flat illustrated figure standing (or sitting) on
+     the floor at (x, y), o.h tall. Proportions follow age by head units (a
+     toddler is about 4.5 heads tall, a 6-year-old about 5, an adult about
+     7.5) so the figure looks its age. o: { x, y, h, age, pose, face, facing,
+     look, shirt, pants, hair, skin, hairStyle, gray, glasses, build, prop }.
+     Poses: stand, sit, write, baby (a sitting infant), reach, hold, point,
+     phone, cross, cane, freeze, away. The props callback gets the hands. */
   var SKIN = ['#F2C9A5', '#D9A37A', '#B5774F', '#7D4E33'];
+  var POSE = { // [elbow dx, dy, hand dx, dy] in arm lengths; dx toward the facing side
+    stand: [[0.07, 0.5, 0.1, 0.98], [-0.07, 0.5, -0.1, 0.98]],
+    reach: [[0.32, 0.24, 0.66, -0.06], [0.26, 0.3, 0.6, 0.02]],
+    hold: [[0.06, 0.5, 0.42, 0.66], [0.02, 0.52, 0.36, 0.7]],
+    point: [[0.42, 0.1, 0.94, 0.02], [-0.07, 0.5, -0.1, 0.98]],
+    phone: [[0.06, 0.48, 0.32, 0.36], [0.02, 0.5, 0.28, 0.42]],
+    cross: [[0.24, 0.46, -0.26, 0.4], [-0.2, 0.46, 0.26, 0.44]],
+    cane: [[0.16, 0.46, 0.34, 0.82], [-0.07, 0.5, -0.1, 0.98]],
+    write: [[0.22, 0.44, 0.66, 0.5], [0.16, 0.46, 0.58, 0.54]],
+    sit: [[0.18, 0.46, 0.46, 0.64], [0.12, 0.48, 0.4, 0.68]],
+    freeze: [[0.34, 0.36, 0.56, 0.66], [-0.3, 0.38, -0.52, 0.66]],
+    away: [[-0.16, 0.48, -0.1, 0.96], [0.16, 0.48, 0.22, 0.92]]
+  };
+  function n1(v){ return Math.round(v * 10) / 10; }
   function person(o){
-    var a = o.age == null ? 30 : o.age, h = o.h, x = o.x, y = o.y, fc = o.facing || 1;
-    var hr = a < 1.5 ? 0.2 : a < 3 ? 0.155 : a < 7 ? 0.13 : a < 12 ? 0.112 : a < 18 ? 0.09 : 0.078;
-    var R = h * hr / 1.0 * 0.5 * 1.0, g = [];
-    R = h * hr * 0.55;
-    var skin = o.skin || SKIN[1], shirt = o.shirt || 'var(--dv-shirt)', pants = o.pants || 'var(--dv-pants)';
-    var hair = o.gray ? (a >= 75 ? '#E9E6E0' : '#B9B3AA') : (o.hair || '#3B2A20');
-    var sw = R * (a < 7 ? 1.05 : a < 13 ? 1.2 : 1.45), armW = R * (a < 7 ? 0.5 : 0.46), legW = sw * 0.6;
-    var pose = o.pose || 'stand', stoop = a >= 75 ? R * 0.35 * fc : 0;
-    if(pose === 'baby') return baby(o, R, skin, shirt, hair);
+    var a = o.age == null ? 30 : o.age, h = o.h, x = o.x, y = o.y, fc = o.facing || 1, pose = o.pose || 'stand';
+    if(pose === 'baby') return baby(o);
+    var heads = a < 3 ? 4.4 : a < 7 ? 5.1 : a < 12 ? 5.9 : a < 16 ? 6.8 : 7.4;
     var seated = pose === 'sit' || pose === 'write';
-    var top = y - h, hcY = top + R, shY = hcY + R + R * 0.35;
-    var hipY = seated ? y - h * 0.34 : shY + h * (a < 7 ? 0.27 : 0.3);
-    if(seated){ shY = hipY - h * (a < 7 ? 0.27 : 0.3); hcY = shY - R - R * 0.35; }
-    var hx = x + stoop;
+    var HH = h / heads, R = HH * 0.54, fem = o.build === 'f';
+    var skin = o.skin || SKIN[1], shirt = o.shirt || 'var(--dv-shirt)', pants = o.pants || 'var(--dv-pants)';
+    var hair = o.gray ? (a >= 75 ? '#E6E2DA' : '#B3ACA2') : (o.hair || '#3B2A20');
+    var sw = (a < 7 ? 0.78 : a < 12 ? 0.9 : a < 16 ? 1.0 : fem ? 0.98 : 1.12) * HH, hw = (a < 12 ? 0.68 : fem ? 0.92 : 0.8) * HH;
+    var legW = (a < 7 ? 0.6 : 0.5) * HH, armW = (a < 7 ? 0.42 : 0.36) * HH, L = h * (a < 7 ? 0.33 : 0.37);
+    var legFrac = a < 3 ? 0.36 : a < 7 ? 0.42 : a < 12 ? 0.45 : 0.47;
+    var stoop = a >= 75 ? HH * 0.28 * fc : 0, g = [];
+    var top = y - h, crotch = y - h * legFrac, shY = top + HH * 1.18, tl = crotch - shY;
+    var seatY = y - h * 0.27;
+    if(seated){ crotch = seatY; shY = seatY - tl; top = shY - HH * 1.18; }
+    var hx = x + stoop, hcY = top + R + HH * 0.02, waist = shY + tl * 0.62;
+    // far arm first (behind the body)
+    var P = POSE[pose] || POSE.stand, shN = [hx + fc * sw * 0.84, shY + armW * 0.45], shF = [hx - fc * sw * 0.84, shY + armW * 0.45];
+    function arm(sh, p){ return { s: sh, e: [sh[0] + fc * p[0] * L, sh[1] + p[1] * L], hand: [sh[0] + fc * p[2] * L, sh[1] + p[3] * L] }; }
+    var far = arm(shF, P[1]), near = arm(shN, P[0]);
+    g.push(limb(far, armW, shirt, skin, true));
     // legs
     if(seated){
-      var kx = x + fc * h * 0.2;
-      g.push('<path d="M' + (x - sw * 0.3) + ' ' + hipY + ' L' + kx + ' ' + hipY + ' L' + kx + ' ' + (y - 2) + '" fill="none" stroke="' + pants + '" stroke-width="' + legW + '" stroke-linecap="round" stroke-linejoin="round"/>');
-      g.push('<ellipse cx="' + (kx + fc * legW * 0.45) + '" cy="' + (y - legW * 0.25) + '" rx="' + (legW * 0.75) + '" ry="' + (legW * 0.38) + '" class="dv-shoe"/>');
+      var thigh = h * 0.24, shinY = y - legW * 0.3;
+      [-1, 1].forEach(function(s){
+        var ox = s * hw * 0.32, kx = x + fc * thigh + ox * 0.4;
+        g.push('<path d="M' + n1(x + ox) + ' ' + n1(crotch) + ' L' + n1(kx) + ' ' + n1(crotch) + ' L' + n1(kx + fc * HH * 0.05) + ' ' + n1(shinY) + '" fill="none" stroke="' + pants + '" stroke-width="' + n1(legW) + '" stroke-linecap="round" stroke-linejoin="round"' + (s < 0 ? ' class="dv-far"' : '') + '/>');
+        g.push(shoe(kx + fc * HH * 0.05, y, HH, fc));
+      });
     } else {
       [-1, 1].forEach(function(s){
-        var lx0 = x + s * sw * 0.42, lx1 = x + s * sw * 0.5 + (pose === 'freeze' && s > 0 ? fc * R * 0.5 : 0);
-        g.push('<line x1="' + lx0 + '" y1="' + hipY + '" x2="' + lx1 + '" y2="' + (y - legW * 0.4) + '" stroke="' + pants + '" stroke-width="' + legW + '" stroke-linecap="round"/>');
-        g.push('<ellipse cx="' + (lx1 + fc * legW * 0.3) + '" cy="' + (y - legW * 0.25) + '" rx="' + (legW * 0.7) + '" ry="' + (legW * 0.36) + '" class="dv-shoe"/>');
+        var x0 = x + s * hw * 0.48, x1 = x + s * hw * 0.52 + (pose === 'away' ? s * HH * 0.18 : 0);
+        g.push('<line x1="' + n1(x0) + '" y1="' + n1(crotch - HH * 0.1) + '" x2="' + n1(x1) + '" y2="' + n1(y - HH * 0.2) + '" stroke="' + pants + '" stroke-width="' + n1(legW) + '" stroke-linecap="round"/>');
+        g.push(shoe(x1, y, HH, fc));
       });
     }
-    // long hair behind
-    if(o.hairStyle === 'long') g.push('<path d="M' + (hx - R * 1.02) + ' ' + (hcY - R * 0.1) + ' Q' + (hx - R * 1.15) + ' ' + (hcY + R * 1.6) + ' ' + (hx - R * 0.55) + ' ' + (hcY + R * 1.9) + ' L' + (hx + R * 0.55) + ' ' + (hcY + R * 1.9) + ' Q' + (hx + R * 1.15) + ' ' + (hcY + R * 1.6) + ' ' + (hx + R * 1.02) + ' ' + (hcY - R * 0.1) + ' Z" fill="' + hair + '"/>');
-    // far arm (behind the body)
-    var shL = hx - sw * 0.9, shR = hx + sw * 0.9, sy = shY + armW * 0.5;
-    var arms = armPose(pose, a, hx, sy, sw, R, h, hipY, fc, seated);
-    g.push(armPath(arms[0], armW, shirt, skin, true));
-    // torso
-    var rr = Math.min(sw * 0.5, R * 0.7), tb = hipY + (seated ? 0 : R * 0.15);
-    g.push('<path d="M' + (hx - sw + rr) + ' ' + shY + ' Q' + (hx - sw) + ' ' + shY + ' ' + (hx - sw) + ' ' + (shY + rr) + ' L' + (x - sw * 0.88) + ' ' + tb + ' Q' + x + ' ' + (tb + R * 0.25) + ' ' + (x + sw * 0.88) + ' ' + tb + ' L' + (hx + sw) + ' ' + (shY + rr) + ' Q' + (hx + sw) + ' ' + shY + ' ' + (hx + sw - rr) + ' ' + shY + ' Z" fill="' + shirt + '"/>');
-    if(o.coat) g.push('<path d="M' + (hx - sw * 0.2) + ' ' + shY + ' L' + (x - sw * 0.05) + ' ' + tb + ' M' + (hx + sw * 0.2) + ' ' + shY + ' L' + (x + sw * 0.05) + ' ' + tb + '" stroke="var(--dv-line)" stroke-width="1.2" fill="none"/>');
-    // neck and head
-    g.push('<rect x="' + (hx - R * 0.28) + '" y="' + (hcY + R * 0.7) + '" width="' + (R * 0.56) + '" height="' + (R * 0.7) + '" fill="' + skin + '"/>');
+    // hips (pants) and torso (shirt)
+    g.push('<path class="dv-ol" d="M' + n1(x - hw) + ' ' + n1(waist) + ' L' + n1(x + hw) + ' ' + n1(waist) + ' L' + n1(x + hw * 0.98) + ' ' + n1(crotch) + ' L' + n1(x - hw * 0.98) + ' ' + n1(crotch) + ' Z" fill="' + pants + '"/>');
+    var bw = Math.max(hw, sw * 0.82), rr = HH * 0.38;
+    if(o.hairStyle === 'long') g.push('<path d="M' + n1(hx - R * 1.02) + ' ' + n1(hcY - R * 0.1) + ' Q' + n1(hx - R * 1.18) + ' ' + n1(hcY + R * 1.7) + ' ' + n1(hx - R * 0.5) + ' ' + n1(hcY + R * 2.05) + ' L' + n1(hx + R * 0.5) + ' ' + n1(hcY + R * 2.05) + ' Q' + n1(hx + R * 1.18) + ' ' + n1(hcY + R * 1.7) + ' ' + n1(hx + R * 1.02) + ' ' + n1(hcY - R * 0.1) + ' Z" fill="' + hair + '"/>');
+    g.push('<path class="dv-ol" d="M' + n1(hx - sw + rr) + ' ' + n1(shY) + ' Q' + n1(hx - sw) + ' ' + n1(shY) + ' ' + n1(hx - sw) + ' ' + n1(shY + rr) + ' L' + n1(x - bw) + ' ' + n1(waist + HH * 0.12) + ' L' + n1(x + bw) + ' ' + n1(waist + HH * 0.12) + ' L' + n1(hx + sw) + ' ' + n1(shY + rr) + ' Q' + n1(hx + sw) + ' ' + n1(shY) + ' ' + n1(hx + sw - rr) + ' ' + n1(shY) + ' Z" fill="' + shirt + '"/>');
+    // neck with a collar notch
+    g.push('<path d="M' + n1(hx - R * 0.3) + ' ' + n1(hcY + R * 0.6) + ' L' + n1(hx - R * 0.3) + ' ' + n1(shY + HH * 0.02) + ' L' + n1(hx) + ' ' + n1(shY + HH * 0.22) + ' L' + n1(hx + R * 0.3) + ' ' + n1(shY + HH * 0.02) + ' L' + n1(hx + R * 0.3) + ' ' + n1(hcY + R * 0.6) + ' Z" fill="' + skin + '"/>');
     g.push(head(hx, hcY, R, a, skin, hair, o, fc));
-    // near arm
-    g.push(armPath(arms[1], armW, shirt, skin, false));
-    if(o.prop) g.push(o.prop({ x: x, hx: hx, R: R, sw: sw, shY: shY, hipY: hipY, hand: arms[1].hand, far: arms[0].hand, fc: fc, h: h }));
+    g.push(limb(near, armW, shirt, skin, false));
+    if(o.prop) g.push(o.prop({ x: x, hx: hx, R: R, HH: HH, sw: sw, shY: shY, hipY: crotch, hand: near.hand, far: far.hand, fc: fc, h: h }));
     return '<g class="dv-person">' + g.join('') + '</g>';
   }
-  function armPose(pose, a, hx, sy, sw, R, h, hipY, fc, seated){
-    var L = hx - sw * 0.88, Rr = hx + sw * 0.88, down = hipY + R * 0.2, len = h * (a < 7 ? 0.26 : 0.3);
-    function arm(sx, ex, ey, mx, my){ return { s: [sx, sy], m: mx == null ? null : [mx, my], hand: [ex, ey] }; }
-    var far = fc > 0 ? L : Rr, near = fc > 0 ? Rr : L;
-    switch(pose){
-      case 'reach': return [arm(far, far + fc * len * 0.55, sy - len * 0.7), arm(near, near + fc * len * 0.6, sy - len * 0.75)];
-      case 'cross': return [arm(far, hx + fc * sw * 0.55, sy + R * 0.9, far + fc * R * 0.1, sy + R * 1.3), arm(near, hx - fc * sw * 0.55, sy + R * 0.75, near - fc * R * 0.1, sy + R * 1.2)];
-      case 'cane': return [arm(far, far - fc * R * 0.15, down), arm(near, near + fc * len * 0.45, sy + len * 0.75)];
-      case 'phone': return [arm(far, far - fc * R * 0.1, down), arm(near, hx + fc * R * 0.9, sy - R * 1.1, near + fc * R * 0.5, sy + R * 1.0)];
-      case 'hold': return [arm(far, hx + fc * sw * 0.2, sy + len * 0.55, far + fc * R * 0.2, sy + len * 0.5), arm(near, hx + fc * sw * 1.1, sy + len * 0.5, near + fc * R * 0.2, sy + len * 0.55)];
-      case 'point': return [arm(far, far - fc * R * 0.1, down), arm(near, near + fc * len * 0.95, sy - len * 0.15)];
-      case 'write': return [arm(far, hx + fc * sw * 1.3, sy + len * 0.62, far + fc * R * 0.2, sy + len * 0.55), arm(near, hx + fc * sw * 1.9, sy + len * 0.66, near + fc * R * 0.3, sy + len * 0.6)];
-      case 'freeze': return [arm(far, far - fc * len * 0.35, sy + len * 0.55), arm(near, near + fc * len * 0.15, sy + len * 0.62)];
-      case 'away': return [arm(far, far + fc * len * 0.1, down + R * 0.2), arm(near, near - fc * len * 0.5, sy + len * 0.75)];
-      case 'sit': return [arm(far, far + fc * len * 0.35, hipY - R * 0.2), arm(near, near + fc * len * 0.4, hipY - R * 0.1)];
-      default: return [arm(far, far - fc * R * 0.12, down), arm(near, near + fc * R * 0.12, down)];
-    }
+  function limb(A, w, shirt, skin, far){
+    return '<path d="M' + n1(A.s[0]) + ' ' + n1(A.s[1]) + ' L' + n1(A.e[0]) + ' ' + n1(A.e[1]) + ' L' + n1(A.hand[0]) + ' ' + n1(A.hand[1]) + '" fill="none" stroke="' + shirt + '" stroke-width="' + n1(w) + '" stroke-linecap="round" stroke-linejoin="round"' + (far ? ' class="dv-far"' : '') + '/>' +
+      '<circle cx="' + n1(A.hand[0]) + '" cy="' + n1(A.hand[1]) + '" r="' + n1(w * 0.62) + '" fill="' + skin + '"' + (far ? ' class="dv-far"' : '') + '/>';
   }
-  function armPath(A, w, shirt, skin, far){
-    var d = 'M' + A.s[0] + ' ' + A.s[1] + (A.m ? ' Q' + A.m[0] + ' ' + A.m[1] + ' ' : ' L') + A.hand[0] + ' ' + A.hand[1];
-    return '<path d="' + d + '" fill="none" stroke="' + shirt + '" stroke-width="' + w + '" stroke-linecap="round"' + (far ? ' class="dv-far"' : '') + '/><circle cx="' + A.hand[0] + '" cy="' + A.hand[1] + '" r="' + (w * 0.55) + '" fill="' + skin + '"/>';
-  }
+  function shoe(x, y, HH, fc){ return '<path class="dv-shoe" d="M' + n1(x - fc * HH * 0.22) + ' ' + n1(y) + ' L' + n1(x - fc * HH * 0.22) + ' ' + n1(y - HH * 0.22) + ' Q' + n1(x + fc * HH * 0.05) + ' ' + n1(y - HH * 0.3) + ' ' + n1(x + fc * HH * 0.4) + ' ' + n1(y - HH * 0.08) + ' L' + n1(x + fc * HH * 0.4) + ' ' + n1(y) + ' Z"/>'; }
   function head(cx, cy, R, a, skin, hair, o, fc){
-    var g = [], face = o.face || 'smile', turn = o.look === 'away' ? -fc : fc, ex = turn * R * 0.12;
-    g.push('<circle cx="' + (cx - turn * R * 0.86) + '" cy="' + (cy + R * 0.12) + '" r="' + (R * 0.22) + '" fill="' + skin + '"/>');
-    g.push('<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="' + skin + '"/>');
-    // hair on top
-    if(a < 1.5) g.push('<path d="M' + (cx - R * 0.25) + ' ' + (cy - R * 0.95) + ' q' + (R * 0.2) + ' ' + (-R * 0.35) + ' ' + (R * 0.45) + ' ' + (-R * 0.1) + '" stroke="' + hair + '" stroke-width="' + (R * 0.14) + '" fill="none" stroke-linecap="round"/>');
-    else if(o.hairStyle === 'bald') g.push('<path d="M' + (cx - R * 1.0) + ' ' + (cy - R * 0.05) + ' Q' + (cx - R * 1.02) + ' ' + (cy - R * 0.5) + ' ' + (cx - R * 0.78) + ' ' + (cy - R * 0.62) + ' L' + (cx - R * 0.7) + ' ' + (cy - R * 0.2) + ' Z M' + (cx + R * 1.0) + ' ' + (cy - R * 0.05) + ' Q' + (cx + R * 1.02) + ' ' + (cy - R * 0.5) + ' ' + (cx + R * 0.78) + ' ' + (cy - R * 0.62) + ' L' + (cx + R * 0.7) + ' ' + (cy - R * 0.2) + ' Z" fill="' + hair + '"/>');
-    else g.push('<path d="M' + (cx - R * 1.04) + ' ' + (cy + R * 0.05) + ' Q' + (cx - R * 1.12) + ' ' + (cy - R * 1.2) + ' ' + cx + ' ' + (cy - R * 1.08) + ' Q' + (cx + R * 1.12) + ' ' + (cy - R * 1.2) + ' ' + (cx + R * 1.04) + ' ' + (cy + R * 0.05) + ' Q' + (cx + R * 0.95) + ' ' + (cy - R * 0.5) + ' ' + (cx + turn * R * 0.1) + ' ' + (cy - R * 0.5) + ' Q' + (cx - R * 0.8) + ' ' + (cy - R * 0.45) + ' ' + (cx - R * 1.04) + ' ' + (cy + R * 0.05) + ' Z" fill="' + hair + '"/>');
-    if(o.hairStyle === 'bun') g.push('<circle cx="' + (cx - turn * R * 0.5) + '" cy="' + (cy - R * 1.05) + '" r="' + (R * 0.38) + '" fill="' + hair + '"/>');
-    if(o.look === 'away'){ g.push('<path d="M' + (cx - R * 1.04) + ' ' + (cy + R * 0.05) + ' Q' + cx + ' ' + (cy + R * 0.3) + ' ' + (cx + R * 1.04) + ' ' + (cy + R * 0.05) + ' Q' + (cx + R * 1.1) + ' ' + (cy - R * 1.1) + ' ' + cx + ' ' + (cy - R * 1.08) + ' Q' + (cx - R * 1.1) + ' ' + (cy - R * 1.1) + ' ' + (cx - R * 1.04) + ' ' + (cy + R * 0.05) + ' Z" fill="' + hair + '" opacity=".95"/>'); return g.join(''); }
-    // eyes, brows, mouth
-    var ey = cy + R * 0.05, er = R * 0.1;
-    [-1, 1].forEach(function(s){ g.push('<ellipse cx="' + (cx + ex + s * R * 0.36) + '" cy="' + ey + '" rx="' + er + '" ry="' + (er * 1.2) + '" class="dv-eye"/>'); });
-    if(face === 'sad' || face === 'cry' || face === 'worried') [-1, 1].forEach(function(s){ g.push('<path d="M' + (cx + ex + s * R * 0.52) + ' ' + (ey - R * 0.3) + ' L' + (cx + ex + s * R * 0.2) + ' ' + (ey - R * 0.38) + '" class="dv-brow"/>'); });
-    if(face === 'angry') [-1, 1].forEach(function(s){ g.push('<path d="M' + (cx + ex + s * R * 0.52) + ' ' + (ey - R * 0.38) + ' L' + (cx + ex + s * R * 0.2) + ' ' + (ey - R * 0.26) + '" class="dv-brow"/>'); });
-    var my = cy + R * 0.45, mx = cx + ex;
-    if(face === 'smile') g.push('<path d="M' + (mx - R * 0.28) + ' ' + my + ' Q' + mx + ' ' + (my + R * 0.26) + ' ' + (mx + R * 0.28) + ' ' + my + '" class="dv-mouth"/>');
-    else if(face === 'neutral' || face === 'worried') g.push('<path d="M' + (mx - R * 0.2) + ' ' + (my + R * 0.06) + ' L' + (mx + R * 0.2) + ' ' + (my + R * 0.06) + '" class="dv-mouth"/>');
-    else if(face === 'cry' || face === 'angry') g.push('<ellipse cx="' + mx + '" cy="' + (my + R * 0.1) + '" rx="' + (R * 0.22) + '" ry="' + (R * 0.16) + '" class="dv-mouth-o"/>');
-    else g.push('<path d="M' + (mx - R * 0.25) + ' ' + (my + R * 0.16) + ' Q' + mx + ' ' + (my - R * 0.06) + ' ' + (mx + R * 0.25) + ' ' + (my + R * 0.16) + '" class="dv-mouth"/>');
-    if(face === 'cry') g.push('<path d="M' + (cx + ex + R * 0.4) + ' ' + (ey + R * 0.18) + ' q' + (R * 0.08) + ' ' + (R * 0.25) + ' 0 ' + (R * 0.35) + ' q' + (-R * 0.08) + ' ' + (-R * 0.1) + ' 0 ' + (-R * 0.35) + '" class="dv-tear"/>');
-    if(face !== 'angry') [-1, 1].forEach(function(s){ g.push('<circle cx="' + (cx + ex + s * R * 0.55) + '" cy="' + (cy + R * 0.32) + '" r="' + (R * 0.14) + '" class="dv-blush"/>'); });
-    if(o.glasses) g.push('<g class="dv-glass"><circle cx="' + (cx + ex - R * 0.36) + '" cy="' + ey + '" r="' + (R * 0.24) + '"/><circle cx="' + (cx + ex + R * 0.36) + '" cy="' + ey + '" r="' + (R * 0.24) + '"/><path d="M' + (cx + ex - R * 0.12) + ' ' + ey + ' h' + (R * 0.24) + '"/></g>');
+    var g = [], face = o.face || 'smile', away = o.look === 'away', turn = away ? -fc : fc, ex = turn * R * 0.14;
+    // ear, face
+    g.push('<ellipse cx="' + n1(cx - turn * R * 0.9) + '" cy="' + n1(cy + R * 0.12) + '" rx="' + n1(R * 0.2) + '" ry="' + n1(R * 0.26) + '" fill="' + skin + '" class="dv-ol"/>');
+    g.push('<ellipse cx="' + n1(cx) + '" cy="' + n1(cy) + '" rx="' + n1(R * 0.96) + '" ry="' + n1(R) + '" fill="' + skin + '" class="dv-ol"/>');
+    // hair
+    if(a < 1.5) g.push('<path d="M' + n1(cx - R * 0.2) + ' ' + n1(cy - R * 0.92) + ' q' + n1(R * 0.18) + ' ' + n1(-R * 0.4) + ' ' + n1(R * 0.46) + ' ' + n1(-R * 0.14) + '" stroke="' + hair + '" stroke-width="' + n1(R * 0.14) + '" fill="none" stroke-linecap="round"/>');
+    else if(o.hairStyle === 'bald') g.push('<path d="M' + n1(cx - R * 0.98) + ' ' + n1(cy + R * 0.05) + ' Q' + n1(cx - R * 1.04) + ' ' + n1(cy - R * 0.55) + ' ' + n1(cx - R * 0.72) + ' ' + n1(cy - R * 0.72) + ' L' + n1(cx - R * 0.66) + ' ' + n1(cy - R * 0.18) + ' Z M' + n1(cx + R * 0.98) + ' ' + n1(cy + R * 0.05) + ' Q' + n1(cx + R * 1.04) + ' ' + n1(cy - R * 0.55) + ' ' + n1(cx + R * 0.72) + ' ' + n1(cy - R * 0.72) + ' L' + n1(cx + R * 0.66) + ' ' + n1(cy - R * 0.18) + ' Z" fill="' + hair + '"/>');
+    else if(o.hairStyle === 'curly'){ for(var k = 0; k < 7; k++){ var an = Math.PI * (1.05 + k * 0.15); g.push('<circle cx="' + n1(cx + Math.cos(an) * R * 0.9) + '" cy="' + n1(cy + Math.sin(an) * R * 0.9) + '" r="' + n1(R * 0.36) + '" fill="' + hair + '"/>'); } }
+    else g.push('<path d="M' + n1(cx - R * 1.0) + ' ' + n1(cy + R * 0.12) + ' Q' + n1(cx - R * 1.12) + ' ' + n1(cy - R * 1.22) + ' ' + n1(cx) + ' ' + n1(cy - R * 1.1) + ' Q' + n1(cx + R * 1.12) + ' ' + n1(cy - R * 1.22) + ' ' + n1(cx + R * 1.0) + ' ' + n1(cy + R * 0.12) + ' Q' + n1(cx + R * 0.92) + ' ' + n1(cy - R * 0.48) + ' ' + n1(cx + turn * R * 0.2) + ' ' + n1(cy - R * 0.52) + ' Q' + n1(cx - R * 0.78) + ' ' + n1(cy - R * 0.42) + ' ' + n1(cx - R * 1.0) + ' ' + n1(cy + R * 0.12) + ' Z" fill="' + hair + '"/>');
+    if(o.hairStyle === 'bun') g.push('<circle cx="' + n1(cx - turn * R * 0.55) + '" cy="' + n1(cy - R * 1.02) + '" r="' + n1(R * 0.4) + '" fill="' + hair + '"/>');
+    if(away){ g.push('<path d="M' + n1(cx - R * 0.98) + ' ' + n1(cy + R * 0.2) + ' Q' + n1(cx) + ' ' + n1(cy + R * 0.42) + ' ' + n1(cx + R * 0.98) + ' ' + n1(cy + R * 0.2) + ' Q' + n1(cx + R * 1.1) + ' ' + n1(cy - R * 1.12) + ' ' + n1(cx) + ' ' + n1(cy - R * 1.1) + ' Q' + n1(cx - R * 1.1) + ' ' + n1(cy - R * 1.12) + ' ' + n1(cx - R * 0.98) + ' ' + n1(cy + R * 0.2) + ' Z" fill="' + hair + '"/>'); return g.join(''); }
+    var ey = cy + R * 0.08, er = R * 0.1;
+    [-1, 1].forEach(function(s){ g.push('<ellipse cx="' + n1(cx + ex + s * R * 0.36) + '" cy="' + n1(ey) + '" rx="' + n1(er) + '" ry="' + n1(er * 1.25) + '" class="dv-eye"/>'); });
+    var bl = face === 'angry' ? [0.26, 0.1] : face === 'sad' || face === 'cry' || face === 'worried' ? [0.1, 0.2] : [0.2, 0.2];
+    [-1, 1].forEach(function(s){ g.push('<path d="M' + n1(cx + ex + s * R * 0.54) + ' ' + n1(ey - R * 0.22 - R * bl[1]) + ' L' + n1(cx + ex + s * R * 0.2) + ' ' + n1(ey - R * 0.22 - R * bl[0]) + '" class="dv-brow"/>'); });
+    g.push('<path d="M' + n1(cx + ex + turn * R * 0.1) + ' ' + n1(ey + R * 0.12) + ' q' + n1(turn * R * 0.12) + ' ' + n1(R * 0.14) + ' 0 ' + n1(R * 0.2) + '" class="dv-nose"/>');
+    var my = cy + R * 0.52, mx = cx + ex;
+    if(face === 'smile') g.push('<path d="M' + n1(mx - R * 0.26) + ' ' + n1(my - R * 0.04) + ' Q' + n1(mx) + ' ' + n1(my + R * 0.24) + ' ' + n1(mx + R * 0.26) + ' ' + n1(my - R * 0.04) + '" class="dv-mouth"/>');
+    else if(face === 'neutral' || face === 'worried') g.push('<path d="M' + n1(mx - R * 0.18) + ' ' + n1(my + R * 0.06) + ' L' + n1(mx + R * 0.18) + ' ' + n1(my + R * 0.06) + '" class="dv-mouth"/>');
+    else if(face === 'cry' || face === 'angry') g.push('<ellipse cx="' + n1(mx) + '" cy="' + n1(my + R * 0.08) + '" rx="' + n1(R * 0.2) + '" ry="' + n1(R * 0.15) + '" class="dv-mouth-o"/>');
+    else g.push('<path d="M' + n1(mx - R * 0.22) + ' ' + n1(my + R * 0.14) + ' Q' + n1(mx) + ' ' + n1(my - R * 0.06) + ' ' + n1(mx + R * 0.22) + ' ' + n1(my + R * 0.14) + '" class="dv-mouth"/>');
+    if(face === 'cry') g.push('<path d="M' + n1(cx + ex + R * 0.4) + ' ' + n1(ey + R * 0.2) + ' q' + n1(R * 0.09) + ' ' + n1(R * 0.26) + ' 0 ' + n1(R * 0.36) + ' q' + n1(-R * 0.09) + ' ' + n1(-R * 0.1) + ' 0 ' + n1(-R * 0.36) + '" class="dv-tear"/>');
+    if(face !== 'angry') [-1, 1].forEach(function(s){ g.push('<circle cx="' + n1(cx + ex + s * R * 0.58) + '" cy="' + n1(cy + R * 0.38) + '" r="' + n1(R * 0.15) + '" class="dv-blush"/>'); });
+    if(a >= 60) g.push('<path d="M' + n1(cx + ex + R * 0.5) + ' ' + n1(ey - R * 0.02) + ' l' + n1(R * 0.12) + ' ' + n1(R * 0.06) + ' M' + n1(cx + ex - R * 0.5) + ' ' + n1(ey - R * 0.02) + ' l' + n1(-R * 0.12) + ' ' + n1(R * 0.06) + '" class="dv-wrinkle"/>');
+    if(o.glasses) g.push('<g class="dv-glass"><circle cx="' + n1(cx + ex - R * 0.36) + '" cy="' + n1(ey) + '" r="' + n1(R * 0.25) + '"/><circle cx="' + n1(cx + ex + R * 0.36) + '" cy="' + n1(ey) + '" r="' + n1(R * 0.25) + '"/><path d="M' + n1(cx + ex - R * 0.11) + ' ' + n1(ey) + ' h' + n1(R * 0.22) + '"/></g>');
     return g.join('');
   }
-  function baby(o, R, skin, shirt, hair){
-    var x = o.x, y = o.y, h = o.h, g = [], hcY = y - h + R, body = y - h * 0.32;
-    g.push('<ellipse cx="' + x + '" cy="' + (y - h * 0.08) + '" rx="' + (R * 1.25) + '" ry="' + (h * 0.1) + '" fill="' + skin + '"/>');
-    g.push('<ellipse cx="' + x + '" cy="' + (y - h * 0.1) + '" rx="' + (R * 1.05) + '" ry="' + (h * 0.09) + '" class="dv-diaper"/>');
-    g.push('<ellipse cx="' + x + '" cy="' + body + '" rx="' + (R * 0.95) + '" ry="' + (h * 0.2) + '" fill="' + shirt + '"/>');
-    [-1, 1].forEach(function(s){ g.push('<path d="M' + (x + s * R * 0.8) + ' ' + (body - h * 0.1) + ' Q' + (x + s * R * 1.5) + ' ' + body + ' ' + (x + s * R * 1.2) + ' ' + (body + h * 0.1) + '" stroke="' + shirt + '" stroke-width="' + (R * 0.45) + '" fill="none" stroke-linecap="round"/><circle cx="' + (x + s * R * 1.2) + '" cy="' + (body + h * 0.1) + '" r="' + (R * 0.24) + '" fill="' + skin + '"/>'); });
-    g.push(head(x, hcY, R, 0.5, skin, hair, o, o.facing || 1));
-    if(o.prop) g.push(o.prop({ x: x, R: R, hand: [x + R * 1.2, body + h * 0.1], h: h }));
+  /* A sitting infant: o.h is the sitting height (head and trunk). */
+  function baby(o){
+    var x = o.x, y = o.y, h = o.h, HH = h / 2.6, R = HH * 0.58, g = [], fc = o.facing || 1;
+    var skin = o.skin || SKIN[1], shirt = o.shirt || 'var(--dv-kid)', hair = o.hair || '#3B2A20';
+    var shY = y - h + HH * 1.1, bot = y - HH * 0.22;
+    [-1, 1].forEach(function(s){ g.push('<path d="M' + n1(x + s * HH * 0.3) + ' ' + n1(bot - HH * 0.1) + ' Q' + n1(x + s * HH * 0.85) + ' ' + n1(bot) + ' ' + n1(x + s * HH * 1.0) + ' ' + n1(y - HH * 0.16) + '" fill="none" stroke="' + skin + '" stroke-width="' + n1(HH * 0.42) + '" stroke-linecap="round"/><ellipse cx="' + n1(x + s * HH * 1.08) + '" cy="' + n1(y - HH * 0.15) + '" rx="' + n1(HH * 0.22) + '" ry="' + n1(HH * 0.14) + '" fill="' + skin + '" class="dv-ol"/>'); });
+    g.push('<path class="dv-ol" d="M' + n1(x - HH * 0.5) + ' ' + n1(shY) + ' Q' + n1(x - HH * 0.95) + ' ' + n1(bot) + ' ' + n1(x - HH * 0.6) + ' ' + n1(bot + HH * 0.06) + ' L' + n1(x + HH * 0.6) + ' ' + n1(bot + HH * 0.06) + ' Q' + n1(x + HH * 0.95) + ' ' + n1(bot) + ' ' + n1(x + HH * 0.5) + ' ' + n1(shY) + ' Z" fill="' + shirt + '"/>');
+    var hn = [x + fc * HH * 0.72, shY + HH * 0.62], hf = [x - fc * HH * 0.7, shY + HH * 0.72];
+    g.push(limb({ s: [x - fc * HH * 0.42, shY + HH * 0.14], e: [x - fc * HH * 0.62, shY + HH * 0.42], hand: hf }, HH * 0.3, shirt, skin, true));
+    g.push(head(x, shY - R * 0.82, R, 0.5, skin, hair, o, fc));
+    g.push(limb({ s: [x + fc * HH * 0.42, shY + HH * 0.14], e: [x + fc * HH * 0.62, shY + HH * 0.4], hand: hn }, HH * 0.3, shirt, skin, false));
+    if(o.prop) g.push(o.prop({ x: x, R: R, HH: HH, hand: hn, fc: fc, h: h }));
     return '<g class="dv-person">' + g.join('') + '</g>';
   }
-  /* The same person all through the life lens. */
-  var ME = { skin: SKIN[1], hair: '#3B2A20', hairStyle: 'short' };
-  function heightAt(a){ return a < 1 ? 0.3 : a < 2 ? 0.36 : a < 18 ? 0.36 + (a - 2) / 16 * 0.6 : 0.96 - Math.max(0, a - 75) * 0.003; }
-
-  /* A scene for an age: the props and backdrop around the person. */
-  function lifeScene(a, X, Y, W, H, phone){
-    var g = [], floor = Y + H - (phone ? 10 : 16), maxH = H * 0.86, ph = maxH * heightAt(a), cx = X + W * 0.5;
+  /* The same person all through the life lens. Heights are typical
+     heights relative to an adult (about 50 cm at birth, 110 cm at 5,
+     150 cm at 12, 172 cm as an adult), so the figure grows as it should. */
+  var ME = { skin: SKIN[1], hair: '#3B2A20' };
+  var CM = [[0, 50], [1, 75], [2, 87], [3, 95], [5, 110], [7, 122], [10, 138], [12, 150], [14, 162], [16, 168], [18, 172], [70, 170], [90, 164]];
+  function heightAt(a){ for(var i = 1; i < CM.length; i++) if(a <= CM[i][0]){ var p = CM[i - 1], q = CM[i]; return (p[1] + (q[1] - p[1]) * (a - p[0]) / (q[0] - p[0])) / 172; } return CM[CM.length - 1][1] / 172; }
+  function room(X, Y, W, H, floor, phone){
+    var g = [];
     g.push('<rect x="' + X + '" y="' + Y + '" width="' + W + '" height="' + H + '" rx="14" class="dv-room"/>');
-    g.push('<rect x="' + X + '" y="' + floor + '" width="' + W + '" height="' + (Y + H - floor) + '" class="dv-floor"/>');
-    // window
-    var wx = X + W * 0.08, wy = Y + H * 0.1, ww = Math.min(W * 0.22, 90), wh = H * 0.3;
-    g.push('<rect x="' + wx + '" y="' + wy + '" width="' + ww + '" height="' + wh + '" rx="6" class="dv-window"/><path d="M' + (wx + ww / 2) + ' ' + wy + ' v' + wh + ' M' + wx + ' ' + (wy + wh / 2) + ' h' + ww + '" class="dv-mullion"/>');
-    var o = { x: cx, y: floor, h: ph, age: a, skin: ME.skin, hair: ME.hair, hairStyle: a >= 60 ? 'bald' : 'short', gray: a >= 55, face: 'smile' };
+    g.push('<rect x="' + X + '" y="' + n1(floor - 7) + '" width="' + W + '" height="7" class="dv-base"/>');
+    g.push('<path d="M' + X + ' ' + floor + ' H' + (X + W) + ' V' + n1(Y + H - 14) + ' Q' + (X + W) + ' ' + (Y + H) + ' ' + (X + W - 14) + ' ' + (Y + H) + ' H' + (X + 14) + ' Q' + X + ' ' + (Y + H) + ' ' + X + ' ' + n1(Y + H - 14) + ' Z" class="dv-floor"/>');
+    for(var k = 1; k < 6; k++) g.push('<line class="dv-board-l" x1="' + n1(X + W * k / 6) + '" x2="' + n1(X + W * k / 6 - 10) + '" y1="' + floor + '" y2="' + (Y + H) + '"/>');
+    // a window with a sky and a curtain, top right
+    var ww = Math.min(W * 0.24, 96), wh = Math.min(H * 0.32, 110), wx = X + W - ww - W * 0.07, wy = Y + H * 0.12;
+    g.push('<rect x="' + n1(wx) + '" y="' + n1(wy) + '" width="' + n1(ww) + '" height="' + n1(wh) + '" rx="5" class="dv-window"/><circle cx="' + n1(wx + ww * 0.72) + '" cy="' + n1(wy + wh * 0.3) + '" r="' + n1(ww * 0.11) + '" class="dv-sun"/><path d="M' + n1(wx + ww / 2) + ' ' + n1(wy) + ' v' + n1(wh) + ' M' + n1(wx) + ' ' + n1(wy + wh / 2) + ' h' + n1(ww) + '" class="dv-mullion"/><rect x="' + n1(wx - 3) + '" y="' + n1(wy - 3) + '" width="' + n1(ww + 6) + '" height="' + n1(wh + 6) + '" rx="6" class="dv-frame"/><path d="M' + n1(wx - 8) + ' ' + n1(wy - 6) + ' h' + n1(ww * 0.3) + ' q' + n1(-ww * 0.1) + ' ' + n1(wh * 0.6) + ' ' + n1(-ww * 0.02) + ' ' + n1(wh + 12) + ' h' + n1(-ww * 0.26) + ' Z" class="dv-curtain"/>');
+    // a plant
+    if(!phone || W > 300){ var px = X + W - ww * 0.4 - W * 0.07, ps = Math.min(H * 0.16, 44); g.push('<path d="M' + n1(px - ps * 0.32) + ' ' + n1(floor - ps * 0.5) + ' h' + n1(ps * 0.64) + ' l' + n1(-ps * 0.08) + ' ' + n1(ps * 0.5) + ' h' + n1(-ps * 0.48) + ' Z" class="dv-pot"/>' + [[-0.5, -1.2], [0, -1.5], [0.5, -1.15], [-0.25, -0.95], [0.3, -0.9]].map(function(l){ return '<ellipse cx="' + n1(px + l[0] * ps * 0.5) + '" cy="' + n1(floor - ps * 0.5 + l[1] * ps * 0.45) + '" rx="' + n1(ps * 0.13) + '" ry="' + n1(ps * 0.3) + '" transform="rotate(' + (l[0] * 40) + ' ' + n1(px + l[0] * ps * 0.5) + ' ' + n1(floor - ps * 0.5 + l[1] * ps * 0.45) + ')" class="dv-leaf"/>'; }).join('')); }
+    return g.join('');
+  }
+  /* A scene for an age: the props around the person. */
+  function lifeScene(a, X, Y, W, H, phone){
+    var floor = Y + H - Math.round(H * 0.13), full = (floor - Y) * 0.78, ph = full * heightAt(a), cx = X + W * (phone ? 0.42 : 0.4), g = [room(X, Y, W, H, floor, phone)];
+    g.push('<ellipse cx="' + n1(cx) + '" cy="' + n1(floor + (Y + H - floor) * 0.45) + '" rx="' + n1(Math.min(W * 0.3, full * 0.5)) + '" ry="' + n1((Y + H - floor) * 0.32) + '" class="dv-rug"/>');
+    var o = { x: cx, y: floor + (Y + H - floor) * 0.42, h: ph, age: a, skin: ME.skin, hair: ME.hair, hairStyle: a >= 62 ? 'bald' : 'short', gray: a >= 55, face: 'smile', glasses: a >= 45 };
+    var fy = o.y;
     if(a < 1.5){
-      o.pose = 'baby'; o.h = maxH * 0.42;
-      g.push('<ellipse cx="' + cx + '" cy="' + (floor - 2) + '" rx="' + (W * 0.3) + '" ry="10" class="dv-mat"/>');
-      o.prop = function(p){ return '<g class="dv-rattle"><line x1="' + p.hand[0] + '" y1="' + p.hand[1] + '" x2="' + (p.hand[0] + p.R * 0.6) + '" y2="' + (p.hand[1] - p.R * 0.9) + '"/><circle cx="' + (p.hand[0] + p.R * 0.75) + '" cy="' + (p.hand[1] - p.R * 1.1) + '" r="' + (p.R * 0.32) + '"/></g>'; };
-      g.push(toyBlocks(cx - W * 0.22, floor, Math.max(10, H * 0.07), 2));
+      o.pose = 'baby'; o.h = full * (a < 0.5 ? 0.3 : 0.36); o.shirt = 'var(--dv-kid)';
+      o.prop = function(p){ return '<g class="dv-rattle"><line x1="' + n1(p.hand[0]) + '" y1="' + n1(p.hand[1]) + '" x2="' + n1(p.hand[0] + p.HH * 0.3) + '" y2="' + n1(p.hand[1] - p.HH * 0.6) + '"/><circle cx="' + n1(p.hand[0] + p.HH * 0.36) + '" cy="' + n1(p.hand[1] - p.HH * 0.74) + '" r="' + n1(p.HH * 0.2) + '"/></g>'; };
+      g.push(toyBlocks(cx + full * 0.34, fy, Math.max(10, full * 0.08), 2));
     } else if(a < 3){
-      o.pose = 'hold'; o.facing = -1;
-      g.push(toyBlocks(cx - ph * 0.55, floor, Math.max(10, ph * 0.13), 3));
+      o.pose = 'hold'; o.shirt = 'var(--dv-kid)'; o.pants = 'var(--dv-kidpants)';
+      o.prop = function(p){ return '<rect x="' + n1(p.hand[0] - p.HH * 0.1) + '" y="' + n1(p.hand[1] - p.HH * 0.45) + '" width="' + n1(p.HH * 0.5) + '" height="' + n1(p.HH * 0.5) + '" rx="2" class="dv-blk2"/>'; };
+      g.push(toyBlocks(cx + full * 0.32, fy, Math.max(10, full * 0.09), 3));
     } else if(a < 7){
-      o.pose = 'hold';
-      o.prop = function(p){ return plane(p.hand[0] + p.R * 0.2, p.hand[1] - p.R * 0.4, p.R * 1.4); };
-      g.push(toyBlocks(cx + ph * 0.55, floor, Math.max(9, ph * 0.1), 2));
+      o.pose = 'hold'; o.shirt = 'var(--dv-kid)'; o.pants = 'var(--dv-kidpants)';
+      o.prop = function(p){ return plane(p.hand[0] + p.HH * 0.25, p.hand[1] - p.HH * 0.1, p.HH * 1.5); };
+      g.push(toyBlocks(cx + full * 0.36, fy, Math.max(9, full * 0.07), 2));
     } else if(a < 12){
-      o.pose = 'write';
-      var dx = cx + ph * 0.32, dt = floor - ph * 0.42;
-      g.push('<rect x="' + (dx - ph * 0.02) + '" y="' + dt + '" width="' + (ph * 0.42) + '" height="' + (ph * 0.04) + '" rx="2" class="dv-desk"/><line x1="' + (dx + ph * 0.36) + '" y1="' + dt + '" x2="' + (dx + ph * 0.36) + '" y2="' + floor + '" class="dv-deskleg"/>');
-      g.push('<rect x="' + (dx + ph * 0.06) + '" y="' + (dt - ph * 0.025) + '" width="' + (ph * 0.2) + '" height="' + (ph * 0.025) + '" class="dv-book"/>');
-      g.push(chair(cx - ph * 0.05, floor, ph * 0.34, -1));
-      o.x = cx - ph * 0.02;
+      o.pose = 'write'; o.x = cx - full * 0.08;
+      var dx = o.x + full * 0.2, dt = fy - full * 0.42;
+      g.push(chair(o.x - full * 0.02, fy, full * 0.27, -1));
+      o.prop = function(p){ return '<rect x="' + n1(dx) + '" y="' + n1(dt) + '" width="' + n1(full * 0.36) + '" height="' + n1(full * 0.035) + '" rx="2" class="dv-desk"/><line x1="' + n1(dx + full * 0.32) + '" y1="' + n1(dt) + '" x2="' + n1(dx + full * 0.32) + '" y2="' + n1(fy) + '" class="dv-deskleg"/><path d="M' + n1(dx + full * 0.08) + ' ' + n1(dt) + ' l' + n1(full * 0.08) + ' ' + n1(-full * 0.02) + ' l' + n1(full * 0.08) + ' ' + n1(full * 0.02) + ' Z" class="dv-book"/>'; };
     } else if(a < 18){
       o.pose = 'phone'; o.hairStyle = 'short';
-      o.prop = function(p){ return '<rect x="' + (p.hand[0] - p.R * 0.18) + '" y="' + (p.hand[1] - p.R * 0.45) + '" width="' + (p.R * 0.36) + '" height="' + (p.R * 0.62) + '" rx="' + (p.R * 0.08) + '" class="dv-phone"/>' + '<rect x="' + (p.x - p.sw * 1.15) + '" y="' + (p.shY + p.R * 0.2) + '" width="' + (p.sw * 0.5) + '" height="' + (p.R * 2.4) + '" rx="' + (p.R * 0.3) + '" class="dv-pack"/>'; };
+      o.prop = function(p){ return '<rect x="' + n1(p.hand[0] - p.HH * 0.12) + '" y="' + n1(p.hand[1] - p.HH * 0.4) + '" width="' + n1(p.HH * 0.26) + '" height="' + n1(p.HH * 0.46) + '" rx="' + n1(p.HH * 0.05) + '" class="dv-phone"/><path d="M' + n1(p.hx - p.fc * p.sw * 0.6) + ' ' + n1(p.shY) + ' l' + n1(-p.fc * p.HH * 0.5) + ' ' + n1(p.HH * 0.2) + ' l0 ' + n1(p.HH * 1.5) + ' l' + n1(p.fc * p.HH * 0.4) + ' ' + n1(p.HH * 0.1) + ' Z" class="dv-pack"/>'; };
     } else if(a < 25){
       o.pose = 'hold';
-      o.prop = function(p){ return '<rect x="' + (p.hand[0] - p.R * 0.15) + '" y="' + (p.hand[1] - p.R * 0.9) + '" width="' + (p.R * 0.62) + '" height="' + (p.R * 0.8) + '" rx="' + (p.R * 0.1) + '" class="dv-mug"/><path d="M' + (p.hand[0] + p.R * 0.12) + ' ' + (p.hand[1] - p.R * 1.05) + ' q' + (p.R * 0.12) + ' ' + (-p.R * 0.25) + ' 0 ' + (-p.R * 0.5) + '" class="dv-steam"/>'; };
+      o.prop = function(p){ return '<rect x="' + n1(p.hand[0] - p.HH * 0.12) + '" y="' + n1(p.hand[1] - p.HH * 0.5) + '" width="' + n1(p.HH * 0.4) + '" height="' + n1(p.HH * 0.48) + '" rx="' + n1(p.HH * 0.06) + '" class="dv-mug"/><path d="M' + n1(p.hand[0] + p.HH * 0.06) + ' ' + n1(p.hand[1] - p.HH * 0.6) + ' q' + n1(p.HH * 0.1) + ' ' + n1(-p.HH * 0.15) + ' 0 ' + n1(-p.HH * 0.3) + ' M' + n1(p.hand[0] + p.HH * 0.18) + ' ' + n1(p.hand[1] - p.HH * 0.6) + ' q' + n1(p.HH * 0.1) + ' ' + n1(-p.HH * 0.15) + ' 0 ' + n1(-p.HH * 0.3) + '" class="dv-steam"/>'; };
+    } else if(a < 40){
+      o.pose = 'hold';
+      o.prop = function(p){ return '<rect x="' + n1(p.hand[0] - p.HH * 0.4) + '" y="' + n1(p.hand[1] - p.HH * 0.05) + '" width="' + n1(p.HH * 0.9) + '" height="' + n1(p.HH * 0.62) + '" rx="' + n1(p.HH * 0.08) + '" class="dv-case"/><path d="M' + n1(p.hand[0] - p.HH * 0.12) + ' ' + n1(p.hand[1] - p.HH * 0.05) + ' v' + n1(-p.HH * 0.12) + ' h' + n1(p.HH * 0.3) + ' v' + n1(p.HH * 0.12) + '" class="dv-handle2"/>'; };
     } else if(a < 65){
-      o.pose = a >= 40 ? 'point' : 'hold'; o.glasses = a >= 45;
-      if(a >= 40){ var bx = cx + ph * 0.42; g.push('<rect x="' + bx + '" y="' + (floor - ph * 0.85) + '" width="' + (ph * 0.36) + '" height="' + (ph * 0.3) + '" rx="4" class="dv-board"/><path d="M' + (bx + ph * 0.05) + ' ' + (floor - ph * 0.62) + ' l' + (ph * 0.08) + ' ' + (-ph * 0.08) + ' l' + (ph * 0.07) + ' ' + (ph * 0.04) + ' l' + (ph * 0.1) + ' ' + (-ph * 0.1) + '" class="dv-chart"/>'); o.x = cx - ph * 0.08; }
-      else o.prop = function(p){ return '<rect x="' + (p.hand[0] - p.R * 0.7) + '" y="' + (p.hand[1] - p.R * 0.1) + '" width="' + (p.R * 1.4) + '" height="' + (p.R * 1.0) + '" rx="' + (p.R * 0.12) + '" class="dv-case"/>'; };
+      o.pose = 'point'; o.x = cx - full * 0.12;
+      var bx = o.x + full * 0.3, bw = full * 0.34;
+      g.push('<rect x="' + n1(bx) + '" y="' + n1(fy - full * 0.86) + '" width="' + n1(bw) + '" height="' + n1(full * 0.28) + '" rx="4" class="dv-board"/><path d="M' + n1(bx + bw * 0.12) + ' ' + n1(fy - full * 0.64) + ' l' + n1(bw * 0.22) + ' ' + n1(-full * 0.07) + ' l' + n1(bw * 0.2) + ' ' + n1(full * 0.04) + ' l' + n1(bw * 0.32) + ' ' + n1(-full * 0.1) + '" class="dv-chart"/><line x1="' + n1(bx + bw / 2) + '" y1="' + n1(fy - full * 0.58) + '" x2="' + n1(bx + bw / 2) + '" y2="' + n1(fy) + '" class="dv-deskleg"/>');
+    } else if(a < 75){
+      o.pose = 'sit'; g.push(bench(cx + full * 0.02, fy, full * 0.27, full * 0.62));
+      o.prop = function(p){ return '<rect x="' + n1(p.hand[0] - p.HH * 0.3) + '" y="' + n1(p.hand[1] - p.HH * 0.42) + '" width="' + n1(p.HH * 0.7) + '" height="' + n1(p.HH * 0.5) + '" rx="2" class="dv-book"/>'; };
     } else {
-      o.glasses = true;
-      if(a >= 75){ o.pose = 'cane'; o.prop = function(p){ return '<path d="M' + p.hand[0] + ' ' + p.hand[1] + ' L' + (p.hand[0] + p.fc * p.R * 0.3) + ' ' + floor + ' M' + p.hand[0] + ' ' + p.hand[1] + ' q' + (-p.fc * p.R * 0.4) + ' ' + (-p.R * 0.3) + ' ' + (-p.fc * p.R * 0.5) + ' ' + (p.R * 0.15) + '" class="dv-cane"/>'; }; }
-      else { o.pose = 'sit'; g.push(bench(cx, floor, ph * 0.36, ph * 0.9)); }
+      o.pose = 'cane';
+      o.prop = function(p){ return '<path d="M' + n1(p.hand[0]) + ' ' + n1(p.hand[1]) + ' L' + n1(p.hand[0] + p.fc * p.HH * 0.12) + ' ' + n1(fy) + ' M' + n1(p.hand[0]) + ' ' + n1(p.hand[1]) + ' q' + n1(-p.fc * p.HH * 0.25) + ' ' + n1(-p.HH * 0.2) + ' ' + n1(-p.fc * p.HH * 0.32) + ' ' + n1(p.HH * 0.08) + '" class="dv-cane"/>'; };
     }
     g.push(person(o));
     return g.join('');
@@ -225,32 +250,36 @@
     o = o || {};
     var phone = W < 520, lanes = o.only ? D.LANES.filter(function(l){ return l.id === o.only; }) : D.LANES;
     var labW = phone ? 0 : 118, x0 = X + labW + 6, x1 = X + W - 12, axisH = 26;
-    var laneGap = phone ? 20 : 8, lh = Math.max(22, Math.min(46, (H - axisH - lanes.length * laneGap) / lanes.length)), g = [];
+    var laneGap = phone ? 20 : 10, lh = Math.max(22, Math.min(o.only ? 40 : 58, (H - axisH - lanes.length * laneGap) / lanes.length)), g = [];
     var xa = function(a){ return x0 + ax(a) * (x1 - x0); };
-    var y = Y + (phone ? 16 : 4);
+    var y = Y + (phone ? 16 : 4), mk = g.length, lanesY = [];
     lanes.forEach(function(L){
+      lanesY.push(y);
       var cls = LANE_CLS[L.id], hide = o.hide && o.hide.indexOf(L.id) > -1;
-      if(phone) g.push('<text class="dv-lane-h ' + cls + '-t" x="' + x0 + '" y="' + (y - 5) + '">' + esc(L.name) + '</text>');
-      else g.push('<text class="dv-lane-h ' + cls + '-t" x="' + X + '" y="' + (y + lh / 2 - 2) + '">' + esc(L.name) + '</text><text class="dv-lane-s" x="' + X + '" y="' + (y + lh / 2 + 12) + '">' + esc(L.theory.length > 22 ? L.theory.split(',')[0] : L.theory) + '</text>');
+      var cur = !hide && age != null ? D.bandAt(L, age) : null;
+      if(phone) g.push('<text class="dv-lane-h ' + cls + '-t" x="' + x0 + '" y="' + (y - 5) + '">' + esc(L.name) + (cur ? '<tspan class="dv-lane-v">: ' + esc(cur[2].length > 34 ? cur[3] : cur[2]) + '</tspan>' : '') + '</text>');
+      else g.push('<text class="dv-lane-h ' + cls + '-t" x="' + X + '" y="' + (y + lh / 2 - 2) + '">' + esc(L.name) + '</text><text class="dv-lane-s" x="' + X + '" y="' + (y + lh / 2 + 12) + '">' + esc(LANE_SUB[L.id]) + '</text>');
       L.bands.forEach(function(b, i){
         var bx0 = xa(b[0]) + 1, bx1 = xa(b[1]) - 1, on = !hide && age != null && age >= b[0] && (age < b[1] || (b[1] === 90 && age >= 90));
         g.push('<rect x="' + bx0.toFixed(1) + '" y="' + y + '" width="' + Math.max(1, bx1 - bx0).toFixed(1) + '" height="' + lh + '" rx="7" class="dv-band ' + cls + (on ? ' is-on' : (i % 2 ? ' is-alt' : '')) + '"/>');
         if(hide) return;
-        var size = phone ? 10.5 : 12, full = b[2], short = b[3], room = bx1 - bx0 - 10, txt = textW(full, size, 800) <= room ? full : textW(short, size, 800) <= room ? short : (textW(short.charAt(0), size, 800) <= room && room > 9 ? short.charAt(0) : '');
+        var size = phone ? 10.5 : 12, full = b[2], short = b[3], room = bx1 - bx0 - 8, txt = textW(full, size, 800) <= room ? full : textW(short, size, 800) <= room ? short : '';
         if(txt) g.push('<text class="dv-band-t' + (on ? ' is-on' : '') + '" x="' + ((bx0 + bx1) / 2).toFixed(1) + '" y="' + (y + lh / 2 + size * 0.36).toFixed(1) + '" text-anchor="middle" font-size="' + size + '">' + esc(txt) + '</text>');
       });
       y += lh + laneGap;
     });
     var by = y - laneGap + 6;
     g.push('<line class="dv-axis" x1="' + x0 + '" x2="' + x1 + '" y1="' + by + '" y2="' + by + '"/>');
+    var mxa = age != null ? xa(Math.min(90, age)) : -99;
     TICKS.forEach(function(t){
-      if(phone && (t === 1 || t === 7 || t === 25)) return;
+      if(phone && (t === 7 || t === 1)) return;
+      if(Math.abs(xa(t) - mxa) < 12 && t !== 0) return;
       g.push('<line class="dv-axis" x1="' + xa(t).toFixed(1) + '" x2="' + xa(t).toFixed(1) + '" y1="' + by + '" y2="' + (by + 4) + '"/><text class="dv-tick" x="' + xa(t).toFixed(1) + '" y="' + (by + 16) + '" text-anchor="middle">' + t + '</text>');
     });
     if(!phone) g.push('<text class="dv-tick" x="' + X + '" y="' + (by + 16) + '">Age (years)</text>');
     if(age != null){
       var mx = xa(Math.min(90, age)), top = Y + (phone ? 4 : 0);
-      g.push('<line class="dv-mark" x1="' + mx.toFixed(1) + '" x2="' + mx.toFixed(1) + '" y1="' + top + '" y2="' + by + '"/>');
+      lanesY.forEach(function(ly){ g.splice(mk, 0, '<line class="dv-mark" x1="' + mx.toFixed(1) + '" x2="' + mx.toFixed(1) + '" y1="' + (ly - 3) + '" y2="' + (ly + lh + 3) + '"/>'); });
       g.push('<g class="dv-handle"><circle cx="' + mx.toFixed(1) + '" cy="' + by + '" r="9"/><text x="' + mx.toFixed(1) + '" y="' + (by + 3.6) + '" text-anchor="middle">⇔</text></g>');
     }
     return { svg: g.join(''), x: xa, x0: x0, x1: x1, bottom: by + 20 };
@@ -258,14 +287,14 @@
 
   /* ------------------------------------------------- attachment */
   var REUNION = {
-    secure: { leave: 'cry', leavePose: 'reach', back: 'smile', backPose: 'reach', note: ['Upset, protests', 'Comforted by no one fully', 'Seeks parent, calms, plays again'] },
-    avoidant: { leave: 'neutral', leavePose: 'hold', back: 'neutral', backPose: 'away', note: ['Little distress', 'Keeps playing', 'Turns away, ignores the parent'] },
-    anxious: { leave: 'cry', leavePose: 'reach', back: 'angry', backPose: 'cross', note: ['Very distressed', 'Clings, hard to soothe', 'Reaches, then pushes away'] },
-    disorganized: { leave: 'worried', leavePose: 'freeze', back: 'worried', backPose: 'freeze', note: ['Confused reaction', 'Dazed, still', 'Approaches looking away, freezes'] }
+    secure: { leave: 'cry', leavePose: 'reach', back: 'smile', backPose: 'reach', note: ['Upset, protests', 'Distressed, not fully soothed', 'Seeks comfort, calms, plays'] },
+    avoidant: { leave: 'neutral', leavePose: 'hold', back: 'neutral', backPose: 'away', note: ['Little distress', 'Keeps playing', 'Looks away, ignores parent'] },
+    anxious: { leave: 'cry', leavePose: 'reach', back: 'angry', backPose: 'cross', note: ['Very distressed', 'Very upset, hard to soothe', 'Reaches, then pushes away'] },
+    disorganized: { leave: 'worried', leavePose: 'freeze', back: 'worried', backPose: 'freeze', note: ['Confused reaction', 'Dazed, still', 'Approaches, looks away, freezes'] }
   };
   function attachScene(style, W, H){
     var phone = W < 560, n = 3, g = [], gap = 10, A = REUNION[style];
-    var cols = phone ? 1 : 3, pw = phone ? W - 16 : (W - 16 - gap * 2) / 3, ph = phone ? (H - 16 - gap * 2) / 3 : Math.min(H - 16, pw * 1.15);
+    var cols = phone ? 1 : 3, pw = phone ? W - 16 : (W - 16 - gap * 2) / 3, ph = phone ? (H - 16 - gap * 2) / 3 : Math.min(H - 16, pw * 1.7);
     var titles = ['1. Parent leaves', '2. Alone in the room', '3. Parent returns'];
     for(var i = 0; i < n; i++){
       var px = 8 + (phone ? 0 : i * (pw + gap)), py = 8 + (phone ? i * (ph + gap) : (H - 16 - ph) / 2), floor = py + ph - 12;
@@ -273,9 +302,9 @@
       // door on the left
       var dw = Math.min(pw * 0.18, ph * 0.28), dh = Math.min(ph * 0.7, dw * 2.3);
       g.push('<rect x="' + (px + 10) + '" y="' + (floor - dh) + '" width="' + dw + '" height="' + dh + '" rx="3" class="dv-door' + (i === 1 ? '' : ' is-open') + '"/><circle cx="' + (px + 10 + dw * 0.8) + '" cy="' + (floor - dh * 0.48) + '" r="2" class="dv-knob"/>');
-      var kidH = Math.min(ph * 0.42, 90), kidX = px + pw * (phone ? 0.62 : 0.64);
+      var kidH = phone ? ph * 0.5 : Math.min(ph * 0.36, pw * 0.5), kidX = px + pw * (phone ? 0.66 : 0.64);
       g.push(toyBlocks(kidX + kidH * 0.6, floor, Math.max(8, kidH * 0.17), 2));
-      var adultH = Math.min(ph * 0.8, kidH * 2.1);
+      var adultH = phone ? ph * 0.74 : Math.min(ph * 0.72, kidH * 2.05);
       if(i === 0) g.push(person({ x: px + 10 + dw * 0.5, y: floor, h: adultH, age: 32, skin: SKIN[2], hair: '#2A1C14', hairStyle: 'long', shirt: 'var(--dv-shirt2)', pose: 'away', facing: -1, look: 'away' }));
       if(i === 2) g.push(person({ x: px + 10 + dw + adultH * 0.18, y: floor, h: adultH, age: 32, skin: SKIN[2], hair: '#2A1C14', hairStyle: 'long', shirt: 'var(--dv-shirt2)', pose: style === 'secure' ? 'reach' : 'stand', facing: 1, face: 'smile' }));
       var face = i === 0 ? A.leave : i === 1 ? (style === 'avoidant' ? 'neutral' : style === 'secure' ? 'sad' : style === 'anxious' ? 'cry' : 'worried') : A.back;
@@ -285,7 +314,7 @@
       g.push(person({ x: kidX, y: floor, h: kidH, age: 1.6, skin: SKIN[2], hair: '#2A1C14', shirt: 'var(--dv-kid)', pants: 'var(--dv-kidpants)', pose: pose, face: face, facing: fc, look: look }));
       if(style === 'disorganized' && i > 0) g.push('<text class="dv-q" x="' + (kidX + kidH * 0.32) + '" y="' + (floor - kidH * 1.05) + '">?</text>');
       g.push('<text class="dv-ptitle" x="' + (px + 10) + '" y="' + (py + 20) + '">' + titles[i] + '</text>');
-      g.push('<text class="dv-pnote' + (i === 2 ? ' is-key' : '') + '" x="' + (px + pw - 10) + '" y="' + (py + 20) + '" text-anchor="end">' + (phone || pw > 230 ? A.note[i] : '') + '</text>');
+      g.push('<text class="dv-pnote' + (i === 2 ? ' is-key' : '') + '" x="' + (phone ? px + pw - 10 : px + 10) + '" y="' + (phone ? py + 20 : py + 38) + '"' + (phone ? ' text-anchor="end"' : '') + '>' + esc(A.note[i]) + '</text>');
     }
     return g.join('');
   }
@@ -372,8 +401,8 @@
     (before || target).parentNode.insertBefore(slot, before || target);
     var h = s.hint({ target: target, text: text });
     if(!h){ slot.remove(); return; }
-    var EV = ['pointerdown', 'keydown', 'input', 'change'];
-    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
+    var EV = ['click', 'keydown', 'input', 'change'];
+    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); setTimeout(function(){ slot.remove(); if(h.place) h.place(); }, 0); }
     EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
     if(h.place) h.place();
   }
@@ -388,9 +417,9 @@
     host.innerHTML = '<section class="bt-problem dv-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Development across the lifespan</h2>' +
       '<div class="dv-fig"><svg class="dv-svg" role="img" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
       '<div class="dv-ctl">' +
-        '<div class="ls-seg dv-lenses" role="group" aria-label="Lens">' + LENSES.map(function(x){ return '<button type="button" data-v="' + x.v + '" aria-pressed="false">' + x.label + '</button>'; }).join('') + '</div>' +
+        '<div class="dv-lenses dv-chips" role="group" aria-label="Lens">' + LENSES.map(function(x){ return '<button type="button" class="tchip" data-v="' + x.v + '" aria-pressed="false">' + x.label + '</button>'; }).join('') + '</div>' +
         '<div class="dv-grp dv-grp-age"></div>' +
-        '<div class="dv-grp dv-grp-attach" role="group" aria-label="Attachment pattern"><div class="ls-scroll dv-chips">' + D.ATTACH.map(function(a){ return '<button type="button" class="tchip" data-s="' + a.id + '" aria-pressed="false">' + a.name.replace(' (ambivalent)', '') + '</button>'; }).join('') + '</div></div>' +
+        '<div class="dv-grp dv-grp-attach" role="group" aria-label="Attachment pattern"><div class="dv-chips">' + D.ATTACH.map(function(a){ return '<button type="button" class="tchip" data-s="' + a.id + '" aria-pressed="false">' + a.name.replace(' (ambivalent)', '') + '</button>'; }).join('') + '</div></div>' +
         '<div class="dv-grp dv-grp-parent"></div>' +
         '<div class="dv-go"><button type="button" class="btn-press sm ls-btn ls-pri dv-play">Play a life</button></div>' +
       '</div>' +
@@ -418,7 +447,7 @@
     function onClick(e){
       var b = e.target.closest('.dv-lenses button');
       if(b){ setLens(b.getAttribute('data-v')); return; }
-      var c = e.target.closest('.dv-chips button');
+      var c = e.target.closest('.dv-grp-attach button');
       if(c){ act(); style = c.getAttribute('data-s'); sync(); draw(); words(); say(attachLine()); return; }
       if(e.target.closest('.dv-play')){ act(); play(); }
     }
@@ -434,7 +463,7 @@
     function sync(){
       var root = LS ? LS.root : host;
       root.querySelectorAll('.dv-lenses button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === lens)); });
-      root.querySelectorAll('.dv-chips button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-s') === style)); });
+      root.querySelectorAll('.dv-grp-attach button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-s') === style)); });
       var show = { 'dv-grp-age': lens === 'life' || lens === 'aging', 'dv-grp-attach': lens === 'attach', 'dv-grp-parent': lens === 'parent', 'dv-go': lens === 'life' };
       Object.keys(show).forEach(function(k){ var el = $('.' + k); if(el) el.hidden = !show[k]; });
       if(LS && LS.setupRow) LS.setupRow.setup(allLanes ? 'All four lanes' : 'One lane');
@@ -468,7 +497,7 @@
           });
         } else out += '<text class="dv-now-h" x="16" y="30">Age ' + esc(ageWords(age())) + '</text>';
         var ty = sceneH + 22;
-        tl = timeline(8, ty, W - 12, H - ty - 6, age(), { only: allLanes ? null : 'think' });
+        tl = timeline(8, ty, W - 12, H - ty - (phone ? 52 : 34), age(), { only: allLanes ? null : 'think' });
         out += tl.svg;
         label = 'Lifespan timeline at age ' + ageWords(age()) + '. ' + lifeLine();
       } else if(lens === 'attach'){
@@ -491,7 +520,7 @@
     function fromPointer(e){
       var p = pt(e);
       if(lens === 'life' && tl){
-        var f = Math.max(0, Math.min(1, (p.x - tl.x0) / (tl.x1 - tl.x0))), a = Math.pow(91, f) - 1, best = 0;
+        var f = Math.max(0, Math.min(1, (p.x - tl.x0) / (tl.x1 - tl.x0))), a = 90 * f * f, best = 0;
         AGES.forEach(function(v, i){ if(Math.abs(ax(v) - ax(a)) < Math.abs(ax(AGES[best]) - ax(a))) best = i; });
         if(best !== ageI){ ageI = best; sAge.set(best); draw(); words(); }
       } else if(lens === 'parent' && grid){
@@ -510,7 +539,7 @@
 
     /* numbers and words */
     function lifeLine(){ var a = age(); return 'Age ' + ageWords(a) + ': ' + D.LANES.map(function(L){ return L.name.toLowerCase() + ', ' + D.bandAt(L, a)[2].toLowerCase(); }).join('; ') + '.'; }
-    function attachLine(){ var A = D.byId(D.ATTACH, style); return A.name + ': the child ' + A.leave + ' and, when the parent returns, ' + A.back + '.'; }
+    function attachLine(){ var A = D.byId(D.ATTACH, style); return A.name + ': when the parent leaves, the child ' + A.leave + '; when the parent returns, the child ' + A.back + '.'; }
     function parentLine(){ var st = D.parentStyle(warm, dem); return st.name + '. ' + st.line; }
     function agingLine(){ var a = Math.max(20, age()); return 'At ' + Math.round(a) + ', crystallized intelligence is ' + (a < 65 ? 'still rising' : a < 80 ? 'holding' : 'easing') + ' and fluid intelligence is ' + (a < 30 ? 'near its peak' : 'gradually lower') + '.'; }
     function lineNow(){ return lens === 'life' ? lifeLine() : lens === 'attach' ? attachLine() : lens === 'parent' ? parentLine() : agingLine(); }
@@ -520,7 +549,7 @@
         var a = age(), pg = D.stageAt(D.PIAGET, a), er = D.stageAt(D.ERIKSON, a);
         head = 'Age ' + ageWords(a) + ': ' + (a < 20 ? pg.name.toLowerCase() + ' thinking' : 'adult thinking') + ', ' + er.name.toLowerCase() + '.';
         sub = a < 20 ? pg.hallmark + ' Erikson\'s question: "' + er.q + '"' : 'Erikson\'s question: "' + er.q + '"';
-        pills = [{ k: 'Piaget', html: a < 20 ? pg.short : 'Adult', tone: 'readout' }]; pillsR = [{ k: 'Erikson', html: er.short, tone: 'accent' }];
+        pills = [{ k: a < 20 ? 'Piaget' : 'Thinking', html: a < 20 ? pg.short : 'Adult', tone: 'readout' }]; pillsR = [{ k: 'Erikson', html: er.short, tone: 'accent' }];
         why = lifeWhy(a);
       } else if(lens === 'attach'){
         var A = D.byId(D.ATTACH, style);
@@ -550,7 +579,7 @@
     }
     function attachWhy(){
       return '<p><b>The strange situation.</b> A one-year-old and a parent come into a playroom; a stranger enters, the parent leaves and comes back. The reunion shows the pattern most clearly.</p>' +
-        '<p><b>Four patterns.</b> ' + D.ATTACH.map(function(x){ return x.name + ': the child ' + x.leave + ' and, on reunion, ' + x.back + '.'; }).join(' ') + '</p>' +
+        '<p><b>Four patterns.</b> ' + D.ATTACH.map(function(x){ return x.name + ': when the parent leaves, the child ' + x.leave + '; on reunion, the child ' + x.back + '.'; }).join(' ') + '</p>' +
         '<p><b>What it can and cannot show.</b> This is a structured observation, not an experiment, so links with later relationships are correlational: temperament, culture and the home all differ. Patterns can change when care changes.</p>' +
         '<p><b>Contact comfort.</b> In Harlow\'s monkey studies (1950s), infant monkeys clung to a soft cloth "mother" rather than a wire one that gave milk: comfort, not food, built the bond. The studies are also a standard example of research that raises serious ethical concerns.</p>';
     }

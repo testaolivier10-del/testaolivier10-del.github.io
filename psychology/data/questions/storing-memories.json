@@ -1,0 +1,452 @@
+{
+ "stimuli": {
+  "storing-memories-s1": {
+   "kind": "study",
+   "title": "A patient who cannot keep new memories",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers described one patient in depth to learn which kinds of memory survive damage to the hippocampus.",
+    "participants": "One patient, called R.T. in the report to protect his identity: a 58-year-old retired electrician whose hippocampus on both sides was damaged by a brain infection. R.T. and his wife both gave written informed consent.",
+    "method": "Over 18 months the researchers interviewed R.T. and his wife, reviewed his medical records and brain scans, and gave him memory tests. On each of five days he also practiced tracing a star while seeing his hand only in a mirror, and the researchers timed each attempt.",
+    "results": "R.T. could not recall the researchers from one visit to the next or name anything that had happened since the infection. He recalled his childhood, his wedding and his years at work in detail. Memories of the two years just before the infection were patchy. His mirror-tracing time fell from 90 seconds on day 1 to 35 seconds on day 5, though each day he said he had never done the task.",
+    "discussion": "The researchers concluded that the hippocampus is needed to form new explicit memories but not to keep old ones or to learn new skills."
+   }
+  },
+  "storing-memories-s2": {
+   "kind": "data",
+   "title": "Repeating words versus linking them to meaning",
+   "invented": true,
+   "plot": {
+    "label": "Bar graph of the percent of words recalled one day later: 22% after repeating the words, 58% after linking each word to a personal memory (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Repeat each word",
+     "Link each word to a memory"
+    ],
+    "values": [
+     22,
+     58
+    ],
+    "yLabel": "Percent of words recalled a day later",
+    "xLabel": "How students studied the list",
+    "y": [
+     0,
+     100
+    ]
+   },
+   "html": "<p>Fifty college students studied the same 20 words for the same length of time. A coin flip assigned each student to one of two instructions: repeat each word over and over, or think of a personal memory linked to each word. The next day, without warning, every student wrote down all the words they could remember.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "psy-storing-memories-1",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "storing-memories-s1",
+   "q": "Which research method did the researchers use?",
+   "options": [
+    "A case study",
+    "An experiment",
+    "A correlational study",
+    "Naturalistic observation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An in-depth study of one person, using interviews, records and tests, is a case study.",
+    "options": [
+     "Right: An in-depth study of one person, using interviews, records and tests, is a case study.",
+     "An experiment manipulates a variable and randomly assigns participants to conditions. There was one patient and no groups.",
+     "A correlational study measures two variables across many people to see how they relate. This study described one person in depth.",
+     "Naturalistic observation watches behavior in its usual setting without testing. The researchers gave R.T. tests and a task."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-2",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "storing-memories-s1",
+   "q": "R.T. cannot form memories of anything that happened after the infection. Which concept names this?",
+   "options": [
+    "Retrograde amnesia",
+    "Anterograde amnesia",
+    "Infantile amnesia",
+    "Superior autobiographical memory"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Being unable to form new long-term memories after brain damage is anterograde amnesia.",
+    "options": [
+     "Retrograde amnesia is losing memories from before the damage. R.T.'s main problem is forming new ones.",
+     "Right: Being unable to form new long-term memories after brain damage is anterograde amnesia.",
+     "Infantile amnesia is the normal lack of memories from the first few years of life. It is not caused by brain damage.",
+     "That is an unusually detailed memory for one's own life, the opposite of R.T.'s problem."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-3",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "storing-memories-s1",
+   "q": "R.T.'s mirror-tracing time fell over five days though he did not remember practicing. Which conclusion does this best support?",
+   "options": [
+    "His anterograde amnesia went away by day 5",
+    "Mirror tracing is stored in sensory memory",
+    "Procedural memory can form without the hippocampus",
+    "Old explicit memories are needed to learn a skill"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Getting faster at a skill without conscious memory of practice shows implicit, procedural learning. It survived the hippocampal damage that blocked new explicit memories.",
+    "options": [
+     "He still said each day that he had never done the task, so his explicit memory did not return.",
+     "Sensory memory lasts seconds. Improvement across five days shows lasting learning.",
+     "Right: Getting faster at a skill without conscious memory of practice shows implicit, procedural learning. It survived the hippocampal damage that blocked new explicit memories.",
+     "His improvement came from new practice, not from his old memories of work or childhood."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-4",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "storing-memories-s1",
+   "q": "How did the researchers apply the ethical guideline of confidentiality?",
+   "options": [
+    "They gave R.T. five separate days to practice the mirror-tracing task",
+    "They reviewed R.T.'s medical records and his brain scans",
+    "They randomly assigned R.T. to the mirror-tracing condition",
+    "They called him R.T. in the report so he could not be identified"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Confidentiality means protecting participants' identities. Using initials in the report keeps R.T. from being identified.",
+    "options": [
+     "The five days were part of the method, not a protection of his identity.",
+     "Reviewing records is a data source. It does not protect his identity.",
+     "There was one patient and no random assignment, and assignment is not an ethical guideline.",
+     "Right: Confidentiality means protecting participants' identities. Using initials in the report keeps R.T. from being identified."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-5",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "storing-memories-s2",
+   "q": "Which concept describes what the second group did with each word?",
+   "options": [
+    "Elaborative rehearsal",
+    "Maintenance rehearsal",
+    "Memory consolidation",
+    "Infantile amnesia"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Linking new information to meaning and to things you already know, such as a personal memory, is elaborative rehearsal.",
+    "options": [
+     "Right: Linking new information to meaning and to things you already know, such as a personal memory, is elaborative rehearsal.",
+     "Maintenance rehearsal is repeating information over and over, which is what the first group did.",
+     "Consolidation is the brain stabilizing a memory over hours to days. It is not a study instruction.",
+     "Infantile amnesia is the lack of memories from early childhood. It has nothing to do with studying words."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-6",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "storing-memories-s2",
+   "q": "Each student studied 20 words. How many words did a student who matched the \"link each word to a memory\" bar recall?",
+   "why": {
+    "correct": "$58\\%$ of $20$: $0.58 \\times 20 = 11.6$, about $12$ words. The key accepts $11.6$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      0.58,
+      20
+     ]
+    },
+    "tol": 0.45,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.22,
+        20
+       ]
+      },
+      "why": "4.4 uses the \"repeat each word\" bar (22%). Read the \"link each word to a memory\" bar, 58%."
+     },
+     {
+      "value": 58,
+      "why": "58 is the percent, not the number of words. Take 58% of the 20 words."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-7",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "storing-memories-s2",
+   "q": "Which statement best explains why linking words to memories led to better recall a day later?",
+   "options": [
+    "Repeating words keeps them in short-term memory, which can last for several days",
+    "Linking words to meaning ties them to stored memories, encoding them more deeply",
+    "Linking words to memories gave that group more total time to study",
+    "The second group knew a memory test was coming the next day"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Elaborative rehearsal is deep processing: it ties new information to existing long-term memories, which gives more routes back to it.",
+    "options": [
+     "Short-term memory lasts seconds without repetition, not days.",
+     "Right: Elaborative rehearsal is deep processing: it ties new information to existing long-term memories, which gives more routes back to it.",
+     "Both groups studied for the same length of time.",
+     "The test came without warning for both groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-8",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Waiting to pay, Elena repeats a new friend's phone number over and over until she types it into her phone. A week later she cannot recall it. Which kind of rehearsal did she use?",
+   "options": [
+    "Elaborative rehearsal",
+    "Memory consolidation",
+    "Maintenance rehearsal",
+    "The method of loci"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Repeating information to keep it in short-term memory is maintenance rehearsal. It holds the number for now but does little to store it long term.",
+    "options": [
+     "Elaborative rehearsal links information to meaning. Elena only repeated digits.",
+     "Consolidation stabilizes a memory over time. Elena's repetition did not lead to a lasting memory.",
+     "Right: Repeating information to keep it in short-term memory is maintenance rehearsal. It holds the number for now but does little to store it long term.",
+     "The method of loci places items on an imagined route. Elena just repeated the number."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-9",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a car crash, Marcus cannot remember the week before the accident, though he forms new memories normally. Which concept describes his memory loss?",
+   "options": [
+    "Anterograde amnesia",
+    "Infantile amnesia",
+    "Maintenance rehearsal",
+    "Retrograde amnesia"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Losing memories formed before a brain injury is retrograde amnesia. Recent memories, not yet fully consolidated, are the most likely to be lost.",
+    "options": [
+     "Anterograde amnesia is the inability to form new memories after the injury. Marcus forms new memories normally.",
+     "Infantile amnesia is the normal lack of memories from early childhood, not loss after an injury.",
+     "Maintenance rehearsal is a way of repeating information, not a kind of memory loss.",
+     "Right: Losing memories formed before a brain injury is retrograde amnesia. Recent memories, not yet fully consolidated, are the most likely to be lost."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-10",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Most adults can recall almost nothing from before about age 3, though they experienced many events then. Which concept names this?",
+   "options": [
+    "Infantile amnesia",
+    "Retrograde amnesia",
+    "Anterograde amnesia",
+    "Alzheimer's disease"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The normal absence of memories from the first few years of life is infantile amnesia. It is linked to the immaturity of the hippocampus and to young children not yet having language and a sense of self to organize memories.",
+    "options": [
+     "Right: The normal absence of memories from the first few years of life is infantile amnesia. It is linked to the immaturity of the hippocampus and to young children not yet having language and a sense of self to organize memories.",
+     "Retrograde amnesia follows brain damage and wipes out memories that had been formed. Infantile amnesia is normal and has no injury.",
+     "Anterograde amnesia is the inability to form new memories now. Adults form new memories normally.",
+     "Alzheimer's disease is a progressive brain disease, usually in older adults. Infantile amnesia happens to almost everyone."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-11",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A woman can tell you what she did on almost any date in the last 30 years, including the day of the week and what was in the news, without using a diary or memory tricks. Which concept describes her?",
+   "options": [
+    "Infantile amnesia",
+    "Superior autobiographical memory",
+    "The method of loci, a mnemonic",
+    "Retrograde amnesia"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An extremely detailed memory for the events of one's own life, without using strategies, is highly superior autobiographical memory (HSAM). Fewer than a hundred people have been confirmed to have it.",
+    "options": [
+     "Infantile amnesia is the lack of early-childhood memories, the opposite of a detailed life record.",
+     "Right: An extremely detailed memory for the events of one's own life, without using strategies, is highly superior autobiographical memory (HSAM). Fewer than a hundred people have been confirmed to have it.",
+     "The method of loci is a learned mnemonic. She uses no memory tricks.",
+     "Retrograde amnesia is loss of past memories. She keeps an unusually large number of them."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-12",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A 74-year-old man has more and more trouble remembering conversations from the same morning, then over several years also struggles with names of family members and with daily tasks. Brain scans show the hippocampus shrinking first. Which condition best fits?",
+   "options": [
+    "Infantile amnesia",
+    "Retrograde amnesia from a single head injury",
+    "Alzheimer's disease",
+    "Highly superior autobiographical memory"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Alzheimer's disease is a progressive brain disease. It often begins with trouble forming new memories, as the hippocampus is affected early, and over years it damages other memory and thinking.",
+    "options": [
+     "Infantile amnesia is the normal loss of early-childhood memories. It does not start in old age or worsen.",
+     "A single injury does not explain a slow worsening over several years.",
+     "Right: Alzheimer's disease is a progressive brain disease. It often begins with trouble forming new memories, as the hippocampus is affected early, and over years it damages other memory and thinking.",
+     "That is an unusually detailed memory for one's own life, not a loss of memory."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-13",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Students who sleep after learning a list of word pairs remember more of them the next day than students who stay awake for the same hours. Which process does sleep most likely help?",
+   "options": [
+    "Maintenance rehearsal",
+    "Infantile amnesia",
+    "Anterograde amnesia",
+    "Memory consolidation"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Consolidation is the process that stabilizes a new memory over hours and days. Sleep, especially deep sleep, helps the hippocampus and cortex consolidate new memories.",
+    "options": [
+     "Maintenance rehearsal is repeating information on purpose while awake.",
+     "Infantile amnesia is the lack of early-childhood memories. It is not a process that helps adults remember.",
+     "Anterograde amnesia is an inability to form new memories, the opposite of what sleep did here.",
+     "Right: Consolidation is the process that stabilizes a new memory over hours and days. Sleep, especially deep sleep, helps the hippocampus and cortex consolidate new memories."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-14",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A boxer is knocked out. Afterward he remembers the fight's first round but not the knockout punch or the minutes before it. Which explanation best fits?",
+   "options": [
+    "The last minutes had not yet been consolidated into long-term memory",
+    "He has infantile amnesia for the knockout",
+    "The knockout punch was stored by maintenance rehearsal",
+    "The first round was in sensory memory, so it lasted longer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "New memories need time to be stabilized (consolidated). A blow to the head can disrupt this, so the most recent memories are the most likely to be lost: a short retrograde amnesia.",
+    "options": [
+     "Right: New memories need time to be stabilized (consolidated). A blow to the head can disrupt this, so the most recent memories are the most likely to be lost: a short retrograde amnesia.",
+     "Infantile amnesia is about early childhood, not events from minutes ago.",
+     "He did not rehearse the punch. The point is that the newest memory had no time to be stabilized.",
+     "Sensory memory lasts seconds; the first round is remembered because it was consolidated."
+    ]
+   }
+  },
+  {
+   "id": "psy-storing-memories-15",
+   "unit": "unit-2",
+   "topic": "storing-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Studying for a quiz, Noor explains each new term to herself in her own words and gives an example from her own life. Which kind of rehearsal is she using?",
+   "options": [
+    "Maintenance rehearsal",
+    "Elaborative rehearsal",
+    "Massed practice",
+    "Memory consolidation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Explaining in your own words and linking to personal examples ties new information to meaning and to what you already know. That is elaborative rehearsal.",
+    "options": [
+     "Maintenance rehearsal is repeating information as it is. Noor is changing it into her own words and examples.",
+     "Right: Explaining in your own words and linking to personal examples ties new information to meaning and to what you already know. That is elaborative rehearsal.",
+     "Massed practice is about cramming in one session. The question is about what she does with each term, not her schedule.",
+     "Consolidation is the brain stabilizing a memory over time, not something Noor does on purpose while studying."
+    ]
+   }
+  }
+ ]
+}

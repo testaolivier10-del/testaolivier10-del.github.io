@@ -203,3 +203,15 @@ with one rubric line per point and full-credit samples.
     treatment pages as proposed in the authoring guide; the identity of decision 5, with the cover moved to the
     blue family to match the accent: background `#07608A`, gold title accent `#FFD23F`, light-blue head `#8CC8E8`
     (Statistics' cover is dark steel `#0E3A52`, Chemistry's cobalt `#1A2C78`, so the hub keeps every cover apart).
+
+## 10. Lead notes for Phase 3 and 4 (from author reports)
+
+- FRQs are filed on a topic but may use terms taught later (`frq-heredity-environment-aaq` part D needs research
+  ethics; `frq-development-methods-aaq` uses 3.6 parenting styles). The content check does not scan FRQs for teaching
+  order: add that check (FRQ unlocks at the latest topic it uses) or refile them.
+- Shared `ApPsychPlot` uses a fixed left margin that cuts long y labels (author B used stage codes W, R, N1-N3):
+  measure the labels instead.
+- Cross-check intelligence heritability wording between 1.1 and 2.8 (authors A and C).
+- Help line placement (owner approved disorder and treatment pages): author G put it on 5.3-5.5 notes and lesson
+  summaries; author F also on 5.1 notes. Lessons have no field for it yet.
+- Replication and wording points per author are in `docs/appsych-reviews/self-*.md`; merge into needs-author.

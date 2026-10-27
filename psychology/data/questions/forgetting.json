@@ -1,0 +1,515 @@
+{
+ "stimuli": {
+  "forgetting-s1": {
+   "kind": "study",
+   "title": "Eyewitness memory and a leading question",
+   "source": "Loftus & Palmer (1974), Experiment 2",
+   "study": {
+    "introduction": "Elizabeth Loftus and John Palmer asked whether the wording of a question about an event can change what a witness later remembers about it.",
+    "participants": "150 university students in the United States took part in groups.",
+    "method": "Every student watched the same short film of a multiple-car accident, then answered questions about it. One group of 50 was asked, \"About how fast were the cars going when they <i>smashed into</i> each other?\" A second group of 50 was asked the same question with <i>hit</i> instead of <i>smashed into</i>. A control group of 50 was not asked about speed. One week later, all students returned and answered more questions without seeing the film again, including \"Did you see any broken glass?\" There was no broken glass in the film.",
+    "results": "Yes, they had seen broken glass: 16 of 50 students in the smashed group, 7 of 50 in the hit group and 6 of 50 in the control group.",
+    "discussion": "The authors argued that the verb \"smashed\" changed students' memory of the accident itself, adding a detail that was not there.",
+    "reference": "Loftus, E. F., &amp; Palmer, J. C. (1974). Reconstruction of automobile destruction. <i>Journal of Verbal Learning and Verbal Behavior, 13</i>, 585-589."
+   }
+  },
+  "forgetting-s2": {
+   "kind": "data",
+   "title": "What a second list does to the first",
+   "invented": true,
+   "plot": {
+    "label": "Bar graph of the percent of List A words recalled: 70% after resting, 45% after learning a similar List B (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Rested 20 minutes",
+     "Learned List B for 20 minutes"
+    ],
+    "values": [
+     70,
+     45
+    ],
+    "yLabel": "Percent of List A recalled",
+    "xLabel": "What students did after learning List A",
+    "y": [
+     0,
+     100
+    ]
+   },
+   "html": "<p>Forty students learned List A, 20 pairs of words. A coin flip assigned half to rest for 20 minutes and half to spend those 20 minutes learning List B, 20 different pairs using the same first words. Then every student was tested on List A only.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "psy-forgetting-1",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "forgetting-s1",
+   "q": "What was the independent variable in this study?",
+   "options": [
+    "The verb used in the question about speed",
+    "Whether the student reported seeing broken glass",
+    "The film of the accident that the students watched",
+    "The one week between the film and the second session"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The researchers changed the wording of the question between groups. That is the independent variable.",
+    "options": [
+     "Right: The researchers changed the wording of the question between groups. That is the independent variable.",
+     "That was measured a week later. It is the dependent variable.",
+     "Every student saw the same film, so it was held constant.",
+     "All groups waited the same week, so it was held constant."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-2",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "forgetting-s1",
+   "q": "What percent of the smashed group reported seeing broken glass?",
+   "why": {
+    "correct": "$\\frac{16}{50} \\times 100 = 32\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        16,
+        50
+       ]
+      },
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          16,
+          150
+         ]
+        },
+        100
+       ]
+      },
+      "why": "About 10.7% divides by all 150 students. Only 50 were in the smashed group."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          7,
+          50
+         ]
+        },
+        100
+       ]
+      },
+      "why": "14% is the hit group (7 of 50). The question asks about the smashed group."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-3",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "forgetting-s1",
+   "q": "Which concept do the results best support?",
+   "options": [
+    "Proactive interference",
+    "The misinformation effect",
+    "Encoding failure",
+    "The tip-of-the-tongue state"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Information given after the event (the word \"smashed\") was blended into the memory, so more students later remembered broken glass that was never there. That is the misinformation effect.",
+    "options": [
+     "Proactive interference is old learning blocking new learning. The problem here is new information changing an old memory.",
+     "Right: Information given after the event (the word \"smashed\") was blended into the memory, so more students later remembered broken glass that was never there. That is the misinformation effect.",
+     "Encoding failure means a detail never got into memory. Students \"remembered\" glass that was never in the film, which is a distortion, not a gap.",
+     "The tip-of-the-tongue state is being sure you know something but unable to retrieve it. Students confidently reported a false detail."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-4",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "forgetting-s1",
+   "q": "Which point about the participants most limits applying this result to real eyewitnesses of a crash?",
+   "options": [
+    "The study had 150 students, too few to generalize from",
+    "The three groups heard different questions after the film",
+    "They were students watching a film, not witnesses to a real crash",
+    "The students answered the questions a week after the film"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Generalizing depends on participant characteristics and setting. Students calmly watching a film with nothing at stake may differ from real witnesses who were frightened and later questioned by police.",
+    "options": [
+     "Generalizability is judged by who the participants were, not by sample size alone.",
+     "The different questions are the manipulation; they do not describe who the participants were.",
+     "Right: Generalizing depends on participant characteristics and setting. Students calmly watching a film with nothing at stake may differ from real witnesses who were frightened and later questioned by police.",
+     "The delay is part of the method. Real witnesses are often questioned after delays too."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-5",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "forgetting-s2",
+   "q": "Which concept explains the lower recall of List A in the group that learned List B?",
+   "options": [
+    "Proactive interference",
+    "Encoding failure",
+    "Source amnesia",
+    "Retroactive interference"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The newer List B made the older List A harder to recall. New learning disrupting old memories is retroactive interference.",
+    "options": [
+     "Proactive interference would be List A making List B harder. The test was on List A, the older list.",
+     "Both groups learned List A the same way, so encoding was the same; the difference came after.",
+     "Source amnesia is forgetting where information came from. Students were tested on what they recalled.",
+     "Right: The newer List B made the older List A harder to recall. New learning disrupting old memories is retroactive interference."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-6",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "forgetting-s2",
+   "q": "By how many percentage points was List A recall lower after learning List B than after resting?",
+   "why": {
+    "correct": "$70 - 45 = 25$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      70,
+      45
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 45,
+      "why": "45% is the List B group's recall, not the difference. Subtract it from the rest group's 70%."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        70,
+        45
+       ]
+      },
+      "why": "115 adds the bars. The question asks how much lower one is, so subtract."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-7",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "forgetting-s2",
+   "q": "Why did the researchers have one group rest instead of learning nothing at all for a shorter time?",
+   "options": [
+    "So both groups had the same delay and differed just in learning List B",
+    "So the rest group could rehearse List A for longer",
+    "So the study would be correlational instead of an experiment",
+    "So the students would not know which list would be tested"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Matching the delay controls time-based forgetting, so the difference between groups can be traced to List B.",
+    "options": [
+     "Right: Matching the delay controls time-based forgetting, so the difference between groups can be traced to List B.",
+     "Rehearsal was not encouraged or measured; the point was to match the delay.",
+     "The researchers still assigned the conditions, so it remains an experiment.",
+     "Both groups were tested on List A; the rest condition is about matching time."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-8",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ines memorized her new locker combination this year, but when she tries to open her locker she keeps entering last year's combination. Which concept explains this?",
+   "options": [
+    "Retroactive interference",
+    "Proactive interference",
+    "Source amnesia",
+    "Encoding failure"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Old learning (last year's code) is disrupting the recall of new learning (this year's code). Pro means forward: old interferes forward in time.",
+    "options": [
+     "Retroactive interference is new learning disrupting old memories. Here the old code is blocking the new one.",
+     "Right: Old learning (last year's code) is disrupting the recall of new learning (this year's code). Pro means forward: old interferes forward in time.",
+     "Source amnesia is forgetting where a memory came from. Ines knows which code is which; the old one just intrudes.",
+     "Encoding failure means the new code never got in. She did memorize it; the old one gets in the way."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-9",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a year of studying French, Kai finds that the Spanish words he learned in ninth grade are harder to recall; French words keep coming to mind instead. Which concept explains this?",
+   "options": [
+    "Proactive interference",
+    "Infantile amnesia",
+    "Retroactive interference",
+    "Imagination inflation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "New learning (French) is disrupting the recall of older learning (Spanish). Retro means backward: new interferes back in time.",
+    "options": [
+     "Proactive interference is older learning blocking new. Here the newer French is blocking the older Spanish.",
+     "Infantile amnesia concerns memories from early childhood, not ninth grade.",
+     "Right: New learning (French) is disrupting the recall of older learning (Spanish). Retro means backward: new interferes back in time.",
+     "Imagination inflation is imagining an event making it feel real. Kai is not imagining anything."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-10",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Most people cannot draw the front of a penny accurately, though they have seen thousands. Which concept best explains this?",
+   "options": [
+    "Retroactive interference",
+    "Repression",
+    "The misinformation effect",
+    "Encoding failure"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "People never paid attention to the details of a penny, so the details were never encoded. You cannot retrieve what was never stored.",
+    "options": [
+     "Retroactive interference needs new learning to disrupt old memories. The details were never learned.",
+     "Repression would mean pushing a threatening memory out of awareness. A penny is not threatening.",
+     "The misinformation effect is a memory changed by later information. No one was misled about the penny.",
+     "Right: People never paid attention to the details of a penny, so the details were never encoded. You cannot retrieve what was never stored."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-11",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Asked for the name of an actor, Dana says \"It starts with a B, two syllables, I can almost see it,\" but she cannot produce the name. An hour later it comes to her. Which concept describes this?",
+   "options": [
+    "Tip-of-the-tongue phenomenon",
+    "Encoding failure",
+    "Source amnesia",
+    "Imagination inflation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Feeling sure you know something, recalling parts of it like the first letter, but being unable to retrieve it for now is the tip-of-the-tongue phenomenon, a retrieval failure.",
+    "options": [
+     "Right: Feeling sure you know something, recalling parts of it like the first letter, but being unable to retrieve it for now is the tip-of-the-tongue phenomenon, a retrieval failure.",
+     "If the name had never been encoded, she could not recall its first letter, and it would not come back later.",
+     "Source amnesia is forgetting where you learned something. Dana cannot retrieve the name itself.",
+     "Imagination inflation is a false memory from imagining. Dana is not imagining an event."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-12",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Rosa tells a funny story at dinner, sure it happened to her cousin. Later she realizes she read it online. Which concept describes her error?",
+   "options": [
+    "Retrograde amnesia",
+    "Source amnesia",
+    "Proactive interference",
+    "Encoding failure"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Rosa remembered the story but attributed it to the wrong source. That is source amnesia (source misattribution).",
+    "options": [
+     "Retrograde amnesia is losing memories from before a brain injury. Rosa remembers the story fine.",
+     "Right: Rosa remembered the story but attributed it to the wrong source. That is source amnesia (source misattribution).",
+     "Proactive interference is old learning blocking new learning. Rosa's error is about where the story came from.",
+     "The story was encoded well enough to retell. What failed was the memory of its source."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-13",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Asked to vividly imagine getting lost in a mall as a child several times, some adults later become more confident that it really happened. Which concept describes this?",
+   "options": [
+    "Repression",
+    "Retroactive interference",
+    "Imagination inflation",
+    "The tip-of-the-tongue phenomenon"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Repeatedly imagining an event makes it feel familiar and more confidently \"remembered.\" That is imagination inflation, one route to false memories.",
+    "options": [
+     "Repression is the idea of pushing a real, painful memory out of awareness. Here an imagined event becomes a believed one.",
+     "Retroactive interference is new learning disrupting old memories. Here imagining creates a memory.",
+     "Right: Repeatedly imagining an event makes it feel familiar and more confidently \"remembered.\" That is imagination inflation, one route to false memories.",
+     "The tip-of-the-tongue state is failing to retrieve something you know. These adults feel they do remember."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-14",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Two friends remember the same argument very differently, each sure their version is accurate. Which idea best explains how both can be confident?",
+   "options": [
+    "Proactive interference: an earlier argument between the same two friends blocks this one",
+    "Encoding failure: neither friend stored any part of it",
+    "Infantile amnesia: early memories are hard to retrieve",
+    "Constructive memory: each rebuilt the event, filling gaps with expectations"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Memories are reconstructed each time they are retrieved, using schemas and expectations to fill gaps. Confidence does not guarantee accuracy.",
+    "options": [
+     "Interference can blur memories, but it does not explain two confident, different versions of one event.",
+     "Both remember a lot; their versions differ because memory is rebuilt, not because nothing was stored.",
+     "The argument was recent. Infantile amnesia is about early childhood.",
+     "Right: Memories are reconstructed each time they are retrieved, using schemas and expectations to fill gaps. Confidence does not guarantee accuracy."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-15",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A therapist sees a client who cannot remember a frightening event from childhood. From the psychodynamic perspective, what is the explanation?",
+   "options": [
+    "Repression: the threatening memory was pushed out of awareness",
+    "Proactive interference: earlier learning blocked the later event",
+    "Encoding failure: the child did not pay attention to the event",
+    "The misinformation effect: someone gave the client false details"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Repression is the psychodynamic idea that anxiety-provoking memories are blocked from awareness. Note that many memory researchers doubt it: traumatic events are more often remembered too well than forgotten.",
+    "options": [
+     "Right: Repression is the psychodynamic idea that anxiety-provoking memories are blocked from awareness. Note that many memory researchers doubt it: traumatic events are more often remembered too well than forgotten.",
+     "Interference is a cognitive account of forgetting ordinary information, not the psychodynamic one.",
+     "That is a cognitive account. The psychodynamic perspective explains it by repression.",
+     "Misinformation changes or adds details. It does not explain a missing memory in psychodynamic terms."
+    ]
+   }
+  },
+  {
+   "id": "psy-forgetting-16",
+   "unit": "unit-2",
+   "topic": "forgetting",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ebbinghaus found that he forgot much of a list of nonsense syllables within the first hour, then forgot more slowly over the next month. Which concept describes this pattern?",
+   "options": [
+    "The serial position curve",
+    "The forgetting curve",
+    "The spacing effect",
+    "Imagination inflation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Forgetting is rapid at first and then levels off. Plotted over time, this is the forgetting curve.",
+    "options": [
+     "The serial position curve plots recall by position in a list, not memory over time.",
+     "Right: Forgetting is rapid at first and then levels off. Plotted over time, this is the forgetting curve.",
+     "The spacing effect is that spread-out study helps retention. It is a way to flatten the forgetting curve, not the curve itself.",
+     "Imagination inflation is about false memories, not how quickly true memories fade."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "sensation": {
+  "def": "The process by which sense organs detect energy from the world (light, sound, chemicals, pressure) and send it to the brain as neural signals."
+ },
+ "transduction": {
+  "def": "The conversion of one form of energy, such as light or sound waves, into neural signals by sensory receptor cells."
+ },
+ "absolute-threshold": {
+  "def": "The smallest amount of a stimulus a person can detect half of the time."
+ },
+ "jnd": {
+  "def": "The just-noticeable difference (difference threshold): the smallest change in a stimulus a person can detect half of the time."
+ },
+ "webers-law": {
+  "def": "The principle that the just-noticeable difference is a constant proportion of the original stimulus, so a bigger stimulus needs a bigger change to be noticed."
+ },
+ "signal-detection": {
+  "def": "The theory that whether a faint stimulus is detected depends on both its strength and the person's state, expectations and the costs of a miss or a false alarm."
+ },
+ "sensory-adaptation": {
+  "def": "A drop in sensitivity to a stimulus that stays the same, such as no longer smelling a room after a few minutes."
+ },
+ "sensory-interaction": {
+  "def": "One sense affecting another, such as smell shaping the flavor of food."
+ },
+ "synesthesia": {
+  "def": "A condition in which stimulating one sense also triggers another, such as seeing colors when hearing music or reading numbers."
+ },
+ "vision": {
+  "def": "The sense of sight: the eye focuses light on the retina, where rods and cones transduce it into neural signals sent to the occipital lobe."
+ },
+ "retina": {
+  "def": "The light-sensitive layer at the back of the eye that contains the rods and cones."
+ },
+ "rods": {
+  "def": "Receptors in the retina that work in dim light and detect black, white and gray but not color; most are outside the fovea."
+ },
+ "cones": {
+  "def": "Receptors in the retina that detect color and fine detail and need bright light; they are packed in the fovea."
+ },
+ "fovea": {
+  "def": "A small pit at the center of the retina, packed with cones, where vision is sharpest."
+ },
+ "optic-nerve": {
+  "def": "The bundle of axons that carries visual signals from the retina to the brain."
+ },
+ "blind-spot": {
+  "def": "The point where the optic nerve leaves the eye; it has no rods or cones, so light falling there is not detected."
+ },
+ "trichromatic": {
+  "def": "The theory that color vision depends on three types of cones, most sensitive to red, green or blue light, whose combined signals code every color."
+ },
+ "opponent-process": {
+  "def": "The theory that color is coded by paired, opposing processes (red-green, blue-yellow, black-white), which explains afterimages in the opposite color."
+ },
+ "afterimage": {
+  "def": "An image that stays after the stimulus is gone; after staring at a color, its opposite color appears."
+ },
+ "color-deficiency": {
+  "def": "Trouble telling some colors apart because one type of cone is missing or works poorly; red-green deficiency is most common and is inherited, mostly in males."
+ },
+ "prosopagnosia": {
+  "def": "Face blindness: being unable to recognize familiar faces even though vision is otherwise normal."
+ },
+ "blindsight": {
+  "def": "Responding to visual stimuli a person reports not seeing, after damage to the visual cortex."
+ },
+ "hearing": {
+  "def": "The sense of sound (audition): sound waves are funneled to the eardrum and middle-ear bones and transduced by hair cells in the cochlea."
+ },
+ "cochlea": {
+  "def": "The snail-shaped, fluid-filled tube in the inner ear whose hair cells turn vibrations into neural signals."
+ },
+ "place-theory": {
+  "def": "The theory that we hear different pitches because different places along the cochlea vibrate most; it best explains high pitches."
+ },
+ "frequency-theory": {
+  "def": "The theory that the rate at which auditory neurons fire matches the frequency of the sound wave; it best explains low pitches."
+ },
+ "volley": {
+  "def": "The volley principle: groups of auditory neurons take turns firing so that together they match a sound's frequency, extending frequency theory to middle pitches."
+ },
+ "conduction-deafness": {
+  "def": "Hearing loss from damage to the parts that conduct sound to the cochlea: the ear canal, eardrum or middle-ear bones."
+ },
+ "sensorineural": {
+  "def": "Hearing loss from damage to the hair cells of the cochlea or to the auditory nerve, often from loud noise or aging; it is usually permanent."
+ },
+ "olfaction": {
+  "def": "The sense of smell: receptors high in the nose detect airborne chemicals. Unlike the other senses, its signals do not pass through the thalamus first."
+ },
+ "gustation": {
+  "def": "The sense of taste: taste buds detect sweet, salty, sour, bitter, umami and probably fat."
+ },
+ "umami": {
+  "def": "The savory taste, detected by receptors for glutamate, found in broth, soy sauce, tomatoes and aged cheese."
+ },
+ "oleogustus": {
+  "def": "The proposed basic taste of fat, distinct from its texture."
+ },
+ "supertaster": {
+  "def": "A person with many more taste buds than average who tastes some flavors, especially bitter ones, much more intensely."
+ },
+ "gate-control": {
+  "def": "The theory that the spinal cord has a neural \"gate\" that can block pain signals or let them through to the brain; rubbing a hurt spot or distraction can partly close it."
+ },
+ "phantom-limb": {
+  "def": "Sensations, including pain, felt in a limb that has been amputated, showing that the brain produces the experience of pain."
+ },
+ "vestibular": {
+  "def": "The sense of balance and head movement, from fluid-filled canals and sacs in the inner ear."
+ },
+ "kinesthesis": {
+  "def": "The sense of the position and movement of body parts, from receptors in muscles, tendons and joints."
+ }
+}

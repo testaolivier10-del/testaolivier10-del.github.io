@@ -14,7 +14,7 @@
      back: spontaneous recovery. The CR (drops of saliva) is 12 x V, so a
      student reads a real-looking graph.
    Operant schedules. A rat in a Skinner box presses a lever; a seeded run
-     of one simulated hour decides when each press is reinforced under the
+     of one simulated session decides when each press is reinforced under the
      schedule, and the cumulative record (total presses against time) is
      drawn from the presses themselves: fixed-ratio pause-then-run steps,
      variable-ratio steep and steady, fixed-interval scallops, variable-
@@ -65,8 +65,8 @@
 
   /* --------------------------------------------------- operant model */
   var SCHEDULES = [
-    { k: 'fr', name: 'Fixed-ratio', short: 'FR 10', fixed: true, ratio: 10, how: 'a reward after every 10th press', shape: 'Steady runs of pressing with a short pause after each reward (stair steps)' },
-    { k: 'vr', name: 'Variable-ratio', short: 'VR 10', fixed: false, ratio: 10, how: 'a reward after 10 presses on average, never the same number twice', shape: 'The steepest line, steady with almost no pauses' },
+    { k: 'fr', name: 'Fixed-ratio', short: 'FR 30', fixed: true, ratio: 30, how: 'a reward after every 30th press', shape: 'Steady runs of pressing with a short pause after each reward (stair steps)' },
+    { k: 'vr', name: 'Variable-ratio', short: 'VR 30', fixed: false, ratio: 30, how: 'a reward after 30 presses on average, a different number each time', shape: 'The steepest line, steady with almost no pauses' },
     { k: 'fi', name: 'Fixed-interval', short: 'FI 60 s', fixed: true, interval: 60, how: 'the first press after each 60 seconds is rewarded', shape: 'Scallops: few presses after a reward, faster and faster as the time comes near' },
     { k: 'vi', name: 'Variable-interval', short: 'VI 60 s', fixed: false, interval: 60, how: 'the first press after a varying time (60 seconds on average) is rewarded', shape: 'A slow, steady line with no pauses' }
   ];
@@ -77,7 +77,7 @@
      moderate and steady. Variable requirements are drawn from a uniform
      range around the mean so the average is the schedule's number. */
   function session(k, seed, minutes){
-    var r = M.rng(seed || 1), sc = schedOf(k), T = (minutes || 30) * 60, presses = [], rewards = [];
+    var r = M.rng(seed || 1), sc = schedOf(k), T = (minutes || 10) * 60, presses = [], rewards = [];
     var count = 0, need = sc.ratio ? (sc.fixed ? sc.ratio : r.int(2, 2 * sc.ratio - 2)) : 0, last = 0, avail = sc.interval ? (sc.fixed ? sc.interval : 6 + r() * (2 * sc.interval - 12)) : 0, pauseTo = 0;
     for(var t = 0; t < T; t += 0.5){
       var rate;
@@ -90,10 +90,10 @@
         var win = false;
         if(sc.ratio && count >= need){ win = true; count = 0; need = sc.fixed ? sc.ratio : r.int(2, 2 * sc.ratio - 2); }
         if(sc.interval && t - last >= avail){ win = true; avail = sc.fixed ? sc.interval : 6 + r() * (2 * sc.interval - 12); }
-        if(win){ rewards.push(t); last = t; if(k === 'fr') pauseTo = t + 4 + r() * 6; }
+        if(win){ rewards.push(t); last = t; if(k === 'fr') pauseTo = t + 8 + r() * 8; }
       }
     }
-    return { presses: presses, rewards: rewards, minutes: minutes || 30 };
+    return { presses: presses, rewards: rewards, minutes: minutes || 10 };
   }
   function cumulative(presses, minutes, step){
     step = step || 0.25; var out = [], i = 0;

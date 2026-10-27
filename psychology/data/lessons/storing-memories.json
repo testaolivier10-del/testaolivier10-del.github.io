@@ -1,0 +1,72 @@
+{
+ "topic": "storing-memories",
+ "hook": "You can repeat a phone number until you type it in and lose it a minute later, yet remember your first-grade teacher's name for life. A boxer may forget the punch that knocked him out but not the round before it. Storage is not instant, and how you rehearse decides what lasts.",
+ "prereq": [
+  {
+   "q": "Which brain structure is most important for forming new explicit memories?",
+   "options": [
+    "Hippocampus",
+    "Cerebellum",
+    "Medulla",
+    "Occipital lobe"
+   ],
+   "correct": 0,
+   "why": "The hippocampus is key to forming new long-term memories of facts and events.",
+   "review": "brain"
+  },
+  {
+   "q": "Which kind of processing produces the strongest memories?",
+   "options": [
+    "Deep processing of meaning",
+    "Shallow processing of appearance",
+    "Automatic processing of time",
+    "Sensory memory"
+   ],
+   "correct": 0,
+   "why": "Thinking about meaning gives stronger memories than attending to how words look or sound.",
+   "review": "memory-intro"
+  }
+ ],
+ "figure": {
+  "figure": "storing-memories-amnesia",
+  "caption": "Retrograde amnesia reaches back in time from an injury; anterograde amnesia blocks new memories after it."
+ },
+ "chain": [
+  {
+   "cause": "Information is repeated without thinking about it (maintenance rehearsal)",
+   "effect": "it stays in short-term memory for now but is often not stored"
+  },
+  {
+   "cause": "Information is linked to meaning (elaborative rehearsal)",
+   "effect": "it is encoded deeply into long-term memory"
+  },
+  {
+   "cause": "The hippocampus and sleep consolidate the new memory over hours and days",
+   "effect": "it becomes stable"
+  },
+  {
+   "cause": "Brain damage interrupts consolidation or the hippocampus",
+   "effect": "retrograde or anterograde amnesia"
+  }
+ ],
+ "ideas": [
+  "<b>Maintenance rehearsal</b> (repeating) keeps information in short-term memory; <b>elaborative rehearsal</b> (linking to meaning) moves it into long-term memory.",
+  "<b>Memory consolidation</b> stabilizes new memories over hours to days, helped by the hippocampus and sleep.",
+  "<b>Retrograde amnesia</b> loses memories from before an injury; <b>anterograde amnesia</b> blocks new memories after it, yet skills can still be learned.",
+  "<b>Alzheimer's disease</b> is a progressive disease that often begins with trouble forming new memories. <b>Infantile amnesia</b> is the normal lack of memories before about age 3.",
+  "<b>Highly superior autobiographical memory</b> is a very rare, extremely detailed memory for one's own life."
+ ],
+ "misconception": {
+  "wrong": "A person with amnesia, like in the movies, forgets who they are but can learn new things normally.",
+  "right": "Most amnesia from brain damage is anterograde: people keep their identity and old memories but cannot form new explicit memories, though they can still learn skills."
+ },
+ "check": [
+  "psy-storing-memories-1",
+  "psy-storing-memories-2",
+  "psy-storing-memories-3",
+  "psy-storing-memories-8",
+  "psy-storing-memories-9",
+  "psy-storing-memories-10"
+ ],
+ "summary": "Repeating information (maintenance rehearsal) holds it briefly; linking it to meaning (elaborative rehearsal) stores it. New memories are consolidated over time with help from the hippocampus and sleep. Retrograde amnesia loses the past, anterograde amnesia blocks new memories, Alzheimer's disease gradually destroys memory, infantile amnesia is normal, and superior autobiographical memory is a rare extreme."
+}

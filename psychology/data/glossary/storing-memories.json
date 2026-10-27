@@ -1,0 +1,29 @@
+{
+ "maintenance-rehearsal": {
+  "def": "Repeating information over and over to keep it in short-term memory. It holds information for now but does little to store it long term."
+ },
+ "elaborative-rehearsal": {
+  "def": "Linking new information to its meaning and to things you already know, which encodes it more deeply into long-term memory."
+ },
+ "memory-consolidation": {
+  "def": "The process by which a new memory is stabilized over hours to days, with help from the hippocampus and from sleep, so it lasts in long-term memory."
+ },
+ "hsam": {
+  "def": "Highly superior autobiographical memory: a very rare ability to recall the events of one's own life, day by day, in great detail and without memory tricks."
+ },
+ "amnesia": {
+  "def": "Memory loss, usually caused by brain injury, illness or disease."
+ },
+ "retrograde-amnesia": {
+  "def": "Loss of memories formed before a brain injury or illness. The most recent memories, not yet consolidated, are often lost first."
+ },
+ "anterograde-amnesia": {
+  "def": "An inability to form new long-term memories after a brain injury or illness, often from damage to the hippocampus. Old memories and new skills may be spared."
+ },
+ "alzheimers": {
+  "def": "Alzheimer's disease: a progressive brain disease, most common in older adults, that damages neurons (often the hippocampus first) and gradually destroys memory and other thinking."
+ },
+ "infantile-amnesia": {
+  "def": "The normal inability of adults to recall events from the first few years of life, roughly before age 3 or 4."
+ }
+}

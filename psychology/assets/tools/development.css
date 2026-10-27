@@ -108,3 +108,23 @@
 .dv-note{font-weight:700;font-size:11.5px;fill:var(--muted);font-style:italic;}
 .ls-root.ls-phone .dv-now-h{font-size:16px;}
 @media (prefers-reduced-motion: reduce){ .dv-svg *{transition:none !important;} }
+/* room details and outlines (added with the proportioned figures) */
+.dv-ol{stroke:var(--dv-outline);stroke-width:1;stroke-linejoin:round;}
+.dv-svg,.dv-qfig{--dv-outline:rgba(30,36,48,.28);--dv-rug:#F3E3C7;--dv-leaf:#4E9A5B;--dv-pot:#C9744A;--dv-sky:#CFE8F7;--dv-frame:#FFFFFF;--dv-curtain:#F2C46B;}
+:root[data-theme="dark"] .dv-svg,:root[data-theme="dark"] .dv-qfig{--dv-outline:rgba(0,0,0,.45);--dv-rug:#4A3D2C;--dv-leaf:#3F7E4A;--dv-pot:#8E5536;--dv-sky:#29506B;--dv-frame:#33475C;--dv-curtain:#8C6A2E;}
+.dv-base{fill:var(--dv-wood);opacity:.55;}
+.dv-board-l{stroke:var(--dv-wood2);stroke-width:1;opacity:.25;}
+.dv-rug{fill:var(--dv-rug);}
+.dv-window{fill:var(--dv-sky);stroke:none;}
+.dv-frame{fill:none;stroke:var(--dv-frame);stroke-width:5;}
+.dv-sun{fill:#F7D163;}
+.dv-curtain{fill:var(--dv-curtain);opacity:.9;}
+.dv-pot{fill:var(--dv-pot);} .dv-leaf{fill:var(--dv-leaf);}
+.dv-nose{fill:none;stroke:rgba(90,42,32,.55);stroke-width:1.3;stroke-linecap:round;}
+.dv-wrinkle{fill:none;stroke:rgba(90,42,32,.45);stroke-width:1;stroke-linecap:round;}
+.dv-handle2{fill:none;stroke:#4A3220;stroke-width:2;}
+.dv-lane-v{font-weight:700;fill:var(--ink);}
+.dv-lane-h{paint-order:stroke;stroke:var(--white);stroke-width:5px;stroke-linejoin:round;}
+.dv-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--white);}
+.ls-root .dv-chips .tchip[aria-pressed=true],.ls-root .dv-chips .tchip[aria-pressed=true]:hover,.dv-chips .tchip[aria-pressed=true]{background:var(--cink);color:var(--paper);}
+.dv-grp .bt-out{min-width:5.6em;white-space:nowrap;}

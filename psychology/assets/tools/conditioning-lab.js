@@ -18,7 +18,7 @@
                    acquisition, extinction and the rest.
      Schedules     a Skinner box (lever, light, food tray, a rat) over its
                    cumulative record. Choose a schedule (FR, VR, FI, VI) and
-                   Play: 30 simulated minutes run in about 8 seconds, the
+                   Play: 10 simulated minutes run in about 8 seconds, the
                    rat presses, pellets drop, the record climbs one step per
                    press with each reward ticked. The other three schedules
                    can be shown faint for comparison (More options).
@@ -39,7 +39,7 @@
   if(!T || !M || !M.conditioningLab || M.conditioningLab.stub) return;
   var CL = M.conditioningLab, S = M.Stats(), esc = T.esc;
   var VIEWS = [{ v: 'cc', label: 'Classical' }, { v: 'op', label: 'Schedules' }, { v: 'cq', label: 'Consequences' }];
-  var MIN = 30, PLAY_S = 8;
+  var MIN = 10, PLAY_S = 8;
   var MEAS = null;
   function tw(t, size, weight){
     try{
@@ -126,8 +126,8 @@
       '<div class="cl-ctl">' +
         '<div class="ls-seg cl-views" role="group" aria-label="Scene">' + VIEWS.map(function(v){ return '<button type="button" data-v="' + v.v + '" aria-pressed="false">' + v.label + '</button>'; }).join('') + '</div>' +
         '<div class="cl-grp cl-grp-cc"><div class="cl-trial" role="group" aria-label="Run a trial"><button type="button" class="btn-press sm ls-btn ls-pri cl-pair">Tone + food</button><button type="button" class="bt-btn cl-tone">Tone alone</button><button type="button" class="bt-btn cl-rest">Rest a day</button></div></div>' +
-        '<div class="cl-grp cl-grp-op"><div class="ls-seg cl-scheds" role="group" aria-label="Schedule">' + CL.SCHEDULES.map(function(s){ return '<button type="button" data-k="' + s.k + '" aria-pressed="false">' + s.short + '</button>'; }).join('') + '</div><div class="cl-go"><button type="button" class="btn-press sm ls-btn ls-pri cl-play">Play 30 minutes</button></div></div>' +
-        '<div class="cl-grp cl-grp-cq"><div class="cl-exs ls-scroll" role="group" aria-label="Example"></div></div>' +
+        '<div class="cl-grp cl-grp-op"><div class="ls-seg cl-scheds" role="group" aria-label="Schedule">' + CL.SCHEDULES.map(function(s){ return '<button type="button" data-k="' + s.k + '" aria-pressed="false">' + s.short + '</button>'; }).join('') + '</div><div class="cl-go"><button type="button" class="btn-press sm ls-btn ls-pri cl-play">Play 10 minutes</button></div></div>' +
+        '<div class="cl-grp cl-grp-cq"><div class="cl-exrow"><button type="button" class="bt-btn cl-prev" aria-label="Previous example">‹</button><div class="cl-exsel"></div><button type="button" class="bt-btn cl-next" aria-label="Next example">›</button></div></div>' +
       '</div>' +
       '<div class="cl-say"></div>' +
       T.moreHtml('<div class="cl-o cl-o-cc"><div class="cl-row2"><button type="button" class="bt-btn cl-demo">Run the classic demo</button><button type="button" class="bt-btn cl-reset">Start over</button></div><p class="bt-small">The demo runs 10 pairings, 10 tone-alone trials, a rest, then 3 more tone-alone trials.</p></div>' +
@@ -138,7 +138,8 @@
     $('.cl-ctl').insertBefore(cue.el, $('.cl-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var svg = $('.cl-svg');
-    $('.cl-exs').innerHTML = CL.OPERANT.map(function(o, i){ return '<button type="button" class="cl-ex" data-i="' + i + '" aria-pressed="false">' + esc(o.who.replace(/^A /, 'a ').replace(/^a/, function(c){ return c.toUpperCase(); }) + ' ' + o.b) + '</button>'; }).join('');
+    var selEx = T.choiceSelect({ label: 'Example', value: '0', options: CL.OPERANT.map(function(o, i){ return { value: String(i), label: o.who + ' ' + o.b }; }), onChange: function(v){ act(); cq = +v; sync(); redraw(); say(cqLine()); } });
+    $('.cl-exsel').appendChild(selEx.el);
 
     function onClick(e){
       var b = e.target.closest('.cl-views button'); if(b){ setView(b.getAttribute('data-v')); return; }
@@ -150,7 +151,7 @@
       var s = e.target.closest('.cl-scheds button'); if(s){ act(); stopAnim(); sk = s.getAttribute('data-k'); sess = CL.session(sk, seed, MIN); tNow = MIN * 60; sync(); redraw(); say(opLine()); return; }
       if(e.target.closest('.cl-play')){ act(); play(); return; }
       if(e.target.closest('.cl-newrat')){ act(); stopAnim(); seed = 1 + Math.floor(Math.random() * 99998); sess = CL.session(sk, seed, MIN); tNow = MIN * 60; redraw(); say(opLine()); return; }
-      var x = e.target.closest('.cl-ex'); if(x){ act(); cq = +x.getAttribute('data-i'); sync(); redraw(); say(cqLine()); return; }
+      var nx = e.target.closest('.cl-prev, .cl-next'); if(nx){ act(); cq = (cq + (nx.classList.contains('cl-next') ? 1 : CL.OPERANT.length - 1)) % CL.OPERANT.length; selEx.set(String(cq)); sync(); redraw(); say(cqLine()); return; }
     }
     host.addEventListener('click', onClick);
     $('.cl-cmp').addEventListener('change', function(e){ compare = e.target.checked; redraw(); });
@@ -169,8 +170,7 @@
       root.querySelectorAll('.cl-views button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
       ['cc', 'op', 'cq'].forEach(function(k){ var g = $('.cl-grp-' + k), o = $('.cl-o-' + k); if(g) g.hidden = k !== view; if(o) o.hidden = k !== view; });
       root.querySelectorAll('.cl-scheds button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === sk)); });
-      root.querySelectorAll('.cl-ex').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-i') === cq)); });
-      var pl = $('.cl-play'); if(pl) pl.textContent = anim ? 'Pause' : tNow < MIN * 60 ? 'Play' : 'Play 30 minutes';
+      var pl = $('.cl-play'); if(pl) pl.textContent = anim ? 'Pause' : tNow < MIN * 60 ? 'Play' : 'Play 10 minutes';
       if(LS && LS.setupRow) LS.setupRow.setup(view === 'cc' ? trials.length + ' trial' + (trials.length === 1 ? '' : 's') : view === 'op' ? (compare ? 'Comparing all four' : CL.schedOf(sk).name) : 'Four quadrants');
     }
 
@@ -252,7 +252,6 @@
           LS.pills([{ k: 'Rewards', html: String(d2.w), tone: 'accent' }], 'right', 'explore');
         } else {
           var o2 = CL.OPERANT[cq];
-          LS.pills([{ k: o2.add ? 'Added' : 'Removed', html: o2.up ? 'Behavior up' : 'Behavior down', tone: 'readout' }], 'left', 'explore');
           LS.pills([{ html: CL.OP_NAMES[o2.add + ',' + o2.up], tone: 'accent' }], 'right', 'explore');
         }
       }
@@ -263,7 +262,7 @@
         var st = ccState(), n = 0;
         h = trials.length ? T.dataTable(['Trial', 'What happened', 'Drops to the tone'], trials.map(function(t, i){ return [t === 'rest' ? '' : String(++n), t === 'pair' ? 'Tone + food' : t === 'tone' ? 'Tone alone' : 'Rest a day', t === 'rest' ? '' : r0(st.cr[i])]; }), 'Every trial') : '<p class="bt-small">No trials yet.</p>';
       } else if(view === 'op'){
-        h = T.dataTable(['Schedule', 'Presses in 30 min', 'Rewards', 'Presses per minute'], CL.SCHEDULES.map(function(s){ var q = CL.session(s.k, seed, MIN); return [s.name + ' (' + s.short + ')', String(q.presses.length), String(q.rewards.length), String(M.round(q.presses.length / MIN, 1))]; }), 'One simulated session per schedule');
+        h = T.dataTable(['Schedule', 'Presses in 10 min', 'Rewards', 'Presses per minute'], CL.SCHEDULES.map(function(s){ var q = CL.session(s.k, seed, MIN); return [s.name + ' (' + s.short + ')', String(q.presses.length), String(q.rewards.length), String(M.round(q.presses.length / MIN, 1))]; }), 'One simulated session per schedule');
       } else {
         h = T.dataTable(['', 'Behavior increases', 'Behavior decreases'], [['Something added', 'Positive reinforcement', 'Positive punishment'], ['Something removed', 'Negative reinforcement', 'Negative punishment']], 'The four consequences');
       }
@@ -277,6 +276,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', wh[0]); svg.setAttribute('height', wh[1]);
       var out = view === 'cc' ? ccScene(W, H) : view === 'op' ? opScene(W, H) : cqScene(W, H);
       svg.innerHTML = out.svg; svg.setAttribute('aria-label', out.label);
+      if(LS && LS.setupRow) LS.setupRow.setup(view === 'cc' ? trials.filter(function(t){ return t !== 'rest'; }).length + ' trials so far' : view === 'op' ? (compare ? 'Comparing all four' : CL.schedOf(sk).name) : 'Four quadrants');
       words();
     }
 
@@ -293,21 +293,22 @@
       var fx = dx + 150 * sc, fy = dy + 110 * sc;
       g.push(dish(fx, fy, sc, food));
       // saliva drops from the mouth into a measuring tube
-      var mx = dx + 80 * sc, my = dy + 44 * sc, tx = R - (phone ? 30 : 50), tyT = sceneH * 0.18, tyB = sceneH - 14, cap = CL.MAXCR;
-      g.push('<path class="cl-tubeline" d="M' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' C' + (mx + 30).toFixed(1) + ' ' + (my + 6).toFixed(1) + ' ' + (tx - 20).toFixed(1) + ' ' + (tyT - 20).toFixed(1) + ' ' + tx.toFixed(1) + ' ' + (tyT - 4).toFixed(1) + '"/>');
-      var tw2 = 22, lvl = tyB - (tyB - tyT) * Math.min(1, drops / cap);
+      var mx = dx + 80 * sc, my = dy + 44 * sc, tx = R - (phone ? 30 : 50), tyT = Math.max(48, sceneH * 0.2), tyB = sceneH - 14, cap = CL.MAXCR;
+      var tw2 = 22;
+      // a thin tube from the cheek (as in Pavlov's setup) to the measuring tube
+      g.push('<path class="cl-tubeline" d="M' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' C' + (mx + 40).toFixed(1) + ' ' + (my + 10).toFixed(1) + ' ' + (tx - tw2 / 2 - 50).toFixed(1) + ' ' + (tyT - 26).toFixed(1) + ' ' + tx.toFixed(1) + ' ' + (tyT - 2).toFixed(1) + '"/>');
+      var lvl = tyB - (tyB - tyT) * Math.min(1, drops / cap);
       g.push('<rect class="cl-tube" x="' + (tx - tw2 / 2) + '" y="' + tyT.toFixed(1) + '" width="' + tw2 + '" height="' + (tyB - tyT).toFixed(1) + '" rx="6"/>');
       if(drops) g.push('<rect class="cl-saliva' + (food ? ' is-ucr' : '') + '" x="' + (tx - tw2 / 2 + 3) + '" y="' + lvl.toFixed(1) + '" width="' + (tw2 - 6) + '" height="' + (tyB - lvl - 3).toFixed(1) + '" rx="4"/>');
       for(var q = 0; q <= cap; q += 4){ var yy = tyB - (tyB - tyT) * q / cap; g.push('<line class="cl-tubetick" x1="' + (tx - tw2 / 2 - 6) + '" x2="' + (tx - tw2 / 2) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/>' + txt(tx - tw2 / 2 - 9, yy + 4, String(q), 'cl-tv', 'end')); }
       if(drops && last && last.anim) for(var d = 0; d < 3; d++) g.push('<path class="cl-drop is-anim" style="animation-delay:' + (0.25 + d * 0.18) + 's" d="M' + mx.toFixed(1) + ' ' + (my + 4).toFixed(1) + ' q-4 8 0 10 q4 -2 0 -10 Z"/>');
       else if(drops) g.push('<path class="cl-drop" d="M' + mx.toFixed(1) + ' ' + (my + 4).toFixed(1) + ' q-4 8 0 10 q4 -2 0 -10 Z"/>');
-      g.push(txt(tx, tyB + 0, '', 'cl-tv'));
       // labels that change with learning
       var toneLab = !n || !st.nPair ? 'Neutral stimulus: tone' : st.learned || st.phase !== 'acq' ? 'CS: tone' : 'Tone (being paired)';
-      g.push(tag(spx + 6, spy - 40 * sc, toneLab, st.learned ? 'is-cs' : 'is-ns', 'start'));
+      g.push(tag(spx + 6, spy - 40 * sc, toneLab, /^CS/.test(toneLab) ? 'is-cs' : 'is-ns', 'start'));
       if(food) g.push(tag(fx, fy + 30 * sc, 'UCS: food', 'is-ucs'));
       var dropLab = !k || k === 'rest' ? '' : food ? 'UCR: saliva to food' : drops >= 1 ? 'CR: saliva to the tone' : 'No saliva';
-      if(dropLab) g.push(tag(tx - tw2 / 2 - 4, tyT - 22, dropLab + (drops ? ' (' + drops + ')' : ''), food ? 'is-ucs' : drops >= 1 ? 'is-cs' : 'is-ns', 'end'));
+      if(dropLab) g.push(tag(R, 22, dropLab + (drops ? ' (' + drops + ')' : ''), food ? 'is-ucs' : drops >= 1 ? 'is-cs' : 'is-ns', 'end'));
       if(k === 'rest') g.push(tag(dx, dy - 80 * sc, 'Resting a day', 'is-ns'));
       // the record
       var gT = sceneH + (phone ? 34 : 40), gB = H - (phone ? 46 : 48), gL = phone ? 34 : 50, gR = W - (phone ? 16 : 30);
@@ -319,7 +320,8 @@
       bands.forEach(function(b){ if(b.rest != null) return; g.push('<rect class="cl-band is-' + b.ph + '" x="' + (x(b.a) - (gR - gL) / X / 2).toFixed(1) + '" y="' + gT + '" width="' + ((b.b - b.a + 1) * (gR - gL) / X).toFixed(1) + '" height="' + (gB - gT) + '"/>'); });
       [0, 4, 8, 12].forEach(function(v){ g.push('<line class="cl-grid" x1="' + gL + '" x2="' + gR + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(gL - 7, y(v) + 4, String(v), 'cl-tv', 'end')); });
       bands.forEach(function(b){ if(b.rest == null) return; var rx = gL + b.rest / X * (gR - gL); g.push('<line class="cl-restl" x1="' + rx.toFixed(1) + '" x2="' + rx.toFixed(1) + '" y1="' + gT + '" y2="' + gB + '"/>' + txt(rx, gT - 6, 'rest', 'cl-bt2')); });
-      bands.forEach(function(b){ if(b.rest != null || b.b - b.a < 2) return; g.push(txt((x(b.a) + x(b.b)) / 2, gT + 15, b.ph === 'acq' ? 'acquisition' : 'extinction', 'cl-bt2 is-' + b.ph)); });
+      // acquisition is named at the foot of its band (its points end high), extinction at the top (its points end low)
+      bands.forEach(function(b){ if(b.rest != null || b.b - b.a < 2) return; g.push(txt((x(b.a) + x(b.b)) / 2 + (b.ph === 'acq' ? (gR - gL) / X : 0), b.ph === 'acq' ? gB - 10 : gT + 15, b.ph === 'acq' ? 'acquisition' : 'extinction', 'cl-bt2 is-' + b.ph)); });
       var pts = [], j = 0;
       trials.forEach(function(t, i){ if(t === 'rest') return; j++; pts.push({ x: x(j), y: y(st.cr[i]), pair: t === 'pair', i: i }); });
       var segs = [], seg = [];
@@ -343,14 +345,16 @@
       var near = function(list, w){ return list.some(function(t){ return t <= tNow && t > tNow - w; }); };
       var pressing = anim && near(sess.presses, 1.2 * (MIN * 60) / (PLAY_S * 60)), pellet = anim ? near(sess.rewards, 6) : false;
       g.push(skinner(bx, by, boxW, boxH, pressing, pellet, pellet));
-      g.push(txt(bx + boxW / 2, by + boxH + 18, 'Skinner box: ' + sc.short + ' (' + sc.how + ')', 'cl-tv'));
+      g.push(txt(bx + boxW / 2, by + boxH + 18, 'Skinner box, ' + sc.name.toLowerCase() + ' (' + sc.short + ')', 'cl-axn'));
+      if(!phone){ var words2 = (sc.how.charAt(0).toUpperCase() + sc.how.slice(1) + '.').split(' '), ln = '', yy3 = by + boxH + 38; words2.forEach(function(wd){ if(tw(ln + ' ' + wd, 12, 700) > boxW && ln){ g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); yy3 += 16; ln = wd; } else ln = ln ? ln + ' ' + wd : wd; }); if(ln) g.push(txt(bx + boxW / 2, yy3, ln, 'cl-tv')); }
       var gT = phone ? by + boxH + 50 : by + 8, gB = H - (phone ? 52 : 56), gR = phone ? R : bx - 30;
       var maxN = Math.max.apply(null, CL.SCHEDULES.map(function(s){ return CL.session(s.k, seed, MIN).presses.length; }));
-      var yMax = compare ? maxN : Math.max(50, sess.presses.length), step = yMax > 2000 ? 1000 : yMax > 800 ? 500 : yMax > 300 ? 200 : 100;
+      // One y scale for every schedule, so a steeper line really is faster responding.
+      var yMax = maxN, step = yMax > 2000 ? 500 : yMax > 800 ? 200 : yMax > 300 ? 100 : 50;
       yMax = Math.ceil(yMax * 1.05 / step) * step;
       var x = function(m){ return L + m / MIN * (gR - L); }, y = function(v){ return gB - v / yMax * (gB - gT); };
       for(var v = 0; v <= yMax; v += step) g.push('<line class="cl-grid" x1="' + L + '" x2="' + gR + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 7, y(v) + 4, String(v), 'cl-tv', 'end'));
-      for(var m = 0; m <= MIN; m += 5) g.push(txt(x(m), gB + 16, String(m), 'cl-tv'));
+      for(var m = 0; m <= MIN; m += 2) g.push(txt(x(m), gB + 16, String(m), 'cl-tv'));
       g.push(txt((L + gR) / 2, gB + 36, 'Minutes', 'cl-axn'));
       g.push('<text class="cl-axn" x="' + L + '" y="' + (gT - 8) + '" text-anchor="start">Total lever presses (cumulative record)</text>');
       function rec(s, upTo){
@@ -401,7 +405,8 @@
         g.push('<rect class="cl-q' + (on ? ' is-on' : '') + (q[1] ? ' is-up' : ' is-down') + '" x="' + (cx + 4).toFixed(1) + '" y="' + (cy + 4).toFixed(1) + '" width="' + (cwq - 8).toFixed(1) + '" height="' + (chq - 8).toFixed(1) + '" rx="14"/>');
         var nm = q[2].split(' '), sz = phone ? 15 : 19;
         g.push(txt(cx + cwq / 2, cy + chq / 2 - (phone ? 10 : 12), nm[0], 'cl-qn' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + (phone ? 8 : 12), nm[1], 'cl-qn' + (on ? ' is-on' : '')));
-        g.push(txt(cx + cwq / 2, cy + chq / 2 + (phone ? 28 : 38), q[3], 'cl-qd' + (on ? ' is-on' : '')));
+        if(phone){ var dw = q[3].split(' '); g.push(txt(cx + cwq / 2, cy + chq / 2 + 30, dw.slice(0, 2).join(' '), 'cl-qd' + (on ? ' is-on' : '')), txt(cx + cwq / 2, cy + chq / 2 + 46, dw.slice(2).join(' '), 'cl-qd' + (on ? ' is-on' : ''))); }
+        else g.push(txt(cx + cwq / 2, cy + chq / 2 + 38, q[3], 'cl-qd' + (on ? ' is-on' : '')));
         if(on) g.push('<circle class="cl-qdot" cx="' + (cx + cwq - 22).toFixed(1) + '" cy="' + (cy + 22).toFixed(1) + '" r="8"/>');
       });
       var label = 'Four quadrants: something added or removed, behavior up or down. ' + cqLine();
@@ -447,18 +452,20 @@
     } else if(g.kind === 'labels'){
       var sc = CL.SCENARIOS.filter(function(s){ return s.k === g.scene; })[0];
       var cells = [['ucs', 'UCS', 'is-ucs'], ['ucr', 'UCR', 'is-ucs'], ['cs', 'CS', 'is-cs'], ['cr', 'CR', 'is-cs']];
-      html = '<div class="cl-lab4">' + cells.map(function(c){ var shown = st[c[0]]; return '<div class="cl-l ' + c[2] + (shown ? ' is-shown' : '') + '"><span>' + c[1] + '</span><b>' + (shown ? esc(sc[c[0]]) : '?') + '</b></div>'; }).join('') + '</div>' +
-        '<p class="cl-lab-note">Before: ' + esc(sc.ucs) + ' (UCS) → ' + esc(sc.ucr) + ' (UCR). After pairing: ' + (st.cs ? esc(sc.cs) : 'the neutral stimulus') + ' (CS) → ' + (st.cr ? esc(sc.cr) : '?') + ' (CR).</p>';
-      if(!st.ucs) html = html.replace('Before: ' + esc(sc.ucs) + ' (UCS) → ' + esc(sc.ucr) + ' (UCR).', 'Before: ? (UCS) → a response with no learning (UCR).');
+      // A label shows once its step is answered; the UCR (not always asked) with the UCS.
+      var shownOf = function(k){ return !!(st[k] || (k === 'ucr' && st.ucs && (p.given.order || []).indexOf('ucr') < 0)); };
+      html = '<div class="cl-lab4">' + cells.map(function(c){ var shown = shownOf(c[0]); return '<div class="cl-l ' + c[2] + (shown ? ' is-shown' : '') + '"><span>' + c[1] + '</span><b>' + (shown ? esc(sc[c[0]]) : '?') + '</b></div>'; }).join('') + '</div>' +
+        '<p class="cl-lab-note">Before: ' + (shownOf('ucs') ? esc(sc.ucs) : '?') + ' (UCS) → ' + (shownOf('ucr') ? esc(sc.ucr) : 'a response with no learning') + ' (UCR). After pairing: ' + (shownOf('cs') ? esc(sc.cs) : 'the neutral stimulus') + ' (CS) → ' + (shownOf('cr') ? esc(sc.cr) : '?') + ' (CR).</p>';
     } else if(g.kind === 'schedule'){
-      // The four record shapes, each from a 10-minute simulated session
-      // (the same model as Explore), drawn small with its own axes.
+      // The four record shapes from 4-minute simulated sessions (the same
+      // model as Explore). Each mini has its own y scale so its shape shows;
+      // the rate under it (presses per minute) compares the steepness.
       html = '<div class="cl-rec4">' + CL.SCHEDULES.map(function(s){
-        var q = CL.session(s.k, 7, 10), pts = CL.cumulative(q.presses, 10, 0.05), w = 220, h = 120, l = 10, b = h - 10, top = 8, yM = 1050;
-        var on = st.shape && s.k === g.k, named = st.sched || st.shape;
-        var line = pts.map(function(p2){ return (l + p2[0] / 10 * (w - l - 6)).toFixed(1) + ',' + (b - p2[1] / yM * (b - top)).toFixed(1); }).join(' ');
-        return '<div class="cl-r' + (on ? ' is-on' : '') + '"><svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + (named ? esc(s.name) + ' record: ' : 'A cumulative record: ') + esc(s.shape.toLowerCase()) + '"><line class="cl-axis" x1="' + l + '" x2="' + (w - 6) + '" y1="' + b + '" y2="' + b + '"/><line class="cl-axis" x1="' + l + '" x2="' + l + '" y1="' + top + '" y2="' + b + '"/><polyline class="cl-mini" points="' + line + '"/></svg><span>' + (named ? esc(s.name) : esc(s.shape.split(' (')[0].split(':')[0])) + '</span></div>';
-      }).join('') + '</div>';
+        var q = CL.session(s.k, 7, 4), pts = CL.cumulative(q.presses, 4, 0.02), w = 260, h = 120, l = 8, b = h - 8, top = 8, yM = Math.max(10, q.presses.length) * 1.04;
+        var on = st.shape && s.k === g.k, named = st.sched || st.shape, rate = Math.round(q.presses.length / 4);
+        var line = pts.map(function(p2){ return (l + p2[0] / 4 * (w - l - 6)).toFixed(1) + ',' + (b - p2[1] / yM * (b - top)).toFixed(1); }).join(' ');
+        return '<div class="cl-r' + (on ? ' is-on' : '') + '"><svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + (named ? esc(s.name) + ' record: ' : 'A cumulative record: ') + esc(s.shape.toLowerCase()) + ', about ' + rate + ' presses a minute"><line class="cl-axis" x1="' + l + '" x2="' + (w - 6) + '" y1="' + b + '" y2="' + b + '"/><line class="cl-axis" x1="' + l + '" x2="' + l + '" y1="' + top + '" y2="' + b + '"/><polyline class="cl-mini" points="' + line + '"/></svg><span>' + (named ? '<b>' + esc(s.name) + '.</b> ' : '') + esc(s.shape.split(' (')[0]) + '</span><em>about ' + rate + ' presses a minute</em></div>';
+      }).join('') + '</div><p class="cl-lab-note">Each record has its own scale; the rate shows which is steeper.</p>';
     } else if(g.kind === 'operant'){
       var named = st.name, Q = [[true, true, 'Positive reinforcement'], [true, false, 'Positive punishment'], [false, true, 'Negative reinforcement'], [false, false, 'Negative punishment']];
       html = '<div class="cl-q4"><span></span><span class="cl-q4h">Behavior up</span><span class="cl-q4h">Behavior down</span>' +

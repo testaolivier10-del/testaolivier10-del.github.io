@@ -1,0 +1,29 @@
+{
+ "recall": {
+  "def": "Retrieving information with few cues, as on a fill-in-the-blank or essay question."
+ },
+ "recognition": {
+  "def": "Identifying information you have seen before among options, as on a multiple-choice question. It is usually easier than recall."
+ },
+ "retrieval-cue": {
+  "def": "Any stimulus, such as a word, smell, place or photo, that helps bring a stored memory back."
+ },
+ "context-dependent": {
+  "def": "Better recall when the external setting at retrieval matches the setting where the memory was formed."
+ },
+ "state-dependent": {
+  "def": "Better recall when your internal state (calm, sleepy, after caffeine or a drug) at retrieval matches your state when you learned."
+ },
+ "mood-congruent": {
+  "def": "The tendency to recall memories that match your current mood, such as sad memories when you feel sad."
+ },
+ "retrieval-practice": {
+  "def": "Studying by pulling information out of memory, such as self-quizzing or writing what you remember, instead of rereading it."
+ },
+ "testing-effect": {
+  "def": "The finding that retrieving information, as on a practice test, strengthens long-term memory more than spending the same time restudying it."
+ },
+ "metacognition": {
+  "def": "Thinking about your own thinking, including judging how well you know something and choosing how to study."
+ }
+}

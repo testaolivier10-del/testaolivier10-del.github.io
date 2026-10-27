@@ -1,0 +1,38 @@
+{
+ "forgetting-curve": {
+  "def": "The pattern, first measured by Ebbinghaus (1885), in which much newly learned information is forgotten quickly and the rest fades more slowly."
+ },
+ "encoding-failure": {
+  "def": "Forgetting because information never got into long-term memory, often because it was never attended to."
+ },
+ "interference": {
+  "def": "Forgetting because other learning gets in the way of retrieving a memory."
+ },
+ "proactive": {
+  "def": "Older learning disrupting the recall of newer learning, such as entering last year's locker code."
+ },
+ "retroactive": {
+  "def": "Newer learning disrupting the recall of older learning, such as new French words crowding out old Spanish ones."
+ },
+ "tot": {
+  "def": "The tip-of-the-tongue phenomenon: feeling sure you know something, and recalling parts of it such as the first letter, without being able to retrieve it yet."
+ },
+ "repression": {
+  "def": "The psychodynamic idea that anxiety-provoking memories are pushed out of awareness. It is widely questioned, because traumatic events are usually remembered well."
+ },
+ "misinformation": {
+  "def": "The misinformation effect: misleading information received after an event changes a person's memory of it."
+ },
+ "source-amnesia": {
+  "def": "Remembering information but forgetting, or mistaking, where it came from (source misattribution)."
+ },
+ "constructive-memory": {
+  "def": "The idea that memories are rebuilt each time they are retrieved, using stored pieces plus schemas and expectations, so they can change."
+ },
+ "imagination-inflation": {
+  "def": "Increased confidence that an event really happened after imagining it repeatedly."
+ },
+ "false-memory": {
+  "def": "A memory of an event or detail that did not happen, or did not happen that way, often held with confidence."
+ }
+}

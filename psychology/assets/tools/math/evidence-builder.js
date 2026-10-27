@@ -32,6 +32,8 @@
   function rtxt(v){ return M.minus(M.fixed(v, 2)).replace(/^(−?)0\./, '$1.'); }
 
   var TYPES = ['full', 'evidence', 'reasoning'];
+  /* The reasoning choice "link it to the claim, with no concept" (1 point at most). */
+  var NONE = 'none';
   var TYPE_LABEL = { full: 'The whole EBQ', evidence: 'Claim and evidence (A, B(i), C(i))', reasoning: 'Reasoning with concepts (B(ii), C(ii))' };
   var PARTS = [
     { k: 'A', label: 'A', name: 'Claim', pts: 1 },
@@ -96,8 +98,9 @@
   }
   function reasonPoint(ctx, cl, e, ev, cid, other){
     if(!ev.usable) return { pt: 0, why: 'Reasoning explains a result that supports the claim. Fix the evidence first.' };
-    if(!cid) return { pt: 1, why: 'Linking the evidence to the claim earns 1 point; a psychology concept applied to it earns the second.' };
-    if(isRestricted(ctx, cid)){ var rr = restrictedOf(ctx, cid); return { pt: 1, why: '"' + rr.name + '" ' + rr.why + ' It does not earn the concept point.', bad: 'restricted' }; }
+    if(!cid) return { pt: 0, why: 'Not built yet: choose the concept that explains the result.', bad: 'empty' };
+    if(cid === NONE) return { pt: 1, why: 'Linking the evidence to the claim earns 1 point. With no psychology concept applied to it, that is the most this part can earn.', bad: 'noconcept' };
+    if(isRestricted(ctx, cid)){ var rr = restrictedOf(ctx, cid); return { pt: 1, why: cap(rr.name) + ' ' + rr.why + ', so it does not earn the concept point.', bad: 'restricted' }; }
     var c = conceptOf(ctx, cid);
     if(!c || !c.links || !c.links[String(e.src)]) return { pt: 1, why: (c ? cap(c.name) : 'That concept') + ' does not explain Source ' + (e.src + 1) + '\'s result. ' + (c && c.off ? c.off : 'Pick a concept that fits this finding.'), bad: 'nofit' };
     if(other && other === cid) return { pt: 1, why: 'You used ' + c.name + ' in B(ii). C(ii) needs a different concept; reusing it caps the part at 1 point.', bad: 'reuse' };
@@ -129,10 +132,11 @@
       if(!e || e.src == null){ out[K] = ''; out[R] = ''; return; }
       out[K] = e.what === 'detail' ? (e.cite ? 'According to Source ' + (e.src + 1) + ', ' + low(ctx.sources[e.src].detail) : cap(ctx.sources[e.src].detail)) : evidence(ctx, nums, e.src, e.cite);
       var c = conceptOf(ctx, cid), rr = restrictedOf(ctx, cid);
-      if(c && c.links && c.links[String(e.src)]) out[R] = 'This is ' + c.name + ': ' + c.links[String(e.src)];
+      if(c && c.links && c.links[String(e.src)]) out[R] = cap(c.links[String(e.src)]);
       else if(c) out[R] = 'This shows ' + c.name + ', so ' + low(cl ? cl.text : 'the claim holds.');
       else if(rr) out[R] = 'This shows ' + rr.name + ', so ' + low(cl ? cl.text : 'the claim holds.');
-      else out[R] = cl && cl.defensible ? 'This result supports the claim that ' + low(cl.text) : '';
+      else if(cid === NONE) out[R] = cl && cl.defensible ? 'This result supports the claim that ' + low(cl.text) : '';
+      else out[R] = '';
     });
     return out;
   }
@@ -188,8 +192,8 @@
     var k = which === 'b' ? pl.b : pl.c, c = which === 'b' ? pl.bc : pl.cc, key = which === 'b' ? 'conB' : 'conC', P = which === 'b' ? 'B(ii)' : 'C(ii)';
     var opts = [opt(cap(c.name), 'Right: ' + c.name + ' explains Source ' + (k + 1) + '\'s result.', true)];
     var topicR = M.shuffle(r, ctx.restricted.filter(function(x){ return x.kind === 'topic'; }))[0], resR = M.shuffle(r, ctx.restricted.filter(function(x){ return x.kind === 'research'; }))[0];
-    opts.push(opt(cap(topicR.name), '"' + topicR.name + '" ' + topicR.why + ' It cannot earn the concept point.'));
-    opts.push(opt(cap(resR.name), '"' + resR.name + '" ' + resR.why + ' It cannot earn the concept point.'));
+    opts.push(opt(cap(topicR.name), cap(topicR.name) + ' ' + topicR.why + '. It cannot earn the concept point.'));
+    opts.push(opt(cap(resR.name), cap(resR.name) + ' ' + resR.why + '. It cannot earn the concept point.'));
     if(which === 'c') opts.push(opt(cap(pl.bc.name), 'You used ' + pl.bc.name + ' in B(ii). C(ii) needs a different concept; reusing it caps the part at 1 point.'));
     else {
       var off = ctx.concepts.filter(function(x){ return !(x.links && x.links[String(k)]); });
@@ -201,7 +205,7 @@
   }
   function stepLink(r, ctx, pl, which){
     var k = which === 'b' ? pl.b : pl.c, c = which === 'b' ? pl.bc : pl.cc, key = which === 'b' ? 'linkB' : 'linkC', P = which === 'b' ? 'B(ii)' : 'C(ii)';
-    var opts = [opt('This is ' + c.name + ': ' + c.links[String(k)], 'Right: evidence, then the concept applied to it, then the link to the claim. Both points.', true),
+    var opts = [opt(cap(c.links[String(k)]), 'Right: evidence, then the concept applied to it, then the link to the claim. Both points.', true),
       opt(cap(c.def), 'A definition dropped in earns nothing. Apply the concept to this evidence and say how it supports the claim.'),
       opt('This shows ' + c.name + '.', 'The concept is named but not linked: say how it explains the result and why that supports the claim.'),
       opt(cap(pl.claim.generic || 'This shows the claim is true for everyone.'), 'Generic: no psychology concept and no link to the specific result.')];
@@ -217,9 +221,9 @@
       if(readable.length){ var rk = readable[0]; steps.push(stepRead(ctx, nums, rk)); sol.push('Source ' + (rk + 1) + ': ' + M.fixed(nums[rk].means[ctx.sources[rk].hi], nums[rk].dec) + ' − ' + M.fixed(nums[rk].means[ctx.sources[rk].lo], nums[rk].dec) + ' = ' + M.fixed(nums[rk].diff, nums[rk].dec) + '.'); }
     }
     if(type !== 'reasoning'){ steps.push(stepEv(r, ctx, nums, pl, 'b')); sol.push('<b>B(i).</b> ' + evidence(ctx, nums, pl.b, true)); }
-    if(type !== 'evidence'){ steps.push(stepConcept(r, ctx, pl, 'b')); steps.push(stepLink(r, ctx, pl, 'b')); sol.push('<b>B(ii).</b> This is ' + pl.bc.name + ': ' + pl.bc.links[String(pl.b)]); }
+    if(type !== 'evidence'){ steps.push(stepConcept(r, ctx, pl, 'b')); steps.push(stepLink(r, ctx, pl, 'b')); sol.push('<b>B(ii).</b> ' + cap(pl.bc.links[String(pl.b)])); }
     if(type !== 'reasoning'){ steps.push(stepEv(r, ctx, nums, pl, 'c')); sol.push('<b>C(i).</b> ' + evidence(ctx, nums, pl.c, true)); }
-    if(type !== 'evidence'){ steps.push(stepConcept(r, ctx, pl, 'c')); steps.push(stepLink(r, ctx, pl, 'c')); sol.push('<b>C(ii).</b> This is ' + pl.cc.name + ': ' + pl.cc.links[String(pl.c)]); }
+    if(type !== 'evidence'){ steps.push(stepConcept(r, ctx, pl, 'c')); steps.push(stepLink(r, ctx, pl, 'c')); sol.push('<b>C(ii).</b> ' + cap(pl.cc.links[String(pl.c)])); }
     var text = '<p><b>' + ctx.question + '</b></p>' + (type === 'reasoning'
       ? '<p>Your claim: ' + pl.claim.text + '</p><p>B(i): ' + evidence(ctx, nums, pl.b, true) + '</p><p>C(i): ' + evidence(ctx, nums, pl.c, true) + '</p>'
       : '<p>Read the three sources, then build the answer part by part.</p>');
@@ -228,7 +232,7 @@
   }
 
   M.register('evidenceBuilder', {
-    TYPES: TYPES, TYPE_LABEL: TYPE_LABEL, PARTS: PARTS, rtxt: rtxt,
+    TYPES: TYPES, TYPE_LABEL: TYPE_LABEL, PARTS: PARTS, NONE: NONE, rtxt: rtxt,
     sources: sources, result: result, evidence: evidence, score: score, written: written,
     claimOf: claimOf, conceptOf: conceptOf, restrictedOf: restrictedOf, isRestricted: isRestricted, nameOf: nameOf,
     supporting: supporting, fits: fits, drillClaims: drillClaims, generate: generate

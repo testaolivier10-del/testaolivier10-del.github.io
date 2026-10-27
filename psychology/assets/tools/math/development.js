@@ -59,10 +59,10 @@
     { id: 'grow', name: 'Body and roles', theory: 'Adolescence to adulthood', bands: [[0, 10, 'Childhood', 'Childhood', 'child'], [10, 18, 'Puberty and adolescence: imaginary audience, personal fable', 'Adolescence', 'teen'], [18, 25, 'Emerging adulthood', 'Emerging', 'emerging'], [25, 65, 'Adult roles on the social clock', 'Adulthood', 'adult'], [65, 90, 'Later adulthood', 'Later life', 'late']] }
   ];
   var ATTACH = [
-    { id: 'secure', name: 'Secure', leave: 'is upset when the parent leaves', back: 'goes to the parent for comfort, calms quickly and goes back to playing', play: 'explores the toys, checking back with the parent' },
-    { id: 'avoidant', name: 'Avoidant', leave: 'shows little distress when the parent leaves', back: 'looks away from the parent and keeps playing, ignoring the return', play: 'plays alone and seldom checks on the parent' },
-    { id: 'anxious', name: 'Anxious (ambivalent)', leave: 'is very upset when the parent leaves', back: 'reaches for the parent, then pushes away angrily and is hard to soothe', play: 'stays close to the parent and explores little' },
-    { id: 'disorganized', name: 'Disorganized', leave: 'reacts in a confused way when the parent leaves', back: 'walks toward the parent with the head turned away, then freezes', play: 'moves between approaching and avoiding without a clear pattern' }
+    { id: 'secure', name: 'Secure', leave: 'is upset', back: 'goes to the parent for comfort, calms quickly and goes back to playing', play: 'explores the toys, checking back with the parent' },
+    { id: 'avoidant', name: 'Avoidant', leave: 'shows little distress', back: 'looks away from the parent and keeps playing, ignoring the return', play: 'plays alone and seldom checks on the parent' },
+    { id: 'anxious', name: 'Anxious (ambivalent)', leave: 'is very upset', back: 'reaches for the parent, then pushes away angrily and is hard to soothe', play: 'stays close to the parent and explores little' },
+    { id: 'disorganized', name: 'Disorganized', leave: 'reacts in a confused, contradictory way', back: 'walks toward the parent with the head turned away, then freezes', play: 'moves between approaching and avoiding without a clear pattern' }
   ];
   /* Warmth and demands, 0 to 10 each; the quadrant names the style. */
   var PARENT = [
@@ -83,8 +83,10 @@
   function byId(list, id){ return list.filter(function(x){ return x.id === id; })[0]; }
 
   /* The people in a scene: invented names, varied. */
-  var NAMES = ['Maya', 'Leo', 'Aiden', 'Sofia', 'Kai', 'Amara', 'Noah', 'Priya', 'Mateo', 'Zoe', 'Elijah', 'Lina', 'Omar', 'Hana', 'Jonah', 'Ava', 'Diego', 'Mei', 'Theo', 'Nia', 'Rafael', 'Ines', 'Samir', 'Grace'];
-  function pron(r){ return r.pick([['she', 'her', 'her'], ['he', 'him', 'his']]); }
+  var NAMES = [['Maya', 0], ['Leo', 1], ['Aiden', 1], ['Sofia', 0], ['Kai', 1], ['Amara', 0], ['Noah', 1], ['Priya', 0], ['Mateo', 1], ['Zoe', 0], ['Elijah', 1], ['Lina', 0], ['Omar', 1], ['Hana', 0], ['Jonah', 1], ['Ava', 0], ['Diego', 1], ['Mei', 0], ['Theo', 1], ['Nia', 0], ['Rafael', 1], ['Ines', 0], ['Samir', 1], ['Grace', 0]];
+  var PRON = [['she', 'her', 'her'], ['he', 'him', 'his']];
+  /* who(r) -> [name, pronouns]: one draw, so a name always gets its pronouns. */
+  function who(r){ var n = r.pick(NAMES); return [n[0], PRON[n[1]]]; }
 
   /* ------------------------------------------------ piaget concepts */
   var CONCEPTS = {
@@ -261,7 +263,7 @@
 
   /* ------------------------------------------------------------ types */
   function genPiaget(r, ctx){
-    var t = r.pick(PIAGET_T), age = ageIn(r, t[0]), name = r.pick(NAMES), pr = pron(r), concept = t[1];
+    var t = r.pick(PIAGET_T), age = ageIn(r, t[0]), w = who(r), name = w[0], pr = w[1], concept = t[1];
     var st = stageAt(PIAGET, age), text = fill(t[2], name, pr, age);
     var stageOpts = PIAGET.map(function(p){ return { t: p.name, ok: p.id === st.id, why: p.id === st.id ? 'At ' + ageWords(age) + ', ' + name + ' is in the ' + p.name.toLowerCase() + ' stage (about ' + p.from + ' to ' + (p.to === 90 ? 'adulthood' : p.to) + ' years). ' + p.hallmark : 'The ' + p.name.toLowerCase() + ' stage is about ' + p.from + ' to ' + (p.to === 90 ? 'adulthood' : p.to + ' years') + '; ' + name + ' is ' + ageWords(age) + '. ' + p.hallmark }; });
     var pool = [concept].concat(CONFUSE[concept]).slice(0, 4);
@@ -276,7 +278,7 @@
     };
   }
   function genErikson(r, ctx){
-    var t = r.pick(ERIKSON_T), age = ageIn(r, t[1]), name = r.pick(NAMES), pr = pron(r), st = byId(ERIKSON, t[0]);
+    var t = r.pick(ERIKSON_T), age = ageIn(r, t[1]), w = who(r), name = w[0], pr = w[1], st = byId(ERIKSON, t[0]);
     var i = ERIKSON.indexOf(st), near = ERIKSON.filter(function(e, k){ return k !== i; }).sort(function(a, b){ return Math.abs(ERIKSON.indexOf(a) - i) - Math.abs(ERIKSON.indexOf(b) - i) || ERIKSON.indexOf(a) - ERIKSON.indexOf(b); }).slice(0, 3);
     var opts = [st].concat(near).map(function(e){ return { t: e.name, ok: e === st, why: e === st ? 'The question here is "' + e.q + '", the crisis of about ages ' + e.from + ' to ' + (e.to === 90 ? 'the end of life' : e.to) + '.' : e.name + ' asks "' + e.q + '" (about ages ' + e.from + ' to ' + (e.to === 90 ? 'the end of life' : e.to) + ').' }; });
     var nx = ERIKSON[i + 1];
@@ -297,10 +299,10 @@
     };
   }
   function genAttachment(r, ctx){
-    var a = r.pick(ATTACH), name = r.pick(NAMES), pr = pron(r), months = r.int(12, 20);
+    var a = r.pick(ATTACH), w = who(r), name = w[0], pr = w[1], months = r.int(12, 20);
     var text = 'In a laboratory playroom (the strange situation), # (age ' + months + ' months) ' + a.play + '. When the parent leaves, # ' + a.leave + '. When the parent returns, # ' + a.back + '.';
     text = fill(text, name, pr, months / 12);
-    var opts = ATTACH.map(function(x){ return { t: x.name, ok: x === a, why: x.name + ' attachment: the child ' + x.leave + ' and, on reunion, ' + x.back + '.' + (x === a ? '' : ' ' + name + '\'s reunion does not look like that.') }; });
+    var opts = ATTACH.map(function(x){ return { t: x.name, ok: x === a, why: x.name + ' attachment: when the parent leaves, the child ' + x.leave + '; on reunion, the child ' + x.back + '.' + (x === a ? '' : ' ' + name + '\'s reunion does not look like that.') }; });
     var claims = [{ t: ATTACH_CLAIM_RIGHT, ok: true, why: 'The strange situation observes; it does not assign children to parents, so a link is not proof of cause.' }].concat(ATTACH_CLAIM_WRONG.map(function(w){ return { t: w[0], ok: false, why: w[1] }; }));
     return {
       type: 'attachment', ctx: ctx.id, topic: ctx.topic, given: { age: months / 12, name: name, style: a.id },
@@ -311,7 +313,7 @@
     };
   }
   function genParenting(r, ctx){
-    var t = r.pick(PARENT_T), age = r.int(13, 16), name = r.pick(NAMES), pr = pron(r), st = byId(PARENT, t[0]);
+    var t = r.pick(PARENT_T), age = r.int(13, 16), w = who(r), name = w[0], pr = w[1], st = byId(PARENT, t[0]);
     var opts = PARENT.map(function(p){ return { t: p.name, ok: p === st, why: p.line + (p === st ? '' : ' That does not match ' + name + '\'s home.') }; });
     var claims = [{ t: PARENT_CLAIM_RIGHT, ok: true, why: 'Parenting studies are mostly correlational: parents are not randomly assigned a style, and cultures differ.' }].concat(PARENT_CLAIM_WRONG.map(function(w){ return { t: w[0], ok: false, why: w[1] }; }));
     return {
@@ -323,7 +325,7 @@
     };
   }
   function genTeen(r, ctx){
-    var t = r.pick(TEEN_T), age = ageIn(r, t[1]), name = r.pick(NAMES), pr = pron(r), k = t[0];
+    var t = r.pick(TEEN_T), age = ageIn(r, t[1]), w = who(r), name = w[0], pr = w[1], k = t[0];
     var pool = [k].concat(TEEN_CONFUSE[k]).slice(0, 4);
     var opts = pool.map(function(x){ return { t: TEEN[x].name, ok: x === k, why: TEEN[x].why + (x === k ? '' : ' That is not what ' + name + ' shows.') }; });
     var grow = LANES[3], per = bandAt(grow, age), perOpts = grow.bands.slice(0, 4).map(function(b){ return { t: PERIOD[b[4]].name, ok: b === per, why: PERIOD[b[4]].why + (b === per ? '' : ' ' + name + ' is ' + Math.round(age) + '.') }; });
@@ -336,7 +338,7 @@
     };
   }
   function genAdult(r, ctx){
-    var t = r.pick(ADULT_T), age = ageIn(r, t[1]), name = r.pick(NAMES), pr = pron(r), k = t[0];
+    var t = r.pick(ADULT_T), age = ageIn(r, t[1]), w = who(r), name = w[0], pr = w[1], k = t[0];
     var opts = ['crystallized', 'fluid', 'dementia', 'normal'].map(function(x){ return { t: ADULT[x].name, ok: x === k, why: ADULT[x].why + (x === k ? '' : ' That is not what ' + name + ' shows.') }; });
     var trend = [{ t: ADULT_TREND[k], ok: true, why: k === 'dementia' ? 'Dementia is more common in later life but is caused by disease; most older adults never develop it.' : k === 'normal' ? 'Some slowing is part of normal aging; losing the ability to manage daily life is not.' : 'This is the usual pattern in studies of adults; people vary a lot.' }].concat(TREND_WRONG.map(function(w){ return { t: w, ok: false, why: 'Abilities change gradually and differently; there is no single drop at one age, and they do not peak in the early teens.' }; }));
     return {

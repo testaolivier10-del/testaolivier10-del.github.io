@@ -103,8 +103,12 @@
 .sb-cc.is-cut{fill:var(--bm-dmgBg);stroke:var(--bm-dmg);stroke-dasharray:6 5;}
 .sb-cut{fill:none;stroke:var(--bm-dmg);stroke-width:5;stroke-linecap:round;}
 .sb-eye{fill:#FFFFFF;stroke:var(--sb-headE);stroke-width:2;}
-.sb-path{fill:none;stroke:var(--bm-sel);stroke-width:3;stroke-dasharray:8 6;opacity:.75;}
-.sb-path.is-in{stroke-dasharray:none;opacity:.9;}
+.sb-path{fill:none;stroke:var(--bm-sel);stroke-width:4;stroke-linecap:round;}
+.sb-path.is-out{stroke-width:2.5;stroke-dasharray:7 6;opacity:.7;}
+.sb-arrow{fill:none;stroke:var(--bm-sel);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
+.sb-scr-t{fill:#AFC0CC;font-weight:700;}
+.sb-mid{stroke:#55636D;stroke-width:1.5;stroke-dasharray:4 6;}
+.sb-hl.is-on{fill:var(--bm-sel);}
 .sb-cross{fill:none;stroke:var(--bm-sel);stroke-width:5;stroke-linecap:round;}
 .sb-cross-h{fill:none;stroke:var(--bm-sel);stroke-width:5;stroke-linecap:round;}
 .sb-bubble rect,.sb-bubble path{fill:var(--bm-pill);stroke:var(--bm-pillE);stroke-width:2;}

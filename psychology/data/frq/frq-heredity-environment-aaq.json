@@ -1,0 +1,164 @@
+{
+ "id": "frq-heredity-environment-aaq",
+ "type": "aaq",
+ "points": 7,
+ "title": "A twin and adoption study of persistence",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "heredity-environment"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "2.C",
+  "2.D",
+  "4.B"
+ ],
+ "study": {
+  "title": "Are some people born more persistent?",
+  "invented": true,
+  "study": {
+   "introduction": "Some people keep working on a hard problem long after others give up. Researchers asked how much of this difference in persistence is linked to heredity and how much to the environment people grow up in. They hypothesized that persistence is partly heritable: pairs of people who share more genes would have more similar persistence scores, even when raised apart.",
+   "participants": "1,240 adults aged 18 to 30 from a national twin and adoption registry in one Northern European country. They formed five kinds of pairs: 210 pairs of identical twins raised together; 190 pairs of fraternal twins raised together; 60 pairs of identical twins raised in different adoptive families; 85 pairs of adopted siblings (not related by birth) raised in the same home; and 75 pairs of adoptees and their birth parents. 58% were women. Almost all had finished secondary school.",
+   "method": "Each participant worked alone at a computer on a set of puzzles. Unknown to them, the last puzzle had no solution. Persistence was the number of minutes a participant kept working on that puzzle before pressing \"give up\" (the program stopped at 30 minutes). Researchers then computed a correlation between the two members of each kind of pair. The study was approved by a university ethics review board. Participants gave written informed consent, were told afterward that the last puzzle could not be solved, and were identified only by code numbers so that no one outside the research team could link scores to names.",
+   "results": "Identical twins raised together had the most similar scores ($r = .50$), followed by identical twins raised apart ($r = .44$). Fraternal twins raised together were less similar ($r = .26$). Adoptees and their birth parents showed a small correlation ($r = .21$), while adopted siblings raised in the same home showed almost none ($r = .06$).",
+   "discussion": "Pairs who share more genes had more similar persistence, even when they grew up in different homes, which suggests heredity contributes to persistence. Because no correlation was close to 1, the environment and chance also matter. The authors caution that a twin study cannot identify which genes, or which experiences, are involved."
+  },
+  "plot": {
+   "label": "Bar graph of the correlation between pair members' persistence scores for five kinds of pairs, invented data for practice",
+   "kind": "bar",
+   "categories": [
+    "Identical, together",
+    "Identical, apart",
+    "Fraternal, together",
+    "Birth parent",
+    "Adopted siblings"
+   ],
+   "values": [
+    0.5,
+    0.44,
+    0.26,
+    0.21,
+    0.06
+   ],
+   "y": [
+    0,
+    0.6
+   ],
+   "yLabel": "Correlation (r)"
+  },
+  "ethics": [
+   "approval by an ethics review board",
+   "informed consent",
+   "debriefing after deception",
+   "confidentiality"
+  ]
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Identify</b> the research method used in the study.",
+   "rubric": [
+    {
+     "point": "Identifies the method as correlational (a correlational study, including a twin study or an adoption study described as correlational).",
+     "accept": [
+      "a correlational study",
+      "correlational research",
+      "a twin and adoption study, which is correlational",
+      "a twin study (correlational design)"
+     ]
+    }
+   ],
+   "sample": "The researchers used a correlational study (a twin and adoption study). They did not manipulate anything; they measured persistence in pairs who already differed in how many genes they share and correlated the pair members' scores."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>State</b> the operational definition of persistence in the study.",
+   "rubric": [
+    {
+     "point": "States how persistence was measured: the number of minutes a participant kept working on the unsolvable final puzzle before pressing \"give up\" (up to 30 minutes).",
+     "accept": [
+      "minutes spent on the unsolvable puzzle before giving up",
+      "how long, in minutes, they worked on the last puzzle before pressing give up",
+      "time on the impossible puzzle, stopped at 30 minutes"
+     ]
+    }
+   ],
+   "sample": "Persistence was operationally defined as the number of minutes each participant kept working on the final, unsolvable puzzle before pressing \"give up\", up to a limit of 30 minutes."
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Describe</b> what the difference between the correlation for identical twins raised together ($r = .50$) and for fraternal twins raised together ($r = .26$) shows about persistence.",
+   "rubric": [
+    {
+     "point": "Explains that identical twins, who share about twice as many genes as fraternal twins while both were raised together, were more similar in persistence, which suggests a genetic (hereditary) contribution to persistence.",
+     "accept": [
+      "identical twins were about twice as similar, and since both kinds of twins shared a home, the extra similarity points to heredity",
+      "more shared genes went with more similar persistence, suggesting heredity plays a role"
+     ]
+    }
+   ],
+   "sample": "Identical twins' persistence scores were about twice as strongly related (.50) as fraternal twins' scores (.26). Both kinds of twins were raised together, so their home environments were similar; the main difference is that identical twins share nearly all their genes and fraternal twins about half. The greater similarity of identical twins therefore suggests that heredity contributes to persistence."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "<b>Identify</b> one ethical guideline the study summary describes and <b>explain</b> how the researchers applied it.",
+   "rubric": [
+    {
+     "point": "Names a safeguard described in the summary (ethics review board approval, informed consent, debriefing, or confidentiality) and how it was applied in this study.",
+     "accept": [
+      "confidentiality: participants were identified only by code numbers",
+      "informed consent: participants gave written consent before taking part",
+      "debriefing: participants were told afterward that the last puzzle could not be solved",
+      "IRB: a university ethics review board approved the study"
+     ]
+    }
+   ],
+   "sample": "The researchers protected confidentiality: each participant was identified only by a code number, so no one outside the research team could link a persistence score to a person's name."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "<b>Explain</b> whether the results of the study can be generalized to high school students in the United States.",
+   "rubric": [
+    {
+     "point": "Takes a position and supports it with participant characteristics from the summary (adults aged 18 to 30, from one Northern European country, almost all with secondary education), not with sample size.",
+     "accept": [
+      "no, because the participants were adults 18 to 30 from one Northern European country, not US teenagers",
+      "only partly: the pattern may hold, but the sample was adults from one European country, so ages and culture differ"
+     ]
+    }
+   ],
+   "sample": "The results may not generalize to US high school students. The participants were adults aged 18 to 30 from a single Northern European country, so they were older than high school students and grew up in a different culture and school system, which could change how much the environment shapes persistence."
+  },
+  {
+   "label": "F",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the results of the study support or refute the researchers' hypothesis that persistence is partly heritable.",
+   "rubric": [
+    {
+     "point": "Uses a specific, accurate result from the study (for example, identical twins raised apart still correlated .44, or adopted siblings raised together correlated only .06).",
+     "accept": [
+      "identical twins raised apart: r = .44",
+      "adopted siblings in the same home: r = .06",
+      "adoptees and birth parents: r = .21"
+     ]
+    },
+    {
+     "point": "Explains how that result supports the hypothesis (similarity follows shared genes even without a shared home; a shared home without shared genes gives little similarity), without claiming the study proves it.",
+     "accept": [
+      "similarity tracks shared genes rather than a shared home, so persistence is partly heritable",
+      "raised apart yet still similar, so the similarity cannot come only from the home"
+     ]
+    }
+   ],
+   "sample": "The results support the hypothesis. Identical twins raised in different adoptive families still had similar persistence scores ($r = .44$), almost as similar as identical twins raised together. Because they did not share a home, their similarity is best explained by their shared genes. At the same time, adopted siblings who shared a home but no genes were barely similar ($r = .06$), so growing up together did little on its own. Persistence therefore appears partly heritable, though the correlations below 1 show the environment matters too."
+  }
+ ]
+}
