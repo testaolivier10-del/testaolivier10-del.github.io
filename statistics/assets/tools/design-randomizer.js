@@ -37,7 +37,7 @@
         onTry: function(st, t, api){ if(t.right || st.kind !== 'choice') return; api.qs.yours = { key: st.key, text: String(st.options[t.value]).replace(/<[^>]+>/g, ''), k: t.value }; redraw(api); },
         onStep: function(st, right, api){ api.qs.done[st.key] = true; api.qs.yours = null; redraw(api); },
         method: function(st, p){
-          var H = { design: 'Ask two questions: were treatments imposed at random (experiment) or did the units sort themselves (observational)? And was the randomizing done inside blocks or pairs?',
+          var H = { design: 'Ask two questions: were treatments imposed by the researchers (experiment) or did the units sort themselves (observational)? And was the randomizing done inside blocks or pairs?',
             blockwhy: 'A block groups units that are alike in a variable that affects the response.', pairwhy: 'Pairs compare like with like.', conclude: 'Only random assignment supports cause and effect.',
             purpose: 'Random assignment balances the other variables between the groups, on average.',
             explanatory: 'The explanatory variable is what the researchers set: the treatments on the left of the picture.', response: 'The response is what is measured at the end, on the right of the picture.',

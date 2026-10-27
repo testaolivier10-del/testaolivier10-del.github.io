@@ -32,6 +32,7 @@
   function tx(s){ return TX() ? TX().html(String(s), { wrap: true }) : esc(s); }
   function F(x, d){ return T.F(x, d); }
   function P4(p){ return p < 0.00005 ? '< 0.0001' : p > 0.99995 ? '> 0.9999' : DA.P4(p); }
+  function cap1(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
   function EQ(p){ var t = P4(p); return /^[<>]/.test(t) ? t : '= ' + t; }
   // A percent that never shows 100.0% for 0.9996 or 0.0% for 0.0004.
   function PCT(p){ var x = p * 100; if(x >= 99.995) return 'more than 99.99'; if(x <= 0.005) return 'less than 0.01'; return x < 1 || x > 99 ? F(x, 2) : F(x, 1); }
@@ -397,7 +398,7 @@
       var c = S.ns, d = c.places, u = ' ' + c.units, ev = evTex(), pct = res.p * 100;
       var words = c.who + ' have a ' + c.var + (S.mode === 'less' ? ' below ' + F(S.b, d) + u : S.mode === 'greater' ? ' above ' + F(S.a, d) + u : ' between ' + F(S.a, d) + ' and ' + F(S.b, d) + u);
       if(LS){
-        LS.caption('About ' + PCT(res.p) + '% of ' + esc(words) + ': ' + tx('$P(' + ev + ') ' + EQ(res.p) + '$') + '.', 'explore');
+        LS.caption((/^(more|less)/.test(PCT(res.p)) ? cap1(PCT(res.p)) : 'About ' + PCT(res.p)) + '% of ' + esc(words) + ': ' + tx('$P(' + ev + ') ' + EQ(res.p) + '$') + '.', 'explore');
         var zp = S.mode === 'between' ? [{ k: 'z', html: minus(F(res.za, 2)) + ' to ' + minus(F(res.zb, 2)), tone: 'ghost' }] : [{ k: 'z', html: minus(F(S.mode === 'less' ? res.zb : res.za, 2)), tone: 'ghost' }];
         LS.pills([{ k: esc(plainEv(ev)), html: P4(res.p), tone: 'readout' }].concat(zp), 'left', 'explore');
       }
@@ -433,8 +434,8 @@
       var zline = S.mode === 'between' ? '$z = \\frac{' + F(S.a, d) + ' - ' + F(S.mu, d) + '}{' + F(S.sd, d) + '} = ' + texN(res.za) + '$ and $z = \\frac{' + F(S.b, d) + ' - ' + F(S.mu, d) + '}{' + F(S.sd, d) + '} = ' + texN(res.zb) + '$'
         : '$z = \\frac{' + F(S.mode === 'less' ? S.b : S.a, d) + ' - ' + F(S.mu, d) + '}{' + F(S.sd, d) + '} = ' + texN(S.mode === 'less' ? res.zb : res.za) + '$';
       var pline = S.mode === 'less' ? '$P(' + ev + ') = P(Z < ' + texN(res.zb) + ') ' + EQ(res.p) + '$'
-        : S.mode === 'greater' ? '$P(' + ev + ') = P(Z > ' + texN(res.za) + ') = 1 - ' + P4(Dd.normCdf(res.za)) + ' ' + EQ(res.p) + '$'
-        : '$P(' + ev + ') = ' + P4(Dd.normCdf(res.zb)) + ' - ' + P4(Dd.normCdf(res.za)) + ' ' + EQ(res.p) + '$';
+        : S.mode === 'greater' ? '$P(' + ev + ') = P(Z > ' + texN(res.za) + ') = 1 - ' + DA.P4(Dd.normCdf(res.za)) + ' ' + EQ(res.p) + '$'
+        : '$P(' + ev + ') = ' + DA.P4(Dd.normCdf(res.zb)) + ' - ' + DA.P4(Dd.normCdf(res.za)) + ' ' + EQ(res.p) + '$';
       var body = '<ol class="da-work"><li>' + tx('<b>Name the distribution and its parameters.</b> $X$ = ' + c.var + ', normal with $\\mu = ' + F(S.mu, d) + '$ and $\\sigma = ' + F(S.sd, d) + '$ ' + c.units + '.') + '</li>' +
         '<li>' + tx('<b>Boundary and direction.</b> The event is $' + ev + '$: the area ' + (S.mode === 'less' ? 'to the left of ' + F(S.b, d) : S.mode === 'greater' ? 'to the right of ' + F(S.a, d) : 'between ' + F(S.a, d) + ' and ' + F(S.b, d)) + '.') + '</li>' +
         '<li>' + tx('<b>Standardize.</b> ' + zline + '.') + '</li>' +

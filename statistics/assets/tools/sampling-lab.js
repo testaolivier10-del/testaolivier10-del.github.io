@@ -471,7 +471,8 @@
     var grp = function(i){ for(var k = 0; k < cuts.length; k++) if(i < cuts[k]) return k; return gN - 1; };
     function pick(mm, seed){
       var r = M.rng(seed), out = [], all = []; for(var i = 0; i < N; i++) all.push(i);
-      if(mm === 'srs' || mm === 'vol') out = M.sample(r, all, 10);
+      if(mm === 'srs') out = M.sample(r, all, 10);
+      else if(mm === 'vol') out = M.sample(r, all.slice(70), 10); // the ones who chose to answer: bunched, not spread by chance
       else if(mm === 'strat'){ var al = S.allocate ? S.allocate(sizes, 10) : sizes.map(function(z){ return Math.round(z / tot * 10); }); al.forEach(function(a, k){ out = out.concat(M.sample(r, all.filter(function(i){ return grp(i) === k; }), a)); }); }
       else if(mm === 'cluster'){ M.sample(r, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 1).forEach(function(row){ for(var j = 0; j < cols; j++) out.push(row * cols + j); }); }
       else if(mm === 'sys'){ var st0 = r.int(0, 9); for(var j2 = st0; j2 < N; j2 += 10) out.push(j2); }
@@ -514,7 +515,7 @@
         g.push('<g class="nf-l' + (on ? ' is-on' : '') + (yours ? ' is-yours' : '') + '"><rect x="' + (x + 1) + '" y="' + y + '" width="' + (cw - 2) + '" height="36" rx="6"/><text x="' + (x + cw / 2) + '" y="' + (y + 23) + '" text-anchor="middle">' + i + '</text></g>');
       }
       cap = done.k ? 'With k = ' + k + ' and a random start of, say, ' + st0 + ': labels ' + st0 + ', ' + (st0 + k) + ', ' + (st0 + 2 * k) + ' and so on, ' + f.n + ' in all.'
-        : kk ? 'Your k = ' + kk + ' (red): ' + f.n + ' units that far apart would need ' + (kk * f.n) + ' labels, but there are ' + f.N + '.' : 'The list, labeled 1 to ' + f.N + ' (the start is shown as an example).';
+        : kk ? 'Your k = ' + kk + ' (red): ' + (kk * f.n > f.N ? f.n + ' units that far apart would need ' + (kk * f.n) + ' labels, but there are ' + f.N + '.' : f.n + ' units that far apart reach only label ' + (kk * f.n) + ' of ' + f.N + ', so the end of the list could never be chosen.') : 'The list, labeled 1 to ' + f.N + ' (the start is shown as an example).';
     } else if(f.which === 'strat'){
       var N = f.N, x0 = 10, bw = W - 20, nn = f.n; H = 200;
       g.push('<text class="nf-k" x="10" y="20">Population, ' + N + '</text><text class="nf-k" x="10" y="122">Sample, ' + nn + '</text>');

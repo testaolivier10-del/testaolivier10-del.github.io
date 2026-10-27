@@ -201,7 +201,7 @@
     function words(){
       var t0 = tally(), head, sub = '';
       if(!t0.all) head = 'Tap Build 100 intervals: 100 random samples, one interval from each.';
-      else if(t0.all === 20 && smps.length === 20) { head = t0.sHits + ' of these 20 intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.'; sub = 'Each row is one random sample and its ' + pct(level, 0) + ' interval. Build 100 more to see the long run rate settle near ' + pct(level, 0) + '.'; }
+      else if(t0.all === 20 && smps.length === 20) { head = t0.sHits + ' of these 20 intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.'; sub = 'Each row is one random sample and its ' + pct(level, 0) + ' interval. Build 100 more to see the long-run rate settle near ' + pct(level, 0) + '.'; }
       else if(!sub) {
         head = t0.sHits + ' of these ' + t0.sh + ' intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.';
         sub = 'All ' + big(t0.all) + ' so far: ' + pct(t0.hits / t0.all) + ' captured' + (t0.all >= 1000 ? ', close to the long run rate' : '') + '. ' + (condNote() || 'Tap an interval to read its parts.');
@@ -273,7 +273,7 @@
       me: 'Multiply the critical value by the standard error from the steps above. Your interval is drawn dashed: it should be centered on the dot and match the solid one.',
       df: th('For one mean, $df = n - 1$.'),
       mefrom: 'The margin of error is half the width: (upper − lower) ÷ 2.',
-      count: 'An interval captures p when the blue line passes through it. Count those rows.',
+      count: 'An interval captures the true value when the blue line passes through it. Count those rows.',
       longrun: 'In the long run the capture rate settles at the confidence level, whatever one batch shows.',
       interp: 'A good interpretation names the level, the interval, the parameter in context (all of the population), and says "captures". It is not about the sample or individual values.',
       level: 'The level describes the method: the share of intervals built this way that capture the true value.',

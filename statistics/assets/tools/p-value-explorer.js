@@ -567,7 +567,7 @@
       if(state.yours && rr.nm && rr.G){
         var Y = state.yours, G = rr.G, nm = rr.nm, xv = null;
         if(Y.key === 'z' || Y.key === 't') xv = nm.center + Y.v * nm.se;
-        if(Y.key === 'se') xv = nm.center + (nm.obs - nm.center) / nm.se * Y.v; // the observed value's z with their SE
+        if(Y.key === 'se') xv = nm.center + (nm.obs - nm.center) / Y.v * nm.se; // the observed value's z with their SE
         if(xv != null && isFinite(xv)){
           var inside = xv > G.lo && xv < G.hi, px = G.sx(Math.max(G.lo, Math.min(G.hi, xv)));
           if(inside) extra += '<line class="stat-yours" x1="' + f2(px) + '" y1="' + f2(G.t + 28) + '" x2="' + f2(px) + '" y2="' + f2(G.b) + '"/>';
@@ -599,7 +599,7 @@
       which: 'Rejecting can only be a Type I error; failing to reject can only be a Type II error.',
       typeI: 'A Type I error rejects a null hypothesis that is true. Put that in the words of this study.',
       pI: 'The chance of a Type I error is the significance level α, set before the data.',
-      power: 'Power and the Type II error add to 1: power = 1 − β.',
+      power: 'Power and the probability of a Type II error add to 1: power = 1 − β.',
       increase: 'Power grows with a larger sample, a larger α, or a true value farther from the null.'
     };
     return H[s.key] || null;
