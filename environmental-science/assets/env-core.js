@@ -12,7 +12,7 @@
           d: 1-3, n: attempts, c: correct, right: 0|1 (the latest answer),
           seen: ts, due: ts|0, ivl: days, ease, lapses, src: 'q'|<tool kind> }
 
-   Mastery by topic, unit and mathematical practice is COMPUTED from the records,
+   Mastery by topic, unit and science practice is COMPUTED from the records,
    never stored, so it cannot drift from the evidence and two devices merge by
    keeping the newer record per item. Mastery is not accuracy: credit from
    questions answered right, weighted by level and faded with time, over what
@@ -106,7 +106,7 @@
     ts.forEach(function(t){ var m = topicMastery(t.id); s += m.value; a += m.answered; });
     return { value: s / ts.length, answered: a, topics: ts.length };
   }
-  /* A mathematical practice: "4" counts every 4.x skill, "4.B" only that skill. */
+  /* A science practice: "4" counts every 4.x skill, "4.B" only that skill. */
   function practiceMastery(pid){
     pid = String(pid);
     var whole = pid.indexOf('.') < 0;

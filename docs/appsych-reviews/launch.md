@@ -29,3 +29,11 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
   neuron diagram parts. No console errors on the swept pages (home, learn, unit, glossary, flashcards,
   practice, review, exams, frq, justify, tools, dashboard, cram, search, teachers, unit test, statistics page,
   a lesson, notes, two FRQs, two tools, a unit sheet) at 390/1440 light/dark.
+- Practice said "Every mathematical practice" and "All four types" (forked from statistics): psychology and
+  environmental science now say "science practice" (selector, results table, search blurbs, core comments)
+  and "Both types (AAQ and EBQ)" / "All three types".
+- Phone header with a level badge cut the course name ("Psychol…", "Env Scie…") on every course: under 430 px
+  with a badge showing, the wordmark gives way as it already did under 360 px (shared `theme.css`).
+- Review, empty queue: "due now" ran together ("duenow") under the big 0 in every course (shared
+  `r3-study.css`); Flashcards was offered twice (button and link card) in all seven AP® review pages: button
+  removed.

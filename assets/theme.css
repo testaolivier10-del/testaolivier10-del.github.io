@@ -1022,6 +1022,11 @@ footer .privacy-link a:hover{color:var(--ink);}
 }
 #site-header .lp-launch svg{border-radius:11px;}
 #site-header .lp-launch:hover{transform:none;}
+/* A level badge takes the room the course name needs on a 390px phone ("Psychol…", "Env Scie…", AP®
+   Psychology launch): with a badge showing, the wordmark gives way under 430px, as it does under 360px. */
+@media (max-width:429px){
+  #site-header:has(.level-badge:not([hidden])) .site-header__brand:has(+ .site-header__course) .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+}
 @media (max-width:359px){
   .site-header__brand:has(+ .site-header__course) .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
 }

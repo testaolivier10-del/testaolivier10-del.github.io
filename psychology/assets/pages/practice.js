@@ -1,7 +1,7 @@
 /* AP® Psychology Practice (docs/apbio-spec.md section 1, "Question bank";
    forked from anatomy-physiology/assets/apps/practice.js).
 
-   A set builder over the course question bank: unit, topic, mathematical practice
+   A set builder over the course question bank: unit, topic, science practice
    (1-6), question type (standalone, stimulus sets, numeric) and difficulty.
    The page fetches the bank's index first (ApPsychCore.loadIndex: ids and tags,
    enough to build a set), then only the units the set draws from
@@ -209,9 +209,9 @@
     var units = [{ id: '', name: 'Every published unit' }].concat(builtUnits().map(function(u){ return { id: u.id, name: unitName(u.id) }; }));
     var ts = builtTopics().filter(function(t){ return !state.unit || t.unit === state.unit; });
     var topics = [{ id: '', name: state.unit ? 'Every topic in the unit' : 'Every topic' }].concat(ts.map(function(t){ return { id: t.id, name: (t.ced ? t.ced + ' ' : '') + t.title }; }));
-    var practices = [{ id: '', name: 'Every mathematical practice' }].concat((CUR.practices || []).map(function(p){ return { id: String(p.id), name: p.id + '. ' + p.name }; }));
+    var practices = [{ id: '', name: 'Every science practice' }].concat((CUR.practices || []).map(function(p){ return { id: String(p.id), name: p.id + '. ' + p.name }; }));
     return '<div class="cx-fields psy-pr-filters">' + select('psy-pr-unit', 'Unit', units, state.unit) + select('psy-pr-topic', 'Topic', topics, state.topic) +
-      select('psy-pr-practice', 'Mathematical practice', practices, state.practice) + select('psy-pr-kind', 'Question type', KINDS, state.kind) +
+      select('psy-pr-practice', 'Science practice', practices, state.practice) + select('psy-pr-kind', 'Question type', KINDS, state.kind) +
       select('psy-pr-diff', 'Difficulty', DIFFS, state.diff) + '</div>';
   }
   function railHtml(){
@@ -231,7 +231,7 @@
       links: [
         { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
         { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit tests and full practice exams.' },
-        { href: BASE + 'frq.html', title: 'Free-response practice', sub: 'All four types, with rubrics.' }
+        { href: BASE + 'frq.html', title: 'Free-response practice', sub: 'Both types (AAQ and EBQ), with rubrics.' }
       ]
     });
   }
@@ -483,7 +483,7 @@
       '<h2>By topic</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by topic"><table class="psy-pr-table"><thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Mastery now</th></tr></thead><tbody>' +
         byTopic.map(function(x){ var m = Core.topicMastery(x.key); return '<tr><th scope="row"><a href="' + lessonHref(x.key) + '">' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</a></th><td>' + x.c + '/' + x.n + '</td><td>' + Core.pct(m.value) + '</td></tr>'; }).join('') +
       '</tbody></table></div>' +
-      '<h2>By mathematical practice</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by mathematical practice"><table class="psy-pr-table"><thead><tr><th scope="col">Practice</th><th scope="col">Right</th></tr></thead><tbody>' +
+      '<h2>By science practice</h2><div class="table-wrap" tabindex="0" role="region" aria-label="Results by science practice"><table class="psy-pr-table"><thead><tr><th scope="col">Practice</th><th scope="col">Right</th></tr></thead><tbody>' +
         byPractice.map(function(x){ var p = PRACTICE[x.key]; return '<tr><th scope="row">' + esc(x.key + (p ? '. ' + p.name : '')) + '</th><td>' + x.c + '/' + x.n + '</td></tr>'; }).join('') +
       '</tbody></table></div>' +
       '<div class="psy-pr-actions">' +
