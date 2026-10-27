@@ -275,7 +275,7 @@
 .cx-flaglist-b{display:flex;flex-wrap:wrap;gap:8px;}
 .cx-flaglist-b .btn-outline{min-height:40px;padding:6px 14px;font-size:13px;}
 /* Review's flagged card (assets/course/flags.js): the count and one button. The dashboard's copy is in hub.css. */
-.cx-flagcard{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:14px 0 0;padding:14px 16px;border-radius:var(--radius);background:var(--tint-bad);color:var(--ink);font:600 14.5px/1.5 var(--font-ui);}
+.cx-flagcard{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:0 0 14px;padding:14px 16px;border-radius:var(--radius);background:var(--tint-bad);color:var(--ink);font:600 14.5px/1.5 var(--font-ui);}
 .cx-flagcard[hidden]{display:none;}
 .cx-flagcard svg{flex:0 0 auto;width:18px;height:18px;color:var(--bad-text);fill:currentColor;}
 .cx-flagcard span{flex:1 1 220px;}

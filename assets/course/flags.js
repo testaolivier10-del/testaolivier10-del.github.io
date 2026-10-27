@@ -119,9 +119,9 @@
       card.id = 'cx-flagcard';
       card.className = 'cx-flagcard';
       app.parentNode.insertBefore(card, app);
-      // Review: the card sits in the main column under the queue, and follows it when the page redraws.
+      // Review: the card opens the main column, right under the band, and stays there when the page redraws.
       if(app.getAttribute('data-slug') === 'review' && window.MutationObserver){
-        var place = function(){ var m = app.querySelector('.cx-main'); if(m && card.parentNode !== m) m.appendChild(card); };
+        var place = function(){ var m = app.querySelector('.cx-main'); if(m && m.firstChild !== card) m.insertBefore(card, m.firstChild); };
         place();
         new MutationObserver(place).observe(app, { childList: true, subtree: true });
       }
