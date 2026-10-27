@@ -361,7 +361,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
 
 26. (2026-10-27, tool audit fixes; `docs/tool-audit-2026-10.md`) **Trainer fixes.** ICE drills: the H₂ + I₂ ⇌ 2HI
     context uses the measured K<sub>c</sub> = 54.3 at 430 °C (`Kfix`, `T`, `Ksource` in its data; find-K data are built
-    to land within 3% of it), instead of drill values such as 1.28. Periodic trends: In, Sn, Tl, Pb and Bi are greyed
+    to land within 3% of it), instead of drill values such as 1.28. Periodic trends: In, Sn, Tl, Pb and Bi are grayed
     out on the radius table (their metallic radii, Teatum et al. C12, are correct for the source but run against the
     across-a-period trend) with a note why; the drill already skipped such pairs. Units and sig figs lands on the live
     fraction with every given as a tappable tile (tap: top, bottom, out). Q vs K test draws the Q-K bar with the

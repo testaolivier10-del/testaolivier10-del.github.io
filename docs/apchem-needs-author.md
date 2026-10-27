@@ -498,7 +498,7 @@ are with the exams agent.
 The radius table uses 12-coordinate metallic radii for Ga, In, Sn, Tl, Pb and Bi (Teatum, Gschneidner and Waber via
 the mendeleev package), which give In 158 < Sn 163 and Tl 160 < Pb 170 < Bi 178, against the across-a-period trend.
 Other sets also break it there (Pyykkö covalent: In 142, Sn 140; Tl 144, Pb 144, Bi 151). The tool now greys those
-five out on the radius table with a note; the values themselves are unchanged. Decide whether to keep them greyed,
+five out on the radius table with a note; the values themselves are unchanged. Decide whether to keep them grayed,
 switch the p-block to one covalent set, or drop them from the radius view.
 
 ## ice-hi-k: the H₂ + I₂ constant (open, 2026-10-27)
