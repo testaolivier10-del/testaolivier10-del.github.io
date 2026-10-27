@@ -273,13 +273,23 @@
           (gPh ? '<text class="ol-g-lbl" x="4" y="' + n1(GT + PH / 2 - 3) + '">' + name[k] + '</text><text class="ol-g-tick" x="4" y="' + n1(GT + PH / 2 + 13) + '">' + unit[k] + '</text>'
             : '<text class="ol-g-lbl" x="6" y="' + (GT + 11) + '">' + name[k] + '</text><text class="ol-g-tick" x="6" y="' + (GT + 24) + '">' + unit[k] + '</text>') +
           '<text class="ol-g-tick" x="' + (GL + PW) + '" y="' + (GH - 8) + '" text-anchor="end" dx="0">t (s)</text>' +
-          '<g class="ol-g-Tg"></g><polyline class="ol-g-line ol-g-' + k + '" points=""/><circle class="ol-g-dot ol-g-d' + k + '" r="4" cx="-9" cy="-9"/></svg>';
-        gEls[k] = { svg: el.querySelector('svg'), line: el.querySelector('polyline'), dot: el.querySelector('circle.ol-g-dot'), Tg: el.querySelector('.ol-g-Tg'), ym: ym, PW: PW, PH: PH, w: w, name: name[k], unit: unit[k] };
+          '<g class="ol-g-Tg"></g><polyline class="ol-g-ghost" points=""/><text class="ol-g-ghost-t" x="' + n1(GL + PW / 2) + '" y="' + n1(GT + 13) + '" text-anchor="middle"></text><polyline class="ol-g-line ol-g-' + k + '" points=""/><circle class="ol-g-dot ol-g-d' + k + '" r="4" cx="-9" cy="-9"/></svg>';
+        gEls[k] = { svg: el.querySelector('svg'), line: el.querySelector('polyline.ol-g-line'), ghost: el.querySelector('polyline.ol-g-ghost'), ghostT: el.querySelector('.ol-g-ghost-t'), dot: el.querySelector('circle.ol-g-dot'), Tg: el.querySelector('.ol-g-Tg'), ym: ym, PW: PW, PH: PH, w: w, name: name[k], unit: unit[k] };
       });
+    }
+    /* Before the first Play the graphs are not empty: a faint dashed preview
+       of the motion over the window (the same simulation, run ahead), which
+       the live trace then draws over (audit 2026-10). */
+    function ghost(){
+      var w = gEls.x.w, q = OL.init(sys), pts = { x: [], v: [], a: [] }, n = Math.ceil(w / 0.01);
+      for(var i = 0; i <= n; i++){ var h = sample(q); ['x', 'v', 'a'].forEach(function(k){ pts[k].push(n1(GL + h.t / w * gEls[k].PW) + ',' + n1(GT + gEls[k].PH / 2 - h[k] / gEls[k].ym * gEls[k].PH / 2)); }); q = OL.advance(sys, q, 0.01); }
+      return pts;
     }
     function drawGraphs(){
       if(!hist.length) return;
       var t1 = hist[hist.length - 1].t, w = gEls.x.w, t0 = Math.max(0, t1 - w);
+      var pre = hist.length < 2, gp = pre ? ghost() : null;
+      ['x', 'v', 'a'].forEach(function(k){ var G = gEls[k]; if(!G.ghost) return; G.ghost.setAttribute('points', pre ? gp[k].join(' ') : ''); G.ghostT.textContent = pre ? 'Press Play to trace it' : ''; });
       ['x', 'v', 'a'].forEach(function(k){
         var G = gEls[k], pts = [];
         for(var i = 0; i < hist.length; i++){ var h = hist[i]; if(h.t < t0) continue; pts.push(n1(GL + (h.t - t0) / w * G.PW) + ',' + n1(GT + G.PH / 2 - h[k] / G.ym * G.PH / 2)); }
