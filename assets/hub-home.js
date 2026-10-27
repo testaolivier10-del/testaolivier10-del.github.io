@@ -13,13 +13,13 @@
     var COURSE_LIST = [
       { key: 'nremt', name: 'NREMT-EMT', path: '/nremt/', status: 'live' },
       { key: 'ochem', name: 'Organic Chemistry', path: '/ochem/', status: 'live' },
-      { key: 'anp', name: 'Anatomy & Physiology', path: '/anatomy-physiology/', status: 'beta' },
-      { key: 'apbio', name: 'AP® Biology', path: '/bio/', status: 'beta' },
-      { key: 'apchem', name: 'AP® Chemistry', path: '/chem/', status: 'beta' },
-      { key: 'apphys', name: 'AP® Physics 1', path: '/physics/', status: 'beta' },
-      { key: 'apcalc', name: 'AP® Calculus AB', path: '/calculus/', status: 'beta' },
-      { key: 'apstat', name: 'AP® Statistics', path: '/statistics/', status: 'beta' },
-      { key: 'apenv', name: 'AP® Environmental Science', path: '/environmental-science/', status: 'beta' },
+      { key: 'anp', name: 'Anatomy & Physiology', path: '/anatomy-physiology/', status: 'live' },
+      { key: 'apbio', name: 'AP® Biology', path: '/bio/', status: 'live' },
+      { key: 'apchem', name: 'AP® Chemistry', path: '/chem/', status: 'live' },
+      { key: 'apphys', name: 'AP® Physics 1', path: '/physics/', status: 'live' },
+      { key: 'apcalc', name: 'AP® Calculus AB', path: '/calculus/', status: 'live' },
+      { key: 'apstat', name: 'AP® Statistics', path: '/statistics/', status: 'live' },
+      { key: 'apenv', name: 'AP® Environmental Science', path: '/environmental-science/', status: 'live' },
     ];
     // courses:end
     var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){

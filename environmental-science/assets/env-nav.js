@@ -11,13 +11,16 @@
     { key: 'learn', label: 'Learn', href: base + 'learn.html' },
     { key: 'practice', label: 'Practice', href: base + 'practice.html' },
     { key: 'review', label: 'Review', href: base + 'review.html' },
+    { key: 'flashcards', label: 'Flashcards', href: base + 'flashcards.html' },
     { key: 'exams', label: 'Exams', href: base + 'exams.html' },
     { key: 'glossary', label: 'Glossary', href: base + 'glossary.html' },
     { key: 'tools', label: 'Tools', href: base + 'tools.html' },
     { key: 'dashboard', label: 'Dashboard', href: base + 'dashboard.html' }
   ];
-  var ALIAS = { flashcards: 'practice', frq: 'exams' };
+  var ALIAS = { frq: 'exams' };
   section = ALIAS[section] || section;
+  // Flashcards has its own tab (Olivier, 2026-10-26); its page still declares the Practice section.
+  if (/(^|\/)flashcards\.html$/.test(location.pathname)) section = 'flashcards';
   try{
     if(window.LevlChrome){
       window.LevlChrome.registerServiceWorker();

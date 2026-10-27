@@ -223,12 +223,13 @@
 
   function renderSetup(){
     view('setup');
-    if(MODE[state.mode] && modeUnavailable(state.mode)) state.mode = 'topic';
+    if(state.mode === 'flagged' || (MODE[state.mode] && modeUnavailable(state.mode))) state.mode = 'topic';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder anp-pr-setup" novalidate aria-label="Build a practice set">' +
         '<fieldset class="cx-step anp-pr-modes"><legend>' + step(1) + 'What do you want to practice?</legend>' +
           '<div class="cx-choices">' +
-          MODES.map(function(m){
+          // Flagged questions live in Review now (Olivier, 2026-10-26); ?mode=flagged from there starts them directly.
+          MODES.filter(function(m){ return m.id !== 'flagged'; }).map(function(m){
             var why = modeUnavailable(m.id);
             return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' +
               (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b>' +
@@ -482,7 +483,7 @@
       else if(p.get('chapter') && state.chapter === p.get('chapter')) state.mode = 'chapter';
       else if(p.get('core') && state.core === p.get('core')) state.mode = 'core';
       else if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      renderSetup();
+      if(state.mode === 'flagged' && !modeUnavailable('flagged')) start('flagged', 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.anp-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';

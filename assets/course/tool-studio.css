@@ -3,8 +3,10 @@
    course --ctint / --cink is the one accent. Three text sizes: 13, 16, 22. */
 
 /* ------------------------------------------------------------ chrome diet */
-/* Round 3 (docs/site-redesign.md, board R10-Tool): on a desktop the site header, the course tabs and the
-   tool's cover band (assets/course/r3-tools.css) stay above the studio; a phone gives the tool the screen. */
+/* A full tool (body.ls-full, set by mount() unless slim) owns the screen at every width: the slim top bar's back
+   arrow, the tool name and the menu replace the site header, the course tabs and any cover band (Olivier,
+   2026-10-26). Slim reference pages keep the site header and tabs on a desktop (round 3) and give a phone the screen. */
+body.ls-full #site-header, body.ls-full .course-nav, body.ls-full .r3-toolband{display:none !important;}
 @media (max-width:999.98px){
   body.ls-on #site-header, body.ls-on .course-nav{display:none !important;}
 }

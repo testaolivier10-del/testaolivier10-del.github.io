@@ -154,7 +154,7 @@ export function r3PageMain(page, o) {
   const cls = (/class="xshell ?([^"]*)"/.exec(page.slice(a, te + 1)) || [, ''])[1];
   const p = heroParts(page.slice(te + 1, b));
   const band = bandShort({
-    kicker: `${o.kicker}${o.beta ? ' <span class="tag beta">Beta</span>' : ''}`, note: o.note || '',
+    kicker: `${o.kicker}`, note: o.note || '',
     h1: o.h1 || (o.plainH1 ? p.h1 : twoTone(p.h1)), hand: o.hand, lede: o.lede ?? p.lede, cta: o.cta, cta2: o.cta2,
     art: `<img src="${o.up}assets/covers/art/${o.key}.svg" alt="" width="640" height="400" decoding="async">`,
   }).replace('<p class="issue">', p.crumbs ? `<nav class="crumbs" aria-label="Breadcrumb">${p.crumbs}</nav>\n<p class="issue">` : '<p class="issue">')
@@ -188,6 +188,9 @@ export function apFrqItemR3(page, ctx) {
 
 /* The opener of a tool page. o: { key, up ('../../'), slug, title?, hand, lede, back: {href,label}, crumbs } */
 export function toolBand(o) {
+  /* A full tool page owns the screen (Olivier, 2026-10-26): it gets no band, only the empty markers, so the builders
+     keep one place to write. Reference pages that scroll (o.ref: NREMT formulary, flowcharts and the like) keep it. */
+  if (!o.ref) return '<!-- r3-toolband:start -->\n\n<!-- r3-toolband:end -->';
   const list = toolCovers(o.key);
   const i = list.findIndex((t) => t.slug === o.slug);
   const t = i >= 0 ? list[i] : null;

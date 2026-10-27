@@ -240,12 +240,13 @@
 
   function renderSetup(){
     view('setup');
-    if(modeUnavailable(state.mode)) state.mode = 'build';
+    if(state.mode === 'flagged' || modeUnavailable(state.mode)) state.mode = 'build';
     var n1 = '<span class="cx-step-n" aria-hidden="true">';
     app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
       '<form class="cx-card cx-builder bio-pr-setup" novalidate aria-label="Build a practice set">' +
         '<fieldset class="cx-step"><legend>' + n1 + '1</span>What do you want to practice?</legend><div class="cx-choices">' +
-          MODES.map(function(m){
+          // Flagged questions live in Review now (Olivier, 2026-10-26); ?mode=flagged from there starts them directly.
+          MODES.filter(function(m){ return m.id !== 'flagged'; }).map(function(m){
             var why = modeUnavailable(m.id);
             return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' + (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b><span>' + esc(why || (m.id === 'flagged' ? plural(flaggedCount(), 'question') + ' you flagged to come back to.' : m.desc)) + '</span></span></label>';
           }).join('') + '</div></fieldset>' +
@@ -510,7 +511,7 @@
       if(KINDS.some(function(k){ return k.id === p.get('type'); })) state.kind = p.get('type');
       if(/^[123]$/.test(p.get('diff') || '')) state.diff = p.get('diff');
       if(MODE[p.get('mode')]) state.mode = p.get('mode');
-      renderSetup();
+      if(state.mode === 'flagged' && !modeUnavailable('flagged')) start('flagged', 0); else renderSetup();
       if(p.toString()){ var s = app.querySelector('.bio-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){
       app.innerHTML = '<p>The question bank did not load. Check your connection and reload; once a page has loaded online it also works offline.</p>';

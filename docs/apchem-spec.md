@@ -357,6 +357,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
      (with "(Premium)" when gated) once the tool is live, as AP® Biology's lessons do. `periodic-trends-pes`: 1.5, 1.6,
      1.7, 1.8; `equilibrium-kinetics`: 5.5, 5.11, 7.1, 7.2, 7.9, 7.10. The equations sheet links them from Coulomb's
      law and the K expression.
+25. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
 
 ## 8. Open items for the owner
 

@@ -139,7 +139,8 @@
     var step = function(n){ return '<span class="cx-step-n" aria-hidden="true">' + n + '</span>'; };
     return '<form class="cx-card cx-builder" id="ocBuilder" novalidate aria-label="Build a practice set">' +
       '<fieldset class="cx-step"><legend>' + step(1) + 'What do you want to practice?</legend><div class="cx-choices">' +
-        MODES.map(function(m){
+        // Flagged questions live in Review now (Olivier, 2026-10-26); ?mode=flagged from there starts them directly.
+        MODES.filter(function(m){ return m.mode !== 'flagged'; }).map(function(m){
           var off = modeOff(m.mode), lab = modeTitle(m);
           return '<label class="cx-choice"><input type="radio" name="ocMode" value="' + m.mode + '"' + (m.mode === pick.mode ? ' checked' : '') + (off ? ' disabled' : '') + '>' +
             '<span><b>' + esc(lab.t) + (m.mode === 'adaptive' ? ' <small class="cx-tag">Default</small>' : '') + '</b><span>' + esc(off || lab.d) + '</span></span></label>';
@@ -205,7 +206,7 @@
 
     // The shared study layout: the builder on the left, your numbers on the
     // right (docs/course-shell.md, W-C).
-    if(modeOff(pick.mode)) pick.mode = 'adaptive';
+    if(pick.mode === 'flagged' || modeOff(pick.mode)) pick.mode = 'adaptive';
     var html = '<div class="cx-body has-rail"><div class="cx-main">' + builderHtml(recs);
 
     var rest = recs.slice(1);
@@ -231,23 +232,7 @@
         '<div class="module-card">' + conceptRowsHtml(strong) + '</div></section>';
     }
 
-    var flagged = flaggedQuestions();
-    if(flagged.length){
-      html += '<section><h2 class="cx-h2">Flagged to come back to</h2>' +
-        '<div class="module-card">' + flagged.slice(0, 8).map(function(q){
-          return '<div class="flag-row">' +
-            '<span class="name">' + esc(q.prompt || q.q) +
-              '<small>' + esc(E.topicTitle(q.topic)) + ' · ' +
-              esc((M.TIERS[q.tier || 2] || M.TIERS[2]).label) + '</small></span>' +
-            '<button type="button" class="unflag" data-unflag="' + esc(q.id) + '">Unflag</button>' +
-          '</div>';
-        }).join('') +
-        (flagged.length > 8
-          ? '<div class="flag-row"><span class="name" style="color:var(--muted);font-weight:700;">' +
-            esc('+ ' + (flagged.length - 8) + ' more flagged') + '</span></div>'
-          : '') +
-        '</div></section>';
-    }
+    // Flagged questions are listed nowhere on Practice: Review shows how many and starts them.
 
     html += '</div>' + railHtml() + '</div>';
 
@@ -318,13 +303,6 @@
     });
     paintPick(); paintSum();
 
-    homeEl.querySelectorAll('[data-unflag]').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        if(!F) return;
-        F.remove(btn.getAttribute('data-unflag'));
-        renderHome();
-      });
-    });
 
     show('home');
   }
@@ -511,7 +489,7 @@
     // list falls through to the home view like any other empty mode.
     if(params.mode === 'flagged'){
       var fq = flaggedQuestions();
-      return fq.length ? E.makePlan('flagged', { count: count }) : null;
+      return fq.length ? E.makePlan('flagged', { count: fq.length }) : null;
     }
     if(params.mode && ['adaptive','mistakes','quick','cumulative','mixed'].indexOf(params.mode) !== -1){
       return E.makePlan(params.mode, { count: count });

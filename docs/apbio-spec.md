@@ -358,6 +358,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    alone (`bio-home.css` `.bio-go`); primary buttons use the course green (`--btn-bg` tokens in
    `assets/theme.css`, white text 6.6:1, dark mode 12.3:1).
 31. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
+32. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
 
 ## 4. Map format (Phase 0)
 

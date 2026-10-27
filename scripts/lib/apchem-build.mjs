@@ -277,7 +277,8 @@ export function crumbNav(items) {
 
 /* Beta until an AP® Chemistry teacher signs off (docs/apchem-needs-author.md,
    teacher-review). chem-nav-ref: a label, not teaching. */
-export const BETA_PILL = '<span class="chem-beta chem-nav-ref">Beta</span>';
+/* The Beta label is gone (Olivier, 2026-10-26); the export stays so the pages that place it need no change. */
+export const BETA_PILL = '';
 
 /* "Report a problem" for a page, through the site dialog (assets/report-question.js). */
 export const reportButton = (pageId) => `<button type="button" class="report-btn" data-report-kind="page" data-report-course="${COURSE_KEY}" data-report-question="${esc(pageId)}">Report a problem</button>`;

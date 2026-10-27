@@ -119,7 +119,7 @@
     LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: 'AP® Statistics', back: BASE + 'index.html', backLabel: 'Back to AP® Statistics',
       slug: 'apstat-justify', host: app, detailsTitle: 'Topic',
       menu: { copyLink: true, report: { course: 'apstat', id: 'page:justify' }, allTools: { label: 'Course home' },
-        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Statistics teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
+        note: { label: 'Note.', html: 'This course has not yet been reviewed by an AP® Statistics teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
     if(lede){ var pp = document.createElement('p'); pp.textContent = lede.textContent; LS.add('about', pp); }
     app.hidden = true;
     return LS;

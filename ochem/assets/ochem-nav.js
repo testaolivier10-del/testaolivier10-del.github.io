@@ -15,22 +15,25 @@
 (function(){
   var base = window.OCHEM_BASE || '';
   var section = window.OCHEM_SECTION || '';
-  // The same eight tabs, in the same order, as every LevlPrep course. Search
-  // is reached from the header, not a tab; flashcards are a Practice mode
-  // (linked from Practice and Review), so their page lights Practice.
+  // The same nine tabs, in the same order, as every LevlPrep course. Search
+  // is reached from the header, not a tab; flashcards have their own tab
+  // (Olivier, 2026-10-26).
   var ITEMS = [
     { key: 'home', label: 'Home', href: base + 'index.html' },
     { key: 'learn', label: 'Learn', href: base + 'learn.html' },
     { key: 'practice', label: 'Practice', href: base + 'practice.html' },
     { key: 'review', label: 'Review', href: base + 'review.html' },
+    { key: 'flashcards', label: 'Flashcards', href: base + 'flashcards.html' },
     { key: 'exams', label: 'Exams', href: base + 'exams.html' },
     { key: 'glossary', label: 'Glossary', href: base + 'glossary.html' },
     { key: 'tools', label: 'Tools', href: base + 'tools.html' },
     { key: 'dashboard', label: 'Dashboard', href: base + 'dashboard.html' }
   ];
   // Section names a page may still carry from before the tabs were unified.
-  var ALIAS = { flashcards: 'practice', mastery: 'dashboard' };
+  var ALIAS = { mastery: 'dashboard' };
   section = ALIAS[section] || section;
+  // Flashcards has its own tab (Olivier, 2026-10-26); its page still declares the Practice section.
+  if (/(^|\/)flashcards\.html$/.test(location.pathname)) section = 'flashcards';
 
   /* A lesson's eyebrow names the chapter it belongs to, and nothing else:
      the number used to be typed in by hand, and inserting a chapter

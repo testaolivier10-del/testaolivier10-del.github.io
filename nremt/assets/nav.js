@@ -10,8 +10,8 @@
    window.LevlXP shim the quiz pages were written against, and the sync
    namespace. */
 (function(){
-  // The same eight tabs, in the same order, as every LevlPrep course: Home,
-  // Learn, Practice, Review, Exams, Glossary, Tools, Dashboard. Search is not
+  // The same nine tabs, in the same order, as every LevlPrep course: Home,
+  // Learn, Practice, Review, Flashcards, Exams, Glossary, Tools, Dashboard. Search is not
   // a tab (the header reaches it), and neither is the old Study Plan, whose
   // countdown is now a card on the Dashboard.
   var NAV_ITEMS = [
@@ -21,6 +21,7 @@
     { href: 'study-notes.html', label: 'Learn' },
     { href: 'practice.html', label: 'Practice' },
     { href: 'review.html', label: 'Review' },
+    { href: 'flashcards.html', label: 'Flashcards' },
     { href: 'exams.html', label: 'Exams' },
     { href: 'glossary.html', label: 'Glossary' },
     { href: 'tools.html', label: 'Tools' },
@@ -30,10 +31,9 @@
   // Pages that live "under" a tab but keep their own URL — that tab should
   // still read as active on them. Learn is the reading (the notes and the
   // mnemonics); Tools is everything interactive that is not a question set;
-  // flashcards are a Practice mode; exam-day is about the exam itself.
+  // exam-day is about the exam itself.
   var SUBPAGES = {
     'study-notes.html': ['mnemonics.html'],
-    'practice.html': ['flashcards.html'],
     'exams.html': ['exam-day.html'],
     'tools.html': ['body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'formulary.html', 'reference-cards.html']
   };

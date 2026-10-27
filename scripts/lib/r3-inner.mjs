@@ -60,7 +60,7 @@ export function shortBand({ key, up = '../', crumbs = [], kicker, issue, title, 
     ? `<div class="hero-ctas"><a class="btn-chan" href="#r3Body" data-r3-start>${cta.label}</a></div>`
     : `<div class="hero-ctas"><a class="btn-chan" href="${cta.href}">${cta.label}</a></div>`;
   return `<section class="band short"${id ? ` id="${id}"` : ''} aria-labelledby="r3Title"><div class="hwrap"><div>
-${crumb}<p class="issue">${issue || `${COURSES[key].label} &middot; ${kicker}`}${beta ? ' <span class="tag beta">Beta</span>' : ''} <i></i></p>
+${crumb}<p class="issue">${issue || `${COURSES[key].label} &middot; ${kicker}`} <i></i></p>
 <h1 class="deck" id="r3Title">${title ? `${title} ` : ''}<span>${tone}</span></h1>
 <p class="hand">${hand}</p>
 ${lede ? `<p class="lede"${ledeId ? ` id="${ledeId}"` : ''}>${lede}</p>\n` : ''}${btn}${extra}

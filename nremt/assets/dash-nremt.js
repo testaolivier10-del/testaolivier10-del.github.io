@@ -134,11 +134,9 @@
     // ---------------------------------------------------------------- 1 now
     var now;
     var today = { streak: st.current, count: st.todayCount, goal: st.goal, freezes: st.freezes || 0 };
-    var Rem = window.LevlReminders;
-    if(Rem && Rem.configured && Rem.configured()){
-      var rs = Rem.settings ? Rem.settings() : null;
-      today.reminder = rs && rs.subscribed ? { text: 'Reminders on', href: '../privacy.html#reminders' } : { text: 'Get a daily reminder', href: '../privacy.html#reminders' };
-    }
+    // NREMT's daily goal and in-browser reminders live on this page (moved from Practice, owner 2026-10-26), in the
+    // streak drawer; the link opens it.
+    today.reminder = { text: legacyStreak.remindersEnabled ? 'Goal and reminders (on)' : 'Daily goal and reminders', href: '#d5Streak' };
     if(isNew){
       now = { title: 'Nothing here yet, so start <span>here.</span>', body: 'Every question you answer, in any mode, updates this page: your accuracy in six topic areas and the five exam domains, your review queue and your readiness.',
         steps: ['<a href="practice.html">Start a 20-question domain drill</a>, each answer checked as you go.', 'Or read the <a href="study-notes.html">study notes</a>, chapter by chapter.', 'Warm up with <a href="flashcards.html">flashcards</a> or try a <a href="tools.html">tool</a>.'], today: today };
@@ -267,7 +265,7 @@
         : { text: 'Next certificate: a full exam at ' + GOAL + '%.', sub: history.length ? 'You are ' + (GOAL - bestExam) + ' points off with ' + bestExam + '%.' : 'Take a full timed exam to start.', href: '#d5Milestones', cta: 'See milestones' },
       more: [
         { label: 'Level and topic badges', html: '<div id="levelBox"></div>' },
-        { label: 'Study streak, the last 14 days', html: '<div id="streakBox"></div>' },
+        { label: 'Study streak, daily goal and reminders', html: '<div id="streakBox"></div>', id: 'd5Streak' },
         { label: 'Review queue and mastery levels', html: '<div id="masteryBox"></div>' },
         { label: 'Badges', html: '<div id="badgeGrid"></div>' },
         { label: 'Milestones and certificates', html: '<div id="levlMilestones"></div>', id: 'd5Milestones' }
@@ -339,8 +337,46 @@
         html += '<div class="cal-day' + (done ? ' done' : '') + (k === todayKey ? ' today' : '') + '" title="' + k + (done ? ', ' + counts[k] + ' questions studied' : '') + '">' + DOW[d.getDay()] + '</div>';
       }
       set('streakBox', H.panel({ id: 'nr-cal', title: st.current ? st.current + '-day streak' : 'Study streak',
-        body: '<div class="cal-grid">' + html + '</div><p class="cx-hint" style="margin:12px 0 0">' + studied + ' of 14 days studied &middot; today ' + (counts[todayKey] || 0) + ' of ' + st.goal + (st.freezes ? ' &middot; ' + plural(st.freezes, 'freeze') + ' saved: it covers one missed day' : '') + '</p>' }));
+        body: '<div class="cal-grid">' + html + '</div><p class="cx-hint" style="margin:12px 0 0">' + studied + ' of 14 days studied &middot; today ' + (counts[todayKey] || 0) + ' of ' + st.goal + (st.freezes ? ' &middot; ' + plural(st.freezes, 'freeze') + ' saved: it covers one missed day' : '') + '</p>' + goalSettings() }));
+      wireGoalSettings();
     })();
+
+    /* Daily goal and reminders, moved here from the Practice page (Olivier, 2026-10-26: Practice is only for
+       practicing). Same storage as practice-engine.js: the goal goes to HubProgress and nremt_streak.dailyGoal,
+       reminders to nremt_streak.remindersEnabled and reminderHour; the reminder itself still fires from the
+       practice page while it is open. */
+    function nrStreak(){
+      var d = { dailyGoal: 15, remindersEnabled: false, reminderHour: 18 };
+      try{ return Object.assign(d, JSON.parse(localStorage.getItem('nremt_streak') || '{}') || {}); }catch(e){ return d; }
+    }
+    function saveNrStreak(o){ try{ localStorage.setItem('nremt_streak', JSON.stringify(o)); }catch(e){} }
+    function goalSettings(){
+      var sv = nrStreak();
+      var goal = (HP && st.goalBase) || st.goal || sv.dailyGoal;
+      var hours = [12, 14, 16, 18, 19, 20, 21].map(function(h){ return '<option value="' + h + '"' + (sv.reminderHour === h ? ' selected' : '') + '>' + (h > 12 ? (h - 12) + ' PM' : '12 PM') + '</option>'; }).join('');
+      return '<div class="nr-goal"><p class="nr-goal-row"><label for="nrGoalSel">Daily goal</label> <select id="nrGoalSel">' +
+        [10, 15, 20, 30, 50].map(function(g){ return '<option value="' + g + '"' + (goal === g ? ' selected' : '') + '>' + g + ' questions a day</option>'; }).join('') + '</select></p>' +
+        '<p class="nr-goal-row"><label><input type="checkbox" id="nrRemCb"' + (sv.remindersEnabled ? ' checked' : '') + '> Remind me in this browser if I haven&rsquo;t hit my goal by</label> <select id="nrRemHour" aria-label="Reminder time">' + hours + '</select></p>' +
+        '<p class="cx-hint" id="nrRemNote">Reminders only fire while a LevlPrep tab is open. Miss several days and the goal eases off on its own until you&rsquo;re back.</p></div>';
+    }
+    function wireGoalSettings(){
+      var sel = document.getElementById('nrGoalSel'), cb = document.getElementById('nrRemCb'), hr = document.getElementById('nrRemHour'), note = document.getElementById('nrRemNote');
+      if(sel) sel.addEventListener('change', function(){
+        var g = parseInt(sel.value, 10);
+        if(HP && HP.setGoal) HP.setGoal(g);
+        var sv = nrStreak(); sv.dailyGoal = g; saveNrStreak(sv);
+      });
+      if(hr) hr.addEventListener('change', function(){ var sv = nrStreak(); sv.reminderHour = parseInt(hr.value, 10); saveNrStreak(sv); });
+      if(cb) cb.addEventListener('change', function(){
+        var sv = nrStreak();
+        function done(on, msg){ sv.remindersEnabled = on; saveNrStreak(sv); cb.checked = on; if(msg && note) note.textContent = msg; }
+        if(!cb.checked) return done(false);
+        if(typeof Notification === 'undefined') return done(false, 'This browser does not support notifications.');
+        if(Notification.permission === 'denied') return done(false, 'Notifications are blocked for this site in your browser settings. Allow them there, then try again.');
+        if(Notification.permission === 'granted') return done(true);
+        Notification.requestPermission().then(function(pm){ done(pm === 'granted', pm === 'granted' ? '' : 'Reminders need notification permission.'); });
+      });
+    }
     var EMOJI = { '7-day streak': '🎖️', '30-day streak': '🔥', 'First exam': '🚑', '90%+ exam': '💯', '500 questions': '📚', 'Level 10': '🏅' };
     set('badgeGrid', H.badges(badgeDefs.map(function(b){
       var e = b.have >= b.need, p = b.prog(Math.min(b.have, b.need));
