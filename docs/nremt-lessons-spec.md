@@ -160,3 +160,18 @@ Each batch is one PR with its accuracy review, built in textbook order inside th
   tourniquets often fail; neck wounds get an occlusive dressing against air embolism and pressure that spares the
   airway and both carotids, packed only with caution per protocol; fracture bleeding gets a splint or pelvic
   binder, the patient supine, nothing by mouth. The flashcards, chapter pages and course home were rebuilt from it.
+- Accuracy check of the notes update (2026-10-27, independent): accurate, with three must-fix items and polish, all
+  applied to the notes and, where they overlap, the lessons. Circulation in the primary assessment runs bleeding
+  first (find and control life-threatening external bleeding as soon as you see it), then the pulse (radial in a
+  responsive adult or child, carotid in an unresponsive one, brachial in an infant; unresponsive and apneic: no
+  more than 10 seconds, CPR if none), then the skin, matching chapters 13 and 21 and the NREMT trauma sheet. The
+  escalation table now splits extremity bleeding (direct pressure, then a tourniquet if pressure is ineffective or
+  impractical, or at once if life-threatening) from junctional bleeding or anywhere a tourniquet cannot go (packing,
+  hemostatic where allowed, or a junctional device), in line with ACS COT 2014 and the 2023 joint statement.
+  Polish: pressure over packing to the hospital when no tourniquet can be used; a dressing on top is acceptable but
+  escalation is the real next step; START triage treats bleeding with direct pressure or a tourniquet (chapter 39,
+  elevation removed); chest pain "especially" with a systolic pressure under 100, and multiple injuries, on the
+  high-priority list; snoring, gurgling or stridor as partial obstruction; oxygen to 94% or higher, no higher than
+  needed; packing pressure at least 3 minutes for hemostatic gauze, and with plain gauze until bleeding is
+  controlled or care is handed over; improvised tourniquets are for a lay rescuer with nothing else (not recommended
+  prehospital), too loose occludes only the veins, too narrow damages tissue.

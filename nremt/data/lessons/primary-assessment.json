@@ -14,26 +14,26 @@
       "act": "That places him on the AVPU scale: Alert, responds to Verbal stimuli, responds only to Painful stimuli, or Unresponsive. If a spinal injury is possible, a partner holds the head in line while you do this."
     },
     {
-      "find": "A patient who is talking or crying clearly has an open airway. In a patient who is not alert you cannot assume the airway is open, so you assess it; noisy breathing means a partial obstruction.",
-      "act": "Open the airway with a head-tilt/chin-lift, or a jaw-thrust if a spinal injury is suspected, and suction what is in it. An oropharyngeal airway goes in only if there is no gag reflex; a nasopharyngeal airway is not used with a suspected basilar skull fracture or severe facial fracture."
+      "find": "A patient who is talking or crying clearly has an open airway. In a patient who is not alert you cannot assume the airway is open, so you assess it; snoring, gurgling or stridor means a partial upper-airway obstruction.",
+      "act": "Open the airway with a head-tilt/chin-lift, or a jaw-thrust if a spinal injury is suspected, and suction gurgling. An oropharyngeal airway goes in only if there is no gag reflex; a nasopharyngeal airway is not used with a suspected basilar skull fracture or severe facial fracture."
     },
     {
       "find": "You look at the rate and depth of breathing and listen for how hard the patient is working.",
       "act": "Breathing that is absent or inadequate gets ventilations with oxygen; adequate breathing with signs of distress or low oxygen gets oxygen guided by the pulse oximeter and the exam."
     },
     {
-      "find": "You check for a pulse (radial, or carotid if there is no radial pulse) and note its rate, strength and regularity; you look at the skin and sweep for bleeding.",
-      "act": "Severe bleeding is controlled the moment you find it, because it can kill within minutes."
+      "find": "You check circulation in order: bleeding first, then the pulse (radial in a responsive adult or child, carotid in an unresponsive one, brachial in an infant: rate, strength, regularity), then the skin.",
+      "act": "Life-threatening external bleeding is controlled the moment you see it, because it can kill within minutes. A patient who is unresponsive and not breathing gets a pulse check of no more than 10 seconds, and CPR if there is none."
     },
     {
       "find": "Everything you have found sorts the patient as stable, potentially unstable or unstable.",
-      "act": "That is the transport priority. High priority: unresponsiveness or a poor general impression, inability to follow commands, difficulty breathing, shock, complicated childbirth, chest pain with a systolic blood pressure under 100, uncontrolled bleeding, and severe pain anywhere."
+      "act": "That is the transport priority. High priority: unresponsiveness or a poor general impression, inability to follow commands, difficulty breathing, shock, complicated childbirth, chest pain (especially with a systolic blood pressure under 100), uncontrolled bleeding, multiple injuries, and severe pain anywhere."
     }
   ],
   "ideas": [
     "The primary assessment has <b>six parts in order</b>: general impression, mental status, airway, breathing, circulation, priority.",
     "<b>A-B-C is a guide, not a rule.</b> Exsanguinating bleeding comes before everything, material in the airway is suctioned before you ventilate, and a pulseless patient gets C-A-B.",
-    "<b>Mental status</b> uses AVPU. An alert patient is then checked for orientation to person, place and time. A depressed mental status may mean hypoxia, shock or another cause such as low blood sugar: assess oxygenation, give oxygen if indicated (titrated to an SpO<sub>2</sub> of at least 94%), and make the patient a high priority.",
+    "<b>Mental status</b> uses AVPU. An alert patient is then checked for orientation to person, place and time. A depressed mental status may mean hypoxia, shock or another cause such as low blood sugar: assess oxygenation, give oxygen if indicated (to an SpO<sub>2</sub> of 94% or higher, no higher than needed), and make the patient a high priority.",
     "<b>Spinal motion restriction</b> starts on first contact when the mechanism suggests a spinal injury, but it never outranks the airway, ventilation or bleeding control.",
     "<b>Priority can change</b> during the call, so the primary assessment is repeated whenever the patient changes."
   ],
@@ -95,7 +95,7 @@
         "An alert patient asking for a ride to clinic for a cough"
       ],
       "correct": 1,
-      "why": "Inability to follow commands is a high-priority condition. The full list: unresponsiveness or a poor general impression, inability to follow commands, difficulty breathing, shock, complicated childbirth, chest pain with a systolic blood pressure under 100, uncontrolled bleeding, and severe pain anywhere."
+      "why": "Inability to follow commands is a high-priority condition. The full list: unresponsiveness or a poor general impression, inability to follow commands, difficulty breathing, shock, complicated childbirth, chest pain (especially with a systolic blood pressure under 100), uncontrolled bleeding, multiple injuries, and severe pain anywhere."
     }
   ],
   "summary": "<p>The primary assessment finds and treats immediate threats to life in six parts: general impression, mental status (AVPU, with spinal stabilization if indicated), airway, breathing, circulation and priority. A-B-C guides the order, but exsanguinating bleeding comes first, the airway is cleared before ventilating, and a lifeless patient gets C-A-B. It ends with a priority decision, which is repeated whenever the patient changes.</p>"

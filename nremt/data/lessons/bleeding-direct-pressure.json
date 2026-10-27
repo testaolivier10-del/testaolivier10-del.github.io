@@ -15,11 +15,11 @@
     },
     {
       "find": "Your hand or a dressing is on the wound.",
-      "act": "Press firmly, toward a bone where there is one, and hold the pressure without letting up. Do not lift it to check; for massive bleeding, keep it on all the way to the hospital."
+      "act": "Press firmly, toward a bone where there is one, and hold the pressure without letting up. Do not lift it to check. For massive bleeding where a tourniquet cannot be used, keep pressure (over packing) all the way to the hospital."
     },
     {
       "find": "Blood keeps coming through what you placed.",
-      "act": "Do not peel the dressing off to look. If the bleeding continues, escalate rather than relying on more layers: wound packing with a hemostatic agent where protocol allows, or a tourniquet for a wound on a limb."
+      "act": "Do not peel the dressing off to look. Adding a dressing on top is acceptable, but if the bleeding continues, escalation is the real next step: a tourniquet for a wound on a limb, or wound packing (hemostatic where protocol allows) where a tourniquet cannot go."
     },
     {
       "find": "The bleeding has stopped.",
@@ -29,7 +29,7 @@
   "ideas": [
     "<b>Pressure works</b> by squeezing the tissue around the wound, slowing the flow through the damaged vessels and giving the body time to clot.",
     "<b>Don't peel a dressing off to look.</b> Lifting it tears away the clot forming under it.",
-    "<b>More layers are not the fix.</b> Gauze soaks up blood without stopping it, and a thick pile cushions your hand away from the wound. Continued bleeding means escalate.",
+    "<b>More layers are not the fix.</b> Gauze soaks up blood without stopping it, and a thick pile cushions your hand away from the wound. Adding a dressing on top is acceptable, but continued bleeding means escalate.",
     "<b>Volume depends on size.</b> An adult holds about 5 to 6 liters of blood. A sudden loss of about 1 liter is serious in an adult, about 500 mL in a child and 100 to 200 mL in an infant.",
     "<b>Elevation and pressure points</b> are no longer recommended for bleeding control.",
     "<b>Life-threatening bleeding from a limb</b> does not climb this ladder: it gets a tourniquet straight away (the next lesson).",
@@ -37,7 +37,7 @@
   ],
   "misconception": {
     "wrong": "When a dressing soaks through, take it off and put on a fresh, dry one so you can see the wound.",
-    "right": "Leave the dressing where it is: lifting it disrupts the clot. Continued bleeding is the signal to escalate to packing with a hemostatic agent where protocol allows or, on a limb, a tourniquet."
+    "right": "Leave the dressing where it is: lifting it disrupts the clot. Continued bleeding is the signal to escalate: on a limb, a tourniquet; where a tourniquet cannot go, packing (hemostatic where protocol allows)."
   },
   "check": [
     {
@@ -96,5 +96,5 @@
       "why": "For severe or spurting bleeding, a gloved hand goes straight onto the wound. Time spent hunting for a dressing is blood the patient does not get back."
     }
   ],
-  "summary": "<p>Direct pressure controls most external bleeding: compress the wound (a gloved hand at once if it is severe), hold firm pressure without lifting it to check, leave what you placed undisturbed, and escalate if it fails. Continued bleeding means packing with a hemostatic agent where protocol allows or, on a limb, a tourniquet, not more layers and not removing the dressing. Once bleeding stops, a pressure dressing holds it. Life-threatening limb bleeding skips straight to a tourniquet.</p>"
+  "summary": "<p>Direct pressure controls most external bleeding: compress the wound (a gloved hand at once if it is severe), hold firm pressure without lifting it to check, leave what you placed undisturbed, and escalate if it fails. Continued bleeding means a tourniquet on a limb, or packing (hemostatic where protocol allows) where a tourniquet cannot go, not more layers and not removing the dressing. Once bleeding stops, a pressure dressing holds it. Life-threatening limb bleeding skips straight to a tourniquet.</p>"
 }
