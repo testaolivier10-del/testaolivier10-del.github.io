@@ -90,6 +90,20 @@
 .sd-b1{fill:var(--phys-s1);}
 .sd-b1.y{fill:var(--cink);}
 .sd-bq{fill:none;stroke:var(--cink);stroke-width:2;stroke-dasharray:5 4;}
+.sd-mine{fill:none;stroke:#D55E00;stroke-width:2;stroke-dasharray:4 3;}
+.sd-mine-t{fill:#B34700;font-size:13px;}
+.sd-mine-p{margin:0;color:#B34700;}
+.sd-axis{stroke:var(--line);stroke-width:2;}
+.sd-grid{stroke:var(--line);stroke-width:1;}
+.sd-cframe{fill:color-mix(in srgb,var(--phys-s1) 12%,transparent);stroke:var(--ink);stroke-width:2;stroke-linejoin:round;}
+.sd-ruler{fill:#F3D27A;stroke:#B88A2E;stroke-width:1.5;}
+.sd-tick{stroke:#5A4210;stroke-width:1;}
+.sd-tn{font:700 11px var(--font-mono);fill:#5A4210;}
+.sd-fig .sd-ucols,.sd-fig .sd-conv{max-height:200px;}
+/* On the Tool Studio stage the drill figure stretches its svg to the stage:
+   these two keep their drawn size, so the text stays at about 13 to 18 px. */
+.ls-root .ls-drill-stage .sd-fig{justify-content:center;}
+.ls-root .ls-drill-stage .sd-fig > svg.sd-conv,.ls-root .ls-drill-stage .sd-fig > svg.sd-ucols{flex:none !important;width:100% !important;max-width:460px;height:auto !important;max-height:200px !important;margin:0 auto;}
 .sd-surf{stroke:#2C78B0;stroke-width:1.5;}
 .sd-glassw{fill:none;stroke:var(--muted);stroke-width:3;stroke-linejoin:round;}
 .sd-ybar{fill:var(--cink);}
