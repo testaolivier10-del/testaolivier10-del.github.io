@@ -37,3 +37,8 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
 - Review, empty queue: "due now" ran together ("duenow") under the big 0 in every course (shared
   `r3-study.css`); Flashcards was offered twice (button and link card) in all seven AP® review pages: button
   removed.
+- Course search (every course, shared `hub.js` + `site-search.js`): result titles were cut at the first match
+  ("… Memory" for "Introduction to Memory"): titles are now marked in full (`highlight` option `whole`).
+- Checked, same in both courses, no change: dashboard design F (flagged count there by design,
+  polish 2026-10-17 D1), exams timed Section I with the no-calculator note, flashcards deck panel, tools list
+  (1440 dark), FRQ rubric hints.
