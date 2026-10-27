@@ -99,6 +99,8 @@
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <main class="r3 r3-inner r3-exams cx-study" id="main" data-cover="nremt">
+  <!-- The slim bar that stands in for the site's top bar while the exam runs (nremt/assets/r3-exam.js). -->
+  <div class="r3-focusbar" role="region" aria-label="Timed exam"><div class="r3-focusbar-in"><a class="r3-fb-mark" href="../index.html" aria-label="LevlPrep home"><span aria-hidden="true">+</span></a><div class="r3-fb-t"><b>Timed exam</b><small>NREMT-EMT &middot; 100 questions, 2025 domain proportions</small></div><div class="r3-fb-acts"><button type="button" class="r3-fb-exit" data-r3-click="#exitBtn">Exit exam</button><button type="button" class="r3-fb-submit" data-r3-click="#submitBtnTop">Submit exam</button></div></div></div>
 
   <div id="introScreen">
 <!-- r3-band:start -->
@@ -224,6 +226,7 @@
 <script src="../assets/course/study.js" defer></script>
 <script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script src="assets/r3-exam.js" defer></script>
 <script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-r3-start]');if(!a)return;var b=document.querySelector('#r3Body #startBtn,#r3Body .cx-start button,#r3Body [data-start]');if(b&&!b.disabled){e.preventDefault();b.click();}});</script>
 </body>
 </html>

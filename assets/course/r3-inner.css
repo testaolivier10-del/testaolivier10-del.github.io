@@ -214,3 +214,51 @@ body:has(.r3-inner) > [data-crumb]{display:none}
 .r3-exam-day #ed-what-it-covers-the-2025-exam-outline + p + ul li::before{content:"0" counter(dom);position:absolute;left:0;top:10px;font:900 34px/1 var(--display);letter-spacing:-.05em;color:var(--accent)}
 .r3-exam-day #ed-what-it-covers-the-2025-exam-outline + p + ul li strong{color:var(--ink);font:900 16.5px var(--font-ui)}
 @media (max-width:980px){.r3-exam-day .xgrid:has(> .xlabel){grid-template-columns:1fr}}
+
+/* ---- the running exam (board R10-Exam-Live): focus mode, the site bars give way to a slim exam bar ---- */
+.r3-focusbar{display:none}
+body:has(.r3-exams > #quizScreen[style*="grid"]) :is(#site-header,.course-nav,.bottom-nav,.site-header,[data-crumb]){display:none!important}
+body:has(.r3-exams > #quizScreen[style*="grid"]) .r3-focusbar{display:block;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.r3-focusbar-in{max-width:1180px;margin:0 auto;padding:10px clamp(18px,3.5vw,48px);display:flex;align-items:center;gap:14px}
+.r3-fb-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#0B1A33;color:#2EE6D6;text-decoration:none;font:900 22px/1 var(--font-ui)}
+.r3-fb-t{min-width:0}
+.r3-fb-t b{display:block;font:900 16px var(--font-ui);color:var(--ink)}
+.r3-fb-t small{display:block;font:700 12.5px var(--font-ui);color:var(--muted)}
+.r3-fb-acts{margin-left:auto;display:flex;gap:8px}
+.r3-fb-acts button{font:900 14px var(--font-ui);border-radius:10px;padding:9px 14px;cursor:pointer;border:0}
+.r3-fb-exit{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.r3-fb-submit{background:var(--chan,#0B1A33);color:var(--on-chan,#fff)}
+.r3-focusbar ~ #quizScreen .exit-row{display:none}
+/* the question on a white card, the clock and the map in the rail, the clock on navy */
+.r3-exams > #quizScreen .quiz-main{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px 28px;box-shadow:0 24px 50px -36px rgba(11,26,51,.45)}
+.r3-exams > #quizScreen .quiz-side{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:0 0 18px;overflow:hidden;box-shadow:0 24px 50px -36px rgba(11,26,51,.45)}
+.r3-exams > #quizScreen #timerBar{background:var(--r3-navy);color:#fff;padding:16px 18px;margin:0 0 14px;border:0;border-radius:0}
+.r3-exams > #quizScreen #timerBar .timer-row{display:block}
+.r3-exams > #quizScreen #timerBar .timer-row > span:first-child{display:block;font:900 11.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:#B9C8E2}
+.r3-exams > #quizScreen #timerBar .time-remaining{display:block;font:900 44px/1.05 var(--display);letter-spacing:-.03em;color:#FFD23F;font-variant-numeric:tabular-nums}
+.r3-exams > #quizScreen #timerBar .pace-line{display:inline-block;margin-top:6px;font:800 12px var(--font-ui);color:#2EE6D6;background:rgba(46,230,214,.12);border-radius:8px;padding:4px 8px}
+.r3-exams > #quizScreen .quiz-side > :not(#timerBar){margin-left:18px;margin-right:18px}
+
+/* ---- the results (board R10-Exam-Results): a band with the score, the domains beside the score rail ---- */
+.r3-exams > .r3-results-band[hidden]{display:none}
+.r3-exams > .r3-results-band .deck .r3-res-score{display:block;color:#fff}
+.r3-exams > .r3-results-band .hero-ctas button{cursor:pointer;border:0;font:900 16px var(--font-ui);padding:13px 20px;border-radius:12px}
+.r3-exams > .r3-results-band .hero-ctas .btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.r3-exams > .r3-results-band + #resultsScreen{position:relative;z-index:2;margin-top:-56px}
+.r3-exams > #resultsScreen[style*="grid"]{grid-template-columns:minmax(0,1fr) 320px;grid-template-areas:"dom side" "main main";gap:22px 24px}
+.r3-exams > #resultsScreen .results-top-row{display:none}
+.r3-exams > #resultsScreen .r3-domcard{grid-area:dom;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 24px 50px -36px rgba(11,26,51,.45)}
+.r3-exams > #resultsScreen .r3-domcard .sub{margin:4px 0 14px;color:var(--muted);font-size:15px}
+.r3-exams > #resultsScreen .r3-domcard .domain-breakdown{color:var(--ink)}
+.r3-exams > #resultsScreen .r3-domcard .domain-breakdown *{color:inherit}
+.r3-exams > #resultsScreen .results-side{grid-area:side;display:grid;gap:14px;align-content:start}
+.r3-exams > #resultsScreen .results-main{grid-area:main}
+.r3-exams > #resultsScreen .score-card{background:var(--r3-navy);color:#fff;border-radius:22px;padding:20px 22px}
+.r3-exams > #resultsScreen .score-card .big{font:900 64px/1 var(--display);letter-spacing:-.04em;color:#FFD23F}
+.r3-exams > #resultsScreen .score-card .sub{color:#C4D1E8}
+.r3-exams > #resultsScreen .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.r3-exams > #resultsScreen .filter-row button{border-radius:999px}
+@media (max-width:980px){
+  .r3-exams > #resultsScreen[style*="grid"]{grid-template-columns:1fr;grid-template-areas:"side" "dom" "main"}
+  .r3-fb-t small{display:none}
+}
