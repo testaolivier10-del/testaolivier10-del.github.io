@@ -57,7 +57,7 @@
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .calc-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .calc-hero');
   var CUR = window.ApCalcCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApCalcCore, Q = window.ApCalcQuestions;
   var PREFS = 'apcalc_prefs_v1';

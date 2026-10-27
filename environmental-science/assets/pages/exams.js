@@ -59,7 +59,7 @@
   var BASE = window.ApEnvBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .env-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .env-hero');
   var CUR = window.ApEnvCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApEnvCore, Q = window.ApEnvQuestions;
   var PREFS = 'apenv_prefs_v1';

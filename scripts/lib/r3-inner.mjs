@@ -45,7 +45,7 @@ export function bandWords(key, slug) {
   if (slug === 'unit-test') return {
     kicker: 'Free unit test', tone: 'one unit, exam style.',
     hand: 'free, with an explanation for every option',
-    cta: { label: 'Start the test', href: '#r3Questions' },
+    cta: { label: 'Start at question 1', href: '#r3Questions' },
   };
   throw new Error(`r3-inner: no band words for ${key}/${slug}`);
 }

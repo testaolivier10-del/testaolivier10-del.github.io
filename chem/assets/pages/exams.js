@@ -52,7 +52,7 @@
   var BASE = window.ApChemBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .chem-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .chem-hero');
   var CUR = window.ApChemCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApChemCore, Q = window.ApChemQuestions;
   var PREFS = 'apchem_prefs_v1';

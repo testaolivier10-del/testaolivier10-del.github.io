@@ -32,7 +32,7 @@
   var BASE = window.ANP_BASE || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .anp-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .anp-hero');
   var CUR = window.AnpCurriculum || { chapters: [], topics: [], core: [] };
   var Core = window.AnpCore, Q = window.AnpQuestions;
 

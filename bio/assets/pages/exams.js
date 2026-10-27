@@ -43,7 +43,7 @@
   var BASE = window.ApBioBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .bio-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .bio-hero');
   var CUR = window.ApBioCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApBioCore, Q = window.ApBioQuestions;
   var PREFS = 'apbio_prefs_v1';

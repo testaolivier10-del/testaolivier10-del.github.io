@@ -55,7 +55,7 @@
   var BASE = window.ApPhysBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .phys-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .phys-hero');
   var CUR = window.ApPhysCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApPhysCore, Q = window.ApPhysQuestions;
   var PREFS = 'apphys_prefs_v1';

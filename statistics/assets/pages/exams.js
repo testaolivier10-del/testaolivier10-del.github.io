@@ -57,7 +57,7 @@
   var BASE = window.ApStatBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.page-head, .stat-hero');
+  var hero = document.querySelector('.r3-inner > .band, .page-head, .stat-hero');
   var CUR = window.ApStatCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApStatCore, Q = window.ApStatQuestions;
   var PREFS = 'apstat_prefs_v1';
