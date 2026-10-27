@@ -55,6 +55,10 @@
   .mastery-bars{display:flex;align-items:flex-end;gap:8px;height:80px;margin:14px 0 30px;}
   .mastery-bar{flex:1;background:var(--cink);border-radius:6px 6px 0 0;min-height:3px;position:relative;}
   .mastery-bar span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font:800 10.5px var(--font-ui);color:var(--muted);}
+  .nr-goal{margin:14px 0 0;border-top:1px solid var(--line);padding-top:10px}
+  .nr-goal summary{cursor:pointer;font-weight:800}
+  .nr-goal-row{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:10px 0 0;font-weight:600}
+  .nr-goal select{font:inherit;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--white);color:var(--ink)}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -420,8 +424,47 @@ document.addEventListener('DOMContentLoaded', function(){
       html += `<div class="cal-day${done ? ' done' : ''}${k === todayKey ? ' today' : ''}" title="${k}${done ? ' — ' + counts[k] + ' questions studied' : ''}">${DOW[d.getDay()]}</div>`;
     }
     set('streakBox', H.panel({ id: 'nr-cal', title: st.current ? st.current + '-day streak' : 'Study streak',
-      body: '<div class="cal-grid">' + html + '</div><p class="cx-hint" style="margin:12px 0 0">' + studiedDays + ' of 14 days studied &middot; today ' + (counts[todayKey] || 0) + ' of ' + st.goal + '</p>' }));
+      body: '<div class="cal-grid">' + html + '</div><p class="cx-hint" style="margin:12px 0 0">' + studiedDays + ' of 14 days studied &middot; today ' + (counts[todayKey] || 0) + ' of ' + st.goal + '</p>' + goalSettings() }));
+    wireGoalSettings();
   })();
+
+  /* Daily goal and reminders, moved here from the Practice page (Olivier, 2026-10-26: Practice is only for
+     practicing). Same storage as practice-engine.js: the goal goes to HubProgress and nremt_streak.dailyGoal,
+     reminders to nremt_streak.remindersEnabled and reminderHour; the reminder itself still fires from
+     the practice page while it is open. */
+  function nrStreak(){
+    const d = { dailyGoal: 15, remindersEnabled: false, reminderHour: 18 };
+    try { return Object.assign(d, JSON.parse(localStorage.getItem('nremt_streak') || '{}') || {}); } catch(e){ return d; }
+  }
+  function saveNrStreak(o){ try { localStorage.setItem('nremt_streak', JSON.stringify(o)); } catch(e){} }
+  function goalSettings(){
+    const s = nrStreak();
+    const goal = (window.HubProgress && st.goalBase) || st.goal || s.dailyGoal;
+    const hours = [12,14,16,18,19,20,21].map(h => '<option value="' + h + '"' + (s.reminderHour === h ? ' selected' : '') + '>' + (h > 12 ? (h - 12) + ' PM' : h === 12 ? '12 PM' : h + ' AM') + '</option>').join('');
+    return '<details class="nr-goal"><summary>Daily goal and reminders</summary>' +
+      '<p class="nr-goal-row"><label for="nrGoalSel">Daily goal</label> <select id="nrGoalSel">' +
+      [10,15,20,30,50].map(g => '<option value="' + g + '"' + (goal === g ? ' selected' : '') + '>' + g + ' questions a day</option>').join('') + '</select></p>' +
+      '<p class="nr-goal-row"><label><input type="checkbox" id="nrRemCb"' + (s.remindersEnabled ? ' checked' : '') + '> Remind me in this browser if I haven&rsquo;t hit my goal by</label> <select id="nrRemHour" aria-label="Reminder time">' + hours + '</select></p>' +
+      '<p class="cx-hint" id="nrRemNote">Reminders only fire while a LevlPrep tab is open. Miss several days and the goal eases off on its own until you&rsquo;re back.</p></details>';
+  }
+  function wireGoalSettings(){
+    const sel = document.getElementById('nrGoalSel'), cb = document.getElementById('nrRemCb'), hr = document.getElementById('nrRemHour'), note = document.getElementById('nrRemNote');
+    if(sel) sel.addEventListener('change', () => {
+      const g = parseInt(sel.value, 10);
+      if(window.HubProgress && window.HubProgress.setGoal) window.HubProgress.setGoal(g);
+      const s = nrStreak(); s.dailyGoal = g; saveNrStreak(s);
+    });
+    if(hr) hr.addEventListener('change', () => { const s = nrStreak(); s.reminderHour = parseInt(hr.value, 10); saveNrStreak(s); });
+    if(cb) cb.addEventListener('change', () => {
+      const s = nrStreak();
+      const done = (on, msg) => { s.remindersEnabled = on; saveNrStreak(s); cb.checked = on; if(msg && note) note.textContent = msg; };
+      if(!cb.checked) return done(false);
+      if(typeof Notification === 'undefined') return done(false, 'This browser does not support notifications.');
+      if(Notification.permission === 'denied') return done(false, 'Notifications are blocked for this site in your browser settings. Allow them there, then try again.');
+      if(Notification.permission === 'granted') return done(true);
+      Notification.requestPermission().then(p => done(p === 'granted', p === 'granted' ? '' : 'Reminders need notification permission.'));
+    });
+  }
 
   // ---- Badges: earned from the same records the rest of the page reads ----
   (function renderBadges(){
