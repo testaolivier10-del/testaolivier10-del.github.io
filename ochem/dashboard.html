@@ -103,32 +103,10 @@
 </div><div class="art" aria-hidden="true"><img src="../assets/covers/art/ochem.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
 <!-- r3-band:end -->
 <div class="xshell r3-body" id="r3Body">
-  <!-- The shared dashboard (assets/course/hub.css): mastery-page.js and
-       game-panel.js fill these slots from the concept model and ochem-xp. Round 3
-       (board R10-Progress) groups them under kickers. -->
-  <div class="cx-db r3-db" id="ocDash">
-    <noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript>
-    <!-- Your level leads the page (Olivier, 2026-10-26). -->
-    <div class="r3-db-levelTop" id="gameLevel"></div>
-    <div class="r3-db-lead"><div class="r3-db-side"><div id="ocStart"></div><div id="recRow"></div></div><div id="examDateCard"></div></div>
-    <div id="ocStats"></div>
-    <div data-levl-cross="ochem"></div>
-    <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'ochem'); }); });</script>
-
-    <section class="r3-db-sec" aria-labelledby="r3dbWeak"><p class="kicker" id="r3dbWeak">Where you are weak <i></i></p>
-      <div class="r3-db-two"><div class="r3-db-side"><div id="leechAlerts"></div><div id="dependencyAlerts"></div><div id="weakConcepts"></div></div><div id="moduleStats"></div></div></section>
-    <section class="r3-db-sec" aria-labelledby="r3dbFam"><p class="kicker" id="r3dbFam">By concept <i></i></p>
-      <div class="r3-db-two"><div id="familyStats"></div><div id="gameConcepts"></div></div></section>
-    <section class="r3-db-sec" aria-labelledby="r3dbLevel"><p class="kicker" id="r3dbLevel">Daily Rounds <i></i></p>
-      <div class="r3-db-two"><div id="gameDebt"></div><div id="gameRounds"></div></div></section>
-    <section class="r3-db-sec" aria-labelledby="r3dbBadges"><p class="kicker" id="r3dbBadges">Badges and certificates <i></i></p>
-      <div class="r3-db-two"><div id="gameAchievements"></div><div>
-        <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->
-        <div id="levlMilestones"></div>
-        <script>document.addEventListener('DOMContentLoaded', function(){ if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'ochem'); }); });</script>
-      </div></div></section>
-    <div id="ocPremium" class="r3-db-premium"></div>
-  </div>
+  <!-- The dashboard: five questions (assets/course/dash.js, docs/dashboard.md). assets/dash-ochem.js builds it
+       from the concept model; mastery-page.js and game-panel.js still draw every older panel into the drawers. -->
+  <div id="d5Root" class="d5-root"><noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript></div>
+  <div data-levl-cross="ochem"></div>
 </div>
 </main>
 
@@ -139,37 +117,19 @@
   window.OCHEM_SECTION = 'dashboard';
   window.OCHEM_BASE = '';
 </script>
+<script src="../assets/course/dash.js" defer></script>
+<script src="assets/dash-ochem.js" defer></script>
 <script src="assets/ochem-nav.js" defer></script>
 <script src="assets/periodic-table.js" defer></script>
 <script src="assets/game-panel.js" defer></script>
 <script src="assets/tools-registry.js" defer></script>
 <script src="assets/mastery-page.js" defer></script>
-<script>
-  /* The exam-date card (../assets/exam-date.js). Per day: the concepts not
-     yet solid, spread over the days left. */
-  document.addEventListener('DOMContentLoaded', function(){
-    var M = window.OchemMastery;
-    if(!window.LevlExamDate) return;
-    window.LevlExamDate.mount(document.getElementById('examDateCard'), {
-      subject: 'ochem',
-      links: { review: 'review.html', exams: 'exams.html' },
-      target: function(days){
-        if(!M) return null;
-        var c = M.counts();
-        var total = (c.unseen || 0) + (c.shaky || 0) + (c.developing || 0) + (c.solid || 0) + (c.mastered || 0);
-        var left = total - (c.solid || 0) - (c.mastered || 0);
-        if(!left) return { done: 'Every concept is solid or mastered. Keep the review queue clear and take a timed exam.' };
-        return { n: Math.ceil(left / days), unit: left === 1 ? 'concept' : 'concepts', why: 'to solid covers the ' + left + ' that are not there yet' };
-      }
-    });
-  });
-</script>
 <div class="xshell r3-foot">
   <footer>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 <link rel="stylesheet" href="../assets/course/dashboard.css">
-<script src="../assets/course/r3-db.js" defer></script>
+<link rel="stylesheet" href="../assets/course/dash.css">
 </body>
 </html>

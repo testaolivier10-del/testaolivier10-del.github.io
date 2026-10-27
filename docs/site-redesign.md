@@ -149,3 +149,7 @@ Exams, the running exam and its results, AP® unit tests, progress and exam day,
   into the kicker sections by `assets/course/r3-db.js` after each render; NREMT's running exam bar and results
   band are `nremt/assets/r3-exam.js`. Every exams script's setup card got its heading and holds the free notice.
 - Compare images (board left, built right): scratchpad `b3-compare/`.
+
+## Dashboards replaced (2026-10-26)
+Every course dashboard is now the five-question layout in `docs/dashboard.md` (design F, owner approved); the
+R10-Progress kicker layout and `assets/course/r3-db.js` no longer drive any dashboard.
