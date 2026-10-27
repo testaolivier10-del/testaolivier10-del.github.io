@@ -162,3 +162,16 @@ textbook goes to the last lesson (never on Back). The per-section Lesson button 
 lesson" (ochem) are gone; ochem's Premium tag moved onto the switch. NREMT has no lessons yet and gets the switch when
 it does. Builders load the script on book and lesson pages; the ochem lesson pages and `ochem/learn.html` carry the
 tag by hand.
+
+### Tools open full screen again (2026-10-26, owner)
+Olivier: "with the tools it's kind of annoying since it barely fits ... I liked how it was before where clicking on a
+tool brought you to just the tool, like in full." So the round 3 desktop header, course tabs and cover band are gone
+from every full tool page in every course:
+- `assets/course/tool-studio.js`: `mount()` adds `body.ls-full` unless `slim` (and `suspend()` clears it with
+  `ls-on`, so a Premium gate shows the normal page). `tool-studio.css` hides the site header, the course tabs and any
+  `.r3-toolband` under `ls-full` at every width. Slim reference pages keep the header and tabs on a desktop.
+- `scripts/lib/r3-tools.mjs` `toolBand()` writes only its empty markers unless `o.ref`, so the AP®, A&P and ochem
+  builders stop writing a band. `scripts/build-r3-tools.mjs` keeps the band only on NREMT's two slim reference pages
+  (mnemonics, reference cards); body map, flowcharts, formulary, scenarios, skill sheets and the sound trainer are
+  full tools. The Tools hubs keep the round 3 look.
+- Checked: the stage fills 1366x768 and 1920x1080 with no page scroll; phones unchanged (they already hid the chrome).
