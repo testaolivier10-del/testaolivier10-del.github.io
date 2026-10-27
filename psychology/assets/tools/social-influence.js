@@ -215,7 +215,7 @@
       }
     });
     g.push('<rect x="' + n1(tableX0) + '" y="' + n1(ty) + '" width="' + n1(tableX1 - tableX0) + '" height="' + n1(H * 0.05) + '" rx="4" class="si-table"/><rect x="' + n1(tableX0 + 6) + '" y="' + n1(ty + H * 0.05) + '" width="' + n1(tableX1 - tableX0 - 12) + '" height="' + n1(floor - ty - H * 0.05 + 4) + '" class="si-tablefront"/>');
-    if(n > shown) g.push('<text class="si-note" x="' + n1(tableX1) + '" y="' + n1(floor - 6) + '" text-anchor="end">8 of ' + n + ' shown</text>');
+    if(n > shown) g.push('<text class="si-note" x="' + n1(tableX1) + '" y="' + n1(floor - 6) + '" text-anchor="end">8 of ' + (n === 16 ? '10 to 15' : n) + ' shown</text>');
     var meIdx = who.indexOf('me'), mx = tableX0 + step * (meIdx + 0.65);
     g.push('<text class="si-you" x="' + n1(mx) + '" y="' + n1(Y + H - 8) + '" text-anchor="middle">Participant</text>');
     return g.join('');
@@ -432,7 +432,7 @@
           items.push({ label: 'With a\npartner', value: D.ASCH.partner, on: partner && n > 0, cls: 'is-alt' });
           out.push(bars(gx, gy, gW - (phone ? 0 : 0), gH - 40, items, { title: 'Answers that went along with a wrong majority', source: 'Asch (1951, 1952, 1956)', max: 40, ticks: [0, 10, 20, 30, 40] }));
         }
-        label = 'Asch\'s line task. ' + (n === 0 ? 'The participant judges alone.' : n + ' people give the same wrong answer first' + (partner ? ', but one partner answers correctly.' : '.')) + ' ' + line();
+        label = 'Asch\'s line task. ' + (n === 0 ? 'The participant judges alone.' : SIZE_LAB[sizeI] + (n === 1 ? ' person gives' : ' people give') + ' the same wrong answer first' + (partner ? ', but one partner answers correctly.' : '.')) + ' ' + line();
       } else if(sit === 'obey'){
         var c = D.byId(D.MILGRAM, cond);
         out.push(milgramScene(sx, sy, sw, sh, cond, phone));
