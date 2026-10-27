@@ -580,15 +580,15 @@
     ['immune', /antibod|antigen|\b[TB] cells?\b|macrophag|phagocyt|neutrophil|lymphocyte|complement|\bMHC\b|immun|helper|cytotoxic|plasma cells?|dendritic|inflamm|histamine|pathogen|mast cell|lymph\b|lymph node/i],
     ['lung', /alveol|\blungs?\b|bronch|trache|airway|inhal|exhal|breath|\bair\b|pharynx|larynx|nasal|diaphragm|pleura|epiglott|ventilat|surfactant|\bcough/i],
     ['kidney', /glomerul|tubule|nephron|filtrate|henle|collecting duct|\burine|ureter|bladder|urethr|bowman|kidney|renal|juxtaglom|macula densa|micturi|limb (loses|gains)|descending limb|ascending limb|\bduct\b/i],
-    ['gut', /stomach|intestin|duoden|jejun|ileum|\bcolon|rect(um|al)|esophag|bolus|chyme|swallow|mouth|chew|saliva|\bbile|gallbladder|pancrea|fec(es|al)|digest|gastric|villi|lacteal|micelle|chylomicron|peristal|defecat|\bgut\b|liver|portal vein|hepat/i],
-    ['muscle', /myosin|actin|cross-?bridge|sarcomere|troponin|tropomyosin|muscle|myofib|sarcoplasmic|\bSR\b|t[- ]tubule|power stroke|filaments?|myoblast|perimysium|endomysium|epimysium|fascicle/i],
+    ['gut', /stomach|intestin|duoden|jejun|ileum|\bcolon|rect(um|al)|esophag|bolus|\bchyme|swallow|mouth|chew|saliva|\bbile|gallbladder|pancrea|fec(es|al)|digest|gastric|villi|lacteal|micelle|chylomicron|peristal|defecat|\bgut\b|\bliver|portal vein|hepat/i],
+    ['muscle', /myosin|\bactin|cross-?bridge|sarcomere|troponin|tropomyosin|muscle|myofib|sarcoplasmic|\bSR\b|t[- ]tubule|power stroke|filaments?|myoblast|perimysium|endomysium|epimysium|fascicle/i],
     ['synapse', /vesicle|neurotransmitter|acetylcholine|\bACh\b|exocytosis|synap|cleft|norepinephrine/i],
     ['vessel', /aort|arter|\bveins?\b|vena|venule|capillar|vessel|coronary sinus|bloodstream|circulat|\bblood\b/i],
     ['eye', /\blight\b|retina|photorecept|\brods?\b|\bcones?\b|\blens\b|cornea|pupil|optic|\beyes?\b|rhodopsin|visual|aqueous|vitreous/i],
     ['sound', /sound|cochlea|hair cells?|\bears?\b|tympan|ossicle|stapes|malleus|incus|vibrat|basilar|endolymph|vestibul|odorant|olfact|\btaste\b|gustat/i],
     ['impulse', /action potential|impulse|depolari|repolari|hyperpolar|axon|\bnerves?\b|neurons?\b|signal|conduct|threshold|spinal cord|reflex|sensory receptor|ganglion|motor (neuron|end)|dendrite|\bmV\b|upstroke|dorsal root|ventral root|\broot\b|myelin|sprout/i],
-    ['brain', /hypothalam|pituitar|cortex|\bbrain|medulla|\bpons\b|cerebell|thalam|\bCNS\b|control center|brainstem|limbic|amygdala|cerebr/i],
-    ['channel', /channels?\b|\bNa\+|\bK\+|Ca2\+|Ca²⁺|Na⁺|K⁺|Cl[⁻−-]|HCO3|sodium|potassium|calcium|chloride|bicarbonate|\bions?\b|\bpump|gradient|diffus|osmo|transporter|symporter|antiporter|\bGLUT|\bNKCC|cotransport|\bH\+|\bNH[34]/i],
+    ['brain', /hypothalam|pituitar|cortex|\bbrain|medulla\b|\bpons\b|cerebell|thalam|\bCNS\b|control center|brainstem|limbic|amygdala|cerebr/i],
+    ['channel', /channels?\b|\bNa\+|\bK\+|Ca2\+|Ca²⁺|Na⁺|K⁺|Cl[⁻−-]|HCO3|sodium|potassium|calcium|chloride|bicarbonate|\bions?\b|\bpump|gradient|diffus|osmo|transporter|symporter|antiporter|\bGLUT\d|\bNKCC|cotransport|\bH\+|\bNH[34]/i],
     ['receptor', /\bbinds?\b|receptor|binding|attach|second messenger|\bcAMP|G protein|kinase|phosphoryl/i],
     ['hormone', /hormone|secret|gland|insulin|glucagon|cortisol|thyro|\bTSH\b|ACTH|\bADH\b|aldosterone|renin|angiotensin|oxytocin|estrogen|progesterone|testosterone|\bLH\b|\bFSH\b|\bPTH\b|calcitriol|epinephrine|ghrelin|leptin|releas|prolactin|GnRH|\bhCG\b|erythropoietin|\bEPO\b|iodide|\bT[34]\b/i],
     ['enzyme', /enzyme|\w{3,}ase\b|cataly|cleav|breaks? (down|apart)|hydroly|active site|substrate|activates/i],
@@ -848,7 +848,7 @@
     function paintList(focusK, focusD){
       list.innerHTML = place.map(function(i, k){
         var s = p.steps[i];
-        return '<li data-pos="' + k + '"><span class="pw-grip" aria-hidden="true" title="Drag to move"></span><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span>' + iconTag(p, s) + '<span class="anp-order-text">' + cardText(i) + '</span>' +
+        return '<li data-pos="' + k + '"><span class="pw-grip" aria-hidden="true" title="Drag to move"></span><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span>' + iconTag(p, s, true) + '<span class="anp-order-text">' + cardText(i) + '</span>' +
           '<span class="pw-move"><button type="button" data-k="' + k + '" data-d="-1" aria-label="Move up: ' + esc(plain(s.label)) + '"' + (k === 0 ? ' disabled' : '') + '>↑</button>' +
           '<button type="button" data-k="' + k + '" data-d="1" aria-label="Move down: ' + esc(plain(s.label)) + '"' + (k === n - 1 ? ' disabled' : '') + '>↓</button></span></li>';
       }).join('');
@@ -1044,7 +1044,8 @@
     panel.innerHTML = '<p class="kt-first pw-task">One step is wrong. Tap it, then check.</p>' +
       '<div class="pw-figslot"></div>' +
       '<ol class="pw-steps pw-pickable" role="group" aria-label="Steps: select the wrong one">' + p.steps.map(function(s, k){
-        var shown = k === at ? { label: '', text: e.text } : s;
+        // the replaced step keeps its place's oxygen color, so color is no tell
+        var shown = k === at ? { label: '', text: e.text, blood: s.blood } : s;
         return '<li><button type="button" class="pw-pick" aria-pressed="false" data-k="' + k + '"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span>' + iconTag(p, shown) + '<span class="pw-pick-text">' + html(shown.text) + '</span></button></li>';
       }).join('') + '</ol>' +
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check" disabled>Check</button></div>' +

@@ -1945,6 +1945,17 @@ Spec decision 87; details in docs/tools-upgrade-notes/anp-loops.md and anp-rest.
   (heart, vessel, lung, nephron, impulse, channel, hormone and so on). It is decoration, not content,
   but a few steps get a generic icon from their chapter. A step can name its own with `"icon"` in
   data/tools/pathways.json if one reads oddly.
+- **pathway-step-icons, review pass (2026-10-27)**: word matching inside longer words gave wrong
+  icons (liver in "deLIVERed", actin in "prolACTIN", chyme in "mesenCHYME", medulla in "MEDULLAry
+  cavity", GLUT in "GLUTamate"); those patterns now need a word start. Still generic or loose, left
+  for an author to set with `"icon"` if wanted: chapter fallbacks such as "Cortical groups fire"
+  (sound), "Notochord" (eye, from "rod"), "Filtration slits" (lung, from "slit diaphragm"),
+  "Cisterna chyli" (bone, from "vertebrae"), "Nipple opening" and "Voltage sensor moves" (kidney,
+  from "duct" and "T tubule"). None changes what a step says.
+- **calc-hint-first-step (2026-10-27)**: a calculator's practice hint names the first worked step
+  the question needs, not always step 1 (an FRC question now starts at "Functional residual
+  capacity", not "Inspiratory capacity"). Picked from the step data; 15 asks across 12 calculators
+  changed. Worth a glance that each named step is the natural start.
 
 ## Decided at the Phase 0 reviews
 

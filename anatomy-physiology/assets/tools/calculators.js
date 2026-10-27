@@ -846,8 +846,26 @@
   }
   /* One method hint before the answer: which way the number is off, a unit
      slip when the ratio shows one, the formula and the first worked step. */
+  /* The first worked step this question needs. Steps are written for the
+     calculator as a whole, so a step that works out a value this ask never
+     uses (inspiratory capacity when the ask is FRC) is skipped: a value is
+     needed when it is the answer or feeds a step that is. */
+  function firstStep(c, ask){
+    var steps = c.steps || [], der = {};
+    (c.derived || []).forEach(function(d){ der[d.key] = 1; });
+    var refs = steps.map(function(s){ var out = [], m, re = /\{([A-Za-z_]\w*)/g; while((m = re.exec(s.text))) if(der[m[1]]) out.push(m[1]); return out; });
+    var seen = {}, intro = refs.map(function(r){ var o = {}; r.forEach(function(k){ if(!seen[k]){ o[k] = 1; seen[k] = 1; } }); return o; });
+    var want = [ask.key].concat(ask.show ? [ask.show] : []), done = {}, used = {};
+    while(want.length){
+      var k = want.pop(); if(done[k]) continue; done[k] = 1;
+      for(var i = 0; i < intro.length; i++) if(intro[i][k]){ used[i] = 1; want = want.concat(refs[i]); break; }
+    }
+    if(!refs.length || !refs[0].length || used[0]) return steps[0];
+    for(var j = 1; j < steps.length; j++) if(used[j]) return steps[j];
+    return steps[0];
+  }
   function hintHtml(c, p, v){
-    var ans = p.env[p.ask.key], first = (c.steps || [])[0];
+    var ans = p.env[p.ask.key], first = firstStep(c, p.ask);
     var dir = ans !== 0 && isFinite(v) && Math.abs(v) !== Math.abs(ans) ? (Math.abs(v) > Math.abs(ans) ? 'too high' : 'too low') : '';
     var ratio = ans !== 0 ? Math.abs(v / ans) : 0;
     function near(x, t){ return Math.abs(ratio - t) <= t * 0.03; }
