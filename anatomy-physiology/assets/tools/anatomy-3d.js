@@ -305,6 +305,7 @@
     var it = round.items[round.i];
     it.done = false;
     cleanModel();
+    pills([], 'left');
     pills([{ html: (round.i + 1) + ' of ' + round.items.length, tone: 'ghost' }], 'right');
     why.innerHTML = '<p class="a3-muted">' + (it.kind === 'point' ? 'Turn the body and tap the structure. Something in the way? Filter by system in Filter &amp; options, or pick it by name there.' : 'The highlighted structure is the one to name.') + '</p>' + modelNote();
     if(it.kind === 'name'){
