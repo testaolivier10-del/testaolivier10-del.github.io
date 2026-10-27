@@ -134,3 +134,18 @@ All nine course homes are the R10-Home board layout, from one module:
 - Band art: `assets/covers/art/<key>.svg` (the course drawing alone). Tool covers: `assets/covers/tools/<key>/`.
 - The site's own top bar, course tabs and footer stay (site-chrome.js, the nav scripts); only `<main>` changed.
 - Proof: board | built images for every home board, light, phone and dark, in the B1 PR.
+
+### B3 built (claude/r3-exams)
+Exams, the running exam and its results, AP® unit tests, progress and exam day, every course:
+- `scripts/lib/r3-inner.mjs`: `shortBand()` (the short cover band) and `r3Inner(html, { key, slug })`, which turns a
+  built page into `<main class="r3 r3-inner r3-<slug>" data-cover>` + band + `<div class="xshell r3-body" id="r3Body">`.
+  Built pages call it through `dashboardPage(html, key)` and `examsPage(html, key, map)`
+  (`scripts/lib/dashboard-page.mjs`) and, for unit tests, from each `scripts/lib/ap*-entry.mjs`.
+- Hand pages (`nremt/exams.html`, `nremt/dashboard.html`, `nremt/exam-day.html`, `ochem/exams.html`,
+  `ochem/dashboard.html`) carry `<!-- r3-band -->` (and on NREMT exams `r3-exams-built`, on exam day `r3-toc`) blocks
+  written by `scripts/build-r3-inner.mjs` (`--check` in CI and ci-local).
+- Styles: `assets/course/r3-inner.css` (frame, setup card and numbers rail, progress kicker sections, exam day,
+  unit test rail, the running exam's focus bar, the results band). The built courses' progress panels are moved
+  into the kicker sections by `assets/course/r3-db.js` after each render; NREMT's running exam bar and results
+  band are `nremt/assets/r3-exam.js`. Every exams script's setup card got its heading and holds the free notice.
+- Compare images (board left, built right): scratchpad `b3-compare/`.
