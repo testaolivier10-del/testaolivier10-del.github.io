@@ -370,7 +370,7 @@
   /* --------------------------------------------------- aging mind */
   function agingScene(a, W, H){
     var phone = W < 560, g = [], A = Math.max(20, a);
-    var pw = phone ? W - 16 : W * 0.34, gx = phone ? 44 : pw + 64, gy = phone ? Math.round(H * 0.46) : 24, gw = W - gx - 16, gh = phone ? H - gy - 40 : H - gy - 48;
+    var pw = phone ? W - 16 : W * 0.34, gx = phone ? 44 : pw + 64, gy = phone ? Math.round(H * 0.46) : 24, gw = W - gx - (phone ? 30 : 16), gh = phone ? H - gy - 74 : H - gy - 48;
     var sceneH = phone ? gy - 30 : H - 16;
     g.push(lifeScene(A, 8, 8, pw, sceneH, phone));
     var sx = function(v){ return gx + (v - 20) / 70 * gw; }, sy = function(v){ return gy + gh - (v - 30) / 110 * gh; };
@@ -398,13 +398,27 @@
   });
 
   /* The first-run tip sits just above its target, in a slot opened for it. */
+  /* On a phone the dock starts below the first screen: the tip waits until
+     its control is fully in view, so it is placed above it in its slot and
+     never pinned over other controls. */
   function hintSlot(s, target, text, before){
     if(!target) return;
+    var rb = target.getBoundingClientRect();
+    if(window.IntersectionObserver && (rb.bottom > window.innerHeight || rb.top < 0)){
+      var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); setTimeout(function(){ hintNow(s, target, text, before); }, 120); } }, { threshold: 1 });
+      io.observe(target); return;
+    }
+    hintNow(s, target, text, before);
+  }
+  function hintNow(s, target, text, before){
     var slot = document.createElement('div');
     slot.className = 'dv-tipslot'; slot.setAttribute('aria-hidden', 'true');
     (before || target).parentNode.insertBefore(slot, before || target);
     var h = s.hint({ target: target, text: text });
     if(!h){ slot.remove(); return; }
+    // The slot is as tall as the tip, so the tip sits in it and covers no control or label.
+    var tipEl = document.querySelector('.ls-coach');
+    if(tipEl) slot.style.height = (tipEl.offsetHeight + 16) + 'px';
     var EV = ['click', 'keydown', 'input', 'change'];
     function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); setTimeout(function(){ slot.remove(); if(h.place) h.place(); }, 0); }
     EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
@@ -487,19 +501,9 @@
     function draw(){
       var z = size(), W = z.W, H = z.H, phone = W < 560, out = '', label = '';
       if(lens === 'life'){
-        var sceneH = phone ? Math.round(H * 0.44) : Math.round(H * 0.5), sceneW = phone ? W - 16 : Math.min(W * 0.42, sceneH * 1.35);
+        var sceneH = phone ? Math.round(H * 0.44) : Math.round(H * 0.5), sceneW = W - 16;
         out += lifeScene(age(), 8, 8, sceneW, sceneH, phone);
-        // the now card beside the scene (desktop)
-        if(!phone){
-          var cx = sceneW + 28, cy = 22, rows = D.LANES.map(function(L){ return [L, D.bandAt(L, age())]; });
-          out += '<text class="dv-now-h" x="' + cx + '" y="' + (cy + 8) + '">Age ' + esc(ageWords(age())) + '</text>';
-          rows.forEach(function(r, i){
-            var yy = cy + 38 + i * Math.min(48, (sceneH - 40) / 4);
-            out += '<circle class="dv-dotk ' + LANE_CLS[r[0].id] + '" cx="' + (cx + 6) + '" cy="' + (yy - 4) + '" r="6"/><text class="dv-now-k ' + LANE_CLS[r[0].id] + '-t" x="' + (cx + 18) + '" y="' + yy + '">' + esc(r[0].name) + '</text>';
-            var lines = wrap(r[1][2], W - cx - 30, 13.5).slice(0, 2);
-            lines.forEach(function(l, k){ out += '<text class="dv-now-v" x="' + (cx + 18) + '" y="' + (yy + 17 + k * 16) + '">' + esc(l) + '</text>'; });
-          });
-        } else out += '<text class="dv-now-h" x="16" y="30">Age ' + esc(ageWords(age())) + '</text>';
+        out += '<text class="dv-now-h" x="' + (phone ? 16 : 24) + '" y="' + (phone ? 30 : 38) + '">Age ' + esc(ageWords(age())) + '</text>';
         var ty = sceneH + 22;
         tl = timeline(8, ty, W - 12, H - ty - (phone ? 52 : 34), age(), { only: allLanes ? null : 'think' });
         out += tl.svg;
@@ -610,7 +614,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, sAge.input, 'Start here: drag to move through a life', sAge.el);
+      if(s.mode() === 'explore') hintSlot(s, sAge.el, 'Start here: drag to move through a life', sAge.el);
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.dv-fig')); }
     }
     sync(); draw(); words();

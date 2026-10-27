@@ -104,5 +104,8 @@
 .sn-figs .bt-btn[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
 .sn-go{display:flex;gap:10px;}
 .sn-go > *{flex:1;}
-.sn-tipslot{height:58px;}
+/* The first-run tip's slot sits inside the (sticky) primary row, above the button, so the tip
+   lies on the row's own blank space and never on another control. */
+.sn-go{flex-wrap:wrap;}
+.sn-tipslot{height:58px;flex:1 0 100%;}
 .sn-list{margin:0 0 10px;padding-left:18px;display:grid;gap:4px;font:600 14px/1.45 var(--font-ui);}

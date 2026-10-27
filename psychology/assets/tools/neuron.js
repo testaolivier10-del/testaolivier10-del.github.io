@@ -474,7 +474,7 @@
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       LS.setupRow = sp;
       syncView(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.nr-play'), 'Start here: fire the neuron', s.root.querySelector('.nr-go'));
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.nr-play'), 'Start here: fire the neuron', s.root.querySelector('.nr-play'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.nr-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }

@@ -195,10 +195,10 @@
     // the cards
     var cw = Math.min(W * 0.24, 170), chh = Math.min(H * 0.27, 130), cy = Y + 14, gap = 12, cx0 = X + W / 2 - cw - gap / 2;
     g.push('<g class="si-card"><rect x="' + n1(cx0) + '" y="' + n1(cy) + '" width="' + n1(cw) + '" height="' + n1(chh) + '" rx="4"/><rect x="' + n1(cx0 + cw + gap) + '" y="' + n1(cy) + '" width="' + n1(cw) + '" height="' + n1(chh) + '" rx="4"/></g>');
-    var base = cy + chh - 14, unit = (chh - 30) / 10;
+    var base = cy + chh - 24, unit = (chh - 30) / 10;
     g.push('<line class="si-line" x1="' + n1(cx0 + cw / 2) + '" x2="' + n1(cx0 + cw / 2) + '" y1="' + n1(base) + '" y2="' + n1(base - 8 * unit) + '"/>');
-    [[6.5, 'A'], [10, 'B'], [8, 'C']].forEach(function(l, i){ var lx = cx0 + cw + gap + cw * (0.22 + i * 0.28); g.push('<line class="si-line' + (i === 2 ? ' is-c' : '') + '" x1="' + n1(lx) + '" x2="' + n1(lx) + '" y1="' + n1(base) + '" y2="' + n1(base - l[0] * unit) + '"/><text class="si-cl" x="' + n1(lx) + '" y="' + n1(base + 11) + '" text-anchor="middle">' + l[1] + '</text>'); });
-    g.push('<text class="si-cl" x="' + n1(cx0 + cw / 2) + '" y="' + n1(base + 11) + '" text-anchor="middle">Standard</text>');
+    [[6.5, 'A'], [10, 'B'], [8, 'C']].forEach(function(l, i){ var lx = cx0 + cw + gap + cw * (0.22 + i * 0.28); g.push('<line class="si-line' + (i === 2 ? ' is-c' : '') + '" x1="' + n1(lx) + '" x2="' + n1(lx) + '" y1="' + n1(base) + '" y2="' + n1(base - l[0] * unit) + '"/><text class="si-cl" x="' + n1(lx) + '" y="' + n1(base + 15) + '" text-anchor="middle">' + l[1] + '</text>'); });
+    g.push('<text class="si-cl" x="' + n1(cx0 + cw / 2) + '" y="' + n1(base + 15) + '" text-anchor="middle">Standard</text>');
     // the table and the people behind it
     var shown = Math.min(n, 8), seats = shown + 1, ty = Y + H * 0.66, tableX0 = X + W * 0.05, tableX1 = X + W * 0.95;
     var step = (tableX1 - tableX0) / (seats + 0.3), hh = Math.min(H * 0.5, step * 2.6);
@@ -353,13 +353,27 @@
       quiz: function(host){ quiz(host, data); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
+  /* On a phone the dock starts below the first screen: the tip waits until
+     its control is fully in view, so it is placed above it in its slot and
+     never pinned over other controls. */
   function hintSlot(s, target, text, before){
     if(!target) return;
+    var rb = target.getBoundingClientRect();
+    if(window.IntersectionObserver && (rb.bottom > window.innerHeight || rb.top < 0)){
+      var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); setTimeout(function(){ hintNow(s, target, text, before); }, 120); } }, { threshold: 1 });
+      io.observe(target); return;
+    }
+    hintNow(s, target, text, before);
+  }
+  function hintNow(s, target, text, before){
     var slot = document.createElement('div');
     slot.className = 'si-tipslot'; slot.setAttribute('aria-hidden', 'true');
     (before || target).parentNode.insertBefore(slot, before || target);
     var h = s.hint({ target: target, text: text });
     if(!h){ slot.remove(); return; }
+    // The slot is as tall as the tip, so the tip sits in it and covers no control or label.
+    var tipEl = document.querySelector('.ls-coach');
+    if(tipEl) slot.style.height = (tipEl.offsetHeight + 16) + 'px';
     var EV = ['click', 'keydown', 'input', 'change'];
     function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); setTimeout(function(){ slot.remove(); if(h.place) h.place(); }, 0); }
     EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
@@ -440,7 +454,7 @@
           var fh = phone ? 0 : Math.min(gH * 0.3, gW * 0.32);
           out.push('<text class="si-gt" x="' + n1(gx) + '" y="' + n1(gy + 14) + '">' + esc(c.short) + ': ' + Math.round(c.pct * 0.4) + ' of 40 men went to 450 V</text>');
           if(!phone) out.push(forty(gx, gy + 22, gW, fh, Math.round(c.pct * 0.4)));
-          out.push(bars(gx, gy + (phone ? 18 : 30 + fh), gW, gH - fh - (phone ? 20 : 70), D.MILGRAM.map(function(m){ return { label: m.short, value: m.pct, on: m.id === cond }; }), { horizontal: true, source: 'Milgram (1963, 1974); 40 men per condition' }));
+          out.push(bars(gx, gy + (phone ? 18 : 30 + fh), gW, gH - fh - (phone ? 64 : 70), D.MILGRAM.map(function(m){ return { label: m.short, value: m.pct, on: m.id === cond }; }), { horizontal: true, source: 'Milgram (1963, 1974); 40 men per condition' }));
         }
         label = 'Milgram\'s obedience lab, condition: ' + c.name + '. ' + line();
       } else if(sit === 'bystand'){
@@ -533,7 +547,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp; sp.setup('Scene and results');
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, sSize.input, 'Start here: add people who answer wrong', sSize.el);
+      if(s.mode() === 'explore') hintSlot(s, sSize.el, 'Start here: add people who answer wrong', sSize.el);
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.si-fig')); }
     }
     sync(); draw(); words();

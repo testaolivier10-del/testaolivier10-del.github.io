@@ -89,5 +89,8 @@
 .ls-root .nr-drugs{grid-template-columns:repeat(2,minmax(0,1fr));}
 .nr-go{display:flex;gap:10px;}
 .nr-go .nr-play{flex:1;}
-.nr-tipslot{height:58px;}
+/* The first-run tip's slot sits inside the (sticky) primary row, above the button, so the tip
+   lies on the row's own blank space and never on another control. */
+.nr-go{flex-wrap:wrap;}
+.nr-tipslot{height:58px;flex:1 0 100%;}
 .nr-plist{margin:0 0 10px;padding-left:18px;display:grid;gap:4px;font:600 14px/1.45 var(--font-ui);}

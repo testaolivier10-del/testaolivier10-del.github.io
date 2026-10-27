@@ -99,7 +99,7 @@
       g.push('<text class="wb-t" x="' + r1(xx + pw / 2) + '" y="' + r1(py - 6) + '" text-anchor="middle" font-size="' + fs + '">' + p[1] + ': ' + M.fmt(p[0], 4) + '</text>');
     });
     if(o.graph !== false){
-      var gTop = py + ph + fs * 3, L = x0 + 46, R = x0 + w - 16, bot = y0 + h - fs * 2.2, xm = 220, ym = xm * k * 1.6;
+      var gTop = py + ph + fs * 3, L = x0 + 46, R = x0 + w - (o.enl ? 58 : 16), bot = y0 + h - fs * 2.2, xm = 220, ym = xm * k * 1.6;
       var sxx = function(v){ return L + v / xm * (R - L); }, syy = function(v){ return bot - v / ym * (bot - gTop); };
       g.push('<rect class="wb-plot" x="' + r1(L) + '" y="' + r1(gTop) + '" width="' + r1(R - L) + '" height="' + r1(bot - gTop) + '" rx="4"/>');
       g.push('<polygon class="wb-zone" points="' + pt(sxx(0), syy(0)) + ' ' + pt(sxx(xm), syy(xm * k)) + ' ' + pt(sxx(xm), syy(ym)) + ' ' + pt(sxx(0), syy(ym)) + '"/>');
@@ -403,7 +403,7 @@
     function draw(){
       var wh = size(), W = wh[0], H = wh[1], phone = W < 560, fs = phone ? 12.5 : 14, out, label;
       if(scene === 'detect'){ var a = sdtArt(6, 4, W - 12, H - 8, { d: d, c: c, trials: trials, fs: fs, drag: true, enl: true }); geo = a; out = a.svg; label = 'Two normal curves: noise only, and signal plus noise ' + d + ' SD to the right. The criterion line is ' + wordsC(c) + '. ' + sdtLine() + (trials.length ? ' ' + tally() : ''); }
-      else if(scene === 'weber'){ out = weberArt(6, 4, W - 12, H - 8, { I: I, add: add, k: X.WEBER.brightness.k, fs: fs }).svg; label = 'Two patches of light, starting brightness ' + I + ' and comparison ' + (I + add) + '. ' + weberLine() + ' A graph shows the JND rising in a straight line with the starting brightness.'; }
+      else if(scene === 'weber'){ out = weberArt(6, 4, W - 12, H - 8, { I: I, add: add, k: X.WEBER.brightness.k, fs: fs, enl: true }).svg; label = 'Two patches of light, starting brightness ' + I + ' and comparison ' + (I + add) + '. ' + weberLine() + ' A graph shows the JND rising in a straight line with the starting brightness.'; }
       else if(scene === 'color'){ out = afterArt(6, 4, W - 12, H - 8, { pic: pic, phase: left != null ? 'stare' : phase, fs: fs }).svg; label = phase === 'white' ? 'A white page with a dot. Look for the afterimage.' : phase === 'shown' ? 'The afterimage most people see: ' + afterWords() + '.' : 'A picture to stare at: ' + (pic === 'flag' ? 'a flag with yellow, black and green stripes' : 'a ' + pic + ' square') + ', with a dot in the middle.'; }
       else { var isD = !!X.DEPTH[fig]; out = isD ? depthArt(6, 4, W - 12, H - 8, fig, show, fs) : gestaltArt(6, 4, W - 12, H - 8, fig, show, fs); label = figName(fig) + '. ' + figLook() + (show ? ' The cue is drawn.' : ''); }
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.innerHTML = out; svg.setAttribute('aria-label', label);
@@ -417,7 +417,7 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.sn-act'), 'Start here: run 20 trials', s.root.querySelector('.sn-go'));
+      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.sn-act'), 'Start here: run 20 trials', s.root.querySelector('.sn-act'));
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.sn-fig')); }
       try{ new MutationObserver(function(){ draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     }
