@@ -278,13 +278,14 @@ export function r3HomeMain(key, ctx) {
   if (d.beta) qa.push(['Is this course finished?', `It is in Beta. ${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
   qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
+  qa.push(['Who makes LevlPrep?', `An independent project, not a company or a training program. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.`]);
+  qa.push(['How are the questions written?', `Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="${up}sources.html">Sources and checks</a>.`]);
+  qa.push(['How do I see what changed?', `Corrected questions, new lessons and site fixes are listed, dated, on <a href="${up}changelog.html">What&rsquo;s new</a>.`]);
   const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
 
-  const about = `<section class="about-row" aria-label="About LevlPrep">
-    <div class="about-card"><div class="k">Who makes this</div><p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="${up}premium.html">what is free</a> is listed course by course. No ads.</p></div>
-    <div class="about-card"><div class="k">How the questions are written</div><p>Every question in every course is original, written for LevlPrep with an explanation on each one. Automated checks look for answer-position and length tells. <a href="${up}sources.html">Sources and checks</a>.</p></div>
-    <div class="about-card"><div class="k">What changes</div><p>Corrected questions, new lessons and site fixes are listed, dated, on <a href="${up}changelog.html">What&rsquo;s new</a>. The checks that run on every change are described under <a href="${up}sources.html">Sources</a>.</p></div>
-  </section>`;
+  /* Who makes this, how the questions are written and what changes are FAQ items now, not a row of cards
+     (Olivier, 2026-10-26: "these are all also questions that could just be added to the question thing above"). */
+  const about = '';
 
   const sticky = `<div class="sticky-cta"><a class="btn-chan" href="${ctx.primaryHref}">${d.btn1}</a></div>`;
 
