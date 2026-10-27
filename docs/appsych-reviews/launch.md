@@ -50,3 +50,9 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
   `\text{ ... }` with spaces on any course): `mtext{white-space:pre}` in shared `theme.css`.
 - Checked, no change: tool full screen (stats lab, 390 and 1440 dark; the "turn your phone sideways" toast is
   shared and leaves after 3 s), unit test page, exam results breakdowns.
+- Checked, no change: unit page (contents list scrolls to the current unit, same in both), learn (Read |
+  Interactive on the textbook), glossary 1440 dark.
+
+**Step 1 done.** Next: step 2, full CI.
+
+## Step 2: CI
