@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
 import { apHomeMain } from './lib/course-home.mjs';
+import { apToolsHubMain, swapMain, toolBand } from './lib/r3-tools.mjs';
 import { join, dirname } from 'node:path';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
@@ -678,6 +679,16 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
   `;
   }
 
+  function toolsHubR3(a) {
+    const live = (C.pages.tools || []).filter(toolLive);
+    const topicTitle = t => { const id = JSON.parse(readFileSync(join(C.data, 'tools', `${t.slug}.json`), 'utf8')).topic; const x = map.topicById(id); return x ? x.title : ''; };
+    return apToolsHubMain({
+      key: 'apbio', up: '../', courseName: COURSE_HTML, lede: a.lede || a.desc, mountClass: 'bio-app-mount',
+      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => t.kind === g.kind).map(t => ({ ...t, foot: topicTitle(t) })) })),
+      note: 'Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.',
+    });
+  }
+
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));
@@ -711,6 +722,8 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
     // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
     if (a.slug === 'dashboard') return dashboardPage(page);
+    // Tools hub, round 3 (scripts/lib/r3-tools.mjs): the cover band and every tool led by its own cover.
+    if (a.slug === 'tools') return swapMain(page, toolsHubR3(a), '../');
     return study ? page.replace('<link rel="stylesheet" href="assets/bio.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/bio.css">') : page;
   }
@@ -908,6 +921,8 @@ ${tail({ depth, section: '' })}
     const extra = ['bio-questions.js', 'tools/bio-tool-math.js', ...(t.kind === 'skill' ? ['tools/bio-skill-problems.js'] : []), 'tools/bio-tools.js', ...(['energy-flow', 'population-growth', 'simpson-diversity', 'tree-reading'].includes(t.slug) ? ['tools/bio-art.js'] : []), ...(t.kind !== 'simulator' ? ['tools/bio-skill-stage.js'] : []), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
+${toolBand({ key: 'apbio', up: '../../', slug: t.slug, title: t.name, hand: esc(t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',
+  crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_HTML, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(t.name) }] })}
 <main id="main" class="xshell bio-app">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
   <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'simulator' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.tag || t.blurb)}</p></header>

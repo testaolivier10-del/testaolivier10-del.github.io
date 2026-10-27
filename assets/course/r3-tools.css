@@ -1,0 +1,80 @@
+/* Round 3, step B5 (docs/site-redesign.md): the tools hub of every course and the opener of every tool page.
+   Builds on assets/course/r3.css (the cover band, kicker, ruled heading, .feat, .tc); markup from
+   scripts/lib/r3-tools.mjs. Boards: docs/redesign-r3/r10/boards/R10-Tools*, R10-Tool*. */
+
+/* ---------------------------------------------------------------- the hub */
+.r3-tools .r3-tools-body{padding-top:36px}
+.r3-tools .band.short .art{max-width:320px}
+.r3-tools .r3-tools-group{margin:0 0 34px}
+.r3-tools .r3-tools-h{margin-bottom:18px}
+.r3-tools .r3-tools-p{margin:-2px 0 16px;color:var(--muted);font-size:15px;max-width:40em}
+.r3-tools .kicker{margin-top:4px}
+.r3 .r3-tool-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 24px}
+.r3 .r3-tool-grid > li{display:flex;min-width:0}
+.r3 a.r3-tool{display:flex;flex-direction:column;gap:4px;width:100%;text-decoration:none;color:var(--ink);background:none;border:0;border-radius:0;box-shadow:none;padding:0 0 14px;border-bottom:1px solid var(--line);min-height:0}
+.r3 a.r3-tool:hover{background:none;transform:none;box-shadow:none}
+.r3 a.r3-tool .tc{margin:0 0 12px;transition:transform .15s ease,box-shadow .15s ease}
+.r3 a.r3-tool:hover .tc{transform:translateY(-2px);box-shadow:0 18px 30px -22px rgba(11,26,51,.55)}
+.r3 a.r3-tool .cx-tool-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0}
+.r3 a.r3-tool .cx-tool-name{font:900 17px/1.25 var(--font-ui);color:var(--ink);letter-spacing:-.005em}
+.r3 a.r3-tool:hover .cx-tool-name{color:var(--accent)}
+.r3 a.r3-tool .cx-tool-top .tag,.r3 a.r3-tool .cx-tool-top .premium-badge{flex:none;margin-left:auto}
+.r3 a.r3-tool .premium-badge{font:800 12px var(--font-ui);border-radius:999px;padding:2px 10px;white-space:nowrap;background:#FFF3D6;color:var(--amber-text);border:0;box-shadow:none}
+.r3 a.r3-tool .cx-tool-top .tag + .premium-badge{margin-left:6px}
+.r3 a.r3-tool[data-premium] .tag.free{display:none}
+.r3 a.r3-tool .cx-tool-desc{font-size:14.5px;line-height:1.45;color:var(--muted);margin:0}
+.r3 a.r3-tool .cx-tool-status{display:flex;flex-direction:column;gap:4px;margin:6px 0 0;font:700 13px var(--font-ui);color:var(--muted)}
+.r3 a.r3-tool .cx-tool-status:empty{display:none}
+.r3 a.r3-tool .cx-tool-stat b{color:var(--ink)}
+.r3 a.r3-tool .cx-tool-status .track{height:5px;border-radius:9px;background:var(--ctint);overflow:hidden;max-width:160px}
+.r3 a.r3-tool .cx-tool-status .track i{display:block;height:100%;background:var(--accent)}
+.r3 a.r3-tool .cx-tool-foot{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin:8px 0 0;padding:0;border:0;font:800 13px/1.4 var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink)}
+.r3 a.r3-tool .cx-tool-foot > span:first-child:empty{display:none}
+.r3 a.r3-tool .cx-tool-go{display:inline;padding:0;border-radius:0;background:none;color:var(--accent);font:900 14.5px var(--font-ui);letter-spacing:0;text-transform:none}
+.r3 a.r3-tool .cx-tool-name{font-family:var(--font-ui)}
+.r3 .r3-feat{margin:0 0 40px;grid-template-columns:minmax(0,1fr) minmax(0,46%);gap:28px;padding:26px 28px}
+.r3 .r3-feat h2.cname{font:900 26px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:#fff}
+.r3 .r3-feat .hand{color:#FFD23F;margin:6px 0 8px;font-size:22px}
+.r3 .r3-feat .cdesc{font-size:15.5px;margin:0 0 16px;max-width:34em}
+.r3 .r3-feat .credit{font-size:12.5px;line-height:1.45}
+.r3 .r3-feat .fig.tcfig{border-radius:14px}
+.r3 .r3-tools-note{color:var(--muted);font-size:14.5px;max-width:60em;margin:4px 0 30px}
+.r3 .r3-tools-note a{color:var(--ink)}
+.r3-tools .r3-tools-after{margin:0 0 30px}
+@media (max-width:980px){.r3 .r3-tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .r3 .r3-tool-grid{grid-template-columns:1fr;gap:0}
+  .r3 a.r3-tool{display:grid;grid-template-columns:112px minmax(0,1fr);grid-template-rows:auto auto auto auto;column-gap:14px;row-gap:3px;padding:12px 0}
+  .r3 a.r3-tool .tc{grid-row:1/5;margin:0;aspect-ratio:1/1;align-self:start}
+  .r3 a.r3-tool .tc img{object-position:center}
+  .r3 a.r3-tool .cx-tool-name{font-size:16px}
+  .r3 a.r3-tool .cx-tool-foot{margin-top:2px}
+  .r3 .r3-feat{padding:18px;gap:16px}
+  .r3 .r3-feat .fig.tcfig{order:-1}
+  .r3-tools .r3-tools-body{padding-top:24px}
+}
+
+/* --------------------------------------------------------- a tool's opener */
+.r3-toolband{padding-bottom:0;background-image:none}
+.r3-toolband .band.short .hwrap{padding-bottom:44px}
+.r3-toolband .band .art.tool{max-width:340px}
+.r3-toolband .band .art.tool img{border-radius:18px;filter:drop-shadow(0 24px 34px rgba(0,0,0,.35))}
+.r3-toolband .band .issue{margin-bottom:12px}
+.r3-toolband .hand{margin-bottom:10px}
+.r3-toolband .lede{margin-bottom:20px}
+/* The studio keeps the site header and the course tabs above it on a desktop (it hides them on a phone:
+   assets/course/tool-studio.css); the tool then fills one screen under this band. */
+@media (max-width:999.98px){
+  body.ls-on .r3-toolband{display:none}
+}
+@media (max-width:860px){
+  .r3-toolband .band.short .hwrap{padding-bottom:28px}
+  .r3-toolband .band .art.tool{max-width:260px;margin:0}
+}
+
+/* the band's breadcrumb (hub and tool pages) */
+.r3 .band .crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;font:800 13px var(--font-ui);color:rgba(255,255,255,.72)}
+.r3 .band .crumbs a{color:rgba(255,255,255,.86);text-decoration:none}
+.r3 .band .crumbs a:hover{color:#fff;text-decoration:underline}
+.r3 .band .crumbs span[aria-hidden]{opacity:.55}
+.r3 .band .crumbs [aria-current]{color:#fff}

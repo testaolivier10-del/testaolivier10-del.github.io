@@ -33,6 +33,7 @@
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { courseBanner } from './lib/covers.mjs';
+import { apToolsHubMain, swapMain, toolBand } from './lib/r3-tools.mjs';
 import { apHomeMain } from './lib/course-home.mjs';
 import { MCQ_PARTS, FRQ_PARTS, FRQ_TOTAL } from './lib/apenv-exams.mjs';
 import { join, dirname } from 'node:path';
@@ -710,6 +711,16 @@ ${tail({ depth, section: 'home', extra: ['env-home.js'] })}
   `;
   }
 
+  function toolsHubR3(a) {
+    const live = (C.pages.tools || []).filter(toolLive);
+    const topicTitle = t => { const x = map.topicById(t.topic); return x ? x.title : ''; };
+    return apToolsHubMain({
+      key: 'apenv', up: '../', courseName: COURSE_HTML, lede: a.lede || a.desc, mountClass: 'env-app-mount',
+      groups: TOOL_GROUPS.map(g => ({ h: g.h, p: g.p, tools: live.filter(t => t.kind === g.kind).map(t => ({ ...t, foot: topicTitle(t) })) })),
+      note: 'Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.',
+    });
+  }
+
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'environmental-science', 'assets', a.script));
@@ -743,6 +754,8 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
     // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
     if (a.slug === 'dashboard') return dashboardPage(page);
+    // Tools hub, round 3 (scripts/lib/r3-tools.mjs): the cover band and every tool led by its own cover.
+    if (a.slug === 'tools') return swapMain(page, toolsHubR3(a), '../');
     return study ? page.replace('<link rel="stylesheet" href="assets/env.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/env.css">') : page;
   }
@@ -956,6 +969,8 @@ ${tail({ depth, section: '' })}
     const extra = ['env-questions.js', ...lib('tools/env-tool-math.js'), ...lib(`tools/math/${t.slug}.js`), 'tools/env-tools.js', ...lib('tools/env-plot.js'), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
+${toolBand({ key: 'apenv', up: '../../', slug: t.slug, title: t.name, hand: esc(t.lede || t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',
+  crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_HTML, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(t.name) }] })}
 <main id="main" class="xshell env-app">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
   <header class="hero env-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'trainer' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.lede || t.blurb)}</p></header>
