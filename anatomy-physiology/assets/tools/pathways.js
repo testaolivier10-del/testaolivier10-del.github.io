@@ -1030,7 +1030,7 @@
         map.fill(at, null, 'gap', { yours: cut(pick.text, 40) });
         slotInView(map, at);
         var prev = at > 0 ? '<b>' + html(p.steps[at - 1].label) + '</b>' : 'the start', next = at < p.steps.length - 1 ? '<b>' + html(p.steps[at + 1].label) + '</b>' : 'the end';
-        hintBox(panel, 'Not that one: the reason is under your choice. Hint: the missing step is caused by ' + prev + ' and leads to ' + next + '. Look for the choice that links the two.',
+        hintBox(panel, 'Not that one: the reason is under your choice. Hint: the missing step comes after ' + prev + ' and before ' + next + '. Look for the choice that links the two.',
           function(){ var nb = pq(panel, '.pw-choices .anp-opt:not([disabled])'); if(nb) nb.focus(); if(S) S.caption('Choose again.', p0mode()); },
           function(){ finish(null); });
       });

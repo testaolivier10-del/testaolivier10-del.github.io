@@ -1032,7 +1032,7 @@
       "distractors": [
         {
           "text": "Central chemoreceptors detect a fall in blood oxygen",
-          "short": "Central sensors: oxygen falls",
+          "short": "Central chemoreceptors sense low O2",
           "why": "Central chemoreceptors respond to hydrogen ions in the brain’s fluid, not to oxygen. Only the peripheral chemoreceptors make you breathe more when oxygen is low."
         },
         {
@@ -1830,7 +1830,7 @@
         },
         {
           "text": "The brain takes up more glucose because insulin moves its carriers",
-          "short": "Brain takes up more glucose",
+          "short": "Insulin drives brain glucose uptake",
           "why": "Neurons take in glucose through carriers that are always in the membrane, so their uptake does not depend on insulin."
         },
         {

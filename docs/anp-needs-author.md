@@ -1934,6 +1934,18 @@ Spec decision 87; details in docs/tools-upgrade-notes/anp-loops.md and anp-rest.
 - **predict-feed-order** (pending review). The feed lists causes before effects, one chain after
   another; branches are labeled "From ..." and the intro says the order is causal, not a timeline.
 
+## Tool audit fixes (2026-10-27): items for review
+
+- **loop-distractor-shorts**: the feedback loop builder now shows short card labels, so each of the
+  165 distractor cards gained a `short` (data/tools/feedback-loops.json). They were written to keep
+  the same wrong idea as the full card and checked against it line by line; the full sentence is one
+  tap away and still drives the explanation. Worth a read by an instructor for any short that now
+  reads as more (or less) wrong than its sentence.
+- **pathway-step-icons**: the pathway map picks an icon for each step from its label and text
+  (heart, vessel, lung, nephron, impulse, channel, hormone and so on). It is decoration, not content,
+  but a few steps get a generic icon from their chapter. A step can name its own with `"icon"` in
+  data/tools/pathways.json if one reads oddly.
+
 ## Decided at the Phase 0 reviews
 
 These are recorded in the spec's decisions log (section 19) and kept here so the history stays in

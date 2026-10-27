@@ -317,9 +317,9 @@
     var SLOT_HINT = {
       stimulus: 'The stimulus is the change in the variable itself, before anything detects it.',
       sensor: 'The receptor (sensor) is what detects that change: a sensory receptor, or a cell that senses it directly.',
-      afferent: 'The afferent pathway carries the information toward the control center. When the sensing cells are the control center, it reads "None".',
+      afferent: 'The afferent pathway carries the information toward the control center: nerves, a hormone or a local signal. When the sensing cells are the control center, it reads "None".',
       control: 'The control center compares the variable with its set point and sends out the command.',
-      efferent: 'The efferent pathway carries the command away from the control center to the effector: nerves or a hormone in the blood.',
+      efferent: 'The efferent pathway carries the command away from the control center to the effector: nerves, a hormone in the blood, or a signal inside or between cells.',
       effector: 'The effector is the muscle, gland or cell that carries out the command.',
       response: 'The response is what the effector does to the variable.'
     };
