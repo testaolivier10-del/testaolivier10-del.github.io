@@ -65,6 +65,7 @@ const RUNNER_SCREENS = `
           <dt><kbd aria-label="Up arrow">&uarr;</kbd><kbd aria-label="Down arrow">&darr;</kbd></dt><dd>move between answers</dd>
           <dt><kbd>Home</kbd><kbd>End</kbd></dt><dd>first or last answer</dd>
           <dt><kbd>Space</kbd><kbd>Enter</kbd></dt><dd>choose</dd>
+          <dt><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></dt><dd>sort the item into that group</dd>
         </dl>
       </div>
     </aside>

@@ -61,6 +61,8 @@
       band.querySelector('.r3-res-score').textContent = m ? m[1] + ' of ' + m[2] + '.' : big + '.';
       band.querySelector('.r3-res-tail').textContent = cat ? 'Here is each domain.' : 'Here is where.';
       band.querySelector('.r3-res-kind').textContent = cat ? 'Adaptive exam' : 'Timed exam';
+      var sub = document.querySelector('#r3DomCard .sub');
+      if(sub) sub.textContent = cat ? 'Each of the five domains above, near or below the passing line, and what to study next.' : 'Your score in each of the five domains, and the topic areas under it.';
       band.querySelector('.lede').innerHTML = cat
         ? 'Each domain above, near or below LevlPrep&rsquo;s passing line, with what to study next. A simulation of the adaptive format, not the Registry&rsquo;s algorithm.'
         : 'Scored by domain in the order the exam outline lists them, with the topic areas each domain&rsquo;s questions came from.';

@@ -251,7 +251,7 @@
 <script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
 <script src="assets/r3-exam.js" defer></script>
-<script>(function(){var f=document.getElementById('setup');if(!f)return;function sync(){var r=f.querySelector('input[name="nrExam"]:checked'),v=r?r.value:'full';[].forEach.call(document.querySelectorAll('[data-exam-step]'),function(el){el.hidden=el.getAttribute('data-exam-step')!==v;});var b=document.getElementById('startBtn');if(b)b.textContent=v==='cat'?'Start adaptive exam':'Start timed exam';}f.addEventListener('change',sync);if(location.hash==='#adaptive'){var c=f.querySelector('input[value="cat"]');if(c)c.checked=true;}sync();})();</script>
+<script>(function(){var f=document.getElementById('setup');if(!f)return;function sync(){var r=f.querySelector('input[name="nrExam"]:checked'),v=r?r.value:'full';[].forEach.call(document.querySelectorAll('[data-exam-step]'),function(el){el.hidden=el.getAttribute('data-exam-step')!==v;});var t=v==='cat'?'Start adaptive exam':'Start timed exam';[].forEach.call(document.querySelectorAll('#startBtn,[data-r3-start]'),function(x){x.textContent=t;});}f.addEventListener('change',sync);if(location.hash==='#adaptive'){var c=f.querySelector('input[value="cat"]');if(c)c.checked=true;}sync();})();</script>
 <script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-r3-start]');if(!a)return;var b=document.querySelector('#r3Body #startBtn,#r3Body .cx-start button,#r3Body [data-start]');if(b&&!b.disabled){e.preventDefault();b.click();}});</script>
 </body>
 </html>
