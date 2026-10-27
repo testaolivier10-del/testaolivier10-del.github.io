@@ -3,12 +3,8 @@
  "type": "aaq",
  "points": 7,
  "title": "Article analysis: a night of short sleep and word recall",
- "units": [
-  "skills-research"
- ],
- "topics": [
-  "research-methods"
- ],
+ "units": ["skills-research"],
+ "topics": ["research-methods", "research-sampling", "research-ethics", "stats-significance"],
  "practices": [
   "2.A",
   "2.B",

@@ -37,6 +37,10 @@
      Page frame (phone first): frame(app, data, { noun, howTitle }) -> { pick,
        area }: the problem, then the picker row behind "More options", then
        "About this <noun>" (intro and how it works), both closed.
+     hintSlot(s, target, text, { before, cls }) -> the Tool Studio's first-run
+       tip (s.hint) in an empty slot opened just above its target (or above
+       `before`), so the tip never covers another control; the slot goes on the
+       first action. Default slot class psy-tipslot (psy-tools.css).
      keepGoing(host, { topic, also }) -> the "Keep going" strip after a graded
        problem: the topic's lesson and notes, its glossary terms (from
        assets/glossary.json), and lessons for any other topic missed. */
@@ -902,11 +906,28 @@
       open: openAll, why: why, details: det
     };
   }
+  /* The first-run tip in its own slot (Phase 3, shared from the trainers'
+     copies: T2, T3). opts may be the old fourth argument, a `before` node. */
+  function hintSlot(s, target, text, opts){
+    if(!s || !s.hint || !target) return null;
+    if(opts && opts.nodeType) opts = { before: opts };
+    opts = opts || {};
+    var at = opts.before || target, slot = document.createElement('div');
+    slot.className = opts.cls || 'psy-tipslot'; slot.setAttribute('aria-hidden', 'true');
+    at.parentNode.insertBefore(slot, at);
+    var h = s.hint({ target: target, text: text });
+    if(!h){ slot.remove(); return null; }
+    var EV = ['pointerdown', 'keydown', 'input', 'change'];
+    function done(e){ if(e && e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return; slot.remove(); EV.forEach(function(t){ s.root.removeEventListener(t, done, true); }); if(h.place) h.place(); }
+    EV.forEach(function(t){ s.root.addEventListener(t, done, true); });
+    if(h.place) h.place();
+    return h;
+  }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApPsychTools = {
-    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, hintSlot: hintSlot,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

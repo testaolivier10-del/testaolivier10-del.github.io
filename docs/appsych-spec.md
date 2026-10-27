@@ -103,7 +103,7 @@ One branch, `claude/appsych`, one PR at the end.
 | 0 | Fork AP® Environmental Science: runtime `psychology/assets/` (`psy-*`), `ApPsychStats` (descriptive statistics) in place of `ApEnvCalc`, generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-27** (decision 7) |
 | 1 | Content: lessons, notes, banks (incl. stimulus sets), AAQs and EBQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
-| 3 | Two fixed practice exams, unit tests, cram kit, extras | |
+| 3 | Two fixed practice exams, unit tests, cram kit, extras | **built 2026-10-27** (decision 12, `docs/appsych-reviews/phase3.md`): two forms (75 in course order, 15 per unit, 20 exam-only + 55 bank each, 10 sets each, AAQ then EBQ), every exam-only number recomputed, timed sections; FRQ teaching-order check and six FRQs refiled; measured plot margins; shared `hintSlot` and crumb hide; help note as a lesson field; heritability wording reconciled; needs-author merged. "Make it specific" prompts not written (needs-author `justify-prompts`) |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
 | Launch | Publish, generators, continuity pass, "ten courses" wording, full CI with browser checks, PR | |
 
@@ -204,7 +204,33 @@ with one rubric line per point and full-credit samples.
     blue family to match the accent: background `#07608A`, gold title accent `#FFD23F`, light-blue head `#8CC8E8`
     (Statistics' cover is dark steel `#0E3A52`, Chemistry's cobalt `#1A2C78`, so the hub keeps every cover apart).
 
+12. (2026-10-27) **Phase 3 as built** (`docs/appsych-reviews/phase3.md`). Practice exams: two forms of 75
+    four-option questions in course order, 15 per unit (each 15-25% range allows 11 to 19), 20 exam-only questions
+    (`data/exams/items.json`: two invented sets per form, a study and a data table, plus standalones on the reader
+    report traps) and 55 bank questions, never a lesson check item or a free unit-test item, nothing in both forms.
+    Sets: 10 per form of 2-5 questions (form 1: 4 study, 3 data, 3 figure; form 2: 5 study, 5 data, 2 figure; 35 and
+    37 questions in sets), our choice while the official counts are unpublished (needs-author `mcq-sets` stays
+    open). Section II: form 1 `frq-forgetting-aaq` and `frq-social-cognitive-trait-ebq`; form 2
+    `frq-social-situations-aaq` and `frq-treatment-anxiety-ebq`. Every exam-only number and its named-slip
+    distractors are recomputed by `ApPsychStats` (`EXAM_NUMBERS`, 13 entries). Timed sections, unit tests, the cram
+    kit (default Fri 2027-05-14) and the statistics page were already built in Phase 0; the statistics page now
+    also links the research chapter's flashcards. No separate research-terms page: the glossary and the "Research
+    skills you need" flashcard deck (`?unit=skills-research`) already cover the vocabulary, and the statistics page
+    and deck cover the descriptive statistics. Lead notes (section 10): (a) the content check refuses an FRQ that
+    uses a term taught after the latest of its topics (restricted-term lists not read; exams exempt), and six FRQs
+    were refiled or reworded; (b) `ApPsychPlot` measures its y tick labels for the left margin (38 px minimum), so
+    the hypnogram reads Awake, REM, N1-N3; (c) `ApPsychTools.hintSlot` and `body.ls-on .psy-crumb{display:none}`
+    plus `.psy-tipslot` in the shared tool files (builders' copies stay until review); (d) the help note is a lesson
+    field (`"help": true`, one shared `HELP_LINE`), printed on the lesson summary and the notes page, required on
+    5.3-5.5, refused when pasted; 5.1 does not keep it (stress and coping is not a disorder topic); 3.6 keeps it
+    beside its adverse childhood experiences section (`HELP_EXTRA`, needs-author `help-scope`); (e) intelligence
+    heritability is "about 0.5 in adults (lower in childhood), mostly from samples in wealthier countries" in both
+    1.1 and 2.8. Not done: the "Make it specific" prompts (needs-author `justify-prompts`; the 40-prompt rule waits
+    for `data/justify/`).
+
 ## 10. Lead notes for Phase 3 and 4 (from author reports)
+
+Items (a)-(e) below were done in Phase 3 (decision 12); the Tool Studio sticky-row note stays for launch.
 
 - FRQs are filed on a topic but may use terms taught later (`frq-heredity-environment-aaq` part D needs research
   ethics; `frq-development-methods-aaq` uses 3.6 parenting styles). The content check does not scan FRQs for teaching

@@ -70,3 +70,22 @@ test('Tool Studio hint: ring clamped to the viewport, tip kept inside it', () =>
   assert.match(js, /var rl = Math\.max\(0, r\.left - pad\), rr2 = Math\.min\(vw0, r\.right \+ pad\);/);
   assert.match(css, /\.ls-halo\{[^}]*box-sizing:border-box;max-width:100vw;/);
 });
+
+test('the left margin fits the widest y tick label (measured, not fixed), so long labels are never cut', () => {
+  const base = { kind: 'line', label: L, series: [{ points: [[0, 0], [1, 4]] }], y: [0, 4] };
+  const short = P.frame(P.expand(base)).pad.l;
+  const long = P.frame(P.expand({ ...base, yTickList: [{ v: 4, text: 'Awake' }, { v: 3, text: 'REM sleep' }, { v: 0, text: 'N3' }] })).pad.l;
+  assert.equal(short, 38, 'short numbers keep the 38 px minimum');
+  assert.ok(long > short && long >= 'REM sleep'.length * 6.4 + 12, `margin ${long}`);
+  const h = P.svg({ ...base, yTickList: [{ v: 4, text: 'REM sleep' }] });
+  const x = +h.match(/<text x="([\d.]+)" y="[\d.]+" text-anchor="end">REM sleep</)[1];
+  assert.ok(x - 'REM sleep'.length * 6.4 >= 0, 'the label starts inside the picture');
+});
+
+test('shared tool helpers: hintSlot in psy-tools.js, the crumb hidden in the studio and the tip slot in psy-tools.css', () => {
+  const js = readFileSync('psychology/assets/tools/psy-tools.js', 'utf8'), css = readFileSync('psychology/assets/tools/psy-tools.css', 'utf8');
+  assert.match(js, /function hintSlot\(s, target, text, opts\)/);
+  assert.match(js, /hintSlot: hintSlot/);
+  assert.match(css, /body\.ls-on \.psy-crumb\{display:none;\}/);
+  assert.match(css, /\.psy-tipslot\{/);
+});

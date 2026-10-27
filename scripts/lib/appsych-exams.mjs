@@ -12,7 +12,8 @@
      checkJustify(prompts, ctx)    problems with the trainer's prompts
      checkNumbers(items, prompts)  every number in an exam-only item or a
                                    prompt, recomputed here with ApPsychStats
-                                   (EXAM_NUMBERS, JUSTIFY_NUMBERS: Phase 3) */
+                                   (EXAM_NUMBERS: Phase 3; JUSTIFY_NUMBERS
+                                   empty until the prompts are written) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { Stats } from './appsych-mathlib.mjs';
@@ -223,8 +224,32 @@ export function checkJustify(prompts, ctx) {
    item's keyed option, or a prompt's text). Each entry is { id, key, starts?,
    also?, check? } for an item (also: distractor values recomputed from the
    slip they name, each one an option) and { id, has: [...], check? } for a
-   prompt. Empty until Phase 3 writes the exams and prompts. */
-export const EXAM_NUMBERS = [];
+   prompt. */
+const C = (fn, ...args) => Stats.evaluate({ fn, args });
+// Form 1, set exam-1-s1: sleep onset means 31 (caffeine) and 14 (placebo) minutes.
+const onset = { caf: 31, pla: 14 };
+// Form 1, set exam-1-s2: words recalled out of 20.
+const meaning = [14, 21, 9, 17, 14], letters = [6, 9, 5, 8, 7];
+// Form 2, set exam-2-s2: stress symptoms in one week (Ben's 19 is the outlier).
+const symptoms = [5, 19, 3, 2, 6, 3, 4];
+export const EXAM_NUMBERS = [
+  { id: 'psy-exam-1-04', key: `On average the caffeine group took ${C('sub', onset.caf, onset.pla)} minutes longer to fall asleep, a gap unlikely to be due to chance`,
+    also: [`On average the placebo group took ${C('sub', onset.caf, onset.pla)} minutes longer to fall asleep, a gap unlikely to be due to chance`] },
+  { id: 'psy-exam-1-05', key: `${C('mean', meaning)} words`, also: [`${C('median', meaning)} words`, `${C('sum', meaning)} words`, `${C('range', meaning)} words`] },
+  { id: 'psy-exam-1-06', key: `${C('median', meaning)} words`, also: [`${C('mean', meaning)} words`, `${meaning[2]} words`, `${Math.max(...meaning)} words`] },
+  { id: 'psy-exam-1-07', key: `The meaning group's scores were more spread out (range ${C('range', meaning)} versus ${C('range', letters)})`,
+    also: [`The letters group's scores were more spread out (range ${C('range', letters)} versus ${C('range', meaning)})`], check: () => C('mean', meaning) > C('mean', letters) },
+  { id: 'psy-exam-1-08', key: 'Deep processing: thinking about meaning led to better recall', check: () => C('mean', meaning) === 15 && C('mean', letters) === 7 },
+  { id: 'psy-exam-1-14', key: `The ${C('percentileRule', C('z', 60, 50, 10))}th percentile`, also: [`The ${C('rulePct', 0, 1)}th percentile`, `The ${C('rulePct', -1, 1)}th percentile`] },
+  { id: 'psy-exam-1-19', key: `About ${C('percentileRule', C('z', 130, 100, 15))}%`, also: [`About ${C('rulePct', -2, 2)}%`, `About ${C('rulePct', 2, null)}%`, `About ${C('rulePct', 0, 2)}%`] },
+  { id: 'psy-exam-2-05', key: `${C('mean', symptoms)} symptoms`, also: [`${C('median', symptoms)} symptoms`, `${C('mode', symptoms)} symptoms`, `${C('sum', symptoms)} symptoms`] },
+  { id: 'psy-exam-2-06', key: `${C('median', symptoms)} symptoms`, also: [`${C('mean', symptoms)} symptoms`, `${symptoms[3]} symptoms`, `${C('range', symptoms)} symptoms`] },
+  { id: 'psy-exam-2-07', key: `The median, because Ben's ${Math.max(...symptoms)} symptoms pull the mean up`, check: () => C('mean', symptoms) > C('median', symptoms) && C('mode', symptoms) === 3 },
+  { id: 'psy-exam-2-08', key: `${C('range', symptoms)} symptoms`, also: [`${Math.max(...symptoms)} symptoms`, `${C('mean', symptoms)} symptoms`, `${C('count', symptoms)} symptoms`] },
+  { id: 'psy-exam-2-15', key: `About ${C('rulePct', C('z', 2900, 3400, 500), C('z', 3900, 3400, 500))}%`, also: [`About ${C('rulePct', 0, 1)}%`, `About ${C('rulePct', -2, 2)}%`, `About ${C('rulePct', null, 0)}%`] },
+  { id: 'psy-exam-2-20', key: `Memory ${C('z', 80, 70, 5)} SD above; vocabulary ${C('z', 85, 80, 10)} SD above`,
+    also: [`Memory ${C('sub', 80, 70)} SD above; vocabulary ${C('sub', 85, 80)} SD above`, `Memory ${C('z', 85, 80, 10)} SD above; vocabulary ${C('z', 80, 70, 5)} SD above`] },
+];
 export const JUSTIFY_NUMBERS = [];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {

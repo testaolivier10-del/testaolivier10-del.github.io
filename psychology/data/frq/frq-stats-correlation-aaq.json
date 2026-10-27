@@ -3,12 +3,8 @@
  "type": "aaq",
  "points": 7,
  "title": "Article analysis: screen time and attention in teenagers",
- "units": [
-  "skills-research"
- ],
- "topics": [
-  "stats-correlation"
- ],
+ "units": ["skills-research"],
+ "topics": ["stats-correlation", "research-ethics"],
  "practices": [
   "2.A",
   "2.B",

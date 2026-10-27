@@ -197,7 +197,16 @@ Checked by `checkForms` (`scripts/lib/appsych-exams.mjs`): at least two forms; S
 questions, whole sets in authored order, set counts within `EXAM_SETS` (study 2-6, data 2-6, figure 0-4: the
 official counts are not published, needs-author `mcq-sets`), each unit within 15-25% of 75 (11 to 19); Section II
 is the AAQ then the EBQ, 7 points each; no question or FRQ in two forms. Practice weights checked only when the
-map sets `practicesConfirmed`. `EXAM_NUMBERS` and `JUSTIFY_NUMBERS` are empty until Phase 3.
+map sets `practicesConfirmed`. `EXAM_NUMBERS` recomputes every exam-only number (Phase 3); `JUSTIFY_NUMBERS` is
+empty until the prompts exist. An FRQ unlocks with the latest of its `topics` in course order: `checkFrq` scans
+everything in it but the restricted-term lists against that topic (the exams are exempt).
+
+## Help note
+
+A lesson with `"help": true` gets the shared 988 line (`HELP_LINE` in `scripts/lib/appsych-build.mjs`) after its
+summary and on its notes page (at `<div data-psy-help></div>` if the notes place it, else at the top). Required on
+`HELP_TOPICS` (5.3-5.5); elsewhere only for a topic `HELP_EXTRA` lists with its reason. Pasting the line fails the
+content check.
 
 ## "Make it specific": `data/justify/<unit>.json`
 

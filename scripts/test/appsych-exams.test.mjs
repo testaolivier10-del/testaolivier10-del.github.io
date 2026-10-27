@@ -17,16 +17,19 @@
      and each row is a card in the "Statistics" flashcard deck;
    - the generator serves no forms and no unit tests before anything is
      published, and a unit test and the statistics page once one is.
-   Phase 3 adds the two real forms and the prompts. */
+   - Phase 3: the two real forms pass every check (75 in course order, every
+     unit 11-19, sets in range, AAQ then EBQ, nothing shared, no lesson check
+     or free unit-test item), every exam-only number is recomputed by
+     ApPsychStats and the check bites; timed sections run alone. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, mkdtempSync } from 'node:fs';
+import { readFileSync, existsSync, mkdtempSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { loadMap } from '../lib/appsych-build.mjs';
 import { Tex, Stats } from '../lib/appsych-mathlib.mjs';
-import { checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/appsych-exams.mjs';
+import { loadExams, checkNumbers, checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/appsych-exams.mjs';
 import { EQ, NOT_ON, TABLES, workedTex, workedValue, formulaCards } from '../lib/appsych-entry.mjs';
 
 const map = loadMap();
@@ -111,7 +114,6 @@ test('a form in the real format passes, and every way to break it is caught', ()
   const one = forms[0].mcq.find(b => b.length === 1)[0];
   ctx5.bank.set(one, { ...ctx.bank.get(one), type: 'numeric' });
   bad(() => {}, /not a four-option single-answer question/, ctx5);
-  assert.deepEqual([EXAM_NUMBERS.length, JUSTIFY_NUMBERS.length], [0, 0], 'Phase 3 writes the recomputed numbers');
 });
 
 test('the "Make it specific" checker refuses a claim that is a question, evidence without a source, reasoning that does not link, and a slot without a why', () => {
@@ -183,4 +185,39 @@ test('the generator serves nothing before a unit is published, and a unit test a
   assert.equal((f.match(/<th scope="row">/g) || []).length, EQ.flatMap(s => s.rows).length);
   assert.match(f, /No calculator/);
   assert.doesNotMatch(f, /score-calculator|setup with brackets/i);
+});
+
+test('the two real forms pass every check, and every recomputed number is in place', () => {
+  const D = 'psychology/data';
+  const ex = loadExams(D);
+  assert.equal(ex.forms.length, 2);
+  const bank = new Map(), stim = {}, orderOf = {};
+  for (const t of map.topics) { const p = join(D, 'questions', `${t.id}.json`); if (!existsSync(p)) continue; const d = JSON.parse(readFileSync(p, 'utf8')); d.items.forEach((q, i) => { bank.set(q.id, q); orderOf[q.id] = i; }); Object.assign(stim, d.stimuli || {}); }
+  ex.items.forEach((q, i) => { orderOf[q.id] = i; });
+  const examItems = new Map(ex.items.map(q => [q.id, q]));
+  const frqs = {}; for (const f of readdirSync(join(D, 'frq'))) { const d = JSON.parse(readFileSync(join(D, 'frq', f), 'utf8')); frqs[d.id] = d; }
+  assert.deepEqual(checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: id => ex.stimuli[id] || stim[id] }), []);
+  assert.deepEqual(ex.forms.map(f => f.frq.map(id => frqs[id].type)), [FRQ_ORDER, FRQ_ORDER]);
+  const checks = new Set(); for (const t of map.topics) { const p = join(D, 'lessons', `${t.id}.json`); if (existsSync(p)) for (const id of JSON.parse(readFileSync(p, 'utf8')).check || []) checks.add(id); }
+  const pos = id => map.topics.findIndex(t => t.id === (bank.get(id) || examItems.get(id)).topic);
+  for (const f of ex.forms) {
+    const ids = f.mcq.flat();
+    for (const id of ids) assert.ok(!checks.has(id), `${f.id}: ${id} is a lesson check item`);
+    assert.ok(ids.every((id, i) => !i || pos(id) >= pos(ids[i - 1])), `${f.id}: course order`);
+    const own = ids.filter(id => examItems.has(id)).length;
+    assert.ok(own >= 20 && own <= 30, `${f.id}: ${own} exam-only`);
+  }
+  assert.deepEqual(checkNumbers(examItems, []), []);
+  assert.ok(EXAM_NUMBERS.length >= 12);
+  const w = new Map(examItems); const q = JSON.parse(JSON.stringify(examItems.get('psy-exam-2-05'))); q.options[q.correct] = '7 symptoms'; w.set(q.id, q);
+  assert.ok(checkNumbers(w, []).some(e => /psy-exam-2-05/.test(e)), 'a wrong key is caught');
+  const q2 = JSON.parse(JSON.stringify(examItems.get('psy-exam-1-05'))); q2.options[(q2.correct + 2) % 4] = '70 words'; const w2 = new Map(examItems); w2.set(q2.id, q2);
+  assert.ok(checkNumbers(w2, []).some(e => /psy-exam-1-05.*distractor/.test(e)), 'a named-slip distractor that is not recomputed is caught');
+});
+
+test('timed sections: a fixed exam can run Section I or Section II alone (?section=1|2)', () => {
+  const ex = readFileSync('psychology/assets/pages/exams.js', 'utf8');
+  assert.match(ex, /p\.get\('section'\) === '1' \|\| p\.get\('section'\) === '2'/);
+  assert.match(ex, /startExam\(sec === '2' \? \[\] : qs, sec === '1' \? \[\] : r\[1\]/);
+  assert.match(ex, /if\(!mcqParts\.length && frqParts\.length\) return startSectionTwo\(0\);/);
 });

@@ -80,5 +80,6 @@
   "psy-treatment-25",
   "psy-treatment-26"
  ],
- "summary": "Each approach to therapy targets a different cause: psychodynamic therapy seeks insight into unconscious conflicts, humanistic therapy offers acceptance, behavioral therapy changes learned responses, cognitive therapy changes thoughts, and CBT combines the two. Biomedical treatments change brain chemistry or activity. Good care is evidence-based, built on a strong therapeutic alliance and cultural humility, and guided by ethics such as informed consent and confidentiality. <p class=\"psy-help\">If you are struggling, you are not alone. In the US, call or text 988 (the Suicide and Crisis Lifeline), or talk to a trusted adult.</p>"
+ "help": true,
+ "summary": "Each approach to therapy targets a different cause: psychodynamic therapy seeks insight into unconscious conflicts, humanistic therapy offers acceptance, behavioral therapy changes learned responses, cognitive therapy changes thoughts, and CBT combines the two. Biomedical treatments change brain chemistry or activity. Good care is evidence-based, built on a strong therapeutic alliance and cultural humility, and guided by ethics such as informed consent and confidentiality."
 }

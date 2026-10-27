@@ -3,13 +3,8 @@
  "type": "ebq",
  "points": 7,
  "title": "Does retrieval practice beat rereading?",
- "units": [
-  "unit-2"
- ],
- "topics": [
-  "retrieving-memories",
-  "encoding-memories"
- ],
+ "units": ["unit-2"],
+ "topics": ["retrieving-memories", "encoding-memories", "forgetting"],
  "practices": [
   "4.A",
   "4.B"

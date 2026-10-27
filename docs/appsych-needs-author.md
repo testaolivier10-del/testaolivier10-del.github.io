@@ -33,7 +33,9 @@ on. `checkForms` checks forms against them only when the map sets `"practicesCon
 The exam page says Section I has more graphs, charts, tables and figures than before, standalone items plus sets
 sharing one study description or data display (third party). No official count was found. `EXAM_SETS` in
 `scripts/lib/appsych-exams.mjs` allows 2-6 study sets, 2-6 data sets and 0-4 figure sets per form until a
-person confirms the format (a Bluebook test preview or a released practice exam would settle it).
+person confirms the format (a Bluebook test preview or a released practice exam would settle it). Phase 3 chose
+10 sets of 2-5 questions per form (form 1: 4 study, 3 data, 3 figure; form 2: 5 study, 5 data, 2 figure; 35
+and 37 of 75 questions in sets), on the reading that the revised exam leans on study summaries and data.
 
 ## frq-scoring: AAQ and EBQ rubric lines follow the 2025-2026 scoring guidelines (open, 2026-10-27)
 
@@ -61,9 +63,111 @@ evidence), the marshmallow test (weaker in larger, more diverse samples), Little
 unclear), Harlow's monkeys (contact comfort; ethics), Loftus and Palmer (misinformation, robust). Authors add
 entries here as they meet others.
 
+Merged from the Phase 1 self-reports (Phase 3, 2026-10-27), each taught as stated; a teacher should approve the
+wording: Milgram named as history with Burger's (2009) partial replication and later archival critiques of the
+debriefing (`research-ethics` notes, A; `social-situations`, E); the Stanford prison study only in a myth box
+(coaching of guards, demand characteristics, the BBC 2002 study; E); oxytocin "trust spray" (later large studies
+did not reliably replicate; B, 1.3); Phineas Gage (how much and how long his personality changed is debated; B);
+cognitive dissonance with the 2024 multilab replication (Vaidis et al.: attitude change replicated, the high- vs
+low-choice effect did not; E); the bystander effect as replicated for individuals, with Philpot et al. (2020) CCTV
+data and the misreported Genovese case (E); actor-observer bias softened per Malle (2006) (E); Bobo doll limits (E);
+facial feedback (the 17-lab pen-study replication found no effect, later multilab work small effects for some
+methods; F, 4.7); the unnamed arousal-injection study (later attempts did not fully replicate; F); stereotype
+threat (real but smaller and less consistent than early studies; C, 2.8); word priming robust, behavioral priming
+not replicated (C); growth mindset (small average effect, larger for struggling students; C); the marshmallow test
+and Harlow (1958) with its ethics and the generalization limit (D).
+
+## help-scope: the 988 note outside Unit 5, and for non-US readers (open, 2026-10-27)
+
+The note is on 5.3-5.5 (required). Phase 3 kept it on 3.6 Social-Emotional Development, beside the adverse
+childhood experiences section (abuse, neglect), through `HELP_EXTRA`, and removed it from 5.1. Confirm 3.6, and
+decide whether non-US readers get a line (for example "outside the US, contact local emergency services or a
+crisis line").
+
+## justify-prompts: the "Make it specific" trainer has no prompts yet (open, 2026-10-27)
+
+The page, the checker (`checkJustify`, nine skills, one per AAQ and EBQ part) and the generator exist from Phase 0,
+but `psychology/data/justify/` was not part of the Phase 3 brief and was not written. Until it is, the content
+check skips the 40-prompt rule and the page says no prompts are published. Write 40+ prompts (4-6 per unit) before
+launch, or hide the page.
+
+## frq-order: FRQs refiled to the topic they unlock with (resolved, 2026-10-27)
+
+Phase 3 added the check (an FRQ may not use a term taught after its latest topic) and refiled the six that failed
+by adding the topics they use: `frq-heredity-environment-aaq`, `frq-research-methods-aaq` and
+`frq-stats-correlation-aaq` (+ Ethics in Research, so part D), `frq-forgetting-aaq` (+ Descriptive Statistics and
+Statistical Significance), `frq-retrieving-memories-ebq` (+ Forgetting, for the forgetting curve as a concept);
+`frq-health-psychology-ebq` reworded ("physical or mental health", not "well-being"). `frq-development-methods-aaq`
+already listed 3.6 and passes. Teachers who assign the heredity AAQ before research ethics should know part D
+needs it.
+
+## milgram-detail: Milgram on the research ethics notes page (open, 2026-10-27)
+
+Author A names Milgram as history and notes later reviews found the debriefing was not always complete or
+immediate, plus Burger's (2009) partial replication. The CED names no researchers; confirm this level of detail.
+
+## poll-1936: the 1936 Literary Digest poll (open, 2026-10-27)
+
+The research-sampling hook and notes give about ten million ballots mailed and more than two million returned,
+and name both causes (the mailing list and who chose to reply) because accounts disagree. Confirm.
+
+## effect-size: Cohen's benchmarks in stats-significance (open, 2026-10-27)
+
+About 0.2, 0.5 and 0.8 standard deviations are called small, medium and large (Cohen not named), with the caveat
+that importance depends on the question. Confirm the CED wants benchmarks at all.
+
+## wording-cautious: claims kept cautious on purpose (open, 2026-10-27)
+
+Slow breathing "associated with" a shift toward parasympathetic activity (A, 1.2); brain maturation "into the early
+to mid 20s" (D; the end point is debated); Piaget's ages as typical with the sequence holding up better than the
+ages, Erikson as a framework (D); attachment stability as moderate and ACEs as population risk, Felitti et al.
+(1998) as the first report from a study that surveyed 17,000+ adults (D); media violence as a small, debated
+average link (APA 2020: no evidence for criminal violence; E); the IAT as a research tool with low test-retest
+reliability (E); posttraumatic growth smaller in prospective studies than people report (F); tend-and-befriend
+and universal emotions (recognized above chance, better within one's own culture, debated; F); repression taught
+with the mainstream caution (C, F); multiple intelligences without naming Gardner (C); short-term memory "about
+seven, newer estimates about four chunks" in notes, "a few items, about 20 to 30 seconds" in the figure and
+glossary (C). A reviewer should confirm each.
+
+## numbers-secondary: figures taken from secondary sources (open, 2026-10-27)
+
+Ebbinghaus's savings (58.2, 44.2, 35.8, 33.7, 27.8, 25.4, 21.1% at 20 min to 31 days): three values checked
+against a secondary source, the rest the standard textbook table (C). Asch's "about a third of trials, about three
+quarters at least once" in prose (E). Confirm against a primary source.
+
+## sensitive-scope: 3.3 Gender and Sexual Orientation and Unit 5 categories (open, 2026-10-27)
+
+3.3 had no readable essential knowledge (`ced-text`); author D wrote to the title and mainstream science (sex vs
+gender, gender identity incl. transgender and nonbinary as normal variation, gender roles and typing, Hyde 2005,
+sexual orientation with twin data, Ganna et al. 2019, the fraternal birth-order effect, no parenting cause, change
+efforts ineffective and harmful); the accuracy reviewer should check scope and tone. Unit 5 (author G): DID causes
+taught as debated (trauma vs sociocognitive model); OCD, hoarding and PTSD placed by the DSM-5-TR, not beside the
+anxiety disorders as the third-party CED copy lists them; ataque de nervios and taijin kyofusho as "cultural
+concepts of distress"; DSM-5-TR time rules in our words (MDD 2 weeks, PDD 2 years adults and 1 year youth, mania 1
+week, hypomania 4 days, GAD 6 months, PTSD more than 1 month, schizophrenia 6 months); treatment evidence (exercise
+about as effective as CBT and medication for mild to moderate depression, CBT gains lasting longer after
+treatment stops, DBT's origin, lithium and blood tests, hypnosis and memory). Check each against the manual and
+current reviews.
+
+## figures-schematic: brain figures and the hypnogram (open, 2026-10-27)
+
+The brain figures are schematic (lobe borders; deep structures dashed on a midline view); a teacher should
+confirm they read correctly. The hypnogram's y labels now read Awake, REM and N1-N3 (Phase 3: `ApPsychPlot`
+measures its tick labels, so the short codes W and R are no longer needed).
+
+## page-title-dash: built page titles use an em dash (open, 2026-10-27)
+
+`courseTitle` (`scripts/lib/page-title.mjs`, shared by every course) writes "Topic — AP® Psychology | LevlPrep".
+The no-em-dash rule is for our writing; changing the shared separator changes every course's titles and search
+snippets, so it is the owner's call.
+
 ## mental-health-line: the help line wording on disorder pages (resolved, 2026-10-27)
 
-Owner approved the short 988 note as proposed (spec decision 11).
+Owner approved the short 988 note as proposed (spec decision 11). Phase 3 (spec decision 12) made it a lesson
+field: `"help": true` prints one shared line (`HELP_LINE` in `scripts/lib/appsych-build.mjs`) at the end of the
+lesson summary and on the notes page; required on 5.3-5.5, refused when pasted. 5.1 (health psychology) dropped it:
+stress and coping is not a disorder topic. 3.6 keeps it beside its adverse childhood experiences section (see
+`help-scope`). What non-US readers see is still open (`help-scope`).
 
 Spec section 1 asks for a short note pointing to real help (988 in the US) on disorder pages. The authoring guide
 proposes one line in `<p class="psy-help">`. The owner should confirm the wording, whether it appears only on

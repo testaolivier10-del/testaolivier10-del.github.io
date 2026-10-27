@@ -3,12 +3,8 @@
  "type": "aaq",
  "points": 7,
  "title": "A twin and adoption study of persistence",
- "units": [
-  "unit-1"
- ],
- "topics": [
-  "heredity-environment"
- ],
+ "units": ["unit-1", "skills-research"],
+ "topics": ["heredity-environment", "research-ethics"],
  "practices": [
   "2.A",
   "2.B",

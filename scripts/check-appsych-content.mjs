@@ -36,9 +36,9 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/appsych-build.mjs';
+import { ROOT, loadMap, ALLOWED_LICENSES, HELP_TOPICS, HELP_EXTRA, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/appsych-build.mjs';
 import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS } from './lib/appsych-exams.mjs';
-import { scanPage } from './lib/appsych-map.mjs';
+import { scanPage, indexMap } from './lib/appsych-map.mjs';
 import { Tex, Plot, Grade, Stats } from './lib/appsych-mathlib.mjs';
 export { trademarkProblems };
 
@@ -446,6 +446,12 @@ export function checkTopic(map, id, { glossary, figures }) {
       const checkSets = (L.check || []).map(c => (items.find(q => q.id === c) || {}).stimulus).filter(Boolean);
       for (const sid of new Set(checkSets)) { const pos = (L.check || []).map((c, i) => (items.find(q => q.id === c) || {}).stimulus === sid ? i : -1).filter(i => i > -1); if (pos[pos.length - 1] - pos[0] !== pos.length - 1) err(`lesson: check items from stimulus ${sid} must be listed together`); }
       if (!L.summary || strip(L.summary).length < 80) err('lesson: summary missing');
+      // The help note (spec decision 11): a lesson field the generator turns
+      // into one shared line on the lesson and notes pages, never pasted.
+      if (L.help !== undefined && L.help !== true) err('lesson: "help" is true or absent');
+      if (HELP_TOPICS.includes(id) && L.help !== true) err('lesson: a disorder or treatment topic sets "help": true (the 988 note)');
+      if (L.help === true && !HELP_TOPICS.includes(id) && !HELP_EXTRA[id]) err('lesson: "help" is for the disorder and treatment topics (HELP_TOPICS) or a topic HELP_EXTRA lists with its reason');
+      if (/psy-help/.test(JSON.stringify(L))) err('lesson: do not paste the help note; set "help": true');
       texts.push(String(L.hook ?? ''), String(L.summary ?? ''));
     }
   }
@@ -458,6 +464,7 @@ export function checkTopic(map, id, { glossary, figures }) {
     const words = strip(notes).split(/\s+/).filter(Boolean).length;
     if (topic.kind === 'concept' && words < 500) err(`notes: ${words} words; a notes page is a full explanation (500+)`);
     if (!/<h2[\s>]/.test(notes)) err('notes: needs <h2> sections');
+    if (/class="psy-help"/.test(notes)) err('notes: do not paste the help note; the lesson\'s "help": true adds it (place it with <div data-psy-help></div>)');
     if (/<h1[\s>]/.test(notes)) err('notes: no <h1> (the generator adds the title)');
     const ids = new Set([...notes.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
     for (const m of notes.matchAll(/<a class="figref" href="#([^"]+)"/g)) if (!ids.has(m[1])) err(`notes: figure reference #${m[1]} points at no figure on the page`);
@@ -521,6 +528,14 @@ export const FRQ_PARTS = {
   aaq: [['A', 1], ['B', 1], ['C', 1], ['D', 1], ['E', 1], ['F', 2]],
   ebq: [['A', 1], ['B(i)', 1], ['B(ii)', 2], ['C(i)', 1], ['C(ii)', 2]],
 };
+/* The topic an FRQ unlocks with: the latest of its topics in course order. */
+export function unlockTopic(map, f) {
+  const { topicIndex } = indexMap(map.raw);
+  return (f.topics || []).slice().sort((a, b) => topicIndex.get(b) - topicIndex.get(a))[0];
+}
+const FRQ_META = new Set(['id', 'type', 'units', 'topics', 'practices', 'points', 'label', 'restricted', 'invented', 'source']);
+const frqTexts = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(frqTexts)
+  : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => FRQ_META.has(k) || k === 'plot' ? [] : frqTexts(x)) : [];
 export function checkFrq(fid, f, map, figures = {}) {
   const errs = [], err = m => errs.push(m);
   if (f.id !== fid) err(`id "${f.id}" must match the file name`);
@@ -562,6 +577,18 @@ export function checkFrq(fid, f, map, figures = {}) {
     for (const t of f.topics || []) if (!map.topicById(t)) err(`unknown topic "${t}"`);
   }
   if (!(f.units || []).length || !(f.topics || []).length || !(f.practices || []).length) err('units, topics and practices are required');
+  // Teaching order (spec section 10, lead note a): an FRQ unlocks with the
+  // latest of its topics in course order, so nothing in it (study, sources,
+  // prompts, rubric, samples, hint lists) may use a term taught after that
+  // topic. Every unit of those topics is listed. Restricted-term lists are
+  // words a student must not offer, so they are not read. The practice exams
+  // are exempt: they come after the whole course.
+  if (map && (f.topics || []).every(t => map.topicById(t))) {
+    const at = unlockTopic(map, f);
+    for (const t of f.topics) { const c = map.topicById(t).chapter; if (!(f.units || []).includes(c)) err(`topic ${t} is in ${c}; list that unit in "units" too`); }
+    const texts = frqTexts(f);
+    for (const p of scanPage(map.raw, `<p>${texts.join('</p>\n<p>')}</p>`, at)) err(`ORDER (unlocks with ${at}): ${p}`);
+  }
   for (const p of f.practices || []) if (!SKILL_RE.test(p)) err(`practice "${p}" is not a skill id`);
   if (!Array.isArray(f.parts) || !f.parts.length) err('parts missing');
   const want = FRQ_PARTS[f.type];
@@ -716,9 +743,10 @@ if (isMain) {
     const stimOf = sid => ex.stimuli[sid] || allStimuli[sid];
     for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf })) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
-    // Spec section 6: 40+ prompts, 4 to 6 per unit.
-    if (prompts.length < 40) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 40`);
-    for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 4 || n > 6) bad2(`${u.id} has ${n} "Make it specific" prompts (4 to 6)`); }
+    // Spec section 6: 40+ prompts, 4 to 6 per unit, once the trainer's data
+    // exists (data/justify/; not written in Phase 3, needs-author justify-prompts).
+    if (!exists(join(DATA, 'justify'))) {} else if (prompts.length < 40) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 40`);
+    if (exists(join(DATA, 'justify'))) for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 4 || n > 6) bad2(`${u.id} has ${n} "Make it specific" prompts (4 to 6)`); }
     for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no "Make it specific" prompt practises "${k}"`);
     // Each form: mostly bank items that are not lesson-check items (those are on
     // the free lessons), plus 12-14 exam-only items of its own.

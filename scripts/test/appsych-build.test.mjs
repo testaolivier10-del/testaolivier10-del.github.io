@@ -238,3 +238,22 @@ test('an AAQ or EBQ out of the exam shape fails the content check', () => {
   assert.match(broken(editF('frq-placeholder-ebq', f => { f.points = 10; })), /worth 7 points/);
   assert.match(broken(editF('frq-placeholder-ebq', f => { delete f.restricted; })), /restricted/);
 });
+
+test('an FRQ may not use a term taught after the topic it unlocks with; refiling it on that topic fixes it', () => {
+  const editF = (id, fn) => d => { const p = join(d, 'frq', `${id}.json`); const f = JSON.parse(readFileSync(p, 'utf8')); fn(f); writeFileSync(p, JSON.stringify(f)); };
+  // Operant conditioning (3.8) comes before the disorders topic (5.4).
+  const late = f => { f.parts[0].sample += ' A person with generalized anxiety disorder might avoid the task.'; };
+  assert.match(broken(editF('frq-placeholder-aaq', late)), /ORDER \(unlocks with operant-conditioning\): uses "generalized anxiety disorder"/);
+  assert.doesNotMatch(broken(editF('frq-placeholder-aaq', f => { late(f); f.topics.push('disorders'); f.units.push('unit-5'); })), /ORDER/);
+  assert.match(broken(editF('frq-placeholder-aaq', f => { f.topics.push('disorders'); })), /topic disorders is in unit-5; list that unit/);
+  // Restricted-term lists are not read: they name words a student must not offer.
+  assert.doesNotMatch(broken(editF('frq-placeholder-ebq', f => { f.restricted.push('generalized anxiety disorder'); })), /ORDER/);
+});
+
+test('the help note is a lesson field, never pasted, and required on the disorder and treatment topics', () => {
+  const editL = (fn, notes) => d => { const p = join(d, 'lessons', `${T}.json`); const L = JSON.parse(readFileSync(p, 'utf8')); fn(L); writeFileSync(p, JSON.stringify(L)); if (notes) { const n = join(d, 'notes', `${T}.html`); writeFileSync(n, notes(readFileSync(n, 'utf8'))); } };
+  assert.match(broken(editL(L => { L.summary += ' <p class="psy-help">Call 988.</p>'; })), /do not paste the help note/);
+  assert.match(broken(editL(() => {}, n => n + '<p class="psy-help">Call 988.</p>')), /notes: do not paste the help note/);
+  assert.match(broken(editL(L => { L.help = true; })), /"help" is for the disorder and treatment topics/);
+  for (const t of ['explaining-disorders', 'disorders', 'treatment']) assert.equal(JSON.parse(readFileSync(`psychology/data/lessons/${t}.json`, 'utf8')).help, true, t);
+});

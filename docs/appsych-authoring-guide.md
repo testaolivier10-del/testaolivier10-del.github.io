@@ -133,9 +133,11 @@ Unit 5 and every disorder mention:
 - **Respectful, person-first language**: "a person with schizophrenia", not "a schizophrenic"; "died by
   suicide", not "committed suicide"; never "crazy", "insane", "psycho", or a diagnosis as a casual adjective
   ("so OCD"). The content check refuses the common forms.
-- **A short help line on disorder and treatment pages**, in `<p class="psy-help">`: "If you are struggling, you
-  are not alone. In the US, call or text 988 (the Suicide and Crisis Lifeline), or talk to a trusted adult." One
-  line, never the subject of the page.
+- **A short help line on disorder and treatment pages**: "If you are struggling, you are not alone. In the US,
+  call or text 988 (the Suicide and Crisis Lifeline), or talk to a trusted adult." One line, never the subject of
+  the page. Do not paste it: set `"help": true` in the lesson (required on 5.3-5.5) and the generator adds it to
+  the lesson summary and the notes page (place it in the notes with `<div data-psy-help></div>` if the top is
+  wrong). Architecture, "Help note".
 - Treatments are presented by their evidence (evidence-based practice), including what does not work
   (hypnosis does not recover memories; lobotomy is history, not treatment).
 

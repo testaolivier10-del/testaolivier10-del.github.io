@@ -3,12 +3,8 @@
  "type": "aaq",
  "points": 7,
  "title": "Leading questions and eyewitness memory",
- "units": [
-  "unit-2"
- ],
- "topics": [
-  "forgetting"
- ],
+ "units": ["unit-2", "skills-research"],
+ "topics": ["forgetting", "stats-descriptive", "stats-significance"],
  "practices": [
   "2.A",
   "2.B",

@@ -55,6 +55,20 @@ export const IDENTITY = {
 // (scripts/test/appsych-build.test.mjs compares the two), then rebuild. The
 // icon paths are also the hub card's (hubPsyCard in scripts/build-pricing.mjs).
 export const FREE_UNITS = ['unit-1'];
+/* The help note (spec decision 11, owner approved): one shared line, never
+   pasted by authors. A lesson sets "help": true; the generator prints the
+   line at the end of the lesson summary and on the notes page (at the
+   <div data-psy-help></div> marker if the notes place it, else at the top).
+   Required on the disorder and treatment topics (HELP_TOPICS); allowed on
+   another topic only when HELP_EXTRA lists it with its reason. */
+export const HELP_LINE = 'If you are struggling, you are not alone. In the US, call or text 988 (the Suicide and Crisis Lifeline), or talk to a trusted adult.';
+export const HELP_HTML = `<p class="psy-help">${HELP_LINE}</p>`;
+export const HELP_TOPICS = ['explaining-disorders', 'disorders', 'treatment'];
+export const HELP_EXTRA = { 'social-emotional-development': 'the adverse childhood experiences section (abuse, neglect); kept beside it, owner to confirm (needs-author help-scope)' };
+export function notesWithHelp(html, on) {
+  if (!on) return html.replace(/<div data-psy-help><\/div>/g, '');
+  return /<div data-psy-help><\/div>/.test(html) ? html.replace(/<div data-psy-help><\/div>/, HELP_HTML) : HELP_HTML + '\n' + html;
+}
 export const MAP_PATH = join(ROOT, 'docs', 'appsych-dependency-map.json');
 export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', 'appsych-map-stub.json');
 

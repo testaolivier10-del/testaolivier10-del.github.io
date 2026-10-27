@@ -47,7 +47,7 @@ import {
   ROOT, SITE, BASE, COURSE_NAME, COURSE_HTML, COURSE_ID, COURSE_KEY, DISCLAIMER, BETA_NOTE, BETA_PILL,
   esc, text, loadMap, loadCourse, isFreeTopic, clampDesc, head, tail, crumbs, orgCrumbs, crumbNav, footer, reportButton,
   termIndex, glossify, figureImg, credit, renderFigures, stimulusBody, stimulusPanel, questionForPage, questionHtml,
-  groupSets, hasApToken, stripMark, STIM_KIND, IDENTITY,
+  groupSets, hasApToken, stripMark, STIM_KIND, IDENTITY, HELP_HTML, notesWithHelp,
 } from './lib/appsych-build.mjs';
 import { entryPages } from './lib/appsych-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
@@ -196,7 +196,7 @@ function build() {
       (L.ideas || []).length && { id: 'ideas', kind: 'Key ideas', nav: 'Key ideas', h: 'Key ideas', html: `<ul class="psy-ideas">${L.ideas.map(x => `<li>${g(x)}</li>`).join('')}</ul>` },
       { id: 'misconception', kind: 'Misconception', nav: 'A common mistake', h: 'A common mistake', cls: 'psy-misconception', html: `<p class="psy-wrong"><b>The wrong idea:</b> ${g(L.misconception.wrong)}</p><p class="psy-right"><b>What actually happens:</b> ${g(L.misconception.right)}</p>` },
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="psy-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="psy-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
-      { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
+      { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) + (L.help ? HELP_HTML : '') },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="psy-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
       connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="psy-links psy-nav-ref">${connectionsWithNext(connections(id, L), nx).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
@@ -315,7 +315,7 @@ ${tail({ depth, section: 'learn', extra: ['psy-questions.js', 'psy-lesson.js'], 
   function notesPage(id) {
     const t = map.topicById(id), ch = chapterById(t.chapter), depth = '../';
     const seen = new Set();
-    const { html: withIds, sections } = sectionIds(C.notes[id]);
+    const { html: withIds, sections } = sectionIds(notesWithHelp(C.notes[id], (C.lessons[id] || {}).help));
     const html = glossify(C, renderFigures(C, withIds, depth), { depth, topic: id, seen, index: GLOSS });
     const firstP = [...C.notes[id].matchAll(/<p>([\s\S]*?)<\/p>/g)].slice(0, 2).map(m => m[1]).join(' ') || t.title;
     const minutes = Math.max(1, Math.round(text(C.notes[id]).split(' ').length / 200));

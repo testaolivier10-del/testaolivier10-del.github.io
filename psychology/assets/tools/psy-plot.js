@@ -85,11 +85,19 @@
     var one = !a || !b || textW(a) + textW(b) + 24 <= w - 8;
     return { one: one, band: (one ? 1 : 2) * 16 + 6 };
   }
+  /* The widest y tick label the plot will print, in px (textW). */
+  function yLabelW(spec, y){
+    if(spec.yTicks === false || spec.axes === false) return 0;
+    var list = spec.yTickList ? spec.yTickList.map(function(t){ return String(t.text); }) : ticks(y[0], y[1], 6, spec.yStep).map(fmtTick);
+    return list.reduce(function(m, t){ return Math.max(m, textW(t)); }, 0);
+  }
   function frame(spec){
     var w = spec.width || 360, h = spec.height || 260;
     var dh = dualHead(spec, w);
-    var PAD = spec.rightAxis ? { l: BASEPAD.l, r: 40, t: BASEPAD.t + dh.band, b: BASEPAD.b } : BASEPAD;
     var x = spec.x || [-5, 5], y = spec.y || [-5, 5];
+    // The left margin fits the widest y tick label (measured, not fixed), so
+    // long labels such as sleep stage names are never cut; 38 px at least.
+    var PAD = { l: Math.max(BASEPAD.l, Math.ceil(yLabelW(spec, y) + 12)), r: spec.rightAxis ? 40 : BASEPAD.r, t: BASEPAD.t + (dh ? dh.band : 0), b: BASEPAD.b };
     var iw = w - PAD.l - PAD.r, ih = h - PAD.t - PAD.b;
     var f = {
       x: x, y: y, w: w, h: h, pad: PAD,

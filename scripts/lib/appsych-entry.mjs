@@ -186,7 +186,7 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="psy-eq-not">${TABLES.map(r => `<li><b>${esc(r[0])}.</b> ${R(r[1])}</li>`).join('')}</ul>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Statistics flashcards</a>`, `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[testLink('', 'Free unit practice tests'), `<a href="flashcards.html?deck=formulas">Statistics flashcards</a>`, `<a href="flashcards.html?unit=skills-research">Research terms flashcards</a>`, `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:formula-sheet')}

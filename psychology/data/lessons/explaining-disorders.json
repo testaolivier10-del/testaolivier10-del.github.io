@@ -69,5 +69,6 @@
   "psy-explaining-disorders-15",
   "psy-explaining-disorders-16"
  ],
- "summary": "A psychological disorder is a pattern of thinking, feeling or behaving that is unusual for its cultural setting and causes distress or dysfunction. Clinicians classify disorders with the DSM-5-TR or the ICD. Each psychological perspective explains disorders in its own way, and the biopsychosocial and diathesis-stress models combine causes: a vulnerability plus enough stress. <p class=\"psy-help\">If you are struggling, you are not alone. In the US, call or text 988 (the Suicide and Crisis Lifeline), or talk to a trusted adult.</p>"
+ "help": true,
+ "summary": "A psychological disorder is a pattern of thinking, feeling or behaving that is unusual for its cultural setting and causes distress or dysfunction. Clinicians classify disorders with the DSM-5-TR or the ICD. Each psychological perspective explains disorders in its own way, and the biopsychosocial and diathesis-stress models combine causes: a vulnerability plus enough stress."
 }
