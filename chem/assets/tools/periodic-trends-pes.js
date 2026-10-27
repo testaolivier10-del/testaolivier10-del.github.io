@@ -40,7 +40,7 @@
   // student the trend fails there, so on the radius table they are greyed out
   // and explained instead (audit 2026-10).
   var ODD_R = [49, 50, 81, 82, 83];
-  var ODD_R_WHY = 'Indium, tin, thallium, lead and bismuth are greyed out on the radius table. Their radii are measured in the solid metal, where the atoms bond and pack in different ways from one metal to the next, so the numbers do not fall smoothly across the period (indium comes out smaller than tin, thallium smaller than lead). Test yourself never asks you to compare two elements where the data break the rule. The Coulomb\'s law trend still shows in their ionization energies and electronegativities.';
+  var ODD_R_WHY = 'Indium, tin, thallium, lead and bismuth are greyed out on the radius table. Their radii are measured in the solid metal, where the atoms bond and pack in different ways from one metal to the next, so the numbers do not fall smoothly across the period (indium comes out smaller than tin, thallium smaller than lead). Test yourself never asks you to compare two elements where the data break the rule. Ionization energy still rises across from indium to tin to antimony and from thallium to lead; the heaviest elements have other exceptions too (bismuth comes out just below lead).';
   var LABEL = { r: 'Atomic radius', ie: 'Ionization energy', en: 'Electronegativity', ea: 'Electron affinity' };
   var SHORT = { r: 'Radius', ie: 'Ionization', en: 'Electroneg.', ea: 'Electron aff.' };
   function valText(el, key, unit){

@@ -492,3 +492,18 @@ the four notes pages have hand-written descriptions in `chem/data/descriptions.j
 are now "Tracking a fading dye by absorbance" and "Equilibrium in a decomposing gas". `check-site`
 and `check-apchem-map --check` pass with every unit published. The exam items and justify prompts
 are with the exams agent.
+
+## trends-radii: which radius set for the p-block metals (open, 2026-10-27)
+
+The radius table uses 12-coordinate metallic radii for Ga, In, Sn, Tl, Pb and Bi (Teatum, Gschneidner and Waber via
+the mendeleev package), which give In 158 < Sn 163 and Tl 160 < Pb 170 < Bi 178, against the across-a-period trend.
+Other sets also break it there (Pyykkö covalent: In 142, Sn 140; Tl 144, Pb 144, Bi 151). The tool now greys those
+five out on the radius table with a note; the values themselves are unchanged. Decide whether to keep them greyed,
+switch the p-block to one covalent set, or drop them from the radius view.
+
+## ice-hi-k: the H₂ + I₂ constant (open, 2026-10-27)
+
+The HI context now uses K<sub>c</sub> = 54.3 at 430 °C, the value quoted in general chemistry worked examples (source text not pinned down;
+other texts quote 55.3 or 55.6 near 698 to 700 K, about 50 at 448 °C). Confirm the value and temperature against the
+course's chosen text.
+
