@@ -183,3 +183,8 @@
   .tb-shell.r3-read{margin-top:0}
   .tb-shell.r3-read > .tb-main{box-shadow:none;padding:0}
 }
+
+/* Round 3 notes column is narrower (the side rail sits beside it), so a 700-unit figure shrinks to the column
+   instead of scrolling sideways, as lesson cards already do (theme.css); a sideways scroller also fails axe's
+   keyboard rule. */
+.r3-read .notes-figure svg{min-width:min(calc(var(--vb,420) * 0.92px), 100%);}
