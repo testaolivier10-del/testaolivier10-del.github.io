@@ -182,9 +182,9 @@
    "type": "numeric",
    "practice": "3.B",
    "stimulus": "storing-memories-s2",
-   "q": "Each student studied 20 words. How many words did a student who matched the \"link each word to a memory\" bar recall?",
+   "q": "Each student studied 20 words. On average, how many of the 20 words did the \"link each word to a memory\" group recall?",
    "why": {
-    "correct": "$58\\%$ of $20$: $0.58 \\times 20 = 11.6$, about $12$ words. The key accepts $11.6$."
+    "correct": "$58\\%$ of $20$: $0.58 \\times 20 = 11.6$, about $12$ words on average (11.6 or 12 is accepted)."
    },
    "numeric": {
     "from": {

@@ -65,7 +65,7 @@
  ],
  "misconception": {
   "wrong": "A heritability of 0.60 means 60% of a person’s trait comes from genes, and a heritable trait cannot be changed.",
-  "right": "Heritability describes differences among people in a group, not the makeup of one person. A highly heritable condition such as PKU can be transformed by the environment."
+  "right": "Heritability describes differences among people in a group, not the makeup of one person. An inherited condition such as PKU can be transformed by the environment."
  },
  "check": [
   "psy-heredity-environment-1",

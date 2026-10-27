@@ -89,7 +89,7 @@
    "options": [
     "Study A found the larger effect because its result was significant",
     "Study B probably made an error, since 15 points is a big difference",
-    "Big samples make tiny effects significant; small ones miss big ones",
+    "Big samples make tiny effects significant; small ones can miss big ones",
     "The two studies used different operational definitions of the scale"
    ],
    "correct": 2,
@@ -97,7 +97,7 @@
     "correct": "With a huge sample even a trivial difference is unlikely to be chance, so it is significant. With a small sample, chance can produce big differences, so a large one may still not be significant. That is why researchers report effect size too.",
     "options": [
      "0.5 points is a much smaller effect than 15 points; significance is not size.",
-     "With only 40 people, chance can produce large differences, so caution is reasonable.",
+     "Nothing points to an error: with only 40 people, chance alone can produce a large gap, so a 15-point difference can still fail to be significant.",
      "Right: significance depends on sample size as well as effect size.",
      "Both used a 100-point scale; the difference comes from sample size."
     ]
@@ -246,7 +246,7 @@
    "stimulus": "stats-significance-s1",
    "q": "The researchers also report that the effect size was small. How should this be read alongside the significant result?",
    "options": [
-    "The walk reliably lowered worry, but only by a little",
+    "The walk probably lowered worry, but only by a little",
     "The result is not real because the effect was small",
     "The walk had a large effect on how much students worried",
     "The effect size shows that the result was due to chance"

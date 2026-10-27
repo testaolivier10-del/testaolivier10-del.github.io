@@ -262,7 +262,7 @@
    "options": [
     "Poor metacognition: rereading feels familiar, which students mistake for knowing",
     "State-dependent memory: the students were in a different body state when predicting",
-    "Retroactive learning: the quizzes erased what students had reread before",
+    "Mood-congruent memory: the rereaders felt more cheerful, so they predicted high",
     "Recognition: students recognized the notes, so their predictions were accurate"
    ],
    "correct": 0,
@@ -271,7 +271,7 @@
     "options": [
      "Right: Metacognition is judging your own learning. Rereading makes material feel familiar, so students think they know it; quizzing exposes gaps, so it feels harder even though it works better.",
      "Nothing about the students' body state differed between groups.",
-     "The quiz group never reread, and its scores were higher, not lower.",
+     "Mood was neither changed nor measured. The rereaders misjudged how well they knew the material, which is a judgment about their own learning.",
      "Recognizing the notes is exactly what misled the rereaders; their predictions were too high."
     ]
    }

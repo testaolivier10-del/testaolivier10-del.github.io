@@ -18,7 +18,7 @@
   "invented": true,
   "study": {
    "introduction": "Many parents worry that time on phones and other screens harms teenagers’ attention. The researchers asked whether daily recreational screen time is related to performance on an attention task.",
-   "participants": "Twenty students (ages 13 to 15; 11 girls and 9 boys) from two middle schools in one suburban school district in Canada took part. Parents signed consent forms and each student agreed to take part after the study was explained. Students were told they could stop at any time. Each student’s results were stored under a code number rather than a name.",
+   "participants": "Twenty students (ages 13 to 15; 11 girls and 9 boys) from two junior high schools (grades 7 to 9) in one suburban school district in Canada took part. Parents signed consent forms and each student agreed to take part after the study was explained. Students were told they could stop at any time. Each student’s results were stored under a code number rather than a name.",
    "method": "For one week, each student’s phone and computer recorded their recreational screen time (games, video and social media, not schoolwork); the researchers used each student’s average hours per day. At the end of the week, each student completed a 10-minute computer attention task: letters flashed on the screen one at a time, and the student pressed a key only when an X appeared. Attention was the number of the 30 X’s that the student correctly responded to.",
    "results": "Students with more daily screen time tended to respond correctly to fewer X’s ($r = -.52$; see the scatterplot).",
    "discussion": "The researchers noted that they did not measure sleep, family rules about screens or students’ interest in the task. Larger real studies of teenagers usually find weaker relationships between screen time and attention than this one."
@@ -188,14 +188,14 @@
    "points": 1,
    "rubric": [
     {
-     "point": "Explains the extent of generalizability using characteristics of the participants (20 students aged 13 to 15 from two suburban middle schools in one Canadian district) compared with U.S. teenagers.",
+     "point": "Explains the extent of generalizability using characteristics of the participants (20 students aged 13 to 15 from two suburban junior high schools in one Canadian district) compared with U.S. teenagers.",
      "accept": [
-      "only partly: the participants were young teens like many U.S. teenagers, but all came from two suburban middle schools in one Canadian district and none were older teens",
+      "only partly: the participants were young teens like many U.S. teenagers, but all came from two suburban junior high schools in one Canadian district and none were older teens",
       "limited, because the participants were 13 to 15 years old from one suburban district in Canada, not teenagers of all ages from cities, towns and rural areas"
      ]
     }
    ],
-   "sample": "Only partly. The participants were 13- to 15-year-olds, so they resemble younger U.S. teenagers, and Canadian suburban students may use screens in similar ways. But all came from two middle schools in one suburban district in Canada and none were 16 to 19, so the results may not describe older teenagers or those in cities or rural areas."
+   "sample": "Only partly. The participants were 13- to 15-year-olds, so they resemble younger U.S. teenagers, and Canadian suburban students may use screens in similar ways. But all came from two junior high schools in one suburban district in Canada and none were 16 to 19, so the results may not describe older teenagers or those in cities or rural areas."
   },
   {
    "label": "F",

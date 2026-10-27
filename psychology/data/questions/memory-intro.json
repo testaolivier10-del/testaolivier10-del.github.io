@@ -104,9 +104,9 @@
    "type": "numeric",
    "practice": "3.B",
    "stimulus": "memory-intro-s1",
-   "q": "Each participant saw 40 words. How many of them did a meaning-group participant who scored exactly the group's 78% mark correctly?",
+   "q": "Each participant saw 40 words. On average, how many of those 40 words did the meaning group mark correctly?",
    "why": {
-    "correct": "$78\\%$ of $40$ words: $0.78 \\times 40 = 31.2$, so about $31$ words. The answer key accepts $31.2$."
+    "correct": "$78\\%$ of $40$ words: $0.78 \\times 40 = 31.2$, so about $31$ words on average (31 or 31.2 is accepted)."
    },
    "numeric": {
     "from": {

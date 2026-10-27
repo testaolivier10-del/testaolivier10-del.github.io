@@ -254,7 +254,7 @@
      "The records show no relationship at all, positive or negative.",
      "Right: people remember the cases that fit their belief.",
      "There is no relationship in the records for a third variable to explain.",
-     "The records were kept for other purposes, not by researchers with a hypothesis."
+     "Experimenter bias is a researcher’s expectations shaping the data; here the records are accurate and the error is in the nurse’s memory."
     ]
    }
   },
@@ -434,9 +434,9 @@
    "why": {
     "correct": "Compare the size of r without the sign: 0.71 is the largest.",
     "options": [
-     "0.62 is strong, but smaller than 0.71.",
+     "Its size, 0.62, is moderate and smaller than 0.71.",
      "Right: 0.71 is the largest size in the table.",
-     "0.31 is a weak to moderate relationship.",
+     "0.31 is a weak relationship.",
      "0.18 is weak."
     ]
    }
@@ -464,7 +464,7 @@
      "That would be a positive correlation.",
      "r is not a percent, and a correlation does not show cause.",
      "Right: a negative r means one tends to fall as the other rises.",
-     "An r of -0.62 is a fairly strong relationship."
+     "An r of -0.62 is a moderate relationship, well away from zero."
     ]
    }
   },
