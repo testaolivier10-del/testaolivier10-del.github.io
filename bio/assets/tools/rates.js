@@ -9,7 +9,11 @@
    sample; a typed percent change is drawn as a ghost bar at
    initial × (1 + %/100), so a sign or base error shows at once.
      Explore: a data set made by the course's own generator (a fixed seed of
-     the first rate context); tap any two points, compare the slopes.
+     the first rate context); tap any two points, compare the slopes. A
+     tangent (tool audit 2026-10): drag the round handle along the curve; a
+     line touching the curve there shows the instantaneous rate, estimated
+     as the slope between the neighbouring points (a centered difference,
+     how a student would read it off a table), and its value reads beside it.
      Practice: typed rates are drawn as slope lines from the interval's
      first point; after Check the true triangles. */
 (function(){
@@ -36,6 +40,17 @@
       if(y1 < 0){ t1 = t0 + (0 - y0) / l.slope; y1 = 0; }
       p.push('<line class="rt-mine ' + (l.cls || '') + '" x1="' + sx(t0).toFixed(1) + '" y1="' + sy(y0).toFixed(1) + '" x2="' + sx(t1).toFixed(1) + '" y2="' + sy(y1).toFixed(1) + '"/>');
     });
+    if(o.tan){
+      // the tangent at time tt: position on the polyline, slope from the neighbouring points
+      var tt = o.tan.t, k = 0; while(k < t.length - 2 && t[k + 1] < tt) k++;
+      var f = (tt - t[k]) / (t[k + 1] - t[k]), yy = y[k] + f * (y[k + 1] - y[k]), sl = o.tan.slope, half = tmax * 0.18;
+      var ta = Math.max(0, tt - half), tb = Math.min(tmax, tt + half);
+      p.push('<line class="rt-tan" x1="' + sx(ta).toFixed(1) + '" y1="' + sy(yy + sl * (ta - tt)).toFixed(1) + '" x2="' + sx(tb).toFixed(1) + '" y2="' + sy(yy + sl * (tb - tt)).toFixed(1) + '"/>');
+      p.push('<line class="rt-tanv" x1="' + sx(tt).toFixed(1) + '" x2="' + sx(tt).toFixed(1) + '" y1="' + (TP + ph) + '" y2="' + sy(yy).toFixed(1) + '"/>');
+      var lx = sx(tt) + (tt > tmax * 0.6 ? -10 : 10), anchor = tt > tmax * 0.6 ? 'end' : 'start';
+      p.push('<text class="rt-tanl" x="' + lx.toFixed(1) + '" y="' + (sy(yy) - 16).toFixed(1) + '" text-anchor="' + anchor + '">' + esc(o.tan.label) + '</text>');
+      p.push('<circle class="sk-grip rt-tang" data-k="tan" tabindex="0" role="slider" aria-label="Tangent point (time)" aria-valuemin="0" aria-valuemax="' + tmax + '" aria-valuenow="' + M.round(tt, 2) + '" aria-valuetext="' + esc(o.tan.label) + '" cx="' + sx(tt).toFixed(1) + '" cy="' + sy(yy).toFixed(1) + '" r="10"/>');
+    }
     (o.tris || []).forEach(function(tr){
       var a = tr.i, b = tr.j, xa = sx(t[a]), xb = sx(t[b]), ya = sy(y[a]), yb = sy(y[b]);
       p.push('<path class="rt-tri ' + (tr.cls || '') + '" d="M' + xa.toFixed(1) + ' ' + ya.toFixed(1) + ' H' + xb.toFixed(1) + ' V' + yb.toFixed(1) + ' Z"/>');
@@ -58,16 +73,24 @@
     if(!ctx) return;
     var x = P.generate.rates(M.rng(2024), ctx);
     var sec = S.card(app, { title: 'Tap two points: the slope is the rate', lead: esc(ctx.label || 'Amount') + ' over time, from a catalase run. Tap any two points to draw the triangle between them: the rate is its height over its width, Δy / Δt.' });
-    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig rt-xfig"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="rt-log"></div><div class="bt-buttons"><button type="button" class="bt-btn rt-clear">Clear the triangles</button></div><div class="sk-goalhost"></div>');
+    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag rt-xfig"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="rt-log"></div><div class="bt-buttons"><button type="button" class="bt-btn rt-clear">Clear the triangles</button></div><div class="sk-goalhost"></div>');
     var fig = sec.querySelector('.rt-xfig'), sayEl = sec.querySelector('.sk-say'), log = sec.querySelector('.rt-log');
-    var pick = null, tris = [], CL = ['a', 'b', 'c'];
+    var pick = null, tris = [], CL = ['a', 'b', 'c'], tanT = x.times[1] / 2, tmax = x.times[x.times.length - 1];
+    // the rate at time tt: the slope between the two data points either side (a centered difference)
+    function tanSlope(tt){
+      var t = x.times, v = x.values, k = 0; while(k < t.length - 2 && t[k + 1] < tt) k++;
+      var a = Math.max(0, k - (tt - t[k] < (t[k + 1] - t[k]) / 2 ? 1 : 0)), b = Math.min(t.length - 1, a + 2);
+      if(b - a < 2) a = Math.max(0, b - 2);
+      return M.rate(v[a], v[b], t[a], t[b]);
+    }
     var done = S.goals(sec.querySelector('.sk-goalhost'), [
       { id: 'early', text: 'Find the rate over the <b>first minute</b>.' },
       { id: 'late', text: 'Find a rate near the <b>end</b>: is the reaction speeding up or slowing down?' },
       { id: 'whole', text: 'Take the rate over the <b>whole run</b>: an average hides how the rate changed.' }
     ]);
     function render(){
-      S.redraw(fig, lineGraph(x, { tap: true, pick: pick, tris: tris.map(function(tr, k){ return { i: tr[0], j: tr[1], cls: CL[k % 3], label: F(M.rate(x.values[tr[0]], x.values[tr[1]], x.times[tr[0]], x.times[tr[1]]), 2) }; }),
+      var sl = tanSlope(tanT);
+      S.redraw(fig, lineGraph(x, { tap: true, pick: pick, tan: { t: tanT, slope: sl, label: 'rate ≈ ' + F(sl, 2) + ' ' + x.unitY + '/' + x.unitT + ' at ' + F(tanT, 1) + ' ' + x.unitT }, tris: tris.map(function(tr, k){ return { i: tr[0], j: tr[1], cls: CL[k % 3], label: F(M.rate(x.values[tr[0]], x.values[tr[1]], x.times[tr[0]], x.times[tr[1]]), 2) }; }),
         aria: 'Line graph of ' + (ctx.label || 'amount') + ' against time. Points are buttons: choose two to draw a slope triangle.' }));
       log.innerHTML = tris.length ? '<ul class="rt-list">' + tris.map(function(tr, k){ var a = tr[0], b = tr[1], r = M.rate(x.values[a], x.values[b], x.times[a], x.times[b]); return '<li class="' + CL[k % 3] + '"><span class="rt-sw" aria-hidden="true"></span>' + x.times[a] + ' to ' + x.times[b] + ' ' + esc(x.unitT) + ': (' + F(x.values[b], x.dp) + ' − ' + F(x.values[a], x.dp) + ') / (' + x.times[b] + ' − ' + x.times[a] + ') = <b>' + F(r, 2) + ' ' + esc(x.unitY + '/' + x.unitT) + '</b></li>'; }).join('') + '</ul>' : '';
     }
@@ -85,7 +108,16 @@
       if(b === x.times.length - 1 && a >= x.times.length - 3){ done('late'); sayEl.textContent += ' Later slopes are flatter: the reaction slows as substrate is used up.'; }
       if(a === 0 && b === x.times.length - 1){ done('whole'); sayEl.textContent += ' This is the average rate over the run: faster at first, slower later.'; }
     }
-    fig.addEventListener('click', function(e){ var t = e.target.closest('[data-k]'); if(t) tap(+t.getAttribute('data-k')); });
+    fig.addEventListener('click', function(e){ var t = e.target.closest('[data-k]'); if(t && t.getAttribute('data-k') !== 'tan') tap(+t.getAttribute('data-k')); });
+    function moveTan(tt){
+      tanT = Math.max(0.05 * tmax, Math.min(0.97 * tmax, M.round(tt, 2)));
+      render();
+      var sl = tanSlope(tanT);
+      sayEl.textContent = 'At ' + F(tanT, 1) + ' ' + x.unitT + ' the tangent’s slope, the rate at that moment, is about ' + F(sl, 2) + ' ' + x.unitY + '/' + x.unitT + '. ' + (tanT > tmax * 0.6 ? 'Late in the run the curve flattens: the reaction is slowing as substrate runs out.' : 'Early on the curve is steep: the reaction is fastest at the start.');
+      if(tanT > tmax * 0.75) done('late');
+    }
+    S.drag(fig, '[data-k="tan"]', { move: function(k, pt){ moveTan((pt.x - L) / pw * tmax); } });
+    S.keys(fig, '.rt-tang', function(k, d, big){ moveTan(tanT + d * tmax * (big ? 0.1 : 0.02)); });
     fig.addEventListener('keydown', function(e){ if(e.key !== 'Enter' && e.key !== ' ') return; var t = e.target.closest('[data-k]'); if(!t) return; e.preventDefault(); tap(+t.getAttribute('data-k')); });
     sec.querySelector('.rt-clear').addEventListener('click', function(){ tris = []; pick = null; render(); sayEl.textContent = 'Cleared. Tap two points.'; });
     render();

@@ -8,6 +8,10 @@
    marked and named (ApBioMath.overlap).
      Explore: sliders for each group's mean, SD and n (and one "n for both");
      the bars resize live and the verdict flips between overlap and gap.
+     Tool audit 2026-10 (nothing on the stage was draggable): drag a bar's
+     top to move that group's mean, or drag an error bar's whisker to set
+     its SD; "New sample" draws a fresh sample of the same size from the
+     same groups, so the means and intervals jump about as real samples do.
      Practice: the problem's bars; the student's typed interval ends are
      drawn as brackets beside the true bars as they type; after Check, the
      true intervals with the gap or overlap marked. */
@@ -42,7 +46,13 @@
       p.push('<path class="bar ' + (i ? 's2' : 's1') + ' ci-bar" d="' + T.barPath(c - bw / 2, y, bw, TP + ph - y) + '"/>');
       p.push('<path class="err ci-err" d="M' + c.toFixed(1) + ' ' + sy(e.hi).toFixed(1) + 'V' + sy(e.lo).toFixed(1) + 'M' + (c - 9).toFixed(1) + ' ' + sy(e.hi).toFixed(1) + 'h18M' + (c - 9).toFixed(1) + ' ' + sy(e.lo).toFixed(1) + 'h18"/>');
       p.push('<text class="tick" x="' + c.toFixed(1) + '" y="' + (TP + ph + 17) + '" text-anchor="middle">' + esc(x.name) + '</text>');
-      if(o.marks) p.push('<text class="ci-v" x="' + (c + 13).toFixed(1) + '" y="' + (sy(e.hi) + 4).toFixed(1) + '">' + F(e.hi, o.d) + '</text><text class="ci-v" x="' + (c + 13).toFixed(1) + '" y="' + (sy(e.lo) + 4).toFixed(1) + '">' + F(e.lo, o.d) + '</text>');
+      if(o.drag){
+        p.push('<rect class="sk-col" data-k="m' + i + '" x="' + (c - bw / 2).toFixed(1) + '" y="' + TP + '" width="' + bw.toFixed(1) + '" height="' + ph + '"/>');
+        p.push('<circle class="sk-grip ci-grip" data-k="m' + i + '" tabindex="0" role="slider" aria-label="' + esc(x.name + ' mean') + '" aria-valuenow="' + F(x.mean, 1) + '" aria-valuetext="' + esc(x.name + ' mean ' + F(x.mean, 1)) + '" cx="' + c.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="9"/>');
+        p.push('<rect class="ci-whisk" data-k="s' + i + '" tabindex="0" role="slider" aria-label="' + esc(x.name + ' SD (drag the whisker)') + '" aria-valuenow="' + F(x.sd, 1) + '" aria-valuetext="' + esc(x.name + ' SD ' + F(x.sd, 1)) + '" x="' + (c - 13).toFixed(1) + '" y="' + (sy(e.hi) - 7).toFixed(1) + '" width="26" height="14" rx="5"/>');
+      }
+      var vx = c + (o.drag ? 17 : 13);
+      if(o.marks) p.push('<text class="ci-v" x="' + vx.toFixed(1) + '" y="' + (sy(e.hi) + 4).toFixed(1) + '">' + F(e.hi, o.d) + '</text><text class="ci-v" x="' + vx.toFixed(1) + '" y="' + (sy(e.lo) + 4).toFixed(1) + '">' + F(e.lo, o.d) + '</text>');
       var m = (o.mine || [])[i];
       if(m && (isFinite(m.lo) || isFinite(m.hi))){
         var mx = c - bw / 2 - 12, yl = isFinite(m.lo) ? sy(m.lo) : null, yh = isFinite(m.hi) ? sy(m.hi) : null;
@@ -59,7 +69,7 @@
     var ctx = data.contexts[0];
     var g = [{ name: ctx.groups[0], mean: 8.0, sd: 1.6, n: 5 }, { name: ctx.groups[1], mean: 9.5, sd: 1.6, n: 5 }];
     var sec = S.card(app, { title: 'Change n and SD, watch the error bars', lead: esc(ctx.yLabel || 'Mean') + ' for two groups. Each error bar is ±2 SE, the 95% confidence interval. More samples shrink it; more spread widens it.' });
-    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig ci-xfig"></div><div class="ci-verdict" role="status" aria-live="polite"></div><div class="bt-controls ci-ctl"></div><details class="bt-how ci-more"><summary>Set each group separately</summary><div class="bt-how-body bt-controls ci-ctl2"></div></details><p class="sk-say" aria-live="polite"></p><div class="sk-goalhost"></div>');
+    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag ci-xfig"></div><div class="bt-buttons ci-btns"><button type="button" class="bt-btn ci-new">New sample</button></div><div class="ci-verdict" role="status" aria-live="polite"></div><div class="bt-controls ci-ctl"></div><details class="bt-how ci-more"><summary>Set each group separately</summary><div class="bt-how-body bt-controls ci-ctl2"></div></details><p class="sk-say" aria-live="polite"></p><div class="sk-goalhost"></div>');
     var fig = sec.querySelector('.ci-xfig'), ver = sec.querySelector('.ci-verdict'), sayEl = sec.querySelector('.sk-say');
     var last = null, maxY = 14;
     var done = S.goals(sec.querySelector('.sk-goalhost'), [
@@ -77,14 +87,36 @@
     var s1 = T.slider({ label: g[0].name + ': SD', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[0].sd = v; upd('sd'); } });
     var s2 = T.slider({ label: g[1].name + ': SD', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[1].sd = v; upd('sd'); } });
     [m1, m2, n1, n2, s1, s2].forEach(function(x){ sec.querySelector('.ci-ctl2').appendChild(x.el); });
-    var firstN = null;
+    var firstN = null, base = g.map(function(x){ return { mean: x.mean }; }), draws = 0;
+    // a "true" mean per group for New sample: set by the sliders and drags
+    function setTrue(){ base = g.map(function(x){ return { mean: x.mean }; }); }
+    function svgY(v){ var ph2 = H - TP - B; return maxY * (TP + ph2 - v) / ph2; }
+    S.drag(fig, '[data-k]', { move: function(k, pt){
+      var i = +k.slice(1);
+      if(k.charAt(0) === 'm'){ g[i].mean = Math.max(2, Math.min(12, M.round(svgY(pt.y), 1))); (i ? m2 : m1).set(g[i].mean); setTrue(); upd('m'); }
+      else { var top = svgY(pt.y), se = Math.max(0.05, (top - g[i].mean) / 2); g[i].sd = Math.max(0.2, Math.min(4, M.round(se * Math.sqrt(g[i].n), 1))); (i ? s2 : s1).set(g[i].sd); upd('sd'); }
+    } });
+    S.keys(fig, '[data-k]', function(k, d, big){
+      var i = +k.slice(1);
+      if(k.charAt(0) === 'm'){ g[i].mean = Math.max(2, Math.min(12, M.round(g[i].mean + d * (big ? 1 : 0.1), 1))); (i ? m2 : m1).set(g[i].mean); setTrue(); upd('m'); }
+      else { g[i].sd = Math.max(0.2, Math.min(4, M.round(g[i].sd + d * (big ? 0.5 : 0.1), 1))); (i ? s2 : s1).set(g[i].sd); upd('sd'); }
+    });
+    sec.querySelector('.ci-new').addEventListener('click', function(){
+      // a new sample of n from each group: its mean lands within about ±SE of the true mean (normal draw, seeded per click)
+      var r = M.rng(9001 + 17 * (++draws));
+      g.forEach(function(x, i){ x.mean = Math.max(2, Math.min(12, M.round(base[i].mean + r.normal(0, x.sd / Math.sqrt(x.n)), 2))); });
+      m1.set(g[0].mean); m2.set(g[1].mean);
+      upd('sample');
+    });
     function upd(what){
-      var r = draw(g, { unit: ctx.unit, yLabel: ctx.yLabel, ymax: maxY, marks: true, d: 2, aria: g.map(function(x){ var c = M.ci95(x.mean, M.seFrom(x.sd, x.n)); return x.name + ': mean ' + F(x.mean, 1) + ', 95% CI ' + F(c.lo, 2) + ' to ' + F(c.hi, 2); }).join('. ') + '.' });
+      if(what === 'n' || what === 'sd' || what === '') { /* the sliders and drags keep the sample's means */ }
+      var r = draw(g, { unit: ctx.unit, yLabel: ctx.yLabel, ymax: maxY, marks: true, d: 2, drag: true, aria: g.map(function(x){ var c = M.ci95(x.mean, M.seFrom(x.sd, x.n)); return x.name + ': mean ' + F(x.mean, 1) + ', 95% CI ' + F(c.lo, 2) + ' to ' + F(c.hi, 2); }).join('. ') + '.' });
       S.redraw(fig, r.svg);
       ver.innerHTML = '<p class="sk-decide">' + (r.ov ? '<span class="sk-verdict keep">Overlap</span> <span>Chance could explain the difference: these data cannot tell the two means apart.</span>' : '<span class="sk-verdict rej">No overlap</span> <span>The difference is likely statistically significant: chance alone rarely gives a gap like this.</span>') + '</p>' +
         S.readout(g.map(function(x){ return [esc(x.name) + ' SE', F(M.seFrom(x.sd, x.n), 2)]; }).concat(g.map(function(x){ var c = M.ci95(x.mean, M.seFrom(x.sd, x.n)); return [esc(x.name) + ' 95% CI', F(c.lo, 2) + '–' + F(c.hi, 2)]; })));
       var se = M.seFrom(g[0].sd, g[0].n), msg = '';
       if(what === 'n'){ msg = 'n = ' + g[0].n + ': SE = SD / √n = ' + F(g[0].sd, 1) + ' / ' + F(Math.sqrt(g[0].n), 2) + ' = ' + F(se, 2) + '.'; if(firstN == null) firstN = { n: g[0].n, se: se }; else if(g[0].n >= 4 * firstN.n){ msg += ' n is ' + F(g[0].n / firstN.n, 1) + ' times bigger and SE is ' + F(firstN.se / se, 1) + ' times smaller.'; done('four'); } }
+      if(what === 'sample') msg = 'A new sample of ' + g[0].n + ' per group from the same two populations: the means moved by chance (' + F(g[0].mean, 2) + ' and ' + F(g[1].mean, 2) + '). With a small n they jump about; raise n and they settle near the true means.';
       if(what === 'sd') msg = 'SD = ' + F(g[0].sd, 1) + ': more spread in the data gives a wider interval (SE = ' + F(se, 2) + ').';
       if(last != null && last !== r.ov){ msg = (r.ov ? 'The intervals overlap again. ' : 'Now there is a gap. ') + msg; if(!r.ov && what === 'n') done('gap'); if(r.ov && what === 'sd') done('sd'); }
       if(what) sayEl.textContent = msg;
@@ -110,7 +142,7 @@
     T.skillTool(app, data, { slug: 'confidence-intervals', kind: 'ci', stage: stage });
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
-    studio: { hint: { target: '.ci-ctl input[type=range]', text: 'Raise n, the samples per group' },
+    studio: { hint: { target: '.ci-grip', text: 'Drag a bar up or down' },
       caption: function(g){ var v = g.$('.sk-decide'), k = v && v.querySelector('.sk-verdict'); if(!v) return null; var rest = v.textContent.replace(k ? k.textContent : '', '').trim(); return '<b>' + T.esc(k ? k.textContent : '') + '.</b> ' + T.esc(rest); },
       pills: function(g){ var k = g.$('.sk-decide .sk-verdict'); return k ? [{ html: T.esc(k.textContent), tone: k.classList.contains('keep') ? 'warn' : 'good' }] : []; },
       pillsR: function(g){ return [{ html: 'SE ' + g.ro(0) + ' · ' + g.ro(1), tone: 'ghost' }]; } } });

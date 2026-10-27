@@ -84,7 +84,18 @@
       }
       p.push('<path class="sk-curve" d="M' + L + ' ' + (df > 2 ? base : df === 2 ? cy(0.5) : CT).toFixed(1) + ' ' + pts.map(function(q){ return 'L' + sx(q[0]).toFixed(1) + ' ' + cy(q[1]).toFixed(1); }).join(' ') + '"/>');
       p.push('<text class="sk-ph" x="' + (W - R) + '" y="' + (MY - 8) + '" text-anchor="end">curve: chance alone, df = ' + df + '</text>');
-    } else p.push('<text class="sk-ph sk-dim" x="' + (L + pw / 2) + '" y="' + (CT + CH / 2) + '" text-anchor="middle">Type the degrees of freedom to see its χ² curve</text>');
+    } else {
+      // No df yet (tool audit 2026-10: the panel was empty until step 6): the family of χ² curves for
+      // df 1 to 4, faint, so the student sees the shape and how it shifts right as df grows.
+      var fam = [1, 2, 3, 4], ctop = 0.5, cy0 = function(y){ return base - Math.min(1, y / (ctop * 1.08)) * CH; };
+      fam.forEach(function(d){
+        var q = [], NP2 = 120;
+        for(var k2 = 1; k2 <= NP2; k2++){ var x2 = xmax * k2 / NP2; q.push(sx(x2).toFixed(1) + ' ' + cy0(M.chiPdf(x2, d)).toFixed(1)); }
+        p.push('<path class="sk-curve sk-fam" d="M' + q.join(' L') + '"/>');
+        if(d === 1 || d === 4) p.push('<text class="sk-ph sk-dim sk-faml" x="' + (sx(d === 1 ? 1.2 : 3.6) + 4).toFixed(1) + '" y="' + (cy0(M.chiPdf(d === 1 ? 1.2 : 3.6, d)) - 6).toFixed(1) + '">df ' + d + '</text>');
+      });
+      p.push('<text class="sk-ph sk-dim" x="' + (L + pw / 2) + '" y="' + (CT + 10) + '" text-anchor="middle">chance curves for df 1 to 4: type df to pick yours</text>');
+    }
     p.push('<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + base + '" y2="' + base + '"/>');
     var xs = T.niceStep(xmax, 5);
     for(var q = 0; q <= xmax + 1e-9; q += xs) p.push('<text class="tick" x="' + sx(q).toFixed(1) + '" y="' + (base + 15) + '" text-anchor="middle">' + M.round(q, 6) + '</text>');

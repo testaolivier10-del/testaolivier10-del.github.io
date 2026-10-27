@@ -32,7 +32,7 @@
     if(v.mean != null) band(v.mean, v.sd, v.se, false);
     else if(v.mine) band(v.mine.mean, v.mine.sd, v.mine.se, true);
     // dots: one that would overlap a dot already placed stacks above it
-    var rad = v.drag ? 8 : 6.5, placed = [], order = v.values.map(function(x, i){ return i; }).sort(function(a, b){ return v.values[a] - v.values[b]; });
+    var rad = v.drag ? 10 : 7, placed = [], order = v.values.map(function(x, i){ return i; }).sort(function(a, b){ return v.values[a] - v.values[b]; });
     var lvl = {};
     order.forEach(function(i){
       var X = sx(v.values[i]), n = 0;
@@ -54,7 +54,7 @@
   /* ------------------------------------------------------- explore */
   function explore(app){
     var sec = S.card(app, { title: 'Drag a dot, watch the mean and the median', lead: 'Plant heights in centimeters. The solid line is the mean, the dashed line the median; the shaded band is ±1 SD and the bracket ±1 SE. Drag one dot far to the right.' });
-    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag ds-xfig"></div><p class="ds-key"><span><i class="ds-k mean"></i>mean</span><span><i class="ds-k median"></i>median</span><span><i class="ds-k sd"></i>±1 SD (spread of the values)</span><span><i class="ds-k se"></i>±1 SE (uncertainty in the mean)</span></p><div class="sk-out"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="bt-buttons"><button type="button" class="bt-btn ds-add">Add a dot</button><button type="button" class="bt-btn ds-rm">Remove a dot</button><button type="button" class="bt-btn ds-reset">Reset</button></div><div class="sk-goalhost"></div>');
+    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag ds-xfig"></div><p class="ds-key"><span><i class="ds-k mean"></i>mean</span><span><i class="ds-k median"></i>median</span><span><i class="ds-k sd"></i>±1 SD: spread</span><span><i class="ds-k se"></i>±1 SE: uncertainty in the mean</span></p><div class="sk-out"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="bt-buttons"><button type="button" class="bt-btn ds-add">Add a dot</button><button type="button" class="bt-btn ds-rm">Remove a dot</button><button type="button" class="bt-btn ds-reset">Reset</button></div><div class="sk-goalhost"></div>');
     var fig = sec.querySelector('.ds-xfig'), out = sec.querySelector('.sk-out'), sayEl = sec.querySelector('.sk-say');
     var BASE = [3.6, 4.5, 5.0, 5.4, 5.9, 6.3, 7.2], vals = BASE.slice(), lo = 2, hi = 14, hot = null;
     var done = S.goals(sec.querySelector('.sk-goalhost'), [
