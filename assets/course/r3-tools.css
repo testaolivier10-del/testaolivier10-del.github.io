@@ -156,3 +156,5 @@ body:has(main.r3-tools) [data-crumb]{display:none}
 .r3-frqlist #app > [class*="-fq-how"]{align-self:start}
 .r3-frqlist #app > form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:640px){.r3-frqlist #app > form{grid-template-columns:1fr}}
+/* NREMT reference pages (nremt-studio.js, slim): the band is hidden on a phone too, like the full studio */
+@media (max-width:999.98px){body.nx-slim-on .r3-toolband{display:none}}
