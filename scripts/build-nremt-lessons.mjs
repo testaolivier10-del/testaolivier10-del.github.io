@@ -22,6 +22,7 @@ import { loadChapters, chapterSlug } from './lib/nremt-notes.mjs';
 import { loadLessons } from './lib/nremt-lessons.mjs';
 import { courseTitle } from './lib/page-title.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { premiumData, lockedLd } from './lib/premium-data.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const CHECK = process.argv.includes('--check');
@@ -35,6 +36,11 @@ const text = (html) => String(html || '').replace(/<[^>]*>/g, ' ').replace(/\s+/
 const chapters = loadChapters(ROOT);
 const byNum = new Map(chapters.map((c) => [c.num, c]));
 const lessons = loadLessons(ROOT, chapters);
+
+/* Chapters 1 to 8 are free; later lessons are Premium (assets/premium.js COURSES.nremt.freeChapters). */
+const FREE = new Set(premiumData().COURSES.nremt.freeChapters);
+export const chapterKey = (num) => `ch${num}`;
+const isFree = (L) => FREE.has(chapterKey(L.chapter));
 
 const stale = [];
 function put(rel, html) {
@@ -102,7 +108,7 @@ function lessonPage(L, i) {
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'LearningResource', '@id': `${url}#lesson`, name: L.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'Professional certification', inLanguage: 'en', isAccessibleForFree: true, isPartOf: { '@id': `${ORIGIN}/nremt/#course` }, provider: { '@id': `${ORIGIN}/#org` } },
+      { '@type': 'LearningResource', '@id': `${url}#lesson`, name: L.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'Professional certification', inLanguage: 'en', ...(isFree(L) ? { isAccessibleForFree: true } : lockedLd('.nl-card')), isPartOf: { '@id': `${ORIGIN}/nremt/#course` }, provider: { '@id': `${ORIGIN}/#org` } },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'LevlPrep', item: `${ORIGIN}/` },
         { '@type': 'ListItem', position: 2, name: 'NREMT-EMT Prep', item: `${ORIGIN}/nremt/` },
@@ -143,19 +149,20 @@ function lessonPage(L, i) {
 <script src="../../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../assets/course/base.css">
+<!-- The Read | Interactive switch (assets/course/read-toggle.js) is styled in r3-reading.css. -->
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 <link rel="stylesheet" href="../assets/nremt-lesson.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 </script>
 </head>
-<body>
+<body data-topic="${L.section}">
   <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="nl r3" data-cover="nremt" data-lesson="${L.id}">
+<div class="nl r3" data-cover="nremt" data-lesson="${L.id}" data-chapter="${chapterKey(L.chapter)}" data-notes="../study-notes.html#${L.section}">
   <aside class="nl-rail" aria-label="Lesson parts">
     <p class="nl-k">Chapter ${ch.num} &middot; ${esc(ch.title)}</p>
-    <p class="nl-links"><a href="${notesHref}">Read this section in the textbook</a></p>
     <div class="nl-prog" hidden><div class="nl-track"><div class="nl-fill"></div></div><span class="nl-count">Step 1 / ${parts.length}</span></div>
     <ol class="nl-steps">${parts.map((p, k) => `<li><a href="#${p.id}"><span class="n">${k + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
   </aside>
@@ -186,6 +193,8 @@ ${parts.map((p, k) => `      <section class="nl-part${k === 0 ? ' is-on' : ''}" 
   window.NREMT_PAGE = 'study-notes.html';
 </script>
 <script src="../assets/nav.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script src="../../assets/course/read-toggle.js" data-rt="lesson" data-rt-book="../study-notes.html" data-rt-course="nremt" defer></script>
 <script src="../assets/nremt-lesson.js" defer></script>
 </body>
 </html>
@@ -207,7 +216,7 @@ if (existsSync(OUT)) {
 /* The reader links each section that has a lesson (study-notes.html, sectionHtml). */
 {
   const reader = readFileSync(READER, 'utf8');
-  const map = Object.fromEntries(lessons.map((L) => [L.section, { href: `lessons/${L.id}.html`, title: L.title }]));
+  const map = Object.fromEntries(lessons.map((L) => [L.section, { href: `lessons/${L.id}.html`, title: L.title, premium: !isFree(L) }]));
   const block = `<!-- nremt-lessons:start (scripts/build-nremt-lessons.mjs) -->\n<script>window.NREMT_LESSONS = ${JSON.stringify(map)};</script>\n<!-- nremt-lessons:end -->`;
   const re = /<!-- nremt-lessons:start[\s\S]*?<!-- nremt-lessons:end -->/;
   if (!re.test(reader)) { console.error('FAIL: nremt/study-notes.html has no nremt-lessons markers.'); process.exit(1); }

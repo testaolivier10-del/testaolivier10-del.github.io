@@ -46,27 +46,34 @@ the A&P question bank, so NREMT has its own small copy of the same behaviour:
 - page script: `nremt/assets/nremt-lesson.js`; styles: `nremt/assets/nremt-lesson.css`
 - the page shell is the NREMT chapter pages' (`scripts/build-nremt-notes-pages.mjs`)
 
-Links from the textbook: the builder writes `window.NREMT_LESSONS` (section id to lesson) between the
-`nremt-lessons` markers in `nremt/study-notes.html`; the reader's `sectionHtml()` shows "Interactive lesson: ..."
-under the section heading, and the chapter pages (`nremt/notes/*.html`) get the same link at build time.
+Links from the textbook: the builder writes `window.NREMT_LESSONS` (section id to `{ href, title, premium }`)
+between the `nremt-lessons` markers in `nremt/study-notes.html`. Each reader section carries `data-lesson` (empty when
+the section has no lesson yet) and `data-lesson-premium="1"` for a Premium lesson; the chapter pages
+(`nremt/notes/*.html`) get the same attributes at build time.
 
 Not yet: lesson questions do not go into the NREMT review queue (the queue holds bank question ids). Missed lesson
 questions could be mapped to bank questions on the same section later.
 
-## The Read | Interactive toggle
+## The Read | Interactive toggle (wired 2026-10-26)
 
-A separate branch adds a Read | Interactive switch to the textbooks of the courses that have lessons. NREMT plugs in
-through `window.NREMT_LESSONS`: the switch reads the section's lesson from it, sends Interactive to
-`lessons/<id>.html#why` and back to `notes/<chapter>.html#<section>` (or the reader at `#chapter-N`), and shows
-Interactive as unavailable for a section with no lesson yet. When the toggle lands, the "Interactive lesson" link
-under each section heading can go.
+`assets/course/read-toggle.js` (shared with the other courses) runs on the reader (`data-rt="book"`), on every
+chapter page (`data-rt="book" data-rt-root="../"`, so a remembered lesson still resolves one folder down) and on
+every lesson (`data-rt="lesson" data-rt-book="../study-notes.html"`, topic = the section id in `body[data-topic]`).
+Read from a lesson opens the reader at that section; Interactive from the reader opens the section's lesson, shows
+the Premium tag for a Premium one, and is greyed out for a section with no lesson yet. The old "Interactive lesson"
+link under each section heading is gone. The switch is styled in `assets/course/r3-reading.css`, which the lesson
+pages load for it.
 
-## Free and Premium
+## Free and Premium (decided 2026-10-26)
 
-The other courses keep their early chapters' lessons free and the rest Premium (A&P: Foundations; ochem: the first
-four chapters). The proposed NREMT rule is chapters 1 to 8 free (a fifth of the 40), the rest Premium, with the
-notes always free. That needs Olivier's OK (`docs/nremt-needs-author.md`), so the pilot lessons are free and
-`assets/premium.js` (`COURSES.nremt.freeChapters`) is unchanged.
+Owner: chapters 1 to 8 free, the rest Premium, notes always free, the same rule as the other courses' early
+chapters. `assets/premium.js` `COURSES.nremt.freeChapters` is `['ch1', ... 'ch8']` (ids are `ch` + the chapter
+number), and the Premium list gains "The interactive lessons after chapter 8". A lesson page checks
+`LevlPremium.isFreeChapter('nremt', 'chN')` and `LevlPremium.has('nremt')`; locked, it hides the steps and the card
+and shows the free textbook first, then the standard Premium card (`LevlPremium.gate('nremt', 'lessons', 'lesson')`),
+as A&P and ochem do, and a pass that arrives later unlocks it in place. A locked lesson's structured data says
+so (`lockedLd('.nl-card')`). The four pilot lessons (chapters 12 and 29) are Premium. The free list does not
+mention lessons yet, because no chapter 1 to 8 lesson exists; add it with batch 4.
 
 ## Accuracy rules
 
@@ -140,6 +147,16 @@ Each batch is one PR with its accuracy review, built in textbook order inside th
     cause such as hypoglycemia; oxygen if indicated, titrated to SpO2 at least 94%. One high-priority list, the same
     in the steps and the question, with poor general impression, complicated childbirth and chest pain with a
     systolic pressure under 100.
-- The Chapter 12 and 29 notes still carry some of the older wording (for example "never remove a dressing", "check
-  after 5 to 10 minutes", "no single bone"). Bringing the notes in line is a separate change for Olivier to approve
-  (`docs/nremt-needs-author.md` item 4).
+- Notes brought in line (2026-10-26, owner approved): the Chapter 12 and 29 notes in `nremt/assets/study-notes.json`
+  now say the same as the reviewed lessons. Chapter 12: an airway that is not alert is assessed, not assumed;
+  jaw-thrust for suspected spinal injury; OPA only without a gag reflex; no NPA with a suspected basilar skull or
+  severe facial fracture; pulse present (radial, else carotid), rate, strength, regularity; severe bleeding kills
+  within minutes; altered mental status includes hypoglycemia, oxygen titrated to SpO2 at least 94%; one
+  high-priority list with chest pain and a systolic pressure under 100. Chapter 29: 5 to 6 liters; hold firm,
+  uninterrupted pressure without lifting to check; don't peel a dressing off to look, escalate rather than add
+  layers; hemostatics where protocol allows; elevation and pressure points no longer recommended; tourniquet trigger
+  includes bleeding pressure does not control; never over the elbow, wrist, knee or ankle (joint structure and
+  nerves, 2023 joint position statement); high and tight only for several wounds or an unclear source; improvised
+  tourniquets often fail; neck wounds get an occlusive dressing against air embolism and pressure that spares the
+  airway and both carotids, packed only with caution per protocol; fracture bleeding gets a splint or pelvic
+  binder, the patient supine, nothing by mouth. The flashcards, chapter pages and course home were rebuilt from it.

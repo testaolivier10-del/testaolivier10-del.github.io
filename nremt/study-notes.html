@@ -54,10 +54,6 @@ window.__notesData.catch(function(){});
      questions, tools) and the printable whole book. */
   .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
   .tb-chapter-meta .bk-actions{margin:12px 0 0;}
-  /* A section's interactive lesson (scripts/build-nremt-lessons.mjs). */
-  .nl-link{margin:4px 0 14px;}
-  .nl-link a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--tint-accent);color:var(--accent-text);font:800 13.5px var(--font-ui);text-decoration:none;}
-  .nl-link a:hover{text-decoration:underline;}
   .bk-sec .domain-tag{
     font:900 10.5px var(--font-ui);color:var(--cink);
     background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
@@ -386,7 +382,7 @@ window.__notesData.catch(function(){});
 </div>
 
 <!-- nremt-lessons:start (scripts/build-nremt-lessons.mjs) -->
-<script>window.NREMT_LESSONS = {"ch12-primary-assessment":{"href":"lessons/primary-assessment.html","title":"The primary assessment"},"ch29-bleeding-control":{"href":"lessons/bleeding-direct-pressure.html","title":"Direct pressure and the bleeding ladder"},"ch29-tourniquets":{"href":"lessons/tourniquets-and-wound-packing.html","title":"Tourniquets and wound packing"},"ch29-internal-bleeding":{"href":"lessons/internal-bleeding-and-shock.html","title":"Internal bleeding and hemorrhagic shock"}};</script>
+<script>window.NREMT_LESSONS = {"ch12-primary-assessment":{"href":"lessons/primary-assessment.html","title":"The primary assessment","premium":true},"ch29-bleeding-control":{"href":"lessons/bleeding-direct-pressure.html","title":"Direct pressure and the bleeding ladder","premium":true},"ch29-tourniquets":{"href":"lessons/tourniquets-and-wound-packing.html","title":"Tourniquets and wound packing","premium":true},"ch29-internal-bleeding":{"href":"lessons/internal-bleeding-and-shock.html","title":"Internal bleeding and hemorrhagic shock","premium":true}};</script>
 <!-- nremt-lessons:end -->
 <script>
 // Runs after the deferred scripts above it: every external script on this
@@ -661,11 +657,12 @@ function renderContents(activeIndex, q){
 }
 
 /* ---- one chapter ---------------------------------------------------- */
-// The section's interactive lesson, when one is built (scripts/build-nremt-lessons.mjs
-// writes window.NREMT_LESSONS between the nremt-lessons markers).
-function lessonLink(sec){
+// The Read | Interactive switch (assets/course/read-toggle.js) reads each section's lesson from data-lesson
+// (empty: no lesson yet); scripts/build-nremt-lessons.mjs writes window.NREMT_LESSONS between the
+// nremt-lessons markers.
+function lessonAttrs(sec){
   const L = (window.NREMT_LESSONS || {})[sec.id];
-  return L ? `<p class="nl-link"><a href="${L.href}">Interactive lesson: ${esc(L.title)} &rarr;</a></p>` : '';
+  return L ? ` data-lesson="${L.href}"${L.premium ? ' data-lesson-premium="1"' : ''}` : ' data-lesson=""';
 }
 
 function sectionHtml(sec, si, ch){
@@ -684,12 +681,11 @@ function sectionHtml(sec, si, ch){
     </div>` : '';
   // One section of the chapter, laid out like a topic on A&P's and Bio's
   // Learn pages (assets/course/book.css .bk-sec).
-  return `<section class="section bk-sec" id="${sec.id}" data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
+  return `<section class="section bk-sec" id="${sec.id}"${lessonAttrs(sec)} data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
     <div class="bk-sec-head">
       <h2><span class="bk-toc-n">${sectionNumber(ch, si)}</span>${sec.title}</h2>
       ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
     </div>
-    ${lessonLink(sec)}
     ${sec.note ? `<p class="section-note">${sec.note}</p>` : ''}
     <div class="bk-prose">${topicsHtml}</div>
     ${takeawaysHtml}
@@ -1076,6 +1072,8 @@ window.addEventListener('afterprint', () => {
 <script src="../assets/course/glossary-tip.js" data-glossary="assets/glossary.json" data-course-root="./" defer></script>
 <!-- glossary-tip:end -->
 <script src="assets/nav.js" defer></script>
+<!-- Read | Interactive: each section's lesson (data-lesson, docs/nremt-lessons-spec.md). -->
+<script src="../assets/course/read-toggle.js" data-rt="book" data-rt-course="nremt" defer></script>
 <!-- video:reader -->
 <script type="application/json" id="lpv-reader">[{"id":"lqxfWZZtRgE","at":"[data-chapter=\"1\"] > .tb-chapter-head","html":"\u003csection class=\"lpv\" data-video=\"lqxfWZZtRgE\" data-video-course=\"nremt\" data-video-kind=\"reader\" aria-labelledby=\"lpv-h-lqxfWZZtRgE\">\n  \u003cdiv class=\"lpv-frame\">\n    \u003ca class=\"lpv-play\" href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE\" data-start=\"0\" aria-label=\"Play the video lesson: Intro to EMS: How the EMS System Works (EMT Chapter 1) (19 minutes)\">\n      \u003cimg src=\"/assets/video/thumbs/lqxfWZZtRgE-480.webp\" srcset=\"/assets/video/thumbs/lqxfWZZtRgE-480.webp 480w, /assets/video/thumbs/lqxfWZZtRgE-960.webp 960w\" sizes=\"(max-width: 760px) 100vw, 720px\" width=\"1280\" height=\"720\" alt=\"\" decoding=\"async\">\n      \u003cspan class=\"lpv-btn\" aria-hidden=\"true\">\u003csvg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" focusable=\"false\">\u003cpath d=\"M8 5.5v13l10.5-6.5z\"/>\u003c/svg>\u003c/span>\n      \u003cspan class=\"lpv-len\" aria-hidden=\"true\">18:58\u003c/span>\n    \u003c/a>\n  \u003c/div>\n  \u003cdiv class=\"lpv-body\">\n    \u003cp class=\"lpv-k\">\u003csvg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" aria-hidden=\"true\" focusable=\"false\">\u003cpath d=\"M8 5.5v13l10.5-6.5z\"/>\u003c/svg>Video lesson\u003cspan class=\"lpv-meta\"> &middot; 19 min\u003c/span>\u003c/p>\n    \u003cp class=\"lpv-title\" id=\"lpv-h-lqxfWZZtRgE\">Intro to EMS: How the EMS System Works (EMT Chapter 1)\u003c/p>\n    \u003cp class=\"lpv-note\">Covers sections 1.1 to 1.3.\u003c/p>\n    \u003cp class=\"lpv-fine\">Posted 12 Oct 2026 on \u003ca href=\"https://www.youtube.com/@LevlPrep\">our YouTube channel\u003c/a>. The player loads from YouTube only when you press play.\u003c/p>\n  \u003c/div>\n  \u003cdetails class=\"lpv-chapters\">\u003csummary>Chapters \u003cspan class=\"lpv-n\">10\u003c/span>\u003c/summary>\u003col>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=0s\" data-start=\"0\">\u003cspan class=\"lpv-t\">0:00\u003c/span> Start here\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=99s\" data-start=\"99\">\u003cspan class=\"lpv-t\">1:39\u003c/span> From transport to care\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=242s\" data-start=\"242\">\u003cspan class=\"lpv-t\">4:02\u003c/span> The laws that built EMS\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=367s\" data-start=\"367\">\u003cspan class=\"lpv-t\">6:07\u003c/span> NHTSA's 10 standards\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=516s\" data-start=\"516\">\u003cspan class=\"lpv-t\">8:36\u003c/span> The 911 call\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=638s\" data-start=\"638\">\u003cspan class=\"lpv-t\">10:38\u003c/span> The dispatcher\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=713s\" data-start=\"713\">\u003cspan class=\"lpv-t\">11:53\u003c/span> The chain of handoffs\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=877s\" data-start=\"877\">\u003cspan class=\"lpv-t\">14:37\u003c/span> Recap\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=926s\" data-start=\"926\">\u003cspan class=\"lpv-t\">15:26\u003c/span> Practice problems\u003c/a>\u003c/li>\u003cli>\u003ca href=\"https://www.youtube.com/watch?v=lqxfWZZtRgE&amp;t=1111s\" data-start=\"1111\">\u003cspan class=\"lpv-t\">18:31\u003c/span> Next: provider levels\u003c/a>\u003c/li>\u003c/ol>\u003c/details>\n\u003c/section>"}]</script>
 <script src="/assets/video/reader-video.js" defer></script>
