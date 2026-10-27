@@ -7,7 +7,7 @@
    - DOMAIN_TARGETS in nremt/practice-engine.js puts each domain inside its
      published band and sums to the exam length, and the bank holds enough
      questions in each domain to fill one exam;
-   - the dashboard's band labels match the same bands;
+   - the dashboard's band labels match the same bands (nremt/assets/dash-nremt.js);
    - no page claims "the real domain mix" (say what the proportions are).
    The bank as a whole is not held to the bands: what reaches a student is the
    exam draw, which DOMAIN_TARGETS controls. */
@@ -49,10 +49,14 @@ export default function ({ ROOT, fail, htmlFiles }) {
   }
   for (const d of Object.keys(targets)) if (!NREMT_DOMAIN_BANDS[d]) fail(`nremt/practice-engine.js: DOMAIN_TARGETS has "${d}", which is not a 2025 domain`);
 
-  const dash = readFileSync(join(ROOT, 'nremt/dashboard.html'), 'utf8');
+  // The dashboard's domain list lives in its script since the five-question dashboard (docs/dashboard.md). Each
+  // entry's `mid` weights the domain's cost ("of every 100 exam questions") and must sit inside its band.
+  const dash = readFileSync(join(ROOT, 'nremt/assets/dash-nremt.js'), 'utf8');
   for (const [d, [lo, hi]] of Object.entries(NREMT_DOMAIN_BANDS)) {
-    const re = new RegExp(`d: '${d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}',\\s*band: '${lo}–${hi}%'`);
-    if (!re.test(dash)) fail(`nremt/dashboard.html: EXAM_DOMAINS does not list ${d} with the ${lo}–${hi}% band`);
+    const re = new RegExp(`d: '${d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}',\\s*band: '${lo}–${hi}%',\\s*mid: (\\d+)`);
+    const m = dash.match(re);
+    if (!m) fail(`nremt/assets/dash-nremt.js: EXAM_DOMAINS does not list ${d} with the ${lo}–${hi}% band and its middle`);
+    else if (+m[1] < lo || +m[1] > hi) fail(`nremt/assets/dash-nremt.js: ${d} is weighted ${m[1]}%, outside its ${lo}–${hi}% band`);
   }
 
   for (const file of htmlFiles) {

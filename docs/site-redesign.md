@@ -175,3 +175,6 @@ from every full tool page in every course:
   (mnemonics, reference cards); body map, flowcharts, formulary, scenarios, skill sheets and the sound trainer are
   full tools. The Tools hubs keep the round 3 look.
 - Checked: the stage fills 1366x768 and 1920x1080 with no page scroll; phones unchanged (they already hid the chrome).
+## Dashboards replaced (2026-10-26)
+Every course dashboard is now the five-question layout in `docs/dashboard.md` (design F, owner approved); the
+R10-Progress kicker layout and `assets/course/r3-db.js` no longer drive any dashboard.

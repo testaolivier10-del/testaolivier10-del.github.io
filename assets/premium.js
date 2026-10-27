@@ -51,6 +51,7 @@
   // Every answer ever, per course, so a locked card can show a student how far
   // they have come (this browser only, like the daily score).
   var TALLY_KEY = 'levlprep_course_tally_v1';
+  var DAILY_KEY = 'hub_daily_v1';
 
   /* Founding-member offer: shown in the dialog, applied at checkout by the
      Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
@@ -522,6 +523,19 @@
     if (correct) a.right++;
     all[course] = a;
     writeJson(TALLY_KEY, all);
+    // Right and total per course per day, for the dashboard's weekly accuracy line (assets/course/dash.js,
+    // docs/dashboard.md). 180 days kept. hub_ prefix: progress-backup.js keeps it; not synced, like the exam date.
+    var log = readJson(DAILY_KEY);
+    if (!log.days) log = { v: 1, days: {} };
+    var d = new Date(), k = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    var day = log.days[k] || (log.days[k] = {});
+    // A course's first logged answer today starts from today's score, which already counts this answer, so a
+    // day that began before the log existed is not undercounted.
+    if (day[course]) { day[course][1]++; if (correct) day[course][0]++; }
+    else day[course] = [t.right, t.total];
+    var keys = Object.keys(log.days).sort();
+    while (keys.length > 180) delete log.days[keys.shift()];
+    writeJson(DAILY_KEY, log);
   }
   function courseTally(course) {
     var a = readJson(TALLY_KEY)[course];

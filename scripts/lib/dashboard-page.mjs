@@ -17,7 +17,9 @@ const DIR = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus
 
 export function dashboardPage(html, key = 'apbio', up = '../') {
   if (!/<h1>Dashboard<\/h1>/.test(html)) throw new Error('dashboard-page: no "<h1>Dashboard</h1>" to rebuild');
-  const link = `<link rel="stylesheet" href="${up}assets/course/dashboard.css">\n<script src="${up}assets/course/r3-db.js" defer></script>`;
+  // The five-question dashboard (docs/dashboard.md): its styles and the two shared scripts. The course's own
+  // dashboard script waits for DOMContentLoaded, so these may come after it in the page.
+  const link = `<link rel="stylesheet" href="${up}assets/course/dashboard.css">\n<link rel="stylesheet" href="${up}assets/course/dash.css">\n<script src="${up}assets/course/dash.js" defer></script>\n<script src="${up}assets/course/dash-ap.js" defer></script>`;
   return r3Inner(html, { key, slug: 'dashboard', up }).replace('</body>', `${link}\n</body>`);
 }
 

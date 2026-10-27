@@ -88,6 +88,11 @@ locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scrip
 `docs/site-redesign.md` is the status file: the approved design canvas, the visual system (course covers in
 `assets/covers/`, display fonts at the end of `assets/fonts/fonts.css`) and which pages are done.
 
+## Course dashboards
+
+`docs/dashboard.md` is the status file: the five-question dashboard every course uses (design F, owner 2026-10-26),
+its files, the daily accuracy log `hub_daily_v1` and what was left out.
+
 ## Analytics
 
 `docs/analytics-plan.md` is the status file: the Umami proxy and bot filter, first-touch source, question tallies
