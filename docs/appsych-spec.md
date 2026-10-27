@@ -215,3 +215,6 @@ with one rubric line per point and full-credit samples.
 - Help line placement (owner approved disorder and treatment pages): author G put it on 5.3-5.5 notes and lesson
   summaries; author F also on 5.1 notes. Lessons have no field for it yet.
 - Replication and wording points per author are in `docs/appsych-reviews/self-*.md`; merge into needs-author.
+- Tool Studio on a phone: the sticky primary-action row (e.g. Stimulate, Run 20 trials) covers the scene switch
+  under it until the dock scrolls (neuron, sensation). Check whether other courses' trainers do the same; fix in the
+  shared file at launch.
