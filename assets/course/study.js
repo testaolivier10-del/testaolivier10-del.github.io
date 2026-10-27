@@ -170,7 +170,7 @@
     var wrap = document.createElement('div');
     wrap.className = 'r3 r3-sband';
     wrap.setAttribute('data-cover', key);
-    var crumb = document.querySelector('[data-crumb]');
+    var crumb = document.querySelector('[data-crumb]') || main.querySelector('nav.cx-crumb');
     wrap.innerHTML = '<section class="band short" aria-labelledby="r3-band-h"><div class="hwrap"><div>' +
       '<div class="r3-crumb"></div>' +
       '<p class="issue"><span class="r3-kick"></span> <i></i></p>' +
@@ -198,7 +198,7 @@
       panel.insertBefore(c, panel.firstChild);
     };
     placeLede();
-    main.classList.add('r3-under');
+    main.classList.add('r3-under', 'cx-study');
     /* NREMT's readiness card sits at the top of the rail (board R10-Practice-Setup);
        while it is locked it is the Premium card instead, which the board puts
        under the builder, so it moves there. */
