@@ -50,7 +50,7 @@
     {
       key: 'anp', short: 'A&P', name: 'Anatomy & Physiology', productName: 'Anatomy & Physiology',
       path: '/anatomy-physiology/', dir: 'anatomy-physiology', storagePrefix: 'anp_', rankLabel: 'A&P rank',
-      searchLabel: 'A&P', aliases: ['a&p', 'ap', 'anatomy-physiology'], paid: true, status: 'beta', order: 3,
+      searchLabel: 'A&P', aliases: ['a&p', 'ap', 'anatomy-physiology'], paid: true, status: 'live', order: 3,
     },
     {
       // The mark only as an adjective, with the ® (docs/apbio-spec.md,
@@ -58,14 +58,14 @@
       // "ap" stays A&P's alias (no "ap" in a course URL either).
       key: 'apbio', short: 'Biology', name: 'AP® Biology', productName: 'AP® Biology',
       path: '/bio/', dir: 'bio', storagePrefix: 'apbio_', rankLabel: 'Biology rank',
-      searchLabel: 'Biology', aliases: ['bio', 'biology'], paid: true, status: 'beta', order: 4,
+      searchLabel: 'Biology', aliases: ['bio', 'biology'], paid: true, status: 'live', order: 4,
     },
     {
       // As AP® Biology (docs/apchem-spec.md decision 2): the mark only in the
       // full names, never in a URL; the key travels as its folder, "chem".
       key: 'apchem', short: 'Chemistry', name: 'AP® Chemistry', productName: 'AP® Chemistry',
       path: '/chem/', dir: 'chem', storagePrefix: 'apchem_', rankLabel: 'Chemistry rank',
-      searchLabel: 'Chemistry', aliases: ['chem', 'chemistry'], paid: true, status: 'beta', order: 5,
+      searchLabel: 'Chemistry', aliases: ['chem', 'chemistry'], paid: true, status: 'live', order: 5,
     },
     {
       // As AP® Chemistry (docs/apphys-spec.md decision 2): the mark only in
@@ -74,7 +74,7 @@
       // since the launch (decision 11).
       key: 'apphys', short: 'Physics', name: 'AP® Physics 1', productName: 'AP® Physics 1',
       path: '/physics/', dir: 'physics', storagePrefix: 'apphys_', rankLabel: 'Physics rank',
-      searchLabel: 'Physics', aliases: ['physics', 'phys', 'physics-1'], paid: true, status: 'beta', order: 6,
+      searchLabel: 'Physics', aliases: ['physics', 'phys', 'physics-1'], paid: true, status: 'live', order: 6,
     },
     {
       // As AP® Physics 1 (docs/apcalc-spec.md decision 2): the mark only in
@@ -83,7 +83,7 @@
       // decision 6); 'beta' since the launch (decision 12).
       key: 'apcalc', short: 'Calculus', name: 'AP® Calculus AB', productName: 'AP® Calculus AB',
       path: '/calculus/', dir: 'calculus', storagePrefix: 'apcalc_', rankLabel: 'Calculus rank',
-      searchLabel: 'Calculus', aliases: ['calculus', 'calc', 'calculus-ab'], paid: true, status: 'beta', order: 7,
+      searchLabel: 'Calculus', aliases: ['calculus', 'calc', 'calculus-ab'], paid: true, status: 'live', order: 7,
     },
     {
       // As AP® Calculus AB (docs/apstat-spec.md decision 2): the mark only in
@@ -92,7 +92,7 @@
       // (docs/apstat-spec.md decision 15).
       key: 'apstat', short: 'Statistics', name: 'AP® Statistics', productName: 'AP® Statistics',
       path: '/statistics/', dir: 'statistics', storagePrefix: 'apstat_', rankLabel: 'Statistics rank',
-      searchLabel: 'Statistics', aliases: ['statistics', 'stats', 'stat'], paid: true, status: 'beta', order: 8,
+      searchLabel: 'Statistics', aliases: ['statistics', 'stats', 'stat'], paid: true, status: 'live', order: 8,
     },
     {
       // As AP® Statistics (docs/apenv-spec.md decision 2): the mark only in
@@ -101,7 +101,7 @@
       // the launch (docs/apenv-spec.md decision 12).
       key: 'apenv', short: 'Env Science', name: 'AP® Environmental Science', productName: 'AP® Environmental Science',
       path: '/environmental-science/', dir: 'environmental-science', storagePrefix: 'apenv_', rankLabel: 'Environmental Science rank',
-      searchLabel: 'Environmental Science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], paid: true, status: 'beta', order: 9,
+      searchLabel: 'Environmental Science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], paid: true, status: 'live', order: 9,
     },
   ];
 

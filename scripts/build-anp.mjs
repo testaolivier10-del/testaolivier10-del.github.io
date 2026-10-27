@@ -816,7 +816,7 @@ ${isTool ? `${toolBand({ key: 'anp', up: '../../', slug: entry.slug, title: entr
   crumbs: [{ name: 'LevlPrep', href: '../../index.html' }, { name: esc(COURSE_NAME), href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: esc(entry.name) }] })}\n` : ''}<main id="main" class="xshell anp-app">
   ${study || (HUB_PAGES.has(entry.slug) && !isTool) ? crumbNav(crumbItems, depth).replace('class="anp-crumb"', 'class="anp-crumb cx-crumb"') : crumbNav(crumbItems, depth)}
   ${study || (HUB_PAGES.has(entry.slug) && !isTool)
-    ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(study && hero ? hero.h1 : h1)}</h1><p class="lede">${hero ? hero.ledeHtml : esc(lede)}</p></header>`
+    ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(study && hero ? hero.h1 : h1)}</h1><p class="lede">${hero ? hero.ledeHtml : esc(lede)}</p></header>`
     : hero
     ? `<header class="hero anp-hero ${hero.cls}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(hero.h1)}</h1><p class="lede">${hero.ledeHtml}</p></header>`
     : `<header class="hero anp-hero${isTool ? ' anp-tool-hero' : ''}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${

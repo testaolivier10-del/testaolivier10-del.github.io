@@ -729,7 +729,7 @@ ${bodyOpen(` data-app="${a.slug}"`)}
   ${study || hub ? crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }]).replace('class="chem-crumb', 'class="cx-crumb chem-crumb')
     : crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }])}
   ${study || hub
-    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML} <span class="cx-beta">Beta</span></div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`
+    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`
     : `<header class="hero chem-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`}
   <div id="app" class="chem-app-mount${study ? ' cx-study' : ''}" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}${a.studio ? ' data-studio="1"' : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
     ? '<noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript>'
@@ -884,7 +884,7 @@ ${bodyOpen(' data-app="teachers"')}
 
   <section class="xsection" aria-labelledby="h-align">
     <h2 id="h-align">Alignment with the course framework</h2>
-    <p>The units and topics follow the order of the 2024 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. The course is in Beta: it has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
+    <p>The units and topics follow the order of the 2024 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. It has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
     ${units.map(unitTable).join('\n    ')}
     ${skills.length ? `<h3 class="chem-tc-skills">Skills</h3><p class="chem-small">Each math refresher sits right before the framework topic that first needs it.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>

@@ -98,7 +98,7 @@ const CARDS = [
      card is re-rendered by hand. */
   {
     out: 'bio/assets/og-image.png',
-    badge: 'Beta · Free notes',
+    badge: 'Free notes',
     brand: 'LevlPrep',
     title: 'Biology for the May exam, from scratch',
     sub: 'Free notes for every topic, data-heavy practice like the real exam, and the statistics skills, step by step.',
@@ -107,7 +107,7 @@ const CARDS = [
      counts (docs/apchem-spec.md decision 2). */
   {
     out: 'chem/assets/og-image.png',
-    badge: 'Beta · Free notes',
+    badge: 'Free notes',
     brand: 'LevlPrep',
     title: 'Chemistry for the May exam, one particle at a time',
     sub: 'Free notes for every topic, practice that checks units and significant figures, and justifications that earn the point.',
@@ -116,7 +116,7 @@ const CARDS = [
      (docs/apphys-spec.md decision 2). Render with ONLY=physics/assets/og-image.png. */
   {
     out: 'physics/assets/og-image.png',
-    badge: 'Beta · Free notes',
+    badge: 'Free notes',
     brand: 'LevlPrep',
     title: 'Physics 1 for the May exam, one force at a time',
     sub: 'Free notes for every topic, free-body diagrams graded force by force, and trainers that are also tests.',
@@ -125,7 +125,7 @@ const CARDS = [
      (docs/apcalc-spec.md decision 2). Render with ONLY=calculus/assets/og-image.png. */
   {
     out: 'calculus/assets/og-image.png',
-    badge: 'Beta · Free notes',
+    badge: 'Free notes',
     brand: 'LevlPrep',
     title: 'Calculus AB for the May exam, one idea at a time',
     sub: 'Free notes for every topic, answers you type graded by value, and calculator and no-calculator practice as the exam splits it.',
@@ -134,7 +134,7 @@ const CARDS = [
      (docs/apstat-spec.md decision 2). Render with ONLY=statistics/assets/og-image.png. */
   {
     out: 'statistics/assets/og-image.png',
-    badge: 'Beta · Free notes',
+    badge: 'Free notes',
     brand: 'LevlPrep',
     title: 'Statistics for the May 2027 exam, one idea at a time',
     sub: 'Free notes for every topic, simulators you can run, and conclusions checked part by part.',
@@ -144,7 +144,7 @@ const CARDS = [
      ONLY=environmental-science/assets/og-image.png. */
   {
     out: 'environmental-science/assets/og-image.png',
-    badge: 'Beta · Free notes',
+    badge: 'Free notes',
     brand: 'LevlPrep',
     title: 'Environmental Science for the May 2027 exam, one system at a time',
     sub: 'Free notes for every topic, every calculation drilled with its setup and units, and answers made specific enough to score.',

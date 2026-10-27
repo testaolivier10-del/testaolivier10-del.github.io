@@ -341,7 +341,8 @@ export function crumbNav(items) {
 
 /* Beta until an AP® Calculus AB teacher signs off (docs/apcalc-needs-author.md,
    teacher-review). calc-nav-ref: a label, not teaching. */
-export const BETA_PILL = '<span class="calc-beta calc-nav-ref">Beta</span>';
+/* The Beta label is gone (Olivier, 2026-10-26); the export stays so the pages that place it need no change. */
+export const BETA_PILL = '';
 
 /* "Report a problem" for a page, through the site dialog (assets/report-question.js). */
 export const reportButton = (pageId) => `<button type="button" class="report-btn" data-report-kind="page" data-report-course="${COURSE_KEY}" data-report-question="${esc(pageId)}">Report a problem</button>`;

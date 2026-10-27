@@ -19,7 +19,7 @@ export default function apstatBetaAndReport({ ROOT, fail, htmlFiles }) {
     const html = readFileSync(file, 'utf8');
     if (/<meta http-equiv="refresh"/i.test(html)) continue;
     if (!html.includes(BETA_NOTE)) fail(`${rel}: missing the Beta note ("${BETA_NOTE}")`);
-    if (!/class="stat-beta[^"]*"/.test(html)) fail(`${rel}: missing the Beta pill`);
+    // The Beta pill is gone (Olivier, 2026-10-26: "the label of beta should be removed"); the review note stays.
     if (!/class="report-btn"[^>]*data-report-course="apstat"/.test(html)) fail(`${rel}: no "Report a problem" button for the course (data-report-course="apstat")`);
     if (!/assets\/report-question\.js/.test(html)) fail(`${rel}: has a Report button but does not load assets/report-question.js`);
     const m = rel.match(/^calculus\/notes\/([^/]+)\.html$/);

@@ -183,7 +183,8 @@ export function crumbNav(items, depth) {
    items, so every page says so. Remove only after that review. */
 // anp-nav-ref: a label, not teaching, so the page check skips it ("Beta" next
 // to a title like "Cell cycle" read as "beta cell").
-export const BETA_PILL = '<span class="anp-beta anp-nav-ref">Beta</span>';
+/* The Beta label is gone (Olivier, 2026-10-26); the export stays so the pages that place it need no change. */
+export const BETA_PILL = '';
 export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&amp;P instructor.';
 
 export function footer(depth) {

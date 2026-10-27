@@ -154,7 +154,7 @@ export function r3PageMain(page, o) {
   const cls = (/class="xshell ?([^"]*)"/.exec(page.slice(a, te + 1)) || [, ''])[1];
   const p = heroParts(page.slice(te + 1, b));
   const band = bandShort({
-    kicker: `${o.kicker}${o.beta ? ' <span class="tag beta">Beta</span>' : ''}`, note: o.note || '',
+    kicker: `${o.kicker}`, note: o.note || '',
     h1: o.h1 || (o.plainH1 ? p.h1 : twoTone(p.h1)), hand: o.hand, lede: o.lede ?? p.lede, cta: o.cta, cta2: o.cta2,
     art: `<img src="${o.up}assets/covers/art/${o.key}.svg" alt="" width="640" height="400" decoding="async">`,
   }).replace('<p class="issue">', p.crumbs ? `<nav class="crumbs" aria-label="Breadcrumb">${p.crumbs}</nav>\n<p class="issue">` : '<p class="issue">')

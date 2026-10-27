@@ -324,6 +324,7 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
       flashcard decks (calculus had it too; `glossary-page.js`, `glossary-tip.js`, both `flashcards.js`); the
       formulas page printed raw `$...$` in a habit line; plain text read `z^*` as "z^(*)" (now "z*").
 16. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
+17. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
 
 ## 9. Open items for the owner
 

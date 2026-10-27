@@ -572,7 +572,7 @@ export function courseCard({ href, tint, cover, t1, t2, hand, name, tag, line })
         </a>`;
 }
 const published = (all, topics, rest) => (all ? `All ${fmt(topics)} published topics, ${rest}.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, ${rest}.`);
-const apCard = (o) => courseCard({ tag: 'Beta', t1: 'AP®', ...o });
+const apCard = (o) => courseCard({ tag: 'Free to start', t1: 'AP®', ...o });
 function hubBioCard() {
   return apCard({ href: 'bio/', tint: 'bio', cover: 'apbio', t2: 'Biology', hand: 'every unit, data questions', name: 'AP® Biology',
     line: published(BIO_ALL, N.apbioTopics, 'with data-heavy practice like the real exam') });
@@ -751,32 +751,32 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
     </a>`;
   let out = between(src, '<!-- nf-ochem:start -->', '<!-- nf-ochem:end -->', card, rel);
   const bio = `    <a class="card nf-card" href="/bio/"><img class="sp-cv" src="/assets/covers/apbio.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
-      <h2>AP® Biology (Beta)</h2>
+      <h2>AP® Biology</h2>
       <p>${BIO_ALL ? `All ${fmt(N.apbioTopics)} published topics` : `${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far`}, in the order of the 2025 course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
   const chem = `    <a class="card nf-card" href="/chem/"><img class="sp-cv" src="/assets/covers/apchem.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
-      <h2>AP® Chemistry (Beta)</h2>
+      <h2>AP® Chemistry</h2>
       <p>${CHEM_ALL ? `All ${fmt(N.apchemTopics)} published topics` : `${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far`}, in the order of the 2024 course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-chem:start -->', '<!-- nf-chem:end -->', CHEM ? chem : '', rel);
   const phys = `    <a class="card nf-card" href="/physics/"><img class="sp-cv" src="/assets/covers/apphys.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
-      <h2>AP® Physics 1 (Beta)</h2>
+      <h2>AP® Physics 1</h2>
       <p>${PHYS_ALL ? `All ${fmt(N.apphysTopics)} published topics` : `${fmt(N.apphysTopics)} published topic${N.apphysTopics === 1 ? '' : 's'} so far`}, in the order of the 2024-25 course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-phys:start -->', '<!-- nf-phys:end -->', PHYS ? phys : '', rel);
   const calc = `    <a class="card nf-card" href="/calculus/"><img class="sp-cv" src="/assets/covers/apcalc.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
-      <h2>AP® Calculus AB (Beta)</h2>
+      <h2>AP® Calculus AB</h2>
       <p>${CALC_ALL ? `All ${fmt(N.apcalcTopics)} published topics` : `${fmt(N.apcalcTopics)} published topic${N.apcalcTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-calc:start -->', '<!-- nf-calc:end -->', CALC ? calc : '', rel);
   const stat = `    <a class="card nf-card" href="/statistics/"><img class="sp-cv" src="/assets/covers/apstat.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
-      <h2>AP® Statistics (Beta)</h2>
+      <h2>AP® Statistics</h2>
       <p>${STAT_ALL ? `All ${fmt(N.apstatTopics)} published topics` : `${fmt(N.apstatTopics)} published topic${N.apstatTopics === 1 ? '' : 's'} so far`}, in the order of the revised course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-stat:start -->', '<!-- nf-stat:end -->', STAT ? stat : '', rel);
   const env = `    <a class="card nf-card" href="/environmental-science/"><img class="sp-cv" src="/assets/covers/apenv.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
-      <h2>AP® Environmental Science (Beta)</h2>
+      <h2>AP® Environmental Science</h2>
       <p>${ENV_ALL ? `All ${fmt(N.apenvTopics)} published topics` : `${fmt(N.apenvTopics)} published topic${N.apenvTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-env:start -->', '<!-- nf-env:end -->', ENV ? env : '', rel);

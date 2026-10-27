@@ -717,7 +717,7 @@
           return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
         },
         report: { course: 'apbio', id: 'tool:' + slug },
-        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Biology teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+        note: { label: 'Note.', html: 'This course has not yet been reviewed by an AP® Biology teacher. <a href="' + base() + '../sources.html">Sources</a>' }
       }
     });
     if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }

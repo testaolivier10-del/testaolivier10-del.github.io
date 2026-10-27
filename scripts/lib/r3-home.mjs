@@ -65,7 +65,7 @@ export function r3HomeMain(key, ctx) {
   const tools = ctx.tools || [];
 
   /* ---- cover band ---- */
-  const beta = d.beta ? ' <span class="tag beta">Beta</span>' : '';
+  const beta = ''; // the Beta label is gone (Olivier, 2026-10-26)
   const band = `<section class="band" aria-labelledby="r3Title"><div class="hwrap"><div>
 <p class="issue">${d.pill}${beta} <i></i> ${d.note}</p>
 <h1 class="mast" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
@@ -275,7 +275,7 @@ export function r3HomeMain(key, ctx) {
   qa.push([g.h, `${gp}<a href="${L.guide}">${g.cta}</a>.<ul>${g.items.map((x) => `<li>${x}</li>`).join('')}</ul>`]);
   qa.push([s.legend_title || 'What kinds of questions are there?', `<ul class="legend">${s.legend.map(([a, b]) => `<li><i>${a}</i>${b}</li>`).join('')}</ul>${s.note || ''}`]);
   if (d.strip_note) qa.push(['Are the exam figures current?', d.strip_note]);
-  if (d.beta) qa.push(['Is this course finished?', `It is in Beta. ${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
+  if (d.beta) qa.push(['Has this course been reviewed?', `${d.beta_note} <a href="${up}about.html#report">Report a problem</a>.`]);
   qa.push(['Is this course free?', d.trust[0] === 'note' ? d.trust[1] : `All notes are free forever. ${d.deal.free[0]}.`]);
   qa.push(['Is LevlPrep affiliated with the exam?', d.foot.join(' ')]);
   const faq = `<section class="home-faq" aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2><div class="hub-faq">${qa.map(([q, a]) => `<details class="faq-item"><summary>${q}</summary><div class="ans">${a}</div></details>`).join('')}</div></section>`;
