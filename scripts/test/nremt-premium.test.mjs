@@ -158,7 +158,8 @@ test('every NREMT page that gates loads premium.js after account.js, then the ga
   let checked = 0;
   for (const f of pages) {
     const html = readFileSync('nremt/' + f, 'utf8');
-    const usesGates = /data-premium-badge|NremtGates|data-runner=/.test(html);
+    // The dashboard's gates run in its own script (assets/dash-nremt.js, docs/dashboard.md).
+    const usesGates = /data-premium-badge|NremtGates|data-runner=|assets\/dash-nremt\.js/.test(html);
     if (!usesGates) continue;
     checked++;
     const tag = (src) => html.indexOf(`<script src="${src}" defer></script>`);
