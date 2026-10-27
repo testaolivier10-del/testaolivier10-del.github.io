@@ -245,6 +245,8 @@
     var s = window.LevlStudio.mount({
       title: o.title || (h1 ? h1.textContent : document.title), course: 'Anatomy & Physiology',
       back: BASE + 'tools.html', home: BASE, slug: 'anp-' + slug, host: app,
+      // the shell's quiz modes plus the pathway drills (Order, Missing step, Spot the error)
+      quiz: ['quiz', 'practice', 'test', 'drill', 'drills', 'predict', 'puzzle', 'chal', 'questions', 'practical', 'order', 'missing', 'error'],
       // the second tab and its dock button, named for what is in it
       detailsTitle: o.detailsTitle || ({ calculators: 'Formula & every step', graphs: 'Topic & options', 'word-roots': 'Options', 'feedback-loops': 'Topic & all loops',
         pathways: 'Topic & next pathway', 'lab-practical': 'Topic', predict: 'Level & scenarios' })[slug] || 'Topic',

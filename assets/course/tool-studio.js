@@ -107,6 +107,8 @@
      shown whole, and after Check / Next / Enter the current step's box (or
      the feedback) is scrolled above the sticky action row. s.reveal(el)
      does the same for any element.
+   - A quiz answered by taps (a card bank, choice buttons) marks that group
+     data-ls-answer: the fit and the reveal treat it like the current box.
    - In Explore the stage gives up height (down to 45% of the screen) so the dock fits
      down to its sticky action row on load; nothing is left under the row.
    - A clamped caption gets a "More" button. Coach bubbles sit below their
@@ -294,7 +296,7 @@
       if(modeBtns) modeBtns.forEach(function(b){ var on = b.getAttribute('data-v') === v; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       paintMode();
       if(capEl){ showCap(); showPills(); }
-      if(current === s){ fitN = 0; queueFit(30); queueTidy(true); }
+      if(current === s){ fitN = 0; fitRevUntil = Date.now() + 2500; queueFit(30); queueTidy(true); }
       return s;
     };
     // One listener, for whatever s.modes() set last.
@@ -623,9 +625,17 @@
     }
     /* s.reveal(el | [els]): scroll the page (or the dock, where it scrolls)
        just enough that the elements sit above the sticky action row. */
-    s.reveal = function(els){
+    var revAgain = [];
+    s.reveal = function(els, again){
       els = list(els).filter(shown);
       if(!els.length || big || sheetOpen && !wide()) return s;
+      /* A tool often redraws (a figure, a stage re-fit) just after the answer
+         that asked for this, which moves the page under the scroll: look
+         again twice as that settles and close the gap without animating. */
+      if(!again){
+        revAgain.forEach(clearTimeout);
+        revAgain = [450, 1000].map(function(t){ return setTimeout(function(){ s.reveal(els, true); }, t); });
+      }
       var box = null;
       els.forEach(function(el){ var b = el.getBoundingClientRect(); box = box ? { top: Math.min(box.top, b.top), bottom: Math.max(box.bottom, b.bottom) } : { top: b.top, bottom: b.bottom }; });
       var sc = scroller(els[0]), top = 8, bot = innerHeight - 8;
@@ -638,11 +648,22 @@
       var dy = 0;
       if(box.bottom > bot) dy = box.bottom - bot;
       if(box.top - dy < top) dy = box.top - top;
-      if(Math.abs(dy) < 2) return s;
-      var smooth = reduced() ? 'auto' : 'smooth';
+      if(Math.abs(dy) < (again ? 6 : 2)) return s;
+      var smooth = reduced() || again ? 'auto' : 'smooth';
       if(sc) sc.scrollBy({ top: dy, behavior: smooth }); else window.scrollBy({ top: dy, behavior: smooth });
       return s;
     };
+    /* data-ls-answer: a tool whose answers are taps (a bank of cards, a row of
+       choice buttons) marks that group; it counts as the current answer box.
+       Its first ~2 rows are what must show, so a tall bank stands in by a
+       child near its top. */
+    function answerEl(){
+      var a = Array.prototype.filter.call(root.querySelectorAll('.ls-dock [data-ls-answer]'), function(el){ return shown(el) && el.offsetHeight > 0; })[0];
+      if(!a) return null;
+      var top = a.getBoundingClientRect().top, kids = Array.prototype.filter.call(a.querySelectorAll('button, [role=button], label'), shown), pick = a;
+      kids.forEach(function(k){ var b = k.getBoundingClientRect(); if(b.bottom - top <= 120) pick = k; });
+      return pick;
+    }
     function fillable(el){ return el.matches('select') ? !el.value : !el.value || !String(el.value).trim(); }
     function revealNow(changed){
       var a = document.activeElement, t = [];
@@ -650,6 +671,7 @@
       var empty = boxes.filter(fillable)[0];
       if(changed && changed.length) t = changed;
       else if(empty) t = [empty];
+      else if(answerEl()) t = [answerEl()];
       else if(a && boxes.indexOf(a) >= 0) t = [a];
       if(t.length === 1 && t[0] !== empty && empty && Math.abs(empty.getBoundingClientRect().top - t[0].getBoundingClientRect().top) < 240) t.push(empty);
       if(t.length) s.reveal(t);
@@ -667,10 +689,15 @@
         });
       }, 90);
     }
+    // The live text as it was before the tool's own click handler ran (capture phase).
+    var liveBefore = null;
+    root.addEventListener('click', function(e){ liveBefore = isQuiz() && e.target.closest && e.target.closest('button, [role=button], input[type=submit]') ? liveText() : null; }, true);
     root.addEventListener('click', function(e){
       var b = e.target.closest('button, [role=button], input[type=submit]');
-      if(!b || !root.querySelector('.ls-main').contains(b) || b.closest('.ls-sheet, .ls-zbar, .ls-modes, .ls-cap')) return;
-      queueReveal(liveText());
+      // A Check the tool swaps out (for Next) while handling the click is no longer in the page: still reveal.
+      if(!b || b.isConnected && (!root.querySelector('.ls-main').contains(b) || b.closest('.ls-sheet, .ls-zbar, .ls-modes, .ls-cap'))) return;
+      queueReveal(liveBefore || liveText());
+      liveBefore = null;
     });
     root.addEventListener('keydown', function(e){
       if(e.key === 'Enter' && e.target.matches && e.target.matches('input, select')) queueReveal(liveText());
@@ -711,8 +738,13 @@
           var full = Math.max(300, Math.round(innerHeight * 0.62)), floor = quiz ? Math.min(240, Math.round(innerHeight * 0.3)) : Math.max(300, Math.round(innerHeight * 0.45));
           rows.forEach(function(r){ need = Math.max(need, naturalBottom(r) - lim); });
           if(quiz){
-            var inp = Array.prototype.filter.call(dockBody.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=range]), select, textarea'), shown)[0];
+            var inp = answerEl() || Array.prototype.filter.call(dockBody.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=range]):not([type=search]), select, textarea'), function(el){ return shown(el) && !el.closest('details:not([open])'); })[0];
             if(inp){
+              // A choice question: aim for its second option too (one option alone reads as the only one).
+              if(inp.type === 'radio' && inp.name){
+                var grp = Array.prototype.filter.call(dockBody.querySelectorAll('input[type=radio]'), function(r){ return r.name === inp.name && shown(r); });
+                if(grp[1]) inp = grp[1];
+              }
               inp = inp.closest('.bt-radio, label') || inp;
               var ah = 0; rows.forEach(function(r){ ah = Math.max(ah, r.getBoundingClientRect().height); });
               need = Math.max(need, inp.getBoundingClientRect().bottom + window.scrollY + ah + 12 - lim);
@@ -720,6 +752,21 @@
           }
           var want = Math.round(Math.min(full, Math.max(floor, cur - need)));
           if(want < full - 1) sh = want;
+        }
+        /* A long problem (or a stage that is all text): even the smallest stage
+           leaves the answer under the row, so just after load or a mode switch,
+           while the student has not scrolled, the page scrolls to show it. */
+        if(quiz && Date.now() < fitRevUntil){
+          clearTimeout(fitRevT);
+          fitRevT = setTimeout(function(){
+            if(window.scrollY > 4 || Date.now() > fitRevUntil) return;
+            var t = answerEl() || Array.prototype.filter.call(dockBody.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=range]):not([type=search]), select, textarea'), function(el){ return shown(el) && !el.closest('details:not([open])'); })[0];
+            if(!t) return;
+            if(t.type === 'radio' && t.name){ var g = Array.prototype.filter.call(dockBody.querySelectorAll('input[type=radio]'), function(r){ return r.name === t.name && shown(r); }); if(g[1]) t = g[1]; }
+            t = t.closest('.bt-radio, label') || t;
+            var line = innerHeight; actRows().forEach(function(r){ line = Math.min(line, r.getBoundingClientRect().top); });
+            if(t.getBoundingClientRect().bottom > line - 4) s.reveal(t, true);
+          }, 260);
         }
       }
       var moved = false;
@@ -731,7 +778,7 @@
       // The tool redraws for its new stage size (window resize and ls-stage, as Enlarge does).
       if(moved && fitN++ < 6) remeasure();
     }
-    var fitN = 0;
+    var fitN = 0, fitRevT = 0, fitRevUntil = Date.now() + 3500;
     function queueFit(d){ clearTimeout(fitT); fitT = setTimeout(function(){ requestAnimationFrame(fit); }, d || 60); }
     s.fit = function(){ fitN = 0; queueFit(0); return s; };
     if(PORTRAIT){ if(PORTRAIT.addEventListener) PORTRAIT.addEventListener('change', function(){ queueFit(); }); else if(PORTRAIT.addListener) PORTRAIT.addListener(function(){ queueFit(); }); }

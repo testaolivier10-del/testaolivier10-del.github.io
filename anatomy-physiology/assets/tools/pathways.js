@@ -811,7 +811,7 @@
     panel.innerHTML = '<p class="kt-first pw-task">' + (asList ? 'Put the steps in order, first at the top: drag a step or use its arrows. The map follows.' : 'Tap the steps in the order they happen. Each one lights up its place on the map.') + '</p>' +
       (p.cycle ? '<p class="anp-small pw-cyclenote">This pathway is a cycle: start with the step the scenario gives you.</p>' : '') +
       '<div class="pw-figslot"></div>' +
-      (asList ? '<ol class="anp-order pw-order"></ol>' : '<div class="pw-bank" role="group" aria-label="Steps to place"></div>') +
+      (asList ? '<ol class="anp-order pw-order"></ol>' : '<div class="pw-bank" data-ls-answer role="group" aria-label="Steps to place"></div>') +
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check"' + (asList ? '' : ' disabled') + '>Check order</button>' +
         (asList ? '' : '<button type="button" class="btn-outline pw-undo" disabled>Undo</button>') + '</div>' +
       '<div class="pw-hint" role="status" hidden></div>' +
@@ -991,7 +991,7 @@
       }).join('') + '</ol></details>' +
       '<div class="pw-hint" role="status" hidden></div>' +
       '<p class="pw-task pw-ask"><b>Which step fills gap ' + (at + 1) + '?</b></p>' +
-      '<div class="anp-opt-btns pw-choices" role="group" aria-label="Choices for the missing step">' + choices.map(function(c, k){
+      '<div class="anp-opt-btns pw-choices" data-ls-answer role="group" aria-label="Choices for the missing step">' + choices.map(function(c, k){
         return '<button type="button" class="anp-opt" data-k="' + k + '">' + html(c.text) + '</button>';
       }).join('') + '</div>' +
       '<div class="pw-actions"></div><div class="pw-result" aria-live="polite"></div>';

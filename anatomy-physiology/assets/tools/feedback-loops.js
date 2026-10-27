@@ -195,7 +195,7 @@
                 '<span class="fl-sic" aria-hidden="true"><svg viewBox="0 0 24 24" class="fl-ic-g">' + TICON[k] + '</svg></span><span class="fl-slot-body"><span class="fl-slot-l"><span class="fl-slot-n" aria-hidden="true">' + (i + 1) + '</span>' + esc(LABELS[k]) + '</span><span class="fl-slot-v"></span></span></button>' +
                 '<div class="fl-slot-fb" hidden></div></li>';
             }).join('') + '</ol>' +
-            '<div class="fl-poolwrap"><div class="fl-pool-top"><h4 class="fl-pool-h" id="' + p + '-pool">Cards</h4><button type="button" class="link-quiet fl-full" aria-pressed="false">Show full sentences</button></div><div class="fl-pool" role="group" aria-labelledby="' + p + '-pool"></div></div>' +
+            '<div class="fl-poolwrap"><div class="fl-pool-top"><h4 class="fl-pool-h" id="' + p + '-pool">Cards</h4><button type="button" class="link-quiet fl-full" aria-pressed="false">Show full sentences</button></div><div class="fl-pool" data-ls-answer role="group" aria-labelledby="' + p + '-pool"></div></div>' +
           '</div>' +
           '<div class="fl-actions"><button type="button" class="btn-press sm fl-check" disabled>Check the loop</button><button type="button" class="btn-outline fl-reset">Clear all</button></div>' +
           '<div class="fl-hint" role="status" hidden></div>' +

@@ -407,6 +407,8 @@ html.ls-lock{overflow:hidden;}
      stage holds only what it shows. */
   .ls-root.ls-quiz .ls-caption{display:block;-webkit-line-clamp:none;cursor:default;}
   .ls-root.ls-quiz .ls-capmore{display:none;}
+  /* With a figure the fit (JS) may take a quiz stage under 300px so the answer fits. */
+  .ls-root.ls-quiz .ls-stage:not(.is-big){min-height:0;}
   .ls-stage.ls-q-text:not(.is-big){height:auto;min-height:0;max-height:62svh;flex:none;}
   .ls-stage.ls-q-text .ls-stage-body{flex:1 1 auto;padding:8px 12px 12px;}
   .ls-stage.ls-q-text .ls-enl{display:none;}
