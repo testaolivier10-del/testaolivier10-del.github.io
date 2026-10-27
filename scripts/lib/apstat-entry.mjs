@@ -20,6 +20,7 @@
    the generator (ctx) so the pages share its head, crumbs, footer and tail. */
 import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apstat-exams.mjs';
 import { renderMath, prepareBank, concludeSlots } from './apstat-build.mjs';
+import { r3Inner } from './r3-inner.mjs';
 
 export const SAMPLE_SIZE = 12;
 
@@ -223,7 +224,7 @@ ${tail({ depth, section: 'exams', extra: ['stat-questions.js', 'pages/sample.js'
 </body>
 </html>
 `;
-    out[path] = head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body;
+    out[path] = r3Inner(head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body, { key: 'apstat', slug: 'unit-test', up: '../../' });
   }
 
   /* ---------------------------------------------------------- exam data */

@@ -73,14 +73,26 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../assets/course/r3.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
 </head>
 <body class="chem" data-app="dashboard">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell chem-app">
-  <nav class="cx-crumb chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav>
-  <header class="page-head db-head"><div class="eyebrow">AP&reg; Chemistry <span class="cx-beta">Beta</span> <span>&middot; Dashboard</span></div><h1>Where you <span>stand today.</span></h1><p class="db-hand">worked out in your browser from every answer you give</p><p class="lede">Your chemistry mastery by unit, topic and science practice, with every miss linked to the lesson that teaches it.</p></header>
+<main id="main" class="r3 r3-inner r3-dashboard" data-cover="apchem">
+<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav>
+<p class="issue">AP&reg; Chemistry &middot; Dashboard <span class="tag beta">Beta</span> <i></i></p>
+<h1 class="deck" id="r3Title">Where you <span>stand today.</span></h1>
+<p class="hand">worked out in your browser from every answer you give</p>
+<p class="lede">Your chemistry mastery by unit, topic and science practice, with every miss linked to the lesson that teaches it.</p>
+<div class="hero-ctas"><a class="btn-chan" href="practice.html">Continue practicing</a></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/apchem.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<div class="xshell r3-body chem-app" id="r3Body">
+  
+  
   <div id="app" class="chem-app-mount" data-slug="dashboard"><noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript></div>
+</div>
 </main>
 <footer class="chem-foot xshell">
   <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="page:dashboard">Report a problem</button></span></p>
@@ -104,5 +116,6 @@
 <script src="assets/chem-questions.js" defer></script>
 <script src="assets/pages/dashboard.js" defer></script>
 <link rel="stylesheet" href="../assets/course/dashboard.css">
+<script src="../assets/course/r3-db.js" defer></script>
 </body>
 </html>

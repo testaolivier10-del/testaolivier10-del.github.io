@@ -87,6 +87,8 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../assets/course/r3.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
 </head>
 <body>
   <header id="site-header"></header>
@@ -95,45 +97,47 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav></div>
 <!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="xshell">
-
-  <header class="page-head db-head">
-    <div class="eyebrow">NREMT-EMT <span>&middot; Dashboard</span></div>
-    <h1>Where you <span>stand today.</span></h1>
-    <p class="db-hand">worked out in your browser from every answer you give</p>
-    <p id="headSub">Everything this browser knows about how you&rsquo;re doing, in six topic areas and the five exam domains.</p>
-  </header>
-  <div data-levl-cross="nremt"></div>
-  <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'nremt'); }); });</script>
+<main id="main" class="r3 r3-inner r3-dashboard" data-cover="nremt">
+<!-- r3-band:start -->
+<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav>
+<p class="issue">NREMT-EMT &middot; Dashboard <i></i></p>
+<h1 class="deck" id="r3Title">Where you <span>stand today.</span></h1>
+<p class="hand">worked out in your browser from every answer you give</p>
+<p class="lede" id="headSub">Everything this browser knows about how you&rsquo;re doing, in six topic areas and the five exam domains.</p>
+<div class="hero-ctas"><a class="btn-chan" href="practice.html">Continue practicing</a></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/nremt.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<!-- r3-band:end -->
+<div class="xshell r3-body" id="r3Body">
 
   <!-- The shared dashboard (assets/course/hub.css, LevlHub): the script below
-       fills these slots from the practice-engine records. -->
-  <div class="cx-db" id="nrDash">
+       fills these slots from the practice-engine records. Round 3 (board R10-Progress)
+       groups them under kickers: what to do next, the numbers, where you are weak,
+       your exams, the review queue, badges and certificates. -->
+  <div class="cx-db r3-db" id="nrDash">
+    <div class="r3-db-lead"><div id="nextBox"></div><div id="examDateCard"></div></div>
     <div id="statCards"></div>
-    <div id="nextBox"></div>
-    <div id="examDateCard"></div>
-    <div class="cx-db-grid">
-      <div class="cx-db-col">
-        <div id="topicBox"></div>
-        <div id="domainBox"></div>
-        <div id="masteryBox"></div>
-        <div id="activityBox"></div>
-        <div id="historyBox"></div>
-      </div>
-      <div class="cx-db-col">
-        <div id="levelBox"></div>
-        <div id="streakBox"></div>
-        <div id="badgeGrid"></div>
-        <div id="readinessBox"></div>
-        <div id="premiumBox"></div>
-      </div>
-    </div>
+    <div data-levl-cross="nremt"></div>
+    <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'nremt'); }); });</script>
+
+    <section class="r3-db-sec" aria-labelledby="r3dbWeak"><p class="kicker" id="r3dbWeak">Where you are weak <i></i></p>
+      <div class="r3-db-two"><div id="topicBox"></div><div class="r3-db-side"><div id="domainBox"></div><div id="readinessBox"></div></div></div></section>
+    <section class="r3-db-sec" aria-labelledby="r3dbExams"><p class="kicker" id="r3dbExams">Your exams <i></i></p>
+      <div class="r3-db-two"><div id="historyBox"></div><div id="activityBox"></div></div></section>
+    <section class="r3-db-sec" aria-labelledby="r3dbQueue"><p class="kicker" id="r3dbQueue">Review queue <i></i></p>
+      <div class="r3-db-two"><div id="masteryBox"></div><div class="r3-db-side"><div id="levelBox"></div><div id="streakBox"></div></div></div></section>
+    <section class="r3-db-sec" aria-labelledby="r3dbBadges"><p class="kicker" id="r3dbBadges">Badges and certificates <i></i></p>
+      <div class="r3-db-two"><div id="badgeGrid"></div><div>
+        <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->
+        <div id="levlMilestones"></div>
+        <script>document.addEventListener('DOMContentLoaded', function(){ if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'nremt'); }); });</script>
+      </div></div></section>
+    <div id="premiumBox" class="r3-db-premium"></div>
   </div>
 
-  <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->
-  <div id="levlMilestones"></div>
-  <script>document.addEventListener('DOMContentLoaded', function(){ if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'nremt'); }); });</script>
-
+</div>
+</main>
+<div class="xshell r3-foot">
   <footer>
     <p>Computed from data in your browser only. Clearing browser data resets it.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>

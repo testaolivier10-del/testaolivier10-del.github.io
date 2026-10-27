@@ -73,14 +73,31 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../assets/course/r3.css">
+<link rel="stylesheet" href="../assets/course/r3-inner.css">
 </head>
 <body class="stat" data-app="exams">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell stat-app">
-  <nav class="cx-crumb stat-crumb stat-nav-ref" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav>
-  <header class="page-head"><div class="eyebrow">AP&reg; Statistics <span class="cx-beta">Beta</span></div><h1>Exams</h1><p class="lede">Timed statistics unit tests and full practice exams in the May 2027 format: 42 multiple-choice questions, then 4 free-response questions.</p></header>
+<main id="main" class="r3 r3-inner r3-exams" data-cover="apstat">
+<section class="band short" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Statistics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav>
+<p class="issue">AP&reg; Statistics &middot; Exams <span class="tag beta">Beta</span> <i></i></p>
+<h1 class="deck" id="r3Title">Exams <span>the full run.</span></h1>
+<p class="hand">the real format, on the real clock</p>
+<p class="lede">Timed statistics unit tests and full practice exams in the May 2027 format: 42 multiple-choice questions, then 4 free-response questions.</p>
+<div class="hero-ctas"><a class="btn-chan" href="#r3Body" data-r3-start>Start the practice exam</a></div>
+</div><div class="art" aria-hidden="true"><img src="../assets/covers/art/apstat.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+<div class="xshell r3-body stat-app" id="r3Body">
+  
+  
   <div id="app" class="stat-app-mount cx-study" data-slug="exams" data-premium="exams"><noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript></div>
+
+<section class="r3-units" aria-labelledby="r3UnitsH">
+<p class="kicker">Free unit tests <i></i></p>
+<div class="ruled-h"><h2 id="r3UnitsH">One test <span>per unit</span></h2><p>Each one free, exam-style, with sets that share a table, graph or experiment.</p></div>
+<div class="r3-unit-grid"><a class="ccard r3-unit" href="unit-tests/unit-1.html"><span class="cmeta"><span class="cname">Unit 1</span><span class="tag free">Free</span></span><span class="cdesc">Exploring One-Variable Data and Collecting Data &middot; 20 to 30% of the exam. Exam style, free, with an explanation for every option.</span></a><a class="ccard r3-unit" href="unit-tests/unit-2.html"><span class="cmeta"><span class="cname">Unit 2</span><span class="tag free">Free</span></span><span class="cdesc">Probability, Random Variables, and Probability Distributions &middot; 15 to 25% of the exam. Exam style, free, with an explanation for every option.</span></a><a class="ccard r3-unit" href="unit-tests/unit-3.html"><span class="cmeta"><span class="cname">Unit 3</span><span class="tag free">Free</span></span><span class="cdesc">Inference for Categorical Data: Proportions &middot; 15 to 25% of the exam. Exam style, free, with an explanation for every option.</span></a><a class="ccard r3-unit" href="unit-tests/unit-4.html"><span class="cmeta"><span class="cname">Unit 4</span><span class="tag free">Free</span></span><span class="cdesc">Inference for Quantitative Data: Means &middot; 10 to 20% of the exam. Exam style, free, with an explanation for every option.</span></a><a class="ccard r3-unit" href="unit-tests/unit-5.html"><span class="cmeta"><span class="cname">Unit 5</span><span class="tag free">Free</span></span><span class="cdesc">Regression Analysis &middot; 10 to 20% of the exam. Exam style, free, with an explanation for every option.</span></a></div>
+</section></div>
 </main>
 <footer class="stat-foot xshell">
   <p class="stat-accuracy-note"><span class="stat-beta stat-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Statistics teacher. It follows the published course framework and open textbooks, listed on the <a href="../sources.html">Sources</a> page. Spot a mistake? <span class="stat-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apstat" data-report-question="page:exams">Report a problem</button></span></p>
@@ -103,5 +120,6 @@
 <script src="assets/stat-grade.js" defer></script>
 <script src="assets/stat-questions.js" defer></script>
 <script src="assets/pages/exams.js" defer></script>
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-r3-start]');if(!a)return;var b=document.querySelector('#r3Body #startBtn,#r3Body .cx-start button,#r3Body [data-start]');if(b&&!b.disabled){e.preventDefault();b.click();}});</script>
 </body>
 </html>

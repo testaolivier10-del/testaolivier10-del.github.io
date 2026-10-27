@@ -23,6 +23,7 @@
 import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apenv-exams.mjs';
 import { renderMath, prepareBank, specificSlots } from './apenv-build.mjs';
 import { Calc } from './apenv-mathlib.mjs';
+import { r3Inner } from './r3-inner.mjs';
 
 export const SAMPLE_SIZE = 12;
 
@@ -286,7 +287,7 @@ ${tail({ depth, section: 'exams', extra: ['env-questions.js', 'pages/sample.js']
 </body>
 </html>
 `;
-    out[path] = head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body;
+    out[path] = r3Inner(head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body, { key: 'apenv', slug: 'unit-test', up: '../../' });
   }
 
   /* ---------------------------------------------------------- exam data */

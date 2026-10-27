@@ -190,6 +190,10 @@ jobs:
       # scripts/build-course-homes.mjs (question counts per domain, prices).
       - name: the NREMT and ochem course home blocks are current
         run: node scripts/build-course-homes.mjs --check
+      # The hand-written exams, progress and exam day pages carry the round 3
+      # cover band written by scripts/build-r3-inner.mjs.
+      - name: the round 3 bands on the hand-written inner pages are current
+        run: node scripts/build-r3-inner.mjs --check
       # A lesson's title is its topic's name and its chapter's name, both of
       # which live in curriculum.js — so it is generated, not retyped. Retyped,
       # it drifted twice: 121 lessons shipped the same title as their notes

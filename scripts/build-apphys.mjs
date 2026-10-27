@@ -45,7 +45,7 @@ import {
 } from './lib/apphys-build.mjs';
 import { entryPages } from './lib/apphys-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
-import { dashboardPage } from './lib/dashboard-page.mjs';
+import { dashboardPage, examsPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -726,9 +726,10 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
 `;
     const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
     // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
-    if (a.slug === 'dashboard') return dashboardPage(page);
-    return study ? page.replace('<link rel="stylesheet" href="assets/phys.css">',
+    if (a.slug === 'dashboard') return dashboardPage(page, 'apphys');
+    const out = study ? page.replace('<link rel="stylesheet" href="assets/phys.css">',
       '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/phys.css">') : page;
+    return a.slug === 'exams' ? examsPage(out, 'apphys', map) : out;
   }
 
   /* ------------------------------------------------------------- FRQs */

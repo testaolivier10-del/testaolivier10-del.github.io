@@ -177,7 +177,10 @@ const SHELL_BUDGETS = [
   // 22 -> 25.5 (2026-10-13): Tool Studio phone layout and the Enlarge view (docs/tools-calm.md, "Phones").
   // 25.5 -> 26 (polish 2026-10-17): flags.js (D1) and the hint that sits inside a big answer box
   // instead of over the question text (justification trainers). Measured 25.5 KB.
-  ['assets/course', 26],
+  // 26 -> 30 (redesign round 3, step B3, docs/site-redesign.md): the inner pages (exams, progress, exam day,
+  // unit tests) now load the round 3 system, r3.css, and their own frame, r3-inner.css and r3-db.js, so the
+  // shell bucket counts them. Measured 29.3 KB.
+  ['assets/course', 30],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
