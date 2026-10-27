@@ -719,7 +719,7 @@
     rows.forEach(function(x){ if(!x.q.own) Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
     if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
-      setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: total - right }); }, 2600);
+      setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length }); }, 2600);
     }
     var fg = 0, fo = 0; (run.frqScores || []).forEach(function(s){ fg += s.got; fo += s.of; });
     // No composite and no band (spec decision 6): the two sections are shown apart.
@@ -762,7 +762,7 @@
       (total ? '<div class="psy-pr-score"><span class="psy-pr-score-big">' + right + '<small>/' + total + '</small></span><span><b>Multiple choice: ' + pctOf(right, total) + '%</b><span class="psy-small">' + esc(run.label) +
         (run.timeUp1 ? ' · time ran out in Section I' : '') + '</span></span></div>' : '') +
       (fo ? '<div class="psy-pr-score psy-ex-fsum"><span class="psy-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="psy-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
-      (k === 'full' ? '<p class="psy-small">No AP® score is estimated: May 2027 is the first exam in this format, so there is no score data to calibrate one. Use the section percentages and the breakdowns below.</p>' : '') +
+      (k === 'full' ? '<p class="psy-small">No AP® score is estimated: a practice form is not the real exam, and the College Board does not publish how raw points turn into a 1-5 score. Use the section percentages and the breakdowns below.</p>' : '') +
       (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
       (weak.length ? '<h2>Study next</h2><ul class="psy-pr-next-list">' + weak.map(function(x){
         return '<li><div><b>' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</b><span class="psy-small">' + x.c + ' of ' + x.n + ' right</span></div><a class="btn-outline" href="' + BASE + 'lessons/' + x.key + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + x.key + '.html">Notes</a></li>';

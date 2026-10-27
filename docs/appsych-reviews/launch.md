@@ -42,3 +42,7 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
 - Checked, same in both courses, no change: dashboard design F (flagged count there by design,
   polish 2026-10-17 D1), exams timed Section I with the no-calculator note, flashcards deck panel, tools list
   (1440 dark), FRQ rubric hints.
+- Exam results: "No AP® score is estimated: May 2027 is the first exam in this format" was wrong for psychology
+  (the format was first examined in May 2025): now says a practice form is not the real exam and the raw-to-1-5
+  conversion is unpublished. The save prompt said "74 missed questions queued" while the page said 54 (it
+  counted exam-only questions, which never enter the queue): six AP® courses now count queued misses only.
