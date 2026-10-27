@@ -1,3 +1,7 @@
+/* Round 3 (docs/site-redesign.md): the shared system (r3.css: the short cover band) and this step's
+   layout for Practice, Review and Flashcards (r3-study.css), on every study page of every course. */
+@import url("r3.css");
+@import url("r3-study.css");
 /* Study pages: Practice, Review, Flashcards and Exams in every course
    (docs/course-shell.md, W-C). Load after theme.css and course/base.css,
    before the course's own stylesheet.
