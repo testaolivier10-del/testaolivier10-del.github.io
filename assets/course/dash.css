@@ -145,7 +145,8 @@
 /* the folded detail under each question */
 .d5-more{margin-top:18px;border-top:1px solid var(--line-soft,var(--line));}
 .d5-card > .d5-more:first-of-type{margin-top:22px;}
-.d5-more > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:14px 0 2px;font-weight:800;font-size:14.5px;color:var(--accent-text,var(--accent));min-height:28px;}
+.d5-more > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:8px 0 0;font-weight:800;font-size:14.5px;color:var(--accent-text,var(--accent));min-height:44px;box-sizing:border-box;}
+.d5-more-body h3.cx-row-name,.d5-more-body .cx-panel > h3,.d5-more-body .cx-level h3{font:900 18px/1.25 var(--display,var(--font-display));letter-spacing:-.01em;margin:0 0 6px;}
 .d5-more > summary::-webkit-details-marker{display:none;}
 .d5-more > summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);margin-left:2px;transition:transform .15s;}
 .d5-more[open] > summary::after{transform:rotate(225deg) translateY(-2px);}

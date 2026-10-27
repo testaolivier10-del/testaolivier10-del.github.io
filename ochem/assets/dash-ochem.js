@@ -30,11 +30,16 @@
   var lessonTopics = [];
   C.MODULES.forEach(function(m){ m.topics.forEach(function(t){ if(C.hasLesson(t)) lessonTopics.push(t); }); });
 
-  // Chapters: their lesson topics' concepts, how many are Solid, and the weakest lesson topic to practise.
+  // Chapters: the concepts each one teaches, how many are Solid, and the weakest lesson topic to practise. Concepts
+  // are shared between topics, so each counts once, in the chapter of the lesson that teaches it
+  // (OchemConcepts.lessonTopicFor), and the chapters' gaps add up to the course's.
+  var chapterOf = {};
+  C.MODULES.forEach(function(m){ m.topics.forEach(function(t){ chapterOf[t.id] = m.id; }); });
+  var owned = {};
+  profiles.forEach(function(p){ var lt = CN.lessonTopicFor(p.id), ch = lt && chapterOf[lt.id]; if(ch) (owned[ch] = owned[ch] || []).push(p); });
   var chapters = C.MODULES.map(function(m, i){
     var ts = m.topics.filter(function(t){ return C.hasLesson(t); });
-    var ids = {}; ts.forEach(function(t){ CN.byTopic(t.id).forEach(function(id){ ids[id] = 1; }); });
-    var cs = Object.keys(ids).map(function(id){ return byId[id]; }).filter(Boolean);
+    var cs = owned[m.id] || [];
     var r = M.topicsStrength(ts.map(function(t){ return t.id; }));
     var started = ts.filter(function(t){ return M.topicStrength(t.id).strength !== null; });
     var weakT = started.slice().sort(function(a, b){ return M.topicStrength(a.id).strength - M.topicStrength(b.id).strength; })[0] || ts[0];
@@ -77,7 +82,9 @@
   }
 
   // ---------------------------------------------------------------- 2 progress
+  var ov = M.overall();
   var progress = { weeks: weeks, exams: hist.map(function(e){ return { t: e.ts, pct: Math.round(e.right / e.total * 100) }; }), examWord: 'exams', firstExamWord: 'first exam',
+    sub: ov ? 'Overall strength across the ' + plural(ov.touched, 'concept') + ' you have tried: ' + pct(ov.value) + '%.' : '',
     examDate: examT ? { t: examT } : null, allHref: hist.length ? 'exams.html' : null, allText: 'Exams',
     empty: isNew ? 'Your line starts with your first answers.' : 'Your weekly line starts now: each week with 5 or more answers adds a point.' };
 
@@ -104,7 +111,7 @@
   var crows = cstarted.slice().sort(function(a, b){ return b.notSolid - a.notSolid; }).concat(cnot.slice(0, 1)).map(function(c){
     if(!c.started) return { icon: String(c.n), name: c.n + '. ' + c.title, sub: 'next in order, not started &middot; ' + plural(c.concepts, 'concept'), bar: 0, cost: '', href: (c.topics[0] && c.topics[0].href) || 'learn.html', cta: 'Start' };
     return { icon: String(c.n), warm: c.strength < 0.45, name: c.n + '. ' + c.title, sub: pct(c.strength) + '% strength &middot; ' + plural(c.concepts, 'concept'), bar: c.notSolid / maxNS,
-      cost: c.notSolid ? plural(c.notSolid, 'concept') + ' not yet Solid' : 'all Solid', href: c.practice, cta: 'Practice' };
+      cost: !c.concepts ? 'its concepts are taught in other chapters' : c.notSolid ? plural(c.notSolid, 'concept') + ' not yet Solid' : 'all Solid', href: c.practice, cta: 'Practice' };
   });
   var weakList = M.weakest(8, 2);
   var conceptRows = weakList.map(function(p){
@@ -116,11 +123,14 @@
     views: [{ label: 'Chapters', rows: cstarted.length ? crows : [], foot: cstarted.length && cnot.length > 1 ? plural(cnot.length - 1, 'more chapter') + ' not started yet. <a href="learn.html">See them all in the textbook</a>' : '', empty: 'Answer a few questions and your chapters line up here, the most expensive first.' },
       { label: 'Weakest concepts', rows: conceptRows, empty: 'Concepts you have tried twice or more show up here, weakest first.' }],
     more: [
-      { label: 'Benched concepts and gaps underneath', html: '<div id="leechAlerts"></div><div id="dependencyAlerts"></div><p class="cx-emptynote" id="d5OcNoGaps" hidden>Nothing benched, and no gap found underneath a weak concept.</p>' },
       { label: 'Weakest concepts, in detail', html: '<div id="weakConcepts"></div>' },
-      { label: 'Mastery by chapter and topic', html: '<div id="moduleStats"></div>' },
-      { label: 'By concept family', html: '<div id="familyStats"></div>' }
+      { label: 'Mastery by chapter and topic', html: '<div id="moduleStats"></div>' }
     ] };
+  // Gap detection and families are Premium: open, they get drawers; locked, their slots stay for the lock to hide
+  // (ochem-premium.js) and the Premium drawer below says what they are.
+  var premiumSlots = '<div id="leechAlerts"></div><div id="dependencyAlerts"></div><p class="cx-emptynote" id="d5OcNoGaps" hidden>Nothing benched, and no gap found underneath a weak concept.</p>';
+  if(!locked) focus.more.unshift({ label: 'Benched concepts and gaps underneath', html: premiumSlots });
+  if(!locked) focus.more.push({ label: 'By concept family', html: '<div id="familyStats"></div>' });
 
   // ---------------------------------------------------------------- 5 record
   var ICON = { 'First session': 'check', 'Pushed the arrows': 'up', 'Daily Rounds': 'flame', '7 days of Rounds': 'flame', 'Flawless': 'star', '10 concepts solid': 'stack', '10 concepts mastered': 'stack', 'Nothing overdue': 'clock', 'Read the course': 'book' };
@@ -142,7 +152,7 @@
       { label: 'Milestones and certificates', html: '<div id="levlMilestones"></div>' }
     ] };
   // What Premium adds here, drawn by ochem-premium.js after this slot when locked.
-  focus.more.push({ label: locked ? 'Gap detection and recommendations (Premium)' : 'Suggestions from the gap detector', html: '<div id="recRow"></div><div id="ocPremium"></div>', open: false });
+  focus.more.push({ label: locked ? 'Gap detection, concept families and recommendations (Premium)' : 'Suggestions from the gap detector', html: (locked ? '<div hidden>' + premiumSlots + '<div id="familyStats"></div></div>' : '') + '<div id="recRow"></div><div id="ocPremium"></div>', open: false });
 
   var status = isNew ? 'start anywhere, this page fills in as you answer' : coverage + '% of the concepts at Solid' + (rising ? ', and climbing' : '');
   D.render(root, { now: now, progress: progress, ready: ready, focus: focus, record: record,

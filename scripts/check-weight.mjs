@@ -180,7 +180,7 @@ const SHELL_BUDGETS = [
   // 25.5 -> 26 (polish 2026-10-17): flags.js (D1) and the hint that sits inside a big answer box
   // instead of over the question text (justification trainers). Measured 25.5 KB.
   // 26 -> 35 (redesign round 3, docs/site-redesign.md): r3.css, the shared round 3 system (course homes, B1), and
-  // r3-inner.css and r3-db.js (exams, progress, exam day, unit tests, B3), r3-tools.css (tools hubs, tool page bands, free-response, cram and teachers pages, B5). Each loads only on the
+  // r3-inner.css and r3-db.js (exams, progress, exam day, unit tests, B3; r3-db.js retired 2026-10-27 with the five-question dashboard), r3-tools.css (tools hubs, tool page bands, free-response, cram and teachers pages, B5). Each loads only on the
   // round 3 pages that use it. Measured 34.5 KB with all five steps combined.
   /* 35 -> 36 for the fixes after round 3 went live: tap-to-open questions, phone card stacking, the textbook
      Contents panel and the progress page column fit. Measured 35.2 KB. */

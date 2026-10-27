@@ -5,8 +5,8 @@
 
    These courses measure mastery (assets/course/hub.js tiers: Strong is 0.6), not exam accuracy, so the readiness
    question is answered with coverage: the share of the exam (each unit's weight, the middle of its College Board
-   range, spread over its topics) or of the course (every built topic counting once) that sits in topics at Strong or
-   better. Only topics actually at Strong count. Nothing is invented: every number on the page is that sum, or the
+   range, spread over its topics; units outside the exam weigh nothing here) or of the course (every built topic
+   counting once) that sits in topics at Strong or better. Only topics actually at Strong count. Nothing is invented: every number on the page is that sum, or the
    course core's own mastery and review readings.
 
    cfg: { key, name (html), A (core), CU (curriculum), base, root,
@@ -46,7 +46,9 @@
       var ts = built.filter(function(t){ return (cfg.group === 'unit' ? t.unit : t.chapter) === g.id; });
       if(!ts.length) return null;
       var m = cfg.groupMastery(g.id);
-      var w = g.weight ? (g.weight[0] + g.weight[1]) / 2 : ts.length;
+      // A unit's exam weight is the middle of its College Board range; units outside the exam (skills units) weigh
+      // nothing toward the exam numbers but still list with their topics. A&P chapters weigh their topic count.
+      var w = g.weight ? (g.weight[0] + g.weight[1]) / 2 : cfg.group === 'unit' ? 0 : ts.length;
       // The share of the group's topics actually at Strong: a unit's exam weight is spread over its topics.
       var got = ts.filter(function(t){ return topicM[t.id].value >= STRONG; }).length / ts.length;
       return { id: g.id, n: g.n, icon: g.icon, label: g.label, short: g.short || g.label, weight: g.weight, w: w, m: m.value || 0, answered: m.answered || 0, topics: ts, got: got, cost: w * (1 - got),
@@ -106,7 +108,7 @@
     // order, so an untouched unit at the end of the year is not the first thing to point at.
     function bringText(g){ return 'Bring ' + (cfg.group === 'chapter' ? 'chapter ' + g.n + ', ' + esc(g.short) + ',' : esc(g.short)) + ' to Strong'; }
     var under = groups.filter(function(g){ return g.answered && g.got < 1; }).sort(function(a, b){ return b.cost - a.cost; }).slice(0, 2);
-    var nextGroup = groups.filter(function(g){ return !g.answered; })[0];
+    var nextGroup = groups.filter(function(g){ return !g.answered && g.w > 0; })[0];
     under.concat(nextGroup ? [nextGroup] : []).forEach(function(g){
       var gain = Math.round(g.cost / wTotal * 100);
       if(gain > 0) ready.gap.push({ text: bringText(g) + (g.answered ? ' (' + pct(g.m) + '% mastery now)' : ' (next in order, not started)'), value: '+' + gain + '%', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id) });
@@ -122,13 +124,14 @@
     // ---------------------------------------------------------------- 4 focus
     var gstarted = groups.filter(function(g){ return g.answered; });
     var maxCost = Math.max.apply(null, [0.01].concat(groups.map(function(g){ return g.cost; })));
+    var maxNot = Math.max.apply(null, [1].concat(groups.map(function(g){ return g.notStrong; })));
     var unstarted = groups.filter(function(g){ return !g.answered; });
     // Untouched groups fold to one: the next in order, and a line for the rest (a long list of empty bars is noise).
-    var grows = gstarted.slice().sort(function(a, b){ return b.cost - a.cost; }).concat(unstarted.slice(0, 1)).map(function(g, i){
+    var grows = gstarted.slice().sort(function(a, b){ return (b.cost - a.cost) || (b.notStrong - a.notStrong); }).concat(unstarted.slice(0, 1)).map(function(g, i){
       var share = g.weight ? g.weight[0] + '&ndash;' + g.weight[1] + '% of the exam' : plural(g.topics.length, 'topic');
       if(!g.answered) return { icon: g.icon, name: g.label, sub: 'next in order, not started &middot; ' + share, bar: 0, cost: '', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id), cta: 'Start' };
-      return { icon: g.icon, warm: g.m < 0.3, name: g.label, sub: pct(g.m) + '% mastery &middot; ' + share, bar: g.cost / maxCost,
-        cost: g.got >= 1 ? 'at Strong' : g.weight ? (g.cost / wTotal * 100 < 1 ? 'almost at Strong' : '&asymp; ' + Math.round(g.cost / wTotal * 100) + '% of the exam not yet Strong') : plural(g.notStrong, 'topic') + ' not yet Strong', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id), cta: 'Practice' };
+      return { icon: g.icon, warm: g.m < 0.3, name: g.label, sub: pct(g.m) + '% mastery &middot; ' + share, bar: g.w ? g.cost / maxCost : g.notStrong / maxNot,
+        cost: g.got >= 1 ? 'at Strong' : g.w && g.weight ? (g.cost / wTotal * 100 < 1 ? 'almost at Strong' : '&asymp; ' + Math.round(g.cost / wTotal * 100) + '% of the exam not yet Strong') : plural(g.notStrong, 'topic') + ' not yet Strong', href: BASE + 'practice.html?' + cfg.group + '=' + encodeURIComponent(g.id), cta: 'Practice' };
     });
     var sec = cfg.second, srows = sec.items.map(function(it){ var m = sec.mastery(it.id); return { it: it, m: m.value || 0, n: m.answered || 0 }; })
       .filter(function(x){ return x.n; }).sort(function(a, b){ return a.m - b.m; }).map(function(x){
@@ -205,13 +208,14 @@
     function pct(v){ return Math.round((v || 0) * 100); }
     function plural(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); }
     var prefs = {}; try{ prefs = JSON.parse(localStorage.getItem(o.key + '_prefs_v1') || '{}') || {}; }catch(e){}
-    var hist = (prefs.examHistory || []).filter(function(x){ return x && x.mcq && x.mcq.n >= 5; });
+    var all = (prefs.examHistory || []).filter(function(x){ return x && x.mcq; });
+    var hist = all.filter(function(x){ return x.mcq.n >= 5; }); // chart points: a 2-question quiz is not a point
     var full = hist.filter(function(x){ return x.kind === 'full' && x.band; });
     var frqScores = prefs.frqScores || {}, fids = Object.keys(frqScores).sort(function(a, b){ return (frqScores[b].ts || 0) - (frqScores[a].ts || 0); });
-    var exHtml = hist.length ? (H ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<ul class="' + o.cls + '-db-list">' + hist.slice().reverse().slice(0, 8).map(function(x){
+    var exHtml = !H ? '' : !all.length ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<p class="cx-emptynote">No exams yet. <a href="' + esc(BASE + 'exams.html') + '">Take a unit test or a practice exam</a>.</p>' }) : (H ? H.panel({ id: o.key + '-db-ex', title: 'Exam history', body: '<ul class="' + o.cls + '-db-list">' + all.slice().reverse().slice(0, 8).map(function(x){
         return '<li><b>' + esc(x.label) + '</b> <span class="' + o.cls + '-small">' + esc(new Date(x.ts).toLocaleDateString()) + '</span><br>Multiple choice ' + x.mcq.c + '/' + x.mcq.n + ' (' + pct(x.mcq.c / x.mcq.n) + '%)' +
           (x.frq ? ' &middot; free response ' + x.frq.got + '/' + x.frq.of : '') + (o.band && x.band ? ' &middot; rough band ' + x.band + ' of 5 <span class="' + o.cls + '-small">(not calibrated)</span>' : '') + '</li>';
-      }).join('') + '</ul>' }) : '') : '';
+      }).join('') + '</ul>' }) : '');
     var frqHtml = H ? H.panel({ id: o.key + '-db-f', title: 'Free-response self-scores', body: fids.length ? fids.slice(0, 8).map(function(id){
         var s = frqScores[id];
         return H.row({ label: s.title || id, href: BASE + 'frq/' + id + '.html', value: s.of ? s.got / s.of : 0, text: s.got + '/' + s.of, note: esc(o.frqTypes[s.type] || '') + (s.tries > 1 ? ' &middot; best ' + s.best + ' over ' + s.tries + ' tries' : '') });

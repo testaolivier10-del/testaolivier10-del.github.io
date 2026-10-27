@@ -11,7 +11,8 @@
 
    Each course hands this module plain values (a model; see the adapters: nremt/dashboard.html, ochem/assets/
    dash-ochem.js, assets/course/dash-ap.js for the six AP® courses and A&P). Nothing here reads course storage
-   except dailyWeeks(), which reads the shared daily accuracy log (hub_daily_v1, written by assets/hub-progress.js).
+   except dailyWeeks(), which reads the shared daily accuracy log (hub_daily_v1, written by LevlPremium.noteAnswer in
+   assets/premium.js).
    Styles: assets/course/dash.css, scoped to .d5, course colour from the page's data-cover (assets/course/r3.css). */
 (function(){
   'use strict';
@@ -49,7 +50,7 @@
   }
 
   /* ---- the daily accuracy log, by week ----
-     hub_daily_v1: { v:1, days: { 'YYYY-MM-DD': { <course>: [right, total] } } } (assets/hub-progress.js noteAnswer).
+     hub_daily_v1: { v:1, days: { 'YYYY-MM-DD': { <course>: [right, total] } } } (assets/premium.js noteAnswer).
      Weeks start on Monday; a week counts once it holds 5 answers, so one question does not draw a point. */
   function dailyWeeks(course, maxWeeks){
     var log = null;
@@ -95,9 +96,11 @@
       var sxy = 0, sxx = 0;
       pts.forEach(function(q){ sxy += (q.t - mx) * (q.pct - my); sxx += (q.t - mx) * (q.t - mx); });
       var slope = sxx ? sxy / sxx : 0, last = pts[n - 1];
-      if(slope > 0 && last.pct < p.goal.pct){
+      // Only a line that is still being drawn: a last week older than two weeks, or a date already past, says
+      // nothing about "this pace".
+      if(slope > 0 && last.pct < p.goal.pct && Date.now() - last.t < 21 * DAY){
         var at = last.t + (p.goal.pct - last.pct) / slope;
-        if(at - Date.now() < 200 * DAY) out.goalAt = { t: Math.max(at, Date.now() + DAY), from: last };
+        if(at > Date.now() && at - Date.now() < 200 * DAY) out.goalAt = { t: at, from: last };
       }
     }
     return out;
@@ -349,6 +352,8 @@
   /* The whole page, for the courses whose dashboard is drawn by script. */
   function render(root, m){
     if(!root) return;
+    // A redraw (a sync, another tab, a pass arriving) keeps the drawers the student had open.
+    var open = Array.prototype.map.call(root.querySelectorAll('details.d5-more[open] > summary'), function(x){ return x.textContent; });
     root.innerHTML = '<div class="d5">' +
       section(1, 'right now', 'What should I <span>do now?</span>', nowCard(m.now)) +
       section(2, 'progress', 'Am I getting <span>better?</span>', progressCard(m.progress)) +
@@ -356,6 +361,7 @@
       section(4, 'focus', 'Where am I <span>losing points?</span>', focusCard(m.focus)) +
       section(5, 'your record', 'What have I <span>built?</span>', recordCard(m.record)) +
       footLine(m.foot) + '</div>';
+    if(open.length) Array.prototype.forEach.call(root.querySelectorAll('details.d5-more > summary'), function(x){ if(open.indexOf(x.textContent) > -1) x.parentNode.open = true; });
     band(m.band);
     wire(root);
   }
@@ -379,6 +385,18 @@
   function wire(root){
     if(root.__d5wired) return;
     root.__d5wired = true;
+    // The older panels drawn into the drawers carry their own h2; under a question (h2) they are h3. Drawn by
+    // course scripts at any time, so this watches for them.
+    function demote(){
+      Array.prototype.forEach.call(root.querySelectorAll('.d5-more-body h2'), function(h){
+        var n = document.createElement('h3');
+        Array.prototype.forEach.call(h.attributes, function(a){ n.setAttribute(a.name, a.value); });
+        while(h.firstChild) n.appendChild(h.firstChild);
+        h.parentNode.replaceChild(n, h);
+      });
+    }
+    demote();
+    if(window.MutationObserver) new MutationObserver(function(){ if(root.querySelector('.d5-more-body h2')) demote(); }).observe(root, { childList: true, subtree: true });
     root.addEventListener('click', function(e){
       // A link to a drawer on this page ("Set one", "See milestones") opens it.
       var a = e.target.closest && e.target.closest('a[href^="#"]');

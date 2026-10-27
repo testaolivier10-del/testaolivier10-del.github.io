@@ -168,7 +168,8 @@
     var progress = {
       weeks: weeks, exams: history.map(function(x){ return { t: x.date, pct: Math.round(x.score / x.total * 100) }; }),
       examWord: 'full exams', firstExamWord: 'first full exam',
-      goal: { pct: GOAL, label: '80%, the certificate line', key: 'certificate line (a full exam at 80%)' },
+      sub: overallPct !== null ? 'Overall: ' + overallPct + '% on ' + plural(allTotal, 'answer') + ' in every mode' + (missedCount ? ', ' + missedCount + ' in your missed queue.' : '.') : '',
+      goal: { pct: GOAL, label: '80%, the full-exam certificate line', key: 'the certificate line: 80% on a full exam (weekly practice accuracy is not an exam score)' },
       examDate: examT ? { t: examT } : null, allHref: history.length ? 'exams.html' : null, allText: 'Exams',
       empty: overallPct === null ? 'Your line starts with your first answers.' : 'So far: ' + overallPct + '% on ' + plural(allTotal, 'answer') + '. Your weekly line starts now.',
       more: [{ label: 'Score over time and recent exams', html: '<div id="historyBox"></div><div id="activityBox"></div>' }]
@@ -197,7 +198,7 @@
         var lifted = JSON.parse(JSON.stringify(domainStats)), w = lifted[R.weakestDomain];
         w.correct = Math.ceil((R.overall - 15) / 100 * w.total);
         var up = readiness(history, lifted);
-        if(up.value > v) ready.gap.push({ text: 'Bring ' + esc(R.weakestDomain) + ' from ' + R.weakestPct + '% to within 15 points of your average', value: '+' + (up.value - v), href: 'practice.html?system=' + encodeURIComponent(R.weakestDomain) });
+        if(up.value > v) ready.gap.push({ text: 'Bring ' + esc(R.weakestDomain) + ' up from ' + R.weakestPct + '% to ' + Math.round(w.correct / w.total * 100) + '%', value: '+' + (up.value - v), href: 'practice.html?system=' + encodeURIComponent(R.weakestDomain) });
       }
       if(R.attempts < 5) ready.gap.push({ text: 'It rests on ' + plural(R.attempts, 'full exam') + '. ' + (5 - R.attempts) + ' more and it stops being pulled toward the middle', value: 'steadier', kind: 'mut', href: 'exams.html' });
       ready.more.push({ label: 'How the readiness estimate works', html: '<div id="readinessBox"></div>' });
@@ -220,7 +221,8 @@
       var pct = Math.round(r.acc * 100), tag = started.length > 1 && r === lowest ? ', your lowest' : started.length > 1 && r === best ? ', your best' : '';
       return { icon: ICON[r.d], warm: r.acc < 0.7, name: r.d, sub: pct + '% right' + tag, bar: r.miss / maxMiss, cost: r.miss + ' missed of ' + r.total, href: 'practice.html?system=' + encodeURIComponent(r.d), cta: 'Drill' };
     });
-    var domView = { label: 'Exam domains', badge: G.badge() ? ' ' + G.badge() : '' };
+    // The Premium pill as text: G.badge() is a button, and a button cannot sit inside the view switch's button.
+    var domView = { label: 'Exam domains', badge: G.badge() ? ' <span class="premium-badge">Premium</span>' : '' };
     if(!canReady) domView.locked = '<p class="d5-empty">Your accuracy in the five 2025 exam domains, weighted by each one&rsquo;s share of the exam, comes with Premium, along with the readiness estimate above.</p>';
     else {
       var drows = EXAM_DOMAINS.map(function(x){ var s = examDomainStats[x.d]; return { x: x, s: s, acc: s && s.total ? s.correct / s.total : null }; })
