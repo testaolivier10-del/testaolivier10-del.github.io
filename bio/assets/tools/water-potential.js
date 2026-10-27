@@ -114,9 +114,11 @@
     [sC.el, sol.el, pp.el].forEach(function(e){ ctl.appendChild(e); });
     [cC.el, tt.el].forEach(function(e){ sec.querySelector('.wp-more').appendChild(e); });
     function calc(){
-      var si = st.sol === 'NaCl' ? 2 : 1, cS = M.psiS(1, st.cC, st.T), cPsi = cS + st.psiP, sS = M.psiS(si, st.sC, st.T);
+      // Turgor can only balance the solutes, never push a cell's psi above 0 (pure water):
+      // psi-p is capped at -psi-s (a cell in pure water at full turgor has psi = 0).
+      var si = st.sol === 'NaCl' ? 2 : 1, cS = M.psiS(1, st.cC, st.T), pp = Math.min(st.psiP, -cS), cPsi = cS + pp, sS = M.psiS(si, st.sC, st.T);
       var dir = Math.abs(sS - cPsi) < 0.2 ? 2 : sS > cPsi ? 0 : 1;
-      return { si: si, cS: cS, cPsi: cPsi, sS: sS, dir: dir };
+      return { si: si, cS: cS, cPsi: cPsi, sS: sS, dir: dir, pp: pp };
     }
     function set(what){
       var r = calc(), K = st.T + M.K0, gap = r.sS - r.cPsi;
@@ -128,13 +130,13 @@
         cell: { psi: r.cPsi, i: 1, C: st.cC, label: 'Plant cell' }, sol: { psi: r.sS, i: r.si, C: st.sC, name: st.sol },
         aria: 'Plant cell ψ ' + F(r.cPsi, 2) + ' bar beside a beaker of ' + F(st.sC, 2) + ' M ' + st.sol + ' at ψ ' + F(r.sS, 2) + ' bar. ' + (r.dir === 0 ? 'Water moves into the cell.' : r.dir === 1 ? 'Water moves out of the cell.' : 'No net movement.') }));
       out.innerHTML = S.readout([['Cell ψs', F(r.cS, 2) + ' bar'], ['Cell ψ', F(r.cPsi, 2) + ' bar'], ['Beaker ψ', F(r.sS, 2) + ' bar'], ['Water moves', r.dir === 0 ? 'into the cell' : r.dir === 1 ? 'out of the cell' : 'no net movement']]);
-      work.innerHTML = '<b>Cell:</b> ψs = −(1)(' + F(st.cC, 2) + ')(0.0831)(' + K + ') = ' + F(r.cS, 2) + ' bar; ψ = ' + F(r.cS, 2) + ' + ' + F(st.psiP, 1) + ' = <b>' + F(r.cPsi, 2) + ' bar</b>. ' +
+      work.innerHTML = '<b>Cell:</b> ψs = −(1)(' + F(st.cC, 2) + ')(0.0831)(' + K + ') = ' + F(r.cS, 2) + ' bar; ψ = ' + F(r.cS, 2) + ' + ' + F(r.pp, 2) + ' = <b>' + F(r.cPsi, 2) + ' bar</b>. ' +
         '<b>Beaker:</b> ψ = ψs = −(' + r.si + ')(' + F(st.sC, 2) + ')(0.0831)(' + K + ') = <b>' + F(r.sS, 2) + ' bar</b> (open beaker, ψp = 0).';
-      var msg = r.dir === 2 ? 'The levels match: equal ψ, so water moves both ways at the same rate and there is no net movement.'
+      var msg = (r.pp < st.psiP ? 'Turgor cannot push the cell’s ψ above 0, so ψp is capped at ' + F(r.pp, 2) + ' bar here. ' : '') + (r.dir === 2 ? 'The levels are within 0.2 bar: ψ is about equal, so water moves both ways at nearly the same rate and there is almost no net movement.'
         : r.dir === 0 ? 'The beaker’s level is higher (less negative), so water runs downhill into the cell. The cell swells and presses on its wall: turgor rises.'
-        : 'The cell’s level is higher, so water runs out of it into the beaker.' + (st.psiP === 0 ? ' With no turgor left, the membrane pulls away from the wall: plasmolysis.' : ' As it loses water, its turgor pressure would fall.');
+        : 'The cell’s level is higher, so water runs out of it into the beaker.' + (st.psiP === 0 ? ' With no turgor left, the membrane pulls away from the wall: plasmolysis.' : ' As it loses water, its turgor pressure would fall.'));
       if(what === 'sol' && st.sol === 'NaCl') msg = 'NaCl splits into Na⁺ and Cl⁻, so i = 2: twice the particles of sucrose at the same concentration, and twice as negative a ψs (' + F(r.sS, 2) + ' bar). ' + msg;
-      if(what === 'T') msg = 'Temperature is in T (kelvins): ' + st.T + ' °C + 273 = ' + K + ' K. A warmer solution has a slightly more negative ψs. ' + msg;
+      if(what === 'T') msg = 'In ψs = −iCRT, T is in kelvins: ' + st.T + ' °C + 273 = ' + K + ' K. A warmer solution has a slightly more negative ψs. ' + msg;
       sayEl.textContent = msg;
       if(r.dir === 1 && st.psiP === 0) done('plasmo');
       if(Math.abs(gap) < 0.2) done('equal');
@@ -153,7 +155,7 @@
     var swell = dir === 0 ? 0.5 : dir === 1 ? -0.5 : 0;
     var lo = scaleLo([cPsi, sS, mineC, mineS]);
     var svg = draw({ scaleLo: lo, swell: chk ? swell : 0, dir: dir, dirMine: !chk,
-      cell: { psi: vC, i: zero ? 1 : x.cell.i, C: zero ? x.sol.C : x.cell.C, mine: !chk, label: zero ? 'Potato tissue' : 'Plant cell' },
+      cell: { psi: vC, i: zero ? 1 : x.cell.i, C: zero ? x.sol.C : x.cell.C, mine: !chk, label: zero ? 'Tissue' : 'Plant cell' },
       sol: { psi: vS, i: x.sol.i, C: x.sol.C, name: x.sol.name, mine: !chk },
       aria: (zero ? 'Tissue' : 'Cell') + ' and beaker drawn on a water potential scale.' + (isFinite(vC) ? ' ' + (zero ? 'Tissue' : 'Cell') + ' ψ ' + F(vC, 2) + ' bar.' : '') + (isFinite(vS) ? ' Beaker ψ ' + F(vS, 2) + ' bar.' : '') + (dir === 0 ? ' Water moves into the cell.' : dir === 1 ? ' Water moves out of the cell.' : dir === 2 ? ' No net movement.' : '') });
     var cap;

@@ -80,8 +80,8 @@
     var nBoth = T.slider({ label: 'n, samples per group (both)', min: 2, max: 40, step: 1, value: 5, onInput: function(v){ g[0].n = g[1].n = v; n1.set(v); n2.set(v); upd('n'); } });
     var sdBoth = T.slider({ label: 'SD in each group (both)', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[0].sd = g[1].sd = v; s1.set(v); s2.set(v); upd('sd'); } });
     sec.querySelector('.ci-ctl').appendChild(nBoth.el); sec.querySelector('.ci-ctl').appendChild(sdBoth.el);
-    var m1 = T.slider({ label: g[0].name + ': mean', min: 2, max: 12, step: 0.1, value: g[0].mean, unit: ctx.unit, onInput: function(v){ g[0].mean = v; upd('m'); } });
-    var m2 = T.slider({ label: g[1].name + ': mean', min: 2, max: 12, step: 0.1, value: g[1].mean, unit: ctx.unit, onInput: function(v){ g[1].mean = v; upd('m'); } });
+    var m1 = T.slider({ label: g[0].name + ': mean', min: 2, max: 12, step: 0.1, value: g[0].mean, unit: ctx.unit, onInput: function(v){ g[0].mean = v; setTrue(); upd('m'); } });
+    var m2 = T.slider({ label: g[1].name + ': mean', min: 2, max: 12, step: 0.1, value: g[1].mean, unit: ctx.unit, onInput: function(v){ g[1].mean = v; setTrue(); upd('m'); } });
     var n1 = T.slider({ label: g[0].name + ': n', min: 2, max: 40, step: 1, value: 5, onInput: function(v){ g[0].n = v; upd('n'); } });
     var n2 = T.slider({ label: g[1].name + ': n', min: 2, max: 40, step: 1, value: 5, onInput: function(v){ g[1].n = v; upd('n'); } });
     var s1 = T.slider({ label: g[0].name + ': SD', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[0].sd = v; upd('sd'); } });

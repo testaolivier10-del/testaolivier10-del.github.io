@@ -360,9 +360,9 @@
         curves: (ref ? [{ points: ref, cls: 's3', dashed: true }] : []).concat([{ points: cur, cls: 's1' }]),
         points: pts.map(function(p){ return { x: p[V.key], y: p.rate, cls: 's2' }; }), vline: { x: st[V.key] } });
       card.querySelector('.bt-readout').innerHTML = [
-        ['Rate now', F(r, 1) + ' ' + RU], ['Vmax (apparent)', F(k.vmax, 1) + ' ' + RU], ['Km (apparent)', F(k.km, 2) + ' ' + data.substrate.unit], ['Rate as % of top speed', F(100 * r / prof.Vmax, 0) + '%']
+        ['Rate now', F(r, 1) + ' ' + RU], ['Vmax (apparent)', F(k.vmax, 1) + ' ' + RU], ['Km (apparent)', F(k.km, 2) + ' ' + data.substrate.unit], ['Rate as % of best Vmax (optimum T and pH, no inhibitor)', F(100 * r / prof.Vmax, 0) + '%']
       ].map(function(x){ return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>'; }).join('');
-      // Top speed: this enzyme's Vmax at its best temperature and pH with no
+      // Best Vmax: this enzyme's Vmax at its best temperature and pH with no
       // inhibitor (prof.Vmax). Dividing by the apparent Vmax instead hid
       // denaturing: at 100 °C the rate is 0 but rate / apparent Vmax stayed 91%.
       var words = 'At ' + F(st.S, 1) + ' ' + data.substrate.unit + ' substrate, ' + F(st.T, 0) + ' °C and pH ' + F(st.pH, 1) +
@@ -453,5 +453,5 @@
       // In Predict the challenge reads in the dock: the caption only says what to do.
       caption: function(g){ var st = window.LevlStudio.get(); return st && st.mode() === 'predict' ? 'Predict first, then make the change and watch the scene.' : T.esc(T.firstSentence(g.live)); },
       pills: function(g){ return [{ k: 'Rate', html: g.ro(0), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: g.ro(3) + ' of top speed', tone: 'ghost' }]; } } });
+      pillsR: function(g){ return [{ html: g.ro(3) + ' of best Vmax', tone: 'ghost' }]; } } });
 })();

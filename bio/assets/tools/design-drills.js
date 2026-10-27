@@ -260,9 +260,13 @@
       form.addEventListener('submit', function(){ setTimeout(function(){
         // after Check: every tag says its role (from the data, not the student's picks)
         var vars = currentScen.variables;
-        tags.forEach(function(t){ var i = +t.getAttribute('data-i'), r = t.querySelector('.dr-vrole');
-          t.classList.remove('is-iv', 'is-dv'); t.classList.add(i === vars.iv ? 'is-iv' : i === vars.dv ? 'is-dv' : 'is-kept');
-          r.textContent = i === vars.iv ? 'independent' : i === vars.dv ? 'dependent' : 'kept the same'; t.disabled = true; });
+        // the other parts: kept the same, unless the scenario's own explanation (whyOptions) says
+        // it is the sample size or is not kept the same (a possible confound)
+        var wo = vars.whyOptions || {};
+        tags.forEach(function(t){ var i = +t.getAttribute('data-i'), r = t.querySelector('.dr-vrole'), w = String(wo[i] || '');
+          var role = i === vars.iv ? ['is-iv', 'independent'] : i === vars.dv ? ['is-dv', 'dependent'] : /^Not kept the same/.test(w) ? ['is-conf', 'not kept the same: possible confound'] : /sample size/.test(w) ? ['is-kept', 'sample size'] : ['is-kept', 'kept the same'];
+          t.classList.remove('is-iv', 'is-dv'); t.classList.add(role[0]);
+          r.textContent = role[1]; t.disabled = true; });
         box.querySelector('.dr-vtags-h').textContent = 'Parts of this setup';
       }, 0); });
       sync();

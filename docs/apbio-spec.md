@@ -179,6 +179,16 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    (`studioArrange`); graph builder and design drills arrange themselves (`studio.arrange`) as steppers. Hashes
    (`#predict`, `#find`, `#make`, `#mutant`, `#guess`, `?seed=`) and every recorded item id are unchanged; new
    `#questions` opens the Questions mode. `simplify()` still runs only on pages without the studio.
+   (2026-10-27, tool audit fixes, branch `fix-bio-tools`, `docs/tool-audit-2026-10.md`) Skills Practice checks one part
+   at a time like the chem and physics drills: each part has its own Check; a wrong answer gets the message for the
+   slip it matches (`part.slips` from the solver: divide by n, forgot √, °C not K, counted individuals not alleles and
+   so on) and the part's method (`part.hint`) before Show the answer; the first try is what is recorded (item ids
+   unchanged). Simulators put their key graphs on the stage behind chips (`studioCard` `cfg.views`: enzyme rate
+   curve, osmosis mass graph, growth curves, p over generations, pyramids, cell-cycle graphs). Water potential has an
+   Explore mode; design drills draw a setup sketch from each scenario's data table with tappable parts (they answer
+   the variables drill). Operons and signal transduction re-lay for a portrait phone (DNA on two lines, the ladder in
+   two columns). Enzyme "% of best Vmax" divides by the enzyme's Vmax at its optimum, so a denatured enzyme reads 0%.
+   The snapdragon Hardy-Weinberg context names its phenotypes (`phen`), so no "carrier" for incomplete dominance.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;

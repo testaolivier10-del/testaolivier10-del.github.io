@@ -208,7 +208,7 @@
         if(tap) parts.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(stageOf(id).short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
         else parts.push(body);
         if(i === ids.length - 1) return;
-        var amp = stageOf(ids[i + 1]).amplifies, g = gainOf(a, i) + (amp ? ', amplifies' : ', no gain');
+        var amp = stageOf(ids[i + 1]).amplifies, rr = a[ids[i]] >= 1 ? a[ids[i + 1]] / a[ids[i]] : 0, g = gainOf(a, i) + (amp && rr >= 1 ? ', amplifies' : amp ? ', blocked' : ', no gain');
         if(row < 3){
           parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M' + (x + 18) + ' ' + (y + RH + 1) + 'v' + (GAP - 8) + '"/><path class="arrh" d="M' + (x + 13) + ' ' + (y + RH + GAP - 7) + 'l5 6 5-6z"/>' +
             '<text class="note sg2-g" x="' + (x + 30) + '" y="' + (y + RH + 14) + '">' + g + '</text>');

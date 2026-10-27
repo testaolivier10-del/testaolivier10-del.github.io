@@ -1392,3 +1392,4 @@
 .mei-fig text.mei-chil{fill:var(--ink);font-weight:800;}
 /* the play row clock wraps to its own line on a phone instead of running off the edge (tool audit: clipped readout) */
 @media (max-width:640px){ .ls-root .os-play:has(> .os-clock){flex-wrap:wrap;row-gap:4px;} .ls-root .os-play > .os-clock{flex:1 1 100%;white-space:normal;} }
+.dr-vtag.is-conf{background:var(--bio-symp-fill);box-shadow:inset 0 0 0 2px var(--bio-symp);}
