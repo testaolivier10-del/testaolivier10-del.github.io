@@ -167,8 +167,8 @@ breadcrumbs truncate on phones; the burns figure's 1% region is a small tap targ
   current model is 3.3 MB; the full set is about 30 MB, so per-system files loaded on demand), and extend the
   data file. Bone landmarks (processes, foramina) are not separate meshes in BodyParts3D, so they would need
   point landmarks placed by hand and checked, as the body map's POINTS_3D are.
-- The lab practical's and word roots' "See it in 3D" buttons still open the NREMT body map; pointing them at
-  `anatomy-3d.html?focus=<structure>` needs a name map like `AnpToolKit.BODY` for the A&P structures.
+- Done (2026-10-27, fix-finish-2): the lab practical's and word roots' "See it in 3D" buttons open
+  `anatomy-3d.html?focus=<structure id>` through `AnpToolKit.A3D` (docs/anp-spec.md decision 93).
 - Headless checks: SwiftShader takes 1 to 2 minutes to load the model, so a full point-to-it round was not
   driven by taps, and the full `BROWSER=1 scripts/ci-local.sh` was not run (shared machine); targeted checks
   were: build/check scripts for touched outputs, A&P tests, axe on the new page, tools hub, course home and body

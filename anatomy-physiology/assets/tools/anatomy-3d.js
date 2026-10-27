@@ -585,7 +585,8 @@
       if(BY[h]){ filter.system = ''; filter.chapter = ''; syncFilterUi(); applyFilter(); go('quiz', { first: BY[h] }); }
       else if(['study', 'quiz', 'timed'].indexOf(h) > -1) go(h);
       else { go('explore'); if(focus) selectStructure(focus); }
-      if(ST && MODE === 'explore') ST.hint({ target: anchor, text: touch ? 'Tap any part of the body' : 'Click any part of the body', key: 'anp-anatomy-3d', inside: true });
+      // Arriving on a structure (?focus=, from "See it in 3D"): its label is the point, so no coach over it.
+      if(ST && MODE === 'explore' && !focus) ST.hint({ target: anchor, text: touch ? 'Tap any part of the body' : 'Click any part of the body', key: 'anp-anatomy-3d', inside: true });
       app.classList.add('is-ready');
     }).catch(function(e){
       console.error(e);
