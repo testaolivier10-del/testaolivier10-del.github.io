@@ -509,7 +509,7 @@ ${bodyOpen()}
     crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }],
     courseHtml: COURSE_HTML, beta: true, chapterWord: 'unit',
     lede: `${terms.length.toLocaleString('en-US')} terms${!map.chapters.every(chapterBuilt) ? ' so far' : ''}, in plain words. Each one links to the page that teaches it.`,
-    chapters: glossaryChapters(), terms, placeholder: 'e.g. eutrophication, albedo, LD50', searchHref: 'search.html',
+    chapters: glossaryChapters(), terms, placeholder: 'e.g. reuptake, schema, heuristic', searchHref: 'search.html',
   }) : '<p>Terms appear here as units are published.</p>'}
   <p class="psy-report-page psy-nav-ref">Spot a mistake on this page? ${reportButton('glossary')}</p>
 </main>

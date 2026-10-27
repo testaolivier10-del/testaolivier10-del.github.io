@@ -639,7 +639,7 @@ function hubEnvCard() {
     line: published(ENV_ALL, N.apenvTopics, 'with every calculation drilled with units') });
 }
 function hubPsyCard() {
-  return apCard({ href: 'psychology/', tint: 'appsych', cover: 'appsych', t2: 'Psychology', hand: 'from neuron to society', name: 'AP® Psychology',
+  return apCard({ href: 'psychology/', tint: 'appsych', cover: 'appsych', t2: 'Psychology', hand: 'every concept, applied', name: 'AP® Psychology',
     line: published(PSY_ALL, N.appsychTopics, 'with every concept applied to a situation') });
 }
 
