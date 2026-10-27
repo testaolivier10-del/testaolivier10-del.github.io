@@ -624,6 +624,7 @@
         }
       }catch(e){}
     }
+    readableAtoms(el.querySelector('svg'));
     el.querySelectorAll('.m3d-atom').forEach(function(g){
       var at = chair.atoms[parseInt(g.getAttribute('data-atom'), 10)];
       if(!at || !at.subKey || at.subKey === 'H'){ g.removeAttribute('tabindex'); g.removeAttribute('role'); g.setAttribute('aria-hidden', 'true'); return; }
@@ -631,6 +632,29 @@
       g.setAttribute('aria-label', SUBS[at.subKey].label + ' on C' + (at.carbon + 1) + ', ' + (at.isAxial ? 'axial' : 'equatorial') +
         '. Press to flip the ring and make it ' + (at.isAxial ? 'equatorial' : 'axial'));
       g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); e.stopPropagation(); flipRing(at); } });
+    });
+  }
+
+  /* Atom letters read at 12 px or more however small the chair is drawn (a
+     phone shows each chair at about 1.4x its 320-unit frame, which left the
+     H letters near 9 px, wider than their balls). Each letter is sized from
+     the drawn scale and its ball grows to hold it; the svg then opts out of
+     the shell's own text bump, which would redo this on every flip frame. */
+  function readableAtoms(svg){
+    if(!svg) return;
+    svg.setAttribute('data-ls-text', 'keep');
+    var m = svg.getScreenCTM && svg.getScreenCTM(), k = m ? Math.hypot(m.a, m.b) : 0;
+    if(!(k > 0)) return;
+    var min = 12 / k;
+    svg.querySelectorAll('.m3d-atom').forEach(function(g){
+      var t = g.querySelector('text'), c = g.querySelector('circle:not(.m3d-halo)');
+      if(!t || !c) return;
+      var fs = parseFloat(t.getAttribute('font-size')) || 0;
+      if(fs >= min) return;
+      var cy = parseFloat(c.getAttribute('cy')), w = t.textContent.length > 1 ? 0.62 * t.textContent.length : 0.72;
+      t.setAttribute('font-size', min.toFixed(1));
+      t.setAttribute('y', (cy + min * 0.35).toFixed(1));
+      if(parseFloat(c.getAttribute('r')) < min * w) c.setAttribute('r', (min * w).toFixed(1));
     });
   }
 
