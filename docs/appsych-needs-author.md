@@ -61,13 +61,17 @@ evidence), the marshmallow test (weaker in larger, more diverse samples), Little
 unclear), Harlow's monkeys (contact comfort; ethics), Loftus and Palmer (misinformation, robust). Authors add
 entries here as they meet others.
 
-## mental-health-line: the help line wording on disorder pages (open, 2026-10-27)
+## mental-health-line: the help line wording on disorder pages (resolved, 2026-10-27)
+
+Owner approved the short 988 note as proposed (spec decision 11).
 
 Spec section 1 asks for a short note pointing to real help (988 in the US) on disorder pages. The authoring guide
 proposes one line in `<p class="psy-help">`. The owner should confirm the wording, whether it appears only on
 Unit 5 disorder and treatment pages or also on health psychology (5.1), and what non-US readers see.
 
-## identity: accent, cover, icon, headline and ranks are proposals (open, 2026-10-27)
+## identity: accent, cover, icon, headline and ranks (resolved, 2026-10-27)
+
+Owner approved the identity with the cover moved to the blue family (spec decision 11): cover `#07608A` with a gold accent `#FFD23F` and a light-blue head `#8CC8E8`, clearly apart from Statistics' dark steel `#0E3A52` and Chemistry's cobalt. The text below is the original proposal.
 
 Spec decision 5. Accent: deep cerulean `#084F78` (dark `#A8D8F0`); cover a deep purple `#33184A` with a lilac
 accent `#D99CFF`, a head in profile with the brain and a gold spark (`assets/covers/appsych.svg`); headline
@@ -75,7 +79,9 @@ accent `#D99CFF`, a head in profile with the brain and a gold spark (`assets/cov
 near Organic Chemistry's indigo cover (`#241A63`); if the two read too alike on the hub, shift the psychology
 cover toward magenta (hue about 310).
 
-## free-tier: Unit 1 and the research skills chapter (open, 2026-10-27)
+## free-tier: Unit 1 and the research skills chapter (resolved, 2026-10-27)
+
+Owner approved (spec decision 11).
 
 Spec decision 9 (proposed): Unit 1 and the seven research skills topics free, 13 of 42 topics (31%); free
 trainers article-studio, neuron and brain-map. Owner to confirm.

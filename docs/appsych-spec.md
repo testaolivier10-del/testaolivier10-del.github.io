@@ -182,7 +182,7 @@ with one rubric line per point and full-credit samples.
    sections (introduction, participants, method, results, discussion); every study or data stimulus is
    `invented: true` or cites a real study by authors and year (content check). Plot kinds: line, bar, scatter
    (with r), histogram, normal (68-95-99.7 bands, shaded region); pyramid, dual-axis and curve dropped.
-9. (2026-10-27) **Free tier (proposed, owner to confirm):** Unit 1 and the seven research skills topics, 13 of 42
+9. (2026-10-27) **Free tier (approved, decision 11):** Unit 1 and the seven research skills topics, 13 of 42
    topics (31%); free trainers `article-studio`, `neuron`, `brain-map`.
 10. (2026-10-27) **Phase 0 done, as built** (`docs/appsych-phase0.md`, `docs/appsych-architecture.md`). Accent:
     deep cerulean, light `--cink #084F78` on `--ctint #E3F0F8` (7.5:1; 8.8:1 on white, 8.3:1 as button text on
@@ -198,3 +198,8 @@ with one rubric line per point and full-credit samples.
     until confirmed (`practicesConfirmed`); (f) the AI FRQ grader is not wired for this course (needs-author
     `frq-grader`); (g) the site shell budget went from 334 to 335 KB. SQL migration `2026-10l-appsych.sql`
     written, not applied.
+11. (2026-10-27) **Owner approvals ("all those things").** Free tier as decision 9 (Unit 1 and the research skills
+    chapter, 31%; free trainers `article-studio`, `neuron`, `brain-map`); the short 988 help note on disorder and
+    treatment pages as proposed in the authoring guide; the identity of decision 5, with the cover moved to the
+    blue family to match the accent: background `#07608A`, gold title accent `#FFD23F`, light-blue head `#8CC8E8`
+    (Statistics' cover is dark steel `#0E3A52`, Chemistry's cobalt `#1A2C78`, so the hub keeps every cover apart).
