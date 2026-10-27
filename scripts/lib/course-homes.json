@@ -1159,7 +1159,7 @@
    "cta": "Open your dashboard"
   },
   "tools_h": [
-   "Seven tools that make you",
+   "Eight tools that make you",
    "do the physiology"
   ],
   "tools_lede": "Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.",
@@ -1177,6 +1177,11 @@
    [
     "Feedback loop builder",
     "Build each homeostatic loop from stimulus to response.",
+    ""
+   ],
+   [
+    "3D anatomy",
+    "Turn a real 3D body, tap any bone, organ or vessel, then name it or find it.",
     ""
    ],
    [

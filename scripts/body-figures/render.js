@@ -1,5 +1,5 @@
 /* Browser half of scripts/build-body-figures.mjs: renders the BodyParts3D
-   model (nremt/assets/body3d.glb) into flat figures and measures them.
+   model (assets/body3d/body3d.glb) into flat figures and measures them.
 
    Runs in headless chromium (the driver serves the repo at http://fig.local/).
    window.renderFigures() resolves to { figures: { name: { webp, w, h, outline,
@@ -22,12 +22,12 @@
      6. Chest views add the ribs, costal cartilages, sternum, clavicles and
         heart (back: scapulae, spine and ribs) faintly under the skin. */
 import * as THREE from 'three';
-import { GLTFLoader } from '/nremt/assets/vendor/three/loaders/GLTFLoader.js';
-import { MeshoptDecoder } from '/nremt/assets/vendor/three/libs/meshopt_decoder.module.js';
-import { mergeVertices } from '/nremt/assets/vendor/three/utils/BufferGeometryUtils.js';
-import { RoomEnvironment } from '/nremt/assets/vendor/three/environments/RoomEnvironment.js';
+import { GLTFLoader } from '/assets/body3d/vendor/three/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from '/assets/body3d/vendor/three/libs/meshopt_decoder.module.js';
+import { mergeVertices } from '/assets/body3d/vendor/three/utils/BufferGeometryUtils.js';
+import { RoomEnvironment } from '/assets/body3d/vendor/three/environments/RoomEnvironment.js';
 
-/* ---- names (FMA ids, as in body-viewer.js PART_GROUP_MAP) ---------------- */
+/* ---- names (FMA ids, as in nremt/assets/body-content.js PART_GROUP_MAP) ---------------- */
 const RIB_R = ['FMA7857','FMA7882','FMA7909','FMA7957','FMA8066','FMA8175','FMA8229','FMA8283','FMA8364','FMA8445','FMA8531','FMA8533'];
 const RIB_L = ['FMA7987','FMA8012','FMA8039','FMA8148','FMA8093','FMA8202','FMA8256','FMA8310','FMA8391','FMA8472','FMA8532','FMA8534'];
 const CARTILAGE = ['BP24','BP28','FMA7886','FMA8031','FMA8248','FMA8275'];
@@ -145,10 +145,10 @@ function makeView(frame, side, pxPerMm){
   return { frame, side, w, h, P, X, Z, k: w / (frame.x1 - frame.x0) };
 }
 /* ---- anatomy figure (step 7) ---------------------------------------------- */
-// The body map's part -> structure map and colours live in body-viewer.js; read
+// The body map's part -> structure map and colours live in nremt/assets/body-content.js; read
 // them from there so the two never disagree.
 async function viewerContent(){
-  const src = await (await fetch('/nremt/assets/body-viewer.js')).text();
+  const src = await (await fetch('/nremt/assets/body-content.js')).text();
   const grab = name => JSON.parse(src.match(new RegExp('const ' + name + ' = (\\{.*\\});'))[1]);
   return { CONTENT: grab('GROUP_CONTENT'), MAP: grab('PART_GROUP_MAP') };
 }
@@ -404,7 +404,7 @@ function ribAtX(P, x, back){
 /* ======================================================================= */
 window.renderFigures = async function(){
   const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
-  const gltf = await loader.loadAsync('/nremt/assets/body3d.glb');
+  const gltf = await loader.loadAsync('/assets/body3d/body3d.glb');
   gltf.scene.updateMatrixWorld(true);
   const M = {};
   gltf.scene.traverse(o => { if(o.isMesh) M[o.name] = o; });

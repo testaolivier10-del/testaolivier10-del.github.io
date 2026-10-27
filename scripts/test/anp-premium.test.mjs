@@ -66,9 +66,9 @@ test('the Foundations part of the map is the five opening chapters', () => {
   assert.deepEqual(FOUNDATIONS, ['orientation', 'chem-physics', 'cells', 'tissues', 'cell-communication']);
 });
 
-test('pages.json: three free tools, four Premium; flashcards free; practice, review and exams on the free tier', () => {
+test('pages.json: three free tools, five Premium; flashcards free; practice, review and exams on the free tier', () => {
   for (const s of ['word-roots', 'feedback-loops', 'calculators', 'flashcards', 'dashboard']) assert.equal(premiumOf(s), undefined, s);
-  for (const s of ['lab-practical', 'predict', 'pathways', 'graphs']) assert.equal(premiumOf(s), 'tools', s);
+  for (const s of ['lab-practical', 'anatomy-3d', 'predict', 'pathways', 'graphs']) assert.equal(premiumOf(s), 'tools', s);
   assert.equal(premiumOf('practice'), 'question-bank');
   assert.equal(premiumOf('review'), 'review');
   assert.equal(premiumOf('exams'), 'exams');

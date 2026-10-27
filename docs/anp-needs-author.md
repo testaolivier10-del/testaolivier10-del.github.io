@@ -1964,3 +1964,23 @@ one place.
   on the site. (atitesting.com served only a maintenance page from this environment, and the
   copy of the outline the owner found is on a domain the network policy blocks, so the
   confirmation comes from the owner's own check of the document.)
+
+## 3D anatomy tool (2026-10-27): items for review
+
+Spec decision 91; data in anatomy-physiology/data/tools/anatomy-3d.json.
+
+- **3d-peduncle-number** (pending review). FMA62394 is "peduncle of midbrain"; its mesh spans both sides of the
+  midline (x -20 to +20 mm), so the tool names it "Cerebral peduncles" (plural). Confirm the plural.
+- **3d-lv-papillary** (pending review). FMA9352 is the generic "papillary muscle of left ventricle" beside FMA7266
+  "posterior (posteromedial) papillary muscle". By position FMA9352 sits anterolateral, but the tool names it only
+  "papillary muscle of the left ventricle" rather than guess "anterolateral".
+- **3d-bp24-bp28** (pending review). Two meshes, BP24 and BP28, have no FMA id; by position they look like merged
+  lower costal cartilages (ribs 8 to 10). They are drawn but never named. A person could confirm and label them.
+- **3d-false-ribs-split** (pending review). The course counts ribs 8 to 12 as false ribs. The tool shows
+  "Ribs 8 to 10 (false ribs)" and "Floating ribs (ribs 11 and 12)" as two structures, so a student typing
+  "false ribs" for a floating rib is marked wrong. Accept it there too, or keep the stricter split?
+- **3d-rca-nodes** (decided, for review). The right coronary artery card no longer says it supplies the SA and AV
+  nodes (true of the AV node in most people, of the SA node in only about 55 to 60 percent; the notes do not
+  teach either).
+- **3d-diaphragm-topic** (pending review). The diaphragm links to Body cavities and serous membranes, where it is
+  first taught; Pulmonary ventilation teaches its breathing role in detail. Which should the tool link?

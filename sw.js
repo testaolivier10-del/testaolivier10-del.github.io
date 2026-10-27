@@ -143,7 +143,8 @@ COURSE_URLS.nremt = [
   // The shared tool layer: misses into Review, and the 3D body (its model and
   // three.js stay runtime-cached, as before).
   'nremt/assets/tool-results.js',
-  'nremt/assets/body-viewer.js',
+  'nremt/assets/body-content.js',
+  'assets/body3d/viewer.js',
   'nremt/assets/burns.js',
 ];
 

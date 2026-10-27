@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D anatomy: bones, organs and vessels — Anatomy &amp; Physiology</title>
+<meta name="description" content="Explore a real 3D model of the human body for A&amp;P: tap bones, organs and vessels, then name them or find them on the model, by system or chapter.">
+<link rel="canonical" href="https://levlprep.com/anatomy-physiology/tools/anatomy-3d.html">
+<meta property="og:title" content="3D anatomy: bones, organs and vessels — Anatomy &amp; Physiology">
+<meta property="og:description" content="Explore a real 3D model of the human body for A&amp;P: tap bones, organs and vessels, then name them or find them on the model, by system or chapter.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/anatomy-physiology/tools/anatomy-3d.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/anatomy-physiology/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script type="importmap">{"imports":{"three":"../../assets/body3d/vendor/three/build/three.module.min.js"}}</script>
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://levlprep.com/anatomy-physiology/tools/anatomy-3d.html#tool",
+      "name": "3D anatomy",
+      "url": "https://levlprep.com/anatomy-physiology/tools/anatomy-3d.html",
+      "description": "Explore a real 3D model of the human body for A&P: tap bones, organs and vessels, then name them or find them on the model, by system or chapter.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".anp-app-mount"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/anatomy-physiology/#course"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Anatomy & Physiology",
+          "item": "https://levlprep.com/anatomy-physiology/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tools",
+          "item": "https://levlprep.com/anatomy-physiology/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "3D anatomy",
+          "item": "https://levlprep.com/anatomy-physiology/tools/anatomy-3d.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-app="anatomy-3d">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<!-- r3-toolband:start -->
+
+<!-- r3-toolband:end -->
+<main id="main" class="xshell anp-app">
+  <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">3D anatomy</span></nav>
+  <header class="hero anp-hero anp-tool-hero"><div class="eyebrow">A&amp;P tool</div><h1>3D anatomy</h1><p class="lede">Tap any part of a real 3D body to see what it is.</p></header>
+  <div id="app" class="anp-app-mount" data-slug="anatomy-3d" data-premium="tools" data-src="../assets/tool-data/anatomy-3d.json" data-studio="1"><noscript><p>This tool needs JavaScript. The lessons and notes pages work without it.</p></noscript></div>
+  
+</main>
+<footer class="anp-foot xshell">
+  <p class="anp-accuracy-note"> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<link rel="stylesheet" href="../assets/tools/tool-kit.css">
+<link rel="stylesheet" href="../../assets/course/tool-studio.css">
+<link rel="stylesheet" href="../assets/tools/anatomy-3d.css">
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/body3d/viewer.js" defer></script>
+<script src="../../assets/course/tool-studio.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ANP_SECTION = 'tools'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/anp-questions.js" defer></script>
+<script src="../assets/tools/tool-kit.js" defer></script>
+<script src="../assets/tools/anatomy-3d.js" defer></script>
+</body>
+</html>

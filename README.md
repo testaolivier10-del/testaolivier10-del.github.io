@@ -133,8 +133,7 @@ nremt/                 The NREMT-EMT Prep course
                              itself to /assets/site-chrome.js. Also the NREMT-flavored
                              shim over the site-wide level/streak engine in
                              /assets/hub-progress.js
-    vendor/three/          Vendored three.js (module build + loaders/controls actually used)
-    body3d.glb              Compressed 3D anatomy model (meshopt)
+    body-content.js        The body map's EMS content for the shared 3D body (assets/body3d/)
 ochem/                 The Organic Chemistry course
   index.html             Product home
   learn.html             The textbook: a contents rail beside one chapter at a time,

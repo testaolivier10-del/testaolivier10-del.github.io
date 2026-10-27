@@ -85,6 +85,7 @@ const PAGES = [
   ['/anatomy-physiology/notes/cardiac-cycle.html', 'an A&P notes page with SVG diagrams'],
   ['/anatomy-physiology/exams.html', 'the A&P exams app'],
   ['/anatomy-physiology/tools/predict.html', 'an A&P reasoning tool'],
+  ['/anatomy-physiology/tools/anatomy-3d.html', 'the A&P 3D anatomy tool'],
   // AP® Biology: its own generator and runtime too. The shells exist before
   // anything is published; the lesson, notes page, unit sheet and tool join
   // below once build-apbio.mjs has written them (bioPages()).

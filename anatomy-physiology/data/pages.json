@@ -85,6 +85,22 @@
       "studio": true
     },
     {
+      "slug": "anatomy-3d",
+      "premium": "tools",
+      "name": "3D anatomy",
+      "tag": "A real 3D body. Turn it, tap a structure, then name it or find it.",
+      "blurb": "Turn a real 3D body, tap any bone, organ or vessel, then quiz yourself: name it, point to it, or run timed stations.",
+      "lede": "Tap any part of a real 3D body to see what it is.",
+      "title": "3D anatomy: bones, organs and vessels",
+      "desc": "Explore a real 3D model of the human body for A&P: tap bones, organs and vessels, then name them or find them on the model, by system or chapter.",
+      "script": "tools/anatomy-3d.js",
+      "css": "tools/anatomy-3d.css",
+      "data": "anatomy-3d.json",
+      "siteScripts": ["body3d/viewer.js"],
+      "body3d": true,
+      "studio": true
+    },
+    {
       "slug": "predict",
       "premium": "tools",
       "name": "Predict the change",
