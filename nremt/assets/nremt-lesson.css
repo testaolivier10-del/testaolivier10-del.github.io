@@ -18,9 +18,9 @@
 .nl-steps li.current a{background:var(--white,#fff);color:var(--ink);box-shadow:var(--lift-sm);}
 .nl-steps li.current .n{background:var(--accent);border-color:var(--accent);color:var(--on-accent,#fff);}
 .nl-main{min-width:0;}
-.nl-hero{margin:8px 0 18px;}
+.nremt-ls-hero{margin:8px 0 18px;}
 .nl-eyebrow{font:900 12.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);margin:0 0 6px;}
-.nl-hero h1{font:900 clamp(30px,4vw,46px)/1.05 var(--font-display,var(--font-ui));letter-spacing:-.03em;margin:0;color:var(--ink);}
+.nremt-ls-hero h1{font:900 clamp(30px,4vw,46px)/1.05 var(--font-display,var(--font-ui));letter-spacing:-.03em;margin:0;color:var(--ink);}
 .nl-card{background:var(--white,#fff);border:1px solid var(--line);border-radius:20px;padding:26px clamp(18px,3vw,32px);box-shadow:var(--lift-sm);}
 .nl-part{scroll-margin-top:calc(var(--site-header-h,96px) + 16px);}
 .nl-part + .nl-part{margin-top:30px;padding-top:26px;border-top:1px solid var(--line);}

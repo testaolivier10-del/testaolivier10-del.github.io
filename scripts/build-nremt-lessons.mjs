@@ -21,6 +21,7 @@ import { CSP } from './lib/site-config.mjs';
 import { loadChapters, chapterSlug } from './lib/nremt-notes.mjs';
 import { loadLessons } from './lib/nremt-lessons.mjs';
 import { courseTitle } from './lib/page-title.mjs';
+import { applyVideo } from './lib/videos.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const CHECK = process.argv.includes('--check');
@@ -150,7 +151,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
   </aside>
   <main id="main" class="nl-main">
     <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../notes/${chapterSlug(ch)}.html">${esc(ch.title)}</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lesson</span></nav>
-    <header class="nl-hero">
+    <header class="nremt-ls-hero">
       <p class="nl-eyebrow">Interactive lesson &middot; Chapter ${ch.num}.${si + 1}</p>
       <h1>${esc(L.title)}</h1>
     </header>
@@ -181,7 +182,8 @@ ${parts.map((p, k) => `      <section class="nl-part${k === 0 ? ' is-on' : ''}" 
 `;
 }
 
-lessons.forEach((L, i) => put(`nremt/lessons/${L.id}.html`, lessonPage(L, i)));
+// A video lesson for the page, if docs/videos.json lists one (scripts/lib/videos.mjs).
+lessons.forEach((L, i) => { const rel = `nremt/lessons/${L.id}.html`; put(rel, applyVideo(rel, lessonPage(L, i))); });
 
 // Pages for lessons that no longer exist would stay in the sitemap.
 if (existsSync(OUT)) {
