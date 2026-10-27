@@ -148,7 +148,6 @@
   function genLesion(r, c){
     var pool = LESIONS.filter(function(x){ return !c.cases || c.cases.indexOf(x.id) > -1; }), cs = r.pick(pool), key = cs.region;
     var steps = [choice('region', 'Damage to which structure best explains this?', regionChoice(r, key, 'The ' + lc(nm(key)) + ': ' + lc(REGIONS[key].does)))];
-    var m = cs.real ? 'case' : r.pick(['case', 'case', 'lesion']);
     if(cs.real || cs.id === 'hunger'){
       var isLes = cs.id === 'hunger';
       steps.push(choice('also', 'What research method is this?', isLes ? [
@@ -168,17 +167,15 @@
         ['A correlational study of many people.', 'This is one person, not many: a case study.']
       ]));
     } else {
-      var side = /right hemisphere/.test(cs.text) ? 'right' : null;
-      steps.push(choice('also', 'What else would you expect from damage to the ' + lc(nm(key)) + '?', alsoOpts(r, key)));
+      steps.push(choice('also', 'What does the ' + lc(nm(key)) + ' do in a healthy brain?', alsoOpts(r, key)));
     }
     var sol = ['The ' + lc(nm(key)) + ': ' + lc(REGIONS[key].does), 'Damage there: ' + lc(REGIONS[key].damage)];
     return { ctx: c.id, topic: c.topic, type: 'lesion', text: '<p>' + (c.lead ? c.lead + ' ' : '') + cs.text + (cs.real ? ' (A real case: ' + cs.real + '.)' : '') + '</p>', steps: steps, solution: sol,
       given: { case: cs.id, region: key }, figure: { kind: 'brain', view: REGIONS[key].view === 'inside' ? 'inside' : 'outside', region: key, show: 'after' } };
   }
   function alsoOpts(r, key){
-    var right = REGIONS[key].damage;
     var others = M.shuffle(r, NEAR[key]).slice(0, 3);
-    return [[right, 'Right. ' + nm(key) + ': ' + lc(REGIONS[key].does)]].concat(others.map(function(k){ return [REGIONS[k].damage, 'That fits damage to the ' + lc(nm(k)) + ', not the ' + lc(nm(key)) + '.']; }));
+    return [[REGIONS[key].does, 'Right. Damage there: ' + lc(REGIONS[key].damage)]].concat(others.map(function(k){ return [REGIONS[k].does, 'That is the ' + lc(nm(k)) + ', not the ' + lc(nm(key)) + '.']; }));
   }
 
   function genImaging(r, c){

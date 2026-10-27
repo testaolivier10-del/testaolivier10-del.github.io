@@ -56,7 +56,8 @@
 .ml-del{fill:none;stroke:var(--ml-alt);stroke-width:3;stroke-dasharray:7 5;stroke-linejoin:round;}
 .ml-del-pt{fill:var(--ml-alt);stroke:var(--white);stroke-width:1.5;}
 .ml-imm.is-dim,.ml-del.is-dim{stroke-opacity:.35;stroke-width:2;}
-.ml-imm.is-dim-pt,.ml-del.is-dim-pt{opacity:.35;}
+.ml-imm-pt.is-dim,.ml-del-pt.is-dim{opacity:.35;}
+body.ls-on .psy-crumb{display:none;}
 .ml-you{fill:var(--white);stroke:var(--line);stroke-width:2;}
 .ml-you.is-hit{fill:var(--ml-acc);stroke:var(--ml-acc);}
 .ml-tick{fill:none;stroke:var(--white);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}

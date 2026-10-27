@@ -291,8 +291,8 @@
       [0, 25, 50, 75, 100].forEach(function(v){ g.push('<line class="ml-grid" x1="' + L + '" x2="' + R + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>' + txt(L - 8, y(v) + 4, v + '%', 'ml-tv', 'end')); });
       if(phase === 'study' && at >= 0) g.push('<rect class="ml-now" x="' + (x(at) - (R - L) / N / 2 + 2).toFixed(1) + '" y="' + T0 + '" width="' + ((R - L) / N - 4).toFixed(1) + '" height="' + (B - T0).toFixed(1) + '" rx="6"/>');
       // the two class curves; the chosen condition is drawn strong
-      function poly(a, c2){ return '<polyline class="' + c2 + '" points="' + a.map(function(v, i){ return x(i).toFixed(1) + ',' + y(v).toFixed(1); }).join(' ') + '"/>' + a.map(function(v, i){ return '<circle class="' + c2 + '-pt" cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="4.5"/>'; }).join(''); }
-      g.push(poly(cls.imm, 'ml-imm' + (delayed ? ' is-dim' : '')), poly(cls.del, 'ml-del' + (delayed ? '' : ' is-dim')));
+      function poly(a, c2, dim){ var d = dim ? ' is-dim' : ''; return '<polyline class="' + c2 + d + '" points="' + a.map(function(v, i){ return x(i).toFixed(1) + ',' + y(v).toFixed(1); }).join(' ') + '"/>' + a.map(function(v, i){ return '<circle class="' + c2 + '-pt' + d + '" cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="4.5"/>'; }).join(''); }
+      g.push(poly(cls.imm, 'ml-imm', delayed), poly(cls.del, 'ml-del', !delayed));
       var li = txt(x(9) - 8, y(cls.imm[9]) - 12, 'at once', 'ml-lab ml-c-imm', 'end'), ld = txt(x(9) - 8, y(cls.del[9]) + 22, 'after 30 s', 'ml-lab ml-c-del', 'end');
       g.push(li, ld);
       g.push('<line class="ml-axis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/>');
