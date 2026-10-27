@@ -207,7 +207,7 @@ export function r3HomeMain(key, ctx) {
      the extra tool lines live on the Tools page. */
   const top = d.tools.slice(0, 3);
   const allN = d.tools.length;
-  const toolsBlock = `<p class="kicker">${th} <i></i></p><div class="dept">${top.map(toolRow).join('')}</div><p class="tools-more"><a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a></p>${credit}`;
+  const toolsBlock = `<p class="kicker">Tools <i></i></p><div class="dept">${top.map(toolRow).join('')}</div><p class="tools-more"><a class="go" href="${L.tools || 'tools.html'}">${allN > 3 ? `All ${allN} tools` : 'All tools'} &rarr;</a></p>${credit}`;
 
   /* ---- only in this course ---- */
   const xs = d.extras.map((x, i) => {
