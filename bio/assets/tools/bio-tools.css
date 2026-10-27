@@ -136,6 +136,14 @@
 .bt-part input[type=text]{width:12ch;min-height:44px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 17px var(--font-mono);}
 .bt-part.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
 .bt-part.is-wrong{box-shadow:inset 4px 0 0 var(--bad-text);}
+/* per-part checking (skillTool): Check under each part, feedback and the method under it */
+.bt-part.is-shown{box-shadow:inset 4px 0 0 var(--muted);}
+.bt-part-fb{font:700 14.5px/1.5 var(--font-ui);}
+.bt-part-fb:empty{display:none;}
+.bt-part-fb .bio-mark{margin-left:0;margin-right:4px;}
+.bt-part-fb .bt-hint-m{margin:6px 0 0;padding:8px 10px;border-radius:10px;background:var(--surface2,var(--paper));font-weight:600;}
+.bt-part-fb .bt-actions{margin-top:8px;}
+.bt-part.is-wrong input[type=text]:not([readonly]){border-color:var(--bad-text);}
 .bt-unit{color:var(--muted);font-weight:700;}
 .bt-key{font:800 14px var(--font-ui);}
 .bt-result{font:800 15px var(--font-ui);min-height:1.4em;}
@@ -481,6 +489,14 @@
 .hw-cl{fill:#fff;font:900 14px var(--font-ui);}
 .hw-cv{fill:#fff;font:800 12px var(--font-mono);}
 :root[data-theme="dark"] .hw-cl,:root[data-theme="dark"] .hw-cv{fill:#10201c;}
+/* incomplete dominance (snapdragons): the genotypes drawn in their flower colors */
+.hw-phen .hw-cell.g0,.hw-phen .hw-ind.g0{fill:#C62828;}
+.hw-phen .hw-cell.g1,.hw-phen .hw-ind.g1{fill:#EC77A6;}
+.hw-phen .hw-cell.g2,.hw-phen .hw-ind.g2{fill:#FAFAF7;stroke:#8A8A80;stroke-width:1.2;}
+.hw-phen .hw-cl.g2,.hw-phen .hw-cv.g2{fill:#222;}
+.hw-phen ~ .hw-key .hw-k.g0{background:#C62828;}
+.hw-phen ~ .hw-key .hw-k.g1{background:#EC77A6;}
+.hw-phen ~ .hw-key .hw-k.g2{background:#FAFAF7;box-shadow:inset 0 0 0 1.2px #8A8A80;}
 .hw-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;font:700 13.5px var(--font-ui);}
 .hw-key span{display:inline-flex;align-items:center;gap:6px;}
 .hw-k{display:inline-block;width:13px;height:13px;border-radius:50%;}
@@ -820,11 +836,15 @@
 .op-ghost{position:fixed;z-index:1000;pointer-events:none;opacity:.9;box-shadow:0 6px 18px rgba(0,0,0,.2);}
 .op-lower{display:grid;gap:10px;}
 .op-stagefig{overflow-x:auto;}
-@media (max-width:640px){.bt-fig .op-stagefig svg.op-fig,.op-stagefig svg.op-fig{min-width:500px;}}
+@media (max-width:640px){.bt-fig .op-stagefig svg.op-fig:not(.op-narrow),.op-stagefig svg.op-fig:not(.op-narrow){min-width:500px;}}
 /* Phone pass (2026-10-13): the strip is drawn near full size (labels at least 12 px rendered), the regulatory end
    (lacI, CAP site, promoter, operator) fits the first screen and the genes scroll sideways; the medium chips keep
    clear of the Enlarge button. */
 .ls-root.ls-phone .op-stagefig svg.op-fig{min-width:630px;height:auto;max-height:none;flex:none;align-self:flex-start;margin:auto 0;}
+/* portrait phone: the DNA wraps onto two lines (operons.js rowSvg), so it fits the width */
+.ls-root.ls-phone .op-stagefig svg.op-fig.op-narrow{min-width:0;width:100%;max-width:100%;max-height:none;height:auto;align-self:center;}
+.ls-root.ls-phone .ls-stage-body > .op-stagefig:has(svg.op-narrow){flex:none;overflow:visible;}
+.op-fig .op-join{fill:none;stroke:var(--op-bb2);stroke-width:2.2;stroke-dasharray:3 5;stroke-linecap:round;}
 .ls-root.ls-phone .op-fig .op-note{font-size:11.5px;}
 .ls-root.ls-phone .op-fig text.op-tight{font-size:11.5px;}
 .ls-root.ls-phone .ls-stage .op-tray{padding-right:52px;}
@@ -1167,6 +1187,10 @@
   .ls-root .ls-dock .tr-tips .bt-buttons,.ls-root .ls-dock .tb-pieces .bt-buttons{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px;}
   .ls-root .ls-dock .tr-tips .bt-buttons > *,.ls-root .ls-dock .tb-pieces .bt-buttons > *{flex:none;}
 }
+/* the phone dock gutter is 12px: bleed only that far, or the page scrolls sideways */
+@media (max-width:640px){
+  .ls-root .ls-dock .tr-tips .bt-buttons,.ls-root .ls-dock .tb-pieces .bt-buttons{margin-right:-12px;padding-right:12px;}
+}
 .ls-root .tr-chips{flex:none;}
 @media (max-width:999.98px){
   .ls-root .tr-chips{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;scrollbar-width:none;}
@@ -1247,3 +1271,36 @@
   .ls-root .ls-dr-stage table{font-size:var(--ls-s);}
   .ls-root .ls-dr-stage th,.ls-root .ls-dr-stage td{padding:5px 8px;}
 }
+/* Practice, checked part by part (skillTool): in the studio the part has no
+   left bar (tool-studio.css); a shown answer gets a muted field, and the
+   finished review separates the parts with a rule. */
+.ls-root .bt-part.is-shown{box-shadow:none;}
+.ls-root .bt-part.is-shown input[type=text]{box-shadow:inset 0 0 0 2px var(--muted);}
+.ls-root form.bt-parts-step.is-review > .bt-part + .bt-part{padding-top:14px;border-top:1px solid var(--line-soft);}
+.ls-root .bt-part-act .btn-press{width:100%;}
+/* Key graphs on the stage (bio-tools.js stageViews): a chip row picks the
+   picture or a graph; a graph either replaces the picture or sits under a
+   shrunken one (show: 'with'). */
+.ls-root .ls-stage-body > .bt-views{flex:none;order:-1;display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 4px;padding:2px;max-width:100%;}
+.ls-root .ls-stage-body > .bt-views::-webkit-scrollbar{display:none;}
+.ls-root .bt-view{flex:none;min-height:36px;padding:0 14px;border:0;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
+  color:var(--ink);font:800 var(--ls-s)/1.2 var(--font-ui);cursor:pointer;white-space:nowrap;}
+.ls-root .bt-view[aria-pressed=true]{background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-root .ls-stage-body > .bt-viewpane{flex:1 1 0;min-height:0;display:flex;flex-direction:column;gap:6px;margin:0;overflow:auto;}
+.ls-root .ls-stage-body > .bt-viewpane[hidden]{display:none !important;}
+.ls-root .ls-stage-body > .bt-viewpane svg.bt-plot{width:100%;height:auto;max-height:100%;flex:1 1 auto;min-height:0;}
+.ls-root .ls-stage-body > .bt-viewpane h3{margin:0;font:900 var(--ls-s)/1.2 var(--font-ui);}
+.ls-root .ls-stage-body > .bt-viewpane .bt-small,.ls-root .ls-stage-body > .bt-viewpane p{margin:0;font-size:var(--ls-s);}
+.ls-root .ls-stage-body > .bt-view-off{display:none !important;}
+.ls-root .bt-viewpane .bt-tabs{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0;}
+.ls-root .bt-viewpane .bt-tabs .bt-btn{flex:none;min-height:36px;padding:0 12px;border:0;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:800 var(--ls-s)/1.2 var(--font-ui);}
+.ls-root .bt-viewpane .bt-tabs .bt-btn[aria-pressed=true]{background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-root .bt-viewpane .bt-stage.two{display:flex;flex-direction:column;gap:10px;margin:0;}
+@media (min-width:900px){.ls-root .bt-viewpane .bt-stage.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}}
+/* Signal transduction, portrait phone: the ladder in two columns (signal-transduction-amplification.js ladder2) */
+.sg-fig.sg-two .sg2-n{font:800 11.5px var(--font-ui);}
+.sg-fig.sg-two .sg2-v{font:900 12.5px var(--font-mono);}
+.sg-fig.sg-two .sg2-tag{font:900 10.5px var(--font-ui);}
+.sg-fig.sg-two text.note.sg2-g{fill:var(--muted);font:700 11px var(--font-ui);}
+.ls-root.ls-phone .sg-fig.sg-two text.note{font-size:11px;}
+.ls-root.ls-phone .sg-stagefig:has(> svg.sg-two){padding-bottom:48px;} /* the last rung scrolls clear of Enlarge */

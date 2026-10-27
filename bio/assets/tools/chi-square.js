@@ -196,7 +196,7 @@
   function stage(host, s){
     var x = s.input, a = s.answers || {}, chk = s.phase === 'checked';
     var N = M.sum(x.obs), exp = x.props.map(function(q){ return q * N; }), res = M.chiSquare(x.obs, exp);
-    var mineE = x.cats.map(function(c, i){ return S.num(a['exp-' + i]); });
+    var mineE = x.cats.map(function(c, i){ var e = S.num(a['exp-' + i]); return e >= 0 ? e : NaN; });   // a typed negative count is not drawn
     var dfT = S.num(a.df), df = chk ? res.df : (dfT >= 1 && dfT <= 8 && dfT === Math.round(dfT) ? dfT : null);
     var cT = S.num(a.crit), xT = S.num(a.chi2);
     var v = { cats: x.cats, obs: x.obs, ymax: T.niceMax(Math.max.apply(null, x.obs.concat(exp)) * 1.2),

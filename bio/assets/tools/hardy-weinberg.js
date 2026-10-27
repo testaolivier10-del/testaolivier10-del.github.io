@@ -26,7 +26,7 @@
     var q = 1 - p, s = Z * p, h = [], A = o.A || 'A', a = o.a || 'a';
     function cell(x, y, w, hh, cls, lab, f){
       h.push('<rect class="hw-cell ' + cls + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + Math.max(0, w).toFixed(1) + '" height="' + Math.max(0, hh).toFixed(1) + '"/>');
-      if(w > 40 && hh > 30) h.push('<text class="hw-cl" x="' + (x + w / 2).toFixed(1) + '" y="' + (y + hh / 2 - 2).toFixed(1) + '" text-anchor="middle">' + esc(lab) + '</text><text class="hw-cv" x="' + (x + w / 2).toFixed(1) + '" y="' + (y + hh / 2 + 13).toFixed(1) + '" text-anchor="middle">' + F(f, 3) + '</text>');
+      if(w > 40 && hh > 30) h.push('<text class="hw-cl ' + cls + '" x="' + (x + w / 2).toFixed(1) + '" y="' + (y + hh / 2 - 2).toFixed(1) + '" text-anchor="middle">' + esc(lab) + '</text><text class="hw-cv ' + cls + '" x="' + (x + w / 2).toFixed(1) + '" y="' + (y + hh / 2 + 13).toFixed(1) + '" text-anchor="middle">' + F(f, 3) + '</text>');
     }
     cell(X0, Y0, s, s, 'g0', A + A, p * p);
     cell(X0 + s, Y0, Z - s, s, 'g1', A + a, p * q);
@@ -63,7 +63,11 @@
     h.push('<text class="sk-ph" x="' + PX + '" y="' + (PY - 8) + '">' + esc(title || (tot > 100 ? '100 of ' + tot + ', in proportion' : tot + ' individuals')) + '</text>');
     return h.join('');
   }
-  function key(A, a, unk){
+  /* phen: one phenotype per genotype ([AA, Aa, aa]) when the alleles are
+     incompletely dominant (snapdragons: red, pink, white). Then there is no
+     carrier and no recessive trait: every genotype shows. */
+  function key(A, a, unk, phen){
+    if(phen) return '<p class="hw-key"><span><i class="hw-k g0"></i>' + A + A + ' (' + esc(phen[0]) + ')</span><span><i class="hw-k g1"></i>' + A + a + ' (' + esc(phen[1]) + ')</span><span><i class="hw-k g2 sq"></i>' + a + a + ' (' + esc(phen[2]) + ')</span></p>';
     return '<p class="hw-key"><span><i class="hw-k g0"></i>' + A + A + '</span><span><i class="hw-k g1"></i>' + A + a + ' (carrier)</span><span><i class="hw-k g2 sq"></i>' + a + a + ' (shows the recessive trait)</span>' + (unk ? '<span><i class="hw-k unk"></i>' + A + A + ' or ' + A + a + ': looks the same</span>' : '') + '</p>';
   }
   function plain(s){ return String(s).replace(/<sup>(.*?)<\/sup>/g, '$1').replace(/<[^>]+>/g, ''); }
@@ -121,7 +125,7 @@
         : 'The square is split at the true p = ' + F(pTrue, 2) + '. Its two pq cells add up to 2pq, the heterozygotes expected at equilibrium; compare that with the dotted circles actually counted.')
       : pUse != null ? 'The square is split at your ' + (fromP ? 'p' : '1 − q') + ' = ' + F(pUse, 2) + ': its cells are p², two pq and q².'
       : rec ? 'You can see who shows the trait (squares), but not who is a carrier. Type p or q and the Punnett square splits to match.' : 'Each symbol is one individual. Count alleles: every individual carries two. Type p or q and the square splits to match.';
-    S.redraw(host, '<div class="sk-fig">' + svg + '</div>' + key(esc(A), esc(al), rec && !chk) + '<p class="sk-cap">' + cap + '</p>');
+    S.redraw(host, '<div class="sk-fig' + (x.phen && !rec ? ' hw-phen' : '') + '">' + svg + '</div>' + key(esc(A), esc(al), rec && !chk, rec ? null : x.phen) + '<p class="sk-cap">' + cap + '</p>');
   }
 
   T.mount('hardy-weinberg', function(app, data){

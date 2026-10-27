@@ -602,62 +602,118 @@
       var r = M.rng(seed), ctx = r.pick(contexts), input = P.generate[kind](r, ctx);
       return { input: input, topic: ctx.topic, unit: ctx.unit, cid: ctx.id, title: 'Practice problem', code: seed, text: input.text };
     }
-    // retry: the same problem drawn again after a Check ("Try this one
-    // again"). Its answers are not tallied a second time, so question stats
-    // keep measuring first attempts.
+    // retry: the same problem drawn again after it is finished ("Try this
+    // one again"). Its answers are not tallied a second time, so question
+    // stats keep measuring first attempts.
+    //
+    // Each part is checked on its own, one at a time, like the chem and
+    // physics step drills (chem-tools.js drill): a wrong answer gets the
+    // feedback for the slip it matches (part.slips, from the solver) or the
+    // part's method hint (part.hint), and the student can try again or Show
+    // the answer. The first try is what is recorded. The next part appears
+    // once this one is right or shown; after the last, the worked solution.
     function draw(focus, retry){
-      var cur = current(), sol = P.solve[kind](cur.input), done = false;
+      var cur = current(), sol = P.solve[kind](cur.input), finished = false, first = {}, at = 0;
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h">' + esc(cur.title) + '</h2>' + (cur.code ? '<p class="bt-code">Problem code <b>' + cur.code + '</b> <a href="?seed=' + cur.code + '">Link to this problem</a></p>' : '') + '</div>' +
         '<div class="bt-context">' + (cur.text || '') + '</div>' + (sol.table ? wrapTables(sol.table) : '') +
-        '<form class="bt-parts" novalidate>' + sol.parts.map(function(p, i){ return partHtml(p, gid + '-p' + i); }).join('') +
-        '<div class="bt-actions"><button type="submit" class="btn-press sm">Check answers</button></div></form>' +
+        '<form class="bt-parts bt-parts-step" novalidate></form>' +
         '<div class="bt-result" role="status" aria-live="polite"></div><div class="bt-solution" hidden></div>' +
         '<div class="bt-next"></div>';
-      var form = area.querySelector('form'), stage = null;
+      var form = area.querySelector('form'), stage = null, state = null;
+      area.setAttribute('data-parts', String(sol.parts.length));
+      function partEl(p){ return form.querySelector('[data-key="' + p.key + '"]'); }
+      // New parts go before the studio stepper's Back / Next row, if it is there.
+      function put(html){ var nav = form.querySelector(':scope > .ls-step-nav'); if(nav) nav.insertAdjacentHTML('beforebegin', html); else form.insertAdjacentHTML('beforeend', html); }
+      function answers(){
+        var a = {};
+        sol.parts.forEach(function(p){
+          var el = partEl(p);
+          if(!el){ a[p.key] = null; return; }
+          if(p.type === 'choice'){ var c = el.querySelector('input:checked'); a[p.key] = c ? +c.value : null; }
+          else { var x = Q.parseNumber(el.querySelector('input').value); a[p.key] = isNaN(x) ? null : x; }
+        });
+        return a;
+      }
       if(stageFn){
-        var state = { slug: slug, kind: kind, mode: mode, code: cur.code || null, index: mode === 'set' ? at : null, cid: cur.cid, topic: cur.topic, input: cur.input, sol: sol, answers: {}, graded: null, phase: 'new' };
+        state = { slug: slug, kind: kind, mode: mode, code: cur.code || null, index: mode === 'set' ? at : null, cid: cur.cid, topic: cur.topic, input: cur.input, sol: sol, answers: {}, graded: {}, phase: 'new' };
         stage = stageSlot(stageFn, state);
         area.insertBefore(stage.host, area.querySelector('.bt-context'));
-        var answers = function(){
-          var a = {};
-          sol.parts.forEach(function(p){
-            var el = form.querySelector('[data-key="' + p.key + '"]');
-            if(p.type === 'choice'){ var c = el.querySelector('input:checked'); a[p.key] = c ? +c.value : null; }
-            else { var x = Q.parseNumber(el.querySelector('input').value); a[p.key] = isNaN(x) ? null : x; }
-          });
-          return a;
-        };
         ['input', 'change'].forEach(function(t){ form.addEventListener(t, function(){ if(state.phase === 'checked') return; state.answers = answers(); state.phase = 'input'; stage.redraw(state); }); });
         stage.redraw(state);
       }
       if(o.decorate) o.decorate(area, cur.input, sol);
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        if(done) return;
-        var res = sol.parts.map(function(p, i){ return gradePart(p, form.querySelector('[data-key="' + p.key + '"]')); });
-        var blank = res.filter(function(x){ return !x.answered; }).length;
-        if(blank === res.length){ area.querySelector('.bt-result').textContent = 'Answer at least one part first.'; return; }
-        done = true;
-        var right = 0;
-        sol.parts.forEach(function(p, i){
-          var el = form.querySelector('[data-key="' + p.key + '"]'), r = res[i];
-          if(r.correct) right++;
-          el.classList.add(r.correct ? 'is-right' : 'is-wrong');
+      form.addEventListener('submit', function(e){ e.preventDefault(); var b = form.querySelector('.bt-part .bt-pcheck'); if(b && !finished) b.click(); });
+      function addPart(i){
+        if(i >= sol.parts.length) return finish();
+        var p = sol.parts[i], pid = gid + '-p' + i, tries = 0, locked = false;
+        put(partHtml(p, pid));
+        var el = partEl(p), fb = el.querySelector('.bt-part-fb');
+        fb.setAttribute('role', 'status'); fb.setAttribute('aria-live', 'polite');
+        fb.insertAdjacentHTML('beforebegin', '<div class="bt-actions bt-part-act"><button type="button" class="btn-press sm bt-pcheck">Check</button></div>');
+        var btn = el.querySelector('.bt-pcheck');
+        function lock(){
+          locked = true;
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'text') x.readOnly = true; else x.disabled = true; });
-          el.querySelector('.bt-part-fb').innerHTML = '<span class="bio-mark ' + (r.correct ? 'ok">Correct' : 'no">' + (r.answered ? 'Not quite' : 'Not answered')) + '</span>' + (r.correct ? '' : ' <span class="bt-key">Answer: ' + esc(r.shown) + '</span>');
+          var act = el.querySelector('.bt-part-act'); if(act) act.remove();
+        }
+        function advance(right){
+          if(!(p.key in first)) first[p.key] = right;
+          if(state){ state.graded[p.key] = { correct: right, answered: true }; }
+          lock();
+          addPart(i + 1);
+          var nx = sol.parts[i + 1] ? partEl(sol.parts[i + 1]) : null;
+          if(nx && !finished){ var f = nx.querySelector('input:not([readonly]):not([disabled])'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){ f.focus(); } }
+        }
+        function reveal(){
+          if(p.type === 'choice'){ var c = el.querySelector('input[value="' + p.correct + '"]'); if(c) c.checked = true; }
+          else el.querySelector('input').value = F(p.answer, p.d);
+          el.classList.remove('is-wrong'); el.classList.add('is-shown');
+          fb.innerHTML = '<span class="bio-mark no">Shown</span> <span class="bt-key">Answer: ' + esc(p.type === 'choice' ? p.options[p.correct] : F(p.answer, p.d) + (p.unit ? ' ' + p.unit : '')) + '</span>' + (p.hint ? '<p class="bt-hint-m">' + escLabel(p.hint) + '</p>' : '');
+          if(state){ state.answers = answers(); stage.redraw(state); }
+          if(!(p.key in first)) first[p.key] = false;
+          advance(false);
+        }
+        btn.addEventListener('click', function(){
+          if(locked) return;
+          var g = gradePart(p, el);
+          if(!g.answered){ fb.innerHTML = '<span class="bt-small">' + (p.type === 'choice' ? 'Choose an answer first.' : 'Type a number first.') + '</span>'; return; }
+          tries++;
+          if(g.correct){
+            el.classList.remove('is-wrong'); el.classList.add('is-right');
+            fb.innerHTML = '<span class="bio-mark ok">Correct</span>';
+            advance(tries === 1);
+            return;
+          }
+          if(tries === 1) first[p.key] = false;
+          el.classList.add('is-wrong');
+          var why = '';
+          if(p.type === 'num' && p.slips){
+            var x = Q.parseNumber(el.querySelector('input').value);
+            p.slips.some(function(sl){ var t = Math.max(p.tol, Math.abs(sl.value) * 0.01); if(Math.abs(x - sl.value) <= t + 1e-9){ why = sl.why; return true; } return false; });
+          }
+          // A right number rounded the wrong way: say so (it is not a method slip).
+          if(!why && p.type === 'num'){ var xx = Q.parseNumber(el.querySelector('input').value); if(Math.abs(xx - p.answer) <= Math.max(p.tol * 10, Math.abs(p.answer) * 0.03)) why = 'Close. Recheck the arithmetic and round only at the end, to ' + (p.d === 0 ? 'a whole number' : p.d + ' decimal place' + (p.d === 1 ? '' : 's')) + '.'; }
+          fb.innerHTML = '<span class="bio-mark no">Not yet</span>' + (why ? ' ' + escLabel(why) : '') +
+            (p.hint ? '<p class="bt-hint-m"><b>Method:</b> ' + escLabel(p.hint) + '</p>' : '') +
+            '<div class="bt-actions"><button type="button" class="bt-btn bt-show">Show the answer</button></div>';
+          fb.querySelector('.bt-show').addEventListener('click', reveal);
+          event('apbio-skill-step', { tool: slug, part: p.key, slip: why ? 1 : 0 });
         });
-        form.querySelector('.bt-actions').innerHTML = report(slug + ':' + cur.cid);
+        el.addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.type === 'text'){ e.preventDefault(); btn.click(); } });
+      }
+      function finish(){
+        finished = true;
+        form.classList.add('bt-finished');
+        var right = 0;
+        sol.parts.forEach(function(p){ if(first[p.key]) right++; });
         var solEl = area.querySelector('.bt-solution');
         solEl.hidden = false;
         solEl.innerHTML = '<h3>Worked solution</h3><ol class="bt-steps">' + sol.steps.map(function(s){ return '<li>' + wrapTables(s) + '</li>'; }).join('') + '</ol>';
-        area.querySelector('.bt-result').textContent = right + ' of ' + sol.parts.length + ' parts right. The worked solution follows.';
-        if(stage){
-          var g = {};
-          sol.parts.forEach(function(p, i){ g[p.key] = { correct: res[i].correct, answered: res[i].answered }; });
-          state.answers = answers(); state.graded = g; state.phase = 'checked'; stage.redraw(state);
-        }
-        if(!retry) record(slug, sol.parts.map(function(p, i){
-          return { id: slug + ':' + cur.cid + ':' + p.key, correct: res[i].correct, topic: (data.partTopics && data.partTopics[p.key]) || cur.topic, practice: p.practice, level: 'apply', diff: 2, group: p.key };
+        area.querySelector('.bt-result').textContent = right + ' of ' + sol.parts.length + ' parts right the first time. The worked solution follows.';
+        put('<div class="bt-actions bt-form-report">' + report(slug + ':' + cur.cid) + '</div>');
+        if(stage){ state.answers = answers(); state.phase = 'checked'; stage.redraw(state); }
+        if(!retry) record(slug, sol.parts.map(function(p){
+          return { id: slug + ':' + cur.cid + ':' + p.key, correct: !!first[p.key], topic: (data.partTopics && data.partTopics[p.key]) || cur.topic, practice: p.practice, level: 'apply', diff: 2, group: p.key };
         }));
         event('apbio-skill-check', { tool: slug, correct: right, total: sol.parts.length, retry: retry ? 1 : 0 });
         var nx = area.querySelector('.bt-next');
@@ -668,16 +724,17 @@
         if(again) again.addEventListener('click', function(){ if(mode === 'practice') seed = freshSeed(); else at++; draw(true); });
         var redoBtn = nx.querySelector('.bt-redo');
         if(redoBtn) redoBtn.addEventListener('click', function(){ draw(true, true); });
-        // Answers lock after Check. Students kept tapping the locked boxes
+        // Answers lock once checked. Students kept tapping the locked boxes
         // (rage clicks, 2026-10-25), so say why and point to the way on.
         form.addEventListener('pointerdown', function(ev){
           if(!ev.target.closest || !ev.target.closest('.bt-part')) return;
-          area.querySelector('.bt-result').textContent = right + ' of ' + sol.parts.length + ' parts right. Answers lock once checked: ' +
+          area.querySelector('.bt-result').textContent = right + ' of ' + sol.parts.length + ' parts right the first time. Answers lock once checked: ' +
             (redo ? 'press Try this one again to redo it, or ' : '') + (again ? 'press ' + again.textContent + ' for a fresh one.' : 'switch to Practice for new numbers.');
         });
-        solEl.querySelector('h3').setAttribute('tabindex', '-1');
-        solEl.querySelector('h3').focus();
-      });
+        area.dispatchEvent(new CustomEvent('bt-skill-done', { bubbles: true }));
+        if(!window.LevlStudio || !window.LevlStudio.on()){ solEl.querySelector('h3').setAttribute('tabindex', '-1'); solEl.querySelector('h3').focus(); }
+      }
+      addPart(0);
       if(focus){ var h = area.querySelector('h2'); h.setAttribute('tabindex', '-1'); h.focus(); }
     }
     draw(false);
@@ -792,8 +849,11 @@
       var h2 = area.querySelector('.bt-prob-head h2');
       if(h2) h2.classList.add('sr-only');
       var form = area.querySelector('form.bt-parts');
-      if(form) window.LevlStudio.stepper(form, { items: ':scope > .bt-part', submit: ':scope > .bt-actions',
-        done: function(){ return !!form.querySelector('.bt-part.is-right, .bt-part.is-wrong'); } });
+      // One part at a time: the tool appends the next part once this one is
+      // right or shown (skillTool), and the stepper follows it.
+      if(form) window.LevlStudio.stepper(form, { items: ':scope > .bt-part', submit: ':scope > .bt-form-report', label: 'Part',
+        total: function(){ return form.classList.contains('bt-parts-step') ? +(area.getAttribute('data-parts') || 0) : 0; },
+        done: function(){ return form.classList.contains('bt-finished'); } });
       s.caption(esc(text), m); s.pills([], 'left', m);
     }
     function checked(){
@@ -803,12 +863,12 @@
       why.appendChild(sol);
       var mm = /(\d+) of (\d+)/.exec(t);
       if(mm) s.pills([{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }], 'left', m);
-      s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right.</b> ' : '') + 'The worked solution is under Why.', m);
+      s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right the first time.</b> ' : '') + 'The worked solution is under Why.', m);
       var nx = area.querySelector('.bt-next .btn-press');
       if(nx) nx.classList.add('ls-btn', 'ls-pri');
     }
     if(window.MutationObserver) new MutationObserver(fresh).observe(area, { childList: true });
-    area.addEventListener('submit', function(){ setTimeout(checked, 0); });
+    area.addEventListener('bt-skill-done', function(){ setTimeout(checked, 0); });
     fresh();
   }
 
@@ -943,6 +1003,7 @@
     function take(x){ if(parts.indexOf(x) < 0) parts.push(x); return x; }
     studioVirtual(card, parts);
     stageEls.forEach(function(x){ s.add('stage', take(x), only); });
+    if(cfg.views) stageViews(s, card, cfg.views, stageEls.slice(), take, only);
     // The primary controls: the first n of the tool's .bt-controls. A tool
     // that rebuilds its controls (ctl.innerHTML = '') gets them re-split.
     function split(){
@@ -982,6 +1043,43 @@
     s.add('details', det, only);
     card.hidden = true;
     studioMirror(s, card, parts, cfg, m, first);
+  }
+  /* Key graphs on the stage (tool audit 2026-10): a simulator's graphs used
+     to wait under Details. cfg.views = [{ sel, label, show? }]: each element
+     (found in the card) moves to the stage behind a row of toggle chips
+     ("Picture" first); a graph takes the picture's place (and the stage's
+     extras, figs) while it is on, so it is big enough to read on a phone.
+     The choice is remembered per tool. The tool keeps drawing into the
+     element, so the graph stays live while the controls move. */
+  function stageViews(s, card, views, figs, take, only){
+    var P = Element.prototype.querySelector;
+    var items = views.map(function(v){ var el = P.call(card, v.sel); return el ? { el: el, label: v.label } : null; }).filter(Boolean);
+    if(!items.length) return;
+    var key = 'apbio_view_' + (card.getAttribute('aria-labelledby') || card.className.split(' ').join('.')), cur = 0;
+    try{ cur = +(localStorage.getItem(key) || 0); }catch(e){}
+    if(!(cur >= 0 && cur <= items.length)) cur = 0;
+    var bar = document.createElement('div');
+    bar.className = 'bt-views';
+    bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Show on the stage');
+    bar.innerHTML = '<button type="button" class="bt-view" data-i="0">Picture</button>' + items.map(function(it, i){ return '<button type="button" class="bt-view" data-i="' + (i + 1) + '">' + esc(it.label) + '</button>'; }).join('');
+    s.add('stage', take(bar), only);
+    items.forEach(function(it){ it.el.classList.add('bt-viewpane'); it.el.classList.remove('bt-num'); s.add('stage', take(it.el), only); });
+    function paint(){
+      Array.prototype.forEach.call(bar.children, function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-i') === cur)); });
+      items.forEach(function(it, i){ it.el.hidden = cur !== i + 1; });
+      var it = items[cur - 1];
+      figs.forEach(function(f){ f.classList.toggle('bt-view-off', !!it); });
+      // A graph drawn while hidden can come out the wrong size: nudge a resize.
+      try{ window.dispatchEvent(new Event('resize')); }catch(e){}
+    }
+    bar.addEventListener('click', function(e){
+      var b = e.target.closest && e.target.closest('.bt-view'); if(!b) return;
+      cur = +b.getAttribute('data-i');
+      try{ localStorage.setItem(key, String(cur)); }catch(e2){}
+      event('apbio-tool-view', { view: cur ? items[cur - 1].label : 'picture' });
+      paint();
+    });
+    paint();
   }
   /* Caption and pills from a card's live parts, repainted after every
      change in them (a frame later): cfg.caption(g) / cfg.pills(g) /
@@ -1080,7 +1178,7 @@
     studioVirtual: studioVirtual, studioKeep: studioKeep, firstSentence: firstSentence,
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, barPath: barPath, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
-    record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
+    record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool, stageViews: stageViews,
     gradePart: gradePart, partHtml: partHtml, unitOf: unitOf
   };
 })();
