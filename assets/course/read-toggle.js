@@ -10,6 +10,8 @@
      data-rt="lesson"  on a lesson page; data-rt-book is the textbook's address from that page
                        (e.g. "../learn.html"). The topic is body[data-topic], else the page's file name.
      data-rt-course    the course key, for the remembered choice.
+     data-rt-root      on a textbook page that is not at the course root (NREMT's nremt/notes/*.html: "../"),
+                       the way back to it, so the remembered lesson (lessons/<id>.html) still resolves.
    All three are optional (see the defaults below), so the builders load it as a plain script.
 
    Switching keeps the topic: Interactive opens the lesson of the section being read, Read opens the textbook at
@@ -121,7 +123,7 @@
         };
         tryHash();
       } else if(state.href && /^lessons\/[\w-]+\.html$/.test(state.href)){
-        go(state.href);
+        go((me.getAttribute('data-rt-root') || '') + state.href);
       }
     }
     pick();

@@ -7,7 +7,7 @@
   "steps": [
     {
       "find": "The bleeding from a limb is life-threatening (spurting, pooling, an amputation) or is not controlled by direct pressure.",
-      "act": "Apply a commercial windlass tourniquet now, not after a long series of other measures. Improvised tourniquets often fail: without a windlass they cannot be tightened enough, and they are usually too narrow to close the artery."
+      "act": "Apply a commercial windlass tourniquet now, not after a long series of other measures. EMS units carry commercial tourniquets; improvising one is for a lay rescuer with nothing else, and the 2023 joint position statement does not recommend improvised tourniquets prehospital: too loose occludes only the veins, too narrow damages tissue and struggles to occlude the artery."
     },
     {
       "find": "You can see where the bleeding is coming from.",
@@ -27,7 +27,7 @@
     },
     {
       "find": "The wound is in the groin, the armpit or the base of the neck, where no tourniquet fits.",
-      "act": "In the groin or armpit, pack gauze (plain, or hemostatic where protocol allows) into the wound down to the source of the bleeding, fill the cavity tightly, and hold firm pressure for at least 3 minutes. A neck wound gets an occlusive dressing, to keep air out of the veins (air embolism), and direct pressure that does not compress the airway or both carotid arteries; pack it only with caution and per protocol."
+      "act": "In the groin or armpit, pack gauze (plain, or hemostatic where protocol allows) into the wound down to the source of the bleeding, fill the cavity tightly, and hold firm pressure: at least 3 minutes for hemostatic gauze; with plain gauze, until the bleeding is controlled or care is handed over. A neck wound gets an occlusive dressing, to keep air out of the veins (air embolism), and direct pressure that does not compress the airway or both carotid arteries; pack it only with caution and per protocol."
     }
   ],
   "ideas": [
@@ -85,7 +85,7 @@
         "Pack gauze into the wound, then hold firm pressure at least 3 minutes"
       ],
       "correct": 3,
-      "why": "The groin is a junctional area where a tourniquet will not fit. Gauze is packed into the wound down to the bleeding source and held under firm pressure for at least 3 minutes. Gauze laid on top is a dressing, not packing."
+      "why": "The groin is a junctional area where a tourniquet will not fit. Gauze is packed into the wound down to the bleeding source and held under firm pressure: at least 3 minutes for hemostatic gauze, and with plain gauze until the bleeding is controlled. Gauze laid on top is a dressing, not packing."
     },
     {
       "q": "Two minutes after you apply a tourniquet, the patient begs you to loosen it because of the pain. What do you do?",

@@ -70,7 +70,9 @@
     nremt: {
       name: 'NREMT-EMT Prep',
       dailyFree: 15,
-      freeChapters: [],
+      // The interactive lessons of chapters 1 to 8 (docs/nremt-lessons-spec.md, owner 2026-10-26); the notes are
+      // always free. Ids are 'ch' + the chapter number in nremt/assets/study-notes.json.
+      freeChapters: ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8'],
       compare: 'For comparison: Pocket Prep EMS is $15.99 a month or $39.99 for 3 months (checked October 2026).',
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
@@ -88,6 +90,7 @@
         'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',
         'The clinical scenario simulator',
+        'The interactive lessons after chapter 8',
       ],
     },
     ochem: {

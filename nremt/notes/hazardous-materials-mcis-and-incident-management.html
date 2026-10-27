@@ -41,10 +41,6 @@
      questions, tools) and the printable whole book. */
   .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
   .tb-chapter-meta .bk-actions{margin:12px 0 0;}
-  /* A section's interactive lesson (scripts/build-nremt-lessons.mjs). */
-  .nl-link{margin:4px 0 14px;}
-  .nl-link a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--tint-accent);color:var(--accent-text);font:800 13.5px var(--font-ui);text-decoration:none;}
-  .nl-link a:hover{text-decoration:underline;}
   .bk-sec .domain-tag{
     font:900 10.5px var(--font-ui);color:var(--cink);
     background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
@@ -269,7 +265,7 @@
     <div data-chapter="39">
     <!-- r3:head -->
 <p class="bk-lede">Some incidents are too large or too dangerous for a single crew, and they demand a system. This chapter covers hazardous materials: the zones, the EMT's role and identifying the substance; then multiple-casualty incidents: disaster plans, the Incident Command System, triage priorities and the START method, and the logistics of staging and transport.</p>
-<section class="section bk-sec" id="ch39-hazmat" data-num="39.1" data-title="Hazardous Materials">
+<section class="section bk-sec" id="ch39-hazmat" data-lesson="" data-num="39.1" data-title="Hazardous Materials">
     <div class="bk-sec-head">
       <h2><span class="bk-toc-n">39.1</span>Hazardous Materials</h2>
       
@@ -296,7 +292,7 @@
             <p>Some parts of the body hold residual contamination and are easily missed. Pay particular attention to the scalp and hair, the groin, the buttocks, the armpits, the spaces between the fingers and toes, the ear canals and the navel.</p>
     </div></div>
   </section>
-<section class="section bk-sec" id="ch39-mci-ics" data-num="39.2" data-title="Multiple-Casualty Incidents &amp; ICS">
+<section class="section bk-sec" id="ch39-mci-ics" data-lesson="" data-num="39.2" data-title="Multiple-Casualty Incidents &amp; ICS">
     <div class="bk-sec-head">
       <h2><span class="bk-toc-n">39.2</span>Multiple-Casualty Incidents & ICS</h2>
       
@@ -325,7 +321,7 @@
     </div>
 <div class="topic" id="ch39-mci-ics--4" data-heading="START triage — RPM">
       <h3>START triage — RPM</h3>
-      <p>START triage is meant to be fast: about 30 seconds with each patient. What you assess is captured by the mnemonic <strong>RPM</strong>, for Respiration, Pulse and Mental status. Only 3 treatments are permitted while triaging: opening the airway and inserting an oropharyngeal airway (OPA), controlling bleeding, and elevating an extremity.</p>
+      <p>START triage is meant to be fast: about 30 seconds with each patient. What you assess is captured by the mnemonic <strong>RPM</strong>, for Respiration, Pulse and Mental status. Only quick, lifesaving treatments are permitted while triaging: opening the airway (and inserting an oropharyngeal airway, OPA) and controlling bleeding (direct pressure or a tourniquet).</p>
             <p>The table below gives the criteria that place a patient in each category.</p>
             <p class="tb-caption"><b>Table 39.3</b>START triage — RPM</p><div class="table-wrap"><table><thead><tr><th>Priority</th><th>Criteria</th></tr></thead><tbody>
             <tr><td>Red (1)</td><td>Altered mental status OR absent radial pulse OR RR &gt;30</td></tr>
@@ -382,5 +378,6 @@
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
 <script src="../../assets/course/book.js" defer></script>
 <script src="../assets/nav.js" defer></script>
+<script src="../../assets/course/read-toggle.js" data-rt="book" data-rt-course="nremt" data-rt-root="../" defer></script>
 </body>
 </html>

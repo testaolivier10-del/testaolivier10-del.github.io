@@ -54,6 +54,7 @@ import { loadChapters, chapterSlug } from './lib/nremt-notes.mjs';
 import { applyVideo } from './lib/videos.mjs';
 import { r3Reading } from './lib/r3-reading.mjs';
 import { loadLessons } from './lib/nremt-lessons.mjs';
+import { premiumData } from './lib/premium-data.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -147,12 +148,15 @@ function sectionHtml(sec, si, ch, counter) {
       <div class="tk-title">Key points · ${sectionNumber(ch, si)}</div>
       <ul>${sec.takeaways.map((k) => `<li>${rebase(k)}</li>`).join('')}</ul>
     </div>` : '';
-  return `<section class="section bk-sec" id="${sec.id}" data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
+  const L = LESSON_BY_SECTION.get(sec.id);
+  // The Read | Interactive switch (assets/course/read-toggle.js) reads the section's lesson from data-lesson.
+  const lessonAttrs = L ? ` data-lesson="../lessons/${L.id}.html"${premiumData().COURSES.nremt.freeChapters.includes(`ch${L.chapter}`) ? '' : ' data-lesson-premium="1"'}` : ' data-lesson=""';
+  return `<section class="section bk-sec" id="${sec.id}"${lessonAttrs} data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
     <div class="bk-sec-head">
       <h2><span class="bk-toc-n">${sectionNumber(ch, si)}</span>${sec.title}</h2>
       ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
     </div>
-    ${LESSON_BY_SECTION.has(sec.id) ? `<p class="nl-link"><a href="../lessons/${LESSON_BY_SECTION.get(sec.id).id}.html">Interactive lesson: ${esc(LESSON_BY_SECTION.get(sec.id).title)} &rarr;</a></p>\n    ` : ''}${sec.note ? `<p class="section-note">${rebase(sec.note)}</p>\n    ` : ''}<div class="bk-prose" data-glossary-topic="">${topicsHtml}</div>${takeaways}
+    ${sec.note ? `<p class="section-note">${rebase(sec.note)}</p>\n    ` : ''}<div class="bk-prose" data-glossary-topic="">${topicsHtml}</div>${takeaways}
   </section>`;
 }
 
@@ -416,6 +420,7 @@ ${sections}
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
 <script src="../../assets/course/book.js" defer></script>
 <script src="../assets/nav.js" defer></script>
+<script src="../../assets/course/read-toggle.js" data-rt="book" data-rt-course="nremt" data-rt-root="../" defer></script>
 </body>
 </html>
 `;

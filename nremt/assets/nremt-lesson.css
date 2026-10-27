@@ -80,3 +80,8 @@
   .nl-chain li{grid-template-columns:minmax(0,1fr);}
   .nl-hint{display:none;}
 }
+/* A Premium lesson for a visitor without a pass (nremt-lesson.js lock()): the free textbook first, then the card. */
+.nl-locked{display:grid;gap:14px;}
+.nl-free-first{background:var(--white,#fff);border:1px solid var(--line);border-radius:20px;padding:22px clamp(18px,3vw,28px);display:grid;gap:12px;justify-items:start;}
+.nl-free-first p{margin:0;font-size:16px;line-height:1.6;}
+.nl-card[hidden],.nl-steps[hidden]{display:none;}
