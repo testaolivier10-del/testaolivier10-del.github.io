@@ -192,11 +192,31 @@
   };
   function styleOf(el){ return STYLE[el] || { color:'#8A9691', r:0.44, ink:'#FFFFFF' }; }
 
+  /* Full-strength CPK (audit 2026-10: the viewer's atoms read as grey and
+     white only). Carbon a true charcoal, hydrogen white with a grey rim,
+     oxygen red, nitrogen blue, the halogens green to purple, sulfur yellow,
+     phosphorus orange. A render opts in with {cpk:true}; a group's own style
+     (the chair's methyls) is left alone. */
+  var CPK = {
+    H:  { color:'#F4F4F2', r:0.30, ink:'#2A2A28' },
+    C:  { color:'#3A3F44', r:0.46, ink:'#FFFFFF' },
+    N:  { color:'#2F5BD3', r:0.46, ink:'#FFFFFF' },
+    O:  { color:'#E0352B', r:0.44, ink:'#FFFFFF' },
+    F:  { color:'#7BC043', r:0.40, ink:'#1D2B10' },
+    Cl: { color:'#22A84A', r:0.50, ink:'#FFFFFF' },
+    Br: { color:'#9C2A1C', r:0.56, ink:'#FFFFFF' },
+    I:  { color:'#7A2FB0', r:0.62, ink:'#FFFFFF' },
+    S:  { color:'#F2C230', r:0.54, ink:'#2A2A28' },
+    P:  { color:'#F07F1E', r:0.54, ink:'#FFFFFF' },
+    B:  { color:'#F2A7A0', r:0.48, ink:'#2A2A28' }
+  };
+  var useCpk = false;
+
   /* An atom may carry its own style, which is how a condensed group drawn as
      one sphere — a methyl, a tert-butyl — gets a size that reflects how much
      room it actually takes up, instead of every substituent rendering as an
      identically sized carbon. */
-  function styleFor(atom){ return atom.style || styleOf(atom.el); }
+  function styleFor(atom){ return atom.style || (useCpk && CPK[atom.el]) || styleOf(atom.el); }
 
   /* ---- Molecule construction -------------------------------------------- */
 
@@ -410,6 +430,7 @@
 
   function render(mol, opt){
     opt = opt || {};
+    useCpk = !!opt.cpk;
     // One gradient namespace per render, so two viewers on a page never emit
     // the same id twice.
     var scope = gradScope();
@@ -542,9 +563,13 @@
       var fontSize = Math.max(8, r * (mode === 'space' ? 0.55 : 0.92));
       var fill = (mode === 'wire' && !opt.flat) ? s.color : 'url(#' + gradIdFor(s.color, scope) + ')';
 
+      /* The selected ("ringed") atom gets a halo a student can actually see
+         (audit 2026-10): a soft accent glow and a dashed ring clear of the
+         sphere, drawn with the atom so depth sorting keeps it right. */
+      var halo = selected && opt.halo ? '<circle class="m3d-halo" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + (r + 9).toFixed(1) + '" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 4"/>' : '';
       items.push({ z: p.z, svg:
         '<g class="m3d-atom' + (selected ? ' is-selected' : '') + '" data-atom="' + i + '" tabindex="0" role="button" ' +
-          'aria-label="' + a.el + '" opacity="' + fade(p.z) + '">' +
+          'aria-label="' + a.el + '" opacity="' + (selected && opt.halo ? 1 : fade(p.z)) + '">' + halo +
           '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="' + fill + '"' +
             (selected ? ' stroke="var(--accent)" stroke-width="3.5"' : ' stroke="' + shift(s.color, -0.45) + '" stroke-width="1"') + '/>' +
           (opt.labels && r > 7
