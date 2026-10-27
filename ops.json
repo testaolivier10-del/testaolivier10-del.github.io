@@ -36,7 +36,8 @@
   "2026-10-25 weekly batch: analytics done (YouTube API, TikTok Studio, Supabase, Umami, Search Console via /u/1/). Google impressions collapsed to near zero since about Oct 12 (793 pages still indexed); flagged to Olivier, no search PR. Shorts w1025 planned and fact checked (pipeline/w1025/PLAN.md) but not built: the laptop dropped off before the art step; added to pending_reruns.",
   "2026-10-26 Olivier: the existing traced cast (paramedic, hoodie runner, jump girl) counts as flat layered; use it with new flat scenes.",
   "2026-10-26 daily run: checkup clean. Nothing approved to schedule; Buffer covers through 2026-10-31 (w1021-03 poll post manual for 10-31). gcs-floor set to posted. aspirin-chew got youtube_id 6TiRP0hL4BQ; the laptop dropped off mid run; once Olivier reopened it, its Studio thumbnail and related video (NREMT intro) were set in the same chat. No long video due. No new YouTube comments; TikTok comments not read (no Chrome).",
-  "2026-10-26 daily run: new TikTok comment (brandoo245, chair flip): a ring flip keeps up as up. He is right: in videos/w1006-03-chair-flip.mp4 the two axial up hydrogens end pointing straight down (still axial, wrong face). The file was never fixed, so the 10-18 draft to fattie8652 saying 'We've fixed it' is not true; Olivier was asked to approve a corrected wording. A redraw is a build task for Olivier to OK."
+  "2026-10-26 daily run: new TikTok comment (brandoo245, chair flip): a ring flip keeps up as up. He is right: in videos/w1006-03-chair-flip.mp4 the two axial up hydrogens end pointing straight down (still axial, wrong face). The file was never fixed, so the 10-18 draft to fattie8652 saying 'We've fixed it' is not true; Olivier was asked to approve a corrected wording. A redraw is a build task for Olivier to OK.",
+  "2026-10-26 chat: rechecked the chair flip after fleekoskeepo's reply. Each ring carbon has an axial and an equatorial H; the video draws only the axial H in each chair, so the 'down' H after the flip is the other hydrogen, which is chemically fine but misleading. tBu goes axial up to equatorial up correctly. brandoo245 draft reworded to say this."
  ],
  "pending_reruns": [],
  "related_check_after": null,
@@ -52,7 +53,8 @@
   "tt:cabezon_85:tourniquet:reply to hazard_5522",
   "tt:user7239963906276:acid-resonance:cool",
   "tt:cg02q_:sn2-umbrella:love sn2 not ai",
-  "tt:brandoo245:chair-flip:up stays up"
+  "tt:brandoo245:chair-flip:up stays up",
+  "tt:fleekoskeepo:chair-flip:reply to fattie8652 (both H drawn)"
  ],
  "comment_drafts": [
   {
@@ -116,8 +118,8 @@
    "video": "w1006-03-chair-flip",
    "author": "brandoo245",
    "comment": "If you are doing ring flips the direction does not change so up stays up and down stays down the only thing you change is axial and equatorial don't just follow ai like this one blindly it's giving you the wrong message tbu would go from ax up to eq up",
-   "reply": "You're right, thanks for calling it out. A ring flip keeps every group on the same face, so axial up becomes equatorial up, and our animation got the hydrogens wrong. The point that big groups prefer equatorial still holds, but the drawing should have shown that.",
-   "status": "drafted 2026-10-26"
+   "reply": "Good point, and you're right that a ring flip keeps every group on its own face, so axial up becomes equatorial up. That's what the tBu does. Each of those carbons also has a second hydrogen, and we only drew the axial one in each chair, so it looks like they switched faces. We should have drawn both.",
+   "status": "redrafted 2026-10-26 (pending Olivier OK)"
   }
  ],
  "series_counts": {
