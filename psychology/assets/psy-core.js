@@ -281,7 +281,7 @@
         ix.t[topic].split(',').forEach(function(e){
           var f = e.split('.');
           out.push({ id: 'psy-' + topic + '-' + f[0], topic: topic, unit: t.unit, type: ix.ty[+f[1]], level: ix.lv[+f[2]], diff: +f[3],
-            practice: ix.pr[+f[4]], stimulus: f[5] === '' || f[5] === undefined ? null : ix.st[+f[5]], set: ({ q: 'quantitative', v: 'visual', x: 'text' })[f[6]] || null, stub: true });
+            practice: ix.pr[+f[4]], stimulus: f[5] === '' || f[5] === undefined ? null : ix.st[+f[5]], set: ({ s: 'study', d: 'data', v: 'visual' })[f[6]] || null, stub: true });
         });
       });
       return out;

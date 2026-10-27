@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var app = document.getElementById('app');
   var M = window.LevlDashMastery, A = window.ApPsychCore, CU = window.ApPsychCurriculum;
   if(!app || !M || !A || !CU) return;
-  var FRQ_TYPES = { design: 'Q1: Design an investigation', data: 'Q2: Analyze and interpret quantitative data', calc: 'Q3: Analyze an environmental problem with calculations' };
+  var FRQ_TYPES = { aaq: 'Q1: Article Analysis Question', ebq: 'Q2: Evidence-Based Question' };
   function draw(){
     M.ap({ key: 'appsych', cls: 'psy', name: 'AP&reg; Psychology', A: A, CU: CU, base: window.ApPsychBase || '', root: app, tools: window.ApPsychToolList || [],
       band: false, practiceWord: 'science practice', practiceLabel: 'Science practices', frqTypes: FRQ_TYPES,

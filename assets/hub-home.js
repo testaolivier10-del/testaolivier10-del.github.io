@@ -20,6 +20,7 @@
       { key: 'apcalc', name: 'AP® Calculus AB', path: '/calculus/', status: 'live' },
       { key: 'apstat', name: 'AP® Statistics', path: '/statistics/', status: 'live' },
       { key: 'apenv', name: 'AP® Environmental Science', path: '/environmental-science/', status: 'live' },
+      { key: 'appsych', name: 'AP® Psychology', path: '/psychology/', status: 'hidden' },
     ];
     // courses:end
     var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){

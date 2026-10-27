@@ -27,12 +27,11 @@
    (assets/course/frq-grader.js) can pre-fill those checkboxes as an estimate. */
 (function(){
   var DRAFTS = 'appsych_frq_drafts_v1', PREFS = 'appsych_prefs_v1';
-  // The four free-response questions of May 2027, in exam order
-  // (docs/appsych-research/framework.md, section 4). Every question is worth
-  // 10 points; a calculator is allowed on all of them.
-  var TYPES = { design: 'Q1: Design an investigation', data: 'Q2: Analyze and interpret quantitative data', calc: 'Q3: Analyze an environmental problem with calculations' };
-  var ORDER = ['design', 'data', 'calc'];
-  function calcWord(){ return 'calculator allowed'; }
+  // The two free-response questions of May 2027, in exam order
+  // (docs/appsych-research/framework.md, section 5): 7 points each, no calculator.
+  var TYPES = { aaq: 'Q1: Article Analysis Question (AAQ)', ebq: 'Q2: Evidence-Based Question (EBQ)' };
+  var ORDER = ['aaq', 'ebq'];
+  function calcWord(){ return 'no calculator'; }
   var uid = 0;
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   /* An "Also accept" line: math the build rendered (<math>...</math>) is kept,
@@ -58,21 +57,23 @@
   function index(b){ return get(b, 'assets/frq/index.json'); }
   function load(b, id){ return get(b, 'assets/frq/' + id + '.json'); }
   function placePaths(h){ return String(h || '').replace(/(src|href)="figures\//g, '$1="' + base() + 'figures/'); }
+  /* What the student reads: the AAQ's study, or the EBQ's three sources,
+     each a study summary in the exam's sections (built by build-appsych.mjs). */
   function stim(f){
-    var s = f.stimulus || {}, id = 'frqs-' + f.id + '-' + (++uid);
-    var KIND = { table: 'Table', graph: 'Graph', diagram: 'Diagram' };
-    return '<section class="psy-stim" aria-labelledby="' + id + '"><p class="psy-stim-k">' + (KIND[s.kind] || 'Stimulus') + '</p><h3 id="' + id + '">' + (s.title || '') + '</h3>' + placePaths(s.html) + '</section>';
+    return (f.readings || []).map(function(s){
+      var id = 'frqs-' + f.id + '-' + (++uid);
+      return '<section class="psy-stim" aria-labelledby="' + id + '"><p class="psy-stim-k">' + (f.type === 'ebq' ? 'Source' : 'Study') + '</p><h3 id="' + id + '">' + (s.title || '') + '</h3>' + placePaths(s.html) + '</section>';
+    }).join('');
   }
-  /* The answer space a part needs on paper (build-appsych.mjs partSpace):
-     "graph" (a blank grid from graphSpec: sketch a curve, a slope field's
-     solution, a graph of f') or "lines". */
-  function space(f, p){ return p.space || (f.graphSpec && /sketch|graph|draw/i.test(String(p.prompt).replace(/<[^>]+>/g, '')) ? 'graph' : 'lines'); }
-  function isGraphPart(f, p){ return !!f.graphSpec && space(f, p) === 'graph'; }
+  /* Every part is written in lines on paper (nothing to graph). */
+  function space(){ return 'lines'; }
+  function isGraphPart(){ return false; }
   function pts(n){ return n + ' point' + (n === 1 ? '' : 's'); }
 
   function questionHtml(f, opts){
     opts = opts || {};
     var d = opts.write ? draft(opts.draftKey || f.id) : {};
+    if(opts.write){ checks[f.id] = f; wireChecks(); }
     return '<div class="psy-fq" data-frq="' + esc(f.id) + '">' +
       (opts.n ? '<p class="psy-fq-k">Question ' + opts.n + ' &middot; ' + esc(TYPES[f.type] || '') + ' &middot; ' + calcWord(f) + ' &middot; ' + pts(f.points) + '</p>' : '') +
       stim(f) +
@@ -100,34 +101,31 @@
         (opts.readonly ? '' : numCheckHtml(f, p, i)) + '</fieldset>';
     }).join('') + '</div>';
   }
-  /* "Check my number" (spec section 7, rule 5): a calculation part with a
-     `check` (its answer computed by the build from its recipe) gets one box:
-     a number with its unit (graded by ApPsychGrade.numeric, value and unit
-     apart) or a setup (graded by ApPsychExpr.gradeSetup). It never changes
-     the self-score. */
+  /* Hints as you write (spec section 7): a part with `write` rules (cite a
+     source, name a concept, avoid a restricted term) shows the rule flags of
+     ApPsychGrade.flags under its rubric. Hints only: they never change the
+     self-score. The EBQ's restricted terms come from the question. */
   function numCheckHtml(f, p, i){
-    var c = p.check, G = typeof window !== 'undefined' && window.ApPsychGrade;
-    if(!c || !G || !(c.type === 'numeric' || c.type === 'setup')) return '';
-    var id = 'fqn-' + f.id + '-' + i + '-' + (++uid), su = c.type === 'setup';
-    return '<div class="psy-fq-numchk" data-frq="' + esc(f.id) + '" data-part="' + i + '"><label for="' + id + '">Check my ' + (su ? 'setup' : 'number') + '</label>' +
-      '<span class="psy-num-row"><input type="text" id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="' + (su ? '(150 - 120) / 120 * 100' : '2.5 million kWh') + '">' +
-      '<button type="button" class="btn-outline sm">Check</button></span><p class="psy-small" role="status" aria-live="polite"></p></div>';
+    if(!p.write) return '';
+    return '<div class="psy-fq-flags" data-frq="' + esc(f.id) + '" data-part="' + i + '" aria-live="polite"></div>';
   }
   var checks = {};
   function wireChecks(){
     if(typeof document === 'undefined' || wireChecks.on) return;
     wireChecks.on = true;
-    function go(box){
-      var G = window.ApPsychGrade, f = checks[box.getAttribute('data-frq')], p = f && f.parts[+box.getAttribute('data-part')];
-      if(!G || !p || !p.check) return;
-      var c = p.check, v = box.querySelector('input').value, out = box.querySelector('[role="status"]');
-      var g = c.type === 'setup' ? (window.ApPsychExpr ? window.ApPsychExpr.gradeSetup({ setup: c.setup }, v) : { valid: false, notes: ['The checker did not load.'] }) : G.numeric(c.numeric, v);
-      if(g.error) g.notes = [g.error];
-      out.textContent = !g.valid ? (g.notes[0] || 'Type a number.') : (g.correct ? 'That matches.' : 'That does not match yet.') + (g.notes && g.notes.length ? ' ' + g.notes.join(' ') : '');
-      out.className = 'psy-small ' + (!g.valid ? '' : g.correct ? 'is-right' : 'is-wrong');
-    }
-    document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('.psy-fq-numchk button'); if(b) go(b.closest('.psy-fq-numchk')); });
-    document.addEventListener('keydown', function(e){ if(e.key !== 'Enter') return; var b = e.target.closest && e.target.closest('.psy-fq-numchk'); if(b && e.target.tagName === 'INPUT'){ e.preventDefault(); go(b); } });
+    document.addEventListener('input', function(e){
+      var ta = e.target.closest && e.target.closest('.psy-fq-answer');
+      if(!ta || !window.ApPsychGrade) return;
+      var fq = ta.closest('[data-frq]'), f = fq && checks[fq.getAttribute('data-frq')];
+      if(!f) return;
+      var i = -1; f.parts.forEach(function(p, k){ if(p.label === ta.getAttribute('data-part')) i = k; });
+      var p = f.parts[i], box = document.querySelector('.psy-fq-flags[data-frq="' + f.id + '"][data-part="' + i + '"]');
+      if(!p || !p.write || !box) return;
+      var W = {}; for(var k in p.write) W[k] = p.write[k];
+      if(f.restricted && !W.restricted) W.restricted = f.restricted;
+      var fl = window.ApPsychGrade.flags({ write: W }, ta.value).filter(function(x){ return !x.ok; });
+      box.innerHTML = fl.length ? '<ul class="psy-num-notes">' + fl.map(function(x){ return '<li>' + esc(x.hint) + '</li>'; }).join('') + '</ul>' : '';
+    });
   }
   function score(el){
     var parts = [], got = 0, of = 0;

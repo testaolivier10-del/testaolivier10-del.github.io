@@ -1,7 +1,7 @@
 /* AP® Psychology tool framework: what every trainer, skills tool and drill
    page shares (docs/appsych-architecture.md, "Tools"; the standards in
    docs/anp-tools-contract.md). Forked from ApPhysTools (docs/appsych-spec.md
-   decision 1), with `setup` and `unit` drill steps (the calculation graders). A tool is its script (psychology/assets/tools/<slug>.js),
+   decision 1), with `unit` drill steps (a number with its unit). A tool is its script (psychology/assets/tools/<slug>.js),
    its model (psychology/assets/tools/math/<slug>.js, ApPsychMath.<camelSlug>)
    and its data file (psychology/data/tools/<slug>.json); the generator serves a
    filtered copy at assets/tool-data/<slug>.json (only items whose topic is
@@ -505,15 +505,12 @@
 
   /* ------------------------------------------------- step drills */
   /* drill(app, data, o): the shared page for the seeded step drills
-     (calculations, cycles, chains). Every
+     (statistics, conditioning schedules, study analysis). Every
      problem comes from o.generate(rng, context, type), a pure ApPsychMath
      generator, so the validator and the page run the same numbers. A
      problem is { ctx, topic, text, steps: [...], solution: [...] }; a step
      is one of
        num    { cell, unit?, d? }          a number, graded by ApPsychMath.diagnose
-       setup  { cell: setupCell(...) }    a typed setup with a live preview, graded
-                                           by ApPsychMath.diagnoseSetup (value, brackets,
-                                           x 100, units cancelling)
        unit   { cell: unitCell(...) }     a number and its unit in two boxes, graded
                                            by ApPsychMath.diagnoseUnit (value and unit apart)
        vol    { cell, max }                a volume read off a graph (number + slider)
@@ -526,7 +523,7 @@
      o: { slug, generate, types?: [{ value, label }], typeLabel?, contexts?,
      extra(host, problem, api)?, onVol(v, step, api)?, onStep(step, right, api)?,
      title(problem)?, newLabel? } */
-  // Environmental science drills have no ICE "coef" rows; the step kind stays
+  // Psychology drills have no ICE "coef" rows; the step kind stays
   // for a tool that wants a row of symbolic cells, parsed by its own model.
   var parseCoef = function(raw){ return M.parseCoef ? M.parseCoef(raw) : numOf(raw); };
   var coefText = function(x){ return M.coefText ? M.coefText(x) : String(x); };
@@ -569,9 +566,6 @@
         if(s.kind === 'num' || s.kind === 'vol'){
           body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + sid + '-h"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
           if(s.kind === 'vol') body += '<div class="cd-vol"><label for="' + sid + '-r">Move the marker along the curve</label><input type="range" id="' + sid + '-r" min="0" max="' + s.max + '" step="0.1" value="' + M.round(s.max / 4, 1) + '"></div>';
-        } else if(s.kind === 'setup'){
-          body = '<div class="bt-num-row cd-expr"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + sid + '-p"></div>' +
-            '<div class="cd-expr-preview psy-expr-preview" id="' + sid + '-p" aria-live="polite"></div>';
         } else if(s.kind === 'unit'){
           body = '<div class="bt-num-row cd-num cd-unit"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"><label class="bt-small" for="' + sid + '-u">Unit</label><input type="text" class="cd-u" id="' + sid + '-u" autocomplete="off" spellcheck="false"></div>';
         } else if(s.kind === 'choice'){
@@ -600,17 +594,7 @@
           // On the Tool Studio stage the table can be taller than the stage: bring the row to fill into view.
           if(activeRow.closest('.ls-stage-body') && activeRow.scrollIntoView){ try{ activeRow.scrollIntoView({ block: 'nearest' }); }catch(e){} }
         }
-        var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input, .cd-expr input'), uIn = el.querySelector('.cd-u'), range = el.querySelector('.cd-vol input');
-        if(s.kind === 'setup'){
-          var pv = el.querySelector('.cd-expr-preview'), E = s.cell.setup, tmr = null;
-          input.addEventListener('input', function(){
-            clearTimeout(tmr);
-            tmr = setTimeout(function(){
-              var v = input.value.trim(), r = v ? M.evaluate(v, E.bind || {}, E.units || []) : null;
-              pv.innerHTML = !r ? '' : r.ok ? '<span class="bt-small">Reads as</span> ' + window.ApPsychTex.render(r.tex) : '<span class="psy-expr-err">' + esc(r.error) + '</span>';
-            }, 120);
-          });
-        }
+        var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), uIn = el.querySelector('.cd-u'), range = el.querySelector('.cd-vol input');
         if(range){
           var sync = function(v){ if(o.onVol) o.onVol(v, s, api); };
           range.addEventListener('input', function(){ input.value = M.fixed(+range.value, 1); sync(+range.value); });
@@ -635,7 +619,6 @@
         }
         function reveal(){
           if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
-          else if(s.kind === 'setup'){ input.value = s.cell.setup.answer; input.dispatchEvent(new Event('input', { bubbles: true })); }
           else if(s.kind === 'unit'){ input.value = window.ApPsychGrade.formatKey({ answer: s.cell.numeric.answer }); uIn.value = s.cell.numeric.unit || ''; }
           else if(s.kind === 'row') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = M.fmt(c.answer, 3); });
           else if(s.kind === 'coef') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = coefText(c.answer); });
@@ -660,12 +643,6 @@
             else if(gu.blank === false && gu.value === undefined){ fb.innerHTML = '<span class="bt-small">' + esc(gu.why || 'Type a number.') + '</span>'; return; }
             else { ok = gu.ok; if(gu.why) notes.push(esc(gu.why)); }
             input.classList.toggle('is-wrong', !blank && !ok); input.classList.toggle('is-right', ok);
-          } else if(s.kind === 'setup'){
-            var rawE = input.value.trim(), ge = M.diagnoseSetup(s.cell, rawE);
-            if(!rawE) blank = true;
-            else if(ge.error){ fb.innerHTML = '<span class="bt-small">' + esc(ge.error) + '</span>'; return; }
-            else { ok = ge.ok; if(ge.why) notes.push(esc(ge.why)); }
-            input.classList.toggle('is-wrong', !blank && !ok); input.classList.toggle('is-right', ok);
           } else if(s.kind === 'row' || s.kind === 'coef'){
             s.cells.forEach(function(c, k){
               var raw = rowInputs[k].value.trim(), x = s.kind === 'coef' ? parseCoef(raw) : numOf(raw);
@@ -680,7 +657,7 @@
             if(!c) blank = true;
             else { var pick = +c.value; ok = pick === s.correct; notes.push(s.why[pick]); }
           }
-          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'setup' ? 'Type the setup first, for example (150 - 120) / 120 * 100.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
+          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
           if(ok){
             el.classList.add('is-right');
@@ -797,7 +774,7 @@
       // the second tab and its dock button, named for what is in it
       // the second tab and its dock button: a tool names it with
       // data-details-title on #app (set before mount); default "Numbers & setup".
-      detailsTitle: app.getAttribute('data-details-title') || 'Numbers & setup',
+      detailsTitle: app.getAttribute('data-details-title') || 'Details',
       menu: {
         copyLink: function(){
           var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;

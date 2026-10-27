@@ -13,7 +13,7 @@ export const DASH_H1 = 'Where you <span>stand today.</span>';
 export const DASH_HAND = 'worked out in your browser from every answer you give';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const DIR = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', anp: 'anatomy-physiology' };
+const DIR = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology', anp: 'anatomy-physiology' };
 
 export function dashboardPage(html, key = 'apbio', up = '../') {
   if (!/<h1>Dashboard<\/h1>/.test(html)) throw new Error('dashboard-page: no "<h1>Dashboard</h1>" to rebuild');

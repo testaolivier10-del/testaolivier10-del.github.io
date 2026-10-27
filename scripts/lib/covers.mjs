@@ -13,6 +13,7 @@ export const COVERS = {
   apcalc: { t1: 'AP®', t2: 'Calculus AB', hand: 'typed like real math' },
   apstat: { t1: 'AP®', t2: 'Statistics', hand: 'conclusions in context' },
   apenv: { t1: 'AP® Environmental', t2: 'Science', hand: 'every calculation, with units' },
+  appsych: { t1: 'AP®', t2: 'Psychology', hand: 'from neuron to society' },
 };
 
 /* The banner over a course home's hero. Decorative: the course is named by the

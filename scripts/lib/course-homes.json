@@ -3970,5 +3970,414 @@
   "note": "2026 exam",
   "mapsub": "Pick a unit to open its lessons and practice."
  },
+ "appsych": {
+  "name": "AP® Psychology",
+  "short": "AP® Psychology",
+  "tabname": "AP® Psychology",
+  "pill": "AP® Psychology · free to start",
+  "beta": true,
+  "h1a": "AP® Psychology,",
+  "h1b": "from neuron to society.",
+  "hand": "from neuron to society",
+  "lede": "Each topic taught from scratch for the May 2027 exam, then practice that asks you to apply each concept to a new situation, and written answers built part by part the way the readers score them.",
+  "btn1": "Start the first lesson",
+  "btn2": "All units",
+  "btn3": "Article analysis studio",
+  "trust": [
+   "note",
+   "Every notes page is free, and so are the lessons in Unit 1 and the research skills chapter. 15 practice questions a day are free too."
+  ],
+  "pills": [
+   "Every notes page free",
+   "Unit 1 lessons free",
+   "Unit sheets free to print",
+   "Progress saved on your device"
+  ],
+  "strip_label": "The exam",
+  "strip": [
+   [
+    "Section I",
+    "75 questions",
+    "multiple choice · 90 minutes"
+   ],
+   [
+    "Section II",
+    "2 free response",
+    "article analysis and evidence · 70 minutes"
+   ],
+   [
+    "The question bank",
+    "Coming soon",
+    "every option explained"
+   ],
+   [
+    "Practice exams",
+    "Full length",
+    "both sections, timed, one free"
+   ]
+  ],
+  "strip_note": "",
+  "start": [
+   "Start here",
+   "Interaction of Heredity and Environment",
+   "Unit 1 · Biological Bases of Behavior. Unit 1 lessons and every notes page are free.",
+   "Start the first lesson"
+  ],
+  "review": [
+   "Review queue",
+   "Missed questions come back",
+   "Anything you miss returns when you are about to forget it, not on a fixed date.",
+   "Open review →"
+  ],
+  "daily": [
+   "Today’s goal",
+   "A little every day",
+   "Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.",
+   "Practice now →",
+   0
+  ],
+  "level": [
+   "Curious Observer",
+   [
+    "Units",
+    "Research skills you need"
+   ],
+   ""
+  ],
+  "steps": [
+   [
+    "Learn a topic from scratch",
+    "Start with heredity and environment: a lesson that checks what you need first, then walks it one step at a time.",
+    "Start the first lesson →"
+   ],
+   [
+    "Practice what you learned",
+    "Drill a unit, a topic or a skill, with study, data and figure sets. 15 a day are free.",
+    "Practice now →"
+   ],
+   [
+    "Sit a practice exam",
+    "Unit tests and full timed practice exams in the May 2027 format.",
+    "See the exams →"
+   ]
+  ],
+  "map_kind": "units",
+  "map_h": [
+   "5 units,",
+   "in order"
+  ],
+  "covers_h": "What the course covers",
+  "covers": [
+   "5 units and 35 topics in the order of the course framework, for the May 2027 exam, plus a research skills chapter placed where each skill is first needed. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.",
+   "Practice questions that ask you to apply a concept to a new situation, as the exam does, many in sets that share one study summary, table or graph. Every option has its own explanation. The article analysis and evidence-based questions are drilled part by part: the method, the operational definition, the statistic, the ethics, the claim, the evidence and its source.",
+   "<b class=\"ink\">The course is being built.</b> Units appear here as each one passes its accuracy review."
+  ],
+  "map_lede": "Each unit's share of the exam, from the course framework. Every notes page is free; the lessons in Unit 1 are free too. The units in framework order, then the research skills you need: methods and variables, sampling, ethics, descriptive statistics, the normal curve, correlation, and significance and effect size, each placed just before the topic that first needs it.",
+  "units": [
+   [
+    "1",
+    "Biological Bases of Behavior",
+    "6 topics",
+    "15 to 25%",
+    true,
+    false
+   ],
+   [
+    "2",
+    "Cognition",
+    "8 topics",
+    "15 to 25%",
+    false,
+    false
+   ],
+   [
+    "3",
+    "Development and Learning",
+    "9 topics",
+    "15 to 25%",
+    false,
+    false
+   ],
+   [
+    "4",
+    "Social Psychology and Personality",
+    "7 topics",
+    "15 to 25%",
+    false,
+    false
+   ],
+   [
+    "5",
+    "Mental and Physical Health",
+    "5 topics",
+    "15 to 25%",
+    false,
+    false
+   ],
+   [
+    "S1",
+    "Research skills you need",
+    "7 topics",
+    "Research skills you need",
+    false,
+    true
+   ]
+  ],
+  "notes": {
+   "eye": "Learn · free forever",
+   "h": [
+    "Every topic,",
+    "in notes"
+   ],
+   "p": "A free notes page for every topic, in framework order, with a printable sheet for each unit and a glossary of every term.",
+   "chips": [
+    [
+     "Flashcards",
+     ""
+    ],
+    [
+     "Cram kit",
+     ""
+    ],
+    [
+     "Make it specific",
+     ""
+    ],
+    [
+     "Glossary",
+     ""
+    ]
+   ],
+   "cta": "Open the notes"
+  },
+  "exam": {
+   "eye": "Section II",
+   "big": "2",
+   "bigs": "free response questions on the exam",
+   "p": "The article analysis and evidence-based questions, with 7-point rubrics and sample answers.",
+   "cta": "Try a free response",
+   "small": "Unit tests and full timed practice exams in the May 2027 format."
+  },
+  "guide": {
+   "eye": "How to use it, every time",
+   "h": "Four steps, every time you study.",
+   "p": "",
+   "items": [
+    "<b>Read the lesson.</b> It checks what you need first, then applies each concept to a situation, one step at a time.",
+    "<b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.",
+    "<b>Train the hard parts.</b> Research methods, the neuron, the brain, memory, conditioning and the normal curve, each checked step by step.",
+    "<b>Check your mastery.</b> Your dashboard shows it by unit, topic and skill, and every miss links to its lesson."
+   ],
+   "cta": "Open your dashboard"
+  },
+  "tools_h": "Ten trainers ",
+  "tools_h2": null,
+  "tools_lede": "Take a study apart the way the article analysis question does, build a claim from three sources, fire a neuron, map the brain, condition a response and read the normal curve, then answer the questions about what you saw. The article analysis studio, the neuron and the brain map are free.",
+  "tools": [
+   [
+    "Article analysis studio",
+    "A study summary taken apart, part by part, as the AAQ asks.",
+    "free"
+   ],
+   [
+    "Evidence builder",
+    "Claim, evidence from the right source, and a concept that links them.",
+    "Premium"
+   ],
+   [
+    "Neuron",
+    "Fire an action potential and see what a drug does at the synapse.",
+    "free"
+   ],
+   [
+    "Brain map",
+    "Tap a region to see what it does, and what damage there changes.",
+    "free"
+   ],
+   [
+    "Sensation and perception",
+    "Thresholds, signal detection and the illusions that fool you.",
+    "Premium"
+   ],
+   [
+    "Memory lab",
+    "Encode, store and retrieve, and watch interference at work.",
+    "Premium"
+   ],
+   [
+    "Conditioning lab",
+    "Pair a tone with food, then reinforce on four schedules.",
+    "Premium"
+   ],
+   [
+    "Development",
+    "A lifespan timeline from infancy to old age.",
+    "Premium"
+   ],
+   [
+    "Social influence",
+    "Conformity, obedience and the bystander effect, situation by situation.",
+    "Premium"
+   ],
+   [
+    "Stats lab",
+    "The normal curve, percentiles and correlation, worked by hand.",
+    "Premium"
+   ]
+  ],
+  "tools_also": [],
+  "tool_credit": "",
+  "extras": [
+   {
+    "kind": "small",
+    "eye": "Only in AP® Psychology",
+    "h": "Statistics you must know",
+    "p": "No calculator and no formula sheet on the exam: every statistic it asks for, when to use it and the classic trap."
+   },
+   {
+    "kind": "small",
+    "eye": "Only in AP® Psychology",
+    "h": "Make it specific",
+    "p": "Methods, operational definitions, claims and cited evidence specific enough to score, checked against a rubric."
+   }
+  ],
+  "grid": [
+   [
+    "Practice",
+    "Drill a unit, a topic or a skill, with study, data and figure sets."
+   ],
+   [
+    "Review",
+    "Missed questions come back when you are about to forget them."
+   ],
+   [
+    "Exams",
+    "Unit tests and full timed practice exams in the May 2027 format."
+   ],
+   [
+    "Free-response practice",
+    "The article analysis and evidence-based questions, with 7-point rubrics and sample answers."
+   ],
+   [
+    "Make it specific",
+    "Methods, operational definitions, claims and cited evidence specific enough to score, checked against a rubric."
+   ],
+   [
+    "Cram kit",
+    "3-week and 2-week plans to exam day, and timed mixed sets."
+   ],
+   [
+    "Flashcards",
+    "Spaced-repetition cards from the glossary and the statistics."
+   ],
+   [
+    "Tools",
+    "Trainers and simulators, then the questions about what you saw."
+   ],
+   [
+    "Dashboard",
+    "Mastery by unit, topic and skill."
+   ],
+   [
+    "Glossary",
+    "Every term, with a plain definition and where it is taught."
+   ],
+   [
+    "Statistics you must know",
+    "No calculator and no formula sheet: every statistic the exam asks for, when to use it and the classic trap."
+   ],
+   [
+    "Free unit practice tests",
+    "A free sample test for every unit, with every option explained."
+   ]
+  ],
+  "sample": {
+   "tags": [
+    "Unit 1 · Biological Bases of Behavior",
+    "Free unit practice test"
+   ],
+   "q": "A researcher gives 40 volunteers either caffeine or a look-alike pill at random, then times how fast each one presses a key when a light flashes. What is the dependent variable?",
+   "opts": [
+    "How fast each volunteer presses the key",
+    "Whether a volunteer took caffeine or the look-alike pill",
+    "The 40 volunteers who took part",
+    "The light that flashes"
+   ],
+   "more": "Take the free Unit 1 practice test",
+   "h": [
+    "Try",
+    "a step."
+   ],
+   "lede": "One question like the ones in the bank. Pick an answer to see why it is right or wrong.",
+   "legend_title": "",
+   "legend": [
+    [
+     "1",
+     "Read the situation"
+    ],
+    [
+     "2",
+     "Pick the answer you would bet on"
+    ],
+    [
+     "3",
+     "See which concept explains it"
+    ]
+   ],
+   "note": ""
+  },
+  "deal": {
+   "free": [
+    "Every notes page, the glossary, the flashcards and the printable unit sheets",
+    "The statistics you must know, explained, and the cram-kit study plan outline",
+    "Every lesson in Unit 1, and every \"Research skills you need\" lesson",
+    "15 practice or review questions a day from any unit",
+    "One full practice exam",
+    "Three trainers: the article analysis studio, the neuron and the brain map"
+   ],
+   "freecta": "Start the first lesson",
+   "amt": "$17.50",
+   "was": "$25",
+   "note": "Founding price until 31 January 2027. One pass, good through 30 June 2027, the end of the exam season.",
+   "prem": [
+    "Every interactive lesson",
+    "Unlimited practice and review from the whole question bank",
+    "Every trainer: the evidence builder, sensation, memory, conditioning, development, social influence and the stats lab",
+    "All free-response questions, unit tests and practice exams",
+    "The cram kit: a study plan fitted to your weakest units, and timed mixed sets",
+    "The full dashboard: mastery by unit, topic and science practice"
+   ],
+   "name": "AP® Psychology"
+  },
+  "foot": [
+   "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site."
+  ],
+  "links": [
+   "Privacy",
+   "Terms",
+   "About",
+   "Sources",
+   "Premium",
+   "Account",
+   "Contact"
+  ],
+  "beta_note": "This course has not yet been reviewed by an AP® Psychology teacher. It follows the published course framework and open textbooks, listed on the Sources page. Spot a mistake?",
+  "trainh": "Ten trainers for what the exam marks hardest.",
+  "hidden": true,
+  "ink": "#084F78",
+  "tint": "#E3F0F8",
+  "bbg": "#33184A",
+  "bac": "#D99CFF",
+  "t1": "AP®",
+  "t2": "Psychology",
+  "coverhand": "from neuron to society",
+  "try": {
+   "ok": 0,
+   "title": "The outcome is what you measure.",
+   "why": "The dependent variable is what the researcher measures to see the effect: here, reaction time. Caffeine or the look-alike pill is the independent variable, the one the researcher changes."
+  },
+  "note": "2027 exam",
+  "mapsub": "Pick a unit to open its lessons and practice."
+ },
  "_founder": "Made by Olivier Testa, an EMT who passed the NREMT studying with LevlPrep."
 }

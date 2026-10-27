@@ -1,7 +1,7 @@
 /* Shared checks for seeded step problems (any trainer's "Test yourself"
    drill built on ApPsychTools.drill). Not a validator itself: its name starts
-   with "_". Forked from apstat-tool-checks/_drills.mjs; setup and unit steps
-   in place of expression steps.
+   with "_". Forked from apenv-tool-checks/_drills.mjs, without setup steps
+   (no calculator on this exam); unit steps stay for a number with its unit.
 
    drills(data, slug, kind, map, errs, gen, recheck) checks the data file's
    frame, then, for every context and every problem type it lists, generates
@@ -43,18 +43,9 @@ export function stepsSound(p, w, errs) {
   for (const s of p.steps) {
     if (keys.has(s.key)) errs.push(`${w}: duplicate step key ${s.key}`); keys.add(s.key);
     if (!SKILLS.has(s.practice)) errs.push(`${w}: step ${s.key} practice "${s.practice}" is not a skill id`);
-    // A setup step: its key graded right through the runtime grader, and no
-    // authored mistake is. A unit step: the key with its unit graded right.
-    if (s.kind === 'setup') {
-      const S = s.cell && s.cell.setup;
-      if (!S) { errs.push(`${w}: step ${s.key} has no setup cell`); continue; }
-      if (!M.diagnoseSetup(s.cell, S.answer).ok) errs.push(`${w}: step ${s.key}: its own setup "${S.answer}" is graded wrong`);
-      for (const m of S.mistakes || []) {
-        if (M.diagnoseSetup(s.cell, m.expr).ok) errs.push(`${w}: step ${s.key}: mistake "${m.expr}" would be graded right`);
-        if (!m.why || BAD.test(m.why)) errs.push(`${w}: step ${s.key}: a mistake has no usable explanation`);
-      }
-      continue;
-    }
+    // A unit step: the key with its unit graded right (no setup steps in
+    // this course: no calculator, no typed setups).
+    if (s.kind === 'setup') { errs.push(`${w}: step ${s.key}: setup steps are not used in AP® Psychology`); continue; }
     if (s.kind === 'unit') {
       const N = s.cell && s.cell.numeric;
       if (!N || !Number.isFinite(N.answer)) { errs.push(`${w}: step ${s.key} has no finite answer`); continue; }

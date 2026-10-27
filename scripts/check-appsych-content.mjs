@@ -1,18 +1,18 @@
 /* The AP® Psychology content check: every authored file under
    psychology/data/ against the formats in docs/appsych-architecture.md
    and the rules in docs/appsych-spec.md and docs/appsych-authoring-guide.md.
-   Forked from check-apstat-content.mjs, with the psychology rules:
-   math in the course's TeX subset (every $...$ must render; no calculus or
-   statistics notation), four-option multiple choice, assessed skills of the
-   CED (3.D, 3.E and 4.D are not); numeric items with units whose key is
-   recomputed by ApPsychCalc from its recipe (`from`) and every authored mistake
-   graded wrong; setup items graded by value, brackets and units, the key
-   passing its own rules and every mistake failing them; "Make it specific"
-   items (slots graded exactly, a model answer that passes its own flags);
-   the exam's three set kinds (quantitative, visual, text); plot stimuli
-   drawn from their data; the three FRQ types, 10 points each, a calc FRQ
-   with a "check my number" on at least one part; invented data labelled as
-   invented, real data citing its public source (decision 4); no
+   Forked from check-apenv-content.mjs, with the psychology rules:
+   math in the course's TeX subset (every $...$ must render), four-option
+   multiple choice, the CED skills (1.A-3.C on multiple choice; 4.A and 4.B
+   are Section II only); numeric items (descriptive statistics, no
+   calculator) whose key is recomputed by ApPsychStats from its recipe
+   (`from`) and every authored mistake graded wrong; "Make it specific" items
+   (slots graded exactly, a model answer that passes its own flags); the set
+   kinds (study, data, visual) with study summaries in the exam's sections;
+   plot stimuli drawn from their data; the two FRQ types (AAQ with its
+   study, EBQ with three sources), 7 points each, in the exam's part order;
+   invented studies labelled as invented, real studies cited (decision 4);
+   no myths taught as fact; respectful mental-health language; no
    reproduced CED text; pre-registered tools; and no OpenStax figures.
 
      node scripts/check-appsych-content.mjs                every topic with content
@@ -39,7 +39,7 @@ import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/appsych-build.mjs';
 import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS } from './lib/appsych-exams.mjs';
 import { scanPage } from './lib/appsych-map.mjs';
-import { Expr, Tex, Plot, Grade, Calc } from './lib/appsych-mathlib.mjs';
+import { Tex, Plot, Grade, Stats } from './lib/appsych-mathlib.mjs';
 export { trademarkProblems };
 
 const DATA = process.env.APPSYCH_DATA || join(ROOT, 'psychology', 'data');
@@ -49,41 +49,56 @@ const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const exists = p => existsSync(p);
 const strip = s => String(s ?? '').replace(/<[^>]+>/g, ' ');
 
-export const TYPES = ['single', 'multi', 'numeric', 'setup', 'specific', 'order'];
+export const TYPES = ['single', 'multi', 'numeric', 'specific', 'order'];
 export const LEVELS = ['recall', 'apply', 'analyze'];
 // The exam's three kinds of multiple-choice set (framework.md section 4).
-export const STIM_KINDS = ['quantitative', 'visual', 'text'];
-// The three free-response questions of May 2027 (framework.md section 4): 10 points each.
-export const FRQ_TYPES = Object.fromEntries(['design', 'data', 'calc'].map(t => [t, 10]));
-/* Out of scope for the course, in items: statistics and calculus notation
-   (the course needs a scientific calculator and algebra only). Notes may
-   mention one in <aside class="going-further">. */
+export const STIM_KINDS = ['study', 'data', 'visual'];
+// The two free-response questions of May 2027 (framework.md section 5): 7 points each.
+export const FRQ_TYPES = { aaq: 7, ebq: 7 };
+/* Out of scope for the course, in items: calculus and inferential test
+   names (the CED asks what statistical significance and effect size mean,
+   never for a test), and anything that needs a calculator (the exam has
+   none). Notes may mention one in <aside class="going-further">. */
 export const EXCLUDED = [
-  [/\\int|\\lim\b|\\frac\{d\}\{d[a-z]\}|\\frac\{dy\}/, 'calculus notation (the course needs only algebra and a scientific calculator)'],
-  [/\b(p-value|t-test|chi-square|confidence interval|standard deviation of the mean|null hypothesis)\b/i, 'inferential statistics (APES asks for trends, not significance tests)'],
-  [/\bgraphing calculator\b(?! (is|are) (not|banned))/i, 'a graphing calculator (banned on the 2027 exam; decision 8)'],
+  [/\\int|\\lim\b|\\frac\{d\}\{d[a-z]\}|\\frac\{dy\}/, 'calculus notation'],
+  [/\b(t-test|chi-square|ANOVA|confidence interval|null hypothesis|degrees of freedom)\b/i, 'an inferential test by name (the course asks what significance and effect size mean, not how to run a test)'],
+  [/\bcalculators?\b(?! (is|are) not| is never)/i, 'a calculator (the AP® Psychology exam allows none)'],
 ];
+/* Myths the course never teaches as fact (spec section 1, the authoring
+   guide's "No myths"): a page may name one only to correct it, inside an
+   element with the class "psy-myth". */
+export const MYTHS = [
+  [/\blearning styles?\b(?![^.]*\b(myth|not supported|no evidence|does not|do not|unsupported)\b)/i, 'learning styles taught as fact (no evidence that matching teaching to a style helps)'],
+  [/\b(left|right)-brain(ed)? (people|person|thinkers?|learners?)\b/i, 'left-brained or right-brained people (a myth; the hemispheres work together)'],
+  [/\b(use|uses|using) (only )?10 ?(%|percent) of (our|their|your|the) brains?\b/i, 'the 10% brain myth'],
+];
+const MYTH_BOX = /<(\w+)[^>]*class="[^"]*\bpsy-myth\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g;
+export function mythProblems(t) {
+  const plain = strip(String(t ?? '').replace(MYTH_BOX, ' '));
+  return MYTHS.filter(([re]) => re.test(plain)).map(([, what]) => `teaches a myth: ${what}; name it only inside a "psy-myth" box that corrects it`);
+}
+/* Respectful mental-health language (the authoring guide): person-first,
+   no slurs, no diagnosis used as a casual word. */
+export const LANGUAGE = [
+  [/\b(a|the) (schizophrenic|anorexic|bulimic|depressive)\b(?! (disorder|episode|spectrum|symptoms?|features?))/i, 'a person named by a diagnosis ("a schizophrenic"): write "a person with schizophrenia"'],
+  [/\b(crazy|insane|psycho|lunatic|mental patients?|the mentally ill)\b/i, 'a slur or a label for people with mental illness'],
+  [/\b(so|kind of|a little|totally) (OCD|bipolar|schizo|ADHD)\b/i, 'a diagnosis used as a casual adjective'],
+  [/\bcommit(ted|s)? suicide\b/i, '"commit suicide": write "died by suicide"'],
+];
+export function languageProblems(t) { const p = strip(t); return LANGUAGE.filter(([re]) => re.test(p)).map(([, what]) => `language: ${what}`); }
+// A real study is cited by authors and a year: "Loftus & Palmer (1974)".
+export const CITATION = /[A-Z][A-Za-z'’-]+(?:,? (?:&|and) [A-Z][A-Za-z'’-]+| et al\.)?,? \(?(1[89]\d\d|20\d\d)\)?/;
 export function excludedProblems(t) {
   const out = [];
   for (const [re, what] of EXCLUDED) if (re.test(String(t ?? ''))) out.push(`mentions ${what}`);
   return out;
 }
-// Multiple choice on the exam has four options (A-D; needs-author mcq-options).
+// Multiple choice on the exam has four options (A-D; framework.md section 5).
 export const MCQ_OPTIONS = 4;
-export const SKILL_RE = /^[1-7]\.[A-F]$/;
-// Skills the CED says are not assessed on the exam (docs/appsych-ced-map.json).
-export const NOT_ASSESSED = ['3.D', '3.E', '4.D'];
-/* Decision 4: data in an item or stimulus is invented for practice or comes
-   from a public source cited on the page. A stimulus with numbers (a table,
-   a chart, a plot) says which: `source` names the public source ("NOAA
-   Global Monitoring Laboratory, Mauna Loa CO2 record, 2024"), or
-   `invented: true`, which the page shows as "Invented data for practice". */
-// Reputable US federal and UN-system agencies whose published data an item may
-// cite (decision 4). Phase 3 added CDC and the other obvious ones: NIH, NIEHS,
-// FDA, DOE and its national labs (NREL), USFWS, NPS, USFS, NRCS, BLM, BOEM,
-// NWS, the National Hurricane Center, ATSDR, the Census Bureau, BLS, NSF,
-// NCEI, UNEP, UNESCO, UNICEF, UN-Habitat, UN DESA, WMO, IEA and the IUCN Red List.
-export const PUBLIC_SOURCES = /\b(NOAA|NASA|EPA|USGS|USDA|EIA|UN|United Nations|IPCC|World Bank|FAO|WHO|World Health Organization|NOAA's|Census|Census Bureau|Our World in Data|CDC|Centers for Disease Control(?: and Prevention)?|NIH|NIEHS|ATSDR|FDA|DOE|Department of Energy|NREL|National Renewable Energy Laboratory|USFWS|U\.S\. Fish and Wildlife Service|Fish and Wildlife Service|NPS|National Park Service|USFS|U\.S\. Forest Service|Forest Service|NRCS|BLM|Bureau of Land Management|BOEM|NWS|National Weather Service|National Hurricane Center|NCEI|BLS|NSF|UNEP|UN Environment Programme|UNESCO|UNICEF|UN-Habitat|UN DESA|WMO|World Meteorological Organization|IEA|International Energy Agency|IUCN)(?![\w-])/;
+export const SKILL_RE = /^[1-4]\.[A-D]$/;
+// Argumentation (practice 4) is assessed only in Section II (framework.md
+// section 4): a multiple-choice item never focuses on it.
+export const NOT_ASSESSED = ['4.A', '4.B'];
 /* No CED text reproduced (decision 4): a phrase of 12+ words from the CED
    map's objectives or knowledge lines would be our own summary copied, not
    CED text, but the CED's own wording is never in the repo, so the check
@@ -96,7 +111,7 @@ export const CED_PHRASES = [
 ];
 /* Every $...$ in a piece of text renders in the course's TeX subset. */
 export function mathProblems(t) { return Tex.check(String(t ?? '')); }
-const RAW = new Set(['answer', 'expr', 'id', 'topic', 'unit', 'units', 'type', 'kind', 'stimulus', 'figure', 'practice', 'level', 'answerTex', 'set', 'mode', 'bind', 'mustUse', 'mustNotUse', 'from', 'source']);
+const RAW = new Set(['answer', 'id', 'topic', 'unit', 'units', 'type', 'kind', 'stimulus', 'figure', 'practice', 'level', 'set', 'mode', 'from', 'source']);
 const allStrings = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(allStrings)
   : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => k === 'plot' || k === 'chart' || (RAW.has(k) && typeof x !== 'object') ? [] : allStrings(x)) : [];
 export const MIN_ITEMS = 15, MIN_HIGHER = 0.6, MIN_IN_SETS = 0.4, SET_MIN = 3, SET_MAX = 5, LONGEST_MAX = 0.4;
@@ -168,15 +183,16 @@ export function lengthTell(items) {
 
 function checkStimulus(sid, s, figures, err) {
   const w = `stimulus ${sid}`;
-  if (!STIM_KINDS.includes(s.kind)) err(`${w}: kind must be ${STIM_KINDS.join(', ')} (the exam's three set kinds)`);
+  if (!STIM_KINDS.includes(s.kind)) err(`${w}: kind must be ${STIM_KINDS.join(', ')} (the set kinds: a study summary, data, a figure)`);
   if (!s.title) err(`${w}: title missing`);
-  if (!s.html && !s.table && !s.figure && !s.chart && !s.plot && !s.passage) err(`${w}: needs a table, plot, chart, figure, passage or html`);
+  if (!s.html && !s.table && !s.figure && !s.chart && !s.plot && !s.study) err(`${w}: needs a study, table, plot, chart, figure or html`);
   // A graph is drawn from the numbers it claims to show: a plot spec, drawn
   // by psychology/assets/tools/psy-plot.js at build time.
   if (s.plot) { try { Plot.svg(s.plot); } catch (e) { err(`${w}: plot: ${e.message}`); } }
-  if (s.set !== undefined) err(`${w}: "set" is not used; the stimulus kind (quantitative, visual, text) is the set kind`);
-  for (const t of allStrings({ title: s.title, text: s.text, html: s.html, table: s.table, passage: s.passage })) for (const m of excludedProblems(t)) err(`${w}: ${m}`);
-  for (const p of allStrings({ title: s.title, text: s.text, html: s.html, table: s.table, passage: s.passage })) for (const m of mathProblems(p)) err(`${w}: math: ${m}`);
+  if (s.set !== undefined) err(`${w}: "set" is not used; the stimulus kind (study, data, visual) is the set kind`);
+  if (s.passage !== undefined) err(`${w}: "passage" is not used in psychology; a study summary goes in "study"`);
+  for (const t of allStrings({ title: s.title, text: s.text, html: s.html, table: s.table, study: s.study })) for (const m of [...excludedProblems(t), ...mythProblems(t), ...languageProblems(t)]) err(`${w}: ${m}`);
+  for (const p of allStrings({ title: s.title, text: s.text, html: s.html, table: s.table, study: s.study })) for (const m of mathProblems(p)) err(`${w}: math: ${m}`);
   if (s.table) {
     const t = s.table;
     if (!Array.isArray(t.cols) || !Array.isArray(t.rows) || !t.rows.length) err(`${w}: table needs cols and rows`);
@@ -191,22 +207,31 @@ function checkStimulus(sid, s, figures, err) {
     if (!(c.series || []).length) err(`${w}: chart has no series`);
   }
   if (s.figure && !figures[s.figure]) err(`${w}: unknown figure "${s.figure}"`);
-  if (s.kind === 'quantitative' && !s.table && !s.plot && !s.chart && !s.figure) err(`${w}: a quantitative set shows its data: a table, a plot spec (preferred), a chart or a figure`);
-  if (s.kind === 'text' && !s.passage) err(`${w}: a text set has a passage (our own words, its source line in "source")`);
-  // A diagram (a model, a map, a cycle) is a picture with a text alternative:
-  // a registered figure, or our own inline SVG with role="img" and a label.
-  if (s.kind === 'visual' && !s.figure && !s.plot && !/<svg/.test(s.html || '')) err(`${w}: a visual set needs a figure, a plot or an inline SVG`);
+  if (s.kind === 'study') for (const p of studyProblems(s.study)) err(`${w}: ${p}`);
+  if (s.kind === 'data' && !s.table && !s.plot && !s.chart && !s.figure) err(`${w}: a data set shows its data: a table, a plot spec (preferred), a chart or a figure`);
+  // A figure (a brain diagram, an illusion, a neuron) is a picture with a text
+  // alternative: a registered figure, a plot, or our own inline SVG with role="img" and a label.
+  if (s.kind === 'visual' && !s.figure && !s.plot && !/<svg/.test(s.html || '')) err(`${w}: a figure set needs a figure, a plot or an inline SVG`);
   if (/<svg/.test(s.html || '') && !(/role="img"/.test(s.html) && /aria-label="[^"]{20,}"/.test(s.html))) err(`${w}: the SVG needs role="img" and an aria-label (20+ characters) that says what it shows`);
-  // Decision 4: numbers are invented (and say so) or cite a public source.
-  if ((s.table || s.plot || s.chart) && !s.invented && !s.source) err(`${w}: data needs "invented": true (shown as invented for practice) or a "source" naming the public source (NOAA, EPA, USGS ...)`);
-  const hasData = !!(s.table || s.plot || s.chart);
-  if (hasData && s.source && !PUBLIC_SOURCES.test(s.source)) err(`${w}: source "${s.source}" is not a recognised public source; real data comes from NOAA, NASA, EPA, USGS, UN, IPCC and the like`);
-  if (hasData && s.invented && s.source) err(`${w}: data is either invented or sourced, not both`);
-  if (s.kind === 'text' && !s.source) err(`${w}: a passage has a "source" line: the public document it summarizes, or "Invented passage for practice"`);
+  // Decision 4: a study or its numbers are invented (and say so) or cite a real, published source.
+  const hasData = !!(s.table || s.plot || s.chart || s.study);
+  if (hasData && !s.invented && !s.source) err(`${w}: a study or data needs "invented": true (shown as "Invented study for practice") or a "source" citing the real published study`);
+  if (hasData && s.invented && s.source) err(`${w}: a study is either invented or cited, not both`);
+  if (s.source && !CITATION.test(s.source)) err(`${w}: source "${s.source}" must cite a real study: authors and a year in brackets, "Loftus & Palmer (1974)"`);
+}
+
+/* A study summary (stimulus.study, an AAQ's study, an EBQ source): the
+   sections the exam prints, each present (discussion optional). */
+export function studyProblems(st) {
+  const out = [];
+  if (!st || typeof st !== 'object') return ['a study set needs "study": { introduction, participants, method, results, discussion? }'];
+  for (const k of ['introduction', 'participants', 'method', 'results']) if (!st[k] || strip(st[k]).trim().length < 20) out.push(`study.${k} is required (20+ characters)`);
+  for (const k of Object.keys(st)) if (!['introduction', 'participants', 'method', 'results', 'discussion', 'reference'].includes(k)) out.push(`study.${k} is not a section of a study summary`);
+  return out;
 }
 
 /* A numeric item's key (docs/appsych-architecture.md, "numeric"): the key
-   recomputed from its recipe when it has one (`from`, through ApPsychCalc: a
+   recomputed from its recipe when it has one (`from`, through ApPsychStats: a
    typed key that disagrees fails; every calculated key must have one), its
    unit readable, and the authored slips (a value or a recipe), each graded
    wrong by ApPsychGrade. Returns problems. */
@@ -216,7 +241,7 @@ export function numericProblems(N, { needRecipe = true } = {}) {
   if (N.from !== undefined) {
     try { const v = fromValue(N.from); if (typeof A === 'number' && Math.abs(A - v) > Grade.tolerance({ ...N, answer: v }) / 10 + 1e-12) bad(`numeric.answer ${A} disagrees with its recipe: ${N.from.fn} gives ${v}`); A = v; }
     catch (e) { bad(`numeric.from: ${e.message}`); return out; }
-  } else if (needRecipe) { bad('numeric.from is required: every calculated key is a recipe ApPsychCalc recomputes (spec section 7)'); if (typeof A !== 'number') return out; }
+  } else if (needRecipe) { bad('numeric.from is required: every calculated key is a recipe ApPsychStats recomputes (spec section 7)'); if (typeof A !== 'number') return out; }
   else if (typeof A !== 'number' || !Number.isFinite(A)) { bad('numeric.answer must be a number'); return out; }
   if (N.tol !== undefined && !(N.tol >= 0)) bad('numeric.tol must be a number at least 0');
   if (N.rel !== undefined && !(N.rel >= 0 && N.rel < 0.2)) bad('numeric.rel must be between 0 and 0.2');
@@ -236,37 +261,6 @@ export function numericProblems(N, { needRecipe = true } = {}) {
     if (!mk.why || strip(mk.why).trim().length < 20) bad(`numeric.mistakes[${i}] needs a "why" that names the slip and how to fix it`);
   }
   if (N.mistakes !== undefined && !Array.isArray(N.mistakes)) bad('numeric.mistakes must be a list');
-  return out;
-}
-
-/* A setup item: the expression evaluates with its bindings and units, the
-   key passes its own structure rules (brackets, × 100, units), every
-   mistake evaluates and is graded wrong, and the value step (then) is the
-   setup's value, recomputed by its own recipe. */
-export function setupProblems(S) {
-  const out = [], bad = m => out.push(m);
-  if (!S || typeof S !== 'object' || typeof S.answer !== 'string') { bad('setup item needs setup.answer (the setup as typed on the exam)'); return out; }
-  const r = Expr.evaluate(S.answer, S.bind || {}, S.units || []);
-  if (!r.ok) { bad(`setup.answer "${S.answer}" does not evaluate: ${r.error || 'not a number'}`); return out; }
-  const g = Expr.gradeSetup({ setup: S }, S.answer);
-  if (!g.correct) bad(`setup.answer is not graded right by its own rules: ${g.notes.join(' ')}`);
-  for (const [i, m] of (S.mistakes || []).entries()) {
-    const mg = Expr.gradeSetup({ setup: S }, String(m.expr || ''));
-    if (!mg.valid) bad(`setup.mistakes[${i}].expr does not evaluate`);
-    else if (mg.correct) bad(`setup.mistakes[${i}] (${m.expr}) is graded right, so its feedback never shows`);
-    if (!m.why || strip(m.why).trim().length < 20) bad(`setup.mistakes[${i}] needs a "why" that names the slip and how to fix it`);
-  }
-  if (S.unit !== undefined && Expr.unitDims(S.unit, S.units || []) === null) bad(`setup.unit "${S.unit}" cannot be read`);
-  if (S.then === undefined) bad('setup.then (the answer with its unit, the second point) is required: the readers score the setup and the answer separately');
-  else {
-    const tp = numericProblems(S.then);
-    for (const p of tp) bad(`setup.then: ${p}`);
-    if (!tp.length) {
-      let tv = null; try { tv = fromValue(S.then.from); } catch { tv = null; }
-      if (typeof tv === 'number' && Math.abs(tv - r.value) > Math.max(Grade.tolerance({ ...S.then, answer: tv }), 1e-9)) bad(`setup.then answer ${tv} is not the value of setup.answer (${r.value})`);
-      if (S.unit && S.then.unit && Grade.normUnit(S.unit) !== Grade.normUnit(S.then.unit) && JSON.stringify(Expr.unitDims(S.unit, S.units || [])) !== JSON.stringify(Expr.unitDims(S.then.unit, S.units || []))) bad(`setup.unit "${S.unit}" and setup.then.unit "${S.then.unit}" disagree`);
-    }
-  }
   return out;
 }
 
@@ -299,20 +293,20 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   // Unit, topic and practice are required and never inferred (spec section 1).
   if (!q.unit) err(`${w}: "unit" is required`); else if (q.unit !== topic.chapter) err(`${w}: unit "${q.unit}" is not this topic's chapter "${topic.chapter}"`);
   if (!q.topic) err(`${w}: "topic" is required`); else if (q.topic !== topic.id) err(`${w}: topic "${q.topic}" does not match the file`);
-  if (!q.practice) err(`${w}: "practice" is required (a skill id like "6.B")`);
-  else if (!SKILL_RE.test(q.practice) || !map.practices.some(p => String(p.id) === q.practice.split('.')[0] && (!p.skills || p.skills.includes(q.practice)))) err(`${w}: practice "${q.practice}" is not a skill id of the framework (e.g. "6.B")`);
-  else if (NOT_ASSESSED.includes(q.practice)) err(`${w}: skill ${q.practice} is not assessed on the exam; tag the skill the item exercises`);
-  if (q.calc !== undefined) err(`${w}: no "calc" flag: a calculator is allowed on the whole exam (spec decision 8)`);
-  for (const t of allStrings({ q: q.q, options: q.options, why: q.why, numeric: q.numeric && { mistakes: q.numeric.mistakes }, setup: q.setup && { mistakes: q.setup.mistakes }, specific: q.specific && { model: q.specific.model, slots: q.specific.slots } })) {
+  if (!q.practice) err(`${w}: "practice" is required (a skill id like "2.B")`);
+  else if (!SKILL_RE.test(q.practice) || !map.practices.some(p => String(p.id) === q.practice.split('.')[0] && (!p.skills || p.skills.includes(q.practice)))) err(`${w}: practice "${q.practice}" is not a skill id of the framework (e.g. "2.B")`);
+  else if (NOT_ASSESSED.includes(q.practice)) err(`${w}: skill ${q.practice} (argumentation) is assessed only in the free-response section; tag the skill the item exercises`);
+  if (q.calc !== undefined) err(`${w}: no "calc" flag: the exam allows no calculator, so no item needs one`);
+  for (const t of allStrings({ q: q.q, options: q.options, why: q.why, numeric: q.numeric && { mistakes: q.numeric.mistakes }, specific: q.specific && { model: q.specific.model, slots: q.specific.slots } })) {
     for (const m of mathProblems(t)) err(`${w}: math: ${m}`);
-    for (const m of excludedProblems(t)) err(`${w}: ${m}`);
+    for (const m of [...excludedProblems(t), ...mythProblems(t), ...languageProblems(t)]) err(`${w}: ${m}`);
   }
   if (!LEVELS.includes(q.level)) err(`${w}: level must be recall, apply or analyze`);
   if (![1, 2, 3].includes(q.diff)) err(`${w}: diff must be 1, 2 or 3`);
   if (!q.q || strip(q.q).trim().length < 12) err(`${w}: no question text`);
   if (q.stimulus && !stimuli[q.stimulus]) err(`${w}: unknown stimulus "${q.stimulus}"`);
   if (!q.why || !q.why.correct) err(`${w}: why.correct missing`);
-  const typed = { numeric: [numericProblems, q.numeric || {}], setup: [setupProblems, q.setup], specific: [specificProblems, q.specific] }[q.type];
+  const typed = { numeric: [numericProblems, q.numeric || {}], specific: [specificProblems, q.specific] }[q.type];
   if (typed) {
     for (const p of typed[0](typed[1])) err(`${w}: ${p}`);
     if (q.options || q.correct !== undefined) err(`${w}: ${q.type} items have no options or correct`);
@@ -335,7 +329,7 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   if (m) err(`${w}: explanation says "${m[0]}"; options are shuffled, so name the option by its content`);
 }
 
-/* A numeric or setup item whose question asks for a rate ("... per day",
+/* A numeric item whose question asks for a rate ("... per day",
    "per person") but whose key unit has no "/" (a reviewer found "°C per
    decade" keyed as "°C", so the bare "0.15 °C" passed and "0.15 °C per
    decade" failed). A warning, not an error: "the dose per rat in mg" or "the
@@ -343,7 +337,7 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
    denominator. Only the asking sentences are read; parts per million and
    "per kWh" inside a given price are skipped by that. */
 export function rateUnitWarning(q) {
-  const unit = q.type === 'numeric' ? q.numeric && q.numeric.unit : q.type === 'setup' ? q.setup && q.setup.then && q.setup.then.unit : undefined;
+  const unit = q.type === 'numeric' ? q.numeric && q.numeric.unit : undefined;
   if (unit === undefined) return null;
   if (unit && (/\//.test(unit) || /\bper\b/.test(unit) || Grade.normUnit(unit).includes('-'))) return null;
   if (['%', 'times', 'ppm', 'ppb'].includes(unit)) return null;
@@ -354,7 +348,7 @@ export function rateUnitWarning(q) {
 }
 
 const textOfItem = q => [q.q, ...(q.options || []), q.why?.correct, ...((q.why && q.why.options) || []),
-  ...((q.setup && q.setup.mistakes) || []).map(m => m.why), ...((q.numeric && q.numeric.mistakes) || []).map(m => m.why),
+  ...((q.numeric && q.numeric.mistakes) || []).map(m => m.why),
   q.specific && q.specific.model, ...Object.values((q.specific && q.specific.slots) || {}).flatMap(sl => sl.options || [])].map(x => String(x ?? '')).join('\n');
 
 /* Concepts taught after this topic whose words, or whose notation in $...$
@@ -513,10 +507,20 @@ export function checkFigure(fid, f, err) {
   if (f.source !== 'levlprep' && !exists(join(ROOT, 'psychology', 'figures', `${fid}.${f.ext || 'jpg'}`))) err(`figure ${fid}: file psychology/figures/${fid}.${f.ext || 'jpg'} is missing`);
 }
 
-/* FRQs (spec section 7, rule 5): three types, 10 points, one rubric line per
-   point, rubric points add up, every part has a sample; a part may attach a
-   "check my number" (a numeric with its unit, or a setup), graded as in
-   rules 2 and 3, and every calc FRQ has at least one. */
+/* FRQs (spec section 7, docs/appsych-architecture.md "FRQ"): two types, 7
+   points each, the exam's parts in order (framework.md section 5):
+     aaq  A method (1), B operational definition (1), C statistic (1),
+          D ethical guideline applied (1), E generalizability (1),
+          F argumentation (2); with the `study` summary it analyzes
+     ebq  A claim (1), B(i) evidence (1), B(ii) reasoning (2), C(i) evidence
+          from a different source (1), C(ii) reasoning with a different
+          concept (2); with three `sources`
+   one rubric line per point, rubric points add up, every part has a
+   full-credit sample. A study is invented (and says so) or cites the real one. */
+export const FRQ_PARTS = {
+  aaq: [['A', 1], ['B', 1], ['C', 1], ['D', 1], ['E', 1], ['F', 2]],
+  ebq: [['A', 1], ['B(i)', 1], ['B(ii)', 2], ['C(i)', 1], ['C(ii)', 2]],
+};
 export function checkFrq(fid, f, map, figures = {}) {
   const errs = [], err = m => errs.push(m);
   if (f.id !== fid) err(`id "${f.id}" must match the file name`);
@@ -524,29 +528,47 @@ export function checkFrq(fid, f, map, figures = {}) {
   if (!(f.type in FRQ_TYPES)) err(`type must be one of ${Object.keys(FRQ_TYPES).join(', ')}`);
   else if (f.points !== FRQ_TYPES[f.type]) err(`every FRQ is worth ${FRQ_TYPES[f.type]} points, not ${f.points}`);
   if (/\$/.test(f.title || '')) err('title is plain text (it becomes the page title and links): no $...$ math in it');
-  if (f.calc !== undefined) err('no "calc" flag: a calculator is allowed on every free-response question');
-  if (f.graphSpec && (!f.graphSpec.x || !f.graphSpec.y)) err('graphSpec needs x and y axes (the blank grid the student sketches on)');
-  if (f.drawSpec) err('drawSpec is not used; sketches go on a graphSpec grid');
-  for (const p of f.parts || []) if (p.check) {
-    const k = p.check.type === 'setup' ? setupProblems(p.check.setup) : p.check.type === 'numeric' ? numericProblems(p.check.numeric || {}) : ['check type must be numeric or setup'];
-    for (const m of k) err(`part ${p.label} check: ${m}`);
-  }
-  if (f.type === 'calc' && !(f.parts || []).some(p => p.check)) err('a calc FRQ has a "check my number" (check) on at least one calculation part');
-  for (const t of allStrings(f)) for (const m of excludedProblems(t)) err(m);
-  for (const p of f.parts || []) {
-    if (p.space !== undefined && !['lines', 'graph'].includes(p.space)) err(`part ${p.label}: space must be lines or graph`);
-    if (p.space === 'graph' && !f.graphSpec) err(`part ${p.label}: space "graph" needs a graphSpec`);
-  }
+  if (f.calc !== undefined) err('no "calc" flag: the exam allows no calculator');
+  for (const k of ['graphSpec', 'drawSpec', 'stimulus']) if (f[k] !== undefined) err(`"${k}" is not used: an AAQ has "study", an EBQ "sources"`);
+  for (const p of f.parts || []) if (p.check) err(`part ${p.label}: no "check my number" on psychology FRQs (nothing to calculate)`);
+  for (const t of allStrings(f)) for (const m of [...excludedProblems(t), ...mythProblems(t), ...languageProblems(t)]) err(m);
   for (const t of allStrings(f)) for (const m of mathProblems(t)) err(`math: ${m}`);
+  const studyOk = (st, w) => {
+    if (!st || typeof st !== 'object') { err(`${w} is required`); return; }
+    if (!st.title) err(`${w}: title missing`);
+    for (const p of studyProblems(st.study)) err(`${w}: ${p}`);
+    if (!st.invented && !st.source) err(`${w}: "invented": true (shown as "Invented study for practice") or a "source" citing the real study`);
+    if (st.invented && st.source) err(`${w}: invented or cited, not both`);
+    if (st.source && !CITATION.test(st.source)) err(`${w}: source "${st.source}" must cite a real study: authors and a year`);
+    if (st.plot) { try { Plot.svg(st.plot); } catch (e) { err(`${w}: plot: ${e.message}`); } }
+    if (st.table && (!Array.isArray(st.table.cols) || !Array.isArray(st.table.rows) || !st.table.caption)) err(`${w}: table needs cols, rows and a caption`);
+  };
+  if (f.type === 'aaq') {
+    studyOk(f.study, 'study');
+    if (f.sources !== undefined) err('an AAQ analyzes one study ("study"), not "sources"');
+    if (f.study && !f.study.plot && !f.study.table) err('study: the exam\'s AAQ shows a table or graph of the results (plot or table)');
+    if (f.study && f.study.ethics && !(Array.isArray(f.study.ethics) && f.study.ethics.length >= 2)) err('study.ethics lists the safeguards the summary describes (two or more), for part D');
+    if (f.study && !Array.isArray(f.study.ethics)) err('study.ethics is required: the safeguards the summary describes (part D asks the student to pick one and say how it was applied)');
+  }
+  if (f.type === 'ebq') {
+    if (f.study !== undefined) err('an EBQ has three "sources", not one "study"');
+    if (!Array.isArray(f.sources) || f.sources.length !== 3) err('sources: exactly three, as on the exam');
+    else f.sources.forEach((s, i) => { studyOk(s, `sources[${i}]`); if (s && !s.plot && !s.table) err(`sources[${i}]: each source shows a graph or table`); });
+    if (!f.claimTopic || strip(f.claimTopic).length < 10) err('claimTopic: what the claim must be about (the prompt\'s question)');
+    if (!Array.isArray(f.restricted) || !f.restricted.length) err('restricted: the terms that cannot earn the concept point (methods and statistics words, the prompt\'s own topic)');
+  }
   if (map) {
     for (const u of f.units || []) if (!map.chapterById(u)) err(`unknown unit "${u}"`);
     for (const t of f.topics || []) if (!map.topicById(t)) err(`unknown topic "${t}"`);
   }
   if (!(f.units || []).length || !(f.topics || []).length || !(f.practices || []).length) err('units, topics and practices are required');
   for (const p of f.practices || []) if (!SKILL_RE.test(p)) err(`practice "${p}" is not a skill id`);
-  if (!f.stimulus) err('stimulus missing');
-  else if (typeof f.stimulus === 'object') checkStimulus('(frq)', f.stimulus, figures, err);
   if (!Array.isArray(f.parts) || !f.parts.length) err('parts missing');
+  const want = FRQ_PARTS[f.type];
+  if (want && Array.isArray(f.parts)) {
+    const got = f.parts.map(p => `${p.label}:${p.points}`).join(' '), exp = want.map(([l, n]) => `${l}:${n}`).join(' ');
+    if (got !== exp) err(`parts must be the exam's, in order: ${exp} (got ${got})`);
+  }
   let sum = 0;
   for (const p of f.parts || []) {
     const w = `part ${p.label || '?'}`;

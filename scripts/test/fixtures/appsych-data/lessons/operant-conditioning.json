@@ -1,0 +1,62 @@
+{
+ "topic": "operant-conditioning",
+ "hook": "Placeholder hook for the test fixture: a slot machine and a paycheck both reward work, but only one keeps people pulling for hours. The difference is the schedule of reinforcement.",
+ "prereq": [
+  {
+   "q": "Placeholder: in classical conditioning, what does the conditioned stimulus do after learning?",
+   "options": [
+    "Triggers the conditioned response",
+    "Triggers no response",
+    "Becomes the unconditioned stimulus",
+    "Ends extinction"
+   ],
+   "correct": 0,
+   "why": "Placeholder: after pairing, the conditioned stimulus alone triggers the conditioned response.",
+   "review": "classical-conditioning"
+  },
+  {
+   "q": "Placeholder: what is an operational definition?",
+   "options": [
+    "How a study measures a variable",
+    "What a concept means in general",
+    "The hypothesis of a study",
+    "A kind of sample"
+   ],
+   "correct": 0,
+   "why": "Placeholder: it says exactly how the variable is measured.",
+   "review": "research-methods"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "A behavior is followed by a pleasant consequence",
+   "effect": "the behavior becomes more likely"
+  },
+  {
+   "cause": "An unpleasant condition is removed after a behavior",
+   "effect": "the behavior also becomes more likely (negative reinforcement)"
+  },
+  {
+   "cause": "Reinforcement comes after an unpredictable number of responses",
+   "effect": "responding is fast and hard to extinguish"
+  }
+ ],
+ "ideas": [
+  "Placeholder: reinforcement increases a behavior; punishment decreases it.",
+  "Placeholder: positive means something is added; negative means something is removed."
+ ],
+ "misconception": {
+  "wrong": "Placeholder: negative reinforcement is a kind of punishment.",
+  "right": "Placeholder: negative reinforcement removes something unpleasant, so the behavior increases."
+ },
+ "check": [
+  "psy-operant-conditioning-1",
+  "psy-operant-conditioning-2",
+  "psy-operant-conditioning-3",
+  "psy-operant-conditioning-5",
+  "psy-operant-conditioning-6",
+  "psy-operant-conditioning-7"
+ ],
+ "summary": "Placeholder summary: operant conditioning changes behavior through its consequences; reinforcement increases it and punishment decreases it, and the schedule of reinforcement shapes how fast and how long a behavior lasts."
+}

@@ -5,8 +5,9 @@
    below), each drawn from the numbers in its spec. The same file draws graph
    stimuli at build time (the generator runs svg() through
    scripts/lib/appsych-mathlib.mjs) and every trainer's plots at run time, so a
-   figure is always drawn from the data it claims to show. Needs ApPsychExpr
-   (psy-expr.js) for curves given as expression strings.
+   figure is always drawn from the data it claims to show. Curves are
+   JavaScript functions (a trainer's model); stimuli use the data kinds.
+   Needs ApPsychStats (psy-stats.js) for the normal curve and the trend line.
 
    Pure (no DOM, runs in node):
      svg(spec) -> '<svg class="psy-plot" role="img" aria-label=...>...</svg>'
@@ -22,7 +23,7 @@
    The spec (every field optional except label):
      { label: 'what the plot shows, 20+ characters', width: 360, height: 260,
        x: [a, b], y: [c, d], xStep, yStep, xLabel, yLabel, grid, axes,
-       curves: [{ fn: 'expression' | f, domain, cls, dashed, label }],
+       curves: [{ fn: f, domain, cls, dashed, label }],
        shade, points: [{ at: [x, y], open, label, cls }], lines, labels, rects }
 
    Data figures: a spec with `kind` is expanded by expand(spec), every shape
@@ -30,20 +31,20 @@
      { kind: 'line', series: [{ name, points: [[x, y], ...], cls?, dashed? }] }
      { kind: 'bar', categories: [..], values: [..] | series: [{ name, values }] }
      { kind: 'scatter', points: [[x, y], ...], trend?: true }   least-squares line
-     { kind: 'dual', series: [{ name, points, axis: 'left'|'right' }], yRight: [c, d], yRightLabel }
-                                       two y axes (CO2 and temperature on one x)
-     { kind: 'pyramid', groups: [labels], left: [..], right: [..], leftLabel, rightLabel }
-                                       a population pyramid (male left, female right)
-     { kind: 'curve', points: [[x, y], ...], mark: { y: 50, label: 'LD50' } | { x }, smooth? }
-                                       a curve through measured points with a
-                                       marked point read off it (the dose at 50%
-                                       response, by linear interpolation as
-                                       ApPsychCalc.doseAt) and dashed guides
+     { kind: 'histogram', bins: [[lo, hi, count], ...] }   adjacent bars, edges ticked
+     { kind: 'normal', mean, sd, bands?: true, region?: { from, to } }
+                                       the normal curve, x ticked at the mean
+                                       and every SD (values shown); bands
+                                       labels 34%, 13.5%, 2.35% between the
+                                       marks (the 68-95-99.7 rule exactly);
+                                       region shades the area between two
+                                       values (null for an open end) and its
+                                       share (ApPsychStats) goes in o.share
    label, x, y, xLabel, yLabel work as above; x and y default to fit the data. */
 (function(root){
   'use strict';
   var BASEPAD = { l: 38, r: 14, t: 12, b: 28 }, PAD = BASEPAD;
-  function E(){ return root.ApPsychExpr; }
+  function S(){ return root.ApPsychStats; }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function r2(v){ return Math.round(v * 100) / 100; }
   function plain(s){ return root.ApPsychTex ? root.ApPsychTex.plain(s) : String(s); }
@@ -101,7 +102,7 @@
   }
   function toFn(fn, vars){
     if(typeof fn === 'function') return fn;
-    return E().fn(String(fn), vars);
+    throw new Error('ApPsychPlot: a curve is a function (expression strings are not used in this course)');
   }
 
   /* Runs of [x, y] points inside the view. A run breaks where f is not a
@@ -164,7 +165,8 @@
     spec = expand(spec);
     var F = frame(spec), out = [], x0 = F.x[0], x1 = F.x[1], y0 = F.y[0], y1 = F.y[1];
     var L = F.pad.l, R = F.w - F.pad.r, T = F.pad.t, B = F.h - F.pad.b;
-    var xt = spec.xTicks === false ? [] : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : spec.yTickList ? spec.yTickList.map(function(t){ return t.v; }) : ticks(y0, y1, 6, spec.yStep);
+    var xt = spec.xTicks === false ? [] : spec.xTickList ? spec.xTickList.map(function(t){ return t.v; }) : spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec.yTicks === false ? [] : spec.yTickList ? spec.yTickList.map(function(t){ return t.v; }) : ticks(y0, y1, 6, spec.yStep);
+    var xText = function(v){ var t = spec.xTickList && spec.xTickList.filter(function(u){ return u.v === v; })[0]; return t ? esc(String(t.text)) : spec.piX ? piLabel(v) : fmtTick(spec.absX ? Math.abs(v) : v); };
     var yText = function(v){ var t = spec.yTickList && spec.yTickList.filter(function(u){ return u.v === v; })[0]; return t ? String(t.text) : fmtTick(v); };
     var extraH = 0;
     // Grid
@@ -192,7 +194,7 @@
         xt.filter(function(v){ return Math.abs(v) > 1e-12 || ay === L; }).map(function(v){ var px = r2(F.sx(v)); return '<line x1="' + px + '" y1="' + r2(ax - 3) + '" x2="' + px + '" y2="' + r2(ax + 3) + '"/>'; }).join('') +
         yt.filter(function(v){ return Math.abs(v) > 1e-12 || ax === B; }).map(function(v){ var py = r2(F.sy(v)); return '<line x1="' + r2(ay - 3) + '" y1="' + py + '" x2="' + r2(ay + 3) + '" y2="' + py + '"/>'; }).join('') + '</g>');
       var lab = [];
-      xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L && !spec.centerAxis) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + (spec.piX ? piLabel(v) : fmtTick(spec.absX ? Math.abs(v) : v)) + '</text>'); });
+      xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L && !spec.centerAxis) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + xText(v) + '</text>'); });
       yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yText(v) + '</text>'); });
       // The x-axis name sits under the tick labels, centered, when the axis is
       // the bottom edge (every data plot), so it never covers the data; the
@@ -208,22 +210,6 @@
       if(a.x != null) out.push('<line class="psy-plot-asym" x1="' + r2(F.sx(a.x)) + '" y1="' + T + '" x2="' + r2(F.sx(a.x)) + '" y2="' + B + '"/>');
       else out.push('<line class="psy-plot-asym" x1="' + L + '" y1="' + r2(F.sy(a.y)) + '" x2="' + R + '" y2="' + r2(F.sy(a.y)) + '"/>');
     });
-    // Slope field
-    if(spec.field){
-      var fd = spec.field, g2 = toFn(fd.dydx, ['x', 'y']), st = fd.step || 1, segs = [];
-      var kx = (F.sx(x1) - F.sx(x0)) / (x1 - x0), ky = (F.sy(y0) - F.sy(y1)) / (y1 - y0), half = (fd.len || 0.35) * st * kx;
-      ticks(x0, x1, 0, st).forEach(function(x){
-        ticks(y0, y1, 0, st).forEach(function(y){
-          var m = g2({ x: x, y: y });
-          if(!isFinite(m)) return;
-          // The same length on screen for every segment, whatever its slope.
-          var vx = 1, vy = m * ky / kx, n = Math.sqrt(vx * vx + vy * vy), cx = F.sx(x), cy = F.sy(y);
-          vx = vx / n * half; vy = vy / n * half;
-          segs.push('<line x1="' + r2(cx - vx) + '" y1="' + r2(cy + vy) + '" x2="' + r2(cx + vx) + '" y2="' + r2(cy - vy) + '"/>');
-        });
-      });
-      out.push('<g class="psy-plot-field">' + segs.join('') + '</g>');
-    }
     (spec.polys || []).forEach(function(pl){
       out.push('<polyline class="psy-plot-curve ' + esc(pl.cls || 's1') + (pl.dashed ? ' is-dashed' : '') + '" points="' + pl.through.map(function(p){ return r2(F.sx(p[0])) + ',' + r2(F.sy(p[1])); }).join(' ') + '"/>');
     });
@@ -312,13 +298,12 @@
     o.curves = (spec.curves || []).slice(); o.shade = (spec.shade || []).slice(); o.labels = (spec.labels || []).slice();
     o.polys = [];
     var i;
-    if(spec.kind === 'line' || spec.kind === 'dual'){
+    if(spec.kind === 'line'){
       var ser = spec.series || [], xs = [], ysL = [], ysR = [];
       ser.forEach(function(se){ se.points.forEach(function(p){ xs.push(p[0]); (se.axis === 'right' ? ysR : ysL).push(p[1]); }); });
       o.x = spec.x || [Math.min.apply(null, xs), Math.max.apply(null, xs)];
       o.y = spec.y || fitY(ysL, spec.zero);
-      var R = spec.kind === 'dual' ? (spec.yRight || fitY(ysR, spec.zero)) : null;
-      if(R){ o.rightAxis = { y: R, label: spec.yRightLabel || '' }; }
+      var R = null;
       ser.forEach(function(se, j){
         var cls = se.cls || 's' + (j % 5 + 1);
         var map = se.axis === 'right' && R ? function(v){ return o.y[0] + (v - R[0]) / (R[1] - R[0]) * (o.y[1] - o.y[0]); } : function(v){ return v; };
@@ -326,7 +311,7 @@
         o.polys.push(polyline(pts, cls, se.dashed));
         if(se.markers !== false) pts.forEach(function(p){ o.points.push({ at: p, cls: cls, square: j % 2 === 1 }); });
       });
-      o.legend = ser.length > 1 ? ser.map(function(se, j){ return { name: se.name + (spec.kind === 'dual' ? ' (' + (se.axis === 'right' ? 'right' : 'left') + ' axis)' : ''), cls: se.cls || 's' + (j % 5 + 1) }; }) : null;
+      o.legend = ser.length > 1 ? ser.map(function(se, j){ return { name: se.name, cls: se.cls || 's' + (j % 5 + 1) }; }) : null;
     } else if(spec.kind === 'bar'){
       var cats = spec.categories, groups = spec.series || [{ name: '', values: spec.values }], all = [];
       groups.forEach(function(g){ all = all.concat(g.values); });
@@ -342,29 +327,35 @@
       o.x = spec.x || nice(pad(Math.min.apply(null, X), Math.max.apply(null, X), 0.05)[0], pad(Math.min.apply(null, X), Math.max.apply(null, X), 0.05)[1]);
       o.y = spec.y || fitY(Y, spec.zero);
       P.forEach(function(p){ o.points.push({ at: p, cls: spec.cls || 's1' }); });
+      if(S() && P.length >= 3){ try{ o.r = S().r(P); }catch(e){} }
       if(spec.trend){ var L = lsq(P); o.lines.push({ point: [0, L.a], slope: L.b, cls: 's2', dashed: true }); o.fit = L; }
-    } else if(spec.kind === 'pyramid'){
-      var G = spec.groups, Lv = spec.left, Rv = spec.right, mx = Math.max.apply(null, Lv.concat(Rv));
-      var M = spec.max || nice(0, mx)[1];
-      o.x = [-M, M]; o.y = [0, G.length]; o.yTicks = false; o.grid = spec.grid === true; o.absX = true; o.centerAxis = true;
-      G.forEach(function(g, j){
-        o.rects.push({ x0: -Lv[j], x1: 0, y0: j + 0.08, y1: j + 0.92, cls: spec.leftCls || 's1' });
-        o.rects.push({ x0: 0, x1: Rv[j], y0: j + 0.08, y1: j + 0.92, cls: spec.rightCls || 's2' });
-        o.labels.push({ at: [0, j + 0.5], text: g, anchor: 'middle', cls: 'psy-plot-pylabel' });
-      });
-      o.legend = [{ name: spec.leftLabel || 'Male', cls: spec.leftCls || 's1' }, { name: spec.rightLabel || 'Female', cls: spec.rightCls || 's2' }];
-    } else if(spec.kind === 'curve'){
-      var C = spec.points.slice().sort(function(a, b){ return a[0] - b[0]; }), cx = C.map(function(p){ return p[0]; }), cy = C.map(function(p){ return p[1]; });
-      o.x = spec.x || [Math.min(0, cx[0]), cx[cx.length - 1]];
-      o.y = spec.y || fitY(cy);
-      o.polys.push(polyline(C, spec.cls || 's1'));
-      if(spec.markers !== false) C.forEach(function(p){ o.points.push({ at: p, cls: spec.cls || 's1' }); });
-      if(spec.mark){
-        var mxv = spec.mark.x != null ? spec.mark.x : interpX(C, spec.mark.y), myv = spec.mark.y != null ? spec.mark.y : interpY(C, spec.mark.x);
-        if(mxv == null || myv == null) throw new Error('ApPsychPlot: the marked point is not on the curve');
-        o.polys.push(polyline([[o.x[0], myv], [mxv, myv], [mxv, o.y[0]]], 's2', true));
-        o.points.push({ at: [mxv, myv], cls: 's2', label: spec.mark.label });
-        o.mark = { x: mxv, y: myv };
+    } else if(spec.kind === 'histogram'){
+      var bins = spec.bins || [];
+      if(!bins.length) throw new Error('ApPsychPlot: a histogram needs bins [[lo, hi, count], ...]');
+      bins.forEach(function(b, j){ if(j && Math.abs(b[0] - bins[j - 1][1]) > 1e-9) throw new Error('ApPsychPlot: histogram bins must touch (bin ' + (j + 1) + ' starts at ' + b[0] + ', the last ended at ' + bins[j - 1][1] + ')'); });
+      o.x = [bins[0][0], bins[bins.length - 1][1]]; o.y = spec.y || fitY(bins.map(function(b){ return b[2]; }).concat([0]));
+      bins.forEach(function(b){ o.rects.push({ x0: b[0], x1: b[1], y0: 0, y1: b[2], cls: spec.cls || 's1', edge: true }); });
+      o.xTickList = [bins[0][0]].concat(bins.map(function(b){ return b[1]; })).map(function(v){ return { v: v, text: fmtTick(v) }; });
+    } else if(spec.kind === 'normal'){
+      var mu = spec.mean, sd = spec.sd;
+      if(!(isFinite(mu) && sd > 0)) throw new Error('ApPsychPlot: a normal curve needs a mean and a positive sd');
+      var pdf = function(x){ var z = (x - mu) / sd; return Math.exp(-z * z / 2) / (sd * Math.sqrt(2 * Math.PI)); }, peak = pdf(mu);
+      o.x = [mu - 3.5 * sd, mu + 3.5 * sd]; o.y = [0, peak * 1.1]; o.yTicks = false; o.grid = false;
+      o.xTickList = [-3, -2, -1, 0, 1, 2, 3].map(function(k){ return { v: +(mu + k * sd).toPrecision(12), text: fmtTick(+(mu + k * sd).toPrecision(12)) }; });
+      if(spec.region){
+        var lo = spec.region.from == null ? o.x[0] : Math.max(o.x[0], spec.region.from), hi = spec.region.to == null ? o.x[1] : Math.min(o.x[1], spec.region.to);
+        if(lo >= hi) throw new Error('ApPsychPlot: the shaded region is empty');
+        o.shade.push({ fn: pdf, domain: [lo, hi], cls: 's1' });
+        var St = S();
+        if(St) o.share = spec.region.from == null ? 100 * St.cdf((spec.region.to - mu) / sd) : spec.region.to == null ? 100 - 100 * St.cdf((spec.region.from - mu) / sd) : St.between(spec.region.from, spec.region.to, mu, sd);
+      }
+      o.curves.push({ fn: pdf, domain: o.x, cls: 's1', samples: 200 });
+      if(spec.bands){
+        [-3, -2, -1, 1, 2, 3].forEach(function(k){ var x = mu + k * sd; o.lines.push({ seg: true, through: [[x, 0], [x, pdf(x)]], cls: 's2', dashed: true }); });
+        o.lines.push({ seg: true, through: [[mu, 0], [mu, peak]], cls: 's2' });
+        // Inside the 1 and 2 SD bands; the thin 3 SD band's label sits just above its tail.
+        var BAND = [['34%', 0.5, 0.32], ['13.5%', 1.5, 0.09], ['2.35%', 2.75, 0.13]];
+        BAND.forEach(function(b){ [1, -1].forEach(function(sg){ o.labels.push({ at: [mu + sg * b[1] * sd, peak * b[2]], text: b[0] }); }); });
       }
     } else throw new Error('ApPsychPlot: unknown plot kind "' + spec.kind + '"');
     return o;

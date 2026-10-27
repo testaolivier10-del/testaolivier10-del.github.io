@@ -1,0 +1,576 @@
+{
+ "stimuli": {
+  "operant-conditioning-s1": {
+   "kind": "data",
+   "title": "Placeholder: lever presses under four schedules",
+   "invented": true,
+   "table": {
+    "caption": "Placeholder: lever presses in one hour (invented data for practice)",
+    "cols": [
+     "Schedule",
+     "Presses"
+    ],
+    "rows": [
+     [
+      "Variable ratio",
+      "90"
+     ],
+     [
+      "Fixed ratio",
+      "70"
+     ],
+     [
+      "Fixed interval",
+      "30"
+     ],
+     [
+      "Variable interval",
+      "45"
+     ]
+    ]
+   }
+  },
+  "operant-conditioning-s2": {
+   "kind": "visual",
+   "title": "Placeholder: a normal curve of test scores",
+   "invented": true,
+   "plot": {
+    "label": "Placeholder normal curve of scores with mean 100 and SD 15, the region above 115 shaded",
+    "kind": "normal",
+    "mean": 100,
+    "sd": 15,
+    "bands": true,
+    "region": {
+     "from": 115,
+     "to": null
+    },
+    "xLabel": "Score"
+   }
+  },
+  "operant-conditioning-s3": {
+   "kind": "study",
+   "title": "Placeholder: schedules and persistence in rats",
+   "invented": true,
+   "study": {
+    "introduction": "Placeholder: researchers asked whether the schedule of reinforcement changes how long rats keep pressing a lever.",
+    "participants": "Placeholder: 40 laboratory rats, randomly assigned to one of four schedules. An animal care committee approved the study.",
+    "method": "Placeholder: each rat pressed a lever for food on its schedule for two weeks; then food stopped and presses were counted for 30 minutes.",
+    "results": "Placeholder: rats on the variable-ratio schedule pressed most after food stopped."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-operant-conditioning-1",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Placeholder: a teen's curfew is extended after a week of finished chores, and chores get done more often. Which concept explains the change?",
+   "options": [
+    "Positive reinforcement",
+    "Negative punishment",
+    "Positive punishment",
+    "Extinction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: something pleasant was added and the behavior increased.",
+    "options": [
+     "Right: a pleasant consequence was added.",
+     "Removing a privilege lowers a behavior.",
+     "Adding something unpleasant lowers a behavior.",
+     "Extinction is stopping reinforcement."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-2",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Placeholder: a pigeon was reinforced after 3, 5, 7 and 5 pecks. What is the mean number of pecks per reinforcement?",
+   "why": {
+    "correct": "Placeholder: $\\frac{3 + 5 + 7 + 5}{4} = 5$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       3,
+       5,
+       7,
+       5
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         3,
+         5,
+         7,
+         5
+        ]
+       ]
+      },
+      "why": "Placeholder: 20 is the total. Divide by the number of values, 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-3",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Placeholder: a seatbelt alarm stops when a driver buckles up, and drivers buckle up faster. Which concept is this?",
+   "options": [
+    "Negative reinforcement",
+    "Positive punishment",
+    "Positive reinforcement",
+    "Negative punishment"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: an unpleasant sound is removed and the behavior increases.",
+    "options": [
+     "Right: something unpleasant is removed.",
+     "Punishment lowers a behavior.",
+     "Nothing pleasant is added.",
+     "Removing something pleasant lowers a behavior."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-4",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Placeholder: five rats pressed a lever 2, 4, 4, 9 and 16 times. What is the median?",
+   "why": {
+    "correct": "Placeholder: in order, the middle value is 4."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       2,
+       4,
+       4,
+       9,
+       16
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         2,
+         4,
+         4,
+         9,
+         16
+        ]
+       ]
+      },
+      "why": "Placeholder: 7 is the mean. The median is the middle score in order."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-5",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "operant-conditioning-s1",
+   "q": "Placeholder: which schedule in the table produced the most responses?",
+   "options": [
+    "Variable ratio",
+    "Fixed interval",
+    "Fixed ratio",
+    "Variable interval"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the variable-ratio row has the highest count, $90$ presses.",
+    "options": [
+     "Right: its count is highest.",
+     "Its count is lowest.",
+     "Its count is lower.",
+     "Its count is lower."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-6",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "operant-conditioning-s1",
+   "q": "Placeholder: what is the range of the response counts in the table?",
+   "why": {
+    "correct": "Placeholder: $90 - 30 = 60$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "range",
+     "args": [
+      [
+       90,
+       30,
+       70,
+       45
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 90,
+      "why": "Placeholder: 90 is the highest count. Subtract the lowest, 30."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-7",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "stimulus": "operant-conditioning-s1",
+   "q": "Placeholder: which schedules produced more than 50 responses? Select all that apply.",
+   "options": [
+    "Variable ratio",
+    "Fixed ratio",
+    "Fixed interval",
+    "Variable interval"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Placeholder: compare each count with 50.",
+    "options": [
+     "Right: 90 is above 50.",
+     "Right: 70 is above 50.",
+     "30 is below 50.",
+     "45 is below 50."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-8",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "operant-conditioning-s2",
+   "q": "Placeholder: what does the shaded area on this curve show?",
+   "options": [
+    "The share of scores more than one standard deviation above the mean",
+    "The share of scores below the mean",
+    "The mean score",
+    "The range of scores"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the region starts one standard deviation above the mean.",
+    "options": [
+     "Right: about 16% of scores.",
+     "Below the mean is half.",
+     "The mean is a point, not an area.",
+     "The range is a distance."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-9",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "operant-conditioning-s2",
+   "q": "Placeholder: by the 68-95-99.7 rule, what percent of scores lie between 85 and 115 on this curve?",
+   "why": {
+    "correct": "Placeholder: one standard deviation each side of the mean holds 68%."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      -1,
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "Placeholder: 34% is one side only. Add both sides."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-10",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "operant-conditioning-s2",
+   "q": "Placeholder: a score of 130 on this curve is about which percentile?",
+   "options": [
+    "98th",
+    "84th",
+    "50th",
+    "68th"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: two standard deviations above the mean is about the 98th percentile.",
+    "options": [
+     "Right: 50 + 34 + 13.5.",
+     "That is one standard deviation above.",
+     "That is the mean.",
+     "68% is a share between two marks, not a percentile."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-11",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "operant-conditioning-s3",
+   "q": "Placeholder: what research method did this study use?",
+   "options": [
+    "An experiment",
+    "A correlational study",
+    "A case study",
+    "Naturalistic observation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: rats were randomly assigned to schedules that the researcher set.",
+    "options": [
+     "Right: the researcher manipulated the schedule.",
+     "Nothing was only measured as it occurred.",
+     "More than one subject was studied.",
+     "The setting was controlled."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-12",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "operant-conditioning-s3",
+   "q": "Placeholder: what was the dependent variable?",
+   "options": [
+    "Lever presses in an hour",
+    "The reinforcement schedule",
+    "The number of rats",
+    "The food pellet"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: lever presses were measured.",
+    "options": [
+     "Right: it was measured.",
+     "That was manipulated.",
+     "That is the sample size.",
+     "That is the reinforcer."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-13",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "operant-conditioning-s3",
+   "q": "Placeholder: which safeguard does the summary describe?",
+   "options": [
+    "Review by an animal care committee",
+    "Informed consent from each rat",
+    "Debriefing after deception",
+    "Confidentiality of names"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Placeholder: the summary says a committee approved the study.",
+    "options": [
+     "Right: it is in the summary.",
+     "Animals cannot consent.",
+     "There was no deception.",
+     "There are no names to protect."
+    ]
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-14",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "q": "Placeholder: write an operational definition of persistence for this study.",
+   "why": {
+    "correct": "Placeholder: an operational definition says how the variable was measured."
+   },
+   "specific": {
+    "frame": "Persistence was measured as ___ during ___.",
+    "write": {
+     "context": [
+      "press",
+      "lever"
+     ]
+    },
+    "model": "Placeholder: persistence was measured as the number of lever presses during a 30-minute session after food stopped.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the number of lever presses",
+       "how motivated the rat felt",
+       "the type of schedule"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: a feeling is not measurable as stated.",
+       "2": "Placeholder: that is the independent variable."
+      }
+     },
+     "when": {
+      "label": "When",
+      "options": [
+       "a 30-minute session after food stopped",
+       "the whole life of the rat"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: the study measured one session."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-15",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "analyze",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.A",
+   "q": "Placeholder: build a claim about schedules and persistence, cite a source and name the concept.",
+   "why": {
+    "correct": "Placeholder: a claim, evidence from a named source, and a concept."
+   },
+   "specific": {
+    "frame": "Claim: ___. Evidence: ___ (Source ___).",
+    "write": {
+     "cite": true,
+     "concept": [
+      "variable-ratio",
+      "partial reinforcement"
+     ],
+     "restricted": [
+      "mean",
+      "random assignment"
+     ]
+    },
+    "model": "Placeholder: variable-ratio schedules make behavior persist, because in Source 1 rats on that schedule kept pressing longest, which shows partial reinforcement resists extinction.",
+    "slots": {
+     "claim": {
+      "label": "Claim",
+      "options": [
+       "Variable-ratio schedules make behavior persist",
+       "Schedules do not matter"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: the sources show schedules matter."
+      }
+     },
+     "source": {
+      "label": "Source",
+      "options": [
+       "1",
+       "2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Placeholder: Source 2 is about fixed intervals."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-operant-conditioning-16",
+   "unit": "unit-3",
+   "topic": "operant-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Placeholder: put the steps of shaping a dog to roll over in order.",
+   "options": [
+    "Reinforce lying down",
+    "Reinforce rolling onto its side",
+    "Reinforce a full roll"
+   ],
+   "why": {
+    "correct": "Placeholder: reinforce closer and closer approximations."
+   }
+  }
+ ]
+}

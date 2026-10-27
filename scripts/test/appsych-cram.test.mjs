@@ -87,7 +87,7 @@ test('month boundaries, year ends and leap days', () => {
   const dst = build({ exam: '2027-03-20', weeks: 3 });
   assert.equal(new Set(dst.days.map(d => d.date)).size, 21);
   // A bad date falls back to the default exam.
-  assert.equal(build({ exam: 'soon' }).exam, '2027-05-13', 'Thursday 13 May 2027');
+  assert.equal(build({ exam: 'soon' }).exam, '2027-05-14', 'Friday 14 May 2027');
 });
 
 test('two full practice exams placed sensibly, each followed by its review (after a rest day at most); rest days and the eve', () => {
@@ -145,8 +145,8 @@ test('FRQs prefer the day\'s units and do not repeat until all are used', () => 
    pace and the links each kind of day carries. */
 test('day texts: exam day n opens practice exam n in the 2027 format; study days carry justification prompts', () => {
   const src = readFileSync('psychology/assets/pages/cram.js', 'utf8');
-  assert.match(src, /link\('exams\.html\?mode=full&form=' \+ d\.exam, 'Practice exam ' \+ d\.exam \+ ': 80 multiple-choice questions in 90 min, then 3 free-response questions in 70 min'\)/);
-  assert.match(src, /function mins\(n\)\{ return Math\.round\(n \* 90 \/ 80\) \+ ' min'; \}/, 'timed sets at the exam pace');
+  assert.match(src, /link\('exams\.html\?mode=full&form=' \+ d\.exam, 'Practice exam ' \+ d\.exam \+ ': 75 multiple-choice questions in 90 min, then the AAQ and the EBQ in 70 min'\)/);
+  assert.match(src, /function mins\(n\)\{ return Math\.round\(n \* 90 \/ 75\) \+ ' min'; \}/, 'timed sets at the exam pace');
   const body = src.slice(src.indexOf('function dayBody'), src.indexOf('return \'<ul class="psy-cr-todo">'));
   const study = body.slice(body.indexOf("d.kind === 'study'"), body.indexOf("d.kind === 'weak'"));
   const weak = body.slice(body.indexOf("d.kind === 'weak'"), body.indexOf("d.kind === 'exam'"));

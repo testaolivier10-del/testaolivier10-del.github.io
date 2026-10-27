@@ -1,15 +1,14 @@
 /* AP® Psychology question engine: renders and grades every item type
    wherever a question appears (lesson checks, practice, review, exams).
    Forked from the AP® Statistics engine (docs/appsych-spec.md decision 1);
-   formats in docs/appsych-architecture.md. Environmental science changes (spec
-   section 7): `numeric` items take a number with its unit, scale words and
-   powers of ten read, and grade the value and the unit separately
-   (ApPsychGrade.numeric, ported from AP® Chemistry's grader, no significant
-   figures); `setup` items take the calculation typed as on the exam, graded
-   by value, brackets and units (ApPsychExpr.gradeSetup), then the answer and
-   its unit as a second box (the reader's point for setup, then for answer);
-   `specific` items ("Make it specific") are a builder graded slot by slot
-   (ApPsychGrade.specific) plus a free-text box whose rule flags are hints only.
+   formats in docs/appsych-architecture.md. Forked from AP® Environmental
+   Science's engine (spec decision 1), without setup items (the exam has no
+   calculator and no typed setups): `numeric` items take a number worked by
+   hand (a mean, a median, a percent under the normal curve), a unit
+   optional, graded by ApPsychGrade.numeric; `specific` items ("Make it
+   specific": method, variable, operational definition, claim, citation)
+   are a builder graded slot by slot (ApPsychGrade.specific) plus a
+   free-text box whose rule flags are hints only.
 
      ApPsychQuestions.render(q, host, opts) -> { el, done() }
        opts.n         the number shown before the stem
@@ -22,8 +21,7 @@
        in authored order.
      ApPsychQuestions.grade(q, response) is the pure grader the renderer uses
        (and the tests call): single -> option index; multi -> array of
-       indices; numeric -> the typed string or { value, unit }; setup -> the
-       typed expression, or { expr, value } with a value step; specific ->
+       indices; numeric -> the typed string or { value, unit }; specific ->
        { slot: option index }; order -> authored indices in the order placed.
 
    Options are shuffled for display, so an explanation never names a letter
@@ -35,7 +33,6 @@
   function shuffle(a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   var uid = 0;
 
-  function X(){ return window.ApPsychExpr; }
   function G(){ return window.ApPsychGrade; }
   function T(){ return window.ApPsychTex; }
 
@@ -47,18 +44,6 @@
     if(t === 'numeric'){
       var gn = G().numeric(q.numeric || {}, resp);
       return { valid: gn.valid, correct: gn.correct, score: gn.score || 0, value: gn.value, notes: gn.notes || [], mistake: gn.mistake, parts: gn.parts, right: gn.right, total: gn.total };
-    }
-    if(t === 'setup'){
-      if(!X()) return { valid: false, correct: false, score: 0, error: 'The expression checker did not load.' };
-      // resp: the typed setup, or { expr, value } when the item has a second
-      // step (setup.then): the answer with its unit, graded as numeric.
-      var two = resp && typeof resp === 'object', T2 = q.setup && q.setup.then;
-      var gs = X().gradeSetup(q, two ? resp.expr : resp), es = gs.correct ? 1 : gs.valueOk ? 0.5 : 0;
-      if(!two || !T2) return { valid: gs.valid, correct: gs.correct, score: es, notes: gs.notes || [], error: gs.error, mistake: gs.mistake, tex: gs.tex };
-      var gv = G().numeric(T2, resp.value);
-      if(!gs.valid || !gv.valid) return { valid: false, correct: false, score: 0, error: !gs.valid ? gs.error : 'Type the answer as a number with its unit, such as 25 %.', notes: [] };
-      return { valid: true, correct: gs.correct && gv.correct, score: (es + gv.score) / 2, notes: (gs.notes || []).concat(gv.notes || []), error: gs.error, mistake: gs.mistake || gv.mistake, tex: gs.tex,
-        parts: { setup: gs.correct, value: gv.parts.value, unit: gv.parts.unit }, right: (gs.correct ? 1 : 0) + gv.right, total: 1 + gv.total };
     }
     if(t === 'specific'){
       var gp = G().specific(q.specific || {}, resp);
@@ -102,7 +87,7 @@
     return out;
   }
 
-  var KIND = { quantitative: 'Data', visual: 'Model or diagram', text: 'Passage' };
+  var KIND = { study: 'Study', data: 'Data', visual: 'Figure' };
   function base(){ return window.ApPsychBase || ''; }
   /* Stimulus HTML from the bank uses paths from psychology/; prefix this page's base. */
   function placePaths(h){ return String(h || '').replace(/(src|href)="figures\//g, '$1="' + base() + 'figures/'); }
@@ -172,7 +157,7 @@
     }
 
     if(q.type === 'order') order(); else if(q.type === 'multi') multi(); else if(q.type === 'numeric') numeric();
-    else if(q.type === 'setup') setupItem(); else if(q.type === 'specific') specificItem(); else choice();
+    else if(q.type === 'specific') specificItem(); else choice();
 
     function optWhy(x, i){
       if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="psy-opt-why">' + html(q.why.options[i]) + '</span>');
@@ -249,7 +234,7 @@
       var N = q.numeric || {}, id = 'num-' + (++uid), ask = N.unit != null && N.unit !== '' && N.askUnit !== false;
       body.innerHTML = '<div class="psy-num"><span class="psy-num-row"><label class="psy-num-vlabel" for="' + id + '">Your answer</label><input type="text" id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + id + '-h">' +
         (ask ? '<label class="psy-num-ulabel" for="' + id + '-u">Unit</label><input type="text" class="psy-num-u" id="' + id + '-u" autocomplete="off" spellcheck="false">' : (N.unit ? '<span class="psy-num-unit" aria-hidden="true">' + esc(N.unit) + '</span>' : '')) + '</span>' +
-        '<span class="psy-small" id="' + id + '-h">A number such as 1250, 2.5 million or 2.5e6' + (ask ? ', then its unit (kWh, kg, %, people/km^2).' : '.') + '</span></div>';
+        '<span class="psy-small" id="' + id + '-h">A number, worked out by hand (no calculator on the exam)' + (ask ? ', then its unit (' + esc(N.unit) + ').' : '.') + '</span></div>';
       actions.innerHTML = '<button type="button" class="btn-press sm psy-check">Check</button>';
       var input = body.querySelector('input'), unitIn = body.querySelector('.psy-num-u'), check = actions.querySelector('.psy-check');
       function go(){
@@ -273,58 +258,6 @@
     }
 
     function notesHtml(list){ return list && list.length ? '<ul class="psy-num-notes">' + list.map(function(n){ return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : ''; }
-    function lockMark(input, g){ input.readOnly = true; if(!opts.exam) input.parentNode.insertAdjacentHTML('beforeend', '<span class="psy-mark ' + (g.correct ? 'ok">Correct' : 'no">Your answer') + '</span>'); }
-
-    /* A calculation, as the exam's readers grade it: the setup typed as on
-       the exam (brackets, units) with a live preview, graded by value and
-       structure (ApPsychExpr.gradeSetup); then, when the item has a value step
-       (setup.then), the answer and its unit in their own boxes. */
-    function setupItem(){
-      var S = q.setup || {}, id = 'su-' + (++uid), names = Object.keys(S.bind || {}), T2 = S.then || null;
-      var askU = T2 && T2.unit != null && T2.unit !== '';
-      body.innerHTML = '<div class="psy-expr"><label for="' + id + '">Your setup</label>' +
-        '<span class="psy-expr-row"><input type="text" id="' + id + '" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + id + '-p ' + id + '-h"></span>' +
-        '<div class="psy-expr-preview" id="' + id + '-p" aria-live="polite"><span class="psy-small">Your setup will show here as math.</span></div>' +
-        '<span class="psy-small" id="' + id + '-h">Type it as on the exam: brackets around a difference, * for times, / to divide, ^ for powers, and units after numbers (5000 kWh * 0.9 kg/kWh).' +
-        (names.length ? ' You may use the names ' + esc(names.join(', ')) + '.' : '') + '</span></div>' +
-        (T2 ? '<div class="psy-num psy-then"><span class="psy-num-row"><label class="psy-num-vlabel" for="' + id + '-v">Then the answer</label><input type="text" class="psy-then-v" id="' + id + '-v" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + id + '-vh">' +
-          (askU ? '<label class="psy-num-ulabel" for="' + id + '-u">Unit</label><input type="text" class="psy-num-u" id="' + id + '-u" autocomplete="off" spellcheck="false">' : '') + '</span>' +
-          '<span class="psy-small" id="' + id + '-vh">Work it out from your setup' + (askU ? ', then give its unit.' : '.') + '</span></div>' : '');
-      actions.innerHTML = '<button type="button" class="btn-press sm psy-check">Check</button>';
-      var input = body.querySelector('input'), vin = body.querySelector('.psy-then-v'), uin = body.querySelector('.psy-num-u'), prev = body.querySelector('.psy-expr-preview'), check = actions.querySelector('.psy-check'), pending = null;
-      function paint(){
-        pending = null;
-        var v = input.value.trim();
-        if(!v || !X()){ prev.innerHTML = '<span class="psy-small">Your setup will show here as math.</span>'; return; }
-        var r = X().evaluate(v, S.bind || {}, S.units || []);
-        prev.innerHTML = r.tex ? '<span class="psy-small">Reads as</span> ' + (T() ? T().render(r.tex) : esc(v)) + (r.ok && r.dims && X().dimText(r.dims) ? ' <span class="psy-small">units: ' + esc(X().dimText(r.dims)) + '</span>' : '') : '<span class="psy-expr-err">' + esc(r.error || 'That cannot be read yet.') + '</span>';
-      }
-      input.addEventListener('input', function(){ if(!pending) pending = setTimeout(paint, 120); });
-      function go(){
-        if(done || busy) return;
-        if(T2 && input.value.trim() && !vin.value.trim()){ fb.innerHTML = '<p class="psy-small" role="alert">Now type the answer in the second box.</p>'; vin.focus(); return; }
-        var resp = T2 ? { expr: input.value, value: askU ? { value: vin.value, unit: uin.value } : vin.value } : input.value;
-        var g = grade(q, resp);
-        if(!g.valid){ fb.innerHTML = '<p class="psy-small" role="alert">' + esc(g.error || 'Type the setup.') + '</p>'; (T2 && X() && X().evaluate(input.value, S.bind || {}, S.units || []).ok ? vin : input).focus(); return; }
-        busy = true;
-        explain(function(){
-          var mark = function(v){ return v ? '<span class="psy-mark ok">Right</span>' : '<span class="psy-mark no">Not yet</span>'; };
-          if(T2){
-            input.readOnly = vin.readOnly = true; if(uin) uin.readOnly = true;
-            var rows = [['Setup', g.parts.setup], ['Answer', g.parts.value]].concat(g.parts.unit != null ? [['Units', g.parts.unit]] : []);
-            var detail2 = opts.exam ? '' : '<ul class="psy-num-parts">' + rows.map(function(r){ return '<li>' + mark(r[1]) + ' ' + r[0] + '</li>'; }).join('') + '</ul>' + notesHtml(g.notes) +
-              '<p><b>Setup:</b> ' + (S.answerHtml || esc(S.answer)) + ' <b>Answer:</b> ' + esc(formatKey(T2)) + '</p>';
-            finish(g, detail2, resp, g.right + ' of ' + g.total + ' parts right.');
-            return;
-          }
-          lockMark(input, g);
-          var detail = opts.exam ? '' : notesHtml(g.notes) + '<p><b>Setup:</b> ' + (S.answerHtml || esc(S.answer)) + '</p>';
-          finish(g, detail, input.value, 'The value is right; the setup is missing what the readers want shown.');
-        });
-      }
-      check.addEventListener('click', go);
-      [input, vin, uin].forEach(function(el){ if(el) el.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); if(el === input && vin && !vin.value.trim()) vin.focus(); else go(); } }); });
-    }
 
     /* "Make it specific" (spec section 7, rule 4): write it in your own
        words first (optional; the rule flags are hints, never a score), then

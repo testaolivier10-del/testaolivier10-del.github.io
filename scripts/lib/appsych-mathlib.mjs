@@ -1,14 +1,13 @@
 /* The AP® Psychology math runtime, for node: the very files the
-   browser runs (psychology/assets/psy-expr.js, psy-math.js,
-   psy-calc.js, psy-grade.js and tools/psy-plot.js), loaded once into a vm
+   browser runs (psychology/assets/psy-math.js,
+   psy-stats.js, psy-grade.js and tools/psy-plot.js), loaded once into a vm
    context, so the generator, the content check and the tests parse, render,
    compute and plot exactly as a student's page does.
 
-     import { Expr, Tex, Plot, Calc, Grade, mathHtml, renderDeep } from './appsych-mathlib.mjs';
-     Expr  = ApPsychExpr  (parse, evaluate, dims, gradeSetup, toTex)
+     import { Tex, Plot, Stats, Grade, mathHtml, renderDeep } from './appsych-mathlib.mjs';
      Tex   = ApPsychTex   (render, html, text, plain, check)
      Plot  = ApPsychPlot  (svg, expand, frame, ticks)
-     Calc  = ApPsychCalc  (every calculation recipe of spec section 7)
+     Stats = ApPsychStats (descriptive statistics, the normal curve, correlation)
      Grade = ApPsychGrade (numbers with units and scale words, "Make it specific")
      mathHtml(str)     $...$ rendered to MathML, strict: a typo throws; long chains wrap
      renderDeep(value, skip)  every string field with $ rendered, except the keys in `skip` */
@@ -21,13 +20,12 @@ const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const ctx = { Math, Number, String, Array, Object, JSON, Error, isFinite, parseFloat, RegExp };
 ctx.globalThis = ctx;
 vm.createContext(ctx);
-for (const f of ['psy-expr.js', 'psy-math.js', 'psy-calc.js', 'psy-grade.js', 'tools/psy-plot.js'])
+for (const f of ['psy-math.js', 'psy-stats.js', 'psy-grade.js', 'tools/psy-plot.js'])
   vm.runInContext(readFileSync(join(ROOT, 'psychology', 'assets', f), 'utf8'), ctx, { filename: f });
 
-export const Expr = ctx.ApPsychExpr;
 export const Tex = ctx.ApPsychTex;
 export const Plot = ctx.ApPsychPlot;
-export const Calc = ctx.ApPsychCalc;
+export const Stats = ctx.ApPsychStats;
 export const Grade = ctx.ApPsychGrade;
 // wrap: long inline chains may break at = (psy-math.js), for authored prose and options.
 export const mathHtml = s => Tex.html(s, { strict: true, wrap: true });

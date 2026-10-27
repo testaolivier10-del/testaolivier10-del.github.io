@@ -44,6 +44,7 @@
     { key: 'apcalc', dir: 'calculus' },
     { key: 'apstat', dir: 'statistics' },
     { key: 'apenv', dir: 'environmental-science' },
+    { key: 'appsych', dir: 'psychology' },
   ];
   // courses:end
   function courseKey(){
@@ -154,6 +155,14 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Psychology's, the same way (scripts/build-appsych.mjs).
+  function psyPages(){
+    return fetch('/psychology/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/psychology/glossary.html', title: 'Glossary', data: '/psychology/assets/glossary.json' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
@@ -164,6 +173,7 @@
     if(k === 'apcalc') return calcPages();
     if(k === 'apstat') return statPages();
     if(k === 'apenv') return envPages();
+    if(k === 'appsych') return psyPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -178,6 +188,7 @@
     if(k === 'apcalc') return '<a href="/calculus/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apstat') return '<a href="/statistics/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     if(k === 'apenv') return '<a href="/environmental-science/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'appsych') return '<a href="/psychology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -1104,6 +1115,12 @@
       'What is the difference between the greenhouse effect and ozone depletion?',
       'How do I write a testable hypothesis?',
       'What is the difference between bioaccumulation and biomagnification?'
+    ],
+    appsych: [
+      'What is the difference between an experiment and a correlational study?',
+      'How do I write an operational definition?',
+      'What is the difference between negative reinforcement and punishment?',
+      'How do I cite a source on the evidence-based question?'
     ]
   };
 
@@ -1116,7 +1133,8 @@
     apphys: 'Ask me anything from this course — every published Physics notes page and the glossary are indexed. I can define a term, explain a calculation step by step, or point you at the page it came from.',
     apcalc: 'Ask me anything from this course — every published Calculus notes page and the glossary are indexed. I can define a term, explain a derivative or an integral step by step, or point you at the page it came from.',
     apstat: 'Ask me anything from this course: every published Statistics notes page and the glossary are indexed. I can define a term, explain a calculation or a conclusion step by step, or point you at the page it came from.',
-    apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.'
+    apenv: 'Ask me anything from this course: every published Environmental Science notes page and the glossary are indexed. I can define a term, explain a calculation or a cause-and-effect chain step by step, or point you at the page it came from.',
+    appsych: 'Ask me anything from this course: every published Psychology notes page and the glossary are indexed. I can define a term, apply a concept to a situation, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

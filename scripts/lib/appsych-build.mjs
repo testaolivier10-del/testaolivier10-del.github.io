@@ -2,15 +2,17 @@
    generator (scripts/build-appsych.mjs) and its content check
    (scripts/check-appsych-content.mjs).
 
-   Forked from scripts/lib/apstat-build.mjs (docs/appsych-spec.md decision 1):
+   Forked from scripts/lib/apenv-build.mjs (docs/appsych-spec.md decision 1):
    the same head, footer, glossary markup, stimulus tables and build-time math
    (every $...$ rendered to MathML at load through appsych-mathlib.mjs; a TeX
    typo is a listed problem, C.mathProblems), graph stimuli plotted from a
-   spec (stimulus.plot, psychology/assets/tools/psy-plot.js: line,
-   bar, scatter, dual-axis, pyramid, curve), and the psychology
-   items: numbers with units whose key is recomputed by ApPsychCalc from its
-   recipe, setups graded by value, brackets and units, and "Make it specific"
-   builders (docs/appsych-architecture.md describes every data format read here).
+   spec (stimulus.plot, psychology/assets/tools/psy-plot.js: line, bar,
+   scatter, normal, histogram), and the psychology items: numbers (a unit
+   optional) whose key is recomputed by ApPsychStats from its recipe, and
+   "Make it specific" builders (method, variable, operational definition,
+   claim, source citation). No setup items: the exam has no calculator and no
+   typed setups (docs/appsych-architecture.md describes every data format
+   read here).
 
    THE MAP. loadMap() reads docs/appsych-dependency-map.json (validated in full by
    scripts/lib/appsych-map.mjs and check-appsych-map.mjs); without it, only when
@@ -22,7 +24,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CSP } from './site-config.mjs';
-import { Tex, Plot, Expr, Calc, Grade, mathHtml, RAW_KEYS } from './appsych-mathlib.mjs';
+import { Tex, Plot, Stats, Grade, mathHtml, RAW_KEYS } from './appsych-mathlib.mjs';
 
 export const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 export const SITE = 'https://levlprep.com';
@@ -39,19 +41,20 @@ export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Psych
    its comment) and psychology/assets/psy.css (body.psy); the ranks
    in assets/hub-progress.js TITLES.appsych. Change the rest here and rebuild. */
 export const IDENTITY = {
-  headline: 'one system at a time.',
-  // Olive: hue 63°, between Physics' amber and Biology's green, far from NREMT's teal.
-  accent: { ink: '#474A10', tint: '#EFF0DA', darkInk: '#DCDB98', darkTint: 'rgba(200,200,100,0.10)', soft: '#D3D27F' },
-  // A leaf over a globe line: 24-px stroke paths, as every course card.
-  iconPaths: '<circle cx="12" cy="13" r="8" stroke-opacity=".55"/><path d="M4 13h16" stroke-opacity=".55"/><path d="M12 3c4 2 6 5 6 9-4 0-7-2-8-6"/><path d="M12 3c-1 4 0 7 3 9"/>',
-  firstRank: 'Field Observer',
+  headline: 'from neuron to society.',
+  // Deep cerulean, hue 202°: between NREMT's teal (171°) and Chemistry's
+  // cobalt (223°), far from Statistics' plum and Environmental Science's olive.
+  accent: { ink: '#084F78', tint: '#E3F0F8', darkInk: '#A8D8F0', darkTint: 'rgba(80,170,220,0.10)', soft: '#8CC8E8' },
+  // A head in profile with a spark: 24-px stroke paths, as every course card.
+  iconPaths: '<path d="M15 21v-3h2a2 2 0 0 0 2-2v-2l1.6-.8a.6.6 0 0 0 .2-.9L19 9.5C19 5.4 15.9 3 12 3 7.6 3 4.5 6.3 4.5 10.2c0 2.3.9 4.2 2.5 5.5V21"/><path d="M11.5 7.5l-1.2 2.6 2.6-.4-1.2 2.8" stroke-opacity=".75"/>',
+  firstRank: 'Curious Observer',
 };
 // THE FREE TIER, in one place (docs/appsych-spec.md decision 9, proposed):
-// Units 1 and 2 and every "Math you need" lesson. Change it here and in
-// assets/premium.js COURSES.appsych.freeChapters (scripts/test/appsych-build.test.mjs
-// compares the two), then rebuild. The icon paths are also the hub card's
-// (hubEnvCard in scripts/build-pricing.mjs).
-export const FREE_UNITS = ['unit-1', 'unit-2'];
+// the units in FREE_UNITS and every "Research skills you need" lesson. Change
+// it here and in assets/premium.js COURSES.appsych.freeChapters
+// (scripts/test/appsych-build.test.mjs compares the two), then rebuild. The
+// icon paths are also the hub card's (hubPsyCard in scripts/build-pricing.mjs).
+export const FREE_UNITS = ['unit-1'];
 export const MAP_PATH = join(ROOT, 'docs', 'appsych-dependency-map.json');
 export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', 'appsych-map-stub.json');
 
@@ -66,7 +69,7 @@ export const text = html => Tex.plain(mathText(html)).replace(/<\/?[A-Za-z!][^>]
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 
 /* The token rule (spec decision 2): no "ap" or "appsych" token in a served path. */
-export const hasApToken = s => String(s).toLowerCase().split(/[^a-z0-9]+/).some(t => t === 'ap' || t === 'appsych' || t === 'apstat' || t === 'apcalc' || t === 'apphys' || t === 'apchem' || t === 'apbio');
+export const hasApToken = s => String(s).toLowerCase().split(/[^a-z0-9]+/).some(t => t === 'ap' || t === 'appsych' || t === 'apenv' || t === 'apstat' || t === 'apcalc' || t === 'apphys' || t === 'apchem' || t === 'apbio');
 
 /* The trademark (spec section 1, decision 3): "AP®" with the ®, as an
    adjective before a capitalized noun ("AP® Psychology"), never plural or
@@ -86,7 +89,7 @@ export function trademarkProblems(s) {
     }
   }
   // The common shorthand is a nickname for the exam, not a name we can use.
-  for (const m of t.matchAll(/\bAPES\b/g)) out.push(`"${m[0]}": write "AP® Psychology", not the shorthand`);
+  for (const m of t.matchAll(/\bAP\s?Psych\b|\bAPP\b/g)) out.push(`"${m[0]}": write "AP® Psychology", not the shorthand`);
   return out;
 }
 
@@ -232,14 +235,14 @@ export function renderMath(v, onError = msg => { throw new Error(msg); }) {
 }
 
 /* A numeric key recomputed from its recipe (docs/appsych-architecture.md,
-   "numeric"): from = { fn, args, pick? }, where fn names an ApPsychCalc
+   "numeric"): from = { fn, args, pick? }, where fn names an ApPsychStats
    function (FROM_FNS), args its arguments (an argument may be a recipe) and
    pick the path into an object result ("value" of a chain). Returns the
    number, or throws. */
-export const FROM_FNS = Calc.FNS.slice();
+export const FROM_FNS = Stats.FNS.slice();
 export function fromValue(from) {
   if (!from || !FROM_FNS.includes(from.fn)) throw new Error(`from.fn must be one of ${FROM_FNS.join(', ')}`);
-  return Calc.evaluate(from);
+  return Stats.evaluate(from);
 }
 
 /* A "Make it specific" builder's slots (spec section 7, rule 4): authored
@@ -269,31 +272,17 @@ export function prepareFrqCheck(check, where = 'frq check') {
   if (!check) return check;
   const out = JSON.parse(JSON.stringify(check));
   if (out.type === 'numeric' && out.numeric) prepareNumeric(out.numeric, `${where}.numeric`);
-  else if (out.type === 'setup' && out.setup) prepareSetup(out.setup, `${where}.setup`);
-  else throw new Error(`${where}: check type must be numeric or setup`);
+  else throw new Error(`${where}: check type must be numeric`);
   return out;
 }
 
-/* A setup's key rendered as math, its value step (then) prepared as a
-   numeric item, and every authored mistake shown to evaluate. */
-function prepareSetup(S, where) {
-  const got = Expr.evaluate(String(S.answer), S.bind || {}, S.units || []);
-  if (!got.ok) throw new Error(`${where}.answer "${S.answer}" does not evaluate: ${got.error || 'not a number'}`);
-  S.answerHtml = Tex.render(S.answerTex || got.tex, { strict: true });
-  for (const m of S.mistakes || []) if (!Expr.evaluate(String(m.expr), S.bind || {}, S.units || []).ok) throw new Error(`${where} mistake "${m.expr}" does not evaluate`);
-  if (S.then) prepareNumeric(S.then, `${where}.then`);
-  return S;
-}
-
 /* What the runtime needs beyond what was authored: numeric keys recomputed
-   from their recipes (`from`), setup keys rendered as math with their value
-   step, "Make it specific" slots. A key that disagrees with its recipe, or
+   from their recipes (`from`) and "Make it specific" slots. A key that disagrees with its recipe, or
    does not parse, is a listed problem. */
 export function prepareBank(bank, topicId, problems = []) {
   for (const q of (bank && bank.items) || []) {
     try {
       if (q.type === 'numeric' && q.numeric) prepareNumeric(q.numeric, 'numeric');
-      if (q.type === 'setup' && q.setup) prepareSetup(q.setup, 'setup');
       if (q.type === 'specific' && q.specific) q.specific.slots = specificSlots(q.specific);
     } catch (e) { problems.push(`questions/${topicId}.json [${q.id}]: ${e.message}`); }
   }
@@ -301,7 +290,7 @@ export function prepareBank(bank, topicId, problems = []) {
 }
 
 /* Free lessons (structured data and the runtime gate agree on this):
-   the units in FREE_UNITS, and every "Math you need" topic. */
+   the units in FREE_UNITS, and every "Research skills you need" topic. */
 export function isFreeTopic(map, t) {
   const ch = map.chapterById(t.chapter);
   if (FREE_UNITS.includes(t.chapter)) return true;
@@ -391,7 +380,7 @@ export function tail({ depth, section, extra = [], premium = false, site = [] })
     s('psy-curriculum.js'), s('psy-core.js'), s('psy-nav.js'),
     `<script src="${depth}../assets/course/glossary-tip.js" data-glossary="${depth}assets/glossary.json" data-course-root="${depth}" defer></script>`,
     // The question engine needs the expression parser and the math renderer.
-    ...extra.flatMap(f => f === 'psy-questions.js' ? ['psy-expr.js', 'psy-math.js', 'psy-calc.js', 'psy-grade.js', f] : [f]).map(s),
+    ...extra.flatMap(f => f === 'psy-questions.js' ? ['psy-math.js', 'psy-stats.js', 'psy-grade.js', f] : [f]).map(s),
   ].join('\n');
 }
 
@@ -618,8 +607,9 @@ export function tableHtml(t) {
 export function stimulusBody(C, s, depth = '') {
   const out = [];
   if (s.text) out.push(`<div class="psy-stim-text">${s.text}</div>`);
-  // A text passage (a policy brief, a news-style report): our own words, with its source line.
-  if (s.passage) out.push(`<blockquote class="psy-passage">${s.passage}</blockquote>${s.source ? `<p class="psy-small psy-passage-src">${s.source}</p>` : ''}`);
+  // A study summary, laid out as the exam's: introduction, participants,
+  // method, results and discussion (framework.md section 5), our own words.
+  if (s.study) out.push(studyHtml(s.study, s));
   // Wrapped here, not only by the page generator: the bank and page data carry
   // this HTML to the runtime, which places it as is.
   if (s.table) out.push(`<div class="table-wrap" tabindex="0" role="region" aria-label="${esc(text(s.table.caption || s.title || 'Data table'))}">${tableHtml(s.table)}</div>`);
@@ -629,10 +619,20 @@ export function stimulusBody(C, s, depth = '') {
   if (s.html) out.push(`<div class="psy-stim-html">${s.html}</div>`);
   return out.join('');
 }
-/* The exam's three kinds of set (framework.md section 4): quantitative data
-   (a table, chart or graph), a visual or model (a diagram, map or model),
-   and a text passage. */
-export const STIM_KIND = { quantitative: 'Data', visual: 'Model or diagram', text: 'Passage' };
+/* The kinds of multiple-choice set (framework.md section 5): a study
+   summary, data (a table or graph) and a figure (a diagram, an illusion, a
+   brain map). */
+export const STIM_KIND = { study: 'Study', data: 'Data', visual: 'Figure' };
+/* A study summary: { introduction, participants, method, results, discussion?,
+   reference? } as HTML strings; the invented label or the real citation
+   follows (decision 4). The FRQ pages use the same layout for the AAQ study
+   and the EBQ's three sources. */
+export const STUDY_PARTS = [['introduction', 'Introduction'], ['participants', 'Participants'], ['method', 'Method'], ['results', 'Results'], ['discussion', 'Discussion']];
+export function studyHtml(st, s = {}) {
+  const parts = STUDY_PARTS.filter(([k]) => st[k]).map(([k, name]) => `<h4>${name}</h4>${/^\s*</.test(st[k]) ? st[k] : `<p>${st[k]}</p>`}`).join('');
+  const line = s.invented ? '<p class="psy-small psy-invented">Invented study for practice.</p>' : st.reference ? `<p class="psy-small psy-ref">${st.reference}</p>` : '';
+  return `<div class="psy-study">${parts}${line}</div>`;
+}
 export function stimulusPanel(id, s, bodyHtml) {
   return `<section class="psy-stim" data-stim="${esc(id)}" aria-labelledby="stim-${esc(id)}"><p class="psy-stim-k">${STIM_KIND[s.kind] || 'Stimulus'}</p><h3 id="stim-${esc(id)}">${s.title || ''}</h3>${bodyHtml}</section>`;
 }
@@ -645,7 +645,7 @@ export function questionForPage(q) {
   return {
     id: q.id, type: q.type, unit: q.unit, topic: q.topic, practice: q.practice, level: q.level, diff: q.diff,
     ...(q.stimulus ? { stimulus: q.stimulus } : {}), ...(q.fixed ? { fixed: true } : {}),
-    q: q.q, options: q.options, correct: q.correct, numeric: q.numeric, setup: q.setup, specific: q.specific, why: q.why,
+    q: q.q, options: q.options, correct: q.correct, numeric: q.numeric, specific: q.specific, why: q.why,
   };
 }
 
@@ -656,12 +656,9 @@ export const formatKey = N => esc(Grade.formatKey(N));
 export function questionHtml(q, n) {
   let opts = '', key = '';
   if (q.type === 'numeric') {
-    const u = q.numeric.unit ? `, then its unit (${esc(q.numeric.unit)})` : '';
-    opts = `<p class="psy-small">Type a number${u}. Scale words (2.5 million) and powers of ten (2.5 × 10^6) are read.</p>`;
+    const u = q.numeric.unit ? ` (${esc(q.numeric.unit)})` : '';
+    opts = `<p class="psy-small">Type a number${u}. No calculator needed: work it out by hand, as on the exam.</p>`;
     key = `<li>Answer: ${formatKey(q.numeric)}</li>`;
-  } else if (q.type === 'setup') {
-    opts = '<p class="psy-small">Type the setup as on the exam, with brackets and units, then the answer.</p>';
-    key = `<li>Setup: ${q.setup.answerHtml || esc(q.setup.answer)}${q.setup.then ? `; answer ${formatKey(q.setup.then)}` : ''}</li>`;
   } else if (q.type === 'specific') {
     opts = '<p class="psy-small">Build the answer part by part, then write it in your own words.</p>';
     key = `<li>An answer that earns the point: ${q.specific.model || ''}</li>`;

@@ -1,5 +1,5 @@
 /* The AP® Psychology ordering check (scripts/lib/appsych-map.mjs), forked from
-   the AP® Statistics tests.
+   the AP® Environmental Science tests.
 
    The check's job is to fail. The real map passes it, so these tests hand it
    small maps with one deliberate mistake each and assert it names that
@@ -19,8 +19,8 @@ const real = loadMap(new URL('../../docs/appsych-dependency-map.json', import.me
 
 function tiny() {
   return {
-    bigIdeas: [{ id: 'ERT', name: 'Earth systems' }],
-    practices: [{ id: 1, name: 'Concepts', mcqWeight: [25, 33] }, { id: 5, name: 'Stats', mcqWeight: [8, 14] }],
+    bigIdeas: [],
+    practices: [{ id: 1, name: 'Concepts', mcqWeight: [60, 70] }, { id: 3, name: 'Data', mcqWeight: [5, 15] }],
     parts: [{ id: 'course', title: 'Course' }, { id: 'skills', title: 'Skills' }],
     chapters: [
       { id: 'unit-1', n: 1, part: 'course', title: 'One', weight: [40, 60], tools: { pathways: [{ title: 'Path', topic: 'water' }] } },
@@ -28,9 +28,9 @@ function tiny() {
       { id: 'skills-stats', part: 'skills', title: 'Stats', tools: {} },
     ],
     topics: [
-      { id: 'water', ced: '1.1', title: 'Water', chapter: 'unit-1', kind: 'concept', bigIdeas: ['ERT'], practices: [1] },
-      { id: 'cells', ced: '2.1', title: 'Cells', chapter: 'unit-2', kind: 'concept', bigIdeas: ['ERT'], practices: [1] },
-      { id: 'means', ced: null, title: 'Means', chapter: 'skills-stats', kind: 'skill', bigIdeas: [], practices: [5], after: 'water' },
+      { id: 'water', ced: '1.1', title: 'Water', chapter: 'unit-1', kind: 'concept', skills: ['1.A'], practices: [1] },
+      { id: 'cells', ced: '2.1', title: 'Cells', chapter: 'unit-2', kind: 'concept', skills: ['1.A'], practices: [1] },
+      { id: 'means', ced: null, title: 'Means', chapter: 'skills-stats', kind: 'skill', skills: ['3.B'], practices: [3], after: 'water' },
     ],
     concepts: [
       { id: 'polarity', term: 'polarity', aliases: ['polar'], taughtIn: 'water', dependsOn: [] },
@@ -47,50 +47,46 @@ test('the real map passes', () => {
   assert.deepEqual(errorsOf(real), []);
 });
 
-test('every trainer in the spec must be planned, and every FRQ type four times', () => {
+test('every trainer in the spec must be planned, and every FRQ type six times', () => {
   const m = JSON.parse(JSON.stringify(real));
-  for (const c of m.chapters) if (c.tools) c.tools.simulators = (c.tools.simulators || []).filter(s => s.id !== 'dose-response');
-  assert.ok(validateMap(m).errors.some(e => e.includes('simulator dose-response')));
+  for (const c of m.chapters) if (c.tools) c.tools.simulators = (c.tools.simulators || []).filter(s => s.id !== 'brain-map');
+  assert.ok(validateMap(m).errors.some(e => e.includes('simulator brain-map')));
   const n = JSON.parse(JSON.stringify(real));
-  for (const c of n.chapters) if (c.tools) c.tools.frqThemes = (c.tools.frqThemes || []).filter(f => f.type !== 'calc');
-  assert.ok(validateMap(n).errors.some(e => e.includes('type calc')));
+  for (const c of n.chapters) if (c.tools) c.tools.frqThemes = (c.tools.frqThemes || []).filter(f => f.type !== 'ebq');
+  assert.ok(validateMap(n).errors.some(e => e.includes('type ebq')));
 });
 
-test('the real map has the 99 topics in 9 units, in CED order, with the official weights and one big idea each', () => {
+test('the real map has the 35 topics in 5 units, in CED order, with the official weights and focus skills', () => {
   const units = real.topics.filter(t => t.kind === 'concept');
-  assert.equal(units.length, 99);
+  assert.equal(units.length, 35);
   assert.deepEqual(units.map(t => t.ced), PSY_TOPICS);
   const course = real.chapters.filter(c => c.part === 'course');
-  assert.deepEqual(course.map(c => c.id), ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5', 'unit-6', 'unit-7', 'unit-8', 'unit-9']);
-  assert.deepEqual(course.map(c => units.filter(t => t.chapter === c.id).length), [11, 7, 9, 9, 17, 13, 8, 15, 10]);
-  assert.deepEqual(course.map(c => c.weight), [[6, 8], [6, 8], [10, 15], [10, 15], [10, 15], [10, 15], [7, 10], [7, 10], [15, 20]]);
-  assert.equal(units.find(t => t.id === 'energy-flow').ced, '1.10');
-  assert.equal(units.find(t => t.id === 'el-nino-la-nina').title, 'El Niño and La Niña');
-  assert.equal(units.find(t => t.id === 'lethal-dose-50').ced, '8.12');
-  assert.ok(units.every(t => t.bigIdeas.length === 1 && ['ENG', 'ERT', 'EIN', 'STB'].includes(t.bigIdeas[0])));
-  assert.ok(units.every(t => t.skills.every(s => !['3.D', '3.E', '4.D'].includes(s))), 'no topic focuses on an unassessed skill');
+  assert.deepEqual(course.map(c => c.id), ['unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5']);
+  assert.deepEqual(course.map(c => units.filter(t => t.chapter === c.id).length), [6, 8, 9, 7, 5]);
+  assert.deepEqual(course.map(c => c.weight), [[15, 25], [15, 25], [15, 25], [15, 25], [15, 25]]);
+  assert.equal(units.find(t => t.id === 'neural-firing').title, 'The Neuron and Neural Firing');
+  assert.equal(units.find(t => t.id === 'attribution').title, 'Attribution Theory and Person Perception', 'the official title, without "Locus of Control"');
+  assert.equal(units.find(t => t.id === 'treatment').ced, '5.5');
+  assert.ok(units.every(t => t.skills.length && t.skills.every(s => !['4.A', '4.B'].includes(s))), 'argumentation is Section II only');
   for (const t of real.topics) assert.ok(!hasApToken(t.id) && !/ap/i.test(t.id), t.id);
   const types = new Set(real.chapters.flatMap(c => ((c.tools || {}).frqThemes || []).map(f => f.type)));
   assert.deepEqual([...types].sort(), [...FRQ_TYPES].sort(), 'every FRQ type is planned');
-  // Spec 5a: 14 FRQs, each with its author.
   const frqs = real.chapters.flatMap(c => ((c.tools || {}).frqThemes || []));
-  assert.equal(frqs.length, 14);
-  assert.deepEqual([...new Set(frqs.map(f => f.author))].sort(), ['A', 'B', 'C', 'D', 'E', 'F', 'G']);
+  for (const ty of FRQ_TYPES) assert.ok(frqs.filter(f => f.type === ty).length >= 6, ty);
+  assert.ok(frqs.every(f => /^[A-G]$/.test(f.author)), 'each theme names its author');
 });
 
-test('the math chapter sits before the topic that first needs each skill', () => {
+test('the research skills chapter sits right before the topic that first needs each skill', () => {
   const order = courseOrder(real);
   const at = id => order.findIndex(t => t.id === id);
-  assert.equal(order[at('math-sci-notation') + 1].id, 'carbon-cycle');
-  assert.ok(at('math-rates') < at('primary-productivity') && at('math-units') < at('primary-productivity'));
-  assert.equal(order[at('math-percents') + 1].id, 'energy-flow');
-  assert.equal(order[at('math-doubling') + 1].id, 'population-growth');
+  assert.ok(at('research-methods') < at('heredity-environment') && at('research-sampling') < at('heredity-environment') && at('stats-correlation') < at('heredity-environment'), 'twin studies need methods, samples and correlation');
+  assert.equal(order[at('research-ethics') + 1].id, 'brain', 'lesioning and animal research first appear in 1.4');
+  assert.ok(['stats-descriptive', 'stats-normal', 'stats-significance'].every(id => at(id) < at('intelligence') && at(id) > at('forgetting')), 'the statistics land right before 2.8, where IQ needs them');
   assert.ok(real.topics.filter(t => t.kind === 'skill').every(t => t.before && !t.after));
   const taught = id => at(real.concepts.find(c => c.id === id).taughtIn);
   for (const c of real.concepts) for (const d of c.dependsOn) assert.ok(taught(d) <= taught(c.id), `${c.id} uses ${d}`);
-  // The spine is in order.
-  const chain = ['ecosystem', 'carbon-cycle', 'npp', 'ten-percent-rule', 'carrying-capacity', 'rule-of-70', 'natural-increase', 'soil-texture', 'el-nino', 'drip-irrigation', 'nuclear-fission', 'photochemical-smog', 'eutrophication', 'ld50', 'ozone-depletion', 'greenhouse-effect', 'ocean-acidification'];
-  for (let i = 1; i < chain.length; i++) assert.ok(taught(chain[i - 1]) < taught(chain[i]), `${chain[i - 1]} before ${chain[i]}`);
+  const chain = ['experiment', 'random-sampling', 'twin-study', 'action-potential', 'informed-consent', 'split-brain', 'rem', 'opponent-process', 'schema', 'working-memory', 'misinformation', 'normal-curve', 'iq', 'conservation', 'classical-conditioning', 'variable-ratio', 'fae', 'cognitive-dissonance', 'bystander', 'big-five', 'gas', 'diathesis-stress', 'mdd', 'cbt'];
+  for (let i = 1; i < chain.length; i++) assert.ok(taught(chain[i - 1]) <= taught(chain[i]), `${chain[i - 1]} before ${chain[i]}`);
 });
 
 test('a small valid map passes, and a skill sits right after (or before) its anchor', () => {
@@ -172,7 +168,7 @@ test('bad skill anchors fail', () => {
   assert.ok(errorsOf(m).some(e => e.includes('needs an "after" or "before" anchor')));
   m.topics[2].after = 'ghost';
   assert.ok(errorsOf(m).some(e => e.includes('unknown topic "ghost"')));
-  m.topics.push({ id: 'sd', ced: null, title: 'SD', chapter: 'skills-stats', kind: 'skill', bigIdeas: [], practices: [5], after: 'means' });
+  m.topics.push({ id: 'sd', ced: null, title: 'SD', chapter: 'skills-stats', kind: 'skill', skills: ['3.B'], practices: [3], after: 'means' });
   m.concepts.push({ id: 'sd', term: 'standard deviation', aliases: [], taughtIn: 'sd', dependsOn: [] });
   m.topics[2].after = 'water';
   assert.ok(errorsOf(m).some(e => e.includes('must name a unit topic')));
@@ -239,20 +235,20 @@ test('an everyday word may be used early; the technical term may not', () => {
 });
 
 test('real map: a term taught later fails', () => {
-  assert.deepEqual(scanPage(real, page('Producers capture sunlight by photosynthesis.'), 'primary-productivity'), []);
-  assert.match(scanPage(real, page('Nitrogen fixation feeds the soil.'), 'carbon-cycle').join(' '), /nitrogen-fixation/);
-  assert.match(scanPage(real, page('The population passed its carrying capacity.'), 'intro-ecosystems').join(' '), /carrying-capacity/);
-  // Everyday words are fine early: a predator, fertilizer, erosion.
-  assert.deepEqual(scanPage(real, page('A predator eats prey; fertilizer runs off and erosion follows.'), 'intro-ecosystems'), []);
+  assert.deepEqual(scanPage(real, page('Neurons fire when a stimulus is strong enough.'), 'neural-firing'), []);
+  assert.match(scanPage(real, page('Operant conditioning explains the habit.'), 'brain').join(' '), /operant-conditioning/);
+  assert.match(scanPage(real, page('This is the fundamental attribution error.'), 'sleep').join(' '), /fae/);
+  // Everyday words are fine early: the brain, memory, stress, sleep.
+  assert.deepEqual(scanPage(real, page('The brain stores memory, and stress hurts sleep.'), 'heredity-environment'), []);
 });
 
-test('notation is read in math: NPP before 1.8 fails, scientific notation before its skill fails', () => {
-  assert.match(scanPage(real, page('$\\text{NPP} = 300$'), 'carbon-cycle').join(' '), /notation of npp/);
-  assert.deepEqual(scanPage(real, page('$\\text{NPP} = \\text{GPP} - R$'), 'energy-flow'), []);
-  assert.match(scanPage(real, page('$2.5 \\times 10^6$ people'), 'terrestrial-biomes').join(' '), /scientific-notation/);
-  assert.deepEqual(scanPage(real, page('It costs \\$5 and \\$7.'), 'intro-ecosystems'), []);
+test('notation is read in math: a mean or a z score before its skill fails', () => {
+  assert.match(scanPage(real, page('$\\bar{x} = 5$'), 'research-methods').join(' '), /notation of mean/);
+  assert.deepEqual(scanPage(real, page('$\\bar{x} = 5$'), 'intelligence'), []);
+  assert.match(scanPage(real, page('$z = 2$'), 'forgetting').join(' '), /notation of z-score/);
+  assert.deepEqual(scanPage(real, page('It costs \\$5 and \\$7.'), 'heredity-environment'), []);
   const m = JSON.parse(JSON.stringify(real));
-  m.concepts.find(c => c.id === 'npp').notation = ['(unclosed'];
+  m.concepts.find(c => c.id === 'mean').notation = ['(unclosed'];
   assert.ok(errorsOf(m).some(e => e.includes('notation')));
 });
 
@@ -262,20 +258,20 @@ test('splitMath keeps prose and math apart', () => {
   assert.match(prose, /for \$3\./);
 });
 
-test('a CED number out of order, an unknown or unassessed skill, or a missing big idea fails the map', () => {
+test('a CED number out of order, an unknown skill, a missing skill, or argumentation as a focus fails the map', () => {
   const m = JSON.parse(JSON.stringify(real));
-  m.topics.find(t => t.id === 'food-webs').ced = '1.12';
-  assert.ok(errorsOf(m).some(e => e.includes('1.12')));
+  m.topics.find(t => t.id === 'nervous-system').ced = '1.7';
+  assert.ok(errorsOf(m).some(e => e.includes('1.7')));
   const n = JSON.parse(JSON.stringify(real));
-  n.topics.find(t => t.id === 'food-webs').skills = ['7.G'];
+  n.topics.find(t => t.id === 'nervous-system').skills = ['7.G'];
   assert.ok(errorsOf(n).some(e => e.includes('unknown skill')));
   const o = JSON.parse(JSON.stringify(real));
-  o.topics.find(t => t.id === 'food-webs').skills = ['3.D'];
-  o.topics.find(t => t.id === 'food-webs').practices = [3];
+  o.topics.find(t => t.id === 'nervous-system').skills = ['4.A'];
+  o.topics.find(t => t.id === 'nervous-system').practices = [4];
   assert.ok(errorsOf(o).some(e => e.includes('not assessed')));
   const p = JSON.parse(JSON.stringify(real));
-  p.topics.find(t => t.id === 'food-webs').bigIdeas = ['SYI'];
-  assert.ok(errorsOf(p).some(e => e.includes('big idea')));
+  p.topics.find(t => t.id === 'nervous-system').skills = [];
+  assert.ok(errorsOf(p).some(e => e.includes('no focus skills')));
 });
 
 test('question banks: q, options, stimulus and why are all read; sets share their stimulus', () => {

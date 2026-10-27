@@ -1,18 +1,18 @@
 /* AP® Psychology tool math, the shared part: window.ApPsychMath. Pure
    functions, no DOM, so the validators (scripts/lib/appsych-tool-checks/
    _shared.mjs) and the node tests recompute every number with the code
-   students run (docs/appsych-architecture.md, "Tools"). Needs ApPsychExpr
-   (psy-expr.js), ApPsychCalc (psy-calc.js) and ApPsychGrade (psy-grade.js),
-   loaded before it on every tool page.
+   students run (docs/appsych-architecture.md, "Tools"). Needs ApPsychStats
+   (psy-stats.js) and ApPsychGrade (psy-grade.js), loaded before it on every
+   tool page.
 
-   Forked from AP® Statistics' stat-tool-math.js; the distributions are
-   replaced by ApPsychCalc, the calculation recipes (every number a drill
-   shows comes from it), and numeric cells may carry a unit graded by
-   ApPsychGrade.
+   Forked from AP® Environmental Science's env-tool-math.js, without the
+   setup steps (no calculator, no typed setups on this exam): every number a
+   drill shows comes from ApPsychStats, and a numeric cell may carry a unit
+   (%, points) graded by ApPsychGrade.
 
    This file holds ONLY what every trainer shares. Each trainer's model lives
    in its own file, psychology/assets/tools/math/<slug>.js, which
-   registers ApPsychMath.<camelSlug> (energy-flow -> ApPsychMath.energyFlow), so
+   registers ApPsychMath.<camelSlug> (brain-map -> ApPsychMath.brainMap), so
    tool builders never edit the same file. The generator loads this file,
    then the tool's model file, on the tool's page.
 
@@ -26,26 +26,19 @@
                                    a numeric drill step; a mistake that would be
                                    graded right is dropped
      diagnose(cell, x)             { ok, why? }: the authored slip, else the
-                                   slips the readers name: forgot x 100, a
-                                   factor of 1000, the sign, rounding
+                                   common slips: forgot x 100, the sign, rounding
      unitCell(answer, unit, opts)  a step graded by ApPsychGrade.numeric: value
-                                   and unit apart, scale words read
+                                   and unit apart
      diagnoseUnit(cell, typed)     { ok, value, unit, why? }
-   Expressions (ApPsychExpr underneath)
-     read(str, opts), evaluate(str, bind, units)
-     setupCell(answer, opts)       a step that takes a typed setup, graded by
-                                   ApPsychExpr.gradeSetup (brackets, units, x 100)
-     diagnoseSetup(cell, typed)    { ok, valueOk, why?, error? }
    Simulation (every draw from a seeded rng, so a drill is reproducible and
    its validator regenerates it)
      normal(r, mu?, sd?), shuffle(r, list), repeat(k, f)
-     Calc()                        ApPsychCalc, for the numbers
+     Stats()                       ApPsychStats, for the numbers
    Registration
      register(name, model), camel(slug) */
 (function(G){
   'use strict';
   // G is the global object (root() below is the root finder).
-  function X(){ return G.ApPsychExpr; }
   function GR(){ return G.ApPsychGrade; }
 
   function round(x, d){ var k = Math.pow(10, d || 0); return Math.round((x + (x >= 0 ? 1e-12 : -1e-12)) * k) / k; }
@@ -93,13 +86,12 @@
     if(!A) return { ok: false };
     if(near(x * 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too small. A percent is the fraction times 100.' };
     if(near(x / 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
-    if(near(x / 1000, A, r, ab) || near(x * 1000, A, r, ab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
-    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
+    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Below the mean, a z score is negative.' };
     if(near(x, A, Math.max(10 * r, 0.02), 10 * (ab || 0))) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
     return { ok: false };
   }
 
-  /* ---------------------------------------------------- units and setups */
+  /* ---------------------------------------------------- numbers with a unit */
   function unitCell(answer, unit, opts){
     opts = opts || {};
     var N = { answer: answer, unit: unit };
@@ -111,18 +103,6 @@
     if(!g.valid) return { ok: false, blank: !String(typed && typed.value != null ? typed.value : typed || '').trim(), why: g.notes[0] };
     return { ok: g.correct, value: g.parts.value, unit: g.parts.unit, why: g.notes.join(' ') || undefined };
   }
-  function setupCell(answer, opts){
-    opts = opts || {};
-    var S = { answer: String(answer) };
-    ['bind', 'units', 'unit', 'mustUse', 'mustNotUse', 'parens', 'times100', 'requireUnits', 'mistakes', 'tol'].forEach(function(k){ if(opts[k] != null) S[k] = opts[k]; });
-    return { setup: S };
-  }
-  function diagnoseSetup(c, typed){
-    var g = X().gradeSetup(c, typed);
-    if(!g.valid) return { ok: false, blank: !String(typed || '').trim(), error: g.error };
-    return { ok: g.correct, valueOk: g.valueOk, why: g.notes && g.notes[0] };
-  }
-
   /* ---------------------------------------------------- sampling */
   function normal(r, mu, sd){
     var u = 0, v = 0;
@@ -139,10 +119,9 @@
 
   var M = {
     round: round, fixed: fixed, sig: sig, fmt: fmt, minus: minus, rng: rng,
-    near: near, cell: cell, diagnose: diagnose, unitCell: unitCell, diagnoseUnit: diagnoseUnit, setupCell: setupCell, diagnoseSetup: diagnoseSetup,
-    read: function(s, o){ return X().read(s, o); }, evaluate: function(s, b, u){ return X().evaluate(s, b, u); }, toTex: function(t){ return X().toTex(t); },
+    near: near, cell: cell, diagnose: diagnose, unitCell: unitCell, diagnoseUnit: diagnoseUnit,
     normal: normal, shuffle: shuffle, repeat: repeat,
-    Calc: function(){ return G.ApPsychCalc; },
+    Stats: function(){ return G.ApPsychStats; },
     register: function(name, model){
       if(!/^[a-z][A-Za-z0-9]*$/.test(name)) throw new Error('ApPsychMath.register: "' + name + '" is not a camelCase name');
       if(Object.prototype.hasOwnProperty.call(M, name)) throw new Error('ApPsychMath.register: "' + name + '" is already registered');

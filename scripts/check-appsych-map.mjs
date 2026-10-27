@@ -2,8 +2,8 @@
 
    Two halves, one rule: nothing is used before it is taught.
 
-   1. THE MAP. docs/appsych-dependency-map.json lists the 99 topics in CED
-      order, the math skills with the topic each comes before, and every
+   1. THE MAP. docs/appsych-dependency-map.json lists the 35 topics in CED
+      order, the research skills with the topic each comes before, and every
       concept with the topic that teaches it and the concepts it depends on.
       A concept that depends on something taught later fails unless its
       topic declares a preview box backed by a circularDependencies entry.
@@ -55,7 +55,7 @@ const problems = [
 const previews = map.topics.reduce((n, t) => n + (t.previews || []).length, 0);
 const skills = map.topics.filter(t => t.kind !== 'concept').length;
 
-console.log(`AP Psychology map: ${map.chapters.length} chapters, ${map.topics.length - skills} CED topics + ${skills} math skills, ${map.concepts.length} concepts, ${previews} preview boxes.`);
+console.log(`AP Psychology map: ${map.chapters.length} chapters, ${map.topics.length - skills} CED topics + ${skills} research skills, ${map.concepts.length} concepts, ${previews} preview boxes.`);
 console.log(`Pages checked: ${pages.length}. Questions checked: ${questions.length}.`);
 for (const w of warnings) console.log(`  warning: ${w}`);
 for (const e of [...errors, ...problems]) console.log(`  FAIL: ${e}`);

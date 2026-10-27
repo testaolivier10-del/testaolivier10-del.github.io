@@ -16,8 +16,8 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
-export const COURSE_DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science' };
-export const COURSE_SHORT = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy &amp; Physiology', apbio: 'AP&reg; Biology', apchem: 'AP&reg; Chemistry', apphys: 'AP&reg; Physics 1', apcalc: 'AP&reg; Calculus AB', apstat: 'AP&reg; Statistics', apenv: 'AP&reg; Environmental Science' };
+export const COURSE_DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
+export const COURSE_SHORT = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy &amp; Physiology', apbio: 'AP&reg; Biology', apchem: 'AP&reg; Chemistry', apphys: 'AP&reg; Physics 1', apcalc: 'AP&reg; Calculus AB', apstat: 'AP&reg; Statistics', apenv: 'AP&reg; Environmental Science', appsych: 'AP&reg; Psychology' };
 
 const esc = (s) => String(s ?? '').replace(/&(?![a-z]+;|#\d+;|#x[0-9a-f]+;)/gi, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 

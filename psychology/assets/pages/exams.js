@@ -1,16 +1,16 @@
-/* AP® Psychology Exams (docs/appsych-spec.md decisions 6 and 7; forked from
-   AP® Calculus AB's calculus/assets/pages/exams.js).
+/* AP® Psychology Exams (docs/appsych-spec.md decisions 6 and 8; forked from
+   AP® Environmental Science's exams page).
 
      Unit test       one unit, weighted by topic: every published topic of the
                      unit gets an equal share of the questions, stimulus sets
                      kept whole and in authored order. 15, 25 or all.
      Practice exam   the fully digital format of May 2027, in two timed
-                     sections: Section I, 80 four-option multiple-choice
+                     sections: Section I, 75 four-option multiple-choice
                      questions in 90 minutes (drawn from every unit in
                      proportion to the midpoint of its exam weight range,
-                     sets kept whole); Section II, 3 free-response questions
-                     in 70 minutes, 10 points each (30). A scientific or four-function
-                     calculator is allowed in both. A section, once ended,
+                     sets kept whole); Section II, the Article Analysis and
+                     Evidence-Based Questions in 70 minutes, 7 points each
+                     (14). No calculator in either. A section, once ended,
                      cannot be reopened. Then rubric self-scoring, point by
                      point.
 
@@ -34,9 +34,9 @@
 
      Fixed exams     two complete practice exams written to the real format
                      (assets/exams/forms.json, docs/appsych-architecture.md,
-                     "Practice exams"): the same 80 questions in a set
-                     order, weighted by unit, with 3-5 data sets, 3-5 model
-                     and diagram sets and 2 passage sets, and the same 3 free-response questions,
+                     "Practice exams"): the same 75 questions in a set
+                     order, weighted by unit, with study, data and figure
+                     sets, and the same AAQ and EBQ,
                      for every student, so a score can be compared with a
                      friend's or a second try. Some questions appear only in
                      these exams (assets/exams/items.json). ?mode=full&form=1.
@@ -46,7 +46,7 @@
      Mixed timed set the cram kit's timed sets (spec decision 26): 10, 20 or
                      30 questions from every published unit by the midpoint
                      of its exam weight (as Section I), sets whole, at the
-                     exam's pace (90 min for 80 questions, about 1 min 8 s
+                     exam's pace (90 min for 75 questions, 1 min 12 s
                      each); then the same review
                      with explanations. Opened from cram.html as
                      ?mode=mixed&n=10|20|30.
@@ -66,19 +66,17 @@
   // The May 2027 sections (docs/appsych-research/framework.md, section 4): one
   // part each, no calculator split. A part with no key is a whole section.
   // calc is false for both so every item (none carries a calc flag) fits.
-  var MCQ_TOTAL = 80;
-  var MCQ_PARTS = [{ key: '', n: 80, sec: 90 * 60, calc: false }];
-  var FRQ_PARTS = [{ key: '', n: 3, sec: 70 * 60, calc: false }];
-  var FRQ_POINTS = 10;
+  var MCQ_TOTAL = 75;
+  var MCQ_PARTS = [{ key: '', n: 75, sec: 90 * 60, calc: false }];
+  var FRQ_PARTS = [{ key: '', n: 2, sec: 70 * 60, calc: false }];
+  var FRQ_POINTS = 7;
   // A question's time at the exam's pace.
   function qSec(){ return MCQ_PARTS[0].sec / MCQ_PARTS[0].n; }
   function qsSec(qs){ return qs.reduce(function(s, q){ return s + qSec(q); }, 0); }
-  var MCQ_SEC = 90 * 60 / 80;   // the pace, for set summaries
-  // Bluebook has a Desmos scientific calculator; here, the free one in a new tab
-  // (spec decision 8: scientific or four-function only, graphing banned from 2027).
-  var DESMOS = 'https://www.desmos.com/scientific';
+  var MCQ_SEC = 90 * 60 / 75;   // the pace, for set summaries
+  // No calculator on this exam (docs/appsych-research/framework.md section 5).
   function calcNotice(){
-    return '<p class="cx-notice psy-ex-calc is-on"><b>Calculator allowed.</b> A four-function (with square root) or scientific calculator is allowed in both sections; graphing calculators are not, from 2027. Use your own or the free <a href="' + DESMOS + '" target="_blank" rel="noopener">Desmos scientific calculator<span class="sr-only"> (opens in a new tab)</span></a> (on the real exam it is built into the test app). There is no formula sheet: the formulas to memorize are on the <a href="' + BASE + 'formula-sheet.html">formulas page</a>. Show the setup with brackets and units, then the answer with its unit.</p>';
+    return '<p class="cx-notice psy-ex-calc"><b>No calculator.</b> The AP&reg; Psychology exam allows none, in either section: every number it asks for can be worked out by hand. The statistics to know are on the <a href="' + BASE + 'formula-sheet.html">statistics page</a>.</p>';
   }
   var TIMINGS = [
     { id: 'std', name: 'Standard time', k: 1 }, { id: 'x15', name: 'Extra time (1.5×)', k: 1.5 },
@@ -248,10 +246,10 @@
       FORMS.map(function(f){ return '<label class="cx-pill"><input type="radio" name="form" value="' + f.id + '"' + (cfg.form === f.id ? ' checked' : '') + '><span>' + esc(f.title) + '</span></label>'; }).join('') +
       '<label class="cx-pill"><input type="radio" name="form" value=""' + (cfg.form ? '' : ' checked') + '><span>New mixed exam</span></label></div></fieldset>' : '';
     var fm = formById(cfg.form);
-    var fmt = '<p>Section I: 80 multiple-choice questions with four options in 90 min, alone and in sets that share a data table or graph, a model or diagram, or a passage. Section II: 3 free-response questions in 70 min, each worth 10 points: design an investigation, analyze and interpret quantitative data, and an environmental problem with calculations. A scientific calculator is allowed throughout. Then you score your free responses with the rubrics.</p>';
+    var fmt = '<p>Section I: 75 multiple-choice questions with four options in 90 min, alone and in sets that share a study summary, a data table or graph, or a figure. Section II: 2 free-response questions in 70 min, each worth 7 points: the Article Analysis Question (about 25 min) and the Evidence-Based Question (about 45 min). No calculator. Then you score your free responses with the rubrics.</p>';
     if(fm){
       var fu = {}; fm.mcq.forEach(function(b){ b.forEach(function(id){ var q = byIdQ(id); if(q) fu[q.unit] = (fu[q.unit] || 0) + 1; }); });
-      var secPick = '<fieldset class="cx-group"><legend>Section</legend><div class="cx-pills">' + [['', 'Whole exam'], ['1', 'Section I only (80 questions, 90 min)'], ['2', 'Section II only (3 questions, 70 min)']].map(function(o){
+      var secPick = '<fieldset class="cx-group"><legend>Section</legend><div class="cx-pills">' + [['', 'Whole exam'], ['1', 'Section I only (75 questions, 90 min)'], ['2', 'Section II only (2 questions, 70 min)']].map(function(o){
         return '<label class="cx-pill"><input type="radio" name="section" value="' + o[0] + '"' + (cfg.section === o[0] ? ' checked' : '') + '><span>' + o[1] + '</span></label>'; }).join('') + '</div></fieldset>';
       return formPick + secPick + '<div class="cx-note psy-ex-note"><p><b>' + esc(fm.title) + ': a complete exam in the real format.</b> The same questions in a set order for everyone, so you can compare a second try.</p>' + fmt +
         '<h2 class="psy-ex-h3">Section I, by unit</h2><ul class="psy-ex-areas">' + courseUnits().map(function(u){ return '<li class="is-on"><span>' + esc(unitName(u.id)) + (Array.isArray(u.weight) ? ' <span class="psy-small">(' + u.weight[0] + '–' + u.weight[1] + '%)</span>' : '') + '</span><b>' + (fu[u.id] || 0) + '</b></li>'; }).join('') + '</ul></div>' +
@@ -268,7 +266,7 @@
     }).join('');
     return formPick + '<div class="cx-note psy-ex-note">' +
       (plan.full ? '<p><b>The full May 2027 format.</b> Each part is drawn from every unit by the midpoint of its exam weight, with stimulus sets kept whole.</p>' + fmt
-        : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs 80 multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 3 free-response questions. ' +
+        : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs 75 multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 3 free-response questions. ' +
           'Today the bank can give a <b>shorter exam</b>: ' + plural(plan.mcqN, 'multiple-choice question') + (plan.frqN ? ' and ' + plural(plan.frqN, 'free-response question') : ' and no free-response section') + ', each unit keeping the share it would have in a full exam. Units with no questions yet are left out, not filled in from other units.</p>') +
       '<h2 class="psy-ex-h3">Section I, by unit</h2><ul class="psy-ex-areas">' + unitRows + '</ul>' +
       '<h2 class="psy-ex-h3">Section II</h2><ul class="psy-ex-areas">' + partRows + '</ul></div>' +
@@ -278,7 +276,7 @@
   function summary(){
     if(cfg.kind === 'mixed'){ if(!cramOk()) return 'Mixed timed sets are part of Premium.'; var m = mixedPlan(cfg.n); return m.n ? 'Mixed timed set: about ' + plural(m.n, 'question') + (timing().k ? ', about ' + minutes(m.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published yet.'; }
     if(cfg.kind === 'unit'){ var p = unitPlan(cfg.unit, cfg.len); return p.n ? plural(p.n, 'question') + (timing().k ? ', about ' + minutes(p.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published for this unit yet.'; }
-    if(formById(cfg.form)) return formById(cfg.form).title + (cfg.section === '1' ? ', Section I: 80 multiple-choice questions in 90 minutes.' : cfg.section === '2' ? ', Section II: 3 free-response questions in 70 minutes.' : ': 80 multiple-choice questions + 3 free-response questions.');
+    if(formById(cfg.form)) return formById(cfg.form).title + (cfg.section === '1' ? ', Section I: 75 multiple-choice questions in 90 minutes.' : cfg.section === '2' ? ', Section II: 2 free-response questions in 70 minutes.' : ': 75 multiple-choice questions + 2 free-response questions.');
     var plan = examPlan();
     if(!plan.mcqN) return 'No questions are published yet.';
     return (plan.full ? 'Full practice exam: ' : 'Shorter practice exam: ') + plural(plan.mcqN, 'multiple-choice question') + (plan.frqN ? ' + ' + plural(plan.frqN, 'free-response question') : '') + '.';
@@ -565,7 +563,7 @@
   function capture(q, box, res){
     var body = box.querySelector('.psy-q-body');
     if(q.type === 'predict') return q.variables.map(function(v, k){ var b = body.querySelector('tr[data-k="' + k + '"] button[aria-checked="true"]'); return b ? b.getAttribute('data-v') : null; });
-    if(q.type === 'order' || q.type === 'numeric' || q.type === 'setup' || q.type === 'specific') return res.pick;
+    if(q.type === 'order' || q.type === 'numeric' || q.type === 'specific') return res.pick;
     var picked = [].map.call(body.querySelectorAll('.psy-opt[aria-checked="true"]'), function(b){ return +b.getAttribute('data-i'); });
     return q.type === 'multi' ? picked : (picked.length ? picked[0] : null);
   }
@@ -814,9 +812,6 @@
         '<div><p class="psy-small">Correct order</p><ol class="psy-order">' + q.options.map(function(o){ return '<li><span class="psy-order-text">' + html(o) + '</span></li>'; }).join('') + '</ol></div></div>';
     } else if(q.type === 'numeric'){
       body = '<p>You: <b>' + (r.pick ? esc(typeof r.pick === 'object' ? r.pick.value + ' ' + (r.pick.unit || '') : r.pick) : 'no answer') + '</b> · Answer: <b>' + esc(Q.formatKey(q.numeric || {})) + '</b></p>';
-    } else if(q.type === 'setup'){
-      var S = q.setup || {}, pk = r.pick && typeof r.pick === 'object' ? r.pick.expr : r.pick;
-      body = '<p>You: <b>' + (pk ? esc(pk) : 'no answer') + '</b> · Setup: <b>' + (S.answerHtml || esc(S.answer)) + '</b>' + (S.then ? ' = <b>' + esc(Q.formatKey(S.then)) + '</b>' : '') + '</p>';
     } else {
       var key = [].concat(q.correct), picks = r.pick == null ? [] : [].concat(r.pick);
       body = '<ul class="psy-ex-opts">' + (q.options || []).map(function(o, i){
@@ -826,7 +821,7 @@
     }
     var t = TOPIC[q.topic];
     return '<li class="psy-q psy-ex-ritem ' + cls + '"><p class="psy-ex-verdict"><span class="psy-ex-vtag">' + verdict + (r.score > 0 && !r.correct ? ' (' + Math.round(r.score * 100) + '%)' : '') + '</span><span class="psy-small">' + esc(t ? t.title : '') + ' · Practice ' + esc(q.practice || '') + '</span></p>' +
-      (q.stim ? '<details class="psy-ex-stimd"><summary>Show the ' + esc((q.stim.kind === 'table' ? 'table' : q.stim.kind === 'graph' ? 'graph' : 'diagram')) + ': ' + (q.stim.title || '') + '</summary>' + Q.stimulusPanel(q.stimulus, q.stim) + '</details>' : '') +
+      (q.stim ? '<details class="psy-ex-stimd"><summary>Show the ' + esc((q.stim.kind === 'study' ? 'study' : q.stim.kind === 'data' ? 'data' : 'figure')) + ': ' + (q.stim.title || '') + '</summary>' + Q.stimulusPanel(q.stimulus, q.stim) + '</details>' : '') +
       '<p class="psy-q-stem"><span class="psy-q-n">' + n + '.</span> ' + html(q.q) + '</p>' + body + (why.correct ? '<p class="psy-ex-why"><b>Why:</b> ' + html(why.correct) + '</p>' : '') +
       '<p class="psy-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button('appsych', q.id) : '') + '</p></li>';
   }

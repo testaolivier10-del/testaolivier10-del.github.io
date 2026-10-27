@@ -103,6 +103,14 @@
       path: '/environmental-science/', dir: 'environmental-science', storagePrefix: 'apenv_', rankLabel: 'Environmental Science rank',
       searchLabel: 'Environmental Science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], paid: true, status: 'live', order: 9,
     },
+    {
+      // As AP® Environmental Science (docs/appsych-spec.md decision 2): the
+      // mark only in the full names, never in a URL; the key travels as its
+      // folder, "psychology". 'hidden' until published.
+      key: 'appsych', short: 'Psychology', name: 'AP® Psychology', productName: 'AP® Psychology',
+      path: '/psychology/', dir: 'psychology', storagePrefix: 'appsych_', rankLabel: 'Psychology rank',
+      searchLabel: 'Psychology', aliases: ['psychology', 'psych', 'psy'], paid: true, status: 'hidden', order: 10,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

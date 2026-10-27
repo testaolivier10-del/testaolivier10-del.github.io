@@ -50,12 +50,11 @@
     { id: 'all', name: 'All types' },
     { id: 'standalone', name: 'Standalone questions' },
     { id: 'sets', name: 'Stimulus sets' },
-    { id: 'numeric', name: 'Numbers with units' },
-    { id: 'setup', name: 'Calculations (setup, answer, units)' },
+    { id: 'numeric', name: 'Statistics (worked by hand)' },
     { id: 'specific', name: 'Make it specific' },
-    { id: 'set-quantitative', name: 'Data sets' },
-    { id: 'set-visual', name: 'Model and diagram sets' },
-    { id: 'set-text', name: 'Passage sets' }
+    { id: 'set-study', name: 'Study sets' },
+    { id: 'set-data', name: 'Data sets' },
+    { id: 'set-visual', name: 'Figure sets' }
   ];
   var DIFFS = [{ id: '', name: 'Any' }, { id: '1', name: 'Easier' }, { id: '2', name: 'Medium' }, { id: '3', name: 'Harder' }];
   var MODES = [
@@ -100,12 +99,12 @@
     if(f.kind === 'standalone' && q.stimulus) return false;
     if(f.kind === 'sets' && !q.stimulus) return false;
     if(f.kind === 'numeric' && q.type !== 'numeric') return false;
-    if((f.kind === 'setup' || f.kind === 'specific') && q.type !== f.kind) return false;
-    // The exam's three set kinds (docs/appsych-architecture.md, "Sets"): the
+    if(f.kind === 'specific' && q.type !== f.kind) return false;
+    // The set kinds (docs/appsych-architecture.md, "Sets"): the
     // bank index marks each set item with its stimulus kind (q.set).
-    if(f.kind === 'set-quantitative' && q.set !== 'quantitative') return false;
+    if(f.kind === 'set-study' && q.set !== 'study') return false;
+    if(f.kind === 'set-data' && q.set !== 'data') return false;
     if(f.kind === 'set-visual' && q.set !== 'visual') return false;
-    if(f.kind === 'set-text' && q.set !== 'text') return false;
     return true;
   }
   /* Flags (assets/course/flags.js): kept until the student unflags them. */
@@ -309,12 +308,8 @@
     var body = '', key = '', keyHtml = '';
     if(q.type === 'numeric'){
       var N = q.numeric || {};
-      body = '<p class="psy-ws-blank">Answer: ____________ (with units)</p>';
+      body = '<p class="psy-ws-blank">Answer: ____________</p>';
       key = Q.formatKey(N);
-    } else if(q.type === 'setup'){
-      var S = q.setup || {};
-      body = '<p class="psy-ws-blank">Setup: ________________________________</p><p class="psy-ws-blank">Answer: ____________ (with units)</p>';
-      keyHtml = (S.answerHtml || esc(S.answer)) + (S.then ? ' = ' + esc(Q.formatKey(S.then)) : '');
     } else if(q.type === 'specific'){
       var SP = q.specific || {};
       body = '<p class="psy-ws-blank">________________________________________________________________</p><p class="psy-ws-blank">________________________________________________________________</p>';

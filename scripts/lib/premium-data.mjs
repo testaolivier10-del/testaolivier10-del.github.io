@@ -167,6 +167,16 @@ export function counts() {
     }
   }
   const envNotes = join(ROOT, 'environmental-science', 'assets', 'notes-index.json');
+  const psyBank = join(ROOT, 'psychology', 'assets', 'bank');
+  let appsych = 0;
+  if (existsSync(psyBank)) {
+    for (const f of readdirSync(psyBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('psychology', 'assets', 'bank', f));
+      appsych += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const psyNotes = join(ROOT, 'psychology', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
@@ -177,6 +187,7 @@ export function counts() {
     apcalc, apcalcTopics: existsSync(calcNotes) ? read('calculus/assets/notes-index.json').length : 0,
     apstat, apstatTopics: existsSync(statNotes) ? read('statistics/assets/notes-index.json').length : 0,
     apenv, apenvTopics: existsSync(envNotes) ? read('environmental-science/assets/notes-index.json').length : 0,
+    appsych, appsychTopics: existsSync(psyNotes) ? read('psychology/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }

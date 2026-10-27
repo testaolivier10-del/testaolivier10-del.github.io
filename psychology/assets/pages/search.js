@@ -42,7 +42,7 @@
     [['practice', 'Practice', 'Questions by unit, topic, mathematical practice, type and difficulty; stimulus sets; missed questions.'],
      ['review', 'Review', 'Your spaced review queue of missed questions.'],
      ['exams', 'Exams', 'Unit tests and full practice exams in the May 2027 format, with rubrics.'],
-     ['frq', 'Free-response practice', 'The three free-response types (design an investigation, analyze and interpret quantitative data, calculations) with rubrics, sample answers and printable sheets.'],
+     ['frq', 'Free-response practice', 'The two free-response types (the Article Analysis Question and the Evidence-Based Question) with rubrics, sample answers and printable sheets.'],
      ['flashcards', 'Flashcards', 'Spaced-repetition cards from the glossary and lesson summaries.'],
      ['dashboard', 'Dashboard', 'Your mastery by unit, topic and mathematical practice.'],
      ['glossary', 'Glossary', 'Every defined term.'],

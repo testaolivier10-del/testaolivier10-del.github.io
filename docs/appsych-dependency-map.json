@@ -1,0 +1,8080 @@
+{
+ "about": "AP Psychology concept dependency map (docs/appsych-spec.md, docs/appsych-phase0.md): the 35 topics of the CED in order, the \"Research skills you need\" topics with the topic each comes before, and every concept with the topic that teaches it, the concepts it depends on and, for notation, the TeX patterns that use it. Our own words; no CED text. Checked by scripts/check-appsych-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "Effective Fall 2025 with the October 2025 clarifications (5 units, 35 topics; the 2024-25 framework, not revised for 2026-27)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/appsych-ced-map.json, itself from docs/appsych-research/framework.md. Objectives for 2.7 to 5.5 from a third-party copy of the CED codes (docs/appsych-needs-author.md, ced-text)."
+ },
+ "practicesConfirmed": false,
+ "bigIdeas": [],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Concept Application",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "mcqWeight": [
+    60,
+    70
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Research Methods and Design",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D"
+   ],
+   "mcqWeight": [
+    20,
+    30
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Data Interpretation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    5,
+    15
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Argumentation",
+   "skills": [
+    "4.A",
+    "4.B"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Research skills you need"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Biological Bases of Behavior",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "neuron",
+      "title": "Neuron: push a neuron past threshold, watch the all-or-none action potential and the refractory period, then add an agonist, an antagonist or a reuptake inhibitor at the synapse",
+      "topic": "neural-firing"
+     },
+     {
+      "id": "brain-map",
+      "title": "Brain map: tap a region or lobe for its function, then name the region from lesion, imaging and split-brain cases",
+      "topic": "brain"
+     },
+     {
+      "id": "sensation",
+      "title": "Sensation and perception: absolute and difference thresholds, signal detection hits and false alarms, adaptation, color afterimages and depth cues",
+      "topic": "sensation"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A twin and adoption study of a trait: the method, the operational definition of the trait, what the correlations show, confidentiality, and who the results describe",
+      "topic": "heredity-environment",
+      "type": "aaq",
+      "author": "B"
+     },
+     {
+      "title": "Does sleep deprivation harm learning? Three sources on sleep, memory consolidation and performance",
+      "topic": "sleep",
+      "type": "ebq",
+      "author": "B"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A labeled diagram of a neuron and a synapse",
+      "topic": "neural-firing",
+      "stimulus": "visual",
+      "author": "B"
+     },
+     {
+      "title": "A study of patients with damage to one brain region",
+      "topic": "brain",
+      "stimulus": "study",
+      "author": "B"
+     },
+     {
+      "title": "A graph of sleep stages across one night (a hypnogram)",
+      "topic": "sleep",
+      "stimulus": "data",
+      "author": "B"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Sympathetic versus parasympathetic responses",
+      "topic": "nervous-system"
+     },
+     {
+      "title": "Agonists, antagonists and reuptake inhibitors",
+      "topic": "neural-firing"
+     },
+     {
+      "title": "Brain structures and their functions",
+      "topic": "brain"
+     },
+     {
+      "title": "Theories of color vision and of pitch",
+      "topic": "sensation"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From stimulus to action: receptor, sensory neuron, spinal cord, brain and motor neuron",
+      "topic": "neural-firing"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Cognition",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "memory-lab",
+      "title": "Memory lab: learn a list and see the serial position curve, the spacing effect and interference in your own recall",
+      "topic": "memory-intro"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "An experiment on the misinformation effect: the method, how recall was measured, the statistic, the safeguards, and generalization",
+      "topic": "forgetting",
+      "type": "aaq",
+      "author": "C"
+     },
+     {
+      "title": "Does retrieval practice beat rereading? Three sources on the testing effect and spaced practice",
+      "topic": "retrieving-memories",
+      "type": "ebq",
+      "author": "C"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A serial position curve from a recall study",
+      "topic": "encoding-memories",
+      "stimulus": "data",
+      "author": "C"
+     },
+     {
+      "title": "A study of eyewitness memory and leading questions",
+      "topic": "forgetting",
+      "stimulus": "study",
+      "author": "C"
+     },
+     {
+      "title": "A set of perception figures (depth cues, Gestalt grouping, an illusion)",
+      "topic": "perception",
+      "stimulus": "visual",
+      "author": "C"
+     },
+     {
+      "title": "IQ scores on a normal curve with marked percentiles",
+      "topic": "intelligence",
+      "stimulus": "data",
+      "author": "C"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Heuristics and biases in judgment",
+      "topic": "thinking"
+     },
+     {
+      "title": "Kinds of memory: explicit, implicit and prospective",
+      "topic": "memory-intro"
+     },
+     {
+      "title": "Proactive versus retroactive interference",
+      "topic": "forgetting"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From encoding to retrieval: how a memory is made, kept and lost",
+      "topic": "memory-intro"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Development and Learning",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "conditioning-lab",
+      "title": "Conditioning lab: pair a tone with food through acquisition, extinction and spontaneous recovery, then reinforce on the four partial schedules and watch the response curves",
+      "topic": "classical-conditioning"
+     },
+     {
+      "id": "development",
+      "title": "Development: a lifespan timeline where each cognitive, social and physical milestone is placed and then applied to a person",
+      "topic": "cognitive-development"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A longitudinal study of parenting style and adolescent outcomes: the design, the operational definitions, the results, the ethics with minors, and generalization",
+      "topic": "development-methods",
+      "type": "aaq",
+      "author": "D"
+     },
+     {
+      "title": "Does early attachment predict later relationships? Three sources on attachment across the lifespan",
+      "topic": "social-emotional-development",
+      "type": "ebq",
+      "author": "D"
+     },
+     {
+      "title": "Does watching aggression lead to aggression? Three sources on observational learning",
+      "topic": "social-cognitive-learning",
+      "type": "ebq",
+      "author": "E"
+     },
+     {
+      "title": "An experiment on reinforcement schedules and persistence: method, variables, results and limits",
+      "topic": "operant-conditioning",
+      "type": "aaq",
+      "author": "E"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A study of children solving conservation tasks at different ages",
+      "topic": "cognitive-development",
+      "stimulus": "study",
+      "author": "D"
+     },
+     {
+      "title": "Cross-sectional and longitudinal results for the same question",
+      "topic": "development-methods",
+      "stimulus": "data",
+      "author": "D"
+     },
+     {
+      "title": "Cumulative response curves for the four reinforcement schedules",
+      "topic": "operant-conditioning",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A classical conditioning scenario to label (UCS, UCR, CS, CR)",
+      "topic": "classical-conditioning",
+      "stimulus": "study",
+      "author": "E"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Piaget's stages and their milestones",
+      "topic": "cognitive-development"
+     },
+     {
+      "title": "Reinforcement and punishment, positive and negative",
+      "topic": "operant-conditioning"
+     },
+     {
+      "title": "Classical versus operant conditioning",
+      "topic": "operant-conditioning"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Attachment, parenting and identity from infancy to emerging adulthood",
+      "topic": "social-emotional-development"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Social Psychology and Personality",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "social-influence",
+      "title": "Social influence: change the group size, the authority or the presence of others and predict conformity, obedience and helping, then name the concept",
+      "topic": "social-situations"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "An experiment on the bystander effect: method, the operational definition of helping, the results, deception and debriefing, generalization",
+      "topic": "social-situations",
+      "type": "aaq",
+      "author": "E"
+     },
+     {
+      "title": "Does the presence of others help or hurt performance? Three sources on social facilitation and social loafing",
+      "topic": "social-situations",
+      "type": "ebq",
+      "author": "E"
+     },
+     {
+      "title": "An experiment on intrinsic motivation and rewards: method, measures, results, ethics and limits",
+      "topic": "motivation",
+      "type": "aaq",
+      "author": "F"
+     },
+     {
+      "title": "Is personality stable across the lifespan? Three sources on the Big Five over time",
+      "topic": "social-cognitive-trait",
+      "type": "ebq",
+      "author": "F"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A conformity study with a bar graph of conformity by group size",
+      "topic": "social-situations",
+      "stimulus": "data",
+      "author": "E"
+     },
+     {
+      "title": "A study of attributions for a classmate's failure",
+      "topic": "attribution",
+      "stimulus": "study",
+      "author": "E"
+     },
+     {
+      "title": "The Yerkes-Dodson curve of arousal and performance",
+      "topic": "motivation",
+      "stimulus": "visual",
+      "author": "F"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Attribution biases side by side",
+      "topic": "attribution"
+     },
+     {
+      "title": "Theories of personality and how each assesses it",
+      "topic": "social-cognitive-trait"
+     },
+     {
+      "title": "Theories of motivation",
+      "topic": "motivation"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From attitude to action: stereotype, prejudice, dissonance and change",
+      "topic": "attitudes"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Mental and Physical Health",
+   "weight": [
+    15,
+    25
+   ],
+   "tools": {
+    "simulators": [],
+    "frqThemes": [
+     {
+      "title": "Does exercise reduce symptoms of depression? Three sources on exercise, therapy and medication",
+      "topic": "treatment",
+      "type": "ebq",
+      "author": "G"
+     },
+     {
+      "title": "Does social support buffer stress? Three sources on coping and health",
+      "topic": "health-psychology",
+      "type": "ebq",
+      "author": "F"
+     },
+     {
+      "title": "Are cognitive-behavioral treatments effective for anxiety? Three sources comparing treatments",
+      "topic": "treatment",
+      "type": "ebq",
+      "author": "G"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A study comparing therapy, medication and a waitlist control",
+      "topic": "treatment",
+      "stimulus": "study",
+      "author": "G"
+     },
+     {
+      "title": "Symptom scores before and after treatment for three groups",
+      "topic": "treatment",
+      "stimulus": "data",
+      "author": "G"
+     },
+     {
+      "title": "A stress and illness study with a general adaptation syndrome graph",
+      "topic": "health-psychology",
+      "stimulus": "data",
+      "author": "F"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Disorder categories, key symptoms and representative disorders",
+      "topic": "disorders"
+     },
+     {
+      "title": "Therapies by perspective, with their techniques",
+      "topic": "treatment"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Diathesis-stress and the biopsychosocial model, from risk to treatment",
+      "topic": "explaining-disorders"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-research",
+   "part": "skills",
+   "title": "Research skills you need",
+   "tools": {
+    "simulators": [
+     {
+      "id": "article-studio",
+      "title": "Article analysis studio (flagship): an invented study summary taken apart as the AAQ asks, method, operational definition, statistic, ethical safeguard applied, generalizability and the argument, each graded with the slip named",
+      "topic": "research-methods"
+     },
+     {
+      "id": "evidence-builder",
+      "title": "Evidence builder: three short sources, a defensible claim, evidence from the right source with its citation, and a psychology concept (not a research word) that links them",
+      "topic": "research-methods"
+     },
+     {
+      "id": "stats-lab",
+      "title": "Stats lab: the normal curve with the 68-95-99.7 rule, z scores and percentile ranks, mean, median, mode, range and standard deviation by hand, and correlation from a scatterplot",
+      "topic": "stats-normal"
+     },
+     {
+      "id": "justify",
+      "title": "Make it specific: the method, the operational definition, the claim, cited evidence and the linking concept, built slot by slot and checked against a rubric",
+      "topic": "research-methods"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "An experiment on sleep and recall: name the method, operationally define recall, read the group means, apply informed consent and debriefing, judge generalization to high-school students",
+      "topic": "research-methods",
+      "type": "aaq",
+      "author": "A"
+     },
+     {
+      "title": "A correlational study of screen time and attention: why no cause can be claimed, the third variable, the sample and who the results describe",
+      "topic": "stats-correlation",
+      "type": "aaq",
+      "author": "A"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A study summary with random assignment and a placebo control: name the design elements",
+      "topic": "research-methods",
+      "stimulus": "study",
+      "author": "A"
+     },
+     {
+      "title": "A scatterplot of hours studied against quiz scores: direction, strength and the third-variable question",
+      "topic": "stats-correlation",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A frequency table of reaction times with an outlier: mean versus median",
+      "topic": "stats-descriptive",
+      "stimulus": "data",
+      "author": "A"
+     },
+     {
+      "title": "A normal curve of test scores marked at each standard deviation",
+      "topic": "stats-normal",
+      "stimulus": "visual",
+      "author": "A"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Research methods: what each can conclude, its strengths and its limits",
+      "topic": "research-methods"
+     },
+     {
+      "title": "Random sampling versus random assignment",
+      "topic": "research-sampling"
+     },
+     {
+      "title": "Mean, median and mode: when each describes the center best",
+      "topic": "stats-descriptive"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From a question to a conclusion: hypothesis, operational definitions, random assignment, results and their limits",
+      "topic": "research-methods"
+     }
+    ]
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "heredity-environment",
+   "ced": "1.1",
+   "title": "Interaction of Heredity and Environment",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "interaction of heredity and environment psychology explained"
+  },
+  {
+   "id": "nervous-system",
+   "ced": "1.2",
+   "title": "Overview of the Nervous System",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "overview of the nervous system psychology explained"
+  },
+  {
+   "id": "neural-firing",
+   "ced": "1.3",
+   "title": "The Neuron and Neural Firing",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the neuron and neural firing psychology explained"
+  },
+  {
+   "id": "brain",
+   "ced": "1.4",
+   "title": "The Brain",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the brain psychology explained"
+  },
+  {
+   "id": "sleep",
+   "ced": "1.5",
+   "title": "Sleep",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "3.A"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "sleep psychology explained"
+  },
+  {
+   "id": "sensation",
+   "ced": "1.6",
+   "title": "Sensation",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "3.A"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "sensation psychology explained"
+  },
+  {
+   "id": "perception",
+   "ced": "2.1",
+   "title": "Perception",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "3.A"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "perception psychology explained"
+  },
+  {
+   "id": "thinking",
+   "ced": "2.2",
+   "title": "Thinking, Problem-Solving, Judgments, and Decision-Making",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "thinking, problem-solving, judgments, and decision-making psychology explained"
+  },
+  {
+   "id": "memory-intro",
+   "ced": "2.3",
+   "title": "Introduction to Memory",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "introduction to memory psychology explained"
+  },
+  {
+   "id": "encoding-memories",
+   "ced": "2.4",
+   "title": "Encoding Memories",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "encoding memories psychology explained"
+  },
+  {
+   "id": "storing-memories",
+   "ced": "2.5",
+   "title": "Storing Memories",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "storing memories psychology explained"
+  },
+  {
+   "id": "retrieving-memories",
+   "ced": "2.6",
+   "title": "Retrieving Memories",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "retrieving memories psychology explained"
+  },
+  {
+   "id": "forgetting",
+   "ced": "2.7",
+   "title": "Forgetting and Other Memory Challenges",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "forgetting and other memory challenges psychology explained"
+  },
+  {
+   "id": "intelligence",
+   "ced": "2.8",
+   "title": "Intelligence and Achievement",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.C",
+    "3.B"
+   ],
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "intelligence and achievement psychology explained"
+  },
+  {
+   "id": "development-methods",
+   "ced": "3.1",
+   "title": "Themes and Methods in Developmental Psychology",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "2.A",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "themes and methods in developmental psychology psychology explained"
+  },
+  {
+   "id": "physical-development",
+   "ced": "3.2",
+   "title": "Physical Development Across the Lifespan",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "physical development across the lifespan psychology explained"
+  },
+  {
+   "id": "gender-orientation",
+   "ced": "3.3",
+   "title": "Gender and Sexual Orientation",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "gender and sexual orientation psychology explained"
+  },
+  {
+   "id": "cognitive-development",
+   "ced": "3.4",
+   "title": "Cognitive Development Across the Lifespan",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "cognitive development across the lifespan psychology explained"
+  },
+  {
+   "id": "language-development",
+   "ced": "3.5",
+   "title": "Communication and Language Development",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "communication and language development psychology explained"
+  },
+  {
+   "id": "social-emotional-development",
+   "ced": "3.6",
+   "title": "Social-Emotional Development Across the Lifespan",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "social-emotional development across the lifespan psychology explained"
+  },
+  {
+   "id": "classical-conditioning",
+   "ced": "3.7",
+   "title": "Classical Conditioning",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.B"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "classical conditioning psychology explained"
+  },
+  {
+   "id": "operant-conditioning",
+   "ced": "3.8",
+   "title": "Operant Conditioning",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "3.A"
+   ],
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "operant conditioning psychology explained"
+  },
+  {
+   "id": "social-cognitive-learning",
+   "ced": "3.9",
+   "title": "Social, Cognitive, and Neurological Factors in Learning",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "social, cognitive, and neurological factors in learning psychology explained"
+  },
+  {
+   "id": "attribution",
+   "ced": "4.1",
+   "title": "Attribution Theory and Person Perception",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "attribution theory and person perception psychology explained"
+  },
+  {
+   "id": "attitudes",
+   "ced": "4.2",
+   "title": "Attitude Formation and Attitude Change",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "attitude formation and attitude change psychology explained"
+  },
+  {
+   "id": "social-situations",
+   "ced": "4.3",
+   "title": "Psychology of Social Situations",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "psychology of social situations psychology explained"
+  },
+  {
+   "id": "psychodynamic-humanistic",
+   "ced": "4.4",
+   "title": "Psychodynamic and Humanistic Theories of Personality",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "psychodynamic and humanistic theories of personality psychology explained"
+  },
+  {
+   "id": "social-cognitive-trait",
+   "ced": "4.5",
+   "title": "Social-Cognitive and Trait Theories of Personality",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.C"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "social-cognitive and trait theories of personality psychology explained"
+  },
+  {
+   "id": "motivation",
+   "ced": "4.6",
+   "title": "Motivation",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "motivation psychology explained"
+  },
+  {
+   "id": "emotion",
+   "ced": "4.7",
+   "title": "Emotion",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "emotion psychology explained"
+  },
+  {
+   "id": "health-psychology",
+   "ced": "5.1",
+   "title": "Introduction to Health Psychology",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "introduction to health psychology psychology explained"
+  },
+  {
+   "id": "positive-psychology",
+   "ced": "5.2",
+   "title": "Positive Psychology",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "positive psychology psychology explained"
+  },
+  {
+   "id": "explaining-disorders",
+   "ced": "5.3",
+   "title": "Explaining and Classifying Psychological Disorders",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "explaining and classifying psychological disorders psychology explained"
+  },
+  {
+   "id": "disorders",
+   "ced": "5.4",
+   "title": "Selection of Categories of Psychological Disorders",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "practices": [
+    1
+   ],
+   "searchPhrase": "selection of categories of psychological disorders psychology explained"
+  },
+  {
+   "id": "treatment",
+   "ced": "5.5",
+   "title": "Treatment of Psychological Disorders",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "skills": [
+    "1.A",
+    "1.B",
+    "2.A"
+   ],
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "treatment of psychological disorders psychology explained"
+  },
+  {
+   "id": "research-methods",
+   "ced": null,
+   "title": "Research Methods and Variables",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "practices": [
+    2
+   ],
+   "before": "heredity-environment",
+   "searchPhrase": "research methods and variables for psychology"
+  },
+  {
+   "id": "research-sampling",
+   "ced": null,
+   "title": "Sampling and Generalizability",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "before": "heredity-environment",
+   "searchPhrase": "sampling and generalizability for psychology"
+  },
+  {
+   "id": "stats-correlation",
+   "ced": null,
+   "title": "Correlation and Scatterplots",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "2.C",
+    "3.A"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "before": "heredity-environment",
+   "searchPhrase": "correlation and scatterplots for psychology"
+  },
+  {
+   "id": "research-ethics",
+   "ced": null,
+   "title": "Ethics in Research",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "2.D"
+   ],
+   "practices": [
+    2
+   ],
+   "before": "brain",
+   "searchPhrase": "ethics in research for psychology"
+  },
+  {
+   "id": "stats-descriptive",
+   "ced": null,
+   "title": "Descriptive Statistics",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "3.A",
+    "3.B"
+   ],
+   "practices": [
+    3
+   ],
+   "before": "intelligence",
+   "searchPhrase": "descriptive statistics for psychology"
+  },
+  {
+   "id": "stats-normal",
+   "ced": null,
+   "title": "The Normal Curve and Percentiles",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "3.B"
+   ],
+   "practices": [
+    3
+   ],
+   "before": "intelligence",
+   "searchPhrase": "the normal curve and percentiles for psychology"
+  },
+  {
+   "id": "stats-significance",
+   "ced": null,
+   "title": "Statistical Significance and Effect Size",
+   "chapter": "skills-research",
+   "kind": "skill",
+   "skills": [
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "before": "intelligence",
+   "searchPhrase": "statistical significance and effect size for psychology"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"action potential\", \"operant conditioning\", \"major depressive disorder\" are not used early).",
+  "words": [
+   "brain",
+   "brains",
+   "nervous system",
+   "memory",
+   "memories",
+   "learning",
+   "emotion",
+   "emotions",
+   "stress",
+   "personality",
+   "sleep",
+   "dream",
+   "dreams",
+   "attention",
+   "perception",
+   "sensation",
+   "vision",
+   "sight",
+   "hearing",
+   "language",
+   "motivation",
+   "hunger",
+   "intelligence",
+   "attitude",
+   "attitudes",
+   "hormone",
+   "hormones",
+   "gender",
+   "adolescence",
+   "adolescent",
+   "adolescents",
+   "consciousness",
+   "creativity",
+   "coping",
+   "depression",
+   "anxiety",
+   "phobia",
+   "phobias",
+   "prejudice",
+   "stereotype",
+   "stereotypes",
+   "reflex",
+   "reflexes",
+   "temperament",
+   "cognition"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "scientific-method",
+   "term": "scientific method",
+   "aliases": [
+    "empirical evidence"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "psych-perspective",
+   "term": "psychological perspective",
+   "aliases": [
+    "psychological perspectives",
+    "biological perspective",
+    "behavioral perspective",
+    "cognitive perspective",
+    "psychodynamic perspective",
+    "humanistic perspective",
+    "sociocultural perspective",
+    "evolutionary perspective"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "science-theory",
+   "term": "theory (science)",
+   "aliases": [
+    "scientific theory"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "scientific-method"
+   ]
+  },
+  {
+   "id": "hypothesis",
+   "term": "hypothesis",
+   "aliases": [
+    "hypotheses"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "science-theory"
+   ]
+  },
+  {
+   "id": "experiment",
+   "term": "experiment",
+   "aliases": [
+    "experiments",
+    "experimental method",
+    "experimental design"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "hypothesis"
+   ]
+  },
+  {
+   "id": "independent-variable",
+   "term": "independent variable",
+   "aliases": [
+    "independent variables"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "experiment"
+   ]
+  },
+  {
+   "id": "dependent-variable",
+   "term": "dependent variable",
+   "aliases": [
+    "dependent variables"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "experiment"
+   ]
+  },
+  {
+   "id": "operational-definition",
+   "term": "operational definition",
+   "aliases": [
+    "operational definitions",
+    "operationally defined"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "dependent-variable",
+    "independent-variable"
+   ]
+  },
+  {
+   "id": "experimental-group",
+   "term": "experimental group",
+   "aliases": [
+    "experimental groups",
+    "treatment group"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "independent-variable"
+   ]
+  },
+  {
+   "id": "control-group",
+   "term": "control group",
+   "aliases": [
+    "control groups",
+    "control condition"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "experimental-group"
+   ]
+  },
+  {
+   "id": "random-assignment",
+   "term": "random assignment",
+   "aliases": [
+    "randomly assigned"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "experimental-group",
+    "control-group"
+   ]
+  },
+  {
+   "id": "confounding-variable",
+   "term": "confounding variable",
+   "aliases": [
+    "confounding variables",
+    "extraneous variable"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "experiment"
+   ]
+  },
+  {
+   "id": "placebo",
+   "term": "placebo",
+   "aliases": [
+    "placebo effect",
+    "placebos"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "control-group"
+   ]
+  },
+  {
+   "id": "single-blind",
+   "term": "single-blind study",
+   "aliases": [
+    "single-blind"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "placebo"
+   ]
+  },
+  {
+   "id": "double-blind",
+   "term": "double-blind study",
+   "aliases": [
+    "double-blind"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "single-blind"
+   ]
+  },
+  {
+   "id": "experimenter-bias",
+   "term": "experimenter bias",
+   "aliases": [
+    "researcher bias"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "double-blind"
+   ]
+  },
+  {
+   "id": "correlation",
+   "term": "correlation",
+   "aliases": [
+    "correlations",
+    "correlated"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "correlational-research",
+   "term": "correlational study",
+   "aliases": [
+    "correlational studies",
+    "correlational research",
+    "correlational design"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "correlation"
+   ]
+  },
+  {
+   "id": "third-variable",
+   "term": "third variable",
+   "aliases": [
+    "third-variable problem"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "correlational-research"
+   ]
+  },
+  {
+   "id": "case-study",
+   "term": "case study",
+   "aliases": [
+    "case studies"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "naturalistic-observation",
+   "term": "naturalistic observation",
+   "aliases": [],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "survey",
+   "term": "survey",
+   "aliases": [
+    "surveys",
+    "questionnaire",
+    "questionnaires"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "self-report-bias",
+   "term": "social desirability bias",
+   "aliases": [
+    "self-report bias"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "survey"
+   ]
+  },
+  {
+   "id": "wording-effect",
+   "term": "wording effect",
+   "aliases": [
+    "wording effects"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "survey"
+   ]
+  },
+  {
+   "id": "likert-scale",
+   "term": "Likert scale",
+   "aliases": [
+    "Likert scales"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "survey"
+   ]
+  },
+  {
+   "id": "quantitative-data",
+   "term": "quantitative data",
+   "aliases": [],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "qualitative-data",
+   "term": "qualitative data",
+   "aliases": [],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "meta-analysis",
+   "term": "meta-analysis",
+   "aliases": [
+    "meta-analyses"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "replication",
+   "term": "replication",
+   "aliases": [
+    "replicate",
+    "replicated",
+    "replication crisis"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": [
+    "scientific-method"
+   ]
+  },
+  {
+   "id": "peer-review",
+   "term": "peer review",
+   "aliases": [
+    "peer-reviewed"
+   ],
+   "taughtIn": "research-methods",
+   "dependsOn": []
+  },
+  {
+   "id": "population-research",
+   "term": "population (research)",
+   "aliases": [
+    "target population"
+   ],
+   "taughtIn": "research-sampling",
+   "dependsOn": []
+  },
+  {
+   "id": "sample-research",
+   "term": "sample (research)",
+   "aliases": [
+    "research sample"
+   ],
+   "taughtIn": "research-sampling",
+   "dependsOn": [
+    "population-research"
+   ]
+  },
+  {
+   "id": "random-sampling",
+   "term": "random sampling",
+   "aliases": [
+    "random sample",
+    "randomly selected"
+   ],
+   "taughtIn": "research-sampling",
+   "dependsOn": [
+    "sample-research"
+   ]
+  },
+  {
+   "id": "representative-sample",
+   "term": "representative sample",
+   "aliases": [
+    "representative samples"
+   ],
+   "taughtIn": "research-sampling",
+   "dependsOn": [
+    "random-sampling"
+   ]
+  },
+  {
+   "id": "sampling-bias",
+   "term": "sampling bias",
+   "aliases": [
+    "biased sample",
+    "convenience sample"
+   ],
+   "taughtIn": "research-sampling",
+   "dependsOn": [
+    "representative-sample"
+   ]
+  },
+  {
+   "id": "generalizability",
+   "term": "generalizability",
+   "aliases": [
+    "generalize",
+    "generalizable"
+   ],
+   "taughtIn": "research-sampling",
+   "dependsOn": [
+    "representative-sample"
+   ]
+  },
+  {
+   "id": "ethical-guidelines",
+   "term": "ethical guidelines",
+   "aliases": [
+    "ethics code",
+    "ethical safeguards"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": []
+  },
+  {
+   "id": "irb",
+   "term": "institutional review board",
+   "aliases": [
+    "IRB"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "ethical-guidelines"
+   ]
+  },
+  {
+   "id": "informed-consent",
+   "term": "informed consent",
+   "aliases": [],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "ethical-guidelines"
+   ]
+  },
+  {
+   "id": "informed-assent",
+   "term": "informed assent",
+   "aliases": [],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "informed-consent"
+   ]
+  },
+  {
+   "id": "right-to-withdraw",
+   "term": "right to withdraw",
+   "aliases": [],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "informed-consent"
+   ]
+  },
+  {
+   "id": "confidentiality",
+   "term": "confidentiality",
+   "aliases": [
+    "anonymity"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "ethical-guidelines"
+   ]
+  },
+  {
+   "id": "protection-from-harm",
+   "term": "protection from harm",
+   "aliases": [
+    "minimal risk"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "ethical-guidelines"
+   ]
+  },
+  {
+   "id": "deception",
+   "term": "deception (research)",
+   "aliases": [
+    "deceive participants"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "ethical-guidelines"
+   ]
+  },
+  {
+   "id": "debriefing",
+   "term": "debriefing",
+   "aliases": [
+    "debriefed"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "deception"
+   ]
+  },
+  {
+   "id": "animal-research",
+   "term": "animal research",
+   "aliases": [
+    "animal studies"
+   ],
+   "taughtIn": "research-ethics",
+   "dependsOn": [
+    "ethical-guidelines"
+   ]
+  },
+  {
+   "id": "descriptive-statistics",
+   "term": "descriptive statistics",
+   "aliases": [],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "quantitative-data"
+   ]
+  },
+  {
+   "id": "frequency-distribution",
+   "term": "frequency distribution",
+   "aliases": [
+    "histogram",
+    "histograms",
+    "frequency distributions"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "descriptive-statistics"
+   ]
+  },
+  {
+   "id": "central-tendency",
+   "term": "central tendency",
+   "aliases": [
+    "measures of central tendency"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "descriptive-statistics"
+   ]
+  },
+  {
+   "id": "mean",
+   "term": "mean (statistics)",
+   "aliases": [
+    "arithmetic mean"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "central-tendency"
+   ],
+   "notation": [
+    "\\\\bar\\{x\\}"
+   ]
+  },
+  {
+   "id": "median",
+   "term": "median",
+   "aliases": [
+    "medians"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "central-tendency"
+   ]
+  },
+  {
+   "id": "mode-stat",
+   "term": "mode (statistics)",
+   "aliases": [
+    "modal score"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "central-tendency"
+   ]
+  },
+  {
+   "id": "bimodal",
+   "term": "bimodal distribution",
+   "aliases": [
+    "bimodal"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "mode-stat"
+   ]
+  },
+  {
+   "id": "variation",
+   "term": "variation (statistics)",
+   "aliases": [
+    "measures of variation",
+    "variability"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "descriptive-statistics"
+   ]
+  },
+  {
+   "id": "range-stat",
+   "term": "range (statistics)",
+   "aliases": [],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "variation"
+   ]
+  },
+  {
+   "id": "standard-deviation",
+   "term": "standard deviation",
+   "aliases": [
+    "standard deviations",
+    "SD"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "variation",
+    "mean"
+   ],
+   "notation": [
+    "\\\\sigma",
+    "\\\\text\\{SD\\}"
+   ]
+  },
+  {
+   "id": "outlier",
+   "term": "outlier",
+   "aliases": [
+    "outliers"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "mean",
+    "median"
+   ]
+  },
+  {
+   "id": "skew",
+   "term": "skewed distribution",
+   "aliases": [
+    "positive skew",
+    "negative skew",
+    "positively skewed",
+    "negatively skewed"
+   ],
+   "taughtIn": "stats-descriptive",
+   "dependsOn": [
+    "outlier"
+   ]
+  },
+  {
+   "id": "correlation-coefficient",
+   "term": "correlation coefficient",
+   "aliases": [
+    "correlation coefficients"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "correlation"
+   ],
+   "notation": [
+    "(^|[^\\\\a-zA-Z])r\\s*="
+   ]
+  },
+  {
+   "id": "positive-correlation",
+   "term": "positive correlation",
+   "aliases": [
+    "positively correlated"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "correlation-coefficient"
+   ]
+  },
+  {
+   "id": "negative-correlation",
+   "term": "negative correlation",
+   "aliases": [
+    "negatively correlated"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "correlation-coefficient"
+   ]
+  },
+  {
+   "id": "scatterplot",
+   "term": "scatterplot",
+   "aliases": [
+    "scatterplots",
+    "scatter plot"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "correlation-coefficient"
+   ]
+  },
+  {
+   "id": "trend-line",
+   "term": "line of best fit",
+   "aliases": [
+    "trend line"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "scatterplot"
+   ]
+  },
+  {
+   "id": "directionality",
+   "term": "directionality problem",
+   "aliases": [
+    "reverse causation"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "correlational-research"
+   ]
+  },
+  {
+   "id": "illusory-correlation",
+   "term": "illusory correlation",
+   "aliases": [
+    "illusory correlations"
+   ],
+   "taughtIn": "stats-correlation",
+   "dependsOn": [
+    "correlation"
+   ]
+  },
+  {
+   "id": "nature-nurture",
+   "term": "nature and nurture",
+   "aliases": [
+    "nature versus nurture",
+    "nature-nurture"
+   ],
+   "taughtIn": "heredity-environment",
+   "dependsOn": []
+  },
+  {
+   "id": "heredity",
+   "term": "heredity",
+   "aliases": [
+    "hereditary"
+   ],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "nature-nurture"
+   ]
+  },
+  {
+   "id": "heritability",
+   "term": "heritability",
+   "aliases": [
+    "heritable"
+   ],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "heredity"
+   ]
+  },
+  {
+   "id": "evolutionary-psychology",
+   "term": "evolutionary psychology",
+   "aliases": [],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "psych-perspective"
+   ]
+  },
+  {
+   "id": "natural-selection",
+   "term": "natural selection",
+   "aliases": [],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "evolutionary-psychology"
+   ]
+  },
+  {
+   "id": "eugenics",
+   "term": "eugenics",
+   "aliases": [],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "evolutionary-psychology"
+   ]
+  },
+  {
+   "id": "twin-study",
+   "term": "twin study",
+   "aliases": [
+    "twin studies",
+    "identical twins",
+    "fraternal twins"
+   ],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "heritability",
+    "correlation-coefficient",
+    "sample-research"
+   ]
+  },
+  {
+   "id": "adoption-study",
+   "term": "adoption study",
+   "aliases": [
+    "adoption studies"
+   ],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "heritability"
+   ]
+  },
+  {
+   "id": "family-study",
+   "term": "family study",
+   "aliases": [
+    "family studies"
+   ],
+   "taughtIn": "heredity-environment",
+   "dependsOn": [
+    "heritability"
+   ]
+  },
+  {
+   "id": "nervous-system",
+   "term": "nervous system",
+   "aliases": [
+    "nervous systems"
+   ],
+   "taughtIn": "nervous-system",
+   "dependsOn": []
+  },
+  {
+   "id": "cns",
+   "term": "central nervous system",
+   "aliases": [
+    "CNS"
+   ],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "nervous-system"
+   ]
+  },
+  {
+   "id": "spinal-cord",
+   "term": "spinal cord",
+   "aliases": [],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "cns"
+   ]
+  },
+  {
+   "id": "pns",
+   "term": "peripheral nervous system",
+   "aliases": [
+    "PNS"
+   ],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "nervous-system"
+   ]
+  },
+  {
+   "id": "somatic",
+   "term": "somatic nervous system",
+   "aliases": [],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "pns"
+   ]
+  },
+  {
+   "id": "autonomic",
+   "term": "autonomic nervous system",
+   "aliases": [],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "pns"
+   ]
+  },
+  {
+   "id": "sympathetic",
+   "term": "sympathetic nervous system",
+   "aliases": [
+    "sympathetic division"
+   ],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "autonomic"
+   ]
+  },
+  {
+   "id": "parasympathetic",
+   "term": "parasympathetic nervous system",
+   "aliases": [
+    "parasympathetic division"
+   ],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "autonomic"
+   ]
+  },
+  {
+   "id": "neuron",
+   "term": "neuron",
+   "aliases": [
+    "neurons",
+    "nerve cell",
+    "nerve cells"
+   ],
+   "taughtIn": "nervous-system",
+   "dependsOn": [
+    "nervous-system"
+   ]
+  },
+  {
+   "id": "glial-cell",
+   "term": "glial cell",
+   "aliases": [
+    "glial cells",
+    "glia"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "dendrite",
+   "term": "dendrite",
+   "aliases": [
+    "dendrites"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "cell-body",
+   "term": "cell body",
+   "aliases": [
+    "soma"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "axon",
+   "term": "axon",
+   "aliases": [
+    "axons"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "myelin",
+   "term": "myelin sheath",
+   "aliases": [
+    "myelin",
+    "myelinated"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "axon"
+   ]
+  },
+  {
+   "id": "axon-terminal",
+   "term": "axon terminal",
+   "aliases": [
+    "axon terminals",
+    "terminal buttons"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "axon"
+   ]
+  },
+  {
+   "id": "sensory-neuron",
+   "term": "sensory neuron",
+   "aliases": [
+    "sensory neurons",
+    "afferent neuron"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "motor-neuron",
+   "term": "motor neuron",
+   "aliases": [
+    "motor neurons",
+    "efferent neuron"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "interneuron",
+   "term": "interneuron",
+   "aliases": [
+    "interneurons"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "reflex-arc",
+   "term": "reflex arc",
+   "aliases": [
+    "reflex",
+    "reflexes"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "sensory-neuron",
+    "motor-neuron",
+    "interneuron",
+    "spinal-cord"
+   ]
+  },
+  {
+   "id": "resting-potential",
+   "term": "resting potential",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neuron"
+   ]
+  },
+  {
+   "id": "threshold-neural",
+   "term": "threshold (neural)",
+   "aliases": [
+    "threshold of excitation"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "resting-potential"
+   ]
+  },
+  {
+   "id": "depolarization",
+   "term": "depolarization",
+   "aliases": [
+    "depolarize"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "resting-potential"
+   ]
+  },
+  {
+   "id": "action-potential",
+   "term": "action potential",
+   "aliases": [
+    "action potentials",
+    "neural impulse"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "depolarization",
+    "threshold-neural",
+    "axon"
+   ]
+  },
+  {
+   "id": "all-or-none",
+   "term": "all-or-none principle",
+   "aliases": [
+    "all-or-none"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "action-potential"
+   ]
+  },
+  {
+   "id": "refractory-period",
+   "term": "refractory period",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "action-potential"
+   ]
+  },
+  {
+   "id": "synapse",
+   "term": "synapse",
+   "aliases": [
+    "synapses",
+    "synaptic gap",
+    "synaptic cleft"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "axon-terminal",
+    "dendrite"
+   ]
+  },
+  {
+   "id": "neurotransmitter",
+   "term": "neurotransmitter",
+   "aliases": [
+    "neurotransmitters"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "synapse"
+   ]
+  },
+  {
+   "id": "reuptake",
+   "term": "reuptake",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "excitatory",
+   "term": "excitatory neurotransmitter",
+   "aliases": [
+    "excitatory neurotransmitters"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "inhibitory",
+   "term": "inhibitory neurotransmitter",
+   "aliases": [
+    "inhibitory neurotransmitters"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "dopamine",
+   "term": "dopamine",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "serotonin",
+   "term": "serotonin",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "norepinephrine",
+   "term": "norepinephrine",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "glutamate",
+   "term": "glutamate",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "excitatory"
+   ]
+  },
+  {
+   "id": "gaba",
+   "term": "GABA",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "inhibitory"
+   ]
+  },
+  {
+   "id": "endorphins",
+   "term": "endorphins",
+   "aliases": [
+    "endorphin"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "substance-p",
+   "term": "substance P",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "acetylcholine",
+   "term": "acetylcholine",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "endocrine-system",
+   "term": "endocrine system",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": []
+  },
+  {
+   "id": "hormone",
+   "term": "hormone",
+   "aliases": [
+    "hormones"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "endocrine-system"
+   ]
+  },
+  {
+   "id": "pituitary",
+   "term": "pituitary gland",
+   "aliases": [
+    "pituitary"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "hormone"
+   ]
+  },
+  {
+   "id": "adrenaline",
+   "term": "adrenaline",
+   "aliases": [
+    "epinephrine"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "hormone"
+   ]
+  },
+  {
+   "id": "leptin",
+   "term": "leptin",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "hormone"
+   ]
+  },
+  {
+   "id": "ghrelin",
+   "term": "ghrelin",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "hormone"
+   ]
+  },
+  {
+   "id": "melatonin",
+   "term": "melatonin",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "hormone"
+   ]
+  },
+  {
+   "id": "oxytocin",
+   "term": "oxytocin",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "hormone"
+   ]
+  },
+  {
+   "id": "psychoactive-drug",
+   "term": "psychoactive drug",
+   "aliases": [
+    "psychoactive drugs"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "neurotransmitter"
+   ]
+  },
+  {
+   "id": "agonist",
+   "term": "agonist",
+   "aliases": [
+    "agonists"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "antagonist",
+   "term": "antagonist",
+   "aliases": [
+    "antagonists"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "reuptake-inhibitor",
+   "term": "reuptake inhibitor",
+   "aliases": [
+    "reuptake inhibitors"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "reuptake",
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "stimulant",
+   "term": "stimulant",
+   "aliases": [
+    "stimulants"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "depressant",
+   "term": "depressant",
+   "aliases": [
+    "depressants"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "hallucinogen",
+   "term": "hallucinogen",
+   "aliases": [
+    "hallucinogens"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "opioid",
+   "term": "opioid",
+   "aliases": [
+    "opioids"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug",
+    "endorphins"
+   ]
+  },
+  {
+   "id": "tolerance",
+   "term": "tolerance (drugs)",
+   "aliases": [
+    "drug tolerance"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "psychoactive-drug"
+   ]
+  },
+  {
+   "id": "withdrawal",
+   "term": "withdrawal",
+   "aliases": [
+    "withdrawal symptoms"
+   ],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "tolerance"
+   ]
+  },
+  {
+   "id": "multiple-sclerosis",
+   "term": "multiple sclerosis",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "myelin"
+   ]
+  },
+  {
+   "id": "myasthenia-gravis",
+   "term": "myasthenia gravis",
+   "aliases": [],
+   "taughtIn": "neural-firing",
+   "dependsOn": [
+    "acetylcholine"
+   ]
+  },
+  {
+   "id": "brain",
+   "term": "brain",
+   "aliases": [
+    "brains"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": []
+  },
+  {
+   "id": "brainstem",
+   "term": "brainstem",
+   "aliases": [
+    "brain stem"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain",
+    "cns"
+   ]
+  },
+  {
+   "id": "medulla",
+   "term": "medulla",
+   "aliases": [
+    "medulla oblongata"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brainstem"
+   ]
+  },
+  {
+   "id": "reticular",
+   "term": "reticular activating system",
+   "aliases": [
+    "reticular formation"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brainstem"
+   ]
+  },
+  {
+   "id": "reward-center",
+   "term": "reward center",
+   "aliases": [
+    "reward pathway",
+    "nucleus accumbens"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "dopamine"
+   ]
+  },
+  {
+   "id": "cerebellum",
+   "term": "cerebellum",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "cerebral-cortex",
+   "term": "cerebral cortex",
+   "aliases": [
+    "cortex"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "hemisphere",
+   "term": "cerebral hemisphere",
+   "aliases": [
+    "cerebral hemispheres",
+    "left hemisphere",
+    "right hemisphere"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "cerebral-cortex"
+   ]
+  },
+  {
+   "id": "frontal-lobe",
+   "term": "frontal lobe",
+   "aliases": [
+    "frontal lobes"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "cerebral-cortex"
+   ]
+  },
+  {
+   "id": "prefrontal",
+   "term": "prefrontal cortex",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "frontal-lobe"
+   ]
+  },
+  {
+   "id": "motor-cortex",
+   "term": "motor cortex",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "frontal-lobe",
+    "motor-neuron"
+   ]
+  },
+  {
+   "id": "parietal-lobe",
+   "term": "parietal lobe",
+   "aliases": [
+    "parietal lobes"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "cerebral-cortex"
+   ]
+  },
+  {
+   "id": "somatosensory",
+   "term": "somatosensory cortex",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "parietal-lobe"
+   ]
+  },
+  {
+   "id": "occipital-lobe",
+   "term": "occipital lobe",
+   "aliases": [
+    "occipital lobes"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "cerebral-cortex"
+   ]
+  },
+  {
+   "id": "temporal-lobe",
+   "term": "temporal lobe",
+   "aliases": [
+    "temporal lobes"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "cerebral-cortex"
+   ]
+  },
+  {
+   "id": "association-areas",
+   "term": "association areas",
+   "aliases": [
+    "association area"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "cerebral-cortex"
+   ]
+  },
+  {
+   "id": "limbic-system",
+   "term": "limbic system",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "thalamus",
+   "term": "thalamus",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "limbic-system"
+   ]
+  },
+  {
+   "id": "hypothalamus",
+   "term": "hypothalamus",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "limbic-system",
+    "pituitary"
+   ]
+  },
+  {
+   "id": "homeostasis",
+   "term": "homeostasis",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "hypothalamus"
+   ]
+  },
+  {
+   "id": "hippocampus",
+   "term": "hippocampus",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "limbic-system"
+   ]
+  },
+  {
+   "id": "amygdala",
+   "term": "amygdala",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "limbic-system"
+   ]
+  },
+  {
+   "id": "corpus-callosum",
+   "term": "corpus callosum",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "hemisphere"
+   ]
+  },
+  {
+   "id": "contralateral",
+   "term": "contralateral organization",
+   "aliases": [
+    "contralateral"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "hemisphere",
+    "motor-cortex"
+   ]
+  },
+  {
+   "id": "lateralization",
+   "term": "hemispheric specialization",
+   "aliases": [
+    "lateralization"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "hemisphere"
+   ]
+  },
+  {
+   "id": "split-brain",
+   "term": "split-brain",
+   "aliases": [
+    "split brain"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "corpus-callosum",
+    "lateralization"
+   ]
+  },
+  {
+   "id": "brocas-area",
+   "term": "Broca's area",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "frontal-lobe"
+   ]
+  },
+  {
+   "id": "wernickes-area",
+   "term": "Wernicke's area",
+   "aliases": [],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "temporal-lobe"
+   ]
+  },
+  {
+   "id": "aphasia",
+   "term": "aphasia",
+   "aliases": [
+    "Broca's aphasia",
+    "Wernicke's aphasia"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brocas-area",
+    "wernickes-area"
+   ]
+  },
+  {
+   "id": "plasticity",
+   "term": "neuroplasticity",
+   "aliases": [
+    "plasticity",
+    "brain plasticity"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "eeg",
+   "term": "electroencephalogram",
+   "aliases": [
+    "EEG"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "fmri",
+   "term": "functional magnetic resonance imaging",
+   "aliases": [
+    "fMRI"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "lesion",
+   "term": "lesion",
+   "aliases": [
+    "lesions",
+    "lesioning"
+   ],
+   "taughtIn": "brain",
+   "dependsOn": [
+    "brain",
+    "animal-research"
+   ]
+  },
+  {
+   "id": "consciousness",
+   "term": "consciousness",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "brain"
+   ]
+  },
+  {
+   "id": "sleep",
+   "term": "sleep",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "consciousness"
+   ]
+  },
+  {
+   "id": "circadian-rhythm",
+   "term": "circadian rhythm",
+   "aliases": [
+    "circadian rhythms"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "sleep",
+    "melatonin"
+   ]
+  },
+  {
+   "id": "nrem",
+   "term": "NREM sleep",
+   "aliases": [
+    "non-REM sleep",
+    "NREM"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "sleep",
+    "eeg"
+   ]
+  },
+  {
+   "id": "rem",
+   "term": "REM sleep",
+   "aliases": [
+    "REM"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "sleep",
+    "eeg"
+   ]
+  },
+  {
+   "id": "hypnagogic",
+   "term": "hypnagogic sensations",
+   "aliases": [
+    "hypnagogic"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "nrem"
+   ]
+  },
+  {
+   "id": "dream",
+   "term": "dream",
+   "aliases": [
+    "dreams",
+    "dreaming"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "rem"
+   ]
+  },
+  {
+   "id": "activation-synthesis",
+   "term": "activation-synthesis theory",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "dream"
+   ]
+  },
+  {
+   "id": "consolidation-theory",
+   "term": "consolidation theory",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "dream"
+   ]
+  },
+  {
+   "id": "restoration-theory",
+   "term": "restoration theory",
+   "aliases": [
+    "restorative theory"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "sleep"
+   ]
+  },
+  {
+   "id": "insomnia",
+   "term": "insomnia",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "sleep"
+   ]
+  },
+  {
+   "id": "narcolepsy",
+   "term": "narcolepsy",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "rem"
+   ]
+  },
+  {
+   "id": "rbd",
+   "term": "REM sleep behavior disorder",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "rem"
+   ]
+  },
+  {
+   "id": "sleep-apnea",
+   "term": "sleep apnea",
+   "aliases": [],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "sleep"
+   ]
+  },
+  {
+   "id": "somnambulism",
+   "term": "somnambulism",
+   "aliases": [
+    "sleepwalking"
+   ],
+   "taughtIn": "sleep",
+   "dependsOn": [
+    "nrem"
+   ]
+  },
+  {
+   "id": "sensation",
+   "term": "sensation",
+   "aliases": [
+    "sensations"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": []
+  },
+  {
+   "id": "transduction",
+   "term": "transduction",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation",
+    "neuron"
+   ]
+  },
+  {
+   "id": "absolute-threshold",
+   "term": "absolute threshold",
+   "aliases": [
+    "absolute thresholds"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "jnd",
+   "term": "just-noticeable difference",
+   "aliases": [
+    "difference threshold",
+    "JND"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "absolute-threshold"
+   ]
+  },
+  {
+   "id": "webers-law",
+   "term": "Weber's law",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "jnd"
+   ]
+  },
+  {
+   "id": "signal-detection",
+   "term": "signal detection theory",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "absolute-threshold"
+   ]
+  },
+  {
+   "id": "sensory-adaptation",
+   "term": "sensory adaptation",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "sensory-interaction",
+   "term": "sensory interaction",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "synesthesia",
+   "term": "synesthesia",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "vision",
+   "term": "vision",
+   "aliases": [
+    "sight"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "retina",
+   "term": "retina",
+   "aliases": [
+    "retinas"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "vision"
+   ]
+  },
+  {
+   "id": "rods",
+   "term": "rods",
+   "aliases": [
+    "rod cells"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "retina"
+   ]
+  },
+  {
+   "id": "cones",
+   "term": "cones",
+   "aliases": [
+    "cone cells"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "retina"
+   ]
+  },
+  {
+   "id": "fovea",
+   "term": "fovea",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cones"
+   ]
+  },
+  {
+   "id": "optic-nerve",
+   "term": "optic nerve",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "retina"
+   ]
+  },
+  {
+   "id": "blind-spot",
+   "term": "blind spot",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "optic-nerve"
+   ]
+  },
+  {
+   "id": "trichromatic",
+   "term": "trichromatic theory",
+   "aliases": [
+    "Young-Helmholtz theory"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cones"
+   ]
+  },
+  {
+   "id": "opponent-process",
+   "term": "opponent-process theory",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cones"
+   ]
+  },
+  {
+   "id": "afterimage",
+   "term": "afterimage",
+   "aliases": [
+    "afterimages"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "opponent-process"
+   ]
+  },
+  {
+   "id": "color-deficiency",
+   "term": "color vision deficiency",
+   "aliases": [
+    "color blindness"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cones"
+   ]
+  },
+  {
+   "id": "prosopagnosia",
+   "term": "prosopagnosia",
+   "aliases": [
+    "face blindness"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "vision"
+   ]
+  },
+  {
+   "id": "blindsight",
+   "term": "blindsight",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "vision",
+    "occipital-lobe"
+   ]
+  },
+  {
+   "id": "hearing",
+   "term": "hearing",
+   "aliases": [
+    "audition"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "cochlea",
+   "term": "cochlea",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "hearing"
+   ]
+  },
+  {
+   "id": "place-theory",
+   "term": "place theory",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cochlea"
+   ]
+  },
+  {
+   "id": "frequency-theory",
+   "term": "frequency theory",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cochlea"
+   ]
+  },
+  {
+   "id": "volley",
+   "term": "volley principle",
+   "aliases": [
+    "volley theory"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "frequency-theory"
+   ]
+  },
+  {
+   "id": "conduction-deafness",
+   "term": "conduction deafness",
+   "aliases": [
+    "conductive hearing loss"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "hearing"
+   ]
+  },
+  {
+   "id": "sensorineural",
+   "term": "sensorineural deafness",
+   "aliases": [
+    "sensorineural hearing loss"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "cochlea"
+   ]
+  },
+  {
+   "id": "olfaction",
+   "term": "olfaction",
+   "aliases": [
+    "olfactory",
+    "sense of smell"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "gustation",
+   "term": "gustation",
+   "aliases": [
+    "gustatory",
+    "taste buds"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "umami",
+   "term": "umami",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "gustation"
+   ]
+  },
+  {
+   "id": "oleogustus",
+   "term": "oleogustus",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "gustation"
+   ]
+  },
+  {
+   "id": "supertaster",
+   "term": "supertaster",
+   "aliases": [
+    "supertasters"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "gustation"
+   ]
+  },
+  {
+   "id": "gate-control",
+   "term": "gate control theory",
+   "aliases": [],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation",
+    "spinal-cord"
+   ]
+  },
+  {
+   "id": "phantom-limb",
+   "term": "phantom limb",
+   "aliases": [
+    "phantom limb pain"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "vestibular",
+   "term": "vestibular sense",
+   "aliases": [
+    "vestibular system"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "kinesthesis",
+   "term": "kinesthesis",
+   "aliases": [
+    "kinesthetic sense"
+   ],
+   "taughtIn": "sensation",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "cognition",
+   "term": "cognition",
+   "aliases": [
+    "cognitive processes"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": []
+  },
+  {
+   "id": "perception",
+   "term": "perception",
+   "aliases": [
+    "perceive",
+    "perceived"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "sensation"
+   ]
+  },
+  {
+   "id": "attention",
+   "term": "attention",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "selective-attention",
+   "term": "selective attention",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "attention"
+   ]
+  },
+  {
+   "id": "cocktail-party",
+   "term": "cocktail party effect",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "selective-attention"
+   ]
+  },
+  {
+   "id": "change-blindness",
+   "term": "change blindness",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "selective-attention"
+   ]
+  },
+  {
+   "id": "inattentional-blindness",
+   "term": "inattentional blindness",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "selective-attention"
+   ]
+  },
+  {
+   "id": "bottom-up",
+   "term": "bottom-up processing",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "top-down",
+   "term": "top-down processing",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "schema",
+   "term": "schema",
+   "aliases": [
+    "schemas",
+    "schemata"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "top-down"
+   ]
+  },
+  {
+   "id": "perceptual-set",
+   "term": "perceptual set",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "schema"
+   ]
+  },
+  {
+   "id": "gestalt",
+   "term": "Gestalt psychology",
+   "aliases": [
+    "Gestalt principles",
+    "Gestalt"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "closure",
+   "term": "closure (Gestalt)",
+   "aliases": [
+    "law of closure"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "gestalt"
+   ]
+  },
+  {
+   "id": "figure-ground",
+   "term": "figure-ground",
+   "aliases": [
+    "figure and ground"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "gestalt"
+   ]
+  },
+  {
+   "id": "proximity",
+   "term": "proximity (Gestalt)",
+   "aliases": [
+    "law of proximity"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "gestalt"
+   ]
+  },
+  {
+   "id": "similarity",
+   "term": "similarity (Gestalt)",
+   "aliases": [
+    "law of similarity"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "gestalt"
+   ]
+  },
+  {
+   "id": "depth-perception",
+   "term": "depth perception",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "binocular-cue",
+   "term": "binocular cue",
+   "aliases": [
+    "binocular cues"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "depth-perception"
+   ]
+  },
+  {
+   "id": "retinal-disparity",
+   "term": "retinal disparity",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "binocular-cue"
+   ]
+  },
+  {
+   "id": "convergence",
+   "term": "convergence",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "binocular-cue"
+   ]
+  },
+  {
+   "id": "monocular-cue",
+   "term": "monocular cue",
+   "aliases": [
+    "monocular cues"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "depth-perception"
+   ]
+  },
+  {
+   "id": "relative-clarity",
+   "term": "relative clarity",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "monocular-cue"
+   ]
+  },
+  {
+   "id": "relative-size",
+   "term": "relative size",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "monocular-cue"
+   ]
+  },
+  {
+   "id": "texture-gradient",
+   "term": "texture gradient",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "monocular-cue"
+   ]
+  },
+  {
+   "id": "linear-perspective",
+   "term": "linear perspective",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "monocular-cue"
+   ]
+  },
+  {
+   "id": "interposition",
+   "term": "interposition",
+   "aliases": [],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "monocular-cue"
+   ]
+  },
+  {
+   "id": "perceptual-constancy",
+   "term": "perceptual constancy",
+   "aliases": [
+    "size constancy",
+    "shape constancy",
+    "color constancy"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "apparent-movement",
+   "term": "apparent movement",
+   "aliases": [
+    "stroboscopic movement",
+    "phi phenomenon"
+   ],
+   "taughtIn": "perception",
+   "dependsOn": [
+    "perception"
+   ]
+  },
+  {
+   "id": "concept-cognition",
+   "term": "concept (cognition)",
+   "aliases": [
+    "mental category"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "prototype",
+   "term": "prototype",
+   "aliases": [
+    "prototypes"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "concept-cognition"
+   ]
+  },
+  {
+   "id": "assimilation",
+   "term": "assimilation (cognition)",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "schema"
+   ]
+  },
+  {
+   "id": "accommodation",
+   "term": "accommodation (cognition)",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "schema"
+   ]
+  },
+  {
+   "id": "algorithm",
+   "term": "algorithm",
+   "aliases": [
+    "algorithms"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "heuristic",
+   "term": "heuristic",
+   "aliases": [
+    "heuristics"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "representativeness",
+   "term": "representativeness heuristic",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "heuristic",
+    "prototype"
+   ]
+  },
+  {
+   "id": "availability",
+   "term": "availability heuristic",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "heuristic"
+   ]
+  },
+  {
+   "id": "mental-set",
+   "term": "mental set",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "functional-fixedness",
+   "term": "functional fixedness",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "mental-set"
+   ]
+  },
+  {
+   "id": "priming",
+   "term": "priming",
+   "aliases": [
+    "primed"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "framing",
+   "term": "framing effect",
+   "aliases": [
+    "framing"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "gamblers-fallacy",
+   "term": "gambler's fallacy",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "sunk-cost",
+   "term": "sunk-cost fallacy",
+   "aliases": [
+    "sunk cost fallacy"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "executive-functions",
+   "term": "executive functions",
+   "aliases": [
+    "executive function"
+   ],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "prefrontal"
+   ]
+  },
+  {
+   "id": "creativity",
+   "term": "creativity",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "divergent-thinking",
+   "term": "divergent thinking",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "creativity"
+   ]
+  },
+  {
+   "id": "convergent-thinking",
+   "term": "convergent thinking",
+   "aliases": [],
+   "taughtIn": "thinking",
+   "dependsOn": [
+    "creativity"
+   ]
+  },
+  {
+   "id": "memory",
+   "term": "memory",
+   "aliases": [
+    "memories"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": []
+  },
+  {
+   "id": "encoding",
+   "term": "encoding",
+   "aliases": [
+    "encode",
+    "encoded"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "storage",
+   "term": "storage (memory)",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "retrieval",
+   "term": "retrieval",
+   "aliases": [
+    "retrieve",
+    "retrieved"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "explicit-memory",
+   "term": "explicit memory",
+   "aliases": [
+    "declarative memory"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "episodic-memory",
+   "term": "episodic memory",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "explicit-memory"
+   ]
+  },
+  {
+   "id": "semantic-memory",
+   "term": "semantic memory",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "explicit-memory"
+   ]
+  },
+  {
+   "id": "implicit-memory",
+   "term": "implicit memory",
+   "aliases": [
+    "nondeclarative memory"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "procedural-memory",
+   "term": "procedural memory",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "implicit-memory"
+   ]
+  },
+  {
+   "id": "prospective-memory",
+   "term": "prospective memory",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "ltp",
+   "term": "long-term potentiation",
+   "aliases": [
+    "LTP"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "synapse",
+    "memory"
+   ]
+  },
+  {
+   "id": "multi-store",
+   "term": "multi-store model",
+   "aliases": [
+    "Atkinson-Shiffrin model"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "sensory-memory",
+   "term": "sensory memory",
+   "aliases": [
+    "iconic memory",
+    "echoic memory"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "multi-store"
+   ]
+  },
+  {
+   "id": "short-term-memory",
+   "term": "short-term memory",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "multi-store"
+   ]
+  },
+  {
+   "id": "long-term-memory",
+   "term": "long-term memory",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "multi-store"
+   ]
+  },
+  {
+   "id": "working-memory",
+   "term": "working memory",
+   "aliases": [
+    "working memory model",
+    "central executive",
+    "phonological loop",
+    "visuospatial sketchpad"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "short-term-memory"
+   ]
+  },
+  {
+   "id": "automatic-processing",
+   "term": "automatic processing",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "effortful-processing",
+   "term": "effortful processing",
+   "aliases": [],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "levels-of-processing",
+   "term": "levels of processing",
+   "aliases": [
+    "deep processing",
+    "shallow processing"
+   ],
+   "taughtIn": "memory-intro",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "mnemonic",
+   "term": "mnemonic",
+   "aliases": [
+    "mnemonics",
+    "mnemonic device"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "method-of-loci",
+   "term": "method of loci",
+   "aliases": [
+    "memory palace"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "mnemonic"
+   ]
+  },
+  {
+   "id": "chunking",
+   "term": "chunking",
+   "aliases": [
+    "chunk",
+    "chunks"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "short-term-memory"
+   ]
+  },
+  {
+   "id": "hierarchies",
+   "term": "hierarchies (memory)",
+   "aliases": [
+    "hierarchical organization"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "spacing-effect",
+   "term": "spacing effect",
+   "aliases": [],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "distributed-practice",
+   "term": "distributed practice",
+   "aliases": [
+    "spaced practice"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "spacing-effect"
+   ]
+  },
+  {
+   "id": "massed-practice",
+   "term": "massed practice",
+   "aliases": [
+    "cramming"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "spacing-effect"
+   ]
+  },
+  {
+   "id": "serial-position",
+   "term": "serial position effect",
+   "aliases": [
+    "serial position curve"
+   ],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "primacy",
+   "term": "primacy effect",
+   "aliases": [],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "serial-position"
+   ]
+  },
+  {
+   "id": "recency",
+   "term": "recency effect",
+   "aliases": [],
+   "taughtIn": "encoding-memories",
+   "dependsOn": [
+    "serial-position"
+   ]
+  },
+  {
+   "id": "maintenance-rehearsal",
+   "term": "maintenance rehearsal",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "short-term-memory"
+   ]
+  },
+  {
+   "id": "elaborative-rehearsal",
+   "term": "elaborative rehearsal",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "long-term-memory",
+    "levels-of-processing"
+   ]
+  },
+  {
+   "id": "memory-consolidation",
+   "term": "memory consolidation",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "long-term-memory",
+    "hippocampus"
+   ]
+  },
+  {
+   "id": "hsam",
+   "term": "highly superior autobiographical memory",
+   "aliases": [
+    "superior autobiographical memory"
+   ],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "episodic-memory"
+   ]
+  },
+  {
+   "id": "amnesia",
+   "term": "amnesia",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "retrograde-amnesia",
+   "term": "retrograde amnesia",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "amnesia"
+   ]
+  },
+  {
+   "id": "anterograde-amnesia",
+   "term": "anterograde amnesia",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "amnesia",
+    "hippocampus"
+   ]
+  },
+  {
+   "id": "alzheimers",
+   "term": "Alzheimer's disease",
+   "aliases": [
+    "Alzheimer's"
+   ],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "infantile-amnesia",
+   "term": "infantile amnesia",
+   "aliases": [],
+   "taughtIn": "storing-memories",
+   "dependsOn": [
+    "amnesia"
+   ]
+  },
+  {
+   "id": "recall",
+   "term": "recall (memory)",
+   "aliases": [
+    "free recall"
+   ],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval"
+   ]
+  },
+  {
+   "id": "recognition",
+   "term": "recognition (memory)",
+   "aliases": [
+    "recognition task"
+   ],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval"
+   ]
+  },
+  {
+   "id": "retrieval-cue",
+   "term": "retrieval cue",
+   "aliases": [
+    "retrieval cues"
+   ],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval"
+   ]
+  },
+  {
+   "id": "context-dependent",
+   "term": "context-dependent memory",
+   "aliases": [],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval-cue"
+   ]
+  },
+  {
+   "id": "state-dependent",
+   "term": "state-dependent memory",
+   "aliases": [],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval-cue"
+   ]
+  },
+  {
+   "id": "mood-congruent",
+   "term": "mood-congruent memory",
+   "aliases": [
+    "mood-dependent memory"
+   ],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval-cue"
+   ]
+  },
+  {
+   "id": "retrieval-practice",
+   "term": "retrieval practice",
+   "aliases": [],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval"
+   ]
+  },
+  {
+   "id": "testing-effect",
+   "term": "testing effect",
+   "aliases": [],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "retrieval-practice"
+   ]
+  },
+  {
+   "id": "metacognition",
+   "term": "metacognition",
+   "aliases": [
+    "metacognitive"
+   ],
+   "taughtIn": "retrieving-memories",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "forgetting-curve",
+   "term": "forgetting curve",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "encoding-failure",
+   "term": "encoding failure",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "encoding"
+   ]
+  },
+  {
+   "id": "interference",
+   "term": "interference (memory)",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "retrieval"
+   ]
+  },
+  {
+   "id": "proactive",
+   "term": "proactive interference",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "interference"
+   ]
+  },
+  {
+   "id": "retroactive",
+   "term": "retroactive interference",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "interference"
+   ]
+  },
+  {
+   "id": "tot",
+   "term": "tip-of-the-tongue phenomenon",
+   "aliases": [
+    "tip of the tongue"
+   ],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "retrieval"
+   ]
+  },
+  {
+   "id": "repression",
+   "term": "repression",
+   "aliases": [
+    "repressed memories"
+   ],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "misinformation",
+   "term": "misinformation effect",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "source-amnesia",
+   "term": "source amnesia",
+   "aliases": [
+    "source misattribution"
+   ],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "amnesia"
+   ]
+  },
+  {
+   "id": "constructive-memory",
+   "term": "constructive memory",
+   "aliases": [
+    "reconstructive memory"
+   ],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "memory"
+   ]
+  },
+  {
+   "id": "imagination-inflation",
+   "term": "imagination inflation",
+   "aliases": [],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "constructive-memory"
+   ]
+  },
+  {
+   "id": "false-memory",
+   "term": "false memory",
+   "aliases": [
+    "false memories"
+   ],
+   "taughtIn": "forgetting",
+   "dependsOn": [
+    "constructive-memory"
+   ]
+  },
+  {
+   "id": "intelligence",
+   "term": "intelligence",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": []
+  },
+  {
+   "id": "g-factor",
+   "term": "general intelligence",
+   "aliases": [
+    "g factor"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "multiple-intelligences",
+   "term": "multiple intelligences",
+   "aliases": [
+    "multiple abilities"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "mental-age",
+   "term": "mental age",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "iq",
+   "term": "intelligence quotient",
+   "aliases": [
+    "IQ"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "mental-age",
+    "normal-curve"
+   ]
+  },
+  {
+   "id": "standardization",
+   "term": "standardization",
+   "aliases": [
+    "standardized test"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "iq",
+    "sample-research"
+   ]
+  },
+  {
+   "id": "reliability",
+   "term": "reliability",
+   "aliases": [
+    "test-retest reliability",
+    "split-half reliability"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "standardization",
+    "correlation-coefficient"
+   ]
+  },
+  {
+   "id": "validity",
+   "term": "validity",
+   "aliases": [
+    "construct validity",
+    "predictive validity"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "standardization"
+   ]
+  },
+  {
+   "id": "stereotype-threat",
+   "term": "stereotype threat",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence",
+    "statistical-significance"
+   ]
+  },
+  {
+   "id": "stereotype-lift",
+   "term": "stereotype lift",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "stereotype-threat"
+   ]
+  },
+  {
+   "id": "flynn",
+   "term": "Flynn effect",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "iq"
+   ]
+  },
+  {
+   "id": "group-variation",
+   "term": "within-group variation",
+   "aliases": [
+    "between-group variation"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence",
+    "variation",
+    "effect-size"
+   ]
+  },
+  {
+   "id": "achievement-test",
+   "term": "achievement test",
+   "aliases": [
+    "achievement tests"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "aptitude-test",
+   "term": "aptitude test",
+   "aliases": [
+    "aptitude tests"
+   ],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "growth-mindset",
+   "term": "growth mindset",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "fixed-mindset",
+   "term": "fixed mindset",
+   "aliases": [],
+   "taughtIn": "intelligence",
+   "dependsOn": [
+    "growth-mindset"
+   ]
+  },
+  {
+   "id": "normal-curve",
+   "term": "normal curve",
+   "aliases": [
+    "normal distribution",
+    "bell curve",
+    "bell-shaped curve"
+   ],
+   "taughtIn": "stats-normal",
+   "dependsOn": [
+    "standard-deviation",
+    "frequency-distribution"
+   ]
+  },
+  {
+   "id": "empirical-rule",
+   "term": "68-95-99.7 rule",
+   "aliases": [
+    "empirical rule"
+   ],
+   "taughtIn": "stats-normal",
+   "dependsOn": [
+    "normal-curve"
+   ]
+  },
+  {
+   "id": "z-score",
+   "term": "z score",
+   "aliases": [
+    "z-score",
+    "z scores",
+    "standard score"
+   ],
+   "taughtIn": "stats-normal",
+   "dependsOn": [
+    "standard-deviation",
+    "mean"
+   ],
+   "notation": [
+    "(^|[^\\\\a-zA-Z])z\\s*="
+   ]
+  },
+  {
+   "id": "percentile-rank",
+   "term": "percentile rank",
+   "aliases": [
+    "percentile",
+    "percentiles",
+    "percentile ranks"
+   ],
+   "taughtIn": "stats-normal",
+   "dependsOn": [
+    "normal-curve"
+   ]
+  },
+  {
+   "id": "inferential-statistics",
+   "term": "inferential statistics",
+   "aliases": [],
+   "taughtIn": "stats-significance",
+   "dependsOn": [
+    "descriptive-statistics",
+    "sample-research"
+   ]
+  },
+  {
+   "id": "statistical-significance",
+   "term": "statistical significance",
+   "aliases": [
+    "statistically significant",
+    "p value",
+    "p-value"
+   ],
+   "taughtIn": "stats-significance",
+   "dependsOn": [
+    "inferential-statistics",
+    "mean"
+   ],
+   "notation": [
+    "(^|[^\\\\a-zA-Z])p\\s*<"
+   ]
+  },
+  {
+   "id": "effect-size",
+   "term": "effect size",
+   "aliases": [
+    "effect sizes"
+   ],
+   "taughtIn": "stats-significance",
+   "dependsOn": [
+    "statistical-significance",
+    "standard-deviation"
+   ]
+  },
+  {
+   "id": "developmental-psychology",
+   "term": "developmental psychology",
+   "aliases": [],
+   "taughtIn": "development-methods",
+   "dependsOn": [
+    "psych-perspective"
+   ]
+  },
+  {
+   "id": "stability-change",
+   "term": "stability and change",
+   "aliases": [],
+   "taughtIn": "development-methods",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "continuity",
+   "term": "continuity and discontinuity",
+   "aliases": [
+    "continuous development",
+    "discontinuous development"
+   ],
+   "taughtIn": "development-methods",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "cross-sectional",
+   "term": "cross-sectional study",
+   "aliases": [
+    "cross-sectional design",
+    "cross-sectional studies"
+   ],
+   "taughtIn": "development-methods",
+   "dependsOn": [
+    "developmental-psychology",
+    "correlational-research"
+   ]
+  },
+  {
+   "id": "longitudinal",
+   "term": "longitudinal study",
+   "aliases": [
+    "longitudinal design",
+    "longitudinal studies"
+   ],
+   "taughtIn": "development-methods",
+   "dependsOn": [
+    "developmental-psychology",
+    "correlational-research"
+   ]
+  },
+  {
+   "id": "cohort-effect",
+   "term": "cohort effect",
+   "aliases": [
+    "cohort effects"
+   ],
+   "taughtIn": "development-methods",
+   "dependsOn": [
+    "cross-sectional"
+   ]
+  },
+  {
+   "id": "prenatal",
+   "term": "prenatal development",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "teratogen",
+   "term": "teratogen",
+   "aliases": [
+    "teratogens"
+   ],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "prenatal"
+   ]
+  },
+  {
+   "id": "maturation",
+   "term": "maturation",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "motor-development",
+   "term": "motor development",
+   "aliases": [
+    "motor milestones"
+   ],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "maturation"
+   ]
+  },
+  {
+   "id": "rooting-reflex",
+   "term": "rooting reflex",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "reflex-arc"
+   ]
+  },
+  {
+   "id": "visual-cliff",
+   "term": "visual cliff",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "depth-perception"
+   ]
+  },
+  {
+   "id": "critical-period",
+   "term": "critical period",
+   "aliases": [
+    "critical periods"
+   ],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "maturation"
+   ]
+  },
+  {
+   "id": "sensitive-period",
+   "term": "sensitive period",
+   "aliases": [
+    "sensitive periods"
+   ],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "critical-period"
+   ]
+  },
+  {
+   "id": "imprinting",
+   "term": "imprinting",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "critical-period"
+   ]
+  },
+  {
+   "id": "adolescence",
+   "term": "adolescence",
+   "aliases": [
+    "adolescent",
+    "adolescents"
+   ],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "maturation"
+   ]
+  },
+  {
+   "id": "puberty",
+   "term": "puberty",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "adolescence",
+    "hormone"
+   ]
+  },
+  {
+   "id": "primary-sex",
+   "term": "primary sex characteristics",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "puberty"
+   ]
+  },
+  {
+   "id": "secondary-sex",
+   "term": "secondary sex characteristics",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "puberty"
+   ]
+  },
+  {
+   "id": "menarche",
+   "term": "menarche",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "puberty"
+   ]
+  },
+  {
+   "id": "spermarche",
+   "term": "spermarche",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "puberty"
+   ]
+  },
+  {
+   "id": "menopause",
+   "term": "menopause",
+   "aliases": [],
+   "taughtIn": "physical-development",
+   "dependsOn": [
+    "maturation"
+   ]
+  },
+  {
+   "id": "sex-biology",
+   "term": "sex (biology)",
+   "aliases": [
+    "biological sex"
+   ],
+   "taughtIn": "gender-orientation",
+   "dependsOn": []
+  },
+  {
+   "id": "gender",
+   "term": "gender",
+   "aliases": [],
+   "taughtIn": "gender-orientation",
+   "dependsOn": [
+    "sex-biology"
+   ]
+  },
+  {
+   "id": "gender-identity",
+   "term": "gender identity",
+   "aliases": [],
+   "taughtIn": "gender-orientation",
+   "dependsOn": [
+    "gender"
+   ]
+  },
+  {
+   "id": "gender-roles",
+   "term": "gender roles",
+   "aliases": [
+    "gender role"
+   ],
+   "taughtIn": "gender-orientation",
+   "dependsOn": [
+    "gender"
+   ]
+  },
+  {
+   "id": "gender-typing",
+   "term": "gender typing",
+   "aliases": [],
+   "taughtIn": "gender-orientation",
+   "dependsOn": [
+    "gender-roles"
+   ]
+  },
+  {
+   "id": "sexual-orientation",
+   "term": "sexual orientation",
+   "aliases": [],
+   "taughtIn": "gender-orientation",
+   "dependsOn": [
+    "gender"
+   ]
+  },
+  {
+   "id": "piaget-stages",
+   "term": "Piaget's stages",
+   "aliases": [
+    "Piaget's theory"
+   ],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "assimilation",
+    "accommodation"
+   ]
+  },
+  {
+   "id": "sensorimotor",
+   "term": "sensorimotor stage",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "piaget-stages"
+   ]
+  },
+  {
+   "id": "object-permanence",
+   "term": "object permanence",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "sensorimotor"
+   ]
+  },
+  {
+   "id": "preoperational",
+   "term": "preoperational stage",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "piaget-stages"
+   ]
+  },
+  {
+   "id": "egocentrism",
+   "term": "egocentrism",
+   "aliases": [
+    "egocentric"
+   ],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "preoperational"
+   ]
+  },
+  {
+   "id": "conservation",
+   "term": "conservation (Piaget)",
+   "aliases": [
+    "conservation task"
+   ],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "preoperational"
+   ]
+  },
+  {
+   "id": "theory-of-mind",
+   "term": "theory of mind",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "egocentrism"
+   ]
+  },
+  {
+   "id": "concrete-operational",
+   "term": "concrete operational stage",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "piaget-stages",
+    "conservation"
+   ]
+  },
+  {
+   "id": "formal-operational",
+   "term": "formal operational stage",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "piaget-stages"
+   ]
+  },
+  {
+   "id": "zpd",
+   "term": "zone of proximal development",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "scaffolding",
+   "term": "scaffolding",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "zpd"
+   ]
+  },
+  {
+   "id": "crystallized",
+   "term": "crystallized intelligence",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "fluid",
+   "term": "fluid intelligence",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "intelligence"
+   ]
+  },
+  {
+   "id": "dementia",
+   "term": "dementia",
+   "aliases": [],
+   "taughtIn": "cognitive-development",
+   "dependsOn": [
+    "alzheimers"
+   ]
+  },
+  {
+   "id": "language",
+   "term": "language",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": []
+  },
+  {
+   "id": "phoneme",
+   "term": "phoneme",
+   "aliases": [
+    "phonemes"
+   ],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "language"
+   ]
+  },
+  {
+   "id": "morpheme",
+   "term": "morpheme",
+   "aliases": [
+    "morphemes"
+   ],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "phoneme"
+   ]
+  },
+  {
+   "id": "semantics",
+   "term": "semantics",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "language"
+   ]
+  },
+  {
+   "id": "grammar",
+   "term": "grammar",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "language"
+   ]
+  },
+  {
+   "id": "syntax",
+   "term": "syntax",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "grammar"
+   ]
+  },
+  {
+   "id": "generativity-language",
+   "term": "generativity (language)",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "grammar"
+   ]
+  },
+  {
+   "id": "cooing",
+   "term": "cooing",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "language"
+   ]
+  },
+  {
+   "id": "babbling",
+   "term": "babbling",
+   "aliases": [
+    "babbling stage"
+   ],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "cooing",
+    "phoneme"
+   ]
+  },
+  {
+   "id": "one-word",
+   "term": "one-word stage",
+   "aliases": [
+    "holophrase"
+   ],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "babbling"
+   ]
+  },
+  {
+   "id": "telegraphic",
+   "term": "telegraphic speech",
+   "aliases": [],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "one-word",
+    "syntax"
+   ]
+  },
+  {
+   "id": "overgeneralization",
+   "term": "overgeneralization",
+   "aliases": [
+    "overregularization"
+   ],
+   "taughtIn": "language-development",
+   "dependsOn": [
+    "grammar"
+   ]
+  },
+  {
+   "id": "ecological-systems",
+   "term": "ecological systems theory",
+   "aliases": [
+    "microsystem",
+    "mesosystem",
+    "exosystem",
+    "macrosystem",
+    "chronosystem"
+   ],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "parenting-style",
+   "term": "parenting style",
+   "aliases": [
+    "parenting styles"
+   ],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "authoritarian",
+   "term": "authoritarian parenting",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "parenting-style"
+   ]
+  },
+  {
+   "id": "authoritative",
+   "term": "authoritative parenting",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "parenting-style"
+   ]
+  },
+  {
+   "id": "permissive",
+   "term": "permissive parenting",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "parenting-style"
+   ]
+  },
+  {
+   "id": "temperament",
+   "term": "temperament",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "heredity"
+   ]
+  },
+  {
+   "id": "attachment",
+   "term": "attachment",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "strange-situation",
+   "term": "strange situation",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "attachment"
+   ]
+  },
+  {
+   "id": "secure-attachment",
+   "term": "secure attachment",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "strange-situation"
+   ]
+  },
+  {
+   "id": "avoidant-attachment",
+   "term": "avoidant attachment",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "strange-situation"
+   ]
+  },
+  {
+   "id": "anxious-attachment",
+   "term": "anxious attachment",
+   "aliases": [
+    "anxious-ambivalent attachment"
+   ],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "strange-situation"
+   ]
+  },
+  {
+   "id": "disorganized-attachment",
+   "term": "disorganized attachment",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "strange-situation"
+   ]
+  },
+  {
+   "id": "separation-anxiety",
+   "term": "separation anxiety",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "attachment"
+   ]
+  },
+  {
+   "id": "contact-comfort",
+   "term": "contact comfort",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "attachment"
+   ]
+  },
+  {
+   "id": "parallel-play",
+   "term": "parallel play",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "pretend-play",
+   "term": "pretend play",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "psychosocial-stages",
+   "term": "psychosocial stages",
+   "aliases": [
+    "trust versus mistrust",
+    "autonomy versus shame and doubt",
+    "initiative versus guilt",
+    "industry versus inferiority",
+    "identity versus role confusion",
+    "intimacy versus isolation",
+    "generativity versus stagnation",
+    "integrity versus despair"
+   ],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "identity-status",
+   "term": "identity status",
+   "aliases": [
+    "identity achievement",
+    "identity diffusion",
+    "identity foreclosure",
+    "identity moratorium"
+   ],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "psychosocial-stages"
+   ]
+  },
+  {
+   "id": "imaginary-audience",
+   "term": "imaginary audience",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "adolescence",
+    "egocentrism"
+   ]
+  },
+  {
+   "id": "personal-fable",
+   "term": "personal fable",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "adolescence",
+    "egocentrism"
+   ]
+  },
+  {
+   "id": "social-clock",
+   "term": "social clock",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "emerging-adulthood",
+   "term": "emerging adulthood",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "adolescence"
+   ]
+  },
+  {
+   "id": "aces",
+   "term": "adverse childhood experiences",
+   "aliases": [
+    "ACEs"
+   ],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "developmental-psychology"
+   ]
+  },
+  {
+   "id": "possible-selves",
+   "term": "possible selves",
+   "aliases": [],
+   "taughtIn": "social-emotional-development",
+   "dependsOn": [
+    "identity-status"
+   ]
+  },
+  {
+   "id": "learning",
+   "term": "learning",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": []
+  },
+  {
+   "id": "behaviorism",
+   "term": "behaviorism",
+   "aliases": [
+    "behaviorist",
+    "behaviorists"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "learning",
+    "psych-perspective"
+   ]
+  },
+  {
+   "id": "classical-conditioning",
+   "term": "classical conditioning",
+   "aliases": [
+    "Pavlovian conditioning"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "behaviorism"
+   ]
+  },
+  {
+   "id": "neutral-stimulus",
+   "term": "neutral stimulus",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "classical-conditioning"
+   ]
+  },
+  {
+   "id": "ucs",
+   "term": "unconditioned stimulus",
+   "aliases": [
+    "UCS"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "classical-conditioning"
+   ]
+  },
+  {
+   "id": "ucr",
+   "term": "unconditioned response",
+   "aliases": [
+    "UCR"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "ucs"
+   ]
+  },
+  {
+   "id": "cs",
+   "term": "conditioned stimulus",
+   "aliases": [
+    "CS"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "neutral-stimulus",
+    "ucs"
+   ]
+  },
+  {
+   "id": "cr",
+   "term": "conditioned response",
+   "aliases": [
+    "CR"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cs",
+    "ucr"
+   ]
+  },
+  {
+   "id": "acquisition",
+   "term": "acquisition (conditioning)",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cs"
+   ]
+  },
+  {
+   "id": "extinction",
+   "term": "extinction",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cr"
+   ]
+  },
+  {
+   "id": "spontaneous-recovery",
+   "term": "spontaneous recovery",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "extinction"
+   ]
+  },
+  {
+   "id": "stimulus-discrimination",
+   "term": "stimulus discrimination",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cs"
+   ]
+  },
+  {
+   "id": "stimulus-generalization",
+   "term": "stimulus generalization",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cs"
+   ]
+  },
+  {
+   "id": "higher-order",
+   "term": "higher-order conditioning",
+   "aliases": [
+    "second-order conditioning"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cs"
+   ]
+  },
+  {
+   "id": "counterconditioning",
+   "term": "counterconditioning",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "cr"
+   ]
+  },
+  {
+   "id": "taste-aversion",
+   "term": "taste aversion",
+   "aliases": [
+    "conditioned taste aversion"
+   ],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "classical-conditioning"
+   ]
+  },
+  {
+   "id": "preparedness",
+   "term": "biological preparedness",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "taste-aversion",
+    "natural-selection"
+   ]
+  },
+  {
+   "id": "habituation",
+   "term": "habituation",
+   "aliases": [],
+   "taughtIn": "classical-conditioning",
+   "dependsOn": [
+    "learning"
+   ]
+  },
+  {
+   "id": "operant-conditioning",
+   "term": "operant conditioning",
+   "aliases": [
+    "instrumental conditioning"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "behaviorism"
+   ]
+  },
+  {
+   "id": "law-of-effect",
+   "term": "law of effect",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "operant-conditioning"
+   ]
+  },
+  {
+   "id": "reinforcement",
+   "term": "reinforcement",
+   "aliases": [
+    "reinforcer",
+    "reinforcers"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "law-of-effect"
+   ]
+  },
+  {
+   "id": "positive-reinforcement",
+   "term": "positive reinforcement",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "negative-reinforcement",
+   "term": "negative reinforcement",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "punishment",
+   "term": "punishment",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "operant-conditioning"
+   ]
+  },
+  {
+   "id": "positive-punishment",
+   "term": "positive punishment",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "punishment"
+   ]
+  },
+  {
+   "id": "negative-punishment",
+   "term": "negative punishment",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "punishment"
+   ]
+  },
+  {
+   "id": "primary-reinforcer",
+   "term": "primary reinforcer",
+   "aliases": [
+    "primary reinforcers"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "secondary-reinforcer",
+   "term": "secondary reinforcer",
+   "aliases": [
+    "secondary reinforcers",
+    "conditioned reinforcer"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "primary-reinforcer"
+   ]
+  },
+  {
+   "id": "shaping",
+   "term": "shaping (operant)",
+   "aliases": [
+    "successive approximations"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "instinctive-drift",
+   "term": "instinctive drift",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "operant-conditioning"
+   ]
+  },
+  {
+   "id": "superstitious",
+   "term": "superstitious behavior",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "learned-helplessness",
+   "term": "learned helplessness",
+   "aliases": [],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "operant-conditioning"
+   ]
+  },
+  {
+   "id": "continuous-reinforcement",
+   "term": "continuous reinforcement",
+   "aliases": [
+    "continuous schedule"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "partial-reinforcement",
+   "term": "partial reinforcement",
+   "aliases": [
+    "intermittent reinforcement"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "continuous-reinforcement"
+   ]
+  },
+  {
+   "id": "fixed-ratio",
+   "term": "fixed-ratio schedule",
+   "aliases": [
+    "fixed-ratio"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "partial-reinforcement"
+   ]
+  },
+  {
+   "id": "variable-ratio",
+   "term": "variable-ratio schedule",
+   "aliases": [
+    "variable-ratio"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "partial-reinforcement"
+   ]
+  },
+  {
+   "id": "fixed-interval",
+   "term": "fixed-interval schedule",
+   "aliases": [
+    "fixed-interval"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "partial-reinforcement"
+   ]
+  },
+  {
+   "id": "variable-interval",
+   "term": "variable-interval schedule",
+   "aliases": [
+    "variable-interval"
+   ],
+   "taughtIn": "operant-conditioning",
+   "dependsOn": [
+    "partial-reinforcement"
+   ]
+  },
+  {
+   "id": "social-learning",
+   "term": "social learning theory",
+   "aliases": [
+    "observational learning"
+   ],
+   "taughtIn": "social-cognitive-learning",
+   "dependsOn": [
+    "learning"
+   ]
+  },
+  {
+   "id": "vicarious",
+   "term": "vicarious conditioning",
+   "aliases": [
+    "vicarious reinforcement",
+    "vicarious punishment"
+   ],
+   "taughtIn": "social-cognitive-learning",
+   "dependsOn": [
+    "social-learning",
+    "reinforcement"
+   ]
+  },
+  {
+   "id": "modeling",
+   "term": "modeling",
+   "aliases": [],
+   "taughtIn": "social-cognitive-learning",
+   "dependsOn": [
+    "social-learning"
+   ]
+  },
+  {
+   "id": "insight-learning",
+   "term": "insight learning",
+   "aliases": [],
+   "taughtIn": "social-cognitive-learning",
+   "dependsOn": [
+    "learning"
+   ]
+  },
+  {
+   "id": "latent-learning",
+   "term": "latent learning",
+   "aliases": [],
+   "taughtIn": "social-cognitive-learning",
+   "dependsOn": [
+    "learning"
+   ]
+  },
+  {
+   "id": "cognitive-map",
+   "term": "cognitive map",
+   "aliases": [
+    "cognitive maps"
+   ],
+   "taughtIn": "social-cognitive-learning",
+   "dependsOn": [
+    "latent-learning"
+   ]
+  },
+  {
+   "id": "attribution-theory",
+   "term": "attribution theory",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": []
+  },
+  {
+   "id": "dispositional",
+   "term": "dispositional attribution",
+   "aliases": [
+    "dispositional attributions"
+   ],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "attribution-theory"
+   ]
+  },
+  {
+   "id": "situational",
+   "term": "situational attribution",
+   "aliases": [
+    "situational attributions"
+   ],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "attribution-theory"
+   ]
+  },
+  {
+   "id": "explanatory-style",
+   "term": "explanatory style",
+   "aliases": [
+    "optimistic explanatory style",
+    "pessimistic explanatory style"
+   ],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "attribution-theory"
+   ]
+  },
+  {
+   "id": "actor-observer",
+   "term": "actor-observer bias",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "dispositional",
+    "situational"
+   ]
+  },
+  {
+   "id": "fae",
+   "term": "fundamental attribution error",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "dispositional",
+    "situational"
+   ]
+  },
+  {
+   "id": "self-serving",
+   "term": "self-serving bias",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "attribution-theory"
+   ]
+  },
+  {
+   "id": "locus-of-control",
+   "term": "locus of control",
+   "aliases": [
+    "internal locus of control",
+    "external locus of control"
+   ],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "attribution-theory"
+   ]
+  },
+  {
+   "id": "mere-exposure",
+   "term": "mere exposure effect",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": []
+  },
+  {
+   "id": "self-fulfilling",
+   "term": "self-fulfilling prophecy",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": []
+  },
+  {
+   "id": "social-comparison",
+   "term": "social comparison",
+   "aliases": [
+    "upward social comparison",
+    "downward social comparison"
+   ],
+   "taughtIn": "attribution",
+   "dependsOn": []
+  },
+  {
+   "id": "relative-deprivation",
+   "term": "relative deprivation",
+   "aliases": [],
+   "taughtIn": "attribution",
+   "dependsOn": [
+    "social-comparison"
+   ]
+  },
+  {
+   "id": "attitude",
+   "term": "attitude",
+   "aliases": [
+    "attitudes"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": []
+  },
+  {
+   "id": "stereotype",
+   "term": "stereotype",
+   "aliases": [
+    "stereotypes"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "attitude"
+   ]
+  },
+  {
+   "id": "prejudice",
+   "term": "prejudice",
+   "aliases": [],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "stereotype"
+   ]
+  },
+  {
+   "id": "cognitive-load",
+   "term": "cognitive load",
+   "aliases": [],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "working-memory"
+   ]
+  },
+  {
+   "id": "implicit-attitude",
+   "term": "implicit attitude",
+   "aliases": [
+    "implicit attitudes",
+    "implicit bias"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "attitude"
+   ]
+  },
+  {
+   "id": "just-world",
+   "term": "just-world phenomenon",
+   "aliases": [
+    "just-world hypothesis"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "attitude"
+   ]
+  },
+  {
+   "id": "in-group",
+   "term": "in-group",
+   "aliases": [
+    "ingroup",
+    "in-groups"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": []
+  },
+  {
+   "id": "out-group",
+   "term": "out-group",
+   "aliases": [
+    "outgroup",
+    "out-groups"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "in-group"
+   ]
+  },
+  {
+   "id": "outgroup-homogeneity",
+   "term": "out-group homogeneity",
+   "aliases": [
+    "outgroup homogeneity"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "out-group"
+   ]
+  },
+  {
+   "id": "ingroup-bias",
+   "term": "in-group bias",
+   "aliases": [
+    "ingroup bias"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "in-group"
+   ]
+  },
+  {
+   "id": "ethnocentrism",
+   "term": "ethnocentrism",
+   "aliases": [
+    "ethnocentric"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "in-group"
+   ]
+  },
+  {
+   "id": "belief-perseverance",
+   "term": "belief perseverance",
+   "aliases": [],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "attitude"
+   ]
+  },
+  {
+   "id": "confirmation-bias",
+   "term": "confirmation bias",
+   "aliases": [],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "heuristic"
+   ]
+  },
+  {
+   "id": "cognitive-dissonance",
+   "term": "cognitive dissonance",
+   "aliases": [
+    "dissonance"
+   ],
+   "taughtIn": "attitudes",
+   "dependsOn": [
+    "attitude"
+   ]
+  },
+  {
+   "id": "social-norm",
+   "term": "social norm",
+   "aliases": [
+    "social norms"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "social-role",
+   "term": "social role",
+   "aliases": [
+    "social roles"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "normative-influence",
+   "term": "normative social influence",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "informational-influence",
+   "term": "informational social influence",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "persuasion",
+   "term": "persuasion",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "attitude"
+   ]
+  },
+  {
+   "id": "elm",
+   "term": "elaboration likelihood model",
+   "aliases": [
+    "central route",
+    "peripheral route",
+    "central route to persuasion",
+    "peripheral route to persuasion"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "persuasion"
+   ]
+  },
+  {
+   "id": "halo-effect",
+   "term": "halo effect",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "foot-in-door",
+   "term": "foot-in-the-door technique",
+   "aliases": [
+    "foot-in-the-door"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "persuasion"
+   ]
+  },
+  {
+   "id": "door-in-face",
+   "term": "door-in-the-face technique",
+   "aliases": [
+    "door-in-the-face"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "persuasion"
+   ]
+  },
+  {
+   "id": "conformity",
+   "term": "conformity",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "normative-influence",
+    "informational-influence"
+   ]
+  },
+  {
+   "id": "obedience",
+   "term": "obedience",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "individualism",
+   "term": "individualism",
+   "aliases": [
+    "individualist",
+    "individualistic"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "collectivism",
+   "term": "collectivism",
+   "aliases": [
+    "collectivist",
+    "collectivistic"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "individualism"
+   ]
+  },
+  {
+   "id": "multiculturalism",
+   "term": "multiculturalism",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "collectivism"
+   ]
+  },
+  {
+   "id": "group-polarization",
+   "term": "group polarization",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "groupthink",
+   "term": "groupthink",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "conformity"
+   ]
+  },
+  {
+   "id": "diffusion",
+   "term": "diffusion of responsibility",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "social-loafing",
+   "term": "social loafing",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "deindividuation",
+   "term": "deindividuation",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "social-facilitation",
+   "term": "social facilitation",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm"
+   ]
+  },
+  {
+   "id": "false-consensus",
+   "term": "false consensus effect",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "superordinate",
+   "term": "superordinate goals",
+   "aliases": [
+    "superordinate goal"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "in-group"
+   ]
+  },
+  {
+   "id": "social-trap",
+   "term": "social trap",
+   "aliases": [
+    "social traps"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "io-psych",
+   "term": "industrial-organizational psychology",
+   "aliases": [
+    "I/O psychology"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "burnout",
+   "term": "burnout",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "io-psych"
+   ]
+  },
+  {
+   "id": "altruism",
+   "term": "altruism",
+   "aliases": [
+    "altruistic"
+   ],
+   "taughtIn": "social-situations",
+   "dependsOn": []
+  },
+  {
+   "id": "reciprocity-norm",
+   "term": "reciprocity norm",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm",
+    "altruism"
+   ]
+  },
+  {
+   "id": "social-responsibility",
+   "term": "social responsibility norm",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "social-norm",
+    "altruism"
+   ]
+  },
+  {
+   "id": "bystander",
+   "term": "bystander effect",
+   "aliases": [],
+   "taughtIn": "social-situations",
+   "dependsOn": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": "personality",
+   "term": "personality",
+   "aliases": [
+    "personalities"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": []
+  },
+  {
+   "id": "psychodynamic",
+   "term": "psychodynamic theory",
+   "aliases": [
+    "psychodynamic theories",
+    "psychoanalytic theory"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "personality",
+    "psych-perspective"
+   ]
+  },
+  {
+   "id": "unconscious",
+   "term": "unconscious",
+   "aliases": [
+    "unconscious mind"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "psychodynamic"
+   ]
+  },
+  {
+   "id": "defense-mechanism",
+   "term": "defense mechanism",
+   "aliases": [
+    "defense mechanisms"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "unconscious"
+   ]
+  },
+  {
+   "id": "denial",
+   "term": "denial (defense)",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "displacement",
+   "term": "displacement (defense)",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "projection",
+   "term": "projection (defense)",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "rationalization",
+   "term": "rationalization",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "reaction-formation",
+   "term": "reaction formation",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "regression",
+   "term": "regression (defense)",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "sublimation",
+   "term": "sublimation",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "defense-mechanism"
+   ]
+  },
+  {
+   "id": "projective-test",
+   "term": "projective test",
+   "aliases": [
+    "projective tests",
+    "Rorschach inkblot test",
+    "Thematic Apperception Test"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "unconscious"
+   ]
+  },
+  {
+   "id": "humanistic",
+   "term": "humanistic psychology",
+   "aliases": [
+    "humanistic theory",
+    "humanistic theories"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "personality",
+    "psych-perspective"
+   ]
+  },
+  {
+   "id": "upr",
+   "term": "unconditional positive regard",
+   "aliases": [],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "humanistic"
+   ]
+  },
+  {
+   "id": "self-actualizing",
+   "term": "self-actualizing tendency",
+   "aliases": [
+    "self-actualization"
+   ],
+   "taughtIn": "psychodynamic-humanistic",
+   "dependsOn": [
+    "humanistic"
+   ]
+  },
+  {
+   "id": "social-cognitive-theory",
+   "term": "social-cognitive theory",
+   "aliases": [
+    "social-cognitive perspective"
+   ],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "personality",
+    "social-learning"
+   ]
+  },
+  {
+   "id": "reciprocal-determinism",
+   "term": "reciprocal determinism",
+   "aliases": [],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "social-cognitive-theory"
+   ]
+  },
+  {
+   "id": "self-concept",
+   "term": "self-concept",
+   "aliases": [],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "personality"
+   ]
+  },
+  {
+   "id": "self-efficacy",
+   "term": "self-efficacy",
+   "aliases": [],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "social-cognitive-theory"
+   ]
+  },
+  {
+   "id": "self-esteem",
+   "term": "self-esteem",
+   "aliases": [],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "self-concept"
+   ]
+  },
+  {
+   "id": "trait-theory",
+   "term": "trait theory",
+   "aliases": [
+    "trait theories"
+   ],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "personality"
+   ]
+  },
+  {
+   "id": "big-five",
+   "term": "Big Five personality traits",
+   "aliases": [
+    "Big Five",
+    "five-factor model",
+    "openness",
+    "conscientiousness",
+    "extraversion",
+    "agreeableness",
+    "neuroticism"
+   ],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "trait-theory"
+   ]
+  },
+  {
+   "id": "factor-analysis",
+   "term": "factor analysis",
+   "aliases": [],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "trait-theory",
+    "correlation"
+   ]
+  },
+  {
+   "id": "personality-inventory",
+   "term": "personality inventory",
+   "aliases": [
+    "personality inventories"
+   ],
+   "taughtIn": "social-cognitive-trait",
+   "dependsOn": [
+    "trait-theory"
+   ]
+  },
+  {
+   "id": "motivation",
+   "term": "motivation",
+   "aliases": [
+    "motivations"
+   ],
+   "taughtIn": "motivation",
+   "dependsOn": []
+  },
+  {
+   "id": "instinct-theory",
+   "term": "instinct theory",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation"
+   ]
+  },
+  {
+   "id": "drive-reduction",
+   "term": "drive-reduction theory",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation",
+    "homeostasis"
+   ]
+  },
+  {
+   "id": "arousal-theory",
+   "term": "arousal theory",
+   "aliases": [
+    "optimal arousal"
+   ],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation"
+   ]
+  },
+  {
+   "id": "yerkes-dodson",
+   "term": "Yerkes-Dodson law",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "arousal-theory"
+   ]
+  },
+  {
+   "id": "incentive-theory",
+   "term": "incentive theory",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation"
+   ]
+  },
+  {
+   "id": "self-determination",
+   "term": "self-determination theory",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation"
+   ]
+  },
+  {
+   "id": "intrinsic",
+   "term": "intrinsic motivation",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "self-determination"
+   ]
+  },
+  {
+   "id": "extrinsic",
+   "term": "extrinsic motivation",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "self-determination"
+   ]
+  },
+  {
+   "id": "overjustification",
+   "term": "overjustification effect",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "intrinsic",
+    "extrinsic"
+   ]
+  },
+  {
+   "id": "motivational-conflict",
+   "term": "approach-approach conflict",
+   "aliases": [
+    "approach-avoidance conflict",
+    "avoidance-avoidance conflict",
+    "multiple approach-avoidance conflict"
+   ],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation"
+   ]
+  },
+  {
+   "id": "sensation-seeking",
+   "term": "sensation seeking",
+   "aliases": [
+    "sensation-seeking"
+   ],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "arousal-theory"
+   ]
+  },
+  {
+   "id": "hunger",
+   "term": "hunger",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "ghrelin",
+    "leptin",
+    "hypothalamus"
+   ]
+  },
+  {
+   "id": "external-eating",
+   "term": "external eating cues",
+   "aliases": [],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "hunger"
+   ]
+  },
+  {
+   "id": "belongingness",
+   "term": "need to belong",
+   "aliases": [
+    "belongingness"
+   ],
+   "taughtIn": "motivation",
+   "dependsOn": [
+    "motivation"
+   ]
+  },
+  {
+   "id": "emotion",
+   "term": "emotion",
+   "aliases": [
+    "emotions"
+   ],
+   "taughtIn": "emotion",
+   "dependsOn": []
+  },
+  {
+   "id": "physiological-arousal",
+   "term": "physiological arousal",
+   "aliases": [],
+   "taughtIn": "emotion",
+   "dependsOn": [
+    "emotion",
+    "sympathetic"
+   ]
+  },
+  {
+   "id": "cognitive-appraisal",
+   "term": "cognitive appraisal",
+   "aliases": [],
+   "taughtIn": "emotion",
+   "dependsOn": [
+    "emotion"
+   ]
+  },
+  {
+   "id": "facial-feedback",
+   "term": "facial feedback hypothesis",
+   "aliases": [
+    "facial-feedback hypothesis"
+   ],
+   "taughtIn": "emotion",
+   "dependsOn": [
+    "emotion"
+   ]
+  },
+  {
+   "id": "broaden-and-build",
+   "term": "broaden-and-build theory",
+   "aliases": [],
+   "taughtIn": "emotion",
+   "dependsOn": [
+    "emotion"
+   ]
+  },
+  {
+   "id": "universal-emotions",
+   "term": "universal emotions",
+   "aliases": [
+    "basic emotions"
+   ],
+   "taughtIn": "emotion",
+   "dependsOn": [
+    "emotion"
+   ]
+  },
+  {
+   "id": "display-rules",
+   "term": "display rules",
+   "aliases": [],
+   "taughtIn": "emotion",
+   "dependsOn": [
+    "universal-emotions"
+   ]
+  },
+  {
+   "id": "health-psychology",
+   "term": "health psychology",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": []
+  },
+  {
+   "id": "stress",
+   "term": "stress",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "health-psychology"
+   ]
+  },
+  {
+   "id": "stressor",
+   "term": "stressor",
+   "aliases": [
+    "stressors"
+   ],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stress"
+   ]
+  },
+  {
+   "id": "eustress",
+   "term": "eustress",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stress"
+   ]
+  },
+  {
+   "id": "distress-stress",
+   "term": "distress (stress)",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stress"
+   ]
+  },
+  {
+   "id": "daily-hassles",
+   "term": "daily hassles",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stressor"
+   ]
+  },
+  {
+   "id": "gas",
+   "term": "general adaptation syndrome",
+   "aliases": [
+    "alarm reaction",
+    "resistance stage",
+    "exhaustion stage"
+   ],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stress"
+   ]
+  },
+  {
+   "id": "fff",
+   "term": "fight-flight-freeze response",
+   "aliases": [
+    "fight-flight-freeze"
+   ],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "sympathetic",
+    "stress"
+   ]
+  },
+  {
+   "id": "tend-befriend",
+   "term": "tend-and-befriend response",
+   "aliases": [
+    "tend and befriend"
+   ],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stress",
+    "oxytocin"
+   ]
+  },
+  {
+   "id": "coping",
+   "term": "coping",
+   "aliases": [
+    "coping strategies"
+   ],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "stress"
+   ]
+  },
+  {
+   "id": "problem-focused",
+   "term": "problem-focused coping",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "coping"
+   ]
+  },
+  {
+   "id": "emotion-focused",
+   "term": "emotion-focused coping",
+   "aliases": [],
+   "taughtIn": "health-psychology",
+   "dependsOn": [
+    "coping"
+   ]
+  },
+  {
+   "id": "positive-psychology",
+   "term": "positive psychology",
+   "aliases": [],
+   "taughtIn": "positive-psychology",
+   "dependsOn": []
+  },
+  {
+   "id": "subjective-well-being",
+   "term": "subjective well-being",
+   "aliases": [
+    "well-being"
+   ],
+   "taughtIn": "positive-psychology",
+   "dependsOn": [
+    "positive-psychology"
+   ]
+  },
+  {
+   "id": "resilience",
+   "term": "resilience",
+   "aliases": [
+    "resilient"
+   ],
+   "taughtIn": "positive-psychology",
+   "dependsOn": [
+    "positive-psychology"
+   ]
+  },
+  {
+   "id": "gratitude",
+   "term": "gratitude",
+   "aliases": [],
+   "taughtIn": "positive-psychology",
+   "dependsOn": [
+    "positive-psychology"
+   ]
+  },
+  {
+   "id": "signature-strengths",
+   "term": "signature strengths",
+   "aliases": [],
+   "taughtIn": "positive-psychology",
+   "dependsOn": [
+    "positive-psychology"
+   ]
+  },
+  {
+   "id": "virtues",
+   "term": "character virtues",
+   "aliases": [
+    "six virtues"
+   ],
+   "taughtIn": "positive-psychology",
+   "dependsOn": [
+    "signature-strengths"
+   ]
+  },
+  {
+   "id": "ptg",
+   "term": "posttraumatic growth",
+   "aliases": [],
+   "taughtIn": "positive-psychology",
+   "dependsOn": [
+    "resilience"
+   ]
+  },
+  {
+   "id": "psych-disorder",
+   "term": "psychological disorder",
+   "aliases": [
+    "psychological disorders",
+    "mental disorder",
+    "mental disorders"
+   ],
+   "taughtIn": "explaining-disorders",
+   "dependsOn": []
+  },
+  {
+   "id": "dsm",
+   "term": "Diagnostic and Statistical Manual of Mental Disorders",
+   "aliases": [
+    "DSM",
+    "DSM-5-TR"
+   ],
+   "taughtIn": "explaining-disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "icd",
+   "term": "International Classification of Diseases",
+   "aliases": [
+    "ICD"
+   ],
+   "taughtIn": "explaining-disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "eclectic",
+   "term": "eclectic approach",
+   "aliases": [],
+   "taughtIn": "explaining-disorders",
+   "dependsOn": [
+    "psych-perspective",
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "biopsychosocial",
+   "term": "biopsychosocial model",
+   "aliases": [
+    "biopsychosocial approach"
+   ],
+   "taughtIn": "explaining-disorders",
+   "dependsOn": [
+    "eclectic"
+   ]
+  },
+  {
+   "id": "diathesis-stress",
+   "term": "diathesis-stress model",
+   "aliases": [],
+   "taughtIn": "explaining-disorders",
+   "dependsOn": [
+    "biopsychosocial",
+    "stress"
+   ]
+  },
+  {
+   "id": "neurodevelopmental",
+   "term": "neurodevelopmental disorders",
+   "aliases": [
+    "neurodevelopmental disorder"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "adhd",
+   "term": "attention-deficit/hyperactivity disorder",
+   "aliases": [
+    "ADHD"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "neurodevelopmental"
+   ]
+  },
+  {
+   "id": "asd",
+   "term": "autism spectrum disorder",
+   "aliases": [
+    "ASD"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "neurodevelopmental"
+   ]
+  },
+  {
+   "id": "schizophrenia",
+   "term": "schizophrenia",
+   "aliases": [
+    "schizophrenia spectrum disorders"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "delusion",
+   "term": "delusion",
+   "aliases": [
+    "delusions"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "schizophrenia"
+   ]
+  },
+  {
+   "id": "hallucination",
+   "term": "hallucination",
+   "aliases": [
+    "hallucinations"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "schizophrenia"
+   ]
+  },
+  {
+   "id": "positive-symptoms",
+   "term": "positive symptoms",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "delusion",
+    "hallucination"
+   ]
+  },
+  {
+   "id": "negative-symptoms",
+   "term": "negative symptoms",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "schizophrenia"
+   ]
+  },
+  {
+   "id": "dopamine-hypothesis",
+   "term": "dopamine hypothesis",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "schizophrenia",
+    "dopamine"
+   ]
+  },
+  {
+   "id": "mdd",
+   "term": "major depressive disorder",
+   "aliases": [
+    "depression"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "pdd",
+   "term": "persistent depressive disorder",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "mdd"
+   ]
+  },
+  {
+   "id": "bipolar",
+   "term": "bipolar disorder",
+   "aliases": [
+    "bipolar I disorder",
+    "bipolar II disorder",
+    "mania",
+    "manic episode"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "mdd"
+   ]
+  },
+  {
+   "id": "anxiety-disorder",
+   "term": "anxiety disorder",
+   "aliases": [
+    "anxiety disorders",
+    "anxiety"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "specific-phobia",
+   "term": "specific phobia",
+   "aliases": [
+    "phobia",
+    "phobias"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anxiety-disorder"
+   ]
+  },
+  {
+   "id": "agoraphobia",
+   "term": "agoraphobia",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "specific-phobia"
+   ]
+  },
+  {
+   "id": "panic-disorder",
+   "term": "panic disorder",
+   "aliases": [
+    "panic attack",
+    "panic attacks"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anxiety-disorder"
+   ]
+  },
+  {
+   "id": "social-anxiety",
+   "term": "social anxiety disorder",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anxiety-disorder"
+   ]
+  },
+  {
+   "id": "gad",
+   "term": "generalized anxiety disorder",
+   "aliases": [
+    "GAD"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anxiety-disorder"
+   ]
+  },
+  {
+   "id": "culture-bound",
+   "term": "culture-bound syndrome",
+   "aliases": [
+    "ataque de nervios",
+    "taijin kyofusho"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anxiety-disorder"
+   ]
+  },
+  {
+   "id": "ocd",
+   "term": "obsessive-compulsive disorder",
+   "aliases": [
+    "OCD",
+    "obsessions",
+    "compulsions"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anxiety-disorder"
+   ]
+  },
+  {
+   "id": "hoarding",
+   "term": "hoarding disorder",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "ocd"
+   ]
+  },
+  {
+   "id": "dissociative",
+   "term": "dissociative disorders",
+   "aliases": [
+    "dissociative amnesia",
+    "dissociative fugue"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "amnesia",
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "did",
+   "term": "dissociative identity disorder",
+   "aliases": [
+    "DID"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "dissociative"
+   ]
+  },
+  {
+   "id": "ptsd",
+   "term": "posttraumatic stress disorder",
+   "aliases": [
+    "PTSD"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder",
+    "stress"
+   ]
+  },
+  {
+   "id": "anorexia",
+   "term": "anorexia nervosa",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "bulimia",
+   "term": "bulimia nervosa",
+   "aliases": [],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "anorexia"
+   ]
+  },
+  {
+   "id": "personality-disorder",
+   "term": "personality disorders",
+   "aliases": [
+    "personality disorder"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "psych-disorder",
+    "personality"
+   ]
+  },
+  {
+   "id": "cluster-a",
+   "term": "Cluster A personality disorders",
+   "aliases": [
+    "paranoid personality disorder",
+    "schizoid personality disorder",
+    "schizotypal personality disorder"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "personality-disorder"
+   ]
+  },
+  {
+   "id": "cluster-b",
+   "term": "Cluster B personality disorders",
+   "aliases": [
+    "antisocial personality disorder",
+    "histrionic personality disorder",
+    "narcissistic personality disorder",
+    "borderline personality disorder"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "personality-disorder"
+   ]
+  },
+  {
+   "id": "cluster-c",
+   "term": "Cluster C personality disorders",
+   "aliases": [
+    "avoidant personality disorder",
+    "dependent personality disorder",
+    "obsessive-compulsive personality disorder"
+   ],
+   "taughtIn": "disorders",
+   "dependsOn": [
+    "personality-disorder"
+   ]
+  },
+  {
+   "id": "evidence-based",
+   "term": "evidence-based practice",
+   "aliases": [
+    "evidence-based interventions"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psych-disorder",
+    "meta-analysis"
+   ]
+  },
+  {
+   "id": "therapeutic-alliance",
+   "term": "therapeutic alliance",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "cultural-humility",
+   "term": "cultural humility",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "therapeutic-alliance"
+   ]
+  },
+  {
+   "id": "deinstitutionalization",
+   "term": "deinstitutionalization",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "free-association",
+   "term": "free association",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psychodynamic"
+   ]
+  },
+  {
+   "id": "dream-interpretation",
+   "term": "dream interpretation",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psychodynamic",
+    "dream"
+   ]
+  },
+  {
+   "id": "cognitive-therapy",
+   "term": "cognitive therapy",
+   "aliases": [
+    "cognitive restructuring"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "cognition"
+   ]
+  },
+  {
+   "id": "cognitive-triad",
+   "term": "cognitive triad",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "cognitive-therapy",
+    "mdd"
+   ]
+  },
+  {
+   "id": "cbt",
+   "term": "cognitive-behavioral therapy",
+   "aliases": [
+    "CBT"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "cognitive-therapy",
+    "behaviorism"
+   ]
+  },
+  {
+   "id": "dbt",
+   "term": "dialectical behavior therapy",
+   "aliases": [
+    "DBT"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "cbt"
+   ]
+  },
+  {
+   "id": "rebt",
+   "term": "rational emotive behavior therapy",
+   "aliases": [
+    "REBT"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "cognitive-therapy"
+   ]
+  },
+  {
+   "id": "behavior-therapy",
+   "term": "behavior therapy",
+   "aliases": [
+    "applied behavior analysis"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "behaviorism"
+   ]
+  },
+  {
+   "id": "systematic-desensitization",
+   "term": "systematic desensitization",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "behavior-therapy",
+    "counterconditioning"
+   ]
+  },
+  {
+   "id": "exposure-therapy",
+   "term": "exposure therapy",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "behavior-therapy"
+   ]
+  },
+  {
+   "id": "aversion-therapy",
+   "term": "aversion therapy",
+   "aliases": [
+    "aversive conditioning"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "behavior-therapy",
+    "classical-conditioning"
+   ]
+  },
+  {
+   "id": "token-economy",
+   "term": "token economy",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "behavior-therapy",
+    "secondary-reinforcer"
+   ]
+  },
+  {
+   "id": "biofeedback",
+   "term": "biofeedback",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "behavior-therapy"
+   ]
+  },
+  {
+   "id": "person-centered",
+   "term": "person-centered therapy",
+   "aliases": [
+    "client-centered therapy"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "humanistic",
+    "upr"
+   ]
+  },
+  {
+   "id": "active-listening",
+   "term": "active listening",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "person-centered"
+   ]
+  },
+  {
+   "id": "group-therapy",
+   "term": "group therapy",
+   "aliases": [
+    "family therapy"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psych-disorder"
+   ]
+  },
+  {
+   "id": "hypnosis",
+   "term": "hypnosis",
+   "aliases": [
+    "hypnotized"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "consciousness"
+   ]
+  },
+  {
+   "id": "antidepressant",
+   "term": "antidepressant",
+   "aliases": [
+    "antidepressants",
+    "SSRI",
+    "SSRIs"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "reuptake-inhibitor",
+    "mdd"
+   ]
+  },
+  {
+   "id": "anti-anxiety",
+   "term": "anti-anxiety medication",
+   "aliases": [
+    "anti-anxiety medications"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "anxiety-disorder",
+    "gaba"
+   ]
+  },
+  {
+   "id": "lithium",
+   "term": "lithium",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "bipolar"
+   ]
+  },
+  {
+   "id": "antipsychotic",
+   "term": "antipsychotic",
+   "aliases": [
+    "antipsychotics",
+    "antipsychotic medication"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "schizophrenia",
+    "antagonist"
+   ]
+  },
+  {
+   "id": "tardive-dyskinesia",
+   "term": "tardive dyskinesia",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "antipsychotic"
+   ]
+  },
+  {
+   "id": "psychosurgery",
+   "term": "psychosurgery",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "lesion"
+   ]
+  },
+  {
+   "id": "lobotomy",
+   "term": "lobotomy",
+   "aliases": [],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "psychosurgery",
+    "prefrontal"
+   ]
+  },
+  {
+   "id": "tms",
+   "term": "transcranial magnetic stimulation",
+   "aliases": [
+    "TMS"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "mdd"
+   ]
+  },
+  {
+   "id": "ect",
+   "term": "electroconvulsive therapy",
+   "aliases": [
+    "ECT"
+   ],
+   "taughtIn": "treatment",
+   "dependsOn": [
+    "mdd"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

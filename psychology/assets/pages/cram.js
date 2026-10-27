@@ -24,7 +24,7 @@
 (function(){
   var W = typeof window !== 'undefined' ? window : this;
   var DAY = 86400000;
-  var DEFAULT_EXAM = '2027-05-13';
+  var DEFAULT_EXAM = '2027-05-14';
 
   /* ------------------------------------------------ the generator */
 
@@ -185,7 +185,7 @@
   function unitLabel(id){ var u = UNIT[id]; return u ? 'Unit ' + u.n + ': ' + u.title : id; }
   function unitShort(id){ var u = UNIT[id]; return u ? 'Unit ' + u.n : id; }
   function allowed(){ return !Core || !Core.allowed || Core.allowed('cram'); }
-  function mins(n){ return Math.round(n * 90 / 80) + ' min'; }   // the exam's pace: 80 questions in 90 min
+  function mins(n){ return Math.round(n * 90 / 75) + ' min'; }   // the exam's pace: 75 questions in 90 min
 
   var state = load();
   if(state.weeks !== 2 && state.weeks !== 3) state.weeks = 3;
@@ -234,7 +234,7 @@
       li.push('<li>' + justifyLink(d) + ': write, then check against the rubric.</li>');
     } else if(d.kind === 'exam'){
       // The two fixed practice exams (assets/exams/forms.json): exam day 1 takes form 1, day 2 form 2.
-      li.push('<li>' + link('exams.html?mode=full&form=' + d.exam, 'Practice exam ' + d.exam + ': 80 multiple-choice questions in 90 min, then 3 free-response questions in 70 min') + '</li>');
+      li.push('<li>' + link('exams.html?mode=full&form=' + d.exam, 'Practice exam ' + d.exam + ': 75 multiple-choice questions in 90 min, then the AAQ and the EBQ in 70 min') + '</li>');
       li.push('<li>' + (d.exam === 1 ? 'Take it as a baseline, under exam conditions, even if you have not reviewed every unit yet.' : 'Same time of day as the real exam if you can. Then score Section II with the rubrics.') + '</li>');
     } else if(d.kind === 'review'){
       li.push('<li>Go through every question you missed in practice exam ' + d.exam + ', with its explanation: ' + link('review.html', 'your review queue') + ' and ' + link('practice.html?mode=missed', 'practice your misses') + '.</li>');
@@ -244,7 +244,7 @@
       li.push('<li>No new questions today. If you want something, ten minutes of ' + link('flashcards.html', 'flashcards') + '.</li>');
     } else if(d.kind === 'eve'){
       li.push('<li>Skim two unit sheets: ' + d.units.map(sheet).join(' and ') + '.</li>');
-      li.push('<li>A few ' + link('flashcards.html', 'flashcards') + ' and ' + link('formula-sheet.html', 'the formulas to know') + '. No timed sets. Sleep.</li>');
+      li.push('<li>A few ' + link('flashcards.html', 'flashcards') + ' and ' + link('formula-sheet.html', 'the statistics to know') + '. No timed sets. Sleep.</li>');
     }
     return '<ul class="psy-cr-todo">' + li.join('') + '</ul>';
   }
@@ -281,9 +281,9 @@
           '<label class="psy-cr-check psy-cr-noprint"><input type="checkbox" data-day="' + d.date + '"' + (done ? ' checked' : '') + '> Done<span class="sr-only">: day ' + d.n + '</span></label></div>' +
           dayBody(d, p) + '</li>';
       }).join('') + '</ol>' +
-      '<p class="psy-cr-examday"><b>' + esc(nice(p.exam, true)) + ': exam day.</b> Eat, charge the device you test on, and bring a scientific or four-function calculator (no graphing calculator) and your ID. There is no formula sheet: review the formulas page the night before.</p>' +
+      '<p class="psy-cr-examday"><b>' + esc(nice(p.exam, true)) + ': exam day.</b> Eat, charge the device you test on, and bring your ID. There is no calculator and no formula sheet: review the statistics page the night before.</p>' +
       '<section class="psy-cr-sets psy-cr-noprint" aria-labelledby="psy-cr-sets-h"><h2 id="psy-cr-sets-h">Timed mixed sets</h2>' +
-        '<p>Questions from every published unit, in proportion to each unit’s exam weight, with stimulus sets kept whole. Timed at the real exam’s pace: 80 questions in 90 minutes, about 1 minute 8 seconds a question, with a scientific calculator allowed. No feedback until the end, then every question with its explanation.</p>' +
+        '<p>Questions from every published unit, in proportion to each unit’s exam weight, with stimulus sets kept whole. Timed at the real exam’s pace: 75 questions in 90 minutes, 1 minute 12 seconds a question, with no calculator. No feedback until the end, then every question with its explanation.</p>' +
         (ok ? '<div class="psy-cr-setbtns">' + [10, 20, 30].map(function(n){ return '<a class="btn-press" href="' + esc(BASE + 'exams.html?mode=mixed&n=' + n) + '">' + n + ' questions <span class="psy-cr-min">' + mins(n) + '</span></a>'; }).join('') + '</div>'
           : (Core && Core.gate ? Core.gate('cram', 'cram-sets') : '')) +
       '</section>';

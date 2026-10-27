@@ -11,39 +11,45 @@
      checkForms(forms, ctx)        problems with the two fixed exams
      checkJustify(prompts, ctx)    problems with the trainer's prompts
      checkNumbers(items, prompts)  every number in an exam-only item or a
-                                   prompt, recomputed here with ApPsychCalc
+                                   prompt, recomputed here with ApPsychStats
                                    (EXAM_NUMBERS, JUSTIFY_NUMBERS: Phase 3) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { Calc } from './appsych-mathlib.mjs';
+import { Stats } from './appsych-mathlib.mjs';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
-export const MCQ_TOTAL = 80;
-// Section I as the May 2027 exam: one part, 80 four-option questions in 90
-// minutes, individual items plus sets with a stimulus: 3-5 quantitative data
-// sets, 3-5 visual or model sets, 2 text sets (framework.md section 4).
-export const MCQ_PARTS = [{ key: '', n: 80, minutes: 90 }];
-export const EXAM_SETS = { quantitative: [3, 5], visual: [3, 5], text: [2, 2] };
-// Section II: 3 questions in 70 minutes, 10 points each, in this order.
-export const FRQ_PARTS = [{ key: '', n: 3, minutes: 70 }];
-export const FRQ_ORDER = ['design', 'data', 'calc'];
-export const FRQ_POINTS = 10;
-export const FRQ_TOTAL = 3;
+export const MCQ_TOTAL = 75;
+// Section I as the May 2027 exam: one part, 75 four-option questions in 90
+// minutes, 66.7% of the score, no calculator; standalone items plus sets
+// sharing one study description or data display (framework.md section 5).
+// The official set counts are not published (third party: "sets" only), so
+// the forms hold 2 to 6 study sets, 2 to 6 data sets and 0 to 4 figure sets
+// until a person confirms them (docs/appsych-needs-author.md, mcq-sets).
+export const MCQ_PARTS = [{ key: '', n: 75, minutes: 90 }];
+export const EXAM_SETS = { study: [2, 6], data: [2, 6], visual: [0, 4] };
+// Section II: 2 questions in 70 minutes, 7 points each, 33.3% of the score,
+// in this order: the Article Analysis Question, then the Evidence-Based Question.
+export const FRQ_PARTS = [{ key: '', n: 2, minutes: 70 }];
+export const FRQ_ORDER = ['aaq', 'ebq'];
+export const FRQ_POINTS = 7;
+export const FRQ_TOTAL = 2;
 // The trainer's free prompts: the first few in course order (spec section 6).
 export const FREE_JUSTIFY = 3;
-// "Make it specific" (spec section 6): the reader-report misses the trainer
-// is built around (docs/appsych-research/framework.md section 6).
+// "Make it specific" (spec section 7): the reader-report misses the trainer
+// is built around (docs/appsych-research/framework.md section 7), one per
+// part of the AAQ and the EBQ.
 export const JUSTIFY_SKILLS = {
-  hypothesis: 'A testable, directional hypothesis: if [change], then [variable] will increase or decrease, because ...',
-  variables: 'The independent and dependent variable the scenario actually measures',
-  control: 'A control group and what it is for, and a variable held constant',
-  chain: 'A complete cause-and-effect chain, every link named',
-  trend: 'A data trend described with numbers and explained',
-  solution: 'A solution fitted to the scenario: its scale, its constraints, and how it works',
-  policy: 'A policy (a law or rule) when a policy is asked, not a technology',
-  tradeoff: 'An advantage and a disadvantage, each with its reason',
+  method: 'The one research method the study used, named exactly (an experiment, a correlational study ...)',
+  opdef: 'The operational definition: how this study measured the variable, not what the concept means',
+  statistic: 'What a reported statistic or difference shows about these groups, with its direction',
+  ethics: 'An ethical safeguard the summary describes, and how the researchers applied it',
+  generalize: 'Whether the results generalize to a named population, from the participants\' characteristics',
+  argue: 'A specific result used to support or refute the hypothesis, explained',
+  claim: 'A defensible claim that answers the question, not a topic sentence',
+  evidence: 'A specific, accurate result from one source, cited',
+  reasoning: 'How the evidence supports the claim, with a psychology concept applied (not a research word)',
 };
 
 export function loadExams(dataDir) {
@@ -67,19 +73,19 @@ export function loadJustify(dataDir, map) {
 }
 
 /* A unit's (or a practice's) share of Section I, from its exam weight range
-   in percent: floor of the low end to ceiling of the high end, so 6-8% of
-   80 is 4 to 7 and 15-20% is 12 to 16. */
+   in percent: floor of the low end to ceiling of the high end, so 15-25%
+   of 75 is 11 to 19. */
 export function unitRange(weight, n = MCQ_TOTAL) {
   return [Math.floor(weight[0] / 100 * n + 1e-9), Math.ceil(weight[1] / 100 * n - 1e-9)];
 }
 
 /* ctx: { map, bank: Map(id -> item), examItems: Map(id -> item), stimuli(id) -> stimulus, frqs: { id: frq }, orderOf(id) }.
-   A form passes when Section I has exactly 80 four-option single-answer
+   A form passes when Section I has exactly 75 four-option single-answer
    questions; each block is a whole stimulus set in authored order (or one
-   standalone question); its sets are 3-5 quantitative, 3-5 visual and 2
-   text (docs/appsych-spec.md decision 7); every unit sits inside its weight
-   range of 80 and every practice inside its; and Section II is 3 FRQs in
-   the order design, data, calc, 10 points each, that exist. No question or
+   standalone question); its sets fall in EXAM_SETS (study, data, figure;
+   docs/appsych-spec.md decision 8); every unit sits inside its weight
+   range of 75 and every practice inside its; and Section II is 2 FRQs in
+   the order AAQ, EBQ, 7 points each, that exist. No question or
    FRQ may be in both forms, and an exam-only item belongs to its own form. */
 export function checkForms(forms, ctx) {
   const errs = [];
@@ -115,7 +121,7 @@ export function checkForms(forms, ctx) {
       if (qs.length === 1 && stim && !examItems.has(qs[0].id)) errs.push(`${w}: ${qs[0].id} needs its stimulus, so it goes in a block with the rest of its set`);
       if (qs.length > 1) {
         if (!stim || qs.some(q => q.stimulus !== stim)) errs.push(`${w}: block ${block.join(', ')} mixes stimuli; a block is one set or one question`);
-        if (qs.length < 2 || qs.length > 5) errs.push(`${w}: set ${stim} has ${qs.length} questions in the exam (2 to 5; the exam's sets are 3 or 4)`);
+        if (qs.length < 2 || qs.length > 5) errs.push(`${w}: set ${stim} has ${qs.length} questions in the exam (2 to 5)`);
         const order = qs.map(q => ctx.orderOf(q.id));
         if (order.some((x, i) => i && x <= order[i - 1])) errs.push(`${w}: set ${stim} is not in authored order`);
       }
@@ -170,7 +176,7 @@ export function checkJustify(prompts, ctx) {
     if (!t) errs.push(`${w}: unknown topic "${p.topic}"`);
     else if (t.chapter !== p.unit) errs.push(`${w}: topic ${p.topic} is in ${t.chapter}, not ${p.unit}`);
     if (p.file && p.file !== `${p.unit}.json`) errs.push(`${w}: lives in ${p.file}; a prompt goes in its unit's file`);
-    if (!/^[1-7]\.[A-F]$/.test(p.practice || '')) errs.push(`${w}: practice must be a skill id like "4.A"`);
+    if (!/^[1-4]\.[A-D]$/.test(p.practice || '')) errs.push(`${w}: practice must be a skill id like "2.B"`);
     if (!JUSTIFY_SKILLS[p.skill]) errs.push(`${w}: skill must be one of ${Object.keys(JUSTIFY_SKILLS).join(', ')}`);
     if (!p.title || p.title.length < 10) errs.push(`${w}: title missing`);
     if (strip(p.prompt).length < 30 || !/<b>[A-Z][a-z]+<\/b>/.test(p.prompt || '')) errs.push(`${w}: prompt needs a bold task verb (<b>Explain</b>, <b>Justify</b> ...)`);
@@ -183,12 +189,13 @@ export function checkJustify(prompts, ctx) {
     const text = [p.title, p.context, p.prompt, ...(p.checklist || []), p.earns?.answer, p.earns?.why, p.misses?.answer, p.misses?.why,
       ...Object.values(p.specific?.slots || {}).flatMap(sl => [...(sl.options || []), ...Object.values(sl.why || {})])].join('\n');
     if (ctx.trademarkProblems) for (const x of ctx.trademarkProblems(text)) errs.push(`${w}: trademark: ${x}`);
-    // The reader reports' top misses (spec section 7 rule 4): a hypothesis
-    // that earns the point is a statement with a direction; an answer that
-    // earns a solution point says how it works.
+    // The reader reports' top misses (framework.md section 7): a claim is a
+    // statement, not a question; evidence names its source; reasoning links
+    // the evidence to the claim.
     const earn = strip(p.earns?.answer || '');
-    if (p.skill === 'hypothesis' && (/\?/.test(earn) || !/\b(increase|decrease|higher|lower|more|less|fewer|greater)/i.test(earn))) errs.push(`${w}: a hypothesis that earns the point is a directional statement, not a question`);
-    if (p.skill === 'solution' && !/\b(because|by |which|so that|reduc|prevent|absorb|trap|filter|remov)/i.test(earn)) errs.push(`${w}: a solution that earns the point says how it works`);
+    if (p.skill === 'claim' && /\?/.test(earn)) errs.push(`${w}: a claim that earns the point is a statement, not a question`);
+    if (p.skill === 'evidence' && !/\bSource\s*[1-3]\b/.test(earn)) errs.push(`${w}: evidence that earns the point cites its source ("Source 2")`);
+    if (p.skill === 'reasoning' && !/\b(because|this shows|which|so|suggests|supports|explains)\b/i.test(earn)) errs.push(`${w}: reasoning that earns the point links the evidence to the claim`);
     // The builder (spec section 6, "slot builders where the answer has
     // components"): every slot has 2 to 4 options, one correct, a label, and
     // a why for each wrong option naming the slip.
@@ -211,64 +218,14 @@ export function checkJustify(prompts, ctx) {
   return errs;
 }
 
-/* Every number in an exam-only item or a prompt, recomputed with ApPsychCalc
+/* Every number in an exam-only item or a prompt, recomputed with ApPsychStats
    (the same code the graders use): the value, and where it must appear (an
    item's keyed option, or a prompt's text). Each entry is { id, key, starts?,
    also?, check? } for an item (also: distractor values recomputed from the
    slip they name, each one an option) and { id, has: [...], check? } for a
-   prompt. Every number comes from ApPsychCalc (scripts/lib/appsych-mathlib.mjs,
-   Calc), the same code the graders use. */
-const C = (fn, ...args) => Calc.evaluate({ fn, args });
-// Thousands commas, as the options print numbers.
-const nf = (x, d = 0) => Number(x.toFixed(d)).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
-const r12 = x => +x.toPrecision(12);
-// Form 1, set exam-1-s1: GPP 24,000, respiration 9,000, 10% per level.
-const g1 = { gpp: 24000, r: 9000 }, npp1 = C('npp', g1.gpp, g1.r);
-// Form 1, set exam-1-s2: Country P, CBR 28, CDR 8 in 2025; 40 million doubles to 80 million.
-const ni1 = C('naturalIncrease', 28, 8);
-// Form 1, set exam-1-s3: 400 tubes, 32 W to 15 W, 2,000 h, $0.12 and 0.4 kg per kWh.
-const tubes = 400, hrs = 2000, kwhSaved = C('div', C('mul', tubes, C('sub', 32, 15), hrs), 1000), kwhLed = C('div', C('mul', tubes, 15, hrs), 1000), kwhOld = C('div', C('mul', tubes, 32, hrs), 1000);
-// Form 2, set exam-2-s1: 1,200,000 to 1,500,000; 1.4% per year from 2025.
-// Form 2, set exam-2-s2: 40 ha, 6,000 m3/ha, drip 40% less, $0.25 per m3.
-const dripHa = C('mul', 6000, C('sub', 1, 0.40)), savedHa = C('sub', 6000, dripHa), savedFarm = C('mul', savedHa, 40);
-// Form 2, set exam-2-s3: sea level 0, 32, 66, 103 mm in 1993, 2003, 2013, 2023.
-const sea = [0, 32, 66, 103];
-export const EXAM_NUMBERS = [
-  { id: 'psy-exam-1-01', key: `${nf(npp1)} kcal/m²/yr`, also: [`${nf(C('gpp', g1.gpp, g1.r))} kcal/m²/yr`, `${nf(C('tenPercent', g1.gpp, 1))} kcal/m²/yr`, `${nf(g1.r)} kcal/m²/yr`] },
-  { id: 'psy-exam-1-02', key: `${nf(C('tenPercent', npp1, 2))} kcal/m²/yr`, also: [`${nf(C('tenPercent', npp1, 1))} kcal/m²/yr`, `${nf(C('tenPercent', npp1, 3))} kcal/m²/yr`, `${nf(C('tenPercent', g1.gpp, 2))} kcal/m²/yr`] },
-  { id: 'psy-exam-1-04', key: `${ni1.toFixed(1)}%`, also: [`${nf(28 - 8)}%`, `${((28 - 8) / 100).toFixed(1)}%`, `${C('naturalIncrease', 28, -8).toFixed(1)}%`] },
-  { id: 'psy-exam-1-05', key: `${C('doublingYear', 2025, ni1)}`, check: () => C('mul', 40, 2) === 80,
-    also: [`${Math.round(C('doublingYear', 2025, 20))}`, `${Math.round(C('doublingYear', 2025, 3.6))}`, `${2025 + 70}`] },
-  { id: 'psy-exam-1-11', key: `${nf(kwhSaved)} kWh`, also: [`${nf(kwhSaved * 1000)} kWh`, `${nf(kwhLed)} kWh`, `${nf(kwhSaved / tubes)} kWh`] },
-  { id: 'psy-exam-1-12', key: `\\$${nf(C('cost', kwhSaved, 0.12))}`, also: [`\\$${nf(C('div', kwhSaved, 0.12))}`, `\\$${nf(C('cost', kwhOld, 0.12))}`, `\\$${nf(C('cost', kwhLed, 0.12))}`] },
-  { id: 'psy-exam-1-13', key: `${nf(C('emissions', kwhSaved, 0.4))} kg`, also: [`${nf(C('div', kwhSaved, 0.4))} kg`, `${nf(C('emissions', kwhLed, 0.4))} kg`, `${nf(C('emissions', kwhSaved, 0.4) / 1000, 2)} kg`] },
-  { id: 'psy-exam-1-18', key: `Pesticide X is ${C('magnification', 500, 50)} times as toxic as pesticide Y`, also: [`Pesticide Y is ${C('magnification', 500, 50)} times as toxic as pesticide X`, `Pesticide X is ${C('sub', 500, 50)} times as toxic as pesticide Y`] },
-  { id: 'psy-exam-1-21', key: `About ${Math.round(C('percentChange', 316, 420))}%`, also: [`About ${Math.round(C('percentChange', 316, 420) * 316 / 420)}%`, `About ${C('sub', 420, 316)}%`, `About ${(420 / 316).toFixed(1)}%`] },
-  { id: 'psy-exam-2-05', key: `${C('percentChange', 1200000, 1500000)}%`, also: [`${C('fractionOf', 300000, 1500000)}%`, `${C('percentChange', 1200000, 1500000) / 100}%`, `${C('fractionOf', 1500000, 1200000)}%`] },
-  { id: 'psy-exam-2-06', key: `${C('doublingYear', 2025, 1.4)}`, check: () => C('mul', 1500000, 2) === 3000000,
-    also: [`${C('doublingYear', 2025, 14)}`, `${C('doublingYear', 2000, 1.4)}`, `${2025 + 70}`] },
-  { id: 'psy-exam-2-07', key: `It would double, to about ${C('ruleOf70', 0.7)} years`, check: () => C('ruleOf70', 0.7) === 2 * C('ruleOf70', 1.4),
-    also: [`It would halve, to about ${C('ruleOf70', 1.4) / 2} years`, `It would stay at about ${C('ruleOf70', 1.4)} years, since the population is the same`] },
-  { id: 'psy-exam-2-12', key: `${nf(dripHa)} m³`, also: [`${nf(C('percentOf', 40, 6000))} m³`, `${nf(6000 - 40)} m³`, `${nf(C('mul', 6000, 1.40))} m³`] },
-  { id: 'psy-exam-2-13', key: `${nf(savedFarm)} m³`, also: [`${nf(C('mul', dripHa, 40))} m³`, `${nf(C('mul', 6000, 40))} m³`, `${nf(savedHa)} m³`] },
-  { id: 'psy-exam-2-14', key: `\\$${nf(C('cost', savedFarm, 0.25))}`, also: [`\\$${nf(C('div', savedFarm, 0.25))}`, `\\$${nf(C('cost', C('mul', dripHa, 40), 0.25))}`, `\\$${nf(C('cost', C('mul', 6000, 40), 0.25))}`] },
-  { id: 'psy-exam-2-15', key: `About ${Math.round(C('chainEfficiency', 35, 90, 90))}%`, check: () => Math.abs(r12(0.35 * 0.9 * 0.9) - 0.2835) < 1e-12,
-    also: [`About ${Math.round((35 + 90 + 90) / 3)}%`, `About ${35 - 10 - 10}%`, `About 35%`] },
-  { id: 'psy-exam-2-19', key: `${C('biomagnify', 0.04, 10, 3)} ppm`, also: [`${C('biomagnify', 0.04, 10, 2)} ppm`, `${C('biomagnify', 0.04, 10, 1)} ppm`, `${r12(0.04 * 10 * 3)} ppm`] },
-  { id: 'psy-exam-2-20', key: `About ${C('div', sea[3] - sea[0], 2023 - 1993).toFixed(1)} mm per year`, also: [`About ${Math.round(C('div', sea[3] - sea[0], 3))} mm per year`, `About ${C('div', sea[3] - sea[2], 10).toFixed(1)} mm per year`, `About ${C('div', 30, 103).toFixed(2)} mm per year`] },
-  { id: 'psy-exam-2-21', key: 'Sea level rose in each decade, and the rise per decade grew', check: () => { const d = sea.slice(1).map((v, i) => v - sea[i]); return d.every((x, i) => !i || x > d[i - 1]) && d.join() === '32,34,37'; } },
-];
-// Every number a prompt shows, recomputed, in the text where it must appear.
-export const JUSTIFY_NUMBERS = [
-  { id: 'u1-co2-seasons-trend', has: [`a drop of ${C('sub', 424, 418)} ppm`] },
-  { id: 'u2-island-trend', has: ['9 species on 2 km²', '70 on 2,000 km²'], check: () => [9, 18, 35, 70].every((v, i, a) => !i || Math.abs(v / a[i - 1] - 2) < 0.1) },
-  { id: 'u3-deer-trend', has: [`ten times as many`, `a drop of ${-C('percentChange', 2000, 500)}%`], check: () => C('magnification', 2000, 200) === 10 },
-  { id: 'u3-doubling-year', has: [`70 / 1.75 = ${C('ruleOf70', 1.75)} years`, `2025 + 40 = ${C('doublingYear', 2025, 1.75)}`], check: () => C('mul', 2, 2) === 4 },
-  { id: 'u4-enso-trend', has: [`${C('sub', 24, 19)} °C warmer`, `${-C('percentChange', 8, 2)}% lower`] },
-  { id: 'u6-use-trend', has: [`(10 - 4) / 4 × 100 = ${C('percentChange', 4, 10)}%`, `${C('sub', 6, 4)} exajoules in the first decade and ${C('sub', 10, 6)} in the second`] },
-  { id: 'u8-biomagnification-trend', has: [`0.2 / 0.002 = ${C('magnification', 0.2, 0.002)} times`], check: () => C('magnification', 0.02, 0.002) === 10 && C('magnification', 0.002, 0.00002) === 100 },
-  { id: 'u9-co2-temperature-trend', has: [`a rise of ${C('sub', 414, 317)} ppm`] },
-];
+   prompt. Empty until Phase 3 writes the exams and prompts. */
+export const EXAM_NUMBERS = [];
+export const JUSTIFY_NUMBERS = [];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];

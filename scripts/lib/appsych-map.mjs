@@ -1,18 +1,20 @@
 /* The AP® Psychology concept dependency map: loading it, checking
    it, and reading pages and questions against it. docs/appsych-dependency-map.json
    is the data; docs/appsych-phase0.md is its format. Forked from
-   scripts/lib/apstat-map.mjs (same rule, same page scan, notation patterns
+   scripts/lib/apenv-map.mjs (same rule, same page scan, notation patterns
    over the TeX of every formula), with these changes for psychology:
 
-   - CED numbers run without gaps: Units 1-9 have 11, 7, 9, 9, 17, 13, 8, 15
-     and 10 topics (99, unchanged for 2026-27; PSY_TOPICS), in array order.
-   - Topics carry the CED skills they focus on (`skills`, "1.A" ... "7.F")
-     and one big idea (ENG, ERT, EIN, STB); 3.D, 3.E and 4.D are not assessed
-     and may not be a topic's focus.
-   - FRQ themes are the three May 2027 types (design, data, calc) and stimulus
-     themes the three set kinds (quantitative, visual, text).
-   - Notation: `\\text{NPP}` is net primary productivity, `\\times 10^` scientific
-     notation, `\\text{LD}_{50}` the median lethal dose.
+   - CED numbers run without gaps: Units 1-5 have 6, 8, 9, 7 and 5 topics
+     (35, the 2024-25 framework, unchanged for 2026-27; PSY_TOPICS), in array
+     order (docs/appsych-research/framework.md section 2).
+   - Topics carry the CED skills they focus on (`skills`, 1.A-1.B, 2.A-2.D,
+     3.A-3.C); the four practices have no big ideas. Argumentation (4.A,
+     4.B) is assessed only in Section II, so no topic's multiple-choice focus
+     is on it (NOT_ASSESSED), though FRQ themes practice it.
+   - FRQ themes are the two May 2027 types (aaq, ebq) and stimulus themes
+     the set kinds (study, data, visual).
+   - Notation: `\\bar{x}` the mean, `z =` a z score, `r =` a correlation,
+     `p <` statistical significance (each taught in the research skills chapter).
 
    Pages under psychology/ declare <body data-topic> or
    <meta name="psy-topic">; text inside .psy-preview (a preview box) or
@@ -23,27 +25,26 @@ import { join, relative, basename } from 'node:path';
 
 export const KINDS = ['concept', 'skill', 'drill'];
 export const TOOL_KINDS = ['simulators', 'frqThemes', 'stimulusThemes', 'comparisonTables', 'pathways'];
-// The four free-response questions of the May 2027 exam, in exam order
-// (docs/appsych-research/framework.md section 4).
-export const FRQ_TYPES = ['design', 'data', 'calc'];
-// The exam's three kinds of multiple-choice set (framework.md section 4).
-export const STIMULUS_KINDS = ['quantitative', 'visual', 'text'];
-export const BIG_IDEAS = ['ENG', 'ERT', 'EIN', 'STB'];
-// The CED skills (docs/appsych-ced-map.json, practices); NOT_ASSESSED never
-// appear on the exam, so no topic focuses on them.
-export const SKILLS = ['1.A', '1.B', '1.C', '2.A', '2.B', '2.C', '3.A', '3.B', '3.C', '3.D', '3.E', '4.A', '4.B', '4.C', '4.D', '4.E',
-  '5.A', '5.B', '5.C', '5.D', '5.E', '6.A', '6.B', '6.C', '7.A', '7.B', '7.C', '7.D', '7.E', '7.F'];
-export const NOT_ASSESSED = ['3.D', '3.E', '4.D'];
-// The 99 topics of the CED (unchanged for 2026-27), numbered without gaps.
-export const UNIT_SIZES = { 1: 11, 2: 7, 3: 9, 4: 9, 5: 17, 6: 13, 7: 8, 8: 15, 9: 10 };
+// The two free-response questions of the May 2027 exam, in exam order
+// (docs/appsych-research/framework.md section 5).
+export const FRQ_TYPES = ['aaq', 'ebq'];
+// The kinds of multiple-choice set (framework.md section 5).
+export const STIMULUS_KINDS = ['study', 'data', 'visual'];
+export const BIG_IDEAS = [];
+// The CED skills (docs/appsych-ced-map.json, practices). Argumentation is
+// Section II only, so no topic's multiple-choice focus is on it.
+export const SKILLS = ['1.A', '1.B', '2.A', '2.B', '2.C', '2.D', '3.A', '3.B', '3.C', '4.A', '4.B'];
+export const NOT_ASSESSED = ['4.A', '4.B'];
+// The 35 topics of the CED (2024-25 framework, unchanged for 2026-27), numbered without gaps.
+export const UNIT_SIZES = { 1: 6, 2: 8, 3: 9, 4: 7, 5: 5 };
 export const PSY_TOPICS = Object.entries(UNIT_SIZES)
   .flatMap(([u, k]) => Array.from({ length: k }, (_, i) => `${u}.${i + 1}`));
 export const RESOLUTIONS = ['pull-forward', 'preview'];
 // The spec's differentiators (docs/appsych-spec.md section 6) that are tools:
 // each must be planned in some unit, exactly once.
 export const REQUIRED_SIMULATORS = [
-  'calculation-studio', 'energy-flow', 'cycles', 'population-growth', 'age-structure', 'soil-texture',
-  'earth-climate', 'energy-chain', 'air-pollution', 'water-pollution', 'dose-response', 'climate-change', 'justify',
+  'article-studio', 'evidence-builder', 'neuron', 'brain-map', 'sensation', 'memory-lab',
+  'conditioning-lab', 'development', 'social-influence', 'stats-lab', 'justify',
 ];
 
 export function loadMap(path) {
@@ -55,7 +56,7 @@ export function loadMap(path) {
    attributes there. Tokens are split on anything that is not a letter or
    digit, so "map" or "chapter" inside a longer word is not a token. */
 export function hasApToken(id) {
-  return String(id).toLowerCase().split(/[^a-z0-9]+/).some(t => t === 'ap' || t === 'appsych' || t === 'apstat' || t === 'apcalc' || t === 'apphys' || t === 'apchem' || t === 'apbio');
+  return String(id).toLowerCase().split(/[^a-z0-9]+/).some(t => t === 'ap' || t === 'appsych' || t === 'apenv' || t === 'apstat' || t === 'apcalc' || t === 'apphys' || t === 'apchem' || t === 'apbio');
 }
 
 /* The words a page is scanned for. A term or alias with a parenthetical
@@ -239,8 +240,9 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
       if (t.ced !== want) err(`topic ${t.id}: ced is "${t.ced}", expected "${want}" (CED order)`);
       for (const sk of t.skills || []) if (!SKILLS.includes(sk)) err(`topic ${t.id}: unknown skill "${sk}"`);
       for (const sk of t.skills || []) if (NOT_ASSESSED.includes(sk)) err(`topic ${t.id}: skill ${sk} is not assessed on the exam`);
-      if (map.bigIdeas && (!Array.isArray(t.bigIdeas) || t.bigIdeas.length !== 1 || !map.bigIdeas.some(b => b.id === t.bigIdeas[0]))) err(`topic ${t.id}: needs exactly one big idea of the map`);
+      if (map.bigIdeas && map.bigIdeas.length && (!Array.isArray(t.bigIdeas) || t.bigIdeas.length !== 1 || !map.bigIdeas.some(b => b.id === t.bigIdeas[0]))) err(`topic ${t.id}: needs exactly one big idea of the map`);
       if (t.skills && t.skills.some(sk => !t.practices.includes(+sk[0]))) err(`topic ${t.id}: a skill's practice is missing from practices`);
+      if (!Array.isArray(t.skills) || !t.skills.length) err(`topic ${t.id}: no focus skills`);
       unitSeq.set(ch.id, (unitSeq.get(ch.id) || 0) + 1);
     } else if (KINDS.includes(t.kind)) {
       if (ch.part !== 'skills') err(`topic ${t.id}: ${t.kind} topics belong in a skills chapter`);
@@ -257,7 +259,7 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
   // Every CED topic is in the map once (only when the map has all nine units;
   // tests use small maps).
   const ceds = map.topics.filter(t => t.kind === 'concept').map(t => t.ced);
-  if (map.chapters.filter(c => c.part === 'course').length === 9)
+  if (map.chapters.filter(c => c.part === 'course').length === Object.keys(UNIT_SIZES).length)
     for (const n of PSY_TOPICS) if (!ceds.includes(n)) err(`CED topic ${n} is missing from the map`);
 
   // Concepts: where taught, short versions with a later full treatment.
@@ -379,10 +381,11 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
     if (ch.part === 'course' && (!ch.tools || !Object.values(ch.tools).some(v => v.length))) warn(`chapter ${ch.id} has no tool content planned`);
   }
   for (const s of requiredSimulators) if (!sims.has(s)) err(`simulator ${s} from the owner brief is not planned in any unit`);
-  // Spec 5a: the FRQ themes name their author (A-G); at least four of each type.
+  // Spec 5a: the FRQ themes name their author; at least six of each type
+  // (two forms, the free samples, and spares).
   if (requiredSimulators.length) for (const ty of FRQ_TYPES) {
     const n = map.chapters.flatMap(c => ((c.tools || {}).frqThemes || [])).filter(f => f.type === ty).length;
-    if (n < 4) err(`only ${n} FRQ themes of type ${ty}; the exams and samples need at least 4`);
+    if (n < 6) err(`only ${n} FRQ themes of type ${ty}; the exams and samples need at least 6`);
   }
 
   void order;
@@ -404,7 +407,7 @@ export function scanPage(map, html, topicId) {
   const previewed = new Set();
   const topic = map.topics.find(t => t.id === topicId);
   for (const p of (topic && topic.previews) || [])
-    if (new RegExp(`class="[^"]*\\benv-preview\\b[^"]*"[^>]*\\bdata-concept="${p.concept}"`).test(html)) previewed.add(p.concept);
+    if (new RegExp(`class="[^"]*\\bpsy-preview\\b[^"]*"[^>]*\\bdata-concept="${p.concept}"`).test(html)) previewed.add(p.concept);
   const lower = text.toLowerCase();
   for (const { c, there, terms } of scanList(map)) {
     if (there <= here || previewed.has(c.id)) continue;

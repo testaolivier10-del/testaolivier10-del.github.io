@@ -117,13 +117,14 @@ test('lazy bank: the index, then only the units a set needs, then explanations',
   const Core = window.ApPsychCore;
   const stubs = await Core.loadIndex('');
   // Content-agnostic: read the expected values from the placeholder sample.
-  const src = JSON.parse(readFileSync('scripts/test/fixtures/appsych-data/questions/human-population.json', 'utf8'));
+  const src = JSON.parse(readFileSync('scripts/test/fixtures/appsych-data/questions/operant-conditioning.json', 'utf8'));
   const want = src.items.find(x => x.type === 'single' && x.stimulus && src.stimuli[x.stimulus].table);
   assert.ok(stubs.length >= src.items.length);
   const s = stubs.find(x => x.id === want.id);
-  assert.deepEqual({ unit: s.unit, practice: s.practice, type: s.type, stimulus: s.stimulus, set: s.set }, { unit: 'unit-3', practice: want.practice, type: 'single', stimulus: want.stimulus, set: 'quantitative' });
-  assert.equal(stubs.find(x => x.id === 'psy-human-population-1').set, null, 'only an exam set is marked in the index');
+  assert.deepEqual({ unit: s.unit, practice: s.practice, type: s.type, stimulus: s.stimulus, set: s.set }, { unit: 'unit-3', practice: want.practice, type: 'single', stimulus: want.stimulus, set: 'data' });
+  assert.equal(stubs.find(x => x.id === 'psy-operant-conditioning-1').set, null, 'only an exam set is marked in the index');
   assert.ok(stubs.filter(x => x.stimulus).length >= 4, 'stimulus sets in the index');
+  assert.deepEqual([...new Set(stubs.map(x => x.set).filter(Boolean))].sort(), ['data', 'study', 'visual'], 'each set kind marked');
   const qs = await Core.loadQuestions('', [s]);
   assert.equal(qs[0].correct, want.correct);
   assert.ok(qs[0].stim && /<table/.test(qs[0].stim.html), 'stimulus attached');

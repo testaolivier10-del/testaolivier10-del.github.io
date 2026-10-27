@@ -1,10 +1,10 @@
 /* AP® Psychology graders: ApPsychGrade (docs/appsych-spec.md section 7,
    docs/appsych-architecture.md "Content formats"). Pure, no DOM: the question
-   engine (psy-questions.js), the FRQ "check my number" box, the tools, the
-   content check and the tests all call it. Nothing here is graded by an AI
-   model. Unit-aware numbers are ported from AP® Chemistry's gradeNumeric,
-   normUnit and splitNumber (chem/assets/chem-questions.js), without
-   significant figures (exam readers do not grade them), plus scale words.
+   engine (psy-questions.js), the tools, the content check and the tests all
+   call it. Nothing here is graded by an AI model. Forked from AP®
+   Environmental Science's grader: numbers (descriptive statistics, worked
+   by hand; the unit is optional: %, points, hours), and the "Make it
+   specific" builders with psychology slots and hint flags.
 
      ApPsychGrade.readNumber(typed) -> { value, unit, scale } or null
        "2.5 million people", "2.5e6", "2.5 × 10^6 kWh", "2.5x10^6", "1,250 kg",
@@ -33,7 +33,9 @@
      ApPsychGrade.flags(S, text) -> [{ rule, ok, hint }]
        the free-text layer: hints only, never a score (rule 4). Rules from
        S.write: directional, noQuestion, variable [words], otherThan [words
-       that must not appear], mechanism, context [words], forbid [phrases]. */
+       that must not appear], mechanism, context [words], forbid [phrases],
+       cite (a "Source n" citation), concept [accepted concept words],
+       restricted [words that do not count as the concept]. */
 (function(root){
   'use strict';
 
@@ -233,12 +235,12 @@
       var unitSaid = notes.length && /right in/.test(notes[0]);
       if(mistake) notes.unshift(mistake.why);
       else if(unitSaid){ /* the unit note already explains the number */ }
-      else if(A && near(v * 100, A, tol)) notes.unshift('Value: your number is 100 times too small. A percent is the fraction times 100: (new − old) / old × 100.');
+      else if(A && near(v * 100, A, tol)) notes.unshift('Value: your number is 100 times too small. A percent is the fraction times 100 (0.84 is 84%).');
       else if(A && near(v / 100, A, tol)) notes.unshift('Value: your number is 100 times too large. Check that you multiplied by 100 only once.');
       else if(A && (near(v / 1000, A, tol) || near(v * 1000, A, tol))) notes.unshift('Value: off by a factor of 1000. Check a prefix (k, M, m) or the word "thousand".');
       else if(A && (near(v / 1e6, A, tol) || near(v * 1e6, A, tol))) notes.unshift('Value: off by a factor of a million. Check "million" or the power of ten (× 10^6).');
       else if(A && (near(v / 1e9, A, tol) || near(v * 1e9, A, tol))) notes.unshift('Value: off by a factor of a billion. Check "billion" or the power of ten (× 10^9).');
-      else if(A && near(-v, A, tol)) notes.unshift('Value: the size is right but the sign is wrong. Check the order of the subtraction (new minus old).');
+      else if(A && near(-v, A, tol)) notes.unshift('Value: the size is right but the sign is wrong. A z score is the score minus the mean: below the mean it is negative.');
       else if(A && near(v, A, tol * 10)) notes.unshift('Value: close. Keep every digit until the last step, then round.');
       else notes.unshift('Value: not this number. Check the setup step by step.');
     }
@@ -259,9 +261,13 @@
   }
 
   /* ------------------------------------------------- "Make it specific" */
-  var SLOT_NAME = { iv: 'the independent variable', dv: 'the dependent variable', direction: 'the direction', change: 'the change', because: 'the reason',
-    control: 'the control', purpose: "the control's purpose", constant: 'the constant', cause: 'the cause', effect: 'the effect', mechanism: 'how it works',
-    solution: 'the solution', fit: 'how it fits the scenario', policy: 'policy or technology', scale: 'the scale', pro: 'the advantage', con: 'the disadvantage', trend: 'the trend' };
+  // Psychology builders (spec section 7): research method, variables and
+  // their operational definitions, the claim, the evidence and its source,
+  // the concept that links them.
+  var SLOT_NAME = { method: 'the research method', iv: 'the independent variable', dv: 'the dependent variable', variable: 'the variable', opdef: 'the operational definition',
+    direction: 'the direction', change: 'the change', because: 'the reason', control: 'the control', purpose: "the control's purpose", population: 'the population',
+    sample: 'the sample', guideline: 'the ethical guideline', applied: 'how it was applied', statistic: 'the statistic', meaning: 'what it means',
+    claim: 'the claim', evidence: 'the evidence', source: 'the source', citation: 'the citation', concept: 'the psychology concept', link: 'the link to the claim', trend: 'the trend' };
   function specific(S, picks){
     var slots = (S && S.slots) || {}, names = Object.keys(slots), out = {}, notes = [];
     if(!names.length) return { valid: false, correct: false, notes: ['This item has no builder.'] };
@@ -276,7 +282,9 @@
 
   var DIRECTIONAL = /\b(increase[sd]?|decrease[sd]?|higher|lower|more|less|fewer|greater|smaller|larger|rise[sn]?|rose|fall[sn]?|fell|drop(s|ped)?|grow(s|n)?|decline[sd]?|reduce[sd]?)\b/;
   var VAGUE = /\b(affects?|affected|impacts?|impacted|changes?|changed|alters?|altered|influences?|better|worse)\b/;
-  var MECHANISM = /\b(because|since|so that|which (then )?(causes?|leads?|means|lets|allows|reduces?|increases?)|leads? to|results? in|causes?|by (reducing|increasing|removing|absorbing|trapping|filtering|blocking|capturing|allowing|preventing)|therefore|as a result)\b/;
+  var MECHANISM = /\b(because|since|so that|which (then )?(causes?|leads?|means|lets|allows|reduces?|increases?|shows?|suggests?)|leads? to|results? in|causes?|therefore|as a result|this (shows|suggests|supports|means))\b/;
+  // A cited source: "(Source 1)", "Source 2 found", "according to Source 3".
+  var CITE = /\bsource\s*[1-3]\b/i;
   function has(t, w){ return t.indexOf(' ' + String(w).toLowerCase()) > -1; }
   function flags(S, text){
     var W = (S && S.write) || {}, t = ' ' + String(text || '').toLowerCase().replace(/[\s\n]+/g, ' ').replace(/[.,;:!()]/g, ' ') + ' ', out = [];
@@ -291,7 +299,13 @@
       var used = W.otherThan.filter(function(w){ return has(t, w); });
       out.push({ rule: 'otherThan', ok: !used.length, hint: 'The question says "other than" ' + W.otherThan[0] + ': give a different answer.' });
     }
-    if(W.mechanism) out.push({ rule: 'mechanism', ok: MECHANISM.test(t), hint: 'Say how it works: "because ...", "which reduces ...", "by trapping ...".' });
+    if(W.mechanism) out.push({ rule: 'mechanism', ok: MECHANISM.test(t), hint: 'Link it: "because ...", "this shows ...", "which suggests ...".' });
+    if(W.cite) out.push({ rule: 'cite', ok: CITE.test(t), hint: 'Cite the source: "(Source 2)" or "According to Source 2".' });
+    if(W.concept && W.concept.length) out.push({ rule: 'concept', ok: W.concept.some(function(w){ return has(t, w); }), hint: 'Name a psychology concept and apply it to the evidence (' + W.concept[0] + ', for example).' });
+    if(W.restricted && W.restricted.length){
+      var only = W.restricted.filter(function(w){ return has(t, w); });
+      if(only.length && !(W.concept || []).some(function(w){ return has(t, w); })) out.push({ rule: 'restricted', ok: false, hint: '"' + only[0] + '" is a research or statistics word, or the prompt\'s own topic: it does not count as the psychology concept.' });
+    }
     if(W.context && W.context.length) out.push({ rule: 'context', ok: W.context.some(function(w){ return has(t, w); }), hint: "Tie it to the scenario, in the question's own words." });
     (W.forbid || []).forEach(function(f){ if(has(t, f)) out.push({ rule: 'forbid', ok: false, hint: 'Avoid "' + f + '" here.' }); });
     return out;

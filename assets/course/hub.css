@@ -263,7 +263,7 @@ body[data-course="anp"] .cx-feat{--feat-hi:#F2B9A9;}
 .course-banner .cv-t em{display:block;margin-top:8px;font:700 clamp(16px,1.8vw,21px)/1.15 'Kalam','Nunito',cursive;font-style:normal;color:#FFD23F;}
 [data-cover="nremt"]{--cbg:#0D3B36;--cac:#2EE6D6;}[data-cover="ochem"]{--cbg:#241A63;--cac:#A18FFF;}[data-cover="anp"]{--cbg:#4A1A1F;--cac:#FF8A6B;}
 [data-cover="apbio"]{--cbg:#1B4422;--cac:#7CCB6B;}[data-cover="apchem"]{--cbg:#1A2C78;--cac:#8FAEFF;}[data-cover="apphys"]{--cbg:#2A1D06;--cac:#FFB21E;}
-[data-cover="apcalc"]{--cbg:#4A1230;--cac:#FF5C9A;}[data-cover="apstat"]{--cbg:#0E3A52;--cac:#5CC8F0;}[data-cover="apenv"]{--cbg:#22400F;--cac:#A6DB5C;}
+[data-cover="apcalc"]{--cbg:#4A1230;--cac:#FF5C9A;}[data-cover="apstat"]{--cbg:#0E3A52;--cac:#5CC8F0;}[data-cover="apenv"]{--cbg:#22400F;--cac:#A6DB5C;}[data-cover="appsych"]{--cbg:#33184A;--cac:#D99CFF;}
 @media (max-width:640px){
   .course-banner{height:118px;border-radius:16px;margin-bottom:14px;}
   .course-banner .cv-t{left:18px;max-width:55%;}

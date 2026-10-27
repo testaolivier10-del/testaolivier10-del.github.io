@@ -5,14 +5,14 @@
    a lesson, a notes page and a printable unit sheet, the glossary, the app
    page shells from pages.json, and the JSON the runtime loads (curriculum,
    glossary, the question bank split per unit with its lazy index). Forked
-   from scripts/build-apstat.mjs (spec decision 1); the differences are the
-   psychology items (numbers with units whose keys ApPsychCalc
-   recomputes from their recipes, setups graded by value, brackets and units,
-   "Make it specific" builders, the three exam set kinds), data figures drawn
-   from their numbers (psy-plot.js), the three free-response types (design,
-   data, calc; 10 points each), the formulas page as "Formulas you must
-   memorize" (the exam gives no sheet), and no score calculator (spec
-   decision 6).
+   from scripts/build-apenv.mjs (spec decision 1); the differences are the
+   psychology items (numbers worked by hand whose keys ApPsychStats
+   recomputes from their recipes, "Make it specific" builders, the set kinds
+   study, data and figure), data figures drawn from their numbers
+   (psy-plot.js: line, bar, scatter, normal, histogram), the two
+   free-response types (AAQ with its study, EBQ with three sources; 7 points
+   each), the "Research skills you need" page in place of the formulas page,
+   and no score calculator (spec decision 6).
 
    Only topics of PUBLISHED chapters are built (psychology/data/published.json), and
    only once they have a lesson, notes and a question file. With no chapter
@@ -26,7 +26,7 @@
      node scripts/build-appsych.mjs            write everything
      node scripts/build-appsych.mjs --check    exit 1 if anything on disk is stale
      --out <dir>                              write the psychology/ tree there (tests)
-     APPSYCH_PUBLISHED=unit-1,skills-math      override published.json (tests)
+     APPSYCH_PUBLISHED=unit-1,skills-research override published.json (tests)
      APPSYCH_DATA=<dir>                        read authored data from <dir> (tests)
 
    Nothing it writes is edited by hand. Every served path avoids the token
@@ -526,7 +526,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
   function learnPage() {
     const depth = '';
     const title = courseTitle('All units and skills', [LABEL]);
-    const desc = clampDesc(`Every unit of the psychology course in framework order, ${units.length} units and ${topics.length} topics, plus a math chapter for percents, scientific notation, unit conversions, rates and doubling time.`);
+    const desc = clampDesc(`Every unit of the psychology course in framework order, ${units.length} units and ${topics.length} topics, plus a research skills chapter for methods, variables, ethics and the statistics the exam asks you to read.`);
     const url = `${SITE}${BASE}learn.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'CollectionPage', '@id': `${url}#learn`, name: 'All units and skills', url, description: desc, isPartOf: { '@id': COURSE_ID } },
@@ -567,8 +567,8 @@ ${tail({ depth, section: 'learn', extra: ['psy-toc.js', 'psy-book.js'], site: ['
      simulators band and one real question. The markup is the first-visit
      state and reads on its own without JavaScript; assets/psy-home.js fills
      the level card, the three cards and the path from the runtime. */
-  const PART_COLORS = { course: ['#7E8126', IDENTITY.accent.ink], skills: ['#3E7C8C', '#24525E'] };
-  const PART_LABEL = { course: 'Units', skills: 'Math you need' };
+  const PART_COLORS = { course: ['#2A8BC0', IDENTITY.accent.ink], skills: ['#6A5BA8', '#3F3478'] };
+  const PART_LABEL = { course: 'Units', skills: 'Research skills you need' };
   const HOME_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   // The "Try a step" card: one real question from a free unit's bank, read at
   // build time; left out when that topic is not built (Phase 0 has no content,
@@ -608,7 +608,7 @@ ${tail({ depth, section: 'learn', extra: ['psy-toc.js', 'psy-book.js'], site: ['
         <ol class="psy-sample-list">
           <li><span class="n" aria-hidden="true">1</span> Read the situation</li>
           <li><span class="n" aria-hidden="true">2</span> Pick the answer you would bet on</li>
-          <li><span class="n" aria-hidden="true">3</span> See the cause and effect behind it</li>
+          <li><span class="n" aria-hidden="true">3</span> See which concept explains it</li>
         </ol>
       </div>
       <div class="psy-qcard" id="psySample" data-correct="${q.correct}">
@@ -626,7 +626,7 @@ ${tail({ depth, section: 'learn', extra: ['psy-toc.js', 'psy-book.js'], site: ['
   function homePage() {
     const depth = '';
     const title = `${LABEL} Course, Free to Start | LevlPrep`;
-    const desc = 'Environmental science exam prep for May 2027, in framework order: lessons from scratch, free notes, simulators, and calculations graded setup, answer and units.';
+    const desc = 'Psychology exam prep for May 2027, in framework order: lessons from scratch, free notes, simulators, and the article analysis and evidence-based questions drilled part by part.';
     const url = `${SITE}${BASE}`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'Course', '@id': COURSE_ID, name: COURSE_NAME, url, description: desc, inLanguage: 'en', ...(offers ? { offers } : {}),
@@ -659,7 +659,7 @@ ${tail({ depth, section: 'learn', extra: ['psy-toc.js', 'psy-book.js'], site: ['
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
         const HOME = {
       key: COURSE_KEY, prefix: 'psy', mainClass: 'psy-home', courseHtml: COURSE_HTML, beta: BETA_PILL,
-      t2: `${esc(IDENTITY.headline)}`, lede: `Each topic taught from scratch for the May 2027 exam, then practice that checks your setup, your answer and its units, and answers specific enough to score.`, storageKey: 'appsych_progress_v1',
+      t2: `${esc(IDENTITY.headline)}`, lede: `Each topic taught from scratch for the May 2027 exam, then practice that asks you to apply each concept to a new situation, and written answers built part by part the way the readers score them.`, storageKey: 'appsych_progress_v1',
       first, firstCh, unitLabel, freeUnits, freeUnitsText, dailyFree, chapters: map.chapters, topicsOf, chapterBuilt,
       partLabel: PART_LABEL, nq, apps: C.pages.apps || [], tools: (C.pages.tools || []).filter(toolLive), toolIcon: TOOL_ICON,
       exam: { mcq: MCQ_PARTS.reduce((n, p) => n + p.n, 0), mcqTime: `${MCQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes`, frq: FRQ_TOTAL, frqTime: `${FRQ_PARTS.reduce((n, p) => n + p.minutes, 0)} minutes` }, sample: homeSample(depth),
@@ -693,8 +693,8 @@ ${tail({ depth, section: 'home', extra: ['psy-home.js'] })}
 
   const TOOL_GROUPS = [
     { kind: 'simulator', h: 'Trainers', p: 'Work through a model or a representation, then answer questions about it.' },
-    { kind: 'skill', h: 'Skills tools', p: 'The math and data skills the exam tests, with worked steps.' },
-    { kind: 'drill', h: 'Drills', p: 'Seeded, unlimited calculation drills, checked step by step.' },
+    { kind: 'skill', h: 'Skills tools', p: 'The research and data skills the exam tests, with worked steps.' },
+    { kind: 'drill', h: 'Drills', p: 'Seeded, unlimited drills, checked step by step.' },
   ];
   function toolsHub() {
     const live = (C.pages.tools || []).filter(toolLive);
@@ -770,48 +770,39 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
      frq/<id>.html, the stable, shareable, printable page. The rubric and the
      sample answer are not in that page's HTML: frq-kit.js fetches them when
      the student asks for them (and prints them only when asked). */
-  // The three free-response types of May 2027 (docs/appsych-research/framework.md,
-  // section 4), 10 points each, in exam order; a scientific or four-function
-  // calculator is allowed on all three.
-  const FRQ_TYPE_NAME = { design: 'Q1: Design an investigation', data: 'Q2: Analyze and interpret quantitative data', calc: 'Q3: Analyze an environmental problem with calculations' };
+  // The two free-response questions of May 2027 (docs/appsych-research/framework.md,
+  // section 5), 7 points each, in exam order; no calculator.
+  const FRQ_TYPE_NAME = { aaq: 'Q1: Article Analysis Question (AAQ)', ebq: 'Q2: Evidence-Based Question (EBQ)' };
   const FRQ_ORDER = Object.keys(FRQ_TYPE_NAME);
-  const frqStimulus = f => {
-    if (f.stimulus && typeof f.stimulus === 'object') return f.stimulus;
-    for (const q of Object.values(C.questions)) if (q.stimuli && q.stimuli[f.stimulus]) return q.stimuli[f.stimulus];
-    return null;
-  };
+  /* What the student reads: the AAQ's one study, or the EBQ's three sources,
+     each a stimulus of kind "study" (laid out as the exam's summaries). */
+  const frqReadings = f => f.type === 'aaq' ? (f.study ? [{ ...f.study, kind: 'study' }] : []) : (f.sources || []).map((x, i) => ({ ...x, kind: 'study', title: `Source ${i + 1}: ${x.title || ''}` }));
+  const frqStimulus = f => frqReadings(f)[0] || null;
   const frqs = Object.values(C.frq)
-    .filter(f => f && f.id && FRQ_TYPE_NAME[f.type] && (f.units || []).length && f.units.every(u => C.published.has(u)) && (f.topics || []).every(t => map.topicById(t)) && frqStimulus(f))
+    .filter(f => f && f.id && FRQ_TYPE_NAME[f.type] && (f.units || []).length && f.units.every(u => C.published.has(u)) && (f.topics || []).every(t => map.topicById(t)) && frqReadings(f).length)
     .sort((a, b) => FRQ_ORDER.indexOf(a.type) - FRQ_ORDER.indexOf(b.type) || a.id.localeCompare(b.id));
   const frqTitle = f => text(f.title || frqStimulus(f).title) || FRQ_TYPE_NAME[f.type];
   const frqUnitLabel = f => f.units.map(u => { const c = chapterById(u); return c ? unitLabel(c) + (c.part === 'course' ? '' : `: ${c.title}`) : u; }).join(', ');
   function frqJson(f) {
-    const s = frqStimulus(f);
     return {
       id: f.id, type: f.type, typeName: FRQ_TYPE_NAME[f.type], points: f.points, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices,
       ...(f.placeholder ? { placeholder: true } : {}),
-      stimulus: { kind: s.kind, title: s.title || '', html: stimulusBody(C, s, '') },
-      parts: f.parts.map(p => ({ label: p.label, prompt: p.prompt, points: p.points, rubric: p.rubric, sample: p.sample, ...(p.space ? { space: p.space } : {}), ...(p.check ? { check: p.check } : {}) })),
-      ...(f.graphSpec ? { graphSpec: f.graphSpec } : {}),
+      readings: frqReadings(f).map(s => ({ kind: 'study', title: s.title || '', html: stimulusBody(C, s, '') })),
+      ...(f.type === 'ebq' ? { restricted: f.restricted || [] } : {}),
+      parts: f.parts.map(p => ({ label: p.label, prompt: p.prompt, points: p.points, rubric: p.rubric, sample: p.sample, ...(p.write ? { write: p.write } : {}) })),
     };
   }
   const frqIndex = () => JSON.stringify(frqs.map(f => ({ id: f.id, type: f.type, points: f.points, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices, ...(f.placeholder ? { placeholder: true } : {}) })));
   /* Lined answer space for paper (shown only in print): about six lines a point. */
   const lines = n => `<div class="psy-lines" aria-hidden="true">${'<div></div>'.repeat(n)}</div>`;
-  const graphGrid = g => `<div class="psy-frq-grid" role="img" aria-label="Blank grid for your graph${g.x && g.x.label ? `: ${esc(text(g.x.label))} on the x-axis` : ''}${g.y && g.y.label ? `, ${esc(text(g.y.label))} on the y-axis` : ''}"></div>`;
-  /* Which answer space a part gets on paper: its own "space" ("graph" or
-     "lines"), else a blank grid when the FRQ has a graphSpec and the prompt
-     asks for a sketch. */
-  const partSpace = (f, p) => p.space || (f.graphSpec && /sketch|graph|draw/i.test(text(p.prompt)) ? 'graph' : 'lines');
   function frqPage(f) {
-    const depth = '../', s = frqStimulus(f), title = frqTitle(f);
+    const depth = '../', title = frqTitle(f);
     const url = `${SITE}${BASE}frq/${f.id}.html`;
     const desc = clampDesc(`${title}: a ${f.points}-point psychology free-response question (${FRQ_TYPE_NAME[f.type].replace(/^Q\d: /, '').toLowerCase()}) with a point-by-point rubric, a sample answer and a printable answer sheet.`);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#frq`, name: title, url, description: desc, learningResourceType: 'Free-response question', educationalLevel: 'High school', inLanguage: 'en', isPartOf: { '@id': COURSE_ID }, provider: { '@id': `${SITE}/#org` } },
       crumbs(orgCrumbs([{ name: 'Free-response practice', url: `${SITE}${BASE}frq.html` }, { name: title, url }])),
     ] };
-    const g = f.graphSpec || null;
     const body = `
 ${bodyOpen(` data-frq="${f.id}"`)}
 <main id="main" class="xshell psy-app psy-frq-page">
@@ -819,21 +810,21 @@ ${bodyOpen(` data-frq="${f.id}"`)}
   <header class="hero psy-hero">
     <div class="eyebrow">Free response &middot; ${esc(frqUnitLabel(f))} ${BETA_PILL}</div>
     <h1>${esc(title)}</h1>
-    <p class="lede">${esc(FRQ_TYPE_NAME[f.type])} &middot; scientific calculator allowed &middot; ${f.points} points${f.placeholder ? ' &middot; <b>placeholder question</b>, written to test the page and not checked for accuracy' : ''}</p>
+    <p class="lede">${esc(FRQ_TYPE_NAME[f.type])} &middot; no calculator &middot; ${f.points} points &middot; about ${f.type === 'aaq' ? 25 : 45} minutes${f.placeholder ? ' &middot; <b>placeholder question</b>, written to test the page and not checked for accuracy' : ''}</p>
     ${shareBar(`frq/${f.id}.html`, `${title}: psychology free-response question`, 'question')}
   </header>
   <article class="psy-frq" aria-labelledby="h-frq-q">
     <h2 id="h-frq-q" class="sr-only">The question</h2>
     <p class="psy-frq-print-head">Name: ______________________ &nbsp; Date: ____________ &nbsp; ${esc(title)} (${f.points} points)</p>
-    ${stimulusPanel(`frq-${f.id}`, s, stimulusBody(C, s, depth))}
-    <ol class="psy-frq-parts">${f.parts.map(p => `<li class="psy-frq-part" data-part="${esc(p.label)}"><p class="psy-frq-prompt"><b class="psy-frq-label">(${esc(p.label)})</b> ${p.prompt} <span class="psy-small">[${p.points} point${p.points === 1 ? '' : 's'}]</span></p>${partSpace(f, p) === 'graph' && g ? graphGrid(g) + lines(4) : lines(Math.max(5, p.points * 6))}</li>`).join('')}</ol>
+    ${frqReadings(f).map((s, i) => stimulusPanel(`frq-${f.id}-${i + 1}`, s, stimulusBody(C, s, depth))).join('\n    ')}
+    <ol class="psy-frq-parts">${f.parts.map(p => `<li class="psy-frq-part" data-part="${esc(p.label)}"><p class="psy-frq-prompt"><b class="psy-frq-label">(${esc(p.label)})</b> ${p.prompt} <span class="psy-small">[${p.points} point${p.points === 1 ? '' : 's'}]</span></p>${lines(Math.max(5, p.points * 6))}</li>`).join('')}</ol>
   </article>
   <div id="app" class="psy-app-mount psy-frq-work" data-slug="frq-item" data-frq="${f.id}" data-unit="${esc(f.units[0])}" data-topic="${esc(f.topics[0] || '')}"><noscript><p>Writing your answer, the rubric and the sample answer need JavaScript. The question above prints without it.</p></noscript></div>
 </main>
 ${footer(depth, `frq:${f.id}`)}
 <link rel="stylesheet" href="../assets/pages/pages.css">
 <link rel="stylesheet" href="../../assets/course/reading.css">
-${tail({ depth, section: 'exams', extra: ['psy-expr.js', 'psy-math.js', 'psy-calc.js', 'psy-grade.js', 'pages/frq-kit.js', 'pages/frq.js'], premium: true })}
+${tail({ depth, section: 'exams', extra: ['psy-math.js', 'psy-stats.js', 'psy-grade.js', 'pages/frq-kit.js', 'pages/frq.js'], premium: true })}
 </body>
 </html>
 `;
@@ -1085,7 +1076,7 @@ window.ApPsychCurriculum = ${JSON.stringify(data)};
       if (!m || m[1] !== topic.id) throw new Error(`bank index: question id ${q.id} is not psy-${topic.id}-<n>`);
       const stim = q.stimulus && C.questions[topic.id].stimuli && C.questions[topic.id].stimuli[q.stimulus];
       const set = stim && stim.kind;
-      return [m[2], at(ty, q.type), at(lv, q.level), q.diff, at(pr, q.practice), q.stimulus ? at(st, q.stimulus) : '', ({ quantitative: 'q', visual: 'v', text: 'x' })[set] || ''].join('.');
+      return [m[2], at(ty, q.type), at(lv, q.level), q.diff, at(pr, q.practice), q.stimulus ? at(st, q.stimulus) : '', ({ study: 's', data: 'd', visual: 'v' })[set] || ''].join('.');
     }).join(',');
     return JSON.stringify({ v: 1, ty, lv, pr, st, t });
   }

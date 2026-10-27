@@ -48,7 +48,7 @@ function walk(dir, out = []) {
     if (SKIP_DIRS.has(name)) continue;
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data')) && !full.endsWith(join('psychology', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;
@@ -76,6 +76,7 @@ function imageFor(file) {
   if (file.startsWith('calculus/')) return `${ORIGIN}/calculus/assets/og-image.png`;
   if (file.startsWith('statistics/')) return `${ORIGIN}/statistics/assets/og-image.png`;
   if (file.startsWith('environmental-science/')) return `${ORIGIN}/environmental-science/assets/og-image.png`;
+  if (file.startsWith('psychology/')) return `${ORIGIN}/psychology/assets/og-image.png`;
   return `${ORIGIN}/assets/og-image.png`;
 }
 

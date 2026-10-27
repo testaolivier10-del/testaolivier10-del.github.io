@@ -172,6 +172,17 @@
       { min: 20, title: 'Solution Builder' },
       { min: 30, title: 'Environmental Science Legend' },
     ],
+    // docs/appsych-spec.md decision 5 (proposed; owner to confirm). The first
+    // is also IDENTITY.firstRank in scripts/lib/appsych-build.mjs.
+    appsych: [
+      { min: 1,  title: 'Curious Observer' },
+      { min: 3,  title: 'Hypothesis Maker' },
+      { min: 6,  title: 'Neuron Firer' },
+      { min: 10, title: 'Data Reader' },
+      { min: 15, title: 'Theory Tester' },
+      { min: 20, title: 'Behavior Analyst' },
+      { min: 30, title: 'Psychology Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -187,6 +198,7 @@
     { key: 'apcalc', rankLabel: 'Calculus rank' },
     { key: 'apstat', rankLabel: 'Statistics rank' },
     { key: 'apenv', rankLabel: 'Environmental Science rank' },
+    { key: 'appsych', rankLabel: 'Psychology rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

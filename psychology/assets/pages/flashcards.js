@@ -162,7 +162,7 @@
   function deckCards(deck){ return CARDS.filter(function(c){ return inDeck(c, deck); }); }
   function deckName(deck){
     if(deck === 'missed') return 'Terms from questions I missed';
-    if(deck === 'formulas') return 'Formulas you must memorize';
+    if(deck === 'formulas') return 'Statistics you must know';
     var p = deck.split(':');
     if(p[0] === 'topic' && TOPIC[p[1]]) return TOPIC[p[1]].title;
     if(p[0] === 'unit' && UNIT[p[1]]) return unitName(p[1]);
@@ -204,13 +204,13 @@
     var opt = function(v, label){ return '<option value="' + esc(v) + '"' + (v === prefs.deck ? ' selected' : '') + '>' + esc(label) + '</option>'; };
     var count = function(pred){ return CARDS.filter(function(c){ return prefs.kinds[c.kind] && pred(c); }).length; };
     var nf = CARDS.filter(function(c){ return c.kind === 'f'; }).length;
-    var sel = opt('all', 'Every published topic (' + count(function(){ return true; }) + ')') + (nf ? opt('formulas', 'Formulas you must memorize (' + nf + ')') : '') + opt('missed', 'Terms from questions I missed') +
+    var sel = opt('all', 'Every published topic (' + count(function(){ return true; }) + ')') + (nf ? opt('formulas', 'Statistics you must know (' + nf + ')') : '') + opt('missed', 'Terms from questions I missed') +
       '<optgroup label="Units">' + units.map(function(u){ return opt('unit:' + u.id, unitName(u.id) + ' (' + count(function(c){ return c.kind !== 'f' && TOPIC[c.topic].unit === u.id; }) + ')'); }).join('') + '</optgroup>' +
       units.map(function(u){
         var ts = CU.topics.filter(function(t){ return t.unit === u.id && CARDS.some(function(c){ return c.kind !== 'f' && c.topic === t.id; }); });
         return '<optgroup label="Topics: ' + esc(unitName(u.id)) + '">' + ts.map(function(t){ return opt('topic:' + t.id, (t.ced ? t.ced + ' ' : '') + t.title + ' (' + count(function(c){ return c.topic === t.id; }) + ')'); }).join('') + '</optgroup>';
       }).join('');
-    var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['s', 'Topic summaries', kindCount('s')], ['f', 'Formulas', kindCount('f')]];
+    var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['s', 'Topic summaries', kindCount('s')], ['f', 'Statistics', kindCount('f')]];
     var missedNote = prefs.deck === 'missed' ? (missedConcepts === null ? '<p class="cx-small">Finding the terms in your missed questions…</p>' : !cards.length ? '<p class="cx-small">No missed terms right now. When you get a question wrong, the glossary terms it uses land in this deck.</p>' : '') : '';
     var stat = function(v, l, cls){ return LevlStudy.stat(l, v, '', cls); };
     // By unit: progress across every card in each unit (the list NREMT and
