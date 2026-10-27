@@ -133,10 +133,10 @@
     dopamine: { name: 'Dopamine', short: 'DA', role: 'reward and movement', does: 'Carries reward and motivation signals and helps start smooth movement.', low: 'Too little in movement pathways: Parkinson’s disease (tremor, slow movement). Too much activity is linked with schizophrenia; reward pathways are central to addiction.', fn: 'reward, motivation and movement', clear: 'reuptake' },
     serotonin: { name: 'Serotonin', short: '5-HT', role: 'mood', does: 'Helps regulate mood, hunger, sleep and arousal.', low: 'Antidepressants such as SSRIs raise serotonin activity; the old idea that depression is simply \u201clow serotonin\u201d is now known to be too simple.', fn: 'mood, hunger and sleep', clear: 'reuptake' },
     norepinephrine: { name: 'Norepinephrine', short: 'NE', role: 'alertness', does: 'Raises alertness and arousal, part of the fight-or-flight response.', low: 'Low activity is linked with depressed mood; too much with anxiety and agitation.', fn: 'alertness and arousal', clear: 'reuptake' },
-    glutamate: { name: 'Glutamate', short: 'Glu', role: 'the main excitatory neurotransmitter', does: 'The brain’s main excitatory (“go”) neurotransmitter; important for learning and memory.', low: 'Too much can overexcite the brain: it is linked with seizures and migraines.', fn: 'excitation, learning and memory', clear: 'reuptake (mostly into glial cells)' },
+    glutamate: { name: 'Glutamate', short: 'Glu', role: 'the main excitatory neurotransmitter', does: 'The brain’s main excitatory (“go”) neurotransmitter; important for learning and memory.', low: 'Too much can overexcite the brain: it is linked with seizures and migraines.', fn: 'excitation: the brain’s main “go” signal', clear: 'reuptake (mostly into glial cells)' },
     gaba: { name: 'GABA', short: 'GABA', role: 'the main inhibitory neurotransmitter', does: 'The brain’s main inhibitory (“stop”) neurotransmitter; calms neural activity.', low: 'Too little is linked with seizures, anxiety and insomnia.', fn: 'calming (inhibiting) neural activity', clear: 'reuptake' },
     endorphins: { name: 'Endorphins', short: 'End', role: 'natural painkillers', does: 'The body’s natural opioids: they lessen pain and add pleasure (for example during hard exercise).', low: 'Opioid drugs act on the same receptors, which is why they relieve pain and can be addictive.', fn: 'pain relief and pleasure', clear: 'enzymes break them down (not reuptake)' },
-    substanceP: { name: 'Substance P', short: 'SP', role: 'pain signals', does: 'Carries pain signals to the brain and spinal cord and is involved in inflammation.', low: 'Blocking substance P receptors can ease some kinds of pain and nausea.', fn: 'pain signaling', clear: 'enzymes break it down (not reuptake)' }
+    substanceP: { name: 'Substance P', short: 'SP', role: 'pain signals', does: 'Carries pain signals to the brain and spinal cord and is involved in inflammation.', low: 'Drugs that block substance P receptors prevent nausea from chemotherapy; as painkillers they have mostly disappointed.', fn: 'pain signaling', clear: 'enzymes break it down (not reuptake)' }
   };
   var NT_KEYS = Object.keys(NT);
   var CLASSES = {
@@ -380,7 +380,7 @@
     { id: 'receive', part: 'dendrite', text: 'A neuron in the visual cortex receives messages from thousands of other neurons. Which branching part takes in most of these messages?' },
     { id: 'release', part: 'terminal', text: 'An action potential reaches the end of a neuron, and neurotransmitter is released into the synapse. From which part?' },
     { id: 'carry', part: 'axon', text: 'An action potential travels from a motor neuron in the spinal cord all the way to a muscle in the foot. Along which part does it travel?' },
-    { id: 'support', part: 'glia', text: 'Most cells in the brain are not neurons. They hold neurons in place, supply nutrients, clean up waste and form myelin. What are they called?' },
+    { id: 'support', part: 'glia', text: 'About half the cells in the brain are not neurons. They hold neurons in place, supply nutrients, clean up waste and form myelin. What are they called?' },
     { id: 'sum', part: 'soma', text: 'Signals from many dendrites meet in one part of the neuron, which also contains the nucleus. Which part?' }
   ];
   function genParts(r, c){

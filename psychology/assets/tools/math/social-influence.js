@@ -116,17 +116,16 @@
   var CONF_CHANGE = [
     { change: 'partner', text: 'One person in the group gives the correct answer first.', dir: 'lower' },
     { change: 'private', text: 'Everyone writes the answer privately instead of saying it out loud.', dir: 'lower' },
-    { change: 'bigger', text: 'The unanimous group grows from 1 other person to 3.', dir: 'higher' }
+    { change: 'smaller', text: 'Only one other person, not {n}, answers before #.', dir: 'lower' }
   ];
   var OBEY_T = [
-    { text: 'A coach in uniform tells # to keep running laps after # feels dizzy. # keeps running.', authority: true },
+    { text: 'A coach tells # to keep running laps after # feels dizzy. # keeps running.', authority: true },
     { text: 'A security guard orders # to move a car from a spot that is not marked as reserved. # moves it.', authority: true },
     { text: 'A manager tells # to stay late and enter data that # suspects is wrong. # does it.', authority: true }
   ];
   var OBEY_CHANGE = [
     { id: 'phone', text: 'The person giving the order leaves and gives it by phone instead.', dir: 'lower' },
     { id: 'peers', text: 'Two coworkers who were given the same order refuse in front of #.', dir: 'lower' },
-    { id: 'touch', text: '# has to face the person who will be harmed and touch them.', dir: 'lower' },
     { id: 'uniform', text: 'The person giving the order wears an official uniform and badge.', dir: 'higher' }
   ];
   var BY_T = [
@@ -142,7 +141,7 @@
     { task: 'pooled', setting: 'pooled', text: 'In a tug-of-war team of {n}, no one can tell how hard each person is pulling.', concept: 'loafing', dir: 'worse' }
   ];
   var GROUP_OTHER = [
-    { text: 'After an hour of discussing, a jury of {n} people who all leaned toward a small fine agrees on the largest fine allowed.', concept: 'polarization' },
+    { text: 'After an hour of discussing, a jury of {n} people who all leaned toward a large fine agrees on the largest fine allowed.', concept: 'polarization' },
     { text: 'A club board of {n} friends approves a risky plan quickly; one member with doubts stays silent so the meeting stays friendly.', concept: 'groupthink' },
     { text: 'At a costume party with {n} masked guests, # does things # would never do as #self.', concept: 'deindividuation' }
   ];
@@ -209,17 +208,20 @@
 
   /* ------------------------------------------------------------ types */
   function genConformity(r, ctx){
-    var t = r.pick(CONF_T), n = r.int(3, 6), w = who(r), name = w[0], ch = r.pick(CONF_CHANGE);
+    var t = r.pick(CONF_T), n = r.int(3, 6), w = who(r), name = w[0];
+    // Answering privately removes normative pressure only; when the answer is
+    // unclear (informational influence) it is not a fair prediction.
+    var ch = r.pick(CONF_CHANGE.filter(function(x){ return t.task === 'clear' || x.change !== 'private'; }));
     var key = t.task === 'clear' ? 'normative' : 'informational';
     var whyDir = ch.change === 'partner' ? 'One ally breaks the group\'s unanimity; in Asch\'s studies a single partner cut conformity to about a quarter of its usual level.' :
       ch.change === 'private' ? 'Answering in private removes the fear of standing out, so conformity drops, which is why Asch\'s effect is mostly normative.' :
-      'Conformity rose as a unanimous majority grew from 1 to 3 people (about 3% to 33% of answers in Asch\'s studies), then leveled off.';
+      'With only one other person giving the wrong answer, conformity is far lower: in Asch\'s studies about 3% of answers went along with one person, against about 33% with three, and it leveled off after that.';
     var text = fill(t.text, name, w[1], n);
     return {
       type: 'conformity', ctx: ctx.id, topic: ctx.topic, given: { task: t.task, public: t.public, n: n, change: ch.change, name: name },
       text: '<p>Invented scenario. ' + text + '</p>',
       steps: [conceptStep('concept', 'Which kind of influence explains what ' + name + ' does?', key, ['normative', 'informational', 'obedience', 'groupthink'], name),
-        dirStep('predict', 'Now this changes: ' + ch.text + ' Compared with before, conformity will most likely be:', ch.dir, whyDir),
+        dirStep('predict', 'Now this changes: ' + fill(ch.text, name, w[1], n) + ' Compared with before, conformity will most likely be:', ch.dir, whyDir),
         studyStep('study', 'Asch\'s line studies are the classic test of conformity. What did later research find?', CONF_STUDY)],
       solution: [CONCEPTS[key].why + (key === 'normative' ? ' The answer was clear, and ' + name + ' went along in public.' : ' The situation was unclear, and ' + name + ' believed the others knew better.'), whyDir, CONF_STUDY.right],
       figure: { kind: 'conformity', n: n, partner: ch.change === 'partner', change: ch.change }
@@ -290,14 +292,15 @@
   }
   function genAttribution(r, ctx){
     var t = r.pick(ATTR_T), w = who(r), name = w[0];
-    var kindKey = t.kind === 'dispositional' ? 'A dispositional attribution: it blames the person\'s character.' : 'Both: situational for ' + name + '\'s own case, dispositional for the other case.';
+    var both = t.concept === 'selfServing' ? 'Both: dispositional for the success, situational for the failure.' : 'Both: situational for ' + name + '\'s own case, dispositional for the other case.';
+    var kindKey = t.kind === 'dispositional' ? 'A dispositional attribution: it blames the person\'s character.' : both;
     return {
       type: 'attribution', ctx: ctx.id, topic: ctx.topic, given: { concept: t.concept, kind: t.kind },
       text: '<p>Invented scenario. ' + fill(t.text, name, w[1], 0) + '</p>',
       steps: [choice('kind', 'What kind of explanation does ' + name + ' give' + (t.kind === 'both' ? ' in each case?' : '?'), [
           { t: 'A dispositional attribution: it blames the person\'s character.', ok: t.kind === 'dispositional', why: 'A dispositional attribution points to the person\'s traits.' },
           { t: 'A situational attribution: it blames the circumstances.', ok: false, why: 'A situational attribution points to the circumstances.' },
-          { t: 'Both: situational for ' + name + '\'s own case, dispositional for the other case.', ok: t.kind === 'both', why: 'Read each explanation on its own: who is being explained, and by what?' },
+          { t: both, ok: t.kind === 'both', why: 'Read each explanation on its own: who is being explained, and by what?' },
           { t: 'Neither: it is a statement of fact.', ok: false, why: 'Each explanation gives a cause, so it is an attribution.' }
         ]),
         conceptStep('concept', 'Which bias does this show?', t.concept, ['fae', 'actorObserver', 'selfServing', 'halo'], name)],

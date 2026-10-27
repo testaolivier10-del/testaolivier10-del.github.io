@@ -197,8 +197,8 @@ Checked by `checkForms` (`scripts/lib/appsych-exams.mjs`): at least two forms; S
 questions, whole sets in authored order, set counts within `EXAM_SETS` (study 2-6, data 2-6, figure 0-4: the
 official counts are not published, needs-author `mcq-sets`), each unit within 15-25% of 75 (11 to 19); Section II
 is the AAQ then the EBQ, 7 points each; no question or FRQ in two forms. Practice weights checked only when the
-map sets `practicesConfirmed`. `EXAM_NUMBERS` recomputes every exam-only number (Phase 3); `JUSTIFY_NUMBERS` is
-empty until the prompts exist. An FRQ unlocks with the latest of its `topics` in course order: `checkFrq` scans
+map sets `practicesConfirmed`. `EXAM_NUMBERS` recomputes every exam-only number (Phase 3); `JUSTIFY_NUMBERS` every
+number a prompt derives. An FRQ unlocks with the latest of its `topics` in course order: `checkFrq` scans
 everything in it but the restricted-term lists against that topic (the exams are exempt).
 
 ## Help note
@@ -213,7 +213,9 @@ content check.
 As AP® Environmental Science; `skill` is one of `method`, `opdef`, `statistic`, `ethics`, `generalize`, `argue`,
 `claim`, `evidence`, `reasoning` (one per AAQ and EBQ part). The checker refuses a claim that is a question,
 evidence that cites no source, reasoning that does not link, a builder slot without a `why`, and anything taught
-after the unit.
+after the unit. Files: one per chapter (`unit-1.json` to `unit-5.json`, `skills-research.json`), 6 to 9
+prompts each (`JUSTIFY_PER_CHAPTER`), 40+ in all, every skill used; ids `u<n>-<words>`, `rs-<words>` for the
+research skills chapter; the first 3 in course order are free (`FREE_JUSTIFY`).
 
 ## Registration
 

@@ -1,0 +1,426 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-2",
+   "id": "u2-framing-method",
+   "topic": "thinking",
+   "practice": "2.A",
+   "skill": "method",
+   "title": "Survey or experiment?",
+   "context": "<p>Two hundred adults in an online panel read about a surgery. A computer randomly assigned each person to one wording: \"90 out of 100 patients survive\" or \"10 out of 100 patients die\". Each person then rated how likely they would be to choose the surgery from 1 (very unlikely) to 7 (very likely) (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the research method used in this study.",
+   "checklist": [
+    "Names one method: an experiment",
+    "Supports it from the summary: the wording was manipulated and people were randomly assigned to it",
+    "Does not call it a survey because people answered questions"
+   ],
+   "earns": {
+    "answer": "This is an experiment: the researchers manipulated the wording of the surgery (survive or die) and the computer randomly assigned each person to one wording before measuring their rating.",
+    "why": "It names one method and gives the two features that make it an experiment: a manipulated variable and random assignment."
+   },
+   "misses": {
+    "answer": "It is a survey, because the participants answered a question online.",
+    "why": "A rating question is how the dependent variable was measured. Because the wording was manipulated and assigned at random, the method is an experiment."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Method",
+      "options": [
+       "an experiment",
+       "a survey",
+       "a correlational study"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The rating question is only the measure; the researchers manipulated the wording, so it is an experiment.",
+       "2": "The researchers did not just measure two existing variables; they manipulated one."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "the wording was manipulated and randomly assigned",
+       "the participants were adults",
+       "the ratings ran from 1 to 7"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Who took part does not decide the method.",
+       "2": "The rating scale is the measure; it does not decide the method."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-spacing-opdef",
+   "topic": "encoding-memories",
+   "practice": "2.B",
+   "skill": "opdef",
+   "title": "How the spacing study measured memory",
+   "context": "<p>Sixty high-school students learned 30 Spanish-English word pairs. They were randomly assigned to study in one 60-minute session or in three 20-minute sessions on three days. One week later each student saw the 30 Spanish words and wrote the English word for each (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the operational definition of long-term retention in this study.",
+   "checklist": [
+    "Says what was counted: the number of the 30 Spanish words translated correctly into English",
+    "Says when: on the test one week later",
+    "Does not define long-term memory in general"
+   ],
+   "earns": {
+    "answer": "Long-term retention was the number of the 30 Spanish words, out of 30, that a student correctly translated into English on the test one week after studying.",
+    "why": "It gives the count, the maximum and the delay, which is how this study measured the variable."
+   },
+   "misses": {
+    "answer": "Long-term retention is how well information stays in long-term memory.",
+    "why": "That is the concept in general. Give the measure: correct translations out of 30, one week later."
+   },
+   "specific": {
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the number of the 30 words translated correctly",
+       "how confident students felt about the words",
+       "the minutes each student studied"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Confidence was not measured; the test counted correct translations.",
+       "2": "Study time is the independent variable (one session or three), not the measure of retention."
+      }
+     },
+     "when": {
+      "label": "Timing",
+      "options": [
+       "one week after studying",
+       "right after the last session",
+       "one month later"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The summary says the test came one week later.",
+       "2": "The summary says one week, not one month."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-spacing-statistic",
+   "topic": "encoding-memories",
+   "practice": "3.C",
+   "skill": "statistic",
+   "title": "What a significant difference in recall shows",
+   "context": "<p>Sixty high-school students learned 30 Spanish-English word pairs. They were randomly assigned to study in one 60-minute session or in three 20-minute sessions on three days. One week later each student saw the 30 Spanish words and wrote the English word for each (invented study for practice). The three-session group translated 21 words on average and the one-session group 14; the difference was statistically significant (<i>p</i> &lt; .05).</p>",
+   "prompt": "<b>Explain</b> what the statistically significant difference shows about these two groups.",
+   "checklist": [
+    "Gives the direction for the groups: the three-session group recalled more, 7 more words on average",
+    "Explains significance: a difference this large is unlikely to be due to chance alone",
+    "Says what it means for spacing, without calling significance a measure of size"
+   ],
+   "earns": {
+    "answer": "Students who studied in three shorter sessions translated 7 more words on average (21 against 14) than students who studied once. Because the difference is statistically significant, it is unlikely to be due to chance alone, which suggests that spacing study sessions improved retention for these students.",
+    "why": "It reads the result for the groups (direction and size) and explains what \"significant\" means here."
+   },
+   "misses": {
+    "answer": "The three-session mean was 21 and the one-session mean was 14, and p < .05.",
+    "why": "It copies the numbers without saying what they show. Say which group did better and that chance is an unlikely explanation."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Result",
+      "options": [
+       "the three-session group recalled 7 more words on average",
+       "the one-session group recalled 7 more words on average",
+       "the groups recalled the same"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the direction: 21 belongs to the three-session group.",
+       "2": "21 and 14 differ by 7 words."
+      }
+     },
+     "meaning": {
+      "label": "Meaning of significance",
+      "options": [
+       "the difference is unlikely to be due to chance alone",
+       "the difference is very large",
+       "every spaced student beat every massed student"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Significance is not size; it says chance is an unlikely explanation.",
+       "2": "These are averages; significance says nothing about every single student."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-misinfo-ethics",
+   "topic": "forgetting",
+   "practice": "2.D",
+   "skill": "ethics",
+   "title": "Deception and a debriefing",
+   "context": "<p>Researchers told 90 university students the study was about attention while driving. Everyone watched the same video of a car crash at a stop sign. Half then answered questions that falsely mentioned a yield sign; half answered the same questions without it. A day later, everyone was asked which sign they had seen. Afterward the researchers debriefed each student: they explained that the study was about memory and that the yield sign had never appeared in the video (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>describe</b> how the researchers applied it.",
+   "checklist": [
+    "Names debriefing (the guideline the summary describes)",
+    "Says how it was applied: the students were told the real aim and that the yield sign was never in the video",
+    "Does not name a safeguard the summary never mentions, such as confidentiality"
+   ],
+   "earns": {
+    "answer": "The researchers debriefed the students: after the study they explained that it was really about memory and that the yield sign had never appeared, so no student left believing a false detail or the cover story.",
+    "why": "It names the safeguard in the summary and says how it was applied to these students."
+   },
+   "misses": {
+    "answer": "The researchers kept the students' names confidential, so their answers stayed private.",
+    "why": "The summary never mentions confidentiality. Use a safeguard it describes: the debriefing."
+   },
+   "specific": {
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "debriefing",
+       "confidentiality",
+       "informed assent"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The summary never describes keeping names private.",
+       "2": "Assent is for minors; these were university students and the summary does not mention it."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "students were told the real aim and that the yield sign was false",
+       "students watched a video of a crash",
+       "half the students got misleading questions"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the procedure, not a protection.",
+       "2": "That is the manipulation itself; the debriefing came afterward."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-misinfo-argue",
+   "topic": "forgetting",
+   "practice": "4.B",
+   "skill": "argue",
+   "title": "Did the misleading question change memory?",
+   "context": "<p>Researchers told 90 university students the study was about attention while driving. Everyone watched the same video of a car crash at a stop sign. Half then answered questions that falsely mentioned a yield sign; half answered the same questions without it. A day later, everyone was asked which sign they had seen. Afterward the researchers debriefed each student: they explained that the study was about memory and that the yield sign had never appeared in the video (invented study for practice). A day later, 34% of the misled students said they had seen a yield sign, against 8% of the others.</p>",
+   "prompt": "The researchers hypothesized that misleading information given after an event changes memory of it. <b>Explain</b> whether the results support the hypothesis, using a specific result.",
+   "checklist": [
+    "Uses a specific result: 34% against 8% reported a yield sign, 26 percentage points more",
+    "Explains the link with the misinformation effect or reconstructive memory",
+    "Takes a position (supports) without saying the study proves it"
+   ],
+   "earns": {
+    "answer": "The results support the hypothesis: 34% of the students who got the misleading question reported a yield sign, 26 percentage points more than the 8% who did not. This fits the misinformation effect: when the students later rebuilt the memory, the false detail from the question was folded in as if they had seen it.",
+    "why": "It uses an accurately read result and explains how the concept produces it."
+   },
+   "misses": {
+    "answer": "The results support the hypothesis, because memory is reconstructive and can change.",
+    "why": "A concept with no result. Use the 34% against 8% and link it to the hypothesis."
+   },
+   "specific": {
+    "slots": {
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "34% of the misled students reported a yield sign, against 8%",
+       "8% of the misled students reported a yield sign, against 34%",
+       "all of the misled students reported a yield sign"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the groups: 34% belongs to the misled students.",
+       "2": "Only 34% did, not all."
+      }
+     },
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "the misinformation effect: the false detail was folded into the memory",
+       "proactive interference: an old memory blocked a new one",
+       "encoding failure: the students never saw the sign"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Proactive interference is old memories disrupting new ones; here later information changed the memory.",
+       "2": "Nobody saw a yield sign; the issue is a detail added later, not one missed."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-retrieval-claim",
+   "topic": "retrieving-memories",
+   "practice": "4.A",
+   "skill": "claim",
+   "title": "A claim about self-quizzing",
+   "context": "<p>Question: does practicing retrieval help long-term memory more than rereading? Source 1: 120 high-school students were randomly assigned to reread a passage or to quiz themselves on it; a week later the self-quiz group recalled 62% of the ideas and the reread group 45%. Source 2: on a test five minutes after studying, both groups recalled about the same; on a test two days later, students who quizzed themselves recalled more. Source 3: in a survey of 400 students, 70% said rereading was their main way to study (invented sources for practice).</p>",
+   "prompt": "<b>Propose</b> a defensible claim that answers the question.",
+   "checklist": [
+    "Takes a position that answers the question asked",
+    "Is a statement, not a question or a description of the topic",
+    "Can be supported or refuted with the sources"
+   ],
+   "earns": {
+    "answer": "Practicing retrieval, such as quizzing yourself, leads to better recall on a delayed test than spending the same time rereading.",
+    "why": "It takes a clear position on the question that the three sources can support or refute."
+   },
+   "misses": {
+    "answer": "This response will discuss retrieval practice and rereading.",
+    "why": "A topic sentence takes no position, so it is not a claim."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Claim",
+      "options": [
+       "practicing retrieval leads to better delayed recall than rereading",
+       "students study in different ways",
+       "is rereading or retrieval better?"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "True but takes no position on the question.",
+       "2": "A question is not a claim."
+      }
+     },
+     "scope": {
+      "label": "Measure",
+      "options": [
+       "on a delayed test",
+       "by how students feel",
+       "only in the first five minutes"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sources measure recall, not feelings.",
+       "2": "Source 2 found no difference at five minutes; the claim is about delayed recall."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-retrieval-evidence",
+   "topic": "retrieving-memories",
+   "practice": "4.B",
+   "skill": "evidence",
+   "title": "Evidence, cited, from a result",
+   "context": "<p>Question: does practicing retrieval help long-term memory more than rereading? Source 1: 120 high-school students were randomly assigned to reread a passage or to quiz themselves on it; a week later the self-quiz group recalled 62% of the ideas and the reread group 45%. Source 2: on a test five minutes after studying, both groups recalled about the same; on a test two days later, students who quizzed themselves recalled more. Source 3: in a survey of 400 students, 70% said rereading was their main way to study (invented sources for practice).</p>",
+   "prompt": "Claim: practicing retrieval leads to better delayed recall than rereading. <b>Support</b> the claim with one piece of evidence from one source.",
+   "checklist": [
+    "Gives a specific result, not a method or a participant detail",
+    "Cites the source: \"(Source 1)\" or \"According to Source 1\"",
+    "The result supports the claim"
+   ],
+   "earns": {
+    "answer": "According to Source 1, students who quizzed themselves recalled 62% of the ideas a week later, compared with 45% for students who reread the passage.",
+    "why": "A specific, accurate result that supports the claim, with its source named."
+   },
+   "misses": {
+    "answer": "In Source 1, 120 students were randomly assigned to either reread or quiz themselves.",
+    "why": "That is the method, not a result. Readers want what was found."
+   },
+   "specific": {
+    "slots": {
+     "source": {
+      "label": "Source",
+      "options": [
+       "Source 1",
+       "Source 3"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Source 3 reports how students study, not whether retrieval works."
+      }
+     },
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "the self-quiz group recalled 62% a week later, against 45% for rereading",
+       "120 students were randomly assigned",
+       "70% of students mainly reread"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is a method detail, not a result.",
+       "2": "That is Source 3, and it says what students do, not what works."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-2",
+   "id": "u2-retrieval-reasoning",
+   "topic": "retrieving-memories",
+   "practice": "4.B",
+   "skill": "reasoning",
+   "title": "Reasoning with a concept, not the topic word",
+   "context": "<p>Question: does practicing retrieval help long-term memory more than rereading? Source 1: 120 high-school students were randomly assigned to reread a passage or to quiz themselves on it; a week later the self-quiz group recalled 62% of the ideas and the reread group 45%. Source 2: on a test five minutes after studying, both groups recalled about the same; on a test two days later, students who quizzed themselves recalled more. Source 3: in a survey of 400 students, 70% said rereading was their main way to study (invented sources for practice).</p>",
+   "prompt": "Claim: practicing retrieval leads to better delayed recall than rereading. Evidence: Source 2. <b>Explain</b> how the evidence supports the claim, using a psychology concept other than retrieval practice or the testing effect.",
+   "checklist": [
+    "Cites the evidence: equal recall at five minutes, more for self-quizzing two days later (Source 2)",
+    "Applies a concept from the unit that is not the prompt's topic: the forgetting curve, for example",
+    "Links it: the concept explains why the gap appeared only after two days"
+   ],
+   "earns": {
+    "answer": "In Source 2, both groups recalled about the same five minutes after studying, but the self-quiz group recalled more two days later. This supports the claim because of the forgetting curve: most forgetting happens soon after studying, and the rereaders' recall fell away over the two days while retrieving the material slowed that drop for the self-quiz group.",
+    "why": "Evidence, then a concept that is not the prompt's topic, then the link that explains the delay."
+   },
+   "misses": {
+    "answer": "Source 2 shows the quiz group remembered more after two days, which shows the testing effect.",
+    "why": "The testing effect is the prompt's own topic, so it cannot earn the concept point. Use a different concept and link it."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "the forgetting curve",
+       "the testing effect",
+       "random assignment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the prompt's own topic, a restricted term.",
+       "2": "A research word never earns the concept point."
+      }
+     },
+     "link": {
+      "label": "Link to the claim",
+      "options": [
+       "rereaders forgot quickly over two days while retrieval slowed forgetting",
+       "both groups forgot nothing",
+       "the quiz group studied longer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Source 2 shows the rereaders' recall dropped by two days.",
+       "2": "The summary gives no difference in study time."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

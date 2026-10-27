@@ -103,7 +103,7 @@ One branch, `claude/appsych`, one PR at the end.
 | 0 | Fork AP® Environmental Science: runtime `psychology/assets/` (`psy-*`), `ApPsychStats` (descriptive statistics) in place of `ApEnvCalc`, generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-27** (decision 7) |
 | 1 | Content: lessons, notes, banks (incl. stimulus sets), AAQs and EBQs, glossary, figures | |
 | 2 | Trainers (section 6) | |
-| 3 | Two fixed practice exams, unit tests, cram kit, extras | **built 2026-10-27** (decision 12, `docs/appsych-reviews/phase3.md`): two forms (75 in course order, 15 per unit, 20 exam-only + 55 bank each, 10 sets each, AAQ then EBQ), every exam-only number recomputed, timed sections; FRQ teaching-order check and six FRQs refiled; measured plot margins; shared `hintSlot` and crumb hide; help note as a lesson field; heritability wording reconciled; needs-author merged. "Make it specific" prompts not written (needs-author `justify-prompts`) |
+| 3 | Two fixed practice exams, unit tests, cram kit, extras | **built 2026-10-27** (decision 12, `docs/appsych-reviews/phase3.md`): two forms (75 in course order, 15 per unit, 20 exam-only + 55 bank each, 10 sets each, AAQ then EBQ), every exam-only number recomputed, timed sections; FRQ teaching-order check and six FRQs refiled; measured plot margins; shared `hintSlot` and crumb hide; help note as a lesson field; heritability wording reconciled; needs-author merged. "Make it specific": 46 prompts (7-8 per unit and the research skills chapter, every AAQ and EBQ skill, a builder on each, first 3 free, numbers in `JUSTIFY_NUMBERS`) |
 | 4 | Independent accuracy checks per unit group, tools and exams | |
 | Launch | Publish, generators, continuity pass, "ten courses" wording, full CI with browser checks, PR | |
 
@@ -225,8 +225,7 @@ with one rubric line per point and full-credit samples.
     5.3-5.5, refused when pasted; 5.1 does not keep it (stress and coping is not a disorder topic); 3.6 keeps it
     beside its adverse childhood experiences section (`HELP_EXTRA`, needs-author `help-scope`); (e) intelligence
     heritability is "about 0.5 in adults (lower in childhood), mostly from samples in wealthier countries" in both
-    1.1 and 2.8. Not done: the "Make it specific" prompts (needs-author `justify-prompts`; the 40-prompt rule waits
-    for `data/justify/`).
+    1.1 and 2.8. The "Make it specific" prompts followed the same day (needs-author `justify-prompts`, resolved).
 
 ## 10. Lead notes for Phase 3 and 4 (from author reports)
 

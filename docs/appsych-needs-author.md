@@ -84,13 +84,6 @@ childhood experiences section (abuse, neglect), through `HELP_EXTRA`, and remove
 decide whether non-US readers get a line (for example "outside the US, contact local emergency services or a
 crisis line").
 
-## justify-prompts: the "Make it specific" trainer has no prompts yet (open, 2026-10-27)
-
-The page, the checker (`checkJustify`, nine skills, one per AAQ and EBQ part) and the generator exist from Phase 0,
-but `psychology/data/justify/` was not part of the Phase 3 brief and was not written. Until it is, the content
-check skips the 40-prompt rule and the page says no prompts are published. Write 40+ prompts (4-6 per unit) before
-launch, or hide the page.
-
 ## frq-order: FRQs refiled to the topic they unlock with (resolved, 2026-10-27)
 
 Phase 3 added the check (an FRQ may not use a term taught after its latest topic) and refiled the six that failed
@@ -194,3 +187,10 @@ trainers article-studio, neuron and brain-map. Owner to confirm.
 
 From the College Board exam page and student course page (framework.md section 5). `assets/exam-date.js` and
 the cram kit's default use it.
+
+## justify-prompts: the "Make it specific" prompts (resolved, 2026-10-27)
+
+Written: 46 prompts in `psychology/data/justify/` (Units 1-5 and the research skills chapter, 7-8 each), every
+AAQ and EBQ skill the checker knows, a slot builder on every prompt, the first 3 free. Every study is invented
+and labeled; every derived number is in `JUSTIFY_NUMBERS`. The content check's skip is gone: it now requires
+40+ prompts and 6 to 9 per chapter (`JUSTIFY_PER_CHAPTER`); research skills ids start `rs-`.

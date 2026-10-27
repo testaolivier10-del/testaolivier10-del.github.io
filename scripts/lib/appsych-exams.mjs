@@ -12,8 +12,7 @@
      checkJustify(prompts, ctx)    problems with the trainer's prompts
      checkNumbers(items, prompts)  every number in an exam-only item or a
                                    prompt, recomputed here with ApPsychStats
-                                   (EXAM_NUMBERS: Phase 3; JUSTIFY_NUMBERS
-                                   empty until the prompts are written) */
+                                   (EXAM_NUMBERS and JUSTIFY_NUMBERS) */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { Stats } from './appsych-mathlib.mjs';
@@ -38,6 +37,8 @@ export const FRQ_POINTS = 7;
 export const FRQ_TOTAL = 2;
 // The trainer's free prompts: the first few in course order (spec section 6).
 export const FREE_JUSTIFY = 3;
+// Prompts per unit and in the research skills chapter (owner brief for the prompts, 2026-10-27).
+export const JUSTIFY_PER_CHAPTER = [6, 9];
 // "Make it specific" (spec section 7): the reader-report misses the trainer
 // is built around (docs/appsych-research/framework.md section 7), one per
 // part of the AAQ and the EBQ.
@@ -171,7 +172,8 @@ export function checkJustify(prompts, ctx) {
   const { map } = ctx;
   for (const p of prompts) {
     const w = `justify ${p.id || '(no id)'}`;
-    if (!p.id || !/^u[1-9]-[a-z0-9-]+$/.test(p.id)) errs.push(`${w}: id must be u<unit>-<words>`);
+    // u<unit>-<words>; rs-<words> for the "Research skills you need" chapter.
+    if (!p.id || !(p.unit === 'skills-research' ? /^rs-[a-z0-9-]+$/ : /^u[1-9]-[a-z0-9-]+$/).test(p.id)) errs.push(`${w}: id must be ${p.unit === 'skills-research' ? 'rs' : 'u<unit>'}-<words>`);
     if (ids.has(p.id)) errs.push(`${w}: duplicate id`); ids.add(p.id);
     const t = map.topicById(p.topic);
     if (!t) errs.push(`${w}: unknown topic "${p.topic}"`);
@@ -250,7 +252,25 @@ export const EXAM_NUMBERS = [
   { id: 'psy-exam-2-20', key: `Memory ${C('z', 80, 70, 5)} SD above; vocabulary ${C('z', 85, 80, 10)} SD above`,
     also: [`Memory ${C('sub', 80, 70)} SD above; vocabulary ${C('sub', 85, 80)} SD above`, `Memory ${C('z', 85, 80, 10)} SD above; vocabulary ${C('z', 80, 70, 5)} SD above`] },
 ];
-export const JUSTIFY_NUMBERS = [];
+// "Make it specific": every number a prompt derives (a difference, a summary
+// statistic, a z score or percentile, the strength words of an r), recomputed.
+const brake = [310, 290, 300, 1200, 320];
+export const JUSTIFY_NUMBERS = [
+  { id: 'u1-twins-statistic', has: [`${Stats.describe(0.70)}`, `${Stats.describe(0.35)}`] },
+  { id: 'u1-antagonist-argue', has: [`${C('sub', 30, 12)} fewer than the 30`] },
+  { id: 'u2-spacing-statistic', has: [`${C('sub', 21, 14)} more words on average`] },
+  { id: 'u2-misinfo-argue', has: [`${C('sub', 34, 8)} percentage points more`] },
+  { id: 'u3-attachment-statistic', has: [`${Stats.describe(0.40)}`] },
+  { id: 'u3-schedule-argue', has: [`${C('sub', 48, 11)} minutes longer`] },
+  { id: 'u4-smoke-statistic', has: [`${C('sub', 70, 30)} percentage points more`] },
+  { id: 'u4-certificate-argue', has: [`8 minutes, half as long as the 16`], check: () => C('div', 8, 16) === 0.5 },
+  { id: 'u5-gratitude-statistic', has: [`rose ${C('round', C('sub', 6.3, 5.1), 1)} points`, `rose ${C('round', C('sub', 5.2, 5.0), 1)}`, `a gain ${C('round', C('sub', C('sub', 6.3, 5.1), C('sub', 5.2, 5.0)), 1)} point larger`] },
+  { id: 'u5-exercise-evidence', has: [`${C('sub', 14, 6)} points more`] },
+  { id: 'rs-phone-statistic', has: [`${Stats.describe(-0.45)}`] },
+  { id: 'rs-brake-statistic', has: [`The median, ${C('median', brake)} milliseconds`, `mean up to ${C('mean', brake)} milliseconds`], check: () => brake.filter(x => x < C('mean', brake)).length === 4 },
+  { id: 'rs-normal-statistic', has: [`z score is ${C('z', 130, 100, 15)}`, `near the ${C('percentileRule', C('z', 130, 100, 15))}th percentile`, `about ${C('rulePct', 2, null)}% scored higher`] },
+  { id: 'rs-gum-argue', has: [`only ${C('sub', 78, 76)} points higher`] },
+];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];

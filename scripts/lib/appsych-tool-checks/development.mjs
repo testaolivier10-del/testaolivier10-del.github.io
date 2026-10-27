@@ -15,7 +15,7 @@ import { runtime } from './_shared.mjs';
 export const TYPES = ['piaget', 'erikson', 'attachment', 'parenting', 'adolescence', 'adultcog', 'methods'];
 // Usual textbook ages (lower bound inclusive, upper exclusive).
 const PIAGET = [[0, 2, 'Sensorimotor'], [2, 7, 'Preoperational'], [7, 12, 'Concrete operational'], [12, 200, 'Formal operational']];
-const ERIKSON = [[0, 1, 'Trust vs. mistrust'], [1, 3, 'Autonomy vs. shame and doubt'], [3, 6, 'Initiative vs. guilt'], [6, 12, 'Competence vs. inferiority'], [12, 20, 'Identity vs. role confusion'], [20, 40, 'Intimacy vs. isolation'], [40, 65, 'Generativity vs. stagnation'], [65, 200, 'Integrity vs. despair']];
+const ERIKSON = [[0, 1, 'Trust vs. mistrust'], [1, 3, 'Autonomy vs. shame and doubt'], [3, 6, 'Initiative vs. guilt'], [6, 12, 'Industry vs. inferiority'], [12, 20, 'Identity vs. role confusion'], [20, 40, 'Intimacy vs. isolation'], [40, 65, 'Generativity vs. stagnation'], [65, 200, 'Integrity vs. despair']];
 const PERIOD = [[0, 10, 'Childhood'], [10, 18, 'Adolescence'], [18, 25, 'Emerging adulthood'], [25, 65, 'Adulthood']];
 const at = (list, a) => (list.find(([lo, hi]) => a >= lo && a < hi) || [])[2];
 // The concept a Piaget scene shows, from its own words.

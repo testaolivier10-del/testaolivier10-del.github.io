@@ -29,7 +29,7 @@ import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { loadMap } from '../lib/appsych-build.mjs';
 import { Tex, Stats } from '../lib/appsych-mathlib.mjs';
-import { loadExams, checkNumbers, checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/appsych-exams.mjs';
+import { loadExams, loadJustify, FREE_JUSTIFY, JUSTIFY_PER_CHAPTER, checkNumbers, checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, EXAM_SETS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/appsych-exams.mjs';
 import { EQ, NOT_ON, TABLES, workedTex, workedValue, formulaCards } from '../lib/appsych-entry.mjs';
 
 const map = loadMap();
@@ -207,12 +207,29 @@ test('the two real forms pass every check, and every recomputed number is in pla
     const own = ids.filter(id => examItems.has(id)).length;
     assert.ok(own >= 20 && own <= 30, `${f.id}: ${own} exam-only`);
   }
-  assert.deepEqual(checkNumbers(examItems, []), []);
+  const prompts = loadJustify(D, map);
+  assert.deepEqual(checkNumbers(examItems, prompts), []);
   assert.ok(EXAM_NUMBERS.length >= 12);
   const w = new Map(examItems); const q = JSON.parse(JSON.stringify(examItems.get('psy-exam-2-05'))); q.options[q.correct] = '7 symptoms'; w.set(q.id, q);
-  assert.ok(checkNumbers(w, []).some(e => /psy-exam-2-05/.test(e)), 'a wrong key is caught');
+  assert.ok(checkNumbers(w, prompts).some(e => /psy-exam-2-05/.test(e)), 'a wrong key is caught');
   const q2 = JSON.parse(JSON.stringify(examItems.get('psy-exam-1-05'))); q2.options[(q2.correct + 2) % 4] = '70 words'; const w2 = new Map(examItems); w2.set(q2.id, q2);
-  assert.ok(checkNumbers(w2, []).some(e => /psy-exam-1-05.*distractor/.test(e)), 'a named-slip distractor that is not recomputed is caught');
+  assert.ok(checkNumbers(w2, prompts).some(e => /psy-exam-1-05.*distractor/.test(e)), 'a named-slip distractor that is not recomputed is caught');
+});
+
+test('the real "Make it specific" prompts: 40+, 6 to 9 per chapter, every skill, builders, numbers recomputed, the first three free', () => {
+  const prompts = loadJustify('psychology/data', map);
+  assert.ok(prompts.length >= 40, `${prompts.length} prompts`);
+  for (const c of map.chapters) { const n = prompts.filter(p => p.unit === c.id).length; assert.ok(n >= JUSTIFY_PER_CHAPTER[0] && n <= JUSTIFY_PER_CHAPTER[1], `${c.id}: ${n}`); }
+  for (const k of Object.keys(JUSTIFY_SKILLS)) assert.ok(prompts.some(p => p.skill === k), k);
+  assert.ok(prompts.filter(p => p.specific).length >= 30, 'slot builders where the answer has components');
+  assert.deepEqual(checkJustify(prompts, { map }), []);
+  assert.equal(FREE_JUSTIFY, 3);
+  for (const p of prompts) assert.match(p.context, /invented (study|sources) for practice/, `${p.id} says it is invented`);
+  assert.ok(JUSTIFY_NUMBERS.length >= 12);
+  for (const n of JUSTIFY_NUMBERS) assert.ok(prompts.some(p => p.id === n.id), `${n.id} exists`);
+  assert.deepEqual(checkNumbers(new Map(), prompts).filter(e => /prompt/.test(e)), []);
+  const p2 = JSON.parse(JSON.stringify(prompts).replace(/mean up to 484 milliseconds/g, 'mean up to 480 milliseconds'));
+  assert.ok(checkNumbers(new Map(), p2).some(e => /rs-brake-statistic/.test(e)), 'a wrong prompt number is caught');
 });
 
 test('timed sections: a fixed exam can run Section I or Section II alone (?section=1|2)', () => {

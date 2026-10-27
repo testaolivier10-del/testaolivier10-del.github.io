@@ -42,12 +42,15 @@ export function recheck(p, c, w, errs) {
   const dir = (k, want) => need(right(stepOf(p, k)) === want, `${k} key "${right(stepOf(p, k))}" should be "${want}"`);
   if (p.type === 'conformity') {
     need(right(stepOf(p, 'concept')) === CONCEPT[g.task === 'clear' ? 'normative' : 'informational'], `concept key "${right(stepOf(p, 'concept'))}" is wrong for a ${g.task} task`);
-    // partner and private answers lowered conformity; a majority growing 1 to 3 raised it (Asch).
-    const want = g.change === 'bigger' ? (PUB.asch[3] > PUB.asch[1] ? 'Higher' : 'Lower') : (PUB.asch.partner < PUB.asch[3] ? 'Lower' : 'Higher');
+    // partner and private answers lowered conformity; one other person instead of 3 or more lowered it (Asch).
+    const want = g.change === 'smaller' ? (PUB.asch[1] < PUB.asch[3] ? 'Lower' : 'Higher') : (PUB.asch.partner < PUB.asch[3] ? 'Lower' : 'Higher');
+    need(['partner', 'private', 'smaller'].includes(g.change), `unknown conformity change ${g.change}`);
+    need(g.change !== 'private' || g.task === 'clear', 'answering privately only lowers normative (clear-task) conformity');
     dir('predict', want);
     need(/33%/.test(right(stepOf(p, 'study'))) && /Franzen and Mader, 2023/.test(right(stepOf(p, 'study'))), 'the study key is not the 2023 replication');
   } else if (p.type === 'obedience') {
     need(right(stepOf(p, 'concept')) === 'Obedience', 'concept key is not obedience');
+    need(g.change !== 'touch', 'a touch change needs a victim in the scene');
     const base = PUB.milgram.remote, want = g.change === 'uniform' ? 'Higher' : PUB.milgram[g.change] < base ? 'Lower' : 'Higher';
     dir('predict', want);
     need(/Burger, 2009/.test(right(stepOf(p, 'study'))) && /70%/.test(right(stepOf(p, 'study'))) && /82\.5%/.test(right(stepOf(p, 'study'))), 'the study key is not Burger (2009)');

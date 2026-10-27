@@ -108,13 +108,13 @@
   var ACTIVE = [
     { id: 'music', region: 'auditory', task: 'listen to music' },
     { id: 'pictures', region: 'visual', task: 'look at a flashing checkerboard' },
-    { id: 'tap', region: 'motor', task: 'tap the fingers of their right hand', side: 'left' },
-    { id: 'touch', region: 'somatosensory', task: 'have their left hand brushed with a feather', side: 'right' },
+    { id: 'tap', region: 'motor', task: 'tap the fingers of their right hand', side: 'left', also: ['somatosensory', 'cerebellum'] },
+    { id: 'touch', region: 'somatosensory', task: 'have their left hand brushed with a feather', side: 'right', also: ['thalamus'] },
     { id: 'fear', region: 'amygdala', task: 'see photos of snarling dogs' },
     { id: 'plan', region: 'prefrontal', task: 'plan their moves in a puzzle and hold rules in mind' },
-    { id: 'talk', region: 'broca', task: 'say words out loud', side: 'left' },
-    { id: 'listen', region: 'wernicke', task: 'listen to sentences and decide whether they make sense', side: 'left' },
-    { id: 'balance', region: 'cerebellum', task: 'learn to balance on a wobble board' }
+    { id: 'talk', region: 'broca', task: 'say words out loud', side: 'left', also: ['motor', 'auditory'] },
+    { id: 'listen', region: 'wernicke', task: 'listen to sentences and decide whether they make sense', side: 'left', also: ['auditory'] },
+    { id: 'balance', region: 'cerebellum', task: 'learn to balance on a wobble board', also: ['motor', 'somatosensory'] }
   ];
   var OBJECTS = ['key', 'spoon', 'pencil', 'ball', 'cup', 'coin', 'comb', 'fork'];
 
@@ -140,8 +140,19 @@
     motor: ['somatosensory', 'cerebellum', 'prefrontal'], somatosensory: ['motor', 'thalamus', 'parietal'],
     callosum: ['thalamus', 'hippocampus', 'medulla'], pons: ['medulla', 'cerebellum', 'thalamus']
   };
-  function regionChoice(r, key, why){
-    var wrong = M.shuffle(r, NEAR[key]).slice(0, 3);
+  /* Three wrong regions: confusable neighbors first, never the key's own
+     lobe or a part of it (both would also be right), never one listed in
+     excl (another area a task also activates), padded from the rest. */
+  function overlaps(a, b){ return REGIONS[a].parent === b || REGIONS[b].parent === a; }
+  function wrongs(r, key, excl){
+    excl = excl || [];
+    var ok = function(k){ return k !== key && !overlaps(k, key) && excl.indexOf(k) < 0; };
+    var a = M.shuffle(r, NEAR[key].filter(ok)).slice(0, 3);
+    if(a.length < 3) a = a.concat(M.shuffle(r, ORDER.filter(function(k){ return ok(k) && a.indexOf(k) < 0; })).slice(0, 3 - a.length));
+    return a;
+  }
+  function regionChoice(r, key, why, excl){
+    var wrong = wrongs(r, key, excl);
     return [[nm(key), 'Right. ' + why]].concat(wrong.map(function(k){ return [nm(k), 'The ' + lc(nm(k)) + ': ' + lc(REGIONS[k].does) + ' That does not fit this case.']; }));
   }
 
@@ -174,7 +185,7 @@
       given: { case: cs.id, region: key }, figure: { kind: 'brain', view: REGIONS[key].view === 'inside' ? 'inside' : 'outside', region: key, show: 'after' } };
   }
   function alsoOpts(r, key){
-    var others = M.shuffle(r, NEAR[key]).slice(0, 3);
+    var others = wrongs(r, key);
     return [[REGIONS[key].does, 'Right. Damage there: ' + lc(REGIONS[key].damage)]].concat(others.map(function(k){ return [REGIONS[k].does, 'That is the ' + lc(nm(k)) + ', not the ' + lc(nm(key)) + '.']; }));
   }
 
@@ -189,7 +200,7 @@
     }[m];
     var steps = [choice('method', 'Which method fits best?', [[METHODS[m].name, 'Right. ' + why[m]]].concat(Object.keys(METHODS).filter(function(k){ return k !== m; }).map(function(k){ return [METHODS[k].name, slip[k]]; })))];
     var a = r.pick(ACTIVE), key = a.region;
-    steps.push(choice('where', 'In an fMRI study, participants ' + a.task + '. Which area should become most active?', regionChoice(r, key, 'The ' + lc(nm(key)) + (a.side ? ' (in the ' + a.side + ' hemisphere)' : '') + ': ' + lc(REGIONS[key].does))));
+    steps.push(choice('where', 'In an fMRI study, participants ' + a.task + '. Which area should become most active?', regionChoice(r, key, 'The ' + lc(nm(key)) + (a.side ? ' (in the ' + a.side + ' hemisphere)' : '') + ': ' + lc(REGIONS[key].does), a.also)));
     var sol = [METHODS[m].long + ': ' + METHODS[m].does, 'To ' + a.task + ', the ' + lc(nm(key)) + ' works hardest' + (a.side ? ', in the ' + a.side + ' hemisphere' + (a.region === 'motor' || a.region === 'somatosensory' ? ' (the opposite side from the hand)' : ' for most people') : '') + '.'];
     return { ctx: c.id, topic: c.topic, type: 'imaging', text: '<p>' + (c.lead ? c.lead + ' ' : '') + cs.text + '</p>', steps: steps, solution: sol,
       given: { case: cs.id, method: m, task: a.id, region: key }, figure: { kind: 'brain', view: REGIONS[key].view === 'inside' ? 'inside' : 'outside', region: key, show: 'after', glow: true } };
@@ -271,8 +282,8 @@
   function genLocate(r, c){
     var key = r.pick(c.regions || LOCATE), view = REGIONS[key].view === 'inside' ? 'inside' : REGIONS[key].view === 'both' ? r.pick(['outside', 'inside']) : 'outside';
     if(key === 'callosum' || key === 'thalamus' || key === 'hypothalamus' || key === 'pituitary' || key === 'hippocampus' || key === 'amygdala') view = 'inside';
-    var steps = [choice('name', 'Name the highlighted structure.', [[nm(key), 'Right. That is the ' + lc(nm(key)) + '.']].concat(M.shuffle(r, NEAR[key]).slice(0, 3).map(function(k){ return [nm(k), 'The ' + lc(nm(k)) + ' is ' + where(k) + '. The highlighted one is the ' + lc(nm(key)) + ', ' + where(key) + '.']; })))];
-    var others = M.shuffle(r, NEAR[key]).slice(0, 3);
+    var steps = [choice('name', 'Name the highlighted structure.', [[nm(key), 'Right. That is the ' + lc(nm(key)) + '.']].concat(wrongs(r, key).map(function(k){ return [nm(k), 'The ' + lc(nm(k)) + ' is ' + where(k) + '. The highlighted one is the ' + lc(nm(key)) + ', ' + where(key) + '.']; })))];
+    var others = wrongs(r, key);
     steps.push(choice('job', 'What does the ' + lc(nm(key)) + ' do?', [[REGIONS[key].does, 'Right.']].concat(others.map(function(k){ return [REGIONS[k].does, 'That is the ' + lc(nm(k)) + '.']; }))));
     var sol = ['The ' + lc(nm(key)) + ', ' + where(key) + '.', REGIONS[key].does];
     return { ctx: c.id, topic: c.topic, type: 'locate', text: '<p>' + (c.lead ? c.lead + ' ' : '') + (view === 'inside' ? 'The brain, cut down the middle and seen from the inside. Front is on the left.' : 'The left side of the brain, seen from the outside. Front is on the left.') + '</p>', steps: steps, solution: sol,

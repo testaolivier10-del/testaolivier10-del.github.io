@@ -37,7 +37,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, HELP_TOPICS, HELP_EXTRA, hasApToken, trademarkProblems, fromValue, specificSlots } from './lib/appsych-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS } from './lib/appsych-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS, JUSTIFY_PER_CHAPTER } from './lib/appsych-exams.mjs';
 import { scanPage, indexMap } from './lib/appsych-map.mjs';
 import { Tex, Plot, Grade, Stats } from './lib/appsych-mathlib.mjs';
 export { trademarkProblems };
@@ -743,10 +743,10 @@ if (isMain) {
     const stimOf = sid => ex.stimuli[sid] || allStimuli[sid];
     for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], stimuli: stimOf })) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
-    // Spec section 6: 40+ prompts, 4 to 6 per unit, once the trainer's data
-    // exists (data/justify/; not written in Phase 3, needs-author justify-prompts).
-    if (!exists(join(DATA, 'justify'))) {} else if (prompts.length < 40) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 40`);
-    if (exists(join(DATA, 'justify'))) for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 4 || n > 6) bad2(`${u.id} has ${n} "Make it specific" prompts (4 to 6)`); }
+    // Spec section 7: 40+ prompts, 6 to 9 per unit and in the research skills
+    // chapter (JUSTIFY_PER_CHAPTER).
+    if (prompts.length < 40) bad2(`the "Make it specific" trainer has ${prompts.length} prompts; it needs at least 40`);
+    for (const u of map.chapters) { const n = prompts.filter(p => p.unit === u.id).length, [lo, hi] = JUSTIFY_PER_CHAPTER; if (n < lo || n > hi) bad2(`${u.id} has ${n} "Make it specific" prompts (${lo} to ${hi})`); }
     for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no "Make it specific" prompt practises "${k}"`);
     // Each form: mostly bank items that are not lesson-check items (those are on
     // the free lessons), plus 12-14 exam-only items of its own.

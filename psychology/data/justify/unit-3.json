@@ -1,0 +1,426 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-vocab-method",
+   "topic": "development-methods",
+   "practice": "2.A",
+   "skill": "method",
+   "title": "The design of a vocabulary study",
+   "context": "<p>Researchers tested the vocabulary of the same 150 children at ages 2, 4 and 6, counting the words each child could name from a set of 100 pictures. They wanted to know whether children who knew many words early kept their lead (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the research design and <b>explain</b> how you know.",
+   "checklist": [
+    "Names one design: a longitudinal study",
+    "Supports it: the same children were tested at several ages",
+    "Does not call it cross-sectional because several ages appear"
+   ],
+   "earns": {
+    "answer": "This is a longitudinal study: the researchers followed the same 150 children and tested their vocabulary at ages 2, 4 and 6.",
+    "why": "It names one design and the feature that defines it, the same people measured over time."
+   },
+   "misses": {
+    "answer": "It is a cross-sectional study, because children of different ages were tested.",
+    "why": "A cross-sectional study compares different people of different ages at one time. Here the same children were retested, so it is longitudinal."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Design",
+      "options": [
+       "a longitudinal study",
+       "a cross-sectional study",
+       "a case study"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Cross-sectional compares different children of different ages at once; these are the same children retested.",
+       "2": "There were 150 children measured the same way, not one child studied in depth."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "the same children were tested at ages 2, 4 and 6",
+       "children of three ages took part",
+       "vocabulary was counted from pictures"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Several ages fit both designs; what matters is that they were the same children.",
+       "2": "That is the measure, not the design."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-conservation-opdef",
+   "topic": "cognitive-development",
+   "practice": "2.B",
+   "skill": "opdef",
+   "title": "Scoring conservation",
+   "context": "<p>Researchers tested 60 children aged 4 to 8. On each of four trials a child saw two identical glasses with the same amount of juice; then one glass was poured into a tall, thin glass. The child was asked whether the tall glass now had more, less or the same amount. A child passed if they said \"the same\" and explained that nothing was added or taken away, on at least 3 of the 4 trials (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> how this study operationally defined passing the conservation task.",
+   "checklist": [
+    "Says what the child had to say: \"the same\"",
+    "Says what the child had to explain: nothing was added or taken away",
+    "Gives the cutoff: at least 3 of the 4 trials"
+   ],
+   "earns": {
+    "answer": "A child passed the conservation task if, on at least 3 of the 4 pouring trials, they said the tall glass had the same amount and explained that nothing was added or taken away.",
+    "why": "It gives the answer, the explanation and the cutoff this study used."
+   },
+   "misses": {
+    "answer": "Passing means the child understands that the amount stays the same when its shape changes.",
+    "why": "That defines conservation in general. Give the study's scoring rule."
+   },
+   "specific": {
+    "slots": {
+     "answer": {
+      "label": "Answer that passes",
+      "options": [
+       "\"the same\"",
+       "\"more\"",
+       "any answer, quickly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "\"More\" is the preoperational error the task looks for.",
+       "2": "Speed was not scored; the answer and the reason were."
+      }
+     },
+     "opdef": {
+      "label": "Scoring rule",
+      "options": [
+       "explains nothing was added or taken away, on at least 3 of 4 trials",
+       "gets 1 trial right",
+       "is older than 6"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The cutoff in the summary is 3 of 4 trials, with a reason.",
+       "2": "Age is a participant trait, not the scoring rule."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-attachment-statistic",
+   "topic": "social-emotional-development",
+   "practice": "2.C",
+   "skill": "statistic",
+   "title": "Attachment and friendship: reading r",
+   "context": "<p>Researchers observed 100 one-year-olds in the strange situation and rated each child's security of attachment from 1 to 9. At age 10 each child's teacher rated friendship quality from 1 to 9. Parents signed an informed consent form. At age 10 the researchers also explained the study to each child in simple words and asked whether they agreed to take part; four children said no and were not included (invented study for practice). Security of attachment at age 1 and friendship quality at age 10 correlated <i>r</i>&nbsp;=&nbsp;.40.</p>",
+   "prompt": "<b>Explain</b> what the correlation shows about these children.",
+   "checklist": [
+    "Gives direction and strength: a moderate positive correlation",
+    "Says it for these children: higher security at 1 tended to go with better friendships at 10",
+    "Does not claim attachment caused the friendships; a third variable (such as temperament) could explain both"
+   ],
+   "earns": {
+    "answer": "The correlation is a moderate positive correlation: children rated more securely attached at age 1 tended to have better friendship ratings at age 10. Because it is a correlation, it does not show attachment caused the friendships; a third variable such as temperament could affect both.",
+    "why": "It reads direction and strength for these children and keeps the conclusion within what a correlation allows."
+   },
+   "misses": {
+    "answer": "The correlation of .40 shows that secure attachment causes children to have better friendships.",
+    "why": "A correlation cannot show cause. Say the direction for these children and name the limit."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Result",
+      "options": [
+       "a moderate positive correlation",
+       "a strong negative correlation",
+       "no relationship"
+      ],
+      "correct": 0,
+      "why": {
+       "1": ".40 is positive, and moderate, not strong.",
+       "2": ".40 is not zero; there is a moderate relationship."
+      }
+     },
+     "meaning": {
+      "label": "Meaning",
+      "options": [
+       "more securely attached infants tended to have better friendships at 10",
+       "secure attachment caused better friendships",
+       "less securely attached infants had better friendships"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A correlation does not show cause; temperament could explain both.",
+       "2": "That reverses the direction of a positive correlation."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-attachment-ethics",
+   "topic": "social-emotional-development",
+   "practice": "2.D",
+   "skill": "ethics",
+   "title": "Consent and assent with children",
+   "context": "<p>Researchers observed 100 one-year-olds in the strange situation and rated each child's security of attachment from 1 to 9. At age 10 each child's teacher rated friendship quality from 1 to 9. Parents signed an informed consent form. At age 10 the researchers also explained the study to each child in simple words and asked whether they agreed to take part; four children said no and were not included (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>describe</b> how the researchers applied it.",
+   "checklist": [
+    "Names a guideline the summary describes: informed consent from parents or informed assent from the children",
+    "Says how it was applied: the 10-year-olds heard the study in simple words and chose; four who said no were left out",
+    "Does not say the children gave consent: minors give assent and parents consent"
+   ],
+   "earns": {
+    "answer": "The researchers obtained informed assent: at age 10 they explained the study to each child in simple words and asked whether the child agreed, and the four children who said no were not included, even though their parents had consented.",
+    "why": "It names the guideline, applies it to these children and respects the difference between consent and assent."
+   },
+   "misses": {
+    "answer": "The children signed informed consent forms before the study began.",
+    "why": "Minors cannot give consent; their parents did. The children gave assent."
+   },
+   "specific": {
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "informed assent from the children",
+       "informed consent signed by the children",
+       "debriefing after deception"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Minors give assent; consent came from their parents.",
+       "2": "Nobody was deceived and no debriefing is described."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "the study was explained simply and the four children who said no were left out",
+       "teachers rated friendships",
+       "infants were observed in the strange situation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the measure, not a safeguard.",
+       "2": "That is the procedure, not a safeguard."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-schedule-argue",
+   "topic": "operant-conditioning",
+   "practice": "4.B",
+   "skill": "argue",
+   "title": "Partial reinforcement and persistence",
+   "context": "<p>Twenty-four rats learned to press a lever for food. Twelve were reinforced after every press (continuous reinforcement) and twelve on a variable-ratio schedule, on average every fifth press. Then the food stopped. Rats on the variable-ratio schedule kept pressing for 48 minutes on average before stopping; rats on continuous reinforcement kept pressing for 11 minutes (invented study for practice).</p>",
+   "prompt": "The researchers hypothesized that partial reinforcement makes a behavior last longer once reinforcement stops. <b>Explain</b> whether the results support the hypothesis, using a specific result.",
+   "checklist": [
+    "Uses a specific result: 48 against 11 minutes, 37 minutes longer on the variable-ratio schedule",
+    "Explains why: on a variable-ratio schedule, unrewarded presses were normal, so the end of food was hard to notice and extinction was slower",
+    "Takes a position (supports)"
+   ],
+   "earns": {
+    "answer": "The results support the hypothesis: rats on the variable-ratio schedule kept pressing for 48 minutes after the food stopped, 37 minutes longer than the 11 minutes of rats on continuous reinforcement. On a variable-ratio schedule many presses went unrewarded during training, so the lack of food did not signal a change, and extinction took much longer.",
+    "why": "A correctly read result and an explanation of why the schedule produced it."
+   },
+   "misses": {
+    "answer": "Yes, the rats on the variable-ratio schedule were reinforced more.",
+    "why": "Wrong reading: they were reinforced less often (every fifth press on average). And no result is given."
+   },
+   "specific": {
+    "slots": {
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "variable-ratio rats pressed 37 minutes longer (48 against 11)",
+       "continuous rats pressed 37 minutes longer",
+       "both groups stopped at once"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the groups: 48 minutes belongs to the variable-ratio rats.",
+       "2": "They differed: 48 against 11 minutes."
+      }
+     },
+     "concept": {
+      "label": "Explanation",
+      "options": [
+       "unrewarded presses were normal on a variable ratio, so extinction was slower",
+       "variable-ratio rats got more food",
+       "continuous reinforcement is a form of punishment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "They got food less often, on average every fifth press.",
+       "2": "Continuous reinforcement rewards every press; it is not punishment."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-aggression-claim",
+   "topic": "social-cognitive-learning",
+   "practice": "4.A",
+   "skill": "claim",
+   "title": "A claim about watching aggression",
+   "context": "<p>Question: does watching aggression lead children to act aggressively? Source 1: 60 preschoolers watched an adult either hit an inflatable doll or play calmly; in free play afterward the first group made 9 aggressive acts on average and the second group 2. Source 2: children who saw the adult rewarded for hitting the doll copied 8 aggressive acts on average; children who saw the adult punished copied 3. Source 3: in a survey of 500 teens, weekly hours of violent video games correlated <i>r</i>&nbsp;=&nbsp;.15 with self-reported fights (invented sources for practice).</p>",
+   "prompt": "<b>Propose</b> a defensible claim that answers the question.",
+   "checklist": [
+    "Takes a position that answers the question",
+    "Is specific enough to test: who, what changes and in which direction",
+    "Is not a hedge that every result would fit"
+   ],
+   "earns": {
+    "answer": "Children who watch a model act aggressively are more likely to act aggressively themselves, especially when they see the model rewarded.",
+    "why": "A clear position, with a direction and a condition, that the sources can support or refute."
+   },
+   "misses": {
+    "answer": "Watching aggression may or may not affect children; it depends on the child.",
+    "why": "A hedge takes no position: every result fits it, so it cannot be defended or refuted."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Claim",
+      "options": [
+       "children who watch aggression are more likely to act aggressively",
+       "it depends on the child",
+       "aggression is a problem in schools"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A hedge takes no position.",
+       "2": "Off the question: it does not say what watching aggression does."
+      }
+     },
+     "scope": {
+      "label": "Condition",
+      "options": [
+       "they see the model rewarded",
+       "they are tested alone",
+       "they are older than 10"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "No source compares being tested alone.",
+       "2": "The experiments used preschoolers; no source compares ages."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-aggression-evidence",
+   "topic": "social-cognitive-learning",
+   "practice": "4.B",
+   "skill": "evidence",
+   "title": "Second evidence from a different source",
+   "context": "<p>Question: does watching aggression lead children to act aggressively? Source 1: 60 preschoolers watched an adult either hit an inflatable doll or play calmly; in free play afterward the first group made 9 aggressive acts on average and the second group 2. Source 2: children who saw the adult rewarded for hitting the doll copied 8 aggressive acts on average; children who saw the adult punished copied 3. Source 3: in a survey of 500 teens, weekly hours of violent video games correlated <i>r</i>&nbsp;=&nbsp;.15 with self-reported fights (invented sources for practice).</p>",
+   "prompt": "Claim: children who watch aggression are more likely to act aggressively, especially when the model is rewarded. Your first evidence came from Source 1. <b>Support</b> the claim with evidence from a different source.",
+   "checklist": [
+    "Uses a source other than Source 1",
+    "Gives a specific result: 8 acts after a rewarded model against 3 after a punished one",
+    "Cites the source: \"(Source 2)\" or \"According to Source 2\""
+   ],
+   "earns": {
+    "answer": "According to Source 2, children who saw the adult rewarded for hitting the doll copied 8 aggressive acts on average, compared with 3 for children who saw the adult punished.",
+    "why": "A result from a different source, cited, that supports the claim."
+   },
+   "misses": {
+    "answer": "Source 1 also showed children copy aggression: 9 acts against 2.",
+    "why": "Source 1 was already used. The second piece must come from a different source."
+   },
+   "specific": {
+    "slots": {
+     "source": {
+      "label": "Source",
+      "options": [
+       "Source 2",
+       "Source 1"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Source 1 was the first evidence; the second must come from a different source."
+      }
+     },
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "8 aggressive acts after a rewarded model, against 3 after a punished one",
+       "children watched an adult and a doll",
+       "the children were preschoolers"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the procedure, not a result.",
+       "2": "That is a participant detail, not a result."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-aggression-reasoning",
+   "topic": "social-cognitive-learning",
+   "practice": "4.B",
+   "skill": "reasoning",
+   "title": "Second reasoning, a different concept",
+   "context": "<p>Question: does watching aggression lead children to act aggressively? Source 1: 60 preschoolers watched an adult either hit an inflatable doll or play calmly; in free play afterward the first group made 9 aggressive acts on average and the second group 2. Source 2: children who saw the adult rewarded for hitting the doll copied 8 aggressive acts on average; children who saw the adult punished copied 3. Source 3: in a survey of 500 teens, weekly hours of violent video games correlated <i>r</i>&nbsp;=&nbsp;.15 with self-reported fights (invented sources for practice).</p>",
+   "prompt": "Claim: children who watch aggression are more likely to act aggressively, especially when the model is rewarded. Your first reasoning used modeling. <b>Explain</b> how Source 2 supports the claim, using a different psychology concept.",
+   "checklist": [
+    "Cites Source 2's result: 8 against 3 acts",
+    "Uses a concept other than modeling, such as vicarious reinforcement",
+    "Links it: seeing the model rewarded made copying seem likely to pay off"
+   ],
+   "earns": {
+    "answer": "In Source 2, children copied 8 aggressive acts after seeing the adult rewarded but 3 after seeing the adult punished. This supports the claim because of vicarious reinforcement: watching the model get a reward taught the children that hitting pays off, so they were more likely to copy it, which shows the reward strengthens the effect of watching.",
+    "why": "Evidence, a new concept applied to these children, and the link to the claim."
+   },
+   "misses": {
+    "answer": "Source 2 shows the children were modeling the adult, so they copied the aggression.",
+    "why": "Modeling was the first reasoning's concept. The second must use a different one."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "vicarious reinforcement",
+       "modeling",
+       "classical conditioning"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Already used in the first reasoning; a reused concept caps the part at 1 point.",
+       "2": "No stimulus was paired with another; the children saw consequences of behavior."
+      }
+     },
+     "link": {
+      "label": "Link to the claim",
+      "options": [
+       "seeing the reward made copying seem to pay off, so they copied more",
+       "the punished model was copied more",
+       "the children had seen the doll before"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the result: 3 acts after punishment.",
+       "2": "Not in the source."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

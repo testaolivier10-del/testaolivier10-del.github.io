@@ -45,7 +45,7 @@
     { id: 'trust', name: 'Trust vs. mistrust', from: 0, to: 1, short: 'Trust', q: 'Can I trust the people who care for me?' },
     { id: 'autonomy', name: 'Autonomy vs. shame and doubt', from: 1, to: 3, short: 'Autonomy', q: 'Can I do things myself?' },
     { id: 'initiative', name: 'Initiative vs. guilt', from: 3, to: 6, short: 'Initiative', q: 'Is it OK to plan and start things?' },
-    { id: 'competence', name: 'Competence vs. inferiority', from: 6, to: 12, short: 'Competence', q: 'Can I make it in the world of people and things?' },
+    { id: 'competence', name: 'Industry vs. inferiority', from: 6, to: 12, short: 'Industry', q: 'Can I make it in the world of people and things?' },
     { id: 'identity', name: 'Identity vs. role confusion', from: 12, to: 20, short: 'Identity', q: 'Who am I, and what can I be?' },
     { id: 'intimacy', name: 'Intimacy vs. isolation', from: 20, to: 40, short: 'Intimacy', q: 'Can I love and be close to someone?' },
     { id: 'generativity', name: 'Generativity vs. stagnation', from: 40, to: 65, short: 'Generativity', q: 'Can I make my life count for others?' },
@@ -112,9 +112,9 @@
     [[4.5, 6], 'theory-of-mind', '# (age @) hides a cookie and grins: "Dad thinks it\'s still in the jar, but it\'s not!"', 'shows theory of mind: # knows Dad can hold a false belief'],
     [[13, 17], 'abstract', 'In a debate class, # (age @) argues about what society would be like if no one could ever lie, testing each "what if" in turn.', 'shows abstract, hypothetical reasoning'],
     [[14, 17], 'abstract', 'To find what makes a pendulum swing faster, # (age @) changes one thing at a time: length, then weight, then push.', 'shows abstract reasoning: testing hypotheses one variable at a time'],
-    [[5, 7], 'scaffolding', '# (age @) is learning to tie shoes. A parent first ties along with ^, then only gives tips, then just watches.', 'is being scaffolded: help is pulled back as skill grows'],
+    [[5, 6], 'scaffolding', '# (age @) is learning to tie shoes. A parent first ties along with ^, then only gives tips, then just watches.', 'is being scaffolded: help is pulled back as skill grows'],
     [[8, 10], 'scaffolding', 'A tutor helps # (age @) with long division by doing the first step together, then letting # do more of each problem alone.', 'is being scaffolded: help is pulled back as skill grows'],
-    [[2, 4], 'pretend', '# (age @) holds a banana to % ear and says, "Hello? Pizza please!"', 'shows pretend play: the banana stands for a phone']
+    [[3, 4], 'pretend', '# (age @) holds a banana to % ear and says, "Hello? Pizza please!"', 'shows pretend play: the banana stands for a phone']
   ];
   /* Which concepts confuse with which (distractors first from these). */
   var CONFUSE = {
@@ -158,7 +158,7 @@
     ['moratorium', [19, 21], '# (age @) has switched majors twice and is shadowing a nurse, a teacher and an engineer before deciding.'],
     ['achievement', [21, 24], 'After trying several jobs and classes, # (age @) has chosen social work and feels sure it fits.'],
     ['diffusion', [16, 17], '# (age @) has no plans after graduation and is not looking into any; "I don\'t really care."'],
-    ['emerging', [21, 25], '# (age @) has finished college, lives with roommates, changes jobs often and says, "I don\'t feel like a full adult yet."'],
+    ['emerging', [21, 24], '# (age @) has finished college, lives with roommates, changes jobs often and says, "I don\'t feel like a full adult yet."'],
     ['social-clock', [28, 34], '# (age @) feels behind because cousins of the same age are married with kids and # is not.']
   ];
   var PERIOD = {
@@ -360,7 +360,7 @@
     var methodOpts = ['cross', 'long', 'exp', 'case'].map(function(k){ return { t: METHODS[k].name, ok: k === t.design, why: METHODS[k].why + (k === t.design ? '' : ' That is not this design.') }; });
     var L = LIMIT[t.design];
     var limitOpts = [{ t: L.right, ok: true, why: t.design === 'cross' ? 'Different age groups are also different generations (cohorts).' : 'Following the same people for years means some drop out, and it is slow and costly.' }].concat(L.wrongs.map(function(w){ return { t: w, ok: false, why: t.design === 'cross' ? 'That is a problem for following the same people over time, not for comparing age groups at one time.' : 'That is not a weakness of following the same people over time.' }; }));
-    var cell = M.cell(mean, 0.005, [{ value: sum, why: 'That is the sum. Divide it by the number of scores (' + n + ').' }, { value: median, why: 'That is the median (the middle score in order). The mean adds the scores and divides by how many there are.' }], 0.051);
+    var cell = M.cell(mean, 0, [{ value: sum, why: 'That is the sum. Divide it by the number of scores (' + n + ').' }, { value: median, why: 'That is the median (the middle score in order). The mean adds the scores and divides by how many there are.' }], 0.051);
     return {
       type: 'methods', ctx: ctx.id, topic: ctx.topic, given: { design: t.design, data: data, unit: unit, group: group },
       text: '<p>' + t.text + '</p><p>Invented study for practice. Scores for ' + group + ' (' + unit + '): <b>' + data.join(', ') + '</b>.</p>',
