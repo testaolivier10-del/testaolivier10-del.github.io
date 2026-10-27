@@ -989,9 +989,16 @@ footer .privacy-link a:hover{color:var(--ink);}
   .nav-right{gap:6px;}
   .nav-right .theme-toggle::after,.nav-right .level-badge::after{inset:-6px;}
 }
-@media (max-width:400px){
+@media (max-width:480px){
+  /* One header row on every phone (fix 2026-10-26): the streak chip hides below 480px, not 400, and the
+     brand row gives way (the course name truncates) instead of pushing the buttons onto a second row. */
   .nav-streak{display:none;}
+  .site-header__inner{flex-wrap:nowrap;}
+  .site-header__brand-row{min-width:0;overflow:hidden;}
+  .site-header__course{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+  .nav-right{flex-shrink:0;}
 }
+@media (max-width:370px){.site-header__course{display:none;}}
 /* The assistant button, docked in the phone header by tutor-launcher.js
    (polish A10); the id outranks tutor.js's floating rules. */
 #site-header .lp-launch{

@@ -188,3 +188,17 @@
    instead of scrolling sideways, as lesson cards already do (theme.css); a sideways scroller also fails axe's
    keyboard rule. */
 .r3-read .notes-figure svg{min-width:min(calc(var(--vb,420) * 0.92px), 100%);}
+
+/* Phone reader: the Contents button stays pinned under the header while you read, so jumping to another lesson
+   never means scrolling back to the top (Olivier, 2026-10-26). It already opens the full contents sheet. */
+@media (max-width:860px){
+  .tb-shell > .tb-toc-btn{position:sticky;top:calc(env(safe-area-inset-top,0px) + 78px);z-index:20;box-shadow:0 10px 24px -14px rgba(11,26,51,.45)}
+  .tb-shell.r3-read > .tb-toc-btn{position:sticky}
+}
+@media (max-width:860px){
+  /* Opened from anywhere in the chapter, the contents appear over the page where you are, not at the top. */
+  body.tb-toc-open .tb-shell .tb-rail{position:fixed;left:12px;right:12px;top:calc(env(safe-area-inset-top,0px) + 128px);
+    bottom:calc(env(safe-area-inset-bottom,0px) + 78px);z-index:19;overflow:auto;overscroll-behavior:contain;
+    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 24px 60px -24px rgba(11,26,51,.55)}
+  body.tb-toc-open .tb-shell .tb-rail .tb-contents{max-height:none}
+}
