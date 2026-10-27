@@ -1190,9 +1190,10 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ek-gq{background:var(--cink);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);}
 .ek-gq.is-eq{background:var(--good,#2F9E5B);}
 .ek-gdir{margin:0;text-align:center;font:800 13px var(--font-ui);color:var(--ink);}
-.ek-tabs{display:flex;gap:6px;flex-wrap:wrap;}
-.ek-tab{min-height:44px;padding:4px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
-.ek-tab[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ek-tabs{display:flex;gap:4px;flex-wrap:wrap;align-items:center;padding:3px;border-radius:14px;background:var(--surface2,var(--paper));box-shadow:inset 0 0 0 1px var(--line);}
+.ek-tabs-k{font:800 12px var(--font-ui);color:var(--muted);padding:0 4px 0 8px;text-transform:uppercase;letter-spacing:.04em;}
+.ek-tab{min-height:44px;padding:4px 12px;border-radius:11px;border:0;background:transparent;color:var(--muted);font:800 13.5px var(--font-ui);cursor:pointer;}
+.ek-tab[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 1px 3px rgba(0,0,0,.14),inset 0 0 0 2px var(--cink);}
 .ek-plot{min-height:160px;}
 .ek-graph,.ek-mbsvg{width:100%;height:auto;display:block;}
 .ek-grid{stroke:var(--line);stroke-width:1;}
@@ -1248,8 +1249,9 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
   .ls-root .chem-ls-stage .ek-tab{min-height:44px;}
   .ls-root .chem-ls-stage .ek-gauge{gap:0;}
   .ls-root .chem-ls-stage .ek-eq{font-size:15px;}
-  .ls-root .chem-ls-stage .ek-tabs{padding-right:52px;flex-wrap:nowrap;overflow-x:auto;}
-  .ls-root .chem-ls-stage .ek-tab{flex:none;padding:4px 10px;font-size:13px;}
+  .ls-root .chem-ls-stage .ek-tabs{flex-wrap:nowrap;overflow-x:auto;}
+  .ls-root .chem-ls-stage .ek-tabs-k{display:none;}
+  .ls-root .chem-ls-stage .ek-tab{flex:1 1 auto;padding:4px 8px;font-size:13px;}
   .ls-root .chem-ls-stage .ek-gtrack{height:26px;}
   .ls-root .chem-ls-stage .ek-gdir{font-size:12.5px;}
   .ls-root .chem-ls-stage .ek-plot{min-height:0;}

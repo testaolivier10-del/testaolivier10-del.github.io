@@ -547,7 +547,8 @@
         var body = '';
         if(s.kind === 'num' || s.kind === 'vol'){
           body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + sid + '-h"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
-          if(s.kind === 'vol') body += '<div class="cd-vol"><label for="' + sid + '-r">Move the marker along the curve</label><input type="range" id="' + sid + '-r" min="0" max="' + s.max + '" step="0.1" value="' + M.round(s.max / 4, 1) + '"></div>';
+          if(s.kind === 'vol') body += '<div class="cd-vol"><label for="' + sid + '-r">Move the marker along the curve</label><input type="range" id="' + sid + '-r" min="0" max="' + s.max + '" step="0.1" value="' + M.round(s.max / 4, 1) + '"></div>' +
+            '<p class="bt-small cd-vol-note">The slider and the box are one answer: the slider fills the box, and the number in the box is what is checked' + (s.unit ? ' (in ' + esc(s.unit) + ')' : '') + '.</p>';
         } else if(s.kind === 'choice'){
           var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
           body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
