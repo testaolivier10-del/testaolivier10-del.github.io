@@ -478,6 +478,8 @@
       mol.bonds.forEach(function(b){
         var pa = pts[b.a], pb = pts[b.b];
         var sa = styleFor(mol.atoms[b.a]), sb = styleFor(mol.atoms[b.b]);
+        // A bond may carry its own color (the chair colors axial and equatorial bonds).
+        if(b.color){ sa = { color: b.color }; sb = sa; }
         var mid = { x:(pa.x+pb.x)/2, y:(pa.y+pb.y)/2 };
         var z = (pa.z + pb.z) / 2;
         var w = (mode === 'wire' ? 3.4 : 7) * ((pa.k + pb.k) / 2);

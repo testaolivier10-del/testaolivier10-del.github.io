@@ -182,12 +182,41 @@
     renderFound();
   }
 
+  /* Once a source is picked, the conjugated places its electrons can move to
+     pulse (audit 2026-10). Resonance arrows only ever go into a neighbouring
+     bond or onto an atom of the pi bond itself: a lone pair into the bond to a
+     pi-bonded or electron-poor neighbour; a pi bond onto one of its own atoms
+     or into a bond one atom along. A nudge, never a restriction. */
+  function resTargets(src){
+    var out = [], st = start;
+    function piAt(k){ return C.bondsAt(st, k).some(function(b){ return b.order >= 2; }); }
+    function poor(k){ return C.formalCharge(st, k) > 0 || C.electronCount(st, k) < C.octetOf(st, k); }
+    if(!C.isBondKey(src)){
+      C.neighbors(st, src).forEach(function(n){
+        if(st.atoms[n].el !== 'H' && (piAt(n) || poor(n))) out.push('bond:' + src + '-' + n);
+      });
+      return out;
+    }
+    var b = C.parseBondKey(src), bond = C.findBond(st, b.a, b.b);
+    if(!bond || bond.order < 2) return out;
+    [b.a, b.b].forEach(function(end){
+      var other = end === b.a ? b.b : b.a;
+      if(st.atoms[end].el !== 'C' || C.info(st.atoms[end].el).en >= C.info(st.atoms[other].el).en) out.push(end);
+      C.neighbors(st, end).forEach(function(n){
+        if(n === other || st.atoms[n].el === 'H') return;
+        if(piAt(n) || poor(n)) out.push('bond:' + end + '-' + n);
+      });
+    });
+    return out;
+  }
+
   function mountEditor(){
     arrows = [];
     editorApi = Editor.mount(document.getElementById('resEditor'), {
       molecule: C.toMolecule(start),
       caption: '',
       maxArrows: 3,
+      targets: resTargets,
       // No custom hint: the editor's own hint tracks the half-drawn state
       // ("now click where those electrons go"), and overriding it would trade
       // a progressive prompt for a static one.

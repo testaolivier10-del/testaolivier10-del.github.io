@@ -337,6 +337,8 @@
       arrows: lastArrows,
       maxArrows: 4,
       caption: '',
+      // Once a source is picked, the likely ends pulse (audit 2026-10).
+      targets: C.destinations ? function(src){ return C.destinations(start, src); } : null,
       onChange: function(state){ lastArrows = state.arrows; update(); }
     });
   }
@@ -437,7 +439,10 @@
         elHintBox.style.display = 'none';
         // A fresh copy each time, so editing the drawing does not reach into a
         // mechanism that is already part-way through.
-        begin(C.clone(st), st.name || report.formula);
+        /* Hydrogens drawn as atoms, like the ready-made molecules, so a built
+           molecule offers the same C–H bonds to push (audit 2026-10). */
+        var B0 = window.OchemBuilder;
+        begin(B0 && B0.withHydrogens ? B0.withHydrogens(st) : C.clone(st), st.name || report.formula);
         update();
       }
     });

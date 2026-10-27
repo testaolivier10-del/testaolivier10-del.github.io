@@ -436,11 +436,15 @@
 
     '<div id="abPair">' +
       '<div class="tpanel">' +
+        /* Landing (audit 2026-10): one New pair button; the two 30-item lists
+           wait behind Pick your own pair. */
+        '<div class="ab-pairbar"><button type="button" class="tchip" id="abNewPair">New pair</button></div>' +
+        '<details class="tool-more ab-own" id="abOwn"><summary>Pick your own pair</summary>' +
         '<div class="ab-vs">' +
           '<div class="tfield"><label for="abLeft">Acid A</label><select class="tselect" id="abLeft"></select></div>' +
           '<div class="ab-vs__mid">vs</div>' +
           '<div class="tfield"><label for="abRight">Acid B</label><select class="tselect" id="abRight"></select></div>' +
-        '</div>' +
+        '</div></details>' +
         '<div class="ab-cards" id="abCards"></div>' +
         '<div class="ab-ask">' +
           '<div class="tpanel__head">Which loses its proton more easily?</div>' +
@@ -493,6 +497,19 @@
   elRight.innerHTML = options(right);
   elLeft.addEventListener('change', function(){ left = byId(elLeft.value); resetPair(); });
   elRight.addEventListener('change', function(){ right = byId(elRight.value); resetPair(); });
+  /* A fresh pair at random, close enough in pKa (within 8 units) that the
+     call takes thought, never the same compound twice. */
+  function newPair(){
+    var tries = 0, a, b;
+    do {
+      a = ACIDS[Math.floor(Math.random() * ACIDS.length)];
+      b = ACIDS[Math.floor(Math.random() * ACIDS.length)];
+    } while(tries++ < 200 && (a === b || (a === left && b === right) || Math.abs(a.pKa - b.pKa) > 8 || Math.abs(a.pKa - b.pKa) < 0.3));
+    left = a; right = b;
+    elLeft.value = left.id; elRight.value = right.id;
+    resetPair();
+  }
+  document.getElementById('abNewPair').addEventListener('click', newPair);
 
   document.getElementById('abMode').querySelectorAll('button').forEach(function(b){
     b.addEventListener('click', function(){
@@ -717,13 +734,16 @@
       line += '<g class="ab-line__pin' + (rankChecked ? (ok ? ' is-ok' : ' is-no') : ' is-wait') + '" style="transform:translate(' + x.toFixed(1) + 'px,0)">' +
         '<line x1="0" y1="42" x2="0" y2="64" class="ab-line__stem"/>' +
         '<circle cx="0" cy="74" r="10"/>' +
-        '<text x="' + (anchor === 'start' ? -8 : anchor === 'end' ? 8 : 0) + '" y="' + (i % 2 ? 36 : 14) + '" text-anchor="' + anchor + '" class="ab-line__lab">' +
-          esc(a.name.length > 18 ? a.name.slice(0, 17) + '…' : a.name) + (rankChecked ? ' ' + a.pKa : '') + '</text>' +
+        '<text x="' + (anchor === 'start' ? -8 : anchor === 'end' ? 8 : 0) + '" y="' + ((rankChecked ? truth.indexOf(a) : i) % 2 ? 36 : 14) + '" text-anchor="' + anchor + '" class="ab-line__lab">' +
+          // Once placed, the cards carry the names: the line shows just the pKa, which never collides.
+          (rankChecked ? 'pKa ' + a.pKa : esc(a.name.length > 18 ? a.name.slice(0, 17) + '…' : a.name)) + '</text>' +
         '<text x="0" y="78" text-anchor="middle" class="ab-line__n">' + (i + 1) + '</text></g>';
     });
     line += '</svg>';
     document.getElementById('abRankPool').innerHTML = line;
 
+    // A phone stacks the four as rows, so earlier and later point up and down.
+    var rows = !!document.querySelector('.ls-root.ls-phone'), up = rows ? '&uarr;' : '&larr;', down = rows ? '&darr;' : '&rarr;';
     document.getElementById('abRankOrder').innerHTML = rankOrder.map(function(a, i){
       var ok = rankChecked && truth[i] === a;
       return '<div class="ab-rcard' + (rankPick === i ? ' is-pick' : '') + (rankChecked ? (ok ? ' is-ok' : ' is-no') : '') + '" data-i="' + i + '">' +
@@ -736,8 +756,8 @@
         '</button>' +
         (rankChecked ? '' :
           '<span class="ab-rcard__move">' +
-            '<button type="button" class="tchip tchip--mini" data-mv="-1" aria-label="Move ' + esc(a.name) + ' earlier"' + (i === 0 ? ' disabled' : '') + '>&larr;</button>' +
-            '<button type="button" class="tchip tchip--mini" data-mv="1" aria-label="Move ' + esc(a.name) + ' later"' + (i === 3 ? ' disabled' : '') + '>&rarr;</button>' +
+            '<button type="button" class="tchip tchip--mini" data-mv="-1" aria-label="Move ' + esc(a.name) + ' earlier"' + (i === 0 ? ' disabled' : '') + '>' + up + '</button>' +
+            '<button type="button" class="tchip tchip--mini" data-mv="1" aria-label="Move ' + esc(a.name) + ' later"' + (i === 3 ? ' disabled' : '') + '>' + down + '</button>' +
           '</span>') +
       '</div>';
     }).join('');
@@ -851,8 +871,10 @@
     var mk = function(cls, html){ var d = document.createElement('div'); d.className = cls; if(html) d.innerHTML = html; return d; };
     studio.root.classList.add('ab-ls');
     var abMode = Kit.seg($('abMode'), 'data-mode');
-    var vs = root.querySelector('.ab-vs');
-    var guessBox = mk('ab-ls-guess', '<p class="ls-lbl">Which loses its proton more easily?</p>'); guessBox.appendChild($('abGuess'));
+    // The dock holds your call and New pair; the two lists wait in Pick your own pair.
+    var vs = mk('ab-ls-pairpick'); vs.appendChild($('abOwn'));
+    var newPairBtn = $('abNewPair');
+    var guessBox = mk('ab-ls-guess', '<p class="ls-lbl">Which loses its proton more easily?</p>'); guessBox.appendChild($('abGuess')); guessBox.appendChild(newPairBtn);
     var rankAct = mk('ab-ls-rankact'); rankAct.appendChild($('abRankAct')); rankAct.appendChild($('abNewRank'));
     var rankStage = mk('ab-ls-rank'); rankStage.appendChild($('abRankPool')); rankStage.appendChild($('abRankOrder')); rankStage.appendChild($('abRankLive'));
     var siteBox = mk('ab-ls-site', '<p class="ls-lbl"><label for="abSiteSel">Molecule</label></p>'); siteBox.appendChild($('abSiteSel'));
@@ -860,7 +882,7 @@
     studio.add('stage', $('abCards'), { mode: 'pair' });
     studio.add('stage', rankStage, { mode: 'rank' });
     studio.add('stage', $('abSiteFormula'), { mode: 'site' });
-    studio.add('dock', [vs, guessBox], { mode: 'pair' });
+    studio.add('dock', [guessBox, vs], { mode: 'pair' });
     studio.add('dock', rankAct, { mode: 'rank' });
     studio.add('dock', [siteBox, siteGuessBox], { mode: 'site' });
     studio.add('why', [$('abVerdict'), $('abFactors')], { mode: 'pair' });
