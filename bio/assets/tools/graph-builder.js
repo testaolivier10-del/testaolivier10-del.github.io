@@ -17,7 +17,12 @@
    faint placeholder grid until a scale is set, then the student's own axes,
    labels and scale, redrawn on every keystroke. Free plot mode: tap to add
    points anywhere on the student's axes, tap one again to remove it; a
-   sketchpad for trying a scale or a trend, never checked or recorded. */
+   sketchpad for trying a scale or a trend, never checked or recorded.
+
+   Tool audit 2026-10: the grid shows from step 1 on a phone too (the data
+   table sits above it, compact, instead of replacing it), and Free plot
+   works at once: until the student sets the axes, points go on the
+   placeholder 0 to 10 grid, and they stay put when real axes arrive. */
 (function(){
   'use strict';
   var SLUG = 'graph-builder';
@@ -158,7 +163,7 @@
       var nar = !!document.querySelector('.ls-root.ls-phone');
       W = nar ? 400 : 560; H = nar ? 330 : 380; L = nar ? 58 : 70; pw = W - L - R; ph = H - TOP - B;
       var host = body.querySelector('.gb-grid'), ys = scaleOf('ys'), xs = scaleOf('xs');
-      var why = !st.y ? 'Choose the y-axis variable.' : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
+      var why = !st.y ? (st.type ? 'Choose the y-axis variable (step 2).' : 'Your graph builds here as you answer each step. Start with the graph type.') : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
         !ys.ok ? 'Enter a y-axis minimum, maximum and interval: the grid redraws as you type.' :
         !bar() && (!st.x || !isNum(st.x)) ? (st.x ? 'This x-axis variable has categories, not numbers, so it cannot go on a number scale. A bar graph shows categories.' : 'Choose the x-axis variable.') :
         !bar() && !xs.ok ? 'Enter an x-axis minimum, maximum and interval: the grid redraws as you type.' : '';
@@ -166,7 +171,8 @@
       if(ghostY) ys = { min: 0, max: 10, interval: 2, ok: true };
       if(ghostX) xs = { min: 0, max: 10, interval: 2, ok: true };
       var ghost = ghostY || ghostX || !!why;
-      body.querySelector('.gb-note').textContent = why ? why + (st.free ? '' : ' Points appear once the axes are set.') : (st.free ? 'Free plot: your axes, your points. Nothing here is checked.' : '');
+      body.querySelector('.gb-note').textContent = st.free ? (ghost ? 'Free plot: tap the grid to add a point, tap a point to remove it. This is a 0 to 10 practice grid until you set the axes. Nothing here is checked.' : 'Free plot: your axes, your points. Tap to add, tap a point to remove. Nothing here is checked.')
+        : why ? why + (st.y ? ' Points appear once the axes are set.' : '') : '';
       var sy = function(v){ return TOP + ph - (v - ys.min) / (ys.max - ys.min) * ph; };
       var n = ds.rows.length, sx = bar() ? function(k){ return L + pw * (k + 0.5) / n; } : function(v){ return L + (v - xs.min) / (xs.max - xs.min) * pw; };
       var p = [], my = minor(ys), mx = minor(xs);
@@ -180,8 +186,8 @@
       p.push('<rect class="hit" x="' + L + '" y="' + TOP + '" width="' + pw + '" height="' + ph + '"/>');
       var placed = [];
       if(!ghost && !st.free) st.pts.forEach(function(q, k){ if(q.y != null && (bar() || q.x != null)) placed.push(k); });
-      if(st.free && !ghost) st.sketch.forEach(function(q, k){ var X = bar() ? L + pw * (Math.min(n - 1, Math.max(0, q.k)) + 0.5) / n : sx(q.x); p.push('<circle class="gpt gsk" data-s="' + k + '" tabindex="0" role="button" aria-label="' + esc('Sketch point ' + (k + 1) + ': ' + (bar() ? '' : 'x ' + q.x + ', ') + 'y ' + q.y + '. Press Delete to remove it.') + '" cx="' + X.toFixed(1) + '" cy="' + sy(q.y).toFixed(1) + '" r="7"/>'); });
-      if(st.free && !ghost && st.sketch.length > 1 && !bar()){ var so = st.sketch.slice().sort(function(a, b){ return a.x - b.x; }); p.push('<polyline class="gline gsk-line" points="' + so.map(function(q){ return sx(q.x).toFixed(1) + ',' + sy(q.y).toFixed(1); }).join(' ') + '"/>'); }
+      if(st.free) st.sketch.forEach(function(q, k){ var X = bar() ? L + pw * (Math.min(n - 1, Math.max(0, q.k)) + 0.5) / n : sx(q.x); p.push('<circle class="gpt gsk" data-s="' + k + '" tabindex="0" role="button" aria-label="' + esc('Sketch point ' + (k + 1) + ': ' + (bar() ? '' : 'x ' + q.x + ', ') + 'y ' + q.y + '. Press Delete to remove it.') + '" cx="' + X.toFixed(1) + '" cy="' + sy(q.y).toFixed(1) + '" r="7"/>'); });
+      if(st.free && st.sketch.length > 1 && !bar()){ var so = st.sketch.slice().sort(function(a, b){ return a.x - b.x; }); p.push('<polyline class="gline gsk-line" points="' + so.map(function(q){ return sx(q.x).toFixed(1) + ',' + sy(q.y).toFixed(1); }).join(' ') + '"/>'); }
       if(st.type === 'line' && placed.length > 1){
         var ord = placed.slice().sort(function(a, b){ return st.pts[a].x - st.pts[b].x; });
         p.push('<polyline class="gline" points="' + ord.map(function(k){ return sx(st.pts[k].x).toFixed(1) + ',' + sy(st.pts[k].y).toFixed(1); }).join(' ') + '"/>');
@@ -208,7 +214,7 @@
         if(t.hasAttribute && t.hasAttribute('data-k')){ st.active = +t.getAttribute('data-k'); drawPlaceSelect(); drawGrid(); return; }
         var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W, y = (e.clientY - r.top) / r.height * H;
         if(x < L - 4 || x > L + pw + 4 || y < TOP - 4 || y > TOP + ph + 4) return;
-        if(ghost){ say(why || 'Set the axes first.'); return; }
+        if(ghost && !st.free){ say(why || 'Set the axes first.'); return; }
         if(st.free){
           var fy = snap(ys.min + (TOP + ph - y) / ph * (ys.max - ys.min), ys.min, my);
           var q2 = bar() ? { k: Math.max(0, Math.min(n - 1, Math.floor((x - L) / pw * n))), y: fy } : { x: snap(xs.min + (x - L) / pw * (xs.max - xs.min), xs.min, mx), y: fy };

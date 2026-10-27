@@ -21,7 +21,16 @@
    Claim, Evidence or Reasoning, then tap sentences). Both only set the same
    radio buttons, which stay one tap away under "Answer as a list", so
    grading, feedback and recording are unchanged; after Check the list
-   opens to show the feedback for every part. */
+   opens to show the feedback for every part.
+
+   The setup schematic (tool audit 2026-10: the drills were a paragraph, a
+   table and radio buttons): drawn from the scenario's own data table, one
+   vessel per group (the first column's levels) holding a gauge for each
+   measured column, with the values above it, so the design reads at a
+   glance. Under it, the setup's parts (the variables drill's options) are
+   tags; in the variables drill, tapping a tag answers the current row
+   (what they change, then what they measure), and after Check each tag
+   says its role. The tags only set the same radio buttons. */
 (function(){
   'use strict';
   var SLUG = 'design-drills';
@@ -192,17 +201,90 @@
       sync();
     }
 
+    /* The schematic: groups from column 0, up to two measured (numeric) columns as gauges. */
+    function numOf(v){ var m = /^\s*(−|-)?\s*(\d+(?:\.\d+)?)/.exec(String(v).replace(/<[^>]+>/g, '')); return m ? (m[1] ? -1 : 1) * parseFloat(m[2]) : NaN; }
+    function schematic(s){
+      if(!s.data || !s.data.rows || !s.data.rows.length) return '';
+      var rows = s.data.rows.filter(function(r){ return !/^total$/i.test(String(r[0]).trim()); }).slice(0, 8), cols = s.data.cols;
+      var meas = [];
+      for(var j = 1; j < cols.length && meas.length < 2; j++) if(rows.every(function(r){ return isFinite(numOf(r[j])); })) meas.push(j);
+      if(!meas.length) return '';
+      var Wd = 360, n = rows.length, gw = Wd / n, top = 34, bot = 150, Hd = 200, p = [];
+      var rng = meas.map(function(j){ var v = rows.map(function(r){ return numOf(r[j]); }); var lo = Math.min(0, Math.min.apply(null, v)), hi = Math.max.apply(null, v); return { lo: lo, hi: hi > lo ? hi : lo + 1 }; });
+      rows.forEach(function(r, k){
+        var cx = gw * (k + 0.5), w = Math.min(64, gw * 0.78), nk = w * 0.2;
+        p.push('<path class="dr-vessel" d="M' + (cx - nk).toFixed(1) + ' ' + (top + 2) + 'V' + (top + 24) + 'L' + (cx - w / 2).toFixed(1) + ' ' + (bot - 6) + 'Q' + (cx - w / 2).toFixed(1) + ' ' + bot + ' ' + (cx - w / 2 + 6).toFixed(1) + ' ' + bot + 'H' + (cx + w / 2 - 6).toFixed(1) + 'Q' + (cx + w / 2).toFixed(1) + ' ' + bot + ' ' + (cx + w / 2).toFixed(1) + ' ' + (bot - 6) + 'L' + (cx + nk).toFixed(1) + ' ' + (top + 24) + 'V' + (top + 2) + '"/>');
+        p.push('<path class="dr-liq" d="M' + (cx - w * 0.36).toFixed(1) + ' ' + (top + 56) + 'L' + (cx - w / 2 + 2).toFixed(1) + ' ' + (bot - 6) + 'Q' + (cx - w / 2 + 2).toFixed(1) + ' ' + (bot - 2) + ' ' + (cx - w / 2 + 7).toFixed(1) + ' ' + (bot - 2) + 'H' + (cx + w / 2 - 7).toFixed(1) + 'Q' + (cx + w / 2 - 2).toFixed(1) + ' ' + (bot - 2) + ' ' + (cx + w / 2 - 2).toFixed(1) + ' ' + (bot - 6) + 'L' + (cx + w * 0.36).toFixed(1) + ' ' + (top + 56) + 'Z"/>');
+        meas.forEach(function(j, m){
+          var v = numOf(r[j]), f = (v - rng[m].lo) / (rng[m].hi - rng[m].lo), bw = Math.min(11, w * 0.17), bx = cx + (meas.length === 2 ? (m ? 2 : -bw - 2) : -bw / 2), gh = (bot - top - 66) * Math.max(0.02, f);
+          p.push('<rect class="dr-gauge g' + m + '" x="' + bx.toFixed(1) + '" y="' + (bot - 8 - gh).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + gh.toFixed(1) + '" rx="2"/>');
+          p.push('<text class="dr-gv g' + m + '" x="' + cx.toFixed(1) + '" y="' + (top - 16 + m * 12) + '" text-anchor="middle">' + esc(String(r[j]).replace(/<[^>]+>/g, '').replace(/\s*±.*$/, '')) + '</text>');
+        });
+        // a two-word level ("Humid 3") stacks when the groups are narrow
+        var lv = String(r[0]).replace(/<[^>]+>/g, ''), two = gw < 60 && lv.indexOf(' ') > 0;
+        p.push('<text class="dr-lv" x="' + cx.toFixed(1) + '" y="' + (bot + 16) + '" text-anchor="middle">' + (two ? esc(lv.slice(0, lv.indexOf(' '))) + '<tspan x="' + cx.toFixed(1) + '" dy="13">' + esc(lv.slice(lv.indexOf(' ') + 1)) + '</tspan>' : esc(lv)) + '</text>');
+      });
+      var strip = function(t){ return String(t).replace(/<[^>]+>/g, ''); };
+      p.push('<text class="dr-ax" x="' + (Wd / 2) + '" y="' + (Hd - 2) + '" text-anchor="middle">' + esc(strip(cols[0])) + '</text>');
+      var aria = 'Setup sketch: ' + n + ' groups by ' + strip(cols[0]) + ' (' + rows.map(function(r){ return strip(r[0]); }).join(', ') + '); each holds a gauge of ' + meas.map(function(j){ return strip(cols[j]); }).join(' and ') + '.';
+      var legend = meas.map(function(j, m){ return '<span><i class="dr-gk g' + m + '"></i>' + esc(strip(cols[j])) + '</span>'; }).join('');
+      var tags = '<div class="dr-vtags" role="group" aria-label="Parts of this setup"><p class="dr-vtags-h">Parts of this setup</p>' + s.variables.options.map(function(o, i){ return '<button type="button" class="dr-vtag" data-i="' + i + '"><span class="dr-vrole" aria-hidden="true"></span><span class="dr-vt">' + o + '</span></button>'; }).join('') + '</div>';
+      return '<div class="dr-schem"><svg class="bio-svg dr-sfig" viewBox="0 0 ' + Wd + ' ' + Hd + '" role="img" aria-label="' + esc(aria) + '">' + p.join('') + '</svg><p class="dr-glegend">' + legend + '</p>' + tags + '</div>';
+    }
+    /* The tags answer the variables drill: what they change (row 1), then what they measure (row 2). */
+    function wireTags(){
+      var box = host.querySelector('.dr-schem') || document.querySelector('.ls-root .dr-schem');
+      var vsec = host.querySelector('.dr-sec[data-drill="variables"]') || document.querySelector('.dr-sec[data-drill="variables"]');
+      if(!box) return;
+      var tags = box.querySelectorAll('.dr-vtag');
+      if(!vsec){ tags.forEach(function(t){ t.disabled = true; }); return; }
+      var form = vsec.querySelector('form'), ROLE = ['changed', 'measured'];
+      function sync(){
+        var picks = [0, 1].map(function(i){ var c = form.querySelectorAll('fieldset')[i].querySelector('input:checked'); return c ? +c.value : -1; });
+        var graded = !!form.querySelector('fieldset.is-right, fieldset.is-wrong');
+        tags.forEach(function(t){
+          var i = +t.getAttribute('data-i'), role = picks[0] === i ? 0 : picks[1] === i ? 1 : -1, r = t.querySelector('.dr-vrole');
+          t.classList.toggle('is-iv', role === 0); t.classList.toggle('is-dv', role === 1);
+          r.textContent = role > -1 ? ROLE[role] : '';
+          t.disabled = graded;
+        });
+        box.querySelector('.dr-vtags-h').textContent = graded ? 'Parts of this setup' : picks[0] < 0 ? 'Tap what the investigators change' : picks[1] < 0 ? 'Now tap what they measure' : 'Parts of this setup (Check under the drill)';
+      }
+      box.querySelector('.dr-vtags').addEventListener('click', function(e){
+        var t = e.target.closest('.dr-vtag'); if(!t || t.disabled) return;
+        var picks = [0, 1].map(function(i){ return form.querySelectorAll('fieldset')[i].querySelector('input:checked'); });
+        var row = !picks[0] ? 0 : !picks[1] ? 1 : (+picks[0].value === +t.getAttribute('data-i') ? 0 : 1);
+        choose(form, row, +t.getAttribute('data-i'));
+      });
+      form.addEventListener('change', sync);
+      form.addEventListener('submit', function(){ setTimeout(function(){
+        // after Check: every tag says its role (from the data, not the student's picks)
+        var vars = currentScen.variables;
+        // the other parts: kept the same, unless the scenario's own explanation (whyOptions) says
+        // it is the sample size or is not kept the same (a possible confound)
+        var wo = vars.whyOptions || {};
+        tags.forEach(function(t){ var i = +t.getAttribute('data-i'), r = t.querySelector('.dr-vrole'), w = String(wo[i] || '');
+          var role = i === vars.iv ? ['is-iv', 'independent'] : i === vars.dv ? ['is-dv', 'dependent'] : /^Not kept the same/.test(w) ? ['is-conf', 'not kept the same: possible confound'] : /sample size/.test(w) ? ['is-kept', 'sample size'] : ['is-kept', 'kept the same'];
+          t.classList.remove('is-iv', 'is-dv'); t.classList.add(role[0]);
+          r.textContent = role[1]; t.disabled = true; });
+        box.querySelector('.dr-vtags-h').textContent = 'Parts of this setup';
+      }, 0); });
+      sync();
+    }
+    var currentScen = null;
     var WRITE_TITLE = { cer: 'Write it yourself: claim, evidence and reasoning', predict: 'Write it yourself: prediction and mechanism' };
     var TAGS = ['Claim', 'Evidence', 'Reasoning'], TAG_ID = ['claim', 'evidence', 'reasoning'], TAG_PRACTICE = { claim: '6.A', evidence: '6.B', reasoning: '6.C' };
     function draw(id, focus){
       var s = scen.filter(function(x){ return x.id === id; })[0];
-      host.innerHTML = '<h2 id="' + gid + '-sh" tabindex="-1">' + esc(s.title) + '</h2><div class="bt-context">' + s.setup + '</div>' +
+      currentScen = s;
+      host.innerHTML = '<h2 id="' + gid + '-sh" tabindex="-1">' + esc(s.title) + '</h2>' + schematic(s) + '<div class="bt-context">' + s.setup + '</div>' +
         (s.data ? T.dataTable(s.data.cols, s.data.rows, s.data.caption) : '');
       drills.forEach(function(d){
         if(only && only !== d.id) return;
         if(d.id === 'variables') section(s, d, 'Name the variables', [
           { key: 'iv', legend: 'Independent variable: what the investigators change on purpose', options: s.variables.options, correct: s.variables.iv, why: whyVar(s, 'iv'), practice: '3.C' },
-          { key: 'dv', legend: 'Dependent variable: what they measure in response', options: s.variables.options, correct: s.variables.dv, why: whyVar(s, 'dv'), practice: '3.C' }]);
+          { key: 'dv', legend: 'Dependent variable: what they measure in response', options: s.variables.options, correct: s.variables.dv, why: whyVar(s, 'dv'), practice: '3.C' }],
+          { lead: '<p class="bt-small dr-taplead">Tap the parts of the setup under the sketch, or pick below.</p>' }).setAttribute('data-drill', 'variables');
         if(d.id === 'controls') section(s, d, 'Choose a control, then justify it', [
           { key: 'control', legend: s.control.q, options: s.control.options, correct: s.control.correct, why: s.control.why, practice: '3.C' },
           { key: 'control-why', legend: s.controlWhy.q, options: s.controlWhy.options, correct: s.controlWhy.correct, why: s.controlWhy.why, practice: '3.C', level: 'analyze' }]);
@@ -229,6 +311,7 @@
         T.frq(host, { id: s.id + '-' + w.drill, title: WRITE_TITLE[w.drill], topic: topicOf('write-' + w.drill),
           parts: [{ label: 'a', prompt: w.prompt, points: w.points, practice: w.practice, rubric: w.rubric, sample: w.sample, topic: topicOf('write-' + w.drill) }] }, SLUG);
       });
+      wireTags();
       if(focus) host.querySelector('h2').focus();
     }
     function whyVar(s, k){
@@ -263,7 +346,7 @@
     function arrange(){
       if(!host.children.length) return;
       stage.innerHTML = '';
-      Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
+      Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .dr-schem, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
       var h2 = stage.querySelector('h2'); if(h2) h2.classList.add('ls-title-l');
       var w = document.createElement('div'); w.className = 'ls-dr-steps';
       Array.prototype.slice.call(host.children).forEach(function(x){ w.appendChild(x); });

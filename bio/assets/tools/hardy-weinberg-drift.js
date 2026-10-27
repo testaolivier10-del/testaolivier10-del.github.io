@@ -41,8 +41,8 @@
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="new">Run with a new seed</button><button type="button" class="btn-press sm alt" data-a="record">Record this run</button>' +
       '<button type="button" class="btn-press sm alt" data-a="series">Compare population sizes</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
-      '<div class="bt-stage two bt-num"><div><h3>Frequency of A in every population</h3><div class="hw-plot-p"></div><p class="bt-small hw-key"></p></div>' +
-      '<div><h3 class="hw-gh">Genotypes against Hardy-Weinberg</h3><div class="hw-plot-g"></div><p class="bt-small">Bars: observed genotype frequencies. Squares: Hardy-Weinberg expectation (p², 2pq, q²) from the same generation\'s p.</p></div></div>' +
+      '<div class="bt-stage two bt-num"><div class="hw-pplot"><h3>Frequency of A in every population</h3><div class="hw-plot-p"></div><p class="bt-small hw-key"></p></div>' +
+      '<div class="hw-gplot"><h3 class="hw-gh">Genotypes against Hardy-Weinberg</h3><div class="hw-plot-g"></div><p class="bt-small">Bars: observed genotype frequencies. Squares: Hardy-Weinberg expectation (p², 2pq, q²) from the same generation\'s p.</p></div></div>' +
       '<div class="bt-controls hw-read bt-num"></div>' +
       '<dl class="bt-readout hw-readout"></dl><div class="hw-chi bt-num"></div><p class="bt-summary"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs, each population\'s fate, and p by generation</summary><div class="bt-tables"></div></details></section>' +
@@ -312,7 +312,7 @@
     if(/^#guess/.test(location.hash)) setMode('guess');
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, stage: ['.hw-jar'], stageAlso: ['.hw-mini'], why: ['.hw-jarnote'], live: '.bt-summary',
+    studio: { sim: true, stage: ['.hw-jar'], stageAlso: ['.hw-mini'], why: ['.hw-jarnote'], live: '.bt-summary', views: [{ sel: '.hw-pplot', label: 'p over generations' }, { sel: '.hw-gplot', label: 'Genotypes' }],
       dock: ['.os-chal', '.os-play', '@primary'], primarySel: '.hw-group:first-child > .bt-ctl:nth-of-type(-n+2)',
       hint: { target: '.os-play .btn-press', text: 'Press Draw generations' },
       caption: function(g){ return '<b>Generation ' + T.esc(g.ro(0)) + ':</b> p = ' + T.esc(g.ro(2).split(' / ')[0]) + ' in population 1. Across all populations: ' + T.esc(g.ro(6)) + '.'; },
