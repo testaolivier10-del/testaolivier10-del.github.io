@@ -180,7 +180,7 @@
       var verdictLine = cur.type === 'table' ? tableVerdict(c.s.ys, kind, nm.f) :
         err == null ? 'The table alone cannot say whether it is too big or too small.' :
         Math.abs(err) < 1e-9 * Math.max(1, Math.abs(c.exact)) ? 'Equal to the exact value here.' :
-        fmt(c.sum) === fmt(c.exact) ? 'The same as the exact value to three decimal places (the gap is smaller than 0.0005).' :
+        fmt(c.sum) === fmt(c.exact) ? 'The same as the exact value to three decimal places (the two round to the same number).' :
         vd.v ? (vd.v === 'over' ? 'An overestimate' : 'An underestimate') + ': ' + vd.why : (err > 0 ? 'Over' : 'Under') + ' this time, but ' + vd.why.replace(/^\w+ is not/, nm.f + ' is not');
       var selLine = '';
       if(sel > -1 && sel < c.ps.length){
@@ -305,7 +305,8 @@
       title: function(p){ return { table: 'A sum from a table', overunder: 'Over or under?', context: 'An amount from a rate', sigma: 'From a sum to an integral', tosum: 'From an integral to a sum' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; QM.clear(); QM.last = {}; QM.reveal = false; figure(el, p, false); },
       onStep: function(s, right, api){ if(s.key === 'setup' || s.key === 'verdict' || s.key === 'pick'){ QM.reveal = true; figure(api.fig, api.problem, true); } },
-      method: function(s, p){ return (p.type === 'table' && s.key === 'setup' ? 'A table gives each subinterval its own width: multiply each width by the height the sum uses (left end, right end, middle, or the average of both ends).' : METHOD[s.key]) || ''; },
+      method: function(s, p){ var sk = (p.figure && p.figure.sumKind) || (p.sketch && p.sketch.sumKind); if(s.key === 'verdict' && sk) return VERDICT_M[sk === 'mid' || sk === 'trap' ? sk : 'lr'];
+        return (p.type === 'table' && s.key === 'setup' ? 'A table gives each subinterval its own width: multiply each width by the height the sum uses (left end, right end, middle, or the average of both ends).' : METHOD[s.key]) || ''; },
       // X1: the over/under verdict draws the strips at once (their tops show the answer);
       // a sum is drawn as yours against the right one on the strips.
       onTry: function(s, t, api){
@@ -323,6 +324,12 @@
     T.drill(host, data, o);
   }
   var QM = T.tries();
+  // Over or under, by kind of sum: what to look at on the strips.
+  var VERDICT_M = {
+    lr: 'Look at the strips: tops above the curve make an overestimate, tops below it an underestimate.',
+    trap: 'Look at each slanted top: a chord above the curve (concave up) overestimates, below it (concave down) underestimates.',
+    mid: 'A midpoint rectangle has the same area as the trapezoid under the tangent line at the midpoint. Concave up puts that tangent below the curve (an underestimate); concave down puts it above (an overestimate).'
+  };
   var METHOD = {
     sum: 'Add the terms of the setup you chose: each width times its height. Round only at the end.',
     meaning: 'Width (time) times rate gives an amount: the units of the sum are the units of the amount.',
@@ -354,7 +361,7 @@
       curves: [{ fn: f, domain: [a, b], cls: 's1', label: k.rate }] };
     // no numbers up the vertical axis: only the shape is given (y tick labels are the unclassed end-anchored texts)
     var svg = stripsSvg({ spec: spec, pieces: ps, kind: k.sumKind, marks: QM }).replace(/<g class="calc-plot-ticks">[\s\S]*?<\/g>/, function(g){ return g.replace(/<text x="[^"]*" y="[^"]*" text-anchor="end">[^<]*<\/text>/g, ''); });
-    el.innerHTML = '<figure class="rs-qfig">' + svg + '<figcaption class="bt-small">A sketch with the stated shape (no scale on the vertical axis)' + (reveal ? ': the ' + esc(R.NAME[k.sumKind]) + ', drawn' : '') + '.</figcaption></figure>';
+    el.innerHTML = '<figure class="rs-qfig">' + svg + '<figcaption class="bt-small">A sketch with the stated shape, no vertical scale: any rate with these signs gives the same answer' + (reveal ? '. The ' + esc(R.NAME[k.sumKind]) + ', drawn' : '') + '.</figcaption></figure>';
   }
   function figure(el, p, reveal){
     if(p.sketch) return sketchFig(el, p.sketch, reveal);

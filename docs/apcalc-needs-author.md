@@ -190,3 +190,7 @@ All 2026-10-13, answered by the independent reviewers or fixed; kept here so nob
 - (2026-10-27, tool audit) Riemann sums Test yourself: an over/under problem given only by "R′ < 0 and R″ < 0"
   now shows an unscaled sketch with that shape so the strips can be drawn. It is labelled as a sketch with no
   vertical scale. Check a teacher is happy with a picture that is not data.
+  Reviewer view (2026-10-27): keep it. Monotonicity and concavity decide the verdict for every rate with
+  those signs, so the shape alone is enough to place the strips; the y tick numbers are removed and the caption
+  says any rate with these signs gives the same answer. Remaining risk: a student reading the sketch as the
+  real rate. Owner to confirm.

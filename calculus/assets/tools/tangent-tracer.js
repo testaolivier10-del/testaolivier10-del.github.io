@@ -776,7 +776,8 @@
         var G = p.fig, yc = G.vs[G.i] + (G.vs[G.i + 1] - G.vs[G.i]) * (G.c - G.ts[G.i]) / (G.ts[G.i + 1] - G.ts[G.i]);
         mk.push({ tangent: [G.c, yc], slope: val, half: (G.ts[4] - G.ts[0]) / 5, who: who, label: (who === 'yours' ? 'yours: ' : '') + sv(M.round(val, 3)) + ' ' + G.unit + '/' + G.tu.replace(/s$/, '') });
       } else if(p.type === 'whichgraph' && k === 'zeros' && t.pick > -1){
-        T.choiceMarks(s.options[t.pick], 'x').xs.forEach(function(x){ mk.push({ point: [x, 0], who: who, label: who === 'yours' ? 'yours' : '' }); });
+        // x-values where f is flat, as lines: a point on y = 0 would read as a zero of f
+        T.choiceMarks(s.options[t.pick], 'x').xs.forEach(function(x, j){ mk.push({ vline: x, who: who, label: who === 'yours' ? (j ? '' : 'yours') : 'x = ' + T.numText(x) }); });
       } else if(p.type === 'tanline' && (k === 'value' || k === 'slope') && isFinite(val)){
         if(k === 'value') mk.push({ point: [p.a, val], who: who, label: (who === 'yours' ? 'yours: ' : '') + '(' + sv(p.a) + ', ' + sv(M.round(val, 3)) + ')' });
         else mk.push({ tangent: [p.a, p.fa], slope: val, half: 1.4, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + sv(M.round(val, 3)) });

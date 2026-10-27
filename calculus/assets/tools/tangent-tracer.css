@@ -161,7 +161,7 @@
 .tt-skp.is-ok .tt-badge circle{fill:#009E73;}
 .tt-badge text{fill:#fff;font:900 11px var(--font-ui);}
 .tt-skline{fill:none;stroke:#0072B2;stroke-width:2;stroke-dasharray:5 4;opacity:.65;}
-.tt-svg .calc-plot-curve.tt-ans{stroke-width:2.6;stroke-dasharray:8 5;}
+.tt-svg .calc-plot-curve.tt-ans{stroke-width:2.6;}
 :root[data-theme="dark"] .tt-skdot{fill:#6BB4E8;}
 :root[data-theme="dark"] .tt-skp.is-unset .tt-skdot{fill:var(--white);stroke:var(--muted);}
 :root[data-theme="dark"] .tt-skline{stroke:#6BB4E8;}

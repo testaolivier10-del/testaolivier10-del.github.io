@@ -63,7 +63,7 @@
           generate: function(r, ctx, type){ return texify(LE.generate(r, ctx, type)); },
           extra: function(host, p){ QZ.marks.clear(); QZ.last = {}; QZ.plot = null; QZ.figPlot = null; QZ.host = host; figure(host, p); },
           title: function(p){ var t = LE.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
-          method: function(s, p){ return METHOD[p.type + '.' + s.key] || METHOD[s.key] || ''; },
+          method: function(s, p){ return (s.key === 'k' && p.key && p.key.kind === 'hole' ? METHOD.khole : '') || METHOD[p.type + '.' + s.key] || METHOD[s.key] || ''; },
           onTry: function(s, t, api){ return quizTry(s, t, api.problem); }
         });
       },
@@ -104,6 +104,7 @@
     cont: 'Continuous at a means f(a) is defined, the limit exists, and they are equal.',
     rule: 'Continuity at a needs f(a) to equal the limit at a.',
     k: 'Make the left piece at x = a equal to the right piece at x = a, then solve for k.',
+    khole: 'k must equal the limit: factor the top, cancel the factor that is 0 at x = a, and substitute x = a into what is left.',
     'remove.right': 'Substitute x = a into the piece for x ≥ a.',
     'vertical.left': 'Find the sign of the top near a, and the sign of the bottom just left of a. Their quotient grows without bound with that sign.',
     'vertical.right': 'Find the sign of the top near a, and the sign of the bottom just right of a.',
@@ -199,7 +200,7 @@
       if(who === 'right') mk.push({ label: N(val) + ' crossing' + (val === 1 ? '' : 's') + ' of y = ' + N(k.k), at: [k.xs[k.xs.length - 1], 1e9], who: 'right', anchor: 'end' });
       else if(isFinite(val)) mk.push({ label: 'yours: ' + N(val), at: [k.xs[0], 1e9], who: 'yours', anchor: 'start' });
     } else if(s.kind === 'num' && isFinite(val)){
-      var side = /left|lo/.test(s.key) ? -1 : /right|hi/.test(s.key) ? 1 : 0;
+      var side = s.key === 'left' ? -1 : s.key === 'right' ? 1 : 0;
       if(p.type === 'laws') return false;
       if(s.key === 'k' && k.kind === 'join'){
         // the left piece with the typed k, against the right piece

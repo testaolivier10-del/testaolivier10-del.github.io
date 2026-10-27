@@ -519,7 +519,7 @@
       var base = k === 'R' && QA.ax ? function(){ return QA.ax.at; } : reg.Gf, sg = k === 'R' && QA.ax ? (A.hi(reg, (reg.a + reg.b) / 2) >= QA.ax.at ? 1 : -1) : 1;
       var path = [];
       for(var i = 0; i <= 120; i++){ var u = reg.a + (reg.b - reg.a) * i / 120, w = base(u) + sg * t.fn(u); path.push(vx ? [u, w] : [w, u]); }
-      mk.push({ path: path, who: who, label: who === 'yours' ? (k === 'R' ? 'your R from the axis' : 'yours, from the bottom curve') : '' });
+      mk.push({ path: path, who: who, label: who === 'yours' ? (k === 'R' ? 'your R from the axis' : vx ? 'yours, from the bottom curve' : 'yours, from the left curve') : '' });
     } else if((k === 'A' || k === 'V') && isFinite(val)){
       var list = (QA.by[k] || []).filter(function(m){ return m.who === 'yours'; }).concat([{ v: val, who: who }]);
       QA.by[k] = list;

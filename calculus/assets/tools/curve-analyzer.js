@@ -482,7 +482,7 @@
     candidates: { y: { max: 1, min: 1 }, pick: { cand: 'x' } },
     concavity: { pick: { where: 'x' } },
     fgraph: { pick: { max: 'x', up: 'band' } },
-    optimize: { x: { x: 1, r: 1 }, curve: { obj: 1 }, y: { V: 1, S: 1 } }
+    optimize: { x: { x: 1, r: 1 }, curve: { obj: 1 }, y: { V: 1, A: 1, S: 1 } }
   };
   var METHOD = {
     z: 'Set f′(x) = 0: each factor of f′ gives a zero. The smaller one is further left on the graph.',
@@ -501,6 +501,7 @@
     obj: 'Write the quantity from the picture (for a box: length × width × height) in terms of the one variable.',
     r: 'Set the derivative of the objective equal to 0 and solve. Check that the sign changes there.',
     V: 'Put the critical value back into the objective.',
+    A: 'Put the critical value back into the objective.',
     S: 'Put the critical value back into the objective.'
   };
   function quiz(host, data){

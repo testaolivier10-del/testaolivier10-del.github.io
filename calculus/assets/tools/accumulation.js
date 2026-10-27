@@ -524,7 +524,7 @@
   }
   var METHOD = {
     g1: 'g(c) is the signed area from the lower limit a to c: add the shapes (triangles, rectangles, half circles), above the axis plus and below minus.',
-    g2: 'If c is left of a, g(c) = −(the signed area from c to a). Add the shapes, then flip the sign.',
+    g2: 'g(c) is the signed area from a to c. If c is left of a, g(c) = −(the signed area from c to a): add the shapes, then flip the sign.',
     gp: 'By the Fundamental Theorem, g′(x) = f(x): read the height of the graph at that x.',
     gpp: 'g″(x) = f′(x): the slope of the graph of f at that x (rise over run on its segment).',
     zero: 'When the two limits of integration are equal, the integral is 0.',

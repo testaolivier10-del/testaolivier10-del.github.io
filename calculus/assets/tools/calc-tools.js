@@ -932,7 +932,7 @@
             var rawE = input.value.trim(), ge = M.diagnoseExpr(s.cell, rawE);
             if(!rawE) blank = true;
             else if(ge.error){ fb.innerHTML = '<span class="bt-small">' + esc(ge.error) + '</span>'; return; }
-            else { ok = ge.ok; if(ge.why) notes.push(esc(ge.why)); }
+            else { ok = ge.ok; if(ge.why) notes.push(/<math/.test(ge.why) ? ge.why : window.ApCalcTex ? window.ApCalcTex.html(esc(ge.why)) : esc(ge.why)); }
             input.classList.toggle('is-wrong', !blank && !ok); input.classList.toggle('is-right', ok);
           } else if(s.kind === 'row' || s.kind === 'coef'){
             s.cells.forEach(function(c, k){
