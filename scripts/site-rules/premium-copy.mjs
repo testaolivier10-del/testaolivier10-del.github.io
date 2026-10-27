@@ -41,7 +41,7 @@ export default function ({ ROOT, fail }) {
   for (const [re, what] of [
     [new RegExp(`${GUARANTEE.extendDays}-day extension`), `a ${GUARANTEE.extendDays}-day extension`],
     [new RegExp(`within ${GUARANTEE.claimDays} days`), `within ${GUARANTEE.claimDays} days`],
-    [new RegExp(`at least ${GUARANTEE.minExams} full timed exams`), `at least ${GUARANTEE.minExams} full timed exams`],
+    [new RegExp(`at least ${GUARANTEE.minExams} full timed or adaptive exams`), `at least ${GUARANTEE.minExams} full timed or adaptive exams`],
     [/while (you are )?signed in/, 'that exams count only when finished while signed in'],
   ]) if (pe && !re.test(pe)) fail(`premium-copy: terms.html's Pass-or-extend paragraph does not say ${what}.`);
 

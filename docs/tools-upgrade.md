@@ -57,7 +57,7 @@ NREMT item types and adaptive exam (2026-10-27):
    before 70 is a fail). Domains: shrunk per-domain estimate, Above/Below beyond one SE, otherwise Near. Simulated
    students: level 0 runs about 116 items, levels of +/-0.6 stop near 77, and pass rates are 0% / 50% / 100% at
    -0.6 / 0 / +0.6.
-6. **Premium.** Mode `cat` is an exam like `full`: `canStartExam` / `examStarted` (one free exam, shared), no daily
+6. **Premium.** Mode `cat` is an exam like `full`: `canStartExam` / `examStarted` (one free attempt each since decision 9), no daily
    quota (`premium-gates.js quotaApplies`). Premium copy now says "Unlimited timed and adaptive exams".
 7. **Tools hub counts** come from the pages: scenario ids in `scenario-sim.html`, top-level `<h2>`s in
    `flowcharts.html`, `.skill-card`s in `skillsheets.html`, `.drug` cards in `formulary.html`
@@ -70,18 +70,28 @@ NREMT item types and adaptive exam (2026-10-27):
    now 70; 2120 parking past the crash assumes a blocker, stem now says one is there; 2122 "hidden"; 2138
    "mid-thigh"; 2154 own prescription; 2148 bin name), plus retags 2142/2146/2147 and wording notes. Two notes are
    left for the owner in `docs/nremt-needs-author.md`.
+9. **Owner decisions (2026-10-27).** (a) The adaptive exam has its own free attempt, separate from the one free timed
+   exam: `premium-gates.js` keeps `nremt_free_cat_v1` (synced, registered in `nav.js`) beside `nremt_free_exam_v1`;
+   `canStartExam/examStarted/canUse` take the kind; the locked card says "You've used your free adaptive exam". Free
+   lists read "One full timed exam and one adaptive exam" (`assets/premium.js`, hub, premium.html, manifest).
+   (b) A finished adaptive exam counts toward Pass-or-extend: the page calls `LevlPremium.recordExam('nremt', n)`
+   when it ran its course (at least 70 questions; never one ended early), the database stamps it in
+   `exam_completions`, and the Worker's `countableExams` already counts anything of 50+ questions, so
+   `GUARANTEE.minExams` (2) is unchanged and agrees in both places. Wording now says "full timed or adaptive exams"
+   (premium.js `guaranteeText`, Worker refusal, terms.html, privacy.html, rule `premium-copy`, schema comment).
+   Its local history `nremt_cat_history` stays unsynced; the server record is what counts.
+10. **Dark-mode contrast:** the Premium pill on round 3 tool cards had cream background with light amber text; a
+   dark rule in `assets/theme.css` gives it the dark `.tag.prem` colors.
 
 ## Open points
 
 - NREMT adaptive exam: the passing line and difficulty tags are uncalibrated; refit from `question_stats` when there
-  is enough data. Owner questions (free attempt, Pass-or-extend, syncing `nremt_cat_history`) are in
-  `docs/nremt-needs-author.md`.
+  is enough data (`docs/nremt-needs-author.md`).
 - The study-notes chapter review and the formulary drill skip typed items (they show single-answer questions only).
 - Verification on a shared machine: the targeted checks (question bank, r3 tools and inner pages, course homes,
   pricing, weight, crumbs, OG tags, tutor bank, `check-site.mjs`, and the NREMT, premium, ids, service-worker and
   cross-course tests) pass; axe (WCAG A/AA) is clean at 390 px light and dark on exams, practice, review, the hub,
   premium and the three live item types. The full `BROWSER=1 scripts/ci-local.sh` did not finish within its time
-  limit while about ten agents shared the machine; run it once at merge. Seen on `nremt/tools.html` in dark mode
-  only: the injected `.premium-badge` on the Scenarios card fails color contrast (pre-existing, `assets/theme.css`).
+  limit while about ten agents shared the machine; run it once at merge.
 - `sw.js` CACHE is not bumped on this branch; bump it once at merge: `nremt/assets/tei-items.js` and `nremt/assets/cat.js` are new
   precached files.

@@ -1323,14 +1323,18 @@ function renderPremium(){
     notice.innerHTML = html;
   }
 
-  // One free timed exam; the start button gives way to the gate once it is spent.
+  // One free timed exam and one free adaptive exam (owner, 2026-10-27); the
+  // start button gives way to the gate once the chosen one is spent.
   const startBtn = document.getElementById('startBtn');
   if(startBtn){
     const slot = premiumSlot('examGate', startBtn);
-    const canStart = G.canStartExam();
+    const picked = document.querySelector('input[name="nrExam"]:checked');
+    const kind = picked && picked.value === 'cat' ? 'cat' : 'full';
+    const canStart = G.canStartExam(kind);
     startBtn.hidden = !canStart;
-    slot.innerHTML = !canStart ? G.gate('exam', 'exams')
-      : locked ? `<p class="cx-notice"><b>Your free exam.</b> One full exam is free: starting it uses it, and once started you can always finish it. ${G.badge()}</p>` : '';
+    const name = kind === 'cat' ? 'adaptive exam' : 'timed exam';
+    slot.innerHTML = !canStart ? G.gate(kind === 'cat' ? 'cat' : 'exam', 'exams')
+      : locked ? `<p class="cx-notice"><b>Your free ${name}.</b> One timed exam and one adaptive exam are free: starting one uses it, and once started you can always finish it. ${G.badge()}</p>` : '';
   }
 
   // Missed and spaced review are free and draw on the same allowance; once it
@@ -1382,6 +1386,8 @@ function blockWith(feature){
   const btn = card.querySelector('button');
   if(btn) btn.focus();
 }
+// Each exam has its own free attempt, so choosing the other one re-checks it.
+document.querySelectorAll('input[name="nrExam"]').forEach(r => r.addEventListener('change', renderPremium));
 // Signing in, or a pass landing, changes what the start screen offers.
 (function(){
   let first = true;
@@ -1900,8 +1906,9 @@ function beginQuiz(withTimer, resumeState){
   // carries on.
   if(!resumeState){
     if(mode === 'full' || mode === 'cat'){
-      if(!G.canStartExam()){ blockWith('exam'); return; }
-      G.examStarted();
+      const kind = mode === 'cat' ? 'cat' : 'full';
+      if(!G.canStartExam(kind)){ blockWith(kind === 'cat' ? 'cat' : 'exam'); return; }
+      G.examStarted(kind);
     }
     if(G.quotaApplies(mode)){
       const left = G.quotaLeft();
@@ -2622,6 +2629,10 @@ function showResults(){
 
   if(mode === 'cat'){
     saveCatHistory(score, elapsed);
+    // A finished adaptive exam counts toward Pass-or-extend (owner, 2026-10-27).
+    // Only one that ran its course: stopped by the model, at the maximum or at
+    // the clock, never one ended early by hand (at least the 70-question minimum).
+    if(lastCat && lastCat.d.n >= CAT.MIN && window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', lastCat.d.n);
     $id('readinessUpdate').innerHTML = '';
   } else if(mode === 'full' || mode === 'domain' || mode === 'adaptive' || mode === 'spaced'){
     renderReadiness('readinessUpdate', {compact: true});

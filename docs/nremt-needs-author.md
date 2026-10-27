@@ -23,11 +23,10 @@ Open, for Olivier:
    The difficulty tags were never calibrated against real answer data. Once `question_stats` has a few hundred answers
    per item, the tags (or per-item difficulties) should be refit from it; until then the page calls the line an
    estimate. Is that wording enough, or should the result hide pass/fail and show only the domains?
-2. **Free users and the adaptive exam.** It shares the one free exam with the timed exam (`canStartExam`), so a free
-   student chooses one or the other. Alternative: give the adaptive exam its own free attempt.
-3. **Pass-or-extend.** Only the timed 100-question exam counts toward the guarantee's minimum exams
-   (`recordExam`, `nremt_exam100_history`). The adaptive exam keeps its own history (`nremt_cat_history`, local only,
-   not synced). Should a finished adaptive exam count, and should its history sync?
+2. **Free users and the adaptive exam.** Decided 2026-10-27 (Olivier): it gets its own free attempt, separate from
+   the free timed exam. Built.
+3. **Pass-or-extend.** Decided 2026-10-27 (Olivier): a finished adaptive exam counts toward the minimum exams.
+   Built: recorded server-side like the timed exam; `nremt_cat_history` itself stays local.
 4. **Tourniquet first (item 2138).** The options-table bleeding item keys a tourniquet first for life-threatening
    limb bleeding (Stop the Bleed), and its explanation notes the psychomotor sheet scores direct pressure first.
    Confirm that is the line the course takes everywhere.

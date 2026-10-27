@@ -81,7 +81,7 @@
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
-        'One full timed exam',
+        'One full timed exam and one adaptive exam',
         'Your progress, XP, streak and weak topics',
       ],
       premium: [
@@ -714,6 +714,7 @@
   function lockTitle(feature) {
     if (feature === 'daily-limit') return 'That’s today’s 15 free questions';
     if (feature === 'exam') return 'You’ve used your free timed exam';
+    if (feature === 'cat') return 'You’ve used your free adaptive exam';
     return 'This is part of Premium';
   }
 
@@ -754,7 +755,7 @@
     var g = GUARANTEE;
     return 'Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, ' +
       'and you can claim one free ' + g.extendDays + '-day extension from your Account page within ' +
-      g.claimDays + ' days of the exam. It needs at least ' + g.minExams + ' full timed exams on LevlPrep, ' +
+      g.claimDays + ' days of the exam. It needs at least ' + g.minExams + ' full timed or adaptive exams on LevlPrep, ' +
       'finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. ' +
       'Once per account and email address. It extends your access; it is not a refund.';
   }

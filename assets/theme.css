@@ -1280,6 +1280,8 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .premium-badge:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;}
 /* In an eyebrow line the pill must not make the line taller once it lands. */
 .eyebrow .premium-badge{margin-block:-4px;}
+/* Dark: r3-tools.css paints the pill cream; give it .r3 .tag.prem's dark colors. */
+:root[data-theme="dark"] .r3 a.r3-tool .premium-badge{background:rgba(245,176,74,.16);color:#F5B04A;}
 .premium-passes{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px;}
 .premium-pass{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:10px 12px;border-radius:var(--radius);background:var(--tint-accent);font-size:14px;}

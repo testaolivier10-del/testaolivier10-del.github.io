@@ -11,6 +11,10 @@
 
   var COURSE = 'nremt';
   var FREE_EXAM_KEY = 'nremt_free_exam_v1';
+  // The adaptive exam has its own free attempt (owner, 2026-10-27), kept
+  // apart from the timed exam's so taking one never spends the other.
+  var FREE_CAT_KEY = 'nremt_free_cat_v1';
+  function keyFor(kind) { return kind === 'cat' ? FREE_CAT_KEY : FREE_EXAM_KEY; }
 
   function api() { return window.LevlPremium || null; }
 
@@ -53,23 +57,24 @@
 
   /* ---- the one free exam ------------------------------------------------ */
 
-  function readFlag() {
+  function readFlag(kind) {
     try {
-      var raw = window.localStorage.getItem(FREE_EXAM_KEY);
+      var raw = window.localStorage.getItem(keyFor(kind));
       var v = raw ? JSON.parse(raw) : null;
       return v && typeof v.at === 'number' ? v : null;
     } catch (e) { return null; }
   }
 
-  function freeExamUsed() { return !!readFlag(); }
+  /* kind: 'full' (the timed exam, the default) or 'cat' (the adaptive exam). */
+  function freeExamUsed(kind) { return !!readFlag(kind); }
 
-  function canStartExam() { return !locked() || !freeExamUsed(); }
+  function canStartExam(kind) { return !locked() || !freeExamUsed(kind); }
 
   /* Called as an exam starts. Records the free exam only when it is the free
      one being spent: never before launch, never for a member. */
-  function examStarted() {
-    if (!locked() || freeExamUsed()) return;
-    try { window.localStorage.setItem(FREE_EXAM_KEY, JSON.stringify({ at: Date.now() })); }
+  function examStarted(kind) {
+    if (!locked() || freeExamUsed(kind)) return;
+    try { window.localStorage.setItem(keyFor(kind), JSON.stringify({ at: Date.now() })); }
     catch (e) { /* private mode: the exam still runs */ }
   }
 
@@ -80,7 +85,8 @@
   // and shares the daily allowance: open while any of today's 15 is left, so
   // a spent allowance meets the 'daily-limit' gate, never a review lock.
   function canUse(feature) {
-    if (feature === 'exam') return canStartExam();
+    if (feature === 'exam') return canStartExam('full');
+    if (feature === 'cat') return canStartExam('cat');
     if (feature === 'review') return quotaLeft() > 0;
     return !locked();
   }
@@ -94,6 +100,7 @@
 
   window.NremtGates = {
     FREE_EXAM_KEY: FREE_EXAM_KEY,
+    FREE_CAT_KEY: FREE_CAT_KEY,
     locked: locked,
     badge: badge,
     gate: gate,

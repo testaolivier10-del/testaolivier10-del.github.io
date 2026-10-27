@@ -139,6 +139,8 @@
     // (assets/premium-gates.js). Synced so it is one per learner, not per
     // browser; once spent on any device it stays spent.
     'nremt_free_exam_v1',
+    // The adaptive exam's own free attempt, synced the same way.
+    'nremt_free_cat_v1',
     // Misses from the interactive tools, which Review lists under the
     // question queue (assets/tool-results.js). Items merge key by key.
     'nremt_tool_review'

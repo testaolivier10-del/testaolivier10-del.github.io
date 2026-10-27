@@ -1333,7 +1333,7 @@ async function ledgerRemove(env, keys, kind) {
    - an NREMT pass that was bought (not a free month), not refunded;
    - the exam date falls inside that paid pass and is at most
      GUARANTEE.claimDays ago;
-   - at least GUARANTEE.minExams full timed exams taken during the paid
+   - at least GUARANTEE.minExams full timed or adaptive exams taken during the paid
      pass and before the exam date, so the pass was actually used to
      prepare. They are counted from exam_completions, which the database
      stamps (record_exam_completion), never from the synced history the
@@ -1353,6 +1353,10 @@ const GUARANTEE = { claimDays: 30, extendDays: 90, minExams: 2 };
 
 /* Server-stamped exam records start with the 2026-10 migration. */
 const EXAM_LOG_SINCE = Date.parse('2026-10-15T00:00:00Z');
+/* A finished exam of at least this many questions counts: the 100-question
+   timed exam, and the adaptive exam, which the page records only once it has
+   run its course (70 to 120 questions; owner, 2026-10-27). Drills and an
+   adaptive exam ended early stay below it or are never recorded. */
 const FULL_EXAM_MIN_QUESTIONS = 50;
 
 /* The exams that count: server records only. The browser-written history is
@@ -1386,7 +1390,7 @@ function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const from = Math.min(...paid.map((p) => Date.parse(p.starts_at)));
   const exams = (history || []).filter((h) => h && Number(h.date) >= from && Number(h.date) <= exam + DAY_MS).length;
   if (exams < GUARANTEE.minExams) {
-    return `Pass-or-extend needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
+    return `Pass-or-extend needs at least ${GUARANTEE.minExams} full timed or adaptive exams taken during your pass, before the real exam. ` +
       `This account has ${exams}. (An exam counts when you finish it while signed in.)`;
   }
   return null;
