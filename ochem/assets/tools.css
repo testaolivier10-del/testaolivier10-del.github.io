@@ -447,6 +447,28 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
    wide, so a phone showed only the 12 to 4 ppm end), on a panel with the
    integration labels in the spectrum's ink. */
 .sp-chart .sp-int{font:800 11px var(--font-mono);fill:var(--muted);}
+/* Audit 2026-10: multiplicity under each integration, a key, and the IR fingerprint region shaded and named. */
+.sp-mult{font:800 12px var(--font-ui);fill:var(--accent-text,var(--accent));font-style:italic;}
+.sp-lead{stroke:var(--line);stroke-width:1;stroke-dasharray:2 2;}
+.sp-key{font:600 10px var(--font-ui);fill:var(--muted);}
+@container (max-width:560px){ .sp-ls .sp-key{font-size:14px;} }
+.sp-fp{fill:var(--accent);opacity:.06;}
+.sp-fp-t{font:700 10.5px var(--font-ui);fill:var(--muted);letter-spacing:.02em;}
+.sp-link .sp-sig.is-on .sp-mult{fill:var(--accent);}
+/* Reference: one row per band, name then a range bar on a shared axis. */
+.sp-rlist{display:flex;flex-direction:column;gap:2px;}
+.sp-rlist__axis{display:grid;grid-template-columns:minmax(118px,38%) 1fr;gap:8px;position:sticky;top:0;background:inherit;z-index:1;padding:2px 0 4px;}
+.sp-rlist__ticks{position:relative;height:16px;border-bottom:1.5px solid var(--line);}
+.sp-rlist__ticks i{position:absolute;transform:translateX(-50%);font:700 11px var(--font-mono);font-style:normal;color:var(--muted);}
+.sp-rlist__ticks i:first-child{transform:none;} .sp-rlist__ticks i:last-child{transform:translateX(-100%);}
+.sp-band.sp-rrow{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(118px,38%) 1fr;gap:8px;align-items:center;min-height:32px;padding:2px 6px 2px 4px;border-radius:10px;cursor:pointer;}
+.sp-band.sp-rrow:hover,.sp-band.sp-rrow:focus-visible{background:var(--tint-accent);outline:none;}
+.sp-band.sp-rrow.on{background:var(--tint-accent);box-shadow:inset 0 0 0 1.5px var(--accent);}
+.sp-rrow__name{font:700 13.5px/1.2 var(--font-ui);color:var(--ink);}
+.sp-rrow__track{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--line-soft) 1px,transparent 1px) 0 0/16.66% 100%;}
+.sp-rrow__bar{position:absolute;top:1px;bottom:1px;min-width:6px;border-radius:5px;background:var(--accent);}
+.sp-band--variable .sp-rrow__bar{background:repeating-linear-gradient(90deg,var(--accent) 0 6px,transparent 6px 10px);}
+.sp-band.sp-rrow.on .sp-rrow__bar{background:var(--accent-text,var(--accent));}
 .sp-chart .sp-sig{cursor:pointer;}
 .sp-chart .sp-sig:hover line{stroke:var(--accent);}
 .sp-link .sp-sig.is-on .sp-int{fill:var(--accent-text);}
@@ -1229,11 +1251,14 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .sp-ls.sp-ls-nmr .sp-ls-pred > #spIR{display:none;}
 .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,.8fr) minmax(0,1.2fr);gap:8px;}
 .sp-ls .sp-link__mol,.sp-ls .sp-link > #spNMR{min-height:0;display:flex;align-items:center;justify-content:center;}
+/* Stretch, so a tall structure (styrene) is fitted to its row instead of overflowing it. */
+.sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{align-items:stretch;}
+.sp-ls .sp-link__mol{overflow:hidden;}
 .sp-ls .sp-link__mol .scene{width:100%;height:100%;margin:0;padding:0;display:flex;align-items:center;justify-content:center;}
 .sp-ls .sp-link__mol .omol svg{width:100%;height:100%;max-width:none;max-height:100%;}
 .sp-ls .ls-stage-body:has(.sp-link){container-type:inline-size;}
 @container (min-width:640px){ .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr);} }
-@container (max-width:560px){ .sp-ls #spIR .sp-axis,.sp-ls .sp-ls-puz .sp-axis{font-size:17px;} .sp-ls .sp-int{font-size:17px;} .sp-ls .sp-ls-irt{display:none;} .sp-ls .ls-stage .sp-ls-unit{display:block;} }
+@container (max-width:560px){ .sp-ls #spIR .sp-axis,.sp-ls .sp-ls-puz .sp-axis{font-size:17px;} .sp-ls .sp-int,.sp-ls .sp-mult{font-size:17px;} .sp-ls .sp-ls-irt{display:none;} .sp-ls .ls-stage .sp-ls-unit{display:block;} }
 .sp-ls-view .tseg{display:flex;width:100%;}
 .sp-ls-view .tseg button{flex:1;}
 .sp-ls #spMore{margin:0;border:0;padding:0;}
@@ -1310,12 +1335,12 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root.ls-phone .ls-stage .sp-peak circle[r="7"]{r:8.5px;}
 @media (orientation:landscape){ .ls-root.ls-phone.sp-ls #spIR .sp-axis,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis{font-size:18.5px;} } /* sideways the IR axis is 640 units in ~430 px */
 /* Identify it: IR and NMR are both 640 units wide in a ~344 px stage (scale ~0.54), so their axes and integrals grow. */
-@media (orientation:portrait){ .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis{font-size:22.5px;} .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int{font-size:22.5px;} }
+@media (orientation:portrait){ .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis{font-size:22.5px;} .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-mult{font-size:22.5px;} }
 /* Sideways, the two Identify-it spectra take the stage width and the stage scrolls (fitting both to ~260 px drew 7 px axes). */
 @media (orientation:landscape){
   .ls-root.ls-phone.sp-ls .sp-ls-puz,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-chart{flex:none;}
   .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-chart svg{flex:none;height:auto;max-height:none;}
-  .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int{font-size:19px;}
+  .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-mult{font-size:19px;}
 }
 .ls-root.ls-phone.sp-ls .sp-band__label{font-size:12px;} /* Reference: band names at least 12 px */
 .ls-root.ls-phone.sp-ls .sp-scale span{font-size:12px;}
