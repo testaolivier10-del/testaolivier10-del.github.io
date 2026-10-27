@@ -54,7 +54,7 @@ set counts chosen and stays open. Author A's tool test failure and author G's ma
 failing. `check-appsych-map --check`: nothing used before it is taught. `build-appsych --check`: up to date. Full
 scratch build with every chapter published: 42 topics, 192 files, both forms served. `node --test
 scripts/test/appsych-*.test.mjs`: 151 pass, 0 fail (new: the real forms and recomputed numbers, timed sections, FRQ
-order, the help field, the measured margin, the shared helpers). `scripts/ci-local.sh`: see the spec's Phase 3 row.
+order, the help field, the measured margin, the shared helpers). `scripts/ci-local.sh`: ALL PASS.
 
 ## For Phase 4
 
