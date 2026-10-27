@@ -436,7 +436,7 @@
       g.points.forEach(function(q, i){ if(i % (phone && g.points.length > 10 ? 2 : 1) === 0) out.push('<line class="dr-grid" x1="' + X(q[0]).toFixed(1) + '" x2="' + X(q[0]).toFixed(1) + '" y1="' + top + '" y2="' + bot + '"/><text class="dr-tk" x="' + X(q[0]).toFixed(1) + '" y="' + (bot + 16) + '" text-anchor="middle">' + q[0] + '</text>'); });
       out.push('<polyline class="dr-curve dr-a is-sel" points="' + g.points.map(function(q){ return X(q[0]).toFixed(1) + ',' + Y(q[1]).toFixed(1); }).join(' ') + '"/>');
       g.points.forEach(function(q){ out.push('<circle class="dr-pt dr-a" cx="' + X(q[0]).toFixed(1) + '" cy="' + Y(q[1]).toFixed(1) + '" r="3.4"/>'); });
-      var tr = st.try && isFinite(st.try.v) && (st.try.key === 'ld50' || st.try.key === 'threshold') ? Math.max(0, Math.min(mx, st.try.v)) : null;
+      var tr = st.try && isFinite(st.try.v) && (st.try.key === 'ld50' || st.try.key === 'threshold') && st.try.v >= 0 && st.try.v <= mx ? st.try.v : null;
       if(tr != null){
         // the student's dose, read up to the curve: where it lands shows the percent it really gives
         var yy = null;

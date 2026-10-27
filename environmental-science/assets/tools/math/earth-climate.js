@@ -262,7 +262,7 @@
           { expr: n1(T0) + ' - 10 * ' + n1(H), why: 'Above the cloud base the air cools only about 6 °C per km: condensing water releases heat.' },
           { expr: n1(T0) + ' - 6 * ' + n1(H), why: 'Below the cloud base the air is dry and cools 10 °C per km. Use 6 °C per km only inside the cloud.' }] }) }),
       step('top', 'The temperature at the summit, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(top, '°C', { units: ['C', 'degrees C', 'degrees Celsius', 'celsius', 'deg C'] }) }),
-      step('setup2', 'The air then sinks to sea level on the ' + ({ west: 'east', east: 'west', south: 'north', north: 'south' })[nm.wet] + ' side. Write the setup for its temperature there.', { kind: 'setup', practice: '6.B',
+      step('setup2', 'The air then sinks to sea level on the ' + ({ west: 'east', east: 'west', south: 'north', north: 'south' })[nm.wet] + ' side. Write the setup for its temperature there.', { kind: 'setup', practice: '6.B', hint: 'Sinking air is dry: it warms 10 °C per km all the way down.',
         cell: M.setupCell(s2, { mustUse: [n1(H)], mistakes: [{ expr: n1(top) + ' + 6 * ' + n1(H), why: 'The air lost its water as rain on the way up, so it sinks as dry air and warms 10 °C per km.' }] }) }),
       step('lee', 'The temperature at sea level on the far side, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(lee, '°C', { units: ['C', 'degrees C', 'degrees Celsius', 'celsius', 'deg C'], mistakes: [{ value: T0, why: 'The air does not return to its starting temperature: it lost water (and gained heat) in the cloud.' }] }) }),
       choice('desert', 'Why is ' + nm.dry + ' a desert?', [
@@ -292,9 +292,9 @@
     var name = kind === 'nino' ? 'El Niño' : kind === 'nina' ? 'La Niña' : 'neutral';
     var bare = ev('add', [vals[0], vals[1], ev('div', [vals[2], 3])]);
     var steps = [
-      step('setup', 'Write the setup for the 3-month average anomaly.', { kind: 'setup', practice: '6.B', cell: M.setupCell(setup, { mustUse: vals.map(function(v){ return n1(Math.abs(v)); }).concat(['3']), parens: false,
+      step('setup', 'Write the setup for the 3-month average anomaly.', { kind: 'setup', practice: '6.B', hint: 'Add the three anomalies, keeping their signs, then divide by 3.', cell: M.setupCell(setup, { mustUse: vals.map(function(v){ return n1(Math.abs(v)); }).concat(['3']), parens: false,
         mistakes: Math.abs(bare - mean) > 0.01 ? [{ expr: vals.map(function(v, i){ return i ? (v < 0 ? '- ' + n1(-v) : '+ ' + n1(v)) : n1(v); }).join(' ') + ' / 3', why: 'Add all three first, in brackets, then divide: without brackets only the last month is divided by 3.' }] : [] }) }),
-      step('mean', 'The average anomaly (°C), to 2 decimal places.', { kind: 'num', practice: '6.C', d: 2, cell: M.cell(mean, 0.005, [], 0.006) }),
+      step('mean', 'The average anomaly (°C), to 2 decimal places.', { kind: 'num', practice: '6.C', d: 2, hint: 'Work out your setup, then round to 0.01.', cell: M.cell(mean, 0.005, [], 0.006) }),
       choice('state', 'What are conditions in the Pacific?', [
         [kind === 'nino' ? 'El Niño: the average is +0.5 °C or more' : kind === 'nina' ? 'La Niña: the average is −0.5 °C or less' : 'Neutral: the average is between −0.5 °C and +0.5 °C', 'NOAA calls it El Niño when the 3-month average is +0.5 °C or warmer, and La Niña at −0.5 °C or cooler.'],
         [kind === 'nino' ? 'La Niña: the water is warmer than normal' : 'El Niño: the water is ' + (kind === 'nina' ? 'cooler than' : 'near') + ' normal', 'El Niño means warmer than normal water in the east Pacific; La Niña means cooler.'],

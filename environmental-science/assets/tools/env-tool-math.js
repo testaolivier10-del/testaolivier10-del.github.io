@@ -73,13 +73,17 @@
 
   function near(x, a, rel, abs){ return Math.abs(x - a) <= (rel || 0) * Math.abs(a) + (abs || 0) + 1e-12 * Math.abs(a) + 1e-300; }
   function cell(answer, rel, mistakes, abs){
-    var seen = [];
+    var seen = [], close = [];
     var ms = (mistakes || []).filter(function(m){
-      if(!isFinite(m.value) || near(m.value, answer, 2.5 * rel, 2.5 * (abs || 0))) return false;
+      if(!isFinite(m.value)) return false;
+      // Too near the key to name first; kept apart so a miss there is never
+      // called "Close" (it is a wrong method, such as 10 x the pH difference).
+      if(near(m.value, answer, 2.5 * rel, 2.5 * (abs || 0))){ if(!near(m.value, answer, rel, abs)) close.push(m); return false; }
       if(seen.some(function(v){ return near(m.value, v, 2 * rel, 2 * (abs || 0)); })) return false;
       seen.push(m.value); return true;
     });
     var c = { answer: answer, rel: rel, mistakes: ms };
+    if(close.length) c.near = close;
     if(abs) c.abs = abs;
     return c;
   }
@@ -95,9 +99,13 @@
     if(near(x / 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
     if(near(x / 1000, A, r, ab) || near(x * 1000, A, r, ab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
     if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
-    // "Close" only within about twice the tolerance, and never more than a
-    // quarter of the answer away (tool-audit X5: 0 was "close" to 1.4).
-    if(near(x, A, Math.max(2 * r, 0.02), 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
+    // "Close" only within twice the tolerance, and never more than a quarter
+    // of the answer away (tool-audit X5: 0 was "close" to 1.4).
+    // A wrong method that lands near the key (dropped from the list above) is named, not called close.
+    var nm = (c.near || []).filter(function(m){ return near(x, m.value, r, ab); })[0];
+    if(nm) return { ok: false, why: nm.why };
+    // No 2% floor: a year 36 off was "close" to 2066.
+    if(near(x, A, 2 * r, 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
     return { ok: false };
   }
 

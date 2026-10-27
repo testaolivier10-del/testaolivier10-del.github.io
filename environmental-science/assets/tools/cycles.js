@@ -451,7 +451,7 @@
         var sm = sim.pools[st.years], parts = [];
         Y.reservoirs.forEach(function(r){ var d = deltaText(Y, r, sm[r.id]); if(d) parts.push(r.name.toLowerCase() + ' ' + d.replace(/[▲▼] ?/, '')); });
         head = ids.map(function(id){ return Y.changes.filter(function(c){ return c.id === id; })[0].did; }).join(' and ') + ', after ' + st.years + ' years: ' + (parts.slice(0, 3).join(', ') || 'little change yet') + '.';
-        if(st.cy === 'carbon' && st.on.fuel && sm.fossil < 1) head += ' In this model the 930 GtC of fossil fuel is used up (real reserves are larger).';
+        if(st.cy === 'carbon' && st.on.fuel && sm.fossil < 1) head += ' In this model the 930 GtC of fossil fuel reserves is used up, so burning stops (more carbon lies in deposits not yet worth mining).';
         why = effectWhy(st.cy, ids);
       } else {
         head = { carbon: 'Carbon moves between air, living things, soil, ocean and rock. Tap a process to see what moves where.', nitrogen: 'Bacteria do most of the nitrogen cycle\'s work. Tap the numbered processes in order, 1 to 5.', phosphorus: 'Phosphorus has no gas phase: it moves from rock to soil, life and water, slowly.', water: 'The sun drives the water cycle: evaporation, then precipitation, runoff and infiltration.' }[st.cy];

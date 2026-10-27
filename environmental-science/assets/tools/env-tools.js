@@ -540,8 +540,9 @@
     if(m) return m;
     var lab = String(s.label || '').replace(/<[^>]+>/g, '');
     if(s.kind === 'setup') return 'Write the formula in words first, then put each number from the problem in its place. Keep brackets around a difference before you divide, and multiply by 100 for a percent.';
-    if(s.kind === 'unit') return 'Work the number out from your setup, keeping every digit until the end. Then write the unit the question asks for (%, mg/L, kg/day...).';
-    if(s.kind === 'vol' || /^read\b|graph|curve|table/i.test(lab)) return 'Find the point on the picture first, then read straight across (or down) to the axis and use its scale.';
+    if(s.kind === 'unit') return 'Work the number out (from your setup, if there is one), keeping every digit until the end. Then write the unit the question asks for (%, mg/L, kg/day...).';
+    if(/table/i.test(lab)) return 'Find the row and column you need in the table, then read the value where they meet.';
+    if(s.kind === 'vol' || /^read\b|graph|curve/i.test(lab)) return 'Find the point on the picture first, then read straight across (or down) to the axis and use its scale.';
     if(s.kind === 'num') return 'Find the numbers you need in the problem or on the picture, then do one operation at a time.';
     if(s.kind === 'choice') return 'Look at the picture and the numbers first. Rule out the options that contradict them, then pick the one that also explains why.';
     return 'Use the numbers in the problem, one step at a time.';
@@ -566,6 +567,7 @@
   /* No authored slip matched a number: say which way it is off. */
   function gapNote(c, x){
     if(!isFinite(x) || !c || !isFinite(c.answer)) return '';
+    if(c.answer < 0 && x < 0) return (x < c.answer ? 'Too large a decrease.' : 'Too small a decrease.') + ' Use the method above, then check again.';
     return (x > c.answer ? 'Too high.' : 'Too low.') + ' Use the method above, then check again.';
   }
   function drill(app, data, o){
