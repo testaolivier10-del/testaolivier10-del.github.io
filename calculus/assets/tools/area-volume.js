@@ -496,8 +496,8 @@
      right one solid. */
   var QM = T.tries(), QA = { paint: function(){}, reg: null, ax: null, gauge: null, by: {} };
   var AMETHOD = {
-    lo: 'Set the two curves equal and solve: the region starts at the smaller intersection.',
-    hi: 'The other intersection (or the given line) ends the region.',
+    lo: 'Find where the region starts: where its two boundaries meet (set them equal and solve), or a boundary line the problem gives.',
+    hi: 'Find where the region ends: the other meeting point of the boundaries, or the given line.',
     ig: 'Top minus bottom (or right minus left): test a point between the limits to see which curve is farther out.',
     igRev: 'A disc is π R²; a washer is π(R² − r²). Square each radius first, then subtract.',
     R: 'A radius runs from the axis to a curve: the farther curve minus the axis line (or the line minus the curve).',

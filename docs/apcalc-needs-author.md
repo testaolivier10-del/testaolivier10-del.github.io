@@ -186,3 +186,7 @@ All 2026-10-13, answered by the independent reviewers or fixed; kept here so nob
   before a digit, in calculus and AP® Physics 1 (tools-b, phone pass calc-b; fixed at launch).
 - Near-duplicate false positives for items whose stems differ only in their math or region: rule fixed at launch
   (see varied-stems).
+
+- (2026-10-27, tool audit) Riemann sums Test yourself: an over/under problem given only by "R′ < 0 and R″ < 0"
+  now shows an unscaled sketch with that shape so the strips can be drawn. It is labelled as a sketch with no
+  vertical scale. Check a teacher is happy with a picture that is not data.
