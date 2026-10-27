@@ -198,7 +198,7 @@
 /* The student's answer drawn on a drill stage next to the right one. */
 .stat-yours{fill:none;stroke:var(--bad-text);stroke-width:2.5;stroke-dasharray:6 4;}
 .stat-yours-f{fill:var(--bad-text);}
-.stat-yours-t{fill:var(--bad-text);font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+svg text.stat-yours-t,.stat-yours-t{fill:var(--bad-text) !important;font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .cd-step .bt-actions:empty{display:none;}
 .cd-ice{width:100%;border-collapse:collapse;}
 .cd-ice th,.cd-ice td{padding:6px;text-align:center;vertical-align:middle;border-bottom:1px solid var(--line);font:700 14px var(--font-ui);}
