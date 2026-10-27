@@ -461,7 +461,9 @@ const BUDGETS = [
   /* 48 -> 48.4 (polish 2026-10-17, B11): XP paid as each answer is checked. */
   /* 48.4 -> 48.7: per-question tallies and exam-quit hooks in practice-engine.js (analytics depth). */
   /* 48.7 -> 49.5 (redesign round 2, 2026-10): the session and results restyle in practice.css. */
-  ['nremt/practice.html', 49.5],
+  /* 49.5 -> 49.9 (redesign round 3, B2): the session rail's Read the notes and Keyboard cards in
+     practice-engine.js (board R10-Practice-Question). Measured 49.6 KB. */
+  ['nremt/practice.html', 49.9],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
