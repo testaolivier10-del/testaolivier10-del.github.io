@@ -871,7 +871,7 @@ ${bodyOpen(' data-app="teachers"')}
     ${skills.length ? `<h3 class="bio-tc-skills">Skills</h3><p class="bio-small">Each skills topic sits right after the framework topic it supports.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>
 
-  <p class="bio-disclaimer">Questions are original and never copied from released exams or course materials. ${esc(DISCLAIMER)}</p>
+  <p class="bio-disclaimer">Questions are original and never copied from released exams or course materials.</p>
 </main>
 ${footer(depth, 'page:teachers')}
 ${tail({ depth, section: '' })}

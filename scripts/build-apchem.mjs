@@ -889,7 +889,7 @@ ${bodyOpen(' data-app="teachers"')}
     ${skills.length ? `<h3 class="chem-tc-skills">Skills</h3><p class="chem-small">Each math refresher sits right before the framework topic that first needs it.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>
 
-  <p class="chem-disclaimer">Questions are original and never copied from released exams or course materials. ${esc(DISCLAIMER)}</p>
+  <p class="chem-disclaimer">Questions are original and never copied from released exams or course materials.</p>
 </main>
 ${footer(depth, 'page:teachers')}
 ${tail({ depth, section: '' })}

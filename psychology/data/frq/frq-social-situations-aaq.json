@@ -148,7 +148,10 @@
      ]
     }
    ],
-   "sample": "The findings support the hypothesis. Participants alone helped more often (78%) than those with 1 other (55%) or 4 others (33%), and among helpers they helped faster: 6 seconds alone against 17 seconds with 4 others. With others present, each person could assume someone else would act (diffusion of responsibility), so helping was both less likely and slower, exactly as the hypothesis predicted."
+   "sample": "The findings support the hypothesis. Participants alone helped more often (78%) than those with 1 other (55%) or 4 others (33%), and among helpers they helped faster: 6 seconds alone against 17 seconds with 4 others. With others present, each person could assume someone else would act (diffusion of responsibility), so helping was both less likely and slower, exactly as the hypothesis predicted.",
+   "write": {
+    "mechanism": true
+   }
   }
  ]
 }

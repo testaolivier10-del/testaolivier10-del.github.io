@@ -908,7 +908,7 @@ ${bodyOpen(' data-app="teachers"')}
     ${skills.length ? `<h3 class="calc-tc-skills">Skills</h3><p class="calc-small">Each math topic sits right before the framework topic that first needs it.</p>${skills.map(unitTable).join('\n    ')}` : ''}
   </section>
 
-  <p class="calc-disclaimer">Questions are original and never copied from released exams or course materials. ${esc(DISCLAIMER)}</p>
+  <p class="calc-disclaimer">Questions are original and never copied from released exams or course materials.</p>
 </main>
 ${footer(depth, 'page:teachers')}
 ${tail({ depth, section: '' })}

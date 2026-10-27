@@ -95,7 +95,7 @@
         p.rubric.map(function(r, k){
           var id = name + '-' + i + '-' + k, on = had[i] && had[i][k];
           return '<label class="psy-fq-point" for="' + id + '"><input type="checkbox" id="' + id + '" data-part="' + i + '" data-k="' + k + '"' + (on ? ' checked' : '') + (opts.readonly ? ' disabled' : '') + '>' +
-            '<span><b>1 point.</b> ' + r.point + (r.accept && r.accept.length ? '<span class="psy-fq-accept">Also accept: ' + r.accept.map(richText).join('; ') + '</span>' : '') + '</span></label>';
+            '<span><b>1 point.</b> ' + r.point + (r.accept && r.accept.length ? '<span class="psy-fq-accept">Also accept: ' + r.accept.map(function(a){ return richText(String(a).replace(/\.\s*$/, '')); }).join('; ') + '</span>' : '') + '</span></label>';
         }).join('') +
         '<div class="psy-fq-sample"><p class="psy-fq-sample-k">A full-credit answer</p><p>' + p.sample + '</p></div>' +
         (opts.readonly ? '' : numCheckHtml(f, p, i)) + '</fieldset>';

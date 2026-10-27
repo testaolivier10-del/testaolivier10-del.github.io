@@ -414,6 +414,11 @@
 @media (max-width:860px){
   .r3 .ccard:not(:has(> .cover)):not(:has(> .clock)){display:flex;flex-direction:column;padding:14px 16px}
   .r3 .ccard > .clock{grid-row:1/3;align-self:start}
+  /* In the 92px picture column the number sits over its words, which wrap at a smaller size, so
+     "free response questions on the exam" is not cut (every course home, launch of AP® Psychology). */
+  .r3 .ccard > .clock{flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:12px 10px;aspect-ratio:auto;min-height:92px}
+  .r3 .ccard > .clock b{font-size:40px}
+  .r3 .ccard > .clock span{font-size:12px;line-height:1.25;max-width:none;hyphens:auto;overflow-wrap:anywhere}
   .r3 .ccard > .chiprow{grid-column:1/-1;margin:8px 0 0}
   .r3 .ccard > .cdesc{grid-column:2}
   .r3 .ccard:not(:has(> .cover)):not(:has(> .clock)) > .cdesc{grid-column:auto}

@@ -156,7 +156,10 @@
      ]
     }
    ],
-   "sample": "The findings support the hypothesis. Teens with authoritative parents at 13 had the highest mean GPA at 17 (3.3, compared with 3.0 and 2.8) and the highest self-reliance (38, compared with 33 and 35), which is exactly the pattern the researchers predicted. Because parenting was measured rather than assigned, this supports the hypothesis that authoritative parenting predicts better outcomes, but it does not show that the parenting caused them."
+   "sample": "The findings support the hypothesis. Teens with authoritative parents at 13 had the highest mean GPA at 17 (3.3, compared with 3.0 and 2.8) and the highest self-reliance (38, compared with 33 and 35), which is exactly the pattern the researchers predicted. Because parenting was measured rather than assigned, this supports the hypothesis that authoritative parenting predicts better outcomes, but it does not show that the parenting caused them.",
+   "write": {
+    "mechanism": true
+   }
   }
  ]
 }

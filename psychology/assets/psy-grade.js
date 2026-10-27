@@ -300,7 +300,7 @@
       out.push({ rule: 'otherThan', ok: !used.length, hint: 'The question says "other than" ' + W.otherThan[0] + ': give a different answer.' });
     }
     if(W.mechanism) out.push({ rule: 'mechanism', ok: MECHANISM.test(t), hint: 'Link it: "because ...", "this shows ...", "which suggests ...".' });
-    if(W.cite) out.push({ rule: 'cite', ok: CITE.test(t), hint: 'Cite the source: "(Source 2)" or "According to Source 2".' });
+    if(W.cite) out.push({ rule: 'cite', ok: CITE.test(t), hint: 'Cite the source you use by its number: "(Source 1)" or "According to Source 3".' });
     if(W.concept && W.concept.length) out.push({ rule: 'concept', ok: W.concept.some(function(w){ return has(t, w); }), hint: 'Name a psychology concept and apply it to the evidence (' + W.concept[0] + ', for example).' });
     if(W.restricted && W.restricted.length){
       var only = W.restricted.filter(function(w){ return has(t, w); });

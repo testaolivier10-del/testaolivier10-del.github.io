@@ -3,8 +3,14 @@
  "type": "aaq",
  "points": 7,
  "title": "A twin and adoption study of persistence",
- "units": ["unit-1", "skills-research"],
- "topics": ["heredity-environment", "research-ethics"],
+ "units": [
+  "unit-1",
+  "skills-research"
+ ],
+ "topics": [
+  "heredity-environment",
+  "research-ethics"
+ ],
  "practices": [
   "2.A",
   "2.B",
@@ -154,7 +160,10 @@
      ]
     }
    ],
-   "sample": "The results support the hypothesis. Identical twins raised in different adoptive families still had similar persistence scores ($r = .44$), almost as similar as identical twins raised together. Because they did not share a home, their similarity is best explained by their shared genes. At the same time, adopted siblings who shared a home but no genes were barely similar ($r = .06$), so growing up together did little on its own. Persistence therefore appears partly heritable, though the correlations below 1 show the environment matters too."
+   "sample": "The results support the hypothesis. Identical twins raised in different adoptive families still had similar persistence scores ($r = .44$), almost as similar as identical twins raised together. Because they did not share a home, their similarity is best explained by their shared genes. At the same time, adopted siblings who shared a home but no genes were barely similar ($r = .06$), so growing up together did little on its own. Persistence therefore appears partly heritable, though the correlations below 1 show the environment matters too.",
+   "write": {
+    "mechanism": true
+   }
   }
  ]
 }

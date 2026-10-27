@@ -743,8 +743,14 @@
       // the page scroll sideways on a phone. Its outer glow is a shadow, which
       // never adds scroll.
       var rl = Math.max(0, r.left - pad), rr2 = Math.min(vw0, r.right + pad);
-      ring.style.left = (rl + sx) + 'px'; ring.style.top = (r.top + sy - pad) + 'px';
-      ring.style.width = Math.max(0, rr2 - rl) + 'px'; ring.style.height = (r.height + pad * 2) + 'px';
+      /* Nor past the bottom of the stage that scrolls it: a tall answer box half under the fold of a
+         phone's stage drew its ring over the dock below (Make it specific, AP® Psychology launch). */
+      var clip = target.closest('.ls-stage'), cb = clip && !target.closest('.ls-dock') ? clip.getBoundingClientRect() : null;
+      var rt = r.top - pad, rb = r.bottom + pad;
+      if(cb){ rt = Math.max(rt, cb.top); rb = Math.min(rb, cb.bottom); }
+      if(rb - rt < 12){ ring.style.display = tip.style.display = 'none'; return; }
+      ring.style.left = (rl + sx) + 'px'; ring.style.top = (rt + sy) + 'px';
+      ring.style.width = Math.max(0, rr2 - rl) + 'px'; ring.style.height = (rb - rt) + 'px';
       var round = Math.min(r.width, r.height) / 2 + pad;
       ring.style.borderRadius = (o.round != null ? o.round : round) + 'px';
       var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth, vh = window.innerHeight;

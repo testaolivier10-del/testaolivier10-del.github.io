@@ -3,8 +3,15 @@
  "type": "aaq",
  "points": 7,
  "title": "Leading questions and eyewitness memory",
- "units": ["unit-2", "skills-research"],
- "topics": ["forgetting", "stats-descriptive", "stats-significance"],
+ "units": [
+  "unit-2",
+  "skills-research"
+ ],
+ "topics": [
+  "forgetting",
+  "stats-descriptive",
+  "stats-significance"
+ ],
  "practices": [
   "2.A",
   "2.B",
@@ -147,7 +154,10 @@
      ]
     }
    ],
-   "sample": "The results support the hypothesis. Two days later, the misleading group was much more sure the man wore a red jacket (mean 4.6) than the neutral group (mean 2.1), and the difference was statistically significant. Because both groups saw the identical video and were randomly assigned, the only difference was the word \"red\" in a question asked after the event. People in that group became more confident of a detail that was never in the video, which shows that misleading information after an event was blended into their memory of it: the misinformation effect."
+   "sample": "The results support the hypothesis. Two days later, the misleading group was much more sure the man wore a red jacket (mean 4.6) than the neutral group (mean 2.1), and the difference was statistically significant. Because both groups saw the identical video and were randomly assigned, the only difference was the word \"red\" in a question asked after the event. People in that group became more confident of a detail that was never in the video, which shows that misleading information after an event was blended into their memory of it: the misinformation effect.",
+   "write": {
+    "mechanism": true
+   }
   }
  ]
 }
