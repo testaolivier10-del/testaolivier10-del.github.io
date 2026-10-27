@@ -75,7 +75,7 @@
   /* Adult intelligence: a relative sketch of the well-known pattern (fluid
      peaks in the early 20s and declines gradually; crystallized grows into
      late adulthood and declines only late). Index 100 at age 20. */
-  function crystallized(age){ age = Math.max(20, Math.min(90, age)); return age <= 65 ? 100 + 30 * (age - 20) / 45 : 130 - 0.12 * (age - 65) * (age - 65) / 2.5; }
+  function crystallized(age){ age = Math.max(20, Math.min(90, age)); return 130 - 30 / 2025 * (age - 65) * (age - 65); }
   function fluid(age){ age = Math.max(20, Math.min(90, age)); return 100 - 0.5 * (age - 20) - 0.004 * (age - 20) * (age - 20); }
 
   function stageAt(list, age){ for(var i = 0; i < list.length; i++) if(age >= list[i].from && age < list[i].to) return list[i]; return list[list.length - 1]; }
