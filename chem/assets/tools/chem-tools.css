@@ -356,6 +356,10 @@
 .cd-ice th[scope=row]{text-align:left;white-space:nowrap;}
 .cd-ice th[scope=row] .bt-small{display:block;}
 .cd-ice tr.is-active{background:var(--ctint);}
+.cd-ice tr.is-active input{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--cink) 55%,transparent);}
+.cd-ice tr.is-nudge{animation:cd-nudge .9s ease 1;}
+@keyframes cd-nudge{0%,100%{background:var(--ctint);}35%{background:color-mix(in srgb,var(--cink) 28%,var(--white));}}
+@media (prefers-reduced-motion:reduce){.cd-ice tr.is-nudge{animation:none;}}
 .cd-blank{color:var(--muted);}
 .cd-fig{margin:0;display:flex;flex-direction:column;gap:4px;align-items:flex-start;}
 .cd-fig svg{width:100%;max-width:320px;height:auto;}

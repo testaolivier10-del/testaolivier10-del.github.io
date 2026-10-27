@@ -628,7 +628,17 @@
             if(!c) blank = true;
             else { var pick = +c.value; ok = pick === s.correct; notes.push(s.why[pick]); }
           }
-          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
+          if(blank && (s.kind === 'row' || s.kind === 'coef')){
+            // The boxes to fill are in the table (on the stage in the Tool
+            // Studio), not next to Check: say where, flash the row and put
+            // the cursor in its first empty box.
+            var empty = rowInputs.filter(function(x){ return x && !x.value.trim(); })[0], tr = row1('[data-row="' + s.row + '"]');
+            fb.innerHTML = '<span class="bt-small">Fill every box in the highlighted <b>' + esc(s.row) + '</b> row of the ICE table' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : ', for example 0.25 or 1.8e-5.') + '</span>';
+            if(tr){ tr.classList.remove('is-nudge'); void tr.offsetWidth; tr.classList.add('is-nudge'); }
+            if(empty){ try{ empty.scrollIntoView({ block: 'nearest' }); }catch(e){} empty.focus({ preventScroll: true }); }
+            return;
+          }
+          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
           if(ok){
             el.classList.add('is-right');
