@@ -1159,23 +1159,13 @@
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
         s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is open under Why.', m);
         var again = area.querySelector('.cd-again');
-        if(again){ again.classList.add('ls-btn', 'ls-pri'); }
-        // X6: the worked solution opens by itself; closing it returns to New problem.
-        openSolution(s, again);
+        // X6: the studio opens the worked solution by itself, once (the
+        // sheet on a phone, the drawer on a desktop); closing it returns
+        // to New problem, which has focus first.
+        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus({ preventScroll: true }); }
       }
     };
   }
-  /* Open the Why sheet on the worked solution once a problem is done
-     (docs/tool-audit-2026-10.md X6), with focus on its heading; closing it
-     returns focus to the button given (New problem). */
-  function openSolution(s, back){
-    try{
-      if(back) back.focus({ preventScroll: true });
-      var h = s.root.querySelector('.ls-why-panel .bt-solution h3, .ls-why-panel .bt-steps');
-      s.open('why', h || undefined);
-    }catch(e){ if(back) back.focus(); }
-  }
-
   /* studioPane(pane, s, o): the usual arrangement of an explore view (the
      titration reader's, written once for the other trainers). Every part is
      MOVED, so the tool keeps its references:

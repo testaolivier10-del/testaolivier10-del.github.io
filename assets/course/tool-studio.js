@@ -751,12 +751,18 @@
     function paintPrimary(){
       var el = prim || dockBody.querySelector('[data-ls-primary]');
       if(!el){ pbar.hidden = true; return; }
-      if(!prim){ prim = el; pmark = document.createElement('span'); pmark.className = 'ls-pmark'; pmark.hidden = true; el.parentNode.insertBefore(pmark, el); }
+      if(!prim){
+        prim = el; pmark = document.createElement('span'); pmark.className = 'ls-pmark'; pmark.hidden = true; el.parentNode.insertBefore(pmark, el);
+        // Its own hidden state or mode (s.add with { mode }) shows or hides the band.
+        if(window.MutationObserver) new MutationObserver(function(){ if(prim === el){ paintPrimary(); paintActH(); } }).observe(el, { attributes: true, attributeFilter: ['hidden', 'class'] });
+      }
       var home = pmark.parentElement, out = portrait() && !big && home && document.contains(pmark) && shown(home);
       if(out && prim.parentNode !== pbar){ pbar.appendChild(prim); root.classList.add('has-pbar'); }
       else if(!out && prim.parentNode === pbar && document.contains(pmark)){ pmark.parentNode.insertBefore(prim, pmark.nextSibling); root.classList.remove('has-pbar'); }
       if(!document.contains(pmark)){ if(prim.parentNode === pbar) pbar.removeChild(prim); prim = pmark = null; root.classList.remove('has-pbar'); }
-      pbar.hidden = !pbar.children.length;
+      var on = !!(prim && pbar.children.length && !prim.hidden && !prim.classList.contains('ls-off'));
+      if(pbar.hidden !== !on) pbar.hidden = !on;
+      root.classList.toggle('has-pbar', on);
       // Just before the action row, so the two stack in the same order
       // stuck or not (a stepper's own children stay its steps).
       var rows = pbar.hidden ? [] : actRows().filter(function(r){ return r !== pbar && !pbar.contains(r); }), at = rows[rows.length - 1];
@@ -862,7 +868,15 @@
       hit.hidden = false;
       // A phone: the sheet (focus moves into it, Close brings it back). A
       // desktop: the drawer opens beside the dock and focus stays put.
-      setTimeout(function(){ if(!sheetOpen && whyP.contains(hit) && isQuiz()) s.open('why', null, wide()); }, 600);
+      // Course drill engines leave this to the shell (one open per problem end).
+      // On a phone focus goes to the solution's heading, so a screen reader
+      // starts there; closing returns to what had focus (New problem).
+      setTimeout(function(){
+        if(sheetOpen || !whyP.contains(hit) || !isQuiz()) return;
+        var h = hit.querySelector('h2, h3, h4');
+        if(h && !h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1');
+        s.open('why', h || null, wide());
+      }, 600);
     }).observe(whyP, { childList: true, subtree: true });
 
     /* ---------------- menu */
