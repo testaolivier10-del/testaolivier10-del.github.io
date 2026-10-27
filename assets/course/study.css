@@ -261,19 +261,25 @@
 .cx-flag{float:right;display:inline-flex;align-items:center;gap:6px;min-height:36px;margin:-4px -4px 6px 12px;padding:0 12px;border:0;border-radius:var(--radius-pill);background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--muted);font:800 12.5px var(--font-ui);cursor:pointer;}
 .cx-flag:hover{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--cink);}
 .cx-flag:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
-.cx-flag[aria-pressed="true"]{background:var(--tint-amber);color:var(--amber-text);box-shadow:inset 0 0 0 1.5px var(--amber);}
+.cx-flag[aria-pressed="true"]{background:var(--tint-bad);color:var(--bad-text);box-shadow:inset 0 0 0 1.5px var(--bad);}
 .cx-flag[aria-pressed="true"] svg{fill:currentColor;}
 /* "Flagged" on screen; the alt text keeps the accessible name "Flag", whose state is aria-pressed. */
 .cx-flag[aria-pressed="true"] span::after{content:"ged";content:"ged" / "";}
 @media (pointer:coarse){.cx-flag{min-height:44px;}}
 /* Exams: flagged questions on the map, and the list before submitting. */
 [class$="-ex-nav"] button.is-flag{position:relative;}
-[class$="-ex-nav"] button.is-flag::after{content:"";position:absolute;top:-4px;right:-4px;width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 2px var(--paper);}
-.cx-flaglist{margin:10px 0 12px;padding:12px 14px;border-radius:var(--radius);background:var(--tint-amber);color:var(--ink);font:700 13.5px/1.5 var(--font-ui);}
+[class$="-ex-nav"] button.is-flag::after{content:"";position:absolute;top:-4px;right:-4px;width:11px;height:11px;border-radius:50%;background:var(--bad);box-shadow:0 0 0 2px var(--paper);}
+.cx-flaglist{margin:10px 0 12px;padding:12px 14px;border-radius:var(--radius);background:var(--tint-bad);color:var(--ink);font:700 13.5px/1.5 var(--font-ui);}
 .cx-flaglist[hidden]{display:none;}
 .cx-flaglist p{margin:0 0 8px;}
 .cx-flaglist-b{display:flex;flex-wrap:wrap;gap:8px;}
 .cx-flaglist-b .btn-outline{min-height:40px;padding:6px 14px;font-size:13px;}
+/* Review's flagged card (assets/course/flags.js): the count and one button. The dashboard's copy is in hub.css. */
+.cx-flagcard{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:14px 0 0;padding:14px 16px;border-radius:var(--radius);background:var(--tint-bad);color:var(--ink);font:600 14.5px/1.5 var(--font-ui);}
+.cx-flagcard[hidden]{display:none;}
+.cx-flagcard svg{flex:0 0 auto;width:18px;height:18px;color:var(--bad-text);fill:currentColor;}
+.cx-flagcard span{flex:1 1 220px;}
+.cx-flagcard b{font-weight:900;margin-right:4px;}
 
 /* ---- 8. Channel look for the question card (site redesign 2026-10) ----
    Larger, calmer answer rows (at least 52 px tall, easy to hit with a thumb), a

@@ -438,7 +438,7 @@ a.mode-card{text-decoration:none;display:block;}
   transition:border-color .1s ease,color .1s ease,background .1s ease;
 }
 .flag-btn:hover{border-color:var(--accent);color:var(--accent-text);background:var(--tint-accent);}
-.flag-btn.active{border-color:var(--amber);background:var(--tint-amber);color:var(--amber-text);}
+.flag-btn.active{border-color:var(--bad);background:var(--tint-bad);color:var(--bad-text);}
 .flag-btn.active svg{fill:currentColor;}
 
 /* Back / forward through answered cards. */

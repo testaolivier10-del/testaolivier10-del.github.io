@@ -103,12 +103,14 @@
     });
   }
 
-  /* The dashboard card: how many are flagged, linking to the Flagged mode.
-     It mounts itself above the dashboard (#app[data-slug="dashboard"]) and
-     shows only when something is flagged. */
+  /* The flagged card: how many are flagged and one button that starts just
+     those (practice.html?mode=flagged opens straight into the session). It
+     mounts itself above Review and the dashboard (#app[data-slug="review"] or
+     "dashboard") and shows only when something is flagged. Flagged questions
+     are a Review job, so Practice no longer lists them (Olivier, 2026-10-26). */
   var DIRS = { 'anatomy-physiology': 'anp', bio: 'apbio', chem: 'apchem', physics: 'apphys', calculus: 'apcalc', statistics: 'apstat', 'environmental-science': 'apenv' };
   function dashCard(){
-    var app = document.querySelector('#app[data-slug="dashboard"]');
+    var app = document.querySelector('#app[data-slug="dashboard"], #app[data-slug="review"]');
     var course = DIRS[(location.pathname.split('/').filter(Boolean).slice(-2, -1)[0]) || ''];
     if(!app || !course) return;
     var card = document.getElementById('cx-flagcard');
@@ -117,10 +119,16 @@
       card.id = 'cx-flagcard';
       card.className = 'cx-flagcard';
       app.parentNode.insertBefore(card, app);
+      // Review: the card sits in the main column under the queue, and follows it when the page redraws.
+      if(app.getAttribute('data-slug') === 'review' && window.MutationObserver){
+        var place = function(){ var m = app.querySelector('.cx-main'); if(m && card.parentNode !== m) m.appendChild(card); };
+        place();
+        new MutationObserver(place).observe(app, { childList: true, subtree: true });
+      }
     }
     var n = count(course);
     card.hidden = !n;
-    card.innerHTML = n ? ICON + '<span><b>' + (n === 1 ? '1 flagged question' : n + ' flagged questions') + '</b> They stay until you unflag them.</span><a href="practice.html?mode=flagged">Practice them <span aria-hidden="true">&rarr;</span></a>' : '';
+    card.innerHTML = n ? ICON + '<span><b>' + (n === 1 ? '1 flagged question' : n + ' flagged questions') + '</b> They stay until you unflag them, from inside each question.</span><a class="btn-press sm" href="practice.html?mode=flagged">Review them</a>' : '';
   }
   function boot(){
     dashCard();

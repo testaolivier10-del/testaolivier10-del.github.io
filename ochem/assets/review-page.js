@@ -288,7 +288,7 @@
     if(flagged.length || mistakes.length){
       html += '<section><h2 class="cx-h2">Also waiting</h2><ul class="cx-list">' +
         (mistakes.length ? '<li><div>' + esc(plural(mistakes.length, 'question')) + ' you missed<span>They stay in rotation until you answer them correctly.</span></div><a class="btn-outline" href="practice.html?mode=mistakes">Work through them</a></li>' : '') +
-        (flagged.length ? '<li><div>' + esc(plural(flagged.length, 'question')) + ' you flagged<span>They stay until you unflag them.</span></div><a class="btn-outline" href="practice.html?mode=flagged">Work through them</a></li>' : '') +
+        (flagged.length ? '<li><div>' + esc(plural(flagged.length, 'question')) + ' you flagged<span>They stay until you unflag them.</span></div><a class="btn-outline" href="practice.html?mode=flagged">Review them</a></li>' : '') +
         '</ul></section>';
     }
 

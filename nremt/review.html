@@ -151,6 +151,9 @@
              sim: not bank questions, so not in the session above. Filled by
              assets/tool-results.js; hidden while empty. -->
         <section class="cx-card cx-toolq" data-tool-queue hidden aria-live="polite"></section>
+        <!-- Flagged questions: the count and one button (Olivier, 2026-10-26: Review holds them, not Practice).
+             practice-engine.js fills the count, hides the card while nothing is flagged and runs the session. -->
+        <p class="cx-flagcard" id="nrFlagCard" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 22V4h12.5l-2.5 5 2.5 5H5"/></svg><span><b>Flagged questions: <span id="flaggedCount">0</span></b> They stay until you unflag them, from inside each question.</span><button type="button" class="btn-press sm" id="flaggedReviewBtn">Review them</button></p>
 
         <script>
         /* Which state shows depends on this browser's answers (renderDueSummary
