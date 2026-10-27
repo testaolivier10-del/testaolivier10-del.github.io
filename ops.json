@@ -35,7 +35,8 @@
   "2026-10-25 daily run (fired 4:26pm PT, nearly a day late): checkup clean. Nothing approved to schedule; Buffer covers through 2026-10-31 (w1021-03 poll post is manual for 10-31). oxygen-curve and sn2-umbrella set to posted. sn2-umbrella got youtube_id wN-7vODGHuY, Studio thumbnail and related video (atomic structure). No long video due. No new YouTube comments; 1 new TikTok comment (cg02q_ on sn2), reply drafted; 7 TikTok drafts wait for Olivier's OK.",
   "2026-10-25 weekly batch: analytics done (YouTube API, TikTok Studio, Supabase, Umami, Search Console via /u/1/). Google impressions collapsed to near zero since about Oct 12 (793 pages still indexed); flagged to Olivier, no search PR. Shorts w1025 planned and fact checked (pipeline/w1025/PLAN.md) but not built: the laptop dropped off before the art step; added to pending_reruns.",
   "2026-10-26 Olivier: the existing traced cast (paramedic, hoodie runner, jump girl) counts as flat layered; use it with new flat scenes.",
-  "2026-10-26 daily run: checkup clean. Nothing approved to schedule; Buffer covers through 2026-10-31 (w1021-03 poll post manual for 10-31). gcs-floor set to posted. aspirin-chew got youtube_id 6TiRP0hL4BQ; the laptop dropped off mid run; once Olivier reopened it, its Studio thumbnail and related video (NREMT intro) were set in the same chat. No long video due. No new YouTube comments; TikTok comments not read (no Chrome)."
+  "2026-10-26 daily run: checkup clean. Nothing approved to schedule; Buffer covers through 2026-10-31 (w1021-03 poll post manual for 10-31). gcs-floor set to posted. aspirin-chew got youtube_id 6TiRP0hL4BQ; the laptop dropped off mid run; once Olivier reopened it, its Studio thumbnail and related video (NREMT intro) were set in the same chat. No long video due. No new YouTube comments; TikTok comments not read (no Chrome).",
+  "2026-10-26 daily run: new TikTok comment (brandoo245, chair flip): a ring flip keeps up as up. He is right: in videos/w1006-03-chair-flip.mp4 the two axial up hydrogens end pointing straight down (still axial, wrong face). The file was never fixed, so the 10-18 draft to fattie8652 saying 'We've fixed it' is not true; Olivier was asked to approve a corrected wording. A redraw is a build task for Olivier to OK."
  ],
  "pending_reruns": [],
  "related_check_after": null,
@@ -50,7 +51,8 @@
   "tt:hazard_5522:tourniquet:people do it all the time",
   "tt:cabezon_85:tourniquet:reply to hazard_5522",
   "tt:user7239963906276:acid-resonance:cool",
-  "tt:cg02q_:sn2-umbrella:love sn2 not ai"
+  "tt:cg02q_:sn2-umbrella:love sn2 not ai",
+  "tt:brandoo245:chair-flip:up stays up"
  ],
  "comment_drafts": [
   {
@@ -108,6 +110,14 @@
    "comment": "I love SN2 but not AI",
    "reply": "Fair! The art gets AI help, but the chemistry is checked before anything posts. Glad you love SN2 too.",
    "status": "drafted 2026-10-25"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1006-03-chair-flip",
+   "author": "brandoo245",
+   "comment": "If you are doing ring flips the direction does not change so up stays up and down stays down the only thing you change is axial and equatorial don't just follow ai like this one blindly it's giving you the wrong message tbu would go from ax up to eq up",
+   "reply": "You're right, thanks for calling it out. A ring flip keeps every group on the same face, so axial up becomes equatorial up, and our animation got the hydrogens wrong. The point that big groups prefer equatorial still holds, but the drawing should have shown that.",
+   "status": "drafted 2026-10-26"
   }
  ],
  "series_counts": {
