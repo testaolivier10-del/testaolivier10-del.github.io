@@ -252,8 +252,8 @@
       '<p class="kt-first wr-first">Pick what each part means, starting with the last part.</p>' +
       '<ol class="wr-steps">' + order.map(function(i, k){
         var s = t.segs[i], p = PARTS[s[1]];
-        return '<li class="wr-step" data-seg="' + i + '"><label for="wr-sel-' + i + '"><span class="wr-step-n">' + (k + 1) + '</span> What does the ' + p.type + ' <b class="wr-mono">' + esc(s[0]) + '</b> mean?</label>' +
-          '<select id="wr-sel-' + i + '" data-seg="' + i + '"><option value="">Choose a meaning</option>' + meaningOptions(p).map(function(m){ return '<option>' + esc(m) + '</option>'; }).join('') + '</select>' +
+        return '<li class="wr-step" data-seg="' + i + '"><p class="wr-q" id="wr-q-' + i + '"><span class="wr-step-n">' + (k + 1) + '</span> What does the ' + p.type + ' <b class="wr-mono">' + esc(s[0]) + '</b> mean?</p>' +
+          '<div class="wr-mopts" role="group" aria-labelledby="wr-q-' + i + '" data-seg="' + i + '">' + meaningOptions(p).map(function(m){ return '<button type="button" class="wr-mopt" data-v="' + esc(m) + '">' + esc(m) + '</button>'; }).join('') + '</div>' +
           '<p class="wr-step-fb" aria-live="polite"></p></li>';
       }).join('') +
         '<li class="wr-step wr-whole"><p class="wr-q"><span class="wr-step-n">' + (order.length + 1) + '</span> Put it together. What does <b>' + esc(t.term) + '</b> mean?</p>' +
@@ -268,25 +268,42 @@
         cq(card).querySelectorAll('.wr-opt').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       });
     });
+    /* A part is marked the moment it is picked (tool audit 2026-10): the
+       button turns right or wrong, its colored block on the term follows, and
+       a wrong pick shows the part's real meaning and origin. The first pick
+       is the one that counts. */
+    var picked = {}, marks = {};
+    cq(card).querySelectorAll('.wr-mopts').forEach(function(g){
+      var i = +g.getAttribute('data-seg'), p = PARTS[t.segs[i][1]];
+      g.querySelectorAll('.wr-mopt').forEach(function(b){
+        b.addEventListener('click', function(){
+          if(state.done || picked[i] != null) return;
+          var ok = b.getAttribute('data-v') === p.meaning;
+          picked[i] = ok; marks[i] = ok ? 'is-right' : 'is-wrong';
+          g.querySelectorAll('.wr-mopt').forEach(function(x){
+            x.disabled = true;
+            if(x.getAttribute('data-v') === p.meaning) x.classList.add('is-right');
+            else if(x === b) x.classList.add('is-wrong');
+          });
+          var li = g.closest('.wr-step');
+          li.classList.add(ok ? 'is-right' : 'is-wrong');
+          li.querySelector('.wr-step-fb').innerHTML = (ok ? '<span class="wr-ok">Right.</span> ' : '<span class="wr-no">Not quite.</span> ') + partLine(p);
+          var sp = cq(card).querySelector('.wr-split'); if(sp) sp.outerHTML = splitHtml(t, marks);
+          if(window.LevlSound && window.LevlSound.tick && ok) try{ window.LevlSound.tick(); }catch(e){}
+          li.dispatchEvent(new CustomEvent('wr-picked', { bubbles: true }));
+        });
+      });
+    });
     cq(card).querySelector('.wr-skip').addEventListener('click', function(){ start(); });
     cq(card).querySelector('.wr-check').addEventListener('click', function(){
       if(state.done) return;
-      var sels = cq(card).querySelectorAll('.wr-steps select'), chosen = cq(card).querySelector('.wr-opt[aria-pressed="true"]');
-      var missing = [].some.call(sels, function(s){ return !s.value; }) || !chosen;
+      var groups = cq(card).querySelectorAll('.wr-steps .wr-mopts'), chosen = cq(card).querySelector('.wr-opt[aria-pressed="true"]');
+      var missing = [].some.call(groups, function(g){ return picked[+g.getAttribute('data-seg')] == null; }) || !chosen;
       if(missing){ cq(card).querySelector('.wr-msg').textContent = 'Answer every step first.'; return; }
       cq(card).querySelector('.wr-msg').textContent = '';
       state.done = true;
-      var allRight = true, marks = {};
-      sels.forEach(function(s){
-        var i = +s.getAttribute('data-seg'), p = PARTS[t.segs[i][1]];
-        var ok = s.value === p.meaning;
-        if(!ok) allRight = false;
-        marks[i] = ok ? 'is-right' : 'is-wrong';
-        s.disabled = true;
-        var li = s.closest('.wr-step');
-        li.classList.add(ok ? 'is-right' : 'is-wrong');
-        li.querySelector('.wr-step-fb').innerHTML = (ok ? '<span class="wr-ok">Right.</span> ' : '<span class="wr-no">Not quite.</span> ') + partLine(p);
-      });
+      var allRight = true;
+      groups.forEach(function(g){ if(!picked[+g.getAttribute('data-seg')]) allRight = false; });
       var wholeOk = chosen.getAttribute('data-id') === t.id;
       if(!wholeOk) allRight = false;
       cq(card).querySelectorAll('.wr-opt').forEach(function(x){
@@ -315,7 +332,7 @@
     function add(p){ if(p && !used[p.id]){ used[p.id] = 1; out.push(p); meanings[p.meaning] = 1; } }
     mine.forEach(add);
     mine.forEach(function(p){ add(pick(pool.filter(function(x){ return x.type === p.type && !used[x.id] && !meanings[x.meaning]; })) || null); });
-    var target = Math.max(6, out.length + 2);
+    var target = Math.max(8, out.length + 4);
     shuffle(pool).forEach(function(p){ if(out.length < target && !used[p.id] && !meanings[p.meaning]) add(p); });
     return shuffle(out);
   }
@@ -456,16 +473,16 @@
       wrap.className = 'wr-ls-steps';
       wrap.appendChild(ol); ST.put('dock', wrap, { first: true });
       steps = window.LevlStudio.stepper(wrap, { items: '.wr-step', label: 'Step', submit: ST.dock.querySelector('.wr-actions') });
-      ol.addEventListener('change', function(e){
-        if(!e.target.matches('select') || state.done) return;
+      ol.addEventListener('wr-picked', function(e){
+        if(state.done) return;
         var li = e.target.closest('.wr-step'), all = [].slice.call(ol.querySelectorAll('.wr-step')), k = all.indexOf(li);
-        if(k > -1 && k < all.length - 1) setTimeout(function(){ steps.go(k + 1); }, 200);
+        if(k > -1 && k < all.length - 1) setTimeout(function(){ steps.go(k + 1); }, 900);
       });
     }
     ST.stage.scrollTop = 0;
     if(!studioCard.hinted && state.mode !== 'bank'){
       studioCard.hinted = true;
-      ST.hint(state.mode === 'build' ? { target: '.ls-dock .wr-cardbtn', text: 'Tap the first word part' } : { target: '.ls-dock .wr-step select', text: 'Pick what this part means' });
+      ST.hint(state.mode === 'build' ? { target: '.ls-dock .wr-cardbtn', text: 'Tap the first word part' } : { target: '.ls-dock .wr-step .wr-mopts', text: 'Pick what this part means', round: 14 });
     }
   }
   function studioAnswered(){

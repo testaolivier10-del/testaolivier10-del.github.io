@@ -265,3 +265,9 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
   .pc-ls .pc-gauge-s{font-size:12px;}
   .pc-ls .pc-dial-t{font-size:12px;}
 }
+
+/* Tool audit 2026-10: the scenario reads at body size and shows two lines, with More for the rest. */
+.pc-ls .ls-stage-body > .pc-setup-text{font-size:var(--ls-m);color:var(--ink);font-weight:600;margin:0 0 2px;}
+.pc-ls .ls-stage-body > .pc-setup-text.pc-clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pc-ls .ls-stage-body > .pc-more{flex:none;align-self:flex-start;min-height:36px;padding:0;margin:0 0 6px;font:800 14px var(--font-ui);color:var(--cink);text-decoration:underline;background:none;border:0;cursor:pointer;}
+@media (max-width:599.98px){ .pc-ls .ls-stage-body > .pc-setup-text{font-size:15px;color:var(--ink);} }

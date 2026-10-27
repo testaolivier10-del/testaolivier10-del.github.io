@@ -87,14 +87,17 @@
       "distractors": [
         {
           "text": "Sweat glands release sweat",
+          "short": "Sweat glands sweat",
           "why": "Sweat carries heat away. That is a response for when temperature rises, the opposite of what this loop needs."
         },
         {
           "text": "The set point is lowered to match the cold",
+          "short": "Set point lowered to match",
           "why": "The set point stays where it is. The loop works by pushing temperature back toward it."
         },
         {
           "text": "Warm-sensitive nerve endings fire faster",
+          "short": "Warm-sensitive endings fire faster",
           "why": "Cooling makes warm-sensitive endings fire less, not more. The cold-sensitive endings are the ones signaling here."
         }
       ],
@@ -178,14 +181,17 @@
       "distractors": [
         {
           "text": "Skeletal muscles shiver",
+          "short": "Skeletal muscles shiver",
           "why": "Shivering releases heat. That would make the rise worse, so it belongs to the loop for falling temperature."
         },
         {
           "text": "Skin vessels constrict to keep warm blood in",
+          "short": "Skin vessels constrict",
           "why": "Constriction holds heat in. It is the response to cold, the opposite of what is needed here."
         },
         {
           "text": "Cold-sensitive nerve endings fire faster",
+          "short": "Cold-sensitive endings fire faster",
           "why": "Warming makes cold-sensitive endings fire less. The warm-sensitive endings detect this rise."
         }
       ],
@@ -269,14 +275,17 @@
       "distractors": [
         {
           "text": "Sensory nerves carry signals to the brain",
+          "short": "Sensory nerves to the brain",
           "why": "This loop needs no nerve: the pancreas cells sense the glucose themselves and respond directly."
         },
         {
           "text": "A hormone that raises the glucose level",
+          "short": "Hormone that raises glucose",
           "why": "That is the between-meals loop. After a meal the pancreas releases the hormone that lowers glucose."
         },
         {
           "text": "Glucose is released from the liver into the blood",
+          "short": "Liver releases glucose",
           "why": "That would push glucose further up, the opposite of what this loop does."
         }
       ],
@@ -360,14 +369,17 @@
       "distractors": [
         {
           "text": "The lungs breathe faster",
+          "short": "Lungs breathe faster",
           "why": "Faster breathing is a separate, quick response controlled by the brain. This loop works through the kidneys and a hormone, over days to weeks."
         },
         {
           "text": "Sensory nerves carry signals to the brain",
+          "short": "Sensory nerves to the brain",
           "why": "No nerve is involved: the kidney cells sense oxygen and release the hormone themselves."
         },
         {
           "text": "Fewer red blood cells are made",
+          "short": "Fewer red cells made",
           "why": "Fewer red cells would carry even less oxygen, pushing the variable further from its set point."
         }
       ],
@@ -452,14 +464,17 @@
       "distractors": [
         {
           "text": "Smooth muscle of the uterus relaxes",
+          "short": "Uterine muscle relaxes",
           "why": "Relaxing would reduce the stretch. In this loop the uterus contracts harder."
         },
         {
           "text": "The loop switches itself off as the stretch shrinks",
+          "short": "Loop switches off as stretch shrinks",
           "why": "That is how negative feedback ends. Here the stretch keeps growing until an outside event, the birth, removes it."
         },
         {
           "text": "Temperature control center in the brain",
+          "short": "Brain’s temperature center",
           "why": "Body temperature is a different variable with its own loop."
         }
       ],
@@ -544,14 +559,17 @@
       "distractors": [
         {
           "text": "Vagal output rises and sympathetic output falls",
+          "short": "Vagal up, sympathetic down",
           "why": "That is the command for a rise in pressure. It would lower pressure further here."
         },
         {
           "text": "The kidneys release renin",
+          "short": "Kidneys release renin",
           "why": "Renin starts a hormone loop that raises pressure over minutes to hours. The baroreceptor reflex works through nerves within seconds."
         },
         {
           "text": "Osmoreceptors in the hypothalamus",
+          "short": "Hypothalamic osmoreceptors",
           "why": "Osmoreceptors sense the concentration of the plasma, not arterial pressure."
         }
       ],
@@ -636,14 +654,17 @@
       "distractors": [
         {
           "text": "Sympathetic output rises and vagal output falls",
+          "short": "Sympathetic up, vagal down",
           "why": "That command raises pressure. It is the response to a fall, not a rise."
         },
         {
           "text": "Atrial muscle cells release ANP",
+          "short": "Atrial cells release ANP",
           "why": "ANP responds to atrial stretch from high blood volume and acts over hours through the kidneys. It is a separate loop."
         },
         {
           "text": "Chemoreceptors report falling pH",
+          "short": "Chemoreceptors: pH falling",
           "why": "Chemical sensors report blood chemistry. This loop is driven by stretch of the artery wall."
         }
       ],
@@ -728,14 +749,17 @@
       "distractors": [
         {
           "text": "Stretched atrial cells release ANP",
+          "short": "Stretched atria release ANP",
           "why": "ANP responds to high volume and makes the kidneys lose sodium, the opposite of what is needed here."
         },
         {
           "text": "The kidneys excrete more sodium and water",
+          "short": "More sodium and water excreted",
           "why": "Losing more sodium and water would lower volume further."
         },
         {
           "text": "Baroreceptors in the carotid sinuses fire faster",
+          "short": "Carotid baroreceptors fire faster",
           "why": "Low pressure makes baroreceptors fire less, and they belong to the fast nerve-based loop."
         }
       ],
@@ -819,14 +843,17 @@
       "distractors": [
         {
           "text": "The adrenal cortex releases aldosterone",
+          "short": "Aldosterone released",
           "why": "Aldosterone makes the kidneys keep sodium. Keeping more solute would not correct concentrated plasma."
         },
         {
           "text": "The kidney tubules let more water leave in the urine",
+          "short": "More water lost in urine",
           "why": "Losing more water would make the plasma even more concentrated."
         },
         {
           "text": "Stretched atrial cells release ANP",
+          "short": "Stretched atria release ANP",
           "why": "ANP responds to atrial stretch from high volume, not to plasma concentration."
         }
       ],
@@ -910,14 +937,17 @@
       "distractors": [
         {
           "text": "The kidneys release renin",
+          "short": "Kidneys release renin",
           "why": "Renin starts the loop that keeps sodium and raises volume, the opposite of what is needed here."
         },
         {
           "text": "ADH release rises",
+          "short": "More ADH released",
           "why": "More ADH would make the kidneys keep water and raise volume further."
         },
         {
           "text": "Osmoreceptors in the hypothalamus",
+          "short": "Hypothalamic osmoreceptors",
           "why": "Isotonic fluid raises volume without changing concentration. This loop senses stretch, not osmolarity."
         }
       ],
@@ -1002,18 +1032,22 @@
       "distractors": [
         {
           "text": "Central chemoreceptors detect a fall in blood oxygen",
+          "short": "Central chemoreceptors sense low O2",
           "why": "Central chemoreceptors respond to hydrogen ions in the brain’s fluid, not to oxygen. Only the peripheral chemoreceptors make you breathe more when oxygen is low."
         },
         {
           "text": "Baroreceptors in the carotid sinus",
+          "short": "Carotid sinus baroreceptors",
           "why": "Baroreceptors sit next to the carotid bodies but sense stretch from blood pressure. They report to the cardiovascular center, not the respiratory centers."
         },
         {
           "text": "Breathing becomes slower and shallower",
+          "short": "Slower, shallower breathing",
           "why": "Less ventilation would let carbon dioxide build up further, pushing the variable away from its set point."
         },
         {
           "text": "The kidneys excrete more acid over the next few days",
+          "short": "Kidneys excrete acid over days",
           "why": "The kidneys do adjust pH, but over days. This loop corrects PCO2 within minutes, by breathing."
         }
       ],
@@ -1098,14 +1132,17 @@
       "distractors": [
         {
           "text": "Central chemoreceptors in the medulla oblongata",
+          "short": "Central chemoreceptors, medulla",
           "why": "The central chemoreceptors do not sense oxygen at all. At altitude they even act as a brake, because the extra breathing lowers carbon dioxide."
         },
         {
           "text": "Sensors that measure how much oxygen the blood carries",
+          "short": "Sensors of blood oxygen content",
           "why": "The carotid bodies sense the partial pressure of oxygen, not the amount carried. That is why anemia or carbon monoxide poisoning, with a normal PO2, barely raises breathing."
         },
         {
           "text": "The kidneys release erythropoietin",
+          "short": "Kidneys release EPO",
           "why": "Erythropoietin does rise at altitude, but it acts over weeks, through the bone marrow. This loop answers within seconds, through breathing."
         }
       ],
@@ -1189,14 +1226,17 @@
       "distractors": [
         {
           "text": "Irritant sensory receptors in the airway lining detect dust and smoke",
+          "short": "Airway irritant sensors",
           "why": "Irritant sensory receptors cause coughing and bronchoconstriction. They respond to particles and fumes, not to inflation."
         },
         {
           "text": "The glossopharyngeal nerves",
+          "short": "Glossopharyngeal nerves",
           "why": "The glossopharyngeal nerves carry signals from the carotid bodies. Lung stretch signals travel in the vagus nerves."
         },
         {
           "text": "The diaphragm contracts harder to fill the lungs further",
+          "short": "Diaphragm contracts harder",
           "why": "That would stretch the lungs more, pushing the variable further from where the reflex holds it."
         }
       ],
@@ -1280,18 +1320,22 @@
       "distractors": [
         {
           "text": "Golgi tendon organs in the calcaneal tendon",
+          "short": "Golgi tendon organs",
           "why": "Tendon organs sit in series with the muscle and report tension, not length. Their reflex inhibits the same muscle, the opposite of what is needed here."
         },
         {
           "text": "Interneurons that inhibit the calf muscles’ own motor neurons",
+          "short": "Interneurons inhibit the calf",
           "why": "In a stretch reflex the inhibitory interneurons act on the antagonist, the tibialis anterior (reciprocal inhibition), not on the stretched muscle."
         },
         {
           "text": "The primary motor cortex decides to tighten the calf",
+          "short": "Motor cortex decides to tighten",
           "why": "The stretch reflex closes in the spinal cord within a few tens of milliseconds, before any decision. The larger correction that follows runs through the brainstem motor tracts, not a decision in the motor cortex."
         },
         {
           "text": "The tibialis anterior contracts and lifts the toes",
+          "short": "Tibialis anterior lifts the toes",
           "why": "The tibialis anterior is the antagonist of the calf. The stretch reflex inhibits it, so it does not fight the correction."
         }
       ],
@@ -1375,18 +1419,22 @@
       "distractors": [
         {
           "text": "The radial dilator fibers of the iris contract",
+          "short": "Radial dilator fibers contract",
           "why": "The dilator fibers widen the pupil. They are driven by sympathetic fibers, whose output falls in bright light."
         },
         {
           "text": "The lateral geniculate nucleus of the thalamus",
+          "short": "Lateral geniculate, thalamus",
           "why": "That is the relay for seeing, on the way to the visual cortex. The pupil reflex leaves the pathway before the thalamus."
         },
         {
           "text": "The ciliary muscle contracts and the lens rounds up",
+          "short": "Ciliary muscle rounds the lens",
           "why": "That is accommodation, part of the near response to a close object, not the response to bright light."
         },
         {
           "text": "Sympathetic fibers in the facial nerve",
+          "short": "Sympathetics in the facial nerve",
           "why": "The pupil’s narrowing is parasympathetic, and those fibers travel in the oculomotor nerve, not the facial nerve."
         }
       ],
@@ -1470,18 +1518,22 @@
       "distractors": [
         {
           "text": "Parasympathetic fibers constrict the small arteries",
+          "short": "Parasympathetics narrow arteries",
           "why": "Most blood vessels have no parasympathetic fibers. They are controlled by changing sympathetic tone alone."
         },
         {
           "text": "Vagal output rises to slow the heart",
+          "short": "Vagal output up: heart slows",
           "why": "That is the response to a rise in pressure. Here pressure has fallen, so vagal output falls."
         },
         {
           "text": "Warm neurons in the hypothalamus drive sweating",
+          "short": "Warm neurons drive sweating",
           "why": "That belongs to temperature control. This loop is run by the medulla oblongata, from the stretch of the artery walls."
         },
         {
           "text": "The primary motor cortex tightens the leg muscles",
+          "short": "Motor cortex tightens the legs",
           "why": "The correction is automatic and autonomic. It works in someone who is not paying attention, within a few heartbeats."
         }
       ],
@@ -1566,18 +1618,22 @@
       "distractors": [
         {
           "text": "Bone marrow cells sense the low oxygen and speed up on their own",
+          "short": "Marrow senses low oxygen itself",
           "why": "The marrow is the effector. It responds to EPO; without EPO, as in kidney failure, it does not speed up even when oxygen delivery is low."
         },
         {
           "text": "Oxygen sensors in the neck signal the brain, which sends nerve signals to the marrow",
+          "short": "Neck sensors, brain, nerves to marrow",
           "why": "No nerve controls red cell production. The sensor, control center and signal are all in the kidney cells and their hormone."
         },
         {
           "text": "The kidney cells release more EPO as the red cell count rises",
+          "short": "More EPO as red cells rise",
           "why": "That would push the count ever higher. EPO release falls as oxygen delivery recovers, which is what makes this loop negative."
         },
         {
           "text": "Macrophages destroy old red cells more slowly",
+          "short": "Old red cells destroyed slower",
           "why": "Red cell lifespan stays about 120 days. The loop acts on production, not destruction."
         }
       ],
@@ -1663,18 +1719,22 @@
       "distractors": [
         {
           "text": "Antithrombin inactivates thrombin and factor Xa",
+          "short": "Antithrombin stops thrombin, Xa",
           "why": "Antithrombin is a brake that keeps the clot from spreading beyond the injury. It limits the loop; it is not one of its parts."
         },
         {
           "text": "Plasmin cuts fibrin into fragments",
+          "short": "Plasmin cuts fibrin",
           "why": "Plasmin removes the clot days later, after the wall is repaired. That is fibrinolysis, not clot building."
         },
         {
           "text": "The brain sends nerve signals that tell platelets to stick",
+          "short": "Brain tells platelets to stick",
           "why": "Clotting is a local loop. Local nerve reflexes help the vessel constrict, but no brain command controls platelets or clotting factors."
         },
         {
           "text": "Healthy lining cells release nitric oxide and prostacyclin",
+          "short": "Lining releases NO, prostacyclin",
           "why": "These keep platelets quiet next to the injury. They confine the loop to the tear rather than driving it."
         }
       ],
@@ -1760,18 +1820,22 @@
       "distractors": [
         {
           "text": "Alpha cells release glucagon",
+          "short": "Alpha cells release glucagon",
           "why": "Glucagon raises blood glucose. After a meal, high glucose and insulin hold the alpha cells back."
         },
         {
           "text": "Sensory nerves carry the glucose level to the hypothalamus",
+          "short": "Sensory nerves to hypothalamus",
           "why": "The beta cells sense glucose themselves. The loop needs no nerve at all."
         },
         {
           "text": "The brain takes up more glucose because insulin moves its carriers",
+          "short": "Insulin drives brain glucose uptake",
           "why": "Neurons take in glucose through carriers that are always in the membrane, so their uptake does not depend on insulin."
         },
         {
           "text": "The liver breaks glycogen down and releases glucose",
+          "short": "Liver releases glucose",
           "why": "That would push glucose higher. Insulin switches glycogenolysis off."
         }
       ],
@@ -1857,14 +1921,17 @@
       "distractors": [
         {
           "text": "Skeletal muscle breaks down its glycogen and releases glucose into the blood",
+          "short": "Muscle releases glucose to blood",
           "why": "A muscle cell lacks the enzyme that frees glucose to leave it, and muscle has almost no glucagon receptor proteins, so muscle glycogen fuels only that muscle."
         },
         {
           "text": "Beta cells release more insulin",
+          "short": "More insulin from beta cells",
           "why": "Insulin lowers glucose. As glucose falls, beta cells cut insulin release first, at about 80 mg/dL."
         },
         {
           "text": "Muscle and fat move GLUT4 carriers into their membranes",
+          "short": "GLUT4 moves to membranes",
           "why": "That is insulin’s effect, and it would pull more glucose out of the blood."
         }
       ],
@@ -1949,14 +2016,17 @@
       "distractors": [
         {
           "text": "Parafollicular cells release calcitonin",
+          "short": "Calcitonin released",
           "why": "Calcitonin comes from the C cells and acts on calcium, not on thyroid hormone."
         },
         {
           "text": "The posterior pituitary releases TSH",
+          "short": "Posterior pituitary releases TSH",
           "why": "TSH comes from the anterior pituitary. The posterior lobe releases only ADH and oxytocin."
         },
         {
           "text": "Thyroid hormone switches off TSH release",
+          "short": "Thyroid hormone stops TSH",
           "why": "That is what happens when thyroid hormone is high. Here it is low, so TSH rises."
         }
       ],
@@ -2041,14 +2111,17 @@
       "distractors": [
         {
           "text": "The zona glomerulosa releases more aldosterone",
+          "short": "More aldosterone released",
           "why": "Aldosterone answers mainly to angiotensin II and potassium, and it does not feed back on this axis."
         },
         {
           "text": "Sympathetic fibers make the adrenal medulla release epinephrine",
+          "short": "Adrenal medulla: epinephrine",
           "why": "That is the fast, neural stress response, not the hormonal loop that holds cortisol steady."
         },
         {
           "text": "The adrenal cortex releases stored cortisol from vesicles",
+          "short": "Stored cortisol released",
           "why": "Steroids are not stored. The cortex makes cortisol as it is needed and it diffuses straight out."
         }
       ],
@@ -2134,14 +2207,17 @@
       "distractors": [
         {
           "text": "Parafollicular cells release calcitonin",
+          "short": "Calcitonin released",
           "why": "Calcitonin is released when calcium is high, and it lowers calcium, the wrong direction here."
         },
         {
           "text": "PTH binds osteoclasts directly and makes them dissolve bone",
+          "short": "PTH acts on osteoclasts directly",
           "why": "PTH binds osteoblasts, not osteoclasts. The osteoblasts then signal osteoclasts to form and work harder."
         },
         {
           "text": "The kidneys excrete more calcium in the urine",
+          "short": "More calcium lost in urine",
           "why": "PTH makes the kidneys keep calcium. Losing more would lower calcium further."
         }
       ],
@@ -2226,14 +2302,17 @@
       "distractors": [
         {
           "text": "Chief cells release more PTH",
+          "short": "More PTH released",
           "why": "More PTH would raise calcium further. High calcium cuts PTH release."
         },
         {
           "text": "The kidneys make more calcitriol",
+          "short": "Kidneys make more calcitriol",
           "why": "PTH switches the calcitriol step on, so with PTH low, less calcitriol is made."
         },
         {
           "text": "Calcitonin from the parathyroid glands",
+          "short": "Calcitonin from parathyroids",
           "why": "Calcitonin comes from the parafollicular (C) cells of the thyroid gland, not the parathyroid glands."
         }
       ],
@@ -2317,14 +2396,17 @@
       "distractors": [
         {
           "text": "Osmoreceptors make the posterior pituitary release ADH",
+          "short": "ADH from posterior pituitary",
           "why": "ADH answers to plasma osmolarity and makes the kidneys keep water. It does not set how much potassium they secrete."
         },
         {
           "text": "ACTH from the anterior pituitary drives the zona fasciculata",
+          "short": "ACTH drives zona fasciculata",
           "why": "The zona fasciculata makes cortisol. ACTH has only a small, short-lived effect on aldosterone."
         },
         {
           "text": "The kidneys keep more potassium",
+          "short": "Kidneys keep more potassium",
           "why": "Keeping potassium would push the level higher. Aldosterone makes the kidney lose it."
         }
       ],
@@ -2414,18 +2496,22 @@
       "distractors": [
         {
           "text": "Sweat glands release sweat",
+          "short": "Sweat glands sweat",
           "why": "Sweating removes heat. It runs when temperature is above the set point, as it is when the fever breaks, not while temperature is climbing toward a raised set point."
         },
         {
           "text": "The hypothalamus loses control, so temperature drifts upward",
+          "short": "Temperature drifts out of control",
           "why": "Control is intact. Every part of the loop works normally; it is steering toward a higher target, which is why fever-reducing drugs that lower the set point work."
         },
         {
           "text": "Skin arterioles dilate to carry heat to the surface",
+          "short": "Skin arterioles dilate",
           "why": "Dilation sheds heat. During the rising phase the arterioles constrict, which is why the skin looks pale and the hands feel cold."
         },
         {
           "text": "Warm-sensitive nerve endings fire faster as the fever begins",
+          "short": "Warm-sensitive endings fire faster",
           "why": "At the start your temperature is still normal, so nothing warms these endings. The change is in the set point, not in what the sensors detect."
         }
       ],
@@ -2510,18 +2596,22 @@
       "distractors": [
         {
           "text": "Chief cells release pepsinogen",
+          "short": "Chief cells release pepsinogen",
           "why": "Pepsinogen digests protein once it is activated. It does not measure or set the acidity."
         },
         {
           "text": "Sensory neurons carry the pH to the hypothalamus",
+          "short": "Sensory neurons to hypothalamus",
           "why": "The pH is sensed and acted on inside the stomach wall itself. No signal goes to the brain in this loop."
         },
         {
           "text": "Parietal cells pump more H+ as the pH falls",
+          "short": "Parietal cells pump more H+",
           "why": "That would push the pH further from where it started, the opposite of what a negative feedback loop does."
         },
         {
           "text": "Secretin from the small intestine",
+          "short": "Secretin from the intestine",
           "why": "Secretin also slows acid secretion, but it responds to acid arriving in the small intestine. This loop is sensed in the antrum."
         }
       ],
@@ -2605,14 +2695,17 @@
       "distractors": [
         {
           "text": "The stomach empties faster to clear the chyme",
+          "short": "Stomach empties faster",
           "why": "That would increase the load on the overloaded intestine, the opposite of the correcting response."
         },
         {
           "text": "Gastrin rises and speeds emptying",
+          "short": "Gastrin speeds emptying",
           "why": "Gastrin mainly drives acid secretion and has little effect on emptying. The brake here comes from the intestine."
         },
         {
           "text": "Motilin sweeps the intestine clear",
+          "short": "Motilin sweeps the intestine",
           "why": "Motilin drives the strong contractions between meals and is stopped by eating. It plays no part in a meal-time brake."
         }
       ],
@@ -2697,14 +2790,17 @@
       "distractors": [
         {
           "text": "Acinar cells release trypsinogen and lipase",
+          "short": "Acinar cells release enzymes",
           "why": "That is CCK’s main effect on the pancreas. Enzymes do not neutralize acid."
         },
         {
           "text": "The gallbladder contracts",
+          "short": "Gallbladder contracts",
           "why": "Gallbladder contraction is driven by CCK in response to fat, not by secretin in response to acid."
         },
         {
           "text": "Parietal cells secrete more acid",
+          "short": "More acid from parietal cells",
           "why": "Secretin does the opposite: it slows acid secretion by the stomach."
         }
       ],
@@ -2789,18 +2885,22 @@
       "distractors": [
         {
           "text": "Sympathetic cholinergic nerves to the sweat glands",
+          "short": "Cholinergic nerves to sweat glands",
           "why": "That efferent route drives sweating and active skin vasodilation, the heat-loss responses of the warm loop."
         },
         {
           "text": "The thyroid gland raising heat production within minutes",
+          "short": "Thyroid adds heat within minutes",
           "why": "Long cold exposure raises thyroid hormone activity a little, but in adults this is slow and minor. The fast responses come from the nervous system."
         },
         {
           "text": "The set point falls to match the cold",
+          "short": "Set point falls to match",
           "why": "The set point stays put; pyrogens move it in a fever, but cold does not. The loop works by pushing temperature back toward it."
         },
         {
           "text": "Wider skin vessels to warm the fingers",
+          "short": "Wider skin vessels",
           "why": "Widening would carry core heat out to the cold surface. In the cold, skin arterioles narrow, which is why the fingers go pale."
         }
       ],
@@ -2886,18 +2986,22 @@
       "distractors": [
         {
           "text": "Sympathetic nerves releasing norepinephrine onto brown fat",
+          "short": "Norepinephrine onto brown fat",
           "why": "Norepinephrine to brown fat makes heat, the opposite of what a warm core needs; it belongs to the cold loop."
         },
         {
           "text": "Wider blood vessels in the gut and kidneys",
+          "short": "Wider gut and kidney vessels",
           "why": "In heat stress the vessels of the gut and kidneys narrow, shifting blood toward the skin."
         },
         {
           "text": "Skeletal muscles shivering",
+          "short": "Skeletal muscles shiver",
           "why": "Shivering releases heat. It is a response to cold and would make this rise worse."
         },
         {
           "text": "The set point rises, as in a fever",
+          "short": "Set point rises, as in fever",
           "why": "Exercise and hot weather leave the set point normal. Pyrogens raise it in a fever; here the loop works to bring temperature down to the usual target."
         }
       ],
@@ -2982,18 +3086,22 @@
       "distractors": [
         {
           "text": "Baroreceptors in the carotid sinuses",
+          "short": "Carotid sinus baroreceptors",
           "why": "Baroreceptors report arterial pressure to the brainstem. Tubuloglomerular feedback is local and needs no brain."
         },
         {
           "text": "The efferent arteriole dilates",
+          "short": "Efferent arteriole dilates",
           "why": "The response acts on the afferent arteriole. Widening the efferent arteriole would lower GBHP, but that is not what adenosine does here."
         },
         {
           "text": "Juxtaglomerular cells release more renin",
+          "short": "More renin released",
           "why": "More NaCl at the macula densa lowers renin release. Renin rises when the macula densa senses too little NaCl."
         },
         {
           "text": "Sympathetic fibers from the renal plexus",
+          "short": "Renal plexus sympathetics",
           "why": "Sympathetic nerves can override autoregulation, but this loop works in a transplanted kidney that has lost its nerves."
         }
       ],
@@ -3077,14 +3185,17 @@
       "distractors": [
         {
           "text": "The efferent arteriole constricts",
+          "short": "Efferent arteriole constricts",
           "why": "Efferent constriction would raise GBHP, adding to the rise instead of opposing it."
         },
         {
           "text": "The cardiovascular center in the medulla oblongata",
+          "short": "Cardiovascular center, medulla",
           "why": "The myogenic mechanism is local to the vessel. It works without any brain signal."
         },
         {
           "text": "The macula densa senses more NaCl",
+          "short": "Macula densa senses more NaCl",
           "why": "That is tubuloglomerular feedback, the second, slightly slower mechanism of autoregulation."
         }
       ],
@@ -3169,14 +3280,17 @@
       "distractors": [
         {
           "text": "The external urethral sphincter contracts",
+          "short": "External sphincter contracts",
           "why": "Contracting the external sphincter stops flow and quiets the detrusor; it is how you hold on, not how emptying continues."
         },
         {
           "text": "Sympathetic fibers from T11 to L2",
+          "short": "Sympathetics from T11 to L2",
           "why": "Sympathetic output relaxes the detrusor and closes the internal sphincter: it serves storage, not emptying."
         },
         {
           "text": "The pudendal nerve fires faster",
+          "short": "Pudendal nerve fires faster",
           "why": "The pudendal nerve keeps the external sphincter closed. Its firing falls during emptying."
         }
       ],
@@ -3260,14 +3374,17 @@
       "distractors": [
         {
           "text": "GFR rises steeply with the pressure",
+          "short": "GFR rises steeply",
           "why": "Within about 80 to 180 mm Hg, autoregulation holds GFR nearly steady. The extra excretion comes from reduced reabsorption, not more filtration."
         },
         {
           "text": "Aldosterone release rises",
+          "short": "More aldosterone released",
           "why": "Higher pressure lowers renin and so aldosterone. More aldosterone would keep sodium, the opposite response."
         },
         {
           "text": "The collecting duct inserts more aquaporins",
+          "short": "More aquaporins inserted",
           "why": "That is ADH’s action and would keep water, not excrete it."
         }
       ],
@@ -3352,14 +3469,17 @@
       "distractors": [
         {
           "text": "Sertoli cells release inhibin",
+          "short": "Sertoli cells release inhibin",
           "why": "Inhibin is the brake on FSH in a separate arm of the axis. It does not make testosterone."
         },
         {
           "text": "FSH acting on the Leydig cells",
+          "short": "FSH on Leydig cells",
           "why": "FSH acts on the Sertoli cells. LH is the hormone that drives the Leydig cells."
         },
         {
           "text": "The posterior pituitary releases LH",
+          "short": "Posterior pituitary releases LH",
           "why": "LH comes from the anterior pituitary. The posterior pituitary releases only ADH and oxytocin."
         }
       ],
@@ -3443,14 +3563,17 @@
       "distractors": [
         {
           "text": "Leydig cells release testosterone into the blood",
+          "short": "Leydig cells release testosterone",
           "why": "That is the LH arm of the axis, braked mainly by testosterone itself, not by inhibin."
         },
         {
           "text": "Inhibin brakes LH strongly",
+          "short": "Inhibin brakes LH strongly",
           "why": "Inhibin lowers FSH selectively, with little effect on LH."
         },
         {
           "text": "Androgen-binding protein releases testosterone",
+          "short": "Binding protein frees testosterone",
           "why": "Androgen-binding protein holds testosterone inside the tubule; it does not release it or regulate FSH."
         }
       ],
@@ -3534,14 +3657,17 @@
       "distractors": [
         {
           "text": "High, sustained estradiol drives a surge of LH",
+          "short": "Sustained estradiol: LH surge",
           "why": "That is the positive feedback of the days just before ovulation. Through most of the follicular phase, estradiol holds the gonadotropins down."
         },
         {
           "text": "Progesterone from the corpus luteum",
+          "short": "Progesterone, corpus luteum",
           "why": "Progesterone is the main brake in the luteal phase. Here the corpus luteum has died."
         },
         {
           "text": "Theca cells convert androgens to estradiol",
+          "short": "Theca cells make estradiol",
           "why": "Theca cells make the androgens but lack aromatase; the granulosa cells do the conversion."
         }
       ],
@@ -3627,18 +3753,22 @@
       "distractors": [
         {
           "text": "Progesterone from the corpus luteum slows GnRH pulses",
+          "short": "Progesterone slows GnRH pulses",
           "why": "That is the luteal phase brake, after ovulation. There is no corpus luteum yet."
         },
         {
           "text": "Low to moderate estradiol holds LH down",
+          "short": "Moderate estradiol holds LH down",
           "why": "That is estradiol’s ordinary negative feedback, through most of the follicular phase. The surge needs estradiol high and sustained."
         },
         {
           "text": "Inhibin raises FSH release",
+          "short": "Inhibin raises FSH",
           "why": "Inhibin lowers FSH; it does not drive the surge."
         },
         {
           "text": "The posterior pituitary releases LH",
+          "short": "Posterior pituitary releases LH",
           "why": "LH comes from the anterior pituitary."
         }
       ],
@@ -3724,18 +3854,22 @@
       "distractors": [
         {
           "text": "The adrenal cortex releases more aldosterone",
+          "short": "More aldosterone released",
           "why": "Aldosterone controls the amount of sodium, which sets ECF volume. This loop corrects concentration by adding or removing water, not salt."
         },
         {
           "text": "Stretch-sensitive sensory receptors in the atria detect the fall in osmolality",
+          "short": "Atrial stretch sensors detect it",
           "why": "Stretch-sensitive sensory receptors in the atria sense blood volume, not concentration. Osmolality is sensed by osmoreceptors in the hypothalamus."
         },
         {
           "text": "Principal cells insert more aquaporins into their apical membranes",
+          "short": "More aquaporins inserted",
           "why": "More aquaporins would keep more water, diluting the plasma further. That is the response to a rise in osmolality."
         },
         {
           "text": "The kidneys excrete extra sodium to restore the concentration",
+          "short": "Extra sodium excreted",
           "why": "Losing sodium would lower osmolality even more. The loop fixes a dilute plasma by getting rid of water."
         }
       ],
@@ -3820,18 +3954,22 @@
       "distractors": [
         {
           "text": "Central chemoreceptors, which the acid reaches within seconds",
+          "short": "Central chemoreceptors, in seconds",
           "why": "Hydrogen ions cross the blood–brain barrier poorly, so a fixed acid reaches the central chemoreceptors slowly. The fast response to a fixed acid comes from the carotid bodies."
         },
         {
           "text": "Type A intercalated cells make new bicarbonate",
+          "short": "Type A cells make bicarbonate",
           "why": "The kidneys also defend pH, but over hours to days. This loop works in minutes, by changing breathing."
         },
         {
           "text": "Breathing slows to keep more carbon dioxide in the blood",
+          "short": "Breathing slows to keep CO2",
           "why": "Keeping carbon dioxide would raise the bottom of the ratio and lower pH further, pushing the variable away from its set point."
         },
         {
           "text": "Baroreceptors in the carotid sinus",
+          "short": "Carotid sinus baroreceptors",
           "why": "Baroreceptors sit near the carotid bodies but sense stretch from blood pressure, and they report to the cardiovascular center, not the respiratory centers."
         }
       ],
@@ -3915,14 +4053,17 @@
       "distractors": [
         {
           "text": "Type B intercalated cells secrete more bicarbonate into the urine",
+          "short": "Type B cells secrete bicarbonate",
           "why": "Excreting bicarbonate would lower plasma bicarbonate further. Type B cells are more active when the blood is too alkaline."
         },
         {
           "text": "The lungs breathe out the sulfuric acid",
+          "short": "Lungs breathe out sulfuric acid",
           "why": "Only carbon dioxide can leave through the lungs. Sulfuric acid is a fixed acid, and only the kidneys can excrete it."
         },
         {
           "text": "Filtered bicarbonate is let through into the urine",
+          "short": "Bicarbonate let into urine",
           "why": "Losing filtered bicarbonate would make the acid load worse. The kidneys reclaim nearly all of it."
         }
       ],
@@ -4008,18 +4149,22 @@
       "distractors": [
         {
           "text": "Oxytocin released from the anterior pituitary",
+          "short": "Oxytocin from anterior pituitary",
           "why": "Oxytocin is made by hypothalamic neurons and released from their axon endings in the posterior pituitary. The anterior pituitary releases hormones such as prolactin and LH."
         },
         {
           "text": "Progesterone from the placenta keeps the myometrium quiet",
+          "short": "Placental progesterone calms uterus",
           "why": "Progesterone opposes contraction; losing its effect near term lets labor happen. It is not part of the loop that strengthens contractions."
         },
         {
           "text": "Contractions weaken as the cervix stretches, so labor settles at a set point",
+          "short": "Contractions weaken: labor settles",
           "why": "That would be negative feedback. In this loop stretch makes contractions stronger, so there is no set point to settle at."
         },
         {
           "text": "Prolactin released into the blood",
+          "short": "Prolactin in the blood",
           "why": "Prolactin drives milk production after birth. It does not make the myometrium contract."
         }
       ],
@@ -4102,14 +4247,17 @@
       "distractors": [
         {
           "text": "Vigorous shivering of the skeletal muscles",
+          "short": "Vigorous shivering",
           "why": "A newborn’s shivering is weak and adds little heat. Brown fat, not shivering, is its main defense."
         },
         {
           "text": "Parasympathetic nerves releasing acetylcholine onto brown fat",
+          "short": "Parasympathetic ACh onto brown fat",
           "why": "Brown fat is driven by the sympathetic division and norepinephrine, not by parasympathetic nerves."
         },
         {
           "text": "Sweat glands release more sweat",
+          "short": "More sweat released",
           "why": "Sweating sheds heat. In the cold the body cuts heat loss and makes heat; it does not sweat."
         }
       ],
@@ -4194,18 +4342,22 @@
       "distractors": [
         {
           "text": "Arrector pili muscles contract to raise goose bumps",
+          "short": "Arrector pili raise goose bumps",
           "why": "Goose bumps are part of the response to cold, and in humans they hold almost no extra heat in anyway."
         },
         {
           "text": "Apocrine sweat glands in the armpits release more secretion",
+          "short": "Armpit apocrine glands secrete",
           "why": "Apocrine glands respond to emotional stress, pain and sexual arousal, not to heat. Heat loss by sweating is the eccrine glands’ job."
         },
         {
           "text": "Skeletal muscles shiver",
+          "short": "Skeletal muscles shiver",
           "why": "Shivering releases heat. It belongs to the loop for a falling temperature and would make this rise worse."
         },
         {
           "text": "Nerve signals narrow the vessels feeding the dermis",
+          "short": "Nerves narrow dermal vessels",
           "why": "Narrowing keeps warm blood away from the skin and holds heat in. That is the response to cold."
         }
       ],
@@ -4290,14 +4442,17 @@
       "distractors": [
         {
           "text": "Eccrine sweat glands secrete sweat",
+          "short": "Eccrine glands sweat",
           "why": "Evaporating sweat removes heat. It is a response to warmth and would deepen the chill."
         },
         {
           "text": "Dermal vessels widen to warm the skin",
+          "short": "Dermal vessels widen",
           "why": "Wider vessels would bring warm blood to the surface, where the cold air would take its heat. Narrowing is what holds heat in."
         },
         {
           "text": "Warm-sensitive nerve endings fire faster",
+          "short": "Warm-sensitive endings fire faster",
           "why": "Cooling makes warm-sensitive endings fire less. The cold-sensitive endings detect this change."
         }
       ],
@@ -4383,18 +4538,22 @@
       "distractors": [
         {
           "text": "The hormone binds osteoclasts directly and makes them dissolve bone",
+          "short": "Hormone acts on osteoclasts directly",
           "why": "Osteoclasts are not the hormone’s target. It acts on osteoblasts, which then signal osteoclasts to form and work harder."
         },
         {
           "text": "The kidneys excrete more calcium in the urine",
+          "short": "More calcium lost in urine",
           "why": "That would lower calcium further. The hormone makes the kidney tubules return more calcium to the blood."
         },
         {
           "text": "Sensory nerves carry the fall in calcium to the brain",
+          "short": "Sensory nerves to the brain",
           "why": "No nerves are involved. The gland cells sense calcium themselves through their receptor protein."
         },
         {
           "text": "Osteoblasts lay down more mineral in new bone",
+          "short": "Osteoblasts lay down mineral",
           "why": "Mineralizing new bone takes calcium out of the blood, the opposite of what a fall needs."
         }
       ],
@@ -4479,14 +4638,17 @@
       "distractors": [
         {
           "text": "The kidney tubules return more calcium to the blood",
+          "short": "Tubules return more calcium",
           "why": "That is the response to low calcium. With less hormone, the tubules return less, and more calcium is lost in the urine."
         },
         {
           "text": "A second hormone from the thyroid takes over and does most of the lowering",
+          "short": "Second hormone does most lowering",
           "why": "A second hormone from the thyroid adds only a small extra brake in adults; people without a thyroid keep normal calcium. The main change is simply less calcium-raising hormone."
         },
         {
           "text": "Osteoclasts are signaled to resorb more bone",
+          "short": "Osteoclasts resorb more bone",
           "why": "Resorption releases calcium into the blood, which would raise it further. With less hormone, osteoclast activity falls."
         }
       ],
@@ -4570,14 +4732,17 @@
       "distractors": [
         {
           "text": "Osteoclasts dig more resorption pits where the load is heaviest",
+          "short": "More resorption where load is heavy",
           "why": "Heavier loading makes osteocytes release less of the signal that makes osteoclasts form, so resorption falls where strain is high."
         },
         {
           "text": "The epiphyseal plates grow faster and the bones get longer",
+          "short": "Growth plates speed up",
           "why": "Wolff’s law changes a bone’s mass and inner structure, not its length; in an adult the plates have closed."
         },
         {
           "text": "Sensory nerves in the periosteum carry the strain to the spinal cord",
+          "short": "Periosteal nerves to spinal cord",
           "why": "The periosteum’s nerves sense pain. The strain signal that steers remodeling comes from osteocytes inside the bone."
         }
       ],

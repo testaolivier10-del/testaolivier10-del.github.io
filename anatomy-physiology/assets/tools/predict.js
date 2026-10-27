@@ -553,7 +553,9 @@
     var n = session.list.length;
     S.pills([], 'left');
     S.pills(n > 1 ? [{ html: 'Scenario ' + (session.i + 1) + ' of ' + n, tone: 'ghost' }] : [], 'right');
-    S.put('stage', [$('#pc-title'), $('.pc-setup-text')]);
+    var stx = $('.pc-setup-text');
+    S.put('stage', [$('#pc-title'), stx]);
+    clampSetup(stx);
     S.put('dock', $('.pc-pickhost'));
     var w = document.createElement('div');
     w.className = 'ls-sec';
@@ -566,6 +568,19 @@
     [$('.pc-meta'), $('.pc-progress')].forEach(function(x){ if(x) d.appendChild(x); });
     S.put('details', d);
     S.stage.scrollTop = 0;
+  }
+  /* The scenario was a five-line block of small grey text (tool audit
+     2026-10): it shows two lines, readable, with More for the rest. */
+  function clampSetup(p){
+    if(!p) return;
+    p.classList.add('pc-clamp');
+    requestAnimationFrame(function(){
+      if(p.scrollHeight <= p.clientHeight + 2){ p.classList.remove('pc-clamp'); return; }
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'link-quiet pc-more'; b.textContent = 'More'; b.setAttribute('aria-expanded', 'false');
+      b.addEventListener('click', function(){ var open = p.classList.toggle('pc-clamp'); b.textContent = open ? 'More' : 'Less'; b.setAttribute('aria-expanded', String(!open)); });
+      p.parentNode.insertBefore(b, p.nextSibling);
+    });
   }
   function studioStage(s, k, box){
     var dash = box.querySelector('.pc-dash');
@@ -595,7 +610,7 @@
     var steps = window.LevlStudio.stepper(vars, { items: '.pc-var', label: 'Variable' });
     if(!studioStage.hinted){
       studioStage.hinted = true;
-      S.hint({ target: '.pc-var .pc-dir button', text: 'Call it: up, down or no change' });
+      S.hint({ target: '.ls-dock .pc-var', text: 'Call it: up, down or no change', round: 14 });
     }
     return steps;
   }

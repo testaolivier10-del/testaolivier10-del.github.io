@@ -87,17 +87,6 @@
 .pw-verdict b{font-weight:900;}
 .pw-verdict.ok b{color:var(--good-text, #1F6E3E);} .pw-verdict.no b{color:var(--bad-text, #B3261E);}
 .pw-summary{background:var(--ctint);border-radius:14px;padding:12px 16px;}
-.pw-fig{margin:6px 0 0;max-width:560px;}
-.pw-svg{display:block;width:100%;height:auto;}
-.pw-fig .pw-box{stroke-width:2;transition:stroke-width .2s, opacity .25s;}
-.pw-fig .pw-box.pw-marked{stroke-dasharray:6 4;stroke-width:3;}
-.pw-fig .pw-num-bg{fill:var(--cink);}
-.pw-fig .pw-num{fill:var(--paper);font:900 11.5px var(--font-ui);}
-.pw-fig .pw-lbl{fill:var(--ink);font:800 12.5px var(--font-ui);}
-.pw-fig .pw-node{transition:opacity .25s;}
-.pw-fig .pw-node.is-dim,.pw-fig .pw-arrows path.is-dim{opacity:.25;}
-.pw-fig .pw-arrows path{transition:opacity .25s;}
-.pw-fig .pw-node.is-cur .pw-box{stroke-width:5;stroke:var(--cink);}
 .pw-player{display:flex;gap:8px;align-items:center;margin:10px 0 0;}
 .pw-player .btn-outline{min-width:46px;padding-left:12px;padding-right:12px;}
 .pw-caption{min-height:4.8em;margin:10px 0 0;line-height:1.55;}
@@ -220,3 +209,97 @@
 .pw-ls .ls-dock .pw-result > p{margin:0;}
 @media (min-width:1000px){ .pw-ls .ls-stage-body > .pw-fig{max-width:520px;} }
 .ls-root .ls-modes .ls-seg > button{white-space:normal;text-overflow:clip;line-height:1.15;}
+
+/* ---- The pathway map (tool audit 2026-10; pathways.js pathMap) ----
+   One family color per kind of step, from the course palette: cardiovascular, respiratory, renal and fluid,
+   gut, muscle and skeleton, nerve and senses, chemical signals, cells, immune. Blood steps use the
+   oxygenated or deoxygenated color. Full strength: nodes are solid cards, not outlines. */
+.pw-fig{margin:6px 0 0;max-width:620px;--pwk-cv:#C0392B;--pwk-rs:#2E86AB;--pwk-rn:#B7791F;--pwk-gi:#8C5A2B;--pwk-ms:#A23E48;
+  --pwk-nv:#7B4FB0;--pwk-ch:#1F8A70;--pwk-ce:#5D6B69;--pwk-im:#3D7A3D;--pwk-o2:var(--anp-o2);--pwk-deo2:var(--anp-deo2);--pwk-none:var(--line);}
+:root[data-theme="dark"] .pw-fig{--pwk-cv:#F07A6C;--pwk-rs:#6CC0E6;--pwk-rn:#F0B860;--pwk-gi:#D69A62;--pwk-ms:#E58A93;
+  --pwk-nv:#B996EA;--pwk-ch:#5CCBAA;--pwk-ce:#B7C4C1;--pwk-im:#86C886;}
+.pw-svg{display:block;width:100%;height:auto;overflow:visible;}
+.pw-map .pw-node{--k:var(--pwk-ce);transition:opacity .25s;}
+.pw-map .fam-cv{--k:var(--pwk-cv);} .pw-map .fam-rs{--k:var(--pwk-rs);} .pw-map .fam-rn{--k:var(--pwk-rn);} .pw-map .fam-gi{--k:var(--pwk-gi);}
+.pw-map .fam-ms{--k:var(--pwk-ms);} .pw-map .fam-nv{--k:var(--pwk-nv);} .pw-map .fam-ch{--k:var(--pwk-ch);} .pw-map .fam-ce{--k:var(--pwk-ce);}
+.pw-map .fam-im{--k:var(--pwk-im);} .pw-map .fam-o2{--k:var(--pwk-o2);} .pw-map .fam-deo2{--k:var(--pwk-deo2);} .pw-map .fam-none{--k:var(--muted);}
+.pw-map .pw-box{fill:var(--white);stroke:var(--k);stroke-width:2.5;filter:drop-shadow(0 1.5px 2px rgba(20,30,28,.16));transition:stroke-width .2s, fill .2s;}
+.pw-map .is-lit .pw-box{fill:color-mix(in srgb, var(--k) 10%, var(--white));}
+.pw-map .pw-ibg{fill:var(--k);}
+.pw-map .pw-ibg-empty{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:4 3;}
+.pw-map .pwi{fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.pw-map .pwi .pwi-f{fill:#fff;stroke:none;}
+.pw-map .pw-lbl{fill:var(--ink);font:800 13.5px var(--font-ui);}
+.pw-map .pw-lbl.is-sm{font-size:11.5px;}
+.pw-map .pw-lbl.is-ph{fill:var(--muted);font-weight:700;}
+.pw-map .pw-q{fill:var(--cink);font:900 18px var(--font-ui);}
+.pw-map .pw-num-bg{fill:var(--k);}
+.pw-map .fam-none .pw-num-bg{fill:var(--muted);}
+.pw-map .pw-num{fill:#fff;font:900 11px var(--font-ui);}
+.pw-map .pw-cyc{fill:var(--muted);font:800 12.5px var(--font-ui);}
+.pw-map .is-empty .pw-box{fill:none;stroke:var(--line);stroke-dasharray:6 5;filter:none;}
+.pw-map .is-next .pw-box{fill:var(--ctint);stroke:var(--cink);stroke-dasharray:6 5;filter:none;animation:pw-next 1.4s ease-in-out infinite;}
+.pw-map .is-gap .pw-box{fill:var(--ctint);stroke:var(--cink);stroke-dasharray:6 5;stroke-width:3;filter:none;}
+.pw-map .is-lit:not(.is-ok):not(.is-no) .pw-box{animation:pw-lit .5s ease-out;}
+@keyframes pw-next{50%{stroke-width:4;}}
+@keyframes pw-lit{0%{stroke-width:6;}100%{stroke-width:2.5;}}
+.pw-map .is-ok .pw-box{stroke:var(--good, #2F9E5B);stroke-width:3;}
+.pw-map .is-no .pw-box{stroke:var(--bad, #B3261E);stroke-width:3;}
+.pw-map .is-marked .pw-box{stroke-dasharray:6 4;stroke-width:3.5;}
+.pw-map .is-ok .pw-mk{fill:var(--good, #2F9E5B);} .pw-map .is-no .pw-mk{fill:var(--bad, #B3261E);}
+.pw-map .pw-mk{stroke:var(--white);stroke-width:2;}
+.pw-map .pw-mk-t{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.pw-map .pw-yours{fill:var(--bad-text, #B3261E);font:700 10.5px var(--font-ui);text-decoration:line-through;}
+.pw-map .is-tap{cursor:pointer;}
+.pw-map .is-tap:hover .pw-box,.pw-map .is-tap:focus .pw-box{stroke-width:4;}
+.pw-map .is-tap:focus{outline:none;}
+.pw-map .is-tap:focus-visible .pw-box{stroke:var(--accent);stroke-width:4;}
+.pw-map .pw-arrows path{transition:opacity .25s;}
+.pw-map .pw-arrows path.is-faint{opacity:.3;}
+.pw-map .pw-node.is-dim,.pw-map .pw-arrows path.is-dim{opacity:.22;}
+.pw-map .pw-node.is-cur .pw-box{stroke-width:5;fill:color-mix(in srgb, var(--k) 18%, var(--white));}
+@media (prefers-reduced-motion:reduce){.pw-map .pw-box,.pw-map .pw-node,.pw-map .pw-arrows path{transition:none;animation:none !important;}}
+
+/* the inline icon badge used in step lists and the bank */
+.pw-ib{flex:0 0 auto;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--k, var(--pwk-ce, #5D6B69));
+  --pwk-cv:#C0392B;--pwk-rs:#2E86AB;--pwk-rn:#B7791F;--pwk-gi:#8C5A2B;--pwk-ms:#A23E48;--pwk-nv:#7B4FB0;--pwk-ch:#1F8A70;--pwk-ce:#5D6B69;--pwk-im:#3D7A3D;}
+.pw-ib svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.pw-ib .pwi-f{fill:#fff;stroke:none;}
+.pw-ib.fam-cv{--k:var(--pwk-cv);} .pw-ib.fam-rs{--k:var(--pwk-rs);} .pw-ib.fam-rn{--k:var(--pwk-rn);} .pw-ib.fam-gi{--k:var(--pwk-gi);}
+.pw-ib.fam-ms{--k:var(--pwk-ms);} .pw-ib.fam-nv{--k:var(--pwk-nv);} .pw-ib.fam-ch{--k:var(--pwk-ch);} .pw-ib.fam-ce{--k:var(--pwk-ce);}
+.pw-ib.fam-im{--k:var(--pwk-im);} .pw-ib.fam-o2{--k:var(--anp-o2);} .pw-ib.fam-deo2{--k:var(--anp-deo2);}
+.pw-pick .pw-ib,.pw-order .pw-ib{margin-top:-1px;}
+
+/* the step bank: short labels, tap to place */
+.pw-bank{display:flex;flex-wrap:wrap;gap:8px;}
+.pw-bcard{display:inline-flex;align-items:center;gap:8px;min-height:44px;max-width:100%;padding:6px 14px 6px 7px;border-radius:999px;border:2px solid var(--line);
+  background:var(--white);color:var(--ink);font:750 14.5px/1.3 var(--font-ui);text-align:left;cursor:pointer;box-sizing:border-box;}
+.pw-bcard:hover{border-color:var(--cink);}
+.pw-bcard:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.pw-bank-done{margin:0;}
+.pw-alt{margin:2px 0 0;font:700 13px var(--font-ui);color:var(--muted);}
+.pw-link{border:0;background:none;padding:6px 0;min-height:32px;color:var(--cink);font:800 13px var(--font-ui);text-decoration:underline;cursor:pointer;}
+.pw-hint{padding:12px 14px;border-radius:14px;background:var(--tint-amber, rgba(217,165,75,.18));font:600 14.5px/1.55 var(--font-ui);}
+.pw-hint[hidden]{display:none;}
+.pw-hint p{margin:0;}
+.pw-hint .pw-actions{margin:10px 0 0;}
+.pw-hint-why{display:block;margin-top:4px;color:var(--ink);}
+.pw-fulld{margin:6px 0 0;}
+.pw-fulld > summary{cursor:pointer;font:800 13.5px var(--font-ui);color:var(--cink);min-height:36px;display:flex;align-items:center;}
+.pw-fulld .pw-steps{margin-top:8px;}
+.pw-pick{align-items:center;}
+
+/* Studio: the map fills the stage width; on a phone the bank sits in the bottom sheet (the dock) */
+.pw-ls .ls-stage-body > .pw-figslot{flex:none;}
+.pw-ls .ls-stage-body > .pw-figslot .pw-fig,.pw-ls .ls-stage-body > .pw-fig{margin:0 auto 10px;width:100%;max-width:640px;}
+.pw-ls .ls-dock .pw-bank{max-height:34vh;overflow:auto;padding:2px;}
+.pw-ls .ls-dock .pw-hint .pw-actions > *{flex:1;}
+.pw-ls .ls-dock .pw-alt{margin:0;}
+@media (min-width:1000px){ .pw-ls .ls-stage-body > .pw-figslot .pw-fig,.pw-ls .ls-stage-body > .pw-fig{max-width:760px;} }
+.pw-panel.is-hinting > .pw-actions,.pw-panel.is-hinting .pw-bank-done,.pw-panel.is-hinting > .pw-alt{display:none !important;}
+.pw-hint .pw-actions{background:none;}
+.ls-root.ls-phone.pw-ls .ls-dock .pw-bank{max-height:24vh;max-height:24dvh;}
+.pw-ls .ls-dock .pw-ls-drills:not(.ls-off){flex-wrap:wrap;overflow:visible;}
+/* the hint's own buttons sit inside the amber box (the shared dock makes button rows sticky with a white back) */
+.pw-ls .ls-dock .pw-hint .pw-actions{position:static;box-shadow:none;background:none;}
+.ls-root.ls-phone.pw-ls .ls-dock .pw-bank{max-height:30vh;max-height:30dvh;}

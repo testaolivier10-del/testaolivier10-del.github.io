@@ -337,9 +337,10 @@ const SHELL_BUDGETS = [
   /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
   /* 49.5 -> 53.5 (calm tools P1, docs/tools-calm-notes/anp.md): each tool's Tool Studio arrangement and AnpToolKit.studio; lab practical measured 53.1 KB. */
   /* 53.5 -> 54 (honest labels): per-tool names for the second tab. */
-  /* 54 -> 54.5 (3D anatomy tool, 2026-10-27): its page is now the largest measure of this shell (anatomy-3d.js
-     10.6 KB and .css 1.4 KB gzipped with the shared tool kit); measured 54.1 KB. */
-  ['anatomy-physiology', 54.5],
+  /* 54 -> 56 (tool audit fixes 2026-10-27): the pathway tracer draws every pathway as a map with a small
+     icon per kind of step (30 icons) and its drills place steps on it; measured 54.8 KB on the heaviest page.
+     The 3D anatomy tool (same day) measured 54.1 KB, inside this. */
+  ['anatomy-physiology', 56],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

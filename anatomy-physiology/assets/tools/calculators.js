@@ -380,7 +380,13 @@
   var SVGNS = 'http://www.w3.org/2000/svg', picAnim = 0, baseEnv = null;
   function reducedMotion(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
   function S(name, attrs, text){ var e = document.createElementNS(SVGNS, name); for(var a in attrs) if(attrs[a] != null) e.setAttribute(a, attrs[a]); if(text != null) e.textContent = text; return e; }
-  function val(c, env, key){ return fmt(env[key], dpOf(c, key)); }
+  /* Practice shows the problem's picture before it is answered: every value
+     the student has to work out (each derived key) prints as "?" (MASK), the
+     givens print as numbers. Grading redraws it with MASK cleared. */
+  var MASK = null;
+  function hid(key){ return !!(MASK && key && MASK[key]); }
+  function fk(env, key, dp){ return hid(key) ? '?' : fmt(env[key], dp); }
+  function val(c, env, key){ return hid(key) ? '?' : fmt(env[key], dpOf(c, key)); }
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
   /* A phone (docs/tools-phone-pass.md): the same query as the Tool Studio's .ls-phone. */
   function phone(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
@@ -396,6 +402,12 @@
     else if(pic.kind === 'pump') { var u = pump(c, env, pic); svg = u.svg; cap = u.cap; }
     else if(pic.kind === 'stack') { var k = stack(c, env, pic); svg = k.svg; cap = k.cap; }
     if(!svg) return;
+    if(MASK){
+      // the unknowns stand out, and the caption (which states results) waits for the answer
+      [].forEach.call(svg.querySelectorAll('text'), function(t){ var k = t.getAttribute('class') || ''; if(/\?/.test(t.textContent) && !/cp-in-t|cp-pill-t/.test(k)) t.classList.add('cp-unk'); });
+      cap = 'The problem drawn with its given numbers. Each <b>?</b> is a value you work out.';
+    }
+    host.classList.toggle('is-problem', !!MASK);
     svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', cap.replace(/<[^>]+>/g, ''));
     svg.setAttribute('class', 'calc-svg');
     host.appendChild(svg);
@@ -514,9 +526,11 @@
     var fillG = grad(svg, 'l', [[0, 'var(--anp-o2)', 0.32], [1, 'var(--anp-o2)', 0.04]], { x1: 0, y1: 0, x2: 0, y2: 1 });
     svg.appendChild(S('path', { d: d + ' L' + R + ',' + y(dbp) + ' L' + L + ',' + y(dbp) + 'Z', fill: fillG }));
     svg.appendChild(S('path', { d: d, 'class': 'cp-wave' }));
-    function tag(v, label, cls, dy){
-      svg.appendChild(S('line', { x1: L, x2: R, y1: y(v), y2: y(v), 'class': 'cp-hl ' + cls }));
-      var ty = y(v) + (dy || 0), txt = label + ' ' + fmt(v, 0);
+    function tag(v, label, cls, dy, k){
+      // an unknown gets no line (its height would give the answer away): its pill sits mid-band
+      if(hid(k)){ v = (sbp + dbp) / 2; dy = 0; }
+      else svg.appendChild(S('line', { x1: L, x2: R, y1: y(v), y2: y(v), 'class': 'cp-hl ' + cls }));
+      var ty = y(v) + (dy || 0), txt = label + ' ' + (hid(k) ? '?' : fmt(v, 0));
       svg.appendChild(S('rect', { x: R + 6, y: ty - 9, width: txt.length * (phone() ? 7.5 : 6.6) + 10, height: 18, rx: 9, 'class': 'cp-pill ' + cls }));
       svg.appendChild(S('text', { x: R + 11, y: ty + 4, 'class': 'cp-pill-t' }, txt));
     }
@@ -524,10 +538,10 @@
     var sOff = 0, dOff = 0, mOff = 0;
     if(mY != null){ if(dY - mY < 20) { mOff = -Math.max(0, 20 - (dY - mY)) / 2; dOff = Math.max(0, 20 - (dY - mY)) / 2; } if(mY + mOff - sY < 20) mOff = Math.max(mOff, sY + 20 - mY); }
     else if(dY - sY < 20){ sOff = -(20 - (dY - sY)) / 2; dOff = (20 - (dY - sY)) / 2; }
-    tag(sbp, 'SBP', 'cp-sys', sOff); tag(dbp, 'DBP', 'cp-dia', dOff);
-    if(pic.avg) svg.appendChild(S('line', { x1: L, x2: R, y1: y(env[pic.avg]), y2: y(env[pic.avg]), 'class': 'cp-hl cp-avg' }));
-    if(pic.map) tag(env[pic.map], 'MAP', 'cp-map', mOff);
-    if(pic.pp){ var px2 = L + (R - L) * 0.07; svg.appendChild(S('path', { d: 'M' + px2 + ',' + (dY - 1) + ' L' + px2 + ',' + (sY + 1) + ' M' + (px2 - 4) + ',' + (sY + 1) + ' l8,0 M' + (px2 - 4) + ',' + (dY - 1) + ' l8,0', 'class': 'cp-span' })); svg.appendChild(S('text', { x: px2 + 7, y: (sY + dY) / 2 + 4, 'class': 'cp-v cp-halo' }, 'PP ' + fmt(env[pic.pp], 0))); }
+    tag(sbp, 'SBP', 'cp-sys', sOff, pic.sbp); tag(dbp, 'DBP', 'cp-dia', dOff, pic.dbp);
+    if(pic.avg && !hid(pic.map)) svg.appendChild(S('line', { x1: L, x2: R, y1: y(env[pic.avg]), y2: y(env[pic.avg]), 'class': 'cp-hl cp-avg' }));
+    if(pic.map) tag(env[pic.map], 'MAP', 'cp-map', mOff, pic.map);
+    if(pic.pp){ var px2 = L + (R - L) * 0.07; svg.appendChild(S('path', { d: 'M' + px2 + ',' + (dY - 1) + ' L' + px2 + ',' + (sY + 1) + ' M' + (px2 - 4) + ',' + (sY + 1) + ' l8,0 M' + (px2 - 4) + ',' + (dY - 1) + ' l8,0', 'class': 'cp-span' })); svg.appendChild(S('text', { x: px2 + 7, y: (sY + dY) / 2 + 4, 'class': 'cp-v cp-halo' }, 'PP ' + fk(env, pic.pp, 0))); }
     svg.appendChild(S('text', { x: 10, y: (T + B) / 2, 'text-anchor': 'middle', transform: 'rotate(-90 10 ' + (T + B) / 2 + ')', 'class': 'cp-tick' }, 'mm Hg'));
     svg.appendChild(S('text', { x: (L + R) / 2, y: H - 6, 'text-anchor': 'middle', 'class': 'cp-tick' }, 'two heartbeats'));
     var cap = 'Two heartbeats of arterial pressure between ' + fmt(dbp, 0) + ' and ' + fmt(sbp, 0) + ' mm Hg (the trace shape is schematic). ' +
@@ -565,7 +579,7 @@
     svg.appendChild(S('text', { x: x0 + 8, y: cy + 4, 'class': 'cp-t cp-in-lbl' }, glom ? 'glomerular capillary' : 'capillary'));
     var all = pic.out.concat(pic['in']), max = Math.max.apply(null, all.map(function(f){ return Math.abs(env[f.key]); }).concat([20]));
     var sc = 52 / max;
-    function arrow(x, v, dir, label, cls){
+    function arrow(x, v, dir, label, cls, k){
       var len = Math.abs(v) * sc;
       var y0 = dir === 'out' ? cy - lr - wt - 3 : cy + lr + wt + 3;
       var ya, yb;
@@ -573,17 +587,19 @@
       else { ya = y0 + len; yb = y0; if(v < 0){ ya = y0; yb = y0 + len; } }
       if(len > 2) forceArrow(svg, x, ya, yb, 6, cls);
       var ty = dir === 'out' ? Math.min(ya, yb) - 6 : Math.max(ya, yb) + 14;
-      svg.appendChild(S('text', { x: x, y: ty, 'text-anchor': 'middle', 'class': 'cp-v cp-halo ' + cls }, label.split(' ')[0] + ' ' + fmt(v, 0)));
+      svg.appendChild(S('text', { x: x, y: ty, 'text-anchor': 'middle', 'class': 'cp-v cp-halo ' + cls }, label.split(' ')[0] + ' ' + (hid(k) ? '?' : fmt(v, 0))));
     }
-    pic.out.forEach(function(f, i){ arrow(60 + i * 90, env[f.key], 'out', f.label, 'cp-out'); });
-    pic['in'].forEach(function(f, i){ arrow(60 + i * 90 + (pic.out.length > 1 ? 45 : 90), env[f.key], 'in', f.label, 'cp-in'); });
+    pic.out.forEach(function(f, i){ arrow(60 + i * 90, env[f.key], 'out', f.label, 'cp-out', f.key); });
+    pic['in'].forEach(function(f, i){ arrow(60 + i * 90 + (pic.out.length > 1 ? 45 : 90), env[f.key], 'in', f.label, 'cp-in', f.key); });
     var net = env[pic.net], nl = clamp(Math.abs(net) * sc, 0, 62), nx = 310;
     svg.appendChild(S('rect', { x: 268, y: 8, width: 84, height: H - 16, rx: 12, 'class': 'cp-netbox' }));
     svg.appendChild(S('text', { x: nx, y: 26, 'text-anchor': 'middle', 'class': 'cp-t' }, 'net'));
-    if(nl > 2){ var a = net > 0 ? cy - 2 : cy - 2 - nl, b2 = net > 0 ? cy - 2 - nl : cy - 2; forceArrow(svg, nx, a, b2, 10, net > 0 ? 'cp-out' : 'cp-in'); }
-    svg.appendChild(S('text', { x: nx, y: cy + 28, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, fmt(net, 0) + ' mm Hg'));
-    svg.appendChild(S('text', { x: nx, y: cy + 44, 'text-anchor': 'middle', 'class': 'cp-t' }, net > 0 ? 'filtration' : net < 0 ? 'reabsorption' : 'no net'));
-    svg.appendChild(S('text', { x: nx, y: cy + 58, 'text-anchor': 'middle', 'class': 'cp-t' }, net > 0 ? '(out)' : net < 0 ? '(in)' : 'movement'));
+    if(nl > 2 && !hid(pic.net)){ var a = net > 0 ? cy - 2 : cy - 2 - nl, b2 = net > 0 ? cy - 2 - nl : cy - 2; forceArrow(svg, nx, a, b2, 10, net > 0 ? 'cp-out' : 'cp-in'); }
+    svg.appendChild(S('text', { x: nx, y: cy + 28, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, fk(env, pic.net, 0) + ' mm Hg'));
+    if(!hid(pic.net)){
+      svg.appendChild(S('text', { x: nx, y: cy + 44, 'text-anchor': 'middle', 'class': 'cp-t' }, net > 0 ? 'filtration' : net < 0 ? 'reabsorption' : 'no net'));
+      svg.appendChild(S('text', { x: nx, y: cy + 58, 'text-anchor': 'middle', 'class': 'cp-t' }, net > 0 ? '(out)' : net < 0 ? '(in)' : 'movement'));
+    }
     var cap = 'Arrows above the vessel are pressures moving fluid out; below, pressures moving it back in; length is size. Net: <b>' + fmt(net, 0) + ' mm Hg</b>, ' + (net > 0 ? 'so fluid filters out.' : net < 0 ? 'so fluid moves in.' : 'so there is no net movement.');
     return { svg: svg, cap: cap };
   }
@@ -648,8 +664,10 @@
       var f1 = clamp(env[pic.sv] / edv, 0, 1);
       svg.appendChild(S('rect', { x: bx, y: by, width: bw, height: 20, rx: 10, 'class': 'cp-bar-bg' }));
       var segG = grad(svg, 'l', [[0, 'var(--cp-art-hi)'], [1, 'var(--cp-art)']], { x1: 0, y1: 0, x2: 0, y2: 1 });
-      svg.appendChild(S('rect', { x: bx, y: by, width: Math.max(0, bw * f1), height: 20, rx: 10, fill: segG }));
-      svg.appendChild(S('rect', { x: bx + 3, y: by + 3, width: Math.max(0, bw * f1 - 6), height: 5, rx: 2.5, 'class': 'cp-gloss' }));
+      if(!hid(pic.sv) && !hid(pic.ef)){
+        svg.appendChild(S('rect', { x: bx, y: by, width: Math.max(0, bw * f1), height: 20, rx: 10, fill: segG }));
+        svg.appendChild(S('rect', { x: bx + 3, y: by + 3, width: Math.max(0, bw * f1 - 6), height: 5, rx: 2.5, 'class': 'cp-gloss' }));
+      }
       svg.appendChild(S('text', { x: bx, y: by + 40, 'class': 'cp-v' }, 'SV ' + val(c, env, pic.sv) + ' mL ejected'));
       svg.appendChild(S('text', { x: bx, y: by + 58, 'class': 'cp-v cp-mut' }, 'ESV ' + val(c, env, pic.esv) + ' mL stays'));
       svg.appendChild(S('text', { x: bx, y: by + 90, 'class': 'cp-v cp-huge' }, 'EF ' + val(c, env, pic.ef) + '%'));
@@ -658,7 +676,7 @@
       var hr = env[pic.hr], sv = env[pic.sv], co = env[pic.co];
       var hg = S('g', { transform: 'translate(20,22)' }); svg.appendChild(hg);
       var heart = heartArt(svg); hg.appendChild(heart);
-      svg.appendChild(S('text', { x: 75, y: H - 6, 'text-anchor': 'middle', 'class': 'cp-v' }, fmt(hr, 0) + ' beats/min'));
+      svg.appendChild(S('text', { x: 75, y: H - 6, 'text-anchor': 'middle', 'class': 'cp-v' }, fk(env, pic.hr, 0) + ' beats/min'));
       var jx = 214, jy = 34, jw = 74, jh = 112, cap10 = Math.max(10, Math.ceil(co / 5) * 5);
       // a tube from the aorta into the jug, with blood moving along it
       var pipe = 'M114,34 C150,4 196,6 222,30';
@@ -671,10 +689,10 @@
       var lg = S('g', { 'clip-path': clipOf(svg, S('path', { d: jugD })) }); svg.appendChild(lg);
       var lvl = S('rect', { x: jx - 10, width: jw + 20, fill: liq }); lg.appendChild(lvl);
       var men = S('ellipse', { cx: jx + jw / 2, rx: jw / 2 + 4, ry: 3, 'class': 'cp-meniscus' }); lg.appendChild(men);
-      for(var m = 5; m < cap10; m += 5){ var yy = jy + jh - jh * m / cap10; svg.appendChild(S('line', { x1: jx + 4, x2: jx + 16, y1: yy, y2: yy, 'class': 'cp-grad' })); svg.appendChild(S('text', { x: jx + 19, y: yy + 3.5, 'class': 'cp-tick' }, m + ' L')); }
+      for(var m = 5; m < cap10 && !hid(pic.co); m += 5){ var yy = jy + jh - jh * m / cap10; svg.appendChild(S('line', { x1: jx + 4, x2: jx + 16, y1: yy, y2: yy, 'class': 'cp-grad' })); svg.appendChild(S('text', { x: jx + 19, y: yy + 3.5, 'class': 'cp-tick' }, m + ' L')); }
       svg.appendChild(S('path', { d: 'M' + (jx + jw - 14) + ',' + (jy + 4) + ' L' + (jx + jw - 17) + ',' + (jy + jh - 14), 'class': 'cp-shine' }));
       svg.appendChild(S('path', { d: jugD, 'class': 'cp-glass-edge' }));
-      svg.appendChild(S('text', { x: jx + jw / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'cp-t' }, 'in 1 min: ' + fmt(co, 2) + ' L'));
+      svg.appendChild(S('text', { x: jx + jw / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'cp-t' }, 'in 1 min: ' + fk(env, pic.co, 2) + ' L'));
       function setLvl(f){ var h = jh * clamp(f * co / cap10, 0, 1), top2 = jy + jh - h; lvl.setAttribute('y', top2.toFixed(1)); lvl.setAttribute('height', (h + 2).toFixed(1)); men.setAttribute('cy', top2.toFixed(1)); men.style.display = h > 1 ? '' : 'none'; }
       if(!red && hr > 0){
         var period = 60000 / hr, t1 = null;
@@ -698,7 +716,7 @@
     var gloss = grad(svg, 'l', [[0, '#fff', 0.28], [0.5, '#fff', 0.05], [1, '#000', 0.08]], { x1: 0, y1: 0, x2: 0, y2: 1 });
     // a light scale under the bars
     var step = Math.pow(10, Math.floor(Math.log10(max))); if(max / step < 3) step /= 2; if(max / step > 7) step *= 2;
-    for(var t = 0; t <= max + 1e-9; t += step){ var gx = L + t / max * (R - L); svg.appendChild(S('line', { x1: gx, x2: gx, y1: 22, y2: H - 16, 'class': 'cp-grid' })); svg.appendChild(S('text', { x: gx, y: H - 4, 'text-anchor': t === 0 ? 'start' : gx > R - 20 ? 'end' : 'middle', 'class': 'cp-tick' }, fmt(t, step < 1 ? 1 : 0))); }
+    for(var t = 0; t <= max + 1e-9; t += step){ var gx = L + t / max * (R - L); svg.appendChild(S('line', { x1: gx, x2: gx, y1: 22, y2: H - 16, 'class': 'cp-grid' })); if(!MASK) svg.appendChild(S('text', { x: gx, y: H - 4, 'text-anchor': t === 0 ? 'start' : gx > R - 20 ? 'end' : 'middle', 'class': 'cp-tick' }, fmt(t, step < 1 ? 1 : 0))); }
     pic.bars.forEach(function(b, i){
       var y = 6 + i * rowH, x = L, tot = 0, bh = 24, by = y + 18;
       svg.appendChild(S('text', { x: L, y: y + 11, 'class': 'cp-t' }, b.label));
@@ -711,17 +729,19 @@
         tot += Math.max(0, v(sg));
         g.appendChild(S('rect', { x: x, y: by, width: Math.max(0, w), height: bh, 'class': 'cp-seg tone-' + sg.tone }));
         if(w > 1.5 && x + w < L + totW - 0.5) g.appendChild(S('rect', { x: x + w - 1, y: by, width: 2, height: bh, 'class': 'cp-gap' }));
-        var txt = sg.label + ' ' + fmt(v(sg), dpOf(c, sg.key));
+        var sv = hid(sg.key) || (MASK && sg.expr) ? '?' : fmt(v(sg), dpOf(c, sg.key)), txt = sg.label + ' ' + sv;
         // A phone sets these at 12.5 px (calculators.css); a name that only fits at the desktop size keeps that size (cp-in-fit), so no segment loses its name.
         if(w > txt.length * (phone() ? 7.2 : 6.2) + 10) svg.appendChild(S('text', { x: x + 7, y: by + 16, 'class': 'cp-in-t' }, txt));
         else if(w > txt.length * 6.2 + 10) svg.appendChild(S('text', { x: x + 7, y: by + 16, 'class': 'cp-in-t cp-in-fit' }, txt));
-        else if(w > (phone() ? 42 : 34)) svg.appendChild(S('text', { x: x + 5, y: by + 16, 'class': 'cp-in-t' }, fmt(v(sg), dpOf(c, sg.key))));
+        else if(w > (phone() ? 42 : 34)) svg.appendChild(S('text', { x: x + 5, y: by + 16, 'class': 'cp-in-t' }, sv));
         x += w;
       });
       g.appendChild(S('rect', { x: L, y: by, width: Math.max(0, totW), height: bh, fill: gloss, 'pointer-events': 'none' }));
-      svg.appendChild(S('text', { x: R, y: y + 11, 'text-anchor': 'end', 'class': 'cp-v' }, fmt(tot, dpOf(c, b.segs[0].key)) + ' ' + pic.unit));
+      // a total that is itself an unknown (TLC, say) stays hidden too
+      var totHid = MASK && (b.segs.some(function(sg){ return hid(sg.key) || sg.expr; }) || Object.keys(MASK).some(function(k){ return Math.abs(env[k] - tot) <= 1e-6 * Math.max(1, Math.abs(tot)); }));
+      svg.appendChild(S('text', { x: R, y: y + 11, 'text-anchor': 'end', 'class': 'cp-v' }, (totHid ? '?' : fmt(tot, dpOf(c, b.segs[0].key))) + ' ' + pic.unit));
     });
-    var key = '<span class="cp-key">' + pic.bars.map(function(b){ return b.segs.map(function(sg){ return '<span><i class="cp-sw tone-' + sg.tone + '"></i>' + esc(sg.label) + ' <b>' + fmt(v(sg), dpOf(c, sg.key)) + '</b></span>'; }).join(''); }).join('') + '</span>';
+    var key = '<span class="cp-key">' + pic.bars.map(function(b){ return b.segs.map(function(sg){ return '<span><i class="cp-sw tone-' + sg.tone + '"></i>' + esc(sg.label) + ' <b>' + (hid(sg.key) || (MASK && sg.expr) ? '?' : fmt(v(sg), dpOf(c, sg.key))) + '</b></span>'; }).join(''); }).join('') + '</span>';
     return { svg: svg, cap: 'Drawn to one scale, in ' + esc(pic.unit) + ': ' + key };
   }
 
@@ -773,8 +793,10 @@
           '</div>' +
           '<div class="calc-actions"><button type="submit" class="btn-press sm calc-check">Check</button> <button type="button" class="btn-outline calc-skip">New problem</button></div>' +
           '<p class="calc-msg" role="status" aria-live="polite"></p>' +
+          '<div class="calc-hintbox" role="status" hidden><p class="calc-hint-t"></p><div class="calc-actions"><button type="button" class="btn-press sm calc-retry">Try again</button> <button type="button" class="btn-outline calc-reveal">Show the answer</button></div></div>' +
         '</form>' +
       '</div>' +
+      (c.picture ? '<figure class="calc-pic calc-pic-q" aria-label="The problem as a picture"></figure>' : '') +
       (window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>', { label: 'Show the formula', cls: 'calc-more' }) : '<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>') +
       '<div class="calc-feedback" aria-live="polite"></div>';
     var form = body.querySelector('.calc-answer'), input = body.querySelector('#calc-ans');
@@ -785,10 +807,16 @@
       sign.setAttribute('data-sign', p.sign);
       sign.setAttribute('aria-label', 'Sign: ' + (p.sign > 0 ? 'positive. Select to make it negative.' : 'negative. Select to make it positive.'));
     });
-    body.querySelector('.calc-skip').addEventListener('click', function(){ newProblem(); renderPractice(); focusAnswer(); });
+    // New problem and Next problem go through renderBody, which clears the
+    // studio parts the last problem placed (calling renderPractice alone
+    // stacked a second prompt and answer box under the first).
+    body.querySelector('.calc-skip').addEventListener('click', function(){ newProblem(); renderBody(); focusAnswer(); });
+    var retry = body.querySelector('.calc-retry'), reveal = body.querySelector('.calc-reveal');
+    retry.addEventListener('click', function(){ input.disabled = false; input.select(); input.focus(); retry.hidden = true; reveal.hidden = true; Q().querySelector('.calc-check').hidden = false; });
+    reveal.addEventListener('click', function(){ grade(p.last, true); });
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      if(p.done){ newProblem(); renderPractice(); focusAnswer(); return; }
+      if(p.done){ newProblem(); renderBody(); focusAnswer(); return; }
       var v = parseAnswer(input.value);
       var msg = (ST ? document : body).querySelector('.calc-msg');
       if(!isFinite(v)){ msg.textContent = 'Enter a number, digits only (for example 12.5).'; input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
@@ -796,24 +824,98 @@
       msg.textContent = '';
       if(sign && p.sign < 0 && v > 0) v = -v;
       grade(v);
-    });    if(ST) studioPractice(c, body);
+    });
+    if(c.picture) drawProblem(c, p);
+    if(ST) studioPractice(c, body);
+  }
+  /* The problem's own picture, unknowns as "?": the student sees what is
+     given and what is asked before working it out. */
+  function unknownKeys(c, ask){
+    var inPrompt = {}, m, re = /\{([A-Za-z_]\w*)/g;
+    while((m = re.exec(ask.prompt))) inPrompt[m[1]] = 1;
+    var k = {};
+    (c.derived || []).forEach(function(d){ if(!inPrompt[d.key]) k[d.key] = 1; });
+    c.inputs.forEach(function(inp){ if(!inPrompt[inp.key]) k[inp.key] = 1; });
+    k[ask.key] = 1; if(ask.show) k[ask.show] = 1;
+    return k;
+  }
+  function drawProblem(c, p){
+    baseEnv = null; var dv = {}; c.inputs.forEach(function(inp){ dv[inp.key] = inp['default']; }); var b0 = compute(c, dv); if(!b0.invalid) baseEnv = b0.env;
+    MASK = unknownKeys(c, p.ask);
+    try{ drawPicture(c, p.env); } finally { MASK = null; }
+  }
+  /* One method hint before the answer: which way the number is off, a unit
+     slip when the ratio shows one, the formula and the first worked step. */
+  /* The first worked step this question needs. Steps are written for the
+     calculator as a whole, so a step that works out a value this ask never
+     uses (inspiratory capacity when the ask is FRC) is skipped: a value is
+     needed when it is the answer or feeds a step that is. */
+  function firstStep(c, ask){
+    var steps = c.steps || [], der = {};
+    (c.derived || []).forEach(function(d){ der[d.key] = 1; });
+    var refs = steps.map(function(s){ var out = [], m, re = /\{([A-Za-z_]\w*)/g; while((m = re.exec(s.text))) if(der[m[1]]) out.push(m[1]); return out; });
+    var seen = {}, intro = refs.map(function(r){ var o = {}; r.forEach(function(k){ if(!seen[k]){ o[k] = 1; seen[k] = 1; } }); return o; });
+    var want = [ask.key].concat(ask.show ? [ask.show] : []), done = {}, used = {};
+    while(want.length){
+      var k = want.pop(); if(done[k]) continue; done[k] = 1;
+      for(var i = 0; i < intro.length; i++) if(intro[i][k]){ used[i] = 1; want = want.concat(refs[i]); break; }
+    }
+    if(!refs.length || !refs[0].length || used[0]) return steps[0];
+    for(var j = 1; j < steps.length; j++) if(used[j]) return steps[j];
+    return steps[0];
+  }
+  function hintHtml(c, p, v){
+    var ans = p.env[p.ask.key], first = firstStep(c, p.ask);
+    var dir = ans !== 0 && isFinite(v) && Math.abs(v) !== Math.abs(ans) ? (Math.abs(v) > Math.abs(ans) ? 'too high' : 'too low') : '';
+    var ratio = ans !== 0 ? Math.abs(v / ans) : 0;
+    function near(x, t){ return Math.abs(ratio - t) <= t * 0.03; }
+    var unitTip = ratio && (near(ratio, 1000) || near(ratio, 0.001)) ? ' It is off by a factor of 1,000: check the units (mL or L).' :
+      ratio && (near(ratio, 60) || near(ratio, 1 / 60)) ? ' It is off by a factor of 60: check minutes against seconds.' : '';
+    return '<b>Not yet.</b> ' + (dir ? 'Your answer is ' + dir + '.' : '') + unitTip +
+      ' Use <span class="calc-hint-f">' + c.formula + '</span>' + (first ? '. Start with this step: ' + esc(first.title.charAt(0).toLowerCase() + first.title.slice(1)) + '.' : '.');
   }
   function focusAnswer(){ var i = Q().querySelector('#calc-ans'); if(i) i.focus(); }
 
-  function grade(v){
+  /* Grading: the first check is the one recorded (a miss reaches the review
+     queue, as before). A first miss gets one method hint with Try again or
+     Show the answer; the second check, or Show the answer, reveals the
+     worked solution with the student's number against the right one. */
+  function grade(v, giveUp){
     var c = current, p = problem, ask = p.ask;
     var ans = p.env[ask.key];
     var tol = Math.max((ask.tol && ask.tol.abs) || 0, ((ask.tol && ask.tol.rel) || 0) * Math.abs(ans));
-    var ok = Math.abs(v - ans) <= tol + 1e-9;
+    var ok = !giveUp && Math.abs(v - ans) <= tol + 1e-9;
     // A signed answer with the wrong sign is wrong however close the size.
     if(ask.signed && ans !== 0 && v !== 0 && (v > 0) !== (ans > 0)) ok = false;
-    p.done = true;
     var showKey = ask.show || ask.key;
     var shown = fmt(p.env[showKey], dpOf(c, showKey), ask.signed ? '+' : '');
     var id = itemId(c);
-    if(window.AnpCore) window.AnpCore.toolResult(KIND, [{ id: id, correct: ok, topic: c.topic, core: c.core, level: c.level, diff: c.diff, group: c.id }]);
-    if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(ok); }catch(e){}
     var body = ST ? document : app.querySelector('.calc-body');
+    var firstTry = !p.tries;
+    if(firstTry){
+      if(window.AnpCore) window.AnpCore.toolResult(KIND, [{ id: id, correct: ok, topic: c.topic, core: c.core, level: c.level, diff: c.diff, group: c.id }]);
+      if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(ok); }catch(e){}
+    }
+    p.tries = (p.tries || 0) + 1;
+    if(!ok && firstTry && !giveUp){
+      p.last = v;
+      var hb = body.querySelector('.calc-hintbox');
+      hb.querySelector('.calc-hint-t').innerHTML = hintHtml(c, p, v);
+      hb.hidden = false;
+      body.querySelector('.calc-retry').hidden = false;
+      body.querySelector('.calc-reveal').hidden = false;
+      body.querySelector('#calc-ans').disabled = true;
+      body.querySelector('.calc-check').hidden = true;
+      body.querySelector('.calc-skip').hidden = true;
+      if(ST){ ST.pills([{ html: 'Not yet', tone: 'warn' }], 'left', 'practice'); ST.caption('Read the hint, then try again or show the answer.', 'practice'); }
+      body.querySelector('.calc-retry').focus();
+      return;
+    }
+    if(giveUp) v = p.last;
+    var second = !firstTry;
+    p.done = true;
+    var hb2 = body.querySelector('.calc-hintbox'); if(hb2) hb2.hidden = true;
+    body.querySelector('.calc-check').hidden = false;
     body.querySelectorAll('.calc-answer input, .calc-sign').forEach(function(x){ x.disabled = true; });
     body.querySelector('.calc-check').textContent = 'Next problem';
     body.querySelector('.calc-skip').hidden = true;
@@ -821,20 +923,27 @@
     var near = !ok && Math.abs(v - ans) <= 3 * tol + 1e-9;
     var sizeRight = ask.signed && !ok && Math.abs(Math.abs(v) - Math.abs(ans)) <= tol + 1e-9;
     body.querySelector('.calc-feedback').innerHTML =
-      '<div class="calc-verdict ' + (ok ? 'ok' : 'no') + '"><p><span class="anp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' +
+      '<div class="calc-verdict ' + (ok ? 'ok' : 'no') + '"><p><span class="anp-verdict">' + (ok ? (second ? 'Correct on the second try.' : 'Correct.') : 'Not quite.') + '</span> ' +
         'The answer is <b>' + shown + ' ' + esc(ask.unit) + '</b>' + (ok ? '.' : '; you entered ' + yours + ' ' + esc(ask.unit) + '.') +
         (sizeRight ? ' The size is right but the sign is not: check which pressures push fluid out and which pull it in.' : near ? ' That is close: check your rounding in the steps below.' : '') +
-        (ok ? '' : ' It is in your review queue.') + '</p>' +
+        (ok && !second ? '' : ' It is in your review queue.') + '</p>' +
+        (ok ? '' : yoursBar(shown, yours, ans, v)) +
       '</div>' +
-      (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       solutionHtml(c, p.env, 'Worked solution') +
       '<div class="calc-report">' + (window.LevlReport ? window.LevlReport.button('anp', id) : '') + '</div>';
-    if(c.picture){ baseEnv = null; var dv = {}; c.inputs.forEach(function(inp){ dv[inp.key] = inp['default']; }); var b0 = compute(c, dv); if(!b0.invalid) baseEnv = b0.env; drawPicture(c, p.env); }
+    if(c.picture){ baseEnv = null; var dv = {}; c.inputs.forEach(function(inp){ dv[inp.key] = inp['default']; }); var b0 = compute(c, dv); if(!b0.invalid) baseEnv = b0.env; MASK = null; drawPicture(c, p.env); }
     if(window.AnpToolKit) window.AnpToolKit.strip(body.querySelector('.calc-feedback'), { topic: c.topic, text: c.title + ' ' + c.intro });
     var s = window.AnpCore ? window.AnpCore.toolStats(KIND) : null, mine = s && s.by ? s.by[c.id] : null;
     if(mine) body.querySelector('.calc-record').textContent = 'Your practice record here: ' + mine.c + ' of ' + mine.n + ' correct.';
     if(ST) studioGraded(c, ok);
     body.querySelector('.calc-check').focus();
+  }
+  // the student's number against the right one, on one scale
+  function yoursBar(shown, yours, ans, v){
+    if(!isFinite(v) || !isFinite(ans)) return '';
+    var mx = Math.max(Math.abs(ans), Math.abs(v)) || 1;
+    function row(lbl, txt, x, cls){ return '<div class="calc-cmp-row ' + cls + '"><span class="calc-cmp-l">' + lbl + '</span><span class="calc-cmp-track"><i style="width:' + Math.max(1.5, Math.min(100, Math.abs(x) / mx * 100)).toFixed(1) + '%"></i></span><span class="calc-cmp-v">' + txt + '</span></div>'; }
+    return '<div class="calc-cmp" aria-hidden="true">' + row('Yours', yours, v, 'is-yours') + row('Answer', shown, ans, 'is-right') + '</div>';
   }
   function decimalsIn(v){ var s = String(v); return s.indexOf('.') > -1 ? Math.min(3, s.split('.')[1].length) : 0; }
 
@@ -889,6 +998,8 @@
     ST.caption(first ? first.innerHTML : '', 'practice');
     if(first) first.parentNode.removeChild(first);
     own('stage', body.querySelector('.calc-prompt'));
+    var pq = body.querySelector('.calc-pic');
+    if(pq){ pq.classList.add('ls-fit'); own('stage', pq); }
     own('dock', [body.querySelector('.calc-answer'), body.querySelector('.calc-feedback')]);
     keepPickerLast();
     var more = body.querySelector('.calc-more');
@@ -897,8 +1008,7 @@
     ST.stage.scrollTop = 0;
   }
   function studioGraded(c, ok){
-    var fb = Q().querySelector('.calc-feedback'), pic = fb.querySelector('.calc-pic');
-    if(pic){ pic.classList.add('ls-fit'); own('stage', pic); }
+    var fb = Q().querySelector('.calc-feedback');
     var sol = wrapEl('ls-sec calc-ls-sol', [].slice.call(fb.children).filter(function(x){ return !x.matches('.calc-verdict, .calc-report, .kg'); }));
     own('why', sol, { first: true });
     ST.pills([{ html: ok ? 'Correct' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'left', 'practice');

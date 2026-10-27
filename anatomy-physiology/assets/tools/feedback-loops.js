@@ -157,8 +157,11 @@
   function renderLoop(){
     stopLive();
     var l = queue[qi], n = queue.length, t = topicOf(l.topic);
-    var cards = SLOTS.map(function(k){ return { id: k, text: l.slots[k].text, why: l.slots[k].why, slot: k }; })
-      .concat((l.distractors || []).map(function(d, i){ return { id: 'x' + i, text: d.text, why: d.why, slot: null }; }));
+    // Cards show short labels (tool audit 2026-10); "Show full sentences" swaps in the full text.
+    var cards = SLOTS.map(function(k){ return { id: k, text: l.slots[k].text, short: l.slots[k].short, why: l.slots[k].why, slot: k }; })
+      .concat((l.distractors || []).map(function(d, i){ return { id: 'x' + i, text: d.text, short: d.short || d.text, why: d.why, slot: null }; }));
+    var full = false, tries = 0, lock = {}, hinting = false;
+    function cardLabel(c){ return full ? c.text : c.short; }
     cards = shuffle(cards);
     var placed = {};    // slot -> card id
     var active = 0;     // index into SLOTS of the slot being filled, or -1
@@ -188,13 +191,14 @@
           (kit() ? kit().why('<p>Choose a slot, then the card that belongs in it. The next empty slot is chosen for you. Some cards belong in no slot. Tap a filled slot to empty it.</p>', { label: 'How it works' }) : '') +
           '<div class="fl-board">' +
             '<ol class="fl-slots">' + SLOTS.map(function(k, i){
-              return '<li class="fl-slotrow" data-slot="' + k + '"><button type="button" class="fl-slot fl-s-' + k + '" data-i="' + i + '" aria-pressed="false">' +
-                '<span class="fl-slot-n" aria-hidden="true">' + (i + 1) + '</span><span class="fl-slot-body"><span class="fl-slot-l">' + esc(LABELS[k]) + '</span><span class="fl-slot-v"></span></span></button>' +
+              return '<li class="fl-slotrow fl-r-' + k + '" data-slot="' + k + '"><button type="button" class="fl-slot fl-s-' + k + ' fl-n-' + ROLE[k] + '" data-i="' + i + '" aria-pressed="false">' +
+                '<span class="fl-sic" aria-hidden="true"><svg viewBox="0 0 24 24" class="fl-ic-g">' + TICON[k] + '</svg></span><span class="fl-slot-body"><span class="fl-slot-l"><span class="fl-slot-n" aria-hidden="true">' + (i + 1) + '</span>' + esc(LABELS[k]) + '</span><span class="fl-slot-v"></span></span></button>' +
                 '<div class="fl-slot-fb" hidden></div></li>';
             }).join('') + '</ol>' +
-            '<div class="fl-poolwrap"><h4 class="fl-pool-h" id="' + p + '-pool">Cards</h4><div class="fl-pool" role="group" aria-labelledby="' + p + '-pool"></div></div>' +
+            '<div class="fl-poolwrap"><div class="fl-pool-top"><h4 class="fl-pool-h" id="' + p + '-pool">Cards</h4><button type="button" class="link-quiet fl-full" aria-pressed="false">Show full sentences</button></div><div class="fl-pool" role="group" aria-labelledby="' + p + '-pool"></div></div>' +
           '</div>' +
           '<div class="fl-actions"><button type="button" class="btn-press sm fl-check" disabled>Check the loop</button><button type="button" class="btn-outline fl-reset">Clear all</button></div>' +
+          '<div class="fl-hint" role="status" hidden></div>' +
           '<p class="fl-live anp-small" role="status" aria-live="polite"></p>' +
         '</section>' +
         '<section class="fl-classify" aria-labelledby="' + p + '-c" hidden></section>' +
@@ -247,15 +251,15 @@
         var k = SLOTS[i], c = placed[k] ? cardById(placed[k]) : null;
         b.setAttribute('aria-pressed', String(i === active));
         b.classList.toggle('is-filled', !!c);
-        b.querySelector('.fl-slot-v').textContent = c ? c.text : (i === active ? 'Choose a card for this slot' : 'Empty');
+        if(!b.disabled) b.querySelector('.fl-slot-v').textContent = c ? cardLabel(c) : (i === active ? 'Tap a card below' : 'Empty');
         b.setAttribute('aria-label', LABELS[k] + ': ' + (c ? c.text + '. Activate to empty this slot.' : (i === active ? 'empty, choosing now.' : 'empty.')));
       });
       pool.innerHTML = cards.filter(function(c){ return !used(c.id); }).map(function(c){
-        return '<button type="button" class="fl-tile" data-card="' + esc(c.id) + '">' + esc(c.text) + '</button>';
+        return '<button type="button" class="fl-tile" data-card="' + esc(c.id) + '"' + (full ? '' : ' title="' + esc(c.text) + '"') + '>' + esc(cardLabel(c)) + '</button>';
       }).join('') || '<p class="anp-small fl-pool-empty">Every slot is filled. Check the loop, or tap a slot to change it.</p>';
       pool.querySelectorAll('.fl-tile').forEach(function(tb){ tb.addEventListener('click', function(){ place(tb.getAttribute('data-card')); }); });
       var filled = SLOTS.filter(function(k){ return placed[k]; }).length;
-      checkBtn.disabled = filled < SLOTS.length;
+      checkBtn.disabled = filled < SLOTS.length || hinting;
       // In the studio the slots scroll on the stage: keep the one being filled in view.
       var on = S && Q().querySelector('.fl-slot[aria-pressed="true"]');
       if(on && on.scrollIntoView && on.offsetParent) on.scrollIntoView({ block: 'nearest' });
@@ -274,8 +278,9 @@
     }
     Q().querySelectorAll('.fl-slot').forEach(function(b, i){
       b.addEventListener('click', function(){
-        if(build.classList.contains('is-done')) return;
+        if(build.classList.contains('is-done') || hinting) return;
         var k = SLOTS[i];
+        if(lock[k]) return;
         if(placed[k]){ delete placed[k]; live.textContent = LABELS[k] + ' emptied. Choose a card for it.'; }
         else live.textContent = 'Choosing a card for ' + LABELS[k] + '.';
         active = i;
@@ -283,44 +288,112 @@
         b.focus();
       });
     });
-    Q().querySelector('.fl-reset').addEventListener('click', function(){ placed = {}; active = 0; live.textContent = 'All slots emptied.'; paint(); });
+    Q().querySelector('.fl-reset').addEventListener('click', function(){ SLOTS.forEach(function(k){ if(!lock[k]) delete placed[k]; }); active = nextEmpty(0); live.textContent = 'All slots emptied.'; paint(); });
+    Q().querySelector('.fl-full').addEventListener('click', function(){ full = !full; this.setAttribute('aria-pressed', String(full)); this.textContent = full ? 'Show short labels' : 'Show full sentences'; paint(); });
     paint();
     if(booted) focusEl(Q().querySelector('.fl-title'));
     booted = true;
 
+    /* Check: the first check is the one recorded (misses reach review, as
+       before). A first miss keeps the right slots, marks the wrong ones and
+       gives one method hint, with Try again or Show the answer. The second
+       check, or Show the answer, reveals every slot: the card placed, struck
+       through where it was wrong, with the right one beside it. */
+    var firstRight = 0;
     checkBtn.addEventListener('click', function(){
+      if(hinting) return;
+      tries++;
+      var right = 0, wrong = [];
+      SLOTS.forEach(function(k){ var c = cardById(placed[k]); if(c && c.slot === k) right++; else wrong.push(k); });
+      if(tries === 1){
+        firstRight = right;
+        score.right += right; score.total += SLOTS.length;
+        if(core()) core().toolResult(KIND, SLOTS.map(function(k){ var c = cardById(placed[k]); return item(l, k, c && c.slot === k, 'apply', 1); }));
+        if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(right === SLOTS.length); }catch(e){}
+      }
+      if(right < SLOTS.length && tries === 1) return hint(wrong);
+      reveal();
+    });
+    var SLOT_HINT = {
+      stimulus: 'The stimulus is the change in the variable itself, before anything detects it.',
+      sensor: 'The receptor (sensor) is what detects that change: a sensory receptor, or a cell that senses it directly.',
+      afferent: 'The afferent pathway carries the information toward the control center: nerves, a hormone or a local signal. When the sensing cells are the control center, it reads "None".',
+      control: 'The control center compares the variable with its set point and sends out the command.',
+      efferent: 'The efferent pathway carries the command away from the control center to the effector: nerves, a hormone in the blood, or a signal inside or between cells.',
+      effector: 'The effector is the muscle, gland or cell that carries out the command.',
+      response: 'The response is what the effector does to the variable.'
+    };
+    function hint(wrong){
+      hinting = true; active = -1;
+      SLOTS.forEach(function(k){
+        var row = Q().querySelector('.fl-slotrow[data-slot="' + k + '"]'), ok = wrong.indexOf(k) < 0;
+        row.classList.add(ok ? 'is-ok' : 'is-no');
+        if(ok){ lock[k] = true; var b = row.querySelector('.fl-slot'); b.disabled = true; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', LABELS[k] + ': ' + cardById(placed[k]).text + '. Right.'); }
+      });
+      var stray = wrong.some(function(k){ var c = cardById(placed[k]); return c && !c.slot; });
+      var hb = Q().querySelector('.fl-hint');
+      hb.innerHTML = '<p><b>' + (SLOTS.length - wrong.length) + ' of 7 right.</b> The green slots stay; the red ones need another card. ' +
+        (stray ? 'One of your cards belongs in no slot of this loop. ' : '') +
+        '<span class="fl-hint-m">Hint for the ' + esc(lower(wrong[0])) + ': ' + esc(SLOT_HINT[wrong[0]]) + '</span></p>' +
+        '<div class="fl-hint-btns"><button type="button" class="btn-press sm fl-retry">Try again</button><button type="button" class="btn-outline fl-reveal">Show the answer</button></div>';
+      hb.hidden = false;
+      paint();
+      (S ? S.root : app).classList.add('fl-hinting');
+      if(S) S.caption('Read the hint, then try again or show the answer.', 'test');
+      hb.querySelector('.fl-retry').addEventListener('click', function(){
+        hinting = false; hb.hidden = true; (S ? S.root : app).classList.remove('fl-hinting');
+        wrong.forEach(function(k){ delete placed[k]; Q().querySelector('.fl-slotrow[data-slot="' + k + '"]').classList.remove('is-no'); });
+        active = nextEmpty(0);
+        live.textContent = 'Fill the red slots again. Now choosing: ' + LABELS[SLOTS[active]] + '.';
+        if(S) S.caption('Fill the empty slots again, then check.', 'test');
+        paint();
+        var t = pool.querySelector('.fl-tile'); if(t) t.focus();
+      });
+      hb.querySelector('.fl-reveal').addEventListener('click', function(){ hinting = false; hb.hidden = true; (S ? S.root : app).classList.remove('fl-hinting'); reveal(); });
+      try{ hb.querySelector('.fl-retry').focus({ preventScroll: true }); }catch(e){ hb.querySelector('.fl-retry').focus(); }
+    }
+    function reveal(){
       build.classList.add('is-done');
       active = -1;
-      var items = [], right = 0;
-      SLOTS.forEach(function(k, i){
+      var list = document.createElement('ol');
+      list.className = 'fl-fblist';
+      SLOTS.forEach(function(k){
         var c = cardById(placed[k]), ok = c && c.slot === k;
-        if(ok) right++;
-        items.push(item(l, k, ok, 'apply', 1));
         var row = Q().querySelector('.fl-slotrow[data-slot="' + k + '"]');
         var btn = row.querySelector('.fl-slot');
         btn.disabled = true;
         btn.setAttribute('aria-pressed', 'false');
+        row.classList.remove('is-ok', 'is-no');
         row.classList.add(ok ? 'is-ok' : 'is-no');
+        // on the loop: yours struck through where it was wrong, the right card beside it
+        btn.querySelector('.fl-slot-v').innerHTML = ok ? esc(l.slots[k].short) : (c ? '<s class="fl-yours">' + esc(c.short) + '</s> ' : '') + '<span class="fl-right">' + esc(l.slots[k].short) + '</span>';
+        btn.setAttribute('aria-label', LABELS[k] + ': ' + (ok ? l.slots[k].text + '. Right.' : (c ? 'you placed ' + c.text + '; ' : '') + 'it is ' + l.slots[k].text + '.'));
         var fb = row.querySelector('.fl-slot-fb');
         var wrongWhy = !c ? '' : c.slot ? 'That card is the ' + lower(c.slot) + ' of this loop, not the ' + lower(k) + '.' : c.why;
-        fb.innerHTML = (ok
+        var li = document.createElement('li');
+        li.className = ok ? 'is-ok' : 'is-no';
+        li.innerHTML = '<b class="fl-fb-k">' + esc(LABELS[k]) + '</b>' + (ok
           ? '<p><b class="ok">✓ Right.</b> ' + esc(l.slots[k].why) + '</p>'
           : '<p><b class="no">✗ Not this card.</b> ' + esc(wrongWhy) + '</p><p><b>Belongs here:</b> ' + esc(l.slots[k].text) + '. ' + esc(l.slots[k].why) + '</p>') +
           '<div class="fl-report">' + report(itemBase(l) + k) + '</div>';
-        fb.hidden = false;
+        list.appendChild(li);
+        if(fb) fb.parentNode.removeChild(fb);
       });
-      score.right += right; score.total += SLOTS.length;
-      if(core()) core().toolResult(KIND, items);
-      if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(right === SLOTS.length); }catch(e){}
       pool.parentNode.hidden = true;
       Q().querySelector('.fl-how').hidden = true;
       var hw = Q().querySelector('.fl-build > .kt-why'); if(hw) hw.hidden = true;
       Q().querySelector('.fl-actions').hidden = true;
-      live.textContent = right + ' of 7 slots right.';
+      live.textContent = firstRight + ' of 7 slots right' + (tries > 1 ? ' on the first check' : '') + '.';
       live.classList.add('fl-live-score');
+      var det = document.createElement('details');
+      det.className = 'kt-more fl-fbwrap';
+      det.innerHTML = '<summary>Slot by slot: why each card goes where it does</summary>';
+      det.appendChild(list);
+      if(firstRight < SLOTS.length) det.open = true;
+      live.parentNode.insertBefore(det, live.nextSibling);
       stepper(2);
       renderClassify();
-    });
+    }
 
     function renderClassify(){
       var sec = Q().querySelector('.fl-classify');
@@ -437,7 +510,7 @@
     S.put('dock', [$('.fl-live-btns'), $('.fl-cut'), $('.fl-sr')], { mode: 'live' });
     S.put('stage', [$('.fl-scenario'), $('.fl-slots')], { mode: 'test' });
     S.caption($('.fl-how').innerHTML, 'test');
-    S.put('dock', [$('.fl-stepper'), $('.fl-poolwrap'), $('.fl-actions'), $('.fl-live'), $('.fl-classify'), $('.fl-failure'), $('.fl-done')], { mode: 'test' });
+    S.put('dock', [$('.fl-stepper'), $('.fl-poolwrap'), $('.fl-hint'), $('.fl-actions'), $('.fl-live'), $('.fl-classify'), $('.fl-failure'), $('.fl-done')], { mode: 'test' });
     S.put('dock', $('.fl-pickhost'));
     var w1 = document.createElement('div');
     w1.className = 'ls-sec';
@@ -816,6 +889,20 @@
     secrete: '<path d="M4 7 C4 5 6 4 8 4 H16 C18 4 20 5 20 7 V12 C20 14 18 15 16 15 H8 C6 15 4 14 4 12 Z"/><circle cx="12" cy="9.5" r="2.4" class="fi-hole"/><circle cx="8" cy="19" r="1.5"/><circle cx="12.5" cy="20.5" r="1.5"/><circle cx="16.5" cy="18.6" r="1.5"/>',
     back: '<path d="M18 7 A7.5 7.5 0 1 0 19.5 13" class="fi-s"/><path d="M14.5 6.5 L19 6.2 L18.7 2" class="fi-s"/>'
   };
+  /* The Test board's slots carry a picture of each slot's role (the loop's
+     own parts are hidden until placed): a change, a sensing ending, an
+     incoming signal, a control center, an outgoing signal, an effector, the
+     response turning back. ROLE is the color family (anp.css visual language). */
+  var ROLE = { stimulus: 'shape', sensor: 'aff', afferent: 'aff', control: 'accent', efferent: 'eff', effector: 'eff', response: 'shape' };
+  var TICON = {
+    stimulus: '<path d="M3 15 C6 15 7 7 10 7 C13 7 13.5 17 16.5 17 C18.5 17 19.5 12 21 11" class="fi-s"/>',
+    sensor: ICON.ending,
+    afferent: '<path d="M2 12 H22" class="fi-s fi-thin"/><path d="M4 12 h4 M10 12 h4" class="fi-s"/><path d="M17 8 L21 12 L17 16" class="fi-s"/>',
+    control: '<circle cx="12" cy="12" r="8.5" class="fi-s"/><path d="M12 12 L16.5 8" class="fi-s"/><circle cx="12" cy="12" r="2"/>',
+    efferent: '<path d="M2 12 H22" class="fi-s fi-thin"/><path d="M10 12 h4 M16 12 h4" class="fi-s"/><path d="M7 8 L3 12 L7 16" class="fi-s" transform="rotate(180 12 12)"/>',
+    effector: ICON.muscle,
+    response: ICON.back
+  };
   function iconFor(l, k){
     var t = l.slots[k].short;
     if(k === 'stimulus') return /\b(rises?|high|more|stretch|overload|warms|inflation|trickle|flows|strain|sustained)/i.test(t) ? 'up' : /\b(falls?|low|less|cool|below)/i.test(t) ? 'down' : 'change';
@@ -851,6 +938,7 @@
       var ic = ph ? '<g transform="translate(' + (cx + 5) + ' ' + (cy + 5) + ') scale(.7)">' : '<g transform="translate(' + (cx + 7) + ' ' + (cy + 6) + ')">';
       var ly = ph ? [17, lines.length === 3 ? 35 : lines.length === 2 ? 41 : 48, 15] : [25, lines.length === 3 ? 46 : lines.length === 2 ? 52 : 59, 14];
       s += '<g data-k="' + k + '" class="fl-node fl-n-' + cls[k] + '"><rect class="fl-card-bg ' + cls[k] + '" x="' + cx + '" y="' + cy + '" width="' + bw + '" height="' + BH + '" rx="12"/>' +
+        '<rect class="fl-card-band" x="' + cx + '" y="' + cy + '" width="6" height="' + BH + '" rx="3"/>' +
         ic + '<g class="fl-ic"><circle class="fl-ic-bg" cx="15" cy="15" r="15"/><g class="fl-ic-g" transform="translate(4.2 4.2) scale(.9)">' + ICON[iconFor(l, k)] + '</g></g></g>' +
         '<text class="fl-svg-l" x="' + (cx + (ph ? 32 : 43)) + '" y="' + (cy + ly[0]) + '">' + esc(LABELS[k]) + '</text>' +
         lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + bw / 2) + '" y="' + (cy + ly[1] + i * ly[2]) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
