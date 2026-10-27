@@ -1,0 +1,100 @@
+/* Site redesign round 3, step B4: the reading pages (notes, unit and chapter pages, the course books) in
+   the R10 system. Markup from scripts/lib/r3-reading.mjs; boards docs/redesign-r3/r10/boards/R10-Notes,
+   R10-Notes-Phone, R10-Unit, R10-Learn. Loaded after assets/course/r3.css, which supplies the band, the
+   type and the course colour (data-cover).
+   Layout: the short cover band, then the shell as cards overlapping it: contents rail | reading card |
+   side column (notes pages). Colours come from theme tokens and the course variables, so dark mode follows. */
+
+/* ---- the band over a reading page ---- */
+.r3-read-top{padding-bottom:0;background-image:none}
+.r3-read-top .band.short .hwrap{padding-bottom:86px;grid-template-columns:1.55fr 1fr;align-items:center}
+.r3-read-top .band .art{max-width:280px}
+.r3-read-top .band [class*="crumb"]{margin:0 0 12px;font:800 13px var(--font-ui);color:rgba(255,255,255,.82)}
+.r3-read-top .band [class*="crumb"] a{color:#fff;text-decoration:none}
+.r3-read-top .band [class*="crumb"] a:hover{text-decoration:underline}
+.r3-read-top .band [class*="crumb"] [aria-current]{color:#fff;font-weight:900}
+.r3-read-top .band .issue{margin:0 0 10px}
+.r3-read-top .band .issue .bio-beta,.r3-read-top .band .issue [class*="beta"]{text-transform:none;letter-spacing:0}
+.r3-read-top .band h1.deck{font:900 clamp(40px,4.6vw,56px)/1 var(--display);letter-spacing:-.04em;margin:4px 0 8px;color:#fff;max-width:none;padding:0}
+.r3-read-top .band h1.deck span{display:block;color:var(--bac)}
+.r3-read-top .band .hand{margin:0 0 18px;font-size:clamp(19px,2vw,23px)}
+.r3-read-top .band .hero-ctas{margin:0 0 16px}
+.r3-read-top .band .hero-ctas a,.r3-read-top .band .hero-ctas button{font-size:15.5px;padding:12px 18px;border:0;cursor:pointer}
+.r3-read-top .band .hero-ctas > *{display:inline-flex;align-items:center;gap:8px;line-height:1.2}
+.r3-read-top .band .hero-ctas i{font-style:normal;display:inline;width:auto;height:auto;background:none;border:0;margin:0;font-size:12px;line-height:1}
+.r3-read-top .band .btn-chan{background:#FFD23F;color:#0B1A33}
+.r3-read-top .band .btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.r3-read-top .band .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.r3-read-top .band .r3-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:0;font:800 12.5px var(--font-ui);color:#fff}
+.r3-read-top .band .r3-chips > span,.r3-read-top .band .r3-chips .bk-small,.r3-read-top .band .r3-chips .bk-chip{display:inline-block;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:4px 11px;font:800 12.5px var(--font-ui);border:0;margin:0}
+.r3-read-top .band .r3-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;font:800 13.5px var(--font-ui)}
+.r3-read-top .band .r3-links a,.r3-read-top .band .r3-links button{background:none;border:0;padding:0;color:#fff;font:inherit;cursor:pointer;text-decoration:none;box-shadow:none;min-height:0}
+.r3-read-top .band .r3-links a:hover,.r3-read-top .band .r3-links button:hover{text-decoration:underline}
+.r3-read-top .band .r3-links .sr-only{position:absolute}
+.r3-read-top .band .r3-links > *{margin:0 !important;padding:0 !important}
+.r3-read-top .band .r3-links .bk-action::before{display:none}
+
+/* ---- the shell as cards over the band ---- */
+.tb-shell.r3-read{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px;align-items:start;max-width:1180px;margin:-56px auto 0;padding:0 24px 40px;position:relative;z-index:2;background-image:none}
+.tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){grid-template-columns:230px minmax(0,1fr) 260px}
+.tb-shell.r3-read > .tb-rail{background:var(--white);border-radius:20px;box-shadow:0 0 0 1px var(--line),0 18px 40px -26px rgba(11,26,51,.35);padding:18px 14px 20px;top:calc(var(--site-header-h,112px) + 16px)}
+.tb-shell.r3-read > .tb-rail .tb-rail-title{color:var(--accent);padding:0 6px}
+.tb-shell.r3-read .bk-toc-chap{border-radius:12px}
+.tb-shell.r3-read > .tb-main{background:var(--white);border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 50px -30px rgba(11,26,51,.4);padding:30px clamp(22px,3.2vw,40px) 36px;max-width:none;min-width:0}
+.tb-shell.r3-read.bk-chapter > .tb-main{padding-top:24px}
+.tb-shell.r3-read > .tb-main > .bk-lede{margin:0 0 20px;font:500 17px/1.7 var(--font-body,var(--font-ui));color:var(--ink);max-width:none}
+.tb-shell.r3-read h2{font:900 clamp(22px,2.3vw,27px)/1.18 var(--display);letter-spacing:-.025em;margin:0 0 10px}
+.tb-shell.r3-read h2 span{display:inline;color:inherit}
+.tb-shell.r3-read .bk-sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 14px}
+.tb-shell.r3-read .bk-sec-head h2{margin:0;flex:1 1 300px;display:flex;align-items:baseline;gap:12px}
+.tb-shell.r3-read .bk-sec-head .bk-toc-n{background:none;color:var(--accent);font:900 26px/1 var(--display);letter-spacing:-.04em;padding:0;min-width:0;height:auto;border-radius:0}
+.tb-shell.r3-read .bk-sec{border:0;border-top:2px solid var(--ink);border-radius:0;box-shadow:none;background:none;padding:20px 0 0;margin:28px 0 0}
+.tb-shell.r3-read .bk-sec .domain-tag{background:none;padding:0;color:var(--muted);font:700 12.5px var(--font-ui);flex-basis:100%}
+.tb-shell.r3-read .bk-h{color:var(--ink)}
+.tb-shell.r3-read .bk-h::after{content:"";display:inline-block}
+.tb-shell.r3-read .tb-chapter-nav{margin-top:26px}
+.tb-shell.r3-read .tb-chapter-link{background:var(--white);border:1px solid var(--line);border-radius:16px}
+
+/* ---- the side column on notes pages ---- */
+.r3-side{position:sticky;top:calc(var(--site-header-h,112px) + 16px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.r3-side-card{background:var(--white);border-radius:18px;box-shadow:0 0 0 1px var(--line);padding:16px 16px 18px;font:600 14px/1.5 var(--font-ui);color:var(--muted)}
+.r3-side-card p{margin:0 0 10px}
+.r3-side-card .k{font:900 11.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.r3-side-go{display:inline-block;font:900 14.5px var(--font-ui);color:var(--accent);text-decoration:none}
+.r3-side-go:hover{text-decoration:underline}
+.r3-side-card.navy{background:#0B1A33;box-shadow:none;color:rgba(255,255,255,.8)}
+.r3-side-card.navy .k{color:var(--bac)}
+.r3-side-card.navy .r3-side-go{color:#fff;font-size:16px}
+.r3-side-card .h{font:900 17px/1.25 var(--display);color:#fff;margin:0 0 6px}
+.r3-side-tools .chapter-tools{display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:10px;margin:0;padding:0;background:none;border:0;box-shadow:none}
+.r3-side-tools .chapter-tools__k{font:900 11.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-align:left}
+.r3-side-tools .chapter-tools a{display:block;font:900 14.5px var(--font-ui);color:var(--ink);text-decoration:none;padding:9px 0 0;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;text-align:left}
+.r3-side-tools .chapter-tools a small{display:block;font:600 12.5px var(--font-ui);color:var(--muted)}
+:root[data-theme="dark"] .r3-side-card.navy{background:#16294A}
+
+/* ---- narrower screens ---- */
+@media (max-width:1080px){
+  .tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){grid-template-columns:230px minmax(0,1fr)}
+  .tb-shell.r3-read .r3-side{grid-column:2;position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+}
+@media (max-width:900px){
+  .r3-read-top .band.short .hwrap{grid-template-columns:1fr;padding-bottom:70px}
+  .r3-read-top .band .art{max-width:200px;order:-1;justify-self:start}
+  .tb-shell.r3-read,.tb-shell.r3-read.bk-notes,.tb-shell.r3-read.bk-book:has(.r3-side){display:block;margin-top:-44px;padding:0 14px 32px}
+  .tb-shell.r3-read > .tb-toc-btn{background:var(--white);margin:0 0 12px;position:relative;z-index:3}
+  .tb-shell.r3-read > .tb-rail{margin:0 0 12px}
+  .tb-shell.r3-read > .tb-main{padding:22px 18px 26px;border-radius:18px}
+  .tb-shell.r3-read .r3-side{display:flex;margin-top:14px}
+}
+@media (max-width:560px){
+  .r3-read-top .band.short .hwrap{padding-left:16px;padding-right:16px}
+  .r3-read-top .band h1.deck{font-size:38px}
+  .r3-read-top .band .art{max-width:150px}
+}
+@media print{
+  .r3-read-top .band{background:none !important;color:#000}
+  .r3-read-top .band::after,.r3-read-top .band .art,.r3-read-top .band .hero-ctas,.r3-read-top .band .r3-links,.r3-read-top .band .hand,.r3-side{display:none !important}
+  .r3-read-top .band h1.deck,.r3-read-top .band h1.deck span{color:#000}
+  .tb-shell.r3-read{margin-top:0}
+  .tb-shell.r3-read > .tb-main{box-shadow:none;padding:0}
+}

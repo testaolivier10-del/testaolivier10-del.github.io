@@ -45,6 +45,7 @@ import {
 } from './lib/apphys-build.mjs';
 import { entryPages } from './lib/apphys-entry.mjs';
 import { applyVideo } from './lib/videos.mjs';
+import { r3Reading } from './lib/r3-reading.mjs';
 import { dashboardPage } from './lib/dashboard-page.mjs';
 
 const args = process.argv.slice(2);
@@ -70,7 +71,7 @@ const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<tab
 const put = (rel, content) => {
   if (hasApToken(rel)) throw new Error(`build-apphys: output path physics/${rel} contains the token "ap" (spec decision 2)`);
   // Video lessons from docs/videos.json (scripts/lib/videos.mjs).
-  outputs.set(rel, rel.endsWith('.html') ? applyVideo(`physics/${rel}`, wrapTables(content)) : content);
+  outputs.set(rel, rel.endsWith('.html') ? r3Reading(applyVideo(`physics/${rel}`, wrapTables(content)), { key: 'apphys', rel: `physics/${rel}` }) : content);
 };
 
 if (map) build();

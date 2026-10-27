@@ -87,11 +87,24 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 </head>
 <body class="calc" data-topic="math-limit-algebra" data-unit="skills-math">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bk bk-notes">
+<div class="r3 r3-read-top" data-cover="apcalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Algebra for Limits: Factoring and Rationalizing: notes</span></nav>
+<p class="issue">Skills <span class="calc-beta calc-nav-ref">Beta</span> <i></i></p>
+<h1 class="deck bk-title" id="r3Title">Algebra for Limits: <span>Factoring and Rationalizing</span></h1>
+<p class="hand">typed like real math</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/math-limit-algebra.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="math-limit-algebra">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmath-limit-algebra.html&amp;title=Algebra%20for%20Limits%3A%20Factoring%20and%20Rationalizing%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/math-limit-algebra.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalc">
   <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Skills contents</button>
   <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
     <p class="tb-rail-title">Contents</p>
@@ -102,14 +115,7 @@
     
   </aside>
   <main class="tb-main" id="main">
-    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Algebra for Limits: Factoring and Rationalizing: notes</span></nav>
-    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-limit-algebra.html">Practice this lesson</a></div>
-    <header class="bk-head">
-      <p class="bk-eyebrow">Skills <span class="calc-beta calc-nav-ref">Beta</span></p>
-      <h1 class="bk-title">Algebra for Limits: Factoring and Rationalizing</h1>
-      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-limit-algebra">Not practiced</span></p>
-      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmath-limit-algebra.html&amp;title=Algebra%20for%20Limits%3A%20Factoring%20and%20Rationalizing%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/math-limit-algebra.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
-    </header>
+    <!-- r3:head -->
     <article class="calc-prose bk-prose">
 <p>Here is the kind of <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a> you will meet again and again: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} \frac{x^2 - 9}{x - 3}</annotation></semantics></math>. Substitute <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math> and both the top and the bottom are 0. The <a class="gl" href="../notes/limit-laws.html" data-c="limit-laws">limit laws</a> cannot help, because the denominator heads to 0. The way forward is to rewrite the fraction into a form where the trouble disappears. That takes three precalculus moves, and this page drills each one: <span class="gl" tabindex="0" data-c="factoring">factoring</span>, <span class="gl" tabindex="0" data-c="rationalizing">rationalizing</span> and simplifying <span class="gl" tabindex="0" data-c="complex-fraction">complex fractions</span>.</p>
 
@@ -176,6 +182,7 @@ Forgetting the middle term, <math class="calc-m"><semantics><mrow><mn>6</mn><mi>
     <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-limit-algebra">Report a problem</button></p>
     <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limit-laws.html"><span>&larr; Previous</span><b>Limit Laws</b></a><a class="tb-chapter-link next" href="limit-algebra.html"><span>Next &rarr;</span><b>Limits by Algebra: Factor, Rationalize, Simplify</b></a></nav>
   </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/math-limit-algebra.html">Practice this lesson &rarr;</a></div></aside>
 </div>
 <footer class="calc-foot xshell">
   <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-limit-algebra">Report a problem</button></span></p>

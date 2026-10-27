@@ -87,11 +87,24 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
 </head>
 <body class="calc" data-topic="washer-method-axes" data-unit="unit-8">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bk bk-notes">
+<div class="r3 r3-read-top" data-cover="apcalc">
+<section class="band short r3-rband" aria-labelledby="r3Title"><div class="hwrap"><div>
+<nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Washer Method About the Axes: notes</span></nav>
+<p class="issue">Unit 8 <i></i> Topic 8.11 <span class="calc-beta calc-nav-ref">Beta</span></p>
+<h1 class="deck bk-title" id="r3Title">Washer Method About the <span>Axes</span></h1>
+<p class="hand">typed like real math</p>
+<div class="hero-ctas"><a class="btn-chan" href="../lessons/washer-method-axes.html">Practice this lesson</a></div>
+<p class="r3-chips bk-meta calc-nav-ref"><span class="bk-small">4 min read</span><span class="bk-small">free</span><span class="bk-chip" data-chip-topic="washer-method-axes">Not practiced</span></p>
+<p class="r3-links"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fwasher-method-axes.html&amp;title=Washer%20Method%20About%20the%20Axes%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a> <button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/washer-method-axes.html">Copy link</button> <button type="button" class="bk-action" data-print>Print</button></p>
+</div><div class="art" aria-hidden="true"><img src="../../assets/covers/art/apcalc.svg" alt="" width="640" height="400" decoding="async"></div></div></section>
+</div>
+<div class="tb-shell bk bk-notes r3 r3-read" data-cover="apcalc">
   <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
   <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
     <p class="tb-rail-title">Contents</p>
@@ -102,14 +115,7 @@
     <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
   </aside>
   <main class="tb-main" id="main">
-    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Washer Method About the Axes: notes</span></nav>
-    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/washer-method-axes.html">Practice this lesson</a></div>
-    <header class="bk-head">
-      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.11 <span class="calc-beta calc-nav-ref">Beta</span></p>
-      <h1 class="bk-title">Washer Method About the Axes</h1>
-      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="washer-method-axes">Not practiced</span></p>
-      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fwasher-method-axes.html&amp;title=Washer%20Method%20About%20the%20Axes%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/washer-method-axes.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
-    </header>
+    <!-- r3:head -->
     <article class="calc-prose bk-prose">
 <h2 id="slices-with-a-hole">Slices with a hole</h2>
 <p>The <a class="gl" href="../notes/disc-method-axes.html" data-c="disc-method">disc method</a> worked because every rectangle in the region stood on the axis. Spin it, and it sweeps out a solid disc. Now take a region that does not reach the axis, such as the area between <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">1 \le x \le 4</annotation></semantics></math>. Every vertical rectangle starts at height 1 and goes up to <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math>. Spin that rectangle about the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis and it sweeps out a ring: a disc of radius <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> with a hole of radius 1 cut out of the middle. That ring is a <b>washer</b>.</p>
@@ -167,6 +173,7 @@
     <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:washer-method-axes">Report a problem</button></p>
     <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="disc-method-other-axes.html"><span>&larr; Previous</span><b>Disc Method About Other Lines</b></a><a class="tb-chapter-link next" href="washer-method-other-axes.html"><span>Next &rarr;</span><b>Washer Method About Other Lines</b></a></nav>
   </main>
+  <aside class="r3-side" aria-label="Practice and reading"><div class="r3-side-card navy"><p class="k">Check your understanding</p><a class="r3-side-go" href="../lessons/washer-method-axes.html">Practice this lesson &rarr;</a></div></aside>
 </div>
 <footer class="calc-foot xshell">
   <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:washer-method-axes">Report a problem</button></span></p>
