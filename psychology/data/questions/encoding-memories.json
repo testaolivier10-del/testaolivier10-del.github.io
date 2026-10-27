@@ -245,7 +245,7 @@
    "q": "The 30-second counting task almost erased the recency effect but barely changed the primacy effect. Which explanation fits best?",
    "options": [
     "Counting improved encoding of the first words, which raised the primacy effect",
-    "The last words were held in short-term memory, which counting displaced; early words were already in long-term memory",
+    "Counting pushed the last words out of short-term memory; early words were already in long-term memory",
     "The early words were held in sensory memory, which lasts longer than short-term memory",
     "The students in the counting group were less motivated, so they recalled fewer words overall"
    ],
@@ -273,7 +273,7 @@
    "options": [
     "The study measured recall for 15 different word positions instead of one",
     "Sixty students took part, which is enough to prove the effect is real",
-    "Students were randomly assigned to the two groups, so the groups differed only in the counting task",
+    "Random assignment made the groups alike except for the counting task",
     "The words were unrelated, so no student could group them into meaningful units"
    ],
    "correct": 2,
@@ -327,7 +327,7 @@
    "options": [
     "Whether the three study sessions were on one day or over three weeks",
     "The number of Spanish words written correctly on the final test",
-    "The 30 Spanish words that both groups of students studied",
+    "The 30 Spanish words that both groups of tenth graders studied",
     "The four weeks between the last session and the final test"
    ],
    "correct": 0,
@@ -352,9 +352,9 @@
    "stimulus": "encoding-memories-s2",
    "q": "A school board member wants to use these results for adults learning Spanish at night school. Which point about the participants matters most for that generalization?",
    "options": [
-    "The study had only 64 students, which is too few to generalize to anyone",
-    "All participants were tenth graders in one Texas school, so adults may learn differently",
-    "The students were randomly assigned, so the results apply to every learner",
+    "The study had 64 students, which is too small a sample to generalize from",
+    "The participants were tenth graders in one Texas school, unlike adults",
+    "The students were randomly assigned, so the results apply to learners of any age",
     "The final test was given four weeks after the last session"
    ],
    "correct": 1,
@@ -380,8 +380,8 @@
    "q": "Which ethical safeguard does the summary describe for these minors?",
    "options": [
     "Debriefing after a cover story about the true purpose",
-    "Payment to every student for each study session",
-    "Parental permission plus each student's own agreement to take part",
+    "Payment to each student for each of the study sessions",
+    "Parental permission plus each student's own agreement",
     "Random assignment of students to the two study schedules"
    ],
    "correct": 2,
@@ -564,7 +564,7 @@
     "One three-hour session the night before the exam",
     "Six 30-minute sessions spread across the four weeks",
     "One three-hour session four weeks before the exam",
-    "Three one-hour sessions all on the same Saturday"
+    "Three one-hour sessions on the same Saturday morning"
    ],
    "correct": 1,
    "why": {
