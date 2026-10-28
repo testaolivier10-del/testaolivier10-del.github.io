@@ -167,6 +167,10 @@
 @media (prefers-reduced-motion: reduce){.bv-spinner{animation-duration:2.4s;}}
 .bv-tag{position:absolute;left:0;top:0;pointer-events:none;max-width:70%;padding:5px 11px;border-radius:999px;background:var(--ink,#16332E);color:var(--paper,#fff);font:800 13px/1.25 var(--font-ui,system-ui);box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:2;}
 .bv-tag[hidden]{display:none;}
+.bv-reset{position:absolute;top:10px;right:10px;z-index:3;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border:2px solid var(--line);border-radius:999px;background:var(--overlay-bg,rgba(255,255,255,.92));color:var(--ink);font:800 13px var(--font-ui,system-ui);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.bv-reset:hover{border-color:var(--accent);}
+.bv-reset svg{width:16px;height:16px;}
+.bv-reset ~ .bv-hint{top:60px;}
 .bv-hint{position:absolute;top:10px;right:10px;background:var(--overlay-bg);border:2px solid var(--line);border-radius:8px;padding:6px 9px;font-size:11px;color:var(--muted);text-align:right;line-height:1.5;pointer-events:none;}
 `;
     document.head.appendChild(st);
@@ -227,6 +231,15 @@
     const loadBtn = loading.querySelector('.bv-load-btn');
     el.insertBefore(loading, el.firstChild);
     el.insertBefore(canvas, el.firstChild);
+    // Reset view on the model itself (owner 2026-10-27).
+    if (opts.resetButton !== false) {
+      const rb = document.createElement('button');
+      rb.type = 'button';
+      rb.className = 'bv-reset';
+      rb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Reset view';
+      rb.addEventListener('click', () => reset());
+      el.insertBefore(rb, loading.nextSibling);
+    }
     if (opts.hint !== false) {
       const hint = document.createElement('div');
       hint.className = 'bv-hint';
@@ -386,6 +399,33 @@
       return mat;
     }
 
+    /* Point landmarks are not meshes, so each is a dot drawn on top (red pulse
+       points, amber others), in model space (mm, z up). */
+    const POINT_COLORS = { cardio: 0xD8343A };
+    function addPointMarkers(){
+      const THREE = L.THREE;
+      const geo = new THREE.SphereGeometry(11, 20, 14);
+      for (const [key, c] of ENTRIES) {
+        if (c.kind !== 'point' || c.x == null) continue;
+        const color = POINT_COLORS[c.system] ?? 0xE39A2B;
+        const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.4, metalness: 0, emissive: new THREE.Color(color), emissiveIntensity: 0.35, depthTest: false, transparent: true, opacity: 0.95 });
+        const m = new THREE.Mesh(geo, mat);
+        m.position.set(c.x, c.y, c.z);
+        m.renderOrder = 10;
+        m.userData.groupKey = key;
+        m.userData.kind = 'point';
+        m.userData.isPoint = true;
+        m.userData.baseColor = color;
+        m.userData.baseEmissive = color;
+        m.userData.baseEmissiveIntensity = 0.35;
+        m.userData.baseOpacity = 0.95;
+        m.userData.baseTransparent = true;
+        (meshByGroup[key] = meshByGroup[key] || []).push(m);
+        allPickable.push(m);
+        scene.add(m);
+      }
+    }
+
     function loadModel(){
       const loader = new L.GLTFLoader();
       loader.setMeshoptDecoder(L.MeshoptDecoder);
@@ -419,6 +459,7 @@
           allPickable.push(obj);
         });
         scene.add(modelRoot);
+        addPointMarkers();
         loaded = true;
         applyLayers();
         /* The list works before the model arrives, so something may already be
@@ -532,6 +573,9 @@
       // pickable through the gap it left behind — filter those out first.
       const visibleHits = hits.filter(h => h.object.visible && !h.object.userData.dim && !h.object.userData.context);
       lastPart = null;
+      // Landmark dots are drawn on top of everything, so a tap on one picks it.
+      const dot = visibleHits.find(h => h.object.userData.isPoint);
+      if (dot) return dot.object.userData.groupKey;
       for (let i = 0; i < visibleHits.length; i++) {
         const h = visibleHits[i], gk = h.object.userData.groupKey;
         if (!gk || gk === 'skin') continue;
@@ -747,13 +791,21 @@
       renderList();
     }
 
+    // A shared name (Lung, Hand bones) is a left and a right: say which.
+    const NAME_COUNT = {};
+    for (const [, c] of ENTRIES) if (c.name) NAME_COUNT[c.name] = (NAME_COUNT[c.name] || 0) + 1;
+    function listLabel(k, c){
+      if (NAME_COUNT[c.name] < 2) return c.name;
+      const side = /_R$/.test(k) ? 'right' : /_L$/.test(k) ? 'left' : '';
+      return side ? c.name + ' (' + side + ')' : c.name;
+    }
     function renderList(){
       if (!listEl) return;
       const items = ENTRIES.filter(([k]) => inPlay(k))
         .sort((a, b) => a[1].name.localeCompare(b[1].name));
       listEl.innerHTML = items.map(([k, c]) => {
         const sel = k === selectedGroupKey;
-        return `<button type="button" data-key="${k}"${sel ? ' class="selected"' : ''} aria-pressed="${sel}">${c.name}</button>`;
+        return `<button type="button" data-key="${k}"${sel ? ' class="selected"' : ''} aria-pressed="${sel}">${listLabel(k, c)}</button>`;
       }).join('');
     }
     if (listEl) {
@@ -827,7 +879,8 @@
       const t = hunt.target;
       hunt.answered = true;
       hunt.total++;
-      const right = pickedKey === t.key;
+      // Left and right halves that share a name (Lung, Hand bones) both count.
+      const right = pickedKey === t.key || (!!CONTENT_BY_KEY[pickedKey] && CONTENT_BY_KEY[pickedKey].name === t.content.name);
       if (right) hunt.right++;
       const picked = CONTENT_BY_KEY[pickedKey];
       huntAfter(right

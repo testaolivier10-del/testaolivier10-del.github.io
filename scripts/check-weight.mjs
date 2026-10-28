@@ -77,7 +77,8 @@ const SHELL_BUDGETS = [
      nremt/assets/body-content.js). Loaded only by the body map and the A&P tool. The model (3.3 MB) and three.js
      load on demand, as before, and are not counted. */
   /* Measured 14.8 KB (the old nremt/assets/body-viewer.js with its content was 26.5 KB). */
-  ['assets/body3d', 15],
+  /* 15 -> 16 (2026-10-27): landmark dots, so pulse points and other landmarks can be tapped on the model. */
+  ['assets/body3d', 16],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
