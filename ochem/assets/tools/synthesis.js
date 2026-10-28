@@ -814,7 +814,7 @@
     var dir = e.cc ? 'This step makes a C–C bond (' + e.cc + ').'
       : (typeof a.band === 'number' && typeof b.band === 'number')
         ? (b.band > a.band ? 'Go up the oxidation ladder: this step needs an oxidant.' : b.band < a.band ? 'Go down the oxidation ladder: this step needs a reductant.' : 'Stay on the same rung of the ladder: no oxidant or reductant this step.')
-        : 'This step happens on the ring.';
+        : 'This step puts a group on the benzene ring, or changes the one already there.';
     out.push(dir + ' ' + plural(r.length, 'step') + ' to go at best.' + (S.steps.length === 0 && P.def.hint ? ' ' + P.def.hint : ''));
     if(S.hint >= 2) out.push('Aim for ' + r[0].next.mol.name + ' (' + aName(e.to) + ') next.');
     if(S.hint >= 3) out.push('Use ' + rxText(e) + ' (' + lcName(e.name) + ').');
@@ -879,7 +879,7 @@
     out.push((e.cc ? 'The last bond made here is a C–C bond (' + e.cc + ').' :
       (typeof a.band === 'number' && typeof b.band === 'number')
         ? (b.band > a.band ? 'Look one rung down the ladder: this was made by an oxidation.' : b.band < a.band ? 'Look one rung up the ladder: this was made by a reduction.' : 'Look on the same rung of the ladder: no redox in this step.')
-        : 'This step happened on the ring.') + ' ' + plural(left, 'step') + ' back to the start at best.' + (S.bsteps.length === 0 && P.def.hint ? ' ' + P.def.hint : ''));
+        : 'This step put a group on the benzene ring, or changed the one already there.') + ' ' + plural(left, 'step') + ' back to the start at best.' + (S.bsteps.length === 0 && P.def.hint ? ' ' + P.def.hint : ''));
     if(S.hint >= 2) out.push('It was made from ' + aName(e.from) + '.');
     if(S.hint >= 3) out.push('From ' + t.q.mol.name + ', with ' + rxText(e) + '.');
     return out;
