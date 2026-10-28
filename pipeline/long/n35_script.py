@@ -1,4 +1,3 @@
-# audited, not voiced
 # Audit log (2026-10-20 long video build run; rebuild pass 2026-10-27 below):
 # WHY AUDIT (independent agent): fixed the hero case order (hand pressure while the tourniquet comes out, not gauze first),
 #   added what makes a bleed life threatening (r4), platelets defined, 1 L = a fifth, why narrow tourniquets fail, distal
@@ -18,6 +17,8 @@
 #   s2, s4, n2, t2, w1, w2, w3, f1, k1, rc, end (wording only, same facts, numbers and order; no fact recheck needed).
 #   Voice now Jeremy (video standard 5, 2026-10-25); the 10-20 voice files were never kept, so every chapter is re-voiced.
 #   PRONUNCIATION: clean. RUNTIME: 10,673 spoken chars -> about 13:47 finished. FIRST MINUTE story check: PASSED (story.json).
+# BUILD 2026-10-28: voiced (Jeremy), visuals rebuilt on the code drawn studio (pipeline/long/n35_scenes), animation accuracy
+#   check and two fresh eyes passes applied; transcript match 99.9%; finished 13:38.
 """Script for long video NREMT 35: Bleeding control (direct pressure, tourniquets, wound packing, nosebleeds).
 Source: levlprep.com/nremt/notes/bleeding-control.html, sections 29.1 and 29.2. Internal bleeding and shock (29.3) is
 the next video (yt-nremt-35b). Story: a saw cut on a man's forearm in a home garage, a paramedic on scene.

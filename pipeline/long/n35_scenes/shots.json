@@ -1,0 +1,445 @@
+{
+ "video": "yt-nremt-35-bleeding",
+ "shots": [
+  {
+   "id": "s1",
+   "t0": 0.0,
+   "t1": 10.85,
+   "what": "close up: arterial blood forced past the gauze under her gloved hand",
+   "motion_source": "science sim (studio liquid.py) + painted glove layer",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s2",
+   "t0": 10.85,
+   "t1": 32.9,
+   "what": "garage wide: she kneels and presses, he sits on the step stool, blood drips and pools; promise list",
+   "motion_source": "mocap CMU 23_03 + 13_04, IK hands, liquid sim",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s3",
+   "t0": 32.9,
+   "t1": 59.0,
+   "what": "lens into the lengthwise arm: flow, tear, strap closes vein then artery; garage in the inset",
+   "motion_source": "science motion (code flow) + mocap in inset",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s4",
+   "t0": 59.0,
+   "t1": 98.3,
+   "what": "chapter card; arterial, venous, capillary bleeding on the forearm close up",
+   "motion_source": "science sim (liquid.py)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s5",
+   "t0": 98.3,
+   "t1": 122.8,
+   "what": "blood volumes as jugs filling and draining",
+   "motion_source": "procedural liquid levels",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s6",
+   "t0": 122.8,
+   "t1": 136.2,
+   "what": "garage: four signs of a life threatening bleed",
+   "motion_source": "mocap + liquid sim",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s7",
+   "t0": 136.2,
+   "t1": 157.4,
+   "what": "quick check 1 (calm teaching, handwriting, pause timer)",
+   "motion_source": "procedural (handwriting)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s8",
+   "t0": 157.4,
+   "t1": 199.0,
+   "what": "chapter card; lengthwise arm: hand presses over the tear, vessels pinch, platelets and clot",
+   "motion_source": "science motion (code flow, clot)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s9",
+   "t0": 199.0,
+   "t1": 216.0,
+   "what": "three ways to press (live picture cards)",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s10",
+   "t0": 216.0,
+   "t1": 232.0,
+   "what": "chapter card; cross section: hand presses the radial artery against the radius",
+   "motion_source": "science motion",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s11",
+   "t0": 232.0,
+   "t1": 328.3,
+   "what": "close up: hand straight on the wound, hold, gauze stack (cross section), bandage, peel and press harder, tourniquet on, body map for packing",
+   "motion_source": "science sim (liquid) + painted glove layer + code props",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s12",
+   "t0": 328.3,
+   "t1": 366.0,
+   "what": "chapter card; kitchen: tipping the head back crossed out, upright and lean forward, pinch the soft part",
+   "motion_source": "mocap CMU 13_04 + keyed head and trunk + IK hand",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "na",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s13",
+   "t0": 366.0,
+   "t1": 381.4,
+   "what": "chapter card; garage: blood through the gauze, tourniquet goes on",
+   "motion_source": "mocap + liquid sim",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s14",
+   "t0": 381.4,
+   "t1": 420.6,
+   "what": "the windlass tourniquet part by part; narrow belt on the lengthwise arm (veins shut, artery open)",
+   "motion_source": "procedural + science motion",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s15",
+   "t0": 420.6,
+   "t1": 502.3,
+   "what": "chapter card; 2 to 3 inches above, never a joint (body map), high and tight, twist until bleeding stops and pulse gone, mechanism inside the arm",
+   "motion_source": "science sim + science motion",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s16",
+   "t0": 502.3,
+   "t1": 510.6,
+   "what": "garage: it hurts, tell him first",
+   "motion_source": "mocap + keyed wince",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s17",
+   "t0": 510.6,
+   "t1": 537.7,
+   "what": "quick check 2 on the body map: below the knee, the tourniquet goes on the thigh",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s18",
+   "t0": 537.7,
+   "t1": 578.7,
+   "what": "chapter card; time on the tag, never covered, never loosened, second tourniquet above",
+   "motion_source": "procedural + liquid sim (what if)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s19",
+   "t0": 578.7,
+   "t1": 662.4,
+   "what": "chapter card; junctional areas, packing from the bleeding source up, press, hemostatic 3 min, never chest or belly, neck occlusive dressing",
+   "motion_source": "science motion (packing, clot)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "yes",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s20",
+   "t0": 662.4,
+   "t1": 702.7,
+   "what": "chapter card; recap in one picture",
+   "motion_source": "procedural (handwriting, live thumbnails)",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s21",
+   "t0": 702.7,
+   "t1": 798.8,
+   "what": "chapter card; three practice problems with moving pictures and pause timers",
+   "motion_source": "procedural",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "na",
+    "life": "na",
+    "liquids": "na",
+    "face": "na",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "na"
+   },
+   "notes": ""
+  },
+  {
+   "id": "s22",
+   "t0": 798.8,
+   "t1": 818.07,
+   "what": "chapter card; garage outro, next video",
+   "motion_source": "mocap",
+   "checks": {
+    "art": "yes",
+    "motion_source": "yes",
+    "rig": "yes",
+    "life": "yes",
+    "liquids": "yes",
+    "face": "yes",
+    "timing": "yes",
+    "accuracy": "yes",
+    "consistency": "yes",
+    "camera": "yes"
+   },
+   "notes": ""
+  }
+ ]
+}

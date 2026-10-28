@@ -17,4 +17,4 @@ no text, no letters"
 Gemini (Levl Prep account) flat layered scenes from ref_*.png: a_bay_clean (bag cut to a_bag.png, floor filled in code), b_court_wide, c_lawn2, c_lake, c_bloom, c_buffer, d_kitchen, d_body. Cast is the traced code drawn cast.
 
 ## n35 (2026-10-27)
-g_garage.png: garage at dusk for the bleeding control rebuild (see pipeline/long/n35_PLAN.md).
+Gemini flat scenes for the bleeding control rebuild: g_garage (garage at dusk), g_arm and g_arm_press (forearm close up; l_glove and l_gauze are layers split from them), g_long and g_long_clean (forearm cut open lengthwise; clean = vessels removed so code draws them), g_cross, g_cross_clean, g_cross_rot (cross section, rotated so the radius is on top), g_kitchen, g_body (front view body map), g_cavity and m_channel (deep wound block and its channel mask). Code: pipeline/long/n35_scenes.

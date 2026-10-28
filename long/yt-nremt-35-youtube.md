@@ -10,17 +10,17 @@ A saw cut on a forearm, bright red and pumping. Learn which bleeds you press on,
 
 Chapters
 0:00 Start here
-0:55 Read the bleed
-2:30 Why pressure works
-3:23 Direct pressure, step by step
-5:03 Nosebleeds
-5:40 Tourniquet first
-6:24 Where it goes, how tight
-8:09 After it's on
-8:46 Packing a wound
-10:07 Recap
-10:40 Practice problems
-12:08 Next: internal bleeding
+0:59 Read the bleed
+2:37 Why pressure works
+3:36 Direct pressure, step by step
+5:28 Nosebleeds
+6:05 Tourniquet first
+7:00 Where it goes, how tight
+8:57 After it's on
+9:38 Packing a wound
+11:02 Recap
+11:42 Practice problems
+13:18 Next: internal bleeding
 
 Next video: internal bleeding and hemorrhagic shock.
 

@@ -134,14 +134,15 @@
       "captions": "long/yt-nremt-35-captions.srt",
       "playlist": "NREMT Prep | LevlPrep",
       "date": "",
-      "status": "building",
+      "status": "pending",
       "approved_on": "",
       "youtube_id": "",
       "thumbnail_set": false,
       "playlist_added": false,
       "captions_set": false,
       "pr_url": "",
-      "reopened": "2026-10-21 held for rebuild on the new studio system (Olivier, 2026-10-21)"
+      "reopened": "2026-10-21 held for rebuild on the new studio system (Olivier, 2026-10-21)",
+      "rebuilt": "2026-10-28 rebuilt on the code drawn studio (flat layered look, traced cast with motion capture, liquid sim)"
     }
   ]
 }

@@ -127,6 +127,25 @@
       "setting": "home kitchen with a high stool; flat body circulation diagram",
       "lighting": "morning window light, flat layered",
       "camera": "side view full body; front body diagram"
+    },
+    {
+      "id": "yt-nremt-35-bleeding",
+      "date": "2026-10-28",
+      "pieces": [
+        "flat/n35/g_garage",
+        "flat/n35/g_arm",
+        "flat/n35/g_arm_press",
+        "flat/n35/g_long",
+        "flat/n35/g_cross",
+        "flat/n35/g_kitchen",
+        "flat/n35/g_body",
+        "flat/n35/g_cavity",
+        "codechar paramedic",
+        "codechar hoodie runner"
+      ],
+      "setting": "home garage at dusk; kitchen in the afternoon; diagrams on soft blue",
+      "lighting": "warm lamp left, cool dusk door right; sunny window",
+      "camera": "side view wide, forearm close up"
     }
   ]
 }
