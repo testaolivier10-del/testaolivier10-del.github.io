@@ -110,7 +110,8 @@ safe; research summary in the PR (sources there). Mockups: the "LevlPrep Premium
   `'no'` or a short limit. premium.html (`compareTable` in `scripts/lib/premium-data.mjs`) and the dialog
   (`tableHtml` in premium.js) render the same `<table class="pc-table">` (styles in `assets/theme.css`). Keep `rows`
   true to `free`/`premium`; a test checks every course has rows and no Premium cell is `'no'`.
-  AP® Chemistry's trainers read "Some" free: its `free` list names none but its Tools page tags five Free; confirm.
+  AP® Chemistry (owner: decide, 2026-10-28): its tool pages never check Premium, so the tools are listed as free;
+  the justification trainer (`chem/assets/pages/justify.js`, gated) is the Premium part.
 - **Straight to checkout.** premium.html's button (`[data-premium-scope] [data-premium-buy]`) starts checkout with no
   dialog; ochem and A&P get a semester / full year switch. Course homes link to `premium.html?course=<key>&buy=<pass>`
   (`handleBuyLink`): the course opens behind and checkout, or the one-step sign-in, starts at once. Pending buys carry
