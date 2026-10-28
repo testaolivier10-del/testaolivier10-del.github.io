@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   const params = new URLSearchParams(location.search);
   /* Modes. Burns mounts on first use; the 3D viewer loads only when the
-     anatomy grid is on screen (body-viewer.js autoload: 'visible'). */
+     anatomy grid is on screen (viewer.js autoload: 'visible'). */
   const burnsRoot = document.getElementById('burnsRoot');
   const anatomyGrid = document.getElementById('anatomyGrid');
   let burns = null;
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function(){
      Show me counts as shown, not as a miss. At the end: the score, the misses
      with a button to find each again, and "Drill my misses". The page drives
      the questions (hunt.start with `first`, one per question) so the round
-     and the misses drill are its own; body-viewer.js is unchanged. */
+     and the misses drill are its own; the shared viewer is unchanged. */
   const ROUND = 10;
   const round = document.createElement('div'); round.className = 'bm-round'; round.hidden = true;
   round.innerHTML = '<div class="bm-round-bar"><span class="bm-round-n" aria-live="polite"></span><span class="bm-round-dots" aria-hidden="true"></span></div>' +

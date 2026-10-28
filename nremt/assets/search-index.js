@@ -40,7 +40,7 @@
   /* Tools: what each tool holds, deep-linked. */
   function tool(meta, file, heading, text, w){ return { page: 'Tools', meta: meta, file: file, heading: heading, text: text, weight: w || 1.5 }; }
   function bodyMap(){
-    return get('assets/body-viewer.js').then(function(js){
+    return get('assets/body-content.js').then(function(js){
       var m = /const GROUP_CONTENT = (\{[\s\S]*?\});\n/.exec(js);
       if(!m) return [];
       var g = JSON.parse(m[1]);
