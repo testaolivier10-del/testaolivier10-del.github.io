@@ -422,7 +422,7 @@
     /* 2° and 3° halides: mostly elimination. */
     { id: 'rx2-e2', from: 'halide-2', to: 'alkene', name: 'E2',
       rx: ['NaOCH₂CH₃, CH₃CH₂OH, heat'], keys: ['NaOEt'], kind: 'across', topic: 'e2',
-      regio: 'Zaitsev: the more substituted alkene. KOC(CH₃)₃ shifts it toward the less substituted one.',
+      regio: 'Zaitsev: the more substituted alkene. KOC(CH₃)₃ shifts it toward the less substituted one, but on a 2° halide that is still a mixture, so it is no way to make the terminal alkene.',
       stereo: 'Anti-periplanar H and X; the trans alkene is favored where there is a choice.',
       gives: ['mono', '12', 'tri'],
       ex: ['CH₃CHBrCH₂CH₃', 'CH₃CH=CHCH₃ (mostly trans)'] },

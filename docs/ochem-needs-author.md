@@ -1055,6 +1055,11 @@ treats the step as giving one molecule: on the butane skeleton, 2-bromobutane gi
 but-1-ene from 2-bromobutane with a bulky base cannot get it, and "butane to butan-1-amine" style detours are judged
 dead ends although a 5-step bulky-base route exists. No curated problem's shortest route depends on it. Fix would be a
 separate roadmap edge for the bulky base on a 2° halide (`map` to the less substituted pattern).
+- **Status:** decided (ochem review, 2026-10-27).
+- **Decided:** no separate bulky-base edge. On a 2° halide KOC(CH₃)₃ gives only a modest shift: Brown (1956)
+  found 2-bromobutane with KOtBu gives about 53:47 but-1-ene to but-2-ene, still a mixture, so it is no way to
+  make the terminal alkene. The trainer keeps treating the step as Zaitsev. Applied in the `rx2-e2` `regio`
+  string in `ochem/assets/tools/reagent-roadmap-data.js`, which now says so.
 
 ### synth-dead-diol: a 1,2-diol is a dead end
 The course has no periodate cleavage or pinacol rearrangement, so OsO₄ on any alkene is offered as a dead end ("the
