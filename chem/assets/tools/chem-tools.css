@@ -356,6 +356,10 @@
 .cd-ice th[scope=row]{text-align:left;white-space:nowrap;}
 .cd-ice th[scope=row] .bt-small{display:block;}
 .cd-ice tr.is-active{background:var(--ctint);}
+.cd-ice tr.is-active input{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--cink) 55%,transparent);}
+.cd-ice tr.is-nudge{animation:cd-nudge .9s ease 1;}
+@keyframes cd-nudge{0%,100%{background:var(--ctint);}35%{background:color-mix(in srgb,var(--cink) 28%,var(--white));}}
+@media (prefers-reduced-motion:reduce){.cd-ice tr.is-nudge{animation:none;}}
 .cd-blank{color:var(--muted);}
 .cd-fig{margin:0;display:flex;flex-direction:column;gap:4px;align-items:flex-start;}
 .cd-fig svg{width:100%;max-width:320px;height:auto;}
@@ -504,6 +508,16 @@
 .lb-tks em.lb-e0{transform:none;} .lb-tks em.lb-e4{transform:translateX(-100%);}
 .lb-scale-l,.lb-scale-m,.lb-scale-r{position:absolute;top:28px;font:700 11.5px var(--font-ui);color:var(--muted);}
 .lb-scale-l{left:-6px;} .lb-scale-r{right:-6px;} .lb-scale-m{left:50%;transform:translateX(-50%);}
+/* Q vs K test: the same bar, with the student's own Q dashed. */
+.qk-qbar{margin:8px 6px 0;}
+.qk-qbar-h{margin:0 0 4px;font:600 13px var(--font-ui);}
+.qk-qbar .lb-qk{margin-top:18px;}
+.qk-mine::before{background:transparent!important;border:2px dashed #D55E00;box-shadow:0 0 0 2px var(--white)!important;}
+.qk-mine b{color:#B34700;bottom:auto;top:100%;margin:22px 0 0;}
+.qk-qbar .lb-scale{margin-bottom:16px;}
+.ls-root .ls-drill-stage .cd-extra:has(> .qk-qbar:only-child){flex:1;display:flex;flex-direction:column;justify-content:center;max-width:640px;width:100%;margin:0 auto;}
+.ls-root .ls-drill-stage .qk-qbar-h{font-size:var(--ls-m,15px);}
+.qk-mine-t{margin:2px 0 0;}
 .lb-dir{margin:0;font:900 14px var(--font-ui);color:var(--cink);}
 .lb-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;}
 .lb-legend li{display:flex;align-items:center;gap:6px;font:800 14px var(--font-ui);}
@@ -649,7 +663,8 @@
 .pb-fig svg{width:100%;height:auto;display:block;}
 .pb-hint{font-weight:600;}
 .pb-after{border-radius:12px;transition:box-shadow .2s;}
-.pb-after.is-over{box-shadow:0 0 0 3px var(--cink);}
+.pb-after.is-target{box-shadow:0 0 0 2px color-mix(in srgb,var(--cink) 45%,transparent);}
+.pb-after.is-over{box-shadow:0 0 0 4px var(--cink);}
 .pb-svg .pb-p{cursor:pointer;transition:opacity .3s ease;}
 .pb-svg .pb-p.is-in{opacity:0;}
 .pb-empty{font:700 13px var(--font-ui);fill:var(--muted);}
@@ -692,7 +707,22 @@
 /* Pinned only on a phone, where the tiles run off the screen; on wide screens the whole setup fits and a pinned bar would cover the tiles. */
 @media (max-width:700px){.us-sticky{position:sticky;top:calc(var(--site-header-h,64px) + 4px);z-index:2;}}
 .us-frac{overflow-x:auto;min-height:44px;display:flex;justify-content:center;}
-.us-none{margin:0;align-self:center;}
+.us-frac{flex-direction:column;align-items:center;gap:10px;}
+.us-eqn{display:flex;align-items:center;justify-content:center;gap:10px;max-width:100%;}
+.us-goal{display:flex;align-items:center;gap:8px;}
+.us-eq{font:800 22px var(--font-ui);color:var(--muted);}
+.us-target{border-style:dashed;}
+.us-target.is-done{border-style:solid;background:color-mix(in srgb,var(--chem-s3) 14%,var(--white));color:var(--ink);}
+.us-slot{display:inline-flex;align-items:center;justify-content:center;min-width:110px;min-height:40px;padding:0 12px;border:2px dashed var(--line);border-radius:10px;font:700 13px var(--font-ui);color:var(--muted);}
+.us-num .us-vals,.us-den .us-vals{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;}
+.us-times{font:700 14px var(--font-mono);color:var(--muted);}
+.us-qty{display:inline-flex;align-items:baseline;gap:4px;min-height:40px;padding:6px 10px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:700 14px var(--font-mono);cursor:pointer;}
+.us-qty span{color:var(--cink);font-weight:800;}
+.us-qty:hover{border-color:var(--cink);}
+.us-qty:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.us-qtyt,.us-qtyb{border-color:color-mix(in srgb,var(--cink) 55%,var(--line));background:var(--ctint);}
+.us-tray{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding-top:8px;border-top:1px dashed var(--line);width:100%;}
+.us-tray-k{width:100%;text-align:center;font:700 12px var(--font-ui);color:var(--muted);}
 .us-sticky .tx-where{font-size:14px;padding:8px 12px;}
 .us-fr{display:inline-grid;gap:4px;min-width:min(100%,280px);}
 .us-num,.us-den{display:flex;flex-direction:column;align-items:center;gap:4px;}
@@ -892,7 +922,8 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-stage .cd-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;align-items:stretch;}
 .ls-root .ls-drill-stage .cd-fig > svg{flex:1;min-height:0;width:100%;height:100%;}
 .ls-root .ls-drill-stage .cd-fig figcaption{flex:none;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:center;}
-.ls-root .cd-pics svg{max-height:84px;}
+/* Big enough to count the particles: two rows of pictures share the stage. */
+.ls-root .cd-pics svg{max-height:clamp(120px,calc((100dvh - 440px) / 2),240px);}
 /* Buffer drill: the beaker (or the two for capacity) fills the stage. */
 .ls-root .ls-drill-stage .bf-qb,.ls-root .ls-drill-stage .bf-two{flex:1;min-height:0;display:flex;gap:8px;}
 .ls-root .ls-drill-stage .bf-two > div{flex:1 1 0;min-width:0;min-height:0;display:flex;}
@@ -1046,6 +1077,8 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ptx-cell.is-none rect{fill:var(--paper);stroke-dasharray:3 3;}
 .ptx-cell.is-gap rect{fill:none;stroke-dasharray:2 3;}
 .ptx-cell.is-gap{cursor:default;}
+.ptx-cell.is-odd rect{fill:var(--paper);stroke-dasharray:3 3;}
+.ptx-cell.is-odd text{fill:var(--muted);}
 .ptx-cell.is-quiet rect{fill:var(--paper);}
 .ptx-cell.is-quiet text{fill:var(--muted);}
 .ptx-cell.is-sel rect{stroke:var(--ink);stroke-width:3;}
@@ -1139,7 +1172,8 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .chem-ls-stage .ptx-panel{gap:4px;}
 .ls-root .chem-ls-stage .ptx-tab{min-height:44px;padding:4px 10px;font-size:13px;}
 .ls-root.ls-phone .ptx-s{font-size:16px;}
-.ls-root.ls-phone .ptx-v{font-size:10.5px;}
+.ls-root.ls-phone .ptx-v{font-size:12px;}
+.ls-root.ls-phone .ptx-gn{font-size:11px;}
 
 /* ---- Equilibrium and kinetics simulator (equilibrium-kinetics.js) ---- */
 .ek-card{display:grid;gap:12px;}
@@ -1156,9 +1190,10 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ek-gq{background:var(--cink);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);}
 .ek-gq.is-eq{background:var(--good,#2F9E5B);}
 .ek-gdir{margin:0;text-align:center;font:800 13px var(--font-ui);color:var(--ink);}
-.ek-tabs{display:flex;gap:6px;flex-wrap:wrap;}
-.ek-tab{min-height:44px;padding:4px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
-.ek-tab[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+.ek-tabs{display:flex;gap:4px;flex-wrap:wrap;align-items:center;padding:3px;border-radius:14px;background:var(--surface2,var(--paper));box-shadow:inset 0 0 0 1px var(--line);}
+.ek-tabs-k{font:800 12px var(--font-ui);color:var(--muted);padding:0 4px 0 8px;text-transform:uppercase;letter-spacing:.04em;}
+.ek-tab{min-height:44px;padding:4px 12px;border-radius:11px;border:0;background:transparent;color:var(--muted);font:800 13.5px var(--font-ui);cursor:pointer;}
+.ek-tab[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 1px 3px rgba(0,0,0,.14),inset 0 0 0 2px var(--cink);}
 .ek-plot{min-height:160px;}
 .ek-graph,.ek-mbsvg{width:100%;height:auto;display:block;}
 .ek-grid{stroke:var(--line);stroke-width:1;}
@@ -1214,10 +1249,17 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
   .ls-root .chem-ls-stage .ek-tab{min-height:44px;}
   .ls-root .chem-ls-stage .ek-gauge{gap:0;}
   .ls-root .chem-ls-stage .ek-eq{font-size:15px;}
-  .ls-root .chem-ls-stage .ek-tabs{padding-right:52px;flex-wrap:nowrap;overflow-x:auto;}
-  .ls-root .chem-ls-stage .ek-tab{flex:none;padding:4px 10px;font-size:13px;}
+  .ls-root .chem-ls-stage .ek-tabs{flex-wrap:nowrap;overflow-x:auto;}
+  .ls-root .chem-ls-stage .ek-tabs-k{display:none;}
+  .ls-root .chem-ls-stage .ek-tab{flex:1 1 auto;padding:4px 8px;font-size:13px;}
   .ls-root .chem-ls-stage .ek-gtrack{height:26px;}
   .ls-root .chem-ls-stage .ek-gdir{font-size:12.5px;}
   .ls-root .chem-ls-stage .ek-plot{min-height:0;}
   .ls-root .chem-ls-stage .ek-share{font-size:12px;}
 }
+
+/* A focused radio keeps a round ring (Chromium draws a square one, which reads as a checkbox among the radios). */
+.bt-radio input[type=radio]{border-radius:50%;}
+.bt-radio input[type=radio]:focus{outline:none;}
+.bt-radio input[type=radio]:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bt-radio:has(input[type=radio]:focus-visible){box-shadow:inset 0 0 0 2px var(--cink);}

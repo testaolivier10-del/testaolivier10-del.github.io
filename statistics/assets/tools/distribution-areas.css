@@ -73,3 +73,10 @@
 .da-work{margin:8px 0;padding-left:22px;}
 .da-work li{overflow-wrap:anywhere;}
 .ls-root .da-ls-why math{max-width:100%;}
+
+/* Test yourself: the student's answer (dashed, red) and the draggable boundary. */
+.da-yours-a{fill:var(--bad-text);fill-opacity:.16;stroke:var(--bad-text);stroke-width:2;stroke-dasharray:6 4;}
+.da-ytag rect{fill:var(--bad-text);}
+.da-qh{display:none;}
+.da-qfig.is-drag-on .da-qh{display:inline;}
+.da-qfig.is-drag-on .da-svg{cursor:ew-resize;}

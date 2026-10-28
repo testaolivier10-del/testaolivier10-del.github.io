@@ -41,7 +41,7 @@
       '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
       '<p class="bt-first">Tap Lactose or Glucose to change what the cell has, then watch the operon switch.</p>' +
       '<div class="op-tray" role="group" aria-label="In the medium"></div>' +
-      '<div class="bt-fig op-stagefig"></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it (the DNA scrolls sideways on a phone). Drag a chip into the cell, or tap it, to change the medium.</p>' +
+      '<div class="bt-fig op-stagefig"></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it. Drag a chip into the cell, or tap it, to change the medium.</p>' +
       '<fieldset class="bt-modes bt-more"><legend>Operon</legend>' + MODES.map(function(m){
         var id = 'op-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="op-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
@@ -189,8 +189,17 @@
     }
     // On a phone the strip scrolls sideways, so a released repressor waits above lacI (the first screen), not past the operator.
     function phoneFig(){ try{ return !!document.querySelector('.ls-root.ls-phone'); }catch(e){ return false; } }
+    // Portrait phone: the two-line DNA (rowSvg). Landscape keeps one line.
+    function narrowFig(){ try{ return phoneFig() && innerHeight > innerWidth; }catch(e){ return false; } }
+    /* On a phone (narrow) the DNA wraps onto two lines so the whole operon
+       fits the width with no sideways scroll (tool audit 2026-10): line 1 the
+       regulatory region (lacI, CAP site, promoter, operator) with the proteins
+       that bind it; line 2 the structural genes and their mRNA. A dashed
+       backbone joins the two lines: it is one DNA molecule. */
+    var NARROW_W = 330, NARROW_DY = 92;
+    function rowH(){ return narrowFig() ? 180 + NARROW_DY : 180; }
     function rowSvg(s, c, ci, y0){
-      var p = [], y = y0 + 112, trp = c.mode === 'trp', k = c.copies[ci], x = s.copies[ci];
+      var p = [], B = [], y = y0 + 112, trp = c.mode === 'trp', k = c.copies[ci], x = s.copies[ci];
       var box = function(x1, x2, cls, label, dashed, gene){
         var b = '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + (x1 + 1) + '" y="' + (y - 13) + '" width="' + (x2 - x1 - 2) + '" height="26" rx="6"/><text class="op-blab" x="' + ((x1 + x2) / 2) + '" y="' + (y + 4.5) + '" text-anchor="middle">' + label + '</text>';
         if(!gene || qmode === 'quiz') return b;
@@ -198,7 +207,6 @@
       };
       var title = trp ? 'trp operon' : st.mode === 'mero' ? COPY_NAMES[ci] : 'lac operon';
       p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + ': mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')</text>');
-      p.push(helix(6, 594, y));
       var reg = trp ? (k.R === '-' ? 'trpR⁻' : 'trpR') : (k.I === '-' ? 'lacI⁻' : k.I === 's' ? 'lacIˢ' : 'lacI');
       p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
       p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : 'repressor gene') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : 'repressor gene')) + '</text>');
@@ -207,7 +215,14 @@
       p.push(box(pr0, pr1, 'prom', 'Promoter'));
       p.push(box(pr1, op1, 'oper', k.O === 'c' ? 'Oᶜ' : 'Operator', k.O === 'c', 'O'));
       var gx = op1, gw = trp ? 60 : [110, 90, 80];
-      genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; p.push(box(gx, gx + w, 'gene', mut ? 'lacZ⁻' : g, mut, !trp && g === 'lacZ' ? 'Z' : '')); gx += w; });
+      genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; B.push(box(gx, gx + w, 'gene', mut ? 'lacZ⁻' : g, mut, !trp && g === 'lacZ' ? 'Z' : '')); gx += w; });
+      var narrow = narrowFig();
+      // the backbone under the boxes (drawn first)
+      p.unshift(helix(6, narrow ? op1 + 4 : 594, y));
+      if(narrow){
+        B.unshift(helix(op1 - 4, gx + 8, y));
+        p.splice(1, 0, '<path class="op-join" d="M' + (op1 + 4) + ' ' + y + 'C' + (op1 + 40) + ' ' + y + ' ' + (op1 + 40) + ' ' + (y + 46) + ' ' + (op1 - 30) + ' ' + (y + 46) + 'L40 ' + (y + 46) + 'C-4 ' + (y + 46) + ' -4 ' + (y + NARROW_DY) + ' 6 ' + (y + NARROW_DY) + '"/>');
+      }
       var ocx = (pr1 + op1) / 2, pcx = (pr0 + pr1) / 2;
       // CAP–cAMP
       if(!trp && s.cap) p.push(dimer(130, y - 28, 40, 13, 'op-cap') + '<path class="op-camp" d="' + hexD(114, y - 42, 5) + '"/><text class="op-tight" x="130" y="' + (y - 24) + '" text-anchor="middle">CAP</text><text class="op-note" x="106" y="' + (y - 39) + '" text-anchor="end">cAMP</text>');
@@ -215,7 +230,8 @@
       // RNA polymerase
       var on = x.rnap !== 'blocked', py = on ? y - 32 : y - 66;
       p.push('<path class="op-pol' + (x.rnap === 'weak' ? ' weak' : '') + '" d="M' + (pcx - 36) + ' ' + (py + 14) + 'C' + (pcx - 44) + ' ' + (py - 6) + ' ' + (pcx - 30) + ' ' + (py - 24) + ' ' + (pcx - 8) + ' ' + (py - 22) + 'C' + (pcx + 4) + ' ' + (py - 30) + ' ' + (pcx + 30) + ' ' + (py - 26) + ' ' + (pcx + 36) + ' ' + (py - 8) + 'C' + (pcx + 42) + ' ' + (py + 4) + ' ' + (pcx + 38) + ' ' + (py + 14) + ' ' + (pcx + 30) + ' ' + (py + 16) + 'Q' + pcx + ' ' + (py + 4) + ' ' + (pcx - 30) + ' ' + (py + 17) + 'Z"/><path class="op-polsh" d="M' + (pcx - 26) + ' ' + (py - 12) + 'q10 -10 24 -10"/><text x="' + pcx + '" y="' + (py - 2) + '" text-anchor="middle">RNA pol</text>');
-      if(!on) p.push('<text class="op-note" x="' + pcx + '" y="' + (y - 36) + '" text-anchor="middle">blocked</text>');
+      // trp: the repressor sits right of the polymerase, so the label goes to its left
+      if(!on) p.push(trp ? '<text class="op-note" x="' + (pcx - 40) + '" y="' + (y - 36) + '" text-anchor="end">blocked</text>' : '<text class="op-note" x="' + pcx + '" y="' + (y - 36) + '" text-anchor="middle">blocked</text>');
       else if(x.rnap === 'weak') p.push('<text class="op-note" x="' + pcx + '" y="' + (y - 56) + '" text-anchor="middle">binds weakly</text>');
       // repressor
       var repShape = function(cx, cy, label, extra){
@@ -223,12 +239,12 @@
         if(extra) r += '<path class="op-small" d="' + (extra === 'Trp' ? trpD(cx + 40, cy - 14) : hexD(cx + 36, cy - 16, 6) + hexD(cx + 47, cy - 10, 6)) + '"/><text class="op-note" x="' + (cx + 58) + '" y="' + (cy - 8) + '">' + extra + '</text>';
         return r;
       };
-      var narrow = phoneFig(), floatX = narrow ? 60 : op1 + 40, fy = y0 + (narrow ? 42 : 46), onOp = x.rep === 'bound' || x.rep === 'super';
+      var floatX = narrow ? 60 : op1 + 40, fy = y0 + (narrow ? 42 : 46), onOp = x.rep === 'bound' || x.rep === 'super';
       // the repressor slides between the operator and its floating spot
       var prevOn = prevRep[ci], dxy = prevOn == null || prevOn === onOp || x.rep === 'none' ? null : onOp ? [floatX - ocx, fy - (y - 30)] : [ocx - floatX, (y - 30) - fy];
       prevRep[ci] = x.rep === 'none' ? null : onOp;
       var wrapRep = function(inner){ return '<g class="op-repg' + (dxy ? ' op-slide' : '') + '"' + (dxy ? ' style="--dx:' + dxy[0].toFixed(0) + 'px;--dy:' + dxy[1].toFixed(0) + 'px"' : '') + '>' + inner + '</g>'; };
-      if(onOp) p.push(wrapRep(repShape(ocx, y - 30, 'Repressor', trp ? 'Trp' : '')) + (x.rep === 'super' ? '<text class="op-note" x="' + (op1 + 6) + '" y="' + (y - 26) + '">super-repressor: ignores allolactose</text>' : ''));
+      if(onOp) p.push(wrapRep(repShape(ocx, y - 30, 'Repressor', trp ? 'Trp' : '')) + (x.rep === 'super' ? (narrow ? '<text class="op-note" x="' + op1 + '" y="' + (y + 32) + '" text-anchor="end">ignores allolactose</text>' : '<text class="op-note" x="' + (op1 + 6) + '" y="' + (y - 26) + '">super-repressor: ignores allolactose</text>') : ''));
       else if(x.rep === 'released') p.push(wrapRep(repShape(floatX, fy, 'Repressor', 'allolactose')));
       else if(x.rep === 'inactive') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + (narrow ? 48 : 40)) + '" y="' + (fy + 4) + '">no Trp: cannot bind</text>');
       else if(x.rep === 'cantbind') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + (narrow ? 48 : 40)) + '" y="' + (fy + 4) + '">cannot bind Oᶜ</text>');
@@ -238,22 +254,23 @@
       if(x.rate >= 5){
         var d = 'M' + mx0 + ' ' + (y + 30), n = Math.floor((mx1 - mx0) / 20);
         for(var i = 0; i < n; i++) d += ' q5 -' + (x.rate >= 50 ? 7 : 4) + ' 10 0 t10 0';
-        p.push('<path class="op-mrna' + (x.rate >= 50 ? ' hi' : '') + '" d="' + d + '"/>');
+        B.push('<path class="op-mrna' + (x.rate >= 50 ? ' hi' : '') + '" d="' + d + '"/>');
         var bt = ''; for(var bi = mx0 + 5; bi < mx0 + n * 20; bi += 5) bt += 'M' + bi + ' ' + (y + 30) + 'v-5';
-        p.push('<path class="op-bases" d="' + bt + '"/>');
+        B.push('<path class="op-bases" d="' + bt + '"/>');
         // ribbons peeling off: how many and how often from the model's rate
         var nr = x.rate >= 50 ? 4 : 1, dur = x.rate >= 50 ? 2.4 : 4.8;
-        for(var j = 0; j < nr; j++) p.push('<path class="op-ribbon" style="animation-duration:' + dur + 's;animation-delay:-' + (j * dur / nr).toFixed(2) + 's" d="M' + (mx0 + 6) + ' ' + (y + 26) + ' q8 -6 16 0 t16 0 t16 0 t16 0"/>');
-      } else p.push('<line class="op-mrna trickle" x1="' + mx0 + '" y1="' + (y + 30) + '" x2="' + (mx0 + 40) + '" y2="' + (y + 30) + '"/>');
-      p.push('<text class="op-note" x="' + mx0 + '" y="' + (y + 52) + '">mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')' + (trp ? '' : k.Z === '-' ? ', no working enzyme' : '') + '</text>');
-      return p.join('');
+        for(var j = 0; j < nr; j++) B.push('<path class="op-ribbon" style="animation-duration:' + dur + 's;animation-delay:-' + (j * dur / nr).toFixed(2) + 's" d="M' + (mx0 + 6) + ' ' + (y + 26) + ' q8 -6 16 0 t16 0 t16 0 t16 0"/>');
+      } else B.push('<line class="op-mrna trickle" x1="' + mx0 + '" y1="' + (y + 30) + '" x2="' + (mx0 + 40) + '" y2="' + (y + 30) + '"/>');
+      B.push('<text class="op-note" x="' + mx0 + '" y="' + (y + 52) + '">mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')' + (trp ? '' : k.Z === '-' ? ', no working enzyme' : '') + '</text>');
+      if(narrow) return p.join('') + '<g transform="translate(' + (10 - op1) + ' ' + NARROW_DY + ')">' + B.join('') + '</g>';
+      return p.join('') + B.join('');
     }
     function figure(s, c){
-      var h = 180 * c.copies.length + 6, svg = '';
-      c.copies.forEach(function(k, i){ svg += rowSvg(s, c, i, i * 180); });
+      var rh = rowH(), narrow = rh !== 180, W = narrow ? NARROW_W : 600, h = rh * c.copies.length + 6, svg = '';
+      c.copies.forEach(function(k, i){ svg += rowSvg(s, c, i, i * rh); });
       var desc = 'Diagram of the ' + (c.mode === 'trp' ? 'trp' : 'lac') + ' operon, ' + genoText() + ', in ' + mediumText(c) + '. ' +
         s.copies.map(function(x, i){ return (c.copies.length > 1 ? COPY_NAMES[i] + ': ' : '') + 'repressor ' + repWords(x.rep, c) + '; ' + (c.mode === 'lac' ? (x.cap ? 'CAP–cAMP bound; ' : 'no CAP bound; ') : '') + 'RNA polymerase ' + polWords(x.rnap) + '; mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')'; }).join('. ') + '.';
-      card.querySelector('.op-stagefig').innerHTML = '<svg class="op-fig" viewBox="0 0 600 ' + h + '" role="group" aria-label="' + esc(desc) + '"><rect class="op-cellbg" x="1" y="1" width="598" height="' + (h - 2) + '" rx="22"/>' + svg + '</svg>';
+      card.querySelector('.op-stagefig').innerHTML = '<svg class="op-fig' + (narrow ? ' op-narrow' : '') + '" viewBox="0 0 ' + W + ' ' + h + '" role="group" aria-label="' + esc(desc) + '"><rect class="op-cellbg" x="1" y="1" width="' + (W - 2) + '" height="' + (h - 2) + '" rx="22"/>' + svg + '</svg>';
       tray();
     }
 
@@ -271,6 +288,9 @@
         : 'Trial ' + last.n + ', ' + last.geno + ' in ' + last.medium + ': mRNA ' + F(last.m, 0) + ', enzyme ' + F(last.e, 0) + ' at steady state.';
       update(true);
     }
+    // Redraw the figure when the phone turns (one line or two).
+    var wasNarrow = null;
+    window.addEventListener('resize', function(){ var n = narrowFig(); if(wasNarrow !== null && n !== wasNarrow){ wasNarrow = n; figure(O.state(P, cond()), cond()); } else wasNarrow = n; });
     function update(now){
       var c = cond(), s = O.state(P, c), co = course(), a = O.at(co, st.readT), trp = isTrp(), enzName = trp ? 'Trp enzymes' : 'β-galactosidase';
       figure(s, c);
@@ -423,7 +443,13 @@
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
     studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, dock: ['.os-chal', '.bt-modes'], stage: ['.op-stagefig'], stageAlso: ['.op-tray'], live: '.op-explain', why: ['.op-taphint', '.op-further'],
       hint: { target: '.op-chip', text: 'Tap a sugar to change the medium' },
-      caption: function(g){ return '<b>Repressor ' + T.esc(g.ro(0)) + '.</b> RNA polymerase ' + T.esc(g.ro(2)) + '.'; },
-      pills: function(g){ return [{ k: 'mRNA', html: g.ro(3), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'CAP–cAMP ' + g.ro(1).split(' (')[0], tone: 'ghost' }]; } } });
+      // Readout rows by label: the trp operon has no CAP row, so row numbers shift.
+      caption: function(g){ return '<b>Repressor ' + T.esc(roBy(g, 'Repressor')) + '.</b> RNA polymerase ' + T.esc(roBy(g, 'RNA polymerase')) + '.'; },
+      pills: function(g){ return [{ k: 'mRNA', html: roBy(g, 'mRNA at'), tone: 'readout' }]; },
+      pillsR: function(g){ var cap = roBy(g, 'CAP'); return cap ? [{ html: 'CAP–cAMP ' + cap.split(' (')[0], tone: 'ghost' }] : [{ html: 'Repressible: Trp turns it off', tone: 'ghost' }]; } } });
+  function roBy(g, label){
+    var rows = g.$ ? Array.prototype.slice.call(document.querySelectorAll('.op-read > div')) : [];
+    for(var i = 0; i < rows.length; i++){ var dt = rows[i].querySelector('dt'); if(dt && dt.textContent.indexOf(label) === 0) return rows[i].querySelector('dd').textContent.replace(/\s+/g, ' ').trim(); }
+    return '';
+  }
 })();

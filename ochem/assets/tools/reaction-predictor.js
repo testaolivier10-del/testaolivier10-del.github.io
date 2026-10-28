@@ -110,7 +110,9 @@
     heat: false,
     guess: null,
     revealed: false,
-    mode: 'explore',
+    /* Predict first is the landing (audit 2026-10: Explore showed the answer
+       on load). ?mode=explore opens Explore. */
+    mode: 'predict',
     score: { right:0, total:0 }
   };
 
@@ -675,8 +677,8 @@
   root.innerHTML =
     '<div class="tool-modes">' +
       '<div class="tseg" id="rpMode" role="group" aria-label="Mode">' +
-        '<button type="button" data-mode="explore" class="on" aria-pressed="true">Explore</button>' +
-        '<button type="button" data-mode="predict" aria-pressed="false">Predict first</button>' +
+        '<button type="button" data-mode="predict" class="on" aria-pressed="true">Predict first</button>' +
+        '<button type="button" data-mode="explore" aria-pressed="false">Explore</button>' +
       '</div>' +
       '<p class="tool-step" id="rpStep"></p>' +
     '</div>' +
@@ -895,7 +897,11 @@
 
     var elV = document.getElementById('rpVerdict');
     if(!show){
-      elV.innerHTML = '<h3 class="ls-title-l">Make your call first</h3><p>Read the flask, then tap the tile on the stage you think wins. The reasons appear here after you choose.</p>';
+      elV.innerHTML = '<h3 class="ls-title-l">Make your call first</h3><p>Read the flask, then tap the tile on the stage you think wins. The reasons appear here after you choose.</p>' +
+        '<h3 class="ls-h">A method</h3><ol class="ls-steps">' +
+        '<li><span><span class="ls-k">The carbon</span> Methyl or primary leans SN2; tertiary cannot do SN2 at all.</span></li>' +
+        '<li><span><span class="ls-k">The reagent</span> A bulky strong base (KOtBu, DBU) gives E2, even on a primary carbon. A strong base that is also a good nucleophile (NaOH, NaOEt) gives SN2 on primary and E2 on secondary or tertiary. A good nucleophile that is a weak base (CN⁻, I⁻, N₃⁻, HS⁻) gives SN2. A weak nucleophile (water, an alcohol) needs a carbocation, so SN1 or E1, and only on secondary or tertiary.</span></li>' +
+        '<li><span><span class="ls-k">Solvent and heat</span> Polar protic helps a carbocation form; polar aprotic speeds SN2; heat favors elimination.</span></li></ol>';
       ls.det.innerHTML = '<h3 class="ls-title-l">The numbers</h3><p class="ls-sub">The split between the four paths appears after your call.</p>';
       return;
     }
@@ -982,7 +988,7 @@
       rgt: state.rgt.id,
       solv: state.solvent.id,
       heat: state.heat ? 1 : null,
-      mode: state.mode === 'predict' ? 'predict' : null
+      mode: state.mode === 'explore' ? 'explore' : null
     });
   }
 
@@ -1027,6 +1033,15 @@
         label: state.sub.name + ' with ' + state.rgt.name + (show && sc.arrows.length ? ', with the curved arrows for ' + p.major : '')
       }) +
       '<div class="rp-cond" aria-hidden="true"><span>' + esc(state.solvent.example) + '</span><span class="rp-cond__arrow"></span><span>' + (state.heat ? 'heat' : '25 °C') + '</span></div>';
+      /* The major product, drawn beside the flask once the answer is out
+         (audit 2026-10: the product was only ever a formula in Why). */
+      var pmStage = show ? productDrawing(state.sub, state.rgt, p) : null;
+      if(pmStage && p.product && p.product !== '—'){
+        stage.innerHTML += '<div class="rp-stage-prod"><span class="rp-stage-prod__arrow" aria-hidden="true"></span>' +
+          '<div class="rp-stage-prod__mol">' + Mol.svg(pmStage, { caption:'', label:'Major product: ' + p.product }) + '</div>' +
+          '<p class="rp-stage-prod__k">Major product' + (p.alkene ? ' · ' + esc(p.alkene) : '') + ': <b class="tformula">' + esc(p.product) + '</b></p></div>';
+      }
+      stage.classList.toggle('has-prod', !!(pmStage && p.product && p.product !== '—'));
     } else {
       stage.innerHTML = '<p class="tformula" style="text-align:center;">' + esc(state.sub.formula) + ' + ' + esc(state.rgt.name) + '</p>';
     }
@@ -1213,7 +1228,7 @@
     if(qr) state.rgt = qr;
     if(qv) state.solvent = qv;
     state.heat = q.heat === '1';
-    if(q.mode === 'predict') state.mode = 'predict';
+    if(q.mode === 'explore') state.mode = 'explore';
   }
   paintChips();
   render();

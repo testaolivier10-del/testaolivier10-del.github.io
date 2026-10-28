@@ -538,18 +538,21 @@
   }
   /* Bars: for each variable and the result, a "before" bar of 1 and an
      "after" bar of its factor, on one linear scale. */
-  function bars(rel, k, f){
-    var hide = f == null;
+  function bars(rel, k, f, mine){
+    var hide = f == null, off = !hide && mine != null && isFinite(mine) && mine > 0 && Math.abs(mine / f - 1) > 0.012;
     var items = rel.vars.map(function(v){ return { sym: v.sym, k: kOf(k, v.sym), p: v.p, name: v.name }; }).concat([{ sym: rel.Y.sym, k: hide ? 1 : f, y: true, name: rel.Y.name, hide: hide }]);
-    var top = Math.max(1, Math.max.apply(null, items.map(function(x){ return x.k; })));
+    var top = Math.max(1, Math.max.apply(null, items.map(function(x){ return x.k; }).concat(off ? [Math.min(mine, 16)] : [])));
     var W = 400, rowH = 46, H = 22 + items.length * rowH, x0 = 92, bw = W - x0 - 72, out = '';
     items.forEach(function(it, i){
       var y = 16 + i * rowH, b1 = bw / top, b2 = bw * it.k / top;
       out += '<text x="' + (x0 - 10) + '" y="' + (y + 24) + '" text-anchor="end" class="sd-sym' + (it.y ? ' sd-y' : '') + '">' + sub(it.sym).replace(/<sub>/g, '<tspan dy="4" font-size=".7em">').replace(/<\/sub>/g, '</tspan><tspan dy="-4"></tspan>') + '</text>';
       out += '<rect x="' + x0 + '" y="' + (y + 4) + '" width="' + b1.toFixed(1) + '" height="14" rx="3" class="sd-b0"/>' + (it.hide ? '<rect x="' + x0 + '" y="' + (y + 21) + '" width="' + bw + '" height="14" rx="3" class="sd-bq"/>' : '<rect x="' + x0 + '" y="' + (y + 21) + '" width="' + Math.max(1.5, b2).toFixed(1) + '" height="14" rx="3" class="sd-b1' + (it.y ? ' y' : '') + '"/>');
       out += '<text x="' + (it.hide ? x0 + bw / 2 : x0 + Math.max(b1, b2) + 8).toFixed(1) + '" y="' + (y + 33) + '"' + (it.hide ? ' text-anchor="middle"' : '') + ' class="sd-k' + (it.y ? ' sd-y' : '') + '">' + (it.hide ? '× ?' : '× ' + esc(nice(it.k))) + '</text>';
+      // Test yourself: the student's own factor, dashed, under the right one.
+      if(it.y && off){ var bm = bw * Math.min(mine, 16) / top; out += '<rect x="' + x0 + '" y="' + (y + 40) + '" width="' + Math.max(1.5, bm).toFixed(1) + '" height="10" rx="3" class="sd-mine"/><text x="' + (x0 + Math.max(bm, 0) + 8).toFixed(1) + '" y="' + (y + 50) + '" class="sd-k sd-mine-t">yours × ' + esc(nice(mine)) + '</text>'; }
     });
-    var lab = 'Bars before (light) and after (dark): ' + items.map(function(it){ return it.sym.replace(/_/g, '') + (it.hide ? ' × ? (to find)' : ' × ' + nice(it.k)); }).join(', ') + '.';
+    if(off) H += 18;
+    var lab = 'Bars before (light) and after (dark): ' + items.map(function(it){ return it.sym.replace(/_/g, '') + (it.hide ? ' × ? (to find)' : ' × ' + nice(it.k)); }).join(', ') + '.' + (off ? ' Your answer, × ' + nice(mine) + ', is the dashed bar.' : '');
     return S.svg(W, H, lab, out).replace('class="phys-scene"', 'class="phys-scene sd-svg sd-bars"');
   }
 
@@ -638,25 +641,90 @@
 
   /* --------------------------------------------------------------- quiz */
   var KINDS = [{ value: 'factor', label: 'One quantity scaled' }, { value: 'combo', label: 'Two changes at once' }, { value: 'units', label: 'Unit check' }, { value: 'convert', label: 'SI conversions' }];
+  /* Test yourself pictures for the two kinds that had none (audit 2026-10:
+     Test was text only). Unit checks: a column for each of kg, m and s whose
+     power is "?" until answered, then drawn up (positive) or down
+     (negative). Conversions: the unit relation drawn: a ruler for a length,
+     a gridded square or cube for an area or a volume, else the rule. */
+  function unitCols(d){
+    var names = ['kg', 'm', 's'], pw0 = d ? [d[1], d[0], d[2]] : [null, null, null], W2 = 360, H2 = 200, mid = 100, u = 18, out = '';
+    out += '<line x1="20" x2="' + (W2 - 20) + '" y1="' + mid + '" y2="' + mid + '" class="sd-axis"/>';
+    names.forEach(function(n, i){
+      var cx = 70 + i * 110, p = pw0[i];
+      out += '<text x="' + cx + '" y="' + (H2 - 6) + '" text-anchor="middle" class="sd-sym">' + n + '</text>';
+      if(p == null){ out += '<rect x="' + (cx - 22) + '" y="' + (mid - 40) + '" width="44" height="80" rx="6" class="sd-bq"/><text x="' + cx + '" y="' + (mid + 6) + '" text-anchor="middle" class="sd-k sd-y">?</text>'; return; }
+      for(var j = 0; j < Math.abs(p); j++){ var y = p > 0 ? mid - (j + 1) * u : mid + j * u; out += '<rect x="' + (cx - 20) + '" y="' + (y + 1) + '" width="40" height="' + (u - 2) + '" rx="3" class="sd-b1 y"/>'; }
+      out += '<text x="' + (cx + 28) + '" y="' + (p > 0 ? mid - p * u + 12 : p < 0 ? mid + Math.abs(p) * u - 4 : mid - 6) + '" class="sd-k sd-y">' + (p === 0 ? '0' : (p > 0 ? '+' : '−') + Math.abs(p)) + '</text>';
+    });
+    var lab = d ? 'Powers of the base units: kg ' + pw0[0] + ', m ' + pw0[1] + ', s ' + pw0[2] + '.' : 'The powers of kg, m and s, to find.';
+    return S.svg(W2, H2, lab, out).replace('class="phys-scene"', 'class="phys-scene sd-svg sd-ucols"');
+  }
+  function convPic(key){
+    var c = SD.CONV[key]; if(!c) return '';
+    var W2 = 360, H2 = 160, out = '';
+    if(key === 'cm2' || key === 'cm3'){
+      // One meter on a side, cut in tenths: each small square is 10 cm across.
+      var x = 30, y = key === 'cm3' ? 34 : 14, a = 110, i;
+      for(i = 1; i < 10; i++) out += '<line x1="' + (x + i * a / 10) + '" x2="' + (x + i * a / 10) + '" y1="' + y + '" y2="' + (y + a) + '" class="sd-grid"/><line x1="' + x + '" x2="' + (x + a) + '" y1="' + (y + i * a / 10) + '" y2="' + (y + i * a / 10) + '" class="sd-grid"/>';
+      out += '<rect x="' + x + '" y="' + y + '" width="' + a + '" height="' + a + '" class="sd-cframe"/>';
+      if(key === 'cm3') out += '<path d="M' + x + ' ' + y + 'l26 -20h' + a + 'l-26 20M' + (x + a) + ' ' + (y + a) + 'l26 -20v-' + a + '" class="sd-cframe"/>';
+      out += '<text x="' + (x + a / 2) + '" y="' + (y + a + 18) + '" text-anchor="middle" class="sd-k">1 m = 100 cm</text>';
+      out += '<text x="' + (x + a + 46) + '" y="60" class="sd-k">' + (key === 'cm2' ? '1 m² = 100 × 100 cm²' : '1 m³ = 100 × 100 × 100 cm³') + '</text><text x="' + (x + a + 46) + '" y="86" class="sd-k sd-y">' + (key === 'cm2' ? '= 10⁴ cm²' : '= 10⁶ cm³') + '</text>';
+    } else if(key === 'cm' || key === 'mm'){
+      var x0 = 20, L = 320, y0 = 64;
+      out += '<rect x="' + x0 + '" y="' + y0 + '" width="' + L + '" height="36" rx="4" class="sd-ruler"/>';
+      for(var t = 0; t <= 100; t++){ var xx = x0 + t * L / 100, big = t % 10 === 0; out += '<line x1="' + xx.toFixed(1) + '" x2="' + xx.toFixed(1) + '" y1="' + y0 + '" y2="' + (y0 + (big ? 16 : 8)) + '" class="sd-tick"/>'; if(big && t % 20 === 0) out += '<text x="' + xx.toFixed(1) + '" y="' + (y0 + 31) + '" text-anchor="middle" class="sd-tn">' + (key === 'cm' ? t : t * 10) + '</text>'; }
+      out += '<text x="' + x0 + '" y="' + (y0 - 16) + '" class="sd-k">One meter stick: 1 m = ' + (key === 'cm' ? '100 cm' : '1000 mm') + '</text>';
+    } else {
+      out += '<text x="' + (W2 / 2) + '" y="66" text-anchor="middle" class="sd-sym">' + esc(c.from) + ' → ' + esc(c.to) + '</text><text x="' + (W2 / 2) + '" y="98" text-anchor="middle" class="sd-k">' + esc(c.how) + '</text>';
+    }
+    return S.svg(W2, H2, 'Converting ' + c.what + ' from ' + c.from + ' to ' + c.to + ': ' + c.how + '.', out).replace('class="phys-scene"', 'class="phys-scene sd-svg sd-conv"');
+  }
   function quiz(host, data){
+    var cur = null, typed = [];
+    // The first value typed (or choice made) at each step, in order, so the
+    // picture can show it next to the right one after Show the answer fills
+    // the box in. On the document: the Tool Studio moves the drill out of host.
+    document.addEventListener('submit', function(e){
+      var f = e.target; if(!cur || !f.classList || !f.classList.contains('cd-step')) return;
+      var m = /-s(\d+)-l$/.exec(f.getAttribute('aria-labelledby') || ''), idx = m ? +m[1] : -1, inp = f.querySelector('.cd-num input'), rad = f.querySelector('input[type=radio]:checked');
+      if(idx < 0) return;
+      if(typed[idx] != null) return;
+      if(inp && inp.value.trim()) typed[idx] = inp.value;
+      else if(rad){ var lb = f.querySelector('label[for="' + rad.id + '"]'); typed[idx] = lb ? lb.innerText.trim() : ''; }
+    }, true);
     T.drill(host, data, {
       slug: 'scaling-drills', noun: 'drill',
       generate: function(r, ctx, t){ return SD.generate(r, ctx, t); },
       types: KINDS, typeLabel: 'Kind of problem',
       title: function(p){ var k = KINDS.filter(function(x){ return x.value === p.type; })[0]; return k ? k.label : 'Scaling'; },
       extra: function(el, p){
-        var v = p.values;
+        var v = p.values; cur = { el: el, p: p }; typed = [];
+        if(p.type === 'units'){ el.innerHTML = '<figure class="sd-fig cd-fig">' + unitCols(null) + '<figcaption class="bt-small">Write each quantity in kg, m and s, then add the powers: N = kg·m/s², J = kg·m²/s², Pa = kg/(m·s²).</figcaption></figure>'; return; }
+        if(p.type === 'convert'){ el.innerHTML = '<figure class="sd-fig cd-fig">' + convPic(v.a) + (v.b !== v.a ? convPic(v.b) : '') + '</figure>'; return; }
         if(p.type !== 'factor' && p.type !== 'combo'){ el.innerHTML = ''; return; }
-        var rel = SD.REL[v.rel], k = {};
-        rel.vars.forEach(function(x){ k[x.sym] = 1; });
-        if(p.type === 'factor') k[v.v] = v.k; else { k[v.a] = v.ka; k[v.b] = v.kb; }
-        // The picture and the bars show the change; the result's bar is a "?" until the end.
-        hideY = true;
-        var svg = pic(rel, k, 0, rel.vars.reduce(function(a, x){ return a * Math.pow(k[x.sym], x.p); }, 1));
-        hideY = false;
-        if(svg && rel.pic !== 'square' && rel.pic !== 'circle' && rel.pic !== 'cube') svg = '';
-        el.innerHTML = '<figure class="sd-fig cd-fig">' + (svg ? svg.replace(/aria-label="[^"]*"/, 'aria-label="Before and after for ' + esc(rel.say) + '. The result is for you to find."') : '') + bars(rel, k, null) + '</figure>';
+        el.innerHTML = factorFig(p, null, null);
+      },
+      onStep: function(s, right, api){
+        var p = api.problem, el = cur && cur.el; if(!el) return;
+        var idx = p.steps.indexOf(s), raw = typed[idx], Qp = window.ApPhysQuestions, mine = raw != null ? (Qp && Qp.parseNumber ? Qp.parseNumber(raw) : parseFloat(raw)) : null;
+        if((p.type === 'factor' && s.key === 'k') || (p.type === 'combo' && s.key === 'tot')) el.innerHTML = factorFig(p, p.values.ans, right ? null : mine);
+        if(p.type === 'units' && s.key === 'base'){
+          var fig = el.querySelector('.sd-fig');
+          if(fig) fig.innerHTML = unitCols(p.values.dims) + '<figcaption class="bt-small"><b>' + esc(SD.dimsText(p.values.dims)) + '</b>' + (!right && raw ? ' <span class="sd-mine-p">(you chose ' + esc(raw) + ')</span>' : '') + '</figcaption>';
+        }
       }
     });
+    function factorFig(p, ans, mine){
+      var v = p.values, rel = SD.REL[v.rel], k = {};
+      rel.vars.forEach(function(x){ k[x.sym] = 1; });
+      if(p.type === 'factor') k[v.v] = v.k; else { k[v.a] = v.ka; k[v.b] = v.kb; }
+      // The picture and the bars show the change; the result's bar is a "?" until it is answered.
+      hideY = true;
+      var svg = pic(rel, k, 0, rel.vars.reduce(function(a, x){ return a * Math.pow(k[x.sym], x.p); }, 1));
+      hideY = false;
+      if(svg && rel.pic !== 'square' && rel.pic !== 'circle' && rel.pic !== 'cube') svg = '';
+      return '<figure class="sd-fig cd-fig">' + (svg && ans == null ? svg.replace(/aria-label="[^"]*"/, 'aria-label="Before and after for ' + esc(rel.say) + '. The result is for you to find."') : '') + bars(rel, k, ans, mine) + '</figure>';
+    }
   }
 })();

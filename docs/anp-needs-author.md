@@ -1934,6 +1934,29 @@ Spec decision 87; details in docs/tools-upgrade-notes/anp-loops.md and anp-rest.
 - **predict-feed-order** (pending review). The feed lists causes before effects, one chain after
   another; branches are labeled "From ..." and the intro says the order is causal, not a timeline.
 
+## Tool audit fixes (2026-10-27): items for review
+
+- **loop-distractor-shorts**: the feedback loop builder now shows short card labels, so each of the
+  165 distractor cards gained a `short` (data/tools/feedback-loops.json). They were written to keep
+  the same wrong idea as the full card and checked against it line by line; the full sentence is one
+  tap away and still drives the explanation. Worth a read by an instructor for any short that now
+  reads as more (or less) wrong than its sentence.
+- **pathway-step-icons**: the pathway map picks an icon for each step from its label and text
+  (heart, vessel, lung, nephron, impulse, channel, hormone and so on). It is decoration, not content,
+  but a few steps get a generic icon from their chapter. A step can name its own with `"icon"` in
+  data/tools/pathways.json if one reads oddly.
+- **pathway-step-icons, review pass (2026-10-27)**: word matching inside longer words gave wrong
+  icons (liver in "deLIVERed", actin in "prolACTIN", chyme in "mesenCHYME", medulla in "MEDULLAry
+  cavity", GLUT in "GLUTamate"); those patterns now need a word start. Still generic or loose, left
+  for an author to set with `"icon"` if wanted: chapter fallbacks such as "Cortical groups fire"
+  (sound), "Notochord" (eye, from "rod"), "Filtration slits" (lung, from "slit diaphragm"),
+  "Cisterna chyli" (bone, from "vertebrae"), "Nipple opening" and "Voltage sensor moves" (kidney,
+  from "duct" and "T tubule"). None changes what a step says.
+- **calc-hint-first-step (2026-10-27)**: a calculator's practice hint names the first worked step
+  the question needs, not always step 1 (an FRC question now starts at "Functional residual
+  capacity", not "Inspiratory capacity"). Picked from the step data; 15 asks across 12 calculators
+  changed. Worth a glance that each named step is the natural start.
+
 ## Decided at the Phase 0 reviews
 
 These are recorded in the spec's decisions log (section 19) and kept here so the history stays in
@@ -1964,3 +1987,23 @@ one place.
   on the site. (atitesting.com served only a maintenance page from this environment, and the
   copy of the outline the owner found is on a domain the network policy blocks, so the
   confirmation comes from the owner's own check of the document.)
+
+## 3D anatomy tool (2026-10-27): items for review
+
+Spec decision 91; data in anatomy-physiology/data/tools/anatomy-3d.json.
+
+- **3d-peduncle-number** (pending review). FMA62394 is "peduncle of midbrain"; its mesh spans both sides of the
+  midline (x -20 to +20 mm), so the tool names it "Cerebral peduncles" (plural). Confirm the plural.
+- **3d-lv-papillary** (pending review). FMA9352 is the generic "papillary muscle of left ventricle" beside FMA7266
+  "posterior (posteromedial) papillary muscle". By position FMA9352 sits anterolateral, but the tool names it only
+  "papillary muscle of the left ventricle" rather than guess "anterolateral".
+- **3d-bp24-bp28** (pending review). Two meshes, BP24 and BP28, have no FMA id; by position they look like merged
+  lower costal cartilages (ribs 8 to 10). They are drawn but never named. A person could confirm and label them.
+- **3d-false-ribs-split** (pending review). The course counts ribs 8 to 12 as false ribs. The tool shows
+  "Ribs 8 to 10 (false ribs)" and "Floating ribs (ribs 11 and 12)" as two structures, so a student typing
+  "false ribs" for a floating rib is marked wrong. Accept it there too, or keep the stricter split?
+- **3d-rca-nodes** (decided, for review). The right coronary artery card no longer says it supplies the SA and AV
+  nodes (true of the AV node in most people, of the SA node in only about 55 to 60 percent; the notes do not
+  teach either).
+- **3d-diaphragm-topic** (pending review). The diaphragm links to Body cavities and serous membranes, where it is
+  first taught; Pulmonary ventilation teaches its breathing role in detail. Which should the tool link?

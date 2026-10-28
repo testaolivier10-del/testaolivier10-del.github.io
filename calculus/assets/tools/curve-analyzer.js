@@ -150,7 +150,9 @@
     }
     function layout(){
       var c = cv(), w = Math.max(280, Math.round(gwrap.clientWidth || 600)), h = Math.max(200, Math.round(gwrap.clientHeight || 420));
-      var ph = phone(), L = w < 420 ? 40 : 46, R = 12, T0 = 6, row = w < 420 ? 20 : 22, gap = 8, axis = ph ? 22 : 20;
+      // On a phone the sign rows and the gaps are slimmer, so the three graph
+      // panels get the height (they were about 130 px each; audit 2026-10).
+      var ph = phone(), L = w < 420 ? 40 : 46, R = 12, T0 = ph ? 2 : 6, row = ph ? 18 : w < 420 ? 20 : 22, gap = ph ? 4 : 8, axis = ph ? 22 : 20;
       var ks = rowKeys(), WT = { f: 0.38, fp: 0.31, fpp: 0.31 }, nS = ks.filter(function(k){ return k.charAt(0) === 's'; }).length;
       var wsum = ks.reduce(function(t, k){ return t + (WT[k] || 0); }, 0), avail = h - T0 - axis - nS * row - (ks.length - 1) * gap;
       var FN = { f: c.f, fp: c.fp, fpp: c.fpp };
@@ -353,9 +355,10 @@
         var inc = !isFinite(fp) ? 'f′ is undefined here' : Math.abs(fp) < 1e-9 ? 'f′ = 0 here' : fp > 0 ? 'f′ > 0, so f is increasing' : 'f′ < 0, so f is decreasing';
         var cc = !isFinite(fpp) ? 'f″ is undefined' : Math.abs(fpp) < 1e-9 ? 'f″ = 0' : fpp > 0 ? 'f″ > 0, so f is concave up' : 'f″ < 0, so f is concave down';
         head = ft ? html(ft.text) : esc('At x = ' + xlabel(st.x, c) + ': ' + inc + '; ' + cc + '.');
+        // Why, kept short (audit 2026-10: it ran to 200 words): the features
+        // and one rule; the candidates test is a table under Formulas & numbers.
         body = '<ol class="ca-feats">' + I.feats.map(function(f2){ return '<li' + (ft === f2 ? ' class="is-on"' : '') + '>' + html(f2.text) + '</li>'; }).join('') + '</ol>' +
-          '<p class="ca-rule"><b>A sign chart alone does not justify.</b> Say in words which function changes sign, from what to what, and where. Where $f\'$ is $0$ but keeps its sign (or $f\'\'$ is $0$ but keeps its sign) there is no extremum (no inflection).</p>' +
-          '<p class="ca-rule"><b>Absolute extrema on $[' + CA.xs(c.dom[0]) + ', ' + CA.xs(c.dom[1]) + ']$:</b> compare $f$ at the endpoints and the critical points (candidates test). The largest is $f(' + CA.xs(A.absMax.x) + ') \\approx ' + CA.n(A.absMax.y, 3) + '$, the smallest $f(' + CA.xs(A.absMin.x) + ') \\approx ' + CA.n(A.absMin.y, 3) + '$. A single sign change only proves a relative extremum.</p>';
+          '<p class="ca-rule"><b>Justify in words:</b> name the function that changes sign, from what to what, and where. No sign change, no extremum (or inflection). Absolute extrema: the candidates test, under Formulas & numbers.</p>';
         pills = narrow() || phone() ? [{ html: '<span class="ca-pk s1">f</span> ' + v.f + ' · <span class="ca-pk s2">f′</span> ' + v.fp + ' · <span class="ca-pk s3">f″</span> ' + v.fpp, tone: 'ghost' }]
           : [{ k: 'f', html: v.f, tone: 'readout' }, { k: 'f′', html: '<span class="ca-pv s2">' + v.fp + '</span>', tone: 'readout' }, { k: 'f″', html: '<span class="ca-pv s3">' + v.fpp + '</span>', tone: 'readout' }];
         det = '<h3 class="ls-title-l">' + esc(c.name) + ' on [' + xlabel(c.dom[0], c) + ', ' + xlabel(c.dom[1], c) + ']</h3><table class="ls-tbl ca-ftbl"><tbody>' +
@@ -368,7 +371,12 @@
           A.signFpp.map(function(sg){ return '<tr><td>(' + xlabel(sg.a, c) + ', ' + xlabel(sg.b, c) + ')</td><td>' + (sg.s > 0 ? '+' : '−') + '</td><td>' + (sg.s > 0 ? 'concave up' : 'concave down') + '</td></tr>'; }).join('') + '</tbody></table>';
       } else {
         var s = sc(), u = st.u, d = s.dobj(u), at = Math.abs(u - s.best) < (s.dom[1] - s.dom[0]) / 120;
-        head = at ? html(CA.sceneSentence(s)) : esc(s.sym + '′(' + F(u, 2) + ') = ' + F(d, 2) + (d > 0 ? ' > 0: making ' + s.var + ' bigger still ' + (s.goal === 'max' ? 'adds ' : 'adds ') + s.what + '.' : ' < 0: making ' + s.var + ' bigger now ' + (s.goal === 'max' ? 'loses ' : 'saves ') + s.what + '.'));
+        // The sign is read from the value as shown (two decimals): a value that
+        // rounds to 0.00 is "about 0", never "0.00 < 0".
+        var dr = M.round(d, 2);
+        head = at ? html(CA.sceneSentence(s)) : esc(s.sym + '′(' + F(u, 2) + ') ' + (dr > 0 ? '= ' + F(d, 2) + ' > 0: making ' + s.var + ' bigger still adds ' + s.what + '.'
+          : dr < 0 ? '= ' + F(d, 2) + ' < 0: making ' + s.var + ' bigger now ' + (s.goal === 'max' ? 'loses ' : 'saves ') + s.what + '.'
+          : '≈ 0: the graph of ' + s.sym + ' is flat here. A flat point is only a candidate: check the sign of ' + s.sym + '′ on each side.'));
         body = '<ol class="ca-feats"><li>' + html('Objective: $' + s.tex.obj + '$ for $' + s.var + '$ in $[' + s.dom[0] + ', ' + s.dom[1] + ']$.') + '</li><li>' + html('Its derivative: $' + s.tex.d + '$.') + '</li><li>' + html('Critical point: $' + s.var + ' \\approx ' + CA.n(s.best, 3) + '$, where $' + s.sym + '\'(' + s.var + ') = 0$.') + '</li><li class="is-on">' + html(CA.sceneSentence(s)) + '</li></ol>' +
           '<p class="ca-rule"><b>An optimization answer needs a reason it is the absolute ' + (s.goal === 'max' ? 'maximum' : 'minimum') + ':</b> the only critical point with the right sign change of the derivative, or the candidates test with the endpoints.</p>';
         pills = [{ k: s.var, html: F(u, 2) + ' ' + s.unit, tone: 'readout' }, { k: s.sym, html: F(s.obj(u), 1) + ' ' + s.ounit, tone: 'readout' }].concat(narrow() ? [] : [{ k: s.sym + '′', html: '<span class="ca-pv s2">' + F(d, 2) + '</span>', tone: 'readout' }]);
@@ -454,7 +462,7 @@
     if(W <= 999 && Hh <= 540) return [440, Math.round(Math.max(220, Math.min(300, Hh - 110)))];
     return [w, h];
   }
-  function figure(p){
+  function figSpec(p){
     var f = p.fig, a = f.dom[0], b = f.dom[1], n = 200, ys = [];
     for(var i = 0; i <= n; i++){ var v = f.f(a + (b - a) * i / n); if(isFinite(v)) ys.push(v); }
     var lo = Math.min(0, Math.min.apply(null, ys)), hi = Math.max(0, Math.max.apply(null, ys)), pad = (hi - lo) * 0.12 || 1;
@@ -464,16 +472,54 @@
     var spec = { label: f.label + ', for x from ' + CA.n(a, 2) + ' to ' + CA.n(b, 2), width: sz[0], height: sz[1], x: [a, b], y: [lo - pad, hi + pad], xLabel: p.scene === 'can' ? 'r' : 'x', yLabel: yl,
       curves: [{ fn: f.f, domain: [a, b], cls: cls, ends: f.closed ? ['closed', 'closed'] : null }], points: [] };
     if(f.pts){ spec.points = f.pts.map(function(q){ return { at: q, cls: 's2' }; }); spec.yStep = 1; spec.xStep = 1; }
-    try{ return '<div class="ca-figwrap">' + P.svg(spec) + '</div>'; }catch(e){ return ''; }
+    return spec;
   }
+  /* Which steps are places on the figure (ApCalcTools.autoMarks): the
+     student's answer is drawn on the graph, dashed, and the right one solid. */
+  var MARKS = {
+    incdec: { x: { z: 1 }, pick: { inc: 'band' } },
+    extrema: { x: { x: 1 }, pick: { other: 'x' } },
+    candidates: { y: { max: 1, min: 1 }, pick: { cand: 'x' } },
+    concavity: { pick: { where: 'x' } },
+    fgraph: { pick: { max: 'x', up: 'band' } },
+    optimize: { x: { x: 1, r: 1 }, curve: { obj: 1 }, y: { V: 1, A: 1, S: 1 } }
+  };
+  var METHOD = {
+    z: 'Set f′(x) = 0: each factor of f′ gives a zero. The smaller one is further left on the graph.',
+    inc: 'Cut the number line at the zeros of f′, test one x in each piece, and keep the pieces where f′ > 0 (the graph of f′ is above the axis).',
+    why: 'A reader wants the function named and its sign or sign change stated, on the interval or at the point.',
+    x: 'Find where f′ = 0, then check how the sign of f′ changes there: + to − is a maximum, − to + a minimum.',
+    other: 'At that x, read the sign of f′ just left and just right of it. No sign change means no extremum.',
+    fp: 'Differentiate term by term with the power rule: x^n becomes n x^(n−1), and a constant becomes 0.',
+    cand: 'The candidates are both endpoints and every critical point inside the interval.',
+    max: 'Evaluate f at every candidate, then take the largest value (a value of f, not an x).',
+    min: 'Evaluate f at every candidate, then take the smallest value (a value of f, not an x).',
+    f2: 'Differentiate f′ once more, term by term.',
+    where: 'Solve f″(x) = 0, then keep only the zeros where the graph of f″ crosses the axis (changes sign).',
+    up: 'f is concave up where f′ is increasing: find the pieces where the graph of f′ rises.',
+    infl: 'Count the places where the graph of f′ changes from rising to falling or back.',
+    obj: 'Write the quantity from the picture (for a box: length × width × height) in terms of the one variable.',
+    r: 'Set the derivative of the objective equal to 0 and solve. Check that the sign changes there.',
+    V: 'Put the critical value back into the objective.',
+    A: 'Put the critical value back into the objective.',
+    S: 'Put the critical value back into the objective.'
+  };
   function quiz(host, data){
+    var fig = null, kind = '';
     T.drill(host, data, { slug: 'curve-analyzer', noun: 'drill',
       types: CA.KINDS.map(function(k){ return { value: k, label: CA.TITLE[k] }; }), typeLabel: 'Problem type',
       generate: CA.generate, title: function(p){ return p.title; },
       extra: function(el, p, api){
-        el.innerHTML = figure(p);
+        kind = p.type;
+        var box = document.createElement('div'); el.appendChild(box);
+        fig = T.markedFigure(box, function(){ return figSpec(p); }, 'ca-figwrap');
         var s = studioNow();
         if(s) setTimeout(function(){ s.caption(String(p.text).replace(/<\/?p[^>]*>/g, ' ').trim(), 'quiz'); }, 0);
+      },
+      method: function(s, p){ return s.key === 'x' && p.type === 'optimize' ? 'Set the derivative of the objective equal to 0 and solve, inside the domain.' : METHOD[s.key]; },
+      onTry: function(s, t, api){
+        var o = MARKS[kind] || {}; o = Object.assign({ v: api.problem.scene === 'can' ? 'r' : 'x', f: api.problem.fig.f }, o);
+        return T.tryOn(function(){ return fig; }, o)(s, t);
       } });
   }
 })();

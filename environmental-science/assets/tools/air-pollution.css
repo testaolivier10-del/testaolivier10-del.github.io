@@ -36,6 +36,12 @@
 .ap-mtn{fill:var(--ap-mtn);}
 .ap-bldg{fill:var(--ap-bldg);}
 .ap-win{fill:#FFD54F;opacity:.85;}
+.ap-win-d{fill:#AFC3D2;opacity:.45;}
+.ap-bldg-far{fill:var(--ap-bldg);opacity:.42;}
+.ap-bldg-lit{fill:#fff;opacity:.10;}
+.ap-mast{stroke:var(--ap-bldg);stroke-width:1.6;}
+.ap-tree rect{fill:#6B4F33;} .ap-tree circle{fill:#4E8A4A;}
+:root[data-theme="dark"] .ap-tree circle{fill:#3A6B38;}
 .ap-road{fill:var(--ap-road);}
 .ap-car rect{fill:#E4572E;} .ap-car circle{fill:#111;}
 .ap-car:nth-of-type(3n) rect{fill:#2F80ED;} .ap-car:nth-of-type(4n) rect{fill:#F2C14E;}
@@ -84,5 +90,8 @@
 /* chip rows wrap from their left edge (no sideways scroll) */
 .ap-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
 .ap-chips[hidden]{display:none;}
-/* the first-run hint points here: a small spot near the top of the picture */
+/* (kept for older pages) a small spot near the top of the picture */
 .ap-hintspot{position:absolute;left:50%;top:6px;width:24px;height:24px;margin-left:-12px;pointer-events:none;}
+.ls-root .ap-fig .ap-svg{cursor:ew-resize;}
+.ap-trym{stroke:var(--bad-text);stroke-width:2.5;stroke-dasharray:5 3;}
+.ap-try-t{fill:var(--bad-text);}

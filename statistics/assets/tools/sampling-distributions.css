@@ -81,3 +81,9 @@
 .sd-curve-g{stroke:var(--sd-stat-ink);stroke-width:3;}
 .sd-zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:2 3;}
 .ls-root .ls-drill-stage .sd-qfig .sd-svg{max-height:100%;width:100%;}
+
+/* Population chips wrap on a phone instead of running off the edge. */
+.ls-root.ls-phone .sd-pops{flex-wrap:wrap;overflow-x:visible;gap:6px;}
+.ls-root.ls-phone .sd-pops .tchip{min-height:40px;padding:4px 12px;font-size:13.5px;}
+.sd-svg .stat-yours{fill:none;}
+.sd-ycap{margin:4px 0 0;text-align:center;font:800 14px var(--font-ui);color:var(--bad-text);}

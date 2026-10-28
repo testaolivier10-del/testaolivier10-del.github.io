@@ -64,6 +64,7 @@ function nremt() {
 const OCHEM_TOOLS = [
   ['Arrow Pusher', 'arrow-pusher'], ['Resonance Explorer', 'resonance'], ['3D Molecule Viewer', 'viewer-3d'], ['Conformation Lab', 'conformations'],
   ['Reaction Predictor', 'reaction-predictor'], ['Acid/Base Comparator', 'acid-base'], ['Spectroscopy Lab', 'spectroscopy'], ['Reagent Roadmap', 'reagent-roadmap'],
+  ['Synthesis Trainer', 'synthesis'],
 ];
 const MECH = { SN2: 'sn2', SN1: 'sn1', E2: 'e2', E1: 'e1', 'Alkene addition': 'addition', 'Carbonyl addition': 'carbonyl-addition', 'Acyl substitution': 'acyl-substitution', Aldol: 'aldol', Claisen: 'claisen', EAS: 'eas' };
 function ochem() {

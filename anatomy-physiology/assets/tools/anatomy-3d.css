@@ -1,0 +1,72 @@
+/* A&P 3D anatomy (tools/anatomy-3d.js) in the Tool Studio. The canvas,
+   loading screen and name tag come from assets/body3d/viewer.js. */
+#app.anp-app-mount{min-height:70vh;}
+#app.anp-app-mount.is-ready{min-height:0;}
+.a3-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;}
+.a3-error{font-weight:700;color:var(--bad-text);}
+.a3-muted{color:var(--muted);font-size:var(--ls-s,13.5px);}
+
+/* Stage: the model fills it, edge to edge. */
+.a3-ls .ls-stage-body{padding:0;overflow:hidden;}
+.a3-stage{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;}
+.a3-stage .bv-canvas{flex:1;height:100%;min-height:240px;}
+.a3-anchor{position:absolute;left:50%;top:40%;width:44px;height:44px;margin:-22px 0 0 -22px;pointer-events:none;}
+:not(.ls-root) > .a3-stage .bv-canvas{height:min(70vh,560px);}
+
+/* Dock */
+.a3-row:empty,.a3-q:empty{display:none;}
+.a3-row > .ls-btn{flex:1 1 0;}
+.a3-q{display:flex;flex-direction:column;gap:10px;}
+.a3-qrow > .ls-btn{flex:1 1 0;}
+.a3-form{display:flex;gap:8px;}
+.a3-input{flex:1;min-width:0;min-height:48px;padding:0 14px;border:0;border-radius:14px;background:var(--surface2,var(--white));box-shadow:inset 0 0 0 1.5px var(--line);
+  color:var(--ink);font:700 16px var(--font-ui);}
+.a3-input:focus{outline:3px solid var(--accent);outline-offset:1px;}
+.a3-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.a3-choice{min-height:52px;padding:6px 10px;border:0;border-radius:14px;background:var(--surface2,var(--white));box-shadow:inset 0 0 0 1.5px var(--line);
+  color:var(--ink);font:800 14.5px/1.25 var(--font-ui);cursor:pointer;text-align:center;}
+.a3-choice:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.a3-verdict{margin:0;font:700 var(--ls-m,15px)/1.45 var(--font-ui);}
+.a3-verdict.ok{color:var(--good-text);}
+.a3-verdict.no{color:var(--bad-text);}
+.a3-stn{margin:0;display:flex;justify-content:space-between;align-items:center;font:800 var(--ls-s,13.5px) var(--font-ui);color:var(--muted);}
+.a3-clock{font:900 18px var(--font-ui);color:var(--ink);font-variant-numeric:tabular-nums;}
+.a3-clock.is-low{color:var(--bad-text);}
+.a3-setup{display:flex;gap:12px;flex-wrap:wrap;}
+.a3-setup label,.a3-lab{display:flex;flex-direction:column;gap:4px;font:800 var(--ls-s,13.5px) var(--font-ui);color:var(--muted);flex:1 1 140px;}
+.a3-sel{min-height:44px;padding:0 10px;border:0;border-radius:12px;background:var(--surface2,var(--white));box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:700 15px var(--font-ui);}
+.a3-check{display:flex;align-items:center;gap:8px;min-height:44px;font:700 var(--ls-m,15px) var(--font-ui);}
+.a3-check input{width:20px;height:20px;accent-color:var(--cink);}
+.a3-det .a3-lab{margin:0 0 10px;}
+
+/* Why: the structure card */
+.a3-card{display:flex;flex-direction:column;gap:6px;}
+.a3-cat{margin:0;font:800 var(--ls-s,13px) var(--font-ui);color:var(--cink);}
+.a3-name{margin:0 0 4px;font:900 var(--ls-l,20px)/1.2 var(--font-ui);}
+.a3-part{margin:0;padding:6px 10px;border-radius:10px;background:var(--ctint);font-size:var(--ls-m,15px);}
+.a3-dl{margin:4px 0 0;}
+.a3-dl dt{font:900 var(--ls-s,13px) var(--font-ui);color:var(--muted);margin:10px 0 2px;}
+.a3-dl dd{margin:0;font-size:var(--ls-m,15px);line-height:1.55;}
+.a3-k{margin:10px 0 0;font:900 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
+.a3-rel{display:flex;flex-wrap:wrap;gap:8px;}
+.a3-chip,.a3-list button{min-height:44px;padding:0 14px;border:0;border-radius:999px;background:var(--surface2,var(--white));box-shadow:inset 0 0 0 1.5px var(--line);
+  color:var(--ink);font:700 var(--ls-s,13.5px) var(--font-ui);cursor:pointer;}
+.a3-chip:hover,.a3-list button:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.a3-list{display:flex;flex-wrap:wrap;gap:8px;}
+.a3-list button.selected{background:var(--cink);color:var(--white);box-shadow:none;}
+.a3-taught{margin:10px 0 0;font-size:var(--ls-m,15px);}
+.a3-kg:empty{display:none;}
+.a3-rep{margin-top:8px;}
+.a3-model{margin:12px 0 0;font-size:var(--ls-s,13.5px);}
+.a3-model summary{cursor:pointer;font:800 var(--ls-s,13.5px) var(--font-ui);color:var(--cink);min-height:40px;display:flex;align-items:center;}
+.a3-model p{margin:6px 0;line-height:1.5;}
+.a3-credit{font-size:12.5px;color:var(--muted);}
+.a3-credit a{color:inherit;}
+.a3-h{margin:0 0 8px;font:900 var(--ls-m,16px) var(--font-ui);}
+.a3-review{margin:0;padding-left:20px;display:grid;gap:8px;font-size:var(--ls-m,15px);}
+.a3-review .is-ok b{color:var(--good-text);}
+.a3-review .is-no b{color:var(--bad-text);}
+.a3-link{border:0;background:none;padding:0;color:var(--cink);font:800 inherit;text-decoration:underline;cursor:pointer;min-height:32px;}
+.a3-cap-fb{font-weight:700;}
+
+@media (prefers-reduced-motion: reduce){.a3-choice{transition:none;}}

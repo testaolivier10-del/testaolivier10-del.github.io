@@ -178,12 +178,26 @@
 
   /* Back to something molecules.js can draw. Bonds of order 0 are dropped
      rather than drawn as nothing, so a bond that broke visibly disappears. */
-  function toMolecule(st){
-    var atoms = {};
+  /* One hydrogen convention (audit 2026-10): implicit H's go in the label
+     (CH₃, OH); {hydrogens:false} keeps bare labels. */
+  function hLabel(st, k){
+    var a = st.atoms[k];
+    if(!a.el || a.group || a.el === 'H') return a.label;
+    var h = a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0);
+    if(!h) return a.el;
+    var hs = 'H' + (h > 1 ? sub(h) : '');
+    var heavy = Object.keys(st.atoms).filter(function(o){ return st.atoms[o].el !== 'H'; }).length;
+    // HX and H₂O, H₂S read hydrogen-first; BH₃, CH₄, NH₃, PH₃ and every group in a bigger molecule element-first (OH).
+    return /^(F|Cl|Br|I)$/.test(a.el) || (heavy === 1 && /^(O|S|Se)$/.test(a.el)) ? hs + a.el : a.el + hs;
+  }
+
+  function toMolecule(st, opts){
+    var atoms = {}, withH = !(opts && opts.hydrogens === false);
     Object.keys(st.atoms).forEach(function(k){
       var a = st.atoms[k];
+      var label = withH ? hLabel(st, k) : a.label;
       atoms[k] = {
-        x:a.x, y:a.y, r:a.r, label:a.label, lp:a.lp,
+        x:a.x, y:a.y, r: label !== a.label ? Math.max(a.r || 14, label.length > 2 ? 17 : 15) : a.r, label:label, lp:a.lp,
         charge: chargeGlyph(a.charge),
         role:a.role, roles:a.roles, note:a.note
       };
@@ -725,6 +739,80 @@
     return { structure: next, issues: issues, steps: steps };
   }
 
+  /* Legal arrow ends that can receive electrons, for the pulse after a source
+     is picked (audit 2026-10). A nudge, not an answer key. */
+  function destinations(st, from){
+    var out = [];
+    if(!st || !from) return out;
+    function poor(k){
+      var a = st.atoms[k];
+      if(!a || !a.el || a.group) return false;
+      var fc = formalCharge(st, k);
+      if(fc > 0) return true;
+      if(fc < 0) return false;
+      if(electronCount(st, k) < octetOf(st, k)) return true;
+      if(a.el === 'H'){
+        // An acidic H (on O, N, a halogen) or a beta H next to a leaving group.
+        return neighbors(st, k).some(function(n){
+          var b = st.atoms[n];
+          if(!b || !b.el) return false;
+          if(b.el !== 'C') return true;
+          return neighbors(st, n).some(function(m){
+            return m !== k && neighbors(st, m).some(function(x){
+              var e = st.atoms[x] && st.atoms[x].el;
+              return x !== n && st.atoms[m].el === 'C' && /^(Cl|Br|I|O)$/.test(e || '') && (e !== 'O' || formalCharge(st, x) > 0);
+            });
+          });
+        });
+      }
+      // δ+: bonded to something more electronegative (C–Br, C=O), or a carbon carrying a leaving group (C–I too).
+      return neighbors(st, k).some(function(n){
+        var b = st.atoms[n];
+        return b && b.el && info(b.el) && info(a.el) && info(b.el).en - info(a.el).en > 0.35;
+      }) || (a.el === 'C' && neighbors(st, k).some(function(n){ return /^(Cl|Br|I)$/.test(st.atoms[n].el || ''); }));
+    }
+    var fb = isBondKey(from) ? parseBondKey(from) : null;
+    var fbOrder = fb ? ((findBond(st, fb.a, fb.b) || {}).order || 0) : 0;
+    var mine = fb ? [] : neighbors(st, from);
+    Object.keys(st.atoms).forEach(function(k){
+      if(k === from || mine.indexOf(k) !== -1) return;
+      // A sigma bond only breaks onto its own ends; only a pi bond attacks.
+      if(fb && fbOrder < 2 && k !== fb.a && k !== fb.b) return;
+      var arrow = { from: from, to: k };
+      if(checkSource(st, arrow) && checkSource(st, arrow).level === 'error') return;
+      var d = deltaFor(st, arrow);
+      if(!d.ok) return;
+      // A bond's own ends always qualify: that is a leaving group leaving.
+      if(fb && (k === fb.a || k === fb.b)){
+        var x = st.atoms[k], y = st.atoms[k === fb.a ? fb.b : fb.a];
+        if(x.el && y.el && info(x.el) && info(y.el) && info(x.el).en >= info(y.el).en) out.push(k);
+        return;
+      }
+      if(poor(k)) out.push(k);
+    });
+    st.bonds.forEach(function(b){
+      if(b.order < 1) return;
+      var key = 'bond:' + b.a + '-' + b.b;
+      if(fb && ((fb.a === b.a && fb.b === b.b) || (fb.a === b.b && fb.b === b.a))) return;
+      var d = deltaFor(st, { from: from, to: key });
+      if(!d.ok) return;
+      // Into a bond only toward an electron-poor partner (a new pi bond, a C=C forming).
+      var other = fb ? (sharedAtom(fb, { a:b.a, b:b.b }) === b.a ? b.b : b.a) : (b.a === from ? b.b : b.a);
+      if(st.atoms[other] && st.atoms[other].el === 'H') return;
+      if(!fb && (b.a === from || b.b === from)){
+        // Into its own bond only toward a cation, open octet, pi bond or leaving group.
+        var o = st.atoms[other];
+        var canTake = formalCharge(st, other) > 0 || electronCount(st, other) < octetOf(st, other) ||
+          bondsAt(st, other).some(function(x){ return x.order >= 2; }) ||
+          neighbors(st, other).some(function(n){ var e = st.atoms[n]; return n !== from && e && (/^(Cl|Br|I)$/.test(e.el || '') || (e.el === 'O' && formalCharge(st, n) > 0)); });
+        if(o && canTake) out.push(key);
+        return;
+      }
+      if(poor(other)) out.push(key);
+    });
+    return out;
+  }
+
   /* Did the electrons end up somewhere sensible? Separate from legality:
      a mechanism can be legal and still be bad chemistry. These are the
      observations a tutor would make while watching. */
@@ -800,6 +888,7 @@
     deltaFor: deltaFor,
     checkSource: checkSource,
     apply: apply,
+    destinations: destinations,
     commentary: commentary
   };
 })();

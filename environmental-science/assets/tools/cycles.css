@@ -92,3 +92,24 @@
 .cy-c[aria-pressed="true"]{border-color:var(--bad-text,#A0291E);}
 .cy-why-l{margin:0;padding-left:18px;display:grid;gap:6px;}
 @media (prefers-reduced-motion:reduce){.cy-fx{display:none;}}
+
+/* The running years (play row) and the trend under the picture. */
+.cy-run{display:flex;flex-direction:column;gap:6px;}
+.cy-run[hidden]{display:none;}
+.cy-go{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.cy-trend{flex:none;margin:0 4px;}
+.cy-trend[hidden]{display:none;}
+.cy-tsvg{display:block;width:100%;height:80px;font-family:var(--font-ui);}
+.cy-tk{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.cy-th{fill:var(--ink);font-weight:900;}
+.cy-taxis{stroke:var(--line);stroke-width:1.2;}
+.cy-tghost{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-dasharray:3 4;opacity:.5;}
+.cy-tline{fill:none;stroke:var(--cy-human,#C2461C);stroke-width:3;stroke-linejoin:round;}
+.cy-tdot{fill:var(--cy-human,#C2461C);stroke:var(--white);stroke-width:2;}
+.cy-tnow{fill:var(--ink);font:900 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.cy-trend{--cy-human:#C2461C;}
+:root[data-theme="dark"] .cy-trend{--cy-human:#FF8A65;}
+@media (max-width:640px){
+  .ls-root .cy-cycles.ls-scroll,.ls-root .cy-procs.ls-scroll{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+  .ls-root .cy-cycles .tchip,.ls-root .cy-procs .tchip{flex:none;white-space:nowrap;}
+}

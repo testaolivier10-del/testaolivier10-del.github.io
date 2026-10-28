@@ -461,7 +461,7 @@
   }, { stage: function(host, s){ if(s && s.draw) s.draw(host); },
     // Tool Studio (docs/tools-calm.md): the scene is the stage; play, the
     // beaker choice and the concentration slider are the dock.
-    studio: { sim: true, modeLabels: { predict: 'Predict' }, dock: ['.os-chal', '@primary', '.os-pick', '.os-play'],
+    studio: { sim: true, modeLabels: { predict: 'Predict' }, dock: ['.os-chal', '@primary', '.os-pick', '.os-play'], views: [{ sel: '.os-graph', label: 'Mass graph' }],
       hint: { target: '.ls-primary input[type=range]', text: 'Slide the beaker concentration' },
       pills: function(g){ return [{ k: 'Mass', html: g.ro(4), tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: 'Water moves ' + g.ro(3), tone: 'ghost' }]; } } });

@@ -83,19 +83,40 @@
         cells.push({ i: i, j: j, x: x, y: y, w: cw, h: ch });
         order++;
       }
-      out.push(txt(x0 + C * cw + totW / 2, y + ch / 2 + 5, String(t.rowTotals[i]), 'cs-t'));
+      var hlR = v.hlTotals && v.sel && v.sel[0] === i;
+      if(hlR) out.push('<rect class="cs-hl" x="' + f2(x0 + C * cw + 3) + '" y="' + f2(y + 6) + '" width="' + f2(totW - 6) + '" height="' + f2(ch - 12) + '" rx="8"/>');
+      out.push(txt(x0 + C * cw + totW / 2, y + ch / 2 + 5, String(t.rowTotals[i]), 'cs-t' + (hlR ? ' is-hl' : '')));
     }
     var yT = y0 + headH + R * ch;
     out.push('<line class="cs-rule" x1="' + f2(pad) + '" y1="' + f2(yT + 2) + '" x2="' + f2(W - pad) + '" y2="' + f2(yT + 2) + '"/>');
     out.push(txt(pad + labW - 8, yT + ch / 2 + 6, 'Total', 'cs-rh cs-tot', 'end'));
-    for(j = 0; j < C; j++) out.push(txt(x0 + cw * (j + 0.5), yT + ch / 2 + 6, String(t.colTotals[j]), 'cs-t'));
-    out.push(txt(x0 + C * cw + totW / 2, yT + ch / 2 + 6, String(t.total), 'cs-t cs-gt'));
+    for(j = 0; j < C; j++){
+      var hlC = v.hlTotals && v.sel && v.sel[1] === j;
+      if(hlC) out.push('<rect class="cs-hl" x="' + f2(x0 + cw * j + 6) + '" y="' + f2(yT + 8) + '" width="' + f2(cw - 12) + '" height="' + f2(ch - 12) + '" rx="8"/>');
+      out.push(txt(x0 + cw * (j + 0.5), yT + ch / 2 + 6, String(t.colTotals[j]), 'cs-t' + (hlC ? ' is-hl' : '')));
+    }
+    if(v.hlTotals) out.push('<rect class="cs-hl" x="' + f2(x0 + C * cw + 3) + '" y="' + f2(yT + 8) + '" width="' + f2(totW - 6) + '" height="' + f2(ch - 12) + '" rx="8"/>');
+    out.push(txt(x0 + C * cw + totW / 2, yT + ch / 2 + 6, String(t.total), 'cs-t cs-gt' + (v.hlTotals ? ' is-hl' : '')));
+    // The rows and columns counted for df (no totals): their headers outlined.
+    if(v.hlHeads){
+      for(j = 0; j < C; j++) out.push('<rect class="cs-hlh" x="' + f2(x0 + cw * j + 3) + '" y="' + f2(y0 + 2) + '" width="' + f2(cw - 6) + '" height="' + f2(headH - 4) + '" rx="7"/>');
+      for(i = 0; i < R; i++) out.push('<rect class="cs-hlh" x="' + f2(pad + 2) + '" y="' + f2(y0 + headH + i * ch + 4) + '" width="' + f2(labW - 8) + '" height="' + f2(ch - 8) + '" rx="7"/>');
+    }
+    // The student's answer on the chosen cell, in red, next to the formula.
+    if(v.yours && (v.sel || v.yours.at === 'table')){
+      var yc = v.yours.at === 'table' ? null : cells.filter(function(c){ return c.i === v.sel[0] && c.j === v.sel[1]; })[0];
+      if(yc || v.yours.at === 'table'){
+        if(!yc) yc = { x: pad, y: y0, w: labW, h: headH };
+        var yt = 'Yours ' + v.yours.text, yw = yt.length * 7.2 + 14, yx = Math.max(2, Math.min(W - yw - 2, yc.x + yc.w / 2 - yw / 2)), yy = yc.y - 2 < 24 ? yc.y + yc.h - 2 : yc.y - 24;
+        out.push('<g class="cs-yours"><rect x="' + f2(yx) + '" y="' + f2(yy) + '" width="' + f2(yw) + '" height="22" rx="11"/>' + txt(yx + yw / 2, yy + 15.5, yt) + '</g>');
+      }
+    }
     var tableH = yT + ch;
     // the chi-square curve
     if(v.curve && H - tableH > 110){
       var top = tableH + 14, cb = H - (small ? 30 : 34), lft = pad + 6, rgt = W - (v.noEnl ? pad + 6 : 52);
       var df = t.df, crit = D().invChi2(1 - (v.alpha || 0.05), df), xmax = Math.max(crit * 1.45, Math.min(t.chi2 * 1.12, crit * 3), df + 3 * Math.sqrt(2 * df));
-      var full = v.showComp && v.showE >= all, chi = t.chi2;
+      var full = v.showComp && v.showE >= all && !v.hideObs, chi = t.chi2;
       var f = function(x){ return D().chi2Pdf(x, df); }, peak = 0, k;
       for(k = 1; k <= 200; k++){ var fx = f(xmax * k / 200); if(isFinite(fx) && fx > peak) peak = fx; }
       if(df <= 2) peak = Math.min(peak, f(xmax * 0.05));
@@ -125,6 +146,11 @@
       var st = xmax > 40 ? 10 : xmax > 16 ? 5 : xmax > 7 ? 2 : 1;
       for(k = 0; k <= xmax + 1e-9; k += st){ var tx0 = sx(k); out.push('<line class="cs-tick" x1="' + f2(tx0) + '" y1="' + f2(my) + '" x2="' + f2(tx0) + '" y2="' + f2(my + 5) + '"/>' + txt(tx0, my + 18, String(k), 'cs-tl')); }
       out.push(txt(rgt, top + 4, 'χ² with df = ' + df, 'cs-dfl', 'end'));
+      // The student's χ² (a wrong try), dashed, before the right one is shown.
+      if(v.yoursX != null && isFinite(v.yoursX) && v.yoursX >= 0){
+        var yxx = sx(Math.min(v.yoursX, xmax));
+        out.push('<line class="stat-yours" x1="' + f2(yxx) + '" y1="' + f2(top + 50) + '" x2="' + f2(yxx) + '" y2="' + f2(my) + '"/>' + txt(Math.max(lft + 40, Math.min(rgt - 40, yxx)), top + 64, 'yours ' + F(v.yoursX, 2) + (v.yoursX > xmax ? ' →' : ''), 'stat-yours-t'));
+      }
       if(full){
         var mx = sx(Math.min(chi, xmax));
         out.push('<line class="cs-obs" x1="' + f2(mx) + '" y1="' + f2(top + 26) + '" x2="' + f2(mx) + '" y2="' + f2(my) + '"/>');
@@ -175,7 +201,8 @@
     if(!studies.length){ host.innerHTML = '<p class="bt-small">The explore studies arrive with their unit.</p>'; return { studio: function(){} }; }
     var S = { st: null, obs: null, sel: [0, 0], test: 'homogeneity', walk: -1, alpha: 0.05, touched: false, seed: 1 };
     host.innerHTML = '<section class="bt-problem cs-ex" aria-labelledby="' + id + '-h"><h2 id="' + id + '-h" class="sr-only">Explore: a chi-square test from a two-way table</h2>' +
-      '<div class="cs-stage"><div class="cs-fig"><svg class="cs-svg" role="group" aria-labelledby="' + id + '-t"><title id="' + id + '-t">Two-way table and chi-square distribution</title><g class="cs-layer"></g></svg></div><p class="sr-only cs-live"></p></div>' +
+      '<div class="cs-stage"><div class="cs-fig"><svg class="cs-svg" role="group" aria-labelledby="' + id + '-t"><title id="' + id + '-t">Two-way table and chi-square distribution</title><g class="cs-layer"></g></svg></div>' +
+        '<p class="cs-legend" aria-hidden="true"><span class="cs-lg-up">Above expected</span><span class="cs-lg-down">Below expected</span><span class="cs-lg-p">p-value</span></p><p class="sr-only cs-live"></p></div>' +
       '<div class="cs-dock"><div class="cs-cellbox"></div><div class="cs-btns"></div><div class="cs-testbox"></div></div>' +
       '<div class="cs-why"></div><div class="cs-det"></div></section>';
     var LS = null;
@@ -190,6 +217,15 @@
       var i = S.sel[0], j = S.sel[1], v = S.obs[i][j], mx = Math.max(60, Math.ceil(Math.max.apply(null, S.obs.map(function(r){ return Math.max.apply(null, r); })) * 1.6 / 10) * 10);
       cellSl = T.slider({ label: 'Observed count: ' + S.st.rows[i] + ', ' + S.st.cols[j], min: 0, max: mx, step: 1, value: v, onInput: function(x){ act(); setCount(i, j, x); } });
       var box = q('.cs-cellbox'); box.innerHTML = ''; box.appendChild(cellSl.el);
+      // Type a count instead of sliding to it (audit: "can't type a count").
+      var tid = id + '-n', row = el('div', 'cs-type', '<label for="' + tid + '">Type a count</label><input type="text" id="' + tid + '" inputmode="numeric" autocomplete="off" spellcheck="false" value="' + v + '">');
+      var inp = row.querySelector('input');
+      function typed(){ var x = parseInt(inp.value, 10); if(!isFinite(x) || x < 0){ inp.value = String(S.obs[i][j]); return; } act(); x = Math.min(999, x); setCount(i, j, x); cellSl.set(Math.min(+cellSl.input.max, S.obs[i][j])); inp.value = String(S.obs[i][j]); say(true); }
+      inp.addEventListener('change', typed);
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); typed(); } });
+      cellSl.input.addEventListener('input', function(){ inp.value = cellSl.input.value; });
+      cellSl.el.querySelectorAll('.bt-step').forEach(function(b){ b.addEventListener('click', function(){ inp.value = cellSl.input.value; }); });
+      cellSl.el.appendChild(row);
     }
     function setCount(i, j, x){
       x = Math.max(0, Math.round(x));
@@ -338,15 +374,32 @@
     box.innerHTML = '<svg class="cs-svg" role="img"><title></title><g class="cs-layer"></g></svg>';
     host.appendChild(box);
     var svg = box.querySelector('svg'), layer = box.querySelector('.cs-layer'), title = box.querySelector('title');
-    var all = fg.obs.length * fg.obs[0].length, st = { showE: 0, comp: false, curve: false };
+    var all = fg.obs.length * fg.obs[0].length, st = { showE: 0, comp: false, curve: false, hideObs: false, hlTotals: false, hlHeads: false, yours: null, yoursX: null };
     function draw(w, h){
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svg.setAttribute('width', w); svg.setAttribute('height', h);
-      var f = figure({ obs: fg.obs, rows: fg.rows, cols: fg.cols, sel: fg.i >= 0 ? [fg.i, fg.j] : null, showE: st.showE, showComp: st.comp, curve: st.curve, W: w, H: h, alpha: 0.05, compText: true });
+      var f = figure({ obs: fg.obs, rows: fg.rows, cols: fg.cols, sel: fg.i >= 0 ? [fg.i, fg.j] : null, showE: st.showE, showComp: st.comp, curve: st.curve, hideObs: st.hideObs, W: w, H: h, alpha: p.data && p.data.alpha || 0.05, compText: true,
+        hlTotals: st.hlTotals, hlHeads: st.hlHeads, yours: st.yours, yoursX: st.yoursX });
       layer.innerHTML = f.svg;
-      title.textContent = 'Two-way table of observed counts' + (st.showE ? ' with expected counts' : '') + (st.curve ? ' and the chi-square distribution' : '');
+      title.textContent = 'Two-way table of observed counts' + (st.showE ? ' with expected counts' : '') + (st.curve ? ' and the chi-square distribution' : '') + (st.yours ? '. Your answer: ' + st.yours.text : '');
     }
     var sized = fit(box, draw);
-    api.csFig = { set: function(k){ if(k === 'E') st.showE = all; if(k === 'comp'){ st.showE = all; st.comp = true; } if(k === 'curve'){ st.showE = all; st.comp = true; st.curve = true; } sized.redraw(); } };
+    api.csFig = {
+      set: function(k){ st.yours = null; st.yoursX = null; st.hlTotals = false; st.hlHeads = false; st.hideObs = false; if(k === 'E') st.showE = all; if(k === 'comp'){ st.showE = all; st.comp = true; } if(k === 'curve'){ st.showE = all; st.comp = true; st.curve = true; } sized.redraw(); },
+      // A step became current: draw what it needs (the totals for E, the
+      // headers for df, the curve without the answer for chi-square).
+      start: function(key){
+        st.yours = null; st.yoursX = null; st.hlTotals = key === 'E'; st.hlHeads = key === 'df';
+        if(key === 'chi2'){ st.showE = all; st.comp = true; st.curve = true; st.hideObs = true; }
+        sized.redraw();
+      },
+      // A wrong try: the student's number on the picture.
+      yours: function(key, v){
+        if(!isFinite(v)) return;
+        if(key === 'chi2'){ st.yoursX = v; st.yours = null; }
+        else st.yours = { text: F(v, key === 'df' ? 0 : key === 'comp' ? 3 : key === 'p' ? 4 : 2), at: key === 'df' || key === 'p' ? 'table' : 'cell' };
+        sized.redraw();
+      }
+    };
   }
 
   T.mount(SLUG, function(app, data){
@@ -366,6 +419,25 @@
             if(s.key === 'comp') api.csFig.set('comp');
             if(s.key === 'chi2' || s.key === 'df') api.csFig.set(s.key === 'chi2' ? 'curve' : 'comp');
             if(s.key === 'hyp') api.csFig.set('E');
+          },
+          onStepStart: function(s, api){ if(api.csFig) api.csFig.start(s.key); },
+          onTry: function(s, t, api){ if(api.csFig && !t.right && s.kind === 'num') api.csFig.yours(s.key, t.value); },
+          // The method with this problem's own numbers.
+          method: function(s, p){
+            var d = p.data, f = p.fig;
+            var CH = { test: 'Ask how the data were collected: one sample classified on two variables is independence; separate samples or groups compared on one variable is homogeneity.',
+              hyp: tx('$H_0$ is the "nothing going on" claim: no association (independence) or the same distribution in every group (homogeneity).'),
+              cond: 'The condition is about expected counts, the small numbers in each cell: every one must be at least 5.',
+              decide: 'Reject $H_0$ only when the p-value is less than α.', conclude: tx('Use evidence language ("convincing evidence"), state $H_a$ in context, and talk about the population, not the sample.') };
+            if(CH[s.key]) return s.key === 'decide' ? tx(CH.decide) : CH[s.key];
+            if(!d || !d.obs || f.i < 0) return null;
+            var t = CS.table(d.obs), R = d.obs.length, C = d.obs[0].length;
+            if(s.key === 'E') return tx('The highlighted totals: $E = \\frac{(\\text{row total})(\\text{column total})}{\\text{grand total}} = \\frac{(' + t.rowTotals[f.i] + ')(' + t.colTotals[f.j] + ')}{' + t.total + '}$.');
+            if(s.key === 'comp') return tx('Use the observed count $O = ' + d.obs[f.i][f.j] + '$ and the expected count $E$ from step 1: square $O - E$, then divide by $E$.');
+            if(s.key === 'df') return tx('Count the outlined categories, not the totals: ' + R + ' rows and ' + C + ' columns, so $df = (r - 1)(c - 1)$.');
+            if(s.key === 'chi2') return tx('Add the component shown in every one of the ' + (R * C) + ' cells. Your sum is the dashed line.');
+            if(s.key === 'p') return tx('The p-value is the shaded area to the right of $\\chi^2$ under the curve with $df = ' + t.df + '$: technology gives $P(\\chi^2 \\ge ' + F(t.chi2, 2) + ')$.');
+            return null;
           }
         });
       },

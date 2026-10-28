@@ -82,13 +82,14 @@
 :root[data-theme="dark"] .ld-lcd{fill:#3E7A52;} :root[data-theme="dark"] .ld-prot{fill:#2F78A8;fill-opacity:.35;}
 .ld-qdata table{font-size:14px;}
 .ls-root .ls-drill-stage .ld-qfig{overflow:auto;}
+/* Portrait phone (audit 2026-10: the graph sat on a separate tab): the bench
+   above, the graph below, both live, so each reading lands on the graph as
+   it is taken. The Bench / Graph switch stays for a phone on its side. */
 @media (max-width:700px){
-  .ld-view{flex-direction:column;gap:6px;}
-  .ld-view > .ld-vtoggle,.ls-root .ld-view > .ld-vtoggle.tseg{display:inline-flex;align-self:flex-start;flex:none;}
-  .ld-vtoggle button{min-height:36px !important;}
-  .ld-view .ld-graph-v{display:none;}
-  .ld-view.show-graph .ld-graph-v{display:flex;}
-  .ld-view.show-graph .ld-bench-v{display:none;}
+  .ld-view{flex-direction:column;gap:4px;}
+  .ld-view > .ld-vtoggle,.ls-root .ld-view > .ld-vtoggle.tseg{display:none;}
+  .ld-view .ld-bench-v{flex:0 1 auto;max-height:38%;}
+  .ld-view .ld-graph-v{flex:1 1 0;justify-content:flex-start;}
   .ld-qdata{grid-template-columns:minmax(0,1fr);}
   .ld-qbench svg:not(.ld-qsmall){display:none;}
   .ld-qbench .ld-qsmall{display:block;max-height:240px;background:var(--surface2);}

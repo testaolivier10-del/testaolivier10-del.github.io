@@ -313,6 +313,24 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .tool-root .omol line:not(.obond){stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;}
 .tool-root .omol line.bond-faint{stroke:var(--line);}
 .tool-root .omol .lp-dot{fill:var(--ink);opacity:.8;}
+/* Bond tap targets (audit 2026-10): drawn above the atoms, between the labels, and at least 24 px across on a phone.
+   Butt ends, so the hit line never reaches into a label. */
+.tool-root .omol .obond{stroke-width:26;stroke-linecap:butt;}
+.tool-root .omol .obond--band,.tool-root .omol .obond--band.obond--target{stroke:none!important;stroke-width:0!important;fill:transparent;cursor:pointer;}
+.tool-root .omol .obond--band.obond--target{fill:var(--tint-accent);}
+.tool-root .omol .obond--band:hover,.tool-root .omol .obond--band.chosen,.tool-root .omol .obond--band:focus{fill:var(--tint-accent);stroke:none;outline:none;opacity:.7;}
+/* Charges: a circled sign beside the label, colored by sign. */
+.tool-root .omol .atom .atom-chg circle.chg-bg{stroke:none!important;stroke-dasharray:none!important;}
+.tool-root .omol .atom .atom-chg--neg circle.chg-bg{fill:#C62828!important;}
+.tool-root .omol .atom .atom-chg--pos circle.chg-bg{fill:#1F4FBF!important;}
+.tool-root .omol .atom .atom-chg text{fill:#fff!important;font-family:var(--font-ui);font-weight:900;pointer-events:none;}
+/* After a source is picked, the places its electrons may go pulse (audit 2026-10). */
+@keyframes omolPulse{0%,100%{opacity:.25}50%{opacity:.85}}
+.tool-root .omol .obond.obond--target{stroke:var(--tint-accent);fill:var(--tint-accent);animation:omolPulse 1.3s ease-in-out infinite;}
+.tool-root .omol .atom.atom--target circle.atom-hit{fill:var(--tint-accent)!important;animation:omolPulse 1.3s ease-in-out infinite;}
+@media (prefers-reduced-motion:reduce){.tool-root .omol .obond.obond--target,.tool-root .omol .atom.atom--target circle.atom-hit{animation:none;opacity:.6;}}
+/* A skeletal ring vertex: no label; a tappable one keeps a small ring. */
+.tool-root .omol .atom--vertex.atom--static circle:not(.atom-hit):not(.lp-dot){stroke:none;fill:transparent;}
 .tool-root .omol .oarrow-line{stroke-width:2.6;}
 .tool-root .omol .oarrow:hover .oarrow-line{stroke-width:3.4;}
 .rp-corner{position:absolute;width:calc(50% - 10px);height:calc(50% - 26px);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;align-items:start;gap:3px 6px;
@@ -429,6 +447,28 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
    wide, so a phone showed only the 12 to 4 ppm end), on a panel with the
    integration labels in the spectrum's ink. */
 .sp-chart .sp-int{font:800 11px var(--font-mono);fill:var(--muted);}
+/* Audit 2026-10: multiplicity under each integration, a key, and the IR fingerprint region shaded and named. */
+.sp-mult{font:800 12px var(--font-ui);fill:var(--accent-text,var(--accent));font-style:italic;}
+.sp-lead{stroke:var(--line);stroke-width:1;stroke-dasharray:2 2;}
+.sp-key{font:600 10px var(--font-ui);fill:var(--muted);}
+@container (max-width:560px){ .sp-ls .sp-key{font-size:14px;} }
+.sp-fp{fill:var(--accent);opacity:.06;}
+.sp-fp-t{font:700 10.5px var(--font-ui);fill:var(--muted);letter-spacing:.02em;}
+.sp-link .sp-sig.is-on .sp-mult{fill:var(--accent);}
+/* Reference: one row per band, name then a range bar on a shared axis. */
+.sp-rlist{display:flex;flex-direction:column;gap:2px;}
+.sp-rlist__axis{display:grid;grid-template-columns:minmax(118px,38%) 1fr;gap:8px;position:sticky;top:0;background:inherit;z-index:1;padding:2px 0 4px;}
+.sp-rlist__ticks{position:relative;height:16px;border-bottom:1.5px solid var(--line);}
+.sp-rlist__ticks i{position:absolute;transform:translateX(-50%);font:700 11px var(--font-mono);font-style:normal;color:var(--muted);}
+.sp-rlist__ticks i:first-child{transform:none;} .sp-rlist__ticks i:last-child{transform:translateX(-100%);}
+.sp-band.sp-rrow{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(118px,38%) 1fr;gap:8px;align-items:center;min-height:32px;padding:2px 6px 2px 4px;border-radius:10px;cursor:pointer;}
+.sp-band.sp-rrow:hover,.sp-band.sp-rrow:focus-visible{background:var(--tint-accent);outline:none;}
+.sp-band.sp-rrow.on{background:var(--tint-accent);box-shadow:inset 0 0 0 1.5px var(--accent);}
+.sp-rrow__name{font:700 13.5px/1.2 var(--font-ui);color:var(--ink);}
+.sp-rrow__track{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--line-soft) 1px,transparent 1px) 0 0/16.66% 100%;}
+.sp-rrow__bar{position:absolute;top:1px;bottom:1px;min-width:6px;border-radius:5px;background:var(--accent);}
+.sp-band--variable .sp-rrow__bar{background:repeating-linear-gradient(90deg,var(--accent) 0 6px,transparent 6px 10px);}
+.sp-band.sp-rrow.on .sp-rrow__bar{background:var(--accent-text,var(--accent));}
 .sp-chart .sp-sig{cursor:pointer;}
 .sp-chart .sp-sig:hover line{stroke:var(--accent);}
 .sp-link .sp-sig.is-on .sp-int{fill:var(--accent-text);}
@@ -462,6 +502,67 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-trail__n.is-new{animation:rr-in .35s ease-out;}
 .rr-trail__gap{font:900 13px var(--font-mono);color:var(--muted);padding:4px 10px;border:2px dashed var(--line);border-radius:var(--radius-pill);}
 .rr-trail__arrow{color:var(--muted);font-weight:900;}
+/* ---- Reagent roadmap: the map as a node graph (audit 2026-10) ----------- */
+.rr-graph{position:relative;}
+.rr-graph svg{display:block;width:100%;height:auto;max-height:70vh;overflow:hidden;}
+.rr-graph .rr-lane{fill:var(--paper);stroke:var(--line-soft);stroke-width:1.5;}
+.rr-graph .rr-lane--ring{stroke-dasharray:5 4;}
+.rr-graph .rr-lane__k{font:900 11px var(--font-ui);fill:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
+.rr-graph.is-wide .rr-lane__k{font-size:11.5px;}
+.rr-graph .rr-edge__line{fill:none;stroke:var(--line);stroke-width:1.1;}
+.rr-graph .rr-edge.is-faint .rr-edge__line{stroke:var(--line-soft);opacity:.85;}
+.rr-graph .rr-edge.is-route .rr-edge__line,.rr-graph .rr-edge.is-out .rr-edge__line,.rr-graph .rr-edge.is-in .rr-edge__line,.rr-graph .rr-edge.is-dead .rr-edge__line{stroke-width:3.4;stroke-linecap:round;}
+.rr-graph .rr-edge.is-route .rr-edge__line{stroke:var(--accent);}
+.rr-graph .rr-edge.is-route .rr-edge__head{fill:var(--accent);}
+.rr-graph .rr-edge.is-out .rr-edge__line{stroke:#1F8A6B;} .rr-graph .rr-edge.is-out .rr-edge__head{fill:#1F8A6B;}
+.rr-graph .rr-edge.is-in .rr-edge__line{stroke:#C27A12;stroke-dasharray:6 4;} .rr-graph .rr-edge.is-in .rr-edge__head{fill:#C27A12;}
+.rr-graph .rr-edge.is-dead .rr-edge__line{stroke:var(--bad-text,#C62828);stroke-dasharray:5 4;} .rr-graph .rr-edge.is-dead .rr-edge__head{fill:var(--bad-text,#C62828);}
+.rr-graph .rr-edge__n circle{fill:var(--accent);stroke:var(--white);stroke-width:2;}
+.rr-graph .rr-edge__n text{font:900 11px var(--font-mono);fill:var(--on-accent-fill,#fff);}
+.rr-graph .rr-node{cursor:pointer;transform-box:fill-box;transform-origin:center;}
+.rr-graph .rr-node.is-arrive{box-shadow:none;}
+.rr-levels{margin:6px 0 0;}
+.rr-levels > summary{font:800 13px var(--font-ui);color:var(--muted);cursor:pointer;}
+.rr-levels dl{margin:6px 0 0;display:grid;gap:4px;}
+.rr-levels dl div{display:grid;grid-template-columns:minmax(110px,30%) 1fr;gap:8px;font:600 13px/1.4 var(--font-ui);}
+.rr-levels dt{font-weight:800;color:var(--ink);} .rr-levels dd{margin:0;color:var(--muted);}
+.rr-ls .rr-ls-box > .rr-graph{flex-direction:column;}
+.rr-ls .rr-ls-box > .rr-graph > svg{flex:1;min-height:0;}
+.rr-ls .rr-ls-box > .rr-graph > .rr-levels{flex:none;}
+.rr-graph .rr-node__box{fill:var(--white);stroke:var(--line);stroke-width:1.5;transition:stroke .12s ease,fill .12s ease;}
+.rr-graph .rr-node:hover .rr-node__box,.rr-graph .rr-node:focus-visible .rr-node__box{stroke:var(--accent);stroke-width:2.5;}
+.rr-graph .rr-node:focus{outline:none;}
+.rr-graph .rr-node__name{font:800 12px var(--font-ui);fill:var(--ink);}
+.rr-graph .rr-node__f{font:600 10px var(--font-mono);fill:var(--muted);}
+.rr-graph .rr-node.is-dim .rr-node__box{stroke:var(--line-soft);}
+.rr-graph .rr-node.is-dim text{opacity:.62;}
+.rr-graph .rr-node.is-on .rr-node__box{stroke:var(--accent);fill:var(--tint-accent);stroke-width:2.2;}
+.rr-graph .rr-node.is-start .rr-node__box,.rr-graph .rr-node.is-end .rr-node__box,.rr-graph .rr-node[aria-pressed="true"] .rr-node__box{fill:var(--navy);stroke:var(--navy);}
+.rr-graph .rr-node.is-start text,.rr-graph .rr-node.is-end text,.rr-graph .rr-node[aria-pressed="true"] text{fill:var(--on-accent,#fff);}
+.rr-graph .rr-node.is-here .rr-node__box{stroke:var(--accent);stroke-width:4;}
+.rr-graph .rr-node__nb circle{fill:var(--accent);stroke:var(--white);stroke-width:2;}
+.rr-graph .rr-node__nb text{font:900 10.5px var(--font-mono);fill:var(--on-accent-fill,#fff);}
+.rr-graph .rr-zoom{position:absolute;top:4px;right:4px;z-index:2;min-height:36px;padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font:800 13px var(--font-ui);cursor:pointer;}
+.rr-graph .rr-zoom:hover,.rr-graph .rr-zoom:focus-visible{border-color:var(--accent);outline:none;}
+.rr-graph .rr-strong{pointer-events:none;}
+.rr-graph .rr-strong .rr-edge__line{paint-order:stroke;}
+.rr-graph .rr-strong .rr-edge.is-route .rr-edge__line,.rr-graph .rr-strong .rr-edge.is-out .rr-edge__line,.rr-graph .rr-strong .rr-edge.is-in .rr-edge__line,.rr-graph .rr-strong .rr-edge.is-dead .rr-edge__line{filter:drop-shadow(0 0 1.5px var(--white)) drop-shadow(0 0 1.5px var(--white));}
+.rr-glegend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 0;font:700 12px var(--font-ui);color:var(--muted);}
+.rr-gk{display:inline-block;width:22px;height:4px;border-radius:2px;}
+.rr-gk--out{background:#1F8A6B;} .rr-gk--in{background:repeating-linear-gradient(90deg,#C27A12 0 6px,transparent 6px 9px);}
+/* The route as step cards. */
+.rr-stepcards{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.rr-stepcard{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline;padding:8px 10px;border-radius:12px;background:var(--surface2,var(--paper));}
+.rr-stepcard__n{grid-row:span 2;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:12px;background:var(--accent);color:var(--on-accent-fill,#fff);font:900 12px var(--font-mono);}
+.rr-stepcard__to{font:700 14px var(--font-ui);color:var(--ink);}
+.rr-stepcard__rx{font:600 13px/1.35 var(--font-ui);color:var(--ink-2,var(--muted));}
+/* In the studio the map takes the stage's height and the step cards sit under it. */
+.rr-ls .rr-ls-route-stage,.rr-ls .rr-ls-groups-stage,.rr-ls .rr-ls-puzzle-stage{height:100%;}
+.rr-ls .rr-ls-box > .rr-graph{flex:1 1 auto;min-height:260px;display:flex;}
+.rr-ls .rr-ls-box > .rr-graph svg{flex:1;width:100%;height:100%;max-height:none;}
+.rr-ls .rr-ls-box > .rr-stepcards{flex:none;margin:0;}
+.ls-root.ls-phone .rr-graph .rr-node__name{font-size:13px;}
+.ls-root.ls-phone .rr-graph .rr-node__f{font-size:11px;}
 .rr-pz .rr-node:disabled{cursor:default;opacity:1;}
 .rr-pz .rr-node.is-here{box-shadow:0 0 0 3px var(--accent);}
 .rr-pz .rr-node.is-arrive{animation:rr-arrive .6s cubic-bezier(.2,.8,.2,1);}
@@ -555,6 +656,25 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .cf-meter{margin-top:12px;}
 .cf-meter__h{margin:0 0 6px;font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
 .cf-meter__h .tmuted{text-transform:none;letter-spacing:0;font-size:11px;}
+/* Chair bond colors (audit 2026-10), keyed above the meter. */
+.cf-key{display:flex;gap:14px;margin:0 0 6px;font:800 12px var(--font-ui);color:var(--ink);}
+.cf-key span::before{content:"";display:inline-block;width:18px;height:5px;border-radius:3px;margin-right:6px;vertical-align:middle;}
+.cf-key__ax::before{background:#3E6FD8;}
+.cf-key__eq::before{background:#E08A1E;}
+/* Newman: the back carbon is lighter than the front bonds. */
+.tool-root{--nm-back:#9AA6B8;--nm-back-fill:#EEF1F6;}
+:root[data-theme="dark"] .tool-root{--nm-back:#6F7C90;--nm-back-fill:#1E2430;}
+.nm-lab--back{fill:var(--muted);}
+/* Newman Predict first. */
+.cf-ntask{margin:0 0 10px;}
+.cf-nq{display:flex;flex-direction:column;gap:8px;margin:0 0 10px;}
+.cf-nq__q{margin:0;font:600 15px/1.4 var(--font-ui);}
+.cf-nq .trow{margin:0;}
+#cfCurve .cf-tap{fill:var(--tint-accent);stroke:var(--accent);stroke-width:2;cursor:pointer;opacity:.85;}
+#cfCurve .cf-tap:hover,#cfCurve .cf-tap:focus-visible{fill:var(--accent);outline:none;}
+#cfCurve .cf-mark{stroke:var(--white);stroke-width:2.5;}
+#cfCurve .cf-mark.is-ok{fill:var(--good-text, #1f8a3b);}
+#cfCurve .cf-mark.is-no{fill:var(--bad-text, #c62828);}
 .cf-meter__row{display:grid;grid-template-columns:76px 1fr 44px;align-items:center;gap:8px;margin-bottom:6px;}
 .cf-meter__k{font:800 12px var(--font-ui);color:var(--ink);}
 .cf-meter__track{display:flex;gap:2px;height:22px;border-radius:6px;background:var(--track);overflow:hidden;}
@@ -817,6 +937,20 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rp-ls .rp-stage .omol{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
 .rp-ls .rp-stage svg{width:100%;height:100%;max-width:520px;max-height:100%;}
 .rp-ls .rp-cond{display:none;}
+/* The major product on the stage after the reveal (audit 2026-10). Under the flask on a phone, beside it when wide. */
+.rp-stage-prod{display:flex;flex-direction:column;align-items:center;gap:2px;--mol-bg:var(--tint-good);background:var(--tint-good);border-radius:16px;padding:6px 8px;margin-top:6px;}
+.rp-stage-prod__mol{width:100%;display:flex;justify-content:center;}
+.rp-stage-prod__mol .scene{margin:0;padding:0;background:none;border:0;width:100%;}
+.rp-stage-prod__mol svg{max-width:340px;max-height:150px;width:100%;}
+.rp-stage-prod__k{margin:0;font:700 13px var(--font-ui);color:var(--ink);text-align:center;}
+.rp-stage-prod__arrow{display:block;width:2px;height:12px;background:var(--muted);position:relative;}
+.rp-stage-prod__arrow::after{content:"";position:absolute;left:-4px;bottom:-4px;border:5px solid transparent;border-top:6px solid var(--muted);}
+.rp-ls .rp-stage.has-prod > .scene{flex:1.3;}
+.rp-ls .rp-stage.has-prod .rp-stage-prod{flex:1;min-height:0;}
+.rp-ls .rp-stage.has-prod .rp-stage-prod__mol{flex:1;min-height:0;}
+.rp-ls .rp-stage.has-prod .rp-stage-prod__mol .scene,.rp-ls .rp-stage.has-prod .rp-stage-prod__mol .omol{height:100%;display:flex;align-items:center;justify-content:center;}
+.rp-ls .rp-stage.has-prod .rp-stage-prod__mol svg{height:100%;max-height:100%;}
+@container (min-width:700px){ .rp-ls .rp-stage.has-prod{flex-direction:row;align-items:stretch;gap:10px;} .rp-ls .rp-stage.has-prod .rp-stage-prod{margin-top:0;justify-content:center;} .rp-stage-prod__arrow{display:none;} }
 .rp-ls .rp-ls-meter{flex:none;margin-top:8px;}
 .rp-ls .rp-cols,.rp-ls .rp-axis,.rp-ls .rp-puck,.rp-ls .rp-cover,.rp-ls .rp-corner__why{display:none;}
 .rp-ls .rp-meter,.rp-ls .rp-meter.is-predict{position:static;height:auto;max-width:none;margin:0;padding:0;border:0;background:none;
@@ -973,8 +1107,12 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
    so a found form is drawn near full size (its atom labels at least 12 px) instead of a 135 px thumbnail; the cards
    are a swipeable row, one at a time. */
 .ls-root.ls-phone.res-ls .ls-ed{flex:none;height:250px;}
-.ls-root.ls-phone.res-ls .res-ls-found{flex:none;height:260px;}
-.ls-root.ls-phone.res-ls .res-card{width:88%;scroll-snap-align:start;}
+/* Audit 2026-10: the forms found were 88%-wide cards with the rest off-screen. Now a thumbnail strip: every form
+   found and every one still missing in view at once (up to four), each card a third of the width. */
+.ls-root.ls-phone.res-ls .res-ls-found{flex:none;height:168px;}
+.ls-root.ls-phone.res-ls .res-card{width:calc((100% - 20px) / 3);scroll-snap-align:start;padding:6px;}
+.ls-root.ls-phone.res-ls .res-card__rank{font-size:11.5px;line-height:1.25;}
+.ls-root.ls-phone.res-ls .ls-ed{height:280px;}
 .ls-root.ls-phone.res-ls .res-grid{scroll-snap-type:x mandatory;}
 .ls-root.ls-phone.res-ls .res-card__tag{font-size:12px;}
 /* Small atom labels (H, drawn at 11 units; 12.5 for mid-size atoms) read at least 12 px on a phone stage. Labels only:
@@ -1100,7 +1238,21 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 /* Rank four: the four cards get a fixed height (the stage scrolls) so each structure is drawn ~150 px tall instead of
    ~35 px, and the pKa line's labels read at least 12 px. */
 .ls-root.ls-phone.ab-ls .ab-ls-rank,.ls-root.ls-phone.ab-ls .ab-rorder{flex:none;}
-.ls-root.ls-phone.ab-ls .ab-rcard{height:250px;}
+/* Rank four on a phone (audit 2026-10): four compact rows, so all four and the pKa line fit without scrolling.
+   Number, a small structure, the name, then up and down. */
+.ls-root.ls-phone.ab-ls .ab-ls-rank{flex:1;min-height:0;}
+.ls-root.ls-phone.ab-ls .ab-rorder{flex:1;min-height:0;display:grid;grid-template-columns:1fr;grid-auto-rows:minmax(64px,1fr);gap:6px;}
+.ls-root.ls-phone.ab-ls .ab-rcard{height:auto;flex-direction:row;align-items:center;}
+.ls-root.ls-phone.ab-ls .ab-rcard__body{flex-direction:row;align-items:center;gap:8px;padding:4px 6px 4px 8px;height:100%;}
+.ls-root.ls-phone.ab-ls .ab-rcard__n{align-self:center;flex:none;}
+.ls-root.ls-phone.ab-ls .ab-rcard .scene{flex:0 0 38%;width:38%;height:100%;margin:0;}
+.ls-root.ls-phone.ab-ls .ab-rcard .omol svg{max-height:100%;}
+.ls-root.ls-phone.ab-ls .ab-rcard__name{flex:1;text-align:left;font-size:14px;}
+.ls-root.ls-phone.ab-ls .ab-rcard__pka{flex:none;}
+.ls-root.ls-phone.ab-ls .ab-rcard:last-child .ab-rcard__pka{margin-right:44px;}
+.ls-root.ls-phone.ab-ls .ab-rcard__move{flex-direction:column;gap:4px;padding:4px 6px 4px 0;}
+.ls-root.ls-phone.ab-ls .ab-rcard__move .tchip{min-width:44px;min-height:26px;padding:0;}
+.ls-root.ls-phone.ab-ls .ab-line{max-height:96px;}
 .ls-root.ls-phone.ab-ls .ab-line__lab{font-size:13.8px;}
 .ls-root.ls-phone.ab-ls .ab-line__num,.ls-root.ls-phone.ab-ls .ab-line__end,.ls-root.ls-phone.ab-ls .ab-line__n{font-size:13.8px;}
 @media (orientation:landscape){ .ls-root.ls-phone.ab-ls .ab-rorder{grid-template-columns:repeat(2,minmax(0,1fr));} .ls-root.ls-phone.ab-ls .ab-cards{flex:none;} .ls-root.ls-phone.ab-ls .ab-card{height:300px;} }
@@ -1112,6 +1264,11 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ab-ls .ab-vs__mid{padding-bottom:14px;}
 @media (max-width:999.98px){ .ab-ls .ab-vs{grid-template-columns:1fr auto 1fr;} .ab-ls .ab-vs__mid{padding:0 0 14px;} }
 .ab-ls .ab-ls-guess .ls-lbl{margin:0 0 8px;}
+.ab-pairbar{display:flex;justify-content:flex-end;margin:0 0 8px;}
+.ab-own > summary{font:800 14px var(--font-ui);}
+.ab-own .ab-vs{margin-top:10px;}
+.ab-ls #abNewPair{width:100%;margin-top:8px;min-height:44px;}
+.ab-ls .ab-ls-pairpick .ab-own{margin:0;}
 .ab-ls #abGuess,.ab-ls #abSiteGuess{display:flex;gap:8px;flex-wrap:wrap;}
 .ab-ls #abGuess .tchip{flex:1 1 0;min-height:48px;background:var(--cink);color:var(--white);box-shadow:none;}
 .ab-ls #abGuess .tchip.on{box-shadow:0 0 0 3px var(--ctint);}
@@ -1155,11 +1312,14 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .sp-ls.sp-ls-nmr .sp-ls-pred > #spIR{display:none;}
 .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,.8fr) minmax(0,1.2fr);gap:8px;}
 .sp-ls .sp-link__mol,.sp-ls .sp-link > #spNMR{min-height:0;display:flex;align-items:center;justify-content:center;}
+/* Stretch, so a tall structure (styrene) is fitted to its row instead of overflowing it. */
+.sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{align-items:stretch;}
+.sp-ls .sp-link__mol{overflow:hidden;}
 .sp-ls .sp-link__mol .scene{width:100%;height:100%;margin:0;padding:0;display:flex;align-items:center;justify-content:center;}
 .sp-ls .sp-link__mol .omol svg{width:100%;height:100%;max-width:none;max-height:100%;}
 .sp-ls .ls-stage-body:has(.sp-link){container-type:inline-size;}
 @container (min-width:640px){ .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr);} }
-@container (max-width:560px){ .sp-ls #spIR .sp-axis,.sp-ls .sp-ls-puz .sp-axis{font-size:17px;} .sp-ls .sp-int{font-size:17px;} .sp-ls .sp-ls-irt{display:none;} .sp-ls .ls-stage .sp-ls-unit{display:block;} }
+@container (max-width:560px){ .sp-ls #spIR .sp-axis,.sp-ls .sp-ls-puz .sp-axis{font-size:17px;} .sp-ls .sp-int,.sp-ls .sp-mult{font-size:17px;} .sp-ls .sp-ls-irt{display:none;} .sp-ls .ls-stage .sp-ls-unit{display:block;} }
 .sp-ls-view .tseg{display:flex;width:100%;}
 .sp-ls-view .tseg button{flex:1;}
 .sp-ls #spMore{margin:0;border:0;padding:0;}
@@ -1236,12 +1396,12 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root.ls-phone .ls-stage .sp-peak circle[r="7"]{r:8.5px;}
 @media (orientation:landscape){ .ls-root.ls-phone.sp-ls #spIR .sp-axis,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis{font-size:18.5px;} } /* sideways the IR axis is 640 units in ~430 px */
 /* Identify it: IR and NMR are both 640 units wide in a ~344 px stage (scale ~0.54), so their axes and integrals grow. */
-@media (orientation:portrait){ .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis{font-size:22.5px;} .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int{font-size:22.5px;} }
+@media (orientation:portrait){ .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis{font-size:22.5px;} .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-mult{font-size:22.5px;} }
 /* Sideways, the two Identify-it spectra take the stage width and the stage scrolls (fitting both to ~260 px drew 7 px axes). */
 @media (orientation:landscape){
   .ls-root.ls-phone.sp-ls .sp-ls-puz,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-chart{flex:none;}
   .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-chart svg{flex:none;height:auto;max-height:none;}
-  .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int{font-size:19px;}
+  .ls-root.ls-phone.sp-ls .sp-ls-puz .sp-axis,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-int,.ls-root.ls-phone.sp-ls .sp-ls-puz .sp-mult{font-size:19px;}
 }
 .ls-root.ls-phone.sp-ls .sp-band__label{font-size:12px;} /* Reference: band names at least 12 px */
 .ls-root.ls-phone.sp-ls .sp-scale span{font-size:12px;}

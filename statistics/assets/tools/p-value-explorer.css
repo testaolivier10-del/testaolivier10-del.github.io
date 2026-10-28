@@ -91,3 +91,11 @@
 .pv-halo-t{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .pv-obsdot{fill:var(--ink);stroke:var(--white);stroke-width:2;}
 .pv-pic .pv-cl{font-size:11px;}
+
+/* The primary slider first in the dock, so it is on screen on a phone (audit: true-p slider below the fold). */
+.ls-root .pv-ls-dock{display:flex;flex-direction:column;}
+.ls-root .pv-ls-dock > .pv-views{order:2;}
+.ls-root .pv-ls-dock > .pv-dp,.ls-root .pv-ls-dock > .pv-de{order:1;}
+.ls-root .pv-ls-dock > .bt-cue{order:0;}
+.ls-root .pv-dp{display:flex;flex-direction:column;gap:10px;}
+.ls-root .pv-dp > .pv-obsbox{order:-1;}

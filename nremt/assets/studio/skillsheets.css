@@ -163,3 +163,22 @@
 .sp-ec{pointer-events:none;}
 /* room under the last line, so the studio's Enlarge button never sits on it */
 @media (max-width:999px){ .nx-skillsheets #stationRun{padding-bottom:72px;} }
+/* Audit 2026-10. A critical step skipped (a later one ticked first) flags at once, on the phase list and on the
+   stage; the program notes and the figure credit live in Why, not on the stage; the run's three buttons sit on one
+   row the phone can hold. */
+.nx-skillsheets .run-skip{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;background:var(--tint-bad);color:var(--bad-text);font:800 var(--ls-s) var(--font-ui);box-shadow:none;}
+.nx-skillsheets .run-skip[hidden]{display:none;}
+.nx-skillsheets .run-step.is-skipped .run-flag{color:var(--bad-text);}
+.nx-skillsheets .run-step.is-skipped .run-flag::after{content:": skipped";}
+.nx-skillsheets .ls-stage .sp-notes,.nx-skillsheets .ls-stage .sp-credit{display:none;}
+.nx-skillsheets .sk-ls-dock .run-actions{display:flex;flex-wrap:nowrap;}
+.nx-skillsheets .sk-ls-dock .run-actions > button{flex:1 1 0;min-width:0;white-space:normal;}
+@media (max-width:640px){
+  .nx-skillsheets .sk-ls-dock .ls-step-nav{gap:8px;}
+  .nx-skillsheets .sk-ls-dock .run-actions > button{min-height:44px;font-size:14px;}
+  .nx-skillsheets .sk-ls-dock .run-step label{min-height:56px;padding:10px 14px;}
+}
+.nx-skillsheets .sk-ls-notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:var(--ls-s);}
+.nx-skillsheets .run-step.is-late label{box-shadow:inset 0 0 0 2px var(--bad-text);}
+.nx-skillsheets .run-step.is-late .run-flag{color:var(--bad-text);}
+.nx-skillsheets .run-step.is-late .run-flag::after{content:": out of order";}

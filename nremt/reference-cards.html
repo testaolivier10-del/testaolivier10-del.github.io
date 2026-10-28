@@ -34,7 +34,10 @@
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/reference-cards.css">
+<script src="../assets/course/tool-studio.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
 <!-- tool-studio:end -->
 <!-- levlprep-structured-data -->
@@ -164,6 +167,25 @@
   .vc-in input{color-scheme:light dark;}
   .vc-in input::-webkit-inner-spin-button,.vc-in input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
   .vc-in input{-moz-appearance:textfield;}
+  /* Audit 2026-10: the wide tables fit a phone (they wrap rather than clip), and where one still scrolls sideways
+     a fade at its edge says so. The jump row stays on screen and follows the card you are reading. */
+  .table-scroll{position:relative;background:linear-gradient(90deg,var(--surface) 30%,transparent) left/24px 100% no-repeat local,
+    linear-gradient(270deg,var(--surface) 30%,transparent) right/24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.14),transparent) left/10px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.14),transparent) right/10px 100% no-repeat scroll;}
+  @media (max-width:640px){
+    .refcard{padding:16px 14px;}
+    .refcard table{font-size:12.5px;}
+    .refcard th,.refcard td{padding:6px 6px;}
+    .refcard td.n{white-space:normal;}
+    #gcs table,#apgar table,#pat table{table-layout:fixed;}
+    #gcs th:first-child,#gcs td:first-child{width:12%;}
+  }
+  .ref-jump{position:sticky;top:var(--nx-bar-h,56px);z-index:20;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:14px -16px 4px;padding:8px 16px;
+    background:color-mix(in srgb,var(--paper) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+  .ref-jump::-webkit-scrollbar{display:none;}
+  .ref-jump a{flex:none;}
+  .ref-jump a[aria-current="true"]{border-color:var(--accent);background:var(--tint-accent);box-shadow:inset 0 0 0 1px var(--accent);}
 </style>
 </head>
 <body>
@@ -173,18 +195,7 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">EMT reference cards</span></nav></div>
 <!-- crumb:end -->
 <!-- r3-toolband:start -->
-<link rel="stylesheet" href="../assets/course/r3.css">
-<link rel="stylesheet" href="../assets/course/r3-tools.css">
-<div class="r3 r3-toolband" data-cover="nremt">
-<section class="band short" aria-labelledby="r3ToolTitle"><div class="hwrap"><div>
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <a href="tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Reference Cards</span></nav>
-<p class="issue">NREMT-EMT &middot; Tools <i></i> Tool 5 of 8</p>
-<h1 class="deck" id="r3ToolTitle">Reference <span>Cards</span></h1>
-<p class="hand">The tables worth looking up rather than half-remembering: type a vital sign to check it.</p>
-<p class="lede">The numbers you look up rather than memorize: pediatric vital signs by age, the Glasgow Coma Scale, APGAR scoring, and the pediatric assessment triangle.</p>
-<div class="hero-ctas"><a class="btn-ghost" href="tools.html">&larr; All tools</a></div>
-</div><div class="art tool" aria-hidden="true"><img src="../assets/covers/tools/nremt/reference-cards.svg" alt="" width="640" height="320" decoding="async" fetchpriority="high"></div></div></section>
-</div>
+
 <!-- r3-toolband:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell narrow">
@@ -293,12 +304,72 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/vitals-check.js" defer></script>
+<script src="assets/tool-results.js" defer></script>
+<script src="assets/ref-cards.js" defer></script>
 <script>
-/* Reference page (docs/tools-calm.md): the slim top bar and calm type over
-   the page's own content (assets/nremt-studio.js NremtStudio.slim); the
-   self-check on the cards stays where it is, as the page's one tool. */
+/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
+   Audit 2026-10: this was a scrolling article with one interactive card. It
+   is now a tool: four modes, one per card. Vitals: the age slider and the
+   check. GCS: three tap columns with a live total. APGAR: five signs, 0 to
+   2 each, with a live total. PAT: a triangle whose sides you tap. Each of
+   the last three has "Score a patient" practice (assets/ref-cards.js). Why:
+   the card's line and its notes for the mode showing. Details: all four
+   tables, unchanged (the flashcard builder reads them from this file).
+   reference-cards.html#gcs (or #apgar, #pat, #pedsVitals) opens that card.
+   With ?studio=0 the page stays the four cards, with a sticky jump row. */
 document.addEventListener('DOMContentLoaded', function(){
+  var MODES = [{ value: 'vitals', label: 'Vitals', card: 'pedsVitals' }, { value: 'gcs', label: 'GCS', card: 'gcs' },
+    { value: 'apgar', label: 'APGAR', card: 'apgar' }, { value: 'pat', label: 'Triangle', card: 'pat' }];
+  var fromHash = function(){ var h = location.hash.slice(1); var m = MODES.filter(function(x){ return x.card === h || x.value === h; })[0]; return m ? m.value : null; };
+  var tool = null, studio = null;
+  if(window.NremtStudio && window.NremtRefCards){
+    studio = window.NremtStudio.mount({ title: 'Reference cards', slug: 'reference-cards', detailsTitle: 'All four tables',
+      modes: { items: MODES.map(function(m){ return { value: m.value, label: m.label }; }), value: fromHash() || 'vitals', onChange: function(v){ go(v, true); } } });
+  }
+  if(studio){
+    tool = window.NremtRefCards.mount(studio);
+    studio.add('stage', tool.stage);
+    window.NremtStudio.scrollable(tool.stage, 'Card');
+    studio.add('dock', tool.dock);
+    // Why, per mode: the card's own lead line and its notes (moved, not copied).
+    MODES.forEach(function(m){
+      var card = document.getElementById(m.card), why = document.createElement('div'); why.className = 'rc-why';
+      why.innerHTML = '<h3 class="ls-title-l">' + card.querySelector('h2').textContent + '</h3>';
+      why.appendChild(card.querySelector('.sub'));
+      var notes = card.querySelector('.ref-notes'); if(notes){ notes.open = true; why.appendChild(notes); }
+      studio.add('why', why, { mode: m.value });
+    });
+    // Details: every table, under its card's name.
+    var tables = document.createElement('div'); tables.className = 'ls-sec rc-tables';
+    MODES.forEach(function(m){
+      var card = document.getElementById(m.card), h = document.createElement('h3'); h.className = 'ls-h'; h.textContent = card.querySelector('h2').textContent;
+      tables.append(h, card.querySelector('.table-scroll'));
+    });
+    var foot = document.querySelector('.xshell footer > p');
+    if(foot){ var src = document.createElement('p'); src.className = 'ls-sub'; src.textContent = foot.textContent; tables.appendChild(src); }
+    studio.add('details', tables);
+    var jump = document.querySelector('.ref-jump'); if(jump) jump.hidden = true;
+  }
+  function go(v, push){
+    if(!tool) return;
+    studio.mode(v); tool.show(v);
+    if(push){ try{ history.replaceState(null, '', '#' + MODES.filter(function(m){ return m.value === v; })[0].card); }catch(e){} }
+  }
+  if(tool){ go(fromHash() || 'vitals'); window.addEventListener('hashchange', function(){ var m = fromHash(); if(m){ studio.modes && studio.mode(m); go(m); } }); return; }
+
+  /* No studio: the slim reference page, with the jump row kept in view and
+     marking the card you are reading. */
   if(window.NremtStudio) window.NremtStudio.slim({ title: 'Reference cards', back: 'tools.html', backLabel: 'Back to all tools' });
+  var links = [].slice.call(document.querySelectorAll('.ref-jump a'));
+  var cards = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+  if(!('IntersectionObserver' in window) || !cards.every(Boolean)) return;
+  var seen = {};
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ seen[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    var best = cards.filter(function(c){ return seen[c.id] > 0; })[0];
+    if(best) links.forEach(function(a, i){ var on = cards[i] === best; a.setAttribute('aria-current', on ? 'true' : 'false'); if(on && a.parentNode.scrollWidth > a.parentNode.clientWidth) a.parentNode.scrollLeft = a.offsetLeft - 16; });
+  }, { rootMargin: '-120px 0px -50% 0px', threshold: [0, 0.01] });
+  cards.forEach(function(c){ io.observe(c); });
 });
 </script>
 </body>

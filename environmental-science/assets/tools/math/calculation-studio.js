@@ -342,7 +342,7 @@
       setupStep('(' + cbr + ' - ' + cdr + ') / 10', { mustUse: [String(cbr), String(cdr)], hint: 'Rates are per 1,000; a percent is per 100, so divide (CBR − CDR) by 10.',
         mistakes: [{ expr: '(' + cbr + ' - ' + cdr + ') / 100', why: 'The rates are per 1,000 people. Per 1,000 to percent (per 100) is ÷ 10, not ÷ 100.' }] }),
       answerStep(gr, '%', { units: ['percent'], places: 1, mistakes: [{ value: cbr - cdr, why: 'That is per 1,000. Divide by 10 for a percent.' }] }),
-      answerStep(td, 'yr', { key: 'year', label: 'Doubling time by the rule of 70, with its unit.', units: ['years'], places: 0, mistakes: [{ value: 70 / (cbr - cdr), why: 'Use the growth rate in percent (' + nf(gr, 1) + '), not per 1,000.' }] })
+      answerStep(td, 'yr', { key: 'year', label: 'Doubling time by the rule of 70, with its unit.', hint: 'Doubling time = 70 ÷ the growth rate in percent.', units: ['years'], places: 0, mistakes: [{ value: 70 / (cbr - cdr), why: 'Use the growth rate in percent (' + nf(gr, 1) + '), not per 1,000.' }] })
     ];
     var sol2 = ['Natural increase = (CBR − CDR) / 10 = (' + cbr + ' − ' + cdr + ') / 10 = ' + nf(gr, 1) + '% per year.', 'Doubling time = 70 / ' + nf(gr, 1) + ' = ' + nf(td, 1) + ' years.'];
     return { text: text2, steps: steps2, solution: sol2, figure: { kind: 'rates', cbr: cbr, cdr: cdr, result: nf(gr, 1) + '%' }, given: { cbr: cbr, cdr: cdr } };
@@ -437,7 +437,7 @@
     var left = calc('halfLifeLeft', [a, hl, t]), nh = calc('halfLives', [t, hl]);
     var text = '<p>' + c.lead.replace('{a}', nf(a)) + ' Its half-life is ' + nf(hl) + ' ' + c.tu + '.</p><p><b>Calculate how much is left</b> after ' + nf(t) + ' ' + c.tu + '.</p>';
     var steps = [
-      numStep('n', 'How many half-lives pass in ' + nf(t) + ' ' + c.tu + '?', nh, { abs: 0.01, mistakes: [{ value: t * hl, why: 'Divide the time by the half-life: ' + nf(t) + ' / ' + nf(hl) + '.' }] }),
+      numStep('n', 'How many half-lives pass in ' + nf(t) + ' ' + c.tu + '?', nh, { abs: 0.01, hint: 'Number of half-lives = time ÷ the half-life.', mistakes: [{ value: t * hl, why: 'Divide the time by the half-life: ' + nf(t) + ' / ' + nf(hl) + '.' }] }),
       setupStep(raw(a) + ' ' + c.unit + ' * 0.5^' + n, { unit: c.unit, mustUse: [raw(a)], hint: 'Each half-life halves it: amount × 0.5^(number of half-lives). ' + hintUnits(c.unit),
         mistakes: [{ expr: raw(a) + ' ' + c.unit + ' / (2 * ' + n + ')', why: 'Halving ' + n + ' times is ÷ 2^' + n + ' = ÷ ' + Math.pow(2, n) + ', not ÷ (2 × ' + n + ').' }, { expr: raw(a) + ' ' + c.unit + ' * 0.5^' + (n - 1), why: 'Count the half-lives again: ' + nf(t) + ' / ' + nf(hl) + ' = ' + n + '.' }] }),
       answerStep(left, c.unit, { units: c.units, mistakes: [{ value: a / (2 * n), why: 'Halving ' + n + ' times is ÷ ' + Math.pow(2, n) + ', not ÷ ' + (2 * n) + '.' }, { value: a - left, why: 'That is how much decayed. The question asks what is left.' }] })
@@ -504,7 +504,7 @@
         setupStep(es.map(function(e){ return raw(e / 100); }).join(' * ') + ' * 100', { mustUse: es.map(function(e){ return raw(e / 100); }), hint: 'Multiply the efficiencies as decimals, then × 100 for a percent.',
           mistakes: [{ expr: '(' + es.join(' + ') + ') / ' + es.length, why: 'Efficiencies in a chain multiply; they do not average.' }] }),
         answerStep(overall, '%', { units: ['percent'], places: 1, mistakes: [{ value: es.reduce(function(a, b){ return a + b; }, 0) / es.length, why: 'Efficiencies in a chain multiply, they do not average: each step keeps only part of what reached it.' }] }),
-        answerStep(need, c.unit, { key: 'compare', label: c.ask.replace('{out}', nf(out)) + ' With its unit.', units: c.units, mistakes: [{ value: out * overall / 100, why: 'The input must be LARGER than the output: divide by the efficiency (as a decimal).' }] })
+        answerStep(need, c.unit, { key: 'compare', label: c.ask.replace('{out}', nf(out)) + ' With its unit.', hint: 'Energy in = energy out ÷ the overall efficiency (as a decimal).', units: c.units, mistakes: [{ value: out * overall / 100, why: 'The input must be LARGER than the output: divide by the efficiency (as a decimal).' }] })
       ];
       var sol = ['Overall = ' + es.map(function(e){ return nf(e / 100, 2); }).join(' × ') + ' × 100 = ' + nf(overall, 1) + '%.', 'Input = output / efficiency = ' + nf(out) + ' / ' + nf(overall / 100, 4) + ' = ' + nf(need, 0) + ' ' + c.unit + '.'];
       return { text: text, steps: steps, solution: sol, figure: { kind: 'stages', stages: c.stages.map(function(s, i){ return { name: s.name, eff: es[i] }; }), overall: overall }, given: { es: es, out: out } };
@@ -555,7 +555,7 @@
       '<table class="env-data cs-tbl"><caption>Dose and response (invented data for practice)</caption><thead><tr><th scope="col">Dose (mg/kg)</th>' + pts.map(function(p){ return '<td>' + nf(p[0], 1) + '</td>'; }).join('') + '</tr></thead><tbody><tr><th scope="row">Died (%)</th>' + pts.map(function(p){ return '<td>' + p[1] + '</td>'; }).join('') + '</tr></tbody></table>' +
       '<p>Read the LD<sub>50</sub>, then <b>calculate the dose</b> that would be lethal to half of a group of ' + kg + ' kg ' + c.target + '.</p>';
     var steps = [
-      numStep('read', 'LD<sub>50</sub> from the table, in mg/kg:', read, { d: 1, abs: 0.05 * read, unit: 'mg/kg', mistakes: [{ value: pts[4][0], why: 'That dose killed 75%. LD50 is the dose that kills 50%.' }] }),
+      numStep('read', 'LD<sub>50</sub> from the table, in mg/kg:', read, { d: 1, hint: 'Find 50% in the Died row, then read the dose above it.', abs: 0.05 * read, unit: 'mg/kg', mistakes: [{ value: pts[4][0], why: 'That dose killed 75%. LD50 is the dose that kills 50%.' }] }),
       setupStep(raw(read) + ' mg/kg * ' + kg + ' kg', { unit: 'mg', mustUse: [raw(read), String(kg)], hint: 'Dose = (mg per kg) × body mass. The kg cancel. ' + hintUnits('mg/kg, kg'),
         mistakes: [{ expr: raw(read) + ' mg/kg / ' + kg + ' kg', why: 'Multiply by the body mass so the kg cancel; dividing leaves mg/kg².' }] }),
       answerStep(dose, 'mg', { units: ['milligrams'], mistakes: [{ value: read / kg, why: 'Multiply by the mass: mg/kg × kg = mg.' }] })

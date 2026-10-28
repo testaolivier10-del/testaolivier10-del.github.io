@@ -161,7 +161,7 @@
 .tt-skp.is-ok .tt-badge circle{fill:#009E73;}
 .tt-badge text{fill:#fff;font:900 11px var(--font-ui);}
 .tt-skline{fill:none;stroke:#0072B2;stroke-width:2;stroke-dasharray:5 4;opacity:.65;}
-.tt-svg .calc-plot-curve.tt-ans{stroke-width:2.6;stroke-dasharray:8 5;}
+.tt-svg .calc-plot-curve.tt-ans{stroke-width:2.6;}
 :root[data-theme="dark"] .tt-skdot{fill:#6BB4E8;}
 :root[data-theme="dark"] .tt-skp.is-unset .tt-skdot{fill:var(--white);stroke:var(--muted);}
 :root[data-theme="dark"] .tt-skline{stroke:#6BB4E8;}
@@ -200,3 +200,10 @@
    tick and label clear of the Enlarge button (bottom right of the stage). */
 .ls-root.ls-phone .tt-fig-table{padding-bottom:40px;}
 .ls-root .ls-stage.is-big .tt-fig-table{padding-bottom:0;}
+
+/* Test yourself on the shared drill (calc-tools.js drill; audit 2026-10): the
+   figure fills the drill stage; the picked times on a wrong try are outlined. */
+.ls-root .ls-drill-stage .tt-qfig{flex:1;min-height:0;height:auto;}
+.tt-vt td.is-yours{box-shadow:inset 0 0 0 2px #D55E00;}
+.cd-pics .tt-pic svg{display:block;width:100%;height:auto;}
+.tt-skhow{margin:0;}

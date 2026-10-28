@@ -81,12 +81,12 @@
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
-        'One full timed exam',
+        'One full timed exam and one adaptive exam',
         'Your progress, XP, streak and weak topics',
       ],
       premium: [
-        'The full 2,033-question bank, unlimited', // count:nremt
-        'Unlimited timed 100-question exams',
+        'The full 2,093-question bank, unlimited', // count:nremt
+        'Unlimited timed and adaptive exams',
         'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',
         'The clinical scenario simulator',
@@ -113,7 +113,7 @@
         'The full 3,675-question bank, unlimited practice and review', // count:ochem
         'Unlimited exams',
         'Mastery dashboard and gap detection',
-        'All eight interactive tools',
+        'All nine interactive tools',
       ],
     },
     anp: {
@@ -714,6 +714,7 @@
   function lockTitle(feature) {
     if (feature === 'daily-limit') return 'That’s today’s 15 free questions';
     if (feature === 'exam') return 'You’ve used your free timed exam';
+    if (feature === 'cat') return 'You’ve used your free adaptive exam';
     return 'This is part of Premium';
   }
 
@@ -754,7 +755,7 @@
     var g = GUARANTEE;
     return 'Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, ' +
       'and you can claim one free ' + g.extendDays + '-day extension from your Account page within ' +
-      g.claimDays + ' days of the exam. It needs at least ' + g.minExams + ' full timed exams on LevlPrep, ' +
+      g.claimDays + ' days of the exam. It needs at least ' + g.minExams + ' full timed or adaptive exams on LevlPrep, ' +
       'finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. ' +
       'Once per account and email address. It extends your access; it is not a refund.';
   }

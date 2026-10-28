@@ -27,18 +27,26 @@
     T.modes(app, { slug: 'design-randomizer',
       explore: function(host){ ex = explore(host, data); },
       quiz: function(host){ var ctxs = {}; (data.contexts || []).forEach(function(c){ ctxs[c.id] = c; });
+        function redraw(api){ var p = api.problem, ctx = ctxs[p.ctx], st = api.qs; if(!ctx) return; qfig(api.fig, p, ctx, st); }
         T.drill(host, data, { slug: 'design-randomizer', noun: 'drill', generate: D.generate,
         types: [{ value: 'design', label: 'Name the design' }, { value: 'variables', label: 'Variables and units' }, { value: 'scope', label: 'Cause and effect, or generalize?' }, { value: 'procedure', label: 'Random assignment, step by step' }, { value: 'confound', label: 'Confounding and blinding' }],
         typeLabel: 'Kind of problem',
         title: function(p){ return { design: 'Name the design', variables: 'Variables and units', scope: 'What can we conclude?', procedure: 'Random assignment', confound: 'Confounding and blinding' }[p.type] || 'Practice problem'; },
-        extra: function(el, p, api){ api.fig = el; qfig(el, p, false); },
-        onStep: function(st, right, api){
-          var p = api.problem, last = st.key === p.steps[p.steps.length - 1].key, ctx = ctxs[p.ctx];
-          if(p.type === 'scope'){ if(st.key !== 'cause') return; qfig(api.fig, p, true); }
-          else if(ctx && (st.key === 'design' || last)) api.fig.innerHTML = diagram(p, ctx);
-          else return;
-          var stage = document.querySelector('.ls-root .ls-drill-stage');
-          if(stage && api.fig && !stage.contains(api.fig)) stage.appendChild(api.fig);
+        extra: function(el, p, api){ api.fig = el; api.qs = { done: {}, focus: null, yours: null }; redraw(api); },
+        onStepStart: function(st, api){ api.qs.focus = st.key; api.qs.yours = null; redraw(api); },
+        onTry: function(st, t, api){ if(t.right || st.kind !== 'choice') return; api.qs.yours = { key: st.key, text: String(st.options[t.value]).replace(/<[^>]+>/g, ''), k: t.value }; redraw(api); },
+        onStep: function(st, right, api){ api.qs.done[st.key] = true; api.qs.yours = null; redraw(api); },
+        method: function(st, p){
+          var H = { design: 'Ask two questions: were treatments imposed by the researchers (experiment) or did the units sort themselves (observational)? And was the randomizing done inside blocks or pairs?',
+            blockwhy: 'A block groups units that are alike in a variable that affects the response.', pairwhy: 'Pairs compare like with like.', conclude: 'Only random assignment supports cause and effect.',
+            purpose: 'Random assignment balances the other variables between the groups, on average.',
+            explanatory: 'The explanatory variable is what the researchers set: the treatments on the left of the picture.', response: 'The response is what is measured at the end, on the right of the picture.',
+            units: 'The experimental units are what the treatments are applied to: the icons at the top.', treatments: 'The treatments are the conditions the units get, including the comparison one.',
+            cause: 'Cause and effect needs random ASSIGNMENT (the columns of the table).', generalize: 'Generalizing needs random SAMPLING (the rows of the table).',
+            label: 'Every unit gets its own number.', generate: 'Say how many different numbers, from what range, and what to do with repeats.', assign: 'Say who gets each treatment, including everyone not chosen.',
+            why: 'Random assignment is about making the groups alike, so the treatment can be called the cause.',
+            confound: 'A confounding variable is linked to both the group a unit is in and the response.', blind: 'Who does not know the treatments: the subjects, the people measuring, or both?', blindwhy: 'Knowing the treatment can change behavior or judgment.' };
+          return H[st.key] || null;
         } }); },
       onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
@@ -143,7 +151,7 @@
     function $(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); }
     function seg(d){ return '<button type="button" data-d="' + d + '" aria-pressed="false"' + (d === 'none' ? ' aria-label="Not random: someone chooses"' : d === 'cr' ? ' aria-label="Completely randomized"' : '') + '>' + esc({ cr: 'Randomized', block: 'Blocked', pairs: 'Matched pairs', none: 'Someone chooses' }[d]) + '</button>'; }
     host.innerHTML = '<section class="bt-problem dr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Design randomizer</h2>' +
-      '<div class="sl-fig dr-fig"><div class="sl-scenebox dr-scenebox"></div><div class="sl-side"><div class="sl-strip dr-strip" aria-hidden="true" hidden></div>' +
+      '<div class="sl-fig dr-fig"><div class="sl-scenebox dr-scenebox"></div><p class="dr-trkey" aria-hidden="true" hidden></p><div class="sl-side"><div class="sl-strip dr-strip" aria-hidden="true" hidden></div>' +
       '<p class="sl-legend dr-legend" aria-hidden="true"><span class="dr-lg-t">True effect</span><span class="dr-lg-cur">This experiment</span><span class="dr-lg-dot">Other runs</span></p><div class="sl-meansbox dr-estbox"></div></div></div>' +
       '<div class="sl-ctl dr-ctl"><div class="sl-seg dr-seg" role="group" aria-label="Design"><div class="ls-seg">' + ['cr', 'block', 'pairs'].map(seg).join('') + '</div>' +
       '<div class="sl-seg-b"><span class="sl-seg-k" aria-hidden="true">Not random</span><div class="ls-seg">' + seg('none') + '</div></div></div>' +
@@ -194,6 +202,8 @@
         U.map(function(u){ var t = tr && (shown == null || on[u.i]) ? tr[u.i] : null; return unitSvg(sc, u, L.at[u.i], t, y ? y[u.i] : null, grow == null ? 1 : grow, lim, {}); }).join('') +
         (sel > -1 ? '<rect class="dr-sel" x="' + (L.at[sel].x + 2) + '" y="' + (L.at[sel].y - (sc.kind === 'plants' ? 190 : 0)) + '" width="' + (L.at[sel].w - 4) + '" height="' + (L.at[sel].h + (sc.kind === 'plants' ? 190 : 0)) + '" rx="10"/>' : '') + '</g></svg>';
       box.querySelector('svg').addEventListener('click', function(e){ var g = e.target.closest('.dr-u'); if(!g) return; act(); sel = +g.getAttribute('data-i'); drawScene(); text(); });
+      // The color key for treatments A and B (pots and chairs take the color).
+      var kk = $('.dr-trkey'); if(kk){ kk.hidden = !tr; kk.innerHTML = tr ? '<span class="dr-k-a">A: ' + esc(sc.tA) + '</span><span class="dr-k-b">B: ' + esc(sc.tB) + '</span>' : ''; }
     }
     function drawEst(){
       var box = $('.dr-estbox'); if(!box) return;
@@ -383,15 +393,91 @@
     return '<figure class="dd-fig"><svg class="dd-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(D.D_NAME[d] + ' diagram for this study: ' + c.N + ' ' + c.units + ', ' + c.tA + ' and ' + c.tB + ', ' + compare + '.') + '"><defs><marker id="ddArr" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="dd-head"/></marker></defs>' + g.join('') + '</svg><figcaption class="bt-small">' + esc(D.D_NAME[d]) + ' for this study.</figcaption></figure>';
   }
 
-  /* A scope problem's picture, once its first step is answered: the 2 x 2
-     table of what random sampling and random assignment allow, with this
-     study's cell marked (feedback on the stage, never before the answer). */
-  function qfig(el, p, show){
+  /* A drill's picture, from the problem's own study:
+     scope      the 2 x 2 table of what a study allows (this study marked once
+                the first step is answered; a wrong pick outlined in red)
+     design     the units and the two treatments; a wrong design is drawn as
+                its own diagram, labeled as the student's answer; the right
+                diagram once the design is named
+     variables  the study as a flow: units, the two treatments, the response;
+                the part a step asks about is highlighted, a wrong pick red
+     procedure  the units numbered 1 to N; Generate marks a random half for
+                the first treatment, Assign gives the rest the second
+     confound   the self-sorted groups, then the diagram */
+  function qfig(el, p, ctx, st){
     if(!el) return;
-    if(p.type !== 'scope' || !show){ el.innerHTML = ''; return; }
-    var f = p.figure, cell = function(s, a, t){ return '<td' + (s === f.sampled && a === f.assigned ? ' class="is-here"' : '') + '>' + t + (s === f.sampled && a === f.assigned ? ' <b>This study</b>' : '') + '</td>'; };
-    el.innerHTML = '<figure class="dr-scope"><table class="dr-scope-t"><caption>What a study allows</caption><thead><tr><th scope="col"><span class="sr-only">How units were chosen</span></th><th scope="col">Random assignment</th><th scope="col">No random assignment</th></tr></thead><tbody>' +
-      '<tr><th scope="row">Random sample</th>' + cell(true, true, 'Cause and effect, and generalize') + cell(true, false, 'Generalize, but no cause and effect') + '</tr>' +
-      '<tr><th scope="row">No random sample</th>' + cell(false, true, 'Cause and effect, for units like these') + cell(false, false, 'Neither') + '</tr></tbody></table></figure>';
+    st = st || { done: {} };
+    var done = st.done || {}, Y = st.yours;
+    if(p.type === 'scope'){
+      var f = p.figure, show = !!done.cause, cell = function(sa, as, t){
+        var here = show && sa === f.sampled && as === f.assigned;
+        return '<td' + (here ? ' class="is-here"' : '') + '>' + t + (here ? ' <b>This study</b>' : '') + '</td>'; };
+      var yRow = Y && Y.key === 'cause' ? null : null;
+      el.innerHTML = '<figure class="dr-scope"><table class="dr-scope-t' + (Y ? ' has-yours' : '') + '"><caption>What a study allows</caption><thead><tr><th scope="col"><span class="sr-only">How units were chosen</span></th><th scope="col"' + (Y && Y.key === 'cause' ? ' class="is-ask"' : '') + '>Random assignment</th><th scope="col"' + (Y && Y.key === 'cause' ? ' class="is-ask"' : '') + '>No random assignment</th></tr></thead><tbody>' +
+        '<tr><th scope="row"' + (Y && Y.key === 'generalize' ? ' class="is-ask"' : '') + '>Random sample</th>' + cell(true, true, 'Cause and effect, and generalize') + cell(true, false, 'Generalize, but no cause and effect') + '</tr>' +
+        '<tr><th scope="row"' + (Y && Y.key === 'generalize' ? ' class="is-ask"' : '') + '>No random sample</th>' + cell(false, true, 'Cause and effect, for units like these') + cell(false, false, 'Neither') + '</tr></tbody></table>' +
+        (Y ? '<figcaption class="dr-ycap">Yours: “' + esc(Y.text) + '”. ' + (Y.key === 'cause' ? 'Cause and effect is read across the columns: was there random assignment?' : 'Generalizing is read down the rows: was there a random sample?') + '</figcaption>' : '') + '</figure>';
+      return;
+    }
+    if(p.type === 'design'){
+      if(done.design){ el.innerHTML = diagram(p, ctx); return; }
+      if(Y && Y.key === 'design'){
+        var dk = { 'Completely randomized design': 'cr', 'Randomized block design': 'block', 'Matched pairs design': 'pairs', 'Observational study, not an experiment': 'obs' }[Y.text];
+        if(dk){ el.innerHTML = '<div class="dr-yours">' + diagram({ type: 'design', figure: { design: dk }, steps: [] }, ctx).replace('<figcaption class="bt-small">', '<figcaption class="dr-ycap">Your answer, drawn: ').replace(' for this study.</figcaption>', '. Compare it with how the study was run.</figcaption>') + '</div>'; return; }
+      }
+      el.innerHTML = studySvg(ctx, {});
+      return;
+    }
+    if(p.type === 'variables'){
+      var part = { explanatory: 'tr', response: 'resp', units: 'units', treatments: 'tr' }[st.focus], ypart = null;
+      if(Y){ var t = Y.text.toLowerCase(); ypart = t === String(ctx.response).toLowerCase() || t.indexOf('measurements of') === 0 ? 'resp' : t === String(ctx.explanatory).toLowerCase() || t.indexOf(String(ctx.tA).toLowerCase()) === 0 ? 'tr' : t.indexOf('the ' + ctx.n) === 0 || t.indexOf(String(ctx.N)) > -1 ? 'units' : 'other'; }
+      el.innerHTML = studySvg(ctx, { focus: part, yours: ypart, yoursText: Y ? Y.text : '' });
+      return;
+    }
+    if(p.type === 'procedure'){
+      el.innerHTML = procSvg(ctx, p, done, Y);
+      return;
+    }
+    if(p.type === 'confound'){
+      if(done[p.steps[p.steps.length - 1].key]) el.innerHTML = diagram(p, ctx);
+      else el.innerHTML = studySvg(ctx, { selfSort: p.steps[0].key === 'confound', yours: Y ? 'other' : null, yoursText: Y ? Y.text : '' });
+      return;
+    }
+    el.innerHTML = '';
+  }
+  /* A small unit icon: a potted seedling, or a person. */
+  function iconSvg(ctx, x, y, s, cls){
+    if(!ctx.human) return '<g class="dq-u ' + (cls || '') + '"><path class="dq-pot" d="M' + (x - s * 0.32) + ' ' + (y + s * 0.05) + ' h ' + (s * 0.64) + ' l -' + (s * 0.08) + ' ' + (s * 0.42) + ' h -' + (s * 0.48) + ' Z"/><path class="dq-stem" d="M' + x + ' ' + (y + s * 0.05) + ' V ' + (y - s * 0.4) + '"/><path class="dq-leaf" d="M' + x + ' ' + (y - s * 0.18) + ' q ' + (s * 0.22) + ' -' + (s * 0.18) + ' ' + (s * 0.3) + ' -' + (s * 0.02) + ' q -' + (s * 0.16) + ' ' + (s * 0.12) + ' -' + (s * 0.3) + ' ' + (s * 0.02) + ' Z M' + x + ' ' + (y - s * 0.3) + ' q -' + (s * 0.22) + ' -' + (s * 0.18) + ' -' + (s * 0.3) + ' -' + (s * 0.02) + ' q ' + (s * 0.16) + ' ' + (s * 0.12) + ' ' + (s * 0.3) + ' ' + (s * 0.02) + ' Z"/></g>';
+    return '<g class="dq-u ' + (cls || '') + '"><circle class="dq-head" cx="' + x + '" cy="' + (y - s * 0.22) + '" r="' + (s * 0.18) + '"/><path class="dq-body" d="M' + (x - s * 0.3) + ' ' + (y + s * 0.4) + ' q 0 -' + (s * 0.42) + ' ' + (s * 0.3) + ' -' + (s * 0.42) + ' q ' + (s * 0.3) + ' 0 ' + (s * 0.3) + ' ' + (s * 0.42) + ' Z"/></g>';
+  }
+  /* The study as a flow, top to bottom: the units, the two treatments, the response. */
+  function studySvg(ctx, o){
+    var W = 400, H = 440, g = [], n = Math.min(ctx.N, 20), cols = 10, s = 30, dy = 20;
+    var hl = function(k){ return (o.focus === k ? ' is-ask' : '') + (o.yours === k ? ' is-yours' : ''); };
+    g.push('<g class="dq-grp' + hl('units') + '"><rect class="dq-frame" x="8" y="8" width="384" height="124" rx="14"/>');
+    for(var i = 0; i < n; i++){ var cx = 34 + (i % cols) * 37, cy = 46 + Math.floor(i / cols) * 44; g.push(iconSvg(ctx, cx, cy, s, o.selfSort ? (i % 3 ? 'is-b' : 'is-a') : '')); }
+    g.push('<text class="dq-t" x="200" y="124" text-anchor="middle">' + esc(ctx.N + ' ' + ctx.units + (ctx.N > n ? ' (20 shown)' : '')) + '</text></g>');
+    g.push('<path class="dq-arrow" d="M200 136 V 166"/>');
+    g.push('<text class="dq-k" x="200" y="' + (164 + dy) + '" text-anchor="middle">' + esc(o.selfSort ? 'They choose their own group' : 'Split into two groups') + '</text>');
+    g.push('<g class="dq-grp' + hl('tr') + '"><rect class="dq-frame" x="8" y="196" width="384" height="104" rx="14"/>' +
+      '<rect class="dq-tr is-a" x="20" y="208" width="172" height="80" rx="12"/><rect class="dq-tr is-b" x="208" y="208" width="172" height="80" rx="12"/>' +
+      wrapText(106, 242, ctx.tA, 18, 'dq-trt') + wrapText(294, 242, ctx.tB, 18, 'dq-trt') + '</g>');
+    g.push('<path class="dq-arrow" d="M106 304 V 338 M294 304 V 338"/>');
+    g.push('<g class="dq-grp' + hl('resp') + '"><rect class="dq-frame" x="8" y="342" width="384" height="70" rx="14"/>' + wrapText(200, 372, 'Measure: ' + ctx.response, 34, 'dq-t') + '</g>');
+    if(o.yours === 'other') g.push('<text class="stat-yours-t" x="200" y="432" text-anchor="middle">' + esc('Yours: ' + o.yoursText).slice(0, 60) + '</text>');
+    return '<figure class="dq-fig"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('The study: ' + ctx.N + ' ' + ctx.units + ', ' + ctx.tA + ' or ' + ctx.tB + ', then ' + ctx.response + ' is measured.' + (o.yoursText ? ' Your answer: ' + o.yoursText + '.' : '')) + '">' + g.join('') + '</svg>' +
+      (o.yours && o.yours !== 'other' ? '<figcaption class="dr-ycap">Yours, outlined in red: “' + esc(o.yoursText) + '”.' + (o.focus ? ' The part this step asks about is highlighted.' : '') + '</figcaption>' : '') + '</figure>';
+  }
+  function wrapText(x, y, t, n, cls){ var ls = wrap(t, n).slice(0, 3), lh = 19, y0 = y - (ls.length - 1) * lh / 2 + 6; return '<text class="' + cls + '" text-anchor="middle">' + ls.map(function(l, i){ return '<tspan x="' + x + '" y="' + (y0 + i * lh) + '">' + esc(l) + '</tspan>'; }).join('') + '</text>'; }
+  /* Random assignment, step by step, on the numbered units. */
+  function procSvg(ctx, p, done, Y){
+    var N = ctx.N, h = N / 2, cols = 10, cs = 38, rows = Math.ceil(N / cols), W = cols * cs + 16, H = rows * cs + 16, g = [], A = {};
+    if(done.generate){ var r = M.rng(N * 31 + 7), ids = []; for(var i = 1; i <= N; i++) ids.push(i); M.shuffle(r, ids).slice(0, h).forEach(function(v){ A[v] = true; }); }
+    for(var k = 1; k <= N; k++){
+      var x = 8 + ((k - 1) % cols) * cs, y = 8 + Math.floor((k - 1) / cols) * cs, cls = !done.label ? 'is-plain' : A[k] ? 'is-a' : done.assign ? 'is-b' : '';
+      g.push('<g class="dq-n ' + cls + '"><rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="' + (cs - 4) + '" height="' + (cs - 4) + '" rx="7"/>' + (done.label ? '<text x="' + (x + cs / 2) + '" y="' + (y + cs / 2 + 5) + '" text-anchor="middle">' + k + '</text>' : '') + '</g>');
+    }
+    var cap = !done.label ? 'The ' + N + ' ' + ctx.units + ', not yet labeled.' : !done.generate ? 'Labeled 1 to ' + N + '.' : !done.assign ? h + ' different random labels (orange) get ' + ctx.tA + '.' : 'Orange: ' + ctx.tA + '. Blue: ' + ctx.tB + '. ' + h + ' each.';
+    return '<figure class="dq-fig dq-proc"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(cap) + '">' + g.join('') + '</svg><figcaption class="bt-small">' + esc(cap) + '</figcaption>' + (Y ? '<p class="dr-ycap">Yours: “' + esc(Y.text) + '”</p>' : '') + '</figure>';
   }
 })();

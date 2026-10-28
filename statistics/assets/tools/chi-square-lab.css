@@ -58,3 +58,17 @@
 .ls-root .cs-ls-why .tx-where,.ls-root .cs-ls-why .bt-say{margin:0;padding:0;background:none;border:0;box-shadow:none;font-size:var(--ls-m);}
 .ls-root .cs-ls-why details.bt-why > summary{display:none;}
 .ls-root .ls-drill-stage .cs-qfig{flex:1;}
+
+/* Explore: typed count, color legend; quiz: highlighted totals and the student's answer. */
+.cs-type{display:flex;align-items:center;gap:8px;}
+.cs-type label{font:700 13px var(--font-ui);color:var(--muted);white-space:nowrap;}
+.cs-type input{width:7ch;min-height:44px;padding:4px 8px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 16px var(--font-mono);text-align:center;box-sizing:border-box;}
+.cs-legend{flex:none;margin:4px 0 0;padding:0 46px;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font:700 calc(12px * var(--ls-scale, 1)) var(--font-ui);color:var(--muted);}
+.cs-legend span{display:inline-flex;align-items:center;gap:6px;}
+.cs-legend span::before{content:"";width:12px;height:12px;border-radius:3px;}
+.cs-lg-up::before{background:var(--stat-s2);} .cs-lg-down::before{background:var(--stat-s1);} .cs-lg-p::before{background:var(--cink);opacity:.5;}
+.cs-hl{fill:color-mix(in srgb,var(--cink) 18%,transparent);stroke:var(--cink);stroke-width:2;}
+.cs-t.is-hl{fill:var(--cink);font-weight:900;}
+.cs-hlh{fill:none;stroke:var(--cink);stroke-width:2;stroke-dasharray:5 4;}
+.cs-yours rect{fill:var(--bad-text);}
+.cs-yours text{fill:var(--white);font-size:12.5px;font-weight:800;}

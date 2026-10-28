@@ -595,3 +595,125 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
 .results-top-row .retry-btn,#resultsScreen .retry-btn{border:0;border-radius:12px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:800;}
 #resultsScreen .filter-row button{border-radius:999px;}
 .flag-btn{display:inline-flex;align-items:center;gap:6px;}
+
+/* ---- Technology-enhanced items (assets/tei-items.js): drag and drop,
+   options table, and dragging for build list. Every target is at least
+   44px tall; touch drags start on the grip so the page still scrolls. ---- */
+.tei-help{margin:0 0 12px;font-size:13px;font-weight:700;color:var(--muted);}
+.tei-grip{flex-shrink:0;width:22px;align-self:stretch;min-height:28px;border-radius:6px;cursor:grab;touch-action:none;
+  background:radial-gradient(circle,var(--muted) 1.3px,transparent 1.6px) 0 0/8px 8px;opacity:.55;}
+.tei-ghost{position:fixed;z-index:1000;pointer-events:none;margin:0;opacity:.95;box-shadow:0 14px 32px rgba(10,20,40,.28);transform:rotate(-1deg);}
+.tei .is-dragging{opacity:.35;}
+.tei.is-checked .tei-grip{display:none;}
+
+.dnd-tray{border:1.5px dashed var(--line);border-radius:16px;padding:12px;margin-bottom:14px;background:var(--surface2);}
+.dnd-tray-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 10px;font:800 12.5px var(--font-ui);color:var(--muted);}
+.dnd-tray .dnd-list:empty{display:none;}
+.dnd-unplace{font:800 12.5px var(--font-ui);border:0;border-radius:10px;padding:8px 12px;min-height:36px;background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);cursor:pointer;}
+.dnd-list{display:grid;gap:8px;}
+.dnd-chip{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:10px 12px;text-align:left;border:0;border-radius:12px;
+  background:var(--white);color:var(--ink);font:700 14.5px/1.4 var(--font-ui);box-shadow:inset 0 0 0 1.5px var(--line),var(--lift-sm);cursor:pointer;}
+.dnd-chip:hover{box-shadow:inset 0 0 0 1.5px var(--accent),var(--lift-sm);}
+.dnd-chip.is-picked{box-shadow:inset 0 0 0 2.5px var(--navy);background:var(--tint-accent);}
+.dnd-chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.dnd-text{flex:1;}
+.dnd-bins{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.dnd-bin{border-radius:16px;padding:10px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .12s ease,background-color .12s ease;}
+.dnd-bin.is-over{background:var(--tint-accent);box-shadow:inset 0 0 0 2.5px var(--accent);}
+.dnd-bin-h{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:6px 8px;margin:0 0 8px;border:0;border-radius:10px;background:none;
+  color:var(--ink);font:900 14px var(--font-ui);text-align:left;cursor:pointer;}
+.has-pick .dnd-bin-h{background:var(--white);box-shadow:inset 0 0 0 2px var(--accent);}
+.dnd-bin-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--on-accent);font-size:12px;}
+.dnd-bin-name{flex:1;}
+.dnd-bin-place{font-size:12px;color:var(--accent-text);}
+.dnd-empty{margin:0;padding:12px;font-size:12.5px;font-weight:700;color:var(--muted);text-align:center;}
+.is-dragging .dnd-empty,.has-pick .dnd-empty{color:var(--accent-text);}
+.dnd-chip.correct{background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);cursor:default;}
+.dnd-chip.incorrect{background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);cursor:default;flex-wrap:wrap;}
+.dnd-chip.correct::after{content:"\2713";font-weight:900;color:var(--good-text);}
+.dnd-key{flex-basis:100%;padding-left:32px;font-size:12.5px;font-weight:800;color:var(--bad-text);}
+.tei.is-checked .dnd-key{padding-left:0;}
+
+.tei-table{display:grid;gap:8px;}
+.tbl-head{display:none;}
+.tbl-row{margin:0;padding:12px;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);}
+.tbl-text{margin:0 0 10px;font-size:15px;font-weight:800;line-height:1.4;}
+.tbl-choices{display:grid;gap:6px;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));}
+.tbl-choice{position:relative;display:flex;align-items:center;gap:8px;min-height:44px;padding:8px 10px;border-radius:10px;background:var(--white);
+  box-shadow:inset 0 0 0 1.5px var(--line);font:700 13.5px/1.3 var(--font-ui);cursor:pointer;}
+.tbl-choice input{position:absolute;opacity:0;width:1px;height:1px;}
+.tbl-dot{flex-shrink:0;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--muted);}
+.tbl-choice.is-on{box-shadow:inset 0 0 0 2.5px var(--navy);}
+.tbl-choice.is-on .tbl-dot{box-shadow:inset 0 0 0 5px var(--navy);}
+.tbl-choice:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px;}
+.tbl-row.correct{background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
+.tbl-row.incorrect{background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);}
+.tbl-choice:has(input:disabled){cursor:default;}
+.tbl-choice.is-key{box-shadow:inset 0 0 0 2.5px var(--good-text);}
+.tbl-choice.is-key .tbl-dot{box-shadow:inset 0 0 0 5px var(--good-text);}
+.tbl-choice.is-wrong{box-shadow:inset 0 0 0 2.5px var(--bad-text);}
+.tbl-choice.is-wrong .tbl-dot{box-shadow:inset 0 0 0 5px var(--bad-text);}
+.tbl-key{margin:8px 0 0;font-size:13px;font-weight:800;color:var(--bad-text);}
+/* Wide screens: a true table, one column per choice. */
+@media (min-width:760px){
+  .tbl-head,.tbl-row{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(var(--cols),minmax(0,1fr));gap:8px;align-items:center;}
+  .tbl-head{padding:0 12px;font:900 12px var(--font-ui);color:var(--muted);text-align:center;}
+  .tbl-text{margin:0;}
+  .tbl-choices{display:contents;}
+  .tbl-choice{justify-content:center;}
+  .tbl-choice .tbl-ctext{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+  .tbl-row .tbl-key{grid-column:1/-1;}
+}
+
+.order-item{touch-action:pan-y;}
+.order-item .tei-grip{min-height:36px;}
+.order-item.is-dragging{opacity:1;box-shadow:0 12px 28px rgba(10,20,40,.22);transform:scale(1.02);position:relative;z-index:2;}
+.order-key{display:block;font-size:12.5px;font-weight:800;color:var(--bad-text);margin-top:4px;}
+.order-item .order-btns button{width:40px;height:32px;font-size:13px;}
+
+/* Results: every row of a build-list, sort or table item, marked. */
+.tei-review{list-style:none;margin:6px 0 10px;padding:0;display:grid;gap:6px;}
+.tei-review li{display:grid;grid-template-columns:22px 1fr;gap:2px 8px;padding:8px 10px;border-radius:10px;font-size:14px;line-height:1.4;}
+.tei-review li.is-ok{background:var(--tint-good);}
+.tei-review li.is-bad{background:var(--tint-bad);}
+.tei-review .tr-mark{font-weight:900;}
+.tei-review .is-ok .tr-mark{color:var(--good-text);}
+.tei-review .is-bad .tr-mark{color:var(--bad-text);}
+.tei-review .tr-text{font-weight:800;}
+.tei-review .tr-where{grid-column:2;font-size:12.5px;font-weight:700;color:var(--muted);}
+.tei-review .is-bad .tr-where{color:var(--bad-text);}
+
+/* ---- Adaptive exam results ---- */
+.cat-verdict{padding:16px;border-radius:16px;margin:0 0 14px;background:var(--surface2);}
+.cat-verdict.tier-good{box-shadow:inset 4px 0 0 var(--good-text);}
+.cat-verdict.tier-mid{box-shadow:inset 4px 0 0 var(--amber);}
+.cat-verdict.tier-low{box-shadow:inset 4px 0 0 var(--bad-text);}
+.cat-v-head{margin:0 0 4px;font:900 17px var(--font-ui);}
+.cat-verdict p{margin:0 0 12px;font-size:14px;line-height:1.5;}
+.cat-scale{position:relative;height:30px;margin:26px 4px 6px;border-radius:999px;background:linear-gradient(90deg,var(--tint-bad),var(--surface2) 50%,var(--tint-good));box-shadow:inset 0 0 0 1px var(--line);}
+.cat-band{position:absolute;top:7px;height:16px;border-radius:999px;background:var(--accent);opacity:.35;}
+.cat-dot{position:absolute;top:5px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--white);}
+.cat-line{position:absolute;top:-6px;bottom:-6px;width:2px;margin-left:-1px;background:var(--ink);}
+.cat-line i{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);white-space:nowrap;font:800 11px var(--font-ui);font-style:normal;color:var(--muted);padding-bottom:2px;}
+.cat-scale-key{display:flex;justify-content:space-between;font:700 11px var(--font-ui);color:var(--muted);}
+.domain-breakdown .cat-dom{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;}
+.cat-dom-name{font-weight:800;}
+.cat-dom-name small{display:block;font-weight:700;color:var(--muted);font-size:12px;}
+.cat-tag{font:900 12px var(--font-ui);padding:5px 10px;border-radius:999px;white-space:nowrap;}
+.cat-tag.is-above{background:var(--tint-good);color:var(--good-text);}
+.cat-tag.is-near{background:var(--tint-amber);color:var(--ink);}
+.cat-tag.is-below{background:var(--tint-bad);color:var(--bad-text);}
+.cat-tag.is-none{background:var(--surface2);color:var(--muted);}
+.cat-study{grid-column:1/-1;font-size:12.5px;font-weight:700;}
+.cat-study a{color:var(--accent-text);}
+.cat-note{margin:12px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted);}
+#resultsScreen[data-mode="cat"] .score-card .big{font-size:30px;}
+
+/* exams.html: the adaptive exam setup and how it works. */
+.cat-rules{margin:0 0 12px;padding-left:20px;font-size:14px;line-height:1.5;}
+.cat-rules li{margin-bottom:6px;}
+.r3-cat-how{margin:0 0 40px;}
+.r3-cat-how .sub{max-width:68ch;}
+.cat-how{margin:10px 0 0;padding:14px 16px;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 1px var(--line);}
+.cat-how summary{font-weight:900;cursor:pointer;min-height:28px;}
+.cat-how p{margin:10px 0 0;font-size:14.5px;line-height:1.6;max-width:72ch;}

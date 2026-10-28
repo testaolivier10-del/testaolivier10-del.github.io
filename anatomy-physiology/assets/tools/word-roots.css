@@ -178,3 +178,24 @@
 .ls-root.ls-phone.wr-ls .ls-stage-body > .wr-term{font-size:min(clamp(30px,9.5vw,42px), calc((100vw - 28px) / (var(--wr-len, 10) * .5)));}
 .ls-root.ls-phone.wr-ls .ls-stage-body > .wr-split .wr-seg{font-size:24px;padding:7px 9px 5px;}
 .ls-root.ls-phone.wr-ls .wr-seg-k{font-size:12px;letter-spacing:.04em;}
+
+/* Tool audit 2026-10: Decode asks with four buttons (no native select) and marks each part as it is picked;
+   Build shows its whole bank of part cards on a phone (compact cards, a shorter stage). */
+.wr-mopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0 0;}
+.wr-mopt{min-height:48px;padding:8px 12px;border-radius:12px;border:0;background:var(--white);box-shadow:inset 0 0 0 2px var(--line);color:var(--ink);
+  font:700 14.5px/1.3 var(--font-ui);text-align:left;cursor:pointer;}
+.wr-mopt:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--cink);}
+.wr-mopt:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.wr-mopt:disabled{cursor:default;}
+.wr-mopt.is-right{box-shadow:inset 0 0 0 2px var(--good);background:var(--tint-good, rgba(47,158,91,.12));}
+.wr-mopt.is-wrong{box-shadow:inset 0 0 0 2px var(--bad);background:var(--tint-bad, rgba(209,89,74,.1));}
+.wr-mopt:disabled:not(.is-right):not(.is-wrong){opacity:.55;}
+.wr-step .wr-q{margin:0;font:800 15px/1.4 var(--font-ui);}
+@media (max-width:420px){ .wr-mopts{grid-template-columns:1fr 1fr;} .wr-mopt{font-size:13.5px;} }
+.wr-ls .ls-dock .wr-cardbtn{padding:7px 10px 9px;min-height:44px;}
+.wr-ls .ls-dock .wr-cardbtn span{font-size:11.5px;line-height:1.25;}
+@media (max-width:640px){
+  .ls-root.wr-ls[data-mode="build"] .ls-stage{height:36vh;height:36svh;min-height:220px;}
+  .ls-root.wr-ls[data-mode="decode"] .ls-stage{height:40vh;height:40svh;min-height:230px;}
+  .wr-ls .ls-dock .wr-bankcards{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+}

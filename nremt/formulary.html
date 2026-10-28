@@ -466,8 +466,8 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     var q = $('gwQ');
     if(v){
-      studio.caption('<b>' + v.textContent + '</b> The line that decides it is below; Why? has the dose.', 'gw');
-      studio.pills([{ html: v.textContent.replace(/[:.].*$/, ''), tone: v.classList.contains('ok') ? 'good' : 'bad' }], 'right', 'gw');
+      studio.caption(v.innerHTML + ' <span class="tmuted">Why? has the dose.</span>', 'gw');
+      studio.pills([{ html: v.classList.contains('ok') ? 'Right' : 'Not this time', tone: v.classList.contains('ok') ? 'good' : 'bad' }], 'right', 'gw');
       why.innerHTML = '<h3 class="ls-title-l">' + v.textContent + '</h3>' + [].filter.call(w.children, function(x){ return !x.classList.contains('gw-verdict') && !x.classList.contains('gw-after'); }).map(function(x){ return x.outerHTML; }).join('') + INTRO;
     } else {
       studio.caption((q ? '<b>' + q.textContent + '</b> ' : '') + 'Swipe the card, or tap below.', 'gw');
@@ -483,6 +483,12 @@ document.addEventListener('DOMContentLoaded', function(){
   dock.addEventListener('click', function(e){ if(e.target.closest('[data-show]')) studio.open('details'); }, true);
   paint();
   studio.hint({ target: dock.querySelector('.gw-yes') || gw, text: 'Give or withhold? Decide', round: 14 });
+  // From Search: formulary.html#drug-<name> opens that drug's card in Details.
+  var m = /^#drug-([a-z-]+)$/.exec(location.hash);
+  if(m){
+    var hit = [].filter.call(ref.querySelectorAll('.drug > h2'), function(h){ return h.textContent.trim().toLowerCase().replace(/[^a-z]+/g, '-') === m[1]; })[0];
+    if(hit){ studio.open('details'); setTimeout(function(){ hit.parentNode.classList.add('gw-flash'); hit.parentNode.scrollIntoView({ block: 'start' }); }, 300); }
+  }
 });
 </script>
 </body>

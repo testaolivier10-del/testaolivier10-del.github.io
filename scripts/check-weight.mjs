@@ -72,6 +72,12 @@ const SHELL_BUDGETS = [
      only by pages that show a video; measured 3.5 KB. Thumbnails are images,
      not counted here, and load lazily from this site. */
   ['assets/video', 4],
+  /* The shared 3D body's engine, assets/body3d/viewer.js (2026-10-27, docs/tools-upgrade.md "3D anatomy"): moved
+     out of nremt/assets when the A&P 3D anatomy tool began to share it, without its EMS content (now
+     nremt/assets/body-content.js). Loaded only by the body map and the A&P tool. The model (3.3 MB) and three.js
+     load on demand, as before, and are not counted. */
+  /* Measured 14.8 KB (the old nremt/assets/body-viewer.js with its content was 26.5 KB). */
+  ['assets/body3d', 15],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -210,7 +216,11 @@ const SHELL_BUDGETS = [
      nremt-studio.js/.css plus the tool's own studio/<slug>.css; measured 26.2 KB on scenario-sim.html. */
   /* 26.5 -> 27 when the five round 3 steps are combined (docs/site-redesign.md): the NREMT exam bar and band
      script (B3) and the tools band (B5) both land in the NREMT shell. Measured 26.5 KB. */
-  ['nremt', 27],
+  /* 27 -> 28 (tool audit fixes 2026-10-27, branch fix-nremt-tools): the per-tool studio CSS grew (scenario picker
+     chips and icons, the drawn flowchart shapes, the skill station flags, the formulary end summary) and the
+     scenario monitor says "probe not on yet". Measured 27.2 KB on scenario-sim.html. The new reference-cards and
+     search scripts load only on their own pages. */
+  ['nremt', 28],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -309,7 +319,11 @@ const SHELL_BUDGETS = [
   /* 112 -> 113 (visual polish): molecules.js places lone pairs between bonds,
      draws swept arrowheads on the curve tangent and trims bonds to the label
      for the textbook-style tool structures. Measured 112.5 KB. */
-  ['ochem', 113],
+  /* 113 -> 115 (tool audit 2026-10): the shared renderer draws skeletal rings,
+     charge badges and 26-unit bond tap bands, and chem-core gains the H-label
+     convention and destinations() for the arrow pulse. Comments were trimmed
+     first. Measured 114.5 KB. */
+  ['ochem', 115],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
@@ -327,7 +341,10 @@ const SHELL_BUDGETS = [
   /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
   /* 49.5 -> 53.5 (calm tools P1, docs/tools-calm-notes/anp.md): each tool's Tool Studio arrangement and AnpToolKit.studio; lab practical measured 53.1 KB. */
   /* 53.5 -> 54 (honest labels): per-tool names for the second tab. */
-  ['anatomy-physiology', 54],
+  /* 54 -> 56 (tool audit fixes 2026-10-27): the pathway tracer draws every pathway as a map with a small
+     icon per kind of step (30 icons) and its drills place steps on it; measured 54.8 KB on the heaviest page.
+     The 3D anatomy tool (same day) measured 54.1 KB, inside this. */
+  ['anatomy-physiology', 56],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -472,7 +489,10 @@ const BUDGETS = [
   /* 48.7 -> 49.5 (redesign round 2, 2026-10): the session and results restyle in practice.css. */
   /* 49.5 -> 49.9 (redesign round 3, B2): the session rail's Read the notes and Keyboard cards in
      practice-engine.js (board R10-Practice-Question). Measured 49.6 KB. */
-  ['nremt/practice.html', 49.9],
+  /* 49.9 -> 55.2 (tools upgrade, 2026-10-27): the exam's drag-and-drop and options-table items, dragging build
+     lists and the Adaptive exam (engine routing, results, setup) in practice-engine.js and practice.css. The item
+     interactions themselves are in nremt/assets/tei-items.js (course bucket). Measured 54.8 KB. */
+  ['nremt/practice.html', 55.2],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -494,7 +514,9 @@ const BUDGETS = [
   /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
   // 52 -> 53 (simplify pass 2026-10): the pick-a-call cue and the short-window sticky rule; it sat 0.1 KB under.
   /* 53 -> 55 (calm tools P1): the inline Tool Studio arrangement (stage/dock/Why, the call so far); measured 54.3 KB. */
-  ['nremt/scenario-sim.html', 55],
+  /* 55 -> 57 (tool audit fixes 2026-10-27): the picker's category chips with seven drawn icons, the end screen's
+     Try again / Next call pair and the unclamped opening call; measured 56.3 KB. The case data is unchanged. */
+  ['nremt/scenario-sim.html', 57],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
@@ -585,6 +607,10 @@ const BUDGETS = [
   ['anatomy-physiology/notes/cardiac-cycle.html', 19.8],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
+  /* The 3D anatomy tool's page (2026-10-27). Its runtime is counted in the anatomy-physiology shell
+     (tools/anatomy-3d.js and .css) and the site shell (assets/body3d/viewer.js, which the NREMT body map
+     loads too); the model and three.js load on demand and are not counted, as on the body map. */
+  ['anatomy-physiology/tools/anatomy-3d.html', 3],
   ['anatomy-physiology/exams.html', 3],
   /* AP® Biology: the home, the app shells and, once a unit is published, its
      first lesson, notes page and unit sheet (BIO_PAGES below, from what the
@@ -912,6 +938,9 @@ function bucketOf(relPath) {
   // The video lesson player (docs/video-lessons.md) loads only on pages that
   // show a video, so it is its own shell, not part of every page's.
   if (parts[0] === 'assets' && parts[1] === 'video') return 'assets/video';
+  // The shared 3D body (assets/body3d/viewer.js) loads only on the NREMT body
+  // map and the A&P 3D anatomy tool, so it is its own shell too.
+  if (parts[0] === 'assets' && parts[1] === 'body3d') return 'assets/body3d';
   if (parts[0] === 'assets') return 'site';
   if (parts.length > 1 && parts[1] === 'assets') return parts[0];
   return 'page';

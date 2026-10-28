@@ -292,9 +292,9 @@
         { cm:1600, w:22, d:32, label:'aromatic C=C', note:'The ring, just below the vinyl band.' }
       ],
       nmr:[
-        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂, H cis to =CH–', note:'The two vinyl hydrogens are NOT equivalent: this one is cis to the =CH– hydrogen (trans to the ring), the other is trans to it, and they couple to the middle hydrogen with very different constants.' },
-        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂, H trans to =CH–', note:'An 18 Hz coupling to the =CH– hydrogen. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them.' },
-        { ppm:6.72, h:1, mult:'dd', j:11, label:'=CH–', note:'A doublet of doublets: it couples to both of the others, with two different constants.' },
+        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂, H cis to =CH–', note:'The two vinyl hydrogens are NOT equivalent: this one is cis to the =CH– hydrogen (trans to the ring), the other is trans to it, and they couple to the middle hydrogen with very different constants. (Each also shows a tiny, about 1 Hz, geminal splitting, ignored here.)' },
+        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂, H trans to =CH–', note:'An 18 Hz coupling to the =CH– hydrogen. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them. (A tiny, about 1 Hz, geminal splitting is ignored here.)' },
+        { ppm:6.72, h:1, mult:'dd', j:11, j2:18, label:'=CH–', note:'A doublet of doublets: it couples to both of the others, with two different constants.' },
         { ppm:7.30, h:5, mult:'m', label:'C₆H₅', note:'A monosubstituted ring — five hydrogens in a lump around 7.3.' }
       ],
       tell:'Five degrees of unsaturation, nothing below 3000 in the IR, and three one-hydrogen vinyl signals with a 11 Hz and an 18 Hz coupling. Those two numbers identify cis and trans.'
@@ -357,21 +357,108 @@
      strip; the one-spectrum view (fit) draws it on a narrower, taller canvas
      there instead. An unknown's two stacked spectra keep the wide shape. */
   function narrowChart(){ return !!(window.matchMedia && window.matchMedia('(max-width: 599.98px)').matches); }
+
+  /* ---- What a real IR trace looks like (audit 2026-10) --------------------
+
+     The labelled bands are the ones the table explains, and they still set
+     where each marker sits. Around them the trace now carries what a real
+     spectrum shows and a student has to learn to look past:
+
+       - bands add as ABSORBANCE, not transmittance, so overlapping bands
+         deepen without ever going below zero;
+       - a band's shape is a Gaussian/Lorentzian blend: sharp bands (C=O,
+         C≡N) are narrow with soft tails, a hydrogen-bonded O–H is a broad,
+         lopsided trough that tails toward low wavenumber;
+       - "sp³ C–H" is drawn as the real cluster (about 2960, 2930, 2870) and
+         sp² C–H as a pair, rather than one smooth hump;
+       - every compound with sp³ C–H gets the CH₂ bend near 1465 and the
+         CH₃ bend near 1375; an aromatic ring gets the weak overtone
+         "fingers" between 2000 and 1650; a carboxylic acid gets the small
+         dimer bands riding the O–H trough near 2650 and 2550;
+       - below 1500 is the fingerprint region: a dense set of unassigned
+         bands, different for every compound. They are drawn as a fixed
+         pattern seeded by the compound (so the same compound always looks
+         the same) and are labelled as a pattern, not as measured data.
+
+     None of the added bands has a marker: the markers stay on the bands the
+     course teaches, which is how a spectrum is read. */
+  function seeded(str){
+    var h = 2166136261;
+    for(var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return function(){ h = Math.imul(h ^ (h >>> 15), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; };
+  }
+  function toA(d){ return -Math.log(Math.max(0.02, 1 - Math.min(97, d) / 100)) / Math.LN10; }
+  function irBands(c){
+    var out = [], has = function(re){ return c.ir.some(function(p){ return re.test(p.label); }); };
+    c.ir.forEach(function(p, i){
+      var A = toA(p.d);
+      if(/sp³ C–H/.test(p.label)){
+        // The C–H stretching cluster: antisymmetric CH₃, antisymmetric CH₂, symmetric CH₃.
+        // At its real positions (about 2962, 2926, 2872), clear of the aldehyde C–H near 2820.
+        out.push({ cm:p.cm, w:11, a:A, eta:0.4, src:i });
+        [2962, 2926, 2872].forEach(function(cm, k){
+          if(Math.abs(cm - p.cm) > 12) out.push({ cm:cm, w:11, a:A * [0.9, 0.8, 0.45][k], eta:0.4 });
+        });
+      } else if(/sp² C–H/.test(p.label)){
+        out.push({ cm:p.cm, w:9, a:A, eta:0.4, src:i });
+        out.push({ cm:p.cm + 30, w:9, a:A * 0.7, eta:0.4 });   // sp² C–H stays above 3000
+      } else if(p.w >= 120){
+        // A hydrogen-bonded O–H: broad, and lopsided toward low wavenumber.
+        out.push({ cm:p.cm, w:p.w * (p.w >= 300 ? 0.85 : 0.62), a:A, eta:0, skew:0.35, src:i });
+      } else {
+        out.push({ cm:p.cm, w:Math.max(6, p.w * 0.55), a:A, eta:0.45, src:i });
+      }
+    });
+    var sp3 = has(/sp³ C–H|sp3/), arom = has(/aromatic|Ar|ring/) || has(/sp² C–H/) && /C₆|benz|phen|xyl|styr|tolu/i.test((c.name || '') + (c.formula || ''));
+    if(sp3){
+      out.push({ cm:1462, w:9, a:toA(32), eta:0.4 });
+      if(/CH₃|CH3/.test((c.structure || '') + ' ' + (c.build || ''))) out.push({ cm:1376, w:7, a:toA(24), eta:0.4 });
+    }
+    if(arom){
+      [1960, 1880, 1810, 1740].forEach(function(cm, k){ if(!has(/C=O/)) out.push({ cm:cm, w:10, a:toA(5 - k * 0.6), eta:0.3 }); });
+      if(!c.ir.some(function(p){ return Math.abs(p.cm - 1495) < 25; })) out.push({ cm:1495, w:7, a:toA(30), eta:0.4 });
+      if(!c.ir.some(function(p){ return Math.abs(p.cm - 1600) < 20; })) out.push({ cm:1600, w:7, a:toA(18), eta:0.4 });
+    }
+    if(has(/O–H \(acid\)/)){ out.push({ cm:2660, w:16, a:toA(9), eta:0.3 }); out.push({ cm:2560, w:18, a:toA(8), eta:0.3 }); out.push({ cm:1420, w:14, a:toA(30), eta:0.3 }); out.push({ cm:930, w:22, a:toA(28), eta:0.2 }); }
+    // The fingerprint pattern, clear of every labelled band.
+    var rnd = seeded(c.id || c.name || 'x'), n = 9 + Math.floor(rnd() * 5);
+    for(var k = 0; k < n; k++){
+      var cm = Math.round(1440 - rnd() * 860);
+      if(c.ir.some(function(p){ return Math.abs(p.cm - cm) < 28; }) || Math.abs(cm - 1376) < 14) continue;
+      // Never a strong band where a C–O stretch would be, unless the compound has one.
+      if(!has(/C–O/) && cm > 1000 && cm < 1300) continue;
+      out.push({ cm:cm, w:5 + rnd() * 8, a:toA(6 + rnd() * 14), eta:0.4, fp:true });
+    }
+    return out;
+  }
+  function irAbsAt(bands, cm){
+    var A = 0;
+    for(var i = 0; i < bands.length; i++){
+      var b = bands[i], w = b.w;
+      if(b.skew) w = cm < b.cm ? b.w * (1 + b.skew) : b.w * (1 - b.skew * 0.6);
+      var z = (cm - b.cm) / w;
+      if(Math.abs(z) > 40) continue;
+      A += b.a * ((1 - b.eta) * Math.exp(-z * z * 0.6931) + b.eta / (1 + z * z));
+    }
+    return A;
+  }
+  function irTAt(bands, cm){
+    // A real baseline sits a little under 100% and drifts slightly.
+    var base = 96 - 2.2 * (cm - IR_MIN) / (IR_MAX - IR_MIN) + 0.8 * Math.sin(cm / 230);
+    return base * Math.pow(10, -irAbsAt(bands, cm));
+  }
+
   function irSpectrum(c, highlight, fit){
     var nw = !!fit && narrowChart(); IR_W = nw ? 440 : 640; IR_H = nw ? 250 : 220;
-    var pts = [];
-    for(var cm = IR_MAX; cm >= IR_MIN; cm -= 6){
-      var t = 100;
-      c.ir.forEach(function(p){
-        // Each band is a Gaussian in transmittance, so the drawn curve and the
-        // peak table are the same data rather than two things to keep in sync.
-        var z = (cm - p.cm) / p.w;
-        t -= p.d * Math.exp(-z * z);
-      });
-      // A little baseline drift, so it does not read as a diagram of a spectrum.
-      t -= 2 + 1.5 * Math.sin(cm / 260);
-      pts.push(irX(cm).toFixed(1) + ' ' + irY(Math.max(2, t)).toFixed(1));
+    var pts = [], bands = irBands(c);
+    for(var cm = IR_MAX; cm >= IR_MIN; cm -= 2){
+      pts.push(irX(cm).toFixed(1) + ' ' + irY(Math.max(1, irTAt(bands, cm))).toFixed(1));
     }
+    // Where the fingerprint region starts, marked and named on the chart.
+    var fpBand = '<rect x="' + irX(1500).toFixed(1) + '" y="' + IR_T + '" width="' + (irX(IR_MIN) - irX(1500)).toFixed(1) + '" height="' + (IR_H - IR_T - IR_B) + '" class="sp-fp"/>' +
+      // Two short lines, right-aligned in the region, so the label fits a phone chart.
+      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 22) + '" text-anchor="end">fingerprint region</text>' +
+      '<text class="sp-fp-t" x="' + (irX(IR_MIN) - 4).toFixed(1) + '" y="' + (IR_H - IR_B - 8) + '" text-anchor="end">(illustrative pattern)</text>';
 
     var grid = [4000, 3500, 3000, 2500, 2000, 1500, 1000, 500].map(function(cm){
       return '<line x1="' + irX(cm).toFixed(1) + '" y1="' + IR_T + '" x2="' + irX(cm).toFixed(1) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line-soft)" stroke-width="1"/>' +
@@ -380,23 +467,25 @@
 
     var markers = c.ir.map(function(p, i){
       var on = highlight === i;
+      // The marker sits on the drawn curve, at the bottom of its band.
+      var my = irY(Math.max(1, irTAt(bands, p.cm))).toFixed(1);
       return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
         ' aria-label="' + esc(p.cm + ' per centimetre, ' + p.label) + '">' +
-        '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="20" fill="transparent" stroke="none" pointer-events="all"/>' +
-        '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="' + (on ? 7 : 5) + '" ' +
+        '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + my + '" r="20" fill="transparent" stroke="none" pointer-events="all"/>' +
+        '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + my + '" r="' + (on ? 7 : 5) + '" ' +
           'fill="' + (on ? 'var(--accent)' : 'var(--white)') + '" stroke="var(--accent)" stroke-width="2"/>' +
         '<title>' + esc(p.label) + '</title>' +
       '</g>';
     }).join('');
 
     return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '" role="group" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
-      grid +
+      fpBand + grid +
       '<line x1="' + IR_L + '" y1="' + (IR_H - IR_B) + '" x2="' + (IR_W - 10) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<line x1="' + IR_L + '" y1="' + IR_T + '" x2="' + IR_L + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<text class="sp-axis" x="6" y="' + (IR_T + 9) + '">100</text>' +
       '<text class="sp-axis" x="6" y="' + (IR_H - IR_B) + '">0</text>' +
       '<text class="sp-axis" x="' + (IR_W / 2) + '" y="' + (IR_H - 4) + '" text-anchor="middle">wavenumber (cm⁻¹)</text>' +
-      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round"/>' +
+      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/>' +
       markers +
     '</svg>';
   }
@@ -411,15 +500,33 @@
   }
 
   var MULT_LINES = { s:1, d:2, t:3, q:4, quint:5, sext:6, sept:7, oct:8, non:9, m:5 };
+  // Multiplicity as it is written beside a peak (audit 2026-10: signals had no s, d, t, q labels).
+  var MULT_ABBR = { s:'s', d:'d', t:'t', q:'q', quint:'quint', sext:'sext', sept:'sept', oct:'oct', non:'non', m:'m', dd:'dd' };
 
   function nmrSpectrum(c, highlight, fit){
     var nw = !!fit && narrowChart(); NM_W = nw ? 440 : 640; NM_H = nw ? 280 : 250;
     var base = NM_H - NM_B;
     var maxH = Math.max.apply(null, c.nmr.map(function(s){ return s.h; }));
 
+    /* Each label (integration over multiplicity) is lifted clear of a
+       neighbour's when two signals sit close together. */
+    var lab = {}, placed = [];
+    c.nmr.map(function(s, i){ return i; }).sort(function(a, b){ return c.nmr[b].ppm - c.nmr[a].ppm; }).forEach(function(i){
+      var s = c.nmr[i], x = nmX(s.ppm), y = base - (30 + (s.h / maxH) * 110) - 14;
+      for(var g = 0; g < 8; g++){
+        var hit = placed.some(function(q){ return Math.abs(q.x - x) < 46 && Math.abs(q.y - y) < 36; });
+        if(!hit) break;
+        y -= 36;
+      }
+      y = Math.max(NM_T + 44, y);   // below the key row
+      placed.push({ x:x, y:y }); lab[i] = y;
+    });
+
     var sticks = c.nmr.map(function(s, i){
       var on = highlight === i;
       var n = MULT_LINES[s.mult] || 1;
+      var dd = s.mult === 'dd';
+      if(dd) n = 4;
       // Height is integration, so tall means "more hydrogens" the way it does
       // on a real spectrum, and the multiplet's lines share that total.
       var h = 30 + (s.h / maxH) * 110;
@@ -427,13 +534,15 @@
       var lines = '';
       for(var k = 0; k < n; k++){
         var off = (k - (n - 1) / 2) * spacing;
+        // A doublet of doublets: two couplings, four equal lines.
+        if(dd){ var J1 = (s.j2 || s.j || 7) * 0.55, J2 = (s.j || 7) * 0.55; off = ((k & 2) ? 0.5 : -0.5) * J1 + ((k & 1) ? 0.5 : -0.5) * J2; }
         /* Binomial intensities, and the AREA is what integration fixes — so a
            singlet of three hydrogens stands taller than a triplet of three,
            whose intensity is split 1:2:1 across its lines. Scaling height by
            the weight directly makes a quartet's tallest line almost invisible,
            so the contrast is softened with a fractional power while keeping
            the ordering right. */
-        var weight = binomial(n - 1, k) / Math.pow(2, n - 1);
+        var weight = dd ? 0.25 : binomial(n - 1, k) / Math.pow(2, n - 1);
         var lh = h * 0.92 * Math.pow(weight, 0.6);
         lines += '<line x1="' + (nmX(s.ppm) + off).toFixed(1) + '" y1="' + base + '" ' +
                  'x2="' + (nmX(s.ppm) + off).toFixed(1) + '" y2="' + (base - lh).toFixed(1) + '" ' +
@@ -441,9 +550,11 @@
       }
       return '<g class="sp-sig' + (on ? ' is-on' : '') + '" data-sig="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
         ' aria-label="' + esc(s.ppm.toFixed(2) + ' ppm, ' + s.h + ' H, ' + (MULT_NAME[s.mult] || s.mult) + ', ' + s.label) + '">' +
-        '<rect x="' + (nmX(s.ppm) - 26) + '" y="' + (base - h - 30) + '" width="52" height="' + (h + 34) + '" rx="6" fill="transparent"/>' +
+        '<rect x="' + (nmX(s.ppm) - 26) + '" y="' + (lab[i] - 28).toFixed(1) + '" width="52" height="' + (base - lab[i] + 32).toFixed(1) + '" rx="6" fill="transparent"/>' +
         lines +
-        '<text class="sp-int" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (base - h - 14).toFixed(1) + '" text-anchor="middle">' + s.h + 'H</text>' +
+        '<text class="sp-int" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (lab[i] - 13).toFixed(1) + '" text-anchor="middle">' + s.h + 'H</text>' +
+        '<text class="sp-mult" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (lab[i] + 2).toFixed(1) + '" text-anchor="middle">' + esc(MULT_ABBR[s.mult] || s.mult) + '</text>' +
+        (lab[i] < base - h - 18 ? '<line class="sp-lead" x1="' + nmX(s.ppm).toFixed(1) + '" y1="' + (lab[i] + 6).toFixed(1) + '" x2="' + nmX(s.ppm).toFixed(1) + '" y2="' + (base - h + 4).toFixed(1) + '"/>' : '') +
         '<title>' + esc(s.label) + '</title>' +
       '</g>';
     }).join('');
@@ -457,6 +568,10 @@
       grid +
       '<line x1="' + NM_L + '" y1="' + base + '" x2="' + (NM_W - 14) + '" y2="' + base + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<text class="sp-axis sp-axis-t" x="' + (NM_W / 2) + '" y="' + (NM_H - 4) + '" text-anchor="middle">chemical shift (ppm)</text>' +
+      '<text class="sp-key" x="' + (NM_W - 14) + '" y="' + (NM_T + 4) + '" text-anchor="end">' + (function(){
+        var used = {}; c.nmr.forEach(function(s){ used[s.mult] = 1; });
+        return Object.keys(used).map(function(m){ return esc((MULT_ABBR[m] || m) + ' ' + (MULT_NAME[m] || m)); }).join(' · ');
+      })() + '</text>' +
       sticks +
     '</svg>';
   }
@@ -467,7 +582,7 @@
     return r;
   }
 
-  var MULT_NAME = { s:'singlet', d:'doublet', t:'triplet', q:'quartet', quint:'quintet', sext:'sextet', sept:'septet', oct:'octet', non:'nonet', m:'multiplet' };
+  var MULT_NAME = { s:'singlet', d:'doublet', t:'triplet', q:'quartet', quint:'quintet', sext:'sextet', sept:'septet', oct:'octet', non:'nonet', m:'multiplet', dd:'doublet of doublets' };
 
   /* ====================================================================== */
   /* Page                                                                    */
@@ -736,8 +851,10 @@
           '<td style="white-space:nowrap;"><b>' + esc(p.label) + '</b></td><td>' + esc(p.note) + '</td></tr>';
       }).join('') +
       '</tbody></table></div>' +
-      '<p class="tmuted" style="margin-top:10px;">Click a marker on the spectrum to highlight its row. The curve is drawn from these ' +
-      'numbers, so the picture and the table cannot disagree.</p></details>';
+      '<p class="tmuted" style="margin-top:10px;">Click a marker on the spectrum to highlight its row. The marked bands are drawn from these ' +
+      'numbers. The unmarked ones are what every real spectrum also has: the C–H bends near 1460 and 1375, weak ring overtones between 2000 and 1650, ' +
+      'and below 1500 the fingerprint region, drawn here as an illustrative pattern, not this compound’s measured one. On a real spectrum ' +
+      'the fingerprint is used only to match against a known reference; here, read the marked bands.</p></details>';
     document.getElementById('spIRBox').addEventListener('toggle', function(e){ spIROpen = e.target.open; });
 
     document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR, true);
@@ -881,6 +998,22 @@
     return { left: leftPct, right: leftPct + Math.max(widthPct, estPct) + 1 };
   }
 
+  /* Reference charts as a list with range bars (audit 2026-10: about 30
+     packed labels overlapped at 11 to 12 px). One row per band, its name on
+     the left at full size, a bar on a shared axis on the right; the axis is
+     printed once at the top. Rows are the same buttons as before. */
+  function bandList(items, ticks, pos){
+    return '<div class="sp-rlist">' +
+      '<div class="sp-rlist__axis" aria-hidden="true"><span></span><span class="sp-rlist__ticks">' +
+        ticks.map(function(t){ return '<i style="left:' + pos(t).toFixed(2) + '%">' + t + '</i>'; }).join('') + '</span></div>' +
+      items.map(function(it){
+        return '<button type="button" class="sp-band sp-rrow' + (it.variable ? ' sp-band--variable' : '') + '" data-idx="' + it.idx + '">' +
+          '<span class="sp-rrow__name">' + esc(it.label) + '</span>' +
+          '<span class="sp-rrow__track"><span class="sp-rrow__bar" style="left:' + it.left.toFixed(2) + '%;width:' + it.width.toFixed(2) + '%"></span></span>' +
+        '</button>';
+      }).join('') + '</div>';
+  }
+
   function bandMarkup(items, note){
     var count = packRows(items, function(it){ return it.span; });
     return '<div class="sp-bands" style="height:' + (count * ROW_H + 4) + 'px;">' +
@@ -907,10 +1040,8 @@
     });
 
     document.getElementById('spRefIR').innerHTML =
-      bandMarkup(irItems) +
-      '<div class="sp-scale">' + [4000,3500,3000,2500,2000,1500,1000,500].map(function(cm){
-        return '<span style="left:' + ((IR_MAX - cm) / (IR_MAX - IR_MIN) * 100).toFixed(2) + '%">' + cm + '</span>';
-      }).join('') + '</div>' +
+      bandList(irItems.slice().sort(function(a, b){ return a.left - b.left; }), [4000, 3000, 2000, 1000, 500],
+        function(cm){ return (IR_MAX - cm) / (IR_MAX - IR_MIN) * 100; }) +
       '<div id="spBandNote" class="tnote" style="margin-top:24px;"><span class="tnote__k">Pick a band</span>' +
         'Every region above is a place something absorbs, and they overlap because real spectra do. Click one to ' +
         'find out what it is and what its shape adds. The single most useful line on the whole axis is 3000: ' +
@@ -936,10 +1067,8 @@
     });
 
     document.getElementById('spRefNMR').innerHTML =
-      bandMarkup(nmrItems) +
-      '<div class="sp-scale">' + [12,10,8,6,4,2,0].map(function(p){
-        return '<span style="left:' + ((NM_MAX - p) / NM_MAX * 100).toFixed(2) + '%">' + p + '</span>';
-      }).join('') + '</div>' +
+      bandList(nmrItems.slice().sort(function(a, b){ return a.left - b.left; }), [12, 10, 8, 6, 4, 2, 0],
+        function(p){ return (NM_MAX - p) / NM_MAX * 100; }) +
       '<div id="spZoneNote" class="tnote" style="margin-top:24px;"><span class="tnote__k">Pick a region</span>' +
         'Downfield is to the LEFT, which catches people out. Everything on this axis comes down to one idea: ' +
         'anything that pulls electron density away from a hydrogen leaves it exposed to the magnetic field, ' +

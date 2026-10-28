@@ -53,6 +53,9 @@
 .ol-g-tick{fill:var(--muted);font-size:10px;font-weight:700;font-variant-numeric:tabular-nums;}
 .ol-g-lbl{fill:var(--ink);font-size:11.5px;font-weight:900;}
 .ol-g-line{fill:none;stroke-width:2.4;stroke-linejoin:round;}
+.ol-g-ghost{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:5 5;opacity:.55;}
+.ol-g-ghost-t{fill:var(--muted);font:800 11px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.ls-phone .ol-g-ghost-t{font-size:12.5px;}
 .ol-g-x{stroke:var(--phys-s1);} .ol-g-v{stroke:var(--phys-s3);} .ol-g-a{stroke:var(--phys-s2);}
 .ol-g-dot{stroke:var(--white);stroke-width:1.5;}
 .ol-g-dx{fill:var(--phys-s1);} .ol-g-dv{fill:var(--phys-s3);} .ol-g-da{fill:var(--phys-s2);}
