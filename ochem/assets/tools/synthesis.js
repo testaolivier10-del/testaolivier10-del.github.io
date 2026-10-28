@@ -658,7 +658,7 @@
       case 'nowhere':
         if(e.final) return 'That gives ' + v.next.mol.name + ', not ' + P.targetMol.m.name + '. A step that joins a second molecule on can only be the last one, so there is no fixing it afterwards.';
         var outs = R.edgesFrom(v.next.g).filter(function(x){ return x.from !== x.to; }).length;
-        if(v.next.g === 'alkane') return 'That gives ' + v.next.mol.name + ', which has no functional group left. The only way back in is radical bromination, which puts the Br on the most substituted carbon, not where ' + P.targetMol.m.name + ' needs it. Step back.';
+        if(v.next.g === 'alkane') return 'That gives ' + v.next.mol.name + ', which has no functional group left. The only way back in is radical bromination: it takes the most substituted C–H and gives a mixture where several are alike, so it cannot put a group just where ' + P.targetMol.m.name + ' needs it. Step back.';
         return 'That gives ' + v.next.mol.name + '. ' + (outs
           ? 'Real chemistry, but a dead end here: the Reagent Roadmap has no route from ' + v.next.mol.name + ' to ' + P.targetMol.m.name + ' on this skeleton. Step back.'
           : 'The Reagent Roadmap has no reaction that takes ' + aName(v.next.g) + ' on toward ' + P.targetMol.m.name + '. Step back.');
