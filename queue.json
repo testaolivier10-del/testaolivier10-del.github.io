@@ -588,10 +588,10 @@
   },
   {
    "id": "w1025-01-power-lift",
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-10-26",
    "date": "2026-11-01",
-   "buffer": null,
+   "buffer": "6ae14d19b24fed5fb494689a",
    "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
