@@ -1,0 +1,52 @@
+[
+ {
+  "slug": "article-studio",
+  "title": "Article Analysis Studio",
+  "file": "appsych/article-studio.svg"
+ },
+ {
+  "slug": "evidence-builder",
+  "title": "Evidence Builder",
+  "file": "appsych/evidence-builder.svg"
+ },
+ {
+  "slug": "neuron",
+  "title": "The Neuron",
+  "file": "appsych/neuron.svg"
+ },
+ {
+  "slug": "brain-map",
+  "title": "Brain Map",
+  "file": "appsych/brain-map.svg"
+ },
+ {
+  "slug": "sensation",
+  "title": "Sensation and Perception",
+  "file": "appsych/sensation.svg"
+ },
+ {
+  "slug": "memory-lab",
+  "title": "Memory Lab",
+  "file": "appsych/memory-lab.svg"
+ },
+ {
+  "slug": "conditioning-lab",
+  "title": "Conditioning Lab",
+  "file": "appsych/conditioning-lab.svg"
+ },
+ {
+  "slug": "development",
+  "title": "Development Across the Lifespan",
+  "file": "appsych/development.svg"
+ },
+ {
+  "slug": "social-influence",
+  "title": "Social Influence",
+  "file": "appsych/social-influence.svg"
+ },
+ {
+  "slug": "stats-lab",
+  "title": "Stats Lab",
+  "file": "appsych/stats-lab.svg"
+ }
+]
