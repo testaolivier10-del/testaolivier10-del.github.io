@@ -267,3 +267,20 @@ test('dated passes say that buying earlier covers more of the school year', () =
   assert.match(premium.gate('apbio', 'frq', 'hub'), /runs through June 30, 2027 whenever you buy it/);
   assert.ok(!/premium-card__year/.test(premium.gate('nremt', 'scenarios', 'hub')), 'NREMT passes are not dated');
 });
+
+test('every course has a Free vs Premium table, and its buttons show the price', () => {
+  const { premium, hooks } = fresh();
+  hooks.setLaunched(true);
+  for (const [key, c] of Object.entries(premium.COURSES)) {
+    assert.ok(Array.isArray(c.rows) && c.rows.length >= 5, `${key} has no comparison rows`);
+    for (const r of c.rows) {
+      assert.equal(r.length, 3, `${key}: a row is [what, Free, Premium]`);
+      assert.notEqual(r[2], 'no', `${key}: Premium must include "${r[0]}"`);
+    }
+    const t = premium.tableHtml(key, '$1');
+    assert.ok(t.includes('<table class="pc-table">') && t.includes('scope="row"'), `${key} table`);
+  }
+  // One pass: the locked card's button names the price. Two: "from".
+  assert.ok(/Unlock for \$\d/.test(premium.gate('apbio', 'exam', 'results')));
+  assert.ok(/See Premium, from \$\d/.test(premium.gate('ochem', 'exam', 'results')));
+});

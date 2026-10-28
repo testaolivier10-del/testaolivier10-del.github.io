@@ -73,7 +73,7 @@
       // The interactive lessons of chapters 1 to 8 (docs/nremt-lessons-spec.md, owner 2026-10-26); the notes are
       // always free. Ids are 'ch' + the chapter number in nremt/assets/study-notes.json.
       freeChapters: ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8'],
-      compare: 'For comparison: Pocket Prep EMS is $15.99 a month or $39.99 for 3 months (checked October 2026).',
+      compare: 'Pocket Prep EMS is $39.99 for 3 months (checked October 2026).',
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
@@ -91,6 +91,18 @@
         'Readiness score and domain breakdowns',
         'The clinical scenario simulator',
         'The interactive lessons after chapter 8',
+      ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Study notes, glossary, flashcards, flowcharts and the body map', 'yes', 'yes'],
+        ['Practice and review questions', '15 a day', 'Unlimited, with spaced repetition'],
+        ['Timed and adaptive exams', 'One of each', 'Unlimited'],
+        ['Interactive lessons', 'Chapters 1 to 8', 'Every chapter'],
+        ['Readiness score and domain breakdowns', 'no', 'yes'],
+        ['Clinical scenario simulator', 'no', 'yes'],
+        ['Pass-or-extend', 'no', 'yes'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
     ochem: {
@@ -115,6 +127,17 @@
         'Mastery dashboard and gap detection',
         'All nine interactive tools',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Textbook sections and flashcards', 'yes', 'yes'],
+        ['Interactive lessons', 'First four chapters', 'Every chapter, with mechanism walkthroughs'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Full exams', 'One', 'Unlimited'],
+        ['Interactive tools', 'Three', 'Every tool'],
+        ['Mastery dashboard and gap detection', 'no', 'yes'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     anp: {
       name: 'Anatomy & Physiology',
@@ -138,6 +161,17 @@
         'All the interactive tools, including the lab practical',
         'Detailed dashboard analytics',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary and flashcards', 'yes', 'yes'],
+        ['Interactive lessons', 'Foundations chapters', 'Every chapter'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Full exams', 'One', 'Unlimited'],
+        ['Interactive tools', 'Three', 'Every tool, with the lab practical'],
+        ['Detailed dashboard analytics', 'no', 'yes'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     apbio: {
       name: 'AP® Biology',
@@ -149,7 +183,7 @@
       freeChapters: ['unit-1', 'unit-2'],
       // A fixed-date pass: it lasts until `until` whenever it is bought, and
       // the Worker never ends it sooner (PASSES in worker/src/premium.js).
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'bio-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -170,6 +204,19 @@
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and science practice',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, and skills lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Simulators', 'One', 'Every simulator'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and science practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     apchem: {
       name: 'AP® Chemistry',
@@ -177,7 +224,7 @@
       // As AP® Biology: Units 1 and 2 open, and every math-skills lesson
       // (topic.free in chem-curriculum.js, isFreeTopic in scripts/lib/apchem-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'chem-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -185,6 +232,7 @@
         'Every notes page, the glossary, the flashcards and the printable unit sheets',
         'The cram-kit study plan outline, printable',
         'Every lesson in Units 1 and 2, and every math refresher lesson',
+        'Five tools: periodic trends, particle diagrams, ICE tables, titration curves and units and sig figs',
         '15 practice or review questions a day from any unit',
         'One full practice exam',
         'Your progress, XP, streak and weak topics',
@@ -192,10 +240,24 @@
       premium: [
         'Every interactive lesson',
         'Unlimited practice and review from the whole question bank',
-        'Every trainer and drill: justifications, particle diagrams, equilibrium and buffer drills',
+        'Every tool, adding Q vs K, the buffer drills and equilibrium and kinetics, plus the justification trainer',
         'All free-response questions, unit tests and practice exams',
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and science practice',
+      ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, and math refreshers', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Interactive tools', 'Five', 'Every tool'],
+        ['Justification trainer', 'no', 'yes'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and science practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
     apphys: {
@@ -204,7 +266,7 @@
       // As AP® Chemistry (docs/apphys-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apphys-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'phys-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -225,6 +287,19 @@
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and science practice',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, and math lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and science practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     apcalc: {
       name: 'AP® Calculus AB',
@@ -232,7 +307,7 @@
       // As AP® Physics 1 (docs/apcalc-spec.md decision 3): Units 1 and 2 open,
       // and every "Math you need" lesson (isFreeTopic in scripts/lib/apcalc-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'calc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -253,6 +328,19 @@
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and mathematical practice',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, and math lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and mathematical practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     apstat: {
       name: 'AP® Statistics',
@@ -261,7 +349,7 @@
       // every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apstat-build.mjs (build-pricing --check compares them).
       freeChapters: ['unit-1'],
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'stat-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -282,6 +370,20 @@
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and skill',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The reference sheet, explained', 'yes', 'yes'],
+        ['Interactive lessons', 'Unit 1, and math lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and skill'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     apenv: {
       name: 'AP® Environmental Science',
@@ -292,7 +394,7 @@
       // and every "Math you need" lesson. Keep in step with FREE_UNITS in
       // scripts/lib/apenv-build.mjs.
       freeChapters: ['unit-1', 'unit-2'],
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'env-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -313,6 +415,20 @@
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and science practice',
       ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The formulas to memorize, explained', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, and math lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and science practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
     },
     appsych: {
       name: 'AP® Psychology',
@@ -323,7 +439,7 @@
       // every "Research skills you need" lesson. Keep in step with FREE_UNITS
       // in scripts/lib/appsych-build.mjs.
       freeChapters: ['unit-1'],
-      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      compare: 'Fiveable is $79 a year (checked October 2026).',
       passes: [
         { id: 'psy-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
       ],
@@ -343,6 +459,20 @@
         'All free-response questions, unit tests and practice exams',
         'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and science practice',
+      ],
+      // The comparison table on premium.html and in the dialog: [what, Free, Premium],
+      // each cell 'yes', 'no' or a short limit. Keep it true to `free` and `premium` above.
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['The statistics to know, explained', 'yes', 'yes'],
+        ['Interactive lessons', 'Unit 1, and research skills lessons', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'Three', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and science practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
   };
@@ -689,6 +819,51 @@
     return '';
   }
 
+  /* ---- the Free vs Premium table (owner 2026-10-28) ----------------------
+     One row per thing a student gets, Free on the left and Premium on the
+     right, so the upgrade reads at a glance: every Premium cell is a check or
+     "more", and Free shows its real limit rather than an empty X (a fairer
+     picture of how much is free). Used by premium.html and the dialog. */
+  var ICON_YES = '<svg class="pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var ICON_NO = '<svg class="pc-ic pc-ic--no" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg>';
+  function cellHtml(v) {
+    if (v === 'yes') return ICON_YES + '<span class="sr-only">Included</span>';
+    if (v === 'no') return ICON_NO + '<span class="sr-only">Not included</span>';
+    return esc(v);
+  }
+  function tableHtml(course, priceHtml) {
+    var c = COURSES[course];
+    if (!c || !c.rows) return '';
+    return '<div class="table-wrap pc-wrap"><table class="pc-table"><caption class="sr-only">Free and Premium in ' + esc(c.name) + '</caption>' +
+      '<thead><tr><th scope="col" class="pc-what">What you get</th>' +
+      '<th scope="col" class="pc-free"><span class="pc-plan">Free</span><span class="pc-amt">$0</span></th>' +
+      '<th scope="col" class="pc-prem"><span class="pc-plan">Premium</span><span class="pc-amt">' + (priceHtml || '') + '</span></th></tr></thead><tbody>' +
+      c.rows.map(function (r) {
+        return '<tr><th scope="row">' + esc(r[0]) + '</th><td class="pc-free">' + cellHtml(r[1]) + '</td><td class="pc-prem">' + cellHtml(r[2]) + '</td></tr>';
+      }).join('') +
+      '</tbody></table></div>';
+  }
+
+  /* The one reassurance line, said once under every buy button instead of in
+     several places (research 2026-10-28: repeating one offer makes people
+     look for the catch). */
+  var SURE = 'Full refund within 7 days · Never renews · Secure checkout by Polar';
+
+  function lowestPass(c) { return c.passes.reduce(function (a, b) { return b.price < a.price ? b : a; }); }
+  /* The founding price says when the full price starts instead of striking
+     through a price nobody has paid yet (FTC 16 CFR 233). */
+  function dayAfter(iso) {
+    var t = Date.parse(iso + 'T12:00:00Z');
+    return isNaN(t) ? '' : untilText(new Date(t + 864e5).toISOString().slice(0, 10));
+  }
+  function foundingLine(p) {
+    return foundingLive() ? 'Founding price · $' + money(p.price) + ' from ' + dayAfter(FOUNDING.until) : '';
+  }
+  function buyLabel(p) { return 'Unlock for $' + money(nowPrice(p)); }
+  function ctaLabel(c) {
+    return c.passes.length === 1 ? buyLabel(c.passes[0]) : 'See Premium, from $' + money(nowPrice(lowestPass(c)));
+  }
+
   function gate(course, feature, source) {
     var c = COURSES[course];
     if (!c || has(course)) return '';
@@ -701,7 +876,7 @@
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
       yearLine(c) +
       (c.guarantee ? '<p class="premium-card__guarantee">Includes Pass-or-extend: don’t pass the NREMT, and you can claim a free extension (conditions apply).</p>' : '') +
-      '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
+      '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>' + esc(ctaLabel(c)) + '</button>' +
       tomorrowLine(course, feature) +
     '</div>';
   }
@@ -776,7 +951,7 @@
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       (live(course) ? yearLine(c) : '') +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
-        (live(course) ? 'See Premium' : 'Get notified') + '</button>' +
+        (live(course) ? esc(ctaLabel(c)) : 'Get notified') + '</button>' +
     '</div>';
   }
 
@@ -805,15 +980,14 @@
   }
 
   function passHtml(course, p) {
-    var now = foundingLive() ? p.price * (100 - FOUNDING.off) / 100 : null;
+    var f = foundingLine(p);
     return '<li class="premium-pass">' +
       '<span><b>' + esc(p.until ? 'One pass, valid through ' + untilText(p.until) : p.label) + '</b>' +
-      (now !== null
-        ? ' <s>$' + p.price + '</s> <b class="premium-pass__now">$' + money(now) + '</b>'
-        : ' <b class="premium-pass__now">$' + p.price + '</b>') +
+      ' <b class="premium-pass__now">$' + money(nowPrice(p)) + '</b>' +
+      (f ? '<small class="premium-pass__founding">' + esc(f) + '</small>' : '') +
       (dayText(p) ? '<small class="premium-pass__day">' + dayText(p) + '</small>' : '') +
       '</span>' +
-      '<button type="button" class="auth-modal-submit premium-buy" data-premium-buy="' + esc(p.id) + '">Get it</button>' +
+      '<button type="button" class="auth-modal-submit premium-buy" data-premium-buy="' + esc(p.id) + '" data-label="' + esc(buyLabel(p)) + '">' + esc(buyLabel(p)) + '</button>' +
     '</li>';
   }
 
@@ -830,7 +1004,7 @@
         '<div class="premium-lists" id="premiumLists"></div>' +
         '<div id="premiumBody"></div>' +
         '<div class="auth-modal-msg" id="premiumMsg" role="alert" aria-live="polite"></div>' +
-        '<p class="premium-fine" id="premiumFine"></p>' +
+        '<div class="premium-fine" id="premiumFine"></div>' +
       '</div>';
     document.body.appendChild(overlay);
 
@@ -850,7 +1024,7 @@
       if (e.key === 'Escape') { close(); return; }
       if (e.key !== 'Tab') return;
       var list = Array.prototype.filter.call(
-        overlay.querySelectorAll('button:not([disabled]), input:not([disabled])'),
+        overlay.querySelectorAll('button:not([disabled]), input:not([disabled]), summary, a[href]'),
         function (n) { return n.offsetParent !== null || n === document.activeElement; }
       );
       if (!list.length) return;
@@ -866,9 +1040,17 @@
       items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
   }
 
-  function setMsg(text, kind) {
-    var msg = document.getElementById('premiumMsg');
-    msg.className = 'auth-modal-msg' + (kind ? ' ' + kind : '');
+  /* In the dialog when it is open; otherwise next to the page's own buy
+     button ([data-premium-msg] in the same [data-premium-scope]), or read out. */
+  function setMsg(text, kind, button) {
+    var open_ = overlay && overlay.classList.contains('open');
+    var msg = open_ ? document.getElementById('premiumMsg') : null;
+    if (!msg && button && button.closest) {
+      var scope = button.closest('[data-premium-scope]');
+      msg = scope && scope.querySelector('[data-premium-msg]');
+    }
+    if (!msg) { if (text && window.LevlAnnounce) window.LevlAnnounce.say(text); return; }
+    msg.className = (open_ ? 'auth-modal-msg' : 'pp-msg') + (kind ? ' ' + kind : '');
     msg.textContent = text || '';
   }
 
@@ -882,8 +1064,11 @@
 
     document.getElementById('premiumTitle').textContent =
       live(course) ? 'Premium for ' + c.name : 'Premium is coming';
-    document.getElementById('premiumLists').innerHTML =
-      listHtml('Premium', c.premium) + listHtml('Always free', c.free);
+    var low = lowestPass(c);
+    document.getElementById('premiumLists').className = 'premium-lists' + (c.rows ? ' has-table' : '');
+    document.getElementById('premiumLists').innerHTML = c.rows
+      ? tableHtml(course, (c.passes.length > 1 ? '<small>from</small> ' : '') + '$' + money(nowPrice(low)))
+      : listHtml('Premium', c.premium) + listHtml('Always free', c.free);
 
     var body = document.getElementById('premiumBody');
     var fine = document.getElementById('premiumFine');
@@ -893,31 +1078,28 @@
         (dated
           ? 'One payment, valid through ' + untilText(dated.until) + ' whenever you buy it, so the sooner you start, the more of the school year it covers.'
           : 'One payment per pass.') +
-        (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + untilText(FOUNDING.until) + '.' : '');
+        (foundingLive() ? ' Founding price until ' + untilText(FOUNDING.until) + '.' : '');
       // A fixed-date pass is off sale once its day is over (the Worker refuses
       // it too); Hawaii time, the last US day to end.
       var sale = c.passes.filter(function (p) { return !p.until || Date.now() <= Date.parse(p.until + 'T23:59:59-10:00'); });
       body.innerHTML = (sale.length
         ? '<ul class="premium-passes">' + sale.map(function (p) { return passHtml(course, p); }).join('') + '</ul>'
         : '<p>This pass is no longer on sale.</p>') +
-        // Next to the button: what removes the risk (2026-10-25: 7 opened
-        // Premium in two weeks, none went on to sign in). The full guarantee
-        // terms sit one tap away instead of in front of the price.
-        '<p class="premium-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>' +
-        (c.compare ? '<p class="premium-compare">' + esc(c.compare) + '</p>' : '') +
+        // Next to the buttons, once: what removes the risk (research 2026-10-28).
+        '<p class="premium-sure">' + esc(SURE) + '</p>' +
+        (c.compare ? '<p class="premium-compare">For comparison: ' + esc(c.compare) + '</p>' : '') +
         (c.guarantee ? '<p class="premium-guarantee">Pass-or-extend: if you don’t pass the NREMT during your pass, you can claim ' +
           GUARANTEE.extendDays + ' more days free. <a href="/terms.html#pass-or-extend" target="_blank" rel="noopener">Conditions</a></p>' : '');
-      // innerHTML for the links; every other part is a fixed string or
-      // escaped, as elsewhere in this dialog.
-      fine.innerHTML = esc(
+      // Folded, not removed: every rule is still one tap away.
+      fine.innerHTML = '<details><summary>Fine print and terms</summary><p>' + esc(
         'When a pass ends, your progress stays; only the Premium parts lock again. ' +
-        'Full refund within 7 days of buying, once per account and email address. ' +
-        'Prices in US dollars; any sales tax or VAT is shown before you pay. Secure checkout by Polar, our merchant of record. ' +
+        'The refund is once per account and email address. ' +
+        'Prices in US dollars; any sales tax or VAT is shown before you pay. Polar is our merchant of record. ' +
         'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
         (/^ap/.test(course) ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
         '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
-        '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
+        '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a></p></details>';
     } else {
       document.getElementById('premiumSub').textContent =
         'Premium for ' + c.name + ' (from ' + fromPrice(c) + ', one-time, no subscription) isn’t on sale yet, ' +
@@ -991,11 +1173,13 @@
   var PENDING_KEY = 'levlprep_pending_buy';
   var PENDING_MINUTES = 30;
 
-  function checkout(passId, button) {
+  function checkout(passId, button, source) {
     var a = window.StudyHubAccount;
-    if (!a) { setMsg('Couldn’t reach checkout just now. Try again in a moment.', 'error'); return; }
+    var inDialog = !!(overlay && overlay.classList.contains('open'));
+    var src = source || (active ? active.source : '');
+    if (!a) { setMsg('Couldn’t reach checkout just now. Try again in a moment.', 'error', button); return; }
     if (!currentUserId()) {
-      writeJson(PENDING_KEY, { pass: passId, source: active ? active.source : '', at: Date.now() });
+      writeJson(PENDING_KEY, { pass: passId, source: src, at: Date.now(), via: inDialog ? 'dialog' : 'page' });
       funnel('signin-for-checkout', courseOfPass(passId), { course: courseOfPass(passId), pass: passId });
       close();
       /* An account.js cached from before the checkout mode existed has no
@@ -1005,6 +1189,7 @@
       return;
     }
     funnel('checkout-start', courseOfPass(passId), { course: courseOfPass(passId), pass: passId });
+    var label = button.innerHTML;
     button.disabled = true;
     button.textContent = 'Opening…';
     var course = courseOfPass(passId);
@@ -1024,6 +1209,8 @@
          can't load (blocked script, old browser), fall back to Polar's page. */
       return loadEmbed().then(function (Embed) {
         close();
+        button.disabled = false;
+        button.innerHTML = label;
         openEmbedded(Embed, url, function () {
           funnel('checkout-paid', course, { course: course, pass: passId });
           if (window.LevlAnnounce) window.LevlAnnounce.say('Payment received. Unlocking Premium…');
@@ -1032,8 +1219,8 @@
       }, function () { window.location.href = url; });
     }).catch(function () {
       button.disabled = false;
-      button.textContent = 'Get it';
-      setMsg('Checkout didn’t open — you may be offline. Nothing was charged. Try again in a moment.', 'error');
+      button.innerHTML = label;
+      setMsg('Checkout didn’t open. You may be offline. Nothing was charged. Try again in a moment.', 'error', button);
     });
   }
 
@@ -1195,9 +1382,50 @@
     writeJson(PENDING_KEY, {});
     var course = courseOfPass(String(p.pass));
     if (!COURSES[course] || !live(course) || !(Date.now() - (p.at || 0) < PENDING_MINUTES * 60000)) return;
+    var id = String(p.pass).replace(/[^a-z0-9-]/g, '');
+    /* Started from a page's own buy button (premium.html, a course home's
+       ?buy= link): go straight back to paying, without the dialog. */
+    if (p.via === 'page') {
+      var own = document.querySelector('[data-premium-scope] [data-premium-buy="' + id + '"]');
+      checkout(id, own || document.createElement('button'), p.source || 'resume');
+      return;
+    }
     open(course, p.source || 'resume');
-    var btn = overlay && overlay.querySelector('[data-premium-buy="' + String(p.pass).replace(/[^a-z0-9-]/g, '') + '"]');
+    var btn = overlay && overlay.querySelector('[data-premium-buy="' + id + '"]');
     if (btn) checkout(p.pass, btn);
+  }
+
+  /* A course home's buy link: premium.html?buy=<pass>. The course opens on
+     the page behind and checkout (or the one-step sign-in) starts at once,
+     so "Unlock" on a course home is one click, with the full comparison
+     right there if they close it. */
+  function handleBuyLink() {
+    var id = null;
+    try { id = new URLSearchParams(window.location.search).get('buy'); } catch (e) { return; }
+    if (!id) return;
+    id = String(id).replace(/[^a-z0-9-]/g, '');
+    try {
+      var params = new URLSearchParams(window.location.search);
+      params.delete('buy');
+      var q = params.toString();
+      window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
+    } catch (e) { /* old browser: the query just stays */ }
+    var course = courseOfPass(id);
+    if (!course || !live(course) || has(course)) return;
+    funnel('interest', course, { course: course, source: 'course-home' });
+    writeJson(PENDING_KEY, { pass: id, source: 'course-home', at: Date.now(), via: 'page' });
+    // Signed in: onAuthChange runs resumePending once the session is known.
+    // Signed out: once that is certain, start checkout, which asks to sign in.
+    var tries = 0;
+    (function wait() {
+      var a = window.StudyHubAccount;
+      var known = a && a.settled && a.settled();
+      if (!known && ++tries < 40) { setTimeout(wait, 150); return; }
+      if (a && a.user && a.user()) { resumePending(); return; }
+      if (!readJson(PENDING_KEY).pass) return;
+      var own = document.querySelector('[data-premium-scope] [data-premium-buy="' + id + '"]');
+      checkout(id, own || document.createElement('button'), 'course-home');
+    })();
   }
 
   function handleReturn() {
@@ -1295,6 +1523,16 @@
     window.__levlPremiumMounted = true;
     watchGates();
     document.addEventListener('click', function (e) {
+      // A buy button on the page itself (premium.html): straight to checkout.
+      var buy = e.target && e.target.closest && e.target.closest('[data-premium-scope] [data-premium-buy]');
+      if (buy && !(overlay && overlay.contains(buy))) {
+        e.preventDefault();
+        var passId = buy.getAttribute('data-premium-buy');
+        var src = buy.getAttribute('data-premium-source') || 'pricing-page';
+        funnel('interest', courseOfPass(passId), { course: courseOfPass(passId), source: src });
+        checkout(passId, buy, src);
+        return;
+      }
       var btn = e.target && e.target.closest && e.target.closest('[data-premium-open]');
       if (!btn) return;
       e.preventDefault();
@@ -1303,6 +1541,7 @@
     var a = window.StudyHubAccount;
     if (a && a.onAuthChange) a.onAuthChange(function (u) { refresh(); if (u) resumePending(); });
     handleReturn();
+    handleBuyLink();
   }
 
   window.LevlPremium = {
@@ -1321,6 +1560,7 @@
     quota: quota,
     noteAnswer: noteAnswer,
     perDay: perDay,
+    tableHtml: tableHtml,
     courseTally: courseTally,
     todayScore: todayScore,
     freeExam: freeExam,

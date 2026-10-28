@@ -15,7 +15,7 @@
 import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { premiumData, foundingPrice, money, longDate } from './premium-data.mjs';
+import { premiumData, foundingPrice, money, longDate, SURE, dayAfterUS } from './premium-data.mjs';
 import { loadVideos, displayTitle, clock, THUMB_DIR, THUMB_WIDTHS } from './videos.mjs';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
@@ -239,11 +239,19 @@ export function r3HomeMain(key, ctx) {
     const low = Math.min(...pc.passes.map((x) => x.price));
     const pass = pc.passes.find((x) => x.price === low);
     const from = pc.passes.length > 1 ? 'From ' : '';
-    const amt = founding
-      ? `<span data-founding-until="${founding.until}">${from}${money(foundingPrice(low))}<s>${money(low)}</s></span><span data-founding-after="${founding.until}" hidden>${from}${money(low)}</span>`
-      : `${from}${money(low)}`;
+    const spans = (price) => (founding
+      ? `<span data-founding-until="${founding.until}">${money(foundingPrice(price))}</span><span data-founding-after="${founding.until}" hidden>${money(price)}</span>`
+      : money(price));
+    const amt = `${from}${spans(low)}`;
     const term = pass.until ? `One pass, good through ${longDate(pass.until)}, the end of the exam season.` : `One payment for ${pass.label.toLowerCase()}.`;
-    const note = founding ? `<span data-founding-until="${founding.until}">Founding price until ${longDate(founding.until)}. </span>${term}` : term;
+    /* When the full price starts, never a struck-through price nobody has paid yet (owner 2026-10-28). */
+    const note = founding ? `<span data-founding-until="${founding.until}">Founding price, ${money(low)} from ${dayAfterUS(founding.until)}. </span>${term}` : term;
+    /* Unlock goes straight to checkout (owner 2026-10-28): premium.html?buy= opens the course there and starts
+       checkout, or the one-step sign-in, at once. A second pass is one line under it. */
+    const buyHref = (p) => `${up}premium.html?course=${key}&amp;buy=${p.id}`;
+    const other = pc.passes.filter((x) => x !== pass);
+    const buy = `<a class="btn-gold" href="${buyHref(pass)}">Unlock for ${spans(pass.price)}</a>` +
+      other.map((x) => `<a class="plan__alt" href="${buyHref(x)}">Or a ${x.label.replace(/\s*\(.*\)$/, '').toLowerCase()} for ${spans(x.price)}</a>`).join('');
     const name = d.deal.name;
     const free = pc.free.filter((x) => !/^Your progress/.test(x));
     const esc = (t) => String(t).replace(/&(?![a-z]+;|#\d+;)/g, '&amp;').replace(/</g, '&lt;');
@@ -261,8 +269,9 @@ export function r3HomeMain(key, ctx) {
       <p class="plan__amt">${amt}</p>
       <p class="plan__note">${note}</p>
       <ul>${pc.premium.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-      <a class="btn-gold" href="${up}premium.html#${key}">Get Premium for ${name}</a>
-      <p class="plan__sure">Never renews. Full refund within 7 days.</p>
+      ${buy}
+      <p class="plan__sure">${SURE}</p>
+      <a class="plan__compare" href="${up}premium.html#${key}">Compare Free and Premium</a>
     </div>
   </section>${founding ? `
 <script>(function(){var n=Date.now(),d=document.getElementById('r3Deal');[].forEach.call(d.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(d.querySelectorAll('[data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});})();</script>` : ''}`;

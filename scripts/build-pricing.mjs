@@ -44,7 +44,7 @@
       first unit is published (docs/appsych-spec.md). */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
+import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText, compareTable, SURE, dayAfterUS } from './lib/premium-data.mjs';
 import { CSP } from './lib/site-config.mjs';
 import { PAID, OPEN, isOpen } from './lib/courses.mjs';
 import { DISCLAIMER } from './lib/apbio-build.mjs';
@@ -75,10 +75,6 @@ function between(src, start, end, inner, rel) {
 const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
 const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
 
-/* The price next to something a student already knows (trust plan, 2026-10-08):
-   a private tutor's hour. Care.com's national figure for a tutor's starting
-   rate was about $26 an hour in October 2026; update the number and the date
-   together if it moves. */
 /* Where each "For comparison" line in premium.js comes from (checked on the
    competitors' own pages, 2026-10-25). Re-check before changing a sentence. */
 const AP_SOURCES = [['Fiveable', 'https://fiveable.me/pricing']];
@@ -86,11 +82,8 @@ const COMPARE_SOURCES = {
   nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
   apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES, appsych: AP_SOURCES,
 };
-const TUTOR_HOUR = { rate: 26, source: 'https://www.care.com/cost/private-tutors/boston-ma', checked: 'October 2026' };
 const PRICES = ORDER.flatMap((k) => COURSES[k].passes.map((x) => x.price));
 const LOW = Math.min(...PRICES), HIGH = Math.max(...PRICES);
-const HOURS = (n) => { const h = Math.max(1, Math.round(n / TUTOR_HOUR.rate)); return h === 1 ? 'one hour' : h === 2 ? 'two hours' : h + ' hours'; };
-const tutorSpan = HOURS(LOW) === HOURS(HIGH) ? HOURS(LOW) : HOURS(LOW).replace(/ hours?$/, '') + ' or ' + HOURS(HIGH);
 const BIO = ORDER.includes('apbio');
 const CHEM = ORDER.includes('apchem');
 const PHYS = ORDER.includes('apphys');
@@ -125,34 +118,50 @@ const lowest = (c) => c.passes.reduce((a, b) => (b.price < a.price ? b : a));
 
 /* ---- 1. premium.html ----------------------------------------------------- */
 
-function passRow(p) {
-  return `<li><span class="pp-label">${esc(p.label)}</span> <span class="pp-price">` +
-    (founding
-      ? `<span data-founding-until="${founding.until}"><s>${money(p.price)}</s> <b>${money(foundingPrice(p.price))}</b> <small>founding price</small></span><b data-founding-after="${founding.until}" hidden>${money(p.price)}</b>`
-      : `<b>${money(p.price)}</b>`) +
-    `</span> <small class="pp-day" data-pass="${p.id}"></small></li>`;
+/* A price that changes on its own when the founding offer ends, with no
+   rebuild: the page's script swaps [data-founding-until] for
+   [data-founding-after] after the date. */
+function priceSpans(price) {
+  return founding
+    ? `<span data-founding-until="${founding.until}">${money(foundingPrice(price))}</span><span data-founding-after="${founding.until}" hidden>${money(price)}</span>`
+    : money(price);
+}
+/* "Founding price · $25 from February 1, 2027": when the full price starts,
+   never a struck-through price nobody has paid yet (FTC 16 CFR 233). */
+function foundingNote(p) {
+  return founding ? `<span data-founding-until="${founding.until}">Founding price &middot; ${money(p.price)} from ${dayAfterUS(founding.until)}</span>` : '';
 }
 
 /* One <details> per course (polish 2026-10-17, A8): the page opens on the
    course the visitor came from (?course=, #key or the referring course page,
    chosen by the script at the end of the page) and the rest stay folded to
-   one line with their lowest price. */
+   one line with their lowest price. Inside, the Free vs Premium table and
+   one buy button that goes straight to checkout (owner 2026-10-28); a course
+   with two passes gets a switch above it. */
 function courseSection(key) {
   const c = COURSES[key];
-  const from = lowest(c).price;
+  const low = lowest(c);
+  const multi = c.passes.length > 1;
+  const head = multi
+    ? c.passes.map((p) => `<span data-pp-for="${p.id}"${p === low ? '' : ' hidden'}>${priceSpans(p.price)}</span>`).join('')
+    : priceSpans(low.price);
+  const sw = multi ? `
+          <fieldset class="pp-switch"><legend class="sr-only">Pass length</legend>${c.passes.map((p) => `<label><input type="radio" name="pp-pass-${key}" value="${p.id}"${p === low ? ' checked' : ''}><span>${esc(p.label)}</span></label>`).join('')}</fieldset>` : '';
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}">
-          <summary><img class="pp-cover" src="assets/covers/thumb/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${c.passes.length > 1 ? 'from ' : ''}${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(from))}</span><span data-founding-after="${founding.until}" hidden>${money(from)}</span>` : money(from)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
-          <div class="pp-cols">
-            <div><h3>Free</h3><ul>${c.free.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
-            <div><h3>Premium adds</h3><ul>${c.premium.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></div>
+          <summary><img class="pp-cover" src="assets/covers/thumb/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><h2 id="pp-${key}">${esc(c.name)}</h2><span class="pp-from">${multi ? 'from ' : ''}${priceSpans(low.price)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
+          <div class="pp-body" data-premium-scope>${sw}
+          ${compareTable(c, head)}
+          <div class="pp-buy">
+            <p class="pp-note">${c.passes.map((p) => `<span data-pp-for="${p.id}"${p === low ? '' : ' hidden'}>${p.until ? `One pass, valid through ${esc(longDate(p.until))} whenever you buy it. ` : `One payment for ${esc(p.label.toLowerCase())}. `}${foundingNote(p)}<small class="pp-day" data-pass="${p.id}"></small></span>`).join('')}</p>
+            <p class="pp-actions"><button type="button" class="btn-press pp-cta" data-premium-buy="${low.id}" data-premium-source="pricing-page">Unlock for ${c.passes.map((p) => `<span data-pp-for="${p.id}"${p === low ? '' : ' hidden'}>${priceSpans(p.price)}</span>`).join('')}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
+            <p class="pp-sure">${esc(SURE)}</p>
+            <p class="pp-msg" data-premium-msg role="status"></p>
+          </div>${c.compare ? `
+          <p class="pp-compare">For comparison: ${esc(c.compare)} Source: ${(COMPARE_SOURCES[key] || []).map(([n, u]) => `<a href="${u}" rel="noopener">${esc(n)}</a>`).join(', ')}.</p>` : ''}
+          ${c.guarantee ? `<details class="pp-guarantee" id="pass-or-extend"><summary>Pass-or-extend: if you don&rsquo;t pass the NREMT during your pass, you can claim more days free.</summary><p>${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p></details>` : ''}
+          <p class="pp-terms"><a href="terms.html#premium">Fine print and terms</a></p>
           </div>
-          <ul class="pp-passes">${c.passes.map(passRow).join('')}</ul>
-          <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="${key}" data-premium-source="pricing-page">Get Premium for ${esc(c.name)}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
-          <p class="pp-sure">One payment. Never renews. Full refund within 7 days, from your Account page.</p>${c.compare ? `
-          <p class="pp-compare">${esc(c.compare)} Sources: ${(COMPARE_SOURCES[key] || []).map(([n, u]) => `<a href="${u}" rel="noopener">${esc(n)}</a>`).join(', ')}.</p>` : ''}
-          ${c.guarantee ? `<details class="pp-guarantee" id="pass-or-extend"><summary>Pass-or-extend: if you don&rsquo;t pass the NREMT during your pass, you can claim more days free.</summary><p>${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p></details>` : ''}${c.passes.some((p) => p.until) ? `
-          <p>One pass, whenever you buy it: it lasts through ${esc(longDate(c.passes.find((p) => p.until).until))}, the end of the 2027 exam season.</p>` : ''}
         </details>`;
 }
 
@@ -190,8 +199,8 @@ function ticketHtml() {
   return `<div class="sp-panel pp-ticket" data-founding-until="${founding.until}">
       <p class="hand">founding price</p>
       <p class="pp-big">${FOUNDING.off}% <span>off</span></p>
-      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}</p>
-      <ul class="pp-rows">${rows.map((r) => `<li><span>${esc(r.text)}</span><span><s>${money(r.price)}</s> <b>${money(foundingPrice(r.price))}</b></span></li>`).join('')}</ul>
+      <p class="pp-till">every pass, until ${esc(longDate(founding.until))}; full price from ${esc(dayAfterUS(founding.until))}</p>
+      <ul class="pp-rows">${rows.map((r) => `<li><span>${esc(r.text)}</span><span><b>${money(foundingPrice(r.price))}</b> <small>then ${money(r.price)}</small></span></li>`).join('')}</ul>
     </div>
     ${plain}`;
 }
@@ -200,6 +209,7 @@ const PP_ICON = {
   renew: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>',
   refund: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
   notes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>',
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
   keep: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>',
 };
 
@@ -285,25 +295,28 @@ function premiumPage() {
   .pp-course > summary h2{margin:0;flex:1;min-width:0;font:900 clamp(19px,2vw,23px)/1.2 var(--display);letter-spacing:-.025em;color:var(--ink);}
   .pp .pp-from{font:900 17px var(--font-ui);color:var(--ink);white-space:nowrap;}
   .pp-course[open] .pp-from{visibility:hidden;}
-  .pp-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;}
-  .pp-cols > div{padding:20px 22px;}
-  .pp-cols > div:last-child{background-color:var(--panel);background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;}
-  .pp-cols > div:last-child h3{color:var(--gold);}
-  .pp-cols > div:last-child li{color:var(--panel-ink);}
-  .pp-cols ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
-  .pp-cols li{position:relative;padding-left:26px;margin:0;}
-  .pp-cols li::before{content:"";position:absolute;left:3px;top:8px;width:11px;height:6px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg);}
-  .pp-cols > div:last-child li::before{border-color:var(--teal-hi);}
-  .pp-passes{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:0;}
-  .pp-passes li{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;gap:4px 14px;border-top:1px solid var(--line);padding:10px 0;margin:0;max-width:none;}
-  .pp-passes li:first-child{border-top:0;}
-  .pp-label{color:var(--ink);font-weight:800;}
-  .pp-price b{color:var(--ink);font-weight:900;font-size:17px;}
-  .pp-price small{font-weight:700;}
-  .pp-actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:14px 0 0;}
-  .pp .pp-actions .btn-press{background:var(--gold);color:var(--gold-ink);box-shadow:none;font:900 16px var(--font-ui);padding:13px 20px;border-radius:12px;}
+  /* Inside a course: the Free vs Premium table (theme.css .pc-table), then one
+     buy button that goes straight to checkout (owner 2026-10-28). */
+  .pp-body{display:grid;gap:14px;}
+  .pp-body .pc-wrap{margin:0;}
+  .pp-body .pc-table th,.pp-body .pc-table td{max-width:none;}
+  .pp-switch{display:flex;flex-wrap:wrap;gap:8px;border:0;margin:0;padding:0;}
+  .pp-switch label{position:relative;}
+  .pp-switch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;}
+  .pp-switch span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;font:800 15px var(--font-ui);color:var(--ink);background:var(--white);}
+  .pp-switch input:checked + span{background:var(--panel);border-color:var(--panel);color:var(--panel-ink);}
+  .pp-switch input:focus-visible + span{outline:3px solid var(--accent);outline-offset:2px;}
+  .pp-buy{display:grid;gap:8px;justify-items:start;}
+  .pp .pp-note{margin:0;font-size:14.5px;color:var(--ink);}
+  .pp .pp-note span[data-founding-until]{display:block;color:var(--accent-text);font-weight:800;}
+  .pp-actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0;}
+  .pp .pp-actions .pp-cta{background:var(--gold);color:var(--gold-ink);box-shadow:none;font:900 17px var(--font-ui);padding:14px 24px;min-height:52px;border-radius:14px;}
   .pp-actions a{color:var(--accent-text);font-weight:800;}
-  .pp .pp-sure{margin:8px 0 0;font-size:13.5px;}
+  .pp .pp-sure{margin:0;font-size:13.5px;}
+  .pp .pp-msg{margin:0;font-size:14px;color:var(--ink);font-weight:800;}
+  .pp .pp-msg:empty{display:none;}
+  .pp .pp-terms{margin:0;font-size:14px;}
+  .pp-terms a{color:var(--accent-text);}
   .pp-guarantee{background:var(--tint-accent);border-radius:14px;padding:12px 14px;margin:14px 0 0;}
   .pp-guarantee a{color:var(--accent-text);}
   .pp-rules p{color:var(--muted);margin:0 0 12px;max-width:40em;}
@@ -314,7 +327,8 @@ function premiumPage() {
     .pp-promise{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;}
     .pp-pr{padding:14px;}
     .pp-pr span{font-size:13.5px;}
-    .pp-cols{grid-template-columns:minmax(0,1fr);}
+    .pp .pp-actions .pp-cta{width:100%;justify-content:center;}
+    .pp-buy{justify-items:stretch;}
     .pp-course{padding:0 14px;}
     .pp-course > summary{gap:12px;}
     .pp-course > summary .pp-cover{width:52px;height:52px;}
@@ -324,7 +338,7 @@ function premiumPage() {
   }
   .pp-guarantee > summary{cursor:pointer;font-weight:800;}
   .pp-guarantee > p{margin:8px 0 0;}
-  .pp-day{display:block;flex-basis:100%;text-align:left;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:-4px;}
+  .pp-day{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
   .pp-day:empty{display:none;}
   .pp .pp-len{display:block;font:700 11.5px var(--font-ui);color:var(--muted);text-align:right;}
   .pp-compare{margin:6px 0 0;font-size:14px;color:var(--muted);}
@@ -349,7 +363,7 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
       <span class="sp-pill">Free vs Premium</span>
       <h1 id="ppTitle">What&rsquo;s free,<span>and what Premium adds.</span></h1>
       <p class="hand">one payment, never a subscription</p>
-      <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from ${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(LOW))} (founding price until ${longDate(founding.until)})</span><span data-founding-after="${founding.until}" hidden>${money(LOW)}</span>` : money(LOW)}, with a full refund within 7 days.</p>
+      <p class="lede">Every course is free to start. Premium is one payment per course that never renews, from ${founding ? `<span data-founding-until="${founding.until}">${money(foundingPrice(LOW))} (founding price until ${longDate(founding.until)})</span><span data-founding-after="${founding.until}" hidden>${money(LOW)}</span>` : money(LOW)}.</p>
       <div class="sp-btns"><a class="btn-chan" href="#courses">Compare your course</a><a class="btn-ghost" href="/#subjects">Start free</a></div>
     </div>
     ${ticketHtml()}
@@ -357,7 +371,7 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
 
   <section class="pp-promise sp-sec" aria-label="What every pass promises">
     <div class="sp-box pp-pr">${PP_ICON.renew}<b>Never renews</b><span>One payment for one course. It ends on its own, with nothing to cancel.</span></div>
-    <div class="sp-box pp-pr">${PP_ICON.refund}<b>Refund it yourself</b><span>In full, from your Account page, within 7 days of buying.</span></div>
+    <div class="sp-box pp-pr">${PP_ICON.lock}<b>Secure checkout</b><span>Paid through Polar, our merchant of record. Tax is shown before you pay.</span></div>
     <div class="sp-box pp-pr">${PP_ICON.notes}<b>Notes free forever</b><span>Every notes and textbook page, in every course, with no ads.</span></div>
     <div class="sp-box pp-pr">${PP_ICON.keep}<b>Progress stays</b><span>When a pass ends, your progress, XP and streaks stay. Only the Premium parts lock.</span></div>
   </section>
@@ -384,7 +398,6 @@ ${ORDER.map(courseSection).join('\n')}
       <h2 class="sp-h2" id="ppRules">The rules, <span>in plain words</span></h2>
       <p class="hand">no fine print</p>
       <p>${esc(FREE_SENTENCE)}</p>
-      <p>A pass costs $${LOW} to $${HIGH}, about what ${tutorSpan} with a private tutor costs (<a href="${TUTOR_HOUR.source}" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $${TUTOR_HOUR.rate} an hour, ${TUTOR_HOUR.checked}).</p>
       <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
     </div>
     <div class="sp-qa pp-rules">
@@ -436,6 +449,16 @@ ${MARK ? `    ${TM_HTML}
     if (now > Date.parse(el.getAttribute('data-founding-after') + 'T23:59:59Z')) el.hidden = false;
   });
 })();
+</script>
+<script>
+// A course with two passes: the switch picks which one the button buys.
+document.addEventListener('change', function(e){
+  var r = e.target;
+  if (!r || r.type !== 'radio' || !/^pp-pass-/.test(r.name)) return;
+  var box = r.closest('.pp-body');
+  box.querySelector('[data-premium-buy]').setAttribute('data-premium-buy', r.value);
+  [].forEach.call(box.querySelectorAll('[data-pp-for]'), function(el){ el.hidden = el.getAttribute('data-pp-for') !== r.value; });
+});
 </script>
 <script>
 // Each pass's price per day, from premium.js once it has loaded (a dated pass

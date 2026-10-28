@@ -461,3 +461,9 @@
 .r3 .vcard:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:12px}
 @media (max-width:760px){.r3 .vstrip{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.r3 .vplay{transition:none}}
+/* Course home Unlock (owner 2026-10-28): the price spans stay inline, a
+   second pass and the comparison sit under the button. */
+.r3 .plan__amt span[data-founding-until],.r3 .plan__amt span[data-founding-after]{display:inline;font:inherit;letter-spacing:inherit;color:inherit;margin:0;}
+.r3 .plan--premium .plan__note span[data-founding-until]{color:#FFD23F;font-weight:800;}
+.r3 .plan__alt,.r3 .plan__compare{display:block;margin:10px 0 0;color:#fff;font-weight:800;}
+.r3 .plan__compare{color:#2EE6D6;}
