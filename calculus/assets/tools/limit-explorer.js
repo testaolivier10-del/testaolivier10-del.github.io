@@ -61,14 +61,169 @@
           slug: 'limit-explorer', noun: 'drill', typeLabel: 'Kind of problem', textOnStage: true,
           types: LE.TYPES.map(function(t){ return { value: t.value, label: t.label }; }),
           generate: function(r, ctx, type){ return texify(LE.generate(r, ctx, type)); },
-          extra: figure,
-          title: function(p){ var t = LE.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; }
+          extra: function(host, p){ QZ.marks.clear(); QZ.last = {}; QZ.plot = null; QZ.figPlot = null; QZ.host = host; figure(host, p); },
+          title: function(p){ var t = LE.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
+          method: function(s, p){ return (s.key === 'k' && p.key && p.key.kind === 'hole' ? METHOD.khole : '') || METHOD[p.type + '.' + s.key] || METHOD[s.key] || ''; },
+          onTry: function(s, t, api){ return quizTry(s, t, api.problem); }
         });
       },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } },
       onShow: function(m){ if(m === 'explore') ex.redraw(); }
     });
   });
+
+  /* ------------------------------------------- Test yourself is visual */
+  /* docs/tool-audit-2026-10.md X1. A problem given as a formula gets its
+     graph on the stage after the first try (drawn from the problem's own
+     functions), and every try is marked on it: the student's value dashed,
+     the right one solid, at x = a. */
+  var QZ = { marks: T.tries(), last: {}, plot: null, host: null };
+  var METHOD = {
+    'graph.left': 'Put a finger on the curve left of a and slide it toward a: the height it heads for is the limit, wherever the dot is.',
+    'graph.right': 'Slide along the curve from the right toward a. Ignore the filled dot at a itself.',
+    two: 'A two-sided limit exists only when the left and right limits are the same number.',
+    'graph.value': 'f(a) is the filled dot at x = a. An open circle is a point the graph leaves out.',
+    'table.left': 'Read the f(x) column as x comes up to a from below: what number do the values settle on?',
+    'table.right': 'Read the values as x comes down to a from above.',
+    'onesided.left': 'From the left (x < a), use the piece written for x < a, and substitute x = a into it.',
+    'onesided.right': 'From the right (x > a), use the piece written for x ≥ a, and substitute x = a.',
+    law1: 'Put the given limit of f in for f(x) and the limit of g in for g(x), then do the arithmetic.',
+    law2: 'Put the given limit of f in for f(x) and the limit of g in for g(x), then do the arithmetic.',
+    sub: 'Substitute x = a into the top and the bottom separately.',
+    move: 'A square root over 0/0: multiply top and bottom by the conjugate.',
+    simp: 'Factor top and bottom, cancel the factor that is 0 at x = a, and write what is left.',
+    'algebra.lim': 'Substitute x = a into the simplified expression.',
+    bounds: 'Start from −1 ≤ sin(…) ≤ 1 (or cos) and multiply through by the size of the factor in front.',
+    lo: 'Substitute x = a into the lower bound: the squared term is 0 there.',
+    hi: 'Substitute x = a into the upper bound: the squared term is 0 there.',
+    'squeeze.lim': 'Both bounds head for the same number, and f is trapped between them.',
+    type: 'A hole or a point out of place is removable; two different heights from each side is a jump; a vertical asymptote is infinite.',
+    fails: 'Check the three conditions in order: f(a) defined, the limit exists, and the two are equal.',
+    value: 'f(a) comes from the line of the definition written for x = a.',
+    'continuity.lim': 'Substitute x = a into the left piece and the right piece. Equal results mean the limit is that number.',
+    cont: 'Continuous at a means f(a) is defined, the limit exists, and they are equal.',
+    rule: 'Continuity at a needs f(a) to equal the limit at a.',
+    k: 'Make the left piece at x = a equal to the right piece at x = a, then solve for k.',
+    khole: 'k must equal the limit: factor the top, cancel the factor that is 0 at x = a, and substitute x = a into what is left.',
+    'remove.right': 'Substitute x = a into the piece for x ≥ a.',
+    'vertical.left': 'Find the sign of the top near a, and the sign of the bottom just left of a. Their quotient grows without bound with that sign.',
+    'vertical.right': 'Find the sign of the top near a, and the sign of the bottom just right of a.',
+    dom: 'For huge |x|, only the highest power on top and on the bottom matters.',
+    pinf: 'Compare the degrees: bottom higher gives 0, equal gives the ratio of leading coefficients, top higher gives ±∞.',
+    minf: 'Same comparison as x → ∞, but watch the sign of an odd power of a negative x.',
+    hyp: 'The IVT needs one thing: f continuous on the closed interval.',
+    count: 'Count the intervals between table values where f goes from below the line to above it, or the reverse.',
+    just: 'Name continuity on the closed interval and show the target value lies between f(a) and f(b).'
+  };
+  /* The problem's graph, from its key, for the kinds given as a formula. */
+  function quizSpec(p){
+    var k = p.key || {}, a = k.a, f = null, curves = [], pts = [], asy = [], x = null, y = null, lab = 'Graph of f';
+    // A y window that holds most of the curve (a spike near an asymptote is
+    // clipped: 8th to 92nd percentile) and every value the problem names.
+    function win(fs, xr, extra){
+      var v = [];
+      fs.forEach(function(q){ for(var i = 0; i <= 120; i++){ var xx = q[1] + (q[2] - q[1]) * i / 120, yy = q[0](xx); if(isFinite(yy)) v.push(yy); } });
+      v.sort(function(p0, q0){ return p0 - q0; });
+      var lo = v.length ? v[Math.floor(v.length * 0.08)] : -5, hi = v.length ? v[Math.ceil(v.length * 0.92) - 1] : 5;
+      (extra || []).forEach(function(e){ if(isFinite(e)){ lo = Math.min(lo, e); hi = Math.max(hi, e); } });
+      var pad = Math.max(1, (hi - lo) * 0.15);
+      return [Math.floor(lo - pad), Math.ceil(hi + pad)];
+    }
+    if(p.type === 'onesided' || p.type === 'continuity'){
+      x = [a - 3, a + 3];
+      curves = [{ fn: k.left, domain: [a - 3, a], cls: 's1', ends: [null, 'open'] }, { fn: k.right, domain: [a, a + 3], cls: 's1', ends: [p.type === 'onesided' ? 'closed' : 'open', null] }];
+      if(p.type === 'continuity') pts.push({ at: [a, k.v], cls: 's1' });
+      y = win([[k.left, a - 3, a], [k.right, a, a + 3]], x, [k.v]);
+      lab = 'Graph of the piecewise function f near x = ' + a;
+    } else if(p.type === 'algebra' || p.type === 'table' || (p.type === 'remove' && k.kind === 'hole')){
+      f = k.f; x = [a - 3, a + 3];
+      var Lh = p.type === 'remove' ? k.k : k.L != null ? k.L : k.R;
+      curves = [{ fn: function(t){ return Math.abs(t - a) < 1e-9 ? NaN : f(t); }, domain: x, cls: 's1' }];
+      if(isFinite(Lh)) pts.push({ at: [a, Lh], open: true, cls: 's1' });
+      y = win([[f, a - 3, a - 0.01], [f, a + 0.01, a + 3]], x, [Lh]);
+      lab = 'Graph of f near x = ' + a + ', with the hole at x = ' + a;
+    } else if(p.type === 'remove' && k.kind === 'join'){
+      var lf = function(t){ return k.k * t + k.b; }, rf = function(t){ return t * t + k.c; };
+      x = [a - 3, a + 3];
+      curves = [{ fn: rf, domain: [a, a + 3], cls: 's1', ends: ['closed', null] }];
+      y = win([[rf, a, a + 3], [lf, a - 3, a]], x);
+      lab = 'Graph of the right piece of f; the left piece is the line kx + b';
+      QZ.join = lf;
+    } else if(p.type === 'squeeze'){
+      a = a || 0; x = [a - 2, a + 2];
+      curves = [{ fn: k.lo, domain: x, cls: 's2', label: 'lower' }, { fn: k.hi, domain: x, cls: 's4', label: 'upper' }];
+      if(k.f) curves.push({ fn: function(t){ return Math.abs(t - a) < 1e-6 ? NaN : k.f(t); }, domain: x, cls: 's1' });
+      y = win([[k.lo, x[0], x[1]], [k.hi, x[0], x[1]]], x);
+      lab = 'The two bounds and the function trapped between them near x = ' + a;
+    } else if(p.type === 'vertical'){
+      f = k.f; x = [a - 3, a + 3];
+      curves = [{ fn: f, domain: [a - 3, a - 0.02], cls: 's1' }, { fn: f, domain: [a + 0.02, a + 3], cls: 's1' }];
+      asy = [{ x: a }];
+      y = [-10, 10];
+      lab = 'Graph of f with the vertical asymptote x = ' + a;
+    } else if(p.type === 'infinity'){
+      f = k.f; x = [-20, 20];
+      var safe = function(t){ var v = f(t); return Math.abs(v) > 1e3 ? NaN : v; };
+      curves = [{ fn: safe, domain: x, cls: 's1' }];
+      y = win([[safe, 5, 20], [safe, -20, -5]], x, [isFinite(k.Lp) ? k.Lp : NaN, isFinite(k.Lm) ? k.Lm : NaN]);
+      if(isFinite(k.Lp)) asy.push({ y: k.Lp });
+      lab = 'Graph of f for large positive and negative x';
+    } else return null;
+    if(!(y[1] > y[0])) y = [-5, 5];
+    return { label: lab, x: x, y: y, xLabel: 'x', yLabel: 'y', xStep: x[1] - x[0] > 12 ? 5 : 1, yStep: y[1] - y[0] > 12 ? (y[1] - y[0] > 30 ? 5 : 2) : 1, curves: curves, points: pts, asymptotes: asy };
+  }
+  function quizPlot(p){
+    if(QZ.plot) return QZ.plot;
+    var spec = quizSpec(p); if(!spec || !QZ.host) return null;
+    var box = document.createElement('figure'); box.className = 'cd-fig le-fig le-qplot';
+    QZ.host.appendChild(box);
+    function draw(){
+      if(!box.isConnected) return;
+      var r = box.getBoundingClientRect(), w = Math.round(r.width), h = Math.round(r.height);
+      spec.width = Math.max(240, Math.min(900, w || 420)); spec.height = Math.max(160, Math.min(560, h > 80 ? h : spec.width * 0.62));
+      box.innerHTML = P.svg(spec).replace(/<\/svg>$/, QZ.marks.svg(P.frame(spec)) + '</svg>');
+    }
+    QZ.plot = { redraw: draw };
+    draw(); requestAnimationFrame(function(){ requestAnimationFrame(draw); });
+    if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe(box); }
+    return QZ.plot;
+  }
+  function quizTry(s, t, p){
+    var k = p.key || {}, who = t.ok || t.shown ? 'right' : 'yours', mk = [], a = k.a != null ? k.a : 0;
+    var val = who === 'right' && s.cell ? s.cell.answer : t.value, N = T.numText;
+    // a graph problem draws on its own figure; the rest get their graph now
+    var F = p.fig && p.fig.plot && p.type !== 'ivt' ? QZ.figPlot : p.type === 'ivt' ? QZ.figPlot : quizPlot(p);
+    if(!F) return false;
+    if(p.type === 'ivt' && s.key === 'count'){
+      // the intervals where f crosses the line y = k: one guaranteed solution in each
+      if(who === 'right') for(var q = 0; q + 1 < k.xs.length; q++) if((k.ys[q] - k.k) * (k.ys[q + 1] - k.k) < 0) mk.push({ line: [[k.xs[q], k.ys[q]], [k.xs[q + 1], k.ys[q + 1]]], who: 'right' });
+      if(who === 'right') mk.push({ label: N(val) + ' crossing' + (val === 1 ? '' : 's') + ' of y = ' + N(k.k), at: [k.xs[k.xs.length - 1], 1e9], who: 'right', anchor: 'end' });
+      else if(isFinite(val)) mk.push({ label: 'yours: ' + N(val), at: [k.xs[0], 1e9], who: 'yours', anchor: 'start' });
+    } else if(s.kind === 'num' && isFinite(val)){
+      var side = s.key === 'left' ? -1 : s.key === 'right' ? 1 : 0;
+      if(p.type === 'laws') return false;
+      if(s.key === 'k' && k.kind === 'join'){
+        // the left piece with the typed k, against the right piece
+        var kk = val, lf = function(x){ return kk * x + k.b; };
+        mk.push({ curve: lf, domain: [a - 3, a], who: who, label: who === 'yours' ? 'yours: k = ' + N(kk) : 'k = ' + N(kk) });
+      } else {
+        var at = side ? a + side * 0.25 : a;
+        mk.push({ point: [at, val], who: who, label: (who === 'yours' ? 'yours: ' : '') + N(val) });
+        mk.push({ hline: val, who: who });
+      }
+    } else if(s.kind === 'expr' && t.fn){
+      mk.push({ curve: t.fn, who: who, label: who === 'yours' ? 'yours' : 'what is left' });
+    } else if(s.kind === 'choice' && t.pick > -1 && (p.type === 'vertical' || p.type === 'infinity')){
+      var txt = T.plainText(String(s.options[t.pick])), inf = /−∞|-∞|-\\infty/.test(txt) ? -1 : /∞|infty/.test(txt) ? 1 : 0;
+      if(inf){
+        var xEnd = p.type === 'vertical' ? a + (s.key === 'left' ? -0.3 : 0.3) : (s.key === 'minf' ? -18 : 18);
+        mk.push({ line: [[xEnd, 0], [xEnd, inf * 1e6]], who: who, label: (who === 'yours' ? 'yours: ' : '') + (inf > 0 ? '+∞' : '−∞') });
+      } else return false;
+    } else return false;
+    if(who === 'yours') QZ.last[s.key] = mk; else if(QZ.last[s.key]) mk = QZ.last[s.key].concat(mk);
+    QZ.marks.set(s.key, mk); F.redraw();
+    return true;
+  }
 
   /* ------------------------------------------------ the drill's figure */
   function figure(host, p){
@@ -106,8 +261,9 @@
       // Never drawn wider than its box (a scaled-down svg shrinks its labels).
       spec.width = Math.max(fig.classList.contains('le-fig2-plot') ? 150 : 240, Math.min(900, w || 420));
       spec.height = Math.max(140, Math.min(620, h > 60 ? h : spec.width * 0.66));
-      fig.innerHTML = P.svg(spec);
+      fig.innerHTML = P.svg(spec).replace(/<\/svg>$/, QZ.marks.svg(P.frame(spec)) + '</svg>');
     }
+    QZ.figPlot = { redraw: fit };
     fig.innerHTML = P.svg(spec);
     requestAnimationFrame(function(){ requestAnimationFrame(fit); });
     if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(fit, 60); }).observe(fig); }

@@ -67,12 +67,23 @@
     // mountains around the valley
     out.push('<path class="ap-mtn" d="M' + n2(x0) + ' ' + n2(gy) + 'L' + n2(x0) + ' ' + n2(y0 + h * 0.42) + 'L' + n2(x0 + w * 0.12) + ' ' + n2(y0 + h * 0.3) + 'L' + n2(x0 + w * 0.24) + ' ' + n2(y0 + h * 0.5) + 'L' + n2(x0 + w * 0.3) + ' ' + n2(gy) + 'Z"/>');
     out.push('<path class="ap-mtn" d="M' + n2(x0 + w) + ' ' + n2(gy) + 'L' + n2(x0 + w) + ' ' + n2(y0 + h * 0.38) + 'L' + n2(x0 + w * 0.86) + ' ' + n2(y0 + h * 0.26) + 'L' + n2(x0 + w * 0.74) + ' ' + n2(y0 + h * 0.48) + 'L' + n2(x0 + w * 0.68) + ' ' + n2(gy) + 'Z"/>');
-    // buildings
-    var bx = x0 + w * 0.22, bwid = w * 0.56, n = phone ? 9 : 13;
+    // buildings: a hazy far skyline, then the downtown in front, each tower
+    // with a lit side, window rows (lit at night) and a roof detail
+    var bx = x0 + w * 0.18, bwid = w * 0.64, n = phone ? 9 : 13;
+    for(var fb = 0; fb < n + 3; fb++){
+      var fw = bwid / (n + 3) * 0.9, fh = h * (0.18 + ((fb * 53) % 19) / 100), fx = bx - w * 0.02 + fb * (bwid + w * 0.04) / (n + 3);
+      out.push('<rect class="ap-bldg-far" x="' + n2(fx) + '" y="' + n2(gy - fh) + '" width="' + n2(fw) + '" height="' + n2(fh) + '"/>');
+    }
+    // a few street trees between the towers
+    for(var tr = 0; tr < (phone ? 3 : 5); tr++){ var tx = x0 + w * (0.26 + tr * (phone ? 0.22 : 0.12)), ty = gy - 2; out.push('<g class="ap-tree"><rect x="' + n2(tx - 1.2) + '" y="' + n2(ty - 8) + '" width="2.4" height="8"/><circle cx="' + n2(tx) + '" cy="' + n2(ty - 12) + '" r="6"/></g>'); }
     for(var b = 0; b < n; b++){
-      var bw = bwid / n * 0.86, bh2 = h * (0.12 + ((b * 37) % 23) / 100), xx = bx + b * bwid / n;
-      out.push('<rect class="ap-bldg" x="' + n2(xx) + '" y="' + n2(gy - bh2) + '" width="' + n2(bw) + '" height="' + n2(bh2) + '"/>');
-      if(sun < 0.15) for(var wy = gy - bh2 + 6; wy < gy - 6; wy += 9) for(var wx = xx + 3; wx < xx + bw - 4; wx += 6) if(((wx * 7 + wy * 3) | 0) % 3) out.push('<rect class="ap-win" x="' + n2(wx) + '" y="' + n2(wy) + '" width="2.5" height="3.5"/>');
+      var bw = bwid / n * 0.82, bh2 = h * (0.12 + ((b * 37) % 23) / 100), xx = bx + b * bwid / n, top2 = gy - bh2;
+      out.push('<rect class="ap-bldg" x="' + n2(xx) + '" y="' + n2(top2) + '" width="' + n2(bw) + '" height="' + n2(bh2) + '"/>');
+      out.push('<rect class="ap-bldg-lit" x="' + n2(xx) + '" y="' + n2(top2) + '" width="' + n2(bw * 0.28) + '" height="' + n2(bh2) + '"/>');
+      if(b % 3 === 0) out.push('<line class="ap-mast" x1="' + n2(xx + bw * 0.6) + '" y1="' + n2(top2) + '" x2="' + n2(xx + bw * 0.6) + '" y2="' + n2(top2 - 9) + '"/>');
+      else if(b % 3 === 1) out.push('<rect class="ap-bldg" x="' + n2(xx + bw * 0.25) + '" y="' + n2(top2 - 4) + '" width="' + n2(bw * 0.5) + '" height="4"/>');
+      var night = sun < 0.15;
+      for(var wy = top2 + 6; wy < gy - 6; wy += 9) for(var wx = xx + 3; wx < xx + bw - 4; wx += 6) if(!night || ((wx * 7 + wy * 3) | 0) % 3) out.push('<rect class="' + (night ? 'ap-win' : 'ap-win-d') + '" x="' + n2(wx) + '" y="' + n2(wy) + '" width="2.5" height="3.5"/>');
     }
     // the inversion lid: a warm layer drawn as a band
     if(lid != null){
@@ -167,11 +178,14 @@
     out.push('<path class="ap-lake" style="fill:' + phColor(lake) + '" d="M' + n2(lx) + ' ' + n2(ly) + 'Q' + n2(lx + lw / 2) + ' ' + n2(ly + lh * 1.6) + ' ' + n2(lx + lw) + ' ' + n2(ly) + 'Z"/>');
     out.push('<g class="ap-tag"><rect x="' + n2(lx + lw / 2 - 52) + '" y="' + n2(ly + 4) + '" width="104" height="24" rx="12"/>' + txt(lx + lw / 2, ly + 21, 'Lake pH ' + f1(lake), 'ap-t ap-b ap-tag-t', 'middle') + '</g>');
     // the tolerance strip
-    var tx0 = phone ? 6 : W * 0.3, sw = W - tx0 - 6, ty = ly + lh * 0.8 + 14, n = A.TOLERANCE.length, cw = sw / n;
+    // On a phone the strip wraps to two rows, so every name is whole and
+    // readable (tool-audit: tiny species labels).
+    var n = A.TOLERANCE.length, rows = phone ? 2 : 1, per = Math.ceil(n / rows), rh = phone ? 44 : 40;
+    var tx0 = phone ? 6 : W * 0.3, sw = W - tx0 - 6, ty = Math.min(ly + lh * 0.8 + 14, H - rows * (rh + 4) - 22), cw = sw / per;
     out.push(txt(tx0, ty - 6, 'Lowest pH each animal survives (EPA)', 'ap-t ap-s ap-b ap-on-rock'));
     A.TOLERANCE.forEach(function(a, k){
-      var ok = lake >= a.ph, x = tx0 + k * cw, nm = phone ? ({ Snails: 'Snail', Clams: 'Clam', Crayfish: 'Crayf.', Salamanders: 'Salam.', Mayfly: 'Mayfly', Perch: 'Perch', Frogs: 'Frog', Trout: 'Trout', Bass: 'Bass' })[a.name] : a.name;
-      out.push('<g class="ap-animal' + (ok ? '' : ' is-gone') + '"><rect x="' + n2(x + 1) + '" y="' + n2(ty) + '" width="' + n2(cw - 2) + '" height="40" rx="6"/>' + txt(x + cw / 2, ty + 16, nm, 'ap-t ap-s ap-b', 'middle') + txt(x + cw / 2, ty + 32, (ok ? '' : '✕ ') + a.ph.toFixed(1), 'ap-t ap-tk', 'middle') + '</g>');
+      var ok = lake >= a.ph, row = Math.floor(k / per), col = k % per, x = tx0 + col * cw, y = ty + row * (rh + 4);
+      out.push('<g class="ap-animal' + (ok ? '' : ' is-gone') + '"><rect x="' + n2(x + 1) + '" y="' + n2(y) + '" width="' + n2(cw - 2) + '" height="' + rh + '" rx="6"/>' + txt(x + cw / 2, y + (phone ? 18 : 16), a.name, 'ap-t ap-b' + (phone ? '' : ' ap-s'), 'middle') + txt(x + cw / 2, y + (phone ? 36 : 32), (ok ? 'pH ' : '✕ pH ') + a.ph.toFixed(1), 'ap-t ap-tk', 'middle') + '</g>');
     });
     return out.join('');
   }
@@ -193,7 +207,7 @@
       T.moreHtml('<div class="ap-more"></div>', 'traffic, clouds, VOC curve') +
       '<div class="ap-nums"></div><p class="sr-only ap-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.ap-live'));
-    var cue = T.cue('Drag the clock from morning to night and watch ozone build after the rush hour.');
+    var cue = T.cue('Drag the clock (or drag across the picture) from morning to night and watch ozone build after the rush hour.');
     $('.ap-ctl').insertBefore(cue.el, $('.ap-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var sH = T.slider({ label: 'Time of day', min: 0, max: 23.5, step: 0.5, value: st.hour, onInput: function(v){ stop(); st.hour = v; act(); draw(); speak(); } });
@@ -205,6 +219,20 @@
     $('.ap-more').appendChild(sCars.el);
     $('.ap-more').insertAdjacentHTML('beforeend', '<label class="bt-radio"><input type="checkbox" class="ap-cloud"> A cloudy day (less sunlight)</label><label class="bt-radio"><input type="checkbox" class="ap-vocck"> Show the VOC curve (half scale)</label>');
     var svg = $('.ap-svg');
+    // Drag across the picture: the smog day scrubs the clock (the scene and
+    // the curves share one time axis); acid rain sets the plant's output.
+    T.dragOn(svg, function(x, y, ph){
+      var W = svg.viewBox.baseVal.width || 640;
+      if(ph === 'start') stop();
+      if(st.view === 'smog'){
+        var h = Math.max(0, Math.min(23.5, Math.round((x - 44) / (W - 70) * 48) / 2));
+        if(h !== st.hour || ph === 'start'){ st.hour = h; sH.set(h); sH.relabel(); act(); draw(); }
+      } else {
+        var v = Math.max(0, Math.min(1, Math.round((x - W * 0.08) / (W * 0.84) * 20) / 20));
+        if(v !== st.load || ph === 'start'){ st.load = v; sLoad.set(v); sLoad.relabel(); act(); draw(); }
+      }
+      if(ph === 'end') speak();
+    });
     function day(){ return A.smogDay({ cars: st.cars, cloudy: st.cloudy, inversion: st.inversion }); }
     function size(){ var rc = $('.ap-fig').getBoundingClientRect(), w = Math.round(rc.width) || 640, h = Math.round(rc.height) || 0; if(!h || h < 240) h = Math.round(Math.max(320, Math.min(560, w * 0.7))); return [Math.max(300, Math.min(1400, w)), Math.min(900, h)]; }
     function stop(){ if(anim){ anim.stop(); anim = null; var b = $('.ap-play'); if(b) b.textContent = 'Play the day'; } }
@@ -277,7 +305,7 @@
       root.querySelectorAll('.ap-g').forEach(function(g){ g.hidden = g.getAttribute('data-g') !== st.view; });
       var iv = root.querySelector('.ap-inv'); if(iv){ iv.setAttribute('aria-pressed', String(st.inversion)); iv.classList.toggle('on', st.inversion); iv.textContent = st.inversion ? 'Inversion: on' : 'Inversion: off'; }
       root.querySelectorAll('.ap-r').forEach(function(b){ var on = (+b.getAttribute('data-r') === 1) === st.lime; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
-      cue.el.querySelector('.bt-cue-t').textContent = st.view === 'smog' ? 'Drag the clock from morning to night and watch ozone build after the rush hour.' : 'Turn up the power plant’s SO₂ and NOx, then switch the bedrock to limestone.';
+      cue.el.querySelector('.bt-cue-t').textContent = st.view === 'smog' ? 'Drag the clock (or drag across the picture) from morning to night and watch ozone build after the rush hour.' : 'Turn up the power plant’s SO₂ and NOx (or drag across the picture), then switch the bedrock to limestone.';
     }
     function onClick(e){
       var v = e.target.closest('.ap-view'); if(v){ stop(); st.view = v.getAttribute('data-v'); act(); draw(); speak(); return; }
@@ -292,14 +320,12 @@
     host.addEventListener('click', onClick); host.addEventListener('change', onChange);
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ap-fig')], dock: [$('.ap-ctl')], why: [$('.ap-say')], details: [$('.ap-nums')] });
+      T.studioPane(pane, s, { stage: [$('.ap-fig')], dock: [$('.ap-ctl')], primary: [sH.el, $('.ap-btns'), sLoad.el], why: [$('.ap-say')], details: [$('.ap-nums')] });
       host.removeEventListener('click', onClick); host.removeEventListener('change', onChange);
       s.root.addEventListener('click', onClick); s.root.addEventListener('change', onChange);
       draw();
-      if(s.mode() === 'explore'){
-        $('.ap-fig').insertAdjacentHTML('beforeend', '<span class="ap-hintspot" aria-hidden="true"></span>');
-        s.hint({ target: $('.ap-hintspot'), text: 'Start here: drag the Time of day slider' });
-      }
+      // The hint points at the slider itself; the picture is draggable too.
+      if(s.mode() === 'explore') s.hint({ target: sH.input, text: 'Start here: drag the clock, or drag across the picture' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.ap-fig')); }
     }
     draw();
@@ -314,7 +340,9 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { smog: 'Which curve is which?', inversion: 'A lid on the valley', ph: 'How much more acidic?', reduce: 'The right fix', pct: 'How much did emissions change?' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
+      onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
+      // a wrong 'how many times' is drawn on the pH scale: where that factor would put the rain
+      onTry: function(s, att, api){ if(s.key === 'times'){ api.st.try = att.value; figure(api.fig, api.problem, api.st); } }
     });
   }
   function figure(el, p, st){
@@ -335,6 +363,11 @@
       o.push(txt(X(14), y + 30, '14', 'ap-t ap-tk', 'middle'));
       [[p.given.a, 'Rain here'], [p.given.b, p.given.b === 5.6 ? 'Clean rain' : 'Cleaner rain']].forEach(function(m, k){ o.push(line(X(m[0]), y - 26, X(m[0]), y + 16, 'ap-cursor')); o.push(txt(X(m[0]), y - 32 - k * 16, m[1] + ' ' + m[0].toFixed(1), 'ap-t ap-b', 'middle')); });
       o.push(txt(L, y + 54, 'More acidic', 'ap-t ap-s ap-b')); o.push(txt(R, y + 54, 'More basic', 'ap-t ap-s ap-b', 'end'));
+      if(st.try != null && isFinite(st.try) && st.try > 0 && !st.times){
+        // factor f = 10^(b - pH), so the student's factor puts the rain at pH b - log10(f)
+        var tp = Math.max(0, Math.min(14, p.given.b - Math.log10(st.try)));
+        o.push(line(X(tp), y - 26, X(tp), y + 16, 'ap-trym') + txt(X(tp), y + 70, 'Your ' + T.F(st.try, 0) + '× puts it at pH ' + T.F(tp, 1), 'ap-t ap-b ap-try-t', 'middle'));
+      }
       if(st.times) o.push(txt((X(p.given.a) + X(p.given.b)) / 2, y + 78, '10^' + T.F(p.given.b - p.given.a, 1) + ' = ' + T.F(p.given.times, 0) + ' times', 'ap-t ap-b ap-c-o3', 'middle'));
       inner = o.join(''); label = 'A pH scale from 0 to 14 with the rain at pH ' + p.given.a.toFixed(1) + ' and the comparison at ' + p.given.b.toFixed(1) + '.';
       H = 200;

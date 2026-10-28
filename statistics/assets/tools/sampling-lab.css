@@ -25,7 +25,7 @@ body.stat{
   --sl-floor:#202328;--sl-hall:#2A2E34;--sl-room:#1A1D21;--sl-roomk:#4C525B;--sl-board:#4E7A69;--sl-desk:#5B4B36;--sl-office:#283845;
   --sl-shirt0:#5C8DBA;--sl-shirt1:#C0704F;--sl-shirt2:#6B9B67;--sl-shirt3:#9A80B2;
   --sl-t0:#1E3243;--sl-t1:#244868;--sl-t2:#2C6593;--sl-t3:#3F87C0;--sl-t4:#77BDEF;
-  --sl-ink:#E6E8E7;
+  --sl-ink:#E6E8E7;--sl-halo:rgba(20,22,24,.75);
 }
 
 /* The stage: the picture fills it, the process strip and the dotplot below. */
@@ -105,7 +105,6 @@ body.stat{
 /* Labels: on desktop and in Enlarge; a phone shows them only when enlarged. */
 .sl-lab{fill:var(--muted);font:800 12px var(--font-mono);}
 .sl-lab-plot{fill:var(--sl-ink);opacity:.6;}
-.ls-root.ls-phone .ls-stage:not(.is-big) .sl-lab{display:none;}
 .sl-u{cursor:pointer;transition:opacity .25s;}
 .sl-hit{fill:transparent;}
 .sl-scene.has-sample .sl-u:not(.is-pick){opacity:.36;}
@@ -181,3 +180,37 @@ body.stat{
 .nf-link{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4;fill:none;}
 .nf-c{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
 .nf-c.is-on{fill:var(--stat-s2);stroke:var(--stat-s2);}
+
+/* Phones (audit X8): scene text is sized from the drawn scale in the JS (readable()):
+   at least 11.5px, street names in a left gutter when the lane is too thin, unit numbers
+   and badges only where they fit. Chips never truncate. */
+.sl-room-g2{display:none;fill:var(--muted);font:800 15px var(--font-ui);}
+.sl-lane-t,.sl-zone,.sl-vert,.sl-room-t,.sl-room-g,.sl-room-g2,.sl-hall-t,.sl-office-t,.sl-lab{paint-order:stroke;stroke:var(--sl-halo, rgba(255,255,255,.7));stroke-width:.18em;stroke-linejoin:round;}
+.ls-root.ls-phone .sl-seg .ls-seg > button{padding:0 3px;font-size:13px;letter-spacing:-.01em;}
+.sl-seg .ls-seg > button{white-space:nowrap;}
+/* drills: the student's answer in red dashes; the sample's numbers on the tape */
+.sl-ring.is-yours{stroke:var(--bad-text);stroke-dasharray:8 6;stroke-width:5;}
+.sl-band.is-yours{fill:none;stroke:var(--bad-text);stroke-width:5;stroke-dasharray:12 8;}
+.sl-qy{color:var(--bad-text);font-weight:800;}
+.sl-num.is-pick{background:var(--stat-s2);color:#fff;box-shadow:none;}
+.nf-l.is-yours rect,.nf-c.is-yours{fill:none;stroke:var(--bad-text);stroke-width:3;stroke-dasharray:6 4;}
+.nf-yours{fill:var(--bad-text);}
+.sl-qfig .sl-u{cursor:pointer;}
+
+/* a list model for settings with no drawn scene */
+.sl-roster svg{flex:1;min-height:0;width:100%;height:100%;}
+.sl-rh{fill:var(--muted);font:800 15px var(--font-ui);}
+.sl-ro rect{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
+.sl-ro text{fill:var(--ink);font:800 17px var(--font-mono);}
+.sl-rg0 rect:first-child{fill:color-mix(in srgb,var(--stat-s1) 16%,var(--white));} .sl-rg1 rect:first-child{fill:color-mix(in srgb,var(--stat-s3) 18%,var(--white));}
+.sl-rg2 rect:first-child{fill:color-mix(in srgb,var(--stat-s4) 22%,var(--white));} .sl-rg3 rect:first-child{fill:color-mix(in srgb,var(--stat-s5) 20%,var(--white));}
+.sl-ro.is-pick rect:first-child{fill:var(--stat-s2);stroke:var(--stat-s2);}
+.sl-ro.is-pick text{fill:#fff;}
+.sl-ro-y{fill:none !important;stroke:var(--bad-text) !important;stroke-width:3.5 !important;stroke-dasharray:7 5;}
+.sl-rkey{display:inline-flex;flex-wrap:wrap;gap:4px 12px;justify-content:center;}
+.sl-rk{display:inline-flex;align-items:center;gap:5px;}
+.sl-rk::before{content:"";width:11px;height:11px;border-radius:3px;}
+.sl-rk.sl-rg0::before{background:color-mix(in srgb,var(--stat-s1) 35%,var(--white));} .sl-rk.sl-rg1::before{background:color-mix(in srgb,var(--stat-s3) 40%,var(--white));}
+.sl-rk.sl-rg2::before{background:color-mix(in srgb,var(--stat-s4) 45%,var(--white));} .sl-rk.sl-rg3::before{background:color-mix(in srgb,var(--stat-s5) 40%,var(--white));}
+.sl-roster figcaption{padding:0 48px;}
+.sl-rh{font-size:17px;}

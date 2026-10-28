@@ -262,11 +262,17 @@
     var out = '';
 
     // Back bonds first, so the front carbon's hub sits on top of them.
+    /* Near an eclipsed angle the back bonds are drawn a few degrees off their
+       front partners, as textbooks do, so a back group is never hidden behind
+       a front bond or its label. The angle reported is still theta. */
+    var m120 = ((theta % 120) + 120) % 120, toEclipse = m120 > 60 ? m120 - 120 : m120;
+    // Continuous: 8° at eclipsed, easing to nothing 12° away, so the slider still shows the approach.
+    var nudge = Math.abs(toEclipse) < 12 ? 8 * (1 - Math.abs(toEclipse) / 12) : 0;
     var backParts = tor.back.map(function(label, i){
-      var a = frontAngles[i] + theta;
+      var a = frontAngles[i] + theta + nudge;
       var edge = dirAt(a, R), tip = dirAt(a, R + OUT), lab = dirAt(a, R + OUT + 16);
       return '<line x1="' + edge.x.toFixed(1) + '" y1="' + edge.y.toFixed(1) + '" x2="' + tip.x.toFixed(1) + '" y2="' + tip.y.toFixed(1) +
-             '" stroke="var(--muted)" stroke-width="3.4" stroke-linecap="round"/>' +
+             '" stroke="var(--nm-back)" stroke-width="3.4" stroke-linecap="round"/>' +
              '<text class="nm-lab nm-lab--back" x="' + lab.x.toFixed(1) + '" y="' + (lab.y + 5).toFixed(1) + '" text-anchor="middle">' + esc(label) + '</text>';
     }).join('');
 
@@ -287,14 +293,21 @@
       'fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-dasharray="4 3"/>';
 
     out += backParts;
-    out += '<circle cx="150" cy="150" r="' + R + '" fill="var(--paper)" stroke="var(--muted)" stroke-width="3"/>';
+    /* The back carbon is the circle, in a lighter tone than the front bonds
+       (audit 2026-10: front and back shared a color), so front and back read
+       apart at a glance. */
+    out += '<circle cx="150" cy="150" r="' + R + '" fill="var(--nm-back-fill)" stroke="var(--nm-back)" stroke-width="3"/>';
     out += arc;
     out += frontParts;
     out += '<circle cx="150" cy="150" r="7" fill="var(--ink)"/>';
     return out;
   }
 
-  function curveSvg(){
+  /* opts.hideHere drops the slider's marker (Predict first hides the answer);
+     opts.marks are extra dots [{t, cls}] for the student's pick and the answer;
+     opts.taps draws the seven landmark angles as tap targets. */
+  function curveSvg(opts){
+    opts = opts || {};
     var W = 360, H = 132, padL = 34, padB = 26, padT = 12;
     var maxE = Math.max.apply(null, tor.energies) * 1.15 || 1;
     function px(t){ return padL + (t / 360) * (W - padL - 8); }
@@ -315,13 +328,82 @@
       'stroke="var(--accent)" stroke-width="2"/>' +
       '<circle cx="' + px(theta).toFixed(1) + '" cy="' + py(energyAt(theta)).toFixed(1) + '" r="5" fill="var(--accent)"/>';
 
+    if(opts.hideHere) here = '';
+    var marks = (opts.marks || []).map(function(m){
+      return '<circle class="cf-mark ' + m.cls + '" cx="' + px(m.t).toFixed(1) + '" cy="' + py(energyAt(m.t)).toFixed(1) + '" r="7"/>';
+    }).join('');
+    var taps = opts.taps ? [0, 60, 120, 180, 240, 300, 360].map(function(t){
+      return '<circle class="cf-tap" data-t="' + (t % 360) + '" cx="' + px(t).toFixed(1) + '" cy="' + py(energyAt(t)).toFixed(1) + '" r="14" tabindex="0" role="button" aria-label="' + t + ' degrees, ' + energyAt(t).toFixed(1) + ' kcal per mol"/>';
+    }).join('') : '';
     return grid +
       '<line x1="' + padL + '" y1="' + (H - padB) + '" x2="' + (W - 8) + '" y2="' + (H - padB) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (H - padB) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<text class="cf-axis" x="6" y="' + (padT + 8) + '">' + maxE.toFixed(1) + '</text>' +
       '<text class="cf-axis" x="6" y="' + (H - padB) + '">0</text>' +
       '<path d="' + d + '" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linejoin="round"/>' +
-      here;
+      here + taps + marks;
+  }
+
+  /* ---- Predict first (audit 2026-10: Newman mode had no quiz) ----------
+
+     A molecule at one of its six landmark angles, drawn as a Newman
+     projection with the curve's marker hidden. Tap where it sits on the
+     energy curve. Any landmark with the same energy counts (butane's two
+     gauche wells are the same conformation). A wrong tap stays on the curve
+     in red beside the right ones in green; a method hint comes before Show
+     the answer. */
+  var nq = { on:false, mol:null, deg:0, pick:null, done:false, hint:false, right:0, total:0 };
+  function nqNew(){
+    var pool = TORSIONALS.filter(function(t){ return t.id !== 'ethane'; });
+    var prev = nq.mol, prevDeg = nq.deg;
+    for(var i = 0; i < 20; i++){
+      nq.mol = pool[Math.floor(Math.random() * pool.length)];
+      nq.deg = 60 * Math.floor(Math.random() * 6);
+      if(nq.mol !== prev || nq.deg !== prevDeg) break;
+    }
+    tor = nq.mol; theta = nq.deg;
+    nq.pick = null; nq.done = false; nq.hint = false;
+    document.getElementById('cfAngle').value = theta;
+    document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-id') === tor.id); });
+    renderNewman();
+  }
+  function nqSame(t){ return Math.abs(energyAt(t) - energyAt(nq.deg)) < 0.05; }
+  function nqAnswers(){ return [0, 60, 120, 180, 240, 300].filter(nqSame); }
+  function nqPick(t){
+    if(!nq.on || nq.done) return;
+    nq.pick = t; nq.done = true; nq.total++;
+    if(nqSame(t)) nq.right++;
+    renderNewman();
+  }
+  function nqPanel(){
+    var el = document.getElementById('cfNq');
+    if(!el) return;
+    if(!nq.on){ el.hidden = true; el.innerHTML = ''; return; }
+    el.hidden = false;
+    var d = describeTorsion(nq.deg), min = Math.min.apply(null, tor.energies), up = energyAt(nq.deg) - min;
+    var ok = nq.done && nq.pick !== null && nqSame(nq.pick);
+    var html = '<p class="cf-nq__q"><b>' + esc(tor.name) + '.</b> Where does this conformation sit on the energy curve? Tap a peak or a valley.' +
+      (nq.total ? ' <span class="tmuted">' + nq.right + ' of ' + nq.total + '</span>' : '') + '</p>';
+    if(!nq.done){
+      html += '<div class="trow">' +
+        (nq.hint ? '' : '<button type="button" class="tchip" id="cfNqHint">Hint</button>') +
+        '<button type="button" class="tchip" id="cfNqShow">Show the answer</button></div>';
+      if(nq.hint) html += '<div class="tnote tnote--info" id="cfNqHintBox"><span class="tnote__k">Method</span>' +
+        'First look at the front bonds: if each one lines up with a back bond (drawn just beside it), it is eclipsed, a peak. If each sits between two back bonds, it is staggered, a valley. ' +
+        'Then find the two biggest groups: 180° apart (anti) is usually the lowest valley and 60° apart (gauche) a higher one. The exceptions here are 1,2-difluoroethane and ethylene glycol, where gauche is lowest. ' +
+        'Big groups lined up with each other is the highest peak.</div>';
+    } else {
+      var answer = nq.pick === null;
+      html += '<div class="tnote ' + (answer ? 'tnote--info' : ok ? 'tnote--good' : 'tnote--bad') + '" id="cfNqSay" tabindex="-1"><span class="tnote__k">' +
+        (answer ? 'The answer' : ok ? 'Right' : 'Not that one') + '</span>' +
+        (answer || ok ? '' : 'You picked ' + nq.pick + '°, ' + (energyAt(nq.pick) - min).toFixed(1) + ' kcal/mol above the minimum: ' + esc(describeTorsion(nq.pick).name.toLowerCase()) + '. ') +
+        'This is ' + esc(d.name.toLowerCase()) + ' at ' + nq.deg + '°, ' + up.toFixed(1) + ' kcal/mol above the minimum.</div>' +
+        '<div class="trow"><button type="button" class="btn-press" id="cfNqNext">Next one</button></div>';
+    }
+    el.innerHTML = html;
+    var h = document.getElementById('cfNqHint'); if(h) h.addEventListener('click', function(){ nq.hint = true; renderNewman(); });
+    var sh = document.getElementById('cfNqShow'); if(sh) sh.addEventListener('click', function(){ nq.done = true; nq.pick = null; nq.total++; renderNewman(); });
+    var nx = document.getElementById('cfNqNext'); if(nx) nx.addEventListener('click', function(){ nqNew(); var g = document.querySelector('#cfCurve .cf-tap'); if(g) g.focus({ preventScroll:true }); });
   }
 
   function renderNewman(){
@@ -332,8 +414,26 @@
 
     document.getElementById('cfNewmanStage').innerHTML =
       '<svg viewBox="0 0 300 300" role="img" aria-label="Newman projection">' + newmanSvg() + '</svg>';
+    var marks = [];
+    if(nq.on && nq.done){
+      nqAnswers().forEach(function(t){ marks.push({ t:t, cls:'is-ok' }); if(t === 0) marks.push({ t:360, cls:'is-ok' }); });
+      if(nq.pick !== null && !nqSame(nq.pick)) marks.push({ t:nq.pick, cls:'is-no' });
+    }
+    var asking = nq.on && !nq.done;
     document.getElementById('cfCurve').innerHTML =
-      '<svg viewBox="0 0 360 132" role="img" aria-label="Energy against dihedral angle">' + curveSvg() + '</svg>';
+      '<svg viewBox="0 0 360 132" role="' + (asking ? 'group' : 'img') + '" aria-label="Energy against dihedral angle">' +
+      curveSvg({ hideHere: asking, marks: marks, taps: asking }) + '</svg>';
+    document.getElementById('cfCurve').querySelectorAll('.cf-tap').forEach(function(c){
+      var t = parseInt(c.getAttribute('data-t'), 10);
+      c.addEventListener('click', function(){ nqPick(t); });
+      c.addEventListener('keydown', function(ev){ if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); nqPick(t); } });
+    });
+    nqPanel();
+    if(asking){
+      document.getElementById('cfAngleOut').textContent = '?';
+      document.getElementById('cfReadout').innerHTML = '<div class="tempty">Hidden until you answer. Tap the curve where this conformation sits.</div>';
+      return;
+    }
     document.getElementById('cfAngleOut').textContent = Math.round(theta) + '°';
 
     document.getElementById('cfReadout').innerHTML =
@@ -388,6 +488,7 @@
     { id:'trans14',     label:'trans-1,4-dimethyl',  subs:[['Me','up'],null,null,['Me','down'],null,null] }
   ];
 
+  var AX_COLOR = '#3E6FD8', EQ_COLOR = '#E08A1E';
   // Position i carries [key, 'up'|'down'], or null for two hydrogens.
   var ring = [null, null, null, null, null, null];
   var flipped = false;
@@ -433,7 +534,8 @@
           style: { color:sub.color, r:sub.r, ink:sub.ink },
           subKey: key, isAxial: isAxial, carbon: i, face: face
         });
-        bonds.push({ a:i, b:atoms.length - 1, order:1 });
+        // Axial bonds and equatorial bonds in two colors (audit 2026-10), keyed in the legend.
+        bonds.push({ a:i, b:atoms.length - 1, order:1, color: isAxial ? AX_COLOR : EQ_COLOR });
       });
     }
 
@@ -500,12 +602,29 @@
      tetrahedral completion as the resting chairs, so the end state is
      exactly the other chair, not a picture of it. */
   var fit = 46, anim = null;   // room for a tert-butyl at the edge of the frame
+  /* Each chair is cropped to what it draws (audit 2026-10: the chairs sat about
+     160 px tall in a 280-unit box). The crop is taken at rest and held through
+     a flip, so the picture does not breathe while it animates. */
+  var crop = {};
   function stage(id, chair, label){
     var el = document.getElementById(id);
     el.innerHTML =
-      '<svg viewBox="0 0 320 280" role="group" aria-label="' + label + '">' +
+      '<svg viewBox="' + (crop[id] || '0 0 320 280') + '" role="group" aria-label="' + label + '">' +
       M3.render(chair, { cx:160, cy:140, scale:fit, rx:crx, ry:cry, labels:true, lonePairs:false }) +
       '</svg>';
+    if(!anim){
+      var svgEl = el.querySelector('svg');
+      try{
+        var bb = svgEl.getBBox();
+        if(bb.width > 20){
+          var pad = 14, w = Math.max(bb.width + pad*2, 220), h = Math.max(bb.height + pad*2, 150);
+          // Room for the widest flip: never tighter than the other chair's frame would need.
+          crop[id] = (bb.x + bb.width/2 - w/2).toFixed(0) + ' ' + (bb.y + bb.height/2 - h/2).toFixed(0) + ' ' + w.toFixed(0) + ' ' + h.toFixed(0);
+          svgEl.setAttribute('viewBox', crop[id]);
+        }
+      }catch(e){}
+    }
+    readableAtoms(el.querySelector('svg'));
     el.querySelectorAll('.m3d-atom').forEach(function(g){
       var at = chair.atoms[parseInt(g.getAttribute('data-atom'), 10)];
       if(!at || !at.subKey || at.subKey === 'H'){ g.removeAttribute('tabindex'); g.removeAttribute('role'); g.setAttribute('aria-hidden', 'true'); return; }
@@ -513,6 +632,29 @@
       g.setAttribute('aria-label', SUBS[at.subKey].label + ' on C' + (at.carbon + 1) + ', ' + (at.isAxial ? 'axial' : 'equatorial') +
         '. Press to flip the ring and make it ' + (at.isAxial ? 'equatorial' : 'axial'));
       g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); e.stopPropagation(); flipRing(at); } });
+    });
+  }
+
+  /* Atom letters read at 12 px or more however small the chair is drawn (a
+     phone shows each chair at about 1.4x its 320-unit frame, which left the
+     H letters near 9 px, wider than their balls). Each letter is sized from
+     the drawn scale and its ball grows to hold it; the svg then opts out of
+     the shell's own text bump, which would redo this on every flip frame. */
+  function readableAtoms(svg){
+    if(!svg) return;
+    svg.setAttribute('data-ls-text', 'keep');
+    var m = svg.getScreenCTM && svg.getScreenCTM(), k = m ? Math.hypot(m.a, m.b) : 0;
+    if(!(k > 0)) return;
+    var min = 12 / k;
+    svg.querySelectorAll('.m3d-atom').forEach(function(g){
+      var t = g.querySelector('text'), c = g.querySelector('circle:not(.m3d-halo)');
+      if(!t || !c) return;
+      var fs = parseFloat(t.getAttribute('font-size')) || 0;
+      if(fs >= min) return;
+      var cy = parseFloat(c.getAttribute('cy')), w = t.textContent.length > 1 ? 0.62 * t.textContent.length : 0.72;
+      t.setAttribute('font-size', min.toFixed(1));
+      t.setAttribute('y', (cy + min * 0.35).toFixed(1));
+      if(parseFloat(c.getAttribute('r')) < min * w) c.setAttribute('r', (min * w).toFixed(1));
     });
   }
 
@@ -559,7 +701,8 @@
         }).join('')) +
         '</span><b class="cf-meter__v">' + (hide ? '' : e.total.toFixed(2)) + '</b></div>';
     }
-    el.innerHTML = '<p class="cf-meter__h">Strain from axial groups <span class="tmuted">(A-values, kcal/mol)</span></p>' +
+    el.innerHTML = '<p class="cf-key"><span class="cf-key__ax">axial bond</span><span class="cf-key__eq">equatorial bond</span></p>' +
+      '<p class="cf-meter__h">Strain from axial groups <span class="tmuted">(A-values, kcal/mol)</span></p>' +
       bar(eA, 'This chair') + bar(eB, 'Flipped');
   }
 
@@ -800,6 +943,11 @@
           '<span>Pick a bond to rotate</span>' +
           '<button type="button" class="tchip tchip--ghost" id="cfTorBuildToggle">Build your own &rarr;</button>' +
         '</div>' +
+        '<div class="tseg cf-ntask" id="cfNewTask" role="group" aria-label="Newman mode">' +
+          '<button type="button" data-ntask="explore" class="on" aria-pressed="true">Explore</button>' +
+          '<button type="button" data-ntask="predict" aria-pressed="false">Predict first</button>' +
+        '</div>' +
+        '<div id="cfNq" class="cf-nq" hidden></div>' +
         '<div class="tchips" id="cfTorPicker"></div>' +
         '<div id="cfTorBuild" hidden></div>' +
       '</div>' +
@@ -891,6 +1039,7 @@
   }).join('');
   document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(b){
     b.addEventListener('click', function(){
+      if(nq.on && !nq.done) return;
       TORSIONALS.forEach(function(t){ if(t.id === b.getAttribute('data-id')) tor = t; });
       document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){
         x.classList.toggle('on', x === b);
@@ -903,11 +1052,23 @@
   document.getElementById('cfTorPicker').querySelector('.tchip').classList.add('on');
 
   document.getElementById('cfAngle').addEventListener('input', function(e){
+    // In Predict first the drawing is the question: the slider waits until it is answered.
+    if(nq.on && !nq.done){ e.target.value = theta; return; }
     theta = parseInt(e.target.value, 10);
     renderNewman();
   });
+  document.getElementById('cfNewTask').addEventListener('click', function(e){
+    var b = e.target.closest('[data-ntask]'); if(!b) return;
+    var on = b.getAttribute('data-ntask') === 'predict';
+    document.getElementById('cfNewTask').querySelectorAll('button').forEach(function(x){
+      var m = x === b; x.classList.toggle('on', m); x.setAttribute('aria-pressed', m ? 'true' : 'false'); });
+    if(on === nq.on) return;
+    nq.on = on;
+    if(on) nqNew(); else renderNewman();
+  });
   root.querySelectorAll('[data-snap]').forEach(function(b){
     b.addEventListener('click', function(){
+      if(nq.on && !nq.done) return;
       theta = parseInt(b.getAttribute('data-snap'), 10);
       document.getElementById('cfAngle').value = theta;
       renderNewman();
@@ -1065,7 +1226,7 @@
      Why. Chairs: both chairs and the strain meter on the stage, Explore | Find
      the stable chair, the rings and Flip in the dock, what it costs in Why,
      the per-group builder in Details. The hooks run after each render. */
-  var studio = window.OchemStudio || null, ls = null;
+  var studio = window.OchemStudio || null, ls = null, lsAngle = null;
   if(studio){
     var Kit = window.OchemStudioKit;
     var byId = function(id){ return document.getElementById(id); };
@@ -1090,7 +1251,9 @@
     var cfMode = Kit.seg(byId('cfMode'), 'data-mode');
     studio.add('stage', nPics, { mode: 'newman' });
     studio.add('stage', chairPics, { mode: 'chair' });
-    studio.add('dock', [angleBox, torPick, byId('cfTorBuild')], { mode: 'newman' });
+    var nTask = mk('cf-ls-task'); nTask.appendChild(byId('cfNewTask'));
+    studio.add('dock', [nTask, byId('cfNq'), angleBox, torPick, byId('cfTorBuild')], { mode: 'newman' });
+    lsAngle = angleBox;
     studio.add('dock', [taskBox, presets, byId('cfChal'), flipRow], { mode: 'chair' });
     // The per-carbon builder is a setting: Details, first.
     studio.add('details', ringBox, { mode: 'chair' });
@@ -1106,6 +1269,19 @@
 
   function studioNewman(){
     if(!ls) return;
+    // Predict first: the question and its buttons replace the slider until answered.
+    if(lsAngle) lsAngle.hidden = nq.on && !nq.done;
+    var tp = document.getElementById('cfTorPicker'); if(tp) tp.hidden = nq.on;
+    if(nq.on){
+      var okq = nq.done && nq.pick !== null && nqSame(nq.pick);
+      studio.caption(nq.done ? '<b>' + (nq.pick === null ? 'The answer is on the curve.' : okq ? 'Right.' : 'Not that one.') + '</b> Green is where it sits' + (nq.pick !== null && !okq ? ', red is your pick' : '') + '. Why? has the reasoning.'
+        : '<b>' + esc(tor.name) + '.</b> Tap the energy curve where this conformation sits.', 'newman');
+      studio.pills(nq.done ? [{ html: nq.pick === null ? 'Shown' : okq ? 'Right' : 'Not that one', tone: nq.pick === null ? 'ghost' : okq ? 'good' : 'bad' }] : [{ html:'Your call', tone:'ghost' }], 'left', 'newman');
+      studio.pills(nq.total ? [{ html: nq.right + ' of ' + nq.total + ' right', tone:'ghost' }] : [], 'right', 'newman');
+      var w0 = document.querySelector('#cfReadout details'); if(w0){ w0.open = true; w0.classList.add('cf-ls-open'); }
+      document.getElementById('cfLsAngle').textContent = nq.done ? Math.round(theta) + '°' : '?';
+      return;
+    }
     var d = describeTorsion(theta), e = energyAt(theta), min = Math.min.apply(null, tor.energies), up = e - min;
     document.getElementById('cfLsAngle').textContent = Math.round(theta) + '°';
     // The readout's own "Why?" is the Why sheet now: open, without its summary.

@@ -8,7 +8,7 @@
   "h1a": "Level up before",
   "h1b": "the real exam does.",
   "hand": "911 call to hospital, one chapter at a time",
-  "lede": "2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.",
+  "lede": "2,093 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start and works offline; the notes are free forever.",
   "btn1": "Start practicing",
   "btn2": "See a sample question",
   "btn3": "How the real exam works",
@@ -249,7 +249,7 @@
    ],
    [
     "Practice",
-    "Drills from the 2,033-question bank in multiple-choice, select-N and build-list formats, each answer checked as you go."
+    "Drills from the 2,093-question bank in every NREMT item type (multiple choice, select-N, build list, drag and drop, options table), each answer checked as you go."
    ],
    [
     "Review",
@@ -306,10 +306,18 @@
     ],
     [
      "S",
-     "Build list (put steps in order)"
+     "Build list (drag steps into order)"
+    ],
+    [
+     "D",
+     "Drag and drop (sort items into groups)"
+    ],
+    [
+     "T",
+     "Options table (one choice per row)"
     ]
    ],
-   "note": "The real exam also uses drag-and-drop sorting and options-table items. This site does not simulate those two yet; its build-list items use move-up and move-down buttons rather than dragging.",
+   "note": "These are the item types on the National Registry&rsquo;s exam. Each works by dragging, by tapping an item then its place, or from the keyboard. The <a href=\"exams.html#adaptive\">Adaptive exam</a> simulates the exam&rsquo;s adaptive format.",
    "tags": [
     "Patient Treatment &amp; Transport",
     "Moderate"
@@ -327,15 +335,15 @@
    "free": [
     "Study notes, glossary, flowcharts, mnemonics, flashcards and the body map",
     "15 practice or review questions a day, any topic",
-    "One full timed exam"
+    "One full timed exam and one adaptive exam"
    ],
    "freecta": "Start practicing",
    "amt": "$20.30",
    "was": "$29",
    "note": "Founding price until 31 January 2027. One payment for 90 days.",
    "prem": [
-    "The full 2,033-question bank, unlimited",
-    "Unlimited timed 100-question exams",
+    "The full 2,093-question bank, unlimited",
+    "Unlimited timed and adaptive exams",
     "Unlimited missed-question review and spaced repetition",
     "Readiness score and domain breakdowns",
     "The clinical scenario simulator"
@@ -637,7 +645,7 @@
    "cta": "Read How to study ochem"
   },
   "tools_h": [
-   "Eight tools that",
+   "Nine tools that",
    "do the chemistry"
   ],
   "tools_lede": "Push electrons and watch the structure change. Rotate a Newman projection against a live energy curve. Draw a structure, get its ¹H NMR.",
@@ -680,6 +688,11 @@
    [
     "Reagent Roadmap",
     "From any functional group to any other, with the reagents.",
+    "Premium"
+   ],
+   [
+    "Synthesis Trainer",
+    "Plan the route, one step at a time.",
     "Premium"
    ]
   ],
@@ -739,7 +752,7 @@
    ],
    [
     "Tools",
-    "Eight interactive tools. The arrow pusher, resonance explorer and 3D molecule viewer are free."
+    "Nine interactive tools. The arrow pusher, resonance explorer and 3D molecule viewer are free."
    ],
    [
     "Dashboard",
@@ -801,7 +814,7 @@
     "The full 3,675-question bank, unlimited practice and review",
     "Unlimited exams",
     "Mastery dashboard and gap detection",
-    "All eight interactive tools"
+    "All nine interactive tools"
    ],
    "name": "Organic Chemistry"
   },
@@ -1151,7 +1164,7 @@
    "cta": "Open your dashboard"
   },
   "tools_h": [
-   "Seven tools that make you",
+   "Eight tools that make you",
    "do the physiology"
   ],
   "tools_lede": "Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.",
@@ -1169,6 +1182,11 @@
    [
     "Feedback loop builder",
     "Build each homeostatic loop from stimulus to response.",
+    ""
+   ],
+   [
+    "3D anatomy",
+    "Turn a real 3D body, tap any bone, organ or vessel, then name it or find it.",
     ""
    ],
    [

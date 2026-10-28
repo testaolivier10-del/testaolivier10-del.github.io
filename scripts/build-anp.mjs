@@ -835,7 +835,16 @@ ${[...(study ? ['course/study.js'] : []), ...(['practice', 'review', 'exams', 'd
   // Dashboard, review and search show the visitor's own state: noindex, and
   // left out of the sitemap (scripts/lib/app-pages.mjs).
   const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
-  const page = head({ title: courseTitle(entry.title, AP_LABELS, FULL), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  let page = head({ title: courseTitle(entry.title, AP_LABELS, FULL), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  /* A page on the shared 3D body (assets/body3d/, "body3d": true in pages.json):
+     the meshopt decoder the model needs is WebAssembly, so its CSP adds
+     'wasm-unsafe-eval' (as nremt/body-map.html does), and the three.js import
+     map goes before the scripts so the viewer finds the shared copy. */
+  if (entry.body3d) {
+    page = page.replace(`script-src 'self' 'unsafe-inline' `, `script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' `)
+      .replace('<script src="', `<script type="importmap">{"imports":{"three":"${depth}../assets/body3d/vendor/three/build/three.module.min.js"}}</script>\n<script src="`);
+    if (!page.includes("'wasm-unsafe-eval'") || !page.includes('type="importmap"')) throw new Error(`body3d page ${path}: CSP or import map not placed`);
+  }
   // Progress page: the redesigned opener and its sheet (scripts/lib/dashboard-page.mjs).
   if (entry.slug === 'dashboard') return dashboardPage(page, 'anp');
   const out = study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
@@ -850,10 +859,11 @@ const STUDY_PAGES = new Set(['practice', 'review', 'exams', 'flashcards']);
    apps/tools-hub.js adds each tool's live status and the ?chapter= filter.
    Item counts come from the published tool data, per chapter as well. */
 const HUB_SKILL = {
-  'lab-practical': 'Anatomy', predict: 'Physiology: predict', 'feedback-loops': 'Physiology: homeostasis',
+  'lab-practical': 'Anatomy', 'anatomy-3d': 'Anatomy in 3D', predict: 'Physiology: predict', 'feedback-loops': 'Physiology: homeostasis',
   pathways: 'Sequences', graphs: 'Physiology: graphs', calculators: 'Quantitative', 'word-roots': 'Terminology',
 };
 const HUB_ICON = {
+  'anatomy-3d': '<circle cx="12" cy="4.6" r="2.2"/><path d="M9.6 8h4.8l1.2 5.6h-1.8l-.5 6.4h-2.6l-.5-6.4H8.4z"/><ellipse cx="12" cy="14" rx="9.5" ry="3.4"/>',
   predict: '<path d="M7 17V7M7 7l-3 3M7 7l3 3M17 7v10M17 17l-3-3M17 17l3-3"/>',
   'feedback-loops': '<path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4.5h-4.5"/>',
   pathways: '<circle cx="5" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.5 7.5l4 3M13.5 13.5l4 3"/>',
@@ -863,11 +873,12 @@ const HUB_ICON = {
 };
 // Which array holds a tool's items, and what one is called.
 const HUB_ITEMS = {
+  'anatomy-3d': ['structures', 'structure'],
   predict: ['scenarios', 'scenario'], 'feedback-loops': ['loops', 'loop'], pathways: ['pathways', 'pathway'],
   graphs: ['graphs', 'graph'], calculators: ['calculators', 'calculator'], 'word-roots': ['terms', 'term'],
 };
 // Tools whose page reads ?chapter= (the hub passes the filter on to these).
-const HUB_CHAPTER_AWARE = new Set(['lab-practical', 'predict', 'feedback-loops', 'pathways', 'graphs']);
+const HUB_CHAPTER_AWARE = new Set(['lab-practical', 'anatomy-3d', 'predict', 'feedback-loops', 'pathways', 'graphs']);
 const LAB_MODES = [
   { key: 'explore', label: 'Explore', blurb: 'Labels shown. Tap any structure.', icon: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>' },
   { key: 'study', label: 'Study', blurb: 'Labels hidden. Reveal at your pace.', icon: '<path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/>' },
@@ -952,7 +963,7 @@ function toolsHubMount() {
   <div class="cx-tools">
   <div class="anp-hub-filter" hidden></div>
   ${feat}
-  <div class="cx-tools-h"><h2>${numWord(others.length)} more ways to practice</h2><p>Physiology, numbers and words.</p></div>
+  <div class="cx-tools-h"><h2>${numWord(others.length)} more ways to practice</h2><p>Anatomy in 3D, physiology, numbers and words.</p></div>
   <ul class="cx-tool-grid" aria-label="More tools">
     ${cards}
   </ul>
@@ -984,10 +995,10 @@ function toolsHubR3() {
     key: 'anp', up: '../', status: true, mountClass: 'anp-app-mount',
     crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: esc(COURSE_NAME), href: 'index.html' }, { name: 'Tools' }],
     h1: 'Start at <span>the lab bench.</span>', hand: 'then work the physiology',
-    lede: `${numWord(tools.length)} tools. Name structures on real figures, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
+    lede: `${numWord(tools.length)} tools. Name structures on real figures and a 3D body, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.`,
     cta: { href: 'tools/lab-practical.html', label: 'Start the lab practical' }, cta2: { href: 'search.html', label: 'Search everything' },
     before: '<div class="anp-hub-filter" hidden></div>', featHtml,
-    groups: [{ big: true, h: `${numWord(others.length)} more ways <span>to practice</span>`, p: 'Physiology, numbers and words.', label: 'More tools',
+    groups: [{ big: true, h: `${numWord(others.length)} more ways <span>to practice</span>`, p: 'Anatomy in 3D, physiology, numbers and words.', label: 'More tools',
       cards: others.map(t => {
         const c = hubToolCounts(t.slug);
         const [pl, sg] = HUB_ITEMS[t.slug];

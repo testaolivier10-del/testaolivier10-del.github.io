@@ -35,6 +35,11 @@
   "file": "spectroscopy.svg"
  },
  {
+  "slug": "synthesis",
+  "title": "Synthesis Trainer",
+  "file": "synthesis.svg"
+ },
+ {
   "slug": "viewer-3d",
   "title": "3D Molecule Viewer",
   "file": "viewer-3d.svg"

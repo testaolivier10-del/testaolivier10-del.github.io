@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v94';
+const CACHE_NAME = 'levlprep-v95';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -110,6 +110,8 @@ COURSE_URLS.nremt = [
   'nremt/review.html',
   'nremt/exams.html',
   'nremt/practice-engine.js',
+  'nremt/assets/tei-items.js',
+  'nremt/assets/cat.js',
   'nremt/practice.css',
   'nremt/practice-study.js',
   'nremt/flashcards.html',
@@ -141,7 +143,8 @@ COURSE_URLS.nremt = [
   // The shared tool layer: misses into Review, and the 3D body (its model and
   // three.js stay runtime-cached, as before).
   'nremt/assets/tool-results.js',
-  'nremt/assets/body-viewer.js',
+  'nremt/assets/body-content.js',
+  'assets/body3d/viewer.js',
   'nremt/assets/burns.js',
 ];
 

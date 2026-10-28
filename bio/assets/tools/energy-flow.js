@@ -39,8 +39,8 @@
       '<div class="bt-controls ef-ctl" data-primary="2"></div>' +
       '<div class="ef-levels bt-more"><div class="bt-buttons"><button type="button" class="bt-btn" data-a="less">Remove the top level</button><button type="button" class="bt-btn" data-a="more">Add a level</button></div><p class="bt-small ef-lvnote" role="status" aria-live="polite"></p></div>' +
       '<div class="bt-num"><h3 class="ef-sub">Food chain (each arrow: is eaten by)</h3><ol class="ef-chain"></ol></div>' +
-      '<div class="bt-tabs bt-num" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div>' +
-      '<div class="bt-stage two ef-stage bt-num"><div class="bt-fig ef-fig1"></div><div class="bt-fig ef-fig2"></div></div><p class="bt-small ef-key bt-num"></p>' +
+      '<div class="ef-pyr bt-num"><div class="bt-tabs" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div>' +
+      '<div class="bt-stage two ef-stage"><div class="bt-fig ef-fig1"></div><div class="bt-fig ef-fig2"></div></div><p class="bt-small ef-key"></p></div>' +
       '<dl class="bt-readout ef-out"></dl><div class="ef-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run a series of fractions passed on</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
@@ -249,7 +249,7 @@
     if(data.frq) T.frq(app, data.frq, SLUG);
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, live: '.ef-where',
+    studio: { sim: true, live: '.ef-where', why: ['.ef-explain'], views: [{ sel: '.ef-pyr', label: 'Pyramids' }],
       hint: { target: '.ef-lvl', text: 'Tap a level' },
       pills: function(g){ return [{ k: 'NPP', html: g.ro(2).split(' (')[0], tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: 'Top level stores ' + g.ro(3).split(' (')[0], tone: 'ghost' }]; } } });

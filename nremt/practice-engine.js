@@ -11,7 +11,11 @@
 const RUNNER_PAGE = (document.body && document.body.getAttribute('data-runner')) || 'practice';
 // Which page owns each mode, so an attempt is resumed under the tab it was
 // started from.
-const RUNNER_HOME = { full: 'exams.html', spaced: 'review.html' };
+const RUNNER_HOME = { full: 'exams.html', cat: 'exams.html', spaced: 'review.html' };
+// The drag-and-drop, options-table and build-list interactions (assets/tei-items.js)
+// and the adaptive exam's model (assets/cat.js, loaded by exams.html only).
+const TEI = window.NremtTei;
+const CAT = window.NremtCat || null;
 function runnerPageFor(m){ return RUNNER_HOME[m] || 'practice.html'; }
 const RUNNER_SCREENS = `
   <div id="quizScreen">
@@ -61,6 +65,7 @@ const RUNNER_SCREENS = `
           <dt><kbd aria-label="Up arrow">&uarr;</kbd><kbd aria-label="Down arrow">&darr;</kbd></dt><dd>move between answers</dd>
           <dt><kbd>Home</kbd><kbd>End</kbd></dt><dd>first or last answer</dd>
           <dt><kbd>Space</kbd><kbd>Enter</kbd></dt><dd>choose</dd>
+          <dt><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></dt><dd>sort the item into that group</dd>
         </dl>
       </div>
     </aside>
@@ -310,7 +315,10 @@ const OPTION_ORDER_KEY = 'nremt_option_order';
       orders[id] = order;
       changed = true;
     }
-    if(q.type === 'multi' || q.type === 'order'){
+    if(TEI.isTei(q)){
+      // Rows move; the groups keep their order, which carries meaning.
+      TEI.reorder(q, order);
+    } else if(q.type === 'multi' || q.type === 'order'){
       const oldCorrect = q.correct;
       q.options = order.map(i => q.options[i]);
       q.correct = oldCorrect.map(oldIdx => order.indexOf(oldIdx));
@@ -391,11 +399,13 @@ function shuffle(arr){
   return a;
 }
 
-// Supports three question types, mirroring NREMT's Technology-Enhanced Items:
+// Supports five question types, mirroring NREMT's Technology-Enhanced Items:
 // 'single' (default, omit) — one correct option index.
 // 'multi' — select-N-of-M; q.correct is an array of correct option indices.
-// 'order' — build-list/drag-and-drop; q.correct is the array of option indices
-// in their correct sequence.
+// 'order' — build list; q.correct is the array of option indices in their
+// correct sequence.
+// 'dnd' — drag and drop into q.bins; 'table' — options table with q.cols.
+// For both, q.correct[i] is the bin or column for option i (assets/tei-items.js).
 const LETTERS = ['A','B','C','D','E','F'];
 
 // Answered means a full answer: a select-N item counts once N options are
@@ -403,6 +413,7 @@ const LETTERS = ['A','B','C','D','E','F'];
 function isAnswered(q, ans){
   if(ans === null || ans === undefined) return false;
   if(q && q.type === 'multi') return Array.isArray(ans) && ans.length === q.correct.length;
+  if(TEI.isTei(q)) return TEI.answered(q, ans);
   return true;
 }
 function answeredCount(){
@@ -421,6 +432,7 @@ function isAnswerCorrect(q, ans){
     if(!Array.isArray(ans)) return false;
     return ans.join(',') === q.correct.join(',');
   }
+  if(TEI.isTei(q)) return TEI.correct(q, ans);
   return ans === q.correct;
 }
 
@@ -434,6 +446,7 @@ function formatUserAnswerText(q, ans, letters){
     if(!Array.isArray(ans)) return null;
     return ans.map((optIdx, pos) => `${pos+1}. ${q.options[optIdx]}`).join('  ');
   }
+  if(TEI.isTei(q)) return TEI.userText(q, ans);
   return `${letters[ans]}) ${q.options[ans]}`;
 }
 
@@ -444,6 +457,7 @@ function formatCorrectAnswerText(q, letters){
   if(q.type === 'order'){
     return q.correct.map((optIdx, pos) => `${pos+1}. ${q.options[optIdx]}`).join('  ');
   }
+  if(TEI.isTei(q)) return TEI.keyText(q);
   return `${letters[q.correct]}) ${q.options[q.correct]}`;
 }
 
@@ -1309,14 +1323,18 @@ function renderPremium(){
     notice.innerHTML = html;
   }
 
-  // One free timed exam; the start button gives way to the gate once it is spent.
+  // One free timed exam and one free adaptive exam (owner, 2026-10-27); the
+  // start button gives way to the gate once the chosen one is spent.
   const startBtn = document.getElementById('startBtn');
   if(startBtn){
     const slot = premiumSlot('examGate', startBtn);
-    const canStart = G.canStartExam();
+    const picked = document.querySelector('input[name="nrExam"]:checked');
+    const kind = picked && picked.value === 'cat' ? 'cat' : 'full';
+    const canStart = G.canStartExam(kind);
     startBtn.hidden = !canStart;
-    slot.innerHTML = !canStart ? G.gate('exam', 'exams')
-      : locked ? `<p class="cx-notice"><b>Your free exam.</b> One full exam is free: starting it uses it, and once started you can always finish it. ${G.badge()}</p>` : '';
+    const name = kind === 'cat' ? 'adaptive exam' : 'timed exam';
+    slot.innerHTML = !canStart ? G.gate(kind === 'cat' ? 'cat' : 'exam', 'exams')
+      : locked ? `<p class="cx-notice"><b>Your free ${name}.</b> One timed exam and one adaptive exam are free: starting one uses it, and once started you can always finish it. ${G.badge()}</p>` : '';
   }
 
   // Missed and spaced review are free and draw on the same allowance; once it
@@ -1368,6 +1386,8 @@ function blockWith(feature){
   const btn = card.querySelector('button');
   if(btn) btn.focus();
 }
+// Each exam has its own free attempt, so choosing the other one re-checks it.
+document.querySelectorAll('input[name="nrExam"]').forEach(r => r.addEventListener('change', renderPremium));
 // Signing in, or a pass landing, changes what the start screen offers.
 (function(){
   let first = true;
@@ -1397,9 +1417,9 @@ function renderDueSummary(sessionCount){
 }
 
 function examStateSummary(state){
-  const totalLen = state.mode === 'adaptive' ? state.adaptiveState.length : state.activeIndices.length;
+  const totalLen = state.mode === 'adaptive' ? state.adaptiveState.length : state.mode === 'cat' ? 'up to ' + CAT.MAX : state.activeIndices.length;
   const answeredN = state.answers.filter((a, i) => isAnswered(QUESTIONS[state.activeIndices[i]], a)).length;
-  const labels = {full:'Timed exam', review:'Missed-question review', flagged:'Flagged-question review', spaced:'Spaced review', domain:'Domain drill', adaptive:'Weak-spot practice', single:'Single question'};
+  const labels = {full:'Timed exam', cat:'Adaptive exam', review:'Missed-question review', flagged:'Flagged-question review', spaced:'Spaced review', domain:'Domain drill', adaptive:'Weak-spot practice', single:'Single question'};
   const label = labels[state.mode] || 'Practice session';
   let extra = '';
   if(state.withTimer){
@@ -1527,6 +1547,8 @@ function formatDuration(ms){
 }
 
 $id('startBtn').addEventListener('click', () => {
+  const pickedExam = document.querySelector('input[name="nrExam"]:checked');
+  if(pickedExam && pickedExam.value === 'cat' && CAT){ startCat(); return; }
   mode = 'full';
   // The real cognitive exam is adaptive and one-directional: you answer, it
   // chooses the next item, and there is no route back. A practice exam with
@@ -1620,12 +1642,14 @@ async function renderFlashcard(){
     ? `<div style="font-size:12px;color:var(--accent);margin-bottom:8px;">Select ${q.correct.length}</div>`
     : q.type === 'order'
       ? `<div style="font-size:12px;color:var(--accent);margin-bottom:8px;">Put these in order</div>`
-      : '';
+      : TEI.isTei(q)
+        ? `<div style="font-size:12px;color:var(--accent);margin-bottom:8px;">${q.type === 'dnd' ? 'Sort each into' : 'For each row choose'}: ${TEI.groups(q).join(' / ')}</div>`
+        : '';
   $id('fcFront').innerHTML = `
     <div style="margin-bottom:14px;">${q.q}</div>
     ${frontHint}
     <div style="font-size:13.5px;color:var(--muted);">
-      ${q.options.map((o,i) => `${letters[i]}) ${o}`).join('<br>')}
+      ${q.options.map((o,i) => TEI.isTei(q) ? `&bull; ${o}` : `${letters[i]}) ${o}`).join('<br>')}
     </div>
   `;
   $id('fcBack').innerHTML = `
@@ -1839,14 +1863,52 @@ $id('adaptiveStartBtn').addEventListener('click', () => {
   beginQuiz(false);
 });
 
+// ---- Adaptive exam (exams.html): LevlPrep's simulation of the Registry's
+// computer-adaptive EMT exam. The model is in assets/cat.js; everything it
+// needs is rebuilt from activeIndices and answers, so a saved attempt resumes
+// with no extra state.
+function catResponses(){
+  const out = [];
+  activeIndices.forEach((qIdx, i) => {
+    const q = QUESTIONS[qIdx];
+    if(!isAnswered(q, answers[i])) return;
+    out.push({ b: CAT.bOf(q.diff), right: isAnswerCorrect(q, answers[i]), domain: q.domain, qIdx });
+  });
+  return out;
+}
+function pickCatQuestion(theta){
+  const asked = new Set(activeIndices);
+  const counts = {};
+  activeIndices.forEach(i => { const d = QUESTIONS[i].domain; counts[d] = (counts[d] || 0) + 1; });
+  const pool = [];
+  QUESTIONS.forEach((q, i) => { if(!asked.has(i)) pool.push({ i, domain: q.domain, diff: q.diff }); });
+  const seen = loadSeen();
+  const next = CAT.pick(pool, counts, DOMAIN_TARGETS, theta, i => seen.has(i));
+  if(next !== null) markSeen([next]);
+  return next;
+}
+function startCat(){
+  mode = 'cat';
+  selectedDomain = null;
+  realisticMode = true;
+  // The first question sits slightly below the passing line, as the Registry
+  // describes its own exam starting.
+  activeIndices = [];
+  const first = pickCatQuestion(CAT.PASS - 0.5);
+  activeIndices = first === null ? [] : [first];
+  TARGET_PACE_MS = TIME_LIMIT_MS / CAT.MAX;
+  beginQuiz(true);
+}
+
 function beginQuiz(withTimer, resumeState){
   // Premium, checked once here so every way in (buttons, links, ?start=)
   // meets the same rules. A resumed attempt is the same attempt and always
   // carries on.
   if(!resumeState){
-    if(mode === 'full'){
-      if(!G.canStartExam()){ blockWith('exam'); return; }
-      G.examStarted();
+    if(mode === 'full' || mode === 'cat'){
+      const kind = mode === 'cat' ? 'cat' : 'full';
+      if(!G.canStartExam(kind)){ blockWith(kind === 'cat' ? 'cat' : 'exam'); return; }
+      G.examStarted(kind);
     }
     if(G.quotaApplies(mode)){
       const left = G.quotaLeft();
@@ -1877,14 +1939,15 @@ function beginQuiz(withTimer, resumeState){
       };
     }
     if(mode === 'full') TARGET_PACE_MS = TIME_LIMIT_MS / activeIndices.length;
+    if(mode === 'cat') TARGET_PACE_MS = TIME_LIMIT_MS / CAT.MAX;
   } else {
     current = 0;
-    const totalLen0 = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+    const totalLen0 = sessionLength();
     answers = new Array(totalLen0).fill(null);
     checked = new Array(totalLen0).fill(false);
     startTime = Date.now();
   }
-  const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+  const totalLen = sessionLength();
   // One event per attempt started. A resume is deliberately not counted: it is
   // the same attempt, and counting it would inflate starts against finishes
   // and make the completion rate read worse than it is.
@@ -1905,6 +1968,14 @@ function beginQuiz(withTimer, resumeState){
   introScreen.style.display = 'none';
   quizScreen.style.display = 'grid';
   window.scrollTo(0, 0);
+  // The slim exam bar on exams.html says which exam is running.
+  const fbt = document.querySelector('.r3-fb-t');
+  if(fbt){
+    if(!fbt.dataset.full) fbt.dataset.full = fbt.innerHTML;
+    fbt.innerHTML = mode === 'cat' ? `<b>Adaptive exam</b><small>NREMT-EMT &middot; ${CAT.MIN} to ${CAT.MAX} questions, stops when it is sure</small>` : fbt.dataset.full;
+    const fbs = document.querySelector('.r3-fb-submit');
+    if(fbs) fbs.textContent = mode === 'cat' ? 'End exam' : 'Submit exam';
+  }
   $id('timerBar').style.display = withTimer ? 'block' : 'none';
   const banner = $id('practiceBanner');
   if(!withTimer){
@@ -1931,8 +2002,8 @@ function beginQuiz(withTimer, resumeState){
   // Practice says "End session" once, where the exam says "Submit exam";
   // the second, top-of-screen submit is only for the long timed exam.
   $id('exitBtn').innerHTML = withTimer ? '&larr; Exit exam' : '&larr; Save and exit';
-  $id('submitBtn').textContent = withTimer ? 'Submit exam' : 'End session';
-  $id('submitBtnTop').textContent = withTimer ? 'Submit exam' : 'End session';
+  $id('submitBtn').textContent = mode === 'cat' ? 'End exam' : withTimer ? 'Submit exam' : 'End session';
+  $id('submitBtnTop').textContent = mode === 'cat' ? 'End exam' : withTimer ? 'Submit exam' : 'End session';
   $id('submitBtnTop').hidden = !withTimer;
   renderQuestion();
   renderJumpRow();
@@ -1986,7 +2057,7 @@ function updateTimer(){
 }
 
 function renderQuestion(){
-  const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+  const totalLen = sessionLength();
   // The free allowance counts a question when it is first shown: an answer
   // key is visible in the results for every question shown, answered or not.
   if(G.quotaApplies(mode) && !served.has(current)){
@@ -1995,7 +2066,7 @@ function renderQuestion(){
   }
   $id('nextBtn').hidden = false;
   const q = QUESTIONS[activeIndices[current]];
-  $id('progressText').textContent = `Question ${current+1} of ${totalLen}`;
+  $id('progressText').textContent = mode === 'cat' ? `Question ${current+1} (${CAT.MIN} to ${CAT.MAX})` : `Question ${current+1} of ${totalLen}`;
   $id('progressFill').style.width = ((current+1)/totalLen*100) + '%';
   $id('qDomain').innerHTML = `${q.domain}<span class="diff-badge ${q.diff}">${q.diff}</span>`;
   $id('qPrompt').textContent = q.q;
@@ -2051,38 +2122,24 @@ function renderQuestion(){
       });
       optsEl.appendChild(div);
     });
-  } else if(q.type === 'order'){
-    const hint = document.createElement('div');
-    hint.className = 'tei-hint';
-    hint.textContent = 'Arrange these in the correct order.';
-    optsEl.appendChild(hint);
-    if(!Array.isArray(answers[current])){
+  } else if(q.type === 'order' || TEI.isTei(q)){
+    // Drag-and-drop and table items carry their own one-line instructions.
+    if(q.type === 'order'){
+      const hint = document.createElement('div');
+      hint.className = 'tei-hint';
+      hint.textContent = 'Arrange these in the correct order: drag them, or use the arrows.';
+      optsEl.appendChild(hint);
+    }
+    if(q.type === 'order' && !Array.isArray(answers[current])){
       answers[current] = q.options.map((_, i) => i);
     }
-    const order = answers[current];
-    const list = document.createElement('div');
-    list.className = 'order-list';
-    order.forEach((optIdx, pos) => {
-      const div = document.createElement('div');
-      div.className = 'order-item';
-      div.innerHTML = `<span class="pos">${pos+1}</span><span class="order-text">${q.options[optIdx]}</span>
-        <span class="order-btns">
-          <button type="button" data-dir="up" aria-label="Move up" ${pos===0?'disabled':''}>&#9650;</button>
-          <button type="button" data-dir="down" aria-label="Move down" ${pos===order.length-1?'disabled':''}>&#9660;</button>
-        </span>`;
-      div.querySelector('[data-dir="up"]').addEventListener('click', () => {
-        [order[pos-1], order[pos]] = [order[pos], order[pos-1]];
-        renderQuestion();
-        renderJumpRow();
-      });
-      div.querySelector('[data-dir="down"]').addEventListener('click', () => {
-        [order[pos+1], order[pos]] = [order[pos], order[pos+1]];
-        renderQuestion();
-        renderJumpRow();
-      });
-      list.appendChild(div);
+    const host = document.createElement('div');
+    optsEl.appendChild(host);
+    TEI.render(host, q, answers[current], next => {
+      answers[current] = next;
+      renderQuestion();
+      renderJumpRow();
     });
-    optsEl.appendChild(list);
   } else {
     /* A radio group: picking an option only records it (Next moves on), so
        the arrow keys can select as they move, the way radio buttons do. Tab
@@ -2139,7 +2196,7 @@ function renderQuestion(){
   // In exam-realistic mode the two controls the real exam does not have are
   // removed rather than disabled: a greyed-out Previous still invites the habit
   // of planning to come back. The jump row goes for the same reason.
-  const realistic = realisticMode && mode === 'full';
+  const realistic = examRealistic();
   const prevBtn = $id('prevBtn');
   prevBtn.hidden = realistic;
   prevBtn.disabled = current === 0;
@@ -2153,18 +2210,22 @@ function renderQuestion(){
   saveExamState();
 }
 
-// Every untimed mode. The timed exam is the only one that withholds.
-function practiceChecks(){ return mode !== 'full'; }
+// Every untimed mode. The two exams are the ones that withhold.
+function practiceChecks(){ return mode !== 'full' && mode !== 'cat'; }
+// How many questions this session can run to. The adaptive exam grows one
+// question at a time and stops itself, so its ceiling is the exam's maximum.
+function sessionLength(){
+  return mode === 'adaptive' ? adaptiveState.length : mode === 'cat' ? CAT.MAX : activeIndices.length;
+}
+// The adaptive exam is always exam-realistic: no Previous, no Flag, no jumping.
+function examRealistic(){ return mode === 'cat' || (realisticMode && mode === 'full'); }
 
 function showCheckedState(q, optsEl){
   const ans = answers[current];
   const right = isAnswerCorrect(q, ans);
-  if(q.type === 'order'){
+  if(q.type === 'order' || TEI.isTei(q)){
     optsEl.querySelectorAll('.order-btns button').forEach(b => { b.disabled = true; });
-    optsEl.querySelectorAll('.order-item').forEach((el, pos) => {
-      const ok = Array.isArray(ans) && ans[pos] === q.correct[pos];
-      el.classList.add(ok ? 'correct' : 'incorrect');
-    });
+    TEI.markChecked(optsEl, q, ans);
   } else {
     optsEl.querySelectorAll('[data-opt]').forEach(el => {
       const i = +el.getAttribute('data-opt');
@@ -2182,8 +2243,11 @@ function showCheckedState(q, optsEl){
   const fb = $id('qFeedback');
   fb.hidden = false;
   fb.className = 'q-feedback cx-fb ' + (right ? 'is-right' : 'is-wrong');
+  // A drag-and-drop or table item is marked row by row above, so the key is
+  // not repeated here; the count says how close it was.
   fb.innerHTML = `<p class="q-feedback-head cx-fb-head">${right ? 'Correct.' : 'Not quite.'}</p>` +
-    (right ? '' : `<p class="q-feedback-key">Answer: ${formatCorrectAnswerText(q, LETTERS)}</p>`) +
+    (right ? '' : TEI.isTei(q) ? `<p class="q-feedback-key">${TEI.rightCount(q, ans)} of ${q.options.length} rows right. The item counts only when every row is.</p>`
+      : `<p class="q-feedback-key">Answer: ${formatCorrectAnswerText(q, LETTERS)}</p>`) +
     `<div class="q-feedback-explain cx-explain">${q.explain || ''}</div>`;
   // The explanation may still be on its way on a slow connection.
   if(!q.explain){
@@ -2220,14 +2284,14 @@ function renderJumpRow(){
 }
 
 $id('flagBtn').addEventListener('click', () => {
-  if(realisticMode && mode === 'full') return;
+  if(examRealistic()) return;
   toggleFlag(activeIndices[current]);
   renderQuestion();
   renderJumpRow();
 });
 
 $id('prevBtn').addEventListener('click', () => {
-  if(realisticMode && mode === 'full') return;
+  if(examRealistic()) return;
   if(current > 0){ current--; renderQuestion(); renderJumpRow(); focusQuestion(); }
 });
 // The question heading takes focus on start and on every move between
@@ -2238,7 +2302,7 @@ function focusQuestion(){
   if(h && h.textContent && typeof h.focus === 'function') h.focus({preventScroll: false});
 }
 $id('nextBtn').addEventListener('click', () => {
-  const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+  const totalLen = sessionLength();
   const qNow = QUESTIONS[activeIndices[current]];
   if(qNow && practiceChecks() && !checked[current] && isAnswered(qNow, answers[current])){
     checked[current] = true;
@@ -2260,6 +2324,27 @@ $id('nextBtn').addEventListener('click', () => {
     return;
   }
   const atFrontier = current === activeIndices.length - 1;
+
+  // The adaptive exam needs each answer before it can choose the next
+  // question, and stops itself once it is sure (assets/cat.js).
+  if(mode === 'cat'){
+    if(!isAnswered(qNow, answers[current])){
+      if(window.LevlAnnounce) window.LevlAnnounce.say('Answer this question to go on. The adaptive exam chooses the next one from your answer.');
+      const hint = $id('qOptions').querySelector('.tei-hint') || $id('qPrompt');
+      if(hint && hint.animate) hint.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'none'}], {duration:200});
+      return;
+    }
+    const d = CAT.decide(catResponses(), false);
+    if(d.stop){ showResults(); return; }
+    const next = pickCatQuestion(d.theta);
+    if(next === null){ showResults(); return; }
+    activeIndices.push(next);
+    current++;
+    renderQuestion();
+    renderJumpRow();
+    focusQuestion();
+    return;
+  }
 
   if(mode === 'adaptive' && atFrontier){
     const qIdx = activeIndices[current];
@@ -2430,7 +2515,7 @@ function showResults(){
      one of those moments, so it does not ask after a five-question drill. */
   if(window.StudyHubAccount && activeIndices.length >= 20){
     setTimeout(function(){
-      window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + score + '/' + activeIndices.length,
+      window.StudyHubAccount.promptToSave(mode === 'cat' ? 'Adaptive exam finished' : 'Exam finished \u2014 ' + score + '/' + activeIndices.length,
         { kind: 'exam', score: score, total: activeIndices.length, missed: missedSet.size });
     }, 2600);
   }
@@ -2452,7 +2537,7 @@ function showResults(){
     if(window.LevlAnalytics.examEnd) window.LevlAnalytics.examEnd();
     // A full exam is scored here, all at once, so its answers are tallied here
     // too, with the average time per question.
-    if(mode === 'full' && window.LevlAnalytics.answer){
+    if((mode === 'full' || mode === 'cat') && window.LevlAnalytics.answer){
       const avg = activeIndices.length ? (Date.now() - startTime) / 1000 / activeIndices.length : 0;
       activeIndices.forEach((qIdx, i) => {
         const q = QUESTIONS[qIdx];
@@ -2472,7 +2557,7 @@ function showResults(){
   // check() reads the exam history asynchronously, after it is saved below.
   if(window.LevlLazy){
     window.LevlLazy('share', S => S.result($id('scoreSub'), { course: 'nremt', right: score, total: activeIndices.length,
-      label: mode === 'full' ? 'a full-length NREMT-EMT practice exam' : 'an NREMT-EMT practice set' }));
+      label: mode === 'full' ? 'a full-length NREMT-EMT practice exam' : mode === 'cat' ? 'an adaptive NREMT-EMT practice exam' : 'an NREMT-EMT practice set' }));
     if(mode === 'full') window.LevlLazy('milestones', M => M.check('nremt'));
   }
 
@@ -2501,6 +2586,8 @@ function showResults(){
       .join('');
     return `<div class="row"><span>${d}</span><span>${s.correct}/${s.total}</span></div>${topicRows}`;
   }).join('');
+  resultsScreen.setAttribute('data-mode', mode);
+  if(mode === 'cat') renderCatResults(score, elapsed);
 
   // A next step, so the end of a session is not a dead end: the misses from
   // this session first, while the explanations are fresh.
@@ -2540,7 +2627,14 @@ function showResults(){
     if(window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', activeIndices.length);
   }
 
-  if(mode === 'full' || mode === 'domain' || mode === 'adaptive' || mode === 'spaced'){
+  if(mode === 'cat'){
+    saveCatHistory(score, elapsed);
+    // A finished adaptive exam counts toward Pass-or-extend (owner, 2026-10-27).
+    // Only one that ran its course: stopped by the model, at the maximum or at
+    // the clock, never one ended early by hand (at least the 70-question minimum).
+    if(lastCat && lastCat.d.n >= CAT.MIN && window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', lastCat.d.n);
+    $id('readinessUpdate').innerHTML = '';
+  } else if(mode === 'full' || mode === 'domain' || mode === 'adaptive' || mode === 'spaced'){
     renderReadiness('readinessUpdate', {compact: true});
   } else {
     $id('readinessUpdate').innerHTML = '';
@@ -2574,10 +2668,11 @@ async function renderReview(filter){
           <button type="button" class="r-flag-btn${flagged.has(qIdx) ? ' active' : ''}" data-qidx="${qIdx}">${flagIcon}${flagged.has(qIdx) ? 'Flagged' : 'Flag'}</button>
         </div>
         <div class="r-q">${q.q}</div>
+        ${(TEI.isTei(q) || q.type === 'order') ? reviewRows(q, userAns, isCorrect) : `
         <div class="r-answer ${isCorrect ? 'correct' : 'incorrect'}">
           Your answer: ${formatUserAnswerText(q, userAns, letters) ?? 'Not answered'} ${isCorrect ? '✓' : '✗'}
         </div>
-        ${!isCorrect ? `<div class="r-answer correct">Correct answer: ${formatCorrectAnswerText(q, letters)}</div>` : ''}
+        ${!isCorrect ? `<div class="r-answer correct">Correct answer: ${formatCorrectAnswerText(q, letters)}</div>` : ''}`}
         <div class="r-explain">${q.explain || ''}</div>
         <div class="r-report">${window.LevlReport ? window.LevlReport.button('nremt', QID.idOf(qIdx)) : ''}</div>
       </div>
@@ -2594,6 +2689,85 @@ async function renderReview(filter){
   });
 }
 let currentReviewFilter = 'all';
+
+/* ---- Adaptive exam results ----
+   The decision in words, a picture of the estimate against the line, and
+   each domain Above, Near or Below it, as the Registry reports a failed
+   attempt, with the notes and a drill for whatever is not Above. */
+const CAT_HISTORY_KEY = 'nremt_cat_history';
+const CAT_NOTES = {
+  'Scene Size-Up & Safety': ['notes/scene-size-up.html', 'Scene size-up'],
+  'Primary Assessment': ['notes/primary-assessment.html', 'Primary assessment'],
+  'Secondary Assessment': ['notes/secondary-assessment.html', 'Secondary assessment'],
+  'Patient Treatment & Transport': ['study-notes.html', 'the chapters by condition'],
+  'Operations': ['notes/ems-operations.html', 'EMS operations'],
+};
+let lastCat = null;
+function catVerdict(d, timeUp){
+  const pct = Math.round(d.pAbove * 100);
+  const like = pct >= 97 ? 'very likely' : pct >= 80 ? 'likely' : pct >= 60 ? 'leaning toward' : pct > 40 ? 'right at' : pct > 20 ? 'leaning below' : 'unlikely to clear';
+  if(d.reason === 'above') return { tier: 'good', head: 'Likely pass', text: `The exam stopped at ${d.n} questions, once it was 95% sure your level is above LevlPrep's passing line.` };
+  if(d.reason === 'below') return { tier: 'low', head: 'Not yet at the line', text: `The exam stopped at ${d.n} questions, once it was 95% sure your level is below LevlPrep's passing line. The domains below say where to look first.` };
+  if(d.reason === 'max') return { tier: d.pass ? 'mid' : 'low', head: (d.pass ? 'Pass' : 'Fail') + (pct > 25 && pct < 75 ? ', close to the line' : ' on the estimate'), text: `It ran to all ${CAT.MAX} questions without being 95% sure either way, so it decided on its best estimate, which is ${like} the line (about ${pct}% likely above it).${pct > 25 && pct < 75 ? ' A result this close can go either way on the day.' : ''}` };
+  if(timeUp) return { tier: d.pass ? 'mid' : 'low', head: d.pass ? 'Pass on time' : 'Out of time', text: d.n < CAT.MIN
+    ? `The clock ran out after ${d.n} questions, short of the minimum of ${CAT.MIN}, which LevlPrep scores as not passing.`
+    : `The clock ran out at ${d.n} questions, so it decided on its best estimate, which is ${like} the line (about ${pct}% likely above it).` };
+  return { tier: 'mid', head: 'Ended early', text: `You ended it after ${d.n} question${d.n === 1 ? '' : 's'}, before it could decide. On what you answered, your level is ${like} the line (about ${pct}% likely above it).` };
+}
+function catScale(d){
+  // -3 to +3 on the ability scale, the line at the middle.
+  const x = v => Math.max(0, Math.min(100, (v + 3) / 6 * 100));
+  return `<div class="cat-scale" role="img" aria-label="Your estimated level ${d.theta >= 0 ? 'above' : 'below'} the passing line, with its 95% range ${d.lo > 0 ? 'wholly above it' : d.hi < 0 ? 'wholly below it' : 'crossing it'}.">
+    <span class="cat-band" style="left:${x(d.lo)}%;width:${Math.max(1, x(d.hi) - x(d.lo))}%"></span>
+    <span class="cat-line" style="left:50%"><i>Passing line</i></span>
+    <span class="cat-dot" style="left:${x(d.theta)}%"></span>
+  </div><div class="cat-scale-key"><span>Lower</span><span>Your level and its 95% range</span><span>Higher</span></div>`;
+}
+function renderCatResults(score, elapsed){
+  const resp = catResponses();
+  const timeUp = Date.now() - startTime >= TIME_LIMIT_MS;
+  const d = CAT.decide(resp, timeUp);
+  const v = catVerdict(d, timeUp);
+  const doms = Object.keys(DOMAIN_TARGETS).map(name => {
+    const mine = resp.filter(r => r.domain === name);
+    return { name, ...CAT.domainBand(mine, d.theta), right: mine.filter(r => r.right).length };
+  });
+  lastCat = { d, v, doms };
+  $id('scoreBig').textContent = v.head;
+  $id('scoreSub').textContent = `${d.n} questions answered, ${score} right, in ${formatDuration(elapsed)}.`;
+  const word = { above: 'Above passing', near: 'Near passing', below: 'Below passing', none: 'Not tested' };
+  const rows = doms.map(x => {
+    const link = CAT_NOTES[x.name];
+    const study = x.band === 'above' || x.band === 'none' ? '' :
+      `<span class="cat-study">Study next: <a href="${link[0]}">notes: ${link[1]}</a> &middot; <a href="practice.html?domain=${encodeURIComponent(x.name)}">drill this domain</a></span>`;
+    return `<div class="row cat-dom"><span class="cat-dom-name">${x.name}<small>${x.n ? `${x.right} of ${x.n} right` : 'no questions this time'}</small></span><span class="cat-tag is-${x.band}">${word[x.band]}</span>${study}</div>`;
+  }).join('');
+  $id('domainBreakdown').innerHTML = `
+    <div class="cat-verdict tier-${v.tier}"><p class="cat-v-head">${v.head}</p><p>${v.text}</p>${catScale(d)}</div>
+    ${rows}
+    <p class="cat-note">LevlPrep&rsquo;s simulation of an adaptive exam, not the National Registry&rsquo;s algorithm. The passing line is our estimate from the bank&rsquo;s difficulty tags, and a domain is Near when the estimate for it is within one standard error of the line. <a href="exams.html#catHow">How it works</a>.</p>`;
+}
+function saveCatHistory(score, elapsed){
+  if(!lastCat) return;
+  try{
+    const list = JSON.parse(localStorage.getItem(CAT_HISTORY_KEY) || '[]');
+    list.push({ date: Date.now(), n: lastCat.d.n, right: score, timeMs: elapsed, pass: lastCat.d.pass, reason: lastCat.d.reason,
+      theta: Math.round(lastCat.d.theta * 100) / 100, se: Math.round(lastCat.d.se * 100) / 100,
+      domains: Object.fromEntries(lastCat.doms.map(x => [x.name, x.band])) });
+    while(list.length > 20) list.shift();
+    localStorage.setItem(CAT_HISTORY_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+// Build-list, drag-and-drop and table items in the results list: a verdict,
+// then every row marked, with where it belongs.
+function reviewRows(q, userAns, isCorrect){
+  const tried = q.type === 'order' ? Array.isArray(userAns) : Array.isArray(userAns) && userAns.some(v => v !== null && v !== undefined);
+  const verdict = isCorrect ? 'All in place ✓'
+    : !tried ? 'Not answered ✗'
+    : q.type === 'order' ? 'Not in the right order ✗'
+    : `${TEI.rightCount(q, userAns)} of ${q.options.length} right ✗`;
+  return `<div class="r-answer ${isCorrect ? 'correct' : 'incorrect'}">${verdict}</div>${TEI.reviewHtml(q, userAns)}`;
+}
 
 document.querySelectorAll('.filter-row button').forEach(btn => {
   btn.addEventListener('click', () => {

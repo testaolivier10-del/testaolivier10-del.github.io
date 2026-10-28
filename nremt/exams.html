@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NREMT-EMT Practice Exam — Timed, 100 Questions | LevlPrep</title>
-<meta name="description" content="A timed NREMT-EMT practice exam, one free: 100 questions in the 2025 exam's five-domain proportions, a two-hour clock, scored by domain, resumable.">
+<meta name="description" content="NREMT-EMT practice exams, one of each free: a timed 100 in the 2025 five-domain proportions, and an adaptive exam scored above, near or below passing by domain.">
 <link rel="canonical" href="https://levlprep.com/nremt/exams.html">
 <meta property="og:site_name" content="LevlPrep">
 <meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
@@ -19,7 +19,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="NREMT-EMT Practice Exam — Timed, 100 Questions | LevlPrep">
-<meta property="og:description" content="A timed NREMT-EMT practice exam, one free: 100 questions in the 2025 exam's five-domain proportions, a two-hour clock, scored by domain, resumable.">
+<meta property="og:description" content="NREMT-EMT practice exams, one of each free: a timed 100 in the 2025 five-domain proportions, and an adaptive exam scored above, near or below passing by domain.">
 <meta property="og:url" content="https://levlprep.com/nremt/exams.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -30,6 +30,8 @@
      before they arrive; they still run first, in this order, and the
      page's own inline script waits for DOMContentLoaded. -->
 <script src="assets/question-ids.js" defer></script>
+<script src="assets/tei-items.js" defer></script>
+<script src="assets/cat.js" defer></script>
 <script src="../assets/report-question.js" defer></script>
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
@@ -52,7 +54,7 @@
       "@id": "https://levlprep.com/nremt/exams.html#resource",
       "name": "NREMT-EMT timed practice exam",
       "url": "https://levlprep.com/nremt/exams.html",
-      "description": "A timed NREMT-EMT practice exam, one free: 100 questions drawn in the proportions of the 2025 exam's five domains, a two-hour clock and a score by domain.",
+      "description": "NREMT-EMT practice exams, one of each free: a timed 100-question exam in the proportions of the 2025 exam's five domains, and an adaptive exam that reports each domain above, near or below passing.",
       "learningResourceType": "Practice test",
       "educationalLevel": "Professional certification",
       "inLanguage": "en",
@@ -132,9 +134,10 @@
             <legend><span class="cx-step-n" aria-hidden="true">1</span>Choose an exam</legend>
             <div class="cx-choices">
               <label class="cx-choice"><input type="radio" name="nrExam" value="full" checked><span><b>Timed exam <span data-premium-badge></span></b><span>100 questions in the 2025 domain proportions, scored by domain.</span></span></label>
+              <label class="cx-choice"><input type="radio" name="nrExam" value="cat"><span><b>Adaptive exam <span data-premium-badge></span></b><span>70 to 120 questions that get harder or easier with your answers, and stop once it is sure. Above, near or below passing by domain.</span></span></label>
             </div>
           </fieldset>
-          <div class="cx-step">
+          <div class="cx-step" data-exam-step="full">
             <h2 class="cx-step-h"><span class="cx-step-n" aria-hidden="true">2</span>Settings</h2>
             <div class="cx-fields">
               <label class="cx-field"><span>Difficulty</span>
@@ -154,10 +157,20 @@
               <input type="checkbox" id="realisticMode">
               <span><strong>Exam-realistic</strong>: no flagging, no going back, like the real thing</span>
             </label>
-            <p class="cx-avail">The real NREMT is adaptive: 70 to 120 questions, no going back. This one is a fixed 100 drawn from a pool of <span id="poolCount">2,033</span>, so it trains pacing and stamina rather than the algorithm. <a href="exam-day.html">Read about exam day</a>.</p>
+            <p class="cx-avail">The real NREMT is adaptive: 70 to 120 questions, no going back. This one is a fixed 100 drawn from a pool of <span id="poolCount">2,093</span>, so it trains pacing and stamina. For the adaptive format, choose the Adaptive exam. <a href="exam-day.html">Read about exam day</a>.</p>
+          </div>
+          <div class="cx-step" data-exam-step="cat" hidden>
+            <h2 class="cx-step-h"><span class="cx-step-n" aria-hidden="true">2</span>How it runs</h2>
+            <ul class="cat-rules">
+              <li>Each answer moves the next question harder or easier. It never shows right or wrong until the end.</li>
+              <li>Every question needs an answer, and there is no going back, as on the real exam.</li>
+              <li>It stops once it is 95% sure you are above or below the passing line, after at least 70 questions, or at 120, or at two hours.</li>
+            </ul>
+            <p class="cx-avail">One adaptive exam is free, on top of the one free timed exam. <b>A simulation.</b> This is LevlPrep&rsquo;s model of an adaptive exam, not the National Registry&rsquo;s algorithm, and the passing line is our estimate. <a href="#catHow">How it works</a>.</p>
           </div>
           <div class="cx-start">
-            <p class="cx-sum"><span>100 questions, 2:00:00 (about 72 s a question).</span><small>No feedback until you submit. Then every question is reviewed with its explanation, and misses go to your review queue.</small></p>
+            <p class="cx-sum" data-exam-step="full"><span>100 questions, 2:00:00 (about 72 s a question).</span><small>No feedback until you submit. Then every question is reviewed with its explanation, and misses go to your review queue.</small></p>
+            <p class="cx-sum" data-exam-step="cat" hidden><span>70 to 120 questions, 2:00:00 at most.</span><small>No feedback until it ends. Then a likely pass or fail, each domain above, near or below the line, and every question with its explanation.</small></p>
             <button type="button" class="btn-press" id="startBtn">Start timed exam</button>
           </div>
         </form>
@@ -188,6 +201,25 @@
 </section>
 <!-- r3-exams-built:end -->
 
+    <section class="r3-cat-how" id="catHow" aria-labelledby="catHowH">
+      <p class="kicker">The adaptive exam <i></i></p>
+      <h2 class="r3-h2" id="catHowH">How the <span>adaptive exam</span> works</h2>
+      <p class="sub">The National Registry&rsquo;s EMT exam is computer-adaptive. LevlPrep&rsquo;s Adaptive exam copies the idea with a simple model you can check. It is our simulation, not the Registry&rsquo;s algorithm, which is not public.</p>
+      <details class="cat-how">
+        <summary>The exam it imitates</summary>
+        <p>The Registry&rsquo;s EMT exam has 70 to 120 items, plus 10 unscored pilot items, and a two-hour limit. It starts a little below the passing standard, gets harder after a right answer and easier after a wrong one, and stops once it is 95% confident you are above or below the standard, or at the time limit. Items come from five domains: Scene Size-Up and Safety 15 to 19%, Primary Assessment 39 to 43%, Secondary Assessment 5 to 9%, Patient Treatment and Transport 20 to 24%, and Operations 10 to 14%. Figures checked October 2026 on nremt.org; confirm them before you book.</p>
+      </details>
+      <details class="cat-how">
+        <summary>LevlPrep&rsquo;s model</summary>
+        <p>Every question in the bank carries a difficulty tag. The model gives each tag a difficulty (easy, medium, hard and expert, one step apart) and estimates your level after every answer from all your answers so far. The next question is the one nearest that estimate, from whichever domain is furthest behind its share of the outline. It stops once your level&rsquo;s 95% range lies wholly above or below the passing line, after at least 70 questions; at 120 or at the clock it decides on the best estimate.</p>
+        <p>The passing line is our estimate: someone right at it gets most medium questions and about half of the hard ones right. The Registry sets its own standard by a separate study, so read a result here as practice, not a prediction.</p>
+      </details>
+      <details class="cat-how">
+        <summary>Reading your results</summary>
+        <p>A domain is Above passing when its estimate sits more than one standard error above the line, Below when more than one below, and Near otherwise. A failed Registry attempt is reported the same three ways. Anything not Above comes with its notes and a drill.</p>
+      </details>
+    </section>
+
     <section class="r3-record" aria-labelledby="r3RecordH">
       <p class="kicker" id="r3RecordH">Your exam record <i></i></p>
         <div class="intro-row r3-record-row">
@@ -208,7 +240,7 @@
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
-      <p>Original, unofficial practice questions, each tagged to one of the five domains of the National Registry&rsquo;s EMT exam outline (April 2025); not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. It includes select-N and build-list items, but not the exam&rsquo;s drag-and-drop or options-table items. Scores and history stay in your browser.</p>
+      <p>Original, unofficial practice questions, each tagged to one of the five domains of the National Registry&rsquo;s EMT exam outline (April 2025); not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. It includes the exam&rsquo;s item types: select-N, build-list, drag-and-drop and options-table items. The Adaptive exam is LevlPrep&rsquo;s simulation of the adaptive format, not the Registry&rsquo;s algorithm. Scores and history stay in your browser.</p>
     </details>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
@@ -219,6 +251,7 @@
 <script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
 <script src="assets/r3-exam.js" defer></script>
+<script>(function(){var f=document.getElementById('setup');if(!f)return;function sync(){var r=f.querySelector('input[name="nrExam"]:checked'),v=r?r.value:'full';[].forEach.call(document.querySelectorAll('[data-exam-step]'),function(el){el.hidden=el.getAttribute('data-exam-step')!==v;});var t=v==='cat'?'Start adaptive exam':'Start timed exam';[].forEach.call(document.querySelectorAll('#startBtn,[data-r3-start]'),function(x){x.textContent=t;});}f.addEventListener('change',sync);if(location.hash==='#adaptive'){var c=f.querySelector('input[value="cat"]');if(c)c.checked=true;}sync();})();</script>
 <script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-r3-start]');if(!a)return;var b=document.querySelector('#r3Body #startBtn,#r3Body .cx-start button,#r3Body [data-start]');if(b&&!b.disabled){e.preventDefault();b.click();}});</script>
 </body>
 </html>

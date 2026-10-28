@@ -189,7 +189,7 @@
          'The kinetic energy does change (you just computed it). Something did work.',
          'The stool turns freely: no external torque acts, which is exactly why L is conserved.'], '3.C')
     ];
-    return { type: 'stool', text: text, steps: steps, values: o, fig: { kind: 'stool', d0: d0, d1: d1 },
+    return { type: 'stool', text: text, steps: steps, values: o, fig: { kind: 'stool', d0: d0, d1: d1, I0: I0, m: m, w0: w0 },
       solution: [
         'I = I₀ + 2 m d². Arms out: ' + f(I0, 2) + ' + 2 × ' + f(m, 2) + ' × ' + f(d0, 2) + '² = ' + f(Ii, 3) + ' kg·m². Arms in: ' + f(If, 3) + ' kg·m².',
         'No external torque about the axis, so L = I ω is conserved: ω_f = ' + f(Ii, 3) + ' × ' + f(w0, 2) + ' / ' + f(If, 3) + ' = ' + f(wf, 3) + ' rad/s.',

@@ -425,16 +425,17 @@
 <script type="importmap">
 {
   "imports": {
-    "three": "./assets/vendor/three/build/three.module.min.js"
+    "three": "../assets/body3d/vendor/three/build/three.module.min.js"
   }
 }
 </script>
 <script src="assets/tool-results.js" defer></script>
-<script src="assets/body-viewer.js" defer></script>
+<script src="assets/body-content.js" defer></script>
+<script src="../assets/body3d/viewer.js" defer></script>
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/burns.js" defer></script>
 <script>
-/* The model, picking, layers and the hunt live in assets/body-viewer.js
+/* The model, picking, layers and the hunt live in ../assets/body3d/viewer.js
    (LevlBodyViewer); this page wires its own controls to it.
    body-map.html?focus=<name> selects and frames a structure on arrival, where
    <name> is its Browse-by-name label, case-insensitive (?focus=heart). */
@@ -459,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   const params = new URLSearchParams(location.search);
   /* Modes. Burns mounts on first use; the 3D viewer loads only when the
-     anatomy grid is on screen (body-viewer.js autoload: 'visible'). */
+     anatomy grid is on screen (viewer.js autoload: 'visible'). */
   const burnsRoot = document.getElementById('burnsRoot');
   const anatomyGrid = document.getElementById('anatomyGrid');
   let burns = null;
@@ -599,27 +600,126 @@ document.addEventListener('DOMContentLoaded', function(){
     toggle.textContent = on ? 'Stop the quiz' : 'Quiz me';
     toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
-  toggle.addEventListener('click', () => {
-    if (viewer.hunt.active()) { viewer.hunt.stop(); return; }
-    viewer.hunt.start({
-      panel,
-      live: document.getElementById('huntLive'),
-      first: params.get('hunt'),
-      /* A miss goes to Review with a link straight back to a hunt for the
-         same structure; finding it later takes it off the list. */
-      onAnswer(r){
-        if (studio) studio.pills([{ html: r.correct ? 'Found it: ' + r.name : 'That is the ' + (r.pickedName || 'wrong part'), tone: r.correct ? 'good' : 'bad' }], 'left', 'anatomy');
-        if (window.NremtToolResults) window.NremtToolResults.record({
-          tool: 'body-map', id: r.key, correct: r.correct,
-          label: 'Find the ' + r.name + ' on the model',
-          href: 'body-map.html?hunt=' + encodeURIComponent(r.name.toLowerCase()),
-        });
-      },
-      onStop(){ setToggle(false); if (studio) { studio.pills([], 'left', 'anatomy'); studio.caption('Tap any part of the body to learn what it does. Drag to turn it.', 'anatomy'); } },
-    });
-    setToggle(true);
-    if (studio) studio.caption('<b>Find it on the model</b> and tap it. Not sure? Show me highlights it.', 'anatomy');
+  /* The round (audit 2026-10): ten structures, one at a time, with a tally
+     that is the student's first try at each. A wrong tap names what was hit,
+     says where the target is, and offers one more try before moving on;
+     Show me counts as shown, not as a miss. At the end: the score, the misses
+     with a button to find each again, and "Drill my misses". The page drives
+     the questions (hunt.start with `first`, one per question) so the round
+     and the misses drill are its own; the shared viewer is unchanged. */
+  const ROUND = 10;
+  const round = document.createElement('div'); round.className = 'bm-round'; round.hidden = true;
+  round.innerHTML = '<div class="bm-round-bar"><span class="bm-round-n" aria-live="polite"></span><span class="bm-round-dots" aria-hidden="true"></span></div>' +
+    '<p class="bm-nudge" role="status"></p><div class="bm-round-sum"></div>';
+  if (studio) studio.add('dock', round, { mode: 'anatomy' });
+  panel.parentNode.insertBefore(round, panel);
+  const R = { queue: [], results: [], cur: null, retrying: false, missedOnly: false };
+  const nameOf = k => { const c = viewer.info(k); return c ? c.name : k; };
+  function pool(){ return viewer.structures().filter(s => s.key !== 'skin' && s.name).map(s => s.key); }
+  function shuffled(a){ a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  function paintRound(){
+    const n = R.results.length, tot = R.results.length + R.queue.length + (R.cur && !R.cur.done ? 1 : 0);
+    const right = R.results.filter(x => x.res === 'ok').length;
+    round.querySelector('.bm-round-n').textContent = (R.missedOnly ? 'Misses ' : 'Question ') + Math.min(n + 1, tot) + ' of ' + tot + ' · ' + right + ' right';
+    let dots = '';
+    for (let i = 0; i < tot; i++) dots += '<i class="' + (i < n ? R.results[i].res : i === n ? 'on' : '') + '"></i>';
+    round.querySelector('.bm-round-dots').innerHTML = dots;
+  }
+  function nudge(html){ round.querySelector('.bm-nudge').innerHTML = html || ''; }
+  const huntOpts = first => ({
+    panel, live: document.getElementById('huntLive'), first,
+    /* A miss goes to Review with a link straight back to a hunt for the
+       same structure; finding it later takes it off the list. A second try
+       at the same question is practice and is not recorded. */
+    onAnswer(r){
+      if (studio) studio.pills([{ html: r.correct ? 'Found it: ' + r.name : 'That is the ' + (r.pickedName || 'wrong part'), tone: r.correct ? 'good' : 'bad' }], 'left', 'anatomy');
+      const again = R.retrying; R.retrying = false;
+      if (!again && window.NremtToolResults) window.NremtToolResults.record({
+        tool: 'body-map', id: r.key, correct: r.correct,
+        label: 'Find the ' + r.name + ' on the model',
+        href: 'body-map.html?hunt=' + encodeURIComponent(r.name.toLowerCase()),
+      });
+      if (!R.cur) return;
+      if (!again) R.cur.res = r.correct ? 'ok' : 'no';
+      if (r.correct) {
+        nudge(again ? '<b>Found it on the second try.</b> It still counts as a miss for this round, so it comes back in Drill my misses.' : '');
+        if (studio) studio.caption('<b>Yes, the ' + r.name + '.</b> Next when you are ready.', 'anatomy');
+      } else {
+        const c = viewer.info(r.key), where = c && c.location ? c.location.replace(/\s*$/, '').replace(/([^.])$/, '$1.') : '';
+        const sys = c && window.LevlBodyViewer.SYSTEM_LABELS ? window.LevlBodyViewer.SYSTEM_LABELS[c.system] : '';
+        nudge('<b>You tapped the ' + (r.pickedName || 'wrong part') + '.</b> ' + (where ? '<b>Where to look:</b> ' + where + ' ' : '') +
+          (sys ? '(' + sys + ' layer.) ' : '') + '<br><button type="button" class="bm-retry">Try again</button>');
+        if (studio) studio.caption('<b>Not the ' + (r.pickedName || 'right part') + '.</b> Turn the model and try once more, or Show me.', 'anatomy');
+      }
+      paintRound();
+    },
+    onStop(){
+      setToggle(false); R.cur = null; round.hidden = true; nudge(''); panel.classList.remove('bm-done');
+      if (studio) { studio.pills([], 'left', 'anatomy'); studio.caption('Tap any part of the body to learn what it does. Drag to turn it.', 'anatomy'); }
+    },
   });
+  function ask(key){
+    R.cur = { key, res: null, done: false };
+    R.retrying = false;
+    nudge('');
+    viewer.hunt.start(huntOpts(key));
+    paintRound();
+    if (studio) studio.caption('<b>Find it on the model</b> and tap it. Not sure? Show me highlights it.', 'anatomy');
+  }
+  function finishQuestion(){
+    if (!R.cur) return;
+    R.results.push({ key: R.cur.key, res: R.cur.res || 'shown' });
+    R.cur = null;
+    if (R.queue.length) ask(R.queue.shift());
+    else summary();
+  }
+  function summary(){
+    const right = R.results.filter(x => x.res === 'ok').length, missed = R.results.filter(x => x.res !== 'ok');
+    panel.classList.add('bm-done');
+    nudge('');
+    paintRound();
+    round.querySelector('.bm-round-n').textContent = 'Round done';
+    round.querySelector('.bm-round-sum').innerHTML = '<div class="bm-sum"><h3>' + right + ' of ' + R.results.length + ' found first try</h3>' +
+      '<p>' + (missed.length ? 'Missed or shown: find each again, or drill them as a round.' : 'Every one found first try.') + '</p>' +
+      (missed.length ? '<ul class="bm-sum-list">' + missed.map(x => '<li><span>' + nameOf(x.key) + '</span><button type="button" data-again="' + x.key + '">Find it</button></li>').join('') + '</ul>' : '') +
+      '<div class="bm-sum-acts">' + (missed.length ? '<button type="button" class="bm-drill">Drill my misses</button>' : '') + '<button type="button" class="bm-new">New round</button></div></div>';
+    if (studio) { studio.caption('<b>' + right + ' of ' + R.results.length + '.</b> ' + (missed.length ? 'The misses are listed below.' : 'A clean round.'), 'anatomy'); studio.pills([{ html: right + ' / ' + R.results.length, tone: right === R.results.length ? 'good' : 'accent' }], 'left', 'anatomy'); }
+  }
+  function startRound(keys, missedOnly){
+    R.queue = keys.slice(); R.results = []; R.missedOnly = !!missedOnly;
+    round.querySelector('.bm-round-sum').innerHTML = ''; panel.classList.remove('bm-done');
+    round.hidden = false;
+    setToggle(true);
+    ask(R.queue.shift());
+  }
+  // Next and Show me come from the viewer's own panel: Next moves the round on.
+  panel.addEventListener('click', e => {
+    const b = e.target.closest('[data-hunt]'); if (!b || !R.cur) return;
+    const act = b.getAttribute('data-hunt');
+    if (act === 'show') { if (!R.cur.res) R.cur.res = 'shown'; nudge(''); setTimeout(paintRound); }
+    if (act === 'next') { e.stopPropagation(); finishQuestion(); }
+  }, true);
+  round.addEventListener('click', e => {
+    if (e.target.closest('.bm-retry')) {
+      R.retrying = true; nudge('');
+      viewer.reset();
+      viewer.hunt.start(huntOpts(R.cur.key));
+      if (studio) studio.caption('<b>Once more:</b> find the ' + nameOf(R.cur.key) + '.', 'anatomy');
+      return;
+    }
+    const again = e.target.closest('[data-again]');
+    if (again) { startRound([again.getAttribute('data-again')], true); return; }
+    if (e.target.closest('.bm-drill')) { startRound(shuffled(R.results.filter(x => x.res !== 'ok').map(x => x.key)), true); return; }
+    if (e.target.closest('.bm-new')) startRound(shuffled(pool()).slice(0, ROUND));
+  });
+  toggle.addEventListener('click', () => {
+    if (viewer.hunt.active() || !round.hidden) { if (viewer.hunt.active()) viewer.hunt.stop(); else guideStop(); return; }
+    const first = viewer.find(params.get('hunt'));
+    const rest = shuffled(pool().filter(k => k !== first));
+    startRound((first ? [first] : []).concat(rest).slice(0, ROUND));
+  });
+  // After the summary the hunt is still running on its last question; Stop the quiz ends both.
+  function guideStop(){ R.cur = null; round.hidden = true; panel.classList.remove('bm-done'); setToggle(false); }
   // From Review: body-map.html?hunt=<name> opens the quiz on that structure.
   if (params.get('hunt')) toggle.click();
 

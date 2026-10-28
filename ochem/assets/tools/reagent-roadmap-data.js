@@ -422,7 +422,7 @@
     /* 2° and 3° halides: mostly elimination. */
     { id: 'rx2-e2', from: 'halide-2', to: 'alkene', name: 'E2',
       rx: ['NaOCH₂CH₃, CH₃CH₂OH, heat'], keys: ['NaOEt'], kind: 'across', topic: 'e2',
-      regio: 'Zaitsev: the more substituted alkene. KOC(CH₃)₃ shifts it toward the less substituted one.',
+      regio: 'Zaitsev: the more substituted alkene. KOC(CH₃)₃ shifts it toward the less substituted one, but on a 2° halide that is still a mixture, so it is no way to make the terminal alkene.',
       stereo: 'Anti-periplanar H and X; the trans alkene is favored where there is a choice.',
       gives: ['mono', '12', 'tri'],
       ex: ['CH₃CHBrCH₂CH₃', 'CH₃CH=CHCH₃ (mostly trans)'] },
@@ -959,8 +959,45 @@
   REAGENTS.forEach(function(r){ REAGENT[r.id] = r; });
   EDGES.forEach(function(e){ EDGE[e.id] = e; });
 
+  /* Reagents that DO react with a group even though the map draws no edge
+     for it (acid-base, a second EAS, a reaction the map files under another
+     group). The Reagent Roadmap puzzle and the
+     Synthesis Trainer offer a decoy as "not a step from here"; offering one of
+     these would tell a student that KOtBu does nothing to a 2° bromide or
+     that H₃O⁺ leaves an ester alone. Keys are the reagent keys in
+     reagent-roadmap-data.js. Accuracy review, 2026-10; extended for the Synthesis
+     Trainer (2026-10-27): acid-base on acids, amines, anilines and phenols, and
+     the organometallics and hydrides an acidic O–H or N–H destroys. */
+  var REACTS_OFF_MAP = {
+    'acid': ['NaOH', 'NaH', 'NaOEt', 'tBuOK', 'NaNH2', 'BH3', 'PBr3', 'amine', 'acylCl', 'LiAlHOtBu3', 'DIBAL', 'RMgX', 'R2CuLi', 'NaNH3', 'N2H4', 'phthalimide'],
+    'acid-chloride': ['NaOH', 'H3O', 'Fischer', 'NaH', 'NaOEt', 'tBuOK', 'NaN3', 'DIBAL', 'phthalimide', 'NaNH3', 'N2H4', 'H2Pd'],
+    'ester': ['H3O', 'Fischer', 'NaOEt', 'tBuOK', 'NaH', 'N2H4'],
+    'aldehyde': ['LiAlHOtBu3', 'H2Pd', 'NaOH', 'NaOEt', 'tBuOK', 'NaH', 'Fischer', 'Br2', 'BH3', 'DIBAL'],
+    'ketone': ['LiAlHOtBu3', 'NaOEt', 'tBuOK', 'NaH', 'NaNH2', 'Fischer', 'Br2', 'BH3', 'DIBAL'],
+    'alkyne': ['HX', 'HBrROOR', 'BH3', 'HgOAc2', 'Br2', 'Br2FeBr3', 'KMnO4', 'NaH', 'RMgX', 'Mg', 'LiAlH4', 'O3', 'Br2hv'],
+    'epoxide': ['NaOH', 'NaN3', 'Fischer', 'HX', 'NaH', 'NaOEt', 'amine', 'NaNH2', 'H2O', 'HBrROOR', 'H2SO4heat'],
+    'diol': ['PCC', 'DMP', 'Swern', 'Jones', 'KMnO4', 'PBr3', 'SOCl2', 'TsCl', 'acylCl', 'Fischer', 'NaH', 'HX', 'H2SO4heat'],
+    'alcohol-1': ['HX', 'H2SO4heat', 'HBrROOR'],
+    'alcohol-2': ['HX', 'TsCl', 'HBrROOR'],
+    'alcohol-3': ['HBrROOR'],
+    'nitrile': ['H2Pd', 'BH3', 'H2SO4heat'],
+    'amide': ['DIBAL'],
+    'halide-1': ['NaOEt', 'amine'],
+    'halide-2': ['NaOH', 'tBuOK', 'NaN3', 'NaH', 'NaNH2', 'amine'],
+    'halide-3': ['NaOH', 'NaH', 'NaNH2', 'H3O', 'Fischer', 'amine', 'ROH'],
+    'amine': ['NaH', 'NaOH', 'NaNO2', 'HX', 'RMgX', 'LiAlH4', 'TsCl'],
+    'alkane': ['NBS', 'KMnO4', 'Br2FeBr3', 'HNO3'],
+    'alkene': ['R2BH', 'HgSO4', 'NBS', 'Br2FeBr3', 'Fischer', 'Br2hv', 'H2SO4heat'],
+    'alkylbenzene': ['Br2FeBr3', 'HNO3', 'Br2hv', 'NaNH3'],
+    'aryl-ketone': ['Br2FeBr3', 'HNO3', 'LiAlH4', 'amine', 'H2Pd', 'BH3', 'DIBAL', 'LiAlHOtBu3'],
+    'nitroarene': ['Br2FeBr3', 'HNO3', 'ZnHg', 'LiAlH4', 'DIBAL', 'NaNH3'],
+    'aniline': ['Br2FeBr3', 'HNO3', 'CH3I', 'HX', 'HgOAc2', 'LiAlH4', 'LiAlHOtBu3', 'DIBAL', 'RMgX', 'NaH', 'Br2', 'H3O', 'ZnHg', 'HgSO4', 'TsCl', 'NBS'],
+    'diazonium': ['H2O', 'amine', 'H2SO4heat'],
+    'aryl-halide': ['Br2FeBr3', 'HNO3', 'NaNH3', 'R2CuLi'],
+    'phenol': ['NaH', 'acylCl', 'Br2FeBr3', 'HNO3', 'Br2', 'HgOAc2', 'RMgX', 'LiAlH4', 'NaNH2', 'Jones', 'CH3I']
+  };
   window.OchemRoadmap = {
-    BANDS: BANDS, PATTERNS: PATTERNS,
+    BANDS: BANDS, PATTERNS: PATTERNS, REACTS_OFF_MAP: REACTS_OFF_MAP,
     NODES: NODES, REAGENTS: REAGENTS, EDGES: EDGES,
     node: function(id){ return NODE[id] || null; },
     reagent: function(id){ return REAGENT[id] || null; },

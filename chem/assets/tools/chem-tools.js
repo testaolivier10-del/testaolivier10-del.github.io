@@ -547,7 +547,8 @@
         var body = '';
         if(s.kind === 'num' || s.kind === 'vol'){
           body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + sid + '-h"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
-          if(s.kind === 'vol') body += '<div class="cd-vol"><label for="' + sid + '-r">Move the marker along the curve</label><input type="range" id="' + sid + '-r" min="0" max="' + s.max + '" step="0.1" value="' + M.round(s.max / 4, 1) + '"></div>';
+          if(s.kind === 'vol') body += '<div class="cd-vol"><label for="' + sid + '-r">Move the marker along the curve</label><input type="range" id="' + sid + '-r" min="0" max="' + s.max + '" step="0.1" value="' + M.round(s.max / 4, 1) + '"></div>' +
+            '<p class="bt-small cd-vol-note">The slider and the box are one answer: the slider fills the box, and the number in the box is what is checked' + (s.unit ? ' (in ' + esc(s.unit) + ')' : '') + '.</p>';
         } else if(s.kind === 'choice'){
           var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
           body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
@@ -628,7 +629,17 @@
             if(!c) blank = true;
             else { var pick = +c.value; ok = pick === s.correct; notes.push(s.why[pick]); }
           }
-          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
+          if(blank && (s.kind === 'row' || s.kind === 'coef')){
+            // The boxes to fill are in the table (on the stage in the Tool
+            // Studio), not next to Check: say where, flash the row and put
+            // the cursor in its first empty box.
+            var empty = rowInputs.filter(function(x){ return x && !x.value.trim(); })[0], tr = row1('[data-row="' + s.row + '"]');
+            fb.innerHTML = '<span class="bt-small">Fill every box in the highlighted <b>' + esc(s.row) + '</b> row of the ICE table' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : ', for example 0.25 or 1.8e-5.') + '</span>';
+            if(tr){ tr.classList.remove('is-nudge'); void tr.offsetWidth; tr.classList.add('is-nudge'); }
+            if(empty){ try{ empty.scrollIntoView({ block: 'nearest' }); }catch(e){} empty.focus({ preventScroll: true }); }
+            return;
+          }
+          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
           tries++;
           if(ok){
             el.classList.add('is-right');

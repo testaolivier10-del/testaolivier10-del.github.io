@@ -104,3 +104,12 @@
 .ls-root.ls-phone .ml-legend{font-size:12px;padding-right:56px;min-height:46px;align-content:center;}
 .ls-root.ls-phone .ml-figwrap .calc-plot{font-size:13px;}
 .ls-root.ls-phone .ml-graphs-wrap{min-height:110px;}
+
+/* The car strip on a phone is drawn at 1.35x (motion-lab.js trackLayout): its
+   text in strip units comes out at about 13.5 px. The legend keeps one line:
+   short words, x v a by colour, and the turn mark (audit 2026-10). */
+.ls-root.ls-phone .ml-ticks text{font-size:10px;}
+.ls-root.ls-phone .ml-av text,.ls-root.ls-phone .ml-aa text{font-size:11px;}
+.ls-root.ls-phone .ml-legend{flex-wrap:nowrap;gap:2px 8px;white-space:nowrap;overflow:hidden;}
+.ls-root.ls-phone .ml-lg-up{font-size:0;} .ls-root.ls-phone .ml-lg-up::after{content:"faster";font-size:12px;}
+.ls-root.ls-phone .ml-lg-dn{font-size:0;} .ls-root.ls-phone .ml-lg-dn::after{content:"slower";font-size:12px;}

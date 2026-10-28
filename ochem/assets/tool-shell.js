@@ -66,7 +66,7 @@
       // the second tab and its dock button, named for what is in it
       detailsTitle: ({ 'acid-base': 'More practice', 'reaction-predictor': 'Product mix & practice', 'reagent-roadmap': 'More practice',
         'arrow-pusher': 'Bookkeeping & keys', 'conformations': 'Build your own', 'resonance': 'Charge map & practice',
-        'spectroscopy': 'Tables & practice', 'viewer-3d': 'View options' })[slug] || 'More practice',
+        'spectroscopy': 'Tables & practice', 'viewer-3d': 'View options', 'synthesis': 'Problems' })[slug] || 'More practice',
       menu: {
         copyLink: true,
         report: { course: 'ochem', id: 'tool:' + slug },

@@ -438,7 +438,19 @@
       e.preventDefault(); pause(); setU(u);
     });
 
-    function hint(){ if(LS && LS.mode() === 'explore') LS.hint({ target: hd, text: art().hint, key: 'apcalc-related-rates-drag' }); }
+    // The coach tip's target is the handle and its motion arrow (to its
+    // right), so the tip starts at the handle and runs right, clear of the
+    // ladder (or cone, shadow, ripple) that goes up and left from it.
+    var hintAt = document.createElementNS(NS, 'rect');
+    hintAt.setAttribute('class', 'rr-hint-at'); hintAt.setAttribute('aria-hidden', 'true');
+    svg.appendChild(hintAt);
+    function hint(){
+      if(!(LS && LS.mode() === 'explore')) return;
+      var c = now(), hp = art().handle(geo, { q: c.q, d: c.d, rate: st.rate, labels: {}, given: '', watch: '' });
+      hintAt.setAttribute('x', r1(hp[0] - 22)); hintAt.setAttribute('width', '96');
+      hintAt.setAttribute('y', r1(hp[1] - 22)); hintAt.setAttribute('height', '44');
+      LS.hint({ target: hintAt, text: art().hint, key: 'apcalc-related-rates-drag', round: 22 });
+    }
     function studio(pane, s){
       LS = s;
       var o = { mode: 'explore' };
@@ -483,10 +495,54 @@
       text(410, -8, '', 'rr-leg', 'end').replace('></text>', '><tspan class="rr-leg-k">Find </tspan><tspan class="is-watch">' + esc(leg[1]) + '</tspan></text>') + '</g>';
     return '<svg class="rr-scene rr-fig" viewBox="0 -48 420 338" role="img" aria-label="' + esc(p.title + ': the situation in the problem, with the known lengths labeled') + '">' + art + '</svg>';
   }
+  /* Test yourself is visual (docs/tool-audit-2026-10.md X1): a rate or a
+     length typed in a step is drawn on a number line under the scene, the
+     student's dashed against the right one, so its sign and size read at a
+     glance; the expression steps get their own note and method. */
+  var QG = { box: null, by: {}, last: {} };
+  var RMETHOD = {
+    rel: 'Find the shape in the picture (a right triangle, similar triangles, a cone, a circle) and write the formula that holds at every moment.',
+    diff: 'Differentiate both sides with respect to t: every variable that changes gets its own d/dt (chain rule).',
+    solve: 'Use the similar triangles: the ratio of matching sides is the same in both.',
+    other: 'Use the relation at this moment (here the Pythagorean theorem) to find the missing length.',
+    rate: 'Substitute this moment\'s values into the differentiated equation, then solve for the unknown rate. Keep the sign.',
+    rdot: 'The radius and the height stay in the same ratio, so dr/dt is that ratio times dh/dt.',
+    ds: 'Differentiate s in terms of x, then put in dx/dt.',
+    tip: 'The tip is at x + s from the post, so its speed is dx/dt + ds/dt.',
+    r: 'Use the area (or the given time) to find the radius at that moment.',
+    dA: 'Put r and dr/dt into dA/dt = 2πr dr/dt.',
+    sec: 'tan θ = h/d at this moment; then sec²θ = 1 + tan²θ.',
+    mean: 'Read the sign: a negative rate means the quantity is getting smaller at that moment.'
+  };
+  function gaugeDraw(){
+    if(!QG.box) return;
+    var list = [], keys = Object.keys(QG.by);
+    var k = keys[keys.length - 1];
+    if(!k){ QG.box.innerHTML = ''; QG.box.hidden = true; return; }
+    list = QG.by[k].marks;
+    QG.box.hidden = false;
+    QG.box.innerHTML = '<p class="rr-gk">' + esc(QG.by[k].name) + '</p>' + T.gauge(list, { unit: QG.by[k].unit });
+  }
   function quiz(host, data){
     T.drill(host, data, { slug: 'related-rates', noun: 'drill',
       types: RR.KINDS.map(function(k){ return { value: k, label: RR.TITLE[k] }; }), typeLabel: 'Scene',
       generate: RR.generate, title: function(p){ return p.title; }, studioAsk: true,
-      extra: function(el, p){ el.innerHTML = '<div class="rr-figwrap">' + figure(p) + '</div>'; } });
+      extra: function(el, p){
+        el.innerHTML = '<div class="rr-figwrap">' + figure(p) + '</div><div class="rr-gauge" hidden></div>';
+        QG.box = el.querySelector('.rr-gauge'); QG.by = {}; QG.last = {};
+      },
+      method: function(s){ return RMETHOD[s.key] || ''; },
+      onTry: function(s, t){
+        if(s.kind !== 'num') return false;
+        var who = t.ok || t.shown ? 'right' : 'yours', v = who === 'right' ? s.cell.answer : t.value;
+        if(!isFinite(v)) return false;
+        var name = T.plainText(String(s.label)).replace(/\s+/g, ' ').replace(/\s*\(.*$/, '').replace(/[.?]$/, '');
+        var mk = [{ v: v, who: who }];
+        if(who === 'yours') QG.last[s.key] = mk; else if(QG.last[s.key]) mk = QG.last[s.key].concat(mk);
+        delete QG.by[s.key];
+        QG.by[s.key] = { marks: mk, name: name.length > 70 ? name.slice(0, 68) + '…' : name, unit: s.unit || '' };
+        gaugeDraw();
+        return true;
+      } });
   }
 })();

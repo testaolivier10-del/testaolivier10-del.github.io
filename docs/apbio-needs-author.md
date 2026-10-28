@@ -675,3 +675,20 @@ chi-square rounded to 8.05 instead of 8.04), every fix and four notes were appli
   freedom and its chi-square (8.04) exceeds both, matching the course's stated handling.
 - **justify-teacher-review** (open). None of the prompts has been seen by a biology teacher yet
   (Beta note on the page).
+
+## Tool audit fixes (2026-10-27, branch fix-bio-tools)
+
+Accuracy review of the tool fixes (per-part checking with slip messages, water potential Explore,
+design-drill setup sketch, CI New sample, rates tangent, meiosis chiasma); every must-fix applied.
+These stay open:
+
+- **drills-unstated-controls** (open). After Check, the design drills' setup tags label every
+  option that is not the IV, DV, a sample size or a named confound "kept the same", but some setups
+  never say so: `seed-respirometer` (time before readings, amount of KOH), `quorum-signal` and
+  `antibiotic-step` (starting number of cells), `elodea-light-color` (bicarbonate, water
+  temperature), `rabbit-fur-temperature` (patch size), `vestigial-temperature` (larval food). Add a
+  clause to each setup ("each tube gets the same amount of KOH ...") or give those options a
+  `whyOptions` line.
+- **rates-tangent-estimate** (logged). The rates tool's draggable tangent shows a centered
+  difference between neighbouring data points ("rate ≈"), so near t = 0 it underestimates the
+  initial rate of a slowing reaction. Labelled "about"; confirm that is enough.

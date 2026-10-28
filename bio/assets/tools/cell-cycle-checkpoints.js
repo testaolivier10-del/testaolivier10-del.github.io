@@ -371,7 +371,7 @@
     if(/^#find/.test(location.hash)) setMode('find');
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, modeLabels: { find: 'Diagnose' }, live: '.cc-gate', why: ['.cc-tip'],
+    studio: { sim: true, modeLabels: { find: 'Diagnose' }, live: '.cc-gate', why: ['.cc-tip', '.bt-summary'], views: [{ sel: '.cc-plots', label: 'Graphs' }],
       hint: { target: '.cc-gatebtn', text: 'Tap a checkpoint on the ring' },
       pills: function(g){ return [{ k: 'Cells', html: g.ro(0), tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: 'G1 / S / G2-M ' + g.ro(1), tone: 'ghost' }]; } } });

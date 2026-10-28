@@ -313,8 +313,10 @@
         { value: 'separate', label: 'Separation of variables' }, { value: 'concavity', label: 'Concavity of a solution' }, { value: 'exp', label: 'Exponential models' }],
       generate: function(r, ctx, type){ return S.generate(r, ctx, type); },
       title: function(p){ return { slopes: 'Slopes from the equation', match: 'Which field is it?', sketch: 'Sketch the solution', separate: 'A particular solution', concavity: 'Concavity of a solution', exp: 'Exponential growth and decay' }[p.type] || 'Practice problem'; },
-      extra: function(el, p, api){ api.fig = figure(el, p, api); },
-      onStep: function(s, right, api){ if(api.fig && api.fig.after) api.fig.after(s, right); }
+      extra: function(el, p, api){ QM.clear(); QM.last = {}; QM.F = null; QM.svgEl = null; api.fig = figure(el, p, api); },
+      onStep: function(s, right, api){ if(api.fig && api.fig.after) api.fig.after(s, right); },
+      method: function(s){ return SMETHOD[s.key] || ''; },
+      onTry: function(s, t, api){ return sfTry(s, t, api.problem); }
     };
     T.drill(host, data, o);
   }
@@ -335,8 +337,64 @@
     if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(go, 40); }).observe(box); }
   }
   function plotBox(el, spec, extra){
-    el.innerHTML = '<figure class="cd-fig sf-qfig">' + P.svg(spec).replace('</svg>', (extra || '') + '<g class="sf-dyn"></g></svg>') + '</figure>';
-    return { svg: el.querySelector('svg'), F: P.frame(spec), dyn: el.querySelector('.sf-dyn') };
+    var F = P.frame(spec);
+    el.innerHTML = '<figure class="cd-fig sf-qfig">' + P.svg(spec).replace('</svg>', (extra || '') + '<g class="sf-dyn"></g><g class="sf-tries">' + QM.svg(F) + '</g></svg>') + '</figure>';
+    QM.F = F; QM.svgEl = el.querySelector('svg');
+    return { svg: el.querySelector('svg'), F: F, dyn: el.querySelector('.sf-dyn') };
+  }
+  /* Test yourself is visual (docs/tool-audit-2026-10.md X1): each try is
+     drawn on the figure in place (no full redraw, so drag handles keep
+     their state), the student's answer dashed, the right one solid. */
+  var QM = T.tries();
+  function qmPaint(){ if(QM.svgEl && QM.F){ var g = QM.svgEl.querySelector('.sf-tries'); if(g) g.innerHTML = QM.svg(QM.F); } }
+  var SMETHOD = {
+    sl1: 'Put the point\'s x and y into dy/dx: the number you get is the slope of the segment there.',
+    sl2: 'Put the point\'s x and y into dy/dx. A negative slope tilts down to the right.',
+    iso: 'Set dy/dx = 0 and solve: every point on that line or curve has a flat segment.',
+    mf: 'Test easy points: where is dy/dx zero, where is it positive, and does it change along a row or a column?',
+    mfeat: 'Name what the equation predicts and where you see it: the zero-slope line, or slopes that depend only on x or only on y.',
+    skm: 'Put the starting point into dy/dx.',
+    sk: 'Start at the point and follow the segments: your curve should be tangent to every segment it passes.',
+    skfar: 'Follow the segments far to the right: does the curve level off at a line where dy/dx = 0?',
+    sep: 'Get every y (with dy) on one side and every x (with dx) on the other.',
+    int: 'Integrate term by term and add + C (once, on one side).',
+    sepC: 'Put the initial condition into the integrated equation and solve for C.',
+    sepY: 'Solve for y, and keep the branch (sign) that passes through the initial point.',
+    d2: 'Differentiate dy/dx with respect to x; every y gives a dy/dx factor, which you replace by the given formula.',
+    d2v: 'Put the point into your second derivative.',
+    conc: 'A negative second derivative means concave down, so the tangent line is above the curve (an overestimate).',
+    expde: 'A rate proportional to the amount is dy/dt = ky.',
+    expk: 'Use y(T) = y(0)e^(kT): divide, take ln, divide by T.',
+    expy: 'Put t into y = y(0)e^(kt).',
+    expt: 'Set y(0)e^(kt) equal to the target, take ln, and solve for t.'
+  };
+  function sfTry(s, t, p){
+    var g = p.fig, who = t.ok || t.shown ? 'right' : 'yours', mk = [], N = T.numText, k = s.key;
+    var val = who === 'right' && s.kind === 'num' ? s.cell.answer : t.value;
+    if(/^sl\d$/.test(k) && g.marks && isFinite(val)){
+      var m = g.marks.filter(function(q){ return q.step === k; })[0];
+      if(m) mk.push({ tangent: m.at, slope: val, half: 0.55, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + N(val) });
+    } else if(k === 'skm' && isFinite(val)){
+      mk.push({ tangent: [g.x0, g.y0], slope: val, half: 0.55, who: who, label: (who === 'yours' ? 'yours: slope ' : 'slope ') + N(val) });
+    } else if(k === 'd2v' && isFinite(val) && g.tangent){
+      mk.push({ label: (who === 'yours' ? 'yours: ' : '') + 'd²y/dx² = ' + N(val) + (who === 'right' ? (val < 0 ? ', concave down' : val > 0 ? ', concave up' : '') : ''), at: [g.tangent.at[0], g.tangent.at[1]], who: who, anchor: 'middle' });
+    } else if(k === 'sepY' && t.fn){
+      mk.push({ curve: t.fn, who: who, label: who === 'yours' ? 'yours' : '' });
+    } else if(k === 'sepC' && g.kind === 'solution' && isFinite(val)){
+      return false;
+    } else if((k === 'expk' || k === 'expy' || k === 'expt') && g.kind === 'exp' && isFinite(val)){
+      if(k === 'expk'){ var kk = val; mk.push({ curve: function(x){ return g.y0 * Math.exp(kk * x); }, who: who, label: who === 'yours' ? 'yours: k = ' + N(kk) : '' }); }
+      if(k === 'expy') mk.push({ point: [g.t1, val], who: who, label: (who === 'yours' ? 'yours: ' : '') + N(val) });
+      if(k === 'expt') mk.push({ vline: val, who: who, label: (who === 'yours' ? 'yours: t = ' : 't = ') + N(val) });
+    } else if(k === 'mf' && s.kind === 'choice' && t.pick > -1){
+      // the picked field: outlined dashed while wrong (the right one is outlined by the tool once done)
+      document.querySelectorAll('.sf-mfig').forEach(function(f){ f.classList.toggle('is-pick', who === 'yours' && +f.getAttribute('data-i') === t.pick); });
+      return who === 'yours';
+    } else return false;
+    if(!mk.length) return false;
+    if(who === 'yours') QM.last[k] = mk; else if(QM.last[k]) mk = QM.last[k].concat(mk);
+    QM.set(k, mk); qmPaint();
+    return true;
   }
   function figure(el, p, api){
     var g = p.fig;

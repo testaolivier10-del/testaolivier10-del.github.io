@@ -84,6 +84,9 @@
 
     function stop(){ if(anim){ anim.stop(); anim = null; } if(tween){ tween.stop(); tween = null; } }
     function clear(){ stop(); smps = []; res = null; sel = -1; shownFrom = 0; setRange(); syncLev(); draw(); words(); }
+    /* The landing view: 20 intervals already drawn, so the idea is on screen
+       before the first tap (audit: "landing nearly empty"). */
+    function seedView(){ stop(); var s0 = setup(); smps = C.batch(r, s0, 20); shownFrom = 0; sel = -1; res = C.intervals(smps, s0, level, { z: useZ }); setRange(); syncLev(); draw(); words(); }
     function recompute(animate){
       var old = res ? res.ivs.slice(Math.max(0, smps.length - 100)) : null;
       res = smps.length ? C.intervals(smps, setup(), level, { z: useZ }) : null;
@@ -123,7 +126,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
       var G0 = geo(W, H), top = G0.top, bot = G0.bot, rowH = G0.rowH, rateH = G0.rateH, d = dmn(), g = [];
       function x(v){ return L + (v - d[0]) / (d[1] - d[0]) * pw; }
-      var sh = fx && fx.to ? fx.to : shown(), from = fx && fx.from, k = fx && fx.k != null ? fx.k : 1, grow = fx && fx.grow != null ? fx.grow : 100;
+      var sh0 = fx && fx.to ? fx.to : shown(), sh = sh0, from = fx && fx.from, k = fx && fx.k != null ? fx.k : 1, grow = fx && fx.grow != null ? fx.grow : 100;
       var tv = trueVal(), tx = x(tv), t0 = tally(), dP = pop.kind === 'prop' ? 3 : 1;
       var selV = sel > -1 && sh[sel] && !fx ? sh[sel] : null;
       if(selV) g.push('<text class="ci-h ci-c-samp" x="' + L + '" y="16">Interval ' + (sel + 1) + ': ' + (pop.kind === 'prop' ? 'p̂' : 'x̄') + ' = ' + F(selV.est, dP + 1) + ' ± ' + F(res.crit, 3) + ' × ' + F(selV.se, dP + 1) + '</text>');
@@ -169,7 +172,7 @@
       if(!fx) svg.setAttribute('aria-label', 'Confidence intervals against the true value. ' + tallyText() + (sel > -1 && sh[sel] ? ' Selected: ' + ivText(sh[sel], sel) : ''));
     }
     /* rows from top to bot; the axis under them; then the capture rate strip */
-    function geo(W, H){ var phone = W < 520, rateH = phone ? 66 : 80, top = 32, bot = H - rateH - 70; return { top: top, bot: bot, rowH: (bot - top) / 100, rateH: rateH, ry0: bot + 72 }; }
+    function geo(W, H){ var phone = W < 520, rateH = phone ? 104 : 120, top = 32, bot = H - rateH - 70, rows = shown().length > 20 ? 100 : 20; return { top: top, bot: bot, rowH: (bot - top) / rows, rateH: rateH, ry0: bot + 72 }; }
     function ivText(v, i){ return 'Interval ' + (i + 1) + ': from ' + F(v.lo, 3) + ' to ' + F(v.hi, 3) + (v.hit ? ', captures ' : ', misses ') + parName() + '.'; }
 
     /* pick an interval: tap near its row, or arrow keys */
@@ -198,7 +201,8 @@
     function words(){
       var t0 = tally(), head, sub = '';
       if(!t0.all) head = 'Tap Build 100 intervals: 100 random samples, one interval from each.';
-      else {
+      else if(t0.all === 20 && smps.length === 20) { head = t0.sHits + ' of these 20 intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.'; sub = 'Each row is one random sample and its ' + pct(level, 0) + ' interval. Build 100 more to see the long-run rate settle near ' + pct(level, 0) + '.'; }
+      else if(!sub) {
         head = t0.sHits + ' of these ' + t0.sh + ' intervals capture ' + parName() + ' = ' + F(trueVal(), pop.kind === 'prop' ? 2 : 1) + '.';
         sub = 'All ' + big(t0.all) + ' so far: ' + pct(t0.hits / t0.all) + ' captured' + (t0.all >= 1000 ? ', close to the long run rate' : '') + '. ' + (condNote() || 'Tap an interval to read its parts.');
       }
@@ -234,13 +238,14 @@
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
-      syncOpts(); clear();
+      syncOpts(); seedView();
       sp.setup(pop.name);
       s.root.querySelectorAll('.ci-pops input').forEach(function(x){ x.addEventListener('change', function(){ sp.setup(pop.name); }); });
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ci-build'), text: 'Start here: build 100 intervals' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim && !tween) draw(); }, 60); }).observe($('.ci-fig')); }
     }
-    syncOpts(); setRange(); syncLev(); draw(); words();
+    syncOpts(); setRange(); syncLev();
+    if(!(window.LevlStudio && T.studioOf(host))) seedView(); else { draw(); words(); }
     return { stop: stop, studio: studio };
   }
 
@@ -252,9 +257,31 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { prop: 'A confidence interval for p', mean: 'A confidence interval for μ', claim: 'A claim from an interval', capture: 'Counting captures' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ var st = api.st; st[s.key] = true; if(s.key === 'phat' || s.key === 'me' || s.key === 'claim' || s.key === 'count' || s.key === 'mefrom') figure(api.fig, api.problem, st); }
+      onStep: function(s, right, api){ var st = api.st; st[s.key] = true; st.yours = null; if(s.key === 'phat' || s.key === 'me' || s.key === 'claim' || s.key === 'count' || s.key === 'mefrom' || s.kind === 'num') figure(api.fig, api.problem, st); },
+      // A wrong number is drawn: a dot for p̂, an interval for a margin of error, a tag for the rest.
+      onTry: function(s, t, api){ if(t.right || s.kind !== 'num' || !isFinite(t.value)) return; api.st.yours = { key: s.key, v: t.value }; figure(api.fig, api.problem, api.st); },
+      method: methodOf
     };
     T.drill(host, data, o);
+  }
+  function methodOf(s, p){
+    var g = p.given || {}, L = g.level ? pct(g.level, 0) : '', tail = g.level ? pct((1 - g.level) / 2, g.level === 0.95 || g.level === 0.99 ? 1 : 0) : '';
+    var H = {
+      phat: th('$\\hat{p} = \\frac{x}{n} = \\frac{' + g.x + '}{' + g.n + '}$: the count of successes over the sample size.'),
+      crit: p.type === 'mean' ? th('Use $t^*$ with $df = n - 1 = ' + (g.n - 1) + '$ and ' + tail + ' in each tail (technology: invT, or Table B at ' + L + ' confidence).') : th('Split the ' + pct(1 - (g.level || 0.95), 0) + ' outside the interval into two tails of ' + tail + ': $z^*$ has ' + pct(1 - (1 - (g.level || 0.95)) / 2, 1) + ' to its left.'),
+      se: p.type === 'mean' ? th('$\\text{SE} = \\frac{s}{\\sqrt{n}} = \\frac{' + g.s + '}{\\sqrt{' + g.n + '}}$.') : th('$\\text{SE} = \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$ with the $\\hat{p}$ from step 1 and $n = ' + g.n + '$.'),
+      me: 'Multiply the critical value by the standard error from the steps above. Your interval is drawn dashed: it should be centered on the dot and match the solid one.',
+      df: th('For one mean, $df = n - 1$.'),
+      mefrom: 'The margin of error is half the width: (upper − lower) ÷ 2.',
+      count: 'An interval captures the true value when the blue line passes through it. Count those rows.',
+      longrun: 'In the long run the capture rate settles at the confidence level, whatever one batch shows.',
+      interp: 'A good interpretation names the level, the interval, the parameter in context (all of the population), and says "captures". It is not about the sample or individual values.',
+      level: 'The level describes the method: the share of intervals built this way that capture the true value.',
+      claim: 'Plausible values are the ones inside the interval. A claim is supported only if every plausible value agrees with it.',
+      wider: 'Higher confidence needs a larger critical value.',
+      bign: th('The standard error has $\\sqrt{n}$ in the denominator.')
+    };
+    return H[s.key] || null;
   }
   /* The drill figure: the problem's interval on its axis, its parts shown
      once the margin of error is answered (never before); or the 20
@@ -273,6 +300,7 @@
         out.push('<line class="ci-iv ' + cls + '" x1="' + x(v.lo).toFixed(1) + '" x2="' + x(v.hi).toFixed(1) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" style="stroke-width:' + (reveal && !v.hit ? 5 : 3.5) + '"/><circle class="ci-est" cx="' + x(v.est).toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3.2"/>');
         if(reveal && !v.hit){ var cx = v.hi < g.p ? x(v.hi) + 8 : x(v.lo) - 8; out.push('<path class="ci-x" d="M' + (cx - 4) + ' ' + (y - 4).toFixed(1) + 'l8 8m0 -8l-8 8"/>'); }
       });
+      if(st.yours) out.push('<text class="stat-yours-t" x="' + R + '" y="16" text-anchor="end">You counted ' + T.F(st.yours.v, 0) + '</text>');
       axis(lo, hi, x, bot + 22);
       el.innerHTML = '<figure class="ci-qfig"><svg class="ci-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Twenty confidence intervals, one per row, with a vertical line at the true proportion ' + esc(T.F(g.p, 2)) + (reveal ? '; ' + g.ivs.filter(function(v){ return v.hit; }).length + ' capture it' : '') + '">' + out.join('') + '</svg></figure>';
       return;
@@ -280,6 +308,10 @@
     var shownParts = !!(st.me || st.mefrom || p.type === 'claim'), lo2 = g.lo, hi2 = g.hi, span = hi2 - lo2;
     var a = lo2 - span * 0.6, b = hi2 + span * 0.6;
     if(g.p0 != null){ a = Math.min(a, g.p0 - span * 0.25); b = Math.max(b, g.p0 + span * 0.25); }
+    // Zoom out to show the student's interval or p̂ (within reason).
+    var Yz = st.yours;
+    if(Yz && (Yz.key === 'me' || Yz.key === 'mefrom') && Yz.v > 0){ var wv = Math.min(Yz.v, span * 3); a = Math.min(a, g.est - wv - span * 0.1); b = Math.max(b, g.est + wv + span * 0.1); }
+    if(Yz && Yz.key === 'phat' && isFinite(Yz.v) && Math.abs(Yz.v - g.est) < span * 4){ a = Math.min(a, Yz.v - span * 0.2); b = Math.max(b, Yz.v + span * 0.2); }
     var x2 = function(v){ return L + (v - a) / (b - a) * (R - L); }, y = H * 0.48, unit = g.unit ? ' ' + g.unit : '';
     var sym = g.sym === '\\hat{p}' ? 'p̂' : 'x̄';
     out.push('<text class="ci-h" x="' + L + '" y="18">' + (shownParts ? 'The ' + esc(g.L) + ' interval' : 'The sample') + '</text>');
@@ -287,6 +319,17 @@
       out.push('<line class="ci-iv is-plain" x1="' + x2(lo2).toFixed(1) + '" x2="' + x2(hi2).toFixed(1) + '" y1="' + y + '" y2="' + y + '" style="stroke-width:6"/>');
       if(p.type !== 'claim' || st.mefrom) out.push('<path class="ci-brace" d="M' + x2(g.est).toFixed(1) + ' ' + (y - 16) + 'V' + (y - 22) + 'H' + x2(hi2).toFixed(1) + 'V' + (y - 16) + '"/><text class="ci-lab ci-c-samp" x="' + ((x2(g.est) + x2(hi2)) / 2).toFixed(1) + '" y="' + (y - 28) + '" text-anchor="middle">ME = ' + T.F(g.me, 4) + '</text>');
       [[lo2, 'end'], [hi2, 'start']].forEach(function(e){ out.push('<text class="ci-lab" x="' + (x2(e[0]) + (e[1] === 'end' ? -6 : 6)).toFixed(1) + '" y="' + (y + 5) + '" text-anchor="' + e[1] + '">' + T.F(e[0], g.d) + '</text>'); });
+    }
+    var Y = st.yours;
+    if(Y && (Y.key === 'me' || Y.key === 'mefrom') && Y.v > 0){
+      // The student's interval: the center ± their margin of error, dashed, under the axis line of the right one.
+      var ya = y + 46, yl = x2(g.est - Y.v), yr = x2(g.est + Y.v), cl = Math.max(L, yl), cr = Math.min(R, yr);
+      out.push('<line class="stat-yours" x1="' + cl.toFixed(1) + '" x2="' + Math.max(cl + 2, cr).toFixed(1) + '" y1="' + ya + '" y2="' + ya + '" style="stroke-width:4"/>');
+      out.push('<text class="stat-yours-t" x="' + ((cl + cr) / 2).toFixed(1) + '" y="' + (ya + 18) + '" text-anchor="middle">yours: ' + T.F(g.est - Y.v, g.d) + ' to ' + T.F(g.est + Y.v, g.d) + (yl < L || yr > R ? ' (off the scale)' : '') + '</text>');
+    } else if(Y && Y.key === 'phat' && Y.v > a && Y.v < b){
+      out.push('<circle class="stat-yours-f" cx="' + x2(Y.v).toFixed(1) + '" cy="' + y + '" r="6" opacity=".85"/><text class="stat-yours-t" x="' + x2(Y.v).toFixed(1) + '" y="' + (y - 14) + '" text-anchor="middle">yours ' + T.F(Y.v, 3) + '</text>');
+    } else if(Y){
+      out.push('<g class="ci-ytag"><text class="stat-yours-t" x="' + R + '" y="18" text-anchor="end">Yours: ' + T.F(Y.v, Y.key === 'df' ? 0 : 3) + '</text></g>');
     }
     var estKnown = p.type !== 'prop' || st.phat;
     out.push('<circle class="ci-est" cx="' + x2(g.est).toFixed(1) + '" cy="' + y + '" r="6"/><text class="ci-lab ci-c-samp" x="' + x2(g.est).toFixed(1) + '" y="' + (y + 26) + '" text-anchor="middle">' + sym + (estKnown ? ' = ' + T.F(g.est, g.d) + unit : ', the sample proportion') + '</text>');

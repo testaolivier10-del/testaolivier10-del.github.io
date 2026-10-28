@@ -206,6 +206,8 @@ test('exams count from the server log; synced history only from before it existe
   assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE + DAY)).length, 0, 'history the browser wrote after the log started');
   assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE - 10 * DAY)).length, 0, 'browser history never counts, even from before the log');
   assert.equal(countableExams([{ questions: 10, finished_at: iso(NOW) }], []).length, 0, 'a short quiz is not a full exam');
+  // A finished adaptive exam (70 to 120 questions) counts like a timed one (owner, 2026-10-27).
+  assert.equal(countableExams([{ questions: 70, finished_at: iso(NOW) }, { questions: 118, finished_at: iso(NOW - DAY) }], []).length, 2, 'adaptive exams count');
 });
 
 test('guarantee: synced history alone (after the log started) does not qualify', async () => {

@@ -25,6 +25,17 @@
     return { key: key, label: label, type: 'num', answer: answer, d: d, unit: unit || '', tol: opts.exact ? Math.pow(10, -d) / 2 : M.tol(answer, d, opts.rel), practice: practice || '5.A' };
   }
   function choice(key, label, options, correct, practice){ return { key: key, label: label, type: 'choice', options: options, correct: correct, practice: practice || '5.A' }; }
+  /* Per-step help (bio-tools.js skillTool checks each part on its own):
+     hint, the method for this part, shown with a wrong answer before Show
+     the answer; slips, common wrong values and what each one means
+     ([{ value, why }]; a slip within the part's tolerance of the right
+     answer is dropped, so a right answer is never called a slip). */
+  function help(part, hint, slips){
+    part.hint = hint;
+    if(slips) part.slips = slips.filter(function(x){ return x && isFinite(x.value) && (part.type !== 'num' || Math.abs(x.value - part.answer) > 2 * part.tol); });
+    return part;
+  }
+  function slip(value, why){ return { value: value, why: why }; }
   function tableHtml(cols, rows, caption){
     return '<table class="bio-data">' + (caption ? '<caption>' + caption + '</caption>' : '') + '<thead><tr>' + cols.map(function(c){ return '<th scope="col">' + c + '</th>'; }).join('') + '</tr></thead><tbody>' +
       rows.map(function(r){ return '<tr>' + r.map(function(v, i){ return i === 0 ? '<th scope="row">' + v + '</th>' : '<td>' + v + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
@@ -41,11 +52,11 @@
       : 'There are ' + n + ' values (even), so the median is the mean of the two middle ones: (' + F(srt[n / 2 - 1], dp) + ' + ' + F(srt[n / 2], dp) + ') / 2 = <b>' + F(med, d) + U(u) + '</b>.';
     return {
       parts: [
-        num('mean', 'Mean (x̄)', m, d, u, '5.A', { rel: 0 }),
-        num('median', 'Median', med, d, u, '5.A', { rel: 0 }),
-        num('range', 'Range', rg, d, u, '5.A', { rel: 0 }),
-        num('sd', 'Standard deviation (s)', s, d, u),
-        num('se', 'Standard error (SE)', se, d, u)
+        help(num('mean', 'Mean (x̄)', m, d, u, '5.A', { rel: 0 }), 'Add all ' + n + ' values, then divide by n = ' + n + '.', [slip(S, 'That is the sum Σx. Divide it by n = ' + n + '.')]),
+        help(num('median', 'Median', med, d, u, '5.A', { rel: 0 }), 'Sort the values from smallest to largest, then take the middle one (with an even n, the mean of the middle two).', [slip(n % 2 ? v[(n - 1) / 2] : (v[n / 2 - 1] + v[n / 2]) / 2, 'That is the middle of the list as given. Sort the values first.'), slip(m, 'That is the mean. The median is the middle value once the list is sorted.')]),
+        help(num('range', 'Range', rg, d, u, '5.A', { rel: 0 }), 'Largest value minus smallest value.', [slip(v[n - 1] - v[0], 'That is last minus first as listed. Use the largest and smallest values.')]),
+        help(num('sd', 'Standard deviation (s)', s, d, u), 's = √( Σ(x − x̄)² / (n − 1) ): square each value’s distance from the mean, add the squares, divide by n − 1, then take the square root.', [slip(Math.sqrt(Q / n), 'You divided by n. For a sample, divide by n − 1 = ' + (n - 1) + '.'), slip(Q / (n - 1), 'That is the variance, s². Take its square root.'), slip(Q, 'That is Σ(x − x̄)². Divide by n − 1, then take the square root.')]),
+        help(num('se', 'Standard error (SE)', se, d, u), 'SE = s / √n = s / √' + n + '.', [slip(s / n, 'You divided by n. SE divides s by √n.'), slip(s, 'That is the standard deviation. SE = s / √n.'), slip(Math.sqrt(Q / n) / Math.sqrt(n), 'Your s used n. Find s with n − 1 first, then divide by √n.')])
       ],
       steps: [
         'Add the ' + n + ' values: Σx = ' + v.map(function(a){ return F(a, dp); }).join(' + ') + ' = ' + F(S, dp + 1) + U(u) + '.',
@@ -81,15 +92,15 @@
     g.forEach(function(gr, k){
       var se = M.seFrom(gr.sd, gr.n), c = M.ci95(gr.mean, se);
       iv.push(c);
-      parts.push(num('se-' + k, 'SE of ' + gr.name, se, d, u, '5.B'));
-      parts.push(num('lo-' + k, 'Lower end of the 95% CI for ' + gr.name, c.lo, d, u, '5.B'));
-      parts.push(num('hi-' + k, 'Upper end of the 95% CI for ' + gr.name, c.hi, d, u, '5.B'));
+      parts.push(help(num('se-' + k, 'SE of ' + gr.name, se, d, u, '5.B'), 'SE = s / √n = ' + F(gr.sd, d) + ' / √' + gr.n + '.', [slip(gr.sd / gr.n, 'You divided by n. Divide s by √n.'), slip(gr.sd, 'That is the standard deviation. SE = s / √n.')]));
+      parts.push(help(num('lo-' + k, 'Lower end of the 95% CI for ' + gr.name, c.lo, d, u, '5.B'), 'Lower end ≈ mean − 2 SE = ' + F(gr.mean, d) + ' − 2 × SE.', [slip(gr.mean - se, 'You took away 1 SE. A 95% interval reaches 2 SE each side.'), slip(gr.mean - 2 * gr.sd, 'You used the standard deviation. Use 2 SE (SE = s / √n).'), slip(gr.mean + 2 * se, 'That is the upper end. The lower end is mean − 2 SE.')]));
+      parts.push(help(num('hi-' + k, 'Upper end of the 95% CI for ' + gr.name, c.hi, d, u, '5.B'), 'Upper end ≈ mean + 2 SE = ' + F(gr.mean, d) + ' + 2 × SE.', [slip(gr.mean + se, 'You added 1 SE. A 95% interval reaches 2 SE each side.'), slip(gr.mean + 2 * gr.sd, 'You used the standard deviation. Use 2 SE (SE = s / √n).'), slip(gr.mean - 2 * se, 'That is the lower end. The upper end is mean + 2 SE.')]));
       steps.push('<b>' + gr.name + ':</b> SE = s / √n = ' + F(gr.sd, d) + ' / √' + gr.n + ' = <b>' + F(se, d) + U(u) + '</b>. 2 SE = ' + F(2 * se, d) + '. 95% CI ≈ x̄ ± 2 SE = ' + F(gr.mean, d) + ' ± ' + F(2 * se, d) + ', from <b>' + F(c.lo, d) + '</b> to <b>' + F(c.hi, d) + U(u) + '</b>.');
     });
     var ov = M.overlap(iv[0], iv[1]);
     var lowI = g[0].mean <= g[1].mean ? 0 : 1, hiI = 1 - lowI;
-    parts.push(choice('overlap', 'Do the two 95% confidence intervals (the ±2 SE error bars) overlap?', CI_OVERLAP, ov ? 0 : 1, '5.B'));
-    parts.push(choice('conclusion', 'What can you conclude?', CI_CONCLUDE, ov ? 1 : 0, '5.B'));
+    parts.push(help(choice('overlap', 'Do the two 95% confidence intervals (the ±2 SE error bars) overlap?', CI_OVERLAP, ov ? 0 : 1, '5.B'), 'Compare the upper end of the lower group’s interval with the lower end of the higher group’s. If the first is bigger, they overlap.'));
+    parts.push(help(choice('conclusion', 'What can you conclude?', CI_CONCLUDE, ov ? 1 : 0, '5.B'), 'Overlapping ±2 SE bars: the data do not show a significant difference. A clear gap: the difference is likely significant. Overlap never proves the means are equal.'));
     steps.push('Compare the intervals: the top of ' + g[lowI].name + '’s interval is ' + F(iv[lowI].hi, d) + ' and the bottom of ' + g[hiI].name + '’s is ' + F(iv[hiI].lo, d) + '. ' +
       (ov ? 'The intervals <b>overlap</b>.' : 'There is a <b>gap</b>: the intervals do not overlap.'));
     steps.push(ov
@@ -128,13 +139,15 @@
     var N = M.sum(x.obs), d = x.d == null ? 2 : x.d;
     var exp = x.props.map(function(p){ return N * p; });
     var res = M.chiSquare(x.obs, exp);
-    var parts = exp.map(function(e, i){ return num('exp-' + i, 'Expected count: ' + x.cats[i], e, 1, '', '5.C'); });
-    parts.push(num('chi2', 'Chi-square value (χ²)', res.chi2, d, '', '5.C'));
-    parts.push(num('df', 'Degrees of freedom', res.df, 0, '', '5.C', { exact: true }));
-    var crit = num('crit', 'Critical value at p = 0.05', res.crit, 2, '', '5.C', { exact: true });
+    var frac = function(p){ return F(p, 4).replace(/0+$/, '').replace(/\.$/, ''); };
+    var parts = exp.map(function(e, i){ return help(num('exp-' + i, 'Expected count: ' + x.cats[i], e, 1, '', '5.C'), 'Expected = total × expected fraction = ' + N + ' × ' + frac(x.props[i]) + '.', [slip(N / x.cats.length, 'That splits the total equally. Use the expected ratio: ' + N + ' × ' + frac(x.props[i]) + '.'), slip(x.obs[i], 'That is the observed count. Expected comes from the ratio, not the data.')]); });
+    var sq = M.sum(x.obs.map(function(o, i){ return (o - exp[i]) * (o - exp[i]); })), byO = M.sum(x.obs.map(function(o, i){ return o ? (o - exp[i]) * (o - exp[i]) / o : 0; }));
+    parts.push(help(num('chi2', 'Chi-square value (χ²)', res.chi2, d, '', '5.C'), 'For each category work out (o − e)² / e, then add them all.', [slip(byO, 'You divided by the observed counts. Divide each (o − e)² by the expected count e.'), slip(sq, 'You added the (o − e)² without dividing. Divide each by its expected count first.')]));
+    parts.push(help(num('df', 'Degrees of freedom', res.df, 0, '', '5.C', { exact: true }), 'df = number of categories − 1 = ' + x.cats.length + ' − 1.', [slip(x.cats.length, 'That is the number of categories. Subtract 1.'), slip(N - 1, 'df counts categories, not individuals: categories − 1.')]));
+    var crit = help(num('crit', 'Critical value at p = 0.05', res.crit, 2, '', '5.C', { exact: true }), 'Read the critical value table at p = 0.05 and your df.', [slip(M.CHI_CRIT['0.01'][res.df], 'That is the p = 0.01 column. Use p = 0.05.'), M.CHI_CRIT['0.05'][res.df + 1] ? slip(M.CHI_CRIT['0.05'][res.df + 1], 'That is the row for df = ' + (res.df + 1) + '. Use df = ' + res.df + '.') : null, res.df > 1 ? slip(M.CHI_CRIT['0.05'][res.df - 1], 'That is the row for df = ' + (res.df - 1) + '. Use df = ' + res.df + '.') : null]);
     crit.tol = 0.011;   // 7.815 is printed 7.82 on the formula sheet; accept 7.81 too
     parts.push(crit);
-    parts.push(choice('decision', 'Decision about the null hypothesis', CHI_DECIDE, res.reject ? 0 : 1, '5.D'));
+    parts.push(help(choice('decision', 'Decision about the null hypothesis', CHI_DECIDE, res.reject ? 0 : 1, '5.D'), 'Compare χ² with the critical value: larger means reject the null; smaller means fail to reject it.'));
     var rows = x.cats.map(function(c, i){ return [c, String(x.obs[i]), F(exp[i], 1), F(x.obs[i] - exp[i], 1), F(res.terms[i], 3)]; });
     rows.push(['Total', String(N), F(N, 1), '', '<b>χ² = ' + F(res.chi2, d) + '</b>']);
     return {
@@ -178,7 +191,7 @@
       var parts = [], steps = [];
       x.items.forEach(function(it, k){
         var pc = M.percentChange(it.initial, it.final);
-        parts.push(num('pct-' + k, 'Percent change: ' + it.name, pc, 1, '%'));
+        parts.push(help(num('pct-' + k, 'Percent change: ' + it.name, pc, 1, '%'), 'Percent change = (final − initial) / initial × 100. A loss comes out negative.', [slip((it.final - it.initial) / it.final * 100, 'You divided by the final value. Divide by the initial value.'), slip(-pc, 'The size is right but the sign is wrong: a gain is positive, a loss negative.'), slip(pc / 100, 'That is a fraction. Multiply by 100 for a percent.'), slip(it.final - it.initial, 'That is the change itself. Divide it by the initial value, then multiply by 100.'), slip(it.final / it.initial * 100, 'That is final as a percent of initial. Subtract 100 (or put final − initial on top).')]));
         steps.push('<b>' + it.name + ':</b> percent change = (final − initial) / initial × 100 = (' + F(it.final, x.dp) + ' − ' + F(it.initial, x.dp) + ') / ' + F(it.initial, x.dp) + ' × 100 = ' + F(it.final - it.initial, x.dp) + ' / ' + F(it.initial, x.dp) + ' × 100 = <b>' + F(pc, 1) + '%</b>' + (pc < 0 ? ' (a loss: the sign matters).' : ' (a gain).'));
       });
       steps.push('Percent change compares each sample with its own starting value, so samples that started at different sizes can be compared fairly.');
@@ -188,12 +201,16 @@
     var r1 = M.rate(y[a[0]], y[a[1]], t[a[0]], t[a[1]]), r2 = M.rate(y[b[0]], y[b[1]], t[b[0]], t[b[1]]);
     var ratio = r2 / r1, tr = ratio > 1.15 ? 0 : ratio < 0.85 ? 1 : 2;
     var ru = uy + '/' + ut;
+    function rateHelp(part, i){
+      return help(part, 'Rate = change in amount / change in time = (amount at ' + t[i[1]] + ' − amount at ' + t[i[0]] + ') / (' + t[i[1]] + ' − ' + t[i[0]] + ').',
+        [slip(y[i[1]] - y[i[0]], 'That is the change in amount. Divide by the time between the two points.'), slip(y[i[1]] / t[i[1]], 'That is amount / time at one point. Use the change between the two points.'), slip((t[i[1]] - t[i[0]]) / (y[i[1]] - y[i[0]]), 'That is upside down: the change in amount goes on top.')]);
+    }
     function step(i, rr){ return 'Rate from ' + t[i[0]] + ' to ' + t[i[1]] + ' ' + ut + ' = Δy / Δt = (' + F(y[i[1]], x.dp) + ' − ' + F(y[i[0]], x.dp) + ') / (' + t[i[1]] + ' − ' + t[i[0]] + ') = ' + F(y[i[1]] - y[i[0]], x.dp) + ' / ' + (t[i[1]] - t[i[0]]) + ' = <b>' + F(rr, d) + ' ' + ru + '</b>.'; }
     return {
       parts: [
-        num('rate-early', 'Rate from ' + t[a[0]] + ' to ' + t[a[1]] + ' ' + ut, r1, d, ru),
-        num('rate-late', 'Rate from ' + t[b[0]] + ' to ' + t[b[1]] + ' ' + ut, r2, d, ru),
-        choice('trend', 'How is the rate changing over time?', TREND, tr, '4.B')
+        rateHelp(num('rate-early', 'Rate from ' + t[a[0]] + ' to ' + t[a[1]] + ' ' + ut, r1, d, ru), a),
+        rateHelp(num('rate-late', 'Rate from ' + t[b[0]] + ' to ' + t[b[1]] + ' ' + ut, r2, d, ru), b),
+        help(choice('trend', 'How is the rate changing over time?', TREND, tr, '4.B'), 'Compare your two rates: a bigger later rate means speeding up; a smaller one, slowing down.')
       ],
       steps: [step(a, r1), step(b, r2),
         'Compare: ' + F(r2, d) + ' is ' + (tr === 0 ? 'larger than' : tr === 1 ? 'smaller than' : 'about the same as') + ' ' + F(r1, d) + ', so the rate is <b>' + (tr === 0 ? 'speeding up' : tr === 1 ? 'slowing down' : 'about constant') + '</b>.' + (x.why ? ' ' + x.why : '')],
@@ -227,12 +244,18 @@
   function psiStep(lbl, i, C, tc, v){
     return lbl + ': ψs = −iCRT = −(' + i + ')(' + F(C, 2) + ' mol/L)(0.0831 L·bar/(mol·K))(' + (tc + M.K0) + ' K) = <b>' + F(v, 2) + ' bar</b>.';
   }
+  function psiSlips(i, C, tc, ans, name){
+    return [slip(-ans, 'Solute potential is negative: solutes lower water potential. ψs = −iCRT.'),
+      slip(-i * C * M.R * tc, 'You used the temperature in °C. Convert to kelvin: ' + tc + ' + 273 = ' + (tc + M.K0) + ' K.'),
+      i !== 1 ? slip(-C * M.R * (tc + M.K0), 'You left out i. ' + (name ? name.charAt(0).toUpperCase() + name.slice(1) : 'This solute') + ' splits into ' + i + ' particles, so i = ' + i + '.') : null];
+  }
   function wp(x){
     var tc = x.T;
     if(x.mode === 'zero'){
       var ps = M.psiS(x.sol.i, x.sol.C, tc);
       return {
-        parts: [num('psi-sol', 'Solute potential of the ' + F(x.sol.C, 2) + ' M ' + x.sol.name + ' solution', ps, 2, 'bar'), num('psi-tissue', 'Water potential of the tissue', ps, 2, 'bar')],
+        parts: [help(num('psi-sol', 'Solute potential of the ' + F(x.sol.C, 2) + ' M ' + x.sol.name + ' solution', ps, 2, 'bar'), 'ψs = −iCRT with i = 1 (sucrose), C = ' + F(x.sol.C, 2) + ' mol/L, R = 0.0831 and T in kelvin (' + tc + ' + 273).', psiSlips(x.sol.i, x.sol.C, tc, ps)),
+          help(num('psi-tissue', 'Water potential of the tissue', ps, 2, 'bar'), 'No mass change means no net water movement, so the tissue’s ψ equals the solution’s.', [slip(0, 'Zero would mean pure water. No net movement means the tissue’s ψ matches the solution’s.'), slip(-ps, 'Water potential here is negative: it matches the solution’s ψ.')])],
         steps: [
           'T = ' + tc + ' °C + 273 = ' + (tc + M.K0) + ' K.',
           psiStep('The solution', x.sol.i, x.sol.C, tc, ps) + ' It is in an open beaker, so ψp = 0 and ψ = ψs = ' + F(ps, 2) + ' bar.',
@@ -244,10 +267,10 @@
     var dir = Math.abs(sS - cPsi) < 0.005 ? 2 : sS > cPsi ? 0 : 1;
     return {
       parts: [
-        num('psiS-cell', 'Solute potential of the cell (ψs)', cS, 2, 'bar'),
-        num('psi-cell', 'Water potential of the cell (ψ)', cPsi, 2, 'bar'),
-        num('psi-sol', 'Water potential of the solution (ψ)', sS, 2, 'bar'),
-        choice('direction', 'Which way does water move overall?', DIRS, dir, '6.E')
+        help(num('psiS-cell', 'Solute potential of the cell (ψs)', cS, 2, 'bar'), 'ψs = −iCRT: i = ' + x.cell.i + ' for ' + x.cell.name + ', C = ' + F(x.cell.C, 2) + ' mol/L, R = 0.0831, T = ' + tc + ' + 273 K.', psiSlips(x.cell.i, x.cell.C, tc, cS, x.cell.name)),
+        help(num('psi-cell', 'Water potential of the cell (ψ)', cPsi, 2, 'bar'), 'ψ = ψs + ψp: add the pressure potential (' + F(x.cell.psiP, 1) + ' bar) to your ψs.', [slip(cS - x.cell.psiP, 'You subtracted ψp. ψ = ψs + ψp.'), slip(cS, 'That is ψs alone. Add the pressure potential, ' + F(x.cell.psiP, 1) + ' bar.')]),
+        help(num('psi-sol', 'Water potential of the solution (ψ)', sS, 2, 'bar'), 'An open beaker has ψp = 0, so ψ = ψs = −iCRT: i = ' + x.sol.i + ' for ' + x.sol.name + ', C = ' + F(x.sol.C, 2) + ' mol/L.', psiSlips(x.sol.i, x.sol.C, tc, sS, x.sol.name)),
+        help(choice('direction', 'Which way does water move overall?', DIRS, dir, '6.E'), 'Water moves from higher (less negative) ψ to lower (more negative) ψ. Compare the cell’s ψ with the solution’s.')
       ],
       steps: [
         'T = ' + tc + ' °C + 273 = ' + (tc + M.K0) + ' K. i = ' + x.cell.i + ' for ' + x.cell.name + (x.cell.i === 1 ? ' (it does not split into ions)' : ' (it splits into ' + x.cell.i + ' particles; we assume it ionizes completely)') + '.',
@@ -280,7 +303,11 @@
     if(x.mode === 'recessive'){
       var q2 = x.affected / x.N, h = M.hwRecessive(q2);
       return {
-        parts: [num('q2', 'q² (frequency of the recessive phenotype)', q2, 3, '', '5.A'), num('q', 'q', h.q, 2), num('p', 'p', h.p, 2), num('pq2', '2pq (expected heterozygote frequency)', h.pq2, 2), num('carriers', 'Expected number of heterozygous carriers', h.pq2 * x.N, 0, '', '5.A', { rel: 0.02 })],
+        parts: [help(num('q2', 'q² (frequency of the recessive phenotype)', q2, 3, '', '5.A'), 'Only aa individuals show a recessive trait, so q² = number showing it / total = ' + x.affected + ' / ' + x.N + '.', [slip(Math.sqrt(q2), 'That is q. This step asks for q² itself: ' + x.affected + ' / ' + x.N + '.')]),
+          help(num('q', 'q', h.q, 2), 'q = √q².', [slip(q2, 'That is q². Take its square root.'), slip(q2 / 2, 'Halving does not undo a square. q = √q².')]),
+          help(num('p', 'p', h.p, 2), 'p = 1 − q.', [slip(1 - q2, 'You used q². p = 1 − q.')]),
+          help(num('pq2', '2pq (expected heterozygote frequency)', h.pq2, 2), 'Multiply p × q, then double it.', [slip(h.p * h.q, 'That is pq. Double it: there are two ways to be heterozygous.'), slip(1 - q2, 'That is p² + 2pq, everyone without the trait. Use 2pq.')]),
+          help(num('carriers', 'Expected number of heterozygous carriers', h.pq2 * x.N, 0, '', '5.A', { rel: 0.02 }), 'Carriers = 2pq × N = 2pq × ' + x.N + '.', [slip(h.p * h.q * x.N, 'You used pq. Use 2pq × N.')])],
         steps: [
           'Only homozygous recessive individuals show the recessive phenotype, so q² = ' + x.affected + ' / ' + x.N + ' = <b>' + F(q2, 3) + '</b>. (This assumes the population is in Hardy-Weinberg equilibrium.)',
           'q = √q² = √' + F(q2, 4) + ' = <b>' + F(h.q, 3) + '</b>.',
@@ -293,7 +320,10 @@
     }
     var c = M.hwCounts(x.AA, x.Aa, x.aa);
     return {
-      parts: [num('p', 'p (frequency of ' + x.A + ')', c.p, 2), num('q', 'q (frequency of ' + x.a + ')', c.q, 2), num('pq2', '2pq (expected heterozygote frequency)', c.pq2, 2), num('het', 'Expected number of heterozygotes', c.pq2 * c.N, 0, '', '5.A', { rel: 0.02 })],
+      parts: [help(num('p', 'p (frequency of ' + x.A + ')', c.p, 2), 'Count alleles: each individual has two. p = (2 × ' + x.A + x.A + ' + ' + x.A + x.a + ') / (2 × ' + c.N + ').', [slip(x.AA / c.N, 'That counts individuals, not alleles. Each ' + x.A + x.A + ' carries two ' + x.A + ' alleles and each ' + x.A + x.a + ' carries one.'), slip((x.AA + x.Aa) / c.N, 'That counts individuals with at least one ' + x.A + '. Count alleles: 2 × ' + x.A + x.A + ' + ' + x.A + x.a + ', out of 2N.'), slip((2 * x.AA + x.Aa) / c.N, 'Divide by the number of alleles, 2N = ' + (2 * c.N) + ', not by N.'), slip(Math.sqrt(x.AA / c.N), 'The square root shortcut assumes equilibrium. You have every genotype counted, so count alleles.')]),
+        help(num('q', 'q (frequency of ' + x.a + ')', c.q, 2), 'q = 1 − p.', [slip(x.aa / c.N, 'That counts individuals, not alleles. q = 1 − p.')]),
+        help(num('pq2', '2pq (expected heterozygote frequency)', c.pq2, 2), 'Multiply p × q, then double it.', [slip(c.p * c.q, 'That is pq. Double it: there are two ways to be heterozygous.'), slip(x.Aa / c.N, 'That is the observed heterozygote share. This step asks what equilibrium predicts: 2pq.')]),
+        help(num('het', 'Expected number of heterozygotes', c.pq2 * c.N, 0, '', '5.A', { rel: 0.02 }), 'Expected number = 2pq × N = 2pq × ' + c.N + '.', [slip(c.p * c.q * c.N, 'You used pq. Use 2pq × N.')])],
       steps: [
         'Count alleles: each individual has two. Total alleles = 2 × ' + c.N + ' = ' + (2 * c.N) + '.',
         x.A + ' alleles = 2 × ' + x.AA + ' (homozygous) + ' + x.Aa + ' (heterozygous) = ' + (2 * x.AA + x.Aa) + '. p = ' + (2 * x.AA + x.Aa) + ' / ' + (2 * c.N) + ' = <b>' + F(c.p, 3) + '</b>.',
@@ -312,7 +342,10 @@
     }
     var p = r.real(c.p[0], c.p[1]), q = 1 - p, dev = r.real(-0.08, 0.08);
     var AA = Math.round(N * p * p), Aa = Math.max(1, Math.round(N * (2 * p * q) * (1 + dev))), aa = Math.max(0, N - AA - Aa);
-    return { kind: 'hw', mode: 'counts', AA: AA, Aa: Aa, aa: aa, A: c.A, a: c.a, text: fill(c.text, { N: AA + Aa + aa }) };
+    var out = { kind: 'hw', mode: 'counts', AA: AA, Aa: Aa, aa: aa, A: c.A, a: c.a, text: fill(c.text, { N: AA + Aa + aa }) };
+    // Incomplete or codominance: each genotype has its own phenotype (no carriers, no recessive trait).
+    if(c.phen) out.phen = c.phen.slice();
+    return out;
   }
 
   /* -------------------------------------------- 7. Simpson's diversity */
@@ -321,7 +354,9 @@
     var rows = x.species.map(function(sp, i){ return [sp.name, String(sp.n), F(s.props[i], 3), F(s.squares[i], 4)]; });
     rows.push(['Total', String(s.N), '1.000', '<b>' + F(s.sumSq, 4) + '</b>']);
     return {
-      parts: [num('N', 'Total number of organisms (N)', s.N, 0, '', '5.A', { exact: true }), num('sum', 'Σ(n/N)²', s.sumSq, 3, '', '5.A', { rel: 0.02 }), num('D', 'Simpson’s diversity index (D)', s.D, 2, '', '5.A', { rel: 0.02 })],
+      parts: [help(num('N', 'Total number of organisms (N)', s.N, 0, '', '5.A', { exact: true }), 'Add the counts of every species.', [slip(x.species.length, 'That is the number of species. N is the number of organisms.')]),
+        help(num('sum', 'Σ(n/N)²', s.sumSq, 3, '', '5.A', { rel: 0.02 }), 'For each species divide its count by N, square that, then add the squares.', [slip(1, 'The proportions add to 1. Square each one before adding.'), slip(M.sum(x.species.map(function(sp){ return sp.n * sp.n; })), 'You squared the counts. Square the proportions n/N.')]),
+        help(num('D', 'Simpson’s diversity index (D)', s.D, 2, '', '5.A', { rel: 0.02 }), 'D = 1 − Σ(n/N)².', [slip(s.sumSq, 'That is Σ(n/N)². D = 1 minus it.'), slip(1 / s.sumSq, 'That is the inverse index, 1/Σ(n/N)². Here D = 1 − Σ(n/N)².')])],
       steps: [
         'N = ' + x.species.map(function(sp){ return sp.n; }).join(' + ') + ' = <b>' + s.N + '</b>.',
         'For each species, divide its count by N, then square it:' + tableHtml(['Species', 'n', 'n/N', '(n/N)²'], rows),

@@ -186,7 +186,7 @@
       cx:160, cy:150, scale:fit * zoom,
       rx:rx, ry:ry, mode:opts.mode,
       labels:opts.labels, lonePairs:opts.lonePairs,
-      selected:selected
+      selected:selected, cpk:true, halo:true
     });
     // Re-bound every frame because render() rebuilds the nodes. Cheap at this
     // size, and it keeps the depth sort and the hit targets in one place.
@@ -649,8 +649,11 @@
     var pool = TASK_POOL.filter(function(id){ return LIB.get(id) && id !== task.id; });
     task.id = pool[Math.floor(Math.random() * pool.length)];
     task.shape = null; task.angle = null; task.done = false;
-    opts.labels = false; opts.lonePairs = false;
-    document.getElementById('v3Labels').checked = false; document.getElementById('v3Lp').checked = false;
+    /* Lone pairs on by default (audit 2026-10): the shape is named from the
+       atoms, and seeing the pairs is how a student learns to leave them out.
+       Labels stay off so the ringed atom is found by looking. */
+    opts.labels = false; opts.lonePairs = true;
+    document.getElementById('v3Labels').checked = false; document.getElementById('v3Lp').checked = true;
     select(LIB.get(task.id));
     /* A random start, so "edge-on" is something you find rather than get. */
     rx = -0.2 - Math.random() * 0.7; ry = Math.random() * 6.28;

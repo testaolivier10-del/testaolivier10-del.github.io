@@ -2,13 +2,16 @@
 
    Content: data/tools/pathways.json (read from #app[data-src]). Each pathway is
    played three ways, and each way is one scored item with a permanent id:
-     pathways:<pathway>:order     put every step in order (up/down buttons,
-                                  per-position feedback)
+     pathways:<pathway>:order     put every step in order (tap to place on
+                                  the map, or a drag/arrows list)
      pathways:<pathway>:missing   choose the step that fills the gap
      pathways:<pathway>:error     find the one step that is wrong
-   After answering, the pathway plays step by step on a diagram drawn in the
-   course's visual language ("flows to" arrows for blood, "causes" arrows for
-   mechanisms), with each step's "why it comes here".
+   Every drill works on the pathway map, drawn from the step data with an
+   icon per kind of step (pathMap below): placing a step lights its node, a
+   gap is a dashed "?", and the answer is marked on the map. After answering,
+   the pathway plays step by step on the same map, with each step's "why it
+   comes here". A first miss gets one hint and Try again or Show the answer;
+   only the first check is scored.
 
    Scoring: the first check of a variant on a page visit is recorded through
    AnpCore.toolResult (XP, mastery, misses to review) and fires
@@ -490,21 +493,25 @@
     if(p.trace && first === 'drills' && tracer) tracer.stop();
     if(!studioPathway.hinted){
       studioPathway.hinted = true;
-      S.hint(p.trace && first !== 'drills' ? { target: '.ls-dock .pt-play', text: 'Press Play to follow it' } : { target: '.ls-stage .pw-order li, .ls-stage .pw-pick, .ls-dock .pw-choices .anp-opt', text: 'Start here' });
+      S.hint(p.trace && first !== 'drills' ? { target: '.ls-dock .pt-play', text: 'Press Play to follow it' } : { target: '.ls-dock .pw-bank .pw-bcard, .ls-stage .pw-pick, .ls-dock .pw-choices .anp-opt', text: 'Start here' });
     }
   }
   function studioDrill(p, panel){
     var dm = p.trace ? 'drills' : null;
     drillParts.forEach(function(x){ if(x.parentNode) x.parentNode.removeChild(x); });
     drillParts = [];
-    var list = panel.querySelector('.pw-order, .pw-steps');
-    if(list){ drillParts.push(list); S.put('stage', list, dm ? { mode: dm } : null); }
-    var note = panel.querySelector('.pw-cyclenote');
-    if(note){ drillParts.push(note); S.put('stage', note, { mode: dm, first: false }); S.stage.insertBefore(note, list); }
-    var task = panel.querySelector('.kt-first.pw-task');
-    if(task){ S.caption(task.innerHTML, dm || undefined); task.parentNode.removeChild(task); }
     // the old diagram from an earlier answer goes with its drill
     S.stage.querySelectorAll('.pw-fig').forEach(function(f){ f.parentNode.removeChild(f); });
+    /* Stage: the pathway map (and, for Spot the error, the steps to tap).
+       Dock: the step bank or the choices, Check, the hint and the result, so
+       the map keeps its shape while the student works. */
+    ['.pw-cyclenote', '.pw-figslot', '.pw-fulld', '.pw-order', '.pw-pickable'].forEach(function(sel){
+      var x = panel.querySelector(sel);
+      if(x){ drillParts.push(x); S.put('stage', x, dm ? { mode: dm } : null); }
+    });
+    var task = panel.querySelector('.kt-first.pw-task');
+    if(task){ S.caption(task.innerHTML, dm || undefined); task.parentNode.removeChild(task); }
+    if(panel._map) panel._map.fit();
     S.stage.scrollTop = 0;
   }
   function studioList(){
@@ -514,6 +521,235 @@
     if(lead) S.put('why', lead);
     S.caption('Pick a pathway: watch it, trace it, then drill it.');
     S.stage.scrollTop = 0;
+  }
+
+  /* ------------------------------------------------------- the pathway map
+     Every pathway is drawn from its own step data (tool audit 2026-10): a
+     numbered node per step, each with a small icon for the kind of step
+     (heart, vessel, lung, nephron, impulse, channel, hormone and so on), in a
+     two- or three-column snake joined by the course's arrows ("flows to"
+     dashed for blood and fluid, "causes" solid for mechanisms). Blood steps
+     take the oxygenated or deoxygenated color. The drills fill it: placing a
+     step lights its node, a gap stays a dashed "?", and after an answer each
+     node shows whether it was right, with the student's step struck through
+     where it was not. A step can name its own icon with "icon" in the data;
+     otherwise it is chosen from its label and text, then from the chapter. */
+  var ICON = {
+    heart: '<path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/><path d="M9.2 11.2c.5-1.2 1.4-1.8 2.3-1.8"/>',
+    valve: '<circle cx="12" cy="12" r="8.5"/><path d="M12 12V3.5M12 12l-7.3 4.2M12 12l7.3 4.2"/><path d="M9.6 6.8 12 9.4l2.4-2.6"/>',
+    vessel: '<path d="M2.5 8.2c3.2-1.6 6.3 1.6 9.5 0s6.3-1.6 9.5 0M2.5 15.8c3.2-1.6 6.3 1.6 9.5 0s6.3-1.6 9.5 0"/><ellipse cx="8" cy="12" rx="2" ry="1.4"/><ellipse cx="15.5" cy="12.1" rx="2" ry="1.4"/>',
+    lung: '<path d="M12 3v8.5M12 9.5c-.8 1.3-2 2-3 2.2M12 9.5c.8 1.3 2 2 3 2.2"/><path d="M9.3 6.6C6 6.8 4 11.4 4 16.3c0 2.8 1.2 3.9 3 3.9 2 0 3-1.4 3-3.7V9.9M14.7 6.6c3.3.2 5.3 4.8 5.3 9.7 0 2.8-1.2 3.9-3 3.9-2 0-3-1.4-3-3.7V9.9"/>',
+    kidney: '<path d="M14.6 3.6c-4.4 0-8.1 3.6-8.1 8.4s3.7 8.4 8.1 8.4c2.7 0 4.2-1.8 4.2-3.8 0-1.6-1.3-2.6-2.7-2.6-1.2 0-2-.8-2-2s.8-2 2-2c1.4 0 2.7-1 2.7-2.6 0-2-1.5-3.8-4.2-3.8z"/><path d="M13.9 12c-1.6 0-2.6 1.2-3.2 3.1M10.7 15.1c-.4 1.7-.6 3.6-.6 5.4"/>',
+    gut: '<path d="M9.4 2.8v4.1c0 1.9-4.1 3-4.1 8.3 0 3.8 3 6 7 6 4.6 0 7-3 7-6.2 0-2.6-1.9-4-4-4-1.6 0-2.8.9-2.8-1.1V2.8"/><path d="M8.8 15.4c1.2 1.2 3.1 1.5 4.8.6"/>',
+    muscle: '<path d="M4 4.5v15M20 4.5v15"/><path d="M4 8.2h7.2M4 15.8h7.2M20 8.2h-7.2M20 15.8h-7.2"/><path d="M7.8 12h8.4" stroke-width="3.2"/>',
+    synapse: '<path d="M2.8 3.8c5.4 0 8.6 3.4 8.6 8.2s-3.2 8.2-8.6 8.2"/><circle cx="6" cy="9" r="1.5"/><circle cx="7.6" cy="13.4" r="1.5"/><circle cx="5" cy="16" r="1.2"/><path d="M17.6 3.8c-1.7 4.5-1.7 11.9 0 16.4"/><circle cx="14.6" cy="9.8" r=".9" class="pwi-f"/><circle cx="14.2" cy="14.2" r=".9" class="pwi-f"/>',
+    impulse: '<path d="M2 15h5l2.2-10.5L12.6 20l2.2-5H22"/>',
+    eye: '<path d="M2 12s3.8-6.8 10-6.8S22 12 22 12s-3.8 6.8-10 6.8S2 12 2 12z"/><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="1.1" class="pwi-f"/>',
+    sound: '<path d="M3.5 9.2h3.8L12.2 5v14l-4.9-4.2H3.5z"/><path d="M15.6 9.1a4.2 4.2 0 0 1 0 5.8M18.3 6.4a8.1 8.1 0 0 1 0 11.2"/>',
+    brain: '<path d="M12 4.6c-.9-1.6-4.6-1.8-5.7.9-2.7.1-3.9 3.4-2 5.6-1.8 2 .1 5.8 2.9 5.5.9 2 4 2.1 4.8.1zM12 4.6c.9-1.6 4.6-1.8 5.7.9 2.7.1 3.9 3.4 2 5.6 1.8 2-.1 5.8-2.9 5.5-.9 2-4 2.1-4.8.1"/><path d="M12 4.6V18M8.4 9.2c1.1.4 1.6 1.3 1.6 2.4M15.6 9.2c-1.1.4-1.6 1.3-1.6 2.4M7.4 14c1 0 1.9-.4 2.4-1.2M16.6 14c-1 0-1.9-.4-2.4-1.2"/>',
+    channel: '<path d="M2 8.6h6.4M15.6 8.6H22M2 15.4h6.4M15.6 15.4H22"/><rect x="8.4" y="6" width="2.6" height="12" rx="1.2"/><rect x="13" y="6" width="2.6" height="12" rx="1.2"/><path d="M12 2.6v18.2M10 18.6l2 2.2 2-2.2"/>',
+    receptor: '<path d="M2.5 16.5h19"/><path d="M12 21v-6.2M12 14.8 8.4 10.6M12 14.8l3.6-4.2"/><path d="m9.6 6.4 2.4-2.6 2.4 2.6-2.4 2.6z"/>',
+    hormone: '<path d="M12 3.2c3.2 4.2 6 7.2 6 11a6 6 0 0 1-12 0c0-3.8 2.8-6.8 6-11z"/><path d="M9.4 14.6a2.7 2.7 0 0 0 2.6 2.7"/>',
+    enzyme: '<path d="M18.6 7.6A8 8 0 1 0 18.6 16.4L12 12z"/><circle cx="20.6" cy="12" r="1.6"/><circle cx="9" cy="8.6" r=".9" class="pwi-f"/>',
+    energy: '<path d="M13.4 2.6 5.2 13.6h6.1l-1 7.8 8.4-11.2h-6.2z"/>',
+    molecule: '<path d="M12 3.2 19.6 7.6v8.8L12 20.8l-7.6-4.4V7.6z"/><path d="M12 7.4 15.8 9.6M8.2 14.4 12 16.6"/>',
+    dna: '<path d="M7 2.8c0 5.2 10 7 10 9.2s-10 4-10 9.2M17 2.8c0 5.2-10 7-10 9.2s10 4 10 9.2"/><path d="M8.6 6.2h6.8M9.6 9.4h4.8M9.6 14.6h4.8M8.6 17.8h6.8"/>',
+    bone: '<path d="M7.8 16.2 16.2 7.8" stroke-width="3.4"/><circle cx="5.6" cy="15.4" r="2.3"/><circle cx="8.6" cy="18.4" r="2.3"/><circle cx="15.4" cy="5.6" r="2.3"/><circle cx="18.4" cy="8.6" r="2.3"/>',
+    thermo: '<path d="M9.8 4.4a2.2 2.2 0 0 1 4.4 0v9.8a4.4 4.4 0 1 1-4.4 0z"/><path d="M12 8.6v8.2"/><circle cx="12" cy="17.4" r="1.6" class="pwi-f"/>',
+    repro: '<circle cx="14" cy="12.4" r="6.4"/><circle cx="14" cy="12.4" r="2.2"/><path d="M2.4 5.6c1.6-.6 2.6.6 4.2.4" /><ellipse cx="7.8" cy="6.4" rx="1.6" ry="1.1" transform="rotate(20 7.8 6.4)"/>',
+    gauge: '<path d="M3.6 16.4a8.4 8.4 0 1 1 16.8 0"/><path d="M12 16.4 16.2 10.8"/><circle cx="12" cy="16.4" r="1.5" class="pwi-f"/><path d="M6.2 11.6l1.4.9M12 7.4V9M17.8 11.6l-1.4.9"/>',
+    cell: '<circle cx="12" cy="12" r="8.6"/><circle cx="11" cy="11" r="3.2"/><ellipse cx="16.4" cy="15.6" rx="1.8" ry="1" transform="rotate(-30 16.4 15.6)"/><circle cx="7.6" cy="16" r=".9" class="pwi-f"/>',
+    clot: '<path d="M3 6.4 21 17.2M3 17.6 21 6.6M2.6 12h18.8M8.4 3.6l7 16.8"/><ellipse cx="12" cy="12" rx="3.4" ry="2.2" class="pwi-f"/>',
+    immune: '<path d="M12 21.2v-8.4M12 12.8 6.4 6.6M12 12.8l5.6-6.2M9.6 15.2 5 10.2M14.4 15.2l4.6-5"/><circle cx="5.4" cy="5.2" r="1.7"/><circle cx="18.6" cy="5.2" r="1.7"/>',
+    layer: '<path d="m3 7.4 9-4.2 9 4.2-9 4.2z"/><path d="m3 12.2 9 4.2 9-4.2M3 16.8l9 4.2 9-4.2"/>',
+    joint: '<path d="M4.2 19.8 9.6 14.4" stroke-width="3"/><path d="M14.4 9.6l5.4-5.4" stroke-width="3"/><circle cx="12" cy="12" r="3.2"/><path d="M5.8 8.6a8.2 8.2 0 0 1 2.8-2.8"/><path d="M8.6 5.8l.4-2M5.8 8.6l-2 .4"/>',
+    fluid: '<path d="M12 2.8c2.2 2.8 4.2 5 4.2 7.6a4.2 4.2 0 0 1-8.4 0c0-2.6 2-4.8 4.2-7.6z"/><path d="M2.6 17c3.1-1.8 6.3 1.8 9.4 0s6.3-1.8 9.4 0M2.6 21c3.1-1.8 6.3 1.8 9.4 0s6.3-1.8 9.4 0"/>',
+    step: '<circle cx="12" cy="12" r="8.6"/><path d="M8 12h8M13 8.8 16.2 12 13 15.2"/>'
+  };
+  // the color family of each kind of step (pathways.css --pwk-*)
+  var FAM = { heart: 'cv', valve: 'cv', vessel: 'cv', clot: 'cv', lung: 'rs', kidney: 'rn', fluid: 'rn', channel: 'rn', gut: 'gi',
+    muscle: 'ms', bone: 'ms', joint: 'ms', layer: 'ms', synapse: 'nv', impulse: 'nv', eye: 'nv', sound: 'nv', brain: 'nv',
+    receptor: 'ch', hormone: 'ch', enzyme: 'ch', energy: 'ch', molecule: 'ch', gauge: 'ch', thermo: 'ch',
+    dna: 'ce', cell: 'ce', repro: 'ce', immune: 'im', step: 'ce' };
+  // tried in order on the label, then on the text; the first match wins
+  var KINDS = [
+    ['valve', /\bvalves?\b|\bcusps?\b|chordae/i],
+    ['brain', /lateral ventricle|third ventricle|fourth ventricle|aqueduct|\bCSF\b|cerebrospinal|choroid|arachnoid granul|apertures?\b/i],
+    ['heart', /\batri(a|um|al)\b|(left|right) ventricle|ventricles? (contract|fill|relax)|\bheart\b|cardiac|\bSA node|\bAV node|bundle of his|bundle branch|purkinje|myocard/i],
+    ['clot', /platelet|fibrin|thrombin|\bclot|factor [IVX]+|\b[IVX]+a\b|prothrombin|coagul|\bvWF\b|von willebrand/i],
+    ['immune', /antibod|antigen|\b[TB] cells?\b|macrophag|phagocyt|neutrophil|lymphocyte|complement|\bMHC\b|immun|helper|cytotoxic|plasma cells?|dendritic|inflamm|histamine|pathogen|mast cell|lymph\b|lymph node/i],
+    ['lung', /alveol|\blungs?\b|bronch|trache|airway|inhal|exhal|breath|\bair\b|pharynx|larynx|nasal|diaphragm|pleura|epiglott|ventilat|surfactant|\bcough/i],
+    ['kidney', /glomerul|tubule|nephron|filtrate|henle|collecting duct|\burine|ureter|bladder|urethr|bowman|kidney|renal|juxtaglom|macula densa|micturi|limb (loses|gains)|descending limb|ascending limb|\bduct\b/i],
+    ['gut', /stomach|intestin|duoden|jejun|ileum|\bcolon|rect(um|al)|esophag|bolus|\bchyme|swallow|mouth|chew|saliva|\bbile|gallbladder|pancrea|fec(es|al)|digest|gastric|villi|lacteal|micelle|chylomicron|peristal|defecat|\bgut\b|\bliver|portal vein|hepat/i],
+    ['muscle', /myosin|\bactin|cross-?bridge|sarcomere|troponin|tropomyosin|muscle|myofib|sarcoplasmic|\bSR\b|t[- ]tubule|power stroke|filaments?|myoblast|perimysium|endomysium|epimysium|fascicle/i],
+    ['synapse', /vesicle|neurotransmitter|acetylcholine|\bACh\b|exocytosis|synap|cleft|norepinephrine/i],
+    ['vessel', /aort|arter|\bveins?\b|vena|venule|capillar|vessel|coronary sinus|bloodstream|circulat|\bblood\b/i],
+    ['eye', /\blight\b|retina|photorecept|\brods?\b|\bcones?\b|\blens\b|cornea|pupil|optic|\beyes?\b|rhodopsin|visual|aqueous|vitreous/i],
+    ['sound', /sound|cochlea|hair cells?|\bears?\b|tympan|ossicle|stapes|malleus|incus|vibrat|basilar|endolymph|vestibul|odorant|olfact|\btaste\b|gustat/i],
+    ['impulse', /action potential|impulse|depolari|repolari|hyperpolar|axon|\bnerves?\b|neurons?\b|signal|conduct|threshold|spinal cord|reflex|sensory receptor|ganglion|motor (neuron|end)|dendrite|\bmV\b|upstroke|dorsal root|ventral root|\broot\b|myelin|sprout/i],
+    ['brain', /hypothalam|pituitar|cortex|\bbrain|medulla\b|\bpons\b|cerebell|thalam|\bCNS\b|control center|brainstem|limbic|amygdala|cerebr/i],
+    ['channel', /channels?\b|\bNa\+|\bK\+|Ca2\+|Ca²⁺|Na⁺|K⁺|Cl[⁻−-]|HCO3|sodium|potassium|calcium|chloride|bicarbonate|\bions?\b|\bpump|gradient|diffus|osmo|transporter|symporter|antiporter|\bGLUT\d|\bNKCC|cotransport|\bH\+|\bNH[34]/i],
+    ['receptor', /\bbinds?\b|receptor|binding|attach|second messenger|\bcAMP|G protein|kinase|phosphoryl/i],
+    ['hormone', /hormone|secret|gland|insulin|glucagon|cortisol|thyro|\bTSH\b|ACTH|\bADH\b|aldosterone|renin|angiotensin|oxytocin|estrogen|progesterone|testosterone|\bLH\b|\bFSH\b|\bPTH\b|calcitriol|epinephrine|ghrelin|leptin|releas|prolactin|GnRH|\bhCG\b|erythropoietin|\bEPO\b|iodide|\bT[34]\b/i],
+    ['enzyme', /enzyme|\w{3,}ase\b|cataly|cleav|breaks? (down|apart)|hydroly|active site|substrate|activates/i],
+    ['energy', /\bATP\b|NADH|FADH|electron|proton|oxidative|\bkcal|energy/i],
+    ['fluid', /\bwater\b/i],
+    ['molecule', /glucose|glycoly|pyruv|acetyl[ -]?CoA|krebs|citric|oxaloacet|fatty acid|ketone|glycogen|amino acid|protein|lactate|lactic|sugar|starch|lipid|triglycer|monosacch|peptide|vitamin|\bfat\b|urea|ammonia|\bCO2\b|\bO2\b|oxygen|carbon dioxide/i],
+    ['dna', /\bDNA\b|\bRNA\b|mRNA|\bgenes?\b|transcri|translat|ribosom|codon|nucle(us|i)\b|chromosom|mitosis|meiosis|replicat|chromatid|spindle|gametes?|allele|punnett|genotype/i],
+    ['bone', /\bbones?\b|osteo|calcif|cartilage|ossif|marrow|epiphys|fracture|callus|\bskull\b|suture|fontanel|sphenoid|ethmoid|carpal|hamate|scaphoid|lunate|trochanter|\bcrest\b|vertebra|\bribs?\b|femur|humerus|fossa/i],
+    ['joint', /\bjoint|flex|extend|extension|abduct|adduct|rotat|lever|tendon|ligament|elbow|knee|shoulder|\bhip\b|\bjaw\b|grip|movement|forearm|\bheel\b|tiptoe|\bcuff\b|bursa/i],
+    ['thermo', /temperat|\bheat|\bcold\b|sweat|shiver|fever|thermo/i],
+    ['repro', /sperm|\bov(um|a)\b|\beggs?\b|oocyte|follic|ovul|uter(us|ine)|embryo|zygote|fertili[sz]|placent|implant|menstru|\blabor\b|cervi[xc]|\bbaby\b|fetal|fetus|blastocyst|corpus luteum|endometri|gastrul|neural (plate|tube)|germ layer|ectoderm|mesoderm|endoderm|testis|testes|milk|suckl/i],
+    ['gauge', /pressure|stretch|baroreceptor|chemoreceptor|set point|detect/i],
+    ['layer', /\bskin\b|epiderm|derm(is|al)|keratin|fascia|\blayers?\b|dura|\bpia\b|arachnoid|subcutan|wound|scab|\bscar\b/i],
+    ['fluid', /fluid|water|plasma|volume|interstitial|\bedema|\bsalt\b|saline|\bIV\b|\bD5W\b/i],
+    ['cell', /\bcells?\b|membrane|cytoplasm|organelle|mitochond|lysosom|golgi|endoplasm/i]
+  ];
+  var CHAPTER_KIND = { orientation: 'layer', 'chem-physics': 'molecule', cells: 'cell', tissues: 'layer', 'cell-communication': 'receptor',
+    integumentary: 'layer', 'bone-tissue': 'bone', skeleton: 'bone', joints: 'joint', 'muscle-tissue': 'muscle', 'muscular-system': 'joint',
+    'nervous-tissue': 'impulse', cns: 'brain', pns: 'impulse', 'special-senses': 'eye', autonomic: 'impulse', endocrine: 'hormone',
+    blood: 'clot', cardiovascular: 'vessel', 'lymph-immune': 'immune', respiratory: 'lung', digestive: 'gut', metabolism: 'molecule',
+    urinary: 'kidney', 'fluid-acid-base': 'fluid', reproductive: 'repro', development: 'repro' };
+  function stepKind(p, s){
+    if(s.icon && ICON[s.icon]) return s.icon;
+    var srcs = [plain(s.label), plain(s.text)];
+    for(var a = 0; a < srcs.length; a++) for(var i = 0; i < KINDS.length; i++) if(KINDS[i][1].test(srcs[a])) return KINDS[i][0];
+    return CHAPTER_KIND[chapterOf(p)] || 'step';
+  }
+  function iconSvg(kind, x, y, size, cls){
+    var g = el('g', { 'class': 'pwi ' + (cls || ''), transform: 'translate(' + x + ',' + y + ') scale(' + (size / 24) + ')' });
+    g.innerHTML = ICON[kind] || ICON.step;
+    return g;
+  }
+  // an inline icon for HTML lists (the step to spot in Spot the error)
+  function iconTag(p, s, neutral){
+    var k = stepKind(p, s);
+    // in the bank a blood step keeps its family color: its oxygen color would say which half it goes in
+    return '<span class="pw-ib fam-' + (!neutral && (s.blood === 'o2' || s.blood === 'deo2') ? s.blood : FAM[k]) + '" aria-hidden="true"><svg viewBox="0 0 24 24" class="pwi">' + ICON[k] + '</svg></span>';
+  }
+
+  var NW = 168, NH = 58, GX = 30, GY = 30, PAD = 10;
+  function colsFor(n){ return n > 6 && window.matchMedia && window.matchMedia('(min-width: 1000px)').matches ? 3 : 2; }
+  function wrap(label, max){
+    var words = plain(label).split(' '), lines = [''], k = 0;
+    words.forEach(function(w){
+      if(!lines[k]) lines[k] = w;
+      else if((lines[k] + ' ' + w).length <= max) lines[k] += ' ' + w;
+      else { k++; lines[k] = w; }
+    });
+    return lines;
+  }
+  function el(name, attrs, text){
+    var e = document.createElementNS(SVGNS, name);
+    for(var a in attrs) if(attrs.hasOwnProperty(a) && attrs[a] != null) e.setAttribute(a, attrs[a]);
+    if(text != null) e.textContent = text;
+    return e;
+  }
+  function pathMap(p, opt){
+    opt = opt || {};
+    var n = p.steps.length, cols = opt.cols || colsFor(n), rows = Math.ceil(n / cols);
+    var W = PAD * 2 + NW * cols + GX * (cols - 1);
+    var H = PAD * 2 + 8 + rows * NH + (rows - 1) * GY + (p.cycle ? 30 : 0);
+    function pos(k){
+      var row = Math.floor(k / cols), col = k % cols;
+      if(row % 2 === 1) col = cols - 1 - col;
+      return { x: PAD + col * (NW + GX), y: PAD + 8 + row * (NH + GY), col: col, row: row };
+    }
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'class': 'pw-svg pw-map cols-' + cols });
+    var arrows = el('g', { 'class': 'pw-arrows' }), nodes = el('g', { 'class': 'pw-nodes' });
+    svg.appendChild(arrows); svg.appendChild(nodes);
+    var slot = [];
+    for(var k = 0; k < n; k++){
+      var a = pos(k);
+      if(k < n - 1){
+        var b = pos(k + 1), d;
+        if(a.row === b.row){
+          var y = a.y + NH / 2;
+          d = a.col < b.col ? 'M' + (a.x + NW + 2) + ',' + y + ' L' + (b.x - 4) + ',' + y : 'M' + (a.x - 2) + ',' + y + ' L' + (b.x + NW + 4) + ',' + y;
+        } else {
+          var x = a.x + NW / 2;
+          d = 'M' + x + ',' + (a.y + NH + 2) + ' L' + x + ',' + (b.y - 12);
+        }
+        arrows.appendChild(el('path', { d: d, 'data-k': k, 'class': p.kind === 'flow' ? 'flows' : 'causes' }));
+      }
+      var g = el('g', { 'class': 'pw-node', 'data-k': k });
+      nodes.appendChild(g);
+      slot.push({ g: g, a: a, i: null });
+    }
+    if(p.cycle){
+      var last = pos(n - 1);
+      svg.appendChild(el('text', { x: last.x + NW / 2, y: last.y + NH + 24, 'text-anchor': 'middle', 'class': 'pw-cyc' }, '↻ then back to step 1'));
+    }
+    /* fill(k, i, state, extra): slot k shows step i (null: empty or gap).
+       state: '' | 'empty' | 'next' | 'gap' | 'ok' | 'no' | 'marked' | 'picked'. */
+    function fill(k, i, state, extra){
+      var s = slot[k], g = s.g, a = s.a, st = i != null ? p.steps[i] : null;
+      s.i = i;
+      while(g.firstChild) g.removeChild(g.firstChild);
+      var kind = st ? stepKind(p, st) : null;
+      var fam = st ? (st.blood === 'o2' || st.blood === 'deo2' ? st.blood : FAM[kind]) : 'none';
+      g.setAttribute('class', 'pw-node fam-' + fam + (state ? ' is-' + state : '') + (st ? ' is-lit' : ''));
+      g.appendChild(el('rect', { x: a.x, y: a.y, width: NW, height: NH, rx: 13, 'class': 'pw-box' }));
+      if(st){
+        g.appendChild(el('circle', { cx: a.x + 24, cy: a.y + NH / 2, r: 17, 'class': 'pw-ibg' }));
+        g.appendChild(iconSvg(kind, a.x + 13, a.y + NH / 2 - 11, 22));
+      } else {
+        g.appendChild(el('circle', { cx: a.x + 24, cy: a.y + NH / 2, r: 17, 'class': 'pw-ibg pw-ibg-empty' }));
+        g.appendChild(el('text', { x: a.x + 24, y: a.y + NH / 2 + 6, 'text-anchor': 'middle', 'class': 'pw-q' }, state === 'gap' ? '?' : ''));
+      }
+      var label = st ? st.label : state === 'gap' ? 'Missing step' : state === 'next' ? 'Place the next step' : '';
+      var max = 15, lines = wrap(label, max);
+      if(lines.length > 2){ max = 18; lines = wrap(label, max); }
+      var small = lines.length > 2 || (extra && extra.yours);
+      lines = lines.slice(0, extra && extra.yours ? 2 : 3);
+      var lh = small ? 12.5 : 15, top = a.y + NH / 2 - (lines.length - 1) * lh / 2 + 4.5 - (extra && extra.yours ? 7 : 0);
+      lines.forEach(function(line, j){ g.appendChild(el('text', { x: a.x + 47, y: top + j * lh, 'class': 'pw-lbl' + (small ? ' is-sm' : '') + (st ? '' : ' is-ph') }, line)); });
+      if(extra && extra.yours){
+        g.appendChild(el('text', { x: a.x + 47, y: a.y + NH - 9, 'class': 'pw-yours' }, (extra.pre || 'yours: ') + cut(extra.yours, 24)));
+      }
+      // the step number, a tab on the node's top-left corner
+      g.appendChild(el('rect', { x: a.x + 8, y: a.y - 9, width: 22, height: 18, rx: 9, 'class': 'pw-num-bg' }));
+      g.appendChild(el('text', { x: a.x + 19, y: a.y + 4.5, 'text-anchor': 'middle', 'class': 'pw-num' }, String(k + 1)));
+      if(state === 'ok' || state === 'no'){
+        g.appendChild(el('circle', { cx: a.x + NW - 4, cy: a.y + 4, r: 10, 'class': 'pw-mk' }));
+        g.appendChild(el('path', { d: state === 'ok' ? 'M' + (a.x + NW - 9) + ',' + (a.y + 4) + ' l3.5,3.5 l6.5,-7' : 'M' + (a.x + NW - 8) + ',' + a.y + ' l8,8 m0,-8 l-8,8', 'class': 'pw-mk-t' }));
+      }
+      // the arrow into this slot takes the color of the blood leaving the step before it
+      var arr = arrows.querySelector('path[data-k="' + k + '"]');
+      if(arr){ var tone = st && (st.blood === 'o2' || st.blood === 'deo2') ? ' ' + st.blood : ''; arr.setAttribute('class', (p.kind === 'flow' ? 'flows' : 'causes') + tone + (st ? '' : ' is-faint')); }
+      var prev = arrows.querySelector('path[data-k="' + (k - 1) + '"]');
+      if(prev && !st) prev.classList.add('is-faint');
+      // tap target and accessible name
+      g.setAttribute('aria-label', 'Step ' + (k + 1) + ': ' + (st ? plain(st.label) : state === 'gap' ? 'missing' : 'empty') + (state === 'ok' ? ', right' : state === 'no' ? ', wrong' : ''));
+      fitNode(g, a);
+    }
+    /* Every label line is measured once the map is on the page: a line wider
+       than its node is squeezed to fit (a long word such as
+       "Phosphofructokinase"), and a struck-through "yours" line is shortened
+       word by word. */
+    function fitNode(g, a){
+      if(!svg.isConnected) return;
+      var avail = NW - 47 - 9;
+      [].forEach.call(g.querySelectorAll('.pw-yours'), function(t){
+        var tries = 0;
+        try{ while(t.getComputedTextLength() > avail && tries++ < 12){ var s2 = t.textContent.replace(/…$/, '').replace(/\s*\S+$/, ''); if(s2 === t.textContent || s2.length < 6) break; t.textContent = s2 + '…'; } }catch(e){}
+      });
+      [].forEach.call(g.querySelectorAll('.pw-lbl, .pw-yours'), function(t){
+        try{ if(t.getComputedTextLength() > avail){ t.setAttribute('textLength', avail); t.setAttribute('lengthAdjust', 'spacingAndGlyphs'); } }catch(e){}
+      });
+    }
+    function fitAll(){ slot.forEach(function(s){ fitNode(s.g, s.a); }); }
+    function label(){
+      var parts = slot.map(function(s, k){ return (k + 1) + '. ' + (s.i != null ? plain(p.steps[s.i].label) : '?'); });
+      svg.setAttribute('aria-label', p.title + ', step by step: ' + parts.join('; ') + (p.cycle ? '; then back to step 1.' : '.'));
+    }
+    return { svg: svg, n: n, slot: slot, fit: fitAll, fill: function(k, i, st, ex){ fill(k, i, st, ex); label(); }, fillAll: function(fn){ for(var k = 0; k < n; k++){ var r = fn(k) || {}; fill(k, r.i, r.state, r.extra); } label(); } };
+  }
+  function mapFig(map){
+    var fig = document.createElement('figure');
+    fig.className = 'anp-fig pw-fig';
+    fig.appendChild(map.svg);
+    return fig;
   }
 
   /* Record the first check of each variant on this visit. */
@@ -535,33 +771,91 @@
     return '<p class="pw-verdict ' + (correct ? 'ok' : 'no') + '"><b>' + (correct ? 'Correct.' : partial ? 'Partly right.' : 'Not quite.') + '</b> ' +
       (first ? (correct ? '' : 'Added to your review queue.') : '<span class="anp-small">Practice try: not scored again this visit.</span>') + '</p>';
   }
+  /* A miss is not a dead end: one method hint with Try again, or Show the
+     answer. The first check is the one scored. */
+  function hintBox(panel, html_, onRetry, onReveal){
+    var hb = pq(panel, '.pw-hint');
+    hb.innerHTML = '<p>' + html_ + '</p><div class="pw-actions"><button type="button" class="btn-press sm pw-retry">Try again</button> <button type="button" class="btn-outline pw-reveal">Show the answer</button></div>';
+    hb.hidden = false;
+    // while the hint shows, the dock holds only the hint, so the map stays on screen above it
+    panel.classList.add('is-hinting');
+    hb.querySelector('.pw-retry').addEventListener('click', function(){ hb.hidden = true; panel.classList.remove('is-hinting'); onRetry(); });
+    hb.querySelector('.pw-reveal').addEventListener('click', function(){ hb.hidden = true; panel.classList.remove('is-hinting'); onReveal(); });
+    if(S) S.caption('Read the hint, then try again or show the answer.', p0mode());
+    try{ hb.querySelector('.pw-retry').focus({ preventScroll: true }); }catch(e){ hb.querySelector('.pw-retry').focus(); }
+  }
+  var curP = null;
+  function p0mode(){ return curP && curP.trace ? 'drills' : undefined; }
+  // scroll the studio stage so map slot k is on screen
+  function slotInView(map, k){
+    if(!S || !map.slot[k]) return;
+    var g = map.slot[k].g, body = S.stage;
+    try{ var r = g.getBoundingClientRect(), b = body.getBoundingClientRect(); if(r.top < b.top + 8 || r.bottom > b.bottom - 8) body.scrollTop += r.top - b.top - (b.height - r.height) / 2; }catch(e){}
+  }
+  // keep the map in view on a phone: focus the result without scrolling the page to it
+  function focusRes(res){ try{ res.focus({ preventScroll: !!S }); }catch(e){ res.focus(); } if(S){ try{ window.scrollTo(0, 0); }catch(e){} } }
+  function cut(s, n){ s = plain(s); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : s; }
 
-  /* Variant 1: put the steps in order. */
-  function orderVariant(p, panel){
+  /* Variant 1: put the steps in order. Tap a step in the bank and it lands
+     in the next empty place on the map, which lights up; tap a placed step
+     to take it back. "Use a list" switches to the drag-and-arrows list. */
+  function orderVariant(p, panel, asList){
+    curP = p;
     var n = p.steps.length;
-    var cur = shuffle(p.steps.map(function(s, i){ return i; }));
-    if(cur.every(function(v, k){ return v === k; })) cur.reverse();
-    panel.innerHTML = '<p class="kt-first pw-task">Put the steps in order, first at the top: drag a step or use its arrows.</p>' +
+    var bank = shuffle(p.steps.map(function(s, i){ return i; }));
+    if(bank.every(function(v, k){ return v === k; })) bank.reverse();
+    var place = []; for(var z = 0; z < n; z++) place.push(null);
+    var locked = {}, tries = 0, done = false, full = false;
+    if(asList){ place = bank.slice(); }
+    var map = pathMap(p);
+    panel.innerHTML = '<p class="kt-first pw-task">' + (asList ? 'Put the steps in order, first at the top: drag a step or use its arrows. The map follows.' : 'Tap the steps in the order they happen. Each one lights up its place on the map.') + '</p>' +
       (p.cycle ? '<p class="anp-small pw-cyclenote">This pathway is a cycle: start with the step the scenario gives you.</p>' : '') +
-      '<ol class="anp-order pw-order"></ol>' +
-      '<div class="pw-actions"><button type="button" class="btn-press sm pw-check">Check order</button></div>' +
-      '<div class="pw-result" aria-live="polite"></div>';
-    var list = panel.querySelector('.pw-order');
-    var checked = false;
-    function paint(focusK, focusD){
-      list.innerHTML = cur.map(function(i, k){
+      '<div class="pw-figslot"></div>' +
+      (asList ? '<ol class="anp-order pw-order"></ol>' : '<div class="pw-bank" data-ls-answer role="group" aria-label="Steps to place"></div>') +
+      '<div class="pw-actions"><button type="button" class="btn-press sm pw-check"' + (asList ? '' : ' disabled') + '>Check order</button>' +
+        (asList ? '' : '<button type="button" class="btn-outline pw-undo" disabled>Undo</button>') + '</div>' +
+      '<div class="pw-hint" role="status" hidden></div>' +
+      '<div class="pw-result" aria-live="polite"></div>' +
+      '<p class="pw-alt"><button type="button" class="pw-link pw-full" aria-pressed="false">Show full sentences</button> · <button type="button" class="pw-link pw-swap">' + (asList ? 'Tap to place instead' : 'Use a list instead') + '</button></p>';
+    var fig = mapFig(map); panel._map = map;
+    pq(panel, '.pw-figslot').appendChild(fig);
+    var check = pq(panel, '.pw-check'), undo = pq(panel, '.pw-undo');
+    var bankEl = pq(panel, '.pw-bank'), list = pq(panel, '.pw-order');
+    pq(panel, '.pw-swap').addEventListener('click', function(){ orderVariant(p, panel, !asList); });
+    pq(panel, '.pw-full').addEventListener('click', function(){ full = !full; this.setAttribute('aria-pressed', String(full)); this.textContent = full ? 'Show short labels' : 'Show full sentences'; paint(); });
+    function cardText(i){ return full ? html(p.steps[i].text) : html(p.steps[i].label); }
+    function nextFree(){ for(var k = 0; k < n; k++) if(place[k] == null) return k; return -1; }
+    function paintMap(){
+      var nf = nextFree();
+      map.fillAll(function(k){ return place[k] != null ? { i: place[k], state: locked[k] ? 'ok' : '' } : { i: null, state: k === nf ? 'next' : 'empty' }; });
+      // a placed, unlocked step is a button: tap it to take it back
+      map.slot.forEach(function(s, k){
+        var on = !asList && !done && place[k] != null && !locked[k];
+        if(on){ s.g.setAttribute('tabindex', '0'); s.g.setAttribute('role', 'button'); s.g.setAttribute('aria-label', 'Step ' + (k + 1) + ': ' + plain(p.steps[place[k]].label) + '. Select to take it back.'); }
+        else { s.g.removeAttribute('tabindex'); s.g.removeAttribute('role'); }
+        s.g.classList.toggle('is-tap', on);
+      });
+    }
+    function paintBank(){
+      var left = bank.filter(function(i){ return place.indexOf(i) < 0; });
+      bankEl.innerHTML = left.length ? left.map(function(i){
+        var kind = stepKind(p, p.steps[i]);
+        return '<button type="button" class="pw-bcard" data-i="' + i + '">' + iconTag(p, p.steps[i], true) + '<span>' + cardText(i) + '</span></button>';
+      }).join('') : '<p class="anp-small pw-bank-done">Every step is placed. Check your order, or tap a step on the map to take it back.</p>';
+      check.disabled = done || nextFree() >= 0;
+      if(undo) undo.disabled = done || !place.some(function(v, k){ return v != null && !locked[k]; });
+    }
+    function paintList(focusK, focusD){
+      list.innerHTML = place.map(function(i, k){
         var s = p.steps[i];
-        var cls = checked ? (i === k ? 'pos-ok' : 'pos-no') : '';
-        var mark = checked ? (i === k ? '<span class="pw-pos ok" aria-label="right position">✓</span>' : '<span class="pw-pos no">belongs at ' + (i + 1) + '</span>') : '';
-        return '<li class="' + cls + '" data-pos="' + k + '">' + (checked ? '' : '<span class="pw-grip" aria-hidden="true" title="Drag to move"></span>') + '<span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="anp-order-text">' + html(s.text) + mark + '</span>' +
-          (checked ? '' : '<span class="pw-move"><button type="button" data-k="' + k + '" data-d="-1" aria-label="Move up: ' + esc(plain(s.label)) + '"' + (k === 0 ? ' disabled' : '') + '>↑</button>' +
-          '<button type="button" data-k="' + k + '" data-d="1" aria-label="Move down: ' + esc(plain(s.label)) + '"' + (k === n - 1 ? ' disabled' : '') + '>↓</button></span>') + '</li>';
+        return '<li data-pos="' + k + '"><span class="pw-grip" aria-hidden="true" title="Drag to move"></span><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span>' + iconTag(p, s, true) + '<span class="anp-order-text">' + cardText(i) + '</span>' +
+          '<span class="pw-move"><button type="button" data-k="' + k + '" data-d="-1" aria-label="Move up: ' + esc(plain(s.label)) + '"' + (k === 0 ? ' disabled' : '') + '>↑</button>' +
+          '<button type="button" data-k="' + k + '" data-d="1" aria-label="Move down: ' + esc(plain(s.label)) + '"' + (k === n - 1 ? ' disabled' : '') + '>↓</button></span></li>';
       }).join('');
-      if(checked) return;
       list.querySelectorAll('button[data-k]').forEach(function(b){
         b.addEventListener('click', function(){
           var k = +b.getAttribute('data-k'), d = +b.getAttribute('data-d'), j = k + d;
-          var t = cur[k]; cur[k] = cur[j]; cur[j] = t;
+          var t = place[k]; place[k] = place[j]; place[j] = t;
           paint(j, d);
         });
       });
@@ -571,15 +865,14 @@
         if(again) again.focus();
       }
     }
-    /* Drag a step by its body to a new place (touch or mouse); the arrow
-       buttons stay for keyboard and fine adjustment. The row follows the
-       pointer and the others close up around it, then the order is redrawn. */
+    function paint(fk, fd){ paintMap(); if(asList){ if(!done) paintList(fk, fd); } else paintBank(); }
+    /* Drag a step by its grip (touch) or body (mouse) to a new place; the
+       arrows stay for keyboard and fine adjustment. */
     function dragSort(){
       list.querySelectorAll('li[data-pos]').forEach(function(li){
         var from = +li.getAttribute('data-pos'), y0 = 0, dragging = false, pid = null, rows = null, to = from;
         li.addEventListener('pointerdown', function(e){
           if(e.button > 0 || e.target.closest('button')) return;
-          /* On touch only the grip starts a drag, so swiping a step still scrolls the page. */
           if(e.pointerType !== 'mouse' && !e.target.closest('.pw-grip')) return;
           pid = e.pointerId; y0 = e.clientY; dragging = false; to = from;
         });
@@ -612,83 +905,154 @@
           dragging = false;
           Array.prototype.forEach.call(list.children, function(r){ r.style.transform = ''; });
           li.classList.remove('is-dragging');
-          if(to !== from){ var v = cur.splice(from, 1)[0]; cur.splice(to, 0, v); }
+          if(to !== from){ var v = place.splice(from, 1)[0]; place.splice(to, 0, v); }
           paint();
         }
         li.addEventListener('pointerup', end);
         li.addEventListener('pointercancel', end);
       });
     }
+    var lastPlaced = [];
+    if(bankEl) bankEl.addEventListener('click', function(e){
+      var b = e.target.closest('.pw-bcard'); if(!b || done) return;
+      var k = nextFree(); if(k < 0) return;
+      place[k] = +b.getAttribute('data-i'); lastPlaced.push(k);
+      if(window.LevlSound && window.LevlSound.tick) try{ window.LevlSound.tick(); }catch(err){}
+      paint();
+      showNext();
+      var nb = bankEl.querySelector('.pw-bcard'); try{ (nb || check).focus({ preventScroll: true }); }catch(err){ (nb || check).focus(); }
+      if(S){ var nf = nextFree(); S.caption(nf < 0 ? 'Every step is placed. Press <b>Check order</b>.' : 'Step ' + (k + 1) + ' placed. Tap the step that comes next.', p0mode()); }
+    });
+    // keep the slot being filled in view on a long map
+    function showNext(){ var nf = nextFree(); slotInView(map, nf < 0 ? n - 1 : nf); }
+    function takeBack(k){
+      if(done || asList || place[k] == null || locked[k]) return;
+      place[k] = null; lastPlaced = lastPlaced.filter(function(x){ return x !== k; });
+      paint();
+    }
+    fig.addEventListener('click', function(e){ var g = e.target.closest ? e.target.closest('.pw-node.is-tap') : null; if(g) takeBack(+g.getAttribute('data-k')); });
+    fig.addEventListener('keydown', function(e){ if(e.key !== 'Enter' && e.key !== ' ') return; var g = e.target.closest ? e.target.closest('.pw-node.is-tap') : null; if(g){ e.preventDefault(); takeBack(+g.getAttribute('data-k')); } });
+    if(undo) undo.addEventListener('click', function(){
+      while(lastPlaced.length){ var k = lastPlaced.pop(); if(place[k] != null && !locked[k]){ place[k] = null; break; } }
+      paint();
+    });
     paint();
     if(S) studioDrill(p, panel);
-    panel.querySelector('.pw-check').addEventListener('click', function(){
-      checked = true;
-      var right = cur.filter(function(v, k){ return v === k; }).length;
-      paint();
+    check.addEventListener('click', function(){
+      if(done) return;
+      tries++;
+      var right = place.filter(function(v, k){ return v === k; }).length;
       var first = score(p, 'order', right, n);
-      var correct = right === n;
-      var res = panel.querySelector('.pw-result');
-      res.innerHTML = verdict(correct, right > 0, first) +
-        '<p>' + right + ' of ' + n + ' steps in the right position.' + (correct ? '' : ' Each step in the wrong place shows where it belongs.') + '</p>';
-      afterAnswer(p, panel, 'order', null);
-      panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Shuffle and try again</button>' + report(itemId(p, 'order'));
-      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } orderVariant(p, panel); pq(panel, '.pw-order button:not([disabled])').focus(); });
-      res.setAttribute('tabindex', '-1'); res.focus();
+      if(right === n) return finish(true, first);
+      if(tries === 1){
+        // mark each place, keep the right ones, and give one hint
+        map.fillAll(function(k){ return { i: place[k], state: place[k] === k ? 'ok' : 'no' }; });
+        var wrongK = -1; for(var k = 0; k < n; k++){ if(place[k] === k) locked[k] = true; else if(wrongK < 0) wrongK = k; }
+        check.disabled = true; if(undo) undo.disabled = true;
+        var before = wrongK > 0 ? 'Step ' + (wrongK + 1) + ' comes right after <b>' + html(p.steps[wrongK - 1].label) + '</b>. ' : 'Start with what sets the pathway going. ';
+        hintBox(panel, '<b>' + right + ' of ' + n + ' in the right place.</b> ' + (right ? 'The green ones stay. ' : '') + before + '<span class="pw-hint-why">Hint: ' + html(p.steps[wrongK].why) + '</span>',
+          function(){ for(var k2 = 0; k2 < n; k2++) if(!locked[k2]) place[k2] = asList ? place[k2] : null; lastPlaced = []; paint(); showNext(); if(S) S.caption(asList ? 'Move the red ones, then check again.' : 'Place the rest again. The green ones stay.', p0mode()); var nb = (bankEl || list).querySelector('button'); if(nb) nb.focus(); },
+          function(){ finish(false, first); });
+        return;
+      }
+      finish(false, first);
     });
+    function finish(correct, first){
+      done = true;
+      var right = place.filter(function(v, k){ return v === k; }).length;
+      // the right pathway, with each place the student got wrong marked and their step struck through
+      map.fillAll(function(k){ return { i: k, state: place[k] === k ? 'ok' : 'no', extra: place[k] === k || place[k] == null ? null : { yours: p.steps[place[k]].label } }; });
+      map.slot.forEach(function(s){ s.g.removeAttribute('tabindex'); s.g.removeAttribute('role'); s.g.classList.remove('is-tap'); });
+      if(bankEl) bankEl.innerHTML = '';
+      if(list) list.parentNode.removeChild(list);
+      var alt = pq(panel, '.pw-alt'); if(alt) alt.parentNode.removeChild(alt);
+      var res = pq(panel, '.pw-result');
+      res.innerHTML = verdict(correct, right > 0, first) +
+        '<p>' + right + ' of ' + n + ' steps in the right position' + (tries > 1 && !correct ? ' on your second try' : '') + '.' + (correct ? '' : ' The map shows the right order; red places show the step you put there.') + '</p>';
+      afterAnswer(p, panel, 'order', null, map);
+      pq(panel, '.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Shuffle and try again</button>' + report(itemId(p, 'order'));
+      pq(panel, '.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } orderVariant(p, panel, asList); var b = pq(panel, '.pw-bank .pw-bcard, .pw-order button:not([disabled])'); if(b) b.focus(); });
+      res.setAttribute('tabindex', '-1'); focusRes(res);
+    }
   }
 
-  /* Variant 2: one step is blanked; choose what fills it. */
+  /* Variant 2: one step is blanked on the map; choose what fills it. */
   function missingVariant(p, panel){
-    var m = p.missing, at = m.at;
+    curP = p;
+    var m = p.missing, at = m.at, tries = 0, done = false, first = false;
     var choices = shuffle([{ text: p.steps[at].text, why: p.steps[at].why, right: true }].concat(m.distractors.map(function(d){ return { text: d.text, why: d.why, right: false }; })));
-    panel.innerHTML = '<p class="kt-first pw-task">One step is missing. Choose the step that fills the gap.</p>' +
-      '<ol class="pw-steps">' + p.steps.map(function(s, k){
+    var map = pathMap(p);
+    map.fillAll(function(k){ return k === at ? { i: null, state: 'gap' } : { i: k }; });
+    panel.innerHTML = '<p class="kt-first pw-task">One step is missing from the map. Choose the step that fills gap ' + (at + 1) + '.</p>' +
+      '<div class="pw-figslot"></div>' +
+      '<details class="pw-fulld"><summary>Read every step in full</summary><ol class="pw-steps">' + p.steps.map(function(s, k){
         return k === at ? '<li class="pw-gap"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="pw-gap-text">Missing step</span></li>'
           : '<li><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span>' + html(s.text) + '</span></li>';
-      }).join('') + '</ol>' +
-      '<p class="pw-task"><b>Which step fills gap ' + (at + 1) + '?</b></p>' +
-      '<div class="anp-opt-btns pw-choices" role="group" aria-label="Choices for the missing step">' + choices.map(function(c, k){
+      }).join('') + '</ol></details>' +
+      '<div class="pw-hint" role="status" hidden></div>' +
+      '<p class="pw-task pw-ask"><b>Which step fills gap ' + (at + 1) + '?</b></p>' +
+      '<div class="anp-opt-btns pw-choices" data-ls-answer role="group" aria-label="Choices for the missing step">' + choices.map(function(c, k){
         return '<button type="button" class="anp-opt" data-k="' + k + '">' + html(c.text) + '</button>';
       }).join('') + '</div>' +
       '<div class="pw-actions"></div><div class="pw-result" aria-live="polite"></div>';
-    var answered = false;
-    if(S) studioDrill(p, panel);
-    panel.querySelectorAll('.pw-choices .anp-opt').forEach(function(b){
+    pq(panel, '.pw-figslot').appendChild(mapFig(map)); panel._map = map;
+    if(S){ studioDrill(p, panel); requestAnimationFrame(function(){ slotInView(map, at); }); }
+    function finish(pick){
+      done = true;
+      (S ? document : panel).querySelectorAll('.pw-choices .anp-opt').forEach(function(x){
+        var c = choices[+x.getAttribute('data-k')];
+        x.disabled = true;
+        if(c.right) x.classList.add('is-right'); else if(c === pick) x.classList.add('is-wrong');
+        if(!x.querySelector('.anp-opt-why')) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(c.why) + '</span>');
+      });
+      var ok = pick && pick.right && tries === 1;
+      map.fill(at, at, pick && pick.right ? 'ok' : 'no', pick && !pick.right ? { yours: cut(pick.text, 40) } : null);
+      slotInView(map, at);
+      var gap = pq(panel, '.pw-gap');
+      if(gap){ gap.classList.add(pick && pick.right ? 'is-right' : 'is-filled'); gap.querySelector('.pw-gap-text').innerHTML = html(p.steps[at].text); }
+      var res = pq(panel, '.pw-result');
+      res.innerHTML = verdict(ok, false, first) + (pick && pick.right && tries > 1 ? '<p>Right on your second try.</p>' : '') + '<p><b>Step ' + (at + 1) + ':</b> ' + html(p.steps[at].text) + ' ' + html(p.steps[at].why) + '</p>';
+      afterAnswer(p, panel, 'missing', at, map);
+      pq(panel, '.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'missing'));
+      pq(panel, '.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } missingVariant(p, panel); pq(panel, '.pw-choices .anp-opt').focus(); });
+      res.setAttribute('tabindex', '-1'); focusRes(res);
+    }
+    (S ? document : panel).querySelectorAll('.pw-choices .anp-opt').forEach(function(b){
       b.addEventListener('click', function(){
-        if(answered) return;
-        answered = true;
+        if(done || b.disabled) return;
+        tries++;
         var pick = choices[+b.getAttribute('data-k')];
-        panel.querySelectorAll('.pw-choices .anp-opt').forEach(function(x){
-          var c = choices[+x.getAttribute('data-k')];
-          x.disabled = true;
-          if(c.right) x.classList.add('is-right'); else if(c === pick) x.classList.add('is-wrong');
-          x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(c.why) + '</span>');
-        });
-        var gap = pq(panel, '.pw-gap');
-        gap.classList.add(pick.right ? 'is-right' : 'is-filled');
-        gap.querySelector('.pw-gap-text').innerHTML = html(p.steps[at].text);
-        var first = score(p, 'missing', pick.right ? 1 : 0, 1);
-        var res = panel.querySelector('.pw-result');
-        res.innerHTML = verdict(pick.right, false, first) + '<p><b>Step ' + (at + 1) + ':</b> ' + html(p.steps[at].text) + ' ' + html(p.steps[at].why) + '</p>';
-        afterAnswer(p, panel, 'missing', at);
-        panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'missing'));
-        panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } missingVariant(p, panel); panel.querySelector('.pw-choices .anp-opt').focus(); });
-        res.setAttribute('tabindex', '-1'); res.focus();
+        if(tries === 1) first = score(p, 'missing', pick.right ? 1 : 0, 1);
+        if(pick.right || tries > 1) return finish(pick);
+        // first miss: mark it, say why it is wrong, and hint at the gap's neighbours
+        b.disabled = true; b.classList.add('is-wrong');
+        b.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(pick.why) + '</span>');
+        map.fill(at, null, 'gap', { yours: cut(pick.text, 40) });
+        slotInView(map, at);
+        var prev = at > 0 ? '<b>' + html(p.steps[at - 1].label) + '</b>' : 'the start', next = at < p.steps.length - 1 ? '<b>' + html(p.steps[at + 1].label) + '</b>' : 'the end';
+        hintBox(panel, 'Not that one: the reason is under your choice. Hint: the missing step comes after ' + prev + ' and before ' + next + '. Look for the choice that links the two.',
+          function(){ var nb = pq(panel, '.pw-choices .anp-opt:not([disabled])'); if(nb) nb.focus(); if(S) S.caption('Choose again.', p0mode()); },
+          function(){ finish(null); });
       });
     });
   }
 
   /* Variant 3: one step has been replaced by a wrong one; find it. */
   function errorVariant(p, panel){
-    var e = p.error, at = e.at, pick = -1;
+    curP = p;
+    var e = p.error, at = e.at, pick = -1, tries = 0, first = false;
     panel.innerHTML = '<p class="kt-first pw-task">One step is wrong. Tap it, then check.</p>' +
+      '<div class="pw-figslot"></div>' +
       '<ol class="pw-steps pw-pickable" role="group" aria-label="Steps: select the wrong one">' + p.steps.map(function(s, k){
-        return '<li><button type="button" class="pw-pick" aria-pressed="false" data-k="' + k + '"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="pw-pick-text">' + html(k === at ? e.text : s.text) + '</span></button></li>';
+        // the replaced step keeps its place's oxygen color, so color is no tell
+        var shown = k === at ? { label: '', text: e.text, blood: s.blood } : s;
+        return '<li><button type="button" class="pw-pick" aria-pressed="false" data-k="' + k + '"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span>' + iconTag(p, shown) + '<span class="pw-pick-text">' + html(shown.text) + '</span></button></li>';
       }).join('') + '</ol>' +
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check" disabled>Check</button></div>' +
+      '<div class="pw-hint" role="status" hidden></div>' +
       '<div class="pw-result" aria-live="polite"></div>';
-    var btns = panel.querySelectorAll('.pw-pick');
-    var check = panel.querySelector('.pw-check');
+    var btns = (S ? document : panel).querySelectorAll('.pw-pick');
+    var check = pq(panel, '.pw-check');
     if(S) studioDrill(p, panel);
     btns.forEach(function(b){
       b.addEventListener('click', function(){
@@ -698,38 +1062,49 @@
         check.disabled = false;
       });
     });
-    check.addEventListener('click', function(){
-      if(pick < 0) return;
+    function finish(ok){
       check.setAttribute('data-done', '1');
-      var ok = pick === at;
       btns.forEach(function(x){
         var k = +x.getAttribute('data-k');
         x.disabled = true;
         if(k === at){
           x.classList.add(ok ? 'is-right' : 'is-answer');
           x.querySelector('.pw-pick-text').innerHTML = '<s>' + html(e.text) + '</s><span class="pw-fix"><b>Should be:</b> ' + html(p.steps[at].text) + '</span>';
-        } else if(k === pick) x.classList.add('is-wrong');
+        } else if(k === pick && !ok) x.classList.add('is-wrong');
       });
-      var first = score(p, 'error', ok ? 1 : 0, 1);
-      var res = panel.querySelector('.pw-result');
-      res.innerHTML = verdict(ok, false, first) +
-        (ok ? '' : '<p>Step ' + (pick + 1) + ' is right where it is: ' + html(p.steps[pick].why) + '</p>') +
+      var res = pq(panel, '.pw-result');
+      res.innerHTML = verdict(ok && tries === 1, false, first) + (ok && tries > 1 ? '<p>Found on your second try.</p>' : '') +
+        (ok || pick < 0 ? '' : '<p>Step ' + (pick + 1) + ' is right where it is: ' + html(p.steps[pick].why) + '</p>') +
         '<p><b>The error was step ' + (at + 1) + '.</b> ' + html(e.why) + '</p>';
       afterAnswer(p, panel, 'error', at);
-      panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'error'));
-      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } errorVariant(p, panel); pq(panel, '.pw-pick').focus(); });
-      res.setAttribute('tabindex', '-1'); res.focus();
+      pq(panel, '.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'error'));
+      pq(panel, '.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } errorVariant(p, panel); pq(panel, '.pw-pick').focus(); });
+      res.setAttribute('tabindex', '-1'); focusRes(res);
+    }
+    check.addEventListener('click', function(){
+      if(pick < 0 || check.hasAttribute('data-done')) return;
+      tries++;
+      var ok = pick === at;
+      if(tries === 1) first = score(p, 'error', ok ? 1 : 0, 1);
+      if(ok || tries > 1) return finish(ok);
+      var wrongBtn = pq(panel, '.pw-pick[data-k="' + pick + '"]');
+      wrongBtn.disabled = true; wrongBtn.classList.add('is-wrong'); wrongBtn.setAttribute('aria-pressed', 'false');
+      check.disabled = true;
+      var half = at < p.steps.length / 2 ? 'first half' : 'second half';
+      hintBox(panel, 'Step ' + (pick + 1) + ' is right where it is: ' + html(p.steps[pick].why) + ' <span class="pw-hint-why">Hint: the wrong step is in the ' + half + ' of the pathway. Read each one against the step before it: does it really follow?</span>',
+        function(){ pick = -1; var nb = pq(panel, '.pw-pick:not([disabled])'); if(nb) nb.focus(); if(S) S.caption('Pick another step, then check.', p0mode()); },
+        function(){ finish(false); });
     });
   }
 
-  /* After any variant: the summary, the diagram player, and every step's why. */
-  function afterAnswer(p, panel, variant, mark){
-    var res = panel.querySelector('.pw-result');
+  /* After any variant: the summary, the map player, and every step's why.
+     A drill that drew its map passes it in (it already shows the answer). */
+  function afterAnswer(p, panel, variant, mark, map){
+    var res = pq(panel, '.pw-result');
     var box = document.createElement('div');
     box.className = 'pw-after';
     box.innerHTML = (K() ? K().why('<p>' + html(p.summary) + '</p>', { label: 'Why it runs this way' }) : '<p class="pw-summary">' + html(p.summary) + '</p>') +
       '<h3>Watch the pathway</h3>' +
-      '<div class="anp-fig pw-fig"></div>' +
       '<div class="pw-player"><button type="button" class="btn-press sm pw-play">▶ Play</button>' +
       '<button type="button" class="btn-outline pw-prev" aria-label="Previous step">←</button>' +
       '<button type="button" class="btn-outline pw-nextstep" aria-label="Next step">→</button></div>' +
@@ -740,88 +1115,26 @@
     res.appendChild(box);
     if(window.AnpToolKit) window.AnpToolKit.strip(box, { topic: p.topic, text: p.title + ' ' + p.intro,
       structures: p.steps.map(function(st){ return st.label; }) });
-    var fig = box.querySelector('.pw-fig');
-    var svg = diagram(p, mark);
-    fig.appendChild(svg);
-    player = makePlayer(p, svg, box);
+    var fig;
+    if(!map){
+      map = pathMap(p);
+      map.fillAll(function(k){ return { i: k, state: k === mark ? 'marked' : '', extra: k === mark && variant === 'error' ? { yours: p.error.text, pre: 'was: ' } : null }; });
+      fig = mapFig(map);
+      var slotEl = pq(panel, '.pw-figslot');
+      if(slotEl) slotEl.appendChild(fig); else box.insertBefore(fig, box.querySelector('.pw-player'));
+      if(S){
+        S.put('stage', fig, { mode: p.trace ? 'drills' : null, first: true });
+        drillParts.push(fig);
+        var t = S.stage.querySelector('.pw-title'); if(t) S.stage.insertBefore(t, S.stage.firstChild);
+      }
+      map.fit();
+    }
+    player = makePlayer(p, map.svg, box);
     if(S){
-      // The diagram is the picture now, over the answered steps.
-      S.put('stage', fig, { mode: p.trace ? 'drills' : null, first: true });
-      var t = S.stage.querySelector('.pw-title'); if(t) S.stage.insertBefore(t, S.stage.firstChild);
       S.stage.scrollTop = 0;
       var h3 = box.querySelector('h3'); if(h3) h3.parentNode.removeChild(h3);
-      S.caption('Your answer is marked on the steps under the diagram. Press <b>Play</b> to watch the pathway run.', p.trace ? 'drills' : undefined);
+      S.caption('Your answer is marked on the map. Press <b>Play</b> to watch the pathway run.', p.trace ? 'drills' : undefined);
     }
-  }
-
-  /* ---------------------------------------------------------------- diagram
-     A two-column "snake": row 0 runs left to right, row 1 right to left, and
-     so on, so a long pathway stays compact on a phone. Blood steps are filled
-     with the oxygenated or deoxygenated color; exchange steps (capillaries)
-     stay neutral. Arrows: "flows" for blood, "causes" for mechanisms. */
-  var NW = 156, NH = 48, GX = 36, GY = 34, PAD = 8;
-  function nodePos(k){
-    var row = Math.floor(k / 2), col = k % 2;
-    if(row % 2 === 1) col = 1 - col;
-    return { x: PAD + col * (NW + GX), y: PAD + row * (NH + GY), col: col, row: row };
-  }
-  function wrap(label, max){
-    var words = plain(label).split(' '), lines = [''], k = 0;
-    words.forEach(function(w){
-      if(!lines[k]) lines[k] = w;
-      else if((lines[k] + ' ' + w).length <= max) lines[k] += ' ' + w;
-      else { k++; lines[k] = w; }
-    });
-    return lines;
-  }
-  function el(name, attrs, text){
-    var e = document.createElementNS(SVGNS, name);
-    for(var a in attrs) if(attrs.hasOwnProperty(a)) e.setAttribute(a, attrs[a]);
-    if(text != null) e.textContent = text;
-    return e;
-  }
-  function diagram(p, mark){
-    var n = p.steps.length;
-    var rows = Math.ceil(n / 2);
-    var W = PAD * 2 + NW * 2 + GX;
-    var H = PAD * 2 + rows * NH + (rows - 1) * GY + (p.cycle ? 30 : 0);
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'class': 'pw-svg',
-      'aria-label': p.title + ', step by step: ' + p.steps.map(function(s, k){ return (k + 1) + '. ' + plain(s.label); }).join('; ') + (p.cycle ? '; then back to step 1.' : '.') });
-    var arrows = el('g', { 'class': 'pw-arrows' });
-    var nodes = el('g', { 'class': 'pw-nodes' });
-    svg.appendChild(arrows); svg.appendChild(nodes);
-    p.steps.forEach(function(s, k){
-      var a = nodePos(k);
-      if(k < n - 1){
-        var b = nodePos(k + 1), d;
-        if(a.row === b.row){
-          var y = a.y + NH / 2;
-          d = a.col < b.col ? 'M' + (a.x + NW) + ',' + y + ' L' + (b.x - 3) + ',' + y : 'M' + a.x + ',' + y + ' L' + (b.x + NW + 3) + ',' + y;
-        } else {
-          var x = a.x + NW / 2;
-          d = 'M' + x + ',' + (a.y + NH) + ' L' + x + ',' + (b.y - 3);
-        }
-        var cls = p.kind === 'flow' ? 'flows' + (s.blood === 'o2' || s.blood === 'deo2' ? ' ' + s.blood : '') : 'causes';
-        arrows.appendChild(el('path', { d: d, 'class': cls, 'data-k': k }));
-      }
-      var g = el('g', { 'class': 'pw-node', 'data-k': k });
-      var fill = s.blood === 'o2' ? 'o2' : s.blood === 'deo2' ? 'deo2' : 'shape';
-      g.appendChild(el('rect', { x: a.x, y: a.y, width: NW, height: NH, rx: 11, 'class': fill + ' pw-box' + (mark === k ? ' pw-marked' : '') }));
-      g.appendChild(el('circle', { cx: a.x + 16, cy: a.y + NH / 2, r: 11, 'class': 'pw-num-bg' }));
-      g.appendChild(el('text', { x: a.x + 16, y: a.y + NH / 2 + 4.5, 'text-anchor': 'middle', 'class': 'pw-num' }, String(k + 1)));
-      var lines = wrap(s.label, 17).slice(0, 2);
-      lines.forEach(function(line, i){
-        var ty = a.y + NH / 2 + 4.5 + (lines.length === 2 ? (i === 0 ? -8 : 8) : 0);
-        g.appendChild(el('text', { x: a.x + 33, y: ty, 'class': 'pw-lbl' }, line));
-      });
-      nodes.appendChild(g);
-    });
-    if(p.cycle){
-      var last = nodePos(n - 1);
-      var ly = last.y + NH + 22;
-      svg.appendChild(el('text', { x: last.x + NW / 2, y: ly, 'text-anchor': 'middle', 'class': 'lbl-sm' }, '↻ then back to step 1'));
-    }
-    return svg;
   }
 
   function makePlayer(p, svg, box){
@@ -842,6 +1155,8 @@
       });
       var s = p.steps[k];
       cap.innerHTML = s ? '<b>Step ' + (k + 1) + ' of ' + n + ':</b> ' + html(s.text) + ' <span class="pw-cap-why">' + html(s.why) + '</span>' : '';
+      var cur = svg.querySelector('.pw-node.is-cur');
+      if(cur && S && cur.scrollIntoView){ try{ cur.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); }catch(e){} }
     }
     function stop(){ if(timer){ clearInterval(timer); timer = null; } play.textContent = '▶ Play'; play.setAttribute('aria-pressed', 'false'); }
     function start(){

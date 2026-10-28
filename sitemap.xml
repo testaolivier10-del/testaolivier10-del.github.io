@@ -9641,6 +9641,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/tools/anatomy-3d.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/calculators.html</loc>
     <lastmod>2026-10-26</lastmod>
     <priority>0.5</priority>
@@ -10228,6 +10233,11 @@
   <url>
     <loc>https://levlprep.com/ochem/tools/spectroscopy.html</loc>
     <lastmod>2026-10-26</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/tools/synthesis.html</loc>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

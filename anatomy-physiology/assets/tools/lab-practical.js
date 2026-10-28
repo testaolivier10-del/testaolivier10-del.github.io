@@ -291,6 +291,7 @@
       });
     });
   }
+  function phoneish(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function scrollToBox(host, lab){
     var sc = host.querySelector('.lp-scroll.is-zoomed');
     var el = host.querySelector('.lp-box[data-label="' + lab.id + '"]');
@@ -327,7 +328,7 @@
      go to Details. Lists, setup and results fill the stage on their own. */
   function studioPaint(){
     var root = app.querySelector('.lp');
-    var kids = [].slice.call(root.children), dock = [], stage = [], det = [], pick = null, cap = null;
+    var kids = [].slice.call(root.children), dock = [], stage = [], det = [], pick = null, cap = null, credits = [];
     var nav = root.querySelector('.lp-modes'), cur = nav && nav.querySelector('.lp-mode[aria-current="true"]');
     ST.modeBar(!!nav);
     if(cur){ var m = (cur.getAttribute('href') || '').replace(/^#/, '').split('/')[0]; ST.mode(m); }
@@ -342,7 +343,18 @@
       if(c.contains('lp-progress')){ ST.pills([{ html: esc(el.textContent), tone: 'ghost' }], 'right'); det.push(el); return; }
       if(c.contains('lp-stage')){
         var fig = el.querySelector('.lp-figure'), info = el.querySelector('.lp-info');
-        if(fig){ fig.classList.add('lp-ls-fig'); stage.push(fig); }
+        if(fig){
+          fig.classList.add('lp-ls-fig'); stage.push(fig);
+          // The full credit moves to Why; the figure keeps one short line (tool audit 2026-10).
+          var cr = fig.querySelector('figcaption .lp-credit');
+          if(cr){
+            var cw = document.createElement('div'); cw.className = 'ls-sec lp-ls-credit';
+            cw.innerHTML = '<h3 class="ls-h">Figure credit</h3>';
+            cw.appendChild(cr);
+            credits.push(cw);
+            fig.querySelector('figcaption').innerHTML = '<p class="lp-credit lp-credit-s">Figure: OpenStax, CC BY 4.0. Full credit under <b>Why?</b></p>';
+          }
+        }
         if(info) dock.unshift(info);
         return;
       }
@@ -387,6 +399,7 @@
       }
     });
     if(det.length){ var d = document.createElement('div'); d.className = 'ls-sec lp-ls-det'; det.forEach(function(x){ d.appendChild(x); }); ST.put('details', d); }
+    credits.forEach(function(c){ ST.put('why', c); });
     if(pick) ST.put('dock', pick);
     ST.stage.scrollTop = 0;
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
@@ -433,6 +446,7 @@
     }
     showHome(mode || pref('mode', 'explore'));
   }
+  var FEATURED = ['heart-external', 'whole-skeleton', 'brain-lateral'];
   function unfinished(s){ return setItems(s).some(function(it){ return status(it.id) !== 'right'; }); }
   function defaultSet(){
     var q = (location.search.match(/[?&]chapter=([\w-]+)/) || [])[1];
@@ -441,6 +455,9 @@
     if(!list.length) list = DATA.sets;
     var last = SETS[pref('lastSet', '')];
     if(last && list.indexOf(last) > -1 && unfinished(last)) return last;
+    // A first visit with no chapter opens on a set with plenty to name (tool
+    // audit 2026-10: directional terms on an outline was the dullest start).
+    if(!last && !ch){ for(var f = 0; f < FEATURED.length; f++){ var fs = SETS[FEATURED[f]]; if(fs && unfinished(fs)) return fs; } }
     for(var i = 0; i < list.length; i++) if(unfinished(list[i])) return list[i];
     return list[0] || null;
   }
@@ -611,7 +628,17 @@
   }
 
   function quizLoop(s, run, title, p){
-    var k = 0, z = 1, right = 0, results = [], isAnswered = false;
+    var k = 0, z = 1, right = 0, results = [], isAnswered = false, userZoom = false;
+    /* On a phone a mask can be 7px tall. Name it zooms in until the asked
+       mask is at least 32px tall (tool audit 2026-10); a zoom the student
+       picks wins for the rest of the round. */
+    function zoomFor(lab){
+      var el = Q().querySelector('.lp-box[data-label="' + lab.id + '"]'), steps = [1, 1.5, 2, 3];
+      if(!el || !phoneish()) return 1;
+      var h = el.getBoundingClientRect().height / z;
+      for(var i = 0; i < steps.length; i++) if(h * steps[i] >= 32) return steps[i];
+      return 3;
+    }
     function header(){
       return (s ? setHeader(s, 'quiz') : modeTabs('quiz') + '<h2 class="lp-title" tabindex="-1">' + esc(title) + '</h2>') +
         '<details class="lp-settings-d kt-more"' + (pref('qopen', false) ? ' open' : '') + '><summary>More options: ' + esc(p.kind === 'mix' ? 'name it and point to' : p.kind === 'name' ? 'name it only' : 'point to only') + (p.mc ? ', multiple choice' : ', typed answers') + '</summary><div class="lp-settings" role="group" aria-label="Quiz settings">' +
@@ -657,7 +684,8 @@
         wireSettings();
         if(s) setPicker(s, 'quiz');
         if(answered) keepGoing(Q().querySelector('.lp-feedback'), it.lab, st);
-        wireZoom(Q(), function(){ return z; }, function(v){ z = v; draw(); if(r.kind === 'name') scrollToBox(Q(), it.lab); });
+        wireZoom(Q(), function(){ return z; }, function(v){ z = v; userZoom = true; draw(); if(r.kind === 'name') scrollToBox(Q(), it.lab); });
+        if(r.kind === 'name' && !userZoom){ var nz = zoomFor(it.lab); if(nz !== z){ z = nz; draw(); return; } }
         if(r.kind === 'name') scrollToBox(Q(), it.lab);
         var form = Q().querySelector('.lp-answer');
         if(form){

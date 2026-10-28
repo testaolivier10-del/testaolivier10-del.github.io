@@ -802,7 +802,7 @@
     }
 
     /* ---- Quiz */
-    var nav = null;
+    var nav = null, skipped = {}, answeredNow = {};
     function quiz(){
       panelEl.innerHTML = '<div class="gr-qnav" role="group" aria-label="Questions"></div><div class="gr-q"></div>';
       nav = panelEl.querySelector('.gr-qnav');
@@ -810,11 +810,16 @@
       ask(Math.min(qk != null ? qk : firstOpen(g), g.questions.length - 1), false);
     }
     function paintNav(active){
+      /* Pips go back freely; ahead only to questions already reached on this
+         visit (answered or skipped), so a question cannot be passed over
+         unnoticed. Skip marks it on its pip (tool audit 2026-10). */
+      var reach = 0; g.questions.forEach(function(q, i){ if(answeredNow[i] || skipped[i]) reach = Math.max(reach, i + 1); });
+      reach = Math.max(reach, active);
       nav.innerHTML = g.questions.map(function(q, i){
-        var s = status(itemId(g, q));
-        return '<button type="button" class="gr-qbtn is-' + s + '" aria-current="' + (i === active ? 'step' : 'false') + '" data-i="' + i + '" aria-label="Question ' + (i + 1) + (s === 'right' ? ', answered right' : s === 'missed' ? ', missed' : '') + '">' + (i + 1) + '</button>';
+        var s = status(itemId(g, q)), lock = i > reach, sk = skipped[i] && !answeredNow[i];
+        return '<button type="button" class="gr-qbtn is-' + s + (sk ? ' is-skipped' : '') + '" aria-current="' + (i === active ? 'step' : 'false') + '" data-i="' + i + '"' + (lock ? ' disabled' : '') + ' aria-label="Question ' + (i + 1) + (s === 'right' ? ', answered right' : s === 'missed' ? ', missed' : '') + (sk ? ', skipped' : '') + (lock ? ', answer or skip the earlier ones first' : '') + '">' + (i + 1) + '</button>';
       }).join('');
-      nav.querySelectorAll('.gr-qbtn').forEach(function(b){ b.addEventListener('click', function(){ ask(+b.getAttribute('data-i'), true); }); });
+      nav.querySelectorAll('.gr-qbtn').forEach(function(b){ b.addEventListener('click', function(){ if(!b.disabled) ask(+b.getAttribute('data-i'), true); }); });
       var n = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length, t = Q().querySelector('.gr-mode-n');
       if(t) t.textContent = n + '/' + g.questions.length;
       if(S) S.pills([{ html: n + ' of ' + g.questions.length + ' right', tone: n === g.questions.length ? 'good' : 'ghost' }], 'right', 'quiz');
@@ -830,11 +835,16 @@
       var place = GM.placeable(g, q);
       var kind = q.type === 'value' ? 'Read a value' : q.type === 'phase' ? 'Name the phase or region' : place ? 'Place the shifted curve' : 'Predict the shift';
       box.innerHTML = '<p class="gr-kind">Question ' + (i + 1) + ' of ' + g.questions.length + ' · ' + kind + '</p>' +
-        '<p class="gr-stem" tabindex="-1">' + html(q.q) + '</p><div class="gr-body"></div><div class="gr-feedback" aria-live="polite"></div><div class="pw-actions gr-actions"></div>';
+        '<p class="gr-stem" tabindex="-1">' + html(q.q) + '</p><div class="gr-body"></div><div class="gr-feedback" aria-live="polite"></div><div class="pw-actions gr-actions">' +
+        (i < g.questions.length - 1 && !answeredNow[i] ? '<button type="button" class="link-quiet gr-skip">Skip for now</button>' : '') + '</div>';
       var body = box.querySelector('.gr-body'), fb = box.querySelector('.gr-feedback'), actions = box.querySelector('.gr-actions');
+      var skb = actions.querySelector('.gr-skip');
+      if(skb) skb.addEventListener('click', function(){ skipped[i] = true; ask(i + 1, true); });
       function after(correct){
         var first = score(g, q, correct);
+        answeredNow[i] = true;
         paintNav(i);
+        keepGraph();
         actions.innerHTML = (i < g.questions.length - 1 ? '<button type="button" class="btn-press sm gr-next">Next question →</button>' : '<a class="btn-press sm" href="#' + esc(next.id) + '">Next graph →</a>') + report(itemId(g, q));
         if(window.AnpToolKit) window.AnpToolKit.strip(box, { topic: q.topic || g.topic, text: g.title + ' ' + g.intro + ' ' + q.q });
         var nb = actions.querySelector('.gr-next');
@@ -870,9 +880,9 @@
             if(lx > W - MR - 70){ lx = x - 9; anchor = 'end'; }
             c.L.hl.appendChild(el('text', { x: lx, y: y - 9, 'text-anchor': anchor, 'class': 'gr-lbl gr-c-accent' }, fmt(q.answer) + unitText(q.unit)));
           }
-          fb.setAttribute('tabindex', '-1'); fb.focus();
+          fb.setAttribute('tabindex', '-1'); focusKeep(fb);
         });
-        if(focus) input.focus();
+        if(focus) focusKeep(input);
         return;
       }
       var items = shuffle(q.options.map(function(o, j){ return { o: o, j: j }; }));
@@ -894,7 +904,7 @@
         if(q.type === 'phase') highlight(q.highlight);
         else if(place) settleGhost(place, q);
         else overlay(q.overlay);
-        fb.setAttribute('tabindex', '-1'); fb.focus();
+        fb.setAttribute('tabindex', '-1'); focusKeep(fb);
       }
       body.querySelectorAll('.anp-opt').forEach(function(b){
         b.addEventListener('click', function(){ answer(+b.getAttribute('data-j')); });
@@ -905,7 +915,19 @@
         if(r.i < 0) said += ' None of the answers moves it that way.';
         answer(r.i, said);
       });
-      if(focus){ var s = box.querySelector('.gr-stem'); if(s) s.focus(); }
+      if(focus){ var s = box.querySelector('.gr-stem'); if(s) focusKeep(s); }
+      keepGraph();
+    }
+    /* On a phone the page scrolls under the graph in Quiz: focus never
+       scrolls the page, and the graph is brought back into view after each
+       answer (it scrolled off the top; tool audit 2026-10). */
+    function focusKeep(el){ try{ el.focus({ preventScroll: !!S }); }catch(e){ el.focus(); } }
+    function keepGraph(){
+      if(!S) return;
+      var stg = S.root.querySelector('.ls-stage');
+      if(!stg || !S.root.classList.contains('ls-phone')) return;
+      var top = stg.getBoundingClientRect().top;
+      if(top < 0) try{ window.scrollBy({ top: top, behavior: 'auto' }); }catch(e){ window.scrollBy(0, top); }
     }
 
     /* ---- placing a curve: a dashed copy of the curve to drag (or arrow

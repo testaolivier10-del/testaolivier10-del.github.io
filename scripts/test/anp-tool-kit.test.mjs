@@ -18,9 +18,9 @@ function kit() {
   return window.AnpToolKit;
 }
 function bodyMapLabels() {
-  // The labels live in the body viewer module since it was split out of the
-  // page (P1-NREMT); fall back to the page for older layouts.
-  const src = [read('nremt/assets/body-viewer.js'), read('nremt/body-map.html')].find(t => /const GROUP_CONTENT = /.test(t));
+  // The labels live in the NREMT body content file (nremt/assets/body-content.js)
+  // since the shared viewer moved to assets/body3d/.
+  const src = read('nremt/assets/body-content.js');
   const groups = JSON.parse(src.match(/const GROUP_CONTENT = (\{.*\});\n/)[1]);
   const points = JSON.parse(src.match(/const POINTS_3D = (\[.*\]);\n/)[1]);
   return [...new Set([...Object.values(groups), ...points].map(c => c.name))].sort((a, b) => a.localeCompare(b));
@@ -45,4 +45,17 @@ test('lookups are exact, case-insensitive, and never partial', () => {
   assert.equal(K.bodyName('Heart wall'), '');
   assert.equal(K.bodyName('Radial'), '');
   assert.equal(K.bodyName(''), '');
+});
+
+/* "See it in 3D" (lab practical, word roots) opens the A&P 3D anatomy tool
+   (tools/anatomy-3d.html?focus=<id>); every id must be one of its structures. */
+test('every 3D anatomy link names a structure the 3D tool has', () => {
+  const K = kit();
+  const ids = new Set(JSON.parse(read('anatomy-physiology/data/tools/anatomy-3d.json')).structures.map(s => s.id));
+  for (const [k, v] of Object.entries(K.A3D)) assert.ok(ids.has(v), `${k} -> ${v}`);
+  assert.equal(K.a3dId('Gall bladder'), 'gallbladder');
+  assert.equal(K.a3dId('Heart'), '');          // the model has the heart wall, not the whole heart
+  assert.equal(K.a3dId('Left ventricle'), '');
+  assert.match(K.body3d('Femur'), /tools\/anatomy-3d\.html\?focus=femur"/);
+  assert.equal(K.body3d('Nucleus'), '');
 });

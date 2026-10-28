@@ -39,7 +39,7 @@ basic: a dropdown, typed answers, a Check button. Bring every tool up to the bod
 
 - **Body map deep link:** `nremt/body-map.html?focus=<name>` selects and frames a structure, where `<name>` is the
   label shown in its Browse-by-name list, case-insensitive (e.g. `?focus=heart`). Unknown names are ignored.
-- **Body viewer module:** `nremt/assets/body-viewer.js` exposes `window.LevlBodyViewer.mount(el, opts)` (the 3D
+- **Body viewer module:** `assets/body3d/viewer.js` (was `nremt/assets/body-viewer.js`; content per page, see "3D anatomy" below) exposes `window.LevlBodyViewer.mount(el, opts)` (the 3D
   model, picking and layers, split out of body-map.html). The body map itself uses it.
 - **NREMT tool results:** `nremt/assets/tool-results.js` exposes `window.NremtToolResults.record({tool, id, correct,
   label, href})`: misses go to the NREMT review queue, correct answers award progress.
@@ -118,6 +118,99 @@ NaCl simplification, flat 1.6 kcal/mol 1,3-diaxial term, hives-only epinephrine 
 
 Known leftovers: the two floating site buttons cover the right edge of some phone readouts (site chrome); long
 breadcrumbs truncate on phones; the burns figure's 1% region is a small tap target (drag-paint and keyboard work).
+
+## Builds after the upgrade
+
+| Build | What | Status |
+|---|---|---|
+| A&P 3D anatomy (branch `tools-anp-3d`, 2026-10-27) | New tool `anatomy-physiology/tools/anatomy-3d.html` on the body map's engine and model: 86 A&P structures (77 in the quizzes) on all 203 meshes; Explore, Study, Quiz (name it / point to it), Timed; filters by body system and A&P chapter; misses to the A&P review queue and dashboard | done: built, accuracy reviewed (4 errors and 20 minor fixed), tried in headless Chromium at 390 and 1280; NREMT body map checked |
+| Ochem Synthesis Trainer (branch `tools-ochem-synthesis`, 2026-10-27) | New Premium tool `ochem/tools/synthesis.html`: plan a multistep route forward (4 reagent tiles per step, intermediate drawn) or backward (precursor + reaction), dead ends explained, step back, 3-layer hints; 36 curated problems (2-4 steps, chapter filter) + random routes; Problems sheet; Check yourself quiz | done: built, accuracy pass, 390/1280 light+dark hands-on; `scripts/test/synthesis-trainer.test.mjs` (11) |
+
+### 3D anatomy: decisions (2026-10-27)
+
+1. **Shared engine at `assets/body3d/`.** `viewer.js` (was `nremt/assets/body-viewer.js`), `body3d.glb` and
+   `vendor/three/` moved there; the body map's EMS content (GROUP_CONTENT, PART_GROUP_MAP, POINTS_3D) moved to
+   `nremt/assets/body-content.js` (`window.LevlBodyContent`, the viewer's default content). Cleaner than loading
+   across course folders, and each page now loads only its own content. Lazy loading of three.js and the model is
+   unchanged. New viewer options: `content` (per page), `only`/`setOnly` (structures in play, others a faint
+   ghost), `marks` (green/red results), `tag` (a name over the selection), `frame(names)`, `setPickSelects`,
+   per-structure `opacity` and `inner` (a see-through shell, the heart wall and cerebral white matter, passes a
+   tap through to structures inside it), and the tapped mesh id in `onSelect`/`onPick`. The NREMT body map is
+   unchanged for a student. Weight: `assets/body3d` is its own bucket (14.8 KB, budget 15).
+2. **Finer than the body map's 56 groups, never guessed.** Every mesh's FMA id was checked against the
+   BodyParts3D 4.0 concept tables (the npm package `@dagno/anatomy-model`, CC BY 4.0) or the FMA dictionary
+   (pubdictionaries.org), and its position against the same concept's bounds. So the tool splits the lungs into
+   their five lobes, the ribs into true (1 to 7), 8 to 10 and floating, the small intestine into duodenum,
+   jejunum and ileum, the aorta into ascending, arch and descending, the heart into wall, three valves, papillary
+   muscles and coronary vessels, and the brain into ventricles, choroid plexus, fornix, midbrain, peduncles and
+   cerebellum. Groups that a lab names as one (vertebral regions, carpals, tarsals) stay one structure, but a tap
+   says which piece it is (`partNames`: "T7 (seventh thoracic vertebra)", "Right hamate"). BP24 and BP28 (not
+   FMA ids) are drawn but never named (`context`). `scripts/lib/anp-tool-checks/anatomy-3d.mjs` reads the model
+   and fails on a mesh in no structure, in two, or not in the model.
+3. **License.** BodyParts3D is now CC BY 4.0 (dbarchive.biosciencedbc.jp license page, updated 2025-02-27;
+   earlier CC BY-SA 2.1 JP). The tool credits it as the license asks; LICENSE records both. The NREMT pages' older
+   CC BY-SA credit lines were left as they are (still accurate for the copy they were made from).
+4. **A&P content, written fresh.** Per structure: what it is, where it is, key features, related structures, the
+   teaching topic (Lesson and Notes links through the Keep going strip). Held to the course's ordering rule by the
+   validator (the page check, per structure's topic), no em dashes. Gating follows the lab practical
+   (`premium: "tools"`). Item ids `anatomy-3d:<structure>:name|point`; misses reach Review, which links back to
+   `tools/anatomy-3d.html#<structure>` (a quiz that starts on it); the dashboard groups by chapter.
+5. **Honest about the model.** The tool says what the model has and lacks (Why panel, Details, and in each
+   affected card, e.g. "only C3 to C7", "the manubrium and xiphoid are not in this model").
+
+### Open points
+
+- **The model has no muscles (other than the diaphragm and papillary muscles), nerves, cerebral cortex, bone
+  markings or female organs**, and lacks C1/C2, the coccyx, manubrium, xiphoid, triquetrum, phalanges, aortic
+  valve, pulmonary trunk, bronchi, cecum, pons, medulla and spinal cord. What it would take: BodyParts3D 4.0
+  itself has most of these (2,234 meshes, CC BY 4.0, including muscles, nerves, cortex gyri, the missing bones and
+  a female set in later packs); a build script would pick the meshes, simplify them with meshoptimizer (the
+  current model is 3.3 MB; the full set is about 30 MB, so per-system files loaded on demand), and extend the
+  data file. Bone landmarks (processes, foramina) are not separate meshes in BodyParts3D, so they would need
+  point landmarks placed by hand and checked, as the body map's POINTS_3D are.
+- Done (2026-10-27, fix-finish-2): the lab practical's and word roots' "See it in 3D" buttons open
+  `anatomy-3d.html?focus=<structure id>` through `AnpToolKit.A3D` (docs/anp-spec.md decision 93).
+- Headless checks: SwiftShader takes 1 to 2 minutes to load the model, so a full point-to-it round was not
+  driven by taps, and the full `BROWSER=1 scripts/ci-local.sh` was not run (shared machine); targeted checks
+  were: build/check scripts for touched outputs, A&P tests, axe on the new page, tools hub, course home and body
+  map (two serious findings on the tools hub and body map exist on main too). The quiz flow (wrong answer recorded
+  to review) and a filter were driven in Chromium. Fixed on the way: `body-map.html?focus=` threw a
+  ReferenceError (onSelect ran before mount returned).
+- `sw.js` CACHE is not bumped (decision 6: once at merge).
+
+### Synthesis Trainer: decisions
+1. **No reaction of its own.** Every step is an edge of `reagent-roadmap-data.js`, judged with `OchemRoadmapEngine`
+   (`through`, patterns, `routes`). `ochem/assets/tools/synthesis-data.js` only maps each roadmap group to a real molecule
+   on a problem's skeleton ("families"), plus per-skeleton bans with reasons (no C≡C in a six-ring, no SNAr on bromobenzene,
+   no haloform on an ethyl ketone, no Birch on a route that must stay aromatic). The roadmap engine gained three options
+   (`opts.end`, `opts.ccOk`, `opts.edgeOk`) and `REACTS_OFF_MAP` moved into the data file so both tools share it (extended).
+2. **Exact walk.** The roadmap routes over groups; the trainer narrows the substitution pattern to the actual molecule
+   after each step (butan-2-ol → but-2-ene, which cannot hydroborate to butan-1-ol). The target is a molecule (name), not a
+   group: propylbenzene reached as "alkylbenzene" or "alkane" both count; cumene does not.
+3. **Any valid route counts**; the shortest is shown after a longer solve. A random route is only offered when
+   `OchemRoadmapEngine.routes` proves it and the exact walk agrees, 2-4 steps.
+4. **Verdict kinds** (all from the graph): detour (valid, longer), wrong isomer (`target.wrong`), wrong pattern (`sub`/`needs`),
+   joining step not last (`final`), C–C step not allowed / second C–C step, banned on this skeleton, back to a molecule already
+   on the route, real step that leads nowhere, and "not a reaction of this group" (decoys that pass `REACTS_OFF_MAP`).
+   Backward adds: right precursor wrong reagent, precursor the start cannot make, made only by a joining step, reachable only
+   through the target.
+5. **Recording.** Each judged pick: `OchemMastery.noteTopicAttempt(edge.topic)` (chapter strength, Review). A finished problem:
+   `OchemMastery.record('fgi-map' | 'cc-bond-toolkit' | 'disconnection', clean, tier 3)` (concept review queue, XP like a
+   tier-3 question), `LevlPremium.noteAnswer('ochem', clean, 'synth:<id>', 'multistep-synthesis')` (dashboard daily line) and
+   `HubProgress.recordActivity`. Solved problems in `ochem_synth_v1` (synced by the `ochem_` prefix); chapter reach in
+   `ochem_synth_reach` (default: furthest chapter with lesson progress).
+6. **Layout.** Tool Studio: stage = trail + start/now and target cards; dock = verdict above four tiles (one column on phones),
+   Step back / Hint; Why = how to plan + your route + shortest route; second sheet "Problems" (list first, then quiz and Keep
+   going). On phones the stage is only as tall as the two structures, so the tiles start on the first screen.
+7. Counts: "nine interactive tools" in `assets/premium.js`, `scripts/lib/course-homes.json`, `ochem/tools.html` meta,
+   `ochem/search.html`, README; digit counts come from the registry (build-pricing, r3 home).
+
+### Synthesis Trainer: open points
+- No subagent tool was available in the build session, so the accuracy pass was done in the same session as a separate
+  checklist pass over a full dump of every problem, route, tile and explanation (and a render of every structure). An
+  independent reviewer should still read `docs/ochem-needs-author.md` "Synthesis Trainer" and the dump the test walks.
+- 2° halide + bulky base (Hofmann alkene) is not a separate roadmap edge, so the trainer always gives the Zaitsev alkene.
+- `sw.js` CACHE not bumped (bump at merge, decision 6).
 
 ## Verification
 

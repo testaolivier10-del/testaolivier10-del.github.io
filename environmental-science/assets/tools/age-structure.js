@@ -213,7 +213,7 @@
     function stop(){ if(anim){ anim.stop(); anim = null; } }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ap-stage')], dock: [$('.ap-ctl')], why: [$('.ap-say')], details: [$('.ap-nums')] });
+      T.studioPane(pane, s, { stage: [$('.ap-stage')], dock: [$('.ap-ctl')], primary: [slT.el], why: [$('.ap-say')], details: [$('.ap-nums')] });
       host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
       draw();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ap-st[data-s="3"]'), text: 'Start here: try stage 3' });

@@ -207,3 +207,14 @@
   .ls-root.ls-phone .rr-scene .rr-t{font-size:16.5px;}
   .ls-root.ls-phone .rr-scene .rr-dl{font-size:18px;}
 }
+
+/* the coach tip target under the drag handle: invisible */
+.rr-hint-at{fill:transparent;stroke:none;pointer-events:none;}
+/* readouts at least 13 px on a phone (audit 2026-10) */
+.ls-root.ls-phone .rr-read table.rr-tbl th,.ls-root.ls-phone .rr-read table.rr-tbl td{font-size:14px;}
+.ls-root.ls-phone .rr-qn,.ls-root.ls-phone .rr-u{font-size:13px;}
+/* Test yourself: a typed rate or length against the right one, under the scene */
+.rr-gauge{flex:none;margin:4px auto 0;max-width:460px;width:100%;}
+.rr-gauge[hidden]{display:none;}
+.rr-gk{margin:0;font:800 13px var(--font-ui);color:var(--muted);text-align:center;}
+.ls-root .ls-drill-stage .cd-extra:has(.rr-gauge:not([hidden])) .rr-figwrap{height:auto;flex:1;min-height:0;}

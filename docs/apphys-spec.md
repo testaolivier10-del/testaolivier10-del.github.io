@@ -237,6 +237,13 @@ Owner to confirm (needs-author `tools-premium`).
 12. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 13. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
 
+14. (2026-10-27, tool audit fixes; `docs/tool-audit-2026-10.md`) **Trainer fixes.** Collision lab, energy bar charts
+    and fluids tank drags listen on their own figure (the Tool Studio moves the stage out of the pane). Free-body
+    diagrams draw parallel forces side by side with separate labels. Projectile ticks stay 40 px apart. Oscillator
+    graphs show a dashed preview before Play. Lab design shows bench and graph together on a portrait phone. Rotation
+    lab's stool test figure carries every given. Scaling drills Test draws unit powers, conversions and the student's
+    wrong factor. Motion graphs' small a-t choices read at about 12 px on wide screens.
+
 ## 8. Open items for the owner
 
 - **Launch checklist: done 2026-10-13.** Migration `2026-10f-apphys.sql` applied in Supabase (live function

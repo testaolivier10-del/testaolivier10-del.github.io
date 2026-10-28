@@ -23,8 +23,8 @@
     band.hidden = true;
     band.innerHTML = '<div class="hwrap"><div>' +
       '<nav class="r3-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <a href="exams.html">Exams</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Results</span></nav>' +
-      '<p class="issue">NREMT-EMT &middot; Timed exam &middot; Results <i></i></p>' +
-      '<h1 class="deck" id="r3ResTitle" tabindex="-1"><span class="r3-res-score"></span> <span>Here is where.</span></h1>' +
+      '<p class="issue">NREMT-EMT &middot; <span class="r3-res-kind">Timed exam</span> &middot; Results <i></i></p>' +
+      '<h1 class="deck" id="r3ResTitle" tabindex="-1"><span class="r3-res-score"></span> <span class="r3-res-tail">Here is where.</span></h1>' +
       '<p class="hand">every question, with its explanation</p>' +
       '<p class="lede">Scored by domain in the order the exam outline lists them, with the topic areas each domain&rsquo;s questions came from.</p>' +
       '<div class="hero-ctas"><button type="button" class="btn-chan" data-r3-click="#reviewMissesBtn">Review your misses</button><button type="button" class="btn-ghost" data-r3-click="#retryBtnTop">Back to Start</button><button type="button" class="btn-ghost" data-r3-click="#printResultBtn">Print or save as PDF</button></div>' +
@@ -56,13 +56,22 @@
       if(!on) return;
       var big = (document.getElementById('scoreBig') || {}).textContent || '';
       var m = big.match(/(\d+)\s*\/\s*(\d+)/);
-      band.querySelector('.r3-res-score').textContent = m ? m[1] + ' of ' + m[2] + '.' : big;
+      // The adaptive exam's score is a verdict ("Likely pass"), not a fraction.
+      var cat = res.getAttribute('data-mode') === 'cat';
+      band.querySelector('.r3-res-score').textContent = m ? m[1] + ' of ' + m[2] + '.' : big + '.';
+      band.querySelector('.r3-res-tail').textContent = cat ? 'Here is each domain.' : 'Here is where.';
+      band.querySelector('.r3-res-kind').textContent = cat ? 'Adaptive exam' : 'Timed exam';
+      var sub = document.querySelector('#r3DomCard .sub');
+      if(sub) sub.textContent = cat ? 'Each of the five domains above, near or below the passing line, and what to study next.' : 'Your score in each of the five domains, and the topic areas under it.';
+      band.querySelector('.lede').innerHTML = cat
+        ? 'Each domain above, near or below LevlPrep&rsquo;s passing line, with what to study next. A simulation of the adaptive format, not the Registry&rsquo;s algorithm.'
+        : 'Scored by domain in the order the exam outline lists them, with the topic areas each domain&rsquo;s questions came from.';
       var rev = document.getElementById('reviewMissesBtn');
       var first = band.querySelector('[data-r3-click="#reviewMissesBtn"]');
       first.hidden = !rev;
       if(rev) first.textContent = rev.textContent;
     }
-    new MutationObserver(sync).observe(res, { attributes: true, attributeFilter: ['style'], subtree: false });
+    new MutationObserver(sync).observe(res, { attributes: true, attributeFilter: ['style', 'data-mode'], subtree: false });
     new MutationObserver(sync).observe(document.getElementById('scoreBig') || res, { childList: true, characterData: true, subtree: true });
     sync();
     return true;

@@ -766,7 +766,7 @@ const MANIFESTS = {
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',
     short_name: 'LevlPrep NREMT',
-    description: `NREMT-EMT prep, free to start: a ${fmt(N.nremt)}-question bank, timed exams, study notes, flashcards and mnemonics. The notes are free forever, with ${COURSES.nremt.dailyFree} practice questions a day and one full exam free; Premium adds unlimited practice, exams and analytics.`,
+    description: `NREMT-EMT prep, free to start: a ${fmt(N.nremt)}-question bank, timed exams, study notes, flashcards and mnemonics. The notes are free forever, with ${COURSES.nremt.dailyFree} practice questions a day, one timed and one adaptive exam free; Premium adds unlimited practice, exams and analytics.`,
   },
   'ochem/manifest.json': {
     name: 'LevlPrep — Organic Chemistry I & II',

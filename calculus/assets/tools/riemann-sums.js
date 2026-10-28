@@ -57,7 +57,7 @@
     var svg = P.svg(spec);
     var layer = '<g class="rs-strips">' + g.join('') + '</g>';
     svg = svg.replace('<g class="calc-plot-axis">', layer + '<g class="calc-plot-axis">');
-    return svg.replace('</svg>', '<g class="rs-dots" aria-hidden="true">' + dots.join('') + '</g></svg>');
+    return svg.replace('</svg>', '<g class="rs-dots" aria-hidden="true">' + dots.join('') + '</g>' + (o.marks ? o.marks.svg(Fr) : '') + '</svg>');
   }
   function yRange(vals, pad){
     var lo = Math.min.apply(null, vals.concat([0])), hi = Math.max.apply(null, vals.concat([0])), sp = hi - lo || 1;
@@ -177,8 +177,10 @@
       var NAMEc = R.NAME[kind].charAt(0).toUpperCase() + R.NAME[kind].slice(1);
       var unit = nm.unitAmt ? ' ' + nm.unitAmt : '';
       var headSum = anim ? 'Running sum after ' + k + ' of ' + c.ps.length + ': ' + fmt(running) + unit + '.' : NAMEc + (cur.type === 'table' ? '' : ', n = ' + n) + ': ' + fmt(c.sum) + unit + '.';
-      var verdictLine = err == null ? 'The table alone cannot say whether it is too big or too small.' :
-        Math.abs(err) < 5e-4 * Math.max(1, Math.abs(c.exact)) ? 'Equal to the exact value here (to three decimals).' :
+      var verdictLine = cur.type === 'table' ? tableVerdict(c.s.ys, kind, nm.f) :
+        err == null ? 'The table alone cannot say whether it is too big or too small.' :
+        Math.abs(err) < 1e-9 * Math.max(1, Math.abs(c.exact)) ? 'Equal to the exact value here.' :
+        fmt(c.sum) === fmt(c.exact) ? 'The same as the exact value to three decimal places (the two round to the same number).' :
         vd.v ? (vd.v === 'over' ? 'An overestimate' : 'An underestimate') + ': ' + vd.why : (err > 0 ? 'Over' : 'Under') + ' this time, but ' + vd.why.replace(/^\w+ is not/, nm.f + ' is not');
       var selLine = '';
       if(sel > -1 && sel < c.ps.length){
@@ -205,9 +207,31 @@
       if(!anim) say(headSum + ' ' + (c.exact != null ? (cur.type === 'table' ? 'Trend value ' : 'Exact value ') + fmt(c.exact) + '. ' : '') + verdictLine);
     }
     function sync(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === kind)); }
+    /* Over or under from a table: only what the data can support. Rising or
+       falling values point to a side for a left or right sum, but the exam
+       has to say the rate is increasing (or decreasing) on the whole
+       interval; a table never shows concavity. */
+    function tableVerdict(ys, k, fn){
+      var up = ys.every(function(y, i){ return !i || y > ys[i - 1]; }), dn = ys.every(function(y, i){ return !i || y < ys[i - 1]; });
+      if(k === 'left' || k === 'right'){
+        if(!up && !dn) return 'The values in the table go up and down, so a ' + R.NAME[k] + ' can land on either side.';
+        var over = (k === 'left') === dn;
+        return 'The table values ' + (up ? 'rise' : 'fall') + '. If ' + fn + ' is ' + (up ? 'increasing' : 'decreasing') + ' on the whole interval (a problem has to say so), the ' + R.NAME[k] + ' is an ' + (over ? 'overestimate' : 'underestimate') + '.';
+      }
+      return 'A table cannot show concavity, so it cannot say whether a ' + R.NAME[k] + ' is over or under. A problem has to give the sign of ' + fn + '″.';
+    }
+    function tableShort(ys, k){
+      var up = ys.every(function(y, i){ return !i || y > ys[i - 1]; }), dn = ys.every(function(y, i){ return !i || y < ys[i - 1]; });
+      if((k === 'left' || k === 'right') && (up || dn)) return 'Values ' + (up ? 'rise' : 'fall') + ': ' + ((k === 'left') === dn ? 'over' : 'under') + ' if the rate is ' + (up ? 'increasing' : 'decreasing') + ' throughout.';
+      return k === 'left' || k === 'right' ? 'Values go up and down: over or under is not known.' : 'A table cannot show concavity: over or under is not known.';
+    }
     function shortVerdict(vd, err, c){
+      if(cur.type === 'table') return tableShort(c.s.ys, kind);
       if(err == null) return 'Tap a strip to read its term.';
-      if(Math.abs(err) < 5e-4 * Math.max(1, Math.abs(c.exact))) return 'It matches the exact value.';
+      // "Matches" only when the two agree as shown (three decimals): 9.335 is
+      // over 9.333 by 0.002, not a match.
+      if(Math.abs(err) < 1e-9 * Math.max(1, Math.abs(c.exact))) return 'It equals the exact value.';
+      if(fmt(c.sum) === fmt(c.exact)) return 'It agrees with the exact value to three decimal places.';
       var by = ' by ' + fmt(Math.abs(err)) + '.';
       if(vd.v) return (vd.v === 'over' ? 'Over' : 'Under') + by + ' ' + vd.why.split(',')[0] + '.';
       return (err > 0 ? 'Over' : 'Under') + by + ' No rule fixes the side here.';
@@ -279,14 +303,68 @@
       types: [{ value: 'table', label: 'Sums from a table' }, { value: 'overunder', label: 'Over or under?' }, { value: 'context', label: 'The sum in context' }, { value: 'sigma', label: 'Limit of a sum to an integral' }, { value: 'tosum', label: 'Integral to a limit of sums' }],
       typeLabel: 'Kind of problem',
       title: function(p){ return { table: 'A sum from a table', overunder: 'Over or under?', context: 'An amount from a rate', sigma: 'From a sum to an integral', tosum: 'From an integral to a sum' }[p.type] || 'Practice problem'; },
-      extra: function(el, p, api){ api.fig = el; figure(el, p, false); },
-      onStep: function(s, right, api){ if(s.key === 'setup' || s.key === 'verdict' || s.key === 'pick') figure(api.fig, api.problem, true); }
+      extra: function(el, p, api){ api.fig = el; QM.clear(); QM.last = {}; QM.reveal = false; figure(el, p, false); },
+      onStep: function(s, right, api){ if(s.key === 'setup' || s.key === 'verdict' || s.key === 'pick'){ QM.reveal = true; figure(api.fig, api.problem, true); } },
+      method: function(s, p){ var sk = (p.figure && p.figure.sumKind) || (p.sketch && p.sketch.sumKind); if(s.key === 'verdict' && sk) return VERDICT_M[sk === 'mid' || sk === 'trap' ? sk : 'lr'];
+        return (p.type === 'table' && s.key === 'setup' ? 'A table gives each subinterval its own width: multiply each width by the height the sum uses (left end, right end, middle, or the average of both ends).' : METHOD[s.key]) || ''; },
+      // X1: the over/under verdict draws the strips at once (their tops show the answer);
+      // a sum is drawn as yours against the right one on the strips.
+      onTry: function(s, t, api){
+        var p = api.problem, who = t.ok || t.shown ? 'right' : 'yours', mk = [];
+        if(s.key === 'verdict'){ QM.reveal = true; figure(api.fig, p, true); return !!p.figure; }
+        if(!p.figure || s.kind !== 'num') return false;
+        var val = who === 'right' ? s.cell.answer : t.value; if(!isFinite(val)) return false;
+        var g = p.figure, xr = g.kind === 'fn' ? [g.a, g.b] : [g.xs[0], g.xs[g.xs.length - 1]];
+        mk.push({ label: (who === 'yours' ? 'yours: ' : s.key === 'value' ? 'right sum = ' : s.key === 'total' ? 'amount = ' : 'sum of the strips = ') + T.numText(val), at: [who === 'yours' ? xr[0] : xr[1], 1e9], who: who, anchor: who === 'yours' ? 'start' : 'end' });
+        if(who === 'yours') QM.last[s.key] = mk; else if(QM.last[s.key]) mk = QM.last[s.key].concat(mk);
+        QM.set(s.key, mk); figure(api.fig, p, QM.reveal || who === 'right');
+        return true;
+      }
     };
     T.drill(host, data, o);
   }
+  var QM = T.tries();
+  // Over or under, by kind of sum: what to look at on the strips.
+  var VERDICT_M = {
+    lr: 'Look at the strips: tops above the curve make an overestimate, tops below it an underestimate.',
+    trap: 'Look at each slanted top: a chord above the curve (concave up) overestimates, below it (concave down) underestimates.',
+    mid: 'A midpoint rectangle has the same area as the trapezoid under the tangent line at the midpoint. Concave up puts that tangent below the curve (an underestimate); concave down puts it above (an overestimate).'
+  };
+  var METHOD = {
+    sum: 'Add the terms of the setup you chose: each width times its height. Round only at the end.',
+    meaning: 'Width (time) times rate gives an amount: the units of the sum are the units of the amount.',
+    verdict: 'Look at the strips: tops above the curve make an overestimate, tops below it an underestimate.',
+    reason: 'Left and right sums depend on increasing or decreasing; midpoint and trapezoid sums on concavity.',
+    units: 'The area under a rate graph multiplies the horizontal unit by the vertical unit.',
+    area: 'Each strip under a straight piece is a trapezoid: width × (left height + right height) ÷ 2. Add them.',
+    total: 'Amount at the end = amount at the start + the area (the change).',
+    width: 'Δx = (b − a)/n: the number over n is the length of the interval.',
+    upper: 'b = a + (b − a): add the length of the interval to the lower limit.',
+    integrand: 'The k-th point is x = a + kΔx. Whatever the sum does to that point is f(x).',
+    pick: 'Check three things: Δx = (b − a)/n, the points start at a, and each term is a height times Δx.',
+    value: 'Δx = (b − a)/4. Add f at the four right endpoints, then multiply by Δx.'
+  };
   /* The drill's figure: the data or the graph; the strips appear once the
      student has picked the sum (feedback on the stage). */
+  /* A sketch of a rate with the stated shape (signs of R′ and R″ only): a
+     smooth curve on [a, b] that rises or falls and bends the stated way. */
+  function sketchFig(el, k, reveal){
+    var a = k.a, b = k.b, L = b - a, up = k.inc === 'up', cu = k.conc === 'up';
+    // u in [0, 1]: a strongly bent rise e(u) = (e^{3u} − 1)/(e^3 − 1) (concave up),
+    // and its mirrors, so the gap between strip tops and the curve is easy to see
+    var e = function(u){ return (Math.exp(3 * u) - 1) / (Math.exp(3) - 1); };
+    var shape = function(u){ return up ? (cu ? e(u) : 1 - e(1 - u)) : (cu ? e(1 - u) : 1 - e(u)); };
+    var f = function(x){ return 1.5 + 6.5 * shape((x - a) / L); };
+    var nS = k.sumKind === 'left' || k.sumKind === 'right' ? 4 : 2;
+    var fs = figSize(520, 300, true), ps = reveal ? R.pieces(f, R.partition(a, b, nS), k.sumKind) : [];
+    var spec = { label: 'A sketch of a rate that is ' + (up ? 'increasing' : 'decreasing') + ' and concave ' + k.conc + ', with no scale on the vertical axis', width: fs[0], height: fs[1], x: [a - L * 0.05, b + L * 0.05], y: [0, 9.5], xLabel: k.v + ' (' + k.varUnit + ')', yLabel: k.rate + '(' + k.v + ')',
+      curves: [{ fn: f, domain: [a, b], cls: 's1', label: k.rate }] };
+    // no numbers up the vertical axis: only the shape is given (y tick labels are the unclassed end-anchored texts)
+    var svg = stripsSvg({ spec: spec, pieces: ps, kind: k.sumKind, marks: QM }).replace(/<g class="calc-plot-ticks">[\s\S]*?<\/g>/, function(g){ return g.replace(/<text x="[^"]*" y="[^"]*" text-anchor="end">[^<]*<\/text>/g, ''); });
+    el.innerHTML = '<figure class="rs-qfig">' + svg + '<figcaption class="bt-small">A sketch with the stated shape, no vertical scale: any rate with these signs gives the same answer' + (reveal ? '. The ' + esc(R.NAME[k.sumKind]) + ', drawn' : '') + '.</figcaption></figure>';
+  }
   function figure(el, p, reveal){
+    if(p.sketch) return sketchFig(el, p.sketch, reveal);
     var g = p.figure;
     if(!g && p.table){ el.innerHTML = '<div class="rs-qtable">' + p.table.html + '</div>'; return; }
     if(!g){ el.innerHTML = ''; return; }
@@ -299,14 +377,23 @@
     } else if(g.kind === 'poly'){
       var fx = function(x){ for(var i = 0; i + 1 < g.xs.length; i++) if(x <= g.xs[i + 1] + 1e-12) return g.ys[i] + (g.ys[i + 1] - g.ys[i]) * (x - g.xs[i]) / (g.xs[i + 1] - g.xs[i]); return g.ys[g.ys.length - 1]; };
       var p0 = g.xs[0], p1 = g.xs[g.xs.length - 1];
-      spec = { label: 'Graph of the rate ' + g.rate + '(' + g.v + ') made of straight pieces, with the area under it shaded', width: fs[0], height: fs[1], x: [p0 - 0.3, p1 + 0.3], y: yRange(g.ys), xLabel: g.v + ' (' + g.varUnit + ')', yLabel: g.rate + '(' + g.v + ')', xStep: 1,
-        curves: [{ fn: fx, domain: [p0, p1], cls: 's1' }], shade: [{ fn: fx, domain: [p0, p1] }], points: g.xs.map(function(x, i){ return { at: [x, g.ys[i]], cls: 's1' }; }) };
+      // The area under straight pieces is a row of trapezoids: drawn as strips
+      // (trapezoidal sum, exact here) from the start, so the shape to add is in view.
+      spec = { label: 'Graph of the rate ' + g.rate + '(' + g.v + ') made of straight pieces; the area under it is ' + (g.xs.length - 1) + ' trapezoids', width: fs[0], height: fs[1], x: [p0 - 0.3, p1 + 0.3], y: yRange(g.ys), xLabel: g.v + ' (' + g.varUnit + ')', yLabel: g.rate + '(' + g.v + ')', xStep: 1,
+        curves: [{ fn: fx, domain: [p0, p1], cls: 's1' }], points: g.xs.map(function(x, i){ return { at: [x, g.ys[i]], cls: 's1' }; }) };
+      ps = R.tablePieces(g.xs, g.ys, 'trap'); kind = 'trap';
     } else {
       var f = M.fn(g.fn), vals = []; for(var i = 0; i <= 80; i++) vals.push(f(g.a + (g.b - g.a) * i / 80));
       spec = { label: 'Graph of f on the interval from ' + g.a + ' to ' + g.b, width: fs[0], height: fs[1], x: [g.a - (g.b - g.a) * 0.05, g.b + (g.b - g.a) * 0.05], y: yRange(vals), xLabel: 'x', yLabel: 'y', curves: [{ fn: f, domain: [g.a, g.b], cls: 's1', label: 'f' }] };
       if(reveal) ps = R.pieces(f, R.partition(g.a, g.b, g.n || 4), kind);
     }
-    el.innerHTML = (p.table ? '<div class="rs-qtable">' + p.table.html + '</div>' : '') + '<figure class="rs-qfig">' + stripsSvg({ spec: spec, pieces: ps, kind: kind }) + (reveal && ps.length ? '<figcaption class="bt-small">The ' + esc(R.NAME[kind]) + ', drawn.</figcaption>' : '') + '</figure>';
+    el.innerHTML = (p.table ? '<div class="rs-qtable">' + p.table.html + '</div>' : '') + '<figure class="rs-qfig">' + stripsSvg({ spec: spec, pieces: ps, kind: kind, marks: QM }) +
+      (g.kind === 'poly' ? '<figcaption class="bt-small">Each strip is a trapezoid: width × (left height + right height) ÷ 2.</figcaption>' : reveal && ps.length ? '<figcaption class="bt-small">The ' + esc(R.NAME[kind]) + ', drawn' + (g.kind === 'fn' && R.verdict ? ': ' + esc(qVerdict(g, kind)) : '') + '.</figcaption>' : '') + '</figure>';
+  }
+  /* A drawn sum against the exact area, in words (for the caption under the strips). */
+  function qVerdict(g, kind){
+    var f = M.fn(g.fn), sum = R.total(R.pieces(f, R.partition(g.a, g.b, g.n || 4), kind)), ex = M.integral(f, g.a, g.b);
+    return Math.abs(sum - ex) < 1e-9 ? 'it equals the area' : 'the sum is ' + M.fmt(M.round(sum, 3), 6) + ' and the area is ' + M.fmt(M.round(ex, 3), 6) + ', an ' + (sum > ex ? 'overestimate' : 'underestimate');
   }
   /* The drill figure's size in its own units: on a phone about the room it
      gets in CSS px (less when a table or the problem shares the stage), so

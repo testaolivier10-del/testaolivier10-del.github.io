@@ -222,6 +222,13 @@ a tool's data file exists and its topic is published.
       formula per string and read its annotation back (the Riemann sums drill's duplicate check broke). The
       site-search test now covers `?course=calculus`.
 13. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
+15. (2026-10-27, `docs/tool-audit-2026-10.md`) **Test yourself is visual in all ten trainers.** The drill engine
+    (`calc-tools.js` `drill`) draws each graded try on the stage through a tool's `onTry` (the student's answer
+    dashed and warm, the right one solid green; `ApCalcTools.tries`/`markSvg`/`gauge`), gives one method hint per
+    step before Show the answer appears (second wrong try), shows "Yours | Right" after it, and opens the worked
+    solution under Why when a problem ends. The tangent tracer now runs on the same drill (its sketch of f′ is a
+    `custom` step). An over/under problem stated only by the signs of R′ and R″ draws an unscaled sketch with that
+    shape. 0 typed for an expression no longer reads as "0 times the right one".
 14. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
 
 ## 8. Open items for the owner

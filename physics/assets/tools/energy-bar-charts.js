@@ -486,12 +486,17 @@
       draw();
           }
     // Drag the skater along the track to choose where it starts.
-    pane.addEventListener('pointerdown', function(e){
-      var svg = e.target.closest && e.target.closest('.eb-scene svg');
-      if(!svg || scene !== 'skater') return;
+    // Listen on the scene box itself: the Tool Studio moves the stage out of
+    // `pane`, so a listener on `pane` never hears a drag (audit 2026-10).
+    var sceneBox = $('.eb-scene');
+    sceneBox.addEventListener('pointerdown', function(e){
+      if(!(e.target.closest && e.target.closest('.eb-scene svg')) || scene !== 'skater') return;
+      e.preventDefault();
       pause();
       var move = function(ev){
         // Through the screen matrix, so a letterboxed scene (a phone) maps right.
+        // The svg is redrawn on every move, so take the live one each time.
+        var svg = sceneBox.querySelector('svg'); if(!svg) return;
         var m = svg.getScreenCTM(), q0 = svg.createSVGPoint(); q0.x = ev.clientX; q0.y = ev.clientY;
         var qq = m ? q0.matrixTransform(m.inverse()) : q0, x = qq.x, y = qq.y, v = VIEW.skater;
         var Pth = run.path, s0 = E.nearest(Pth, (x - v.x0) / v.ppm, (v.y0 - y) / v.ppm);

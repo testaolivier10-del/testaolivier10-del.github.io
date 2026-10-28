@@ -43,7 +43,7 @@
       '<div class="bt-controls pg-main" data-primary="2"></div>' +
       '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
       '<div class="bt-controls pg-read bt-num"></div>' +
-      '<div class="bt-stage two bt-num"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
+      '<div class="bt-stage two bt-num pg-graphs"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
       '<div><div class="bt-tabs" role="group" aria-label="Second graph">' +
       '<button type="button" class="bt-btn" data-v="rate" aria-pressed="true">dN/dt against N</button><button type="button" class="bt-btn" data-v="percap" aria-pressed="false">Per-capita rate against N</button>' +
       '</div><div class="pg-plot-r"></div><p class="bt-small pg-key-r"></p></div></div>' +
@@ -328,7 +328,7 @@
     if(data.frq) T.frq(app, data.frq, SLUG);
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
-    studio: { sim: true, live: '.pg-explain li', dock: ['.os-play', '.bt-modes', '@primary'],
+    studio: { sim: true, live: '.pg-explain li', dock: ['.os-play', '.bt-modes', '@primary'], views: [{ sel: '.pg-graphs', label: 'Growth curves' }],
       hint: { target: '.os-play .btn-press', text: 'Press Play the years' },
       // A short caption (the full working is under Why): where the population is now.
       caption: function(g){

@@ -308,7 +308,7 @@
             mistakes: [{ expr: gpp + ' + ' + resp, why: 'Respiration is used up, not added: NPP = GPP − respiration.' }, { expr: gpp + ' * 0.1', why: 'The 10% rule is for transfers between levels. NPP is GPP minus the producers\' respiration.' }] }) },
         { key: 'ans', kind: 'unit', practice: '6.C', label: 'NPP, with its unit.',
           cell: M.unitCell(npp, UNIT, { mistakes: [{ value: Cc.evaluate({ fn: 'add', args: [gpp, resp] }), why: 'NPP = GPP − respiration; you added.' }] }) },
-        { key: 'prim', kind: 'unit', practice: '6.C', label: 'Energy reaching the primary consumers (10% rule), with its unit.',
+        { key: 'prim', kind: 'unit', practice: '6.C', label: 'Energy reaching the primary consumers (10% rule), with its unit.', hint: 'Take 10% of the NPP: NPP × 0.1.',
           cell: M.unitCell(c1, UNIT, { mistakes: [{ value: Cc.evaluate({ fn: 'tenPercent', args: [gpp, 1] }), why: 'Consumers can only eat what the producers stored: take 10% of the NPP, not of the GPP.' }] }) },
         choiceStep('heat', 'Where does the energy the producers used in cellular respiration go?', ['It leaves the ecosystem as heat', 'It is stored in the producers\' biomass', 'It passes to the primary consumers', 'It is recycled back to the producers'], 0, heatWhy, '1.B')
       ],

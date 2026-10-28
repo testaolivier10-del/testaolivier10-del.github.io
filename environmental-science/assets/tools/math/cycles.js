@@ -169,7 +169,11 @@
       var E = 0, fuel = on.fuel ? on.fuel.rate : 0, clr = on.forest ? on.forest.rate : 0, pl = on.trees ? on.trees.rate : 0;
       E = fuel + clr;
       flux.burn = fuel; flux.clear = clr; flux.plant = pl;
+      var E0 = E; // the yearly rates the arrows and the sinks show
       for(var y = 1; y <= years; y++){
+        // Burning stops when the fossil reservoir is used up (at 9.5 GtC a
+        // year the 930 GtC lasts about 98 years), so no pool goes negative.
+        if(fuel > pool.fossil){ fuel = Math.max(0, pool.fossil); E = fuel + clr; }
         pool.atm += Cc.evaluate({ fn: 'percentOf', args: [SPLIT.air * 100, E] }) - pl;
         pool.ocean += Cc.evaluate({ fn: 'percentOf', args: [SPLIT.ocean * 100, E] });
         var land = Cc.evaluate({ fn: 'percentOf', args: [SPLIT.land * 100, E] });
@@ -178,9 +182,9 @@
         pool.fossil -= fuel;
         out.pools.push(clone(pool));
       }
-      out.sinks = { air: SPLIT.air * E, ocean: SPLIT.ocean * E, land: SPLIT.land * E, emissions: E };
-      flux.uptake = Y.processes.filter(function(p){ return p.id === 'uptake'; })[0].flux + SPLIT.ocean * E;
-      flux.photo = 120 + SPLIT.land * E + pl;
+      out.sinks = { air: SPLIT.air * E0, ocean: SPLIT.ocean * E0, land: SPLIT.land * E0, emissions: E0 };
+      flux.uptake = Y.processes.filter(function(p){ return p.id === 'uptake'; })[0].flux + SPLIT.ocean * E0;
+      flux.photo = 120 + SPLIT.land * E0 + pl;
       out.flux = flux;
       return out;
     }
@@ -368,7 +372,7 @@
             mistakes: [{ expr: fs(ff) + ' + ' + fs(luc) + ' + ' + fs(oc) + ' + ' + fs(ld), why: 'The ocean and land absorb carbon: subtract them (sinks), add only the sources.' }, { expr: fs(ff) + ' - ' + fs(oc) + ' - ' + fs(ld), why: 'Clearing forests is a source too: add it to the fossil fuel carbon.' }] }) },
         { key: 'gain', kind: 'unit', practice: '6.C', label: 'Carbon added to the atmosphere this year, with its unit.',
           cell: M.unitCell(net, 'GtC', { units: ['GtC/yr', 'Gt C', 'Gt', 'Gt/yr'], mistakes: [{ value: wrongSign, why: 'Subtract the sinks (ocean and land); they take carbon out of the air.' }] }) },
-        { key: 'ppm', kind: 'unit', practice: '6.C', label: 'The rise in atmospheric CO₂ this year, in ppm.',
+        { key: 'ppm', kind: 'unit', practice: '6.C', label: 'The rise in atmospheric CO₂ this year, in ppm.', hint: 'Divide the GtC gained by 2.12 GtC per ppm.',
           cell: M.unitCell(p, 'ppm', { units: ['ppm/yr', 'ppm per year'], mistakes: [{ value: Cc.evaluate({ fn: 'mul', args: [net, PPM] }), why: 'Divide by 2.12 GtC per ppm: GtC ÷ (GtC/ppm) leaves ppm.' }] }) },
         choice('air', 'What share of the carbon released this year stayed in the atmosphere?', ['Less than half', 'About half', 'More than half'], (function(){ var f = net / (ff + luc); return f < 0.4 ? 0 : f <= 0.6 ? 1 : 2; })(), (function(){ var f = net / (ff + luc), pc = M.fmt(f * 100, 2); return ['It is ' + pc + '% (' + M.fmt(net, 3) + ' of ' + M.fmt(ff + luc, 3) + ' GtC). ' + (f < 0.4 ? 'Right.' : 'Compare the gain with the total released.'), 'It is ' + pc + '%. ' + (f >= 0.4 && f <= 0.6 ? 'Right: about half, as in recent years; the ocean and land took the rest.' : 'Compare the gain with the total released.'), 'It is ' + pc + '%. ' + (f > 0.6 ? 'Right.' : 'Compare the gain with the total released.')]; })(), '5.C', { fixed: true })
       ],

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthesis Trainer: Organic Chemistry Tool | LevlPrep</title>
+<meta name="description" content="Plan multistep organic syntheses one step at a time, forward or by retrosynthesis, with structures and a reason for every dead end.">
+<link rel="canonical" href="https://levlprep.com/ochem/tools/synthesis.html">
+<meta property="og:title" content="Synthesis Trainer: Organic Chemistry Tool | LevlPrep">
+<meta property="og:description" content="Plan multistep organic syntheses one step at a time, forward or by retrosynthesis, with structures and a reason for every dead end.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/ochem/tools/synthesis.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script src="../assets/ochem-premium.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- tool-ld:start -->
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "WebApplication",
+        "LearningResource"
+      ],
+      "@id": "https://levlprep.com/ochem/tools/synthesis.html#tool",
+      "name": "Synthesis Trainer",
+      "url": "https://levlprep.com/ochem/tools/synthesis.html",
+      "description": "Build a multistep synthesis step by step, forward or backward, and see why a dead end is one.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "learningResourceType": "Interactive Tool",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".tool-root"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Multistep synthesis"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "retrosynthesis"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "relatedLink": [
+        "https://levlprep.com/ochem/notes/multistep-synthesis.html",
+        "https://levlprep.com/ochem/notes/retrosynthesis.html",
+        "https://levlprep.com/ochem/notes/functional-group-interconversion.html"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tools",
+          "item": "https://levlprep.com/ochem/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Synthesis Trainer",
+          "item": "https://levlprep.com/ochem/tools/synthesis.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- tool-ld:end -->
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../../assets/course/tool-studio.css">
+<script src="../../assets/course/tool-studio.js" defer></script>
+<!-- tool-studio:end -->
+<style>
+/* The Synthesis Trainer's own styles. On the page, like the Reagent
+   Roadmap's: no other tool uses them. */
+.sy-stage{display:flex;flex-direction:column;gap:10px;min-width:0;}
+.sy-trail{list-style:none;margin:0;padding:0 2px 4px;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:thin;}
+.sy-trail__n{display:flex;align-items:center;gap:2px;flex:none;}
+.sy-trail__n > span:last-child{font:800 12.5px/1.2 var(--font-ui);color:var(--ink);padding:5px 9px;border-radius:999px;background:var(--surface2,var(--paper));border:1.5px solid var(--line-soft);white-space:nowrap;}
+.sy-trail__n.is-a > span:last-child{border-color:var(--navy);}
+.sy-trail__n.is-b > span:last-child{border-color:var(--accent);color:var(--accent-text);}
+.sy-trail__n.is-gap > span:last-child{border-style:dashed;color:var(--muted);}
+.sy-trail__n.is-dead > span:last-child{border-color:var(--bad-text);color:var(--bad-text);text-decoration:line-through;}
+.sy-trail__arr{color:var(--muted);font-weight:900;padding:0 2px;}
+
+.sy-pair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;gap:8px;}
+.sy-pair.is-one{grid-template-columns:minmax(0,1fr);max-width:420px;margin:0 auto;width:100%;}
+.sy-mol{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;padding:10px 8px 12px;border-radius:16px;
+  background:var(--surface2,var(--paper));--mol-bg:var(--surface2,var(--paper));border:2px solid transparent;}
+.sy-mol.is-target{border-color:var(--line-soft);border-style:dashed;}
+.sy-mol.is-done{border-color:var(--good-text);border-style:solid;background:var(--tint-good);--mol-bg:var(--tint-good);}
+.sy-mol.is-dead{border-color:var(--bad-text);background:var(--tint-bad);--mol-bg:var(--tint-bad);}
+.sy-mol__k{font:800 12px var(--font-ui);color:var(--muted);align-self:flex-start;}
+.sy-mol.is-done .sy-mol__k{color:var(--good-text);}
+.sy-mol.is-dead .sy-mol__k{color:var(--bad-text);}
+.sy-mol__pic{width:100%;display:flex;align-items:center;justify-content:center;min-height:110px;flex:1;}
+.sy-mol__pic .scene{background:transparent;border:0;padding:0;margin:0;width:100%;}
+.sy-mol__pic .omol svg{width:100%;max-width:300px;max-height:190px;display:block;margin:0 auto;}
+.sy-mol__pic--text .tformula{font-size:15px;text-align:center;}
+.sy-mol__name{font:800 14px/1.3 var(--font-ui);color:var(--ink);text-align:center;overflow-wrap:anywhere;}
+.sy-gap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:34px;max-width:120px;}
+.sy-gap__t{font:900 22px var(--font-ui);color:var(--muted);}
+.sy-gap__rx{font:700 11px/1.3 var(--font-mono);color:var(--muted);text-align:center;overflow-wrap:anywhere;}
+
+.sy-dock{display:flex;flex-direction:column;gap:10px;min-width:0;}
+.sy-ask{margin:0;font:700 15px/1.45 var(--font-ui);color:var(--ink);}
+.sy-ask[hidden],.sy-tiles[hidden]{display:none;}
+.sy-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.sy-tile{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;text-align:left;min-height:56px;padding:10px 12px;
+  border-radius:14px;border:2px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;
+  font:800 14px/1.4 var(--font-ui);overflow-wrap:anywhere;transition:border-color .12s ease,transform .08s ease;}
+.sy-tile:hover{border-color:var(--accent);}
+.sy-tile:active{transform:translateY(1px);}
+.sy-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.sy-tile.is-no{border-color:var(--line-soft);background:var(--paper);color:var(--muted);}
+.sy-tile.is-no .sy-tile__rx,.sy-tile.is-no .sy-tile__mol{text-decoration:line-through;text-decoration-thickness:1.5px;}
+.sy-tile.is-hint{border-color:var(--accent);box-shadow:0 0 0 3px var(--tint-accent);}
+.sy-tile__mol{font:800 14px/1.3 var(--font-ui);}
+.sy-tile--b .sy-tile__rx{font-size:13px;font-weight:700;color:var(--muted);}
+.sy-tile__x{font:800 11.5px var(--font-ui);color:var(--bad-text);text-decoration:none;display:inline-block;}
+.sy-note:empty{display:none;}
+.sy-note{display:flex;flex-direction:column;gap:8px;}
+.sy-note .tnote{margin:0;font-size:14px;line-height:1.5;}
+.sy-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.sy-acts .tchip,.sy-acts .btn-press{min-height:44px;}
+
+.sy-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.sy-step{padding:10px 12px;border-radius:12px;background:var(--paper);border:1px solid var(--line-soft);}
+.sy-step__h{font:700 14px/1.4 var(--font-ui);color:var(--ink);}
+.sy-step__rx{font:700 13px/1.5 var(--font-mono);color:var(--ink);margin-top:3px;overflow-wrap:anywhere;}
+.sy-step__n{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.45;}
+.sy-step__l{font-size:12.5px;margin-top:4px;color:var(--muted);}
+.sy-learn{font-weight:800;color:var(--accent-text);}
+
+.sy-reach{width:100%;min-height:44px;font:700 15px var(--font-ui);padding:0 10px;border-radius:12px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);}
+.sy-plist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.sy-pbtn{width:100%;display:grid;grid-template-columns:30px 1fr;gap:2px 10px;align-items:center;text-align:left;min-height:48px;padding:8px 12px;
+  border-radius:12px;border:1.5px solid var(--line-soft);background:var(--white);color:var(--ink);cursor:pointer;}
+.sy-pbtn:hover{border-color:var(--accent);}
+.sy-pbtn.is-on{border-color:var(--accent);background:var(--tint-accent);}
+.sy-pbtn__n{grid-row:span 2;font:900 13px var(--font-mono);color:var(--muted);text-align:center;}
+.sy-pbtn__t{font:800 14px/1.3 var(--font-ui);}
+.sy-pbtn__m{font:700 12px var(--font-ui);color:var(--muted);}
+.sy-seg{margin-bottom:12px;}
+
+/* In the studio. The caption already asks the question, so the dock's own
+   line is only for the page without the studio. On a phone the stage is as
+   tall as the two structures, not 62% of the screen: the four tiles are the
+   first thing to do, so they start on the first screen. */
+.sy-ls .ls-stage .sy-stage{padding:6px 4px 52px;}
+.sy-ls .sy-ask{display:none;}
+@media (max-width:640px){
+  .ls-root.sy-ls .ls-stage{height:auto;min-height:0;}
+}
+@media (max-width:640px){
+  .sy-pair{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);gap:4px;}
+  .sy-mol{padding:8px 4px 10px;}
+  .sy-mol__pic{min-height:96px;}
+  .sy-mol__name{font-size:13px;}
+  .sy-gap__rx{display:none;}
+  .sy-tiles{grid-template-columns:1fr;}
+  .sy-tile{min-height:48px;font-size:14px;}
+}
+.ls-root.ls-phone .sy-pair{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);gap:4px;}
+.ls-root.ls-phone .sy-gap__rx{display:none;}
+.ls-root.ls-phone .sy-tiles{grid-template-columns:1fr;}
+.ls-stage.is-big .sy-mol__pic .omol svg{max-width:none;max-height:none;}
+</style>
+
+</head>
+<body>
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Synthesis Trainer</span></nav></div>
+<!-- crumb:end -->
+<!-- r3-toolband:start -->
+
+<!-- r3-toolband:end -->
+
+<div class="xshell">
+  <div class="tool-top" id="tool-top">
+<!-- tool-top:start -->
+<div class="tool-topbar"><a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-share" id="tool-share"></div></div><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="9" width="5" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="16.5" y="9" width="5" height="6" rx="1.5" fill="currentColor"/><path d="M8 12h2.5M13.5 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><path d="M5 9V6.5h14V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 3"/></svg></span><h1>Synthesis Trainer</h1></div><p class="tool-lede">Build a multistep synthesis step by step, forward or backward, and see why a dead end is one.</p>
+<!-- tool-top:end -->
+</div>
+  <noscript><div class="site-nav-fallback"><p>The trainer judges every step in your browser and needs JavaScript to run. Route planning is taught in <a href="../notes/multistep-synthesis.html">Planning a multistep route</a> and <a href="../notes/retrosynthesis.html">Thinking backwards</a>.</p></div></noscript>
+  <div id="syRoot" class="tool-root"></div>
+
+  <div id="tool-quiz"></div>
+
+  <div id="tool-foot">
+<!-- tool-foot:start -->
+<section class="tool-foot" aria-labelledby="tool-foot-h"><h2 class="tool-foot__h" id="tool-foot-h">Keep going</h2><div class="tool-foot__cols"><div class="tool-foot__col"><p class="tool-foot__k" id="tool-foot-l">Read the lesson</p><ul class="tool-foot__list" aria-labelledby="tool-foot-l"><li><a href="../lessons/multistep-synthesis.html" data-topic="multistep-synthesis">Planning a multistep route</a></li><li><a href="../lessons/retrosynthesis.html" data-topic="retrosynthesis">Thinking backwards</a></li><li><a href="../lessons/functional-group-interconversion.html" data-topic="functional-group-interconversion">Functional group interconversion</a></li></ul></div><div class="tool-foot__col"><p class="tool-foot__k" id="tool-foot-g">In the glossary</p><ul class="tool-foot__list" aria-labelledby="tool-foot-g"><li><a href="../glossary.html#t-multistep-synthesis" data-term="multistep-synthesis" data-lesson="../lessons/multistep-synthesis.html" data-lesson-title="Planning a multistep route">multistep synthesis</a></li><li><a href="../glossary.html#t-retrosynthesis" data-term="retrosynthesis" data-lesson="../lessons/retrosynthesis.html" data-lesson-title="Thinking backwards">retrosynthesis</a></li><li><a href="../glossary.html#t-disconnection" data-term="disconnection" data-lesson="../lessons/retrosynthesis.html" data-lesson-title="Thinking backwards">disconnection</a></li><li><a href="../glossary.html#t-functional-group-interconversion" data-term="functional-group-interconversion" data-lesson="../lessons/functional-group-interconversion.html" data-lesson-title="Functional group interconversion">functional group interconversion</a></li></ul></div></div><div class="trow"><a class="btn-press" href="../practice.html?topic=multistep-synthesis">Practice Planning a multistep route</a><a class="link-quiet" href="../learn.html">Browse the textbook &rarr;</a></div><nav class="tool-switch" aria-labelledby="tool-switch-h"><p class="tool-foot__k" id="tool-switch-h">Other tools</p><div class="tool-switch__row"><a href="arrow-pusher.html">Arrow Pusher</a><a href="resonance.html">Resonance Explorer</a><a href="viewer-3d.html">3D Molecule Viewer</a><a href="conformations.html">Conformation Lab</a><a href="reaction-predictor.html">Reaction Predictor</a><a href="acid-base.html">Acid/Base Comparator</a><a href="spectroscopy.html">Spectroscopy Lab</a><a href="reagent-roadmap.html">Reagent Roadmap</a></div></nav></section>
+<!-- tool-foot:end --></div>
+</div>
+
+<script>
+  window.OCHEM_SECTION = 'tools';
+  window.OCHEM_BASE = '../';
+  window.OCHEM_TOOL = 'synthesis';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-state.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tool-quiz.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/tool-shell.js" defer></script>
+<script src="../assets/molecules.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/mol3d.js" defer></script>
+<script src="../assets/mol-builder.js" defer></script>
+<script src="../assets/tools/reagent-roadmap-data.js" defer></script>
+<script src="../assets/tools/reagent-roadmap.js" defer></script>
+<script src="../assets/tools/synthesis-data.js" defer></script>
+<script src="../assets/tools/synthesis.js" defer></script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+  </footer>
+</div>
+</body>
+</html>

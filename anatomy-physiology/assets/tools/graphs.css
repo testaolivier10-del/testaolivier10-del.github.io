@@ -261,3 +261,13 @@
 .gr-fig .gr-ph .gr-tick{font-size:12.5px;}
 /* The reading under the chart: its right end stays clear of the stage's Enlarge button. */
 .ls-root.ls-phone.gr-ls .ls-stage-body > .gr-read{padding-right:56px;max-height:112px;overflow-y:auto;}
+
+/* Tool audit 2026-10: in Quiz on a phone the graph stays pinned under the bar while the question and its
+   feedback scroll below it (it scrolled off the top), at a height that leaves room for the question. */
+@media (max-width:640px){
+  .ls-root.gr-ls[data-mode="quiz"] .ls-stage{position:sticky;top:0;z-index:3;height:44vh;height:44svh;min-height:250px;box-shadow:0 6px 12px -8px rgba(20,30,28,.25);}
+}
+.gr-qbtn:disabled{opacity:.4;cursor:not-allowed;}
+.gr-qbtn.is-skipped{border-style:dashed;}
+.gr-qbtn.is-skipped::after{content:"skipped";display:block;font:800 8.5px/1 var(--font-ui);color:var(--muted);margin-top:-2px;}
+.gr-skip{min-height:44px;font:800 13.5px var(--font-ui);color:var(--cink);text-decoration:underline;background:none;border:0;cursor:pointer;}

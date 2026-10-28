@@ -454,12 +454,18 @@
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       reset();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.sd-one'), text: 'Start here: take one sample' });
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.sd-one'), text: 'Take one more sample' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ if(!anim) draw(); }, 60); }).observe($('.sd-fig')); }
     }
     var origReset = reset;
     reset = function(){ origReset(); drawMode(); };
+    /* The landing view: 100 sample means already stacked and the last
+       sample shown (audit: "starts with two empty panels"). */
+    function seedView(){ for(var i = 0; i < 100; i++){ last = sampleOnce(); stats.push(last.stat); } draw(); speak(); }
+    var firstStudio = true, origStudio = studio;
+    studio = function(pane, s){ origStudio(pane, s); if(firstStudio){ firstStudio = false; seedView(); } };
     setRange(); syncChips(); drawMode(); draw();
+    if(!(window.LevlStudio && T.studioOf(host))) seedView();
     return { stop: stop, studio: studio };
   }
 
@@ -472,9 +478,30 @@
       title: function(p){ return { mean: 'The sampling distribution of x̄', prop: 'The sampling distribution of p̂', diff: 'A difference of two statistics', shape: 'Which picture is the sampling distribution?', estimator: 'Bias and variability' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
       onStep: function(s, right, api){
-        var k = s.key, st = api.st;
-        if(k === 'sd') st.sd = true; else if(k === 'shape' || k === 'counts') st.cond = true; else if(k === 'prob') st.prob = true; else return;
+        var k = s.key, st = api.st, had = !!st.yours; st.yours = null;
+        if(k === 'sd') st.sd = true; else if(k === 'shape' || k === 'counts') st.cond = true; else if(k === 'prob') st.prob = true; else if(!had) return;
         if(api.problem.type === 'mean' || api.problem.type === 'prop' || api.problem.type === 'diff') figure(api.fig, api.problem, st);
+      },
+      // A wrong center is a dashed line; a wrong SD a dashed curve that wide; a wrong probability a tag.
+      onTry: function(s, t, api){
+        var ty = api.problem.type;
+        if(t.right || s.kind !== 'num' || !isFinite(t.value) || !(ty === 'mean' || ty === 'prop' || ty === 'diff')) return;
+        api.st.yours = { key: s.key, v: t.value }; figure(api.fig, api.problem, api.st);
+      },
+      method: function(s, p){
+        var g = p.given || {}, H = {
+          mean: p.type === 'prop' ? th('The center of $\\hat{p}$ is the population proportion: $\\mu_{\\hat{p}} = p$.') : p.type === 'diff' ? 'The center of a difference is the difference of the centers.' : th('The center of $\\bar{x}$ is the population mean: $\\mu_{\\bar{x}} = \\mu$.'),
+          sd: p.type === 'prop' ? th('$\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1 - p)}{n}}$ with $p = ' + g.p + '$ and $n = ' + g.n + '$.') : p.type === 'diff' ? th('Add the variances, then take the square root: $\\sqrt{\\sigma_1^2 + \\sigma_2^2}$, each the SD of one statistic.') : p.type === 'shape' ? th('$\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$.') : th('$\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{' + g.sigma + '}{\\sqrt{' + g.n + '}}$. Your SD is drawn as the dashed curve.'),
+          prob: 'Standardize with the mean and SD of the sampling distribution, not of the population, then find the shaded area on the side the question asks.',
+          tenpct: 'Sampling without replacement: the sample must be at most 10% of the population for the SD formula.',
+          shape: 'Normal population, or n at least 30 (central limit theorem): then the sampling distribution is approximately normal.',
+          counts: 'Large counts: np and n(1 − p) both at least 10.',
+          pic: 'Larger samples give a narrower, more normal sampling distribution, centered at the population mean.',
+          grow: th('The SD has $\\sqrt{n}$ in the denominator.'),
+          unbiased: 'An unbiased statistic is centered at the true value: look for dotplots centered on the line.',
+          spread: 'Least variability is the narrowest dotplot.', best: 'Prefer unbiased first, then the least variability.'
+        };
+        return H[s.key] || null;
       }
     };
     T.drill(host, data, o);
@@ -491,7 +518,9 @@
     if(g.kind === 'estimators'){ el.innerHTML = '<figure class="sd-qfig">' + estSvg(g, W, H) + '</figure>'; return; }
     if(g.kind === 'pop'){ el.innerHTML = '<figure class="sd-qfig">' + popSvg(g, W, Math.min(H, 240)) + '</figure>'; return; }
     st = st || {};
-    el.innerHTML = '<figure class="sd-qfig">' + (st.sd ? modelSvg(g, st, W, H) : givenSvg(g, W, H)) + '</figure>';
+    var Y = st.yours, gg = Y && Y.key === 'mean' ? Object.assign({}, g, { yours: Y.v }) : g;
+    var svg = st.sd || (Y && Y.key === 'sd') ? modelSvg(gg, st, W, H) : givenSvg(gg, W, H);
+    el.innerHTML = '<figure class="sd-qfig">' + svg + (Y && Y.key !== 'sd' && Y.key !== 'mean' ? '<figcaption class="sd-ycap">Yours: ' + esc(T.F(Y.v, 4)) + '</figcaption>' : '') + '</figure>';
   }
   function popSvg(g, W, H){
     var A = S.population(S.POPS[g.pop]), mx = Math.max.apply(null, A.weights), L = 14, pw = W - 28, bh = H - 60, bw = pw / A.weights.length;
@@ -548,6 +577,8 @@
       out.unshift('<text class="sd-h sd-c-pop" x="' + L + '" y="16">The population' + (g.pops.length > 1 ? 's' : '') + ' (' + esc(g.unit || '') + ')</text><text class="sd-read sd-muted" x="' + R + '" y="16" text-anchor="end">' + (Array.isArray(g.n) ? 'n₁ = ' + g.n[0] + ', n₂ = ' + g.n[1] : 'n = ' + g.n) + '</text>');
       aria = 'The population distribution' + (g.pops.length > 1 ? 's' : '') + ': ' + g.pops.map(function(q){ return q.shape + ', mean ' + T.F(q.mu, 1) + ', standard deviation ' + T.F(q.sigma, 1); }).join('; and ');
     }
+    if(g.yours != null && g.pops[0].p == null){ var gx = x(g.yours); if(gx > L && gx < R) out.push('<line class="stat-yours" x1="' + gx.toFixed(1) + '" x2="' + gx.toFixed(1) + '" y1="' + (top - 6) + '" y2="' + base + '"/><text class="stat-yours-t" x="' + gx.toFixed(1) + '" y="' + (base - 8) + '" text-anchor="middle">yours ' + T.F(g.yours, 2) + '</text>'); }
+    else if(g.yours != null) out.push('<text class="stat-yours-t" x="' + R + '" y="' + (H - 6) + '" text-anchor="end">yours: ' + T.F(g.yours, 2) + '</text>');
     return '<svg class="sd-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(aria) + '">' + out.join('') + '</svg>';
   }
   function modelSvg(g, st, W, H){
@@ -568,8 +599,15 @@
       if(hi > lo){ shade.push(x(lo).toFixed(1) + ',' + base); for(var j = 0; j <= 80; j++){ var u = lo + (hi - lo) * j / 80; shade.push(x(u).toFixed(1) + ',' + (base - (base - top) * f(u) / f(c)).toFixed(1)); } shade.push(x(hi).toFixed(1) + ',' + base); }
     }
     var settled = !!st.cond, solid = settled && g.ok, dS = g.type === 'mean' ? 2 : 3;
+    // A wrong SD: its normal curve, dashed, on the same center (until the SD is answered the right one is hidden).
+    var Y = st.yours;
+    if(Y && Y.key === 'sd' && Y.v > 0){
+      var fy = function(v){ return Dn.normPdf((v - c) / Y.v) / Y.v; }, py = curvePts(fy, a, b, x, base, (base - top) * Math.min(1, f(c) > 0 ? fy(c) / f(c) : 1), fy(c));
+      out.push('<polyline class="stat-yours" points="' + py.join(' ') + '"/><text class="stat-yours-t" x="' + R + '" y="' + (top + 18) + '" text-anchor="end">yours: SD ' + T.F(Y.v, dS + 1) + '</text>');
+      if(!st.sd){ pts = []; }
+    }
     if(shade.length) out.push('<polygon class="sd-shade" points="' + shade.join(' ') + '"/>');
-    out.push('<polyline class="sd-curve sd-curve-g' + (solid ? '' : ' is-off') + '" points="' + pts.join(' ') + '"/>');
+    if(pts.length) out.push('<polyline class="sd-curve sd-curve-g' + (solid ? '' : ' is-off') + '" points="' + pts.join(' ') + '"/>');
     out.push('<line class="sd-mu" x1="' + x(c).toFixed(1) + '" x2="' + x(c).toFixed(1) + '" y1="' + (top - 4) + '" y2="' + base + '"/>');
     if(g.type === 'diff' && a < 0 && b > 0) out.push('<line class="sd-zero" x1="' + x(0).toFixed(1) + '" x2="' + x(0).toFixed(1) + '" y1="' + (top - 4) + '" y2="' + base + '"/>');
     if(st.prob && g.x != null) out.push('<line class="sd-xbarl" x1="' + x(g.x).toFixed(1) + '" x2="' + x(g.x).toFixed(1) + '" y1="' + top + '" y2="' + base + '"/>');

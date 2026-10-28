@@ -1075,7 +1075,7 @@ $$;
 -- ---------------------------------------------------------------------------
 -- 2. Exam completions, stamped by the database
 --
--- The NREMT pass guarantee needs "two full timed exams during the pass".
+-- The NREMT pass guarantee needs "two full timed or adaptive exams during the pass".
 -- That used to be read from the synced exam history, which the student's
 -- own browser writes, dates included. These rows are written only by
 -- record_exam_completion(), with the database's clock, at most one per

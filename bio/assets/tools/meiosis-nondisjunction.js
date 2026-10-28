@@ -196,7 +196,18 @@
       list.forEach(function(ch){ if(groupBy && cur && cur[0].pair === ch.pair) cur.push(ch); else { cur = [ch]; groups.push(cur); } });
       var gw = groups.map(function(g){ return g.reduce(function(n, ch){ return n + widthOf(ch); }, 0) + (g.length - 1) * 3; });
       var tot = gw.reduce(function(a, b){ return a + b; }, 0) + (groups.length - 1) * gapIn, x = cx - tot / 2, s = '', ly = cy + 0.55 * maxLen(list) + 12;
-      groups.forEach(function(g, i){ var xx = x; g.forEach(function(ch){ s += chrom(xx, cy, ch, ly); xx += widthOf(ch) + 3; }); x += gw[i] + gapIn; });
+      groups.forEach(function(g, i){
+        var xx = x;
+        g.forEach(function(ch){ s += chrom(xx, cy, ch, ly); xx += widthOf(ch) + 3; });
+        // A paired tetrad with crossing over: the chiasma, where the two inner (nonsister)
+        // chromatids cross, drawn at the tip boundary where their pieces were swapped.
+        if(groupBy && g.length === 2 && g[0].c.length > 1 && st.cross){
+          var a = x + widthOf(g[0]) - CW / 2, b = x + widthOf(g[0]) + 3 + CW / 2, yc = cy - 0.45 * lens(g[0].pair) + 0.3 * lens(g[0].pair);
+          s += '<path class="mei-chi" d="M' + a.toFixed(1) + ' ' + (yc - 5).toFixed(1) + 'L' + b.toFixed(1) + ' ' + (yc + 5).toFixed(1) + 'M' + b.toFixed(1) + ' ' + (yc - 5).toFixed(1) + 'L' + a.toFixed(1) + ' ' + (yc + 5).toFixed(1) + '"/>';
+          if(g[0].pair === 0) s += '<text class="mei-note mei-chil" x="' + ((a + b) / 2).toFixed(1) + '" y="' + (cy - 0.45 * lens(g[0].pair) - 5).toFixed(1) + '" text-anchor="middle">chiasma</text>';
+        }
+        x += gw[i] + gapIn;
+      });
       return s;
     }
     function cellBox(x, y, w, h, title){
@@ -212,9 +223,17 @@
       var defs = '<defs><pattern id="mei-stripe" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="mei-pbg" width="5" height="5"/><rect class="mei-pst" width="2" height="5"/></pattern><radialGradient id="mei-cyto" cx=".5" cy=".45" r=".7"><stop offset="0" class="mei-c0"/><stop offset="1" class="mei-c1"/></radialGradient></defs>', fib = [], cells = [];
       if(id === 'g1' || id === 's' || id === 'pro1'){
         var list = s.cells[0], ml = maxLen(list);
-        H = ml + 70;
+        // One cell: on a phone the chromosomes are drawn bigger (as wide as the cell allows),
+        // so the cell fills the stage instead of a strip with empty space above (tool audit 2026-10).
+        var phone = W === 300, rw = list.reduce(function(n, ch){ return n + widthOf(ch) + 3; }, 0) + list.length * (id === 'pro1' ? 8 : 12);
+        var Z = phone ? Math.max(1, Math.min(1.7, (W - 70) / rw)) : 1;
+        H = (ml + 70) * Z + (phone ? 30 : 0);
         cells.push(cellBox(20, 6, W - 40, H - 12, ''));
-        out.push(row(list, W / 2, 6 + 22 + 0.45 * ml, id === 'pro1' ? 16 : 12, id === 'pro1'));
+        var cyc = 6 + (22 + 0.45 * ml) * Z + (phone ? 15 : 0);
+        // the nuclear envelope: whole in G1 and S, breaking up in prophase I
+        out.push('<ellipse class="mei-nuc' + (id === 'pro1' ? ' brk' : '') + '" cx="' + (W / 2) + '" cy="' + (cyc + 0.05 * ml * Z).toFixed(1) + '" rx="' + Math.min(W / 2 - 34, rw * Z / 2 + 22).toFixed(1) + '" ry="' + ((0.5 * ml + 20) * Z).toFixed(1) + '"/>');
+        out.push('<g transform="translate(' + (W / 2) + ' ' + cyc.toFixed(1) + ') scale(' + Z.toFixed(3) + ') translate(' + (-W / 2) + ' ' + (-(6 + 22 + 0.45 * ml)) + ')">' + row(list, W / 2, 6 + 22 + 0.45 * ml, id === 'pro1' ? 16 : 12, id === 'pro1') + '</g>');
+        if(id !== 'pro1') out.push('<text class="mei-note" x="' + (W / 2) + '" y="' + (H - 12) + '" text-anchor="middle">nucleus</text>');
         if(id === 'pro1') out.push('<text class="mei-note" x="' + (W / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + (st.cross ? 'Homologs paired; nonsister chromatids swapped tips' : 'Homologs paired; no crossing over') + '</text>');
       } else if(id === 'meta1' || id === 'ana1'){
         var k = st.k, rows = [], y = 34;

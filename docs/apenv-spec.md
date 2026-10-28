@@ -294,6 +294,20 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
       plus nine units; measured 85.0), the hub 9.8 -> 10.1 KB (its card; measured 9.8).
 13. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 14. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
+15. (2026-10-27, `docs/tool-audit-2026-10.md`, APES section and X1/X5–X8) **Tool audit fixes.** Shared drill
+    (`env-tools.js`): every step has a method hint (its own, `o.method`, else one per step kind) behind "Show a
+    hint", opened by the first wrong try and always before "Show the answer"; the wrong answer goes on the stage as
+    a try card beside the right one, and tools that can draw it (`o.onTry`: dose-response curve, water pollution
+    DO and saturation graphs, population growth K and peak, acid rain pH scale) mark it on the figure; a miss with
+    no named slip says too high or too low; the worked solution opens in the dock when a problem ends (a copy stays
+    under Why). "Close" now means within 2x the tolerance and 25% of the answer (`env-tool-math.js`, `env-grade.js`).
+    `studioPane({ primary })` puts the main slider (and its Play row) first in the dock, so it is on the first
+    screen at 390 px; `dragOn(svg, fn)` lets a picture be dragged. Per tool: air pollution and earth and climate
+    hints point at the slider and the stage drags (clock, plant output, orbit date, latitude, balloon, mountain);
+    cycles runs the years continuously with Play/Pause and a CO₂ trend under the picture (fossil burning stops when
+    the model's 930 GtC is used up), phone labels by name; energy flow opens to scale with the lost 90% drawn, the
+    web redraws (sizes, empty ring, grey crossed-out species); water pollution shows fish leaving below 2 mg/L;
+    population growth opens at year 0; dose-response 10 mice a row with a key and dead mice drawn on their backs.
 
 ## 9. Open items for the owner
 

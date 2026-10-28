@@ -34,6 +34,13 @@
   // Ground states that break the Aufbau order (NIST), main table: the CED
   // excludes them from testing; the page says so when one is chosen.
   var AUFBAU_X = [24, 29, 41, 42, 44, 45, 46, 47, 78, 79, 103];
+  // Heavy p-block metals whose measured (metallic) radii run against the
+  // across-a-period trend: In < Sn and Tl < Pb < Bi. The values are right for
+  // their source (see "sources"), but coloring them on the same scale tells a
+  // student the trend fails there, so on the radius table they are grayed out
+  // and explained instead (audit 2026-10).
+  var ODD_R = [49, 50, 81, 82, 83];
+  var ODD_R_WHY = 'Indium, tin, thallium, lead and bismuth are grayed out on the radius table. Their radii are measured in the solid metal, where the atoms bond and pack in different ways from one metal to the next, so the numbers do not fall smoothly across the period (indium comes out smaller than tin, thallium smaller than lead). Test yourself never asks you to compare two elements where the data break the rule. Ionization energy still rises across from indium to tin to antimony and from thallium to lead; the heaviest elements have other exceptions too (bismuth comes out just below lead).';
   var LABEL = { r: 'Atomic radius', ie: 'Ionization energy', en: 'Electronegativity', ea: 'Electron affinity' };
   var SHORT = { r: 'Radius', ie: 'Ionization', en: 'Electroneg.', ea: 'Electron aff.' };
   function valText(el, key, unit){
@@ -94,8 +101,8 @@
       var g = [];
       c.forEach(function(gr, i){ g.push('<text class="ptx-gn" x="' + (2 + i * (cw + gap) + cw / 2) + '" y="11" text-anchor="middle">' + gr + '</text>'); });
       shown().forEach(function(e){
-        var i = c.indexOf(e.g), j = p.indexOf(e.p), x = 2 + i * (cw + gap), y = 20 + j * (ch + gap), v = e[key], t = v == null ? null : sc.t(v);
-        var cls = 'ptx-cell' + (t == null ? ' is-none' : t > 0.55 ? ' is-dark' : '') + (e === sel ? ' is-sel' : '') + (e === other ? ' is-other' : '');
+        var i = c.indexOf(e.g), j = p.indexOf(e.p), x = 2 + i * (cw + gap), y = 20 + j * (ch + gap), v = e[key], odd = key === 'r' && ODD_R.indexOf(e.z) > -1, t = v == null || odd ? null : sc.t(v);
+        var cls = 'ptx-cell' + (odd ? ' is-odd' : t == null ? ' is-none' : t > 0.55 ? ' is-dark' : '') + (e === sel ? ' is-sel' : '') + (e === other ? ' is-other' : '');
         var vt = v == null ? (key === 'ea' && e.ie != null ? 'none' : '–') : key === 'en' ? v.toFixed(1) : Math.round(v);
         g.push('<g class="' + cls + '" data-z="' + e.z + '" role="button" tabindex="' + (e === sel ? 0 : -1) + '" aria-pressed="' + (e === sel || e === other) + '" aria-label="' + esc(e.n + ', ' + LABEL[key].toLowerCase() + ' ' + valText(e, key)) + '">' +
           '<rect x="' + x + '" y="' + y + '" width="' + cw + '" height="' + ch + '" rx="7"' + (t == null ? '' : ' style="--t:' + t.toFixed(3) + '"') + '/>' +
@@ -109,7 +116,8 @@
     function legend(){
       var sc = scale(), u = key === 'r' ? ' pm' : key === 'en' ? '' : ' kJ/mol', f = function(x){ return key === 'en' ? x.toFixed(1) : Math.round(x); };
       return '<span class="ptx-lg-k">' + LABEL[key] + (key === 'ea' ? ' (energy released)' : '') + '</span><span class="ptx-lg-bar" aria-hidden="true"></span><span class="ptx-lg-n">' + f(sc.lo) + '</span><span class="ptx-lg-n is-hi">' + f(sc.hi) + u + '</span>' +
-        (key === 'ea' || key === 'r' || key === 'en' ? '<span class="ptx-lg-none"><i aria-hidden="true"></i>' + (key === 'ea' ? 'no stable anion' : key === 'r' ? 'noble gases: no comparable radius' : 'no value') + '</span>' : '');
+        (key === 'ea' || key === 'r' || key === 'en' ? '<span class="ptx-lg-none"><i aria-hidden="true"></i>' + (key === 'ea' ? 'no stable anion' : key === 'r' ? 'noble gases: no comparable radius' : 'no value') + '</span>' : '') +
+        (key === 'r' ? '<span class="ptx-lg-none ptx-lg-odd"><i aria-hidden="true"></i>In, Sn, Tl, Pb, Bi: measured radii break the trend (tap one)</span>' : '');
     }
     /* Across and down: the selected element's period and group as bars. */
     function barsSvg(){
@@ -157,7 +165,7 @@
       if(K === 'ea' && /^(9-17)$/.test(z)) return 'Fluorine is so small that an added electron is crowded in with the other seven in shell 2; the electron-electron repulsion makes less energy released than for chlorine.';
       if(K === 'ea' && (a.ea == null || b.ea == null)) return (a.ea == null ? a : b).n + ' does not form a stable anion: an added electron would have to go into a new, higher-energy subshell' + ((a.ea == null ? a : b).g === 15 ? ' or pair up in a half-filled p subshell' : '') + '.';
       if(K === 'ea' && (a.g === 15 || b.g === 15)) return 'Nitrogen-group atoms have half-filled p subshells; an added electron must pair up, and the repulsion lowers the energy released.';
-      if(K === 'r' && /^(49-50|81-82|50-51|82-83|81-83|49-51)$/.test(z)) return 'These heavy p-block elements pack in unusual ways in the solid (and Sb, Te are measured as covalent radii, not metallic), so their measured radii do not fall smoothly across the period. The Coulomb\'s law trend is still there in their ionization energies and electronegativities.';
+      if(K === 'r' && /^(49-50|81-82|50-51|82-83|81-83|49-51)$/.test(z)) return ODD_R_WHY + ' (Sb and Te are measured as covalent radii, not metallic, so a step from a metal to them also mixes two kinds of radius.)';
       if(K === 'r' && /^(13-31)$/.test(z)) return 'Gallium comes after the ten 3d electrons. d electrons shield poorly, so gallium\'s outer electrons feel a larger effective nuclear charge than the simple group trend expects, and gallium ends up slightly smaller than aluminum.';
       if(K === 'ie' && /^(13-31|31-49)$/.test(z)) return 'The poorly shielding d electrons before gallium (and indium) raise the effective nuclear charge, so the simple down-a-group drop does not hold here.';
       return 'The simple rule is a guide; here other effects (subshells, paired electrons, poorly shielding d electrons) are larger than the trend.';
@@ -184,6 +192,7 @@
         : key === 'ie' ? 'Across a period the effective nuclear charge rises at about the same distance, so the outer electron is held more tightly. Down a group the outer electron is in a higher shell, farther out and better shielded, so it is easier to remove.'
         : key === 'en' ? 'Electronegativity follows the same pull: a large effective nuclear charge acting at a short distance attracts bonding electrons strongly (fluorine), a small one at a long distance weakly (cesium).'
         : 'An added electron is attracted by the effective nuclear charge; more energy is released where that pull is strong and close (the halogens). Atoms whose next electron must start a new subshell or pair up release little or none, so this trend is the least regular.';
+      if(key === 'r' && ODD_R.indexOf(e.z) > -1) cause = ODD_R_WHY + ' ' + cause;
       return { head: '<b>' + esc(e.n) + ': ' + LABEL[key].toLowerCase() + ' ' + v + '.</b>', body: '<p>' + (row.length > 1 ? 'Across period ' + e.p + ': ' + span(row) + '. ' : '') + (col.length > 1 ? 'Down group ' + e.g + ': ' + span(col) + '. ' : '') + '</p><p>' + cause + '</p>' +
         (e.pes ? '<p>Its spectrum has ' + e.pes.length + ' peak' + (e.pes.length === 1 ? '' : 's') + ', one per occupied subshell. The left-most (' + e.pes[0][0] + ', ' + e.pes[0][1] + ' MJ/mol) is the most tightly held; the right-most (' + e.pes[e.pes.length - 1][0] + ', ' + e.pes[e.pes.length - 1][1] + ' MJ/mol) is the first ionization energy, ' + e.ie + ' kJ/mol. Heights count electrons: ' + e.pes.map(function(p){ return p[2]; }).join(', ') + '.</p>' : '') };
     }

@@ -262,13 +262,19 @@
     var ORDER = M.shuffle(M.rng(23), Array.apply(null, Array(100)).map(function(_, i){ return i; }));
     function doseScene(Wd, H){
       var phone = Wd < 640, g = [];
-      var gridBox = phone ? { x: 8, y: 8, w: Wd - 16, h: Math.round(H * 0.3) } : { x: 16, y: 16, w: Math.round(Wd * 0.34), h: H - 32 };
+      // On a phone the 100 mice sit 10 to a row beside a key, about twice the old size (tool-audit: mice 12 px).
+      var gridBox = phone ? { x: 8, y: 8, w: Wd - 16, h: Math.round(H * 0.46) } : { x: 16, y: 16, w: Math.round(Wd * 0.34), h: H - 32 };
       var plot = phone ? { x0: 46, x1: Wd - 14, y0: gridBox.y + gridBox.h + 40, y1: H - 64 } : { x0: gridBox.x + gridBox.w + 64, x1: Wd - 20, y0: 44, y1: H - 64 };
       // the mice
-      var cols = phone ? 20 : 10, rows = 100 / cols, cw = gridBox.w / cols, chh = (gridBox.h - 26) / rows, sz = Math.min(cw, chh);
+      var cols = 10, rows = 100 / cols, cw = gridBox.w / cols, chh = (gridBox.h - 26 - (phone ? 0 : 22)) / rows, sz = Math.min(cw, chh);
       var deadN = Math.round(resp(chem));
       g.push('<text class="dr-h" x="' + gridBox.x + '" y="' + (gridBox.y + 12) + '">100 test mice, ' + dose + ' mg/kg</text><text class="dr-h dr-c-bad" x="' + (gridBox.x + gridBox.w) + '" y="' + (gridBox.y + 12) + '" text-anchor="end">' + deadN + ' died</text>');
-      var gx = gridBox.x + (gridBox.w - cols * sz) / 2, gy = gridBox.y + 22 + (gridBox.h - 26 - rows * sz) / 2;
+      var gx = gridBox.x + (gridBox.w - cols * sz) / 2, gy = gridBox.y + 22 + (gridBox.h - 26 - (phone ? 0 : 22) - rows * sz) / 2;
+      // a key, so dead and alive differ by shape and word, not only by colour
+      var kx = phone ? gx + cols * sz + 8 : gridBox.x + 4, ky = phone ? gy + sz * 1.2 : gy + rows * sz + 16, ks = phone ? Math.max(14, sz * 0.86) : sz * 0.7;
+      if(phone && gx > 70){ kx = gridBox.x + 2; gx = gridBox.x + gridBox.w - cols * sz; }
+      g.push(mouse(kx + ks * 0.6, ky, ks, false) + '<text class="dr-key" x="' + (kx + ks * 1.4) + '" y="' + (ky + 4) + '">alive</text>' +
+        mouse(kx + ks * 0.6, ky + ks * 1.6, ks, true) + '<text class="dr-key" x="' + (kx + ks * 1.4) + '" y="' + (ky + ks * 1.6 + 4) + '">died</text>');
       for(var k = 0; k < 100; k++){
         var c = k % cols, rr = Math.floor(k / cols), dead = ORDER.indexOf(k) < deadN;
         g.push(mouse(gx + (c + 0.5) * sz, gy + (rr + 0.55) * sz, sz * 0.86, dead));
@@ -311,13 +317,16 @@
         g.push(bgr(q, 'dr-lbg') + '<text class="dr-lab dr-c-' + CH[i].cls + '" ' + at(q) + '>' + t + '</text>'); });
       svg.setAttribute('data-clash', String(Lo.clash())); svg.setAttribute('data-miss', Lo.misses().join(' | '));
       g.push('<line class="dr-axis" x1="' + plot.x0 + '" x2="' + plot.x1 + '" y1="' + plot.y1 + '" y2="' + plot.y1 + '"/><line class="dr-axis" x1="' + plot.x0 + '" x2="' + plot.x0 + '" y1="' + plot.y0 + '" y2="' + plot.y1 + '"/>');
+      if(!phone) g.push('<text class="dr-axl" transform="translate(' + (plot.x0 - 40) + ' ' + ((plot.y0 + plot.y1) / 2).toFixed(1) + ') rotate(-90)" text-anchor="middle">Died (% of the test mice)</text>');
       g.push('<text class="dr-axl" x="' + plot.x0 + '" y="' + (plot.y0 - 12) + '">Percent of test population that died</text><text class="dr-axl" x="' + ((plot.x0 + plot.x1) / 2) + '" y="' + (plot.y1 + 34) + '" text-anchor="middle">Dose (mg per kg of body mass)</text>');
       var label = 'Dose-response curve for ' + CH[chem].name + ' (invented data): threshold ' + th + ' mg/kg, LD50 ' + L + ' mg/kg. At ' + dose + ' mg/kg, ' + deadN + ' of 100 mice died.' + (all ? ' All three curves: LD50 ' + CH.map(function(c, i){ return c.name + ' ' + LD[i]; }).join(', ') + ' mg/kg.' : '');
       return { svg: g.join(''), label: label };
     }
     function mouse(cx, cy, s, dead){
       var k = s / 20;
-      return '<g class="dr-mouse' + (dead ? ' is-dead' : '') + '" transform="translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') scale(' + k.toFixed(3) + ')' + (dead ? ' rotate(180)' : '') + '"><path class="dr-tail" d="M-7 2 q-5 1 -4 -5"/><ellipse cx="0" cy="2" rx="7.5" ry="5"/><circle cx="6.5" cy="-1.5" r="3.6"/><circle class="dr-ear" cx="5" cy="-4.6" r="2.1"/></g>';
+      // a dead mouse lies on its back with an X for its eye
+      return '<g class="dr-mouse' + (dead ? ' is-dead' : '') + '" transform="translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') scale(' + k.toFixed(3) + ')' + (dead ? ' rotate(180)' : '') + '"><path class="dr-tail" d="M-7 2 q-5 1 -4 -5"/><ellipse cx="0" cy="2" rx="7.5" ry="5"/><circle cx="6.5" cy="-1.5" r="3.6"/><circle class="dr-ear" cx="5" cy="-4.6" r="2.1"/>' +
+        (dead ? '<path class="dr-x" d="M6.2 -3.2 l2.4 2.4 m0 -2.4 l-2.4 2.4"/><path class="dr-legs" d="M-4 7 v3 M3 7 v3"/>' : '<circle class="dr-eye" cx="8" cy="-2" r=".9"/>') + '</g>';
     }
     function chainScene(Wd, H){
       var phone = Wd < 640, g = [], L = levels(), n = 5, pad = phone ? 8 : 24, colW = (Wd - 2 * pad) / n;
@@ -391,12 +400,12 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.dr-fig')], dock: [$('.dr-ctl')], setup: 'Showing', moreLabel: 'Compare chemicals', why: [$('.dr-say')], details: [$('.dr-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.dr-fig')], dock: [$('.dr-ctl')], primary: [sDose.el, sF.el, sA.el], setup: 'Showing', moreLabel: 'Compare chemicals', why: [$('.dr-say')], details: [$('.dr-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sync(); draw(); words();
-      if(s.mode() === 'explore') hintSlot(s, s.root.querySelector('.dr-grp-dose .bt-slider'), 'Start here: raise the dose', s.root.querySelector('.dr-grp-dose .bt-slider'));
+      if(s.mode() === 'explore') s.hint({ target: sDose.input, text: 'Start here: raise the dose, or drag along the curve' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.dr-fig')); }
     }
     sync(); draw(); words();
@@ -411,7 +420,9 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return { read: 'Read the dose-response curve', dose: 'A dose for one animal', magnify: 'Up the food chain', compare: 'Which is more toxic?' }[p.type] || 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); }
+      onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); },
+      // a wrong reading is drawn on the curve beside where the answer lies
+      onTry: function(s, att, api){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); }
     });
   }
   function figure(el, p, st){
@@ -425,6 +436,15 @@
       g.points.forEach(function(q, i){ if(i % (phone && g.points.length > 10 ? 2 : 1) === 0) out.push('<line class="dr-grid" x1="' + X(q[0]).toFixed(1) + '" x2="' + X(q[0]).toFixed(1) + '" y1="' + top + '" y2="' + bot + '"/><text class="dr-tk" x="' + X(q[0]).toFixed(1) + '" y="' + (bot + 16) + '" text-anchor="middle">' + q[0] + '</text>'); });
       out.push('<polyline class="dr-curve dr-a is-sel" points="' + g.points.map(function(q){ return X(q[0]).toFixed(1) + ',' + Y(q[1]).toFixed(1); }).join(' ') + '"/>');
       g.points.forEach(function(q){ out.push('<circle class="dr-pt dr-a" cx="' + X(q[0]).toFixed(1) + '" cy="' + Y(q[1]).toFixed(1) + '" r="3.4"/>'); });
+      var tr = st.try && isFinite(st.try.v) && (st.try.key === 'ld50' || st.try.key === 'threshold') && st.try.v >= 0 && st.try.v <= mx ? st.try.v : null;
+      if(tr != null){
+        // the student's dose, read up to the curve: where it lands shows the percent it really gives
+        var yy = null;
+        for(var q = 1; q < g.points.length; q++){ var a = g.points[q - 1], b = g.points[q]; if(tr >= a[0] && tr <= b[0]){ yy = a[1] + (b[1] - a[1]) * (tr - a[0]) / ((b[0] - a[0]) || 1); break; } }
+        if(yy == null) yy = g.points[g.points.length - 1][1];
+        out.push('<path class="dr-try" d="M' + X(tr).toFixed(1) + ' ' + bot + ' V' + Y(yy).toFixed(1) + ' H' + L + '"/><circle class="dr-try-pt" cx="' + X(tr).toFixed(1) + '" cy="' + Y(yy).toFixed(1) + '" r="5.5"/>' +
+          '<text class="dr-try-t" x="' + Math.min(R - 4, X(tr) + 8).toFixed(1) + '" y="' + (Y(yy) - 10).toFixed(1) + '"' + (X(tr) > R - 120 ? ' text-anchor="end"' : '') + '>Yours: ' + T.F(tr, 0) + ' mg/kg → ' + T.F(yy, 0) + '% died</text>');
+      }
       if(st.ld50){ var ld = D.ld50(g.points); out.push('<path class="dr-guide" d="M' + L + ' ' + Y(50).toFixed(1) + ' H' + X(ld).toFixed(1) + ' V' + bot + '"/><circle class="dr-ld" cx="' + X(ld).toFixed(1) + '" cy="' + Y(50).toFixed(1) + '" r="6"/><text class="dr-tag" x="' + (X(ld) + 9).toFixed(1) + '" y="' + (Y(50) + 18).toFixed(1) + '">LD50 = ' + ld + ' mg/kg</text>'); }
       if(st.threshold){ var th = D.threshold(g.points); out.push('<rect class="dr-thband" x="' + L + '" y="' + top + '" width="' + (X(th) - L).toFixed(1) + '" height="' + (bot - top) + '"/><text class="dr-lab dr-c-good" x="' + X(th).toFixed(1) + '" y="' + (bot - 8) + '" text-anchor="middle">threshold ' + th + '</text>'); }
       out.push('<line class="dr-axis" x1="' + L + '" x2="' + R + '" y1="' + bot + '" y2="' + bot + '"/><line class="dr-axis" x1="' + L + '" x2="' + L + '" y1="' + top + '" y2="' + bot + '"/><text class="dr-axl" x="' + L + '" y="' + (top - 12) + '">Percent that died</text><text class="dr-axl" x="' + ((L + R) / 2) + '" y="' + (bot + 34) + '" text-anchor="middle">Dose of ' + esc(g.chem) + ' (mg/kg)</text>');

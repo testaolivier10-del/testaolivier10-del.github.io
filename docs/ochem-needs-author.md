@@ -1043,3 +1043,52 @@ confirm it.
   with a group even though the map has no edge for it, so they are never offered as "not a step from here".
   It is hand-written from standard reactivity (acid-base with strong bases, EAS on activated/deactivated rings,
   E2 on 2° halides, epoxide openings, diol oxidations). If the map gains edges, entries can go.
+
+### tools-audit-2026-10-ir-fingerprint: drawn IR fingerprint is illustrative
+- **Status:** decide whether to keep. The Spectroscopy lab now draws a seeded, illustrative pattern below
+  1500 cm⁻¹ (labelled "fingerprint region (illustrative pattern)" on every chart, and explained under "Every
+  band, in a table") plus real-position C–H bends, overtones and acid dimer bands. The marked bands are still
+  the tabulated data. Options: keep; replace the pattern with measured band lists per compound (for example
+  from SDBS or NIST); or drop it. The accuracy reviewer's fixes (no strong fake band at 1000–1300 without a
+  C–O, capped depth, label on every chart) are in.
+
+### tools-audit-2026-10-styrene-geminal: styrene =CH₂ drawn as doublets
+- **Status:** simplification kept and stated in the notes. Each terminal vinyl H is really a dd (about 1 Hz
+  geminal); the tool draws a d and says the small splitting is ignored.
+
+### tools-audit-2026-10-arrow-pulse: which arrow ends pulse
+- **Status:** review the rule if a pulse looks wrong. After a source is picked, the arrow pusher pulses atoms
+  and bonds that can receive electrons (`destinations()` in `chem-core.js`: cations, open octets, δ+ atoms and
+  carbons holding a halogen, acidic or β-hydrogens, a sigma bond only onto its own ends); the resonance
+  explorer pulses conjugated bonds and the electronegative end of a pi bond (`resTargets()` in
+  `resonance.js`). It is a nudge, never grading: every tap still works.
+
+## Synthesis Trainer (2026-10-27)
+
+The trainer (`ochem/tools/synthesis.html`) walks the Reagent Roadmap's graph, so its verdicts inherit the roadmap's
+simplifications. Points for a person, from the build's accuracy pass:
+
+### synth-e2-regio: 2° halide E2 always gives the Zaitsev alkene on a problem's skeleton
+`rx2-e2` lists NaOEt (Zaitsev) and notes that KOC(CH₃)₃ shifts toward the less substituted alkene, but the trainer
+treats the step as giving one molecule: on the butane skeleton, 2-bromobutane gives but-2-ene. So a student who wants
+but-1-ene from 2-bromobutane with a bulky base cannot get it, and "butane to butan-1-amine" style detours are judged
+dead ends although a 5-step bulky-base route exists. No curated problem's shortest route depends on it. Fix would be a
+separate roadmap edge for the bulky base on a 2° halide (`map` to the less substituted pattern).
+- **Status:** decided (ochem review, 2026-10-27).
+- **Decided:** no separate bulky-base edge. On a 2° halide KOC(CH₃)₃ gives only a modest shift: Brown (1956)
+  found 2-bromobutane with KOtBu gives about 53:47 but-1-ene to but-2-ene, still a mixture, so it is no way to
+  make the terminal alkene. The trainer keeps treating the step as Zaitsev. Applied in the `rx2-e2` `regio`
+  string in `ochem/assets/tools/reagent-roadmap-data.js`, which now says so.
+
+### synth-dead-diol: a 1,2-diol is a dead end
+The course has no periodate cleavage or pinacol rearrangement, so OsO₄ on any alkene is offered as a dead end ("the
+Reagent Roadmap has no reaction that takes a 1,2-diol on"). True of the course; confirm the course does not want
+NaIO₄ cleavage added.
+
+### synth-ether-final: joining steps only end a route
+Williamson, esterification and acylation are treated as last steps only (the roadmap's `final`). Cleaving an ether back
+with HI is in the roadmap but a route through an ether is never offered. Confirm that is the intended teaching.
+
+### synth-mixtures: Hg²⁺ hydration of pent-2-yne
+Shown as "pentan-2-one and pentan-3-one (a mixture)" and drawn as pentan-2-one only. Fine as a dead-end display;
+change the drawing if the owner prefers no structure for a mixture.

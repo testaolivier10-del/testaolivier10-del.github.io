@@ -127,6 +127,12 @@ body.ls-on .phys-crumb{display:none;}
 .cd-pics .mg-fig .tick{font-size:10.5px;}
 .cd-pics .mg-fig .series{stroke-width:2.6;}
 .mg-sm-l{font-size:10.5px;}
+/* Wide screens: the four small a-t graphs draw at about 0.7 scale, so their
+   numbers were about 7 px. Set them larger in drawing units (about 12 px). */
+@media (min-width:700px){
+  .cd-pics .mg-fig .tick,.cd-pics .mg-fig .mg-sm-l{font-size:17px;}
+  .cd-pics .mg-fig .series{stroke-width:3.4;}
+}
 /* Pick the a-t graph: 2 × 2 on a phone so the v-t graph stays in view. */
 @media (max-width:699.98px){
   .ls-root .ls-drill-pics .cd-pics:has(.mg-fig),.cd-pics:has(.mg-fig){grid-template-columns:1fr 1fr;gap:6px;}

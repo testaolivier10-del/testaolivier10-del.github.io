@@ -52,3 +52,28 @@
 .nx-formulary #drillOpts .btn-press:disabled{opacity:1;cursor:default;}
 .nx-formulary #drillOpts .btn-press.is-right{background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
 .nx-formulary #drillOpts .btn-press.is-wrong{background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);}
+/* Audit 2026-10. Desktop: the patient card is the picture, so it is drawn large (it was about 150px wide in a big
+   stage). The tally pulses when it changes. The end of a deck lists the misses with their answers and offers
+   "Drill my misses". */
+@media (min-width:1000px){
+  .nx-formulary .gw-stack,.nx-formulary .gw-meta{max-width:min(680px,100%);}
+  .nx-formulary .gw-card{padding:28px 30px;font-size:17px;}
+  .nx-formulary .gw-pt{font-size:20px;line-height:1.4;}
+  .nx-formulary .gw-facts{font-size:16px;row-gap:10px;}
+  .nx-formulary .gw-chip{font-size:15px;padding:4px 9px;}
+  .nx-formulary .gw-ico svg{width:44px;height:44px;}
+  .nx-formulary .gw-age b{font-size:24px;}
+}
+.nx-formulary .gw-right{display:inline-block;border-radius:999px;padding:0 8px;transition:background .3s;}
+.nx-formulary .gw-right.bump{animation:gwBump .5s ease;}
+.nx-formulary .gw-right.bump.ok{background:var(--tint-good);color:var(--good-text);}
+.nx-formulary .gw-right.bump.no{background:var(--tint-bad);color:var(--bad-text);}
+@keyframes gwBump{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.nx-formulary .gw-right.bump{animation:none;}}
+.nx-formulary .gw-end{text-align:center;max-width:560px;margin:0 auto;}
+.nx-formulary .gw-end-miss{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;text-align:left;}
+.nx-formulary .gw-end-miss li{padding:10px 12px;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font-size:var(--ls-s);line-height:1.45;}
+.nx-formulary .gw-end-ans{display:block;margin-top:4px;color:var(--cink);}
+.nx-formulary .gw-end-acts{display:flex;flex-direction:column;gap:8px;align-items:stretch;}
+.nx-formulary .gw-end-acts .btn-press{min-height:48px;}
+.nx-formulary .gw-end-acts .link-quiet{min-height:44px;display:inline-flex;align-items:center;justify-content:center;font:800 var(--ls-s) var(--font-ui);color:var(--cink);background:none;border:0;}

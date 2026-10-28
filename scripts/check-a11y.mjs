@@ -72,8 +72,10 @@ const PAGES = [
   ['/ochem/glossary.html', 'a glossary with filters'],
   // The tools are a template of their own — shared chrome from tool-shell.js,
   // a quiz from tool-quiz.js — and none was on this list. The roadmap stands
-  // in for all eight: it renders the shell, the quiz and a page of controls.
+  // in for all of them: it renders the shell, the quiz and a page of controls.
   ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
+  // Structures, tiles that grade, and a live verdict region (2026-10-27).
+  ['/ochem/tools/synthesis.html', 'the synthesis trainer'],
   ['/privacy.html', 'a prose page with controls'],
   // Opened fresh, as anyone a certificate link was shared with sees it: the
   // course card and the "earned this yourself?" note, not the certificate.
@@ -85,6 +87,7 @@ const PAGES = [
   ['/anatomy-physiology/notes/cardiac-cycle.html', 'an A&P notes page with SVG diagrams'],
   ['/anatomy-physiology/exams.html', 'the A&P exams app'],
   ['/anatomy-physiology/tools/predict.html', 'an A&P reasoning tool'],
+  ['/anatomy-physiology/tools/anatomy-3d.html', 'the A&P 3D anatomy tool'],
   // AP® Biology: its own generator and runtime too. The shells exist before
   // anything is published; the lesson, notes page, unit sheet and tool join
   // below once build-apbio.mjs has written them (bioPages()).

@@ -75,6 +75,19 @@ test('after launch, one timed exam is free and the second is gated', () => {
   assert.equal(g.canStartExam(), false, 'the free exam came back');
 });
 
+test('after launch, the adaptive exam has its own free attempt, apart from the timed one', () => {
+  const { b, g } = fresh({ launched: true });
+  assert.equal(g.canStartExam('cat'), true);
+  g.examStarted('full');
+  assert.equal(g.canStartExam('full'), false);
+  assert.equal(g.canStartExam('cat'), true, 'the timed exam spent the adaptive one');
+  g.examStarted('cat');
+  assert.ok(JSON.parse(b.localStorage.getItem(g.FREE_CAT_KEY)).at > 0);
+  assert.equal(g.canStartExam('cat'), false);
+  assert.equal(g.canUse('cat'), false);
+  assert.equal(g.quotaApplies('cat'), false, 'the adaptive exam is not counted against the 15 a day');
+});
+
 test('after launch, readiness and scenarios are gated for a free learner', () => {
   const { g } = fresh({ launched: true });
   for (const f of ['readiness', 'scenarios']) {

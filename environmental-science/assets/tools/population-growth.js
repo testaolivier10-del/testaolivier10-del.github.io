@@ -62,6 +62,7 @@
     out.push('<line class="pg-axis" x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '"/><line class="pg-axis" x1="' + L + '" x2="' + L + '" y1="' + T0 + '" y2="' + B + '"/>');
     out.push(tx(L, T0 - 12, (o.unit || 'population'), 'pg-axl', 'start'), tx((L + R) / 2, H - 4, (o.tu || 'year') + 's', 'pg-axl', 'middle'));
     var placed = [];
+    if(o.ghost && upto < Y) out.push('<polyline class="pg-ghost" points="' + sim.n.map(function(v, t){ return r1(x(t)) + ',' + r1(y(v)); }).join(' ') + '"/>');
     if(o.showK !== false){
       out.push('<line class="pg-K" x1="' + L + '" x2="' + R + '" y1="' + r1(y(K0)) + '" y2="' + r1(y(K0)) + '"/>');
       out.push(tx(R - 4, y(K0) - 7, 'K = ' + nf(K0), 'pg-Kl', 'end'));
@@ -104,6 +105,11 @@
     if(o.marker != null){
       var mi = Math.max(0, Math.min(upto, o.marker)), mx = x(mi), my = y(sim.n[mi]);
       out.push('<line class="pg-now" x1="' + r1(mx) + '" x2="' + r1(mx) + '" y1="' + T0 + '" y2="' + B + '"/><circle class="pg-mark" cx="' + r1(mx) + '" cy="' + r1(my) + '" r="7"/>');
+    }
+    // a wrong reading of the graph (Test yourself): a dashed red line at the student's value
+    if(o.tryV != null && isFinite(o.tryV) && o.tryV >= 0 && o.tryV <= yMax * 1.02){
+      var ty = y(o.tryV);
+      out.push('<line class="pg-try" x1="' + L + '" x2="' + R + '" y1="' + r1(ty) + '" y2="' + r1(ty) + '"/>' + tx(R - 4, ty - 6, 'Yours: ' + nf(o.tryV), 'pg-try-t', 'end'));
     }
     return out.join('');
   }
@@ -173,7 +179,7 @@
 
   /* ------------------------------------------------------- explore */
   function explore(host, data){
-    var view = 'growth', model = 'log', r = 0.35, K = 2000, n0 = 100, years = 40, upto = 40, marker = 40, LS = null, touched = false, playing = null, sel = null, nid = T.nid('pg');
+    var view = 'growth', model = 'log', r = 0.35, K = 2000, n0 = 100, years = 40, upto = 0, marker = 0, LS = null, touched = false, playing = null, sel = null, nid = T.nid('pg');
     var dist = disturbance(), distUpto = dist.Y, distLoop = null;
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     host.innerHTML = '<section class="bt-problem pg-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Population growth</h2>' +
@@ -210,7 +216,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       if(view === 'growth'){
         var s = sim(), td = model === 'exp' ? S.doublingTime(r) : null;
-        svg.innerHTML = growthSvg(s, { W: W, H: H, enl: true, upto: upto, marker: marker, unit: 'deer', td: td && td <= upto ? td : null, tdLabel: td ? 'doubled in ' + nf(td, 1) + ' yr' : '' });
+        svg.innerHTML = growthSvg(s, { W: W, H: H, enl: true, ghost: true, upto: upto, marker: marker, unit: 'deer', td: td && td <= upto ? td : null, tdLabel: td ? 'doubled in ' + nf(td, 1) + ' yr' : '' });
         svg.setAttribute('aria-label', aria(s));
         gauge(s);
         words(s, td);
@@ -242,7 +248,10 @@
     }
     function words(s, td){
       var i = marker, ph = S.phase(s, i), head, why = [];
-      if(!touched && upto === years) head = model === 'log' ? 'An S-curve: fast growth, then slower as the herd nears K = ' + nf(K) + '. Press Play to watch it grow.' : '';
+      // The tool opens at year 0 (100 deer released) with the path ahead
+      // drawn faintly: Play grows the herd along it (tool-audit).
+      if(!touched && upto === 0) head = model === 'log' ? 'Year 0: ' + nf(n0) + ' deer released on a range that can feed ' + nf(K) + '. Press Play to watch the herd grow.' : '';
+      if(!touched && upto === years && !head) head = model === 'log' ? 'An S-curve: fast growth, then slower as the herd nears K = ' + nf(K) + '. Press Play to watch it grow.' : '';
       if(!head){
         if(model === 'exp') head = 'A J-curve: with unlimited food the herd doubles every ' + nf(td, 1) + ' years (70 ÷ ' + nf(r * 100) + '%). Year ' + i + ': ' + nf(s.n[i]) + ' deer.';
         else if(model === 'log') head = { lag: 'Lag: few breeders, so few births. Growth is slow at first.', exponential: 'Fast growth: plenty of food and many breeders.', slowing: 'Slowing: food and space run short as the herd nears K.', 'at K': 'At carrying capacity: births balance deaths at about ' + nf(K) + ' deer.' }[ph] || '';
@@ -338,7 +347,7 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], why: [$('.pg-say')], details: [$('.pg-nums')] });
+      T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')] });
       host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
       draw();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.pg-play'), text: 'Start here: press Play' });
@@ -355,7 +364,9 @@
       types: S.TYPES, typeLabel: 'Kind of problem',
       title: function(p){ var t = S.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
       extra: function(el, p, api){ api.fig = el; api.st = {}; figure(el, p, api.st); },
-      onStep: function(s, right, api){ api.st[s.key] = true; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); }
+      onStep: function(s, right, api){ api.st[s.key] = true; api.st.try = null; figure(api.fig, api.problem, api.st); doneLine(host, s, right, api); },
+      // a wrong reading of K or of the peak is drawn on the graph
+      onTry: function(s, att, api){ if(s.key === 'k' || s.key === 'read'){ api.st.try = { key: s.key, v: att.value }; figure(api.fig, api.problem, api.st); } }
     });
   }
   /* After the last step: say plainly that every answer is now right, and how
@@ -383,6 +394,7 @@
       if(g.model === 'log'){ o.showK = !!st.k; if(st.phase) o.marker = s.n.findIndex(function(v){ return v >= g.K / 2; }); }
       if(g.model === 'over'){ o.Kline = !!st.why; o.mono = !st.phase; o.labels = !!st.phase; if(st.read) o.marker = s.peakT; }
       if(g.model === 'log') o.mono = true;
+      if(st.try && g.model !== 'exp'){ var sc = g.unitScale || 1; o.tryV = st.try.v * sc; }
       if(g.model === 'exp'){ o.showK = false; o.mono = true; o.yMax = niceUp(Math.max.apply(null, s.n) * 1.05); if(g.mark && st.answer) { o.td = g.mark; o.tdLabel = 'doubled'; } if(g.marks && st.answer){ o.marker = s.t.length - 1; } }
       inner = '<svg class="pg-svg pg-qsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(qAria(g, s, st)) + '">' + growthSvg(s, o) + '</svg>';
     } else if(g.kind === 'surv'){

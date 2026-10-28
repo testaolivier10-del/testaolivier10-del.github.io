@@ -326,6 +326,13 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
 16. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 17. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
 
+18. (2026-10-27, `docs/tool-audit-2026-10.md`, AP Statistics section and X1, X6, X8) **Test yourself is visual.** The drill engine
+    (`stat-tools.js`) gives one method hint per step on the first miss and offers Show the answer from the second; `onStepStart`,
+    `onTry` and `api.answer` let each trainer draw the student's wrong answer on the stage (a dashed red mark next to the right
+    one) and take an answer from the stage (the inverse-normal boundary is dragged). The worked solution opens by itself.
+    Landing states: interval capture shows 20 intervals, sampling distributions 100 sample means. Phones: no stage text under
+    11 px in the ten trainers. Independent accuracy review of the new hints and pictures: 9 findings, all applied.
+
 ## 9. Open items for the owner
 
 Before Phase 1 (built as proposed in Phase 0, each easy to change; decision 11):

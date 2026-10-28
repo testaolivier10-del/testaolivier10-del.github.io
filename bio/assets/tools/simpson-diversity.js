@@ -7,7 +7,9 @@
    color and shape, placed at a fixed seeded spot) and a D meter from 0 to 1
    (ApBioMath.simpson), each species' (n/N)² shown as the share of the meter
    it "uses up".
-     Explore: −/+ per species, a species added or removed; goals include
+     Explore: −/+ per species, a species added or removed; tap the quadrat
+     to plant one more of the species picked under it (tool audit 2026-10:
+     tapping the quadrat did nothing), or tap a tree to remove it; goals include
      "raise D with the same N" (evenness) and "add a species" (richness).
      Practice: the problem's community in the quadrat; the meter shows the
      student's typed D, and the true D after Check. */
@@ -76,7 +78,7 @@
     var sec = S.card(app, { title: 'Build a community, watch D', lead: 'Each icon is one tree in a woodland quadrat. Add or remove trees and watch Simpson’s D. On the meter, each species’ colored block is its (n/N)²; D = 1 minus all of them.' });
     sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sd-fig"></div><div class="sd-rows" role="group" aria-label="Number of each species"></div><div class="sk-out"></div><p class="sk-say" role="status" aria-live="polite"></p><div class="bt-buttons"><button type="button" class="bt-btn sd-even">Even it out (same N)</button><button type="button" class="bt-btn sd-reset">Reset</button></div><div class="sk-goalhost"></div>');
     var fig = sec.querySelector('.sd-fig'), rows = sec.querySelector('.sd-rows'), out = sec.querySelector('.sk-out'), sayEl = sec.querySelector('.sk-say');
-    var START = [28, 6, 3, 3, 0, 0], counts = START.slice(), N0 = M.sum(START), D0 = M.simpson(START.filter(Boolean)).D;
+    var START = [28, 6, 3, 3, 0, 0], counts = START.slice(), N0 = M.sum(START), D0 = M.simpson(START.filter(Boolean)).D, plant = 4;
     var done = S.goals(sec.querySelector('.sk-goalhost'), [
       { id: 'evenN', text: 'Raise D while keeping <b>N = ' + N0 + '</b>: move trees from one species to others (evenness).' },
       { id: 'rich', text: 'Add a <b>new species</b>: D rises (richness).' },
@@ -86,7 +88,7 @@
     function present(){ return counts.filter(function(n){ return n > 0; }); }
     function render(){
       var c = present(), s = c.length ? M.simpson(c) : null, D = s ? s.D : 0;
-      S.redraw(fig, '<svg class="bio-svg" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + counts.map(function(n, k){ return n + ' ' + names[k]; }).filter(function(t){ return !/^0 /.test(t); }).join(', ') + '. D = ' + F(D, 2) + '.') + '">' + quadrat(counts, names) + meter(counts, D, null) + '</svg>');
+      S.redraw(fig, '<svg class="bio-svg sd-tap" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + counts.map(function(n, k){ return n + ' ' + names[k]; }).filter(function(t){ return !/^0 /.test(t); }).join(', ') + '. D = ' + F(D, 2) + '.') + '">' + quadrat(counts, names) + meter(counts, D, null) + '</svg>');
       rows.innerHTML = names.map(function(nm, k){ return '<span class="sk-stp"><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5, nm) + '</svg><span class="sk-stpn">' + esc(nm) + '</span><button type="button" class="bt-step" data-i="' + k + '" data-d="-1" aria-label="One fewer ' + esc(nm) + '">−</button><b>' + counts[k] + '</b><button type="button" class="bt-step" data-i="' + k + '" data-d="1" aria-label="One more ' + esc(nm) + '">+</button></span>'; }).join('');
       out.innerHTML = S.readout([['Species', String(c.length)], ['N', String(M.sum(counts))], ['Σ(n/N)²', s ? F(s.sumSq, 3) : '–'], ['D', F(D, 2)]]);
       return { D: D, N: M.sum(counts), k: c.length };
@@ -99,6 +101,35 @@
       if(r.D > 0.8) done('high');
       sayEl.textContent = msg;
     }
+    // Tap the quadrat: one more of the chosen species there (a tree tapped: one fewer of its species).
+    var picker = document.createElement('div');
+    picker.className = 'sd-plant';
+    function paintPicker(){
+      picker.innerHTML = '<span class="sd-plant-h">Tap the quadrat to plant:</span>' + names.map(function(nm, k){ return '<button type="button" class="sd-pick" data-k="' + k + '" aria-pressed="' + (k === plant) + '"><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5, nm) + '</svg>' + esc(nm) + '</button>'; }).join('');
+    }
+    paintPicker();
+    // above the quadrat, clear of the stage's Enlarge button
+    fig.parentNode.insertBefore(picker, fig);
+    picker.addEventListener('click', function(e){ var b = e.target.closest('.sd-pick'); if(!b) return; plant = +b.getAttribute('data-k'); paintPicker(); sayEl.textContent = 'Tap inside the quadrat to plant a ' + names[plant].toLowerCase() + ' tree.'; });
+    fig.addEventListener('click', function(e){
+      var svg = fig.querySelector('svg'); if(!svg || !svg.getScreenCTM) return;
+      var m = svg.getScreenCTM(); if(!m) return;
+      var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; pt = pt.matrixTransform(m.inverse());
+      if(pt.x < QX || pt.x > QX + QW || pt.y < QY || pt.y > QY + QH) return;
+      var c = present(), before = { D: c.length ? M.simpson(c).D : 0, k: c.length };
+      // the organism under the tap, if any: the drawn order matches quadrat()
+      var g = grid(), N = M.sum(counts), r = N > 160 ? 4.6 : N > 90 ? 5.6 : 6.6, order = [], left = counts.slice();
+      while(order.length < Math.min(N, g.length)){ for(var q = 0; q < left.length; q++) if(left[q] > 0){ order.push(q); left[q]--; } }
+      var hit = -1;
+      for(var i = 0; i < order.length; i++){ var dx = g[i][0] - pt.x, dy = g[i][1] - pt.y; if(dx * dx + dy * dy <= (r + 3) * (r + 3)){ hit = order[i]; break; } }
+      if(hit > -1){
+        if(N === 1){ sayEl.textContent = 'Keep at least one organism.'; return; }
+        counts[hit]--; after(before, 'Removed one ' + names[hit].toLowerCase() + '.');
+      } else {
+        if(N >= 200){ sayEl.textContent = 'The quadrat is full.'; return; }
+        counts[plant]++; after(before, 'Planted one ' + names[plant].toLowerCase() + '.');
+      }
+    });
     rows.addEventListener('click', function(e){
       var b = e.target.closest('button'); if(!b) return;
       var i = +b.getAttribute('data-i'), d = +b.getAttribute('data-d'), c = present(), before = { D: c.length ? M.simpson(c).D : 0, k: c.length };
@@ -137,7 +168,7 @@
     T.skillTool(app, data, { slug: 'simpson-diversity', kind: 'simpson', stage: stage });
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
-    studio: { dock: ['.sd-rows'], hint: { target: '.sd-rows .bt-step', text: 'Add or remove trees' },
+    studio: { dock: ['.sd-rows'], stageAlso: ['.sd-plant'], hint: { target: '.sd-fig', text: 'Tap the quadrat to plant a tree' },
       caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>D = ' + g.ro(3) + '.</b> Add or remove trees and watch how even the community is.'; },
       pills: function(g){ return [{ k: 'D', html: g.ro(3), tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: g.ro(0) + ' species · N ' + g.ro(1), tone: 'ghost' }]; } } });

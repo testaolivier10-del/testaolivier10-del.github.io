@@ -371,7 +371,7 @@
     function $$(sel){ var a = [].slice.call(host.querySelectorAll(sel)); return LS ? a.concat([].slice.call(LS.root.querySelectorAll(sel))) : a; }
     host.innerHTML = '<section class="bt-problem ek-card" aria-labelledby="ek-h"><h2 id="ek-h" class="ek-eq bt-eq"></h2>' +
       '<div class="ek-stage"><div class="ek-vessel"><canvas class="ek-canvas" role="img" aria-label="The vessel"></canvas></div><div class="ek-gaugebox"></div>' +
-      '<div class="ek-tabs" role="group" aria-label="Graph to show"><button type="button" class="ek-tab" data-v="graph" aria-pressed="true">Concentrations</button><button type="button" class="ek-tab" data-v="mb" aria-pressed="false">Collision energies</button><button type="button" class="ek-tab" data-v="rates" aria-pressed="false">Rates</button></div>' +
+      '<div class="ek-tabs" role="group" aria-label="Graph to show"><span class="ek-tabs-k" aria-hidden="true">Graph</span><button type="button" class="ek-tab" data-v="graph" aria-pressed="true">Concentrations</button><button type="button" class="ek-tab" data-v="mb" aria-pressed="false">Collision energies</button><button type="button" class="ek-tab" data-v="rates" aria-pressed="false">Rates</button></div>' +
       '<div class="ek-plot"></div></div>' +
       '<div class="ek-ctl"><div class="ek-temp"></div><div class="ek-vol"></div><div class="ek-amts" role="group" aria-label="Add or remove molecules"></div>' +
       '<div class="bt-buttons ek-btns"><button type="button" class="bt-btn ek-cat" aria-pressed="false">Add a catalyst</button><button type="button" class="bt-btn ek-play" aria-pressed="true">❚❚ Pause</button></div>' +
@@ -526,8 +526,8 @@
     function studio(pane, s){
       LS = s;
       var chal = $('.ek-chal'); chal.classList.add('ls-btn', 'ls-pri');
-      SP = T.studioPane(pane, s, { stage: [$('.ek-eq'), $('.ek-stage')], dock: [$('.ek-temp'), $('.ek-amts'), $('.ek-btns'), chal, $('.ek-chalbox'), $('.ek-vol')], setup: 'Reaction', moreLabel: 'Another reaction, speed of time, start over, sources',
-        why: [$('.ek-why')], details: [$('.ek-nums')] });
+      SP = T.studioPane(pane, s, { stage: [$('.ek-eq'), $('.ek-stage')], dock: [$('.ek-temp'), $('.ek-amts'), $('.ek-btns'), chal, $('.ek-chalbox')], setup: 'Volume, reaction', moreLabel: 'Volume, another reaction, speed of time, start over, sources',
+        why: [$('.ek-why')], details: [$('.ek-vol'), $('.ek-nums')] });
       explainNow('');
       paint();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ek-temp input[type=range]'), text: 'Drag to heat or cool' });

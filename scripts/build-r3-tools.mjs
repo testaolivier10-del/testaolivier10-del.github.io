@@ -36,9 +36,9 @@ function put(rel, start, end, body, anchor) {
 
 /* ---- the tool pages ---- */
 const BAND = ['<!-- r3-toolband:start -->', '<!-- r3-toolband:end -->'];
-// The full-screen tools (Tool Studio mount); mnemonics and reference cards are slim reference pages that scroll and
+// The full-screen tools (Tool Studio mount); mnemonics is a slim reference page that scrolls and
 // keep the band.
-const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'scenario-sim', 'skillsheets', 'sound-trainer']);
+const FULL = new Set(['body-map', 'flowcharts', 'formulary', 'reference-cards', 'scenario-sim', 'skillsheets', 'sound-trainer']);
 const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 for (const t of toolCovers('nremt')) {
   const rel = `nremt/${t.slug}.html`;
@@ -54,6 +54,24 @@ for (const t of toolCovers('nremt')) {
   }), '<!-- crumb:end -->');
 }
 
+/* ---- the counts the cards state, read from the tools themselves ---- */
+const page = (slug) => readFileSync(join(ROOT, `nremt/${slug}.html`), 'utf8');
+const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
+  'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
+const word = (n) => n <= 20 ? WORDS[n] : n < 30 ? `twenty-${WORDS[n - 20]}` : String(n);
+const cap = (t) => t[0].toUpperCase() + t.slice(1);
+const N = {
+  // scenario-sim.html: one `    id: "sN"` per call (check-site section 18 counts the same way).
+  calls: [...page('scenario-sim').matchAll(/^ {4}id:\s*"s\d+"/gm)].length,
+  // flowcharts.html: one top-level <h2> per sequence inside #flowDiagrams.
+  flows: [...page('flowcharts').matchAll(/^  <h2>/gm)].length,
+  // skillsheets.html: one .skill-card per station (station-run.js reads the same cards).
+  stations: [...page('skillsheets').matchAll(/class="skill-card[ "]/g)].length,
+  // formulary.html: one .drug card per drug.
+  drugs: [...page('formulary').matchAll(/<div class="drug">/g)].length,
+};
+for (const [k, v] of Object.entries(N)) if (!v) broken.push(`nremt tools hub: counted no ${k}; the page markup it reads has changed`);
+
 /* ---- the hub (board R10-Tools) ---- */
 const CREDIT = 'Figure from BodyParts3D &copy; 2008 <a href="https://lifesciencedb.jp/bp3d/" rel="noopener">Life Science Integrated Database Center</a>, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" rel="noopener">CC BY-SA 2.1 JP</a>.';
 const card = (slug, name, desc, foot, premium) => ({ slug, href: `${slug}.html`, name, desc, foot, free: !premium, attrs: premium ? ' data-premium="1"' : '' });
@@ -68,11 +86,11 @@ const hub = toolsHubMain({
   groups: [
     { big: true, h: 'Six more <span>tools</span>', p: 'Sounds, calls, drugs and the skill stations.', label: 'More tools', cards: [
       card('sound-trainer', 'Sound Trainer', 'Wheezes, crackles, stridor and heart sounds, by ear.', 'Lung and heart sounds'),
-      card('scenario-sim', 'Scenarios', 'Twenty-five branching calls, dispatch to handover.', '25 calls', true),
-      card('formulary', 'Drug Formulary', 'The seven core EMT drugs: doses, contraindications, and what stops you.', '7 drugs'),
+      card('scenario-sim', 'Scenarios', `${cap(word(N.calls))} branching calls, dispatch to handover.`, `${N.calls} calls`, true),
+      card('formulary', 'Drug Formulary', `The ${word(N.drugs)} core EMT drugs: give or withhold, doses and what stops you.`, `${N.drugs} drugs`),
       card('reference-cards', 'Reference Cards', 'Pediatric vitals by age, GCS, APGAR, the assessment triangle.', 'Quick reference'),
-      card('flowcharts', 'Flow Diagrams', 'Ten sequences: assessment, CPR, anaphylaxis, choking, triage.', '10 sequences'),
-      card('skillsheets', 'Skill Sheets', 'The psychomotor stations and what fails them.', 'Psychomotor stations'),
+      card('flowcharts', 'Flow Diagrams', `${cap(word(N.flows))} sequences: assessment, CPR, anaphylaxis, choking, triage.`, `${N.flows} sequences`),
+      card('skillsheets', 'Skill Sheets', `The ${word(N.stations)} psychomotor stations, run out loud against the clock.`, `${N.stations} stations`),
     ] },
     { kick: 'Also in Learn', h: 'Also in Learn', label: 'Also in Learn', cards: [
       card('mnemonics', 'Mnemonics', 'The core EMT mnemonics, letter by letter.', 'Letter by letter'),

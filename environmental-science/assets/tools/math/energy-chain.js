@@ -101,7 +101,7 @@
           { expr: effs.map(num).join(' + '), why: 'Efficiencies in a chain multiply: each step keeps only its fraction of what the step before passed on.' },
           { expr: '(' + effs.map(num).join(' + ') + ') / ' + effs.length + ' * 100', why: 'Averaging the steps is not the chain. Multiply them: each step works on what is left.' }] }) }),
       step('total', 'The overall efficiency, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(total, '%', { mistakes: [{ value: sum, why: 'That is the average of the steps. Multiply the efficiencies.' }].filter(function(m){ return Math.abs(m.value - total) > 1; }) }) }),
-      step('delivered', 'If the ' + S.fuel + ' holds ' + big(E0) + ' kWh of energy, how much reaches the home?', { kind: 'unit', practice: '6.C', cell: M.unitCell(del, 'kWh', { mistakes: [{ value: ev('mul', [E0, total]), why: 'Change the percent to a decimal first: ' + M.fixed(total, 1) + '% is ' + M.fixed(total / 100, 3) + '.' }] }) }),
+      step('delivered', 'If the ' + S.fuel + ' holds ' + big(E0) + ' kWh of energy, how much reaches the home?', { kind: 'unit', practice: '6.C', hint: 'Energy delivered = energy in × the overall efficiency (as a decimal).', cell: M.unitCell(del, 'kWh', { mistakes: [{ value: ev('mul', [E0, total]), why: 'Change the percent to a decimal first: ' + M.fixed(total, 1) + '% is ' + M.fixed(total / 100, 3) + '.' }] }) }),
       choice('where', 'Where is most of the energy lost?', [
         ['As waste heat at the ' + names[1] + ' (only ' + M.fixed(e[1] * 100, 0) + '% gets through)', 'A heat engine must reject heat to its cooling water (the second law of thermodynamics), so the turbine stage loses the most.'],
         ['In the power lines', 'The grid loses only about ' + M.fixed((1 - g) * 100, 0) + '%.'],
@@ -144,10 +144,10 @@
     var text = '<p>A ' + S.name.toLowerCase() + ' power plant releases about <b>' + num(f) + ' lb of CO₂ per kWh</b> it generates (EIA, 2023). A family uses <b>' + big(kwh) + ' kWh</b> of its electricity. (1 short ton = 2,000 lb.)</p>';
     var other = id === 'coal' ? 'gas' : 'coal', fo = SOURCES[other].co2;
     var steps = [
-      step('setup', 'Write the setup for the CO₂ released, with units that cancel.', { kind: 'setup', practice: '6.B',
+      step('setup', 'Write the setup for the CO₂ released, with units that cancel.', { kind: 'setup', practice: '6.B', hint: 'Multiply the kWh by the lb of CO₂ per kWh, so kWh cancels.',
         cell: M.setupCell(s1, { unit: 'lb', mistakes: [{ expr: num(kwh) + ' kWh / (' + num(f) + ' lb/kWh)', why: 'Upside down: multiply by lb per kWh so kWh cancels.' }] }) }),
       step('lb', 'The CO₂ released, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(lb, 'lb', { units: ['lb CO2', 'pounds', 'pounds of CO2', 'lbs'], mistakes: [{ value: ev('div', [kwh, f]), why: 'Multiply: each kWh releases ' + num(f) + ' lb.' }] }) }),
-      step('tons', 'The CO₂ in short tons, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(tons, 'ton', { units: ['tons', 'short tons', 'short ton', 'tons CO2'], mistakes: [{ value: ev('mul', [lb, 2000]), why: 'Divide by 2,000 lb per ton: tons are bigger, so the number gets smaller.' }, { value: ev('div', [lb, 1000]), why: 'A short ton is 2,000 lb, not 1,000.' }] }) }),
+      step('tons', 'The CO₂ in short tons, with its unit.', { kind: 'unit', practice: '6.C', hint: '1 short ton = 2,000 lb, so divide the pounds by 2,000.', cell: M.unitCell(tons, 'ton', { units: ['tons', 'short tons', 'short ton', 'tons CO2'], mistakes: [{ value: ev('mul', [lb, 2000]), why: 'Divide by 2,000 lb per ton: tons are bigger, so the number gets smaller.' }, { value: ev('div', [lb, 1000]), why: 'A short ton is 2,000 lb, not 1,000.' }] }) }),
       choice('switch', 'If the same electricity came from ' + SOURCES[other].name.toLowerCase() + ' (' + num(fo) + ' lb/kWh) instead, the CO₂ would', [
         [id === 'coal' ? 'Fall by more than half: gas has fewer carbon atoms per unit of energy and its plants are more efficient' : 'More than double: coal has more carbon per unit of energy and its plants are less efficient', 'Natural gas (CH₄) releases about half as much CO₂ per kWh as coal. It is lower carbon, not zero carbon.'],
         ['Not change: all fossil fuels release the same CO₂', 'Fuels differ in carbon per unit of energy and plants differ in efficiency.'],
@@ -173,7 +173,7 @@
       step('setup', 'Write the setup for the energy used in kWh, with units that cancel.', { kind: 'setup', practice: '6.B', hint: 'Energy = power × time. Change W to kW with 1 kW / 1000 W.',
         cell: M.setupCell(s1, { unit: 'kW*h', mistakes: [{ expr: num(D.w) + ' W * ' + h + ' h/day * ' + days + ' day', why: 'That is in watt-hours. Divide by 1,000 W per kW to get kWh.' }] }) }),
       step('kwh', 'The energy used, with its unit.', { kind: 'unit', practice: '6.C', cell: M.unitCell(kwh, 'kWh', { units: ['kW h', 'kW*h', 'kilowatt-hours'], mistakes: [{ value: ev('mul', [D.w, h, days]), why: 'That is watt-hours (Wh). 1 kWh = 1,000 Wh.' }, { value: ev('mul', [D.w, h, ev('div', [1, 1000])]), why: 'That is one day. Multiply by the ' + days + ' days.' }] }) }),
-      step('cost', 'The cost, in dollars.', { kind: 'unit', practice: '6.C', cell: M.unitCell(cost, '$', { units: ['dollars', 'dollar', 'USD'], places: 2, mistakes: [{ value: ev('div', [kwh, price]), why: 'Multiply: kWh × $ per kWh leaves $.' }] }) })
+      step('cost', 'The cost, in dollars.', { kind: 'unit', practice: '6.C', hint: 'Cost = kWh × the price per kWh.', cell: M.unitCell(cost, '$', { units: ['dollars', 'dollar', 'USD'], places: 2, mistakes: [{ value: ev('div', [kwh, price]), why: 'Multiply: kWh × $ per kWh leaves $.' }] }) })
     ];
     return { ctx: c.id, topic: c.topic, type: 'power', text: text, steps: steps,
       solution: [big(D.w) + ' W × ' + h + ' h/day × ' + days + ' days × 1 kW/1,000 W = <b>' + nice(kwh, 5) + ' kWh</b>.', nice(kwh, 5) + ' kWh × $' + M.fixed(price, 2) + '/kWh = <b>$' + M.fixed(cost, 2) + '</b>.', 'W is a rate (power); kWh is an amount (energy).'],

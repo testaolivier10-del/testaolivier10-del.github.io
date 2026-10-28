@@ -184,6 +184,43 @@
       s.push('<text class="sgs-name" x="' + (gx2 + 2) + '" y="' + (SH - 8) + '" text-anchor="middle">glycogen</text>');
       return s.join('');
     }
+    /* Portrait phone (tool audit 2026-10: the one-column ladder was 835 px
+       in a 477 px stage): the eight rungs sit in two columns under the
+       scene, read like a newspaper: receptor to cAMP down the left, then an
+       arrow across to PKA and down the right to glucose out. Each rung keeps
+       its tap target, log dots, count and drug tag; each arrow its gain. */
+    var SHORT2 = { R: 'Bound receptors', G: 'Active G proteins', AC: 'Adenylyl cyclase', cAMP: 'cAMP', PKA: 'Active PKA', PhK: 'Phosphorylase kinase', GP: 'Glycogen phosphorylase', rate: 'Glucose out (per s)' };
+    function twoCol(){ try{ return !!document.querySelector('.ls-root.ls-phone') && innerHeight > innerWidth; }catch(e){ return false; } }
+    function gainOf(a, i){
+      var ids = S.STAGES, prev = a[ids[i]], next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0;
+      return prev >= 1 ? (ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio)) : '—';
+    }
+    function ladder2(a, tags){
+      var ids = S.STAGES, parts = [], RH = 36, GAP = 19, W = 166, top = SH + 6;
+      ids.forEach(function(id, i){
+        var col = i < 4 ? 0 : 1, row = i % 4, x = col ? 188 : 6, y = top + row * (RH + GAP), v = a[id], tap = TAP[id];
+        var dec = Math.max(0, Math.min(6, Math.log(Math.max(1, v)) / Math.LN10 - 1));
+        var body = '<rect class="stp' + (tags[id] ? ' blocked' : '') + '" x="' + x + '" y="' + y + '" width="' + W + '" height="' + RH + '" rx="8"/>' +
+          '<text class="sg2-n" x="' + (x + 9) + '" y="' + (y + 15) + '">' + esc(SHORT2[id]) + (tap && !tags[id] ? ' <tspan class="sg-tapmark">⊘</tspan>' : '') + '</text>';
+        if(tags[id]) body += '<text class="sg2-tag sg-tapmark" x="' + (x + 9) + '" y="' + (y + 30) + '">⊘ ' + esc(tags[id]) + '</text>';
+        else for(var k = 0; k < 6; k++){ var f = Math.max(0, Math.min(1, dec - k)); body += '<circle class="sg-dot" cx="' + (x + 14 + k * 11) + '" cy="' + (y + 26) + '" r="4"/>' + (f > 0 ? '<circle class="sg-dotf" cx="' + (x + 14 + k * 11) + '" cy="' + (y + 26) + '" r="' + (4 * Math.sqrt(f)).toFixed(2) + '"/>' : ''); }
+        body += '<text class="sg2-v" x="' + (x + W - 8) + '" y="' + (y + 30) + '" text-anchor="end">' + fmt(v) + '</text>';
+        if(tap) parts.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(stageOf(id).short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
+        else parts.push(body);
+        if(i === ids.length - 1) return;
+        var amp = stageOf(ids[i + 1]).amplifies, rr = a[ids[i]] >= 1 ? a[ids[i + 1]] / a[ids[i]] : 0, g = gainOf(a, i) + (amp && rr >= 1 ? ', amplifies' : amp ? ', blocked' : ', no gain');
+        if(row < 3){
+          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M' + (x + 18) + ' ' + (y + RH + 1) + 'v' + (GAP - 8) + '"/><path class="arrh" d="M' + (x + 13) + ' ' + (y + RH + GAP - 7) + 'l5 6 5-6z"/>' +
+            '<text class="note sg2-g" x="' + (x + 30) + '" y="' + (y + RH + 14) + '">' + g + '</text>');
+        } else {
+          // cAMP (bottom left) to PKA (top right): along the gutter and in
+          var y2 = top + RH / 2;
+          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" fill="none" d="M' + (x + W + 1) + ' ' + (y + RH / 2) + 'H179V' + y2 + 'H182"/><path class="arrh" d="M182 ' + (y2 - 5) + 'l6 5-6 5z"/>' +
+            '<text class="note sg2-g" x="' + (x + 9) + '" y="' + (y + RH + 15) + '">to PKA: ' + g + '</text>');
+        }
+      });
+      return { svg: parts.join(''), h: top + 4 * RH + 3 * GAP + 22 };
+    }
     function drawFig(a, target){
       // On a phone each gain note takes two lines (ratio, then why), so it stays at a readable size inside the width.
       var narrow = !!document.querySelector('.ls-root.ls-phone'), rowH = narrow ? 70 : 56, ids = S.STAGES, parts = [];
@@ -203,12 +240,14 @@
           parts.push(narrow ? '<text class="note" x="44" y="' + (y + 53) + '">' + gain + '<tspan x="44" dy="13.5">' + why + '</tspan></text>' : '<text class="note" x="44" y="' + (y + 51) + '">' + gain + ' ' + why + '</text>');
         }
       });
+      var two = twoCol() ? ladder2(a, tags) : null;
       var fin = target || a;
       var lab = 'The pathway at ' + st.readT + ' s, from receptor to response. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
-      figEl.innerHTML = '<svg class="sg-fig" viewBox="0 0 360 ' + (SH + 12 + ids.length * rowH - 10) + '" role="group" aria-label="' + esc(lab) + '"><g class="sgs" aria-hidden="true">' + scene(a) + '</g>' + parts.join('') + '</svg>';
+      figEl.innerHTML = '<svg class="sg-fig' + (two ? ' sg-two' : '') + '" viewBox="0 0 360 ' + (two ? two.h : SH + 12 + ids.length * rowH - 10) + '" role="group" aria-label="' + esc(lab) + '"><g class="sgs" aria-hidden="true">' + scene(a) + '</g>' + (two ? two.svg : parts.join('')) + '</svg>';
       var f2 = target ? null : figEl.querySelector('[data-tap="' + lastTap + '"]'); if(f2 && refocus){ refocus = false; f2.focus(); }
     }
-    var lastTap = null, refocus = false;
+    var lastTap = null, refocus = false, wasTwo = null;
+    window.addEventListener('resize', function(){ var t = twoCol(); if(wasTwo !== null && t !== wasTwo && shownA) drawFig(shownA, null); wasTwo = t; });
     function tapRung(id){
       var what;
       if(id === 'G'){ var order = ['normal', 'on', 'off'], n = order[(order.indexOf(st.gprotein) + 1) % 3]; st.gprotein = n; gSel.set(n); what = n === 'on' ? 'G protein locked on: it keeps activating adenylyl cyclase even with no hormone (like cholera toxin), so the signal never ends.' : n === 'off' ? 'G protein locked off: it cannot pick up GTP, so nothing after the receptor turns on, however much epinephrine there is.' : 'G protein back to normal.'; }

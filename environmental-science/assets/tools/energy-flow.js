@@ -204,7 +204,17 @@
       var tx = dx + r + 6;
       out.push('<text class="ef-org" x="' + tx + '" y="' + (dy - 2).toFixed(1) + '">' + esc(cap(l.plural.replace(/ plants| cells| trees/, ''))) + '</text>');
       out.push('<text class="ef-lv" x="' + tx + '" y="' + (dy + (phone ? 12 : 15)).toFixed(1) + '">' + esc(phone ? ['Producers', 'Primary', 'Secondary', 'Tertiary', 'Quaternary'][k] : l.levelShort) + '</text>');
-      // the bar
+      // the bar; to scale, the energy that did not make it up from the level
+      // below is a faint ghost around it, labeled as heat lost (tool-audit:
+      // a log-scale pyramid hid the 90% loss)
+      if(o.key === 'energy' && o.scale === 'linear' && k > 0 && o.flows !== false){
+        var gb = G[k - 1];
+        out.push('<rect class="ef-lost" x="' + gb.x.toFixed(1) + '" y="' + g.y.toFixed(1) + '" width="' + gb.w.toFixed(1) + '" height="' + g.h.toFixed(1) + '" rx="' + Math.min(8, g.h / 4).toFixed(1) + '"/>');
+        // the label in the ghost, left of the bar, only where it fits
+        var lt = esc(M.fmt((1 - P.eff) * 100, 3)) + '% not passed up (mostly heat)', lw = lt.length * 6.6 + 10;
+        if(g.x - gb.x > lw) out.push('<text class="ef-lost-t" x="' + (gb.x + 6).toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '">' + lt + '</text>');
+        else if(g.x - gb.x > 40) out.push('<text class="ef-lost-t" x="' + (gb.x + 5).toFixed(1) + '" y="' + (g.yc + 4).toFixed(1) + '">' + esc(M.fmt((1 - P.eff) * 100, 3)) + '%</text>');
+      }
       out.push('<rect class="' + cls + '" x="' + g.x.toFixed(1) + '" y="' + g.y.toFixed(1) + '" width="' + g.w.toFixed(1) + '" height="' + g.h.toFixed(1) + '" rx="' + Math.min(8, g.h / 4).toFixed(1) + '"/>');
       if(o.sel === k && o.key === 'energy' && k + 1 < G.length){
         var wu = Math.max(4, g.w * P.eff);
@@ -273,7 +283,17 @@
       var p = g.pos[s.id], e = res[s.id] || (o.mark === s.id ? { effect: 'removed' } : null), E = e ? EFFECT[e.effect] : null, ask = o.ask && o.ask.indexOf(s.id) > -1;
       var label = cap(s.name) + (E && e.effect !== 'same' ? ': ' + E.w.toLowerCase() : '') + (o.interactive ? (o.removed ? '' : '. Remove it from the web.') : '');
       out.push('<g class="ef-node' + (E ? ' is-' + E.cls : '') + (ask ? ' is-ask' : '') + '" data-id="' + s.id + '"' + (o.interactive ? ' role="button" tabindex="0" aria-label="' + esc(label) + '"' : '') + '>');
-      out.push('<circle class="ef-disc ' + LV[Math.min(4, lv[s.id])] + '" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>' + art(s.id, p.x, p.y, r * 1.72));
+      // the picture responds: more of a species draws it bigger, fewer
+      // smaller; the removed one leaves an empty ring; a species that dies
+      // out is drawn grey and crossed out (not only faded)
+      var ef = e ? e.effect : null, rr = ef === 'up' ? r * 1.22 : ef === 'down' ? r * 0.8 : r;
+      if(ef === 'removed'){
+        out.push('<circle class="ef-disc ef-hole" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>');
+      } else {
+        out.push('<circle class="ef-disc ' + LV[Math.min(4, lv[s.id])] + '" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + rr.toFixed(1) + '"/>' + (ef === 'gone' ? '<g class="ef-grey">' + art(s.id, p.x, p.y, rr * 1.72) + '</g>' : art(s.id, p.x, p.y, rr * 1.72)));
+        if(ef === 'gone') out.push('<path class="ef-cross" d="M' + (p.x - rr * 0.7).toFixed(1) + ' ' + (p.y - rr * 0.7).toFixed(1) + ' L' + (p.x + rr * 0.7).toFixed(1) + ' ' + (p.y + rr * 0.7).toFixed(1) + ' M' + (p.x + rr * 0.7).toFixed(1) + ' ' + (p.y - rr * 0.7).toFixed(1) + ' L' + (p.x - rr * 0.7).toFixed(1) + ' ' + (p.y + rr * 0.7).toFixed(1) + '"/>');
+        if(ef === 'up' || ef === 'down') out.push('<circle class="ef-was" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>');
+      }
       out.push('<text class="ef-node-t" x="' + p.x.toFixed(1) + '" y="' + (p.y + r + fs + 1).toFixed(1) + '" text-anchor="middle">' + esc(cap(s.name)) + '</text>');
       if(E && E.g){
         var bx = p.x + r * 0.78, by = p.y - r * 0.78;
@@ -297,7 +317,7 @@
 
   /* ------------------------------------------------------- explore */
   function explore(host, data){
-    var X = data.explore || {}, st = { view: 'energy', eco: X.eco || 'grassland', gpp: X.gpp || 20000, rPct: X.rPct || 50, eff: X.eff || 10, scale: 'log', sel: null, removed: null };
+    var X = data.explore || {}, st = { view: 'energy', eco: X.eco || 'grassland', gpp: X.gpp || 20000, rPct: X.rPct || 50, eff: X.eff || 10, scale: X.scale || 'linear', sel: null, removed: null };
     var LS = null, touched = false, nid = T.nid('ef'), P = null, live = true, myMk = newMk();
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
     var VIEWS = [['energy', 'Energy'], ['biomass', 'Biomass'], ['number', 'Numbers'], ['web', 'Food web']];
@@ -309,7 +329,7 @@
         '<div class="ef-gpp"></div><div class="ef-webctl" hidden><button type="button" class="bt-btn ef-reset">Bring every species back</button></div>' +
       '</div>' +
       '<div class="ef-say"></div>' +
-      T.moreHtml('<div class="ef-more-sl"></div><div class="bt-tabs ef-scale" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div><p class="bt-small">On a log scale every factor of 10 is the same step, so the top levels stay visible. To scale, the top of a five-level chain is a sliver: 1/10,000 of the base.</p>', 'efficiency, respiration, scale') +
+      T.moreHtml('<div class="ef-more-sl"></div><div class="bt-tabs ef-scale" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="linear" aria-pressed="true">Widths to scale</button><button type="button" class="bt-btn" data-s="log" aria-pressed="false">Widths on a log scale</button></div><p class="bt-small">To scale, each bar is 10% of the one below, so you see the 90% lost at every step; the top of a five-level chain is a sliver, 1/10,000 of the base. On a log scale every factor of 10 is the same step, so the top levels are easier to see.</p>', 'efficiency, respiration, scale') +
       '<div class="ef-nums"></div><p class="sr-only ef-live" role="status" aria-live="polite"></p></section>';
     var say = T.announcer($('.ef-live'));
     var cue = T.cue('Tap a level of the pyramid to see where its energy goes.');
@@ -443,7 +463,7 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], why: [$('.ef-say')], details: [$('.ef-nums')], moreLabel: 'Efficiency, respiration and scale' });
+      T.studioPane(pane, s, { stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], moreLabel: 'Efficiency, respiration and scale' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       draw();

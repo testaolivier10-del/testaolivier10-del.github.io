@@ -60,3 +60,9 @@ body.ls-on .stat-crumb{display:none;} /* Tool Studio hides the other courses' cr
 .rl-data th{width:34%;}
 .ls-root.ls-phone .rl-data{font-size:.82em;}
 .ls-root.ls-phone .rl-data th{font-weight:600;line-height:1.2;}
+
+/* Residual plot grid at round values; the student's answer in Test yourself; the Why sheet's second half. */
+.rl-rgrid{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3;}
+.rl-svg circle.stat-yours{fill:none;stroke:var(--bad-text);stroke-width:3;stroke-dasharray:4 3;}
+.rl-svg .stat-yours-t{font-weight:800;}
+.rl-more > summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:900 14px var(--font-ui);color:var(--cink);}
