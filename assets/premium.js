@@ -832,14 +832,14 @@
   function tableHtml(course, priceHtml) {
     var c = COURSES[course];
     if (!c || !c.rows) return '';
-    return '<table class="pc-table"><caption class="sr-only">Free and Premium in ' + esc(c.name) + '</caption>' +
+    return '<div class="table-wrap pc-wrap"><table class="pc-table"><caption class="sr-only">Free and Premium in ' + esc(c.name) + '</caption>' +
       '<thead><tr><th scope="col" class="pc-what">What you get</th>' +
       '<th scope="col" class="pc-free"><span class="pc-plan">Free</span><span class="pc-amt">$0</span></th>' +
       '<th scope="col" class="pc-prem"><span class="pc-plan">Premium</span><span class="pc-amt">' + (priceHtml || '') + '</span></th></tr></thead><tbody>' +
       c.rows.map(function (r) {
         return '<tr><th scope="row">' + esc(r[0]) + '</th><td class="pc-free">' + cellHtml(r[1]) + '</td><td class="pc-prem">' + cellHtml(r[2]) + '</td></tr>';
       }).join('') +
-      '</tbody></table>';
+      '</tbody></table></div>';
   }
 
   /* The one reassurance line, said once under every buy button instead of in

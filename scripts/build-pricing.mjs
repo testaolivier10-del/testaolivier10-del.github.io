@@ -298,7 +298,7 @@ function premiumPage() {
   /* Inside a course: the Free vs Premium table (theme.css .pc-table), then one
      buy button that goes straight to checkout (owner 2026-10-28). */
   .pp-body{display:grid;gap:14px;}
-  .pp-body .pc-table{margin:0;}
+  .pp-body .pc-wrap{margin:0;}
   .pp-body .pc-table th,.pp-body .pc-table td{max-width:none;}
   .pp-switch{display:flex;flex-wrap:wrap;gap:8px;border:0;margin:0;padding:0;}
   .pp-switch label{position:relative;}

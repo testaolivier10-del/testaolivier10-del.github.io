@@ -170,7 +170,10 @@ const SHELL_BUDGETS = [
   /* 334 -> 335 for registering AP® Psychology (docs/appsych-spec.md, Phase 0): the tenth course in every
      generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam date
      and the theme tint (+1.0 KB measured: 334.4 KB). */
-  ['site', 335],
+  /* 335 -> 338 for the Free vs Premium table (owner 2026-10-28, docs/trust-conversion-plan.md): each course's
+     comparison rows, the table and direct-checkout code in assets/premium.js and the table styles in
+     theme.css, so the dialog on every page shows the same table as premium.html (+2.8 KB measured). */
+  ['site', 338],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

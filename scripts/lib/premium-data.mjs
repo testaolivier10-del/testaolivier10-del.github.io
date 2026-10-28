@@ -244,12 +244,12 @@ function cellHtml(v) {
 }
 export function compareTable(c, priceHtml) {
   if (!c.rows) throw new Error(`assets/premium.js: ${c.name} has no rows`);
-  return '<table class="pc-table"><caption class="sr-only">Free and Premium in ' + htmlEsc(c.name) + '</caption>' +
+  return '<div class="table-wrap pc-wrap"><table class="pc-table"><caption class="sr-only">Free and Premium in ' + htmlEsc(c.name) + '</caption>' +
     '<thead><tr><th scope="col" class="pc-what">What you get</th>' +
     '<th scope="col" class="pc-free"><span class="pc-plan">Free</span><span class="pc-amt">$0</span></th>' +
     '<th scope="col" class="pc-prem"><span class="pc-plan">Premium</span><span class="pc-amt">' + priceHtml + '</span></th></tr></thead><tbody>' +
     c.rows.map((r) => '<tr><th scope="row">' + htmlEsc(r[0]) + '</th><td class="pc-free">' + cellHtml(r[1]) + '</td><td class="pc-prem">' + cellHtml(r[2]) + '</td></tr>').join('') +
-    '</tbody></table>';
+    '</tbody></table></div>';
 }
 export const SURE = 'Full refund within 7 days · Never renews · Secure checkout by Polar';
 /* "February 1, 2027": the day the full price starts, written as premium.js writes dates. */
