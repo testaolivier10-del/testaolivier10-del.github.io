@@ -76,7 +76,7 @@
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: up.next ? 'You are all caught up' : 'Nothing to review yet',
         p: up.next ? 'The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '')
           : 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.',
-        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }, { href: BASE + 'flashcards.html', label: 'Flashcards' }] }) + '</section>';
+        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }] }) + '</section>';
     } else {
       var acts = [];
       if(qs.length) acts.push({ act: 'n', attrs: ' data-n="' + Math.min(SESSION_CAP, qs.length) + '"', label: qs.length > SESSION_CAP ? 'Review the ' + SESSION_CAP + ' oldest' : 'Start review', primary: true });

@@ -1,0 +1,428 @@
+{
+ "prompts": [
+  {
+   "unit": "skills-research",
+   "id": "rs-music-method",
+   "topic": "research-methods",
+   "practice": "2.A",
+   "skill": "method",
+   "title": "Music practice and math grades",
+   "context": "<p>A researcher asked 300 high-school students how many hours a week they practiced a musical instrument and collected their math grades from school records. Students who practiced more tended to have higher math grades (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the research method and <b>explain</b> what it can and cannot conclude.",
+   "checklist": [
+    "Names one method: a correlational study",
+    "Explains why: practice hours were measured, not assigned",
+    "Says it cannot show that practicing music causes higher math grades"
+   ],
+   "earns": {
+    "answer": "This is a correlational study: the researcher measured practice hours and math grades as they were and assigned nothing, so it shows the two are related but not that practicing music raises math grades.",
+    "why": "One method, why it fits, and what it allows."
+   },
+   "misses": {
+    "answer": "It is an experiment, because music practice is the independent variable and math grades are the dependent variable.",
+    "why": "Nothing was manipulated or randomly assigned; naming variables does not make a study an experiment."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Method",
+      "options": [
+       "a correlational study",
+       "an experiment",
+       "naturalistic observation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Practice was not manipulated or assigned.",
+       "2": "Students answered questions; nobody was observed."
+      }
+     },
+     "limit": {
+      "label": "Conclusion it allows",
+      "options": [
+       "that the two are related, not that one causes the other",
+       "that music causes better math",
+       "nothing at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A correlation cannot show cause.",
+       "2": "It does show a relationship."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-noise-opdef",
+   "topic": "research-methods",
+   "practice": "2.B",
+   "skill": "opdef",
+   "title": "Concentration, as measured",
+   "context": "<p>A researcher tested whether background noise hurts concentration. Fifty students were randomly assigned to work in a quiet room or a room with recorded cafe noise. Concentration was the number of spelling errors each student found in a 500-word passage with 50 planted errors, in 10 minutes (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the operational definition of concentration in this study.",
+   "checklist": [
+    "Says what was counted: spelling errors found",
+    "Gives the task and limits: a 500-word passage with 50 planted errors, 10 minutes",
+    "Does not define concentration in general"
+   ],
+   "earns": {
+    "answer": "Concentration was the number of the 50 planted spelling errors each student found in a 500-word passage in 10 minutes.",
+    "why": "The count, the maximum and the time limit this study used."
+   },
+   "misses": {
+    "answer": "Concentration means focusing attention on one task and ignoring distractions.",
+    "why": "A general definition, not how this study measured it."
+   },
+   "specific": {
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the number of planted errors found",
+       "the noise level in the room",
+       "how focused students felt"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the independent variable.",
+       "2": "Feelings were not measured."
+      }
+     },
+     "when": {
+      "label": "Time limit",
+      "options": [
+       "10 minutes, out of 50 errors",
+       "as long as students wanted",
+       "one hour"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The summary sets 10 minutes.",
+       "2": "The summary sets 10 minutes."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-gym-generalize",
+   "topic": "research-sampling",
+   "practice": "2.A",
+   "skill": "generalize",
+   "title": "Questionnaires at the gym door",
+   "context": "<p>To estimate how often adults in a town exercise, a researcher handed questionnaires to 500 people as they left the town's largest gym. Respondents said they exercised 4.5 days a week on average (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> whether the average of 4.5 days generalizes to all adults in the town.",
+   "checklist": [
+    "Takes a position: it does not generalize",
+    "Names the participant trait: every respondent was leaving a gym",
+    "Explains the bias: gym-goers likely exercise more than other adults, and the size of the sample does not fix that"
+   ],
+   "earns": {
+    "answer": "It does not generalize to all adults in the town, because every respondent was leaving the town's largest gym. People at a gym probably exercise more than adults who never go, so the sample is biased upward, and a large sample does not fix that.",
+    "why": "A position argued from who the participants were."
+   },
+   "misses": {
+    "answer": "Yes, because 500 people is a large sample.",
+    "why": "Size does not fix a biased sample. Argue from who was asked."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Conclusion",
+      "options": [
+       "does not generalize to all adults in the town",
+       "generalizes because 500 is large",
+       "generalizes to all gyms"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sample size does not fix sampling bias.",
+       "2": "The question asks about adults in the town."
+      }
+     },
+     "sample": {
+      "label": "Participant characteristics",
+      "options": [
+       "were all leaving a gym",
+       "answered a questionnaire",
+       "numbered 500"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The measure, not who was asked.",
+       "2": "Sample size, not a characteristic."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-phone-statistic",
+   "topic": "stats-correlation",
+   "practice": "2.C",
+   "skill": "statistic",
+   "title": "Reading a negative correlation",
+   "context": "<p>A researcher surveyed 200 high-school students about how many minutes a night they used their phone after 10 p.m. and collected their grade averages. The correlation was <i>r</i>&nbsp;=&nbsp;−.45 (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> what the correlation shows about these students.",
+   "checklist": [
+    "Gives direction and strength: a moderate negative correlation",
+    "Says it for these students: more phone use after 10 p.m. tended to go with lower grade averages",
+    "Does not claim phone use caused lower grades (a third variable such as sleep or workload could explain both)"
+   ],
+   "earns": {
+    "answer": "This is a moderate negative correlation: students who used their phone more after 10 p.m. tended to have lower grade averages. It does not show that phone use lowered grades; a third variable, such as a heavy workload or poor sleep, could affect both.",
+    "why": "Direction and strength for these students, with the limit stated."
+   },
+   "misses": {
+    "answer": "A negative correlation means phone use and grades are not related.",
+    "why": "Negative means one goes up as the other goes down. No relationship would be near zero."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Result",
+      "options": [
+       "a moderate negative correlation",
+       "no relationship",
+       "a strong positive correlation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "−.45 is not near zero.",
+       "2": "The sign is negative and .45 is moderate."
+      }
+     },
+     "meaning": {
+      "label": "Meaning",
+      "options": [
+       "more late phone use went with lower grades",
+       "phone use caused lower grades",
+       "more phone use went with higher grades"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A correlation does not show cause.",
+       "2": "That reverses the direction."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-teens-ethics",
+   "topic": "research-ethics",
+   "practice": "2.D",
+   "skill": "ethics",
+   "title": "Keeping teens' answers private",
+   "context": "<p>Researchers surveyed 150 teens aged 14 to 17 about their sleep. Parents signed consent forms and each teen agreed to take part. Answers were stored under code numbers, and names were kept in a separate locked file that only the lead researcher could open (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>describe</b> how the researchers applied it.",
+   "checklist": [
+    "Names a guideline the summary describes: confidentiality, informed consent or informed assent",
+    "Says how it was applied: code numbers, names in a separate locked file",
+    "Does not name one the summary never mentions, such as debriefing"
+   ],
+   "earns": {
+    "answer": "The researchers kept answers confidential: each teen's answers were stored under a code number, and names were kept in a separate locked file that only the lead researcher could open.",
+    "why": "The guideline and how this study applied it."
+   },
+   "misses": {
+    "answer": "Debriefing: the researchers explained the study to the teens afterward.",
+    "why": "The summary describes no debriefing. Use a safeguard it describes."
+   },
+   "specific": {
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "confidentiality",
+       "debriefing",
+       "deception"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Not described in the summary.",
+       "2": "Deception is not a safeguard, and none occurred."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "code numbers and names in a separate locked file",
+       "teens were 14 to 17",
+       "the survey was about sleep"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A participant trait.",
+       "2": "The topic, not a safeguard."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-brake-statistic",
+   "topic": "stats-descriptive",
+   "practice": "3.B",
+   "skill": "statistic",
+   "title": "Which average describes the typical driver?",
+   "context": "<p>Five drivers in a simulator braked when a light came on. Their reaction times were 310, 290, 300, 1200 and 320 milliseconds; the driver with 1200 milliseconds had been looking at a phone (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> whether the mean or the median better describes a typical driver here.",
+   "checklist": [
+    "Gives both: mean 484 milliseconds, median 310 milliseconds",
+    "Says the median is better because the outlier (1200) pulls the mean up",
+    "Uses the drivers: the mean is slower than four of the five"
+   ],
+   "earns": {
+    "answer": "The median, 310 milliseconds, better describes a typical driver. The one driver who was looking at a phone took 1200 milliseconds, an outlier that pulls the mean up to 484 milliseconds, slower than four of the five drivers.",
+    "why": "Both values, the outlier named, and what that does to the mean."
+   },
+   "misses": {
+    "answer": "The mean is 484 milliseconds, so the typical driver took 484 milliseconds to brake.",
+    "why": "The outlier pulls the mean far above four of the five drivers; the median is typical."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Better measure",
+      "options": [
+       "the median, 310 milliseconds",
+       "the mean, 484 milliseconds",
+       "the range"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The outlier pulls the mean up.",
+       "2": "The range is spread, not a typical value."
+      }
+     },
+     "meaning": {
+      "label": "Reason",
+      "options": [
+       "the 1200 outlier pulls the mean up",
+       "the median is always better",
+       "most drivers were slow"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Not always: with no outliers the mean works well.",
+       "2": "Four of five were near 300 milliseconds."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-normal-statistic",
+   "topic": "stats-normal",
+   "practice": "3.B",
+   "skill": "statistic",
+   "title": "Two standard deviations above",
+   "context": "<p>A memory test was given to a large group of adults. Scores formed a normal curve with an average of 100 and a standard deviation of 15. Dana scored 130 (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> what Dana's score shows about her compared with the other adults.",
+   "checklist": [
+    "Gives the z score: 2 (two standard deviations above the average)",
+    "Gives the percentile: about the 97.5th by the 68-95-99.7 rule",
+    "Says it for Dana: she scored higher than about 97.5% of the group"
+   ],
+   "earns": {
+    "answer": "Dana's z score is 2: 130 is two standard deviations of 15 above the average of 100. By the 68-95-99.7 rule, that puts her near the 97.5th percentile, so she scored higher than about 97.5% of the adults and only about 2.5% scored higher.",
+    "why": "z, the percentile and what they mean for Dana."
+   },
+   "misses": {
+    "answer": "Dana's z score of 2 means she scored 2 points above the average.",
+    "why": "z counts standard deviations, not points: 2 SD is 30 points."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Z score",
+      "options": [
+       "2: two standard deviations above",
+       "30: points above",
+       "−2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the distance in points; z divides by the SD.",
+       "2": "Dana is above the average, so z is positive."
+      }
+     },
+     "meaning": {
+      "label": "Share she beat",
+      "options": [
+       "about 97.5% of the adults",
+       "about 95%",
+       "about 68%"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "95% lies between −2 and +2; she is above all of that plus the lower tail.",
+       "2": "68% lies within one SD."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "skills-research",
+   "id": "rs-gum-argue",
+   "topic": "stats-significance",
+   "practice": "4.B",
+   "skill": "argue",
+   "title": "Gum and test scores",
+   "context": "<p>Sixty students were randomly assigned to chew gum or not during a 100-point vocabulary test. The gum group averaged 78 and the no-gum group 76. The difference was not statistically significant (invented study for practice).</p>",
+   "prompt": "The researcher hypothesized that chewing gum improves test scores. <b>Explain</b> whether the results support the hypothesis, using a specific result.",
+   "checklist": [
+    "Uses the result: 78 against 76, a 2-point difference",
+    "Uses significance: not statistically significant, so plausibly due to chance",
+    "Takes a position: the results do not support the hypothesis"
+   ],
+   "earns": {
+    "answer": "The results do not support the hypothesis. The gum group scored 78 and the no-gum group 76, only 2 points higher, and the difference was not statistically significant, so it could plausibly be due to chance rather than to the gum.",
+    "why": "The result, what \"not significant\" means, and a position."
+   },
+   "misses": {
+    "answer": "Yes, because the gum group scored higher, 78 against 76.",
+    "why": "It ignores that the difference was not significant: it could be chance."
+   },
+   "specific": {
+    "slots": {
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "78 against 76, not significant",
+       "78 against 76, significant",
+       "76 against 78"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The summary says not significant.",
+       "2": "That reverses the groups."
+      }
+     },
+     "meaning": {
+      "label": "Link to the claim",
+      "options": [
+       "the 2-point gap could plausibly be chance",
+       "gum clearly works",
+       "gum lowers scores"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Not significant means chance is a plausible explanation.",
+       "2": "The gum group scored slightly higher, not lower."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

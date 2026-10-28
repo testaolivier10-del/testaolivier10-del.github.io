@@ -1,0 +1,50 @@
+{
+ "intelligence": {
+  "def": "The ability to learn from experience, solve problems and use knowledge to adapt to new situations."
+ },
+ "g-factor": {
+  "def": "General intelligence (g): a broad mental ability, proposed by Spearman, that underlies performance on many different kinds of tests, which is why their scores correlate."
+ },
+ "multiple-intelligences": {
+  "def": "The view that intelligence is several distinct abilities rather than one general ability. Popular theories of this kind (such as Gardner's) have limited evidence that the abilities are truly separate."
+ },
+ "mental-age": {
+  "def": "The level of performance typical of children of a given age, used on early intelligence tests. A child who does as well as typical 10-year-olds has a mental age of 10."
+ },
+ "iq": {
+  "def": "Intelligence quotient. Originally mental age divided by chronological age, times 100. Modern tests compare a score with others of the same age on a normal curve with a mean of 100 and a standard deviation of 15."
+ },
+ "standardization": {
+  "def": "Giving a test in the same way to everyone and setting norms from a large, representative sample, so individual scores can be compared with them."
+ },
+ "reliability": {
+  "def": "The consistency of a test's scores: the same person scores about the same on two occasions (test-retest reliability) or on the two halves of the test (split-half reliability)."
+ },
+ "validity": {
+  "def": "How well a test measures or predicts what it is meant to. Construct validity: it measures the intended trait. Predictive validity: its scores predict a later outcome, such as grades."
+ },
+ "stereotype-threat": {
+  "def": "A drop in performance when people fear confirming a negative stereotype about their group. Early studies found large effects; later, larger studies suggest the effect is smaller and less consistent."
+ },
+ "stereotype-lift": {
+  "def": "A small rise in performance when people are reminded of a negative stereotype about a different group they are compared with."
+ },
+ "flynn": {
+  "def": "The Flynn effect: the rise in average intelligence test scores across generations during the 20th century, too fast to be genetic. It has stalled or reversed in some countries."
+ },
+ "group-variation": {
+  "def": "Within-group variation is the spread of scores inside one group; between-group variation is the difference between groups' averages. A trait can be strongly heritable within groups while a gap between groups is caused by the environment."
+ },
+ "achievement-test": {
+  "def": "A test of what a person has already learned, such as a final exam."
+ },
+ "aptitude-test": {
+  "def": "A test designed to predict a person's future performance or capacity to learn."
+ },
+ "growth-mindset": {
+  "def": "The belief that abilities can be developed through effort, good strategies and help from others."
+ },
+ "fixed-mindset": {
+  "def": "The belief that abilities are fixed and cannot be changed much by effort."
+ }
+}

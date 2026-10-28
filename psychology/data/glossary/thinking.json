@@ -1,0 +1,56 @@
+{
+ "concept-cognition": {
+  "def": "A mental category that groups similar objects, events, ideas or people, such as \"bird\" or \"fruit\"."
+ },
+ "prototype": {
+  "def": "The best or most typical example of a concept, used to judge whether new things belong. A robin is a prototype bird."
+ },
+ "assimilation": {
+  "def": "Interpreting new information so it fits an existing schema, as when a child calls a cow a \"dog\"."
+ },
+ "accommodation": {
+  "def": "Changing a schema, or creating a new one, when new information does not fit, as when the child learns that cows are not dogs."
+ },
+ "algorithm": {
+  "def": "A step-by-step procedure that guarantees a solution if followed, often slowly, such as trying every possible code."
+ },
+ "heuristic": {
+  "def": "A mental shortcut that allows fast judgments and solutions. Heuristics usually work but can lead to errors."
+ },
+ "representativeness": {
+  "def": "Judging how likely something is by how well it matches a prototype, often ignoring how common it is."
+ },
+ "availability": {
+  "def": "Judging how likely or common something is by how easily examples come to mind. Vivid, recent events seem more common than they are."
+ },
+ "mental-set": {
+  "def": "The tendency to approach a problem in a way that worked before, even when another approach would work better."
+ },
+ "functional-fixedness": {
+  "def": "The tendency to see an object only in its usual function, which blocks seeing new uses for it."
+ },
+ "priming": {
+  "def": "The activation, often without awareness, of related ideas by an earlier exposure, so that later related items come to mind faster."
+ },
+ "framing": {
+  "def": "The way a choice is worded (for example as a gain or a loss) changing the decision, even when the facts are the same."
+ },
+ "gamblers-fallacy": {
+  "def": "The belief that past random outcomes change the chances of the next one, such as thinking black is \"due\" after a run of reds."
+ },
+ "sunk-cost": {
+  "def": "Continuing a choice because of what has already been invested (money, time, effort) that cannot be recovered."
+ },
+ "executive-functions": {
+  "def": "Mental skills for planning, focusing, switching between tasks and controlling impulses. They depend heavily on the prefrontal cortex."
+ },
+ "creativity": {
+  "def": "The ability to produce ideas that are both new and useful."
+ },
+ "divergent-thinking": {
+  "def": "Thinking that produces many different possible answers or ideas, such as listing uses for a brick."
+ },
+ "convergent-thinking": {
+  "def": "Thinking that narrows the possibilities to one best answer, as on a test with a single right answer."
+ }
+}

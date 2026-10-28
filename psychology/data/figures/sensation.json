@@ -1,0 +1,22 @@
+{
+ "sensation-eye": {
+  "file": "figures/sensation-eye.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A side-to-side cut through the eye, light entering from the left. Light passes through the cornea, the pupil (the opening in the colored iris) and the lens, which focuses it on the fovea, a small pit at the back of the retina. The retina lines the back of the eye. The optic nerve leaves a little below the fovea; where it leaves there are no rods or cones, the blind spot. A box notes that rods work in dim light, detect no color and cover most of the retina, while cones detect color and fine detail and are packed in the fovea."
+ },
+ "sensation-ear": {
+  "file": "figures/sensation-ear.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The ear. The outer ear funnels sound waves down the ear canal to the eardrum; three tiny middle-ear bones carry the vibration to the cochlea, a fluid-filled coil whose hair cells turn vibration into neural signals that travel along the auditory nerve. A bracket over the ear canal, eardrum and middle-ear bones reads \"damage here: conduction deafness\"; one over the cochlea and auditory nerve reads \"damage here: sensorineural deafness\". Below, the cochlea is drawn uncoiled: high pitches vibrate the base most and low pitches the tip."
+ }
+}

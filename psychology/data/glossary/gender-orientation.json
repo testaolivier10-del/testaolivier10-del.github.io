@@ -1,0 +1,20 @@
+{
+ "sex-biology": {
+  "def": "The biological characteristics (chromosomes, hormones, reproductive anatomy) usually used to classify a body as female or male; some people are born with intersex traits."
+ },
+ "gender": {
+  "def": "The roles, behaviors and identities a culture links with being a woman or a man, along with a person’s own sense of their gender; different from biological sex."
+ },
+ "gender-identity": {
+  "def": "A person’s inner sense of being a woman, a man, both or neither. It can match the sex assigned at birth (cisgender) or differ from it (transgender, nonbinary)."
+ },
+ "gender-roles": {
+  "def": "A culture’s expectations for how women and men should act, dress and work; they differ across cultures and change over time."
+ },
+ "gender-typing": {
+  "def": "The process by which children learn and adopt their culture’s traditional gender roles, such as which toys, jobs and behaviors are \"for girls\" or \"for boys.\""
+ },
+ "sexual-orientation": {
+  "def": "A lasting pattern of romantic or sexual attraction to people of the other sex (heterosexual), the same sex (gay or lesbian), more than one sex (bisexual), or little or no sexual attraction (asexual)."
+ }
+}

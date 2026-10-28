@@ -1,0 +1,29 @@
+{
+ "social-cognitive-theory": {
+  "def": "A view of personality, developed by Albert Bandura, that explains behavior through the interaction of a person's thoughts and beliefs, their behavior and their environment, including what they learn by watching others."
+ },
+ "reciprocal-determinism": {
+  "def": "The social-cognitive idea that person factors (thoughts, beliefs, expectations), behavior and environment all influence one another, so none acts alone."
+ },
+ "self-concept": {
+  "def": "All of a person's beliefs about who they are: their answer to \"Who am I?\""
+ },
+ "self-efficacy": {
+  "def": "A person's belief that they can succeed at a specific task or in a specific area. Higher self-efficacy leads to more effort and persistence."
+ },
+ "self-esteem": {
+  "def": "A person's overall sense of their own worth: how much they value and accept themselves."
+ },
+ "trait-theory": {
+  "def": "An approach that describes personality by stable tendencies (traits), such as being outgoing or careful, that show across many situations, rather than explaining where they come from."
+ },
+ "big-five": {
+  "def": "Five broad personality traits found by factor analysis: openness (curious, imaginative), conscientiousness (organized, dependable), extraversion (sociable, energetic), agreeableness (warm, cooperative) and neuroticism (prone to worry and negative feelings, versus emotionally stable). They are partly heritable, found in many cultures, and fairly stable in adults."
+ },
+ "factor-analysis": {
+  "def": "A statistical method that finds clusters of items whose scores are correlated with each other, revealing underlying factors such as broad personality traits."
+ },
+ "personality-inventory": {
+  "def": "A questionnaire with many clear statements about typical feelings and behavior (true-false or agree-disagree), scored objectively against norms. Big Five questionnaires and the MMPI are examples."
+ }
+}

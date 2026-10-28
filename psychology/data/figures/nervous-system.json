@@ -1,0 +1,12 @@
+{
+ "nervous-system-divisions": {
+  "file": "figures/nervous-system-divisions.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 480,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A tree diagram. The nervous system divides into the central nervous system, the brain and spinal cord, which takes in information, decides and sends commands, and the peripheral nervous system, the nerves linking the central nervous system to the body. The peripheral system divides into the somatic system, voluntary, which moves skeletal muscles (kicking a ball, typing, feeling a tap), and the autonomic system, automatic, which runs the heart, lungs, glands and gut. The autonomic system divides into the sympathetic division, which arouses (heart speeds, pupils widen, digestion slows, sweating rises), and the parasympathetic division, which calms (heart slows, digestion resumes). An example: a car horn blares; the sympathetic division makes the heart pound, the jump back is somatic, and the parasympathetic division later brings the heart rate down."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "stats-descriptive-skew": {
+  "file": "figures/stats-descriptive-skew.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A histogram of invented data: hours of sleep lost per week for 25 students. Most students lost 1 to 5 hours; a few lost 7, 8, 10 and 12, making a long tail to the right (positive skew). The mode is 3, the median is 4 and the mean is 4.32: the few high values pull the mean toward the tail, past the median."
+ }
+}

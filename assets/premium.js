@@ -314,6 +314,37 @@
         'The full dashboard: mastery by unit, topic and science practice',
       ],
     },
+    appsych: {
+      name: 'AP® Psychology',
+      // On sale since 2026-10-27 (docs/appsych-spec.md, launch checklist):
+      // Polar product 409e7c83-6820-441d-867d-eb10cc320507.
+      dailyFree: 15,
+      // The free tier (docs/appsych-spec.md decision 9, proposed): Unit 1 and
+      // every "Research skills you need" lesson. Keep in step with FREE_UNITS
+      // in scripts/lib/appsych-build.mjs.
+      freeChapters: ['unit-1'],
+      compare: 'For comparison: Fiveable is $29 a month or $79 a year (checked October 2026).',
+      passes: [
+        { id: 'psy-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The statistics you must know, explained, and the cram-kit study plan outline',
+        'Every lesson in Unit 1, and every "Research skills you need" lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Three trainers: the article analysis studio, the neuron and the brain map',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer: the evidence builder, sensation, memory, conditioning, development, social influence and the stats lab',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and science practice',
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -328,6 +359,7 @@
     { key: 'apcalc', path: '/calculus/' },
     { key: 'apstat', path: '/statistics/' },
     { key: 'apenv', path: '/environmental-science/' },
+    { key: 'appsych', path: '/psychology/' },
   ];
   // courses:end
 

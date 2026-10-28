@@ -1,0 +1,88 @@
+{
+ "topic": "sleep",
+ "hook": "Pull an all-nighter before a test and you may feel fine at 3 a.m., foggy at 10, and surprised by how little you remember by Friday. Sleep is not the brain switching off. It is a busy, organized state that the brain cycles through about five times a night, and each part has a job.",
+ "prereq": [
+  {
+   "q": "Which hormone rises in the dark and helps time sleep?",
+   "options": [
+    "Melatonin",
+    "Ghrelin",
+    "Adrenaline",
+    "Leptin"
+   ],
+   "correct": 0,
+   "why": "Melatonin rises in the evening as light fades.",
+   "review": "neural-firing"
+  },
+  {
+   "q": "What does an EEG record?",
+   "options": [
+    "Electrical activity of the brain from the scalp",
+    "Blood flow deep inside the brain",
+    "The size of brain structures",
+    "Hormone levels in the blood"
+   ],
+   "correct": 0,
+   "why": "An EEG records electrical activity through electrodes on the scalp; it is how sleep stages are identified.",
+   "review": "brain"
+  },
+  {
+   "q": "Which part of the brainstem controls arousal and alertness?",
+   "options": [
+    "The reticular activating system",
+    "The medulla",
+    "The cerebellum",
+    "The hippocampus"
+   ],
+   "correct": 0,
+   "why": "The reticular activating system controls waking and alertness.",
+   "review": "brain"
+  }
+ ],
+ "figure": {
+  "figure": "sleep-hypnogram",
+  "caption": "One invented night: cycles of about 90 minutes, deep N3 early, longer REM toward morning."
+ },
+ "chain": [
+  {
+   "cause": "Evening darkness raises melatonin, following the circadian rhythm",
+   "effect": "you feel sleepy and enter N1, light sleep with drifting thoughts and hypnagogic sensations"
+  },
+  {
+   "cause": "Sleep deepens through N2 into N3",
+   "effect": "brain waves slow into large delta waves and the body does restorative work"
+  },
+  {
+   "cause": "After about 90 minutes the brain cycles up into REM",
+   "effect": "the brain becomes active, the eyes dart, the major muscles go limp and vivid dreams are common"
+  },
+  {
+   "cause": "The cycle repeats four or five times",
+   "effect": "N3 shrinks and REM periods lengthen toward morning"
+  },
+  {
+   "cause": "Part of the cycle fails or is cut short",
+   "effect": "sleep disorders (insomnia, narcolepsy, sleep apnea, sleepwalking, REM sleep behavior disorder) and poorer memory and mood follow"
+  }
+ ],
+ "ideas": [
+  "Your <b>circadian rhythm</b> is a roughly 24-hour clock set by light; melatonin rises at night. Teens' clocks naturally shift later.",
+  "Sleep cycles about every 90 minutes: <b>N1</b> (light, falling sensations), <b>N2</b> (most of the night), <b>N3</b> (deep, slow delta waves, mostly early), then <b>REM</b> (active brain, darting eyes, limp muscles, vivid dreams), longer toward morning.",
+  "Why sleep: <b>restoration</b> (the body and brain recover and repair) and <b>consolidation</b> (new memories are stabilized). Dreams: <b>activation-synthesis</b> (the cortex makes a story from random brainstem signals) or consolidation (dreams reflect memory processing).",
+  "Disorders: <b>insomnia</b> (trouble falling or staying asleep), <b>narcolepsy</b> (sudden sleep, quick REM), <b>sleep apnea</b> (breathing stops), <b>somnambulism</b> (sleepwalking, in N3), <b>REM sleep behavior disorder</b> (acting out dreams)."
+ ],
+ "misconception": {
+  "wrong": "The brain shuts down during sleep, and the deepest sleep is when you dream.",
+  "right": "The brain is busy all night. Deepest sleep is N3, with slow waves and few vivid dreams; the vivid dreams come mostly in REM, when the brain is nearly as active as when awake."
+ },
+ "check": [
+  "psy-sleep-1",
+  "psy-sleep-2",
+  "psy-sleep-3",
+  "psy-sleep-9",
+  "psy-sleep-11",
+  "psy-sleep-12",
+  "psy-sleep-16"
+ ],
+ "summary": "Consciousness shifts across a roughly 24-hour circadian rhythm. Each night the brain cycles about every 90 minutes through N1, N2 and deep N3, then REM, with N3 early and longer REM periods toward morning. Sleep restores the body and helps consolidate memories; activation-synthesis and consolidation theories explain dreams. When the cycle fails, the result can be insomnia, narcolepsy, sleep apnea, sleepwalking or REM sleep behavior disorder."
+}

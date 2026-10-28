@@ -1,0 +1,85 @@
+{
+ "topic": "treatment",
+ "hook": "Fifty years ago, a person with a severe fear of flying might have been told to talk about their childhood for years. Today, a few weeks of gradual exposure therapy helps most people with a specific phobia. Treatments for psychological disorders now range from talk therapies to medications and brain stimulation, and the most important question about each one is simple: what does the research say it does, for whom, and at what cost?",
+ "prereq": [
+  {
+   "q": "A drug blocks the reabsorption of serotonin by the sending neuron, so more serotonin stays in the synapse. What kind of drug is it?",
+   "options": [
+    "A reuptake inhibitor",
+    "An antagonist",
+    "A depressant",
+    "A hallucinogen"
+   ],
+   "correct": 0,
+   "why": "Blocking reuptake leaves more neurotransmitter in the synapse; that is a reuptake inhibitor.",
+   "review": "neural-firing"
+  },
+  {
+   "q": "A child's fear of a dog fades after he is paired, again and again, with a pleasant snack while the dog sits calmly nearby. Which process is this?",
+   "options": [
+    "Counterconditioning",
+    "Spontaneous recovery",
+    "Stimulus generalization",
+    "Higher-order conditioning"
+   ],
+   "correct": 0,
+   "why": "Replacing a fear response with a pleasant one is counterconditioning.",
+   "review": "classical-conditioning"
+  },
+  {
+   "q": "Which of these is a description of a psychological disorder?",
+   "options": [
+    "A pattern that is unusual and causes distress or dysfunction",
+    "Any behavior that is unusual",
+    "Any strong emotion",
+    "A habit that others dislike"
+   ],
+   "correct": 0,
+   "why": "A disorder involves deviation plus distress or dysfunction.",
+   "review": "explaining-disorders"
+  }
+ ],
+ "figure": {
+  "figure": "treatment-approaches",
+  "caption": "Each approach targets a different cause and uses its own techniques."
+ },
+ "chain": [
+  {
+   "cause": "A perspective explains a disorder by a particular cause",
+   "effect": "its therapy targets that cause: conflicts, thoughts, learning, growth or brain chemistry"
+  },
+  {
+   "cause": "Researchers compare a treatment with a control group, often in many studies combined by meta-analysis",
+   "effect": "the treatment earns a place in evidence-based practice, or not"
+  },
+  {
+   "cause": "A clinician weighs that evidence with expertise, the therapeutic alliance and the client's culture and preferences",
+   "effect": "the client gets a treatment matched to them"
+  },
+  {
+   "cause": "Ethical rules such as informed consent and confidentiality guide every step",
+   "effect": "clients can trust the process, which strengthens the alliance"
+  }
+ ],
+ "ideas": [
+  "Match technique to approach: <b>free association</b> and <b>dream interpretation</b> (psychodynamic); <b>active listening</b> with unconditional positive regard (humanistic); <b>cognitive restructuring</b>, <b>REBT</b> (cognitive); <b>CBT</b>, <b>DBT</b> (cognitive-behavioral).",
+  "Behavioral: <b>exposure</b> and <b>systematic desensitization</b> reduce fear, <b>aversion therapy</b> pairs a habit with discomfort, <b>token economies</b> reward behavior, <b>biofeedback</b> trains body control.",
+  "Medications: <b>antidepressants</b> (often SSRIs), <b>anti-anxiety</b> drugs (GABA, risk of dependence), <b>lithium</b> (bipolar), <b>antipsychotics</b> (block dopamine; risk of <b>tardive dyskinesia</b>). Also <b>ECT</b>, <b>TMS</b>, rare psychosurgery.",
+  "Judge treatments by evidence. <b>Hypnosis</b> helps pain and anxiety but does not recover memories; the <b>lobotomy</b> is history, not treatment."
+ ],
+ "misconception": {
+  "wrong": "Hypnosis can recover accurate memories that a person has forgotten.",
+  "right": "Hypnosis makes people more confident in what they \"remember,\" but it also increases false memories. It has some use for pain and anxiety, not for recovering memories."
+ },
+ "check": [
+  "psy-treatment-3",
+  "psy-treatment-15",
+  "psy-treatment-18",
+  "psy-treatment-23",
+  "psy-treatment-24",
+  "psy-treatment-25",
+  "psy-treatment-26"
+ ],
+ "help": true,
+ "summary": "Each approach to therapy targets a different cause: psychodynamic therapy seeks insight into unconscious conflicts, humanistic therapy offers acceptance, behavioral therapy changes learned responses, cognitive therapy changes thoughts, and CBT combines the two. Biomedical treatments change brain chemistry or activity. Good care is evidence-based, built on a strong therapeutic alliance and cultural humility, and guided by ethics such as informed consent and confidentiality."
+}

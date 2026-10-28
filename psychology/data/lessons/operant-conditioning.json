@@ -1,0 +1,72 @@
+{
+ "topic": "operant-conditioning",
+ "hook": "Nobody needs to drag a person to a slot machine, yet a paycheck that stops would end most jobs within a week. Both reward effort. What differs is the pattern: the slot machine pays after an unpredictable number of pulls, so each pull might be the one. Operant conditioning explains how consequences change what we do, and why the timing of those consequences matters as much as what they are.",
+ "prereq": [
+  {
+   "q": "A tone is paired with food until the tone alone makes a dog drool. What is the tone after training?",
+   "options": [
+    "The conditioned stimulus",
+    "The unconditioned stimulus",
+    "The unconditioned response",
+    "A neutral stimulus"
+   ],
+   "correct": 0,
+   "why": "A once-neutral stimulus that now triggers the learned response is the conditioned stimulus.",
+   "review": "classical-conditioning"
+  },
+  {
+   "q": "A CR fades when the CS keeps coming without the UCS. What is that called?",
+   "options": [
+    "Extinction",
+    "Acquisition",
+    "Generalization",
+    "Habituation"
+   ],
+   "correct": 0,
+   "why": "Extinction is the weakening of a conditioned response without its UCS. Operant behavior also extinguishes when reinforcement stops.",
+   "review": "classical-conditioning"
+  }
+ ],
+ "figure": {
+  "figure": "operant-conditioning-grid",
+  "caption": "Positive adds, negative removes; reinforcement increases a behavior, punishment decreases it."
+ },
+ "chain": [
+  {
+   "cause": "A behavior is followed by a consequence",
+   "effect": "the law of effect: satisfying consequences make it more likely, unpleasant ones less likely"
+  },
+  {
+   "cause": "Something wanted is added, or something unpleasant is removed",
+   "effect": "the behavior increases (positive or negative reinforcement)"
+  },
+  {
+   "cause": "Something unpleasant is added, or something wanted is removed",
+   "effect": "the behavior decreases (positive or negative punishment)"
+  },
+  {
+   "cause": "Reinforcement comes only some of the time, unpredictably",
+   "effect": "the behavior is learned more slowly but lasts much longer when reinforcement stops"
+  }
+ ],
+ "ideas": [
+  "Ask two questions. Does the behavior go <b>up</b> (reinforcement) or <b>down</b> (punishment)? Is a stimulus <b>added</b> (positive) or <b>removed</b> (negative)? Positive and negative are math signs, not good and bad.",
+  "<b>Primary reinforcers</b> meet biological needs (food, warmth); <b>secondary reinforcers</b> (money, grades, points) work because they lead to primary ones.",
+  "<b>Shaping</b> reinforces closer and closer steps. Limits and side effects: <b>instinctive drift</b>, <b>superstitious behavior</b> from accidental reinforcement, and <b>learned helplessness</b> after uncontrollable events.",
+  "Ratio schedules pay for responses (fast responding); interval schedules pay for time (slower). Variable schedules give steady responding and resist extinction; fixed ones show pauses or scallops."
+ ],
+ "misconception": {
+  "wrong": "Negative reinforcement is a kind of punishment.",
+  "right": "Negative reinforcement always increases a behavior, by removing something unpleasant (the beeping stops when you buckle up). Punishment always decreases a behavior."
+ },
+ "check": [
+  "psy-operant-conditioning-1",
+  "psy-operant-conditioning-2",
+  "psy-operant-conditioning-12",
+  "psy-operant-conditioning-13",
+  "psy-operant-conditioning-14",
+  "psy-operant-conditioning-16",
+  "psy-operant-conditioning-17"
+ ],
+ "summary": "Operant conditioning changes voluntary behavior through its consequences. Reinforcement, positive or negative, increases a behavior; punishment, positive or negative, decreases it. Shaping builds new behaviors step by step, while instinctive drift, superstitious behavior and learned helplessness show its limits. Ratio schedules produce faster responding than interval schedules, and partial reinforcement makes behavior last longer than continuous reinforcement."
+}

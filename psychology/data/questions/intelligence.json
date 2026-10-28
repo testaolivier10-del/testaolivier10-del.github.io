@@ -1,0 +1,610 @@
+{
+ "stimuli": {
+  "intelligence-s1": {
+   "kind": "data",
+   "title": "IQ scores on a normal curve with marked percentiles",
+   "invented": true,
+   "plot": {
+    "label": "Normal curve of IQ scores with mean 100 and standard deviation 15, the 68-95-99.7 bands marked and the region above 130 shaded",
+    "kind": "normal",
+    "mean": 100,
+    "sd": 15,
+    "bands": true,
+    "region": {
+     "from": 130,
+     "to": null
+    },
+    "xLabel": "IQ score"
+   },
+   "html": "<p>A modern intelligence test is standardized so that scores in the norm group form a normal curve with a mean of 100 and a standard deviation of 15. Marked percentiles: 70 is about the 2nd percentile, 85 the 16th, 100 the 50th, 115 the 84th and 130 about the 98th. The region above 130 is shaded.</p>"
+  },
+  "intelligence-s2": {
+   "kind": "study",
+   "title": "A reminder before a math test",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers tested whether reminding students of a negative stereotype about their group before a hard math test lowers their scores.",
+    "participants": "120 women in their first year at two public universities, all of whom had taken calculus in high school. Each gave informed consent; the universities' review boards approved the study.",
+    "method": "A computer randomly assigned each woman to one of two groups of 60. Before the test, the reminder group read: \"This test has shown gender differences in past research.\" The no-reminder group read: \"This test has shown no gender differences in past research.\" Everyone then took the same 20-question math test in 20 minutes. Afterward, every participant was told the true purpose of the two statements and that neither was a real research finding.",
+    "results": "The reminder group answered 9.1 questions correctly on average (SD 3.0); the no-reminder group answered 11.4 (SD 3.2). The difference was statistically significant.",
+    "discussion": "The researchers concluded that a stereotype reminder lowered math performance in this sample."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-intelligence-1",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "intelligence-s1",
+   "q": "Malia scores 130 on this test. What is her z score?",
+   "why": {
+    "correct": "$z = \\frac{130 - 100}{15} = \\frac{30}{15} = 2$. She is two standard deviations above the mean."
+   },
+   "numeric": {
+    "from": {
+     "fn": "z",
+     "args": [
+      130,
+      100,
+      15
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "30 is how many points above the mean she is. Divide by the standard deviation, 15, to get z."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        130,
+        15
+       ]
+      },
+      "why": "About 8.7 divides the raw score by 15. Subtract the mean first: $130 - 100 = 30$, then divide by 15."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-2",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "intelligence-s1",
+   "q": "By the 68-95-99.7 rule, what percent of people score between 85 and 115?",
+   "why": {
+    "correct": "85 and 115 are one standard deviation below and above the mean: $34\\% + 34\\% = 68\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      -1,
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "34% is only one side, from 100 to 115. Add the other side, 85 to 100."
+     },
+     {
+      "value": 95,
+      "why": "95% is within two standard deviations (70 to 130). 85 to 115 is within one."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-3",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "intelligence-s1",
+   "q": "By the 68-95-99.7 rule, what percent of people score above 130 (the shaded region)?",
+   "why": {
+    "correct": "Between 70 and 130 (two standard deviations each side) lie 95% of scores. The other 5% are split evenly between the two tails, so $\\frac{100 - 95}{2} = 2.5\\%$ score above 130."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      2,
+      null
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "5% is outside two standard deviations on both sides. Only the upper side is shaded, so halve it."
+     },
+     {
+      "value": 13.5,
+      "why": "13.5% is the band from 115 to 130. The shaded region starts at 130."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-4",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "intelligence-s1",
+   "q": "Jonah's score is at the 84th percentile. What does that mean?",
+   "options": [
+    "He scored higher than about 84% of the norm group",
+    "He answered about 84% of the test items correctly",
+    "His IQ score is 84 points on this test",
+    "He scored lower than about 84% of the norm group"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A percentile rank is the percent of scores below a given score. The 84th percentile is one standard deviation above the mean, an IQ of 115.",
+    "options": [
+     "Right: A percentile rank is the percent of scores below a given score. The 84th percentile is one standard deviation above the mean, an IQ of 115.",
+     "A percentile compares a score with other people's scores; it is not the percent of items answered correctly.",
+     "An IQ of 84 is about one standard deviation below the mean, near the 16th percentile.",
+     "That reverses it. The 84th percentile means 84% scored below him."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-5",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "intelligence-s1",
+   "q": "What IQ score is one standard deviation below the mean on this test?",
+   "why": {
+    "correct": "$100 - 15 = 85$, which is $z = -1$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "fromZ",
+     "args": [
+      -1,
+      100,
+      15
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "fromZ",
+       "args": [
+        1,
+        100,
+        15
+       ]
+      },
+      "why": "115 is one standard deviation above the mean. Below the mean, subtract 15."
+     },
+     {
+      "value": 84,
+      "why": "84 is the percentile one standard deviation above the mean. The question asks for a score: $100 - 15$."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-6",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "intelligence-s2",
+   "q": "Which concept do the results best support?",
+   "options": [
+    "Stereotype lift",
+    "Stereotype threat",
+    "The Flynn effect",
+    "Test-retest reliability"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Being reminded of a negative stereotype about one's group lowered test performance. That is stereotype threat.",
+    "options": [
+     "Stereotype lift is a small boost from being compared with a group stereotyped as worse. Here performance went down.",
+     "Right: Being reminded of a negative stereotype about one's group lowered test performance. That is stereotype threat.",
+     "The Flynn effect is the rise in average test scores across generations. This study compared two groups on one day.",
+     "Reliability is about consistent scores on repeated testing. Each woman took the test once."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-7",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "intelligence-s2",
+   "q": "What does \"the difference was statistically significant\" mean here?",
+   "options": [
+    "The difference is large enough to matter in everyday life",
+    "Each woman in the reminder group scored lower than each woman in the other group",
+    "A difference this large would be unlikely if chance alone were at work",
+    "The result will be found again by any lab that repeats the study"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Statistical significance means the difference between the groups is unlikely to be due to chance (random variation in who was in each group). It does not say the difference is large.",
+    "options": [
+     "Significance is not size. How big a difference is, is a separate question (effect size).",
+     "The groups overlap a lot (the SDs are about 3 questions). Significance is about the group averages.",
+     "Right: Statistical significance means the difference between the groups is unlikely to be due to chance (random variation in who was in each group). It does not say the difference is large.",
+     "A significant result can still fail to replicate; only repeated studies show that."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-8",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "intelligence-s2",
+   "q": "The participants were given a false statement about past research. Which safeguard in the summary addressed this?",
+   "options": [
+    "Random assignment: a computer placed each woman in a group",
+    "Confidentiality: the test scores were stored without any names",
+    "Protection from harm: the math test lasted twenty minutes",
+    "Debriefing: afterward each woman learned the statements were false"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When a study uses deception, researchers must explain the truth afterward. The summary says every participant was told the true purpose and that neither statement was a real finding.",
+    "options": [
+     "Random assignment is a design step for causal claims, not an ethical safeguard.",
+     "The summary does not describe how scores were stored.",
+     "The test length is part of the method, not a protection described as such.",
+     "Right: When a study uses deception, researchers must explain the truth afterward. The summary says every participant was told the true purpose and that neither statement was a real finding."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-9",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "intelligence-s2",
+   "q": "A reader wants to apply this result to all high school girls taking math tests. Which statement about generalizing is best supported?",
+   "options": [
+    "Partly: they were female math students, but older and in college",
+    "Fully, because 120 women is a large enough sample",
+    "No, because the study was a true experiment",
+    "Fully, because the women were randomly assigned to groups"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Generalizing is judged by participant characteristics. Like the target group, they were female math students; unlike it, they were college students who had all taken calculus, at two universities.",
+    "options": [
+     "Right: Generalizing is judged by participant characteristics. Like the target group, they were female math students; unlike it, they were college students who had all taken calculus, at two universities.",
+     "Sample size alone does not show the participants resemble high school girls.",
+     "Being an experiment supports a causal claim; it does not by itself prevent generalizing.",
+     "Random assignment supports cause and effect within the sample. It does not make the sample like high school girls."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-10",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Students who do well on vocabulary tests also tend to do well on math, puzzle and memory tests. Which idea does this pattern support?",
+   "options": [
+    "Multiple intelligences that are fully separate",
+    "A general intelligence (g) factor",
+    "The Flynn effect",
+    "Stereotype lift"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Scores on different kinds of mental tests are positively correlated. Spearman proposed that a general ability, g, underlies them all.",
+    "options": [
+     "If abilities were fully separate, doing well on one test would say little about the others.",
+     "Right: Scores on different kinds of mental tests are positively correlated. Spearman proposed that a general ability, g, underlies them all.",
+     "The Flynn effect is the rise in scores over generations, not the link between tests.",
+     "Stereotype lift is a performance boost from a group comparison, not a pattern across tests."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-11",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "On an early intelligence test, a child aged 8 performs like a typical 10-year-old. Using the original IQ formula (mental age divided by chronological age, times 100), what is the child's IQ?",
+   "why": {
+    "correct": "$\\text{IQ} = \\frac{10}{8} \\times 100 = 125$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        10,
+        8
+       ]
+      },
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          8,
+          10
+         ]
+        },
+        100
+       ]
+      },
+      "why": "80 divides chronological age by mental age. Put mental age (10) on top."
+     },
+     {
+      "from": {
+       "fn": "div",
+       "args": [
+        10,
+        8
+       ]
+      },
+      "why": "1.25 is the ratio. Multiply by 100 to get the IQ."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-12",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A group of students takes the same intelligence test twice, a month apart, and their two scores correlate at r = .92. What does this show about the test?",
+   "options": [
+    "High predictive validity",
+    "Evidence of stereotype threat",
+    "High test-retest reliability",
+    "Evidence of the Flynn effect"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reliability is consistency. Scores that stay about the same on two occasions (a strong positive correlation) show high test-retest reliability.",
+    "options": [
+     "Predictive validity is whether scores predict a later outcome, such as grades. This compares the test with itself.",
+     "Stereotype threat is lower performance after a stereotype reminder, not consistency of scores.",
+     "Right: Reliability is consistency. Scores that stay about the same on two occasions (a strong positive correlation) show high test-retest reliability.",
+     "The Flynn effect is a rise in scores across generations, not a month."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-13",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "A college admissions test is given to applicants, and their scores correlate r = .45 with their first-year college grades. What property of the test does this correlation measure?",
+   "options": [
+    "Test-retest reliability",
+    "Standardization",
+    "Split-half reliability",
+    "Predictive validity"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Validity is whether a test measures or predicts what it is supposed to. A correlation between test scores and later grades measures predictive validity.",
+    "options": [
+     "Test-retest reliability compares the test with itself on two occasions, not with grades.",
+     "Standardization is giving the test the same way and comparing to a norm group, not linking scores to grades.",
+     "Split-half reliability compares the two halves of the same test.",
+     "Right: Validity is whether a test measures or predicts what it is supposed to. A correlation between test scores and later grades measures predictive validity."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-14",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "q": "Before a new test is used, it is given in the same way to a large, representative sample, whose scores become the norms for comparing later test takers. What is this process called?",
+   "options": [
+    "Standardization",
+    "Predictive validity",
+    "Stereotype lift",
+    "Mental age"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Standardization means giving a test under uniform conditions and setting norms from a representative sample, so any score can be compared with them.",
+    "options": [
+     "Right: Standardization means giving a test under uniform conditions and setting norms from a representative sample, so any score can be compared with them.",
+     "Predictive validity is whether scores predict later outcomes, not how norms are set.",
+     "Stereotype lift is a small performance boost from a group comparison.",
+     "Mental age is the level of performance typical for a given age, used in the old ratio IQ."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-15",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In many countries, average raw scores on intelligence tests rose by about 3 IQ points per decade during the 20th century, so tests had to be renormed. Which concept names this?",
+   "options": [
+    "Stereotype threat",
+    "The Flynn effect",
+    "Test-retest reliability",
+    "General intelligence (g)"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The rise in average intelligence test scores across generations is the Flynn effect. It happened too fast to be genetic and is linked to better nutrition, schooling and health; some countries have seen it stall or reverse recently.",
+    "options": [
+     "Stereotype threat lowers one group's scores in one situation; it does not explain a rise across generations.",
+     "Right: The rise in average intelligence test scores across generations is the Flynn effect. It happened too fast to be genetic and is linked to better nutrition, schooling and health; some countries have seen it stall or reverse recently.",
+     "Reliability is about the same person getting similar scores twice, not generations.",
+     "g is the shared ability behind many tests, not a change over time."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-16",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which test is an achievement test rather than an aptitude test?",
+   "options": [
+    "A test designed to predict who will do well in law school",
+    "A test of how quickly someone could learn a new language",
+    "A final exam on what was taught in a semester of chemistry",
+    "A test used to predict success in pilot training"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An achievement test measures what a person has already learned. A final exam on a course is the clearest case.",
+    "options": [
+     "Predicting future learning is the job of an aptitude test.",
+     "Measuring the capacity to learn is aptitude.",
+     "Right: An achievement test measures what a person has already learned. A final exam on a course is the clearest case.",
+     "Predicting performance in training is an aptitude test."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-17",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a low score on a math quiz, Tae says, \"I am just not a math person,\" and stops studying. His friend says, \"I need a different strategy and more practice.\" Which concept describes the friend's view?",
+   "options": [
+    "A fixed mindset",
+    "Stereotype threat",
+    "General intelligence (g)",
+    "A growth mindset"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Believing that ability can be developed through effort and good strategies is a growth mindset. Tae's belief that ability is fixed is a fixed mindset.",
+    "options": [
+     "A fixed mindset sees ability as unchangeable, which is Tae's view, not the friend's.",
+     "Stereotype threat comes from a reminder of a negative stereotype about one's group. No stereotype is involved here.",
+     "g is a shared ability measured across tests, not a belief about whether ability can change.",
+     "Right: Believing that ability can be developed through effort and good strategies is a growth mindset. Tae's belief that ability is fixed is a fixed mindset."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-18",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Seeds from one bag are planted in two fields, one with rich soil and one with poor soil. Within each field, height differences are mostly due to the seeds' genes. Which conclusion about the difference between the two fields is correct?",
+   "options": [
+    "It can be caused by the soil, though variation within a field is genetic",
+    "It is genetic, because the differences within each field are genetic",
+    "It is not measurable, because the two fields used different kinds of soil",
+    "It is mostly random, because the seeds came from one single bag"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Differences within a group can be largely genetic while the difference between groups is environmental. Within-group variation does not explain between-group variation.",
+    "options": [
+     "Right: Differences within a group can be largely genetic while the difference between groups is environmental. Within-group variation does not explain between-group variation.",
+     "This is the classic error: high heritability within groups says nothing about the cause of a gap between groups.",
+     "The fields' average heights can be compared; the question is what causes the gap.",
+     "The seeds are alike across fields, which is why the soil, not chance, explains the gap."
+    ]
+   }
+  },
+  {
+   "id": "psy-intelligence-19",
+   "unit": "unit-2",
+   "topic": "intelligence",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In 1917 the US Army gave intelligence tests to recruits, including many recent immigrants who spoke little English. Lower scores were later used to argue for limits on immigration from certain countries. What was the central problem?",
+   "options": [
+    "The tests were too reliable to be useful for any purpose",
+    "The tests measured English and American culture, not just ability",
+    "The recruits had been randomly assigned to take the tests",
+    "The Flynn effect made the scores rise too fast for comparison"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Items assumed familiarity with English and American culture, so recent immigrants scored lower for reasons unrelated to intelligence. The scores were then misused to support discriminatory policy.",
+    "options": [
+     "High reliability is a good property; the problem was what the tests actually measured and how scores were used.",
+     "Right: Items assumed familiarity with English and American culture, so recent immigrants scored lower for reasons unrelated to intelligence. The scores were then misused to support discriminatory policy.",
+     "Random assignment is not the issue; the tests were biased and the conclusions misused.",
+     "The Flynn effect was not described until decades later and does not explain the bias."
+    ]
+   }
+  }
+ ]
+}

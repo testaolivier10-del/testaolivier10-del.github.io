@@ -86,7 +86,7 @@ function walk(dir, out = []) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data')) && !full.endsWith(join('physics', 'data')) && !full.endsWith(join('calculus', 'data')) && !full.endsWith(join('statistics', 'data')) && !full.endsWith(join('environmental-science', 'data')) && !full.endsWith(join('psychology', 'data'))) walk(full, out); }
     else if (extname(name) === '.html') out.push(full);
   }
   return out;
@@ -481,9 +481,42 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
       if (await opt.count()) await opt.click();
       else if (await q.locator('.env-num input, .env-expr input, input[inputmode]').count()) await q.locator('.env-num input, .env-expr input, input[inputmode]').first().fill('1');
       else for (const g of await q.locator('.env-dir').all()) await g.locator('button, [role="radio"]').first().click();
+      // A "Make it specific" item: one choice per blank (the set is shuffled, so it can come first).
+      for (const sel of await q.locator('select[data-slot]').all()) await sel.selectOption({ index: 1 });
       const check = page.locator('.env-pr-stage .env-q .env-check').first();
       if (await check.count() && await check.isVisible()) await check.click();
       await page.waitForSelector('.env-q-feedback .env-verdict', { timeout: 15000 });
+      if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
+    }));
+  }
+}
+/* AP® Psychology Practice, once a unit is published: the first published topic's
+   set loads the bank index, then that unit's file, and explanations only
+   after an answer. Nothing to run before then (psychology/assets/notes-index.json
+   is empty), so the flow is data-driven like the course itself. */
+{
+  const idx = join(ROOT, 'psychology', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    results.push(await anpFlow('/psychology/practice.html (flow)', async (page, bank, problems) => {
+      await page.goto(ORIGIN + '/psychology/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
+      await page.waitForSelector('.psy-pr-start:not([disabled])', { timeout: 15000 });
+      await page.click('.psy-pr-start');
+      await page.waitForSelector('.psy-pr-stage .psy-q', { timeout: 15000 });
+      if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+      // Whatever kind comes first: an option, a number, a prediction table
+      // (one choice per row) or an order (checked as it stands).
+      const q = page.locator('.psy-pr-stage .psy-q').first();
+      const opt = q.locator('.psy-opt').first();
+      if (await opt.count()) await opt.click();
+      else if (await q.locator('.psy-num input, .psy-expr input, input[inputmode]').count()) await q.locator('.psy-num input, .psy-expr input, input[inputmode]').first().fill('1');
+      else for (const g of await q.locator('.psy-dir').all()) await g.locator('button, [role="radio"]').first().click();
+      // A "Make it specific" item: one choice per blank (the set is shuffled, so it can come first).
+      for (const sel of await q.locator('select[data-slot]').all()) await sel.selectOption({ index: 1 });
+      const check = page.locator('.psy-pr-stage .psy-q .psy-check').first();
+      if (await check.count() && await check.isVisible()) await check.click();
+      await page.waitForSelector('.psy-q-feedback .psy-verdict', { timeout: 15000 });
       if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
     }));
   }

@@ -1,0 +1,38 @@
+{
+ "descriptive-statistics": {
+  "def": "Numbers that summarize a set of data, such as the mean, median, mode, range and standard deviation."
+ },
+ "frequency-distribution": {
+  "def": "A table or graph showing how often each value, or each range of values, occurs in a set of data. A histogram shows it as touching bars."
+ },
+ "central-tendency": {
+  "def": "A single value that describes the center of a set of data: the mean, the median or the mode."
+ },
+ "mean": {
+  "def": "The arithmetic average: the sum of the values divided by how many values there are, written $\\bar{x}$."
+ },
+ "median": {
+  "def": "The middle value when the data are put in order; with an even number of values, halfway between the two middle ones."
+ },
+ "mode-stat": {
+  "def": "The value that occurs most often in a set of data."
+ },
+ "bimodal": {
+  "def": "A distribution with two peaks, or two modes, often because two different groups are mixed together."
+ },
+ "variation": {
+  "def": "How spread out the values in a set of data are; measured by the range and the standard deviation."
+ },
+ "range-stat": {
+  "def": "The highest value minus the lowest value in a set of data."
+ },
+ "standard-deviation": {
+  "def": "A measure of variation: roughly the typical distance of the values from the mean. A larger standard deviation means more spread."
+ },
+ "outlier": {
+  "def": "A value far from the rest of the data. An outlier pulls the mean toward it but barely moves the median."
+ },
+ "skew": {
+  "def": "A lopsided distribution with a long tail on one side: positively skewed when the tail stretches toward high values, negatively skewed when it stretches toward low values. The mean is pulled toward the tail."
+ }
+}

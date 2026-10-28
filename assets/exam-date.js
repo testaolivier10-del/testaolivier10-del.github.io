@@ -53,7 +53,9 @@
     apphys: { date: '2027-05-05', label: 'AP® Physics 1 exam (Wed, May 5, 2027)' },
     apcalc: { date: '2027-05-10', label: 'AP® Calculus AB exam (Mon, May 10, 2027)' },
     apstat: { date: '2027-05-11', label: 'AP® Statistics exam (Tue, May 11, 2027)' },
-    apenv: { date: '2027-05-13', label: 'AP® Environmental Science exam (Thu, May 13, 2027)' }
+    apenv: { date: '2027-05-13', label: 'AP® Environmental Science exam (Thu, May 13, 2027)' },
+    // docs/appsych-research/framework.md section 5: Friday 14 May 2027, Session 2.
+    appsych: { date: '2027-05-14', label: 'AP® Psychology exam (Fri, May 14, 2027)' }
   };
   function key(subject){ return (subject || 'levl') + '_exam_date'; }
   function stored(subject){

@@ -1,0 +1,344 @@
+/* AP® Psychology tools (psychology/assets/tools/psy-tools.js and every tool script).
+   Built on psy.css tokens: light and dark come from theme.css and the
+   --psy-* colors; every control is at least 44 px; nothing is wider than a
+   360 px phone screen except inside its own scrolling region. */
+.bt-app{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:18px 0 32px;}
+.bt-app>*{min-width:0;}
+.bt-loading{color:var(--muted);font-weight:700;min-height:240px;}
+.bt-draft{margin:0;padding:10px 14px;border-radius:12px;background:var(--ctint);color:var(--ink);font:700 14px/1.5 var(--font-ui);border-left:4px solid var(--cink);}
+.bt-small,.bt-hint{font:700 13px/1.45 var(--font-ui);color:var(--muted);margin:0;}
+.bt-intro p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+
+/* Cards */
+.bt-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-card>*{min-width:0;}
+.bt-card h2,.bt-problem h2,.bt-frq h2,.bt-sec-h{font:900 19px var(--font-ui);margin:0;}
+.bt-card h3,.bt-solution h3{font:900 16px var(--font-ui);margin:0 0 6px;}
+
+/* "How this model works" and formula boxes */
+.bt-how{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:14px;padding:0 16px;}
+.bt-how summary{cursor:pointer;font:900 15px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+.bt-how-body{padding:0 0 12px;font-weight:600;line-height:1.6;}
+.bt-how-body ul{margin:6px 0 10px;padding-left:20px;}
+.bt-how-body li{margin:0 0 6px;}
+.bt-eq{font:700 15px var(--font-mono);background:var(--paper);padding:8px 10px;border-radius:10px;overflow-x:auto;}
+
+/* Controls */
+.bt-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 18px;}
+.bt-ctl{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.bt-ctl label{font:800 14px var(--font-ui);}
+.bt-ctl.is-off input,.bt-ctl.is-off .bt-step{opacity:.5;}
+.bt-ctl.is-off .bt-out{color:var(--muted);}
+.bt-slider-row{display:flex;align-items:center;gap:8px;}
+.bt-slider-row input[type=range]{flex:1 1 auto;min-width:0;height:44px;accent-color:var(--cink);}
+.bt-step{min-width:44px;min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:900 20px var(--font-ui);cursor:pointer;}
+.bt-step:hover{border-color:var(--cink);}
+.bt-step:disabled{cursor:default;opacity:.5;}
+.bt-out{min-width:7.5ch;text-align:right;font:800 15px var(--font-mono);color:var(--ink);}
+.bt-select select,.bt-field select{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:700 15px var(--font-ui);padding:6px 10px;max-width:100%;}
+.bt-app :focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bt-buttons{display:flex;flex-wrap:wrap;gap:10px;}
+.bt-buttons .btn-press,.bt-actions .btn-press,.bt-next .btn-press{min-height:44px;}
+.bt-btn{min-height:44px;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.bt-btn:hover{border-color:var(--cink);}
+.bt-btn[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+
+/* The model: picture, plot, readout */
+.bt-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;}
+@media (min-width:900px){.bt-stage.two{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);}}
+.bt-fig svg{width:100%;height:auto;max-height:340px;display:block;}
+/* Publication-style plots (ApPsychTools.plot): a quiet grid, a firm axis
+   with outward ticks, round-jointed 3px series and haloed points. */
+.bt-plot{max-width:100%;}
+.bt-plot .grid{stroke:var(--line);stroke-width:1;}
+.bt-plot .axis{stroke:var(--ink);stroke-width:1.6;stroke-linecap:square;}
+.bt-plot .atick{stroke:var(--ink);stroke-width:1.4;}
+.bt-plot .tick{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.bt-plot .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.bt-plot .series{stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.bt-plot .pt{stroke:var(--white);stroke-width:2.2;}
+.bt-plot .pt.s2{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.25));}
+.bt-plot .area{stroke:none;opacity:.12;}
+.bt-plot .area.s1{fill:var(--psy-s1);}
+.bt-plot .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;}
+.bt-plot .vline{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
+.bt-plot .series.dashed{stroke-dasharray:7 5;stroke-width:2;}
+.psy-svg .s3{stroke:var(--psy-s3);} .psy-svg .s4{stroke:var(--psy-s4);}
+.bt-summary{margin:0;padding:12px 14px;border-radius:12px;background:var(--paper);font:700 15px/1.55 var(--font-ui);}
+.bt-readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;margin:0;}
+.bt-readout div{background:var(--paper);border-radius:12px;padding:8px 10px;}
+.bt-readout dt{font:800 12px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.bt-readout dd{margin:2px 0 0;font:900 17px var(--font-mono);}
+.bt-tabs{display:flex;flex-wrap:wrap;gap:8px;}
+.bt-table details summary,.bt-data summary{cursor:pointer;font:800 14px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+
+/* Skills problems */
+.bt-modes{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;}
+.bt-modes legend{font:900 15px var(--font-ui);margin-bottom:6px;padding:0;}
+.bt-radio{display:flex;align-items:center;gap:10px;min-height:44px;}
+.bt-radio input{width:22px;height:22px;flex:0 0 auto;accent-color:var(--cink);margin:0;}
+.bt-radio label{font:700 15px/1.4 var(--font-ui);cursor:pointer;padding:6px 0;flex:1 1 auto;min-height:44px;display:flex;align-items:center;}
+.bt-problem{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-problem>*{min-width:0;}
+.bt-prob-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px;}
+.bt-code{margin:0;font:700 13px var(--font-ui);color:var(--muted);}
+.bt-code a{color:var(--cink);display:inline-block;min-height:24px;}
+.bt-context p{margin:0 0 8px;font-weight:600;line-height:1.6;}
+.bt-parts{display:grid;gap:14px;}
+.bt-part{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:10px 12px;border-radius:12px;background:var(--paper);}
+.bt-part legend,.bt-part>label{font:800 15px var(--font-ui);padding:0;}
+.bt-part-choice legend{float:left;width:100%;margin-bottom:4px;}
+.bt-part-choice legend+*{clear:both;}
+.bt-num-row{display:flex;gap:8px;align-items:center;}
+.bt-part input[type=text]{width:12ch;min-height:44px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 17px var(--font-mono);}
+.bt-part.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.bt-part.is-wrong{box-shadow:inset 4px 0 0 var(--bad-text);}
+.bt-unit{color:var(--muted);font-weight:700;}
+.bt-key{font:800 14px var(--font-ui);}
+.bt-result{font:800 15px var(--font-ui);min-height:1.4em;}
+.bt-steps{margin:0;padding-left:22px;display:grid;gap:10px;font-weight:600;line-height:1.6;}
+.bt-steps li>.table-wrap{margin:8px 0;}
+.bt-solution{background:var(--paper);border-radius:12px;padding:12px 14px;}
+.table-wrap{overflow-x:auto;max-width:100%;}
+
+/* The mini FRQ */
+.bt-frq{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-frq>*{min-width:0;}
+.bt-frq h2 small{font:800 13px var(--font-ui);color:var(--muted);margin-left:6px;}
+.bt-frq-prompt{margin:0 0 6px;font-weight:600;line-height:1.6;}
+.bt-pts{font:800 12.5px var(--font-ui);color:var(--muted);white-space:nowrap;}
+.bt-frq textarea{width:100%;box-sizing:border-box;min-height:96px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:600 15px/1.5 var(--font-ui);padding:10px 12px;}
+.bt-rubric{border:2px solid var(--line);border-radius:12px;margin:10px 0 0;padding:8px 12px;}
+.bt-rubric legend{font:800 14px var(--font-ui);padding:0 4px;}
+.bt-check-row{display:flex;gap:10px;align-items:flex-start;min-height:44px;padding:6px 0;}
+.bt-check-row input{width:22px;height:22px;flex:0 0 auto;margin:2px 0 0;accent-color:var(--cink);}
+.bt-check-row label{font:600 14.5px/1.5 var(--font-ui);cursor:pointer;}
+.bt-accept{display:block;color:var(--muted);font-size:13px;}
+.bt-sample{background:var(--ctint);border-radius:12px;padding:10px 14px;margin-top:10px;}
+.bt-sample p{margin:0 0 6px;line-height:1.55;font-weight:600;}
+.bt-sample-k{font:900 12px var(--font-ui) !important;letter-spacing:.06em;text-transform:uppercase;color:var(--cink);}
+.bt-frq-total{font:800 15px var(--font-ui);min-height:1.4em;}
+.bt-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.bt-report .report-btn{min-height:44px;}
+
+/* Graph builder */
+.gb-steps{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);}
+.gb-steps>*{min-width:0;}
+.gb-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px 16px;}
+.gb-axisset{border:2px solid var(--line);border-radius:12px;padding:8px 12px;margin:0;}
+.gb-axisset legend{font:800 14px var(--font-ui);padding:0 4px;}
+.gb-num{display:flex;flex-direction:column;gap:4px;}
+.gb-num label{font:800 13.5px var(--font-ui);}
+.gb-num input{width:10ch;min-height:44px;padding:6px 10px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 16px var(--font-mono);}
+.gb-pts{width:100%;border-collapse:collapse;font:700 14px var(--font-ui);}
+.gb-pts th,.gb-pts td{padding:6px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;white-space:nowrap;}
+.gb-pts input{width:7ch;min-height:44px;padding:4px 8px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 15px var(--font-mono);}
+.gb-adj{display:inline-flex;align-items:center;gap:4px;}
+.gb-adj button{min-width:44px;min-height:44px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:900 17px var(--font-ui);cursor:pointer;}
+.gb-grid svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+.gb-grid .minor{stroke:var(--line);stroke-width:.6;}
+.gb-grid .grid{stroke:var(--muted);stroke-opacity:.35;stroke-width:1;}
+.gb-grid .hit{fill:transparent;cursor:crosshair;}
+.gb-grid .gpt{fill:var(--psy-s1);stroke:var(--white);stroke-width:2;cursor:pointer;}
+.gb-grid .gpt.is-on{fill:var(--psy-s2);}
+.gb-grid .gpt:focus{outline:none;}
+.gb-grid .gpt:focus-visible{stroke:var(--ink);stroke-width:3;}
+.gb-grid .gbar{fill:var(--psy-s1);fill-opacity:.85;}
+.gb-grid .gbar.is-on{fill:var(--psy-s2);}
+.gb-grid .gline{fill:none;stroke:var(--psy-s1);stroke-width:2;}
+.gb-feedback ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
+.gb-feedback li{padding:8px 12px;border-radius:10px;background:var(--paper);font:600 14.5px/1.5 var(--font-ui);}
+.gb-feedback li.ok{box-shadow:inset 4px 0 0 var(--good-text);}
+.gb-feedback li.no{box-shadow:inset 4px 0 0 var(--bad-text);}
+
+/* Drills */
+.dr-scen{display:grid;gap:14px;}
+.dr-sec{border-top:2px solid var(--line);padding-top:14px;display:grid;gap:10px;}
+.dr-sec h3{font:900 16px var(--font-ui);margin:0;}
+.dr-rows{display:grid;gap:10px;}
+.dr-row{border:0;margin:0;padding:10px 12px;border-radius:12px;background:var(--paper);}
+.dr-row legend{font:700 15px/1.5 var(--font-ui);padding:0;float:left;width:100%;margin-bottom:6px;}
+.dr-row legend+*{clear:both;}
+.dr-opts{display:flex;flex-wrap:wrap;gap:4px 16px;}
+.dr-row.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.dr-row.is-wrong{box-shadow:inset 4px 0 0 var(--bad-text);}
+.dr-why{font:600 14px/1.5 var(--font-ui);margin:6px 0 0;}
+.dr-sentence{margin:0;padding:10px 12px;border-radius:12px;background:var(--ctint);font:700 15.5px/1.6 var(--font-ui);}
+
+/* Step drills (ApPsychTools.drill): seeded problems checked step by step. */
+.cd-steps{display:grid;gap:12px;grid-template-columns:minmax(0,1fr);}
+.cd-step{display:flex;flex-direction:column;gap:8px;}
+.cd-step.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.cd-step.is-wrong:not(.is-right){box-shadow:inset 4px 0 0 var(--bad-text);}
+.cd-step.is-shown{box-shadow:inset 4px 0 0 var(--muted);}
+.cd-label{margin:0;font:800 15px/1.45 var(--font-ui);}
+.cd-n{display:block;font:800 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.cd-num{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.cd-num input,.cd-cell{min-height:44px;padding:6px 10px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 16px var(--font-mono);box-sizing:border-box;}
+.cd-num input{width:13ch;max-width:100%;}
+.cd-cell{width:100%;min-width:7ch;}
+.cd-num input.is-right,.cd-cell.is-right{border-color:var(--good-text);}
+.cd-num input.is-wrong,.cd-cell.is-wrong{border-color:var(--bad-text);}
+.cd-vol{display:flex;flex-direction:column;gap:4px;}
+.cd-vol label{font:700 13px var(--font-ui);color:var(--muted);}
+.cd-vol input[type=range]{width:100%;height:44px;accent-color:var(--cink);}
+.cd-opts{border:0;margin:0;padding:0;display:grid;gap:4px;}
+.cd-pics{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;}
+.cd-pics .bt-radio{align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:6px 8px;background:var(--white);}
+.cd-pics .bt-radio:has(input:checked){border-color:var(--cink);background:var(--ctint);}
+.cd-pics .bt-radio input{margin-top:10px;}
+.cd-pics label{flex-direction:column;align-items:stretch;gap:4px;}
+.cd-pic-n{font:800 12px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+.cd-fb{font:700 14.5px/1.5 var(--font-ui);}
+.cd-fb:empty{display:none;}
+.cd-notes{margin:6px 0 0;padding-left:20px;display:grid;gap:4px;font-weight:600;}
+.cd-step .bt-actions:empty{display:none;}
+.cd-ice{width:100%;border-collapse:collapse;}
+.cd-ice th,.cd-ice td{padding:6px;text-align:center;vertical-align:middle;border-bottom:1px solid var(--line);font:700 14px var(--font-ui);}
+.cd-ice th[scope=row]{text-align:left;white-space:nowrap;}
+.cd-ice th[scope=row] .bt-small{display:block;}
+.cd-ice tr.is-active{background:var(--ctint);}
+.cd-blank{color:var(--muted);}
+.cd-fig{margin:0;display:flex;flex-direction:column;gap:4px;align-items:flex-start;}
+.cd-fig svg{width:100%;max-width:320px;height:auto;}
+.tc-fig{margin:0;}
+.tc-plot svg{width:100%;height:auto;display:block;cursor:crosshair;touch-action:manipulation;}
+.tc-read{min-height:1.4em;}
+.tc-ind{margin:8px 0 0;}
+.tc-ind summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:700 14px var(--font-ui);color:var(--cink);}
+/* On a phone the curve stays pinned while the student drags the marker in the step below it. */
+@media (max-width:700px){
+  .tc-pin{position:sticky;top:var(--site-header-h,64px);z-index:2;background:var(--white);padding:4px 0;border-bottom:2px solid var(--line);}
+  .tc-plot svg{max-height:32vh;width:auto;max-width:100%;margin:0 auto;}
+}
+/* Plots are styled in psy.css (graph stimuli use them outside tools);
+   the drag handle and the expression step are here. */
+.psy-plot-handle{cursor:grab;outline:none;}
+.psy-plot-handle circle:last-child{fill:var(--cink);stroke:var(--white);stroke-width:2;}
+.psy-plot-handle .psy-plot-halo{fill:var(--cink);fill-opacity:.14;}
+.psy-plot-handle:focus-visible .psy-plot-halo{fill-opacity:.32;stroke:var(--cink);stroke-width:2;}
+.psy-plot-handle.is-drag{cursor:grabbing;}
+.cd-expr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.cd-expr input{flex:1 1 220px;min-height:44px;font:600 17px var(--font-ui);}
+.cd-expr-lhs{font-size:18px;}
+
+/* Page frame (ApPsychTools.frame): the problem first. The picker is one row,
+   the intro and how-it-works fold into "About this ..." below the problem,
+   and on phones the opener shrinks to its title. */
+.bt-pick:empty{display:none;}
+.bt-pick{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;}
+.bt-ctl.bt-inline{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap;}
+.bt-ctl.bt-inline label{white-space:nowrap;}
+.bt-ctl.bt-inline select{flex:1 1 12ch;min-width:0;}
+.bt-about{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:14px;padding:0 16px;}
+.bt-about summary{cursor:pointer;font:900 15px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+.bt-about-body{padding:0 0 12px;}
+.bt-about-h{font:900 15px var(--font-ui);margin:6px 0 4px;}
+@media (max-width:640px){
+  body[data-app^="tool-"] .psy-hero{margin-top:10px;padding:14px 16px;border-radius:16px;}
+  body[data-app^="tool-"] .psy-hero .eyebrow{margin-bottom:4px;}
+  body[data-app^="tool-"] .psy-hero h1{font-size:22px;line-height:1.2;margin:0;max-width:none;}
+  body[data-app^="tool-"] .psy-hero .lede{display:none;}
+  body[data-app^="tool-"] .psy-crumb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:10px;}
+  body[data-app^="tool-"] .bt-app{margin-top:12px;gap:14px;}
+}
+
+/* Keep going (ApPsychTools.keepGoing): after a graded problem. */
+.bt-keep{border-top:2px solid var(--line);padding-top:12px;margin-top:12px;display:grid;gap:8px;}
+.bt-keep h3{font:900 15px var(--font-ui);margin:0;}
+.bt-keep ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+.bt-keep a{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px/1.3 var(--font-ui);text-decoration:none;}
+.bt-keep a:hover{border-color:var(--cink);}
+.bt-keep a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.bt-keep-k{display:block;font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--cink);margin:0;}
+.bt-keep-terms{display:grid;gap:6px;}
+.bt-keep-terms a{flex-direction:row;align-items:center;}
+@media print{.bt-keep,.bt-about{display:none;}}
+
+/* Explore | Test yourself (ApPsychTools.modes) */
+.bt-modebar{display:flex;gap:6px;padding:4px;border-radius:14px;background:var(--paper);border:var(--bw,2px) solid var(--line);width:max-content;max-width:100%;}
+.bt-mode{min-height:44px;padding:8px 16px;border:0;border-radius:10px;background:transparent;color:var(--muted);font:900 15px var(--font-ui);cursor:pointer;}
+.bt-mode[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 1px 0 var(--line),0 0 0 2px var(--cink) inset;}
+.bt-pane{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;}
+.bt-pane>*{min-width:0;}
+.bt-pane[hidden]{display:none;}
+.bt-prob-head .bt-btn{margin-left:auto;}
+.bt-pick{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;}
+
+/* Simple first, depth on tap (2026-10 simplify pass): a compact header at
+   every width, one "Start here" cue next to the first control, extra
+   settings behind "More options", and each explanation as one line with
+   "Why?" for the reasoning. */
+body[data-app^="tool-"] .psy-hero{padding:18px 24px;margin-bottom:0;}
+body[data-app^="tool-"] .psy-hero h1{font-size:clamp(24px,3vw,34px);line-height:1.15;margin:0 0 6px;max-width:none;}
+body[data-app^="tool-"] .psy-hero .lede{margin:0;font-size:16px;}
+body[data-app^="tool-"] .psy-hero .eyebrow{margin-bottom:4px;}
+.bt-cue{margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:800 15px/1.4 var(--font-ui);color:var(--ink);}
+.bt-cue-k{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--cink);color:var(--white);font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;}
+.bt-cue.is-done .bt-cue-k{background:var(--paper);color:var(--muted);border:1px solid var(--line);}
+.bt-cue.is-done{color:var(--muted);font-weight:700;}
+.bt-more{border-top:2px solid var(--line);padding-top:4px;}
+.bt-more>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:900 14px var(--font-ui);color:var(--cink);}
+.bt-more-hint{font:700 13px var(--font-ui);color:var(--muted);}
+.bt-more-b{display:grid;gap:12px;padding:4px 0 8px;}
+.bt-more-b>*{min-width:0;}
+.bt-say{display:grid;gap:2px;}
+.bt-say-h{margin:0;}
+.bt-why>summary{cursor:pointer;display:inline-flex;align-items:center;min-height:40px;font:900 14px var(--font-ui);color:var(--cink);}
+.bt-why[hidden]{display:none;}
+.bt-why-b{font:600 14px/1.55 var(--font-ui);display:grid;gap:6px;padding-bottom:4px;}
+.bt-why-b p{margin:0;}
+.pb-tally-d>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:6px;font:900 14px var(--font-ui);color:var(--cink);}
+.pb-tally-s{font-weight:700;color:var(--muted);}
+
+/* Tool Studio (docs/tools-calm.md; pages.json studio: true): the drill
+ stage and the dock. */
+.ls-root .ls-drill .cd-n{display:none;}
+.ls-root .ls-drill{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;background:none;box-shadow:none;}
+.ls-root .ls-drill .bt-solution{display:none;}
+.ls-root .cd-step{padding:0;background:none;border:0;box-shadow:none;}
+.ls-root .cd-step .cd-label{margin:0 0 8px;}
+.ls-root .cd-opt{min-height:48px;}
+.ls-root .cd-vol label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .cd-vol input[type=range]{width:100%;height:44px;accent-color:var(--cink);}
+/* The live one-line readout (ApPsychTools.explain) and the drill stage. */
+.tx-where{margin:0;padding:10px 14px;border-radius:12px;background:var(--ctint);border-left:4px solid var(--cink);font:700 15px/1.5 var(--font-ui);}
+.tx-at{color:var(--muted);font-weight:800;white-space:nowrap;}
+.ls-root .ls-drill-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;}
+.ls-root .ls-drill-stage .cd-extra{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;}
+.ls-root .ls-drill-stage .cd-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;align-items:stretch;}
+.ls-root .ls-drill-stage .cd-fig > svg{flex:1;min-height:0;width:100% !important;height:100% !important;max-width:none !important;max-height:100% !important;}
+.ls-root .ls-drill-stage .cd-fig figcaption{flex:none;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:center;}
+.ls-root .ls-drill-stage > .ls-drill-text:only-child{margin:auto 0;font:600 var(--ls-l)/1.45 var(--font-ui);}
+.ls-root .ls-drill-stage .psy-plot{flex:1;min-height:0;width:100%;height:100%;}
+
+/* Tool Studio, the other trainers (psy-tools.js studioPane; docs/tools-calm.md):
+   the picture in .psy-ls-stage, the primary controls in .psy-ls-dock,
+   the reasoning in .psy-ls-why, the numbers and settings in .psy-ls-det. */
+.ls-root .psy-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;}
+.ls-root .psy-ls-stage > *{min-height:0;}
+.ls-root .psy-ls-dock{display:flex;flex-direction:column;gap:10px;}
+.ls-root .psy-ls-dock .bt-cue{display:none;}
+.ls-root .psy-ls-why .bt-cue{display:block;font:600 var(--ls-s)/1.45 var(--font-ui);color:var(--muted);}
+.ls-root .psy-ls-why .bt-cue-k{display:none;}
+.ls-root .psy-ls-why .tx-where,.ls-root .psy-ls-why .bt-say{margin:0;padding:0;background:none;border:0;box-shadow:none;font-size:var(--ls-m);}
+.ls-root .psy-ls-why details.bt-why > summary{display:none;}
+.ls-root .psy-ls-why .bt-why-b{font-size:var(--ls-m);}
+.ls-root .psy-ls-det .bt-pick{flex-direction:column;align-items:stretch;}
+.ls-root .psy-ls-setup .ls-v{font-weight:700;}
+.ls-root .psy-ls-stage .bt-plot,.ls-root .psy-ls-stage .psy-plot{width:100%;height:100%;max-height:100%;}
+
+/* Bank-format numeric items inside a drill (a skills tool that generates them). */
+.ls-root .ls-drill .psy-num label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .ls-drill .psy-num input{width:100%;min-height:52px;padding:0 16px;border:0;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 2px var(--line);color:var(--ink);font:600 var(--ls-l) var(--font-mono);}
+.ls-root .ls-drill .psy-q-actions .btn-press{width:100%;}
+.ls-root .ls-drill .psy-q{margin:0;padding:0;background:none;border:0;box-shadow:none;border-radius:0;}
+/* A one-step picture choice sits on the stage with its problem (psy-tools.js studioDrill). */
+.ls-root .ls-drill-pics{flex:none;display:flex;flex-direction:column;gap:10px;}
+.ls-root .ls-drill-pics .cd-n{display:none;}
+.ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
+.ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+
+/* The course crumb hides in the studio from assets/course/tool-studio.css, with the other courses' crumbs. */
+/* Room for the first-run tip while it shows (ApPsychTools.hintSlot). */
+.psy-tipslot{height:58px;flex:none;}

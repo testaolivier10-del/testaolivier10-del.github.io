@@ -1,0 +1,390 @@
+{
+ "stimuli": {
+  "stats-normal-s1": {
+   "kind": "visual",
+   "title": "A normal curve of test scores",
+   "invented": true,
+   "plot": {
+    "label": "Normal curve of scores on a standardized reading test with mean 100 and standard deviation 15, marked at each standard deviation from 55 to 145 with the 34%, 13.5% and 2.35% bands",
+    "kind": "normal",
+    "mean": 100,
+    "sd": 15,
+    "bands": true,
+    "xLabel": "Reading test score"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-stats-normal-1",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Scores on a memory test are normally distributed with a mean of 50 and a standard deviation of 10. What is the z score of a student who scored 70?",
+   "why": {
+    "correct": "$z = \\frac{70 - 50}{10} = \\frac{20}{10} = 2$: two standard deviations above the mean."
+   },
+   "numeric": {
+    "from": {
+     "fn": "z",
+     "args": [
+      70,
+      50,
+      10
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 20,
+      "why": "20 is how many points above the mean the score is. Divide by the standard deviation, 10."
+     },
+     {
+      "value": -2,
+      "why": "The score is above the mean, so z is positive."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-2",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "On a test with a mean of 80 and a standard deviation of 5, what is the z score of a score of 75?",
+   "why": {
+    "correct": "$z = \\frac{75 - 80}{5} = \\frac{-5}{5} = -1$: one standard deviation below the mean."
+   },
+   "numeric": {
+    "from": {
+     "fn": "z",
+     "args": [
+      75,
+      80,
+      5
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "The score is below the mean, so z is negative."
+     },
+     {
+      "value": -5,
+      "why": "-5 is the distance in points. Divide by the standard deviation, 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-3",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "By the 68-95-99.7 rule, what percent of scores in a normal distribution fall within two standard deviations of the mean?",
+   "why": {
+    "correct": "Between $z = -2$ and $z = 2$: $13.5 + 34 + 34 + 13.5 = 95\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      -2,
+      2
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 47.5,
+      "why": "47.5% is one side only. Add both sides of the mean."
+     },
+     {
+      "value": 68,
+      "why": "68% is within one standard deviation. Two standard deviations hold 95%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-4",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "In a normal distribution, what percent of scores fall more than one standard deviation above the mean?",
+   "why": {
+    "correct": "Half the scores are above the mean (50%), and 34% are between the mean and $z = 1$. So $50 - 34 = 16\\%$ are above $z = 1$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      1,
+      null
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "34% lies between the mean and one SD above it. Above one SD is what is left of the upper half: 50 - 34."
+     },
+     {
+      "value": 32,
+      "why": "32% lies outside one SD on both sides together. Above it is half of that."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-5",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "A student’s score is one standard deviation above the mean of a normal distribution. By the 68-95-99.7 rule, what is the student’s percentile rank?",
+   "why": {
+    "correct": "Percent below $z = 1$: the lower half (50%) plus 34% between the mean and $z = 1$, so 84. The student is at the 84th percentile."
+   },
+   "numeric": {
+    "from": {
+     "fn": "percentileRule",
+     "args": [
+      1
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "34% is only the band between the mean and one SD. Add the 50% below the mean."
+     },
+     {
+      "value": 68,
+      "why": "68% lies within one SD on both sides; it is not the percent below a score."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-6",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Maya scored at the 90th percentile on a reading test. What does that mean?",
+   "options": [
+    "She scored higher than about 90% of test takers",
+    "She answered about 90% of the test questions correctly",
+    "Her score is 90 points above the mean",
+    "She is in the top 90% of the test takers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A percentile rank is the percent of scores that fall below a given score. Percent correct is a different number.",
+    "options": [
+     "Right: a percentile rank is the percent of scores below hers.",
+     "Percentile is about rank among test takers, not the percent correct.",
+     "A percentile is a rank, not a distance in points.",
+     "The top 90% would include nearly everyone; she is in the top 10%."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-7",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Ana scored 72 on a biology test (mean 60, standard deviation 6) and 85 on a history test (mean 80, standard deviation 10). On which test did she do better compared with the other students?",
+   "options": [
+    "History, because 85 is a higher raw score",
+    "Biology, where her z score is +2",
+    "History, where her z score is +5",
+    "Equally well, since she was above the mean both times"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A z score puts scores from different tests on the same scale: standard deviations from each test’s own mean.",
+    "options": [
+     "Raw scores on different tests cannot be compared directly; compare z scores.",
+     "Right: z = (72 - 60)/6 = 2 in biology, but (85 - 80)/10 = 0.5 in history.",
+     "85 - 80 = 5 points, but dividing by the SD of 10 gives z = 0.5.",
+     "She was above both means, but by 2 SDs in biology and only 0.5 SD in history."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-8",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-normal-s1",
+   "q": "By the 68-95-99.7 rule, what percent of test takers scored between 85 and 115?",
+   "why": {
+    "correct": "85 and 115 are one standard deviation below and above the mean of 100: $34 + 34 = 68\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      -1,
+      1
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 34,
+      "why": "34% is one side only, 100 to 115. Add 85 to 100."
+     },
+     {
+      "value": 95,
+      "why": "95% is within two standard deviations, 70 to 130."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-9",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-normal-s1",
+   "q": "What percent of test takers scored above 130?",
+   "why": {
+    "correct": "130 is two standard deviations above the mean. Above it: $2.35 + 0.15 = 2.5\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "rulePct",
+     "args": [
+      2,
+      null
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "5% is outside two SDs on both sides together. Above 130 is only the upper half of that."
+     },
+     {
+      "value": 13.5,
+      "why": "13.5% is the band from 115 to 130, below 130 rather than above it."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-10",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-normal-s1",
+   "q": "A student scored 70. What is that score’s z score?",
+   "why": {
+    "correct": "$z = \\frac{70 - 100}{15} = \\frac{-30}{15} = -2$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "z",
+     "args": [
+      70,
+      100,
+      15
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "70 is below the mean of 100, so z is negative."
+     },
+     {
+      "value": -30,
+      "why": "-30 is the distance in points. Divide by the SD, 15."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-11",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "stats-normal-s1",
+   "q": "About what percentile rank does a score of 115 have?",
+   "options": [
+    "The 34th percentile",
+    "The 68th percentile",
+    "The 84th percentile",
+    "The 115th percentile"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Percentile rank is the percent of scores below a score: $50 + 34 = 84$.",
+    "options": [
+     "34% is the band from 100 to 115, not the percent below 115.",
+     "68% lies between 85 and 115; it is not the percent below 115.",
+     "Right: 50% below the mean plus 34% from 100 to 115.",
+     "Percentile ranks run from 0 to 100; 115 is the score."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-normal-12",
+   "unit": "skills-research",
+   "topic": "stats-normal",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-normal-s1",
+   "q": "Two students scored 55 and 145. What do these scores have in common?",
+   "options": [
+    "Each is at the 50th percentile of the curve",
+    "Each has a z score of +3 on this test",
+    "Each is shared by about 34% of test takers",
+    "Each is three SDs from the mean"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Both are three standard deviations (45 points) from the mean of 100, one below and one above. Only about 0.3% of scores are that far out.",
+    "options": [
+     "The 50th percentile is the mean, 100.",
+     "Only 145 has z = +3; 55 has z = -3.",
+     "34% is the band between the mean and one SD.",
+     "Right: 100 - 45 = 55 and 100 + 45 = 145, with an SD of 15."
+    ]
+   }
+  }
+ ]
+}

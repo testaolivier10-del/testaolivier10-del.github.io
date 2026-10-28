@@ -1,0 +1,515 @@
+{
+ "stimuli": {
+  "attitudes-s1": {
+   "kind": "study",
+   "title": "Festinger and Carlsmith: paid to call a boring task fun",
+   "source": "Festinger & Carlsmith (1959)",
+   "study": {
+    "introduction": "Researchers tested cognitive dissonance theory: when people say something they do not believe and have little outside reason for doing so, they may change their attitude to match what they said.",
+    "participants": "71 male students in an introductory psychology course at Stanford University, who were required to take part in research for the course. Results are reported for 60 (20 per group); the rest were set aside for reasons such as suspecting the purpose of the study.",
+    "method": "Each student spent an hour on dull tasks: turning pegs and filling trays with spools. Each student was then placed in one of three groups (the paper does not say how). In two groups, the experimenter asked the student to tell the next participant (actually a confederate) that the tasks were enjoyable, and paid either \\$1 or \\$20 for doing so. A control group was not asked. Afterward, an interviewer asked each student how enjoyable the tasks had been, on a scale from -5 (extremely dull) to +5 (extremely enjoyable). At the end, the experimenter explained the true purpose of the study, and paid students were asked to return the money.",
+    "results": "Mean enjoyment ratings were -0.45 in the control group, +1.35 in the \\$1 group and -0.05 in the \\$20 group. The \\$1 group rated the tasks as more enjoyable than the control group and the \\$20 group.",
+    "discussion": "A 2024 replication in 39 labs (about 4,900 participants), using a related method in which students wrote an essay for a view they disagreed with, found people did shift their attitude after writing a statement they disagreed with, but not the key difference between people who felt free to choose and people who did not. How dissonance works remains debated."
+   }
+  },
+  "attitudes-s2": {
+   "kind": "data",
+   "title": "Invented data: points given to in-group and out-group strangers",
+   "invented": true,
+   "table": {
+    "caption": "Mean points (out of 20) that students gave to a stranger in their own team and to a stranger in the other team, by how teams were formed (invented data for practice)",
+    "cols": [
+     "How teams were formed",
+     "Points to own team",
+     "Points to other team"
+    ],
+    "rows": [
+     [
+      "Coin flip",
+      "11.5",
+      "8.5"
+     ],
+     [
+      "Favorite color",
+      "12.0",
+      "8.0"
+     ],
+     [
+      "Same school vs rival school",
+      "14.0",
+      "6.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-attitudes-1",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Dev believes his school's rival is full of arrogant students. When he meets a friendly student from that school, he decides she is \"an exception\" and keeps his view. Which concept best explains his reaction?",
+   "options": [
+    "Belief perseverance",
+    "Out-group homogeneity",
+    "Cognitive dissonance",
+    "Just-world phenomenon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Clinging to a belief after contrary evidence appears is belief perseverance.",
+    "options": [
+     "Right: he holds on to his belief even when he meets evidence against it.",
+     "Out-group homogeneity is seeing the other group as all alike. His reaction to new evidence is the point here.",
+     "Dissonance comes from a clash between one's own actions and attitudes, not from meeting someone new.",
+     "The just-world phenomenon is believing people get what they deserve."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-2",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Before an election, Ana reads only news sites that support her candidate and remembers the stories that make the other candidate look bad. Which concept explains her behavior?",
+   "options": [
+    "Confirmation bias",
+    "Mere exposure effect",
+    "Out-group homogeneity",
+    "Relative deprivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Searching for and favoring information that supports existing beliefs is confirmation bias.",
+    "options": [
+     "Right: she seeks and remembers information that fits what she already believes.",
+     "Mere exposure is liking things more after repeated contact. Ana is choosing information that fits her views.",
+     "Out-group homogeneity is seeing members of another group as all alike.",
+     "Relative deprivation is feeling worse off than a comparison group."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-3",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Members of a robotics club describe their own members as having \"all kinds of different personalities\" but describe the drama club as \"all the same: loud and dramatic.\" Which concept does this show?",
+   "options": [
+    "Out-group homogeneity",
+    "In-group bias",
+    "Ethnocentrism",
+    "Belief perseverance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "\"They are all the same; we are all different\" is out-group homogeneity.",
+    "options": [
+     "Right: people see their own group as varied and other groups as alike.",
+     "In-group bias is favoring one's own group. The key detail here is seeing the other group as all alike.",
+     "Ethnocentrism judges other cultures by the standards of one's own culture; this is about variety within groups.",
+     "Belief perseverance is holding on to a belief despite contrary evidence."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-4",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Students are split into \"red\" and \"blue\" teams by a coin flip for a one-day game. Later, when asked to split prize money between two strangers, they give more to a stranger from their own color team. Which concept explains this?",
+   "options": [
+    "In-group bias",
+    "Out-group homogeneity",
+    "Self-serving bias",
+    "Mere exposure effect"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Even meaningless groups produce favoritism toward the in-group: in-group bias.",
+    "options": [
+     "Right: favoring members of one's own group, even a group formed by a coin flip.",
+     "That is about seeing the other group as all alike, not about favoring your own.",
+     "The self-serving bias concerns explaining one's own success and failure, not sharing money with others.",
+     "The students had no more contact with their own team's strangers than the other team's."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-5",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "After hearing that a classmate was robbed while walking home late, some students say, \"She should have known better than to walk alone.\" Which concept explains this reaction?",
+   "options": [
+    "Just-world phenomenon",
+    "Confirmation bias",
+    "Out-group homogeneity",
+    "Downward social comparison"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Believing that good things happen to good people and bad things to bad people leads to blaming victims: the just-world phenomenon.",
+    "options": [
+     "Right: believing the world is fair leads people to blame victims for what happened to them.",
+     "Confirmation bias is favoring evidence that fits a belief. The core idea here is that people get what they deserve.",
+     "Nothing here involves seeing a group as all alike.",
+     "They are not comparing themselves with someone worse off to feel better."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-6",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A tourist says that people in another country eat dinner \"far too late\" and dress \"strangely,\" judging everything by the customs of his home country. Which concept fits?",
+   "options": [
+    "Ethnocentrism",
+    "Out-group homogeneity",
+    "Belief perseverance",
+    "Cognitive dissonance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ethnocentrism treats one's own culture as the standard for judging others.",
+    "options": [
+     "Right: judging another culture by the standards of one's own, as if one's own way is the right way.",
+     "He is judging customs as wrong, not saying all the people are alike.",
+     "Belief perseverance is keeping a belief despite contrary evidence.",
+     "Dissonance is discomfort from a clash between actions and attitudes."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-7",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A manager who is juggling three urgent deadlines must quickly rank job applicants. Under that pressure she relies more on stereotypes about the applicants' ages than she does on a calm day. Which concept explains the difference?",
+   "options": [
+    "Cognitive load",
+    "Mere exposure effect",
+    "Just-world phenomenon",
+    "Cognitive dissonance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Under high cognitive load, people have less capacity to check automatic stereotypes.",
+    "options": [
+     "Right: when mental resources are taxed, people fall back on shortcuts such as stereotypes.",
+     "Mere exposure is liking from familiarity, not a reaction to mental strain.",
+     "The just-world phenomenon is believing people get what they deserve.",
+     "Dissonance is discomfort from an action that clashes with an attitude."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-8",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A student sincerely says she has no bias about age, yet on a computer task she pairs pictures of older adults with negative words faster than with positive words. What does the task most likely measure?",
+   "options": [
+    "An implicit attitude",
+    "An explicit attitude",
+    "Belief perseverance",
+    "Ethnocentrism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reaction-time tasks aim to measure implicit attitudes, automatic associations that can differ from stated views. Scores on such tasks vary from one testing to the next and predict an individual's behavior only weakly.",
+    "options": [
+     "Right: an automatic association the person may not report or even be aware of.",
+     "Her explicit attitude is what she sincerely reports: no bias.",
+     "Belief perseverance is holding a belief despite evidence. The task measures automatic associations.",
+     "Ethnocentrism is judging other cultures by one's own, not reaction-time associations about age."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-9",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Sophie says she cares about the environment but drives to school every day, even though a bus stops at her door. Which concept predicts how she might feel and what she might do?",
+   "options": [
+    "Cognitive dissonance: discomfort that pushes her to change the action or the attitude",
+    "Belief perseverance: she will keep both without discomfort",
+    "Mere exposure: she will like driving more each day",
+    "Out-group homogeneity: she will see bus riders as alike"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cognitive dissonance theory predicts discomfort when actions and attitudes clash, and a push to reduce it by changing one of them or adding a justification.",
+    "options": [
+     "Right: an action that clashes with an attitude creates discomfort people try to reduce.",
+     "Belief perseverance is keeping a belief despite evidence. It does not predict discomfort from a clash between action and attitude.",
+     "Mere exposure predicts liking from familiarity, not a clash between her values and her action.",
+     "Nothing here is about how she sees a group."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-10",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After spending a weekend cleaning a park as a volunteer, Omar says he now feels strongly about keeping parks clean, much more than before he signed up. Which concept best explains the change in his attitude?",
+   "options": [
+    "Cognitive dissonance",
+    "Confirmation bias",
+    "Out-group homogeneity",
+    "Just-world phenomenon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissonance theory predicts that people change attitudes to fit actions they freely chose, especially effortful ones.",
+    "options": [
+     "Right: having freely spent his weekend on the task, he brings his attitude in line with his action.",
+     "Confirmation bias is seeking evidence that fits a belief. His belief changed to match what he did.",
+     "No group is being judged as all alike.",
+     "The just-world phenomenon is believing people get what they deserve."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-11",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "attitudes-s1",
+   "q": "According to dissonance theory, why did the \\$1 group rate the task as more enjoyable than the \\$20 group?",
+   "options": [
+    "\\$1 was too little to justify the lie, so they changed their attitude",
+    "\\$1 was a stronger reinforcer than \\$20",
+    "The \\$1 group had better tasks to do",
+    "The \\$20 group was punished for lying"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "\\$20 was a good outside reason for lying, so no dissonance. \\$1 was not, so students reduced dissonance by believing the task was not so bad.",
+    "options": [
+     "Right: with little outside justification, the clash between belief and statement was reduced by liking the task more.",
+     "A larger reward is usually the stronger reinforcer. The point is the lack of justification.",
+     "All groups did the same dull tasks.",
+     "Nobody was punished; both groups were paid."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-12",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "attitudes-s1",
+   "q": "The students were told the confederate was another participant. Which ethical safeguard does this deception make necessary?",
+   "options": [
+    "Debriefing, explaining the deception and its purpose afterward",
+    "Random assignment to groups",
+    "A larger sample of students",
+    "Using a scale from -5 to +5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deception is allowed only when needed and must be followed by debriefing.",
+    "options": [
+     "Right: when deception is used, participants must be told the truth and why it was needed.",
+     "Random assignment is a design feature, not an ethical safeguard.",
+     "Sample size is about precision, not ethics.",
+     "The rating scale is a measure, not a safeguard."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-13",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "attitudes-s1",
+   "q": "Which statement about generalizing these results is best supported by the participants' characteristics?",
+   "options": [
+    "They may not apply to women or non-students: the sample was male Stanford students",
+    "They apply to everyone, since 71 people took part",
+    "They apply to no one, since the tasks were dull",
+    "They apply to people paid exactly \\$1 and no one else"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "All participants were male college students at one university in the 1950s, which limits generalization to other groups.",
+    "options": [
+     "Right: generalizing is judged from who the participants were.",
+     "Generalizing is judged by participant characteristics, not by the number of people.",
+     "Dull tasks were the point of the method; they do not prevent generalization.",
+     "The payment was the manipulated variable, not a participant characteristic."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-14",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "attitudes-s1",
+   "q": "Which conclusion best fits both the original study and the 2024 replication described in the discussion?",
+   "options": [
+    "Saying things we disagree with can shift attitudes, but why remains debated",
+    "The 1959 study was proven false by the replication",
+    "Paying people more makes them like a task more",
+    "Behavior has no effect on attitudes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "State replication status honestly: attitude change after counterattitudinal behavior holds up, while the mechanism dissonance theory proposes is less certain.",
+    "options": [
+     "Right: the shift replicated, but the specific role of choice did not.",
+     "The replication still found attitude change; it did not support one key prediction.",
+     "The original study found the opposite for its \\$20 group.",
+     "Both studies found attitude change after behavior."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-15",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "attitudes-s2",
+   "q": "Which concept does every row of the table show?",
+   "options": [
+    "In-group bias",
+    "Out-group homogeneity",
+    "Belief perseverance",
+    "Cognitive load"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Giving more to an in-group stranger than an out-group stranger is in-group bias, even when teams came from a coin flip.",
+    "options": [
+     "Right: in each condition students gave more to a stranger from their own team.",
+     "The table shows how points were shared, not whether groups were seen as alike.",
+     "No belief is being challenged here.",
+     "Nothing in the table manipulates mental workload."
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-16",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "attitudes-s2",
+   "q": "In the coin-flip condition, how many more points did students give to their own team's stranger than to the other team's stranger?",
+   "why": {
+    "correct": "$11.5 - 8.5 = 3$ points more to the in-group."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      11.5,
+      8.5
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        11.5,
+        8.5
+       ]
+      },
+      "why": "20 is the total of the two amounts. The question asks for the difference: subtract."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        14,
+        6
+       ]
+      },
+      "why": "8 is the difference for the same-school condition. Use the coin-flip row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-attitudes-17",
+   "unit": "unit-4",
+   "topic": "attitudes",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "attitudes-s2",
+   "q": "What pattern does the table show across the three ways of forming teams?",
+   "options": [
+    "The gap grows as the group label becomes more meaningful",
+    "The gap is the same across the three conditions",
+    "Students gave more to the other team when teams were from a coin flip",
+    "Students favored the out-group in the school condition"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In-group bias appears even for trivial groups and is larger for groups people care about.",
+    "options": [
+     "Right: 3 points for a coin flip, 4 for color, 8 for school.",
+     "The gaps are 3, 4 and 8 points.",
+     "They gave 11.5 to their own team and 8.5 to the other.",
+     "They gave 14 to their own school and 6 to the rival."
+    ]
+   }
+  }
+ ]
+}

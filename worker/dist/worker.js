@@ -998,6 +998,8 @@ const PASSES = {
   'stat-2027':      { course: 'apstat', until: '2027-06-30T23:59:59-10:00' },
   // AP® Environmental Science mirrors AP® Statistics (docs/apenv-spec.md decision 3).
   'env-2027':       { course: 'apenv', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Psychology mirrors AP® Environmental Science (docs/appsych-spec.md decision 3).
+  'psy-2027':       { course: 'appsych', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -1017,7 +1019,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1679,7 +1681,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -2982,6 +2984,17 @@ const COURSE_RULES = {
     '- Show each calculation as the exam asks, with no formula sheet: the setup with brackets and units, then the answer with its unit, e.g. (150 - 120) / 120 x 100 = 25%. Only a four-function or scientific calculator is allowed; do not rely on a graphing calculator.',
     '- Be specific, as the readers ask: a hypothesis is a statement with a direction (increase or decrease), never a question; a solution says how it works and fits the scenario; a cause-and-effect chain names every link. Never "affects" without a direction.',
     '- Keep commonly confused ideas apart: the greenhouse effect and ozone depletion, bioaccumulation and biomagnification, r- and K-selection and survivorship curves, sea ice and land ice.',
+    '- Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  appsych: [
+    '',
+    'This student is a high-school student preparing for the AP® Psychology exam (May 2027 format: no calculator, the Article Analysis and Evidence-Based Questions). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and apply each concept to a concrete situation: the exam asks which concept explains a scenario, not for a definition.',
+    '- Be exact about research methods: only an experiment with random assignment supports cause and effect; correlation is not causation; an operational definition says how this study measured the variable.',
+    '- Teach current science honestly: say when a classic study has failed to replicate or is debated; use the DSM-5-TR for disorders; never teach learning styles, left-brained or right-brained people, or the 10% brain myth as fact.',
+    '- Mental health is taught as science, never as a diagnosis of the student or anyone they know. Use person-first, respectful language. If the student seems to be in distress, encourage them to talk to a trusted adult, and in the US to call or text 988.',
     '- Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',

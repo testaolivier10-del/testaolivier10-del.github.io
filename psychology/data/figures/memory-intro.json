@@ -1,0 +1,12 @@
+{
+ "memory-intro-stores": {
+  "file": "figures/memory-intro-stores.svg",
+  "ext": "svg",
+  "w": 900,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Sights, sounds and touch enter sensory memory, which holds them for about half a second for sights and a few seconds for sounds; unattended input fades. Attention moves some of it into short-term memory, which holds a few items for about 20 to 30 seconds unless it is rehearsed; rehearsal keeps it active. Encoding moves information from short-term memory into long-term memory, which has a very large capacity and lasts from days to a lifetime; retrieval brings it back into short-term memory. A box below shows the working memory model of the short-term store: a central executive that directs attention, a phonological loop for words and sounds, and a visuospatial sketchpad for images and places."
+ }
+}

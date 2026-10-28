@@ -1,0 +1,67 @@
+{
+ "topic": "stats-significance",
+ "hook": "Flip a coin ten times and you might get seven heads. Is the coin unfair, or was that luck? Psychologists face the same question with every study: two groups always differ a little, even when the treatment does nothing. Statistical significance is how they decide whether a difference is bigger than luck alone would usually produce.",
+ "prereq": [
+  {
+   "q": "Two classes have the same mean score, 75, but Class B has a much larger standard deviation. What does that mean?",
+   "options": [
+    "Class B’s scores are more spread out",
+    "Class B scored higher on average",
+    "Class B has more students",
+    "Class B’s median is lower"
+   ],
+   "correct": 0,
+   "why": "A larger standard deviation means the scores are more spread out around the mean.",
+   "review": "stats-descriptive"
+  },
+  {
+   "q": "Researchers draw 300 names at random from a list of every student in a state. What does this random sampling allow?",
+   "options": [
+    "Generalizing the results to the state’s students",
+    "Claiming cause and effect",
+    "Keeping the data confidential",
+    "Skipping informed consent"
+   ],
+   "correct": 0,
+   "why": "Random sampling makes a representative sample likely, so results can generalize to the population.",
+   "review": "research-sampling"
+  }
+ ],
+ "figure": {
+  "figure": "stats-significance-effect",
+  "caption": "A small and a large effect size: how far apart two groups’ scores are."
+ },
+ "chain": [
+  {
+   "cause": "Any two groups differ a little by chance, even when a treatment does nothing",
+   "effect": "researchers need to judge whether a difference is bigger than chance usually produces"
+  },
+  {
+   "cause": "Inferential statistics estimate how likely a difference this large would be by chance alone",
+   "effect": "below 5% ($p < .05$), the result is called statistically significant"
+  },
+  {
+   "cause": "A very large sample makes even tiny differences unlikely to be chance",
+   "effect": "a significant result can still be small, so effect size is reported to say how big it is"
+  }
+ ],
+ "ideas": [
+  "<b>Descriptive statistics</b> summarize a sample; <b>inferential statistics</b> use the sample to draw conclusions about the population.",
+  "<b>Statistically significant</b> ($p < .05$): a difference this large would be unlikely if only chance were at work. Not significant: the difference could plausibly be chance.",
+  "<b>Effect size</b> says how big the difference or relationship is. Significance is not size: big samples make small effects significant.",
+  "Always read a result for its groups: which group was higher, by how much, whether it was significant, and how large the effect was."
+ ],
+ "misconception": {
+  "wrong": "\"Statistically significant\" means the effect is large or important, and \"not significant\" proves there is no effect.",
+  "right": "Significant only means unlikely to be chance; the size comes from the effect size. Not significant means chance cannot be ruled out, which is not proof of no effect, especially in a small study."
+ },
+ "check": [
+  "psy-stats-significance-1",
+  "psy-stats-significance-2",
+  "psy-stats-significance-3",
+  "psy-stats-significance-7",
+  "psy-stats-significance-8",
+  "psy-stats-significance-9"
+ ],
+ "summary": "Inferential statistics let researchers judge whether a sample’s result reflects the population. A statistically significant difference ($p < .05$) is unlikely to be due to chance alone; a difference that is not significant could plausibly be chance. Significance does not measure size: effect size tells how big a difference is, and with very large samples even tiny effects can be significant."
+}

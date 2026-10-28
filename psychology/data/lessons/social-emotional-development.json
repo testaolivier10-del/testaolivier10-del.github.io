@@ -1,0 +1,89 @@
+{
+ "topic": "social-emotional-development",
+ "hook": "A baby monkey, given a choice between a wire figure that gives milk and a soft cloth figure that gives nothing, spends almost the whole day hugging the cloth one. That 1950s finding upended a common idea of why babies love their parents, and opened a lifetime of questions about how relationships grow.",
+ "prereq": [
+  {
+   "q": "Which design follows the same people over time?",
+   "options": [
+    "Longitudinal",
+    "Cross-sectional",
+    "Case study",
+    "Experiment"
+   ],
+   "correct": 0,
+   "why": "A longitudinal study retests the same people.",
+   "review": "development-methods"
+  },
+  {
+   "q": "What is egocentrism in Piaget’s theory?",
+   "options": [
+    "Difficulty taking another person’s point of view",
+    "Selfishness",
+    "Knowing objects still exist when hidden",
+    "Reasoning about hypothetical ideas"
+   ],
+   "correct": 0,
+   "why": "It means seeing the world only from one’s own perspective.",
+   "review": "cognitive-development"
+  },
+  {
+   "q": "What is imprinting?",
+   "options": [
+    "A young animal’s bond with the first moving object it sees, in a critical period",
+    "A reflex present at birth",
+    "A teratogen",
+    "A sensitive period for accents"
+   ],
+   "correct": 0,
+   "why": "Imprinting forms in a narrow early window.",
+   "review": "physical-development"
+  }
+ ],
+ "figure": {
+  "figure": "social-emotional-development-ecological",
+  "caption": "Ecological systems theory: layers of influence around a child, all changing over time."
+ },
+ "chain": [
+  {
+   "cause": "Warm, responsive care and comforting touch meet an infant’s needs",
+   "effect": "a secure attachment forms, and the child uses the caregiver as a base to explore"
+  },
+  {
+   "cause": "A child’s temperament and the parents’ style shape each other",
+   "effect": "warm, firm (authoritative) parenting is linked with better outcomes, though not as a simple cause"
+  },
+  {
+   "cause": "Each life stage brings a new social task (Erikson)",
+   "effect": "meeting it builds strengths such as trust, identity and intimacy"
+  },
+  {
+   "cause": "Teens explore and commit to values and goals",
+   "effect": "they move through identity statuses, with the imaginary audience and personal fable along the way"
+  },
+  {
+   "cause": "Adverse childhood experiences pile up",
+   "effect": "average health risks rise, while supportive relationships help many children do well"
+  }
+ ],
+ "ideas": [
+  "<b>Ecological systems theory</b>: a child develops inside nested layers (micro, meso, exo, macro), all changing over time (chrono).",
+  "<b>Attachment</b> grows from <b>contact comfort</b> and responsive care. In the <b>strange situation</b>, babies are <b>secure</b>, <b>avoidant</b>, <b>anxious</b> or <b>disorganized</b>; <b>separation anxiety</b> appears around 8 months.",
+  "<b>Parenting styles</b>: <b>authoritative</b> (warm and firm), <b>authoritarian</b> (strict, cold), <b>permissive</b> (warm, few limits). The links to outcomes are correlational and vary by culture; <b>temperament</b> shapes parenting too.",
+  "Erikson’s eight <b>psychosocial stages</b> run from trust versus mistrust to integrity versus despair. Teens explore <b>identity status</b> and <b>possible selves</b>; adults face the <b>social clock</b> and, in many countries, <b>emerging adulthood</b>."
+ ],
+ "misconception": {
+  "wrong": "Babies love their parents mainly because their parents feed them.",
+  "right": "Harlow’s monkeys clung to a soft cloth mother that gave no milk. Comfort and responsive care, not food alone, build attachment."
+ },
+ "check": [
+  "psy-social-emotional-development-1",
+  "psy-social-emotional-development-2",
+  "psy-social-emotional-development-6",
+  "psy-social-emotional-development-7",
+  "psy-social-emotional-development-14",
+  "psy-social-emotional-development-15",
+  "psy-social-emotional-development-21"
+ ],
+ "help": true,
+ "summary": "Social and emotional development happens inside nested systems, from family to culture. Attachment grows from contact comfort and responsive care and is classified as secure, avoidant, anxious or disorganized. Parenting styles and temperament shape each other. Erikson’s eight psychosocial stages, identity statuses, the imaginary audience and personal fable, emerging adulthood and the social clock mark later development, and adverse childhood experiences raise average risk without deciding any one life."
+}

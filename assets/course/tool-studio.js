@@ -1067,7 +1067,7 @@
       if(ids.length) el.setAttribute('aria-describedby', ids.join(' ')); else el.removeAttribute('aria-describedby');
     }
     describe(target, true);
-    var gone = false, raf = 0;
+    var gone = false, raf = 0, away = false;
     function box(sel){ var e = s.root.querySelector(sel); if(!e || !e.offsetParent) return null; var b = e.getBoundingClientRect(); return b.width && b.height ? b : null; }
     function over(a, b){ return b ? Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) * Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top)) : 0; }
     function place(){
@@ -1080,6 +1080,10 @@
       }
       var r = target.getBoundingClientRect();
       if(!r.width && !r.height){ ring.style.display = tip.style.display = 'none'; return; }
+      /* A target still below the fold (below the sticky action row on a phone):
+         wait for it rather than clamp the tip over the controls above it. */
+      away = r.top >= window.innerHeight - 8;
+      if(away){ ring.style.display = tip.style.display = 'none'; return; }
       ring.style.display = tip.style.display = '';
       var sx = window.scrollX, sy = window.scrollY, pad = 4, vw0 = document.documentElement.clientWidth;
       // The ring never reaches past the viewport's sides: a full-width target
@@ -1087,8 +1091,14 @@
       // the page scroll sideways on a phone. Its outer glow is a shadow, which
       // never adds scroll.
       var rl = Math.max(0, r.left - pad), rr2 = Math.min(vw0, r.right + pad);
-      ring.style.left = (rl + sx) + 'px'; ring.style.top = (r.top + sy - pad) + 'px';
-      ring.style.width = Math.max(0, rr2 - rl) + 'px'; ring.style.height = (r.height + pad * 2) + 'px';
+      /* Nor past the bottom of the stage that scrolls it: a tall answer box half under the fold of a
+         phone's stage drew its ring over the dock below (Make it specific, AP® Psychology launch). */
+      var clip = target.closest('.ls-stage'), cb = clip && !target.closest('.ls-dock') ? clip.getBoundingClientRect() : null;
+      var rt = r.top - pad, rb = r.bottom + pad;
+      if(cb){ rt = Math.max(rt, cb.top); rb = Math.min(rb, cb.bottom); }
+      if(rb - rt < 12){ ring.style.display = tip.style.display = 'none'; return; }
+      ring.style.left = (rl + sx) + 'px'; ring.style.top = (rt + sy) + 'px';
+      ring.style.width = Math.max(0, rr2 - rl) + 'px'; ring.style.height = (rb - rt) + 'px';
       var round = Math.min(r.width, r.height) / 2 + pad;
       ring.style.borderRadius = (o.round != null ? o.round : round) + 'px';
       var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth, vh = window.innerHeight;
@@ -1133,16 +1143,18 @@
       describe(target, false);
       Array.prototype.forEach.call(document.querySelectorAll('[aria-describedby]'), function(el){ if((' ' + el.getAttribute('aria-describedby') + ' ').indexOf(' ' + tip.id + ' ') >= 0) describe(el, false); });
       window.removeEventListener('resize', queue); window.removeEventListener('scroll', queue, true);
-      ['pointerdown', 'keydown', 'input', 'change'].forEach(function(t){ s.root.removeEventListener(t, onUse, true); });
+      ['pointerdown', 'click', 'keydown', 'input', 'change'].forEach(function(t){ s.root.removeEventListener(t, onUse, true); });
       clearInterval(iv);
     }
     function onUse(e){
       if(e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return;
+      // While the tip waits below the fold, a finger that only scrolls the page does not count as use.
+      if(away && e.type === 'pointerdown') return;
       if(e.target.closest && e.target.closest('.ls-bar')) return;
       dismiss();
     }
     window.addEventListener('resize', queue); window.addEventListener('scroll', queue, true);
-    ['pointerdown', 'keydown', 'input', 'change'].forEach(function(t){ s.root.addEventListener(t, onUse, true); });
+    ['pointerdown', 'click', 'keydown', 'input', 'change'].forEach(function(t){ s.root.addEventListener(t, onUse, true); });
     // The layout can still be settling (fonts, a late redraw): follow it briefly.
     var n = 0, iv = setInterval(function(){ queue(); if(++n > 20) clearInterval(iv); }, 150);
     queue();

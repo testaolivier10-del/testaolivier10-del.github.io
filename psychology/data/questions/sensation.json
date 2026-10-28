@@ -1,0 +1,739 @@
+{
+ "stimuli": {
+  "sensation-s1": {
+   "kind": "visual",
+   "title": "The eye, cut from side to side",
+   "figure": "sensation-eye"
+  },
+  "sensation-s2": {
+   "kind": "data",
+   "title": "Spotting a faint tone",
+   "invented": true,
+   "html": "<p>Two listeners each heard 100 short sounds through headphones (invented data for practice). On 50 trials a faint tone was played inside some static; on the other 50 there was only static. After each sound they said \"tone\" or \"no tone\". Listener A was told she would earn a point for every tone she caught; Listener B was told he would lose a point for every false \"tone\".</p>",
+   "table": {
+    "caption": "Responses of two listeners (invented data for practice)",
+    "cols": [
+     "Listener",
+     "Tone played, said \"tone\" (hits)",
+     "No tone, said \"tone\" (false alarms)"
+    ],
+    "rows": [
+     [
+      "A",
+      "46 of 50",
+      "18 of 50"
+     ],
+     [
+      "B",
+      "31 of 50",
+      "3 of 50"
+     ]
+    ]
+   }
+  },
+  "sensation-s3": {
+   "kind": "study",
+   "title": "Who are supertasters?",
+   "source": "Bartoshuk, Duffy & Miller (1994)",
+   "study": {
+    "introduction": "Researchers had found that a bitter chemical, PROP, tastes strongly bitter to some people and nearly tasteless to others. They asked whether people who taste it strongly differ in their tongues.",
+    "participants": "Adult volunteers recruited at a US university.",
+    "method": "Participants rated the bitterness of PROP on a scale. The researchers stained the front of each person's tongue with blue food coloring and counted the small bumps that hold taste buds in a standard circle.",
+    "results": "People who rated PROP as intensely bitter (supertasters) had many more taste-bud bumps than people who barely tasted it. Women were more often supertasters than men."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-sensation-1",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "sensation-s1",
+   "q": "To read the small print on a medicine label, Ines looks straight at it. Where in the eye does the image of the print fall, and why does that help?",
+   "options": [
+    "On the fovea, where cones are packed for fine detail",
+    "On the blind spot, where the optic nerve leaves the eye",
+    "On the lens, which detects color and fine detail",
+    "On the outer edge of the retina, where rods are densest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Looking straight at something focuses its image on the fovea, which is packed with cones, the receptors for color and sharp detail.",
+    "options": [
+     "Right: the fovea, full of cones, gives the sharpest vision.",
+     "The blind spot has no receptors at all, so nothing there is seen.",
+     "The lens focuses light; it does not detect anything. Receptors are in the retina.",
+     "Rods at the edge detect dim light but not fine detail."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-2",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "sensation-s1",
+   "q": "Out stargazing, Theo notices a faint star is easier to see when he looks slightly to one side of it. What explains this?",
+   "options": [
+    "Off to the side, the image falls where rods are dense; rods work in dim light",
+    "Off to the side, the image falls on the fovea, which is packed with cones",
+    "Looking away moves the image onto the blind spot, which boosts faint light",
+    "Looking away lets the lens collect more light from the faint, distant star"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rods, which respond to dim light, are spread across the retina outside the fovea. Looking slightly away puts a faint image on rods instead of the cone-packed fovea.",
+    "options": [
+     "Right: rods outside the fovea are better at detecting dim light.",
+     "Looking straight at the star puts it on the fovea; looking away moves it off.",
+     "Nothing is seen at the blind spot, because it has no receptors.",
+     "Where you look does not change how much light the lens gathers."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-3",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "sensation-s1",
+   "q": "In the figure, why is there a blind spot where the optic nerve leaves the eye?",
+   "options": [
+    "There are no rods or cones there to detect light",
+    "The cones there detect color but not any shapes",
+    "The lens does not bend light toward that spot",
+    "Too many rods there overload the optic nerve"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The axons that form the optic nerve leave through one spot, so there is no room for receptors there. Light falling on it is not detected. We rarely notice because the other eye and the brain fill in the gap.",
+    "options": [
+     "Right: no receptors means no detection at that spot.",
+     "There are no cones at the blind spot at all.",
+     "Light reaches the spot; there is simply nothing there to detect it.",
+     "The blind spot has no rods, so it cannot be overloaded by them."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-4",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "sensation-s1",
+   "q": "Light reaching the retina is changed into neural signals that travel along the optic nerve. What is this change called?",
+   "options": [
+    "Transduction",
+    "Sensory adaptation",
+    "Sensory interaction",
+    "Signal detection"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Transduction is the conversion of one kind of energy (here light) into neural signals. Rods and cones do it for vision; hair cells in the cochlea do it for hearing.",
+    "options": [
+     "Right: turning light into neural signals is transduction.",
+     "Sensory adaptation is a drop in response to an unchanging stimulus.",
+     "Sensory interaction is one sense affecting another, as smell affects taste.",
+     "Signal detection theory explains whether a faint stimulus is reported, depending on expectations and stakes."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-5",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "sensation-s2",
+   "q": "Which statement best describes the two listeners' results?",
+   "options": [
+    "A had more hits and more false alarms; B had fewer of both",
+    "A had more hits and also fewer false alarms than B did",
+    "B had more hits and also more false alarms than A did",
+    "The two listeners gave about the same responses overall"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A said \"tone\" more often in both kinds of trial: 46 hits and 18 false alarms, against B's 31 hits and 3 false alarms.",
+    "options": [
+     "Right: A said \"tone\" more often, raising both hits and false alarms.",
+     "A had more false alarms (18) than B (3), not fewer.",
+     "B had fewer hits (31 vs 46) and fewer false alarms (3 vs 18).",
+     "The listeners differ a lot: 46 vs 31 hits and 18 vs 3 false alarms."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-6",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "sensation-s2",
+   "q": "Which concept best explains why the listeners responded differently to the same sounds?",
+   "options": [
+    "Signal detection theory: rewards and costs shifted how readily each said \"tone\"",
+    "Sensory adaptation: Listener B had grown used to the static and stopped hearing it",
+    "Weber's law: the tone was below each listener's just-noticeable difference",
+    "Transduction: Listener A's ears turned sound into neural signals faster"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Signal detection theory says detecting a faint stimulus depends on the stimulus and on the person's expectations and motives. A reward for hits made A say \"tone\" freely; a penalty for false alarms made B cautious.",
+    "options": [
+     "Right: the payoff each listener faced changed their response, as signal detection theory predicts.",
+     "Adaptation would lower sensitivity to the static over time; it does not explain the different payoffs.",
+     "Weber's law is about noticing a change in a stimulus, not deciding whether a faint one is present.",
+     "Both listeners' ears transduce sound the same way; the difference is in their decisions."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-7",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "sensation-s2",
+   "q": "What percent of the tone trials did Listener A detect (her hit rate)?",
+   "why": {
+    "correct": "46 hits out of 50 tone trials: 46 / 50 = 0.92, which is 92%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        46,
+        50
+       ]
+      },
+      100
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          46,
+          100
+         ]
+        },
+        100
+       ]
+      },
+      "why": "46% divides by all 100 trials. A hit rate is out of the 50 trials that had a tone."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          18,
+          50
+         ]
+        },
+        100
+       ]
+      },
+      "why": "36% is her false-alarm rate. Hits are the tone trials where she said \"tone\": 46 of 50."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-8",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "sensation-s2",
+   "q": "A radiologist knows that missing a tumor could cost a patient's life. Like Listener A, she tends to report possible tumors readily. What trade-off should she expect?",
+   "options": [
+    "More hits, but also more false alarms",
+    "Fewer hits, but also fewer false alarms",
+    "More hits and fewer false alarms",
+    "No change in hits or false alarms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Saying \"yes\" more readily catches more real signals (hits) but also flags more non-signals (false alarms), exactly as Listener A did.",
+    "options": [
+     "Right: a lower bar for \"yes\" raises both hits and false alarms.",
+     "That is the cautious pattern of Listener B.",
+     "Raising hits while lowering false alarms needs a better signal, not a different decision rule.",
+     "Changing the decision rule does change the responses, as the table shows."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-9",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "sensation-s3",
+   "q": "Based on the study, which person is most likely a supertaster?",
+   "options": [
+    "Mia, who finds black coffee and raw broccoli unpleasantly bitter",
+    "Leo, who adds extra hot sauce because mild food tastes bland",
+    "Ava, who stops noticing the smell of coffee after an hour in the kitchen",
+    "Sam, who sees colors when he hears music"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Supertasters have more taste buds and taste bitter compounds, such as those in coffee and broccoli, much more strongly.",
+    "options": [
+     "Right: strong dislike of bitter foods fits a supertaster.",
+     "Finding food bland suggests weaker taste, the opposite of a supertaster.",
+     "No longer smelling a steady odor is sensory adaptation.",
+     "Seeing colors with sounds is synesthesia."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-10",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "sensation-s3",
+   "q": "Why can this study not show that having more taste buds causes stronger bitter taste?",
+   "options": [
+    "Both variables were measured; neither was manipulated",
+    "Food coloring could have changed how PROP tasted",
+    "The participants were adults, not children or teens",
+    "Bitterness was rated by people, not by a machine"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The researchers measured taste-bud counts and bitterness ratings as they were. Without manipulating a variable, the study shows a relationship, not cause, though a biological explanation is plausible.",
+    "options": [
+     "Right: both variables were measured, not manipulated, so the study is correlational.",
+     "The coloring was applied for counting; it does not explain why the design cannot show cause.",
+     "The age of the participants limits who the results describe; it is not why cause cannot be shown.",
+     "A rating scale gives numbers; it does not affect whether cause can be shown."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-11",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "sensation-s3",
+   "q": "Besides sweet, salty, sour and bitter, which taste do researchers now recognize for the savory flavor of broth and parmesan?",
+   "options": [
+    "Umami",
+    "Oleogustus",
+    "Gustation",
+    "Olfaction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Umami is the savory taste detected by receptors for glutamate, found in broth, soy sauce, tomatoes and aged cheese.",
+    "options": [
+     "Right: umami is the savory taste.",
+     "Oleogustus is the proposed taste of fat, not the savory taste of broth.",
+     "Gustation is the sense of taste as a whole, not one taste.",
+     "Olfaction is the sense of smell."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-12",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Holding a 100-gram letter, Dani can just tell when 2 grams are added. By Weber's law, about how much must be added to a 400-gram package for her to just notice a change?",
+   "options": [
+    "About 8 grams",
+    "About 2 grams",
+    "About 4 grams",
+    "About 20 grams"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Weber's law says the just-noticeable difference is a constant proportion of the original stimulus. 2 out of 100 is 2%; 2% of 400 grams is 8 grams.",
+    "options": [
+     "Right: the same 2% of 400 grams is 8 grams.",
+     "2 grams is the same amount, but the difference needed grows with the size of the stimulus.",
+     "4 grams would be only 1% of 400 grams, which she would not notice.",
+     "20 grams is 5%, much more than she needs."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-13",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "A singer can just notice a change of 3 hertz in a 300-hertz tone. Assuming Weber's law holds, what is the smallest change in hertz she would notice in a 900-hertz tone?",
+   "why": {
+    "correct": "The Weber fraction is 3 / 300 = 0.01. The just-noticeable difference for 900 Hz is 0.01 × 900 = 9 Hz."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        3,
+        300
+       ]
+      },
+      900
+     ]
+    },
+    "unit": "Hz",
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "3 Hz is the change for the 300 Hz tone. By Weber's law the change grows in proportion: 3 / 300 is 1%, and 1% of 900 is 9."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        900,
+        3
+       ]
+      },
+      "why": "903 is the new tone's pitch, not the size of the change. The just-noticeable change is 1% of 900, which is 9 Hz."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-14",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Owen jumps into a cold lake and gasps, but after five minutes the water feels fine. Which concept explains the change?",
+   "options": [
+    "Sensory adaptation",
+    "Transduction",
+    "The absolute threshold",
+    "Synesthesia"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With constant, unchanging stimulation, receptors and the nervous system respond less. That is sensory adaptation.",
+    "options": [
+     "Right: an unchanging stimulus is felt less over time.",
+     "Transduction is converting energy into neural signals; it is still happening.",
+     "The absolute threshold is the faintest stimulus detected half the time; the cold is far above it.",
+     "Synesthesia is one sense triggering another, such as seeing colors for numbers."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-15",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "With a bad cold and a blocked nose, Lucas says his favorite soup tastes like \"hot water.\" Which concept explains this?",
+   "options": [
+    "Sensory interaction",
+    "Sensory adaptation",
+    "Weber's law",
+    "Signal detection theory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Much of what we call flavor comes from smell. When smell is blocked, taste alone is flat. One sense changing another is sensory interaction.",
+    "options": [
+     "Right: losing smell changes taste, which is sensory interaction.",
+     "Adaptation is a drop in response to a constant stimulus, not a blocked nose.",
+     "Weber's law is about noticing changes in stimulus strength.",
+     "Signal detection is about deciding whether a faint stimulus is present; his soup is not faint, it lacks smell."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-16",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Stare at a green square for 30 seconds, then look at a white wall, and you briefly see a red square. Which theory explains this best?",
+   "options": [
+    "Opponent-process theory",
+    "Trichromatic theory",
+    "Place theory",
+    "Gate control theory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Opponent-process theory says color is coded in pairs (red-green, blue-yellow). Staring tires the green side, so the white wall drives the red side more: a red afterimage.",
+    "options": [
+     "Right: the paired red-green process explains the red afterimage.",
+     "Three cone types explain color matching and most color deficiency, but not opposite-color afterimages.",
+     "Place theory explains how we hear high pitches.",
+     "Gate control theory explains why pain can be blocked."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-17",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Zach cannot tell the red and green lights on a traffic signal apart by color; he uses their position. Which explanation fits best?",
+   "options": [
+    "One of his three types of cones is missing or works poorly",
+    "His rods are missing, so he sees poorly in dim light",
+    "His optic nerve sends color signals to the wrong lobe",
+    "His lens blocks red and green light before it reaches the retina"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trichromatic theory says color vision depends on three types of cones. Missing or faulty red- or green-sensitive cones cause red-green color vision deficiency, which is inherited and far more common in men.",
+    "options": [
+     "Right: a missing or faulty cone type causes red-green color deficiency.",
+     "Rods work in dim light and do not code color; missing rods causes night blindness.",
+     "Color signals go to the occipital lobe; the problem is in the cones.",
+     "The lens does not filter out red or green light."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-18",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A woman with damage in her temporal lobe can see eyes, a nose and a mouth clearly, but she cannot recognize her own sister's face until she hears her voice. Which condition is this?",
+   "options": [
+    "Prosopagnosia",
+    "Blindsight",
+    "Synesthesia",
+    "Color vision deficiency"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Prosopagnosia (face blindness) is an inability to recognize faces even though vision is otherwise fine.",
+    "options": [
+     "Right: seeing faces but not recognizing them is prosopagnosia.",
+     "Blindsight is responding to things a person says they cannot see, after damage to the visual cortex.",
+     "Synesthesia is one sense triggering another.",
+     "Color deficiency affects colors, not recognizing faces."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-19",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a stroke in his visual cortex, a man says he is blind on his left side. Yet when a ball is rolled toward his left, he steps out of its way and cannot say why. Which concept is this?",
+   "options": [
+    "Blindsight",
+    "Prosopagnosia",
+    "Sensory adaptation",
+    "The blind spot"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In blindsight, damage to the visual cortex removes conscious sight, but other brain pathways still process some visual information and guide behavior.",
+    "options": [
+     "Right: responding to what one cannot consciously see is blindsight.",
+     "Prosopagnosia is trouble recognizing faces.",
+     "Adaptation is a reduced response to a constant stimulus.",
+     "Everyone has a blind spot where the optic nerve leaves the eye; it does not explain a stroke."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-20",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A guitarist has played loud concerts without ear protection for years. Now high-pitched sounds are hard for him to hear, and a hearing aid helps only somewhat. What kind of hearing loss is most likely?",
+   "options": [
+    "Sensorineural, from damage to hair cells in the cochlea",
+    "Conduction, from damage to the hair cells in the cochlea",
+    "Sensorineural, from a torn eardrum that blocks the sound",
+    "Conduction, from a buildup of wax deep in the inner ear"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Loud noise damages the hair cells in the cochlea, which do not grow back. Damage to the cochlea or auditory nerve is sensorineural hearing loss. Hair cells near the base, which respond to high pitches, are often hit first.",
+    "options": [
+     "Right: noise damages cochlear hair cells, causing sensorineural loss.",
+     "Hair-cell damage is sensorineural; conduction loss is in the outer or middle ear.",
+     "A torn eardrum blocks sound before the cochlea: that is conduction loss.",
+     "Wax builds up in the ear canal, the outer ear, and causes conduction loss."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-21",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which pair correctly matches each pitch range with the theory that best explains how we hear it?",
+   "options": [
+    "High pitches: place theory; low pitches: frequency theory",
+    "High pitches: frequency theory; low pitches: place theory",
+    "High pitches: volley principle; low pitches: place theory",
+    "High and low pitches alike: opponent-process theory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Place theory: high pitches vibrate particular spots near the base of the cochlea. Frequency theory: for low pitches, neurons fire at the same rate as the sound wave. For middle pitches, neurons take turns firing (the volley principle).",
+    "options": [
+     "Right: place theory for high pitches, frequency theory for low ones.",
+     "This reverses the two theories.",
+     "The volley principle extends frequency theory to middle pitches; place theory explains high ones.",
+     "Opponent-process theory explains color vision, not hearing."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-22",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A soccer player bumps her shin hard and instinctively rubs it, and the pain eases. Which theory explains why rubbing helps?",
+   "options": [
+    "Gate control theory",
+    "Signal detection theory",
+    "Trichromatic theory",
+    "Frequency theory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gate control theory says the spinal cord has a neural \"gate\". Signals from rubbing travel on fast fibers and partly close it, so fewer pain signals reach the brain.",
+    "options": [
+     "Right: rubbing sends signals that partly close the pain gate in the spinal cord.",
+     "Signal detection explains whether a faint stimulus is reported, not why rubbing eases pain.",
+     "Trichromatic theory explains color vision.",
+     "Frequency theory explains hearing low pitches."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-23",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A veteran whose leg was amputated a year ago feels a sharp cramp in the missing foot. What does this show?",
+   "options": [
+    "Phantom limb pain: the brain makes pain with no input from the limb",
+    "Kinesthesis: the brain senses where the limb is from its joints",
+    "Sensory adaptation: the brain has grown used to the old cramp",
+    "Synesthesia: a sound is triggering the feeling in the missing foot"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Phantom limb sensations show that pain is created by the brain. The brain areas that once served the leg remain active, so pain can be felt in a limb that is gone.",
+    "options": [
+     "Right: pain is felt where no limb remains, so the brain generates it.",
+     "Kinesthesis senses the position of body parts that are there, using receptors in muscles and joints.",
+     "Adaptation reduces a sensation; here a sensation appears.",
+     "Synesthesia mixes senses; nothing is triggering one sense with another."
+    ]
+   }
+  },
+  {
+   "id": "psy-sensation-24",
+   "unit": "unit-1",
+   "topic": "sensation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After spinning on a playground ride, Nia feels the world is still turning when she stops. Which sense is involved?",
+   "options": [
+    "The vestibular sense",
+    "Kinesthesis",
+    "Sensory adaptation",
+    "Transduction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The vestibular sense, from fluid-filled canals in the inner ear, tracks balance and head movement. After spinning, the fluid keeps moving briefly, so she feels motion.",
+    "options": [
+     "Right: inner-ear fluid still moving after spinning makes the world seem to turn.",
+     "Kinesthesis senses the position of body parts from muscles and joints, not head rotation.",
+     "Adaptation would make a constant sensation fade, not create a feeling of motion.",
+     "Transduction happens in every sense; it does not explain the feeling of spinning."
+    ]
+   }
+  }
+ ]
+}

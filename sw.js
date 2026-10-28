@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v93';
+const CACHE_NAME = 'levlprep-v96';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -305,6 +305,26 @@ COURSE_URLS['environmental-science'] = [
   'environmental-science/assets/env-questions.js',
   'environmental-science/assets/env-nav.js',
   'environmental-science/assets/glossary.json',
+];
+COURSE_URLS['psychology'] = [
+  // The AP® Psychology shell (key appsych, folder psychology), as
+  // Environmental Science with the descriptive statistics library in place
+  // of the calculation recipes and no setup parser.
+  'psychology/index.html',
+  'psychology/learn.html',
+  'psychology/search.html',
+  'psychology/tools.html',
+  'psychology/dashboard.html',
+  'psychology/manifest.json',
+  'psychology/assets/psy.css',
+  'psychology/assets/psy-curriculum.js',
+  'psychology/assets/psy-core.js',
+  'psychology/assets/psy-math.js',
+  'psychology/assets/psy-stats.js',
+  'psychology/assets/psy-grade.js',
+  'psychology/assets/psy-questions.js',
+  'psychology/assets/psy-nav.js',
+  'psychology/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

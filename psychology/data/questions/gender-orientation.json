@@ -1,0 +1,607 @@
+{
+ "stimuli": {
+  "gender-orientation-s1": {
+   "kind": "visual",
+   "title": "Four questions about a person",
+   "figure": "gender-orientation-dimensions"
+  },
+  "gender-orientation-s2": {
+   "kind": "study",
+   "title": "Toy labels and preschoolers’ play",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether telling children that a new toy is \"for girls\" or \"for boys\" changes how long they play with it.",
+    "participants": "80 children aged 4 and 5 (40 girls, 40 boys) at four preschools in one city. Parents gave informed consent, each child agreed to play, and any child could stop at any time.",
+    "method": "Each child was randomly assigned to one of two conditions. A researcher showed the child an unfamiliar toy (a set of colored gears) and said either \"This is a toy for girls\" or \"This is a toy for boys.\" The child then had 20 minutes of free play in a room with the gears and other toys. A coder who did not know the condition recorded how many minutes the child played with the gears.",
+    "results": "When the gears were labeled for their own gender, children played with them for a mean of 13 minutes; when labeled for the other gender, a mean of 6 minutes. The difference was statistically significant and was similar for girls and boys.",
+    "discussion": "A single label changed play, suggesting that children use gender labels to decide what is \"for me.\""
+   },
+   "plot": {
+    "label": "Bar graph of mean minutes playing with the gears: labeled for own gender 13, labeled for other gender 6 (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Own gender",
+     "Other gender"
+    ],
+    "values": [
+     13,
+     6
+    ],
+    "xLabel": "How the toy was labeled",
+    "yLabel": "Mean minutes of play",
+    "y": [
+     0,
+     20
+    ]
+   }
+  },
+  "gender-orientation-s3": {
+   "kind": "data",
+   "title": "Minutes of pretend cooking play",
+   "invented": true,
+   "text": "<p>An observer timed how many minutes each of five 4-year-olds spent at a toy kitchen during one 30-minute free-play period.</p>",
+   "table": {
+    "caption": "Minutes at the toy kitchen (invented data for practice)",
+    "cols": [
+     "Child",
+     "Minutes"
+    ],
+    "rows": [
+     [
+      "Ava",
+      "11"
+     ],
+     [
+      "Ben",
+      "16"
+     ],
+     [
+      "Cal",
+      "9"
+     ],
+     [
+      "Dee",
+      "19"
+     ],
+     [
+      "Eli",
+      "5"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-gender-orientation-1",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "gender-orientation-s1",
+   "q": "Alex was assigned male at birth, has always known she is a girl, and lives as a woman. Which row of the figure describes \"has always known she is a girl\"?",
+   "options": [
+    "Gender identity",
+    "Biological sex",
+    "Gender roles",
+    "Sexual orientation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gender identity is the answer to \"Who am I?\" in the figure. Alex is a transgender woman.",
+    "options": [
+     "Right: a person’s inner sense of their own gender is gender identity.",
+     "Biological sex is about the body (chromosomes, hormones, anatomy), not the inner sense of self.",
+     "Gender roles are a culture’s expectations, not a person’s sense of who they are.",
+     "Sexual orientation is about whom a person is attracted to, which the scenario does not mention."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-2",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "gender-orientation-s1",
+   "q": "Ryan, a man, is attracted to men. In which row of the figure does that fact belong?",
+   "options": [
+    "Gender identity as a man",
+    "Gender roles",
+    "Biological sex",
+    "Sexual orientation"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sexual orientation answers \"Attracted to whom?\", separate from identity and sex.",
+    "options": [
+     "Ryan’s sense of being a man is his gender identity; whom he is attracted to is a separate question.",
+     "Gender roles describe expected behavior, not attraction.",
+     "Biological sex describes the body, not attraction.",
+     "Right: a lasting pattern of attraction to others is sexual orientation; Ryan is gay."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-3",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "gender-orientation-s1",
+   "q": "In one country, men are expected to cook for guests; in another, cooking is seen as women’s work. Which row best explains this difference?",
+   "options": [
+    "Sexual orientation, which sets household chores",
+    "Gender identity, which a person picks to suit chores",
+    "Gender roles, which a culture sets",
+    "Biological sex, which differs between countries"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When the same behavior is expected of different genders in different places, culture, not biology, is setting the role.",
+    "options": [
+     "Attraction does not decide who cooks.",
+     "Gender identity is a deep sense of self, not a choice made to fit tasks.",
+     "Right: expectations for how men and women act differ across cultures and times.",
+     "Bodies do not differ between these countries in a way that explains cooking."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-4",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "gender-orientation-s1",
+   "q": "The figure says knowing one answer does not tell you the others. Which example shows that best?",
+   "options": [
+    "A boy who likes trucks because his friends like trucks too",
+    "A cisgender woman who is a firefighter and bisexual",
+    "A man who is attracted to women and works as a builder",
+    "A girl whose body and identity are both female"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Independence shows up when the four answers are not the \"expected\" set.",
+    "options": [
+     "This repeats a gender role; it does not separate the four questions.",
+     "Right: her sex, identity, role and orientation each answer a different question.",
+     "Every answer here is the one many people expect, so it cannot show that the answers are separate.",
+     "This gives two answers that match, so it cannot show independence."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-5",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "gender-orientation-s2",
+   "q": "Which research method did this study use?",
+   "options": [
+    "An experiment: children were randomly assigned to a label",
+    "A correlational study, because it compared the play of girls and boys",
+    "Naturalistic observation of play at home",
+    "A longitudinal study of preschool play"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Manipulation plus random assignment makes an experiment, which allows a causal claim.",
+    "options": [
+     "Right: the researchers manipulated the label and randomly assigned children to it.",
+     "Girls and boys were not the conditions; the manipulated label was.",
+     "The play was in a set-up room after a label the researcher chose.",
+     "Each child was tested in one session."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-6",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "gender-orientation-s2",
+   "q": "Which concept best explains why a \"for girls\" label made boys play less with the gears?",
+   "options": [
+    "Sexual orientation, attraction to others",
+    "Biological sex differences in skill with mechanical toys",
+    "Puberty, the hormone changes of adolescence",
+    "Gender typing: learning which activities suit one’s gender"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Gender typing is acquiring a traditional gender role, including \"what is for me.\"",
+    "options": [
+     "The study is about toy choice, not attraction.",
+     "The same toy got more play when labeled for the child’s own gender, so skill did not decide it.",
+     "The children were 4 and 5.",
+     "Right: children had already learned to sort activities by gender and acted on the label."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-7",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "gender-orientation-s2",
+   "q": "What do the results in the graph show?",
+   "options": [
+    "The label made no real difference to how long the children played",
+    "Children played longer when the toy was labeled for the other gender",
+    "Children played about twice as long with an own-gender label",
+    "Girls played longer with the gears than boys did"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Read the bars: own gender 13, other gender 6.",
+    "options": [
+     "There was a 7-minute difference, and it was statistically significant.",
+     "This reverses the bars: own-gender labels got 13 minutes.",
+     "Right: 13 minutes versus 6 minutes.",
+     "The graph compares labels, and the summary says results were similar for girls and boys."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-8",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "gender-orientation-s2",
+   "q": "Build the operational definition of play with the new toy in this study.",
+   "why": {
+    "correct": "An operational definition says exactly what the coder measured and when."
+   },
+   "specific": {
+    "frame": "Play was measured as ___ during ___.",
+    "write": {
+     "context": [
+      "minutes",
+      "gears"
+     ]
+    },
+    "model": "Play was measured as the number of minutes the child played with the gears during a 20-minute free-play period.",
+    "slots": {
+     "opdef": {
+      "label": "What was measured",
+      "options": [
+       "the number of minutes spent playing with the gears",
+       "how much the child liked the gears",
+       "whether the toy was labeled for girls or for boys"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Liking is a feeling; say what the coder measured.",
+       "2": "The label is the variable the researchers manipulated, not the one they measured."
+      }
+     },
+     "when": {
+      "label": "When",
+      "options": [
+       "a 20-minute free-play period after the label",
+       "the whole preschool year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Each child was timed in one 20-minute session."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-gender-orientation-9",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "gender-orientation-s3",
+   "q": "What is the mean number of minutes the five children spent at the toy kitchen?",
+   "why": {
+    "correct": "$\\frac{11 + 16 + 9 + 19 + 5}{5} = \\frac{60}{5} = 12$ minutes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       11,
+       16,
+       9,
+       19,
+       5
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         11,
+         16,
+         9,
+         19,
+         5
+        ]
+       ]
+      },
+      "why": "That is the total. Divide by the number of children, 5."
+     },
+     {
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         11,
+         16,
+         9,
+         19,
+         5
+        ]
+       ]
+      },
+      "why": "That is the range (19 minus 5). The mean is the total divided by 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-10",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "gender-orientation-s3",
+   "q": "What is the range of minutes at the toy kitchen?",
+   "why": {
+    "correct": "Highest minus lowest: $19 - 5 = 14$ minutes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "range",
+     "args": [
+      [
+       11,
+       16,
+       9,
+       19,
+       5
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 19,
+      "why": "That is the highest value. Subtract the lowest, 5."
+     },
+     {
+      "from": {
+       "fn": "median",
+       "args": [
+        [
+         11,
+         16,
+         9,
+         19,
+         5
+        ]
+       ]
+      },
+      "why": "That is the median. The range is the highest minus the lowest."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-11",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "gender-orientation-s3",
+   "q": "A teacher concludes from this table that girls like cooking more than boys. What is the main problem with that conclusion?",
+   "options": [
+    "Kitchen play at age 4 is an early sign of the start of puberty",
+    "The mean is higher than the median",
+    "Five children cannot show a group difference, and data are not grouped by gender",
+    "The range of 14 minutes is too large to allow any conclusion about the children"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "To compare groups you need enough children in each group and data organized by group.",
+    "options": [
+     "Play at the toy kitchen is typical of young children; puberty comes years later.",
+     "The mean (12) is above the median (11), but that says nothing about girls and boys.",
+     "Right: the data are too few and are not organized to compare girls and boys.",
+     "A wide range alone does not stop a conclusion; the design does."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-12",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A pediatrician notes that a newborn has XX chromosomes, ovaries and a uterus. Which concept is she describing?",
+   "options": [
+    "Sexual orientation",
+    "Biological sex",
+    "Gender identity",
+    "Gender roles"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Sex refers to biology; gender refers to identity, roles and expectations.",
+    "options": [
+     "Orientation is about attraction, which a newborn does not have.",
+     "Right: chromosomes and reproductive anatomy describe biological sex.",
+     "A newborn cannot yet report an inner sense of gender.",
+     "Roles are cultural expectations, not anatomy."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-13",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "By age 3, Mia insists that only girls wear dresses and corrects her brother when he picks up a doll. Which concept does her behavior show?",
+   "options": [
+    "Gender typing",
+    "Gender identity",
+    "Sexual orientation",
+    "Menarche"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gender typing is the learning of traditional gender roles; young children often apply them rigidly before becoming more flexible.",
+    "options": [
+     "Right: she has learned her culture’s gender roles and applies them to herself and others.",
+     "Her own sense of being a girl is gender identity; the scenario is about rules for what girls and boys do.",
+     "Attraction is not part of the scenario.",
+     "Menarche is the first menstrual period, years away."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-14",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A large review of hundreds of studies found that girls and boys differ little on most mental abilities and traits, with bigger differences in a few areas such as physical aggression. Which conclusion fits best?",
+   "options": [
+    "Girls and boys differ greatly on most mental abilities and traits",
+    "Gender differences come from biology, not culture",
+    "There are no differences between girls and boys",
+    "Most gender differences are small, with large overlap"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Hyde (2005) called this the gender similarities hypothesis: most differences are small to near zero.",
+    "options": [
+     "The review found small differences on most measures.",
+     "A review of averages cannot separate biology from culture.",
+     "Some differences, such as physical aggression, were larger.",
+     "Right: for most traits the average gap is small, so many girls score above many boys and the reverse."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-15",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Jordan’s parents learn their son is gay and wonder whether their parenting caused it. What does research suggest?",
+   "options": [
+    "Orientation is a choice made in the teen years",
+    "Orientation is set by one gene passed down from a parent",
+    "No way of raising a child has been found to cause it",
+    "A distant father causes a son to be gay"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Twin and genetic studies show genes contribute, but no single cause explains orientation, and how a child is raised has not been found to cause it.",
+    "options": [
+     "People do not report choosing their orientation, and attempts to change it do not work.",
+     "Many genes each have tiny effects, and no single gene decides orientation.",
+     "Right: studies find no link between how a child is raised and orientation; genes and prenatal factors play some role.",
+     "This old idea is not supported by research."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-16",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Kai is a teen who does not feel like a boy or a girl and asks to be called \"they.\" Which concept does this describe, and how should a psychologist describe it?",
+   "options": [
+    "A sign of delayed puberty",
+    "A nonbinary gender identity, a normal variation",
+    "A sexual orientation, since it concerns how Kai relates to others",
+    "A gender role Kai chose to follow"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Psychology treats gender identity as part of normal human variation; distress can come from stigma or a mismatch, not from the identity itself.",
+    "options": [
+     "Gender identity is not a sign of when puberty starts.",
+     "Right: identifying as neither only a man nor only a woman is a gender identity; it is not an illness.",
+     "Kai’s statement is about who they are, not whom they are attracted to.",
+     "A role is a cultural expectation; Kai is describing their sense of self."
+    ]
+   }
+  },
+  {
+   "id": "psy-gender-orientation-17",
+   "unit": "unit-3",
+   "topic": "gender-orientation",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A father buys his daughter dolls and his son trucks, praises his daughter for being \"sweet\" and his son for being \"tough.\" Over time both children prefer the toys they were given. Which explanation fits best?",
+   "options": [
+    "Gender typing shaped by the parents’ expectations and praise",
+    "Biological sex alone, since the toy choices were set at birth",
+    "Sexual orientation, which shows up in toy choice",
+    "Gender identity being chosen by the father"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gender typing grows from children’s own interests and from the expectations around them.",
+    "options": [
+     "Right: children learn gender roles partly from what adults give them and praise.",
+     "The father’s different treatment is part of the story, so biology alone cannot be the explanation.",
+     "Toy choice is about roles, not attraction.",
+     "A parent cannot choose a child’s inner sense of gender."
+    ]
+   }
+  }
+ ]
+}

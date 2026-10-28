@@ -1,0 +1,149 @@
+{
+ "glial-cell": {
+  "def": "A cell in the nervous system that supports neurons rather than carrying messages: glial cells hold neurons in place, supply nutrients, make myelin and clean up waste."
+ },
+ "dendrite": {
+  "def": "A branching fiber of a neuron that receives messages from other neurons and carries them toward the cell body."
+ },
+ "cell-body": {
+  "def": "The part of a neuron (also called the soma) that holds the nucleus and keeps the cell alive; it sums up the messages arriving from the dendrites."
+ },
+ "axon": {
+  "def": "The long fiber that carries a neuron's action potential away from the cell body toward the axon terminals."
+ },
+ "myelin": {
+  "def": "A fatty layer, made by glial cells, wrapped in segments around many axons. It insulates the axon and makes action potentials travel much faster. Damage to it causes multiple sclerosis."
+ },
+ "axon-terminal": {
+  "def": "A knob at the end of a branch of the axon, where vesicles release neurotransmitter into the synapse."
+ },
+ "sensory-neuron": {
+  "def": "A neuron that carries messages from the body's sensory receptors toward the spinal cord and brain (also called an afferent neuron)."
+ },
+ "motor-neuron": {
+  "def": "A neuron that carries commands from the brain and spinal cord out to muscles and glands (also called an efferent neuron)."
+ },
+ "interneuron": {
+  "def": "A neuron inside the brain or spinal cord that passes messages between other neurons, such as between sensory and motor neurons in a reflex."
+ },
+ "reflex-arc": {
+  "def": "The quick pathway of a simple reflex: a sensory neuron carries the message to the spinal cord, an interneuron passes it on, and a motor neuron moves the muscle, before the brain is involved."
+ },
+ "resting-potential": {
+  "def": "The charge across a neuron's membrane when it is not firing, about -70 millivolts: the inside is negative compared with the outside."
+ },
+ "threshold-neural": {
+  "def": "The level of charge, about -55 millivolts, that a neuron must reach to fire an action potential."
+ },
+ "depolarization": {
+  "def": "A rise in the charge inside a neuron toward zero and beyond, as positive ions flow in; reaching threshold triggers an action potential."
+ },
+ "action-potential": {
+  "def": "A brief electrical signal that travels down a neuron's axon when the neuron fires: the inside charge jumps from about -70 to about +40 millivolts and back."
+ },
+ "all-or-none": {
+  "def": "The rule that a neuron either fires a full action potential or does not fire at all; every action potential is the same size, whatever the stimulus."
+ },
+ "refractory-period": {
+  "def": "A brief time just after an action potential when a neuron cannot fire again, so signals travel one way and in separate pulses."
+ },
+ "synapse": {
+  "def": "The junction where the axon terminal of one neuron meets another neuron, including the tiny synaptic gap the neurotransmitter crosses."
+ },
+ "neurotransmitter": {
+  "def": "A chemical messenger released from an axon terminal into the synapse that binds to receptor sites on the next neuron."
+ },
+ "reuptake": {
+  "def": "The return of leftover neurotransmitter from the synapse into the sending neuron, which ends the message."
+ },
+ "excitatory": {
+  "def": "A neurotransmitter that makes the receiving neuron more likely to fire, by depolarizing it; glutamate is the main one."
+ },
+ "inhibitory": {
+  "def": "A neurotransmitter that makes the receiving neuron less likely to fire; GABA is the main one."
+ },
+ "dopamine": {
+  "def": "A neurotransmitter involved in movement, motivation and reward. Loss of dopamine neurons causes the movement problems of Parkinson's disease."
+ },
+ "serotonin": {
+  "def": "A neurotransmitter involved in mood, sleep and appetite."
+ },
+ "norepinephrine": {
+  "def": "A neurotransmitter that raises alertness and arousal."
+ },
+ "glutamate": {
+  "def": "The brain's main excitatory neurotransmitter, important in learning; too much can overexcite neurons."
+ },
+ "gaba": {
+  "def": "Gamma-aminobutyric acid, the brain's main inhibitory neurotransmitter: it calms neural activity. Alcohol and some anti-seizure drugs boost its effect."
+ },
+ "endorphins": {
+  "def": "Neurotransmitters that act as the body's natural painkillers and can lift mood, for example during hard exercise."
+ },
+ "substance-p": {
+  "def": "A neurotransmitter that carries pain signals in the spinal cord and brain."
+ },
+ "acetylcholine": {
+  "def": "A neurotransmitter that makes muscles contract and plays a role in learning and attention."
+ },
+ "endocrine-system": {
+  "def": "The body's slower chemical communication system: glands that release hormones into the blood."
+ },
+ "hormone": {
+  "def": "A chemical messenger made by a gland and carried in the blood to targets elsewhere in the body; slower and longer-lasting than a neurotransmitter."
+ },
+ "pituitary": {
+  "def": "A pea-sized gland at the base of the brain that releases hormones controlling growth and directing other endocrine glands."
+ },
+ "adrenaline": {
+  "def": "A hormone (also called epinephrine) released by the adrenal glands in an emergency; it speeds the heart and breathing and prepares the body for action."
+ },
+ "leptin": {
+  "def": "A hormone released by fat cells that signals the brain that the body has enough stored energy, reducing appetite."
+ },
+ "ghrelin": {
+  "def": "A hormone released by an empty stomach that signals hunger."
+ },
+ "melatonin": {
+  "def": "A hormone released in darkness that helps time sleep; levels rise in the evening and fall in the morning."
+ },
+ "oxytocin": {
+  "def": "A hormone released during childbirth, nursing and close physical contact, linked to bonding between people."
+ },
+ "psychoactive-drug": {
+  "def": "A chemical that changes perception, mood or behavior by acting on the nervous system, usually at the synapse."
+ },
+ "agonist": {
+  "def": "A drug that mimics a neurotransmitter or increases its effect, for example by binding to and activating its receptors."
+ },
+ "antagonist": {
+  "def": "A drug that blocks a neurotransmitter's effect, for example by occupying its receptors without activating them."
+ },
+ "reuptake-inhibitor": {
+  "def": "A drug that blocks reuptake, so the neurotransmitter stays in the synapse longer and keeps acting on the receiving neuron."
+ },
+ "stimulant": {
+  "def": "A drug that speeds up the nervous system, raising alertness and heart rate; examples are caffeine, nicotine, cocaine and amphetamines."
+ },
+ "depressant": {
+  "def": "A drug that slows the nervous system, reducing alertness and reaction speed; alcohol is the most common."
+ },
+ "hallucinogen": {
+  "def": "A drug that distorts perception and can cause sensory images without real input; LSD and psilocybin are examples."
+ },
+ "opioid": {
+  "def": "A drug, such as morphine, heroin or fentanyl, that mimics endorphins: it relieves pain, slows breathing and is highly addictive."
+ },
+ "tolerance": {
+  "def": "The need for a larger dose of a drug to get the same effect after repeated use, as the brain adapts to it."
+ },
+ "withdrawal": {
+  "def": "The unpleasant physical and psychological symptoms that follow stopping a drug the body has adapted to."
+ },
+ "multiple-sclerosis": {
+  "def": "A disease in which the immune system damages myelin in the brain and spinal cord, slowing or blocking signals and causing weakness, numbness and vision problems."
+ },
+ "myasthenia-gravis": {
+  "def": "A disease in which the immune system attacks acetylcholine receptors where nerves meet muscles, so muscles weaken quickly with use."
+ }
+}

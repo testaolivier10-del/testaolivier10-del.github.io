@@ -1,0 +1,32 @@
+{
+ "ethical-guidelines": {
+  "def": "Rules that protect the rights and welfare of research participants, such as the American Psychological Association’s ethics code."
+ },
+ "irb": {
+  "def": "A committee at a university or other institution that reviews research plans involving people and approves them only if risks are kept as low as possible and justified by what the study can learn."
+ },
+ "informed-consent": {
+  "def": "A participant’s agreement to take part in a study after being told what it involves, including its risks and the right to withdraw."
+ },
+ "informed-assent": {
+  "def": "A minor’s own agreement to take part in a study after it is explained in terms they understand, given along with a parent’s or guardian’s consent."
+ },
+ "right-to-withdraw": {
+  "def": "A participant’s right to stop taking part in a study at any time without penalty."
+ },
+ "confidentiality": {
+  "def": "Keeping participants’ identities and data private, for example by using code numbers instead of names. Anonymity goes further: no names are collected at all."
+ },
+ "protection-from-harm": {
+  "def": "The guideline that researchers keep physical and emotional risks to participants minimal, no greater than in everyday life when possible."
+ },
+ "deception": {
+  "def": "In research, misleading participants about a study’s true purpose or procedures; allowed only when the study needs it, the risk is small and participants are debriefed."
+ },
+ "debriefing": {
+  "def": "Explaining a study’s true purpose to participants after they take part, including any deception and the reason for it."
+ },
+ "animal-research": {
+  "def": "Research with animals, which must be approved by an animal care and use committee that checks for humane treatment and justified use."
+ }
+}

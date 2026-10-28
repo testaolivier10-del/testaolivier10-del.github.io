@@ -1,0 +1,84 @@
+/* Stats lab (psychology/assets/tools/stats-lab.js). OWNED BY THIS TOOL ONLY (builder T3).
+   One color per role, the same in every scene: the course cerulean for the
+   score, the share below it, the mean and the points; vermillion for the
+   median and the line of best fit (Okabe-Ito, lighter in dark mode). Every
+   value is also written, so color is never the only cue. */
+.sl-svg,.sl-qfig{--sl-acc:#084F78;--sl-acc-fill:rgba(8,79,120,.30);--sl-band:#7FB6D6;--sl-alt:#C24E00;--sl-alt-ink:#A84400;--sl-bub:#084F78;--sl-bub-ink:#FFFFFF;}
+:root[data-theme="dark"] .sl-svg,:root[data-theme="dark"] .sl-qfig{--sl-acc:#8CC8E8;--sl-acc-fill:rgba(140,200,232,.32);--sl-band:#3D7EA3;--sl-alt:#F29A5C;--sl-alt-ink:#F6B082;--sl-bub:#A8D8F0;--sl-bub-ink:#0B2130;}
+.sl-card{display:grid;gap:14px;}
+.sl-fig{position:relative;min-height:340px;height:min(70vh,600px);}
+.ls-root .sl-fig{flex:1 1 auto;height:auto;min-height:300px;}
+.sl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:none;}
+.sl-fig .sl-svg{position:absolute;inset:0;}
+/* dock */
+.sl-ctl{display:flex;flex-direction:column;gap:10px;}
+.sl-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.sl-views button{min-height:44px;}
+.sl-grp{display:flex;flex-direction:column;gap:8px;}
+.sl-grp[hidden],.sl-o[hidden]{display:none !important;}
+.sl-grp-center .bt-btn,.sl-grp-corr .bt-btn{min-height:44px;white-space:nowrap;align-self:flex-start;padding:0 16px;}
+.sl-marks{display:grid;grid-template-columns:auto repeat(7,minmax(0,1fr));gap:4px;align-items:center;}
+.sl-mk-l{font:800 var(--ls-s,13px) var(--font-ui);color:var(--muted);padding-right:4px;white-space:nowrap;}
+.sl-mk{min-width:0;min-height:44px;padding:0;border-radius:10px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;font-variant-numeric:tabular-nums;}
+.sl-mk:hover{border-color:var(--cink);color:var(--cink);}
+/* The course breadcrumb is not in the Tool Studio's hide list (shared change
+   reported); hidden here so the studio stays one screen. */
+.sl-opt{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:700;}
+/* scene: normal curve */
+.sl-band{fill:var(--sl-band);}
+.sl-band.b1{fill-opacity:.36;} .sl-band.b2{fill-opacity:.24;} .sl-band.b3{fill-opacity:.15;} .sl-band.b4{fill-opacity:.08;}
+.sl-below{fill:var(--sl-acc-fill);}
+.sl-curve{fill:none;stroke:var(--sl-acc);stroke-width:3;stroke-linejoin:round;}
+.sl-sdl{stroke:var(--sl-acc);stroke-opacity:.45;stroke-width:1.3;stroke-dasharray:4 4;}
+.sl-meanl{stroke:var(--ink);stroke-opacity:.35;stroke-width:1.3;}
+.sl-lead{stroke:var(--muted);stroke-width:1;}
+.sl-bl{fill:var(--ink);font-weight:900;font-size:13px;paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.sl-bl-xs{font-size:10.5px;letter-spacing:-.02em;}
+.sl-bl-s{font-size:12px;font-weight:800;fill:var(--muted);}
+.sl-axis{stroke:var(--ink);stroke-width:1.5;}
+.sl-tick{stroke:var(--ink);stroke-width:1.3;}
+.sl-tv{fill:var(--ink);font-weight:800;font-size:12.5px;font-variant-numeric:tabular-nums;}
+.sl-tz{fill:var(--muted);font-weight:800;font-size:12px;font-variant-numeric:tabular-nums;}
+.sl-axn{fill:var(--ink);font-weight:800;font-size:13px;}
+.sl-score{stroke:var(--sl-acc);stroke-width:2.5;}
+.sl-onc{fill:var(--sl-acc);stroke:var(--white);stroke-width:2;}
+.sl-bub rect,.sl-bub path{fill:var(--sl-bub);}
+.sl-bt1{fill:var(--sl-bub-ink);font-weight:900;font-size:15px;font-variant-numeric:tabular-nums;}
+.sl-bt2{fill:var(--sl-bub-ink);font-weight:700;font-size:13px;opacity:.92;}
+/* the drag handle (curve and dot plot) */
+.sl-handle{cursor:grab;outline:none;}
+.sl-handle.is-drag{cursor:grabbing;}
+.sl-halo{fill:var(--sl-acc);fill-opacity:.16;}
+.sl-knob{fill:var(--sl-acc);stroke:var(--white);stroke-width:3;}
+.sl-grip{stroke:var(--white);stroke-width:1.6;stroke-linecap:round;}
+:root[data-theme="dark"] .sl-grip{stroke:#0B2130;}
+.sl-handle:focus-visible .sl-halo{fill-opacity:.34;stroke:var(--sl-acc);stroke-width:2.5;}
+.sl-handle.is-drag .sl-halo{fill-opacity:.3;}
+/* scene: center */
+.sl-dot{fill:var(--sl-acc);fill-opacity:.82;stroke:var(--white);stroke-width:1.5;}
+.sl-dot.is-mv{fill:var(--sl-alt);fill-opacity:1;}
+.sl-beam{stroke:var(--ink);stroke-width:3;stroke-linecap:round;}
+.sl-fulcrum{fill:var(--sl-acc);}
+.sl-mnt{fill:var(--sl-acc);font-weight:900;font-size:13px;}
+.sl-medl{stroke:var(--sl-alt);stroke-width:2;stroke-dasharray:6 4;}
+.sl-mdt{fill:var(--sl-alt-ink);font-weight:900;font-size:13px;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.sl-range{fill:none;stroke:var(--muted);stroke-width:1.6;}
+.sl-rt{fill:var(--muted);font-weight:800;font-size:13px;}
+.sl-lbg{fill:var(--white);fill-opacity:.92;}
+.sl-rowk{fill:var(--muted);font-weight:800;font-size:12.5px;}
+.sl-chip{fill:var(--white);stroke:var(--line);stroke-width:1.5;}
+.sl-chip.is-mid{fill:color-mix(in srgb, var(--sl-alt) 14%, var(--white));stroke:var(--sl-alt);stroke-width:2;}
+.sl-chip.is-mv{stroke-dasharray:3 2;}
+.sl-chipt{fill:var(--ink);font-weight:900;font-size:14px;font-variant-numeric:tabular-nums;}
+.sl-chipt.is-mid{fill:var(--sl-alt-ink);}
+.sl-eq{fill:var(--sl-acc);font-weight:900;font-size:15px;font-variant-numeric:tabular-nums;}
+/* scene: correlation */
+.sl-grid{stroke:var(--line);stroke-width:1;}
+.sl-pt{fill:var(--sl-acc);fill-opacity:.85;stroke:var(--white);stroke-width:1.5;}
+.sl-fit{stroke:var(--sl-alt);stroke-width:2.5;stroke-dasharray:8 5;}
+/* drills */
+.sl-data{font:800 18px var(--font-mono);letter-spacing:.02em;}
+.sl-two{display:flex;flex-direction:column;justify-content:center;gap:14px;width:100%;flex:1;}
+.sl-two-h{margin:0 0 2px;text-align:center;font:800 calc(14px * var(--ls-scale,1)) var(--font-ui);color:var(--ink);}
+.sl-two > div{display:flex;flex-direction:column;align-items:center;}
+.sl-qfig .sl-two svg.psy-plot{max-width:100%;width:100%;height:auto;max-height:min(34vh,320px);}

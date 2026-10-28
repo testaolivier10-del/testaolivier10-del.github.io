@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="sleep-hypnogram-t sleep-hypnogram-d" font-family="Arial, Helvetica, sans-serif">
+<title id="sleep-hypnogram-t">Sleep stages across one night (a hypnogram)</title>
+<desc id="sleep-hypnogram-d">A hypnogram of one 8-hour night (invented for practice). Stages run down the side: awake at the top, then REM, N1, N2 and N3 at the bottom. The sleeper drops through N1 and N2 into N3 within the first half hour, and the night repeats in cycles of about 90 minutes. N3 deep sleep appears in the first half of the night and fades; REM periods come at the end of each cycle and grow longer toward morning, from about 10 minutes in the first cycle to about 30 minutes in the last.</desc>
+<rect width="760" height="380" fill="#FFFFFF"/>
+<rect x="110" y="85.5" width="620" height="24" fill="#D55E00" fill-opacity="0.08"/>
+<line x1="110" y1="30" x2="730" y2="30" stroke="#DDE3E1"/><text x="100" y="35" font-size="14" text-anchor="end" fill="#1F2A28">Awake</text>
+<line x1="110" y1="97.5" x2="730" y2="97.5" stroke="#DDE3E1"/><text x="100" y="102.5" font-size="14" text-anchor="end" fill="#1F2A28" font-weight="bold">REM</text>
+<line x1="110" y1="165" x2="730" y2="165" stroke="#DDE3E1"/><text x="100" y="170" font-size="14" text-anchor="end" fill="#1F2A28">N1</text>
+<line x1="110" y1="232.5" x2="730" y2="232.5" stroke="#DDE3E1"/><text x="100" y="237.5" font-size="14" text-anchor="end" fill="#1F2A28">N2</text>
+<line x1="110" y1="300" x2="730" y2="300" stroke="#DDE3E1"/><text x="100" y="305" font-size="14" text-anchor="end" fill="#1F2A28">N3 (deep)</text>
+<line x1="110" y1="20" x2="110" y2="300" stroke="#1F2A28" stroke-width="1.5"/><line x1="110" y1="300" x2="730" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="110" y1="300" x2="110" y2="305" stroke="#1F2A28"/><text x="110" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">0</text>
+<line x1="187.5" y1="300" x2="187.5" y2="305" stroke="#1F2A28"/><text x="187.5" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">1</text>
+<line x1="265" y1="300" x2="265" y2="305" stroke="#1F2A28"/><text x="265" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">2</text>
+<line x1="342.5" y1="300" x2="342.5" y2="305" stroke="#1F2A28"/><text x="342.5" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">3</text>
+<line x1="420" y1="300" x2="420" y2="305" stroke="#1F2A28"/><text x="420" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">4</text>
+<line x1="497.5" y1="300" x2="497.5" y2="305" stroke="#1F2A28"/><text x="497.5" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">5</text>
+<line x1="575" y1="300" x2="575" y2="305" stroke="#1F2A28"/><text x="575" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">6</text>
+<line x1="652.5" y1="300" x2="652.5" y2="305" stroke="#1F2A28"/><text x="652.5" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">7</text>
+<line x1="730" y1="300" x2="730" y2="305" stroke="#1F2A28"/><text x="730" y="321" font-size="13" text-anchor="middle" fill="#1F2A28">8</text>
+<text x="420" y="346" font-size="14" text-anchor="middle" fill="#1F2A28">Hours after lights out</text>
+<path d="M110 30 L122.9 30 L122.9 165 L130.7 165 L130.7 232.5 L148.8 232.5 L148.8 300 L190.1 300 L190.1 232.5 L206.9 232.5 L206.9 97.5 L219.8 97.5 L219.8 232.5 L239.2 232.5 L239.2 300 L272.8 300 L272.8 232.5 L303.8 232.5 L303.8 97.5 L329.6 97.5 L329.6 232.5 L363.2 232.5 L363.2 300 L378.7 300 L378.7 232.5 L426.5 232.5 L426.5 97.5 L458.8 97.5 L458.8 30 L463.9 30 L463.9 165 L471.7 165 L471.7 232.5 L536.3 232.5 L536.3 97.5 L568.5 97.5 L568.5 232.5 L639.6 232.5 L639.6 97.5 L678.3 97.5 L678.3 232.5 L714.5 232.5 L714.5 165 L722.3 165 L722.3 30 L730 30 L730 30" fill="none" stroke="#084F78" stroke-width="2.5" stroke-linejoin="round"/>
+<line x1="206.9" y1="97.5" x2="219.8" y2="97.5" stroke="#D55E00" stroke-width="7" stroke-linecap="butt"/>
+<line x1="303.8" y1="97.5" x2="329.6" y2="97.5" stroke="#D55E00" stroke-width="7" stroke-linecap="butt"/>
+<line x1="426.5" y1="97.5" x2="458.8" y2="97.5" stroke="#D55E00" stroke-width="7" stroke-linecap="butt"/>
+<line x1="536.3" y1="97.5" x2="568.5" y2="97.5" stroke="#D55E00" stroke-width="7" stroke-linecap="butt"/>
+<line x1="639.6" y1="97.5" x2="678.3" y2="97.5" stroke="#D55E00" stroke-width="7" stroke-linecap="butt"/>
+<rect x="429.9" y="4.3" width="322.9" height="18.6" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="432.9" y="18" font-size="13" text-anchor="start" fill="#1F2A28"><tspan x="432.9" dy="0">REM periods (thick) grow longer toward morning</tspan></text>
+</svg>

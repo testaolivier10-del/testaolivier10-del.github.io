@@ -1,0 +1,20 @@
+{
+ "social-learning": {
+  "def": "Social learning theory (observational learning): learning by watching others and imitating them. It depends on attention, memory (retention), the ability to reproduce the behavior and the motivation to do so."
+ },
+ "vicarious": {
+  "def": "Vicarious conditioning: learning from the consequences that happen to a model. Vicarious reinforcement (the model is rewarded) makes imitation more likely; vicarious punishment (the model is punished) makes it less likely."
+ },
+ "modeling": {
+  "def": "Observing and imitating a specific person's behavior. Models who are similar, admired or rewarded are imitated more."
+ },
+ "insight-learning": {
+  "def": "A sudden understanding of how to solve a problem, reached as a whole rather than by gradual trial and error."
+ },
+ "latent-learning": {
+  "def": "Learning that happens without reinforcement and is not shown until there is a reason (an incentive) to use it."
+ },
+ "cognitive-map": {
+  "def": "A mental representation of the layout of a place, formed by exploring it."
+ }
+}

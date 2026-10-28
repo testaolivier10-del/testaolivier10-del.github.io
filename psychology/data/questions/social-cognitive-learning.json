@@ -1,0 +1,749 @@
+{
+ "stimuli": {
+  "social-cognitive-learning-s1": {
+   "kind": "data",
+   "title": "Invented data: rats in a maze, with and without food",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of mean errors in a maze over 16 days for three groups of rats: always fed at the goal, never fed, and fed starting on day 9; the day-9 group drops to the always-fed level by day 10 (invented data)",
+    "kind": "line",
+    "xLabel": "Day",
+    "yLabel": "Mean wrong turns per run",
+    "x": [
+     0,
+     16
+    ],
+    "xStep": 2,
+    "y": [
+     0,
+     12
+    ],
+    "series": [
+     {
+      "name": "Food every day",
+      "points": [
+       [
+        1,
+        10
+       ],
+       [
+        2,
+        8
+       ],
+       [
+        3,
+        7
+       ],
+       [
+        4,
+        6
+       ],
+       [
+        5,
+        5
+       ],
+       [
+        6,
+        4
+       ],
+       [
+        7,
+        4
+       ],
+       [
+        8,
+        3
+       ],
+       [
+        9,
+        3
+       ],
+       [
+        10,
+        3
+       ],
+       [
+        11,
+        2
+       ],
+       [
+        12,
+        2
+       ],
+       [
+        13,
+        2
+       ],
+       [
+        14,
+        2
+       ],
+       [
+        15,
+        2
+       ],
+       [
+        16,
+        2
+       ]
+      ]
+     },
+     {
+      "name": "Never fed",
+      "points": [
+       [
+        1,
+        10
+       ],
+       [
+        2,
+        10
+       ],
+       [
+        3,
+        9
+       ],
+       [
+        4,
+        9
+       ],
+       [
+        5,
+        9
+       ],
+       [
+        6,
+        8
+       ],
+       [
+        7,
+        8
+       ],
+       [
+        8,
+        8
+       ],
+       [
+        9,
+        8
+       ],
+       [
+        10,
+        8
+       ],
+       [
+        11,
+        7
+       ],
+       [
+        12,
+        7
+       ],
+       [
+        13,
+        7
+       ],
+       [
+        14,
+        7
+       ],
+       [
+        15,
+        7
+       ],
+       [
+        16,
+        7
+       ]
+      ]
+     },
+     {
+      "name": "Food from day 9",
+      "points": [
+       [
+        1,
+        10
+       ],
+       [
+        2,
+        10
+       ],
+       [
+        3,
+        9
+       ],
+       [
+        4,
+        9
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        6,
+        8
+       ],
+       [
+        7,
+        8
+       ],
+       [
+        8,
+        8
+       ],
+       [
+        9,
+        7
+       ],
+       [
+        10,
+        3
+       ],
+       [
+        11,
+        2
+       ],
+       [
+        12,
+        2
+       ],
+       [
+        13,
+        2
+       ],
+       [
+        14,
+        2
+       ],
+       [
+        15,
+        2
+       ],
+       [
+        16,
+        2
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  },
+  "social-cognitive-learning-s2": {
+   "kind": "study",
+   "title": "Invented study: copying a model who builds a tower",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether children copy a new behavior more often when they see the model rewarded for it.",
+    "participants": "60 children aged 4 and 5 from three preschools took part with written consent from a parent. Each child also agreed to play and could stop at any time. Children were randomly assigned to one of three groups of 20.",
+    "method": "Each child watched a two-minute video of an adult building a tower in an unusual way: blocks stacked in a zigzag, then tapped twice with a spoon. In the model-rewarded group, the adult got praise and a prize at the end. In the model-scolded group, the adult was told \"That is not how we play.\" In the no-consequence group, the video simply ended. Each child was then left alone with the blocks and spoon for five minutes, and a coder who did not know the child's group counted how many of the model's six actions the child copied.",
+    "results": "Children copied a mean of 4.1 actions in the model-rewarded group, 2.6 in the no-consequence group and 1.2 in the model-scolded group."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-social-cognitive-learning-1",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Four-year-old Mia watches her older brother get a cookie for saying \"please.\" The next day, Mia says \"please\" when she asks for a snack, though no one has ever rewarded her for it. Which concept best explains Mia's behavior?",
+   "options": [
+    "Vicarious reinforcement",
+    "Positive reinforcement of Mia",
+    "Latent learning",
+    "Stimulus generalization"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Vicarious reinforcement: seeing a model rewarded makes the observer more likely to imitate.",
+    "options": [
+     "Right: Mia saw a model rewarded and became more likely to copy the behavior herself.",
+     "Mia was never rewarded herself, so her behavior was not directly reinforced.",
+     "Latent learning is learning that stays hidden until a reason to show it appears. Mia learned from watching a model be rewarded.",
+     "Generalization is a conditioned response spreading to similar stimuli. Mia copied a behavior."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-2",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A new employee watches a coworker get scolded by the manager for taking a long lunch. The new employee takes short lunches from then on. Which concept explains this?",
+   "options": [
+    "Vicarious punishment",
+    "Negative reinforcement",
+    "Learned helplessness",
+    "Insight learning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The employee learned from a model's consequence, not their own: vicarious punishment.",
+    "options": [
+     "Right: seeing a model punished makes the observer less likely to do the same.",
+     "Negative reinforcement removes something unpleasant after the person's own behavior and increases it.",
+     "Learned helplessness is giving up after uncontrollable events, not avoiding a behavior a model was punished for.",
+     "Insight learning is a sudden solution to a problem."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-3",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A chimpanzee cannot reach a banana hung from the ceiling. After sitting still for several minutes, it suddenly stacks three boxes, climbs them and grabs the fruit. Which concept describes this?",
+   "options": [
+    "Insight learning",
+    "Shaping",
+    "Latent learning",
+    "Superstitious behavior"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Insight: the solution appears suddenly, after a pause, as a whole, the way Wolfgang Köhler described his chimpanzees doing.",
+    "options": [
+     "Right: a sudden grasp of how the parts of a problem fit together, not gradual trial and error.",
+     "Shaping needs a trainer to reinforce steps. The chimp solved it alone, all at once.",
+     "Latent learning is earlier learning that shows up when a reward appears. This is a new solution reached suddenly.",
+     "Superstitious behavior is strengthened by accidental reinforcement; this is purposeful problem solving."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-4",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Jamal rode the bus around his city for a year without paying attention to routes. When the bus line closed, he walked to school by an efficient route on his first try. Which concept explains his success?",
+   "options": [
+    "Latent learning of a cognitive map",
+    "Shaping by successive approximations",
+    "Vicarious reinforcement",
+    "Habituation to the city"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "He formed a mental map of the city (a cognitive map) without reinforcement, and it showed once he had a reason to use it: latent learning.",
+    "options": [
+     "Right: he learned the layout without a reward, and it showed when he needed it.",
+     "No one reinforced steps toward walking the route.",
+     "He did not watch anyone being rewarded for walking that route.",
+     "Habituation is a fading response to a repeated stimulus, not knowledge of a layout."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-5",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Teens who watch an older sibling vape are more likely to start vaping themselves. Which concept from social learning theory best fits?",
+   "options": [
+    "Modeling",
+    "Instinctive drift",
+    "Taste aversion",
+    "Habituation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Modeling: observing and imitating a model's behavior. Note that this link is correlational in real data, so other factors (shared homes, friends, access) also play a part.",
+    "options": [
+     "Right: people imitate the behavior of models, especially models they identify with.",
+     "Instinctive drift is a trained animal sliding toward inborn behavior.",
+     "Taste aversion is a learned avoidance of a food after illness.",
+     "Habituation is a weaker response to a repeated stimulus, not copying someone."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-6",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a study, children watch a video of an adult who hits a toy and is then scolded. Afterward these children copy the hitting less than children who saw no consequence. Then the experimenter offers stickers for each action they can copy, and the children who saw the scolding copy the hitting as well as the others. What does the sticker phase show?",
+   "options": [
+    "They had learned it; the scolding held back performing it",
+    "Stickers taught them the behavior for the first time",
+    "The scolding produced learned helplessness",
+    "Watching a model has no effect on later behavior"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Vicarious punishment lowers performance, not learning. With an incentive, the learned behavior appears.",
+    "options": [
+     "Right: learning and performance differ. The behavior was learned through observation and appeared once it paid.",
+     "They copied it immediately when asked, so it was already learned from the video.",
+     "Learned helplessness is giving up after uncontrollable events. The children acted as soon as there was a reward.",
+     "Watching changed both what they learned and, before stickers, what they did."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-7",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A violinist practices a hard passage slowly, gets it wrong many times, and gradually improves over a week. Her friend, stuck on a puzzle, stares at it and then says \"Oh! Turn it over,\" and solves it. Which pair of concepts matches the two?",
+   "options": [
+    "Trial and error, then insight",
+    "Insight learning and latent learning",
+    "Latent learning and modeling",
+    "Modeling and shaping"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Insight is sudden, whole and often comes after a pause; gradual improvement through repeated attempts is trial and error.",
+    "options": [
+     "Right: the violinist improves gradually; the friend reaches a sudden, whole solution.",
+     "The violinist's gradual improvement is not insight, which is sudden.",
+     "Neither person is copying a model, and the violinist's progress is visible, not hidden.",
+     "No model is copied by the friend; no trainer shapes either one."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-8",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Researchers find that a child is more likely to imitate a model who is similar to the child, warm, and respected. What does this suggest about observational learning?",
+   "options": [
+    "Who the model is affects imitation",
+    "Imitation happens equally for any model",
+    "Behavior changes through direct reinforcement and nothing else",
+    "Children imitate a behavior when an adult tells them to copy it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Attention to a model, and the motivation to copy it, rise when the model is similar, warm, high in status or rewarded.",
+    "options": [
+     "Right: models seen as similar, admired or successful are imitated more.",
+     "The finding says the opposite: some models are imitated more than others.",
+     "Observational learning changes behavior without direct reinforcement.",
+     "Children imitate a great deal without instruction, and the finding is about who the model is."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-9",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the moment a dog gets an unexpected treat, cells in its brain's reward center release dopamine, and this signal is strongest when the reward is better than expected. Which statement about learning does this best support?",
+   "options": [
+    "The brain signals when an outcome beats the prediction",
+    "Learning is a mental event with no measurable link to brain activity",
+    "Dopamine release is limited to classical conditioning in dogs",
+    "A treat is a secondary reinforcer for a dog"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reward circuits that use dopamine respond most to rewards that are better than expected, one neurological factor in learning.",
+    "options": [
+     "Right: dopamine signals in reward circuits track surprising rewards, which helps strengthen the behavior that came before.",
+     "The finding shows brain activity linked to learning.",
+     "Reward signals matter in operant learning too; the scenario is about a treat after a behavior.",
+     "Food is a primary reinforcer. The question is about the brain signal."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-10",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "According to social learning theory, which step must happen before an observer can reproduce a model's behavior?",
+   "options": [
+    "The observer attends to and remembers the act",
+    "The observer is rewarded for the exact behavior",
+    "The model is punished in front of the observer",
+    "The observer is shaped through successive approximations"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bandura described attention, retention (memory), reproduction and motivation. Without attention and memory, nothing can be copied.",
+    "options": [
+     "Right: attention and memory (retention) come before reproduction.",
+     "Observational learning can happen with no reward to the observer.",
+     "Punishing the model lowers imitation; it is not a required step.",
+     "Shaping is operant training, not part of learning by observation."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-11",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "social-cognitive-learning-s1",
+   "q": "On day 10 the \"food from day 9\" group suddenly makes about as few errors as the group fed every day. What does this show?",
+   "options": [
+    "They had learned the maze earlier without showing it",
+    "One day of food taught them the whole maze",
+    "Rats that get no food at the goal learn nothing about a maze",
+    "The rats had habituated to the maze"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Their sudden drop means the learning happened earlier, unrewarded, and was revealed once a reward appeared: latent learning.",
+    "options": [
+     "Right: latent learning. Food gave them a reason to use a cognitive map they already had.",
+     "Learning the maze from scratch took the always-fed rats about ten days, so one day is too fast.",
+     "The never-fed rats improved a little, and the day-9 group shows unfed rats learned the layout.",
+     "Habituation would mean a weaker response to the maze, not fewer wrong turns once food appeared."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-12",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-cognitive-learning-s1",
+   "q": "Which concept names what the day-9 rats most likely formed during days 1 to 8?",
+   "options": [
+    "A cognitive map",
+    "A conditioned taste aversion",
+    "A secondary reinforcer",
+    "An unconditioned response"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Exploring without food, the rats built a mental representation of the maze, a cognitive map.",
+    "options": [
+     "Right: a mental picture of the maze's layout.",
+     "Taste aversion is a learned dislike of a food after illness.",
+     "A secondary reinforcer is a stimulus that gained value by being paired with a reward.",
+     "A UCR is an unlearned reflex. Knowing a maze is learned."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-13",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "social-cognitive-learning-s1",
+   "q": "Find the mean number of wrong turns for the \"never fed\" group across days 1 to 4.",
+   "why": {
+    "correct": "$\\frac{10 + 10 + 9 + 9}{4} = \\frac{38}{4} = 9.5$ wrong turns."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       10,
+       10,
+       9,
+       9
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         10,
+         10,
+         9,
+         9
+        ]
+       ]
+      },
+      "why": "38 is the total for the four days. Divide by 4."
+     },
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         10,
+         8,
+         7,
+         6
+        ]
+       ]
+      },
+      "why": "7.75 is the mean of the \"food every day\" group. Use the never-fed line."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-14",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "social-cognitive-learning-s2",
+   "q": "What is the independent variable in this study?",
+   "options": [
+    "The consequence the model received in the video",
+    "The number of the model's actions each child copied",
+    "The children's age",
+    "The coder's knowledge of each child's group"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The researchers manipulated what happened to the model; the number of copied actions was the outcome.",
+    "options": [
+     "Right: it was manipulated across three groups (rewarded, scolded, no consequence).",
+     "That is what was measured, the dependent variable.",
+     "All children were 4 or 5; age was not manipulated.",
+     "The coder was kept unaware of the groups to prevent bias. That is a control, not the IV."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-15",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-cognitive-learning-s2",
+   "q": "Which concept best explains why children in the model-scolded group copied the fewest actions?",
+   "options": [
+    "Vicarious punishment",
+    "Negative reinforcement",
+    "Latent learning",
+    "Insight learning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The observers saw the model punished and imitated less: vicarious punishment.",
+    "options": [
+     "Right: seeing the model scolded made the observers less likely to perform the behavior.",
+     "Nothing unpleasant was removed after the children acted.",
+     "Latent learning explains behavior appearing later when a reward appears, not lower copying after a model is scolded.",
+     "Insight is a sudden solution to a problem, not copying."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-16",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "social-cognitive-learning-s2",
+   "q": "Why did the researchers use a coder who did not know which group each child was in?",
+   "options": [
+    "To keep expectations from biasing the counts",
+    "To make sure the sample represented preschoolers in general",
+    "To give the children informed consent",
+    "To randomly assign children to groups"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Keeping the coder unaware of conditions guards against experimenter bias in the measurement.",
+    "options": [
+     "Right: a coder who knows the hypothesis might count copied actions differently in each group.",
+     "Who was sampled is about representativeness, not about how the coder counted.",
+     "Consent came from parents, and the coder's knowledge has nothing to do with it.",
+     "Random assignment decides each child's group; it is separate from what the coder knew."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-cognitive-learning-17",
+   "unit": "unit-3",
+   "topic": "social-cognitive-learning",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "social-cognitive-learning-s2",
+   "q": "Write the operational definition of imitation used in this study.",
+   "why": {
+    "correct": "The study measured imitation as a count of copied actions (out of six) in a five-minute play period."
+   },
+   "specific": {
+    "frame": "Imitation was measured as ___ during ___.",
+    "write": {
+     "context": [
+      "copied",
+      "actions"
+     ]
+    },
+    "model": "Imitation was measured as the number of the model's six actions a child copied, counted by a coder, during five minutes alone with the blocks and spoon.",
+    "slots": {
+     "opdef": {
+      "label": "What was counted",
+      "options": [
+       "the number of the model's six actions a child copied",
+       "how much a child liked the model",
+       "whether a child watched the whole video"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Liking the model was not measured.",
+       "2": "Watching the video was part of the procedure, not the measure."
+      }
+     },
+     "when": {
+      "label": "When",
+      "options": [
+       "five minutes alone with the blocks and spoon",
+       "the two-minute video"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The video came first; copying was counted afterward, during the five minutes of play."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

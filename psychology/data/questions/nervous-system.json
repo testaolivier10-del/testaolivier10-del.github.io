@@ -1,0 +1,488 @@
+{
+ "stimuli": {
+  "nervous-system-s1": {
+   "kind": "visual",
+   "title": "The divisions of the nervous system",
+   "figure": "nervous-system-divisions"
+  },
+  "nervous-system-s2": {
+   "kind": "data",
+   "title": "Heart rate before, during and after a surprise",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of one participant’s heart rate in beats per minute every 30 seconds: about 70 at rest, rising to 110 right after a loud noise at 60 seconds, then falling back to about 72 by 240 seconds; invented data",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Heart rate",
+      "points": [
+       [
+        0,
+        70
+       ],
+       [
+        30,
+        71
+       ],
+       [
+        60,
+        70
+       ],
+       [
+        90,
+        110
+       ],
+       [
+        120,
+        98
+       ],
+       [
+        150,
+        86
+       ],
+       [
+        180,
+        78
+       ],
+       [
+        210,
+        74
+       ],
+       [
+        240,
+        72
+       ]
+      ]
+     }
+    ],
+    "xLabel": "Time (seconds); loud noise at 60 s",
+    "yLabel": "Heart rate (beats per minute)"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-nervous-system-1",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A goalkeeper sees a penalty kick coming and dives to her left. Which division of the nervous system carries the commands that move her arms and legs?",
+   "options": [
+    "The somatic nervous system",
+    "The parasympathetic nervous system",
+    "The autonomic nervous system",
+    "The sympathetic nervous system"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The somatic nervous system, part of the peripheral nervous system, carries commands from the central nervous system to the skeletal muscles and brings in sensations from the body.",
+    "options": [
+     "Right: it controls voluntary movement of the skeletal muscles.",
+     "The parasympathetic division calms the body; it does not move skeletal muscles.",
+     "The autonomic system runs automatic functions such as heart rate, not deliberate movement.",
+     "The sympathetic division arouses the body’s organs; it does not direct the dive itself."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-2",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Walking home at night, Leo hears footsteps behind him. His heart pounds, his breathing quickens and his mouth goes dry. Which division is most active?",
+   "options": [
+    "The parasympathetic nervous system",
+    "The sympathetic nervous system",
+    "The somatic nervous system",
+    "The central nervous system alone"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The sympathetic division of the autonomic nervous system speeds the heart and breathing, widens the pupils and slows digestion, preparing the body to act.",
+    "options": [
+     "The parasympathetic division calms the body, slowing the heart.",
+     "Right: it arouses the body for action.",
+     "The somatic system moves skeletal muscles; these are automatic changes in organs.",
+     "The heart and breathing changes are carried out through the peripheral, autonomic system."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-3",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a big holiday dinner, Rosa relaxes on the couch. Her heart rate slows and her stomach digests the meal. Which division is most active?",
+   "options": [
+    "The sympathetic nervous system",
+    "The somatic nervous system",
+    "The parasympathetic nervous system",
+    "The spinal cord alone"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The parasympathetic division conserves energy: it slows the heart, lowers blood pressure and lets digestion resume.",
+    "options": [
+     "The sympathetic division arouses the body and slows digestion.",
+     "Digestion and heart rate are automatic, not voluntary movement.",
+     "Right: it calms the body and supports digestion.",
+     "The spinal cord is part of the central nervous system; the calming of organs is autonomic."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-4",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A car accident damages a person’s spinal cord at the middle of the back. Why might he lose feeling and movement in his legs but not in his arms?",
+   "options": [
+    "The spinal cord belongs to the peripheral nervous system, which controls the legs",
+    "The injury stopped the parasympathetic division from calming the legs",
+    "The legs are controlled by the autonomic system and the arms by the somatic",
+    "Messages between the brain and the legs pass through the damaged part of the cord"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The spinal cord carries messages between the brain and the body. An injury cuts off the parts of the body whose nerves connect to the cord below it.",
+    "options": [
+     "The spinal cord is part of the central nervous system.",
+     "Losing feeling and movement is about blocked messages, not calming.",
+     "Both arms and legs are moved by the somatic system.",
+     "Right: the nerves for the arms join the cord above the injury."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-5",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which pair correctly matches a structure with its division of the nervous system?",
+   "options": [
+    "The spinal cord: central nervous system",
+    "The brain: peripheral nervous system",
+    "Nerves to the heart: somatic nervous system",
+    "Nerves to the leg muscles: autonomic nervous system"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The central nervous system is the brain and spinal cord. Everything else, the nerves reaching out to the body, is the peripheral nervous system.",
+    "options": [
+     "Right: the brain and spinal cord make up the CNS.",
+     "The brain is the center of the central nervous system.",
+     "Nerves that run the heart belong to the autonomic system.",
+     "Nerves that move skeletal muscles belong to the somatic system."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-6",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which is the best description of a neuron?",
+   "options": [
+    "A division of the peripheral nervous system that moves muscles",
+    "A nerve cell that carries information through the nervous system",
+    "The bundle of nerves that runs inside the backbone to the brain",
+    "A part of the brain that controls breathing and heart rate"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Neurons are the basic building blocks of the nervous system: cells specialized to receive and send information. The next topic follows how they fire.",
+    "options": [
+     "That describes the somatic nervous system.",
+     "Right: neurons are the cells that send messages.",
+     "That describes the spinal cord.",
+     "Neurons are cells found throughout the nervous system, not one brain part."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-7",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student who is nervous before a speech practices slow, deep breathing and feels her pounding heart settle. What is the slow breathing most likely encouraging?",
+   "options": [
+    "Sympathetic activity, which arouses the body",
+    "Somatic control of her heart muscle",
+    "Parasympathetic activity, which calms the body",
+    "Activity in her central nervous system alone"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Breathing is one autonomic function people can also control on purpose. Slow breathing is associated with a shift toward parasympathetic, calming activity.",
+    "options": [
+     "Sympathetic activity would speed her heart, not settle it.",
+     "The heart is run by the autonomic system, not the somatic.",
+     "Right: slow breathing is linked to calming responses.",
+     "The calming of her heart is carried out by the peripheral, autonomic system."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-8",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nervous-system-s1",
+   "q": "In the diagram, which two divisions make up the peripheral nervous system?",
+   "options": [
+    "The sympathetic and parasympathetic divisions",
+    "The brain and the spinal cord",
+    "The central and autonomic nervous systems",
+    "The somatic and autonomic nervous systems"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The peripheral nervous system divides into the somatic (voluntary) and autonomic (automatic) systems.",
+    "options": [
+     "Those two are the divisions of the autonomic system.",
+     "Those make up the central nervous system.",
+     "The central nervous system is separate from the peripheral.",
+     "Right: both branch from the peripheral nervous system."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-9",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nervous-system-s1",
+   "q": "According to the diagram, which change would the sympathetic division produce?",
+   "options": [
+    "Wider pupils and slower digestion",
+    "A slower heart and resumed digestion",
+    "A voluntary kick of a ball",
+    "Taking in information and making decisions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The sympathetic division prepares the body for action: faster heart, wider pupils, slower digestion, more sweating.",
+    "options": [
+     "Right: the diagram lists both under the sympathetic division.",
+     "Those are parasympathetic effects.",
+     "Kicking a ball is somatic.",
+     "That is the role of the central nervous system."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-10",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nervous-system-s1",
+   "q": "In the diagram’s example, a car horn makes a pedestrian’s heart pound and he jumps back. Which divisions are involved, in order?",
+   "options": [
+    "Somatic for the pounding heart, sympathetic for the jump",
+    "Sympathetic for the pounding heart, somatic for the jump",
+    "Parasympathetic for the pounding heart, autonomic for the jump",
+    "Central for the pounding heart, parasympathetic for the jump"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The heart’s pounding is sympathetic (autonomic) arousal; jumping back moves skeletal muscles through the somatic system.",
+    "options": [
+     "This swaps the two: the heart is autonomic and the jump uses skeletal muscles.",
+     "Right: an automatic arousal and a voluntary-muscle movement.",
+     "The parasympathetic division calms the heart rather than speeding it.",
+     "The jump uses skeletal muscles, moved by the somatic system."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-11",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nervous-system-s1",
+   "q": "A minute after the horn, the pedestrian’s heart rate returns to normal. Which part of the diagram explains this?",
+   "options": [
+    "The somatic nervous system",
+    "The sympathetic division",
+    "The parasympathetic division",
+    "The central nervous system’s spinal cord"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "After a threat passes, the parasympathetic division brings heart rate and breathing back down.",
+    "options": [
+     "Heart rate is not under somatic control.",
+     "The sympathetic division raised his heart rate.",
+     "Right: it calms the body after arousal.",
+     "The calming of the heart is carried out by the parasympathetic division."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-12",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nervous-system-s2",
+   "q": "What change does the graph show right after the loud noise?",
+   "options": [
+    "Heart rate fell from about 110 to 70 beats per minute",
+    "Heart rate stayed close to 70 beats per minute",
+    "Heart rate rose slowly over the full four minutes",
+    "Heart rate rose from about 70 to 110 beats per minute"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The line jumps from about 70 to 110 just after the noise at 60 seconds.",
+    "options": [
+     "That happens later, as the heart rate recovers.",
+     "There is a sharp rise after the noise.",
+     "The rise is sudden, followed by a slow fall.",
+     "Right: the peak comes at 90 seconds."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-13",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "nervous-system-s2",
+   "q": "Which division explains the fall in heart rate from 90 to 240 seconds?",
+   "options": [
+    "The parasympathetic division calming the body",
+    "The sympathetic division arousing the body",
+    "The somatic system relaxing the skeletal muscles",
+    "The spinal cord blocking messages from the brain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Once the surprise passes, parasympathetic activity slows the heart back toward its resting rate.",
+    "options": [
+     "Right: heart rate returns toward rest.",
+     "Sympathetic arousal raised the heart rate after the noise.",
+     "Heart rate is controlled by the autonomic system, not the somatic.",
+     "Nothing was blocked; the body returned toward rest."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-14",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "nervous-system-s2",
+   "q": "About how long after the noise did the heart rate get back within a few beats of its resting level?",
+   "options": [
+    "About 30 seconds, near 90 seconds",
+    "About 3 minutes, near 240 seconds",
+    "About 1 minute, near 120 seconds",
+    "It did not come back down during the recording"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The noise came at 60 seconds and the heart rate was back near 72 at 240 seconds: about three minutes. Arousal is fast; calming takes longer.",
+    "options": [
+     "At 90 seconds the heart rate was at its peak, 110.",
+     "Right: it is about 72 at 240 seconds, close to the resting 70.",
+     "At 120 seconds it was still about 98.",
+     "It fell to about 72 by 240 seconds."
+    ]
+   }
+  },
+  {
+   "id": "psy-nervous-system-15",
+   "unit": "unit-1",
+   "topic": "nervous-system",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.A",
+   "stimulus": "nervous-system-s2",
+   "q": "Build an explanation of the graph using the autonomic nervous system.",
+   "why": {
+    "correct": "Apply each division to the part of the graph it explains, with the numbers."
+   },
+   "specific": {
+    "frame": "The rise to 110 beats per minute shows ___, and the fall back to about 72 shows ___.",
+    "write": {
+     "concept": [
+      "sympathetic",
+      "parasympathetic"
+     ]
+    },
+    "model": "The rise to 110 beats per minute shows the sympathetic division arousing the body after the noise, and the fall back to about 72 shows the parasympathetic division calming it once the surprise passed.",
+    "slots": {
+     "concept": {
+      "label": "The rise",
+      "options": [
+       "sympathetic arousal after the noise",
+       "parasympathetic calming after the noise",
+       "somatic control of the heart"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Calming would slow the heart, not speed it to 110.",
+       "2": "The heart is run by the autonomic system, not the somatic."
+      }
+     },
+     "link": {
+      "label": "The fall",
+      "options": [
+       "sympathetic arousal continuing",
+       "parasympathetic calming once the surprise passed",
+       "the central nervous system shutting down"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "Continued arousal would keep the heart rate high.",
+       "2": "Nothing shut down; the body returned toward rest."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

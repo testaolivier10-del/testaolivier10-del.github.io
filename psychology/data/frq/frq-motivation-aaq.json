@@ -1,0 +1,171 @@
+{
+ "id": "frq-motivation-aaq",
+ "type": "aaq",
+ "points": 7,
+ "title": "Rewards and intrinsic motivation",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "motivation"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.C",
+  "2.D",
+  "2.C",
+  "4.B"
+ ],
+ "study": {
+  "title": "Do expected rewards lower interest in a puzzle game?",
+  "invented": true,
+  "study": {
+   "introduction": "Self-determination theory predicts that an expected reward for doing an activity a person already enjoys can lower their intrinsic motivation once the reward stops (the overjustification effect). The researchers tested this prediction with a puzzle game that most teenagers find enjoyable.",
+   "participants": "96 students, ages 15 to 18 (52 girls, 44 boys), from three public high schools in suburban Minnesota. All students had rated the puzzle game as enjoyable (5 or higher on a 7-point scale) in a screening session. Parents gave written permission and each student gave assent. Students were told they could stop at any time without losing anything. The study was approved by a university institutional review board.",
+   "method": "Students were randomly assigned to two groups of 48. In the first session, the reward group was told before starting that they would earn \\$1 for every puzzle they solved; the no-reward group was not offered any reward. Both groups played for 20 minutes. One week later, each student came back alone and was told the researcher needed 10 minutes to set up. During those 10 minutes the student could do anything in the room: play the puzzle game, read magazines or use their phone. Free-choice play was the number of seconds, out of 600, the student spent playing the puzzle game, recorded by a hidden timer. After the session, students were told about the timer and the purpose of the study, and given the chance to have their data removed.",
+   "results": "In the first session, the two groups solved a similar number of puzzles. In the free-choice period one week later, the reward group spent a mean of 182 seconds playing the game and the no-reward group a mean of 311 seconds. The difference was statistically significant ($p < .05$).",
+   "discussion": "The researchers concluded that the expected reward reduced students' later free-choice interest in an activity they had enjoyed, as self-determination theory predicts. They noted that the study used one game and one kind of reward."
+  },
+  "plot": {
+   "label": "Bar graph: mean seconds of free-choice play one week later, reward group 182, no-reward group 311 (invented data)",
+   "kind": "bar",
+   "categories": [
+    "Expected reward",
+    "No reward"
+   ],
+   "values": [
+    182,
+    311
+   ],
+   "yLabel": "Mean seconds playing (out of 600)",
+   "xLabel": "Group"
+  },
+  "ethics": [
+   "institutional review board approval",
+   "informed consent (parental permission) and assent",
+   "right to withdraw",
+   "debriefing after deception"
+  ]
+ },
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Identify</b> the research method used in the study.",
+   "rubric": [
+    {
+     "point": "Identifies the method as an experiment.",
+     "accept": [
+      "an experiment",
+      "a randomized experiment",
+      "an experimental design (no hybrid such as \"experimental correlation\")"
+     ]
+    }
+   ],
+   "sample": "The study is an experiment: the researchers manipulated whether students were offered a reward and randomly assigned students to the reward or no-reward group."
+  },
+  {
+   "label": "B",
+   "points": 1,
+   "prompt": "<b>State</b> the operational definition of intrinsic motivation in the study.",
+   "rubric": [
+    {
+     "point": "States that intrinsic motivation was measured as the number of seconds (out of 600) a student spent playing the puzzle game during the free-choice period one week later.",
+     "accept": [
+      "seconds spent playing the puzzle game during the 10-minute free-choice period",
+      "time on the game, recorded by a hidden timer, when the student could choose any activity"
+     ]
+    }
+   ],
+   "sample": "Intrinsic motivation was measured as the number of seconds, out of 600, that a student chose to spend playing the puzzle game during the 10-minute free-choice period one week later, recorded by a hidden timer.",
+   "write": {
+    "context": [
+     "seconds",
+     "free-choice",
+     "free choice",
+     "timer"
+    ]
+   }
+  },
+  {
+   "label": "C",
+   "points": 1,
+   "prompt": "<b>Describe</b> what the difference between the group means shows about the effect of the expected reward.",
+   "rubric": [
+    {
+     "point": "Explains that the reward group spent less free-choice time on the game than the no-reward group (182 versus 311 seconds), showing that the expected reward lowered later interest, and that the difference is unlikely to be due to chance.",
+     "accept": [
+      "the reward group chose to play about 129 fewer seconds, so the expected reward reduced free-choice play",
+      "the no-reward group played longer; statistically significant means the gap is unlikely to be chance"
+     ]
+    }
+   ],
+   "sample": "Students who expected a reward spent less of the free-choice period playing (182 seconds) than students who were not offered one (311 seconds), about 129 seconds less. Because the difference was statistically significant, it is unlikely to be due to chance, so the expected reward appears to have lowered the students' later interest in the game."
+  },
+  {
+   "label": "D",
+   "points": 1,
+   "prompt": "<b>Identify</b> one ethical guideline the researchers applied, and <b>explain</b> how they applied it in the study.",
+   "rubric": [
+    {
+     "point": "Identifies a safeguard described in the summary and explains how it was applied: IRB approval (a university board approved the study); informed consent and assent (parents gave written permission and students agreed); right to withdraw (students could stop at any time); or debriefing (after the hidden timer, students were told the purpose and could remove their data).",
+     "accept": [
+      "debriefing: students were told about the hidden timer and the purpose, and could have their data removed",
+      "informed consent: parents gave written permission and students gave assent",
+      "right to withdraw: students were told they could stop at any time without losing anything"
+     ]
+    }
+   ],
+   "sample": "The researchers used debriefing. Because students were not told that a hidden timer was recording their free-choice play, after the session the researchers told each student about the timer and the real purpose of the study and offered to remove their data."
+  },
+  {
+   "label": "E",
+   "points": 1,
+   "prompt": "<b>Explain</b> the extent to which the results of the study can be generalized to high school students in the United States.",
+   "rubric": [
+    {
+     "point": "Makes a claim about generalizing to US high school students supported by participant characteristics: they were 15 to 18 and in public high schools (supports), but all came from three suburban Minnesota schools and had been screened to enjoy the game (limits); \"partly\" needs both sides.",
+     "accept": [
+      "partly: they were US public high school students aged 15 to 18, but only from suburban Minnesota schools",
+      "limited: only students who already liked the game were included, so it may not apply to students who do not"
+     ]
+    }
+   ],
+   "sample": "The results can be generalized only partly. The participants were 15- to 18-year-olds in US public high schools, which matches the population. But all of them came from three suburban schools in Minnesota and were chosen because they already enjoyed the game, so the results may not apply to students in cities or rural areas, or to students who do not already like the activity."
+  },
+  {
+   "label": "F",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the results of the study support or refute the overjustification effect.",
+   "rubric": [
+    {
+     "point": "Uses a specific, accurate result from the study: the reward group spent a mean of 182 seconds playing in the free-choice period, compared with 311 seconds for the no-reward group.",
+     "accept": [
+      "the reward group played less in the free-choice period (182 vs 311 seconds)",
+      "students offered \\$1 per puzzle chose to play about 129 seconds less a week later"
+     ]
+    },
+    {
+     "point": "Explains how that result supports the overjustification effect: an expected reward for an activity students already enjoyed lowered their intrinsic motivation once the reward was gone.",
+     "accept": [
+      "this supports it, because an expected reward reduced later free-choice interest in an enjoyed task",
+      "supports: the reward shifted the reason for playing from enjoyment to money, so play dropped without it"
+     ]
+    }
+   ],
+   "sample": "The results support the overjustification effect. One week later, when no reward was available, students who had been promised \\$1 per puzzle spent a mean of only 182 seconds playing the game, compared with 311 seconds for students who were never offered a reward. Both groups had enjoyed the game at the start and were randomly assigned, so the expected reward is the likely cause: being paid shifted the students' reason for playing from enjoyment to the money, which lowered their intrinsic motivation once the money was gone.",
+   "write": {
+    "concept": [
+     "overjustification",
+     "intrinsic motivation"
+    ],
+    "context": [
+     "182",
+     "311",
+     "reward group"
+    ]
+   }
+  }
+ ]
+}

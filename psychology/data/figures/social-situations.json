@@ -1,0 +1,12 @@
+{
+ "social-situations-helping": {
+  "file": "figures/social-situations-helping.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four steps before helping (notice, interpret as an emergency, take responsibility, act), each with how other bystanders can interfere, including diffusion of responsibility."
+ }
+}

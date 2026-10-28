@@ -1,0 +1,465 @@
+{
+ "stimuli": {
+  "memory-intro-s1": {
+   "kind": "study",
+   "title": "Thinking about meaning and remembering words",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers tested whether the kind of question people answer about a word changes how well they remember it later.",
+    "participants": "90 adults (ages 18-60) recruited through a community library took part. All gave informed consent, and the consent form explained they could withdraw at any time.",
+    "method": "Each participant saw the same 40 words, one at a time, and answered one yes-or-no question about each. A computer randomly assigned each participant to one of three conditions (30 per condition). Letters condition: \"Is the word in capital letters?\" Rhyme condition: \"Does the word rhyme with <i>train</i>?\" Meaning condition: \"Would the word fit in the sentence <i>She put the ___ on the table</i>?\" Participants were not told there would be a memory test. Twenty minutes later they were given a surprise test: a list of 80 words (the 40 they saw and 40 new ones), and they marked each word they had seen.",
+    "results": "The letters group correctly marked 15% of the words they had seen, the rhyme group 45%, and the meaning group 78%.",
+    "discussion": "Afterward, every participant was told why the test had been a surprise and could ask to have their data removed."
+   }
+  },
+  "memory-intro-s2": {
+   "kind": "data",
+   "title": "Two tasks at once",
+   "invented": true,
+   "html": "<p>Forty students held a list of 7 spoken digits in mind for 20 seconds, then said them back. During the 20 seconds, every student did each of three things on different trials: nothing, repeating \"the the the\" out loud, or tapping a pattern on a keypad they could see. The table shows the percent of digits recalled in order.</p>",
+   "table": {
+    "caption": "Percent of digits recalled in order, by what students did while holding the digits (invented data for practice)",
+    "cols": [
+     "During the 20 seconds",
+     "Digits recalled"
+    ],
+    "rows": [
+     [
+      "Nothing",
+      "86%"
+     ],
+     [
+      "Repeating \"the the the\"",
+      "52%"
+     ],
+     [
+      "Tapping a visual pattern",
+      "80%"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-memory-intro-1",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "memory-intro-s1",
+   "q": "Which concept do the results best support?",
+   "options": [
+    "Levels of processing: thinking about meaning leads to better memory",
+    "Procedural memory: practicing a skill makes it automatic",
+    "Prospective memory: people remember planned actions better than words",
+    "Sensory memory: words held for a moment are fully stored"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The three questions differ in depth: letters (shallow, appearance), rhyme (sound), meaning (deep). Memory rose with depth, as the levels-of-processing idea predicts.",
+    "options": [
+     "Right: The three questions differ in depth: letters (shallow, appearance), rhyme (sound), meaning (deep). Memory rose with depth, as the levels-of-processing idea predicts.",
+     "Procedural memory is for skills and habits. Marking words seen is explicit memory for facts, not a skill.",
+     "Prospective memory is remembering to do something in the future. No one had to remember to carry out an action.",
+     "Sensory memory lasts under a few seconds. The test came 20 minutes later and depended on how the words were processed."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-2",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "memory-intro-s1",
+   "q": "How did this study operationally define memory for the words?",
+   "options": [
+    "The type of question a participant answered about each word",
+    "The percent of seen words correctly marked on the 80-word list",
+    "How deeply a participant thought about the words while reading",
+    "The amount of time between seeing the words and the test"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An operational definition says exactly how this study measured the variable: correctly marked words on the surprise list, reported as a percent.",
+    "options": [
+     "That is the independent variable, which the researchers assigned.",
+     "Right: An operational definition says exactly how this study measured the variable: correctly marked words on the surprise list, reported as a percent.",
+     "Depth of thought is the idea being tested. The study measured marked words, not thought directly.",
+     "The 20-minute delay was the same for everyone. It is a controlled detail, not the measure."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-3",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "memory-intro-s1",
+   "q": "Each participant saw 40 words. On average, how many of those 40 words did the meaning group mark correctly?",
+   "why": {
+    "correct": "$78\\%$ of $40$ words: $0.78 \\times 40 = 31.2$, so about $31$ words on average (31 or 31.2 is accepted)."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      0.78,
+      40
+     ]
+    },
+    "tol": 0.25,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        0.78,
+        80
+       ]
+      },
+      "why": "62.4 uses all 80 words on the test list. Only 40 of them had been seen, and the percent is of those 40."
+     },
+     {
+      "value": 78,
+      "why": "78 is the percent, not a number of words. Take 78% of the 40 words seen."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-4",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "memory-intro-s1",
+   "q": "The participants were not told about the memory test in advance. Which safeguard in the summary addresses this?",
+   "options": [
+    "Random assignment: a computer placed each participant in one of the three conditions",
+    "Confidentiality: participants' names were removed from the data files",
+    "Debriefing: afterward each person learned why the test was a surprise",
+    "Animal care review: an animal welfare committee approved the procedure"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "When a study withholds information, researchers explain the true purpose afterward (debriefing). The summary says this was done and data could be removed.",
+    "options": [
+     "Random assignment is a design step that supports cause and effect, not an ethical safeguard.",
+     "The summary never mentions how names were handled.",
+     "Right: When a study withholds information, researchers explain the true purpose afterward (debriefing). The summary says this was done and data could be removed.",
+     "All participants were human adults, and no committee review is described."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-5",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "memory-intro-s2",
+   "q": "Repeating \"the the the\" hurt digit recall much more than tapping a pattern. Which part of working memory best explains this?",
+   "options": [
+    "The visuospatial sketchpad, which holds images and places",
+    "Long-term memory, which has a very large capacity",
+    "Sensory memory, which holds sounds for a few seconds",
+    "The phonological loop, which holds words and sounds"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Saying words out loud uses the same sound-based store that keeps spoken digits in mind, so the two tasks compete. Tapping uses the visuospatial sketchpad, which competes much less.",
+    "options": [
+     "If the sketchpad held the digits, tapping a visual pattern would have hurt recall most. It hurt least.",
+     "The digits were held for only 20 seconds; the result is about what competes for space in the short-term store.",
+     "Echoic memory fades within seconds, long before the 20-second delay ended.",
+     "Right: Saying words out loud uses the same sound-based store that keeps spoken digits in mind, so the two tasks compete. Tapping uses the visuospatial sketchpad, which competes much less."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-6",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "memory-intro-s2",
+   "q": "By how many percentage points was recall lower when repeating \"the the the\" than when doing nothing?",
+   "why": {
+    "correct": "$86 - 52 = 34$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      86,
+      52
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        86,
+        80
+       ]
+      },
+      "why": "6 compares doing nothing with tapping. The question compares doing nothing with repeating words."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        80,
+        52
+       ]
+      },
+      "why": "28 compares tapping with repeating. Compare repeating with doing nothing (86%)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-7",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "memory-intro-s2",
+   "q": "Every student did all three tasks, on different trials. What is the main advantage of this design?",
+   "options": [
+    "Each student is compared with themselves, so personal ability is held constant",
+    "It lets the researchers generalize the results to adults in many different cultures and settings",
+    "It turns the study into a correlational study of tasks and recall",
+    "It removes the need for an operational definition of recall"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the same people do every condition, their individual abilities are the same across conditions, so a difference between conditions points to the task.",
+    "options": [
+     "Right: When the same people do every condition, their individual abilities are the same across conditions, so a difference between conditions points to the task.",
+     "Generalizing depends on who the participants are (here, 40 students), not on doing every condition.",
+     "The researchers still set the tasks, so it remains an experiment; this design is one kind of experiment.",
+     "Recall still has to be measured exactly, here as the percent of digits said back in order."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-8",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Maya remembers her eighth birthday party, the cake and who was there. Which kind of memory is this?",
+   "options": [
+    "Semantic memory",
+    "Episodic memory",
+    "Procedural memory",
+    "Prospective memory"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Memory of a specific personal event, tied to a time and place, is episodic memory, a kind of explicit memory.",
+    "options": [
+     "Semantic memory holds general facts, like knowing what a birthday is, not a particular one you lived through.",
+     "Right: Memory of a specific personal event, tied to a time and place, is episodic memory, a kind of explicit memory.",
+     "Procedural memory is for skills, like riding a bike. Maya is recalling an event.",
+     "Prospective memory is remembering to do something later. Maya is remembering the past."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-9",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ravi knows that Paris is the capital of France but cannot remember when or where he learned it. Which kind of memory holds this fact?",
+   "options": [
+    "Episodic memory",
+    "Implicit memory",
+    "Semantic memory",
+    "Sensory memory"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "General knowledge separated from the moment it was learned is semantic memory, a kind of explicit memory.",
+    "options": [
+     "Episodic memory is tied to a particular personal event. Ravi cannot recall the event of learning it.",
+     "Implicit memory works without conscious recall, like a skill. Ravi can consciously state the fact.",
+     "Right: General knowledge separated from the moment it was learned is semantic memory, a kind of explicit memory.",
+     "Sensory memory lasts only a moment. This fact has lasted years."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-10",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Years after learning, Lena types quickly without thinking about where the keys are, but she cannot say where the letter G is without picturing a keyboard. Which kind of memory lets her type?",
+   "options": [
+    "Semantic memory",
+    "Episodic memory",
+    "Prospective memory",
+    "Procedural memory"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Skills done without conscious recall are procedural memory, a kind of implicit memory. That is why she can type G but cannot easily say where it is.",
+    "options": [
+     "Semantic memory holds facts you can state. Lena cannot easily state where G is, yet she types it.",
+     "Episodic memory is a personal event. Typing is a skill, not a remembered event.",
+     "Prospective memory is remembering to act in the future, like remembering to send a message.",
+     "Right: Skills done without conscious recall are procedural memory, a kind of implicit memory. That is why she can type G but cannot easily say where it is."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-11",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On his way home, Omar remembers that he promised to pick up bread. Which kind of memory is he using?",
+   "options": [
+    "Prospective memory",
+    "Episodic memory of the promise",
+    "Procedural memory",
+    "Implicit memory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Remembering to carry out an intended action in the future is prospective memory.",
+    "options": [
+     "Right: Remembering to carry out an intended action in the future is prospective memory.",
+     "Episodic memory looks back at a past event. Omar is remembering a task still to do.",
+     "Procedural memory is a skill. Remembering an errand is not a skill.",
+     "Implicit memory works without awareness. Omar consciously remembers the plan."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-12",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student walks out of a party and, without trying, knows roughly how long she stayed and which room was busiest. Which kind of processing explains this?",
+   "options": [
+    "Effortful processing",
+    "Automatic processing",
+    "Deep processing of meaning",
+    "Prospective memory"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Information about time, space and frequency is often encoded without effort or intention. That is automatic processing.",
+    "options": [
+     "Effortful processing needs attention and work, like studying vocabulary. She did not try to remember.",
+     "Right: Information about time, space and frequency is often encoded without effort or intention. That is automatic processing.",
+     "Deep processing means thinking about meaning on purpose. She did not study the evening.",
+     "Prospective memory is remembering to do something later, not noticing how long she stayed."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-13",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In rats, repeatedly stimulating a pathway in the hippocampus makes its synapses respond more strongly for weeks afterward, and blocking this change impairs learning. Which concept is this?",
+   "options": [
+    "The all-or-none principle",
+    "Working memory",
+    "Long-term potentiation",
+    "Automatic processing"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A lasting increase in synaptic strength after repeated stimulation is long-term potentiation (LTP), thought to be a neural basis of learning and memory.",
+    "options": [
+     "All-or-none describes a single neuron firing fully or not at all. It is not a lasting strengthening of synapses.",
+     "Working memory is the active workspace of short-term memory, a mental system, not a change in synapses.",
+     "Right: A lasting increase in synaptic strength after repeated stimulation is long-term potentiation (LTP), thought to be a neural basis of learning and memory.",
+     "Automatic processing is effortless encoding, a mental process, not a change at the synapse."
+    ]
+   }
+  },
+  {
+   "id": "psy-memory-intro-14",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "Put the stages of the multi-store model in the order information passes through them.",
+   "options": [
+    "Sensory memory",
+    "Short-term memory",
+    "Long-term memory"
+   ],
+   "why": {
+    "correct": "Input is held briefly in sensory memory; what is attended to moves to short-term memory; what is encoded there can be stored in long-term memory."
+   }
+  },
+  {
+   "id": "psy-memory-intro-15",
+   "unit": "unit-2",
+   "topic": "memory-intro",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A patient with damage to the hippocampus cannot form new memories of events, yet over several days gets faster at tracing a star in a mirror without remembering ever practicing. What does this show?",
+   "options": [
+    "Memory is stored in one single brain system, so the patient's impairment is mild",
+    "Procedural memory needs conscious awareness of each earlier practice session",
+    "Short-term memory is unaffected, so the practice is being held in sensory memory",
+    "Explicit and implicit memory depend partly on different brain systems"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The patient lost the ability to form new explicit memories (events) but still learned a skill (implicit, procedural memory). The two kinds of memory can come apart.",
+    "options": [
+     "If one system stored everything, the skill could not improve while event memory failed.",
+     "The patient improved without remembering practicing, so the skill did not need conscious recall.",
+     "Sensory memory lasts seconds. Improvement over days shows lasting learning.",
+     "Right: The patient lost the ability to form new explicit memories (events) but still learned a skill (implicit, procedural memory). The two kinds of memory can come apart."
+    ]
+   }
+  }
+ ]
+}

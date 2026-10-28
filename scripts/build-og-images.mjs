@@ -149,6 +149,15 @@ const CARDS = [
     title: 'Environmental Science for the May 2027 exam, one system at a time',
     sub: 'Free notes for every topic, every calculation drilled with its setup and units, and answers made specific enough to score.',
   },
+  /* AP® Psychology (folder psychology/), the same rules: no mark, no counts
+     (docs/appsych-spec.md decision 5). Render with ONLY=psychology/assets/og-image.png. */
+  {
+    out: 'psychology/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Psychology for the May 2027 exam, from neuron to society',
+    sub: 'Free notes for every topic, concepts applied to real situations, and the article analysis and evidence questions drilled part by part.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

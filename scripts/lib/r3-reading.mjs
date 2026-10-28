@@ -5,7 +5,7 @@
    Every course writes its reading pages with the same shell (assets/course/book.css):
      <div class="tb-shell bk bk-notes|bk-chapter|bk-book"> rail, <main class="tb-main"> crumb, pill bar,
      <header class="bk-head|tb-chapter-head"> eyebrow, h1, meta, actions [, lede] </header> ...
-   r3Reading() takes that finished page and gives it the R10 structure, the same way for all nine courses:
+   r3Reading() takes that finished page and gives it the R10 structure, the same way for all ten courses:
    - a short cover band before the shell: crumb, kicker (the eyebrow, split at its first middot), the two
      tone title (the page's own h1, its classes kept), the course's hand line, the page's own actions as
      the band's buttons (practice first), its meta as chips, its copy and print buttons and any other link
@@ -42,7 +42,7 @@ export function twoTone(title) {
 
 /* The hand line is the course's tagline, not lesson text: mark it as navigation so the concept-order checks
    (scripts/lib/*-map.mjs skip .<prefix>-nav-ref) do not read "force by force" as using force early. */
-const NAV_REF = { anp: 'anp', apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apstat: 'stat', apenv: 'env' };
+const NAV_REF = { anp: 'anp', apbio: 'bio', apchem: 'chem', apphys: 'phys', apcalc: 'calc', apstat: 'stat', apenv: 'env', appsych: 'psy' };
 function handClass(key) { return NAV_REF[key] ? `hand ${NAV_REF[key]}-nav-ref` : 'hand'; }
 
 function handFor(key) {

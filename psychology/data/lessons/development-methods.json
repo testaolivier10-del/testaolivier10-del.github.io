@@ -1,0 +1,71 @@
+{
+ "topic": "development-methods",
+ "hook": "A 2024 study finds that 70-year-olds score far lower on a vocabulary test than 25-year-olds. A different team followed the same people from 25 to 70 and found almost no drop. Both teams are careful scientists. The difference is the design, and knowing why is a favorite exam question.",
+ "prereq": [
+  {
+   "q": "A researcher measures two variables as they occur and finds $r = .40$. What can she conclude?",
+   "options": [
+    "The variables are related, but one may not cause the other",
+    "One variable causes the other",
+    "The variables are unrelated",
+    "She ran an experiment"
+   ],
+   "correct": 0,
+   "why": "A correlation shows a relationship; without manipulation it cannot show cause.",
+   "review": "stats-correlation"
+  },
+  {
+   "q": "What does an identical-twin study help researchers separate?",
+   "options": [
+    "The roles of heredity and environment",
+    "Random sampling and random assignment",
+    "Recall and recognition",
+    "The mean and the median"
+   ],
+   "correct": 0,
+   "why": "Twins share genes to different degrees, which lets researchers compare heredity with environment.",
+   "review": "heredity-environment"
+  }
+ ],
+ "figure": {
+  "figure": "development-methods-designs",
+  "caption": "Cross-sectional designs compare different age groups once; longitudinal designs follow one group over time."
+ },
+ "chain": [
+  {
+   "cause": "A cross-sectional study compares different age groups at one time",
+   "effect": "each age group is also a different birth cohort"
+  },
+  {
+   "cause": "Cohorts grow up with different schooling, health care and technology",
+   "effect": "a difference between age groups can be a cohort effect, not aging"
+  },
+  {
+   "cause": "A longitudinal study follows the same people over years",
+   "effect": "it shows change within each person, but people drop out and the study takes years"
+  },
+  {
+   "cause": "Neither design can assign people to an age",
+   "effect": "neither one, alone, shows that age causes a change"
+  }
+ ],
+ "ideas": [
+  "Three themes frame every developmental question: <b>nature and nurture</b> (they interact), <b>continuity and discontinuity</b> (a ramp or a staircase), and <b>stability and change</b> (does a trait hold steady in a person?).",
+  "A <b>cross-sectional study</b> tests different age groups once: fast, but age is tangled with birth year, so watch for a <b>cohort effect</b>.",
+  "A <b>longitudinal study</b> tests the same people again and again: it shows change within people, but it is slow, costly and loses participants.",
+  "Age cannot be randomly assigned, so developmental designs describe and predict; they do not prove that age causes a change."
+ ],
+ "misconception": {
+  "wrong": "If 70-year-olds score lower than 25-year-olds in a cross-sectional study, the scores must fall with age.",
+  "right": "The groups also differ in birth year. Some or all of the gap can be a cohort effect; a longitudinal study of the same people is needed to see change with age."
+ },
+ "check": [
+  "psy-development-methods-1",
+  "psy-development-methods-2",
+  "psy-development-methods-4",
+  "psy-development-methods-11",
+  "psy-development-methods-12",
+  "psy-development-methods-14"
+ ],
+ "summary": "Developmental psychology asks how people change and stay the same across life, framed by nature and nurture, continuity and discontinuity, and stability and change. Cross-sectional studies compare age groups at once and risk cohort effects; longitudinal studies follow the same people and risk dropout and long timelines. Neither assigns age, so neither alone shows cause."
+}

@@ -1,0 +1,488 @@
+{
+ "stimuli": {
+  "retrieving-memories-s1": {
+   "kind": "study",
+   "title": "Same room, better memory?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether people remember more when they are tested in the same place where they learned.",
+    "participants": "48 college students (ages 18-23) at a university in Ohio volunteered for course credit. Each signed an informed consent form and was told they could leave at any time without losing credit; a university review board approved the study.",
+    "method": "Every student learned a list of 30 words in Room A, a small room with blue walls and a smell of peppermint. A day later, a computer randomly assigned half the students to be tested in Room A again and half in Room B, a large gray room with no smell. In both rooms the students had five minutes to write down as many of the words as they could.",
+    "results": "Students tested in Room A wrote down 17 of the 30 words on average; students tested in Room B wrote down 12.",
+    "discussion": "The researchers concluded that being in the learning environment helped students retrieve the words."
+   }
+  },
+  "retrieving-memories-s2": {
+   "kind": "data",
+   "title": "Quizzing or rereading before a unit test",
+   "invented": true,
+   "table": {
+    "caption": "Percent correct on the same unit test, one week after a lesson, by review method (invented data for practice)",
+    "cols": [
+     "Review method",
+     "Number of students",
+     "Percent correct on the unit test",
+     "Students' own prediction of their score"
+    ],
+    "rows": [
+     [
+      "Reread the notes twice",
+      "45",
+      "61%",
+      "78%"
+     ],
+     [
+      "Took two practice quizzes, no notes",
+      "45",
+      "79%",
+      "66%"
+     ]
+    ]
+   },
+   "html": "<p>A teacher randomly assigned 90 ninth graders to review a science lesson in one of two ways for the same 20 minutes. Just before the unit test, each student predicted what percent they would score.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "psy-retrieving-memories-1",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "retrieving-memories-s1",
+   "q": "Which concept do the results best support?",
+   "options": [
+    "Context-dependent memory",
+    "State-dependent memory",
+    "Mood-congruent memory",
+    "The serial position effect"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Students recalled more when tested in the same place where they learned. The room (its look and smell) served as a retrieval cue: context-dependent memory.",
+    "options": [
+     "Right: Students recalled more when tested in the same place where they learned. The room (its look and smell) served as a retrieval cue: context-dependent memory.",
+     "State-dependent memory is about the body's internal state, such as being calm or under the influence of a drug. The groups differed in the room, not their state.",
+     "Mood-congruent memory is recalling memories that match your current mood. Mood was not changed.",
+     "The serial position effect is about where words sit in a list. Both groups learned the same list in the same order."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-2",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "retrieving-memories-s1",
+   "q": "What was the operational definition of memory in this study?",
+   "options": [
+    "Whether the student was tested in Room A or in Room B",
+    "The number of the 30 words written down in five minutes",
+    "How familiar the testing room felt to each student",
+    "The blue walls and peppermint smell of Room A"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The study measured memory as the count of words a student wrote down during the five-minute test.",
+    "options": [
+     "The testing room is the independent variable, the condition the researchers assigned.",
+     "Right: The study measured memory as the count of words a student wrote down during the five-minute test.",
+     "Familiarity was not measured. The study counted words written down.",
+     "Those are features of the context, part of the manipulation, not the measure of memory."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-3",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "retrieving-memories-s1",
+   "q": "What percent of the 30 words did the students tested in Room A write down on average?",
+   "why": {
+    "correct": "$\\frac{17}{30} \\times 100 \\approx 56.7\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        17,
+        30
+       ]
+      },
+      100
+     ]
+    },
+    "tol": 0.4,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          12,
+          30
+         ]
+        },
+        100
+       ]
+      },
+      "why": "40% is Room B (12 of 30). The question asks about Room A, 17 of 30."
+     },
+     {
+      "value": 17,
+      "why": "17 is the number of words, not a percent. Divide by 30 and multiply by 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-4",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "retrieving-memories-s1",
+   "q": "Which safeguard described in the summary protected the students' freedom to stop?",
+   "options": [
+    "Students were randomly assigned to be tested in Room A or Room B",
+    "Students were told the true purpose after a cover story",
+    "Students could leave at any time without losing course credit",
+    "Students' names were kept in a locked file"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The right to withdraw means participants can stop without penalty. The summary says students could leave without losing credit.",
+    "options": [
+     "Random assignment is a design feature that supports cause and effect, not an ethical protection.",
+     "The summary describes no cover story or debriefing.",
+     "Right: The right to withdraw means participants can stop without penalty. The summary says students could leave without losing credit.",
+     "The summary does not describe how names were handled."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-5",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "retrieving-memories-s2",
+   "q": "Which concept do the test scores show?",
+   "options": [
+    "Context-dependent memory",
+    "Mood-congruent memory",
+    "Infantile amnesia",
+    "The testing effect"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Students who practiced pulling the information out of memory (quizzes) scored higher than students who reread, after the same review time. That is the testing effect.",
+    "options": [
+     "Both groups took the test in the same setting. The difference is in how they reviewed.",
+     "Mood was not measured or changed.",
+     "Infantile amnesia is the lack of memories from early childhood, unrelated to how teenagers study.",
+     "Right: Students who practiced pulling the information out of memory (quizzes) scored higher than students who reread, after the same review time. That is the testing effect."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-6",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "retrieving-memories-s2",
+   "q": "By how many percentage points did the rereading group overpredict its own score?",
+   "why": {
+    "correct": "Prediction minus actual: $78 - 61 = 17$ percentage points too high."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      78,
+      61
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        79,
+        66
+       ]
+      },
+      "why": "13 is how much the quiz group underpredicted. The question asks about the rereading group."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        79,
+        61
+       ]
+      },
+      "why": "18 compares the two groups' actual scores. Compare the rereading group's prediction with its own score."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-7",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "retrieving-memories-s2",
+   "q": "The rereading group predicted a higher score than the quiz group but actually scored lower. Which concept best explains the mistaken predictions?",
+   "options": [
+    "Poor metacognition: rereading feels familiar, which students mistake for knowing",
+    "State-dependent memory: the students were in a different body state when predicting",
+    "Mood-congruent memory: the rereaders felt more cheerful, so they predicted high",
+    "Recognition: students recognized the notes, so their predictions were accurate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Metacognition is judging your own learning. Rereading makes material feel familiar, so students think they know it; quizzing exposes gaps, so it feels harder even though it works better.",
+    "options": [
+     "Right: Metacognition is judging your own learning. Rereading makes material feel familiar, so students think they know it; quizzing exposes gaps, so it feels harder even though it works better.",
+     "Nothing about the students' body state differed between groups.",
+     "Mood was neither changed nor measured. The rereaders misjudged how well they knew the material, which is a judgment about their own learning.",
+     "Recognizing the notes is exactly what misled the rereaders; their predictions were too high."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-8",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a test, Grace cannot answer \"Name the four lobes of the cerebral cortex,\" but on a later question she easily picks the occipital lobe from a list of options. Which concept explains the difference?",
+   "options": [
+    "Context-dependent memory",
+    "Recognition is easier than recall",
+    "Infantile amnesia",
+    "Maintenance rehearsal"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Recall means producing information with few cues; recognition means identifying it among options, which act as retrieval cues. Recognition usually succeeds where recall fails.",
+    "options": [
+     "Both questions were on the same test in the same room, so the context did not change.",
+     "Right: Recall means producing information with few cues; recognition means identifying it among options, which act as retrieval cues. Recognition usually succeeds where recall fails.",
+     "Infantile amnesia is about early childhood memories, not test questions.",
+     "Maintenance rehearsal is repeating information to hold it. It does not explain why options help."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-9",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Walking into the kitchen, Tom forgets why he came. He goes back to the couch where he had the thought, and it comes back to him. Which concept explains this?",
+   "options": [
+    "State-dependent memory",
+    "Mood-congruent memory",
+    "Context-dependent memory",
+    "Recognition"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Returning to the place where the thought was formed brought back cues from that context, which helped him retrieve it.",
+    "options": [
+     "State-dependent memory depends on an internal state (calm, sleepy, under a drug). Tom changed his location.",
+     "Mood-congruent memory is recalling memories that fit your mood. Tom's mood is not part of the story.",
+     "Right: Returning to the place where the thought was formed brought back cues from that context, which helped him retrieve it.",
+     "Recognition is picking the right answer from options. Tom produced the thought himself once the cues returned."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-10",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a study, people who learned a list while they had drunk caffeine recalled it best when they had caffeine again at the test. Which concept does this show?",
+   "options": [
+    "Context-dependent memory",
+    "Mood-congruent memory",
+    "The testing effect",
+    "State-dependent memory"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Recall is better when your internal state at the test matches your state when you learned. Here the state was caffeine.",
+    "options": [
+     "Context-dependent memory is about the external setting, such as a room. Caffeine changes an internal state.",
+     "Mood-congruent memory is about emotion, recalling memories that match a mood.",
+     "The testing effect is the benefit of practicing retrieval. Nobody practiced retrieval here.",
+     "Right: Recall is better when your internal state at the test matches your state when you learned. Here the state was caffeine."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-11",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a breakup, Jaylen finds that sad memories from years ago keep coming to mind, while happy ones feel far away. Which concept explains this?",
+   "options": [
+    "Mood-congruent memory",
+    "State-dependent memory",
+    "Context-dependent memory",
+    "Recognition"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "People tend to recall memories that match their current mood. A sad mood makes sad memories easier to retrieve.",
+    "options": [
+     "Right: People tend to recall memories that match their current mood. A sad mood makes sad memories easier to retrieve.",
+     "State-dependent memory needs the same internal state at learning and recall, such as caffeine. Jaylen's memories fit his mood, whatever his state when they formed.",
+     "Context-dependent memory is about the external setting. Jaylen's setting is not the point.",
+     "Recognition is identifying something among options. Jaylen is recalling memories freely."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-12",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Rather than rereading her notes, Fatima covers them and writes down everything she can remember about each heading, then checks what she missed. Which strategy is she using?",
+   "options": [
+    "Maintenance rehearsal",
+    "Retrieval practice",
+    "Massed practice",
+    "Recognition"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Practicing pulling information out of memory, then checking, is retrieval practice. It strengthens memory more than rereading.",
+    "options": [
+     "Maintenance rehearsal is repeating information to hold it briefly. Fatima is recalling, not repeating.",
+     "Right: Practicing pulling information out of memory, then checking, is retrieval practice. It strengthens memory more than rereading.",
+     "Massed practice is about a single long session. The question is about what she does, not when.",
+     "Recognition picks the answer from options. Fatima produces the answers herself, which is recall."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-13",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A friend shows Ben a photo of the beach where they vacationed, and a flood of details about the trip come back. In this example the photo acts as what?",
+   "options": [
+    "A sensory memory",
+    "Maintenance rehearsal",
+    "A retrieval cue",
+    "Mood-congruent memory"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A retrieval cue is any stimulus that helps bring a stored memory back. The photo connects to the stored memory of the trip.",
+    "options": [
+     "Sensory memory lasts seconds. The photo brings back a memory stored years ago.",
+     "Maintenance rehearsal is repeating information to hold it. Seeing a photo is not repeating.",
+     "Right: A retrieval cue is any stimulus that helps bring a stored memory back. The photo connects to the stored memory of the trip.",
+     "Mood-congruent memory is recall that matches a mood. The photo is an external cue, not a mood."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-14",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Before an exam, Leo looks over his notes, thinks \"I know all of this\", and stops studying. On the exam he cannot recall much of it. Which skill would most help Leo avoid this?",
+   "options": [
+    "Mood-congruent memory: studying in a happy mood",
+    "Infantile amnesia: forgetting the earliest material first",
+    "Recognition: rereading the notes until each line looks familiar",
+    "Metacognition: checking what he knows by testing himself"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Metacognition is thinking about your own thinking, including judging what you have really learned. Testing yourself gives an honest check; familiarity from looking at notes does not.",
+    "options": [
+     "Mood is not Leo's problem. He misjudged how well he knew the material.",
+     "Infantile amnesia is about memories from early childhood, not exam studying.",
+     "That is what misled Leo. Recognizing notes is not the same as being able to recall them.",
+     "Right: Metacognition is thinking about your own thinking, including judging what you have really learned. Testing yourself gives an honest check; familiarity from looking at notes does not."
+    ]
+   }
+  },
+  {
+   "id": "psy-retrieving-memories-15",
+   "unit": "unit-2",
+   "topic": "retrieving-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A teacher replaces end-of-class review with a short, ungraded quiz on the day's lesson. A month later, her students remember more than last year's class, who reviewed by rereading. Which concept best explains the improvement?",
+   "options": [
+    "The testing effect",
+    "Mood-congruent memory",
+    "Recognition is easier than recall",
+    "State-dependent memory"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Answering quiz questions makes students retrieve the lesson, which strengthens long-term memory more than rereading it. That is the testing effect.",
+    "options": [
+     "Right: Answering quiz questions makes students retrieve the lesson, which strengthens long-term memory more than rereading it. That is the testing effect.",
+     "Mood-congruent memory is recalling memories that match a mood. Nothing about mood changed.",
+     "True in general, but it does not explain why quizzing during learning improved memory a month later.",
+     "State-dependent memory depends on an internal state at learning and test. The change was in the review method."
+    ]
+   }
+  }
+ ]
+}

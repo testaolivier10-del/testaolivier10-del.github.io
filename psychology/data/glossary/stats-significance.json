@@ -1,0 +1,11 @@
+{
+ "inferential-statistics": {
+  "def": "Statistics that use data from a sample to draw conclusions about the population it came from, with a stated chance of being wrong."
+ },
+ "statistical-significance": {
+  "def": "A result is statistically significant when it would be unlikely to occur by chance alone if there were no real difference or relationship; psychologists usually require a probability (p value) below .05, written $p < .05$."
+ },
+ "effect-size": {
+  "def": "A measure of how large a difference or relationship is, such as how many standard deviations apart two group means are, regardless of sample size."
+ }
+}

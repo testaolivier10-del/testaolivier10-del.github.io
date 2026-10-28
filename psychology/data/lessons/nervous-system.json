@@ -1,0 +1,71 @@
+{
+ "topic": "nervous-system",
+ "hook": "A ball flies at your face. Before you have time to think, your hands come up, your heart jumps and your breathing catches. A second later you laugh, and within a minute your heart has settled. Several parts of your nervous system did those jobs, some on purpose and some automatically, and the exam expects you to name each one.",
+ "prereq": [
+  {
+   "q": "A researcher wants to show that a breathing exercise causes a slower heart rate. Which method can show this?",
+   "options": [
+    "An experiment with random assignment",
+    "A survey of people who breathe slowly",
+    "A case study of one calm person",
+    "Naturalistic observation in a park"
+   ],
+   "correct": 0,
+   "why": "Only an experiment with a manipulated variable and random assignment can show cause and effect.",
+   "review": "research-methods"
+  },
+  {
+   "q": "Identical twins raised apart are still alike on many traits. What does this suggest?",
+   "options": [
+    "Heredity contributes to those traits",
+    "The environment plays no part",
+    "The twins were randomly assigned to homes",
+    "The traits are learned from each other"
+   ],
+   "correct": 0,
+   "why": "Similarity despite different homes points to shared genes, though environment still matters.",
+   "review": "heredity-environment"
+  }
+ ],
+ "figure": {
+  "figure": "nervous-system-divisions",
+  "caption": "The divisions of the nervous system, with what each one does."
+ },
+ "chain": [
+  {
+   "cause": "The central nervous system (the brain and spinal cord) takes in information and decides",
+   "effect": "it sends commands out through the peripheral nervous system"
+  },
+  {
+   "cause": "Commands reach the skeletal muscles through the somatic nervous system",
+   "effect": "you move on purpose: catching, kicking, typing"
+  },
+  {
+   "cause": "A threat triggers the sympathetic division of the autonomic nervous system",
+   "effect": "the heart speeds, pupils widen and digestion slows: the body is ready to act"
+  },
+  {
+   "cause": "Once the threat passes, the parasympathetic division takes over",
+   "effect": "the heart slows and digestion resumes: the body calms and saves energy"
+  }
+ ],
+ "ideas": [
+  "The <b>central nervous system</b> (CNS) is the brain and <b>spinal cord</b>. The <b>peripheral nervous system</b> (PNS) is every nerve linking the CNS to the rest of the body.",
+  "The PNS has two parts: the <b>somatic nervous system</b> (voluntary movement of skeletal muscles, plus sensations from the body) and the <b>autonomic nervous system</b> (automatic control of the heart, lungs, glands and gut).",
+  "The autonomic system has two divisions that work in balance: the <b>sympathetic nervous system</b> arouses; the <b>parasympathetic nervous system</b> calms.",
+  "The <b>neuron</b>, or nerve cell, is the basic unit that carries information through every part of the system."
+ ],
+ "misconception": {
+  "wrong": "The sympathetic nervous system is the \"nice\", calming one, and the parasympathetic one is for emergencies.",
+  "right": "It is the reverse. Sympathetic arouses (heart speeds, pupils widen, digestion slows); parasympathetic calms (heart slows, digestion resumes). Memory hook: parasympathetic, \"rest and digest\"."
+ },
+ "check": [
+  "psy-nervous-system-1",
+  "psy-nervous-system-2",
+  "psy-nervous-system-3",
+  "psy-nervous-system-8",
+  "psy-nervous-system-9",
+  "psy-nervous-system-10"
+ ],
+ "summary": "The nervous system is made of neurons organized into two parts. The central nervous system, the brain and spinal cord, takes in information and decides. The peripheral nervous system links it to the body: its somatic division moves skeletal muscles on purpose, and its autonomic division runs the organs automatically, with the sympathetic division arousing the body for action and the parasympathetic division calming it again."
+}

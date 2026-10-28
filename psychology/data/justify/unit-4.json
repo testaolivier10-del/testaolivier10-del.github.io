@@ -1,0 +1,428 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-4",
+   "id": "u4-smoke-method",
+   "topic": "social-situations",
+   "practice": "2.A",
+   "skill": "method",
+   "title": "An emergency staged in a lab",
+   "context": "<p>Eighty university students, aged 18 to 22, in a large US city, were told the study was about study habits. Each was randomly assigned to fill in a questionnaire alone or with four others who were confederates told to ignore what happened. Harmless water vapor that looked like smoke then came through a vent. Helping was recorded if the participant left the room to tell the researcher within four minutes. An institutional review board reviewed the plan first and required that the vapor be harmless and that a researcher watch through a window to stop the study if anyone became distressed. Afterward everyone was debriefed (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the research method used in this study.",
+   "checklist": [
+    "Names one method: an experiment",
+    "Supports it: group size (alone or with four others) was manipulated and participants were randomly assigned",
+    "Does not call it naturalistic observation because behavior was watched"
+   ],
+   "earns": {
+    "answer": "This is an experiment: the researchers manipulated whether each student was alone or with four confederates, randomly assigned students to those conditions, and measured whether they reported the smoke.",
+    "why": "One method, supported by the manipulation and random assignment in the summary."
+   },
+   "misses": {
+    "answer": "It is naturalistic observation, because the researchers watched what people did.",
+    "why": "Watching is how helping was measured, but the setting was staged and group size was manipulated, so it is an experiment."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Method",
+      "options": [
+       "an experiment",
+       "naturalistic observation",
+       "a survey"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The setting was staged in a lab and a variable was manipulated; that is not naturalistic.",
+       "2": "The questionnaire was a cover; helping was what was measured."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "group size was manipulated and randomly assigned",
+       "participants filled in a questionnaire",
+       "smoke came through a vent"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The questionnaire was the cover story.",
+       "2": "The vapor was the same for everyone; what changed was group size."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-smoke-opdef",
+   "topic": "social-situations",
+   "practice": "2.B",
+   "skill": "opdef",
+   "title": "Helping, as this study measured it",
+   "context": "<p>Eighty university students, aged 18 to 22, in a large US city, were told the study was about study habits. Each was randomly assigned to fill in a questionnaire alone or with four others who were confederates told to ignore what happened. Harmless water vapor that looked like smoke then came through a vent. Helping was recorded if the participant left the room to tell the researcher within four minutes. An institutional review board reviewed the plan first and required that the vapor be harmless and that a researcher watch through a window to stop the study if anyone became distressed. Afterward everyone was debriefed (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the operational definition of helping in this study.",
+   "checklist": [
+    "Says what counted as helping: leaving the room to tell the researcher",
+    "Gives the time limit: within four minutes of the vapor appearing",
+    "Does not define helping in general"
+   ],
+   "earns": {
+    "answer": "Helping was operationally defined as the participant leaving the room to tell the researcher about the smoke within four minutes of the vapor appearing.",
+    "why": "The action and the time limit this study used."
+   },
+   "misses": {
+    "answer": "Helping means doing something to benefit another person.",
+    "why": "That defines the concept in general, not how this study measured it."
+   },
+   "specific": {
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "leaving the room to tell the researcher",
+       "feeling worried about the smoke",
+       "filling in the questionnaire"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Feelings were not measured.",
+       "2": "The questionnaire was the cover task."
+      }
+     },
+     "when": {
+      "label": "Time limit",
+      "options": [
+       "four minutes of the vapor appearing",
+       "the whole hour",
+       "the debriefing"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The summary sets four minutes.",
+       "2": "The debriefing came afterward; it was not the measure."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-smoke-statistic",
+   "topic": "social-situations",
+   "practice": "3.A",
+   "skill": "statistic",
+   "title": "Alone or in a group: reading the percentages",
+   "context": "<p>Eighty university students, aged 18 to 22, in a large US city, were told the study was about study habits. Each was randomly assigned to fill in a questionnaire alone or with four others who were confederates told to ignore what happened. Harmless water vapor that looked like smoke then came through a vent. Helping was recorded if the participant left the room to tell the researcher within four minutes. An institutional review board reviewed the plan first and required that the vapor be harmless and that a researcher watch through a window to stop the study if anyone became distressed. Afterward everyone was debriefed (invented study for practice). 70% of students who were alone reported the smoke within four minutes; 30% of students in groups did.</p>",
+   "prompt": "<b>Explain</b> what the percentages show about helping in the two conditions.",
+   "checklist": [
+    "Gives the right direction: students alone helped more, 40 percentage points more",
+    "Says what that shows: the presence of others reduced helping",
+    "Does not reverse the groups"
+   ],
+   "earns": {
+    "answer": "Students who were alone were far more likely to report the smoke: 70% did, 40 percentage points more than the 30% of students who were with four others. This shows that the presence of others reduced helping in this emergency.",
+    "why": "The correct direction, the size of the gap and what it shows."
+   },
+   "misses": {
+    "answer": "Students in groups were more likely to help, since 70% of them reported the smoke.",
+    "why": "This reverses the groups: 70% belongs to students who were alone."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Result",
+      "options": [
+       "alone students reported 40 percentage points more often",
+       "group students reported 40 percentage points more often",
+       "both groups reported equally"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the groups: 70% were the students alone.",
+       "2": "70% and 30% are not equal."
+      }
+     },
+     "meaning": {
+      "label": "Meaning",
+      "options": [
+       "the presence of others reduced helping",
+       "smoke makes people help",
+       "groups notice smoke faster"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Everyone saw the smoke; the result compares conditions.",
+       "2": "Noticing faster would raise helping in groups, not lower it."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-smoke-ethics",
+   "topic": "social-situations",
+   "practice": "2.D",
+   "skill": "ethics",
+   "title": "The board that reviewed the smoke study",
+   "context": "<p>Eighty university students, aged 18 to 22, in a large US city, were told the study was about study habits. Each was randomly assigned to fill in a questionnaire alone or with four others who were confederates told to ignore what happened. Harmless water vapor that looked like smoke then came through a vent. Helping was recorded if the participant left the room to tell the researcher within four minutes. An institutional review board reviewed the plan first and required that the vapor be harmless and that a researcher watch through a window to stop the study if anyone became distressed. Afterward everyone was debriefed (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>describe</b> how the researchers applied it.",
+   "checklist": [
+    "Names a guideline the summary describes: IRB review, protection from harm or debriefing",
+    "Says how it was applied in this study: harmless vapor and a watching researcher, required by the board",
+    "Does not claim informed consent told participants the real purpose: they were deceived"
+   ],
+   "earns": {
+    "answer": "The study had institutional review board review: before it began, the board approved the plan only if the smoke was harmless water vapor and a researcher watched through a window to stop the study if anyone became distressed.",
+    "why": "It names the guideline and the specific way the board applied it here."
+   },
+   "misses": {
+    "answer": "Informed consent: the participants were told the true purpose of the study before it began.",
+    "why": "The summary says they were told it was about study habits: they were deceived. This contradicts the summary."
+   },
+   "specific": {
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "institutional review board approval",
+       "informed consent with the true purpose",
+       "random assignment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Participants were deceived about the purpose.",
+       "2": "A design feature, not an ethical guideline."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "harmless vapor and a researcher ready to stop the study",
+       "students filled in a questionnaire",
+       "confederates ignored the smoke"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The cover task, not a safeguard.",
+       "2": "The manipulation, not a safeguard."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-smoke-generalize",
+   "topic": "social-situations",
+   "practice": "2.A",
+   "skill": "generalize",
+   "title": "Would rural older adults act the same?",
+   "context": "<p>Eighty university students, aged 18 to 22, in a large US city, were told the study was about study habits. Each was randomly assigned to fill in a questionnaire alone or with four others who were confederates told to ignore what happened. Harmless water vapor that looked like smoke then came through a vent. Helping was recorded if the participant left the room to tell the researcher within four minutes. An institutional review board reviewed the plan first and required that the vapor be harmless and that a researcher watch through a window to stop the study if anyone became distressed. Afterward everyone was debriefed (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> whether the results generalize to adults over 60 living in small rural towns.",
+   "checklist": [
+    "Takes a position (they may not generalize, or only partly with both sides)",
+    "Uses participant traits: 18 to 22, university students, a large US city",
+    "Does not argue from random assignment or sample size"
+   ],
+   "earns": {
+    "answer": "The results may not generalize to adults over 60 in small rural towns, because all the participants were 18- to 22-year-old university students in a large US city. Older people in small towns, where neighbors often know each other, might feel more personal responsibility in an emergency.",
+    "why": "A named population, a position and the participants' age and setting as support."
+   },
+   "misses": {
+    "answer": "Yes, because the participants were randomly assigned, so the results apply to everyone.",
+    "why": "Random assignment supports cause within the study; it does not make the sample like other populations. That would need participants like them."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Conclusion",
+      "options": [
+       "may not generalize to rural adults over 60",
+       "apply to everyone",
+       "generalize because of random assignment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample was narrow in age and setting.",
+       "2": "Random assignment is not random sampling."
+      }
+     },
+     "sample": {
+      "label": "Participant characteristics",
+      "options": [
+       "18 to 22, university students, in a large US city",
+       "80 in number",
+       "randomly assigned"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sample size does not settle generalizability.",
+       "2": "A design feature, not a participant characteristic."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-certificate-argue",
+   "topic": "motivation",
+   "practice": "4.B",
+   "skill": "argue",
+   "title": "Does a promised reward reduce interest?",
+   "context": "<p>Forty children who already liked drawing were randomly assigned. One group was promised a certificate for drawing, and got it; the other was not promised anything. Two weeks later, in a free-play hour with drawing supplies and toys, the promised group drew for 8 minutes on average and the other group for 16 minutes (invented study for practice).</p>",
+   "prompt": "The researchers hypothesized that an expected reward reduces later interest in an activity a child already enjoys. <b>Explain</b> whether the results support the hypothesis, using a specific result.",
+   "checklist": [
+    "Uses a specific result: 8 against 16 minutes, 8 minutes less, half as long",
+    "Explains with a concept: the overjustification effect, intrinsic motivation replaced by an extrinsic one",
+    "Takes a position (supports) without saying it is proven"
+   ],
+   "earns": {
+    "answer": "The results support the hypothesis: in free play two weeks later, children promised a certificate drew for 8 minutes, half as long as the 16 minutes of children promised nothing. This fits the overjustification effect: once drawing earned a certificate, the children came to see it as done for the reward, so their intrinsic motivation to draw dropped when no reward was offered.",
+    "why": "A correctly read result and a concept that explains it."
+   },
+   "misses": {
+    "answer": "Yes, because the rewarded children lost their intrinsic motivation.",
+    "why": "It asserts the conclusion with no result. Use the 8 against 16 minutes."
+   },
+   "specific": {
+    "slots": {
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "promised children drew 8 minutes less (8 against 16)",
+       "promised children drew 8 minutes more",
+       "both groups drew equally"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the groups: the promised children drew less.",
+       "2": "8 and 16 minutes differ."
+      }
+     },
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "the overjustification effect: the reward replaced intrinsic motivation",
+       "drive-reduction: drawing reduced hunger",
+       "the Yerkes-Dodson law: drawing was too arousing"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Drawing does not meet a biological need.",
+       "2": "Arousal was not measured or changed."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-personality-claim",
+   "topic": "social-cognitive-trait",
+   "practice": "4.A",
+   "skill": "claim",
+   "title": "A claim about personality over time",
+   "context": "<p>Question: is adult personality stable over time? Source 1: 2,000 adults took a Big Five personality inventory at 30 and at 40; their rank order on each trait correlated <i>r</i>&nbsp;=&nbsp;.75. Source 2: average conscientiousness rose slightly between 20 and 50. Source 3: after a major life event, some adults' neuroticism scores fell over 5 years (invented sources for practice).</p>",
+   "prompt": "<b>Propose</b> a defensible claim that answers the question.",
+   "checklist": [
+    "Takes a position on whether adult personality is stable",
+    "Is a statement, not a question",
+    "Can be supported or refuted by the sources (it may note limits, such as slow change in some traits)"
+   ],
+   "earns": {
+    "answer": "Adult personality is largely stable over time: people keep roughly the same rank order on the Big Five traits, even though average levels of traits such as conscientiousness change slowly.",
+    "why": "A clear position, qualified in a way the sources can test."
+   },
+   "misses": {
+    "answer": "Is personality the same at 20 and at 60?",
+    "why": "A question takes no position, so it is not a claim."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Claim",
+      "options": [
+       "adult personality is largely stable over time",
+       "is personality stable?",
+       "personality is an interesting topic"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A question is not a claim.",
+       "2": "A topic sentence takes no position."
+      }
+     },
+     "scope": {
+      "label": "Limit",
+      "options": [
+       "average levels of some traits change slowly",
+       "personality changes every year",
+       "traits cannot be measured"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Source 1 shows strong stability in rank order.",
+       "2": "The sources measured traits with an inventory."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-4",
+   "id": "u4-attribution-reasoning",
+   "topic": "attribution",
+   "practice": "4.B",
+   "skill": "reasoning",
+   "title": "My bad grade, your bad grade",
+   "context": "<p>Question: do people explain their own failures differently from others' failures? Claim: people explain their own failures by the situation more often than they explain others' failures that way. Source 3: 200 students wrote why they got a low test grade and why a classmate did; 72% blamed the situation (such as an unfair test) for their own grade, but 28% did so for the classmate's (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> how the evidence in Source 3 supports the claim, using a psychology concept other than attribution itself.",
+   "checklist": [
+    "Cites the evidence: 72% against 28% blamed the situation (Source 3)",
+    "Applies a concept from the unit: the actor-observer bias or the self-serving bias",
+    "Links it: people see their own situation but see a classmate's behavior"
+   ],
+   "earns": {
+    "answer": "In Source 3, 72% of students blamed the situation for their own low grade but only 28% did so for a classmate's. This supports the claim because of the actor-observer bias: as actors, students see the pressures they faced, such as an unfair test, but as observers they see only the classmate's behavior, so they explain it by the person.",
+    "why": "Evidence, then a concept that is not the prompt's topic, then the link."
+   },
+   "misses": {
+    "answer": "Source 3 shows attribution, because people attribute causes to grades.",
+    "why": "Attribution is the prompt's own topic, so it does not count as the concept, and nothing is linked."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "the actor-observer bias",
+       "attribution",
+       "the mere exposure effect"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the prompt's own topic, a restricted term.",
+       "2": "Repeated exposure is not what the source tested."
+      }
+     },
+     "link": {
+      "label": "Link to the claim",
+      "options": [
+       "students see their own situation but only the classmate's behavior",
+       "students like the classmate more",
+       "the test was unfair for everyone"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Liking was not measured.",
+       "2": "The source reports explanations, not whether the test was unfair."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

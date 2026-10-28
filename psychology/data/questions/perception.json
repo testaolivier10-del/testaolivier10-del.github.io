@@ -1,0 +1,484 @@
+{
+ "stimuli": {
+  "perception-s1": {
+   "kind": "visual",
+   "title": "Three perception figures: grouping, a road scene and an illusion",
+   "figure": "perception-figure-set"
+  },
+  "perception-s2": {
+   "kind": "study",
+   "title": "What you expect shapes what you see",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether recent experience changes how people perceive an ambiguous drawing: a sketch that can be seen either as a rat or as a man with glasses.",
+    "participants": "80 college students (ages 18-22) at one university volunteered. Each gave informed consent and was told they could stop at any time.",
+    "method": "Students were randomly assigned to one of two groups of 40. The animal group first looked at six drawings of animals; the face group first looked at six drawings of faces. Then every student saw the same ambiguous drawing for five seconds and wrote down what it showed. At the end, each student was told the purpose of the study.",
+    "results": "In the animal group, 31 of 40 students reported seeing a rat. In the face group, 9 of 40 reported seeing a rat; the rest reported a man.",
+    "discussion": "The researchers concluded that the drawings seen first changed what students perceived in the same picture."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-perception-1",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "perception-s1",
+   "q": "In Figure A every shape is the same distance from its neighbors, yet most people see six columns rather than six rows. Which Gestalt principle explains this?",
+   "options": [
+    "Similarity: shapes that look alike are grouped together",
+    "Proximity: shapes that are close together are grouped",
+    "Closure: gaps in an outline are filled in to make a whole",
+    "Figure-ground: one part stands out against a background"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The spacing is equal in both directions, so nothing but the look of the shapes can group them. Each column holds one kind of shape, so similarity groups the columns.",
+    "options": [
+     "Right: The spacing is equal in both directions, so nothing but the look of the shapes can group them. Each column holds one kind of shape, so similarity groups the columns.",
+     "Proximity needs some shapes to sit closer together. Here the spacing is equal everywhere, so it cannot favor columns over rows.",
+     "Closure fills in a broken outline. Figure A has no outline with gaps.",
+     "Figure-ground separates an object from its background; it does not explain why columns win over rows."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-2",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "perception-s1",
+   "q": "In Figure B the two blue people have the same shape, but one is drawn much smaller. Which depth cue makes the smaller one look farther away rather than tiny?",
+   "options": [
+    "Retinal disparity",
+    "Relative size",
+    "Interposition",
+    "Convergence"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "When two objects are known to be about the same size, the one that casts the smaller image is perceived as farther away. That is relative size, a monocular cue.",
+    "options": [
+     "Retinal disparity is a binocular cue that comes from the two eyes seeing slightly different views. A flat drawing gives both eyes the same image.",
+     "Right: When two objects are known to be about the same size, the one that casts the smaller image is perceived as farther away. That is relative size, a monocular cue.",
+     "Interposition is one object blocking part of another. The two blue people do not overlap anything.",
+     "Convergence is the inward turning of the eyes for near objects, a binocular cue. It does not come from a drawing."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-3",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "perception-s1",
+   "q": "In Figure B the box covers part of the orange person. Which depth cue tells a viewer that the box is closer than the person?",
+   "options": [
+    "Linear perspective",
+    "Texture gradient",
+    "Interposition",
+    "Relative clarity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "An object that blocks part of another is perceived as nearer. That overlap is interposition.",
+    "options": [
+     "Linear perspective is parallel lines, like the road edges, seeming to meet in the distance. It is in the picture, but it is not what shows the box is in front.",
+     "A texture gradient is detail becoming finer and denser with distance, like the fence posts. The box and person do not show it.",
+     "Right: An object that blocks part of another is perceived as nearer. That overlap is interposition.",
+     "Relative clarity is hazy objects seeming farther away. Both the box and the person are drawn equally sharp."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-4",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "perception-s1",
+   "q": "In Figure C the two orange bars are the same length, but the upper bar looks longer. Which explanation fits the most common account of this illusion?",
+   "options": [
+    "The upper bar sits closer to the eyes, so retinal disparity between the two eyes makes it look larger",
+    "Change blindness hides the true length of the lower bar, so the viewer underestimates it and sees it as shorter",
+    "The lower bar is seen through the cocktail party effect and so attracts less notice",
+    "The converging lines act as a depth cue, so the upper bar is judged farther away and size constancy makes it look larger"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The converging lines look like rails going into the distance (linear perspective). The brain treats the upper bar as farther away, and because the two bars cast the same image, it perceives the farther one as bigger.",
+    "options": [
+     "Both bars are on the same flat page at the same distance. Retinal disparity cannot tell them apart.",
+     "Change blindness is missing a change in a scene. Nothing in Figure C changes.",
+     "The cocktail party effect is noticing your own name or another important sound among many. It is about hearing, not the size of a bar.",
+     "Right: The converging lines look like rails going into the distance (linear perspective). The brain treats the upper bar as farther away, and because the two bars cast the same image, it perceives the farther one as bigger."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-5",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "perception-s2",
+   "q": "Which research method did this study use?",
+   "options": [
+    "An experiment",
+    "A correlational study",
+    "A case study",
+    "Naturalistic observation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The researchers set which drawings each group saw first (they manipulated a variable) and used random assignment, then compared the groups. That makes it an experiment.",
+    "options": [
+     "Right: The researchers set which drawings each group saw first (they manipulated a variable) and used random assignment, then compared the groups. That makes it an experiment.",
+     "A correlational study only measures two variables as they already are. Here the researchers decided which drawings each student saw.",
+     "A case study looks in depth at one person or a few. This study compared two groups of 40.",
+     "Naturalistic observation watches behavior in its usual setting without changing anything. The researchers controlled what students saw."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-6",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "perception-s2",
+   "q": "How did this study operationally define what a student perceived?",
+   "options": [
+    "The set of six animal or face drawings each group saw first",
+    "What the student wrote down after five seconds with the drawing",
+    "How strong the student's expectations felt inside",
+    "Which group the student was randomly assigned to"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An operational definition says exactly how a variable was measured in this study: the written answer to what the drawing showed.",
+    "options": [
+     "That is the independent variable, the thing the researchers changed between groups.",
+     "Right: An operational definition says exactly how a variable was measured in this study: the written answer to what the drawing showed.",
+     "A feeling is not measurable as stated. The study measured a written answer.",
+     "Group membership is the condition, not the measure of perception."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-7",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "perception-s2",
+   "q": "What percent of the animal group reported seeing a rat?",
+   "why": {
+    "correct": "Divide the number who saw a rat by the group size, then multiply by 100: $\\frac{31}{40} \\times 100 = 77.5\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        31,
+        40
+       ]
+      },
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          31,
+          80
+         ]
+        },
+        100
+       ]
+      },
+      "why": "38.75% divides by all 80 students. The question asks about the animal group only, so divide by its 40."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          9,
+          40
+         ]
+        },
+        100
+       ]
+      },
+      "why": "22.5% is the face group (9 of 40). Use the animal group's 31."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-8",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "perception-s2",
+   "q": "Which concept best explains the difference between the two groups?",
+   "options": [
+    "Bottom-up processing",
+    "Retinal disparity",
+    "Perceptual set",
+    "Perceptual constancy"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A perceptual set is a readiness to perceive something in a certain way. Seeing animals first set students to see a rat; seeing faces first set them to see a man.",
+    "options": [
+     "Bottom-up processing builds a percept from the raw features. Both groups saw identical features, so it cannot explain the difference.",
+     "Retinal disparity is a binocular depth cue. Depth is not what differed between the groups.",
+     "Right: A perceptual set is a readiness to perceive something in a certain way. Seeing animals first set students to see a rat; seeing faces first set them to see a man.",
+     "Constancy keeps an object's size, shape or color stable as conditions change. It does not explain two readings of one drawing."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-9",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At a loud party, Keisha is talking with a friend and hears nothing of the other conversations, until someone across the room says her name. Which concept does this show?",
+   "options": [
+    "The cocktail party effect",
+    "Change blindness",
+    "Inattentional blindness",
+    "Apparent movement"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Selective attention filters out most sounds, yet an important word like your own name can still break through. That is the cocktail party effect.",
+    "options": [
+     "Right: Selective attention filters out most sounds, yet an important word like your own name can still break through. That is the cocktail party effect.",
+     "Change blindness is failing to notice a change in a scene. Keisha did notice something.",
+     "Inattentional blindness is missing something in plain view because attention is elsewhere. Keisha did not miss her name.",
+     "Apparent movement is seeing motion in a series of still images. It has nothing to do with hearing a name."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-10",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A film editor swaps an actor's red scarf for a blue one between two shots. Most viewers do not notice. Which concept explains this?",
+   "options": [
+    "The cocktail party effect",
+    "Figure-ground",
+    "Perceptual constancy",
+    "Change blindness"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Viewers failed to notice a change from one view of a scene to the next. That is change blindness.",
+    "options": [
+     "The cocktail party effect is an important sound, like your name, catching attention. Here nothing caught attention.",
+     "Figure-ground separates an object from its background. It does not explain missing a change.",
+     "Color constancy keeps a color looking stable under different light. Here the color really changed and was missed.",
+     "Right: Viewers failed to notice a change from one view of a scene to the next. That is change blindness."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-11",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A proofreader reads \"the the cat\" as \"the cat\" because she knows what the sentence should say. Which kind of processing is she relying on?",
+   "options": [
+    "Top-down processing",
+    "Bottom-up processing",
+    "Retinal disparity",
+    "Apparent movement"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Her knowledge and expectations about the sentence shape what she perceives. That is top-down processing.",
+    "options": [
+     "Right: Her knowledge and expectations about the sentence shape what she perceives. That is top-down processing.",
+     "Bottom-up processing would build the percept from each letter on the page, which would catch the repeated word.",
+     "Retinal disparity is a depth cue from the two eyes. Reading a word does not depend on depth.",
+     "Apparent movement is the sense of motion from still frames. Nothing moves on the page."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-12",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A baby who has never seen a giraffe looks at its lines, colors and edges and slowly builds an image of the animal. Which process is this?",
+   "options": [
+    "Top-down processing",
+    "Bottom-up processing",
+    "Perceptual set",
+    "Change blindness"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With no knowledge to guide her, the baby builds the percept from the sensory features up. That is bottom-up processing.",
+    "options": [
+     "Top-down processing uses knowledge and expectations. The baby has none about giraffes.",
+     "Right: With no knowledge to guide her, the baby builds the percept from the sensory features up. That is bottom-up processing.",
+     "A perceptual set is an expectation that tilts what you see. The baby has no expectation here.",
+     "Change blindness is failing to see a change. Nothing changes in this scene."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-13",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "As a friend walks away from you down a hallway, the image of her on your retina shrinks, but she does not seem to be getting smaller. Which concept explains this?",
+   "options": [
+    "Relative size cue",
+    "Convergence",
+    "Size constancy",
+    "Closure"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Size constancy keeps a familiar object's perceived size stable even as its retinal image shrinks with distance.",
+    "options": [
+     "Relative size is a depth cue: the smaller image looks farther away. It tells you she is farther, but not why she still looks the same size.",
+     "Convergence is the eyes turning inward for near objects. It does not keep size stable.",
+     "Right: Size constancy keeps a familiar object's perceived size stable even as its retinal image shrinks with distance.",
+     "Closure fills in gaps in an outline. Your friend is not an incomplete outline."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-14",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "When Dev holds a pencil a few inches from his nose, he feels his eyes turn inward. Which depth cue is this?",
+   "options": [
+    "Retinal disparity",
+    "Linear perspective",
+    "Texture gradient",
+    "Convergence"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The closer an object, the more the eyes turn inward. The brain reads that strain as nearness. It is a binocular cue.",
+    "options": [
+     "Retinal disparity is also binocular, but it is the difference between the two eyes' images, not the feeling of the eyes turning.",
+     "Linear perspective is a picture cue: parallel lines seeming to meet. It does not involve the eye muscles.",
+     "A texture gradient is surface detail becoming finer with distance. Dev is looking at one close pencil.",
+     "Right: The closer an object, the more the eyes turn inward. The brain reads that strain as nearness. It is a binocular cue."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-15",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A movie is a rapid series of still frames, yet viewers see smooth motion. Which concept explains this?",
+   "options": [
+    "Apparent movement",
+    "Perceptual constancy (size and shape)",
+    "Selective attention",
+    "Interposition"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When still images appear in quick succession, the brain perceives motion between them. That is apparent movement.",
+    "options": [
+     "Right: When still images appear in quick succession, the brain perceives motion between them. That is apparent movement.",
+     "Constancy keeps size, shape or color stable. It does not create motion.",
+     "Selective attention picks what to focus on. It does not turn still frames into motion.",
+     "Interposition is a depth cue from overlap. It is about distance, not motion."
+    ]
+   }
+  },
+  {
+   "id": "psy-perception-16",
+   "unit": "unit-2",
+   "topic": "perception",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In a well-known study, people counting basketball passes in a video often missed a person in a gorilla suit walking through the scene. What does this show about attention?",
+   "options": [
+    "People perceive everything in a scene, including the gorilla, but forget it within seconds",
+    "Focusing attention on one task can make people miss an object in plain view",
+    "Motion in a scene is hard for the eyes to detect",
+    "Wearing a costume makes a person blend into a background"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "This is inattentional blindness: attention is limited, so what is not attended to can go unseen even when it is in the middle of the scene.",
+    "options": [
+     "The finding is about not perceiving the gorilla, not about losing it later. People who were not counting saw it easily.",
+     "Right: This is inattentional blindness: attention is limited, so what is not attended to can go unseen even when it is in the middle of the scene.",
+     "The gorilla moved slowly through the center of the screen, and people not counting passes noticed it.",
+     "The gorilla was plainly visible; the effect came from where viewers aimed their attention, not from camouflage."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "ecological-systems": {
+  "def": "Bronfenbrenner’s theory that a child develops within nested systems: the microsystem (family, school), mesosystem (links between them), exosystem (settings that affect the child indirectly), macrosystem (culture, laws) and chronosystem (change over time)."
+ },
+ "parenting-style": {
+  "def": "A parent’s general approach to raising a child, combining how warm and responsive they are with how many rules and demands they set."
+ },
+ "authoritarian": {
+  "def": "A parenting style with strict rules, little explanation and little warmth (\"Because I said so\")."
+ },
+ "authoritative": {
+  "def": "A parenting style that combines warmth with clear, explained rules and listens to the child; linked with good outcomes in many US studies."
+ },
+ "permissive": {
+  "def": "A parenting style that is warm but sets few rules or limits and makes few demands."
+ },
+ "temperament": {
+  "def": "A person’s inborn, partly heritable style of emotional reactivity and activity, such as easygoing, fussy or slow to warm up, visible from infancy."
+ },
+ "attachment": {
+  "def": "A deep emotional bond between a child and a caregiver, shown by seeking closeness and by distress at separation."
+ },
+ "strange-situation": {
+  "def": "Ainsworth’s laboratory procedure in which a 1-year-old is briefly separated from and reunited with a caregiver in an unfamiliar room; the child’s behavior, especially at reunion, classifies attachment."
+ },
+ "secure-attachment": {
+  "def": "An attachment pattern in which a child explores using the caregiver as a safe base, may be upset at separation, and is readily comforted at reunion."
+ },
+ "avoidant-attachment": {
+  "def": "An attachment pattern in which a child shows little distress at separation and ignores or turns away from the caregiver at reunion."
+ },
+ "anxious-attachment": {
+  "def": "An attachment pattern (also called anxious-ambivalent) in which a child is very upset at separation and both clings to and resists the caregiver at reunion."
+ },
+ "disorganized-attachment": {
+  "def": "An attachment pattern in which a child shows confused or contradictory behavior with the caregiver, such as freezing or approaching while looking away."
+ },
+ "separation-anxiety": {
+  "def": "An infant’s distress when separated from a familiar caregiver, typically appearing around 8 months and peaking in the second year."
+ },
+ "contact-comfort": {
+  "def": "The comfort an infant gets from soft physical touch; Harlow’s monkeys showed it matters more than feeding for forming attachment."
+ },
+ "parallel-play": {
+  "def": "Play in which young children (often around age 2) play side by side with similar toys but with little interaction."
+ },
+ "pretend-play": {
+  "def": "Make-believe play in which children use objects and actions to stand for something else, such as a block as a phone; it blossoms in the preschool years."
+ },
+ "psychosocial-stages": {
+  "def": "Erikson’s eight stages of life, each with a social challenge: trust versus mistrust, autonomy versus shame and doubt, initiative versus guilt, industry versus inferiority, identity versus role confusion, intimacy versus isolation, generativity versus stagnation, and integrity versus despair."
+ },
+ "identity-status": {
+  "def": "Marcia’s four ways of approaching identity, by whether a person has explored options and made commitments: achievement (both), moratorium (exploring), foreclosure (committed without exploring) and diffusion (neither)."
+ },
+ "imaginary-audience": {
+  "def": "A teenager’s belief that others are watching and judging them far more than they really are."
+ },
+ "personal-fable": {
+  "def": "A teenager’s belief that their experiences are unique and that they may be invulnerable to risks that affect others."
+ },
+ "social-clock": {
+  "def": "A culture’s expected timing for life events such as leaving home, marriage, parenthood and retirement."
+ },
+ "emerging-adulthood": {
+  "def": "A period from about 18 to the mid-20s, common in wealthy countries, when many people have left adolescence but have not yet taken on full adult roles."
+ },
+ "aces": {
+  "def": "Adverse childhood experiences: stressful events in childhood such as abuse, neglect or a household member’s substance use, mental illness or incarceration; more ACEs are linked to higher average health risks in adulthood."
+ },
+ "possible-selves": {
+  "def": "The images people hold of who they might become, both hoped-for and feared, which can motivate present behavior."
+ }
+}

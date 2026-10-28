@@ -1,0 +1,377 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-twins-method",
+   "topic": "heredity-environment",
+   "practice": "2.A",
+   "skill": "method",
+   "title": "Naming the method of a twin study",
+   "context": "<p>Researchers recruited 120 pairs of identical twins and 120 pairs of fraternal twins, all raised in the same home as their twin. Every twin was 18 to 25 years old and a university student in one Northern European country. Each twin completed the same 40-item risk-taking questionnaire, scored from 0 to 160. The researchers then computed how closely the two twins in each kind of pair matched (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the research method the researchers used, and <b>explain</b> why it fits.",
+   "checklist": [
+    "Names one method: a correlational study (a twin study is a correlational design)",
+    "Explains that no variable was manipulated: twin type cannot be assigned",
+    "Does not list several methods or call the study an experiment"
+   ],
+   "earns": {
+    "answer": "This is a correlational study. The researchers measured how strongly the twins' risk-taking scores were related within each kind of pair, and they could not assign anyone to be an identical or a fraternal twin, so nothing was manipulated.",
+    "why": "It names one method and ties it to the summary: the researchers measured existing pairs and manipulated nothing."
+   },
+   "misses": {
+    "answer": "It is an experiment, because the researchers compared two groups: identical twins and fraternal twins.",
+    "why": "Two groups do not make an experiment. An experiment needs a manipulated variable and random assignment, and no one can be assigned a kind of twin."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Method",
+      "options": [
+       "a correlational study",
+       "an experiment",
+       "a case study",
+       "naturalistic observation"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "No variable was manipulated and nobody was randomly assigned; comparing groups alone is not an experiment.",
+       "2": "A case study looks in depth at one person or a few; this study measured 480 people on one questionnaire.",
+       "3": "The twins filled in a questionnaire; nobody was watched in an everyday setting."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "the researchers measured existing pairs and assigned no one to a condition",
+       "the researchers decided which twins would take more risks",
+       "the researchers studied one family in depth"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nobody was made to take risks; the researchers only measured risk-taking.",
+       "2": "There were 240 pairs, not one family."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-twins-statistic",
+   "topic": "heredity-environment",
+   "practice": "2.C",
+   "skill": "statistic",
+   "title": "Reading twin correlations, not restating them",
+   "context": "<p>Researchers recruited 120 pairs of identical twins and 120 pairs of fraternal twins, all raised in the same home as their twin. Every twin was 18 to 25 years old and a university student in one Northern European country. Each twin completed the same 40-item risk-taking questionnaire, scored from 0 to 160. The researchers then computed how closely the two twins in each kind of pair matched (invented study for practice). Within identical pairs the scores correlated at <i>r</i>&nbsp;=&nbsp;.70; within fraternal pairs at <i>r</i>&nbsp;=&nbsp;.35.</p>",
+   "prompt": "<b>Explain</b> what the two correlations show about risk-taking in these twins.",
+   "checklist": [
+    "Says identical twins' scores were a strong positive correlation and fraternal twins' a weak positive correlation",
+    "Says what the difference means: the more genes a pair shares, the more alike their risk-taking",
+    "Links the result to heredity (heritability) without saying genes alone cause risk-taking"
+   ],
+   "earns": {
+    "answer": "The identical twins' scores showed a strong positive correlation (r = .70), while the fraternal twins' showed a weak positive correlation (r = .35). Identical twins share nearly all their genes and fraternal twins about half, and both kinds grew up in the same home, so the closer match in identical pairs suggests heredity contributes to risk-taking in these twins.",
+    "why": "It reads the numbers for the groups (stronger match for identical twins) and says what that shows (a genetic contribution), instead of copying them."
+   },
+   "misses": {
+    "answer": "Identical twins had a correlation of r = .70 and fraternal twins had a correlation of r = .35.",
+    "why": "This only restates the numbers. A reader wants what they show: identical twins matched more closely, which points to heredity."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Result",
+      "options": [
+       "identical twins' risk-taking scores matched more closely than fraternal twins'",
+       "fraternal twins' risk-taking scores matched more closely",
+       "both kinds of twins matched equally"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the direction: .70 is the stronger correlation, and it belongs to identical twins.",
+       "2": ".70 and .35 are not equal; the identical pairs matched more closely."
+      }
+     },
+     "meaning": {
+      "label": "Meaning",
+      "options": [
+       "heredity contributes to risk-taking, since identical twins share more genes",
+       "risk-taking is caused only by genes",
+       "the home environment explains the whole difference"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A correlation of .70 is not 1; the result shows a contribution, not genes alone.",
+       "2": "Both kinds of twins shared a home, so the home cannot explain why identical twins matched more."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-twins-generalize",
+   "topic": "heredity-environment",
+   "practice": "2.A",
+   "skill": "generalize",
+   "title": "Who the twin results describe",
+   "context": "<p>Researchers recruited 120 pairs of identical twins and 120 pairs of fraternal twins, all raised in the same home as their twin. Every twin was 18 to 25 years old and a university student in one Northern European country. Each twin completed the same 40-item risk-taking questionnaire, scored from 0 to 160. The researchers then computed how closely the two twins in each kind of pair matched (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> whether the results generalize to adults over 60 living in South America.",
+   "checklist": [
+    "Takes a position: the results do not generalize (or only partly, with both sides argued)",
+    "Names participant characteristics from the summary: age 18 to 25, university students, one Northern European country",
+    "Says why those traits matter, not the sample size or the design"
+   ],
+   "earns": {
+    "answer": "The results may not generalize to adults over 60 in South America, because every twin was an 18- to 25-year-old university student from one Northern European country. Older adults have lived through different experiences, and culture shapes how risk-taking is expressed and reported, so the link found in these young students might differ.",
+    "why": "It names the population, takes a position and argues from the participants' age, schooling and country."
+   },
+   "misses": {
+    "answer": "No, because the study was not an experiment, so its results cannot be generalized.",
+    "why": "Generalizing depends on who the participants were, not on whether the study was an experiment. Name their characteristics."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Conclusion",
+      "options": [
+       "may not generalize to adults over 60 in South America",
+       "generalize to everyone",
+       "cannot be judged at all"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sample was narrow; a claim about everyone ignores who was studied.",
+       "2": "You can judge it: compare the participants with the population named."
+      }
+     },
+     "sample": {
+      "label": "Participant characteristics",
+      "options": [
+       "18 to 25 years old, a university student, from one Northern European country",
+       "one of 240 pairs",
+       "measured with a questionnaire"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The number of pairs is sample size, which readers do not accept for generalizability.",
+       "2": "The questionnaire is the measure, not a characteristic of the participants."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-caffeine-opdef",
+   "topic": "sleep",
+   "practice": "2.B",
+   "skill": "opdef",
+   "title": "How this sleep study measured falling asleep",
+   "context": "<p>Forty university students spent one night in a sleep lab. Each was randomly assigned to drink either a cup of coffee with caffeine or a decaffeinated cup that tasted the same, four hours before lights-out. An EEG recorded brain activity all night. The researchers recorded the minutes from lights-out until the EEG first showed NREM sleep. An institutional review board approved the study. Each student signed an informed consent form describing the caffeine and the overnight stay, and was told they could stop and leave the lab at any time without losing the $40 payment (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the operational definition of the time it took to fall asleep in this study.",
+   "checklist": [
+    "Names the dependent variable: how long it took to fall asleep",
+    "Says how this study measured it: minutes from lights-out until the EEG first showed NREM sleep",
+    "Does not give a general definition of sleep or of falling asleep"
+   ],
+   "earns": {
+    "answer": "Time to fall asleep was operationally defined as the number of minutes from lights-out until the EEG first showed NREM sleep.",
+    "why": "It gives the measurement this study used: a count of minutes, a starting point and the EEG sign that ended the count."
+   },
+   "misses": {
+    "answer": "Falling asleep is the change from being awake into the first stage of sleep.",
+    "why": "That defines the concept in general. The point asks how this study measured it: minutes until the EEG showed NREM sleep."
+   },
+   "specific": {
+    "slots": {
+     "variable": {
+      "label": "Variable",
+      "options": [
+       "time to fall asleep",
+       "whether a student drank caffeine",
+       "the payment each student got"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Caffeine or decaf is what the researchers changed, the independent variable.",
+       "2": "The payment was the same for everyone; it is not measured."
+      }
+     },
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the minutes from lights-out until the EEG first showed NREM sleep",
+       "how tired the students said they felt",
+       "the hours each student slept the night before"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The students were not asked how tired they felt; the EEG timed sleep onset.",
+       "2": "The night before was not recorded in this summary."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-caffeine-ethics",
+   "topic": "sleep",
+   "practice": "2.D",
+   "skill": "ethics",
+   "title": "An ethical safeguard in the sleep lab",
+   "context": "<p>Forty university students spent one night in a sleep lab. Each was randomly assigned to drink either a cup of coffee with caffeine or a decaffeinated cup that tasted the same, four hours before lights-out. An EEG recorded brain activity all night. The researchers recorded the minutes from lights-out until the EEG first showed NREM sleep. An institutional review board approved the study. Each student signed an informed consent form describing the caffeine and the overnight stay, and was told they could stop and leave the lab at any time without losing the $40 payment (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>describe</b> how the researchers applied it.",
+   "checklist": [
+    "Names a guideline the summary describes: IRB approval, informed consent or the right to withdraw",
+    "Says how it was applied in this study (what the students were told or what the board did)",
+    "Does not name a design feature such as random assignment as an ethical guideline"
+   ],
+   "earns": {
+    "answer": "The researchers respected the right to withdraw: each student was told they could stop and leave the sleep lab at any time during the night without losing the $40 payment.",
+    "why": "It names a safeguard the summary describes and how it was applied to these students."
+   },
+   "misses": {
+    "answer": "The researchers used random assignment so the study would be fair to everyone.",
+    "why": "Random assignment is a design feature, not an ethical guideline. Pick a safeguard the summary describes, such as the right to withdraw."
+   },
+   "specific": {
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "the right to withdraw",
+       "random assignment",
+       "debriefing after deception"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Random assignment controls confounds; it does not protect participants.",
+       "2": "Nobody was deceived and the summary describes no debriefing."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "students could leave the lab at any time and still get the $40",
+       "students drank coffee four hours before bed",
+       "an EEG recorded brain activity"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the procedure, not a protection for participants.",
+       "2": "That is the measure, not a safeguard."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-antagonist-argue",
+   "topic": "neural-firing",
+   "practice": "4.B",
+   "skill": "argue",
+   "title": "Does the drug block dopamine?",
+   "context": "<p>An animal care committee approved a study of 20 rats trained to press a lever for sugar water. Half were injected with a drug thought to block dopamine receptors and half with salt water. Rats given the drug pressed the lever 12 times a minute on average; rats given salt water pressed 30 times a minute (invented study for practice).</p>",
+   "prompt": "The researchers hypothesized that the drug acts as a dopamine antagonist. <b>Explain</b> whether the results support the hypothesis, using a specific result.",
+   "checklist": [
+    "Uses a specific result: 12 versus 30 presses a minute, 18 fewer for the drug",
+    "Explains the link: an antagonist blocks receptors, so dopamine cannot pass its signal across the synapse",
+    "Takes a position (supports) without saying the study proves it"
+   ],
+   "earns": {
+    "answer": "The results support the hypothesis. Rats given the drug pressed the lever 12 times a minute, 18 fewer than the 30 of rats given salt water. If the drug is an antagonist, it blocks dopamine receptors at the synapse, so dopamine released when the rats get sugar water cannot pass its signal, and the sugar water drives less pressing.",
+    "why": "It uses an accurately read result and explains how a dopamine antagonist would produce that result."
+   },
+   "misses": {
+    "answer": "The results support the hypothesis because the drug is an antagonist.",
+    "why": "It cites no result and assumes what it should show. Use the 12 versus 30 presses and explain the link."
+   },
+   "specific": {
+    "slots": {
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "the drug group pressed 18 fewer times a minute (12 versus 30)",
+       "the drug group pressed 18 more times a minute",
+       "both groups pressed equally"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the result: the drug group pressed less, 12 against 30.",
+       "2": "They differed: 12 against 30 presses a minute."
+      }
+     },
+     "concept": {
+      "label": "Explanation",
+      "options": [
+       "an antagonist blocks dopamine receptors, so dopamine cannot pass its signal",
+       "an agonist mimics dopamine and strengthens its signal",
+       "a reuptake inhibitor leaves more dopamine in the synapse"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An agonist would increase pressing; the drug group pressed less.",
+       "2": "More dopamine in the synapse would increase its effect, not reduce pressing."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-plasticity-reasoning",
+   "topic": "brain",
+   "practice": "4.B",
+   "skill": "reasoning",
+   "title": "Recovering speech after surgery",
+   "context": "<p>Question: does damage to one hemisphere permanently remove the abilities it controlled? Claim: young brains can often recover abilities after one hemisphere is damaged. Source 1: 10 children had most of the left hemisphere removed before age 6 to stop severe seizures; 9 of them were using everyday speech again within two years (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> how the evidence from Source 1 supports the claim, using a psychology concept other than neuroplasticity, the claim's own topic.",
+   "checklist": [
+    "Restates the evidence briefly and cites it: 9 of 10 children regained speech (Source 1)",
+    "Applies a concept from the unit that is not the claim's own topic: hemispheric specialization (lateralization), for example",
+    "Links the concept to the claim: speech was not yet fully specialized in the left hemisphere, so the right hemisphere could take it over"
+   ],
+   "earns": {
+    "answer": "In Source 1, 9 of 10 children regained everyday speech after most of the left hemisphere was removed before age 6. This supports the claim because of hemispheric specialization: in most adults speech depends mainly on the left hemisphere, including Broca's area, but in young children that specialization is not yet complete, so the right hemisphere could take over speech and the ability returned.",
+    "why": "Evidence, then a concept that is not the claim's own topic applied to these children, then the link to the claim."
+   },
+   "misses": {
+    "answer": "Source 1 shows 9 of 10 children regained speech, which shows neuroplasticity, the brain's ability to change.",
+    "why": "Neuroplasticity is the claim's own topic, so it cannot earn the concept point, and the definition is dropped in without a link. Use a different concept and say how it let these children speak again."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "hemispheric specialization",
+       "neuroplasticity",
+       "the all-or-none principle"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Neuroplasticity is the claim's own topic, a restricted term: it cannot earn the concept point.",
+       "2": "The all-or-none principle is about one neuron firing; it does not explain recovery after surgery."
+      }
+     },
+     "link": {
+      "label": "Link to the claim",
+      "options": [
+       "speech was not yet fully specialized in the left hemisphere, so the right hemisphere took it over",
+       "the left hemisphere grew back",
+       "speech never depended on the brain"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Removed tissue does not grow back; other regions take over its work.",
+       "2": "Speech depends on the brain; that is why the surgery could affect it."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

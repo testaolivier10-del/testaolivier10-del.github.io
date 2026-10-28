@@ -1,0 +1,84 @@
+{
+ "topic": "brain",
+ "hook": "In 1848 an explosion drove an iron rod through the front of railroad foreman Phineas Gage's head. He survived, walked and talked, but friends said he was \"no longer Gage\": impulsive and hard to work with. Cases like his gave the first clues that particular parts of the brain do particular jobs.",
+ "prereq": [
+  {
+   "q": "Which part of a neuron is wrapped in myelin?",
+   "options": [
+    "The axon",
+    "The dendrites",
+    "The synapse",
+    "The cell body"
+   ],
+   "correct": 0,
+   "why": "Myelin wraps the axon and speeds the action potential.",
+   "review": "neural-firing"
+  },
+  {
+   "q": "A study changes nothing and simply examines one unusual person in depth. What method is it?",
+   "options": [
+    "A case study",
+    "An experiment",
+    "A survey",
+    "A correlational study"
+   ],
+   "correct": 0,
+   "why": "A case study looks at one person or a few people in depth.",
+   "review": "research-methods"
+  },
+  {
+   "q": "A researcher removes participants' names and uses code numbers. Which safeguard is this?",
+   "options": [
+    "Confidentiality",
+    "Debriefing",
+    "Informed consent",
+    "The right to withdraw"
+   ],
+   "correct": 0,
+   "why": "Keeping data from being linked to a person protects confidentiality.",
+   "review": "research-ethics"
+  }
+ ],
+ "figure": {
+  "figure": "brain-lobes",
+  "caption": "The left hemisphere from the side, front on the left. Tap \"Hide labels\" to test yourself."
+ },
+ "chain": [
+  {
+   "cause": "Signals from the eyes, ears and skin reach the brain",
+   "effect": "the thalamus relays them to the right areas of the cortex (smell is the exception)"
+  },
+  {
+   "cause": "The occipital, temporal and parietal lobes process vision, hearing and touch",
+   "effect": "association areas combine the pieces into meaning"
+  },
+  {
+   "cause": "The frontal lobe plans an action",
+   "effect": "the motor cortex sends commands to the opposite side of the body, and the cerebellum makes the movement smooth"
+  },
+  {
+   "cause": "Damage to one region removes or weakens its job",
+   "effect": "patterns of loss (lesions, strokes, split-brain surgery) reveal what each region does"
+  }
+ ],
+ "ideas": [
+  "The <b>brainstem</b> keeps you alive: the <b>medulla</b> runs breathing and heart rate, and the <b>reticular activating system</b> controls arousal. The <b>cerebellum</b> coordinates balance and smooth movement.",
+  "Four lobes of the <b>cerebral cortex</b>: <b>frontal</b> (planning, judgment; the <b>motor cortex</b>; <b>Broca's area</b> for producing speech), <b>parietal</b> (touch, in the <b>somatosensory cortex</b>), <b>occipital</b> (vision), <b>temporal</b> (hearing; <b>Wernicke's area</b> for understanding speech).",
+  "Limbic structures: the <b>thalamus</b> relays senses, the <b>hypothalamus</b> keeps homeostasis and directs the pituitary, the <b>hippocampus</b> forms new memories, the <b>amygdala</b> handles fear.",
+  "Each hemisphere controls the opposite side of the body. The <b>corpus callosum</b> links them; split-brain cases show that language is mostly in the left hemisphere in most people.",
+  "Tools: case studies of damage, <b>lesions</b> in animal research, <b>EEG</b> (when, from the scalp) and <b>fMRI</b> (where, from blood flow). The brain rewires through <b>neuroplasticity</b>."
+ ],
+ "misconception": {
+  "wrong": "People are either left-brained (logical) or right-brained (creative).",
+  "right": "The hemispheres specialize for some tasks, but they work together through the corpus callosum. Brain-imaging studies of large groups find no left-brain or right-brain types of people."
+ },
+ "check": [
+  "psy-brain-1",
+  "psy-brain-2",
+  "psy-brain-3",
+  "psy-brain-14",
+  "psy-brain-16",
+  "psy-brain-17"
+ ],
+ "summary": "The brainstem keeps you alive and alert, the cerebellum smooths movement, and the limbic structures handle relay, drives, memory and fear. The cortex has four lobes, each with its own jobs, including the motor and somatosensory strips and the two language areas. Each hemisphere controls the opposite side of the body, and the corpus callosum links them. We know this from damage cases, lesions, EEG and fMRI, and the brain can rewire through neuroplasticity."
+}

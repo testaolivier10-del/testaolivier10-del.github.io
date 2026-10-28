@@ -1,0 +1,482 @@
+{
+ "stimuli": {
+  "heredity-environment-s1": {
+   "kind": "data",
+   "title": "How alike are relatives in reading test scores?",
+   "invented": true,
+   "table": {
+    "caption": "Correlations between pairs of relatives on a reading test (invented data for practice)",
+    "cols": [
+     "Pair of relatives",
+     "Raised",
+     "r"
+    ],
+    "rows": [
+     [
+      "Identical twins",
+      "together",
+      "+0.82"
+     ],
+     [
+      "Identical twins",
+      "apart",
+      "+0.72"
+     ],
+     [
+      "Fraternal twins",
+      "together",
+      "+0.55"
+     ],
+     [
+      "Adoptive siblings",
+      "together",
+      "+0.25"
+     ]
+    ]
+   }
+  },
+  "heredity-environment-s2": {
+   "kind": "study",
+   "title": "Phenylketonuria (PKU): an inherited condition shaped by diet",
+   "source": "Bickel, Gerrard & Hickmans (1953)",
+   "study": {
+    "introduction": "Phenylketonuria (PKU) is an inherited condition in which the body cannot break down phenylalanine, a building block of protein found in many foods. Untreated, it builds up and damages the developing brain, causing severe intellectual disability.",
+    "participants": "Bickel and colleagues treated a 2-year-old girl in England who had PKU and severe developmental delays.",
+    "method": "The researchers gave her a special diet very low in phenylalanine and recorded her behavior and blood levels over several months.",
+    "results": "On the diet, her blood levels fell and her alertness and behavior improved; when phenylalanine was added back to her food, her symptoms worsened again.",
+    "discussion": "Later work showed that starting the diet in the first weeks of life largely prevents the brain damage, so newborns in many countries are now screened for PKU."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-heredity-environment-1",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two brothers inherit a tendency to grow tall. One grows up with plenty of food; the other, raised during a long famine, ends up much shorter. Which idea does this best illustrate?",
+   "options": [
+    "Heredity and environment interact to shape a trait",
+    "Height is set by heredity, so the famine had little effect",
+    "Height is set by environment, so inheritance plays no part",
+    "The brothers are probably fraternal twins with different inheritance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inherited potential is expressed through the environment. Nature and nurture work together rather than one alone.",
+    "options": [
+     "Right: the same inherited potential led to different heights in different environments.",
+     "The famine clearly changed the outcome, so heredity alone does not set height.",
+     "Both brothers inherited a tendency to be tall; inheritance still matters.",
+     "The stem says both inherited the same tendency; the environment differed."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-2",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Researchers find that a trait has a heritability of 0.60 in a large group of adults. What does this mean?",
+   "options": [
+    "In each adult, 60% of the trait comes from genes and 40% from environment",
+    "About 60% of the differences among these adults are linked to genes",
+    "The environment has little power to change the trait in these adults",
+    "60% of the adults inherited the trait from a parent"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Heritability is the share of the variation among people in a particular group and environment that is linked to genetic differences. It says nothing about how much of one person’s trait comes from genes.",
+    "options": [
+     "Heritability is not about the makeup of any one person’s trait.",
+     "Right: heritability describes variation within a group.",
+     "A heritable trait can still change a great deal with the environment.",
+     "Heritability is not the share of people who have a trait."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-3",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Why can a trait be highly heritable and still differ between two groups for purely environmental reasons?",
+   "options": [
+    "Highly heritable traits are fixed at birth and do not change",
+    "Heritability is measured with adoption studies, which ignore groups",
+    "Heritability describes differences within a group, not between groups",
+    "Groups differ by heredity alone, while individuals differ by environment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Plant the same mix of seeds in rich and poor soil. Within each field, height differences are mostly genetic; the difference between the fields is entirely the soil. Heritability within groups says nothing about the cause of differences between them.",
+    "options": [
+     "Heritable traits can change with nutrition, schooling and much else.",
+     "The method does not matter; the point is what heritability describes.",
+     "Right: two fields of the same seeds in rich and poor soil differ because of the soil.",
+     "Neither part of this holds; both sources vary at both levels."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-4",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A psychologist explains why people around the world find sweet, fatty foods appealing by pointing out that ancestors who sought out these rare, energy-rich foods were more likely to survive and have children. Which perspective is this?",
+   "options": [
+    "The behavioral perspective",
+    "The humanistic perspective",
+    "The sociocultural perspective",
+    "The evolutionary perspective"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Evolutionary psychology explains behavior and mental processes by how they helped our ancestors survive and reproduce, through natural selection.",
+    "options": [
+     "The behavioral perspective explains behavior by what a person learned from consequences in their own lifetime.",
+     "The humanistic perspective stresses growth and free choice.",
+     "The sociocultural perspective looks at the influence of culture and other people.",
+     "Right: it explains a trait by its survival and reproduction advantages."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-5",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "recall",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Which statement describes natural selection?",
+   "options": [
+    "Inherited traits that aid survival and reproduction spread over generations",
+    "Animals change their traits during their lives and pass the changes on",
+    "Individuals choose which of their traits to pass to their children",
+    "Traits that are useful today will appear in the next generation of children"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In natural selection, inherited variations that improve survival and reproduction are passed on more often, so they spread through a population over many generations.",
+    "options": [
+     "Right: those traits are passed on more often.",
+     "Traits acquired during a lifetime, such as stronger muscles, are not inherited.",
+     "Natural selection is not a choice by any individual.",
+     "Selection works over many generations on inherited variation, not on what is useful today."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-6",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In the early 1900s, some U.S. states passed laws allowing tens of thousands of people judged \"unfit\" to be sterilized without their consent, based on claims about inherited ability. What was this movement, and what was wrong with its reasoning?",
+   "options": [
+    "Evolutionary psychology, which showed that some groups are less fit than others",
+    "Eugenics, which misused claims about heredity to rank people and deny their rights",
+    "Natural selection, which predicts that people with low ability should not have children",
+    "Twin research, which proved that ability is inherited and fixed for life"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Eugenics tried to \"improve\" humanity by controlling who could have children. It treated poverty and lack of schooling as inherited defects and led to forced sterilization and, in Nazi Germany, mass murder.",
+    "options": [
+     "Evolutionary psychology studies shared human traits; it does not rank groups or justify sterilization.",
+     "Right: it ignored the environment and violated human rights.",
+     "Natural selection describes what happens over generations, not what anyone should do.",
+     "Twin studies show that both genes and environment matter, and a heritable trait is not fixed for life."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-7",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why do researchers study adopted children to separate the effects of heredity and environment?",
+   "options": [
+    "Adopted children are randomly assigned to their families by researchers",
+    "Adopted children share no environment with any of their relatives",
+    "The children share genes with one family and a home with another",
+    "Adoption studies are experiments, so they show cause and effect"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In an adoption study, resemblance to the biological parents points to heredity, and resemblance to the adoptive parents points to the shared environment.",
+    "options": [
+     "Adoption placements are not made by researchers or at random; this is a correlational design.",
+     "They share a home with their adoptive family.",
+     "Right: so each source of similarity can be compared separately.",
+     "No one manipulates who is adopted, so adoption studies are correlational."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-8",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "heredity-environment-s1",
+   "q": "Which comparison in the table gives the clearest evidence that heredity matters for reading scores?",
+   "options": [
+    "Adoptive siblings (+0.25) compared with fraternal twins (+0.55)",
+    "Identical twins raised together (+0.82) compared with raised apart (+0.72)",
+    "Adoptive siblings (+0.25) compared with identical twins apart (+0.72)",
+    "Identical (+0.82) versus fraternal twins (+0.55), both raised together"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In twin studies, both kinds of twins grow up together. Identical twins share all their genes, fraternal twins about half; when identical twins are more alike, genes are contributing.",
+    "options": [
+     "Fraternal twins share both genes and a womb and are the same age, so this mixes heredity and environment.",
+     "Here genes are the same and the home differs, so this comparison is about environment.",
+     "This changes both genes and home at once, so neither can be singled out.",
+     "Right: the home is shared in both, so the extra likeness tracks the extra genes."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-9",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "heredity-environment-s1",
+   "q": "Adoptive siblings, who share a home but no genes, correlate at +0.25. What does this suggest?",
+   "options": [
+    "The shared home has some influence on reading scores",
+    "Reading scores are inherited, with no role for the home",
+    "Adoptive siblings share half their genes",
+    "The home environment lowers children’s reading scores"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because adoptive siblings share no genes, their similarity points to the shared environment: the same home, books and schools.",
+    "options": [
+     "Right: genetically unrelated children raised together are still somewhat alike.",
+     "If they were, unrelated siblings would show about zero correlation.",
+     "Adoptive siblings are not biologically related.",
+     "A positive correlation means the siblings are alike, not that their scores are low."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-10",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "heredity-environment-s1",
+   "q": "Identical twins raised apart still correlate at +0.72. Which caution applies to this finding?",
+   "options": [
+    "A correlation of +0.72 shows that reading is caused by genes in each twin",
+    "Twins raised apart often had similar homes, so some likeness is environmental",
+    "Twins raised apart do not share any genes, so the result is surprising",
+    "The correlation is negative, so separated twins read very differently"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Separated twins shared a womb, are the same age and are often placed with similar families. These shared environments can inflate their similarity, which is why researchers combine several designs.",
+    "options": [
+     "A correlation shows a relationship, not that each individual’s reading is caused by genes.",
+     "Right: separated twins are often placed in similar families and communities.",
+     "Identical twins share all their genes, wherever they are raised.",
+     "The correlation is +0.72, positive and strong."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-11",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "multi",
+   "practice": "3.A",
+   "stimulus": "heredity-environment-s1",
+   "q": "Which conclusions do the table’s correlations support? Select all that apply.",
+   "options": [
+    "Genes contribute to differences in reading scores",
+    "The environment contributes to differences in reading scores",
+    "A child’s reading score is fixed by heredity",
+    "Fraternal twins share no genes",
+    "Raising twins apart makes them very different readers"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Twin and adoption data together show that both heredity and environment contribute to differences in the trait.",
+    "options": [
+     "Supported: more shared genes go with more similar scores.",
+     "Supported: unrelated adoptive siblings are somewhat alike, and twins raised together are more alike than twins raised apart.",
+     "Not supported: environment matters, and heritability says nothing about a fixed outcome.",
+     "Not supported: fraternal twins share about half, like other siblings.",
+     "Not supported: identical twins raised apart still correlate +0.72."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-12",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "heredity-environment-s2",
+   "q": "Which research method does this report describe?",
+   "options": [
+    "A twin study",
+    "An adoption study",
+    "A case study",
+    "A correlational study"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A case study looks in depth at one person. It can suggest ideas, here that diet changes the course of PKU, which later studies of many children confirmed.",
+    "options": [
+     "No twins were compared.",
+     "No adoptive and biological families were compared.",
+     "Right: an in-depth report on one child.",
+     "A correlational study measures variables across many people; this followed one child."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-13",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "heredity-environment-s2",
+   "q": "What does PKU show about heredity and environment?",
+   "options": [
+    "Inherited conditions are hardly affected by the environment",
+    "PKU is caused by diet, not by heredity",
+    "Intellectual disability usually comes from an inherited condition",
+    "An inherited condition’s effects depend on the diet"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "PKU is the classic example of heredity and environment interacting: an inherited condition whose harm depends on what the child eats.",
+    "options": [
+     "The diet changed the outcome dramatically.",
+     "PKU is inherited; the diet changes what the inherited condition does.",
+     "The study is about one inherited condition; it says nothing about how often intellectual disability is inherited.",
+     "Right: the same inheritance leads to very different outcomes with different diets."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-14",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "heredity-environment-s2",
+   "q": "A classmate says, \"If a trait is inherited, there is no point trying to change it.\" How does PKU answer this?",
+   "options": [
+    "Its harm can be largely prevented by changing the diet",
+    "PKU shows that inherited traits are usually harmless",
+    "PKU shows that inherited traits disappear by adulthood",
+    "PKU shows that the environment, not heredity, shapes the brain"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Inherited is not the same as fixed. Newborn screening and a special diet let children with PKU develop typically, which is why screening is routine.",
+    "options": [
+     "Right: inherited does not mean unchangeable.",
+     "Untreated PKU is very harmful.",
+     "People with PKU keep the condition; the diet manages it.",
+     "The condition itself is inherited; both matter."
+    ]
+   }
+  },
+  {
+   "id": "psy-heredity-environment-15",
+   "unit": "unit-1",
+   "topic": "heredity-environment",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "1.A",
+   "stimulus": "heredity-environment-s2",
+   "q": "Build a sentence explaining PKU as an interaction of heredity and environment.",
+   "why": {
+    "correct": "An interaction answer names the inherited part, the environmental part, and how the outcome depends on both."
+   },
+   "specific": {
+    "frame": "PKU is ___, but whether it harms the brain depends on ___.",
+    "write": {
+     "concept": [
+      "heredity",
+      "environment",
+      "inherited"
+     ]
+    },
+    "model": "PKU is an inherited condition, but whether it harms the brain depends on the environment: a diet very low in phenylalanine, started early, largely prevents the damage.",
+    "slots": {
+     "concept": {
+      "label": "Heredity",
+      "options": [
+       "an inherited condition",
+       "caused by eating too much protein",
+       "a disorder caused only by the environment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The condition is inherited; diet changes its effects.",
+       "2": "PKU is inherited; the environment changes its course."
+      }
+     },
+     "link": {
+      "label": "Environment",
+      "options": [
+       "the child’s parents’ reading habits",
+       "the diet, especially one low in phenylalanine started early",
+       "nothing, since inherited conditions are fixed"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "The study is about diet, not the home’s reading habits.",
+       "2": "The diet dramatically changes the outcome."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

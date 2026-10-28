@@ -1,0 +1,354 @@
+{
+ "stimuli": {
+  "research-ethics-s1": {
+   "kind": "study",
+   "title": "Does a stressful speech task affect memory?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether preparing for a surprise speech affects how many words people remember.",
+    "participants": "Sixty university students (ages 18 to 24) took part. The university’s institutional review board approved the study. Each student read and signed a consent form that described a \"memory task\" and said they could stop at any time.",
+    "method": "Students were randomly assigned to two groups. One group was told they would soon give a speech that would be video-recorded and judged; the other group was not. In fact, no one gave a speech. All students then studied 20 words and wrote down as many as they could recall in two minutes.",
+    "results": "The speech group recalled an average of 9 words; the comparison group recalled 12.",
+    "discussion": "At the end of the session, researchers told each student that no speech had been planned, explained why the study needed this cover story, and answered their questions."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-research-ethics-1",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Before running a study, a professor submits her plan to a committee at her university, which checks that the risks to participants are minimal and justified. What is this committee?",
+   "options": [
+    "An institutional review board (IRB)",
+    "A peer review panel at a scientific journal",
+    "A control group for the experiment",
+    "A debriefing session for participants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An institutional review board reviews research plans before data collection to protect the participants’ rights and welfare.",
+    "options": [
+     "Right: an IRB reviews and approves research with human participants.",
+     "Peer review checks a finished study before publication, not a plan before it starts.",
+     "A control group is part of a study’s design, not a review committee.",
+     "Debriefing happens with participants after the study."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-2",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Fifteen-year-olds take part in a study of attention. Their parents sign a form allowing it, and each teen also agrees after the study is explained to them. What do the teens give?",
+   "options": [
+    "Debriefing",
+    "Informed assent",
+    "Confidentiality",
+    "Peer review"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Minors cannot give legal consent, so a parent or guardian consents and the minor gives assent: their own agreement after the study is explained in terms they understand.",
+    "options": [
+     "Debriefing explains the study afterward; it is not agreement to take part.",
+     "Right: a minor’s own agreement, given alongside a parent’s consent.",
+     "Confidentiality protects participants’ data, not their agreement.",
+     "Peer review is experts checking a study for a journal."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-3",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Halfway through a study, a participant says she feels uncomfortable and wants to stop. The researcher thanks her and lets her leave with full credit. Which safeguard did the researcher honor?",
+   "options": [
+    "Debriefing after deception",
+    "Confidentiality of data",
+    "The right to withdraw",
+    "Random assignment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Participants can withdraw at any point without losing anything they were promised.",
+    "options": [
+     "Nothing in the stem says the study involved deception or explained it.",
+     "Confidentiality is about protecting records, not about leaving.",
+     "Right: participants may stop at any time without penalty.",
+     "Random assignment is a design feature, not an ethical safeguard."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-4",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "In a study of honesty, participants are told it is a study of handwriting. Afterward, the researcher explains the true purpose, why the cover story was needed, and answers questions. What is this final step called?",
+   "options": [
+    "Informed consent",
+    "Peer review",
+    "A double-blind procedure",
+    "Debriefing"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When a study uses deception, ethics codes require debriefing: telling participants the truth and the reason for the deception as soon as possible.",
+    "options": [
+     "Consent comes before the study, and here the true purpose was hidden at that point.",
+     "Peer review is experts evaluating the study for a journal.",
+     "Blinding hides conditions during the study; this step reveals the purpose after it.",
+     "Right: explaining the study, and any deception, after participation."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-5",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "Researchers store each participant’s answers under a code number and keep the list linking codes to names in a locked file. Which ethical guideline does this protect?",
+   "options": [
+    "Confidentiality",
+    "Informed assent",
+    "Protection from harm",
+    "Debriefing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Confidentiality means information about participants is kept private and their identities are protected.",
+    "options": [
+     "Right: participants’ identities and data are kept private.",
+     "Assent is a minor’s agreement to take part.",
+     "Harm is about physical or emotional risk during the study; this is about records.",
+     "Debriefing explains the study after it ends."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-6",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "A student summarizing a study for an exam answer writes: \"One ethical guideline the researchers followed was random assignment, because each participant had an equal chance of being in either group.\" Why does this not earn credit?",
+   "options": [
+    "Random assignment is a feature of surveys rather than experiments",
+    "Random assignment is a design feature, not an ethical safeguard",
+    "The answer needed to name the IRB, which is the guideline readers prefer",
+    "Ethical guidelines apply to animal research, not to studies of people"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An ethics answer must name a safeguard the summary describes (consent, withdrawal, confidentiality, debriefing, IRB approval, protection from harm) and say how it was applied.",
+    "options": [
+     "Random assignment is used in experiments.",
+     "Right: readers do not accept design features as ethics.",
+     "Any safeguard the summary describes can earn the point if its use is explained.",
+     "Ethical guidelines protect both human and animal participants."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-7",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "A neuroscience lab plans to study learning in rats. Which step is required before it can begin?",
+   "options": [
+    "Informed consent from each rat",
+    "Debriefing each rat at the end of the study",
+    "Approval from an animal care and use committee",
+    "Confidentiality for each rat’s identity"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Animal research must be approved by a committee that checks housing, care, pain control and whether the use of animals is justified.",
+    "options": [
+     "Animals cannot consent; their welfare is protected by committee review.",
+     "Debriefing is for people, explaining the study after it ends.",
+     "Right: animal research is reviewed for humane care and justified use.",
+     "Confidentiality protects people’s identities, not lab animals’."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-8",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s1",
+   "q": "Which part of the study used deception?",
+   "options": [
+    "Assigning students to two groups at random",
+    "Counting the words recalled in two minutes",
+    "Asking students to sign a consent form",
+    "Telling one group about a speech that was never planned"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The speech was a cover story. Deception is allowed only when the study needs it, the risk is small and participants are debriefed.",
+    "options": [
+     "Random assignment is a design feature, not deception.",
+     "That is the measure, recorded honestly.",
+     "Consent is a safeguard, not deception.",
+     "Right: the students were misled about the speech."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-9",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s1",
+   "q": "Build an answer to: identify one ethical guideline the summary describes and explain how the researchers applied it.",
+   "why": {
+    "correct": "Name a safeguard the summary describes, then say exactly how these researchers carried it out."
+   },
+   "specific": {
+    "frame": "The researchers followed ___ by ___.",
+    "model": "The researchers followed debriefing by telling each student at the end of the session that no speech had been planned, explaining why the cover story was needed, and answering their questions.",
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "debriefing",
+       "random assignment",
+       "confidentiality"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Random assignment is a design feature, not an ethical guideline.",
+       "2": "The summary does not describe how data were kept private."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "assigning students to groups by chance",
+       "telling each student afterward that no speech had been planned and why",
+       "keeping the speech group’s videos private"
+      ],
+      "correct": 1,
+      "why": {
+       "0": "That describes random assignment, which is not an ethical guideline.",
+       "2": "No videos were made; the speech never happened."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-research-ethics-10",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s1",
+   "q": "A critic says the consent form was not fully informed. What is the strongest basis for this claim?",
+   "options": [
+    "The form said \"memory task\" but not the speech threat",
+    "The form said students could stop at any time",
+    "The study was approved by the review board",
+    "Students were randomly assigned to two groups"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Informed consent means knowing what participation involves. The cover story kept the speech threat out of the form, which is why debriefing was required.",
+    "options": [
+     "Right: the stressful part was not described in advance.",
+     "Saying participants may withdraw is part of proper consent.",
+     "Review board approval supports the study’s ethics.",
+     "Assignment is a design feature unrelated to consent."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-11",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s1",
+   "q": "Which feature of the study best reduced the risk of lasting harm from the stress manipulation?",
+   "options": [
+    "The students recalled fewer words in the speech group",
+    "The threat was brief and explained at debriefing",
+    "Sixty students took part, aged 18 to 24",
+    "Students studied 20 words for the recall task"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Protection from harm means keeping risks minimal: a short, mild source of stress with a full explanation before participants leave.",
+    "options": [
+     "That is a result, not a protection.",
+     "Right: the stress was short and resolved before students left.",
+     "The number and ages of participants do not reduce harm.",
+     "The task’s length does not address the stress."
+    ]
+   }
+  },
+  {
+   "id": "psy-research-ethics-12",
+   "unit": "skills-research",
+   "topic": "research-ethics",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "research-ethics-s1",
+   "q": "Which safeguard in the summary was applied before any student took part?",
+   "options": [
+    "Debriefing about the speech that did not happen",
+    "Giving the speech group a recall test of 20 words",
+    "Approval of the plan by the university’s review board",
+    "Random assignment of students to the two groups"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Institutional review board approval happens before data collection: the board checks the plan, including the deception and the debriefing.",
+    "options": [
+     "Debriefing came at the end of each session.",
+     "That is the measure, given during the session.",
+     "Right: the summary says the IRB approved the study.",
+     "Assignment is a design feature, not an ethical safeguard."
+    ]
+   }
+  }
+ ]
+}

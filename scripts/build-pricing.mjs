@@ -38,8 +38,11 @@
       (docs/apstat-spec.md decision 15).
   11. AP® Environmental Science's the same way (<!-- hub-env:start/end -->,
       <!-- nf-env:start/end -->, environmental-science/manifest.json), hidden
-      until its first unit is published (docs/apenv-spec.md). */
-import { readFileSync, writeFileSync } from 'node:fs';
+      until its first unit is published (docs/apenv-spec.md).
+  12. AP® Psychology's the same way (<!-- hub-psy:start/end -->,
+      <!-- nf-psy:start/end -->, psychology/manifest.json), hidden until its
+      first unit is published (docs/appsych-spec.md). */
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
 import { CSP } from './lib/site-config.mjs';
@@ -81,7 +84,7 @@ const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
 const AP_SOURCES = [['Fiveable', 'https://fiveable.me/pricing']];
 const COMPARE_SOURCES = {
   nremt: [['App Store', 'https://apps.apple.com/us/app/pocket-prep-ems-2026/id1503584128']],
-  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES,
+  apbio: AP_SOURCES, apchem: AP_SOURCES, apphys: AP_SOURCES, apcalc: AP_SOURCES, apstat: AP_SOURCES, apenv: AP_SOURCES, appsych: AP_SOURCES,
 };
 const TUTOR_HOUR = { rate: 26, source: 'https://www.care.com/cost/private-tutors/boston-ma', checked: 'October 2026' };
 const PRICES = ORDER.flatMap((k) => COURSES[k].passes.map((x) => x.price));
@@ -94,6 +97,7 @@ const PHYS = ORDER.includes('apphys');
 const CALC = ORDER.includes('apcalc');
 const STAT = ORDER.includes('apstat');
 const ENV = ORDER.includes('apenv');
+const PSY = ORDER.includes('appsych');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
@@ -101,16 +105,19 @@ const PHYS_ALL = N.apphysTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'a
 const CALC_ALL = N.apcalcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalc-dependency-map.json'), 'utf8')).topics.length;
 const STAT_ALL = N.apstatTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apstat-dependency-map.json'), 'utf8')).topics.length;
 const ENV_ALL = N.apenvTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apenv-dependency-map.json'), 'utf8')).topics.length;
+// AP® Psychology's map lands in Phase 0 Part B; until then nothing is "all".
+const PSY_MAP = join(ROOT, 'docs', 'appsych-dependency-map.json');
+const PSY_ALL = existsSync(PSY_MAP) && N.appsychTopics >= JSON.parse(readFileSync(PSY_MAP, 'utf8')).topics.length;
 const BIO_ALL = N.apbioTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apbio-dependency-map.json'), 'utf8')).topics.length;
-// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science).
-const MARK = BIO || CHEM || PHYS || CALC || STAT || ENV;
+// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB, AP® Statistics, AP® Environmental Science, AP® Psychology).
+const MARK = BIO || CHEM || PHYS || CALC || STAT || ENV || PSY;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
 /* The address terms.html and privacy.html publish. When hello@levlprep.com
    is set up (owner checklist), change it here and on those two pages. */
 const CONTACT_EMAIL = 'hello@levlprep.com';
-const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
 // The courses whose pass runs through a date (the AP® passes), for the rules and terms.html#fixed-date.
 const DATED = ORDER.filter((k) => COURSES[k].passes.some((p) => p.until));
@@ -631,6 +638,10 @@ function hubEnvCard() {
   return apCard({ href: 'environmental-science/', tint: 'apenv', cover: 'apenv', t1: 'AP® Environmental', t2: 'Science', hand: 'every calculation, with units', name: 'AP® Environmental Science',
     line: published(ENV_ALL, N.apenvTopics, 'with every calculation drilled with units') });
 }
+function hubPsyCard() {
+  return apCard({ href: 'psychology/', tint: 'appsych', cover: 'appsych', t2: 'Psychology', hand: 'every concept, applied', name: 'AP® Psychology',
+    line: published(PSY_ALL, N.appsychTopics, 'with every concept applied to a situation') });
+}
 
 {
   const rel = 'index.html';
@@ -643,6 +654,7 @@ function hubEnvCard() {
   src = between(src, '<!-- hub-calc:start -->', '<!-- hub-calc:end -->', CALC ? hubCalcCard() : '', rel);
   src = between(src, '<!-- hub-stat:start -->', '<!-- hub-stat:end -->', STAT ? hubStatCard() : '', rel);
   src = between(src, '<!-- hub-env:start -->', '<!-- hub-env:end -->', ENV ? hubEnvCard() : '', rel);
+  src = between(src, '<!-- hub-psy:start -->', '<!-- hub-psy:end -->', PSY ? hubPsyCard() : '', rel);
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
@@ -659,7 +671,7 @@ function hubEnvCard() {
   src = between(src, '<!-- home-try:start -->', '<!-- home-try:end -->', homeTry(), rel);
   /* The desktop facts row (polish 2026-10-17, A2): course-neutral, counted
      from every open course's bank, never typed. */
-  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv };
+  const BANK = { nremt: N.nremt, ochem: N.ochem, anp: N.anp, apbio: N.apbio, apchem: N.apchem, apphys: N.apphys, apcalc: N.apcalc, apstat: N.apstat, apenv: N.apenv, appsych: N.appsych };
   const allQ = OPEN.reduce((n, c) => n + (BANK[c.key] || 0), 0);
   const facts = [
     `${fmt(allQ)} practice questions, each one explained`,
@@ -700,7 +712,7 @@ function hubEnvCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc' && x !== 'apstat' && x !== 'apenv' && x !== 'appsych')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -709,7 +721,7 @@ function hubEnvCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus', apstat: 'Statistics', apenv: 'Environmental Science' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus', apstat: 'Statistics', apenv: 'Environmental Science', appsych: 'Psychology' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
@@ -745,6 +757,11 @@ const MANIFESTS = {
     name: 'LevlPrep Environmental Science',
     short_name: 'LevlPrep Env Science',
     description: `Environmental Science on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'psychology/manifest.json': {
+    name: 'LevlPrep Psychology',
+    short_name: 'LevlPrep Psychology',
+    description: `Psychology on the course framework, in its order, for the May 2027 exam: every notes page is free forever and Unit 1 is fully interactive, with the research skills you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',
@@ -814,6 +831,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${ENV_ALL ? `All ${fmt(N.apenvTopics)} published topics` : `${fmt(N.apenvTopics)} published topic${N.apenvTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one.</p>
     </a>`;
   out = between(out, '<!-- nf-env:start -->', '<!-- nf-env:end -->', ENV ? env : '', rel);
+  const psy = `    <a class="card nf-card" href="/psychology/"><img class="sp-cv" src="/assets/covers/appsych.svg" alt="" width="640" height="320" loading="lazy" decoding="async">
+      <h2>AP® Psychology</h2>
+      <p>${PSY_ALL ? `All ${fmt(N.appsychTopics)} published topics` : `${fmt(N.appsychTopics)} published topic${N.appsychTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one.</p>
+    </a>`;
+  out = between(out, '<!-- nf-psy:start -->', '<!-- nf-psy:end -->', PSY ? psy : '', rel);
   put(rel, out);
 }
 

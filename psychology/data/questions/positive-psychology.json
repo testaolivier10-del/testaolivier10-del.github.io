@@ -1,0 +1,602 @@
+{
+ "stimuli": {
+  "positive-psychology-s1": {
+   "kind": "visual",
+   "title": "Six virtue categories",
+   "figure": "positive-psychology-virtues"
+  },
+  "positive-psychology-s2": {
+   "kind": "data",
+   "title": "Gratitude journaling and life satisfaction",
+   "invented": true,
+   "text": "<p>Researchers randomly assigned 120 high school students to write each week for 10 weeks about either things they were grateful for (gratitude group) or the events of their week (neutral group). Life satisfaction was rated from 1 to 7 before and after. The difference after 10 weeks was statistically significant, but the effect size was small.</p>",
+   "table": {
+    "caption": "Mean life satisfaction, 1 to 7 (invented data for practice)",
+    "cols": [
+     "Group",
+     "Before",
+     "After 10 weeks"
+    ],
+    "rows": [
+     [
+      "Gratitude",
+      "4.8",
+      "5.3"
+     ],
+     [
+      "Neutral",
+      "4.8",
+      "4.9"
+     ]
+    ]
+   }
+  },
+  "positive-psychology-s3": {
+   "kind": "study",
+   "title": "Who bounces back after a hurricane?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked how common resilience is after a major disaster, and which factors go with it.",
+    "participants": "480 adults living in coastal towns in Louisiana that were damaged by a hurricane. All gave informed consent. Data were stored without names.",
+    "method": "Participants completed a distress questionnaire (scored 0 to 40) at 3, 12 and 24 months after the hurricane, and reported how many people they could count on for help. Each person was classified as resilient (low distress at all three times), recovering (high, then falling), or chronic (high at all three times).",
+    "results": "Resilient: 62% of participants. Recovering: 23%. Chronic: 15%. People who reported more sources of support were more likely to be resilient."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-positive-psychology-1",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A research team studies what helps ordinary people thrive: what makes work meaningful, which habits raise life satisfaction, and how communities support flourishing. Which field best describes their work?",
+   "options": [
+    "Health psychology",
+    "The psychodynamic approach",
+    "Positive psychology",
+    "Industrial-organizational psychology"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Positive psychology studies human flourishing scientifically.",
+    "options": [
+     "Health psychology studies how stress and behavior affect physical health and illness.",
+     "The psychodynamic approach studies unconscious conflicts, not flourishing.",
+     "Right: the scientific study of well-being, strengths and what helps people and communities thrive.",
+     "I/O psychology studies workplaces, but this team studies flourishing in all areas of life."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-2",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a survey, Ana rates her life satisfaction 9 out of 10 and reports feeling many more pleasant than unpleasant emotions. Which concept do these ratings measure?",
+   "options": [
+    "Subjective well-being",
+    "Resilience",
+    "Self-efficacy for daily tasks",
+    "Eustress"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Subjective well-being is self-reported happiness and life satisfaction.",
+    "options": [
+     "Right: a person's own judgment of life satisfaction plus the balance of positive and negative feelings.",
+     "Resilience is bouncing back from adversity; nothing here is about recovering from a hardship.",
+     "Self-efficacy is belief in succeeding at a task, not satisfaction with life.",
+     "Eustress is positive stress, not a rating of life satisfaction."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-3",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After her family lost their home in a fire, Kiara felt shaken for weeks, then gradually returned to school, sports and friendships, functioning much as before. Which concept best describes her?",
+   "options": [
+    "Posttraumatic growth",
+    "Resilience",
+    "Learned helplessness",
+    "Denial"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Resilience: recovering and adapting well after adversity, which is common.",
+    "options": [
+     "Growth would mean positive change beyond her earlier level, such as new priorities; she returned to her earlier functioning.",
+     "Right: adapting well and bouncing back after adversity.",
+     "Learned helplessness is giving up after repeated uncontrollable events; she recovered.",
+     "Denial would be refusing to accept the loss; she was shaken and then adapted."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-4",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A year after a serious car accident, Dev says he now values his relationships more, feels stronger than he thought he was, and changed his career to something more meaningful. Which concept do these changes show?",
+   "options": [
+    "Resilience after trauma",
+    "Reaction formation",
+    "Eustress",
+    "Posttraumatic growth"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Posttraumatic growth: positive change, such as new priorities or closer relationships, after struggling with trauma.",
+    "options": [
+     "Resilience is returning to the earlier level; Dev describes positive change beyond it.",
+     "Reaction formation is a defense mechanism showing the opposite of a hidden feeling.",
+     "Eustress is positive stress at the time; Dev describes lasting change after a trauma.",
+     "Right: positive psychological change after struggling with a highly challenging event."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-5",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Every night for two weeks, students write down three things that went well that day and why. Which positive psychology concept is this exercise designed to build?",
+   "options": [
+    "Gratitude",
+    "Self-actualization",
+    "Resilience",
+    "Display rules"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gratitude practices ask people to notice and appreciate what is good.",
+    "options": [
+     "Right: noticing and appreciating good things in life.",
+     "Self-actualization is a humanistic idea about growing toward potential, not a daily writing practice.",
+     "Resilience is recovering from adversity; the exercise targets appreciation of good events.",
+     "Display rules are cultural norms for showing emotion."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-6",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A teacher notices that Mateo is at his best when he is curious and learning new things, and he says those moments feel most like \"the real me.\" In positive psychology, what are these strengths called?",
+   "options": [
+    "Personality traits from the Big Five",
+    "Defense mechanisms",
+    "Signature strengths",
+    "Virtue categories"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Signature strengths are a person's most characteristic strengths; using them is linked to well-being.",
+    "options": [
+     "The Big Five are broad trait dimensions, not the strengths a person uses most and values most.",
+     "Defense mechanisms protect against anxiety, not strengths that feel authentic.",
+     "Right: the character strengths a person shows most and that feel most central to who they are.",
+     "The six virtues are the broad groups; his personal top strengths are his signature strengths."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-7",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A school asks students to use one of their top strengths in a new way each day for a week. Several studies of similar exercises found small gains in happiness. Which conclusion is most accurate?",
+   "options": [
+    "Using strengths guarantees lasting happiness for the students",
+    "The exercise may raise well-being a little, though effects are small",
+    "Strengths exercises help students with low well-being but harm the rest",
+    "The gains prove that strengths are inherited"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Report findings at their real size: positive psychology exercises show small average effects.",
+    "options": [
+     "The effects were small, and not every study finds them lasting.",
+     "Right: positive psychology interventions tend to show small average effects.",
+     "The scenario does not show that; effects vary across people.",
+     "Happiness gains after an exercise say nothing about heredity."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-8",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "positive-psychology-s1",
+   "q": "Sofia speaks up for a classmate who is being teased, even though it might make her unpopular. Under which virtue category in the figure does her strength belong?",
+   "options": [
+    "Wisdom",
+    "Courage",
+    "Temperance",
+    "Transcendence"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Bravery is a courage strength.",
+    "options": [
+     "Wisdom covers strengths of knowledge such as curiosity and perspective.",
+     "Right: bravery, acting on what is right despite risk, is a strength of courage.",
+     "Temperance covers self-control strengths such as prudence and forgiveness.",
+     "Transcendence covers strengths that connect us to something larger, such as gratitude and hope."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-9",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "positive-psychology-s1",
+   "q": "A team captain makes sure every player gets equal playing time and organizes the team well. Which virtue category in the figure do these strengths fall under?",
+   "options": [
+    "Humanity",
+    "Wisdom",
+    "Transcendence",
+    "Justice"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fairness, leadership and teamwork are justice strengths.",
+    "options": [
+     "Humanity covers close, one-on-one strengths such as love and kindness.",
+     "Wisdom covers strengths such as curiosity and perspective.",
+     "Transcendence covers strengths such as gratitude, hope and humor.",
+     "Right: fairness and leadership are strengths of justice, which support healthy group life."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-10",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "positive-psychology-s1",
+   "q": "A grandfather forgives a relative who hurt him years ago and keeps his temper in check. Which virtue category best fits?",
+   "options": [
+    "Temperance",
+    "Courage",
+    "Justice",
+    "Wisdom"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Forgiveness and self-regulation belong to temperance.",
+    "options": [
+     "Right: forgiveness and self-regulation are temperance strengths that protect against excess.",
+     "Courage covers bravery and perseverance in the face of difficulty.",
+     "Justice covers strengths of group life, such as fairness and teamwork.",
+     "Wisdom covers strengths of knowledge and judgment such as curiosity."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-11",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "positive-psychology-s2",
+   "q": "By how many points did the gratitude group's mean life satisfaction rise from before to after?",
+   "why": {
+    "correct": "$5.3 - 4.8 = 0.5$ points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      5.3,
+      4.8
+     ]
+    },
+    "places": 1,
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        5.3,
+        4.9
+       ]
+      },
+      "why": "0.4 compares the two groups after 10 weeks. The question asks for the gratitude group's change over time."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        4.9,
+        4.8
+       ]
+      },
+      "why": "0.1 is the neutral group's change. Use the gratitude row."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-12",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.C",
+   "stimulus": "positive-psychology-s2",
+   "q": "What does \"statistically significant, but the effect size was small\" mean for these results?",
+   "options": [
+    "The difference was large and mattered for each of the students",
+    "The difference was probably due to chance",
+    "It is unlikely to be chance, but it is modest in size",
+    "The study was not an experiment, so no conclusion is possible"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Significance says a difference is unlikely to be chance; effect size says how big it is.",
+    "options": [
+     "A small effect size means the difference was modest, and it is an average, not true of each student.",
+     "Statistically significant means the difference is unlikely to be due to chance alone.",
+     "Right: significance and size are different questions.",
+     "Random assignment makes this an experiment."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-13",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "positive-psychology-s2",
+   "q": "Why did the researchers include a neutral-writing group instead of only measuring the gratitude group before and after?",
+   "options": [
+    "To turn the study into a correlational study of writing and mood",
+    "To rule out time passing or writing itself as the cause",
+    "To increase the effect size of gratitude",
+    "To protect the confidentiality of the students' journals"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A control group lets researchers separate the effect of the treatment from other changes.",
+    "options": [
+     "Adding a control group keeps it an experiment.",
+     "Right: the control group shows what changes without gratitude, so the gap can be credited to gratitude.",
+     "A control group does not change the true effect; it makes the comparison fair.",
+     "Confidentiality is about data privacy, not about having a control group."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-14",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "positive-psychology-s3",
+   "q": "Which conclusion do the results best support?",
+   "options": [
+    "Resilience was the most common outcome after the disaster",
+    "Most people developed long-lasting distress after the disaster",
+    "Social support causes resilience",
+    "Resilience is rare and found mainly in exceptional people"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Resilience is common, a key finding in research on adversity; the support finding is a correlation.",
+    "options": [
+     "Right: 62% showed low distress throughout, more than the other two groups combined.",
+     "Only 15% were in the chronic group.",
+     "Support was measured, not manipulated, so this correlational result cannot show cause.",
+     "Resilience was the most common pattern here."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-15",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "positive-psychology-s3",
+   "q": "Which research design did the researchers use to classify each person's pattern over time?",
+   "options": [
+    "A cross-sectional design",
+    "A case study",
+    "A longitudinal design",
+    "An experiment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Measuring the same people repeatedly over time is longitudinal.",
+    "options": [
+     "A cross-sectional design compares different people at one time; here the same people were measured three times.",
+     "A case study examines one or a few people in depth; this study followed 480.",
+     "Right: the same participants were measured at 3, 12 and 24 months.",
+     "Nothing was manipulated, and no one was randomly assigned."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-16",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "positive-psychology-s3",
+   "q": "What percent of participants were not in the resilient group?",
+   "why": {
+    "correct": "$100\\% - 62\\% = 38\\%$ (or $23\\% + 15\\% = 38\\%$)."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "sub",
+     "args": [
+      100,
+      62
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 62,
+      "why": "62% is the resilient group. The question asks for everyone else: 100 minus 62."
+     },
+     {
+      "value": 23,
+      "why": "23% is only the recovering group. Add the chronic group too, or subtract 62 from 100."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-17",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "positive-psychology-s3",
+   "q": "A reader wants to apply these findings to teenagers after a wildfire in another country. What is the main limit on doing so?",
+   "options": [
+    "The sample of 480 is too small to say anything about teenagers",
+    "The distress questionnaire used a range of scores from 0 to 40",
+    "The researchers stored the data under codes instead of names",
+    "Participants were Louisiana adults after a hurricane, not teens"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Generalize from participant characteristics: age, place and type of event.",
+    "options": [
+     "Sample size is not the main issue; who the participants were is.",
+     "The scale range does not limit generalizing to another group.",
+     "Confidentiality is an ethical safeguard, not a limit on generalizing.",
+     "Right: age, culture and the kind of disaster all differ from the new population."
+    ]
+   }
+  },
+  {
+   "id": "psy-positive-psychology-18",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "positive-psychology-s3",
+   "q": "Write the operational definition of resilience used in this study.",
+   "why": {
+    "correct": "An operational definition names the measure and the rule: low distress scores at all three times."
+   },
+   "specific": {
+    "frame": "A person was classified as resilient if they had ___ at ___.",
+    "write": {
+     "context": [
+      "distress",
+      "months"
+     ]
+    },
+    "model": "A person was classified as resilient if they had low scores on the 0 to 40 distress questionnaire at all three times: 3, 12 and 24 months after the hurricane.",
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "low scores on the 0 to 40 distress questionnaire",
+       "a strong, positive attitude toward life",
+       "many people they could count on for help"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "An attitude is a general description, not the measure the study used.",
+       "2": "Support was a separate variable measured alongside resilience."
+      }
+     },
+     "when": {
+      "label": "At",
+      "options": [
+       "all three times: 3, 12 and 24 months",
+       "only the 24-month check"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Resilience required low distress at every one of the three times."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-positive-psychology-19",
+   "unit": "unit-5",
+   "topic": "positive-psychology",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A news story claims that \"positive thinking cures illness\" and that people who stay upbeat will beat any disease. How should a psychology student evaluate this claim?",
+   "options": [
+    "Accept it, because positive psychology has proven it",
+    "Accept it, because subjective well-being is a medical treatment",
+    "Doubt it: optimism has modest links to health, but links are not cures",
+    "Reject positive psychology as a field, because it studies happiness"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Positive psychology makes careful claims: modest links, mostly correlational, not cures.",
+    "options": [
+     "Positive psychology has not shown that optimism cures disease.",
+     "Subjective well-being is a self-report measure, not a treatment.",
+     "Right: research shows modest associations, mostly correlational, and blaming patients for not being positive enough is unfair.",
+     "Happiness can be studied scientifically; the problem is the overstated claim."
+    ]
+   }
+  }
+ ]
+}

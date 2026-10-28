@@ -1,0 +1,12 @@
+{
+ "emotion-sequences": {
+  "file": "figures/emotion-sequences.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three rows, each starting from the same event, a dog running at you. Row 1, arousal first, then the feeling: the body becomes aroused (heart pounds, you tremble), you notice the arousal and feel fear. Row 2, arousal and feeling at the same time: the brain signals body arousal and the feeling of fear at once, and neither causes the other. Row 3, arousal plus a cognitive appraisal, then the feeling: the body is aroused, you label the arousal as \"this dog is dangerous\", and then you feel fear."
+ }
+}

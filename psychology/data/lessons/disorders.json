@@ -1,0 +1,73 @@
+{
+ "topic": "disorders",
+ "hook": "Two people both say they \"feel off.\" One has felt low every day for three weeks and has stopped eating; the other had ten sleepless days of racing ideas and big spending, and now feels empty. They need very different help. Psychologists sort patterns like these into categories, so that research and treatment can match the person. Learning the categories also helps you spot the exam's favorite traps, such as calling schizophrenia a \"split personality.\"",
+ "prereq": [
+  {
+   "q": "A clinician says a pattern counts as a disorder only if it is unusual and also causes distress or gets in the way of life. Which idea is that?",
+   "options": [
+    "The three features of a psychological disorder",
+    "The diathesis-stress model",
+    "The eclectic approach",
+    "The biopsychosocial model"
+   ],
+   "correct": 0,
+   "why": "Deviation plus distress or dysfunction is how a psychological disorder is defined.",
+   "review": "explaining-disorders"
+  },
+  {
+   "q": "Which neurotransmitter is most linked to reward and to movement, and appears in explanations of psychotic symptoms?",
+   "options": [
+    "Dopamine",
+    "GABA",
+    "Acetylcholine",
+    "Endorphins"
+   ],
+   "correct": 0,
+   "why": "Dopamine is involved in reward, movement and attention.",
+   "review": "neural-firing"
+  }
+ ],
+ "figure": {
+  "figure": "disorders-categories",
+  "caption": "The categories you need, with the representative disorders in each."
+ },
+ "chain": [
+  {
+   "cause": "A clinician sees a pattern of symptoms that causes distress or dysfunction",
+   "effect": "they compare it with the DSM-5-TR criteria: which symptoms, how many and for how long"
+  },
+  {
+   "cause": "The core feature is low mood, or mood swings with mania or hypomania",
+   "effect": "the pattern points to a depressive or a bipolar disorder"
+  },
+  {
+   "cause": "The core feature is fear, worry, intrusive thoughts or a past trauma",
+   "effect": "it points to an anxiety, obsessive-compulsive or trauma-related disorder"
+  },
+  {
+   "cause": "The core feature is a break from reality, or gaps in memory and identity",
+   "effect": "it points to schizophrenia spectrum or to a dissociative disorder, two very different things"
+  }
+ ],
+ "ideas": [
+  "Mood: <b>major depressive disorder</b> (two weeks or more), <b>persistent depressive disorder</b> (two years or more); <b>bipolar I</b> needs a manic episode, <b>bipolar II</b> hypomania plus major depression.",
+  "<b>Schizophrenia</b> is a break from reality: <b>positive symptoms</b> add (hallucinations, delusions); <b>negative symptoms</b> take away (emotion, speech, motivation). It is not a \"split personality.\"",
+  "Anxiety disorders (phobia, agoraphobia, panic, social anxiety, generalized anxiety) are separate from <b>OCD</b> and hoarding, from <b>PTSD</b>, and from the dissociative disorders, including <b>DID</b>.",
+  "<b>Personality disorders</b> are lasting, rigid patterns in three clusters: A odd, B dramatic, C anxious. Eating disorders: <b>anorexia</b> (low weight), <b>bulimia</b> (binge and compensate)."
+ ],
+ "misconception": {
+  "wrong": "Schizophrenia means having a split or multiple personality.",
+  "right": "Schizophrenia is a break from reality, with symptoms such as hallucinations, delusions and flat emotion. Distinct identity states with memory gaps describe dissociative identity disorder, a different disorder in a different category."
+ },
+ "check": [
+  "psy-disorders-2",
+  "psy-disorders-7",
+  "psy-disorders-10",
+  "psy-disorders-14",
+  "psy-disorders-26",
+  "psy-disorders-27",
+  "psy-disorders-28"
+ ],
+ "help": true,
+ "summary": "The DSM-5-TR groups disorders by their core features. Depressive and bipolar disorders differ by whether mania or hypomania occurs. Schizophrenia involves positive and negative symptoms and is not dissociative identity disorder. Anxiety disorders center on fear and worry; OCD, PTSD, the dissociative disorders, the eating disorders and the three clusters of personality disorders each have their own categories. Learn the core feature and the time rule for each."
+}

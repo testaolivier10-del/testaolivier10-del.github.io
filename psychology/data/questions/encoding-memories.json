@@ -1,0 +1,607 @@
+{
+ "stimuli": {
+  "encoding-memories-s1": {
+   "kind": "data",
+   "title": "A serial position curve from a recall study",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of the percent of participants recalling each of 15 words by list position, for immediate recall and for recall after a 30-second counting task (invented data)",
+    "kind": "line",
+    "x": [
+     1,
+     15
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xLabel": "Position in the list (1 = heard first)",
+    "yLabel": "Percent who recalled the word",
+    "series": [
+     {
+      "name": "Recall right away",
+      "points": [
+       [
+        1,
+        72
+       ],
+       [
+        2,
+        60
+       ],
+       [
+        3,
+        48
+       ],
+       [
+        4,
+        40
+       ],
+       [
+        5,
+        34
+       ],
+       [
+        6,
+        31
+       ],
+       [
+        7,
+        30
+       ],
+       [
+        8,
+        29
+       ],
+       [
+        9,
+        30
+       ],
+       [
+        10,
+        33
+       ],
+       [
+        11,
+        38
+       ],
+       [
+        12,
+        50
+       ],
+       [
+        13,
+        66
+       ],
+       [
+        14,
+        80
+       ],
+       [
+        15,
+        88
+       ]
+      ]
+     },
+     {
+      "name": "Recall after 30 s of counting",
+      "points": [
+       [
+        1,
+        70
+       ],
+       [
+        2,
+        58
+       ],
+       [
+        3,
+        45
+       ],
+       [
+        4,
+        38
+       ],
+       [
+        5,
+        32
+       ],
+       [
+        6,
+        30
+       ],
+       [
+        7,
+        29
+       ],
+       [
+        8,
+        28
+       ],
+       [
+        9,
+        29
+       ],
+       [
+        10,
+        30
+       ],
+       [
+        11,
+        31
+       ],
+       [
+        12,
+        32
+       ],
+       [
+        13,
+        33
+       ],
+       [
+        14,
+        33
+       ],
+       [
+        15,
+        32
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   },
+   "html": "<p>Sixty students heard a list of 15 unrelated words, one every two seconds, and then wrote down as many as they could in any order. A computer randomly assigned half the students to write the words right away. The other half first counted backward by threes for 30 seconds, which kept them from repeating the words to themselves. The graph shows the percent of students in each group who recalled the word at each position.</p>"
+  },
+  "encoding-memories-s2": {
+   "kind": "study",
+   "title": "Spaced or massed study of new vocabulary",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether spreading study sessions out over time helps students remember vocabulary longer than doing the same amount of study all at once.",
+    "participants": "64 tenth graders in Spanish 1 classes at a public high school in Texas. Parents gave written permission and students agreed to take part; the school's review committee approved the study.",
+    "method": "Students were randomly assigned to two groups of 32. Both groups studied the same 30 new Spanish words for three 15-minute sessions. The massed group did all three sessions on one Monday, back to back. The spaced group did one session each Monday for three weeks. Four weeks after each group's last session, all students took the same test: they saw each English word and wrote the Spanish word.",
+    "results": "On the final test, the spaced group wrote an average of 18 of 30 words correctly (60%); the massed group wrote an average of 10 of 30 (about 33%).",
+    "discussion": "The researchers concluded that spacing study sessions improves long-term retention of vocabulary."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-encoding-memories-1",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "encoding-memories-s1",
+   "q": "In the \"recall right away\" group, words 1 to 3 were recalled more often than words 6 to 10. Which concept names this part of the curve?",
+   "options": [
+    "The primacy effect",
+    "The recency effect",
+    "The spacing effect",
+    "Chunking"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Better recall for the first items in a list is the primacy effect. Early words get more chances to be repeated and encoded into long-term memory.",
+    "options": [
+     "Right: Better recall for the first items in a list is the primacy effect. Early words get more chances to be repeated and encoded into long-term memory.",
+     "The recency effect is better recall for the last items, at the right end of the curve.",
+     "The spacing effect is about studying in spread-out sessions. All the words here were heard in one session.",
+     "Chunking groups items into meaningful units. These were unrelated words heard one at a time."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-2",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "encoding-memories-s1",
+   "q": "For word 15, how many percentage points lower was recall after 30 seconds of counting than right away?",
+   "why": {
+    "correct": "Right away, 88% recalled word 15; after counting, 32% did. $88 - 32 = 56$ percentage points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      88,
+      32
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        72,
+        70
+       ]
+      },
+      "why": "2 is the difference for word 1, at the other end of the list. Read the points for word 15."
+     },
+     {
+      "value": 88,
+      "why": "88% is only the \"right away\" value for word 15. Subtract the \"after counting\" value, 32%."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-3",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "encoding-memories-s1",
+   "q": "The 30-second counting task almost erased the recency effect but barely changed the primacy effect. Which explanation fits best?",
+   "options": [
+    "Counting improved encoding of the first words, which raised the primacy effect",
+    "Counting pushed the last words out of short-term memory; early words were already in long-term memory",
+    "The early words were held in sensory memory, which lasts longer than short-term memory",
+    "The students in the counting group were less motivated, so they recalled fewer words overall"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Recently heard words sit in short-term memory, which lasts only seconds without repetition; counting backward pushed them out. The first words had been repeated more and encoded into long-term memory, so a short delay barely touched them.",
+    "options": [
+     "Primacy barely changed (72% and 70% for word 1). Counting did not improve anything.",
+     "Right: Recently heard words sit in short-term memory, which lasts only seconds without repetition; counting backward pushed them out. The first words had been repeated more and encoded into long-term memory, so a short delay barely touched them.",
+     "Sensory memory fades within seconds, faster than short-term memory, so it cannot explain early words surviving.",
+     "Random assignment makes the groups alike in motivation, and the drop appears only at the end of the list."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-4",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "encoding-memories-s1",
+   "q": "Why could the researchers say the counting task caused the drop in recall of the last words?",
+   "options": [
+    "The study measured recall for 15 different word positions instead of one",
+    "Sixty students took part, which is enough to prove the effect is real",
+    "Random assignment made the groups alike except for the counting task",
+    "The words were unrelated, so no student could group them into meaningful units"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Random assignment makes the groups alike on average in everything except the manipulated variable, so the difference in the last words can be attributed to counting.",
+    "options": [
+     "Measuring many positions shows the shape of the curve, but it is random assignment that supports the causal claim.",
+     "Sample size alone never proves a cause; the design (manipulation plus random assignment) is what matters.",
+     "Right: Random assignment makes the groups alike on average in everything except the manipulated variable, so the difference in the last words can be attributed to counting.",
+     "Unrelated words control one possible influence, but they do not by themselves allow a causal claim."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-5",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "encoding-memories-s2",
+   "q": "Which concept do the results support?",
+   "options": [
+    "The serial position effect",
+    "The method of loci",
+    "The recency effect",
+    "The spacing effect"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The spaced group studied for the same total time but remembered more four weeks later. Better long-term retention from spread-out practice is the spacing effect.",
+    "options": [
+     "The serial position effect is about where an item sits in a list. Both groups studied the same list in the same order.",
+     "The method of loci links items to places along an imagined route. Neither group was taught a memory strategy.",
+     "The recency effect is better memory for the last items in a list, not for spaced sessions.",
+     "Right: The spaced group studied for the same total time but remembered more four weeks later. Better long-term retention from spread-out practice is the spacing effect."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-6",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.B",
+   "stimulus": "encoding-memories-s2",
+   "q": "Which is the independent variable in this study?",
+   "options": [
+    "Whether the three study sessions were on one day or over three weeks",
+    "The number of Spanish words written correctly on the final test",
+    "The 30 Spanish words that both groups of tenth graders studied",
+    "The four weeks between the last session and the final test"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The independent variable is what the researchers changed between groups: the timing of the sessions (massed or spaced).",
+    "options": [
+     "Right: The independent variable is what the researchers changed between groups: the timing of the sessions (massed or spaced).",
+     "That is the dependent variable, what was measured.",
+     "The words were the same for both groups, so they were held constant, not varied.",
+     "Both groups waited four weeks, so the delay was held constant."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-7",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "encoding-memories-s2",
+   "q": "A school board member wants to use these results for adults learning Spanish at night school. Which point about the participants matters most for that generalization?",
+   "options": [
+    "The study had 64 students, which is too small a sample to generalize from",
+    "The participants were tenth graders in one Texas school, unlike adults",
+    "The students were randomly assigned, so the results apply to learners of any age",
+    "The final test was given four weeks after the last session"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalizability depends on who was studied. These were teenagers in one school; adults working full time may differ in age, schedule and prior learning, so the result may only partly apply.",
+    "options": [
+     "Generalizing is about how the participants compare with the new population, not about sample size alone.",
+     "Right: Generalizability depends on who was studied. These were teenagers in one school; adults working full time may differ in age, schedule and prior learning, so the result may only partly apply.",
+     "Random assignment supports a causal claim within the sample. It does not make the sample like adults.",
+     "The delay is part of the method, the same for both groups. It does not describe who the participants were."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-8",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "encoding-memories-s2",
+   "q": "Which ethical safeguard does the summary describe for these minors?",
+   "options": [
+    "Debriefing after a cover story about the true purpose",
+    "Payment to each student for each of the study sessions",
+    "Parental permission plus each student's own agreement",
+    "Random assignment of students to the two study schedules"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For minors, researchers need a parent's informed consent and the young person's assent. The summary says both were obtained, and a review committee approved the study.",
+    "options": [
+     "The summary describes no deception and no debriefing.",
+     "No payment is mentioned, and payment is not itself a safeguard.",
+     "Right: For minors, researchers need a parent's informed consent and the young person's assent. The summary says both were obtained, and a review committee approved the study.",
+     "Random assignment is a design feature, not an ethical guideline."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-9",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "To remember a 10-digit phone number, Kenji remembers it as an area code, a three-digit prefix and four digits. Which strategy is he using?",
+   "options": [
+    "The method of loci",
+    "Massed practice",
+    "The primacy effect",
+    "Chunking"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Grouping single digits into a few meaningful units is chunking. It lets short-term memory hold more, because each chunk counts as one item.",
+    "options": [
+     "The method of loci links items to places on an imagined route. Kenji is grouping digits, not placing them.",
+     "Massed practice is cramming in one long session. Kenji is organizing the number, not timing his study.",
+     "The primacy effect is better memory for the first items in a list. It is a result, not a strategy.",
+     "Right: Grouping single digits into a few meaningful units is chunking. It lets short-term memory hold more, because each chunk counts as one item."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-10",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "To memorize a speech, Aisha pictures walking through her house and places each point in a different room. During the speech she \"walks\" through the rooms. Which mnemonic is this?",
+   "options": [
+    "The method of loci",
+    "Chunking",
+    "Hierarchical organization",
+    "Distributed practice"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Linking items to familiar places along an imagined route, then walking the route to recall them, is the method of loci (a memory palace).",
+    "options": [
+     "Right: Linking items to familiar places along an imagined route, then walking the route to recall them, is the method of loci (a memory palace).",
+     "Chunking groups items into larger units. Aisha is linking each point to a place.",
+     "A hierarchy organizes items from general to specific categories. Aisha is using an imagined route.",
+     "Distributed practice spreads study over time. The question is about how she encodes, not when."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-11",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Studying for a biology test, Sam organizes his notes as an outline: \"Cells\" at the top, then \"Plant cells\" and \"Animal cells\", then the parts of each. Which encoding strategy is he using?",
+   "options": [
+    "The method of loci",
+    "Hierarchical organization",
+    "Massed practice",
+    "The recency effect"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Arranging information from broad categories down to specific details is a hierarchy. It gives retrieval a structure to follow.",
+    "options": [
+     "The method of loci links items to imagined places. Sam is building categories.",
+     "Right: Arranging information from broad categories down to specific details is a hierarchy. It gives retrieval a structure to follow.",
+     "Massed practice is cramming. The outline is about structure, not timing.",
+     "The recency effect is better memory for the last items in a list. It is not a strategy."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-12",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Students learn the colors of the rainbow as \"ROY G BIV\". What kind of memory aid is this?",
+   "options": [
+    "Distributed practice",
+    "The spacing effect",
+    "A mnemonic device",
+    "The serial position effect"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A mnemonic is any memory aid that links new information to a pattern that is easier to remember. An acronym is a common kind.",
+    "options": [
+     "Distributed practice is spreading study over time. ROY G BIV is a pattern, not a schedule.",
+     "The spacing effect is a finding about timing, not a memory aid.",
+     "Right: A mnemonic is any memory aid that links new information to a pattern that is easier to remember. An acronym is a common kind.",
+     "The serial position effect describes recall by list position. It is not a memory aid."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-13",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Jada studies for six hours straight the night before her exam and does fine the next day, but a month later she remembers little. Which concept describes how she studied?",
+   "options": [
+    "Distributed practice",
+    "Chunking",
+    "The method of loci",
+    "Massed practice"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Studying in one long session, cramming, is massed practice. It can help on a test the next day, but memories fade faster than with spaced study.",
+    "options": [
+     "Distributed practice spreads study over several sessions. Jada studied in one block.",
+     "Chunking groups information into units. The question is about her study schedule.",
+     "The method of loci is a mnemonic using imagined places. Nothing suggests she used one.",
+     "Right: Studying in one long session, cramming, is massed practice. It can help on a test the next day, but memories fade faster than with spaced study."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-14",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A hiring manager interviews eight candidates in one day. At the end of the day, she remembers the last two clearly but the middle ones blur together. Which concept explains her clear memory of the last two?",
+   "options": [
+    "The recency effect",
+    "The primacy effect",
+    "The spacing effect",
+    "Chunking"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Better memory for the last items in a series is the recency effect; the most recent information is still active in memory.",
+    "options": [
+     "Right: Better memory for the last items in a series is the recency effect; the most recent information is still active in memory.",
+     "The primacy effect is better memory for the first items. She remembers the last ones.",
+     "The spacing effect concerns study spread over time. The interviews were all on one day.",
+     "Chunking groups items into units. She did not group the candidates."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-15",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two students each have three hours to study for a final exam four weeks away. Which plan is most likely to lead to the best memory on exam day?",
+   "options": [
+    "One three-hour session the night before the exam",
+    "Six 30-minute sessions spread across the four weeks",
+    "One three-hour session four weeks before the exam",
+    "Three one-hour sessions on the same Saturday morning"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The same total time spread over several sessions (distributed practice) produces better long-term retention than one long session. That is the spacing effect.",
+    "options": [
+     "That is massed practice. It can help for a day, but retention four weeks out is better with spacing.",
+     "Right: The same total time spread over several sessions (distributed practice) produces better long-term retention than one long session. That is the spacing effect.",
+     "One long session is still massed practice, and four weeks is a long time to keep it without review.",
+     "Three sessions in one day are still close together, close to massed practice; spreading them over weeks helps more."
+    ]
+   }
+  },
+  {
+   "id": "psy-encoding-memories-16",
+   "unit": "unit-2",
+   "topic": "encoding-memories",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a test of his memory, Arjun can hold about seven single letters, but he can hold far more letters when they form the words of a sentence. Which concept explains the difference?",
+   "options": [
+    "The method of loci gives each letter its own imagined place",
+    "The primacy effect makes the first letters in a sentence easier",
+    "Chunking turns many letters into a few meaningful units",
+    "Massed practice of the sentence made it easier to repeat"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Short-term memory holds a limited number of units. Letters grouped into words, and words into a sentence, become a few chunks, so far more letters fit.",
+    "options": [
+     "Arjun did not use imagined places; the difference comes from letters forming words.",
+     "Primacy favors the first items of a list, but it cannot explain holding many more letters overall.",
+     "Right: Short-term memory holds a limited number of units. Letters grouped into words, and words into a sentence, become a few chunks, so far more letters fit.",
+     "Nothing in the scenario involves practice; the letters simply formed meaningful words."
+    ]
+   }
+  }
+ ]
+}

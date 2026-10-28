@@ -1,0 +1,86 @@
+{
+ "cognition": {
+  "def": "All the mental activity of knowing: perceiving, paying attention, thinking, remembering and using language."
+ },
+ "perception": {
+  "def": "The process of organizing and interpreting sensory information so it has meaning. Sensation detects a stimulus; perception makes sense of it."
+ },
+ "attention": {
+  "def": "Focusing mental resources on some information while ignoring the rest. It is limited, so what is not attended to may go unnoticed."
+ },
+ "selective-attention": {
+  "def": "Focusing awareness on one stimulus or task while filtering out others, such as following one conversation in a noisy room."
+ },
+ "cocktail-party": {
+  "def": "Noticing an important stimulus, such as your own name, among sounds you were ignoring. It shows that unattended input is still processed a little."
+ },
+ "change-blindness": {
+  "def": "Failing to notice a change in a scene, such as a swapped object between two shots of a film."
+ },
+ "inattentional-blindness": {
+  "def": "Failing to see an object in plain view because attention is on something else, as when people counting passes miss a person in a gorilla suit."
+ },
+ "bottom-up": {
+  "def": "Perception that starts with the raw sensory features (lines, colors, edges) and builds them into a whole."
+ },
+ "top-down": {
+  "def": "Perception guided by knowledge, expectations and experience, such as reading a messy word from the sentence around it."
+ },
+ "schema": {
+  "def": "A mental framework that organizes knowledge about something (a restaurant, a dog, a first day of school) and shapes what we expect and notice."
+ },
+ "perceptual-set": {
+  "def": "A readiness to perceive something in a certain way, set up by expectations, context, recent experience or emotion."
+ },
+ "gestalt": {
+  "def": "The idea that the brain organizes sensations into meaningful wholes; the whole is different from the sum of its parts. The Gestalt principles describe how parts are grouped."
+ },
+ "closure": {
+  "def": "The Gestalt tendency to fill in gaps so that an incomplete outline is seen as a whole object."
+ },
+ "figure-ground": {
+  "def": "The organization of a scene into an object (the figure) that stands out from its surroundings (the ground)."
+ },
+ "proximity": {
+  "def": "The Gestalt tendency to group things that are close together."
+ },
+ "similarity": {
+  "def": "The Gestalt tendency to group things that look alike in color, shape or size."
+ },
+ "depth-perception": {
+  "def": "The ability to see the world in three dimensions and judge distance, from binocular and monocular cues."
+ },
+ "binocular-cue": {
+  "def": "A depth cue that needs both eyes: retinal disparity and convergence."
+ },
+ "retinal-disparity": {
+  "def": "A binocular cue: the two eyes see slightly different images of a scene, and the bigger the difference, the closer the object."
+ },
+ "convergence": {
+  "def": "A binocular cue: the eyes turn inward to look at a near object, and the brain reads the amount of turning as distance."
+ },
+ "monocular-cue": {
+  "def": "A depth cue that works with one eye, such as relative size, interposition, linear perspective, texture gradient and relative clarity."
+ },
+ "relative-clarity": {
+  "def": "A monocular cue: hazy, blurry objects are seen as farther away than sharp, clear ones."
+ },
+ "relative-size": {
+  "def": "A monocular cue: of two objects thought to be the same size, the one with the smaller image is seen as farther away."
+ },
+ "texture-gradient": {
+  "def": "A monocular cue: surface detail looks coarse and spread out up close and finer and denser in the distance."
+ },
+ "linear-perspective": {
+  "def": "A monocular cue: parallel lines, like railroad tracks, seem to meet in the distance."
+ },
+ "interposition": {
+  "def": "A monocular cue: an object that blocks part of another is seen as closer."
+ },
+ "perceptual-constancy": {
+  "def": "Perceiving objects as unchanging in size, shape and color even as the image on the retina or the lighting changes."
+ },
+ "apparent-movement": {
+  "def": "Perceiving motion in a rapid series of still images, as in a movie or a row of blinking lights (the phi phenomenon)."
+ }
+}

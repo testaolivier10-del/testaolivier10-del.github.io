@@ -1,0 +1,255 @@
+{
+ "about": "The AP Psychology app pages. scripts/build-appsych.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in psychology/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApPsychCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/appsych-spec.md decision 2). tools[] are the ten trainers of docs/appsych-spec.md section 6, pre-registered in Phase 0: page psychology/tools/<slug>.html, script psychology/assets/tools/<slug>.js, model psychology/assets/tools/math/<slug>.js (ApPsychMath.<camelSlug>), content psychology/data/tools/<slug>.json, validator scripts/lib/appsych-tool-checks/<slug>.mjs, test scripts/test/appsych-tool-<slug>.test.mjs (docs/appsych-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. FREE OR PREMIUM is set here and only here: a tool with \"premium\": \"tools\" is Premium; article-studio, neuron and brain-map carry none and are free (docs/appsych-spec.md section 6, proposed; owner to confirm).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Psychology practice by unit, topic or skill: study, data and figure sets, concepts applied to new situations, and answers made specific.",
+   "card": "Drill a unit, a topic or a skill, with study, data and figure sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your psychology spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed psychology unit tests and full practice exams in the May 2027 format: 75 multiple-choice questions, then the two free-response questions.",
+   "card": "Unit tests and full timed practice exams in the May 2027 format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Psychology free-response practice: the article analysis and evidence-based questions, 7 points each, with a rubric and a full-credit sample.",
+   "card": "The article analysis and evidence-based questions, with 7-point rubrics and sample answers.",
+   "script": "pages/frq.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Make it specific",
+   "title": "Make it specific",
+   "desc": "Psychology written answers made specific enough to score: the research method, operational definitions, claims, cited evidence and the concept that links them.",
+   "lede": "Write the answer, then check it against the rubric and two model answers: one that earns the point and one that loses it.",
+   "card": "Methods, operational definitions, claims and cited evidence specific enough to score, checked against a rubric.",
+   "script": "pages/justify.js",
+   "studio": true,
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Psychology cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with timed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition psychology flashcards built from the glossary and the statistics you must know, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary and the statistics.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers",
+   "desc": "Psychology trainers: article analysis, evidence, the neuron, the brain, sensation, memory, conditioning, development, social influence and statistics.",
+   "card": "Trainers and simulators, then the questions about what you saw.",
+   "script": "pages/tools.js",
+   "css": [
+    "pages/pages.css",
+    "../../assets/course/reading.css"
+   ]
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your psychology mastery by unit, topic and skill, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and skill.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every psychology lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For psychology teachers: stable share links, printable notes and unit sheets, and Google Classroom sharing, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "article-studio",
+   "kind": "simulator",
+   "topic": "research-methods",
+   "name": "Article analysis studio",
+   "title": "Article Analysis Studio",
+   "desc": "The article analysis question, drilled: a study summary taken apart part by part, from the method to generalizability, each part graded with the slip named.",
+   "blurb": "A study summary taken apart, part by part, as the AAQ asks.",
+   "lede": "Read the study, then answer each part the way the readers score it.",
+   "studio": true
+  },
+  {
+   "slug": "evidence-builder",
+   "kind": "simulator",
+   "topic": "research-methods",
+   "name": "Evidence builder",
+   "title": "Evidence Builder",
+   "desc": "The evidence-based question, drilled: three short sources, a claim, evidence from the right source with its citation, and a psychology concept that links them.",
+   "blurb": "Claim, evidence from the right source, and a concept that links them.",
+   "lede": "Build a claim, cite the evidence, then link it with a concept.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "neuron",
+   "kind": "simulator",
+   "topic": "neural-firing",
+   "name": "Neuron",
+   "title": "The Neuron",
+   "desc": "Fire a neuron: threshold, the all-or-none action potential, the refractory period, and what agonists, antagonists and reuptake inhibitors do at the synapse.",
+   "blurb": "Fire an action potential and see what a drug does at the synapse.",
+   "lede": "Push a neuron past threshold, then change what happens at the synapse.",
+   "studio": true
+  },
+  {
+   "slug": "brain-map",
+   "kind": "simulator",
+   "topic": "brain",
+   "name": "Brain map",
+   "title": "Brain Map",
+   "desc": "The brain region by region: tap a structure or a lobe to see what it does, then read lesion, imaging and split-brain cases and name the region.",
+   "blurb": "Tap a region to see what it does, and what damage there changes.",
+   "lede": "Tap a region, then name it from a case.",
+   "studio": true
+  },
+  {
+   "slug": "sensation",
+   "kind": "simulator",
+   "topic": "sensation",
+   "name": "Sensation and perception",
+   "title": "Sensation and Perception",
+   "desc": "Signal detection with hits and false alarms, thresholds and Weber's law, a real afterimage for opponent-process theory, and depth cues and Gestalt principles.",
+   "blurb": "Signal detection, Weber's law, afterimages and depth cues.",
+   "lede": "Move your criterion, find a JND, then see an afterimage.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "memory-lab",
+   "kind": "simulator",
+   "topic": "memory-intro",
+   "name": "Memory lab",
+   "title": "Memory Lab",
+   "desc": "Encoding, storage and retrieval: the serial position curve, the spacing effect, interference and forgetting, from your own recall.",
+   "blurb": "Encode, store and retrieve, and watch interference at work.",
+   "lede": "Learn a list, then see what helped and what got in the way.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "conditioning-lab",
+   "kind": "simulator",
+   "topic": "classical-conditioning",
+   "name": "Conditioning lab",
+   "title": "Conditioning Lab",
+   "desc": "Classical conditioning from acquisition to spontaneous recovery, and operant conditioning: reinforcement, punishment and the four schedules with their curves.",
+   "blurb": "Pair a tone with food, then reinforce on four schedules.",
+   "lede": "Condition a response, then change the schedule.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "development",
+   "kind": "simulator",
+   "topic": "cognitive-development",
+   "name": "Development",
+   "title": "Development Across the Lifespan",
+   "desc": "A lifespan timeline: cognitive stages, attachment and parenting styles, the psychosocial stages and adolescence to adulthood, each placed and applied.",
+   "blurb": "A lifespan timeline from infancy to old age.",
+   "lede": "Place each milestone, then apply it to a person.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "social-influence",
+   "kind": "simulator",
+   "topic": "social-situations",
+   "name": "Social influence",
+   "title": "Social Influence",
+   "desc": "Attribution, conformity, obedience and group effects: change the situation and predict the behavior, then name the concept.",
+   "blurb": "Conformity, obedience and the bystander effect, situation by situation.",
+   "lede": "Change the situation, then predict what people do.",
+   "premium": "tools",
+   "studio": true
+  },
+  {
+   "slug": "stats-lab",
+   "kind": "simulator",
+   "topic": "stats-normal",
+   "name": "Stats lab",
+   "title": "Stats Lab",
+   "desc": "The normal curve with the 68-95-99.7 rule, z scores and percentiles, central tendency and variation, and correlation from a scatterplot, worked by hand.",
+   "blurb": "The normal curve, percentiles and correlation, worked by hand.",
+   "lede": "Move a score along the curve, then read its percentile.",
+   "premium": "tools",
+   "studio": true
+  }
+ ]
+}

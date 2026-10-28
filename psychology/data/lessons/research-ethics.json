@@ -1,0 +1,67 @@
+{
+ "topic": "research-ethics",
+ "hook": "In the early 1960s, volunteers in a Yale study were told to give what they believed were painful electric shocks to a man in the next room whenever he answered wrongly. The shocks were fake, but many volunteers sweated, trembled and pleaded to stop. Studies like this one, and far worse medical studies, are why every psychology study today passes through a review board, starts with consent and ends with the truth.",
+ "prereq": [
+  {
+   "q": "In an experiment, what does random assignment do?",
+   "options": [
+    "Uses chance to decide which condition each participant gets",
+    "Gets participants’ agreement to take part",
+    "Keeps participants’ names private",
+    "Explains the study after it ends"
+   ],
+   "correct": 0,
+   "why": "Random assignment is a design feature that makes groups comparable; it is not an ethical safeguard.",
+   "review": "research-methods"
+  },
+  {
+   "q": "In a double-blind study, who does not know which participants are in which condition?",
+   "options": [
+    "Both the participants and the researchers who collect the data",
+    "Only the participants",
+    "Only the researchers who collect the data",
+    "The review board that approved the study"
+   ],
+   "correct": 0,
+   "why": "Double-blind means both the participants and the data collectors are unaware of the conditions.",
+   "review": "research-methods"
+  }
+ ],
+ "figure": {
+  "figure": "research-ethics-timeline",
+  "caption": "The safeguards a study uses before, at the start of, during and after data collection."
+ },
+ "chain": [
+  {
+   "cause": "A researcher plans a study with people or animals",
+   "effect": "an institutional review board (or an animal care committee) checks that risks are minimal and justified"
+  },
+  {
+   "cause": "Participants are told what the study involves before they agree",
+   "effect": "their informed consent (or a parent’s consent plus a minor’s assent) is real, and they may withdraw at any time"
+  },
+  {
+   "cause": "A study needs deception to work",
+   "effect": "it is allowed only with small risk and must end with debriefing that tells the truth"
+  }
+ ],
+ "ideas": [
+  "An <b>institutional review board</b> (IRB) approves research with people before it starts; animal studies need an animal care committee.",
+  "<b>Informed consent</b> before taking part; <b>informed assent</b> from minors, with a parent’s consent; the <b>right to withdraw</b> at any time without penalty.",
+  "<b>Confidentiality</b> keeps identities and data private. <b>Protection from harm</b> keeps physical and emotional risk minimal.",
+  "<b>Deception</b> is allowed only when needed and low in risk, followed by <b>debriefing</b>. On the exam, name a safeguard the summary describes and say how it was applied."
+ ],
+ "misconception": {
+  "wrong": "Random assignment, a control group or a large sample count as ethical safeguards.",
+  "right": "Those are design features that make results trustworthy. Ethical safeguards protect participants: review board approval, consent and assent, the right to withdraw, confidentiality, protection from harm and debriefing."
+ },
+ "check": [
+  "psy-research-ethics-2",
+  "psy-research-ethics-4",
+  "psy-research-ethics-6",
+  "psy-research-ethics-8",
+  "psy-research-ethics-9",
+  "psy-research-ethics-10"
+ ],
+ "summary": "Psychologists follow ethical guidelines that protect participants. A review board approves the plan; people give informed consent (minors give assent with a parent’s consent), may withdraw at any time, have their data kept confidential and are protected from harm. Deception is allowed only when necessary and low in risk, and it is always followed by debriefing. Animal research is reviewed for humane care. On the exam, name a safeguard the study describes and say how the researchers applied it."
+}

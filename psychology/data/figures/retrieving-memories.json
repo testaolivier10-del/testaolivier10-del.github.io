@@ -1,0 +1,12 @@
+{
+ "retrieving-memories-cues": {
+  "file": "figures/retrieving-memories-cues.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left panel: recall means producing the answer with few cues, as in \"Name the part of the brain that forms new memories.\" Recognition means picking it from options, as in a four-option question listing the cerebellum, hippocampus, amygdala and thalamus. Recognition is usually easier because the options are retrieval cues. Right panel: three ways retrieval improves when the cues at test match learning. Context-dependent memory: the same place, for example words learned underwater are recalled better underwater. State-dependent memory: the same body state, for example learning while calm and recalling better when calm again. Mood-congruent memory: the same mood, for example sad memories come to mind more easily when a person is sad."
+ }
+}

@@ -134,6 +134,7 @@
     { key: 'apcalc', short: 'Calculus', dir: 'calculus' },
     { key: 'apstat', short: 'Statistics', dir: 'statistics' },
     { key: 'apenv', short: 'Env Science', dir: 'environmental-science' },
+    { key: 'appsych', short: 'Psychology', dir: 'psychology' },
   ];
   // courses:end
   var COURSE_SHORT = {};

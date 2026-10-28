@@ -1,0 +1,251 @@
+{
+ "id": "frq-health-psychology-ebq",
+ "type": "ebq",
+ "points": 7,
+ "title": "Does social support buffer stress?",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "health-psychology"
+ ],
+ "practices": [
+  "4.A",
+  "4.B"
+ ],
+ "claimTopic": "Whether social support reduces (buffers) the effects of stress on physical or mental health.",
+ "restricted": [
+  "social support",
+  "stress",
+  "random assignment",
+  "mean",
+  "statistically significant",
+  "correlation"
+ ],
+ "sources": [
+  {
+   "title": "Source 1",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether support from a friend changes the body's response to a stressful task.",
+    "participants": "80 undergraduate students (ages 18 to 22) at a university in California.",
+    "method": "Students were randomly assigned to give a hard five-minute speech to a panel of judges either alone or with a supportive friend sitting in the room. Heart rate (beats per minute) was measured during the speech.",
+    "results": "Mean heart rate during the speech was 96 beats per minute in the friend-present group and 108 in the alone group. The difference was statistically significant."
+   },
+   "plot": {
+    "label": "Bar graph: mean heart rate during the speech, alone 108, friend present 96 beats per minute (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Alone",
+     "Friend present"
+    ],
+    "values": [
+     108,
+     96
+    ],
+    "yLabel": "Mean heart rate (beats per minute)",
+    "xLabel": "Condition"
+   }
+  },
+  {
+   "title": "Source 2",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether people under heavy daily stress get sick less often when they have more support.",
+    "participants": "600 working adults (ages 25 to 55) in Ohio.",
+    "method": "Participants reported their stress over the past year (high or low) and the number of people they could count on for help (few: 0 to 2; many: 3 or more). The researchers recorded the number of sick days each person took over the next year.",
+    "results": "Among people with low stress, sick days were similar for those with few supporters (4) and many supporters (4). Among people with high stress, those with few supporters took a mean of 9 sick days and those with many supporters took 5."
+   },
+   "table": {
+    "caption": "Mean sick days in the following year (invented data)",
+    "cols": [
+     "Stress level",
+     "Few supporters",
+     "Many supporters"
+    ],
+    "rows": [
+     [
+      "Low",
+      "4",
+      "4"
+     ],
+     [
+      "High",
+      "9",
+      "5"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Source 3",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether a weekly support group lowers anxiety in parents caring for a child with a long-term illness.",
+    "participants": "120 parents of children with a long-term illness, recruited through a children's hospital in Ontario, Canada.",
+    "method": "Parents were randomly assigned to attend a weekly support group for eight weeks or to a waitlist group that joined later. Anxiety was rated on a 0 to 30 questionnaire before and after the eight weeks.",
+    "results": "Mean anxiety fell from 21 to 15 in the support-group parents and from 21 to 20 in the waitlist parents."
+   },
+   "plot": {
+    "label": "Line graph: mean anxiety before and after eight weeks, support group 21 to 15, waitlist 21 to 20 (invented data)",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Support group",
+      "points": [
+       [
+        0,
+        21
+       ],
+       [
+        8,
+        15
+       ]
+      ]
+     },
+     {
+      "name": "Waitlist",
+      "points": [
+       [
+        0,
+        21
+       ],
+       [
+        8,
+        20
+       ]
+      ],
+      "dashed": true
+     }
+    ],
+    "xLabel": "Week",
+    "yLabel": "Mean anxiety score (0 to 30)"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Propose</b> a specific and defensible claim based in psychological science that responds to the question: does social support buffer stress?",
+   "rubric": [
+    {
+     "point": "States a defensible claim that answers the question (not a question, a topic sentence or a summary of one source).",
+     "accept": [
+      "social support reduces the harmful effects of stress on the body and on health",
+      "having people to rely on protects health most when stress is high"
+     ]
+    }
+   ],
+   "sample": "Social support buffers stress: having supportive people reduces the body's stress response and protects health, especially when stress is high."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "prompt": "<b>Support</b> your claim using at least one piece of specific and relevant evidence from one of the sources.",
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from one source and cites the source.",
+     "accept": [
+      "Source 1: mean heart rate was 96 with a friend present versus 108 alone",
+      "Source 2: highly stressed people with many supporters took 5 sick days versus 9 with few"
+     ]
+    }
+   ],
+   "sample": "In Source 1, students who gave a hard speech with a supportive friend in the room had a mean heart rate of 96 beats per minute, compared with 108 for students who gave it alone (Source 1).",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "B(ii)",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the evidence from B(i) supports your claim using a psychological perspective, theory, concept or research finding learned in AP® Psychology.",
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim.",
+     "accept": [
+      "the friend's presence lowered the body's reaction to the same stressful speech"
+     ]
+    },
+    {
+     "point": "Applies a relevant psychology concept, not a restricted term, linked to the evidence and the claim.",
+     "accept": [
+      "the fight-flight-freeze response: a friend reduced sympathetic arousal (heart rate) during the threat",
+      "sympathetic nervous system: lower heart rate shows less sympathetic activation",
+      "tend-and-befriend: turning to others under threat calms the response"
+     ]
+    }
+   ],
+   "sample": "This supports the claim because both groups faced the same stressor, yet students with a friend present had a heart rate 12 beats per minute lower. A speech in front of judges triggers the fight-flight-freeze response, in which the sympathetic nervous system speeds the heart. The friend's presence appears to have dampened that sympathetic arousal, so the same stressor caused a smaller body reaction.",
+   "write": {
+    "concept": [
+     "fight-flight-freeze",
+     "sympathetic",
+     "tend-and-befriend",
+     "tend and befriend",
+     "appraisal"
+    ],
+    "restricted": [
+     "social support",
+     "stress",
+     "random assignment"
+    ]
+   }
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "prompt": "<b>Support</b> your claim using a different piece of specific and relevant evidence from another source.",
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from a different source than B(i), and cites it.",
+     "accept": [
+      "Source 2: with high stress, many supporters 5 sick days versus few supporters 9; no difference with low stress",
+      "Source 3: anxiety fell from 21 to 15 in the support group versus 21 to 20 on the waitlist"
+     ]
+    }
+   ],
+   "sample": "According to Source 2, among people under high stress, those with many supporters took a mean of 5 sick days over the next year, while those with few supporters took 9. Among people with low stress, both groups took 4 (Source 2).",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "C(ii)",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the evidence from C(i) supports your claim using a different psychological perspective, theory, concept or research finding than the one used in B(ii).",
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim.",
+     "accept": [
+      "support made a difference only when stress was high, which is what buffering means"
+     ]
+    },
+    {
+     "point": "Applies a different relevant concept than in B(ii), not a restricted term, linked to the evidence and the claim.",
+     "accept": [
+      "general adaptation syndrome: support may keep people under long stress from reaching exhaustion, when illness is more likely",
+      "coping: supporters help with problem-focused and emotion-focused coping",
+      "need to belong: meeting it protects people under strain"
+     ]
+    }
+   ],
+   "sample": "This supports the claim because support mattered only for people under high stress, where it cut sick days nearly in half; it made no difference when stress was low, which is exactly what a buffer does. The general adaptation syndrome explains why: a long stressor moves the body from resistance toward exhaustion, when illness becomes more likely. Supportive people help with coping, such as practical help and someone to talk to, which may keep highly stressed people from reaching exhaustion and getting sick.",
+   "write": {
+    "concept": [
+     "general adaptation syndrome",
+     "exhaustion",
+     "coping",
+     "need to belong",
+     "resistance"
+    ],
+    "restricted": [
+     "social support",
+     "stress",
+     "mean"
+    ]
+   }
+  }
+ ]
+}

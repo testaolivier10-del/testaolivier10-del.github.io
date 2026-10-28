@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img" aria-labelledby="sensation-eye-t sensation-eye-d" font-family="Arial, Helvetica, sans-serif">
+<title id="sensation-eye-t">The eye, cut from side to side</title>
+<desc id="sensation-eye-d">A cross-section of the eye with light entering from the left. Light passes through the clear cornea, through the pupil (the opening in the colored iris) and through the lens, which focuses it on the retina lining the back of the eye. The fovea is a small pit at the center of the back of the retina. The optic nerve leaves the back of the eye a little to one side of the fovea; where it leaves there are no rods or cones, so that spot is the blind spot. A box below says rods work in dim light and detect no color and are spread across most of the retina, while cones detect color and fine detail and are packed in the fovea.</desc>
+<rect width="800" height="460" fill="#FFFFFF"/>
+<path d="M40 150 L318 186 L566 200 M40 250 L318 214 L566 200 M40 200 L566 200" stroke="#E0B000" stroke-width="2" fill="none" opacity="0.9"/>
+<text x="40" y="138" font-size="13" fill="#1F2A28">Light</text>
+<circle cx="420" cy="200" r="150" fill="#FBFCFC" stroke="#1F2A28" stroke-width="2.5"/>
+<path d="M339.7 85.3 A140 140 0 1 1 339.7 314.7" fill="none" stroke="#D55E00" stroke-width="7"/>
+<path d="M558 188 C548 196 548 204 558 212" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
+<path d="M548 246 L760 280 L760 322 L532 286 Z" fill="#F2E6B8" stroke="#1F2A28" stroke-width="2"/>
+<path d="M550 252 L540 280" stroke="#FFFFFF" stroke-width="9"/>
+<path d="M288 130 C234 160 234 240 288 270" fill="#E6F3FA" stroke="#084F78" stroke-width="2.5"/>
+<rect x="292" y="136" width="9" height="46" fill="#4E8F6E"/><rect x="292" y="218" width="9" height="46" fill="#4E8F6E"/>
+<ellipse cx="322" cy="200" rx="18" ry="48" fill="#D6E6F0" stroke="#084F78" stroke-width="2"/>
+<line x1="220.7" y1="75.5" x2="252" y2="170" stroke="#1F2A28" stroke-width="1.2"/><circle cx="252" cy="170" r="2.6" fill="#1F2A28"/>
+<rect x="167" y="54.5" width="53.7" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="170" y="70" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="170" dy="0">Cornea</tspan></text>
+<line x1="296" y1="41.5" x2="296" y2="150" stroke="#1F2A28" stroke-width="1.2"/><circle cx="296" cy="150" r="2.6" fill="#1F2A28"/>
+<rect x="233" y="20.5" width="157.1" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="236" y="36" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="236" dy="0">Iris (colored ring)</tspan></text>
+<line x1="274.1" y1="284.5" x2="296" y2="206" stroke="#1F2A28" stroke-width="1.2"/><circle cx="296" cy="206" r="2.6" fill="#1F2A28"/>
+<rect x="117" y="284.5" width="157.1" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="120" y="300" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="120" dy="0">Pupil (the opening)</tspan></text>
+<line x1="322" y1="314.5" x2="322" y2="240" stroke="#1F2A28" stroke-width="1.2"/><circle cx="322" cy="240" r="2.6" fill="#1F2A28"/>
+<rect x="297" y="314.5" width="37.8" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="300" y="330" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="300" dy="0">Lens</tspan></text>
+<line x1="517" y1="35.5" x2="490" y2="78" stroke="#1F2A28" stroke-width="1.2"/><circle cx="490" cy="78" r="2.6" fill="#1F2A28"/>
+<rect x="517" y="14.5" width="188.9" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="520" y="30" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="520" dy="0">Retina (lines the back)</tspan></text>
+<line x1="617" y1="163.5" x2="552" y2="196" stroke="#1F2A28" stroke-width="1.2"/><circle cx="552" cy="196" r="2.6" fill="#1F2A28"/>
+<rect x="617" y="124.5" width="157.1" height="39" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="620" y="140" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="620" dy="0">Fovea</tspan><tspan x="620" dy="18">(cones packed here)</tspan></text>
+<line x1="700" y1="334.5" x2="700" y2="304" stroke="#1F2A28" stroke-width="1.2"/><circle cx="700" cy="304" r="2.6" fill="#1F2A28"/>
+<rect x="587" y="334.5" width="212.7" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="590" y="350" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="590" dy="0">Optic nerve (to the brain)</tspan></text>
+<line x1="544" y1="376.5" x2="544" y2="266" stroke="#1F2A28" stroke-width="1.2"/><circle cx="544" cy="266" r="2.6" fill="#1F2A28"/>
+<rect x="377" y="376.5" width="228.6" height="39" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="380" y="392" font-size="15" text-anchor="start" fill="#1F2A28"><tspan x="380" dy="0">Blind spot: no rods or</tspan><tspan x="380" dy="18">cones where the nerve leaves</tspan></text>
+<rect x="24" y="360" width="330" height="88" rx="8" fill="#F7F9F8" stroke="#C5D0CC"/>
+<rect x="40" y="376" width="8" height="30" rx="4" fill="#084F78"/><path d="M44 414 L38 434 L50 434 Z" fill="#D55E00"/>
+<text x="62" y="392" font-size="13" fill="#1F2A28"><tspan font-weight="bold">Rods:</tspan> dim light, no color, most of the retina</text>
+<text x="62" y="430" font-size="13" fill="#1F2A28"><tspan font-weight="bold">Cones:</tspan> color and fine detail, packed in the fovea</text>
+</svg>

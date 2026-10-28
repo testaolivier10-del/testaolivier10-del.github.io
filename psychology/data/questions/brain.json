@@ -1,0 +1,550 @@
+{
+ "stimuli": {
+  "brain-s1": {
+   "kind": "visual",
+   "title": "The left hemisphere from the side, regions marked A to F",
+   "figure": "brain-lobes-letters"
+  },
+  "brain-s2": {
+   "kind": "study",
+   "title": "Speech after damage to one brain region",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether damage to the lower part of the left frontal lobe affects producing speech more than understanding it.",
+    "participants": "Two groups of adults at one rehabilitation hospital: 10 patients who had a stroke that damaged the lower left frontal lobe (confirmed by brain scans) and 10 patients of similar age whose strokes damaged other areas. A hospital review board approved the study, and every patient (or a family member, when a patient could not sign) gave informed consent. Names were replaced with code numbers in the records.",
+    "method": "Each patient described a picture for one minute; speech was scored as the number of words spoken in that minute. Understanding was scored as the number of 20 spoken instructions (\"Point to the cup\") carried out correctly.",
+    "results": "Frontal-damage group: 18 words per minute and 17 of 20 instructions. Other-damage group: 92 words per minute and 18 of 20 instructions."
+   },
+   "table": {
+    "caption": "Average scores by group (invented data for practice)",
+    "cols": [
+     "Group",
+     "Words per minute",
+     "Instructions correct (of 20)"
+    ],
+    "rows": [
+     [
+      "Lower left frontal damage",
+      "18",
+      "17"
+     ],
+     [
+      "Damage elsewhere",
+      "92",
+      "18"
+     ]
+    ]
+   }
+  },
+  "brain-s3": {
+   "kind": "study",
+   "title": "Split-brain patients",
+   "source": "Gazzaniga, Bogen & Sperry (1965)",
+   "study": {
+    "introduction": "In the 1960s a small number of people with severe epilepsy that drugs could not control had their corpus callosum cut to stop seizures spreading from one hemisphere to the other. Researchers tested what each hemisphere could do on its own.",
+    "participants": "A few adult patients who had this surgery for medical reasons, studied individually (a set of case studies).",
+    "method": "Each patient stared at a dot in the middle of a screen while a word or picture was flashed for a fraction of a second to the left or right of the dot. A flash to the right of the dot reaches only the left hemisphere; a flash to the left reaches only the right hemisphere. Patients said what they saw and reached under a screen to find objects by touch.",
+    "results": "When a picture was flashed on the right, patients named it easily. When it was flashed on the left, they usually said they saw nothing, yet their left hand could pick out the matching object by touch."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-brain-1",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "brain-s1",
+   "q": "After a stroke, Mr. Okafor understands what people say but speaks slowly, in short, effortful phrases. Damage to which lettered region best explains this?",
+   "options": [
+    "D",
+    "E",
+    "B",
+    "C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "D is Broca's area, in the lower left frontal lobe. Damage there leaves understanding mostly intact but makes producing speech slow and effortful (Broca's aphasia).",
+    "options": [
+     "Right: D is Broca's area, which helps produce speech.",
+     "E is Wernicke's area; damage there harms understanding, and speech stays fluent but makes little sense.",
+     "B is the motor cortex strip; damage would weaken movement on the right side of the body, not specifically speech.",
+     "C is the occipital lobe, which processes vision."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-2",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "brain-s1",
+   "q": "A tumor presses on region C. Which problem is the patient most likely to notice first?",
+   "options": [
+    "Trouble seeing part of the visual field",
+    "Trouble hearing speech in a noisy room",
+    "Weakness and clumsiness in the right hand",
+    "Trouble planning and organizing the day"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "C is the occipital lobe at the back of the brain, where visual information is first processed.",
+    "options": [
+     "Right: the occipital lobe handles vision, so pressure there disturbs sight.",
+     "Hearing is processed in the temporal lobe, below the lateral fissure.",
+     "Hand movement is controlled by the motor cortex strip at the back of the frontal lobe.",
+     "Planning depends on the front of the frontal lobe, the prefrontal area."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-3",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "brain-s1",
+   "q": "Because of a small injury to region B in this left hemisphere, a patient has weakness in one hand. Which hand, and why?",
+   "options": [
+    "The right hand, because each hemisphere moves the opposite side",
+    "The left hand, because each hemisphere moves the same side of the body",
+    "Both hands, because one motor cortex is shared by the two hemispheres",
+    "Neither hand, because region B handles touch rather than any movement"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "B is the motor cortex. Movement commands cross over, so the left motor cortex moves the right side of the body (contralateral organization).",
+    "options": [
+     "Right: the left motor cortex controls the right side of the body.",
+     "Control crosses: each hemisphere moves the opposite side, not the same side.",
+     "Each hemisphere has its own motor cortex for the opposite side of the body.",
+     "B is the motor cortex, in front of the central sulcus; touch is processed in the somatosensory cortex just behind it."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-4",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "brain-s1",
+   "q": "After a brain injury, a man walks with a wide, unsteady gait and cannot touch his nose smoothly with his eyes closed, though his muscles are strong. Which lettered region was most likely injured?",
+   "options": [
+    "F",
+    "B",
+    "D",
+    "A"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F is the cerebellum, which coordinates movement and balance. Strength comes from the motor cortex, but smooth, timed movement needs the cerebellum.",
+    "options": [
+     "Right: F is the cerebellum, which coordinates balance and smooth movement.",
+     "B is the motor cortex; damage would cause weakness, but this man's muscles are strong.",
+     "D is Broca's area, which helps produce speech.",
+     "A is the front of the frontal lobe, involved in planning and judgment rather than balance."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-5",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "brain-s2",
+   "q": "Why is this study not an experiment?",
+   "options": [
+    "The groups already existed; no one assigned the damage",
+    "The patients came from a single rehabilitation hospital",
+    "Speech was measured with a one-minute picture task",
+    "Each patient or a family member gave informed consent"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In an experiment the researcher manipulates the variable and randomly assigns participants. Brain damage cannot ethically be assigned, so the study compares groups that already differ.",
+    "options": [
+     "Right: nothing was manipulated or randomly assigned; the damage already existed.",
+     "Studying one hospital limits who the results describe, but a one-site study can still be an experiment.",
+     "How speech was measured is the operational definition; it does not decide the method.",
+     "Informed consent is an ethical safeguard, used in experiments too."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-6",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "brain-s2",
+   "q": "Which conclusion do the results best support?",
+   "options": [
+    "The lower left frontal lobe matters more for producing speech than for understanding it",
+    "The lower left frontal lobe matters more for understanding speech than for producing it",
+    "Damage anywhere in the brain lowers speech and understanding about equally",
+    "The lower left frontal lobe is the single region involved in language"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The frontal group spoke far fewer words (18 vs 92) but followed almost as many instructions (17 vs 18): production was hit hard, understanding barely. That pattern fits Broca's area.",
+    "options": [
+     "Right: speech output dropped sharply while understanding stayed close to the other group's.",
+     "This reverses the result: understanding was nearly the same in both groups.",
+     "The two groups differed a lot in words per minute, so the damage location mattered.",
+     "Wernicke's area in the temporal lobe is also involved in language; the study does not show only one region matters."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-7",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 1,
+   "type": "numeric",
+   "practice": "3.A",
+   "stimulus": "brain-s2",
+   "q": "How many more words per minute did the damage-elsewhere group speak than the frontal-damage group?",
+   "why": {
+    "correct": "92 minus 18 is 74 more words per minute."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      92,
+      18
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        92,
+        18
+       ]
+      },
+      "why": "110 adds the two groups. \"How many more\" is a difference: 92 minus 18."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        18,
+        17
+       ]
+      },
+      "why": "1 compares the frontal group's two scores. The question compares words per minute across the two groups."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-8",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "brain-s2",
+   "q": "Which ethical safeguard does the summary describe, and how was it applied?",
+   "options": [
+    "Confidentiality: names in the records were replaced with code numbers",
+    "Debriefing: patients were told the true purpose after being deceived",
+    "Random assignment: patients were placed in groups by chance",
+    "Protection from harm: patients were given a treatment to reverse damage"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The summary says names were replaced with code numbers, which keeps each patient's data confidential. It also describes review board approval and informed consent.",
+    "options": [
+     "Right: replacing names with codes protects confidentiality.",
+     "The summary describes no deception, so there was nothing to debrief.",
+     "Random assignment is a design feature, not an ethical safeguard, and it was not used here.",
+     "No treatment was given; the summary does not describe this."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-9",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "brain-s3",
+   "q": "A picture of a key is flashed to the left of the dot. The patient says \"I didn't see anything\" but his left hand picks out a key. What explains this?",
+   "options": [
+    "The right hemisphere saw it and moves the left hand, but speech is mostly in the left hemisphere",
+    "The left hemisphere saw it and moves the left hand, but speech is mostly in the right hemisphere",
+    "The patient is guessing, because neither hemisphere received the picture of the key",
+    "Cutting the corpus callosum blocked his vision, so the hand found the key by chance"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Information on the left reaches the right hemisphere, which controls the left hand. With the corpus callosum cut, it cannot pass the information to the left hemisphere, where speech is in most people.",
+    "options": [
+     "Right: the right hemisphere knows and the left hand shows it, but the speaking left hemisphere does not.",
+     "This has the sides reversed: a flash on the left goes to the right hemisphere, and the right hemisphere moves the left hand.",
+     "The hand picked the key reliably, so the right hemisphere did receive the picture.",
+     "Vision still works; only the link between the two hemispheres is cut."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-10",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "brain-s3",
+   "q": "What research method describes this work, and what limits its conclusions?",
+   "options": [
+    "Case studies of a few unusual patients, who may differ from most people",
+    "An experiment with random assignment, so the results apply to anyone",
+    "A survey of many patients, so the results depend on what people report",
+    "Naturalistic observation of patients at home, so there is little control"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A few patients were studied in depth: case studies. They tell us a lot about each person, but these patients had unusual brains (years of severe epilepsy), so care is needed in generalizing.",
+    "options": [
+     "Right: in-depth study of a few patients is a case study, and they may not be typical.",
+     "No one was randomly assigned to have the surgery; it was done for medical reasons.",
+     "Patients were tested on tasks, not asked questions about themselves.",
+     "Testing used a controlled screen in a lab, not observation in daily life."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-11",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "brain-s3",
+   "q": "A magazine uses split-brain research to claim that some people are logical \"left-brain\" types and others creative \"right-brain\" types. What is the best response?",
+   "options": [
+    "The halves specialize, yet work together; people do not sort into these types",
+    "The claim is accurate, because split-brain studies sorted people by their stronger half",
+    "The claim is accurate, but it holds just for people who have had severe epilepsy",
+    "The claim is backward, because the right hemisphere handles language and logic"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Split-brain studies show hemispheric specialization (language mostly left, some spatial tasks more right). Large brain-imaging studies find no evidence that people sort into these two types; both hemispheres work together through the corpus callosum.",
+    "options": [
+     "Right: specialization is real, but people do not sort into the two types the magazine describes.",
+     "The studies tested what each hemisphere could do after surgery; they did not sort people into types.",
+     "The studies were of people with epilepsy, and even they did not show two types of thinkers.",
+     "In most people language is mainly in the left hemisphere, not the right."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-12",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A car crash damages the lower part of a driver's brainstem. Doctors put him on a ventilator at once. Which structure was most likely damaged?",
+   "options": [
+    "The medulla",
+    "The cerebellum",
+    "The hippocampus",
+    "The occipital lobe"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The medulla, at the base of the brainstem, controls breathing and heart rate. Damage there threatens life, so breathing must be supported.",
+    "options": [
+     "Right: the medulla keeps breathing and heartbeat going.",
+     "The cerebellum coordinates movement; it sits behind the brainstem, not in it.",
+     "The hippocampus helps form new memories; it does not run breathing.",
+     "The occipital lobe handles vision."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-13",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a stroke, a woman can see objects and describe them, but she has trouble with new memories: she cannot remember a nurse she met an hour ago. Which structure is most likely damaged?",
+   "options": [
+    "The hippocampus",
+    "The amygdala",
+    "The thalamus",
+    "The cerebellum"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The hippocampus, deep in the temporal lobe, is needed to form new memories of facts and events.",
+    "options": [
+     "Right: the hippocampus is needed to form new memories.",
+     "The amygdala is linked to fear and emotional reactions, not forming new memories of people.",
+     "The thalamus relays sensory information; her vision and description are fine.",
+     "The cerebellum coordinates movement and balance; her problem is with memory."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-14",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "On a cold morning, Lena starts shivering and her body temperature stays near 37 °C. Which structure is keeping her internal state steady?",
+   "options": [
+    "The hypothalamus",
+    "The cerebellum",
+    "Broca's area",
+    "The somatosensory cortex"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The hypothalamus keeps the body in balance (homeostasis): it regulates temperature, hunger and thirst, and directs the pituitary gland.",
+    "options": [
+     "Right: the hypothalamus maintains homeostasis, including body temperature.",
+     "The cerebellum coordinates movement; it does not set body temperature.",
+     "Broca's area helps produce speech.",
+     "The somatosensory cortex registers the feeling of cold on the skin but does not regulate temperature."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-15",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A patient with damage to both amygdalae handles snakes and spiders calmly and shows little fear in situations that frighten most people. What does this case suggest about the amygdala?",
+   "options": [
+    "It is involved in fear and threat responses",
+    "It controls balance and smooth movement",
+    "It relays sensory signals to the cortex",
+    "It produces and understands spoken language"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The amygdala is a limbic structure that responds to threats; when both are damaged, fear reactions are blunted.",
+    "options": [
+     "Right: the amygdala is central to fear responses.",
+     "Balance and coordination depend on the cerebellum.",
+     "Relaying sensory signals is the thalamus's job.",
+     "Language depends on Broca's and Wernicke's areas in the cortex."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-16",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A patient in a hospital drifts in and out of alertness and cannot stay awake, though the cortex shows no damage. Damage to which system in the brainstem would explain this?",
+   "options": [
+    "The reticular activating system",
+    "The limbic system of the forebrain",
+    "The dopamine reward center",
+    "The association areas of the cortex"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The reticular activating system runs through the core of the brainstem and controls arousal: waking, alertness and attention to the surroundings.",
+    "options": [
+     "Right: the reticular activating system controls arousal and alertness.",
+     "The limbic system handles emotion, drives and memory, not basic wakefulness.",
+     "The reward center drives motivation and pleasure through dopamine.",
+     "Association areas in the cortex integrate information for thinking; they are not in the brainstem."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-17",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "analyze",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A researcher wants to know which brain area becomes more active when people see familiar faces, and where it is. Which tool fits best, and why?",
+   "options": [
+    "fMRI, because it shows where blood flow increases as people view the faces",
+    "EEG, because it shows exactly which small structure deep in the brain is active",
+    "A lesion study, because it removes the face area to see what changes",
+    "A case study, because it follows one person over many years"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "fMRI tracks changes in blood oxygen, which rise where neurons are working, so it shows where activity happens. EEG records electrical activity from the scalp: excellent timing, poor location.",
+    "options": [
+     "Right: fMRI shows where activity increases.",
+     "EEG is good at when activity happens but poor at pinpointing where, especially deep in the brain.",
+     "Lesioning destroys tissue; it is used in animal research, not to study healthy people viewing faces.",
+     "A case study follows one person in depth; it is not a way to map activity while people look at faces."
+    ]
+   }
+  },
+  {
+   "id": "psy-brain-18",
+   "unit": "unit-1",
+   "topic": "brain",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A 6-year-old has half of her cortex removed to stop severe seizures. Within a few years she walks, talks and does well in school. Which concept explains her recovery?",
+   "options": [
+    "Neuroplasticity",
+    "Contralateral organization",
+    "The all-or-none principle",
+    "Hemispheric specialization"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Neuroplasticity is the brain's ability to rewire, forming new connections and shifting functions to other areas. It is strongest in childhood.",
+    "options": [
+     "Right: the remaining brain reorganized and took over functions, which is neuroplasticity.",
+     "Contralateral organization describes which side of the body each hemisphere controls, not recovery.",
+     "The all-or-none principle describes how a single neuron fires.",
+     "Specialization is the reason recovery is remarkable; the recovery itself is plasticity."
+    ]
+   }
+  }
+ ]
+}

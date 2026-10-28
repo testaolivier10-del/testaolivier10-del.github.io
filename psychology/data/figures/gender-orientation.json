@@ -1,0 +1,12 @@
+{
+ "gender-orientation-dimensions": {
+  "file": "figures/gender-orientation-dimensions.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four separate bars. Biological sex (what body?): chromosomes, hormones and anatomy, and some people have intersex traits. Gender identity (who am I?): a person’s inner sense of being a woman, a man, both or neither. Gender roles (what is expected?): a culture’s expectations for how women and men act, dress and work. Sexual orientation (attracted to whom?): a lasting pattern of romantic or sexual attraction. Knowing one answer does not tell you the others."
+ }
+}

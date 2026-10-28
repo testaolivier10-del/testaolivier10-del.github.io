@@ -1,0 +1,12 @@
+{
+ "social-cognitive-trait-reciprocal": {
+  "file": "figures/social-cognitive-trait-reciprocal.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A triangle of three boxes joined by two-way arrows. Person: thoughts, beliefs, self-efficacy and expectations. Behavior: what you actually do. Environment: people, places, feedback and opportunities. Examples on the arrows: believing you can succeed leads you to practice more; a supportive coach raises your expectations; joining a team changes the people you spend time with. Each factor influences the other two."
+ }
+}

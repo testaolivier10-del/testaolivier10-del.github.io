@@ -1,0 +1,77 @@
+{
+ "topic": "neural-firing",
+ "hook": "A dentist numbs your jaw, and for an hour you cannot feel your lip. A cup of coffee makes you alert; a sleepless night does the opposite. Every one of these effects comes down to how neurons fire and pass messages to one another.",
+ "prereq": [
+  {
+   "q": "Which part of the nervous system is made of the brain and spinal cord?",
+   "options": [
+    "The central nervous system",
+    "The peripheral nervous system",
+    "The somatic nervous system",
+    "The autonomic nervous system"
+   ],
+   "correct": 0,
+   "why": "The central nervous system is the brain and spinal cord; everything outside them is peripheral.",
+   "review": "nervous-system"
+  },
+  {
+   "q": "In an experiment, what does random assignment do?",
+   "options": [
+    "Gives each participant an equal chance of being in any group",
+    "Picks participants so they represent the whole population",
+    "Keeps participants from knowing which group they are in",
+    "Measures the variable the researcher changes"
+   ],
+   "correct": 0,
+   "why": "Random assignment makes the groups alike at the start, so a difference after the treatment can be blamed on the treatment.",
+   "review": "research-methods"
+  }
+ ],
+ "figure": {
+  "figure": "neural-firing-neuron",
+  "caption": "A neuron and, enlarged, a synapse. Tap \"Hide labels\" to test yourself."
+ },
+ "chain": [
+  {
+   "cause": "Excitatory messages reach the dendrites and push the charge inside the cell up from about -70 mV",
+   "effect": "the neuron depolarizes toward threshold"
+  },
+  {
+   "cause": "The charge reaches threshold, about -55 mV",
+   "effect": "a full action potential fires and races down the axon (all-or-none); myelin makes it faster"
+  },
+  {
+   "cause": "The action potential reaches the axon terminals",
+   "effect": "vesicles release neurotransmitter into the synapse"
+  },
+  {
+   "cause": "Neurotransmitter binds to receptor sites on the next neuron",
+   "effect": "that neuron is pushed toward firing (excitatory) or away from it (inhibitory)"
+  },
+  {
+   "cause": "Reuptake pulls leftover neurotransmitter back into the sending neuron",
+   "effect": "the message ends; drugs that block reuptake make it last longer"
+  }
+ ],
+ "ideas": [
+  "A neuron fires an <b>action potential</b> only when its charge passes <b>threshold</b>. Every action potential is the same size (<b>all-or-none</b>); a stronger stimulus means more frequent firing and more neurons firing.",
+  "After firing, a neuron has a brief <b>refractory period</b> when it cannot fire again.",
+  "Know the job of each listed neurotransmitter: <b>dopamine</b> (movement, reward), <b>serotonin</b> (mood, sleep, appetite), <b>norepinephrine</b> (alertness), <b>glutamate</b> (main excitatory), <b>GABA</b> (main inhibitory), <b>endorphins</b> (pain relief), <b>substance P</b> (pain signals), <b>acetylcholine</b> (muscles, learning).",
+  "Hormones travel in the blood and act more slowly and for longer: <b>adrenaline</b>, <b>leptin</b> (full), <b>ghrelin</b> (hungry), <b>melatonin</b> (sleep timing), <b>oxytocin</b> (bonding). The <b>pituitary gland</b> directs other glands.",
+  "Drugs work at the synapse: an <b>agonist</b> mimics or boosts a neurotransmitter, an <b>antagonist</b> blocks it, a <b>reuptake inhibitor</b> keeps it in the gap longer. Repeated use brings <b>tolerance</b>, and stopping brings <b>withdrawal</b>."
+ ],
+ "misconception": {
+  "wrong": "A stronger stimulus makes a neuron fire a bigger action potential.",
+  "right": "Action potentials are all-or-none: each one is the same size. A stronger stimulus makes neurons fire more often, and more neurons fire."
+ },
+ "check": [
+  "psy-neural-firing-1",
+  "psy-neural-firing-2",
+  "psy-neural-firing-3",
+  "psy-neural-firing-5",
+  "psy-neural-firing-6",
+  "psy-neural-firing-15",
+  "psy-neural-firing-21"
+ ],
+ "summary": "A neuron collects messages on its dendrites, and if its charge passes threshold it fires an all-or-none action potential down its axon, sped by myelin. At the terminals it releases neurotransmitters that cross the synapse, bind to receptors and excite or inhibit the next neuron, until reuptake ends the message. Hormones carry slower messages in the blood. Drugs act as agonists, antagonists or reuptake inhibitors, and repeated use brings tolerance and withdrawal."
+}

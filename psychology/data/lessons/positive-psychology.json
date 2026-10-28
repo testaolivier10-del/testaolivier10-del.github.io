@@ -1,0 +1,68 @@
+{
+ "topic": "positive-psychology",
+ "hook": "For most of its history, psychology studied what goes wrong: disorders, stress and harmful behavior. Then some psychologists asked a different question. What helps ordinary people thrive? Why do most people recover after a disaster, and why do some say they came out stronger? That question became positive psychology.",
+ "prereq": [
+  {
+   "q": "After losing her job, a woman talks with friends and goes for runs to manage her feelings. Which coping strategy is this?",
+   "options": [
+    "Emotion-focused coping",
+    "Problem-focused coping",
+    "Fight-flight-freeze",
+    "Displacement"
+   ],
+   "correct": 0,
+   "why": "Managing feelings rather than changing the stressor is emotion-focused coping.",
+   "review": "health-psychology"
+  },
+  {
+   "q": "A theory says positive emotions widen thinking and, over time, build lasting resources. Which theory is this?",
+   "options": [
+    "Broaden-and-build theory",
+    "Drive-reduction theory",
+    "Arousal theory",
+    "Trait theory"
+   ],
+   "correct": 0,
+   "why": "Broaden-and-build: positive emotions broaden attention and build skills and relationships.",
+   "review": "emotion"
+  }
+ ],
+ "figure": {
+  "figure": "positive-psychology-virtues",
+  "caption": "Six virtue categories and some of the character strengths in each."
+ },
+ "chain": [
+  {
+   "cause": "People notice and appreciate what is good (gratitude) and use their signature strengths",
+   "effect": "they report somewhat higher subjective well-being, though effects are small"
+  },
+  {
+   "cause": "People face adversity with support and coping resources",
+   "effect": "most show resilience, adapting and returning to their earlier functioning"
+  },
+  {
+   "cause": "Some people struggle with a highly challenging event and make meaning of it",
+   "effect": "they report posttraumatic growth: new priorities, closer relationships or a sense of strength"
+  }
+ ],
+ "ideas": [
+  "<b>Positive psychology</b> is the scientific study of well-being and of the strengths and conditions that help people and communities thrive.",
+  "<b>Subjective well-being</b> is a person's own rating of life satisfaction plus the balance of pleasant and unpleasant feelings.",
+  "<b>Resilience</b> is bouncing back after adversity, and it is common. <b>Posttraumatic growth</b> is positive change after a struggle with trauma; it can occur alongside distress.",
+  "<b>Gratitude</b> and <b>signature strengths</b> are studied practices and traits. Strengths fall into six <b>virtue</b> categories: wisdom, courage, humanity, justice, temperance, transcendence."
+ ],
+ "misconception": {
+  "wrong": "Resilience and posttraumatic growth are the same thing.",
+  "right": "Resilience is returning to your earlier level of functioning after adversity. Posttraumatic growth is positive change beyond that level, such as new priorities or closer relationships, and it often comes with real distress, not instead of it."
+ },
+ "check": [
+  "psy-positive-psychology-2",
+  "psy-positive-psychology-3",
+  "psy-positive-psychology-4",
+  "psy-positive-psychology-8",
+  "psy-positive-psychology-9",
+  "psy-positive-psychology-10",
+  "psy-positive-psychology-5"
+ ],
+ "summary": "Positive psychology scientifically studies what helps people thrive. Subjective well-being is a person's own judgment of life satisfaction and feelings. Resilience, bouncing back after adversity, is common; posttraumatic growth is positive change after a struggle with trauma. Gratitude practices and using signature strengths show small benefits. Character strengths are grouped into six virtues: wisdom, courage, humanity, justice, temperance and transcendence."
+}

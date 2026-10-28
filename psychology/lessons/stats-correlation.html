@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correlation and Scatterplots — AP® Psychology | LevlPrep</title>
+<meta name="description" content="Correlation and Scatterplots: a psychology lesson taught from scratch, step by step, with exam-style practice questions.">
+<link rel="canonical" href="https://levlprep.com/psychology/lessons/stats-correlation.html">
+<meta property="og:title" content="Correlation and Scatterplots — AP® Psychology | LevlPrep">
+<meta property="og:description" content="Correlation and Scatterplots: a psychology lesson taught from scratch, step by step, with exam-style practice questions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/psychology/lessons/stats-correlation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/psychology/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/course/lesson.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/psy.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/psychology/lessons/stats-correlation.html#lesson",
+      "name": "Correlation and Scatterplots",
+      "url": "https://levlprep.com/psychology/lessons/stats-correlation.html",
+      "description": "Correlation and Scatterplots: a psychology lesson taught from scratch, step by step, with exam-style practice questions.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "correlation coefficient"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "positive correlation"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "negative correlation"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "scatterplot"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "line of best fit"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "directionality problem"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "illusory correlation"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/psychology/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Psychology",
+          "item": "https://levlprep.com/psychology/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Research skills you need",
+          "item": "https://levlprep.com/psychology/units/skills-research.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Correlation and Scatterplots",
+          "item": "https://levlprep.com/psychology/lessons/stats-correlation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../../assets/course/r3.css">
+<link rel="stylesheet" href="../../assets/course/r3-reading.css">
+</head>
+<body class="psy" data-topic="stats-correlation" data-unit="skills-research">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="psy-crumb psy-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Psychology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-research.html">Research skills you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Correlation and Scatterplots</span></nav></div>
+<div class="xshell psy-ls cx-ls psy-stepped" data-course="appsych" data-next-title="Interaction of Heredity and Environment" data-next-unit="unit-1" data-next-free="1">
+  <aside class="psy-ls-rail psy-nav-ref" aria-label="Lesson parts">
+    <p class="psy-ls-k cx-ls-k">Skills · Research skills you need</p>
+    <p class="psy-ls-links"><a href="../units/skills-research.html">&larr; Back to the unit</a><a href="../notes/stats-correlation.html">Read the notes</a></p>
+    <div class="psy-ls-prog cx-ls-prog"><div class="psy-ls-track"><div class="psy-ls-fill"></div></div><span class="psy-ls-count">Step 1 / 11</span></div>
+    <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of 11</span><span class="cx-ls-all">All steps</span></button>
+    <ol class="psy-ls-steps cx-ls-steps" id="lesson-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="psy-ls-main psy-lesson r3 r3-lesson" data-cover="appsych">
+  <header class="psy-ls-hero">
+    <div class="eyebrow">Skills </div>
+    <h1>Correlation and Scatterplots</h1>
+    <p class="lede">A correlation describes how two variables are related.</p>
+    <p class="psy-tags psy-nav-ref"><span class="psy-tag">Practice 2: Research Methods and Design</span><span class="psy-tag">Practice 3: Data Interpretation</span></p>
+  </header>
+  <div class="psy-ls-card">
+  <section class="psy-part psy-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="psy-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="psy-step-body psy-hook">Cities with more churches have more crime. Kids with bigger feet read better. Countries that eat more chocolate win more Nobel prizes. Each of these relationships has turned up in real data, and none means what it seems to: bigger cities have more of everything, older kids have bigger feet and read better, and richer countries buy more chocolate and fund more science. Reading a <a class="gl" href="../notes/research-methods.html" data-c="correlation">correlation</a> well means asking what else could explain it.</div>
+  </section>
+  <section class="psy-part psy-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="psy-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="psy-step-body"><nav class="psy-nav-ref" aria-label="Earlier topics"><ul class="psy-links"><li><a href="../notes/research-methods.html">Research Methods and Variables</a></li></ul></nav></div>
+  </section>
+  <section class="psy-part psy-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="psy-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="psy-step-body"><div class="psy-qs" data-set="prereq"><div class="psy-q" data-qid="stats-correlation-pre-1"><p class="psy-q-stem"><span class="psy-q-n">1.</span> A researcher records hours of sleep and grades for 200 students, without changing anything. What can she conclude?</p><ol class="psy-opts"><li>Whether sleep and grades are related, but not whether one causes the other</li><li>That more sleep causes better grades</li><li>That better grades cause more sleep</li><li>Nothing, because no one was randomly sampled</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>This is a correlational study: it shows whether variables are related, not cause and effect.</p><ul><li><b>Correct:</b> Whether sleep and grades are related, but not whether one causes the other: </li><li>That more sleep causes better grades: </li><li>That better grades cause more sleep: </li><li>Nothing, because no one was randomly sampled: </li></ul></details></div><div class="psy-q" data-qid="stats-correlation-pre-2"><p class="psy-q-stem"><span class="psy-q-n">2.</span> What is a third variable?</p><ol class="psy-opts"><li>An outside variable that affects both of two related variables</li><li>The variable a researcher manipulates in an experiment</li><li>The variable that is measured in an experiment</li><li>A variable that appears in only one of the groups</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>A third variable can create a relationship between two variables that do not affect each other.</p><ul><li><b>Correct:</b> An outside variable that affects both of two related variables: </li><li>The variable a researcher manipulates in an experiment: </li><li>The variable that is measured in an experiment: </li><li>A variable that appears in only one of the groups: </li></ul></details></div></div></div>
+  </section>
+  <section class="psy-part psy-step" id="figure" aria-labelledby="h-figure">
+    <p class="psy-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="psy-step-body"><figure class="psy-figure psy-lesson-fig"><div class="psy-figimg" data-fig="stats-correlation-three"><img src="../figures/stats-correlation-three.svg" alt="Three scatterplots of ten invented points each. Left: points rise from lower left to upper right, r = +0.97, a strong positive correlation, with a rising line of best fit. Middle: points scattered with no pattern, r = +0.02, little or no correlation. Right: points fall from upper left to lower right, r = -0.89, a strong negative correlation, with a falling line of best fit. The sign of r gives the direction and its size the strength." width="860" height="360" loading="lazy" decoding="async"></div><figcaption>Positive, near-zero and negative correlations (invented data). <span class="psy-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="psy-part psy-step" id="chain" aria-labelledby="h-chain">
+    <p class="psy-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="psy-step-body"><ol class="psy-chain"><li><span class="psy-cause">Two variables are measured for the same people and plotted as points</span><span class="psy-arrow" aria-hidden="true">→</span><span class="psy-effect">a <span class="gl" tabindex="0" data-c="scatterplot">scatterplot</span> shows whether they rise together, move in opposite directions or show no pattern</span></li><li><span class="psy-cause">The <span class="gl" tabindex="0" data-c="correlation-coefficient">correlation coefficient</span> r summarizes the pattern</span><span class="psy-arrow" aria-hidden="true">→</span><span class="psy-effect">its sign gives the direction and its size, from 0 to 1, gives the strength</span></li><li><span class="psy-cause">Nothing was manipulated or <a class="gl" href="../notes/research-methods.html" data-c="random-assignment">randomly assigned</a></span><span class="psy-arrow" aria-hidden="true">→</span><span class="psy-effect">a <a class="gl" href="../notes/research-methods.html" data-c="third-variable">third variable</a> or the reverse direction may explain the relationship, so no cause can be claimed</span></li></ol></div>
+  </section>
+  <section class="psy-part psy-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="psy-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="psy-step-body"><ul class="psy-ideas"><li>The <b>correlation coefficient</b> <math class="psy-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> runs from <math class="psy-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> to <math class="psy-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math>. The sign is the direction; the size (ignoring the sign) is the strength. <math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">r = -0.8</annotation></semantics></math> is stronger than <math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">r = +0.5</annotation></semantics></math>.</li><li>A <b><span class="gl" tabindex="0" data-c="positive-correlation">positive correlation</span></b>: both variables rise and fall together. A <b><span class="gl" tabindex="0" data-c="negative-correlation">negative correlation</span></b>: as one rises, the other tends to fall.</li><li>A <b>scatterplot</b> shows each person as a point; the <b><span class="gl" tabindex="0" data-c="trend-line">line of best fit</span></b> shows the trend and allows prediction.</li><li>Correlation is not causation: a <b>third variable</b> or the <b><span class="gl" tabindex="0" data-c="directionality">directionality problem</span></b> can explain it. An <b><span class="gl" tabindex="0" data-c="illusory-correlation">illusory correlation</span></b> is a relationship people believe in that the data do not show.</li></ul></div>
+  </section>
+  <section class="psy-part psy-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="psy-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="psy-step-body psy-misconception"><p class="psy-wrong"><b>The wrong idea:</b> A negative correlation means a weak or bad relationship, and a strong correlation proves cause and effect.</p><p class="psy-right"><b>What actually happens:</b> Negative only means the variables move in opposite directions: <math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.9</mn></mrow><annotation encoding="application/x-tex">r = -0.9</annotation></semantics></math> is very strong. And no correlation, however strong, shows cause without an <a class="gl" href="../notes/research-methods.html" data-c="experiment">experiment</a>.</p></div>
+  </section>
+  <section class="psy-part psy-step" id="check" aria-labelledby="h-check">
+    <p class="psy-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="psy-step-body"><p class="psy-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="psy-qs" data-set="check"><div class="psy-q" data-qid="psy-stats-correlation-1"><p class="psy-q-stem"><span class="psy-q-n">1.</span> Which correlation coefficient shows the strongest relationship between two variables?</p><ol class="psy-opts"><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.82</mn></mrow><annotation encoding="application/x-tex">r = -0.82</annotation></semantics></math></li><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">r = +0.45</annotation></semantics></math></li><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mn>0.10</mn></mrow><annotation encoding="application/x-tex">r = +0.10</annotation></semantics></math></li><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.30</mn></mrow><annotation encoding="application/x-tex">r = -0.30</annotation></semantics></math></li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>Strength is the size of r, ignoring the sign. A coefficient near -1 or +1 is strong; near 0 is weak.</p><ul><li><b>Correct:</b> <math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.82</mn></mrow><annotation encoding="application/x-tex">r = -0.82</annotation></semantics></math>: Right: its size, 0.82, is the largest; the minus sign gives only the direction.</li><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">r = +0.45</annotation></semantics></math>: Its size, 0.45, is smaller than 0.82.</li><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mn>0.10</mn></mrow><annotation encoding="application/x-tex">r = +0.10</annotation></semantics></math>: This is close to zero: a very weak relationship.</li><li><math class="psy-m"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.30</mn></mrow><annotation encoding="application/x-tex">r = -0.30</annotation></semantics></math>: Its size, 0.30, is smaller than 0.82.</li></ul></details></div><div class="psy-q" data-qid="psy-stats-correlation-2"><p class="psy-q-stem"><span class="psy-q-n">2.</span> Across 50 towns, the more ice cream is sold in a month, the more drownings occur. Which explanation is most likely?</p><ol class="psy-opts"><li>Eating ice cream causes people to drown more often</li><li>Hot weather raises both swimming and ice cream sales</li><li>Drownings make the people of a town buy more ice cream</li><li>The relationship is likely an illusory correlation</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>Two variables can move together because a third variable affects both. Hot months bring more swimming (and drownings) and more ice cream.</p><ul><li>Eating ice cream causes people to drown more often: A correlation does not show cause; a third variable explains this one.</li><li><b>Correct:</b> Hot weather raises both swimming and ice cream sales: Right: summer heat drives both.</li><li>Drownings make the people of a town buy more ice cream: That reverses the direction, and it still ignores the obvious third variable.</li><li>The relationship is likely an illusory correlation: An illusory correlation is a relationship people believe in that the data do not show; here the data show one.</li></ul></details></div><div class="psy-q" data-qid="psy-stats-correlation-5"><p class="psy-q-stem"><span class="psy-q-n">3.</span> Children who play violent video games more often are rated by teachers as more aggressive. Which is an example of the directionality problem in this finding?</p><ol class="psy-opts"><li>Already aggressive children may choose violent games more</li><li>Parents’ supervision may affect both game time and aggression</li><li>Teachers who rate the children may know about their games</li><li>The children were not randomly sampled from the population of children</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>The directionality problem: in a correlation we cannot tell which of the two variables affects the other.</p><ul><li><b>Correct:</b> Already aggressive children may choose violent games more: Right: aggression could lead to game choice, the reverse of the usual story.</li><li>Parents’ supervision may affect both game time and aggression: That is a third variable, a separate problem from directionality.</li><li>Teachers who rate the children may know about their games: That is a source of bias in the measure, not directionality.</li><li>The children were not randomly sampled from the population of children: That limits generalizing; it is not about which variable came first.</li></ul></details></div><div class="psy-set"><section class="psy-stim" data-stim="stats-correlation-s1" aria-labelledby="stim-stats-correlation-s1"><p class="psy-stim-k">Data</p><h3 id="stim-stats-correlation-s1">Hours studied and quiz scores</h3><div class="psy-plot-wrap"><svg class="psy-plot" viewBox="0 0 360 276" width="360" height="276" role="img" aria-label="Scatterplot of hours studied (x) against quiz score out of 100 (y) for 12 students, with a rising line of best fit; invented data, r = .88"><g class="psy-plot-grid"><line x1="38" y1="12" x2="38" y2="232"/><line x1="106.44" y1="12" x2="106.44" y2="232"/><line x1="174.89" y1="12" x2="174.89" y2="232"/><line x1="243.33" y1="12" x2="243.33" y2="232"/><line x1="311.78" y1="12" x2="311.78" y2="232"/><line x1="38" y1="232" x2="346" y2="232"/><line x1="38" y1="177" x2="346" y2="177"/><line x1="38" y1="122" x2="346" y2="122"/><line x1="38" y1="67" x2="346" y2="67"/><line x1="38" y1="12" x2="346" y2="12"/></g><g class="psy-plot-axis"><line x1="38" y1="232" x2="346" y2="232"/><line x1="38" y1="12" x2="38" y2="232"/><line x1="38" y1="229" x2="38" y2="235"/><line x1="106.44" y1="229" x2="106.44" y2="235"/><line x1="174.89" y1="229" x2="174.89" y2="235"/><line x1="243.33" y1="229" x2="243.33" y2="235"/><line x1="311.78" y1="229" x2="311.78" y2="235"/><line x1="35" y1="232" x2="41" y2="232"/><line x1="35" y1="177" x2="41" y2="177"/><line x1="35" y1="122" x2="41" y2="122"/><line x1="35" y1="67" x2="41" y2="67"/><line x1="35" y1="12" x2="41" y2="12"/></g><g class="psy-plot-ticks"><text x="38" y="247" text-anchor="middle">0</text><text x="106.44" y="247" text-anchor="middle">2</text><text x="174.89" y="247" text-anchor="middle">4</text><text x="243.33" y="247" text-anchor="middle">6</text><text x="311.78" y="247" text-anchor="middle">8</text><text x="32" y="236" text-anchor="end">50</text><text x="32" y="181" text-anchor="end">60</text><text x="32" y="126" text-anchor="end">70</text><text x="32" y="71" text-anchor="end">80</text><text x="32" y="16" text-anchor="end">90</text><text class="psy-plot-axlabel" x="192" y="263" text-anchor="middle">Hours studied in the week before the quiz</text><text class="psy-plot-axlabel" x="44" y="22" text-anchor="start">Quiz score (out of 100)</text></g><line class="psy-plot-line s2 is-dashed" x1="38" y1="214.96" x2="334.04" y2="12"/><circle class="psy-plot-pt s1" cx="72.22" cy="204.5" r="4"/><circle class="psy-plot-pt s1" cx="106.44" cy="166" r="4"/><circle class="psy-plot-pt s1" cx="106.44" cy="122" r="4"/><circle class="psy-plot-pt s1" cx="140.67" cy="155" r="4"/><circle class="psy-plot-pt s1" cx="174.89" cy="100" r="4"/><circle class="psy-plot-pt s1" cx="209.11" cy="122" r="4"/><circle class="psy-plot-pt s1" cx="209.11" cy="56" r="4"/><circle class="psy-plot-pt s1" cx="243.33" cy="78" r="4"/><circle class="psy-plot-pt s1" cx="277.56" cy="34" r="4"/><circle class="psy-plot-pt s1" cx="311.78" cy="23" r="4"/><circle class="psy-plot-pt s1" cx="140.67" cy="188" r="4"/><circle class="psy-plot-pt s1" cx="243.33" cy="111" r="4"/></svg></div></section><div class="psy-q" data-qid="psy-stats-correlation-8"><p class="psy-q-stem"><span class="psy-q-n">4.</span> Which statement best describes the relationship in the scatterplot?</p><ol class="psy-opts"><li>A strong negative correlation</li><li>A weak positive correlation</li><li>A strong positive correlation</li><li>No correlation between hours and scores</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>The points slope upward and cluster tightly around the line of best fit: strong and positive. For these invented data r = .88.</p><ul><li>A strong negative correlation: The points rise from left to right, so the correlation is positive.</li><li>A weak positive correlation: The points sit close to the line, so the relationship is strong.</li><li><b>Correct:</b> A strong positive correlation: Right: scores rise with hours and the points lie close to the line (r = .88).</li><li>No correlation between hours and scores: There is a clear upward pattern.</li></ul></details></div><div class="psy-q" data-qid="psy-stats-correlation-9"><p class="psy-q-stem"><span class="psy-q-n">5.</span> A teacher concludes from this plot that studying more causes higher quiz scores. What is the problem with that conclusion?</p><ol class="psy-opts"><li>The correlation is negative, so studying lowers scores</li><li>The plot shows no relationship between hours and scores</li><li>A scatterplot shows the cause, but this one has too few students</li><li>The data are correlational; interest could raise both</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>The students chose how much to study, so this is a correlational study. Interest, prior knowledge or free time could affect both hours and scores. An experiment that randomly assigns study time would be needed to show cause.</p><ul><li>The correlation is negative, so studying lowers scores: The points rise from left to right: the correlation is positive.</li><li>The plot shows no relationship between hours and scores: There is a clear, strong pattern.</li><li>A scatterplot shows the cause, but this one has too few students: A scatterplot shows a relationship, never a cause, whatever its size.</li><li><b>Correct:</b> The data are correlational; interest could raise both: Right: a third variable, such as interest, could explain the pattern.</li></ul></details></div><div class="psy-q" data-qid="psy-stats-correlation-10"><p class="psy-q-stem"><span class="psy-q-n">6.</span> Using the line of best fit, about what score would you predict for a student who studied 4 hours?</p><ol class="psy-opts"><li>About 70</li><li>About 55</li><li>About 88</li><li>About 4</li></ol><details class="psy-q-key"><summary>Show the answer</summary><p>The line of best fit passes near 70 at 4 hours. A correlation lets you predict one variable from the other, even though it does not show cause.</p><ul><li><b>Correct:</b> About 70: Right: the line passes near 70 at 4 hours.</li><li>About 55: That is near the line at 1 hour.</li><li>About 88: That is near the line at 8 hours.</li><li>About 4: That is the number of hours, not a score.</li></ul></details></div></div></div></div>
+  </section>
+  <section class="psy-part psy-step" id="summary" aria-labelledby="h-summary">
+    <p class="psy-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="psy-step-body">A correlation describes how two variables are related. On a scatterplot, points rising to the right show a positive correlation and points falling to the right a negative one; the correlation coefficient <math class="psy-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> gives the direction by its sign and the strength by its size, from 0 to 1. A correlation allows prediction but never shows cause: a third variable or the reverse direction may explain it, and some correlations people believe in are illusory.</div>
+  </section>
+  <section class="psy-part psy-step" id="next" aria-labelledby="h-next">
+    <p class="psy-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="psy-step-body"><nav class="psy-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="heredity-environment.html">Interaction of Heredity and Environment &rarr;</a></p></nav></div>
+  </section>
+  <section class="psy-part psy-step" id="connections" aria-labelledby="h-connections">
+    <p class="psy-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="psy-step-body"><ul class="psy-links psy-nav-ref"><li><a href="../notes/research-methods.html">Back: Research Methods and Variables</a></li><li><a href="heredity-environment.html">Next: Interaction of Heredity and Environment (1.1)</a></li></ul></div>
+  </section>
+    <div class="psy-ls-actions psy-nav-ref"><button type="button" class="psy-ls-back">&larr; Previous</button><button type="button" class="psy-ls-go">Continue &rarr;</button><a class="psy-ls-go" hidden href="heredity-environment.html">Next lesson &rarr;</a></div>
+  </div>
+  <div class="cx-ls-end">
+    <div class="psy-share psy-nav-ref" role="group" aria-label="Share or print this lesson"><a class="psy-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fpsychology%2Flessons%2Fstats-correlation.html&amp;title=Correlation%20and%20Scatterplots%3A%20psychology%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="psy-share-btn" data-copy="https://levlprep.com/psychology/lessons/stats-correlation.html">Copy link</button><button type="button" class="psy-share-btn" data-print>Print</button></div>
+    <p class="psy-small psy-nav-ref"><a href="../practice.html?topic=stats-correlation">Question set for this topic</a></p>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.psy-ls'),p=s&&s.querySelectorAll('.psy-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.psy-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('appsych_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="psy-foot xshell">
+  <p class="psy-accuracy-note"> This course has not yet been reviewed by an AP® Psychology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="psy-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="appsych" data-report-question="lesson:stats-correlation">Report a problem</button></span></p>
+  <p class="psy-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="psy-page-data">{"topic":"stats-correlation","unit":"skills-research","free":true,"prereq":[{"id":"stats-correlation-pre-1","type":"single","unit":"skills-research","topic":"stats-correlation","q":"A researcher records hours of sleep and grades for 200 students, without changing anything. What can she conclude?","options":["Whether sleep and grades are related, but not whether one causes the other","That more sleep causes better grades","That better grades cause more sleep","Nothing, because no one was randomly sampled"],"correct":0,"why":{"correct":"This is a correlational study: it shows whether variables are related, not cause and effect.","options":["","","",""]},"reviewHref":"../notes/research-methods.html","reviewTitle":"Research Methods and Variables"},{"id":"stats-correlation-pre-2","type":"single","unit":"skills-research","topic":"stats-correlation","q":"What is a third variable?","options":["An outside variable that affects both of two related variables","The variable a researcher manipulates in an experiment","The variable that is measured in an experiment","A variable that appears in only one of the groups"],"correct":0,"why":{"correct":"A third variable can create a relationship between two variables that do not affect each other.","options":["","","",""]},"reviewHref":"../notes/research-methods.html","reviewTitle":"Research Methods and Variables"}],"check":[{"id":"psy-stats-correlation-1","type":"single","unit":"skills-research","topic":"stats-correlation","practice":"3.A","level":"recall","diff":2,"q":"Which correlation coefficient shows the strongest relationship between two variables?","options":["\u003cmath class=\"psy-m\">\u003csemantics>\u003cmrow>\u003cmi>r\u003c/mi>\u003cmo>=\u003c/mo>\u003cmo form=\"prefix\" lspace=\"0\" rspace=\"0\">−\u003c/mo>\u003cmn>0.82\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">r = -0.82\u003c/annotation>\u003c/semantics>\u003c/math>","\u003cmath class=\"psy-m\">\u003csemantics>\u003cmrow>\u003cmi>r\u003c/mi>\u003cmo>=\u003c/mo>\u003cmo form=\"prefix\" lspace=\"0\" rspace=\"0\">+\u003c/mo>\u003cmn>0.45\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">r = +0.45\u003c/annotation>\u003c/semantics>\u003c/math>","\u003cmath class=\"psy-m\">\u003csemantics>\u003cmrow>\u003cmi>r\u003c/mi>\u003cmo>=\u003c/mo>\u003cmo form=\"prefix\" lspace=\"0\" rspace=\"0\">+\u003c/mo>\u003cmn>0.10\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">r = +0.10\u003c/annotation>\u003c/semantics>\u003c/math>","\u003cmath class=\"psy-m\">\u003csemantics>\u003cmrow>\u003cmi>r\u003c/mi>\u003cmo>=\u003c/mo>\u003cmo form=\"prefix\" lspace=\"0\" rspace=\"0\">−\u003c/mo>\u003cmn>0.30\u003c/mn>\u003c/mrow>\u003cannotation encoding=\"application/x-tex\">r = -0.30\u003c/annotation>\u003c/semantics>\u003c/math>"],"correct":0,"why":{"correct":"Strength is the size of r, ignoring the sign. A coefficient near -1 or +1 is strong; near 0 is weak.","options":["Right: its size, 0.82, is the largest; the minus sign gives only the direction.","Its size, 0.45, is smaller than 0.82.","This is close to zero: a very weak relationship.","Its size, 0.30, is smaller than 0.82."]}},{"id":"psy-stats-correlation-2","type":"single","unit":"skills-research","topic":"stats-correlation","practice":"2.C","level":"apply","diff":2,"q":"Across 50 towns, the more ice cream is sold in a month, the more drownings occur. Which explanation is most likely?","options":["Eating ice cream causes people to drown more often","Hot weather raises both swimming and ice cream sales","Drownings make the people of a town buy more ice cream","The relationship is likely an illusory correlation"],"correct":1,"why":{"correct":"Two variables can move together because a third variable affects both. Hot months bring more swimming (and drownings) and more ice cream.","options":["A correlation does not show cause; a third variable explains this one.","Right: summer heat drives both.","That reverses the direction, and it still ignores the obvious third variable.","An illusory correlation is a relationship people believe in that the data do not show; here the data show one."]}},{"id":"psy-stats-correlation-5","type":"single","unit":"skills-research","topic":"stats-correlation","practice":"2.C","level":"analyze","diff":2,"q":"Children who play violent video games more often are rated by teachers as more aggressive. Which is an example of the directionality problem in this finding?","options":["Already aggressive children may choose violent games more","Parents’ supervision may affect both game time and aggression","Teachers who rate the children may know about their games","The children were not randomly sampled from the population of children"],"correct":0,"why":{"correct":"The directionality problem: in a correlation we cannot tell which of the two variables affects the other.","options":["Right: aggression could lead to game choice, the reverse of the usual story.","That is a third variable, a separate problem from directionality.","That is a source of bias in the measure, not directionality.","That limits generalizing; it is not about which variable came first."]}},{"id":"psy-stats-correlation-8","type":"single","unit":"skills-research","topic":"stats-correlation","practice":"3.A","level":"apply","diff":2,"stimulus":"stats-correlation-s1","q":"Which statement best describes the relationship in the scatterplot?","options":["A strong negative correlation","A weak positive correlation","A strong positive correlation","No correlation between hours and scores"],"correct":2,"why":{"correct":"The points slope upward and cluster tightly around the line of best fit: strong and positive. For these invented data r = .88.","options":["The points rise from left to right, so the correlation is positive.","The points sit close to the line, so the relationship is strong.","Right: scores rise with hours and the points lie close to the line (r = .88).","There is a clear upward pattern."]}},{"id":"psy-stats-correlation-9","type":"single","unit":"skills-research","topic":"stats-correlation","practice":"2.C","level":"apply","diff":2,"stimulus":"stats-correlation-s1","q":"A teacher concludes from this plot that studying more causes higher quiz scores. What is the problem with that conclusion?","options":["The correlation is negative, so studying lowers scores","The plot shows no relationship between hours and scores","A scatterplot shows the cause, but this one has too few students","The data are correlational; interest could raise both"],"correct":3,"why":{"correct":"The students chose how much to study, so this is a correlational study. Interest, prior knowledge or free time could affect both hours and scores. An experiment that randomly assigns study time would be needed to show cause.","options":["The points rise from left to right: the correlation is positive.","There is a clear, strong pattern.","A scatterplot shows a relationship, never a cause, whatever its size.","Right: a third variable, such as interest, could explain the pattern."]}},{"id":"psy-stats-correlation-10","type":"single","unit":"skills-research","topic":"stats-correlation","practice":"3.A","level":"apply","diff":2,"stimulus":"stats-correlation-s1","q":"Using the line of best fit, about what score would you predict for a student who studied 4 hours?","options":["About 70","About 55","About 88","About 4"],"correct":0,"why":{"correct":"The line of best fit passes near 70 at 4 hours. A correlation lets you predict one variable from the other, even though it does not show cause.","options":["Right: the line passes near 70 at 4 hours.","That is near the line at 1 hour.","That is near the line at 8 hours.","That is the number of hours, not a score."]}}],"stimuli":{"stats-correlation-s1":{"kind":"data","title":"Hours studied and quiz scores","html":"\u003cdiv class=\"psy-plot-wrap\">\u003csvg class=\"psy-plot\" viewBox=\"0 0 360 276\" width=\"360\" height=\"276\" role=\"img\" aria-label=\"Scatterplot of hours studied (x) against quiz score out of 100 (y) for 12 students, with a rising line of best fit; invented data, r = .88\">\u003cg class=\"psy-plot-grid\">\u003cline x1=\"38\" y1=\"12\" x2=\"38\" y2=\"232\"/>\u003cline x1=\"106.44\" y1=\"12\" x2=\"106.44\" y2=\"232\"/>\u003cline x1=\"174.89\" y1=\"12\" x2=\"174.89\" y2=\"232\"/>\u003cline x1=\"243.33\" y1=\"12\" x2=\"243.33\" y2=\"232\"/>\u003cline x1=\"311.78\" y1=\"12\" x2=\"311.78\" y2=\"232\"/>\u003cline x1=\"38\" y1=\"232\" x2=\"346\" y2=\"232\"/>\u003cline x1=\"38\" y1=\"177\" x2=\"346\" y2=\"177\"/>\u003cline x1=\"38\" y1=\"122\" x2=\"346\" y2=\"122\"/>\u003cline x1=\"38\" y1=\"67\" x2=\"346\" y2=\"67\"/>\u003cline x1=\"38\" y1=\"12\" x2=\"346\" y2=\"12\"/>\u003c/g>\u003cg class=\"psy-plot-axis\">\u003cline x1=\"38\" y1=\"232\" x2=\"346\" y2=\"232\"/>\u003cline x1=\"38\" y1=\"12\" x2=\"38\" y2=\"232\"/>\u003cline x1=\"38\" y1=\"229\" x2=\"38\" y2=\"235\"/>\u003cline x1=\"106.44\" y1=\"229\" x2=\"106.44\" y2=\"235\"/>\u003cline x1=\"174.89\" y1=\"229\" x2=\"174.89\" y2=\"235\"/>\u003cline x1=\"243.33\" y1=\"229\" x2=\"243.33\" y2=\"235\"/>\u003cline x1=\"311.78\" y1=\"229\" x2=\"311.78\" y2=\"235\"/>\u003cline x1=\"35\" y1=\"232\" x2=\"41\" y2=\"232\"/>\u003cline x1=\"35\" y1=\"177\" x2=\"41\" y2=\"177\"/>\u003cline x1=\"35\" y1=\"122\" x2=\"41\" y2=\"122\"/>\u003cline x1=\"35\" y1=\"67\" x2=\"41\" y2=\"67\"/>\u003cline x1=\"35\" y1=\"12\" x2=\"41\" y2=\"12\"/>\u003c/g>\u003cg class=\"psy-plot-ticks\">\u003ctext x=\"38\" y=\"247\" text-anchor=\"middle\">0\u003c/text>\u003ctext x=\"106.44\" y=\"247\" text-anchor=\"middle\">2\u003c/text>\u003ctext x=\"174.89\" y=\"247\" text-anchor=\"middle\">4\u003c/text>\u003ctext x=\"243.33\" y=\"247\" text-anchor=\"middle\">6\u003c/text>\u003ctext x=\"311.78\" y=\"247\" text-anchor=\"middle\">8\u003c/text>\u003ctext x=\"32\" y=\"236\" text-anchor=\"end\">50\u003c/text>\u003ctext x=\"32\" y=\"181\" text-anchor=\"end\">60\u003c/text>\u003ctext x=\"32\" y=\"126\" text-anchor=\"end\">70\u003c/text>\u003ctext x=\"32\" y=\"71\" text-anchor=\"end\">80\u003c/text>\u003ctext x=\"32\" y=\"16\" text-anchor=\"end\">90\u003c/text>\u003ctext class=\"psy-plot-axlabel\" x=\"192\" y=\"263\" text-anchor=\"middle\">Hours studied in the week before the quiz\u003c/text>\u003ctext class=\"psy-plot-axlabel\" x=\"44\" y=\"22\" text-anchor=\"start\">Quiz score (out of 100)\u003c/text>\u003c/g>\u003cline class=\"psy-plot-line s2 is-dashed\" x1=\"38\" y1=\"214.96\" x2=\"334.04\" y2=\"12\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"72.22\" cy=\"204.5\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"106.44\" cy=\"166\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"106.44\" cy=\"122\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"140.67\" cy=\"155\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"174.89\" cy=\"100\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"209.11\" cy=\"122\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"209.11\" cy=\"56\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"243.33\" cy=\"78\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"277.56\" cy=\"34\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"311.78\" cy=\"23\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"140.67\" cy=\"188\" r=\"4\"/>\u003ccircle class=\"psy-plot-pt s1\" cx=\"243.33\" cy=\"111\" r=\"4\"/>\u003c/svg>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/course/read-toggle.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApPsychSection = 'learn'; window.ApPsychBase = '../';</script>
+<script src="../assets/psy-curriculum.js" defer></script>
+<script src="../assets/psy-core.js" defer></script>
+<script src="../assets/psy-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/psy-math.js" defer></script>
+<script src="../assets/psy-stats.js" defer></script>
+<script src="../assets/psy-grade.js" defer></script>
+<script src="../assets/psy-questions.js" defer></script>
+<script src="../assets/psy-lesson.js" defer></script>
+</body>
+</html>

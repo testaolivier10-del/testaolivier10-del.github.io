@@ -211,6 +211,7 @@ body[data-course="apphys"]{--bk-cover:url(../covers/apphys.svg);--bk-cbg:#2A1D06
 body[data-course="apcalc"]{--bk-cover:url(../covers/apcalc.svg);--bk-cbg:#4A1230;}
 body[data-course="apstat"]{--bk-cover:url(../covers/apstat.svg);--bk-cbg:#0E3A52;}
 body[data-course="apenv"]{--bk-cover:url(../covers/apenv.svg);--bk-cbg:#22400F;}
+body[data-course="appsych"]{--bk-cover:url(../covers/appsych.svg);--bk-cbg:#07608A;}
 body:not([data-course]) .bk :is(.bk-head,.tb-chapter-head)::after{display:none;}
 @media (min-width:1101px){
   .bk :is(.bk-head,.tb-chapter-head:not(.bk-chap-head)){grid-template-columns:minmax(0,1fr) 260px;}

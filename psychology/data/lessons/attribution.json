@@ -1,0 +1,71 @@
+{
+ "topic": "attribution",
+ "hook": "A classmate does not answer your text for six hours. You could decide she is ignoring you, or that her phone died, or that she is at practice. Which story you tell changes how you feel and what you do next. Social psychologists call these explanations attributions, and people make them in predictable, slightly lopsided ways.",
+ "prereq": [
+  {
+   "q": "A study finds that students who sleep more have higher grades. What can you conclude?",
+   "options": [
+    "Sleep and grades are related, but sleep may not cause higher grades",
+    "More sleep causes higher grades",
+    "Higher grades cause more sleep",
+    "There is no relationship"
+   ],
+   "correct": 0,
+   "why": "A correlation shows a relationship but not its cause; a third variable could affect both.",
+   "review": "stats-correlation"
+  },
+  {
+   "q": "Which is an example of the availability heuristic?",
+   "options": [
+    "Thinking plane crashes are common after seeing news of one",
+    "Solving a problem by trying every option",
+    "Learning a maze without a reward",
+    "Remembering the first item in a list best"
+   ],
+   "correct": 0,
+   "why": "Judging how likely something is by how easily examples come to mind is the availability heuristic, one of the mental shortcuts behind biased judgments.",
+   "review": "thinking"
+  }
+ ],
+ "figure": {
+  "figure": "attribution-biases",
+  "caption": "Two kinds of explanation, and three biases in how people choose between them."
+ },
+ "chain": [
+  {
+   "cause": "We see someone act, but not the pressures on them",
+   "effect": "their personality is the most visible explanation"
+  },
+  {
+   "cause": "We explain others by personality and overlook the situation",
+   "effect": "the fundamental attribution error"
+  },
+  {
+   "cause": "We know the pressures on ourselves but not on others",
+   "effect": "the actor-observer bias: situation for me, disposition for you"
+  },
+  {
+   "cause": "We want to feel good about ourselves",
+   "effect": "the self-serving bias: credit for success, the situation for failure"
+  }
+ ],
+ "ideas": [
+  "<b>Dispositional attributions</b> explain behavior by the person (traits, effort, ability); <b>situational attributions</b> explain it by circumstances (luck, other people, a hard test).",
+  "Three biases: the <b>fundamental attribution error</b> (others: too much disposition), the <b>actor-observer bias</b> (situation for me, disposition for you), the <b>self-serving bias</b> (my wins are me, my losses are the situation).",
+  "About yourself: <b>locus of control</b> is internal (my actions decide outcomes) or external (luck and others decide); <b>explanatory style</b> is optimistic (bad events are temporary and limited) or pessimistic (personal, lasting, everywhere).",
+  "Person perception: the <b>mere exposure effect</b>, the <b>self-fulfilling prophecy</b>, upward and downward <b>social comparison</b>, and <b>relative deprivation</b>."
+ ],
+ "misconception": {
+  "wrong": "The fundamental attribution error and the actor-observer bias are the same thing.",
+  "right": "The fundamental attribution error is about judging other people (too much personality). The actor-observer bias needs a contrast: the same kind of behavior explained by the situation when I do it and by personality when you do it."
+ },
+ "check": [
+  "psy-attribution-1",
+  "psy-attribution-2",
+  "psy-attribution-3",
+  "psy-attribution-11",
+  "psy-attribution-12",
+  "psy-attribution-15"
+ ],
+ "summary": "Attribution theory describes how people explain behavior, by disposition or by situation. Explaining others mostly by disposition is the fundamental attribution error; switching between situation for yourself and disposition for others is the actor-observer bias; crediting yourself for success and the situation for failure is the self-serving bias. Locus of control and explanatory style describe how people explain their own outcomes, and the mere exposure effect, self-fulfilling prophecies, social comparison and relative deprivation shape how we see others and ourselves."
+}

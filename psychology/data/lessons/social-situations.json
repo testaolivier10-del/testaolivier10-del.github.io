@@ -1,0 +1,83 @@
+{
+ "topic": "social-situations",
+ "hook": "You would probably say you would never shock a stranger because someone in a lab coat told you to, or ignore a person collapsed on the sidewalk. Social psychology keeps finding that situations are stronger than we expect: groups pull answers toward theirs, authority pulls compliance, and crowds can make each person feel less responsible. Knowing how these pressures work is the first step to resisting them.",
+ "prereq": [
+  {
+   "q": "A study has to deceive participants about its purpose. What must happen at the end?",
+   "options": [
+    "Debriefing",
+    "Random sampling",
+    "A double-blind procedure",
+    "A larger sample"
+   ],
+   "correct": 0,
+   "why": "Debriefing explains the deception and the study's real purpose. Many classic social psychology studies used deception.",
+   "review": "research-ethics"
+  },
+  {
+   "q": "Which is an example of in-group bias?",
+   "options": [
+    "Giving more to a stranger on your own team than to one on the other team",
+    "Seeing the other team as all alike",
+    "Blaming a victim for bad luck",
+    "Liking a song more after hearing it often"
+   ],
+   "correct": 0,
+   "why": "Favoring your own group is in-group bias; it returns in this topic when groups compete and cooperate.",
+   "review": "attitudes"
+  },
+  {
+   "q": "Students under heavy mental strain rely more on stereotypes. What explains this?",
+   "options": [
+    "Cognitive load",
+    "Mere exposure",
+    "Relative deprivation",
+    "Belief perseverance"
+   ],
+   "correct": 0,
+   "why": "High cognitive load leaves less room to check quick judgments.",
+   "review": "attitudes"
+  }
+ ],
+ "figure": {
+  "figure": "social-situations-helping",
+  "caption": "Four decisions come before helping, and a crowd can interfere with each."
+ },
+ "chain": [
+  {
+   "cause": "A person is unsure of the right answer or wants to be accepted",
+   "effect": "they conform through informational or normative social influence"
+  },
+  {
+   "cause": "An authority gives direct orders and takes responsibility",
+   "effect": "many people obey, even against their values"
+  },
+  {
+   "cause": "Others are present in an emergency",
+   "effect": "each person feels less responsible (diffusion of responsibility), so each is less likely to help"
+  },
+  {
+   "cause": "Individual effort is pooled and not identifiable",
+   "effect": "people put in less effort (social loafing)"
+  }
+ ],
+ "ideas": [
+  "<b>Conformity</b> is matching a group; <b>obedience</b> is following an authority's orders. <b>Informational</b> influence: \"they know better.\" <b>Normative</b> influence: \"I want to fit in.\"",
+  "Persuasion: the <b>central route</b> (arguments) and the <b>peripheral route</b> (cues such as celebrities); <b>foot-in-the-door</b> (small then large), <b>door-in-the-face</b> (large then small), the <b>halo effect</b>.",
+  "Groups: <b>group polarization</b>, <b>groupthink</b>, <b>social facilitation</b>, <b>social loafing</b>, <b>deindividuation</b>, <b>false consensus</b>; <b>superordinate goals</b> reduce conflict; <b>social traps</b> hurt everyone.",
+  "Helping: <b>altruism</b>, the <b>reciprocity</b> and <b>social responsibility</b> norms; the <b>bystander effect</b> lowers each person's chance of helping, though in real conflicts someone usually helps."
+ ],
+ "misconception": {
+  "wrong": "The bystander effect means people in crowds do not help.",
+  "right": "It means each individual is less likely to help as the number of bystanders grows. Real-world camera studies show that in most public conflicts at least one person steps in, and more bystanders make that more likely."
+ },
+ "check": [
+  "psy-social-situations-1",
+  "psy-social-situations-2",
+  "psy-social-situations-20",
+  "psy-social-situations-21",
+  "psy-social-situations-22",
+  "psy-social-situations-29"
+ ],
+ "summary": "Situations shape behavior powerfully. People conform for information or acceptance and often obey authority; persuasion works by central or peripheral routes and by request techniques. Groups can polarize views, silence doubts (groupthink), improve easy performance (social facilitation), reduce effort (social loafing) and lower restraint (deindividuation). Helping depends on norms and on the situation: the bystander effect lowers each person's chance of helping, but in real public conflicts recorded on camera, someone usually helps. Classic studies are taught with their limits: Milgram's results partly replicate, and the Stanford prison study's methods are seriously flawed."
+}

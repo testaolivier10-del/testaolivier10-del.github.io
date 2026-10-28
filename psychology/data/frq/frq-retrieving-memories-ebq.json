@@ -1,0 +1,293 @@
+{
+ "id": "frq-retrieving-memories-ebq",
+ "type": "ebq",
+ "points": 7,
+ "title": "Does retrieval practice beat rereading?",
+ "units": ["unit-2"],
+ "topics": ["retrieving-memories", "encoding-memories", "forgetting"],
+ "practices": [
+  "4.A",
+  "4.B"
+ ],
+ "claimTopic": "Whether practicing retrieval (testing yourself) leads to better long-term memory than rereading the same material.",
+ "restricted": [
+  "retrieval",
+  "retrieval practice",
+  "rehearsal",
+  "mean",
+  "random assignment",
+  "statistically significant",
+  "statistical significance",
+  "standard deviation"
+ ],
+ "sources": [
+  {
+   "title": "Testing versus restudying a science passage",
+   "source": "Roediger & Karpicke (2006), Experiment 1",
+   "study": {
+    "introduction": "Henry Roediger and Jeffrey Karpicke asked whether taking a test on a passage, with no feedback, helps students remember it better than studying it again.",
+    "participants": "120 undergraduates, ages 18 to 24, at Washington University in St. Louis, Missouri.",
+    "method": "Each student read two short science passages. For one passage, the student studied it for 7 minutes and then studied it again for 7 minutes. For the other, the student studied it for 7 minutes and then spent 7 minutes writing down as much as they could recall, with no feedback. Which passage got which treatment was balanced across students. Students were assigned to take a final recall test 5 minutes, 2 days or 1 week later, scored as the percent of the passage's ideas recalled.",
+    "results": "After 5 minutes, students recalled 81% of the ideas from the restudied passage and 75% from the tested passage. After 2 days: 54% restudied, 68% tested. After 1 week: 42% restudied, 56% tested.",
+    "reference": "Roediger, H. L., III, &amp; Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. <i>Psychological Science, 17</i>(3), 249-255."
+   },
+   "plot": {
+    "label": "Line graph of the percent of ideas recalled from a passage after 5 minutes, 2 days and 1 week: restudy 81, 54, 42; test 75, 68, 56",
+    "kind": "line",
+    "x": [
+     0,
+     7
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "xLabel": "Days after learning (5 minutes is shown at 0)",
+    "yLabel": "Percent of ideas recalled",
+    "series": [
+     {
+      "name": "Studied twice (restudy)",
+      "points": [
+       [
+        0,
+        81
+       ],
+       [
+        2,
+        54
+       ],
+       [
+        7,
+        42
+       ]
+      ],
+      "dashed": true
+     },
+     {
+      "name": "Studied, then tested",
+      "points": [
+       [
+        0,
+        75
+       ],
+       [
+        2,
+        68
+       ],
+       [
+        7,
+        56
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "title": "Ungraded quizzes in high school biology",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers tested whether short, ungraded quizzes in class improve end-of-unit test scores in a high school biology course.",
+    "participants": "96 tenth graders in four biology classes taught by the same teacher at a public high school in Ohio. Parents gave permission and students agreed to take part.",
+    "method": "For one unit, each class was randomly assigned to a review method for the last 10 minutes of every lesson. Two classes (48 students) took a 5-question ungraded quiz on the day's material and then saw the answers. Two classes (48 students) reread a summary of the same material. Three weeks after the unit ended, all students took the same 40-question unit test.",
+    "results": "Students in the quiz classes answered 79% of the unit test correctly on average; students in the reread classes answered 64%."
+   },
+   "table": {
+    "caption": "Percent correct on the unit test three weeks after the unit (invented data for practice)",
+    "cols": [
+     "Review method",
+     "Students",
+     "Percent correct"
+    ],
+    "rows": [
+     [
+      "Ungraded quiz, then answers",
+      "48",
+      "79%"
+     ],
+     [
+      "Reread a summary",
+      "48",
+      "64%"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "What students predict and what they remember",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether students can tell which study method works better for them.",
+    "participants": "60 first-year college students at a university in Oregon, ages 18 to 20, who gave informed consent.",
+    "method": "Each student learned 40 Swahili-English word pairs in two ways, 20 pairs each: one set by reading the pairs four times, the other by reading the pairs once and then testing themselves three times by covering the English word. Right after studying, students predicted what percent of each set they would remember a week later. One week later they were tested on all 40 pairs.",
+    "results": "Students predicted they would remember 70% of the pairs they reread and 55% of the pairs they tested themselves on. One week later they actually recalled 30% of the reread pairs and 61% of the self-tested pairs."
+   },
+   "plot": {
+    "label": "Grouped bar graph of predicted and actual percent recalled after one week: reread predicted 70, actual 30; self-tested predicted 55, actual 61 (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Reread four times",
+     "Read once, tested three times"
+    ],
+    "series": [
+     {
+      "name": "Predicted",
+      "values": [
+       70,
+       55
+      ]
+     },
+     {
+      "name": "Actual, one week later",
+      "values": [
+       30,
+       61
+      ]
+     }
+    ],
+    "y": [
+     0,
+     100
+    ],
+    "yLabel": "Percent of word pairs",
+    "xLabel": "How the set was studied"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Propose</b> a specific and defensible claim based in psychological science that responds to the question: does practicing retrieval lead to better long-term memory than rereading?",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a defensible claim that answers the question, for example that testing yourself leads to better long-term memory than rereading. A restated question, a topic sentence (\"This is about studying\"), or a claim no source could support does not earn the point.",
+     "accept": [
+      "testing yourself leads to better long-term memory than rereading the same material",
+      "self-testing improves memory over days and weeks more than rereading, even though rereading feels more effective"
+     ]
+    }
+   ],
+   "sample": "Practicing retrieval by testing yourself leads to better long-term memory than spending the same time rereading the material."
+  },
+  {
+   "label": "B(i)",
+   "prompt": "<b>Support</b> your claim using at least one piece of specific and relevant evidence from one of the sources. Cite the source.",
+   "points": 1,
+   "write": {
+    "cite": true
+   },
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from one source that supports the claim, with a citation (for example, \"(Source 1)\" or \"According to Source 1\"). A method or participant detail instead of a result, or no citation, does not earn the point.",
+     "accept": [
+      "after one week students recalled 56% of the tested passage and 42% of the restudied passage (Source 1)",
+      "quiz classes scored 79% on the unit test and reread classes 64% (Source 2)",
+      "students recalled 61% of self-tested pairs and 30% of reread pairs a week later (Source 3)"
+     ]
+    }
+   ],
+   "sample": "According to Source 1, one week after learning, students recalled 56% of the ideas from the passage they had been tested on but only 42% from the passage they had studied twice."
+  },
+  {
+   "label": "B(ii)",
+   "prompt": "<b>Explain</b> how the evidence from B(i) supports your claim using a psychological perspective, theory, concept or research finding learned in AP® Psychology.",
+   "points": 2,
+   "write": {
+    "concept": [
+     "testing effect",
+     "forgetting curve",
+     "recall",
+     "encoding",
+     "long-term memory",
+     "levels of processing",
+     "deep processing",
+     "effortful processing"
+    ],
+    "restricted": [
+     "retrieval",
+     "retrieval practice",
+     "rehearsal",
+     "mean",
+     "random assignment",
+     "statistically significant"
+    ]
+   },
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim (the tested material was remembered better after a delay, so testing beat rereading).",
+     "accept": [
+      "the tested passage was remembered better a week later, which shows testing beats rereading"
+     ]
+    },
+    {
+     "point": "Uses a psychology concept other than a restricted term (for example the testing effect, the forgetting curve, recall, effortful processing) and applies it to the evidence. A restricted term (retrieval, retrieval practice, rehearsal, a statistics or methods word), a bare definition, or a concept not linked to the evidence does not earn the point.",
+     "accept": [
+      "the testing effect: recalling the passage strengthened the memory, so less was lost a week later",
+      "the forgetting curve: both passages were forgotten, but the tested one dropped less steeply"
+     ]
+    }
+   ],
+   "sample": "This supports the claim because, after the same study time, the tested passage held up much better a week later. It shows the testing effect: writing down what they could recall made students pull the ideas out of long-term memory, which strengthened those memories, so even though both passages were forgotten over the week, the tested one was forgotten less."
+  },
+  {
+   "label": "C(i)",
+   "prompt": "<b>Support</b> your claim using a different piece of specific and relevant evidence from a different source than the one you used in B(i). Cite the source.",
+   "points": 1,
+   "write": {
+    "cite": true
+   },
+   "rubric": [
+    {
+     "point": "Gives a different, specific, accurate result from a different source than B(i), with a citation. Reusing the B(i) source, a method detail, or no citation does not earn the point.",
+     "accept": [
+      "students recalled 61% of self-tested pairs but only 30% of reread pairs after a week (Source 3)",
+      "classes that took ungraded quizzes scored 79% on the unit test versus 64% for classes that reread (Source 2)"
+     ]
+    }
+   ],
+   "sample": "In Source 3, one week later students recalled 61% of the Swahili word pairs they had tested themselves on but only 30% of the pairs they had reread, even though they had predicted the reverse (55% and 70%)."
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "<b>Explain</b> how the evidence from C(i) supports your claim using a different psychological perspective, theory, concept or research finding than the one you used in B(ii).",
+   "points": 2,
+   "write": {
+    "concept": [
+     "metacognition",
+     "recall",
+     "recognition",
+     "retrieval cue",
+     "spacing effect",
+     "distributed practice",
+     "levels of processing",
+     "effortful processing"
+    ],
+    "restricted": [
+     "retrieval",
+     "retrieval practice",
+     "rehearsal",
+     "mean",
+     "random assignment",
+     "statistically significant"
+    ]
+   },
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim (self-testing produced better memory a week later than rereading).",
+     "accept": [
+      "self-tested pairs were recalled about twice as well a week later, so testing beat rereading"
+     ]
+    },
+    {
+     "point": "Applies a different psychology concept from B(ii) (for example metacognition, recall versus recognition, the spacing effect) to the evidence. Reusing the B(ii) concept, a restricted term, or a definition not linked to the evidence does not earn the point.",
+     "accept": [
+      "metacognition: students wrongly judged rereading as better because the pairs felt familiar, but self-testing worked better",
+      "recall versus recognition: rereading only made pairs easy to recognize, while self-testing practiced recall, which the final test required"
+     ]
+    }
+   ],
+   "sample": "This supports the claim because self-testing roughly doubled what students remembered a week later. It also shows poor metacognition: students predicted that rereading would work better, because reading the pairs four times made them feel familiar, but familiarity is not the same as being able to recall them. Testing themselves gave students practice at the recall the final test demanded, so the method that felt less effective was the one that produced better long-term memory."
+  }
+ ]
+}

@@ -1,0 +1,253 @@
+{
+ "id": "frq-social-emotional-development-ebq",
+ "type": "ebq",
+ "points": 7,
+ "title": "Does early attachment predict later relationships?",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "social-emotional-development"
+ ],
+ "practices": [
+  "4.A",
+  "4.B"
+ ],
+ "claimTopic": "whether a child’s early attachment predicts the quality of their relationships later in life",
+ "restricted": [
+  "attachment",
+  "attachment style",
+  "mean",
+  "statistically significant",
+  "correlation",
+  "longitudinal",
+  "random assignment"
+ ],
+ "sources": [
+  {
+   "title": "Source 1: Attachment at 1 and friendships at 10",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether infants who are securely attached at age 1 get along better with peers in late childhood.",
+    "participants": "150 children from one Midwestern city, first studied at 12 months (about half girls; most from low-income families). Parents gave consent, children gave assent at 10, and an IRB approved the study.",
+    "method": "At 12 months, each infant was observed in the strange situation and classified as securely or insecurely attached. At 10, the children attended a four-week summer day camp, where counselors who did not know the attachment results rated each child’s social skill with peers on a 1 to 10 scale.",
+    "results": "Children classified as securely attached at 12 months had a mean counselor rating of 7.2 at age 10; children classified as insecurely attached had a mean rating of 5.4. The difference was statistically significant.",
+    "discussion": "Secure attachment in infancy predicted better relationships with peers nine years later."
+   },
+   "plot": {
+    "label": "Bar graph of mean counselor rating of social skill at age 10: secure at 12 months 7.2, insecure at 12 months 5.4 (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Secure at 12 months",
+     "Insecure at 12 months"
+    ],
+    "values": [
+     7.2,
+     5.4
+    ],
+    "xLabel": "Attachment at 12 months",
+    "yLabel": "Mean social skill rating (1-10)",
+    "y": [
+     0,
+     10
+    ]
+   }
+  },
+  {
+   "title": "Source 2: Adults’ attachment styles and romantic relationships",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether the way adults describe their feelings in close relationships, using the same categories as infant attachment, relates to how their romantic relationships go.",
+    "participants": "480 adults aged 18 to 60 in the United States who were in or had been in a romantic relationship, recruited through a social media survey (61% women). Responses were anonymous.",
+    "method": "Participants chose which of three descriptions best fit how they feel in close relationships (secure, avoidant or anxious) and reported the length of their longest romantic relationship in years. They also rated how much they trusted their current or most recent partner on a 1 to 7 scale.",
+    "results": "Adults who described themselves as secure reported longer relationships (mean 9 years) than avoidant adults (6 years) or anxious adults (5 years), and higher trust in their partners (mean 5.8, compared with 4.4 and 4.1).",
+    "discussion": "Adult relationship patterns resemble infant attachment patterns. Because adults described themselves at one time, the study cannot show that their infant attachment caused these patterns."
+   },
+   "table": {
+    "caption": "Mean longest relationship and trust by self-described style (invented data for practice)",
+    "cols": [
+     "Self-described style",
+     "Longest relationship (years)",
+     "Trust in partner (1-7)"
+    ],
+    "rows": [
+     [
+      "Secure",
+      "9",
+      "5.8"
+     ],
+     [
+      "Avoidant",
+      "6",
+      "4.4"
+     ],
+     [
+      "Anxious",
+      "5",
+      "4.1"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Source 3: Does attachment stay the same from 1 to 19?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked how stable attachment is from infancy to early adulthood, and what predicts change.",
+    "participants": "60 young adults from middle-income families in one Northeastern US city who had been observed in the strange situation at 12 months. They gave informed consent at 19, and an IRB approved the follow-up.",
+    "method": "At 19, each participant completed a structured interview about their childhood relationships, which trained raters, unaware of the infant results, classified as secure or insecure. Participants also reported major stressful life events since childhood, such as a parent’s death, divorce or serious illness.",
+    "results": "Overall, 65% of participants (39 of 60) had the same classification at 19 as at 12 months. Among the 36 with no major stressful events, 78% (28) kept the same classification; among the 24 with one or more major events, 46% (11) did. Most changes from secure to insecure followed a major stressful event.",
+    "discussion": "Attachment showed moderate stability, and change was more likely after stressful family events."
+   },
+   "plot": {
+    "label": "Bar graph of percent with the same attachment classification at 1 and at 19: no major stressful events 78%, one or more major events 46% (invented data)",
+    "kind": "bar",
+    "categories": [
+     "No major events",
+     "One or more events"
+    ],
+    "values": [
+     78,
+     46
+    ],
+    "xLabel": "Major stressful life events since childhood",
+    "yLabel": "Percent with same classification",
+    "y": [
+     0,
+     100
+    ]
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Propose</b> a specific and defensible claim based in psychological science that responds to the question: does early attachment predict the quality of a person’s later relationships?",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "States a defensible claim that answers the question (not a topic sentence, a question or a summary of one source)",
+     "accept": [
+      "Early attachment predicts later relationships to a moderate degree, but it can change, especially after stressful life events.",
+      "Secure attachment in infancy predicts better relationships with friends and partners later in life.",
+      "Early attachment predicts later relationships only partly, because attachment itself can change."
+     ]
+    }
+   ],
+   "sample": "Early attachment predicts the quality of later relationships to a moderate degree, but it does not lock them in, because attachment can change after major life events."
+  },
+  {
+   "label": "B(i)",
+   "prompt": "<b>Support</b> your claim using at least one piece of specific and relevant evidence from one of the sources.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from one source, cited (for example, \"Source 1\"); a method or participant detail does not count",
+     "accept": [
+      "Children secure at 12 months were rated more socially skilled at 10 (7.2 versus 5.4) (Source 1).",
+      "Secure adults reported longer relationships (9 years versus 5 or 6) and more trust (Source 2).",
+      "65% kept the same classification from 1 to 19 (Source 3)."
+     ]
+    }
+   ],
+   "sample": "According to Source 1, children who were securely attached at 12 months were rated by camp counselors as more socially skilled with peers at age 10 (a mean of 7.2) than children who were insecurely attached (5.4).",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "B(ii)",
+   "prompt": "<b>Explain</b> how the evidence from B(i) supports your claim using a psychological perspective, theory, concept or research finding learned in AP® Psychology.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim",
+     "accept": [
+      "securely attached infants later got along better with peers, so early attachment predicted later relationships"
+     ]
+    },
+    {
+     "point": "Applies a psychology concept (not a restricted term such as \"attachment\" or a statistics word) to the evidence and links it to the claim",
+     "accept": [
+      "trust versus mistrust: infants whose needs were met learned to trust, which carries into peer relationships",
+      "secure base: secure infants explored the social world confidently, building peer skills",
+      "contact comfort: comforting care built a bond that served as a model for later relationships"
+     ]
+    }
+   ],
+   "sample": "This supports the claim because the infants who were secure at 12 months were rated as more skilled with peers nine years later (Source 1). Erikson’s stage of trust versus mistrust explains the link: infants whose caregivers reliably met their needs learn that other people can be trusted, so as 10-year-olds they approach new peers at camp expecting good things, which makes friendships easier. This shows that early attachment predicts the quality of later relationships.",
+   "write": {
+    "concept": [
+     "trust versus mistrust",
+     "secure base",
+     "contact comfort"
+    ],
+    "restricted": [
+     "attachment",
+     "attachment style",
+     "mean",
+     "statistically significant",
+     "correlation",
+     "longitudinal",
+     "random assignment"
+    ]
+   }
+  },
+  {
+   "label": "C(i)",
+   "prompt": "<b>Support</b> your claim using a different piece of specific and relevant evidence from another source.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from a different source than B(i), cited",
+     "accept": [
+      "Only 46% of people with major stressful events kept the same classification, compared with 78% with none (Source 3).",
+      "Secure adults reported more trust in partners (5.8) than anxious adults (4.1) (Source 2)."
+     ]
+    }
+   ],
+   "sample": "According to Source 3, 78% of participants with no major stressful life events had the same attachment classification at 19 as at 12 months, but only 46% of those with one or more major events did.",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "<b>Explain</b> how the evidence from C(i) supports your claim using a different psychological perspective, theory, concept or research finding learned in AP® Psychology.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim",
+     "accept": [
+      "attachment usually stayed the same, but often changed after stressful events, so early attachment predicts only partly"
+     ]
+    },
+    {
+     "point": "Applies a different concept from B(ii), not a restricted term, and links it to the claim",
+     "accept": [
+      "stability and change: attachment showed both, which is why prediction is only moderate",
+      "chronosystem: events over time, such as divorce, changed relationships and attachment",
+      "intimacy versus isolation: secure adults formed lasting close relationships with more trust"
+     ]
+    }
+   ],
+   "sample": "This supports the claim that early attachment predicts later relationships only to a moderate degree. Most people with no major stressful events kept the same classification (78%), but fewer than half of those with a parent’s death, divorce or serious illness did (46%) (Source 3). This shows the developmental theme of stability and change: attachment is fairly stable, which is why it predicts later relationships, but it can change when the chronosystem brings major events, which is why the prediction is not fixed.",
+   "write": {
+    "concept": [
+     "stability and change",
+     "chronosystem",
+     "intimacy versus isolation"
+    ],
+    "restricted": [
+     "attachment",
+     "attachment style",
+     "mean",
+     "statistically significant",
+     "correlation",
+     "longitudinal",
+     "random assignment"
+    ]
+   }
+  }
+ ]
+}

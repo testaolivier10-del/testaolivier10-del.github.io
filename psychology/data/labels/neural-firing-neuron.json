@@ -1,0 +1,126 @@
+{
+ "figure": "neural-firing-neuron",
+ "labels": [
+  {
+   "id": "dendrites",
+   "name": "Dendrites",
+   "box": [
+    16,
+    23,
+    80,
+    23
+   ],
+   "concept": "dendrite"
+  },
+  {
+   "id": "cell-body",
+   "name": "Cell body (soma)",
+   "box": [
+    70,
+    243,
+    80,
+    41
+   ],
+   "concept": "cell-body"
+  },
+  {
+   "id": "axon",
+   "name": "Axon",
+   "box": [
+    292,
+    103,
+    40,
+    23
+   ],
+   "concept": "axon"
+  },
+  {
+   "id": "myelin",
+   "name": "Myelin sheath",
+   "box": [
+    386,
+    103,
+    112,
+    23
+   ],
+   "concept": "myelin"
+  },
+  {
+   "id": "terminals",
+   "name": "Axon terminals",
+   "box": [
+    636,
+    43,
+    120,
+    23
+   ],
+   "concept": "axon-terminal"
+  },
+  {
+   "id": "vesicles",
+   "name": "Vesicles holding neurotransmitter",
+   "box": [
+    206,
+    313,
+    136,
+    41
+   ],
+   "concept": "neurotransmitter"
+  },
+  {
+   "id": "sending",
+   "name": "Axon terminal of the sending neuron",
+   "box": [
+    206,
+    363,
+    167,
+    41
+   ],
+   "concept": "axon-terminal"
+  },
+  {
+   "id": "gap",
+   "name": "Synaptic gap (synapse)",
+   "box": [
+    206,
+    408,
+    104,
+    41
+   ],
+   "concept": "synapse"
+  },
+  {
+   "id": "receptors",
+   "name": "Receptor sites",
+   "box": [
+    206,
+    453,
+    120,
+    23
+   ],
+   "concept": "neurotransmitter"
+  },
+  {
+   "id": "receiving",
+   "name": "Dendrite of the receiving neuron",
+   "box": [
+    206,
+    488,
+    136,
+    41
+   ],
+   "concept": "dendrite"
+  },
+  {
+   "id": "reuptake",
+   "name": "Reuptake",
+   "box": [
+    686,
+    463,
+    72,
+    23
+   ],
+   "concept": "reuptake"
+  }
+ ]
+}

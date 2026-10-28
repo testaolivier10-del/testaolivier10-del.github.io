@@ -1,0 +1,20 @@
+{
+ "slug": "neuron",
+ "kind": "simulator",
+ "topic": "neural-firing",
+ "intro": "<p>A neuron you can fire. Set how strong a stimulus is and press Stimulate: below threshold the charge rises and fades; at threshold the neuron fires a full action potential that races down its myelinated axon, and the trace below draws it. Try two quick pulses to meet the refractory period, and a held stimulus to see that a stronger push fires the neuron more often, never harder. Then open the synapse and see what an agonist, an antagonist or a reuptake inhibitor does to the signal.</p>",
+ "howItWorksTitle": "How the neuron model works",
+ "howItWorks": "<p>The trace is a simple model, not a recording. The neuron rests at &minus;70 mV and fires when its membrane reaches &minus;55 mV (typical textbook values; real neurons vary). A brief stimulus raises the membrane and fades over a few milliseconds; if it reaches threshold, the model draws the same action potential every time: a rise to +40 mV, a fall below rest, and a return. For 2 ms after a spike nothing can fire the neuron (the absolute refractory period), and until 5 ms a stronger push is needed (the relative refractory period). A held stimulus fires the neuron again as soon as it can, so a stronger one fires more often.</p><p>The synapse is an explanatory model in relative units: one release of neurotransmitter, the share of receptors it activates, and how fast reuptake clears it. An agonist adds its own activation, an antagonist keeps most receptors from being activated, and a reuptake inhibitor slows the clearing. The neurotransmitters are the eight the course lists; the drugs are real, classed as introductory psychology classes them.</p>",
+ "explore": { "strength": 22, "nt": "dopamine" },
+ "partTopics": {},
+ "contexts": [
+  { "id": "lab-recording", "topic": "neural-firing", "types": ["trace"], "lead": "In a neuroscience lab, a student records the membrane potential of one neuron in a slice of brain tissue.", "modes": ["pulse", "pair"] },
+  { "id": "squid-axon", "topic": "neural-firing", "types": ["trace"], "lead": "A researcher stimulates a single neuron through a fine electrode and records its membrane potential.", "modes": ["pulse", "pair", "held"], "rests": [-70, -65], "thresholds": [15, 12] },
+  { "id": "touch-receptor", "topic": "neural-firing", "types": ["trace"], "lead": "A sensory neuron in the fingertip is pressed lightly and then firmly while its membrane potential is recorded.", "modes": ["held", "pulse"] },
+  { "id": "pharmacology", "topic": "neural-firing", "types": ["drug"], "lead": "A pharmacology class sorts drugs by what they do at the synapse.", "real": true },
+  { "id": "drug-lab", "topic": "neural-firing", "types": ["drug"], "lead": "A research team tests new compounds on neurons in a dish.", "real": false },
+  { "id": "clinic", "topic": "neural-firing", "types": ["drug", "transmitter"], "lead": "In a clinic, a doctor explains how a medication works." },
+  { "id": "everyday", "topic": "neural-firing", "types": ["transmitter"], "lead": "Everyday life is full of neurotransmitters at work." },
+  { "id": "anatomy", "topic": "neural-firing", "types": ["parts"], "lead": "A biology teacher points to a drawing of a neuron." }
+ ]
+}

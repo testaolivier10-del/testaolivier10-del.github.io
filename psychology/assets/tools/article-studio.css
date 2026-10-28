@@ -1,0 +1,100 @@
+/* Article Analysis Studio (psychology/assets/tools/article-studio.js). OWNED BY THIS
+   TOOL ONLY (builder T1). Scoped to .as-*: the study summary laid out as a page
+   of the exam (the stage), the part switch, the part card and the result
+   switch (the dock). Colors from the theme tokens, so light and dark follow;
+   the course cerulean (--cink, --ctint) is the one accent. */
+.as-fig{min-width:0;}
+.ls-root .psy-ls-stage .as-fig{flex:1;min-height:0;overflow:auto;}
+.as-paper{max-width:720px;margin:0 auto;padding:18px 20px 22px;background:var(--white);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 1px 0 var(--line-soft,var(--line)),0 8px 24px -18px rgba(0,0,0,.35);font:500 15.5px/1.62 var(--font-ui);color:var(--ink);}
+.as-head{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:6px;}
+.as-kicker{margin:0;font:800 12px var(--font-ui);color:var(--muted);}
+.as-title{margin:2px 0 0;font:900 19px/1.25 var(--font-ui);}
+.as-sec{position:relative;padding:8px 10px 4px;margin:0 -10px;border-radius:10px;transition:background-color .25s;}
+.as-sec h4{margin:4px 0 2px;font:900 12.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);}
+.as-sec p{margin:0 0 8px;}
+.as-sec.is-look{background:color-mix(in srgb, var(--ctint) 70%, transparent);box-shadow:inset 3px 0 0 var(--cink);}
+.as-ptable{border-collapse:collapse;margin:2px 0 8px;font:600 14px/1.4 var(--font-ui);width:100%;max-width:440px;}
+.as-ptable caption{text-align:left;font:800 12px var(--font-ui);color:var(--muted);padding-bottom:2px;}
+.as-ptable th,.as-ptable td{text-align:left;padding:5px 8px;border-top:1px solid var(--line);vertical-align:top;}
+.as-ptable th{font-weight:800;width:42%;color:var(--ink);}
+.as-figure{margin:6px 0 2px;}
+.as-graph{display:block;width:100%;max-width:440px;height:auto;margin:0 auto;}
+.as-graph .as-grid{stroke:var(--line);stroke-width:1;}
+.as-graph .as-axis{stroke:var(--ink);stroke-width:1.5;}
+.as-graph .as-tk{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.as-graph .as-axl{fill:var(--ink);font:800 12.5px var(--font-ui);}
+.as-graph .as-cat{fill:var(--ink);font:800 12.5px var(--font-ui);}
+.as-graph .as-val{fill:var(--ink);font:900 13px var(--font-ui);font-variant-numeric:tabular-nums;}
+.as-graph .as-bar{stroke-width:1.6;}
+.as-graph .as-g0{fill:color-mix(in srgb, var(--cink) 78%, transparent);stroke:var(--cink);}
+.as-graph .as-g1{fill:color-mix(in srgb, #C24E00 30%, transparent);stroke:#C24E00;}
+.as-graph .as-g2{fill:color-mix(in srgb, #009E73 30%, transparent);stroke:#009E73;}
+.as-graph .as-brk{fill:none;stroke:var(--ink);stroke-width:1.4;}
+.as-graph .as-sig{fill:var(--ink);font:800 12px var(--font-ui);}
+.as-graph .as-pt{fill:color-mix(in srgb, var(--cink) 55%, transparent);stroke:var(--cink);stroke-width:1.3;}
+.as-graph .as-trend{stroke:#C24E00;stroke-width:2.4;stroke-linecap:round;}
+:root[data-theme="dark"] .as-graph .as-g1{fill:color-mix(in srgb, #FF9A5C 30%, transparent);stroke:#FF9A5C;}
+:root[data-theme="dark"] .as-graph .as-g2{fill:color-mix(in srgb, #4FD1AA 30%, transparent);stroke:#4FD1AA;}
+:root[data-theme="dark"] .as-graph .as-trend{stroke:#FF9A5C;}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .as-graph .as-g1{fill:color-mix(in srgb, #FF9A5C 30%, transparent);stroke:#FF9A5C;}
+  :root:not([data-theme="light"]) .as-graph .as-g2{fill:color-mix(in srgb, #4FD1AA 30%, transparent);stroke:#4FD1AA;}
+  :root:not([data-theme="light"]) .as-graph .as-trend{stroke:#FF9A5C;}
+}
+
+/* Where each part is answered: a quiet underline everywhere, a highlight on the part shown. */
+.as-hl{border-radius:4px;transition:background-color .25s,box-shadow .25s;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
+.as-paper.has-tags .as-hl{cursor:pointer;}
+.as-paper.has-tags .as-hl:hover{background:color-mix(in srgb, var(--ctint) 60%, transparent);}
+.as-hl.is-on{background:var(--ctint);box-shadow:0 0 0 2px var(--ctint),inset 0 -2px 0 var(--cink);text-decoration:none;}
+.as-tag{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 4px 0 0;padding:0;border-radius:999px;vertical-align:1px;
+  border:1.5px solid var(--cink);background:var(--white);color:var(--cink);font:900 12px/1 var(--font-ui);}
+button.as-tag{position:relative;cursor:pointer;}
+button.as-tag::after{content:"";position:absolute;inset:-11px;}
+.as-tag.is-on,.as-tag.is-done{background:var(--cink);color:var(--white);}
+
+/* The dock: part switch, part card, result switch. */
+.as-ctl{display:flex;flex-direction:column;gap:12px;min-width:0;}
+.as-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;}
+.as-pbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:58px;padding:6px 4px;border:0;border-radius:12px;background:var(--surface2,var(--paper));color:var(--ink);
+  font:800 12.5px/1.15 var(--font-ui);text-align:center;cursor:pointer;min-width:0;}
+.as-pbtn:hover{background:var(--hover-tint,var(--ctint));}
+.as-pbtn[aria-pressed="true"]{background:var(--cink);color:var(--white);}
+.as-pk{flex:none;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;background:var(--white);color:var(--cink);font:900 14px var(--font-ui);}
+.as-pn{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.as-pcard{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);}
+.as-ph{margin:0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font:900 16px var(--font-ui);}
+.as-pl{color:var(--cink);}
+.as-pts{margin-left:auto;font:800 12px var(--font-ui);color:var(--muted);}
+.as-ask{margin:0;font:600 14.5px/1.45 var(--font-ui);}
+.as-flip{align-self:stretch;}
+.as-flip > button{font-size:13.5px;}
+.as-ans{margin:0;font:600 14.5px/1.5 var(--font-ui);}
+.as-ans .psy-mark{margin-right:4px;}
+.as-slip{margin:0;font:600 14px/1.5 var(--font-ui);color:var(--ink);padding:8px 10px;border-radius:10px;background:var(--tint-bad,var(--white));}
+.as-res-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.as-res-k{font:800 13px var(--font-ui);color:var(--muted);}
+.as-res{flex:1 1 260px;}
+.as-res > button{font-size:13px;padding:0 8px;}
+.as-why-k{margin:6px 0 0 !important;font:900 13px var(--font-ui);color:var(--cink);}
+.bt-why-b ul{margin:0;padding-left:20px;display:grid;gap:4px;}
+
+/* Test yourself: the study is the stage; the steps sit in the dock. */
+.ls-root .ls-drill-stage .as-paper{margin:0 auto;}
+.ls-root .ls-drill-stage .cd-extra{overflow:visible;}
+
+@media (max-width:640px){
+  .as-paper{padding:12px 12px 16px;border-radius:12px;font-size:15px;line-height:1.58;}
+  .as-sec{padding:6px 8px 2px;margin:0 -8px;}
+  .as-pbtn{padding:6px 2px;font-size:12px;}
+  .as-pk{width:24px;height:24px;font-size:13px;}
+  .as-res > button{font-size:12.5px;padding:0 4px;}
+}
+@media (prefers-reduced-motion:reduce){.as-sec,.as-hl{transition:none;}}
+
+/* The first-run tip's slot, the study picker row that wraps, and the 16 px side gutter on a phone. */
+.as-tipslot{height:58px;flex:none;}
+.ls-root .psy-ls-setup{min-height:44px;height:auto;padding-top:8px;padding-bottom:8px;}
+.ls-root .psy-ls-setup > span{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3;}
+@media (max-width:640px){ .ls-root .psy-ls-stage .as-fig{padding:0 12px;} }

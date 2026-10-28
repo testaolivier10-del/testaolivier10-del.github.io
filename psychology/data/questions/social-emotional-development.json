@@ -1,0 +1,842 @@
+{
+ "stimuli": {
+  "social-emotional-development-s1": {
+   "kind": "study",
+   "title": "Cloth and wire mothers",
+   "source": "Harlow (1958)",
+   "study": {
+    "introduction": "In the 1950s, many psychologists believed infants bond with their mothers mainly because mothers feed them. Harry Harlow tested this idea with infant rhesus monkeys.",
+    "participants": "Infant rhesus monkeys separated from their mothers shortly after birth and raised in a laboratory.",
+    "method": "Each infant’s cage held two artificial \"mothers\": one made of bare wire and one covered in soft terry cloth. For some infants, only the wire mother held a milk bottle; for others, only the cloth mother did. Researchers recorded how much time each infant spent on each mother and where it ran when frightened by a noisy mechanical toy.",
+    "results": "Infants spent most of each day clinging to the cloth mother, even when only the wire mother gave milk; they went to the wire mother only to feed. When frightened, they ran to the cloth mother and, after clinging to it, began to explore.",
+    "discussion": "Comfort from soft touch, not feeding alone, drove the bond. Monkeys raised with no real mother later showed lasting problems with social behavior and parenting. These studies caused serious, lasting harm to the animals and are widely criticized today; current animal-care rules would not allow them."
+   }
+  },
+  "social-emotional-development-s2": {
+   "kind": "data",
+   "title": "Attachment classifications in a strange situation study",
+   "invented": true,
+   "text": "<p>Researchers observed 50 one-year-olds in the strange situation, a series of short separations from and reunions with a parent in an unfamiliar playroom, and classified each child’s attachment.</p>",
+   "plot": {
+    "label": "Bar graph of the number of infants in each attachment classification: secure 30, avoidant 10, anxious 6, disorganized 4 (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Secure",
+     "Avoidant",
+     "Anxious",
+     "Disorganized"
+    ],
+    "values": [
+     30,
+     10,
+     6,
+     4
+    ],
+    "xLabel": "Attachment classification",
+    "yLabel": "Number of infants",
+    "y": [
+     0,
+     35
+    ]
+   }
+  },
+  "social-emotional-development-s3": {
+   "kind": "visual",
+   "title": "Ecological systems around a child",
+   "figure": "social-emotional-development-ecological"
+  }
+ },
+ "items": [
+  {
+   "id": "psy-social-emotional-development-1",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s1",
+   "q": "The infant monkeys clung to the cloth mother even when the wire mother held the milk. Which concept does this result support?",
+   "options": [
+    "Contact comfort as a basis of attachment",
+    "Imprinting on the first moving object",
+    "Feeding as the main source of the infant’s bond",
+    "Egocentrism in infant monkeys"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Harlow’s results challenged the idea that infants bond because they are fed.",
+    "options": [
+     "Right: soft touch, not food, drew the infants to the cloth mother.",
+     "Neither artificial mother moved; the infants chose comfort.",
+     "The infants left the wire mother as soon as they had fed, so food was not what bonded them.",
+     "Egocentrism is about taking another’s point of view."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-2",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s1",
+   "q": "Frightened infants ran to the cloth mother, clung to it and then began to explore. In human attachment research, what does the cloth mother act as?",
+   "options": [
+    "A source of separation anxiety for the infant",
+    "An example of permissive parenting",
+    "An example of parallel play",
+    "A secure base from which to explore"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Secure attachment lets a child explore because comfort is available when needed.",
+    "options": [
+     "Separation anxiety is distress when the caregiver leaves, not comfort when present.",
+     "Parenting styles describe how parents set rules and show warmth, not a cloth figure.",
+     "Parallel play is children playing side by side.",
+     "Right: a securely attached child uses the caregiver as a base, returning for comfort and then venturing out."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-3",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "social-emotional-development-s1",
+   "q": "Why would an animal care committee today most likely refuse to approve these studies?",
+   "options": [
+    "The researchers did not debrief the monkeys",
+    "The study had too few monkeys to generalize",
+    "The infants were separated from mothers and harmed",
+    "The monkeys could not give informed consent"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Animal research must minimize pain and distress; these studies produced lasting harm.",
+    "options": [
+     "Debriefing applies to human participants after deception.",
+     "Sample size is a design concern, not why the studies are judged unethical.",
+     "Right: protection from harm, including for animals, weighs heavily against causing lasting distress.",
+     "Animals never give informed consent; committees judge harm and benefit instead."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-4",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "social-emotional-development-s1",
+   "q": "A student says, \"Harlow proved that human babies need hugs more than food.\" What is the best response?",
+   "options": [
+    "The study is invalid because its design was correlational",
+    "It studied monkeys, so it only suggests this for humans",
+    "The study proves it because monkeys and humans are the same",
+    "The study shows food does not matter to babies"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalizing from animals to people needs supporting human evidence, which attachment research later provided.",
+    "options": [
+     "Harlow controlled which mother had milk; the problem is generalizing across species.",
+     "Right: results from rhesus monkeys must be checked in human research before generalizing.",
+     "Monkeys share much with humans, but species differ.",
+     "The monkeys still went to the wire mother to feed."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-5",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "social-emotional-development-s2",
+   "q": "What percentage of the 50 infants were classified as securely attached?",
+   "why": {
+    "correct": "$\\frac{30}{50} \\times 100 = 60\\%$."
+   },
+   "numeric": {
+    "unit": "%",
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        30,
+        50
+       ]
+      },
+      100
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "That is the number of secure infants. Divide by the 50 infants and multiply by 100."
+     },
+     {
+      "from": {
+       "fn": "mul",
+       "args": [
+        {
+         "fn": "div",
+         "args": [
+          20,
+          50
+         ]
+        },
+        100
+       ]
+      },
+      "why": "That is the share who were not secure (20 of 50). The question asks about secure infants."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-6",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s2",
+   "q": "In the study, one baby barely reacts when her mother leaves and looks away when she returns. Which bar does she belong to?",
+   "options": [
+    "Secure",
+    "Anxious",
+    "Disorganized",
+    "Avoidant"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The reunion is the key moment for classifying attachment.",
+    "options": [
+     "A secure baby may be upset when the parent leaves and seeks comfort at reunion, then calms.",
+     "An anxious baby is very upset at separation and both clings and resists at reunion.",
+     "A disorganized baby shows confused or contradictory behavior, such as freezing or approaching while looking away.",
+     "Right: little distress at separation and turning away at reunion mark avoidant attachment."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-7",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s2",
+   "q": "Another baby screams when his father leaves. When the father returns, the baby reaches to be held, then kicks and pushes away, and is hard to calm. Which classification fits?",
+   "options": [
+    "Avoidant attachment",
+    "Separation anxiety alone, with no attachment",
+    "Anxious attachment",
+    "Secure attachment"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Anxious babies want comfort but cannot easily be soothed by it.",
+    "options": [
+     "An avoidant baby shows little distress and ignores the parent at reunion.",
+     "Distress at separation shows an attachment exists; the reunion shows what kind.",
+     "Right: intense distress and a mix of clinging and resisting at reunion mark anxious (ambivalent) attachment.",
+     "A secure baby is comforted by the parent’s return and goes back to playing."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-8",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "social-emotional-development-s2",
+   "q": "All 50 infants came from middle-class families in one US city. Why should the researchers be careful about generalizing these percentages?",
+   "options": [
+    "Infants do not form attachments until well after age 2",
+    "Attachment rates differ across cultures and family settings",
+    "Fifty infants is too few to classify attachment",
+    "The strange situation was designed for testing monkeys"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generalizing depends on how similar the participants are to the population named.",
+    "options": [
+     "Attachment is clear by about 8 to 12 months.",
+     "Right: participant characteristics such as culture and income limit generalization; avoidant and anxious rates differ by country.",
+     "Generalization is judged from who the participants are, not mainly from sample size.",
+     "It was developed for human infants."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-9",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s3",
+   "q": "Luis’s mother is moved to the night shift, so she is no longer home at bedtime. Luis has never been to her workplace. In the figure, which system is her workplace?",
+   "options": [
+    "The exosystem",
+    "The microsystem",
+    "The mesosystem",
+    "The macrosystem"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Outer layers affect a child indirectly through the people in the inner layers.",
+    "options": [
+     "Right: a setting the child is not in that still affects him through others is the exosystem.",
+     "The microsystem holds settings Luis is directly part of, like home and school.",
+     "The mesosystem is the links between two of Luis’s own settings, such as home and school.",
+     "The macrosystem is the broad culture, values and laws."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-10",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s3",
+   "q": "Maya’s teacher and parents meet every month to plan how to help her with reading. Which system does their working relationship belong to?",
+   "options": [
+    "The microsystem",
+    "The exosystem",
+    "The chronosystem",
+    "The mesosystem"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The mesosystem is about how a child’s settings connect.",
+    "options": [
+     "Home and school each are microsystems; the link between them is the mesosystem.",
+     "The exosystem holds settings the child is not part of.",
+     "The chronosystem is change over time.",
+     "Right: connections between two of the child’s settings, home and school, form the mesosystem."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-11",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "social-emotional-development-s3",
+   "q": "A country passes a law giving all new parents 12 months of paid leave. Where does this law sit in the figure, and how could it reach a baby?",
+   "options": [
+    "The mesosystem; it links the baby’s home and school",
+    "No layer; laws reach adults, not individual babies",
+    "The macrosystem, through parents’ time",
+    "The microsystem; the law is part of the baby’s home"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Culture, laws and the economy shape the settings that shape the child.",
+    "options": [
+     "The law does not link two settings the baby is in.",
+     "Ecological systems theory says outer layers do affect children, through inner ones.",
+     "Right: laws and cultural values are in the outermost layer and work through the inner ones.",
+     "The law is a broad social policy, not a direct setting."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-12",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-emotional-development-s3",
+   "q": "Children who were 10 when a recession hit had different family lives from children who were 10 a decade earlier. Which system does this show?",
+   "options": [
+    "The exosystem",
+    "The chronosystem",
+    "The microsystem",
+    "The mesosystem"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The chronosystem adds time to the other layers.",
+    "options": [
+     "The exosystem is a setting the child is not in, at one time.",
+     "Right: changes over time, including historical events, form the chronosystem.",
+     "The microsystem is a child’s direct settings at a given time.",
+     "The mesosystem is the links between settings."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-13",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Jade’s parents set clear rules, explain their reasons, listen to her views and are warm and supportive. Which parenting style is this?",
+   "options": [
+    "Authoritative",
+    "Authoritarian",
+    "Permissive",
+    "Disorganized"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Authoritative parenting combines high demands with high responsiveness.",
+    "options": [
+     "Right: high warmth plus clear, explained limits is authoritative parenting.",
+     "Authoritarian parents set strict rules with little warmth and expect them to be followed without discussion.",
+     "Permissive parents are warm but set few rules or limits.",
+     "Disorganized is an attachment classification, not a parenting style."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-14",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Owen’s parents tell him, \"Because I said so,\" when he asks why he has a 7 p.m. curfew. They give harsh penalties for breaking rules and seldom show affection. Which style is this?",
+   "options": [
+    "Authoritative",
+    "Permissive",
+    "Avoidant",
+    "Authoritarian"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The names are close: authoritarian is the strict, cold style; authoritative is the warm, firm one.",
+    "options": [
+     "Authoritative parents explain their rules and are warm.",
+     "Permissive parents set few rules.",
+     "Avoidant is an attachment classification of a child, not a parenting style.",
+     "Right: strict rules, no explanations and little warmth."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-15",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Studies in the United States link authoritative parenting with higher grades and more social skill. Which conclusion is best supported?",
+   "options": [
+    "Parenting style has no relationship with grades",
+    "Children with high grades cause their parents to be strict",
+    "A correlation; child traits and culture may also explain it",
+    "Authoritative parenting causes higher grades across cultures"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Correlation is not causation, and influence runs both ways between parents and children.",
+    "options": [
+     "A relationship was found.",
+     "Children can influence parents, but this reverses the finding.",
+     "Right: these are correlational findings; easygoing children may draw out warm, reasoned parenting, and effects differ across cultures.",
+     "The studies are correlational, and the pattern varies across cultures."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-16",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "From birth, baby Nora has had regular sleep times, smiles at strangers and adapts easily to new foods. Her brother cried often, slept irregularly and fussed at every change. What differs between them?",
+   "options": [
+    "Attachment type, which is fixed at birth",
+    "Temperament, a baby’s inborn style of emotional reacting",
+    "Parenting style, which the parents changed between children",
+    "Identity status, set in infancy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Temperament is present early, is partly heritable, and shapes how others respond to a child.",
+    "options": [
+     "Attachment forms over the first year through caregiving.",
+     "Right: from birth, babies differ in mood, activity and how they react to change.",
+     "Nothing suggests different parenting; the differences appeared at birth.",
+     "Identity statuses describe adolescents and adults exploring who they are."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-17",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At 9 months, Sam cries hard whenever his mother leaves the room, though he was calm about it at 4 months. What is this?",
+   "options": [
+    "Separation anxiety",
+    "An avoidant attachment",
+    "Egocentrism",
+    "A permissive parenting style"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Separation anxiety shows the baby has a special bond and understands the caregiver is gone.",
+    "options": [
+     "Right: distress at separation from a caregiver typically appears around 8 months and peaks in the second year.",
+     "An avoidant baby shows little distress at separation.",
+     "Egocentrism is difficulty taking another’s point of view.",
+     "This is about the baby’s reaction, not how the parent raises him."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-18",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two 2-year-olds sit side by side in a sandbox, each filling a bucket, and rarely interact. A year later, the same children pretend the sandbox is a bakery and take turns \"selling\" cakes. Which two kinds of play are shown, in order?",
+   "options": [
+    "Pretend play, then parallel play",
+    "Parallel play both times",
+    "Pretend play both times",
+    "Parallel play, then pretend play"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Play becomes more social and more imaginative across the preschool years.",
+    "options": [
+     "This reverses the order.",
+     "The second scene involves make-believe roles.",
+     "In the first scene they are not pretending or playing together.",
+     "Right: playing side by side comes first; shared make-believe comes later."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-19",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Priya, 16, has thought hard about careers, tried internships in nursing and design, and chosen to study nursing. Which identity status fits her?",
+   "options": [
+    "Identity moratorium",
+    "Identity diffusion",
+    "Identity achievement",
+    "Identity foreclosure"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Identity statuses combine two questions: has the person explored, and have they committed?",
+    "options": [
+     "Moratorium is exploring without yet committing.",
+     "Diffusion is neither exploring nor committing.",
+     "Right: she explored options and then committed.",
+     "Foreclosure is committing without exploring, often by adopting parents’ plans."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-20",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Ben, 17, plans to become a dentist because his parents and grandparents are dentists. He has never considered anything else. Which identity status fits him?",
+   "options": [
+    "Identity diffusion",
+    "Identity foreclosure",
+    "Identity achievement",
+    "Identity moratorium"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Commitment without exploration is foreclosure.",
+    "options": [
+     "He has a firm commitment.",
+     "Right: he committed without exploring other options.",
+     "Achievement requires exploring before committing.",
+     "He has committed, so he is not still exploring."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-21",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Zoe, 14, will not go to school because of a small pimple, sure that everyone will stare at it all day. Which concept explains her worry?",
+   "options": [
+    "The imaginary audience",
+    "The personal fable",
+    "Identity foreclosure",
+    "The social clock"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The imaginary audience and personal fable describe a kind of teenage egocentrism.",
+    "options": [
+     "Right: teens often feel that others are watching and judging them far more than they are.",
+     "The personal fable is believing one is unique or invulnerable, not that others are watching.",
+     "This is about commitment to a path without exploring.",
+     "The social clock is about when life events are expected to happen."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-22",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a breakup, Kai, 15, tells his mom, \"You could never understand. Nobody has ever felt like this.\" Which concept does this show?",
+   "options": [
+    "The imaginary audience",
+    "Identity achievement",
+    "Separation anxiety",
+    "The personal fable"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The personal fable includes feeling unique, and sometimes invulnerable.",
+    "options": [
+     "That is the feeling of being watched and judged.",
+     "That is a status of having explored and committed.",
+     "That describes an infant’s distress when a caregiver leaves.",
+     "Right: believing one’s experiences are unique, so no one else could understand them."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-23",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Dana, 67, retired after 40 years of nursing. Looking back, she feels her life had meaning and accepts her mistakes. In Erikson’s terms, which stage has she resolved well?",
+   "options": [
+    "Intimacy versus isolation",
+    "Identity versus role confusion",
+    "Integrity versus despair",
+    "Generativity versus stagnation"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each of Erikson’s stages pairs a task with the risk of not meeting it.",
+    "options": [
+     "That young-adult stage is about forming close relationships.",
+     "That adolescent stage is about building a sense of self.",
+     "Right: in late adulthood, people look back and feel their life was meaningful (integrity) or full of regret (despair).",
+     "That middle-adult stage is about contributing to the next generation through work and caring."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-24",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At 45, Marcus volunteers as a youth soccer coach and mentors new workers. Which of Erikson’s stages is he working through?",
+   "options": [
+    "Trust versus mistrust",
+    "Generativity versus stagnation",
+    "Integrity versus despair",
+    "Industry versus inferiority"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Generativity means caring for and guiding the next generation.",
+    "options": [
+     "That is infancy’s stage of learning whether needs will be met.",
+     "Right: middle adults find purpose by contributing to the next generation.",
+     "That is late adulthood’s look back on life.",
+     "That is the school-age stage of building competence."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-25",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Toddler Mila insists, \"Me do it!\" when dressing, even though it takes 20 minutes. Her parents let her try. Which of Erikson’s stages does this fit?",
+   "options": [
+    "Autonomy versus shame and doubt",
+    "Trust versus mistrust",
+    "Initiative versus guilt",
+    "Industry versus inferiority"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Around ages 1 to 3, the task is doing things for oneself.",
+    "options": [
+     "Right: toddlers build independence; support helps, harsh criticism breeds doubt.",
+     "That earlier stage is about whether an infant’s needs are reliably met.",
+     "That preschool stage is about planning and starting activities.",
+     "That school-age stage is about mastering skills."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-26",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Ava, 24, has changed majors twice, lives with her parents and feels \"not quite an adult yet,\" like many of her friends. Which concept describes this period?",
+   "options": [
+    "The imaginary audience",
+    "Identity foreclosure",
+    "Separation anxiety",
+    "Emerging adulthood"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Emerging adulthood is linked to longer schooling and later marriage, so it is more common in some cultures than others.",
+    "options": [
+     "That is a teen’s sense of being watched.",
+     "She is exploring, not committing without exploring.",
+     "That is an infant’s distress when a caregiver leaves.",
+     "Right: in many wealthy countries, the years from about 18 to the mid-20s are a time of exploring before settling down."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-27",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Lena feels pressure because her friends are married at 28 and she is not. Which concept explains her feeling of being \"behind\"?",
+   "options": [
+    "Temperament",
+    "The mesosystem",
+    "The social clock",
+    "The personal fable"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The social clock varies across cultures and generations.",
+    "options": [
+     "That is an inborn style of reacting.",
+     "That is the links between a child’s settings.",
+     "Right: a culture’s expected timing for events like marriage and parenthood.",
+     "That is feeling unique or invulnerable."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-28",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A large study found that adults who reported more adverse childhood experiences (ACEs), such as abuse or a parent’s incarceration, had higher rates of heart disease and depression. Which conclusion is most accurate?",
+   "options": [
+    "The link holds for physical abuse but not for other ACEs",
+    "More ACEs mean higher average risk, not a fixed future",
+    "ACEs cause heart disease in each person who has them",
+    "ACEs have no connection to adult health"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Felitti and colleagues (1998) found a dose-response pattern: more ACEs, higher average risk. ACE scores are a screening tool, not a prediction for one person.",
+    "options": [
+     "ACEs include neglect and household problems too.",
+     "Right: the link is strong across groups, and many people with high scores do well, especially with supportive relationships.",
+     "The finding is a population-level association; many people with ACEs stay healthy.",
+     "The study found a clear link."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-emotional-development-29",
+   "unit": "unit-3",
+   "topic": "social-emotional-development",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Kayla, 15, pictures herself as a future veterinarian and also fears ending up stuck in a job she hates. She starts volunteering at an animal shelter. Which concept does this show?",
+   "options": [
+    "Possible selves",
+    "The imaginary audience",
+    "Identity diffusion, drifting without goals",
+    "Permissive parenting"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Possible selves motivate action toward a hoped-for self and away from a feared one.",
+    "options": [
+     "Right: images of who we might become, hoped-for and feared, can guide what we do now.",
+     "Her thoughts are about her future, not about being watched.",
+     "She is exploring a direction, not drifting without one.",
+     "This is about her own thinking, not a parenting style."
+    ]
+   }
+  }
+ ]
+}

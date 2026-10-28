@@ -1,0 +1,702 @@
+{
+ "stimuli": {
+  "stats-descriptive-s1": {
+   "kind": "data",
+   "title": "Reaction times with an outlier",
+   "invented": true,
+   "table": {
+    "caption": "One participant’s reaction times on 10 trials, in milliseconds (invented data for practice). On one trial the participant sneezed.",
+    "cols": [
+     "Reaction time (ms)",
+     "Number of trials"
+    ],
+    "rows": [
+     [
+      "280",
+      "2"
+     ],
+     [
+      "300",
+      "4"
+     ],
+     [
+      "320",
+      "3"
+     ],
+     [
+      "900",
+      "1"
+     ]
+    ]
+   }
+  },
+  "stats-descriptive-s2": {
+   "kind": "data",
+   "title": "Scores on an easy quiz",
+   "invented": true,
+   "plot": {
+    "label": "Histogram of 20 quiz scores out of 100: 1 score from 50 to 60, 2 from 60 to 70, 4 from 70 to 80, 8 from 80 to 90 and 5 from 90 to 100; invented data",
+    "kind": "histogram",
+    "bins": [
+     [
+      50,
+      60,
+      1
+     ],
+     [
+      60,
+      70,
+      2
+     ],
+     [
+      70,
+      80,
+      4
+     ],
+     [
+      80,
+      90,
+      8
+     ],
+     [
+      90,
+      100,
+      5
+     ]
+    ],
+    "xLabel": "Quiz score",
+    "yLabel": "Number of students"
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-stats-descriptive-1",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Five students reported how many hours they slept the night before a test: 4, 7, 5, 8 and 6. What is the mean number of hours?",
+   "why": {
+    "correct": "$\\bar{x} = \\frac{4 + 7 + 5 + 8 + 6}{5} = \\frac{30}{5} = 6$ hours."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       4,
+       7,
+       5,
+       8,
+       6
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         4,
+         7,
+         5,
+         8,
+         6
+        ]
+       ]
+      },
+      "why": "30 is the total. The mean divides the total by the number of values, 5."
+     },
+     {
+      "value": 5,
+      "why": "5 is the third number as listed, not the mean. Add all five values and divide by 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-2",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "In a memory test, five participants recalled 3, 9, 4, 15 and 7 words. What is the median number of words recalled?",
+   "why": {
+    "correct": "In order: 3, 4, 7, 9, 15. The middle (third) value is 7."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       3,
+       9,
+       4,
+       15,
+       7
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "4 is the middle of the list as written. Put the values in order first: 3, 4, 7, 9, 15."
+     },
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         3,
+         9,
+         4,
+         15,
+         7
+        ]
+       ]
+      },
+      "why": "7.6 is the mean. The median is the middle value once the list is in order."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-3",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Six children took 2, 5, 6, 9, 11 and 13 minutes to solve a puzzle. What is the median time, in minutes?",
+   "why": {
+    "correct": "With six values, the median is halfway between the two middle values: $\\frac{6 + 9}{2} = 7.5$ minutes."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       2,
+       5,
+       6,
+       9,
+       11,
+       13
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 6,
+      "why": "6 is only the lower of the two middle values. With an even count, average the two middle values, 6 and 9."
+     },
+     {
+      "value": 9,
+      "why": "9 is only the upper of the two middle values. Average 6 and 9."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-4",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Eight people rated a movie from 1 to 10: 2, 4, 4, 7, 9, 9, 9 and 10. What is the mode?",
+   "why": {
+    "correct": "9 appears three times, more than any other rating."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mode",
+     "args": [
+      [
+       2,
+       4,
+       4,
+       7,
+       9,
+       9,
+       9,
+       10
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "3 is how many times the mode appears. The mode is the value itself, 9."
+     },
+     {
+      "from": {
+       "fn": "median",
+       "args": [
+        [
+         2,
+         4,
+         4,
+         7,
+         9,
+         9,
+         9,
+         10
+        ]
+       ]
+      },
+      "why": "8 is the median. The mode is the most frequent value."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-5",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "q": "Five drivers took 12, 5, 19, 8 and 15 seconds to notice a road sign. What is the range, in seconds?",
+   "why": {
+    "correct": "Range = highest minus lowest: $19 - 5 = 14$ seconds."
+   },
+   "numeric": {
+    "from": {
+     "fn": "range",
+     "args": [
+      [
+       12,
+       5,
+       19,
+       8,
+       15
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 19,
+      "why": "19 is the highest value. Subtract the lowest, 5."
+     },
+     {
+      "value": 3,
+      "why": "That subtracts the first value from the last as listed (15 - 12). Use the highest and lowest values."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-6",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "Two classes both have a mean score of 75 on a test. Class A has a standard deviation of 4; Class B has a standard deviation of 15. What does this tell you?",
+   "options": [
+    "Scores in Class B are more spread out from the mean",
+    "Class B scored higher on average than Class A",
+    "Class A has more students than Class B",
+    "Class B has a smaller range than Class A"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The standard deviation is roughly the typical distance of scores from the mean. A standard deviation of 15 means scores are much more spread out than with 4.",
+    "options": [
+     "Right: a larger standard deviation means more variation.",
+     "Both means are 75, so neither scored higher on average.",
+     "Standard deviation measures spread, not the number of students.",
+     "A larger standard deviation usually goes with a larger range, not a smaller one."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-7",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "A store reports the \"average\" income of its customers. A few customers are billionaires. Which measure would best describe a typical customer’s income?",
+   "options": [
+    "The mean, because it uses each customer’s income",
+    "The median, because extreme values barely move it",
+    "The range, because it covers the lowest and highest incomes",
+    "The standard deviation, because it shows variation"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Outliers pull the mean toward them. In a skewed distribution, the median better describes the typical case.",
+    "options": [
+     "Using every value is why the few billionaires pull it far up.",
+     "Right: the median depends on the middle, not the extremes.",
+     "The range measures spread, not a typical value.",
+     "Standard deviation measures spread, not a typical value."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-8",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "q": "Scores on a reading test cluster in two separate peaks, one around 40 and one around 80, with few scores in between. How is this distribution described?",
+   "options": [
+    "Symmetric with one peak",
+    "Positively skewed",
+    "Bimodal",
+    "Negatively skewed"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A bimodal distribution has two peaks. It often means two different groups are mixed together, such as students who did and did not read the assigned book.",
+    "options": [
+     "A symmetric distribution with one peak has a single hump in the middle.",
+     "Skew is one peak with a long tail on one side.",
+     "Right: two modes, two peaks.",
+     "Skew is one peak with a long tail on one side."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-9",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "q": "A researcher reports that participants’ recall scores had a mean of 12 words and a standard deviation of 0.5. What does the small standard deviation suggest?",
+   "options": [
+    "The participants recalled about half a word on average",
+    "The study had a small sample of participants",
+    "The scores contained one or two extreme outliers",
+    "Most participants recalled close to 12 words"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The standard deviation measures variation. A value of 0.5 means almost everyone recalled between 11 and 13 words.",
+    "options": [
+     "The mean is 12; the 0.5 describes spread around it.",
+     "Standard deviation is about spread, not sample size.",
+     "Outliers would make the standard deviation larger, not smaller.",
+     "Right: a small standard deviation means scores sit close to the mean."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-10",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-descriptive-s1",
+   "q": "What is the mean reaction time across all 10 trials, in milliseconds?",
+   "why": {
+    "correct": "Total: $2(280) + 4(300) + 3(320) + 900 = 560 + 1200 + 960 + 900 = 3620$. Mean: $\\frac{3620}{10} = 362$ ms."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       280,
+       280,
+       300,
+       300,
+       300,
+       300,
+       320,
+       320,
+       320,
+       900
+      ]
+     ]
+    },
+    "unit": "ms",
+    "mistakes": [
+     {
+      "value": 450,
+      "why": "That averages the four times in the table (280, 300, 320, 900) without counting how many trials had each. Multiply each time by its number of trials first."
+     },
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         280,
+         280,
+         300,
+         300,
+         300,
+         300,
+         320,
+         320,
+         320,
+         900
+        ]
+       ]
+      },
+      "why": "3620 is the total of all 10 trials. Divide by 10."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-11",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-descriptive-s1",
+   "q": "What is the median reaction time, in milliseconds?",
+   "why": {
+    "correct": "In order: 280, 280, 300, 300, 300, 300, 320, 320, 320, 900. The two middle values (5th and 6th) are both 300, so the median is 300 ms."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       280,
+       280,
+       300,
+       300,
+       300,
+       300,
+       320,
+       320,
+       320,
+       900
+      ]
+     ]
+    },
+    "unit": "ms",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         280,
+         280,
+         300,
+         300,
+         300,
+         300,
+         320,
+         320,
+         320,
+         900
+        ]
+       ]
+      },
+      "why": "362 is the mean. The median is the middle of the ordered list."
+     },
+     {
+      "value": 310,
+      "why": "That is halfway between 300 and 320, the middle of the table’s rows. Count trials: the 5th and 6th trials in order are both 300."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-12",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "stats-descriptive-s1",
+   "q": "Which statistic gives the better summary of this participant’s usual reaction time, and why?",
+   "options": [
+    "The median, because the 900 ms sneeze trial pulls the mean up",
+    "The mean, because it uses each trial, including the 900 ms one",
+    "The range, because it shows the fastest and slowest trials",
+    "The mode and the mean are equal, so either works"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The median (300 ms) sits with the typical trials; the mean (362 ms) is higher than nine of the ten trials because of a single outlier.",
+    "options": [
+     "Right: one outlier moves the mean far more than the median.",
+     "Including the outlier is exactly why the mean misleads here.",
+     "The range describes spread, not a usual value.",
+     "The mode is 300 and the mean is 362; they are not equal."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-13",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "stats-descriptive-s1",
+   "q": "What is the range of the reaction times, in milliseconds?",
+   "why": {
+    "correct": "Range = highest minus lowest: $900 - 280 = 620$ ms."
+   },
+   "numeric": {
+    "from": {
+     "fn": "range",
+     "args": [
+      [
+       280,
+       280,
+       300,
+       300,
+       300,
+       300,
+       320,
+       320,
+       320,
+       900
+      ]
+     ]
+    },
+    "unit": "ms",
+    "mistakes": [
+     {
+      "value": 40,
+      "why": "40 is the range without the outlier (320 - 280). The range uses the highest value, 900."
+     },
+     {
+      "value": 900,
+      "why": "900 is the highest value. Subtract the lowest, 280."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-14",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "stats-descriptive-s1",
+   "q": "If the researcher drops the 900 ms trial as a recording error, what happens to the mean and the median?",
+   "options": [
+    "Both drop by about the same amount",
+    "The mean drops a lot; the median stays at 300",
+    "The median drops a lot; the mean stays about the same",
+    "Neither changes, since one trial is a small part of the data"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Without the outlier, the mean is $\\frac{2720}{9} \\approx 302$ ms; the median of the nine remaining trials is the 5th value, 300 ms. The mean is sensitive to outliers; the median is not.",
+    "options": [
+     "The mean falls by about 60 ms; the median does not change.",
+     "Right: the mean falls to about 302 ms, and the middle of the nine values is still 300.",
+     "This reverses the effect: the mean is the measure sensitive to outliers.",
+     "One extreme trial changes the mean a great deal."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-15",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-descriptive-s2",
+   "q": "How is the shape of this distribution best described?",
+   "options": [
+    "Positively skewed",
+    "Bimodal",
+    "Negatively skewed",
+    "Symmetric"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The tail points toward the low scores, so the distribution is negatively skewed. Easy tests often produce this shape.",
+    "options": [
+     "A positive skew has its tail toward the high values; this tail points to the low scores.",
+     "There is one peak, from 80 to 90.",
+     "Right: most scores are high, with a tail stretching toward the low scores.",
+     "A symmetric distribution has matching sides; this one has a tail on the left."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-16",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.B",
+   "stimulus": "stats-descriptive-s2",
+   "q": "In this distribution, how do the mean and median compare?",
+   "options": [
+    "The mean is higher than the median",
+    "The mean and median are exactly equal",
+    "The median is lower than the mode by 30 points",
+    "The mean is lower than the median"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The mean is pulled toward the tail. With a tail of low scores (negative skew), the mean falls below the median.",
+    "options": [
+     "That is the pattern for a positive skew, with a tail of high values.",
+     "They are equal in a symmetric distribution, not a skewed one.",
+     "The mode is in the 80 to 90 bin and the median is in the same region.",
+     "Right: the few low scores pull the mean down toward the tail."
+    ]
+   }
+  },
+  {
+   "id": "psy-stats-descriptive-17",
+   "unit": "skills-research",
+   "topic": "stats-descriptive",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "stats-descriptive-s2",
+   "q": "Which score range holds the most students?",
+   "options": [
+    "80 to 90",
+    "90 to 100",
+    "70 to 80",
+    "50 to 60"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The tallest bar of a histogram is the most frequent range: here 80 to 90, with 8 students.",
+    "options": [
+     "Right: 8 students, the tallest bar.",
+     "That bar holds 5 students.",
+     "That bar holds 4 students.",
+     "That bar holds 1 student."
+    ]
+   }
+  }
+ ]
+}

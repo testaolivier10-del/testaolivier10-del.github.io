@@ -166,7 +166,10 @@ const SHELL_BUDGETS = [
      quick-answer.css) land in the same shared assets bucket. Measured 332.1 KB. */
   /* 333 -> 334 for the price presentation (PR #85, owner 2026-10-25): per-day prices, the never-renews and
      refund line and the competitor comparison in assets/premium.js. Measured 333.4 KB. */
-  ['site', 334],
+  /* 334 -> 335 for registering AP® Psychology (docs/appsych-spec.md, Phase 0): the tenth course in every
+     generated course list, its premium.js entry, ranks, tutor starters and loader, search source, exam date
+     and the theme tint (+1.0 KB measured: 334.4 KB). */
+  ['site', 335],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -397,6 +400,13 @@ const SHELL_BUDGETS = [
      tons, compound divisors, "per", scale words; decision 11) and the shell
      carries all nine published units; measured 85.0 KB. */
   ['environmental-science', 85.5],
+  /* AP® Psychology (psychology/, a fork of the AP® Environmental Science
+     runtime, docs/appsych-spec.md decision 1): ApPsychStats (psy-stats.js,
+     descriptive statistics and the normal curve) in place of the calculation
+     recipes, and no setup parser (psy-expr.js is gone: no calculator, no
+     typed setups). Environmental Science's 85.5 is the reference until it is
+     measured in Phase 0. */
+  ['psychology', 85.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -666,6 +676,14 @@ const BUDGETS = [
   ['environmental-science/tools.html', 5],
   ['environmental-science/formula-sheet.html', 12],
   ['environmental-science/justify.html', 5],
+  ['psychology/index.html', 8.5], // round 3 course home, see nremt/index.html
+  ['psychology/practice.html', 3],
+  ['psychology/exams.html', 3],
+  ['psychology/frq.html', 3],
+  ['psychology/glossary.html', 30],
+  ['psychology/tools.html', 5],
+  ['psychology/formula-sheet.html', 12],
+  ['psychology/justify.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -1076,6 +1094,19 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`environmental-science/unit-sheets/${sheet}`, 14]);
   }
 }
+/* The same for AP® Psychology (psychology/assets/notes-index.json,
+   build-appsych.mjs), with Environmental Science's budgets as the reference until the first unit is published. */
+{
+  const idx = join(ROOT, 'psychology', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`psychology/lessons/${id}.html`, 22], [`psychology/notes/${id}.html`, 22]);
+    const sheets = join(ROOT, 'psychology', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`psychology/unit-sheets/${sheet}`, 14]);
+  }
+}
 /* The same for AP® Calculus AB (calculus/assets/notes-index.json, build-apcalc.mjs).
    Math is MathML on the page, so a calculus page is heavier than its text. */
 {
@@ -1185,6 +1216,15 @@ if (existsSync(ENV_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['environmental-science/assets/glossary.json', 150], ['environmental-science/assets/notes-index.json', 4], ['environmental-science/assets/summaries.json', 40]);
+
+/* AP® Psychology's, the same (build-appsych.mjs packs by gzipped size). */
+const PSY_BANK_DIR = join(ROOT, 'psychology', 'assets', 'bank');
+if (existsSync(PSY_BANK_DIR)) {
+  for (const f of readdirSync(PSY_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`psychology/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['psychology/assets/glossary.json', 150], ['psychology/assets/notes-index.json', 4], ['psychology/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

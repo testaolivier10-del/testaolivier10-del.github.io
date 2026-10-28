@@ -33,6 +33,7 @@
     { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'live' },
     { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'live' },
     { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'live' },
+    { key: 'appsych', searchLabel: 'Psychology', name: 'AP® Psychology', dir: 'psychology', aliases: ['psychology', 'psych', 'psy'], status: 'live' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
@@ -62,11 +63,11 @@
   }
 
   /* The ?course= value written for a course. A key with the token "ap" in it
-     (apbio, apchem, apphys, apcalc, apstat, apenv) never goes into a URL (docs/apbio-spec.md decision 2): it travels
+     (apbio, apchem, apphys, apcalc, apstat, apenv, appsych) never goes into a URL (docs/apbio-spec.md decision 2): it travels
      as its folder ("bio"), which parseCourse reads back through its aliases. */
   function urlKey(key) {
     var tokens = String(key || '').toLowerCase().split(/[^a-z0-9]+/);
-    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1 && tokens.indexOf('apstat') === -1 && tokens.indexOf('apenv') === -1) return key;
+    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1 && tokens.indexOf('apstat') === -1 && tokens.indexOf('apenv') === -1 && tokens.indexOf('appsych') === -1) return key;
     for (var i = 0; i < COURSE_LIST.length; i++) if (COURSE_LIST[i].key === key) return COURSE_LIST[i].dir;
     return key;
   }
@@ -775,6 +776,51 @@
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;
                 out.push({ course: 'apenv', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
+                  heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
+              });
+              return out;
+            }).catch(function () { return []; });
+          })).then(function (all) { return [].concat.apply([], all); });
+        });
+      }],
+    ],
+    // AP® Psychology: the same, from scripts/build-appsych.mjs (empty until a unit is published).
+    appsych: [
+      ['lessons', function () {
+        return loadScript('psychology/assets/psy-curriculum.js').then(function () {
+          return apbioStructureChunks(window.ApPsychCurriculum, 'appsych', 'psychology');
+        });
+      }],
+      ['glossary', function () {
+        return loadScript('psychology/assets/psy-math.js').catch(function () {}).then(function () {
+          return getJson('psychology/assets/glossary.json');
+        }).then(function (g) {
+          return glossaryChunks('appsych', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
+      ['notes', function () {
+        return loadScript('psychology/assets/psy-math.js').catch(function () {}).then(function () {
+          return getJson('psychology/assets/notes-index.json');
+        }).then(function (list) {
+          return Promise.all(list.map(function (n) {
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+            var href = 'psychology/notes/' + id + '.html';
+            return getText(href).then(function (html) {
+              var doc = parseHtml(html);
+              var root = doc.querySelector('.psy-prose') || doc.querySelector('main') || doc.body;
+              root.querySelectorAll('.psy-crumb,.psy-onward,.psy-share,.psy-foot').forEach(function (x) { x.remove(); });
+              // Each formula as plain text, not its MathML symbols plus the TeX kept in its annotation.
+              root.querySelectorAll('math').forEach(function (m) { m.replaceWith(doc.createTextNode(mathText(m.outerHTML))); });
+              root.normalize();
+              var out = [];
+              var heading = n.title;
+              var hid = '';
+              root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
+                if (!text) return;
+                if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
+                if (text.length < 30) return;
+                out.push({ course: 'appsych', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
                   heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
               });
               return out;

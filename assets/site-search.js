@@ -50,8 +50,10 @@
       if (at !== -1 && (first === undefined || at < first)) first = at;
     }
 
-    var start = first === undefined ? 0 : Math.max(0, first - lead);
-    var end = Math.min(text.length, start + span);
+    // o.whole: a title, marked in full. With lead 0 a title was cut at its first match ("… Memory" for
+    // "Introduction to Memory"), so a result no longer said which topic it was (AP® Psychology launch).
+    var start = first === undefined || o.whole ? 0 : Math.max(0, first - lead);
+    var end = o.whole ? text.length : Math.min(text.length, start + span);
     var snippet = escapeHtml(text.slice(start, end));
     if (start > 0) snippet = '… ' + snippet;
     if (end < text.length) snippet = snippet + ' …';

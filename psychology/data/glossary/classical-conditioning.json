@@ -1,0 +1,56 @@
+{
+ "learning": {
+  "def": "A relatively lasting change in behavior or knowledge that comes from experience."
+ },
+ "behaviorism": {
+  "def": "The view that psychology should study observable behavior and how the environment shapes it, setting aside inner mental states that cannot be observed."
+ },
+ "classical-conditioning": {
+  "def": "Learning in which a neutral stimulus, after being paired with a stimulus that already triggers a response, comes to trigger a similar response on its own. Also called Pavlovian conditioning."
+ },
+ "neutral-stimulus": {
+  "def": "A stimulus that, before conditioning, does not trigger the response being studied (a tone before it is paired with food)."
+ },
+ "ucs": {
+  "def": "Unconditioned stimulus (UCS): a stimulus that triggers a response naturally, with no learning (food, a puff of air, a loud noise)."
+ },
+ "ucr": {
+  "def": "Unconditioned response (UCR): the unlearned, automatic response to the unconditioned stimulus (salivating to food)."
+ },
+ "cs": {
+  "def": "Conditioned stimulus (CS): a once-neutral stimulus that, after pairing with the UCS, triggers a learned response on its own."
+ },
+ "cr": {
+  "def": "Conditioned response (CR): the learned response to the conditioned stimulus (salivating to the tone)."
+ },
+ "acquisition": {
+  "def": "The first stage of conditioning, when the neutral stimulus is paired with the UCS and the link to the response is learned."
+ },
+ "extinction": {
+  "def": "The weakening of a conditioned response when the CS is repeatedly presented without the UCS."
+ },
+ "spontaneous-recovery": {
+  "def": "The return of an extinguished conditioned response after a rest period, usually weaker than before."
+ },
+ "stimulus-discrimination": {
+  "def": "Learning to respond to the conditioned stimulus but not to similar stimuli that were never paired with the UCS."
+ },
+ "stimulus-generalization": {
+  "def": "The tendency for stimuli similar to the conditioned stimulus to trigger the conditioned response too."
+ },
+ "higher-order": {
+  "def": "Higher-order (second-order) conditioning: pairing a new neutral stimulus with an established CS, so the new stimulus also comes to trigger the CR without the UCS ever being present."
+ },
+ "counterconditioning": {
+  "def": "Pairing a conditioned stimulus with a new stimulus that triggers a response incompatible with the old CR (calm instead of fear), so the new response replaces the old one."
+ },
+ "taste-aversion": {
+  "def": "A learned dislike of a food or taste after it was followed by illness. It can form after a single pairing, even with hours between the taste and the illness."
+ },
+ "preparedness": {
+  "def": "Biological preparedness: an inborn readiness, shaped by natural selection, to learn some associations (taste with illness, fear of snakes) faster and more lastingly than others."
+ },
+ "habituation": {
+  "def": "A decrease in response to a stimulus that is repeated without any consequence. The simplest form of learning; it needs no pairing."
+ }
+}

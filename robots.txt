@@ -11,5 +11,6 @@ Disallow: /physics/data/notes/
 Disallow: /calculus/data/notes/
 Disallow: /statistics/data/notes/
 Disallow: /environmental-science/data/notes/
+Disallow: /psychology/data/notes/
 
 Sitemap: https://levlprep.com/sitemap.xml

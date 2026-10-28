@@ -249,7 +249,7 @@
         return '<section class="cx-sr-group" aria-label="' + esc(k) + '"><h2 class="cx-sr-gh">' + esc(k) + ' <span>' + list.length + '</span></h2><ul class="cx-sr-list">' +
           vis.map(function(h){
             var href = o.href ? o.href(h, terms, S) : (h.fragment ? S.textFragment(h.file, terms) : h.file);
-            return '<li><a class="cx-sr-hit" href="' + esc(href) + '"><span class="cx-sr-title">' + S.highlight(h.heading, terms, { lead: 0, span: 400 }) + '</span>' +
+            return '<li><a class="cx-sr-hit" href="' + esc(href) + '"><span class="cx-sr-title">' + S.highlight(h.heading, terms, { whole: true }) + '</span>' +
               '<span class="cx-sr-meta">' + esc(h.meta || h.page) + '</span>' +
               '<span class="cx-sr-snip">' + h.snippet + '</span></a></li>';
           }).join('') + '</ul>' +

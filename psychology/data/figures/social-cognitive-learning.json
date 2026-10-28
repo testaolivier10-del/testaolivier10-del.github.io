@@ -1,0 +1,12 @@
+{
+ "social-cognitive-learning-model": {
+  "file": "figures/social-cognitive-learning-model.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An observer watches a model. A rewarded model (vicarious reinforcement) leads to more imitation; a punished model (vicarious punishment) leads to less. The behavior is learned either way."
+ }
+}

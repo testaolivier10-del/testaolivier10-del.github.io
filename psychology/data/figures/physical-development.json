@@ -1,0 +1,12 @@
+{
+ "physical-development-lifespan": {
+  "file": "figures/physical-development-lifespan.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four columns along a lifespan arrow. Before birth: teratogens such as alcohol, nicotine, some drugs and infections can cross the placenta and harm the baby. Infancy and childhood: reflexes at birth (rooting, sucking, grasping) and motor milestones in a set order (sit, crawl, stand, walk at about 12 months, with a wide range). Adolescence: puberty, with primary and secondary sex characteristics, menarche and spermarche; the brain keeps maturing. Adulthood: strength and speed peak in the mid-20s then slowly decline, vision and hearing fade, and menopause often comes around age 50. Maturation sets the order; experience and health shape the timing."
+ }
+}

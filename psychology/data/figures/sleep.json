@@ -1,0 +1,12 @@
+{
+ "sleep-hypnogram": {
+  "file": "figures/sleep-hypnogram.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A hypnogram of one invented 8-hour night. Awake is at the top, then REM, N1, N2 and N3 (deep) at the bottom. The sleeper drops into N3 within the first half hour; the night repeats in cycles of about 90 minutes. N3 appears mostly in the first half of the night. REM periods, drawn thick, end each cycle and grow from about 10 minutes in the first cycle to about 30 minutes near morning. A brief waking comes after the third REM period."
+ }
+}

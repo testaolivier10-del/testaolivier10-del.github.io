@@ -1,0 +1,71 @@
+{
+ "topic": "classical-conditioning",
+ "hook": "Your phone buzzes on the desk and your stomach tightens before you even read it, because the last ten buzzes were group-chat drama. Nothing about a buzz is upsetting by itself. You learned that reaction by pairing: the buzz kept arriving right before something that already upset you. That is classical conditioning, and it explains fears, cravings, and even why one bad meal can put you off a food for years.",
+ "prereq": [
+  {
+   "q": "A study measures \"stress\" as the number of times a person checks their phone in ten minutes. What is that?",
+   "options": [
+    "An operational definition",
+    "A hypothesis",
+    "A confounding variable",
+    "A random sample"
+   ],
+   "correct": 0,
+   "why": "It says exactly how the study measures the variable, which is an operational definition.",
+   "review": "research-methods"
+  },
+  {
+   "q": "Which statement fits natural selection?",
+   "options": [
+    "Traits that helped ancestors survive and reproduce become more common",
+    "Animals change their genes on purpose to survive",
+    "Every trait is learned from parents after birth",
+    "Traits that appear late in life are always passed on"
+   ],
+   "correct": 0,
+   "why": "Natural selection: heritable traits that helped survival and reproduction become more common over generations. That idea explains biological preparedness in this topic.",
+   "review": "heredity-environment"
+  }
+ ],
+ "figure": {
+  "figure": "classical-conditioning-pairing",
+  "caption": "Before, during and after: the tone becomes a conditioned stimulus because it predicts food."
+ },
+ "chain": [
+  {
+   "cause": "A neutral stimulus (a tone) comes just before an unconditioned stimulus (food) again and again",
+   "effect": "the tone starts to predict the food (acquisition)"
+  },
+  {
+   "cause": "The tone now predicts food",
+   "effect": "the tone alone triggers salivation: it is a conditioned stimulus and the salivation is a conditioned response"
+  },
+  {
+   "cause": "The tone keeps sounding without food",
+   "effect": "the conditioned response fades (extinction)"
+  },
+  {
+   "cause": "Time passes after extinction",
+   "effect": "the response can return for a while (spontaneous recovery), so the learning was suppressed, not erased"
+  }
+ ],
+ "ideas": [
+  "Find the <b>UCS</b> first: the thing that causes a response with no learning (food, a shot, a loud noise). Its automatic response is the <b>UCR</b>.",
+  "The <b>CS</b> is the once-neutral stimulus that came before the UCS. The learned reaction to it is the <b>CR</b>. The UCR and CR are often the same movement, triggered by different things.",
+  "<b>Extinction</b> weakens a CR when the CS comes without the UCS; <b>spontaneous recovery</b> brings it back after a rest. <b>Generalization</b> spreads a CR to similar stimuli; <b>discrimination</b> limits it.",
+  "<b>Taste aversion</b> can form after one pairing with hours between taste and illness, an example of <b>biological preparedness</b>. <b>Habituation</b>, a fading response to a repeated stimulus, needs no pairing at all."
+ ],
+ "misconception": {
+  "wrong": "Extinction means the animal has forgotten the conditioned stimulus.",
+  "right": "Extinction suppresses the conditioned response, but the learning survives: after a rest the response can return (spontaneous recovery), and it is relearned faster than it was first learned."
+ },
+ "check": [
+  "psy-classical-conditioning-1",
+  "psy-classical-conditioning-2",
+  "psy-classical-conditioning-4",
+  "psy-classical-conditioning-13",
+  "psy-classical-conditioning-14",
+  "psy-classical-conditioning-15"
+ ],
+ "summary": "Classical conditioning is learning by association. A neutral stimulus that comes just before an unconditioned stimulus becomes a conditioned stimulus that triggers a conditioned response. Extinction weakens that response, spontaneous recovery shows the learning is still there, generalization spreads it and discrimination narrows it. Biology sets limits: some links, such as taste with illness, form after one pairing."
+}

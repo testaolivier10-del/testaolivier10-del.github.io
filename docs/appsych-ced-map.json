@@ -1,0 +1,1119 @@
+{
+ "about": "Topic map of the AP Psychology Course and Exam Description (effective fall 2025, with the October 2025 clarifications; the 2024-25 framework, not revised for 2026-27), written in LevlPrep's own words from docs/appsych-research/framework.md. Every topic title is official (Course at a Glance). Objectives and knowledge are our summaries; for 2.7 to 5.5 they come from a third-party copy of the CED codes and are marked in source. No CED text is reproduced.",
+ "ced": {
+  "title": "AP Psychology Course and Exam Description",
+  "edition": "Effective Fall 2025 (5 units, 35 topics), with the clarifications and corrections implemented October 2025",
+  "effective": "Fall 2025; exam May 2027",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-psychology-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-psychology-course-and-exam-description-clarifications.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-psychology-course-at-a-glance.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-psychology/exam",
+   "https://apstudents.collegeboard.org/courses/ap-psychology"
+  ],
+  "verification": "All 35 titles from the Course at a Glance (agrees with every title the CED extract showed, 1.1 to 2.6). CED text readable into Topic 2.6; objectives for 2.7 to 5.5 third party (Lumisource copies of the CED codes). Practice weights in Section I third party (Fiveable, Achievable). Read 2026-10-27."
+ },
+ "bigIdeas": [],
+ "practices": [
+  {
+   "id": 1,
+   "name": "Concept Application",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "mcqWeight": [
+    60,
+    70
+   ],
+   "skillNames": {
+    "1.A": "Apply psychological perspectives, theories, concepts and research findings to a scenario",
+    "1.B": "Explain how cultural norms, expectations and cognitive biases apply to behavior and mental processes"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Research Methods and Design",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D"
+   ],
+   "mcqWeight": [
+    20,
+    30
+   ],
+   "skillNames": {
+    "2.A": "Identify the research method and design of a study, and what it can conclude",
+    "2.B": "Evaluate the elements of an experimental design: hypothesis, operational definitions, variables, groups",
+    "2.C": "Evaluate the elements of a non-experimental design: correlation direction, third variables, survey wording, self-report",
+    "2.D": "Identify the ethical safeguards a study used and how the researchers applied them"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Data Interpretation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    5,
+    15
+   ],
+   "skillNames": {
+    "3.A": "Identify psychological concepts in a table, graph or figure",
+    "3.B": "Calculate and interpret central tendency, variation and percentile rank",
+    "3.C": "Interpret inferential statistics: statistical significance and effect size"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Argumentation",
+   "skills": [
+    "4.A",
+    "4.B"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqOnly": true,
+   "skillNames": {
+    "4.A": "Propose a defensible claim",
+    "4.B": "Provide reasoning grounded in evidence to support, refute or modify a claim"
+   }
+  }
+ ],
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Biological Bases of Behavior",
+   "weight": "15-25%",
+   "classPeriods": "~17-23",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "heredity-environment",
+     "title": "Interaction of Heredity and Environment",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how heredity and environment interact to shape behavior and mental processes, and how twin, family and adoption studies separate them."
+     ],
+     "knowledge": [
+      "Behavior comes from genes and experience working together, never one alone.",
+      "The evolutionary perspective explains traits by the survival and reproduction advantages they gave; misusing it to rank people led to eugenics.",
+      "Twin, family and adoption studies compare how alike relatives are to estimate how much of a trait's variation is linked to genes."
+     ],
+     "exclusions": [
+      "Genetics vocabulary (genotype, phenotype, DNA, chromosomes, dominant and recessive alleles) is out of scope."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "1.2",
+     "slug": "nervous-system",
+     "title": "Overview of the Nervous System",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe how the central and peripheral nervous systems, and the somatic and autonomic divisions, organize behavior."
+     ],
+     "knowledge": [
+      "The central nervous system is the brain and spinal cord; the peripheral nervous system connects it to the body.",
+      "The somatic system moves skeletal muscles; the autonomic system runs the body automatically, with a sympathetic arousing division and a parasympathetic calming division."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "1.3",
+     "slug": "neural-firing",
+     "title": "The Neuron and Neural Firing",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how a neuron fires and how neurotransmitters, hormones and psychoactive drugs change communication between neurons."
+     ],
+     "knowledge": [
+      "A neuron fires when depolarization passes threshold: the action potential is all-or-none and is followed by a refractory period; neurotransmitters cross the synapse and are taken back by reuptake.",
+      "Named neurotransmitters (dopamine, serotonin, norepinephrine, glutamate, GABA, endorphins, substance P, acetylcholine) and hormones (adrenaline, leptin, ghrelin, melatonin, oxytocin) each have characteristic effects.",
+      "Agonists mimic or strengthen a neurotransmitter, antagonists block it, reuptake inhibitors keep it in the synapse longer; repeated use brings tolerance and withdrawal. Multiple sclerosis and myasthenia gravis show what happens when signaling fails."
+     ],
+     "exclusions": [
+      "The sodium-potassium pump is out of scope; only the listed neurotransmitters, hormones and the pituitary among endocrine glands."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "1.4",
+     "slug": "brain",
+     "title": "The Brain",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how brain structures relate to behavior and mental processes, and how researchers study the brain."
+     ],
+     "knowledge": [
+      "The brainstem and medulla keep the body alive; the reticular activating system controls arousal and alertness; the cerebellum coordinates movement; the reward center drives motivation.",
+      "The cortex has four lobes with specialized areas (motor, somatosensory, Broca's and Wernicke's areas); limbic structures (thalamus, hypothalamus, pituitary, hippocampus, amygdala) handle relay, drives, memory and emotion.",
+      "Each hemisphere controls the opposite side of the body; split-brain cases show what the corpus callosum does; the brain rewires through plasticity. EEG, fMRI, case studies and lesioning reveal function."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "1.5",
+     "slug": "sleep",
+     "title": "Sleep",
+     "skills": [
+      "1.A",
+      "1.B",
+      "3.A"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Explain the stages and functions of sleep, theories of dreaming and common sleep disorders."
+     ],
+     "knowledge": [
+      "Consciousness varies across a circadian rhythm; sleep cycles through NREM stages and REM about every 90 minutes.",
+      "Sleep restores the body and consolidates memories; dreaming is explained by activation-synthesis and consolidation theories.",
+      "Listed disorders: insomnia, narcolepsy, REM sleep behavior disorder, sleep apnea, somnambulism."
+     ],
+     "exclusions": [
+      "Psychoanalytic dream theory; sleep disorders beyond the listed five."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "1.6",
+     "slug": "sensation",
+     "title": "Sensation",
+     "skills": [
+      "1.A",
+      "1.B",
+      "3.A"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Explain how the senses detect and transduce energy, and the theories that explain vision, hearing, the chemical senses, touch, pain and body position."
+     ],
+     "knowledge": [
+      "Thresholds (absolute, just-noticeable difference, Weber's law), signal detection, sensory adaptation and interaction govern what is noticed.",
+      "Vision uses rods and cones and is explained by trichromatic and opponent-process theories; hearing by place, frequency and volley theories; deafness is conduction or sensorineural.",
+      "Smell and taste (including umami and oleogustus), touch, pain (gate control, phantom limbs), and the vestibular and kinesthetic senses complete the senses."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Cognition",
+   "weight": "15-25%",
+   "classPeriods": "~17-23",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "perception",
+     "title": "Perception",
+     "skills": [
+      "1.A",
+      "1.B",
+      "3.A"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Explain how internal and external factors shape perception, and how the visual system builds depth, form and motion."
+     ],
+     "knowledge": [
+      "Bottom-up and top-down processing, schemas and perceptual set shape what is perceived; selective attention filters input (cocktail party effect, change blindness).",
+      "Gestalt principles (closure, figure-ground, proximity, similarity) organize form; binocular and monocular cues give depth; constancies keep objects stable; apparent movement creates motion."
+     ],
+     "exclusions": [
+      "Only the monocular cues the CED lists."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "2.2",
+     "slug": "thinking",
+     "title": "Thinking, Problem-Solving, Judgments, and Decision-Making",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how concepts, problem-solving strategies and cognitive biases affect thinking and decisions."
+     ],
+     "knowledge": [
+      "Concepts and prototypes organize knowledge; schemas grow by assimilation and accommodation.",
+      "Algorithms guarantee a solution; heuristics (representativeness, availability) are fast but biased; mental set, functional fixedness, priming, framing, the gambler's fallacy and the sunk-cost fallacy distort judgment.",
+      "Executive functions and creativity, including divergent thinking, support problem-solving."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "2.3",
+     "slug": "memory-intro",
+     "title": "Introduction to Memory",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe the kinds of memory and the models that explain how memory works."
+     ],
+     "knowledge": [
+      "Explicit memory (episodic, semantic) and implicit memory (procedural) differ; prospective memory remembers to act.",
+      "The multi-store model and the working memory model describe stages and components; long-term potentiation strengthens synapses; processing is automatic or effortful, shallow or deep."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "2.4",
+     "slug": "encoding-memories",
+     "title": "Encoding Memories",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain strategies that improve encoding."
+     ],
+     "knowledge": [
+      "Mnemonics, the method of loci, chunking and hierarchies organize information.",
+      "Distributed practice beats massed practice (the spacing effect); the serial position effect favors the first and last items."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "2.5",
+     "slug": "storing-memories",
+     "title": "Storing Memories",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how memories are stored and what disrupts storage."
+     ],
+     "knowledge": [
+      "Maintenance rehearsal keeps information briefly; elaborative rehearsal links it to meaning for long-term storage.",
+      "Retrograde and anterograde amnesia, Alzheimer's disease and infantile amnesia show storage failing; superior autobiographical memory shows its other extreme."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "2.6",
+     "slug": "retrieving-memories",
+     "title": "Retrieving Memories",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how retrieval works and how to strengthen it."
+     ],
+     "knowledge": [
+      "Recall and recognition differ; context-, state- and mood-dependent memory show cues matter.",
+      "Retrieval practice and the testing effect strengthen memory; metacognition is judging what you know."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from the CED unit pages (docs/appsych-research/framework.md section 3)"
+    },
+    {
+     "id": "2.7",
+     "slug": "forgetting",
+     "title": "Forgetting and Other Memory Challenges",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain why people forget and how memories are distorted."
+     ],
+     "knowledge": [
+      "The forgetting curve, encoding failure, proactive and retroactive interference and the tip-of-the-tongue state explain forgetting; repression is the psychodynamic account.",
+      "Memory is constructive: the misinformation effect, source amnesia and imagination inflation create false memories."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "2.8",
+     "slug": "intelligence",
+     "title": "Intelligence and Achievement",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.C",
+      "3.B"
+     ],
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Explain theories and measurement of intelligence, the systemic issues in testing, and achievement."
+     ],
+     "knowledge": [
+      "General intelligence contrasts with multiple abilities; the IQ score, standardization, reliability and validity describe a good test.",
+      "Stereotype threat and lift, the Flynn effect, within- and between-group variation and the historical misuse of tests show systemic issues.",
+      "Achievement and aptitude tests differ; fixed and growth mindsets affect effort."
+     ],
+     "exclusions": [
+      "Labeling or describing cognitive abilities and disabilities."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Development and Learning",
+   "weight": "15-25%",
+   "classPeriods": "~17-23",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "development-methods",
+     "title": "Themes and Methods in Developmental Psychology",
+     "skills": [
+      "1.A",
+      "2.A",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain the major themes and research designs of developmental psychology."
+     ],
+     "knowledge": [
+      "Stability and change, nature and nurture, continuity and discontinuity frame development.",
+      "Cross-sectional studies compare age groups at one time; longitudinal studies follow one group over time."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.2",
+     "slug": "physical-development",
+     "title": "Physical Development Across the Lifespan",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain physical development from before birth through adulthood."
+     ],
+     "knowledge": [
+      "Teratogens harm prenatal development; reflexes and motor milestones mark infancy; critical and sensitive periods and imprinting show timing matters; the visual cliff tests depth perception.",
+      "Puberty brings primary and secondary sex characteristics, menarche and spermarche; adulthood brings sensory and motor change and menopause."
+     ],
+     "exclusions": [
+      "Prenatal stage names (zygote, embryo, fetus)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.3",
+     "slug": "gender-orientation",
+     "title": "Gender and Sexual Orientation",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how sex and gender influence socialization and development."
+     ],
+     "knowledge": [
+      "Biological sex and gender differ; gender roles and gender typing come from socialization; sexual orientation is a distinct dimension."
+     ],
+     "exclusions": [
+      "Learning objectives not read directly (docs/appsych-needs-author.md, ced-text)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.4",
+     "slug": "cognitive-development",
+     "title": "Cognitive Development Across the Lifespan",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how thinking develops from infancy through old age."
+     ],
+     "knowledge": [
+      "Piaget's stages (sensorimotor, preoperational, concrete and formal operational) are marked by object permanence, conservation, egocentrism and theory of mind.",
+      "Vygotsky's zone of proximal development and scaffolding stress social support; in adulthood crystallized intelligence holds while fluid intelligence declines; dementia is disease, not normal aging."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.5",
+     "slug": "language-development",
+     "title": "Communication and Language Development",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe the parts of language and how children acquire it."
+     ],
+     "knowledge": [
+      "Language has phonemes, morphemes, semantics, grammar and syntax, and is generative.",
+      "Children move from cooing and babbling to one-word and telegraphic speech, and overgeneralize rules."
+     ],
+     "exclusions": [
+      "Pragmatics."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.6",
+     "slug": "social-emotional-development",
+     "title": "Social-Emotional Development Across the Lifespan",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain social and emotional development across the lifespan."
+     ],
+     "knowledge": [
+      "Ecological systems theory nests influences; parenting styles and attachment styles (secure, avoidant, anxious, disorganized) shape relationships; contact comfort mattered more than food in monkey studies.",
+      "The eight psychosocial stages, identity statuses, the imaginary audience and personal fable, emerging adulthood and the social clock mark later development; adverse childhood experiences raise risk."
+     ],
+     "exclusions": [
+      "Psychosexual stage theory."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.7",
+     "slug": "classical-conditioning",
+     "title": "Classical Conditioning",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.B"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how classical conditioning creates learned associations."
+     ],
+     "knowledge": [
+      "A neutral stimulus paired with an unconditioned stimulus becomes a conditioned stimulus that triggers a conditioned response; acquisition, extinction, spontaneous recovery, generalization and discrimination follow.",
+      "Higher-order conditioning, counterconditioning, one-trial taste aversion and biological preparedness extend it; habituation is the simplest learning."
+     ],
+     "exclusions": [
+      "Delayed, trace, simultaneous and backward conditioning; expectancy theory."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.8",
+     "slug": "operant-conditioning",
+     "title": "Operant Conditioning",
+     "skills": [
+      "1.A",
+      "1.B",
+      "3.A"
+     ],
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Explain how consequences shape behavior."
+     ],
+     "knowledge": [
+      "The law of effect; positive and negative reinforcement increase behavior, positive and negative punishment decrease it; reinforcers are primary or secondary.",
+      "Shaping, instinctive drift, superstitious behavior and learned helplessness; continuous and partial schedules (fixed-ratio, variable-ratio, fixed-interval, variable-interval) produce characteristic response curves."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "3.9",
+     "slug": "social-cognitive-learning",
+     "title": "Social, Cognitive, and Neurological Factors in Learning",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain learning through observation and cognition."
+     ],
+     "knowledge": [
+      "Social learning works through modeling and vicarious conditioning.",
+      "Insight learning, latent learning and cognitive maps show learning without reinforcement at the time."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Social Psychology and Personality",
+   "weight": "15-25%",
+   "classPeriods": "~17-23",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "attribution",
+     "title": "Attribution Theory and Person Perception",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how people explain behavior and perceive others and themselves."
+     ],
+     "knowledge": [
+      "Dispositional and situational attributions; the fundamental attribution error, actor-observer bias and self-serving bias; explanatory style; internal and external locus of control.",
+      "The mere exposure effect, self-fulfilling prophecy, upward and downward social comparison and relative deprivation shape person perception."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "4.2",
+     "slug": "attitudes",
+     "title": "Attitude Formation and Attitude Change",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how attitudes form, how prejudice arises and how attitudes change."
+     ],
+     "knowledge": [
+      "Stereotypes, cognitive load and implicit attitudes feed prejudice; the just-world phenomenon, out-group homogeneity, in-group bias and ethnocentrism sustain it.",
+      "Belief perseverance and confirmation bias resist change; cognitive dissonance can drive it."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "4.3",
+     "slug": "social-situations",
+     "title": "Psychology of Social Situations",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how situations and groups influence behavior and helping."
+     ],
+     "knowledge": [
+      "Norms and roles; normative and informational influence; persuasion by the central and peripheral routes; the halo effect, foot-in-the-door and door-in-the-face; conformity and obedience; individualism and collectivism.",
+      "Group polarization, groupthink, diffusion of responsibility, social loafing, deindividuation and social facilitation; false consensus, superordinate goals and social traps; industrial-organizational psychology and burnout.",
+      "Altruism, the reciprocity and social responsibility norms, and the bystander effect explain helping."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "4.4",
+     "slug": "psychodynamic-humanistic",
+     "title": "Psychodynamic and Humanistic Theories of Personality",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain psychodynamic and humanistic views of personality and how they are assessed."
+     ],
+     "knowledge": [
+      "The psychodynamic view stresses the unconscious and eight defense mechanisms, assessed with projective tests.",
+      "The humanistic view stresses unconditional positive regard and a self-actualizing tendency."
+     ],
+     "exclusions": [
+      "Psychosexual stage theory; Maslow's hierarchy of needs (third party, to confirm: docs/appsych-needs-author.md, exclusions)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "4.5",
+     "slug": "social-cognitive-trait",
+     "title": "Social-Cognitive and Trait Theories of Personality",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.C"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain social-cognitive and trait views of personality and how traits are measured."
+     ],
+     "knowledge": [
+      "Reciprocal determinism links person, behavior and environment; self-concept, self-efficacy and self-esteem.",
+      "Trait theories, the Big Five, factor analysis and personality inventories describe and measure personality."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "4.6",
+     "slug": "motivation",
+     "title": "Motivation",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain theories of motivation and the motives of eating and belonging."
+     ],
+     "knowledge": [
+      "Drive-reduction, arousal (Yerkes-Dodson), self-determination and incentive theories; instincts in non-human animals; motivational conflicts; sensation seeking.",
+      "Ghrelin, leptin and external cues affect eating; the need to belong shapes social behavior."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "4.7",
+     "slug": "emotion",
+     "title": "Emotion",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how emotion is experienced, explained and expressed."
+     ],
+     "knowledge": [
+      "Theories differ in whether arousal, appraisal and feeling come in sequence or together; the facial feedback hypothesis has mixed evidence; broaden-and-build.",
+      "Some emotions are widely recognized across cultures (with mixed evidence); display rules govern expression."
+     ],
+     "exclusions": [
+      "Specific names of emotion theories (third party, to confirm: docs/appsych-needs-author.md, exclusions)."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Mental and Physical Health",
+   "weight": "15-25%",
+   "classPeriods": "~17-23",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "health-psychology",
+     "title": "Introduction to Health Psychology",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how stress affects health and how people cope."
+     ],
+     "knowledge": [
+      "Stress, eustress and distress; daily hassles and adverse childhood experiences; the general adaptation syndrome; fight-flight-freeze and tend-and-befriend.",
+      "Problem-focused and emotion-focused coping."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "5.2",
+     "slug": "positive-psychology",
+     "title": "Positive Psychology",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain the factors that support well-being."
+     ],
+     "knowledge": [
+      "Positive psychology studies well-being, resilience, gratitude, signature strengths and the six virtue categories; posttraumatic growth."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "5.3",
+     "slug": "explaining-disorders",
+     "title": "Explaining and Classifying Psychological Disorders",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Explain how psychological disorders are defined, classified and explained."
+     ],
+     "knowledge": [
+      "Disorders involve dysfunction, distress and deviation; the DSM (American Psychiatric Association, now DSM-5-TR) and the ICD (World Health Organization) classify them.",
+      "Perspectives explain disorders; the biopsychosocial and diathesis-stress models combine them; the eclectic approach draws on several."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "5.4",
+     "slug": "disorders",
+     "title": "Selection of Categories of Psychological Disorders",
+     "skills": [
+      "1.A",
+      "1.B"
+     ],
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Describe the symptoms and possible causes of representative disorders in each category."
+     ],
+     "knowledge": [
+      "Neurodevelopmental (ADHD, autism spectrum disorder); schizophrenia spectrum; depressive (major depressive, persistent depressive); bipolar I and II.",
+      "Anxiety (specific phobia, agoraphobia, panic, social anxiety, generalized anxiety, culture-bound examples); obsessive-compulsive and hoarding; dissociative amnesia and dissociative identity disorder; PTSD; anorexia and bulimia nervosa.",
+      "Personality disorders in clusters A, B and C."
+     ],
+     "exclusions": [
+      "Only the listed disorders, as representative of an introductory treatment."
+     ],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    },
+    {
+     "id": "5.5",
+     "slug": "treatment",
+     "title": "Treatment of Psychological Disorders",
+     "skills": [
+      "1.A",
+      "1.B",
+      "2.A"
+     ],
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Explain how disorders are treated, how treatments are judged and the ethics of treatment."
+     ],
+     "knowledge": [
+      "Evidence-based practice, the therapeutic alliance, cultural humility, deinstitutionalization and ethical principles.",
+      "Psychodynamic, cognitive, behavioral, cognitive-behavioral and humanistic therapies; group and individual formats; what hypnosis can and cannot do.",
+      "Medications (antidepressants, anti-anxiety drugs, lithium, antipsychotics and tardive dyskinesia) and other biological treatments (psychosurgery, lesioning, TMS, ECT, the history of lobotomy)."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance (official title); objectives and knowledge summarized from a third-party copy of the CED codes [3P], to verify against the CED (docs/appsych-needs-author.md, ced-text)"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "research-methods",
+   "title": "Research Methods and Variables",
+   "before": "heredity-environment",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C"
+   ],
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Identify a study's research method and its variables, and explain what each method can and cannot conclude."
+   ],
+   "knowledge": [
+    "Only an experiment, with random assignment to conditions, supports a cause-and-effect conclusion; correlational studies, case studies, naturalistic observation and surveys describe and predict.",
+    "Operational definitions say exactly how a variable is measured; confounding variables, placebo effects and experimenter bias are controlled by design (control groups, single- and double-blind procedures).",
+    "Science is cumulative and self-correcting: findings are peer reviewed, replicated and combined in meta-analyses; some classic findings have not replicated."
+   ]
+  },
+  {
+   "slug": "research-sampling",
+   "title": "Sampling and Generalizability",
+   "before": "heredity-environment",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Explain how a sample is drawn and when results generalize to a population."
+   ],
+   "knowledge": [
+    "Random sampling gives a representative sample; a biased or convenience sample limits who the results describe.",
+    "Random sampling (who is studied) is not random assignment (which condition each person gets)."
+   ]
+  },
+  {
+   "slug": "stats-correlation",
+   "title": "Correlation and Scatterplots",
+   "before": "heredity-environment",
+   "skills": [
+    "2.C",
+    "3.A"
+   ],
+   "practices": [
+    2,
+    3
+   ],
+   "objectives": [
+    "Read the direction and strength of a correlation from a coefficient or a scatterplot, and explain why correlation does not show causation."
+   ],
+   "knowledge": [
+    "The correlation coefficient r runs from -1 to +1: its sign is the direction, its size the strength.",
+    "A third variable or reverse causation can explain a correlation; illusory correlations are relationships perceived where none exist."
+   ]
+  },
+  {
+   "slug": "research-ethics",
+   "title": "Ethics in Research",
+   "before": "brain",
+   "skills": [
+    "2.D"
+   ],
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Identify the ethical safeguards a study used and explain how the researchers applied them."
+   ],
+   "knowledge": [
+    "Institutional review boards approve studies; informed consent (assent for minors), the right to withdraw, confidentiality, protection from harm and debriefing after any deception protect human participants.",
+    "Animal research follows its own guidelines for humane care and justified use."
+   ]
+  },
+  {
+   "slug": "stats-descriptive",
+   "title": "Descriptive Statistics",
+   "before": "intelligence",
+   "skills": [
+    "3.A",
+    "3.B"
+   ],
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Calculate and interpret measures of central tendency and variation from a small data set, by hand."
+   ],
+   "knowledge": [
+    "The mean, median and mode describe the center; an outlier pulls the mean toward it, so a skewed distribution is better described by the median.",
+    "The range and the standard deviation describe spread; a histogram shows the shape of a frequency distribution."
+   ]
+  },
+  {
+   "slug": "stats-normal",
+   "title": "The Normal Curve and Percentiles",
+   "before": "intelligence",
+   "skills": [
+    "3.B"
+   ],
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Locate a score on the normal curve with a z score and the 68-95-99.7 rule, and interpret a percentile rank."
+   ],
+   "knowledge": [
+    "In a normal distribution about 68% of scores lie within one standard deviation of the mean, 95% within two and 99.7% within three.",
+    "A z score is the number of standard deviations from the mean; a percentile rank is the percent of scores below a given score."
+   ]
+  },
+  {
+   "slug": "stats-significance",
+   "title": "Statistical Significance and Effect Size",
+   "before": "intelligence",
+   "skills": [
+    "3.C"
+   ],
+   "practices": [
+    3
+   ],
+   "objectives": [
+    "Interpret a statement of statistical significance and of effect size in a study's results."
+   ],
+   "knowledge": [
+    "A statistically significant difference is unlikely to be due to chance alone; it does not say the difference is large or important.",
+    "Effect size says how big a difference or relationship is; inferential statistics let researchers generalize from a sample to a population."
+   ]
+  }
+ ],
+ "topicCount": 35,
+ "topicCountByUnit": {
+  "1": 6,
+  "2": 8,
+  "3": 9,
+  "4": 7,
+  "5": 5
+ },
+ "exam": {
+  "date2027": "2027-05-14",
+  "day": "Friday",
+  "session": "Session 2",
+  "totalTime": "2 h 40 min",
+  "delivery": "Fully digital in Bluebook; free responses typed.",
+  "mcq": {
+   "questions": 75,
+   "minutes": 90,
+   "weight": "66.7%",
+   "options": 4,
+   "optionsSource": "official (2024-25 revision exam page)",
+   "sets": [
+    "Standalone questions",
+    "Sets sharing one study description or data display (third party; official counts not published: docs/appsych-needs-author.md, mcq-sets)"
+   ]
+  },
+  "frq": {
+   "questions": 2,
+   "minutes": 70,
+   "weight": "33.3%",
+   "pointsEach": 7,
+   "rawPoints": 14,
+   "types": {
+    "aaq": "Q1 Article Analysis Question, about 25 min: A method, B operational definition, C statistic, D ethical guideline applied, E generalizability, F argumentation (2)",
+    "ebq": "Q2 Evidence-Based Question, about 45 min: A claim, B(i) evidence, B(ii) reasoning (2), C(i) evidence from a different source, C(ii) reasoning with a different concept (2)"
+   }
+  },
+  "calculator": "None. Psychology is not in the College Board calculator table.",
+  "reference": "No formula sheet."
+ }
+}

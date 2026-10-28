@@ -1,0 +1,72 @@
+{
+ "topic": "health-psychology",
+ "hook": "Finals week arrives. You sleep less, your shoulders ache, and by the last exam you have a cold that will not go away. Your friend, facing the same exams, says she feels \"fired up.\" Health psychology asks why the same stressor wears one person down and energizes another, and how stress gets under the skin to affect the body.",
+ "prereq": [
+  {
+   "q": "Which part of the nervous system arouses the body for action in an emergency?",
+   "options": [
+    "Sympathetic nervous system",
+    "Parasympathetic nervous system",
+    "Somatic nervous system",
+    "Cerebellum"
+   ],
+   "correct": 0,
+   "why": "The sympathetic division raises heart rate and breathing; the parasympathetic calms the body.",
+   "review": "nervous-system"
+  },
+  {
+   "q": "Which hormone, linked to bonding, is released during social contact and caregiving?",
+   "options": [
+    "Oxytocin",
+    "Melatonin",
+    "Ghrelin",
+    "Leptin"
+   ],
+   "correct": 0,
+   "why": "Oxytocin is linked to bonding and social behavior.",
+   "review": "neural-firing"
+  }
+ ],
+ "figure": {
+  "figure": "health-psychology-gas",
+  "caption": "The general adaptation syndrome: alarm, resistance, exhaustion (a model curve)."
+ },
+ "chain": [
+  {
+   "cause": "A stressor appears and is appraised as a threat",
+   "effect": "the sympathetic nervous system triggers fight-flight-freeze, or people tend and befriend"
+  },
+  {
+   "cause": "The stressor continues",
+   "effect": "the body moves from alarm to resistance, keeping arousal and stress hormones high"
+  },
+  {
+   "cause": "The stressor lasts for a long time",
+   "effect": "reserves run down (exhaustion) and the person becomes more vulnerable to illness"
+  },
+  {
+   "cause": "The person copes: problem-focused for what they can change, emotion-focused for what they cannot",
+   "effect": "the stress response is smaller and shorter"
+  }
+ ],
+ "ideas": [
+  "<b>Health psychology</b> studies how psychological and social factors affect physical health. <b>Stress</b> is how we appraise and respond to <b>stressors</b>; <b>eustress</b> feels like a challenge, <b>distress</b> like harm.",
+  "Stressors include catastrophes, major life changes, <b>daily hassles</b> and <b>adverse childhood experiences</b>, which are linked to poorer later health (a correlation).",
+  "The <b>general adaptation syndrome</b>: alarm, resistance, exhaustion. Fast responses: <b>fight-flight-freeze</b> (sympathetic) and <b>tend-and-befriend</b> (protect and seek support).",
+  "<b>Problem-focused coping</b> changes the stressor; <b>emotion-focused coping</b> manages feelings. Match the strategy to how controllable the stressor is."
+ ],
+ "misconception": {
+  "wrong": "All stress is bad for you.",
+  "right": "Short-term stress mobilizes the body and can sharpen performance, and eustress feels like a motivating challenge. The health risk comes mainly from stress that is intense, uncontrollable or long-lasting."
+ },
+ "check": [
+  "psy-health-psychology-1",
+  "psy-health-psychology-5",
+  "psy-health-psychology-6",
+  "psy-health-psychology-10",
+  "psy-health-psychology-11",
+  "psy-health-psychology-12",
+  "psy-health-psychology-13"
+ ],
+ "summary": "Health psychology studies how stress and behavior affect physical health. Stress depends on how we appraise stressors: eustress motivates, distress harms. Daily hassles and adverse childhood experiences are linked to poorer health. Under threat, the sympathetic nervous system drives fight-flight-freeze, and people may also tend and befriend. With a long stressor, the general adaptation syndrome moves from alarm to resistance to exhaustion, when illness becomes more likely. Problem-focused coping changes the stressor; emotion-focused coping manages the feelings."
+}

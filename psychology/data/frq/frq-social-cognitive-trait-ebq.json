@@ -1,0 +1,261 @@
+{
+ "id": "frq-social-cognitive-trait-ebq",
+ "type": "ebq",
+ "points": 7,
+ "title": "Is personality stable across the lifespan?",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "social-cognitive-trait"
+ ],
+ "practices": [
+  "4.A",
+  "4.B"
+ ],
+ "claimTopic": "Whether personality traits stay stable or change across the lifespan.",
+ "restricted": [
+  "personality",
+  "stable",
+  "stability",
+  "change",
+  "mean",
+  "correlation",
+  "statistically significant",
+  "longitudinal"
+ ],
+ "sources": [
+  {
+   "title": "Source 1",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked how consistent people's Big Five trait scores are over long periods.",
+    "participants": "1,200 adults in Germany, ages 30 to 60 at the start, followed for 12 years.",
+    "method": "Participants completed the same Big Five personality inventory at the start and again 12 years later. For each trait, the researchers correlated each person's first score with their second score (rank-order consistency).",
+    "results": "Scores at the two times were strongly positively correlated for every trait, from $r = 0.62$ for agreeableness to $r = 0.74$ for extraversion. People who scored high relative to others at the start usually still scored high 12 years later."
+   },
+   "table": {
+    "caption": "Correlation between Big Five scores 12 years apart (invented data)",
+    "cols": [
+     "Trait",
+     "Correlation over 12 years"
+    ],
+    "rows": [
+     [
+      "Openness",
+      "0.71"
+     ],
+     [
+      "Conscientiousness",
+      "0.68"
+     ],
+     [
+      "Extraversion",
+      "0.74"
+     ],
+     [
+      "Agreeableness",
+      "0.62"
+     ],
+     [
+      "Neuroticism",
+      "0.65"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Source 2",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether average trait levels shift as people move from adolescence into middle age.",
+    "participants": "3,000 people in the Netherlands, in five age groups (15, 25, 35, 45 and 55 years old), 600 per group.",
+    "method": "Each participant completed a Big Five inventory once. The researchers compared the mean conscientiousness score (scale 1 to 5) across the age groups.",
+    "results": "Mean conscientiousness rose from 3.0 at age 15 to 3.6 at age 25, 3.8 at age 35, 3.9 at age 45 and 4.0 at age 55. Older groups also scored somewhat higher on agreeableness and lower on neuroticism."
+   },
+   "plot": {
+    "label": "Line graph: mean conscientiousness by age group, 3.0 at 15, 3.6 at 25, 3.8 at 35, 3.9 at 45, 4.0 at 55 (invented data)",
+    "kind": "line",
+    "series": [
+     {
+      "name": "Mean conscientiousness",
+      "points": [
+       [
+        15,
+        3
+       ],
+       [
+        25,
+        3.6
+       ],
+       [
+        35,
+        3.8
+       ],
+       [
+        45,
+        3.9
+       ],
+       [
+        55,
+        4
+       ]
+      ]
+     }
+    ],
+    "xLabel": "Age group (years)",
+    "yLabel": "Mean conscientiousness (1 to 5)"
+   }
+  },
+  {
+   "title": "Source 3",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether a major new social role, a first full-time job, goes with changes in conscientiousness.",
+    "participants": "400 young adults in Australia, ages 20 to 24, followed for four years.",
+    "method": "Participants completed a Big Five inventory every year. The researchers compared the change in conscientiousness (scale 1 to 5) between those who began a first full-time job during the study and those who did not.",
+    "results": "Conscientiousness rose by a mean of 0.4 points in those who started a full-time job and by 0.1 points in those who did not."
+   },
+   "plot": {
+    "label": "Bar graph: mean change in conscientiousness over four years, started a full-time job 0.4, did not 0.1 (invented data)",
+    "kind": "bar",
+    "categories": [
+     "Started full-time job",
+     "Did not"
+    ],
+    "values": [
+     0.4,
+     0.1
+    ],
+    "yLabel": "Mean change (points)",
+    "xLabel": "Group"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "points": 1,
+   "prompt": "<b>Propose</b> a specific and defensible claim based in psychological science that responds to the question: is personality stable across the lifespan?",
+   "rubric": [
+    {
+     "point": "States a defensible claim that answers the question (not a question, a topic sentence or a summary of one source).",
+     "accept": [
+      "traits are fairly stable in how people rank relative to others, but average levels change with age",
+      "personality is mostly stable across adulthood",
+      "personality changes across the lifespan, especially from adolescence to middle age"
+     ]
+    }
+   ],
+   "sample": "Personality traits are fairly stable across adulthood in how people compare with one another, but they still change in predictable ways as people age and take on new roles."
+  },
+  {
+   "label": "B(i)",
+   "points": 1,
+   "prompt": "<b>Support</b> your claim using at least one piece of specific and relevant evidence from one of the sources.",
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from one source and cites the source.",
+     "accept": [
+      "Source 1: scores 12 years apart correlated from 0.62 to 0.74 for every trait",
+      "Source 2: mean conscientiousness rose from 3.0 at age 15 to 4.0 at age 55"
+     ]
+    }
+   ],
+   "sample": "According to Source 1, adults' Big Five scores at the start and 12 years later were strongly positively correlated for every trait, from 0.62 for agreeableness to 0.74 for extraversion (Source 1).",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "B(ii)",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the evidence from B(i) supports your claim using a psychological perspective, theory, concept or research finding learned in AP® Psychology.",
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim.",
+     "accept": [
+      "strong correlations mean people who were high relative to others stayed high, so their relative standing was stable"
+     ]
+    },
+    {
+     "point": "Applies a relevant psychology concept, not a restricted term, linked to the evidence and the claim.",
+     "accept": [
+      "trait theory: traits are stable tendencies, which fits people keeping their rank on the Big Five",
+      "the Big Five traits are partly heritable, which helps explain why rank order stays consistent",
+      "temperament: early, partly inborn tendencies carry forward into adult traits, which keeps people's rank similar"
+     ]
+    }
+   ],
+   "sample": "This supports the claim because a strong positive correlation means that the people who were most extraverted, for example, at the start were still among the most extraverted 12 years later. That fits trait theory, which describes the Big Five traits as stable tendencies that show across situations and time. Because traits like these are partly heritable, it makes sense that people keep a similar rank relative to others even as their lives change.",
+   "write": {
+    "concept": [
+     "trait theory",
+     "big five",
+     "heritab",
+     "factor analysis",
+     "temperament"
+    ],
+    "restricted": [
+     "personality",
+     "stable",
+     "correlation",
+     "longitudinal"
+    ]
+   }
+  },
+  {
+   "label": "C(i)",
+   "points": 1,
+   "prompt": "<b>Support</b> your claim using a different piece of specific and relevant evidence from another source.",
+   "rubric": [
+    {
+     "point": "Gives a specific, accurate result from a different source than B(i), and cites it.",
+     "accept": [
+      "Source 3: conscientiousness rose 0.4 points in those who started a full-time job versus 0.1 in those who did not",
+      "Source 2: mean conscientiousness rose from 3.0 at 15 to 4.0 at 55"
+     ]
+    }
+   ],
+   "sample": "In Source 3, young adults who started their first full-time job increased in conscientiousness by a mean of 0.4 points over four years, compared with 0.1 points for those who did not start one (Source 3).",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "C(ii)",
+   "points": 2,
+   "prompt": "<b>Explain</b> how the evidence from C(i) supports your claim using a different psychological perspective, theory, concept or research finding than the one used in B(ii).",
+   "rubric": [
+    {
+     "point": "Explains how the evidence supports the claim.",
+     "accept": [
+      "traits still changed in a predictable direction when people took on a new role, so personality is not fixed"
+     ]
+    },
+    {
+     "point": "Applies a different relevant concept than in B(ii), not a restricted term, linked to the evidence and the claim.",
+     "accept": [
+      "reciprocal determinism: a new work environment and new behavior feed back on the person's traits",
+      "social role: the expectations of a worker's role push behavior toward being more organized and reliable",
+      "self-efficacy: success at work builds confidence that supports more careful, planned behavior"
+     ]
+    }
+   ],
+   "sample": "This supports the claim that traits change in predictable ways, because starting a demanding new role was followed by a larger rise in conscientiousness. Reciprocal determinism explains why: the new work environment required organized, reliable behavior, and practicing that behavior day after day fed back on the person, so their conscientiousness grew. So even though people keep a similar rank, the settings and roles they enter can still shift their traits.",
+   "write": {
+    "concept": [
+     "reciprocal determinism",
+     "social role",
+     "self-efficacy",
+     "social-cognitive"
+    ],
+    "restricted": [
+     "personality",
+     "change",
+     "mean"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "topic": "social-cognitive-learning",
+ "hook": "Nobody gives a toddler a treat for holding a toy phone to her ear and saying \"uh-huh, uh-huh.\" She learned it by watching. Much of what people learn, from slang to how to change a tire to whether it is safe to cross against the light, comes from watching others and seeing what happens to them. Learning can also happen with no reward at all and stay hidden until it is needed.",
+ "prereq": [
+  {
+   "q": "Taking away a teen's phone after a missed curfew makes late nights less likely. What is this?",
+   "options": [
+    "Negative punishment",
+    "Negative reinforcement",
+    "Positive punishment",
+    "Extinction"
+   ],
+   "correct": 0,
+   "why": "Something wanted is removed and the behavior decreases.",
+   "review": "operant-conditioning"
+  },
+  {
+   "q": "In a study, children are randomly assigned to watch one of three videos. What does random assignment allow?",
+   "options": [
+    "A cause-and-effect conclusion about the videos",
+    "Results that apply to every child in the world",
+    "A study with no ethical concerns",
+    "Data that need no statistics"
+   ],
+   "correct": 0,
+   "why": "Random assignment makes the groups alike at the start, so a difference afterward can be credited to the manipulated variable.",
+   "review": "research-methods"
+  }
+ ],
+ "figure": {
+  "figure": "social-cognitive-learning-model",
+  "caption": "What happens to the model changes whether the observer copies, but the behavior is learned either way."
+ },
+ "chain": [
+  {
+   "cause": "An observer pays attention to a model and remembers what the model did",
+   "effect": "the behavior is learned without the observer ever being reinforced"
+  },
+  {
+   "cause": "The model is rewarded (vicarious reinforcement)",
+   "effect": "the observer is more likely to perform the behavior"
+  },
+  {
+   "cause": "The model is punished (vicarious punishment)",
+   "effect": "the observer is less likely to perform it, though it is still learned"
+  },
+  {
+   "cause": "A rat explores a maze with no food",
+   "effect": "it builds a cognitive map that shows only when a reward gives it a reason (latent learning)"
+  }
+ ],
+ "ideas": [
+  "<b>Social learning theory</b> (observational learning): people learn by watching <b>models</b>. Attention and memory come first, then the ability to reproduce the act, then a reason to do it.",
+  "<b>Vicarious reinforcement</b> and <b>vicarious punishment</b> work through the model's consequences, not the observer's own. They change performance more than learning.",
+  "Cognitive factors: <b>latent learning</b> stays hidden until there is a reason to show it; a <b>cognitive map</b> is a mental layout of a place; <b>insight learning</b> is a sudden whole solution, not gradual trial and error.",
+  "Neurological factors: the brain's reward circuits, using dopamine, respond most to rewards that are better than expected, which helps strengthen the behavior that came before."
+ ],
+ "misconception": {
+  "wrong": "If a child sees a model punished, the child does not learn the behavior.",
+  "right": "The child usually learns it but does not perform it. When an incentive appears, the behavior shows up. Learning and performance are different."
+ },
+ "check": [
+  "psy-social-cognitive-learning-1",
+  "psy-social-cognitive-learning-3",
+  "psy-social-cognitive-learning-4",
+  "psy-social-cognitive-learning-11",
+  "psy-social-cognitive-learning-12",
+  "psy-social-cognitive-learning-15"
+ ],
+ "summary": "Not all learning needs direct reinforcement. In observational learning, people attend to and remember what models do and imitate them more when models are rewarded (vicarious reinforcement) and less when they are punished (vicarious punishment), even though the behavior is learned either way. Latent learning and cognitive maps show learning that stays hidden until it is useful, and insight learning is a sudden whole solution. Brain reward circuits are one biological part of how consequences strengthen behavior."
+}

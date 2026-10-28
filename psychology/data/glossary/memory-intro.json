@@ -1,0 +1,59 @@
+{
+ "memory": {
+  "def": "The ability to keep information over time and use it later, through encoding, storage and retrieval."
+ },
+ "encoding": {
+  "def": "Getting information into memory by turning it into a form the brain can store."
+ },
+ "storage": {
+  "def": "Keeping encoded information over time."
+ },
+ "retrieval": {
+  "def": "Getting stored information back out of memory when it is needed."
+ },
+ "explicit-memory": {
+  "def": "Memory of facts and experiences that you can consciously recall and state (declarative memory). It includes episodic and semantic memory."
+ },
+ "episodic-memory": {
+  "def": "Explicit memory of personal events tied to a time and place, such as your last birthday."
+ },
+ "semantic-memory": {
+  "def": "Explicit memory of general facts and knowledge, separate from when you learned them, such as the capital of France."
+ },
+ "implicit-memory": {
+  "def": "Memory that shows in behavior without conscious recall (nondeclarative memory), such as skills and habits."
+ },
+ "procedural-memory": {
+  "def": "Implicit memory for skills and procedures, such as riding a bike or typing."
+ },
+ "prospective-memory": {
+  "def": "Remembering to do something in the future, such as taking medicine at noon."
+ },
+ "ltp": {
+  "def": "Long-term potentiation: a lasting increase in the strength of a synapse after repeated stimulation, thought to be a neural basis of learning and memory."
+ },
+ "multi-store": {
+  "def": "The Atkinson-Shiffrin model: information passes from sensory memory to short-term memory to long-term memory."
+ },
+ "sensory-memory": {
+  "def": "A very brief record of sensory input: under a second for sights (iconic memory) and a few seconds for sounds (echoic memory)."
+ },
+ "short-term-memory": {
+  "def": "A limited store that holds a few items for about 20 to 30 seconds unless they are rehearsed."
+ },
+ "long-term-memory": {
+  "def": "The relatively permanent, very large store of knowledge, skills and experiences."
+ },
+ "working-memory": {
+  "def": "The active part of short-term memory, where information is held and worked on. The model has a central executive (directs attention), a phonological loop (sounds and words) and a visuospatial sketchpad (images and places)."
+ },
+ "automatic-processing": {
+  "def": "Encoding that happens without effort or intention, such as information about time, place and how often things happen."
+ },
+ "effortful-processing": {
+  "def": "Encoding that takes attention and effort, such as studying vocabulary."
+ },
+ "levels-of-processing": {
+  "def": "The idea that how deeply information is processed affects memory: shallow processing (appearance, sound) gives weaker memory than deep processing (meaning)."
+ }
+}

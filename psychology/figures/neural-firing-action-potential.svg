@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" aria-labelledby="neural-firing-action-potential-t neural-firing-action-potential-d" font-family="Arial, Helvetica, sans-serif">
+<title id="neural-firing-action-potential-t">One action potential, charge across the membrane over time</title>
+<desc id="neural-firing-action-potential-d">A graph of the electrical charge inside a neuron, in millivolts, over about 6 milliseconds. The line sits at the resting potential of about -70 mV, rises slightly to the threshold of about -55 mV, then shoots up to a peak of about +40 mV (depolarization), falls back below rest to about -80 mV and returns to -70 mV. The stretch after the peak is labeled the refractory period.</desc>
+<rect width="720" height="400" fill="#FFFFFF"/>
+<line x1="80" y1="30" x2="80" y2="330" stroke="#1F2A28" stroke-width="1.5"/><line x1="80" y1="330" x2="690" y2="330" stroke="#1F2A28" stroke-width="1.5"/>
+<line x1="75" y1="51.4" x2="80" y2="51.4" stroke="#1F2A28"/><text x="72" y="56.4" font-size="13" text-anchor="end" fill="#1F2A28">+40</text>
+<line x1="75" y1="137.1" x2="80" y2="137.1" stroke="#1F2A28"/><text x="72" y="142.1" font-size="13" text-anchor="end" fill="#1F2A28">0</text>
+<line x1="75" y1="255" x2="80" y2="255" stroke="#1F2A28"/><text x="72" y="260" font-size="13" text-anchor="end" fill="#1F2A28">-55</text>
+<line x1="75" y1="287.1" x2="80" y2="287.1" stroke="#1F2A28"/><text x="72" y="292.1" font-size="13" text-anchor="end" fill="#1F2A28">-70</text>
+<line x1="75" y1="330" x2="80" y2="330" stroke="#1F2A28"/><text x="72" y="335" font-size="13" text-anchor="end" fill="#1F2A28">-90</text>
+<line x1="80" y1="330" x2="80" y2="335" stroke="#1F2A28"/><text x="80" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">0</text>
+<line x1="181.7" y1="330" x2="181.7" y2="335" stroke="#1F2A28"/><text x="181.7" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">1</text>
+<line x1="283.3" y1="330" x2="283.3" y2="335" stroke="#1F2A28"/><text x="283.3" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">2</text>
+<line x1="385" y1="330" x2="385" y2="335" stroke="#1F2A28"/><text x="385" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">3</text>
+<line x1="486.7" y1="330" x2="486.7" y2="335" stroke="#1F2A28"/><text x="486.7" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">4</text>
+<line x1="588.3" y1="330" x2="588.3" y2="335" stroke="#1F2A28"/><text x="588.3" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">5</text>
+<line x1="690" y1="330" x2="690" y2="335" stroke="#1F2A28"/><text x="690" y="350" font-size="13" text-anchor="middle" fill="#1F2A28">6</text>
+<text x="385" y="374" font-size="14" text-anchor="middle" fill="#1F2A28">Time (milliseconds)</text>
+<text transform="translate(22 180) rotate(-90)" font-size="14" text-anchor="middle" fill="#1F2A28">Charge inside the neuron (mV)</text>
+<line x1="80" y1="137.1" x2="690" y2="137.1" stroke="#B9C2C0" stroke-width="1"/>
+<line x1="80" y1="255" x2="690" y2="255" stroke="#D55E00" stroke-width="1.5" stroke-dasharray="6 5"/>
+<line x1="80" y1="287.1" x2="690" y2="287.1" stroke="#009E73" stroke-width="1.5" stroke-dasharray="2 4"/>
+<rect x="283.3" y="30" width="244" height="300" fill="#CC79A7" fill-opacity="0.12"/>
+<path d="M80 287.1 C96.9 287.1 159.6 288.6 181.7 287.1 C203.7 285.7 202 283.9 212.2 278.6 C222.3 273.2 233.3 278.6 242.7 255 C252 231.4 261.3 171.1 268.1 137.1 C274.9 103.2 277.4 58.6 283.3 51.4 C289.3 44.3 294.3 65.7 303.7 94.3 C313 122.9 328.2 190 339.3 222.9 C350.3 255.7 358.7 277.1 369.8 291.4 C380.8 305.7 389.2 307.1 405.3 308.6 C421.4 310 446 303.2 466.3 300 C486.7 296.8 507 291.4 527.3 289.3 C547.7 287.1 561.2 287.5 588.3 287.1 C615.4 286.8 673.1 287.1 690 287.1" fill="none" stroke="#084F78" stroke-width="3.5" stroke-linejoin="round"/>
+<rect x="338.7" y="58.3" width="184.1" height="36.6" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="430.8" y="72.9" font-size="14" text-anchor="middle" fill="#1F2A28"><tspan x="430.8" dy="0">Refractory period:</tspan><tspan x="430.8" dy="16.8">it cannot fire again yet</tspan></text>
+<rect x="483.7" y="232.4" width="184.1" height="19.8" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="486.7" y="247" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="486.7" dy="0">Threshold (about -55 mV)</tspan></text>
+<rect x="529.4" y="294.5" width="198.9" height="19.8" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="532.4" y="309.1" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="532.4" dy="0">Resting potential (-70 mV)</tspan></text>
+<line x1="213.7" y1="122.4" x2="266" y2="147.9" stroke="#1F2A28" stroke-width="1.2"/><circle cx="266" cy="147.9" r="2.6" fill="#1F2A28"/>
+<rect x="89" y="69" width="124.7" height="53.4" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="92" y="83.6" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="92" dy="0">Depolarization:</tspan><tspan x="92" dy="16.8">the inside turns</tspan><tspan x="92" dy="16.8">positive</tspan></text>
+<line x1="310.8" y1="38.5" x2="285.4" y2="51.4" stroke="#1F2A28" stroke-width="1.2"/><circle cx="285.4" cy="51.4" r="2.6" fill="#1F2A28"/>
+<rect x="310.8" y="19.7" width="147" height="36.6" rx="3" fill="#FFFFFF" fill-opacity="0.88"/>
+<text x="313.8" y="34.3" font-size="14" text-anchor="start" fill="#1F2A28"><tspan x="313.8" dy="0">Peak, about +40 mV,</tspan><tspan x="313.8" dy="16.8">the same every time</tspan></text>
+</svg>

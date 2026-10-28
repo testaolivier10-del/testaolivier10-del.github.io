@@ -1,0 +1,62 @@
+{
+ "law-of-effect": {
+  "def": "Placeholder: behaviors followed by pleasant consequences become more likely, and those followed by unpleasant ones less likely."
+ },
+ "positive-reinforcement": {
+  "def": "Placeholder: adding something pleasant after a behavior, which makes the behavior more likely."
+ },
+ "negative-reinforcement": {
+  "def": "Placeholder: removing something unpleasant after a behavior, which makes the behavior more likely."
+ },
+ "variable-ratio": {
+  "def": "Placeholder: reinforcement after an unpredictable number of responses."
+ },
+ "shaping": {
+  "def": "Placeholder: reinforcing successive approximations of a target behavior."
+ },
+ "operant-conditioning": {
+  "def": "Placeholder: the meaning of operant conditioning in operant conditioning, for the test fixture."
+ },
+ "reinforcement": {
+  "def": "Placeholder: the meaning of reinforcement in operant conditioning, for the test fixture."
+ },
+ "punishment": {
+  "def": "Placeholder: the meaning of punishment in operant conditioning, for the test fixture."
+ },
+ "positive-punishment": {
+  "def": "Placeholder: the meaning of positive punishment in operant conditioning, for the test fixture."
+ },
+ "negative-punishment": {
+  "def": "Placeholder: the meaning of negative punishment in operant conditioning, for the test fixture."
+ },
+ "primary-reinforcer": {
+  "def": "Placeholder: the meaning of primary reinforcer in operant conditioning, for the test fixture."
+ },
+ "secondary-reinforcer": {
+  "def": "Placeholder: the meaning of secondary reinforcer in operant conditioning, for the test fixture."
+ },
+ "instinctive-drift": {
+  "def": "Placeholder: the meaning of instinctive drift in operant conditioning, for the test fixture."
+ },
+ "superstitious": {
+  "def": "Placeholder: the meaning of superstitious behavior in operant conditioning, for the test fixture."
+ },
+ "learned-helplessness": {
+  "def": "Placeholder: the meaning of learned helplessness in operant conditioning, for the test fixture."
+ },
+ "continuous-reinforcement": {
+  "def": "Placeholder: the meaning of continuous reinforcement in operant conditioning, for the test fixture."
+ },
+ "partial-reinforcement": {
+  "def": "Placeholder: the meaning of partial reinforcement in operant conditioning, for the test fixture."
+ },
+ "fixed-ratio": {
+  "def": "Placeholder: the meaning of fixed-ratio schedule in operant conditioning, for the test fixture."
+ },
+ "fixed-interval": {
+  "def": "Placeholder: the meaning of fixed-interval schedule in operant conditioning, for the test fixture."
+ },
+ "variable-interval": {
+  "def": "Placeholder: the meaning of variable-interval schedule in operant conditioning, for the test fixture."
+ }
+}

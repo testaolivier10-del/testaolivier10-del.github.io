@@ -1,0 +1,67 @@
+{
+ "topic": "research-sampling",
+ "hook": "In 1936 a popular magazine mailed about ten million ballots, mostly to names from phone books and car registrations, and predicted the challenger would win the presidential election. He lost in a landslide. More than two million people mailed ballots back, but they were not like voters in general: during the Great Depression, people with phones and cars were better off than most, and the people who chose to reply were more opposed to the president than those who did not. A huge sample, drawn and returned the wrong way, gave the wrong answer.",
+ "prereq": [
+  {
+   "q": "A study compares students who chose to join a study group with students who did not. What kind of study is this?",
+   "options": [
+    "A correlational study, since no one was randomly assigned",
+    "An experiment, since two groups are compared",
+    "A case study, since students are studied",
+    "Naturalistic observation, since nothing was asked"
+   ],
+   "correct": 0,
+   "why": "The students chose their own groups, so nothing was manipulated or randomly assigned: the study is correlational.",
+   "review": "research-methods"
+  },
+  {
+   "q": "What is the job of random assignment in an experiment?",
+   "options": [
+    "It makes the groups alike, on average, before the treatment",
+    "It picks who from the population is studied",
+    "It hides the conditions from the researchers",
+    "It says how the outcome will be measured"
+   ],
+   "correct": 0,
+   "why": "Random assignment uses chance to decide which condition each participant gets, so the groups start out alike.",
+   "review": "research-methods"
+  }
+ ],
+ "figure": {
+  "figure": "research-sampling-steps",
+  "caption": "Random sampling decides who is studied; random assignment decides which group each person joins."
+ },
+ "chain": [
+  {
+   "cause": "Every member of the population has the same chance of being chosen (random sampling)",
+   "effect": "the sample is likely to be representative: it mirrors the population"
+  },
+  {
+   "cause": "People are chosen because they are easy to reach or volunteer (a convenience or self-selected sample)",
+   "effect": "the sample is biased, and a larger biased sample is still biased"
+  },
+  {
+   "cause": "The participants differ from a group in age, culture or setting",
+   "effect": "results may not generalize to that group; argue from those characteristics"
+  }
+ ],
+ "ideas": [
+  "The <b>population</b> is everyone a study wants to describe; the <b>sample</b> is the people actually studied.",
+  "<b>Random sampling</b> gives everyone the same chance of being chosen, so a <b>representative sample</b> is likely. A <b>convenience sample</b> or volunteers create <b>sampling bias</b>.",
+  "<b>Random sampling</b> decides who is studied and supports <b>generalizability</b>. <b>Random assignment</b> decides which condition each person gets and supports cause and effect.",
+  "Judge generalizability from participant characteristics (age, culture, setting), not from the sample size alone."
+ ],
+ "misconception": {
+  "wrong": "A bigger sample always fixes sampling problems, and random sampling and random assignment are the same thing.",
+  "right": "Size cannot fix a biased sample: two million returned ballots still did not represent voters. Random sampling (who is studied) and random assignment (which condition) are separate steps with separate jobs."
+ },
+ "check": [
+  "psy-research-sampling-2",
+  "psy-research-sampling-4",
+  "psy-research-sampling-5",
+  "psy-research-sampling-10",
+  "psy-research-sampling-11",
+  "psy-research-sampling-12"
+ ],
+ "summary": "A sample stands in for a population. Random sampling makes a representative sample likely, while convenience and self-selected samples are biased however large they are. Random sampling supports generalizing to the population; random assignment supports a causal claim. Whether results generalize to a group depends on how much the participants resemble that group in age, culture and setting."
+}

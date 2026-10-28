@@ -1,0 +1,12 @@
+{
+ "treatment-approaches": {
+  "file": "figures/treatment-approaches.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Six rows, each an approach to treatment, what it targets and example techniques. Psychodynamic: unconscious conflicts; free association, dream interpretation. Humanistic: blocked growth; person-centered therapy with active listening and unconditional positive regard. Behavioral: learned behaviors and fears; exposure, systematic desensitization, aversion therapy, token economy. Cognitive: distorted thoughts; cognitive restructuring, REBT. Cognitive-behavioral: thoughts and behaviors together; CBT, DBT. Biomedical: brain chemistry and activity; medication, TMS, ECT, rarely psychosurgery."
+ }
+}

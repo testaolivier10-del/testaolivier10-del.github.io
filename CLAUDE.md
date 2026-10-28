@@ -42,7 +42,7 @@ tool layout (one set of files per trainer, so authors work in parallel): `docs/a
 `docs/apcalc-spec.md` is the source of truth (owner brief, research summary, build plan, decisions); read it before
 AP® Calculus AB work and update it in the same commit. Research: `docs/apcalc-research/`. Formats, math syntax,
 `expr` items and tool layout: `docs/apcalc-architecture.md`; writing rules: `docs/apcalc-authoring-guide.md`; map:
-`docs/apcalc-phase0.md`; open points: `docs/apcalc-needs-author.md`. Registered `hidden` until launch.
+`docs/apcalc-phase0.md`; open points: `docs/apcalc-needs-author.md`. Published and live.
 
 ## AP® Statistics course
 
@@ -50,7 +50,7 @@ AP® Calculus AB work and update it in the same commit. Research: `docs/apcalc-r
 launch checklist); read it before AP® Statistics work and update it in the same commit. Research:
 `docs/apstat-research/` (the course was revised for 2026-27: five units, new exam). Formats: `docs/apstat-architecture.md`;
 writing rules and conclusion templates: `docs/apstat-authoring-guide.md`; map and the CED check: `docs/apstat-phase0.md`;
-open points: `docs/apstat-needs-author.md`; briefs: `docs/apstat-briefs/`. Registered `hidden` until launch.
+open points: `docs/apstat-needs-author.md`; briefs: `docs/apstat-briefs/`. Published and live.
 
 ## AP® Environmental Science course
 
@@ -59,7 +59,17 @@ decisions, launch checklist); read it before AP® Environmental Science work and
 Research: `docs/apenv-research/`. Formats, `ApEnvCalc` recipes and unit-aware grading: `docs/apenv-architecture.md`;
 writing rules (setups with brackets and units, specific answers, content traps): `docs/apenv-authoring-guide.md`;
 map and the CED check: `docs/apenv-phase0.md`; open points: `docs/apenv-needs-author.md`; briefs (authors A-G,
-builders T1-T4): `docs/apenv-briefs/`. Registered `hidden` until launch.
+builders T1-T4): `docs/apenv-briefs/`. Published and live.
+
+## AP® Psychology course
+
+`docs/appsych-spec.md` is the source of truth (owner brief, research summary, trainers, grading, build plan,
+decisions); read it before AP® Psychology work and update it in the same commit. Research: `docs/appsych-research/`.
+Formats, `ApPsychStats` recipes, study summaries and AAQ/EBQ FRQs: `docs/appsych-architecture.md`; writing rules
+(apply concepts, research methods, mental-health language, no myths): `docs/appsych-authoring-guide.md`; map and the
+CED check: `docs/appsych-phase0.md`; open points: `docs/appsych-needs-author.md`; briefs (authors A-G, builders
+T1-T4): `docs/appsych-briefs/`; launch log: `docs/appsych-reviews/launch.md`. Published and live; Premium not on
+sale (`onSale: false`) until the owner checklist in spec section 9.
 
 ## AI FRQ grader (AP® courses)
 

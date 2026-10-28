@@ -1,0 +1,72 @@
+{
+ "topic": "thinking",
+ "hook": "You can tell a robin is a bird in a split second, but a penguin makes you pause. You fear flying after a crash on the news, though the drive to the airport is riskier. Your mind runs on shortcuts. They are fast and usually right, and they fail in ways you can predict.",
+ "prereq": [
+  {
+   "q": "What is a schema?",
+   "options": [
+    "A mental framework that organizes what we know about something",
+    "A depth cue that uses both eyes",
+    "A memory of a single event",
+    "A rule for grouping similar shapes"
+   ],
+   "correct": 0,
+   "why": "A schema organizes knowledge, such as what a restaurant is like, and shapes what we expect.",
+   "review": "perception"
+  },
+  {
+   "q": "Which part of the brain is most involved in planning and controlling impulses?",
+   "options": [
+    "Prefrontal cortex",
+    "Cerebellum",
+    "Occipital lobe",
+    "Medulla"
+   ],
+   "correct": 0,
+   "why": "The prefrontal cortex, at the front of the frontal lobes, supports planning, judgment and self-control.",
+   "review": "brain"
+  }
+ ],
+ "figure": {
+  "figure": "thinking-strategies",
+  "caption": "Algorithms are slow and sure; heuristics are fast and fallible."
+ },
+ "chain": [
+  {
+   "cause": "The mind sorts things into concepts with prototypes",
+   "effect": "we recognize and categorize quickly"
+  },
+  {
+   "cause": "Schemas meet new information",
+   "effect": "we assimilate it, or accommodate by changing the schema"
+  },
+  {
+   "cause": "Time and effort are limited",
+   "effect": "we use heuristics instead of algorithms"
+  },
+  {
+   "cause": "Heuristics ignore base rates, wording and independence",
+   "effect": "predictable errors: availability, representativeness, framing, the gambler's and sunk-cost fallacies"
+  }
+ ],
+ "ideas": [
+  "A <b>concept</b> is a mental category; its <b>prototype</b> is the most typical example. New information is <b>assimilated</b> into a schema, or the schema is changed (<b>accommodation</b>).",
+  "An <b>algorithm</b> guarantees a solution step by step; a <b>heuristic</b> is a fast shortcut that can mislead.",
+  "The <b>representativeness heuristic</b> matches to a prototype; the <b>availability heuristic</b> goes by what comes to mind easily.",
+  "Problem-solving is blocked by <b>mental set</b> and <b>functional fixedness</b>; judgments are tilted by <b>priming</b>, <b>framing</b>, the <b>gambler's fallacy</b> and the <b>sunk-cost fallacy</b>.",
+  "<b>Executive functions</b> (prefrontal cortex) plan and control; <b>creativity</b> needs <b>divergent thinking</b> to generate ideas and <b>convergent thinking</b> to pick one."
+ ],
+ "misconception": {
+  "wrong": "Heuristics are mistakes that careful thinkers never use.",
+  "right": "Everyone uses heuristics all the time, and most of the time they give good, fast answers. They cause errors in predictable situations, which is why knowing them helps."
+ },
+ "check": [
+  "psy-thinking-1",
+  "psy-thinking-2",
+  "psy-thinking-4",
+  "psy-thinking-11",
+  "psy-thinking-12",
+  "psy-thinking-14"
+ ],
+ "summary": "Thinking runs on concepts and prototypes, and schemas grow by assimilation and accommodation. Algorithms are slow and sure; heuristics are fast and usually right but produce predictable errors. Mental set and functional fixedness block solutions, framing and priming tilt choices, and executive functions and divergent thinking support good problem-solving."
+}

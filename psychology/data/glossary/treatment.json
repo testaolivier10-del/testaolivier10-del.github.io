@@ -1,0 +1,92 @@
+{
+ "evidence-based": {
+  "def": "Choosing treatment by combining the best available research (often meta-analyses of many studies) with clinical expertise and the client's characteristics, culture and preferences."
+ },
+ "therapeutic-alliance": {
+  "def": "The bond of trust between a therapist and a client, with agreement on goals and on how to work toward them; a strong alliance predicts better outcomes across many therapies."
+ },
+ "cultural-humility": {
+  "def": "An ongoing attitude of learning from each client about their culture and recognizing the limits of one's own perspective."
+ },
+ "deinstitutionalization": {
+  "def": "The shift, starting in the 1950s, from long stays in large psychiatric hospitals to care in the community; underfunded community services left many people without enough care."
+ },
+ "free-association": {
+  "def": "A psychodynamic technique in which the client says whatever comes to mind, so that patterns pointing to unconscious conflicts can emerge."
+ },
+ "dream-interpretation": {
+  "def": "A psychodynamic technique in which the therapist and client look for hidden meaning in the client's dreams."
+ },
+ "cognitive-therapy": {
+  "def": "Therapy that helps people notice, test and change distorted or unhelpful thoughts (cognitive restructuring), on the idea that thoughts shape feelings and behavior."
+ },
+ "cognitive-triad": {
+  "def": "Negative thinking about oneself, the world and the future, a pattern that cognitive therapy targets in depression."
+ },
+ "cbt": {
+  "def": "Cognitive-behavioral therapy: changing unhelpful thoughts and behaviors together, with practice between sessions. It has strong research support for depression and anxiety."
+ },
+ "dbt": {
+  "def": "Dialectical behavior therapy: a form of CBT that balances acceptance with change and teaches mindfulness, distress tolerance, emotion regulation and relationship skills, often for people with intense emotions and self-harm."
+ },
+ "rebt": {
+  "def": "Rational emotive behavior therapy: a cognitive therapy that directly disputes irrational beliefs, such as \"I must succeed at everything,\" and replaces them with realistic ones."
+ },
+ "behavior-therapy": {
+  "def": "Therapy that applies classical and operant conditioning to change problem behaviors directly; applied behavior analysis is one form."
+ },
+ "systematic-desensitization": {
+  "def": "A behavioral technique that pairs relaxation with a step-by-step list of feared situations, from least to most frightening, to countercondition the fear."
+ },
+ "exposure-therapy": {
+  "def": "A behavioral treatment in which a person faces a feared object or situation, in real life or in imagination, until the fear fades because the feared harm does not happen."
+ },
+ "aversion-therapy": {
+  "def": "A behavioral technique that pairs an unwanted behavior, such as drinking alcohol, with an unpleasant stimulus so that the behavior comes to trigger discomfort."
+ },
+ "token-economy": {
+  "def": "An operant technique in which people earn tokens (secondary reinforcers) for target behaviors and trade them for rewards."
+ },
+ "biofeedback": {
+  "def": "A technique that shows a person live information about a body process, such as muscle tension or heart rate, so they can learn to control it."
+ },
+ "person-centered": {
+  "def": "A humanistic therapy in which the therapist offers genuineness, empathy and unconditional positive regard, and the client leads the sessions."
+ },
+ "active-listening": {
+  "def": "Listening with full attention, then restating and clarifying what the client said and felt, a key skill in person-centered therapy."
+ },
+ "group-therapy": {
+  "def": "Therapy with several clients, or a whole family, together; people learn they are not alone, practice new ways of relating, and in family therapy change patterns in the family system."
+ },
+ "hypnosis": {
+  "def": "A social interaction in which one person suggests changes in perceptions, feelings or behavior to another. It can help with pain and anxiety, but it does not recover accurate memories."
+ },
+ "antidepressant": {
+  "def": "Medication for depression and several anxiety disorders; the most common kind, SSRIs, are selective serotonin reuptake inhibitors. Effects usually build over several weeks."
+ },
+ "anti-anxiety": {
+  "def": "Medication that reduces anxiety, such as drugs that increase the calming effect of GABA; they act quickly but can lead to tolerance and dependence."
+ },
+ "lithium": {
+  "def": "A mood stabilizer used for bipolar disorder that makes manic and depressive episodes less likely; it needs blood tests because its safe dose range is narrow."
+ },
+ "antipsychotic": {
+  "def": "Medication for schizophrenia and other psychotic symptoms that blocks dopamine receptors (a dopamine antagonist), reducing positive symptoms such as hallucinations."
+ },
+ "tardive-dyskinesia": {
+  "def": "Involuntary, repeated movements of the face, lips and tongue that can develop after long-term use of antipsychotic medication, especially older ones."
+ },
+ "psychosurgery": {
+  "def": "Surgery that removes or destroys brain tissue to change behavior or relieve symptoms; today it is very rare and used only when other treatments fail."
+ },
+ "lobotomy": {
+  "def": "A former psychosurgery, used mainly in the 1940s and 1950s, that cut connections to the prefrontal cortex; it often left people withdrawn and impaired and is no longer performed."
+ },
+ "tms": {
+  "def": "Transcranial magnetic stimulation: magnetic pulses from a coil on the scalp stimulate targeted brain areas, used mainly for depression that has not responded to medication."
+ },
+ "ect": {
+  "def": "Electroconvulsive therapy: a brief electric current causes a short seizure under anesthesia, used mainly for severe depression that has not responded to other treatments; short-term memory loss is a common side effect."
+ }
+}

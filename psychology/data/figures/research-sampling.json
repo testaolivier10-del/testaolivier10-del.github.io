@@ -1,0 +1,12 @@
+{
+ "research-sampling-steps": {
+  "file": "figures/research-sampling-steps.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a population of 48 people drawn as dots in three colors (three kinds of people, such as age groups). Random sampling gives every member the same chance of being chosen; 12 are chosen, 4 of each color, so the sample mirrors the population. It decides who is studied and lets results generalize to the population. Middle: the sample of 12. Right: random assignment uses chance to split the 12 into a treatment group and a control group of 6 each. It decides which condition each person gets and lets an experiment claim cause and effect. A study can use either step, both, or neither."
+ }
+}

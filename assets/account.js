@@ -1048,6 +1048,7 @@
     { storagePrefix: 'apcalc_' },
     { storagePrefix: 'apstat_' },
     { storagePrefix: 'apenv_' },
+    { storagePrefix: 'appsych_' },
   ];
   // courses:end
   var CLEAR_PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }), ['levlprep_']);

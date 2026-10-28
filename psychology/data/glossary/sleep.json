@@ -1,0 +1,47 @@
+{
+ "consciousness": {
+  "def": "Awareness of yourself and your surroundings; it shifts across states such as alert waking, drowsiness, sleep and dreaming."
+ },
+ "sleep": {
+  "def": "A regular, reversible state of reduced awareness and responsiveness, organized in cycles of NREM and REM stages, that the body and brain need for health, memory and mood."
+ },
+ "circadian-rhythm": {
+  "def": "The body's internal clock, a cycle of about 24 hours that times alertness, body temperature and sleep; daylight resets it each day, and melatonin rises in the dark."
+ },
+ "nrem": {
+  "def": "Non-rapid eye movement sleep, stages N1 (light), N2 (most of the night) and N3 (deep, slow delta waves); vivid dreams are less common than in REM."
+ },
+ "rem": {
+  "def": "Rapid eye movement sleep: the brain is nearly as active as when awake, the eyes dart, the major muscles are almost paralyzed and vivid dreams are common. REM periods lengthen toward morning."
+ },
+ "hypnagogic": {
+  "def": "Sensations at the edge of sleep, in N1, such as a feeling of falling, a sudden jerk, flashes of images or hearing one's name."
+ },
+ "dream": {
+  "def": "A sequence of images, feelings and thoughts during sleep; most vivid and story-like in REM."
+ },
+ "activation-synthesis": {
+  "def": "The theory that dreams begin as random neural activity from the brainstem during REM, which the cortex weaves into a story."
+ },
+ "consolidation-theory": {
+  "def": "The view that sleep, and the dreams in it, help process and store the day's experiences, stabilizing new memories."
+ },
+ "restoration-theory": {
+  "def": "The view that we sleep to restore and repair the body and brain, for example by repairing tissue and, possibly, clearing waste that builds up during waking."
+ },
+ "insomnia": {
+  "def": "A sleep disorder of persistent trouble falling asleep or staying asleep, with tiredness or other problems during the day."
+ },
+ "narcolepsy": {
+  "def": "A sleep disorder of sudden, uncontrollable attacks of sleep during the day, often entering REM within minutes; strong emotion can trigger a sudden loss of muscle tone."
+ },
+ "rbd": {
+  "def": "REM sleep behavior disorder: the muscle paralysis of REM fails, so the sleeper acts out dreams, sometimes violently. It is most common in older men."
+ },
+ "sleep-apnea": {
+  "def": "A sleep disorder in which breathing repeatedly stops during sleep, briefly waking the person to breathe; loud snoring and daytime sleepiness are common."
+ },
+ "somnambulism": {
+  "def": "Sleepwalking: walking or doing other actions while in deep N3 sleep, usually early in the night, with no memory of it later; more common in children."
+ }
+}

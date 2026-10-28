@@ -1,0 +1,143 @@
+/* Conditioning lab (psychology/assets/tools/conditioning-lab.js). OWNED BY THIS TOOL ONLY (builder T3).
+   Colors by role: the course cerulean for what is learned (CS, CR, the
+   cumulative record); vermillion for what is unlearned (UCS, UCR, food) and
+   for rewards; grey for neutral. Okabe-Ito based, lighter in dark mode;
+   every label is also written, so color is never the only cue. */
+.cl-svg,.cl-qfig{--cl-acc:#084F78;--cl-acc-tint:#E3F0F8;--cl-alt:#C24E00;--cl-alt-ink:#A84400;--cl-alt-tint:#FBEADF;--cl-ns:#5C6B73;--cl-ns-tint:#EEF1F3;
+  --cl-fur:#C8935A;--cl-fur2:#9C6B3C;--cl-fur-line:#5B3A1E;--cl-nose:#2B1D14;--cl-collar:#C24E00;--cl-rat:#B9B2AA;--cl-rat-line:#5D5650;--cl-rat-pink:#E8A7A0;
+  --cl-box:#F4F6F7;--cl-box-wall:#DDE3E6;--cl-steel:#8A979C;--cl-sky:#F6F9FB;--cl-bub:#084F78;--cl-bub-ink:#FFFFFF;}
+:root[data-theme="dark"] .cl-svg,:root[data-theme="dark"] .cl-qfig{--cl-acc:#8CC8E8;--cl-acc-tint:rgba(80,170,220,.14);--cl-alt:#F29A5C;--cl-alt-ink:#F6B082;--cl-alt-tint:rgba(242,154,92,.14);--cl-ns:#A9B6BC;--cl-ns-tint:rgba(169,182,188,.12);
+  --cl-fur:#B98450;--cl-fur2:#8A5C31;--cl-fur-line:#2A1A0C;--cl-nose:#120B07;--cl-collar:#F29A5C;--cl-rat:#9C958D;--cl-rat-line:#2B2622;--cl-rat-pink:#C98880;
+  --cl-box:#1B2A33;--cl-box-wall:#24363F;--cl-steel:#6E7E85;--cl-sky:#15232B;--cl-bub:#A8D8F0;--cl-bub-ink:#0B2130;}
+.cl-card{display:grid;gap:14px;}
+.cl-fig{position:relative;min-height:340px;height:min(70vh,600px);}
+.ls-root .cl-fig{flex:1 1 auto;height:auto;min-height:300px;}
+.cl-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.cl-fig .cl-svg{position:absolute;inset:0;}
+/* dock */
+.cl-ctl{display:flex;flex-direction:column;gap:10px;}
+.cl-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.cl-views button,.cl-scheds button{min-height:44px;}
+.cl-grp{display:flex;flex-direction:column;gap:10px;}
+.cl-grp[hidden],.cl-o[hidden]{display:none !important;}
+.cl-trial{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;}
+.cl-trial > *{min-height:48px;padding:0 8px;white-space:nowrap;}
+.cl-trial > .cl-pair{grid-column:1 / -1;}
+.cl-go .btn-press{width:100%;}
+.cl-exrow{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:6px;align-items:end;}
+.cl-exrow > .bt-btn{min-height:44px;padding:0;font:900 22px var(--font-ui);}
+.cl-exsel .bt-select{display:block;}
+.cl-exsel .bt-select label{display:block;margin:0 0 6px;}
+.cl-exsel .bt-select select{width:100%;min-width:0;}
+.cl-exrow{grid-template-rows:auto;}
+.cl-row2{display:flex;gap:8px;flex-wrap:wrap;}
+.cl-row2 .bt-btn,.cl-o-op .bt-btn{min-height:44px;}
+.cl-opt{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:700;}
+/* scene text */
+.cl-tv{fill:var(--muted);font-weight:700;font-size:12px;font-variant-numeric:tabular-nums;}
+.cl-axn{fill:var(--ink);font-weight:800;font-size:13px;}
+.cl-hint{fill:var(--muted);font-weight:700;font-size:12px;}
+.cl-empty{fill:var(--muted);font-weight:800;font-size:14px;}
+.cl-grid{stroke:var(--line);stroke-width:1;}
+.cl-axis{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.cl-tag rect{fill:var(--cl-ns-tint);stroke:var(--cl-ns);stroke-width:1.2;}
+.cl-tagt{fill:var(--cl-ns);font-weight:900;font-size:12.5px;}
+.cl-tag.is-cs rect{fill:var(--cl-acc-tint);stroke:var(--cl-acc);} .cl-tag.is-cs .cl-tagt{fill:var(--cl-acc);}
+.cl-tag.is-ucs rect{fill:var(--cl-alt-tint);stroke:var(--cl-alt);} .cl-tag.is-ucs .cl-tagt{fill:var(--cl-alt-ink);}
+.cl-bub rect{fill:var(--cl-bub);} .cl-bt{fill:var(--cl-bub-ink);font-weight:900;font-size:14px;}
+.cl-bt2{fill:var(--muted);font-weight:800;font-size:12px;}
+.cl-bt2.is-acq{fill:var(--cl-acc);} .cl-bt2.is-ext{fill:var(--cl-alt-ink);}
+/* the dog */
+.cl-sky{fill:var(--cl-sky);}
+.cl-dog-head,.cl-dog-neck{fill:var(--cl-fur);stroke:var(--cl-fur-line);stroke-width:2.2;stroke-linejoin:round;}
+.cl-dog-ear{fill:var(--cl-fur2);stroke:var(--cl-fur-line);stroke-width:2.2;stroke-linejoin:round;}
+.cl-dog-eye{fill:var(--cl-nose);} .cl-dog-glint{fill:#FFFFFF;}
+.cl-dog-brow{fill:none;stroke:var(--cl-fur-line);stroke-width:2;stroke-linecap:round;}
+.cl-dog-nose{fill:var(--cl-nose);}
+.cl-dog-lip{fill:none;stroke:var(--cl-fur-line);stroke-width:2.2;stroke-linecap:round;}
+.cl-dog-mouth{fill:#5B1E1E;stroke:var(--cl-fur-line);stroke-width:2;stroke-linejoin:round;}
+.cl-dog-tongue{fill:#E07A85;}
+.cl-dog-collar{fill:var(--cl-collar);stroke:var(--cl-fur-line);stroke-width:1.5;}
+.cl-dog-tagc{fill:#F3C04F;stroke:var(--cl-fur-line);stroke-width:1.2;}
+.cl-spk-box{fill:var(--cl-steel);stroke:var(--ink);stroke-width:1.5;}
+.cl-spk-cone{fill:var(--cl-box-wall);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;}
+.cl-wave{fill:none;stroke:var(--cl-acc);stroke-width:3;stroke-linecap:round;}
+.cl-dish-bowl{fill:var(--cl-steel);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;}
+.cl-dish-rim{fill:var(--cl-box-wall);stroke:var(--ink);stroke-width:1.2;}
+.cl-food{fill:#8A5A2B;} .cl-food2{fill:#A8743F;stroke:#6E4520;stroke-width:1;}
+.cl-tube{fill:var(--white);stroke:var(--ink);stroke-width:1.6;fill-opacity:.7;}
+.cl-tubeline{fill:none;stroke:var(--cl-ns);stroke-width:1.5;stroke-dasharray:3 4;}
+.cl-tubetick{stroke:var(--muted);stroke-width:1.2;}
+.cl-saliva{fill:var(--cl-acc);fill-opacity:.55;}
+.cl-saliva.is-ucr{fill:var(--cl-alt);}
+.cl-drop{fill:#8FC3E2;stroke:var(--cl-acc);stroke-width:1;}
+@keyframes cl-fall{0%{transform:translateY(0);opacity:1}100%{transform:translateY(28px);opacity:0}}
+@keyframes cl-pulse{0%{opacity:0}40%{opacity:1}100%{opacity:.2}}
+.cl-drop.is-anim{animation:cl-fall .7s ease-in 2 both;}
+.cl-wave.is-anim{animation:cl-pulse .6s ease-out 2 both;}
+@media (prefers-reduced-motion: reduce){ .cl-drop.is-anim,.cl-wave.is-anim{animation:none;} }
+/* the record of trials */
+.cl-band.is-acq{fill:var(--cl-acc);fill-opacity:.08;}
+.cl-band.is-ext{fill:var(--cl-alt);fill-opacity:.08;}
+.cl-restl{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4;}
+.cl-crline{fill:none;stroke:var(--cl-acc);stroke-width:2.6;stroke-linejoin:round;}
+.cl-crpt{fill:var(--white);stroke:var(--cl-acc);stroke-width:2.4;}
+.cl-crpt.is-pair{fill:var(--cl-acc);}
+/* the Skinner box */
+.cl-box{fill:var(--cl-box);stroke:var(--ink);stroke-width:2;}
+.cl-box-wall{fill:var(--cl-box-wall);}
+.cl-grid-bar{stroke:var(--cl-steel);stroke-width:1.5;}
+.cl-floor{stroke:var(--ink);stroke-width:1.5;}
+.cl-light{fill:var(--cl-steel);stroke:var(--ink);stroke-width:1.2;}
+.cl-light.is-on{fill:#F3C04F;filter:drop-shadow(0 0 6px #F3C04F);}
+.cl-lever{fill:var(--cl-steel);stroke:var(--ink);stroke-width:1.4;}
+.cl-tray{fill:var(--cl-steel);stroke:var(--ink);stroke-width:1.2;}
+.cl-pellet{fill:#8A5A2B;stroke:#5B3A1E;stroke-width:1;}
+.cl-rat-body,.cl-rat-head{fill:var(--cl-rat);stroke:var(--cl-rat-line);stroke-width:2;stroke-linejoin:round;}
+.cl-rat-ear{fill:var(--cl-rat-pink);stroke:var(--cl-rat-line);stroke-width:1.6;}
+.cl-rat-eye{fill:var(--cl-rat-line);}
+.cl-rat-tail{fill:none;stroke:var(--cl-rat-pink);stroke-width:3.5;stroke-linecap:round;}
+.cl-rat-paw{fill:none;stroke:var(--cl-rat-pink);stroke-width:3.5;stroke-linecap:round;}
+.cl-rec{fill:none;stroke:var(--cl-acc);stroke-width:2.2;stroke-linejoin:round;}
+.cl-rec.is-faint{stroke:var(--cl-ns);stroke-opacity:.45;stroke-width:1.6;}
+.cl-tick{stroke:var(--cl-alt);stroke-width:2;stroke-linecap:round;}
+/* consequences */
+.cl-story{fill:var(--white);stroke:var(--line);stroke-width:1.5;}
+.cl-st1{fill:var(--ink);font-weight:800;} .cl-st2{fill:var(--muted);font-weight:800;}
+.cl-q{fill:var(--white);stroke:var(--line);stroke-width:1.5;}
+.cl-q.is-up{fill:color-mix(in srgb, var(--cl-acc) 4%, var(--white));}
+.cl-q.is-down{fill:color-mix(in srgb, var(--cl-alt) 4%, var(--white));}
+.cl-q.is-on.is-up{fill:var(--cl-acc-tint);stroke:var(--cl-acc);stroke-width:3;}
+.cl-q.is-on.is-down{fill:var(--cl-alt-tint);stroke:var(--cl-alt);stroke-width:3;}
+.cl-qn{fill:var(--muted);font-weight:900;font-size:18px;}
+.cl-qn.is-on{fill:var(--ink);}
+.cl-qd{fill:var(--muted);font-weight:700;font-size:12.5px;}
+.cl-qd.is-on{fill:var(--ink);}
+.cl-qdot{fill:var(--cl-acc);}
+/* drills */
+.cl-lab4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:760px;margin:auto auto 10px;}
+@media (min-width:1000px){ .cl-l{min-height:130px;} .cl-l b{font-size:19px;} .cl-l span{font-size:14px;} .cl-lab-note{font-size:15.5px;max-width:760px;} }
+.cl-l{display:flex;flex-direction:column;gap:6px;justify-content:center;align-items:center;min-height:96px;padding:12px;border-radius:14px;border:2px dashed var(--line);background:var(--white);text-align:center;}
+.cl-l span{font:900 13px var(--font-ui);letter-spacing:.04em;color:var(--muted);}
+.cl-l b{font:900 calc(16px * var(--ls-scale,1)) var(--font-ui);color:var(--muted);overflow-wrap:anywhere;}
+.cl-l.is-shown{border-style:solid;}
+.cl-l.is-ucs.is-shown{border-color:var(--cl-alt);background:var(--cl-alt-tint);}
+.cl-l.is-cs.is-shown{border-color:var(--cl-acc);background:var(--cl-acc-tint);}
+.cl-l.is-shown b{color:var(--ink);}
+.cl-lab-note{margin:0 auto auto;max-width:640px;text-align:center;font:700 calc(14px * var(--ls-scale,1))/1.5 var(--font-ui);color:var(--muted);}
+.cl-rec4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:880px;margin:auto auto 6px;}
+.cl-r{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;border-radius:12px;border:1.5px solid var(--line);background:var(--white);}
+.cl-r.is-on{border-color:var(--cl-acc);background:var(--cl-acc-tint);}
+.cl-r svg{width:100%;height:auto;max-height:22vh;}
+.cl-r span{font:700 calc(12.5px * var(--ls-scale,1))/1.3 var(--font-ui);color:var(--ink);text-align:center;}
+.cl-r em{font:800 calc(11.5px * var(--ls-scale,1)) var(--font-ui);font-style:normal;color:var(--muted);}
+.cl-mini{fill:none;stroke:var(--cl-acc);stroke-width:2.2;stroke-linejoin:round;}
+.cl-q4{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);gap:8px;width:100%;max-width:640px;margin:auto;align-items:stretch;}
+.cl-q4h{display:flex;align-items:center;justify-content:center;font:800 13px var(--font-ui);color:var(--muted);text-align:center;}
+.cl-q4c{display:flex;align-items:center;justify-content:center;min-height:84px;padding:10px;border-radius:14px;border:1.5px solid var(--line);background:var(--white);font:800 calc(14.5px * var(--ls-scale,1))/1.3 var(--font-ui);color:var(--muted);text-align:center;}
+.cl-q4c.is-on{border-color:var(--cl-acc);color:var(--ink);background:var(--cl-acc-tint);}
+.cl-q4c.is-key{border-width:3px;color:var(--ink);}
+.ls-root .ls-drill-stage .cl-qfig{justify-content:center;}
+/* Room for the first-run tip while it shows (hintSlot). */
+/* The primary row sits in the dock's flow (not stuck to the screen's foot), so the first-run tip above it never covers the scene switch. */
+.ls-dock .cl-trial,.ls-dock .cl-go{position:static !important;box-shadow:none !important;}

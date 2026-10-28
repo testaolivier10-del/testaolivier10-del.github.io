@@ -1,0 +1,24 @@
+{
+ "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text}, titles: {topic: text} }; \"titles\" is a shorter topic name for the <title> of its lesson and notes pages when the full one would be cut. Never use the mark here: no \"AP\" in any meta description (docs/appsych-spec.md decision 2).",
+ "lessons": {},
+ "notes": {},
+ "units": {},
+ "titles": {
+  "heredity-environment": "Heredity and Environment",
+  "thinking": "Thinking and Decisions",
+  "forgetting": "Forgetting and Memory Errors",
+  "development-methods": "Developmental Methods",
+  "physical-development": "Physical Development",
+  "cognitive-development": "Cognitive Development",
+  "language-development": "Language Development",
+  "social-emotional-development": "Social-Emotional Development",
+  "social-cognitive-learning": "Social Learning",
+  "attribution": "Attribution Theory",
+  "attitudes": "Attitudes and Change",
+  "psychodynamic-humanistic": "Psychodynamic and Humanistic",
+  "social-cognitive-trait": "Trait Theories of Personality",
+  "explaining-disorders": "Explaining Disorders",
+  "disorders": "Psychological Disorders",
+  "stats-significance": "Significance and Effect Size"
+ }
+}

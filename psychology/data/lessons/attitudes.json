@@ -1,0 +1,71 @@
+{
+ "topic": "attitudes",
+ "hook": "Two fans watch the same replay of a close call. One is sure it was a foul; the other is sure it was clean. Each walks away more certain than before. Attitudes, our feelings and beliefs about people and things, shape what we notice and remember, and they are surprisingly hard to change. Sometimes the fastest way to change an attitude is to change what a person does.",
+ "prereq": [
+  {
+   "q": "Which is an example of the fundamental attribution error?",
+   "options": [
+    "Deciding a waiter is rude without considering that he is overworked",
+    "Taking credit for your own success",
+    "Liking a song more after hearing it often",
+    "Comparing yourself with someone worse off"
+   ],
+   "correct": 0,
+   "why": "Explaining another person's behavior by disposition and overlooking the situation is the fundamental attribution error.",
+   "review": "attribution"
+  },
+  {
+   "q": "What is working memory?",
+   "options": [
+    "The small, active space where information is held and worked on right now",
+    "Permanent storage of everything you know",
+    "Memory for skills such as riding a bike",
+    "Memory for events from early childhood"
+   ],
+   "correct": 0,
+   "why": "Working memory holds and manipulates a limited amount of information at once, which is why heavy mental load leaves less room for careful thinking.",
+   "review": "memory-intro"
+  }
+ ],
+ "figure": {
+  "figure": "attitudes-dissonance",
+  "caption": "When an action and an attitude clash, people tend to reduce the discomfort by changing one of them or adding a justification."
+ },
+ "chain": [
+  {
+   "cause": "People sort others into groups and hold stereotypes about them",
+   "effect": "stereotypes can feed prejudice, especially under cognitive load"
+  },
+  {
+   "cause": "People favor their own group and see other groups as all alike",
+   "effect": "in-group bias and out-group homogeneity keep prejudice going"
+  },
+  {
+   "cause": "People seek evidence that fits what they believe and hold on when it is challenged",
+   "effect": "confirmation bias and belief perseverance make attitudes resist change"
+  },
+  {
+   "cause": "A person freely acts against an attitude with little outside reason",
+   "effect": "cognitive dissonance can push the attitude to shift toward the action"
+  }
+ ],
+ "ideas": [
+  "A <b>stereotype</b> is a generalized belief about a group; <b>prejudice</b> is an unjustified, usually negative attitude toward a group. Under <b>cognitive load</b>, people lean on stereotypes more.",
+  "<b>Implicit attitudes</b> are automatic associations that can differ from what people say they believe. Reaction-time tests of them are useful for research but are unreliable for labeling one person.",
+  "What sustains prejudice: the <b>just-world phenomenon</b> (victims are blamed), <b>in-group bias</b>, <b>out-group homogeneity</b> and <b>ethnocentrism</b>.",
+  "Why attitudes resist change: <b>confirmation bias</b> and <b>belief perseverance</b>. What can change them: <b>cognitive dissonance</b>, when actions and attitudes clash."
+ ],
+ "misconception": {
+  "wrong": "People act on their attitudes, so to change behavior you must first change attitudes.",
+  "right": "The arrow also runs the other way. When people freely act against an attitude, they often shift the attitude to fit the action (cognitive dissonance). Why exactly this happens is still debated, but the shift itself is well documented."
+ },
+ "check": [
+  "psy-attitudes-1",
+  "psy-attitudes-2",
+  "psy-attitudes-4",
+  "psy-attitudes-11",
+  "psy-attitudes-12",
+  "psy-attitudes-13"
+ ],
+ "summary": "Attitudes combine feelings and beliefs about people and things. Stereotypes, cognitive load and implicit attitudes can feed prejudice, and the just-world phenomenon, in-group bias, out-group homogeneity and ethnocentrism keep it going. Confirmation bias and belief perseverance make attitudes resist change, while cognitive dissonance, the discomfort of acting against an attitude, can change them. The classic dissonance findings hold up in part; a large 2024 replication found attitude change but not every prediction."
+}

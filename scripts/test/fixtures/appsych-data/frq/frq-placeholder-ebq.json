@@ -1,0 +1,197 @@
+{
+ "id": "frq-placeholder-ebq",
+ "type": "ebq",
+ "points": 7,
+ "placeholder": true,
+ "title": "Placeholder: evidence-based question",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "operant-conditioning"
+ ],
+ "practices": [
+  "4.A",
+  "4.B"
+ ],
+ "claimTopic": "Placeholder: whether partial reinforcement makes behavior last longer.",
+ "restricted": [
+  "mean",
+  "random assignment",
+  "statistically significant",
+  "operant conditioning"
+ ],
+ "sources": [
+  {
+   "title": "Placeholder source one",
+   "invented": true,
+   "study": {
+    "introduction": "Placeholder introduction: researchers asked whether the schedule of reinforcement changes persistence.",
+    "participants": "Placeholder participants: 60 volunteers, randomly assigned to two groups. All gave informed consent and were debriefed.",
+    "method": "Placeholder method: each group played a game on a different schedule; persistence was the number of tries after rewards stopped.",
+    "results": "Placeholder results: the variable-ratio group kept trying longer."
+   },
+   "plot": {
+    "label": "Placeholder bar graph of mean tries after rewards stopped, invented data",
+    "kind": "bar",
+    "categories": [
+     "Fixed",
+     "Variable"
+    ],
+    "values": [
+     12,
+     20
+    ],
+    "yLabel": "Mean tries"
+   }
+  },
+  {
+   "title": "Placeholder source two",
+   "invented": true,
+   "study": {
+    "introduction": "Placeholder introduction: researchers asked whether the schedule of reinforcement changes persistence.",
+    "participants": "Placeholder participants: 60 volunteers, randomly assigned to two groups. All gave informed consent and were debriefed.",
+    "method": "Placeholder method: each group played a game on a different schedule; persistence was the number of tries after rewards stopped.",
+    "results": "Placeholder results: the variable-ratio group kept trying longer."
+   },
+   "plot": {
+    "label": "Placeholder bar graph of mean tries after rewards stopped, invented data",
+    "kind": "bar",
+    "categories": [
+     "Fixed",
+     "Variable"
+    ],
+    "values": [
+     12,
+     20
+    ],
+    "yLabel": "Mean tries"
+   }
+  },
+  {
+   "title": "Placeholder source three",
+   "invented": true,
+   "study": {
+    "introduction": "Placeholder introduction: researchers asked whether the schedule of reinforcement changes persistence.",
+    "participants": "Placeholder participants: 60 volunteers, randomly assigned to two groups. All gave informed consent and were debriefed.",
+    "method": "Placeholder method: each group played a game on a different schedule; persistence was the number of tries after rewards stopped.",
+    "results": "Placeholder results: the variable-ratio group kept trying longer."
+   },
+   "plot": {
+    "label": "Placeholder bar graph of mean tries after rewards stopped, invented data",
+    "kind": "bar",
+    "categories": [
+     "Fixed",
+     "Variable"
+    ],
+    "values": [
+     12,
+     20
+    ],
+    "yLabel": "Mean tries"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Propose</b> a defensible claim.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part A, long enough to read."
+  },
+  {
+   "label": "B(i)",
+   "prompt": "<b>Support</b> your claim with evidence from one source.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B(i), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B(i), long enough to read.",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "B(ii)",
+   "prompt": "<b>Explain</b> how the evidence supports your claim, using a psychology concept.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part B(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B(ii), long enough to read.",
+   "write": {
+    "concept": [
+     "partial reinforcement",
+     "variable-ratio"
+    ]
+   }
+  },
+  {
+   "label": "C(i)",
+   "prompt": "<b>Support</b> your claim with evidence from a different source.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part C(i), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part C(i), long enough to read.",
+   "write": {
+    "cite": true
+   }
+  },
+  {
+   "label": "C(ii)",
+   "prompt": "<b>Explain</b> how that evidence supports your claim, using a different concept.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part C(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part C(ii), with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part C(ii), long enough to read.",
+   "write": {
+    "concept": [
+     "extinction",
+     "spontaneous recovery"
+    ]
+   }
+  }
+ ]
+}

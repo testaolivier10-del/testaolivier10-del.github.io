@@ -1,0 +1,37 @@
+<p>Measure the heights of a thousand adults, or give a well-built test to a thousand students, and a picture appears: most values pile up near the middle and fewer and fewer appear toward the extremes. That shape is the <b>normal curve</b>. Intelligence test scores are built to follow it, and the exam asks you to read it.</p>
+
+<h2>The shape</h2>
+<p>A normal curve is a symmetric, bell-shaped frequency distribution. Because it is symmetric, the mean, the median and the mode all sit at the same point, the peak in the middle. Why does this shape show up so often? Many traits are the sum of many small, separate influences, and small influences pushing up and down tend to cancel, leaving most people near the middle.</p>
+
+<h2>The 68-95-99.7 rule</h2>
+<figure id="fig-curve" data-fig="stats-normal-curve"><figcaption>The normal curve, marked at each standard deviation.</figcaption></figure>
+<p>Mark the mean, then each standard deviation on both sides. In any normal distribution:</p>
+<ul>
+<li>about <b>68%</b> of scores lie within 1 standard deviation of the mean (34% on each side);</li>
+<li>about <b>95%</b> lie within 2 standard deviations (add 13.5% on each side);</li>
+<li>about <b>99.7%</b> lie within 3 standard deviations (add 2.35% on each side);</li>
+<li>the last 0.15% on each side lies beyond 3 standard deviations.</li>
+</ul>
+<p>So the bands from the middle out are 34, 13.5, 2.35 and 0.15. Every question about shares under the curve is solved by adding bands.</p>
+<div class="worked">
+<p><b>Worked example: shares under the curve.</b> A reading test has a mean of 100 and a standard deviation of 15.</p>
+<p><b>Between 85 and 115?</b> That is 1 SD below to 1 SD above: $34 + 34 = 68\%$.</p>
+<p><b>Above 130?</b> 130 is 2 SDs above. Above it: $2.35 + 0.15 = 2.5\%$.</p>
+<p><b>Below 85?</b> Below the mean is 50%; take away the 34% between 85 and 100: $50 - 34 = 16\%$.</p>
+<p>The slip readers see most: giving one side when the question covers both (34% instead of 68%), or both sides when it covers one.</p>
+</div>
+
+<h2>z scores</h2>
+<p>A <b>z score</b> says how many standard deviations a score is from the mean:</p>
+<p>$$z = \frac{x - \bar{x}}{\text{SD}}$$</p>
+<p>Above the mean, z is positive; below, negative; at the mean, zero. Because every test's scores are turned into the same units, z scores let you compare across tests.</p>
+<div class="worked">
+<p><b>Worked example: which score is better?</b> Ana scored 72 in biology (mean 60, SD 6) and 85 in history (mean 80, SD 10).</p>
+<p>Biology: $z = \frac{72 - 60}{6} = \frac{12}{6} = 2$.</p>
+<p>History: $z = \frac{85 - 80}{10} = \frac{5}{10} = 0.5$.</p>
+<p>The lower raw score, 72, is the better result: two standard deviations above the class, against half a standard deviation in history.</p>
+</div>
+
+<h2>Percentile ranks</h2>
+<p>A <b>percentile rank</b> is the percent of scores below a given score. At the mean it is 50. One standard deviation above the mean is $50 + 34 = 84$, the 84th percentile; one below is $50 - 34 = 16$. Two above is $50 + 34 + 13.5 = 97.5$.</p>
+<p>A percentile is not the percent of questions right. A student who answered 70% of a very hard test correctly might be at the 95th percentile, because almost everyone else did worse.</p>

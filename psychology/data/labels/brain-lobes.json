@@ -1,0 +1,115 @@
+{
+ "figure": "brain-lobes",
+ "labels": [
+  {
+   "id": "frontal",
+   "name": "Frontal lobe",
+   "box": [
+    201,
+    183,
+    104,
+    23
+   ],
+   "concept": "frontal-lobe"
+  },
+  {
+   "id": "parietal",
+   "name": "Parietal lobe",
+   "box": [
+    466,
+    138,
+    112,
+    23
+   ],
+   "concept": "parietal-lobe"
+  },
+  {
+   "id": "temporal",
+   "name": "Temporal lobe",
+   "box": [
+    326,
+    335,
+    112,
+    23
+   ],
+   "concept": "temporal-lobe"
+  },
+  {
+   "id": "occipital",
+   "name": "Occipital lobe",
+   "box": [
+    704,
+    219,
+    80,
+    41
+   ],
+   "concept": "occipital-lobe"
+  },
+  {
+   "id": "motor",
+   "name": "Motor cortex",
+   "box": [
+    246,
+    19,
+    104,
+    23
+   ],
+   "concept": "motor-cortex"
+  },
+  {
+   "id": "somato",
+   "name": "Somatosensory cortex",
+   "box": [
+    466,
+    19,
+    167,
+    23
+   ],
+   "concept": "somatosensory"
+  },
+  {
+   "id": "broca",
+   "name": "Broca's area (speaking)",
+   "box": [
+    66,
+    383,
+    104,
+    41
+   ],
+   "concept": "brocas-area"
+  },
+  {
+   "id": "wernicke",
+   "name": "Wernicke's area (understanding speech)",
+   "box": [
+    556,
+    475,
+    183,
+    41
+   ],
+   "concept": "wernickes-area"
+  },
+  {
+   "id": "cerebellum",
+   "name": "Cerebellum",
+   "box": [
+    686,
+    423,
+    88,
+    23
+   ],
+   "concept": "cerebellum"
+  },
+  {
+   "id": "brainstem",
+   "name": "Brainstem",
+   "box": [
+    286,
+    453,
+    80,
+    23
+   ],
+   "concept": "brainstem"
+  }
+ ]
+}

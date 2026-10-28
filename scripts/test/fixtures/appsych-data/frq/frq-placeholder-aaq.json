@@ -1,0 +1,139 @@
+{
+ "id": "frq-placeholder-aaq",
+ "type": "aaq",
+ "points": 7,
+ "placeholder": true,
+ "title": "Placeholder: article analysis question",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "operant-conditioning"
+ ],
+ "practices": [
+  "2.A",
+  "2.B",
+  "3.B",
+  "2.D",
+  "4.B"
+ ],
+ "study": {
+  "title": "Placeholder: schedules and persistence",
+  "invented": true,
+  "study": {
+   "introduction": "Placeholder introduction: researchers asked whether the schedule of reinforcement changes persistence.",
+   "participants": "Placeholder participants: 60 volunteers, randomly assigned to two groups. All gave informed consent and were debriefed.",
+   "method": "Placeholder method: each group played a game on a different schedule; persistence was the number of tries after rewards stopped.",
+   "results": "Placeholder results: the variable-ratio group kept trying longer."
+  },
+  "plot": {
+   "label": "Placeholder bar graph of mean tries after rewards stopped, invented data",
+   "kind": "bar",
+   "categories": [
+    "Fixed",
+    "Variable"
+   ],
+   "values": [
+    12,
+    20
+   ],
+   "yLabel": "Mean tries"
+  },
+  "ethics": [
+   "informed consent",
+   "debriefing"
+  ]
+ },
+ "parts": [
+  {
+   "label": "A",
+   "prompt": "<b>Identify</b> the research method used in the study.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part A, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part A, long enough to read."
+  },
+  {
+   "label": "B",
+   "prompt": "<b>State</b> the operational definition of persistence.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part B, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part B, long enough to read."
+  },
+  {
+   "label": "C",
+   "prompt": "<b>Describe</b> what the difference in means shows.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part C, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part C, long enough to read."
+  },
+  {
+   "label": "D",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>explain</b> how it was applied.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part D, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part D, long enough to read."
+  },
+  {
+   "label": "E",
+   "prompt": "<b>Explain</b> whether the results generalize to high-school students.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part E, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part E, long enough to read."
+  },
+  {
+   "label": "F",
+   "prompt": "<b>Explain</b> how the results support or refute the hypothesis.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Placeholder rubric point 1 for part F, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    },
+    {
+     "point": "Placeholder rubric point 2 for part F, with a clear criterion",
+     "accept": [
+      "an equivalent statement"
+     ]
+    }
+   ],
+   "sample": "Placeholder full-credit sample answer for part F, long enough to read."
+  }
+ ]
+}

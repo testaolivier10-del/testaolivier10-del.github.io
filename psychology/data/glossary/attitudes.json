@@ -1,0 +1,44 @@
+{
+ "attitude": {
+  "def": "A learned feeling and belief about a person, group, object or idea that predisposes a person to respond in a certain way."
+ },
+ "stereotype": {
+  "def": "A generalized belief about the members of a group, which may be partly accurate but is often overgeneralized and applied to individuals who do not fit it."
+ },
+ "prejudice": {
+  "def": "An unjustified, usually negative attitude toward a group and its members. It involves feelings, beliefs and a tendency to discriminate."
+ },
+ "cognitive-load": {
+  "def": "How much of working memory's limited capacity is in use. Under high cognitive load, people have less room to check automatic stereotypes."
+ },
+ "implicit-attitude": {
+  "def": "An automatic association, often outside awareness, about a group or object, which can differ from the attitude a person reports. Reaction-time measures of it vary from testing to testing and predict an individual's behavior only weakly."
+ },
+ "just-world": {
+  "def": "Just-world phenomenon: the tendency to believe the world is fair, so that people get what they deserve. It can lead to blaming victims."
+ },
+ "in-group": {
+  "def": "A group a person identifies with (\"us\")."
+ },
+ "out-group": {
+  "def": "A group a person does not identify with (\"them\")."
+ },
+ "outgroup-homogeneity": {
+  "def": "Out-group homogeneity: seeing members of other groups as more alike than members of one's own group."
+ },
+ "ingroup-bias": {
+  "def": "In-group bias: favoring members of one's own group, even when the group was formed by chance."
+ },
+ "ethnocentrism": {
+  "def": "Judging other cultures by the standards of one's own culture, treating one's own as the right or normal way."
+ },
+ "belief-perseverance": {
+  "def": "Holding on to a belief even after the evidence that formed it has been discredited."
+ },
+ "confirmation-bias": {
+  "def": "The tendency to seek, notice and remember information that supports what one already believes and to overlook information that challenges it."
+ },
+ "cognitive-dissonance": {
+  "def": "The discomfort felt when one's actions and attitudes, or two beliefs, clash. People tend to reduce it by changing the attitude, changing the action or adding a justification."
+ }
+}

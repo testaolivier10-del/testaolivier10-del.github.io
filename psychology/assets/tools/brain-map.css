@@ -1,0 +1,135 @@
+/* Brain map (psychology/assets/tools/brain-map.js). OWNED BY THIS TOOL ONLY (builder T2).
+   Lobes keep one color in both views (frontal blue, parietal amber, temporal
+   green, occipital purple; Okabe-Ito based, soft fills so the folds read);
+   the selected structure is the course cerulean; damage is a vermillion
+   hatch; fMRI activity a warm glow. Every structure is also named, so color
+   is never the only cue. Lighter tones in dark mode. */
+.bm-svg,.bm-qfig{--bm-f:#CFE3F4;--bm-p:#F6E3B8;--bm-t:#CFEBDD;--bm-o:#E6D6EE;--bm-fA:#9CC6E8;--bm-pA:#EFC97A;--bm-tA:#93D2B4;--bm-oA:#C9A9DC;
+  --bm-tis0:#F3E6E2;--bm-tis1:#E9D2CC;--bm-edge:#6B4F4A;--bm-sulc:#8E6F69;--bm-gyr:rgba(110,80,74,.32);--bm-stem:#E8CFC4;--bm-med:#DDBFB2;--bm-cbl:#E9CDBF;--bm-arbor:#F8EEEA;
+  --bm-cc:#F7F1E8;--bm-deep:#EAD3CB;--bm-sel:#084F78;--bm-selF:rgba(8,79,120,.34);--bm-dmg:#C24E00;--bm-dmgBg:rgba(194,78,0,.16);
+  --bm-seen:rgba(168,80,138,.12);--bm-seenE:#A8508A;--bm-pill:#FFFFFF;--bm-pillE:#C9D3DA;--bm-lead:#7A8A96;--bm-fm0:rgba(255,214,10,.95);--bm-fm1:rgba(255,120,0,.65);--bm-fm2:rgba(213,40,0,0);
+  --bm-body:#D7DEE3;--bm-bodyOn:#7DB6D9;--sb-scr:#1D2A33;--sb-word:#FFFFFF;--sb-head:#F2E1D3;--sb-headE:#9D7E68;--sb-hemi:#EADAD3;--sb-on:#9CC6E8;--sb-cc:#F7F1E8;--sb-yes:#00704F;--sb-no:#A83B2C;}
+:root[data-theme="dark"] .bm-svg,:root[data-theme="dark"] .bm-qfig{--bm-f:#1F3A52;--bm-p:#4A3D20;--bm-t:#1D4334;--bm-o:#3D2E49;--bm-fA:#2F5F86;--bm-pA:#7A6127;--bm-tA:#2C6B50;--bm-oA:#62457A;
+  --bm-tis0:#3B2E2C;--bm-tis1:#302523;--bm-edge:#D6B9B2;--bm-sulc:#C7A49C;--bm-gyr:rgba(220,190,180,.28);--bm-stem:#4A3833;--bm-med:#56413A;--bm-cbl:#4A3732;--bm-arbor:#6B5650;
+  --bm-cc:#5F5650;--bm-deep:#4A3934;--bm-sel:#8CC8E8;--bm-selF:rgba(140,200,232,.38);--bm-dmg:#FF9A5C;--bm-dmgBg:rgba(255,154,92,.18);
+  --bm-seen:rgba(229,154,200,.14);--bm-seenE:#E59AC8;--bm-pill:#1B252C;--bm-pillE:#3B4A55;--bm-lead:#7F95A3;
+  --bm-body:#34414A;--bm-bodyOn:#4E8DB5;--sb-scr:#0E151A;--sb-word:#FFFFFF;--sb-head:#4A3A31;--sb-headE:#C9AA90;--sb-hemi:#3E312C;--sb-on:#2F5F86;--sb-cc:#6B6058;--sb-yes:#7BE0C1;--sb-no:#FF8E7E;}
+.bm-card{display:grid;gap:14px;}
+.bm-fig{position:relative;min-height:380px;height:min(74vh,660px);}
+.ls-root .bm-fig{flex:1 1 auto;height:auto;min-height:300px;}
+.bm-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.bm-fig .bm-svg{position:absolute;inset:0;}
+.bm-qfig .bm-svg{height:auto;}
+.bm-svg path,.bm-svg rect,.bm-svg circle,.bm-svg ellipse,.bm-svg line{vector-effect:non-scaling-stroke;}
+/* tissue */
+.bm-tissue0{stop-color:var(--bm-tis0);} .bm-tissue1{stop-color:var(--bm-tis1);}
+.bm-tissue{stroke:none;}
+.bm-outline{fill:none;stroke:var(--bm-edge);stroke-width:2.2;}
+.bm-edge{fill:none;stroke:var(--bm-edge);stroke-width:1.6;}
+.bm-lobe{stroke:none;}
+.bm-lobe.bm-f{fill:var(--bm-f);} .bm-lobe.bm-p{fill:var(--bm-p);} .bm-lobe.bm-t{fill:var(--bm-t);} .bm-lobe.bm-o{fill:var(--bm-o);}
+.bm-area{stroke:rgba(0,0,0,.18);stroke-width:1;stroke-dasharray:3 3;}
+.bm-area.bm-f{fill:var(--bm-fA);} .bm-area.bm-p{fill:var(--bm-pA);} .bm-area.bm-t{fill:var(--bm-tA);} .bm-area.bm-o{fill:var(--bm-oA);}
+.bm-area{fill-opacity:.62;}
+.bm-r[data-r="prefrontal"]{fill-opacity:.42;}
+.bm-sulcus{fill:none;stroke:var(--bm-sulc);stroke-width:3;stroke-linecap:round;}
+.bm-sulcus.is-thin{stroke-width:1.4;opacity:.7;}
+.bm-gyrus{fill:none;stroke:var(--bm-gyr);stroke-width:2;stroke-linecap:round;}
+.bm-stem{fill:var(--bm-stem);stroke:none;}
+.bm-stem.bm-med{fill:var(--bm-med);}
+.bm-stem.bm-mid{fill:var(--bm-stem);stroke:none;}
+.bm-cbl path:first-child{fill:var(--bm-cbl);stroke:var(--bm-edge);stroke-width:1.6;}
+.bm-folia{fill:none;stroke:var(--bm-sulc);stroke-width:1.2;opacity:.75;}
+.bm-arbor{fill:none;stroke:var(--bm-arbor);stroke-linecap:round;}
+.bm-vent{fill:var(--bm-tis1);stroke:var(--bm-edge);stroke-width:1;}
+.bm-core{fill:var(--bm-deep);opacity:.55;}
+.bm-cc{fill:var(--bm-cc);stroke:var(--bm-edge);stroke-width:1.6;}
+.bm-fornix{fill:none;stroke:var(--bm-cc);stroke-width:9;stroke-linecap:round;opacity:.9;}
+.bm-deep0{fill:var(--bm-deep);stroke:var(--bm-edge);stroke-width:1.4;}
+.bm-hyp{fill:var(--bm-med);}
+.bm-pit{fill:var(--bm-pA);}
+.bm-stalk{fill:none;stroke:var(--bm-edge);stroke-width:3;stroke-linecap:round;}
+.bm-chiasm{fill:var(--bm-cc);stroke:var(--bm-edge);stroke-width:1;}
+.bm-ras{fill:none;stroke:var(--bm-seenE);stroke-width:7;stroke-linecap:round;stroke-dasharray:2 7;opacity:.8;}
+.bm-seen{fill:var(--bm-seen);stroke:var(--bm-seenE);stroke-width:1.8;stroke-dasharray:6 4;}
+.bm-da{fill:none;stroke:var(--bm-seenE);stroke-width:3;stroke-dasharray:5 4;}
+.bm-da-h{fill:none;stroke:var(--bm-seenE);stroke-width:3;}
+/* interaction */
+.bm-r[data-r]{cursor:pointer;}
+.bm-r[data-r]:hover{filter:brightness(.95) saturate(1.2);}
+.bm-r.is-sel{fill:var(--bm-selF);stroke:var(--bm-sel);stroke-width:3;stroke-dasharray:none;fill-opacity:1;}
+.bm-lobe.is-sel{fill:var(--bm-selF);}
+.bm-cbl.is-sel path:first-child{fill:var(--bm-selF);stroke:var(--bm-sel);stroke-width:3;}
+.bm-stem.is-sel{fill:var(--bm-selF);}
+.bm-ras.is-sel{stroke:var(--bm-sel);opacity:1;stroke-width:9;}
+.bm-hatch-bg{fill:var(--bm-dmgBg);} .bm-hatch{stroke:var(--bm-dmg);stroke-width:2.6;}
+.bm-damage{stroke:var(--bm-dmg);stroke-width:2.6;pointer-events:none;}
+.bm-fmri0{stop-color:var(--bm-fm0);} .bm-fmri1{stop-color:var(--bm-fm1);} .bm-fmri2{stop-color:var(--bm-fm2);}
+.bm-fmri{pointer-events:none;mix-blend-mode:multiply;}
+:root[data-theme="dark"] .bm-fmri{mix-blend-mode:screen;}
+/* labels: pills in bands with leader lines */
+.bm-lead{fill:none;stroke:var(--bm-lead);stroke-width:1.2;}
+.bm-lead.is-sel{stroke:var(--bm-sel);stroke-width:2;}
+.bm-dot{fill:var(--bm-lead);} .bm-dot.is-sel{fill:var(--bm-sel);}
+.bm-lab rect{fill:var(--bm-pill);stroke:var(--bm-pillE);stroke-width:1.2;}
+.bm-lab text{fill:var(--ink);font-weight:800;}
+.bm-lab[data-r]{cursor:pointer;outline:none;}
+.bm-lab[data-r]:hover rect{stroke:var(--bm-sel);}
+.bm-lab[data-r]:focus-visible rect{stroke:var(--cink);stroke-width:3;}
+.bm-lab.is-sel rect{fill:var(--bm-sel);stroke:var(--bm-sel);}
+.bm-lab.is-sel text{fill:var(--white);}
+:root[data-theme="dark"] .bm-lab.is-sel text{fill:#0B1A22;}
+.bm-front{fill:var(--muted);font-weight:800;}
+.bm-body-off{fill:var(--bm-body);} .bm-body-on{fill:var(--bm-bodyOn);}
+.bm-body-lr{fill:var(--muted);font-weight:800;}
+.bm-body-t{fill:var(--ink);font-weight:800;paint-order:stroke;stroke:var(--white);stroke-width:4px;}
+/* split brain */
+.sb-screen{fill:var(--sb-scr);}
+.sb-fix{fill:#FFFFFF;}
+.sb-word{fill:var(--sb-word);font-weight:900;letter-spacing:.06em;opacity:0;}
+.sb-word.is-on{opacity:1;}
+.sb-tk{fill:var(--muted);font-weight:800;}
+.sb-head{fill:var(--sb-head);stroke:var(--sb-headE);stroke-width:2.5;}
+.sb-nose{fill:var(--sb-head);stroke:var(--sb-headE);stroke-width:2.5;stroke-linejoin:round;}
+.sb-ear{fill:var(--sb-head);stroke:var(--sb-headE);stroke-width:2;}
+.sb-hemi{fill:var(--sb-hemi);stroke:var(--sb-headE);stroke-width:2;}
+.sb-hemi.is-on{fill:var(--sb-on);}
+.sb-hl{fill:var(--ink);font-weight:800;}
+.sb-has{fill:var(--bm-sel);font-weight:900;}
+.sb-speech-badge rect{fill:var(--bm-pill);stroke:var(--bm-pillE);}
+.sb-speech-badge text{fill:var(--muted);font-weight:800;}
+.sb-cc{fill:var(--sb-cc);stroke:var(--sb-headE);stroke-width:2;}
+.sb-cc.is-on{fill:var(--bm-selF);stroke:var(--bm-sel);}
+.sb-cc.is-cut{fill:var(--bm-dmgBg);stroke:var(--bm-dmg);stroke-dasharray:6 5;}
+.sb-cut{fill:none;stroke:var(--bm-dmg);stroke-width:5;stroke-linecap:round;}
+.sb-eye{fill:#FFFFFF;stroke:var(--sb-headE);stroke-width:2;}
+.sb-path{fill:none;stroke:var(--bm-sel);stroke-width:4;stroke-linecap:round;}
+.sb-path.is-out{stroke-width:2.5;stroke-dasharray:7 6;opacity:.7;}
+.sb-arrow{fill:none;stroke:var(--bm-sel);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
+.sb-scr-t{fill:#AFC0CC;font-weight:700;}
+.sb-mid{stroke:#55636D;stroke-width:1.5;stroke-dasharray:4 6;}
+.sb-hl.is-on{fill:var(--bm-sel);}
+.sb-cross{fill:none;stroke:var(--bm-sel);stroke-width:5;stroke-linecap:round;}
+.sb-cross-h{fill:none;stroke:var(--bm-sel);stroke-width:5;stroke-linecap:round;}
+.sb-bubble rect,.sb-bubble path{fill:var(--bm-pill);stroke:var(--bm-pillE);stroke-width:2;}
+.sb-bubble text{fill:var(--ink);font-weight:900;}
+.sb-bubble.is-yes rect,.sb-bubble.is-yes path{stroke:var(--sb-yes);}
+.sb-bubble.is-no rect,.sb-bubble.is-no path{stroke:var(--sb-no);}
+.sb-wire{fill:none;stroke:var(--bm-lead);stroke-width:2;stroke-dasharray:4 6;opacity:.6;}
+.sb-wire.is-on{stroke:var(--bm-sel);stroke-dasharray:none;opacity:1;stroke-width:3;}
+.sb-hand{fill:var(--sb-head);stroke:var(--sb-headE);stroke-width:2.5;}
+.sb-hand.is-yes{stroke:var(--sb-yes);stroke-width:4;}
+.sb-hand.is-no{stroke:var(--sb-no);stroke-width:4;stroke-dasharray:6 5;}
+.sb-find{font-weight:900;}
+.sb-find.is-yes{fill:var(--sb-yes);} .sb-find.is-no{fill:var(--sb-no);}
+/* controls */
+.bm-ctl{display:grid;gap:12px;}
+.bm-grp{display:grid;gap:10px;}
+.bm-grp[hidden],.bt-ctl[hidden]{display:none;}
+.bm-go{display:flex;gap:10px;}
+.bm-go > *{flex:1;}
+.bm-dmg[aria-pressed="true"]{border-color:var(--bm-dmg,#C24E00);color:#A84A00;background:rgba(194,78,0,.08);}
+:root[data-theme="dark"] .bm-dmg[aria-pressed="true"]{color:#FFB385;}
+.bm-dmg:disabled{opacity:.6;cursor:default;}
+.bm-tipslot{height:58px;}
+.bm-list{margin:0 0 10px;padding-left:18px;display:grid;gap:4px;font:600 14px/1.45 var(--font-ui);}

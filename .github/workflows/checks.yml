@@ -181,6 +181,19 @@ jobs:
         run: node scripts/build-apenv.mjs --check
       - name: the AP Environmental Science content follows its rules
         run: node scripts/check-apenv-content.mjs --check
+      # AP Psychology, the same three checks (docs/appsych-architecture.md):
+      # the ordering rule, the generated pages against psychology/data, and
+      # the authored data against its rules (every numeric key recomputed by
+      # ApPsychStats, the study, data and figure sets, the AAQ and EBQ in the
+      # exam's parts, invented studies labeled, no myths, respectful
+      # mental-health language, pre-registered tools). Only published units
+      # fail.
+      - name: the AP Psychology course uses no concept before it is taught
+        run: node scripts/check-appsych-map.mjs --check
+      - name: the AP Psychology pages match their data
+        run: node scripts/build-appsych.mjs --check
+      - name: the AP Psychology content follows its rules
+        run: node scripts/check-appsych-content.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.

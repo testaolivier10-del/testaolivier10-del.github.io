@@ -90,7 +90,11 @@ change only (`tool-studio.css/js`); desktop (≥1000 px) is unchanged apart from
 - **Portrait ≤640 px:** the stage is `62svh` (min 300 px), full width (no side margin, 4 px inner padding), bar 52 px.
   The dock follows below with tighter spacing and no inner scroll; the page scrolls for long drill text (the
   `.ls-act` / primary row stays sticky at the bottom of the screen). The caption shows 3 lines; a tap shows the
-  rest (screen readers get it all). Segments and Why? are 44 px tall.
+  rest (screen readers get it all). Segments and Why? are 44 px tall (at every width since 2026-10-27).
+- **Primary row pinning (2026-10-27):** the AP® Psychology launch briefly unpinned the row when it covered a dock
+  control (`paintPins`); main's phone layout (#116: the stage gives up height so the dock fits down to its sticky
+  row, `s.reveal`, `.ls-pbar`) replaced it in the merge, and `.ls-unpin` is gone. A first-run tip whose target is
+  below the fold stays hidden until the target scrolls in, and its ring stops at the stage's edge.
 - **Phone on its side** (≤999 px wide and ≤540 px tall, landscape): picture | dock side by side (dock 36%, min 270 px,
   scrolls inside), bar 44 px, safe-area insets respected.
 - **Enlarge** (`.ls-enl`, bottom-right of the stage, every size; shown only when the stage holds an svg, canvas or img at

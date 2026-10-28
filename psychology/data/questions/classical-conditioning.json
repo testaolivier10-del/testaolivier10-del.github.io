@@ -1,0 +1,722 @@
+{
+ "stimuli": {
+  "classical-conditioning-s1": {
+   "kind": "study",
+   "title": "Invented study: a tone, a puff of air and an eye blink",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether a tone that is followed by a puff of air to the eye can come to cause an eye blink on its own.",
+    "participants": "24 college students (ages 18 to 23; 14 women and 10 men) volunteered. Each gave informed consent and could stop at any time. The puff was gentle and harmless.",
+    "method": "On each trial a tone sounded for half a second and was followed at once by a light puff of air to one eye, which makes people blink without learning. After 40 pairings, the tone was played alone 20 times (no puff). The next day the tone was played alone 5 more times. A sensor recorded a blink as any eyelid closure within half a second after the tone began.",
+    "results": "Before any pairing, students blinked to the tone on 5% of trials. After 40 pairings they blinked to the tone alone on 80% of trials. By the end of the 20 tone-alone trials this fell to 10%. On the first tone of the next day it rose to 45%."
+   }
+  },
+  "classical-conditioning-s2": {
+   "kind": "data",
+   "title": "Invented data: one dog, a tone and saliva",
+   "invented": true,
+   "plot": {
+    "label": "Line graph of drops of saliva to a tone across 18 trials: rising during acquisition, falling to zero during extinction, then partly returning after a day of rest (invented data)",
+    "kind": "line",
+    "xLabel": "Trial",
+    "yLabel": "Drops of saliva to the tone",
+    "x": [
+     0,
+     18
+    ],
+    "xStep": 2,
+    "y": [
+     0,
+     12
+    ],
+    "series": [
+     {
+      "name": "Tone + food (acquisition)",
+      "points": [
+       [
+        1,
+        0
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        6
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        6,
+        9
+       ],
+       [
+        7,
+        10
+       ],
+       [
+        8,
+        10
+       ]
+      ]
+     },
+     {
+      "name": "Tone alone (extinction)",
+      "points": [
+       [
+        9,
+        9
+       ],
+       [
+        10,
+        7
+       ],
+       [
+        11,
+        5
+       ],
+       [
+        12,
+        3
+       ],
+       [
+        13,
+        2
+       ],
+       [
+        14,
+        1
+       ],
+       [
+        15,
+        0
+       ]
+      ]
+     },
+     {
+      "name": "Tone alone, next day",
+      "points": [
+       [
+        16,
+        6
+       ],
+       [
+        17,
+        3
+       ],
+       [
+        18,
+        1
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-classical-conditioning-1",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Jordan ate sushi for dinner, and a stomach virus made him vomit that night. The sushi did not cause the illness, yet a year later the smell of sushi still makes him queasy. Which concept best explains his reaction?",
+   "options": [
+    "Taste aversion, learned after one pairing",
+    "Habituation to the smell of sushi",
+    "Spontaneous recovery of a fear response",
+    "Higher-order conditioning of the smell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A single taste paired with illness, even with hours between them, is enough: the sushi became a CS that now triggers nausea (the CR).",
+    "options": [
+     "Right: one pairing of a taste with illness, even hours apart, made the sushi a conditioned stimulus for nausea.",
+     "Habituation is a weaker response to a repeated stimulus. Jordan reacts more, not less.",
+     "Spontaneous recovery needs an earlier extinction. Nothing was extinguished here.",
+     "Higher-order conditioning pairs a new stimulus with an existing CS. The sushi was paired directly with illness, the UCS."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-2",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Maya was bitten by a large German shepherd as a child. Now she feels afraid around golden retrievers and huskies too, though they have never hurt her. Which concept explains the wider fear?",
+   "options": [
+    "Stimulus generalization",
+    "Stimulus discrimination",
+    "Extinction of the fear",
+    "Habituation to large dogs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Her fear spread from one kind of large dog to similar dogs: stimulus generalization.",
+    "options": [
+     "Right: stimuli similar to the original CS (other large dogs) now trigger the CR.",
+     "Discrimination is responding to the CS but not to similar stimuli. Maya responds to the similar ones.",
+     "Extinction weakens a CR. Her fear has spread, not faded.",
+     "Habituation would make her react less to dogs over time, the opposite of what happened."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-3",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A cat runs to the kitchen when it hears the electric can opener, but it ignores the blender, which makes a similar whirring sound. Which concept does the cat show?",
+   "options": [
+    "Stimulus discrimination",
+    "Stimulus generalization",
+    "Spontaneous recovery",
+    "Acquisition of a new UCS"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The can opener has been paired with food and the blender has not, so the cat responds to one and not the other: discrimination.",
+    "options": [
+     "Right: the cat responds to the stimulus paired with food and not to a similar one that never was.",
+     "Generalization would mean running to the blender too.",
+     "Spontaneous recovery is a CR returning after extinction and a rest; nothing was extinguished.",
+     "Food is the UCS and needs no learning. The cat has learned which sound predicts it."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-4",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "When Priya moved next to a train line, the rumble woke her every night. After a month she sleeps through it. No other event was ever paired with the trains. Which concept explains the change?",
+   "options": [
+    "Habituation",
+    "Extinction",
+    "Stimulus discrimination",
+    "Counterconditioning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Habituation is the simplest learning: a response fades to a stimulus that repeats without consequence. It needs no pairing, which is what sets it apart from extinction.",
+    "options": [
+     "Right: a repeated stimulus that brings nothing important produces a weaker and weaker response. No pairing is involved.",
+     "Extinction weakens a learned CR when a CS stops being paired with its UCS. Waking to a loud noise was never conditioned.",
+     "Discrimination is telling a CS apart from similar stimuli, not reacting less to one stimulus.",
+     "Counterconditioning pairs a stimulus with a new, opposite response. Nothing was paired here."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-5",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A song has been playing every time Leo sees his new partner, and the song now makes him feel happy. Later, a café plays that song several times while Leo smells its cinnamon rolls, and the cinnamon smell alone starts to make him feel happy. Which concept explains the reaction to the smell?",
+   "options": [
+    "Higher-order conditioning",
+    "Stimulus generalization",
+    "Taste aversion",
+    "Spontaneous recovery"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The smell was paired with the song, a stimulus that was already conditioned, not with the partner directly: higher-order (second-order) conditioning.",
+    "options": [
+     "Right: the song was already a CS, and pairing the smell with that CS made the smell a CS too, with no UCS present.",
+     "Generalization is a response to stimuli similar to the CS. A smell is not similar to a song.",
+     "Taste aversion pairs a taste with illness and produces nausea, not happiness.",
+     "Spontaneous recovery is an extinguished CR returning after rest. Nothing was extinguished."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-6",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A child who is afraid of the dentist's chair is given her favorite snack and a tablet game each time she sits in it. Over several visits, the chair comes to bring calm instead of fear. Which concept is the dentist using?",
+   "options": [
+    "Counterconditioning",
+    "Spontaneous recovery",
+    "Higher-order conditioning",
+    "Stimulus generalization"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Counterconditioning pairs the CS (the chair) with a UCS that triggers a response incompatible with fear, so calm replaces fear.",
+    "options": [
+     "Right: the feared CS is paired with stimuli that bring a pleasant, incompatible response, which replaces the fear.",
+     "Spontaneous recovery is a CR coming back after extinction, the opposite of what the dentist wants.",
+     "Higher-order conditioning pairs a new stimulus with an existing CS to spread a response, not to replace it.",
+     "Generalization spreads a response to similar stimuli. Here the response to one stimulus changes."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-7",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a lab, people learn a mild fear response (measured by sweating) to pictures paired with a harmless but unpleasant noise. Fear is learned faster and lasts longer to pictures of snakes than to pictures of flowers. Which concept explains the difference?",
+   "options": [
+    "Biological preparedness",
+    "Habituation",
+    "Stimulus discrimination",
+    "Spontaneous recovery"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Preparedness: natural selection favored ancestors who learned quickly to fear real dangers, so those links form faster and resist extinction.",
+    "options": [
+     "Right: evolution has primed people to learn some links, such as fear of snakes, more easily than others.",
+     "Habituation is a weaker response to repeated stimuli. It does not explain why one kind of picture is learned faster.",
+     "People did discriminate the two kinds of pictures, but that does not explain why snakes were learned faster.",
+     "Spontaneous recovery is a CR returning after extinction. This is a difference in how fast a CR is acquired."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-8",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After a car crash, Sam felt panic every time he sat in a car. Months of calm drives faded the panic until it was gone. Then, after a summer away, Sam feels a short wave of panic the first time he gets back in a car. Which concept explains that wave?",
+   "options": [
+    "Spontaneous recovery",
+    "Acquisition",
+    "Habituation",
+    "Stimulus generalization"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Extinction weakens a CR but does not erase the learning. After a rest, the CR can come back for a while: spontaneous recovery.",
+    "options": [
+     "Right: an extinguished CR returns, usually weaker, after a rest period.",
+     "Acquisition is the first learning of the link. Nothing new was paired with the car.",
+     "Habituation would make his response weaker over time, not bring it back.",
+     "Generalization is a response to stimuli similar to the CS. The car is the CS itself."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-9",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In classical conditioning, which of the following has to be learned?",
+   "options": [
+    "The conditioned response",
+    "The unconditioned response",
+    "The unconditioned stimulus",
+    "A reflex to the food itself"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only the link from the CS to the CR is learned. The UCS to UCR link is inborn.",
+    "options": [
+     "Right: the CR is a learned response to a stimulus that once did nothing.",
+     "The UCR is automatic: no learning is needed for food to cause salivation.",
+     "The UCS triggers its response with no learning; that is what \"unconditioned\" means.",
+     "Salivating to food is an inborn reflex, the UCR. It is not learned."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-10",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A researcher who takes a behaviorist view wants to study fear. Which research question fits that view best?",
+   "options": [
+    "Which events, paired with what, make a child flinch?",
+    "What thoughts run through a fearful child's mind?",
+    "How does a child describe her feelings in a diary?",
+    "Which childhood wishes are hidden behind a fear?"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Behaviorism holds that psychology should study observable behavior and how the environment shapes it.",
+    "options": [
+     "Right: behaviorism studies observable behavior and the events that predict it.",
+     "Inner thoughts cannot be observed directly, so a strict behaviorist sets them aside.",
+     "Diaries report inner experience. Behaviorism focuses on what can be observed and measured.",
+     "Hidden wishes are not observable behavior, which is what behaviorism studies."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-11",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "q": "In 1920 two researchers paired a loud noise with a white rat until an infant, known as \"Little Albert,\" cried at the sight of the rat. They did not remove the fear before his family left. Which ethical safeguard does this study most clearly fail by today's standards?",
+   "options": [
+    "Protection from harm",
+    "Random assignment to groups",
+    "Confidentiality of the data",
+    "Double-blind data collection"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Today an IRB would require that participants, especially children, are protected from lasting harm. The study is also a single case, so how well it generalizes is unclear.",
+    "options": [
+     "Right: the researchers created a lasting fear in an infant and did not undo it.",
+     "Random assignment is a design feature, not an ethical safeguard, and this was a single case.",
+     "The main problem was not shared data but harm done to the child.",
+     "Blinding protects against bias in results. It is not the safeguard this study failed."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-12",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "order",
+   "practice": "1.A",
+   "q": "A nurse gives a child a shot that hurts, and the child cries. The nurse always wears a blue uniform, and soon the child cries at the sight of anyone in blue. Put the events in the order they happen.",
+   "options": [
+    "Before learning, the blue uniform brings no crying (a neutral stimulus)",
+    "The shot (UCS) causes crying (UCR) with no learning",
+    "The blue uniform is repeatedly seen just before the shot (acquisition)",
+    "The blue uniform alone now causes crying (CS and CR)",
+    "Seeing other people in blue also causes crying (generalization)"
+   ],
+   "why": {
+    "correct": "A neutral stimulus, a UCS that already works, repeated pairing, the CS alone producing the CR, then the CR spreading to similar stimuli."
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-13",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "classical-conditioning-s1",
+   "q": "In this study, what is the unconditioned stimulus?",
+   "options": [
+    "The puff of air to the eye",
+    "The tone before training",
+    "The blink to the tone alone",
+    "The sensor on the eyelid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A UCS triggers a response with no learning: the puff of air makes the eye blink (the UCR).",
+    "options": [
+     "Right: the puff causes a blink without any learning.",
+     "Before training the tone is the neutral stimulus; it caused blinks on only 5% of trials.",
+     "That is the conditioned response, a learned blink.",
+     "The sensor measures blinks. It is part of the method, not a stimulus."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-14",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "classical-conditioning-s1",
+   "q": "After the 40 pairings, a student blinks when the tone sounds alone. In conditioning terms, that blink is the",
+   "options": [
+    "conditioned response to the conditioned stimulus",
+    "unconditioned response to the unconditioned stimulus",
+    "unconditioned response to a neutral stimulus",
+    "conditioned stimulus to the unconditioned response"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "After acquisition, the tone (CS) alone triggers a blink (CR). The same movement is a UCR when the puff causes it and a CR when the tone does.",
+    "options": [
+     "Right: the tone is now a CS and the learned blink to it is the CR.",
+     "The UCR is the blink to the puff. No puff was given on these trials.",
+     "A neutral stimulus causes no relevant response, and a blink to it after training is learned.",
+     "A blink is a response, not a stimulus."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-15",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "classical-conditioning-s1",
+   "q": "Which result shows spontaneous recovery?",
+   "options": [
+    "Blinks rose from 10% to 45% on the first tone of the next day",
+    "Blinks rose from 5% to 80% across the 40 pairings",
+    "Blinks fell from 80% to 10% across 20 tone-alone trials",
+    "Students blinked to the tone on 5% of trials before pairing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Spontaneous recovery is the return of an extinguished CR after a pause. It went from 10% at the end of extinction to 45% the next day.",
+    "options": [
+     "Right: after extinction and a rest, the CR came back, weaker than before.",
+     "That rise is acquisition: the tone becoming a CS.",
+     "That fall is extinction, the tone presented without the puff.",
+     "That is the baseline, before any learning."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-16",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "classical-conditioning-s1",
+   "q": "Write the operational definition of the conditioned response the researchers measured.",
+   "why": {
+    "correct": "An operational definition says exactly how this study measured the variable: blinks detected by the sensor within half a second of the tone, as a percent of tone-alone trials."
+   },
+   "specific": {
+    "frame": "The conditioned response was measured as ___, recorded ___.",
+    "write": {
+     "context": [
+      "blink",
+      "eyelid"
+     ]
+    },
+    "model": "The conditioned response was measured as the percent of tone-alone trials with an eyelid closure, recorded by a sensor within half a second after the tone began.",
+    "slots": {
+     "opdef": {
+      "label": "What was counted",
+      "options": [
+       "the percent of tone-alone trials with an eyelid closure",
+       "how nervous the tone made students feel",
+       "the number of puffs each student received"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A feeling was never measured; the sensor recorded eyelid closures.",
+       "2": "Every student got the same puffs; puffs are the UCS, not the response."
+      }
+     },
+     "when": {
+      "label": "How and when",
+      "options": [
+       "by a sensor within half a second after the tone began",
+       "by asking students afterward whether they blinked"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The study used a sensor, not self-report, which would be less accurate for a fast reflex."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-17",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "classical-conditioning-s2",
+   "q": "Saliva was measured in the seconds after the tone, before any food arrived. What explains the drop from trial 9 to trial 15?",
+   "options": [
+    "Extinction: the tone kept sounding without food",
+    "Habituation to the food",
+    "Stimulus discrimination between two tones",
+    "The dog forgot the tone overnight"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From trial 9 the tone came alone, so the CR (saliva to the tone) faded: extinction.",
+    "options": [
+     "Right: when the CS is no longer followed by the UCS, the CR weakens.",
+     "Food was not given on these trials, so the dog could not habituate to it.",
+     "There is one tone in this study, so there was nothing to discriminate.",
+     "Trials 9 to 15 happened on the same day; the rest came after trial 15."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-18",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "classical-conditioning-s2",
+   "q": "On trial 16, after a day of rest, the dog produced 6 drops. What does that result show?",
+   "options": [
+    "Extinction weakened the response without erasing the learning",
+    "The dog acquired a new UCS overnight",
+    "The tone has become an unconditioned stimulus",
+    "The dog generalized to a new tone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A CR that returns after rest (spontaneous recovery) means extinction suppressed the response rather than wiping out what was learned.",
+    "options": [
+     "Right: spontaneous recovery shows the CS to CR link survived extinction.",
+     "No new stimulus was paired; a UCS is not acquired anyway.",
+     "A tone never causes saliva without learning, so it cannot be a UCS.",
+     "The same tone was used, so this is not generalization."
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-19",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "classical-conditioning-s2",
+   "q": "Find the mean number of drops of saliva across the first five extinction trials (trials 9 to 13).",
+   "why": {
+    "correct": "Add the five values, $9 + 7 + 5 + 3 + 2 = 26$, and divide by 5: $\\frac{26}{5} = 5.2$ drops."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       9,
+       7,
+       5,
+       3,
+       2
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         9,
+         7,
+         5,
+         3,
+         2
+        ]
+       ]
+      },
+      "why": "26 is the total of the five trials. Divide by the number of trials, 5."
+     },
+     {
+      "from": {
+       "fn": "median",
+       "args": [
+        [
+         9,
+         7,
+         5,
+         3,
+         2
+        ]
+       ]
+      },
+      "why": "5 is the middle value, the median. The mean adds the values and divides by how many there are."
+     },
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         9,
+         7,
+         5,
+         3,
+         2,
+         1,
+         0
+        ]
+       ]
+      },
+      "why": "That uses all seven extinction trials. The question asks for trials 9 to 13 only."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-classical-conditioning-20",
+   "unit": "unit-3",
+   "topic": "classical-conditioning",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "classical-conditioning-s2",
+   "q": "A student says the graph proves the dog \"unlearned\" the tone by trial 15. Which part of the graph is the best evidence against that claim?",
+   "options": [
+    "The return to 6 drops on the next day",
+    "The rise from 0 to 10 drops in trials 1 to 8",
+    "The steady 10 drops on trials 7 and 8",
+    "The fall to 0 drops on trial 15"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Spontaneous recovery on the next day shows the learned link was still there, only suppressed.",
+    "options": [
+     "Right: if the link were gone, the tone alone would bring no saliva after rest.",
+     "That rise shows acquisition. It says nothing about whether extinction erased the link.",
+     "That plateau shows learning leveled off before extinction began.",
+     "Zero drops at trial 15 is what the student points to; it does not argue against the claim."
+    ]
+   }
+  }
+ ]
+}

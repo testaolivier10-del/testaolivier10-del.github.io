@@ -1,0 +1,20 @@
+{
+ "population-research": {
+  "def": "In research, the whole group a study wants to draw conclusions about, such as all U.S. high-school seniors."
+ },
+ "sample-research": {
+  "def": "The part of a population that is actually studied."
+ },
+ "random-sampling": {
+  "def": "Choosing participants so that every member of the population has the same chance of being selected."
+ },
+ "representative-sample": {
+  "def": "A sample whose makeup (age, gender, background and so on) matches the population it stands for."
+ },
+ "sampling-bias": {
+  "def": "A flaw in how a sample is chosen that makes it unrepresentative, as with a convenience sample of whoever is easy to reach or a self-selected sample of volunteers."
+ },
+ "generalizability": {
+  "def": "How far a study’s results can be applied to people beyond its participants; judged by how similar the participants are to the group in question."
+ }
+}

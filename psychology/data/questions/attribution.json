@@ -1,0 +1,568 @@
+{
+ "stimuli": {
+  "attribution-s1": {
+   "kind": "study",
+   "title": "Invented study: why did a classmate fail?",
+   "invented": true,
+   "study": {
+    "introduction": "Researchers asked whether people explain a failure differently when it is their own than when it is a classmate's.",
+    "participants": "64 high school juniors (ages 16 and 17) at one school in Oregon took part with a parent's consent and their own assent.",
+    "method": "Students were randomly assigned to two groups of 32. In the self group, each student recalled a time they failed a test and rated the cause. In the classmate group, each student read a description of a classmate who failed a test and rated the cause. Both groups used two 1-to-7 scales: how much the failure was due to the person (effort, ability), and how much it was due to the situation (a hard test, little time, a bad day).",
+    "results": "On the person scale, the classmate group's mean was 5.4 and the self group's was 3.1. On the situation scale, the classmate group's mean was 3.0 and the self group's was 5.2."
+   }
+  },
+  "attribution-s2": {
+   "kind": "data",
+   "title": "Invented data: locus of control and hours studied",
+   "invented": true,
+   "plot": {
+    "label": "Scatterplot of 8 students: locus of control score (higher means more internal) against hours studied per week; the points rise from left to right (invented data)",
+    "kind": "scatter",
+    "xLabel": "Locus of control score (higher = more internal)",
+    "yLabel": "Hours studied per week",
+    "points": [
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      7,
+      9
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      9,
+      11
+     ]
+    ],
+    "trend": true
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-attribution-1",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A driver cuts Elena off on the highway, and she mutters, \"What a selfish jerk.\" She does not consider that he might be rushing to a hospital. Which concept best explains her judgment?",
+   "options": [
+    "Fundamental attribution error",
+    "Self-serving bias",
+    "Actor-observer bias",
+    "Relative deprivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Judging another person by disposition while overlooking the situation is the fundamental attribution error.",
+    "options": [
+     "Right: she explains another person's behavior by his character and underweights the situation.",
+     "The self-serving bias is about explaining your own successes and failures, not a stranger's behavior.",
+     "The actor-observer bias contrasts how you explain your own behavior with someone else's. Only his behavior is judged here.",
+     "Relative deprivation is feeling worse off than a comparison group. It does not explain a judgment about a driver."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-2",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "When Theo is late to class he says the bus broke down. When his classmate Ana is late, Theo decides she just does not care about school. Which concept explains the difference?",
+   "options": [
+    "Actor-observer bias",
+    "Self-fulfilling prophecy",
+    "Mere exposure effect",
+    "Downward social comparison"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The same behavior (being late) is explained by the situation for himself and by disposition for Ana: the actor-observer bias.",
+    "options": [
+     "Right: as the actor he points to the situation; as the observer he points to Ana's disposition.",
+     "A self-fulfilling prophecy is an expectation that causes itself to come true. No expectation is changing anyone's behavior here.",
+     "The mere exposure effect is liking something more after repeated exposure.",
+     "Downward comparison is comparing yourself with someone worse off to feel better. Theo is explaining causes."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-3",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "After acing a test, Jade says, \"I studied hard and I'm good at this.\" After failing the next one, she says, \"The questions were unfair.\" Which concept explains her pattern?",
+   "options": [
+    "Self-serving bias",
+    "Fundamental attribution error",
+    "External locus of control",
+    "Belief in a just world"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Taking credit for successes (dispositional) and blaming failures on circumstances (situational) protects self-image: the self-serving bias.",
+    "options": [
+     "Right: she credits herself for success and the situation for failure.",
+     "The fundamental attribution error concerns judging other people's behavior, not her own results.",
+     "An external locus means believing outcomes are generally out of your control. Jade credits herself for her success.",
+     "That is the belief that people get what they deserve, a different idea."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-4",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Two students get the same low grade. Malik says, \"If I change how I study, I can raise it.\" Sam says, \"Grades depend on luck and on whether the teacher likes you.\" Which concept describes the difference between them?",
+   "options": [
+    "Locus of control: Malik internal, Sam external",
+    "Locus of control: Malik external, Sam internal",
+    "Self-serving bias in both students",
+    "Mere exposure effect in both students"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Internal locus of control: outcomes depend on my own effort. External locus: outcomes depend on luck, fate or other people.",
+    "options": [
+     "Right: Malik believes his actions control outcomes; Sam believes outside forces do.",
+     "Reversed. Malik sees control in himself (internal); Sam sees it in outside forces (external).",
+     "Neither is taking credit for a success; both are explaining a shared failure.",
+     "Mere exposure concerns liking from familiarity, not beliefs about control."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-5",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "After being turned down for a summer job, Rosa thinks, \"I'm just unemployable, and this will ruin everything else too.\" Which concept describes her way of explaining the event?",
+   "options": [
+    "A pessimistic explanatory style",
+    "An optimistic explanatory style",
+    "The actor-observer bias",
+    "Relative deprivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A pessimistic explanatory style explains bad events as personal, permanent and pervasive.",
+    "options": [
+     "Right: she explains a bad event as caused by her, lasting and affecting everything.",
+     "An optimistic style would see the rejection as temporary and limited to this one job.",
+     "The actor-observer bias compares explanations for oneself and others. Only her own outcome is explained.",
+     "Relative deprivation is feeling worse off than a comparison group, not a way of explaining a setback."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-6",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A new song annoyed Lucas the first time he heard it. After hearing it in stores and on the radio all month, he now likes it. Which concept explains the change?",
+   "options": [
+    "Mere exposure effect",
+    "Habituation",
+    "Self-fulfilling prophecy",
+    "Social comparison"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Familiarity tends to breed liking: the mere exposure effect.",
+    "options": [
+     "Right: repeated exposure to a stimulus tends to increase liking for it.",
+     "Habituation is a weaker response to a repeated stimulus. Lucas's liking grew stronger.",
+     "A self-fulfilling prophecy is an expectation that brings about its own result.",
+     "Social comparison is judging yourself against others."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-7",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A coach believes a new player is unathletic, so she gives him few drills and little feedback. By the end of the season he has improved less than his teammates, and the coach says, \"I knew it.\" Which concept explains this outcome?",
+   "options": [
+    "Self-fulfilling prophecy",
+    "Self-serving bias",
+    "Mere exposure effect",
+    "Relative deprivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An expectation that leads to behavior that makes the expectation come true is a self-fulfilling prophecy.",
+    "options": [
+     "Right: the coach's expectation changed how she treated him, which helped produce the result she expected.",
+     "The coach is not explaining her own success or failure.",
+     "Mere exposure is about liking familiar things. The issue is how an expectation shaped behavior.",
+     "Relative deprivation is feeling deprived next to a comparison group."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-8",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A runner who finishes a race in 30th place feels proud when she compares herself with friends who did not finish, but discouraged when she compares herself with the winner. Which pair of concepts fits?",
+   "options": [
+    "Downward, then upward social comparison",
+    "Upward, then downward social comparison",
+    "Internal, then external locus of control",
+    "Optimistic, then pessimistic explanatory style"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Comparing yourself with people who did worse is downward social comparison; with people who did better, upward.",
+    "options": [
+     "Right: comparing with people worse off lifts mood; comparing with people better off lowers it.",
+     "Reversed. Friends who did not finish are worse off (downward); the winner is better off (upward).",
+     "Locus of control is about beliefs that you control outcomes, not comparisons with others.",
+     "Explanatory style concerns how people explain bad events, not whom they compare themselves with."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-9",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Workers at a factory got a 5% raise and were happy until they learned that workers at a nearby factory got 10%. Then they felt cheated, though their own pay had not changed. Which concept explains their feelings?",
+   "options": [
+    "Relative deprivation",
+    "Learned helplessness",
+    "The self-serving bias",
+    "Mere exposure effect"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Relative deprivation: dissatisfaction from comparing yourself with others who have more.",
+    "options": [
+     "Right: feeling deprived compared with a reference group, regardless of how well off you actually are.",
+     "Learned helplessness is giving up after uncontrollable events.",
+     "The self-serving bias concerns explaining one's own success and failure.",
+     "Mere exposure is liking from familiarity."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-10",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Research comparing cultures finds that people raised in East Asian cultures are more likely than people raised in the United States to explain a person's behavior partly by the situation. What does this suggest about the fundamental attribution error?",
+   "options": [
+    "Its strength depends partly on culture",
+    "It is equally strong across cultures",
+    "It is a kind of self-serving bias",
+    "It disappears in people with an internal locus of control"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Culture shapes attributions: the tendency to overweight disposition is weaker, on average, in cultures that emphasize context.",
+    "options": [
+     "Right: the bias is found widely but is generally weaker where people are taught to attend to context and relationships.",
+     "The research shows differences in strength across cultures.",
+     "The fundamental attribution error is about judging others, not protecting one's own image.",
+     "Locus of control is about beliefs about one's own outcomes, not about judging others."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-11",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "stimulus": "attribution-s1",
+   "q": "Which concept do the results most directly show?",
+   "options": [
+    "Actor-observer bias",
+    "Self-fulfilling prophecy",
+    "Mere exposure effect",
+    "Upward social comparison"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The same outcome (failing a test) got situational explanations from actors and dispositional ones from observers: the actor-observer bias.",
+    "options": [
+     "Right: students blamed the situation for their own failure and the person for a classmate's.",
+     "No expectation changed anyone's behavior here; students only rated causes.",
+     "Mere exposure is about liking familiar things.",
+     "Students did not compare themselves with someone doing better."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-12",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "attribution-s1",
+   "q": "Why can this study support a cause-and-effect conclusion about the role of whose failure it was?",
+   "options": [
+    "Students were randomly assigned to the self or classmate group",
+    "The students came from one school in Oregon",
+    "Each student gave assent",
+    "The ratings were on 1-to-7 scales"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Random assignment to conditions is what lets an experiment support a causal claim.",
+    "options": [
+     "Right: random assignment makes the groups similar at the start, so the difference is likely due to the condition.",
+     "One school limits who the results apply to; it does not create a causal comparison.",
+     "Assent is an ethical safeguard, not a reason a causal claim is justified.",
+     "The scale is a measurement choice; it does not allow a causal claim by itself."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-13",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "attribution-s1",
+   "q": "Five students in the classmate group gave person-scale ratings of 6, 5, 7, 4 and 6. What is the mean rating?",
+   "why": {
+    "correct": "$\\frac{6 + 5 + 7 + 4 + 6}{5} = \\frac{28}{5} = 5.6$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       6,
+       5,
+       7,
+       4,
+       6
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         6,
+         5,
+         7,
+         4,
+         6
+        ]
+       ]
+      },
+      "why": "28 is the total. Divide by the 5 ratings."
+     },
+     {
+      "from": {
+       "fn": "mode",
+       "args": [
+        [
+         6,
+         5,
+         7,
+         4,
+         6
+        ]
+       ]
+      },
+      "why": "6 is the mode, the most common rating. The mean adds the ratings and divides by how many there are."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-14",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "attribution-s1",
+   "q": "State how this study measured a dispositional attribution.",
+   "why": {
+    "correct": "Dispositional attributions were measured on the person scale (effort, ability), from 1 to 7."
+   },
+   "specific": {
+    "frame": "A dispositional attribution was measured as ___ on ___.",
+    "write": {
+     "context": [
+      "scale",
+      "rating"
+     ]
+    },
+    "model": "A dispositional attribution was measured as a student's rating on the person scale, from 1 to 7, of how much the failure was due to the person's effort or ability.",
+    "slots": {
+     "opdef": {
+      "label": "What was measured",
+      "options": [
+       "a rating of how much the failure was due to effort or ability",
+       "whether the student had ever failed a test",
+       "the student's grade on the test"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Past failure was used in the self condition but was not the measure.",
+       "2": "No grades were collected; students rated causes."
+      }
+     },
+     "scale": {
+      "label": "On what",
+      "options": [
+       "the 1-to-7 person scale",
+       "the 1-to-7 situation scale"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The situation scale measured situational attributions, not dispositional ones."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-attribution-15",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "attribution-s2",
+   "q": "What relationship does the scatterplot show?",
+   "options": [
+    "A positive correlation: more internal scores go with more hours studied",
+    "A negative correlation: more internal scores go with fewer hours",
+    "No relationship between the two variables",
+    "Proof that an internal locus causes more studying"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Higher locus of control scores (more internal) go with more hours studied: a positive correlation.",
+    "options": [
+     "Right: the points rise from left to right.",
+     "A negative correlation would slope down. These points slope up.",
+     "The points follow a clear upward trend.",
+     "A correlation alone cannot show cause."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-16",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "attribution-s2",
+   "q": "A student concludes that teaching an internal locus of control would make students study more. What is the main problem with that conclusion?",
+   "options": [
+    "A third variable, such as earlier school success, could raise both",
+    "The sample of 8 students is too old",
+    "A scatterplot is the wrong graph for two scores",
+    "Locus of control is too vague to measure"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A correlational result cannot show which variable causes which, and a third variable may explain both.",
+    "options": [
+     "Right: correlation is not causation. Past success might build an internal locus and also more studying.",
+     "Age is not described, and the issue is the kind of evidence, not age.",
+     "Scatterplots show relationships well; they do not show cause.",
+     "It is measured here as a score; the problem is the causal claim."
+    ]
+   }
+  },
+  {
+   "id": "psy-attribution-17",
+   "unit": "unit-4",
+   "topic": "attribution",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "attribution-s2",
+   "q": "The student at the bottom left has a score of 2 and studies 3 hours a week. Which statement would that student most likely agree with?",
+   "options": [
+    "\"Whether I pass depends mostly on luck and the teacher.\"",
+    "\"If I study more, my grades will go up.\"",
+    "\"My successes come from my own hard work.\"",
+    "\"I can change my grades by changing my habits.\""
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A low score on this scale means an external locus: the belief that outside forces control outcomes.",
+    "options": [
+     "Right: a low score here means a more external locus of control.",
+     "That belief fits an internal locus, a high score.",
+     "That is an internal belief.",
+     "That is an internal belief."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "perception",
+ "hook": "Two friends look at the same blurry photo. One sees a rat, the other an old man with glasses. Nothing about the light reaching their eyes is different. What differs is what their brains expected, and that is perception at work.",
+ "prereq": [
+  {
+   "q": "Which step happens in sensation, before perception begins?",
+   "options": [
+    "Receptors change light into neural signals (transduction)",
+    "The brain decides what an object is",
+    "A memory of the object is formed",
+    "Attention picks one conversation to follow"
+   ],
+   "correct": 0,
+   "why": "Sensation is detecting the stimulus: receptors transduce energy into neural signals. Interpreting those signals is perception.",
+   "review": "sensation"
+  },
+  {
+   "q": "Which lobe of the brain first processes visual information?",
+   "options": [
+    "Occipital lobe",
+    "Frontal lobe",
+    "Temporal lobe",
+    "Parietal lobe"
+   ],
+   "correct": 0,
+   "why": "The occipital lobe, at the back of the brain, holds the primary visual cortex.",
+   "review": "brain"
+  }
+ ],
+ "figure": {
+  "figure": "perception-gestalt",
+  "caption": "Four Gestalt principles: proximity, similarity, closure and figure-ground."
+ },
+ "chain": [
+  {
+   "cause": "Receptors send signals about lines, edges and colors",
+   "effect": "bottom-up processing begins to build a picture of the scene"
+  },
+  {
+   "cause": "Knowledge, expectations and context join in",
+   "effect": "top-down processing and perceptual set tilt what we perceive"
+  },
+  {
+   "cause": "The brain applies Gestalt grouping and depth cues",
+   "effect": "we see whole objects, at a distance, in three dimensions"
+  },
+  {
+   "cause": "Attention is limited",
+   "effect": "what we do not attend to can go unseen (inattentional and change blindness)"
+  }
+ ],
+ "ideas": [
+  "<b>Bottom-up</b> processing builds a percept from raw features; <b>top-down</b> processing uses knowledge, <b>schemas</b> and expectations (<b>perceptual set</b>). Both run at once.",
+  "<b>Selective attention</b> filters input. Important words still break through (the <b>cocktail party effect</b>), but unattended things can be missed (<b>change blindness</b>, <b>inattentional blindness</b>).",
+  "<b>Gestalt</b> principles group parts into wholes: <b>proximity</b>, <b>similarity</b>, <b>closure</b> and <b>figure-ground</b>.",
+  "Depth comes from <b>binocular cues</b> (retinal disparity, convergence) and <b>monocular cues</b> (relative size, interposition, linear perspective, texture gradient, relative clarity).",
+  "<b>Perceptual constancy</b> keeps size, shape and color stable; <b>apparent movement</b> turns still frames into motion."
+ ],
+ "misconception": {
+  "wrong": "Your eyes work like a camera, so what you see is an exact copy of the world.",
+  "right": "Perception is built by the brain. The same image can be seen two ways depending on expectations, context and attention, and things in plain view can be missed entirely."
+ },
+ "check": [
+  "psy-perception-1",
+  "psy-perception-2",
+  "psy-perception-3",
+  "psy-perception-9",
+  "psy-perception-13",
+  "psy-perception-15"
+ ],
+ "summary": "Perception turns sensations into meaning. It is built bottom-up from features and top-down from knowledge and expectations, filtered by limited attention, organized by Gestalt principles, given depth by binocular and monocular cues, and kept stable by perceptual constancy."
+}

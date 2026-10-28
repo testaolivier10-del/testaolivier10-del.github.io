@@ -1,0 +1,12 @@
+{
+ "health-psychology-gas": {
+  "file": "figures/health-psychology-gas.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A curve of resistance to stress over time while a stressor continues, against a dashed line at the normal level. 1, Alarm: resistance briefly dips below normal at the shock, then sympathetic arousal begins. 2, Resistance: resistance rises well above normal and stays high while the body copes at a cost, with hormones and arousal kept up. 3, Exhaustion: reserves run down, resistance falls below normal and the person becomes more vulnerable to illness. A model curve, not data from one study."
+ }
+}

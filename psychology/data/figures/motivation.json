@@ -1,0 +1,12 @@
+{
+ "motivation-yerkes-dodson": {
+  "file": "figures/motivation-yerkes-dodson.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two inverted-U curves of performance against arousal. Performance is low at very low and very high arousal and best in between. The solid curve, a simple or well-practiced task, peaks at a higher level of arousal. The dashed curve, a difficult or new task, peaks at a lower level of arousal. Model curves to show the shape, not data from one study."
+ }
+}

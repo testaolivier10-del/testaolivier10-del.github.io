@@ -1,0 +1,12 @@
+{
+ "thinking-strategies": {
+  "file": "figures/thinking-strategies.svg",
+  "ext": "svg",
+  "w": 880,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A problem branches into two strategies. Left: an algorithm, a step-by-step procedure that is slow and effortful but guarantees a solution if followed, for example trying every four-digit code from 0000 to 9999 on a lock. Right: a heuristic, a mental shortcut that is fast and easy and usually works but can mislead, for example trying the owner's birthday as the code first. A note under the heuristic defines the representativeness heuristic (judging by how well something matches a prototype) and the availability heuristic (judging by how easily examples come to mind). A note under the algorithm says both can be blocked by mental set (sticking with a method that worked before) and functional fixedness (seeing an object only in its usual use)."
+ }
+}

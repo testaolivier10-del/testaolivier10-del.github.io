@@ -1,0 +1,12 @@
+{
+ "explaining-disorders-diathesis": {
+  "file": "figures/explaining-disorders-diathesis.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 510,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three stacked bars against a dashed threshold line. Each bar is vulnerability (bottom) plus stress (top). Person 1 has high vulnerability and small stress and passes the threshold. Person 2 has low vulnerability and the same small stress and stays below it. Person 3 has low vulnerability but large stress and passes the threshold. A conceptual model, not data."
+ }
+}

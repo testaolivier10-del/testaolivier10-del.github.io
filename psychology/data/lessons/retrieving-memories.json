@@ -1,0 +1,71 @@
+{
+ "topic": "retrieving-memories",
+ "hook": "You walk into the kitchen and forget why. You go back to the couch, and it comes back. A word sits on the tip of your tongue until a friend says the first letter. Memories are often stored but stuck. Retrieval is about finding the right cue.",
+ "prereq": [
+  {
+   "q": "What does retrieval mean?",
+   "options": [
+    "Getting stored information back out of memory",
+    "Getting information into memory",
+    "Keeping information over time",
+    "Repeating information to hold it"
+   ],
+   "correct": 0,
+   "why": "Encoding gets it in, storage keeps it, retrieval gets it back out.",
+   "review": "memory-intro"
+  },
+  {
+   "q": "Which study plan leads to better long-term memory?",
+   "options": [
+    "Spreading study over several sessions",
+    "Cramming in one long session",
+    "Reading notes once quickly",
+    "Studying only the first page"
+   ],
+   "correct": 0,
+   "why": "The spacing effect: distributed practice beats massed practice for long-term memory.",
+   "review": "encoding-memories"
+  }
+ ],
+ "figure": {
+  "figure": "retrieving-memories-cues",
+  "caption": "Recall needs more from memory than recognition; matching cues help both."
+ },
+ "chain": [
+  {
+   "cause": "A memory is stored with features of the setting, body state and mood",
+   "effect": "those features become retrieval cues"
+  },
+  {
+   "cause": "The same cues are present at the test",
+   "effect": "retrieval is easier (context-dependent, state-dependent and mood-congruent memory)"
+  },
+  {
+   "cause": "Students practice pulling information out of memory",
+   "effect": "retrieval routes get stronger (the testing effect)"
+  },
+  {
+   "cause": "Rereading makes notes feel familiar",
+   "effect": "students overestimate what they know, a failure of metacognition"
+  }
+ ],
+ "ideas": [
+  "<b>Recall</b> produces information with few cues; <b>recognition</b> picks it from options, which act as <b>retrieval cues</b>, so it is usually easier.",
+  "Retrieval is easier when cues match learning: the place (<b>context-dependent</b>), the body's state (<b>state-dependent</b>), and the mood (<b>mood-congruent</b>).",
+  "<b>Retrieval practice</b> (self-quizzing) beats rereading for long-term memory: the <b>testing effect</b>.",
+  "<b>Metacognition</b> is judging your own learning. Familiarity from rereading feels like knowing but is not; testing yourself is the honest check."
+ ],
+ "misconception": {
+  "wrong": "Rereading notes and highlighting until they feel familiar is the best way to study.",
+  "right": "Familiarity is not memory. Testing yourself, with the notes closed, builds far stronger long-term memory and shows you what you do not know yet."
+ },
+ "check": [
+  "psy-retrieving-memories-5",
+  "psy-retrieving-memories-6",
+  "psy-retrieving-memories-7",
+  "psy-retrieving-memories-8",
+  "psy-retrieving-memories-9",
+  "psy-retrieving-memories-13"
+ ],
+ "summary": "Retrieval depends on cues. Recognition is usually easier than recall because the options are cues. Matching the place, body state or mood of learning helps retrieval. Practicing retrieval (the testing effect) strengthens memory more than rereading, and good metacognition means checking what you know by testing yourself instead of trusting familiarity."
+}

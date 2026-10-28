@@ -1,0 +1,20 @@
+{
+ "psych-disorder": {
+  "def": "A pattern of thoughts, feelings or behaviors that is unusual for the person's culture (deviation) and causes significant suffering (distress) or gets in the way of daily life (dysfunction)."
+ },
+ "dsm": {
+  "def": "The Diagnostic and Statistical Manual of Mental Disorders, published by the American Psychiatric Association. The current edition, the DSM-5-TR (2022), lists each disorder with its symptoms and how long they must last."
+ },
+ "icd": {
+  "def": "The International Classification of Diseases, published by the World Health Organization. It codes all health conditions, physical and psychological, and is used around the world."
+ },
+ "eclectic": {
+  "def": "Using ideas and methods from several psychological perspectives, chosen to fit the person, instead of relying on one perspective."
+ },
+ "biopsychosocial": {
+  "def": "A model that explains a disorder as the product of biological factors (genes, brain chemistry), psychological factors (thoughts, learning, emotions) and social factors (relationships, culture, conditions) acting together."
+ },
+ "diathesis-stress": {
+  "def": "A model in which a disorder appears when a vulnerability (the diathesis, such as genes or early experiences) meets enough stress. Neither alone is usually enough."
+ }
+}

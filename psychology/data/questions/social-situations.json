@@ -1,0 +1,956 @@
+{
+ "stimuli": {
+  "social-situations-s1": {
+   "kind": "data",
+   "title": "Invented study: judging lines with a unanimous group",
+   "invented": true,
+   "plot": {
+    "label": "Bar graph of the percent of trials on which participants gave the group's wrong answer, by number of people giving the wrong answer: 1 person 4%, 2 people 13%, 3 people 30%, 4 people 32%, 8 people 33% (invented data)",
+    "kind": "bar",
+    "categories": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "8"
+    ],
+    "values": [
+     4,
+     13,
+     30,
+     32,
+     33
+    ],
+    "xLabel": "People giving the wrong answer before the participant",
+    "yLabel": "Percent of trials conforming",
+    "y": [
+     0,
+     40
+    ]
+   }
+  },
+  "social-situations-s2": {
+   "kind": "study",
+   "title": "Milgram: obeying orders to shock a stranger",
+   "source": "Milgram (1963)",
+   "study": {
+    "introduction": "Stanley Milgram asked how far ordinary people would go in obeying an authority who told them to hurt another person.",
+    "participants": "40 men aged 20 to 50 from New Haven, Connecticut, and nearby towns, with a range of jobs, recruited by newspaper ad and mail and paid \\$4.50 for taking part.",
+    "method": "Each man was told the study was about the effect of punishment on learning and was assigned the role of \"teacher.\" A \"learner\" (a confederate) was strapped into a chair in another room. The teacher was told to give a shock for each wrong answer, increasing by 15 volts each time on a panel from 15 to 450 volts. The learner never received real shocks; each teacher was given one mild sample shock of 45 volts so the setup seemed real. When the teacher hesitated, the experimenter, in a gray lab coat, used set prompts such as \"The experiment requires that you continue.\" Obedience was the highest shock the teacher gave before refusing to go on.",
+    "results": "26 of the 40 men (65%) continued to the maximum 450 volts. Every man went to at least 300 volts. Many showed strong signs of stress, such as sweating, trembling and nervous laughter.",
+    "discussion": "Later variations found less obedience when the experimenter gave orders by phone or when other \"teachers\" refused. A 2009 partial replication by Jerry Burger, stopped at 150 volts for ethical reasons, found 70% willing to continue past that point. Researchers who later studied Milgram's archived records note that the prompts were not always given as scripted and that some participants doubted the shocks were real."
+   }
+  },
+  "social-situations-s3": {
+   "kind": "visual",
+   "title": "Four decisions before a bystander helps",
+   "figure": "social-situations-helping"
+  }
+ },
+ "items": [
+  {
+   "id": "psy-social-situations-1",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At her first dinner with her boyfriend's family, Keiko waits to see which fork everyone else uses before she starts eating, because she is unsure what is correct. Which concept explains her behavior?",
+   "options": [
+    "Informational social influence",
+    "Normative social influence",
+    "Group polarization",
+    "Deindividuation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Looking to others when you are unsure of the right answer is informational social influence.",
+    "options": [
+     "Right: she follows others because she believes they know the right answer.",
+     "Normative influence is going along to be liked or to avoid rejection. Keiko is looking for the correct choice.",
+     "Group polarization is a group's views becoming more extreme after discussion.",
+     "Deindividuation is a loss of self-awareness in a group, often in anonymous settings."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-2",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Marcus thinks a new movie is boring, but when all his friends rave about it at lunch, he says he loved it too, to fit in. Which concept explains his statement?",
+   "options": [
+    "Normative social influence",
+    "Informational social influence",
+    "Social facilitation",
+    "Foot-in-the-door technique"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Public agreement to gain acceptance, while privately disagreeing, is conformity through normative social influence.",
+    "options": [
+     "Right: he goes along with the group to be accepted, not because he changed his mind.",
+     "Informational influence means believing the group is right. Marcus still thinks the movie was boring.",
+     "Social facilitation is better performance on easy tasks when others are present.",
+     "That is a persuasion technique using a small request first."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-3",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A charity volunteer asks shoppers to sign a short petition. A week later, she asks those who signed to donate \\$20, and many more of them give than shoppers who were never asked to sign. Which technique is she using?",
+   "options": [
+    "Foot-in-the-door technique",
+    "Door-in-the-face technique",
+    "Peripheral route to persuasion",
+    "Reciprocity norm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A small first commitment (signing) paves the way for a bigger one: the foot-in-the-door technique.",
+    "options": [
+     "Right: agreeing to a small request makes people more likely to agree to a larger one later.",
+     "Door-in-the-face starts with a large request that is refused, then a smaller one.",
+     "The peripheral route relies on surface cues, such as an attractive speaker, rather than a sequence of requests.",
+     "The reciprocity norm is returning a favor. The shoppers received nothing first."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-4",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student asks a teacher to write her ten recommendation letters. When the teacher refuses, the student asks for just one, and the teacher agrees. Which technique did the student use?",
+   "options": [
+    "Door-in-the-face technique",
+    "Foot-in-the-door technique",
+    "Central route to persuasion",
+    "Halo effect"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Starting with an unreasonable request, then retreating to the real one, is the door-in-the-face technique.",
+    "options": [
+     "Right: a large request that is refused makes a smaller follow-up seem reasonable.",
+     "Foot-in-the-door starts small and moves to a larger request; this went from large to small.",
+     "The central route relies on strong arguments, not on the order of requests.",
+     "The halo effect is one good trait coloring an overall impression."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-5",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A sneaker ad shows a famous athlete smiling in the shoes, with upbeat music and no information about price or quality. Which route to persuasion does the ad rely on?",
+   "options": [
+    "The peripheral route",
+    "The central route",
+    "The door-in-the-face technique",
+    "Group polarization"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the elaboration likelihood model, the peripheral route works through cues such as attractiveness or fame; its effects tend to be shorter-lived.",
+    "options": [
+     "Right: it uses surface cues (a celebrity, music) rather than arguments.",
+     "The central route uses evidence and arguments, which this ad does not give.",
+     "No request is refused and followed by a smaller one.",
+     "Group polarization is about discussion making a group more extreme."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-6",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A student comparing two laptops reads reviews, battery tests and price charts and picks the one with better specifications for her coding class. According to the elaboration likelihood model, when is this kind of processing most likely?",
+   "options": [
+    "When she is motivated and able to weigh it",
+    "When she is distracted and in a hurry",
+    "When the ad features a celebrity",
+    "When she is in an anonymous crowd"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The central route needs both motivation (the decision matters to her) and ability (time and knowledge), and tends to produce more lasting attitude change.",
+    "options": [
+     "Right: the central route is used when people care about the issue and have time and knowledge to evaluate it.",
+     "Distraction and time pressure push people toward the peripheral route.",
+     "A celebrity is a peripheral cue.",
+     "Anonymity is linked with deindividuation, not with how people process persuasive messages."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-7",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Interviewers rate a well-dressed, attractive applicant as more intelligent and more honest than a plainly dressed applicant with the same answers. Which concept explains the ratings?",
+   "options": [
+    "Halo effect",
+    "Mere exposure effect",
+    "Social loafing",
+    "False consensus effect"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Letting one good impression spread to other traits is the halo effect.",
+    "options": [
+     "Right: one positive trait (appearance) colors judgments of unrelated traits.",
+     "Mere exposure is liking from repeated contact. Both applicants were met once.",
+     "Social loafing is reduced effort in a group.",
+     "The false consensus effect is overestimating how many people share your views."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-8",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A group of students who each lean slightly toward a later school start time discuss it for an hour. Afterward, nearly all of them strongly favor the later start. Which concept explains the change?",
+   "options": [
+    "Group polarization",
+    "Groupthink",
+    "Social loafing",
+    "Deindividuation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Group discussion tends to push a group further in the direction it already leaned: group polarization.",
+    "options": [
+     "Right: discussion among like-minded people strengthens the view they already leaned toward.",
+     "Groupthink is a group suppressing dissent to keep harmony, leading to a poor decision. Here views simply grew stronger.",
+     "Social loafing is reduced individual effort on a group task.",
+     "Deindividuation is losing self-awareness in a group."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-9",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "A company's planning team, eager to agree with its confident CEO, approves a risky product launch. Two members have doubts but stay quiet, and no one studies what could go wrong. Which concept best describes this?",
+   "options": [
+    "Groupthink",
+    "Group polarization",
+    "Social facilitation",
+    "Relative deprivation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Groupthink: a close group's desire for agreement leads members to hide doubts and skip careful analysis.",
+    "options": [
+     "Right: the wish for harmony overrides realistic evaluation and dissent is suppressed.",
+     "Polarization is a shift toward a more extreme view. The defining feature here is silenced doubts.",
+     "Social facilitation concerns performance in front of others.",
+     "Relative deprivation is feeling worse off than a comparison group."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-10",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Students wearing identical costumes at a crowded, dark Halloween party behave much more wildly than they would in class. Which concept explains this?",
+   "options": [
+    "Deindividuation",
+    "Social facilitation",
+    "Informational social influence",
+    "Superordinate goals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Being anonymous in an aroused group reduces self-awareness and restraint: deindividuation.",
+    "options": [
+     "Right: anonymity and group arousal lower self-awareness and restraint.",
+     "Social facilitation improves performance on easy tasks in front of others; it does not explain lost restraint.",
+     "Informational influence is following others because you think they are right.",
+     "Superordinate goals are shared goals that unite groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-11",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A skilled pianist plays a piece she knows well even better in front of an audience, but a beginner stumbles more on a new piece when people are watching. Which concept explains both results?",
+   "options": [
+    "Social facilitation",
+    "Social loafing",
+    "Group polarization",
+    "Deindividuation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An audience increases arousal, which strengthens the most likely response: better on mastered tasks, worse on new ones.",
+    "options": [
+     "Right: the presence of others boosts the dominant response, which is correct on easy or well-practiced tasks and often wrong on hard or new ones.",
+     "Social loafing is less effort when individual work is pooled and not identifiable.",
+     "Group polarization concerns views becoming more extreme after discussion.",
+     "Deindividuation is lost self-awareness in anonymous groups, not performance in front of an audience."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-12",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a group project where only the final poster is graded, one member does far less work than he would on a solo assignment. Which concept explains his behavior?",
+   "options": [
+    "Social loafing",
+    "Social facilitation",
+    "Groupthink",
+    "Social trap"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When individual effort is pooled and cannot be identified, effort drops: social loafing. Grading each member's part reduces it.",
+    "options": [
+     "Right: people tend to put in less effort when their individual contribution is not identified.",
+     "Social facilitation is improved performance on easy tasks in front of others.",
+     "Groupthink is about a group's decision-making, not one member's effort.",
+     "A social trap is a situation where each person's self-interest harms everyone."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-13",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Kai thinks most of his classmates cheat on homework, mainly because he does. A survey finds that only a small share do. Which concept explains his mistaken estimate?",
+   "options": [
+    "False consensus effect",
+    "Out-group homogeneity",
+    "Relative deprivation",
+    "Normative social influence"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "People tend to assume others think and act as they do: the false consensus effect.",
+    "options": [
+     "Right: overestimating how many people share your own behavior and beliefs.",
+     "That is seeing another group as all alike, not overestimating agreement with yourself.",
+     "Relative deprivation is feeling worse off than others.",
+     "Normative influence is going along to fit in. Kai is estimating what others do."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-14",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Two rival dorms that dislike each other must work together when a storm knocks out power and they need to share one generator and food. Afterward, hostility between them falls. Which concept explains the change?",
+   "options": [
+    "Superordinate goals",
+    "In-group bias",
+    "Group polarization",
+    "Social trap"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Superordinate goals, which neither group can reach alone, turn \"us and them\" into \"we.\" Muzafer Sherif's camp study is the classic example.",
+    "options": [
+     "Right: a shared goal that needs both groups' cooperation reduces conflict between them.",
+     "In-group bias is favoring your own group, which the storm reduced.",
+     "Polarization would make views more extreme, not less hostile.",
+     "A social trap is a situation in which self-interest harms everyone; here cooperation helped everyone."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-15",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "Every family in a town waters its lawn daily during a drought because each one's share seems small, and the town's reservoir runs dry for everyone. Which concept describes this situation?",
+   "options": [
+    "Social trap",
+    "Superordinate goal",
+    "Diffusion of responsibility",
+    "Social facilitation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a social trap, choices that are reasonable for each person add up to harm for the group.",
+    "options": [
+     "Right: each person pursuing self-interest leads to an outcome that is worse for all.",
+     "A superordinate goal unites groups to cooperate; here no one cooperated.",
+     "Diffusion of responsibility is feeling less personally responsible to act when others are present, as in an emergency.",
+     "Social facilitation concerns performance in front of others."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-16",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "In one culture, a student choosing a college weighs mainly what her family needs and what will bring the family honor. In another, a student chooses mainly by her own interests and goals. Which pair of concepts describes the two cultures?",
+   "options": [
+    "Collectivism, then individualism",
+    "Individualism, then collectivism",
+    "Ethnocentrism, then multiculturalism",
+    "Conformity, then obedience"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Collectivism puts the group first; individualism puts the individual first. Most people and cultures mix both.",
+    "options": [
+     "Right: collectivist cultures give priority to group goals; individualist cultures to personal goals.",
+     "Reversed: weighing family needs first is collectivist.",
+     "Those concern attitudes toward other cultures, not how a person sets priorities.",
+     "Obedience is following an authority's orders; these are cultural values, not responses to orders."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-17",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.B",
+   "q": "After a long stretch of overtime and little control over her schedule, a nurse feels emotionally drained, cynical about her patients and less effective at work. Which concept from industrial-organizational psychology describes her state?",
+   "options": [
+    "Burnout",
+    "Social loafing",
+    "Learned helplessness",
+    "Deindividuation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Burnout combines exhaustion, cynicism and reduced effectiveness from chronic workplace stress. I/O psychologists study it to improve workplaces.",
+    "options": [
+     "Right: exhaustion, cynicism and lower effectiveness from long-term job stress.",
+     "Social loafing is reduced effort when work is pooled, not exhaustion from overwork.",
+     "Learned helplessness is giving up after uncontrollable events; burnout is the specific job-related syndrome described.",
+     "Deindividuation is lost self-awareness in groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-18",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A neighbor helped Jen move last month. When he asks her to feed his cat this weekend, she agrees right away, though it is inconvenient. Which norm best explains her helping?",
+   "options": [
+    "Reciprocity norm",
+    "Social responsibility norm",
+    "False consensus effect",
+    "Superordinate goals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Returning a favor is the reciprocity norm.",
+    "options": [
+     "Right: people feel they should return help to those who helped them.",
+     "That norm is helping people who depend on us, whether or not they helped us before. The earlier favor is the key detail.",
+     "That is overestimating how many people share your views.",
+     "Superordinate goals unite groups through a shared aim."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-19",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A teenager spends her Saturday reading to a blind neighbor who has no family nearby, expecting nothing in return. Which pair of concepts best fits her helping?",
+   "options": [
+    "Altruism guided by the social responsibility norm",
+    "The reciprocity norm guided by self-interest",
+    "Social loafing and diffusion of responsibility",
+    "Normative social influence and conformity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Altruism is unselfish concern for others; the social responsibility norm says we should help those who depend on us.",
+    "options": [
+     "Right: unselfish help to someone who depends on others, with no favor to repay.",
+     "The neighbor did nothing for her first, and she expects nothing back.",
+     "Both describe less effort or less helping, the opposite of what she does.",
+     "No group is pressuring her to help."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-20",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "social-situations-s1",
+   "q": "In this invented study, a participant judged which of three lines matched a standard line after hearing others (confederates) give a clearly wrong answer. What pattern does the graph show?",
+   "options": [
+    "Conformity rises as the group grows to 3, then levels off",
+    "Conformity rises by the same amount per person",
+    "Conformity falls as the group grows",
+    "Group size has no effect on conformity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The bars climb steeply up to 3 people and then flatten: the effect of a unanimous majority levels off after about three.",
+    "options": [
+     "Right: from 4% to 30% by 3 people, then only 32% and 33%.",
+     "Adding people beyond 3 changes little (30%, 32%, 33%).",
+     "The bars rise from left to right.",
+     "Conformity rises from 4% to 30% as the group grows from 1 to 3."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-21",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-situations-s1",
+   "q": "The lines were easy to judge: people alone almost never erred. Which kind of influence most likely explains the conformity in the graph?",
+   "options": [
+    "Normative social influence",
+    "Informational social influence",
+    "Social facilitation",
+    "Obedience to authority"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the answer is clear, going along with a group shows the pull of acceptance: normative social influence.",
+    "options": [
+     "Right: with an obvious answer, people go along mainly to avoid standing out, not because they believe the group.",
+     "Informational influence is strongest when the right answer is unclear; here it was obvious.",
+     "Social facilitation is about performance in front of others, not adopting a group's answer.",
+     "The other people were peers, not authority figures giving orders."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-22",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "social-situations-s1",
+   "q": "Find the median conformity percent across the five group sizes.",
+   "why": {
+    "correct": "In order: 4, 13, 30, 32, 33. The middle value is 30%."
+   },
+   "numeric": {
+    "from": {
+     "fn": "median",
+     "args": [
+      [
+       4,
+       13,
+       30,
+       32,
+       33
+      ]
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "from": {
+       "fn": "mean",
+       "args": [
+        [
+         4,
+         13,
+         30,
+         32,
+         33
+        ]
+       ]
+      },
+      "why": "22.4% is the mean. The median is the middle value of the five in order."
+     },
+     {
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         4,
+         13,
+         30,
+         32,
+         33
+        ]
+       ]
+      },
+      "why": "29 is the range (33 minus 4). The median is the middle value."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-23",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "social-situations-s1",
+   "q": "Participants were told the study was about visual perception and did not know the others were confederates. What must the researchers do at the end?",
+   "options": [
+    "Debrief them about the deception",
+    "Assign them randomly to group sizes",
+    "Report each participant's name with the results",
+    "Repeat the study with a larger group"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When deception is used, debriefing tells participants the truth and why it was needed.",
+    "options": [
+     "Right: deception requires debriefing.",
+     "Random assignment happens before the study and is a design feature, not an ethical step afterward.",
+     "That would break confidentiality.",
+     "Replication is good science but not an ethical requirement for these participants."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-24",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-situations-s2",
+   "q": "Which concept do these results most directly show?",
+   "options": [
+    "Obedience",
+    "Conformity",
+    "Group polarization",
+    "Social facilitation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Following an authority's commands is obedience; matching peers without orders is conformity.",
+    "options": [
+     "Right: participants followed the direct orders of an authority figure.",
+     "Conformity is going along with peers; here an authority gave explicit orders.",
+     "No group discussed anything.",
+     "Social facilitation is about performance in front of others."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-25",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "social-situations-s2",
+   "q": "Which ethical problem is the strongest reason a study like this would not be approved today in its original form?",
+   "options": [
+    "Severe stress without protection from harm",
+    "The learner was a confederate",
+    "Participants were paid for taking part",
+    "The sample included men from different jobs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Protection from harm and a real right to withdraw are the issues; Burger's replication stopped at 150 volts and screened participants to address them.",
+    "options": [
+     "Right: many showed intense distress, and the prompts pressed them to continue.",
+     "Using a confederate is deception, which can be allowed with debriefing. The stress was the greater problem.",
+     "Modest payment is ordinary and allowed.",
+     "A varied sample is a strength, not an ethical problem."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-26",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "social-situations-s2",
+   "q": "Which group would the original results generalize to least well, based on the participants' characteristics?",
+   "options": [
+    "Women and people outside the United States",
+    "Men aged 20 to 50 in Connecticut",
+    "Men with a range of jobs",
+    "Adult men in a US city in the early 1960s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Generalize from who participated: all men, one region, one era. Later studies with women found similar obedience, but this study alone cannot show it.",
+    "options": [
+     "Right: all 40 participants were men from one US area.",
+     "That matches the sample closely.",
+     "The sample did include a range of jobs.",
+     "That describes the sample."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-27",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "social-situations-s2",
+   "q": "In the original study, 26 of the 40 men went to 450 volts. What percent of the men stopped before 450 volts?",
+   "why": {
+    "correct": "$40 - 26 = 14$ men stopped. $\\frac{14}{40} \\times 100 = 35\\%$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mul",
+     "args": [
+      {
+       "fn": "div",
+       "args": [
+        {
+         "fn": "sub",
+         "args": [
+          40,
+          26
+         ]
+        },
+        40
+       ]
+      },
+      100
+     ]
+    },
+    "unit": "%",
+    "mistakes": [
+     {
+      "value": 65,
+      "why": "65% is the share who went all the way. The question asks for the share who stopped before 450 volts."
+     },
+     {
+      "from": {
+       "fn": "sub",
+       "args": [
+        40,
+        26
+       ]
+      },
+      "why": "14 is the number of men who stopped. Divide by 40 and multiply by 100 for the percent."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-28",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "social-situations-s2",
+   "q": "A student says Milgram's study proves that people are cruel by nature. Which response best uses the evidence in the summary?",
+   "options": [
+    "Obedience changed with the situation, such as when orders came by phone",
+    "The study had too few participants to show anything",
+    "Participants were paid, so the results do not count",
+    "The shocks were fake, so no one obeyed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Participants showed distress, not cruelty, and obedience dropped when the authority was distant or others refused: the situation matters.",
+    "options": [
+     "Right: the variations show the situation, not a fixed trait, drove much of the obedience.",
+     "Forty participants is enough to show a striking result; the issue is what the result means.",
+     "A small payment does not erase the findings.",
+     "Participants believed the shocks were real enough to show great stress, and they did obey."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-29",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-situations-s3",
+   "q": "A student sees a classmate slumped in a hallway. Dozens of students walk by, and each assumes a teacher or someone else will deal with it. At which step in the figure does helping break down, and what is the concept?",
+   "options": [
+    "Responsibility: diffusion of responsibility",
+    "Noticing: social loafing",
+    "Deciding how to act: groupthink",
+    "Interpreting: superordinate goals"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "\"Someone else will do it\" is diffusion of responsibility, the third step.",
+    "options": [
+     "Right: with many others present, each person feels less responsible to act.",
+     "Students did notice, and social loafing concerns effort on group tasks.",
+     "Groupthink concerns group decision-making, not individual helping.",
+     "Superordinate goals reduce conflict between groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-30",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-situations-s3",
+   "q": "Smoke trickles into a waiting room. Each person glances around, sees others sitting calmly, and decides it must be nothing. At which step does helping break down?",
+   "options": [
+    "Interpreting it as an emergency",
+    "Noticing the event",
+    "Taking responsibility",
+    "Deciding how to act"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ambiguous events are interpreted by watching others; if everyone looks calm, the group can talk itself out of an emergency.",
+    "options": [
+     "Right: others' calm made the smoke seem harmless, an example of informational social influence.",
+     "They noticed the smoke; they glanced around.",
+     "They never got that far; they decided there was no emergency.",
+     "They had not decided there was anything to act on."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-31",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 3,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "social-situations-s3",
+   "q": "A 2020 study (Philpot and colleagues) analyzed 219 real public conflicts captured on security cameras in three countries and found that at least one bystander intervened in about 9 of 10, more often when more bystanders were present. How does this fit with the bystander effect?",
+   "options": [
+    "Each person helps less, but someone usually helps",
+    "It proves the bystander effect does not exist",
+    "It shows people help less in larger groups",
+    "It shows diffusion of responsibility is stronger on camera"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The bystander effect is about each individual's chance of helping. Real-world footage shows that, overall, victims usually get help, and more bystanders raise that chance.",
+    "options": [
+     "Right: the chance that a given person helps falls with group size, yet more people means more potential helpers.",
+     "The study measured whether anyone helped, not whether each individual was less likely to help; both can be true.",
+     "Intervention was more likely when more bystanders were present.",
+     "The study did not compare filmed and unfilmed situations."
+    ]
+   }
+  },
+  {
+   "id": "psy-social-situations-32",
+   "unit": "unit-4",
+   "topic": "social-situations",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "social-situations-s3",
+   "q": "A man drops an armful of papers on a busy train platform. A woman sees it, knows he needs help, and wants to help, but she is not sure whether stepping in would embarrass him, so she stays put. At which step in the figure does helping break down?",
+   "options": [
+    "Deciding how to help and acting",
+    "Noticing the event",
+    "Interpreting it as an emergency",
+    "Taking responsibility"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The last step, deciding how to help and doing it, can fail when people are unsure what to do or fear looking foolish.",
+    "options": [
+     "Right: she noticed, saw the need and felt responsible, but uncertainty about how to act stopped her.",
+     "She saw the papers fall.",
+     "She knew he needed help.",
+     "She wanted to help herself; she was not waiting for someone else."
+    ]
+   }
+  }
+ ]
+}

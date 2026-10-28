@@ -1,0 +1,629 @@
+{
+ "stimuli": {
+  "development-methods-s1": {
+   "kind": "data",
+   "title": "Verbal scores by age in two designs",
+   "invented": true,
+   "text": "<p>Researchers asked whether verbal ability falls with age. A cross-sectional team tested four age groups once, in 2024. A longitudinal team tested one group of people at age 25 in 1979 and again at 40, 55 and 70. Both used the same 0-60 vocabulary and reading test. Scores are group means.</p>",
+   "plot": {
+    "label": "Line graph of mean verbal score by age: the cross-sectional line falls from 54 at 25 to 41 at 70; the longitudinal line goes 50, 54, 52, 48 (invented data)",
+    "kind": "line",
+    "xLabel": "Age (years)",
+    "yLabel": "Mean verbal score (0-60)",
+    "y": [
+     30,
+     60
+    ],
+    "series": [
+     {
+      "name": "Cross-sectional (2024)",
+      "points": [
+       [
+        25,
+        54
+       ],
+       [
+        40,
+        52
+       ],
+       [
+        55,
+        47
+       ],
+       [
+        70,
+        41
+       ]
+      ]
+     },
+     {
+      "name": "Longitudinal (1979-2024)",
+      "points": [
+       [
+        25,
+        50
+       ],
+       [
+        40,
+        54
+       ],
+       [
+        55,
+        52
+       ],
+       [
+        70,
+        48
+       ]
+      ],
+      "dashed": true
+     }
+    ]
+   },
+   "table": {
+    "caption": "Mean verbal score by age (invented data for practice)",
+    "cols": [
+     "Age",
+     "Cross-sectional",
+     "Longitudinal"
+    ],
+    "rows": [
+     [
+      "25",
+      "54",
+      "50"
+     ],
+     [
+      "40",
+      "52",
+      "54"
+     ],
+     [
+      "55",
+      "47",
+      "52"
+     ],
+     [
+      "70",
+      "41",
+      "48"
+     ]
+    ]
+   }
+  },
+  "development-methods-s2": {
+   "kind": "study",
+   "title": "Shy toddlers, shy teens?",
+   "invented": true,
+   "study": {
+    "introduction": "Some toddlers freeze and go quiet around strangers; others walk right up to them. Researchers asked whether this early shyness lasts into the teen years.",
+    "participants": "120 children from one Midwestern city, recruited at age 2 through pediatric clinics (52% girls; 70% White, 18% Black, 12% Latino). 96 were still in the study at age 15. Parents gave informed consent, children gave their own assent at ages 7 and 15, and a university IRB approved the study. Names were replaced by code numbers.",
+    "method": "At age 2, observers watching through a one-way window rated how long each child took to approach a friendly stranger. At 7 and again at 15, each child spent 10 minutes in a waiting room with an unfamiliar peer, and coders counted how many times the child spoke first. No conditions were assigned.",
+    "results": "Toddlers who were slowest to approach the stranger tended to speak first fewer times at 15 ($r = -.45$). Even so, about half of the shyest toddlers were in the typical range by 15.",
+    "discussion": "Early shyness predicted teen shyness to a moderate degree, but many shy toddlers changed."
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "psy-development-methods-1",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "3.A",
+   "stimulus": "development-methods-s1",
+   "q": "Which statement best describes the results in the graph?",
+   "options": [
+    "The cross-sectional scores fall more from 25 to 70 than the longitudinal scores do",
+    "Both designs show scores rising steadily from 25 to 70",
+    "The longitudinal scores fall more from 25 to 70 than the cross-sectional scores do",
+    "The two designs show the same pattern across the ages"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare where each line starts and ends: cross-sectional 54 to 41, longitudinal 50 to 48.",
+    "options": [
+     "Right: the cross-sectional line drops 13 points, the longitudinal line only 2.",
+     "Neither line rises steadily; the cross-sectional line falls at every age.",
+     "This reverses the lines: the longitudinal scores end only 2 points below where they started.",
+     "At 70 the two designs differ by 7 points, and their shapes differ."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-2",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "development-methods-s1",
+   "q": "In the cross-sectional results, how many points lower is the mean of the age-70 group than the mean of the age-25 group?",
+   "why": {
+    "correct": "Subtract: $54 - 41 = 13$ points."
+   },
+   "numeric": {
+    "from": {
+     "fn": "sub",
+     "args": [
+      54,
+      41
+     ]
+    },
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "That is the longitudinal drop (50 to 48). The question asks about the cross-sectional row."
+     },
+     {
+      "from": {
+       "fn": "add",
+       "args": [
+        54,
+        41
+       ]
+      },
+      "why": "You added the two means. The difference is the larger mean minus the smaller one."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-3",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "numeric",
+   "practice": "3.B",
+   "stimulus": "development-methods-s1",
+   "q": "What is the mean of the four longitudinal scores (50, 54, 52 and 48)?",
+   "why": {
+    "correct": "Add them and divide by how many there are: $\\frac{50 + 54 + 52 + 48}{4} = \\frac{204}{4} = 51$."
+   },
+   "numeric": {
+    "from": {
+     "fn": "mean",
+     "args": [
+      [
+       50,
+       54,
+       52,
+       48
+      ]
+     ]
+    },
+    "mistakes": [
+     {
+      "from": {
+       "fn": "sum",
+       "args": [
+        [
+         50,
+         54,
+         52,
+         48
+        ]
+       ]
+      },
+      "why": "That is the total. Divide the total by the number of scores, 4."
+     },
+     {
+      "from": {
+       "fn": "range",
+       "args": [
+        [
+         50,
+         54,
+         52,
+         48
+        ]
+       ]
+      },
+      "why": "That is the range (highest minus lowest). The mean is the total divided by 4."
+     }
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-4",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "development-methods-s1",
+   "q": "The 70-year-olds in the cross-sectional study were born around 1954; the 25-year-olds around 1999. What best explains why the cross-sectional design shows a steeper drop?",
+   "options": [
+    "Random assignment placed weaker readers in the older group",
+    "A cohort effect: the older group grew up in different times",
+    "Attrition: people who scored low dropped out before age 70",
+    "Practice: the older people had taken the test several times before"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In a cross-sectional study, age and birth year go together, so a difference between age groups can come from growing up in different times.",
+    "options": [
+     "Nobody can be randomly assigned to an age; the groups were recruited at their ages.",
+     "Right: the age groups also differ in birth year, so generation differences look like aging.",
+     "Dropouts are a problem of longitudinal studies; each cross-sectional group was tested once.",
+     "Repeated testing happens in a longitudinal study, and practice would raise scores, not lower them."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-5",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "development-methods-s1",
+   "q": "Of the people tested at 25 in 1979, the ones who left the study before 70 tended to be less healthy. How could this affect the longitudinal results?",
+   "options": [
+    "The age-70 mean may be too high, since healthier people stayed",
+    "The age-70 mean may be too low, because sicker people were added to replace dropouts",
+    "It turns the longitudinal study into a cross-sectional study",
+    "It creates a cohort effect between the age-25 and age-70 tests"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dropout (attrition) is not random when it is linked to health, so the people left at the end are not like the group who started.",
+    "options": [
+     "Right: attrition left a healthier group at 70, which can hide some real decline.",
+     "A longitudinal study follows the same people; nobody new was added.",
+     "The design is still one group measured over time; it just has fewer people.",
+     "Everyone in the longitudinal group shares one birth cohort."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-6",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "stimulus": "development-methods-s2",
+   "q": "Which best describes the design of this study?",
+   "options": [
+    "A cross-sectional study, because children of three ages were compared",
+    "An experiment, because the researchers set up a waiting room",
+    "A case study, because each child was observed closely",
+    "A longitudinal study: the same children were measured at 2, 7 and 15"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Repeated measurement of the same people is what makes a design longitudinal.",
+    "options": [
+     "The three ages belong to the same children, measured at different times, not different age groups tested once.",
+     "Setting up a situation is not manipulation: no variable was changed and no one was assigned to a condition.",
+     "A case study examines one person or a few in depth; this study measured 120 children on the same variables.",
+     "Right: one group was followed and measured again over 13 years."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-7",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "stimulus": "development-methods-s2",
+   "q": "Which developmental theme do the results support most directly?",
+   "options": [
+    "Stability: the shy toddlers grew into equally shy teenagers, as predicted",
+    "Discontinuity: shyness moved through fixed stages",
+    "Stability and change: shyness carried over, but many children changed",
+    "Change: early shyness had no link to how the teens behaved later on"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A moderate correlation over 13 years is evidence of partial stability, and the children who changed are evidence of change.",
+    "options": [
+     "About half of the shyest toddlers were in the typical range by 15.",
+     "Nothing in the study measured stages; it measured how strongly one score predicted a later one.",
+     "Right: the moderate correlation shows some stability, and half the shyest toddlers changed.",
+     "There was a moderate link ($r = -.45$), so early shyness did predict later behavior."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-8",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.C",
+   "stimulus": "development-methods-s2",
+   "q": "A newspaper says, \"Shy toddlers are made into quiet teens by their early shyness.\" Why is that conclusion not justified by this study?",
+   "options": [
+    "The children were randomly assigned to be shy or outgoing",
+    "Shyness was measured, not manipulated, so a third variable may explain it",
+    "The correlation of $-.45$ is too strong to be a real finding about children",
+    "The study used too few observers to measure shyness"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Correlation is not causation: without manipulation and random assignment, other variables could produce the link.",
+    "options": [
+     "No one was assigned; that is exactly why a causal claim does not follow.",
+     "Right: a correlation cannot show cause; a family that keeps a child home could make a child both shy at 2 and quiet at 15.",
+     "A correlation of $-.45$ is moderate; its size is not the problem.",
+     "The number of observers does not decide whether a cause can be claimed."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-9",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.D",
+   "stimulus": "development-methods-s2",
+   "q": "Which ethical safeguard does the summary describe for the children themselves at ages 7 and 15?",
+   "options": [
+    "Informed assent, the child’s own agreement to take part",
+    "Debriefing after deception about the study’s real purpose",
+    "Random assignment to a shy or outgoing group",
+    "Payment to each family for each visit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Minors cannot give legal consent, so parents consent and the child assents.",
+    "options": [
+     "Right: the summary says children gave assent at 7 and 15, on top of their parents’ consent.",
+     "The summary describes no deception and no debriefing.",
+     "Random assignment is a design feature, not an ethical safeguard, and it did not happen here.",
+     "The summary does not mention payment."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-10",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "specific",
+   "practice": "2.B",
+   "stimulus": "development-methods-s2",
+   "q": "Build the operational definition of teen shyness used in this study.",
+   "why": {
+    "correct": "An operational definition says exactly how this study measured the variable."
+   },
+   "specific": {
+    "frame": "Teen shyness was measured as ___ during ___.",
+    "write": {
+     "context": [
+      "spoke",
+      "peer",
+      "waiting room"
+     ]
+    },
+    "model": "Teen shyness was measured as the number of times the 15-year-old spoke first during a 10-minute wait in a room with an unfamiliar peer.",
+    "slots": {
+     "opdef": {
+      "label": "What was counted",
+      "options": [
+       "the number of times the teen spoke first",
+       "how nervous the teen felt inside",
+       "how long the toddler took to approach a stranger"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A feeling is not something the coders could count; say what they counted.",
+       "2": "That is the age-2 measure, not the teen measure."
+      }
+     },
+     "when": {
+      "label": "When and where",
+      "options": [
+       "a 10-minute wait with an unfamiliar peer",
+       "the whole school year",
+       "a visit with a friendly stranger at age 2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The coders watched one 10-minute session.",
+       "2": "That describes the toddler measure."
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "psy-development-methods-11",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "A researcher finds that children’s vocabulary grows a little every month, with no sudden jumps. A colleague argues that children’s reasoning changes in distinct steps, each a different way of thinking. Which theme are they debating?",
+   "options": [
+    "Stability and change",
+    "Cross-sectional and longitudinal",
+    "Continuity and discontinuity",
+    "Nature and nurture"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Continuity pictures development as a ramp; discontinuity pictures it as a staircase.",
+    "options": [
+     "Stability is about whether a trait stays the same in a person, not whether growth is gradual or stepwise.",
+     "Those are research designs, not a theme about how development happens.",
+     "Right: gradual growth is continuity; distinct steps (stages) are discontinuity.",
+     "Neither claim is about genes versus experience; both are about the shape of change."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-12",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "At a high school reunion, Maya says, \"Jordan was the class clown at 16 and is still the funniest person in any room at 40.\" Which side of which theme does her claim illustrate?",
+   "options": [
+    "Nurture, in the nature and nurture theme",
+    "Stability, in the stability and change theme",
+    "Change, in the stability and change theme",
+    "Discontinuity, in the continuity and discontinuity theme"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Stability means a person keeps their place on a trait over time.",
+    "options": [
+     "Her comment says nothing about what caused the trait.",
+     "Right: she is describing a trait that stayed much the same across 24 years.",
+     "She describes Jordan staying the same, not changing.",
+     "Discontinuity is about development moving in distinct stages, not a trait holding steady."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-13",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "A graduate student must finish her thesis in one year. She wants to compare how well 5-, 10- and 15-year-olds remember a list of pictures. Which design fits her deadline?",
+   "options": [
+    "A cross-sectional study of three age groups tested this year",
+    "A longitudinal study following 5-year-olds until they are 15",
+    "An experiment that randomly assigns children to ages",
+    "A case study of one child at each age"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cross-sectional designs trade some accuracy about change for speed.",
+    "options": [
+     "Right: testing different age groups at one time gives age comparisons quickly.",
+     "That would take ten years.",
+     "Age cannot be assigned; it can only be measured.",
+     "One child per age gives too little to compare age groups."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-14",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "2.A",
+   "q": "Why can neither a cross-sectional nor a longitudinal study, by itself, show that age causes a change?",
+   "options": [
+    "Both designs use samples that are too small to support a claim about cause",
+    "Both designs measure each person at just one point in time",
+    "Both designs require deception, which weakens conclusions",
+    "Age cannot be randomly assigned, so other variables come along with it"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Causal claims need manipulation of the variable and random assignment; age allows neither.",
+    "options": [
+     "Sample size is not why causation is ruled out; a huge sample still cannot assign age.",
+     "A longitudinal study tests the same people many times.",
+     "Neither design requires deception.",
+     "Right: age comes with birth year, life events and history, which the researcher cannot separate by assignment."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-15",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "apply",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "In a 2025 survey, adults over 70 report less comfort using phone apps than adults in their 20s. A researcher warns that the gap may say more about when people grew up than about aging. Which concept is the researcher pointing to?",
+   "options": [
+    "Social desirability bias",
+    "Discontinuity",
+    "A cohort effect",
+    "Attrition"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A cohort is a group born around the same time; a cohort effect is a difference caused by that shared history.",
+    "options": [
+     "That is giving answers that look good to others; the warning is about generations.",
+     "Discontinuity is about stages of development, not differences between generations.",
+     "Right: people over 70 grew up before smartphones existed, so the gap may reflect generation, not age.",
+     "Attrition is losing participants over time in a longitudinal study; this was a one-time survey."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-16",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "recall",
+   "diff": 1,
+   "type": "single",
+   "practice": "1.A",
+   "q": "What does a longitudinal study let researchers see that a cross-sectional study cannot?",
+   "options": [
+    "Differences between people born in different decades",
+    "How the same individuals change as they grow older",
+    "Results in a single testing session",
+    "Whether age causes the change"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A longitudinal study follows one group, so each person can be compared with their earlier self.",
+    "options": [
+     "Comparing birth cohorts is what a cross-sectional study does, with its risk of cohort effects.",
+     "Right: only repeated measurement of the same people shows change within each person.",
+     "That is the advantage of a cross-sectional study.",
+     "Neither design can show that, because age cannot be assigned."
+    ]
+   }
+  },
+  {
+   "id": "psy-development-methods-17",
+   "unit": "unit-3",
+   "topic": "development-methods",
+   "level": "analyze",
+   "diff": 2,
+   "type": "single",
+   "practice": "1.A",
+   "q": "Identical twins raised in different homes end up with similar heights, but the twin raised with better nutrition is 4 cm taller. What does this best show about development?",
+   "options": [
+    "Genes and nutrition both shape height",
+    "Height is set by genes, with no role for the environment",
+    "Height is set by the environment, with no role for genes",
+    "Twins raised apart follow discontinuous stages of growth"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Development is shaped by the interaction of heredity and environment, not by one alone.",
+    "options": [
+     "Right: the similar heights reflect shared genes, and the 4 cm gap reflects nutrition; nature and nurture work together.",
+     "The 4 cm gap between twins with identical genes shows the environment mattered.",
+     "The twins’ close heights despite different homes show genes mattered.",
+     "Nothing here is about stages."
+    ]
+   }
+  }
+ ]
+}

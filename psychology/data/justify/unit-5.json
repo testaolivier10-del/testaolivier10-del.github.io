@@ -1,0 +1,373 @@
+{
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-hassles-opdef",
+   "topic": "health-psychology",
+   "practice": "2.B",
+   "skill": "opdef",
+   "title": "Stress, counted",
+   "context": "<p>One hundred adults completed a 40-item daily hassles checklist (such as losing keys or a long commute) every evening for two weeks; each person's stress score was the total number of items they checked across the 14 evenings. They also recorded each day they were too ill to work or study (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the operational definition of stress in this study.",
+   "checklist": [
+    "Names what was counted: items checked on a 40-item daily hassles checklist",
+    "Says over what period: every evening for two weeks, totaled across the 14 evenings",
+    "Does not define stress in general"
+   ],
+   "earns": {
+    "answer": "Stress was the total number of items each person checked on a 40-item daily hassles checklist, filled in every evening for two weeks and added up across the 14 evenings.",
+    "why": "The instrument, the count and the period this study used."
+   },
+   "misses": {
+    "answer": "Stress is how a person responds to events they see as threatening or challenging.",
+    "why": "That defines the concept, not how this study measured it."
+   },
+   "specific": {
+    "slots": {
+     "opdef": {
+      "label": "Operational definition",
+      "options": [
+       "the total items checked on a 40-item hassles checklist",
+       "days too ill to work or study",
+       "how stressed people looked"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That is the other variable, illness.",
+       "2": "Nobody rated how people looked."
+      }
+     },
+     "when": {
+      "label": "Time period",
+      "options": [
+       "14 evenings, two weeks",
+       "one evening",
+       "a year"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The checklist was filled in every evening for two weeks.",
+       "2": "The summary says two weeks."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-gratitude-statistic",
+   "topic": "positive-psychology",
+   "practice": "3.C",
+   "skill": "statistic",
+   "title": "Significant, but how big?",
+   "context": "<p>Eight hundred adults were randomly assigned to write three things they were grateful for each night for six weeks, or three things that happened that day. Life satisfaction was rated from 1 to 10 before and after. The gratitude group rose from 5.1 to 5.6 on average and the control group from 5.0 to 5.2. The difference between the groups' changes was statistically significant, with a small effect size (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> what the results show about the gratitude group compared with the control group.",
+   "checklist": [
+    "Gives the direction: the gratitude group rose 0.5 points against 0.2, 0.3 point more",
+    "Explains significance: the difference is unlikely to be due to chance alone",
+    "Uses the effect size: the difference is small, so the benefit was modest"
+   ],
+   "earns": {
+    "answer": "The gratitude group's life satisfaction rose 0.5 points while the control group's rose 0.2, a gain 0.3 point larger. The difference is statistically significant, so it is unlikely to be due to chance alone, but the effect size is small, so writing down gratitude gave these adults a real but modest boost in subjective well-being.",
+    "why": "Direction and size for the groups, what significance means, and what the effect size adds."
+   },
+   "misses": {
+    "answer": "Because it is statistically significant, the gratitude journal made a big difference to life satisfaction.",
+    "why": "Significance is not size; the effect size here is small."
+   },
+   "specific": {
+    "slots": {
+     "statistic": {
+      "label": "Result",
+      "options": [
+       "the gratitude group gained 0.3 point more (0.5 against 0.2)",
+       "the control group gained more",
+       "both groups gained 0.5"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "That reverses the groups.",
+       "2": "The control group rose 0.2."
+      }
+     },
+     "meaning": {
+      "label": "Meaning",
+      "options": [
+       "a real difference that is small in size",
+       "a large difference",
+       "a difference due to chance"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The effect size is small.",
+       "2": "Significant means chance is an unlikely explanation."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-panic-method",
+   "topic": "treatment",
+   "practice": "2.A",
+   "skill": "method",
+   "title": "Comparing treatments for panic disorder",
+   "context": "<p>Ninety adults diagnosed with panic disorder by DSM-5-TR criteria at one urban clinic were randomly assigned to 12 weeks of cognitive-behavioral therapy, an antidepressant, or a waitlist. Participants were 25 to 50 years old; 85% were women and all spoke English. Each signed informed consent explaining they might wait 12 weeks for treatment. Symptoms were checked every week, and anyone whose symptoms got worse was withdrawn and offered treatment at once. The waitlist group was offered therapy when the study ended (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> the research method used in this study.",
+   "checklist": [
+    "Names one method: an experiment",
+    "Supports it: treatment (therapy, antidepressant, waitlist) was manipulated and randomly assigned",
+    "Does not call it correlational because symptoms were compared"
+   ],
+   "earns": {
+    "answer": "This is an experiment: the researchers randomly assigned the adults with panic disorder to cognitive-behavioral therapy, an antidepressant or a waitlist, and then measured their symptoms.",
+    "why": "One method, supported by the manipulation and random assignment."
+   },
+   "misses": {
+    "answer": "It is a correlational study, because it relates the kind of treatment to symptom scores.",
+    "why": "The treatment was assigned by the researchers, not measured as it occurred, so this is an experiment."
+   },
+   "specific": {
+    "slots": {
+     "method": {
+      "label": "Method",
+      "options": [
+       "an experiment",
+       "a correlational study",
+       "a case study"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Treatment was assigned at random, not measured as it happened.",
+       "2": "Ninety people were studied, not one in depth."
+      }
+     },
+     "because": {
+      "label": "Reason",
+      "options": [
+       "treatment was manipulated and randomly assigned",
+       "symptoms were checked weekly",
+       "all participants had panic disorder"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Weekly checks are the measure.",
+       "2": "A participant trait, not the method."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-panic-ethics",
+   "topic": "treatment",
+   "practice": "2.D",
+   "skill": "ethics",
+   "title": "Protecting people on a waitlist",
+   "context": "<p>Ninety adults diagnosed with panic disorder by DSM-5-TR criteria at one urban clinic were randomly assigned to 12 weeks of cognitive-behavioral therapy, an antidepressant, or a waitlist. Participants were 25 to 50 years old; 85% were women and all spoke English. Each signed informed consent explaining they might wait 12 weeks for treatment. Symptoms were checked every week, and anyone whose symptoms got worse was withdrawn and offered treatment at once. The waitlist group was offered therapy when the study ended (invented study for practice).</p>",
+   "prompt": "<b>Identify</b> one ethical guideline the summary describes and <b>describe</b> how the researchers applied it.",
+   "checklist": [
+    "Names a guideline the summary describes: protection from harm or informed consent",
+    "Says how it was applied: weekly checks and anyone worsening was withdrawn and treated, or consent explained the possible 12-week wait",
+    "Does not name debriefing: nobody was deceived"
+   ],
+   "earns": {
+    "answer": "The researchers applied protection from harm: they checked symptoms every week, and anyone whose symptoms got worse was withdrawn and offered treatment at once.",
+    "why": "The guideline and exactly how it was applied in this study."
+   },
+   "misses": {
+    "answer": "Debriefing: after the study the researchers told participants what was really going on.",
+    "why": "Nobody was deceived and the summary describes no debriefing."
+   },
+   "specific": {
+    "slots": {
+     "guideline": {
+      "label": "Guideline",
+      "options": [
+       "protection from harm",
+       "debriefing after deception",
+       "random assignment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Nobody was deceived.",
+       "2": "A design feature, not a safeguard."
+      }
+     },
+     "applied": {
+      "label": "How it was applied",
+      "options": [
+       "weekly checks; anyone worsening was withdrawn and treated",
+       "participants were 25 to 50",
+       "therapy lasted 12 weeks"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A participant trait.",
+       "2": "The procedure, not a safeguard."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-panic-generalize",
+   "topic": "treatment",
+   "practice": "2.A",
+   "skill": "generalize",
+   "title": "Do the results describe men with panic disorder?",
+   "context": "<p>Ninety adults diagnosed with panic disorder by DSM-5-TR criteria at one urban clinic were randomly assigned to 12 weeks of cognitive-behavioral therapy, an antidepressant, or a waitlist. Participants were 25 to 50 years old; 85% were women and all spoke English. Each signed informed consent explaining they might wait 12 weeks for treatment. Symptoms were checked every week, and anyone whose symptoms got worse was withdrawn and offered treatment at once. The waitlist group was offered therapy when the study ended (invented study for practice).</p>",
+   "prompt": "<b>Explain</b> whether the results generalize to adult men with panic disorder.",
+   "checklist": [
+    "Takes a position, here \"partly\", and argues both sides",
+    "One side: they are adults with the same diagnosis by the same criteria",
+    "Other side: only 15% of the participants were men, all from one urban clinic"
+   ],
+   "earns": {
+    "answer": "The results partly generalize to adult men with panic disorder. Like the participants, they are adults diagnosed with the same disorder by DSM-5-TR criteria, but only 15% of the participants were men and all came from one urban clinic, so the results describe women more than men.",
+    "why": "A \"partly\" answer that argues both sides from participant characteristics."
+   },
+   "misses": {
+    "answer": "Yes, because the study was a well-controlled experiment with random assignment.",
+    "why": "Design quality is not generalizability. Argue from who the participants were."
+   },
+   "specific": {
+    "slots": {
+     "claim": {
+      "label": "Conclusion",
+      "options": [
+       "partly generalize to adult men",
+       "generalize to every person with panic disorder",
+       "generalize because it was an experiment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Most participants were women at one clinic.",
+       "2": "Design is not who was studied."
+      }
+     },
+     "sample": {
+      "label": "Participant characteristics",
+      "options": [
+       "same diagnosis, but only 15% were men",
+       "90 people took part",
+       "symptoms were checked weekly"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Sample size does not settle generalizability.",
+       "2": "The measure, not a participant characteristic."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-exercise-evidence",
+   "topic": "treatment",
+   "practice": "4.B",
+   "skill": "evidence",
+   "title": "Evidence that names its source",
+   "context": "<p>Question: does exercise reduce symptoms of depression? Source 1: 120 adults with major depressive disorder were randomly assigned to aerobic exercise or stretching three times a week; after 12 weeks, depression scores (0 to 60) fell 14 points for exercise and 6 for stretching. Source 2: in a survey of 3,000 adults, exercising more often was weakly related to fewer depressive symptoms. Source 3: after 16 weeks, scores fell 12 points with exercise, 13 with an antidepressant and 5 with a placebo pill (invented sources for practice).</p>",
+   "prompt": "Claim: exercise reduces symptoms of depression. <b>Support</b> the claim with one piece of evidence from one source.",
+   "checklist": [
+    "Gives a specific result: scores fell 14 points with exercise against 6 with stretching, 8 points more",
+    "Cites the source: \"(Source 1)\" or \"According to Source 1\"",
+    "The result supports the claim"
+   ],
+   "earns": {
+    "answer": "According to Source 1, depression scores of adults who did aerobic exercise fell 14 points after 12 weeks, 8 points more than the 6-point fall for adults who stretched.",
+    "why": "A specific result, cited, that supports the claim."
+   },
+   "misses": {
+    "answer": "Adults who did aerobic exercise had depression scores fall 14 points, against 6 for stretching.",
+    "why": "Right result, but no source is named, so the evidence point is lost."
+   },
+   "specific": {
+    "slots": {
+     "source": {
+      "label": "Source",
+      "options": [
+       "Source 1",
+       "no source named"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Uncited evidence loses the point."
+      }
+     },
+     "evidence": {
+      "label": "Result",
+      "options": [
+       "scores fell 14 points with exercise against 6 with stretching",
+       "120 adults took part",
+       "exercise was three times a week"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A participant detail, not a result.",
+       "2": "A method detail, not a result."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-exercise-reasoning",
+   "topic": "treatment",
+   "practice": "4.B",
+   "skill": "reasoning",
+   "title": "Exercise and medication side by side",
+   "context": "<p>Question: does exercise reduce symptoms of depression? Source 1: 120 adults with major depressive disorder were randomly assigned to aerobic exercise or stretching three times a week; after 12 weeks, depression scores (0 to 60) fell 14 points for exercise and 6 for stretching. Source 2: in a survey of 3,000 adults, exercising more often was weakly related to fewer depressive symptoms. Source 3: after 16 weeks, scores fell 12 points with exercise, 13 with an antidepressant and 5 with a placebo pill (invented sources for practice).</p>",
+   "prompt": "Claim: exercise reduces symptoms of depression. Evidence: Source 3. <b>Explain</b> how the evidence supports the claim, using a psychology concept.",
+   "checklist": [
+    "Cites the result: 12 points with exercise, 13 with an antidepressant, 5 with a placebo pill (Source 3)",
+    "Applies a concept from the unit, such as the biopsychosocial model, not a research word like placebo",
+    "Links it: a treatment acting on body and behavior can lower symptoms about as much as medication"
+   ],
+   "earns": {
+    "answer": "In Source 3, depression scores fell 12 points with exercise, almost as much as the 13 with an antidepressant and more than the 5 with a placebo pill. This supports the claim because of the biopsychosocial model: depression involves biological, psychological and social factors, so exercise, which changes the body and daily behavior, can lower symptoms nearly as much as a medication.",
+    "why": "Evidence, a concept from the unit applied to it, and the link to the claim."
+   },
+   "misses": {
+    "answer": "Source 3 shows exercise beat the placebo pill, so the placebo effect explains the result.",
+    "why": "Placebo is a research term, not the concept, and it argues against the claim."
+   },
+   "specific": {
+    "slots": {
+     "concept": {
+      "label": "Concept",
+      "options": [
+       "the biopsychosocial model",
+       "the placebo effect",
+       "random assignment"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A research term; it cannot earn the concept point.",
+       "2": "A research term; it cannot earn the concept point."
+      }
+     },
+     "link": {
+      "label": "Link to the claim",
+      "options": [
+       "exercise works on body and behavior, so it lowers symptoms almost as much as medication",
+       "exercise only works as a placebo",
+       "medication never helps"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Exercise beat the placebo pill (12 against 5 points).",
+       "2": "The antidepressant lowered scores 13 points."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

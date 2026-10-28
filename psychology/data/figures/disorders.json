@@ -1,0 +1,12 @@
+{
+ "disorders-categories": {
+  "file": "figures/disorders-categories.svg",
+  "ext": "svg",
+  "w": 860,
+  "h": 610,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Ten boxes, one per DSM-5-TR category, with its representative disorders: neurodevelopmental (ADHD, autism spectrum disorder); schizophrenia spectrum; depressive (major depressive, persistent depressive); bipolar (I and II); anxiety (specific phobia, agoraphobia, panic, social anxiety, generalized anxiety); obsessive-compulsive and related (OCD, hoarding); dissociative (dissociative amnesia, dissociative identity disorder); trauma- and stressor-related (PTSD); feeding and eating (anorexia nervosa, bulimia nervosa); personality (Clusters A, B and C)."
+ }
+}

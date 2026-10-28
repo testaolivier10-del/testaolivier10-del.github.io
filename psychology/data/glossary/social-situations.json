@@ -1,0 +1,89 @@
+{
+ "social-norm": {
+  "def": "An unwritten rule for expected behavior in a group or situation (facing forward in an elevator)."
+ },
+ "social-role": {
+  "def": "A set of norms for how a person in a given position should act (student, coach, guard)."
+ },
+ "normative-influence": {
+  "def": "Normative social influence: going along with a group to be liked or accepted, or to avoid rejection, even when privately disagreeing."
+ },
+ "informational-influence": {
+  "def": "Informational social influence: going along with a group because one believes the group has accurate information, strongest when the right answer is unclear."
+ },
+ "persuasion": {
+  "def": "Communication meant to change a person's attitudes or behavior."
+ },
+ "elm": {
+  "def": "Elaboration likelihood model: persuasion works by a central route (careful thought about arguments, when people are motivated and able) or a peripheral route (surface cues such as attractiveness or fame). Central-route change tends to last longer."
+ },
+ "halo-effect": {
+  "def": "The tendency for one positive trait, such as attractiveness, to color judgments of a person's other, unrelated traits."
+ },
+ "foot-in-door": {
+  "def": "Foot-in-the-door technique: getting agreement to a small request first, which makes agreement to a larger request later more likely."
+ },
+ "door-in-face": {
+  "def": "Door-in-the-face technique: making a large request that is refused, then a smaller one, which now seems reasonable and is more likely to be accepted."
+ },
+ "conformity": {
+  "def": "Changing one's behavior or beliefs to match those of a group."
+ },
+ "obedience": {
+  "def": "Following the direct orders of an authority figure."
+ },
+ "individualism": {
+  "def": "A cultural emphasis on personal goals, independence and defining oneself by personal traits."
+ },
+ "collectivism": {
+  "def": "A cultural emphasis on group goals, interdependence and defining oneself by one's relationships and groups."
+ },
+ "multiculturalism": {
+  "def": "Valuing and supporting the presence of several cultures within one society."
+ },
+ "group-polarization": {
+  "def": "The strengthening of a group's prevailing view after members discuss it."
+ },
+ "groupthink": {
+  "def": "A mode of thinking in which a group's desire for harmony overrides a realistic look at alternatives, so doubts go unspoken."
+ },
+ "diffusion": {
+  "def": "Diffusion of responsibility: feeling less personally responsible to act when others are present who could also act."
+ },
+ "social-loafing": {
+  "def": "The tendency to put in less effort on a group task when individual contributions are pooled and not identified."
+ },
+ "deindividuation": {
+  "def": "A loss of self-awareness and self-restraint in group situations that bring arousal and anonymity."
+ },
+ "social-facilitation": {
+  "def": "Improved performance on simple or well-learned tasks in the presence of others; on hard or new tasks, others' presence tends to impair performance."
+ },
+ "false-consensus": {
+  "def": "False consensus effect: overestimating how many other people share one's own beliefs and behaviors."
+ },
+ "superordinate": {
+  "def": "Superordinate goals: shared goals that require groups to cooperate and that reduce conflict between them."
+ },
+ "social-trap": {
+  "def": "A situation in which each person pursuing self-interest leads to an outcome that is worse for everyone (overusing a shared resource)."
+ },
+ "io-psych": {
+  "def": "Industrial-organizational (I/O) psychology: the application of psychology to the workplace, including hiring, training, motivation, leadership and health at work."
+ },
+ "burnout": {
+  "def": "Physical, emotional and mental exhaustion, with cynicism and reduced effectiveness, caused by long-term job stress."
+ },
+ "altruism": {
+  "def": "Unselfish concern for the welfare of others, shown in helping that brings no reward to the helper."
+ },
+ "reciprocity-norm": {
+  "def": "The expectation that people should return help and favors to those who have helped them."
+ },
+ "social-responsibility": {
+  "def": "Social responsibility norm: the expectation that people should help those who depend on them, without expecting anything in return."
+ },
+ "bystander": {
+  "def": "Bystander effect: the finding that each individual is less likely to help in an emergency when other bystanders are present, partly through diffusion of responsibility."
+ }
+}

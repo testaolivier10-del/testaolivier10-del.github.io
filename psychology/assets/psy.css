@@ -1,0 +1,478 @@
+/* AP® Psychology course styles, on top of assets/theme.css. Forked from the AP® Physics 1
+   stylesheet by way of AP® Calculus AB's (docs/appsych-spec.md decision 1): the same visual language
+   tokens (Okabe–Ito based, colorblind-safe, light and dark), page shell,
+   stepped lesson, textbook frame and question styles, renamed psy-*, plus
+   what this course adds: stimulus panels and sets, numeric answers, charts,
+   unit pages, the printable unit sheet and the course home.
+
+   The course color: deep cerulean on every page (body.psy; docs/appsych-spec.md decision 5), the same values as
+   body[data-course="appsych"] in assets/theme.css and IDENTITY.accent in
+   scripts/lib/appsych-build.mjs. Light: --cink #084F78 on --ctint #E3F0F8
+   7.5:1, 8.8:1 on white, 8.3:1 on the page; dark: --cink #A8D8F0 11.1:1 on
+   the dark card, 9.4:1 on the tint rgba(80,170,220,0.10) over it (dark tint
+   kept low, A&P decision 81). Hue 202°, between NREMT's teal (171°) and
+   Chemistry's cobalt (223°). Then the math layer: formulas (MathML from
+   psy-math.js), data figures (psy-plot.js: the normal curve, histograms,
+   scatterplots) and numbers. */
+body.psy{--ctint:#E3F0F8;--cink:#084F78;}
+:root[data-theme="dark"] body.psy{--ctint:rgba(80,170,220,0.10);--cink:#A8D8F0;}
+
+/* ============================================================ 0. Math */
+/* Formulas: MathML, in a math font where the device has one. Display
+   formulas scroll sideways on a phone rather than overflow the page. */
+math.psy-m{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","STIXGeneral",math,serif;font-size:1.08em;}
+math.psy-m[display="block"]{display:block math;margin:.6em 0;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0;}
+math.psy-m mtext{font-family:var(--font-body,inherit);}
+.psy-q-calc{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12px var(--font-ui);letter-spacing:.02em;vertical-align:2px;}
+/* Plots (psy-plot.js): Okabe-Ito based series, lighter in dark mode;
+   open points are hollow. Color is never the only cue: curves carry labels. */
+.psy-plot-wrap{overflow-x:auto;max-width:100%;}
+.psy-plot{display:block;max-width:100%;height:auto;margin:0 auto;font:600 11px var(--font-ui);}
+.psy-plot text{fill:var(--ink-2,var(--ink));}
+.psy-plot .psy-plot-axlabel,.psy-plot .psy-plot-label{font-weight:800;fill:var(--ink);}
+.psy-plot-grid line{stroke:var(--line);stroke-width:1;}
+.psy-plot-axis line{stroke:var(--ink);stroke-width:1.3;}
+.psy-plot-curve{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;}
+.psy-plot-curve.is-dashed,.psy-plot-line.is-dashed{stroke-dasharray:6 5;}
+.psy-plot-line{stroke-width:1.8;}
+.psy-plot-asym{stroke:var(--ink-3,#777);stroke-width:1.3;stroke-dasharray:4 4;}
+.psy-plot-field line{stroke:var(--ink-2,#555);stroke-width:1.3;stroke-linecap:round;}
+.psy-plot-shade{fill:var(--cink);fill-opacity:.16;}
+.psy-plot-pt{stroke-width:2;}
+.psy-plot-pt.is-open{fill:var(--white,#fff);}
+/* Data figures: bars, pyramid halves, the legend's swatches. */
+.psy-plot-bar{fill:currentColor;fill-opacity:.22;stroke-width:1.4;}
+.psy-plot-bar.is-box{fill-opacity:.12;}
+.psy-plot-bar.is-shaded{fill-opacity:.6;}
+.psy-plot-legend text{font:700 11px var(--font-ui);fill:var(--ink);}
+.psy-plot .psy-plot-legend .psy-plot-bar{fill-opacity:.5;}
+.psy-plot text.psy-plot-pylabel{font-weight:800;paint-order:stroke;stroke:var(--white,#fff);stroke-width:3px;}
+.psy-plot .s1{stroke:#084F78;color:#084F78;} .psy-plot .s2{stroke:#C24E00;color:#C24E00;} .psy-plot .s3{stroke:#009E73;color:#009E73;}
+.psy-plot .s4{stroke:#A8508A;color:#A8508A;} .psy-plot .s5{stroke:#7A4F9E;color:#7A4F9E;}
+.psy-plot .psy-plot-pt.s1:not(.is-open){fill:#084F78;} .psy-plot .psy-plot-pt.s2:not(.is-open){fill:#C24E00;} .psy-plot .psy-plot-pt.s3:not(.is-open){fill:#009E73;}
+.psy-plot .psy-plot-pt.s4:not(.is-open){fill:#A8508A;} .psy-plot .psy-plot-pt.s5:not(.is-open){fill:#7A4F9E;}
+.psy-plot text.s1{fill:#084F78;stroke:none;} .psy-plot text.s2{fill:#A84400;stroke:none;} .psy-plot text.s3{fill:#00805C;stroke:none;}
+:root[data-theme="dark"] .psy-plot .s1{stroke:#8CC8E8;color:#8CC8E8;} :root[data-theme="dark"] .psy-plot .s2{stroke:#F29A5C;color:#F29A5C;}
+:root[data-theme="dark"] .psy-plot .s3{stroke:#52CFA6;color:#52CFA6;} :root[data-theme="dark"] .psy-plot .s4{stroke:#E0A3CB;color:#E0A3CB;}
+:root[data-theme="dark"] .psy-plot .s5{stroke:#C3A3E0;color:#C3A3E0;}
+:root[data-theme="dark"] .psy-plot .psy-plot-pt.s1:not(.is-open){fill:#8CC8E8;} :root[data-theme="dark"] .psy-plot .psy-plot-pt.s2:not(.is-open){fill:#F29A5C;}
+:root[data-theme="dark"] .psy-plot text.s1{fill:#8CC8E8;} :root[data-theme="dark"] .psy-plot text.s2{fill:#F29A5C;} :root[data-theme="dark"] .psy-plot text.s3{fill:#52CFA6;}
+/* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
+.psy-plot text.s4,.psy-plot text.s5,:root[data-theme="dark"] .psy-plot text.s1,:root[data-theme="dark"] .psy-plot text.s2,:root[data-theme="dark"] .psy-plot text.s3,:root[data-theme="dark"] .psy-plot text.s4,:root[data-theme="dark"] .psy-plot text.s5{stroke:none;}
+/* A study summary (stimulus kind "study", the AAQ's study, the EBQ's
+   sources): the exam's section headings, compact. */
+.psy-study h4{margin:.9em 0 .25em;font:800 13px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--cink);}
+.psy-study h4:first-child{margin-top:0;}
+.psy-study p{margin:.2em 0 .5em;}
+.psy-invented,.psy-ref{margin-top:.6em;font-style:italic;}
+/* A myth named only to correct it (the authoring guide's "No myths"). */
+.psy-myth{border-left:4px solid var(--bad,#C0392B);padding:6px 12px;background:var(--surface2);border-radius:0 10px 10px 0;}
+/* Help line on disorder pages (spec section 1). */
+.psy-help{font-size:.92em;padding:8px 12px;border-radius:10px;background:var(--ctint);}
+
+
+/* ============================================================ 1. Visual language */
+:root{
+  --psy-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --psy-o2-fill:#F6D2BD;
+  --psy-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --psy-deo2-fill:#C3DDF0;
+  --psy-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --psy-symp-fill:#F1DAE7;
+  --psy-para:#009E73;      /* parasympathetic: bluish green */
+  --psy-para-fill:#C4E8DC;
+  --psy-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --psy-aff-fill:#F8E3B8;
+  --psy-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --psy-eff-fill:#D2EAF8;
+  --psy-hi:#8E3B2E;        /* the high side of a gradient */
+  --psy-hi-fill:#EFD5CF;
+  --psy-lo:#5B6B8C;        /* the low side */
+  --psy-lo-fill:#E1E6F0;
+  --psy-memb:#6B5E3C;      /* membranes */
+  --psy-shape:#5D6B69;     /* neutral structure */
+  --psy-shape-fill:#EEF2F1;
+  --psy-causes:#1F2A28;    /* "causes" arrows */
+  --psy-flows:#1F2A28;     /* "flows to" arrows */
+  --psy-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --psy-o2:#FF9A5C;  --psy-o2-fill:rgba(213,94,0,0.28);
+  --psy-deo2:#6CB8EC; --psy-deo2-fill:rgba(0,114,178,0.30);
+  --psy-symp:#E7A5CA; --psy-symp-fill:rgba(204,121,167,0.26);
+  --psy-para:#4FD1AA; --psy-para-fill:rgba(0,158,115,0.26);
+  --psy-aff:#F3C04F;  --psy-aff-fill:rgba(230,159,0,0.26);
+  --psy-eff:#8FD0F5;  --psy-eff-fill:rgba(86,180,233,0.24);
+  --psy-hi:#F0A08F;   --psy-hi-fill:rgba(142,59,46,0.34);
+  --psy-lo:#AEBBD6;   --psy-lo-fill:rgba(91,107,140,0.30);
+  --psy-memb:#D8C58F;
+  --psy-shape:#B7C4C1; --psy-shape-fill:rgba(183,196,193,0.10);
+  --psy-causes:#E6EEEC; --psy-flows:#E6EEEC;
+  --psy-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.psy-fig svg, svg.psy-svg{max-width:100%;height:auto;overflow:visible;}
+/* Inline stimulus drawings (particle views) carry a fixed width; they shrink to the column on a phone. */
+.psy-stim-html svg{max-width:100%;height:auto;}
+.psy-fig .shape{fill:var(--psy-shape-fill);stroke:var(--psy-shape);stroke-width:2;}
+.psy-fig .o2{fill:var(--psy-o2-fill);stroke:var(--psy-o2);stroke-width:2;}
+.psy-fig .deo2{fill:var(--psy-deo2-fill);stroke:var(--psy-deo2);stroke-width:2;}
+.psy-fig .symp{fill:var(--psy-symp-fill);stroke:var(--psy-symp);stroke-width:2;}
+.psy-fig .para{fill:var(--psy-para-fill);stroke:var(--psy-para);stroke-width:2;}
+.psy-fig .aff{fill:var(--psy-aff-fill);stroke:var(--psy-aff);stroke-width:2;}
+.psy-fig .eff{fill:var(--psy-eff-fill);stroke:var(--psy-eff);stroke-width:2;}
+.psy-fig .hi{fill:var(--psy-hi-fill);stroke:var(--psy-hi);stroke-width:2;}
+.psy-fig .lo{fill:var(--psy-lo-fill);stroke:var(--psy-lo);stroke-width:2;}
+.psy-fig .memb{fill:none;stroke:var(--psy-memb);stroke-width:3;}
+.psy-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.psy-fig .line{fill:none !important;}
+.psy-fig .o2.line{stroke:var(--psy-o2);} .psy-fig .deo2.line{stroke:var(--psy-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   psy-core.js, so an author only writes class="causes" or class="flows". */
+.psy-fig .causes{fill:none;stroke:var(--psy-causes);stroke-width:2.5;marker-end:url(#psy-head-causes);}
+.psy-fig .flows{fill:none;stroke:var(--psy-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#psy-head-flows);}
+.psy-fig .o2.flows{stroke:var(--psy-o2);} .psy-fig .deo2.flows{stroke:var(--psy-deo2);}
+.psy-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.psy-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.psy-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#psy-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.psy-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.psy-crumb a{color:var(--muted);text-decoration:none;}
+.psy-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.psy-hero{padding-top:22px;}
+.psy-hero h1{max-width:24ch;}
+.psy-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.psy-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.psy-tag:hover{text-decoration:underline;}
+.psy-part{margin:0 0 30px;max-width:760px;}
+.psy-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.psy-part p,.psy-prose p,.psy-prose li{font-weight:600;line-height:1.7;}
+.psy-hint{color:var(--muted);font-size:14px;}
+.psy-small{color:var(--muted);font:700 13px var(--font-ui);}
+.psy-unbuilt{color:var(--muted);}
+.psy-links{margin:0;padding-left:20px;}
+.psy-links li{margin:4px 0;}
+.psy-plain{margin:6px 0 14px;padding-left:20px;}
+.psy-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+
+/* The causal chain: numbered cause -> effect steps. */
+.psy-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.psy-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.psy-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.psy-chain .psy-arrow{color:var(--cink);font-weight:900;}
+.psy-chain .psy-cause{font-weight:700;}
+.psy-ideas{margin:0;padding-left:20px;}.psy-ideas li{margin:0 0 10px;}
+.psy-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.psy-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.psy-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.psy-wrong b{color:var(--bad-text, #B3261E);}
+.psy-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the lesson figure panel. */
+.psy-figure{margin:18px 0 24px;}
+.psy-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.psy-credit{display:block;font-size:12px;margin-top:3px;}
+.psy-figimg{position:relative;display:inline-block;max-width:100%;}
+.psy-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Dark mode: the diagrams are SVG files drawn on white in the course palette
+   (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
+   inside them. Inverting lightness and turning the hue back round keeps every
+   hue in place while light fills go dark and dark strokes and labels go light,
+   the same swap the A&P figures make with their dark tokens; the white ground
+   lands near the dark card surface. Follows the site's theme toggle. */
+:root[data-theme="dark"] .psy-figimg img{filter:invert(.88) hue-rotate(180deg) saturate(1.25) brightness(1.05);}
+@media print{:root[data-theme="dark"] .psy-figimg img{filter:none;}}
+.psy-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.psy-mask span{position:absolute;left:-9999px;}
+.psy-labels-hidden .psy-mask{background:var(--psy-mask);outline:2px solid var(--cink);cursor:pointer;}
+.psy-labels-hidden .psy-mask:focus-visible{outline:3px solid var(--accent);}
+.psy-labels-hidden .psy-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.psy-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.psy-prose{max-width:760px;}
+.psy-prose h2{font-size:23px;margin:34px 0 10px;}
+.psy-prose h3{font-size:18px;margin:24px 0 8px;}
+.psy-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.psy-prose table.compare th,.psy-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.psy-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.psy-prose table.compare tbody th{font-weight:800;}
+.psy-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.psy-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.psy-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.psy-preview{border:2px dashed var(--cink);}
+.psy-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.psy-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.psy-foot{padding:26px 0 40px;}
+.psy-gate{margin:0 0 18px;}.psy-gate .premium-card{margin:0;}.psy-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
+.psy-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.psy-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.psy-q-credit{margin:4px 0 0;color:var(--muted);}
+
+/* ============================================================ Lesson layout (redesign)
+   A rail with the lesson's parts, a coral title card joined to a white card
+   and chip rows under it. Without JS every part shows in one scroll and the
+   rail links jump to them; psy-lesson.js adds .psy-stepped (one part a step). */
+.psy-ls{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;}
+.psy-ls-rail{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;}
+.psy-ls-main{min-width:0;}
+.psy-ls-k{font:900 12px/1.5 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.psy-ls-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;}
+.psy-ls-links a{display:inline-flex;align-items:center;gap:6px;font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.psy-ls-links a:hover,.psy-ls-chips a:hover{color:var(--cink);}
+.psy-ls-prog{display:flex;align-items:center;gap:12px;}
+.psy-ls-prog[hidden]{display:none;}
+.psy-ls-track{flex:1;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.psy-ls-fill{width:0;height:100%;background:var(--cink);border-radius:999px;transition:width .25s ease;}
+.psy-ls-count{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.psy-ls-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.psy-ls-steps a{display:flex;align-items:flex-start;gap:10px;padding:7px 8px;border-radius:9px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.psy-ls-steps a:hover{background:var(--hover-tint);}
+.psy-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
+.psy-ls-steps .done a{color:var(--ink);}
+.psy-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.psy-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.psy-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.psy-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.psy-ls-hint:empty{display:none;}
+.psy-ls-hint + .psy-ls-go{margin-left:0;}
+.psy-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.psy-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.psy-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
+.psy-ls-steps .current a{background:var(--ctint);color:var(--cink);}
+.psy-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.psy-ls-hero .eyebrow{color:var(--cink);}
+.psy-ls-hero .psy-tag{background:var(--white);}
+.psy-ls-hero h1{margin:0 0 6px;max-width:20ch;}
+.psy-ls-hero .lede{margin:0 0 14px;max-width:52ch;color:var(--muted);font-weight:700;}
+.psy-ls-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-lg);margin-top:-2px;padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);}
+.psy-ls [id]{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);}
+.psy-stepped .psy-ls-card{min-height:360px;display:flex;flex-direction:column;}
+.psy-ls-card .psy-part{max-width:72ch;}
+.psy-ls-card #figure{max-width:none;}
+.psy-stepped .psy-step{display:none;flex:1;margin:0;}
+.psy-stepped .psy-step.is-on{display:block;}
+.psy-step .psy-step-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.psy-step h2{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 14px;}
+.psy-step h2:focus{outline:none;}
+.psy-step-body > :first-child{margin-top:0;}
+.psy-step-body > :last-child{margin-bottom:0;}
+.psy-ls-actions{display:flex;align-items:center;gap:12px;margin-top:26px;}
+.psy-ls-actions[hidden],.psy-ls-actions [hidden]{display:none;}
+.psy-ls-back{font:800 14.5px var(--font-ui);color:var(--muted);background:none;border:0;padding:10px 6px;cursor:pointer;}
+.psy-ls-back:hover{color:var(--ink);}
+.psy-ls-go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:900 15px var(--font-ui);color:var(--paper);background:var(--cink);padding:13px 24px;border-radius:var(--radius);border:0;cursor:pointer;text-decoration:none;box-shadow:var(--lift-sm);}
+.psy-ls-go:hover{filter:brightness(1.07);color:var(--paper);}
+.psy-ls-related{margin:22px 0 30px;display:flex;flex-direction:column;gap:10px;}
+.psy-ls-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;}
+.psy-ls-label{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:74px;}
+.psy-ls-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0;}
+.psy-ls-chips a,.psy-ls-chips .psy-unbuilt,.psy-ls-chips summary{display:inline-block;color:var(--ink);background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-sm);padding:6px 11px;font:700 12.5px var(--font-ui);text-decoration:none;}
+.psy-ls-chips details{display:contents;}
+.psy-ls-chips summary{cursor:pointer;color:var(--cink);list-style:none;}
+@media (prefers-reduced-motion:no-preference){.psy-stepped .psy-step.is-on{animation:psy-step-in .25s ease both;}}
+@keyframes psy-step-in{from{opacity:0;transform:translateY(6px);}}
+@media (max-width:900px){
+  .psy-ls{display:block;}
+  .psy-ls-rail{position:static;max-height:none;overflow:visible;padding:14px 0 0;gap:10px;}
+  .psy-ls-links{flex-direction:row;flex-wrap:wrap;gap:6px 18px;}
+  .psy-ls-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .psy-ls-steps a{padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .psy-stepped .psy-ls-steps .t{display:none;}
+  .psy-stepped .psy-ls-steps .current .t{display:inline;}
+}
+@media (max-width:560px){.psy-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.psy-stepped .psy-step{display:block;margin:0 0 28px;}.psy-ls-prog,.psy-ls-actions{display:none;}.psy-stepped .psy-ls-steps .t{display:inline;}}
+@media print{.psy-ls{display:block;}.psy-ls-rail,.psy-ls-actions{display:none !important;}.psy-stepped .psy-step{display:block;}}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (psy-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+
+/* Questions. */
+.psy-qs{display:grid;gap:14px;}
+.psy-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.psy-q-stem{margin:0 0 10px;font-weight:700;}
+.psy-q-n{color:var(--cink);font-weight:900;}
+.psy-opts{margin:0;padding-left:20px;}
+.psy-opt-btns{display:grid;gap:8px;}
+.psy-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.psy-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
+.psy-opt[aria-disabled="true"]{cursor:default;}
+.psy-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.psy-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.psy-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.psy-opt .psy-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.psy-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.psy-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.psy-q-feedback .psy-verdict{font-weight:900;}
+.psy-q-feedback .ok{color:var(--good-text, #1B7B5B);} .psy-q-feedback .no{color:var(--bad-text, #B3261E);}
+.psy-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.psy-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.psy-order li.pos-ok{border-color:var(--good, #1B7B5B);} .psy-order li.pos-no{border-color:var(--bad, #B3261E);}
+.psy-order .psy-order-text{flex:1;font-weight:700;}
+.psy-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.psy-predict{width:100%;border-collapse:collapse;}
+.psy-predict th,.psy-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.psy-predict .psy-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.psy-predict .psy-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.psy-predict .psy-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.psy-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .psy-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.psy-predict .psy-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.psy-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .psy-q-key{display:none;}
+
+/* Mastery text, study cards and filters. */
+.psy-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.psy-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.psy-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.psy-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.psy-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.psy-filter input,.psy-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+
+
+/* ============ Unit, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only Chem specifics stay. */
+
+@media (max-width:560px){
+  .psy-part h2{font-size:19px;}
+}
+@media print{
+  .psy-toggle-labels,.psy-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .psy-q-key{display:block;}
+}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.psy-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.psy-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.psy-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.psy-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (psy-book.js), so nothing on screen moves. */
+#psy-book{min-height:100vh;}
+
+/* ============================================================ AP Psychology additions */
+/* 44 px touch targets on every control a student answers with. */
+.psy-opt,.psy-ls-go,.psy-ls-back,.bk-btn,.psy-check,.psy-dir button,.psy-order button,.psy-num input{min-height:44px;}
+.psy-order button{min-width:44px;}
+.psy-foot .report-btn,.psy-report-page .report-btn{min-height:44px;}
+.psy-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
+.psy-review-note{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);margin:14px 0 0;}
+.psy-soon{padding:18px 20px;border-radius:var(--radius-lg,18px);background:var(--white);border:var(--bw,2px) solid var(--line);font-weight:700;}
+.psy-hero{padding-top:22px;}
+
+/* Answer marks: a word as well as a colour (A&P decision 81). */
+.psy-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.psy-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
+.psy-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.psy-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}
+.psy-mark.ok::before{content:"\2713  ";}.psy-mark.no::before{content:"\2715  ";}
+.psy-dir button[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.psy-predict .psy-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.psy-predict .psy-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+
+/* Stimulus sets: one panel, then its 4-5 questions, held together. */
+.psy-set{border:var(--bw,2px) solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--paper);}
+.psy-set>*,.psy-qs>*{min-width:0;}
+.psy-qs{grid-template-columns:minmax(0,1fr);}
+.psy-stim{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--lift-sm);}
+.psy-stim-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);margin:0 0 4px;}
+.psy-stim h3{font:900 17px var(--font-ui);margin:0 0 8px;}
+.psy-stim-text p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+table.psy-data{width:100%;border-collapse:collapse;font:600 14px/1.45 var(--font-ui);}
+table.psy-data caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+table.psy-data th,table.psy-data td{padding:8px 10px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+table.psy-data thead th{background:var(--ctint);color:var(--cink);}
+table.psy-data td{font-variant-numeric:tabular-nums;}
+
+/* Charts drawn by the generator (scripts/lib/appsych-build.mjs chartSvg).
+   Series differ by colour AND marker shape, in light and dark. */
+:root{--psy-s1:#0072B2;--psy-s2:#D55E00;--psy-s3:#009E73;--psy-s4:#CC79A7;--psy-s5:#5E5E5E;}
+:root[data-theme="dark"]{--psy-s1:#6CB8EC;--psy-s2:#FF9A5C;--psy-s3:#4FD1AA;--psy-s4:#E7A5CA;--psy-s5:#C9C9C9;}
+.psy-chart{margin:4px 0;}
+.psy-svg{width:100%;max-width:560px;height:auto;display:block;}
+.psy-svg .axis{stroke:var(--ink);stroke-width:1.5;}
+.psy-svg .grid{stroke:var(--line, rgba(0,0,0,0.1));stroke-width:1;}
+.psy-svg .tick{fill:var(--muted);font:700 12px var(--font-ui);}
+.psy-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.psy-svg .series{fill:none;stroke-width:2.5;}
+.psy-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.psy-svg .s1{stroke:var(--psy-s1);} .psy-svg .s2{stroke:var(--psy-s2);} .psy-svg .s3{stroke:var(--psy-s3);} .psy-svg .s4{stroke:var(--psy-s4);} .psy-svg .s5{stroke:var(--psy-s5);} .psy-svg .series.s5{stroke-dasharray:7 4;}
+.psy-svg .pt.s1,.psy-svg .bar.s1{fill:var(--psy-s1);} .psy-svg .pt.s2,.psy-svg .bar.s2{fill:var(--psy-s2);} .psy-svg .pt.s3,.psy-svg .bar.s3{fill:var(--psy-s3);} .psy-svg .pt.s4,.psy-svg .bar.s4{fill:var(--psy-s4);} .psy-svg .pt.s5,.psy-svg .bar.s5{fill:var(--psy-s5);}
+.psy-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+.psy-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+.psy-legend .s1 i{background:var(--psy-s1);} .psy-legend .s2 i{background:var(--psy-s2);} .psy-legend .s3 i{background:var(--psy-s3);} .psy-legend .s4 i{background:var(--psy-s4);} .psy-legend .s5 i{background:var(--psy-s5);}
+.psy-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
+
+/* Numeric answers. */
+.psy-num{display:flex;flex-direction:column;gap:6px;}
+.psy-num label{font:800 14px var(--font-ui);}
+.psy-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.psy-num input{width:12ch;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 17px var(--font-mono, monospace);}
+.psy-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.psy-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
+.psy-num-ulabel{font:800 14px var(--font-ui);margin-left:6px;}
+.psy-num input.psy-num-u{width:10ch;}
+.psy-then{margin-top:12px;}
+/* Value, units and significant figures, each with its own mark. */
+.psy-num-parts{list-style:none;margin:8px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font:700 14px var(--font-ui);}
+.psy-num-parts li{display:flex;align-items:center;gap:6px;}
+.psy-num-notes{margin:6px 0;padding-left:20px;font-size:14.5px;line-height:1.5;}
+.psy-num-notes li{margin:2px 0;}
+/* "Make it specific" builders, slot by slot (specific items in psy-questions.js and the
+   "Make it specific" builder in pages/justify.js): one labelled select per
+   slot, stacked, full width so long wordings stay readable at phone width. */
+.psy-cl{display:flex;flex-direction:column;gap:12px;margin:6px 0;}
+.psy-cl-slot{display:flex;flex-direction:column;align-items:flex-start;gap:4px;font:800 14px var(--font-ui);}
+.psy-cl-slot select{width:100%;max-width:100%;min-height:44px;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:600 15px var(--font-ui);}
+.psy-cl-slot select:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.psy-cl-slot .psy-mark{margin-left:0;}
+.psy-cl-write{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.psy-cl-write label{font:800 14px var(--font-ui);}
+.psy-cl-write textarea{width:100%;box-sizing:border-box;padding:8px 10px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:500 15px var(--font-ui);}
+
+
+
+/* Glossary page: its styles are inlined in psychology/glossary.html (build-appsych.mjs, GLOSSARY_CSS). */
+
+/* The printable unit sheet: one page on screen, compact on paper. */
+.psy-sheet-head h1{margin:6px 0 10px;}
+.psy-sheet-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:10px 0 24px;}
+.psy-sheet-topic{background:var(--white);border-radius:14px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 13.5px/1.5 var(--font-ui);}
+.psy-sheet-topic h2{font:900 16px var(--font-ui);margin:0 0 6px;}
+.psy-sheet-topic h2 span{color:var(--cink);}
+.psy-sheet-topic ul{margin:6px 0;padding-left:18px;}
+.psy-sheet-chain{color:var(--muted);}
+.psy-sheet-terms{margin:6px 0 0;display:grid;gap:4px;}
+.psy-sheet-terms dt{display:inline;font-weight:900;}
+.psy-sheet-terms dt::after{content:": ";}
+.psy-sheet-terms dd{display:inline;margin:0;}
+@media print{
+  body.psy{background:#fff;color:#000;}
+  .psy-foot .privacy-link,.psy-crumb,.psy-nav-ref .btn-press,.report-btn{display:none !important;}
+  .psy-sheet-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .psy-sheet-topic{box-shadow:none;border:1px solid #999;padding:8px 10px;font-size:10.5pt;break-inside:avoid;}
+  .psy-sheet-head h1{font-size:16pt;}
+  .psy-set{border-color:#999;}
+}
+@media (max-width:560px){.psy-sheet-grid{grid-template-columns:minmax(0,1fr);}.psy-set{padding:10px;}}
+
+/* Share bar: Share to Google Classroom, Copy link, Print (lessons, notes,
+   unit sheets, FRQs; scripts/build-appsych.mjs shareBar). Fixed height, so
+   nothing shifts when the copy label changes. */
+.psy-share{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.psy-share-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--cink);font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;min-width:7.5em;justify-content:center;}
+.psy-share-btn:hover{border-color:var(--cink);color:var(--cink);}
+.psy-share-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.psy-share{display:none !important;}}

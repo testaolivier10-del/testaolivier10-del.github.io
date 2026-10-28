@@ -1,0 +1,96 @@
+/* Neuron (psychology/assets/tools/neuron.js). OWNED BY THIS TOOL ONLY (builder T2).
+   One color per role, the same in both scenes and in the drills: the neuron
+   and the trace cerulean (the course accent), the signal and the threshold
+   vermillion, neurotransmitter green, drugs reddish purple (Okabe-Ito based,
+   colorblind safe; lighter in dark mode). Every value is also written, so
+   color is never the only cue. */
+.nr-svg,.nr-qfig{--nr-cell:#CFE6F3;--nr-cell2:#9CCBE6;--nr-edge:#084F78;--nr-nuc:#5E8FB0;--nr-my:#FBF6EA;--nr-my2:#E3D7BC;--nr-myedge:#B9A57D;
+  --nr-sig:#D55E00;--nr-sig-ink:#A84A00;--nr-glow:rgba(255,170,90,.95);--nr-nt:#009E73;--nr-nt-ink:#00704F;--nr-drug:#B5508E;--nr-drug-ink:#8E3A6E;
+  --nr-trace:#084F78;--nr-plot:#F6FAFC;--nr-abs:rgba(213,94,0,.14);--nr-rel:rgba(213,94,0,.06);--nr-rcv:#DDEFE7;--nr-rcv2:#BFE0D2;--nr-trans:#7A8C99;}
+:root[data-theme="dark"] .nr-svg,:root[data-theme="dark"] .nr-qfig{--nr-cell:#24485E;--nr-cell2:#1A3547;--nr-edge:#8CC8E8;--nr-nuc:#5C8DAD;--nr-my:#4A4536;--nr-my2:#36322A;--nr-myedge:#8E7F5E;
+  --nr-sig:#FF9A5C;--nr-sig-ink:#FFB385;--nr-glow:rgba(255,170,90,.9);--nr-nt:#4FD1AA;--nr-nt-ink:#7BE0C1;--nr-drug:#E59AC8;--nr-drug-ink:#F0B8DA;
+  --nr-trace:#8CC8E8;--nr-plot:#17232B;--nr-abs:rgba(255,154,92,.18);--nr-rel:rgba(255,154,92,.08);--nr-rcv:#1F3A31;--nr-rcv2:#173029;--nr-trans:#9AAAB5;}
+.nr-card{display:grid;gap:14px;}
+.nr-fig{position:relative;min-height:400px;height:min(74vh,660px);}
+.ls-root .nr-fig{flex:1 1 auto;height:auto;min-height:320px;}
+.nr-svg{display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.nr-fig .nr-svg{position:absolute;inset:0;}
+.nr-qfig .nr-svg{height:auto;}
+/* the neuron */
+.nr-soma0{stop-color:var(--nr-cell);} .nr-soma1{stop-color:var(--nr-cell2);}
+.nr-my0{stop-color:var(--nr-my);} .nr-my1{stop-color:var(--nr-my2);} .nr-my2{stop-color:var(--nr-my);}
+.nr-glow0{stop-color:var(--nr-glow);} .nr-glow1{stop-color:var(--nr-glow);stop-opacity:0;}
+.nr-dend path{fill:none;stroke:var(--nr-cell2);stroke-linecap:round;}
+.nr-svg .nr-edge,.nr-qfig .nr-edge{fill:none;stroke:var(--nr-edge);stroke-linecap:round;}
+.nr-axcore{stroke:var(--nr-cell2);stroke-linecap:round;}
+.nr-soma,.nr-hill{stroke:var(--nr-edge);stroke-width:1.6;}
+.nr-hill{stroke-width:0;}
+.nr-nuc{fill:var(--nr-nuc);opacity:.55;stroke:var(--nr-edge);stroke-width:1;}
+.nr-nucl{fill:var(--nr-edge);opacity:.7;}
+.nr-myel rect{stroke:var(--nr-myedge);stroke-width:1.2;}
+.nr-tbr{fill:none;stroke:var(--nr-cell2);stroke-linecap:round;}
+.nr-btn{fill:var(--nr-cell);stroke:var(--nr-edge);stroke-width:1.4;}
+.nr-part[data-part]{cursor:pointer;outline:none;}
+.nr-part[data-part]:hover .nr-soma,.nr-part[data-part]:hover rect,.nr-part[data-part]:hover .nr-btn{stroke-width:2.4;}
+.nr-part[data-part]:hover .nr-edge{stroke-width:inherit;filter:brightness(1.15);}
+.nr-part[data-part]:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.nr-part.is-hi .nr-soma,.nr-part.is-hi rect,.nr-part.is-hi .nr-btn{stroke:var(--nr-sig);stroke-width:3;}
+.nr-part.is-hi .nr-edge{stroke:var(--nr-sig);}
+.nr-part.is-hi .nr-soma,.nr-part.is-hi .nr-hill{stroke:var(--nr-sig);}
+.nr-lab{fill:var(--ink);font-weight:800;paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.nr-lab.is-hi{fill:var(--nr-sig-ink);}
+.nr-charge{pointer-events:none;}
+.nr-in{fill:none;stroke:var(--nr-sig);stroke-width:2;pointer-events:none;}
+.nr-in.is-held{fill:var(--nr-sig);stroke:none;opacity:.6;}
+.nr-ap{pointer-events:none;}
+.nr-apc{fill:var(--nr-sig);pointer-events:none;}
+/* the trace */
+.nr-plotbg{fill:var(--nr-plot);}
+.nr-grid{stroke:var(--line);stroke-width:1;}
+.nr-tk{fill:var(--muted);font-weight:700;font-variant-numeric:tabular-nums;}
+.nr-axl{fill:var(--ink);font-weight:800;}
+.nr-rest{stroke:var(--muted);stroke-width:1.4;stroke-dasharray:2 4;}
+.nr-thr{stroke:var(--nr-sig);stroke-width:1.8;stroke-dasharray:7 5;}
+.nr-thr-t{fill:var(--nr-sig-ink);font-weight:800;}
+.nr-rest-t{fill:var(--muted);font-weight:800;}
+.nr-trace{fill:none;stroke:var(--nr-trace);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.nr-head{fill:var(--nr-trace);}
+.nr-stim{fill:var(--nr-sig);}
+.nr-heldbar{stroke:var(--nr-sig);stroke-width:5;stroke-linecap:round;opacity:.75;}
+.nr-abs{fill:var(--nr-abs);} .nr-relp{fill:var(--nr-rel);}
+.nr-peak-t,.nr-ref-t{fill:var(--nr-sig-ink);font-weight:800;paint-order:stroke;stroke:var(--nr-plot);stroke-width:3px;}
+/* the synapse */
+.nr-sterm{stroke:var(--nr-edge);stroke-width:1.6;}
+.nr-rcv0{stop-color:var(--nr-rcv);} .nr-rcv1{stop-color:var(--nr-rcv2);}
+.nr-rcv{stroke:var(--nr-nt-ink);stroke-width:1.6;}
+.nr-rec path{fill:var(--paper);stroke:var(--nr-nt-ink);stroke-width:1.6;}
+.nr-rec.is-on path{fill:var(--nr-nt);}
+.nr-rec.is-blocked path{fill:var(--paper);stroke:var(--nr-drug-ink);}
+.nr-ves{fill:var(--white);stroke:var(--nr-edge);stroke-width:1.4;opacity:.92;}
+.nr-nt{fill:var(--nr-nt);stroke:var(--nr-nt-ink);stroke-width:.8;}
+.nr-nt.is-back{opacity:.55;}
+.nr-fuse{fill:none;stroke:var(--nr-edge);stroke-width:1.4;}
+.nr-drug{fill:var(--nr-drug);stroke:var(--nr-drug-ink);stroke-width:1;}
+.nr-trans rect{fill:var(--nr-trans);opacity:.9;}
+.nr-trans path{fill:none;stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.nr-cleft-t{font-style:italic;}
+.nr-act{fill:none;stroke:var(--nr-nt-ink);stroke-width:2.6;stroke-linejoin:round;}
+.nr-actarea{fill:var(--nr-nt);opacity:.18;}
+.nr-base{fill:none;stroke:var(--muted);stroke-width:1.8;stroke-dasharray:6 5;}
+.nr-base-t{fill:var(--muted);font-weight:800;paint-order:stroke;stroke:var(--nr-plot);stroke-width:3px;}
+/* controls */
+.nr-ctl{display:grid;gap:12px;}
+.nr-grp{display:grid;gap:10px;}
+.nr-grp[hidden],.nr-more-fire[hidden],.nr-more-syn[hidden],.bt-ctl[hidden]{display:none;}
+.nr-drugs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+.nr-drugs .bt-btn{min-height:44px;padding:6px 10px;font-size:14px;line-height:1.2;}
+.nr-drugs .bt-btn[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
+@media (min-width:1000px){.nr-drugs{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.ls-root .nr-drugs{grid-template-columns:repeat(2,minmax(0,1fr));}
+.nr-go{display:flex;gap:10px;}
+.nr-go .nr-play{flex:1;}
+/* The first-run tip's slot sits inside the (sticky) primary row, above the button, so the tip
+   lies on the row's own blank space and never on another control. */
+.nr-go{flex-wrap:wrap;}
+.nr-tipslot{height:58px;flex:1 0 100%;}
+.nr-plist{margin:0 0 10px;padding-left:18px;display:grid;gap:4px;font:600 14px/1.45 var(--font-ui);}

@@ -1,0 +1,12 @@
+{
+ "research-methods-experiment": {
+  "file": "figures/research-methods-experiment.svg",
+  "ext": "svg",
+  "w": 820,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Sixty volunteers are randomly assigned, by a coin flip, to two groups. The experimental group gets the real treatment, one level of the independent variable; the control group gets a placebo, a look-alike with no active ingredient. Both groups are then measured on the dependent variable as it is operationally defined, and the groups are compared: because only the treatment differed, a difference points to cause and effect. A side note explains double-blind: neither the participants nor the researchers who measure them know who is in which group."
+ }
+}

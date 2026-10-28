@@ -1,0 +1,84 @@
+{
+ "topic": "intelligence",
+ "hook": "Two students get the same IQ score. One was told before the test that \"people like you usually do badly on this.\" Does the score mean the same thing for both? Intelligence tests are carefully built, widely used and, at times in history, badly misused. Reading a score well takes knowing how they work.",
+ "prereq": [
+  {
+   "q": "On a normal curve, about what percent of scores fall within one standard deviation of the mean?",
+   "options": [
+    "68%",
+    "95%",
+    "50%",
+    "34%"
+   ],
+   "correct": 0,
+   "why": "By the 68-95-99.7 rule, 68% of scores lie within one standard deviation of the mean.",
+   "review": "stats-normal"
+  },
+  {
+   "q": "What does \"statistically significant\" mean?",
+   "options": [
+    "The result is unlikely to be due to chance alone",
+    "The result is large and important",
+    "The result will always replicate",
+    "The sample was random"
+   ],
+   "correct": 0,
+   "why": "Significance means a result would be unlikely if only chance were at work. It does not say how big the effect is.",
+   "review": "stats-significance"
+  },
+  {
+   "q": "What does a correlation of r = .90 between two sets of scores show?",
+   "options": [
+    "A strong positive relationship",
+    "A weak relationship",
+    "A strong negative relationship",
+    "That one causes the other"
+   ],
+   "correct": 0,
+   "why": "An r close to +1 is a strong positive relationship. Correlation alone does not show cause.",
+   "review": "stats-correlation"
+  }
+ ],
+ "figure": {
+  "figure": "intelligence-iq-curve",
+  "caption": "Modern IQ scores form a normal curve with a mean of 100 and a standard deviation of 15."
+ },
+ "chain": [
+  {
+   "cause": "Scores on very different mental tests correlate",
+   "effect": "many researchers propose a general intelligence, g"
+  },
+  {
+   "cause": "A test is standardized on a representative sample",
+   "effect": "scores can be placed on a normal curve and read as percentiles"
+  },
+  {
+   "cause": "A test is reliable and valid",
+   "effect": "its scores are consistent and predict what they should"
+  },
+  {
+   "cause": "Tests are given in biased ways or used to rank groups",
+   "effect": "scores are misread, as in the history of testing immigrants and the misuse of group differences"
+  }
+ ],
+ "ideas": [
+  "<b>General intelligence</b> (g) explains why different tests correlate; <b>multiple-ability</b> views stress separate strengths.",
+  "The original <b>IQ</b> was $\\frac{\\text{mental age}}{\\text{chronological age}} \\times 100$. Modern tests are <b>standardized</b>: a normal curve, mean 100, SD 15.",
+  "A good test is <b>reliable</b> (test-retest, split-half: consistent) and <b>valid</b> (construct, predictive: measures what it should).",
+  "Scores are shaped by context: <b>stereotype threat</b> and <b>lift</b>, the <b>Flynn effect</b>, and the fact that <b>within-group</b> differences do not explain <b>between-group</b> gaps. Tests have been misused against immigrants and minority groups.",
+  "<b>Achievement tests</b> measure what you learned; <b>aptitude tests</b> predict what you can learn. A <b>growth mindset</b> sees ability as developable; a <b>fixed mindset</b> does not."
+ ],
+ "misconception": {
+  "wrong": "If a trait is highly heritable within groups, then a difference between groups must be genetic too.",
+  "right": "Within-group heritability says nothing about the cause of a gap between groups. Seeds from one bag grow taller in rich soil than in poor soil, though height within each field is mostly genetic."
+ },
+ "check": [
+  "psy-intelligence-1",
+  "psy-intelligence-2",
+  "psy-intelligence-3",
+  "psy-intelligence-4",
+  "psy-intelligence-11",
+  "psy-intelligence-13"
+ ],
+ "summary": "Intelligence tests measure a general ability (g) that shows up across many tasks, though some theories stress separate abilities. Modern scores are standardized on a normal curve (mean 100, SD 15) and must be reliable and valid. Scores are shaped by context (stereotype threat and lift, the Flynn effect), group gaps are not explained by within-group heritability, tests have a history of misuse, and beliefs about ability (growth and fixed mindsets) affect effort."
+}
