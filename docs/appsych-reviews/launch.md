@@ -56,3 +56,7 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
 **Step 1 done.** Next: step 2, full CI.
 
 ## Step 2: CI
+- `BROWSER=1` CI: check-a11y passes (91 page shapes, no serious or critical). check-console failed twice on the
+  environmental-science practice flow: the shuffled set sometimes opens on a "Make it specific" item (selects
+  only), which the flow never answered, so no verdict came. The flow now picks an option in every blank, and the
+  same flow runs for psychology (it had none).
