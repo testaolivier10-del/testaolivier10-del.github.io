@@ -237,7 +237,7 @@
     { id: 'iba-tba', fam: F.iC4, start: { g: 'alcohol-1', p: 'b1' }, target: { g: 'alcohol-3' } },
     { id: 'prbr-propanal', fam: F.C3, start: { g: 'halide-1', p: 'b2' }, target: { g: 'aldehyde', p: 'b2' } },
     { id: 'prbr-propyne', fam: F.C3, start: { g: 'halide-1', p: 'b2' }, target: { g: 'alkyne', p: 'terminal' } },
-    { id: 'cyol-cyane', fam: F.cyc, start: { g: 'alcohol-2' }, target: { g: 'alkane', p: 'none3' } },
+    { id: 'cyol-cyane', fam: F.cyc, start: { g: 'alcohol-2' }, target: { g: 'alkane', p: 'none3' }, prefer: ['oh2-e1', 'ene-h2'] },
     { id: 'cyone-cyene', fam: F.cyc, start: { g: 'ketone', p: 'other' }, target: { g: 'alkene', p: '12' } },
     { id: 'cyene-transdiol', fam: F.cyc, start: { g: 'alkene', p: '12' },
       target: { g: 'diol', via: ['epox-open'], wrong: { 'ene-oso4': 'OsO₄ adds both oxygens to one face: that is cis-cyclohexane-1,2-diol. The target is trans.' } } },
@@ -286,7 +286,7 @@
     { id: 'tbubr-isobutanal', fam: F.iC4, start: { g: 'halide-3' }, target: { g: 'aldehyde', p: 'b1' } },
     { id: 'isobutane-iba', fam: F.iC4, start: { g: 'alkane', p: 'h3' }, target: { g: 'alcohol-1', p: 'b1' },
       hint: 'An alkane has one way in: a radical. Bromine picks the most substituted C–H.' },
-    { id: 'cybr-cyone', fam: F.cyc, start: { g: 'halide-2' }, target: { g: 'ketone', p: 'other' } },
+    { id: 'cybr-cyone', fam: F.cyc, start: { g: 'halide-2' }, target: { g: 'ketone', p: 'other' }, prefer: ['ene-oxy-2'] },
     { id: 'ethylbenz-phenethyl', fam: F.PhEt, start: { g: 'alkylbenzene' }, target: { g: 'alcohol-1', p: 'b2' } },
     { id: 'acid-amine', fam: F.C4, start: { g: 'acid', p: 'b2' }, target: { g: 'amine', p: 'b2' } },
     { id: 'nitro-bromo', fam: F.benz, start: { g: 'nitroarene' }, target: { g: 'aryl-halide' } },
@@ -297,7 +297,7 @@
     /* ---- Four steps ------------------------------------------------------ */
     { id: 'benz-phenol', fam: F.benz, start: { g: 'arene' }, target: { g: 'phenol' }, prefer: ['ar-nitrate'],
       hint: 'There is no electrophilic “OH⁺”. Put a nitrogen on first: it can be swapped later.' },
-    { id: 'cyane-cyone', fam: F.cyc, start: { g: 'alkane', p: 'none3' }, target: { g: 'ketone', p: 'other' } },
+    { id: 'cyane-cyone', fam: F.cyc, start: { g: 'alkane', p: 'none3' }, target: { g: 'ketone', p: 'other' }, prefer: ['ene-oxy-2'] },
     { id: 'isobutane-acid', fam: F.iC4, start: { g: 'alkane', p: 'h3' }, target: { g: 'acid', p: 'b1' } }
   ];
 
