@@ -60,3 +60,8 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
   environmental-science practice flow: the shuffled set sometimes opens on a "Make it specific" item (selects
   only), which the flow never answered, so no verdict came. The flow now picks an option in every blank, and the
   same flow runs for psychology (it had none).
+- `BROWSER=1 scripts/ci-local.sh`: **ALL PASS** (every course's map, build, content and generator checks, all
+  tests, check-a11y, check-console over 2270 pages and the flows) after commit 269ff6f0.
+
+**Step 2 done.** Step 3 (spec decision 13, section 9 owner checklist and teacher list, CLAUDE.md) committed in
+328c5df5. Launch phase complete; PR not opened (owner's call).
