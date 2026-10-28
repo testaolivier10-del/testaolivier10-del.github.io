@@ -102,6 +102,30 @@ checkout-abandon reason (Baymard). Prices themselves are unchanged ($29, $49, $2
 - Not done: a "send to a parent" link (conflicts with item 5 below, and a parent would buy on their own account);
   paying before creating an account (bigger change, later).
 
+## Free vs Premium table and one-click Unlock (2026-10-28, owner approved)
+
+Branch `claude/premium-table-checkout`. Owner asked for a calmer, less wordy Premium page that makes the purchase feel
+safe; research summary in the PR (sources there). Mockups: the "LevlPrep Premium checkout redesign" design canvas.
+- **Comparison table.** Each course in `assets/premium.js` has `rows`: `[what, Free, Premium]`, each cell `'yes'`,
+  `'no'` or a short limit. premium.html (`compareTable` in `scripts/lib/premium-data.mjs`) and the dialog
+  (`tableHtml` in premium.js) render the same `<table class="pc-table">` (styles in `assets/theme.css`). Keep `rows`
+  true to `free`/`premium`; a test checks every course has rows and no Premium cell is `'no'`.
+  AP® Chemistry's trainers read "Some" free: its `free` list names none but its Tools page tags five Free; confirm.
+- **Straight to checkout.** premium.html's button (`[data-premium-scope] [data-premium-buy]`) starts checkout with no
+  dialog; ochem and A&P get a semester / full year switch. Course homes link to `premium.html?course=<key>&buy=<pass>`
+  (`handleBuyLink`): the course opens behind and checkout, or the one-step sign-in, starts at once. Pending buys carry
+  `via: 'page'|'dialog'` so `resumePending` returns the way they came. The dialog stays for locked cards and the
+  daily limit, now with the table; their button names the price ("Unlock for $17.50", or "See Premium, from …").
+- **Honest founding price.** No struck-through $25 anywhere (FTC 16 CFR 233: a former price must have been charged):
+  "Founding price · $25 from February 1, 2027". The price must actually rise on that day.
+- **Said once.** One line under every buy button: "Full refund within 7 days · Never renews · Secure checkout by
+  Polar" (`SURE`), plus the FAQ. The refund tile became "Secure checkout"; the lede and fine print no longer repeat it.
+- **Fair comparison only.** AP® vs Fiveable's yearly price, NREMT vs Pocket Prep's 3-month price; the tutor-hour line
+  is gone. Fine print folds behind "Fine print and terms" (nothing removed).
+- **Not done:** the "ask a parent" link (still dropped, item 5: a parent buying on their own account would not unlock
+  the student's); a ratings prompt (no buyers yet to ask); the founder line (owner: skip). Apple Pay and Google Pay
+  need Polar to approve levlprep.com for the embedded checkout (owner emails support@polar.sh).
+
 ## Plan and status (owner decisions 2026-10-08)
 
 | # | Item | Status |

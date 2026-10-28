@@ -1284,7 +1284,44 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .premium-card__tag{
   font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
 }
-.premium-modal{max-width:460px;}
+.premium-modal{max-width:560px;}
+.premium-lists.has-table{display:block;}
+@media (max-width:520px){.premium-pass{flex-direction:column;align-items:stretch;}.premium-pass .premium-buy{width:100%;padding:12px 16px;}}
+/* The Free vs Premium table (premium.js tableHtml; premium.html and the
+   dialog). A real table, so a screen reader reads each row against its
+   column. Same three columns on a phone, just tighter. */
+.pc-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  font-family:var(--font-ui);background:var(--white);margin:0 0 14px;}
+.pc-table th,.pc-table td{padding:12px 16px;border-top:1px solid var(--line);text-align:left;vertical-align:middle;
+  font-size:14.5px;line-height:1.35;}
+.pc-table thead th{border-top:0;vertical-align:bottom;}
+.pc-table tbody th{font-weight:700;color:var(--ink);}
+.pc-table .pc-what{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
+.pc-table .pc-free{width:26%;border-left:1px solid var(--line);color:var(--muted);font-weight:700;}
+.pc-table .pc-prem{width:30%;background:var(--tint-accent);color:var(--accent-text);font-weight:900;}
+.pc-table thead .pc-prem{background:var(--panel,#0B1A33);color:#FFFFFF;}
+:root[data-theme="dark"] .pc-table thead .pc-prem{background:var(--accent);color:#06121F;}
+.pc-plan{display:block;font-size:15px;font-weight:900;}
+.pc-amt{display:block;font-size:22px;font-weight:900;letter-spacing:-.02em;line-height:1.15;}
+.pc-amt small{font-size:12px;font-weight:800;letter-spacing:0;}
+.pc-table thead .pc-free .pc-plan,.pc-table thead .pc-free .pc-amt{color:var(--ink);}
+.pc-ic{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.pc-free .pc-ic{color:var(--muted);stroke-width:2.6;}
+.pc-ic--no{opacity:.55;stroke-width:2.4;}
+.premium-modal .pc-table th,.premium-modal .pc-table td{padding:9px 12px;font-size:13.5px;}
+.premium-modal .pc-amt{font-size:19px;}
+@media (max-width:560px){
+  .pc-table th,.pc-table td,.premium-modal .pc-table th,.premium-modal .pc-table td{padding:10px 8px;font-size:13px;}
+  .pc-table tbody th{padding-left:12px;}
+  .pc-table .pc-free{width:24%;text-align:center;}
+  .pc-table .pc-prem{width:29%;text-align:center;}
+  .pc-table .pc-ic{margin:0 auto;}
+  .pc-plan{font-size:13.5px;}
+  .pc-amt{font-size:17px;}
+}
+.premium-pass__founding{display:block;margin-top:2px;font-size:12.5px;font-weight:800;color:var(--accent-text);}
+.premium-fine details > summary{cursor:pointer;font-weight:800;}
+.premium-fine details > p{margin:8px 0 0;text-align:left;}
 .premium-lists{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px;}
 .premium-lists h3{margin:0 0 6px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
 .premium-lists ul{margin:0;padding-left:18px;font-size:13px;font-weight:700;line-height:1.5;}

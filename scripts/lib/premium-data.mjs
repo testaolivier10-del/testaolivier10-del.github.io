@@ -230,3 +230,30 @@ export function guaranteeText() {
   const fn = src.slice(start, end + 4);
   return vm.runInNewContext(`${fn}\nguaranteeText();`, { GUARANTEE: premiumData().GUARANTEE });
 }
+
+/* ---- the Free vs Premium table and buy line (owner 2026-10-28) ----------
+   Build-time twins of tableHtml, SURE and foundingLine in assets/premium.js,
+   so premium.html and the dialog render the same table. Change both. */
+const htmlEsc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const ICON_YES = '<svg class="pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const ICON_NO = '<svg class="pc-ic pc-ic--no" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10"/></svg>';
+function cellHtml(v) {
+  if (v === 'yes') return ICON_YES + '<span class="sr-only">Included</span>';
+  if (v === 'no') return ICON_NO + '<span class="sr-only">Not included</span>';
+  return htmlEsc(v);
+}
+export function compareTable(c, priceHtml) {
+  if (!c.rows) throw new Error(`assets/premium.js: ${c.name} has no rows`);
+  return '<table class="pc-table"><caption class="sr-only">Free and Premium in ' + htmlEsc(c.name) + '</caption>' +
+    '<thead><tr><th scope="col" class="pc-what">What you get</th>' +
+    '<th scope="col" class="pc-free"><span class="pc-plan">Free</span><span class="pc-amt">$0</span></th>' +
+    '<th scope="col" class="pc-prem"><span class="pc-plan">Premium</span><span class="pc-amt">' + priceHtml + '</span></th></tr></thead><tbody>' +
+    c.rows.map((r) => '<tr><th scope="row">' + htmlEsc(r[0]) + '</th><td class="pc-free">' + cellHtml(r[1]) + '</td><td class="pc-prem">' + cellHtml(r[2]) + '</td></tr>').join('') +
+    '</tbody></table>';
+}
+export const SURE = 'Full refund within 7 days · Never renews · Secure checkout by Polar';
+/* "February 1, 2027": the day the full price starts, written as premium.js writes dates. */
+export function dayAfterUS(iso) {
+  const d = new Date(Date.parse(iso + 'T12:00:00Z') + 864e5);
+  return `${d.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' })} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
+}
