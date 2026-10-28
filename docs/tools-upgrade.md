@@ -124,6 +124,7 @@ breadcrumbs truncate on phones; the burns figure's 1% region is a small tap targ
 | Build | What | Status |
 |---|---|---|
 | A&P 3D anatomy (branch `tools-anp-3d`, 2026-10-27) | New tool `anatomy-physiology/tools/anatomy-3d.html` on the body map's engine and model: 86 A&P structures (77 in the quizzes) on all 203 meshes; Explore, Study, Quiz (name it / point to it), Timed; filters by body system and A&P chapter; misses to the A&P review queue and dashboard | done: built, accuracy reviewed (4 errors and 20 minor fixed), tried in headless Chromium at 390 and 1280; NREMT body map checked |
+| Ochem Synthesis Trainer (branch `tools-ochem-synthesis`, 2026-10-27) | New Premium tool `ochem/tools/synthesis.html`: plan a multistep route forward (4 reagent tiles per step, intermediate drawn) or backward (precursor + reaction), dead ends explained, step back, 3-layer hints; 36 curated problems (2-4 steps, chapter filter) + random routes; Problems sheet; Check yourself quiz | done: built, accuracy pass, 390/1280 light+dark hands-on; `scripts/test/synthesis-trainer.test.mjs` (11) |
 
 ### 3D anatomy: decisions (2026-10-27)
 
@@ -176,6 +177,40 @@ breadcrumbs truncate on phones; the burns figure's 1% region is a small tap targ
   to review) and a filter were driven in Chromium. Fixed on the way: `body-map.html?focus=` threw a
   ReferenceError (onSelect ran before mount returned).
 - `sw.js` CACHE is not bumped (decision 6: once at merge).
+
+### Synthesis Trainer: decisions
+1. **No reaction of its own.** Every step is an edge of `reagent-roadmap-data.js`, judged with `OchemRoadmapEngine`
+   (`through`, patterns, `routes`). `ochem/assets/tools/synthesis-data.js` only maps each roadmap group to a real molecule
+   on a problem's skeleton ("families"), plus per-skeleton bans with reasons (no C≡C in a six-ring, no SNAr on bromobenzene,
+   no haloform on an ethyl ketone, no Birch on a route that must stay aromatic). The roadmap engine gained three options
+   (`opts.end`, `opts.ccOk`, `opts.edgeOk`) and `REACTS_OFF_MAP` moved into the data file so both tools share it (extended).
+2. **Exact walk.** The roadmap routes over groups; the trainer narrows the substitution pattern to the actual molecule
+   after each step (butan-2-ol → but-2-ene, which cannot hydroborate to butan-1-ol). The target is a molecule (name), not a
+   group: propylbenzene reached as "alkylbenzene" or "alkane" both count; cumene does not.
+3. **Any valid route counts**; the shortest is shown after a longer solve. A random route is only offered when
+   `OchemRoadmapEngine.routes` proves it and the exact walk agrees, 2-4 steps.
+4. **Verdict kinds** (all from the graph): detour (valid, longer), wrong isomer (`target.wrong`), wrong pattern (`sub`/`needs`),
+   joining step not last (`final`), C–C step not allowed / second C–C step, banned on this skeleton, back to a molecule already
+   on the route, real step that leads nowhere, and "not a reaction of this group" (decoys that pass `REACTS_OFF_MAP`).
+   Backward adds: right precursor wrong reagent, precursor the start cannot make, made only by a joining step, reachable only
+   through the target.
+5. **Recording.** Each judged pick: `OchemMastery.noteTopicAttempt(edge.topic)` (chapter strength, Review). A finished problem:
+   `OchemMastery.record('fgi-map' | 'cc-bond-toolkit' | 'disconnection', clean, tier 3)` (concept review queue, XP like a
+   tier-3 question), `LevlPremium.noteAnswer('ochem', clean, 'synth:<id>', 'multistep-synthesis')` (dashboard daily line) and
+   `HubProgress.recordActivity`. Solved problems in `ochem_synth_v1` (synced by the `ochem_` prefix); chapter reach in
+   `ochem_synth_reach` (default: furthest chapter with lesson progress).
+6. **Layout.** Tool Studio: stage = trail + start/now and target cards; dock = verdict above four tiles (one column on phones),
+   Step back / Hint; Why = how to plan + your route + shortest route; second sheet "Problems" (list first, then quiz and Keep
+   going). On phones the stage is only as tall as the two structures, so the tiles start on the first screen.
+7. Counts: "nine interactive tools" in `assets/premium.js`, `scripts/lib/course-homes.json`, `ochem/tools.html` meta,
+   `ochem/search.html`, README; digit counts come from the registry (build-pricing, r3 home).
+
+### Synthesis Trainer: open points
+- No subagent tool was available in the build session, so the accuracy pass was done in the same session as a separate
+  checklist pass over a full dump of every problem, route, tile and explanation (and a render of every structure). An
+  independent reviewer should still read `docs/ochem-needs-author.md` "Synthesis Trainer" and the dump the test walks.
+- 2° halide + bulky base (Hofmann alkene) is not a separate roadmap edge, so the trainer always gives the Zaitsev alkene.
+- `sw.js` CACHE not bumped (bump at merge, decision 6).
 
 ## Verification
 
