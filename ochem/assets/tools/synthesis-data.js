@@ -163,7 +163,8 @@
     { g: 'ether', name: 'anisole (with CH₃I)', f: 'anisole' }
   ]};
 
-  F.benzCOOH = { id: 'benzCOOH', name: 'one carbon on the ring', mols: [
+  F.benzCOOH = { id: 'benzCOOH', name: 'one carbon on the ring',
+    ban: { 'ald-ch2': 'Wolff–Kishner or Clemmensen takes the C=O all the way to CH₃: toluene. That is a step down the ladder you would only climb again (KMnO₄ oxidizes toluene back to benzoic acid), and this trainer does not follow toluene.' }, mols: [
     { g: 'acid', p: 'ar', name: 'benzoic acid', f: 'benzoic acid' },
     { g: 'nitrile', p: 'ar', name: 'benzonitrile', f: { n: 6, aromatic: true, subs: { 0: 'C#N' } } },
     { g: 'amide', p: 'ar', name: 'benzamide', f: { n: 6, aromatic: true, subs: { 0: 'CONH2' } } },

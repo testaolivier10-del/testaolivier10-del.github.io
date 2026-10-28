@@ -983,6 +983,7 @@
     'halide-2': ['NaOH', 'tBuOK', 'NaN3', 'NaH', 'NaNH2'],
     'halide-3': ['NaOH', 'NaH', 'NaNH2', 'H3O', 'Fischer'],
     'amine': ['NaH', 'NaOH', 'NaNO2', 'HX', 'RMgX', 'LiAlH4'],
+    'alkane': ['NBS', 'KMnO4', 'Br2FeBr3', 'HNO3'],
     'alkene': ['R2BH', 'HgSO4', 'NBS', 'Br2FeBr3', 'Fischer'],
     'alkylbenzene': ['Br2FeBr3', 'HNO3', 'Br2hv'],
     'aryl-ketone': ['Br2FeBr3', 'HNO3', 'LiAlH4', 'amine'],
