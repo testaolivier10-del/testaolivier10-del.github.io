@@ -644,10 +644,10 @@
   },
   {
    "id": "w1025-03-dead-zone",
-   "status": "approved",
+   "status": "scheduled",
    "added_on": "2026-10-26",
    "date": "2026-11-03",
-   "buffer": null,
+   "buffer": "6ae14d3df6d6782c59a0e60c",
    "yt_buffer": null,
    "youtube_id": null,
    "shorts_thumb": false,
