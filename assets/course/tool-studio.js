@@ -1041,7 +1041,6 @@
     ['stage', 'dock', 'why', 'details', 'about'].forEach(function(r){ if(opts[r]) s.add(r, opts[r]); });
     s.caption(opts.caption || '');
     if(opts.hint) s.hint(opts.hint);
-    queuePins();
     return s;
   }
 
