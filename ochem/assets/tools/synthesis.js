@@ -656,7 +656,7 @@
         return 'That gives ' + v.next.mol.name + '. ' + (e.regio ? e.regio + ' ' : '') +
           'It is the wrong isomer for this route: from it nothing in the course reaches ' + P.targetMol.m.name + ' without changing the skeleton.';
       case 'nowhere':
-        if(e.final) return 'That gives ' + v.next.mol.name + ', not ' + P.targetMol.m.name + '. A step that joins a second molecule on can only be the last one, so there is no fixing it afterwards.';
+        if(e.final) return 'That gives ' + v.next.mol.name + ', not ' + P.targetMol.m.name + '. A step that joins a second molecule on can only be the last one in this trainer, so there is no fixing it afterwards.';
         var outs = R.edgesFrom(v.next.g).filter(function(x){ return x.from !== x.to; }).length;
         if(v.next.g === 'alkane') return 'That gives ' + v.next.mol.name + ', which has no functional group left. The only way back in is radical bromination: it takes the most substituted C–H and gives a mixture where several are alike, so it cannot put a group just where ' + P.targetMol.m.name + ' needs it. Step back.';
         return 'That gives ' + v.next.mol.name + '. ' + (outs
@@ -865,7 +865,7 @@
     if(v.kind === 'past') return 'Real chemistry: ' + rxText(t.e) + ' does turn ' + q + ' into ' + posMol.name +
       '. But the only way to ' + q + ' from ' + S.P.start.mol.name + ' goes through ' + S.P.targetMol.m.name + ' itself, so it cannot come before it.';
     if(v.kind === 'joined') return 'Real chemistry: ' + rxText(t.e) + ' does turn ' + q + ' into ' + posMol.name +
-      '. But ' + q + ' is made by joining a second molecule on, and a step like that can only be the last one in a route, not the middle.';
+      '. But ' + q + ' is made by joining a second molecule on, and in this trainer a step like that can only be the last one in a route, not the middle.';
     if(v.kind === 'loop') return q + ' is already on your route, further down. Going back to it is a loop.';
     return '';
   }
