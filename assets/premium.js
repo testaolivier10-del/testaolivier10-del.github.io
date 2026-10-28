@@ -316,10 +316,8 @@
     },
     appsych: {
       name: 'AP® Psychology',
-      // Published (docs/appsych-spec.md decision 13) but not on sale until its
-      // Polar product exists (decision 3, launch checklist): nothing locked,
-      // no checkout.
-      onSale: false,
+      // On sale since 2026-10-27 (docs/appsych-spec.md, launch checklist):
+      // Polar product 409e7c83-6820-441d-867d-eb10cc320507.
       dailyFree: 15,
       // The free tier (docs/appsych-spec.md decision 9, proposed): Unit 1 and
       // every "Research skills you need" lesson. Keep in step with FREE_UNITS

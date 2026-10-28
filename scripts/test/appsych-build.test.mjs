@@ -86,7 +86,7 @@ test('a published unit builds every page kind, math rendered and plots drawn, an
   const block = prem.slice(prem.indexOf('    appsych: {'), prem.indexOf('\n    },', prem.indexOf('    appsych: {')));
   assert.deepEqual(FREE_UNITS, ['unit-1']);
   assert.match(block, /freeChapters: \['unit-1'\]/);
-  assert.match(block, /onSale: false/, 'not on sale until the owner checklist');
+  assert.doesNotMatch(block, /onSale: false/, 'on sale since the owner checklist');
   assert.match(block, /id: 'psy-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30'/);
 });
 
@@ -101,7 +101,6 @@ test('the real published list holds every chapter since the launch, and the cour
   assert.deepEqual(JSON.parse(readFileSync(`${D}/data/published.json`, 'utf8')).chapters,
     ['skills-research', 'unit-1', 'unit-2', 'unit-3', 'unit-4', 'unit-5']);
   assert.match(readFileSync('assets/courses.js', 'utf8'), /key: 'appsych'[\s\S]*?aliases: \['psychology', 'psych', 'psy'\], paid: true, status: 'live', order: 10/);
-  assert.match(readFileSync('assets/premium.js', 'utf8'), /appsych: \{[\s\S]*?onSale: false,/, 'not on sale until the owner checklist');
 });
 
 test('the course home has its own headline, cerulean and its own cover, not Environmental Science\'s', () => {

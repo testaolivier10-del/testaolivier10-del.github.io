@@ -305,3 +305,13 @@ Items (a)-(e) below were done in Phase 3 (decision 12); the Tool Studio sticky-r
   under it until the dock scrolls (neuron, sensation). Check whether other courses' trainers do the same; fix in the
   shared file at launch.
 - Shared: at 390 the "Skip to content" link shows over the tool dock after a drill step is checked (tools-a review); fix in the shared file at launch and check other courses.
+
+**Launch checklist progress (2026-10-27, owner: "do all of it"):**
+- [x] Migration `2026-10l-appsych.sql` applied in Supabase (all six live function bodies checked identical apart
+      from `appsych`; the three course checks re-added with it; existing passes untouched).
+- [x] Polar product "AP® Psychology Premium (through June 30, 2027)", $25 one-time, id
+      `409e7c83-6820-441d-867d-eb10cc320507`; the "Founding member" 30% discount applies to it.
+- [ ] `"psy-2027": "409e7c83-6820-441d-867d-eb10cc320507"` in `POLAR_PRODUCTS` (Cloudflare Worker levlprep-ask settings).
+- [x] `onSale: false` removed from `COURSES.appsych`; `sw.js` cache v96; owner access granted (to 2099).
+- [ ] Merge PR #117 (this puts AP® Psychology Premium on sale). Only after the Worker line above.
+
