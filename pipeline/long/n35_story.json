@@ -1,0 +1,20 @@
+{
+ "id": "yt-nremt-35-bleeding",
+ "format": "long",
+ "duration": 827.0,
+ "answer": {"kind": "action", "what": "stop a life threatening bleed: press, pack or tourniquet, where it goes and how tight"},
+ "beats": [
+  {"t0": 0, "t1": 4, "kind": "mistake", "person": true, "diagram": false, "changes": [0, 1.0, 2.0, 3.0],
+   "what": "frame zero: forearm close up in the garage, arterial blood already pulsing out with every beat (liquid sim); the paramedic's gloved hand presses a thin gauze pad that is already reddening, a new pulse soaks through on each beat",
+   "source": "Stop the Bleed; ACS COT 2014 guideline (arterial bleeding, direct pressure)"},
+  {"t0": 4, "t1": 12, "kind": "result", "person": true, "diagram": false, "changes": [4, 5.5, 7, 8.5, 10, 11.5],
+   "what": "camera pulls back to the wide garage: the patient on the step stool winces and breathes fast, the pool on the floor keeps spreading on each beat, her hand pushes harder, the miter saw behind them, ambulance lights pulsing in the door",
+   "source": "ACS COT 2014 guideline (exsanguination within minutes)"},
+  {"t0": 12, "t1": 24, "kind": "promise", "person": true, "diagram": true, "changes": [12, 14, 16, 18, 20, 22],
+   "what": "the wide scene holds (both people breathing, her pressing), four promise chips build on the right in sync: press, tourniquet now, where and how tight, packing; each chip shows a tiny icon of the action",
+   "source": "levlprep.com/nremt/notes/bleeding-control.html 29.1 and 29.2"},
+  {"t0": 24, "t1": 60, "kind": "first_visual", "person": true, "diagram": true, "changes": [24, 26, 28, 30, 33, 36, 40, 44, 48, 52, 56],
+   "what": "why: a round lens opens from his forearm (the person stays in the corner inset): the lengthwise arm diagram, artery cells pumping toward the wound; at 'military experience' the strap tightens and the artery flow stops, the wound stops bleeding, the hand below stays pink in the timeline; 'waiting' shows the pool and a clock; the lens closes back into the garage as 'a tourniquet right away' lands",
+   "source": "TCCC guidelines; Kragh et al. 2009 Ann Surg (tourniquet survival); Stop the Bleed"}
+ ]
+}
