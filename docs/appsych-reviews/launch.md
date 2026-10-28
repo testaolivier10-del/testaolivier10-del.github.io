@@ -65,3 +65,9 @@ course's checks; (3) spec, CLAUDE.md, owner checklist.
 
 **Step 2 done.** Step 3 (spec decision 13, section 9 owner checklist and teacher list, CLAUDE.md) committed in
 328c5df5. Launch phase complete; PR not opened (owner's call).
+
+## After the merge of main (#116)
+
+- Merged main (tools audit): `tool-studio.js` takes main's phone layout (the launch's `paintPins` and `.ls-unpin`
+  removed; a leftover call threw on every tool until e4c7eca9), `sw.js` v95, home question count regenerated.
+- `BROWSER=1 scripts/ci-local.sh` after the merge: **ALL PASS** (commit e4c7eca9).

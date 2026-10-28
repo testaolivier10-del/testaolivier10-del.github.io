@@ -231,7 +231,7 @@ with one rubric line per point and full-credit samples.
     - All five units and `skills-research` in `psychology/data/published.json`; registry `status: 'live'` (no Beta
       label, env decision 14; the "not yet reviewed by a teacher" note stays on every page); every generator rerun
       (course, courses, pricing with the hub card and the 404 card, OG tags, sitemap, crumbs). `onSale: false`
-      stays. `sw.js` cache v94. Changelog entry 2026-10-27. Ten courses: hub hero count and facts (generated),
+      stays. `sw.js` cache v94, v95 after merging main (#116). Changelog entry 2026-10-27. Ten courses: hub hero count and facts (generated),
       manifest, `search.html`, `sources.html` (new section), Premium rules and `terms.html#fixed-date`.
     - Publishing turned on the title check: 16 lesson and notes `<title>`s were cut with an ellipsis, so they got a
       short name in `descriptions.json` `titles` ("Heredity and Environment", "Psychological Disorders", ...).
@@ -248,8 +248,10 @@ with one rubric line per point and full-credit samples.
       "science practice", also fixed in environmental science, whose FRQ link said "four types" for three); the
       exam results said May 2027 is the first exam in this format (it began in May 2025); the FRQ cite hint always
       said "Source 2"; "Also accept" lists joined sentences as ".;"; five AAQs had no live hint, so every AAQ part F
-      has the "Link it" (`mechanism`) rule. Tool Studio phone sticky row, Skip to content and 44 px controls were
-      fixed in the shared files before the restart (commit 082ef38d).
+      has the "Link it" (`mechanism`) rule. Tool Studio Skip to content and 44 px controls were fixed in the
+      shared files before the restart (commit 082ef38d); its phone sticky-row unpinning was replaced by main's phone
+      layout (#116) in the merge, and `check-console` gained a psychology practice flow (and answers a "Make it
+      specific" item, which made the environmental science flow fail when one came first).
     - Budgets unchanged by the pass (every `check-weight` budget passes).
 
 ## 9. Open items for the owner
