@@ -646,7 +646,7 @@
       case 'needs':
         var want = e.needs ? patLabel(e.from, e.needs) : (e.map ? patLabel(e.from, Object.keys(e.map)) : '');
         var is = s.mol.p && node(s.g).patterns ? D.PATTERNS[node(s.g).patterns].set[s.mol.p] : '';
-        return (e.sub ? e.sub + ' ' : '') + (want ? 'It needs ' + want + ', and ' + here + (is ? ' is ' + is : ' is not one') + '.'
+        return (e.sub ? e.sub + ' ' : '') + (want ? 'It needs ' + want + ', and ' + here + (is ? (/^with /.test(is) ? ' is one ' + is : ' is ' + is) : ' is not one') + '.'
           : 'It does not work on ' + here + '.');
       case 'back':
         return 'That gives ' + v.next.mol.name + ' again, which is already on your route: it undoes work instead of moving on.';
