@@ -21,16 +21,30 @@ three builds. Read this before continuing any of it.
 Harness: loads every tool at 390 px and 1280 px with Premium unlocked locally, records console errors, failed
 requests and sideways scroll, and screenshots before and after interacting. Mechanical result: every tool page
 loads clean; `nremt/sound-trainer.html` and `bio/tools/tree-reading.html` scroll sideways at 390 px.
-Per-tool ratings and fixes: `docs/tool-audit-2026-10.md`. Fixing those findings is not part of the three builds;
-it waits for the owner's go-ahead.
+Per-tool ratings and fixes: `docs/tool-audit-2026-10.md`. The owner then asked to fix every finding (2026-10-27).
+
+## Audit fixes
+
+Every finding was fixed, one branch per area, each with an independent accuracy review of its science or medical
+changes before merging: `fix-shell` (shared tool shell: answer box on screen in quiz modes, full captions, sticky row,
+primary-slider band, coach bubbles, phone text scale, no sideways scroll, worked solution opens itself),
+`fix-nremt-tools`, `fix-ochem-tools`, `fix-anp-tools`, `fix-bio-tools`, `fix-chem-phys-tools`, `fix-calc-tools`,
+`fix-stat-tools`, `fix-env-tools`, then `fix-finish` and `fix-finish-2` (integration: worked solution opens once,
+remaining hidden answer boxes, sampling lab labels, conformation labels, A&P "See it in 3D" opens the 3D anatomy tool).
+Open questions from the reviews are in each course's `docs/*-needs-author.md`.
+
+Verification on the combined branch: every builder and content check, 1,510 unit tests, accessibility (92 page
+shapes) and console (every page) pass. The body map quiz Stop was rechecked at 390 px: the 3D view returns.
+
+After merge: redeploy the Worker (`worker/src/premium.js` changed: adaptive exams count toward Pass-or-extend).
 
 ## Builds
 
 | Build | Status | Files |
 |---|---|---|
 | NREMT item types and adaptive exam | built, accuracy reviewed, hands-on tested at 390 px (branch `tools-nremt-tei`) | `nremt/assets/tei-items.js` (dnd, table, order dragging), `nremt/assets/cat.js` (adaptive model), `nremt/practice-engine.js`, `nremt/practice.css`, `nremt/exams.html`, 60 items in `nremt/assets/questions.json` (ids 2113-2172), `scripts/test/nremt-tei.test.mjs`, tools hub counts in `scripts/build-r3-tools.mjs` |
-| Ochem synthesis trainer | in progress | |
-| A&P 3D anatomy | in progress | |
+| Ochem synthesis trainer | built, independently reviewed (four reviewers), fixes in (branch `tools-ochem-synthesis`) | details in `docs/tools-upgrade.md` "Builds after the upgrade" |
+| A&P 3D anatomy | built, independently reviewed (branch `tools-anp-3d`) | details in `docs/tools-upgrade.md` "Builds after the upgrade" |
 
 ## Decisions
 
