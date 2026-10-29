@@ -1,0 +1,86 @@
+{
+ "id": "yt-ap-02-terminology-directional-terms",
+ "format": "long",
+ "duration": 853.0,
+ "answer": {
+  "kind": "place",
+  "what": "the cut is on the lateral (thumb) side of the left forearm, just proximal to the wrist: toward the elbow whatever the arm's pose, shown with the arm down and up"
+ },
+ "beats": [
+  {
+   "t0": 0,
+   "t1": 4,
+   "kind": "mistake",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    0,
+    1.0,
+    2.0,
+    3.0
+   ],
+   "what": "frame zero: park bike path, the cyclist sits by his fallen bike holding his left forearm, blood on the thumb side near the wrist, the paramedic kneels and lifts her radio; trees sway, the bike wheel still spins",
+   "source": "levlprep.com/anatomy-physiology/notes/anatomical-position.html (the radio call)"
+  },
+  {
+   "t0": 4,
+   "t1": 12,
+   "kind": "result",
+   "person": true,
+   "diagram": false,
+   "changes": [
+    4,
+    5.5,
+    7,
+    8.5,
+    10,
+    11.5
+   ],
+   "what": "a code arrow 'above the wrist' points from the wrist toward his elbow; he raises the arm overhead and the arrow swings with the arm until it points toward his fingers; 'which one?' chip",
+   "source": "OpenStax A&P 2e 1.6 (everyday direction words depend on posture)"
+  },
+  {
+   "t0": 12,
+   "t1": 30,
+   "kind": "promise",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28
+   ],
+   "what": "the scene holds (both breathing, his arm lowering); the promise chip 'the same spot for everyone' builds; then 'hepatomegaly' is handwritten on the right and splits into hepat / o / megaly chips as named",
+   "source": "levlprep.com/anatomy-physiology/notes/word-parts.html"
+  },
+  {
+   "t0": 30,
+   "t1": 60,
+   "kind": "first_visual",
+   "person": true,
+   "diagram": true,
+   "changes": [
+    30,
+    32,
+    34,
+    36,
+    38,
+    41,
+    44,
+    47,
+    50,
+    53,
+    56,
+    59
+   ],
+   "what": "why: the word parts chips snap into other words (cardiology, gastritis) as 'keep their meaning' is said; his arm goes up and down again with the word 'above' flipping; a standing figure in the anatomical position fades in beside him as 'one standard pose' lands",
+   "source": "OpenStax A&P 2e 1.6 (anatomical position); MedlinePlus medical words"
+  }
+ ]
+}
