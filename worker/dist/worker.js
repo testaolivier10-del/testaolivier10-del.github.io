@@ -1696,6 +1696,10 @@ function endsOnText(iso) {
    notice if it was bought (order_id: the copy says "a pass you bought", so a
    free founding month or a guarantee extension gets nothing), ends within
    ENDING_NOTICE_DAYS and has not had it yet. */
+/* Invite rewards (docs/invites.md) carry an order id only so a reward is
+   paid once; nobody bought them, so the "a pass you bought" notice skips them. */
+const GIFT_PASSES = new Set(['referral', 'referral-welcome']);
+
 function passesEnding(rows, now) {
   const latest = new Map();
   for (const r of rows) {
@@ -1706,7 +1710,7 @@ function passesEnding(rows, now) {
   }
   return [...latest.values()].filter((r) => {
     const end = Date.parse(r.expires_at);
-    return r.order_id && !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
+    return r.order_id && !GIFT_PASSES.has(r.pass) && !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
   });
 }
 
@@ -1737,7 +1741,7 @@ async function runPassEnding(env, now = Date.now()) {
 
   // Everything those users still hold, so a queued later pass is seen.
   const rowsRes = await sb(env,
-    `premium_passes?select=id,user_id,course,order_id,expires_at,refunded_at,ending_reminded_at` +
+    `premium_passes?select=id,user_id,course,pass,order_id,expires_at,refunded_at,ending_reminded_at` +
     `&refunded_at=is.null&expires_at=gt.${from}&user_id=in.(${users.map(encodeURIComponent).join(',')})`);
   if (!rowsRes.ok) return { error: `read failed: ${rowsRes.status}` };
   const due = passesEnding(await rowsRes.json(), now).slice(0, EMAIL_BATCH);

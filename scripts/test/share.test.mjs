@@ -58,3 +58,22 @@ test('an empty attempt does not divide by zero', () => {
   const S = load();
   assert.match(S.resultText({ right: 0, total: 0 }), /^I scored 0% on a practice set/);
 });
+
+test('an invite code rides along as r=, replacing any r= already there', () => {
+  const S = load();
+  assert.equal(S.shareUrl('/nremt/?r=zzzzzzzz', 'https://levlprep.com/x.html', 'abcd2345'), 'https://levlprep.com/nremt/?ref=share&r=abcd2345');
+  // A malformed code is left off rather than sent.
+  assert.equal(S.shareUrl('/nremt/', 'https://levlprep.com/x.html', 'NOPE'), 'https://levlprep.com/nremt/?ref=share');
+});
+
+test('myInvite makes one 8-character code with a secret, kept in this browser', () => {
+  const b = createBrowser();
+  b.load('assets/share.js');
+  const S = b.window.LevlShare;
+  const code = S.myInvite();
+  assert.match(code, /^[a-z2-9]{8}$/);
+  assert.equal(S.myInvite(), code);
+  const kept = JSON.parse(b.window.localStorage.getItem('levlprep_invite_mine_v1'));
+  assert.equal(kept.code, code);
+  assert.ok(kept.secret.length >= 30);
+});

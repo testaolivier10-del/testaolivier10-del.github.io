@@ -19,7 +19,7 @@ const FN = /(?:create or replace function|create function) public\.(\w+)\(.*?\n\
 const blocks = (sql) => new Map([...sql.matchAll(FN)].map((m) => [m[1], m[0]]));
 
 const WORKER_ONLY = ['unsubscribe_email_reminder', 'premium_add_pass', 'premium_refund_order', 'premium_rechain', 'count_premium_paid',
-  'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade'];
+  'frq_grade_take', 'frq_grade_give_back', 'count_frq_grade', 'referral_email_key', 'referral_welcome', 'referral_reward'];
 
 function browserRpcs() {
   const names = new Set();
@@ -277,7 +277,8 @@ test('2026-10e-funnel-seen.sql: limit-hit is a funnel step everywhere the browse
 
 test('2026-10l-frq-grader.sql: the grader cap and counts are Worker only, match schema.sql and run last', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10l-frq-grader.sql');
+  // After every course migration; later non-course migrations (2026-10m referrals) may follow it.
+  assert.ok(files.indexOf('2026-10l-frq-grader.sql') > files.indexOf('2026-10l-appsych.sql'), 'runs after the last course migration');
   const mig = readFileSync('scripts/sql/migrations/2026-10l-frq-grader.sql', 'utf8');
   assert.match(mig, /NOT APPLIED/);
   const fns = blocks(mig);
@@ -295,4 +296,19 @@ test('2026-10l-frq-grader.sql: the grader cap and counts are Worker only, match 
   // Anonymous: the counts carry no user.
   const counts = mig.slice(mig.indexOf('create table if not exists public.frq_grade_counts'), mig.indexOf(');', mig.indexOf('create table if not exists public.frq_grade_counts')));
   assert.doesNotMatch(counts, /user_id|browser|ip/);
+});
+
+test('2026-10m-referrals.sql: rewards go through premium_add_pass, internal helpers stay ungranted, no course list', () => {
+  const mig = readFileSync('scripts/sql/migrations/2026-10m-referrals.sql', 'utf8');
+  const fns = blocks(mig);
+  for (const f of ['referral_register', 'referral_my_code', 'referral_adopt', 'referral_claim', 'referral_note_answer', 'referral_summary', 'referral_welcome', 'referral_reward', 'referral_email_key'])
+    assert.ok(fns.has(f), `${f} is defined`);
+  assert.match(fns.get('referral_reward'), /p_pass => 'referral', p_days => 7/);
+  assert.match(fns.get('referral_reward'), />= 8 then/);
+  assert.match(fns.get('referral_welcome'), /p_pass => 'referral-welcome', p_days => 3/);
+  assert.match(fns.get('referral_claim'), /interval '3 days'/);
+  assert.match(fns.get('referral_note_answer'), /answers \+ 1 >= 20/);
+  for (const f of ['referral_welcome', 'referral_reward', 'referral_email_key'])
+    assert.doesNotMatch(mig, new RegExp(`grant execute on function public\\.${f}\\([^)]*\\) to [^;]*(anon|authenticated)`));
+  assert.doesNotMatch(mig, /course\s+(?:not\s+)?in\s*\(/, 'no course list: premium_add_pass refuses unknown courses');
 });

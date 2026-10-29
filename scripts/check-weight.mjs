@@ -173,7 +173,10 @@ const SHELL_BUDGETS = [
   /* 335 -> 338 for the Free vs Premium table (owner 2026-10-28, docs/trust-conversion-plan.md): each course's
      comparison rows, the table and direct-checkout code in assets/premium.js and the table styles in
      theme.css, so the dialog on every page shows the same table as premium.html (+2.8 KB measured). */
-  ['site', 338],
+  /* 338 -> 340 for Invite friends (owner 2026-10-29, docs/invites.md): assets/invite.js (lazy, loaded only after
+     a good session, on the account page, or for a signed-in visitor with invite work), the invite code in
+     share.js and the r= capture in account.js (+1.1 KB measured: 339.1 KB). */
+  ['site', 340],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

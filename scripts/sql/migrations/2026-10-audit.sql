@@ -691,6 +691,13 @@ grant execute on function public.delete_email_reminder() to authenticated;
 grant execute on function public.my_premium() to authenticated;
 grant execute on function public.my_purchases() to authenticated;
 grant execute on function public.record_exam_completion(text, integer) to authenticated;
+-- Invite friends (2026-10m-referrals.sql defines these; listed here with the rest).
+grant execute on function public.referral_register(text, text) to anon, authenticated;
+grant execute on function public.referral_my_code() to authenticated;
+grant execute on function public.referral_adopt(text, text) to authenticated;
+grant execute on function public.referral_claim(text, text) to authenticated;
+grant execute on function public.referral_note_answer(text) to authenticated;
+grant execute on function public.referral_summary() to authenticated;
 
 -- Worker only (service role), granted above and to nobody else:
 -- unsubscribe_email_reminder, premium_add_pass, premium_refund_order,

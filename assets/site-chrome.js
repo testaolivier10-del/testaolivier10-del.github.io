@@ -1007,7 +1007,7 @@
      of the shell every page pays for, and lets a results screen hook them in
      with one line. Each module loads once; callers queue until it lands, and
      a module that fails to load (offline, blocked) simply never calls back. */
-  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones', 'next-step': 'LevlNext', 'cross-course': 'LevlCross', 'heard-from': 'LevlHeardFrom', 'analytics-page': 'LevlAnalyticsPage' };
+  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones', 'next-step': 'LevlNext', 'cross-course': 'LevlCross', 'heard-from': 'LevlHeardFrom', 'analytics-page': 'LevlAnalyticsPage', invite: 'LevlInvite' };
   var lazyWait = {};
   function lazy(name, cb){
     var g = LAZY[name];
