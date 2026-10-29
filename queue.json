@@ -315,7 +315,7 @@
    "yt_buffer": "6acd84c49f22b96ae7ec8bbe",
    "youtube_id": "R-_p0T45FwQ",
    "thumbnail_set": true,
-   "shorts_thumb": false,
+   "shorts_thumb": true,
    "notes": "v2 2026-10-11: natural one take voice, zap sounds removed.",
    "duration": 45.4,
    "replaced_posts": {
@@ -327,7 +327,7 @@
     "youtube_status": "set to private 2026-10-12"
    },
    "related_video": "lqxfWZZtRgE",
-   "related_set": false,
+   "related_set": true,
    "yt_title_old": "Part of this burn doesn't hurt. That's the bad sign.",
    "youtube_id_private_duplicate": "A2Vr9TetCUs"
   },
