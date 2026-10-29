@@ -155,6 +155,29 @@
       "rebuilt": "2026-10-28 rebuilt on the code drawn studio (flat layered look, traced cast with motion capture, liquid sim)",
       "review_blob": "ec244a063f7ff94122fb50ad308912a1ade3e643",
       "approved_blob": "ec244a063f7ff94122fb50ad308912a1ade3e643"
+    },
+    {
+      "id": "yt-ap-02-terminology-directional-terms",
+      "course": "ap",
+      "topic_pages": [
+        "anatomy-physiology/notes/word-parts.html",
+        "anatomy-physiology/notes/anatomical-position.html"
+      ],
+      "title": "",
+      "description_file": "",
+      "video": "",
+      "thumb": "",
+      "captions": "",
+      "playlist": "Anatomy and Physiology | LevlPrep",
+      "date": "",
+      "status": "building",
+      "approved_on": "",
+      "youtube_id": "",
+      "thumbnail_set": false,
+      "playlist_added": false,
+      "captions_set": false,
+      "pr_url": "",
+      "started": "2026-10-29"
     }
   ]
 }
