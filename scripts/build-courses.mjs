@@ -39,6 +39,7 @@ export const TARGETS = [
   'assets/progress-backup.js',
   'assets/account-page.js',
   'assets/hub-home.js',
+  'assets/invite.js',
   'index.html',
   'offline.html',
 ];

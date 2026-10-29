@@ -676,6 +676,12 @@
     var an = window.LevlAnalytics;
     if (an && an.answer && qid != null) an.answer(course, qid, correct, topic);
     if (!COURSES[course]) return;
+    // A friend who joined from an invite: their first 20 answers earn the sharer's reward (assets/invite.js).
+    try {
+      if (localStorage.getItem('levlprep_invite_counting_v1') && window.LevlLazy) {
+        window.LevlLazy('invite', function (I) { I.answer(course); });
+      }
+    } catch (e) { /* storage blocked: nothing to count */ }
     var s = readJson(SCORE_KEY);
     var t = s[course] && s[course].day === today() ? s[course] : { day: today(), right: 0, total: 0 };
     t.total++;

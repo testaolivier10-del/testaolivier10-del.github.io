@@ -60,7 +60,7 @@
      operations rather than URL so it behaves the same in every browser this
      site supports and in the test sandbox. */
   var ABS = /^[a-z][a-z0-9+.-]*:\/\//i;
-  function shareUrl(url, base){
+  function shareUrl(url, base, code){
     base = String(base || '');
     url = String(url || base || '/');
     if(!ABS.test(url)){
@@ -72,9 +72,69 @@
     if(i > -1){ hash = url.slice(i); url = url.slice(0, i); }
     var query = '', j = url.indexOf('?');
     if(j > -1){ query = url.slice(j + 1); url = url.slice(0, j); }
-    var parts = query.split('&').filter(function(p){ return p && p.split('=')[0] !== 'ref'; });
+    var parts = query.split('&').filter(function(p){ var k = p.split('=')[0]; return p && k !== 'ref' && k !== 'r'; });
     parts.push('ref=share');
+    if(code && CODE_RE.test(code)) parts.push('r=' + code);
     return url + '?' + parts.join('&') + hash;
+  }
+
+  /* ---- invite code (docs/invites.md) -----------------------------------
+
+     Every link this file hands out also carries the sharer's invite code,
+     r=<8 characters>, so any share (a result, a level, a certificate, the
+     invite card) can earn the invite reward. The code is made here, the first
+     time something is shared, so it exists before the link leaves: 8
+     characters for the link and a secret that never leaves this browser.
+     Registering it is anonymous (referral_register); signing in later binds
+     it to the account, and only a browser holding the secret can do that
+     (referral_adopt, assets/invite.js), so a friend who saw the link cannot
+     claim the code. Signed in when it is made, it is bound at once. */
+  var MINE_KEY = 'levlprep_invite_mine_v1';
+  var CODE_RE = /^[a-z2-9]{8}$/;
+  // No 0/o, 1/l/i: a code read aloud or retyped survives.
+  var ALPHA = 'abcdefghjkmnpqrstuvwxyz23456789';
+  function randomText(n, alpha){
+    var out = '', bytes = new Uint8Array(n);
+    var c = window.crypto || window.msCrypto;
+    if(c && c.getRandomValues) c.getRandomValues(bytes);
+    else for(var i = 0; i < n; i++) bytes[i] = Math.floor(Math.random() * 256);
+    for(var j = 0; j < n; j++) out += alpha.charAt(bytes[j] % alpha.length);
+    return out;
+  }
+  function readMine(){
+    try {
+      var m = JSON.parse(localStorage.getItem(MINE_KEY) || 'null');
+      return m && CODE_RE.test(m.code) ? m : null;
+    } catch(e){ return null; }
+  }
+  function writeMine(m){
+    try { localStorage.setItem(MINE_KEY, JSON.stringify(m)); } catch(e){ /* private mode: the code lives for this page only */ }
+  }
+  function registerMine(m){
+    var A = window.StudyHubAccount;
+    if(!A || !A.rpc || m.reg || !m.secret) return;
+    A.rpc('referral_register', { p_code: m.code, p_secret: m.secret }).then(function(ok){
+      if(!ok) return;
+      var cur = readMine();
+      if(cur && cur.code === m.code){
+        cur.reg = true;
+        if(A.user && A.user()) cur.bound = true;
+        writeMine(cur);
+      }
+    });
+  }
+  /* This browser's code, made on first use. Null only where storage and
+     crypto are both missing, in which case links go out without one. */
+  var pageMine = null;
+  function myInvite(){
+    var m = readMine() || pageMine;
+    if(!m){
+      m = { code: randomText(8, ALPHA), secret: randomText(32, ALPHA + 'ABCDEFGHJKMNPQRSTUVWXYZ'), reg: false, at: Date.now() };
+      pageMine = m;
+      writeMine(m);
+    }
+    if(!m.reg) registerMine(m);
+    return m.code;
   }
 
   /* The sentence a results screen shares. The student is looking at their own
@@ -142,7 +202,7 @@
      results screen it was pressed on. */
   function share(o){
     o = o || {};
-    var url = shareUrl(o.url || location.href, location.href);
+    var url = shareUrl(o.url || location.href, location.href, o.noInvite ? null : myInvite());
     var nav = window.navigator;
 
     function done(method){
@@ -210,6 +270,9 @@
     button: button,
     result: result,
     shareUrl: shareUrl,
+    myInvite: myInvite,
+    copyText: copyText,
+    confirmToast: confirmToast,
     resultText: resultText,
     ICON: ICON,
     COURSES: COURSES

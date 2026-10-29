@@ -596,3 +596,11 @@ test('order.paid sends one purchase to Umami with the buyer\'s source; the owner
   await premiumWebhook(delivery(paid({ id: 'ord_u2', customer: { external_id: USER, email: 'testaolivier10@gmail.com' } }), now), ENV, now);
   assert.equal(umami().length, 1, 'the owner\'s purchase is not a sale');
 });
+
+test('pass ending: invite rewards get no "a pass you bought" notice', () => {
+  const now = Date.UTC(2026, 9, 29, 12);
+  const iso = (t) => new Date(t).toISOString();
+  for (const pass of ['referral', 'referral-welcome'])
+    assert.deepEqual(passesEnding([{ user_id: USER, course: 'nremt', pass, order_id: 'refr:1', expires_at: iso(now + 2 * 86400000) }], now), []);
+  assert.equal(passesEnding([{ user_id: USER, course: 'nremt', pass: 'nremt-90', order_id: 'ord_1', expires_at: iso(now + 2 * 86400000) }], now).length, 1);
+});

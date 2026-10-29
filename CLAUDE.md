@@ -93,6 +93,11 @@ locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scrip
 
 `docs/trust-conversion-plan.md` is the status file (funnel numbers, owner facts for the About page, plan).
 
+## Invite friends
+
+`docs/invites.md` is the status file: owner decisions (3-day gift, 7-day reward after 20 answers, 8 a year),
+the codes and claims in `scripts/sql/migrations/2026-10m-referrals.sql`, `assets/invite.js` and the `r=` on shared links.
+
 ## Site redesign (light channel look)
 
 `docs/site-redesign.md` is the status file: the approved design canvas, the visual system (course covers in

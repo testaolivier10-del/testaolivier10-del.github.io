@@ -57,6 +57,8 @@
     if (isLongGrant(row)) return 'Full access';
     if (row.pass === 'grant') return 'Free month';
     if (row.pass === 'guarantee') return 'Pass-or-extend extension';
+    if (row.pass === 'referral') return 'Invite reward';
+    if (row.pass === 'referral-welcome') return 'Welcome gift from a friend';
     var c = P && P.COURSES[row.course];
     var hit = c && (c.passes || []).filter(function (p) { return p.id === row.pass; })[0];
     return hit ? hit.label : row.pass;
@@ -73,12 +75,18 @@
     });
   }
 
+  var invitedFor = null;
   function render() {
     var u = user();
     $('acctOut').hidden = !!u;
     $('acctIn').hidden = !u;
     if (!u) return;
     $('acctWho').innerHTML = 'Signed in as <strong>' + esc(u.email || 'your account') + '</strong>.';
+    // Invite friends (assets/invite.js): drawn once per account, not on every refresh.
+    if (invitedFor !== u.id && window.LevlLazy) {
+      invitedFor = u.id;
+      window.LevlLazy('invite', function (I) { I.render($('acctInvite')); });
+    }
     if (rows === null) { $('acctCourses').innerHTML = '<p>Loading…</p>'; return; }
     renderCourses();
     renderOrders();

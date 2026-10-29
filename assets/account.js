@@ -1937,6 +1937,77 @@
   var started = false;
   // Deferred so every subject gets its registerNamespace() call in before the
   // first push or pull decides which keys exist.
+  /* ---- invites (docs/invites.md, assets/invite.js) --------------------
+
+     A link from a friend carries r=<code>. It is read here, on every page,
+     because the visitor may land anywhere; kept for 30 days in this browser;
+     and taken out of the address bar so it is not passed on by accident. The
+     claim itself waits for an account (assets/invite.js onUser). */
+  var INVITED_KEY = 'levlprep_invited_v1';
+  // courses:begin INVITE_COURSES key,path (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var INVITE_COURSES = [
+    { key: 'nremt', path: '/nremt/' },
+    { key: 'ochem', path: '/ochem/' },
+    { key: 'anp', path: '/anatomy-physiology/' },
+    { key: 'apbio', path: '/bio/' },
+    { key: 'apchem', path: '/chem/' },
+    { key: 'apphys', path: '/physics/' },
+    { key: 'apcalc', path: '/calculus/' },
+    { key: 'apstat', path: '/statistics/' },
+    { key: 'apenv', path: '/environmental-science/' },
+    { key: 'appsych', path: '/psychology/' },
+  ];
+  // courses:end
+  function inviteJson(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch(e){ return null; } }
+  function takeInvite(){
+    try {
+      var url = new URL(location.href);
+      var code = url.searchParams.get('r');
+      if(code === null) return false;
+      url.searchParams.delete('r');
+      if(history.replaceState) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+      if(!/^[a-z2-9]{8}$/.test(code)) return false;
+      var mine = inviteJson('levlprep_invite_mine_v1');
+      if(mine && mine.code === code) return false;
+      var cur = inviteJson(INVITED_KEY);
+      // The first friend's link counts; a second link a week later does not
+      // take the gift away from the first.
+      if(cur && cur.code && Date.now() - cur.at < 30 * 86400000) return false;
+      var course = null;
+      for(var i = 0; i < INVITE_COURSES.length; i++) if(location.pathname.indexOf(INVITE_COURSES[i].path) === 0) course = INVITE_COURSES[i].key;
+      localStorage.setItem(INVITED_KEY, JSON.stringify({ code: code, course: course, at: Date.now() }));
+      return true;
+    } catch(e){ return false; }
+  }
+  var invitedNow = takeInvite();
+  /* Whether a signed-in visitor has invite work for assets/invite.js: a code
+     made while signed out to bind, an invite to claim, or a claim whose
+     answers still count. Cheap reads, so the module loads only when needed. */
+  function inviteWork(){
+    var inv = inviteJson(INVITED_KEY);
+    if(inv && inv.code && !inv.done && Date.now() - inv.at < 30 * 86400000) return true;
+    var mine = inviteJson('levlprep_invite_mine_v1');
+    if(mine && mine.secret && !mine.bound) return true;
+    if(!mine && !inviteJson('levlprep_invite_checked_v1')) return true;
+    return false;
+  }
+  function runInvite(fn){
+    if(window.LevlLazy){ window.LevlLazy('invite', fn); return; }
+    // site-chrome.js (which defines LevlLazy) is deferred after this file.
+    window.addEventListener('load', function(){ if(window.LevlLazy) window.LevlLazy('invite', fn); });
+  }
+  authListeners.push(function(u){
+    if(u && inviteWork()) runInvite(function(I){ I.onUser(u); });
+  });
+  if(invitedNow){
+    // Give the page a moment (analytics.js loads late) and the session a
+    // chance to restore, first.
+    setTimeout(function(){
+      if(window.LevlAnalytics) window.LevlAnalytics.event('invite-open', { signedIn: currentUser ? 'yes' : 'no' });
+      if(!currentUser) runInvite(function(I){ I.landing(); });
+    }, 2500);
+  }
+
   function start(){
     if(started) return;
     started = true;
@@ -2131,8 +2202,11 @@
   function promptToSave(reason, ctx){
     if(!mayPrompt()){
       // No save prompt this time (signed in, or asked too recently): the
-      // one-time "how did you find LevlPrep?" question can use the moment.
-      if(window.LevlAnalytics && window.LevlAnalytics.askSource) window.LevlAnalytics.askSource();
+      // one-time "how did you find LevlPrep?" question can use the moment,
+      // and failing that, the invite card (assets/invite.js) if it was a good
+      // session.
+      if(window.LevlAnalytics && window.LevlAnalytics.askSource && window.LevlAnalytics.askSource()) return false;
+      runInvite(function(I){ I.maybeCard(ctx); });
       return false;
     }
 

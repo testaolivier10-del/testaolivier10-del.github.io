@@ -81,6 +81,9 @@
   .acct .gform label{font:800 13.5px var(--font-ui);color:var(--ink);display:grid;gap:4px;}
   .acct .gform input[type=text],.acct .gform input[type=date]{font:600 15px var(--font-ui);padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);}
   .acct .gform .check{display:flex;gap:8px;align-items:flex-start;font-weight:700;}
+  /* Invite friends (assets/invite.js). */
+  .acct .inv-link{display:flex;gap:10px;align-items:center;margin:14px 0 8px;max-width:620px;}
+  .acct .inv-link input{flex:1;min-width:0;font:600 15px var(--font-ui);padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);}
   @media (max-width:900px){.ac-out,.ac-two{grid-template-columns:minmax(0,1fr);}}
   @media (max-width:480px){.acct .course{grid-template-columns:44px minmax(0,1fr);}.acct .course .sp-cv{width:44px;height:44px;}.acct .course .buy{grid-column:2;}.ac-signin,.ac-why{padding:22px;}}
 </style>
@@ -132,6 +135,11 @@
         <h2 class="sp-d ac-h" id="acCourses">Your <span>courses</span></h2>
         <div id="acctCourses"></div>
         <p class="ac-small">Passes never renew and never charge you again. Buying another pass while one is running adds its days on after the current one ends, so nothing is lost. <a href="premium.html">Free vs Premium, and prices</a>.</p>
+      </section>
+
+      <section class="sp-box ac-pnl" aria-labelledby="acInvite">
+        <h2 class="sp-d ac-h" id="acInvite">Invite <span>friends</span></h2>
+        <div id="acctInvite"><p class="ac-small">Loading your invite link&hellip;</p></div>
       </section>
 
       <div class="ac-two">
