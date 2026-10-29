@@ -98,7 +98,10 @@
       "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/74",
       "comment_id": "UgwduP8NK9wyH0-S-ZB4AaABAg",
       "comment_pinned": true,
-      "ab_test": "none"
+      "ab_test": "none",
+      "endscreen_set": true,
+      "endscreen_next": "best",
+      "endscreen_note": "video and subscribe only; the playlist element could not avoid the end card text"
     },
     {
       "id": "yt-orgo-02-orbitals",
