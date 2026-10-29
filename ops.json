@@ -40,7 +40,8 @@
     "2026-10-26 chat: rechecked the chair flip after fleekoskeepo's reply. Each ring carbon has an axial and an equatorial H; the video draws only the axial H in each chair, so the 'down' H after the flip is the other hydrogen, which is chemically fine but misleading. tBu goes axial up to equatorial up correctly. brandoo245 draft reworded to say this.",
     "2026-10-27 long video build: n35 rebuild started (status building). Script reworded for connected talking, story check passed, garage scene made; laptop dropped off at the art step. Plan: pipeline/long/n35_PLAN.md.",
     "2026-10-27 daily run: checkup found no failed runs; refiring the long video build from pending_reruns was blocked by this session's permission check (left in pending_reruns; it runs on schedule tomorrow 4:49pm). Scheduled w1025-01 power-lift (11-01), w1025-02 free-throw (11-02), w1025-03 dead-zone (11-03) on TikTok and YouTube; w1025-04 head-rush poll post holds 11-04 as manual. Buffer covers through 2026-11-04. aspirin-chew set to posted. caffeine-block got youtube_id Q7OiPO64ZI8, its Studio thumbnail and related video (AP Bio water). Community poll cp-w1025-poll posted on the Posts tab. New comments: 1 YouTube emoji spam on aspirin (no reply); no new TikTok comments. Old style thumbnails on posted b3-01..04, w1006-01, y1011-02 (step 4d) not redone tonight.",
-    "2026-10-28 long video build (continued in the same chat after the laptop came back): n35 rebuilt and sent for review (pending)."
+    "2026-10-28 long video build (continued in the same chat after the laptop came back): n35 rebuilt and sent for review (pending).",
+    "2026-10-28 daily run: Studio pages failed with 'Oops' until Chrome's Studio was switched to the Levl Prep channel (avatar, Switch account, Levl Prep under levlprepofficial@gmail.com); the default was Olivier's personal channel. cold-pack got youtube_id DY4MXhmuK-w, Studio thumbnail and related video; burn-story R-_p0T45FwQ got its thumbnail and related video. End screens set on orgo-02 (video, playlist, subscribe) and apbio-01 (video and subscribe; playlist would cover the end card text). Playlists already in textbook order; Studio has no series option (only podcast and course), and each playlist's default order is 'Date published (oldest)', left as is. Spanish dub not offered. Related video: power-lift to the NREMT intro, head-rush to the A&P intro; physics, calc, stats and APES Shorts have no same course long video yet."
   ],
   "pending_reruns": [],
   "related_check_after": null,
@@ -155,5 +156,16 @@
       "image": "community/cp-w1025-orbitals.png",
       "status": "approved"
     }
-  ]
+  ],
+  "dub_test": {
+    "date": "2026-10-28",
+    "published": false,
+    "note": "unavailable: Studio Languages for sD7QbtHbVsw offers only a manual Spanish audio upload (Select File), no automatic dub; nothing was added or published"
+  },
+  "series_playlist": {
+    "Organic Chemistry | LevlPrep": "unavailable",
+    "AP Biology | LevlPrep": "unavailable",
+    "Anatomy and Physiology | LevlPrep": "unavailable",
+    "NREMT Prep | LevlPrep": "unavailable"
+  }
 }
