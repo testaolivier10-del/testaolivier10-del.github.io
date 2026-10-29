@@ -22,7 +22,8 @@
       "captions_set": true,
       "comment_id": "UgwVVCOZc1V4GyBbo_B4AaABAg",
       "comment_pinned": true,
-      "thumb_updated": "2026-10-14"
+      "thumb_updated": "2026-10-14",
+      "ab_test": "none"
     },
     {
       "id": "yt-nremt-01-ems-system",
@@ -48,7 +49,8 @@
       "captions_set": true,
       "comment_id": "Ugyj3J3X3ZgtbG-4Nsl4AaABAg",
       "comment_pinned": true,
-      "thumb_updated": "2026-10-14"
+      "thumb_updated": "2026-10-14",
+      "ab_test": "none"
     },
     {
       "id": "yt-ap-01-intro-levels-of-organization",
@@ -71,7 +73,8 @@
       "captions_set": true,
       "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/69",
       "comment_id": "UgwSeoOMNMryZjM_V7d4AaABAg",
-      "comment_pinned": true
+      "comment_pinned": true,
+      "ab_test": "none"
     },
     {
       "id": "yt-apbio-01-water-hydrogen-bonding",
@@ -94,7 +97,8 @@
       "captions_set": true,
       "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/74",
       "comment_id": "UgwduP8NK9wyH0-S-ZB4AaABAg",
-      "comment_pinned": true
+      "comment_pinned": true,
+      "ab_test": "none"
     },
     {
       "id": "yt-orgo-02-orbitals",
@@ -118,7 +122,8 @@
       "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/83",
       "approved_blob": "a42a28b5da8b47e39122dd199cef7566798a4322",
       "comment_id": "Ugx306BfjHPE3nA_Kbl4AaABAg",
-      "comment_pinned": true
+      "comment_pinned": true,
+      "ab_test": "none"
     },
     {
       "id": "yt-nremt-35-bleeding",
