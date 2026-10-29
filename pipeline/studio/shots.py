@@ -1,10 +1,10 @@
-"""Per shot checklist gate (studio system section 9, 2026-10-21).
+"""Per shot checklist gate (studio system section 9, 2026-10-21; scene life item added 2026-10-29).
 
 Every build writes out/<id>/shots.json:
   {"video": "<id>", "shots": [{"id": "s1", "t0": 0.0, "t1": 4.2, "what": "EMT kneels, presses gauze",
      "motion_source": "mocap 15_06 + IK" | "science sim" | "procedural" | "reference clip <file>",
      "checks": {"art": "yes", "motion_source": "yes", "rig": "yes", "life": "yes", "liquids": "na", "face": "yes",
-                "timing": "yes", "accuracy": "yes", "consistency": "yes", "camera": "yes"},
+                "timing": "yes", "accuracy": "yes", "consistency": "yes", "camera": "yes", "scene": "yes"},
      "notes": "..."}]}
 Values: yes | no | na (na only where the item does not apply, e.g. no person in the shot).
 python3 shots.py out/<id>/shots.json          -> prints the table, exit 1 on any "no", a missing item, a gap
@@ -23,8 +23,9 @@ ITEMS = {
     "accuracy": "matches the checked step list and protocol, nothing shown wrong",
     "consistency": "no visible drop or jump in quality from neighbouring shots",
     "camera": "purposeful framing; continuous moves between scales and places when the camera moves (na for a static calm teaching shot)",
+    "scene": "scene life: the setting itself moves subtly where it makes sense (lights flashing or flickering, wind in plants, clouds drifting, water rippling, machines running down, steam, dust in light beams), so it never reads as a still background (na only for the calm teaching background, chapter cards and pause timers)",
 }
-NA_OK = {"rig", "life", "liquids", "face", "camera"}
+NA_OK = {"rig", "life", "liquids", "face", "camera", "scene"}
 
 
 def check(path):
