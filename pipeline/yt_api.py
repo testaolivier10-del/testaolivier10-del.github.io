@@ -7,6 +7,8 @@ python3 yt_api.py upload <mp4> <youtube.md> [--ai]       -> prints video id (pub
 python3 yt_api.py thumb <video_id> <png>
 python3 yt_api.py playlist <video_id> "<playlist name>"  -> finds or creates the public playlist, adds the video
 python3 yt_api.py captions <video_id> <srt>              -> English captions track "English"
+python3 yt_api.py playlists                              -> JSON playlists with video ids in order
+python3 yt_api.py playlist_order <playlist_id> <id,id,..> -> moves items into that order (textbook order)
 python3 yt_api.py stats <startDate> <endDate>            -> JSON per video stats (Analytics API)
 python3 yt_api.py retention <video_id> <start> <end>     -> JSON audience retention curve
 python3 yt_api.py videos <id,id,...>                     -> JSON titles, durations, publish dates
@@ -105,6 +107,33 @@ def playlist(vid, name):
     call("POST", f"{API}/playlistItems?part=snippet", tok, {"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": vid}}})
     print("added to", pid)
 
+def playlists():
+    """List the channel's playlists with their video ids in current order."""
+    tok = token(); out = []; page = ""
+    while True:
+        _, r = call("GET", f"{API}/playlists?part=snippet&mine=true&maxResults=50{page}", tok)
+        for p in r.get("items", []):
+            _, it = call("GET", f"{API}/playlistItems?part=snippet&playlistId={p['id']}&maxResults=50", tok)
+            out.append({"id": p["id"], "title": p["snippet"]["title"],
+                        "items": [i["snippet"]["resourceId"].get("videoId") for i in sorted(it.get("items", []), key=lambda i: i["snippet"]["position"])]})
+        if not r.get("nextPageToken"): break
+        page = "&pageToken=" + r["nextPageToken"]
+    print(json.dumps(out))
+
+def playlist_order(pid, vids):
+    """Move playlist items so the given video ids come first, in this order (positions 0..n-1)."""
+    tok = token()
+    _, it = call("GET", f"{API}/playlistItems?part=snippet&playlistId={pid}&maxResults=50", tok)
+    byvid = {i["snippet"]["resourceId"].get("videoId"): i for i in it.get("items", [])}
+    for pos, v in enumerate(vids):
+        i = byvid.get(v)
+        if not i: print("not in playlist:", v); continue
+        if i["snippet"]["position"] == pos: continue
+        call("PUT", f"{API}/playlistItems?part=snippet", tok, {"id": i["id"], "snippet": {"playlistId": pid, "position": pos,
+             "resourceId": {"kind": "youtube#video", "videoId": v}}})
+        print("moved", v, "to", pos)
+    print("order ok")
+
 def captions(vid, srt):
     tok = token(); b = "lpboundary7"
     meta = json.dumps({"snippet": {"videoId": vid, "language": "en", "name": "English", "isDraft": False}})
@@ -125,6 +154,8 @@ if __name__ == "__main__":
     elif a[0] == "thumb": thumb(a[1], a[2])
     elif a[0] == "playlist": playlist(a[1], a[2])
     elif a[0] == "captions": captions(a[1], a[2])
+    elif a[0] == "playlists": playlists()
+    elif a[0] == "playlist_order": playlist_order(a[1], a[2].split(","))
     elif a[0] == "stats":
         print(json.dumps(analytics({"startDate": a[1], "endDate": a[2], "metrics": "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,shares,comments,subscribersGained", "dimensions": "video", "sort": "-views", "maxResults": 200})))
     elif a[0] == "retention":
