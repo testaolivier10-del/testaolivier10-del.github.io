@@ -53,7 +53,7 @@ Umami events: `invite-card`, `invite-card-dismissed`, `invite-share` (from, meth
 - 2026-10-29: built on branch `claude/invite-friends`. SQL behaviour checked against a real Postgres (PGlite):
   register, wrong-secret adopt refused, claim + 3-day gift, second claim and Gmail alias refused, old account
   refused, 20 answers qualify, reward paid on adopt, fast answers ignored, bad course cleared, 8-a-year cap.
-- Migration applied to the live database: see the PR.
+- 2026-10-29: migration applied to the live database (grants checked: only register is open to signed-out visitors; the reward helpers are callable by no one but the database itself).
 
 ## Not done / later
 
