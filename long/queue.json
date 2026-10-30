@@ -157,8 +157,9 @@
       "approved_blob": "ec244a063f7ff94122fb50ad308912a1ade3e643",
       "comment_id": "Ugy98n_9xqNpL97Mqap4AaABAg",
       "ab_test": "none",
-      "endscreen_set": false,
-      "comment_pinned": true
+      "endscreen_set": true,
+      "comment_pinned": true,
+      "endscreen_next": "best"
     },
     {
       "id": "yt-ap-02-terminology-directional-terms",
