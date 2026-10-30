@@ -30,8 +30,8 @@ def fades(c):
 
 
 def progress(c, u):
-    sh = skia.GradientShader.MakeLinear([skia.Point(0, 0), skia.Point(W_, 0)], [col(TEAL), col(GREEN)])
-    c.drawRect(skia.Rect(0, 0, W_ * min(max(u, 0), 1), 7), skia.Paint(Shader=sh))
+    """No progress bar on Shorts (Olivier, 2026-10-30: the bar at the top is not needed). Kept as a no-op so old builds still run."""
+    return
 
 
 def badge(c, text, a=1.0):
