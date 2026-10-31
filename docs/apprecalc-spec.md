@@ -87,12 +87,47 @@ One branch, `claude/apprecalc`, one PR at the end.
 | Phase | What | Status |
 |---|---|---|
 | R | Research: `docs/apprecalc-research/framework.md`, `market.md`; this spec | **done 2026-10-31** |
-| 0 | Fork Calculus AB: runtime `precalculus/assets/` (`pcalc-*`), generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | to do |
+| 0 | Fork Calculus AB: runtime `precalculus/assets/` (`pcalc-*`), generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (section 5b) |
 | 1 | Content: lessons, notes, banks (with stimulus sets), FRQs of all four types, glossary, figures | to do |
 | 2 | Trainers (section 6) | to do |
 | 3 | Two practice exams, unit tests, "Make it specific" prompts, formula page, cram kit | to do |
 | 4 | Independent accuracy checks per unit, tools, exams | to do |
 | Launch | Publish, generators, continuity pass, "eleven courses" wording, full CI with browser checks, PR | to do |
+
+### 5a. Authors and builders (Phase 1 and 2)
+
+Briefs in `docs/apprecalc-briefs/` (`content-common.md`, `tools-common.md`, `review-common.md` and one file per
+author or builder, generated from the map). Topics in course order; FRQ themes from the map's `frqThemes`.
+
+| Author | Topics | FRQs |
+|---|---|---|
+| A | 1.1-1.10 and `alg-functions`, `alg-intervals`, `alg-lines`, `alg-quadratics`, `alg-polynomial-algebra`, `alg-complex-numbers`, `alg-rational-expressions` (17) | q1-rational-graph, q2-cubic-volume (2) |
+| B | 1.11-1.14, 2.1-2.6, `alg-systems`, `alg-exponents` (12) | q2-quadratic-attendance, q2-exponential-depreciation, q1-exponential-justify, q2-cooling-residuals (4) |
+| C | 2.7-2.15 (9) | q1-table-composition-inverse, q1-log-function, q2-logarithmic-sales, q4-exp-log-equations, q4-quadratic-in-ex (5) |
+| D | 3.1-3.7, `alg-right-triangle`, `alg-circles` (9) | q3-ferris-wheel, q3-tide, q3-spring, q3-waterwheel (4) |
+| E | 3.8-3.15 (8) | q1-trig-composition, q4-trig-equation-interval, q4-single-tangent, q4-single-sine (4) |
+| F | 4.1-4.14, beyond the exam (14) | none |
+
+19 FRQs: 5 Q1, 6 Q2, 4 Q3, 4 Q4 (two exams need two of each). Builders: T1 `function-lab`, `rate-of-change`,
+`regression-lab`; T2 `poly-rational`, `exp-log-lab`, `symbolic-steps`; T3 `unit-circle`, `sinusoid-builder`; T4
+`polar-graphs`, `vectors-matrices`. Phase 3 (the lead): two exams, unit tests, "Make it specific" prompts, the
+formula page, cram kit.
+
+### 5b. Phase 0 as built (2026-10-31)
+
+- Runtime `precalculus/assets/` forked from AP® Calculus AB in one rename pass, then changed as listed in
+  `docs/apprecalc-architecture.md` ("Runtime differences"): domain-aware `expr` notes, exam config for May 2027
+  (29/13 MCQ in 65/40 min; Q1+Q2 calculator and Q3+Q4 no calculator, 35 min each, 6 points), no score calculator,
+  composite or band, the "Make it specific" builder from AP® Psychology, Unit 4 kept out of exams and cram plans.
+- Map: `docs/apprecalc-ced-map.json`, `docs/apprecalc-dependency-map.json` (58 CED topics, 11 algebra topics, 124
+  concepts, 13 with notation), explained in `docs/apprecalc-phase0.md`.
+- Generator `scripts/build-apprecalc.mjs`, checks `check-apprecalc-map.mjs`, `check-apprecalc-content.mjs`
+  (with the calculus-wording check), tests `scripts/test/apprecalc-*.test.mjs`, fixture
+  `scripts/test/fixtures/apprecalc-data/` (every item format, one FRQ of each type).
+- Ten trainer stubs (four files each), registered in `precalculus/data/pages.json`.
+- Registration hidden, twinning every AB point (`docs/apprecalc-architecture.md`, "Registration"); SQL migration
+  `scripts/sql/migrations/2026-10n-apprecalc.sql` written, not applied.
+- Docs: architecture, authoring guide, phase0, needs-author, briefs.
 
 ## 6. Trainers (proposed)
 
@@ -134,8 +169,33 @@ one rubric line per point and full-credit samples (the AI grader hook only when 
 6. (2026-10-31) **Free tier (proposed, owner to confirm):** Unit 1 and the "Algebra you need" chapter.
 7. (2026-10-31) **Unit 4 built as "beyond the exam"**: lessons, notes and practice, never in exams, unit tests'
    weights or cram plans.
+8. (2026-10-31) **Identity (proposed, owner to confirm):** forest green, hue 145°, apart from every other course's
+   accent: light ink `#11592F` on tint `#E3F3E8` (7.3:1; 8.4:1 on white), dark ink `#ACE4BF` on
+   `rgba(80,200,130,0.10)`; cover deep green `#0B4A33` with mint `#8AF0C0`. Icon: a unit circle with a radius and a
+   sine wave. Headline "AP® Precalculus, every function in motion."; hand line "see every function move". Ranks:
+   Function Explorer, Rate Reader, Asymptote Hunter, Log Unlocker, Circle Turner, Model Builder, Precalculus
+   Legend. One place: `IDENTITY` in `scripts/lib/apprecalc-build.mjs` (with `assets/theme.css`, `hub-progress.js`).
+9. (2026-10-31) **FRQ types** `concepts`, `modeling`, `periodic`, `symbolic` (Q1-Q4), 6 points each, the calculator
+   flag fixed by type; a practice exam draws one of each in exam order. Unit 4 never has an FRQ.
+10. (2026-10-31) **No score calculator, composite or readiness band** (owner brief): exam results show the two
+   sections apart with their weights (62.5% and 37.5%); the dashboard has `band: false`.
+11. (2026-10-31) **"Make it specific"** replaces AB's justification trainer: the prompt format of AB plus the
+   part-by-part builder from AP® Psychology (`ApPrecalcQuestions.specific`). Skills: values, limits, rates,
+   concavity, domain, model, invertible, periodic, symbolic, decimals. The checker refuses calculus wording, an
+   invertibility answer without values and a rate answer without the secant.
+12. (2026-10-31) **"Beyond the exam" as built:** Unit 4's chapter has `beyondExam: true` and weight `[0, 0]`; the
+   generator adds one line ("Beyond the exam. The AP® Precalculus exam does not test this unit. Many classes teach
+   it, and it prepares you for calculus.") to its unit page, lessons, notes and sheet; the curriculum marks it
+   `beyond: true` so exams, unit tests, mixed sets and cram plans skip it; checks refuse Unit 4 FRQs, exam items and
+   a pasted copy of the line.
+13. (2026-10-31) **Domain-aware `expr` grading:** sample points outside the key's domain are skipped; a point where
+   the key is defined and the answer is not counts as different (so `2 ln x` is wrong for `ln(x^2)` on a two-sided
+   domain, with a note); fewer than 8 defined points is refused.
+14. (2026-10-31) **Calculus wording is refused** in authored text ("increasing at a decreasing rate", "derivative",
+   "instantaneous rate"), except inside a `.pcalc-trap` callout that names the trap.
 
 ## 9. Open items for the owner
 
-- Confirm the free tier (decision 6) and free trainers (section 6).
+- Confirm the identity (decision 8), the free tier (decision 6) and free trainers (section 6).
+- The rest is in `docs/apprecalc-needs-author.md` ("Owner decisions": site weight, og image, AI grader).
 - Launch checklist (filled at launch): migration, Polar product, Worker `POLAR_PRODUCTS` line, `onSale`, merge.
