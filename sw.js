@@ -268,7 +268,7 @@ COURSE_URLS.calculus = [
 ];
 COURSE_URLS['calculus-bc'] = [
   // The AP® Calculus BC shell (key apcalcbc, folder calculus-bc): its own pages,
-  // curriculum and glossary, and AB's runtime files, which BC pages run
+  // curriculum and glossary, plus the AB runtime files that BC pages run
   // (docs/apcalcbc-architecture.md).
   'calculus-bc/index.html',
   'calculus-bc/learn.html',

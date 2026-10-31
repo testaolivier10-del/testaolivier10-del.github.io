@@ -70,6 +70,8 @@ test('flags go into the progress backup and are registered for account sync', ()
   for (const [file, course] of [['bio/assets/bio-core.js', 'apbio'], ['chem/assets/chem-core.js', 'apchem'],
     ['physics/assets/phys-core.js', 'apphys'], ['calculus/assets/calc-core.js', 'apcalc'], ['statistics/assets/stat-core.js', 'apstat'], ['environmental-science/assets/env-core.js', 'apenv'], ['anatomy-physiology/assets/anp-core.js', 'anp']]) {
     const src = readFileSync(file, 'utf8');
-    assert.match(src, new RegExp(`registerNamespace\\([^)]*'${course}_flagged_v1'`), `${file} syncs ${course}_flagged_v1`);
+    // AB's runtime also serves AP® Calculus BC: its key is CK (the course's key, 'apcalc' by default).
+    const keyed = new RegExp(`CK = CC\\.key \\|\\| '${course}'`).test(src) && /registerNamespace\([^)]*CK \+ '_flagged_v1'/.test(src);
+    assert.ok(keyed || new RegExp(`registerNamespace\\([^)]*'${course}_flagged_v1'`).test(src), `${file} syncs ${course}_flagged_v1`);
   }
 });
