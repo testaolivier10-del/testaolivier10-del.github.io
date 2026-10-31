@@ -1,0 +1,83 @@
+{
+ "topic": "vertical-asymptotes",
+ "hook": "Squeeze a gas into a smaller and smaller space and its pressure climbs without limit. On a graph that is a curve racing up beside a vertical line it never touches: a vertical asymptote. The exam asks you to describe it from each side with one-sided limits, and it takes points for loose notation.",
+ "prereq": [
+  {
+   "q": "Which inputs make $\\frac{x + 2}{x^2 - 4x}$ undefined?",
+   "options": [
+    "$x = 0$ and $x = 4$",
+    "$x = -2$",
+    "$x = 4$",
+    "$x = \\pm 2$"
+   ],
+   "correct": 0,
+   "why": "$x(x - 4) = 0$.",
+   "review": "alg-rational-expressions"
+  },
+  {
+   "q": "At a zero of multiplicity $2$, the graph of a polynomial",
+   "options": [
+    "touches the axis without crossing",
+    "crosses the axis",
+    "has a break",
+    "is vertical"
+   ],
+   "correct": 0,
+   "why": "An even power does not change sign.",
+   "review": "complex-zeros"
+  },
+  {
+   "q": "What is $\\lim_{x \\to \\infty} \\frac{3x^2 - 3}{x^2 + 2}$?",
+   "options": [
+    "$3$",
+    "$0$",
+    "$\\infty$",
+    "$-\\frac{3}{2}$"
+   ],
+   "correct": 0,
+   "why": "Equal degrees: $\\frac{3}{1}$.",
+   "review": "rational-end-behavior"
+  }
+ ],
+ "figure": {
+  "figure": "vertical-asymptotes-sides",
+  "caption": "$r(x) = \\frac{x}{(x - 1)(x + 2)}$ has vertical asymptotes $x = -2$ and $x = 1$; at $x = 1$, $\\lim_{x \\to 1^-} r(x) = -\\infty$ and $\\lim_{x \\to 1^+} r(x) = \\infty$."
+ },
+ "chain": [
+  {
+   "cause": "$(x - a)$ is a factor of the denominator, with higher multiplicity than in the numerator",
+   "effect": "$x = a$ is a vertical asymptote: outputs grow without bound in size near $a$"
+  },
+  {
+   "cause": "The factor appears equally often (or more) in the numerator",
+   "effect": "it cancels and there is no vertical asymptote at $a$"
+  },
+  {
+   "cause": "You test the signs of the factors just left and just right of $a$",
+   "effect": "you get each one-sided limit, $\\infty$ or $-\\infty$"
+  },
+  {
+   "cause": "The leftover power of $(x - a)$ is even",
+   "effect": "both one-sided limits have the same sign"
+  }
+ ],
+ "ideas": [
+  "<b>Vertical asymptote</b> $x = a$: the outputs increase or decrease without bound as $x$ approaches $a$ from one side or both.",
+  "For a rational function: a zero of the denominator with greater multiplicity than in the numerator.",
+  "<b>One-sided limits</b>: $\\lim_{x \\to a^-}$ from the left, $\\lim_{x \\to a^+}$ from the right, each $= \\infty$ or $= -\\infty$.",
+  "Find the sign with a test input just beside $a$, such as $a - 0.1$ and $a + 0.1$."
+ ],
+ "misconception": {
+  "wrong": "Every zero of the denominator is a vertical asymptote.",
+  "right": "Cancel common factors first. $\\frac{x - 3}{(x - 3)(x + 2)}$ has a zero denominator at $x = 3$, but the factor cancels and the outputs approach $\\frac{1}{5}$ there. Its only vertical asymptote is $x = -2$."
+ },
+ "check": [
+  "pcalc-vertical-asymptotes-1",
+  "pcalc-vertical-asymptotes-2",
+  "pcalc-vertical-asymptotes-3",
+  "pcalc-vertical-asymptotes-6",
+  "pcalc-vertical-asymptotes-7",
+  "pcalc-vertical-asymptotes-10"
+ ],
+ "summary": "A rational function has a vertical asymptote $x = a$ where $(x - a)$ divides the denominator more times than the numerator. Describe it from each side with one-sided limits, $\\lim_{x \\to a^-} f(x)$ and $\\lim_{x \\to a^+} f(x)$, each $\\infty$ or $-\\infty$, found from the signs of the factors just beside $a$."
+}

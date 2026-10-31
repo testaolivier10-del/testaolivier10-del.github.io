@@ -1,0 +1,71 @@
+{
+ "topic": "matrices-as-functions",
+ "hook": "A game character turns a quarter turn and then mirrors itself. Each move is a matrix, so the pair of moves should be one matrix too. It is, as long as you multiply in the right order. Thinking of matrices as functions, with inputs and outputs, tells you which order, and how to undo a move.",
+ "prereq": [
+  {
+   "q": "If $f(x) = 2x$ and $g(x) = x + 1$, what is $f(g(3))$?",
+   "options": [
+    "$8$",
+    "$7$",
+    "$6$",
+    "$9$"
+   ],
+   "correct": 0,
+   "why": "Inside first: $g(3) = 4$, then $f(4) = 8$.",
+   "review": "composition"
+  },
+  {
+   "q": "Which matrix rotates the plane by $\\frac{\\pi}{2}$ counterclockwise?",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ -1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": "Its columns are the images of $\\left\\langle 1, 0 \\right\\rangle$ and $\\left\\langle 0, 1 \\right\\rangle$: $\\left\\langle 0, 1 \\right\\rangle$ and $\\left\\langle -1, 0 \\right\\rangle$.",
+   "review": "linear-transformations"
+  }
+ ],
+ "figure": {
+  "figure": "matrices-as-functions-compose",
+  "caption": "$\\mathbf{v} = \\left\\langle 3, 1 \\right\\rangle$ is rotated by $R$ to $\\left\\langle -1, 3 \\right\\rangle$, then reflected by $F$ to $\\left\\langle -1, -3 \\right\\rangle$. The single matrix for \"$R$, then $F$\" is $FR$."
+ },
+ "chain": [
+  {
+   "cause": "A matrix $A$ takes an input vector $\\mathbf{v}$",
+   "effect": "it returns the output $A\\mathbf{v}$, so $A$ acts as a function on vectors"
+  },
+  {
+   "cause": "Apply $B$ first, then $A$",
+   "effect": "the output is $A(B\\mathbf{v}) = (AB)\\mathbf{v}$: the matrix of the composition is $AB$, written right to left"
+  },
+  {
+   "cause": "$\\det A \\ne 0$",
+   "effect": "$A^{-1}$ is the matrix of the inverse function: it sends each output back to its input"
+  },
+  {
+   "cause": "$\\det A = 0$",
+   "effect": "two inputs share an output, so the transformation has no inverse"
+  }
+ ],
+ "ideas": [
+  "A $2 \\times 2$ matrix $A$ is a function from vectors to vectors: input $\\mathbf{v}$, output $A\\mathbf{v}$.",
+  "<b>Composition of linear transformations</b>: \"first $B$, then $A$\" has matrix $AB$. The first move is on the right, next to $\\mathbf{v}$.",
+  "The inverse transformation has matrix $A^{-1}$, and exists exactly when $\\det A \\ne 0$. To find the input with output $\\mathbf{w}$, compute $A^{-1}\\mathbf{w}$.",
+  "Repeating $A$ $n$ times has matrix $A^n$, and $\\det(AB) = \\det A \\cdot \\det B$."
+ ],
+ "misconception": {
+  "wrong": "\"Rotate with $R$, then reflect with $F$\" has the matrix $RF$, because $R$ comes first.",
+  "right": "The first move acts on $\\mathbf{v}$ first, so it sits next to $\\mathbf{v}$: $F(R\\mathbf{v}) = (FR)\\mathbf{v}$. Read a product right to left, like $f(g(x))$."
+ },
+ "check": [
+  "pcalc-matrices-as-functions-1",
+  "pcalc-matrices-as-functions-2",
+  "pcalc-matrices-as-functions-3",
+  "pcalc-matrices-as-functions-4",
+  "pcalc-matrices-as-functions-10",
+  "pcalc-matrices-as-functions-11"
+ ],
+ "summary": "A matrix is a function on vectors. Doing $B$ and then $A$ is the single matrix $AB$, read right to left, and repeating $A$ gives $A^n$. When $\\det A \\ne 0$, $A^{-1}$ undoes $A$ and recovers an input from its output; when $\\det A = 0$, two inputs share an output and nothing can undo it."
+}

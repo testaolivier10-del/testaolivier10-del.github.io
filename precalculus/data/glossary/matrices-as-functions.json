@@ -1,0 +1,5 @@
+{
+ "matrix-function": {
+  "def": "A matrix used as a function on vectors: input v, output Av. Doing B and then A is the composition of linear transformations, with matrix AB (the first move on the right). The inverse function has matrix A⁻¹, which exists exactly when det A is not 0."
+ }
+}

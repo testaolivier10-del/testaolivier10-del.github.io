@@ -1,0 +1,39 @@
+<p>You have used matrices to move the plane. Now treat each one as a function: its inputs are vectors and its outputs are vectors. Everything you know about functions, composition and inverses carries over, with matrix multiplication doing the work.</p>
+
+<h2>Matrices as functions</h2>
+<p>A $2 \times 2$ matrix $A$ defines the function $\mathbf{v} \to A\mathbf{v}$. Its domain is every vector in the plane, and its outputs are the vectors $A\mathbf{v}$. Different matrices are different functions; the identity $I$ is the function that changes nothing.</p>
+
+<h2>Composition: one matrix for two moves</h2>
+<p>Apply $B$ to $\mathbf{v}$, then apply $A$ to the result. The output is $A(B\mathbf{v})$, and because matrix multiplication can be grouped either way, this equals $(AB)\mathbf{v}$. So the <b>composition of linear transformations</b> "$B$, then $A$" is the single matrix $AB$. The move done first is written on the right, closest to $\mathbf{v}$, just as $g$ is applied first in $f(g(x))$.</p>
+<figure id="fig-compose" data-fig="matrices-as-functions-compose"><figcaption>Rotate, then reflect: $F(R\mathbf{v}) = (FR)\mathbf{v}$.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> $R = \left[ \begin{matrix} 0 & -1 \\ 1 & 0 \end{matrix} \right]$ rotates by $\frac{\pi}{2}$ counterclockwise and $F = \left[ \begin{matrix} 1 & 0 \\ 0 & -1 \end{matrix} \right]$ reflects across the $x$-axis. Find the matrix for "rotate, then reflect" and apply it to $\left\langle 3, 1 \right\rangle$.</p>
+<p>Rotate first, so $R$ goes on the right: $FR = \left[ \begin{matrix} 1 & 0 \\ 0 & -1 \end{matrix} \right]\left[ \begin{matrix} 0 & -1 \\ 1 & 0 \end{matrix} \right] = \left[ \begin{matrix} 0 & -1 \\ -1 & 0 \end{matrix} \right]$.</p>
+<p>$FR\left[ \begin{matrix} 3 \\ 1 \end{matrix} \right] = \left[ \begin{matrix} -1 \\ -3 \end{matrix} \right]$. Check in two steps: $R\left[ \begin{matrix} 3 \\ 1 \end{matrix} \right] = \left[ \begin{matrix} -1 \\ 3 \end{matrix} \right]$, then $F$ flips the sign of the second entry: $\left[ \begin{matrix} -1 \\ -3 \end{matrix} \right]$.</p>
+<p>In the other order, $RF = \left[ \begin{matrix} 0 & 1 \\ 1 & 0 \end{matrix} \right]$, a different move. Order matters.</p>
+</div>
+<p>Composing rotations adds their angles: rotating by $\frac{\pi}{6}$ three times is the same as rotating by $\frac{\pi}{2}$ once. Areas multiply too: $\det(AB) = \det A \cdot \det B$, since $B$ scales areas by $\left| \det B \right|$ and then $A$ scales them again.</p>
+
+<h2>Inverses: undoing a move</h2>
+<p>If $\det A \ne 0$, the inverse matrix $A^{-1}$ is the inverse function: $A^{-1}(A\mathbf{v}) = \mathbf{v}$ for every $\mathbf{v}$. To find which input gives a known output $\mathbf{w}$, solve $A\mathbf{v} = \mathbf{w}$ by computing $\mathbf{v} = A^{-1}\mathbf{w}$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> $M = \left[ \begin{matrix} 3 & 1 \\ 5 & 2 \end{matrix} \right]$. Which input does $M$ send to $\left\langle 4, 7 \right\rangle$?</p>
+<p>$\det M = 6 - 5 = 1$, so $M^{-1} = \left[ \begin{matrix} 2 & -1 \\ -5 & 3 \end{matrix} \right]$.</p>
+<p>$M^{-1}\left[ \begin{matrix} 4 \\ 7 \end{matrix} \right] = \left[ \begin{matrix} 8 - 7 \\ -20 + 21 \end{matrix} \right] = \left[ \begin{matrix} 1 \\ 1 \end{matrix} \right]$. Check: $M\left[ \begin{matrix} 1 \\ 1 \end{matrix} \right] = \left[ \begin{matrix} 4 \\ 7 \end{matrix} \right]$.</p>
+</div>
+<p>Some inverses are easy to see. A rotation by $\theta$ is undone by a rotation by $-\theta$, and a reflection is undone by itself.</p>
+
+<h2>When there is no inverse</h2>
+<p>If $\det A = 0$, the matrix squashes the plane onto a line (or a point), and different inputs land on the same output. For $P = \left[ \begin{matrix} 1 & 0 \\ 0 & 0 \end{matrix} \right]$, $P\left[ \begin{matrix} 2 \\ 3 \end{matrix} \right] = \left[ \begin{matrix} 2 \\ 0 \end{matrix} \right]$ and $P\left[ \begin{matrix} 2 \\ -1 \end{matrix} \right] = \left[ \begin{matrix} 2 \\ 0 \end{matrix} \right]$. Given only the output $\left\langle 2, 0 \right\rangle$, there is no way to know which input it came from, so $P$ has no inverse function.</p>
+
+<h2>Repeating a move</h2>
+<table class="compare">
+<thead><tr><th scope="col">Words</th><th scope="col">Matrix</th></tr></thead>
+<tbody>
+<tr><td>$B$, then $A$</td><td>$AB$</td></tr>
+<tr><td>$A$ twice</td><td>$A^2 = AA$</td></tr>
+<tr><td>$A$, $n$ times</td><td>$A^n$</td></tr>
+<tr><td>undo $A$</td><td>$A^{-1}$ (if $\det A \ne 0$)</td></tr>
+</tbody>
+</table>
+<p>For $M = \left[ \begin{matrix} 3 & 1 \\ 5 & 2 \end{matrix} \right]$, $M^2 = \left[ \begin{matrix} 14 & 5 \\ 25 & 9 \end{matrix} \right]$, so applying $M$ twice sends $\left\langle 1, 0 \right\rangle$ to the first column, $\left\langle 14, 25 \right\rangle$.</p>

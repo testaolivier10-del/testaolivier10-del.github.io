@@ -1,0 +1,445 @@
+{
+ "stimuli": {
+  "matrices-as-functions-s1": {
+   "kind": "table",
+   "title": "A rotation and a reflection",
+   "html": "<p>$R$ rotates the plane by $\\frac{\\pi}{2}$ counterclockwise and $F$ reflects it across the $x$-axis.</p><p>$$R = \\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right], \\qquad F = \\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$$</p>"
+  },
+  "matrices-as-functions-s2": {
+   "kind": "table",
+   "title": "A matrix with determinant 1",
+   "html": "<p>$$M = \\left[ \\begin{matrix} 3 & 1 \\\\ 5 & 2 \\end{matrix} \\right]$$</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-matrices-as-functions-1",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s1",
+   "q": "Which matrix does \"rotate with $R$, then reflect with $F$\" in one step?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ -1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & -1 \\\\ 1 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ -1 & 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rotate first, so $R$ is on the right: $FR = \\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]\\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 & -1 \\\\ -1 & 0 \\end{matrix} \\right]$.",
+    "options": [
+     "$FR$: the first move on the right.",
+     "This is $RF$: reflect first, then rotate.",
+     "This adds $R$ and $F$; composing multiplies.",
+     "This is $R^{-1}$, a clockwise quarter turn."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-2",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s1",
+   "q": "Which matrix does \"reflect with $F$, then rotate with $R$\" in one step?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ -1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & 1 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reflect first, so $F$ is on the right: $RF = \\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right]\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$.",
+    "options": [
+     "Reflect first, so $F$ sits on the right.",
+     "This is $FR$, the other order.",
+     "This is $R$ alone; the reflection is missing.",
+     "The two moves do not cancel; $RF \\ne I$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-3",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s1",
+   "q": "What is the image of $\\left\\langle 2, 1 \\right\\rangle$ when it is rotated with $R$ and then reflected with $F$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle -1, -2 \\right\\rangle$",
+    "$\\left\\langle -1, 2 \\right\\rangle$",
+    "$\\left\\langle 1, 2 \\right\\rangle$",
+    "$\\left\\langle 2, -1 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$R\\left[ \\begin{matrix} 2 \\\\ 1 \\end{matrix} \\right] = \\left[ \\begin{matrix} -1 \\\\ 2 \\end{matrix} \\right]$, then $F$ flips the second entry: $\\left\\langle -1, -2 \\right\\rangle$. Or $FR\\left[ \\begin{matrix} 2 \\\\ 1 \\end{matrix} \\right]$ directly.",
+    "options": [
+     "Rotate, then reflect.",
+     "This is after the rotation only.",
+     "This is the other order, $RF$.",
+     "This is after the reflection only."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-4",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "matrices-as-functions-s1",
+   "q": "The matrix $FR = \\left[ \\begin{matrix} 0 & -1 \\\\ -1 & 0 \\end{matrix} \\right]$ is a single reflection. Across which line?",
+   "type": "single",
+   "options": [
+    "$y = -x$",
+    "$y = x$",
+    "the $y$-axis",
+    "the $x$-axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$FR\\left[ \\begin{matrix} x \\\\ y \\end{matrix} \\right] = \\left[ \\begin{matrix} -y \\\\ -x \\end{matrix} \\right]$: it swaps the coordinates and negates both. Points on $y = -x$, such as $\\left\\langle 1, -1 \\right\\rangle$, stay put.",
+    "options": [
+     "$\\left\\langle 1, -1 \\right\\rangle \\to \\left\\langle 1, -1 \\right\\rangle$: fixed on $y = -x$.",
+     "Reflection across $y = x$ is $RF$; it fixes $\\left\\langle 1, 1 \\right\\rangle$, which $FR$ sends to $\\left\\langle -1, -1 \\right\\rangle$.",
+     "The $y$-axis reflection sends $\\left\\langle 1, 0 \\right\\rangle$ to $\\left\\langle -1, 0 \\right\\rangle$; $FR$ sends it to $\\left\\langle 0, -1 \\right\\rangle$.",
+     "That is $F$ alone; the rotation changes it."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-5",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s1",
+   "q": "Which matrix undoes $R$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ -1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Undo a quarter turn counterclockwise with a quarter turn clockwise: $R^{-1} = \\left[ \\begin{matrix} 0 & 1 \\\\ -1 & 0 \\end{matrix} \\right]$. Check: $RR^{-1} = I$.",
+    "options": [
+     "A clockwise quarter turn.",
+     "Applying $R$ again turns another quarter, to a half turn.",
+     "$F$ reflects; it does not undo a rotation.",
+     "This reflects across $y = x$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-6",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s2",
+   "q": "Which input does $M$ send to $\\left\\langle 4, 7 \\right\\rangle$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 1, 1 \\right\\rangle$",
+    "$\\left\\langle 4, 7 \\right\\rangle$",
+    "$\\left\\langle 19, 34 \\right\\rangle$",
+    "$\\left\\langle 1, 2 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$M^{-1}\\left[ \\begin{matrix} 4 \\\\ 7 \\end{matrix} \\right] = \\left[ \\begin{matrix} 2 & -1 \\\\ -5 & 3 \\end{matrix} \\right]\\left[ \\begin{matrix} 4 \\\\ 7 \\end{matrix} \\right] = \\left[ \\begin{matrix} 1 \\\\ 1 \\end{matrix} \\right]$. Check: $M\\left[ \\begin{matrix} 1 \\\\ 1 \\end{matrix} \\right] = \\left[ \\begin{matrix} 4 \\\\ 7 \\end{matrix} \\right]$.",
+    "options": [
+     "$M^{-1}$ times the output.",
+     "That is the output, not the input.",
+     "That is $M\\left[ \\begin{matrix} 4 \\\\ 7 \\end{matrix} \\right]$, the output of the output.",
+     "$M\\left[ \\begin{matrix} 1 \\\\ 2 \\end{matrix} \\right] = \\left[ \\begin{matrix} 5 \\\\ 9 \\end{matrix} \\right]$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-7",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "matrices-as-functions-s2",
+   "q": "What is $M^{-1}$?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 2 & -1 \\\\ -5 & 3 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 3 & -1 \\\\ -5 & 2 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} -2 & 1 \\\\ 5 & -3 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 2 & 1 \\\\ 5 & 3 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$\\det M = 3(2) - 1(5) = 1$. Swap $3$ and $2$, negate $1$ and $5$, divide by $1$.",
+    "options": [
+     "Swap, negate, divide by $1$.",
+     "Swap the diagonal entries $3$ and $2$.",
+     "Negate only the off-diagonal entries.",
+     "The off-diagonal entries change sign."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-8",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s2",
+   "q": "What does applying $M$ twice do to $\\left\\langle 1, 0 \\right\\rangle$?",
+   "type": "single",
+   "options": [
+    "$\\left\\langle 14, 25 \\right\\rangle$",
+    "$\\left\\langle 3, 5 \\right\\rangle$",
+    "$\\left\\langle 9, 25 \\right\\rangle$",
+    "$\\left\\langle 6, 10 \\right\\rangle$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$M\\left[ \\begin{matrix} 1 \\\\ 0 \\end{matrix} \\right] = \\left[ \\begin{matrix} 3 \\\\ 5 \\end{matrix} \\right]$, then $M\\left[ \\begin{matrix} 3 \\\\ 5 \\end{matrix} \\right] = \\left[ \\begin{matrix} 9 + 5 \\\\ 15 + 10 \\end{matrix} \\right] = \\left[ \\begin{matrix} 14 \\\\ 25 \\end{matrix} \\right]$, the first column of $M^2$.",
+    "options": [
+     "Apply $M$ to the first output.",
+     "This is after one application.",
+     "This squares each entry; apply $M$ to $(3, 5)$ instead.",
+     "This doubles $(3, 5)$; applying $M$ again is not doubling."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-9",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "matrices-as-functions-s2",
+   "q": "By what factor does applying $M$ three times multiply areas?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1,
+    "mistakes": [
+     {
+      "value": 3,
+      "why": "Factors multiply: $\\det(M^3) = (\\det M)^3 = 1^3$."
+     },
+     {
+      "value": 0,
+      "why": "$\\det M = 1$, not $0$; $M$ keeps areas the same."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\det(M^3) = (\\det M)^3 = 1^3 = 1$: areas do not change."
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-10",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In the product $AB\\mathbf{v}$, which transformation acts on $\\mathbf{v}$ first?",
+   "type": "single",
+   "options": [
+    "$B$, the one next to $\\mathbf{v}$",
+    "$A$, the one written first",
+    "Both at once, so the order makes no difference",
+    "Whichever has the larger determinant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "$AB\\mathbf{v} = A(B\\mathbf{v})$: $B$ acts first, like $g$ in $f(g(x))$.",
+    "options": [
+     "Right to left.",
+     "Written first, applied last.",
+     "$AB$ and $BA$ usually differ, so the order matters.",
+     "Determinants do not set the order."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-11",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rotation by $\\frac{\\pi}{6}$ counterclockwise is applied three times. Which single matrix does the same?",
+   "type": "single",
+   "options": [
+    "$\\left[ \\begin{matrix} 0 & -1 \\\\ 1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 0 & 1 \\\\ -1 & 0 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} -1 & 0 \\\\ 0 & -1 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Three turns of $\\frac{\\pi}{6}$ make $\\frac{\\pi}{2}$, and the rotation by $\\frac{\\pi}{2}$ counterclockwise has columns $(0, 1)$ and $(-1, 0)$.",
+    "options": [
+     "$3 \\cdot \\frac{\\pi}{6} = \\frac{\\pi}{2}$.",
+     "This turns clockwise.",
+     "This is a half turn, $\\pi$.",
+     "This is one turn of $\\frac{\\pi}{6}$, not three."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-12",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "3.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "$\\det A = 3$ and $\\det B = -2$. What is $\\det(AB)$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": -6,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Determinants multiply under composition: $3(-2)$, not $3 + (-2)$."
+     },
+     {
+      "value": 6,
+      "why": "Keep the sign: $3(-2) = -6$. One flip means the composition flips."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\det(AB) = \\det A \\cdot \\det B = 3(-2) = -6$: areas are multiplied by $6$, and orientation is reversed."
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-13",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "$L_1(\\left\\langle x, y \\right\\rangle) = \\left\\langle 2x, y \\right\\rangle$ and $L_2(\\left\\langle x, y \\right\\rangle) = \\left\\langle x + y, y \\right\\rangle$. Write the first component of $L_2(L_1(\\left\\langle x, 1 \\right\\rangle))$.",
+   "type": "expr",
+   "expr": {
+    "vars": [
+     "x"
+    ],
+    "mode": "exact",
+    "answer": "2x + 1",
+    "domain": [
+     -5,
+     5
+    ],
+    "mistakes": [
+     {
+      "expr": "2x + 2",
+      "why": "That is $L_1(L_2(\\ldots))$. Apply $L_1$ first: $(2x, 1)$, then $L_2$ adds the components."
+     },
+     {
+      "expr": "x + 1",
+      "why": "$L_1$ doubles the first component first, giving $2x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$L_1(\\left\\langle x, 1 \\right\\rangle) = \\left\\langle 2x, 1 \\right\\rangle$, then $L_2(\\left\\langle 2x, 1 \\right\\rangle) = \\left\\langle 2x + 1, 1 \\right\\rangle$. The first component is $2x + 1$."
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-14",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Why does $P = \\left[ \\begin{matrix} 1 & 0 \\\\ 0 & 0 \\end{matrix} \\right]$ have no inverse function?",
+   "type": "single",
+   "options": [
+    "$P\\left[ \\begin{matrix} 2 \\\\ 3 \\end{matrix} \\right]$ and $P\\left[ \\begin{matrix} 2 \\\\ -1 \\end{matrix} \\right]$ are both $\\left[ \\begin{matrix} 2 \\\\ 0 \\end{matrix} \\right]$",
+    "$P\\left[ \\begin{matrix} 1 \\\\ 0 \\end{matrix} \\right] = \\left[ \\begin{matrix} 1 \\\\ 0 \\end{matrix} \\right]$, so $P$ changes nothing",
+    "$P$ has two entries equal to $0$",
+    "$P\\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two different inputs give the output $\\left\\langle 2, 0 \\right\\rangle$, so from the output alone you cannot tell which input it came from. ($\\det P = 0$.)",
+    "options": [
+     "Two inputs, one output.",
+     "$P$ does change some vectors: $\\left\\langle 0, 1 \\right\\rangle \\to \\left\\langle 0, 0 \\right\\rangle$.",
+     "Zeros alone do not decide it; $\\left[ \\begin{matrix} 0 & 1 \\\\ 1 & 0 \\end{matrix} \\right]$ has two zeros and an inverse.",
+     "Every matrix sends the zero vector to itself."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-15",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which transformations are their own inverses? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "Reflection across the $x$-axis",
+    "Rotation by $\\pi$",
+    "Rotation by $\\frac{\\pi}{2}$",
+    "Dilation by $2$"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A transformation is its own inverse when doing it twice gives $I$.",
+    "options": [
+     "Reflecting twice puts every point back.",
+     "Two half turns make a full turn.",
+     "Two quarter turns make a half turn, not $I$.",
+     "Doing it twice stretches by $4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-matrices-as-functions-16",
+   "unit": "unit-4",
+   "topic": "matrices-as-functions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the input that a matrix $A$ sends to a known output $\\mathbf{w}$ in order.",
+   "type": "order",
+   "options": [
+    "Check that $\\det A \\ne 0$",
+    "Find $A^{-1}$",
+    "Compute $A^{-1}\\mathbf{w}$",
+    "Check that $A$ times your answer gives $\\mathbf{w}$"
+   ],
+   "why": {
+    "correct": "An inverse must exist; then undo $A$ by multiplying the output by $A^{-1}$, and check."
+   }
+  }
+ ]
+}

@@ -47,13 +47,13 @@ export function check(data, map) {
     if (errs.length > before) return;
     const S = Object.fromEntries(p.steps.map(s => [s.key, s])), V = p.values;
     const key = k => S[k].cell.expr ? Expr.fn(S[k].cell.expr.answer, S[k].cell.expr.vars) : null, A = k => S[k].cell.answer;
-    const same = (f, g, xs, what) => { for (const x of xs) { const a = f(x), b = g(x); if (Number.isFinite(a) && !close(a, b, 1e-9, 1e-9)) { errs.push(`${w}: ${what} is wrong at x = ${x}`); return; } } };
+    const same = (f, g, xs, what) => { for (const x of xs) { const a = f(x), b = g(x); if (Number.isFinite(a) && Number.isFinite(b) && !close(a, b, 1e-9, 1e-9)) { errs.push(`${w}: ${what} is wrong at x = ${x}`); return; } } };
     if (p.type === 'single-power') {
       const { p: b, m, a1, b1, a2, b2, op } = V, big = b ** m;
       const orig = x => op === 'mul' ? big ** (a1 * x + b1) * b ** (a2 * x + b2) : big ** (a1 * x + b1) / b ** (a2 * x + b2);
       same(x => b ** key('A')(x), x => big ** (a1 * x + b1), pts(-2, 2), 'the first power');
       same(x => b ** key('B')(x), orig, pts(-2, 2), 'the single power');
-      if (!new RegExp(`^Write \\$${big}\\^`).test(p.text)) errs.push(`${w}: the text does not show ${big}`);
+      if (!p.text.includes(`${big}^{`)) errs.push(`${w}: the text does not show ${big}`);
     } else if (p.type === 'single-log') {
       const { L, c: cc, d, k, sign } = V, lg = L === 'ln' ? Math.log : L === 'log_2' ? Math.log2 : Math.log10, co = cc === 'h' ? 0.5 : cc;
       const orig = x => co * lg(x) + lg(x + d) + sign * -1 * lg(k);
@@ -71,7 +71,7 @@ export function check(data, map) {
       if (!close(f(A('x')), 0, 0, 1e-9)) errs.push(`${w}: x does not solve the equation`);
       if (A('N') !== b ** cc) errs.push(`${w}: the exponential form is wrong`);
       // count: solutions of the original on its domain
-      let n = 0; const lo = Math.max(0, -d); for (const x of pts(lo + 1e-6, 200, 20000)) { const y0 = f(x), y1 = f(x + 199.99 / 20000); if (y0 === 0 || y0 * y1 < 0) n++; }
+      let n = 0; const lo = Math.max(0, -d), xs = pts(lo + 1e-6, 200, 20000); for (let i = 0; i + 1 < xs.length; i++) { const y0 = f(xs[i]), y1 = f(xs[i + 1]); if (y0 === 0 || y0 * y1 < 0) n++; }
       if (A('count') !== n) errs.push(`${w}: ${n} solutions, not ${A('count')}`);
     } else if (p.type === 'quad-ex') {
       const { p: pp, c: cc } = V, f = x => Math.exp(2 * x) + pp * Math.exp(x) + cc;
