@@ -395,17 +395,172 @@
     return String(+v.toPrecision(4));
   }
 
+  /* ---------------------------------------------------------- forms
+     Value grading accepts any equal expression, so "write as a single
+     logarithm" would accept the expression the student started with. An
+     optional `form` on an expr item (docs/apprecalc-architecture.md, "Forms")
+     is checked on the parse tree of an answer that is already equal in
+     value:
+       { type: 'log',      base?, scaled? }   one logarithm (ln, log, log_b), no log inside it
+       { type: 'power',    base?, scaled?, exponent?: 'var' | 'kx' }   one power b^E (or e^E, exp)
+       { type: 'trig',     scaled? }          one of sin cos tan sec csc cot, no trig inside it
+       { type: 'fraction' }                   one quotient, no quotient inside its top or bottom
+       { type: 'expanded' }                   a polynomial with like terms combined, no brackets
+       { type: 'terms',    count }            a sum of exactly `count` terms
+       { type: 'vertex' }                     a(x - h)^2 + k
+       { type: 'only',     fns: ['cos'] }     every trig function is one of fns, applied to the variable
+     `base` is a number or a variable name; `scaled` also allows a plain
+     constant factor (c·L or L/c); `say` overrides the wording of the note
+     ("in the form $a(2)^x$"). formProblem(tree, form, vars) returns null
+     when the tree has the form, else the phrase the note uses. */
+  var TRIG = { sin: 1, cos: 1, tan: 1, sec: 1, csc: 1, cot: 1 };
+  var FORM_TYPES = ['log', 'power', 'trig', 'fraction', 'expanded', 'terms', 'vertex', 'only'];
+  function strip(n){ while(n && n.k === 'paren') n = n.a; return n; }
+  function some(n, pred){ return !!n && (pred(n) || some(n.a, pred) || some(n.b, pred) || some(n.logBase, pred)); }
+  function isLog(n){ return n.k === 'fn' && (n.f === 'ln' || n.f === 'log') || n.k === 'div' && !!n.logBase; }
+  // Numbers and arithmetic only: no variable, no function (so ln(4) is not a "plain" constant).
+  function plainConst(n){ return !some(n, function(m){ return m.k === 'var' || m.k === 'fn' || !!m.logBase; }); }
+  function constValue(n){ try{ return compile(n)({}); }catch(e){ return NaN; } }
+  function baseMatches(b, want){
+    if(want === undefined || want === null) return true;
+    b = strip(b);
+    if(typeof want === 'string' && /^[a-zA-Z]+$/.test(want) && want !== 'e') return b.k === 'var' && b.v === want;
+    var w = want === 'e' ? Math.E : Number(want);
+    return plainConst(b) && Math.abs(constValue(b) - w) < 1e-9;
+  }
+  function logBaseOf(n){ return n.k === 'div' ? n.logBase : { k: 'num', v: n.f === 'ln' ? Math.E : 10 }; }
+  function logArg(n){ return n.k === 'div' ? n.arg : n.a; }
+  // A scaled form: the core, or c·core, core·c, core/c, -core with c a plain constant.
+  function scaledOf(n, core){
+    n = strip(n);
+    if(core(n)) return true;
+    if(n.k === 'neg') return scaledOf(n.a, core);
+    if(n.k === 'mul') return plainConst(n.a) && scaledOf(n.b, core) || plainConst(n.b) && scaledOf(n.a, core);
+    if(n.k === 'div' && !n.logBase) return plainConst(n.b) && scaledOf(n.a, core);
+    return false;
+  }
+  function isKx(e, v){
+    e = strip(e);
+    if(e.k === 'var') return e.v === v;
+    if(e.k === 'neg') return isKx(e.a, v);
+    if(e.k === 'mul') return plainConst(e.a) && isKx(e.b, v) || plainConst(e.b) && isKx(e.a, v);
+    if(e.k === 'div') return plainConst(e.b) && isKx(e.a, v);
+    return false;
+  }
+  function terms(n, out){
+    n = strip(n); out = out || [];
+    if(n.k === 'add'){ terms(n.a, out); terms(n.b, out); }
+    else if(n.k === 'sub'){ terms(n.a, out); var r = []; terms(n.b, r); r.forEach(function(t){ out.push({ k: 'neg', a: t }); }); }
+    else out.push(n);
+    return out;
+  }
+  // A monomial's signature ("x^2", "" for a constant), or null when the term is not one.
+  function monomial(t){
+    var pw = {}, ok = true;
+    (function walk(n){
+      n = strip(n);
+      if(!ok) return;
+      if(plainConst(n)) return;
+      if(n.k === 'neg') return walk(n.a);
+      if(n.k === 'mul'){ walk(n.a); walk(n.b); return; }
+      if(n.k === 'div' && !n.logBase && plainConst(n.b)) return walk(n.a);
+      var v = null, e = 1;
+      if(n.k === 'var') v = n.v;
+      else if(n.k === 'pow' && strip(n.a).k === 'var' && plainConst(n.b)){ v = strip(n.a).v; e = constValue(n.b); }
+      if(v === null || !(e > 0) || Math.abs(e - Math.round(e)) > 1e-9 || pw[v]){ ok = false; return; }
+      pw[v] = Math.round(e);
+    })(t);
+    return ok ? Object.keys(pw).sort().map(function(v){ return v + '^' + pw[v]; }).join('*') : null;
+  }
+  function describeForm(form){
+    if(form.say) return form.say;
+    var b = form.base !== undefined ? ' of ' + form.base : '';
+    switch(form.type){
+      case 'log': return form.scaled ? 'a constant times one logarithm' + (form.base !== undefined ? ' with base ' + form.base : '') : 'a single logarithm' + (form.base !== undefined ? ' with base ' + form.base : '');
+      case 'power': return (form.scaled ? 'a constant times a single power' : 'a single power') + b + (form.exponent === 'var' ? ' with the exponent the variable alone' : '');
+      case 'trig': return 'a single trigonometric function';
+      case 'fraction': return 'a single fraction';
+      case 'expanded': return 'a polynomial multiplied out, with like terms combined';
+      case 'terms': return 'a sum of ' + form.count + ' terms';
+      case 'vertex': return 'vertex form, a(x - h)^2 + k';
+      case 'only': return 'an expression in ' + (form.fns || []).join(' and ') + ' of the variable only';
+    }
+    return 'the form the question asks for';
+  }
+  function formProblem(tree, form, vars){
+    if(!form) return null;
+    var v = (vars || ['x'])[0], n = strip(tree), ok = false;
+    switch(form.type){
+      case 'log':
+        ok = (form.scaled ? scaledOf : function(m, c){ return c(strip(m)); })(n, function(m){
+          return isLog(m) && baseMatches(logBaseOf(m), form.base) && !some(logArg(m), isLog);
+        });
+        break;
+      case 'power':
+        ok = (form.scaled ? scaledOf : function(m, c){ return c(strip(m)); })(n, function(m){
+          var base, ex;
+          if(m.k === 'fn' && m.f === 'exp'){ base = { k: 'const', v: 'e' }; ex = m.a; }
+          else if(m.k === 'pow' && !m.fnPow){ base = strip(m.a); ex = m.b; }
+          else return false;
+          if(!(base.k === 'num' || base.k === 'const' || base.k === 'var')) return false;
+          if(form.base !== undefined && !(form.base === 'e' ? base.k === 'const' && base.v === 'e' : baseMatches(base, form.base))) return false;
+          if(form.exponent === 'var' && !(strip(ex).k === 'var' && strip(ex).v === v)) return false;
+          if(form.exponent === 'kx' && !isKx(ex, v)) return false;
+          return true;
+        });
+        break;
+      case 'trig':
+        ok = (form.scaled ? scaledOf : function(m, c){ return c(strip(m)); })(n, function(m){
+          return m.k === 'fn' && !!TRIG[m.f] && !some(m.a, function(q){ return q.k === 'fn' && !!TRIG[q.f]; });
+        });
+        break;
+      case 'fraction':
+        var f = n.k === 'neg' ? strip(n.a) : n;
+        var hasDiv = function(m){ return some(m, function(q){ return q.k === 'div' && !q.logBase; }); };
+        ok = f.k === 'div' && !f.logBase && !hasDiv(f.a) && !hasDiv(f.b);
+        break;
+      case 'expanded':
+        var seen = {};
+        ok = terms(n).every(function(t){ var s = monomial(t); if(s === null || seen[s]) return false; seen[s] = true; return true; });
+        break;
+      case 'terms':
+        ok = terms(n).length === form.count;
+        break;
+      case 'vertex':
+        var withVar = terms(n).filter(function(t){ return !plainConst(t); });
+        ok = withVar.length === 1 && scaledOf(withVar[0], function(m){
+          if(!(m.k === 'pow' && !m.fnPow && plainConst(m.b) && Math.abs(constValue(m.b) - 2) < 1e-9)) return false;
+          var inner = terms(m.a), xs = inner.filter(function(t){ return !plainConst(t); });
+          return xs.length === 1 && strip(xs[0]).k === 'var' && strip(xs[0]).v === v;
+        });
+        break;
+      case 'only':
+        var fns = form.fns || [];
+        ok = !some(n, function(m){ return m.k === 'fn' && !!TRIG[m.f] && (fns.indexOf(m.f) < 0 || !(strip(m.a).k === 'var' && strip(m.a).v === v)); });
+        break;
+      default:
+        return 'a known form';
+    }
+    return ok ? null : describeForm(form);
+  }
+
   /* Grades an `expr` item. item: { expr: { answer, vars?, domain?, mode?,
-     needC?, mistakes?: [{ expr, why }] } }. A wrong answer gets the first
+     needC?, form?, mistakes?: [{ expr, why }] } }. A wrong answer gets the first
      authored mistake it matches, else a note on sign, a constant factor or a
-     constant; an antiderivative without + C is graded wrong with that note. */
+     constant; an antiderivative without + C is graded wrong with that note;
+     an answer equal in value but not in the item's `form` is graded wrong
+     with a note naming the form (res.formMiss). */
   function gradeItem(item, typed){
     var E = item.expr || {}, vars = E.vars || ['x'], mode = E.mode || 'exact';
     var opts = { vars: vars, domain: E.domain, mode: mode, seed: E.seed || 20270511 };
     if(!String(typed == null ? '' : typed).trim()) return { valid: false, correct: false, score: 0, error: 'Type an expression.' };
     var res = compare(String(typed), E.answer, opts);
     if(!res.valid) return { valid: false, correct: false, score: 0, error: res.error };
-    var notes = [], mistake = null, correct = !!res.equal;
+    var notes = [], mistake = null, correct = !!res.equal, formMiss = null;
+    if(correct && E.form){
+      formMiss = formProblem(parse(String(typed), { vars: vars, allowC: mode === 'constant' }), E.form, vars);
+      if(formMiss){ correct = false; notes.push('Equal in value, but not in the form the question asks for: write it as ' + formMiss + '.'); }
+    }
     var needC = mode === 'constant' && E.needC !== false;
     if(correct && needC && !res.hasC){ correct = false; notes.push('Add + C: an indefinite integral is a whole family of antiderivatives, and the exam takes the point without it.'); }
     if(!correct && !notes.length){
@@ -420,12 +575,13 @@
       else if(res.factor != null) notes.push('Your answer is ' + niceNum(res.factor) + ' times the right one everywhere. Check a constant factor, or a coefficient you dropped.');
       else if(mode === 'exact' && res.constant) notes.push('Your answer differs from the right one by a constant (' + niceNum(res.diff) + '). Check the constant term.');
     }
-    return { valid: true, correct: correct, score: correct ? 1 : 0, notes: notes, mistake: mistake, tex: res.tex };
+    return { valid: true, correct: correct, score: correct ? 1 : 0, notes: notes, mistake: mistake, tex: res.tex, formMiss: formMiss };
   }
 
   var api = {
     Error: ExprError, parse: parse, compile: compile, fn: fn, number: number, toTex: toTex, read: read,
-    compare: compare, grade: gradeItem, points: points, rng: rng, uses: uses, FUNCS: FUNCS.slice()
+    compare: compare, grade: gradeItem, points: points, rng: rng, uses: uses, FUNCS: FUNCS.slice(),
+    formProblem: formProblem, FORM_TYPES: FORM_TYPES.slice()
   };
   root.ApPrecalcExpr = api;
 })(typeof window !== 'undefined' ? window : globalThis);
