@@ -88,7 +88,7 @@ const IDENTITY = IS_BC ? {
   t2: 'all the way to series.',
   lede: 'Every AB topic and every BC topic, taught from scratch in framework order, then practice that grades typed answers, intervals and justifications.',
   homeDesc: 'Calculus BC exam prep in framework order: every AB topic plus parametric, polar and series, free notes, trainers and answers you type graded by value.',
-  partColors: { course: ['#1C8A52', '#0B5E36'], skills: ['#3E7C8C', '#24525E'] },
+  partColors: { course: ['#7A3CC0', '#5A1E96'], skills: ['#3E7C8C', '#24525E'] },
   // The "Try a step" card: chosen when Unit 9 is written (left out until it exists).
   sample: { topic: 'parametric-derivatives', id: 'cbc-parametric-derivatives-1' },
   // A partial sum climbing to its limit under a sigma: the same 24-px stroke icon as the hub card.
