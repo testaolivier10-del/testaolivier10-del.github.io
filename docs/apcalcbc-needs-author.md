@@ -6,14 +6,15 @@ an id, the question, what was done meanwhile, and who decides. AB's open points 
 
 ## For the owner
 
-- **identity** (Phase 0, decision 7, proposed). Accent emerald, light `--cink #0A5A34` on `--ctint #E0F2E7`
-  (7.1:1; 8.3:1 on white, 7.9:1 on the page), dark `--cink #A6E8C2` (13.2:1 on the page, 11.3:1 on the tint):
-  a counterpart to AB's crimson and between Biology's green (hue 109°) and NREMT's teal (174°). Cover graphite
-  `#161A24` with emerald `#3FE0A0` and gold `#FFD23F` (a function, a Taylor polynomial hugging it near its
-  center, Σ). Icon: a sigma over a partial-sum curve. Headline "AP® Calculus BC, all the way to series."; hand line
+- **identity** (Phase 0, decision 7, proposed). Accent violet, hue 270: light `--cink #5A1E96` on `--ctint #F1E7FA`
+  (8.5:1; 10.2:1 on white, 9.7:1 on the page), dark `--cink #D6BFF5` (11.2:1 on the page, 9.8:1 on the tint).
+  It sits between Organic Chemistry's indigo (249°) and Statistics' plum (298°), clear of the site teal and of
+  Precalculus' forest green (`#11592F`, 145°), which ruled out the first proposal, emerald. Cover deep violet
+  `#34104C` with lilac `#C88CFF` and gold `#FFD23F` (a function, a Taylor polynomial hugging it near its center,
+  Σ). Icon: a sigma over a partial-sum curve. Headline "AP® Calculus BC, all the way to series."; hand line
   "every AB topic, then series". Ranks Sequence Starter, Curve Tracer, Polar Plotter, Series Tester, Taylor
-  Builder, Convergence Prover, Calculus BC Legend. AP® Precalculus is being built on another branch at the same
-  time: if it also picks a green, one of the two moves.
+  Builder, Convergence Prover, Calculus BC Legend. Close in hue to Psychology's old cover lilac and AB's crimson
+  is a sibling, not a clash; confirm.
 - **free-tier** (decision 6, proposed): Units 1 and 2, every "Math you need" lesson and 9.1-9.3; free trainer
   `series-lab`. Confirm or change (`PROFILES.bc.freeTopics`, `assets/premium.js` `apcalcbc`, `pages.json`).
 - **ab-pass-upgrade**: does an AB pass holder get a discount on the BC pass? The shared pricing has no upgrade

@@ -37,7 +37,7 @@ asked, comparison tables where they help); 15+ questions per CED topic (8+ per m
 in stimulus sets of 4-5, four-option singles with per-option explanations, numeric, `expr` and **`interval`** items
 with authored `mistakes` for the BC slips (framework.md section 7); a glossary entry for every concept the topic
 teaches; at least one figure per CED topic, drawn from the actual function (`plot` specs, or a generator script),
-accent emerald `#0A5A34` for emphasis and the Okabe-Ito colours for further curves; your FRQs, faithful to their
+accent violet `#5A1E96` for emphasis and the Okabe-Ito colours for further curves; your FRQs, faithful to their
 type, 9 points, one rubric line per point, a full-credit sample per part. Original items only.
 
 ## Accuracy (non-negotiable)

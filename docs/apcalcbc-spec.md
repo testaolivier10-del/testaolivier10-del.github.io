@@ -150,12 +150,13 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
 6. (2026-10-31) **Free tier (proposed, owner to confirm):** Units 1 and 2 and the "Math you need" chapter as AB,
    plus 9.1-9.3 so a BC visitor tries BC material free.
 
-7. (2026-10-31, Phase 0) **Identity (proposed, owner to confirm; needs-author `identity`).** Accent emerald,
-   light `--cink #0A5A34` on `--ctint #E0F2E7` (7.1:1; 8.3:1 on white), dark `--cink #A6E8C2` (13.2:1 on the
-   page, 11.3:1 on the tint); cover graphite `#161A24` with emerald `#3FE0A0` and gold; icon a sigma over a
+7. (2026-10-31, Phase 0) **Identity (proposed, owner to confirm; needs-author `identity`).** Accent violet,
+   hue 270, light `--cink #5A1E96` on `--ctint #F1E7FA` (8.5:1; 10.2:1 on white), dark `--cink #D6BFF5` (11.2:1 on
+   the page, 9.8:1 on the tint); cover deep violet `#34104C` with lilac `#C88CFF` and gold; icon a sigma over a
    partial-sum curve; headline "AP® Calculus BC, all the way to series."; ranks Sequence Starter, Curve Tracer,
    Polar Plotter, Series Tester, Taylor Builder, Convergence Prover, Calculus BC Legend; manifest and OG
-   "Calculus BC". Registered `hidden` (order 12) with every AB registration point twinned; SQL migration
+   "Calculus BC". Emerald was proposed first and dropped: Precalculus took forest green and the site accent is
+   teal. Registered `hidden` (order 12) with every AB registration point twinned; SQL migration
    `2026-10n-apcalcbc.sql` written, not applied.
 8. (2026-10-31) **Phase 0 done, as built** (`docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`).
    (a) **One generator**: `build-apcalcbc.mjs` runs `build-apcalc.mjs` with the BC profile (`PROFILES.bc` in
