@@ -3,7 +3,7 @@
   "model-validation-s1": {
    "kind": "graph",
    "title": "Residual plots for two models of follower counts",
-   "text": "A new video channel had $210, 262, 330, 410, 515, 640$ and $805$ followers at the end of weeks $t = 0$ to $6$. A linear regression $L$ and an exponential regression $E$ were fit to the data. The plot shows each model\\'s residuals, actual minus predicted: open circles for $L$, filled dots for $E$.",
+   "text": "A new video channel had $210, 262, 330, 410, 515, 640$ and $805$ followers at the end of weeks $t = 0$ to $6$. A linear regression $L$ and an exponential regression $E$ were fit to the data. The plot shows each model's residuals, actual minus predicted: open circles for $L$, filled dots for $E$.",
    "plot": {
     "label": "Residual plot: open circles for the linear model form a U shape, positive at t = 0, negative from t = 2 to 5, positive at t = 6; filled dots for the exponential model stay close to 0 with no pattern",
     "x": [
@@ -464,19 +464,18 @@
    "type": "multi",
    "options": [
     "The residuals are scattered above and below $0$ with no pattern",
-    "The residuals are small compared with the data values",
+    "The residuals stay above $0$ across the inputs",
     "The residuals form a curved pattern",
     "The residuals grow steadily larger as the input increases"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
     "correct": "A good model leaves only small, patternless residuals. A curve or a steady trend in the residuals shows the model misses the shape of the data.",
     "options": [
      "No pattern: the model captures the shape.",
-     "Small errors relative to the data.",
+     "Residuals of one sign mean the model underestimates throughout: a pattern.",
      "A curve means the data bend away from the model.",
      "A trend means the error grows in a predictable way."
     ]
@@ -569,7 +568,7 @@
    "practice": "3.C",
    "level": "analyze",
    "diff": 2,
-   "q": "A linear model\\'s residual plot is shaped like an upside-down U: negative, then positive, then negative. Which change to the model is most reasonable to try?",
+   "q": "A linear model's residual plot is shaped like an upside-down U: negative, then positive, then negative. Which change to the model is most reasonable to try?",
    "type": "single",
    "options": [
     "A linear model with a larger slope, so it rises faster",

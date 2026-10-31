@@ -505,7 +505,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "A is arithmetic: $3 + 50n$. B is geometric: $3(2)^n$. B\\'s gains ($3, 6, 12, 24, \\ldots$) double each week, so they soon exceed $50$. At $n = 6$, A has $303$ and B has $192$; at $n = 7$, A has $353$ and B has $384$.",
+    "correct": "A is arithmetic: $3 + 50n$. B is geometric: $3(2)^n$. B's gains ($3, 6, 12, 24, \\ldots$) double each week, so they soon exceed $50$. At $n = 6$, A has $303$ and B has $192$; at $n = 7$, A has $353$ and B has $384$.",
     "options": [
      "Fixed gains of $50$ are passed by gains that keep doubling.",
      "The same start does not mean the same kind of change.",

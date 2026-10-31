@@ -93,3 +93,5 @@
 .sb-sec{stroke:var(--sb-c);stroke-width:2.4;stroke-dasharray:7 4;}
 .sb-dtable{margin:0 0 6px;flex:none;}
 .sb-dtable table{font-size:14px;}
+.sb-params .sb-c-T{color:#005A8C;} .sb-params .sb-c-a{color:#A84500;}
+:root[data-theme="dark"] .sb-params .sb-c-T{color:var(--sb-T);} :root[data-theme="dark"] .sb-params .sb-c-a{color:var(--sb-a);}

@@ -63,7 +63,7 @@
    "prompt": "<b>Find</b> the values of $a$, $b$ and $c$ as decimal approximations.",
    "rubric": [
     {
-     "point": "$a = -0.367...$, $b = 3.633...$, $c = 0.933...$ (each correct to three decimal places; all three needed)",
+     "point": "$a = -0.366667...$, $b = 3.633333...$, $c = 0.933333...$, each correct to three decimal places (rounded or truncated); all three needed",
      "accept": [
       "$a = -0.366667$, $b = 3.633333$, $c = 0.933333$",
       "values truncated to three decimal places",

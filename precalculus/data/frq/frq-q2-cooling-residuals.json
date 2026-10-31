@@ -122,7 +122,7 @@
     {
      "point": "(ii) $L$ is decreasing without bound: it falls below the room temperature of $22$ degrees after about $t = 31.0$ minutes, which a cooling cup in a $22$-degree room cannot do",
      "accept": [
-      "\"$L(60) = -40.960$, below the room\\'s $22$ degrees\"",
+      "\"$L(60) = -40.960$, below the room's $22$ degrees\"",
       "a reason tied to the room temperature and the line decreasing forever"
      ]
     }

@@ -434,7 +434,7 @@
    "practice": "3.B",
    "level": "analyze",
    "diff": 2,
-   "q": "In the model $L(t) = 20 - 2t$ for the candle\\'s height in cm after $t$ hours, what does the number $-2$ mean?",
+   "q": "In the model $L(t) = 20 - 2t$ for the candle's height in cm after $t$ hours, what does the number $-2$ mean?",
    "type": "single",
    "options": [
     "The candle has burned down to nothing after $2$ hours",

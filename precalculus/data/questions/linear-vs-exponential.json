@@ -391,19 +391,18 @@
    "options": [
     "$f(x) = 3(2)^x$",
     "$g(x) = 2x^3$",
-    "$h(x) = 5(0.4)^x$",
+    "$h(x) = 5x^{0.4}$",
     "$k(x) = 7(1)^x$"
    ],
    "correct": [
-    0,
-    2
+    0
    ],
    "why": {
     "correct": "An exponential function has the form $ab^x$ with $a \\ne 0$, $b > 0$ and $b \\ne 1$: the input is in the exponent and the base is a positive constant other than $1$.",
     "options": [
      "Base $2$, input in the exponent.",
      "The input is the base here; this is a cubic.",
-     "Base $0.4$: exponential decay.",
+     "The input is the base, raised to a constant power: not exponential.",
      "Base $1$ gives the constant function $7$."
     ]
    }

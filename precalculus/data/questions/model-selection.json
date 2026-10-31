@@ -393,7 +393,7 @@
    "q": "A linear model $T(m) = 90 - 4m$ gives the temperature, in degrees Celsius, of soup $m$ minutes after it is set on a counter in a $22$-degree room. Which restriction on the domain does the context suggest?",
    "type": "single",
    "options": [
-    "$0 \\le m \\le 17$, because after that the model gives temperatures below the room\\'s",
+    "$0 \\le m \\le 17$, because after that the model gives temperatures below the room's",
     "$0 \\le m \\le 22.5$, because $T$ is $0$ at $m = 22.5$",
     "$m \\ge 0$, because time is not negative",
     "$0 \\le m \\le 90$, because the soup starts at $90$ degrees"

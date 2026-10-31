@@ -1,0 +1,19 @@
+{
+ "about": "Symbolic steps (docs/apprecalc-spec.md section 6; builder T2): the Q4 drill. Every problem, key and slip comes from precalculus/assets/tools/math/symbolic-steps.js; contexts unlock with their topics (the trig ones with Unit 3). Checked by scripts/lib/apprecalc-tool-checks/symbolic-steps.mjs.",
+ "slug": "symbolic-steps",
+ "kind": "drill",
+ "topic": "exp-log-equations",
+ "intro": "<p>The symbolic manipulations of free-response question 4, one step at a time: rewrite as a single power, a single logarithm, a single sine or tangent; solve exponential and logarithmic equations and keep only the solutions the domain allows; solve an equation quadratic in $e^x$; evaluate inverse trig in its principal range; find every solution of a trig equation in $[0, 2\\pi)$. In Explore, type an expression and a rewrite of it: the graph shows where the two are equal, where they differ, and where only one is defined.</p>",
+ "howItWorksTitle": "How the steps are checked",
+ "howItWorks": "<ul><li><b>By value.</b> A typed expression is checked by evaluating it and the key at many points of the problem's domain, so any equal form counts (type <code>x^2(x+1)/3</code>, <code>4x-6</code>, <code>2cos(x)^2</code>).</li><li><b>On the domain.</b> Where the key is defined and your answer is not, they differ: $\\ln(x^2)$ and $2\\ln x$ are not the same on all real $x$.</li><li><b>A single term.</b> When the answer must be one log, one power or one trig function, the box asks for its inside: the expression is $\\ln(B)$, type $B$.</li><li><b>Exact numbers.</b> Type <code>ln(3)</code>, <code>pi/6</code>, <code>-sqrt(3)/2</code>, <code>2pi/3</code>, or a decimal correct to three places.</li><li><b>Named slips.</b> A log rule run the wrong way, a power of a power added instead of multiplied, the root that $e^x > 0$ or the domain of a log rejects, an angle outside the principal range, $\\tan^{-1}$ read as $\\frac{1}{\\tan}$, a missed second solution.</li></ul>",
+ "contexts": [
+  { "id": "single-power", "topic": "exponential-manipulation", "kind": "single-power" },
+  { "id": "single-log", "topic": "logarithmic-manipulation", "kind": "single-log" },
+  { "id": "exp-eq", "topic": "exp-log-equations", "kind": "exp-eq" },
+  { "id": "log-eq", "topic": "exp-log-equations", "kind": "log-eq" },
+  { "id": "quad-ex", "topic": "exp-log-equations", "kind": "quad-ex" },
+  { "id": "inv-trig", "topic": "inverse-trig", "kind": "inv-trig" },
+  { "id": "trig-eq", "topic": "trig-equations", "kind": "trig-eq" },
+  { "id": "trig-id", "topic": "trig-identities", "kind": "trig-id" }
+ ]
+}

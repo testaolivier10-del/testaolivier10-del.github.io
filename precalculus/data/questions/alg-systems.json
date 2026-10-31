@@ -210,7 +210,7 @@
    "practice": "3.C",
    "level": "analyze",
    "diff": 2,
-   "q": "A student solves a system for a model\\'s constants, rounds $a$ to $-0.31$, and then uses that value to find $b$. Why is this a problem?",
+   "q": "A student solves a system for a model's constants, rounds $a$ to $-0.31$, and then uses that value to find $b$. Why is this a problem?",
    "type": "single",
    "options": [
     "Rounded values lose their negative sign",

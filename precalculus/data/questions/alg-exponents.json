@@ -250,7 +250,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "When you multiply powers of the same base, keep the base and add the exponents: $2^3 \\cdot 2^4 = 2^7 = 128$. The student\\'s $4^7 = 16{,}384$ is far too large.",
+    "correct": "When you multiply powers of the same base, keep the base and add the exponents: $2^3 \\cdot 2^4 = 2^7 = 128$. The student's $4^7 = 16{,}384$ is far too large.",
     "options": [
      "Multiplying exponents is for a power of a power, like $(2^3)^4$.",
      "Keep the base, add the exponents.",

@@ -1,0 +1,38 @@
+<p>Divide one polynomial by another and you get a <b>rational function</b>. Its ends can do three things: level off at a constant, shrink to $0$, or keep growing, sometimes along a slanted line. This topic predicts which from the leading terms and writes the answer in limit notation.</p>
+
+<h2>Rational functions</h2>
+<p>A rational function has the form $r(x) = \frac{p(x)}{q(x)}$, where $p$ and $q$ are polynomials. Examples: $\frac{3x^2 - 3}{x^2 + 2}$, $\frac{5x + 2}{x^2 + 1}$, average cost $C(n) = \frac{500 + 4n}{n}$.</p>
+
+<h2>The quotient of the leading terms</h2>
+<p>Topic 1.6 showed that for large $|x|$ a polynomial behaves like its leading term. Apply that to the top and bottom separately, and a rational function behaves like the quotient of the two leading terms.</p>
+<table class="compare">
+<thead><tr><th scope="col">Degrees</th><th scope="col">Quotient of leading terms</th><th scope="col">End behavior</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><td>top less than bottom</td><td>goes to $0$</td><td>horizontal asymptote $y = 0$</td><td>$\frac{5x + 2}{x^2 + 1} \sim \frac{5}{x}$</td></tr>
+<tr><td>equal</td><td>a constant $\frac{a}{b}$</td><td>horizontal asymptote $y = \frac{a}{b}$</td><td>$\frac{3x^2 - 3}{x^2 + 2} \sim 3$</td></tr>
+<tr><td>top one more</td><td>linear, $mx$</td><td>slant asymptote</td><td>$\frac{x^2 + 3x + 1}{x} \sim x$</td></tr>
+<tr><td>top two or more more</td><td>$x^2$ or higher</td><td>like a polynomial</td><td>$\frac{x^3 + 1}{x - 2} \sim x^2$</td></tr>
+</tbody>
+</table>
+
+<h2>Horizontal asymptotes</h2>
+<p>If $\lim_{x \to \infty} r(x) = c$ or $\lim_{x \to -\infty} r(x) = c$, the line $y = c$ is a <b>horizontal asymptote</b>: the graph gets as close to it as you like far out.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Describe the end behavior of $s(x) = \frac{3x^2 - 3}{x^2 + 2}$.</p>
+<p>Leading terms: $\frac{3x^2}{x^2} = 3$. So $\lim_{x \to \infty} s(x) = 3$ and $\lim_{x \to -\infty} s(x) = 3$; the horizontal asymptote is $y = 3$.</p>
+<p>Which side? $3x^2 - 3 = 3(x^2 + 2) - 9$, so $s(x) = 3 - \frac{9}{x^2 + 2}$, always a little below $3$.</p>
+</div>
+<figure id="fig-ha" data-fig="rational-end-behavior-ha"><figcaption>$\frac{2x^2 - 8}{x^2 + 1}$ approaches $y = 2$ at both ends.</figcaption></figure>
+<p>An asymptote describes the ends, not the middle. A graph may cross its horizontal asymptote: $\frac{5x + 2}{x^2 + 1}$ is $0$ at $x = -0.4$ and still has the asymptote $y = 0$.</p>
+
+<h2>Slant asymptotes</h2>
+<p>When the top's degree is one more than the bottom's, the quotient of the leading terms is linear and the graph approaches a slanted line. To find it, rewrite the function as a line plus a fraction that goes to $0$.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the slant asymptote of $k(x) = \frac{x^2 + 2x + 3}{x + 1}$.</p>
+<p>Write the top around the bottom: $x^2 + 2x + 3 = (x + 1)^2 + 2$.</p>
+<p>So $k(x) = x + 1 + \frac{2}{x + 1}$. As $x \to \pm\infty$, $\frac{2}{x + 1} \to 0$, and the graph approaches $y = x + 1$.</p>
+</div>
+<p>With a single-term denominator it is quicker: $\frac{x^2 + 3x + 1}{x} = x + 3 + \frac{1}{x}$, slant asymptote $y = x + 3$.</p>
+
+<h2>In context</h2>
+<p>The poster shop's average cost $C(n) = \frac{500 + 4n}{n} = 4 + \frac{500}{n}$ has $\lim_{n \to \infty} C(n) = 4$. In words: for very large orders, the average cost per poster gets close to \$4, because the \$500 setup is spread over more and more posters.</p>

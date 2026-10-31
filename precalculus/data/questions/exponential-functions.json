@@ -338,7 +338,7 @@
    "practice": "2.A",
    "level": "apply",
    "diff": 1,
-   "q": "A town\\'s population grows by $4\\%$ each year. What is the growth factor per year?",
+   "q": "A town's population grows by $4\\%$ each year. What is the growth factor per year?",
    "type": "numeric",
    "numeric": {
     "answer": 1.04,

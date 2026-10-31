@@ -122,3 +122,25 @@ The polar rates drill asks whether the distance between the point (r, θ) and th
 on an interval where r keeps one sign and one direction (r = 0 is allowed at an end). Its keys follow the CED rule
 (same signs of r and its change: increasing). A teacher may want the "r < 0" case (the main trap) weighted more or
 less than the 40% it gets now.
+
+### tools-t3-diagnose: shared slip notes use calculus words (open, 2026-10-31)
+
+`ApPrecalcMath.diagnose` (`precalculus/assets/tools/pcalc-tool-math.js`, shared, not edited by builder T3) still
+carries AP® Calculus AB's generic notes: "a minus sign from a derivative", "the antiderivative of x", "as in a volume
+of revolution". A drill shows them when no authored slip matches. Proposed wording: sign "Check the order of a
+subtraction or a lost minus sign."; factor of 2 "Check a ½ or a doubled term."; factor of π "Check for a missing or
+extra π." The unit circle and sinusoid builder author the sign slip on every step where it can happen, so they rarely
+reach the generic note.
+
+### tools-t3-wording: "not defined" for tan at π/2 (open, 2026-10-31)
+
+The drill checker (`_drills.mjs`) refuses the word "undefined" in any step text, so the unit circle says "tan θ is not
+defined" (OP is vertical, no slope). A teacher may prefer "undefined"; changing it needs the shared check to allow the
+word in trainer text.
+
+### tools-t3-models: sinusoid builder simplifications (open, 2026-10-31)
+
+Sinusoid builder: the tide's period is 12 hours (real semidiurnal tides run about 12 h 25 min); the temperature
+scene's table is rounded to one decimal and a point counts as on the curve within 3% of the range plus 0.06 °C; the
+Explore sliders keep a ≥ 0 (a flipped model is reached with the shift, or with cosine under Details). Drill models are
+graded by evaluation on [0, 2·period], so any equivalent sine or cosine form is right. Confirm these are acceptable.

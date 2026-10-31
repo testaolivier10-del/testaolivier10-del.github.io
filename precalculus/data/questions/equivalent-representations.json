@@ -327,7 +327,7 @@
    "level": "analyze",
    "diff": 2,
    "stimulus": "equivalent-representations-s2",
-   "q": "Which row of Pascal\\'s triangle gives the coefficients of $(a + b)^7$, continuing the table?",
+   "q": "Which row of Pascal's triangle gives the coefficients of $(a + b)^7$, continuing the table?",
    "type": "single",
    "options": [
     "$1, 7, 21, 35, 35, 21, 7, 1$",
@@ -532,7 +532,7 @@
    ],
    "correct": 3,
    "why": {
-    "correct": "The powers of $x$ run from $8$ down to $0$, which is $9$ terms; row $8$ of Pascal\\'s triangle has $9$ entries.",
+    "correct": "The powers of $x$ run from $8$ down to $0$, which is $9$ terms; row $8$ of Pascal's triangle has $9$ entries.",
     "options": [
      "Row $n$ has $n + 1$ entries, one more than the power.",
      "Doubling the power does not count terms.",

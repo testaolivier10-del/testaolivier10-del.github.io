@@ -1,0 +1,504 @@
+{
+ "stimuli": {
+  "rational-zeros-s1": {
+   "kind": "table",
+   "title": "Test values for a sign chart",
+   "table": {
+    "caption": "Values of r(x) = (x - 2)(x + 3)/(x + 1) at one test input in each interval between -3, -1 and 2",
+    "cols": [
+     "Interval",
+     "$(-\\infty, -3)$",
+     "$(-3, -1)$",
+     "$(-1, 2)$",
+     "$(2, \\infty)$"
+    ],
+    "rows": [
+     [
+      "Test input $x$",
+      "-4",
+      "-2",
+      "0",
+      "3"
+     ],
+     [
+      "$r(x)$",
+      "-2",
+      "4",
+      "-6",
+      "1.5"
+     ],
+     [
+      "Sign of $r(x)$",
+      "$-$",
+      "$+$",
+      "$-$",
+      "$+$"
+     ]
+    ]
+   }
+  },
+  "rational-zeros-s2": {
+   "kind": "graph",
+   "title": "The graph of $q(x) = \\frac{x^3 - 4x + 1}{x^2 + 2}$",
+   "plot": {
+    "label": "Graph of q(x) = (x^3 - 4x + 1)/(x^2 + 2) for x from -5 to 5: it crosses the x-axis three times, near -2.1, 0.25 and 1.9",
+    "x": [
+     -5,
+     5
+    ],
+    "y": [
+     -4,
+     4
+    ],
+    "xStep": 1,
+    "yStep": 1,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "(x^3 - 4x + 1)/(x^2 + 2)",
+      "label": "q"
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "pcalc-rational-zeros-1",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-zeros-s1",
+   "q": "The table uses $r(x) = \\frac{(x - 2)(x + 3)}{x + 1}$. What are the real zeros of $r$?",
+   "type": "single",
+   "options": [
+    "$x = -3$ and $x = 2$",
+    "$x = -3$, $x = -1$ and $x = 2$",
+    "$x = 3$ and $x = -2$",
+    "$x = -1$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The real zeros of a rational function are the zeros of the numerator that are in its domain: $x = 2$ and $x = -3$. The denominator's zero, $-1$, is excluded.",
+    "options": [
+     "Right: the numerator is $0$ there, and both are in the domain.",
+     "At $x = -1$ the denominator is $0$: $r(-1)$ is undefined, not $0$.",
+     "The factor $x - 2$ is $0$ at $x = 2$, and $x + 3$ at $x = -3$.",
+     "$-1$ is the input not in the domain."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-2",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-zeros-s1",
+   "q": "The table uses $r(x) = \\frac{(x - 2)(x + 3)}{x + 1}$. The sign of $r$ changes at $x = -1$, though $r(-1)$ is not $0$. Why can it change there?",
+   "type": "single",
+   "options": [
+    "Because $r(-1)$ is really equal to $0$",
+    "Because the denominator changes sign at $x = -1$",
+    "Because $-1$ is between the zeros $-3$ and $2$",
+    "Because the test values were chosen badly"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A rational function can change sign at a zero of its numerator or at a zero of its denominator. Both kinds of input split the number line for a sign chart.",
+    "options": [
+     "At $x = -1$ the denominator is $0$, so $r(-1)$ is undefined.",
+     "Right: $x + 1$ is negative on the left and positive on the right, flipping the sign of $r$.",
+     "Being between zeros does not by itself flip a sign; the denominator's factor does.",
+     "The test values are fine; the sign really does change at $-1$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-3",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rational-zeros-s1",
+   "q": "The table uses $r(x) = \\frac{(x - 2)(x + 3)}{x + 1}$. Solve $r(x) > 0$.",
+   "type": "single",
+   "options": [
+    "$(-3, -1) \\cup (2, \\infty)$",
+    "$(-\\infty, -3) \\cup (-1, 2)$",
+    "$[-3, -1] \\cup [2, \\infty)$",
+    "$(2, \\infty)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the signs: $+$ on $(-3, -1)$ and $(2, \\infty)$. Strict inequality, so the zeros are left out; $-1$ is never included because it is not in the domain.",
+    "options": [
+     "Right: the intervals marked $+$, with the endpoints left out because $r$ must be strictly positive.",
+     "These are the intervals where $r$ is negative.",
+     "At $-3$ and $2$, $r = 0$, which is not $> 0$; and $-1$ is not in the domain.",
+     "The interval $(-3, -1)$ is positive too: $r(-2) = 4$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-4",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-zeros-s1",
+   "q": "The table uses $r(x) = \\frac{(x - 2)(x + 3)}{x + 1}$. Solve $r(x) \\le 0$.",
+   "type": "single",
+   "options": [
+    "$(-\\infty, -3) \\cup (-1, 2)$",
+    "$(-\\infty, -3] \\cup [-1, 2]$",
+    "$(-\\infty, -3] \\cup (-1, 2]$",
+    "$[-3, -1) \\cup [2, \\infty)$"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Negative on $(-\\infty, -3)$ and $(-1, 2)$; zero at $-3$ and $2$ (included for $\\le$); undefined at $-1$ (excluded).",
+    "options": [
+     "$\\le$ includes the zeros: $r(-3) = r(2) = 0$.",
+     "$x = -1$ is not in the domain, so it takes a parenthesis.",
+     "Right: the negative intervals plus the zeros, without $-1$.",
+     "These are where $r \\ge 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-5",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-zeros-s1",
+   "q": "The table uses $r(x) = \\frac{(x - 2)(x + 3)}{x + 1}$. Find $r(1)$.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$(1 - 2) = -1$, so the numerator is $-4$: $\\frac{-4}{2} = -2$."
+     },
+     {
+      "value": -4,
+      "why": "Divide the numerator by $x + 1 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$r(1) = \\frac{(1 - 2)(1 + 3)}{1 + 1} = \\frac{-4}{2} = -2$, negative, as the chart says for $(-1, 2)$."
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-6",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rational-zeros-s2",
+   "calc": true,
+   "q": "Let $q(x) = \\frac{x^3 - 4x + 1}{x^2 + 2}$. How many real zeros does $q$ have?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "why": "Widen the window: the graph crosses the axis three times between $-3$ and $3$."
+     },
+     {
+      "value": 2,
+      "why": "There is a crossing near $x = 0.25$ as well; zoom in near the origin."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^2 + 2$ is never $0$, so the zeros of $q$ are the zeros of $x^3 - 4x + 1$. Graphing shows three crossings, near $-2.115$, $0.254$ and $1.861$."
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-7",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rational-zeros-s2",
+   "calc": true,
+   "q": "Let $q(x) = \\frac{x^3 - 4x + 1}{x^2 + 2}$. Find the largest zero of $q$, to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": 1.8608058531117035,
+    "mistakes": [
+     {
+      "value": -2.115,
+      "why": "That is the smallest zero; the largest is near $x = 1.861$."
+     },
+     {
+      "value": 0.254,
+      "why": "That is the middle zero; the largest is near $1.861$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = q(x)$ and use the zero feature near $x = 2$: $x \\approx 1.861$ (the true value is $1.86080...$, so $1.860$ truncated is also accepted)."
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-8",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rational-zeros-s2",
+   "calc": true,
+   "q": "Let $q(x) = \\frac{x^3 - 4x + 1}{x^2 + 2}$. Which describes where $q(x) > 0$?",
+   "type": "single",
+   "options": [
+    "$(-2.115, 0.254) \\cup (1.861, \\infty)$",
+    "$(-\\infty, -2.115) \\cup (0.254, 1.861)$",
+    "$(1.861, \\infty)$",
+    "$(-2.115, \\infty)$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The denominator is always positive, so $q$ has the sign of $x^3 - 4x + 1$. Its zeros (about $-2.115$, $0.254$, $1.861$) split the line; test $q(0) = 0.5$ and $q(1) < 0$.",
+    "options": [
+     "Right: the graph is above the axis between the first two zeros and after the third.",
+     "These are where the graph is below the axis.",
+     "$q(0) = 0.5 > 0$, so part of the solution is between $-2.115$ and $0.254$.",
+     "Between $0.254$ and $1.861$ the graph dips below the axis: $q(1) = -\\frac{2}{3}$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-9",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "rational-zeros-s2",
+   "calc": true,
+   "q": "Let $q(x) = \\frac{x^3 - 4x + 1}{x^2 + 2}$. Solve $q(x) = 0.5$. Give the smallest solution to three decimal places.",
+   "type": "numeric",
+   "numeric": {
+    "answer": -1.7655644370746373,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "$x = 0$ is a solution, but not the smallest: the graph meets $y = 0.5$ three times."
+     },
+     {
+      "value": -1.76,
+      "why": "Not accurate to three decimal places: the value is $-1.76556...$, so $-1.765$ or $-1.766$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Graph $y = q(x)$ and $y = 0.5$ and find every intersection: $x \\approx -1.766$, $x = 0$ and $x \\approx 2.266$. The smallest is about $-1.766$ (exactly $\\frac{0.5 - \\sqrt{16.25}}{2}$)."
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-10",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What are the real zeros of $f(x) = \\frac{x^2 - 4}{x - 2}$?",
+   "type": "single",
+   "options": [
+    "$x = 2$ and $x = -2$",
+    "$x = -2$",
+    "$x = 2$",
+    "$f$ has no real zeros"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A zero must be in the domain. $x^2 - 4 = 0$ at $x = \\pm 2$, but $x = 2$ is excluded, leaving $x = -2$.",
+    "options": [
+     "$x = 2$ makes the denominator $0$, so it is not in the domain and cannot be a zero.",
+     "Right: the numerator is $0$ at $\\pm 2$, but only $-2$ is in the domain.",
+     "$f(2)$ is undefined, not $0$.",
+     "$f(-2) = \\frac{0}{-4} = 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-11",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the real zero of $g(x) = \\frac{2x - 5}{x + 4}$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": "5/2",
+    "mistakes": [
+     {
+      "value": -4,
+      "why": "$-4$ makes the denominator $0$; it is not in the domain."
+     },
+     {
+      "value": 5,
+      "why": "$2x - 5 = 0$ gives $2x = 5$; divide by $2$ as well: $x = \\frac{5}{2}$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Set the numerator to $0$: $2x - 5 = 0$, $x = \\frac{5}{2}$. It is in the domain ($\\frac{5}{2} \\ne -4$)."
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-12",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are real zeros of $h(x) = \\frac{x^2 - 9}{x^2 + 3x}$? Select all that apply.",
+   "type": "multi",
+   "options": [
+    "$3$",
+    "$-3$",
+    "$0$",
+    "$9$"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Zeros of the numerator: $\\pm 3$. Excluded inputs: $0$ and $-3$. The only real zero is $3$.",
+    "options": [
+     "Yes: the numerator is $0$ and the denominator is $18$.",
+     "No: the denominator $x(x + 3)$ is $0$ at $-3$, so $-3$ is not in the domain.",
+     "No: $0$ makes the denominator $0$.",
+     "No: $h(9) = \\frac{72}{108} \\ne 0$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-13",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solve $\\frac{x - 4}{x + 2} \\ge 0$.",
+   "type": "single",
+   "options": [
+    "$(-\\infty, -2] \\cup [4, \\infty)$",
+    "$(-2, 4]$",
+    "$[4, \\infty)$",
+    "$(-\\infty, -2) \\cup [4, \\infty)$"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Split at $-2$ and $4$. Test $x = -3$: $\\frac{-7}{-1} > 0$. $x = 0$: $-2 < 0$. $x = 5$: $\\frac{1}{7} > 0$. Include $4$ (value $0$), exclude $-2$.",
+    "options": [
+     "At $x = -2$ the expression is undefined, so $-2$ takes a parenthesis.",
+     "On $(-2, 4)$ the top is negative and the bottom positive: the quotient is negative.",
+     "For $x < -2$ both factors are negative, so the quotient is positive too.",
+     "Right: positive outside $[-2, 4]$, zero at $4$, undefined at $-2$."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-14",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A medicine's concentration is $C(t) = \\frac{12t}{t + 2}$ milligrams per liter, $t > 0$ hours after a dose. Solve $C(t) \\ge 8$. What is the earliest time the concentration reaches $8$?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 4,
+    "unit": "hours",
+    "units": [
+     "hour",
+     "h"
+    ],
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "$8$ is the concentration; solve for $t$: $12t \\ge 8t + 16$."
+     },
+     {
+      "value": 2,
+      "why": "$12t \\ge 8(t + 2)$ gives $4t \\ge 16$, so $t \\ge 4$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For $t > 0$ the denominator is positive, so multiply through: $12t \\ge 8t + 16$, $t \\ge 4$. The concentration reaches $8$ milligrams per liter at $t = 4$ hours and stays at least $8$ after."
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-15",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "3.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the sign of $k(x) = \\frac{(x - 1)^2}{x + 5}$ for $x > -5$, $x \\ne 1$?",
+   "type": "single",
+   "options": [
+    "Negative",
+    "Positive",
+    "It changes at $x = 1$",
+    "Zero"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A squared factor does not change sign at its zero. For $x > -5$ both top and bottom are positive (except at $x = 1$, where $k = 0$).",
+    "options": [
+     "For $x > -5$ the denominator is positive, and a square is never negative.",
+     "Right: $(x - 1)^2 > 0$ and $x + 5 > 0$.",
+     "$(x - 1)^2$ has an even power, so the sign does not change at $1$.",
+     "$k$ is $0$ only at $x = 1$, which is excluded here."
+    ]
+   }
+  },
+  {
+   "id": "pcalc-rational-zeros-16",
+   "unit": "unit-1",
+   "topic": "rational-zeros",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many real zeros does $m(x) = \\frac{x^3 - x}{x^2 + 1}$ have?",
+   "type": "numeric",
+   "numeric": {
+    "answer": 3,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "$x^3 - x = x(x - 1)(x + 1)$ has three zeros, and $x^2 + 1$ is never $0$, so none is excluded."
+     },
+     {
+      "value": 1,
+      "why": "Factor fully: $x(x^2 - 1) = x(x - 1)(x + 1)$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$x^3 - x = x(x - 1)(x + 1)$, zeros $-1$, $0$, $1$. The denominator $x^2 + 1$ is never $0$, so all three are in the domain."
+   }
+  }
+ ]
+}

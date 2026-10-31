@@ -155,7 +155,7 @@
     ]
    },
    "why": {
-    "correct": "Graph $y = D(t)$ and $y = 50$ and find the intersection (or solve $D(t) - 50 = 0$ with the calculator\\'s solver): $t = 7.090348...$, about $7.090$ hours."
+    "correct": "Graph $y = D(t)$ and $y = 50$ and find the intersection (or solve $D(t) - 50 = 0$ with the calculator's solver): $t = 7.090348...$, about $7.090$ hours."
    }
   },
   {
@@ -437,7 +437,7 @@
    "practice": "3.B",
    "level": "analyze",
    "diff": 2,
-   "q": "The model $S(t) = 4.2(1.035)^t$ gives a city\\'s average home price, in hundreds of thousands of dollars, $t$ years after 2020. What does $1.035$ mean?",
+   "q": "The model $S(t) = 4.2(1.035)^t$ gives a city's average home price, in hundreds of thousands of dollars, $t$ years after 2020. What does $1.035$ mean?",
    "type": "single",
    "options": [
     "The price increases by $\\$1.035$ each year",

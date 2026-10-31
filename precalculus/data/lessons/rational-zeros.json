@@ -1,0 +1,71 @@
+{
+ "topic": "rational-zeros",
+ "hook": "A dose of medicine works only while its concentration stays above a threshold. Asking \"when is the concentration at least $8$?\" is solving an inequality with a rational function. The answer comes from where the function is zero, where it is undefined, and its sign in between.",
+ "prereq": [
+  {
+   "q": "What is $\\lim_{x \\to \\infty} \\frac{5x + 2}{x^2 + 1}$?",
+   "options": [
+    "$0$",
+    "$5$",
+    "$\\infty$",
+    "$2$"
+   ],
+   "correct": 0,
+   "why": "The denominator has the higher degree.",
+   "review": "rational-end-behavior"
+  },
+  {
+   "q": "Solve $3 - 2x > 7$.",
+   "options": [
+    "$(-\\infty, -2)$",
+    "$(-2, \\infty)$",
+    "$(-\\infty, 2)$",
+    "$(-\\infty, -2]$"
+   ],
+   "correct": 0,
+   "why": "$-2x > 4$, flip: $x < -2$.",
+   "review": "alg-intervals"
+  }
+ ],
+ "figure": {
+  "figure": "rational-zeros-sign",
+  "caption": "$r(x) = \\frac{(x + 1)(x - 3)}{x - 1}$: zeros at $-1$ and $3$; the dashed line marks $x = 1$, not in the domain. The sign changes at all three inputs."
+ },
+ "chain": [
+  {
+   "cause": "The numerator of $r$ is $0$ at an input in the domain",
+   "effect": "that input is a real zero of $r$"
+  },
+  {
+   "cause": "The denominator is $0$ at an input",
+   "effect": "that input is not in the domain, so it is never a zero"
+  },
+  {
+   "cause": "You mark zeros and excluded inputs on a number line",
+   "effect": "they split it into intervals where $r$ keeps one sign: test one input in each"
+  },
+  {
+   "cause": "The inequality is $\\le$ or $\\ge$",
+   "effect": "include the zeros with brackets; excluded inputs always get parentheses"
+  }
+ ],
+ "ideas": [
+  "Real zeros of $\\frac{p(x)}{q(x)}$: the zeros of $p$ that are in the domain (not zeros of $q$).",
+  "A <b>sign chart</b> splits the line at the zeros of both numerator and denominator; one test value per interval gives its sign.",
+  "Solve a <b>rational inequality</b> from the chart; include zeros only for $\\le$ or $\\ge$, never an excluded input.",
+  "With a calculator: graph, find every zero, then read the sign between them."
+ ],
+ "misconception": {
+  "wrong": "$\\frac{x^2 - 4}{x - 2}$ has zeros $2$ and $-2$, because $x^2 - 4 = 0$ there.",
+  "right": "At $x = 2$ the denominator is $0$, so $2$ is not in the domain and not a zero. The only zero is $-2$."
+ },
+ "check": [
+  "pcalc-rational-zeros-1",
+  "pcalc-rational-zeros-3",
+  "pcalc-rational-zeros-4",
+  "pcalc-rational-zeros-7",
+  "pcalc-rational-zeros-8",
+  "pcalc-rational-zeros-11"
+ ],
+ "summary": "The real zeros of a rational function are the numerator's zeros that are in its domain. Zeros and excluded inputs split the number line; a test value in each interval gives the sign there. Solve a rational inequality from that sign chart, including zeros only for $\\le$ or $\\ge$ and never an excluded input."
+}
