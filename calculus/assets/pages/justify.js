@@ -22,8 +22,7 @@
    when ApCalcCore.locked() (nothing is locked before launch). Self-checks go
    to apcalc_prefs_v1.justify { id: { got, of, best, ts } }. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');

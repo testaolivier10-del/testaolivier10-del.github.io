@@ -1,5 +1,5 @@
-/* The interval answer type (docs/apcalcbc-architecture.md, "interval items") in AB's
-   question engine, calculus/assets/calc-questions.js: interval notation and inequalities
+/* The interval answer type (docs/apcalcbc-architecture.md, "interval items"):
+   calculus-bc/assets/cbc-interval.js, called by AB's question engine (calc-questions.js): interval notation and inequalities
    read alike; the two endpoints and the two brackets are graded separately; each slip is
    named (an endpoint not tested, the radius for the interval, the wrong center, a squared
    radius); exact and three-decimal endpoints; all reals and a single point; authored slips. */
@@ -10,7 +10,7 @@ import vm from 'node:vm';
 
 const ctx = { Math, Number, String, Array, Object, JSON, Error, isFinite, isNaN, parseFloat, RegExp, Infinity, NaN };
 ctx.window = ctx; vm.createContext(ctx);
-for (const f of ['calc-expr.js', 'calc-questions.js']) vm.runInContext(readFileSync(`calculus/assets/${f}`, 'utf8'), ctx);
+for (const f of ['calculus/assets/calc-expr.js', 'calculus-bc/assets/cbc-interval.js', 'calculus/assets/calc-questions.js']) vm.runInContext(readFileSync(f, 'utf8'), ctx);
 const Q = ctx.ApCalcQuestions;
 const item = I => ({ type: 'interval', interval: I });
 const g = (I, s) => Q.grade(item(I), s);
@@ -53,7 +53,10 @@ test('an authored slip is matched first', () => {
   const r = g(I, '1 < x < 5'); assert.equal(r.correct, false); assert.equal(r.mistake.why, 'Authored: test x = 1.');
 });
 
-test('AB items grade exactly as before (the interval branch is BC-only data)', () => {
+test('AB items grade exactly as before; without BC\'s file an interval item is not gradable', () => {
+  const c2 = { Math, Number, String, Array, Object, JSON, Error, isFinite, isNaN, parseFloat, RegExp, Infinity, NaN }; c2.window = c2; vm.createContext(c2);
+  for (const f of ['calculus/assets/calc-expr.js', 'calculus/assets/calc-questions.js']) vm.runInContext(readFileSync(f, 'utf8'), c2);
+  assert.equal(c2.ApCalcQuestions.grade(item({ lo: '1', hi: '5' }), '(1, 5)').valid, false);
   assert.equal(Q.grade({ type: 'single', correct: 2 }, 2).correct, true);
   assert.equal(Q.grade({ type: 'numeric', numeric: { answer: 'pi/4' } }, '0.785').correct, true);
 });

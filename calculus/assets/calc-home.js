@@ -12,8 +12,7 @@
    Kept out of an inline <script> because it builds href="..." by
    concatenation, which the site's link checker scans .html files for. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var HP = window.HubProgress, A = window.ApCalcCore, CUR = window.ApCalcCurriculum;
   var base = window.ApCalcBase || '';

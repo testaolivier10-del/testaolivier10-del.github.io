@@ -4,8 +4,7 @@
    window.ApCalcBase (the path back to calculus/). Also wires [data-print] and
    [data-copy] (Copy link) buttons without an inline handler. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var base = window.ApCalcBase || '';
   var section = window.ApCalcSection || '';

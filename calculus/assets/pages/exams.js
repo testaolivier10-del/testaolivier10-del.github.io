@@ -54,8 +54,7 @@
    the cram kit instead: Premium (ApCalcCore.allowed('cram')), and they never
    use the free exam. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');

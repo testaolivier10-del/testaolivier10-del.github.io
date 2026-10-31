@@ -11,8 +11,7 @@
    Exam date: assets/exam-date.js counts down to the course's default exam day until the student sets their own
    (apcalc_exam_date); the cram kit (cram.html) counts back from the same date. Every bar carries its number as text. */
 document.addEventListener('DOMContentLoaded', function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var app = document.getElementById('app');
   var M = window.LevlDashMastery, A = window.ApCalcCore, CU = window.ApCalcCurriculum;

@@ -4,8 +4,7 @@
    once every check question has been answered. It also turns the page, which
    holds every part in one scroll, into one part per step. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   /* The stepped view: one part at a time, a step list in the rail, Previous and
      Continue, the part in the URL hash (#chain opens that step) and the last

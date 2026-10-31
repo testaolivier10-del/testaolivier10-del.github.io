@@ -381,8 +381,12 @@ const SHELL_BUDGETS = [
      curriculum with every topic live and calc-math.js breaking long inline
      chains at "=" for phones; measured 67.5 KB.
      68 -> 68.5 (polish 2026-10-17, D1): the flag hook in calc-questions.js and the
-     Flagged practice mode and exam flag list; measured 68.1 KB. */
-  ['calculus', 68.5],
+     Flagged practice mode and exam flag list; measured 68.1 KB.
+     68.5 -> 69.5 for AP® Calculus BC (docs/apcalcbc-spec.md, Phase 0): BC pages run this same
+     runtime, so each file reads its course from window.ApCalcCourse (key, name, id prefixes, FRQ
+     types, no band or score link) and the question engine calls BC's interval grader; the grader
+     itself is BC's own file (calculus-bc/assets/cbc-interval.js). Measured 69.4 KB. */
+  ['calculus', 69.5],
   /* AP® Statistics (statistics/, a fork of the AP® Calculus AB runtime),
      plus what every statistics question page needs (docs/apstat-spec.md
      section 7): the distributions library (stat-dist.js, 6.4 KB gzipped:
@@ -414,6 +418,10 @@ const SHELL_BUDGETS = [
      typed setups). Environmental Science's 85.5 is the reference until it is
      measured in Phase 0. */
   ['psychology', 85.5],
+  /* AP® Calculus BC (calculus-bc/, docs/apcalcbc-architecture.md): its own files only, the
+     curriculum, the accent (cbc.css) and the interval grader (cbc-interval.js); the runtime it
+     runs is AB's and counts in the calculus shell above. Measured before any unit is published. */
+  ['calculus-bc', 6],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -668,6 +676,12 @@ const BUDGETS = [
   ['calculus/frq.html', 3],
   ['calculus/glossary.html', 30],
   ['calculus/tools.html', 5],
+  ['calculus-bc/index.html', 8.5], // round 3 course home, see nremt/index.html
+  ['calculus-bc/practice.html', 3],
+  ['calculus-bc/exams.html', 3],
+  ['calculus-bc/frq.html', 3],
+  ['calculus-bc/glossary.html', 30],
+  ['calculus-bc/tools.html', 5],
   ['statistics/index.html', 8.5], // round 3 course home, see nremt/index.html
   ['statistics/practice.html', 3],
   ['statistics/exams.html', 3],
@@ -1207,6 +1221,23 @@ if (existsSync(CALC_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['calculus/assets/glossary.json', 150], ['calculus/assets/notes-index.json', 4], ['calculus/assets/summaries.json', 40]);
+/* AP® Calculus BC's, the same rule (the same generator packs by gzipped size); its notes,
+   lessons and unit sheets take AB's budgets once a unit is published. */
+const CBC_BANK_DIR = join(ROOT, 'calculus-bc', 'assets', 'bank');
+if (existsSync(CBC_BANK_DIR)) {
+  for (const f of readdirSync(CBC_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`calculus-bc/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+{
+  const idx = join(ROOT, 'calculus-bc', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`calculus-bc/lessons/${id}.html`, 22], [`calculus-bc/notes/${id}.html`, 22]);
+  }
+}
+DATA_BUDGETS.push(['calculus-bc/assets/glossary.json', 150], ['calculus-bc/assets/notes-index.json', 4], ['calculus-bc/assets/summaries.json', 40]);
 /* AP® Statistics's, the same (build-apstat.mjs bankFile packs by gzipped size). */
 const STAT_BANK_DIR = join(ROOT, 'statistics', 'assets', 'bank');
 if (existsSync(STAT_BANK_DIR)) {

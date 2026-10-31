@@ -26,8 +26,7 @@
    The student checks each rubric point themselves; the optional AI grader
    (assets/course/frq-grader.js) can pre-fill those checkboxes as an estimate. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var DRAFTS = CK + '_frq_drafts_v1', PREFS = CK + '_prefs_v1';
   // The recurring free-response types (docs/apcalc-research/framework.md,

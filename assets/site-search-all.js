@@ -34,6 +34,7 @@
     { key: 'apstat', searchLabel: 'Statistics', name: 'AP® Statistics', dir: 'statistics', aliases: ['statistics', 'stats', 'stat'], status: 'live' },
     { key: 'apenv', searchLabel: 'Environmental Science', name: 'AP® Environmental Science', dir: 'environmental-science', aliases: ['environmental-science', 'environmental', 'envsci', 'apes'], status: 'live' },
     { key: 'appsych', searchLabel: 'Psychology', name: 'AP® Psychology', dir: 'psychology', aliases: ['psychology', 'psych', 'psy'], status: 'live' },
+    { key: 'apcalcbc', searchLabel: 'Calculus BC', name: 'AP® Calculus BC', dir: 'calculus-bc', aliases: ['calculus-bc', 'calc-bc', 'calcbc', 'bc'], status: 'hidden' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
@@ -686,6 +687,52 @@
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;
                 out.push({ course: 'apcalc', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
+                  heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
+              });
+              return out;
+            }).catch(function () { return []; });
+          })).then(function (all) { return [].concat.apply([], all); });
+        });
+      }],
+    ],
+    // AP® Calculus BC: the same, from scripts/build-apcalcbc.mjs (empty until a unit is published; the
+    // runtime files, calc-math.js, are AB's). Its curriculum is also window.ApCalcBCCurriculum, so AB's cannot overwrite it.
+    apcalcbc: [
+      ['lessons', function () {
+        return loadScript('calculus-bc/assets/calc-curriculum.js').then(function () {
+          return apbioStructureChunks(window.ApCalcBCCurriculum, 'apcalcbc', 'calculus-bc');
+        });
+      }],
+      ['glossary', function () {
+        return loadScript('calculus/assets/calc-math.js').catch(function () {}).then(function () {
+          return getJson('calculus-bc/assets/glossary.json');
+        }).then(function (g) {
+          return glossaryChunks('apcalcbc', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
+      ['notes', function () {
+        return loadScript('calculus/assets/calc-math.js').catch(function () {}).then(function () {
+          return getJson('calculus-bc/assets/notes-index.json');
+        }).then(function (list) {
+          return Promise.all(list.map(function (n) {
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+            var href = 'calculus-bc/notes/' + id + '.html';
+            return getText(href).then(function (html) {
+              var doc = parseHtml(html);
+              var root = doc.querySelector('.calc-prose') || doc.querySelector('main') || doc.body;
+              root.querySelectorAll('.calc-crumb,.calc-onward,.calc-share,.calc-foot').forEach(function (x) { x.remove(); });
+              // Each formula as plain text, not its MathML symbols plus the TeX kept in its annotation.
+              root.querySelectorAll('math').forEach(function (m) { m.replaceWith(doc.createTextNode(mathText(m.outerHTML))); });
+              root.normalize();
+              var out = [];
+              var heading = n.title;
+              var hid = '';
+              root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
+                if (!text) return;
+                if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
+                if (text.length < 30) return;
+                out.push({ course: 'apcalcbc', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
                   heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
               });
               return out;

@@ -149,6 +149,15 @@ const CARDS = [
     title: 'Environmental Science for the May 2027 exam, one system at a time',
     sub: 'Free notes for every topic, every calculation drilled with its setup and units, and answers made specific enough to score.',
   },
+  /* AP® Calculus BC (folder calculus-bc/), the same rules: no mark, no counts
+     (docs/apcalcbc-spec.md decision 2). Render with ONLY=calculus-bc/assets/og-image.png. */
+  {
+    out: 'calculus-bc/assets/og-image.png',
+    badge: 'Free notes',
+    brand: 'LevlPrep',
+    title: 'Calculus BC for the May 2027 exam, all the way to series',
+    sub: 'Every Calculus AB topic plus parametric, polar and series, free notes for every topic, and intervals of convergence graded endpoint by endpoint.',
+  },
   /* AP® Psychology (folder psychology/), the same rules: no mark, no counts
      (docs/appsych-spec.md decision 5). Render with ONLY=psychology/assets/og-image.png. */
   {

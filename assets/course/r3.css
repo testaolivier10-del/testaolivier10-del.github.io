@@ -14,6 +14,7 @@
 .r3[data-cover="apchem"]{--accent:#1D44A6;--ctint:#E3EAFA;--bbg:#1A2C78;--bac:#8FAEFF}
 .r3[data-cover="apphys"]{--accent:#734200;--ctint:#FBEED5;--bbg:#2A1D06;--bac:#FFB21E}
 .r3[data-cover="apcalc"]{--accent:#8C1036;--ctint:#FCE8EE;--bbg:#4A1230;--bac:#FF5C9A}
+.r3[data-cover="apcalcbc"]{--accent:#0A5A34;--ctint:#E0F2E7;--bbg:#161A24;--bac:#3FE0A0}
 .r3[data-cover="apstat"]{--accent:#6E2470;--ctint:#F5E6F4;--bbg:#0E3A52;--bac:#5CC8F0}
 .r3[data-cover="apenv"]{--accent:#474A10;--ctint:#EFF0DA;--bbg:#22400F;--bac:#A6DB5C}
 .r3[data-cover="appsych"]{--accent:#084F78;--ctint:#E3F0F8;--bbg:#07608A;--bac:#FFD23F}
@@ -78,6 +79,7 @@
 .r3 [data-cover="apchem"] .cv-t span{color:#8FAEFF;}
 .r3 [data-cover="apphys"] .cv-t span{color:#FFB21E;}
 .r3 [data-cover="apcalc"] .cv-t span{color:#FF5C9A;}
+.r3 [data-cover="apcalcbc"] .cv-t span{color:#3FE0A0;}
 .r3 [data-cover="apstat"] .cv-t span{color:#5CC8F0;}
 .r3 [data-cover="apenv"] .cv-t span{color:#A6DB5C;}
 .r3 [data-cover="appsych"] .cv-t span{color:#FFD23F;}

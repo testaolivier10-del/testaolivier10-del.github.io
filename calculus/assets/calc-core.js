@@ -18,8 +18,7 @@
    questions answered right, weighted by level and faded with time, over what
    full mastery takes (min(12, the topic's questions)). */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var KEY = CK + '_progress_v1';
   var COURSE = CK;

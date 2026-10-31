@@ -451,7 +451,7 @@ export const setCourseConfig = c => { COURSE_CONFIG = c; };
 /* A runtime file (calc-*.js, pages/, tools/ framework) or a file of this
    course (its curriculum, a BC trainer's own script)? BC trainers' scripts
    live in calculus-bc/assets/tools/ (OWN_TOOL). */
-const OWN_FILES = new Set(['calc-curriculum.js']);
+const OWN_FILES = new Set(['calc-curriculum.js', 'cbc-interval.js']);
 export const OWN_TOOL = new Set();
 const srcFor = (depth, f) => OWN_FILES.has(f) || OWN_TOOL.has(f) ? `${depth}assets/${f}` : `${RT(depth)}${f}`;
 export function tail({ depth, section, extra = [], premium = false, site = [] }) {
@@ -464,7 +464,8 @@ export function tail({ depth, section, extra = [], premium = false, site = [] })
     s('calc-curriculum.js'), s('calc-core.js'), s('calc-nav.js'),
     `<script src="${depth}../assets/course/glossary-tip.js" data-glossary="${depth}assets/glossary.json" data-course-root="${depth}" defer></script>`,
     // The question engine needs the expression parser and the math renderer.
-    ...extra.flatMap(f => f === 'calc-questions.js' ? ['calc-expr.js', 'calc-math.js', f] : [f]).map(s),
+    // BC adds its interval answers (calculus-bc/assets/cbc-interval.js) before the engine.
+    ...extra.flatMap(f => f === 'calc-questions.js' ? ['calc-expr.js', 'calc-math.js', ...(IS_BC ? ['cbc-interval.js'] : []), f] : [f]).map(s),
   ].join('\n');
 }
 

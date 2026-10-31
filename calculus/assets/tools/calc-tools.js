@@ -41,8 +41,7 @@
        problem: the topic's lesson and notes, its glossary terms (from
        assets/glossary.json), and lessons for any other topic missed. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   'use strict';
   var M = window.ApCalcMath, Q = window.ApCalcQuestions;

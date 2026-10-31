@@ -177,6 +177,17 @@ export function counts() {
     }
   }
   const psyNotes = join(ROOT, 'psychology', 'assets', 'notes-index.json');
+  // AP® Calculus BC: its own bank (AB's topics and its own, built by build-apcalcbc.mjs).
+  const cbcBank = join(ROOT, 'calculus-bc', 'assets', 'bank');
+  let apcalcbc = 0;
+  if (existsSync(cbcBank)) {
+    for (const f of readdirSync(cbcBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('calculus-bc', 'assets', 'bank', f));
+      apcalcbc += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const cbcNotes = join(ROOT, 'calculus-bc', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
@@ -188,6 +199,7 @@ export function counts() {
     apstat, apstatTopics: existsSync(statNotes) ? read('statistics/assets/notes-index.json').length : 0,
     apenv, apenvTopics: existsSync(envNotes) ? read('environmental-science/assets/notes-index.json').length : 0,
     appsych, appsychTopics: existsSync(psyNotes) ? read('psychology/assets/notes-index.json').length : 0,
+    apcalcbc, apcalcbcTopics: existsSync(cbcNotes) ? read('calculus-bc/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }

@@ -19,8 +19,7 @@
    Self-grading moves no mastery number (cards never touch
    apcalc_progress_v1); cards pay XP (2 each, 60 a day at most). */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
      file works on the old map {id: {t, d, r, s, p, b}}. */

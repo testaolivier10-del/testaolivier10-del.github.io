@@ -342,6 +342,49 @@
         ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
       ],
     },
+    apcalcbc: {
+      name: 'AP® Calculus BC',
+      // Not on sale until its product exists and the course is published
+      // (docs/apcalcbc-spec.md decision 3): nothing locked, no checkout.
+      onSale: false,
+      dailyFree: 15,
+      // The free tier (docs/apcalcbc-spec.md decision 6, proposed): Units 1 and 2,
+      // every "Math you need" lesson, and the lessons 9.1-9.3 (topic.free from
+      // isFreeTopic in scripts/lib/apcalc-build.mjs, PROFILES.bc.freeTopics).
+      freeChapters: ['unit-1', 'unit-2'],
+      compare: 'Fiveable is $79 a year (checked October 2026).',
+      passes: [
+        { id: 'cbc-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The cram-kit study plan outline, printable',
+        'Every lesson in Units 1 and 2, every "Math you need" lesson and the first three parametric lessons',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'The series lab trainer',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every BC trainer: Taylor polynomials, parametric motion, polar curves, integration methods, Euler and logistic',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and mathematical practice',
+      ],
+      rows: [
+        ['Notes, glossary, flashcards and unit sheets', 'yes', 'yes'],
+        ['Interactive lessons', 'Units 1 and 2, math lessons and 9.1 to 9.3', 'Every unit'],
+        ['Practice and review questions', '15 a day', 'Unlimited'],
+        ['Trainers', 'One', 'Every trainer'],
+        ['Free-response questions and unit tests', 'no', 'yes'],
+        ['Full practice exams', 'One', 'Every one'],
+        ['Cram kit study plan', 'Outline', 'Fitted to your weakest units'],
+        ['Mastery dashboard', 'no', 'By unit, topic and mathematical practice'],
+        ['Your progress, XP, streak and weak topics', 'yes', 'yes'],
+      ],
+    },
     apstat: {
       name: 'AP® Statistics',
       dailyFree: 15,
@@ -490,6 +533,7 @@
     { key: 'apstat', path: '/statistics/' },
     { key: 'apenv', path: '/environmental-science/' },
     { key: 'appsych', path: '/psychology/' },
+    { key: 'apcalcbc', path: '/calculus-bc/' },
   ];
   // courses:end
 

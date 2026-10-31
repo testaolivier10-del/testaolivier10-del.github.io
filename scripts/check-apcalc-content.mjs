@@ -74,7 +74,7 @@ function Questions() {
   if (QUESTIONS) return QUESTIONS;
   const ctx = { Math, Number, String, Array, Object, JSON, Error, isFinite, isNaN, parseFloat, RegExp, Infinity, NaN };
   ctx.window = ctx; vm.createContext(ctx);
-  for (const f of ['calc-expr.js', 'calc-questions.js']) vm.runInContext(readFileSync(join(ROOT, 'calculus', 'assets', f), 'utf8'), ctx, { filename: f });
+  for (const f of ['calculus/assets/calc-expr.js', 'calculus-bc/assets/cbc-interval.js', 'calculus/assets/calc-questions.js']) vm.runInContext(readFileSync(join(ROOT, f), 'utf8'), ctx, { filename: f });
   return (QUESTIONS = ctx.ApCalcQuestions);
 }
 

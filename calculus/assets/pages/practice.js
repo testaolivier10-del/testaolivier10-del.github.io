@@ -28,8 +28,7 @@
    diff, q, options/numeric, why). They join the pool as standalone steps
    when they match the filters; nothing else here needs to change. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
@@ -319,7 +318,8 @@
     } else if(q.type === 'interval'){
       var IV = q.interval || {};
       body = '<p class="calc-ws-blank">Interval: ________________________ (both endpoints tested)</p>';
-      keyHtml = IV.answerHtml || esc(Q.intervalText(Q.intervalKey(IV), IV['var']));
+      var BI = window.ApCalcBCInterval;
+      keyHtml = IV.answerHtml || (BI ? esc(BI.text(BI.key(IV), IV['var'])) : '');
     } else if(q.type === 'predict'){
       body = '<table class="calc-ws-pred"><thead><tr><th scope="col">Variable</th><th scope="col">Increases, decreases or no change</th></tr></thead><tbody>' + q.variables.map(function(v){ return '<tr><th scope="row">' + v.name + '</th><td></td></tr>'; }).join('') + '</tbody></table>';
       key = q.variables.map(function(v){ return strip(v.name) + ': ' + (v.answer === 'up' ? 'increases' : v.answer === 'down' ? 'decreases' : 'no change'); }).join('; ');

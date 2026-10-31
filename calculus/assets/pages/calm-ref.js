@@ -6,8 +6,7 @@
    (body.calc-calm-ref, entry.css), and nothing else. The page itself stays in
    normal flow below the bar; the footer stays at its end. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   if(!window.LevlStudio) return;
   var main = document.getElementById('main');

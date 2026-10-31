@@ -994,6 +994,8 @@ const PASSES = {
   'phys-2027':      { course: 'apphys', until: '2027-06-30T23:59:59-10:00' },
   // AP® Calculus AB mirrors AP® Physics 1 (docs/apcalc-spec.md decision 3).
   'calc-2027':      { course: 'apcalc', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Calculus BC mirrors AP® Calculus AB (docs/apcalcbc-spec.md decision 3).
+  'cbc-2027':       { course: 'apcalcbc', until: '2027-06-30T23:59:59-10:00' },
   // AP® Statistics mirrors AP® Calculus AB (docs/apstat-spec.md decision 3).
   'stat-2027':      { course: 'apstat', until: '2027-06-30T23:59:59-10:00' },
   // AP® Environmental Science mirrors AP® Statistics (docs/apenv-spec.md decision 3).
@@ -1019,7 +1021,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1681,7 +1683,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB', apcalcbc: 'AP® Calculus BC', apstat: 'AP® Statistics', apenv: 'AP® Environmental Science', appsych: 'AP® Psychology' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -2967,6 +2969,17 @@ const COURSE_RULES = {
     '- Justify with the named theorem and its hypotheses (continuity on the closed interval for the Intermediate and Extreme Value Theorems, also differentiability on the open interval for the Mean Value Theorem), and tie every sign argument to the function it is about (f\' changes sign, not "it changes sign").',
     '- A relative extremum needs a sign change of f\'; an absolute extremum needs the candidates test or a global argument. An antiderivative carries + C.',
     '- For calculator answers, give the setup and three decimal places. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apcalcbc: [
+    '',
+    'This student is a high-school student preparing for the AP® Calculus BC exam (every Calculus AB topic plus parametric, polar and vector functions, BC integration techniques and infinite series). Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and show each step of a derivative, an integral, a limit or a series test with the rule or test it uses.',
+    '- Write math so it reads plainly in text: f\'(x), x^2, sqrt(x), the integral from 0 to 2 of f(x) dx, the sum from n = 1 to infinity of a_n. Work in radians.',
+    '- For a series, name the test and check every one of its conditions; the tests assessed are the nth term, integral, comparison, limit comparison, alternating series and ratio tests. Test both endpoints of an interval of convergence separately, and say why the ratio test cannot decide them.',
+    '- An error bound is a stated maximum ("error is at most ..."), with the conditions that make the alternating series or Lagrange bound apply. Polar area is one half the integral of r squared; speed is the magnitude of the velocity vector, not dy/dx.',
+    '- Justify with the named theorem and its hypotheses, as in AB. For calculator answers, give the setup and three decimal places. Do not state a value that is not in the passages; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),

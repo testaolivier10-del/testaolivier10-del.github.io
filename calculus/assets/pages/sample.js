@@ -5,8 +5,7 @@
    option, and ends with a score and the way into practice. Answers are
    recorded like any question, so misses reach the review queue. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var box = document.querySelector('.calc-qs[data-set="check"]');
   var el = document.getElementById('calc-page-data');

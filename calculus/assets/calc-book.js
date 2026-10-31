@@ -11,8 +11,7 @@
    Without JavaScript none of this runs, and the main column stays a table of
    contents whose links go to the notes pages. */
 (function(){
-  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
-  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  // AB unless the page is AP® Calculus BC (window.ApCalcCourse, docs/apcalcbc-architecture.md).
   var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var CU = window.ApCalcCurriculum;
   var book = document.getElementById('calc-book');
