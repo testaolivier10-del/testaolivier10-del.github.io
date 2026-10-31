@@ -513,7 +513,7 @@
    "related_set": true
   },
   {
-   "status": "scheduled",
+   "status": "posted",
    "added_on": "2026-10-22",
    "date": "2026-10-29",
    "buffer": "6adab57f8d2197cb2a0bfa57",
@@ -539,12 +539,12 @@
    "pin_tt": "comment_only"
   },
   {
-   "status": "scheduled",
+   "status": "posted",
    "added_on": "2026-10-22",
    "date": "2026-10-30",
    "buffer": "6adab5b48d2197cb2a0c0685",
    "yt_buffer": "6adab5cb9ef33e7811af77b4",
-   "youtube_id": null,
+   "youtube_id": "GWhlJ1DGREU",
    "shorts_thumb": false,
    "thumb_v2": true,
    "related_set": false,
