@@ -140,7 +140,7 @@
     var M2 = Math.pow(b, j), Nt = N < 1 ? '\\frac{1}{' + n(1 / N) + '}' : n(N), Mt = M2 < 1 ? '\\frac{1}{' + n(1 / M2) + '}' : n(M2);
     var text = 'The point $(' + k + ', ' + Nt + ')$ is on the graph of $y = ' + b + '^x$.';
     var steps = [
-      step(num(N, [{ value: k, why: 'Inverse functions swap inputs and outputs: the $x$-coordinate on $y = \\log_{' + b + '} x$ is the old $y$, ' + Nt + '.' }], 4), 'lx',
+      step(num(N, [{ value: k, why: 'Inverse functions swap inputs and outputs: the $x$-coordinate on $y = \\log_{' + b + '} x$ is the old $y$, ' + Nt + '.' }], Number.isInteger(N) ? 0 : 4), 'lx',
         'On the graph of $y = \\log_{' + b + '} x$, which point matches it? Type its $x$-coordinate.', '2.B'),
       step(num(k, [{ value: N, why: 'The $y$-coordinate on the log graph is the old $x$, the exponent.' }]), 'ly', 'And its $y$-coordinate?', '2.B'),
       step(num(j, [{ value: -j, why: 'Check the sign: ' + (j < 0 ? 'a fraction less than 1 has a negative log.' : 'a number greater than 1 has a positive log here.') },

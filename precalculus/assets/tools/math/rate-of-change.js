@@ -237,7 +237,7 @@
     var steps = [
       numStep('r1', 'The average rate of change on $[' + x0 + ', ' + (x0 + w) + ']$.', rr[0], [[f(x0 + w) - f(x0), 'Divide by the length of the interval, $' + w + '$.']], { practice: '1.A' }),
       numStep('r2', 'The average rate of change on $[' + (x0 + w) + ', ' + (x0 + 2 * w) + ']$.', rr[1], [[f(x0 + 2 * w) - f(x0 + w), 'Divide by the length of the interval, $' + w + '$.']], { practice: '1.A' }),
-      numStep('dd', 'By how much does the average rate of change go up from one interval to the next?', dd, [[-dd, 'Subtract the earlier rate from the later one: $' + nt(rr[1]) + ' - (' + nt(rr[0]) + ')$.'], [2 * a, 'That is the change for intervals of length 1. Here each interval has length ' + w + '.']], { practice: '2.A' }),
+      numStep('dd', 'Find the later rate minus the earlier one: by how much does the average rate of change change from one interval to the next?', dd, [[-dd, 'Subtract the earlier rate from the later one: $' + nt(rr[1]) + ' - (' + nt(rr[0]) + ')$.'], [2 * a, 'That is the change for intervals of length 1. Here each interval has length ' + w + '.']], { practice: '2.A' }),
       choice('why', 'Which is true for every quadratic function over consecutive equal intervals?', [
         ['The average rates of change change by the same amount each time, so they form a linear pattern.', 'Right: for $a' + S.x + '^2 + b' + S.x + ' + c$ and intervals of length $w$, each rate is $2aw$ more than the one before (here $2(' + a + ')(' + w + ') = ' + nt(dd) + '$).'],
         ['The average rates of change are all equal.', 'Equal rates over equal intervals describe a linear function.'],

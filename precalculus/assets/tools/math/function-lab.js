@@ -247,7 +247,7 @@
     var whole = Math.abs(answer - Math.round(answer)) < 1e-9;
     return { key: key, kind: 'num', label: H(label), unit: o.unit || '', practice: o.practice || '2.A', d: whole ? 0 : 3,
       hint: whole ? '' : 'Exact (like 7/2) or to three decimal places.',
-      cell: M.cell(answer, 6e-4, (mistakes || []).map(function(m){ return { value: m[0], why: H(m[1]) }; }), 6e-4) };
+      cell: M.cell(answer, 6e-4, (mistakes || []).filter(function(m){ return m[1]; }).map(function(m){ return { value: m[0], why: H(m[1]) }; }), 6e-4) };
   }
   function exprStep(key, label, lhs, answer, mistakes, dom, practice){
     return { key: key, kind: 'expr', label: H(label), lhs: lhs, practice: practice || '1.C',
@@ -285,11 +285,11 @@
     var gx = 'g(x) = ' + (a === 1 ? '' : a === -1 ? '-' : nt(a)) + 'f\\left(' + (b === 1 ? 'x' : (b === -1 ? '-' : nt(b)) + '(x') + (h > 0 ? ' - ' : ' + ') + n(Math.abs(h)) + (b === 1 ? '' : ')') + '\\right)' + (k > 0 ? ' + ' : ' - ') + n(Math.abs(k));
     var text = H('<p>The point $' + pt(px, py) + '$ is on the graph of $f$. Let $' + gx + '$. Which point must be on the graph of $g$?</p>');
     var steps = [
-      numStep('x', 'The $x$-coordinate of the new point.', q[0], [[b * px + h, 'Inside the function, b multiplies x, so the graph is squeezed: divide by $b$. Solve $' + (b === 1 ? '' : nt(b)) + '(x - (' + n(h) + ')) = ' + n(px) + '$.'], [px / b - h, 'The input is $x - h$ with $h = ' + n(h) + '$: solve for $x$, which adds $h$.'], [px + h, 'Undo the inside in order: divide by $b = ' + nt(b) + '$, then add $h = ' + n(h) + '$.']], { practice: '2.B' }),
+      numStep('x', 'The $x$-coordinate of the new point.', q[0], [[b * px + h, 'Inside the function, b multiplies x, so the graph is squeezed: divide by $b$. Solve $' + (b === 1 ? xMinus(h) : (b === -1 ? '-' : nt(b)) + '(' + xMinus(h) + ')') + ' = ' + n(px) + '$.'], [px / b - h, 'The input is $x - h$ with $h = ' + n(h) + '$: solve for $x$, which adds $h$.'], [px + h, 'Undo the inside in order: divide by $b = ' + nt(b) + '$, then add $h = ' + n(h) + '$.']], { practice: '2.B' }),
       numStep('y', 'The $y$-coordinate of the new point.', q[1], [[a * (py + k), 'Multiply first, then add: $a \\cdot ' + n(py) + ' + k$, not $a(' + n(py) + ' + k)$.'], [py / a + k, 'Outside the function, $a$ multiplies the output: $' + nt(a) + ' \\cdot ' + n(py) + '$.'], [a * py - k, 'Add $k = ' + n(k) + '$ as written.']], { practice: '2.B' })
     ];
-    var sol = ['Inside: solve $' + (b === 1 ? '' : nt(b)) + '(x - (' + n(h) + ')) = ' + n(px) + '$, so $x = ' + n(px) + ' \\div ' + nt(b) + ' + (' + n(h) + ') = ' + nt(q[0]) + '$.',
-      'Outside: $y = ' + nt(a) + ' \\cdot ' + n(py) + ' + (' + n(k) + ') = ' + nt(q[1]) + '$.',
+    var sol = ['Inside: solve $' + (b === 1 ? xMinus(h) : (b === -1 ? '-' : nt(b)) + '(' + xMinus(h) + ')') + ' = ' + n(px) + '$, so $x = ' + (b === 1 ? n(px) : n(px) + ' \\div ' + par(b, nt(b))) + ' ' + plusK(h) + ' = ' + nt(q[0]) + '$.',
+      'Outside: $y = ' + nt(a) + ' \\cdot ' + par(py, n(py)) + ' ' + plusK(k) + ' = ' + nt(q[1]) + '$.',
       'The point $' + pt(q[0], q[1]) + '$ is on the graph of $g$.'];
     return { text: text, steps: steps, solution: sol, fig: { grid: true, from: [px, py], to: q, label: 'Coordinate grid with the point on the graph of f' }, values: { p: p, from: [px, py], to: q } };
   };
@@ -312,7 +312,7 @@
     var flipWhy = 'Inside the function the shift goes against the sign: $x ' + (h > 0 ? '- ' : '+ ') + n(Math.abs(h)) + '$ moves the graph ' + (h > 0 ? 'right' : 'left') + '.';
     var inR = { a: 1, b: b, h: h, k: 0 };
     var optsH = distinct([
-      opt(inR, 'in', 'Right: factor first, $' + insideTex + ' = ' + factored + '$, so $h = ' + n(h) + '$' + (Math.abs(b) !== 1 ? ' and the dilation factor is $\\frac{1}{|b|} = ' + nt(1 / Math.abs(b)) + '$' : '') + '.'),
+      opt(inR, 'in', (b === 1 ? 'Right: $' + insideTex + ' = x - (' + n(h) + ')$' : 'Right: factor first, $' + insideTex + ' = ' + factored + '$') + ', so $h = ' + n(h) + '$' + (Math.abs(b) !== 1 ? ' and the dilation factor is $\\frac{1}{|b|} = ' + nt(1 / Math.abs(b)) + '$' : '') + '.'),
       Math.abs(b) !== 1 ? opt({ a: 1, b: b, h: -c, k: 0 }, 'in', 'Factor $b$ out first: $' + insideTex + ' = ' + factored + '$. The shift is $' + n(Math.abs(h)) + '$, not $' + n(Math.abs(c)) + '$.') : opt({ a: 1, b: b, h: -h, k: 0 }, 'in', flipWhy),
       opt({ a: 1, b: b, h: -h, k: 0 }, 'in', flipWhy),
       Math.abs(b) !== 1 ? opt({ a: 1, b: 1 / b, h: h, k: 0 }, 'in', 'A factor $b$ inside makes the graph $|b|$ times narrower: the dilation factor is $\\frac{1}{|b|} = ' + nt(1 / Math.abs(b)) + '$.')
@@ -329,11 +329,15 @@
     ], [[cap(words({ a: Math.abs(a), b: 1, h: 0, k: k }, 'out').replace(/^a vertical translation/, 'a reflection over the y-axis, then a vertical translation').replace(/^(a vertical dilation[^,]*)/, '$1, then a reflection over the y-axis')) + '.', 'A negative factor outside $f$ flips the outputs: the reflection is over the x-axis, not the y-axis.', { a: Math.abs(a), b: -1, h: 0, k: k }]]);
     var stepsOut = [choice('in', 'What do the changes inside $f$ do?', optsH, '3.A'), choice('out', 'What do the changes outside $f$ do?', optsV, '3.A')];
     var picks = { in: optsH.map(function(o){ return o[2]; }), out: optsV.map(function(o){ return o[2]; }) };
-    var sol = ['Factor the inside: $' + insideTex + ' = ' + factored + '$, so $b = ' + nt(b) + '$ and $h = ' + n(h) + '$.',
+    var sol = [(b === 1 ? 'The inside is $' + insideTex + ' = x - (' + n(h) + ')$' : 'Factor the inside: $' + insideTex + ' = ' + factored + '$') + ', so $b = ' + nt(b) + '$ and $h = ' + n(h) + '$.',
       'Inside (the input): ' + words(p, 'in') + '.', 'Outside (the output): ' + words(p, 'out') + '.', 'So $' + tex(id, p, 'g') + '$.'];
     return { text: text, steps: stepsOut, solution: sol, fig: { fam: id, p: p, parentOnly: true, label: 'Graph of the parent f(x) = ' + F.name.toLowerCase() }, values: { fam: id, p: p, c: c, picks: picks } };
   };
   function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  /* "x - 3", "x + 2", or "x" for a shift h; "+ 4" or "- 4" for an added k; a negative number in parentheses. */
+  function xMinus(h){ return h === 0 ? 'x' : 'x ' + (h > 0 ? '- ' : '+ ') + n(Math.abs(h)); }
+  function plusK(k){ return (k < 0 ? '- ' : '+ ') + n(Math.abs(k)); }
+  function par(v, t){ return v < 0 ? '(' + t + ')' : t; }
 
   /* g(x) = a/(x - h) + k: asymptotes in limit notation. */
   GEN.rational = function(r){
@@ -358,7 +362,7 @@
       ], '3.A')
     ];
     var sol = ['The denominator is $0$ at $x = ' + n(h) + '$ and the numerator is not, so $x = ' + n(h) + '$ is a vertical asymptote.',
-      'Just to the right, $x - (' + n(h) + ')$ is small and positive, so $\\frac{' + n(a) + '}{x - (' + n(h) + ')}$ is ' + (a > 0 ? 'large and positive' : 'large and negative') + ': $' + oneSided + '$ and $' + limTex(h, V.left, '-') + '$.',
+      'Just to the right, $' + xMinus(h) + '$ is small and positive, so $\\frac{' + n(a) + '}{' + xMinus(h) + '}$ is ' + (a > 0 ? 'large and positive' : 'large and negative') + ': $' + oneSided + '$ and $' + limTex(h, V.left, '-') + '$.',
       'As $x \\to \\pm\\infty$ the fraction goes to $0$: $' + limTex('inf', k) + '$ and $' + limTex('-inf', k) + '$, so $y = ' + n(k) + '$ is the horizontal asymptote.'];
     return { text: text, steps: steps, solution: sol, fig: { fam: 'reciprocal', p: p, show: false, label: 'Coordinate plane for the graph of g' }, values: { p: p, V: V, E: E } };
   };
@@ -367,22 +371,22 @@
   GEN.exponential = function(r){
     var a = r.pick([1, 2, -1, -2, 3, -3]), h = r.int(-3, 3), m = r.int(-1, 3), k = -a * Math.pow(2, m), p = { a: a, b: 1, h: h, k: k };
     if(r() < 0.25){ k = a > 0 ? r.int(1, 3) : -r.int(1, 3); p.k = k; }   // no zero: a and k have the same sign
-    var E = ends('exponential', p), Z = zeros('exponential', p, [-50, 50]);
+    var E = ends('exponential', p), Z = zeros('exponential', p, [-50, 50]), P2 = '2^{' + xMinus(h) + '}';
     var text = H('<p>Let $' + tex('exponential', p, 'g') + '$.</p>');
     var steps = [
       numStep('ha', 'The horizontal asymptote is $y = d$. What is $d$?', k, [[0, 'The parent $2^x$ has the asymptote $y = 0$; adding $' + n(k) + '$ moves it.'], [-k, 'The constant is added as written.'], [a, 'The asymptote is the added constant, not the factor in front.']], { practice: '2.A' }),
       choice('neg', 'Which describes $g$ as $x$ decreases without bound?', distinct([
-        ['$' + limTex('-inf', E.neg) + '$', 'Right: $2^{x - h}$ goes to $0$, so $g$ approaches $' + n(k) + '$.'],
-        ['$' + limTex('-inf', 0) + '$', '$2^{x - h} \\to 0$, but $' + n(k) + '$ is still added.'],
-        ['$' + limTex('-inf', '-inf') + '$', 'For very negative $x$, $2^{x - h}$ is a tiny positive number: the outputs level off.'],
+        ['$' + limTex('-inf', E.neg) + '$', 'Right: $' + P2 + '$ goes to $0$, so $g$ approaches $' + n(k) + '$.'],
+        ['$' + limTex('-inf', 0) + '$', '$' + P2 + ' \\to 0$, but $' + n(k) + '$ is still added.'],
+        ['$' + limTex('-inf', '-inf') + '$', 'For very negative $x$, $' + P2 + '$ is a tiny positive number: the outputs level off.'],
         ['As $x$ gets very negative, $g$ levels off near $' + n(k) + '$.', 'True, but say it in limit notation: $' + limTex('-inf', k) + '$.']
-      ], [['$' + limTex('-inf', 'inf') + '$', 'For very negative $x$, $2^{x - h}$ is a tiny positive number: the outputs level off at $' + n(k) + '$.']]), '3.A'),
-      Z.length ? numStep('zero', 'Solve $g(x) = 0$.', Z[0], [[m, 'You solved $2^{x} = ' + n(-k / a) + '$; the input is $x ' + (h > 0 ? '- ' : '+ ') + n(Math.abs(h)) + '$, so add $' + n(h) + '$.'], [h - m, 'From $2^{x - h} = 2^{' + m + '}$, $x - h = ' + m + '$, so $x = ' + m + ' + (' + n(h) + ')$.'], [h + Math.log2(Math.abs(k)), 'Divide by $a = ' + n(a) + '$ before taking the log: $2^{x - h} = ' + n(-k / a) + '$.']], { practice: '1.A' })
-        : choice('zero', 'How many zeros does $g$ have?', [['None: $g(x) = 0$ has no solution.', 'Right: $' + n(a) + ' \\cdot 2^{x - h}$ ' + (a > 0 ? 'is always positive' : 'is always negative') + ' and $k = ' + n(k) + '$ has the same sign, so their sum is never $0$.'], ['Exactly one, as every exponential function has.', 'Solving gives $2^{x - h} = ' + n(-k / a) + '$, and a power of $2$ is never negative.'], ['Two.', 'An exponential function is always increasing or always decreasing, so it takes the value $0$ at most once.'], ['Infinitely many.', 'An exponential function is always increasing or always decreasing, so it takes any value at most once.']], '3.A')
+      ], [['$' + limTex('-inf', 'inf') + '$', 'For very negative $x$, $' + P2 + '$ is a tiny positive number: the outputs level off at $' + n(k) + '$.']]), '3.A'),
+      Z.length ? numStep('zero', 'Solve $g(x) = 0$.', Z[0], [[m, h === 0 ? '' : 'You solved $2^{x} = ' + n(-k / a) + '$; the input is $' + xMinus(h) + '$, so add $' + n(h) + '$.'], [h - m, h === 0 ? '' : 'From $' + P2 + ' = 2^{' + m + '}$, $' + xMinus(h) + ' = ' + m + '$, so $x = ' + m + ' ' + plusK(h) + '$.'], [h + Math.log2(Math.abs(k)), 'Divide by $a = ' + n(a) + '$ before taking the log: $' + P2 + ' = ' + n(-k / a) + '$.']], { practice: '1.A' })
+        : choice('zero', 'How many zeros does $g$ have?', [['None: $g(x) = 0$ has no solution.', 'Right: $' + n(a) + ' \\cdot ' + P2 + '$ ' + (a > 0 ? 'is always positive' : 'is always negative') + ' and $k = ' + n(k) + '$ has the same sign, so their sum is never $0$.'], ['Exactly one, as every exponential function has.', 'Solving gives $' + P2 + ' = ' + n(-k / a) + '$, and a power of $2$ is never negative.'], ['Two.', 'An exponential function is always increasing or always decreasing, so it takes the value $0$ at most once.'], ['Infinitely many.', 'An exponential function is always increasing or always decreasing, so it takes any value at most once.']], '3.A')
     ];
-    var sol = ['$2^{x - h} > 0$ always and $2^{x - h} \\to 0$ as $x \\to -\\infty$, so $' + limTex('-inf', k) + '$: the asymptote is $y = ' + n(k) + '$.',
-      'As $x \\to \\infty$, $2^{x - h} \\to \\infty$, so $' + limTex('inf', E.pos) + '$.',
-      Z.length ? '$' + n(a) + ' \\cdot 2^{x - h} = ' + n(-k) + '$ gives $2^{x - h} = ' + n(-k / a) + ' = 2^{' + m + '}$, so $x - (' + n(h) + ') = ' + m + '$ and $x = ' + n(Z[0]) + '$.' : '$g(x) = 0$ needs $2^{x - h} = ' + n(-k / a) + '$, which is negative: no solution.'];
+    var sol = ['$' + P2 + ' > 0$ always and $' + P2 + ' \\to 0$ as $x \\to -\\infty$, so $' + limTex('-inf', k) + '$: the asymptote is $y = ' + n(k) + '$.',
+      'As $x \\to \\infty$, $' + P2 + ' \\to \\infty$, so $' + limTex('inf', E.pos) + '$.',
+      Z.length ? '$' + n(a) + ' \\cdot ' + P2 + ' = ' + n(-k) + '$ gives $' + P2 + ' = ' + n(-k / a) + ' = 2^{' + m + '}$, so $' + xMinus(h) + ' = ' + m + '$ and $x = ' + n(Z[0]) + '$.' : '$g(x) = 0$ needs $' + P2 + ' = ' + n(-k / a) + '$, which is negative: no solution.'];
     return { text: text, steps: steps, solution: sol, fig: { fam: 'exponential', p: p, show: false, label: 'Coordinate plane for the graph of g' }, values: { p: p, E: E, Z: Z } };
   };
 

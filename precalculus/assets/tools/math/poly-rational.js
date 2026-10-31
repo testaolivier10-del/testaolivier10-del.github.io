@@ -341,7 +341,7 @@
       lw.push(['$' + limTex('\\infty', infTex(-sgn(lead)), 'r') + '$', 'Check the sign of the ratio of the leading terms, $\\frac{' + n(b) + '}{' + dd + '}$, for large positive $x$.']);
     }
     var limStep = step(choiceOf(r, [limRight, 'Right: this is the end behavior in limit notation.'], lw), 'lim', 'Which statement gives the end behavior as $x \\to \\infty$?', '3.A');
-    var sol = ['Only the leading terms matter for large $x$: $\\frac{' + n(b) + (nd ? (nd > 1 ? 'x^{' + nd + '}' : 'x') : '') + '}{' + (dd === 1 ? '' : n(dd)) + (k > 1 ? 'x^{' + k + '}' : 'x') + '}$, degree ' + nd + ' over degree ' + k + '.',
+    var sol = ['Only the leading terms matter for large $x$: $\\frac{' + (nd && b === 1 ? '' : nd && b === -1 ? '-' : n(b)) + (nd ? (nd > 1 ? 'x^{' + nd + '}' : 'x') : '') + '}{' + (dd === 1 ? '' : n(dd)) + (k > 1 ? 'x^{' + k + '}' : 'x') + '}$, degree ' + nd + ' over degree ' + k + '.',
       ha === null ? 'The numerator\'s degree is greater, so there is no horizontal asymptote and ' + limRight + '.' : 'So the horizontal asymptote is $y = ' + frac(ha) + '$ and ' + limRight + '.'];
     var spec = { num: numC, den: denC };
     return { text: text, steps: [cmp, haStep, limStep], solution: sol, fig: null, poly: spec, values: { rel: rel, ha: ha, nd: nd, k: k, lead: lead } };

@@ -572,6 +572,8 @@
       var a = anchor || (x > (X0 + X1) / 2 ? 'end' : 'start');
       return '<text class="cd-' + who + ' cd-mlab" x="' + r1(x + (a === 'end' ? -6 : a === 'start' ? 6 : 0)) + '" y="' + r1(y) + '" text-anchor="' + a + '" paint-order="stroke">' + esc(s) + '</text>';
     }
+    // Curves and paths are clipped to the plot area (review, tools-exams: a rational branch ran past the frame).
+    var clip = nid('cdclip'), clipped = false, CL = ' clip-path="url(#' + clip + ')"';
     var out = [];
     (list || []).forEach(function(m){
       var w = m.who === 'right' ? 'right' : 'yours';
@@ -582,7 +584,7 @@
           if(!isFinite(y) || y < Fr.y[0] - (Fr.y[1] - Fr.y[0]) * 2 || y > Fr.y[1] + (Fr.y[1] - Fr.y[0]) * 2 || (last != null && Math.abs(y - last) > (Fr.y[1] - Fr.y[0]))){ pen = false; last = isFinite(y) ? y : null; continue; }
           d += (pen ? 'L' : 'M') + r1(Fr.sx(x)) + ' ' + r1(Fr.sy(y)); pen = true; last = y;
         }
-        if(d) out.push('<path class="cd-' + w + '" d="' + d + '"/>');
+        if(d){ out.push('<path class="cd-' + w + '" d="' + d + '"' + CL + '/>'); clipped = true; }
         if(m.label){ var lx = a + (b - a) * (w === 'right' ? 0.82 : 0.62), ly = m.curve(lx); if(isFinite(ly)) out.push(txt(Fr.sx(lx), Fr.sy(ly) - 8, m.label, w)); }
       } else if(m.line || m.tangent){
         var p0, p1;
@@ -607,7 +609,7 @@
         // an open polyline in plot coordinates (a curve x = g(y), say)
         var pd = '', pon = false;
         m.path.forEach(function(q){ if(!isFinite(q[0]) || !isFinite(q[1])){ pon = false; return; } pd += (pon ? 'L' : 'M') + r1(Fr.sx(q[0])) + ' ' + r1(Fr.sy(q[1])); pon = true; });
-        if(pd) out.push('<path class="cd-' + w + '" d="' + pd + '"/>');
+        if(pd){ out.push('<path class="cd-' + w + '" d="' + pd + '"' + CL + '/>'); clipped = true; }
         if(m.label && m.path.length){ var lq = m.path[Math.floor(m.path.length * (w === 'right' ? 0.8 : 0.6))]; if(lq && isFinite(lq[0]) && isFinite(lq[1])) out.push(txt(Fr.sx(lq[0]), Fr.sy(lq[1]) - 8, m.label, w)); }
       } else if(m.band){
         // an interval as a bar along the foot of the plot (a sign-chart row):
@@ -621,6 +623,7 @@
         out.push(txt(Fr.sx(m.at[0]), Fr.sy(m.at[1]), m.label, m.tone || w, m.anchor));
       }
     });
+    if(clipped) out.unshift('<clipPath id="' + clip + '"><rect x="' + r1(X0) + '" y="' + r1(Y0) + '" width="' + r1(X1 - X0) + '" height="' + r1(Y1 - Y0) + '"/></clipPath>');
     return out.length ? '<g class="cd-marks" aria-hidden="true">' + out.join('') + '</g>' : '';
   }
   function tries(){

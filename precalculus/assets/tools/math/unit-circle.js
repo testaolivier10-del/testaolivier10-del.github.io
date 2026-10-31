@@ -313,7 +313,7 @@
       choice('rate', 'Which is true on $' + ivTex(Q) + '$?', rateList, '3.A')
     ];
     var sol = ['At $\\theta = ' + a.tex + '$ the point is $\\left(' + a.cos.tex + ', ' + a.sin.tex + '\\right)$, so $y = ' + val.tex + '$.',
-      '$y = ' + name + '$ is increasing on $' + incQ.map(function(i){ return ivTex(QUARTERS[i]); }).join('$ and $') + '$ and decreasing on $' + decQ.map(function(i){ return ivTex(QUARTERS[i]); }).join('$ and $') + '$.',
+      '$y = ' + name + '$ is ' + (fn === 'sin' ? 'increasing on $\\left(0, \\frac{\\pi}{2}\\right)$ and $\\left(\\frac{3\\pi}{2}, 2\\pi\\right)$ and decreasing on $\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$.' : 'decreasing on $(0, \\pi)$ and increasing on $(\\pi, 2\\pi)$.'),
       'It is 0 at ' + zeros + '.',
       'On $' + ivTex(Q) + '$: ' + right + '. ' + bendW];
     return { text: text, steps: steps, solution: sol, given: { fn: fn, m: m, q: qi }, fig: { kind: 'graph', fn: fn, m: m, q: qi } };

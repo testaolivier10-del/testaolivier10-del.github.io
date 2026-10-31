@@ -110,8 +110,8 @@
     var useE = r() < 0.6, a = r.pick([2, 3, 4, 5]), k = r.pick([1, 2, 3]), c = r.pick([-5, -3, 1, 4, 7]), iso, b;
     if(useE){ iso = r.pick([2, 3, 4, 5, 6, 7]); b = 'e'; }
     else { b = r.pick([2, 3, 5]); iso = Math.pow(b, r.int(1, 3)) * (r() < 0.5 ? 1 : b + 1); }
-    var d = a * iso + c, base = useE ? 'e' : String(b), powT = base + '^{' + (k === 1 ? 'x' : k + 'x') + '}';
-    var text = 'Solve $' + a + powT + (c < 0 ? ' - ' + (-c) : ' + ' + c) + ' = ' + d + '$ exactly.';
+    var d = a * iso + c, base = useE ? 'e' : String(b), powT = base + '^{' + (k === 1 ? 'x' : k + 'x') + '}', aPow = a + (useE ? '' : ' \\cdot ') + powT;
+    var text = 'Solve $' + aPow + (c < 0 ? ' - ' + (-c) : ' + ' + c) + ' = ' + d + '$ exactly.';
     var lg = function(v){ return useE ? Math.log(v) : Math.log(v) / Math.log(b); }, X = lg(iso) / k;
     var lgT = function(v){ return useE ? '\\ln ' + v : '\\log_{' + b + '} ' + v; };
     var s1 = step(num(iso, [{ value: d - c, why: 'Divide by ' + a + ' too: the power stands alone only when its coefficient is gone.' }, { value: d / a - c, why: 'Undo in the reverse order: first ' + (c < 0 ? 'add ' + (-c) : 'subtract ' + c) + ', then divide by ' + a + '.' }]), 'iso',
@@ -119,7 +119,7 @@
     var ms = [{ value: lg(d - c) / k, why: 'Isolate the power before taking the log.' }, { value: lg(iso) * k, why: '$' + k + 'x = ' + lgT(iso) + '$, so divide by ' + k + '.' }];
     if(useE) ms.push({ value: iso / k, why: 'Undo $e^{\\cdot}$ with $\\ln$: $' + k + 'x = \\ln ' + iso + '$.' });
     var s2 = step(num(X, k === 1 ? ms.slice(0, 1).concat(useE ? [{ value: iso, why: 'Undo $e^x$ with $\\ln$: $x = \\ln ' + iso + '$.' }] : []) : ms), 'x', 'Solve for $x$. (Exact, like ' + (useE ? 'ln(4)/2' : 'log_2(5)') + ', or three decimals.)', '1.C');
-    var sol = ['$' + a + powT + ' = ' + (d - c) + '$, so $' + powT + ' = ' + iso + '$.', 'Take ' + (useE ? '$\\ln$' : '$\\log_{' + b + '}$') + ' of both sides: $' + (k === 1 ? 'x' : k + 'x') + ' = ' + lgT(iso) + '$, so $x = ' + (k === 1 ? lgT(iso) : '\\frac{' + lgT(iso) + '}{' + k + '}') + ' \\approx ' + M.fixed(X, 3) + '$.'];
+    var sol = ['$' + aPow + ' = ' + (d - c) + '$, so $' + powT + ' = ' + iso + '$.', 'Take ' + (useE ? '$\\ln$' : '$\\log_{' + b + '}$') + ' of both sides: $' + (k === 1 ? 'x' : k + 'x') + ' = ' + lgT(iso) + '$, so $x = ' + (k === 1 ? lgT(iso) : '\\frac{' + lgT(iso) + '}{' + k + '}') + ' \\approx ' + M.fixed(X, 3) + '$.'];
     return { text: text, steps: [s1, s2], solution: sol, values: { a: a, k: k, c: c, d: d, b: useE ? 'e' : b, iso: iso, x: X } };
   };
   /* 2.13: two logs to one, then reject the root the domain forbids */

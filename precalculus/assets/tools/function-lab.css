@@ -105,3 +105,6 @@
 .fl-figwrap .pcalc-plot{width:100%;height:auto;max-height:100%;}
 .ls-root .fl-figwrap{height:100%;display:flex;}
 .ls-root .fl-figwrap .pcalc-plot{height:100%;}
+
+/* Review (tools-exams): in the drill figure a vertical or horizontal line is an asymptote (or a guide), never part of the graph: dashed. */
+.fl-figwrap .cd-marks line.cd-right{stroke-dasharray:7 5;}

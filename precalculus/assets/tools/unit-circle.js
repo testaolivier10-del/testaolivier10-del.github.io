@@ -525,7 +525,7 @@
       if(done.rate){
         var m0 = (Q[0] + Q[1]) / 2;
         [[Q[0], m0], [m0, Q[1]]].forEach(function(h, j){ o.push('<line class="uc-sec" x1="' + r1(gx(h[0])) + '" y1="' + r1(gv(fn(h[0]))) + '" x2="' + r1(gx(h[1])) + '" y2="' + r1(gv(fn(h[1]))) + '"/>'); void j; });
-        o.push(txt(gx(m0), gy - R - 14, 'secant slopes on the two halves', 'uc-lab', 'middle'));
+        o.push(f.q === 3 ? txt(G1, gy - R - 14, 'secant slopes on the two halves', 'uc-lab', 'end') : f.q === 0 ? txt(gx(Q[0]) + 2, gy - R - 14, 'secant slopes on the two halves', 'uc-lab', 'start') : txt(gx(m0), gy - R - 14, 'secant slopes on the two halves', 'uc-lab', 'middle'));
       }
       if(done.zero) [0, 1, 2, 3, 4].map(function(k){ return k * PI / 2; }).filter(function(x){ return Math.abs(fn(x)) < 1e-9; }).forEach(function(x){ o.push('<circle class="uc-zero" cx="' + r1(gx(x)) + '" cy="' + gy + '" r="6"/>'); });
       var a = UC.angle(f.m);
