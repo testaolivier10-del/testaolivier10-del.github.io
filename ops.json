@@ -169,5 +169,11 @@
     "AP Biology | LevlPrep": "unavailable",
     "Anatomy and Physiology | LevlPrep": "unavailable",
     "NREMT Prep | LevlPrep": "unavailable"
+  },
+  "poll_desktop_check": {
+    "date": "2026-10-31",
+    "tiktok_poll": "unknown",
+    "youtube_poll": "unknown",
+    "note": "Claude in Chrome file_upload is capped at 10 MB per call; poll Shorts are about 45 MB, so the desktop editors could not be reached. Both platforms handed off to Olivier's phone. Desktop posting needs a smaller upload path (for example Olivier selecting the file) before it can work."
   }
 }
