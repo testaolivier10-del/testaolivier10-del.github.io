@@ -6,6 +6,9 @@
    (body.calc-calm-ref, entry.css), and nothing else. The page itself stays in
    normal flow below the bar; the footer stays at its end. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   if(!window.LevlStudio) return;
   var main = document.getElementById('main');
   if(!main) return;
@@ -13,9 +16,9 @@
   var h1 = main.querySelector('.calc-hero h1'), lede = main.querySelector('.calc-hero .lede');
   document.body.classList.add('calc-calm-ref');
   var s = window.LevlStudio.mount({
-    title: h1 ? h1.textContent : document.title, course: 'AP® Calculus AB', back: B + 'index.html', backLabel: 'Back to AP® Calculus AB', host: main,
-    slug: 'apcalc-' + (document.body.getAttribute('data-app') || 'page'), slim: true,
-    menu: { copyLink: true, report: { course: 'apcalc', id: 'page:' + (document.body.getAttribute('data-app') || '') }, allTools: { label: 'Course home' } }
+    title: h1 ? h1.textContent : document.title, course: CN, back: B + 'index.html', backLabel: 'Back to ' + CN, host: main,
+    slug: CK + '-' + (document.body.getAttribute('data-app') || 'page'), slim: true,
+    menu: { copyLink: true, report: { course: CK, id: 'page:' + (document.body.getAttribute('data-app') || '') }, allTools: { label: 'Course home' } }
   });
   // The title is in the bar; the one-line lede opens the page.
   if(lede){ lede.classList.add('calc-ref-lede'); main.insertBefore(lede, main.firstChild); }

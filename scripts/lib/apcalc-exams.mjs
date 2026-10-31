@@ -24,6 +24,12 @@ export const MCQ_PARTS = [{ key: 'A', n: 29, minutes: 62, calc: false }, { key: 
 export const FRQ_PARTS = [{ key: 'A', n: 2, minutes: 30, calc: true }, { key: 'B', n: 4, minutes: 60, calc: false }];
 export const FRQ_POINTS = 9;
 export const FRQ_TOTAL = 6;
+/* AP® Calculus BC's Section II (docs/apcalcbc-research/framework.md section 5): the
+   same 2 + 4 split and 9 points, with three BC-only slots. Q1, Q3 and Q4 are shared
+   with AB (an AB type); Q2 is parametric, vector or polar (calculator), Q5 a mix of BC
+   techniques and Q6 always series. checkForms(forms, { ..., slots: BC_FRQ_SLOTS }). */
+export const BC_FRQ_TYPES = ['parametric', 'techniques', 'series'];
+export const BC_FRQ_SLOTS = [null, 'parametric', null, null, 'techniques', 'series'];
 // The trainer's free prompts: the first few in course order (spec section 3).
 export const FREE_JUSTIFY = 3;
 // The reader-report misses the trainer is built around (framework.md section 8).
@@ -101,7 +107,7 @@ export function checkForms(forms, ctx) {
         calcSeq.push(!!q.calc);
         if (seenQ.has(q.id) && seenQ.get(q.id) !== w) errs.push(`${w}: ${q.id} is also in ${seenQ.get(q.id)}`);
         seenQ.set(q.id, w);
-        const own = /^calc-exam-(\d+)-\d+$/.exec(q.id);
+        const own = /^(?:calc|cbc)-exam-(\d+)-\d+$/.exec(q.id);
         if (own && `form-${own[1]}` !== f.id) errs.push(`${w}: exam-only item ${q.id} belongs to form-${own[1]}`);
       }
       if (qs.some(q => !!q.calc !== !!qs[0].calc)) errs.push(`${w}: block ${block.join(', ')} mixes calculator and no-calculator questions`);
@@ -134,6 +140,12 @@ export function checkForms(forms, ctx) {
       if (!!q.calc !== wantCalc) errs.push(`${w}: Section II question ${i + 1} is in Part ${wantCalc ? 'A (calculator)' : 'B (no calculator)'}; ${id} is a ${q.calc ? 'calculator' : 'no-calculator'} question`);
       if (q.points !== FRQ_POINTS) errs.push(`${w}: ${id} is worth ${q.points} points, not ${FRQ_POINTS}`);
       types[q.type] = (types[q.type] || 0) + 1;
+      // BC slots: Q2, Q5 and Q6 have their BC type; the other three are AB types (the shared questions).
+      if (ctx.slots) {
+        const want = ctx.slots[i];
+        if (want && q.type !== want) errs.push(`${w}: Section II question ${i + 1} is the ${want} slot; ${id} is type ${q.type}`);
+        if (!want && BC_FRQ_TYPES.includes(q.type)) errs.push(`${w}: Section II question ${i + 1} is shared with AB, so it is an AB type; ${id} is type ${q.type}`);
+      }
       if (q.placeholder) errs.push(`${w}: ${id} is a placeholder`);
       if (seenF.has(id) && seenF.get(id) !== w) errs.push(`${w}: FRQ ${id} is also in ${seenF.get(id)}`);
       seenF.set(id, w);

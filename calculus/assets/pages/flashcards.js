@@ -19,6 +19,9 @@
    Self-grading moves no mastery number (cards never touch
    apcalc_progress_v1); cards pay XP (2 each, 60 a day at most). */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
      file works on the old map {id: {t, d, r, s, p, b}}. */
   function glossMap(g){
@@ -31,7 +34,7 @@
   var CU = window.ApCalcCurriculum;
   if(!app || !CU) return;
   var BASE = window.ApCalcBase || '';
-  var KEY = 'apcalc_flashcards_v1', PREFS = 'apcalc_prefs_v1';
+  var KEY = CK + '_flashcards_v1', PREFS = CK + '_prefs_v1';
   var MIN = 60000, AGAIN = 1, HARD = 2, GOOD = 3, EASY = 4;
   var GRADES = [null, { label: 'Again' }, { label: 'Hard' }, { label: 'Good' }, { label: 'Easy' }];
   var EASE_START = 2.5, EASE_MIN = 1.3, EASE_MAX = 2.8, MAX_IVL = 365, RELEARN = 10 * MIN, NEW_PER_DAY = 20;
@@ -84,7 +87,7 @@
   function introducedToday(d, now){ return d.fresh.day === dayKey(now) ? (d.fresh.n || 0) : 0; }
   try{
     var SA = window.StudyHubAccount;
-    if(SA && SA.registerNamespace && SA.mergeCardSchedules){ var mm = {}; mm[KEY] = SA.mergeCardSchedules; SA.registerNamespace('apcalc', [KEY], mm); }
+    if(SA && SA.registerNamespace && SA.mergeCardSchedules){ var mm = {}; mm[KEY] = SA.mergeCardSchedules; SA.registerNamespace(CK, [KEY], mm); }
   }catch(e){}
 
   /* ---- preferences (apcalc_prefs_v1.flashcards) ---- */
@@ -167,7 +170,7 @@
     return { due: due, fresh: fresh.slice(0, allowance), newTotal: fresh.length, learned: learned, total: cards.length, soon: soon };
   }
   function loadMissed(){
-    var ids = window.ApCalcCore ? window.ApCalcCore.missed().filter(function(id){ return /^calc-/.test(id); }) : [];
+    var ids = window.ApCalcCore ? window.ApCalcCore.missed().filter(function(id){ return /^(calc|cbc)-/.test(id); }) : [];
     if(!ids.length){ missedConcepts = {}; return Promise.resolve(); }
     return window.ApCalcCore.loadQuestions(BASE, ids).then(function(qs){
       var text = qs.map(function(q){ return [q.q].concat(q.options || []).concat((q.variables || []).map(function(v){ return v.name; })).join(' '); }).join(' \n ').replace(/<[^>]+>/g, ' ');
@@ -274,7 +277,7 @@
     var t = TOPIC[c.topic];
     var body = c.kind === 't' ? '<p class="calc-fc-a">' + rich(c.def) + '</p>' : c.kind === 'd' ? '<p class="calc-fc-a calc-fc-a-term">' + esc(c.term) + '</p><p class="calc-fc-a-sub">' + rich(c.def) + '</p>' : '<p class="calc-fc-a">' + rich(c.back) + '</p>';
     return body + '<p class="calc-fc-from">Taught in <a href="' + esc(BASE + 'lessons/' + c.topic + '.html') + '">' + esc(t.title) + '</a> &middot; <a href="' + esc(BASE + 'notes/' + c.topic + '.html') + '">notes</a>' +
-      (window.LevlReport ? ' <span class="calc-fc-report">' + window.LevlReport.button('apcalc', c.id) + '</span>' : '') + '</p>';
+      (window.LevlReport ? ' <span class="calc-fc-report">' + window.LevlReport.button(CK, c.id) + '</span>' : '') + '</p>';
   }
   function showCard(){
     if(!run.queue.length){ finish(); return; }
@@ -330,14 +333,14 @@
     if(d.paid.day !== today) d.paid = { day: today, xp: 0 };
     var xp = Math.min(n * CARD_XP, Math.max(0, CARD_XP_CAP - d.paid.xp));
     d.paid.xp += xp; save(d);
-    try{ if(window.HubProgress){ if(xp) window.HubProgress.award('apcalc', xp); window.HubProgress.recordActivity('apcalc', n); } }catch(e){}
+    try{ if(window.HubProgress){ if(xp) window.HubProgress.award(CK, xp); window.HubProgress.recordActivity(CK, n); } }catch(e){}
     return xp;
   }
   window.addEventListener('pagehide', function(){ if(run) settle(); });
   function finish(quit){
     if(!run) return;
     var r = run, xp = settle(), graded = r.counts[1] + r.counts[2] + r.counts[3] + r.counts[4];
-    if(graded && window.ApCalcCore) window.ApCalcCore.event('apcalc-session-finish', { mode: 'flashcards', answered: graded, correct: graded - r.counts[1] });
+    if(graded && window.ApCalcCore) window.ApCalcCore.event(CK + '-session-finish', { mode: 'flashcards', answered: graded, correct: graded - r.counts[1] });
     run = null;
     var q = queueFor(deckCards(r.deck), Date.now());
     app.innerHTML = '<section class="calc-fc-done panel" aria-labelledby="calc-fc-done-h" tabindex="-1"><h2 id="calc-fc-done-h">' + (quit && r.done < r.total ? 'Session ended' : 'Session complete') + '</h2>' +

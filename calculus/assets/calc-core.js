@@ -18,8 +18,13 @@
    questions answered right, weighted by level and faded with time, over what
    full mastery takes (min(12, the topic's questions)). */
 (function(){
-  var KEY = 'apcalc_progress_v1';
-  var COURSE = 'apcalc';
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
+  var KEY = CK + '_progress_v1';
+  var COURSE = CK;
+  // Question ids: AB's items calc-<topic>-<n>; AP® Calculus BC's own items cbc-<topic>-<n> (topics[].pfx).
+  var ID_RE = /^(?:calc|cbc)-(.+)-\d+$/;
   var DAY = 86400000;
   var FULL = 12, PRACTICE_FULL = 20, HALF_LIFE = 45, FLOOR = 0.5;
   var LEVEL_W = { r: 0.8, p: 1, a: 1.2 };
@@ -37,7 +42,7 @@
   function save(d){
     d.updated = now();
     try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){}
-    try{ document.dispatchEvent(new CustomEvent('apcalc:progress')); }catch(e){}
+    try{ document.dispatchEvent(new CustomEvent(CK + ':progress')); }catch(e){}
   }
   function levelKey(level){ return level === 'recall' ? 'r' : level === 'analyze' ? 'a' : 'p'; }
   // HubProgress is shared; the course may not be registered with it yet.
@@ -145,7 +150,7 @@
   function lessonComplete(topicId){
     var d = load(), first = !d.lessons[topicId];
     if(first){ d.lessons[topicId] = now(); save(d); hub('award', XP.lesson); }
-    event('apcalc-lesson-complete', { topic: topicId });
+    event(CK + '-lesson-complete', { topic: topicId });
     return first;
   }
   function lessonsDone(){ return load().lessons; }
@@ -251,7 +256,7 @@
   try{
     if(window.StudyHubAccount && window.StudyHubAccount.registerNamespace){
       var mergers = {}; mergers[KEY] = merge;
-      window.StudyHubAccount.registerNamespace(COURSE, [KEY, 'apcalc_flashcards_v1', 'apcalc_prefs_v1', 'apcalc_flagged_v1'], mergers);
+      window.StudyHubAccount.registerNamespace(COURSE, [KEY, CK + '_flashcards_v1', CK + '_prefs_v1', CK + '_flagged_v1'], mergers);
     }
   }catch(e){}
 
@@ -280,7 +285,7 @@
         if(!t || !t.built || !ix.t[topic]) return;
         ix.t[topic].split(',').forEach(function(e){
           var f = e.split('.');
-          out.push({ id: 'calc-' + topic + '-' + f[0], topic: topic, unit: t.unit, type: ix.ty[+f[1]], level: ix.lv[+f[2]], diff: +f[3],
+          out.push({ id: (t.pfx || 'calc') + '-' + topic + '-' + f[0], topic: topic, unit: t.unit, type: ix.ty[+f[1]], level: ix.lv[+f[2]], diff: +f[3],
             practice: ix.pr[+f[4]], stimulus: f[5] === '' || f[5] === undefined ? null : ix.st[+f[5]], calc: f[6] === '1', stub: true });
         });
       });
@@ -293,7 +298,7 @@
     (xs || []).forEach(function(x){
       var id = typeof x === 'string' ? x : x.id;
       ids[id] = 1;
-      var m = /^calc-(.+)-\d+$/.exec(id), t = m && T[m[1]];
+      var m = ID_RE.exec(id), t = m && T[m[1]];
       var u = t ? (t.bank || t.unit) : (typeof x === 'object' && x.unit);
       if(u) units[u] = 1;
     });
@@ -305,7 +310,7 @@
   }
   function loadWhy(base, q){
     if(!q || (q.why && q.why.correct) || !q.unit) return Promise.resolve(q);
-    var m = /^calc-(.+)-\d+$/.exec(q.id || ''), t = null;
+    var m = ID_RE.exec(q.id || ''), t = null;
     if(m) curriculum().topics.forEach(function(x){ if(x.id === m[1]) t = x; });
     return getOnce(base, 'assets/bank/' + ((t && t.bank) || q.unit) + '-why.json').then(function(why){
       var w = why[q.id];

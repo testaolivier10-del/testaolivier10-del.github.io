@@ -16,8 +16,8 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
-export const COURSE_DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
-export const COURSE_SHORT = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy &amp; Physiology', apbio: 'AP&reg; Biology', apchem: 'AP&reg; Chemistry', apphys: 'AP&reg; Physics 1', apcalc: 'AP&reg; Calculus AB', apstat: 'AP&reg; Statistics', apenv: 'AP&reg; Environmental Science', appsych: 'AP&reg; Psychology' };
+export const COURSE_DIR = { nremt: 'nremt', ochem: 'ochem', anp: 'anatomy-physiology', apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus', apcalcbc: 'calculus-bc', apstat: 'statistics', apenv: 'environmental-science', appsych: 'psychology' };
+export const COURSE_SHORT = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy &amp; Physiology', apbio: 'AP&reg; Biology', apchem: 'AP&reg; Chemistry', apphys: 'AP&reg; Physics 1', apcalc: 'AP&reg; Calculus AB', apcalcbc: 'AP&reg; Calculus BC', apstat: 'AP&reg; Statistics', apenv: 'AP&reg; Environmental Science', appsych: 'AP&reg; Psychology' };
 
 const esc = (s) => String(s ?? '').replace(/&(?![a-z]+;|#\d+;|#x[0-9a-f]+;)/gi, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -126,8 +126,9 @@ export function apToolsHubMain(o) {
     cta: first ? { href: `tools/${first.tools[0].slug}.html`, label: `Open the first ${firstKind}` } : null,
     groups: o.groups.filter((g) => g.tools.length).map((g) => ({
       h: g.h, kick: `${esc(g.h)} &middot; ${g.tools.length}`, p: g.p, label: g.h,
-      cards: g.tools.map((t) => ({ slug: t.slug, href: `tools/${t.slug}.html`, name: t.name, desc: t.blurb, foot: esc(t.foot || ''), free: !t.premium,
-        attrs: ` data-tool="${t.slug}"${t.premium ? ' data-premium="1"' : ''}` })),
+      // A tool may link elsewhere (AP® Calculus BC links AB's trainers: t.href, t.attrs).
+      cards: g.tools.map((t) => ({ slug: t.slug, href: t.href || `tools/${t.slug}.html`, name: t.name, desc: t.blurb, foot: esc(t.foot || ''), free: !t.premium,
+        attrs: t.attrs !== undefined ? t.attrs : ` data-tool="${t.slug}"${t.premium ? ' data-premium="1"' : ''}` })),
     })),
     note: o.note,
   });

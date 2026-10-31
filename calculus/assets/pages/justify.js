@@ -22,6 +22,9 @@
    when ApCalcCore.locked() (nothing is locked before launch). Self-checks go
    to apcalc_prefs_v1.justify { id: { got, of, best, ts } }. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
   if(!app) return;
@@ -29,7 +32,7 @@
   var CUR = window.ApCalcCurriculum || { units: [], topics: [] };
   var UNIT = {}; CUR.units.forEach(function(u){ UNIT[u.id] = u; });
   var TOPIC = {}; CUR.topics.forEach(function(t){ TOPIC[t.id] = t; });
-  var DRAFTS = 'apcalc_frq_drafts_v1', PREFS = 'apcalc_prefs_v1';
+  var DRAFTS = CK + '_frq_drafts_v1', PREFS = CK + '_prefs_v1';
   var DATA = null, filter = { unit: '', skill: '' };
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -69,10 +72,10 @@
     var main = app.parentNode, h1 = main.querySelector('.calc-hero h1'), lede = main.querySelector('.calc-hero .lede');
     main.classList.add('ls-host');
     // Back goes to the course home here, not to a tools page.
-    LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: 'AP® Calculus AB', back: BASE + 'index.html', backLabel: 'Back to AP® Calculus AB',
-      slug: 'apcalc-justify', host: app, detailsTitle: 'Topic',
-      menu: { copyLink: true, report: { course: 'apcalc', id: 'page:justify' }, allTools: { label: 'Course home' },
-        note: { label: 'Note.', html: 'This course has not yet been reviewed by an AP® Calculus AB teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
+    LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: CN, back: BASE + 'index.html', backLabel: 'Back to ' + CN,
+      slug: CK + '-justify', host: app, detailsTitle: 'Topic',
+      menu: { copyLink: true, report: { course: CK, id: 'page:justify' }, allTools: { label: 'Course home' },
+        note: { label: 'Note.', html: 'This course has not yet been reviewed by an ' + CN + ' teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
     if(lede){ var pp = document.createElement('p'); pp.textContent = lede.textContent; LS.add('about', pp); }
     app.hidden = true;
     return LS;
@@ -190,7 +193,7 @@
       box.querySelector('[data-act="save"]').addEventListener('click', function(){
         var got = total();
         saveScore(p.id, got, p.checklist.length);
-        if(Core) Core.event('apcalc-justify-check', { prompt: p.id, got: got, of: p.checklist.length });
+        if(Core) Core.event(CK + '-justify-check', { prompt: p.id, got: got, of: p.checklist.length });
         this.textContent = 'Saved'; this.disabled = true;
       });
       box.querySelector('[data-act="again"]').addEventListener('click', function(){

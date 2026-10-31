@@ -22,6 +22,9 @@
    sets. Free users get the outline, weighted by exam weight only, and can
    print it. While premium.js has the course off sale everything is open. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var W = typeof window !== 'undefined' ? window : this;
   var DAY = 86400000;
   var DEFAULT_EXAM = '2027-05-10';
@@ -165,7 +168,7 @@
   if(!app || app.getAttribute('data-slug') !== 'cram') return;
   var BASE = W.ApCalcBase || '';
   var Core = W.ApCalcCore, CUR = W.ApCalcCurriculum || { units: [], topics: [] };
-  var STORE = 'apcalc_cram_v1', DATE_KEY = 'apcalc_exam_date';
+  var STORE = CK + '_cram_v1', DATE_KEY = CK + '_exam_date';
   var frqList = [];
   var UNIT = {}, TOPIC = {}, FRQ = {};
   CUR.units.forEach(function(u){ UNIT[u.id] = u; });
@@ -178,7 +181,7 @@
   function todayIso(){ var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
   function nice(s, long){ var o = { weekday: long ? 'long' : 'short', month: long ? 'long' : 'short', day: 'numeric', timeZone: 'UTC' }; if(long) o.year = 'numeric'; return new Date(parse(s)).toLocaleDateString('en-US', o); }
   function examDate(){
-    var D = W.LevlExamDate, v = D && D.read ? D.read('apcalc') : null;
+    var D = W.LevlExamDate, v = D && D.read ? D.read(CK) : null;
     if(!v){ try{ v = localStorage.getItem(DATE_KEY); }catch(e){} }
     return /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : DEFAULT_EXAM;
   }
@@ -239,7 +242,7 @@
     } else if(d.kind === 'review'){
       li.push('<li>Go through every question you missed in practice exam ' + d.exam + ', with its explanation: ' + link('review.html', 'your review queue') + ' and ' + link('practice.html?mode=missed', 'practice your misses') + '.</li>');
       li.push('<li>Check which units and mathematical practices pulled your score down on ' + link('dashboard.html', 'your dashboard') + '; ' + (d.exam === 1 ? 'the plan’s weak-spot days use it.' : 'the last days go there.') + '</li>');
-      li.push('<li>Put your two section scores into the ' + link('score-calculator.html', 'score calculator') + ' to see which section has more room to grow.</li>');
+      if(CC.score !== false) li.push('<li>Put your two section scores into the ' + link('score-calculator.html', 'score calculator') + ' to see which section has more room to grow.</li>');
     } else if(d.kind === 'rest'){
       li.push('<li>No new questions today. If you want something, ten minutes of ' + link('flashcards.html', 'flashcards') + '.</li>');
     } else if(d.kind === 'eve'){

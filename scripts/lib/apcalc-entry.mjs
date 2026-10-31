@@ -18,7 +18,7 @@
    No path carries the token "ap" (spec decision 2). The helpers come from
    the generator (ctx) so the pages share its head, crumbs, footer and tail. */
 import { loadExams, loadJustify, formUnits, FREE_JUSTIFY, JUSTIFY_SKILLS } from './apcalc-exams.mjs';
-import { renderMath, prepareBank } from './apcalc-build.mjs';
+import { renderMath, prepareBank, RT, COURSE, COURSE_KEY } from './apcalc-build.mjs';
 import { r3Inner } from './r3-inner.mjs';
 
 export const SAMPLE_SIZE = 12;
@@ -159,7 +159,7 @@ export function entryPages(ctx) {
   // Live trainers that practice an equation (EQ rows' sixth field), as links.
   const trainers = slugs => {
     const live = (slugs || []).map(sl => (liveTools || []).find(t => t.slug === sl)).filter(Boolean);
-    return live.length ? `<span class="calc-eq-tools"><span class="calc-small">Practice it:</span> ${live.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}</a>`).join(', ')}</span>` : '';
+    return live.length ? `<span class="calc-eq-tools"><span class="calc-small">Practice it:</span> ${live.map(t => `<a href="${t.href || `tools/${t.slug}.html`}">${esc(t.name)}</a>`).join(', ')}</span>` : '';
   };
   // The first unit with a practice test, or none yet (no link to a page that is not built).
   const firstTest = units.find(built);
@@ -195,12 +195,12 @@ ${bodyOpen(' data-app="formula-sheet"')}
     <ul class="calc-eq-not">${NOT_ON.map(r => `<li><b>${R(r[0])}.</b> ${R(r[1])} <span class="calc-small">${topicLink(r[2], depth)}</span></li>`).join('')}</ul>
   </section>` : ''}
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
-    <p>${[`<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
+    <p>${[COURSE.scoreCalculator && `<a href="score-calculator.html">Estimate your score</a>`, testLink('', 'Free unit practice tests'), `<a href="learn.html">Free notes for every topic</a>`, `<a href="exams.html">Full practice exams</a>`].filter(Boolean).join(' &middot; ')}</p>
   </section>
 </main>
 ${footer(depth, 'page:formula-sheet')}
-<link rel="stylesheet" href="assets/pages/pages.css">
-<link rel="stylesheet" href="assets/pages/entry.css">
+<link rel="stylesheet" href="${RT('')}pages/pages.css">
+<link rel="stylesheet" href="${RT('')}pages/entry.css">
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 ${tail({ depth, section: 'exams', extra: ['pages/calm-ref.js'], site: ['course/tool-studio.js'] })}
 </body>
@@ -209,8 +209,9 @@ ${tail({ depth, section: 'exams', extra: ['pages/calm-ref.js'], site: ['course/t
     out[path] = head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body;
   }
 
-  /* ----------------------------------------------------- score calculator */
-  {
+  /* ----------------------------------------------------- score calculator
+     AB only: AP® Calculus BC has none (owner 2026-10-14, docs/apcalcbc-spec.md section 1). */
+  if (COURSE.scoreCalculator) {
     const depth = '', path = 'score-calculator.html', url = `${SITE}${BASE}${path}`;
     const title = courseTitle('Calculus Score Calculator', [LABEL]);
     const desc = 'Estimate your calculus exam score from multiple-choice questions right and free-response points. The method and its limits are explained on the page.';
@@ -241,8 +242,8 @@ ${bodyOpen(' data-app="score-calculator"')}
   </section>
 </main>
 ${footer(depth, 'page:score-calculator')}
-<link rel="stylesheet" href="assets/pages/pages.css">
-<link rel="stylesheet" href="assets/pages/entry.css">
+<link rel="stylesheet" href="${RT('')}pages/pages.css">
+<link rel="stylesheet" href="${RT('')}pages/entry.css">
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 ${tail({ depth, section: 'exams', extra: ['pages/score.js', 'pages/calm-ref.js'], site: ['course/tool-studio.js'] })}
 </body>
@@ -286,14 +287,14 @@ ${bodyOpen(` data-unit="${ch.id}" data-app="unit-test"`)}
   </section>
 </main>
 ${footer(depth, `unit-test:${ch.id}`)}
-<link rel="stylesheet" href="../assets/pages/pages.css">
-<link rel="stylesheet" href="../assets/pages/entry.css">
+<link rel="stylesheet" href="${RT('../')}pages/pages.css">
+<link rel="stylesheet" href="${RT('../')}pages/entry.css">
 <script type="application/json" id="calc-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
 ${tail({ depth, section: 'exams', extra: ['calc-questions.js', 'pages/sample.js'] })}
 </body>
 </html>
 `;
-    out[path] = r3Inner(head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body, { key: 'apcalc', slug: 'unit-test', up: '../../' });
+    out[path] = r3Inner(head({ title, desc, path, depth, ogType: 'article', jsonld, noindex }) + body, { key: COURSE_KEY, slug: 'unit-test', up: '../../' });
   }
 
   /* ---------------------------------------------------------- exam data */

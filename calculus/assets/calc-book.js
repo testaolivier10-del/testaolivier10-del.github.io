@@ -11,11 +11,14 @@
    Without JavaScript none of this runs, and the main column stays a table of
    contents whose links go to the notes pages. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var CU = window.ApCalcCurriculum;
   var book = document.getElementById('calc-book');
   var rail = document.getElementById('calc-rail');
   if(!CU || !book || !rail) return;
-  var LAST = 'apcalc_book_last';
+  var LAST = CK + '_book_last';
 
   var chapters = CU.units, topics = CU.topics;
   var chById = {}, tById = {};

@@ -54,13 +54,16 @@
    the cram kit instead: Premium (ApCalcCore.allowed('cram')), and they never
    use the free exam. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var BASE = window.ApCalcBase || '';
   var app = document.getElementById('app');
   if(!app) return;
   var hero = document.querySelector('.r3-inner > .band, .page-head, .calc-hero');
   var CUR = window.ApCalcCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApCalcCore, Q = window.ApCalcQuestions;
-  var PREFS = 'apcalc_prefs_v1';
+  var PREFS = CK + '_prefs_v1';
   // The May 2027 parts (docs/apcalc-research/framework.md, section 5).
   var MCQ_TOTAL = 42;
   var MCQ_PARTS = [{ key: 'A', n: 29, sec: 62 * 60, calc: false }, { key: 'B', n: 13, sec: 38 * 60, calc: true }];
@@ -109,7 +112,7 @@
     if(window.ApCalcFrq) return Promise.resolve(window.ApCalcFrq);
     return new Promise(function(res){
       var s = document.createElement('script');
-      s.src = BASE + 'assets/pages/frq-kit.js';
+      s.src = (CC.rt != null ? CC.rt : BASE) + 'assets/pages/frq-kit.js';
       s.onload = function(){ res(window.ApCalcFrq || null); };
       s.onerror = function(){ res(null); };
       document.head.appendChild(s);
@@ -444,7 +447,7 @@
       mcqParts: mcqParts, frqParts: frqParts, frqs: frqParts.reduce(function(o, p){ return o.concat(p.frqs); }, []), answers: [], pi: 0 };
     // Where the exam is left halfway, if it is (assets/analytics.js exam-quit).
     if(window.LevlAnalytics && window.LevlAnalytics.examStart){
-      window.LevlAnalytics.examStart('apcalc', meta && meta.kind || 'exam', mcqParts.reduce(function(n, p){ return n + p.qs.length; }, 0), function(){ return run && run.res ? Object.keys(run.res).length : 0; });
+      window.LevlAnalytics.examStart(CK, meta && meta.kind || 'exam', mcqParts.reduce(function(n, p){ return n + p.qs.length; }, 0), function(){ return run && run.res ? Object.keys(run.res).length : 0; });
     }
     window.addEventListener('beforeunload', guard);
     startSectionOne(0);
@@ -528,7 +531,7 @@
       b.setAttribute('aria-label', 'Question ' + (i + 1) + ', ' + (d ? 'answered' : 'not answered'));
     });
     app.querySelector('.calc-ex-navcount').textContent = '(' + answered() + ' of ' + run.qs.length + ' answered)';
-    if(window.LevlFlags) window.LevlFlags.markNav(app.querySelectorAll('.calc-ex-nav button'), 'apcalc', run.qs);
+    if(window.LevlFlags) window.LevlFlags.markNav(app.querySelectorAll('.calc-ex-nav button'), CK, run.qs);
     app.querySelector('.calc-ex-prev').disabled = run.i === 0;
     var left = run.qs.length - answered();
     app.querySelector('.calc-ex-next').textContent = !left ? endWord() : (run.res[run.qs[run.i].id] ? 'Next' : 'Skip for now');
@@ -579,7 +582,7 @@
     var left = run.qs.length - answered(), box = app.querySelector('.calc-ex-confirm');
     box.querySelector('p').textContent = (left ? plural(left, 'question') + ' not answered yet. Unanswered questions count as wrong. ' : 'All ' + run.qs.length + ' answered. ') +
       (moreAfter() ? 'You cannot come back to ' + (run.mcqParts[run.pi].key ? 'this part' : 'Section I') + '. End it now?' : 'Finish and see your results?');
-    if(window.LevlFlags) window.LevlFlags.examList(box.querySelector('.cx-flaglist'), 'apcalc', run.qs, function(i){ box.hidden = true; go(i); });
+    if(window.LevlFlags) window.LevlFlags.examList(box.querySelector('.cx-flaglist'), CK, run.qs, function(i){ box.hidden = true; go(i); });
     box.hidden = false;
     box.querySelector('.calc-ex-yes').focus();
   }
@@ -722,14 +725,15 @@
     // Each section is half the exam score (docs/apcalc-research/framework.md, section 2).
     var mcqP = pctOf(right, total), composite = fo ? Math.round(0.5 * mcqP + 0.5 * (fg / fo * 100)) : mcqP;
     var isExam = run.meta.kind === 'full';
-    var b = isExam ? band(composite) : 0;
+    // No readiness band where the course has none (AP® Calculus BC, CC.band false).
+    var b = isExam && CC.band !== false ? band(composite) : 0;
     var hist = prefs().examHistory || [];
     hist.push({ ts: Date.now(), kind: run.meta.kind, label: run.label, unit: run.meta.unit || null, form: run.meta.form || null, mcq: { c: right, n: total }, frq: fo ? { got: fg, of: fo } : null, band: b || null, partial: !!run.meta.partial });
     setPref('examHistory', hist.slice(-30));
     // Each FRQ's self-score also counts as an attempt on the FRQ page.
     (run.frqScores || []).forEach(function(s, i){ var f = run.frqs[i]; K.saveScore(f.id, { got: s.got, of: s.of, parts: s.parts, title: f.title, type: f.type, units: f.units, exam: true }); });
     if(window.LevlAnalytics && window.LevlAnalytics.examEnd) window.LevlAnalytics.examEnd();
-    Core.event('apcalc-exam-finish', { kind: run.meta.kind, correct: right, total: total, frq: fg, frqOf: fo, partial: !!run.meta.partial });
+    Core.event(CK + '-exam-finish', { kind: run.meta.kind, correct: right, total: total, frq: fg, frqOf: fo, partial: !!run.meta.partial });
     var stage = app.querySelector('.calc-ex-stage') || app;
     stage.insertAdjacentHTML('afterbegin', '<p class="calc-small">Marking your exam and loading the explanations…</p>');
     Promise.all(rows.map(function(x){ return Core.loadWhy(BASE, x.q); })).then(function(){ results(rows, right, fg, fo, composite, b); }, function(){ results(rows, right, fg, fo, composite, b); });
@@ -760,7 +764,7 @@
       '<div class="calc-pr-score"><span class="calc-pr-score-big">' + right + '<small>/' + total + '</small></span><span><b>Multiple choice: ' + pctOf(right, total) + '%</b><span class="calc-small">' + esc(run.label) +
         (run.timeUp1 ? ' · time ran out in Section I' : '') + '</span></span></div>' +
       (fo ? '<div class="calc-pr-score calc-ex-fsum"><span class="calc-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="calc-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
-      (k === 'full' ? '<section class="calc-ex-band" aria-labelledby="calc-ex-band-h"><h2 id="calc-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
+      (k === 'full' && b ? '<section class="calc-ex-band" aria-labelledby="calc-ex-band-h"><h2 id="calc-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
         '<p class="calc-ex-band-warn"><b>' + NOT_CALIBRATED + '</b></p>' +
         '<p class="calc-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 66% and up is band 5, 49% band 4, 40% band 3, 23% band 2, below that band 1. These cut-offs are our estimate, fitted to the published 2024 to 2026 score distributions; the real ones are not published and change a little each year' +
         (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '. The <a href="' + BASE + 'score-calculator.html">score calculator</a> explains the method.</p></section>' : '') +
@@ -779,7 +783,7 @@
       '<h2>Review every question</h2>' +
       '<div class="calc-ex-filter" role="group" aria-label="Show"><button type="button" class="calc-pr-chip-b" aria-pressed="true" data-f="all">All ' + total + '</button><button type="button" class="calc-pr-chip-b" aria-pressed="false" data-f="miss"' + (missedN ? '' : ' disabled') + '>Missed ' + missedN + '</button></div>' +
       '<ol class="calc-ex-review">' + rows.map(function(x, i){ return reviewItem(x.q, x.r, i + 1); }).join('') + '</ol>' +
-      (window.LevlPremium && window.LevlPremium.card ? window.LevlPremium.card('apcalc', 'summary') : '') +
+      (window.LevlPremium && window.LevlPremium.card ? window.LevlPremium.card(CK, 'summary') : '') +
       '<div class="calc-pr-actions"><button type="button" class="btn-outline" data-act="again">Another exam</button></div></div>';
     app.querySelectorAll('[data-act="again"]').forEach(function(x){ x.addEventListener('click', renderSetup); });
     app.querySelectorAll('[data-f]').forEach(function(x){
@@ -825,7 +829,7 @@
     return '<li class="calc-q calc-ex-ritem ' + cls + '"><p class="calc-ex-verdict"><span class="calc-ex-vtag">' + verdict + (r.score > 0 && !r.correct ? ' (' + Math.round(r.score * 100) + '%)' : '') + '</span><span class="calc-small">' + esc(t ? t.title : '') + ' · Practice ' + esc(q.practice || '') + '</span></p>' +
       (q.stim ? '<details class="calc-ex-stimd"><summary>Show the ' + esc((q.stim.kind === 'table' ? 'table' : q.stim.kind === 'graph' ? 'graph' : 'diagram')) + ': ' + (q.stim.title || '') + '</summary>' + Q.stimulusPanel(q.stimulus, q.stim) + '</details>' : '') +
       '<p class="calc-q-stem"><span class="calc-q-n">' + n + '.</span> ' + html(q.q) + '</p>' + body + (why.correct ? '<p class="calc-ex-why"><b>Why:</b> ' + html(why.correct) + '</p>' : '') +
-      '<p class="calc-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button('apcalc', q.id) : '') + '</p></li>';
+      '<p class="calc-ex-links"><a href="' + BASE + 'lessons/' + q.topic + '.html">Lesson</a> <span aria-hidden="true">&middot;</span> <a href="' + BASE + 'notes/' + q.topic + '.html">Notes</a>' + (window.LevlReport ? ' ' + window.LevlReport.button(CK, q.id) : '') + '</p></li>';
   }
 
   /* ------------------------------------------------------ boot */

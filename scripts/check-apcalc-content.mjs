@@ -18,6 +18,12 @@
                                                          PUBLISHED chapter; the rest print
      APCALC_DATA=<dir>                                    check another data folder (tests)
 
+   AP® Calculus BC runs this same check through scripts/check-apcalcbc-content.mjs
+   (APCALC_COURSE=bc): it checks BC's own files in calculus-bc/data/ (APCALCBC_DATA
+   for tests) against the BC map, with BC's ids (cbc-), the interval answer type, BC's
+   FRQ types and slots, and BC's tool validators (scripts/lib/apcalcbc-tool-checks/).
+   AB's files are AB's check's job; BC's near-duplicate rule still reads them.
+
    Per topic: lesson, notes, question file (items and stimuli), glossary, the
    ordering rule (no term taught by a later topic, outside a declared preview
    box). Across the bank: the test-wise balance rules (A&P decision 79, via
@@ -30,30 +36,47 @@
    With no map, formats are still checked, but nothing counts as published. */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
-import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems } from './lib/apcalc-build.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS } from './lib/apcalc-exams.mjs';
+import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems, COURSE, IS_BC, intervalTex, dataDirs } from './lib/apcalc-build.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, JUSTIFY_SKILLS, BC_FRQ_SLOTS } from './lib/apcalc-exams.mjs';
 import { scanPage } from './lib/apcalc-map.mjs';
 import { Expr, Tex, Plot } from './lib/apcalc-mathlib.mjs';
 export { trademarkProblems };
 
-const DATA = process.env.APCALC_DATA || join(ROOT, 'calculus', 'data');
+const DATA = process.env[COURSE.dataEnv] || join(ROOT, COURSE.dir, 'data');
+// BC: AB's authored data, read for figures, the near-duplicate rule and AB trainers BC links.
+const AB_DATA = IS_BC ? dataDirs(ROOT).ab : DATA;
+const LABEL = `AP ${COURSE.short}`;
+// A question id's prefix: AB items calc-, BC's own cbc- (docs/apcalcbc-architecture.md).
+const pfxOf = topic => IS_BC && topic.source === 'bc' ? COURSE.idPrefix : 'calc';
 const args = process.argv.slice(2);
 const only = args.includes('--topic') ? args[args.indexOf('--topic') + 1] : null;
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 const exists = p => existsSync(p);
 const strip = s => String(s ?? '').replace(/<[^>]+>/g, ' ');
 
-export const TYPES = ['single', 'multi', 'numeric', 'expr', 'order', 'predict'];
+export const TYPES = ['single', 'multi', 'numeric', 'expr', 'order', 'predict', ...(IS_BC ? ['interval'] : [])];
 export const LEVELS = ['recall', 'apply', 'analyze'];
 export const STIM_KINDS = ['table', 'graph', 'diagram'];
 // The recurring free-response types (framework.md section 5): 9 points each.
-export const FRQ_TYPES = Object.fromEntries(['table', 'model', 'motion', 'area', 'de', 'graph', 'implicit', 'fg'].map(t => [t, 9]));
+export const FRQ_TYPES = Object.fromEntries(['table', 'model', 'motion', 'area', 'de', 'graph', 'implicit', 'fg', ...(IS_BC ? ['parametric', 'techniques', 'series'] : [])].map(t => [t, 9]));
 // Multiple choice on the exam has four options (A-D).
 export const MCQ_OPTIONS = 4;
 export const SKILL_RE = /^[1-4]\.[A-G]$/;
 // Skills the exam does not assess (CED practices table).
 export const NOT_ASSESSED = ['1.A', '1.B', '3.A'];
+
+/* The browser's question engine (calculus/assets/calc-questions.js) in a vm,
+   so an interval key is graded by the code students run. */
+let QUESTIONS = null;
+function Questions() {
+  if (QUESTIONS) return QUESTIONS;
+  const ctx = { Math, Number, String, Array, Object, JSON, Error, isFinite, isNaN, parseFloat, RegExp, Infinity, NaN };
+  ctx.window = ctx; vm.createContext(ctx);
+  for (const f of ['calc-expr.js', 'calc-questions.js']) vm.runInContext(readFileSync(join(ROOT, 'calculus', 'assets', f), 'utf8'), ctx, { filename: f });
+  return (QUESTIONS = ctx.ApCalcQuestions);
+}
 
 /* Every $...$ in a piece of text renders in the course's TeX subset. */
 export function mathProblems(t) { return Tex.check(String(t ?? '')); }
@@ -223,9 +246,37 @@ export function exprProblems(E) {
   return out;
 }
 
+/* An interval item's key (AP® Calculus BC; docs/apcalcbc-architecture.md,
+   "interval items"): two endpoints (numbers or exact values in the student
+   syntax, "-inf"/"inf"), low below high, a bracket flag for each finite end,
+   or one point; authored slips are graded wrong. */
+export function intervalProblems(I, grade) {
+  const out = [], bad = m => out.push(m);
+  if (!I || typeof I !== 'object') { bad('interval item needs an "interval" object'); return out; }
+  const end = e => /^-?(inf|infinity)$/i.test(String(e).trim()) ? (String(e).trim().startsWith('-') ? -Infinity : Infinity) : Expr.number(String(e));
+  if (I.point !== undefined) { if (!Number.isFinite(end(I.point))) bad('interval.point must be a number or an exact value'); }
+  else {
+    const lo = end(I.lo), hi = end(I.hi);
+    if (Number.isNaN(lo) || Number.isNaN(hi)) bad('interval.lo and interval.hi must be numbers, exact values ("sqrt(3)") or "-inf"/"inf"');
+    else if (!(lo < hi)) bad('interval.lo must be below interval.hi (use "point" for a single point)');
+    for (const k of ['loIn', 'hiIn']) if (I[k] !== undefined && typeof I[k] !== 'boolean') bad(`interval.${k} must be true or false`);
+    if (lo === -Infinity && I.loIn) bad('an infinite endpoint is never included (loIn)');
+    if (hi === Infinity && I.hiIn) bad('an infinite endpoint is never included (hiIn)');
+  }
+  if (I.var !== undefined && !/^[a-z]$/.test(I.var)) bad('interval.var must be one letter');
+  try { Tex.render(intervalTex(I), { strict: true }); } catch (e) { bad(`interval: the key does not render (${e.message})`); }
+  for (const [i, m] of (I.mistakes || []).entries()) {
+    if (!m.answer || !m.why || strip(m.why).trim().length < 20) bad(`interval.mistakes[${i}] needs an answer and a "why" that names the slip`);
+    else if (grade && grade({ type: 'interval', interval: I }, m.answer).correct) bad(`interval.mistakes[${i}] (${m.answer}) is graded right, so its feedback never shows`);
+  }
+  if (grade) { const k = I.point !== undefined ? `x = ${I.point}` : `${I.loIn ? '[' : '('}${I.lo}, ${I.hi}${I.hiIn ? ']' : ')'}`; if (!grade({ type: 'interval', interval: I }, k).correct) bad(`interval: the key typed as ${k} is not graded right`); }
+  return out;
+}
+
 export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   const w = `item ${q.id || '(no id)'}`;
-  if (!q.id || !(idRe || new RegExp(`^calc-${topic.id}-\\d+$`)).test(q.id)) err(`${w}: id must be ${idRe ? 'calc-exam-<form>-<nn>' : `calc-${topic.id}-<n>`}`);
+  const pfx = pfxOf(topic);
+  if (!q.id || !(idRe || new RegExp(`^${pfx}-${topic.id}-\\d+$`)).test(q.id)) err(`${w}: id must be ${idRe ? `${IS_BC ? COURSE.idPrefix : 'calc'}-exam-<form>-<nn>` : `${pfx}-${topic.id}-<n>`}`);
   if (!TYPES.includes(q.type)) err(`${w}: type must be one of ${TYPES.join(', ')}`);
   // Unit, topic and practice are required and never inferred (spec section 1).
   if (!q.unit) err(`${w}: "unit" is required`); else if (q.unit !== topic.chapter) err(`${w}: unit "${q.unit}" is not this topic's chapter "${topic.chapter}"`);
@@ -249,6 +300,10 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
     for (const p of exprProblems(q.expr)) err(`${w}: ${p}`);
     if (q.options || q.correct !== undefined) err(`${w}: expr items have no options or correct`);
     if (q.calc) err(`${w}: an expr item is a no-calculator item (an expression is the answer)`);
+  } else if (q.type === 'interval') {
+    for (const p of intervalProblems(q.interval, Questions().grade)) err(`${w}: ${p}`);
+    if (q.options || q.correct !== undefined) err(`${w}: interval items have no options or correct`);
+    if (q.calc) err(`${w}: an interval item is a no-calculator item`);
   } else if (q.type === 'predict') {
     if (!Array.isArray(q.variables) || q.variables.length < 2) err(`${w}: predict needs 2+ variables`);
     for (const v of q.variables || []) {
@@ -412,6 +467,7 @@ export function checkTopic(map, id, { glossary, figures }) {
   return { errors, warns, items };
 }
 
+const figDir = f => f && f._course === 'ab' ? 'calculus/figures' : `${COURSE.dir}/figures`;
 /* Figure licenses: our own SVG or public domain, always with a credit; no
    OpenStax material (docs/apcalc-spec.md decision 4). */
 export function checkFigure(fid, f, err) {
@@ -421,14 +477,14 @@ export function checkFigure(fid, f, err) {
   if (!f.alt || f.alt.length < 20) err(`figure ${fid}: alt text missing`);
   if (f.source === 'levlprep') {
     if (f.license !== 'LevlPrep original') err(`figure ${fid}: our own diagrams carry the license "LevlPrep original"`);
-    if (f.ext !== 'svg' || !exists(join(ROOT, 'calculus', 'figures', `${fid}.svg`))) err(`figure ${fid}: our own diagram must be calculus/figures/${fid}.svg with "ext": "svg"`);
+    if (f.ext !== 'svg' || !exists(join(ROOT, figDir(f), `${fid}.svg`))) err(`figure ${fid}: our own diagram must be ${figDir(f)}/${fid}.svg with "ext": "svg"`);
   } else if (f.license === 'LevlPrep original') err(`figure ${fid}: "LevlPrep original" is only for source "levlprep"`);
   else if (f.source === 'public-domain') {
     if (f.license !== 'Public domain') err(`figure ${fid}: a public-domain source carries the license "Public domain"`);
     if (!f.url) err(`figure ${fid}: a public-domain figure records where it came from (url)`);
   } else err(`figure ${fid}: source must be levlprep or public-domain (no OpenStax material in this course)`);
   if (/openstax/i.test(JSON.stringify(f))) err(`figure ${fid}: no OpenStax material in this course`);
-  if (f.source !== 'levlprep' && !exists(join(ROOT, 'calculus', 'figures', `${fid}.${f.ext || 'jpg'}`))) err(`figure ${fid}: file calculus/figures/${fid}.${f.ext || 'jpg'} is missing`);
+  if (f.source !== 'levlprep' && !exists(join(ROOT, figDir(f), `${fid}.${f.ext || 'jpg'}`))) err(`figure ${fid}: file ${figDir(f)}/${fid}.${f.ext || 'jpg'} is missing`);
 }
 
 /* FRQs (spec section 1): rubric points add up, every part has a sample. */
@@ -477,12 +533,17 @@ function glossaryAll() {
   return all;
 }
 function figuresAll() {
-  const dir = join(DATA, 'figures'), all = {};
-  if (exists(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json'))) Object.assign(all, readJson(join(dir, f)));
+  const all = {};
+  // BC lessons may use AB's figures (each knows its folder); BC's own win.
+  for (const [d, course] of IS_BC ? [[AB_DATA, 'ab'], [DATA, 'bc']] : [[DATA, null]]) {
+    const dir = join(d, 'figures');
+    if (exists(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json'))) for (const [k, v] of Object.entries(readJson(join(dir, f)))) all[k] = course ? { ...v, _course: course } : v;
+  }
   return all;
 }
 
-const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+// Run directly, or through scripts/check-apcalcbc-content.mjs (BC), which imports this file.
+const isMain = (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) || process.env.APCALC_CONTENT_MAIN === '1';
 if (isMain) {
   const map = loadMap();
   const published = new Set(exists(join(DATA, 'published.json')) ? readJson(join(DATA, 'published.json')).chapters || [] : []);
@@ -490,7 +551,7 @@ if (isMain) {
   const dataTopics = new Set(['lessons', 'notes', 'questions'].flatMap(d => exists(join(DATA, d)) ? readdirSync(join(DATA, d)).filter(f => !f.startsWith('.')).map(f => f.replace(/\.(json|html)$/, '')) : []));
   let failed = 0, draft = 0, total = 0;
   const pubItems = [], allItems = [];
-  if (!map) console.log('AP Calculus AB content: no course map yet; checking formats that need no map.');
+  if (!map) console.log(`${LABEL} content: no course map yet; checking formats that need no map.`);
   const ids = only ? [only] : [...dataTopics].sort();
   for (const id of ids) {
     const topic = map && map.topicById(id);
@@ -507,6 +568,7 @@ if (isMain) {
     allItems.push(...r.items);
     const isPub = published.has(topic.chapter);
     if (isPub) pubItems.push(...r.items);
+    if (IS_BC && topic.source === 'ab') console.log(`${id}: FAIL: an AB topic's files belong in calculus/data/, not ${COURSE.dir}/data/ (no copies of AB files)`);
     if (r.errors.length || r.warns.length || only) {
       console.log(`${id}: ${r.errors.length ? 'FAIL' : 'ok'} (${r.items.length} items${isPub ? '' : ', unpublished'})`);
       for (const e of r.errors) console.log(`  FAIL: ${e}`);
@@ -517,9 +579,16 @@ if (isMain) {
   // Bank-wide rules: they fail on the published bank and print for the whole one.
   const ids2 = new Map();
   for (const q of allItems) { if (ids2.has(q.id)) console.log(`  FAIL: item id ${q.id} is used twice`); ids2.set(q.id, 1); }
-  const bankErr = [...testWise(pubItems), ...duplicates(pubItems)];
+  // BC: a BC item must not near-duplicate an AB item either (the AB bank is part of the BC bank).
+  const abItems = [];
+  if (IS_BC && map) for (const t of map.topics.filter(t => t.source === 'ab')) {
+    const p = join(AB_DATA, 'questions', `${t.id}.json`);
+    if (exists(p)) { const f = readJson(p); abItems.push(...f.items.map(q => q.stimulus && (f.stimuli || {})[q.stimulus] ? { ...q, ctx: f.stimuli[q.stimulus].title || '' } : q)); }
+  }
+  const mine = e => !IS_BC || new RegExp(`\\b${COURSE.idPrefix}-`).test(e);
+  const bankErr = [...testWise(pubItems), ...duplicates([...pubItems, ...(pubItems.length ? abItems : [])]).filter(mine)];
   for (const e of bankErr) console.log(`bank: FAIL: ${e}`);
-  for (const e of [...testWise(allItems), ...duplicates(allItems)]) if (!bankErr.includes(e)) console.log(`bank (with unpublished): ${e}`);
+  for (const e of [...testWise(allItems), ...duplicates([...allItems, ...(allItems.length ? abItems : [])]).filter(mine)]) if (!bankErr.includes(e)) console.log(`bank (with unpublished): ${e}`);
   // FRQs: fail when any of their units is published.
   let frqFails = 0;
   const frqDir = join(DATA, 'frq');
@@ -542,8 +611,11 @@ if (isMain) {
     for (const k of ['h1', 'title', 'lede', 'card']) for (const p of trademarkProblems(a[k])) { console.log(`pages.json ${a.slug}.${k}: FAIL: ${p}`); metaFails++; }
     for (const k of ['slug', 'script', 'css']) if (a[k] && [].concat(a[k]).some(hasApToken)) { console.log(`pages.json ${a.slug}: FAIL: ${k} "${a[k]}" contains the token "ap"`); metaFails++; }
   }
+  const abPages = IS_BC && exists(join(AB_DATA, 'pages.json')) ? readJson(join(AB_DATA, 'pages.json')) : { tools: [] };
   for (const t of pages.tools || []) {
     const bad = m => { console.log(`pages.json tool ${t.slug}: FAIL: ${m}`); metaFails++; };
+    // BC links AB's trainers: { slug, from: "ab" }, the rest from AB's pages.json.
+    if (t.from === 'ab') { if (!IS_BC || !(abPages.tools || []).some(x => x.slug === t.slug)) bad('"from": "ab" names no AB trainer'); continue; }
     if (/\bAP\b/.test(t.desc || '')) bad('no "AP" in desc (it is the meta description)');
     for (const k of ['name', 'title', 'blurb', 'lede']) { if (!t[k] && k !== 'lede') bad(`"${k}" is required`); for (const p of trademarkProblems(t[k])) bad(`${k}: ${p}`); }
     if (!t.slug || hasApToken(t.slug)) bad(`slug "${t.slug}" is missing or contains the token "ap"`);
@@ -552,8 +624,8 @@ if (isMain) {
     // file exists it needs its script, its model file and its validator
     // (docs/apcalc-architecture.md, "Tools").
     if (exists(join(DATA, 'tools', `${t.slug}.json`))) {
-      if (!exists(join(ROOT, 'calculus', 'assets', 'tools', `${t.slug}.js`))) bad(`no script calculus/assets/tools/${t.slug}.js`);
-      if (!exists(join(ROOT, 'calculus', 'assets', 'tools', 'math', `${t.slug}.js`))) bad(`no model file calculus/assets/tools/math/${t.slug}.js`);
+      if (!exists(join(ROOT, COURSE.dir, 'assets', 'tools', `${t.slug}.js`))) bad(`no script ${COURSE.dir}/assets/tools/${t.slug}.js`);
+      if (!exists(join(ROOT, COURSE.dir, 'assets', 'tools', 'math', `${t.slug}.js`))) bad(`no model file ${COURSE.dir}/assets/tools/math/${t.slug}.js`);
     }
     if (t.studio !== true) bad('every tool is on the Tool Studio ("studio": true)');
     if (typeof t.topic !== 'string' || (map && !map.topicById(t.topic))) bad(`"topic" must be the tool's context topic in the map (got ${JSON.stringify(t.topic)})`);
@@ -564,8 +636,9 @@ if (isMain) {
   const toolDir = join(DATA, 'tools');
   const runTools = !only || args.includes('--tools');
   for (const f of runTools && exists(toolDir) ? readdirSync(toolDir).filter(f => f.endsWith('.json')).sort() : []) {
-    const slug = f.slice(0, -5), v = join(ROOT, 'scripts', 'lib', 'apcalc-tool-checks', `${slug}.mjs`);
-    if (!exists(v)) { console.log(`tool ${slug}: FAIL: no validator at scripts/lib/apcalc-tool-checks/${slug}.mjs`); toolFails++; continue; }
+    const vdir = IS_BC ? 'apcalcbc-tool-checks' : 'apcalc-tool-checks';
+    const slug = f.slice(0, -5), v = join(ROOT, 'scripts', 'lib', vdir, `${slug}.mjs`);
+    if (!exists(v)) { console.log(`tool ${slug}: FAIL: no validator at scripts/lib/${vdir}/${slug}.mjs`); toolFails++; continue; }
     const { check } = await import(v);
     const errs = check(readJson(join(toolDir, f)), map) || [];
     if (errs.length) { toolFails++; console.log(`tool ${slug}: FAIL`); for (const e of errs) console.log(`  FAIL: ${e}`); }
@@ -580,14 +653,16 @@ if (isMain) {
     const bad2 = m => { console.log(`exams: FAIL: ${m}`); examFails++; };
     const examItems = new Map(ex.items.map(q => [q.id, q]));
     const orderOf = {};
-    for (const t of map.topics) { const p = join(DATA, 'questions', `${t.id}.json`); if (exists(p)) readJson(p).items.forEach((q, i) => { orderOf[q.id] = i; }); }
+    // BC forms use AB's bank items and AB's FRQs too (the shared Q1, Q3, Q4).
+    const dataOf = t => IS_BC && t.source === 'ab' ? AB_DATA : DATA;
+    for (const t of map.topics) { const p = join(dataOf(t), 'questions', `${t.id}.json`); if (exists(p)) readJson(p).items.forEach((q, i) => { orderOf[q.id] = i; }); }
     ex.items.forEach((q, i) => { orderOf[q.id] = i; });
     for (const [sid, s] of Object.entries(ex.stimuli)) { if (!/^exam-\d+-s\d+$/.test(sid)) bad2(`stimulus ${sid}: id must be exam-<form>-s<n>`); checkStimulus(sid, s, figuresAll(), bad2); }
     for (const q of ex.items) {
       const topic = map.topicById(q.topic);
       if (!topic) { bad2(`${q.id}: unknown topic "${q.topic}"`); continue; }
       if (q.type !== 'single') bad2(`${q.id}: exam-only items are four-option single-answer questions`);
-      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: /^calc-exam-\d+-\d{2}$/ });
+      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: new RegExp(`^${IS_BC ? COURSE.idPrefix : 'calc'}-exam-\\d+-\\d{2}$`) });
       // The ordering rule: a full practice exam is taken after the whole course,
       // so nothing outside the course's terms (scanned from its last topic).
       const last = map.topics.filter(t => t.chapter.startsWith('unit-')).pop();
@@ -595,19 +670,20 @@ if (isMain) {
       for (const p of trademarkProblems(textOfItem(q))) bad2(`${q.id}: trademark: ${p}`);
     }
     if (ex.items.length) { const lt = lengthTell(ex.items); if (lt) bad2(`exam-only items: ${lt}`); }
-    for (const e of [...testWise(ex.items), ...duplicates([...allItems, ...ex.items.map(q => ({ ...q, topic: `exam:${q.topic}` }))]).filter(e => /calc-exam-/.test(e))]) bad2(e);
+    for (const e of [...testWise(ex.items), ...duplicates([...allItems, ...ex.items.map(q => ({ ...q, topic: `exam:${q.topic}` }))]).filter(e => new RegExp(`${IS_BC ? COURSE.idPrefix : 'calc'}-exam-`).test(e))]) bad2(e);
     const frqs = {};
-    for (const f of exists(frqDir) ? readdirSync(frqDir).filter(f => f.endsWith('.json')) : []) { const d = readJson(join(frqDir, f)); frqs[d.id] = d; }
-    const bank = new Map(allItems.map(q => [q.id, q]));
-    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id] })) bad2(e);
+    for (const dir of IS_BC ? [join(AB_DATA, 'frq'), frqDir] : [frqDir]) for (const f of exists(dir) ? readdirSync(dir).filter(f => f.endsWith('.json')) : []) { const d = readJson(join(dir, f)); frqs[d.id] = d; }
+    const bank = new Map([...abItems, ...allItems].map(q => [q.id, q]));
+    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id], ...(IS_BC ? { slots: BC_FRQ_SLOTS } : {}) })) bad2(e);
     for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
-    if (prompts.length < 32) bad2(`the justification trainer has ${prompts.length} prompts; it needs at least 32`);
-    for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 3 || n > 5) bad2(`${u.id} has ${n} justification prompts (3 to 5)`); }
+    // AB's counts; BC's prompts (Units 9 and 10 and the BC topics) are sized in Phase 3 (docs/apcalcbc-spec.md).
+    if (!IS_BC && prompts.length < 32) bad2(`the justification trainer has ${prompts.length} prompts; it needs at least 32`);
+    if (!IS_BC) for (const u of map.chapters.filter(c => c.part === 'course')) { const n = prompts.filter(p => p.unit === u.id).length; if (n < 3 || n > 5) bad2(`${u.id} has ${n} justification prompts (3 to 5)`); }
     for (const k of Object.keys(JUSTIFY_SKILLS)) if (prompts.length && !prompts.some(p => p.skill === k)) bad2(`no justification prompt practises "${k}"`);
     // Each form: mostly bank items that are not lesson-check items (those are on
     // the free lessons), plus 12-14 exam-only items of its own.
     const lessonChecks = new Set();
-    for (const t of map.topics) { const p = join(DATA, 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
+    for (const t of map.topics) { const p = join(dataOf(t), 'lessons', `${t.id}.json`); if (exists(p)) for (const id of readJson(p).check || []) lessonChecks.add(id); }
     for (const f of ex.forms) {
       const ids = (f.mcq || []).flat(), own = ids.filter(id => examItems.has(id)).length;
       if (own < 12 || own > 14) bad2(`${f.id}: ${own} exam-only items (12 to 14)`);
@@ -615,9 +691,9 @@ if (isMain) {
     }
     for (const q of ex.items) if (!ex.forms.some(f => (f.mcq || []).flat().includes(q.id))) bad2(`${q.id}: an exam-only item in no form`);
     for (const e of checkNumbers(examItems, prompts)) bad2(e);
-    console.log(`AP Calculus AB exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} justification prompts, ${examFails} failing.`);
+    console.log(`${LABEL} exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} justification prompts, ${examFails} failing.`);
   }
   const bad = failed + bankErr.length + frqFails + metaFails + toolFails + examFails;
-  console.log(`AP Calculus AB content: ${ids.length} topics, ${total} items, ${failed} failing${draft ? ` (+${draft} in unpublished chapters)` : ''}; bank ${bankErr.length}, FRQ ${frqFails}, meta ${metaFails}, tools ${toolFails}, exams ${examFails} failing.`);
+  console.log(`${LABEL} content: ${ids.length} topics, ${total} items, ${failed} failing${draft ? ` (+${draft} in unpublished chapters)` : ''}; bank ${bankErr.length}, FRQ ${frqFails}, meta ${metaFails}, tools ${toolFails}, exams ${examFails} failing.`);
   if (args.includes('--check') && bad) process.exit(1);
 }

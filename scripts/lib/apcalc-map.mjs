@@ -41,6 +41,14 @@ export const BC_ONLY = ['6.11', '6.12', '6.13', '7.5', '7.9', '8.13'];
 export const AB_TOPICS = Object.entries(UNIT_SIZES)
   .flatMap(([u, k]) => Array.from({ length: k }, (_, i) => `${u}.${i + 1}`))
   .filter(n => !BC_ONLY.includes(n));
+/* AP® Calculus BC (docs/apcalcbc-phase0.md): all 111 topics, Units 1-10, in
+   CED order, the BC-only ones included; its FRQ types add the three BC-only
+   slots; its trainers add the six of docs/apcalcbc-spec.md section 6.
+   validateMap(map, { course: 'bc' }) checks a merged BC map against these. */
+const BC_UNIT_SIZES = { ...UNIT_SIZES, 9: 9, 10: 15 };
+export const BC_TOPICS = Object.entries(BC_UNIT_SIZES).flatMap(([u, k]) => Array.from({ length: k }, (_, i) => `${u}.${i + 1}`));
+export const FRQ_TYPES_BC = [...FRQ_TYPES, 'parametric', 'techniques', 'series'];
+export const BC_SIMULATORS = ['series-lab', 'taylor-lab', 'parametric-motion', 'polar-lab', 'integration-methods', 'euler-logistic'];
 export const RESOLUTIONS = ['pull-forward', 'preview'];
 // The spec's differentiators (docs/apcalc-spec.md section 3) that are tools:
 // each must be planned in some unit, exactly once.
@@ -182,8 +190,10 @@ export function indexMap(map) {
 /* Everything that can be wrong with the map. Returns { errors, warnings }.
    requiredSimulators: simulator ids that must be planned somewhere (the
    owner brief's list by default; tests pass [] for their small maps). */
-export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = {}) {
+export function validateMap(map, { course = 'ab', requiredSimulators = course === 'bc' ? [...REQUIRED_SIMULATORS, ...BC_SIMULATORS] : REQUIRED_SIMULATORS } = {}) {
   const errors = [], warnings = [];
+  const bc = course === 'bc';
+  const TOPIC_LIST = bc ? BC_TOPICS : AB_TOPICS, FRQ_LIST = bc ? FRQ_TYPES_BC : FRQ_TYPES;
   const err = m => errors.push(m), warn = m => warnings.push(m);
   const dup = (list, what) => {
     const seen = new Set();
@@ -238,9 +248,9 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
       if (t.after !== undefined || t.before !== undefined) err(`topic ${t.id}: only skills take "after" or "before"`);
       // CED numbers rise inside each unit, in array order, skipping only the
       // BC-only numbers: each is the next AB number of its unit.
-      const list = AB_TOPICS.filter(n => n.split('.')[0] === String(ch.n));
+      const list = TOPIC_LIST.filter(n => n.split('.')[0] === String(ch.n));
       const want = list[unitSeq.get(ch.id) || 0];
-      if (t.ced !== want) err(`topic ${t.id}: ced is "${t.ced}", expected "${want}" (CED order, BC-only topics skipped)`);
+      if (t.ced !== want) err(`topic ${t.id}: ced is "${t.ced}", expected "${want}" (CED order${bc ? '' : ', BC-only topics skipped'})`);
       unitSeq.set(ch.id, (unitSeq.get(ch.id) || 0) + 1);
     } else if (KINDS.includes(t.kind)) {
       if (ch.part !== 'skills') err(`topic ${t.id}: ${t.kind} topics belong in a skills chapter`);
@@ -257,9 +267,9 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
   // Every AB topic is in the map once (only when the map has all eight units;
   // tests use small maps).
   const ceds = map.topics.filter(t => t.kind === 'concept').map(t => t.ced);
-  if (map.chapters.filter(c => c.part === 'course').length === 8)
-    for (const n of AB_TOPICS) if (!ceds.includes(n)) err(`AB topic ${n} is missing from the map`);
-  for (const n of ceds) if (BC_ONLY.includes(n)) err(`topic ${n} is BC only`);
+  if (map.chapters.filter(c => c.part === 'course').length === (bc ? 10 : 8))
+    for (const n of TOPIC_LIST) if (!ceds.includes(n)) err(`${bc ? 'BC' : 'AB'} topic ${n} is missing from the map`);
+  if (!bc) for (const n of ceds) if (BC_ONLY.includes(n)) err(`topic ${n} is BC only`);
 
   // Concepts: where taught, short versions with a later full treatment.
   const byTopic = new Map(map.topics.map(t => [t.id, []]));
@@ -373,7 +383,7 @@ export function validateMap(map, { requiredSimulators = REQUIRED_SIMULATORS } = 
             sims.set(it.id, ch.id);
           }
         }
-        if (kind === 'frqThemes' && !FRQ_TYPES.includes(it.type)) err(`chapter ${ch.id}: FRQ theme "${it.title}" has unknown type "${it.type}"`);
+        if (kind === 'frqThemes' && !FRQ_LIST.includes(it.type)) err(`chapter ${ch.id}: FRQ theme "${it.title}" has unknown type "${it.type}"`);
         if (kind === 'stimulusThemes' && !STIMULUS_KINDS.includes(it.stimulus)) err(`chapter ${ch.id}: stimulus theme "${it.title}" needs stimulus ${STIMULUS_KINDS.join('|')}`);
       }
     }

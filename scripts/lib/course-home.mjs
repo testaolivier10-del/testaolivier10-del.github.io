@@ -132,7 +132,7 @@ export function apHomeCtx(o) {
   const d = homeData(o.key);
   const first = o.first;
   const firstHref = first ? `lessons/${first.id}.html` : 'learn.html';
-  const tools = (o.tools || []).map((t) => ({ slug: t.slug, name: t.name, href: `tools/${t.slug}.html` }));
+  const tools = (o.tools || []).map((t) => ({ slug: t.slug, name: t.name, href: t.href || `tools/${t.slug}.html` }));
   const app = (h1) => (o.apps || []).find((a) => a.h1.toLowerCase() === String(h1).toLowerCase());
   const byTitle = (t) => o.chapters.find((c) => c.title.replace(/&/g, '&amp;') === t || c.title === t);
   const sample = parseSample(o.sample);
@@ -233,7 +233,7 @@ export function apHomeMainR2(o) {
   const tools = homeTools({
     a: 'Tools that let you', b: 'see it happen', lede: app('tools') ? esc(app('tools').card) : '',
     allHref: 'tools.html',
-    tools: live.slice(0, 6).map((t) => ({ href: `tools/${t.slug}.html`, name: t.name, desc: t.blurb, icon: o.toolIcon[t.slug] || o.toolIcon[t.kind] })),
+    tools: live.slice(0, 6).map((t) => ({ href: t.href || `tools/${t.slug}.html`, name: t.name, desc: t.blurb, icon: o.toolIcon[t.slug] || o.toolIcon[t.kind] })),
   });
   return `<main id="main" class="xshell ${o.mainClass} ch-home" data-cover="${o.key}">
 ${hero}

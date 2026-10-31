@@ -26,13 +26,17 @@
    The student checks each rubric point themselves; the optional AI grader
    (assets/course/frq-grader.js) can pre-fill those checkboxes as an estimate. */
 (function(){
-  var DRAFTS = 'apcalc_frq_drafts_v1', PREFS = 'apcalc_prefs_v1';
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
+  var DRAFTS = CK + '_frq_drafts_v1', PREFS = CK + '_prefs_v1';
   // The recurring free-response types (docs/apcalc-research/framework.md,
   // section 5). Every question is worth 9 points; f.calc says whether it is a
   // Part A (graphing calculator) or a Part B (no calculator) question.
-  var TYPES = { table: 'Rate in context from a table', model: 'Modeling with a given function', motion: 'Particle motion', area: 'Area and volume',
+  // A course may bring its own list (AP® Calculus BC adds its three BC-only types).
+  var TYPES = CC.frqTypes || { table: 'Rate in context from a table', model: 'Modeling with a given function', motion: 'Particle motion', area: 'Area and volume',
     de: 'Differential equation and slope field', graph: 'Graph of f\u2032 or graphical FTC', implicit: 'Implicit differentiation and related rates', fg: 'Table of f, g and their derivatives' };
-  var ORDER = ['table', 'model', 'motion', 'area', 'de', 'graph', 'implicit', 'fg'];
+  var ORDER = CC.frqTypes ? Object.keys(CC.frqTypes) : ['table', 'model', 'motion', 'area', 'de', 'graph', 'implicit', 'fg'];
   function calcWord(f){ return f.calc ? 'calculator' : 'no calculator'; }
   var uid = 0;
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }

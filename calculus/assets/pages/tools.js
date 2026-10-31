@@ -4,6 +4,9 @@
    learner: each tool's "Not tried yet" or accuracy (ApCalcCore.toolStats)
    and the Premium pill on Premium tools. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var app = document.getElementById('app');
   var A = window.ApCalcCore, H = window.LevlHub;
   if(!app || !A || !H) return;
@@ -20,6 +23,6 @@
     });
   }
   render();
-  document.addEventListener('apcalc:progress', render);
-  window.addEventListener('storage', function(e){ if(!e.key || e.key === 'apcalc_progress_v1') render(); });
+  document.addEventListener(CK + ':progress', render);
+  window.addEventListener('storage', function(e){ if(!e.key || e.key === CK + '_progress_v1') render(); });
 })();

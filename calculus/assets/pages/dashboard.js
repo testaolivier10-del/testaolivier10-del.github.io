@@ -11,16 +11,19 @@
    Exam date: assets/exam-date.js counts down to the course's default exam day until the student sets their own
    (apcalc_exam_date); the cram kit (cram.html) counts back from the same date. Every bar carries its number as text. */
 document.addEventListener('DOMContentLoaded', function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   var app = document.getElementById('app');
   var M = window.LevlDashMastery, A = window.ApCalcCore, CU = window.ApCalcCurriculum;
   if(!app || !M || !A || !CU) return;
-  var FRQ_TYPES = { table: 'Rate in context from a table', model: 'Modeling with a given function', motion: 'Particle motion', area: 'Area and volume', de: 'Differential equation and slope field', graph: 'Graph of f\u2032 or graphical FTC', implicit: 'Implicit differentiation and related rates', fg: 'Table of f, g and their derivatives' };
+  var FRQ_TYPES = CC.frqTypes || { table: 'Rate in context from a table', model: 'Modeling with a given function', motion: 'Particle motion', area: 'Area and volume', de: 'Differential equation and slope field', graph: 'Graph of f\u2032 or graphical FTC', implicit: 'Implicit differentiation and related rates', fg: 'Table of f, g and their derivatives' };
   function draw(){
-    M.ap({ key: 'apcalc', cls: 'calc', name: 'AP&reg; Calculus AB', A: A, CU: CU, base: window.ApCalcBase || '', root: app, tools: window.ApCalcToolList || [],
-      band: true, practiceWord: 'mathematical practice', practiceLabel: 'Mathematical practices', frqTypes: FRQ_TYPES,
+    M.ap({ key: CK, cls: 'calc', name: CN.replace('®', '&reg;'), A: A, CU: CU, base: window.ApCalcBase || '', root: app, tools: window.ApCalcToolList || [],
+      band: CC.band !== false, practiceWord: 'mathematical practice', practiceLabel: 'Mathematical practices', frqTypes: FRQ_TYPES,
       skillHint: 'Each mathematical practice splits into skills (3.C: confirm a theorem’s hypotheses, and so on). Every question is tagged with the one it exercises.' });
   }
   draw();
-  window.addEventListener('storage', function(e){ if(!e.key || /^apcalc_|^hub/.test(e.key)) draw(); });
-  document.addEventListener('apcalc:progress', draw);
+  window.addEventListener('storage', function(e){ if(!e.key || new RegExp('^' + CK + '_|^hub').test(e.key)) draw(); });
+  document.addEventListener(CK + ':progress', draw);
 });

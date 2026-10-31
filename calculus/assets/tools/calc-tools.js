@@ -41,6 +41,9 @@
        problem: the topic's lesson and notes, its glossary terms (from
        assets/glossary.json), and lessons for any other topic missed. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   'use strict';
   var M = window.ApCalcMath, Q = window.ApCalcQuestions;
   var uid = 0, unitMap = {};
@@ -62,7 +65,7 @@
   function F(x, d){ var s = M.fixed(x, d == null ? 2 : d); return s.charAt(0) === '-' ? '−' + s.slice(1) : s; }
   function core(){ return window.ApCalcCore; }
   function base(){ return window.ApCalcBase || '../'; }
-  function report(id){ return window.LevlReport ? '<span class="bt-report">' + window.LevlReport.button('apcalc', id) + '</span>' : ''; }
+  function report(id){ return window.LevlReport ? '<span class="bt-report">' + window.LevlReport.button(CK, id) + '</span>' : ''; }
   function event(name, data){ try{ core() && core().event(name, data); }catch(e){} }
 
   /* ------------------------------------------------------- mounting */
@@ -331,7 +334,7 @@
     Q.hydrate(host, list, { record: false, onAnswer: function(res){
       var q = res.q;
       record(slug, [{ id: q.id, correct: res.correct, topic: q.topic, unit: q.unit, practice: q.practice, level: q.level, diff: q.diff, group: 'questions' }]);
-      event('apcalc-tool-question', { tool: slug, correct: !!res.correct });
+      event(CK + '-tool-question', { tool: slug, correct: !!res.correct });
     } }, st);
   }
 
@@ -342,7 +345,7 @@
      rubric, ticks the points earned and sees a sample answer. Each part is
      recorded as one item, right when every point in it was ticked. */
   function frq(host, f, slug){
-    var key = 'apcalc_frqdraft_' + slug + '_' + f.id;
+    var key = CK + '_frqdraft_' + slug + '_' + f.id;
     var saved = {};
     try{ saved = JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ saved = {}; }
     var total = f.parts.reduce(function(n, p){ return n + p.points; }, 0);
@@ -384,7 +387,7 @@
           return { id: slug + ':' + f.id + ':' + p.label, correct: got === p.rubric.length, topic: p.topic || f.topic, unit: f.unit, practice: p.practice, level: 'analyze', diff: 3, group: 'frq' };
         });
         record(slug, items);
-        event('apcalc-tool-frq', { tool: slug, score: count(), total: total });
+        event(CK + '-tool-frq', { tool: slug, score: count(), total: total });
         this.disabled = true;
         tot.textContent = 'Saved: ' + count() + ' of ' + total + ' points. Parts you did not earn in full are in your review queue.';
       });
@@ -471,7 +474,7 @@
         record(slug, sol.parts.map(function(p, i){
           return { id: slug + ':' + cur.cid + ':' + p.key, correct: res[i].correct, topic: (data.partTopics && data.partTopics[p.key]) || cur.topic, practice: p.practice, level: 'apply', diff: 2, group: p.key };
         }));
-        event('apcalc-skill-check', { tool: slug, correct: right, total: sol.parts.length });
+        event(CK + '-skill-check', { tool: slug, correct: right, total: sol.parts.length });
         var nx = area.querySelector('.bt-next');
         nx.innerHTML = mode === 'practice' ? '<button type="button" class="btn-press sm bt-again">New problem</button>'
           : (at < problems.length - 1 ? '<button type="button" class="btn-press sm bt-again">Next problem</button>' : '<p>That is the whole set. Switch to Practice for new numbers.</p>');
@@ -985,7 +988,7 @@
         sol.innerHTML = '<h3 tabindex="-1">Worked solution</h3><ol class="bt-steps">' + p.solution.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ol>';
         var right = results.filter(function(x){ return x.correct; }).length;
         record(slug, results);
-        event('apcalc-drill-check', { tool: slug, correct: right, total: results.length });
+        event(CK + '-drill-check', { tool: slug, correct: right, total: results.length });
         var nx = area.querySelector('.bt-next');
         nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
@@ -1008,7 +1011,7 @@
      opens on the quiz; otherwise the last mode used on this tool, explore by
      default. o: { slug, explore, quiz, labels?: [explore, quiz] } */
   function modes(app, o){
-    var key = 'apcalc_toolmode_' + o.slug, lab = o.labels || ['Explore', 'Test yourself'], gid = nid('md');
+    var key = CK + '_toolmode_' + o.slug, lab = o.labels || ['Explore', 'Test yourself'], gid = nid('md');
     var bar = document.createElement('div');
     bar.className = 'bt-modebar';
     bar.setAttribute('role', 'group');
@@ -1026,7 +1029,7 @@
       ex.hidden = m !== 'explore'; qz.hidden = m !== 'quiz';
       if(st) st.mode(m);
       bar.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
-      if(user){ try{ localStorage.setItem(key, m); }catch(e){} event('apcalc-tool-mode', { tool: o.slug, mode: m }); }
+      if(user){ try{ localStorage.setItem(key, m); }catch(e){} event(CK + '-tool-mode', { tool: o.slug, mode: m }); }
       if(o.onShow) o.onShow(m);
     }
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
@@ -1077,7 +1080,7 @@
     var main = app.parentNode, h1 = main.querySelector('.calc-hero h1'), lede = main.querySelector('.calc-hero .lede');
     main.classList.add('ls-host');
     var s = window.LevlStudio.mount({
-      title: h1 ? h1.textContent : slug, course: 'AP® Calculus AB', back: base() + 'tools.html', home: base(), slug: 'apcalc-' + slug,
+      title: h1 ? h1.textContent : slug, course: CN, back: base() + 'tools.html', home: base(), slug: CK + '-' + slug,
       host: app,
       // the second tab and its dock button, named for what is in it
       // the second tab and its dock button: a tool names it with
@@ -1088,8 +1091,8 @@
           var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;
           return location.origin + location.pathname + (code ? '?seed=' + code.textContent : '');
         },
-        report: { course: 'apcalc', id: 'tool:' + slug },
-        note: { label: 'Note.', html: 'This course has not yet been reviewed by an AP® Calculus AB teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+        report: { course: CK, id: 'tool:' + slug },
+        note: { label: 'Note.', html: 'This course has not yet been reviewed by an ' + CN + ' teacher. <a href="' + base() + '../sources.html">Sources</a>' }
       }
     });
     if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }

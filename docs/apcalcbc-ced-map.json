@@ -1,0 +1,677 @@
+{
+ "about": "Topic map of the BC-only part of the AP Calculus AB and BC Course and Exam Description, in LevlPrep's own words from docs/apcalcbc-research/framework.md (CED text-verified there). No CED text is reproduced. The 81 AB topics are in docs/apcalc-ced-map.json; the BC course is both.",
+ "ced": {
+  "title": "AP Calculus AB and BC Course and Exam Description",
+  "edition": "2019 framework, reissued effective fall 2020 (content unchanged for 2026-27)",
+  "effective": "May 2027 exam format"
+ },
+ "bcUnitWeights": {
+  "unit-1": [
+   5,
+   10
+  ],
+  "unit-2": [
+   5,
+   10
+  ],
+  "unit-3": [
+   5,
+   10
+  ],
+  "unit-4": [
+   5,
+   10
+  ],
+  "unit-5": [
+   10,
+   15
+  ],
+  "unit-6": [
+   15,
+   20
+  ],
+  "unit-7": [
+   5,
+   10
+  ],
+  "unit-8": [
+   5,
+   10
+  ],
+  "unit-9": [
+   10,
+   15
+  ],
+  "unit-10": [
+   15,
+   20
+  ]
+ },
+ "units": [
+  {
+   "n": 9,
+   "id": "unit-9",
+   "title": "Parametric Equations, Polar Coordinates, and Vector-Valued Functions",
+   "weight": "10-15%",
+   "classPeriods": "10-11"
+  },
+  {
+   "n": 10,
+   "id": "unit-10",
+   "title": "Infinite Sequences and Series",
+   "weight": "15-20%",
+   "classPeriods": "17-18"
+  }
+ ],
+ "topics": [
+  {
+   "id": "6.11",
+   "slug": "integration-by-parts",
+   "title": "Integration by Parts",
+   "unit": "unit-6",
+   "practices": [
+    1,
+    4
+   ],
+   "objectives": [
+    "Find antiderivatives and evaluate definite integrals that need integration by parts."
+   ],
+   "knowledge": [
+    "Integration by parts reverses the product rule: the integral of u dv is uv minus the integral of v du.",
+    "A tabular layout is a way to organize repeated parts; graders accept it when the work is clear."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "6.12",
+   "slug": "partial-fractions",
+   "title": "Linear Partial Fractions",
+   "unit": "unit-6",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find antiderivatives of rational functions whose denominators factor into distinct linear factors."
+   ],
+   "knowledge": [
+    "A proper rational function over distinct linear factors splits into a sum of constants over each factor; each piece integrates to a logarithm."
+   ],
+   "exclusions": [
+    "Repeated linear and irreducible quadratic factors (our reading of \"linear, nonrepeating\"; needs-author)"
+   ],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "6.13",
+   "slug": "improper-integrals",
+   "title": "Improper Integrals",
+   "unit": "unit-6",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "objectives": [
+    "Evaluate an improper integral as a limit, or show that it diverges."
+   ],
+   "knowledge": [
+    "An integral is improper when a limit of integration is infinite or the integrand is unbounded on the interval.",
+    "It is evaluated as a limit of definite integrals; limit notation is kept until the limit is taken."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "7.5",
+   "slug": "eulers-method",
+   "title": "Euler's Method",
+   "unit": "unit-7",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Approximate a point on a solution curve with Euler's method."
+   ],
+   "knowledge": [
+    "Each step moves along the tangent line: the new y is the old y plus the slope times the step size.",
+    "Concavity of the solution tells whether the estimate is too high or too low."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "7.9",
+   "slug": "logistic-models",
+   "title": "Logistic Models",
+   "unit": "unit-7",
+   "practices": [
+    2,
+    3
+   ],
+   "objectives": [
+    "Interpret logistic differential equations and their solutions in context without solving them."
+   ],
+   "knowledge": [
+    "dy/dt = ky(a - y) says the rate is jointly proportional to the amount and to the room left below the carrying capacity a.",
+    "Solutions approach the carrying capacity; the growth rate is greatest where y is half of it."
+   ],
+   "exclusions": [
+    "Solving the logistic equation explicitly is not required by the framework"
+   ],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "8.13",
+   "slug": "arc-length",
+   "title": "Arc Length and Distance Traveled",
+   "unit": "unit-8",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find the length of a smooth planar curve y = f(x) with a definite integral."
+   ],
+   "knowledge": [
+    "Arc length is the integral of the square root of 1 plus the derivative squared over the interval."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.1",
+   "slug": "parametric-derivatives",
+   "title": "Parametric Equations and Their Derivatives",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find the slope of a curve given by parametric equations."
+   ],
+   "knowledge": [
+    "dy/dx is dy/dt divided by dx/dt, where dx/dt is not zero; it is the slope of the tangent line at that point."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.2",
+   "slug": "parametric-second-derivatives",
+   "title": "Second Derivatives of Parametric Equations",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    4
+   ],
+   "objectives": [
+    "Find the second derivative of a parametric curve."
+   ],
+   "knowledge": [
+    "The second derivative is the t-derivative of dy/dx divided by dx/dt, not the t-derivative of dy/dx alone."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.3",
+   "slug": "parametric-arc-length",
+   "title": "Arc Length of a Parametric Curve",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find the length of a parametric curve with a definite integral."
+   ],
+   "knowledge": [
+    "Length is the integral over t of the square root of (dx/dt)^2 + (dy/dt)^2."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.4",
+   "slug": "vector-derivatives",
+   "title": "Vector-Valued Functions and Their Derivatives",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Differentiate vector-valued functions."
+   ],
+   "knowledge": [
+    "A vector-valued function is differentiated component by component; the derivative of position is velocity."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.5",
+   "slug": "vector-integrals",
+   "title": "Integrating Vector-Valued Functions",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    3
+   ],
+   "objectives": [
+    "Find a position from a velocity vector and an initial position."
+   ],
+   "knowledge": [
+    "Integrate component by component and use the initial condition for each component."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.6",
+   "slug": "planar-motion",
+   "title": "Motion in the Plane",
+   "unit": "unit-9",
+   "practices": [
+    2,
+    3,
+    4
+   ],
+   "objectives": [
+    "Find positions, velocities, speeds and distances of a particle moving in the plane."
+   ],
+   "knowledge": [
+    "Speed is the magnitude of the velocity vector.",
+    "The integral of velocity gives displacement (added to the starting position); the integral of speed gives total distance traveled."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.7",
+   "slug": "polar-derivatives",
+   "title": "Polar Coordinates and Polar Derivatives",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "objectives": [
+    "Find derivatives of polar functions and interpret them."
+   ],
+   "knowledge": [
+    "With x = r cos θ and y = r sin θ, dy/dx is (dy/dθ)/(dx/dθ).",
+    "The sign of dr/dθ says whether a point on the curve moves away from or toward the origin."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.8",
+   "slug": "polar-area",
+   "title": "Area Inside a Polar Curve",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find the area of a region bounded by a polar curve."
+   ],
+   "knowledge": [
+    "Area is one half the integral of r^2 with respect to θ over the right angles, from sectors of a circle."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "9.9",
+   "slug": "polar-area-between",
+   "title": "Area Between Two Polar Curves",
+   "unit": "unit-9",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find the area of a region bounded by two polar curves."
+   ],
+   "knowledge": [
+    "Subtract inner from outer, both squared, inside one half the integral, over the θ interval where the region lies."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.1",
+   "slug": "series-convergence",
+   "title": "Convergent and Divergent Series",
+   "unit": "unit-10",
+   "practices": [
+    2,
+    3
+   ],
+   "objectives": [
+    "Decide whether a series converges from its partial sums."
+   ],
+   "knowledge": [
+    "The nth partial sum adds the first n terms.",
+    "A series converges to S exactly when its sequence of partial sums has limit S."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.2",
+   "slug": "geometric-series",
+   "title": "Geometric Series",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    3
+   ],
+   "objectives": [
+    "Decide whether a geometric series converges and find its sum."
+   ],
+   "knowledge": [
+    "A geometric series has a constant ratio r between terms; it converges when |r| < 1, to the first term over 1 - r."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.3",
+   "slug": "nth-term-test",
+   "title": "The nth Term Test for Divergence",
+   "unit": "unit-10",
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Use the nth term test to show a series diverges."
+   ],
+   "knowledge": [
+    "If the terms do not approach 0, the series diverges; terms approaching 0 prove nothing."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.4",
+   "slug": "integral-test",
+   "title": "The Integral Test",
+   "unit": "unit-10",
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Use the integral test to decide convergence."
+   ],
+   "knowledge": [
+    "For positive, continuous, decreasing terms, the series and the matching improper integral converge or diverge together."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.5",
+   "slug": "p-series",
+   "title": "Harmonic Series and p-Series",
+   "unit": "unit-10",
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Decide convergence of harmonic, alternating harmonic and p-series."
+   ],
+   "knowledge": [
+    "A p-series converges exactly when p > 1; the harmonic series diverges; the alternating harmonic series converges."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.6",
+   "slug": "comparison-tests",
+   "title": "Comparison Tests",
+   "unit": "unit-10",
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Use the direct and limit comparison tests to decide convergence."
+   ],
+   "knowledge": [
+    "Compare positive terms with a series whose behavior is known; the limit comparison test needs a finite positive limit of the ratio of terms."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.7",
+   "slug": "alternating-series-test",
+   "title": "The Alternating Series Test",
+   "unit": "unit-10",
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Use the alternating series test to show convergence."
+   ],
+   "knowledge": [
+    "An alternating series converges when its terms decrease in size and approach 0; both conditions are stated."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.8",
+   "slug": "ratio-test",
+   "title": "The Ratio Test",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "objectives": [
+    "Use the ratio test to decide convergence."
+   ],
+   "knowledge": [
+    "If the limit of |a(n+1)/a(n)| is below 1 the series converges absolutely, above 1 it diverges, and equal to 1 the test says nothing."
+   ],
+   "exclusions": [
+    "Tests other than the nth term, integral, comparison, limit comparison, alternating series and ratio tests (for example the root test) are not assessed"
+   ],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.9",
+   "slug": "absolute-conditional",
+   "title": "Absolute and Conditional Convergence",
+   "unit": "unit-10",
+   "practices": [
+    3,
+    4
+   ],
+   "objectives": [
+    "Decide whether a series converges absolutely, conditionally or diverges."
+   ],
+   "knowledge": [
+    "Absolute convergence implies convergence; a series that converges but not absolutely converges conditionally.",
+    "Rearranging an absolutely convergent series keeps its sum."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.10",
+   "slug": "alternating-error-bound",
+   "title": "The Alternating Series Error Bound",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "objectives": [
+    "Bound the error of a partial sum of an alternating series."
+   ],
+   "knowledge": [
+    "When the alternating series test applies, the error of a partial sum is at most the size of the first term left out."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.11",
+   "slug": "taylor-polynomials",
+   "title": "Taylor Polynomials",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Write Taylor polynomials and use them to estimate values of a function."
+   ],
+   "knowledge": [
+    "The coefficient of (x - a)^n is the nth derivative at a over n factorial.",
+    "Taylor polynomials approximate the function near the center, often better as the degree rises."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.12",
+   "slug": "lagrange-error-bound",
+   "title": "The Lagrange Error Bound",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "objectives": [
+    "Bound the error of a Taylor polynomial approximation."
+   ],
+   "knowledge": [
+    "The Lagrange error bound uses a maximum of the next derivative on the interval; sometimes the alternating series error bound applies instead."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.13",
+   "slug": "radius-interval-convergence",
+   "title": "Radius and Interval of Convergence",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "objectives": [
+    "Find the radius and interval of convergence of a power series."
+   ],
+   "knowledge": [
+    "The ratio test gives the radius; both endpoints are tested separately with other tests.",
+    "Term-by-term derivatives and integrals keep the radius; endpoint behavior can change."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.14",
+   "slug": "taylor-series",
+   "title": "Taylor and Maclaurin Series",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Represent a function by its Taylor or Maclaurin series and interpret it."
+   ],
+   "knowledge": [
+    "A Taylor polynomial is a partial sum of the Taylor series.",
+    "The Maclaurin series of 1/(1 - x), sin x, cos x and e^x are known by heart and used to build others."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  },
+  {
+   "id": "10.15",
+   "slug": "power-series-functions",
+   "title": "Representing Functions as Power Series",
+   "unit": "unit-10",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Find a power series for a function from a known series."
+   ],
+   "knowledge": [
+    "Substitute, multiply, or differentiate or integrate term by term to get a new series from a known one."
+   ],
+   "exclusions": [],
+   "source": "CED (read, docs/apcalcbc-research/framework.md section 4)"
+  }
+ ],
+ "also": {
+  "6.14": "Selecting techniques for antidifferentiation: for BC the choice adds parts and linear partial fractions (no new learning objective)."
+ },
+ "topicCount": 30,
+ "bcTotal": 111,
+ "exam": {
+  "date2027": "2027-05-10",
+  "mcq": {
+   "questions": 42,
+   "partA": {
+    "n": 29,
+    "minutes": 62,
+    "calculator": false
+   },
+   "partB": {
+    "n": 13,
+    "minutes": 38,
+    "calculator": true
+   }
+  },
+  "frq": {
+   "questions": 6,
+   "points": 9,
+   "partA": {
+    "n": 2,
+    "minutes": 30,
+    "calculator": true
+   },
+   "partB": {
+    "n": 4,
+    "minutes": 60,
+    "calculator": false
+   }
+  },
+  "bcOnlySlots": {
+   "2": "parametric",
+   "5": "techniques",
+   "6": "series"
+  },
+  "sharedWithAb": [
+   1,
+   3,
+   4
+  ]
+ }
+}

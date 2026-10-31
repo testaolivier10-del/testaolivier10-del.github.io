@@ -1,0 +1,11 @@
+{
+ "power-series": {
+  "def": "A series of the form $\\sum_{n=0}^{\\infty} a_n (x - a)^n$, centered at $x = a$; its sum is a function of $x$ wherever it converges."
+ },
+ "radius-of-convergence": {
+  "def": "The number $R$ such that a power series centered at $a$ converges when $|x - a| < R$ and diverges when $|x - a| > R$; found with the ratio test."
+ },
+ "interval-of-convergence": {
+  "def": "Every $x$ where a power series converges: the open interval from the radius, plus each endpoint where the series converges when tested on its own."
+ }
+}

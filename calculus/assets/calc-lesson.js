@@ -4,6 +4,9 @@
    once every check question has been answered. It also turns the page, which
    holds every part in one scroll, into one part per step. */
 (function(){
+  // The course this page belongs to: AP® Calculus AB unless the page says otherwise (AP® Calculus BC
+  // runs this same file: window.ApCalcCourse, docs/apcalcbc-architecture.md).
+  var CC = window.ApCalcCourse || {}, CK = CC.key || 'apcalc', CN = CC.name || 'AP® Calculus AB';
   /* The stepped view: one part at a time, a step list in the rail, Previous and
      Continue, the part in the URL hash (#chain opens that step) and the last
      step remembered per topic. Focus moves to the part's heading on a change. */
@@ -11,7 +14,7 @@
     var shell = document.querySelector('.calc-ls');
     var parts = shell ? [].slice.call(shell.querySelectorAll('.calc-step')) : [];
     if(parts.length < 2) return;
-    var n = parts.length, cur = -1, seen = 0, key = 'apcalc_step_' + topic;
+    var n = parts.length, cur = -1, seen = 0, key = CK + '_step_' + topic;
     var links = [].slice.call(shell.querySelectorAll('.calc-ls-steps a'));
     var card = shell.querySelector('.calc-ls-card'), bar = shell.querySelector('.calc-ls-actions');
     var back = bar.querySelector('.calc-ls-back'), gos = bar.querySelectorAll('.calc-ls-go');
@@ -140,7 +143,7 @@
           answered++; if(res.correct) right++;
           if(answered === total){
             var first = window.ApCalcCore && window.ApCalcCore.lessonComplete(topic);
-            if(window.ApCalcCore) window.ApCalcCore.event('apcalc-session-finish', { mode: 'lesson', topic: topic, answered: total, correct: right });
+            if(window.ApCalcCore) window.ApCalcCore.event(CK + '-session-finish', { mode: 'lesson', topic: topic, answered: total, correct: right });
             chk.insertAdjacentHTML('afterend', '<p class="calc-done" role="status"><b>Lesson complete.</b> ' + right + ' of ' + total + ' right' + (first ? ', +40 XP' : '') + '.</p>');
             // Sign in to keep it, or the Premium pitch when the next lesson is Premium (assets/course/lesson.js).
             if(window.LevlLesson) window.LevlLesson.checked(chk.parentNode.querySelector('.calc-done'));
