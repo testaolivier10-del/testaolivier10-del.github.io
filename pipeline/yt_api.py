@@ -160,6 +160,8 @@ if __name__ == "__main__":
         print(json.dumps(analytics({"startDate": a[1], "endDate": a[2], "metrics": "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,likes,shares,comments,subscribersGained", "dimensions": "video", "sort": "-views", "maxResults": 200})))
     elif a[0] == "retention":
         print(json.dumps(analytics({"startDate": a[2], "endDate": a[3], "metrics": "audienceWatchRatio,relativeRetentionPerformance", "dimensions": "elapsedVideoTimeRatio", "filters": f"video=={a[1]}"})))
+    elif a[0] == "traffic":
+        print(json.dumps(analytics({"startDate": a[2], "endDate": a[3], "metrics": "views", "dimensions": "insightTrafficSourceType", "filters": f"video=={a[1]}"})))
     elif a[0] == "uploads":
         tok = token(); _, r = call("GET", f"{API}/channels?part=contentDetails&mine=true", tok)
         up = r["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
