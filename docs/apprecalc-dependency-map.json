@@ -1,0 +1,2905 @@
+{
+ "about": "AP Precalculus concept dependency map (docs/apprecalc-spec.md, docs/apprecalc-phase0.md): the 58 CED topics in CED order (Unit 4 built as \"beyond the exam\", spec decision 7), the \"Algebra you need\" skills with the topic each comes before, and every concept with the topic that teaches it, the concepts it depends on and, for math notation, the TeX patterns that use it. Read by scripts/check-apprecalc-map.mjs and scripts/build-apprecalc.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "Course and Exam Description effective fall 2026 (4 units, 58 topics; content unchanged, about 40 essential knowledge statements reworded)",
+  "effective": "Exam format of May 2027",
+  "note": "Built from docs/apprecalc-ced-map.json, itself from docs/apprecalc-research/framework.md. Units 2-4 objectives come partly from third-party summaries (docs/apprecalc-needs-author.md ced-text)."
+ },
+ "practicesConfirmed": false,
+ "practices": [
+  {
+   "id": 1,
+   "name": "Procedural and Symbolic Fluency",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Multiple Representations",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Communication and Reasoning",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Polynomial and Rational Functions",
+   "weight": [
+    30,
+    40
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "rate-of-change",
+      "title": "Rate of change: average rates as secant slopes over equal intervals, how they change, and concavity",
+      "topic": "rates-of-change"
+     },
+     {
+      "id": "poly-rational",
+      "title": "Polynomials and rational functions: zeros and multiplicity, end behavior, holes, asymptotes and sign charts",
+      "topic": "rational-holes"
+     },
+     {
+      "id": "function-lab",
+      "title": "Function lab (flagship): drag the parameters and watch graph, table, formula and words change together",
+      "topic": "transformations"
+     },
+     {
+      "id": "regression-lab",
+      "title": "Regression lab: fit linear to sinusoidal models, read residual plots, three-decimal answers",
+      "topic": "model-construction"
+     },
+     {
+      "id": "justify",
+      "title": "Make it specific: reasoning tied to the given values, limit notation, rate and concavity wording",
+      "topic": "rates-of-change"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-q1-rational-graph",
+      "title": "A rational function from its graph and formula: limits at the asymptotes, the hole, solving f(x) = k on a calculator",
+      "topic": "vertical-asymptotes",
+      "type": "concepts",
+      "author": "A"
+     },
+     {
+      "id": "frq-q2-cubic-volume",
+      "title": "An open box: a cubic volume model, its rate of change on an interval and the domain from the context",
+      "topic": "polynomial-rates",
+      "type": "modeling",
+      "author": "A"
+     },
+     {
+      "id": "frq-q2-quadratic-attendance",
+      "title": "A quadratic model from three data points: the constants, an average rate of change, a secant estimate and the domain the context allows",
+      "topic": "model-construction",
+      "type": "modeling",
+      "author": "B"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A table of values at equal input steps with first and second differences",
+      "topic": "linear-quadratic-rates",
+      "stimulus": "table"
+     },
+     {
+      "title": "A rational function with a hole and two asymptotes",
+      "topic": "rational-holes",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A parent graph and two transformations of it",
+      "topic": "transformations",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Holes, vertical asymptotes and zeros of a rational function",
+      "topic": "rational-holes"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From a context to a model: choose the type, find the constants, state the domain",
+      "topic": "model-construction"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Exponential and Logarithmic Functions",
+   "weight": [
+    25,
+    40
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "exp-log-lab",
+      "title": "Exponential and log lab: ratios versus differences, logs as inverses, semi-log plots and the log rules",
+      "topic": "linear-vs-exponential"
+     },
+     {
+      "id": "symbolic-steps",
+      "title": "Symbolic steps: Q4 rewriting and solving step by step, each step graded by evaluation",
+      "topic": "exp-log-equations"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-q2-exponential-depreciation",
+      "title": "A car losing value: an exponential model from two points, the average rate of change, a secant estimate and concavity",
+      "topic": "exponential-modeling",
+      "type": "modeling",
+      "author": "B"
+     },
+     {
+      "id": "frq-q1-exponential-justify",
+      "title": "Justify a model type from a table: equal input intervals and proportional outputs",
+      "topic": "model-validation",
+      "type": "concepts",
+      "author": "B"
+     },
+     {
+      "id": "frq-q2-cooling-residuals",
+      "title": "Cooling coffee: two competing models compared with residuals, and the better one used to predict",
+      "topic": "model-validation",
+      "type": "modeling",
+      "author": "B"
+     },
+     {
+      "id": "frq-q1-table-composition-inverse",
+      "title": "f from a table and g from a formula: a composite value, solving f(x) = k, and whether f is invertible from specific values",
+      "topic": "inverse-functions",
+      "type": "concepts",
+      "author": "C"
+     },
+     {
+      "id": "frq-q1-log-function",
+      "title": "A logarithmic g with an increasing f: composition, a calculator solve and behavior near the asymptote in limit notation",
+      "topic": "logarithmic-functions",
+      "type": "concepts",
+      "author": "C"
+     },
+     {
+      "id": "frq-q2-logarithmic-sales",
+      "title": "Sales that level off: a logarithmic model, an average rate of change, and why the error grows after the data",
+      "topic": "logarithmic-modeling",
+      "type": "modeling",
+      "author": "C"
+     },
+     {
+      "id": "frq-q4-exp-log-equations",
+      "title": "Solve exponential and logarithmic equations exactly, and rewrite as a single logarithm",
+      "topic": "exp-log-equations",
+      "type": "symbolic",
+      "author": "C"
+     },
+     {
+      "id": "frq-q4-quadratic-in-ex",
+      "title": "An equation quadratic in e^x, a single base power, and the root that cannot be",
+      "topic": "exp-log-equations",
+      "type": "symbolic",
+      "author": "C"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A table where outputs multiply by a constant over equal steps",
+      "topic": "linear-vs-exponential",
+      "stimulus": "table"
+     },
+     {
+      "title": "A residual plot for two competing models",
+      "topic": "model-validation",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A semi-log plot of exponential data",
+      "topic": "semi-log-plots",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Linear and exponential change: differences versus ratios",
+      "topic": "linear-vs-exponential"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Solving an exponential or log equation: isolate, take the inverse, check the domain",
+      "topic": "exp-log-equations"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Trigonometric and Polar Functions",
+   "weight": [
+    30,
+    35
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "unit-circle",
+      "title": "Unit circle: radians, sine and cosine from the circle, tangent as slope, the graphs unrolling",
+      "topic": "sine-cosine-tangent"
+     },
+     {
+      "id": "sinusoid-builder",
+      "title": "Sinusoid builder: amplitude, period, phase shift and midline from data or a context",
+      "topic": "sinusoidal-transformations"
+     },
+     {
+      "id": "polar-graphs",
+      "title": "Polar graphs: curves drawn as theta sweeps, and how the distance from the origin changes",
+      "topic": "polar-curves"
+     }
+    ],
+    "frqThemes": [
+     {
+      "id": "frq-q3-ferris-wheel",
+      "title": "A Ferris wheel seat: five labeled points, the constants of the sinusoid, and the rate of change on an interval",
+      "topic": "sinusoidal-modeling",
+      "type": "periodic",
+      "author": "D"
+     },
+     {
+      "id": "frq-q3-tide",
+      "title": "High and low tide: a cosine model from the extremes and the time between them",
+      "topic": "sinusoidal-modeling",
+      "type": "periodic",
+      "author": "D"
+     },
+     {
+      "id": "frq-q3-spring",
+      "title": "A weight on a spring, frequency given: b from the period and the concavity on an interval",
+      "topic": "sinusoidal-modeling",
+      "type": "periodic",
+      "author": "D"
+     },
+     {
+      "id": "frq-q3-waterwheel",
+      "title": "A point on a waterwheel: coordinates from an unscaled graph and the sign of the rate of change",
+      "topic": "sinusoidal-transformations",
+      "type": "periodic",
+      "author": "D"
+     },
+     {
+      "id": "frq-q1-trig-composition",
+      "title": "A trigonometric g with f from a graph: composite values, a calculator solve with every solution, invertibility",
+      "topic": "inverse-trig",
+      "type": "concepts",
+      "author": "E"
+     },
+     {
+      "id": "frq-q4-trig-equation-interval",
+      "title": "A trigonometric equation with every solution in an interval, and an inverse trig value",
+      "topic": "trig-equations",
+      "type": "symbolic",
+      "author": "E"
+     },
+     {
+      "id": "frq-q4-single-tangent",
+      "title": "Rewrite as a single tangent, and inverse trig with the right range",
+      "topic": "trig-identities",
+      "type": "symbolic",
+      "author": "E"
+     },
+     {
+      "id": "frq-q4-single-sine",
+      "title": "Rewrite with identities as a single sine term, then solve",
+      "topic": "trig-identities",
+      "type": "symbolic",
+      "author": "E"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "The unit circle with an angle and its coordinates",
+      "topic": "sine-cosine-tangent",
+      "stimulus": "diagram"
+     },
+     {
+      "title": "An unscaled sinusoid with five labeled points",
+      "topic": "sinusoidal-modeling",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A table of tide heights over a day",
+      "topic": "sinusoidal-modeling",
+      "stimulus": "table"
+     },
+     {
+      "title": "A polar rose and its graph of r against theta",
+      "topic": "polar-curves",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Inverse sine, cosine and tangent: domains and ranges",
+      "topic": "inverse-trig"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Every solution of a trig equation: isolate, principal value, symmetry, period",
+      "topic": "trig-equations"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Functions Involving Parameters, Vectors, and Matrices",
+   "weight": [
+    0,
+    0
+   ],
+   "beyondExam": true,
+   "tools": {
+    "simulators": [
+     {
+      "id": "vectors-matrices",
+      "title": "Vectors and matrices: parametric motion, vectors, and matrices as linear transformations (beyond the exam)",
+      "topic": "parametric-functions"
+     }
+    ],
+    "frqThemes": [],
+    "stimulusThemes": [
+     {
+      "title": "A parametric path with arrows for the direction of travel",
+      "topic": "parametric-functions",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Parabola, ellipse and hyperbola: equations and shapes",
+      "topic": "conic-sections"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From a transformation of the plane to its matrix and back",
+      "topic": "linear-transformations"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-algebra",
+   "part": "skills",
+   "title": "Algebra you need"
+  }
+ ],
+ "topics": [
+  {
+   "id": "change-in-tandem",
+   "ced": "1.1",
+   "title": "Change in Tandem",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "change in tandem ap precalculus explained"
+  },
+  {
+   "id": "rates-of-change",
+   "ced": "1.2",
+   "title": "Rates of Change",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "rates of change ap precalculus explained"
+  },
+  {
+   "id": "linear-quadratic-rates",
+   "ced": "1.3",
+   "title": "Rates of Change in Linear and Quadratic Functions",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "rates of change in linear and quadratic functions ap precalculus explained"
+  },
+  {
+   "id": "polynomial-rates",
+   "ced": "1.4",
+   "title": "Polynomial Functions and Rates of Change",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "polynomial functions and rates of change ap precalculus explained"
+  },
+  {
+   "id": "complex-zeros",
+   "ced": "1.5",
+   "title": "Polynomial Functions and Complex Zeros",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "polynomial functions and complex zeros ap precalculus explained"
+  },
+  {
+   "id": "polynomial-end-behavior",
+   "ced": "1.6",
+   "title": "Polynomial Functions and End Behavior",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "polynomial functions and end behavior ap precalculus explained"
+  },
+  {
+   "id": "rational-end-behavior",
+   "ced": "1.7",
+   "title": "Rational Functions and End Behavior",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "rational functions and end behavior ap precalculus explained"
+  },
+  {
+   "id": "rational-zeros",
+   "ced": "1.8",
+   "title": "Rational Functions and Zeros",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "rational functions and zeros ap precalculus explained"
+  },
+  {
+   "id": "vertical-asymptotes",
+   "ced": "1.9",
+   "title": "Rational Functions and Vertical Asymptotes",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "rational functions and vertical asymptotes ap precalculus explained"
+  },
+  {
+   "id": "rational-holes",
+   "ced": "1.10",
+   "title": "Rational Functions and Holes",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "rational functions and holes ap precalculus explained"
+  },
+  {
+   "id": "equivalent-representations",
+   "ced": "1.11",
+   "title": "Equivalent Representations of Polynomial and Rational Expressions",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "equivalent representations of polynomial and rational expressions ap precalculus explained"
+  },
+  {
+   "id": "transformations",
+   "ced": "1.12",
+   "title": "Transformations of Functions",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "transformations of functions ap precalculus explained"
+  },
+  {
+   "id": "model-selection",
+   "ced": "1.13",
+   "title": "Function Model Selection and Assumption Articulation",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "function model selection and assumption articulation ap precalculus explained"
+  },
+  {
+   "id": "model-construction",
+   "ced": "1.14",
+   "title": "Function Model Construction and Application",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "function model construction and application ap precalculus explained"
+  },
+  {
+   "id": "sequences",
+   "ced": "2.1",
+   "title": "Change in Arithmetic and Geometric Sequences",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "change in arithmetic and geometric sequences ap precalculus explained"
+  },
+  {
+   "id": "linear-vs-exponential",
+   "ced": "2.2",
+   "title": "Change in Linear and Exponential Functions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "change in linear and exponential functions ap precalculus explained"
+  },
+  {
+   "id": "exponential-functions",
+   "ced": "2.3",
+   "title": "Exponential Functions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "exponential functions ap precalculus explained"
+  },
+  {
+   "id": "exponential-manipulation",
+   "ced": "2.4",
+   "title": "Exponential Function Manipulation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "exponential function manipulation ap precalculus explained"
+  },
+  {
+   "id": "exponential-modeling",
+   "ced": "2.5",
+   "title": "Exponential Function Context and Data Modeling",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "exponential function context and data modeling ap precalculus explained"
+  },
+  {
+   "id": "model-validation",
+   "ced": "2.6",
+   "title": "Competing Function Model Validation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    3
+   ],
+   "searchPhrase": "competing function model validation ap precalculus explained"
+  },
+  {
+   "id": "composition",
+   "ced": "2.7",
+   "title": "Composition of Functions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "composition of functions ap precalculus explained"
+  },
+  {
+   "id": "inverse-functions",
+   "ced": "2.8",
+   "title": "Inverse Functions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "inverse functions ap precalculus explained"
+  },
+  {
+   "id": "logarithmic-expressions",
+   "ced": "2.9",
+   "title": "Logarithmic Expressions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "logarithmic expressions ap precalculus explained"
+  },
+  {
+   "id": "exp-log-inverses",
+   "ced": "2.10",
+   "title": "Inverses of Exponential Functions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "inverses of exponential functions ap precalculus explained"
+  },
+  {
+   "id": "logarithmic-functions",
+   "ced": "2.11",
+   "title": "Logarithmic Functions",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "logarithmic functions ap precalculus explained"
+  },
+  {
+   "id": "logarithmic-manipulation",
+   "ced": "2.12",
+   "title": "Logarithmic Function Manipulation",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "logarithmic function manipulation ap precalculus explained"
+  },
+  {
+   "id": "exp-log-equations",
+   "ced": "2.13",
+   "title": "Exponential and Logarithmic Equations and Inequalities",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "exponential and logarithmic equations and inequalities ap precalculus explained"
+  },
+  {
+   "id": "logarithmic-modeling",
+   "ced": "2.14",
+   "title": "Logarithmic Function Context and Data Modeling",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "logarithmic function context and data modeling ap precalculus explained"
+  },
+  {
+   "id": "semi-log-plots",
+   "ced": "2.15",
+   "title": "Semi-log Plots",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "semi-log plots ap precalculus explained"
+  },
+  {
+   "id": "periodic-phenomena",
+   "ced": "3.1",
+   "title": "Periodic Phenomena",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "periodic phenomena ap precalculus explained"
+  },
+  {
+   "id": "sine-cosine-tangent",
+   "ced": "3.2",
+   "title": "Sine, Cosine, and Tangent",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "sine, cosine, and tangent ap precalculus explained"
+  },
+  {
+   "id": "sine-cosine-values",
+   "ced": "3.3",
+   "title": "Sine and Cosine Function Values",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "sine and cosine function values ap precalculus explained"
+  },
+  {
+   "id": "sine-cosine-curves",
+   "ced": "3.4",
+   "title": "Sine and Cosine Function Graphs",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "sine and cosine function graphs ap precalculus explained"
+  },
+  {
+   "id": "sinusoidal-functions",
+   "ced": "3.5",
+   "title": "Sinusoidal Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "sinusoidal functions ap precalculus explained"
+  },
+  {
+   "id": "sinusoidal-transformations",
+   "ced": "3.6",
+   "title": "Sinusoidal Function Transformations",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "sinusoidal function transformations ap precalculus explained"
+  },
+  {
+   "id": "sinusoidal-modeling",
+   "ced": "3.7",
+   "title": "Sinusoidal Function Context and Data Modeling",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "sinusoidal function context and data modeling ap precalculus explained"
+  },
+  {
+   "id": "tangent-function",
+   "ced": "3.8",
+   "title": "The Tangent Function",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "the tangent function ap precalculus explained"
+  },
+  {
+   "id": "inverse-trig",
+   "ced": "3.9",
+   "title": "Inverse Trigonometric Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "inverse trigonometric functions ap precalculus explained"
+  },
+  {
+   "id": "trig-equations",
+   "ced": "3.10",
+   "title": "Trigonometric Equations and Inequalities",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "trigonometric equations and inequalities ap precalculus explained"
+  },
+  {
+   "id": "sec-csc-cot",
+   "ced": "3.11",
+   "title": "The Secant, Cosecant, and Cotangent Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "the secant, cosecant, and cotangent functions ap precalculus explained"
+  },
+  {
+   "id": "trig-identities",
+   "ced": "3.12",
+   "title": "Equivalent Representations of Trigonometric Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "equivalent representations of trigonometric functions ap precalculus explained"
+  },
+  {
+   "id": "polar-coordinates",
+   "ced": "3.13",
+   "title": "Trigonometry and Polar Coordinates",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "trigonometry and polar coordinates ap precalculus explained"
+  },
+  {
+   "id": "polar-curves",
+   "ced": "3.14",
+   "title": "Polar Function Graphs",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "polar function graphs ap precalculus explained"
+  },
+  {
+   "id": "polar-rates",
+   "ced": "3.15",
+   "title": "Rates of Change in Polar Functions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "rates of change in polar functions ap precalculus explained"
+  },
+  {
+   "id": "parametric-functions",
+   "ced": "4.1",
+   "title": "Parametric Functions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "parametric functions ap precalculus explained"
+  },
+  {
+   "id": "parametric-motion",
+   "ced": "4.2",
+   "title": "Parametric Functions Modeling Planar Motion",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "parametric functions modeling planar motion ap precalculus explained"
+  },
+  {
+   "id": "parametric-rates",
+   "ced": "4.3",
+   "title": "Parametric Functions and Rates of Change",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "parametric functions and rates of change ap precalculus explained"
+  },
+  {
+   "id": "parametric-circles-lines",
+   "ced": "4.4",
+   "title": "Parametrically Defined Circles and Lines",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "parametrically defined circles and lines ap precalculus explained"
+  },
+  {
+   "id": "implicit-functions",
+   "ced": "4.5",
+   "title": "Implicitly Defined Functions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "implicitly defined functions ap precalculus explained"
+  },
+  {
+   "id": "conic-sections",
+   "ced": "4.6",
+   "title": "Conic Sections",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "conic sections ap precalculus explained"
+  },
+  {
+   "id": "parametrizing-implicit",
+   "ced": "4.7",
+   "title": "Parametrization of Implicitly Defined Functions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "parametrization of implicitly defined functions ap precalculus explained"
+  },
+  {
+   "id": "vectors",
+   "ced": "4.8",
+   "title": "Vectors",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "vectors ap precalculus explained"
+  },
+  {
+   "id": "vector-valued-functions",
+   "ced": "4.9",
+   "title": "Vector-Valued Functions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "vector-valued functions ap precalculus explained"
+  },
+  {
+   "id": "matrices",
+   "ced": "4.10",
+   "title": "Matrices",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "matrices ap precalculus explained"
+  },
+  {
+   "id": "inverse-determinant",
+   "ced": "4.11",
+   "title": "The Inverse and Determinant of a Matrix",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1
+   ],
+   "searchPhrase": "the inverse and determinant of a matrix ap precalculus explained"
+  },
+  {
+   "id": "linear-transformations",
+   "ced": "4.12",
+   "title": "Linear Transformations and Matrices",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "linear transformations and matrices ap precalculus explained"
+  },
+  {
+   "id": "matrices-as-functions",
+   "ced": "4.13",
+   "title": "Matrices as Functions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "matrices as functions ap precalculus explained"
+  },
+  {
+   "id": "matrix-modeling",
+   "ced": "4.14",
+   "title": "Matrices Modeling Contexts",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "matrices modeling contexts ap precalculus explained"
+  },
+  {
+   "id": "alg-functions",
+   "ced": null,
+   "title": "Functions, Graphs and Notation",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "change-in-tandem",
+   "searchPhrase": "functions, graphs and notation review for precalculus"
+  },
+  {
+   "id": "alg-intervals",
+   "ced": null,
+   "title": "Interval Notation and Inequalities",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "change-in-tandem",
+   "searchPhrase": "interval notation and inequalities review for precalculus"
+  },
+  {
+   "id": "alg-lines",
+   "ced": null,
+   "title": "Lines, Slope and Linear Equations",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1,
+    2
+   ],
+   "before": "rates-of-change",
+   "searchPhrase": "lines, slope and linear equations review for precalculus"
+  },
+  {
+   "id": "alg-quadratics",
+   "ced": null,
+   "title": "Quadratics: Factoring and the Quadratic Formula",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "linear-quadratic-rates",
+   "searchPhrase": "quadratics: factoring and the quadratic formula review for precalculus"
+  },
+  {
+   "id": "alg-polynomial-algebra",
+   "ced": null,
+   "title": "Polynomial Arithmetic and Factoring",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "polynomial-rates",
+   "searchPhrase": "polynomial arithmetic and factoring review for precalculus"
+  },
+  {
+   "id": "alg-complex-numbers",
+   "ced": null,
+   "title": "Complex Numbers",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "complex-zeros",
+   "searchPhrase": "complex numbers review for precalculus"
+  },
+  {
+   "id": "alg-rational-expressions",
+   "ced": null,
+   "title": "Rational Expressions",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "rational-end-behavior",
+   "searchPhrase": "rational expressions review for precalculus"
+  },
+  {
+   "id": "alg-systems",
+   "ced": null,
+   "title": "Systems of Equations",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "model-construction",
+   "searchPhrase": "systems of equations review for precalculus"
+  },
+  {
+   "id": "alg-exponents",
+   "ced": null,
+   "title": "Exponent and Radical Rules",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "sequences",
+   "searchPhrase": "exponent and radical rules review for precalculus"
+  },
+  {
+   "id": "alg-right-triangle",
+   "ced": null,
+   "title": "Right-Triangle Trigonometry",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "sine-cosine-tangent",
+   "searchPhrase": "right-triangle trigonometry review for precalculus"
+  },
+  {
+   "id": "alg-circles",
+   "ced": null,
+   "title": "Circles, Arcs and Special Triangles",
+   "chapter": "skills-algebra",
+   "kind": "skill",
+   "practices": [
+    1
+   ],
+   "before": "sine-cosine-tangent",
+   "searchPhrase": "circles, arcs and special triangles review for precalculus"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict.",
+  "words": [
+   "input",
+   "inputs",
+   "output",
+   "outputs",
+   "parameter",
+   "parameters",
+   "range",
+   "degree",
+   "frequency",
+   "vector",
+   "vectors"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "function",
+   "term": "function",
+   "aliases": [
+    "functions",
+    "function notation",
+    "input",
+    "inputs",
+    "output",
+    "outputs"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": []
+  },
+  {
+   "id": "domain",
+   "term": "domain",
+   "aliases": [
+    "domains",
+    "domain of a function"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "range",
+   "term": "range of a function",
+   "aliases": [
+    "range",
+    "ranges"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "function-graph",
+   "term": "graph of a function",
+   "aliases": [
+    "graphs of functions"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "zero",
+   "term": "zero of a function",
+   "aliases": [
+    "zeros of a function",
+    "x-intercept",
+    "x-intercepts",
+    "real zero",
+    "real zeros"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "y-intercept",
+   "term": "y-intercept",
+   "aliases": [
+    "y-intercepts"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "piecewise-function",
+   "term": "piecewise-defined function",
+   "aliases": [
+    "piecewise function",
+    "piecewise functions",
+    "piecewise-defined functions"
+   ],
+   "taughtIn": "alg-functions",
+   "dependsOn": [
+    "function",
+    "domain"
+   ],
+   "notation": [
+    "\\\\begin\\{cases\\}"
+   ]
+  },
+  {
+   "id": "interval-notation",
+   "term": "interval notation",
+   "aliases": [
+    "open interval",
+    "open intervals",
+    "closed interval",
+    "closed intervals"
+   ],
+   "taughtIn": "alg-intervals",
+   "dependsOn": [
+    "domain"
+   ]
+  },
+  {
+   "id": "inequality",
+   "term": "linear inequality",
+   "aliases": [
+    "linear inequalities"
+   ],
+   "taughtIn": "alg-intervals",
+   "dependsOn": [
+    "interval-notation"
+   ]
+  },
+  {
+   "id": "slope",
+   "term": "slope",
+   "aliases": [
+    "slopes",
+    "slope of a line"
+   ],
+   "taughtIn": "alg-lines",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "line-equation",
+   "term": "point-slope form",
+   "aliases": [
+    "slope-intercept form",
+    "equation of a line"
+   ],
+   "taughtIn": "alg-lines",
+   "dependsOn": [
+    "slope"
+   ]
+  },
+  {
+   "id": "quadratic",
+   "term": "quadratic function",
+   "aliases": [
+    "quadratic functions",
+    "quadratic"
+   ],
+   "taughtIn": "alg-quadratics",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "parabola",
+   "term": "parabola",
+   "aliases": [
+    "parabolas"
+   ],
+   "taughtIn": "alg-quadratics",
+   "dependsOn": [
+    "quadratic"
+   ]
+  },
+  {
+   "id": "vertex",
+   "term": "vertex of a parabola",
+   "aliases": [
+    "vertex form"
+   ],
+   "taughtIn": "alg-quadratics",
+   "dependsOn": [
+    "parabola"
+   ]
+  },
+  {
+   "id": "quadratic-formula",
+   "term": "quadratic formula",
+   "aliases": [
+    "discriminant",
+    "completing the square"
+   ],
+   "taughtIn": "alg-quadratics",
+   "dependsOn": [
+    "quadratic"
+   ]
+  },
+  {
+   "id": "polynomial-expression",
+   "term": "polynomial",
+   "aliases": [
+    "polynomials",
+    "polynomial expression"
+   ],
+   "taughtIn": "alg-polynomial-algebra",
+   "dependsOn": [
+    "quadratic"
+   ]
+  },
+  {
+   "id": "factoring",
+   "term": "factoring",
+   "aliases": [
+    "factor by grouping",
+    "difference of squares",
+    "sum of cubes",
+    "difference of cubes"
+   ],
+   "taughtIn": "alg-polynomial-algebra",
+   "dependsOn": [
+    "polynomial-expression"
+   ]
+  },
+  {
+   "id": "complex-number",
+   "term": "complex number",
+   "aliases": [
+    "complex numbers",
+    "imaginary unit",
+    "imaginary number",
+    "imaginary numbers"
+   ],
+   "taughtIn": "alg-complex-numbers",
+   "dependsOn": [
+    "quadratic-formula"
+   ]
+  },
+  {
+   "id": "complex-conjugate",
+   "term": "complex conjugate",
+   "aliases": [
+    "complex conjugates"
+   ],
+   "taughtIn": "alg-complex-numbers",
+   "dependsOn": [
+    "complex-number"
+   ]
+  },
+  {
+   "id": "rational-expression",
+   "term": "rational expression",
+   "aliases": [
+    "rational expressions"
+   ],
+   "taughtIn": "alg-rational-expressions",
+   "dependsOn": [
+    "polynomial-expression"
+   ]
+  },
+  {
+   "id": "system",
+   "term": "system of equations",
+   "aliases": [
+    "systems of equations",
+    "system of linear equations"
+   ],
+   "taughtIn": "alg-systems",
+   "dependsOn": [
+    "line-equation"
+   ]
+  },
+  {
+   "id": "exponent-rules",
+   "term": "exponent rules",
+   "aliases": [
+    "laws of exponents",
+    "negative exponent",
+    "negative exponents",
+    "rational exponent",
+    "rational exponents"
+   ],
+   "taughtIn": "alg-exponents",
+   "dependsOn": []
+  },
+  {
+   "id": "radical",
+   "term": "radical",
+   "aliases": [
+    "radicals",
+    "nth root"
+   ],
+   "taughtIn": "alg-exponents",
+   "dependsOn": [
+    "exponent-rules"
+   ]
+  },
+  {
+   "id": "trig-ratio",
+   "term": "trigonometric ratio",
+   "aliases": [
+    "trigonometric ratios",
+    "trig ratio",
+    "trig ratios",
+    "SOH CAH TOA"
+   ],
+   "taughtIn": "alg-right-triangle",
+   "dependsOn": [],
+   "notation": [
+    "\\\\(?:sin|cos|tan)(?![a-z])"
+   ]
+  },
+  {
+   "id": "hypotenuse",
+   "term": "hypotenuse",
+   "aliases": [
+    "opposite side",
+    "adjacent side"
+   ],
+   "taughtIn": "alg-right-triangle",
+   "dependsOn": []
+  },
+  {
+   "id": "special-triangle",
+   "term": "special right triangle",
+   "aliases": [
+    "special right triangles",
+    "30-60-90 triangle",
+    "45-45-90 triangle"
+   ],
+   "taughtIn": "alg-circles",
+   "dependsOn": [
+    "hypotenuse"
+   ]
+  },
+  {
+   "id": "arc-length",
+   "term": "arc length",
+   "aliases": [
+    "arc lengths"
+   ],
+   "taughtIn": "alg-circles",
+   "dependsOn": []
+  },
+  {
+   "id": "circle-equation",
+   "term": "equation of a circle",
+   "aliases": [],
+   "taughtIn": "alg-circles",
+   "dependsOn": [
+    "line-equation"
+   ]
+  },
+  {
+   "id": "increasing",
+   "term": "increasing function",
+   "aliases": [
+    "increasing functions",
+    "decreasing function",
+    "decreasing functions",
+    "increasing on an interval",
+    "decreasing on an interval"
+   ],
+   "taughtIn": "change-in-tandem",
+   "dependsOn": [
+    "function",
+    "interval-notation"
+   ]
+  },
+  {
+   "id": "covariation",
+   "term": "covary",
+   "aliases": [
+    "covaries",
+    "change in tandem",
+    "covariation"
+   ],
+   "taughtIn": "change-in-tandem",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "rate-of-change",
+   "term": "rate of change",
+   "aliases": [
+    "rates of change"
+   ],
+   "taughtIn": "change-in-tandem",
+   "dependsOn": [
+    "covariation"
+   ]
+  },
+  {
+   "id": "concavity",
+   "term": "concave up",
+   "aliases": [
+    "concave down",
+    "concavity"
+   ],
+   "taughtIn": "change-in-tandem",
+   "dependsOn": [
+    "rate-of-change"
+   ]
+  },
+  {
+   "id": "aroc",
+   "term": "average rate of change",
+   "aliases": [
+    "average rates of change"
+   ],
+   "taughtIn": "rates-of-change",
+   "dependsOn": [
+    "rate-of-change",
+    "slope"
+   ]
+  },
+  {
+   "id": "secant-line",
+   "term": "secant line",
+   "aliases": [
+    "secant lines"
+   ],
+   "taughtIn": "linear-quadratic-rates",
+   "dependsOn": [
+    "aroc",
+    "line-equation"
+   ]
+  },
+  {
+   "id": "second-differences",
+   "term": "second differences",
+   "aliases": [
+    "constant second differences",
+    "nth differences"
+   ],
+   "taughtIn": "linear-quadratic-rates",
+   "dependsOn": [
+    "aroc",
+    "quadratic"
+   ]
+  },
+  {
+   "id": "polynomial-function",
+   "term": "polynomial function",
+   "aliases": [
+    "polynomial functions"
+   ],
+   "taughtIn": "polynomial-rates",
+   "dependsOn": [
+    "polynomial-expression",
+    "function"
+   ]
+  },
+  {
+   "id": "degree",
+   "term": "degree of a polynomial",
+   "aliases": [
+    "degree"
+   ],
+   "taughtIn": "polynomial-rates",
+   "dependsOn": [
+    "polynomial-function"
+   ]
+  },
+  {
+   "id": "leading-term",
+   "term": "leading term",
+   "aliases": [
+    "leading terms",
+    "leading coefficient",
+    "leading coefficients"
+   ],
+   "taughtIn": "polynomial-rates",
+   "dependsOn": [
+    "degree"
+   ]
+  },
+  {
+   "id": "local-extremum",
+   "term": "local maximum",
+   "aliases": [
+    "local maxima",
+    "local minimum",
+    "local minima",
+    "relative maximum",
+    "relative minimum",
+    "local extremum",
+    "local extrema"
+   ],
+   "taughtIn": "polynomial-rates",
+   "dependsOn": [
+    "increasing"
+   ]
+  },
+  {
+   "id": "global-extremum",
+   "term": "global maximum",
+   "aliases": [
+    "global minimum",
+    "absolute maximum",
+    "absolute minimum",
+    "global extrema"
+   ],
+   "taughtIn": "polynomial-rates",
+   "dependsOn": [
+    "local-extremum"
+   ]
+  },
+  {
+   "id": "inflection",
+   "term": "point of inflection",
+   "aliases": [
+    "points of inflection",
+    "inflection point",
+    "inflection points"
+   ],
+   "taughtIn": "polynomial-rates",
+   "dependsOn": [
+    "concavity"
+   ]
+  },
+  {
+   "id": "multiplicity",
+   "term": "multiplicity",
+   "aliases": [
+    "multiplicities",
+    "repeated zero",
+    "double zero"
+   ],
+   "taughtIn": "complex-zeros",
+   "dependsOn": [
+    "zero",
+    "factoring"
+   ]
+  },
+  {
+   "id": "complex-zero",
+   "term": "complex zero",
+   "aliases": [
+    "complex zeros",
+    "non-real zero",
+    "non-real zeros",
+    "conjugate pair",
+    "conjugate pairs"
+   ],
+   "taughtIn": "complex-zeros",
+   "dependsOn": [
+    "complex-conjugate",
+    "polynomial-function"
+   ]
+  },
+  {
+   "id": "even-odd",
+   "term": "even function",
+   "aliases": [
+    "even functions",
+    "odd function",
+    "odd functions"
+   ],
+   "taughtIn": "complex-zeros",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "end-behavior",
+   "term": "end behavior",
+   "aliases": [
+    "end behaviors"
+   ],
+   "taughtIn": "polynomial-end-behavior",
+   "dependsOn": [
+    "leading-term"
+   ]
+  },
+  {
+   "id": "limit",
+   "term": "limit notation",
+   "aliases": [
+    "limit",
+    "limits"
+   ],
+   "taughtIn": "polynomial-end-behavior",
+   "dependsOn": [
+    "end-behavior"
+   ],
+   "notation": [
+    "\\\\lim(?![a-z])",
+    "\\\\to\\s*[+-]?\\\\infty"
+   ]
+  },
+  {
+   "id": "rational-function",
+   "term": "rational function",
+   "aliases": [
+    "rational functions"
+   ],
+   "taughtIn": "rational-end-behavior",
+   "dependsOn": [
+    "rational-expression",
+    "function"
+   ]
+  },
+  {
+   "id": "horizontal-asymptote",
+   "term": "horizontal asymptote",
+   "aliases": [
+    "horizontal asymptotes"
+   ],
+   "taughtIn": "rational-end-behavior",
+   "dependsOn": [
+    "rational-function",
+    "limit"
+   ]
+  },
+  {
+   "id": "slant-asymptote",
+   "term": "slant asymptote",
+   "aliases": [
+    "slant asymptotes",
+    "oblique asymptote"
+   ],
+   "taughtIn": "rational-end-behavior",
+   "dependsOn": [
+    "horizontal-asymptote"
+   ]
+  },
+  {
+   "id": "rational-inequality",
+   "term": "rational inequality",
+   "aliases": [
+    "rational inequalities",
+    "sign chart",
+    "sign charts"
+   ],
+   "taughtIn": "rational-zeros",
+   "dependsOn": [
+    "rational-function",
+    "inequality"
+   ]
+  },
+  {
+   "id": "vertical-asymptote",
+   "term": "vertical asymptote",
+   "aliases": [
+    "vertical asymptotes"
+   ],
+   "taughtIn": "vertical-asymptotes",
+   "dependsOn": [
+    "rational-function",
+    "multiplicity"
+   ]
+  },
+  {
+   "id": "one-sided-limit",
+   "term": "one-sided limit",
+   "aliases": [
+    "one-sided limits"
+   ],
+   "taughtIn": "vertical-asymptotes",
+   "dependsOn": [
+    "limit",
+    "vertical-asymptote"
+   ],
+   "notation": [
+    "\\\\to\\s*[^{}$]*\\^\\{?[+-]\\}?"
+   ]
+  },
+  {
+   "id": "hole",
+   "term": "hole in the graph",
+   "aliases": [
+    "holes in the graph",
+    "hole in a graph"
+   ],
+   "taughtIn": "rational-holes",
+   "dependsOn": [
+    "vertical-asymptote",
+    "one-sided-limit"
+   ]
+  },
+  {
+   "id": "long-division",
+   "term": "polynomial long division",
+   "aliases": [
+    "long division",
+    "quotient and remainder"
+   ],
+   "taughtIn": "equivalent-representations",
+   "dependsOn": [
+    "polynomial-function",
+    "slant-asymptote"
+   ]
+  },
+  {
+   "id": "binomial-theorem",
+   "term": "binomial theorem",
+   "aliases": [
+    "Pascal's triangle",
+    "binomial coefficient",
+    "binomial coefficients"
+   ],
+   "taughtIn": "equivalent-representations",
+   "dependsOn": [
+    "polynomial-expression"
+   ],
+   "notation": [
+    "\\\\binom"
+   ]
+  },
+  {
+   "id": "factored-form",
+   "term": "factored form",
+   "aliases": [
+    "standard form of a polynomial"
+   ],
+   "taughtIn": "equivalent-representations",
+   "dependsOn": [
+    "factoring",
+    "zero"
+   ]
+  },
+  {
+   "id": "transformation",
+   "term": "function transformation",
+   "aliases": [
+    "function transformations",
+    "transformations of functions",
+    "transformation of a function"
+   ],
+   "taughtIn": "transformations",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "translation",
+   "term": "vertical translation",
+   "aliases": [
+    "vertical translations",
+    "horizontal translation",
+    "horizontal translations"
+   ],
+   "taughtIn": "transformations",
+   "dependsOn": [
+    "transformation"
+   ]
+  },
+  {
+   "id": "dilation",
+   "term": "vertical dilation",
+   "aliases": [
+    "vertical dilations",
+    "horizontal dilation",
+    "horizontal dilations"
+   ],
+   "taughtIn": "transformations",
+   "dependsOn": [
+    "transformation"
+   ]
+  },
+  {
+   "id": "reflection",
+   "term": "reflection across the x-axis",
+   "aliases": [
+    "reflection across the y-axis",
+    "reflection over the x-axis",
+    "reflection over the y-axis"
+   ],
+   "taughtIn": "transformations",
+   "dependsOn": [
+    "transformation"
+   ]
+  },
+  {
+   "id": "function-model",
+   "term": "function model",
+   "aliases": [
+    "function models",
+    "mathematical model",
+    "mathematical models"
+   ],
+   "taughtIn": "model-selection",
+   "dependsOn": [
+    "function",
+    "aroc"
+   ]
+  },
+  {
+   "id": "model-assumption",
+   "term": "model assumption",
+   "aliases": [
+    "model assumptions",
+    "contextual domain",
+    "restricted domain"
+   ],
+   "taughtIn": "model-selection",
+   "dependsOn": [
+    "function-model",
+    "domain"
+   ]
+  },
+  {
+   "id": "regression",
+   "term": "regression",
+   "aliases": [
+    "linear regression",
+    "quadratic regression",
+    "cubic regression",
+    "quartic regression"
+   ],
+   "taughtIn": "model-construction",
+   "dependsOn": [
+    "function-model",
+    "system"
+   ]
+  },
+  {
+   "id": "inverse-variation",
+   "term": "inverse proportion",
+   "aliases": [
+    "inversely proportional",
+    "inverse-square law",
+    "inverse variation"
+   ],
+   "taughtIn": "model-construction",
+   "dependsOn": [
+    "rational-function",
+    "function-model"
+   ]
+  },
+  {
+   "id": "sequence",
+   "term": "sequence",
+   "aliases": [
+    "sequences"
+   ],
+   "taughtIn": "sequences",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "arithmetic-sequence",
+   "term": "arithmetic sequence",
+   "aliases": [
+    "arithmetic sequences",
+    "common difference"
+   ],
+   "taughtIn": "sequences",
+   "dependsOn": [
+    "sequence"
+   ]
+  },
+  {
+   "id": "geometric-sequence",
+   "term": "geometric sequence",
+   "aliases": [
+    "geometric sequences",
+    "common ratio"
+   ],
+   "taughtIn": "sequences",
+   "dependsOn": [
+    "sequence",
+    "exponent-rules"
+   ]
+  },
+  {
+   "id": "exponential-function",
+   "term": "exponential function",
+   "aliases": [
+    "exponential functions",
+    "exponential growth",
+    "exponential decay"
+   ],
+   "taughtIn": "linear-vs-exponential",
+   "dependsOn": [
+    "geometric-sequence",
+    "function"
+   ]
+  },
+  {
+   "id": "natural-base",
+   "term": "natural base e",
+   "aliases": [
+    "the number e",
+    "Euler's number"
+   ],
+   "taughtIn": "exponential-functions",
+   "dependsOn": [
+    "exponential-function"
+   ],
+   "notation": [
+    "(?<![a-zA-Z\\\\])e\\^"
+   ]
+  },
+  {
+   "id": "growth-factor",
+   "term": "growth factor",
+   "aliases": [
+    "growth factors",
+    "decay factor",
+    "percent change",
+    "growth rate"
+   ],
+   "taughtIn": "exponential-functions",
+   "dependsOn": [
+    "exponential-function"
+   ]
+  },
+  {
+   "id": "exponential-forms",
+   "term": "equivalent exponential form",
+   "aliases": [
+    "equivalent exponential forms",
+    "change of base of an exponential"
+   ],
+   "taughtIn": "exponential-manipulation",
+   "dependsOn": [
+    "exponential-function",
+    "exponent-rules",
+    "translation",
+    "dilation"
+   ]
+  },
+  {
+   "id": "exponential-model",
+   "term": "exponential model",
+   "aliases": [
+    "exponential models",
+    "exponential regression"
+   ],
+   "taughtIn": "exponential-modeling",
+   "dependsOn": [
+    "exponential-function",
+    "growth-factor",
+    "regression"
+   ]
+  },
+  {
+   "id": "residual",
+   "term": "residual",
+   "aliases": [
+    "residuals",
+    "residual plot",
+    "residual plots"
+   ],
+   "taughtIn": "model-validation",
+   "dependsOn": [
+    "function-model",
+    "regression"
+   ]
+  },
+  {
+   "id": "composition",
+   "term": "composite function",
+   "aliases": [
+    "composite functions",
+    "composition of functions",
+    "function composition"
+   ],
+   "taughtIn": "composition",
+   "dependsOn": [
+    "function",
+    "domain"
+   ],
+   "notation": [
+    "\\\\circ"
+   ]
+  },
+  {
+   "id": "identity-function",
+   "term": "identity function",
+   "aliases": [
+    "identity functions"
+   ],
+   "taughtIn": "composition",
+   "dependsOn": [
+    "composition"
+   ]
+  },
+  {
+   "id": "inverse-function",
+   "term": "inverse function",
+   "aliases": [
+    "inverse functions",
+    "one-to-one",
+    "invertible"
+   ],
+   "taughtIn": "inverse-functions",
+   "dependsOn": [
+    "composition",
+    "identity-function"
+   ],
+   "notation": [
+    "(?<![\\\\A-Za-z])[fghFGHk]\\^(?:\\{\\s*-\\s*1\\s*\\}|-1(?![0-9./]))"
+   ]
+  },
+  {
+   "id": "logarithm",
+   "term": "logarithm",
+   "aliases": [
+    "logarithms",
+    "common logarithm",
+    "common logarithms",
+    "natural logarithm",
+    "natural logarithms",
+    "natural log"
+   ],
+   "taughtIn": "logarithmic-expressions",
+   "dependsOn": [
+    "exponential-function",
+    "natural-base"
+   ],
+   "notation": [
+    "\\\\log(?![a-z])",
+    "\\\\ln(?![a-z])"
+   ]
+  },
+  {
+   "id": "log-scale",
+   "term": "logarithmic scale",
+   "aliases": [
+    "logarithmic scales",
+    "log scale"
+   ],
+   "taughtIn": "logarithmic-expressions",
+   "dependsOn": [
+    "logarithm"
+   ]
+  },
+  {
+   "id": "exp-log-inverse",
+   "term": "inverse of an exponential function",
+   "aliases": [
+    "exponential and logarithmic inverses"
+   ],
+   "taughtIn": "exp-log-inverses",
+   "dependsOn": [
+    "logarithm",
+    "inverse-function"
+   ]
+  },
+  {
+   "id": "log-function",
+   "term": "logarithmic function",
+   "aliases": [
+    "logarithmic functions"
+   ],
+   "taughtIn": "logarithmic-functions",
+   "dependsOn": [
+    "exp-log-inverse",
+    "vertical-asymptote"
+   ]
+  },
+  {
+   "id": "log-properties",
+   "term": "product property of logarithms",
+   "aliases": [
+    "quotient property of logarithms",
+    "power property of logarithms",
+    "properties of logarithms",
+    "change of base formula"
+   ],
+   "taughtIn": "logarithmic-manipulation",
+   "dependsOn": [
+    "logarithm",
+    "exponent-rules"
+   ]
+  },
+  {
+   "id": "extraneous",
+   "term": "extraneous solution",
+   "aliases": [
+    "extraneous solutions"
+   ],
+   "taughtIn": "exp-log-equations",
+   "dependsOn": [
+    "log-properties"
+   ]
+  },
+  {
+   "id": "exp-log-equation",
+   "term": "exponential equation",
+   "aliases": [
+    "exponential equations",
+    "logarithmic equation",
+    "logarithmic equations"
+   ],
+   "taughtIn": "exp-log-equations",
+   "dependsOn": [
+    "log-properties",
+    "exp-log-inverse"
+   ]
+  },
+  {
+   "id": "log-model",
+   "term": "logarithmic model",
+   "aliases": [
+    "logarithmic models",
+    "logarithmic regression"
+   ],
+   "taughtIn": "logarithmic-modeling",
+   "dependsOn": [
+    "log-function",
+    "regression"
+   ]
+  },
+  {
+   "id": "semi-log",
+   "term": "semi-log plot",
+   "aliases": [
+    "semi-log plots",
+    "semi-log graph"
+   ],
+   "taughtIn": "semi-log-plots",
+   "dependsOn": [
+    "log-scale",
+    "exponential-model"
+   ]
+  },
+  {
+   "id": "periodic",
+   "term": "periodic function",
+   "aliases": [
+    "periodic functions",
+    "period of a function",
+    "periodic behavior"
+   ],
+   "taughtIn": "periodic-phenomena",
+   "dependsOn": [
+    "function-graph"
+   ]
+  },
+  {
+   "id": "radian",
+   "term": "radian",
+   "aliases": [
+    "radians",
+    "radian measure"
+   ],
+   "taughtIn": "sine-cosine-tangent",
+   "dependsOn": [
+    "arc-length"
+   ]
+  },
+  {
+   "id": "unit-circle",
+   "term": "unit circle",
+   "aliases": [],
+   "taughtIn": "sine-cosine-tangent",
+   "dependsOn": [
+    "radian",
+    "circle-equation"
+   ]
+  },
+  {
+   "id": "standard-position",
+   "term": "standard position",
+   "aliases": [
+    "terminal ray",
+    "initial ray",
+    "angle in standard position"
+   ],
+   "taughtIn": "sine-cosine-tangent",
+   "dependsOn": [
+    "unit-circle"
+   ]
+  },
+  {
+   "id": "trig-function",
+   "term": "sine function",
+   "aliases": [
+    "sine functions",
+    "cosine function",
+    "cosine functions",
+    "trigonometric function",
+    "trigonometric functions",
+    "trig function",
+    "trig functions"
+   ],
+   "taughtIn": "sine-cosine-tangent",
+   "dependsOn": [
+    "unit-circle",
+    "trig-ratio",
+    "function"
+   ]
+  },
+  {
+   "id": "special-angle",
+   "term": "special angle",
+   "aliases": [
+    "special angles",
+    "reference angle",
+    "reference angles"
+   ],
+   "taughtIn": "sine-cosine-values",
+   "dependsOn": [
+    "special-triangle",
+    "trig-function"
+   ]
+  },
+  {
+   "id": "trig-curve",
+   "term": "sine curve",
+   "aliases": [
+    "sine curves",
+    "cosine curve",
+    "cosine curves",
+    "graph of sine",
+    "graph of cosine"
+   ],
+   "taughtIn": "sine-cosine-curves",
+   "dependsOn": [
+    "trig-function",
+    "periodic"
+   ]
+  },
+  {
+   "id": "sinusoid",
+   "term": "sinusoidal function",
+   "aliases": [
+    "sinusoidal functions",
+    "sinusoid",
+    "sinusoids"
+   ],
+   "taughtIn": "sinusoidal-functions",
+   "dependsOn": [
+    "trig-curve"
+   ]
+  },
+  {
+   "id": "amplitude",
+   "term": "amplitude",
+   "aliases": [
+    "amplitudes"
+   ],
+   "taughtIn": "sinusoidal-functions",
+   "dependsOn": [
+    "sinusoid"
+   ]
+  },
+  {
+   "id": "midline",
+   "term": "midline",
+   "aliases": [
+    "midlines"
+   ],
+   "taughtIn": "sinusoidal-functions",
+   "dependsOn": [
+    "sinusoid"
+   ]
+  },
+  {
+   "id": "frequency",
+   "term": "frequency",
+   "aliases": [
+    "frequencies"
+   ],
+   "taughtIn": "sinusoidal-functions",
+   "dependsOn": [
+    "sinusoid",
+    "periodic"
+   ]
+  },
+  {
+   "id": "phase-shift",
+   "term": "phase shift",
+   "aliases": [
+    "phase shifts"
+   ],
+   "taughtIn": "sinusoidal-transformations",
+   "dependsOn": [
+    "sinusoid",
+    "translation"
+   ]
+  },
+  {
+   "id": "sinusoidal-model",
+   "term": "sinusoidal model",
+   "aliases": [
+    "sinusoidal models",
+    "sinusoidal regression"
+   ],
+   "taughtIn": "sinusoidal-modeling",
+   "dependsOn": [
+    "phase-shift",
+    "amplitude",
+    "midline",
+    "regression"
+   ]
+  },
+  {
+   "id": "tangent-function",
+   "term": "tangent function",
+   "aliases": [
+    "tangent functions",
+    "graph of tangent"
+   ],
+   "taughtIn": "tangent-function",
+   "dependsOn": [
+    "trig-function",
+    "vertical-asymptote"
+   ]
+  },
+  {
+   "id": "inverse-trig",
+   "term": "inverse sine",
+   "aliases": [
+    "inverse cosine",
+    "inverse tangent",
+    "arcsine",
+    "arccosine",
+    "arctangent",
+    "inverse trigonometric function",
+    "inverse trigonometric functions",
+    "inverse trig"
+   ],
+   "taughtIn": "inverse-trig",
+   "dependsOn": [
+    "inverse-function",
+    "trig-function"
+   ],
+   "notation": [
+    "\\\\arc(?:sin|cos|tan)",
+    "\\\\(?:sin|cos|tan)\\^\\{?\\s*-\\s*1"
+   ]
+  },
+  {
+   "id": "trig-equation",
+   "term": "trigonometric equation",
+   "aliases": [
+    "trigonometric equations",
+    "trigonometric inequality",
+    "trigonometric inequalities"
+   ],
+   "taughtIn": "trig-equations",
+   "dependsOn": [
+    "inverse-trig"
+   ]
+  },
+  {
+   "id": "reciprocal-trig",
+   "term": "secant function",
+   "aliases": [
+    "cosecant",
+    "cotangent",
+    "cosecant function",
+    "cotangent function",
+    "reciprocal trigonometric functions"
+   ],
+   "taughtIn": "sec-csc-cot",
+   "dependsOn": [
+    "trig-function"
+   ],
+   "notation": [
+    "\\\\(?:sec|csc|cot)(?![a-z])"
+   ]
+  },
+  {
+   "id": "pythagorean-identity",
+   "term": "Pythagorean identity",
+   "aliases": [
+    "Pythagorean identities"
+   ],
+   "taughtIn": "trig-identities",
+   "dependsOn": [
+    "trig-function",
+    "reciprocal-trig"
+   ]
+  },
+  {
+   "id": "sum-identity",
+   "term": "sum identity",
+   "aliases": [
+    "sum identities",
+    "difference identity",
+    "difference identities",
+    "double-angle identity",
+    "double-angle identities"
+   ],
+   "taughtIn": "trig-identities",
+   "dependsOn": [
+    "pythagorean-identity"
+   ]
+  },
+  {
+   "id": "trig-identity",
+   "term": "trigonometric identity",
+   "aliases": [
+    "trigonometric identities",
+    "trig identity",
+    "trig identities"
+   ],
+   "taughtIn": "trig-identities",
+   "dependsOn": [
+    "pythagorean-identity"
+   ]
+  },
+  {
+   "id": "polar-coordinates",
+   "term": "polar coordinates",
+   "aliases": [
+    "polar coordinate",
+    "polar coordinate system",
+    "polar axis"
+   ],
+   "taughtIn": "polar-coordinates",
+   "dependsOn": [
+    "trig-function",
+    "unit-circle"
+   ]
+  },
+  {
+   "id": "complex-polar",
+   "term": "polar form of a complex number",
+   "aliases": [
+    "complex plane"
+   ],
+   "taughtIn": "polar-coordinates",
+   "dependsOn": [
+    "polar-coordinates",
+    "complex-number"
+   ]
+  },
+  {
+   "id": "polar-function",
+   "term": "polar function",
+   "aliases": [
+    "polar functions",
+    "polar graph",
+    "polar graphs",
+    "rose curve",
+    "rose curves",
+    "limaçon",
+    "limaçons",
+    "cardioid",
+    "cardioids"
+   ],
+   "taughtIn": "polar-curves",
+   "dependsOn": [
+    "polar-coordinates"
+   ]
+  },
+  {
+   "id": "polar-rate",
+   "term": "rate of change of r",
+   "aliases": [
+    "average rate of change of r"
+   ],
+   "taughtIn": "polar-rates",
+   "dependsOn": [
+    "polar-function",
+    "aroc"
+   ]
+  },
+  {
+   "id": "parameter",
+   "term": "parameter",
+   "aliases": [
+    "parameters"
+   ],
+   "taughtIn": "parametric-functions",
+   "dependsOn": []
+  },
+  {
+   "id": "parametric",
+   "term": "parametric function",
+   "aliases": [
+    "parametric functions",
+    "parametric equations",
+    "parametric curve"
+   ],
+   "taughtIn": "parametric-functions",
+   "dependsOn": [
+    "parameter",
+    "function"
+   ]
+  },
+  {
+   "id": "planar-motion",
+   "term": "planar motion",
+   "aliases": [
+    "motion in the plane"
+   ],
+   "taughtIn": "parametric-motion",
+   "dependsOn": [
+    "parametric"
+   ]
+  },
+  {
+   "id": "parametric-rate",
+   "term": "parametric rate of change",
+   "aliases": [
+    "rate of change of a parametric function"
+   ],
+   "taughtIn": "parametric-rates",
+   "dependsOn": [
+    "parametric",
+    "aroc"
+   ]
+  },
+  {
+   "id": "parametric-circle",
+   "term": "parametric circle",
+   "aliases": [
+    "parametrized circle",
+    "parametrized line"
+   ],
+   "taughtIn": "parametric-circles-lines",
+   "dependsOn": [
+    "parametric",
+    "unit-circle"
+   ]
+  },
+  {
+   "id": "implicit",
+   "term": "implicitly defined function",
+   "aliases": [
+    "implicitly defined functions",
+    "implicit equation",
+    "implicit equations"
+   ],
+   "taughtIn": "implicit-functions",
+   "dependsOn": [
+    "function"
+   ]
+  },
+  {
+   "id": "conic",
+   "term": "conic section",
+   "aliases": [
+    "conic sections",
+    "ellipse",
+    "ellipses",
+    "hyperbola",
+    "hyperbolas"
+   ],
+   "taughtIn": "conic-sections",
+   "dependsOn": [
+    "implicit",
+    "parabola"
+   ]
+  },
+  {
+   "id": "parametrization",
+   "term": "parametrization",
+   "aliases": [
+    "parametrizations"
+   ],
+   "taughtIn": "parametrizing-implicit",
+   "dependsOn": [
+    "conic",
+    "parametric-circle"
+   ]
+  },
+  {
+   "id": "vector",
+   "term": "vector",
+   "aliases": [
+    "vectors",
+    "magnitude of a vector",
+    "unit vector",
+    "unit vectors",
+    "dot product",
+    "scalar multiple"
+   ],
+   "taughtIn": "vectors",
+   "dependsOn": [],
+   "notation": [
+    "\\\\vec",
+    "\\\\langle"
+   ]
+  },
+  {
+   "id": "vector-function",
+   "term": "vector-valued function",
+   "aliases": [
+    "vector-valued functions",
+    "position vector"
+   ],
+   "taughtIn": "vector-valued-functions",
+   "dependsOn": [
+    "vector",
+    "parametric"
+   ]
+  },
+  {
+   "id": "matrix",
+   "term": "matrix",
+   "aliases": [
+    "matrices",
+    "matrix multiplication",
+    "dimensions of a matrix"
+   ],
+   "taughtIn": "matrices",
+   "dependsOn": [],
+   "notation": [
+    "\\\\begin\\{[bpv]matrix\\}"
+   ]
+  },
+  {
+   "id": "determinant",
+   "term": "determinant",
+   "aliases": [
+    "determinants",
+    "inverse matrix",
+    "inverse of a matrix"
+   ],
+   "taughtIn": "inverse-determinant",
+   "dependsOn": [
+    "matrix"
+   ]
+  },
+  {
+   "id": "linear-transformation",
+   "term": "linear transformation",
+   "aliases": [
+    "linear transformations"
+   ],
+   "taughtIn": "linear-transformations",
+   "dependsOn": [
+    "matrix",
+    "vector"
+   ]
+  },
+  {
+   "id": "matrix-function",
+   "term": "matrix as a function",
+   "aliases": [
+    "composition of linear transformations"
+   ],
+   "taughtIn": "matrices-as-functions",
+   "dependsOn": [
+    "linear-transformation",
+    "determinant",
+    "composition"
+   ]
+  },
+  {
+   "id": "transition-matrix",
+   "term": "transition matrix",
+   "aliases": [
+    "transition matrices",
+    "state vector"
+   ],
+   "taughtIn": "matrix-modeling",
+   "dependsOn": [
+    "matrix-function"
+   ]
+  }
+ ],
+ "circularDependencies": []
+}

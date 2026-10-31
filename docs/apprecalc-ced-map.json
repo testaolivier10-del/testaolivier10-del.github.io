@@ -1,0 +1,1379 @@
+{
+ "about": "Topic map of the AP Precalculus Course and Exam Description (effective fall 2026), written in LevlPrep's own words from docs/apprecalc-research/framework.md. No CED text is reproduced. Every topic title is official (Course at a Glance); Unit 1 objectives and knowledge were read in the CED; Units 2-3 combine the official clarifications PDF with third-party summaries (source field); Unit 4 is a short outline (not assessed). Open points: docs/apprecalc-needs-author.md.",
+ "ced": {
+  "title": "AP Precalculus Course and Exam Description",
+  "edition": "Effective fall 2026, with the 2026-27 clarifications and corrections",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-precalculus-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-precalculus-ced-clarification-and-guidance.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-precalculus-course-at-a-glance.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-precalculus/exam"
+  ]
+ },
+ "practices": [
+  {
+   "id": 1,
+   "name": "Procedural and Symbolic Fluency",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "1.A": "Solve equations and inequalities, with and without technology",
+    "1.B": "Rewrite expressions and functions in equivalent forms",
+    "1.C": "Build new functions by transformation, composition, inversion or regression"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Multiple Representations",
+   "skills": [
+    "2.A",
+    "2.B"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "2.A": "Read information from graphs, tables, formulas and words",
+    "2.B": "Build an equivalent representation"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Communication and Reasoning",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    100
+   ],
+   "skillNames": {
+    "3.A": "Describe function characteristics as precisely as the representation allows",
+    "3.B": "Apply numerical results in a context",
+    "3.C": "Support conclusions with a rationale or data"
+   }
+  }
+ ],
+ "practicesNote": "Practice names and skills from the CED. Their MCQ weights could not be read, so mcqWeight is [0, 100] and nothing enforces them (practicesConfirmed false; needs-author practice-weights).",
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Polynomial and Rational Functions",
+   "weight": "30-40%",
+   "assessed": true,
+   "pacing": "6-8 weeks",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "change-in-tandem",
+     "title": "Change in Tandem",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe how the inputs and outputs of a function change together, from a table, a graph or words."
+     ],
+     "knowledge": [
+      "A function gives each input exactly one output; the domain is the set of inputs, the range the set of outputs.",
+      "A function is increasing on an interval when larger inputs give larger outputs, decreasing when they give smaller ones.",
+      "Concave up means the rate of change is increasing; concave down means it is decreasing."
+     ],
+     "exclusions": [
+      "Whether an endpoint belongs to an interval of increase or decrease (open or closed) is outside the course and exam."
+     ],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.2",
+     "slug": "rates-of-change",
+     "title": "Rates of Change",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Compare how fast a function changes at two points using average rates of change over small nearby intervals."
+     ],
+     "knowledge": [
+      "The average rate of change over an interval is the change in output divided by the change in input.",
+      "A positive rate of change means input and output move the same way; a negative one, opposite ways."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.3",
+     "slug": "linear-quadratic-rates",
+     "title": "Rates of Change in Linear and Quadratic Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find average rates of change of linear and quadratic functions and describe how those rates change."
+     ],
+     "knowledge": [
+      "A linear function has a constant average rate of change.",
+      "For a quadratic, average rates over equal-length consecutive intervals change by a constant amount (constant second differences).",
+      "The average rate of change on [a, b] is the slope of the secant line through (a, f(a)) and (b, f(b)).",
+      "Increasing average rates of change mean the graph is concave up."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.4",
+     "slug": "polynomial-rates",
+     "title": "Polynomial Functions and Rates of Change",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Identify degree, leading term, extrema and points of inflection of a polynomial function."
+     ],
+     "knowledge": [
+      "A polynomial of degree n has a leading term and a leading coefficient; a nonzero constant has degree 0.",
+      "A local maximum or minimum occurs where the function switches between increasing and decreasing, or at an included endpoint.",
+      "Between two distinct real zeros there is a local extremum; an even-degree polynomial has a global maximum or minimum.",
+      "A point of inflection is where the concavity changes."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.5",
+     "slug": "complex-zeros",
+     "title": "Polynomial Functions and Complex Zeros",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find zeros of a polynomial from its factors and describe their multiplicity and symmetry."
+     ],
+     "knowledge": [
+      "A degree n polynomial has exactly n complex zeros counting multiplicity; non-real zeros come in conjugate pairs.",
+      "At a zero of even multiplicity the graph touches the x-axis without crossing it.",
+      "Equally spaced inputs whose nth differences are constant come from a degree n polynomial.",
+      "An even function is symmetric about the y-axis; an odd function about the origin."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.6",
+     "slug": "polynomial-end-behavior",
+     "title": "Polynomial Functions and End Behavior",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe the end behavior of a polynomial in words and in limit notation."
+     ],
+     "knowledge": [
+      "The sign and degree of the leading term decide the end behavior.",
+      "End behavior is written with limit notation as x goes to positive or negative infinity."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.7",
+     "slug": "rational-end-behavior",
+     "title": "Rational Functions and End Behavior",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe the end behavior of a rational function from the quotient of the leading terms."
+     ],
+     "knowledge": [
+      "When the leading terms divide to a constant, the graph has a horizontal asymptote at that value; when the denominator dominates, at y = 0.",
+      "When the quotient of leading terms is linear, the graph has a slant asymptote."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.8",
+     "slug": "rational-zeros",
+     "title": "Rational Functions and Zeros",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find the real zeros of a rational function and solve rational inequalities."
+     ],
+     "knowledge": [
+      "The real zeros of a rational function are the zeros of its numerator that are in its domain.",
+      "Zeros and vertical asymptotes split the number line into intervals of one sign."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.9",
+     "slug": "vertical-asymptotes",
+     "title": "Rational Functions and Vertical Asymptotes",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Locate vertical asymptotes and describe the behavior near them with one-sided limits."
+     ],
+     "knowledge": [
+      "A vertical asymptote occurs at a zero of the denominator whose multiplicity is greater than in the numerator.",
+      "One-sided limits describe how the outputs grow without bound near a vertical asymptote."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.10",
+     "slug": "rational-holes",
+     "title": "Rational Functions and Holes",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Locate holes in the graph of a rational function."
+     ],
+     "knowledge": [
+      "A hole occurs where a zero of the numerator has multiplicity at least that of the same zero of the denominator.",
+      "The height of the hole is found with a limit."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.11",
+     "slug": "equivalent-representations",
+     "title": "Equivalent Representations of Polynomial and Rational Expressions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Rewrite polynomial and rational expressions in the form that shows what is asked."
+     ],
+     "knowledge": [
+      "Factored form shows zeros, intercepts, asymptotes and holes; standard form shows end behavior.",
+      "Polynomial long division writes dividend = divisor × quotient + remainder and finds slant asymptotes.",
+      "The binomial theorem, with Pascal's triangle, expands powers of a binomial."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.12",
+     "slug": "transformations",
+     "title": "Transformations of Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Build and describe additive and multiplicative transformations of a function."
+     ],
+     "knowledge": [
+      "g(x) = f(x) + k is a vertical translation; f(x + h) a horizontal one.",
+      "a f(x) is a vertical dilation (and a reflection when a < 0); f(bx) a horizontal dilation (and a reflection when b < 0).",
+      "Transformations change the domain and range in predictable ways."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.13",
+     "slug": "model-selection",
+     "title": "Function Model Selection and Assumption Articulation",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Choose a function type for a context or data set and state the assumptions behind it."
+     ],
+     "knowledge": [
+      "A constant rate of change suggests a linear model; rates that change linearly, or symmetric data with one extremum, a quadratic.",
+      "Area and volume contexts suggest quadratic and cubic models; n + 1 points determine a polynomial of degree n or less.",
+      "A model holds only on a domain and range that make sense in the context."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    },
+    {
+     "id": "1.14",
+     "slug": "model-construction",
+     "title": "Function Model Construction and Application",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Build polynomial, piecewise and rational models from a context or data and use them to predict."
+     ],
+     "knowledge": [
+      "Models can be built by transformations, from points, or by regression on a graphing calculator.",
+      "Inverse-proportion contexts (such as inverse-square laws) lead to rational models.",
+      "Predictions and rates from a model are stated with the units of the context."
+     ],
+     "exclusions": [],
+     "source": "CED (read) and clarifications"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Exponential and Logarithmic Functions",
+   "weight": "25-40%",
+   "assessed": true,
+   "pacing": "6-9 weeks",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "sequences",
+     "title": "Change in Arithmetic and Geometric Sequences",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Write and compare arithmetic and geometric sequences."
+     ],
+     "knowledge": [
+      "A sequence is a function of the whole numbers; its graph is a set of separate points.",
+      "An arithmetic sequence adds a common difference: a_n = a_0 + dn. A geometric sequence multiplies by a common ratio: g_n = g_0 r^n.",
+      "Arithmetic sequences change by equal amounts; increasing geometric sequences by increasing amounts."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.2",
+     "slug": "linear-vs-exponential",
+     "title": "Change in Linear and Exponential Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Tell linear and exponential functions apart from how their outputs change over equal input steps."
+     ],
+     "knowledge": [
+      "Over equal input steps, a linear function adds a constant difference; an exponential function multiplies by a constant ratio (not 0 or 1).",
+      "An exponential function through a point with a known ratio can be written f(x) = y_i b^(x - x_i)."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.3",
+     "slug": "exponential-functions",
+     "title": "Exponential Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe the graph, end behavior and features of exponential functions."
+     ],
+     "knowledge": [
+      "f(x) = ab^x is always increasing or always decreasing, has one concavity, no extrema and no points of inflection.",
+      "An exponential function has a horizontal asymptote, described with limit notation.",
+      "The natural base e is about 2.718."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.4",
+     "slug": "exponential-manipulation",
+     "title": "Exponential Function Manipulation",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Rewrite exponential expressions with the exponent rules."
+     ],
+     "knowledge": [
+      "Product, power and negative exponent rules, and rational exponents as roots.",
+      "A horizontal translation of an exponential is a vertical dilation; a horizontal dilation is a change of base."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.5",
+     "slug": "exponential-modeling",
+     "title": "Exponential Function Context and Data Modeling",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Build exponential models from a ratio and an initial value, two points, or regression, and use them."
+     ],
+     "knowledge": [
+      "The base is the growth factor; base minus 1 is the percent change per unit of input.",
+      "A model can be rewritten for another time unit (monthly from yearly).",
+      "Models predict outputs and find inputs within the domain the context allows."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.6",
+     "slug": "model-validation",
+     "title": "Competing Function Model Validation",
+     "practices": [
+      3
+     ],
+     "objectives": [
+      "Decide which of two models fits better using residuals."
+     ],
+     "knowledge": [
+      "A residual is the predicted value minus the actual value (the course's convention).",
+      "A residual plot with no pattern suggests the model type is appropriate.",
+      "The size and sign of residuals tell whether a model over- or underestimates on an interval."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.7",
+     "slug": "composition",
+     "title": "Composition of Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Evaluate and build compositions of functions from formulas, tables and graphs."
+     ],
+     "knowledge": [
+      "f(g(x)) applies g first, then f; composition is not commutative.",
+      "The domain of a composite needs the inner output to be in the outer domain.",
+      "The identity function leaves inputs unchanged; functions can be decomposed into simpler ones."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.8",
+     "slug": "inverse-functions",
+     "title": "Inverse Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find and use inverse functions, restricting the domain when needed."
+     ],
+     "knowledge": [
+      "A function has an inverse when it is one-to-one, or after its domain is restricted.",
+      "The inverse swaps inputs and outputs; its graph is the reflection over y = x.",
+      "f(f^-1(x)) = x and f^-1(f(x)) = x on the right domains."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.9",
+     "slug": "logarithmic-expressions",
+     "title": "Logarithmic Expressions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Evaluate logarithms and use logarithmic scales."
+     ],
+     "knowledge": [
+      "log_b c = a means b^a = c.",
+      "The common logarithm has base 10; the natural logarithm has base e.",
+      "A logarithmic scale shows quantities that vary by factors."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.10",
+     "slug": "exp-log-inverses",
+     "title": "Inverses of Exponential Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use the inverse relationship between exponential and logarithmic functions."
+     ],
+     "knowledge": [
+      "An exponential and a logarithmic function with the same base are inverses.",
+      "Adding to the input of an exponential multiplies its output; multiplying the input of a logarithm adds to its output."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.11",
+     "slug": "logarithmic-functions",
+     "title": "Logarithmic Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe the graph, domain and end behavior of logarithmic functions."
+     ],
+     "knowledge": [
+      "f(x) = a log_b x has domain x > 0 and a vertical asymptote at x = 0.",
+      "It is always increasing or always decreasing, with one concavity and no extrema.",
+      "Behavior near the asymptote is described with one-sided limits."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.12",
+     "slug": "logarithmic-manipulation",
+     "title": "Logarithmic Function Manipulation",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Rewrite logarithmic expressions with the product, quotient, power and change of base rules."
+     ],
+     "knowledge": [
+      "Product, quotient and power rules for logarithms.",
+      "Change of base shows every logarithmic function is a vertical dilation of every other.",
+      "Each rule has a graphical meaning (a translation or a dilation)."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.13",
+     "slug": "exp-log-equations",
+     "title": "Exponential and Logarithmic Equations and Inequalities",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Solve exponential and logarithmic equations and inequalities."
+     ],
+     "knowledge": [
+      "Solve with the properties and the inverse relationship, and reject extraneous solutions.",
+      "Find inverses of transformed exponential and logarithmic functions."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.14",
+     "slug": "logarithmic-modeling",
+     "title": "Logarithmic Function Context and Data Modeling",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Build logarithmic models from points or regression and use them."
+     ],
+     "knowledge": [
+      "A logarithmic model suits data where the input grows by a factor over equal output steps.",
+      "Models can come from two points or logarithmic regression."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "2.15",
+     "slug": "semi-log-plots",
+     "title": "Semi-log Plots",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Read and use semi-log plots."
+     ],
+     "knowledge": [
+      "On a semi-log plot one axis is logarithmic; exponential data look linear with a log y-axis.",
+      "The slope and intercept of the line give the logarithms of b and a."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Trigonometric and Polar Functions",
+   "weight": "30-35%",
+   "assessed": true,
+   "pacing": "7-10 weeks",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "periodic-phenomena",
+     "title": "Periodic Phenomena",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe periodic behavior and build a graph from one cycle."
+     ],
+     "knowledge": [
+      "A periodic function repeats; its period is the length of the smallest input interval that repeats."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.2",
+     "slug": "sine-cosine-tangent",
+     "title": "Sine, Cosine, and Tangent",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Define sine, cosine and tangent from the unit circle, with angles in radians."
+     ],
+     "knowledge": [
+      "A radian measure is arc length over radius; on the unit circle one radian subtends an arc of length 1.",
+      "Sine and cosine are the coordinates of the point on the unit circle; tangent is the slope of the terminal ray."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.3",
+     "slug": "sine-cosine-values",
+     "title": "Sine and Cosine Function Values",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find exact values of sine and cosine at multiples of pi/6 and pi/4."
+     ],
+     "knowledge": [
+      "Exact values come from the special right triangles.",
+      "On a circle of radius r the point at angle theta is (r cos theta, r sin theta)."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.4",
+     "slug": "sine-cosine-curves",
+     "title": "Sine and Cosine Function Graphs",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Build the graphs of sine and cosine by tracing the unit circle."
+     ],
+     "knowledge": [
+      "Sine gives the vertical and cosine the horizontal displacement from the center; both oscillate between -1 and 1."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.5",
+     "slug": "sinusoidal-functions",
+     "title": "Sinusoidal Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe amplitude, period, frequency and midline of a sinusoidal function."
+     ],
+     "knowledge": [
+      "Amplitude, period, frequency (one over the period) and midline describe a sinusoid.",
+      "Sine is an odd function; cosine is even."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.6",
+     "slug": "sinusoidal-transformations",
+     "title": "Sinusoidal Function Transformations",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Build and read a sin(b(theta + c)) + d and its cosine twin."
+     ],
+     "knowledge": [
+      "Amplitude |a|, period 2pi/|b|, phase shift and midline y = d.",
+      "Cosine is sine shifted by pi/2."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.7",
+     "slug": "sinusoidal-modeling",
+     "title": "Sinusoidal Function Context and Data Modeling",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Build sinusoidal models from a context or data and use them."
+     ],
+     "knowledge": [
+      "A model comes from the maximum, minimum, cycle length and a landmark point, or from sinusoidal regression.",
+      "A model is valid on a domain the context allows."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.8",
+     "slug": "tangent-function",
+     "title": "The Tangent Function",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe the graph of tangent and its transformations."
+     ],
+     "knowledge": [
+      "Tangent has period pi and vertical asymptotes where cosine is 0."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.9",
+     "slug": "inverse-trig",
+     "title": "Inverse Trigonometric Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Evaluate inverse sine, cosine and tangent with their restricted ranges."
+     ],
+     "knowledge": [
+      "Inverse sine has range [-pi/2, pi/2], inverse cosine [0, pi], inverse tangent (-pi/2, pi/2).",
+      "The outputs are angles; sin^-1 x is not 1 / sin x."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.10",
+     "slug": "trig-equations",
+     "title": "Trigonometric Equations and Inequalities",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Solve trigonometric equations and inequalities on an interval or for all real numbers."
+     ],
+     "knowledge": [
+      "Find the principal solution, then every solution in the interval using symmetry and periodicity."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.11",
+     "slug": "sec-csc-cot",
+     "title": "The Secant, Cosecant, and Cotangent Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe secant, cosecant and cotangent as reciprocals."
+     ],
+     "knowledge": [
+      "Each is a reciprocal of sine, cosine or tangent, with vertical asymptotes at the zeros of the denominator."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.12",
+     "slug": "trig-identities",
+     "title": "Equivalent Representations of Trigonometric Functions",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Rewrite trigonometric expressions with the identities the course uses."
+     ],
+     "knowledge": [
+      "The Pythagorean identity and its tangent-secant and cotangent-cosecant forms.",
+      "Sum and difference identities for sine and cosine, and double-angle identities."
+     ],
+     "exclusions": [
+      "Half-angle identities and the tangent sum and difference identities are reported out of scope by a third party (not verified in the CED)."
+     ],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.13",
+     "slug": "polar-coordinates",
+     "title": "Trigonometry and Polar Coordinates",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Plot points in polar coordinates and convert to and from rectangular coordinates."
+     ],
+     "knowledge": [
+      "A point is (r, theta); r may be negative and each point has many representations.",
+      "x = r cos theta, y = r sin theta and r^2 = x^2 + y^2."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.14",
+     "slug": "polar-curves",
+     "title": "Polar Function Graphs",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Graph r = f(theta) from the rectangular graph of r against theta."
+     ],
+     "knowledge": [
+      "A change in input is a change of angle; a change in output is a signed change of radius.",
+      "Circles, roses, limaçons and cardioids."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    },
+    {
+     "id": "3.15",
+     "slug": "polar-rates",
+     "title": "Rates of Change in Polar Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe how the distance from the origin changes on a polar graph."
+     ],
+     "knowledge": [
+      "The distance from the origin increases where r is positive and increasing or negative and decreasing.",
+      "The average rate of change of r with respect to theta is a signed change in radius per radian."
+     ],
+     "exclusions": [],
+     "source": "Clarifications PDF and third-party summaries"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Functions Involving Parameters, Vectors, and Matrices",
+   "weight": "not assessed",
+   "assessed": false,
+   "pacing": "~7 weeks",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "parametric-functions",
+     "title": "Parametric Functions",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe a curve given by parametric functions."
+     ],
+     "knowledge": [
+      "A parameter t gives each point (x(t), y(t)); the curve has a direction of travel."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.2",
+     "slug": "parametric-motion",
+     "title": "Parametric Functions Modeling Planar Motion",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Model motion in the plane with parametric functions."
+     ],
+     "knowledge": [
+      "Position at time t is (x(t), y(t)); x and y change separately."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.3",
+     "slug": "parametric-rates",
+     "title": "Parametric Functions and Rates of Change",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Find rates of change of parametric functions."
+     ],
+     "knowledge": [
+      "Average rates of change of x and y over a parameter interval, and the slope of the curve."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.4",
+     "slug": "parametric-circles-lines",
+     "title": "Parametrically Defined Circles and Lines",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Write parametric equations for circles and lines."
+     ],
+     "knowledge": [
+      "A circle of radius r: (r cos t, r sin t); a line segment from one point to another."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.5",
+     "slug": "implicit-functions",
+     "title": "Implicitly Defined Functions",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe curves defined by an equation in x and y."
+     ],
+     "knowledge": [
+      "An equation in x and y may define a curve that is not a function of x."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.6",
+     "slug": "conic-sections",
+     "title": "Conic Sections",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Identify and describe parabolas, ellipses and hyperbolas from their equations."
+     ],
+     "knowledge": [
+      "Parabolas, ellipses and hyperbolas as implicitly defined curves."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.7",
+     "slug": "parametrizing-implicit",
+     "title": "Parametrization of Implicitly Defined Functions",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Write parametric equations for implicitly defined curves."
+     ],
+     "knowledge": [
+      "Conic sections can be parametrized with trigonometric functions."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.8",
+     "slug": "vectors",
+     "title": "Vectors",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Represent and combine vectors in the plane."
+     ],
+     "knowledge": [
+      "A vector has magnitude and direction; components, sums, scalar multiples, the dot product and unit vectors."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.9",
+     "slug": "vector-valued-functions",
+     "title": "Vector-Valued Functions",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe motion with vector-valued functions."
+     ],
+     "knowledge": [
+      "A vector-valued function gives a position vector for each value of the parameter."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.10",
+     "slug": "matrices",
+     "title": "Matrices",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Add and multiply matrices."
+     ],
+     "knowledge": [
+      "Matrix dimensions, sums and products."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.11",
+     "slug": "inverse-determinant",
+     "title": "The Inverse and Determinant of a Matrix",
+     "practices": [
+      1
+     ],
+     "objectives": [
+      "Find the determinant and inverse of a 2 × 2 matrix."
+     ],
+     "knowledge": [
+      "A 2 × 2 matrix has an inverse exactly when its determinant is not 0."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.12",
+     "slug": "linear-transformations",
+     "title": "Linear Transformations and Matrices",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Represent linear transformations of the plane with matrices."
+     ],
+     "knowledge": [
+      "A 2 × 2 matrix transforms vectors in the plane: rotations, dilations, reflections."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.13",
+     "slug": "matrices-as-functions",
+     "title": "Matrices as Functions",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Compose and invert linear transformations with matrices."
+     ],
+     "knowledge": [
+      "Composing transformations multiplies their matrices; an inverse matrix undoes a transformation."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    },
+    {
+     "id": "4.14",
+     "slug": "matrix-modeling",
+     "title": "Matrices Modeling Contexts",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Model changing states with transition matrices."
+     ],
+     "knowledge": [
+      "A transition matrix predicts how a population moves between states over steps."
+     ],
+     "exclusions": [],
+     "source": "Course at a Glance titles; outline ours"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "alg-functions",
+   "title": "Functions, Graphs and Notation",
+   "practices": [
+    2
+   ],
+   "before": "change-in-tandem",
+   "objectives": [
+    "Read and use function notation, domains, ranges, intercepts and piecewise functions."
+   ],
+   "knowledge": [
+    "f(x) names the output for input x.",
+    "Zeros are the x-intercepts of the graph."
+   ]
+  },
+  {
+   "slug": "alg-intervals",
+   "title": "Interval Notation and Inequalities",
+   "practices": [
+    1
+   ],
+   "before": "change-in-tandem",
+   "objectives": [
+    "Write sets of inputs in interval notation and solve linear inequalities."
+   ],
+   "knowledge": [
+    "(a, b) leaves out its endpoints; [a, b] includes them."
+   ]
+  },
+  {
+   "slug": "alg-lines",
+   "title": "Lines, Slope and Linear Equations",
+   "practices": [
+    1,
+    2
+   ],
+   "before": "rates-of-change",
+   "objectives": [
+    "Find slopes and write equations of lines."
+   ],
+   "knowledge": [
+    "Slope is change in y over change in x; point-slope form is y - y_1 = m(x - x_1)."
+   ]
+  },
+  {
+   "slug": "alg-quadratics",
+   "title": "Quadratics: Factoring and the Quadratic Formula",
+   "practices": [
+    1
+   ],
+   "before": "linear-quadratic-rates",
+   "objectives": [
+    "Factor quadratics, complete the square and use the quadratic formula."
+   ],
+   "knowledge": [
+    "The vertex form shows the vertex; the discriminant counts the real zeros."
+   ]
+  },
+  {
+   "slug": "alg-polynomial-algebra",
+   "title": "Polynomial Arithmetic and Factoring",
+   "practices": [
+    1
+   ],
+   "before": "polynomial-rates",
+   "objectives": [
+    "Add, multiply and factor polynomials."
+   ],
+   "knowledge": [
+    "Common factors, grouping, difference of squares and sum or difference of cubes."
+   ]
+  },
+  {
+   "slug": "alg-complex-numbers",
+   "title": "Complex Numbers",
+   "practices": [
+    1
+   ],
+   "before": "complex-zeros",
+   "objectives": [
+    "Add, multiply and conjugate complex numbers."
+   ],
+   "knowledge": [
+    "i squared is -1; a + bi and a - bi are conjugates."
+   ]
+  },
+  {
+   "slug": "alg-rational-expressions",
+   "title": "Rational Expressions",
+   "practices": [
+    1
+   ],
+   "before": "rational-end-behavior",
+   "objectives": [
+    "Simplify, add and divide rational expressions and find where they are undefined."
+   ],
+   "knowledge": [
+    "A rational expression is undefined where its denominator is 0."
+   ]
+  },
+  {
+   "slug": "alg-systems",
+   "title": "Systems of Equations",
+   "practices": [
+    1
+   ],
+   "before": "model-construction",
+   "objectives": [
+    "Solve systems of two and three linear equations."
+   ],
+   "knowledge": [
+    "Substitution, elimination, and a graphing calculator for the constants of a model."
+   ]
+  },
+  {
+   "slug": "alg-exponents",
+   "title": "Exponent and Radical Rules",
+   "practices": [
+    1
+   ],
+   "before": "sequences",
+   "objectives": [
+    "Use the exponent rules with integer and rational exponents."
+   ],
+   "knowledge": [
+    "x^a x^b = x^(a+b), (x^a)^b = x^(ab), x^(-a) = 1/x^a, x^(1/n) is the nth root."
+   ]
+  },
+  {
+   "slug": "alg-right-triangle",
+   "title": "Right-Triangle Trigonometry",
+   "practices": [
+    1
+   ],
+   "before": "sine-cosine-tangent",
+   "objectives": [
+    "Use sine, cosine and tangent as ratios of sides in a right triangle."
+   ],
+   "knowledge": [
+    "Sine is opposite over hypotenuse, cosine adjacent over hypotenuse, tangent opposite over adjacent."
+   ]
+  },
+  {
+   "slug": "alg-circles",
+   "title": "Circles, Arcs and Special Triangles",
+   "practices": [
+    1
+   ],
+   "before": "sine-cosine-tangent",
+   "objectives": [
+    "Use the 30-60-90 and 45-45-90 triangles, arc length and the circle equation."
+   ],
+   "knowledge": [
+    "In a 30-60-90 triangle the sides are in the ratio 1 : sqrt(3) : 2; in a 45-45-90, 1 : 1 : sqrt(2)."
+   ]
+  }
+ ],
+ "topicCount": 58,
+ "topicCountByUnit": {
+  "1": 14,
+  "2": 15,
+  "3": 15,
+  "4": 14
+ },
+ "exclusionsSummary": {
+  "verified": [
+   "All of Unit 4 is not assessed on the exam",
+   "1.1: open versus closed endpoints of intervals of increase or decrease"
+  ],
+  "reported": [
+   "3.12: half-angle identities and the tangent sum and difference identities (third party, not verified)"
+  ],
+  "language": [
+   "Calculus wording such as \"increasing at a decreasing rate\" is not expected; say the rate of change is decreasing (2024 Chief Reader Report)",
+   "No derivative notation"
+  ],
+  "unverified": "Exclusion statements in Topics 2.2-3.15 could not be read; a person scans the CED for \"outside the scope\" (needs-author exclusions)."
+ },
+ "exam": {
+  "date2027": "2027-05-11",
+  "day": "Tuesday",
+  "session": "morning",
+  "totalTime": "2 h 55 min",
+  "delivery": "Hybrid digital: multiple choice in Bluebook; free-response questions shown in Bluebook and handwritten in a paper booklet.",
+  "mcq": {
+   "questions": 42,
+   "minutes": 105,
+   "weight": "62.5%",
+   "options": 4,
+   "partA": {
+    "questions": 29,
+    "minutes": 65,
+    "calculator": false
+   },
+   "partB": {
+    "questions": 13,
+    "minutes": 40,
+    "calculator": true
+   }
+  },
+  "frq": {
+   "questions": 4,
+   "minutes": 70,
+   "weight": "37.5%",
+   "pointsEach": 6,
+   "rawPoints": 24,
+   "partA": {
+    "questions": 2,
+    "minutes": 35,
+    "calculator": true,
+    "types": [
+     "concepts",
+     "modeling"
+    ]
+   },
+   "partB": {
+    "questions": 2,
+    "minutes": 35,
+    "calculator": false,
+    "types": [
+     "periodic",
+     "symbolic"
+    ]
+   },
+   "types": {
+    "concepts": "Q1 Function Concepts",
+    "modeling": "Q2 Modeling a Non-Periodic Context",
+    "periodic": "Q3 Modeling a Periodic Context",
+    "symbolic": "Q4 Symbolic Manipulations"
+   }
+  },
+  "calculator": "Graphing calculator required in MCQ Part B and FRQ Part A, not allowed in the other parts (Bluebook has Desmos built in). Radian mode. Decimal answers correct to three places after the decimal point, rounded or truncated; never round partway.",
+  "reference": "No formula sheet is given.",
+  "previousFormat": "2024-2026: MCQ Part A 28 in 80 min, Part B 12 in 40 min; each FRQ part 30 min."
+ }
+}
