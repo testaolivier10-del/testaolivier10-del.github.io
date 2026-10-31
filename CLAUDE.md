@@ -44,6 +44,17 @@ AP® Calculus AB work and update it in the same commit. Research: `docs/apcalc-r
 `expr` items and tool layout: `docs/apcalc-architecture.md`; writing rules: `docs/apcalc-authoring-guide.md`; map:
 `docs/apcalc-phase0.md`; open points: `docs/apcalc-needs-author.md`. Published and live.
 
+## AP® Calculus BC course
+
+`docs/apcalcbc-spec.md` is the source of truth (owner brief, research summary, build plan, authoring split,
+decisions); read it before AP® Calculus BC work and update it in the same commit. Built on AP® Calculus AB: AB's
+docs still describe every shared format. Research: `docs/apcalcbc-research/`. How BC reuses AB (one generator,
+`build-apcalcbc.mjs`; AB topics read from `calculus/data/`, never copied; AB's runtime with `window.ApCalcCourse`),
+interval items and BC FRQ slots: `docs/apcalcbc-architecture.md`; writing rules on top of AB's:
+`docs/apcalcbc-authoring-guide.md`; map (an overlay on AB's): `docs/apcalcbc-phase0.md`; open points:
+`docs/apcalcbc-needs-author.md`; briefs (authors A-D, builders T1-T3): `docs/apcalcbc-briefs/`. Hidden until
+launch. AB's build must stay byte-identical: run `node scripts/build-apcalc.mjs --check` after any shared change.
+
 ## AP® Statistics course
 
 `docs/apstat-spec.md` is the source of truth (owner brief, research summary, trainers, grading, build plan, decisions,

@@ -83,12 +83,31 @@ One branch, `claude/apcalcbc`, one PR at the end.
 | Phase | What | Status |
 |---|---|---|
 | R | Research: `docs/apcalcbc-research/framework.md`, `market.md`; this spec | **done 2026-10-31** |
-| 0 | Course shell on the AB runtime: how BC reads AB's data (section 8 decision 1), BC map (111 topics + math chapter), dependency map, generator, runtime, checks, tests, fixture, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | to do |
+| 0 | Course shell on the AB runtime: how BC reads AB's data (section 8 decision 1), BC map (111 topics + math chapter), dependency map, generator, runtime, checks, tests, fixture, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (decision 8; `docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`) |
 | 1 | Content: the 30 BC-only topics (lessons, notes, banks with stimulus sets, glossary, figures), BC FRQs (Q2/Q5/Q6 types), BC edits to 6.14 | to do |
 | 2 | BC trainers (section 6) | to do |
 | 3 | Two practice exams (BC unit mix, BC FRQ slots), unit tests for 9 and 10, justification prompts, formula page additions, cram kit | to do |
 | 4 | Independent accuracy checks (Unit 6-8 BC topics, Unit 9, Unit 10, tools, exams) | to do |
 | Launch | Publish, generators, continuity pass, "twelve courses" wording, full CI with browser checks, PR | to do |
+
+### 5a. Authoring split
+
+Each author owns every file of its topics and the FRQs listed (9 BC FRQs: 2 `techniques`, 4 `parametric`, 3
+`series`, enough for two practice exams' Q2, Q5 and Q6 with spares; Q1, Q3 and Q4 come from AB's stock). Briefs in
+`docs/apcalcbc-briefs/`; topic ids in `docs/apcalcbc-dependency-map.json`.
+
+| Author | Topics | Count | FRQs |
+|---|---|---|---|
+| A | 6.11, 6.12, 6.13, 7.5, 7.9, 8.13, plus the BC wording of AB's 6.10 and 6.14 (`cbc-only`/`calc-ab-only`) | 6 | 2 `techniques` |
+| B | `math-parametric-vectors`, 9.1-9.6 | 7 | 2 `parametric` (motion) |
+| C | `math-polar`, 9.7-9.9, `math-sequences`, 10.1-10.5 | 10 | 1 `parametric` (polar), 1 `series` |
+| D | 10.6-10.15 | 10 | 2 `series` |
+
+| Builder | Trainers |
+|---|---|
+| T1 | `series-lab` (flagship, free), `taylor-lab` |
+| T2 | `parametric-motion`, `polar-lab` |
+| T3 | `integration-methods`, `euler-logistic` |
 
 ## 6. Trainers (proposed)
 
@@ -104,8 +123,10 @@ yourself (seeded drills, feedback naming the slip):
 | `integration-methods` | 6 | Parts (tabular too), partial fractions, improper integrals as limits, choosing the method |
 | `euler-logistic` | 7 | Euler's method steps on a slope field, over/under from concavity; logistic growth with carrying capacity and the fastest-growth point |
 
-Free (proposed, owner to confirm): AB's free trainers (`tangent-tracer`, `limit-explorer`, `rule-drills`) and
-`series-lab`.
+Free (proposed, owner to confirm): `series-lab`; AB's free trainers (`tangent-tracer`, `limit-explorer`,
+`rule-drills`) stay free on their AB pages, which BC links (decision 8). Scaffolded in Phase 0 (four files per
+slug, `docs/apcalcbc-architecture.md`, "Trainers"); nothing builds until a tool's data file exists and its topic
+is published.
 
 ## 7. How answers are graded
 
@@ -129,8 +150,32 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
 6. (2026-10-31) **Free tier (proposed, owner to confirm):** Units 1 and 2 and the "Math you need" chapter as AB,
    plus 9.1-9.3 so a BC visitor tries BC material free.
 
+7. (2026-10-31, Phase 0) **Identity (proposed, owner to confirm; needs-author `identity`).** Accent emerald,
+   light `--cink #0A5A34` on `--ctint #E0F2E7` (7.1:1; 8.3:1 on white), dark `--cink #A6E8C2` (13.2:1 on the
+   page, 11.3:1 on the tint); cover graphite `#161A24` with emerald `#3FE0A0` and gold; icon a sigma over a
+   partial-sum curve; headline "AP® Calculus BC, all the way to series."; ranks Sequence Starter, Curve Tracer,
+   Polar Plotter, Series Tester, Taylor Builder, Convergence Prover, Calculus BC Legend; manifest and OG
+   "Calculus BC". Registered `hidden` (order 12) with every AB registration point twinned; SQL migration
+   `2026-10n-apcalcbc.sql` written, not applied.
+8. (2026-10-31) **Phase 0 done, as built** (`docs/apcalcbc-architecture.md`, `docs/apcalcbc-phase0.md`).
+   (a) **One generator**: `build-apcalcbc.mjs` runs `build-apcalc.mjs` with the BC profile (`PROFILES.bc` in
+   `scripts/lib/apcalc-build.mjs`); AB's output is byte-identical (every file hashed before and after).
+   (b) **One source**: AB topics from `calculus/data/`, BC's from `calculus-bc/data/`; BC renders every AB topic's
+   pages under `/calculus-bc/` with the AB page as canonical (needs-author `ab-pages-in-bc`); `cbc-only` and
+   `calc-ab-only` blocks give AB files BC wording without a copy. (c) **One map**: the BC map is an overlay merged
+   onto AB's (121 topics: 111 CED and 10 math, three of them BC's: parametric equations and vectors, polar
+   coordinates, sequences and factorials). (d) **One runtime**: BC pages run AB's runtime from `/calculus/assets/`,
+   configured by `window.ApCalcCourse` (storage `apcalcbc_*`, ids `cbc-`, BC FRQ types, no band, no score link);
+   AB's runtime with no config behaves as before. AB's shell budget 68.5 → 69.5 KB for it. (e) **Interval
+   answers**: a new `interval` item type graded in four parts (each endpoint, each bracket) with the slips named,
+   in BC's own `calculus-bc/assets/cbc-interval.js`. (f) **BC FRQ types** `parametric`, `techniques`, `series`;
+   practice exams hold Q2, Q5, Q6 to them (`BC_FRQ_SLOTS`). (g) **No score calculator, no readiness band** (AB keeps
+   its own, untouched). (h) **AB's ten trainers are linked**, not rebuilt (needs-author `ab-trainers`).
+
 ## 9. Open items for the owner
 
-- Confirm the free tier (decision 6) and free trainers (section 6).
+- Confirm the identity (decision 7) and the free tier (decision 6) and free trainers (section 6).
+- Confirm two Phase 0 choices: BC renders AB's topic pages under `/calculus-bc/` (canonical to AB), and links
+  AB's trainers rather than rebuilding them (needs-author `ab-pages-in-bc`, `ab-trainers`).
 - Whether an AB pass holder gets a discount on the BC pass (the shared pricing has no upgrade path today).
 - Launch checklist (filled at launch): migration, Polar product, Worker `POLAR_PRODUCTS` line, `onSale`, merge.
