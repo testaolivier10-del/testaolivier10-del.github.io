@@ -108,7 +108,7 @@
     var input = el.querySelector('input'), out = el.querySelector('output');
     function show(){ var v = +input.value; out.textContent = txt(v); input.setAttribute('aria-valuetext', txt(v)); }
     function set(v, fire){
-      v = Math.min(o.max, Math.max(o.min, Math.round(v / o.step) * o.step));
+      v = Math.min(+input.max, Math.max(+input.min, Math.round(v / o.step) * o.step));
       input.value = String(M.round(v, d + 2)); show();
       if(fire && o.onInput) o.onInput(+input.value);
     }

@@ -160,7 +160,7 @@
         '<p>' + html('It has the same value and the same first ' + (n === 1 ? 'derivative' : n + ' derivatives') + ' as $f$ at $x = ' + ct + '$: each term is $\\frac{f^{(k)}(' + ct + ')}{k!}' + cTex(c) + '^k$. More terms match more derivatives, so the polynomial hugs the curve over a wider stretch.') + '</p>';
       if(band === 'lag'){
         var L = TL.lagrange(F, c, n, xe);
-        why += '<p>' + html('Lagrange: $|f(x) - P_{' + n + '}(x)| \\le \\frac{M}{' + (n + 1) + '!}|x - ' + ct + '|^{' + (n + 1) + '}$, where $M$ is the largest value of $|f^{(' + (n + 1) + ')}|$ between $' + ct + '$ and $x$. At $x = ' + num(xe, 2).replace('−', '-') + '$: $M = ' + sigTex(L.M) + '$, so the bound is $' + sigTex(L.bound) + '$.') + '</p>' +
+        why += '<p>' + html('Lagrange: $|f(x) - P_{' + n + '}(x)| \\le \\frac{M}{' + (n + 1) + '!}' + (c === 0 ? '|x|' : '|x - ' + ct + '|') + '^{' + (n + 1) + '}$, where $M$ is the largest value of $|f^{(' + (n + 1) + ')}|$ between $' + ct + '$ and $x$. At $x = ' + num(xe, 2).replace('−', '-') + '$: $M = ' + sigTex(L.M) + '$, so the bound is $' + sigTex(L.bound) + '$.') + '</p>' +
           '<p>The band grows away from the center like a power of the distance: the curve stays inside it everywhere.</p>';
       } else if(band === 'alt'){
         why += '<p>' + html(F.altNote + ' Where the series alternates and its terms shrink, the error is at most the first nonzero term left out. The band is drawn only there.') + '</p>' + (be == null ? '<p>' + html('At $x = ' + num(xe, 2).replace('−', '-') + '$ ' + (c !== 0 ? 'the center is not 0, so the terms do not alternate in this simple pattern' : 'the terms do not alternate (or do not shrink)') + ': use the Lagrange bound instead.') + '</p>' : '');
