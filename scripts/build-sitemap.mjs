@@ -113,6 +113,11 @@ for (const raw of walk('.')) {
     problems.push(`${file}: no canonical, so there is no URL to submit`);
     continue;
   }
+  // A page whose canonical is in another course folder renders the same source as
+  // that page (AP® Calculus BC's pages for AB topics name the AB page): that page is
+  // the one listed, so this copy is not submitted again.
+  const top = file.includes('/') ? file.split('/')[0] : '';
+  if (top && new URL(m[1]).pathname.split('/')[1] !== top) continue;
   entries.push({ loc: m[1], path: new URL(m[1]).pathname, lastmod: lastModified(file) });
 }
 
