@@ -420,8 +420,9 @@ const SHELL_BUDGETS = [
   ['psychology', 85.5],
   /* AP® Calculus BC (calculus-bc/, docs/apcalcbc-architecture.md): its own files only, the
      curriculum, the accent (cbc.css) and the interval grader (cbc-interval.js); the runtime it
-     runs is AB's and counts in the calculus shell above. Measured before any unit is published. */
-  ['calculus-bc', 6],
+     runs is AB's and counts in the calculus shell above. Measured 8.1 KB before any unit is published
+     (the curriculum lists all 121 topics already); 10 leaves room for the built flags. */
+  ['calculus-bc', 10],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

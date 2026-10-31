@@ -120,6 +120,14 @@ const PAGES = [
   ['/calculus/frq.html', 'the AP® Calculus AB free-response list'],
   ['/calculus/formula-sheet.html', 'the AP® Calculus AB formula page'],
   ...bioPages('calculus', 'AP® Calculus AB'),
+  // AP® Calculus BC, the same way, hidden until its launch.
+  ['/calculus-bc/', 'the AP® Calculus BC course home'],
+  ['/calculus-bc/glossary.html', 'the AP® Calculus BC glossary'],
+  ['/calculus-bc/practice.html', 'the AP® Calculus BC practice builder'],
+  ['/calculus-bc/exams.html', 'the AP® Calculus BC exams app'],
+  ['/calculus-bc/frq.html', 'the AP® Calculus BC free-response list'],
+  ['/calculus-bc/formula-sheet.html', 'the AP® Calculus BC formula page'],
+  ...bioPages('calculus-bc', 'AP® Calculus BC'),
   // AP® Statistics, the same way, hidden until a unit is published.
   ['/statistics/', 'the AP® Statistics course home'],
   ['/statistics/glossary.html', 'the AP® Statistics glossary'],
