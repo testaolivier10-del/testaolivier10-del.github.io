@@ -256,8 +256,8 @@
    "type": "single",
    "options": [
     "$-50x^2$ is larger in size than $2x^3$ until $x$ passes $25$.",
-    "The table must contain an error.",
-    "The end behavior of $p$ is $-\\infty$ after all.",
+    "The table's values were computed incorrectly from the formula.",
+    "So the end behavior is really $\\lim_{x \\to \\infty} p(x) = -\\infty$.",
     "Negative outputs mean the leading coefficient is negative."
    ],
    "correct": 0,
@@ -430,7 +430,7 @@
     "$f \\to \\infty$",
     "$\\lim_{x \\to \\infty} f(x) = \\infty$",
     "$f(\\infty) = \\infty$",
-    "$\\lim_{x \\to \\infty} = \\infty$"
+    "$\\lim_{x \\to \\infty} f(x) \\to \\infty$"
    ],
    "correct": 1,
    "why": {
@@ -439,7 +439,7 @@
      "It leaves out the input: say $x \\to \\infty$, in limit notation.",
      "Right: function, input, where the input goes, and where the outputs go.",
      "$\\infty$ is not an input; $f(\\infty)$ means nothing.",
-     "The function is missing after $\\lim$."
+     "Do not mix an arrow into the statement: the limit equals $\\infty$."
     ]
    }
   },
@@ -455,8 +455,8 @@
    "options": [
     "Its ends go in opposite directions, so the graph must cross the $x$-axis.",
     "Its leading coefficient is positive.",
-    "It has as many real zeros as its degree.",
-    "Its non-real zeros come in pairs, so they cancel out."
+    "It has exactly as many real zeros as its degree, counting each one.",
+    "Its non-real zeros come in pairs, so after pairing them off the zeros cancel out."
    ],
    "correct": 0,
    "why": {

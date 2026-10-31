@@ -144,11 +144,16 @@
     function gy(v){ var y = sc().y; return L.bot - (v - y[0]) / (y[1] - y[0]) * (L.bot - L.top); }
     function iy(py){ var y = sc().y; return y[0] + (L.bot - py) / (L.bot - L.top) * (y[1] - y[0]); }
     function it(px){ return (px - L.gx0) / (L.gx1 - L.gx0) * win(); }
+    /* The scene shares the graph's vertical scale when it fits its panel (then a
+       dashed line links the scene to the graph); a wheel too wide gets its own scale. */
+    function shared(){ var S = sc(); if(!L.wide) return false; if(S.id !== 'ferris') return true; var A = tr().A; return Math.abs(gy(S.s.min + 2 * A) - gy(S.s.min)) <= L.sx1 - L.sx0 - 16; }
     function syScene(v){
-      if(L.wide) return gy(v);
-      var y = sc().y; return L.sBot - 8 - (v - y[0]) / (y[1] - y[0]) * (L.sBot - L.sTop - 16);
+      var y = sc().y;
+      if(shared()) return gy(v);
+      var top = L.wide ? L.top : L.sTop, bot = L.wide ? L.bot : L.sBot - 8, h = bot - top - (L.wide ? 0 : 8);
+      if(sc().id === 'ferris') h = Math.min(h, (L.sx1 - L.sx0 - 16) * (y[1] - y[0]) / (2 * tr().A));
+      return bot - (v - y[0]) / (y[1] - y[0]) * h;
     }
-
     /* ---------------------------------------------------- handles */
     var HANDLES = [['pk', 'Peak of your curve: up and down sets the amplitude, left and right the shift', 'sb-h-a'], ['md', 'Midline: up and down sets d', 'sb-h-d'], ['pr', 'Next peak: left and right sets the period', 'sb-h-T']];
     var hs = {};
@@ -188,14 +193,14 @@
       // the student's midline, amplitude and period
       var pk = peak1(), pk2 = pk + p.T, mid = gy(p.d);
       o.push('<line class="sb-midline" x1="' + L.gx0 + '" y1="' + r1(mid) + '" x2="' + L.gx1 + '" y2="' + r1(mid) + '"/>');
-      o.push(txt(L.gx1 - 4, mid - 7, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));
+      o.push(txt(L.gx1 - 4, mid + 20, 'y = ' + nt(p.d), 'sb-lab sb-c-d', 'end'));
       // the curve, clipped to the plot
       var d = '', on = false;
       for(var i = 0; i <= 320; i++){ var tt = win() * i / 320, vv = f(tt); var py = gy(vv); if(py < L.top - 30 || py > L.bot + 30){ on = false; continue; } d += (on ? 'L' : 'M') + r1(gx(tt)) + ' ' + r1(py); on = true; }
       o.push('<path class="sb-curve" d="' + d + '"/>');
       if(pk <= win()){
         o.push('<line class="sb-amp" x1="' + r1(gx(pk)) + '" y1="' + r1(mid) + '" x2="' + r1(gx(pk)) + '" y2="' + r1(gy(p.d + p.a)) + '"/>');
-        o.push(txt(gx(pk) + 8, (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', 'start'));
+        var left = gx(pk) - L.gx0 > 70; o.push(txt(gx(pk) + (left ? -10 : 26), (mid + gy(p.d + p.a)) / 2 + 5, 'a = ' + nt(p.a), 'sb-lab sb-c-a', left ? 'end' : 'start'));
       }
       var by = Math.max(L.top - 2, gy(p.d + p.a) - 16), px0 = gx(pk), px1 = gx(Math.min(pk2, win()));
       if(pk2 <= win() + 1e-9){
@@ -217,7 +222,7 @@
       var tc = gx(st.t), now = TR.f(st.t);
       o.push('<line class="sb-cur" x1="' + r1(tc) + '" y1="' + L.top + '" x2="' + r1(tc) + '" y2="' + L.bot + '"/>');
       o.push('<circle class="sb-now" cx="' + r1(tc) + '" cy="' + r1(gy(now)) + '" r="6"/>');
-      if(L.wide) o.push('<line class="sb-link" x1="' + r1(art.mx) + '" y1="' + r1(art.my) + '" x2="' + r1(tc) + '" y2="' + r1(gy(now)) + '"/>');
+      if(shared()) o.push('<line class="sb-link" x1="' + r1(art.mx) + '" y1="' + r1(art.my) + '" x2="' + r1(tc) + '" y2="' + r1(gy(now)) + '"/>');
       // the formula, colored part by part, and the period line
       var b = TAU / p.T, bT = SB.piText(b), cT = p.c === 0 ? '' : ' ' + (p.c > 0 ? '+ ' : '− ') + nt(Math.abs(p.c));
       var fx = L.wide ? L.gx0 : L.W / 2, an = L.wide ? 'start' : 'middle';
@@ -239,7 +244,7 @@
     /* ---------------------------------------------------- dock */
     var chips = host.querySelector('.sb-scenes'), seg = host.querySelector('.sb-params');
     chips.innerHTML = SB.SORDER.map(function(k){ return '<button type="button" class="tchip" data-s="' + k + '" aria-pressed="' + (k === st.sid) + '">' + esc(SB.SCENES[k].name) + '</button>'; }).join('');
-    seg.innerHTML = ['a', 'd', 'T', 'c'].map(function(k){ return '<button type="button" class="bt-mode" data-k="' + k + '" aria-pressed="' + (k === st.sel) + '"><span class="sb-pk sb-c-' + k + '">' + (k === 'T' ? 'Period' : k === 'c' ? 'Shift' : k) + '</span> <span class="sb-pv"></span></button>'; }).join('');
+    seg.innerHTML = ['a', 'd', 'T', 'c'].map(function(k){ return '<button type="button" class="bt-mode" data-k="' + k + '" aria-pressed="' + (k === st.sel) + '"><span class="sb-pk sb-c-' + k + '">' + { a: 'a', d: 'd', T: 'period', c: 'shift c' }[k] + '</span><span class="sb-pv"></span></button>'; }).join('');
     chips.addEventListener('click', function(e){
       var b = e.target.closest('[data-s]'); if(!b) return;
       stopT(); st.sid = b.getAttribute('data-s'); reset(); L = null;
@@ -249,7 +254,7 @@
     seg.addEventListener('click', function(e){ var b = e.target.closest('[data-k]'); if(!b) return; st.sel = b.getAttribute('data-k'); draw(); });
     function syncCtl(){
       var sl = sc().sl[st.sel], p = st.p;
-      seg.querySelectorAll('[data-k]').forEach(function(b){ var k = b.getAttribute('data-k'); b.setAttribute('aria-pressed', String(k === st.sel)); b.querySelector('.sb-pv').textContent = '= ' + nt(p[k]); });
+      seg.querySelectorAll('[data-k]').forEach(function(b){ var k = b.getAttribute('data-k'); b.setAttribute('aria-pressed', String(k === st.sel)); b.querySelector('.sb-pv').textContent = nt(p[k]); });
       lab.textContent = PNAME[st.sel] + (st.sel === 'T' ? ' (' + sc().tUnit + ')' : '');
       range.min = sl[0]; range.max = sl[1]; range.step = sl[2]; range.value = p[st.sel];
       out.textContent = nt(p[st.sel]);

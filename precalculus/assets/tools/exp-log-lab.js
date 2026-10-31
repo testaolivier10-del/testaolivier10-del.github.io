@@ -31,6 +31,8 @@
   function f2(v){ return mn(M.fixed(v, 2)); }
   function f3(v){ return mn(M.fixed(v, 3)); }
   function g3(v){ return mn(String(+M.fixed(v, 3))); }
+  var SUB = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉', '.': '.' };
+  function logName(b){ var s = g3(b); return /^[\d.]+$/.test(s) && s.length <= 4 ? 'log' + s.replace(/./g, function(c){ return SUB[c]; }) : 'log_b'; }
   var VIEW_NAME = { ratios: 'Ratios', inverse: 'Inverse', rules: 'Rules', semilog: 'Semi-log' };
 
   /* ------------------------------------------------ a plot frame */
@@ -224,9 +226,9 @@
         o.push(label(G, q, t, '(' + f2(q) + ', ' + f2(t) + ')', 'el-L', 'start', 9, 16));
         o.push(label(G, t, q, '(' + f2(t) + ', ' + f2(q) + ')', 'el-E', 'end', -9, -8));
       }
-      o.push(label(G, hi - 0.15, Math.log(hi - 0.15) / Math.log(b), 'y = log_b x', 'el-L el-name', 'end', 0, b > 1 ? -8 : 16));
+      o.push(label(G, hi - 0.15, Math.log(hi - 0.15) / Math.log(b), 'y = ' + logName(b) + ' x', 'el-L el-name', 'end', 0, b > 1 ? -8 : 16));
       var ex = Math.min(hi - 0.3, Math.log(hi * 0.85) / Math.log(b));
-      if(s < 0.02) o.push(label(G, b > 1 ? ex : -ex, Math.pow(b, b > 1 ? ex : -ex), 'y = b^x', 'el-E el-name', b > 1 ? 'end' : 'start', b > 1 ? -8 : 8, 0));
+      if(s < 0.02) o.push(label(G, b > 1 ? ex : -ex, Math.pow(b, b > 1 ? ex : -ex), 'y = ' + g3(b) + 'ˣ', 'el-E el-name', b > 1 ? 'end' : 'start', b > 1 ? -8 : 8, 0));
       svg.innerHTML = o.join('');
       svg.setAttribute('role', 'group');
       if(!handle || !handle.el.isConnected){

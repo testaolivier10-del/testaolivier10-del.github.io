@@ -96,9 +96,9 @@
     if(near(x, A, r, ab)) return { ok: true };
     for(var i = 0; i < c.mistakes.length; i++) if(near(x, c.mistakes[i].value, r, ab)) return { ok: false, why: c.mistakes[i].why };
     if(!A) return { ok: false };
-    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of a subtraction, or a minus sign from a derivative.' };
-    if(near(x / 2, A, r, ab) || near(x * 2, A, r, ab)) return { ok: false, why: 'Off by a factor of 2. Check a ½ (a triangle\'s area, the antiderivative of x) or a doubled term.' };
-    if(near(x * Math.PI, A, r, ab) || near(x / Math.PI, A, r, ab)) return { ok: false, why: 'Off by a factor of π. Check for a missing π, as in a volume of revolution.' };
+    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of a subtraction or a dropped minus sign.' };
+    if(near(x / 2, A, r, ab) || near(x * 2, A, r, ab)) return { ok: false, why: 'Off by a factor of 2. Check a missing ½ or a term counted twice.' };
+    if(near(x * Math.PI, A, r, ab) || near(x / Math.PI, A, r, ab)) return { ok: false, why: 'Off by a factor of π. Check for a missing π, as in the area of a circle or a radian conversion.' };
     if(near(x * Math.PI / 180, A, r, ab) || near(x * 180 / Math.PI, A, r, ab)) return { ok: false, why: 'Off by the factor between degrees and radians. Precalculus uses radians.' };
     if(Math.abs(x - A) < 0.01) return { ok: false, why: 'Close, but not correct to three decimal places. Round only at the end.' };
     return { ok: false };

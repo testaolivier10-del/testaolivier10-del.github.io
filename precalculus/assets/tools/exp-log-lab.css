@@ -84,3 +84,6 @@
 .ls-root.ls-phone .el-tbl th,.ls-root.ls-phone .el-tbl td{padding:3px 3px;}
 .ls-root.ls-phone .el-ls-stage .el-stage{padding-bottom:36px;}
 .el-views .bt-mode{font-size:13.5px;}
+.el-views .bt-mode{padding-left:2px;padding-right:2px;min-width:0;}
+.el-chips{flex-wrap:wrap;}
+.ls-root.ls-phone .el-chips{flex-wrap:nowrap;}

@@ -5,19 +5,48 @@
    "title": "A sinusoidal function $g$",
    "plot": {
     "label": "Graph of a sinusoidal function g for theta from 0 to 2 pi: lowest points (0, -2) and (2 pi, -2), highest point (pi, 4), crossing its midline y = 1 at pi over 2 and 3 pi over 2",
-    "x": [-0.3, 6.7],
-    "y": [-3, 5],
+    "x": [
+     -0.3,
+     6.7
+    ],
+    "y": [
+     -3,
+     5
+    ],
     "piX": true,
     "yStep": 1,
     "xLabel": "θ",
     "yLabel": "y",
     "curves": [
-     { "fn": "3sin(x - pi/2) + 1", "domain": [0, 6.283185307179586], "cls": "s1", "label": "g" }
+     {
+      "fn": "3sin(x - pi/2) + 1",
+      "domain": [
+       0,
+       6.283185307179586
+      ],
+      "cls": "s1",
+      "label": "g"
+     }
     ],
     "points": [
-     { "at": [0, -2] },
-     { "at": [3.141592653589793, 4] },
-     { "at": [6.283185307179586, -2] }
+     {
+      "at": [
+       0,
+       -2
+      ]
+     },
+     {
+      "at": [
+       3.141592653589793,
+       4
+      ]
+     },
+     {
+      "at": [
+       6.283185307179586,
+       -2
+      ]
+     }
     ]
    }
   },
@@ -27,8 +56,26 @@
    "text": "The function $k$ is sinusoidal. Its greatest and least values appear in the table.",
    "table": {
     "caption": "Values of $k(t)$ at whole-number inputs",
-    "cols": ["$t$", "0", "1", "2", "3", "4", "5"],
-    "rows": [["$k(t)$", "2", "6", "10", "6", "2", "6"]]
+    "cols": [
+     "$t$",
+     "0",
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "$k(t)$",
+      "2",
+      "6",
+      "10",
+      "6",
+      "2",
+      "6"
+     ]
+    ]
    }
   }
  },
@@ -45,13 +92,27 @@
    "type": "expr",
    "expr": {
     "answer": "3sin(theta - pi/2) + 1",
-    "vars": ["theta"],
-    "domain": [-6.3, 6.3],
+    "vars": [
+     "theta"
+    ],
+    "domain": [
+     -6.3,
+     6.3
+    ],
     "lhs": "g(\\theta) =",
     "mistakes": [
-     { "expr": "6sin(theta - pi/2) + 1", "why": "6 is $\\max - \\min$. The amplitude is half of it, 3." },
-     { "expr": "3sin(theta + pi/2) + 1", "why": "The rising midline crossing is at $\\theta = \\frac{\\pi}{2}$, a shift to the right: $\\sin\\left(\\theta - \\frac{\\pi}{2}\\right)$." },
-     { "expr": "3cos(theta) + 1", "why": "A cosine with $a > 0$ starts at a highest point, but $g$ starts at a lowest point. Use $a = -3$, or a shift." }
+     {
+      "expr": "6sin(theta - pi/2) + 1",
+      "why": "6 is $\\max - \\min$. The amplitude is half of it, 3."
+     },
+     {
+      "expr": "3sin(theta + pi/2) + 1",
+      "why": "The rising midline crossing is at $\\theta = \\frac{\\pi}{2}$, a shift to the right: $\\sin\\left(\\theta - \\frac{\\pi}{2}\\right)$."
+     },
+     {
+      "expr": "3cos(theta) + 1",
+      "why": "A cosine with $a > 0$ starts at a highest point, but $g$ starts at a lowest point. Use $a = -3$, or a shift."
+     }
     ]
    },
    "why": {
@@ -68,7 +129,12 @@
    "stimulus": "sinusoidal-transformations-s1",
    "q": "The function can be written $g(\\theta) = 3\\sin(\\theta + c) + 1$. Which value of $c$ works?",
    "type": "single",
-   "options": ["$c = -\\frac{\\pi}{2}$", "$c = \\frac{\\pi}{2}$", "$c = \\pi$", "$c = 0$"],
+   "options": [
+    "$c = -\\frac{\\pi}{2}$",
+    "$c = \\frac{\\pi}{2}$",
+    "$c = \\pi$",
+    "$c = 0$"
+   ],
    "correct": 0,
    "why": {
     "correct": "The sine pattern starts (rising midline crossing) at $\\theta = -c$. On the graph that is $\\theta = \\frac{\\pi}{2}$, so $c = -\\frac{\\pi}{2}$.",
@@ -120,8 +186,14 @@
    "numeric": {
     "answer": "6/pi",
     "mistakes": [
-     { "value": 6, "why": "That is the change in output. Divide by the change in input, $\\pi$." },
-     { "value": "3/pi", "why": "That uses the amplitude 3 as the change in output. $g$ rises from $-2$ to $4$, a change of 6." }
+     {
+      "value": 6,
+      "why": "That is the change in output. Divide by the change in input, $\\pi$."
+     },
+     {
+      "value": "3/pi",
+      "why": "That uses the amplitude 3 as the change in output. $g$ rises from $-2$ to $4$, a change of 6."
+     }
     ]
    },
    "why": {
@@ -168,9 +240,18 @@
    "numeric": {
     "answer": "pi/2",
     "mistakes": [
-     { "value": 4, "why": "4 is the period. $b = \\frac{2\\pi}{\\text{period}} = \\frac{2\\pi}{4}$." },
-     { "value": "pi", "why": "That uses a period of 2, the time from the least value to the greatest. That is half a cycle; the period is 4." },
-     { "value": "8pi", "why": "That multiplies by the period. $b$ is $2\\pi$ divided by the period." }
+     {
+      "value": 4,
+      "why": "4 is the period. $b = \\frac{2\\pi}{\\text{period}} = \\frac{2\\pi}{4}$."
+     },
+     {
+      "value": "pi",
+      "why": "That uses a period of 2, the time from the least value to the greatest. That is half a cycle; the period is 4."
+     },
+     {
+      "value": "8pi",
+      "why": "That multiplies by the period. $b$ is $2\\pi$ divided by the period."
+     }
     ]
    },
    "why": {
@@ -214,7 +295,12 @@
    "stimulus": "sinusoidal-transformations-s2",
    "q": "With $a = 4$, $b = \\frac{\\pi}{2}$ and $d = 6$, which value of $c$ makes $k(t) = a\\sin(b(t + c)) + d$ match the table?",
    "type": "single",
-   "options": ["$c = -1$", "$c = 1$", "$c = -\\frac{\\pi}{2}$", "$c = 2$"],
+   "options": [
+    "$c = -1$",
+    "$c = 1$",
+    "$c = -\\frac{\\pi}{2}$",
+    "$c = 2$"
+   ],
    "correct": 0,
    "why": {
     "correct": "$k$ crosses its midline going up at $t = 1$ (from 2 through 6 to 10). A sine with $a > 0$ does that where $t + c = 0$, so $c = -1$: $k(t) = 4\\sin\\left(\\frac{\\pi}{2}(t - 1)\\right) + 6$.",
@@ -239,7 +325,10 @@
    "numeric": {
     "answer": "6 + 2sqrt(2)",
     "mistakes": [
-     { "value": 8, "why": "That uses $\\sin\\frac{\\pi}{4} = \\frac{1}{2}$, as if halfway in time meant halfway in height. The sine of $\\frac{\\pi}{4}$ is $\\frac{\\sqrt{2}}{2}$." }
+     {
+      "value": 8,
+      "why": "That uses $\\sin\\frac{\\pi}{4} = \\frac{1}{2}$, as if halfway in time meant halfway in height. The sine of $\\frac{\\pi}{4}$ is $\\frac{\\sqrt{2}}{2}$."
+     }
     ]
    },
    "why": {
@@ -258,8 +347,14 @@
    "numeric": {
     "answer": "2pi/3",
     "mistakes": [
-     { "value": "6pi", "why": "Multiplying the input by 3 makes the cycles shorter, not longer: divide $2\\pi$ by 3." },
-     { "value": 3, "why": "3 is $b$. The period is $\\frac{2\\pi}{b}$." }
+     {
+      "value": "6pi",
+      "why": "Multiplying the input by 3 makes the cycles shorter, not longer: divide $2\\pi$ by 3."
+     },
+     {
+      "value": 3,
+      "why": "3 is $b$. The period is $\\frac{2\\pi}{b}$."
+     }
     ]
    },
    "why": {
@@ -275,7 +370,12 @@
    "diff": 1,
    "q": "What is the amplitude of $f(\\theta) = -4\\cos(2\\theta) + 7$?",
    "type": "single",
-   "options": ["$4$", "$-4$", "$7$", "$11$"],
+   "options": [
+    "$4$",
+    "$-4$",
+    "$7$",
+    "$11$"
+   ],
    "correct": 0,
    "why": {
     "correct": "The amplitude is $|a| = |-4| = 4$. The negative sign reflects the graph; it does not make a distance negative.",
@@ -324,13 +424,27 @@
    "type": "expr",
    "expr": {
     "answer": "2sin(2theta) - 1",
-    "vars": ["theta"],
-    "domain": [-6.3, 6.3],
+    "vars": [
+     "theta"
+    ],
+    "domain": [
+     -6.3,
+     6.3
+    ],
     "lhs": "f(\\theta) =",
     "mistakes": [
-     { "expr": "2sin(theta/2) - 1", "why": "That has period $4\\pi$. For period $\\pi$, $b = \\frac{2\\pi}{\\pi} = 2$." },
-     { "expr": "2sin(pi*theta) - 1", "why": "That uses the period as $b$, giving period 2. $b = \\frac{2\\pi}{\\text{period}} = 2$." },
-     { "expr": "2sin(2theta) + 1", "why": "The midline is $y = -1$, so subtract 1." }
+     {
+      "expr": "2sin(theta/2) - 1",
+      "why": "That has period $4\\pi$. For period $\\pi$, $b = \\frac{2\\pi}{\\pi} = 2$."
+     },
+     {
+      "expr": "2sin(pi*theta) - 1",
+      "why": "That uses the period as $b$, giving period 2. $b = \\frac{2\\pi}{\\text{period}} = 2$."
+     },
+     {
+      "expr": "2sin(2theta) + 1",
+      "why": "The midline is $y = -1$, so subtract 1."
+     }
     ]
    },
    "why": {
@@ -347,9 +461,21 @@
    "type": "predict",
    "q": "In $f(\\theta) = 3\\sin(b\\theta)$, the positive constant $b$ is doubled. Predict each change.",
    "variables": [
-    { "name": "The period", "answer": "down", "why": "The period $\\frac{2\\pi}{b}$ is halved when $b$ doubles: the cycles get shorter." },
-    { "name": "The amplitude", "answer": "none", "why": "The amplitude is $|a| = 3$; $b$ changes only the horizontal scale." },
-    { "name": "The number of zeros on $[0, 2\\pi]$", "answer": "up", "why": "Twice as many cycles fit in the same interval, so the graph crosses the axis more often." }
+    {
+     "name": "The period",
+     "answer": "down",
+     "why": "The period $\\frac{2\\pi}{b}$ is halved when $b$ doubles: the cycles get shorter."
+    },
+    {
+     "name": "The amplitude",
+     "answer": "none",
+     "why": "The amplitude is $|a| = 3$; $b$ changes only the horizontal scale."
+    },
+    {
+     "name": "The number of zeros on $[0, 2\\pi]$",
+     "answer": "up",
+     "why": "Twice as many cycles fit in the same interval, so the graph crosses the axis more often."
+    }
    ],
    "why": {
     "correct": "$b$ is a horizontal dilation: it changes the cycle length, not the heights."
@@ -365,19 +491,21 @@
    "q": "Which functions have period $\\pi$? Select all that apply.",
    "type": "multi",
    "options": [
-    "$y = \\sin(2\\theta)$",
     "$y = 3\\cos(2\\theta + 1)$",
     "$y = \\sin\\left(\\frac{\\theta}{2}\\right)$",
-    "$y = \\cos(\\pi\\theta)$"
+    "$y = \\cos(\\pi\\theta)$",
+    "$y = 2\\sin\\theta$"
    ],
-   "correct": [0, 1],
+   "correct": [
+    0
+   ],
    "why": {
-    "correct": "Period $\\frac{2\\pi}{|b|} = \\pi$ needs $|b| = 2$. Shifts and stretches outside the input do not change the period.",
+    "correct": "Period $\\frac{2\\pi}{|b|} = \\pi$ needs $|b| = 2$, and only $3\\cos(2\\theta + 1)$ has it. Shifts and stretches outside the input do not change the period.",
     "options": [
-     "$b = 2$: period $\\pi$.",
-     "$b = 2$ again; the $+1$ inside shifts the graph but keeps the period.",
+     "$b = 2$; the $+1$ inside shifts the graph but keeps the period $\\pi$.",
      "$b = \\frac{1}{2}$: period $4\\pi$.",
-     "$b = \\pi$: period $\\frac{2\\pi}{\\pi} = 2$."
+     "$b = \\pi$: period $\\frac{2\\pi}{\\pi} = 2$.",
+     "The 2 is outside: it changes the amplitude, and the period stays $2\\pi$."
     ]
    }
   },

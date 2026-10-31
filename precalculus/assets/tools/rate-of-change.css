@@ -79,3 +79,6 @@
 .rc-tabwrap table{margin:0 auto;font-variant-numeric:tabular-nums;}
 .ls-root .ls-drill-stage .cd-extra:has(.rc-tabwrap){display:flex;flex-direction:column;}
 .ls-root .cd-extra .rc-tabwrap + div{flex:1;min-height:0;}
+.rc-dtab{border-collapse:collapse;font:600 14px var(--font-ui);}
+.rc-dtab th,.rc-dtab td{border:1px solid var(--line);padding:5px 10px;text-align:center;}
+.rc-dtab th{background:var(--rc-tint);font-weight:800;}

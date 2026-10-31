@@ -5,19 +5,48 @@
    "title": "A sinusoidal function $f$",
    "plot": {
     "label": "Graph of a sinusoidal function f for t from 0 to 12: highest points (0, 1), (6, 1) and (12, 1), lowest points (3, -3) and (9, -3)",
-    "x": [-0.5, 12.5],
-    "y": [-3.5, 1.5],
+    "x": [
+     -0.5,
+     12.5
+    ],
+    "y": [
+     -3.5,
+     1.5
+    ],
     "xStep": 1,
     "yStep": 1,
     "xLabel": "t",
     "yLabel": "y",
     "curves": [
-     { "fn": "2cos(pi*x/3) - 1", "domain": [0, 12], "cls": "s1", "label": "f" }
+     {
+      "fn": "2cos(pi*x/3) - 1",
+      "domain": [
+       0,
+       12
+      ],
+      "cls": "s1",
+      "label": "f"
+     }
     ],
     "points": [
-     { "at": [0, 1] },
-     { "at": [3, -3] },
-     { "at": [6, 1] }
+     {
+      "at": [
+       0,
+       1
+      ]
+     },
+     {
+      "at": [
+       3,
+       -3
+      ]
+     },
+     {
+      "at": [
+       6,
+       1
+      ]
+     }
     ]
    }
   },
@@ -27,8 +56,28 @@
    "text": "A buoy bobs up and down. Its height above the sea floor is a sinusoidal function of time, and its greatest and least heights appear in the table.",
    "table": {
     "caption": "Height $h(t)$ of the buoy above the sea floor, in meters, $t$ seconds after a stopwatch starts",
-    "cols": ["$t$ (seconds)", "0", "2", "4", "6", "8", "10", "12"],
-    "rows": [["$h(t)$ (meters)", "3", "3.8", "3", "2.2", "3", "3.8", "3"]]
+    "cols": [
+     "$t$ (seconds)",
+     "0",
+     "2",
+     "4",
+     "6",
+     "8",
+     "10",
+     "12"
+    ],
+    "rows": [
+     [
+      "$h(t)$ (meters)",
+      "3",
+      "3.8",
+      "3",
+      "2.2",
+      "3",
+      "3.8",
+      "3"
+     ]
+    ]
    }
   }
  },
@@ -43,7 +92,12 @@
    "stimulus": "sinusoidal-functions-s1",
    "q": "What is the amplitude of $f$?",
    "type": "single",
-   "options": ["$2$", "$4$", "$1$", "$3$"],
+   "options": [
+    "$2$",
+    "$4$",
+    "$1$",
+    "$3$"
+   ],
    "correct": 0,
    "why": {
     "correct": "The greatest value is $1$ and the least is $-3$: amplitude $= \\frac{1 - (-3)}{2} = 2$.",
@@ -65,7 +119,12 @@
    "stimulus": "sinusoidal-functions-s1",
    "q": "What is the midline of the graph of $f$?",
    "type": "single",
-   "options": ["$y = -1$", "$y = 0$", "$y = -3$", "$y = 2$"],
+   "options": [
+    "$y = -1$",
+    "$y = 0$",
+    "$y = -3$",
+    "$y = 2$"
+   ],
    "correct": 0,
    "why": {
     "correct": "The midline is halfway between $1$ and $-3$: $y = \\frac{1 + (-3)}{2} = -1$.",
@@ -90,8 +149,14 @@
    "numeric": {
     "answer": 6,
     "mistakes": [
-     { "value": 3, "why": "That is from a highest point to the next lowest point, half a cycle. Measure from $(0, 1)$ to the next highest point $(6, 1)$." },
-     { "value": 12, "why": "The window shows two full cycles. One cycle runs from $t = 0$ to $t = 6$." }
+     {
+      "value": 3,
+      "why": "That is from a highest point to the next lowest point, half a cycle. Measure from $(0, 1)$ to the next highest point $(6, 1)$."
+     },
+     {
+      "value": 12,
+      "why": "The window shows two full cycles. One cycle runs from $t = 0$ to $t = 6$."
+     }
     ]
    },
    "why": {
@@ -111,8 +176,14 @@
    "numeric": {
     "answer": "1/6",
     "mistakes": [
-     { "value": 6, "why": "That is the period. Frequency is its reciprocal: $\\frac{1}{6}$ of a cycle per unit." },
-     { "value": 2, "why": "Two cycles appear in the window, but the window is 12 units wide: $\\frac{2}{12} = \\frac{1}{6}$ cycle per unit." }
+     {
+      "value": 6,
+      "why": "That is the period. Frequency is its reciprocal: $\\frac{1}{6}$ of a cycle per unit."
+     },
+     {
+      "value": 2,
+      "why": "Two cycles appear in the window, but the window is 12 units wide: $\\frac{2}{12} = \\frac{1}{6}$ cycle per unit."
+     }
     ]
    },
    "why": {
@@ -129,7 +200,12 @@
    "stimulus": "sinusoidal-functions-s1",
    "q": "What is the average rate of change of $f$ on $[0, 3]$?",
    "type": "single",
-   "options": ["$-\\frac{4}{3}$", "$-4$", "$-\\frac{3}{4}$", "$-\\frac{2}{3}$"],
+   "options": [
+    "$-\\frac{4}{3}$",
+    "$-4$",
+    "$-\\frac{3}{4}$",
+    "$-\\frac{2}{3}$"
+   ],
    "correct": 0,
    "why": {
     "correct": "$\\frac{f(3) - f(0)}{3 - 0} = \\frac{-3 - 1}{3} = -\\frac{4}{3}$, the slope of the secant line through $(0, 1)$ and $(3, -3)$.",
@@ -155,8 +231,14 @@
     "answer": 0.8,
     "unit": "meters",
     "mistakes": [
-     { "value": 1.6, "why": "That is $\\max - \\min$, the full swing. The amplitude is half of it." },
-     { "value": 3, "why": "That is the midline height. The amplitude is how far the buoy goes above or below it." }
+     {
+      "value": 1.6,
+      "why": "That is $\\max - \\min$, the full swing. The amplitude is half of it."
+     },
+     {
+      "value": 3,
+      "why": "That is the midline height. The amplitude is how far the buoy goes above or below it."
+     }
     ]
    },
    "why": {
@@ -173,7 +255,12 @@
    "stimulus": "sinusoidal-functions-s2",
    "q": "What is the period of $h$?",
    "type": "single",
-   "options": ["8 seconds", "4 seconds", "2 seconds", "12 seconds"],
+   "options": [
+    "8 seconds",
+    "4 seconds",
+    "2 seconds",
+    "12 seconds"
+   ],
    "correct": 0,
    "why": {
     "correct": "The greatest height 3.8 m occurs at $t = 2$ and next at $t = 10$: one cycle takes 8 seconds.",
@@ -199,8 +286,14 @@
     "answer": 0.125,
     "unit": "cycles per second",
     "mistakes": [
-     { "value": 8, "why": "That is the period in seconds per cycle. The frequency is its reciprocal." },
-     { "value": 0.25, "why": "That uses 4 seconds as the period, but $t = 0$ to $t = 4$ is only half a cycle." }
+     {
+      "value": 8,
+      "why": "That is the period in seconds per cycle. The frequency is its reciprocal."
+     },
+     {
+      "value": 0.25,
+      "why": "That uses 4 seconds as the period, but $t = 0$ to $t = 4$ is only half a cycle."
+     }
     ]
    },
    "why": {
@@ -221,8 +314,14 @@
     "answer": 3.8,
     "unit": "meters",
     "mistakes": [
-     { "value": 2.2, "why": "That is $h(6)$. $18 = 2 \\cdot 8 + 2$, so $h(18) = h(2)$." },
-     { "value": 3, "why": "That is $h(16) = h(0)$. Two periods take you to $t = 16$; two more seconds give $h(2)$." }
+     {
+      "value": 2.2,
+      "why": "That is $h(6)$. $18 = 2 \\cdot 8 + 2$, so $h(18) = h(2)$."
+     },
+     {
+      "value": 3,
+      "why": "That is $h(16) = h(0)$. Two periods take you to $t = 16$; two more seconds give $h(2)$."
+     }
     ]
    },
    "why": {
@@ -267,8 +366,14 @@
    "numeric": {
     "answer": -0.3,
     "mistakes": [
-     { "value": 0.3, "why": "Sine is odd: reflecting the angle across the $x$-axis flips the height, so $\\sin(-k) = -\\sin k$." },
-     { "value": 0.7, "why": "That is $1 - 0.3$. Sine is odd, so $\\sin(-k) = -0.3$." }
+     {
+      "value": 0.3,
+      "why": "Sine is odd: reflecting the angle across the $x$-axis flips the height, so $\\sin(-k) = -\\sin k$."
+     },
+     {
+      "value": 0.7,
+      "why": "That is $1 - 0.3$. Sine is odd, so $\\sin(-k) = -0.3$."
+     }
     ]
    },
    "why": {
@@ -288,8 +393,14 @@
     "answer": "1/220",
     "unit": "seconds",
     "mistakes": [
-     { "value": 220, "why": "That is the frequency, in cycles per second. The period, seconds per cycle, is its reciprocal." },
-     { "value": "2pi/220", "why": "$2\\pi$ is the period of $\\sin\\theta$, but here the period is just the time for one cycle: $\\frac{1}{220}$ second." }
+     {
+      "value": 220,
+      "why": "That is the frequency, in cycles per second. The period, seconds per cycle, is its reciprocal."
+     },
+     {
+      "value": "2pi/220",
+      "why": "$2\\pi$ is the period of $\\sin\\theta$, but here the period is just the time for one cycle: $\\frac{1}{220}$ second."
+     }
     ]
    },
    "why": {
@@ -333,18 +444,20 @@
    "type": "multi",
    "options": [
     "$y = 3\\cos\\theta - 2$",
-    "$y = \\sin\\theta + 5$",
     "$y = \\theta^2$",
-    "$y = 2^\\theta$"
+    "$y = 2^\\theta$",
+    "$y = |\\theta| + 1$"
    ],
-   "correct": [0, 1],
+   "correct": [
+    0
+   ],
    "why": {
-    "correct": "Both are the sine wave after dilations and translations: cosine is sine shifted, and the 3, $-2$ and $+5$ stretch and lift it.",
+    "correct": "Of these, only $y = 3\\cos\\theta - 2$ is the sine wave after dilations and translations: cosine is sine shifted, and the 3 and $-2$ stretch and move it.",
     "options": [
      "A cosine graph stretched by 3 and moved down 2.",
-     "The sine graph moved up 5.",
      "A parabola is not periodic.",
-     "An exponential function keeps growing; it never repeats."
+     "An exponential function keeps growing; it never repeats.",
+     "A V-shaped graph with one corner; it does not repeat."
     ]
    }
   },
@@ -358,9 +471,21 @@
    "type": "predict",
    "q": "A sinusoidal function has greatest value 10 and least value 2. The greatest value is changed to 14; the least value and the cycle length stay the same. Predict each change.",
    "variables": [
-    { "name": "The amplitude", "answer": "up", "why": "The swing grows from $10 - 2 = 8$ to $14 - 2 = 12$, so the amplitude goes from 4 to 6." },
-    { "name": "The height of the midline", "answer": "up", "why": "The midline moves from $\\frac{10 + 2}{2} = 6$ to $\\frac{14 + 2}{2} = 8$." },
-    { "name": "The period", "answer": "none", "why": "The heights change, but each cycle still takes the same length of input." }
+    {
+     "name": "The amplitude",
+     "answer": "up",
+     "why": "The swing grows from $10 - 2 = 8$ to $14 - 2 = 12$, so the amplitude goes from 4 to 6."
+    },
+    {
+     "name": "The height of the midline",
+     "answer": "up",
+     "why": "The midline moves from $\\frac{10 + 2}{2} = 6$ to $\\frac{14 + 2}{2} = 8$."
+    },
+    {
+     "name": "The period",
+     "answer": "none",
+     "why": "The heights change, but each cycle still takes the same length of input."
+    }
    ],
    "why": {
     "correct": "Raising only the top stretches the wave and lifts its center line; the cycle length is separate."
