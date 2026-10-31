@@ -65,6 +65,7 @@ No ids changed, nothing deleted, no key values changed.
   1046 items, 0 failing.
 - `node scripts/check-apprecalc-map.mjs`: nothing used before it is taught.
 - Scratch recheck rerun: 66 numeric and expr items, 0 problems.
+- `node --test scripts/test/apprecalc-*.test.mjs`: 143 pass, 0 fail.
 
 ## Open points for a person
 

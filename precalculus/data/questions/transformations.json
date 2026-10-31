@@ -335,7 +335,7 @@
    "type": "single",
    "options": [
     "It is stretched horizontally by a factor of $2$",
-    "It is compressed horizontally by a factor of $\\frac{1}{2}$",
+    "It is a horizontal dilation by a factor of $\\frac{1}{2}$",
     "It is stretched vertically by a factor of $2$",
     "It is shifted left by $2$"
    ],
@@ -344,7 +344,7 @@
     "correct": "$f(2x)$ reaches each output at half the input: the point $(a, b)$ on $f$ moves to $(\\frac{a}{2}, b)$. That is a horizontal dilation by a factor of $\\frac{1}{2}$.",
     "options": [
      "The factor inside acts on inputs in reverse: $2x$ halves them.",
-     "Inputs are multiplied by $\\frac{1}{2}$.",
+     "Each input is multiplied by $\\frac{1}{2}$: the graph is compressed toward the $y$-axis.",
      "A vertical dilation multiplies outputs: that would be $2f(x)$.",
      "A shift adds to the input, as in $f(x + 2)$."
     ]
