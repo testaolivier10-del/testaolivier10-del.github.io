@@ -206,6 +206,12 @@
      6
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "scaled": true,
+     "exponent": "var",
+     "say": "ab^t, a constant times a number to the power t"
+    },
     "lhs": "P(t) =",
     "mistakes": [
      {
@@ -330,6 +336,12 @@
      4
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "scaled": true,
+     "exponent": "var",
+     "say": "ab^x, a constant times a number to the power x"
+    },
     "lhs": "f(x) =",
     "mistakes": [
      {

@@ -228,9 +228,9 @@
     "correct": "$Q$ is $2 \\times 3$ and $P$ is $3 \\times 1$: $QP$ is defined and is $2 \\times 1$, one revenue per day.",
     "options": [
      "Inside $3 = 3$; outside $2 \\times 1$.",
-     "$PQ$ is $(3 \\times 1)(2 \\times 3)$: inside $1 \\ne 2$, so it is not defined.",
+     "$PQ$ is $(3 \\times 1)(2 \\times 3)$: inside $1 \\ne 2$, so it is undefined.",
      "The outside numbers give $2 \\times 1$, not $3 \\times 1$.",
-     "$PQ$ is not defined."
+     "$PQ$ is undefined."
     ]
    }
   },

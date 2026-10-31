@@ -314,6 +314,9 @@
      0.1,
      4
     ],
+    "form": {
+     "type": "log"
+    },
     "mistakes": [
      {
       "expr": "ln(x^2 - x)",
@@ -333,7 +336,7 @@
    "level": "apply",
    "diff": 2,
    "type": "expr",
-   "q": "Write $\\frac{\\pi}{2} - \\arccos(x)$ with a single inverse trigonometric function, for $-1 \\le x \\le 1$.",
+   "q": "Write $\\frac{\\pi}{2} - \\cos^{-1}(x)$ with a single inverse trigonometric function, for $-1 \\le x \\le 1$.",
    "expr": {
     "answer": "pi/2 - arccos(x)",
     "vars": [
@@ -343,7 +346,7 @@
      -1,
      1
     ],
-    "answerTex": "\\arcsin(x)",
+    "answerTex": "\\sin^{-1}(x)",
     "mistakes": [
      {
       "expr": "arccos(x)",
@@ -352,7 +355,7 @@
     ]
    },
    "why": {
-    "correct": "For $-1 \\le x \\le 1$, $\\arcsin(x) + \\arccos(x) = \\frac{\\pi}{2}$, so the answer is $\\arcsin(x)$."
+    "correct": "For $-1 \\le x \\le 1$, $\\sin^{-1}(x) + \\cos^{-1}(x) = \\frac{\\pi}{2}$, so the answer is $\\sin^{-1}(x)$."
    }
   },
   {

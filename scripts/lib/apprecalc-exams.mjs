@@ -208,8 +208,86 @@ export const bisect = (f, a, b) => { let fa = f(a); for (let i = 0; i < 200; i++
 // Every simple zero of f on [a, b], from sign changes on a fine grid.
 export const zeros = (f, a, b, n = 4000) => { const out = [], h = (b - a) / n; for (let i = 0; i < n; i++) { const x0 = a + i * h; if (f(x0) * f(x0 + h) < 0) out.push(bisect(f, x0, x0 + h)); } return out; };
 export const r3 = x => (Math.round(x * 1000) / 1000).toFixed(3);
-export const EXAM_NUMBERS = [];
-export const JUSTIFY_NUMBERS = [];
+const m3 = x => `$${r3(x)}$`;
+const ax = (v, xs) => xs.map(x => `$${v} \\approx ${r3(x)}$`);
+// The turning point of f on [a, b] (a maximum, or a minimum with sign -1), by ternary search.
+const peak = (f, a, b, sign = 1) => { for (let i = 0; i < 300; i++) { const m1 = a + (b - a) / 3, m2 = b - (b - a) / 3; if (sign * f(m1) < sign * f(m2)) a = m1; else b = m2; } return (a + b) / 2; };
+// Least squares for a polynomial of degree d (normal equations, Gauss-Jordan), coefficients from x^0 up.
+const lsq = (xs, ys, d) => {
+  const n = d + 1, M = Array.from({ length: n }, (_, r) => [...Array.from({ length: n }, (_, c) => xs.reduce((s, x) => s + x ** (r + c), 0)), xs.reduce((s, x, i) => s + ys[i] * x ** r, 0)]);
+  for (let i = 0; i < n; i++) { for (let k = 0; k < n; k++) if (k !== i) { const q = M[k][i] / M[i][i]; for (let c = i; c <= n; c++) M[k][c] -= q * M[i][c]; } }
+  return M.map((r, i) => r[n] / r[i]);
+};
+// Form 1: the museum table (exam-1-s1).
+const museum = { x: [1, 2, 3, 4, 5, 6, 7], y: [42, 61, 73, 80, 78, 71, 55] };
+const [mc, mb, ma] = lsq(museum.x, museum.y, 2), [l0, l1] = lsq(museum.x, museum.y, 1);
+const Vm = x => ma * x * x + mb * x + mc;
+const p101 = x => -0.5 * x ** 3 + 3 * x ** 2 - 2 * x + 1;
+const f102 = x => x ** 3 - 4 * x ** 2 + x + 3;
+const T110 = t => 58 + 14 * Math.sin(Math.PI / 12 * (t - 9)), T110z = zeros(t => T110(t) - 68, 0, 24);
+// Form 2: the reservoir (exam-2-s1) and the daylight model (exam-2-s2).
+const w2 = t => -0.02 * t ** 3 + 0.5 * t ** 2 - 2 * t + 30;
+const f201 = x => x ** 4 - 5 * x ** 2 + 2 * x + 3;
+const tp201 = [peak(f201, -3, -1, -1), peak(f201, -1, 1), peak(f201, 1, 3, -1)];
+// r(x) = x on each piece between the vertical asymptotes x = -2 and x = 3.
+const r205 = x => (3 * x * x - 2) / (x * x - x - 6) - x, r205z = [[-50, -2.001], [-1.999, 2.999], [3.001, 50]].flatMap(([a, b]) => zeros(r205, a, b));
+const D2 = t => 12.2 + 2.8 * Math.sin(2 * Math.PI / 365 * (t - 80));
+export const EXAM_NUMBERS = [
+  // form 1, Part B
+  { id: 'pcalc-exam-1-01', key: m3(p101(peak(p101, 2, 6))), check: () => p101(peak(p101, 2, 6)) > p101(0) },
+  { id: 'pcalc-exam-1-02', key: zeros(f102, -10, 10).map(x => `$${r3(x)}$`).join(', ').replace(/, (\$[^$]+\$)$/, ' and $1'), check: () => zeros(f102, -10, 10).length === 3 },
+  { id: 'pcalc-exam-1-03', key: m3(ma), check: () => ma < 0 },
+  { id: 'pcalc-exam-1-04', key: m3(Vm(8)), check: () => r3(Vm(8)) !== r3(+r3(ma) * 64 + +r3(mb) * 8 + +r3(mc)) && r3(l0 + 8 * l1) === '74.857' },
+  { id: 'pcalc-exam-1-05', key: m3((Vm(5) - Vm(1)) / 4) },
+  { id: 'pcalc-exam-1-06', key: m3((1950 / 1200) ** (1 / 6)) },
+  { id: 'pcalc-exam-1-07', key: ax('x', zeros(x => 3 - Math.log(x * x + 1) - 1, -10, 10)).join(' and '), check: () => zeros(x => 3 - Math.log(x * x + 1) - 1, -10, 10).length === 2 },
+  // 2^x = 3x + 1: x = 0 exactly, and one more found by the calculator.
+  { id: 'pcalc-exam-1-08', key: `$x = 0$ and ${ax('x', zeros(x => 2 ** x - 3 * x - 1, 1, 10))[0]}`, check: () => 2 ** 0 === 3 * 0 + 1 && zeros(x => 2 ** x - 3 * x - 1, -20, 20).length === 2 },
+  { id: 'pcalc-exam-1-09', key: m3(bisect(t => 12 + 5 * Math.log(t + 1) - 25, 0, 100)) },
+  { id: 'pcalc-exam-1-10', key: m3(T110z[1] - T110z[0]), check: () => T110z.length === 2 && T110((T110z[0] + T110z[1]) / 2) > 68 },
+  { id: 'pcalc-exam-1-11', key: ax('\\theta', zeros(t => 1 + 2 * Math.cos(t) - 0.4, 0, 2 * Math.PI)).join(' and '), check: () => zeros(t => 1 + 2 * Math.cos(t) - 0.4, 0, 2 * Math.PI).length === 2 },
+  // form 2, Part B
+  { id: 'pcalc-exam-2-01', key: `$(-\\infty, ${r3(tp201[0])})$ and $(${r3(tp201[1])}, ${r3(tp201[2])})$`, check: () => f201(tp201[0] - 0.1) > f201(tp201[0]) && f201(tp201[1]) > f201(tp201[1] + 0.1) },
+  { id: 'pcalc-exam-2-02', key: m3(w2(peak(w2, 5, 20))), check: () => w2(peak(w2, 5, 20)) > Math.max(w2(0), w2(20)) },
+  { id: 'pcalc-exam-2-03', key: m3((w2(12) - w2(4)) / 8) },
+  { id: 'pcalc-exam-2-04', key: ax('t', zeros(t => w2(t) - 41, 0, 20)).join(' and '), check: () => zeros(t => w2(t) - 41, 0, 20).length === 2 },
+  { id: 'pcalc-exam-2-05', key: (z => `${z[0]}, ${z[1]} and ${z[2]}`)(ax('x', r205z)), check: () => r205z.length === 3 },
+  { id: 'pcalc-exam-2-06', key: m3(220 - 150 * 1.08 ** 5) },
+  { id: 'pcalc-exam-2-07', key: m3(bisect(x => 2 + Math.log(x + 3) - 5, -2.9, 100)) },
+  { id: 'pcalc-exam-2-08', key: m3(D2(150)) },
+  { id: 'pcalc-exam-2-09', key: ax('t', zeros(t => D2(t) - 14, 0, 365)).join(' and '), check: () => zeros(t => D2(t) - 14, 0, 365).length === 2 },
+  { id: 'pcalc-exam-2-10', key: m3((D2(100) - D2(60)) / 40) },
+  { id: 'pcalc-exam-2-11', key: ax('x', zeros(x => 3 * Math.sin(2 * x) - 1 - x, 0, Math.PI)).join(' and '), check: () => zeros(x => 3 * Math.sin(2 * x) - 1 - x, 0, Math.PI).length === 2 },
+];
+// "Make it specific": the numbers in each model answer, recomputed.
+const reg1 = lsq([0, 1, 2, 3, 4], [5, 9, 11, 10, 8], 2);                   // u1-regression-decimals: [c, b, a]
+const reg1At = x => reg1[2] * x * x + reg1[1] * x + reg1[0];
+const fMult = x => (x + 1) ** 2 * (x - 3);                                // u1-multiplicity-values
+const ballT = zeros(t => -4.9 * t * t + 14.7 * t + 2, 0, 10);             // u1-domain-thrown-ball
+const quadY = [3, 7, 19, 39, 67], d1 = quadY.slice(1).map((y, i) => y - quadY[i]), d2 = d1.slice(1).map((y, i) => y - d1[i]);
+const list = a => `${a.slice(0, -1).map(x => `$${x}$`).join(', ')} and $${a[a.length - 1]}$`;
+const tblF = { 1: 3, 2: 1, 3: 4, 4: 2 }, tblG = { 1: 2, 2: 4, 3: 1, 4: 3 };   // u2-composition-table
+const hInv = x => x * x - 4 * x + 7;                                      // u2-not-invertible-values
+export const JUSTIFY_NUMBERS = [
+  { id: 'u1-secant-rate', has: [`\\frac{68 - 52}{7} = \\frac{16}{7} \\approx ${r3((68 - 52) / (9 - 2))}`] },
+  { id: 'u1-concave-down-estimate', has: [`\\frac{12 - 4}{5 - 1} = ${(12 - 4) / (5 - 1)}`, `4 + 2(2 - 1) = ${4 + 2 * (2 - 1)}`] },
+  { id: 'u1-regression-decimals', has: [`$a \\approx ${r3(reg1[2])}$`, `$b \\approx ${r3(reg1[1])}$`, `$c \\approx ${r3(reg1[0])}$`, `the prediction is $${r3(reg1At(5))}$`, `= ${r3(-1.1 * 25 + 5.0 * 5 + 5.1)}$`] },
+  { id: 'u1-multiplicity-values', has: [`(-5) = ${fMult(-2)}$`, `(-3) = ${fMult(0)}$`, `(-1) = ${fMult(2)}$`, `(1) = ${fMult(4)}$`] },
+  { id: 'u1-hole-not-asymptote', has: [`r(x) = 3 + 3 = ${3 + 3}$`] },
+  { id: 'u1-rational-sign-chart', has: [`\\frac{-6}{-1} = ${(-2 - 4) / (-2 + 1)}`, `\\frac{-4}{1} = ${(0 - 4) / (0 + 1)}`] },
+  { id: 'u1-quadratic-from-differences', has: [`$7 - 3 = ${d1[0]}$, ${list(d1.slice(1))}`, list(d2)] },
+  { id: 'u1-domain-thrown-ball', has: [`$t \\approx ${r3(ballT[0])}$`, `$0 \\le t \\le ${r3(ballT[0])}$`] },
+  { id: 'u2-geometric-sequence', has: [`\\frac{135}{45} = ${135 / 45}$`, `${list([15 - 5, 45 - 15, 135 - 45])} are not constant`] },
+  { id: 'u2-exponential-unequal-steps', has: [`\\frac{12}{6} = ${12 / 6}$`, `\\frac{96}{48} = ${96 / 48}$`, `\\frac{48}{12} = ${48 / 12} = 2^2$`] },
+  { id: 'u2-cooling-domain', has: [`\\approx ${r3(20 + 70 * 0.9 ** -10)}$`] },
+  { id: 'u2-composition-table', has: [`$f(2) = ${tblF[2]}$`, `g(f(2)) = g(${tblF[2]}) = ${tblG[tblF[2]]}$`] },
+  { id: 'u2-not-invertible-values', has: [`1 - 4 + 7 = ${hInv(1)}$`, `9 - 12 + 7 = ${hInv(3)}$`] },
+  { id: 'u2-log-model-decimals', has: [`t = e^{3.8/1.7} \\approx ${r3(Math.exp(3.8 / 1.7))}$`, `e^{2.2} \\approx ${r3(Math.exp(2.2))}$`] },
+  { id: 'u3-ferris-points', has: [`18 - 15 = ${18 - 15}$`, `$(${40 / 4}, 18)$`, `$(${40 / 2}, ${18 + 15})$`, `$(${3 * 40 / 4}, 18)$`] },
+  { id: 'u3-tangent-asymptote', has: [`\\tan(1.5) \\approx ${r3(Math.tan(1.5))}$`, `\\tan(1.65) \\approx ${r3(Math.tan(1.65))}$`] },
+  { id: 'u3-polar-secant', has: [`\\frac{${2 + Math.sin(Math.PI / 2)} - ${2 + Math.sin(0)}}{\\pi/2}`, `\\approx ${r3(2 / Math.PI)}`] },
+  { id: 'u3-radian-decimals', has: [`\\sin^{-1}(0.25) \\approx ${r3(Math.asin(0.25))}$`, `\\sin^{-1}(0.25) \\approx ${r3(Math.PI - Math.asin(0.25))}$`] },
+];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];

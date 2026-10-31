@@ -28,7 +28,7 @@
      parse(str, opts), fn(str, vars?), toTex(tree), read(str, opts)
      compare(student, key, opts), gradeExpr(item, typed)
      exprCell(answer, opts)        a drill step that takes an expression:
-                                   { expr: { answer, vars, domain, mode, mistakes } }
+                                   { expr: { answer, vars, domain, mode, mistakes, form } }
      diagnoseExpr(cell, typed)     { ok, why?, error? } through ApPrecalcExpr.grade
    Precalculus numerics
      deriv(f, x, h?)               central difference (h scaled to x)
@@ -111,6 +111,7 @@
     if(opts.domain) E.domain = opts.domain;
     if(opts.mistakes) E.mistakes = opts.mistakes;
     if(opts.needC === false) E.needC = false;
+    if(opts.form) E.form = opts.form;
     return { expr: E };
   }
   function diagnoseExpr(c, typed){

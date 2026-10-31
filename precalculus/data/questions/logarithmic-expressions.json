@@ -422,22 +422,22 @@
    "diff": 2,
    "calc": true,
    "type": "numeric",
-   "q": "The natural logarithm of $50$ is the exponent $a$ with $e^a = 50$. Find $a$ with a calculator, correct to three decimal places.",
+   "q": "The common logarithm of $0.004$ is the exponent $a$ with $10^a = 0.004$. Find $a$ with a calculator, correct to three decimal places.",
    "numeric": {
-    "answer": 3.912023005428146,
+    "answer": -2.397940008672037,
     "mistakes": [
      {
-      "value": 1.6989700043360187,
-      "why": "That is $\\log 50$, base $10$. Use the $\\ln$ key for the natural logarithm."
+      "value": 2.397940008672037,
+      "why": "The sign is lost. $0.004$ is less than $1$, so it is $10$ to a negative power: $10^{-3} = 0.001 < 0.004 < 0.01 = 10^{-2}$."
      },
      {
-      "value": 18.393972058572118,
-      "why": "That is $50 \\div e$. $\\ln 50$ is the exponent with $e^a = 50$."
+      "value": -5.521460917862246,
+      "why": "That is $\\ln 0.004$, base $e$. The common logarithm is base $10$: use the $\\log$ key."
      }
     ]
    },
    "why": {
-    "correct": "$\\ln$ is the logarithm base $e$: $\\ln 50 \\approx 3.912$, because $e^{3.912} \\approx 50$."
+    "correct": "$\\log 0.004 \\approx -2.398$, because $10^{-2.398} \\approx 0.004$. Check: $10^{-3} = 0.001 < 0.004 < 0.01 = 10^{-2}$, so $a$ is between $-3$ and $-2$."
    }
   },
   {

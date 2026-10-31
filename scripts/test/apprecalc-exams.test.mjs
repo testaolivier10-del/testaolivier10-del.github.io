@@ -11,19 +11,25 @@
      in a form, a unit test, an FRQ or a cram plan;
    - the unit weight ranges come out right for 42 questions;
    - a good form passes and the checker catches each way a form can break
-     (synthetic forms; the real ones arrive in Phase 3);
+     (synthetic forms), and the two real forms (Phase 3) pass every rule;
+   - every exam-only key and every number in a prompt is recomputed, and the
+     runtime grader credits exactly the key;
+   - the formula page lists the formulas and identities Units 1-3 teach;
    - the "Make it specific" checker refuses the reader-report traps;
    - the generator serves no forms and no unit tests before anything is
      published, a unit test once one is, and never one for Unit 4. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, mkdtempSync, mkdirSync, cpSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, mkdtempSync, mkdirSync, cpSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
+import { createBrowser } from './harness.mjs';
 import { loadMap, trademarkProblems } from '../lib/apprecalc-build.mjs';
+import { Tex } from '../lib/apprecalc-mathlib.mjs';
+import { EQ, NOT_ON } from '../lib/apprecalc-entry.mjs';
 import { scanPage } from '../lib/apprecalc-map.mjs';
-import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, FRQ_CALC, SECTION_WEIGHTS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/apprecalc-exams.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, formUnits, unitRange, FREE_JUSTIFY, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FRQ_ORDER, FRQ_CALC, SECTION_WEIGHTS, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/apprecalc-exams.mjs';
 
 const FIX = 'scripts/test/fixtures/apprecalc-data';
 
@@ -151,13 +157,138 @@ test('the "Make it specific" checker refuses the reader-report traps', () => {
   bad(p => { p.skill = 'theorems'; }, /skill must be one of/);
 });
 
-test('exam numbers: Phase 3 fills them; the checker needs every listed item', () => {
-  assert.deepEqual(EXAM_NUMBERS, []);
-  assert.deepEqual(JUSTIFY_NUMBERS, []);
-  assert.deepEqual(checkNumbers(new Map(), []), []);
-  const ex = loadExams('precalculus/data');
-  assert.deepEqual(ex.forms, [], 'no practice exam is written in Phase 0');
-  assert.deepEqual(loadJustify('precalculus/data', map), []);
+/* ------------------------------------------------ the real forms (Phase 3) */
+const DATA = 'precalculus/data';
+const ex = loadExams(DATA);
+const bank = new Map(), orderOf = {};
+for (const f of readdirSync(join(DATA, 'questions'))) JSON.parse(readFileSync(join(DATA, 'questions', f), 'utf8')).items.forEach((q, i) => { bank.set(q.id, q); orderOf[q.id] = i; });
+ex.items.forEach((q, i) => { orderOf[q.id] = i; });
+const examItems = new Map(ex.items.map(q => [q.id, q]));
+const frqs = Object.fromEntries(readdirSync(join(DATA, 'frq')).map(f => JSON.parse(readFileSync(join(DATA, 'frq', f), 'utf8'))).map(f => [f.id, f]));
+const rctx = { map, bank, examItems, frqs, orderOf: id => orderOf[id] };
+const clone = x => JSON.parse(JSON.stringify(x));
+const checks = new Set(readdirSync(join(DATA, 'lessons')).flatMap(f => JSON.parse(readFileSync(join(DATA, 'lessons', f), 'utf8')).check || []));
+
+test('the two practice exams pass every assembly rule', () => {
+  assert.equal(ex.forms.length, 2);
+  assert.deepEqual(checkForms(ex.forms, rctx), []);
+  for (const f of ex.forms) {
+    const ids = f.mcq.flat(), q = id => bank.get(id) || examItems.get(id);
+    assert.equal(ids.length, MCQ_TOTAL);
+    assert.equal(ids.slice(0, 29).filter(id => !q(id).calc).length, 29, `${f.id}: Part A is 29 no-calculator questions`);
+    assert.equal(ids.slice(29).filter(id => q(id).calc).length, 13, `${f.id}: Part B is 13 calculator questions`);
+    // Units 1-3 by their weights: 15, 13 and 14 of 42; nothing from Unit 4 or the algebra chapter.
+    const n = u => ids.filter(id => q(id).unit === u).length;
+    assert.deepEqual(['unit-1', 'unit-2', 'unit-3'].map(n), [15, 13, 14], f.id);
+    assert.deepEqual(formUnits(f, rctx).sort(), ['unit-1', 'unit-2', 'unit-3']);
+    const own = ids.filter(id => examItems.has(id));
+    assert.ok(own.length >= 10 && own.length <= 20, `${f.id}: ${own.length} exam-only items`);
+    assert.ok(own.every(id => id.startsWith(`pcalc-exam-${f.id.slice(5)}-`)), 'exam-only items belong to their form');
+    assert.equal(ids.filter(id => bank.has(id) && checks.has(id)).length, 0, `${f.id}: no lesson-check items`);
+    const sets = f.mcq.filter(b => b.length > 1);
+    assert.ok(sets.length >= 5, `${f.id}: stimulus sets (${sets.length})`);
+    // Part A runs in course order.
+    const pos = id => map.topics.findIndex(t => t.id === q(id).topic);
+    const partA = ids.slice(0, 29).map(pos);
+    assert.ok(partA.every((x, i) => !i || x >= partA[i - 1]), `${f.id}: Part A in course order`);
+    // Section II: one FRQ of each type in exam order, Units 1-3.
+    assert.deepEqual(f.frq.map(id => frqs[id].type), FRQ_ORDER);
+    assert.deepEqual(f.frq.map(id => frqs[id].calc), [true, true, false, false]);
+  }
+  // At least one Q1 covers composition or inverses (the recurring Q1 task model).
+  assert.ok(ex.forms.some(f => frqs[f.frq[0]].topics.some(t => ['composition', 'inverse-functions'].includes(t))));
+  const all = ex.forms.flatMap(f => f.mcq.flat());
+  assert.equal(new Set(all).size, all.length, 'no question in both forms');
+  const allF = ex.forms.flatMap(f => f.frq);
+  assert.equal(new Set(allF).size, allF.length, 'no FRQ in both forms');
+  assert.ok(ex.items.every(q => ex.forms.some(f => f.mcq.flat().includes(q.id))), 'every exam-only item is used');
+  assert.ok(ex.items.every(q => q.calc === true && q.type === 'single' && q.options.length === 4), 'exam-only items are four-option calculator questions');
+});
+
+test('the assembly check catches a broken real form', () => {
+  const bad = (mut, re) => { const f = clone(ex.forms); mut(f); const e = checkForms(f, rctx); assert.ok(e.some(x => re.test(x)), `${re}: ${e.join(' | ')}`); };
+  bad(f => { const i = f[0].mcq.findIndex(b => b.length > 2); f[0].mcq[i] = f[0].mcq[i].slice().reverse(); }, /not in authored order/);
+  bad(f => { const i = f[0].mcq.findIndex(b => b.length === 2 && !b[0].startsWith('pcalc-exam-')); const b = f[0].mcq[i]; f[0].mcq.splice(i, 1, [b[0]], b.slice(1)); }, /needs its stimulus/);
+  bad(f => { f[1].frq[0] = f[0].frq[0]; }, /FRQ .* is also in form-1/);
+  bad(f => { const a = f[0].mcq.findIndex(b => b.length === 1 && b[0].startsWith('pcalc-exam-1-')); const j = f[1].mcq.findIndex(b => b.length === 1 && b[0].startsWith('pcalc-exam-2-')); f[1].mcq[j] = f[0].mcq[a]; }, /belongs to form-1/);
+  bad(f => { const j = f[0].mcq.findIndex(b => b.length === 1 && b[0].startsWith('pcalc-exam-')); const b = f[0].mcq.splice(j, 1)[0]; f[0].mcq.unshift(b); }, /Part A \(no calculator\) comes before Part B/);
+});
+
+/* The runtime grader (pcalc-questions.js) on every exam-only item: the key is
+   graded right and every other option wrong. */
+test('every exam-only key is recomputed, and the runtime grader credits exactly the key', () => {
+  const prompts = loadJustify(DATA, map);
+  assert.deepEqual(checkNumbers(examItems, prompts), []);
+  assert.deepEqual(ex.items.map(q => q.id).filter(id => !EXAM_NUMBERS.some(n => n.id === id)), [], 'every exam-only item keys a recomputed value');
+  const b = createBrowser(); b.load('precalculus/assets/pcalc-expr.js'); b.load('precalculus/assets/pcalc-math.js');
+  const Q = b.load('precalculus/assets/pcalc-questions.js').ApPrecalcQuestions;
+  for (const q of ex.items) q.options.forEach((_, i) => assert.equal(Q.grade(q, i).correct, i === q.correct, `${q.id} option ${i}`));
+  // A wrong key is caught, and so is a key that no longer matches the math.
+  const m = new Map(examItems); const w = clone(m.get('pcalc-exam-1-09')); w.correct = 0; m.set(w.id, w);
+  assert.ok(checkNumbers(m, prompts).some(e => /pcalc-exam-1-09/.test(e)));
+  const m2 = new Map(examItems); const w2 = clone(m2.get('pcalc-exam-2-06')); w2.options[w2.correct] = '$-0.398$'; m2.set(w2.id, w2);
+  assert.ok(checkNumbers(m2, prompts).some(e => /pcalc-exam-2-06/.test(e)));
+  // Calculator keys are three decimal places.
+  for (const q of ex.items) assert.match(q.options[q.correct], /\d\.\d{3}\b|x = 0\b/, q.id);
+});
+
+test('the "Make it specific" prompts pass, 8-12 per exam unit, every skill, a builder on each', () => {
+  const prompts = loadJustify(DATA, map);
+  assert.deepEqual(checkJustify(prompts, { map, trademarkProblems, scanPage }), []);
+  assert.ok(prompts.length >= 30, `${prompts.length} prompts`);
+  for (const u of units) { const n = prompts.filter(p => p.unit === u.id).length; assert.ok(n >= 8 && n <= 12, `${u.id}: ${n}`); }
+  assert.equal(prompts.filter(p => p.unit === 'unit-4').length, 0, 'Unit 4 is beyond the exam');
+  for (const k of Object.keys(JUSTIFY_SKILLS)) assert.ok(prompts.some(p => p.skill === k), `a prompt for ${k}`);
+  for (const p of prompts) {
+    assert.ok(p.specific && Object.keys(p.specific.slots).length >= 2, `${p.id}: a builder`);
+    for (const [k, sl] of Object.entries(p.specific.slots)) sl.options.forEach((_, i) => assert.ok(i === sl.correct || (sl.why[i] || '').length >= 20, `${p.id} ${k} option ${i} has a why`));
+  }
+  for (const n of JUSTIFY_NUMBERS) assert.ok(prompts.some(p => p.id === n.id), `${n.id} exists`);
+  assert.ok(JUSTIFY_NUMBERS.length >= 15);
+  // The reader-report misses each have a prompt.
+  const ids = prompts.map(p => p.id).join(' ');
+  for (const w of ['secant', 'concave', 'decimals', 'limits', 'not-invertible', 'quadratic-in-ex', 'single-log', 'single-tangent', 'every-solution', 'phase-shift', 'b-from-period', 'domain', 'unequal-steps']) assert.match(ids, new RegExp(w), `a prompt on ${w}`);
+  // The builder grader credits exactly the correct picks.
+  const b = createBrowser(); b.load('precalculus/assets/pcalc-expr.js'); b.load('precalculus/assets/pcalc-math.js');
+  const Q = b.load('precalculus/assets/pcalc-questions.js').ApPrecalcQuestions;
+  for (const p of prompts) {
+    const right = Object.fromEntries(Object.entries(p.specific.slots).map(([k, sl]) => [k, sl.correct]));
+    assert.equal(Q.specific(p.specific, right).correct, true, `${p.id}: the right picks are credited`);
+    const [k0, s0] = Object.entries(p.specific.slots)[0];
+    assert.equal(Q.specific(p.specific, { ...right, [k0]: (s0.correct + 1) % s0.options.length }).correct, false, `${p.id}: a wrong pick is not`);
+  }
+  // A wrong number in a model answer is caught.
+  const p = clone(prompts.find(x => x.id === 'u2-log-model-decimals'));
+  p.earns.answer = p.earns.answer.replace('9.349', '9.35'); p.checklist = p.checklist.map(c => c.replace('9.349', '9.35'));
+  assert.ok(checkNumbers(examItems, prompts.map(x => x.id === p.id ? p : x)).some(e => /u2-log-model-decimals/.test(e)));
+});
+
+test('the formula page lists the formulas and identities Units 1-3 teach', () => {
+  const rows = EQ.flatMap(s => s.rows);
+  const all = rows.map(r => r[0]).join(' | ');
+  const must = [String.raw`\frac{f(b) - f(a)}{b - a}`, '(x - c)^k', String.raw`\frac{a}{b}`, String.raw`\lim_{x \to c^-} r(x)`, String.raw`a f\left(b(x - h)\right) + k`, 'f(x) = ab^x', String.raw`(f \circ g)(x) = f(g(x))`, String.raw`f\left(f^{-1}(x)\right) = x`,
+    String.raw`\log_b c = a \Leftrightarrow b^a = c`, String.raw`\log_b(mn)`, String.raw`k\log_b m`, String.raw`\frac{\ln x}{\ln b}`, String.raw`\sin^2 x + \cos^2 x = 1`, String.raw`\sin(2x) = 2\sin x\cos x`, String.raw`\sin(\alpha \pm \beta)`, String.raw`\cos(\alpha \pm \beta)`,
+    String.raw`a\sin\left(b(\theta + c)\right) + d`, String.raw`\cos^{-1}x \in [0, \pi]`, String.raw`x = r\cos\theta`, String.raw`\text{actual} - \text{predicted}`];
+  for (const e of must) assert.ok(all.includes(e), `the page has "${e}"`);
+  // No half-angle or tangent sum identities (authoring guide, exclusions).
+  assert.doesNotMatch(all, /\\tan\(\\alpha|\\frac\{x\}\{2\}|\\frac\{\\theta\}\{2\}/);
+  const topics = new Set(map.topics.map(t => t.id));
+  const slugs = new Set(JSON.parse(readFileSync('precalculus/data/pages.json', 'utf8')).tools.map(t => t.slug));
+  for (const r of rows) {
+    assert.ok(r.length >= 5, r[0]);
+    assert.ok(r[1].length >= 20 && r[2].length >= 20, `${r[0]}: what it is and when to use it`);
+    assert.ok(topics.has(r[4]), `${r[0]}: topic ${r[4]}`);
+    const ch = map.topicById(r[4]).chapter;
+    assert.ok(['unit-1', 'unit-2', 'unit-3'].includes(ch), `${r[0]}: Units 1-3 only`);
+    assert.equal(r[3], `Unit ${ch.slice(5)}`, `${r[0]}: the unit of ${r[4]}`);
+    for (const sl of r[5] || []) assert.ok(slugs.has(sl) && sl !== 'vectors-matrices', `${r[0]}: trainer ${sl}`);
+    for (const t of [`$${r[0]}$`, r[1], r[2]]) assert.equal(Tex.check(t).length, 0, `${r[0]}: math renders`);
+    for (const t of [r[1], r[2]]) assert.deepEqual(trademarkProblems(t), [], r[0]);
+    assert.doesNotMatch(r[1] + r[2], /derivative|instantaneous rate|increasing at a decreasing rate/i, `${r[0]}: no calculus wording`);
+  }
+  assert.ok(rows.length >= 35, `${rows.length} rows`);
+  assert.ok(NOT_ON.length >= 6);
+  for (const r of NOT_ON) { assert.ok(topics.has(r[2]), r[0]); assert.equal(Tex.check(r[0] + ' ' + r[1]).length, 0, r[0]); }
 });
 
 test('the generator serves nothing before a unit is published, a unit test once one is, and none for Unit 4', () => {
@@ -196,4 +327,38 @@ test('the generator serves nothing before a unit is published, a unit test once 
   const cur = JSON.parse(readFileSync(join(out3, 'assets/pcalc-curriculum.js'), 'utf8').match(/window\.ApPrecalcCurriculum = (.*);/)[1]);
   assert.equal(cur.units.find(u => u.id === 'unit-4').beyond, true);
   assert.ok(cur.units.filter(u => u.id !== 'unit-4').every(u => !u.beyond));
+});
+
+test('with every chapter published: the exams, the prompts, the formula page and 12-question unit tests for Units 1-3', () => {
+  const out = join(mkdtempSync(join(tmpdir(), 'apprecalc-exams-')), 'precalculus');
+  execFileSync(process.execPath, ['scripts/build-apprecalc.mjs', '--out', out], { env: { ...process.env, APPRECALC_DATA: '', APPRECALC_PUBLISHED: 'skills-algebra,unit-1,unit-2,unit-3,unit-4' }, maxBuffer: 1 << 26 });
+  const forms = JSON.parse(readFileSync(join(out, 'assets/exams/forms.json'), 'utf8'));
+  assert.equal(forms.length, 2);
+  const own = JSON.parse(readFileSync(join(out, 'assets/exams/items.json'), 'utf8'));
+  assert.equal(own.items.length, ex.items.length);
+  assert.ok(own.items.every(q => q.why && q.why.correct && q.calc), 'exam-only items carry their explanations and the calculator flag');
+  assert.deepEqual(Object.keys(own.stimuli).sort(), Object.keys(ex.stimuli).sort());
+  assert.ok(Object.values(own.stimuli).filter(s => s.kind === 'graph').every(s => /<svg/.test(s.html)), 'the exam graphs are drawn from their functions');
+  const j = JSON.parse(readFileSync(join(out, 'assets/justify.json'), 'utf8'));
+  assert.deepEqual(j.skills, JUSTIFY_SKILLS);
+  assert.equal(j.prompts.length, loadJustify(DATA, map).length);
+  assert.equal(j.prompts.filter(p => p.free).length, FREE_JUSTIFY);
+  assert.ok(j.prompts.slice(0, FREE_JUSTIFY).every(p => p.free), 'the first prompts in course order are the free ones');
+  assert.ok(j.prompts.every(p => p.specific), 'every prompt has its builder');
+  for (const p of j.prompts) for (const t of [p.context, p.prompt, ...p.checklist, p.earns.answer, p.earns.why, p.misses.answer, p.misses.why]) assert.doesNotMatch(t.replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g, ''), /\$/, `${p.id}: math is rendered`);
+  for (const n of [1, 2, 3]) {
+    const html = readFileSync(join(out, `unit-tests/unit-${n}.html`), 'utf8');
+    assert.equal((html.match(/<div class="pcalc-q" data-qid=/g) || []).length, 12, `unit ${n} sample has 12 questions`);
+    assert.match(html, new RegExp(`practice\\.html\\?unit=unit-${n}`));
+    assert.match(html, /<details class="pcalc-q-key">/, 'answers readable without JavaScript');
+    assert.doesNotMatch(html, /pcalc-exam-/, 'exam-only questions never appear on a free page');
+    // The free sample and the practice exams do not share questions.
+    const sample = [...html.matchAll(/data-qid="([^"]+)"/g)].map(m => m[1]);
+    assert.deepEqual(sample.filter(id => ex.forms.some(f => f.mcq.flat().includes(id))), [], `unit ${n}: no practice-exam question on the free unit test`);
+  }
+  assert.equal(existsSync(join(out, 'unit-tests/unit-4.html')), false, 'no unit test for Unit 4');
+  const eq = readFileSync(join(out, 'formula-sheet.html'), 'utf8');
+  assert.equal((eq.match(/<th scope="row">/g) || []).length, EQ.flatMap(s => s.rows).length);
+  assert.match(eq, /Easy to forget/);
+  for (const sl of [...eq.matchAll(/href="tools\/([a-z-]+)\.html"/g)].map(m => m[1])) assert.ok(existsSync(join(out, 'tools', `${sl}.html`)), `the page links only live trainers (${sl})`);
 });

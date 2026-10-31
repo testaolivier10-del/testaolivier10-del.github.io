@@ -1,0 +1,508 @@
+{
+ "about": "\"Make it specific\" prompts for Unit 1 (docs/apprecalc-architecture.md, \"Make it specific\"): the reasoning the scoring guidelines reward, with an answer that earns the point, one that misses it and a part-by-part builder. Every number is recomputed in JUSTIFY_NUMBERS (scripts/lib/apprecalc-exams.mjs).",
+ "prompts": [
+  {
+   "unit": "unit-1",
+   "id": "u1-secant-rate",
+   "topic": "rates-of-change",
+   "practice": "2.A",
+   "skill": "rates",
+   "title": "An average rate of change from a table",
+   "context": "<p>The amount of water in a tank, $W(t)$ liters, is measured at selected times $t$ minutes.</p><table class=\"pcalc-data\"><tr><th scope=\"row\">$t$ (minutes)</th><td>0</td><td>2</td><td>5</td><td>9</td></tr><tr><th scope=\"row\">$W(t)$ (liters)</th><td>40</td><td>52</td><td>61</td><td>68</td></tr></table>",
+   "prompt": "<b>Find</b> the average rate of change of $W$ on $[2, 9]$, and <b>explain</b> what this value is on the graph of $W$.",
+   "checklist": [
+    "Writes the quotient with the interval's values: $\\frac{W(9) - W(2)}{9 - 2} = \\frac{68 - 52}{7}$",
+    "Gets $\\frac{16}{7} \\approx 2.286$ liters per minute, with the units of a rate",
+    "Names the slope of the secant line through $(2, 52)$ and $(9, 68)$"
+   ],
+   "earns": {
+    "answer": "The average rate of change of $W$ on $[2, 9]$ is $\\frac{W(9) - W(2)}{9 - 2} = \\frac{68 - 52}{7} = \\frac{16}{7} \\approx 2.286$ liters per minute. It is the slope of the secant line through $(2, 52)$ and $(9, 68)$ on the graph of $W$.",
+    "why": "It shows the quotient with the values from the table, gives the rate with its units, and names the secant line with its two points, as the rubric asks."
+   },
+   "misses": {
+    "answer": "The water goes up by about 2.3 liters every minute.",
+    "why": "No quotient and no values from the table, the number is rounded to one place, and nothing names the secant line, so the reason point is lost."
+   },
+   "specific": {
+    "slots": {
+     "quotient": {
+      "label": "The quotient",
+      "options": [
+       "(W(9) − W(2)) / (9 − 2)",
+       "(W(9) − W(2)) / 2",
+       "(9 − 2) / (W(9) − W(2))"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Divide by the length of the interval, 9 − 2 = 7, not by its first input.",
+       "2": "The change in output goes on top: liters per minute, not minutes per liter."
+      }
+     },
+     "meaning": {
+      "label": "On the graph",
+      "options": [
+       "the slope of the secant line through (2, 52) and (9, 68)",
+       "the height of the graph halfway between t = 2 and t = 9",
+       "the amount of water at t = 9"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "A rate of change is a slope, not a height on the graph.",
+       "2": "W(9) = 68 is an amount of water; the rate compares the change in W with the change in t."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-concave-down-estimate",
+   "topic": "linear-quadratic-rates",
+   "practice": "3.C",
+   "skill": "concavity",
+   "title": "Over- or underestimate from concavity",
+   "context": "<p>A function $f$ is concave down on $[1, 5]$, with $f(1) = 4$ and $f(5) = 12$.</p>",
+   "prompt": "<b>Use</b> the secant line through $(1, f(1))$ and $(5, f(5))$ to estimate $f(2)$. <b>Explain</b> whether the estimate is an overestimate or an underestimate.",
+   "checklist": [
+    "Finds the secant slope $\\frac{12 - 4}{5 - 1} = 2$ and the estimate $4 + 2(2 - 1) = 6$, a point on the secant line",
+    "Says the graph of $f$ lies above the secant line on $[1, 5]$ because $f$ is concave down there",
+    "Concludes that the estimate 6 is an underestimate, tied to the interval"
+   ],
+   "earns": {
+    "answer": "The secant line through $(1, 4)$ and $(5, 12)$ has slope $\\frac{12 - 4}{5 - 1} = 2$, so it is $y = 4 + 2(x - 1)$. At $x = 2$ it gives $4 + 2(2 - 1) = 6$, so $f(2) \\approx 6$. Because $f$ is concave down on $[1, 5]$, the graph of $f$ lies above this secant line between $x = 1$ and $x = 5$, so $6$ is an underestimate.",
+    "why": "It uses a point on the secant line for the estimate and ties over or under to concavity on the stated interval, as the scoring guidelines ask."
+   },
+   "misses": {
+    "answer": "$f(2) \\approx 6$. It is an overestimate because $f$ is increasing.",
+    "why": "Increasing says nothing about whether the graph is above or below the secant line; that comes from concavity, and concave down makes the estimate too small."
+   },
+   "specific": {
+    "slots": {
+     "side": {
+      "label": "On [1, 5] the graph of f is",
+      "options": [
+       "above the secant line",
+       "below the secant line"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Concave down means the graph bends below its tangent lines but bulges above its secant lines."
+      }
+     },
+     "verdict": {
+      "label": "So the estimate 6 is",
+      "options": [
+       "an underestimate",
+       "an overestimate"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The secant line is below the graph, so a value read from it is too small."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-regression-decimals",
+   "topic": "model-construction",
+   "practice": "1.C",
+   "skill": "decimals",
+   "title": "A regression, stored and not rounded",
+   "context": "<p>A student fits a quadratic regression to the data below and wants the model's prediction at $x = 5$.</p><table class=\"pcalc-data\"><tr><th scope=\"row\">$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th scope=\"row\">$y$</th><td>5</td><td>9</td><td>11</td><td>10</td><td>8</td></tr></table>",
+   "prompt": "The student rounds each constant of the regression to one decimal place and then predicts $y$ at $x = 5$. <b>Explain</b> why the prediction may lose the point, and <b>give</b> the prediction the scoring guidelines accept.",
+   "checklist": [
+    "Stores the regression $y = ax^2 + bx + c$ with all its digits: $a \\approx -1.071$, $b \\approx 4.986$, $c \\approx 5.057$",
+    "Evaluates the stored model at $x = 5$: $3.200$, correct to three decimal places",
+    "Says that the rounded constants give $2.600$, which is not correct to three decimal places"
+   ],
+   "earns": {
+    "answer": "Quadratic regression gives $y = ax^2 + bx + c$ with $a \\approx -1.071$, $b \\approx 4.986$ and $c \\approx 5.057$. Store it with all its digits and evaluate at $x = 5$: the prediction is $3.200$. Rounding first to $-1.1$, $5.0$ and $5.1$ gives $-1.1(25) + 5.0(5) + 5.1 = 2.600$, which is not correct to three decimal places, so it loses the point.",
+    "why": "It names the regression, stores the constants, rounds only the final answer to three decimal places and shows the size of the error rounding partway causes."
+   },
+   "misses": {
+    "answer": "The model is about y = -1.1x^2 + 5x + 5.1, so the prediction is 2.6.",
+    "why": "Rounding the constants before using them changes the answer in the first decimal place, and 2.6 is not given to three decimal places."
+   },
+   "specific": {
+    "slots": {
+     "when": {
+      "label": "Round",
+      "options": [
+       "only the final answer, to three decimal places",
+       "each constant, then the answer"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Rounding partway carries the error into every later step; the rubric checks the final value to three decimal places."
+      }
+     },
+     "value": {
+      "label": "The prediction at x = 5",
+      "options": [
+       "3.200",
+       "2.600",
+       "3.2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "This comes from the rounded constants.",
+       "2": "The value is right, but a decimal answer is given to three decimal places."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-multiplicity-values",
+   "topic": "complex-zeros",
+   "practice": "2.A",
+   "skill": "values",
+   "title": "Crossing or touching, from values",
+   "context": "<p>Let $f(x) = (x + 1)^2(x - 3)$.</p>",
+   "prompt": "<b>Explain</b> how the graph of $f$ behaves at each of its zeros. Use values of $f$ on each side of each zero.",
+   "checklist": [
+    "Gives values on both sides of $x = -1$, such as $f(-2) = -5$ and $f(0) = -3$, with the same sign, so the graph touches",
+    "Gives values on both sides of $x = 3$, such as $f(2) = -9$ and $f(4) = 25$, with opposite signs, so the graph crosses",
+    "Links each behavior to the multiplicity: 2 (even) at $x = -1$, 1 (odd) at $x = 3$"
+   ],
+   "earns": {
+    "answer": "$f(-2) = (-1)^2(-5) = -5$ and $f(0) = (1)^2(-3) = -3$ are both negative, so the graph touches the $x$-axis at $x = -1$ without crossing; the factor $(x + 1)$ has even multiplicity 2. $f(2) = (3)^2(-1) = -9$ and $f(4) = (5)^2(1) = 25$ have opposite signs, so the graph crosses the $x$-axis at $x = 3$, a zero of multiplicity 1.",
+    "why": "It ties each behavior to specific values of the given function on both sides of the zero, and to the multiplicity of the factor."
+   },
+   "misses": {
+    "answer": "The graph bounces at $x = -1$ and crosses at $x = 3$ because of the exponents.",
+    "why": "The conclusion is right, but nothing uses values of f, and \"because of the exponents\" does not say even or odd multiplicity."
+   },
+   "specific": {
+    "slots": {
+     "left": {
+      "label": "At x = −1 the outputs on each side are",
+      "options": [
+       "both negative, so the graph touches",
+       "opposite in sign, so the graph crosses"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "f(−2) = −5 and f(0) = −3 have the same sign."
+      }
+     },
+     "right": {
+      "label": "At x = 3 the outputs on each side are",
+      "options": [
+       "opposite in sign, so the graph crosses",
+       "both positive, so the graph touches"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "f(2) = −9 is negative and f(4) = 25 is positive."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-end-behavior-limits",
+   "topic": "polynomial-end-behavior",
+   "practice": "3.A",
+   "skill": "limits",
+   "title": "End behavior in limit notation",
+   "context": "<p>Let $p(x) = -2x^3 + 5x^2 + 1$.</p>",
+   "prompt": "<b>Describe</b> the end behavior of $p$ using limit notation, and <b>explain</b> your reasoning.",
+   "checklist": [
+    "Names the leading term $-2x^3$: odd degree, negative leading coefficient",
+    "Writes $\\lim_{x \\to \\infty} p(x) = -\\infty$",
+    "Writes $\\lim_{x \\to -\\infty} p(x) = \\infty$"
+   ],
+   "earns": {
+    "answer": "For large $|x|$ the leading term $-2x^3$ decides the sign of $p(x)$. Its degree, 3, is odd and its coefficient, $-2$, is negative, so $\\lim_{x \\to \\infty} p(x) = -\\infty$ and $\\lim_{x \\to -\\infty} p(x) = \\infty$.",
+    "why": "Both ends are written fully in limit notation, and the reason names the leading term with its degree and sign."
+   },
+   "misses": {
+    "answer": "As x gets big, p goes down, and on the left it goes up.",
+    "why": "Words like \"goes down\" are not limit notation; the scoring guidelines take the point for each end written as a limit."
+   },
+   "specific": {
+    "slots": {
+     "right": {
+      "label": "As x → ∞",
+      "options": [
+       "lim p(x) = −∞",
+       "lim p(x) = ∞",
+       "lim p(x) = −2"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "With a negative leading coefficient, −2x³ is very negative for large positive x.",
+       "2": "The leading coefficient is not a limit; a polynomial of degree 3 has no horizontal asymptote."
+      }
+     },
+     "left": {
+      "label": "As x → −∞",
+      "options": [
+       "lim p(x) = ∞",
+       "lim p(x) = −∞"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "For large negative x, x³ is negative, and −2 times it is positive."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-vertical-asymptote-sides",
+   "topic": "vertical-asymptotes",
+   "practice": "3.A",
+   "skill": "limits",
+   "title": "Both sides of a vertical asymptote",
+   "context": "<p>Let $r(x) = \\frac{x + 1}{x - 2}$.</p>",
+   "prompt": "<b>Explain</b> why $r$ has a vertical asymptote at $x = 2$, and <b>describe</b> the behavior of $r$ on each side of it using limit notation.",
+   "checklist": [
+    "Says the denominator is 0 at $x = 2$ and the numerator is $2 + 1 = 3$, not 0",
+    "Writes $\\lim_{x \\to 2^+} r(x) = \\infty$, from a small positive denominator",
+    "Writes $\\lim_{x \\to 2^-} r(x) = -\\infty$, from a small negative denominator"
+   ],
+   "earns": {
+    "answer": "At $x = 2$ the denominator is $0$ and the numerator is $2 + 1 = 3$, not $0$, so $x = 2$ is a vertical asymptote. For $x$ slightly greater than $2$, $x - 2$ is a small positive number and the numerator is near $3$, so $\\lim_{x \\to 2^+} r(x) = \\infty$. For $x$ slightly less than $2$, $x - 2$ is a small negative number, so $\\lim_{x \\to 2^-} r(x) = -\\infty$.",
+    "why": "It checks the numerator is not zero there, and gives both one-sided limits, each with its sign and a reason."
+   },
+   "misses": {
+    "answer": "The denominator is zero at $x = 2$, so $r$ goes to infinity there.",
+    "why": "A zero denominator alone could be a hole, and \"goes to infinity\" gives neither side nor sign in limit notation."
+   },
+   "specific": {
+    "slots": {
+     "plus": {
+      "label": "As x → 2⁺",
+      "options": [
+       "lim r(x) = ∞",
+       "lim r(x) = −∞"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Just right of 2, both 3 and x − 2 are positive."
+      }
+     },
+     "minus": {
+      "label": "As x → 2⁻",
+      "options": [
+       "lim r(x) = −∞",
+       "lim r(x) = ∞"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Just left of 2, x − 2 is negative while the numerator is near 3."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-hole-not-asymptote",
+   "topic": "rational-holes",
+   "practice": "3.C",
+   "skill": "values",
+   "title": "A hole, not an asymptote",
+   "context": "<p>Let $r(x) = \\frac{x^2 - 9}{x - 3}$.</p>",
+   "prompt": "A student says the graph of $r$ has a vertical asymptote at $x = 3$. <b>Explain</b> why the student is wrong, and <b>give</b> the coordinates of the point missing from the graph.",
+   "checklist": [
+    "Factors $x^2 - 9 = (x - 3)(x + 3)$, so $r(x) = x + 3$ for $x \\ne 3$",
+    "Uses $\\lim_{x \\to 3} r(x) = 3 + 3 = 6$, a finite value, so there is no vertical asymptote",
+    "Gives the hole at $(3, 6)$"
+   ],
+   "earns": {
+    "answer": "$x^2 - 9 = (x - 3)(x + 3)$, so for $x \\ne 3$, $r(x) = x + 3$. The factor $x - 3$ cancels completely, so near $x = 3$ the outputs approach a number: $\\lim_{x \\to 3} r(x) = 3 + 3 = 6$. The graph is the line $y = x + 3$ with a hole at $(3, 6)$, not a vertical asymptote.",
+    "why": "It factors, uses the value the outputs approach, and names the point of the hole, so the conclusion rests on the given function."
+   },
+   "misses": {
+    "answer": "The student is wrong because the factors cancel, so it is a hole.",
+    "why": "The idea is right, but it never shows the factors or the value 6, and gives no coordinates for the hole."
+   },
+   "specific": {
+    "slots": {
+     "cancel": {
+      "label": "After factoring",
+      "options": [
+       "x − 3 cancels completely",
+       "x + 3 cancels completely"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "x + 3 is only in the numerator; it is x − 3 that appears top and bottom."
+      }
+     },
+     "point": {
+      "label": "The hole is at",
+      "options": [
+       "(3, 6)",
+       "(3, 0)",
+       "(−3, 0)"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The y-value of the hole is the value the outputs approach, 3 + 3 = 6.",
+       "2": "x = −3 is a zero of r, where the graph crosses the x-axis."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-rational-sign-chart",
+   "topic": "rational-zeros",
+   "practice": "1.A",
+   "skill": "values",
+   "title": "A rational inequality, tested with values",
+   "prompt": "<b>Solve</b> $\\frac{x - 4}{x + 1} < 0$. <b>Justify</b> your answer with values of the expression.",
+   "checklist": [
+    "Finds where the sign can change: the zero $x = 4$ and the excluded input $x = -1$",
+    "Tests a value in each interval, such as $x = -2$, $0$ and $5$, with the sign of each",
+    "Gives $-1 < x < 4$, leaving out $x = 4$ (the expression is 0) and $x = -1$ (not in the domain)"
+   ],
+   "earns": {
+    "answer": "The expression is $0$ at $x = 4$ and undefined at $x = -1$, so its sign can change only there. At $x = -2$ it is $\\frac{-6}{-1} = 6 > 0$; at $x = 0$ it is $\\frac{-4}{1} = -4 < 0$; at $x = 5$ it is $\\frac{1}{6} > 0$. So $\\frac{x - 4}{x + 1} < 0$ for $-1 < x < 4$; $x = 4$ gives $0$, which is not less than $0$, and $x = -1$ is not in the domain.",
+    "why": "Each interval is tested with a value of the given expression, and both endpoints are explained."
+   },
+   "misses": {
+    "answer": "Multiply both sides by $x + 1$: $x - 4 < 0$, so $x < 4$.",
+    "why": "Multiplying through by x + 1 ignores its sign and the excluded input; the answer includes x = −2, where the expression is 6."
+   },
+   "specific": {
+    "slots": {
+     "breaks": {
+      "label": "The sign can change at",
+      "options": [
+       "x = 4 and x = −1",
+       "x = 4 only"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The sign can also change where the denominator is 0, at x = −1."
+      }
+     },
+     "answer": {
+      "label": "Solution",
+      "options": [
+       "−1 < x < 4",
+       "x < 4",
+       "−1 ≤ x ≤ 4"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "At x = −2 the expression is 6, not negative.",
+       "2": "At x = −1 the expression is undefined and at x = 4 it is 0; neither is less than 0."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-quadratic-from-differences",
+   "topic": "model-selection",
+   "practice": "3.C",
+   "skill": "model",
+   "title": "Why a quadratic model fits",
+   "context": "<table class=\"pcalc-data\"><tr><th scope=\"row\">$x$</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td></tr><tr><th scope=\"row\">$y$</th><td>3</td><td>7</td><td>19</td><td>39</td><td>67</td></tr></table>",
+   "prompt": "<b>Justify</b> why a quadratic model is more appropriate than a linear model for these data.",
+   "checklist": [
+    "Says the inputs go up in equal steps of 2",
+    "Gives the first differences $4, 12, 20, 28$, not constant, so not linear",
+    "Gives the second differences $8, 8, 8$, constant, so quadratic"
+   ],
+   "earns": {
+    "answer": "The inputs go up in equal steps of $2$. The differences of the outputs are $7 - 3 = 4$, $12$, $20$ and $28$, which are not constant, so a linear model does not fit. The differences of those differences are $8$, $8$ and $8$, constant over equal-length input intervals, so a quadratic model fits.",
+    "why": "It names the equal input steps and gives the numbers for both kinds of differences, which is what the rubric asks for a model type."
+   },
+   "misses": {
+    "answer": "The outputs curve upward, so the data are quadratic.",
+    "why": "Many models curve upward (exponential ones too); the reason must use equal input steps and the constant second differences, with the numbers."
+   },
+   "specific": {
+    "slots": {
+     "steps": {
+      "label": "The inputs",
+      "options": [
+       "go up in equal steps of 2",
+       "go up by different amounts"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The inputs are 0, 2, 4, 6, 8: always 2 apart."
+      }
+     },
+     "constant": {
+      "label": "What is constant",
+      "options": [
+       "the second differences, 8 each time",
+       "the first differences",
+       "the ratios of consecutive outputs"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The first differences are 4, 12, 20, 28.",
+       "2": "7/3 and 19/7 are not equal, so the ratios are not constant."
+      }
+     }
+    }
+   }
+  },
+  {
+   "unit": "unit-1",
+   "id": "u1-domain-thrown-ball",
+   "topic": "model-construction",
+   "practice": "3.B",
+   "skill": "domain",
+   "title": "The domain a context allows",
+   "context": "<p>The height of a ball thrown upward is modeled by $h(t) = -4.9t^2 + 14.7t + 2$ meters, $t$ seconds after it is thrown.</p>",
+   "prompt": "<b>Explain</b> which values of $t$ the model makes sense for, and <b>give</b> the domain, using a calculator where needed.",
+   "checklist": [
+    "Starts at the throw, $t = 0$",
+    "Ends when the ball lands, where $h(t) = 0$: $t \\approx 3.130$ (the other solution is negative)",
+    "Says why the model fails after that: $h(t) < 0$ would put the ball below the ground"
+   ],
+   "earns": {
+    "answer": "The model starts at the throw, $t = 0$, and lasts until the ball lands, when $h(t) = 0$. Solving $-4.9t^2 + 14.7t + 2 = 0$ on the calculator gives $t \\approx 3.130$ (the other solution is negative, before the throw). So the domain is $0 \\le t \\le 3.130$; after that the model gives $h(t) < 0$, a height below the ground, which the ball cannot have.",
+    "why": "It names both bounds, finds the landing time to three decimal places, and says why the model stops making sense, in the context."
+   },
+   "misses": {
+    "answer": "The domain is all real numbers because you can put any t into a quadratic.",
+    "why": "That is the domain of the formula, not of the model; the context limits the times to the ball in the air."
+   },
+   "specific": {
+    "slots": {
+     "start": {
+      "label": "The domain starts at",
+      "options": [
+       "t = 0, the throw",
+       "t = −0.130, the negative solution"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "Before t = 0 the ball has not been thrown."
+      }
+     },
+     "end": {
+      "label": "It ends at",
+      "options": [
+       "t ≈ 3.130, when the ball lands",
+       "t = 1.5, the highest point"
+      ],
+      "correct": 0,
+      "why": {
+       "1": "The ball is still in the air after its highest point; it falls until h(t) = 0."
+      }
+     }
+    }
+   }
+  }
+ ]
+}

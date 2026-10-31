@@ -430,7 +430,10 @@
       "expr": "h",
       "why": "$(1 + h)^2 = 1 + 2h + h^2$, not $1 + h^2$; the middle term $2h$ is easy to drop."
      }
-    ]
+    ],
+    "form": {
+     "type": "expanded"
+    }
    },
    "why": {
     "correct": "$f(1 + h) - f(1) = (1 + h)^2 + 1 - 2 = 2h + h^2$. Divide by $h$: $2 + h$. As $h$ shrinks, the average rate gets close to $2$."

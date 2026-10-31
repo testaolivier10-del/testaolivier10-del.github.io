@@ -31,7 +31,15 @@
        asymptotes: [{ x: 2 } | { y: 0 }],
        lines: [{ point: [x, y], slope } | { through: [[x1, y1], [x2, y2]] }, cls, dashed, label],
        field: { dydx: 'x - y', step: 1, len: 0.35 },
-       labels: [{ at: [x, y], text, anchor: 'start'|'middle'|'end' }] } */
+       labels: [{ at: [x, y], text, anchor: 'start'|'middle'|'end' }],
+       ticks: false (an unscaled graph, as on Q3: axes and axis labels, no
+         tick marks, no numbers, no grid unless grid: true); xTicks: false or
+         yTicks: false hides one axis's ticks only,
+       yLog: true (a semi-log plot: y is drawn on a base-10 log scale; y = [a, b]
+         with 0 < a < b in data units, ticks at powers of 10 with a light grid
+         at 2-9 times each; the x-axis is drawn along the bottom; every y in
+         the spec is in data units; a line is given by `through` (straight
+         on the plot), not `slope`; no `field`) } */
 (function(root){
   'use strict';
   var PAD = { l: 34, r: 14, t: 12, b: 28 };
@@ -67,14 +75,49 @@
     var w = spec.width || 360, h = spec.height || 260;
     var x = spec.x || [-5, 5], y = spec.y || [-5, 5];
     var iw = w - PAD.l - PAD.r, ih = h - PAD.t - PAD.b;
+    // On a log y-axis (yLog) a data value v sits at log10(v); sy and iy take and give data units.
+    var lg = !!spec.yLog, ty = lg ? Math.log10 : function(v){ return v; }, uy = lg ? function(v){ return Math.pow(10, v); } : ty;
+    var Y0 = ty(y[0]), Y1 = ty(y[1]);
     var f = {
-      x: x, y: y, w: w, h: h, pad: PAD,
+      x: x, y: y, w: w, h: h, pad: PAD, yLog: lg,
       sx: function(v){ return PAD.l + (v - x[0]) / (x[1] - x[0]) * iw; },
-      sy: function(v){ return PAD.t + (y[1] - v) / (y[1] - y[0]) * ih; },
+      sy: function(v){ return PAD.t + (Y1 - ty(v)) / (Y1 - Y0) * ih; },
       ix: function(px){ return x[0] + (px - PAD.l) / iw * (x[1] - x[0]); },
-      iy: function(py){ return y[1] - (py - PAD.t) / ih * (y[1] - y[0]); }
+      iy: function(py){ return uy(Y1 - (py - PAD.t) / ih * (Y1 - Y0)); }
     };
     return f;
+  }
+  /* A yLog spec as the same picture in log10 units, so the linear drawing
+     code draws it: every y is replaced by its log, curves by log10(f), and
+     the y ticks are the powers of 10 (labelled in data units). */
+  function logSpec(spec){
+    var y = spec.y || [];
+    if(!(y[0] > 0 && y[1] > y[0])) throw new Error('ApPrecalcPlot.svg: yLog needs y: [a, b] with 0 < a < b.');
+    if(spec.field) throw new Error('ApPrecalcPlot.svg: yLog does not draw a slope field.');
+    var L = Math.log10, ly = function(p){ return [p[0], L(p[1])]; };
+    var lf = function(fn){ var f = toFn(fn); return function(x){ var v = f(x); return v > 0 ? L(v) : NaN; }; };
+    var o = {};
+    Object.keys(spec).forEach(function(k){ o[k] = spec[k]; });
+    o.yLog = false; o.y = [L(y[0]), L(y[1])]; o._axisBottom = true;
+    o.curves = (spec.curves || []).map(function(c){ var d = {}; Object.keys(c).forEach(function(k){ d[k] = c[k]; }); d.fn = lf(c.fn); return d; });
+    o.shade = (spec.shade || []).map(function(c){ var d = {}; Object.keys(c).forEach(function(k){ d[k] = c[k]; }); d.fn = lf(c.fn); d.fn2 = c.fn2 != null ? lf(c.fn2) : function(){ return o.y[0]; }; return d; });
+    o.points = (spec.points || []).map(function(p){ var d = {}; Object.keys(p).forEach(function(k){ d[k] = p[k]; }); d.at = ly(p.at); return d; });
+    o.labels = (spec.labels || []).map(function(p){ var d = {}; Object.keys(p).forEach(function(k){ d[k] = p[k]; }); d.at = ly(p.at); return d; });
+    o.asymptotes = (spec.asymptotes || []).map(function(a){ return a.y != null ? { y: L(a.y) } : a; });
+    o.lines = (spec.lines || []).map(function(l){
+      if(!l.through) throw new Error('ApPrecalcPlot.svg: on a yLog plot a line is given by through: [[x1, y1], [x2, y2]].');
+      var d = {}; Object.keys(l).forEach(function(k){ d[k] = l[k]; }); d.through = l.through.map(ly); return d;
+    });
+    var major = [], minor = [];
+    for(var k = Math.floor(o.y[0]); k <= Math.ceil(o.y[1]); k++){
+      if(k >= o.y[0] - 1e-9 && k <= o.y[1] + 1e-9) major.push(k);
+      for(var m = 2; m <= 9; m++){ var v = k + L(m); if(v > o.y[0] && v < o.y[1]) minor.push(v); }
+    }
+    o._yTicks = major; o._yMinor = minor;
+    o._yLabel = function(k){
+      return k >= -2 && k <= 2 ? fmtTick(Math.pow(10, k)) : '10<tspan dy="-5" font-size="75%">' + fmtTick(k) + '</tspan>';
+    };
+    return o;
   }
   function toFn(fn, vars){
     if(typeof fn === 'function') return fn;
@@ -138,13 +181,18 @@
 
   function svg(spec){
     if(!spec || String(spec.label || '').trim().length < 20) throw new Error('ApPrecalcPlot.svg: a plot needs a label of 20+ characters (what it shows, for screen readers).');
+    if(spec.yLog) spec = logSpec(spec);
     var F = frame(spec), out = [], x0 = F.x[0], x1 = F.x[1], y0 = F.y[0], y1 = F.y[1];
     var L = PAD.l, R = F.w - PAD.r, T = PAD.t, B = F.h - PAD.b;
-    var xt = spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = ticks(y0, y1, 6, spec.yStep);
+    // ticks: false draws an unscaled graph (no tick marks or numbers, and no grid unless asked for).
+    var showX = spec.ticks !== false && spec.xTicks !== false, showY = spec.ticks !== false && spec.yTicks !== false;
+    var xt = spec.piX ? piTicks(x0, x1) : ticks(x0, x1, 7, spec.xStep), yt = spec._yTicks || ticks(y0, y1, 6, spec.yStep);
+    var yLab = spec._yLabel || fmtTick;
     // Grid
-    if(spec.grid !== false){
-      out.push('<g class="pcalc-plot-grid">' + xt.map(function(v){ return '<line x1="' + r2(F.sx(v)) + '" y1="' + T + '" x2="' + r2(F.sx(v)) + '" y2="' + B + '"/>'; }).join('') +
-        yt.map(function(v){ return '<line x1="' + L + '" y1="' + r2(F.sy(v)) + '" x2="' + R + '" y2="' + r2(F.sy(v)) + '"/>'; }).join('') + '</g>');
+    if(spec.grid === true || (spec.grid !== false && spec.ticks !== false)){
+      out.push('<g class="pcalc-plot-grid">' + (showX ? xt : []).map(function(v){ return '<line x1="' + r2(F.sx(v)) + '" y1="' + T + '" x2="' + r2(F.sx(v)) + '" y2="' + B + '"/>'; }).join('') +
+        (showY ? yt : []).map(function(v){ return '<line x1="' + L + '" y1="' + r2(F.sy(v)) + '" x2="' + R + '" y2="' + r2(F.sy(v)) + '"/>'; }).join('') +
+        (showY ? spec._yMinor || [] : []).map(function(v){ return '<line class="is-minor" x1="' + L + '" y1="' + r2(F.sy(v)) + '" x2="' + R + '" y2="' + r2(F.sy(v)) + '" stroke-opacity=".45"/>'; }).join('') + '</g>');
     }
     // Shaded regions, under everything else
     (spec.shade || []).forEach(function(s){
@@ -160,13 +208,15 @@
     });
     // Axes, ticks, labels
     if(spec.axes !== false){
-      var ax = y0 <= 0 && y1 >= 0 ? F.sy(0) : B, ay = x0 <= 0 && x1 >= 0 ? F.sx(0) : L;
+      var ax = !spec._axisBottom && y0 <= 0 && y1 >= 0 ? F.sy(0) : B, ay = x0 <= 0 && x1 >= 0 ? F.sx(0) : L;
+      if(!showX) xt = [];
+      if(!showY) yt = [];
       out.push('<g class="pcalc-plot-axis"><line x1="' + L + '" y1="' + r2(ax) + '" x2="' + R + '" y2="' + r2(ax) + '"/><line x1="' + r2(ay) + '" y1="' + T + '" x2="' + r2(ay) + '" y2="' + B + '"/>' +
         xt.filter(function(v){ return Math.abs(v) > 1e-12 || ay === L; }).map(function(v){ var px = r2(F.sx(v)); return '<line x1="' + px + '" y1="' + r2(ax - 3) + '" x2="' + px + '" y2="' + r2(ax + 3) + '"/>'; }).join('') +
         yt.filter(function(v){ return Math.abs(v) > 1e-12 || ax === B; }).map(function(v){ var py = r2(F.sy(v)); return '<line x1="' + r2(ay - 3) + '" y1="' + py + '" x2="' + r2(ay + 3) + '" y2="' + py + '"/>'; }).join('') + '</g>');
       var lab = [];
       xt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ay !== L) return; lab.push('<text x="' + r2(F.sx(v)) + '" y="' + r2(Math.min(F.h - 4, ax + 15)) + '" text-anchor="middle">' + (spec.piX ? piLabel(v) : fmtTick(v)) + '</text>'); });
-      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + fmtTick(v) + '</text>'); });
+      yt.forEach(function(v){ if(Math.abs(v) < 1e-12 && ax !== B) return; lab.push('<text x="' + r2(Math.max(10, ay - 6)) + '" y="' + r2(F.sy(v) + 4) + '" text-anchor="end">' + yLab(v) + '</text>'); });
       if(spec.xLabel) lab.push('<text class="pcalc-plot-axlabel" x="' + (R - 2) + '" y="' + r2(Math.max(T + 10, ax - 6)) + '" text-anchor="end">' + esc(plain(spec.xLabel)) + '</text>');
       if(spec.yLabel) lab.push('<text class="pcalc-plot-axlabel" x="' + r2(ay + 6) + '" y="' + (T + 10) + '" text-anchor="start">' + esc(plain(spec.yLabel)) + '</text>');
       out.push('<g class="pcalc-plot-ticks">' + lab.join('') + '</g>');

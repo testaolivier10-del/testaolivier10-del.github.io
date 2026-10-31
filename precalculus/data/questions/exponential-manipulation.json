@@ -99,6 +99,13 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 2,
+     "scaled": true,
+     "exponent": "var",
+     "say": "a constant times 2^x"
+    },
     "lhs": "h(x) =",
     "mistakes": [
      {
@@ -223,6 +230,13 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 2,
+     "scaled": true,
+     "exponent": "kx",
+     "say": "a constant times 2^(kx)"
+    },
     "lhs": "g(x) =",
     "mistakes": [
      {
@@ -343,6 +357,10 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 3
+    },
     "mistakes": [
      {
       "expr": "-3^x",
@@ -377,6 +395,11 @@
      2
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "exponent": "var",
+     "say": "one number to the power x, b^x"
+    },
     "mistakes": [
      {
       "expr": "6^x",
@@ -411,6 +434,10 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": 2
+    },
     "mistakes": [
      {
       "expr": "2^(x+1)",

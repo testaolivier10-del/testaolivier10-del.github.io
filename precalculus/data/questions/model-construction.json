@@ -249,7 +249,7 @@
    "type": "single",
    "options": [
     "Far past the data, the model predicts a negative count",
-    "A quadratic regression is not defined at whole-number inputs",
+    "A quadratic regression is undefined at whole-number inputs",
     "The model is accurate just at the six data inputs",
     "The model's average rate of change is positive at $x = 12$"
    ],
@@ -375,6 +375,9 @@
      10
     ],
     "mode": "exact",
+    "form": {
+     "type": "vertex"
+    },
     "lhs": "S(t) =",
     "mistakes": [
      {

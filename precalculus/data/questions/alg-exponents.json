@@ -46,6 +46,10 @@
      4
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": "x"
+    },
     "mistakes": [
      {
       "expr": "x^5",
@@ -136,6 +140,10 @@
      5
     ],
     "mode": "exact",
+    "form": {
+     "type": "power",
+     "base": "x"
+    },
     "answerTex": "x^{3/2}",
     "mistakes": [
      {

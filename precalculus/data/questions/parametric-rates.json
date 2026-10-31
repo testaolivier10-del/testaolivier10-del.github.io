@@ -309,6 +309,9 @@
      "h"
     ],
     "mode": "exact",
+    "form": {
+     "type": "expanded"
+    },
     "answer": "2 + h",
     "domain": [
      0.1,

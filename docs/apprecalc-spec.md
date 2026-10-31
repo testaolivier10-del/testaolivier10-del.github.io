@@ -90,7 +90,7 @@ One branch, `claude/apprecalc`, one PR at the end.
 | 0 | Fork Calculus AB: runtime `precalculus/assets/` (`pcalc-*`), generator, checks, tests, fixture, CED and dependency maps, registration hidden, tool scaffolding, architecture, authoring guide, briefs, needs-author | **done 2026-10-31** (section 5b) |
 | 1 | Content: lessons, notes, banks (with stimulus sets), FRQs of all four types, glossary, figures | **done 2026-10-31**: 69 topics (authors A-F, self-reports in `docs/apprecalc-reviews/self-*.md`), ~1,270 items, 19 FRQs, figures; content check 0 failing |
 | 2 | Trainers (section 6) | **done 2026-10-31**: all ten trainers (T1-T4), validators at 300 seeds per context, Playwright at 1280/360 px |
-| 3 | Two practice exams, unit tests, "Make it specific" prompts, formula page, cram kit | to do |
+| 3 | Two practice exams, unit tests, "Make it specific" prompts, formula page, cram kit | **built 2026-10-31** (decision 19): two forms in the May 2027 format (Part A 29 bank no-calculator items in course order, Part B 13 calculator items: 11 exam-only + one bank set each; U1 15, U2 13, U3 14; FRQs one of each type, both Q1s on composition and inverses), 22 exam-only keys in `EXAM_NUMBERS`; 30 "Make it specific" prompts (10 per exam unit, every skill, a builder on each, numbers in `JUSTIFY_NUMBERS`); formula page (39 rows, 8 easy-to-forget); unit tests and cram kit tested on the real forms and FRQs; open points under "Phase 3" in needs-author |
 | 4 | Independent accuracy checks per unit, tools, exams | to do |
 | Launch | Publish, generators, continuity pass, "eleven courses" wording, full CI with browser checks, PR | to do |
 
@@ -193,6 +193,38 @@ one rubric line per point and full-credit samples (the AI grader hook only when 
    domain, with a note); fewer than 8 defined points is refused.
 14. (2026-10-31) **Calculus wording is refused** in authored text ("increasing at a decreasing rate", "derivative",
    "instantaneous rate"), except inside a `.pcalc-trap` callout that names the trap.
+
+15. (2026-10-31, integration pass) **Form-aware `expr` grading:** an item whose stem asks for a form ("as a single
+   logarithm", "in the form $a(2)^x$", "in vertex form", "multiply out") carries `expr.form` (types `log`, `power`,
+   `trig`, `fraction`, `expanded`, `terms`, `vertex`, `only`); an answer equal in value but not in that form is
+   wrong with a note. 29 items carry one; the content check requires it on such stems (architecture, "Forms").
+16. (2026-10-31, integration pass) **Q4 FRQs have no stimulus**, as on the exam: `stimulus` is optional for
+   `symbolic`, with a one-line `intro` for the directions; the five stand-in "directions" tables were removed.
+17. (2026-10-31, integration pass) **Wording:** inverse trig is `\sin^{-1}` everywhere (keys and preview included;
+   `\arcsin` only when naming the other notation); "undefined", never "not defined" (the CED's word and 96 of 103
+   uses already; the drill checker now refuses only a bare JS `undefined`, not the word in a sentence or label);
+   1.2 says "the line through $(a, f(a))$ and $(b, f(b))$" and names the secant line from 1.3, where the CED and the
+   map teach it; 1.4 says "on a closed interval" and "an included endpoint", leaving "restricted domain" to 1.13.
+18. (2026-10-31, integration pass) **Plot options** `ticks: false` (unscaled graphs) and `yLog: true` (semi-log
+   plots) in `ApPrecalcPlot`; existing SVG figures stay as they are.
+
+19. (2026-10-31, Phase 3) **Exams, prompts and entry pages as built.**
+    - Two fixed practice exams (`precalculus/data/exams/forms.json`, `items.json`). Section I Part A: 29 bank
+      no-calculator questions in course order (none a lesson check, none on a free unit test), with 3 stimulus
+      pairs each. Part B: one bank calculator set of 2 (`trig-equations-s2` in form 1, `logarithmic-functions-s2`
+      in form 2) and 11 exam-only calculator items (`pcalc-exam-<form>-<nn>`; a museum regression table in form 1,
+      a reservoir cubic and a daylight sinusoid in form 2, plus singles), because the bank has no standalone
+      calculator singles. Units per form: U1 15, U2 13, U3 14. Section II: form 1 `frq-q1-table-composition-inverse`,
+      `frq-q2-quadratic-attendance`, `frq-q3-ferris-wheel`, `frq-q4-quadratic-in-ex`; form 2 `frq-q1-log-function`,
+      `frq-q2-cubic-volume`, `frq-q3-tide`, `frq-q4-single-tangent`. Every exam-only key is recomputed in
+      `EXAM_NUMBERS` (own least squares, ternary search, bisection; side checks such as the number of solutions)
+      and every option graded through `ApPrecalcQuestions.grade` in the test.
+    - "Make it specific": 30 prompts (`precalculus/data/justify/unit-1..3.json`, 10 each, none for Unit 4), every
+      skill, a two-slot builder on each, first 3 free, numbers in `JUSTIFY_NUMBERS` (18 prompts).
+    - Formula page (`EQ`, `NOT_ON` in `scripts/lib/apprecalc-entry.mjs`): 39 rows in seven groups, Units 1-3 only,
+      trainers linked when live; 8 "easy to forget" lines. Home sample question `pcalc-rates-of-change-14`.
+    - Unit tests (12 bank questions per exam unit, none for Unit 4) and the cram kit were built in Phase 0; now
+      tested with every chapter published and against the real forms and FRQs.
 
 ## 9. Open items for the owner
 

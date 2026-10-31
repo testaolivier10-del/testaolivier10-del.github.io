@@ -2,7 +2,7 @@
    practice exam's Section II share (docs/apprecalc-architecture.md, "FRQ").
 
      ApPrecalcFrq.index(base) / load(base, id)   assets/frq/index.json, <id>.json
-     ApPrecalcFrq.questionHtml(f, opts)          stimulus + parts; opts.write adds a
+     ApPrecalcFrq.questionHtml(f, opts)          intro, stimulus (none on most Q4s) + parts; opts.write adds a
                                              labelled textarea per part,
                                              opts.n numbers it ("Question 3")
      ApPrecalcFrq.rubricHtml(f, opts)            per part: one checkbox per rubric
@@ -58,10 +58,13 @@
   function index(b){ return get(b, 'assets/frq/index.json'); }
   function load(b, id){ return get(b, 'assets/frq/' + id + '.json'); }
   function placePaths(h){ return String(h || '').replace(/(src|href)="figures\//g, '$1="' + base() + 'figures/'); }
+  // A Q4 (symbolic) usually has no stimulus, only an optional intro line.
   function stim(f){
-    var s = f.stimulus || {}, id = 'frqs-' + f.id + '-' + (++uid);
+    var intro = f.intro ? '<p class="pcalc-fq-intro">' + f.intro + '</p>' : '';
+    if(!f.stimulus) return intro;
+    var s = f.stimulus, id = 'frqs-' + f.id + '-' + (++uid);
     var KIND = { table: 'Table', graph: 'Graph', diagram: 'Diagram' };
-    return '<section class="pcalc-stim" aria-labelledby="' + id + '"><p class="pcalc-stim-k">' + (KIND[s.kind] || 'Stimulus') + '</p><h3 id="' + id + '">' + (s.title || '') + '</h3>' + placePaths(s.html) + '</section>';
+    return intro + '<section class="pcalc-stim" aria-labelledby="' + id + '"><p class="pcalc-stim-k">' + (KIND[s.kind] || 'Stimulus') + '</p><h3 id="' + id + '">' + (s.title || '') + '</h3>' + placePaths(s.html) + '</section>';
   }
   /* The answer space a part needs on paper (build-apprecalc.mjs partSpace):
      "graph" (a blank grid from graphSpec: sketch a curve, a slope field's

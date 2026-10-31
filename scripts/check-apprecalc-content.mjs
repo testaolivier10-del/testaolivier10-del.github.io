@@ -64,6 +64,15 @@ export const CALCULUS_WORDS = [
   [/\binstantaneous rate\b/i, 'precalculus estimates rates with average rates of change over small intervals'],
 ];
 const TRAP_BOX = /<(\w+)[^>]*class="[^"]*\bpcalc-trap\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g;
+/* Inverse trig is written \sin^{-1} x, as on the exam (authoring guide, "Math"). \arcsin may appear only
+   where a text names it as the other notation, next to the ^{-1} form (notes, glossary), and in a rubric's
+   "accept" list. */
+const ARC_TEX = /\\arc(sin|cos|tan)\b|\\operatorname\{arc(sin|cos|tan|sec|csc|cot)\}/;
+const INV_TEX = /\\(sin|cos|tan|sec|csc|cot)\^\{-1\}/;
+export function inverseNotationProblems(t) {
+  const s = String(t ?? '');
+  return ARC_TEX.test(s) && !INV_TEX.test(s) ? ['write inverse trig as \\sin^{-1} x (the exam\'s form); \\arcsin only names the other notation beside it'] : [];
+}
 export function calculusWordProblems(t) {
   const s = String(t ?? '').replace(TRAP_BOX, ' ');
   return CALCULUS_WORDS.filter(([re]) => re.test(s)).map(([, why]) => why);
@@ -213,6 +222,8 @@ export function numericProblems(N, calc = false) {
    points), and every authored mistake parses and is graded wrong. */
 // No antiderivatives in precalculus: only exact comparison (the parser's 'constant' mode stays for the shared code).
 export const EXPR_MODES = ['exact'];
+// Stems that ask for a form, not only a value: such an expr item needs expr.form.
+export const FORM_STEM_RE = /\bsingle (logarithm|power|trigonometric function|fraction)\b|\bvertex form\b|\bin the form\b|\bas a power of\b|\bmultiply out\b|\bcombine like terms\b|\bsimplified expression\b|\bas a constant times\b|\binto a sum of\b|\busing \$\\(sin|cos|tan|sec|csc|cot) x\$ only\b/i;
 export function exprProblems(E) {
   const out = [], bad = m => out.push(m);
   if (!E || typeof E !== 'object') { bad('expr item needs an "expr" object'); return out; }
@@ -237,6 +248,20 @@ export function exprProblems(E) {
     if (c.equal) bad(`expr.mistakes[${i}] (${m.expr}) is equivalent to the key, so it is graded right and its feedback never shows`);
     if (!m.why || strip(m.why).trim().length < 20) bad(`expr.mistakes[${i}] needs a "why" that names the slip and how to fix it`);
   }
+  // A form rule (docs/apprecalc-architecture.md, "Forms"): a known type, and the key itself has the form.
+  if (E.form !== undefined) {
+    const F = E.form;
+    if (!F || typeof F !== 'object' || !Expr.FORM_TYPES.includes(F.type)) bad(`expr.form.type must be one of ${Expr.FORM_TYPES.join(', ')}`);
+    else {
+      if (F.type === 'terms' && !(Number.isInteger(F.count) && F.count >= 2)) bad('expr.form "terms" needs count, a whole number 2 or more');
+      if (F.type === 'only' && !(Array.isArray(F.fns) && F.fns.length && F.fns.every(f => ['sin', 'cos', 'tan', 'sec', 'csc', 'cot'].includes(f)))) bad('expr.form "only" needs fns, a list of trig function names');
+      if (F.exponent !== undefined && !['var', 'kx'].includes(F.exponent)) bad('expr.form.exponent must be "var" or "kx"');
+      if (F.arg !== undefined && F.arg !== 'var') bad('expr.form.arg must be "var" (the log of the variable alone)');
+      if (F.say !== undefined && (typeof F.say !== 'string' || /\$/.test(F.say))) bad('expr.form.say is plain words (the note is not rendered as math)');
+      const miss = Expr.formProblem(r.tree, F, vars);
+      if (miss) bad(`expr.answer "${E.answer}" is not itself ${miss} (expr.form)`);
+    }
+  }
   // The key graded through the runtime: right as written, and with + C when it is an antiderivative.
   const g = Expr.grade({ expr: E }, E.answer + (E.mode === 'constant' ? ' + C' : ''));
   if (!g.correct) bad('expr.answer is not graded right by ApPrecalcExpr.grade');
@@ -258,6 +283,7 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
     for (const m of mathProblems(t)) err(`${w}: math: ${m}`);
     for (const m of calculusWordProblems(t)) err(`${w}: calculus wording: ${m}`);
   }
+  for (const t of [q.q, q.why && q.why.correct, ...((q.why && q.why.options) || []), ...(q.options || []), q.expr && q.expr.answerTex, q.expr && q.expr.lhs, ...((q.expr && q.expr.mistakes) || []).map(m => m.why)]) for (const m of inverseNotationProblems(t)) err(`${w}: notation: ${m}`);
   // Unit 4 is beyond the exam: its items are practice, never exam items (spec decision 7).
   if (map.chapterById(topic.chapter) && map.chapterById(topic.chapter).beyondExam && idRe) err(`${w}: Unit 4 is beyond the exam; no exam-only item comes from it`);
   if (!LEVELS.includes(q.level)) err(`${w}: level must be recall, apply or analyze`);
@@ -271,6 +297,9 @@ export function checkItem(q, { topic, map, stimuli, err, idRe }) {
     if (q.options || q.correct !== undefined) err(`${w}: numeric items have no options or correct`);
   } else if (q.type === 'expr') {
     for (const p of exprProblems(q.expr)) err(`${w}: ${p}`);
+    // A stem that asks for a form is graded on it: value alone would accept the starting expression.
+    const fm = strip(q.q || '').match(FORM_STEM_RE);
+    if (fm && !(q.expr && q.expr.form)) err(`${w}: the stem asks for a form ("${fm[0]}"), so expr.form is required (docs/apprecalc-architecture.md, "Forms")`);
     if (q.options || q.correct !== undefined) err(`${w}: expr items have no options or correct`);
     if (q.calc) err(`${w}: an expr item is a no-calculator item (an expression is the answer)`);
   } else if (q.type === 'predict') {
@@ -433,6 +462,7 @@ export function checkTopic(map, id, { glossary, figures }) {
   for (const t of texts) for (const p of trademarkProblems(t)) err(`trademark: ${p}`);
   for (const t of texts) for (const p of mathProblems(t)) if (!errors.some(e => e.endsWith(p))) err(`math: ${p}`);
   for (const t of texts) for (const p of calculusWordProblems(t)) err(`calculus wording: ${p}`);
+  for (const t of texts) for (const p of inverseNotationProblems(t)) err(`notation: ${p}`);
   // Unit 4's one line (spec decision 7) comes from the generator; a lesson or notes page never pastes it.
   if (texts.some(t => /does not test this unit/.test(t))) err('the "beyond the exam" line is added by the generator; do not paste it');
   for (const p of orderingProblems(map, id, texts)) err(p);
@@ -469,6 +499,7 @@ export function checkFrq(fid, f, map, figures = {}) {
   if (typeof f.calc !== 'boolean') err('"calc" is required: true for Q1 and Q2 (Part A, graphing calculator), false for Q3 and Q4 (Part B)');
   else if (f.type in FRQ_CALC && f.calc !== FRQ_CALC[f.type]) err(`a ${f.type} question is ${FRQ_CALC[f.type] ? 'Part A: calc true' : 'Part B: calc false'}`);
   for (const t of allStrings(f)) for (const m of calculusWordProblems(t)) err(`calculus wording: ${m}`);
+  for (const t of allStrings({ ...f, parts: (f.parts || []).map(p => ({ ...p, rubric: (p.rubric || []).map(r => ({ point: r.point })) })) })) for (const m of inverseNotationProblems(t)) err(`notation: ${m}`);
   if (f.graphSpec && (!f.graphSpec.x || !f.graphSpec.y)) err('graphSpec needs x and y axes (the blank grid the student sketches on)');
   if (f.drawSpec) err('drawSpec is not used in precalculus; sketches go on a graphSpec grid');
   for (const p of f.parts || []) {
@@ -483,8 +514,12 @@ export function checkFrq(fid, f, map, figures = {}) {
   }
   if (!(f.units || []).length || !(f.topics || []).length || !(f.practices || []).length) err('units, topics and practices are required');
   for (const p of f.practices || []) if (!SKILL_RE.test(p)) err(`practice "${p}" is not a skill id`);
-  if (!f.stimulus) err('stimulus missing');
-  else if (typeof f.stimulus === 'object') checkStimulus('(frq)', f.stimulus, figures, err);
+  // Q4 (symbolic) has no stimulus on the exam, so it is optional there (with a title, and an optional intro line).
+  if (!f.stimulus && f.type !== 'symbolic') err('stimulus missing (only a symbolic Q4 may leave it out)');
+  if (!f.stimulus && !(f.title && strip(f.title).trim())) err('an FRQ without a stimulus needs a title');
+  if (f.intro !== undefined && !(typeof f.intro === 'string' && strip(f.intro).trim().length >= 12)) err('intro must be a sentence or two of text');
+  if (f.stimulus && typeof f.stimulus === 'object' && f.stimulus.kind === 'table' && /^directions\b/i.test(strip(f.stimulus.title || ''))) err('a "directions" table is not a stimulus; put the directions in intro');
+  if (f.stimulus && typeof f.stimulus === 'object') checkStimulus('(frq)', f.stimulus, figures, err);
   if (!Array.isArray(f.parts) || !f.parts.length) err('parts missing');
   let sum = 0;
   for (const p of f.parts || []) {

@@ -52,8 +52,13 @@ In JSON every backslash is doubled (`"$\\log_2 8$"`). The subset (top of `precal
 what Units 1-3 need; anything else stops the build.
 
 - Functions upright: `\sin x`, `\ln(x + 1)`, `\log_b x`, `e^{2x}` (braces for multi-character exponents).
-- Inverses: `f^{-1}(x)` for the inverse function, `\sin^{-1} x` or `\arcsin x` for inverse sine (pick one per
-  page). Never write `\frac{1}{\sin x}` and `\sin^{-1} x` side by side without saying they differ.
+- Inverses: `f^{-1}(x)` for the inverse function, `\sin^{-1} x`, `\cos^{-1} x`, `\tan^{-1} x` for inverse trig
+  everywhere (the exam's form; the expression preview and keys render this way too). `\arcsin x` appears only to
+  name the other notation beside the `^{-1}` form (notes, glossary) and in a rubric's "accept" list; the content
+  check refuses it elsewhere. Never write `\frac{1}{\sin x}` and `\sin^{-1} x` side by side without saying they
+  differ.
+- **"Undefined"** is the course's word for a value that does not exist: "$\tan \theta$ is undefined", "$r(2)$ is
+  undefined". Not "not defined" (one word everywhere, as the CED and most texts write it).
 - Limits for behaviour only: `\lim_{x \to \infty} f(x) = 2`, `\lim_{x \to 3^-} f(x) = -\infty`.
 - Piecewise `\begin{cases} ... \end{cases}`; intervals `[0, 2\pi)`; angles in radians unless the item says degrees.
 - Polar `r = 2 + \cos\theta`; points `(r, \theta)`.
@@ -109,11 +114,18 @@ trig function, a model. Format: `docs/apprecalc-architecture.md`.
 - Two to three `mistakes`, each a real slip with a `why`: a log rule run backward (`log(a + b)`), `tan^{-1}` read as
   `1/tan`, the inside and outside of a composite swapped, a sign lost when reflecting.
 - Expr items are never calculator items.
+- **A stem that asks for a form needs `form`** ("as a single logarithm", "as a single power of 2", "in the form
+  $a(2)^x$", "in vertex form", "multiply out", "as a simplified expression", "as a single trigonometric function",
+  "using $\cos x$ only"): value grading alone accepts the expression the student started with. Types and options in
+  `docs/apprecalc-architecture.md` ("Forms"); the content check refuses a form stem without one and a key that does
+  not have its own form.
 
 ## Rates of change and concavity (the Q2 and Q3 reasoning)
 
 The weakest FRQ reasoning, so every topic from 1.2 on rehearses it in the same words:
 
+- **1.2 says "the slope of the line through $(a, f(a))$ and $(b, f(b))$"**; the term "secant line" is taught in 1.3
+  (the CED's place, and the map's `secant-line`), and every topic from 1.3 on names it.
 - **Average rate of change = slope of the secant line**, with the interval: "The average rate of change of f on
   [2, 5] is (f(5) − f(2))/(5 − 2) = ..., the slope of the secant line through (2, f(2)) and (5, f(5))." The justify
   checker refuses a `rates` answer that does not name the secant.
@@ -127,6 +139,10 @@ The weakest FRQ reasoning, so every topic from 1.2 on rehearses it in the same w
 - **Domain from context** (Q2's hardest part): name the bound and why the model fails past it ("after t = 8 the
   model's total decreases, which a running total cannot do").
 - **Error growth**: past the last data point the model is not supported by data, and say what changes in context.
+
+- **Endpoints in 1.4 ("on a closed interval", "an included endpoint").** 1.4 never says "restricted domain": the map
+  teaches that term in 1.13 (an alias of `model-assumption`, the domain a context allows). Extrema questions in
+  1.4-1.12 say "on the closed interval $[a, b]$" and call an endpoint extremum one "at an included endpoint".
 
 ## Justifying a model type and invertibility
 
@@ -142,7 +158,10 @@ The weakest FRQ reasoning, so every topic from 1.2 on rehearses it in the same w
 - Exact values; real solutions only; radians; work on every step.
 - **Single-term forms mean one term**: one log (`log_2(x^3/5)`), one base power (`7^(2x - 1)`), one trig function
   (`tan x`, not `sin x / cos x`). Stopping at a quotient loses the point; items say "as a single ..." and grade by
-  evaluation plus the form.
+  evaluation plus the form (`expr.form`).
+- **No stimulus.** A Q4 FRQ has no stimulus (as on the exam): leave `stimulus` out, give a plain `title`, and put
+  one directions line in `intro` ("No calculator. Give exact values, use radians, and show the work for each
+  part."). The expressions live in the part prompts; never repeat them in a table.
 - **Quadratic in eˣ**: substitute `u = e^x`, solve, and reject the root where `e^x` would be negative or zero, saying
   why.
 - **Inverse trig ranges**: arcsin and arctan give [−π/2, π/2], arccos [0, π]. `tan^{-1} x` is not `1/tan x`.

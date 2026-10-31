@@ -356,7 +356,10 @@
       "expr": "8x^3",
       "why": "Multiply by the $x$ from $(x + 4)$ too: $8x^3 \\cdot x = 8x^4$."
      }
-    ]
+    ],
+    "form": {
+     "type": "expanded"
+    }
    },
    "why": {
     "correct": "Multiply the leading parts of the factors: $(2x)^3 \\cdot x = 8x^3 \\cdot x = 8x^4$. So $f$ has degree $4$, leading coefficient $8$, and both ends rise."

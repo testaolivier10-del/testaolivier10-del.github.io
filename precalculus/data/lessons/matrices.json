@@ -46,7 +46,7 @@
   },
   {
    "cause": "Swap the order of the factors",
-   "effect": "$BA$ usually differs from $AB$, or is not defined at all"
+   "effect": "$BA$ usually differs from $AB$, or is undefined at all"
   }
  ],
  "ideas": [

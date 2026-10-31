@@ -67,3 +67,29 @@ test('loop: steps with dt in seconds, capped; reduced motion jumps to the end st
   L.once(0.04); L.once(0.01);
   assert.equal(L.time(), 0.05);
 });
+
+test('ticks: false draws an unscaled graph: axes and labels, no numbers, no grid', () => {
+  const s = P.svg(spec({ ticks: false, xLabel: 't', yLabel: 'h', curves: [{ fn: 'sin(x) + 2' }] }));
+  assert.doesNotMatch(s, /pcalc-plot-grid/);
+  assert.doesNotMatch(s, /<text[^>]*text-anchor="(middle|end)">[−0-9]/, 'no tick numbers');
+  assert.match(s, />t<\/text>/); assert.match(s, />h<\/text>/);
+  const y = P.svg(spec({ yTicks: false }));
+  assert.match(y, /text-anchor="middle">−?\d/, 'x numbers stay when only y ticks are off');
+  assert.ok(P.svg(spec({ ticks: false, grid: true })).includes('pcalc-plot-grid'));
+});
+
+test('yLog: a semi-log plot draws exponentials as straight lines, ticks at powers of 10', () => {
+  assert.throws(() => P.svg(spec({ yLog: true, y: [0, 100] })), /0 < a < b/);
+  assert.throws(() => P.svg(spec({ yLog: true, y: [1, 100], lines: [{ point: [0, 1], slope: 2 }] })), /through/);
+  const sp = spec({ yLog: true, x: [0, 5], y: [1, 10000], curves: [{ fn: '3*10^(0.6x)' }], points: [{ at: [1, 30] }] });
+  const s = P.svg(sp);
+  assert.doesNotMatch(s, /NaN|undefined|Infinity/);
+  assert.match(s, /text-anchor="end">10<tspan[^>]*>4<\/tspan>/, 'large powers as 10 with an exponent');
+  for (const t of ['1', '10', '100']) assert.match(s, new RegExp(`text-anchor="end">${t}</text>`));
+  // The curve is straight: its points lie on one screen line.
+  const pts = s.match(/class="pcalc-plot-curve[^"]*" d="M([^"]+)"/)[1].split('L').map(p => p.split(' ').map(Number));
+  const [a, b] = [pts[0], pts[pts.length - 1]];
+  for (const p of pts) assert.ok(Math.abs((p[1] - a[1]) * (b[0] - a[0]) - (b[1] - a[1]) * (p[0] - a[0])) < 2 * Math.abs(b[0] - a[0]));
+  const F = P.frame(sp);
+  assert.ok(Math.abs(F.iy(F.sy(30)) - 30) < 1e-9 && F.sy(100) > F.sy(1000));
+});

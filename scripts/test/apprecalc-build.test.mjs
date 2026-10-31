@@ -60,7 +60,7 @@ test('a published unit builds every page kind, math rendered and graphs plotted,
   const bank = JSON.parse(readFileSync(join(root, 'precalculus/assets/bank/unit-3.json'), 'utf8'));
   const by = n => bank.items.find(q => q.id === `pcalc-${T}-${n}`);
   assert.match(by(3).expr.answerHtml, /<math/); assert.equal(by(3).expr.answer, '((x+2)^2 - x^2)/2');
-  assert.match(by(10).expr.answerHtml, /arcsin/, 'answerTex shows the single inverse trig function');
+  assert.match(by(10).expr.answerHtml, /<msup><mi>sin<\/mi><mrow><mo[^>]*>−<\/mo><mn>1<\/mn>/, 'answerTex shows the single inverse trig function, written sin^-1');
   assert.ok(Math.abs(by(11).numeric.value - 1 / 2) < 1e-15); assert.match(by(11).numeric.answerHtml, /<mfrac>/);
   assert.equal(by(6).calc, true); assert.equal(by(11).calc, undefined);
   const cur = readFileSync(join(root, 'precalculus/assets/pcalc-curriculum.js'), 'utf8');

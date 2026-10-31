@@ -344,6 +344,9 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "trig"
+    },
     "lhs": "\\cos x \\csc x =",
     "mistakes": [
      {
@@ -383,6 +386,9 @@
      1.4
     ],
     "mode": "exact",
+    "form": {
+     "type": "trig"
+    },
     "lhs": "\\tan x \\csc x =",
     "mistakes": [
      {

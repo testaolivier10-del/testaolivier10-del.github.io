@@ -7,7 +7,7 @@
    plan. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { createBrowser } from './harness.mjs';
 
 const W = (lo, hi) => [lo, hi];
@@ -156,4 +156,23 @@ test('day texts: exam day n opens practice exam n in the 2027 format; study days
   assert.doesNotMatch(src, /1\.5 minutes|60 multiple-choice|6 free-response|100 min|score-calculator/);
   // The practice exam page opens form n from ?form=n.
   assert.match(readFileSync('precalculus/assets/pages/exams.js', 'utf8'), /formById\('form-' \+ p\.get\('form'\)\)/);
+});
+
+/* Phase 3: the plan with the real course (every topic of the map, the 19
+   FRQs, the two practice exams): every topic studied is an exam topic, every
+   FRQ it assigns exists and is from Units 1-3, and exam days n = 1, 2 open
+   forms that exist. */
+test('the plan with the real topics, FRQs and practice exams', () => {
+  const map = JSON.parse(readFileSync('docs/apprecalc-dependency-map.json', 'utf8'));
+  const topics = map.topics.filter(t => t.chapter.startsWith('unit-')).map(t => ({ id: t.id, unit: t.chapter, title: t.title, built: true }));
+  const dir = 'precalculus/data/frq';
+  const frqs = readdirSync(dir).map(f => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8'))).map(f => ({ id: f.id, type: f.type, units: f.units }));
+  const forms = JSON.parse(readFileSync('precalculus/data/exams/forms.json', 'utf8')).forms;
+  for (const weeks of [3, 2]) {
+    const p = build({ weeks, topics, frqs });
+    const studied = p.days.flatMap(d => d.topics || []);
+    assert.ok(studied.length && studied.every(id => !topics.find(t => t.id === id).unit.endsWith('-4')), 'no Unit 4 topic in a plan');
+    for (const d of p.days.filter(d => d.frq)) { const f = frqs.find(x => x.id === d.frq); assert.ok(f, d.frq); assert.ok(f.units.every(u => ['unit-1', 'unit-2', 'unit-3'].includes(u)), d.frq); }
+    for (const d of p.days.filter(d => d.kind === 'exam')) assert.ok(forms.some(f => f.id === `form-${d.exam}`), `exam day ${d.exam} opens a form that exists`);
+  }
 });

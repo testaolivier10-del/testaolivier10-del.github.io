@@ -142,3 +142,38 @@ test('domain-aware: logs and inverse trig compared on the key\'s domain', () => 
   assert.equal(E.compare('(e^x - 3)(e^x + 1)', 'e^(2x) - 2e^x - 3', { domain: [-2, 2] }).equal, true);
   assert.equal(E.compare('7^(2x + 1)', '7 * 49^x', { domain: [-2, 2] }).equal, true);
 });
+
+test('form rules: an answer equal in value but not in the asked form is wrong, with a note', () => {
+  const g = (answer, form, typed, vars = ['x'], domain = [0.2, 6]) => E.grade({ expr: { answer, form, vars, domain } }, typed);
+  const ok = (a, f, t, v, d) => assert.ok(g(a, f, t, v, d).correct, `${t} should have ${f.type}`);
+  const no = (a, f, t, v, d) => { const r = g(a, f, t, v, d); assert.ok(!r.correct && r.formMiss && /form the question asks for/.test(r.notes[0]), `${t} should miss ${f.type}`); };
+  const L = { type: 'log' };
+  ok('log_2(x^3/5)', L, 'log_2(x^3/5)'); no('log_2(x^3/5)', L, '3log_2(x) - log_2(5)'); no('log_2(x^3/5)', L, 'ln(x^3/5)/ln(2)');
+  const L2 = { type: 'log', base: 2, scaled: true, arg: 'var' };
+  ok('log_2(x)/2', L2, '0.5log_2(x)'); ok('log_2(x)/2', L2, '(1/2)log_2 x'); no('log_2(x)/2', L2, 'log_4(x)'); no('log_2(x)/2', L2, 'log_2(sqrt(x))');
+  const P = { type: 'power', base: 2, scaled: true, exponent: 'var' };
+  ok('8(2)^x', P, '8*2^x'); ok('8(2)^x', P, '2^x*8'); no('8(2)^x', P, '2^(x+3)'); no('8(2)^x', P, '4*2^(x+1)');
+  ok('5(2)^(2x)', { type: 'power', base: 2, scaled: true, exponent: 'kx' }, '5*2^(2x)'); no('5(2)^(2x)', { type: 'power', base: 2, scaled: true, exponent: 'kx' }, '5*4^x');
+  no('8^x', { type: 'power', exponent: 'var' }, '2^(3x)'); no('x^(3/2)', { type: 'power', base: 'x' }, 'sqrt(x^3)');
+  ok('cot(x)', { type: 'trig' }, 'cot x'); no('cot(x)', { type: 'trig' }, 'cos(x)/sin(x)'); no('cot(x)', { type: 'trig' }, '1/tan(x)');
+  ok('(3x - 1)/(x^2 - 1)', { type: 'fraction' }, '(3x-1)/((x-1)(x+1))'); no('(3x - 1)/(x^2 - 1)', { type: 'fraction' }, '1/(x-1)+2/(x+1)');
+  const X = { type: 'expanded' };
+  ok('x^3 + x^2 - 7x + 2', X, '2 - 7x + x^2 + x^3'); no('x^3 + x^2 - 7x + 2', X, '(x-2)(x^2+3x-1)'); no('x^3 + x^2 - 7x + 2', X, 'x^3+2x^2-x^2-7x+2');
+  no('2 + h', X, '((1+h)^2+1-2)/h', ['h'], [0.1, 3]);
+  ok('3(x + 1)^2 + 2', { type: 'vertex' }, '2 + 3(x+1)^2'); no('3(x + 1)^2 + 2', { type: 'vertex' }, '3x^2+6x+5');
+  no('2x + 3/x', { type: 'terms', count: 2 }, '(2x^2+3)/x');
+  ok('2cos(x)^2 - 1', { type: 'only', fns: ['cos'] }, '2cos^2(x)-1'); no('2cos(x)^2 - 1', { type: 'only', fns: ['cos'] }, '1-2sin^2(x)'); no('2cos(x)^2 - 1', { type: 'only', fns: ['cos'] }, 'cos(2x)');
+  // A value-wrong answer is graded on value as before (no form note).
+  const w = g('log_2(x^3/5)', L, 'log_2(3x/5)');
+  assert.ok(!w.correct && !w.formMiss);
+});
+
+test('content check: a form must be known and the key must have it; a form stem needs a form', async () => {
+  const { exprProblems, FORM_STEM_RE } = await import('../check-apprecalc-content.mjs');
+  assert.deepEqual(exprProblems({ answer: 'log_2(x^3/5)', domain: [0.2, 6], form: { type: 'log' } }), []);
+  assert.ok(exprProblems({ answer: '3log_2(x) - log_2(5)', domain: [0.2, 6], form: { type: 'log' } }).some(p => /is not itself a single logarithm/.test(p)));
+  assert.ok(exprProblems({ answer: 'x', form: { type: 'tidy' } }).some(p => /form.type must be/.test(p)));
+  assert.ok(exprProblems({ answer: 'x + 1/x', form: { type: 'terms' } }).some(p => /needs count/.test(p)));
+  assert.ok(FORM_STEM_RE.test('Write $3\\log_2 x - \\log_2 5$ as a single logarithm.'));
+  assert.ok(FORM_STEM_RE.test('Rewrite $h(x)$ in the form $a(2)^x$.') && !FORM_STEM_RE.test('Write the inverse of $f(x) = 5^x$.'));
+});

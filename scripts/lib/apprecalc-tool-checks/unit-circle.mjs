@@ -59,7 +59,7 @@ export function modelProblems(model) {
     const a = model.angle(m), t = m * PI / 12;
     if (!close(texValue(a.cos.tex), Math.cos(t), 1e-9, 1e-12)) errs.push(`angle ${a.text}: cos is ${a.cos.tex}, Math.cos gives ${Math.cos(t)}`);
     if (!close(texValue(a.sin.tex), Math.sin(t), 1e-9, 1e-12)) errs.push(`angle ${a.text}: sin is ${a.sin.tex}, Math.sin gives ${Math.sin(t)}`);
-    if (Math.abs(Math.cos(t)) < 1e-12) { if (!a.tan.undef) errs.push(`angle ${a.text}: tan should be not defined`); }
+    if (Math.abs(Math.cos(t)) < 1e-12) { if (!a.tan.undef) errs.push(`angle ${a.text}: tan should be undefined`); }
     else if (!close(texValue(a.tan.tex), Math.tan(t), 1e-9, 1e-12)) errs.push(`angle ${a.text}: tan is ${a.tan.tex}, Math.tan gives ${Math.tan(t)}`);
     if (!close(texValue(a.tex), t, 1e-12, 1e-12)) errs.push(`angle m=${m}: its TeX ${a.tex} is not ${t}`);
     if (a.quadrant !== quadOf(t)) errs.push(`angle ${a.text}: quadrant ${a.quadrant}, the signs say ${quadOf(t)}`);

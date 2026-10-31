@@ -58,7 +58,10 @@
       "expr": "(3x + 1)/(x^2 - 1)",
       "why": "$1(x + 1) + 2(x - 1) = x + 1 + 2x - 2 = 3x - 1$."
      }
-    ]
+    ],
+    "form": {
+     "type": "fraction"
+    }
    },
    "why": {
     "correct": "Common denominator $(x - 1)(x + 1) = x^2 - 1$: $\\frac{(x + 1) + 2(x - 1)}{x^2 - 1} = \\frac{3x - 1}{x^2 - 1}$."
@@ -117,7 +120,11 @@
       "expr": "2x^2 + 3/x",
       "why": "$\\frac{2x^2}{x} = 2x$: divide this term by $x$ as well."
      }
-    ]
+    ],
+    "form": {
+     "type": "terms",
+     "count": 2
+    }
    },
    "why": {
     "correct": "$\\frac{2x^2 + 3}{x} = \\frac{2x^2}{x} + \\frac{3}{x} = 2x + \\frac{3}{x}$, for $x \\ne 0$."
@@ -202,7 +209,10 @@
       "expr": "-1",
       "why": "$\\frac{1}{x}$ terms do not cancel between top and bottom. Multiply top and bottom by $x$."
      }
-    ]
+    ],
+    "form": {
+     "type": "fraction"
+    }
    },
    "why": {
     "correct": "Multiply top and bottom by $x$: $\\frac{x + 1}{x - 1}$, for $x \\ne 0, 1$."

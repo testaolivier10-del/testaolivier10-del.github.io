@@ -35,11 +35,11 @@
   function txt(x, y, s, cls, anchor, extra){ return '<text x="' + r1(x) + '" y="' + r1(y) + '" class="' + cls + '" text-anchor="' + (anchor || 'middle') + '"' + (extra || '') + '>' + s + '</text>'; }
   /* A value as the student reads it: exact at a special angle, else three decimals. */
   function valText(a, k, theta){
-    if(a.special){ var v = a.special[k]; return v.undef ? 'not defined' : v.text; }
+    if(a.special){ var v = a.special[k]; return v.undef ? 'undefined' : v.text; }
     var n = k === 'cos' ? a.cos : k === 'sin' ? a.sin : a.tan;
-    return isFinite(n) ? '≈ ' + UC.n3(n) : 'not defined';
+    return isFinite(n) ? '≈ ' + UC.n3(n) : 'undefined';
   }
-  function eqText(a, k){ var v = valText(a, k); return v.charAt(0) === '≈' || v === 'not defined' ? (v === 'not defined' ? ' is not defined' : ' ' + v) : ' = ' + v; }
+  function eqText(a, k){ var v = valText(a, k); return v.charAt(0) === '≈' || v === 'undefined' ? (v === 'undefined' ? ' is undefined' : ' ' + v) : ' = ' + v; }
   var ICON_PLAY = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';
   var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>';
 
@@ -279,7 +279,7 @@
       var Ptex = sp ? '\\left(' + sp.cos.tex + ', ' + sp.sin.tex + '\\right)' : '(' + M.fixed(a.cos, 3) + ', ' + M.fixed(a.sin, 3) + ')';
       var sg = function(v){ return v > 1e-12 ? '> 0' : v < -1e-12 ? '< 0' : '= 0'; };
       var head;
-      if(tan) head = isFinite(a.tan) ? thS + ': $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} ' + (sp ? '= ' + sp.tan.tex : '\\approx ' + M.fixed(a.tan, 3)) + '$, the slope of $OP$.' : thS + ': $OP$ is vertical, so $\\tan\\theta$ is not defined.';
+      if(tan) head = isFinite(a.tan) ? thS + ': $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} ' + (sp ? '= ' + sp.tan.tex : '\\approx ' + M.fixed(a.tan, 3)) + '$, the slope of $OP$.' : thS + ': $OP$ is vertical, so $\\tan\\theta$ is undefined.';
       else head = thS + ' ' + where + '. $P ' + (sp ? '=' : '\\approx') + ' ' + Ptex + '$, so $\\cos\\theta ' + sg(a.cos) + '$ and $\\sin\\theta ' + sg(a.sin) + '$.';
       var ref = a.quadrant && sp ? UC.refOf(sp) : null;
       var body = '<p><b>Radians are arc length.</b> P has moved along an arc of length ' + (sp ? '$' + sp.tex + (sp.m ? ' \\approx ' + M.fixed(a.theta, 3) : '') + '$' : '$' + M.fixed(a.theta, 3) + '$') + ' from $(1, 0)$. The radius is 1, so the arc length is the angle; the green bar on the θ-axis is that arc, laid flat. A full turn is $2\\pi \\approx 6.283$.</p>' +
@@ -300,7 +300,7 @@
     function buildDetails(){
       var rows = UC.SPECIAL.concat([24]).map(function(m){
         var a = UC.angle(m);
-        return '<tr data-m="' + m + '"><th scope="row"><button type="button" class="uc-go" data-m="' + m + '" aria-label="Go to θ = ' + esc(a.text) + '">' + tex(a.tex) + '</button></th><td class="uc-degc">' + a.deg + '°</td><td>' + tex(a.cos.tex) + '</td><td>' + tex(a.sin.tex) + '</td><td>' + (a.tan.undef ? '<span class="uc-nd">not defined</span>' : tex(a.tan.tex)) + '</td></tr>';
+        return '<tr data-m="' + m + '"><th scope="row"><button type="button" class="uc-go" data-m="' + m + '" aria-label="Go to θ = ' + esc(a.text) + '">' + tex(a.tex) + '</button></th><td class="uc-degc">' + a.deg + '°</td><td>' + tex(a.cos.tex) + '</td><td>' + tex(a.sin.tex) + '</td><td>' + (a.tan.undef ? '<span class="uc-nd">undefined</span>' : tex(a.tan.tex)) + '</td></tr>';
       }).join('');
       det.innerHTML = '<h3 class="ls-title-l">Settings</h3>' +
         '<label class="bt-check-row"><input type="checkbox" class="uc-labels"> <span>Label every special angle on the circle</span></label>' +

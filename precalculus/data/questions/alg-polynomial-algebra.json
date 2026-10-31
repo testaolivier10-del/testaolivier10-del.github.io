@@ -32,7 +32,10 @@
       "expr": "x^3 + x^2 - 7x - 2",
       "why": "$-2 \\cdot -1 = +2$: a negative times a negative is positive."
      }
-    ]
+    ],
+    "form": {
+     "type": "expanded"
+    }
    },
    "why": {
     "correct": "$x(x^2 + 3x - 1) - 2(x^2 + 3x - 1) = x^3 + 3x^2 - x - 2x^2 - 6x + 2 = x^3 + x^2 - 7x + 2$."
@@ -221,7 +224,10 @@
       "expr": "3x^2 - 2x + 10",
       "why": "Subtract every term of $(x - 3)^2 = x^2 - 6x + 9$: $-(x^2 - 6x + 9) = -x^2 + 6x - 9$."
      }
-    ]
+    ],
+    "form": {
+     "type": "expanded"
+    }
    },
    "why": {
     "correct": "$4x^2 + 4x + 1 - (x^2 - 6x + 9) = 4x^2 + 4x + 1 - x^2 + 6x - 9 = 3x^2 + 10x - 8$."

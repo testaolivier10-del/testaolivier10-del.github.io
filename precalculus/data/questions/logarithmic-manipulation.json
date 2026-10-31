@@ -379,6 +379,9 @@
      6
     ],
     "mode": "exact",
+    "form": {
+     "type": "log"
+    },
     "lhs": "3\\log_2 x - \\log_2 5 =",
     "answerTex": "\\log_2 \\frac{x^3}{5}",
     "mistakes": [
@@ -419,6 +422,9 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "log"
+    },
     "lhs": "\\ln(x^4) - \\ln(x^2) =",
     "mistakes": [
      {
@@ -458,6 +464,13 @@
      10
     ],
     "mode": "exact",
+    "form": {
+     "type": "log",
+     "base": 2,
+     "scaled": true,
+     "arg": "var",
+     "say": "a constant times log_2(x)"
+    },
     "lhs": "\\log_4 x =",
     "answerTex": "\\frac{1}{2}\\log_2 x",
     "mistakes": [

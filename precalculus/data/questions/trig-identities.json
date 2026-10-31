@@ -183,6 +183,12 @@
      3
     ],
     "mode": "exact",
+    "form": {
+     "type": "only",
+     "fns": [
+      "cos"
+     ]
+    },
     "lhs": "f(x) =",
     "mistakes": [
      {
@@ -334,6 +340,9 @@
      1.2
     ],
     "mode": "exact",
+    "form": {
+     "type": "trig"
+    },
     "lhs": "\\frac{\\sin(2x)}{2\\cos^2 x} =",
     "mistakes": [
      {
@@ -373,6 +382,9 @@
      1.2
     ],
     "mode": "exact",
+    "form": {
+     "type": "trig"
+    },
     "lhs": "(1 + \\tan^2 x)\\cos x =",
     "mistakes": [
      {

@@ -41,7 +41,7 @@
   var ZERO = V('0', '0', '0', 0), ONE = V('1', '1', '1', 1), HALF = V('\\frac{1}{2}', '1/2', '1/2', 0.5);
   var R2 = V('\\frac{\\sqrt{2}}{2}', '√2/2', 'sqrt(2)/2', Math.SQRT2 / 2), R3 = V('\\frac{\\sqrt{3}}{2}', '√3/2', 'sqrt(3)/2', Math.sqrt(3) / 2);
   var T3 = V('\\frac{\\sqrt{3}}{3}', '√3/3', 'sqrt(3)/3', Math.sqrt(3) / 3), S3 = V('\\sqrt{3}', '√3', 'sqrt(3)', Math.sqrt(3));
-  var UNDEF = { undef: true, tex: '\\text{not defined}', text: 'not defined', ascii: '', v: NaN };
+  var UNDEF = { undef: true, tex: '\\text{undefined}', text: 'undefined', ascii: '', v: NaN };
   // the first-quadrant values, by the reference angle in twelfths of pi
   var REF = { 0: [ONE, ZERO, ZERO], 2: [R3, HALF, T3], 3: [R2, R2, ONE], 4: [HALF, R3, S3], 6: [ZERO, ONE, UNDEF] };
   function neg(e){ return e.undef || e.v === 0 ? e : V('-' + e.tex, '−' + e.text, '-' + e.ascii, -e.v); }
@@ -188,7 +188,7 @@
     tanList = [[$(a.tan.tex), why0, a.tan.undef ? 'none' : a.tan.tex]];
     if(cotTex != null && !(Math.abs(cot - a.tan.v) < 1e-9)) tanList.push([$(cotTex), 'That is $\\frac{\\cos\\theta}{\\sin\\theta}$, run over rise. The slope of $OP$ is rise over run: $\\frac{\\sin\\theta}{\\cos\\theta}$.', cotTex]);
     if(!a.tan.undef && a.tan.v !== 0) tanList.push([$(neg(a.tan).tex), 'The sign is off. ' + (a.tan.v > 0 ? 'Here sine and cosine have the same sign, so their quotient is positive.' : 'Here sine and cosine have opposite signs, so their quotient is negative.'), neg(a.tan).tex]);
-    var pool = [[$('\\text{not defined}'), 'The slope is not defined only when $OP$ is vertical, where $\\cos\\theta = 0$. Here $\\cos\\theta = ' + a.cos.tex + '$.', 'none'],
+    var pool = [[$('\\text{undefined}'), 'The slope is undefined only when $OP$ is vertical, where $\\cos\\theta = 0$. Here $\\cos\\theta = ' + a.cos.tex + '$.', 'none'],
       [$('0'), 'The slope is $0$ only when $OP$ lies along the $x$-axis, where $\\sin\\theta = 0$.', '0'],
       [$('1'), 'A slope of $1$ means $\\sin\\theta = \\cos\\theta$, which happens only at $\\frac{\\pi}{4}$ and $\\frac{5\\pi}{4}$.', '1'],
       [$('-1'), 'A slope of $-1$ means $\\sin\\theta = -\\cos\\theta$, which happens only at $\\frac{3\\pi}{4}$ and $\\frac{7\\pi}{4}$.', '-1'],
@@ -198,7 +198,7 @@
     steps.push(choice('tan', 'Find $\\tan\\theta$, the slope of the radius $OP$.', tanList, '2.A'));
     var sol = ['$P = (\\cos\\theta, \\sin\\theta) = \\left(' + a.cos.tex + ', ' + a.sin.tex + '\\right)$' + (a.quadrant ? ', in ' + QNAME[a.quadrant] + ' (reference angle $' + refOf(a).tex + '$).' : ', on ' + a.axis + '.'),
       '$\\cos\\theta = ' + a.cos.tex + '$ and $\\sin\\theta = ' + a.sin.tex + '$.',
-      a.tan.undef ? '$OP$ is vertical, so $\\tan\\theta$ is not defined (no slope).' : '$\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta} = ' + a.tan.tex + '$, the slope of $OP$.'];
+      a.tan.undef ? '$OP$ is vertical, so $\\tan\\theta$ is undefined (no slope).' : '$\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta} = ' + a.tan.tex + '$, the slope of $OP$.'];
     return { text: text, steps: steps, solution: sol, given: { m: m }, fig: { kind: 'circle', m: m } };
   };
   /* An exact value as TeX, when it is one of the unit-circle values (or 0, 1, sqrt3); else 3 decimals. */

@@ -390,6 +390,9 @@
      1.2
     ],
     "mode": "exact",
+    "form": {
+     "type": "trig"
+    },
     "lhs": "\\tan(x + \\pi) =",
     "mistakes": [
      {

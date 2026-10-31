@@ -15,32 +15,7 @@
   "1.A",
   "1.B"
  ],
- "stimulus": {
-  "kind": "table",
-  "title": "Directions for this question",
-  "text": "Answer each part with exact values. Show the work that leads to your answers. No calculator.",
-  "table": {
-   "caption": "What each part asks for",
-   "cols": [
-    "Part",
-    "Task"
-   ],
-   "rows": [
-    [
-     "A",
-     "Solve an exponential and a logarithmic equation"
-    ],
-    [
-     "B",
-     "Rewrite as a single logarithm and as a single power"
-    ],
-    [
-     "C",
-     "Solve a logarithmic inequality"
-    ]
-   ]
-  }
- },
+ "intro": "No calculator. Give exact values and show the work that leads to each answer.",
  "parts": [
   {
    "label": "A(i)",

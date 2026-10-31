@@ -152,9 +152,9 @@
     "correct": "$h$ is defined only to the right of $x = -4$, and there the graph drops without bound.",
     "options": [
      "From the right, the outputs decrease without bound.",
-     "$h$ is not defined to the left of $-4$, so only the right-hand limit makes sense.",
+     "$h$ is undefined to the left of $-4$, so only the right-hand limit makes sense.",
      "The graph goes down, not up, as $x$ approaches $-4$ from the right.",
-     "$h$ is not defined for very negative $x$; $-4$ is where the asymptote is, not a limit value."
+     "$h$ is undefined for very negative $x$; $-4$ is where the asymptote is, not a limit value."
     ]
    }
   },

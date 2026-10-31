@@ -194,7 +194,10 @@
       "expr": "5(x + 1)^2 + 2",
       "why": "$5 = a \\cdot 1 + 2$, so $a = 3$, not $5$."
      }
-    ]
+    ],
+    "form": {
+     "type": "vertex"
+    }
    },
    "why": {
     "correct": "Vertex form $y = a(x - h)^2 + k$ with $(h, k) = (-1, 2)$: $y = a(x + 1)^2 + 2$. The point $(0, 5)$ gives $5 = a + 2$, so $a = 3$."

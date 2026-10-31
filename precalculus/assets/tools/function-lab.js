@@ -310,7 +310,7 @@
       FL.has(fam, p).forEach(function(a){ rows.push(['Horizontal asymptote', 'y = ' + num(a.y)]); });
       var endRow = fam === 'sine' ? 'No limit at either end: g keeps oscillating between ' + num(p.k - Math.abs(p.a)) + ' and ' + num(p.k + Math.abs(p.a)) + '.'
         : [['inf', E.pos], ['-inf', E.neg]].filter(function(e){ return e[1] !== null; }).map(function(e){ return limHtml(e[0], e[1]); }).join('<br>');
-      rows.push(['End behavior', endRow + (E.pos === null ? '<br><span class="fl-note">g is not defined for large x</span>' : E.neg === null ? '<br><span class="fl-note">g is not defined for very negative x</span>' : '')]);
+      rows.push(['End behavior', endRow + (E.pos === null ? '<br><span class="fl-note">g is undefined for large x</span>' : E.neg === null ? '<br><span class="fl-note">g is undefined for very negative x</span>' : '')]);
       rows.push(['Domain', domTex(FL.domain(fam, p))]);
       rows.push(['Range', domTex(FL.range(fam, p))]);
       return '<dl class="fl-feats">' + rows.map(function(r){ return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>';

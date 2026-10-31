@@ -587,8 +587,8 @@ ${tail({ depth, section: 'learn', extra: ['pcalc-toc.js', 'pcalc-book.js'], site
   const HOME_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   // The "Try a step" card: one real question from a free unit's bank, read at
   // build time; left out when that topic is not built (Phase 0 has no content).
-  // Phase 3 picks an item on a reader-report miss and sets it here.
-  const SAMPLE_Q = { topic: 'rates-of-change', id: 'pcalc-rates-of-change-1' };
+  // An item on a reader-report miss (Phase 3).
+  const SAMPLE_Q = { topic: 'rates-of-change', id: 'pcalc-rates-of-change-14' };   // Phase 3: the units of a rate, a reader-report miss
   const STREAK_SVG = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg>';
 
   function homePath(depth) {
@@ -796,16 +796,17 @@ ${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="st
     return null;
   };
   const frqs = Object.values(C.frq)
-    .filter(f => f && f.id && FRQ_TYPE_NAME[f.type] && (f.units || []).length && f.units.every(u => C.published.has(u)) && (f.topics || []).every(t => map.topicById(t)) && frqStimulus(f))
+    .filter(f => f && f.id && FRQ_TYPE_NAME[f.type] && (f.units || []).length && f.units.every(u => C.published.has(u)) && (f.topics || []).every(t => map.topicById(t)) && (frqStimulus(f) || (f.type === 'symbolic' && !f.stimulus)))
     .sort((a, b) => FRQ_ORDER.indexOf(a.type) - FRQ_ORDER.indexOf(b.type) || a.id.localeCompare(b.id));
-  const frqTitle = f => text(f.title || frqStimulus(f).title) || FRQ_TYPE_NAME[f.type];
+  const frqTitle = f => text(f.title || (frqStimulus(f) || {}).title || '') || FRQ_TYPE_NAME[f.type];
   const frqUnitLabel = f => f.units.map(u => { const c = chapterById(u); return c ? unitLabel(c) + (c.part === 'course' ? '' : `: ${c.title}`) : u; }).join(', ');
   function frqJson(f) {
     const s = frqStimulus(f);
     return {
       id: f.id, type: f.type, typeName: FRQ_TYPE_NAME[f.type], points: f.points, calc: !!f.calc, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices,
       ...(f.placeholder ? { placeholder: true } : {}),
-      stimulus: { kind: s.kind, title: s.title || '', html: stimulusBody(C, s, '') },
+      ...(f.intro ? { intro: f.intro } : {}),
+      ...(s ? { stimulus: { kind: s.kind, title: s.title || '', html: stimulusBody(C, s, '') } } : {}),
       parts: f.parts.map(p => ({ label: p.label, prompt: p.prompt, points: p.points, rubric: p.rubric, sample: p.sample, ...(p.space ? { space: p.space } : {}) })),
       ...(f.graphSpec ? { graphSpec: f.graphSpec } : {}),
     };
@@ -840,7 +841,8 @@ ${bodyOpen(` data-frq="${f.id}"`)}
   <article class="pcalc-frq" aria-labelledby="h-frq-q">
     <h2 id="h-frq-q" class="sr-only">The question</h2>
     <p class="pcalc-frq-print-head">Name: ______________________ &nbsp; Date: ____________ &nbsp; ${esc(title)} (${f.points} points)</p>
-    ${stimulusPanel(`frq-${f.id}`, s, stimulusBody(C, s, depth))}
+    ${f.intro ? `<p class="pcalc-fq-intro">${f.intro}</p>` : ''}
+    ${s ? stimulusPanel(`frq-${f.id}`, s, stimulusBody(C, s, depth)) : ''}
     <ol class="pcalc-frq-parts">${f.parts.map(p => `<li class="pcalc-frq-part" data-part="${esc(p.label)}"><p class="pcalc-frq-prompt"><b class="pcalc-frq-label">(${esc(p.label)})</b> ${p.prompt} <span class="pcalc-small">[${p.points} point${p.points === 1 ? '' : 's'}]</span></p>${partSpace(f, p) === 'graph' && g ? graphGrid(g) + lines(4) : lines(Math.max(5, p.points * 6))}</li>`).join('')}</ol>
   </article>
   <div id="app" class="pcalc-app-mount pcalc-frq-work" data-slug="frq-item" data-frq="${f.id}" data-unit="${esc(f.units[0])}" data-topic="${esc(f.topics[0] || '')}"><noscript><p>Writing your answer, the rubric and the sample answer need JavaScript. The question above prints without it.</p></noscript></div>

@@ -32,12 +32,16 @@ export function frame(data, slug, kind, map, errs) {
 }
 
 const BAD = /NaN|undefined|Infinity|\[object/;
+// "undefined" is the course's word for a value that does not exist ("tan θ is undefined", authoring guide);
+// a whole label "undefined" (a table cell, an option) is allowed too; a bare one in a sentence (a JS value printed
+// by mistake, "= undefined") is refused.
+const WORD_UNDEF = /\b(is|are|be|was|were|becomes|stays|remains?)\s+undefined\b|\\text\{undefined\}|>undefined</gi;
 export function stepsSound(p, w, errs) {
   const { M } = runtime();
   if (!Array.isArray(p.steps) || !p.steps.length) { errs.push(`${w}: no steps`); return; }
   if (!Array.isArray(p.solution) || !p.solution.length) errs.push(`${w}: no worked solution`);
   const text = [p.text, ...(p.solution || []), ...p.steps.flatMap(s => [s.label, s.hint || '', ...(s.options || []), ...(s.why || [])])].join(' ');
-  if (BAD.test(text)) errs.push(`${w}: a text prints NaN, undefined or Infinity`);
+  if (BAD.test(text.replace(WORD_UNDEF, ''))) errs.push(`${w}: a text prints NaN, undefined or Infinity`);
   const keys = new Set();
   for (const s of p.steps) {
     if (keys.has(s.key)) errs.push(`${w}: duplicate step key ${s.key}`); keys.add(s.key);
@@ -51,7 +55,7 @@ export function stepsSound(p, w, errs) {
       if (!M.diagnoseExpr(s.cell, key).ok) errs.push(`${w}: step ${s.key}: its own key "${E.answer}" is graded wrong`);
       for (const m of E.mistakes || []) {
         if (M.diagnoseExpr(s.cell, m.expr + (E.mode === 'constant' ? ' + C' : '')).ok) errs.push(`${w}: step ${s.key}: mistake "${m.expr}" would be graded right`);
-        if (!m.why || BAD.test(m.why)) errs.push(`${w}: step ${s.key}: a mistake has no usable explanation`);
+        if (!m.why || BAD.test(m.why.replace(WORD_UNDEF, ''))) errs.push(`${w}: step ${s.key}: a mistake has no usable explanation`);
       }
       continue;
     }
@@ -64,7 +68,7 @@ export function stepsSound(p, w, errs) {
       if (!M.diagnose(c, shown).ok) errs.push(`${w}: step ${s.key}: the answer rounded as shown (${shown}) grades wrong`);
       for (const m of c.mistakes) {
         if (M.diagnose({ ...c, mistakes: [] }, m.value).ok) errs.push(`${w}: step ${s.key}: mistake "${m.why.slice(0, 40)}…" would be graded right`);
-        if (!m.why || BAD.test(m.why)) errs.push(`${w}: step ${s.key}: a mistake has no usable explanation`);
+        if (!m.why || BAD.test(m.why.replace(WORD_UNDEF, ''))) errs.push(`${w}: step ${s.key}: a mistake has no usable explanation`);
       }
     }
     if (s.kind === 'choice') {

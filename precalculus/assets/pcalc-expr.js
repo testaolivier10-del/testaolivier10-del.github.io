@@ -257,8 +257,9 @@
   }
 
   /* ---------------------------------------------------------- TeX */
-  var TEXFN = { sin: '\\sin', cos: '\\cos', tan: '\\tan', sec: '\\sec', csc: '\\csc', cot: '\\cot', arcsin: '\\arcsin', arccos: '\\arccos',
-    arctan: '\\arctan', arcsec: '\\operatorname{arcsec}', arccsc: '\\operatorname{arccsc}', arccot: '\\operatorname{arccot}', ln: '\\ln', log: '\\log', exp: '\\exp' };
+  // Inverse trig is written as the exam writes it, \\sin^{-1} (docs/apprecalc-authoring-guide.md, "Math").
+  var TEXFN = { sin: '\\sin', cos: '\\cos', tan: '\\tan', sec: '\\sec', csc: '\\csc', cot: '\\cot', arcsin: '\\sin^{-1}', arccos: '\\cos^{-1}',
+    arctan: '\\tan^{-1}', arcsec: '\\sec^{-1}', arccsc: '\\csc^{-1}', arccot: '\\cot^{-1}', ln: '\\ln', log: '\\log', exp: '\\exp' };
   function numTex(v){
     if(Number.isInteger(v)) return String(v);
     var s = String(+v.toPrecision(12));
@@ -290,7 +291,7 @@
         return a + sep + b;
       }
       case 'pow': {
-        if(n.fnPow && n.a.k === 'fn' && TEXFN[n.a.f]) return TEXFN[n.a.f] + '^{' + toTex(unparen(n.b)) + '}' + wrap(toTex(n.a.a));
+        if(n.fnPow && n.a.k === 'fn' && TEXFN[n.a.f] && !/^arc/.test(n.a.f)) return TEXFN[n.a.f] + '^{' + toTex(unparen(n.b)) + '}' + wrap(toTex(n.a.a));
         if(n.a.k === 'const' && n.a.v === 'e') return 'e^{' + toTex(unparen(n.b)) + '}';
         var base = isAtom(n.a) && n.a.k !== 'fn' ? toTex(n.a) : wrap(toTex(unparen(n.a)));
         return base + '^{' + toTex(unparen(n.b)) + '}';
@@ -401,7 +402,7 @@
      optional `form` on an expr item (docs/apprecalc-architecture.md, "Forms")
      is checked on the parse tree of an answer that is already equal in
      value:
-       { type: 'log',      base?, scaled? }   one logarithm (ln, log, log_b), no log inside it
+       { type: 'log',      base?, scaled?, arg?: 'var' }   one logarithm (ln, log, log_b), no log inside it
        { type: 'power',    base?, scaled?, exponent?: 'var' | 'kx' }   one power b^E (or e^E, exp)
        { type: 'trig',     scaled? }          one of sin cos tan sec csc cot, no trig inside it
        { type: 'fraction' }                   one quotient, no quotient inside its top or bottom
@@ -493,7 +494,8 @@
     switch(form.type){
       case 'log':
         ok = (form.scaled ? scaledOf : function(m, c){ return c(strip(m)); })(n, function(m){
-          return isLog(m) && baseMatches(logBaseOf(m), form.base) && !some(logArg(m), isLog);
+          return isLog(m) && baseMatches(logBaseOf(m), form.base) && !some(logArg(m), isLog) &&
+            (form.arg !== 'var' || strip(logArg(m)).k === 'var' && strip(logArg(m)).v === v);
         });
         break;
       case 'power':
@@ -559,7 +561,7 @@
     var notes = [], mistake = null, correct = !!res.equal, formMiss = null;
     if(correct && E.form){
       formMiss = formProblem(parse(String(typed), { vars: vars, allowC: mode === 'constant' }), E.form, vars);
-      if(formMiss){ correct = false; notes.push('Equal in value, but not in the form the question asks for: write it as ' + formMiss + '.'); }
+      if(formMiss){ correct = false; notes.push('Equal in value, but not in the form the question asks for: it asks for ' + formMiss + '.'); }
     }
     var needC = mode === 'constant' && E.needC !== false;
     if(correct && needC && !res.hasC){ correct = false; notes.push('Add + C: an indefinite integral is a whole family of antiderivatives, and the exam takes the point without it.'); }

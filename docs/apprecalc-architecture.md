@@ -59,6 +59,32 @@ names the log rule, `res.domainOnly`) and right on [0.1, 3]; `arcsin(x)` keys ar
 `domain` to the interval the question means. Fewer than 8 defined points is `tooFew` (refused by the content
 check). The seed is `20270511`.
 
+**Forms** (`expr.form`, `formProblem` in `pcalc-expr.js`). Value grading accepts any equal expression, so "write as
+a single logarithm" would accept the starting expression. An item whose stem asks for a form carries `form`; an
+answer equal in value but not in that form is graded wrong with the note "Equal in value, but not in the form the
+question asks for: it asks for <phrase>." (`res.formMiss`). The form is checked on the parse tree:
+
+| `type` | The answer is | Options |
+|---|---|---|
+| `log` | one logarithm (`ln`, `log`, `log_b`) with no log inside it | `base` (2, 10, `"e"`), `scaled` (a plain constant factor allowed: `c·L`, `L/c`, `-L`), `arg: "var"` (the log of the variable alone) |
+| `power` | one power `b^E` (or `e^E`, `exp`) with a number, `e` or variable base | `base` (a number or a variable name), `scaled`, `exponent: "var"` (exactly the variable) or `"kx"` (a constant times it) |
+| `trig` | one of sin, cos, tan, sec, csc, cot with no trig inside it | `scaled` |
+| `fraction` | one quotient with no quotient in its top or bottom | |
+| `expanded` | a polynomial multiplied out, like terms combined (no brackets, no division by a variable) | |
+| `terms` | a sum of exactly `count` terms | `count` |
+| `vertex` | `a(x - h)^2 + k` | |
+| `only` | every trig function is one of `fns`, applied to the variable itself | `fns: ["cos"]` |
+
+`say` overrides the phrase (plain words, no `$`). A plain constant is numbers and arithmetic only (`ln 4` is not
+one). The content check (`FORM_STEM_RE`) requires `form` on a stem that asks for one ("single logarithm", "in the
+form", "as a power of", "vertex form", "multiply out", "simplified expression", "as a constant times", "into a sum
+of", "using $\cos x$ only"), and refuses a key that lacks its own form. Trainers pass `form` through
+`ApPrecalcMath.exprCell(answer, { form })`.
+
+**Inverse trig** is written `\sin^{-1}` everywhere: `ApPrecalcExpr.toTex` renders `arcsin(x)` as `\sin^{-1}(x)` (keys
+and the live preview), and the content check refuses `\arcsin` in authored text unless the same text has the
+`^{-1}` form (naming the other notation) or it is a rubric's `accept` line.
+
 ## Content formats
 
 As AP® Calculus AB (lessons, notes, glossary, descriptions, pages, published, questions with `single`, `multi`,
@@ -78,8 +104,10 @@ As AP® Calculus AB (lessons, notes, glossary, descriptions, pages, published, q
 
 ### FRQ: `data/frq/<id>.json`
 
-`{ id, type, title, calc, points: 6, units, topics, practices, stimulus, parts: [{ label, prompt, points,
-rubric: [{ point, accept }], sample, space? }], graphSpec? }`. Types (`ApPrecalcFrq.TYPES`, `FRQ_TYPE_NAME`):
+`{ id, type, title, calc, points: 6, units, topics, practices, stimulus?, intro?, parts: [{ label, prompt, points,
+rubric: [{ point, accept }], sample, space? }], graphSpec? }`. `stimulus` is required except for `symbolic` (Q4 has
+none on the exam); an FRQ without one needs a `title`. `intro` is an optional directions line shown above the parts
+(on the FRQ page, in the exam and in the printed booklet); a "Directions" table as a stimulus is refused. Types (`ApPrecalcFrq.TYPES`, `FRQ_TYPE_NAME`):
 
 | Type | Question | Part | `calc` |
 |---|---|---|---|
@@ -112,7 +140,7 @@ As AP® Calculus AB (`--check`, `--out <dir>`, `APPRECALC_PUBLISHED=unit-1`, `AP
 - Free lessons: Unit 1 and every "Algebra you need" topic (`FREE_UNITS`, `isFreeTopic`), the same as
   `freeChapters` in `assets/premium.js` (a test compares them).
 - Home: "AP® Precalculus, every function in motion.", forest green part colours, the unit-circle icon, ranks from
-  "Function Explorer". `SAMPLE_Q` is `pcalc-rates-of-change-1` (left out until it exists; Phase 3 picks it).
+  "Function Explorer". `SAMPLE_Q` is `pcalc-rates-of-change-14` (the units of a rate; shown once Unit 1 is published).
 - No `score-calculator.html` (entry pages: formula sheet and unit tests only; no unit test for Unit 4).
 - **Tools** build only when `data/tools/<slug>.json` exists and the tool's topic is published (as AB).
 
@@ -120,7 +148,7 @@ As AP® Calculus AB (`--check`, `--out <dir>`, `APPRECALC_PUBLISHED=unit-1`, `AP
 
 | File | What changed |
 |---|---|
-| `pcalc-expr.js` | Domain-aware notes (`domainOnly`: a log or root rule), precalculus wording, seed 20270511. |
+| `pcalc-expr.js` | Domain-aware notes (`domainOnly`: a log or root rule), precalculus wording, seed 20270511; `form` rules (`formProblem`, "Forms"); inverse trig rendered `\sin^{-1}`. |
 | `pcalc-questions.js` | `specific(S, picks)` (the builder grader); precalculus slip notes (no antiderivative). |
 | `pages/exams.js` | `MCQ_PARTS` (A: 29 in 65 min, no calculator; B: 13 in 40 min, calculator), `FRQ_PARTS` (A: Q1 + Q2 in 35 min, calculator; B: Q3 + Q4 in 35 min, no calculator), 6 points each; a part draws one FRQ of each of its types in exam order (`pickFrqs`). **No composite, no band**: results show the two sections apart and say they are 62.5% and 37.5% of the exam. Exam units only (`!u.beyond`). |
 | `pages/cram.js` | Default exam date 2027-05-11; 105/42 min pace; Unit 4 left out of plans; "Make it specific" prompts on study days. |
@@ -158,13 +186,19 @@ scripts/test/apprecalc-tool-<slug>.test.mjs     its test (Phase 0: the scaffold 
 | `polar-graphs` | `polar-curves` (3.14) | simulator | T4 |
 | `vectors-matrices` | `parametric-functions` (4.1) | simulator | T4 |
 
+`ApPrecalcPlot` adds two spec options to AB's: `ticks: false` (an unscaled graph, as Q3 draws them: axes and axis
+labels, no tick marks, no numbers, no grid unless `grid: true`; `xTicks: false` or `yTicks: false` for one axis)
+and `yLog: true` (a semi-log plot: `y: [a, b]` with `0 < a < b` in data units, ticks at powers of 10 with a light
+grid between, the x-axis along the bottom, lines by `through`, no slope field; `frame()` maps data units through
+log10 so `draggable` works). Existing figures were not converted (needs-author `plot-log-axis`, `unscaled-graphs`).
+
 `ApPrecalcTools`, `ApPrecalcMath` and `ApPrecalcPlot` are the AB framework renamed (`docs/apcalc-architecture.md`,
 "Tools": `drill`, `expr` steps, `onTry` drawing, `draggable`, `loop`). The calculus helpers in `ApPrecalcMath`
 (`deriv`, `integral`, `riemann`) stay for numerics (a model may use `root`, `roots`, `extrema` to find zeros and
 turning points) but no trainer teaches them. `_shared.mjs` runs the browser code in a vm so validators recompute
 every number with the code students run; `SKILLS` is the precalculus skill list.
 
-## Practice exams: `data/exams/forms.json`, `items.json` (Phase 3)
+## Practice exams: `data/exams/forms.json`, `items.json` (built in Phase 3, spec decision 19)
 
 Checked by `checkForms` (`scripts/lib/apprecalc-exams.mjs`): at least two forms; Section I is 42 four-option
 questions, Part A's 29 no-calculator before Part B's 13 calculator ones; a block is one set or one question and

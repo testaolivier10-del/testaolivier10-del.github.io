@@ -16,36 +16,7 @@
   "1.B",
   "1.C"
  ],
- "stimulus": {
-  "kind": "table",
-  "title": "Inverse trigonometric values and a single tangent",
-  "text": "<p>No calculator. Give exact values, use radians, and show the work for each part. Only real solutions are asked for.</p>",
-  "table": {
-   "caption": "The expressions and equations in this question, by part",
-   "cols": [
-    "Part",
-    "Expression or equation"
-   ],
-   "rows": [
-    [
-     "A(i)",
-     "$\\tan^{-1}\\left(-\\sqrt{3}\\right)$"
-    ],
-    [
-     "A(ii)",
-     "$\\sin^{-1}\\left(\\sin\\frac{5\\pi}{4}\\right)$"
-    ],
-    [
-     "B",
-     "$h(x) = \\frac{\\sin(2x)}{1 + \\cos(2x)}$"
-    ],
-    [
-     "C",
-     "$h(x) = \\sqrt{3}$ for $0 \\le x < 2\\pi$"
-    ]
-   ]
-  }
- },
+ "intro": "No calculator. Give exact values, use radians, and show the work for each part. Only real solutions are asked for.",
  "parts": [
   {
    "label": "A(i)",

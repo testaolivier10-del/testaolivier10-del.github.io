@@ -16,36 +16,7 @@
   "1.B",
   "1.C"
  ],
- "stimulus": {
-  "kind": "table",
-  "title": "Inverse cosine and a single sine term",
-  "text": "<p>No calculator. Give exact values, use radians, and show the work for each part. Only real solutions are asked for.</p>",
-  "table": {
-   "caption": "The expressions and equations in this question, by part",
-   "cols": [
-    "Part",
-    "Expression or equation"
-   ],
-   "rows": [
-    [
-     "A(i)",
-     "$\\sin\\left(\\cos^{-1}\\left(-\\frac{3}{5}\\right)\\right)$"
-    ],
-    [
-     "A(ii)",
-     "$\\cos^{-1}(x) = \\frac{5\\pi}{6}$"
-    ],
-    [
-     "B",
-     "$k(x) = \\sin\\left(x + \\frac{\\pi}{6}\\right) + \\sin\\left(x - \\frac{\\pi}{6}\\right)$"
-    ],
-    [
-     "C",
-     "$k(x) = \\frac{3}{2}$ for $0 \\le x < 2\\pi$"
-    ]
-   ]
-  }
- },
+ "intro": "No calculator. Give exact values, use radians, and show the work for each part. Only real solutions are asked for.",
  "parts": [
   {
    "label": "A(i)",

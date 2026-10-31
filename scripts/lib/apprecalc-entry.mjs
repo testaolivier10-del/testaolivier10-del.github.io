@@ -68,15 +68,78 @@ export function unitSample(ch, ctx) {
    trainers?]; the trainers (tools/<slug>.html) that practice it are linked
    only when live. Phase 3 writes the rows (spec section 5); until then the
    page shows its habits and says the guide arrives with the first unit.
-   Groups planned: rates of change; polynomials and rational functions;
+   Groups: rates of change; polynomials and rational functions;
    transformations; exponentials and logarithms; the unit circle and
-   sinusoids; identities; polar coordinates. Unit 4 rows, if any, say
-   "beyond the exam". */
+   sinusoids; identities; polar coordinates. Units 1-3 only (Unit 4 is
+   beyond the exam). A test holds the list to the formulas the course
+   teaches (scripts/test/apprecalc-exams.test.mjs). */
 const D = String.raw;
-void D;
-export const EQ = [];
-// Easy to forget, and each one costs points every year (framework.md section 7). Phase 3.
-export const NOT_ON = [];
+export const EQ = [
+  { id: 'rates', h: 'Rates of change', rows: [
+    [D`\frac{f(b) - f(a)}{b - a}`, 'The average rate of change of $f$ on $[a, b]$: the slope of the secant line through $(a, f(a))$ and $(b, f(b))$.', 'Any rate over an interval, from a formula, a table or a graph. Name the function and the interval, and give the units (output units per input unit).', 'Unit 1', 'rates-of-change', ['rate-of-change']],
+    [D`y = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)`, 'The secant line through $(a, f(a))$ and $(b, f(b))$, in point-slope form.', 'To estimate $f(x)$ for $x$ between $a$ and $b$: the estimate is a point on this line. Concave down on $[a, b]$ gives an underestimate, concave up an overestimate.', 'Unit 1', 'linear-quadratic-rates', ['rate-of-change']],
+    [D`\text{rates of change increasing} \Rightarrow \text{concave up}`, 'Concavity from average rates over consecutive equal-length intervals; rates decreasing means concave down.', 'Reading concavity from a table or a graph. Say "the rate of change of $f$ is increasing", not a calculus phrase.', 'Unit 1', 'linear-quadratic-rates', ['rate-of-change']],
+    [D`\text{constant second differences} \Rightarrow \text{quadratic}`, 'Over equal input steps, constant differences of the outputs mean linear; constant differences of those differences mean quadratic.', 'Choosing or justifying a linear or quadratic model from a table: name the equal steps and give the differences.', 'Unit 1', 'linear-quadratic-rates', ['function-lab']],
+  ] },
+  { id: 'polynomials', h: 'Polynomial and rational functions', rows: [
+    [D`(x - c)^k`, 'A factor that makes $c$ a zero of multiplicity $k$. Even $k$: the graph touches the $x$-axis at $c$; odd $k$: it crosses.', 'Sketching a polynomial from its factors, or reading the factors from a graph.', 'Unit 1', 'complex-zeros', ['poly-rational']],
+    [D`a + bi \ \text{and}\ a - bi`, 'Complex zeros of a polynomial with real coefficients come in conjugate pairs; a polynomial of degree $n$ has $n$ zeros, counted with multiplicity.', 'Finding every zero, or the least degree a polynomial can have from the zeros you are given.', 'Unit 1', 'complex-zeros'],
+    [D`f(-x) = f(x), \quad f(-x) = -f(x)`, 'Even functions (the first: symmetric about the $y$-axis) and odd functions (the second: symmetric about the origin).', 'Symmetry questions, and filling in a graph or table from half of it.', 'Unit 1', 'complex-zeros', ['function-lab']],
+    [D`\lim_{x \to \infty} p(x) \ \text{from}\ a_n x^n`, 'End behavior of a polynomial comes from its leading term $a_n x^n$: the sign of $a_n$ and whether $n$ is even or odd.', 'Writing end behavior in limit notation, for both $x \\to \\infty$ and $x \\to -\\infty$.', 'Unit 1', 'polynomial-end-behavior', ['function-lab']],
+    [D`\lim_{x \to \infty} \frac{ax^n + \cdots}{bx^n + \cdots} = \frac{a}{b}`, 'Same degree on top and bottom: a horizontal asymptote at $y = \\frac{a}{b}$. Lower degree on top: $y = 0$. Higher on top: no horizontal asymptote (one more gives a slant asymptote).', 'End behavior of a rational function, written as a limit.', 'Unit 1', 'rational-end-behavior', ['poly-rational']],
+    [D`\lim_{x \to c^-} r(x) = \pm\infty, \quad \lim_{x \to c^+} r(x) = \pm\infty`, 'A vertical asymptote at $x = c$, where the denominator is 0 and the numerator is not (after cancelling common factors).', 'Behavior near a vertical asymptote: give both one-sided limits, each with its sign.', 'Unit 1', 'vertical-asymptotes', ['poly-rational']],
+    [D`\frac{(x - c)g(x)}{(x - c)h(x)}`, 'A factor $x - c$ that cancels completely leaves a hole at $x = c$, at height $\\frac{g(c)}{h(c)}$, not a vertical asymptote.', 'Telling a hole from an asymptote: factor first, then use the value the outputs approach.', 'Unit 1', 'rational-holes', ['poly-rational']],
+  ] },
+  { id: 'transformations', h: 'Transformations and models', rows: [
+    [D`g(x) = a f\left(b(x - h)\right) + k`, 'The graph of $f$ stretched vertically by $a$, horizontally by $\\frac{1}{b}$, shifted right $h$ and up $k$. A negative $a$ reflects over the $x$-axis; a negative $b$ over the $y$-axis.', 'Building a function from a parent graph, or reading the changes from a formula. Factor $b$ out before reading the shift.', 'Unit 1', 'transformations', ['function-lab']],
+    [D`\text{residual} = \text{actual} - \text{predicted}`, 'A positive residual means the model predicted too little; a negative one, too much.', 'Judging a model: residuals scattered around 0 with no pattern mean the model is appropriate.', 'Unit 2', 'model-validation', ['regression-lab']],
+  ] },
+  { id: 'explog', h: 'Exponential and logarithmic functions', rows: [
+    [D`a_n = a_0 + dn, \quad g_n = g_0 r^n`, 'Arithmetic sequences add a common difference $d$; geometric sequences multiply by a common ratio $r$.', 'Linear and exponential patterns at whole-number steps; a linear function is the continuous arithmetic case, an exponential function the geometric one.', 'Unit 2', 'sequences', ['exp-log-lab']],
+    [D`f(x) = ab^x`, 'An exponential function: initial value $a$, growth factor $b$ (growth when $b > 1$, decay when $0 < b < 1$). Over equal input steps the outputs have a constant ratio.', 'Justifying an exponential model: equal-length input intervals and proportional outputs, with the numbers.', 'Unit 2', 'exponential-functions', ['exp-log-lab']],
+    [D`b^m b^n = b^{m + n}, \quad \left(b^m\right)^n = b^{mn}, \quad b^{-n} = \frac{1}{b^n}`, 'The exponent rules for products, powers and negative exponents.', 'Rewriting exponential expressions, such as $2^{x + 3} = 8 \\cdot 2^x$, and comparing growth over different time units.', 'Unit 2', 'exponential-manipulation', ['symbolic-steps']],
+    [D`f(t) = a(1 + r)^t, \quad f(t) = ae^{kt}`, 'Exponential models with a growth rate $r$ per unit of time, and with the natural base $e$.', 'Models from a percent change or from two data points; store the constants, never round partway.', 'Unit 2', 'exponential-modeling', ['regression-lab']],
+    [D`(f \circ g)(x) = f(g(x))`, 'Composition: $g$ acts first, then $f$. Usually $f(g(x)) \\ne g(f(x))$.', 'Composite values from tables or graphs: show the inner value, then the outer.', 'Unit 2', 'composition', ['function-lab']],
+    [D`f\left(f^{-1}(x)\right) = x`, 'An inverse undoes a function; its graph is the reflection over $y = x$. A function has an inverse only if no two inputs share an output.', 'Finding an inverse (swap $x$ and $y$, then solve), and justifying invertibility with specific values.', 'Unit 2', 'inverse-functions', ['function-lab']],
+    [D`\log_b c = a \Leftrightarrow b^a = c`, 'The definition of a logarithm, for $b > 0$, $b \\ne 1$ and $c > 0$. $\\ln$ is $\\log_e$; $\\log$ alone is $\\log_{10}$.', 'Evaluating logarithms exactly and moving between exponential and logarithmic forms.', 'Unit 2', 'logarithmic-expressions', ['exp-log-lab']],
+    [D`\log_b\left(b^x\right) = x, \quad b^{\log_b x} = x`, 'Exponential and logarithmic functions with the same base are inverses.', 'Undoing one with the other when solving equations.', 'Unit 2', 'exp-log-inverses', ['exp-log-lab']],
+    [D`\log_b(mn) = \log_b m + \log_b n, \quad \log_b\frac{m}{n} = \log_b m - \log_b n`, 'The product and quotient rules for logarithms, for $m > 0$ and $n > 0$.', 'Combining into a single logarithm or expanding one. There is no rule for $\\log_b(m + n)$.', 'Unit 2', 'logarithmic-manipulation', ['symbolic-steps']],
+    [D`\log_b\left(m^k\right) = k\log_b m, \quad \log_b x = \frac{\ln x}{\ln b}`, 'The power rule and the change of base rule.', 'Moving a coefficient into an exponent before combining, and evaluating any logarithm on a calculator.', 'Unit 2', 'logarithmic-manipulation', ['symbolic-steps']],
+    [D`\log y = (\log b)x + \log a`, 'Taking the logarithm of $y = ab^x$ gives a line: on a semi-log plot exponential data look linear, with slope $\\log b$.', 'Recognizing exponential data on a semi-log plot and reading $a$ and $b$ from the line.', 'Unit 2', 'semi-log-plots', ['exp-log-lab']],
+  ] },
+  { id: 'trig', h: 'The unit circle and sinusoids', rows: [
+    [D`\sin\theta = \frac{y}{r}, \quad \cos\theta = \frac{x}{r}, \quad \tan\theta = \frac{y}{x}`, 'Sine, cosine and tangent of an angle in standard position whose terminal ray passes through $(x, y)$, with $r = \\sqrt{x^2 + y^2}$. On the unit circle, $(\\cos\\theta, \\sin\\theta)$.', 'Values from a point or the unit circle; tangent is the slope of the terminal ray.', 'Unit 3', 'sine-cosine-tangent', ['unit-circle']],
+    [D`\pi \ \text{radians} = 180 \ \text{degrees}`, 'Converting between radians and degrees. The exam works in radians.', 'Every angle: set the calculator to radian mode.', 'Unit 3', 'sine-cosine-tangent', ['unit-circle']],
+    [D`\sin\frac{\pi}{6} = \frac{1}{2}, \quad \sin\frac{\pi}{4} = \frac{\sqrt{2}}{2}, \quad \sin\frac{\pi}{3} = \frac{\sqrt{3}}{2}`, 'The special values; cosine has the same values in the opposite order ($\\cos\\frac{\\pi}{3} = \\frac{1}{2}$).', 'Exact values without a calculator, with the sign set by the quadrant.', 'Unit 3', 'sine-cosine-values', ['unit-circle']],
+    [D`f(\theta) = a\sin\left(b(\theta + c)\right) + d`, 'A sinusoid: amplitude $|a|$, period $\\frac{2\\pi}{|b|}$, midline $y = d$, shifted left by $c$ (right if $c < 0$).', 'Periodic models: $b$ from the period, $d$ from the midline, $a$ from half the distance from maximum to minimum.', 'Unit 3', 'sinusoidal-transformations', ['sinusoid-builder']],
+    [D`\tan x = \frac{\sin x}{\cos x}`, 'Tangent has period $\\pi$ and vertical asymptotes where $\\cos x = 0$, at $x = \\frac{\\pi}{2} + k\\pi$.', 'Graphs and values of tangent, and rewriting to a single function.', 'Unit 3', 'tangent-function', ['unit-circle']],
+    [D`\sin^{-1}x, \ \tan^{-1}x \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right], \quad \cos^{-1}x \in [0, \pi]`, 'The ranges of the inverse trigonometric functions. $\\sin^{-1}x$ is not $\\frac{1}{\\sin x}$.', 'Inverse trig values and the first solution of a trig equation; use symmetry for the others.', 'Unit 3', 'inverse-trig', ['symbolic-steps']],
+    [D`\sec x = \frac{1}{\cos x}, \quad \csc x = \frac{1}{\sin x}, \quad \cot x = \frac{1}{\tan x}`, 'The reciprocal functions, undefined where the function in the denominator is 0.', 'Rewriting expressions in sine and cosine, and finding their asymptotes.', 'Unit 3', 'sec-csc-cot', ['symbolic-steps']],
+  ] },
+  { id: 'identities', h: 'Identities and equations', rows: [
+    [D`\sin^2 x + \cos^2 x = 1`, 'The Pythagorean identity. Dividing by $\\cos^2 x$ gives $1 + \\tan^2 x = \\sec^2 x$; by $\\sin^2 x$, $1 + \\cot^2 x = \\csc^2 x$.', 'Rewriting to one function, and finding $\\cos x$ from $\\sin x$ (the sign from the quadrant).', 'Unit 3', 'trig-identities', ['symbolic-steps']],
+    [D`\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta`, 'The sum and difference identities for sine.', 'Exact values such as $\\sin\\frac{7\\pi}{12}$, and rewriting a shifted sine.', 'Unit 3', 'trig-identities', ['symbolic-steps']],
+    [D`\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta`, 'The sum and difference identities for cosine; the sign in the middle flips.', 'Exact values and rewriting, as for sine.', 'Unit 3', 'trig-identities', ['symbolic-steps']],
+    [D`\sin(2x) = 2\sin x\cos x, \quad \cos(2x) = \cos^2 x - \sin^2 x`, 'The double-angle identities; also $\\cos(2x) = 2\\cos^2 x - 1 = 1 - 2\\sin^2 x$.', 'Pick the form of $\\cos(2x)$ that cancels what is next to it, and solve equations with $2x$ inside.', 'Unit 3', 'trig-identities', ['symbolic-steps']],
+    [D`x = x_0 + 2k\pi`, 'Sine and cosine repeat every $2\\pi$ (tangent every $\\pi$), so one solution gives infinitely many.', 'Every solution in an interval: find the solutions in one period, then add periods while they stay in the interval.', 'Unit 3', 'trig-equations', ['symbolic-steps']],
+  ] },
+  { id: 'polar', h: 'Polar coordinates', rows: [
+    [D`x = r\cos\theta, \quad y = r\sin\theta, \quad r^2 = x^2 + y^2`, 'Converting between polar $(r, \\theta)$ and rectangular $(x, y)$ coordinates.', 'Plotting polar points and rewriting equations; check the quadrant when you find $\\theta$ from $\\tan\\theta = \\frac{y}{x}$.', 'Unit 3', 'polar-coordinates', ['polar-graphs']],
+    [D`a + bi = r(\cos\theta + i\sin\theta)`, 'The polar form of a complex number, with $r = \\sqrt{a^2 + b^2}$.', 'Moving a complex number between rectangular and polar form.', 'Unit 3', 'polar-coordinates', ['polar-graphs']],
+    [D`\frac{r(\theta_2) - r(\theta_1)}{\theta_2 - \theta_1}`, 'The average rate of change of $r$ with respect to $\\theta$. If $r > 0$ and $r$ is increasing, the curve moves away from the origin.', 'How the distance from the origin changes as $\\theta$ turns; the units are distance per radian.', 'Unit 3', 'polar-rates', ['polar-graphs']],
+  ] },
+];
+// Easy to forget, and each one costs points every year (framework.md section 7): [rule, why, topic].
+export const NOT_ON = [
+  ['Three decimal places, never partway', 'Store every constant and intermediate value in the calculator and round only the final answer. A model built from rounded constants often misses the third decimal place.', 'model-construction'],
+  ['Every solution in the interval', 'A calculator or inverse function gives one solution. Widen the window, use symmetry or add a period, and list every solution in the stated interval, with no extras.', 'trig-equations'],
+  ['$\\sin^{-1} x$ is not $\\frac{1}{\\sin x}$', 'The $-1$ means the inverse function, whose outputs are in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$. The reciprocal is $\\csc x$.', 'inverse-trig'],
+  ['$\\log_b(m + n)$ has no rule', 'Only products, quotients and powers inside a logarithm can be split. $\\ln(x^2) = 2\\ln x$ only for $x > 0$.', 'logarithmic-manipulation'],
+  ['$e^x$ is never 0 or negative', 'In an equation quadratic in $e^x$, reject the root where $e^x$ would be 0 or negative, and say why.', 'exp-log-equations'],
+  ['$b$ is not the period', 'The period of $\\sin(bx)$ is $\\frac{2\\pi}{b}$, so $b = \\frac{2\\pi}{\\text{period}}$. Factor $b$ out before reading the phase shift.', 'sinusoidal-transformations'],
+  ['Both sides of a vertical asymptote', 'Write each one-sided limit with its sign: $\\lim_{x \\to c^-}$ and $\\lim_{x \\to c^+}$.', 'vertical-asymptotes'],
+  ['Invertible needs values', 'Show two inputs with the same output (not invertible), or explain why every output comes from one input. "Fails the horizontal line test" alone earns nothing.', 'inverse-functions'],
+];
 
 export function entryPages(ctx) {
   const { map, C, put, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL, courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools } = ctx;

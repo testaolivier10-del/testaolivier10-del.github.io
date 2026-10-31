@@ -358,6 +358,7 @@ button.pcalc-fc-face:hover{border-color:var(--accent);}
 .pcalc-fq-card-k{font:900 11.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--cink);}
 .pcalc-fq-missing{padding:4px 2px;}
 .pcalc-fq-k{font:900 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--cink);margin:0 0 8px;}
+.pcalc-fq-intro{margin:0 0 10px;padding:10px 14px;border-left:4px solid var(--cink);background:var(--ctint);border-radius:0 10px 10px 0;line-height:1.55;}
 .pcalc-fq-parts,.pcalc-frq-parts{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:14px;}
 .pcalc-fq-prompt,.pcalc-frq-prompt{margin:0 0 6px;font-weight:700;line-height:1.55;}
 .pcalc-fq-alabel{display:block;font:800 13px var(--font-ui);margin:0 0 4px;color:var(--ink);}
