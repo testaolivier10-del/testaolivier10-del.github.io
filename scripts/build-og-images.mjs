@@ -164,7 +164,7 @@ const CARDS = [
     out: 'precalculus/assets/og-image.png',
     badge: 'Free notes',
     brand: 'LevlPrep',
-    title: 'Precalculus for the May 2027 exam, every function in motion',
+    title: 'Precalculus for May 2027, every function in motion',
     sub: 'Free notes for every topic, functions you can drag and watch, and the four free-response questions drilled part by part.',
   },
 ];

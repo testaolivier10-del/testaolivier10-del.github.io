@@ -1,1 +1,52 @@
-[]
+[
+ {
+  "slug": "function-lab",
+  "title": "Function Lab",
+  "file": "apprecalc/function-lab.svg"
+ },
+ {
+  "slug": "rate-of-change",
+  "title": "Rate of Change",
+  "file": "apprecalc/rate-of-change.svg"
+ },
+ {
+  "slug": "poly-rational",
+  "title": "Polynomials and Rational Functions",
+  "file": "apprecalc/poly-rational.svg"
+ },
+ {
+  "slug": "exp-log-lab",
+  "title": "Exponential and Log Lab",
+  "file": "apprecalc/exp-log-lab.svg"
+ },
+ {
+  "slug": "regression-lab",
+  "title": "Regression Lab",
+  "file": "apprecalc/regression-lab.svg"
+ },
+ {
+  "slug": "unit-circle",
+  "title": "Unit Circle",
+  "file": "apprecalc/unit-circle.svg"
+ },
+ {
+  "slug": "sinusoid-builder",
+  "title": "Sinusoid Builder",
+  "file": "apprecalc/sinusoid-builder.svg"
+ },
+ {
+  "slug": "symbolic-steps",
+  "title": "Symbolic Steps",
+  "file": "apprecalc/symbolic-steps.svg"
+ },
+ {
+  "slug": "polar-graphs",
+  "title": "Polar Graphs",
+  "file": "apprecalc/polar-graphs.svg"
+ },
+ {
+  "slug": "vectors-matrices",
+  "title": "Vectors and Matrices",
+  "file": "apprecalc/vectors-matrices.svg"
+ }
+]
