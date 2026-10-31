@@ -113,7 +113,7 @@
     "options": [
      "Both roots of $y^2 + y - 6 = 0$.",
      "The signs are flipped; check $(1, -2)$: $1 - 2 + 4 = 3$.",
-     "The quadratic has a second root, $y = -3$; the curve has two points above and below $x = 1$.",
+     "The quadratic has a second root, $y = -3$: the point $(1, -3)$ is on the curve too.",
      "$(1, 3)$ gives $13$; the second root is $-3$."
     ]
    }

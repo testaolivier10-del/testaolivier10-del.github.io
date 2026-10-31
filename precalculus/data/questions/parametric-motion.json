@@ -513,13 +513,13 @@
    "q": "Put the steps for describing a particle's motion from $x(t)$ and $y(t)$ in order.",
    "type": "order",
    "options": [
-    "Find where $x(t)$ increases and where it decreases",
-    "Find where $y(t)$ increases and where it decreases",
-    "Split the time interval at each turning point of $x(t)$ or $y(t)$",
+    "Find where $x(t)$ and where $y(t)$ increase and decrease",
+    "Mark every time at which $x(t)$ or $y(t)$ turns around",
+    "Split the time interval at those times",
     "On each piece, combine right or left with up or down"
    ],
    "why": {
-    "correct": "Read each coordinate separately, cut time at every turnaround, then describe each piece with one horizontal and one vertical direction."
+    "correct": "Read each coordinate, mark every turnaround, cut time there, then describe each piece with one horizontal and one vertical direction."
    }
   }
  ]

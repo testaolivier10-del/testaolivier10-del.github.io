@@ -195,7 +195,7 @@
      },
      {
       "value": -0.184,
-      "why": "This drops $b$ from $25a + 5b = 6.9$. Eliminate $b$ using both equations first."
+      "why": "That divides $-4.6$ by $25$. After eliminating $b$ the equation is $15a = -4.6$, so divide by $15$."
      }
     ]
    },

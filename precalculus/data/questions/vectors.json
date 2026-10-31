@@ -133,7 +133,7 @@
      },
      {
       "value": 7,
-      "why": "The dot product multiplies matching components, then adds: $-4 + 3$."
+      "why": "$7$ drops the sign of $-1$: $4(-1) = -4$, so the sum is $-4 + 3$."
      }
     ]
    },
@@ -268,7 +268,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "The actual vector $\\left\\langle 6\\sqrt{3}, 2 \\right\\rangle$ has the same east part as the heading but a smaller north part ($2$ instead of $6$), so it is less steep: still north of east, below $30^circ$.",
+    "correct": "The actual vector $\\left\\langle 6\\sqrt{3}, 2 \\right\\rangle$ has the same east part as the heading but a smaller north part ($2$ instead of $6$), so it is less steep: still north of east, below $30^\\circ$.",
     "options": [
      "Same east part, smaller north part.",
      "The current pushes south, so the path tilts less to the north.",

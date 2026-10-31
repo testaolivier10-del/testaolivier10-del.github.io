@@ -340,7 +340,7 @@
     "No: $x = 0$ gives $y^2 = -9$, which has no real solution",
     "Yes, at $(0, 3)$ and $(0, -3)$",
     "Yes, at the origin, where the asymptotes meet",
-    "No: the hyperbola has no points with $x$ near $0$ because $a = 2$"
+    "No: a hyperbola never crosses either axis"
    ],
    "correct": 0,
    "why": {
@@ -349,7 +349,7 @@
      "$y^2 = -9$ has no real solution.",
      "$(0, 3)$ gives $0 - 1 = -1$, not $1$.",
      "$(0, 0)$ gives $0$, not $1$; the asymptotes meet there, the curve does not.",
-     "The conclusion is right but the reason is vague: show that $x = 0$ gives no real $y$."
+     "This hyperbola crosses the $x$-axis at its vertices $(\\pm 2, 0)$; check $x = 0$ instead."
     ]
    }
   },
@@ -363,7 +363,7 @@
    "q": "Which conic is $4x^2 + 9y^2 = 36$?",
    "type": "single",
    "options": [
-    "An ellipse, 3 units across and 2 up and down from the origin",
+    "An ellipse with vertices $(\\pm 3, 0)$",
     "A hyperbola opening left and right",
     "A circle of radius 6",
     "A parabola opening up"

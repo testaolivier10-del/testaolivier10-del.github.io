@@ -317,8 +317,8 @@
       "why": "That is $\\ln x$. Raise $e$ to it: $x = e^{(60 - a)/b}$."
      },
      {
-      "value": 3.582641814278979,
-      "why": "That is $\\frac{60 - a}{b}$, the value of $\\ln x$; $x$ is $e$ to that power."
+      "value": 3825.0913758863944,
+      "why": "That is $10^{(60 - a)/b}$. The model uses $\\ln$, so undo it with $e$: $x = e^{(60 - a)/b}$."
      }
     ]
    },

@@ -416,7 +416,7 @@
     "options": [
      "The inverse undoes one step.",
      "Swapping columns is a different matrix, not the inverse.",
-     "Column sums of $T^{-1}$ are not the reason (for this $T$ they are $1$).",
+     "Column sums are not the reason; for an invertible transition matrix the columns of $T^{-1}$ add up to $1$, not $-1$.",
      "Reciprocals of entries do not undo matrix multiplication."
     ]
    }
@@ -457,12 +457,12 @@
    "type": "order",
    "options": [
     "Write the transition matrix $T$ with \"from\" columns",
-    "Write the current state as a column vector $\\mathbf{x}_0$",
-    "Compute $\\mathbf{x}_1 = T\\mathbf{x}_0$",
+    "Check that each column of $T$ adds up to $1$",
+    "Compute $\\mathbf{x}_1 = T\\mathbf{x}_0$ from the current state $\\mathbf{x}_0$",
     "Compute $\\mathbf{x}_2 = T\\mathbf{x}_1$"
    ],
    "why": {
-    "correct": "Set up $T$ and the state, then step forward twice (or compute $T^2\\mathbf{x}_0$ at once)."
+    "correct": "Set up $T$ and check it, then step forward twice (or compute $T^2\\mathbf{x}_0$ at once)."
    }
   }
  ]

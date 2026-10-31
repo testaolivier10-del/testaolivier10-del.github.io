@@ -47,7 +47,7 @@
     "correct": "Subtract $3$: $-2x > 4$. Divide by $-2$ and flip: $x < -2$, which is $(-\\infty, -2)$. Check $x = -3$: $3 + 6 = 9 > 7$.",
     "options": [
      "This forgets to flip the inequality when dividing by $-2$. Check $x = 0$: $3 > 7$ is false.",
-     "$-2x > 4$ gives $x < -2$, not $x < 2$: the sign of the number stays when you divide.",
+     "$-2x > 4$ gives $x < -2$, not $x < 2$: $4$ divided by $-2$ is $-2$. Dividing by a negative flips the inequality, and the bound comes out negative.",
      "Right: $-2x > 4$, and dividing by $-2$ flips the sign: $x < -2$.",
      "$x = -2$ gives $3 + 4 = 7$, and $7 > 7$ is false, so $-2$ is not included."
     ]

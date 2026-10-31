@@ -23,8 +23,7 @@
       "domain": [
        0,
        12.566370614359172
-      ],
-      "label": "y = 2 sin x"
+      ]
      }
     ],
     "lines": [
@@ -41,6 +40,16 @@
       ],
       "dashed": true,
       "label": "y = 1"
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       2,
+       2.5
+      ],
+      "text": "y = 2 sin x",
+      "anchor": "start"
      }
     ]
    }

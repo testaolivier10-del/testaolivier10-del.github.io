@@ -459,7 +459,7 @@
     "Its ends go in opposite directions, so the graph must cross the $x$-axis.",
     "Its leading coefficient is positive.",
     "It has exactly as many real zeros as its degree, counting each one.",
-    "Its non-real zeros come in pairs, so after pairing them off the zeros cancel out."
+    "Its graph always passes through the origin."
    ],
    "correct": 0,
    "why": {
@@ -468,7 +468,7 @@
      "Right: one end is below the axis and the other above, and the graph has no breaks.",
      "The argument works for negative leading coefficients too.",
      "Some zeros may be non-real; $x^3 + x$ has only one real zero.",
-     "Pairing leaves an odd count of real zeros, but the graph argument is the direct reason; nothing cancels."
+     "Many do not: $x^3 + 1$ has odd degree, but its graph meets the $y$-axis at $1$, and its real zero is $x = -1$."
     ]
    }
   },

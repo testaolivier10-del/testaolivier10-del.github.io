@@ -332,7 +332,7 @@
      "$y = t$, $x = g(t)$.",
      "This traces $y = x^2 + 1$, a parabola opening up.",
      "$y = t^2 \\ge 0$, so only the upper half.",
-     "This gives $x = \\sqrt{y} + 1$ on part of the curve, not $x = y^2 + 1$."
+     "This traces $y = (x - 1)^2$, a parabola opening up."
     ]
    }
   },

@@ -18,7 +18,7 @@
    "q": "Rewrite $1.2^{t}$ using a monthly factor, with $t$ in years.",
    "options": [
     "$(1.2^{1/12})^{12t}$",
-    "$(1.2^{12})^{t/12}$ only",
+    "$1.2^{t/12}$",
     "$(\\frac{1.2}{12})^{12t}$",
     "$1.2^{12t}$"
    ],

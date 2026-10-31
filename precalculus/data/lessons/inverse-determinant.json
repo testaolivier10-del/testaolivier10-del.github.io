@@ -46,7 +46,7 @@
   },
   {
    "cause": "$\\det A = 0$",
-   "effect": "the columns lie on one line, the parallelogram is flat, and A has no inverse"
+   "effect": "the columns lie on one line, the parallelogram is flat, and $A$ has no inverse"
   }
  ],
  "ideas": [

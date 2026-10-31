@@ -139,7 +139,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "$B\\left[ \\begin{matrix} 1 \\\\ -2 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$. Two different columns give the same product, so an undo matrix would have to send $\\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$ back to both at once.",
+    "correct": "$B\\left[ \\begin{matrix} 1 \\\\ -2 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$ and $B\\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right] = \\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$. Two different columns give the same product, so an undo matrix would have to send $\\left[ \\begin{matrix} 0 \\\\ 0 \\end{matrix} \\right]$ back to both at once.",
     "options": [
      "Two inputs, one output: nothing can undo that.",
      "Every matrix changes most inputs; an inverse can still change them back.",
@@ -167,7 +167,7 @@
      },
      {
       "value": 20,
-      "why": "$20$ is the $5 \\times 4$ rectangle around it, which includes four corner triangles."
+      "why": "$20$ is the $5 \\times 4$ rectangle around it, which also covers the pieces outside the parallelogram."
      }
     ]
    },
@@ -367,7 +367,7 @@
     "options": [
      "Swap the diagonal, negate the rest, divide by $1$.",
      "Swap the diagonal entries $2$ and $3$.",
-     "Negate only the off-diagonal entries.",
+     "Every sign is flipped: this is $-1$ times the inverse. Swap $2$ and $3$ but keep their signs.",
      "Change the signs of $1$ and $5$."
     ]
    }
@@ -438,12 +438,12 @@
    "type": "order",
    "options": [
     "Compute the determinant $ad - bc$ and check it is not $0$",
-    "Swap the two diagonal entries",
-    "Change the signs of the two off-diagonal entries",
-    "Divide each entry by the determinant"
+    "Swap the diagonal entries and change the signs of the other two",
+    "Divide each entry by the determinant",
+    "Check that the product with the original matrix is $I$"
    ],
    "why": {
-    "correct": "Determinant first (if it is $0$, stop: no inverse), then swap, negate, divide. Check by multiplying to get $I$."
+    "correct": "Determinant first (if it is $0$, stop: no inverse), then swap and negate, divide by the determinant, and check by multiplying."
    }
   }
  ]

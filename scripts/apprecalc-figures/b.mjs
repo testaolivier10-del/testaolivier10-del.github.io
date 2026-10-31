@@ -163,7 +163,7 @@ export const FIGURES = [
     lines: [{ y: 0, color: 'verm' }],
     curves: [{ f: x => 2 ** x, color: 'green' }, { f: x => 2 ** (x + 3), color: 'blue' }],
     points: [{ at: [0, 1], color: 'green' }, { at: [-3, 1], color: 'blue' }, { at: [0, 8], color: 'blue' }],
-    labels: [{ at: [2.85, 3.2], text: 'y = 2ˣ', color: 'green', anchor: 'end' }, { at: [0.45, 15], text: 'h(x) = 2ˣ⁺³ = 8(2ˣ)', color: 'blue', anchor: 'end' },
+    labels: [{ at: [2.85, 3.2], text: 'y = 2ˣ', color: 'green', anchor: 'end' }, { at: [-0.75, 13], text: 'h(x) = 2ˣ⁺³ = 8(2ˣ)', color: 'blue', anchor: 'end' },
       { at: [-3, 1], text: '(−3, 1)', dx: -8, dy: -8, color: 'blue', anchor: 'end' }, { at: [0, 8], text: '(0, 8)', dx: 10, dy: 4, color: 'blue' }, { at: [0, 1], text: '(0, 1)', dx: 10, dy: 16, color: 'green' }],
   },
   {

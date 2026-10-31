@@ -170,12 +170,12 @@
    "prompt": "<b>Determine</b> whether, on the interval $(2, 4)$, $h$ is increasing or decreasing and whether the rate of change of $h$ is increasing or decreasing. <b>Give</b> a reason for each.",
    "checklist": [
     "Says $h$ is decreasing on $(2, 4)$, from $h(2) = 10$ down to the minimum $h(4) = 5$",
-    "Says the graph is concave up there: it bends upward as it levels off into the minimum",
+    "Compares rates over equal intervals: on $[2, 3]$ about $-3.536$, on $[3, 4]$ about $-1.464$, so the graph is concave up",
     "Concludes the rate of change of $h$ is increasing on $(2, 4)$: negative, and getting closer to $0$"
    ],
    "earns": {
-    "answer": "$h$ is decreasing on $(2, 4)$: it falls from $h(2) = 10$ at the midline to the minimum $h(4) = 5$. The graph is concave up on $(2, 4)$, below the midline and leveling off into the minimum, so the rate of change of $h$ is increasing there: it is negative, steepest at $t = 2$, and rises toward $0$ at $t = 4$.",
-    "why": "It treats h and its rate of change as two questions, with a reason for each tied to the interval."
+    "answer": "$h$ is decreasing on $(2, 4)$: it falls from $h(2) = 10$ at the midline to the minimum $h(4) = 5$. Over equal intervals, $h(3) = 5\\cos\\left(\\frac{3\\pi}{4}\\right) + 10 \\approx 6.464$, so the average rate of change is about $\\frac{6.464 - 10}{3 - 2} = -3.536$ on $[2, 3]$ and about $\\frac{5 - 6.464}{4 - 3} = -1.464$ on $[3, 4]$. The rates are negative and increasing toward $0$, so the graph is concave up on $(2, 4)$ and the rate of change of $h$ is increasing there, as the graph levels off into the minimum.",
+    "why": "It treats h and its rate of change as two questions, with a reason for each tied to values on the interval: the rates over two equal intervals show the concavity."
    },
    "misses": {
     "answer": "$h$ is decreasing on $(2, 4)$, so its rate of change is decreasing too.",

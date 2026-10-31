@@ -69,7 +69,7 @@
   "A logarithmic model $y = a + b\\ln x$ fits when equal factors in $x$ give equal changes in $y$.",
   "Build it from two points (one with $x = 1$ makes $a$ easy) or with logarithmic regression on a calculator.",
   "$b > 0$: increasing, concave down, so the rate of change decreases: growth that slows but never stops.",
-  "Justify the choice with the numbers: \\\"each time $x$ triples, $y$ increases by $6$\\\"."
+  "Justify the choice with the numbers: \"each time $x$ triples, $y$ increases by $6$\"."
  ],
  "misconception": {
   "wrong": "A logarithmic model levels off at a maximum value, like a population reaching its limit.",

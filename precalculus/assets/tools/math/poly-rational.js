@@ -201,7 +201,7 @@
   }
   function holeText(h, name){
     name = name || 'f';
-    return 'Hole at $(' + n(h.x) + ', ' + frac(h.y) + ')$: the factor $' + lin(h.x) + '$ cancels, so $' + name + '(' + n(h.x) + ')$ is not defined but $' +
+    return 'Hole at $(' + n(h.x) + ', ' + frac(h.y) + ')$: the factor $' + lin(h.x) + '$ cancels, so $' + name + '(' + n(h.x) + ')$ is undefined but $' +
       limTex(n(h.x), frac(h.y), name) + '$.';
   }
   function endText(R, name){
@@ -352,7 +352,7 @@
     var spec = specOf(a, [[z]], [[p]], [h]), R = analyze(spec);
     var text = 'Let $r(x) = ' + lead(a) + fracTex(z < h ? [lin(z), lin(h)] : [lin(h), lin(z)], h < p ? [lin(h), lin(p)] : [lin(p), lin(h)]) + '$.';
     var steps = [];
-    steps.push(step(num(z, [{ value: h, why: 'At $x = ' + n(h) + '$ the denominator is 0 too, so $r$ is not defined there: that canceled factor makes a hole, not a zero.' },
+    steps.push(step(num(z, [{ value: h, why: 'At $x = ' + n(h) + '$ the denominator is 0 too, so $r$ is undefined there: that canceled factor makes a hole, not a zero.' },
       { value: p, why: '$x = ' + n(p) + '$ makes the denominator 0: a vertical asymptote, not a zero.' },
       { value: -z, why: 'The factor $' + lin(z) + '$ is zero at $x = ' + n(z) + '$: the sign inside the factor is the opposite.' }]), 'zero', 'What is the real zero of $r$?', '2.A', { hint: 'Type the $x$-value.' }));
     var mid = R.signs[1], s = mid.s, iv = function(sg){ return '$(' + (isFinite(sg.a) ? n(sg.a) : '-\\infty') + ', ' + (isFinite(sg.b) ? n(sg.b) : '\\infty') + ')$'; };
@@ -361,9 +361,9 @@
       [[iv(R.signs[0]), 'Test a value in it: $r(' + n(R.signs[0].at) + ')$ has the other sign. The sign changes only at the zero $x = ' + n(z) + '$ and the asymptote $x = ' + n(p) + '$ (a hole does not change it).'],
        [iv(R.signs[2]), 'Test a value in it: $r(' + n(R.signs[2].at) + ')$ has the other sign. The sign changes only at the zero $x = ' + n(z) + '$ and the asymptote $x = ' + n(p) + '$.']]), 'sign',
       'On which interval is $r(x)$ ' + word + ' for every $x$ (apart from a hole)?', '2.A'));
-    steps.push(step(choiceOf(r, ['A hole: $r$ is not defined there, but the graph has no asymptote.', 'Right: the factor $' + lin(h) + '$ cancels, so the graph has a hole at $x = ' + n(h) + '$.'],
+    steps.push(step(choiceOf(r, ['A hole: $r$ is undefined there, but the graph has no asymptote.', 'Right: the factor $' + lin(h) + '$ cancels, so the graph has a hole at $x = ' + n(h) + '$.'],
       [['A vertical asymptote.', 'An asymptote needs the factor to stay in the denominator after canceling. $' + lin(h) + '$ cancels.'],
-       ['A zero of $r$.', 'A zero needs $r(' + n(h) + ') = 0$, but $r(' + n(h) + ')$ is not defined: the denominator is 0.']]), 'at', 'What does the graph of $r$ have at $x = ' + n(h) + '$?', '2.A'));
+       ['A zero of $r$.', 'A zero needs $r(' + n(h) + ') = 0$, but $r(' + n(h) + ')$ is undefined: the denominator is 0.']]), 'at', 'What does the graph of $r$ have at $x = ' + n(h) + '$?', '2.A'));
     var sol = ['Cancel $' + lin(h) + '$: $r(x) = ' + lead(a) + fracTex([lin(z)], [lin(p)]) + '$ for $x \\ne ' + n(h) + '$.', 'The only zero is $x = ' + n(z) + '$; $x = ' + n(h) + '$ is a hole and $x = ' + n(p) + '$ an asymptote.',
       'Sign: $r(x) ' + (s > 0 ? '>' : '<') + ' 0$ on ' + iv(mid) + ', between the cut points.'];
     return { text: text, steps: steps, solution: sol, fig: spec, values: { z: z, h: h, p: p, mid: s } };

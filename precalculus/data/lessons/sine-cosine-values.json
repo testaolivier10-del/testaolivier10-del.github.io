@@ -42,7 +42,7 @@
  "ideas": [
   "The special angles are the multiples of $\\frac{\\pi}{6}$ and $\\frac{\\pi}{4}$. Their sines and cosines are $0$, $\\pm\\frac{1}{2}$, $\\pm\\frac{\\sqrt{2}}{2}$, $\\pm\\frac{\\sqrt{3}}{2}$ or $\\pm 1$.",
   "Method: find the reference angle, take the first-quadrant value, then give it the sign of the quadrant.",
-  "For a multiple of $\\frac{\\pi}{6}$, the coordinate that is larger in size is $\\frac{\\sqrt{3}}{2}$: it belongs to the axis the ray is closer to.",
+  "For a reference angle of $\\frac{\\pi}{6}$ or $\\frac{\\pi}{3}$, the coordinate that is larger in size is $\\frac{\\sqrt{3}}{2}$: it belongs to the axis the ray is closer to.",
   "On a circle of radius $r$ centered at the origin, the point at angle $\\theta$ is $(r\\cos\\theta, r\\sin\\theta)$."
  ],
  "misconception": {

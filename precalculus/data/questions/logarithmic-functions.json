@@ -561,7 +561,7 @@
     "$f$ is concave down on $[1, 4]$, because its rate of change is decreasing",
     "$f$ is decreasing on $[1, 4]$, because the rates are decreasing",
     "$f$ is concave up on $[1, 4]$, because the rates are positive",
-    "$f$ has a maximum on $[1, 4]$, because the rates get closer to $0$"
+    "$f$ has a turning point in $(1, 4)$, because the rates get closer to $0$"
    ],
    "correct": 0,
    "why": {
@@ -570,7 +570,7 @@
      "Decreasing average rates over equal intervals mean concave down.",
      "The rates are positive, so $f$ is increasing; it is the rates that decrease.",
      "Positive rates show $f$ is increasing; concavity comes from how the rates change.",
-     "The rates stay positive, so $f$ keeps increasing and has no maximum there."
+     "The rates stay positive, so $f$ keeps increasing and never turns; its largest value on $[1, 4]$ is at the endpoint $x = 4$."
     ]
    }
   },

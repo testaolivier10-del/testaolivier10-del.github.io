@@ -34,7 +34,7 @@
  "chain": [
   {
    "cause": "Write a parametric function as $\\mathbf{p}(t) = \\left\\langle x(t), y(t) \\right\\rangle$",
-   "effect": "each t gives a position vector from the origin to the point"
+   "effect": "each $t$ gives a position vector from the origin to the point"
   },
   {
    "cause": "Let $t$ increase",
@@ -46,7 +46,7 @@
   },
   {
    "cause": "Divide the displacement by $t_2 - t_1$",
-   "effect": "the average rate of change of p: the average rates of x and y, as one vector"
+   "effect": "the average rate of change of $\\mathbf{p}$: the average rates of $x$ and $y$, as one vector"
   }
  ],
  "ideas": [

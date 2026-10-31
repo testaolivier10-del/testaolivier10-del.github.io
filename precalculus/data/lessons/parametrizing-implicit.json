@@ -46,7 +46,7 @@
   },
   {
    "cause": "Undo it: solve each equation for the trig function and use the identity",
-   "effect": "you get back the equation in x and y, with the parameter removed"
+   "effect": "you get back the equation in $x$ and $y$, with the parameter removed"
   }
  ],
  "ideas": [
@@ -57,7 +57,7 @@
  ],
  "misconception": {
   "wrong": "$(3\\cos t, 2\\sin t)$ traces a circle, because it uses $\\cos t$ and $\\sin t$ like the unit circle.",
-  "right": "The different multipliers stretch the circle: $\\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{2}\\right)^2 = \\cos^2 t + \\sin^2 t = 1$, an ellipse $3$ wide and $2$ tall from the center."
+  "right": "The different multipliers stretch the circle: $\\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{2}\\right)^2 = \\cos^2 t + \\sin^2 t = 1$, an ellipse reaching $3$ units left and right and $2$ units up and down from the center."
  },
  "check": [
   "pcalc-parametrizing-implicit-1",

@@ -167,13 +167,6 @@ the CED (2.15) does not expect natural-log semi-log plots too; adding them is on
 Open points from `docs/apprecalc-reviews/self-a.md` to `self-f.md` (author in brackets). Duplicates went into
 `frq2-2027` and `tools-t3-models`; points this pass closed are under "Resolved".
 
-### residual-sign: residual = actual minus predicted (open, 2026-10-31, author B)
-
-Items, notes, glossary and `frq-q2-cooling-residuals` use residual = actual − predicted (the usual convention), but
-`docs/apprecalc-research/framework.md` section 3 says "predicted minus actual", and EK 2.6.B.1-2 were reworded for
-2026-27. Confirm against the CED. Every item where the sign matters states the definition, so a switch is wording
-plus sign flips in about 8 keys (`model-validation` 2, 3, 6, 7, 9, 10, 12, 14 and the cooling FRQ A(ii)).
-
 ### growth-factor-2-3: where "growth factor" is taught (open, 2026-10-31, author B)
 
 The map teaches `growth-factor` (with percent change) in 2.3; `framework.md` puts "base as growth factor and percent
@@ -227,10 +220,14 @@ A stimulus set is all calculator or all not, so `polar-rates-s2` (the secant est
 (the steepest ramp) carry `calc: true` though a student could do them by hand. Fine for practice; an exam form
 should not count them as calculator skill.
 
-### unit4-transition-matrix: "from" columns and column vectors (open, 2026-10-31, author F)
+### unit4-transition-matrix: "from" columns and column vectors (resolved 2026-10-31, Unit 4 review, author F)
 
 4.14 uses columns that add to 1 and $\mathbf{x}_{n+1} = T\mathbf{x}_n$, to match 4.12-4.13 (matrices act on
 columns); many texts use row vectors and "from" rows. Notes say so. Confirm against the CED's examples.
+**Resolved.** Kept. The CED PDF could not be read past Unit 2 (WebFetch stops at Topic 2.10), but two CED-aligned
+guides to Topic 4.14 (Albert "CED: Topic 4.14", Fiveable 4.14) both use column state vectors, columns that add up
+to 1 and $T$ on the left, and step back with $T^{-1}$: the course's convention. The notes' aside on the row form
+stays. A person with the CED may still glance at its 4.14 example.
 
 ### unit4-scope: conics, dot product, hyperbola parametrization, determinant placement (open, 2026-10-31, author F)
 
@@ -382,3 +379,57 @@ students to type the whole single-term answer, the shared change is a `form` opt
 domain step ("equal for x > 0, where the original is defined") matches how Q4 rubrics treat domain.
 
 **Resolved.** The shared change exists: `expr.form` (architecture, "Forms"), e.g. `{ type: "log" }` or `{ type: "power", base: 2 }`, passed through `ApPrecalcMath.exprCell(answer, { form })`. Typing the inside stays a fine design; switching to whole single-term answers is T2's call. The domain-step question for a teacher stays open under `teacher-review`.
+
+### residual-sign: residual = actual minus predicted (resolved 2026-10-31, Unit 2 review, author B)
+
+Items, notes, glossary and `frq-q2-cooling-residuals` use residual = actual − predicted. Confirmed against College
+Board's "AP Precalculus CED Clarifications and Corrections" (ap-precalculus-ced-clarification-and-guidance.pdf),
+updated EK 2.6.B.1: a residual is "the actual value of the dependent variable ... minus the value predicted";
+EK 2.6.B.2 lets error be the signed difference or the absolute value of the residual. No key changed. The CED
+topic page itself (2.6) could not be read (WebFetch stops at the Unit 2 table), and `framework.md` section 3 still
+says "confirm"; its wording now matches.
+
+## Unit 2 review (2026-10-31)
+
+Points from the independent Unit 2 accuracy review (`docs/apprecalc-reviews/unit-2.md`).
+
+### u2-exclusions: no Unit 2 exclusion in the clarifications PDF (open, 2026-10-31, Unit 2 review)
+
+The CED clarifications PDF lists updated EKs for 2.1, 2.2, 2.3, 2.5, 2.6, 2.7, 2.13, 2.14 and 2.15 and no "outside
+the scope" statement for Unit 2; its only exclusion is Unit 1's open/closed endpoints. The CED's own Unit 2 topic
+pages were not readable here, so `ced-exclusions` stays open for a person with the PDF.
+
+### u2-practice-calc-flags: calculator flags on semi-log set 1 (open, 2026-10-31, Unit 2 review)
+
+`semi-log-plots` 1-3 are `calc: true` because they share the calculator stimulus with 4-5, though they need no
+calculator. Harmless in practice; exams take sets whole, so a form using this set puts all five in Part B.
+
+## Unit 3 review (2026-10-31)
+
+Points from the independent Unit 3 accuracy review (`docs/apprecalc-reviews/unit-3.md`).
+
+### u3-ced-unread: Unit 3 topic pages and exclusions not read (open, 2026-10-31, Unit 3 review)
+
+WebFetch of the CED PDF stops partway through Unit 2; a direct download was refused by the network proxy (403) and
+the scraping service had no credits. So 3.1-3.15 were checked against `framework.md` section 3 (third-party), not
+the CED, and `exclusions-trig` (half-angle, tangent sum) and `ced-exclusions` stay open. Nothing in Unit 3 uses a
+half-angle or tangent-sum identity, so the content is safe whichever way that resolves.
+
+### u3-rate-at-a-point: "the rate of change is 0 at the top" (open, 2026-10-31, Unit 3 review)
+
+A few explanations speak of the rate of change at a single point, not on an interval: `pcalc-sinusoidal-modeling-4`
+("it starts at 0 at the peak"), the 3.4 notes ("from 0 at the lowest point toward its steepest at the zero"), and
+`frq-q3-spring` C(ii) (rubric and sample: "the negative rate of change increases toward 0", "momentarily stops").
+None uses the refused calculus words, and the CED's own 1.3 speaks of a rate of change at a point, but a teacher
+should confirm Q3 readers accept this wording, or the lines can be cut back to the interval statements.
+
+## Unit 4 review (2026-10-31, independent accuracy review; report `docs/apprecalc-reviews/unit-4.md`)
+
+### unit4-scope-review: what the review could and could not confirm (open, 2026-10-31, Unit 4 review)
+
+`unit4-scope` stays open: the CED topic pages for 4.6-4.11 were not readable (the PDF text ends at Topic 2.10;
+the Firecrawl route was out of credits). Third-party CED-aligned guides (Fiveable 4.6) mention a parabola's focus and
+directrix and an ellipse's foci ($c^2 = a^2 - b^2$), which 4.6 does not teach. Unit 4 is not on the exam, so this is
+low risk; if the CED's 4.6 lists foci or directrix, add a short notes section and two items. The dot product (4.8),
+the $\sec$/$\tan$ hyperbola (4.7) and the determinant in 4.11 are standard and kept.
+

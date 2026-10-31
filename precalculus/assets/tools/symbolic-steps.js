@@ -70,7 +70,7 @@
     host.innerHTML =
       '<section class="bt-problem ss-card" aria-label="Is the rewrite the same?">' +
         '<div class="ss-stage"><div class="ss-plotwrap"><svg class="ss-svg" role="img"></svg></div>' +
-          '<p class="ss-legend" aria-hidden="true"><span class="ss-lg ss-lg-a">first</span><span class="ss-lg ss-lg-b">rewrite</span><span class="ss-lg ss-lg-same">equal</span><span class="ss-lg ss-lg-diff">different</span><span class="ss-lg ss-lg-one">one not defined</span></p></div>' +
+          '<p class="ss-legend" aria-hidden="true"><span class="ss-lg ss-lg-a">first</span><span class="ss-lg ss-lg-b">rewrite</span><span class="ss-lg ss-lg-same">equal</span><span class="ss-lg ss-lg-diff">different</span><span class="ss-lg ss-lg-one">one undefined</span></p></div>' +
         '<div class="ss-ctl">' +
           '<div class="ss-in"><label for="ss-a">Expression</label><input id="ss-a" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"><span class="ss-pv" id="ss-a-p" aria-live="polite"></span></div>' +
           '<div class="ss-in"><label for="ss-b">Rewrite</label><input id="ss-b" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"><span class="ss-pv" id="ss-b-p" aria-live="polite"></span></div>' +
@@ -113,7 +113,7 @@
         o.push(path(G, R.fa, win[0], win[1], 'ss-curve ss-a', 600), path(G, R.fb, win[0], win[1], 'ss-curve ss-b', 600));
         // the band: what is true on each piece of the window
         var by = G.B + 24;
-        o.push('<g class="ss-band">' + R.pieces.map(function(p){ var x1 = G.sx(p.a), x2 = G.sx(p.b); return '<rect class="ss-pc is-' + p.s + '" x="' + r1(x1) + '" y="' + r1(by) + '" width="' + r1(Math.max(2, x2 - x1)) + '" height="16" rx="5"><title>' + esc(WORD[p.s]) + '</title></rect>' + (x2 - x1 > 70 ? '<text class="ss-pct" x="' + r1((x1 + x2) / 2) + '" y="' + r1(by + 12) + '" text-anchor="middle">' + esc(p.s === 'same' ? 'equal' : p.s === 'diff' ? 'different' : p.s === 'none' ? '—' : p.s === 'a' ? 'rewrite not defined' : 'first not defined') + '</text>' : ''); }).join('') + '</g>');
+        o.push('<g class="ss-band">' + R.pieces.map(function(p){ var x1 = G.sx(p.a), x2 = G.sx(p.b); return '<rect class="ss-pc is-' + p.s + '" x="' + r1(x1) + '" y="' + r1(by) + '" width="' + r1(Math.max(2, x2 - x1)) + '" height="16" rx="5"><title>' + esc(WORD[p.s]) + '</title></rect>' + (x2 - x1 > 70 ? '<text class="ss-pct" x="' + r1((x1 + x2) / 2) + '" y="' + r1(by + 12) + '" text-anchor="middle">' + esc(p.s === 'same' ? 'equal' : p.s === 'diff' ? 'different' : p.s === 'none' ? '—' : p.s === 'a' ? 'rewrite undefined' : 'first undefined') + '</text>' : ''); }).join('') + '</g>');
         svg.innerHTML = o.join('');
         var same = R.pieces.filter(function(p){ return p.s === 'same'; }), other = R.pieces.filter(function(p){ return p.s !== 'same' && p.s !== 'none'; });
         if(!other.length && same.length){ head = 'Equal on the whole window: wherever either is defined, both are, with the same value.'; pills = [{ html: 'Equal', tone: 'good' }]; }

@@ -176,7 +176,7 @@
      "3 is between $\\frac{\\pi}{2}$ and $\\pi$: Quadrant II.",
      "Quadrant I would need an angle below $\\frac{\\pi}{2} \\approx 1.57$.",
      "Quadrant III starts at $\\pi \\approx 3.14$, just past 3.",
-     "Quadrant IV needs an angle between $\\frac{3\\pi}{2} \\approx 4.71$ and $2\\pi$; this reads 3 as degrees or miscounts the quarter turns."
+     "Quadrant IV needs an angle between $\\frac{3\\pi}{2} \\approx 4.71$ and $2\\pi$; this counts three quarter turns where 3 radians is less than half a turn ($\\pi \\approx 3.14$)."
     ]
    }
   },

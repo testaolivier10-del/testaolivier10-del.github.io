@@ -406,7 +406,7 @@
    "options": [
     "$\\left[ \\begin{matrix} 3 \\\\ 11 \\end{matrix} \\right]$",
     "$\\left[ \\begin{matrix} 5 \\\\ -4 \\end{matrix} \\right]$",
-    "$\\left[ \\begin{matrix} 4 \\\\ 19 \\end{matrix} \\right]$",
+    "$\\left[ \\begin{matrix} 2 \\\\ 6 \\end{matrix} \\right]$",
     "$\\left[ \\begin{matrix} 3 & 11 \\end{matrix} \\right]$"
    ],
    "correct": 0,

@@ -1,6 +1,6 @@
 {
  "topic": "logarithmic-expressions",
- "hook": "The quietest sound you can hear and the roar of a jet engine differ in intensity by a factor of about $100$ billion. No ordinary ruler shows both. Counting powers of ten instead, the gap becomes $11$ steps. A logarithm is that count: the exponent a base needs to reach a number.",
+ "hook": "The quietest sound you can hear and a very loud rock concert differ in intensity by a factor of about $100$ billion. No ordinary ruler shows both. Counting powers of ten instead, the gap becomes $11$ steps. A logarithm is that count: the exponent a base needs to reach a number.",
  "prereq": [
   {
    "q": "What is $2^{-3}$?",

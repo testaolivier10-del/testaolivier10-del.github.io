@@ -23,8 +23,7 @@
       "domain": [
        -6.283185307179586,
        6.283185307179586
-      ],
-      "label": "f"
+      ]
      }
     ],
     "asymptotes": [
@@ -53,6 +52,16 @@
        -1.5707963267948966,
        -2
       ]
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       1.75,
+       4.5
+      ],
+      "text": "f",
+      "anchor": "end"
      }
     ]
    }
@@ -447,22 +456,22 @@
    "practice": "2.A",
    "level": "apply",
    "diff": 1,
-   "q": "The terminal ray of an angle $\\theta$ in standard position passes through the point $(-3, 4)$. What is $\\tan\\theta$?",
+   "q": "The terminal ray of an angle $\\theta$ in standard position passes through the point $(-3, 4)$. The line containing this ray meets the vertical line $x = 1$. At what point do they meet?",
    "type": "single",
    "options": [
-    "$-\\frac{4}{3}$",
-    "$-\\frac{3}{4}$",
-    "$\\frac{4}{3}$",
-    "$\\frac{4}{5}$"
+    "$\\left(1, -\\frac{4}{3}\\right)$",
+    "$\\left(1, -\\frac{3}{4}\\right)$",
+    "$\\left(1, \\frac{4}{3}\\right)$",
+    "$\\left(1, \\frac{4}{5}\\right)$"
    ],
    "correct": 0,
    "why": {
-    "correct": "$\\tan\\theta$ is the slope of the terminal ray: $\\frac{y}{x} = \\frac{4}{-3} = -\\frac{4}{3}$. The ray is in Quadrant II, where $\\sin$ is positive and $\\cos$ is negative, so the tangent is negative.",
+    "correct": "The line through the origin and $(-3, 4)$ has slope $\\frac{4}{-3} = -\\frac{4}{3}$, which is $\\tan\\theta$. A line through the origin with slope $m$ is at height $m$ when $x = 1$, so it meets $x = 1$ at $\\left(1, -\\frac{4}{3}\\right)$: the height there is $\\tan\\theta$. (The ray itself points into Quadrant II; it is the line through it, extended back through the origin, that reaches $x = 1$.)",
     "options": [
-     "Right: slope $\\frac{y}{x} = \\frac{4}{-3}$.",
-     "This is $\\frac{x}{y}$; tangent is $\\frac{y}{x}$, rise over run.",
-     "The point has $x = -3$, so the slope is negative.",
-     "This is $\\sin\\theta = \\frac{y}{r}$ with $r = 5$, not the tangent."
+     "Right: at $x = 1$ the height equals the slope, $\\tan\\theta = \\frac{4}{-3}$.",
+     "This uses $\\frac{x}{y}$; the slope is $\\frac{y}{x}$, rise over run.",
+     "The point $(-3, 4)$ has a negative $x$-coordinate, so the slope, and the height at $x = 1$, are negative.",
+     "This is $\\sin\\theta = \\frac{y}{r}$ with $r = 5$, the height where the ray meets the unit circle, not the line $x = 1$."
     ]
    }
   },

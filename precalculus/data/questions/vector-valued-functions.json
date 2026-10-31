@@ -142,7 +142,7 @@
      "Displacement over elapsed time.",
      "This is the displacement; divide by the $3$ units of time.",
      "The elapsed time is $4 - 1 = 3$, not $2$.",
-     "This divides $3$ by $6$; divide each component by the time."
+     "This divides the time by each component, $\\frac{3}{6}$ and $\\frac{3}{3}$; divide each component by the time instead."
     ]
    }
   },
@@ -463,11 +463,11 @@
    "options": [
     "Find the position vectors $\\mathbf{p}(t_1)$ and $\\mathbf{p}(t_2)$",
     "Subtract to get the displacement $\\mathbf{p}(t_2) - \\mathbf{p}(t_1)$",
-    "Find the elapsed time $t_2 - t_1$",
-    "Divide each component of the displacement by the elapsed time"
+    "Divide each component of the displacement by the elapsed time $t_2 - t_1$",
+    "Read each component as a rate in units of $x$ or $y$ per unit of time"
    ],
    "why": {
-    "correct": "Positions, then their difference, then the time, then divide component by component."
+    "correct": "Positions, then their difference, then divide by the elapsed time, then read each component with its units."
    }
   }
  ]

@@ -131,13 +131,13 @@
     var steps = [
       step(num(N, [{ value: b * c, why: '$' + Lt + ' M = ' + c + '$ means $M = ' + b + '^{' + c + '}$, not $' + b + ' \\cdot ' + c + '$.' }, { value: Math.pow(c, b), why: 'The base is ' + b + ': $M = ' + b + '^{' + c + '}$.' }], 0), 'N',
         'Combine and rewrite in exponential form: $x(x ' + (d < 0 ? '- ' + (-d) : '+ ' + d) + ') = $ ?', '2.A'),
-      step(num(1, [{ value: 2, why: 'The quadratic has two roots, but $x = ' + r2 + '$ makes $' + Lt + ' x$ not defined (a log needs a positive input). Reject it.' }], 0), 'count',
+      step(num(1, [{ value: 2, why: 'The quadratic has two roots, but at $x = ' + r2 + '$ the term $' + Lt + ' x$ is undefined (a log needs a positive input). Reject it.' }], 0), 'count',
         'The equation $x^2 ' + (d < 0 ? '- ' + (-d) : '+ ' + d) + 'x - ' + N + ' = 0$ has roots $' + r1 + '$ and $' + r2 + '$. How many solutions does the ORIGINAL equation have?', '2.B'),
-      step(num(r1, [{ value: r2, why: '$x = ' + r2 + '$ makes $' + Lt + ' x$ not defined: the log of a negative number. Reject it.' }], 0), 'x', 'What is the solution?', '1.C')
+      step(num(r1, [{ value: r2, why: 'At $x = ' + r2 + '$ the term $' + Lt + ' x$ is undefined: the log of a negative number. Reject it.' }], 0), 'x', 'What is the solution?', '1.C')
     ];
     var sol = ['Product rule: $' + Lt + '[x(x ' + (d < 0 ? '- ' + (-d) : '+ ' + d) + ')] = ' + c + '$, so $x(x ' + (d < 0 ? '- ' + (-d) : '+ ' + d) + ') = ' + b + '^{' + c + '} = ' + N + '$.',
       '$x^2 ' + (d < 0 ? '- ' + (-d) : '+ ' + d) + 'x - ' + N + ' = (x - ' + r1 + ')(x + ' + (-r2) + ') = 0$, so $x = ' + r1 + '$ or $x = ' + r2 + '$.',
-      'Check the domain: $x = ' + r2 + '$ gives $' + Lt + '(' + r2 + ')$, which is not defined. The only solution is $x = ' + r1 + '$.'];
+      'Check the domain: $x = ' + r2 + '$ gives $' + Lt + '(' + r2 + ')$, which is undefined. The only solution is $x = ' + r1 + '$.'];
     return { text: text, steps: steps, solution: sol, values: { b: b, c: c, r1: r1, r2: r2, d: d } };
   };
   /* 2.13: quadratic in e^x; e^x > 0 rejects a negative root */

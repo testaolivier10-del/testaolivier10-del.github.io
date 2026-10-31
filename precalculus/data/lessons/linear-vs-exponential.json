@@ -29,7 +29,7 @@
  ],
  "figure": {
   "figure": "linear-vs-exponential-steps",
-  "caption": "Over equal steps, $f(x) = 4 + 6x$ adds $6$ each time while $g(x) = 4(1.5)^x$ multiplies by $1.5$. The exponential function starts lower and passes the line between $x = 5$ and $x = 6$."
+  "caption": "Over equal steps, $f(x) = 4 + 6x$ adds $6$ each time while $g(x) = 4(1.5)^x$ multiplies by $1.5$. Both start at $4$; the exponential function falls behind at first, then passes the line between $x = 5$ and $x = 6$."
  },
  "chain": [
   {

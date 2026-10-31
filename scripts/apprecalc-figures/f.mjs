@@ -212,7 +212,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
   fig('parametric-circles-lines', 'parametric-circles-lines-segment', 400, 280, 'A drone flying a straight segment',
     'A straight segment from (-2, 5), marked t = 0, to (6, 1), marked t = 4, with an arrow pointing from the first point toward the second.',
     [P.svg, polyline(P, [A, B]), head(P.sx(3), P.sy(2.5), P.sx(B[0]) - P.sx(A[0]), P.sy(B[1]) - P.sy(A[1]), GREEN, 12),
-      dot(P, A), dot(P, B), label(P, A, [I('t'), { t: ' = 0  (−2, 5)' }], 8, -8, { size: 12 }), label(P, B, [I('t'), { t: ' = 4  (6, 1)' }], 0, 20, { size: 12, anchor: 'middle' })]);
+      dot(P, A), dot(P, B), label(P, A, [I('t'), { t: ' = 0  (−2, 5)' }], 8, -8, { size: 12 }), label(P, B, [I('t'), { t: ' = 4  (6, 1)' }], -10, 20, { size: 12, anchor: 'end' })]);
 }
 
 /* ---------------------------------------------------------- 4.5 */
@@ -288,7 +288,7 @@ const tlabel = t => [I('t'), { t: ' = ' + num(t) }];
     'Vector u drawn from (0, 0) to (4, 1) in green. Vector v drawn from (2, 1) to (1, 4) in blue. Both start and end at grid points.',
     [P.svg, vec(P, [0, 0], [4, 1], { color: GREEN }), vec(P, [2, 1], [1, 4], { color: BLUE }), dot(P, [2, 1], { r: 3, color: BLUE }),
       label(P, [2.6, 0.6], [{ t: 'u', b: true }], 0, 18, { size: 14, color: GREEN }), label(P, [1.5, 2.6], [{ t: 'v', b: true }], -10, 0, { size: 14, color: BLUE, anchor: 'end' }),
-      label(P, [2, 1], '(2, 1)', 6, 16, { size: 11, color: MUTED }), label(P, [4, 1], '(4, 1)', 6, 14, { size: 11, color: MUTED }), label(P, [1, 4], '(1, 4)', 6, -4, { size: 11, color: MUTED })]);
+      label(P, [2, 1], '(2, 1)', 8, -6, { size: 11, color: MUTED }), label(P, [4, 1], '(4, 1)', 6, 14, { size: 11, color: MUTED }), label(P, [1, 4], '(1, 4)', 6, -4, { size: 11, color: MUTED })]);
 }
 
 /* ---------------------------------------------------------- 4.9 */

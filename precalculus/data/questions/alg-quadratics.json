@@ -225,7 +225,7 @@
      "These come from the vertex $(1, -4)$, not from setting $f(x) = 0$.",
      "Right: $(x - 1)^2 = 4$, so $x - 1 = \\pm 2$.",
      "$(x - 1)^2 = 4$ has two square roots, $2$ and $-2$: $x = 3$ or $x = -1$.",
-     "Take the square root before adding $1$: $x - 1 = \\pm 2$."
+     "These come from $x - 1 = \\pm 4$, which skips the square root. Take the square root of $4$: $x - 1 = \\pm 2$."
     ]
    }
   },

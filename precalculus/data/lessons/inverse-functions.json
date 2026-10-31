@@ -56,7 +56,7 @@
  "ideas": [
   "$f^{-1}(b) = a$ means $f(a) = b$. The $-1$ names the inverse function; $f^{-1}(x)$ is not $\\frac{1}{f(x)}$.",
   "A function is invertible when each output comes from exactly one input (it is one-to-one).",
-  "Justify with specific values: \\\"$h(1) = h(3) = 1$, so $h$ has no inverse\\\", never a bare rule name.",
+  "Justify with specific values: \"$h(1) = h(3) = 1$, so $h$ has no inverse\", never a bare rule name.",
   "To find a formula, swap $x$ and $y$ in $y = f(x)$ and solve for $y$.",
   "The domain of $f^{-1}$ is the range of $f$, and the range of $f^{-1}$ is the domain of $f$."
  ],

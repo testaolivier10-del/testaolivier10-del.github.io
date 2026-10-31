@@ -57,7 +57,7 @@
  ],
  "misconception": {
   "wrong": "A polynomial of degree $4$ always has $4$ $x$-intercepts.",
-  "right": "It has $4$ complex zeros counting multiplicity, but some may repeat and some may be non-real. $p$ in the stimulus has degree $4$ and only $3$ $x$-intercepts, because $-1$ counts twice."
+  "right": "It has $4$ complex zeros counting multiplicity, but some may repeat and some may be non-real. The $p$ in the figure has degree $4$ and only $3$ $x$-intercepts, because the zero $1$ counts twice."
  },
  "check": [
   "pcalc-complex-zeros-1",

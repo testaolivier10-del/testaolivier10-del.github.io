@@ -140,19 +140,19 @@
    "q": "Simplify $\\frac{x^2 - 1}{x + 3} \\div \\frac{x - 1}{x^2 - 9}$.",
    "type": "single",
    "options": [
-    "$\\frac{(x + 1)(x + 3)}{x - 3}$",
-    "$\\frac{x - 1}{x + 3}$",
+    "$\\frac{1}{(x + 1)(x - 3)}$",
+    "$\\frac{(x - 1)^2(x + 1)}{(x + 3)^2(x - 3)}$",
     "$(x + 1)(x - 3)$",
-    "$\\frac{x + 1}{x - 3}$"
+    "$\\frac{(x + 1)(x - 3)^2}{x + 3}$"
    ],
    "correct": 2,
    "why": {
     "correct": "Multiply by the reciprocal: $\\frac{(x - 1)(x + 1)}{x + 3} \\cdot \\frac{(x - 3)(x + 3)}{x - 1}$. Cancel $x - 1$ and $x + 3$: $(x + 1)(x - 3)$, for $x \\ne \\pm 3, 1$.",
     "options": [
-     "Flip the second fraction before multiplying; this flipped the first.",
-     "Dividing multiplies by the reciprocal $\\frac{x^2 - 9}{x - 1}$; the factors then cancel differently.",
+     "This flips the first fraction instead of the second, which gives the reciprocal of the answer. Keep the first fraction and multiply by the reciprocal of the second.",
+     "This multiplies by the second fraction itself. Dividing multiplies by its reciprocal, $\\frac{x^2 - 9}{x - 1}$.",
      "Right: $\\frac{(x - 1)(x + 1)}{x + 3} \\cdot \\frac{(x - 3)(x + 3)}{x - 1} = (x + 1)(x - 3)$.",
-     "$x^2 - 9$ moves to the top when you flip the second fraction."
+     "This factors $x^2 - 9$ as $(x - 3)^2$. It is a difference of squares, $(x - 3)(x + 3)$, and then the $x + 3$ cancels."
     ]
    }
   },

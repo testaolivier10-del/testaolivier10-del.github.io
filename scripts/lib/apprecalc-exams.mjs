@@ -268,6 +268,7 @@ const quadY = [3, 7, 19, 39, 67], d1 = quadY.slice(1).map((y, i) => y - quadY[i]
 const list = a => `${a.slice(0, -1).map(x => `$${x}$`).join(', ')} and $${a[a.length - 1]}$`;
 const tblF = { 1: 3, 2: 1, 3: 4, 4: 2 }, tblG = { 1: 2, 2: 4, 3: 1, 4: 3 };   // u2-composition-table
 const hInv = x => x * x - 4 * x + 7;                                      // u2-not-invertible-values
+const hCos = t => 5 * Math.cos(Math.PI / 4 * t) + 10;                     // u3-rate-increasing-interval
 export const JUSTIFY_NUMBERS = [
   { id: 'u1-secant-rate', has: [`\\frac{68 - 52}{7} = \\frac{16}{7} \\approx ${r3((68 - 52) / (9 - 2))}`] },
   { id: 'u1-concave-down-estimate', has: [`\\frac{12 - 4}{5 - 1} = ${(12 - 4) / (5 - 1)}`, `4 + 2(2 - 1) = ${4 + 2 * (2 - 1)}`] },
@@ -284,6 +285,7 @@ export const JUSTIFY_NUMBERS = [
   { id: 'u2-not-invertible-values', has: [`1 - 4 + 7 = ${hInv(1)}$`, `9 - 12 + 7 = ${hInv(3)}$`] },
   { id: 'u2-log-model-decimals', has: [`t = e^{3.8/1.7} \\approx ${r3(Math.exp(3.8 / 1.7))}$`, `e^{2.2} \\approx ${r3(Math.exp(2.2))}$`] },
   { id: 'u3-ferris-points', has: [`18 - 15 = ${18 - 15}$`, `$(${40 / 4}, 18)$`, `$(${40 / 2}, ${18 + 15})$`, `$(${3 * 40 / 4}, 18)$`] },
+  { id: 'u3-rate-increasing-interval', has: [`\\approx ${r3(hCos(3))}$`, `= ${r3(hCos(3) - hCos(2))}$ on $[2, 3]$`, `= ${r3(hCos(4) - hCos(3))}$ on $[3, 4]$`] },
   { id: 'u3-tangent-asymptote', has: [`\\tan(1.5) \\approx ${r3(Math.tan(1.5))}$`, `\\tan(1.65) \\approx ${r3(Math.tan(1.65))}$`] },
   { id: 'u3-polar-secant', has: [`\\frac{${2 + Math.sin(Math.PI / 2)} - ${2 + Math.sin(0)}}{\\pi/2}`, `\\approx ${r3(2 / Math.PI)}`] },
   { id: 'u3-radian-decimals', has: [`\\sin^{-1}(0.25) \\approx ${r3(Math.asin(0.25))}$`, `\\sin^{-1}(0.25) \\approx ${r3(Math.PI - Math.asin(0.25))}$`] },

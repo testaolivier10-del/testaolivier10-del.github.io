@@ -4,7 +4,7 @@
    "kind": "table",
    "title": "Height of a tossed beanbag",
    "table": {
-    "caption": "Height h(t) of a beanbag, in meters, t seconds after it is tossed upward from a balcony",
+    "caption": "Height h(t) of a beanbag, in feet, t seconds after it is tossed upward from a hand 6 feet above the ground",
     "cols": [
      "$t$ (seconds)",
      "0",
@@ -15,12 +15,12 @@
     ],
     "rows": [
      [
-      "$h(t)$ (meters)",
-      "2",
-      "17",
+      "$h(t)$ (feet)",
+      "6",
+      "18",
       "22",
-      "17",
-      "2"
+      "18",
+      "6"
      ]
     ]
    }
@@ -103,10 +103,10 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "Over equal input steps of $0.5$, the first differences are $15, 5, -5, -15$ and the second differences are $-10, -10, -10$. Constant second differences over equal steps mean a quadratic model.",
+    "correct": "Over equal input steps of $0.5$, the first differences are $12, 4, -4, -12$ and the second differences are $-8, -8, -8$. Constant second differences over equal steps mean a quadratic model.",
     "options": [
-     "A linear model has constant first differences; these change from $15$ to $-15$.",
-     "Second differences of $-10$ each time, over equal steps.",
+     "A linear model has constant first differences; these change from $12$ to $-12$.",
+     "Second differences of $-8$ each time, over equal steps.",
      "The first differences change; it is the second differences that are constant.",
      "Five points do not force a cubic; the pattern of differences decides the type."
     ]
@@ -123,20 +123,20 @@
    "q": "Over the equal input steps of the table, what is the constant second difference of $h$?",
    "type": "numeric",
    "numeric": {
-    "answer": -10,
+    "answer": -8,
     "mistakes": [
      {
-      "value": 10,
-      "why": "Subtract in order, later minus earlier: $5 - 15 = -10$. The heights rise more slowly, so the change is negative."
+      "value": 8,
+      "why": "Subtract in order, later minus earlier: $4 - 12 = -8$. The heights rise more slowly, so the change is negative."
      },
      {
-      "value": -5,
+      "value": -4,
       "why": "That is a first difference. Take the differences of the first differences."
      }
     ]
    },
    "why": {
-    "correct": "First differences: $17 - 2 = 15$, $22 - 17 = 5$, $17 - 22 = -5$, $2 - 17 = -15$. Second differences: $5 - 15 = -10$ each time."
+    "correct": "First differences: $18 - 6 = 12$, $22 - 18 = 4$, $18 - 22 = -4$, $6 - 18 = -12$. Second differences: $4 - 12 = -8$ each time."
    }
   },
   {
@@ -177,14 +177,14 @@
    "q": "Which statement uses the table to explain why a linear model is not appropriate?",
    "type": "single",
    "options": [
-    "The changes over equal steps, $15, 5, -5, -15$, are not constant",
-    "Some heights are below $5$ meters, so a linear model would not fit",
+    "The changes over equal steps, $12, 4, -4, -12$, are not constant",
+    "Some heights are below $10$ feet, so a linear model would not fit",
     "The inputs go up by $0.5$, not by $1$, so a linear model does not apply",
     "A linear model would need the heights to double each $0.5$ second"
    ],
    "correct": 0,
    "why": {
-    "correct": "A linear model has a constant rate of change, so over equal input steps its output changes are equal. Here they are $15, 5, -5, -15$.",
+    "correct": "A linear model has a constant rate of change, so over equal input steps its output changes are equal. Here they are $12, 4, -4, -12$.",
     "options": [
      "Equal steps with unequal changes rule out a constant rate.",
      "A line can take small values too; the size of the heights does not decide the type.",

@@ -1,6 +1,6 @@
 {
  "topic": "exp-log-inverses",
- "hook": "A savings balance doubles every $7$ years. Asking \\\"how much after $21$ years?\\\" uses an exponential function. Asking \\\"when will it reach $8$ times what I put in?\\\" runs the same rule backward. That backward rule is a logarithm with the same base: exponentials and logarithms undo each other.",
+ "hook": "A savings balance doubles every $7$ years. Asking \"how much after $21$ years?\" uses an exponential function. Asking \"when will it reach $8$ times what I put in?\" runs the same rule backward. That backward rule is a logarithm with the same base: exponentials and logarithms undo each other.",
  "prereq": [
   {
    "q": "What is $\\log_2 32$?",

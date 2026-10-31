@@ -199,7 +199,7 @@
    "why": {
     "correct": "For an exponential function, the average rates over equal-length intervals have the same constant ratio as the outputs: $\\frac{15}{5} = \\frac{45}{15} = 3$.",
     "options": [
-     "The second difference is $20$, so they do not increase by equal amounts.",
+     "The rates increase by $10$, then by $30$: not by equal amounts.",
      "Rates proportional to the outputs: ratio $3$.",
      "They grow from $5$ to $45$.",
      "$B(0) \\div 2 = 2.5$, not $5$."

@@ -64,7 +64,7 @@
      "Both coordinates come from $t = 1$: $x(1) = -3$ and $y(1) = -3$.",
      "This is the point for $t = -1$, where $y(-1) = -1 + 4 = 3$.",
      "$x(1) = 1 - 4 = -3$; the sign of $t^2$ was flipped to get $-5$.",
-     "$y(t) = t^3 - 4t$, so $y(1) = 1 - 4 = -3$; this used $t^3 - 4$."
+     "$-4$ is only the $-4t$ term, $-4(1)$; add $t^3 = 1$: $y(1) = 1 - 4 = -3$."
     ]
    }
   },

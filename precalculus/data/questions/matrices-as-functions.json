@@ -196,7 +196,7 @@
     "options": [
      "Swap, negate, divide by $1$.",
      "Swap the diagonal entries $3$ and $2$.",
-     "Negate only the off-diagonal entries.",
+     "Every sign is flipped: this is $-1$ times the inverse. Swap $3$ and $2$ but keep their signs.",
      "The off-diagonal entries change sign."
     ]
    }

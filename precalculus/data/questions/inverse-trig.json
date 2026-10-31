@@ -27,8 +27,7 @@
       "ends": [
        "closed",
        "closed"
-      ],
-      "label": "y = cos^-1 x"
+      ]
      }
     ],
     "points": [
@@ -54,6 +53,14 @@
        1.75
       ],
       "text": "(0, π/2)",
+      "anchor": "start"
+     },
+     {
+      "at": [
+       -1.4,
+       0.6
+      ],
+      "text": "y = cos⁻¹ x",
       "anchor": "start"
      }
     ]

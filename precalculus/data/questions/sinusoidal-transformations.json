@@ -24,8 +24,7 @@
        0,
        6.283185307179586
       ],
-      "cls": "s1",
-      "label": "g"
+      "cls": "s1"
      }
     ],
     "points": [
@@ -46,6 +45,16 @@
        6.283185307179586,
        -2
       ]
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       4.75,
+       2.6
+      ],
+      "text": "g",
+      "anchor": "start"
      }
     ]
    }
@@ -110,8 +119,8 @@
       "why": "The rising midline crossing is at $\\theta = \\frac{\\pi}{2}$, a shift to the right: $\\sin\\left(\\theta - \\frac{\\pi}{2}\\right)$."
      },
      {
-      "expr": "3cos(theta) + 1",
-      "why": "A cosine with $a > 0$ starts at a highest point, but $g$ starts at a lowest point. Use $a = -3$, or a shift."
+      "expr": "3sin(theta) + 1",
+      "why": "With no shift, the graph would cross its midline going up at $\\theta = 0$, but $g(0) = -2$ is a lowest point. The rising crossing is at $\\theta = \\frac{\\pi}{2}$: $\\sin\\left(\\theta - \\frac{\\pi}{2}\\right)$."
      }
     ]
    },

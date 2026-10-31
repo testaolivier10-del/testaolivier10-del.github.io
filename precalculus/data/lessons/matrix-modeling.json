@@ -34,7 +34,7 @@
  "chain": [
   {
    "cause": "List the chance of moving from each state (column) to each state (row)",
-   "effect": "the transition matrix T; each column adds up to 1"
+   "effect": "the transition matrix $T$; each column adds up to $1$"
   },
   {
    "cause": "Multiply the current state vector by $T$",
@@ -46,7 +46,7 @@
   },
   {
    "cause": "Multiply by $T^{-1}$ instead",
-   "effect": "the state one step earlier, as long as T has an inverse"
+   "effect": "the state one step earlier, as long as $T$ has an inverse"
   }
  ],
  "ideas": [

@@ -23,8 +23,7 @@
       "domain": [
        0,
        6.283185307179586
-      ],
-      "label": "sec"
+      ]
      },
      {
       "fn": "cos(x)",
@@ -32,8 +31,7 @@
        0,
        6.283185307179586
       ],
-      "dashed": true,
-      "label": "cos"
+      "dashed": true
      }
     ],
     "asymptotes": [
@@ -42,6 +40,24 @@
      },
      {
       "x": 4.71238898038469
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       2.3,
+       3
+      ],
+      "text": "y = sec x",
+      "anchor": "start"
+     },
+     {
+      "at": [
+       2.3,
+       0.4
+      ],
+      "text": "y = cos x (dashed)",
+      "anchor": "start"
      }
     ]
    }

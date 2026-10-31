@@ -117,7 +117,7 @@
      "Right: $p$ switches from decreasing to increasing at both.",
      "At $x = 0$, $p$ switches from increasing to decreasing: a local maximum.",
      "These are local maxima: the output there is greater than at every nearby input.",
-     "These outputs are not lower than the outputs next to them; the graph is still falling there."
+     "At $x = -1$ the graph is still rising and at $x = 1$ it is still falling; it does not turn around at either, so neither is a local minimum."
     ]
    }
   },
@@ -476,7 +476,7 @@
     "Between $x = 0$ and $x = 1$",
     "Between $x = 4$ and $x = 5$",
     "Nowhere, because the rates are positive",
-    "Between $x = 2$ and $x = 3.5$"
+    "Between $x = 2$ and $x = 3$"
    ],
    "correct": 3,
    "why": {
